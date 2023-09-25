@@ -33,6 +33,20 @@ export class Controller {
   constructor(private readonly config: PaddleConfig) {}
 
   /**
+   * The fulfillment webhook is triggered when an order is processed for a
+   * product or plan with webhook fulfillment enabled.
+   */
+  @http.POST("/_/checkout/paddle-fulfillment")
+  async paddleFulfillmentWebhook(
+    ctx: Context<RouterState & AuthState>,
+    @body.form() value: unknown,
+  ): Promise<void> {
+    ctx.response.status = 200;
+    ctx.response.body = "OK";
+    ctx.response.type = "text/plain";
+  }
+
+  /**
    * The alert webhook is triggered by events in the Paddle platform, for
    * example a successful payment.
    */
@@ -49,7 +63,7 @@ export class Controller {
     try {
       event = paddle.parseWebhookEvent(value);
     } catch (err: any) {
-      Logger.error("Paddle event parse error", err);
+      Logger.error(err, "Paddle event parse error");
       ctx.response.status = 403;
       ctx.response.body = String(err);
       ctx.response.type = "text/plain";
@@ -75,7 +89,7 @@ export class Controller {
         Logger.warn("Unsupported Paddle event");
       }
     } catch (err: any) {
-      Logger.error("Paddle event processing error", err);
+      Logger.error(err, "Paddle event processing error");
       ctx.response.status = 500;
       ctx.response.body = String(err);
       ctx.response.type = "text/plain";
