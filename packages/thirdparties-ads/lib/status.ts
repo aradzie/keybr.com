@@ -11,20 +11,12 @@ export function showAdBlockerStatus(enabled: boolean): void {
     for (const elem of placeholders) {
       elem.style.visibility = "visible";
       elem.innerHTML =
-        p(
-          "Please either disable your ad-blocker or purchase " +
-            "a <a href='/account'>premium account</a> to remove ads!",
-        ) +
-        p(
-          "You may not like this ad, but it supports the developer " +
-            "and keeps this app free.",
-        );
+        "<div>" +
+        "Please disable your ad-blocker or purchase " +
+        "a <a href='/account'>premium account</a> to remove ads!" +
+        "</div>";
     }
   }
-}
-
-function p(text: string): string {
-  return `<p style="color: red">${text}</p>`;
 }
 
 function findElements(selector: string): HTMLElement[] {
