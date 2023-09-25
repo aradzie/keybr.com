@@ -19,7 +19,7 @@ export function SecondaryMenu({
         target="email"
         title={formatMessage({
           id: "footer.emailLinkTitle",
-          description: "Footer email link title.",
+          description: "Email link title.",
           defaultMessage:
             "Send your comments and suggestions to info@keybr.com",
         })}
@@ -31,11 +31,23 @@ export function SecondaryMenu({
         target="discord"
         title={formatMessage({
           id: "footer.discordLinkTitle",
-          description: "Footer Discord link title.",
+          description: "Discord link title.",
           defaultMessage: "Discuss on our Discord server.",
         })}
       >
         Discord
+      </Link>
+      <Link
+        href="https://github.com/aradzie/keybr.com"
+        target="github"
+        title={formatMessage({
+          id: "footer.githubLinkTitle",
+          description: "Github link title.",
+          defaultMessage:
+            "The source code of keybr.com is available on Github.",
+        })}
+      >
+        Github
       </Link>
       <PageLink link={Sitemap.termsOfService.bind(null)} />
       <PageLink link={Sitemap.privacyPolicy.bind(null)} />

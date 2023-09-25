@@ -177,11 +177,15 @@
   },
   "footer.discordLinkTitle": {
     "defaultMessage": "Discutez sur notre serveur Discord.",
-    "description": "Footer Discord link title."
+    "description": "Discord link title."
   },
   "footer.emailLinkTitle": {
     "defaultMessage": "Envoyez vos commentaires et suggestions à l'adresse info@keybr.com",
-    "description": "Footer email link title."
+    "description": "Email link title."
+  },
+  "footer.githubLinkTitle": {
+    "defaultMessage": "Le code source de keybr.com est disponible sur Github.",
+    "description": "Github link title."
   },
   "help.example1": {
     "defaultMessage": "<a>Exemple 1</a>, de 30 à 70 mots par minute après 4 heures 20 minutes de pratique en 15 jours.",

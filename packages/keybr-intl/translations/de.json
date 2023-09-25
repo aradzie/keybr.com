@@ -177,11 +177,15 @@
   },
   "footer.discordLinkTitle": {
     "defaultMessage": "Diskutieren Sie auf unserem Discord-Server.",
-    "description": "Footer Discord link title."
+    "description": "Discord link title."
   },
   "footer.emailLinkTitle": {
     "defaultMessage": "Senden Sie Ihre Kommentare und Vorschläge an info@keybr.com",
-    "description": "Footer email link title."
+    "description": "Email link title."
+  },
+  "footer.githubLinkTitle": {
+    "defaultMessage": "Der Quellcode von keybr.com ist auf Github verfügbar.",
+    "description": "Github link title."
   },
   "help.example1": {
     "defaultMessage": "<a>Beispiel 1</a>, von 30 auf 70 WPM nach 4 Stunden 20 Minuten Üben im Laufe von 15 Tagen.",

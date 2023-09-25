@@ -177,11 +177,15 @@
   },
   "footer.discordLinkTitle": {
     "defaultMessage": "Общайтесь на нашем сервере Discord.",
-    "description": "Footer Discord link title."
+    "description": "Discord link title."
   },
   "footer.emailLinkTitle": {
     "defaultMessage": "Отправляйте ваши пожелания и комментарии на info@keybr.com",
-    "description": "Footer email link title."
+    "description": "Email link title."
+  },
+  "footer.githubLinkTitle": {
+    "defaultMessage": "Исходный код keybr.com доступен на Github.",
+    "description": "Github link title."
   },
   "help.example1": {
     "defaultMessage": "<a>Пример 1</a>, от 30 до 70 слов в минуту после 4 часов 20 минут занятий в течение 15 дней.",

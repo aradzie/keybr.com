@@ -177,11 +177,15 @@
   },
   "footer.discordLinkTitle": {
     "defaultMessage": "Rozmawiaj na naszym serwerze Discord.",
-    "description": "Footer Discord link title."
+    "description": "Discord link title."
   },
   "footer.emailLinkTitle": {
     "defaultMessage": "Wyślij komentarze i sugestie na adres info@keybr.com",
-    "description": "Footer email link title."
+    "description": "Email link title."
+  },
+  "footer.githubLinkTitle": {
+    "defaultMessage": "Kod źródłowy keybr.com jest dostępny na Githubie.",
+    "description": "Github link title."
   },
   "help.example1": {
     "defaultMessage": "<a>Przykład 1</a>, od 30 do 70 słów na minutę po 4 godzinach i 20 minutach ćwiczeń w ciągu 15 dni.",

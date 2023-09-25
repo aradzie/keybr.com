@@ -177,11 +177,15 @@
   },
   "footer.discordLinkTitle": {
     "defaultMessage": "Discute en nuestro servidor Discord.",
-    "description": "Footer Discord link title."
+    "description": "Discord link title."
   },
   "footer.emailLinkTitle": {
     "defaultMessage": "Envía tus comentarios y sugerencias a info@keybr.com",
-    "description": "Footer email link title."
+    "description": "Email link title."
+  },
+  "footer.githubLinkTitle": {
+    "defaultMessage": "El código fuente de keybr.com está disponible en Github.",
+    "description": "Github link title."
   },
   "help.example1": {
     "defaultMessage": "<a>Ejemplo 1</a>, de 30 a 70 PPM después de 4 horas 20 minutos de práctica durante 15 días.",
