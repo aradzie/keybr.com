@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "name": "@keybr/thirdparties-ads",
+  "version": "0.0.0",
+  "main": "lib/index.ts",
+  "types": ".types/index.d.ts",
+  "sideEffects": false,
+  "dependencies": {
+    "@keybr/thirdparties": "*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "clean": "rm -fr .types",
+    "compile": "tsc"
+  }
+}

@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyboard SYSTEM "../dtd/ldmlKeyboard.dtd">
+<keyboard locale="chr-t-k0-windows">
+	<version platform="10" number="$Revision$"/>
+	<names>
+		<name value="Cherokee Nation"/>
+	</names>
+	<settings fallback="omit"/>
+	<keyMap>
+		<map iso="E00" to="`"/>
+		<map iso="E01" to="ᏣᎳᎩ"/> <!-- 1 -->
+		<map iso="E02" to="ᎣᏏᏲ"/> <!-- 2 -->
+		<map iso="E03" to="ᏩᏙ"/> <!-- 3 -->
+		<map iso="E04" to="Ꮩ"/> <!-- 4 -->
+		<map iso="E05" to="Ꮶ"/> <!-- 5 -->
+		<map iso="E06" to="Ꮬ"/> <!-- 6 -->
+		<map iso="E07" to="Ꮛ"/> <!-- 7 -->
+		<map iso="E08" to="Ꮦ"/> <!-- 8 -->
+		<map iso="E09" to="Ꮢ"/> <!-- 9 -->
+		<map iso="E10" to="Ꮔ"/> <!-- 0 -->
+		<map iso="E11" to="Ꮏ"/> <!-- - -->
+		<map iso="E12" to="Ᏻ"/> <!-- = -->
+		<map iso="D01" to="Ꭺ"/> <!-- Q -->
+		<map iso="D02" to="Ꮃ"/> <!-- W -->
+		<map iso="D03" to="Ꭱ"/> <!-- E -->
+		<map iso="D04" to="Ꮫ"/> <!-- R -->
+		<map iso="D05" to="Ꮤ"/> <!-- T -->
+		<map iso="D06" to="Ꮿ"/> <!-- Y -->
+		<map iso="D07" to="Ꭴ"/> <!-- U -->
+		<map iso="D08" to="Ꭲ"/> <!-- I -->
+		<map iso="D09" to="Ꭳ"/> <!-- O -->
+		<map iso="D10" to="Ꮑ"/> <!-- P -->
+		<map iso="D11" to="Ꮥ"/> <!-- [ -->
+		<map iso="D12" to="Ꮆ"/> <!-- ] -->
+		<map iso="C01" to="Ꭰ"/> <!-- A -->
+		<map iso="C02" to="Ꮝ"/> <!-- S -->
+		<map iso="C03" to="Ꮧ"/> <!-- D -->
+		<map iso="C04" to="Ꭹ"/> <!-- F -->
+		<map iso="C05" to="Ꭶ"/> <!-- G -->
+		<map iso="C06" to="Ꭿ"/> <!-- H -->
+		<map iso="C07" to="Ꮪ"/> <!-- J -->
+		<map iso="C08" to="Ꮈ"/> <!-- K -->
+		<map iso="C09" to="Ꮅ"/> <!-- L -->
+		<map iso="C10" to="Ꮸ"/> <!-- ; -->
+		<map iso="C11" to="&apos;"/>
+		<map iso="C12" to="Ꮹ"/> <!-- (key to right of ') -->
+		<map iso="B01" to="Ꭼ"/> <!-- Z -->
+		<map iso="B02" to="Ᏼ"/> <!-- X -->
+		<map iso="B03" to="Ꮣ"/> <!-- C -->
+		<map iso="B04" to="Ꭵ"/> <!-- V -->
+		<map iso="B05" to="Ꭸ"/> <!-- B -->
+		<map iso="B06" to="Ꮎ"/> <!-- N -->
+		<map iso="B07" to="Ꮕ"/> <!-- M -->
+		<map iso="B08" to=","/>
+		<map iso="B09" to="."/>
+		<map iso="B10" to="Ꮒ"/> <!-- / -->
+		<map iso="A03" to=" "/> <!-- space -->
+	</keyMap>
+	<keyMap modifiers="shift">
+		<map iso="E00" to="Ꮚ"/> <!-- ` -->
+		<map iso="E01" to="Ꮁ"/> <!-- 1  base=ᏣᎳᎩ -->
+		<map iso="E02" to="Ꮗ"/> <!-- 2  base=ᎣᏏᏲ -->
+		<map iso="E03" to="Ꮷ"/> <!-- 3  base=ᏩᏙ -->
+		<map iso="E04" to="Ꮀ"/> <!-- 4  base=Ꮩ -->
+		<map iso="E05" to="Ꮉ"/> <!-- 5  base=Ꮶ -->
+		<map iso="E06" to="Ꮭ"/> <!-- 6  base=Ꮬ -->
+		<map iso="E07" to="Ꮱ"/> <!-- 7  base=Ꮛ -->
+		<map iso="E08" to="Ꮊ"/> <!-- 8  base=Ꮦ -->
+		<map iso="E09" to="("/> <!-- 9  base=Ꮢ -->
+		<map iso="E10" to=")"/> <!-- 0  base=Ꮔ -->
+		<map iso="E11" to="Ꮌ"/> <!-- -  base=Ꮏ -->
+		<map iso="E12" to="Ꮍ"/> <!-- =  base=Ᏻ -->
+		<map iso="D01" to="Ꮖ"/> <!-- Q  base=Ꭺ -->
+		<map iso="D02" to="Ꮻ"/> <!-- W  base=Ꮃ -->
+		<map iso="D03" to="Ꮳ"/> <!-- E  base=Ꭱ -->
+		<map iso="D04" to="Ꮟ"/> <!-- R  base=Ꮫ -->
+		<map iso="D05" to="Ꮨ"/> <!-- T  base=Ꮤ -->
+		<map iso="D06" to="Ᏺ"/> <!-- Y  base=Ꮿ -->
+		<map iso="D07" to="Ꭽ"/> <!-- U  base=Ꭴ -->
+		<map iso="D08" to="Ᏹ"/> <!-- I  base=Ꭲ -->
+		<map iso="D09" to="Ꮼ"/> <!-- O  base=Ꭳ -->
+		<map iso="D10" to="Ꮺ"/> <!-- P  base=Ꮑ -->
+		<map iso="D11" to="Ꮡ"/> <!-- [  base=Ꮥ -->
+		<map iso="D12" to="Ꮴ"/> <!-- ]  base=Ꮆ -->
+		<map iso="C01" to="Ꮜ"/> <!-- A  base=Ꭰ -->
+		<map iso="C02" to="Ꮞ"/> <!-- S  base=Ꮝ -->
+		<map iso="C03" to="Ꮠ"/> <!-- D  base=Ꮧ -->
+		<map iso="C04" to="Ꮘ"/> <!-- F  base=Ꭹ -->
+		<map iso="C05" to="Ꮵ"/> <!-- G  base=Ꭶ -->
+		<map iso="C06" to="Ꮂ"/> <!-- H  base=Ꭿ -->
+		<map iso="C07" to="Ꭻ"/> <!-- J  base=Ꮪ -->
+		<map iso="C08" to="Ꭷ"/> <!-- K  base=Ꮈ -->
+		<map iso="C09" to="Ꭾ"/> <!-- L  base=Ꮅ -->
+		<map iso="C10" to="Ꮰ"/> <!-- ;  base=Ꮸ -->
+		<map iso="C11" to="\u{22}"/> <!-- '  to= "  -->
+		<map iso="C12" to="Ꮾ"/> <!-- (key to right of ')  base=Ꮹ -->
+		<map iso="B01" to="Ꮓ"/> <!-- Z  base=Ꭼ -->
+		<map iso="B02" to="Ꮽ"/> <!-- X  base=Ᏼ -->
+		<map iso="B03" to="Ꮯ"/> <!-- C  base=Ꮣ -->
+		<map iso="B04" to="Ꮮ"/> <!-- V  base=Ꭵ -->
+		<map iso="B05" to="Ᏸ"/> <!-- B  base=Ꭸ -->
+		<map iso="B06" to="Ꮋ"/> <!-- N  base=Ꮎ -->
+		<map iso="B07" to="Ꮇ"/> <!-- M  base=Ꮕ -->
+		<map iso="B08" to="Ꮲ"/> <!-- , -->
+		<map iso="B09" to="Ꮄ"/> <!-- . -->
+		<map iso="B10" to="Ꮙ"/> <!-- /  base=Ꮒ -->
+		<map iso="A03" to=" "/> <!-- space -->
+	</keyMap>
+	<keyMap modifiers="caps">
+		<map iso="E00" to="`"/>
+		<map iso="E01" to="ᏣᎳᎩ"/> <!-- 1 -->
+		<map iso="E02" to="ᎣᏏᏲ"/> <!-- 2 -->
+		<map iso="E03" to="ᏩᏙ"/> <!-- 3 -->
+		<map iso="E04" to="Ꮩ"/> <!-- 4 -->
+		<map iso="E05" to="Ꮶ"/> <!-- 5 -->
+		<map iso="E06" to="Ꮬ"/> <!-- 6 -->
+		<map iso="E07" to="Ꮛ"/> <!-- 7 -->
+		<map iso="E08" to="Ꮦ"/> <!-- 8 -->
+		<map iso="E09" to="Ꮢ"/> <!-- 9 -->
+		<map iso="E10" to="Ꮔ"/> <!-- 0 -->
+		<map iso="E11" to="Ꮏ"/> <!-- - -->
+		<map iso="E12" to="Ᏻ"/> <!-- = -->
+		<map iso="D01" to="Ꮖ"/> <!-- Q  base=Ꭺ -->
+		<map iso="D02" to="Ꮻ"/> <!-- W  base=Ꮃ -->
+		<map iso="D03" to="Ꮳ"/> <!-- E  base=Ꭱ -->
+		<map iso="D04" to="Ꮟ"/> <!-- R  base=Ꮫ -->
+		<map iso="D05" to="Ꮨ"/> <!-- T  base=Ꮤ -->
+		<map iso="D06" to="Ᏺ"/> <!-- Y  base=Ꮿ -->
+		<map iso="D07" to="Ꭽ"/> <!-- U  base=Ꭴ -->
+		<map iso="D08" to="Ᏹ"/> <!-- I  base=Ꭲ -->
+		<map iso="D09" to="Ꮼ"/> <!-- O  base=Ꭳ -->
+		<map iso="D10" to="Ꮺ"/> <!-- P  base=Ꮑ -->
+		<map iso="D11" to="Ꮥ"/> <!-- [ -->
+		<map iso="D12" to="Ꮆ"/> <!-- ] -->
+		<map iso="C01" to="Ꮜ"/> <!-- A  base=Ꭰ -->
+		<map iso="C02" to="Ꮞ"/> <!-- S  base=Ꮝ -->
+		<map iso="C03" to="Ꮠ"/> <!-- D  base=Ꮧ -->
+		<map iso="C04" to="Ꮘ"/> <!-- F  base=Ꭹ -->
+		<map iso="C05" to="Ꮵ"/> <!-- G  base=Ꭶ -->
+		<map iso="C06" to="Ꮂ"/> <!-- H  base=Ꭿ -->
+		<map iso="C07" to="Ꭻ"/> <!-- J  base=Ꮪ -->
+		<map iso="C08" to="Ꭷ"/> <!-- K  base=Ꮈ -->
+		<map iso="C09" to="Ꭾ"/> <!-- L  base=Ꮅ -->
+		<map iso="C10" to="Ꮸ"/> <!-- ; -->
+		<map iso="C11" to="&apos;"/>
+		<map iso="C12" to="Ꮹ"/> <!-- (key to right of ') -->
+		<map iso="B01" to="Ꮓ"/> <!-- Z  base=Ꭼ -->
+		<map iso="B02" to="Ꮽ"/> <!-- X  base=Ᏼ -->
+		<map iso="B03" to="Ꮯ"/> <!-- C  base=Ꮣ -->
+		<map iso="B04" to="Ꮮ"/> <!-- V  base=Ꭵ -->
+		<map iso="B05" to="Ᏸ"/> <!-- B  base=Ꭸ -->
+		<map iso="B06" to="Ꮋ"/> <!-- N  base=Ꮎ -->
+		<map iso="B07" to="Ꮇ"/> <!-- M  base=Ꮕ -->
+		<map iso="B08" to=","/>
+		<map iso="B09" to="."/>
+		<map iso="B10" to="Ꮒ"/> <!-- / -->
+		<map iso="A03" to=" "/> <!-- space -->
+	</keyMap>
+	<keyMap modifiers="caps+shift">
+		<map iso="E00" to="Ꮚ"/> <!-- ` -->
+		<map iso="E01" to="Ꮁ"/> <!-- 1  base=ᏣᎳᎩ -->
+		<map iso="E02" to="Ꮗ"/> <!-- 2  base=ᎣᏏᏲ -->
+		<map iso="E03" to="Ꮷ"/> <!-- 3  base=ᏩᏙ -->
+		<map iso="E04" to="Ꮀ"/> <!-- 4  base=Ꮩ -->
+		<map iso="E05" to="Ꮉ"/> <!-- 5  base=Ꮶ -->
+		<map iso="E06" to="Ꮭ"/> <!-- 6  base=Ꮬ -->
+		<map iso="E07" to="Ꮱ"/> <!-- 7  base=Ꮛ -->
+		<map iso="E08" to="Ꮊ"/> <!-- 8  base=Ꮦ -->
+		<map iso="E09" to="("/> <!-- 9  base=Ꮢ -->
+		<map iso="E10" to=")"/> <!-- 0  base=Ꮔ -->
+		<map iso="E11" to="Ꮌ"/> <!-- -  base=Ꮏ -->
+		<map iso="E12" to="Ꮍ"/> <!-- =  base=Ᏻ -->
+		<map iso="D01" to="Ꭺ"/> <!-- Q -->
+		<map iso="D02" to="Ꮃ"/> <!-- W -->
+		<map iso="D03" to="Ꭱ"/> <!-- E -->
+		<map iso="D04" to="Ꮫ"/> <!-- R -->
+		<map iso="D05" to="Ꮤ"/> <!-- T -->
+		<map iso="D06" to="Ꮿ"/> <!-- Y -->
+		<map iso="D07" to="Ꭴ"/> <!-- U -->
+		<map iso="D08" to="Ꭲ"/> <!-- I -->
+		<map iso="D09" to="Ꭳ"/> <!-- O -->
+		<map iso="D10" to="Ꮑ"/> <!-- P -->
+		<map iso="D11" to="Ꮡ"/> <!-- [  base=Ꮥ -->
+		<map iso="D12" to="Ꮴ"/> <!-- ]  base=Ꮆ -->
+		<map iso="C01" to="Ꭰ"/> <!-- A -->
+		<map iso="C02" to="Ꮝ"/> <!-- S -->
+		<map iso="C03" to="Ꮧ"/> <!-- D -->
+		<map iso="C04" to="Ꭹ"/> <!-- F -->
+		<map iso="C05" to="Ꭶ"/> <!-- G -->
+		<map iso="C06" to="Ꭿ"/> <!-- H -->
+		<map iso="C07" to="Ꮪ"/> <!-- J -->
+		<map iso="C08" to="Ꮈ"/> <!-- K -->
+		<map iso="C09" to="Ꮅ"/> <!-- L -->
+		<map iso="C10" to="Ꮰ"/> <!-- ;  base=Ꮸ -->
+		<map iso="C11" to="\u{22}"/> <!-- '  to= "  -->
+		<map iso="C12" to="Ꮾ"/> <!-- (key to right of ')  base=Ꮹ -->
+		<map iso="B01" to="Ꭼ"/> <!-- Z -->
+		<map iso="B02" to="Ᏼ"/> <!-- X -->
+		<map iso="B03" to="Ꮣ"/> <!-- C -->
+		<map iso="B04" to="Ꭵ"/> <!-- V -->
+		<map iso="B05" to="Ꭸ"/> <!-- B -->
+		<map iso="B06" to="Ꮎ"/> <!-- N -->
+		<map iso="B07" to="Ꮕ"/> <!-- M -->
+		<map iso="B08" to="Ꮲ"/> <!-- , -->
+		<map iso="B09" to="Ꮄ"/> <!-- . -->
+		<map iso="B10" to="Ꮙ"/> <!-- /  base=Ꮒ -->
+		<map iso="A03" to=" "/> <!-- space -->
+	</keyMap>
+	<keyMap modifiers="altR+caps? ctrl+alt+caps?">
+		<map iso="E00" to="Ꮐ"/> <!-- ` -->
+		<map iso="E01" to="1"/> <!--   base=ᏣᎳᎩ -->
+		<map iso="E02" to="2"/> <!--   base=ᎣᏏᏲ -->
+		<map iso="E03" to="3"/> <!--   base=ᏩᏙ -->
+		<map iso="E04" to="4"/> <!--   base=Ꮩ -->
+		<map iso="E05" to="5"/> <!--   base=Ꮶ -->
+		<map iso="E06" to="6"/> <!--   base=Ꮬ -->
+		<map iso="E07" to="7"/> <!--   base=Ꮛ -->
+		<map iso="E08" to="8"/> <!--   base=Ꮦ -->
+		<map iso="E09" to="9"/> <!--   base=Ꮢ -->
+		<map iso="E10" to="0"/> <!--   base=Ꮔ -->
+		<map iso="E11" to="-"/> <!--   base=Ꮏ -->
+		<map iso="E12" to="="/> <!--   base=Ᏻ -->
+		<map iso="D01" to="q"/> <!--   base=Ꭺ -->
+		<map iso="D02" to="w"/> <!--   base=Ꮃ -->
+		<map iso="D03" to="e"/> <!--   base=Ꭱ -->
+		<map iso="D04" to="r"/> <!--   base=Ꮫ -->
+		<map iso="D05" to="t"/> <!--   base=Ꮤ -->
+		<map iso="D06" to="y"/> <!--   base=Ꮿ -->
+		<map iso="D07" to="u"/> <!--   base=Ꭴ -->
+		<map iso="D08" to="i"/> <!--   base=Ꭲ -->
+		<map iso="D09" to="o"/> <!--   base=Ꭳ -->
+		<map iso="D10" to="p"/> <!--   base=Ꮑ -->
+		<map iso="D11" to="["/> <!--   base=Ꮥ -->
+		<map iso="D12" to="]"/> <!--   base=Ꮆ -->
+		<map iso="C01" to="a"/> <!--   base=Ꭰ -->
+		<map iso="C02" to="s"/> <!--   base=Ꮝ -->
+		<map iso="C03" to="d"/> <!--   base=Ꮧ -->
+		<map iso="C04" to="f"/> <!--   base=Ꭹ -->
+		<map iso="C05" to="g"/> <!--   base=Ꭶ -->
+		<map iso="C06" to="h"/> <!--   base=Ꭿ -->
+		<map iso="C07" to="j"/> <!--   base=Ꮪ -->
+		<map iso="C08" to="k"/> <!--   base=Ꮈ -->
+		<map iso="C09" to="l"/> <!--   base=Ꮅ -->
+		<map iso="C10" to=";"/> <!--   base=Ꮸ -->
+		<map iso="C12" to="\"/> <!-- (key to right of ')  base=Ꮹ -->
+		<map iso="B01" to="z"/> <!--   base=Ꭼ -->
+		<map iso="B02" to="x"/> <!--   base=Ᏼ -->
+		<map iso="B03" to="c"/> <!--   base=Ꮣ -->
+		<map iso="B04" to="v"/> <!--   base=Ꭵ -->
+		<map iso="B05" to="b"/> <!--   base=Ꭸ -->
+		<map iso="B06" to="n"/> <!--   base=Ꮎ -->
+		<map iso="B07" to="m"/> <!--   base=Ꮕ -->
+		<map iso="B08" to="&lt;"/> <!-- , -->
+		<map iso="B09" to="&gt;"/> <!-- . -->
+		<map iso="B10" to="/"/> <!--   base=Ꮒ -->
+	</keyMap>
+	<keyMap modifiers="altR+shift+caps? ctrl+alt+shift+caps?">
+		<map iso="E00" to="~"/> <!-- ` -->
+		<map iso="E01" to="!"/> <!-- 1  base=ᏣᎳᎩ -->
+		<map iso="E02" to="@"/> <!-- 2  base=ᎣᏏᏲ -->
+		<map iso="E03" to="#"/> <!-- 3  base=ᏩᏙ -->
+		<map iso="E04" to="$"/> <!-- 4  base=Ꮩ -->
+		<map iso="E05" to="%"/> <!-- 5  base=Ꮶ -->
+		<map iso="E06" to="^"/> <!-- 6  base=Ꮬ -->
+		<map iso="E07" to="&amp;"/> <!-- 7  base=Ꮛ -->
+		<map iso="E08" to="*"/> <!-- 8  base=Ꮦ -->
+		<map iso="E09" to="("/> <!-- 9  base=Ꮢ -->
+		<map iso="E10" to=")"/> <!-- 0  base=Ꮔ -->
+		<map iso="E11" to="_"/> <!-- -  base=Ꮏ -->
+		<map iso="E12" to="+"/> <!-- =  base=Ᏻ -->
+		<map iso="D01" to="Q"/> <!--   base=Ꭺ -->
+		<map iso="D02" to="W"/> <!--   base=Ꮃ -->
+		<map iso="D03" to="E"/> <!--   base=Ꭱ -->
+		<map iso="D04" to="R"/> <!--   base=Ꮫ -->
+		<map iso="D05" to="T"/> <!--   base=Ꮤ -->
+		<map iso="D06" to="Y"/> <!--   base=Ꮿ -->
+		<map iso="D07" to="U"/> <!--   base=Ꭴ -->
+		<map iso="D08" to="I"/> <!--   base=Ꭲ -->
+		<map iso="D09" to="O"/> <!--   base=Ꭳ -->
+		<map iso="D10" to="P"/> <!--   base=Ꮑ -->
+		<map iso="D11" to="{"/> <!-- [  base=Ꮥ -->
+		<map iso="D12" to="}"/> <!-- ]  base=Ꮆ -->
+		<map iso="C01" to="A"/> <!--   base=Ꭰ -->
+		<map iso="C02" to="S"/> <!--   base=Ꮝ -->
+		<map iso="C03" to="D"/> <!--   base=Ꮧ -->
+		<map iso="C04" to="F"/> <!--   base=Ꭹ -->
+		<map iso="C05" to="G"/> <!--   base=Ꭶ -->
+		<map iso="C06" to="H"/> <!--   base=Ꭿ -->
+		<map iso="C07" to="J"/> <!--   base=Ꮪ -->
+		<map iso="C08" to="K"/> <!--   base=Ꮈ -->
+		<map iso="C09" to="L"/> <!--   base=Ꮅ -->
+		<map iso="C10" to=":"/> <!-- ;  base=Ꮸ -->
+		<map iso="C12" to="|"/> <!-- (key to right of ')  base=Ꮹ -->
+		<map iso="B01" to="Z"/> <!--   base=Ꭼ -->
+		<map iso="B02" to="X"/> <!--   base=Ᏼ -->
+		<map iso="B03" to="C"/> <!--   base=Ꮣ -->
+		<map iso="B04" to="V"/> <!--   base=Ꭵ -->
+		<map iso="B05" to="B"/> <!--   base=Ꭸ -->
+		<map iso="B06" to="N"/> <!--   base=Ꮎ -->
+		<map iso="B07" to="M"/> <!--   base=Ꮕ -->
+		<map iso="B10" to="?"/> <!-- /  base=Ꮒ -->
+	</keyMap>
+</keyboard>

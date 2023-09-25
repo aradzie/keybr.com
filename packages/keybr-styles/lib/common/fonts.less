@@ -1,0 +1,37 @@
+html {
+  font-family: var(--default-font-family);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.fontsize(1280px, 10px); // ratio=128
+.fontsize(1366px, 11px); // ratio=124
+.fontsize(1440px, 12px); // ratio=120
+.fontsize(1536px, 13px); // ratio=118
+.fontsize(1600px, 14px); // ratio=114
+.fontsize(1920px, 16px); // ratio=120
+.fontsize(2560px, 18px); // ratio=142
+.fontsize(3840px, 24px); // ratio=160
+
+.fontsize(@width, @size) {
+  // Please note that the "device-width" query is deprecated, however the
+  // "width" query reports browser window size, not screen size.
+  // stylelint-disable-next-line media-query-no-invalid
+  @media (min-width: @width), (min-device-width: @width) {
+    html {
+      font-size: @size;
+
+      &[data-text="normal"] {
+        font-size: @size;
+      }
+
+      &[data-text="large"] {
+        font-size: round((@size * 1.1), 1);
+      }
+
+      &[data-text="huge"] {
+        font-size: round((@size * 1.2), 1);
+      }
+    }
+  }
+}

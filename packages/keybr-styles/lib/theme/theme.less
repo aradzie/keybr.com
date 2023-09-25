@@ -1,0 +1,128 @@
+@import "colors-@{theme}";
+
+html[data-theme="@{theme}"] {
+  --text-color: @text-color;
+  --link-color: @link-color;
+  --header-color: @header-color;
+  --legend-color: @legend-color;
+  --background-color: @background-color;
+  --separator-color: @separator-color;
+
+  --Keyboard-frame__color: @Keyboard-frame__color;
+  --KeyboardKey-button__color: @KeyboardKey-button__color;
+  --KeyboardKey-button--special__color: @KeyboardKey-button--special__color;
+  --KeyboardKey-button--depressed__color: @KeyboardKey-button--depressed__color;
+  --KeyboardKey-symbol__color: @KeyboardKey-symbol__color;
+  --KeyboardKey-symbol--special__color: @KeyboardKey-symbol--special__color;
+  --KeyboardKey-symbol--depressed__color: @KeyboardKey-symbol--depressed__color;
+  --KeyboardKey-symbol--dead__color: @KeyboardKey-symbol--dead__color;
+
+  --KeyboardZone--a__color: @KeyboardZone--a__color;
+  --KeyboardZone--a__colorAlt: @KeyboardZone--a__colorAlt;
+  --KeyboardZone--b__color: @KeyboardZone--b__color;
+  --KeyboardZone--b__colorAlt: @KeyboardZone--b__colorAlt;
+
+  --TextInput-item__color: @TextInput-item__color;
+  --TextInput-item--special__color: @TextInput-item--special__color;
+  --TextInput-item--hit__color: @TextInput-item--hit__color;
+  --TextInput-item--miss__background-color: @TextInput-item--miss__background-color;
+  --TextInput-item--garbage__color: @TextInput-item--garbage__color;
+  --TextInput-item--garbage__background-color: @TextInput-item--garbage__background-color;
+  --TextInput-cursor__color: @TextInput-cursor__color;
+  --TextInput-cursor__background-color: @TextInput-cursor__background-color;
+
+  --LessonKey__color: @LessonKey__color;
+  --LessonKey--included__color: @LessonKey--included__color;
+  --LessonKey--included__background-color: @LessonKey--included__background-color;
+  --LessonKey--included__outline-color: @LessonKey--included__outline-color;
+  --LessonKey--excluded__color: @LessonKey--excluded__color;
+  --LessonKey--excluded__background-color: @LessonKey--excluded__background-color;
+  --LessonKey--excluded__outline-color: @LessonKey--excluded__outline-color;
+  --LessonKey--uncalibrated__color: @LessonKey--uncalibrated__color;
+  --LessonKey--uncalibrated__background-color: @LessonKey--uncalibrated__background-color;
+  --LessonKey--uncalibrated__outline-color: @LessonKey--uncalibrated__outline-color;
+  --LessonKey--boosted__color: @LessonKey--boosted__color;
+  --LessonKey--boosted__outline-color: @LessonKey--boosted__outline-color;
+  --LessonKey--forced__color: @LessonKey--forced__color;
+  --LessonKey--forced__outline-color: @LessonKey--forced__outline-color;
+  --LessonKey--current__outline-color: @LessonKey--current__outline-color;
+  --LessonKey--slow__color: @LessonKey--slow__color;
+  --LessonKey--fast__color: @LessonKey--fast__color;
+
+  --DailyGoal-bar__color: @DailyGoal-bar__color;
+  --DailyGoal-frame__color: @DailyGoal-frame__color;
+
+  --Chart-frame__color: @Chart-frame__color;
+  --Chart-headerText__color: @Chart-headerText__color;
+  --Chart-subheaderText__color: @Chart-subheaderText__color;
+  --Chart-speed__color: @Chart-speed__color;
+  --Chart-accuracy__color: @Chart-accuracy__color;
+  --Chart-keyCount__color: @Chart-keyCount__color;
+  --Chart-threshold__color: @Chart-threshold__color;
+  --Chart-keySpeed__color: @Chart-keySpeed__color;
+  --Chart-keyFrequency-h__color: @Chart-keyFrequency-h__color;
+  --Chart-keyFrequency-m__color: @Chart-keyFrequency-m__color;
+  --Chart-keyFrequency-r__color: @Chart-keyFrequency-r__color;
+
+  --Calendar-caption__background-color: @Calendar-caption__background-color;
+  --Calendar-headerCell__background-color: @Calendar-headerCell__background-color;
+  --Calendar-cell__color: @Calendar-cell__color;
+  --Calendar-cell__background-color: @Calendar-cell__background-color;
+  --Calendar-cell--s0__background-color: @Calendar-cell--s0__background-color;
+  --Calendar-cell--s1__background-color: @Calendar-cell--s1__background-color;
+  --Calendar-cell--s2__background-color: @Calendar-cell--s2__background-color;
+  --Calendar-cell--s3__background-color: @Calendar-cell--s3__background-color;
+  --Calendar-cell--z__background-color: @Calendar-cell--z__background-color;
+
+  --Name-color: @Name-color;
+  --Value-color: @Value-color;
+  --ValueDelta--more__color: @ValueDelta--more__color;
+  --ValueDelta--less__color: @ValueDelta--less__color;
+
+  --Popup__color: @Popup__color;
+  --Popup__background-color: @Popup__background-color;
+  --Popup__shadow-color: @Popup__shadow-color;
+
+  --Spotlight__background-color: @Spotlight__background-color;
+  --Spotlight__border-color: @Spotlight__border-color;
+  --Spotlight-marker__shadow-color: @Spotlight-marker__shadow-color;
+
+  --Player__background-color: @Player__background-color;
+  --Player--me__background-color: @Player--me__background-color;
+  --Player--finished__background-color: @Player--finished__background-color;
+  --PlayerDetails__color: @PlayerDetails__color;
+  --PlayerDetails__background-color: @PlayerDetails__background-color;
+
+  --Icon__color: @Icon__color;
+
+  --TabList-item--active__color: @TabList-item--active__color;
+  --TabList-item--inactive__color: @TabList-item--inactive__color;
+
+  --Button__color: @Button__color;
+  --Button__background-color: @Button__background-color;
+  --Button--focused__color: @Button--focused__color;
+  --Button--focused__background-color: @Button--focused__background-color;
+
+  --TextField__color: @TextField__color;
+  --TextField__background-color: @TextField__background-color;
+  --TextField__border-color: @TextField__border-color;
+  --TextField--focused__color: @TextField--focused__color;
+  --TextField--focused__background-color: @TextField--focused__background-color;
+  --TextField--focused__border-color: @TextField--focused__border-color;
+
+  --MenuItem__color: @MenuItem__color;
+  --MenuItem__background-color: @MenuItem__background-color;
+  --MenuItem--selected__color: @MenuItem--selected__color;
+  --MenuItem--selected__background-color: @MenuItem--selected__background-color;
+
+  --ProgressBar__color: @ProgressBar__color;
+
+  --NavLink__color: @NavLink__color;
+  --NavLink__background-color: @NavLink__background-color;
+  --NavLink--current__color: @NavLink--current__color;
+  --NavLink--current__background-color: @NavLink--current__background-color;
+
+  --Body__background-image: @Body__background-image;
+  --Nav__background-image: @Nav__background-image;
+  --ExternalLink__background-image: @ExternalLink__background-image;
+}

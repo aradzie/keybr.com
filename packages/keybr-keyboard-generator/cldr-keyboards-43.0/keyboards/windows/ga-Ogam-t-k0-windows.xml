@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyboard SYSTEM "../dtd/ldmlKeyboard.dtd">
+<keyboard locale="ga-Ogam-t-k0-windows">
+	<version platform="10" number="$Revision$"/>
+	<names>
+		<name value="Ogham"/>
+	</names>
+	<settings fallback="omit"/>
+	<keyMap>
+		<map iso="D01" to="ᚊ"/> <!-- Q -->
+		<map iso="D02" to="ᚕ"/> <!-- W -->
+		<map iso="D03" to="ᚓ"/> <!-- E -->
+		<map iso="D04" to="ᚏ"/> <!-- R -->
+		<map iso="D05" to="ᚈ"/> <!-- T -->
+		<map iso="D06" to="ᚘ"/> <!-- Y -->
+		<map iso="D07" to="ᚒ"/> <!-- U -->
+		<map iso="D08" to="ᚔ"/> <!-- I -->
+		<map iso="D09" to="ᚑ"/> <!-- O -->
+		<map iso="D10" to="ᚚ"/> <!-- P -->
+		<map iso="C01" to="ᚐ"/> <!-- A -->
+		<map iso="C02" to="ᚄ"/> <!-- S -->
+		<map iso="C03" to="ᚇ"/> <!-- D -->
+		<map iso="C04" to="ᚃ"/> <!-- F -->
+		<map iso="C05" to="ᚌ"/> <!-- G -->
+		<map iso="C06" to="ᚆ"/> <!-- H -->
+		<map iso="C07" to="ᚗ"/> <!-- J -->
+		<map iso="C08" to="ᚖ"/> <!-- K -->
+		<map iso="C09" to="ᚂ"/> <!-- L -->
+		<map iso="C11" to="\u{1680}"/> <!-- ' -->
+		<map iso="C12" to="᚛"/> <!-- (key to right of ') -->
+		<map iso="B01" to="ᚎ"/> <!-- Z -->
+		<map iso="B02" to="ᚙ"/> <!-- X -->
+		<map iso="B03" to="ᚉ"/> <!-- C -->
+		<map iso="B04" to="ᚍ"/> <!-- V -->
+		<map iso="B05" to="ᚁ"/> <!-- B -->
+		<map iso="B06" to="ᚅ"/> <!-- N -->
+		<map iso="B07" to="ᚋ"/> <!-- M -->
+		<map iso="A03" to=" "/> <!-- space -->
+	</keyMap>
+	<keyMap modifiers="shift+caps?">
+		<map iso="C12" to="᚜"/> <!-- (key to right of ')  base=᚛ -->
+		<map iso="A03" to=" "/> <!-- space -->
+	</keyMap>
+</keyboard>

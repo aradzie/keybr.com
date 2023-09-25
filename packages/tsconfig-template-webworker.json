@@ -1,0 +1,6 @@
+{
+  "extends": "./tsconfig-template.json",
+  "compilerOptions": {
+    "lib": ["es2022", "webworker", "webworker.iterable"]
+  }
+}

@@ -1,0 +1,45 @@
+.spotlight {
+  position: fixed;
+  inset: 0;
+}
+
+.c0,
+.c1,
+.c2,
+.c3,
+.c4,
+.marker {
+  position: absolute;
+  inset: 0;
+  cursor: default;
+  pointer-events: none;
+  user-select: none;
+}
+
+.c0 {
+  background-color: var(--Spotlight__background-color);
+}
+
+.c1 {
+  border-bottom: 1px dotted var(--Spotlight__border-color);
+  background-color: var(--Spotlight__background-color);
+}
+
+.c2 {
+  border-left: 1px dotted var(--Spotlight__border-color);
+  background-color: var(--Spotlight__background-color);
+}
+
+.c3 {
+  border-top: 1px dotted var(--Spotlight__border-color);
+  background-color: var(--Spotlight__background-color);
+}
+
+.c4 {
+  border-right: 1px dotted var(--Spotlight__border-color);
+  background-color: var(--Spotlight__background-color);
+}
+
+.marker {
+  box-shadow: inset 0px 0px 15px 0px var(--Spotlight-marker__shadow-color);
+}

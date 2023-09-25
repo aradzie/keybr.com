@@ -1,0 +1,33 @@
+.progressBar {
+  position: relative;
+}
+
+.bar {
+  height: 0.5rem;
+}
+
+.bar.determined {
+  background-color: var(--ProgressBar__color);
+}
+
+.bar.intermediate {
+  background: linear-gradient(
+    -45deg,
+    transparent 0rem,
+    transparent calc(1rem * 2.828427125 / 2),
+    var(--ProgressBar__color) calc(1rem * 2.828427125 / 2),
+    var(--ProgressBar__color) calc(1rem * 2.828427125),
+    transparent calc(1rem * 2.828427125)
+  );
+  background-size: 4rem 2rem;
+  animation: stripesAnimation 0.5s linear infinite;
+}
+
+@keyframes stripesAnimation {
+  0% {
+    background-position: 0rem 0rem;
+  }
+  100% {
+    background-position: 4rem 0rem;
+  }
+}

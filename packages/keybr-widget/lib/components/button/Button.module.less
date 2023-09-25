@@ -1,0 +1,37 @@
+@import "../mixins";
+
+.button {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  overflow: hidden;
+  min-width: 10rem;
+  max-width: 100%;
+  min-height: @field-height;
+  margin: 0;
+  padding: 0 1.5rem;
+  border: none;
+  border-radius: 0.25rem;
+  color: var(--Button__color);
+  background-color: var(--Button__background-color);
+  font-family: var(--default-font-family);
+  font-size: 0.85rem;
+  font-weight: normal;
+  font-style: normal;
+  line-height: @field-height;
+  text-align: center;
+  text-transform: uppercase;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.button:focus {
+  color: var(--Button--focused__color);
+  background-color: var(--Button--focused__background-color);
+  outline: none;
+}
+
+.disabled {
+  .is-disabled();
+}

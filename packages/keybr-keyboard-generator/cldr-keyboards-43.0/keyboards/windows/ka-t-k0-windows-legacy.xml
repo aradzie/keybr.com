@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyboard SYSTEM "../dtd/ldmlKeyboard.dtd">
+<keyboard locale="ka-t-k0-windows-legacy">
+	<version platform="10" number="$Revision$"/>
+	<names>
+		<name value="Georgian (Legacy)"/>
+	</names>
+	<settings fallback="omit"/>
+	<keyMap>
+		<map iso="E00" to="„"/> <!-- ` -->
+		<map iso="E01" to="!"/> <!-- 1 -->
+		<map iso="E02" to="?"/> <!-- 2 -->
+		<map iso="E03" to="№"/> <!-- 3 -->
+		<map iso="E04" to="§"/> <!-- 4 -->
+		<map iso="E05" to="%"/> <!-- 5 -->
+		<map iso="E06" to=":"/> <!-- 6 -->
+		<map iso="E07" to="."/> <!-- 7 -->
+		<map iso="E08" to=";"/> <!-- 8 -->
+		<map iso="E09" to=","/> <!-- 9 -->
+		<map iso="E10" to="/"/> <!-- 0 -->
+		<map iso="E11" to="–"/> <!-- - -->
+		<map iso="E12" to="="/>
+		<map iso="D01" to="ღ"/> <!-- Q -->
+		<map iso="D02" to="ჯ"/> <!-- W -->
+		<map iso="D03" to="უ"/> <!-- E -->
+		<map iso="D04" to="კ"/> <!-- R -->
+		<map iso="D05" to="ე"/> <!-- T -->
+		<map iso="D06" to="ნ"/> <!-- Y -->
+		<map iso="D07" to="გ"/> <!-- U -->
+		<map iso="D08" to="შ"/> <!-- I -->
+		<map iso="D09" to="წ"/> <!-- O -->
+		<map iso="D10" to="ზ"/> <!-- P -->
+		<map iso="D11" to="ხ"/> <!-- [ -->
+		<map iso="D12" to="ც"/> <!-- ] -->
+		<map iso="C01" to="ფ"/> <!-- A -->
+		<map iso="C02" to="ძ"/> <!-- S -->
+		<map iso="C03" to="ვ"/> <!-- D -->
+		<map iso="C04" to="თ"/> <!-- F -->
+		<map iso="C05" to="ა"/> <!-- G -->
+		<map iso="C06" to="პ"/> <!-- H -->
+		<map iso="C07" to="რ"/> <!-- J -->
+		<map iso="C08" to="ო"/> <!-- K -->
+		<map iso="C09" to="ლ"/> <!-- L -->
+		<map iso="C10" to="დ"/> <!-- ; -->
+		<map iso="C11" to="ჟ"/> <!-- ' -->
+		<map iso="C12" to="("/> <!-- (key to right of ') -->
+		<map iso="B00" to="("/> <!-- (key to left of Z) -->
+		<map iso="B01" to="ჭ"/> <!-- Z -->
+		<map iso="B02" to="ჩ"/> <!-- X -->
+		<map iso="B03" to="ყ"/> <!-- C -->
+		<map iso="B04" to="ს"/> <!-- V -->
+		<map iso="B05" to="მ"/> <!-- B -->
+		<map iso="B06" to="ი"/> <!-- N -->
+		<map iso="B07" to="ტ"/> <!-- M -->
+		<map iso="B08" to="ქ"/> <!-- , -->
+		<map iso="B09" to="ბ"/> <!-- . -->
+		<map iso="B10" to="ჰ"/> <!-- / -->
+		<map iso="A03" to=" "/> <!-- space -->
+	</keyMap>
+	<keyMap modifiers="shift+caps?">
+		<map iso="E00" to="“"/> <!-- `  base=„ -->
+		<map iso="E01" to="1"/> <!--   base=! -->
+		<map iso="E02" to="2"/> <!--   base=? -->
+		<map iso="E03" to="3"/> <!--   base=№ -->
+		<map iso="E04" to="4"/> <!--   base=§ -->
+		<map iso="E05" to="5"/> <!--   base=% -->
+		<map iso="E06" to="6"/> <!--   base=: -->
+		<map iso="E07" to="7"/> <!--   base=. -->
+		<map iso="E08" to="8"/> <!--   base=; -->
+		<map iso="E09" to="9"/> <!--   base=, -->
+		<map iso="E10" to="0"/> <!--   base=/ -->
+		<map iso="E11" to="-"/> <!--   base=– -->
+		<map iso="E12" to="+"/> <!-- = -->
+		<map iso="D01" to="ღ"/> <!-- Q -->
+		<map iso="D02" to="ჯ"/> <!-- W -->
+		<map iso="D03" to="უ"/> <!-- E -->
+		<map iso="D04" to="კ"/> <!-- R -->
+		<map iso="D05" to="ე"/> <!-- T -->
+		<map iso="D06" to="ნ"/> <!-- Y -->
+		<map iso="D07" to="გ"/> <!-- U -->
+		<map iso="D08" to="შ"/> <!-- I -->
+		<map iso="D09" to="წ"/> <!-- O -->
+		<map iso="D10" to="ზ"/> <!-- P -->
+		<map iso="D11" to="ხ"/> <!-- [ -->
+		<map iso="D12" to="ც"/> <!-- ] -->
+		<map iso="C01" to="ფ"/> <!-- A -->
+		<map iso="C02" to="ძ"/> <!-- S -->
+		<map iso="C03" to="ვ"/> <!-- D -->
+		<map iso="C04" to="თ"/> <!-- F -->
+		<map iso="C05" to="ა"/> <!-- G -->
+		<map iso="C06" to="პ"/> <!-- H -->
+		<map iso="C07" to="რ"/> <!-- J -->
+		<map iso="C08" to="ო"/> <!-- K -->
+		<map iso="C09" to="ლ"/> <!-- L -->
+		<map iso="C10" to="დ"/> <!-- ; -->
+		<map iso="C11" to="ჟ"/> <!-- ' -->
+		<map iso="C12" to=")"/> <!-- (key to right of ')  base=( -->
+		<map iso="B00" to=")"/> <!-- (key to left of Z)  base=( -->
+		<map iso="B01" to="ჭ"/> <!-- Z -->
+		<map iso="B02" to="ჩ"/> <!-- X -->
+		<map iso="B03" to="ყ"/> <!-- C -->
+		<map iso="B04" to="ს"/> <!-- V -->
+		<map iso="B05" to="მ"/> <!-- B -->
+		<map iso="B06" to="ი"/> <!-- N -->
+		<map iso="B07" to="ტ"/> <!-- M -->
+		<map iso="B08" to="ქ"/> <!-- , -->
+		<map iso="B09" to="ბ"/> <!-- . -->
+		<map iso="B10" to="ჰ"/> <!-- / -->
+		<map iso="A03" to=" "/> <!-- space -->
+	</keyMap>
+	<keyMap modifiers="altR+caps? ctrl+alt+caps?">
+		<map iso="D05" to="ჱ"/> <!-- T  base=ე -->
+		<map iso="D11" to="ჴ"/> <!-- [  base=ხ -->
+		<map iso="C01" to="ჶ"/> <!-- A  base=ფ -->
+		<map iso="C03" to="ჳ"/> <!-- D  base=ვ -->
+		<map iso="B06" to="ჲ"/> <!-- N  base=ი -->
+		<map iso="B10" to="ჵ"/> <!-- /  base=ჰ -->
+	</keyMap>
+	<keyMap modifiers="ctrl+caps?">
+		<map iso="A03" to=" "/> <!-- space -->
+	</keyMap>
+</keyboard>

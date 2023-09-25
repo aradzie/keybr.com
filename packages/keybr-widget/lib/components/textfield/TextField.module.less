@@ -1,0 +1,36 @@
+@import "../mixins";
+
+.textField {
+  display: inline-block;
+  min-height: @field-height;
+  margin: -1px;
+  padding: 0 1em;
+  border: 1px solid var(--TextField__border-color);
+  color: var(--TextField__color);
+  background-color: var(--TextField__background-color);
+  font-family: var(--default-font-family);
+  font-size: 0.85rem;
+  font-weight: normal;
+  font-style: normal;
+  line-height: normal;
+  text-align: left;
+  text-transform: none;
+}
+
+.textField:focus {
+  border: 1px solid var(--TextField--focused__border-color);
+  color: var(--TextField--focused__color);
+  background-color: var(--TextField--focused__background-color);
+  outline: none;
+}
+
+textarea.textField {
+  min-height: 10em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  resize: vertical;
+}
+
+.disabled {
+  .is-disabled();
+}

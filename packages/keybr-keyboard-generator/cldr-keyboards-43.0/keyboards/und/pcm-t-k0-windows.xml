@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyboard
+  SYSTEM '../dtd/ldmlKeyboard.dtd'>
+<keyboard locale="pcm-t-k0-windows">
+	<version number="$Revision$" platform="10"/>
+	<names>
+		<!-- also known as Naijíriá Píjin -->
+		<name value="Nigerian Pidgin"/>
+	</names>
+	<settings fallback="omit" transformPartial="hide"/>
+	<keyMap>
+		<map iso="E00" to="̀"/>
+		<map iso="E01" to="1"/>
+		<map iso="E02" to="2"/>
+		<map iso="E03" to="3"/>
+		<map iso="E04" to="4"/>
+		<map iso="E05" to="5"/>
+		<map iso="E06" to="6"/>
+		<map iso="E07" to="7"/>
+		<map iso="E08" to="8"/>
+		<map iso="E09" to="9"/>
+		<map iso="E10" to="0"/>
+		<map iso="E11" to="-"/>
+		<map iso="E12" to="="/>
+		<map iso="D01" to="́"/>
+		<map iso="D02" to="w"/>
+		<map iso="D03" to="e"/>
+		<map iso="D04" to="r"/>
+		<map iso="D05" to="t"/>
+		<map iso="D06" to="y"/>
+		<map iso="D07" to="u"/>
+		<map iso="D08" to="i"/>
+		<map iso="D09" to="o"/>
+		<map iso="D10" to="p"/>
+		<map iso="D11" to="["/>
+		<map iso="D12" to="]"/>
+		<map iso="C01" to="a"/>
+		<map iso="C02" to="s"/>
+		<map iso="C03" to="d"/>
+		<map iso="C04" to="f"/>
+		<map iso="C05" to="g"/>
+		<map iso="C06" to="h"/>
+		<map iso="C07" to="j"/>
+		<map iso="C08" to="k"/>
+		<map iso="C09" to="l"/>
+		<map iso="C10" to="ọ"/>
+		<map iso="C11" to="ẹ"/>
+		<map iso="C12" to="/"/>
+		<map iso="B00" to="/"/>
+		<map iso="B01" to="z"/>
+		<map iso="B02" to="c"/>
+		<map iso="B03" to="v"/>
+		<map iso="B04" to="b"/>
+		<map iso="B05" to="n"/>
+		<map iso="B06" to="m"/>
+		<map iso="B07" to=","/>
+		<map iso="B08" to="."/>
+		<map iso="B09" to=";"/>
+		<map iso="B10" to="'"/>
+	</keyMap>
+	<keyMap modifiers="shift">
+		<map iso="E00" to="̀"/>
+		<map iso="E01" to="!"/>
+		<map iso="E02" to="@"/>
+		<map iso="E03" to="#"/>
+		<map iso="E04" to="$"/>
+		<map iso="E05" to="₦"/>
+		<map iso="E06" to="%"/>
+		<map iso="E07" to="&amp;"/>
+		<map iso="E08" to="*"/>
+		<map iso="E09" to="("/>
+		<map iso="E10" to=")"/>
+		<map iso="E11" to="_"/>
+		<map iso="E12" to="+"/>
+		<map iso="D01" to="́"/>
+		<map iso="D02" to="W"/>
+		<map iso="D03" to="E"/>
+		<map iso="D04" to="R"/>
+		<map iso="D05" to="T"/>
+		<map iso="D06" to="Y"/>
+		<map iso="D07" to="U"/>
+		<map iso="D08" to="I"/>
+		<map iso="D09" to="O"/>
+		<map iso="D10" to="P"/>
+		<map iso="D11" to="{"/>
+		<map iso="D12" to="}"/>
+		<map iso="C01" to="A"/>
+		<map iso="C02" to="S"/>
+		<map iso="C03" to="D"/>
+		<map iso="C04" to="F"/>
+		<map iso="C05" to="G"/>
+		<map iso="C06" to="H"/>
+		<map iso="C07" to="J"/>
+		<map iso="C08" to="K"/>
+		<map iso="C09" to="L"/>
+		<map iso="C10" to="Ọ"/>
+		<map iso="C11" to="Ẹ"/>
+		<map iso="C12" to="?"/>
+		<map iso="B00" to="?"/>
+		<map iso="B01" to="Z"/>
+		<map iso="B02" to="C"/>
+		<map iso="B03" to="V"/>
+		<map iso="B04" to="B"/>
+		<map iso="B05" to="N"/>
+		<map iso="B06" to="M"/>
+		<map iso="B07" to="&lt;"/>
+		<map iso="B08" to="&gt;"/>
+		<map iso="B09" to=":"/>
+		<map iso="B10" to="\u{22}"/>
+	</keyMap>
+	<keyMap modifiers="caps">
+                <map iso="E00" to="`"/>
+		<map iso="E01" to="1"/>
+		<map iso="E02" to="2"/>
+		<map iso="E03" to="3"/>
+		<map iso="E04" to="4"/>
+		<map iso="E05" to="5"/>
+		<map iso="E06" to="6"/>
+		<map iso="E07" to="7"/>
+		<map iso="E08" to="8"/>
+		<map iso="E09" to="9"/>
+		<map iso="E10" to="0"/>
+		<map iso="E11" to="-"/>
+		<map iso="E12" to="="/>
+		<map iso="D01" to="Q"/>
+		<map iso="D02" to="W"/>
+		<map iso="D03" to="E"/>
+		<map iso="D04" to="R"/>
+		<map iso="D05" to="T"/>
+		<map iso="D06" to="Y"/>
+		<map iso="D07" to="U"/>
+		<map iso="D08" to="I"/>
+		<map iso="D09" to="O"/>
+		<map iso="D10" to="P"/>
+		<map iso="D11" to="["/>
+		<map iso="D12" to="]"/>
+		<map iso="C01" to="A"/>
+		<map iso="C02" to="S"/>
+		<map iso="C03" to="D"/>
+		<map iso="C04" to="F"/>
+		<map iso="C05" to="G"/>
+		<map iso="C06" to="H"/>
+		<map iso="C07" to="J"/>
+		<map iso="C08" to="K"/>
+		<map iso="C09" to="L"/>
+		<map iso="C10" to="Ọ"/>
+		<map iso="C11" to="Ẹ"/>
+		<map iso="C12" to="/"/>
+		<map iso="B00" to="/"/>
+		<map iso="B01" to="Z"/>
+		<map iso="B02" to="C"/>
+		<map iso="B03" to="V"/>
+		<map iso="B04" to="B"/>
+		<map iso="B05" to="N"/>
+		<map iso="B06" to="M"/>
+		<map iso="B07" to=","/>
+		<map iso="B08" to="."/>
+		<map iso="B09" to=";"/>
+		<map iso="B10" to="'"/>
+	</keyMap>
+	<transforms type="simple">
+		<!-- Change vowels with appended acute, grave, and dot below combiners to combined forms -->
+		<transform from="a\u{300}" to="à"/>
+		<transform from="E\u{300}" to="È"/>
+		<transform from="o\u{301}" to="ó"/>
+		<transform from="O\u{300}" to="Ò"/>
+		<transform from="o\u{323}" to="ọ"/>
+		<transform from="A\u{323}" to="Ạ"/>
+		<transform from="a\u{323}" to="ạ"/>
+		<transform from="a\u{301}" to="á"/>
+		<transform from="A\u{300}" to="À"/>
+		<transform from="E\u{323}" to="Ẹ"/>
+		<transform from="O\u{323}" to="Ọ"/>
+		<transform from="''" to="\u{323}"/> <!-- Quick way to add dot below -->
+		<transform from="A\u{301}" to="Á"/>
+		<transform from="e\u{323}" to="ẹ"/>
+		<transform from="O\u{301}" to="Ó"/>
+		<transform from="e\u{301}" to="é"/>
+		<transform from="e\u{300}" to="è"/>
+		<transform from="E\u{301}" to="É"/>
+		<transform from="o\u{300}" to="ò"/>
+	</transforms>
+</keyboard>

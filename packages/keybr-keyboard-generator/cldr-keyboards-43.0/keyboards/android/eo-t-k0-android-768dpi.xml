@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE keyboard SYSTEM "../dtd/ldmlKeyboard.dtd">
+<keyboard locale="eo-t-k0-android-768dpi">
+	<version platform="4.4" number="$Revision$"/>
+	<names>
+		<name value="Esperanto (768dpi)"/>
+	</names>
+	<keyMap>
+		<map iso="D01" to="ŝ" longPress="q"/> <!-- Q -->
+		<map iso="D02" to="ĝ" longPress="w ŵ"/> <!-- W -->
+		<map iso="D03" to="e" longPress="é ě è ê ë ę ė ē"/>
+		<map iso="D04" to="r" longPress="ř ŕ ŗ"/>
+		<map iso="D05" to="t" longPress="ť ț ţ ŧ"/>
+		<map iso="D06" to="ŭ" longPress="y ý ŷ ÿ þ"/> <!-- Y -->
+		<map iso="D07" to="u" longPress="ú ů û ü ù ū ũ ű ų µ"/>
+		<map iso="D08" to="i" longPress="í î ï ĩ ì į ī ı ĳ"/>
+		<map iso="D09" to="o" longPress="ó ö ô ò õ œ ø ō ő º"/>
+		<map iso="D10" to="p"/>
+		<map iso="C01" to="a" longPress="á à â ä æ ã å ā ă ą ª"/>
+		<map iso="C02" to="s" longPress="ß š ś ș ş"/>
+		<map iso="C03" to="d" longPress="ð ď đ"/>
+		<map iso="C04" to="f"/>
+		<map iso="C05" to="g" longPress="ğ ġ ģ"/>
+		<map iso="C06" to="h" longPress="ĥ ħ"/>
+		<map iso="C07" to="j"/>
+		<map iso="C08" to="k" longPress="ķ ĸ"/>
+		<map iso="C09" to="l" longPress="ĺ ļ ľ ŀ ł"/>
+		<map iso="C10" to="ĵ"/> <!-- ; -->
+		<map iso="B01" to="z" longPress="ź ż ž"/>
+		<map iso="B02" to="ĉ" longPress="x"/> <!-- X -->
+		<map iso="B03" to="c" longPress="ć č ç ċ"/>
+		<map iso="B04" to="v" longPress="w ŵ"/>
+		<map iso="B05" to="b"/>
+		<map iso="B06" to="n" longPress="ñ ń ņ ň ŉ ŋ"/>
+		<map iso="B07" to="m"/>
+		<map iso="A02" to=","/> <!-- (key to left of space) -->
+		<map iso="A03" to=" "/> <!-- space -->
+		<map iso="A04" to="." longPress="# ! , ? - : ' @"/> <!-- (key to right of space) -->
+	</keyMap>
+	<keyMap modifiers="shift caps">
+		<map iso="D01" to="Ŝ" longPress="Q"/> <!-- Q -->
+		<map iso="D02" to="Ĝ" longPress="W Ŵ"/> <!-- W -->
+		<map iso="D03" to="E" longPress="É Ě È Ê Ë Ę Ė Ē"/>
+		<map iso="D04" to="R" longPress="Ř Ŕ Ŗ"/>
+		<map iso="D05" to="T" longPress="Ť Ț Ţ Ŧ"/>
+		<map iso="D06" to="Ŭ" longPress="Y Ý Ŷ Ÿ Þ"/> <!-- Y -->
+		<map iso="D07" to="U" longPress="Ú Ů Û Ü Ù Ū Ũ Ű Ų Μ"/>
+		<map iso="D08" to="I" longPress="Í Î Ï Ĩ Ì Į Ī I Ĳ"/>
+		<map iso="D09" to="O" longPress="Ó Ö Ô Ò Õ Œ Ø Ō Ő º"/>
+		<map iso="D10" to="P"/>
+		<map iso="C01" to="A" longPress="Á À Â Ä Æ Ã Å Ā Ă Ą ª"/>
+		<map iso="C02" to="S" longPress="SS Š Ś Ș Ş"/>
+		<map iso="C03" to="D" longPress="Ð Ď Đ"/>
+		<map iso="C04" to="F"/>
+		<map iso="C05" to="G" longPress="Ğ Ġ Ģ"/>
+		<map iso="C06" to="H" longPress="Ĥ Ħ"/>
+		<map iso="C07" to="J"/>
+		<map iso="C08" to="K" longPress="Ķ ĸ"/>
+		<map iso="C09" to="L" longPress="Ĺ Ļ Ľ Ŀ Ł"/>
+		<map iso="C10" to="Ĵ"/> <!-- ; -->
+		<map iso="B01" to="Z" longPress="Ź Ż Ž"/>
+		<map iso="B02" to="Ĉ" longPress="X"/> <!-- X -->
+		<map iso="B03" to="C" longPress="Ć Č Ç Ċ"/>
+		<map iso="B04" to="V" longPress="W Ŵ"/>
+		<map iso="B05" to="B"/>
+		<map iso="B06" to="N" longPress="Ñ Ń Ņ Ň ʼN Ŋ"/>
+		<map iso="B07" to="M"/>
+		<map iso="A02" to=","/> <!-- (key to left of space) -->
+		<map iso="A03" to=" "/> <!-- space -->
+		<map iso="A04" to="." longPress="# ! , ? - : ' @"/> <!-- (key to right of space) -->
+	</keyMap>
+	<keyMap modifiers="opt">
+		<map iso="D01" to="1" longPress="¹ ½ ⅓ ¼ ⅛"/> <!-- Q  base=ŝ -->
+		<map iso="D02" to="2" longPress="² ⅔"/> <!-- W  base=ĝ -->
+		<map iso="D03" to="3" longPress="³ ¾ ⅜"/> <!-- E -->
+		<map iso="D04" to="4" longPress="⁴"/> <!-- R -->
+		<map iso="D05" to="5" longPress="⅝"/> <!-- T -->
+		<map iso="D06" to="6"/> <!-- Y  base=ŭ -->
+		<map iso="D07" to="7" longPress="⅞"/> <!-- U -->
+		<map iso="D08" to="8"/> <!-- I -->
+		<map iso="D09" to="9"/> <!-- O -->
+		<map iso="D10" to="0" longPress="ⁿ ∅"/> <!-- P -->
+		<map iso="C01" to="@"/> <!-- A -->
+		<map iso="C02" to="#"/> <!-- S -->
+		<map iso="C03" to="$" longPress="¢ £ € ¥ ₱"/> <!-- D -->
+		<map iso="C04" to="%" longPress="‰"/> <!-- F -->
+		<map iso="C05" to="&amp;"/> <!-- G -->
+		<map iso="C06" to="-" longPress="_ – — ·"/> <!-- H -->
+		<map iso="C07" to="+" longPress="±"/> <!-- J -->
+		<map iso="C08" to="(" longPress="&lt; { ["/> <!-- K -->
+		<map iso="C09" to=")" longPress="&gt; } ]"/> <!-- L -->
+		<map iso="B01" to="*" longPress="† ‡ ★"/> <!-- Z -->
+		<map iso="B02" to="\u{22}" longPress="“ ” « »"/> <!-- X  base=ĉ  to= "  -->
+		<map iso="B03" to="&apos;" longPress="‘ ’ ‹ ›"/> <!-- C -->
+		<map iso="B04" to=":"/> <!-- V -->
+		<map iso="B05" to=";"/> <!-- B -->
+		<map iso="B06" to="!" longPress="¡"/> <!-- N -->
+		<map iso="B07" to="?" longPress="¿"/> <!-- M -->
+		<map iso="A00" to="_"/> <!-- (3 keys to left of space) -->
+		<map iso="A01" to="/"/> <!-- (2 keys to left of space) -->
+		<map iso="A02" to=" "/> <!-- (key to left of space)  base=, -->
+		<map iso="A03" to=","/> <!-- space -->
+		<map iso="A04" to="."/> <!-- (key to right of space) -->
+	</keyMap>
+	<keyMap modifiers="opt+shift">
+		<map iso="D01" to="~"/> <!-- Q  base=ŝ -->
+		<map iso="D02" to="`"/> <!-- W  base=ĝ -->
+		<map iso="D03" to="|"/> <!-- E -->
+		<map iso="D04" to="•" longPress="♪ ♥ ♠ ♦ ♣"/> <!-- R -->
+		<map iso="D05" to="√"/> <!-- T -->
+		<map iso="D06" to="Π" longPress="π"/> <!-- Y  base=ŭ -->
+		<map iso="D07" to="÷"/> <!-- U -->
+		<map iso="D08" to="×"/> <!-- I -->
+		<map iso="D09" to="¶" longPress="§"/> <!-- O -->
+		<map iso="D10" to="∆"/> <!-- P -->
+		<map iso="C01" to="£"/> <!-- A -->
+		<map iso="C02" to="¢"/> <!-- S -->
+		<map iso="C03" to="€"/> <!-- D -->
+		<map iso="C04" to="¥"/> <!-- F -->
+		<map iso="C05" to="^" longPress="↑ ↓ ← →"/> <!-- G -->
+		<map iso="C06" to="°" longPress="′ ″"/> <!-- H -->
+		<map iso="C07" to="=" longPress="≠ ≈ ∞"/> <!-- J -->
+		<map iso="C08" to="{"/> <!-- K -->
+		<map iso="C09" to="}"/> <!-- L -->
+		<map iso="B01" to="\"/> <!-- Z -->
+		<map iso="B02" to="©"/> <!-- X  base=ĉ -->
+		<map iso="B03" to="®"/> <!-- C -->
+		<map iso="B04" to="™"/> <!-- V -->
+		<map iso="B05" to="℅"/> <!-- B -->
+		<map iso="B06" to="["/> <!-- N -->
+		<map iso="B07" to="]"/> <!-- M -->
+		<map iso="A00" to="&lt;" longPress="‹ ≤ «"/> <!-- (3 keys to left of space) -->
+		<map iso="A01" to="&gt;" longPress="› ≥ »"/> <!-- (2 keys to left of space) -->
+		<map iso="A02" to=" "/> <!-- (key to left of space)  base=, -->
+		<map iso="A03" to=","/> <!-- space -->
+		<map iso="A04" to="."/> <!-- (key to right of space) -->
+	</keyMap>
+</keyboard>

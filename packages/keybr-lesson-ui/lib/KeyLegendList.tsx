@@ -1,0 +1,88 @@
+import { type ReactNode } from "react";
+import { FormattedMessage } from "react-intl";
+import { KeyLegend } from "./KeyLegend.tsx";
+
+export const KeyLegendList = (): ReactNode => {
+  return (
+    <ul>
+      <li>
+        <KeyLegend //
+          isIncluded={true}
+          confidence={null}
+          isBoosted={false}
+          isForced={false}
+        />{" "}
+        <FormattedMessage
+          id="lesson.indicator.notCalibrated"
+          description="Indicator description."
+          defaultMessage="A non-calibrated key with an unknown confidence level. You still have not pressed this key yet."
+        />
+      </li>
+      <li>
+        <KeyLegend //
+          isIncluded={true}
+          confidence={0}
+          isBoosted={false}
+          isForced={false}
+        />{" "}
+        <FormattedMessage
+          id="lesson.indicator.leastConfidence"
+          description="Indicator description."
+          defaultMessage="A calibrated key with the lowest confidence level. The more times you press this key, the more accurate this metric becomes."
+        />
+      </li>
+      <li>
+        <KeyLegend //
+          isIncluded={true}
+          confidence={1}
+          isBoosted={false}
+          isForced={false}
+        />{" "}
+        <FormattedMessage
+          id="lesson.indicator.mostConfidence"
+          description="Indicator description."
+          defaultMessage="A calibrated key with the highest confidence level. The more times you press this key, the more accurate this metric becomes."
+        />
+      </li>
+      <li>
+        <KeyLegend //
+          isIncluded={true}
+          confidence={0.3}
+          isBoosted={true}
+          isForced={false}
+        />{" "}
+        <FormattedMessage
+          id="lesson.indicator.boostedFrequency"
+          description="Indicator description."
+          defaultMessage="A key with boosted frequency. It takes you the most time to find this key so the algorithm chose it to be included in every generated word."
+        />
+      </li>
+      <li>
+        <KeyLegend //
+          isIncluded={true}
+          confidence={null}
+          isBoosted={false}
+          isForced={true}
+        />{" "}
+        <FormattedMessage
+          id="lesson.indicator.includedManually"
+          description="Indicator description."
+          defaultMessage="A key which was manually included in the lessons."
+        />
+      </li>
+      <li>
+        <KeyLegend //
+          isIncluded={false}
+          confidence={null}
+          isBoosted={false}
+          isForced={false}
+        />{" "}
+        <FormattedMessage
+          id="lesson.indicator.notIncluded"
+          description="Indicator description."
+          defaultMessage="A key which was not yet included in the lessons."
+        />
+      </li>
+    </ul>
+  );
+};

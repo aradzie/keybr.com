@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE keyboard SYSTEM "../dtd/ldmlKeyboard.dtd">
+<keyboard locale="km-t-k0-android-600dpi">
+	<version platform="4.4" number="$Revision$"/>
+	<names>
+		<name value="Khmer (600dpi)"/>
+	</names>
+	<keyMap>
+		<map iso="E01" to="១" longPress="៱"/> <!-- 1 -->
+		<map iso="E02" to="២" longPress="៲"/> <!-- 2 -->
+		<map iso="E03" to="៣" longPress="៳"/> <!-- 3 -->
+		<map iso="E04" to="៤" longPress="៴"/> <!-- 4 -->
+		<map iso="E05" to="៥" longPress="៵"/> <!-- 5 -->
+		<map iso="E06" to="៦" longPress="៶"/> <!-- 6 -->
+		<map iso="E07" to="៧" longPress="៷"/> <!-- 7 -->
+		<map iso="E08" to="៨" longPress="៸"/> <!-- 8 -->
+		<map iso="E09" to="៩" longPress="៹"/> <!-- 9 -->
+		<map iso="E10" to="០" longPress="៰"/> <!-- 0 -->
+		<map iso="E11" to="ឥ" longPress=" ឦ"/> <!-- - -->
+		<map iso="E12" to="ឲ" longPress="ឱ"/> <!-- = -->
+		<map iso="D01" to="ឆ"/> <!-- Q -->
+		<map iso="D02" to="\u{17B9}"/> <!-- W  to= ឹ  -->
+		<map iso="D03" to="\u{17C1}"/> <!-- E  to= េ  -->
+		<map iso="D04" to="រ"/> <!-- R -->
+		<map iso="D05" to="ត"/> <!-- T -->
+		<map iso="D06" to="យ"/> <!-- Y -->
+		<map iso="D07" to="\u{17BB}"/> <!-- U  to= ុ  -->
+		<map iso="D08" to="\u{17B7}"/> <!-- I  to= ិ  -->
+		<map iso="D09" to="\u{17C4}"/> <!-- O  to= ោ  -->
+		<map iso="D10" to="ផ"/> <!-- P -->
+		<map iso="D11" to="\u{17C0}"/> <!-- [  to= ៀ  -->
+		<map iso="D12" to="ឪ" longPress="ឧ ឱ ឳ ឩ ឨ"/> <!-- ] -->
+		<map iso="C01" to="\u{17B6}"/> <!-- A  to= ា  -->
+		<map iso="C02" to="ស"/> <!-- S -->
+		<map iso="C03" to="ដ"/> <!-- D -->
+		<map iso="C04" to="ថ"/> <!-- F -->
+		<map iso="C05" to="ង"/> <!-- G -->
+		<map iso="C06" to="ហ"/> <!-- H -->
+		<map iso="C07" to="\u{17D2}"/> <!-- J  to= ្  -->
+		<map iso="C08" to="ក"/> <!-- K -->
+		<map iso="C09" to="ល"/> <!-- L -->
+		<map iso="C10" to="\u{17BE}"/> <!-- ;  to= ើ  -->
+		<map iso="C11" to="\u{17CB}"/> <!-- '  to= ់  -->
+		<map iso="C12" to="ឮ" longPress="ឭ ឰ"/> <!-- (key to right of ') -->
+		<map iso="B01" to="ឋ"/> <!-- Z -->
+		<map iso="B02" to="ខ"/> <!-- X -->
+		<map iso="B03" to="ច"/> <!-- C -->
+		<map iso="B04" to="វ"/> <!-- V -->
+		<map iso="B05" to="ប"/> <!-- B -->
+		<map iso="B06" to="ន"/> <!-- N -->
+		<map iso="B07" to="ម"/> <!-- M -->
+		<map iso="B08" to="\u{17BB}\u{17C6}"/> <!-- ,  to= ុំ  -->
+		<map iso="B09" to="។"/> <!-- . -->
+		<map iso="B10" to="\u{17CA}"/> <!-- /  to= ៊  -->
+		<map iso="B11" to="!"/> <!-- (key to right of /) -->
+		<map iso="B12" to="?"/> <!-- (2 keys to right of /) -->
+		<map iso="A01" to="/"/> <!-- (2 keys to left of space) -->
+		<map iso="A02" to=" "/> <!-- (key to left of space) -->
+		<map iso="A03" to=","/> <!-- space -->
+		<map iso="A04" to="." longPress="…"/> <!-- (key to right of space) -->
+	</keyMap>
+	<keyMap modifiers="opt">
+		<map iso="D01" to="1" longPress="¹ ½ ⅓ ¼ ⅛"/> <!-- Q  base=ឆ -->
+		<map iso="D02" to="2" longPress="² ⅔"/> <!-- W  base=ឹ -->
+		<map iso="D03" to="3" longPress="³ ¾ ⅜"/> <!-- E  base=េ -->
+		<map iso="D04" to="4" longPress="⁴"/> <!-- R  base=រ -->
+		<map iso="D05" to="5" longPress="⅝"/> <!-- T  base=ត -->
+		<map iso="D06" to="6"/> <!-- Y  base=យ -->
+		<map iso="D07" to="7" longPress="⅞"/> <!-- U  base=ុ -->
+		<map iso="D08" to="8"/> <!-- I  base=ិ -->
+		<map iso="D09" to="9"/> <!-- O  base=ោ -->
+		<map iso="D10" to="0" longPress="ⁿ ∅"/> <!-- P  base=ផ -->
+		<map iso="C01" to="@"/> <!-- A  base=ា -->
+		<map iso="C02" to="#"/> <!-- S  base=ស -->
+		<map iso="C03" to="$" longPress="៛ ¢ £ € ¥ ₱"/> <!-- D  base=ដ -->
+		<map iso="C04" to="%" longPress="‰"/> <!-- F  base=ថ -->
+		<map iso="C05" to="&amp;"/> <!-- G  base=ង -->
+		<map iso="C06" to="-" longPress="_ – — ·"/> <!-- H  base=ហ -->
+		<map iso="C07" to="+" longPress="±"/> <!-- J  base=្ -->
+		<map iso="C08" to="(" longPress="&lt; { ["/> <!-- K  base=ក -->
+		<map iso="C09" to=")" longPress="&gt; } ]"/> <!-- L  base=ល -->
+		<map iso="B01" to="\"/> <!-- Z  base=ឋ -->
+		<map iso="B02" to="="/> <!-- X  base=ខ -->
+		<map iso="B03" to="*" longPress="† ‡ ★"/> <!-- C  base=ច -->
+		<map iso="B04" to="\u{22}" longPress="“ ” « »"/> <!-- V  base=វ  to= "  -->
+		<map iso="B05" to="&apos;" longPress="‘ ’ ‹ ›"/> <!-- B  base=ប -->
+		<map iso="B06" to=":"/> <!-- N  base=ន -->
+		<map iso="B07" to=";"/> <!-- M  base=ម -->
+		<map iso="B08" to="!" longPress="¡"/> <!-- ,  base=ុំ -->
+		<map iso="B09" to="?" longPress="¿"/> <!-- .  base=។ -->
+		<map iso="A00" to="_"/> <!-- (3 keys to left of space) -->
+		<map iso="A01" to="/"/> <!-- (2 keys to left of space) -->
+		<map iso="A02" to=" "/> <!-- (key to left of space) -->
+		<map iso="A03" to=","/> <!-- space -->
+		<map iso="A04" to="." longPress="…"/> <!-- (key to right of space) -->
+	</keyMap>
+	<keyMap modifiers="opt+shift">
+		<map iso="D01" to="~"/> <!-- Q  base=ឆ -->
+		<map iso="D02" to="`"/> <!-- W  base=ឹ -->
+		<map iso="D03" to="|"/> <!-- E  base=េ -->
+		<map iso="D04" to="•" longPress="♪ ♥ ♠ ♦ ♣"/> <!-- R  base=រ -->
+		<map iso="D05" to="√"/> <!-- T  base=ត -->
+		<map iso="D06" to="Π" longPress="π"/> <!-- Y  base=យ -->
+		<map iso="D07" to="÷"/> <!-- U  base=ុ -->
+		<map iso="D08" to="×"/> <!-- I  base=ិ -->
+		<map iso="D09" to="¶" longPress="§"/> <!-- O  base=ោ -->
+		<map iso="D10" to="∆"/> <!-- P  base=ផ -->
+		<map iso="C01" to="£"/> <!-- A  base=ា -->
+		<map iso="C02" to="¢"/> <!-- S  base=ស -->
+		<map iso="C03" to="€"/> <!-- D  base=ដ -->
+		<map iso="C04" to="¥"/> <!-- F  base=ថ -->
+		<map iso="C05" to="^" longPress="↑ ↓ ← →"/> <!-- G  base=ង -->
+		<map iso="C06" to="°" longPress="′ ″"/> <!-- H  base=ហ -->
+		<map iso="C07" to="=" longPress="≠ ≈ ∞"/> <!-- J  base=្ -->
+		<map iso="C08" to="{"/> <!-- K  base=ក -->
+		<map iso="C09" to="}"/> <!-- L  base=ល -->
+		<map iso="B01" to="\"/> <!-- Z  base=ឋ -->
+		<map iso="B02" to="©"/> <!-- X  base=ខ -->
+		<map iso="B03" to="®"/> <!-- C  base=ច -->
+		<map iso="B04" to="™"/> <!-- V  base=វ -->
+		<map iso="B05" to="℅"/> <!-- B  base=ប -->
+		<map iso="B06" to="["/> <!-- N  base=ន -->
+		<map iso="B07" to="]"/> <!-- M  base=ម -->
+		<map iso="B08" to="¡"/> <!-- ,  base=ុំ -->
+		<map iso="B09" to="¿"/> <!-- .  base=។ -->
+		<map iso="A00" to="&lt;" longPress="‹ ≤ «"/> <!-- (3 keys to left of space) -->
+		<map iso="A01" to="&gt;" longPress="› ≥ »"/> <!-- (2 keys to left of space)  base=/ -->
+		<map iso="A02" to=" "/> <!-- (key to left of space) -->
+		<map iso="A03" to=","/> <!-- space -->
+		<map iso="A04" to="." longPress="…"/> <!-- (key to right of space) -->
+	</keyMap>
+</keyboard>

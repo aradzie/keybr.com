@@ -1,0 +1,12 @@
+[Unit]
+Description=keybr.com stale session removal service
+
+[Service]
+ExecStart=/bin/bash /opt/keybr/etc/keybr-remove-sessions.sh
+Type=oneshot
+WorkingDirectory=/opt/keybr
+# User=www-data
+# Group=www-data
+
+[Install]
+WantedBy=multi-user.target

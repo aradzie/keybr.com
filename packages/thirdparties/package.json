@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "name": "@keybr/thirdparties",
+  "version": "0.0.0",
+  "main": "lib/index.ts",
+  "types": ".types/index.d.ts",
+  "sideEffects": false,
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "clean": "rm -fr .types",
+    "compile": "tsc"
+  }
+}

@@ -1,0 +1,83 @@
+body {
+  overflow-x: auto;
+  overflow-y: scroll;
+  color: var(--text-color);
+  background-color: var(--background-color);
+
+  /*
+   * Instead of using "background-attachment: fixed", promote background image
+   * to its own layer with GPU composition so that page scrolling will be
+   * smoother in Chrome.
+   */
+  &::before {
+    content: " ";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image: var(--Body__background-image);
+    background-size: cover;
+    background-repeat: no-repeat;
+    will-change: transform;
+  }
+}
+
+.body {
+  display: grid;
+  grid-template-areas:
+    "topbar topbar topbar"
+    "sidebar main nav";
+  grid-template-rows: auto 1fr;
+  grid-template-columns: auto 1fr auto;
+  min-height: 100vh;
+}
+
+.bodyAlt {
+  display: grid;
+  grid-template-areas: "nav main";
+  grid-template-rows: 1fr;
+  grid-template-columns: auto 1fr;
+  min-height: 100vh;
+}
+
+.app {
+  position: relative;
+  grid-area: main;
+}
+
+.appAlt {
+  position: relative;
+  grid-area: main;
+}
+
+.nav {
+  grid-area: nav;
+  margin: 0;
+  padding: 1rem;
+  border-left: 1px solid var(--separator-color);
+}
+
+.navAlt {
+  grid-area: nav;
+  margin: 0;
+  padding: 1rem;
+  border-right: 1px solid var(--separator-color);
+  background-image: var(--Nav__background-image);
+}
+
+.topbar {
+  display: flex;
+  grid-area: topbar;
+  justify-content: center;
+  margin: 0;
+  padding: 1rem;
+  border-bottom: 1px solid var(--separator-color);
+}
+
+.sidebar {
+  display: flex;
+  grid-area: sidebar;
+  justify-content: center;
+  margin: 0;
+  padding: 1rem;
+  border-right: 1px solid var(--separator-color);
+}

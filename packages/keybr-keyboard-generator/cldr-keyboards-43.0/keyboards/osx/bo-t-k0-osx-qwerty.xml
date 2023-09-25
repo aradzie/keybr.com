@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE keyboard SYSTEM "../dtd/ldmlKeyboard.dtd">
+<keyboard locale="bo-t-k0-osx-qwerty">
+	<version platform="10.9" number="$Revision$"/>
+	<names>
+		<name value="Tibetan-QWERTY"/>
+	</names>
+	<keyMap>
+		<map iso="E00" to="ྈ"/> <!-- ` -->
+		<map iso="E01" to="༡"/> <!-- 1 -->
+		<map iso="E02" to="༢"/> <!-- 2 -->
+		<map iso="E03" to="༣"/> <!-- 3 -->
+		<map iso="E04" to="༤"/> <!-- 4 -->
+		<map iso="E05" to="༥"/> <!-- 5 -->
+		<map iso="E06" to="༦"/> <!-- 6 -->
+		<map iso="E07" to="༧"/> <!-- 7 -->
+		<map iso="E08" to="༨"/> <!-- 8 -->
+		<map iso="E09" to="༩"/> <!-- 9 -->
+		<map iso="E10" to="༠"/> <!-- 0 -->
+		<map iso="E11" to="\u{F37}"/> <!-- -  to= ༷  -->
+		<map iso="E12" to="༄"/> <!-- = -->
+		<map iso="D01" to="ཨ"/> <!-- Q -->
+		<map iso="D02" to="ཝ"/> <!-- W -->
+		<map iso="D03" to="\u{F7A}"/> <!-- E  to= ེ  -->
+		<map iso="D04" to="ར"/> <!-- R -->
+		<map iso="D05" to="ཏ"/> <!-- T -->
+		<map iso="D06" to="ཡ"/> <!-- Y -->
+		<map iso="D07" to="\u{F74}"/> <!-- U  to= ུ  -->
+		<map iso="D08" to="\u{F72}"/> <!-- I  to= ི  -->
+		<map iso="D09" to="\u{F7C}"/> <!-- O  to= ོ  -->
+		<map iso="D10" to="པ"/> <!-- P -->
+		<map iso="D11" to="༼"/> <!-- [ -->
+		<map iso="D12" to="༽"/> <!-- ] -->
+		<map iso="D13" to="྾"/> <!-- \ -->
+		<map iso="C01" to="འ"/> <!-- A -->
+		<map iso="C02" to="ས"/> <!-- S -->
+		<map iso="C03" to="ད"/> <!-- D -->
+		<map iso="C04" to="\u{F84}"/> <!-- F  to= ྄  -->
+		<map iso="C05" to="ག"/> <!-- G -->
+		<map iso="C06" to="ཧ"/> <!-- H -->
+		<map iso="C07" to="ཇ"/> <!-- J -->
+		<map iso="C08" to="ཀ"/> <!-- K -->
+		<map iso="C09" to="ལ"/> <!-- L -->
+		<map iso="C10" to="\u{F84}"/> <!-- ;  to= ྄  -->
+		<map iso="C11" to=" "/> <!-- ' -->
+		<map iso="B01" to="ཟ"/> <!-- Z -->
+		<map iso="B02" to="ཛ"/> <!-- X -->
+		<map iso="B03" to="ཅ"/> <!-- C -->
+		<map iso="B04" to="ཙ"/> <!-- V -->
+		<map iso="B05" to="བ"/> <!-- B -->
+		<map iso="B06" to="ན"/> <!-- N -->
+		<map iso="B07" to="མ"/> <!-- M -->
+		<map iso="B08" to="ང"/> <!-- , -->
+		<map iso="B09" to="ཉ"/> <!-- . -->
+		<map iso="B10" to="།"/> <!-- / -->
+		<map iso="A03" to="་"/> <!-- space -->
+	</keyMap>
+	<keyMap modifiers="shift">
+		<map iso="E03" to="྅" transform="no"/> <!-- 3  base=༣ -->
+		<map iso="E07" to="༸"/> <!-- 7  base=༧ -->
+		<map iso="E08" to="\u{F7F}" transform="no"/> <!-- 8  base=༨  to= ཿ  -->
+		<map iso="E12" to="༅"/> <!-- =  base=༄ -->
+		<map iso="D05" to="ཐ"/> <!-- T  base=ཏ -->
+		<map iso="D10" to="ཕ"/> <!-- P  base=པ -->
+		<map iso="D13" to="༑"/> <!-- \  base=྾ -->
+		<map iso="C02" to="ཤ"/> <!-- S  base=ས -->
+		<map iso="C04" to="\u{F84}" transform="no"/> <!-- F  to= ྄  -->
+		<map iso="C05" to="གྷ"/> <!-- G  base=ག -->
+		<map iso="C08" to="ཁ"/> <!-- K  base=ཀ -->
+		<map iso="B01" to="ཞ"/> <!-- Z  base=ཟ -->
+		<map iso="B02" to="ཛྷ"/> <!-- X  base=ཛ -->
+		<map iso="B03" to="ཆ"/> <!-- C  base=ཅ -->
+		<map iso="B04" to="ཚ"/> <!-- V  base=ཙ -->
+		<map iso="B05" to="བྷ"/> <!-- B  base=བ -->
+		<map iso="B10" to="༏"/> <!-- /  base=། -->
+		<map iso="A03" to=" "/> <!-- space  base=་ -->
+	</keyMap>
+	<keyMap modifiers="caps cmd+caps cmd+opt+caps?">
+		<map iso="E00" to="`"/> <!--   base=ྈ -->
+		<map iso="E01" to="1"/> <!--   base=༡ -->
+		<map iso="E02" to="2"/> <!--   base=༢ -->
+		<map iso="E03" to="3"/> <!--   base=༣ -->
+		<map iso="E04" to="4"/> <!--   base=༤ -->
+		<map iso="E05" to="5"/> <!--   base=༥ -->
+		<map iso="E06" to="6"/> <!--   base=༦ -->
+		<map iso="E07" to="7"/> <!--   base=༧ -->
+		<map iso="E08" to="8"/> <!--   base=༨ -->
+		<map iso="E09" to="9"/> <!--   base=༩ -->
+		<map iso="E10" to="0"/> <!--   base=༠ -->
+		<map iso="E11" to="-"/> <!--   base=༷ -->
+		<map iso="E12" to="="/> <!--   base=༄ -->
+		<map iso="D01" to="q"/> <!--   base=ཨ -->
+		<map iso="D02" to="w"/> <!--   base=ཝ -->
+		<map iso="D03" to="e"/> <!--   base=ེ -->
+		<map iso="D04" to="r"/> <!--   base=ར -->
+		<map iso="D05" to="t"/> <!--   base=ཏ -->
+		<map iso="D06" to="y"/> <!--   base=ཡ -->
+		<map iso="D07" to="u"/> <!--   base=ུ -->
+		<map iso="D08" to="i"/> <!--   base=ི -->
+		<map iso="D09" to="o"/> <!--   base=ོ -->
+		<map iso="D10" to="p"/> <!--   base=པ -->
+		<map iso="D11" to="["/> <!--   base=༼ -->
+		<map iso="D12" to="]"/> <!--   base=༽ -->
+		<map iso="D13" to="\"/> <!--   base=྾ -->
+		<map iso="C01" to="a"/> <!--   base=འ -->
+		<map iso="C02" to="s"/> <!--   base=ས -->
+		<map iso="C03" to="d"/> <!--   base=ད -->
+		<map iso="C04" to="f"/> <!--   base=྄ -->
+		<map iso="C05" to="g"/> <!--   base=ག -->
+		<map iso="C06" to="h"/> <!--   base=ཧ -->
+		<map iso="C07" to="j"/> <!--   base=ཇ -->
+		<map iso="C08" to="k"/> <!--   base=ཀ -->
+		<map iso="C09" to="l"/> <!--   base=ལ -->
+		<map iso="C10" to=";"/> <!--   base=྄ -->
+		<map iso="C11" to="&apos;"/>
+		<map iso="B01" to="z"/> <!--   base=ཟ -->
+		<map iso="B02" to="x"/> <!--   base=ཛ -->
+		<map iso="B03" to="c"/> <!--   base=ཅ -->
+		<map iso="B04" to="v"/> <!--   base=ཙ -->
+		<map iso="B05" to="b"/> <!--   base=བ -->
+		<map iso="B06" to="n"/> <!--   base=ན -->
+		<map iso="B07" to="m"/> <!--   base=མ -->
+		<map iso="B08" to=","/> <!--   base=ང -->
+		<map iso="B09" to="."/> <!--   base=ཉ -->
+		<map iso="B10" to="/"/> <!--   base=། -->
+		<map iso="A03" to=" "/> <!-- space  base=་ -->
+	</keyMap>
+	<keyMap modifiers="caps+shift cmd+shift+opt?+caps?">
+		<map iso="E00" to="~"/> <!-- `  base=ྈ -->
+		<map iso="E01" to="!"/> <!-- 1  base=༡ -->
+		<map iso="E02" to="@"/> <!-- 2  base=༢ -->
+		<map iso="E03" to="#"/> <!-- 3  base=༣ -->
+		<map iso="E04" to="$"/> <!-- 4  base=༤ -->
+		<map iso="E05" to="%"/> <!-- 5  base=༥ -->
+		<map iso="E06" to="^"/> <!-- 6  base=༦ -->
+		<map iso="E07" to="&amp;"/> <!-- 7  base=༧ -->
+		<map iso="E08" to="*"/> <!-- 8  base=༨ -->
+		<map iso="E09" to="("/> <!-- 9  base=༩ -->
+		<map iso="E10" to=")"/> <!-- 0  base=༠ -->
+		<map iso="E11" to="_"/> <!-- -  base=༷ -->
+		<map iso="E12" to="+"/> <!-- =  base=༄ -->
+		<map iso="D01" to="Q"/> <!--   base=ཨ -->
+		<map iso="D02" to="W"/> <!--   base=ཝ -->
+		<map iso="D03" to="E"/> <!--   base=ེ -->
+		<map iso="D04" to="R"/> <!--   base=ར -->
+		<map iso="D05" to="T"/> <!--   base=ཏ -->
+		<map iso="D06" to="Y"/> <!--   base=ཡ -->
+		<map iso="D07" to="U"/> <!--   base=ུ -->
+		<map iso="D08" to="I"/> <!--   base=ི -->
+		<map iso="D09" to="O"/> <!--   base=ོ -->
+		<map iso="D10" to="P"/> <!--   base=པ -->
+		<map iso="D11" to="{"/> <!-- [  base=༼ -->
+		<map iso="D12" to="}"/> <!-- ]  base=༽ -->
+		<map iso="D13" to="|"/> <!-- \  base=྾ -->
+		<map iso="C01" to="A"/> <!--   base=འ -->
+		<map iso="C02" to="S"/> <!--   base=ས -->
+		<map iso="C03" to="D"/> <!--   base=ད -->
+		<map iso="C04" to="F"/> <!--   base=྄ -->
+		<map iso="C05" to="G"/> <!--   base=ག -->
+		<map iso="C06" to="H"/> <!--   base=ཧ -->
+		<map iso="C07" to="J"/> <!--   base=ཇ -->
+		<map iso="C08" to="K"/> <!--   base=ཀ -->
+		<map iso="C09" to="L"/> <!--   base=ལ -->
+		<map iso="C10" to=":"/> <!-- ;  base=྄ -->
+		<map iso="C11" to="\u{22}"/> <!-- '  to= "  -->
+		<map iso="B01" to="Z"/> <!--   base=ཟ -->
+		<map iso="B02" to="X"/> <!--   base=ཛ -->
+		<map iso="B03" to="C"/> <!--   base=ཅ -->
+		<map iso="B04" to="V"/> <!--   base=ཙ -->
+		<map iso="B05" to="B"/> <!--   base=བ -->
+		<map iso="B06" to="N"/> <!--   base=ན -->
+		<map iso="B07" to="M"/> <!--   base=མ -->
+		<map iso="B08" to="&lt;"/> <!-- ,  base=ང -->
+		<map iso="B09" to="&gt;"/> <!-- .  base=ཉ -->
+		<map iso="B10" to="?"/> <!-- /  base=། -->
+		<map iso="A03" to=" "/> <!-- space  base=་ -->
+	</keyMap>
+	<keyMap modifiers="opt+caps?">
+		<map iso="E08" to="༔"/> <!-- 8  base=༨ -->
+		<map iso="E11" to="\u{F35}"/> <!-- -  base=༷  to= ༵  -->
+		<map iso="D01" to="྅"/> <!-- Q  base=ཨ -->
+		<map iso="D03" to="\u{F7B}"/> <!-- E  base=ེ  to= ཻ  -->
+		<map iso="D05" to="ཊ"/> <!-- T  base=ཏ -->
+		<map iso="D08" to="\u{F80}"/> <!-- I  base=ི  to= ྀ  -->
+		<map iso="D09" to="\u{F7D}"/> <!-- O  base=ོ  to= ཽ  -->
+		<map iso="D11" to="༺"/> <!-- [  base=༼ -->
+		<map iso="D12" to="༻"/> <!-- ]  base=༽ -->
+		<map iso="D13" to="\u{F39}"/> <!-- \  base=྾  to= ༹  -->
+		<map iso="C01" to="༂"/> <!-- A  base=འ -->
+		<map iso="C03" to="ཌ"/> <!-- D  base=ད -->
+		<map iso="C06" to="\u{F7F}"/> <!-- H  base=ཧ  to= ཿ  -->
+		<map iso="C11" to="\u{A0}"/> <!-- ' -->
+		<map iso="B06" to="ཎ"/> <!-- N  base=ན -->
+		<map iso="B07" to="\u{F7E}"/> <!-- M  base=མ  to= ཾ  -->
+		<map iso="B10" to="༎"/> <!-- /  base=། -->
+		<map iso="A03" to="༌"/> <!-- space  base=་ -->
+	</keyMap>
+	<keyMap modifiers="opt+shift+caps?">
+		<map iso="E01" to="༪"/> <!-- 1  base=༡ -->
+		<map iso="E02" to="༫"/> <!-- 2  base=༢ -->
+		<map iso="E03" to="༬"/> <!-- 3  base=༣ -->
+		<map iso="E04" to="༭"/> <!-- 4  base=༤ -->
+		<map iso="E05" to="༮"/> <!-- 5  base=༥ -->
+		<map iso="E06" to="༯"/> <!-- 6  base=༦ -->
+		<map iso="E07" to="༰"/> <!-- 7  base=༧ -->
+		<map iso="E08" to="༱"/> <!-- 8  base=༨ -->
+		<map iso="E09" to="༲"/> <!-- 9  base=༩ -->
+		<map iso="E10" to="༳"/> <!-- 0  base=༠ -->
+		<map iso="E12" to="༈"/> <!-- =  base=༄ -->
+		<map iso="D01" to="༁"/> <!-- Q  base=ཨ -->
+		<map iso="D05" to="ཋ"/> <!-- T  base=ཏ -->
+		<map iso="D11" to="\u{F3F}"/> <!-- [  base=༼  to= ༿  -->
+		<map iso="D12" to="\u{F3E}"/> <!-- ]  base=༽  to= ༾  -->
+		<map iso="C01" to="༃"/> <!-- A  base=འ -->
+		<map iso="C02" to="ཥ"/> <!-- S  base=ས -->
+		<map iso="C08" to="ཀྵ"/> <!-- K  base=ཀ -->
+		<map iso="B07" to="\u{F83}"/> <!-- M  base=མ  to= ྃ  -->
+		<map iso="B10" to="༐"/> <!-- /  base=། -->
+	</keyMap>
+	<keyMap modifiers="ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?">
+		<map iso="E00" to="`"/> <!--   base=ྈ -->
+		<map iso="E01" to="1"/> <!--   base=༡ -->
+		<map iso="E02" to="2"/> <!--   base=༢ -->
+		<map iso="E03" to="3"/> <!--   base=༣ -->
+		<map iso="E04" to="4"/> <!--   base=༤ -->
+		<map iso="E05" to="5"/> <!--   base=༥ -->
+		<map iso="E06" to="6"/> <!--   base=༦ -->
+		<map iso="E07" to="7"/> <!--   base=༧ -->
+		<map iso="E08" to="8"/> <!--   base=༨ -->
+		<map iso="E09" to="9"/> <!--   base=༩ -->
+		<map iso="E10" to="0"/> <!--   base=༠ -->
+		<map iso="E11" to="\u{1F}"/> <!-- -  base=༷ -->
+		<map iso="E12" to="="/> <!--   base=༄ -->
+		<map iso="D01" to="\u{11}"/> <!-- Q  base=ཨ -->
+		<map iso="D02" to="\u{17}"/> <!-- W  base=ཝ -->
+		<map iso="D03" to="\u{5}"/> <!-- E  base=ེ -->
+		<map iso="D04" to="\u{12}"/> <!-- R  base=ར -->
+		<map iso="D05" to="\u{14}"/> <!-- T  base=ཏ -->
+		<map iso="D06" to="\u{19}"/> <!-- Y  base=ཡ -->
+		<map iso="D07" to="\u{15}"/> <!-- U  base=ུ -->
+		<map iso="D08" to="\u{9}"/> <!-- I  base=ི -->
+		<map iso="D09" to="\u{F}"/> <!-- O  base=ོ -->
+		<map iso="D10" to="\u{10}"/> <!-- P  base=པ -->
+		<map iso="D11" to="\u{1B}"/> <!-- [  base=༼ -->
+		<map iso="D12" to="\u{1D}"/> <!-- ]  base=༽ -->
+		<map iso="D13" to="\u{1C}"/> <!-- \  base=྾ -->
+		<map iso="C01" to="\u{1}"/> <!-- A  base=འ -->
+		<map iso="C02" to="\u{13}"/> <!-- S  base=ས -->
+		<map iso="C03" to="\u{4}"/> <!-- D  base=ད -->
+		<map iso="C04" to="\u{6}"/> <!-- F  base=྄ -->
+		<map iso="C05" to="\u{7}"/> <!-- G  base=ག -->
+		<map iso="C06" to="\u{8}"/> <!-- H  base=ཧ -->
+		<map iso="C07" to="\u{A}"/> <!-- J  base=ཇ -->
+		<map iso="C08" to="\u{B}"/> <!-- K  base=ཀ -->
+		<map iso="C09" to="\u{C}"/> <!-- L  base=ལ -->
+		<map iso="C10" to=";"/> <!--   base=྄ -->
+		<map iso="C11" to="&apos;"/>
+		<map iso="B00" to="0"/> <!-- (key to left of Z) -->
+		<map iso="B01" to="\u{1A}"/> <!-- Z  base=ཟ -->
+		<map iso="B02" to="\u{18}"/> <!-- X  base=ཛ -->
+		<map iso="B03" to="\u{3}"/> <!-- C  base=ཅ -->
+		<map iso="B04" to="\u{16}"/> <!-- V  base=ཙ -->
+		<map iso="B05" to="\u{2}"/> <!-- B  base=བ -->
+		<map iso="B06" to="\u{E}"/> <!-- N  base=ན -->
+		<map iso="B07" to="\u{D}"/> <!-- M  base=མ -->
+		<map iso="B08" to=","/> <!--   base=ང -->
+		<map iso="B09" to="."/> <!--   base=ཉ -->
+		<map iso="B10" to="/"/> <!--   base=། -->
+		<map iso="A03" to=" "/> <!-- space  base=་ -->
+	</keyMap>
+	<transforms type="simple">
+		<transform from="\u{F84}\u{F3E}" to=""/>
+		<transform from="\u{F84}\u{F3F}" to=""/>
+		<transform from="\u{F84}\u{F35}" to=""/>
+		<transform from="\u{F84}\u{F83}" to=""/>
+		<transform from="\u{F84}\u{F7E}" to=""/>
+		<transform from="\u{F84}\u{F7F}" to=""/>
+		<transform from="\u{F84}\u{F39}" to=""/>
+		<transform from="\u{F84}༔" to=""/>
+		<transform from="\u{F84}༺" to=""/>
+		<transform from="\u{F84}༻" to=""/>
+		<transform from="\u{F84}༈" to=""/>
+		<transform from="\u{F84}༎" to=""/>
+		<transform from="\u{F84}༐" to=""/>
+		<transform from="\u{F84}྅" to=""/>
+		<transform from="\u{F84}༁" to=""/>
+		<transform from="\u{F84}༂" to=""/>
+		<transform from="\u{F84}༃" to=""/>
+		<transform from="\u{F84}༳" to=""/>
+		<transform from="\u{F84}༪" to=""/>
+		<transform from="\u{F84}༫" to=""/>
+		<transform from="\u{F84}༬" to=""/>
+		<transform from="\u{F84}༭" to=""/>
+		<transform from="\u{F84}༮" to=""/>
+		<transform from="\u{F84}༯" to=""/>
+		<transform from="\u{F84}༰" to=""/>
+		<transform from="\u{F84}༱" to=""/>
+		<transform from="\u{F84}༲" to=""/>
+		<transform from="\u{F84}ཀ" to="\u{F90}"/> <!--  ྄ཀ → ྐ -->
+		<transform from="\u{F84}ཁ" to="\u{F91}"/> <!--  ྄ཁ → ྑ -->
+		<transform from="\u{F84}ག" to="\u{F92}"/> <!--  ྄ག → ྒ -->
+		<transform from="\u{F84}ང" to="\u{F94}"/> <!--  ྄ང → ྔ -->
+		<transform from="\u{F84}ཅ" to="\u{F95}"/> <!--  ྄ཅ → ྕ -->
+		<transform from="\u{F84}ཆ" to="\u{F96}"/> <!--  ྄ཆ → ྖ -->
+		<transform from="\u{F84}ཇ" to="\u{F97}"/> <!--  ྄ཇ → ྗ -->
+		<transform from="\u{F84}ཉ" to="\u{F99}"/> <!--  ྄ཉ → ྙ -->
+		<transform from="\u{F84}ཊ" to="\u{F9A}"/> <!--  ྄ཊ → ྚ -->
+		<transform from="\u{F84}ཋ" to="\u{F9B}"/> <!--  ྄ཋ → ྛ -->
+		<transform from="\u{F84}ཌ" to="\u{F9C}"/> <!--  ྄ཌ → ྜ -->
+		<transform from="\u{F84}ཎ" to="\u{F9E}"/> <!--  ྄ཎ → ྞ -->
+		<transform from="\u{F84}ཏ" to="\u{F9F}"/> <!--  ྄ཏ → ྟ -->
+		<transform from="\u{F84}ཐ" to="\u{FA0}"/> <!--  ྄ཐ → ྠ -->
+		<transform from="\u{F84}ད" to="\u{FA1}"/> <!--  ྄ད → ྡ -->
+		<transform from="\u{F84}ན" to="\u{FA3}"/> <!--  ྄ན → ྣ -->
+		<transform from="\u{F84}པ" to="\u{FA4}"/> <!--  ྄པ → ྤ -->
+		<transform from="\u{F84}ཕ" to="\u{FA5}"/> <!--  ྄ཕ → ྥ -->
+		<transform from="\u{F84}བ" to="\u{FA6}"/> <!--  ྄བ → ྦ -->
+		<transform from="\u{F84}མ" to="\u{FA8}"/> <!--  ྄མ → ྨ -->
+		<transform from="\u{F84}ཙ" to="\u{FA9}"/> <!--  ྄ཙ → ྩ -->
+		<transform from="\u{F84}ཚ" to="\u{FAA}"/> <!--  ྄ཚ → ྪ -->
+		<transform from="\u{F84}ཛ" to="\u{FAB}"/> <!--  ྄ཛ → ྫ -->
+		<transform from="\u{F84}ཝ" to="\u{FAD}"/> <!--  ྄ཝ → ྭ -->
+		<transform from="\u{F84}ཞ" to="\u{FAE}"/> <!--  ྄ཞ → ྮ -->
+		<transform from="\u{F84}ཟ" to="\u{FAF}"/> <!--  ྄ཟ → ྯ -->
+		<transform from="\u{F84}འ" to="\u{F71}"/> <!--  ྄འ → ཱ -->
+		<transform from="\u{F84}ཡ" to="\u{FB1}"/> <!--  ྄ཡ → ྱ -->
+		<transform from="\u{F84}ར" to="\u{FB2}"/> <!--  ྄ར → ྲ -->
+		<transform from="\u{F84}ལ" to="\u{FB3}"/> <!--  ྄ལ → ླ -->
+		<transform from="\u{F84}ཤ" to="\u{FB4}"/> <!--  ྄ཤ → ྴ -->
+		<transform from="\u{F84}ཥ" to="\u{FB5}"/> <!--  ྄ཥ → ྵ -->
+		<transform from="\u{F84}ས" to="\u{FB6}"/> <!--  ྄ས → ྶ -->
+		<transform from="\u{F84}ཧ" to="\u{FB7}"/> <!--  ྄ཧ → ྷ -->
+		<transform from="\u{F84}ཨ" to="\u{FB8}"/> <!--  ྄ཨ → ྸ -->
+		<transform from="\u{F84}\u{F80}" to=""/>
+	</transforms>
+</keyboard>
+

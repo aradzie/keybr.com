@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "name": "@keybr/styles",
+  "version": "0.0.0",
+  "dependencies": {
+    "@keybr/fonts": "*",
+    "@keybr/pages-server": "*",
+    "@keybr/pages-shared": "*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "clean": "rm -fr .types",
+    "compile": "tsc"
+  }
+}

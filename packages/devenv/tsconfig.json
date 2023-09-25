@@ -1,0 +1,10 @@
+{
+  "extends": "../tsconfig-template.json",
+  "compilerOptions": {
+    "rootDir": "lib",
+    "noEmit": true
+  },
+  "include": [
+    "lib/**/*"
+  ]
+}

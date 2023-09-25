@@ -1,0 +1,34 @@
+{
+  "private": true,
+  "name": "@keybr/result-userdata",
+  "version": "0.0.0",
+  "main": "lib/index.ts",
+  "types": ".types/index.d.ts",
+  "dependencies": {
+    "@keybr/config": "*",
+    "@keybr/publicid": "*",
+    "@keybr/result": "*",
+    "@keybr/result-io": "*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "clean": "rm -fr .types",
+    "compile": "tsc",
+    "test": "ava"
+  },
+  "ava": {
+    "extensions": [
+      "ts",
+      "tsx"
+    ],
+    "files": [
+      "lib/**/*.test.*"
+    ],
+    "require": [
+      "@keybr/tsl",
+      "@keybr/test-env-server",
+      "reflect-metadata"
+    ],
+    "serial": true
+  }
+}

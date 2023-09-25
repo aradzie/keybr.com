@@ -1,0 +1,74 @@
+@import "../mixins";
+
+.range {
+  display: inline-block;
+  vertical-align: middle;
+  height: @field-height;
+  line-height: @field-height;
+}
+
+.thumb {
+  width: 1.8rem;
+  height: 1.8rem;
+  margin-top: -0.9rem;
+  border: none;
+  border-radius: 50%;
+  color: transparent;
+  background-color: var(--Button__background-color);
+  cursor: pointer;
+}
+
+.track {
+  width: 100%;
+  height: 1px;
+  border: none;
+  border-radius: 0;
+  color: transparent;
+  background-color: var(--Button__background-color);
+  cursor: pointer;
+}
+
+.track_focused {
+  outline: 1px dotted var(--text-color);
+  outline-offset: 2px;
+}
+
+input[type="range"].range {
+  background-color: transparent;
+  -webkit-appearance: none;
+}
+
+input[type="range"].range:focus {
+  outline: none;
+}
+
+input[type="range"].range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  .thumb();
+}
+
+input[type="range"].range::-webkit-slider-runnable-track {
+  .track();
+}
+
+input[type="range"].range:focus::-webkit-slider-runnable-track {
+  .track();
+  .track_focused();
+}
+
+input[type="range"].range::-moz-range-thumb {
+  .thumb();
+}
+
+input[type="range"].range::-moz-range-track {
+  .track();
+}
+
+input[type="range"].range:focus::-moz-range-track {
+  .track();
+  .track_focused();
+}
+
+.disabled {
+  .is-disabled();
+}

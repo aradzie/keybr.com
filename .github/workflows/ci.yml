@@ -1,0 +1,24 @@
+name: CI
+
+on: push
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+          cache: "npm"
+      - name: CI
+        run: |
+          npm ci
+          npm run compile
+          npm run lint
+          npm run stylelint
+          npm run build -- --no-stats
+          npm run test -- --concurrency=1 -- --timeout=60s
+        env:
+          DATABASE_CLIENT: sqlite

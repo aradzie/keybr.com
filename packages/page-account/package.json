@@ -1,0 +1,37 @@
+{
+  "private": true,
+  "name": "@keybr/page-account",
+  "version": "0.0.0",
+  "main": "lib/index.ts",
+  "types": ".types/index.d.ts",
+  "dependencies": {
+    "@keybr/debug": "*",
+    "@keybr/intl": "*",
+    "@keybr/pages-browser": "*",
+    "@keybr/pages-server": "*",
+    "@keybr/pages-shared": "*",
+    "@keybr/request": "*",
+    "@keybr/thirdparties": "*",
+    "@keybr/widget": "*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "clean": "rm -fr .types",
+    "compile": "tsc",
+    "test": "ava"
+  },
+  "ava": {
+    "extensions": [
+      "ts",
+      "tsx"
+    ],
+    "files": [
+      "lib/**/*.test.*"
+    ],
+    "require": [
+      "@keybr/tsl",
+      "@keybr/test-env-browser",
+      "@keybr/test-env-bundler"
+    ]
+  }
+}

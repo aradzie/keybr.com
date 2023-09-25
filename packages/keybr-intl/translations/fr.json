@@ -1,0 +1,1482 @@
+{
+  "account.accountDetailsLegend": {
+    "defaultMessage": "Détails du compte",
+    "description": "Fieldset legend."
+  },
+  "account.accountPageDescription": {
+    "defaultMessage": "<p>Vous utilisez un compte pour stocker vos données de saisie sur nos serveurs dans le cloud. Vous pourrez accéder à votre profil depuis n'importe quel ordinateur ou navigateur.</p>",
+    "description": "Freeform text."
+  },
+  "account.anonymizeButtonLabel": {
+    "defaultMessage": "Anonymisez-moi",
+    "description": "Button label."
+  },
+  "account.anonymizeButtonTitle": {
+    "defaultMessage": "Cachez votre véritable image d'utilisateur et votre nom au public.",
+    "description": "Button title."
+  },
+  "account.anonymizeDescription": {
+    "defaultMessage": "L'anonymisation remplace votre image et le nom d'utilisateur par ceux que nous vous donnons. Vous pouvez basculer entre votre nom réel et le nom anonymisé autant de fois que vous le souhaitez.",
+    "description": "Freeform text."
+  },
+  "account.anonymousUserName": {
+    "defaultMessage": "Utilisateur anonyme",
+    "description": "Text label."
+  },
+  "account.avatarDescription": {
+    "defaultMessage": "Votre image d'utilisateur et votre nom tels qu'ils sont visibles pour le public dans votre profil, dans le tableau des meilleurs scores et dans le jeu multijoueur.",
+    "description": "Freeform text."
+  },
+  "account.checkout.description": {
+    "defaultMessage": "Achetez un compte premium pour débloquer des fonctionnalités supplémentaires et profiter d'une expérience sans publicité.",
+    "description": "Form description."
+  },
+  "account.checkout.title": {
+    "defaultMessage": "Compte Premium",
+    "description": "Form title."
+  },
+  "account.checkoutButtonLabel": {
+    "defaultMessage": "Acheter un compte premium",
+    "description": "Button label."
+  },
+  "account.checkoutButtonTitle": {
+    "defaultMessage": "Ouvrir le formulaire de paiement.",
+    "description": "Button title."
+  },
+  "account.deleteAccountButtonLabel": {
+    "defaultMessage": "Supprimer compte",
+    "description": "Button label."
+  },
+  "account.deleteAccountButtonTitle": {
+    "defaultMessage": "Supprimer définitivement votre compte.",
+    "description": "Button title."
+  },
+  "account.deleteAccountConfirmation": {
+    "defaultMessage": "Êtes-vous sûr de vouloir supprimer votre compte? Cette opération est définitive et irréversible! Cependant, vous pouvez créer un nouveau compte à tout moment.",
+    "description": "Confirmation text."
+  },
+  "account.deleteAccountDescription": {
+    "defaultMessage": "Cela supprimera toutes vos informations personnellement identifiables, telles que votre nom et votre adresse e-mail de notre base de données. Cette opération ne peut pas être annulée! Si vous souhaitez uniquement effacer vos statistiques de frappe et recommencer, vous pouvez le faire sur la page de profil.",
+    "description": "Freeform text."
+  },
+  "account.deleteAccountLegend": {
+    "defaultMessage": "Supprimer compte",
+    "description": "Fieldset legend."
+  },
+  "account.emailFormDescription": {
+    "defaultMessage": "Connexion simple qui n'utilise pas de mots de passe. Entrez simplement votre adresse e-mail et nous vous enverrons un lien de connexion. Accédez à votre boîte de réception, cliquez sur le lien pour créer un nouveau compte ou pour ouvrir un compte existant pour l'adresse e-mail indiquée. Le lien est temporaire et expire dans quelques heures. Pour vous reconnecter plus tard, saisissez la même adresse e-mail et nous vous enverrons un nouveau lien pour le même compte.",
+    "description": "Freeform text."
+  },
+  "account.emailPlaceholder": {
+    "defaultMessage": "Votre adresse e-mail...",
+    "description": "Input field placeholder."
+  },
+  "account.emailSignInHeader": {
+    "defaultMessage": "S'identifier par e-mail",
+    "description": "Freeform header."
+  },
+  "account.emailState.errorText": {
+    "defaultMessage": "Impossible d'envoyer un e-mail à <strong>{email}</strong>: {message}",
+    "description": "Text message."
+  },
+  "account.emailState.sendingText": {
+    "defaultMessage": "Envoi d'un e-mail avec le lien de connexion à <strong>{email}</strong>... Veuillez patienter un moment.",
+    "description": "Text message."
+  },
+  "account.emailState.sentText": {
+    "defaultMessage": "Nous avons envoyé un e-mail avec le lien de connexion à <strong>{email}</strong>. Il devrait arriver bientôt, veuillez vérifier votre boîte de réception dans une minute ou deux.",
+    "description": "Text message."
+  },
+  "account.emailTitle": {
+    "defaultMessage": "C'est l'adresse e-mail à laquelle nous enverrons le lien de connexion.",
+    "description": "Input field title."
+  },
+  "account.freeAccountOverview": {
+    "defaultMessage": "<p>Achetez un <strong>compte premium</strong> pour débloquer des fonctionnalités supplémentaires et profiter d'une expérience sans publicité. Voici la liste des avantages du compte premium:</p><ul><li><strong>Pas de publicités.</strong> Les publicités peuvent être distrayantes et entraver vos progrès d'apprentissage. C'est un bon moyen de s'en débarrasser.</li><li><strong>Pas de traqueurs.</strong> Les traqueurs viennent inévitablement avec des publicités. Supprimez tous les traqueurs pour une confidentialité en ligne totale.</li><li><strong>Réactivité ultra-rapide.</strong> Les publicités prennent un certain temps à se charger. S'en débarrasser signifie des temps de chargement plus rapides pour toutes les pages.</li></ul><p>Il s'agit d'un paiement unique qui offre un accès à vie.</p>",
+    "description": "Freeform text."
+  },
+  "account.pageTitle": {
+    "defaultMessage": "Compte | {name}",
+    "description": "Page title."
+  },
+  "account.premiumAccountHeader": {
+    "defaultMessage": "Compte Premium",
+    "description": "Freeform header."
+  },
+  "account.premiumAccountLegend": {
+    "defaultMessage": "Compte Premium",
+    "description": "Fieldset legend."
+  },
+  "account.premiumAccountOverview": {
+    "defaultMessage": "<p>Merci d'avoir acheté un compte premium! Vous pouvez désormais profiter de fonctionnalités supplémentaires et d'une expérience sans publicités.</p>",
+    "description": "Freeform text."
+  },
+  "account.resendButtonLabel": {
+    "defaultMessage": "Renvoyer",
+    "description": "Button label."
+  },
+  "account.resendButtonTitle": {
+    "defaultMessage": "Envoyer encore un e-mail.",
+    "description": "Button title."
+  },
+  "account.retryButtonLabel": {
+    "defaultMessage": "Réessayer",
+    "description": "Button label."
+  },
+  "account.retryButtonTitle": {
+    "defaultMessage": "Envoyer un autre e-mail.",
+    "description": "Button title."
+  },
+  "account.sendButtonLabel": {
+    "defaultMessage": "Envoyer le lien de connexion",
+    "description": "Button label."
+  },
+  "account.sendButtonTitle": {
+    "defaultMessage": "Connexion par e-mail.",
+    "description": "Button title."
+  },
+  "account.signInPageDescription": {
+    "defaultMessage": "<p>Créez un compte pour stocker vos données de frappe sur nos serveurs dans le cloud. Cela vous permet d'accéder à votre profil depuis n'importe quel ordinateur ou navigateur. Si vous n'avez pas de compte, vos données de frappe sont stockées localement et ne sont accessibles qu'à partir de votre ordinateur actuel.</p><p>Nous ne stockons aucun mot de passe. Au lieu de cela, nous utilisons des services tiers pour authentifier nos utilisateurs. Nous offrons plusieurs façons pratiques de créer un compte et de vous connecter.</p><p>Vous pouvez vous désinscrire à tout moment. Supprimer un compte est aussi simple que d'en créer un.</p>",
+    "description": "Freeform text."
+  },
+  "account.signOutButtonLabel": {
+    "defaultMessage": "Déconnexion",
+    "description": "Button label."
+  },
+  "account.signOutButtonTitle": {
+    "defaultMessage": "Se déconnecter de l'application.",
+    "description": "Button title."
+  },
+  "account.socialFormDescription": {
+    "defaultMessage": "S'identifier avec votre réseau social préféré. Nous respectons votre vie privée et promettons de ne jamais spammer votre mur, vos amis ou vos e-mails.",
+    "description": "Freeform text."
+  },
+  "account.socialSignInButtonLabel": {
+    "defaultMessage": "S'identifier avec {name}",
+    "description": "Button title."
+  },
+  "account.socialSignInButtonTitle": {
+    "defaultMessage": "S'identifier avec réseau social.",
+    "description": "Button title."
+  },
+  "account.socialSignInHeader": {
+    "defaultMessage": "S'identifier avec réseaux sociaux",
+    "description": "Freeform header."
+  },
+  "calendar.weekDayName": {
+    "defaultMessage": "Lu|Ma|Me|Je|Ve|Sa|Di",
+    "description": "Day of week name."
+  },
+  "common.javaScriptDisabledText": {
+    "defaultMessage": "Cette application ne fonctionnera pas car JavaScript est désactivé dans votre navigateur!",
+    "description": "Common text."
+  },
+  "common.loadingText": {
+    "defaultMessage": "L'application est en cours de chargement, veuillez patienter un moment...",
+    "description": "Common text."
+  },
+  "footer.discordLinkTitle": {
+    "defaultMessage": "Discutez sur notre serveur Discord.",
+    "description": "Footer Discord link title."
+  },
+  "footer.emailLinkTitle": {
+    "defaultMessage": "Envoyez vos commentaires et suggestions à l'adresse info@keybr.com",
+    "description": "Footer email link title."
+  },
+  "help.example1": {
+    "defaultMessage": "<a>Exemple 1</a>, de 30 à 70 mots par minute après 4 heures 20 minutes de pratique en 15 jours.",
+    "description": "Example profile text."
+  },
+  "help.example2": {
+    "defaultMessage": "<a>Exemple 2</a>, de 35 à 70 mots par minute après 2 heures et 20 minutes de pratique en 12 jours.",
+    "description": "Example profile text."
+  },
+  "help.example3": {
+    "defaultMessage": "<a>Exemple 3</a>, un saut décent de moins de 20 à 40 mots par minute après 5 heures et 30 minutes de pratique au cours de 11 jours.",
+    "description": "Example profile text."
+  },
+  "help.example4": {
+    "defaultMessage": "<a>Exemple 4</a>, après 2 heures et 10 minutes de pratique au cours de 11 jours, la vitesse de frappe est restée à ~70 mots par minute (ce qui est déjà assez élevé), mais la précision s'est améliorée.",
+    "description": "Example profile text."
+  },
+  "help.example5": {
+    "defaultMessage": "<a>Exemple 5</a>, de 20 à 45 mots par minute après environ 10 heures de pratique au cours de 22 jours (oui, parfois cela prend plus de temps).",
+    "description": "Example profile text."
+  },
+  "help.indicatorsCaption": {
+    "defaultMessage": "Codes couleur de l'indicateur.",
+    "description": "Figure legend."
+  },
+  "help.keyboardZonesCaption": {
+    "defaultMessage": "Zones de clavier et placement correct des doigts.",
+    "description": "Figure legend."
+  },
+  "help.rule1.body": {
+    "defaultMessage": "<p>Lorsque vous commencez à vous entraîner pour la première fois, l'ordinateur ne sait rien de vos compétences en dactylographie, il utilise donc un petit ensemble des lettres les plus courantes pour générer des mots tels que«<em>E</em>», «<em>N</em>», «<em>I</em>», «<em>T</em>», «<em>R</em>» et «<em>L</em>». Tous les mots générés seront constitués de ce petit ensemble de lettres, les lettres restantes ne seront pas utilisées. Les statistiques des lettres étant inconnues, les indicateurs correspondants sont gris.</p>",
+    "description": "Paragraph text."
+  },
+  "help.rule1.title": {
+    "defaultMessage": "L'algorithme commence par les lettres initiales",
+    "description": "Header text."
+  },
+  "help.rule2.body": {
+    "defaultMessage": "<p>Lorsque vous commencez à taper les mots générés, l'ordinateur collecte vos statistiques de frappe. Les indicateurs commencent à changer de couleur du rouge au vert. La couleur rouge signifie que la vitesse de frappe pour cette touche spécifique est lente et la couleur verte indique le contraire. À ce stade, votre objectif est de rendre toutes les lettres vertes en améliorant votre vitesse de frappe. Veuillez noter que dans cet exemple, la lettre «<em>T</em>» est mise en surbrillance, car elle a la pire métrique de vitesse de frappe, elle devient donc la lettre cible. La lettre cible est incluse dans chaque mot généré et c'est une information cruciale à connaître. Cela signifie qu'à un moment donné, vous pratiquez la touche exacte qui vous pose le plus de problèmes.</p>",
+    "description": "Paragraph text."
+  },
+  "help.rule2.title": {
+    "defaultMessage": "Vous apprenez les lettres initiales",
+    "description": "Header text."
+  },
+  "help.rule3.body": {
+    "defaultMessage": "<p>Lorsque votre vitesse de frappe s'améliore et que toutes les lettres deviennent enfin vertes, une nouvelle lettre «<em>S</em>» est ajoutée à l'ensemble. Les mots aléatoires seront générés à partir de ce nouvel ensemble de lettres élargi. La lettre «<em>S</em>» est la lettre cible et apparaît dans chaque mot généré. Encore une fois, la couleur de l'indicateur de cette lettre est grise, car ses statistiques de frappe sont inconnues.</p>",
+    "description": "Paragraph text."
+  },
+  "help.rule3.title": {
+    "defaultMessage": "L'algorithme ajoute plus de lettres",
+    "description": "Header text."
+  },
+  "help.rule4.body": {
+    "defaultMessage": "<p>À cette étape, votre objectif est de rendre cette nouvelle lettre verte, et lorsque cela se produit, une autre lettre est ajoutée à l'ensemble et le cycle continue. D’un point de vue réaliste, il est très probable que la vitesse de frappe des lettres précédentes se dégrade, et vous verrez qu’elles redeviennent rouges, comme dans l’exemple. Ceci est attendu, votre objectif est toujours le même, rendre la nouvelle lettre cible verte pour débloquer la suivante.</p>",
+    "description": "Paragraph text."
+  },
+  "help.rule4.title": {
+    "defaultMessage": "Vous apprenez des lettres supplémentaires",
+    "description": "Header text."
+  },
+  "help.rule5.body": {
+    "defaultMessage": "<p>Si vous êtes assez persévérant, tôt ou tard, toutes les lettres deviendront vertes. Félicitations, vous avez atteint votre objectif principal! Cependant, cela ne signifie pas que vous devez arrêter d'apprendre, vous pouvez continuer aussi longtemps que vous le souhaitez.</p>",
+    "description": "Paragraph text."
+  },
+  "help.rule5.title": {
+    "defaultMessage": "Le cycle se répète",
+    "description": "Header text."
+  },
+  "help.section1": {
+    "defaultMessage": "<h1>Apprenez à taper plus vite</h1><h2>Taper sans regarder</h2><p>Cette application Web vous aidera à apprendre la <em>dactylographie tactile</em>, à savoir taper en utilisant la mémoire musculaire sans regarder pour trouver les touches du clavier. Elle peut améliorer considérablement votre vitesse et votre précision de frappe. L'opposé est la <em>dactylographie à deux doigts</em>, une méthode de frappe dans laquelle vous regardez le clavier au lieu de l'écran et n'utilisez que les index.</p>",
+    "description": "Freeform text."
+  },
+  "help.section2": {
+    "defaultMessage": "<h2>La méthode d’enseignement</h2><p>Cette application utilise une approche unique. Elle utilise des statistiques et des algorithmes intelligents pour créer automatiquement des leçons de dactylographie qui correspondent à votre niveau de compétence actuel. Elle fonctionne en répétant le cycle suivant:</p><ol><li>L'algorithme génère pour vous une liste de mots aléatoires en fonction de vos compétences en dactylographie. Votre niveau de compétence est mesuré à l'aide des statistiques de frappe collectées jusqu'à présent. Les mots se composent d’un ensemble de lettres sélectionnées par l’algorithme.</li><li>Vous tapez les mots donnés. Vous essayez de faire le moins d'erreurs possible.</li><li>Au fur et à mesure que vous tapez, l'algorithme collecte vos statistiques de frappe, telles que la métrique de temps de frappe pour chaque touche spécifique. À la fin, ces statistiques sont utilisées pour générer la prochaine liste de mots pour la première étape.</li></ol><p>À chaque étape, vous tapez simplement les listes de mots fournies et l'ordinateur fait le reste.</p>",
+    "description": "Freeform text."
+  },
+  "help.section3": {
+    "defaultMessage": "<h2>L'algorithme de génération de mots</h2><p>Cette application génère des mots aléatoires, mais lisibles et prononçables, en utilisant les règles phonétiques de votre langue maternelle. Ces mots semblent presque naturels et le sont souvent. Il est beaucoup plus facile de taper du texte qui a du sens que de répéter des lettres aléatoires, en outre, cela vous aide à vous souvenir des combinaisons de touches fréquentes. Le dernier point est crucial. Par exemple, en anglais, il est presque impossible que la lettre «<em>W</em>» suive le «<em>Z</em>», et vous ne taperez jamais une telle combinaison dans cette application. Au lieu de cela, vous taperez des mots plus courants, tels que «<em>the</em>», «<em>that</em>», «<em>with</em>», etc. Bientôt, vous apprendrez à taper la combinaison «<em>th</em>» très rapidement.</p><p>Les mots sont générés à partir des lettres qui sont sélectionnées en utilisant les règles suivantes.</p>",
+    "description": "Freeform text."
+  },
+  "help.section4": {
+    "defaultMessage": "<p>La signification précise de chaque couleur d'indicateur est donnée dans la légende suivante.</p>",
+    "description": "Freeform text."
+  },
+  "help.section5": {
+    "defaultMessage": "<h2>La bonne façon d'utiliser le clavier</h2><p>Mettez tous vos doigts sur la rangée du milieu (rangée contenant la touche <em>Verr Maj</em>). Il y a de petites bosses sur les touches '<em>F</em>' et '<em>J</em>', placez vos index sur les bosses. Chaque doigt est responsable de son propre jeu de touches, comme expliqué dans l'illustration suivante.</p>",
+    "description": "Freeform text."
+  },
+  "help.section6": {
+    "defaultMessage": "<h2>L'efficacité de cette application</h2><p>Nous avons sélectionné quelques exemples de profils pour vous montrer comment les gens progressent dans l'apprentissage de la saisie tactile lors de l'utilisation de cette application. Ce sont de vrais profils d'utilisateurs anonymisés. J'espère qu'ils vous inciteront à continuer à apprendre!</p>",
+    "description": "Freeform text."
+  },
+  "highScores.layoutColumn": {
+    "defaultMessage": "Disposition",
+    "description": "Table column name."
+  },
+  "highScores.scoreColumn": {
+    "defaultMessage": "Note",
+    "description": "Table column name."
+  },
+  "highScores.typingSpeedColumn": {
+    "defaultMessage": "Vitesse",
+    "description": "Table column name."
+  },
+  "highScores.userColumn": {
+    "defaultMessage": "Utilisateur",
+    "description": "Table column name."
+  },
+  "language.be.name": {
+    "defaultMessage": "Belarusian (Беларуская)",
+    "description": "Language name."
+  },
+  "language.de.name": {
+    "defaultMessage": "Allemand (Deutsch)",
+    "description": "Language name."
+  },
+  "language.en.name": {
+    "defaultMessage": "Anglais (English)",
+    "description": "Language name."
+  },
+  "language.es.name": {
+    "defaultMessage": "Espagnol (Español)",
+    "description": "Language name."
+  },
+  "language.fr.name": {
+    "defaultMessage": "Français",
+    "description": "Language name."
+  },
+  "language.it.name": {
+    "defaultMessage": "Italien (Italiano)",
+    "description": "Language name."
+  },
+  "language.pl.name": {
+    "defaultMessage": "Polonaise (Polski)",
+    "description": "Language name."
+  },
+  "language.pt.name": {
+    "defaultMessage": "Portugais (Portugal)",
+    "description": "Language name."
+  },
+  "language.ru.name": {
+    "defaultMessage": "Russe (Русский)",
+    "description": "Language name."
+  },
+  "language.uk.name": {
+    "defaultMessage": "Ukrainian (Українська)",
+    "description": "Language name."
+  },
+  "layouts.bottomRowKeysText": {
+    "defaultMessage": "Touches de la rangée du bas:",
+    "description": "Field name."
+  },
+  "layouts.bottomRowKeysTitle": {
+    "defaultMessage": "Pourcentage de touches tapées dans la rangée avec la touche Maj, moins c'est mieux.",
+    "description": "Field title."
+  },
+  "layouts.description.colemak": {
+    "defaultMessage": "<p>La disposition Colemak est conçue pour être une alternative pratique aux dispositions de clavier Qwerty et Dvorak, elle offre un changement plus progressif pour les utilisateurs déjà habitués à la disposition standard.</p><p>La disposition Colemak a été conçue à base de la disposition QWERTY – les positions de 17 touches a été changée tout en conservant les positions QWERTY de la plupart des caractères non alphabétiques et de nombreux raccourcis clavier populaires. Cela facilite l'apprentissage pour les personnes qui tapent déjà sur un clavier QWERTY. Elle partage plusieurs objectifs de conception avec la disposition Dvorak, tels que la minimisation de la distance des mouvements des doigts et l'utilisation intensive de la ligne de repos.</p><p>Elle est prise en charge par de nombreux principaux systèmes d'exploitation modernes.</p>",
+    "description": "Freeform text."
+  },
+  "layouts.description.dvorak": {
+    "defaultMessage": "<p>Dvorak est une disposition de clavier pour la langue anglaise créée en 1936 par August Dvorak et William Dealey. Il a été conçu pour être une alternative plus rapide et plus ergonomique à la disposition QWERTY. Les partisans de Dvorak affirment qu'il nécessite moins de mouvements des doigts et, par conséquent, réduit les erreurs, augmente la vitesse de frappe, réduit les microtraumatismes répétés et offre une expérience plus confortable par rapport à QWERTY.</p><p>Cependant, il n'a pas réussi à remplacer le QWERTY en tant que disposition de clavier la plus courante, principalement en raison de l'introduction du QWERTY 60 ans plus tôt.</p><p>En 2005, le record du monde de la vitesse de la dactylographie anglaise a été établi par Barbara Blackburn avec un clavier Dvorak .</p><p>Presque tous les principaux systèmes d'exploitation modernes permettent de passer à la disposition Dvorak, et il y a une bonne chance que votre système d'exploitation le prend également en charge.</p>",
+    "description": "Freeform text."
+  },
+  "layouts.description.qwerty": {
+    "defaultMessage": "<p>Tout a commencé dans les années 1860. Un inventeur amateur, homme politique, imprimeur et journaliste à Milwaukee du nom de Christopher Latham Sholes, passait souvent son temps libre à bricoler et à créer de nouvelles machines pour rendre ses entreprises plus efficaces.</p><p>La théorie populaire affirme que Sholes a dû redessiner le clavier en réponse aux défaillances mécaniques des premières machines à écrire. Les barres de caractères reliant la touche et le marteau se coinçaient. Si un utilisateur tapait rapidement une succession de lettres dont les barres de caractères étaient proches les unes des autres, la machinerie délicate se bloquerait.</p><p>Sholes a repensé l'arrangement pour séparer les séquences de lettres les plus courantes comme «th» ou «he». La machine a été produite sous licence en 1875 par le fabricant d'armes basé à New York, Remington and Sons. La machine a été nommée Remington n°1, elle a été un échec commercial, car elle n'a pas réussi à se vendre en grand nombre.</p><p>Après avoir reçu des commentaires, la société Remington a mis à jour la machine pour créer la Remington n°2. Cette nouvelle machine est sortie en 1877 et a connu un immense succès. Il a été le premier à utiliser la disposition du clavier QWERTY telle que nous la connaissons aujourd'hui, offrant aux utilisateurs la possibilité de taper des lettres majuscules et minuscules, en basculant entre les deux à l'aide d'une touche «Maj».</p><p>La disposition classique du clavier QWERTY est un malheureux accident historique – elle n'est pas optimale et c'est pourquoi les autres dispositions ont été inventées.</p>",
+    "description": "Freeform text."
+  },
+  "layouts.description.workman": {
+    "defaultMessage": "<p>La disposition Workman a réduit le mouvement latéral des doigts et des poignets, tout en assurant une utilisation plus équilibrée de la main gauche et de la main droite. 21 caractères sont différents par rapport à la disposition Qwerty.</p><p>La disposition de clavier Workman offre de nombreux avantages. Elle est confortable, ergonomique et efficace, avec des touches fréquentes placées dans l'amplitude de mouvement naturelle des doigts. Le besoin de mouvement latéral est réduit pour les doigts et les poignets. Le déplacement global des doigts est également très faible.</p><p>Pour la langue anglaise, la disposition Workman permet d'obtenir une distance globale de déplacement des doigts inférieure à celle de Colemak. Cependant, il entraîne généralement des fréquences plus élevées de n-grammes avec le même doigt – ou en d'autres termes – un doigt devra frapper deux touches successives plus souvent que dans d'autres dispositions.</p>",
+    "description": "Freeform text."
+  },
+  "layouts.heatmapCaption": {
+    "defaultMessage": "Carte de fréquences des touches pour {name}",
+    "description": "Figure caption."
+  },
+  "layouts.heatmapDescription": {
+    "defaultMessage": "Ce graphique montre les fréquences relatives des touches sous forme de heatmap.",
+    "description": "Figure description."
+  },
+  "layouts.homeRowKeysText": {
+    "defaultMessage": "Touches de la rangée de repos:",
+    "description": "Field name."
+  },
+  "layouts.homeRowKeysTitle": {
+    "defaultMessage": "Pourcentage de touches frappées sans quitter la rangée de la touche de verrouillage des majuscules, plus c'est mieux.",
+    "description": "Field title."
+  },
+  "layouts.layoutNameHeader": {
+    "defaultMessage": "Disposition {name}",
+    "description": "Text header."
+  },
+  "layouts.sameFingerKeysText": {
+    "defaultMessage": "Touches tapées par le même doigt:",
+    "description": "Field name."
+  },
+  "layouts.sameFingerKeysTitle": {
+    "defaultMessage": "Pourcentage de touches tapées par le même doigt, moins c'est mieux.",
+    "description": "Field title."
+  },
+  "layouts.sameHandKeysText": {
+    "defaultMessage": "Touches tapées de la même main:",
+    "description": "Field name."
+  },
+  "layouts.sameHandKeysTitle": {
+    "defaultMessage": "Pourcentage de touches tapées par la même main, moins c'est mieux.",
+    "description": "Field title."
+  },
+  "layouts.topRowKeysText": {
+    "defaultMessage": "Touches de la rangée du haut:",
+    "description": "Field name."
+  },
+  "layouts.topRowKeysTitle": {
+    "defaultMessage": "Pourcentage de touches tapées dans la rangée avec la touche Tab, moins c'est mieux.",
+    "description": "Field title."
+  },
+  "layouts.websiteLinkText": {
+    "defaultMessage": "Site Web officiel",
+    "description": "Link text."
+  },
+  "layouts.wikipediaLinkText": {
+    "defaultMessage": "Article de Wikipédia",
+    "description": "Link text."
+  },
+  "learningRate.alreadyUnlocked": {
+    "defaultMessage": "This letter is already unlocked.",
+    "description": "Message text."
+  },
+  "learningRate.remainingLessons": {
+    "defaultMessage": "Approximately {remainingLessons} lessons remaining to unlock this letter ({certainty} certainty).",
+    "description": "Message text."
+  },
+  "learningRate.unknown": {
+    "defaultMessage": "Need more data to compute the remaining lessons to unlock this letter.",
+    "description": "Message text."
+  },
+  "lesson.averageSpeedLabel": {
+    "defaultMessage": "Vitesse de frappe moyenne",
+    "description": "Label name."
+  },
+  "lesson.averageSpeedTitle": {
+    "defaultMessage": "Vitesse de frappe moyenne ({speedUnitName}).",
+    "description": "Label title."
+  },
+  "lesson.bestSpeedLabel": {
+    "defaultMessage": "Vitesse de frappe la plus élevée",
+    "description": "Label name."
+  },
+  "lesson.bestSpeedTitle": {
+    "defaultMessage": "Vitesse de frappe la plus élevée ({speedUnitName}).",
+    "description": "Label title."
+  },
+  "lesson.boostedKeyText": {
+    "defaultMessage": "Touche avec une fréquence augmentée.",
+    "description": "Character details text."
+  },
+  "lesson.characterName": {
+    "defaultMessage": "Caractère «{name}»",
+    "description": "Character details text."
+  },
+  "lesson.confidenceLevelLabel": {
+    "defaultMessage": "Niveau de confiance",
+    "description": "Label name."
+  },
+  "lesson.confidenceLevelTitle": {
+    "defaultMessage": "Niveau de confiance (de 0 à 1).",
+    "description": "Label title."
+  },
+  "lesson.currentKeyPanelLabel": {
+    "defaultMessage": "Touche actuelle",
+    "description": "Panel label."
+  },
+  "lesson.dailyGoalPanelLabel": {
+    "defaultMessage": "Objectif quotidien",
+    "description": "Panel label."
+  },
+  "lesson.dailyGoalPanelTitle": {
+    "defaultMessage": "Les progrès sur le chemin de votre objectif quotidien.",
+    "description": "Panel title."
+  },
+  "lesson.forcedKeyText": {
+    "defaultMessage": "Touche ajoutée manuellement.",
+    "description": "Character details text."
+  },
+  "lesson.gaugesPanelLabel": {
+    "defaultMessage": "Métriques",
+    "description": "Panel label."
+  },
+  "lesson.indicator.boostedFrequency": {
+    "defaultMessage": "Touche avec une fréquence augmentée. Il vous faut le plus de temps pour trouver cette touche, donc l'algorithme l'a choisie pour être incluse dans chaque mot généré.",
+    "description": "Indicator description."
+  },
+  "lesson.indicator.includedManually": {
+    "defaultMessage": "Une touche qui a été incluse manuellement dans les leçons.",
+    "description": "Indicator description."
+  },
+  "lesson.indicator.leastConfidence": {
+    "defaultMessage": "Touche calibrée avec le niveau de confiance le plus bas. Plus vous appuyez sur cette touche, plus cette métrique devient précise.",
+    "description": "Indicator description."
+  },
+  "lesson.indicator.mostConfidence": {
+    "defaultMessage": "Touche calibrée avec le niveau de confiance le plus élevé. Plus vous appuyez sur cette touche, plus cette métrique devient précise.",
+    "description": "Indicator description."
+  },
+  "lesson.indicator.notCalibrated": {
+    "defaultMessage": "Touche non calibrée avec un niveau de confiance inconnu. Vous n'avez pas encore appuyé sur cette touche.",
+    "description": "Indicator description."
+  },
+  "lesson.indicator.notIncluded": {
+    "defaultMessage": "Une touche qui n'était pas encore incluse dans les leçons.",
+    "description": "Indicator description."
+  },
+  "lesson.keySetPanelLabel": {
+    "defaultMessage": "Toutes les touches",
+    "description": "Panel label."
+  },
+  "lesson.notCalibratedText": {
+    "defaultMessage": "Non calibré, besoin de plus d'échantillons",
+    "description": "Panel text."
+  },
+  "lessonType.customText.description": {
+    "defaultMessage": "Générez des leçons de dactylographie à partir des mots de votre propre texte personnalisé fourni ici. Par défaut, toutes les clés sont activées.",
+    "description": "Description text."
+  },
+  "lessonType.customText.name": {
+    "defaultMessage": "Texte personnalisé",
+    "description": "Widget label."
+  },
+  "lessonType.guided.description": {
+    "defaultMessage": "Ce mode générera automatiquement des leçons de dactylographie avec des mots aléatoires en utilisant les règles phonétiques de votre langue. Le jeu de touches est étendu de manière dynamique en fonction de vos performances.",
+    "description": "Description text."
+  },
+  "lessonType.guided.name": {
+    "defaultMessage": "Leçons guidées",
+    "description": "Widget label."
+  },
+  "lessonType.numbers.name": {
+    "defaultMessage": "Nombres",
+    "description": "Widget label."
+  },
+  "lessonType.wordList.description": {
+    "defaultMessage": "Générez des leçons à partir de la liste des mots les plus courants. Par défaut, toutes les clés sont activées.",
+    "description": "Description text."
+  },
+  "lessonType.wordlist.name": {
+    "defaultMessage": "Mots communs",
+    "description": "Widget label."
+  },
+  "multiplayer.intro": {
+    "defaultMessage": "Affrontez d'autres joueurs dans ce jeu multijoueur en ligne. Plus vite vous tapez, plus votre voiture va vite. Tapez le plus vite possible pour gagner la course!",
+    "description": "Freeform text."
+  },
+  "multiplayer.state.connecting": {
+    "defaultMessage": "<h1>Connexion au serveur...</h1><p>Établissement d’une connexion au serveur de jeux.</p>",
+    "description": "Freeform text."
+  },
+  "multiplayer.state.kicked": {
+    "defaultMessage": "<h1>Exclu du jeu</h1><p>Vous avez été exclu du jeu pour inactivité.</p>",
+    "description": "Freeform text."
+  },
+  "multiplayer.state.offline": {
+    "defaultMessage": "<h1>Le serveur est hors ligne</h1><p>Quelque chose ne va pas avec notre serveur de jeu.</p><p>Veuillez revisiter ce site dans quelques minutes pendant que nous résolvons le problème.</p>",
+    "description": "Freeform text."
+  },
+  "multiplayer.ui.countDownTicker": {
+    "defaultMessage": "Démarrage dans {countDown}",
+    "description": "Ticker text."
+  },
+  "multiplayer.ui.distanceLabel": {
+    "defaultMessage": "Progrès",
+    "description": "Label."
+  },
+  "multiplayer.ui.distanceTitle": {
+    "defaultMessage": "Distance parcourue.",
+    "description": "Label title."
+  },
+  "multiplayer.ui.errorsLabel": {
+    "defaultMessage": "Erreurs",
+    "description": "Label."
+  },
+  "multiplayer.ui.errorsTitle": {
+    "defaultMessage": "Nombre d'erreurs.",
+    "description": "Label title."
+  },
+  "multiplayer.ui.initializingTicker": {
+    "defaultMessage": "Initialisation...",
+    "description": "Ticker text."
+  },
+  "multiplayer.ui.nameLabel": {
+    "defaultMessage": "Vitesse",
+    "description": "Label."
+  },
+  "multiplayer.ui.nameTitle": {
+    "defaultMessage": "Vitesse de frappe.",
+    "description": "Label title."
+  },
+  "multiplayer.ui.positionLabel": {
+    "defaultMessage": "Position",
+    "description": "Label."
+  },
+  "multiplayer.ui.positionTicker": {
+    "defaultMessage": "Vous avez terminé en position {position}!",
+    "description": "Ticker text."
+  },
+  "multiplayer.ui.positionTitle": {
+    "defaultMessage": "Position sur la piste.",
+    "description": "Label title."
+  },
+  "multiplayer.ui.raceFinishedTicker": {
+    "defaultMessage": "Course terminée!",
+    "description": "Ticker text."
+  },
+  "multiplayer.ui.raceStartedTicker": {
+    "defaultMessage": "Course a commencé!",
+    "description": "Ticker text."
+  },
+  "multiplayer.ui.startTicker": {
+    "defaultMessage": "ALLEZ!",
+    "description": "Ticker text."
+  },
+  "multiplayer.ui.waitingMorePlayersTicker": {
+    "defaultMessage": "En attendant plus de joueurs...",
+    "description": "Ticker text."
+  },
+  "multiplayer.ui.waitingNextRaceTicker": {
+    "defaultMessage": "Zzz... Attendez la prochaine course",
+    "description": "Ticker text."
+  },
+  "multiplayer.ui.winnerPositionTicker": {
+    "defaultMessage": "Vous avez gagné la course!",
+    "description": "Ticker text."
+  },
+  "nav.accountName": {
+    "defaultMessage": "{name}",
+    "description": "Navigation menu item name."
+  },
+  "nav.accountTitle": {
+    "defaultMessage": "Gérer votre compte en ligne.",
+    "description": "Navigation menu item title."
+  },
+  "nav.helpName": {
+    "defaultMessage": "Aide",
+    "description": "Navigation menu item name."
+  },
+  "nav.helpTitle": {
+    "defaultMessage": "Obtenir des instructions sur la façon d'utiliser cette application.",
+    "description": "Navigation menu item title."
+  },
+  "nav.highScoresName": {
+    "defaultMessage": "Scores élevés",
+    "description": "Navigation menu item name."
+  },
+  "nav.highScoresTitle": {
+    "defaultMessage": "Voir le tableau des scores les plus élevés mettant en vedette les dactylos les plus rapides.",
+    "description": "Navigation menu item title."
+  },
+  "nav.layoutsName": {
+    "defaultMessage": "Dispositions",
+    "description": "Navigation menu item name."
+  },
+  "nav.layoutsTitle": {
+    "defaultMessage": "Comparer l'efficacité de différentes dispositions de clavier.",
+    "description": "Navigation menu item title."
+  },
+  "nav.multiplayerName": {
+    "defaultMessage": "Multijoueur",
+    "description": "Navigation menu item name."
+  },
+  "nav.multiplayerTitle": {
+    "defaultMessage": "Affronter d'autres joueurs dans un jeu multijoueur en ligne.",
+    "description": "Navigation menu item title."
+  },
+  "nav.practiceName": {
+    "defaultMessage": "Entraînement",
+    "description": "Navigation menu item name."
+  },
+  "nav.practiceTitle": {
+    "defaultMessage": "Entraînez-vous à taper– leçons pour améliorer votre vitesse de frappe.",
+    "description": "Navigation menu item title."
+  },
+  "nav.privacyPolicyName": {
+    "defaultMessage": "Politique de confidentialité",
+    "description": "Navigation menu item name."
+  },
+  "nav.privacyPolicyTitle": {
+    "defaultMessage": "Politique de confidentialité.",
+    "description": "Navigation menu item title."
+  },
+  "nav.profileName": {
+    "defaultMessage": "Profil",
+    "description": "Navigation menu item name."
+  },
+  "nav.profileTitle": {
+    "defaultMessage": "Consulter les statistiques détaillées sur vos progrès d'apprentissage.",
+    "description": "Navigation menu item title."
+  },
+  "nav.publicProfileName": {
+    "defaultMessage": "Profil public de {name}",
+    "description": "Navigation menu item name."
+  },
+  "nav.publicProfileTitle": {
+    "defaultMessage": "Observer le profil public de l'utilisateur {name}.",
+    "description": "Navigation menu item title."
+  },
+  "nav.signInName": {
+    "defaultMessage": "S'identifier",
+    "description": "Navigation menu item name."
+  },
+  "nav.signInTitle": {
+    "defaultMessage": "S'identifier pour un compte en ligne.",
+    "description": "Navigation menu item title."
+  },
+  "nav.termsOfServiceName": {
+    "defaultMessage": "Conditions d'utilisation",
+    "description": "Navigation menu item name."
+  },
+  "nav.termsOfServiceTitle": {
+    "defaultMessage": "Conditions d'utilisation.",
+    "description": "Navigation menu item title."
+  },
+  "nav.textToolsName": {
+    "defaultMessage": "Outils texte",
+    "description": "Navigation menu item name."
+  },
+  "nav.textToolsTitle": {
+    "defaultMessage": "Compter les caractères et les mots de votre texte.",
+    "description": "Navigation menu item title."
+  },
+  "nav.typingTestName": {
+    "defaultMessage": "Typing Test",
+    "description": "Navigation menu item name."
+  },
+  "nav.typingTestTitle": {
+    "defaultMessage": "Take a typing speed test.",
+    "description": "Navigation menu item title."
+  },
+  "page.help.description": {
+    "defaultMessage": "Apprenez à taper plus vite.",
+    "description": "Page description."
+  },
+  "page.help.title": {
+    "defaultMessage": "Aide",
+    "description": "Page title."
+  },
+  "page.highScores.content": {
+    "defaultMessage": "<h1>Scores élevés</h1><p>Tableau des dactylographes les plus rapides des derniers jours, classés selon leurs scores du meilleur au pire. Le score de frappe est mesuré à partir de la vitesse de frappe, de la longueur du texte, du nombre de caractères différents dans le texte et du nombre d'erreurs. La formule est conçue de manière à récompenser une vitesse plus grande, des textes plus longs et un alphabet plus large, mais à pénaliser le nombre d'erreurs.</p>",
+    "description": "Page content."
+  },
+  "page.highScores.description": {
+    "defaultMessage": "Tableau des utilisateurs classés selon leur vitesse de frappe.",
+    "description": "Page description."
+  },
+  "page.highScores.title": {
+    "defaultMessage": "Tableau des scores élevés",
+    "description": "Page title."
+  },
+  "page.layouts.description": {
+    "defaultMessage": "Graphiques de comparaison des dispositions de clavier.",
+    "description": "Page description."
+  },
+  "page.layouts.title": {
+    "defaultMessage": "Dispositions du clavier.",
+    "description": "Page title."
+  },
+  "page.multiplayer.content": {
+    "defaultMessage": "<h1>Jeu de dactylo multijoueur en ligne</h1><p>Affrontez d'autres joueurs dans ce jeu de dactylo multijoueur en ligne. Plus vite vous tapez, plus votre voiture va vite. Tapez le plus vite possible pour gagner la course!</p>",
+    "description": "Page content."
+  },
+  "page.multiplayer.description": {
+    "defaultMessage": "Jeu de course dactylo multijoueur en ligne.",
+    "description": "Page description."
+  },
+  "page.multiplayer.title": {
+    "defaultMessage": "Multijoueur",
+    "description": "Page title."
+  },
+  "page.practice.content": {
+    "defaultMessage": "<h1>Leçons de dactylographie</h1><p>Faites un test de vitesse de frappe, apprenez à taper plus rapidement et avec moins d'erreurs avec ce tuteur de dactylographie en ligne gratuit.</p>",
+    "description": "Page content."
+  },
+  "page.practice.description": {
+    "defaultMessage": "Faites un test de dactylographie, entraînez-vous à des cours de dactylographie, apprenez à taper plus rapidement.",
+    "description": "Page description."
+  },
+  "page.practice.title": {
+    "defaultMessage": "Pratique de la dactylographie",
+    "description": "Page title."
+  },
+  "page.profile.content": {
+    "defaultMessage": "<h1>Mon profil</h1><p>Cette page présente les statistiques détaillées sur vos progrès d'apprentissage. Plus vous complétez de leçons, plus ces statistiques seront détaillées et précises.</p>",
+    "description": "Page content."
+  },
+  "page.profile.description": {
+    "defaultMessage": "Mon profil détaillé.",
+    "description": "Page description."
+  },
+  "page.profile.title": {
+    "defaultMessage": "Mon profil",
+    "description": "Page title."
+  },
+  "page.publicProfile.description": {
+    "defaultMessage": "Profil public de l'utilisateur «{name}».",
+    "description": "Page description."
+  },
+  "page.publicProfile.title": {
+    "defaultMessage": "{name} | Profil public",
+    "description": "Page title."
+  },
+  "page.textTools.content": {
+    "defaultMessage": "<h1>Outils texte</h1><p>Compter les caractères et les mots de votre texte. Découvrir quels sont les mots les plus courants. Mesurer le temps mis pour taper lire ces mots.</p>",
+    "description": "Page content."
+  },
+  "page.textTools.description": {
+    "defaultMessage": "Compter les caractères et les mots de votre texte.",
+    "description": "Page description."
+  },
+  "page.textTools.title": {
+    "defaultMessage": "Outils texte",
+    "description": "Page title."
+  },
+  "page.typingTest.content": {
+    "defaultMessage": "<h1>Typing Speed Test</h1><p>Take a typing speed test.</p>",
+    "description": "Page content."
+  },
+  "page.typingTest.description": {
+    "defaultMessage": "Take a typing speed test.",
+    "description": "Page description."
+  },
+  "page.typingTest.title": {
+    "defaultMessage": "Speed Test",
+    "description": "Page title."
+  },
+  "practice.accuracyDeltaValueTitle": {
+    "defaultMessage": "Différence par rapport à la valeur moyenne.",
+    "description": "Value delta title."
+  },
+  "practice.accuracyLabel": {
+    "defaultMessage": "Précision",
+    "description": "Label text."
+  },
+  "practice.accuracyValueTitle": {
+    "defaultMessage": "Le pourcentage de caractères tapés sans erreur dans la dernière leçon.",
+    "description": "Value title."
+  },
+  "practice.focusText": {
+    "defaultMessage": "Cliquez pour activer...",
+    "description": "Freeform text."
+  },
+  "practice.resetLessonButtonTitle": {
+    "defaultMessage": "Remise à zéro de la leçon en cours (Ctrl + Flèche Gauche).",
+    "description": "Button title."
+  },
+  "practice.scoreDeltaValueTitle": {
+    "defaultMessage": "Différence par rapport à la valeur moyenne.",
+    "description": "Value delta title."
+  },
+  "practice.scoreLabel": {
+    "defaultMessage": "Note",
+    "description": "Label text."
+  },
+  "practice.scoreValueTitle": {
+    "defaultMessage": "Score de la dernière leçon en points abstraits. Les scores sont plus élevés lorsque vous tapez plus rapidement et avec moins d'erreurs.",
+    "description": "Value title."
+  },
+  "practice.settingButtonName": {
+    "defaultMessage": "Paramètres...",
+    "description": "Button name."
+  },
+  "practice.settingButtonTitle": {
+    "defaultMessage": "Modifier les paramètres de la leçon, configurez la langue, la disposition du clavier etc.",
+    "description": "Button title."
+  },
+  "practice.showHelpSlidesButtonTitle": {
+    "defaultMessage": "Montrer une visite guidée avec des diapositives d'aide.",
+    "description": "Button title."
+  },
+  "practice.skipLessonButtonTitle": {
+    "defaultMessage": "Passer la leçon en cours (Ctrl + Flèche Droite).",
+    "description": "Button title."
+  },
+  "practice.speedDeltaValueTitle": {
+    "defaultMessage": "Différence par rapport à la valeur moyenne.",
+    "description": "Value delta title."
+  },
+  "practice.speedLabel": {
+    "defaultMessage": "Vitesse",
+    "description": "Label text."
+  },
+  "practice.speedValueTitle": {
+    "defaultMessage": "Vitesse de frappe dans la dernière leçon.",
+    "description": "Value title."
+  },
+  "practice.switchInterfaceButtonTitle": {
+    "defaultMessage": "Basculer la disposition actuelle de l’interface.",
+    "description": "Button title."
+  },
+  "practice.tourSlide1": {
+    "defaultMessage": "<h1>Apprendre à taper plus vite</h1><p>Cette application Web vous aidera à apprendre la <em>dactylographie tactile</em>, à savoir taper en utilisant la mémoire musculaire sans regarder pour trouver les touches. Elle peut améliorer considérablement votre vitesse et votre précision de frappe. L'opposé est la <em>dactylographie à deux doigts</em>, une méthode de frappe dans laquelle vous regardez le clavier au lieu de l'écran et n'utilisez que les index.</p><p>Ce court tutoriel vous expliquera le fonctionnement de cette application.</p><p>Pour naviguer dans ces diapositives, vous pouvez utiliser les touches fléchées gauche et droite.</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide10": {
+    "defaultMessage": "<p>Cet indicateur affiche le sous-ensemble actuel de lettres utilisé pour générer les leçons et votre niveau de confiance pour chaque lettre du sous-ensemble:</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide11": {
+    "defaultMessage": "<p>Cet indicateur affiche des détails sur la touche avec une fréquence augmentée qui est actuellement prise en compte dans chaque mot généré:</p>[dl][dt]Vitesse de frappe moyenne[/dt][dd]Votre vitesse de frappe moyenne pour cette touche spécifique.[/dd][dt]Vitesse de frappe la plus élevée[/dt][dd]Votre meilleure vitesse de frappe pour cette touche spécifique.[/dd][dt]Niveau de confiance[/dt][dd]Un nombre compris entre zéro et un qui est calculé en fonction de votre vitesse de frappe et indique votre familiarisation avec cette touche. Une touche est considérée comme entièrement apprise lorsque son niveau de confiance atteint un.[/dd][/dl]",
+    "description": "Slide content."
+  },
+  "practice.tourSlide12": {
+    "defaultMessage": "<p>This indicator shows details about the letter with boosted frequency, which is currently included in every generated word:</p><dl><dt>Average typing speed</dt><dd>Your average typing speed for this individual letter.</dd><dt>Best typing speed</dt><dd>Your best typing speed for this individual letter.</dd><dt>Confidence level</dt><dd>A number in range from zero to one which is computed using your typing speed, and indicates your familiarity with this letter. A letter is considered fully learned when it's confidence level reaches one.</dd></dl>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide2": {
+    "defaultMessage": "<p>Notre méthode d'enseignement est basée sur les principes suivants:</p><p>Pas d'exercices répétitifs ennuyeux. Contrairement à la plupart des autres tuteurs de dactylographie, cette application ne vous oblige pas à répéter les mêmes leçons comme «<em>jjf jjk jjf jjk</em>» encore et encore. C'est très ennuyeux et contribue très peu à votre apprentissage global.</p><p>Cette application utilise un algorithme informatique sophistiqué pour générer des leçons de dactylographie qui correspondent à votre niveau de compétence. Ces leçons consistent en des mots aléatoires générés à la base d'un sous-ensemble de l'alphabet complet. La taille du sous-ensemble et la fréquence des lettres spécifiques sont contrôlées par l'algorithme, ce qui vous offre la meilleure expérience d'apprentissage.</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide3": {
+    "defaultMessage": "<p>Initialement, il commence à générer des mots à partir d'un petit sous-ensemble des lettres les plus fréquentes de l'alphabet.</p><p>Lorsque vous saisissez ces mots, l'application mesure le temps de saisie pour chaque lettre de ce sous-ensemble. Ce temps est utilisé pour mesurer vos progrès d'apprentissage. Plus vous vous familiarisez avec une lettre, moins il vous faut de temps pour la taper.</p><p>Une fois que vous vous êtes familiarisé avec l'ensemble du sous-ensemble de lettres actuel, l'algorithme l'étend en ajoutant de plus en plus de lettres au sous-ensemble.</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide4": {
+    "defaultMessage": "<p>Lorsque l'algorithme inclut une nouvelle lettre dans le sous-ensemble actuel, la fréquence de cette lettre est artificiellement augmentée afin qu'elle soit incluse dans chaque mot généré pour une leçon.</p><p>L'algorithme peut également réorganiser artificiellement les fréquences des lettres, en mettant l'accent sur les lettres avec la pire métrique de temps de frappe.</p><p>Cela signifie que vous allez taper toujours les lettres que vous connaissez le moins.</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide5": {
+    "defaultMessage": "<p>C'est le panneau de texte. Il affiche le texte à taper. Le texte change à chaque nouvelle leçon. Le texte est généré automatiquement à partir du sous-ensemble actuel de lettres. La plupart des mots ne sont pas réels mais ils sont générés en utilisant les règles phonétiques de votre langue, ils sonnent donc naturellement et doivent être faciles à prononcer. En plus d'être amusant, cela nous donne la possibilité d'utiliser plus de mots qu'il n'en existe réellement.</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide6": {
+    "defaultMessage": "<p>Voilà le clavier virtuel. Il vous aide à mémoriser les positions des touches. Utilisez-le pour trouver les touches et essayez de ne pas regarder votre clavier physique. Sur votre clavier, il y a de petites bosses sur les touches «<em>F</em>» et «<em>J</em>». Utilisez-les pour positionner correctement vos index sans avoir à regarder les touches. Une fois vos index sont dans la bonne position, vous pourrez localiser le reste des touches.</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide7": {
+    "defaultMessage": "<p>C'est l'indicateur de vitesse de frappe et de la différence par rapport à la valeur moyenne. Votre objectif est d'augmenter cette métrique, ce qui signifie que des valeurs plus élevées sont meilleures.</p><p>Vitesse de frappe est measured in either <em>Mots par minute (MPM)</em> ou <em>Caractères par minute (CPM)</em>. La définition d'un mot est normalisée à cinq caractères, donc <em>10MPM</em> équivaut à <em>50CPM</em>.</p><p>Vous pouvez basculer entre les modes d'affichage <em>MPM</em> et <em>CPM</em> sur la page Paramètres.</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide8": {
+    "defaultMessage": "<p>C'est l'indicateur de précision et de la différence par rapport à la valeur moyenne. Votre objectif est d'augmenter cette métrique, ce qui signifie que des valeurs plus élevées sont meilleures.</p><p>La précision est calculée comme le pourcentage de caractères saisis sans erreur. Plusieurs fautes de frappe dans la même position comptent comme une erreur.</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide9": {
+    "defaultMessage": "<p>C'est l'indicateur de score de frappe dans les point abstraits et de la différence par rapport à la valeur moyenne.</p><p>Le score est calculé à partir de votre vitesse de frappe, du nombre d'erreurs et de la taille actuelle du jeu de lettres. La formule est conçue pour récompenser la vitesse de frappe et pénaliser le nombre d'erreurs. Vous ne pouvez pas obtenir un score élevé en tapant rapidement tout en faisant de nombreuses erreurs.</p><p>Les utilisateurs qui obtiennent les scores les plus élevés sont enregistrés dans le tableau des meilleurs scores.</p>",
+    "description": "Slide content."
+  },
+  "profile.calendar.averageSpeedTitle": {
+    "defaultMessage": "Vitesse moyenne: {value}",
+    "description": "Calendar cell title."
+  },
+  "profile.calendar.topSpeedTitle": {
+    "defaultMessage": "Vitesse de pointe: {value}",
+    "description": "Calendar cell title."
+  },
+  "profile.calendar.totalLessonsTitle": {
+    "defaultMessage": "Nombre de leçons: {value}",
+    "description": "Calendar cell title."
+  },
+  "profile.calendar.totalTimeTitle": {
+    "defaultMessage": "Temps des leçons: {value}",
+    "description": "Calendar cell title."
+  },
+  "profile.chart.calendarCaption": {
+    "defaultMessage": "Calendrier des entraînements",
+    "description": "Chart caption."
+  },
+  "profile.chart.calendarDescription": {
+    "defaultMessage": "Ce calendrier indique les dates d'apprentissage actif.",
+    "description": "Chart description."
+  },
+  "profile.chart.compareAverageSpeedText": {
+    "defaultMessage": "Votre vitesse moyenne de tous les temps est supérieure à <span>% </span> de toutes les autres personnes.",
+    "description": "Section paragraph."
+  },
+  "profile.chart.compareTitle": {
+    "defaultMessage": "Comparez-vous:",
+    "description": "Section title."
+  },
+  "profile.chart.compareTopSpeedText": {
+    "defaultMessage": "Votre vitesse de pointe de tous les temps est supérieure à <span>% </span> de toutes les autres personnes.",
+    "description": "Section paragraph."
+  },
+  "profile.chart.histogramCaption": {
+    "defaultMessage": "Vitesse de frappe relative",
+    "description": "Chart caption."
+  },
+  "profile.chart.histogramDescription": {
+    "defaultMessage": "Il s'agit d'un histogramme des vitesses de frappe de tous les utilisateurs et de votre position par rapport à eux.",
+    "description": "Chart description."
+  },
+  "profile.chart.histogramLegend": {
+    "defaultMessage": "Voyez à quelle vitesse vous tapez par rapport aux autres utilisateurs. Plus la barre est haute, plus les gens tapent à cette vitesse. Votre position est indiquée par les lignes verticales colorées.",
+    "description": "Chart legend."
+  },
+  "profile.chart.keyFrequencyHeatmapCaption": {
+    "defaultMessage": "Carte heatmap de fréquences des touches",
+    "description": "Chart caption."
+  },
+  "profile.chart.keyFrequencyHeatmapDescription": {
+    "defaultMessage": "Ce graphique montre les fréquences relatives des touches sous forme de heatmap.",
+    "description": "Chart description."
+  },
+  "profile.chart.keyFrequencyHistogramCaption": {
+    "defaultMessage": "Histogramme de fréquence des touches",
+    "description": "Chart caption."
+  },
+  "profile.chart.keyFrequencyHistogramDescription": {
+    "defaultMessage": "Ce graphique montre les fréquences relatives des touches.",
+    "description": "Chart description."
+  },
+  "profile.chart.keyFrequencyHistogramLegend": {
+    "defaultMessage": "Couleur de barres: {label1} – nombre de coups sûrs, {label2} – nombre de ratés, {label3} – ratio ratés/sûrs (fréquence d'échec relative).",
+    "description": "Chart legend."
+  },
+  "profile.chart.keySpeedCaption": {
+    "defaultMessage": "Vitesse de frappe des touches",
+    "description": "Chart caption."
+  },
+  "profile.chart.keySpeedDescription": {
+    "defaultMessage": "Ce graphique montre le changement de vitesse de frappe pour chaque touche spécifique.",
+    "description": "Chart description."
+  },
+  "profile.chart.keySpeedHistogramCaption": {
+    "defaultMessage": "Histogramme de la vitesse de frappe des touches",
+    "description": "Chart caption."
+  },
+  "profile.chart.keySpeedHistogramDescription": {
+    "defaultMessage": "Ce graphique montre la vitesse de frappe moyenne pour chaque touche spécifique.",
+    "description": "Chart description."
+  },
+  "profile.chart.keySpeedLegend": {
+    "defaultMessage": "Axe horizontal: numéro de leçon. Axe vertical: {label1} – vitesse de frappe pour la touche sélectionnée actuellement.",
+    "description": "Chart legend."
+  },
+  "profile.chart.progressOverviewCaption": {
+    "defaultMessage": "Aperçu de la progression de l'apprentissage",
+    "description": "Chart caption."
+  },
+  "profile.chart.progressOverviewDescription": {
+    "defaultMessage": "Ce graphique montre la vue d'ensemble de la progression de l'apprentissage pour toutes les touches.",
+    "description": "Chart description."
+  },
+  "profile.chart.progressOverviewLegend": {
+    "defaultMessage": "Axe horizontal: numéro de leçon. Axe vertical: vitesse de frappe pour chaque touche spécifique, {label1} – lente, {label2} – rapide.",
+    "description": "Chart legend."
+  },
+  "profile.chart.speedCaption": {
+    "defaultMessage": "Vitesse de frappe",
+    "description": "Chart caption."
+  },
+  "profile.chart.speedDescription": {
+    "defaultMessage": "Ce graphique montre comment la vitesse de frappe globale change au fil du temps.",
+    "description": "Chart description."
+  },
+  "profile.chart.speedLegend": {
+    "defaultMessage": "Axe horizontal: numéro de leçon. Axe vertical: {label1} – vitesse de frappe, {label2} – précision de frappe, {label3} – nombre de touches dans les leçons.",
+    "description": "Chart legend."
+  },
+  "profile.control.downloadDataLabel": {
+    "defaultMessage": "Télécharger les données",
+    "description": "Button label."
+  },
+  "profile.control.downloadDataTitle": {
+    "defaultMessage": "Télécharger toutes vos données de frappe au format JSON.",
+    "description": "Button title."
+  },
+  "profile.control.groupSelectorLabel": {
+    "defaultMessage": "Afficher les statistiques pour:",
+    "description": "List label."
+  },
+  "profile.control.resetDataConfirmation": {
+    "defaultMessage": "Voulez-vous vraiment supprimer toutes les données et réinitialiser votre profil? Cette opération est définitive et irréversible!",
+    "description": "Confirmation text."
+  },
+  "profile.control.resetDataLabel": {
+    "defaultMessage": "Réinitialiser les statistiques",
+    "description": "Button label."
+  },
+  "profile.control.resetDataTitle": {
+    "defaultMessage": "Supprimer définitivement toutes vos données de frappe et réinitialiser les statistiques.",
+    "description": "Button title."
+  },
+  "profile.control.shareButtonLabel": {
+    "defaultMessage": "Copier",
+    "description": "Button label."
+  },
+  "profile.control.shareButtonTitle": {
+    "defaultMessage": "Copier le lien du profil dans le presse-papiers.",
+    "description": "Button title."
+  },
+  "profile.control.shareText": {
+    "defaultMessage": "Partager votre profil:",
+    "description": "Share profile text."
+  },
+  "profile.control.visitButtonLabel": {
+    "defaultMessage": "Visiter",
+    "description": "Button label."
+  },
+  "profile.control.visitButtonTitle": {
+    "defaultMessage": "Visiter votre page de profil public.",
+    "description": "Button title."
+  },
+  "profile.emptyChartCaption": {
+    "defaultMessage": "Pas assez de données",
+    "description": "Empty chart message."
+  },
+  "profile.emptyChartDescription": {
+    "defaultMessage": "Complétez quelques leçons supplémentaires pour obtenir plus de points de données.",
+    "description": "Empty chart message."
+  },
+  "profile.overview.averageSpeedLabel": {
+    "defaultMessage": "Vitesse moyenne ({speedUnit})",
+    "description": "Gauge label."
+  },
+  "profile.overview.averageSpeedTitle": {
+    "defaultMessage": "Vitesse de frappe moyenne ({speedUnitName}).",
+    "description": "Gauge title."
+  },
+  "profile.overview.averageSpeedTodayLabel": {
+    "defaultMessage": "Vitesse moyenne ({speedUnit})",
+    "description": "Gauge label."
+  },
+  "profile.overview.averageSpeedTodayTitle": {
+    "defaultMessage": "Vitesse de frappe moyenne aujourd'hui ({speedUnitName}).",
+    "description": "Gauge title."
+  },
+  "profile.overview.statisticsAllTime": {
+    "defaultMessage": "Statistiques de tous les temps:",
+    "description": "Header."
+  },
+  "profile.overview.statisticsToday": {
+    "defaultMessage": "Statistiques pour aujourd'hui:",
+    "description": "Section header."
+  },
+  "profile.overview.topSpeedLabel": {
+    "defaultMessage": "Vitesse de pointe ({speedUnit})",
+    "description": "Gauge label."
+  },
+  "profile.overview.topSpeedTitle": {
+    "defaultMessage": "Vitesse de frappe la plus élevée ({speedUnitName}).",
+    "description": "Gauge title."
+  },
+  "profile.overview.topSpeedTodayLabel": {
+    "defaultMessage": "Vitesse de pointe ({speedUnit})",
+    "description": "Gauge label."
+  },
+  "profile.overview.topSpeedTodayTitle": {
+    "defaultMessage": "Vitesse de frappe maximale aujourd'hui ({speedUnitName}).",
+    "description": "Gauge title."
+  },
+  "profile.overview.totalLessonsLabel": {
+    "defaultMessage": "Total des leçons",
+    "description": "Gauge label."
+  },
+  "profile.overview.totalLessonsTitle": {
+    "defaultMessage": "Nombre de leçons terminées.",
+    "description": "Gauge title."
+  },
+  "profile.overview.totalLessonsTodayLabel": {
+    "defaultMessage": "Total des leçons",
+    "description": "Gauge label."
+  },
+  "profile.overview.totalLessonsTodayTitle": {
+    "defaultMessage": "Nombre de leçons terminées aujourd'hui.",
+    "description": "Gauge title."
+  },
+  "profile.overview.totalTimeLabel": {
+    "defaultMessage": "Temps total",
+    "description": "Gauge label."
+  },
+  "profile.overview.totalTimeTitle": {
+    "defaultMessage": "Temps passé sur les exercices.",
+    "description": "Gauge title."
+  },
+  "profile.overview.totalTimeTodayLabel": {
+    "defaultMessage": "Temps total",
+    "description": "Gauge label."
+  },
+  "profile.overview.totalTimeTodayTitle": {
+    "defaultMessage": "Temps passé sur les exercices aujourd'hui.",
+    "description": "Gauge title."
+  },
+  "profile.smoothnessLabel": {
+    "defaultMessage": "Fluidité:",
+    "description": "Input field label."
+  },
+  "profile.smoothnessTitle": {
+    "defaultMessage": "Éliminez le bruit pour voir la tendance à long terme.",
+    "description": "Input field title."
+  },
+  "settings.benfordsLawDescription": {
+    "defaultMessage": "<a>Benford's law</a> is an observation that in many real-life numerical data sets, the leading digit is likely to be small.",
+    "description": "Freeform text."
+  },
+  "settings.benfordsLawLabel": {
+    "defaultMessage": "Benford's law",
+    "description": "Checkbox label."
+  },
+  "settings.benfordsLawTitle": {
+    "defaultMessage": "Generate numbers following the Benford's law.",
+    "description": "Checkbox title."
+  },
+  "settings.cleanupTextCaption": {
+    "defaultMessage": "Nettoyer texte:",
+    "description": "Fieldset caption."
+  },
+  "settings.cursorMovementLabel": {
+    "defaultMessage": "Mouvement du curseur:",
+    "description": "Checkbox label."
+  },
+  "settings.cursorShapeLabel": {
+    "defaultMessage": "Forme du curseur:",
+    "description": "Checkbox label."
+  },
+  "settings.customTextExamplesLabel": {
+    "defaultMessage": "Exemples:",
+    "description": "Text label."
+  },
+  "settings.customTextInputPlaceholder": {
+    "defaultMessage": "Texte personnalisé...",
+    "description": "Input field placeholder."
+  },
+  "settings.dailyGoalDescription": {
+    "defaultMessage": "Définissez le temps que vous souhaitez consacrer quotidiennement aux exercices.",
+    "description": "Input field description."
+  },
+  "settings.dailyGoalLabel": {
+    "defaultMessage": "Objectif quotidien:",
+    "description": "Input field label."
+  },
+  "settings.dailyGoalTitle": {
+    "defaultMessage": "Objectif quotidien à consacrer aux exercices en quelques minutes.",
+    "description": "Input field title."
+  },
+  "settings.doneButtonLabel": {
+    "defaultMessage": "Terminé",
+    "description": "Button label."
+  },
+  "settings.doneButtonTitle": {
+    "defaultMessage": "Enregistrer les modifications et commencer à vous entraîner.",
+    "description": "Button title."
+  },
+  "settings.emulateLayoutLabel": {
+    "defaultMessage": "Émuler la disposition",
+    "description": "Checkbox label."
+  },
+  "settings.emulateLayoutTitle": {
+    "defaultMessage": "Émuler la disposition de clavier sélectionnée si la disposition standard est définie dans le système.",
+    "description": "Checkbox title."
+  },
+  "settings.enableCapitalLettersLabel": {
+    "defaultMessage": "Activer les majuscules",
+    "description": "Checkbox label."
+  },
+  "settings.enableCapitalLettersTitle": {
+    "defaultMessage": "Générer du texte avec des majuscules.",
+    "description": "Checkbox title."
+  },
+  "settings.enablePunctuationLabel": {
+    "defaultMessage": "Activer les caractères de ponctuation.",
+    "description": "Checkbox label."
+  },
+  "settings.enablePunctuationTitle": {
+    "defaultMessage": "Ajouter des caractères de ponctuation au texte généré.",
+    "description": "Checkbox title."
+  },
+  "settings.enableSoundsLabel": {
+    "defaultMessage": "Activer les effets sonores",
+    "description": "Checkbox label."
+  },
+  "settings.enableSoundsTitle": {
+    "defaultMessage": "Faire du bruit supplémentaire lors de la frappe et en cas d'erreurs.",
+    "description": "Checkbox description."
+  },
+  "settings.extendKeySetLabel": {
+    "defaultMessage": "Ajouter des lettres aux mots:",
+    "description": "Input field label."
+  },
+  "settings.extendKeySetTitle": {
+    "defaultMessage": "Ajoutez plus de lettres à chaque mot généré.",
+    "description": "Input field title."
+  },
+  "settings.extendLessonLengthLabel": {
+    "defaultMessage": "Ajouter des mots aux leçons:",
+    "description": "Input field label."
+  },
+  "settings.extendLessonLengthTitle": {
+    "defaultMessage": "Ajouter plus de mots à chaque leçon générée.",
+    "description": "Input field title."
+  },
+  "settings.forgiveErrorsDescription": {
+    "defaultMessage": "L'activation de cette option permet de pardonner certains types d'erreurs et les corriger automatiquement dans le champ de saisie de texte. Il s'agit d'erreurs telles que la saisie d'un caractère erroné ou l'omission d'un caractère.",
+    "description": "Checkbox description."
+  },
+  "settings.forgiveErrorsLabel": {
+    "defaultMessage": "Pardonner les erreurs",
+    "description": "Checkbox label."
+  },
+  "settings.interfaceOptionsLegend": {
+    "defaultMessage": "Options d'interface",
+    "description": "Fieldset legend."
+  },
+  "settings.keyboardLayoutTabLabel": {
+    "defaultMessage": "Disposition du clavier",
+    "description": "Tab label."
+  },
+  "settings.lessonOptionsLegend": {
+    "defaultMessage": "Options de leçons",
+    "description": "Fieldset legend."
+  },
+  "settings.lessonsTabLabel": {
+    "defaultMessage": "Exercices",
+    "description": "Tab label."
+  },
+  "settings.miscellaneousTabLabel": {
+    "defaultMessage": "Divers",
+    "description": "Tab label."
+  },
+  "settings.optionsLegend": {
+    "defaultMessage": "Options",
+    "description": "Fieldset legend."
+  },
+  "settings.previewLabel": {
+    "defaultMessage": "Aperçu de la leçon",
+    "description": "Fieldset label."
+  },
+  "settings.previewLegend": {
+    "defaultMessage": "Aperçu",
+    "description": "Fieldset legend."
+  },
+  "settings.removePunctuationLabel": {
+    "defaultMessage": "Supprimer la ponctuation",
+    "description": "Checkbox label."
+  },
+  "settings.removePunctuationTitle": {
+    "defaultMessage": "Supprimer la ponctuation pour rendre le texte plus simple à saisir.",
+    "description": "Checkbox title."
+  },
+  "settings.selectLanguageLabel": {
+    "defaultMessage": "Langue:",
+    "description": "Dropdown label."
+  },
+  "settings.selectLanguageTitle": {
+    "defaultMessage": "Sélectionner votre langue parlée.",
+    "description": "Dropdown title."
+  },
+  "settings.selectLayoutLabel": {
+    "defaultMessage": "Disposition:",
+    "description": "Dropdown label."
+  },
+  "settings.selectLayoutTitle": {
+    "defaultMessage": "Sélectionnez la disposition du clavier avec laquelle vous souhaitez vous entraîner. Il peut y avoir de nombreuses dispositions disponibles pour chaque langue.",
+    "description": "Dropdown title."
+  },
+  "settings.stopCursorOnErrorDescription": {
+    "defaultMessage": "Si cette option est activée, le curseur de texte cesse d’avancer jusqu’à ce que la touche de droite soit enfoncée à la position actuelle. Si cette option est désactivée, toutes les erreurs seront accumulées dans le champ de saisie de texte et doivent être effacées avec la touche Suppr.",
+    "description": "Checkbox description."
+  },
+  "settings.stopCursorOnErrorLabel": {
+    "defaultMessage": "Arrêter le curseur lorsqu'une erreur se produit",
+    "description": "Checkbox label."
+  },
+  "settings.textAppearanceLegend": {
+    "defaultMessage": "Apparence du texte",
+    "description": "Fieldset legend."
+  },
+  "settings.transformToLowercaseLabel": {
+    "defaultMessage": "Transformer en minuscules",
+    "description": "Checkbox label."
+  },
+  "settings.transformToLowercaseTitle": {
+    "defaultMessage": "Transformer tout le texte en minuscules pour le rendre plus simple à saisir.",
+    "description": "Checkbox title."
+  },
+  "settings.typingOptionsLegend": {
+    "defaultMessage": "Options de frappe",
+    "description": "Fieldset legend."
+  },
+  "settings.typingSpeedUnitCaption": {
+    "defaultMessage": "Mesurer la vitesse de frappe dans:",
+    "description": "Radio button group caption."
+  },
+  "settings.typingSpeedUnitDescription": {
+    "defaultMessage": "Aux fins de la mesure de la frappe, chaque mot est normalisé pour comporter cinq caractères ou frappes en anglais, y compris les espaces et la ponctuation.",
+    "description": "Radio button group description."
+  },
+  "settings.typingTabLabel": {
+    "defaultMessage": "Saisie de texte",
+    "description": "Tab label."
+  },
+  "settings.whitespaceLabel": {
+    "defaultMessage": "Espace blanc:",
+    "description": "Checkbox label."
+  },
+  "speedUnit.cpm.description": {
+    "defaultMessage": "Mesurer la vitesse de frappe en caractères par minute.",
+    "description": "Widget title."
+  },
+  "speedUnit.cpm.name": {
+    "defaultMessage": "Caractères par minute",
+    "description": "Widget label."
+  },
+  "speedUnit.cps.description": {
+    "defaultMessage": "Mesurer la vitesse de frappe en caractères par seconde.",
+    "description": "Widget title."
+  },
+  "speedUnit.cps.name": {
+    "defaultMessage": "Caractères par seconde",
+    "description": "Widget label."
+  },
+  "speedUnit.wpm.description": {
+    "defaultMessage": "Mesurer la vitesse de frappe en mots par minute.",
+    "description": "Widget title."
+  },
+  "speedUnit.wpm.name": {
+    "defaultMessage": "Mots par minute",
+    "description": "Widget label."
+  },
+  "textStats.allWordCount": {
+    "defaultMessage": "Tous les mots",
+    "description": "Text label."
+  },
+  "textStats.averageWordLength": {
+    "defaultMessage": "Longueur moyenne des mots",
+    "description": "Text label."
+  },
+  "textStats.charsExcludingWhitespace": {
+    "defaultMessage": "Caractères sans espaces",
+    "description": "Text label."
+  },
+  "textStats.charsIncludingWhitespace": {
+    "defaultMessage": "Caractères avec espaces",
+    "description": "Text label."
+  },
+  "textStats.mostCommonWords": {
+    "defaultMessage": "{count} mots les plus courants",
+    "description": "Text fragment."
+  },
+  "textStats.timeToRead": {
+    "defaultMessage": "À la vitesse de lecture moyenne de {speed} MPM, il faudrait {time} pour lire ce texte.",
+    "description": "Text fragment."
+  },
+  "textStats.timeToType": {
+    "defaultMessage": "À la vitesse de frappe moyenne de {speed} MPM, il faudrait {time} pour saisir ce texte.",
+    "description": "Text fragment."
+  },
+  "textStats.uniqueWordCount": {
+    "defaultMessage": "Mots uniques",
+    "description": "Text label."
+  },
+  "textTools.emptyTextMessage": {
+    "defaultMessage": "Veuillez fournir un texte afin de calculer les statistiques associées.",
+    "description": "Freeform text."
+  },
+  "textTools.exampleText": {
+    "defaultMessage": "(Exemple de texte, cliquez ici pour l'effacer.)",
+    "description": "Text fragment."
+  },
+  "textTools.textInputPlaceholder": {
+    "defaultMessage": "Collez votre texte ici",
+    "description": "Input field placeholder."
+  },
+  "textType.digits": {
+    "defaultMessage": "Chiffres",
+    "description": "Label."
+  },
+  "textType.letters": {
+    "defaultMessage": "Lettres",
+    "description": "Label."
+  },
+  "theme.enterFullscreenTitle": {
+    "defaultMessage": "Passer en mode plein écran.",
+    "description": "Theme switching button."
+  },
+  "theme.exitFullscreenTitle": {
+    "defaultMessage": "Quittez le mode plein écran.",
+    "description": "Theme switching button."
+  },
+  "theme.fullscreenNotSupportedTitle": {
+    "defaultMessage": "Le mode plein écran n'est pas pris en charge.",
+    "description": "Theme switching button."
+  },
+  "theme.switchThemeTitle": {
+    "defaultMessage": "Basculer au thème {name}.",
+    "description": "Theme switching button."
+  },
+  "tour.close": {
+    "defaultMessage": "Fermer",
+    "description": "Button name"
+  },
+  "tour.next": {
+    "defaultMessage": "Suivant",
+    "description": "Button name"
+  },
+  "tour.previous": {
+    "defaultMessage": "Précédent",
+    "description": "Button name"
+  }
+}

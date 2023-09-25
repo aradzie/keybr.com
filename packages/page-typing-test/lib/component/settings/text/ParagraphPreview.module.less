@@ -1,0 +1,36 @@
+.paragraphPreview {
+  width: 50rem; /* TODO Fix this. */
+}
+
+.item {
+  display: flex;
+}
+
+.item_active {
+  border-bottom: 1px dotted var(--separator-color);
+}
+
+.item_inactive {
+  opacity: 0.5;
+}
+
+.index {
+  display: inline-block;
+  min-width: 4rem;
+  text-align: right;
+}
+
+.content {
+  display: inline-block;
+  overflow: hidden;
+  max-width: 100%;
+  font-style: italic;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.separator {
+  display: inline-block;
+  min-width: 1rem;
+  text-align: center;
+}

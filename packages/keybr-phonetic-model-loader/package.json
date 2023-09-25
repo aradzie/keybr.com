@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "name": "@keybr/phonetic-model-loader",
+  "version": "0.0.0",
+  "main": "lib/index.ts",
+  "types": ".types/index.d.ts",
+  "dependencies": {
+    "@keybr/debug": "*",
+    "@keybr/layout": "*",
+    "@keybr/pages-shared": "*",
+    "@keybr/phonetic-model": "*",
+    "@keybr/request": "*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "clean": "rm -fr .types",
+    "compile": "tsc"
+  }
+}

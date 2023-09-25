@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyboard SYSTEM "../dtd/ldmlKeyboard.dtd">
+<keyboard locale="got-t-k0-windows">
+	<version platform="10" number="$Revision$"/>
+	<names>
+		<name value="Gothic"/>
+	</names>
+	<settings fallback="omit"/>
+	<keyMap>
+		<map iso="E00" to="\u{331}\u{304}"/> <!-- `  to= ̱̄  -->
+		<map iso="E01" to="1"/>
+		<map iso="E02" to="2"/>
+		<map iso="E03" to="3"/>
+		<map iso="E04" to="4"/>
+		<map iso="E05" to="5"/>
+		<map iso="E06" to="6"/>
+		<map iso="E07" to="7"/>
+		<map iso="E08" to="8"/>
+		<map iso="E09" to="9"/>
+		<map iso="E10" to="0"/>
+		<map iso="E11" to="-"/>
+		<map iso="E12" to="="/>
+		<map iso="D01" to="\u{335}"/> <!-- Q  to= ̵  -->
+		<map iso="D02" to="\u{345}"/> <!-- W  to= ͅ  -->
+		<map iso="D03" to="\u{334}"/> <!-- E  to= ̴  -->
+		<map iso="D04" to="\u{342}"/> <!-- R  to= ͂  -->
+		<map iso="D05" to="\u{344}"/> <!-- T  to= ̈́  -->
+		<map iso="D06" to="𐌹\u{308}"/>
+		<map iso="D07" to="\u{33F}"/> <!-- U  to= ̿  -->
+		<map iso="D08" to="\u{339}"/> <!-- I  to= ̹  -->
+		<map iso="D09" to="\u{349}"/> <!-- O  to= ͉  -->
+		<map iso="D10" to="\u{340}"/> <!-- P  to= ̀  -->
+		<map iso="D11" to="\u{341}"/> <!-- [  to= ́  -->
+		<map iso="D12" to="\u{34A}"/> <!-- ]  to= ͊  -->
+		<map iso="C01" to="\u{330}"/> <!-- A  to= ̰  -->
+		<map iso="C02" to="\u{343}"/> <!-- S  to= ̓  -->
+		<map iso="C03" to="\u{333}"/> <!-- D  to= ̳  -->
+		<map iso="C04" to="\u{346}"/> <!-- F  to= ͆  -->
+		<map iso="C05" to="\u{332}"/> <!-- G  to= ̲  -->
+		<map iso="C06" to="\u{337}"/> <!-- H  to= ̷  -->
+		<map iso="C07" to="\u{33E}"/> <!-- J  to= ̾  -->
+		<map iso="C08" to="\u{33A}"/> <!-- K  to= ̺  -->
+		<map iso="C09" to="\u{33B}"/> <!-- L  to= ̻  -->
+		<map iso="C10" to=":"/> <!-- ; -->
+		<map iso="C11" to="&apos;"/>
+		<map iso="C12" to="\u{305}"/> <!-- (key to right of ')  to= ̅  -->
+		<map iso="B01" to="\u{336}"/> <!-- Z  to= ̶  -->
+		<map iso="B02" to="\u{347}"/> <!-- X  to= ͇  -->
+		<map iso="B03" to="\u{338}"/> <!-- C  to= ̸  -->
+		<map iso="B04" to="\u{348}"/> <!-- V  to= ͈  -->
+		<map iso="B05" to="\u{331}"/> <!-- B  to= ̱  -->
+		<map iso="B06" to="\u{33D}"/> <!-- N  to= ̽  -->
+		<map iso="B07" to="\u{33C}"/> <!-- M  to= ̼  -->
+		<map iso="B08" to=","/>
+		<map iso="B09" to="."/>
+		<map iso="B10" to="·"/> <!-- / -->
+		<map iso="A03" to=" "/> <!-- space -->
+	</keyMap>
+	<keyMap modifiers="shift+caps?">
+		<map iso="E00" to="~"/> <!-- `  base=̱̄ -->
+		<map iso="E01" to="!"/> <!-- 1 -->
+		<map iso="E02" to="@"/> <!-- 2 -->
+		<map iso="E03" to="#"/> <!-- 3 -->
+		<map iso="E04" to="$"/> <!-- 4 -->
+		<map iso="E05" to="%"/> <!-- 5 -->
+		<map iso="E06" to="^"/> <!-- 6 -->
+		<map iso="E07" to="&amp;"/> <!-- 7 -->
+		<map iso="E08" to="*"/> <!-- 8 -->
+		<map iso="E09" to="("/> <!-- 9 -->
+		<map iso="E10" to=")"/> <!-- 0 -->
+		<map iso="E11" to="_"/> <!-- - -->
+		<map iso="E12" to="+"/> <!-- = -->
+		<map iso="D11" to="["/> <!--   base=́ -->
+		<map iso="D12" to="]"/> <!--   base=͊ -->
+		<map iso="C10" to=";"/> <!--   base=: -->
+		<map iso="C11" to="\u{22}"/> <!-- '  to= "  -->
+		<map iso="C12" to="\"/> <!-- (key to right of ')  base=̅ -->
+		<map iso="B08" to="&lt;"/> <!-- , -->
+		<map iso="B09" to="&gt;"/> <!-- . -->
+		<map iso="B10" to="/"/> <!--   base=· -->
+		<map iso="A03" to=" "/> <!-- space -->
+	</keyMap>
+</keyboard>

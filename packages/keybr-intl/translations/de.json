@@ -1,0 +1,1482 @@
+{
+  "account.accountDetailsLegend": {
+    "defaultMessage": "Details zum Konto",
+    "description": "Fieldset legend."
+  },
+  "account.accountPageDescription": {
+    "defaultMessage": "<p>Sie verwenden ein Konto, um Ihre Tippdaten auf unseren Servern in der Cloud zu speichern. Sie können von jedem Computer oder Browser aus auf Ihr Profil zugreifen.</p>",
+    "description": "Freeform text."
+  },
+  "account.anonymizeButtonLabel": {
+    "defaultMessage": "Bitte anonymisieren Sie sich",
+    "description": "Button label."
+  },
+  "account.anonymizeButtonTitle": {
+    "defaultMessage": "Verbergen Sie Ihr echtes Benutzerbild und Ihren Namen vor der Öffentlichkeit.",
+    "description": "Button title."
+  },
+  "account.anonymizeDescription": {
+    "defaultMessage": "Bei der Anonymisierung werden Ihr echtes Benutzerbild und Ihr Name durch den Namen ersetzt, den wir Ihnen vergeben. Sie können beliebig oft zwischen Ihrem echten und Ihrem anonymen Namen wechseln.",
+    "description": "Freeform text."
+  },
+  "account.anonymousUserName": {
+    "defaultMessage": "Anonymer Nutzer",
+    "description": "Text label."
+  },
+  "account.avatarDescription": {
+    "defaultMessage": "Ihr Benutzerbild und Ihr Name sind für die Öffentlichkeit in Ihrem Profil, in der Highscore-Tabelle und im Multiplayer-Spiel sichtbar.",
+    "description": "Freeform text."
+  },
+  "account.checkout.description": {
+    "defaultMessage": "Kaufen Sie ein Premium-Konto, um zusätzliche Funktionen freizuschalten und ein werbefreies Erlebnis zu genießen.",
+    "description": "Form description."
+  },
+  "account.checkout.title": {
+    "defaultMessage": "Premium-Konto",
+    "description": "Form title."
+  },
+  "account.checkoutButtonLabel": {
+    "defaultMessage": "Premium-Konto kaufen",
+    "description": "Button label."
+  },
+  "account.checkoutButtonTitle": {
+    "defaultMessage": "Öffnen Sie das Zahlungsformular.",
+    "description": "Button title."
+  },
+  "account.deleteAccountButtonLabel": {
+    "defaultMessage": "Konto löschen",
+    "description": "Button label."
+  },
+  "account.deleteAccountButtonTitle": {
+    "defaultMessage": "Konto dauerhaft löschen",
+    "description": "Button title."
+  },
+  "account.deleteAccountConfirmation": {
+    "defaultMessage": "Sind Sie sicher, dass Sie Ihr Konto löschen wollen? Dieser Vorgang ist dauerhaft und kann nicht rückgängig gemacht werden! Sie können jedoch jederzeit ein neues Konto erstellen.",
+    "description": "Confirmation text."
+  },
+  "account.deleteAccountDescription": {
+    "defaultMessage": "Dadurch werden alle Ihre persönlich identifizierbaren Angaben, wie Ihr Name und Ihre E-Mail-Adresse, aus unserer Datenbank gelöscht. Dieser Vorgang kann nicht rückgängig gemacht werden! Wenn Sie nur Ihre Tippstatistiken löschen und neu beginnen möchten, können Sie dies auf der Profilseite tun.",
+    "description": "Freeform text."
+  },
+  "account.deleteAccountLegend": {
+    "defaultMessage": "Konto löschen",
+    "description": "Fieldset legend."
+  },
+  "account.emailFormDescription": {
+    "defaultMessage": "Einfache Anmeldung ohne Passwörter. Geben Sie einfach Ihre E-Mail-Adresse ein und wir senden Ihnen einen Login-Link. Gehen Sie zu Ihrem Posteingang und klicken Sie auf den Link, um ein neues Konto zu erstellen oder ein bestehendes Konto für die angegebene E-Mail-Adresse zu eröffnen. Nach Ablauf der angegebenen Zeit dauert es nur noch wenige Stunden. Um sich später erneut anzumelden, geben Sie dieselbe E-Mail-Adresse ein und wir senden Ihnen einen neuen Link für dasselbe Konto.",
+    "description": "Freeform text."
+  },
+  "account.emailPlaceholder": {
+    "defaultMessage": "Ihre E-Mail Adresse...",
+    "description": "Input field placeholder."
+  },
+  "account.emailSignInHeader": {
+    "defaultMessage": "Anmeldung per E-Mail",
+    "description": "Freeform header."
+  },
+  "account.emailState.errorText": {
+    "defaultMessage": "Es konnte keine E-Mail gesendet werden an<strong>{email}</strong>: {message}",
+    "description": "Text message."
+  },
+  "account.emailState.sendingText": {
+    "defaultMessage": "Versenden der E-Mail mit dem Anmeldelink an<strong>{email}</strong>... Bitte warten Sie einen Moment.",
+    "description": "Text message."
+  },
+  "account.emailState.sentText": {
+    "defaultMessage": "Wir haben eine E-Mail mit dem Login-Link an <strong>{email}</strong> geschickt. Sie sollte bald eintreffen. Bitte prüfen Sie Ihren Posteingang in ein oder zwei Minuten.",
+    "description": "Text message."
+  },
+  "account.emailTitle": {
+    "defaultMessage": "Dies ist die E-Mail-Adresse, an die wir den Anmeldelink senden.",
+    "description": "Input field title."
+  },
+  "account.freeAccountOverview": {
+    "defaultMessage": "<p>Kaufen Sie ein <strong>Premium-Konto</strong>, um zusätzliche Funktionen freizuschalten und ein werbefreies Erlebnis zu genießen. Hier sehen Sie die Liste der Vorteile eines Premium-Kontos:</p><ul><li><strong>Keine Werbungen.</strong> Werbung kann ablenken und Ihren Lernfortschritt behindern. Dies ist eine gute Möglichkeit, sie loszuwerden.</li><li><strong>Keine Tracker.</strong> Tracker sind unweigerlich mit Werbungen verbunden. Entfernen Sie alle Tracker für vollständige Online-Privatsphäre.</li><li><strong>Ultraschnelle Reaktionszeit.</strong> Anzeigen brauchen eine gewisse Zeit zum Laden. Sie loszuwerden bedeutet schnellere Ladezeiten für alle Seiten.</li></ul><p>Es ist eine einmalige Zahlung, die lebenslangen Zugang bietet.</p>",
+    "description": "Freeform text."
+  },
+  "account.pageTitle": {
+    "defaultMessage": "Konto | {name}",
+    "description": "Page title."
+  },
+  "account.premiumAccountHeader": {
+    "defaultMessage": "Premium-Konto",
+    "description": "Freeform header."
+  },
+  "account.premiumAccountLegend": {
+    "defaultMessage": "Premium-Konto",
+    "description": "Fieldset legend."
+  },
+  "account.premiumAccountOverview": {
+    "defaultMessage": "<p>Vielen Dank, dass Sie ein Premium-Konto erworben haben! Jetzt können Sie zusätzliche Funktionen und ein werbefreies Erlebnis genießen.</p>",
+    "description": "Freeform text."
+  },
+  "account.resendButtonLabel": {
+    "defaultMessage": "Erneut senden",
+    "description": "Button label."
+  },
+  "account.resendButtonTitle": {
+    "defaultMessage": "Noch eine E-Mail senden.",
+    "description": "Button title."
+  },
+  "account.retryButtonLabel": {
+    "defaultMessage": "Wiederholen",
+    "description": "Button label."
+  },
+  "account.retryButtonTitle": {
+    "defaultMessage": "Eine weitere E-Mail senden.",
+    "description": "Button title."
+  },
+  "account.sendButtonLabel": {
+    "defaultMessage": "Anmelde-Link senden",
+    "description": "Button label."
+  },
+  "account.sendButtonTitle": {
+    "defaultMessage": "Anmeldung mit einer E-Mail.",
+    "description": "Button title."
+  },
+  "account.signInPageDescription": {
+    "defaultMessage": "<p>Erstellen Sie ein Konto, um Ihre Tippdaten auf unseren Servern in der Cloud zu speichern. So können Sie von jedem Computer oder Browser aus auf Ihr Profil zugreifen. Wenn Sie kein Konto haben, werden Ihre Tippdaten lokal gespeichert und sind nur von Ihrem aktuellen Computer aus zugänglich.</p><p>Wir speichern keine Passwörter. Stattdessen verwenden wir Dienste von Drittanbietern, um unsere Benutzer zu authentifizieren. Wir bieten mehrere bequeme Möglichkeiten, ein Konto zu erstellen und sich anzumelden.</p><p>Sie können sich jederzeit abmelden. Das Löschen eines Kontos ist genau so einfach wie das Anlegen dieses.</p>",
+    "description": "Freeform text."
+  },
+  "account.signOutButtonLabel": {
+    "defaultMessage": "Abmelden",
+    "description": "Button label."
+  },
+  "account.signOutButtonTitle": {
+    "defaultMessage": "Melden Sie sich von der App ab.",
+    "description": "Button title."
+  },
+  "account.socialFormDescription": {
+    "defaultMessage": "Melden Sie sich über Ihr bevorzugtes soziales Netzwerk an. Wir respektieren Ihre Privatsphäre und versprechen Ihre Wall, Ihre Freunde oder Ihre E-Mail niemals zu spammen.",
+    "description": "Freeform text."
+  },
+  "account.socialSignInButtonLabel": {
+    "defaultMessage": "Anmelden mit {name}",
+    "description": "Button title."
+  },
+  "account.socialSignInButtonTitle": {
+    "defaultMessage": "Anmeldung über ein soziales Netzwerk.",
+    "description": "Button title."
+  },
+  "account.socialSignInHeader": {
+    "defaultMessage": "Anmeldung über soziale Netzwerke",
+    "description": "Freeform header."
+  },
+  "calendar.weekDayName": {
+    "defaultMessage": "Mo|Di|Mi|Do|Fr|Sa|So",
+    "description": "Day of week name."
+  },
+  "common.javaScriptDisabledText": {
+    "defaultMessage": "Diese App wird nicht funktionieren, weil JavaScript in Ihrem Browser deaktiviert ist!",
+    "description": "Common text."
+  },
+  "common.loadingText": {
+    "defaultMessage": "Die App wird geladen, bitte warten Sie einen Moment...",
+    "description": "Common text."
+  },
+  "footer.discordLinkTitle": {
+    "defaultMessage": "Diskutieren Sie auf unserem Discord-Server.",
+    "description": "Footer Discord link title."
+  },
+  "footer.emailLinkTitle": {
+    "defaultMessage": "Senden Sie Ihre Kommentare und Vorschläge an info@keybr.com",
+    "description": "Footer email link title."
+  },
+  "help.example1": {
+    "defaultMessage": "<a>Beispiel 1</a>, von 30 auf 70 WPM nach 4 Stunden 20 Minuten Üben im Laufe von 15 Tagen.",
+    "description": "Example profile text."
+  },
+  "help.example2": {
+    "defaultMessage": "<a>Beispiel 2</a>, von 35 auf 70 WPM nach 2 Stunden und 20 Minuten Üben im Laufe von 12 Tagen.",
+    "description": "Example profile text."
+  },
+  "help.example3": {
+    "defaultMessage": "<a>Beispiel 3</a>, ein ordentlicher Sprung von weniger als 20 auf 40 WPM nach 5 Stunden und 30 Minuten Üben im Laufe von 11 Tagen.",
+    "description": "Example profile text."
+  },
+  "help.example4": {
+    "defaultMessage": "<a>Beispiel 4</a>, nach 2 Stunden und 10 Minuten Üben im Laufe von 11 Tagen blieb die Tippgeschwindigkeit bei ~70 WPM (was schon ziemlich hoch ist), aber die Genauigkeit verbesserte sich.",
+    "description": "Example profile text."
+  },
+  "help.example5": {
+    "defaultMessage": "<a>Beispiel 5</a>, von 20 auf 45 WPM nach etwa 10 Stunden Üben im Laufe von 22 Tagen (ja, manchmal dauert es länger)",
+    "description": "Example profile text."
+  },
+  "help.indicatorsCaption": {
+    "defaultMessage": "Farbcodierung der Indikatoren.",
+    "description": "Figure legend."
+  },
+  "help.keyboardZonesCaption": {
+    "defaultMessage": "Tastaturbereiche und die richtige Platzierung der Finger.",
+    "description": "Figure legend."
+  },
+  "help.rule1.body": {
+    "defaultMessage": "<p>Wenn Sie zum ersten Mal üben, weiß der Computer nichts über Ihre Tippfähigkeiten, also verwendet er eine kleine Menge der häufigsten Buchstaben wie '<em>E</em>', '<em>N</em>', '<em>I</em>', '<em>T</em>', '<em>R</em>' und '<em>L</em>', um Wörter zu erzeugen. Alle generierten Wörter bestehen aus diesem kleinen Buchstabensatz, während die übrigen Buchstaben nicht verwendet werden. Da die Statistiken für die Buchstaben nicht bekannt sind, sind die entsprechenden Indikatoren grau.</p>",
+    "description": "Paragraph text."
+  },
+  "help.rule1.title": {
+    "defaultMessage": "Der Algorithmus beginnt mit den Anfangsbuchstaben",
+    "description": "Header text."
+  },
+  "help.rule2.body": {
+    "defaultMessage": "<p>Während Sie beginnen, die generierten Wörter zu tippen, sammelt der Computer Ihre Tippstatistiken. Die Farben der Indikatoren ändern sich von rot zu grün. Die Farbe Rot bedeutet, dass die Tippgeschwindigkeit für die jeweilige Taste langsam ist, und die Farbe Grün bedeutet das Gegenteil. In diesem Stadium ist es Ihr Ziel, alle Buchstaben grün zu färben, indem Sie Ihre Tippgeschwindigkeit verbessern. Bitte beachten Sie, dass in diesem Beispiel der Buchstabe '<em>T</em>' hervorgehoben ist, da er die schlechteste Tippgeschwindigkeit aufweist und somit zum Zielbuchstaben wird. Der Zielbuchstabe ist in jedem generierten Wort enthalten, und dies ist eine wichtige Information. Das bedeutet, dass Sie zu jeder Zeit genau die Taste üben, die Ihnen die meisten Schwierigkeiten bereitet.</p>",
+    "description": "Paragraph text."
+  },
+  "help.rule2.title": {
+    "defaultMessage": "Sie lernen die Anfangsbuchstaben.",
+    "description": "Header text."
+  },
+  "help.rule3.body": {
+    "defaultMessage": "<p>Wenn sich Ihre Tippgeschwindigkeit verbessert und alle Buchstaben schließlich grün werden, wird ein neuer Buchstabe '<em>S</em>' zu diesen hinzugefügt. Die Zufallswörter werden aus diesem neuen, erweiterten Buchstabensatz generiert. Der Buchstabe '<em>S</em>' ist der Zielbuchstabe und kommt in jedem erzeugten Wort vor. Auch hier ist die Farbe dieses Buchstabens grau, da seine Tippstatistiken unbekannt sind.</p>",
+    "description": "Paragraph text."
+  },
+  "help.rule3.title": {
+    "defaultMessage": "Der Algorithmus fügt mehr Buchstaben hinzu.",
+    "description": "Header text."
+  },
+  "help.rule4.body": {
+    "defaultMessage": "<p>In diesem Schritt ist es Ihr Ziel, diesen neuen Buchstaben grün zu machen, und wenn dies geschieht, wird ein weiterer Buchstabe zu diesen hinzugefügt, und der Zyklus geht weiter. Realistischerweise ist es sehr wahrscheinlich, dass sich die Tippgeschwindigkeit der vorherigen Buchstaben verschlechtert, und Sie werden sehen, dass diese wieder rot werden, wie in diesem Beispiel. Das ist zu erwarten, Ihr Ziel ist immer noch dasselbe, nämlich den neuen Zielbuchstaben grün zu machen, um den nächsten freizuschalten.</p>",
+    "description": "Paragraph text."
+  },
+  "help.rule4.title": {
+    "defaultMessage": "Sie lernen zusätzliche Buchstaben.",
+    "description": "Header text."
+  },
+  "help.rule5.body": {
+    "defaultMessage": "<p>Wenn Sie hartnäckig genug sind, werden früher oder später alle Buchstaben grün werden. Herzlichen Glückwunsch, Sie haben Ihr Hauptziel erreicht! Das heißt aber nicht, dass Sie aufhören sollten zu lernen, Sie können so lange weitermachen, wie Sie wollen.</p>",
+    "description": "Paragraph text."
+  },
+  "help.rule5.title": {
+    "defaultMessage": "Der Zyklus wiederholt sich",
+    "description": "Header text."
+  },
+  "help.section1": {
+    "defaultMessage": "<h1>Schneller tippen lernen</h1><h2>Tippen mit dem Finger</h2><p>Diese Webapp hilft Ihnen, das <em>Tippen mit dem Finger</em> zu lernen, d. h. mit dem Muskelgedächtnis zu tippen, ohne die Tasten auf der Tastatur mit den Augen zu suchen. Damit können Sie Ihre Tippgeschwindigkeit und -genauigkeit erheblich verbessern. Das Gegenteil ist das <em>Hunt-and-peck-Tippen</em>, eine Methode, bei der Sie auf die Tastatur statt auf den Bildschirm schauen und nur die Zeigefinger benutzen.</p>",
+    "description": "Freeform text."
+  },
+  "help.section2": {
+    "defaultMessage": "<h2>Die Lehrmethode</h2><p>Diese App verwendet einen einzigartigen Ansatz. Sie nutzt Statistiken und intelligente Algorithmen, um automatisch Übungen zum Tippen zu erstellen, die Ihrem aktuellen Kenntnisstand entsprechen. Dabei wird der folgende Zyklus wiederholt:</p><ol><li>Der Algorithmus erstellt für Sie eine Liste mit zufälligen Wörtern, die auf Ihren Tippfähigkeiten basieren. Ihr Fähigkeitsniveau wird anhand der bisher gesammelten Tippstatistiken gemessen. Die Wörter bestehen aus einer Reihe von Buchstaben, die vom Algorithmus ausgewählt werden.</li><li>Sie tippen die vorgegebenen Wörter. Sie versuchen, so wenig Fehler wie möglich zu machen.</li><li>Während Sie tippen, sammelt der Algorithmus Ihre Tippstatistiken, wie z. B. die Zeit bis zum Tippen für jede einzelne Taste. Am Ende werden diese Statistiken verwendet, um die nächste Wortliste für Schritt eins zu generieren.</li></ol><p>In jeder Phase tippen Sie einfach die vorgegebenen Wortlisten ein, und der Computer erledigt den Rest.</p>",
+    "description": "Freeform text."
+  },
+  "help.section3": {
+    "defaultMessage": "<h2>Der Algorithmus zur Worterzeugung</h2><p>Diese App erzeugt zufällige, aber lesbare und aussprechbare Wörter, die die phonetischen Regeln Ihrer Muttersprache verwenden. Diese Wörter sehen fast natürlich aus, und sind es oft auch. Das Tippen von sinnvollem Text ist viel einfacher als das Wiederholen von zufälligen Buchstaben, und es hilft Ihnen, sich häufige Tastenkombinationen zu merken. Der letzte Punkt ist entscheidend. Zum Beispiel ist es fast unmöglich, dass der Buchstabe '<em>W</em>' auf das '<em>Z</em>' im Englischen folgt, und Sie werden eine solche Kombination in dieser Anwendung nie tippen. Stattdessen werden Sie gebräuchlichere Wörter wie «<em>der</em>», «<em>dass</em>», «<em>mit</em>» usw. schreiben. Bald werden Sie lernen, wie man die «<em>th</em>»-Kombination wirklich schnell tippt.</p><p>Die Wörter werden aus den Buchstaben generiert, die nach den folgenden Regeln ausgewählt werden.</p>",
+    "description": "Freeform text."
+  },
+  "help.section4": {
+    "defaultMessage": "<p>Die genaue Bedeutung der einzelnen Indikatorfarben ist in der folgenden Legende angegeben.</p>",
+    "description": "Freeform text."
+  },
+  "help.section5": {
+    "defaultMessage": "<h2>Die richtige Art, die Tastatur zu benutzen</h2><p>Legen Sie alle Ihre Finger auf die erste Reihe, die die <em>Feststelltaste</em> enthält. Auf den Tasten '<em>F</em>' und '<em>J</em>' befinden sich kleine Erhebungen, legen Sie Ihre Zeigefinger auf die Erhebungen. Jeder Finger ist für einen eigenen Tastensatz zuständig, wie in der nächsten Abbildung erklärt wird.</p>",
+    "description": "Freeform text."
+  },
+  "help.section6": {
+    "defaultMessage": "<h2>Die Effektivität der App</h2><p>Wir haben ein paar Beispielprofile ausgewählt, um Ihnen zu zeigen, wie Menschen beim Erlernen des Tippens mit dieser App Fortschritte erzielen. Dies sind echte, anonymisierte Benutzerprofile. Hoffentlich inspirieren sie Sie, weiter zu lernen!</p>",
+    "description": "Freeform text."
+  },
+  "highScores.layoutColumn": {
+    "defaultMessage": "Layout",
+    "description": "Table column name."
+  },
+  "highScores.scoreColumn": {
+    "defaultMessage": "Punktestand",
+    "description": "Table column name."
+  },
+  "highScores.typingSpeedColumn": {
+    "defaultMessage": "Geschwindigkeit",
+    "description": "Table column name."
+  },
+  "highScores.userColumn": {
+    "defaultMessage": "Benutzer",
+    "description": "Table column name."
+  },
+  "language.be.name": {
+    "defaultMessage": "Belarussisch (Беларуская)",
+    "description": "Language name."
+  },
+  "language.de.name": {
+    "defaultMessage": "Deutsch",
+    "description": "Language name."
+  },
+  "language.en.name": {
+    "defaultMessage": "Englisch (English)",
+    "description": "Language name."
+  },
+  "language.es.name": {
+    "defaultMessage": "Spanisch (Español)",
+    "description": "Language name."
+  },
+  "language.fr.name": {
+    "defaultMessage": "Französisch (Français)",
+    "description": "Language name."
+  },
+  "language.it.name": {
+    "defaultMessage": "Italienisch (Italiano)",
+    "description": "Language name."
+  },
+  "language.pl.name": {
+    "defaultMessage": "Polnisch (Polski)",
+    "description": "Language name."
+  },
+  "language.pt.name": {
+    "defaultMessage": "Portugiesisch (Português)",
+    "description": "Language name."
+  },
+  "language.ru.name": {
+    "defaultMessage": "Russisch (Русский)",
+    "description": "Language name."
+  },
+  "language.uk.name": {
+    "defaultMessage": "Ukrainisch (Українська)",
+    "description": "Language name."
+  },
+  "layouts.bottomRowKeysText": {
+    "defaultMessage": "Tasten in der unteren Zeile:",
+    "description": "Field name."
+  },
+  "layouts.bottomRowKeysTitle": {
+    "defaultMessage": "Prozentualer Anteil der in der Umschaltzeile getippten Tasten, je weniger, desto besser.",
+    "description": "Field title."
+  },
+  "layouts.description.colemak": {
+    "defaultMessage": "<p>Das Colemak-Layout wurde als praktische Alternative zu den Qwerty- und Dvorak-Tastaturlayouts entwickelt und bietet eine schrittweise Umstellung für Benutzer, die bereits an das Standardlayout gewöhnt sind.</p><p>Das Colemak-Layout wurde auf der Grundlage des QWERTY-Layouts entwickelt, wobei die Positionen von 17 Tasten geändert wurden, während die QWERTY-Positionen der meisten nicht-alphabetischen Zeichen und vieler beliebter Tastaturkürzel beibehalten wurden. Dadurch wird es für Personen, die bereits in QWERTY tippen, einfacher zu erlernen. Es hat einige Designziele mit dem Dvorak-Layout gemeinsam, wie z. B. die Minimierung des Fingerabdrucks und die intensive Nutzung der Startzeile.</p><p>Es wird von vielen modernen Betriebssystemen unterstützt.</p>",
+    "description": "Freeform text."
+  },
+  "layouts.description.dvorak": {
+    "defaultMessage": "<p>Dvorak ist ein Tastaturlayout für die englische Sprache, das 1936 von August Dvorak und William Dealey entwickelt wurde. Es wurde als schnellere und ergonomischere Alternative zum QWERTY-Layout entwickelt. Befürworter der Dvorak-Tastatur behaupten, dass sie weniger Fingerbewegungen erfordert und dadurch die Fehlerquote reduziert, die Tippgeschwindigkeit erhöht, Verletzungen durch wiederholte Belastung verringert und im Vergleich zur QWERTY-Tastatur mehr Komfort bietet.</p><p>Es gelang jedoch nicht, die QWERTY-Tastatur als gängigstes Tastaturlayout abzulösen, da die QWERTY-Tastatur 60 Jahre früher eingeführt wurde.</p><p>Im Jahr 2005 wurde der Weltrekord für die schnellste englische Schreibkraft mit dem Dvorak-Tastaturlayout von Barbara Blackburn aufgestellt.</p><p>Fast alle modernen Betriebssysteme ermöglichen es dem Benutzer, auf das Dvorak-Layout umzuschalten, und es besteht eine gute Chance, dass auch Ihr Betriebssystem es unterstützt.</p>",
+    "description": "Freeform text."
+  },
+  "layouts.description.qwerty": {
+    "defaultMessage": "<p>Es begann alles in den 1860er Jahren. Ein Amateur-Erfinder, Politiker, Drucker und Zeitungsmann in Milwaukee namens Christopher Latham Sholes tüftelte in seiner Freizeit oft an neuen Maschinen, um seine Geschäfte effizienter zu machen.</p><p>Die gängige Theorie besagt, dass Sholes die Tastatur neu konstruieren musste, um den mechanischen Mängeln der frühen Schreibmaschinen zu begegnen. Die Schreibstangen, die die Taste mit der Buchstabenplatte verbanden, hingen in einem Kreislauf unter dem Papier. Wenn ein Benutzer schnell eine Folge von Buchstaben tippte, deren Balken nahe beieinander lagen, klemmte die empfindliche Maschinerie.</p><p>Sholes gestaltete die Anordnung neu, um die häufigsten Buchstabenfolgen wie “th“ oder “,he“ zu trennen. Die Maschine wurde 1875 von dem New Yorker Waffenhersteller Remington and Sons in Lizenz hergestellt. Die Maschine trug den Namen Remington No. 1 und war ein kommerzieller Misserfolg, da sie sich nicht in großen Stückzahlen verkaufte.</p><p>Nachdem die Firma Remington Rückmeldungen erhalten hatte, überarbeitete sie die Maschine und schuf die Remington No. 2. Diese neue Maschine wurde 1877 auf den Markt gebracht und war ein großer Erfolg. Es war das erste Gerät, das das QWERTY-Tastaturlayout, wie wir es heute kennen, verwendete und dem Benutzer die Möglichkeit gab, Groß- und Kleinbuchstaben zu tippen und mit einer Umschalttaste zwischen den beiden zu wechseln.</p><p>Das klassische QWERTY-Tastaturlayout ist ein unglücklicher historischer Zufall und ist nicht optimal, deshalb wurden die anderen Layouts erfunden.</p>",
+    "description": "Freeform text."
+  },
+  "layouts.description.workman": {
+    "defaultMessage": "<p>Das Workman-Layout reduziert die seitliche Bewegung der Finger und Handgelenke und sorgt für eine ausgewogenere Nutzung der linken und rechten Hand. 21 Zeichen sind anders als bei Qwerty.</p><p>Das Workman-Layout bietet viele Vorteile. Es ist bequem, ergonomisch und effizient, da viele Tasten innerhalb des natürlichen Bewegungsbereichs der Finger liegen. Der Bedarf an seitlichen Bewegungen wird für Finger und Handgelenke reduziert. Das Workman-Layout weist insgesamt einen geringeren Fingerbewegungsweg für die englische Sprache auf als das Colemak-Layout. Es führt jedoch im Allgemeinen zu einer höheren Häufigkeit von n-Grammen mit demselben Finger, d. h. ein Finger muss häufiger als bei anderen Layouts zwei Tasten nacheinander drücken.</p>",
+    "description": "Freeform text."
+  },
+  "layouts.heatmapCaption": {
+    "defaultMessage": "Tastenfrequenz-Heatmap für {name}",
+    "description": "Figure caption."
+  },
+  "layouts.heatmapDescription": {
+    "defaultMessage": "Dieses Diagramm zeigt relative Tastenhäufigkeiten als Heatmap.",
+    "description": "Figure description."
+  },
+  "layouts.homeRowKeysText": {
+    "defaultMessage": "Tasten in der Startzeile:",
+    "description": "Field name."
+  },
+  "layouts.homeRowKeysTitle": {
+    "defaultMessage": "Prozentsatz der Tasten, die getippt wurden, ohne die Feststelltastenzeile zu verlassen, je mehr, desto besser.",
+    "description": "Field title."
+  },
+  "layouts.layoutNameHeader": {
+    "defaultMessage": "{name} Layout",
+    "description": "Text header."
+  },
+  "layouts.sameFingerKeysText": {
+    "defaultMessage": "Mit demselben Finger getippte Tasten:",
+    "description": "Field name."
+  },
+  "layouts.sameFingerKeysTitle": {
+    "defaultMessage": "Prozentsatz der mit demselben Finger getippten Tasten, je weniger, desto besser.",
+    "description": "Field title."
+  },
+  "layouts.sameHandKeysText": {
+    "defaultMessage": "Von der gleichen Hand getippte Tasten:",
+    "description": "Field name."
+  },
+  "layouts.sameHandKeysTitle": {
+    "defaultMessage": "Prozentsatz der von derselben Hand getippten Tasten, je weniger, desto besser.",
+    "description": "Field title."
+  },
+  "layouts.topRowKeysText": {
+    "defaultMessage": "Tasten in der obersten Zeile:",
+    "description": "Field name."
+  },
+  "layouts.topRowKeysTitle": {
+    "defaultMessage": "Prozentsatz der in der Tabulatorzeile eingegebenen Tasten, je weniger, desto besser.",
+    "description": "Field title."
+  },
+  "layouts.websiteLinkText": {
+    "defaultMessage": "Offizielle Website",
+    "description": "Link text."
+  },
+  "layouts.wikipediaLinkText": {
+    "defaultMessage": "Wikipedia-Artikel",
+    "description": "Link text."
+  },
+  "learningRate.alreadyUnlocked": {
+    "defaultMessage": "This letter is already unlocked.",
+    "description": "Message text."
+  },
+  "learningRate.remainingLessons": {
+    "defaultMessage": "Approximately {remainingLessons} lessons remaining to unlock this letter ({certainty} certainty).",
+    "description": "Message text."
+  },
+  "learningRate.unknown": {
+    "defaultMessage": "Need more data to compute the remaining lessons to unlock this letter.",
+    "description": "Message text."
+  },
+  "lesson.averageSpeedLabel": {
+    "defaultMessage": "Durchschnittliche Tippgeschwindigkeit",
+    "description": "Label name."
+  },
+  "lesson.averageSpeedTitle": {
+    "defaultMessage": "Durchschnittliche Tippgeschwindigkeit ({speedUnitName}).",
+    "description": "Label title."
+  },
+  "lesson.bestSpeedLabel": {
+    "defaultMessage": "Beste Tippgeschwindigkeit",
+    "description": "Label name."
+  },
+  "lesson.bestSpeedTitle": {
+    "defaultMessage": "Beste Tippgeschwindigkeit ({speedUnitName}).",
+    "description": "Label title."
+  },
+  "lesson.boostedKeyText": {
+    "defaultMessage": "Taste mit erhöhter Frequenz.",
+    "description": "Character details text."
+  },
+  "lesson.characterName": {
+    "defaultMessage": "Zeichen ''{name}''",
+    "description": "Character details text."
+  },
+  "lesson.confidenceLevelLabel": {
+    "defaultMessage": "Vertrauensniveau",
+    "description": "Label name."
+  },
+  "lesson.confidenceLevelTitle": {
+    "defaultMessage": "Vertrauensniveau (von 0 auf 1).",
+    "description": "Label title."
+  },
+  "lesson.currentKeyPanelLabel": {
+    "defaultMessage": "Aktuelle Taste",
+    "description": "Panel label."
+  },
+  "lesson.dailyGoalPanelLabel": {
+    "defaultMessage": "Tägliches Ziel",
+    "description": "Panel label."
+  },
+  "lesson.dailyGoalPanelTitle": {
+    "defaultMessage": "Der Fortschritt auf dem Weg zu deinem Tagesziel.",
+    "description": "Panel title."
+  },
+  "lesson.forcedKeyText": {
+    "defaultMessage": "Eine manuell hinzugefügte Taste.",
+    "description": "Character details text."
+  },
+  "lesson.gaugesPanelLabel": {
+    "defaultMessage": "Metriken",
+    "description": "Panel label."
+  },
+  "lesson.indicator.boostedFrequency": {
+    "defaultMessage": "Taste mit erhöhter Häufigkeit. Sie brauchen am meisten Zeit, um diese Taste zu finden, also hat der Algorithmus sie ausgewählt, um sie in jedes generierte Wort aufzunehmen.",
+    "description": "Indicator description."
+  },
+  "lesson.indicator.includedManually": {
+    "defaultMessage": "Taste, die manuell in die Übungen aufgenommen wurde.",
+    "description": "Indicator description."
+  },
+  "lesson.indicator.leastConfidence": {
+    "defaultMessage": "Eine kalibrierte Taste mit dem niedrigsten Vertrauensniveau. Je öfter Sie diese Taste drücken, desto genauer wird diese Metrik.",
+    "description": "Indicator description."
+  },
+  "lesson.indicator.mostConfidence": {
+    "defaultMessage": "Eine kalibrierte Taste mit dem höchsten Vertrauensniveau. Je öfter Sie diese Taste drücken, desto genauer wird diese Metrik.",
+    "description": "Indicator description."
+  },
+  "lesson.indicator.notCalibrated": {
+    "defaultMessage": "Eine nicht kalibrierte Taste mit einem unbekannten Vertrauensniveau. Sie haben diese Taste noch nicht gedrückt.",
+    "description": "Indicator description."
+  },
+  "lesson.indicator.notIncluded": {
+    "defaultMessage": "Taste, die noch nicht in die Übungen aufgenommen wurde.",
+    "description": "Indicator description."
+  },
+  "lesson.keySetPanelLabel": {
+    "defaultMessage": "Alle Tasten",
+    "description": "Panel label."
+  },
+  "lesson.notCalibratedText": {
+    "defaultMessage": "Nicht kalibriert, mehr Beispiele erforderlich",
+    "description": "Panel text."
+  },
+  "lessonType.customText.description": {
+    "defaultMessage": "Generieren Sie Lektionen aus den Wörtern Ihres eigenen, hier bereitgestellten benutzerdefinierten Textes. Alle Tastaturtasten sind standardmäßig enthalten.",
+    "description": "Description text."
+  },
+  "lessonType.customText.name": {
+    "defaultMessage": "Benutzerdefinierter Text",
+    "description": "Widget label."
+  },
+  "lessonType.guided.description": {
+    "defaultMessage": "In diesem Modus werden automatisch Tipplektionen mit zufälligen Wörtern nach den phonetischen Regeln Ihrer Sprache erstellt. Der Tastensatz wird dynamisch auf der Grundlage Ihrer Leistung erweitert.",
+    "description": "Description text."
+  },
+  "lessonType.guided.name": {
+    "defaultMessage": "Geführte Lektionen",
+    "description": "Widget label."
+  },
+  "lessonType.numbers.name": {
+    "defaultMessage": "Zahlen",
+    "description": "Widget label."
+  },
+  "lessonType.wordList.description": {
+    "defaultMessage": "Generieren Sie Lektionen aus der Liste der häufigsten Wörter. Alle Tastaturtasten sind standardmäßig enthalten.",
+    "description": "Description text."
+  },
+  "lessonType.wordlist.name": {
+    "defaultMessage": "Gebräuchliche Worte",
+    "description": "Widget label."
+  },
+  "multiplayer.intro": {
+    "defaultMessage": "Treten Sie in diesem Online-Multispielerspiel gegen andere Spieler an. Je schneller Sie tippen, desto schneller fährt Ihr Auto. Tippen Sie so schnell sie können, um das Rennen zu gewinnen!",
+    "description": "Freeform text."
+  },
+  "multiplayer.state.connecting": {
+    "defaultMessage": "<h1>Verbinden mit dem Server...</h1><p>Herstellen der Verbindung zum Spielserver.</p>",
+    "description": "Freeform text."
+  },
+  "multiplayer.state.kicked": {
+    "defaultMessage": "<h1>Aus dem Spiel geworfen</h1><p>Sie wurden aus dem Spiel herausgeworfen, weil Sie inaktiv waren.</p>",
+    "description": "Freeform text."
+  },
+  "multiplayer.state.offline": {
+    "defaultMessage": "<h1>Server ist offline</h1><p>Mit unserem Spielserver ist etwas nicht in Ordnung.</p><p>Bitte besuchen Sie diese Seite in ein paar Minuten erneut, während wir das Problem beheben.</p>",
+    "description": "Freeform text."
+  },
+  "multiplayer.ui.countDownTicker": {
+    "defaultMessage": "Start in {countDown}",
+    "description": "Ticker text."
+  },
+  "multiplayer.ui.distanceLabel": {
+    "defaultMessage": "Fortschritt",
+    "description": "Label."
+  },
+  "multiplayer.ui.distanceTitle": {
+    "defaultMessage": "Entfernung geschafft.",
+    "description": "Label title."
+  },
+  "multiplayer.ui.errorsLabel": {
+    "defaultMessage": "Fehler",
+    "description": "Label."
+  },
+  "multiplayer.ui.errorsTitle": {
+    "defaultMessage": "Anzahl der Fehler",
+    "description": "Label title."
+  },
+  "multiplayer.ui.initializingTicker": {
+    "defaultMessage": "Initialisierung...",
+    "description": "Ticker text."
+  },
+  "multiplayer.ui.nameLabel": {
+    "defaultMessage": "Geschwindigkeit",
+    "description": "Label."
+  },
+  "multiplayer.ui.nameTitle": {
+    "defaultMessage": "Tippgeschwindigkeit.",
+    "description": "Label title."
+  },
+  "multiplayer.ui.positionLabel": {
+    "defaultMessage": "Position",
+    "description": "Label."
+  },
+  "multiplayer.ui.positionTicker": {
+    "defaultMessage": "Sie haben's geschafft {position}!",
+    "description": "Ticker text."
+  },
+  "multiplayer.ui.positionTitle": {
+    "defaultMessage": "Position auf der Strecke.",
+    "description": "Label title."
+  },
+  "multiplayer.ui.raceFinishedTicker": {
+    "defaultMessage": "Rennen beendet!",
+    "description": "Ticker text."
+  },
+  "multiplayer.ui.raceStartedTicker": {
+    "defaultMessage": "Rennen gestartet!",
+    "description": "Ticker text."
+  },
+  "multiplayer.ui.startTicker": {
+    "defaultMessage": "GO!",
+    "description": "Ticker text."
+  },
+  "multiplayer.ui.waitingMorePlayersTicker": {
+    "defaultMessage": "Warten auf weitere Spieler...",
+    "description": "Ticker text."
+  },
+  "multiplayer.ui.waitingNextRaceTicker": {
+    "defaultMessage": "Zzz... Warte auf das nächste Rennen",
+    "description": "Ticker text."
+  },
+  "multiplayer.ui.winnerPositionTicker": {
+    "defaultMessage": "Sie haben das Rennen gewonnen!",
+    "description": "Ticker text."
+  },
+  "nav.accountName": {
+    "defaultMessage": "{name}",
+    "description": "Navigation menu item name."
+  },
+  "nav.accountTitle": {
+    "defaultMessage": "Verwalten Sie Ihr Online Konto.",
+    "description": "Navigation menu item title."
+  },
+  "nav.helpName": {
+    "defaultMessage": "Hilfe",
+    "description": "Navigation menu item name."
+  },
+  "nav.helpTitle": {
+    "defaultMessage": "Holen Sie sich die Anweisungen zur Verwendung dieser App.",
+    "description": "Navigation menu item title."
+  },
+  "nav.highScoresName": {
+    "defaultMessage": "High Scores",
+    "description": "Navigation menu item name."
+  },
+  "nav.highScoresTitle": {
+    "defaultMessage": "Sehen Sie sich die Highscore-Tabelle mit den schnellsten Tippern an.",
+    "description": "Navigation menu item title."
+  },
+  "nav.layoutsName": {
+    "defaultMessage": "Layouts",
+    "description": "Navigation menu item name."
+  },
+  "nav.layoutsTitle": {
+    "defaultMessage": "Vergleichen Sie die Effizienz verschiedener Tastaturlayouts.",
+    "description": "Navigation menu item title."
+  },
+  "nav.multiplayerName": {
+    "defaultMessage": "Multiplayer",
+    "description": "Navigation menu item name."
+  },
+  "nav.multiplayerTitle": {
+    "defaultMessage": "Treten Sie gegen andere Spieler in einem Online-Multiplayer-Spiel an.",
+    "description": "Navigation menu item title."
+  },
+  "nav.practiceName": {
+    "defaultMessage": "Praxis",
+    "description": "Navigation menu item name."
+  },
+  "nav.practiceTitle": {
+    "defaultMessage": "Üben Sie das Tippen, um Ihre Tippgeschwindigkeit zu verbessern.",
+    "description": "Navigation menu item title."
+  },
+  "nav.privacyPolicyName": {
+    "defaultMessage": "Datenschutzrichtlinie",
+    "description": "Navigation menu item name."
+  },
+  "nav.privacyPolicyTitle": {
+    "defaultMessage": "Datenschutzrichtlinie.",
+    "description": "Navigation menu item title."
+  },
+  "nav.profileName": {
+    "defaultMessage": "Profile",
+    "description": "Navigation menu item name."
+  },
+  "nav.profileTitle": {
+    "defaultMessage": "Sehen Sie die detaillierten Statistiken über Ihren Lernfortschritt.",
+    "description": "Navigation menu item title."
+  },
+  "nav.publicProfileName": {
+    "defaultMessage": "Öffentliches Profil von {name}",
+    "description": "Navigation menu item name."
+  },
+  "nav.publicProfileTitle": {
+    "defaultMessage": "Beobachten Sie das öffentliche Profil von Benutzer {name}.",
+    "description": "Navigation menu item title."
+  },
+  "nav.signInName": {
+    "defaultMessage": "Anmelden",
+    "description": "Navigation menu item name."
+  },
+  "nav.signInTitle": {
+    "defaultMessage": "Anmeldung für ein Online-Konto.",
+    "description": "Navigation menu item title."
+  },
+  "nav.termsOfServiceName": {
+    "defaultMessage": "Servicebedingungen",
+    "description": "Navigation menu item name."
+  },
+  "nav.termsOfServiceTitle": {
+    "defaultMessage": "Servicebedingungen.",
+    "description": "Navigation menu item title."
+  },
+  "nav.textToolsName": {
+    "defaultMessage": "Text Tools",
+    "description": "Navigation menu item name."
+  },
+  "nav.textToolsTitle": {
+    "defaultMessage": "Zählen Sie die Zeichen und Wörter in Ihrem Text.",
+    "description": "Navigation menu item title."
+  },
+  "nav.typingTestName": {
+    "defaultMessage": "Typing Test",
+    "description": "Navigation menu item name."
+  },
+  "nav.typingTestTitle": {
+    "defaultMessage": "Take a typing speed test.",
+    "description": "Navigation menu item title."
+  },
+  "page.help.description": {
+    "defaultMessage": "Lernen Sie, schneller zu tippen.",
+    "description": "Page description."
+  },
+  "page.help.title": {
+    "defaultMessage": "Hilfe",
+    "description": "Page title."
+  },
+  "page.highScores.content": {
+    "defaultMessage": "<h1>High Scores</h1><p>Die Tabelle der schnellsten Tipper der letzten Tage, geordnet nach der besten bis schlechtesten Punktzahl. Die Tippleistung wird anhand der Tippgeschwindigkeit, der Textlänge, der Anzahl der verschiedenen Zeichen im Text und der Anzahl der Fehler gemessen. Die Formel ist so gestaltet, dass eine höhere Geschwindigkeit, ein längerer Text und ein größerer Alphabetumfang belohnt, die Anzahl der Fehler jedoch bestraft wird.</p>",
+    "description": "Page content."
+  },
+  "page.highScores.description": {
+    "defaultMessage": "Die Tabelle der Benutzer, geordnet nach ihrer Tippgeschwindigkeit.",
+    "description": "Page description."
+  },
+  "page.highScores.title": {
+    "defaultMessage": "Highscore-Tabelle",
+    "description": "Page title."
+  },
+  "page.layouts.description": {
+    "defaultMessage": "Tastaturlayouts Vergleichsdiagramme.",
+    "description": "Page description."
+  },
+  "page.layouts.title": {
+    "defaultMessage": "Tastaturlayouts.",
+    "description": "Page title."
+  },
+  "page.multiplayer.content": {
+    "defaultMessage": "<h1>Online-Multiplayer-Tippspiel</h1><p>Treten Sie in diesem Online-Multiplayer-Tippspiel gegen andere Spieler an. Je schneller Sie tippen, desto schneller fährt Ihr Auto. Tippen Sie so schnell Sie können, um das Rennen zu gewinnen!</p>",
+    "description": "Page content."
+  },
+  "page.multiplayer.description": {
+    "defaultMessage": "Online-Multiplayer Tipp-Rennspiel.",
+    "description": "Page description."
+  },
+  "page.multiplayer.title": {
+    "defaultMessage": "Multiplayer",
+    "description": "Page title."
+  },
+  "page.practice.content": {
+    "defaultMessage": "<h1>Tippen lernen</h1><p>Machen Sie einen Test der Tippgeschwindigkeit, lernen Sie schneller und mit weniger Fehlern zu tippen mit diesem kostenlosen Online-Tipptutor.</p>",
+    "description": "Page content."
+  },
+  "page.practice.description": {
+    "defaultMessage": "Machen Sie einen Tipptest, üben Sie zu tippen, lernen Sie schneller zu tippen.",
+    "description": "Page description."
+  },
+  "page.practice.title": {
+    "defaultMessage": "Tippen üben",
+    "description": "Page title."
+  },
+  "page.profile.content": {
+    "defaultMessage": "<h1>Mein Profil</h1><p>Dies ist eine Seite mit detaillierten Statistiken über Ihren Lernfortschritt. Je mehr Lektionen Sie absolvieren, desto detaillierter und genauer werden diese Statistiken.</p>",
+    "description": "Page content."
+  },
+  "page.profile.description": {
+    "defaultMessage": "Mein detailliertes Profil.",
+    "description": "Page description."
+  },
+  "page.profile.title": {
+    "defaultMessage": "Mein Profil",
+    "description": "Page title."
+  },
+  "page.publicProfile.description": {
+    "defaultMessage": "Öffentliches Profil von Benutzer ''{name}''.",
+    "description": "Page description."
+  },
+  "page.publicProfile.title": {
+    "defaultMessage": "{name} | Öffentliches Profil",
+    "description": "Page title."
+  },
+  "page.textTools.content": {
+    "defaultMessage": "<h1>Text Tools</h1><p>Zählen Sie die Zeichen und Wörter in Ihrem Text. Finden Sie heraus, welches die häufigsten Wörter sind. Messen Sie die Zeit, die Sie brauchen, um diese Wörter zu tippen.</p>",
+    "description": "Page content."
+  },
+  "page.textTools.description": {
+    "defaultMessage": "Zählt die Zeichen und Wörter in Ihrem Text.",
+    "description": "Page description."
+  },
+  "page.textTools.title": {
+    "defaultMessage": "Text Tools",
+    "description": "Page title."
+  },
+  "page.typingTest.content": {
+    "defaultMessage": "<h1>Typing Speed Test</h1><p>Take a typing speed test.</p>",
+    "description": "Page content."
+  },
+  "page.typingTest.description": {
+    "defaultMessage": "Take a typing speed test.",
+    "description": "Page description."
+  },
+  "page.typingTest.title": {
+    "defaultMessage": "Speed Test",
+    "description": "Page title."
+  },
+  "practice.accuracyDeltaValueTitle": {
+    "defaultMessage": "Die Differenz zum Durchschnittswert.",
+    "description": "Value delta title."
+  },
+  "practice.accuracyLabel": {
+    "defaultMessage": "Genauigkeit",
+    "description": "Label text."
+  },
+  "practice.accuracyValueTitle": {
+    "defaultMessage": "Der Prozentsatz der Zeichen, die in der letzten Lektion fehlerfrei eingegeben wurden.",
+    "description": "Value title."
+  },
+  "practice.focusText": {
+    "defaultMessage": "Zum Aktivieren anklicken...",
+    "description": "Freeform text."
+  },
+  "practice.resetLessonButtonTitle": {
+    "defaultMessage": "Die aktuelle Lektion zurücksetzen (Strg + Pfeil nach links).",
+    "description": "Button title."
+  },
+  "practice.scoreDeltaValueTitle": {
+    "defaultMessage": "Die Differenz zum Durchschnittswert.",
+    "description": "Value delta title."
+  },
+  "practice.scoreLabel": {
+    "defaultMessage": "Punktestand",
+    "description": "Label text."
+  },
+  "practice.scoreValueTitle": {
+    "defaultMessage": "Ergebnis der letzten Lektion in abstrakten Punkten. Die Punktzahl ist höher, wenn Sie schneller und mit weniger Fehlern tippen.",
+    "description": "Value title."
+  },
+  "practice.settingButtonName": {
+    "defaultMessage": "Einstellungen...",
+    "description": "Button name."
+  },
+  "practice.settingButtonTitle": {
+    "defaultMessage": "Lektionseinstellungen ändern, Sprache, Tastaturlayout usw. konfigurieren.",
+    "description": "Button title."
+  },
+  "practice.showHelpSlidesButtonTitle": {
+    "defaultMessage": "Eine Führung mit Hilfe-Folien.",
+    "description": "Button title."
+  },
+  "practice.skipLessonButtonTitle": {
+    "defaultMessage": "Überspringen Sie die aktuelle Lektion (Strg + Pfeil rechts).",
+    "description": "Button title."
+  },
+  "practice.speedDeltaValueTitle": {
+    "defaultMessage": "Die Differenz zum Durchschnittswert.",
+    "description": "Value delta title."
+  },
+  "practice.speedLabel": {
+    "defaultMessage": "Geschwindigkeit",
+    "description": "Label text."
+  },
+  "practice.speedValueTitle": {
+    "defaultMessage": "Tippgeschwindigkeit in der letzten Lektion.",
+    "description": "Value title."
+  },
+  "practice.switchInterfaceButtonTitle": {
+    "defaultMessage": "Wechseln Sie das aktuelle Schnittstellenlayout.",
+    "description": "Button title."
+  },
+  "practice.tourSlide1": {
+    "defaultMessage": "<h1>Schneller tippen lernen</h1><p>Diese Webapp hilft Ihnen, das <em>Tippen mit dem Finger</em> zu erlernen, d. h. das Tippen mit Hilfe des Muskelgedächtnisses, ohne dass Sie die Tasten mit Ihren Augen finden müssen. Damit können Sie Ihre Tippgeschwindigkeit und -genauigkeit drastisch verbessern. Das Gegenteil ist <em>Hunt and Peck Typing</em>, eine Methode des Tippens, bei der Sie auf die Tastatur statt auf den Bildschirm schauen und nur die Zeigefinger benutzen.</p><p>Dies ist ein kurzes Tutorial, das Ihnen erklärt, wie diese App funktioniert.</p><p>Sie können die Pfeiltasten nach links und rechts benutzen, um durch diese Folien zu navigieren.</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide10": {
+    "defaultMessage": "<p>Dieser Indikator zeigt die aktuelle Teilmenge der Buchstaben an, die für die Erstellung der Lektionen verwendet wurde, sowie Ihre Vertrauensstufe für jeden Buchstaben in der Teilmenge:</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide11": {
+    "defaultMessage": "<p>Dieser Indikator zeigt Details über die Taste mit erhöhter Häufigkeit an, die derzeit in jedem generierten Wort enthalten ist:</p>[dl][dt]Durchschnittliche Tippgeschwindigkeit[/dt][dd]Ihre durchschnittliche Tippgeschwindigkeit für diese einzelne Taste.[/dd][dt]Beste Tippgeschwindigkeit[/dt][dd]Ihre beste Tippgeschwindigkeit für diese einzelne Taste.[/dd][dt]Vertrauensebene[/dt][dd]Eine Zahl zwischen 0 und 1, die anhand Ihrer Tippgeschwindigkeit berechnet wird und angibt, wie vertraut Sie mit dieser Taste sind. Eine Taste gilt als vollständig erlernt, wenn ihre Vertrauensstufe eins erreicht.[/dd][/dl]",
+    "description": "Slide content."
+  },
+  "practice.tourSlide12": {
+    "defaultMessage": "<p>This indicator shows details about the letter with boosted frequency, which is currently included in every generated word:</p><dl><dt>Average typing speed</dt><dd>Your average typing speed for this individual letter.</dd><dt>Best typing speed</dt><dd>Your best typing speed for this individual letter.</dd><dt>Confidence level</dt><dd>A number in range from zero to one which is computed using your typing speed, and indicates your familiarity with this letter. A letter is considered fully learned when it's confidence level reaches one.</dd></dl>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide2": {
+    "defaultMessage": "<p>Unsere Lehrmethode basiert auf diesen Prinzipien:</p><p>Keine langweiligen, sich wiederholenden Übungen. Im Gegensatz zu den meisten anderen Tipptutoren zwingt Sie diese App nicht dazu, dieselben Lektionen wie '<em>jjf jjk jjf jjk</em>' immer und immer wieder zu wiederholen. Das ist sehr lästig und trägt nur wenig zu Ihrem Lernerfolg bei.</p><p>Diese App verwendet einen ausgeklügelten Computeralgorithmus, um Lektionen zu generieren, die Ihrem Kenntnisstand entsprechen. Diese Lektionen bestehen aus zufällig generierten Wörtern, die aus einer Teilmenge des gesamten Alphabets bestehen. Die Größe der Teilmenge und die Häufigkeit der einzelnen Buchstaben werden vom Algorithmus gesteuert, um Ihnen die beste Lernerfahrung zu bieten.</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide3": {
+    "defaultMessage": "<p>Zu Beginn werden Wörter aus einer kleinen Teilmenge der häufigsten Buchstaben des Alphabets generiert.</p><p>Wenn Sie diese Wörter tippen, misst die App die Zeit bis zur Eingabe für jeden Buchstaben in dieser Teilmenge. Diese Zeit wird verwendet, um Ihren Lernfortschritt zu messen. Je vertrauter Sie mit einem Buchstaben werden, desto weniger Zeit benötigen Sie, um ihn zu tippen.</p><p>Sobald Sie sich mit der gesamten aktuellen Teilmenge von Buchstaben vertraut gemacht haben, erweitert der Algorithmus diese, indem er immer mehr Buchstaben zu der Teilmenge hinzufügt.</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide4": {
+    "defaultMessage": "<p>Wenn der Algorithmus einen neuen Buchstaben in die aktuelle Teilmenge aufnimmt, wird die Häufigkeit dieses Buchstabens künstlich erhöht, so dass er in jedem generierten Wort einer Lektion vorkommt.</p><p>Der Algorithmus kann auch die Buchstabenhäufigkeiten künstlich neu anordnen, indem er die Buchstaben mit der schlechtesten “Time-to-Type“,-Metrik in den Vordergrund stellt.</p><p>Das bedeutet, dass Sie immer die Buchstaben tippen werden, mit denen Sie am wenigsten vertraut sind.</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide5": {
+    "defaultMessage": "<p>Dies ist die Texttafel. Sie zeigt den Text an, der abgetippt werden muss. Der Text ändert sich für jede neue Lektion. Der Text wird automatisch aus der aktuellen Teilmenge von Buchstaben generiert. Die meisten Wörter sind nicht echt, sondern werden anhand der phonetischen Regeln Ihrer Sprache erzeugt, damit sie natürlich klingen und leicht auszusprechen sind. Das ist nicht nur witzig, sondern gibt uns auch die Möglichkeit, mehr Wörter zu verwenden, als tatsächlich existieren.</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide6": {
+    "defaultMessage": "<p>Dies ist die virtuelle Tastatur. Sie hilft Ihnen, sich die Tastenpositionen einzuprägen. Verwenden Sie sie, um die Tasten zu finden, und versuchen Sie, nicht auf Ihre physische Tastatur zu schauen. Auf den Tasten <em>F</em> und <em>J</em> Ihrer Tastatur befinden sich kleine Erhebungen. Benutzen Sie diese, um Ihre Zeigefinger richtig zu positionieren, ohne auf die Tasten schauen zu müssen. Sobald Ihre Zeigefinger in der richtigen Position sind, können Sie die restlichen Tasten finden.</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide7": {
+    "defaultMessage": "<p>Dies ist der Indikator für die Tippgeschwindigkeit und die Differenz zum Durchschnittswert. Ihr Ziel ist es, diese Kennzahl zu erhöhen, d. h. höhere Werte sind besser.</p><p>Die Tippgeschwindigkeit wird entweder in <em>Wörtern pro Minute (WPM)</em> oder <em>Zeichen pro Minute (CPM)</em> gemessen. Die Definition eines Wortes ist auf fünf Zeichen standardisiert, so dass <em>10WPM</em> gleich <em>50CPM</em> ist.</p><p>Sie können auf der Seite Einstellungen zwischen den Anzeigemodi <em>WPM</em> und <em>CPM</em> wechseln.</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide8": {
+    "defaultMessage": "<p>Dies ist der Genauigkeitsindikator und die Differenz zum Durchschnittswert. Ihr Ziel ist es, diese Kennzahl zu erhöhen, d. h. höhere Werte sind besser.</p><p>Die Genauigkeit wird als Prozentsatz der fehlerfrei eingegebenen Zeichen berechnet. Mehrere Tippfehler an der gleichen Stelle zählen als ein Fehler.</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide9": {
+    "defaultMessage": "<p>Dies ist der Tippergebnis-Indikator in abstrakten Punkten und die Differenz zum Durchschnittswert.</p><p>Das Ergebnis wird aus Ihrer Tippgeschwindigkeit, der Fehlerzahl und der aktuellen Größe des Buchstabensatzes berechnet. Die Formel ist so ausgelegt, dass die Tippgeschwindigkeit belohnt und die Anzahl der Fehler bestraft wird. Sie können keine hohe Punktzahl erreichen, wenn Sie schnell tippen und gleichzeitig viele Fehler machen.</p><p>Die Benutzer mit den höchsten Punktzahlen werden in der Highscore-Tabelle aufgeführt.</p>",
+    "description": "Slide content."
+  },
+  "profile.calendar.averageSpeedTitle": {
+    "defaultMessage": "Durchschnittsgeschwindigkeit: {value}",
+    "description": "Calendar cell title."
+  },
+  "profile.calendar.topSpeedTitle": {
+    "defaultMessage": "Höchstgeschwindigkeit: {value}",
+    "description": "Calendar cell title."
+  },
+  "profile.calendar.totalLessonsTitle": {
+    "defaultMessage": "Anzahl der Lektionen: {value}",
+    "description": "Calendar cell title."
+  },
+  "profile.calendar.totalTimeTitle": {
+    "defaultMessage": "Uhrzeit der Lektionen: {value}",
+    "description": "Calendar cell title."
+  },
+  "profile.chart.calendarCaption": {
+    "defaultMessage": "Übungskalender",
+    "description": "Chart caption."
+  },
+  "profile.chart.calendarDescription": {
+    "defaultMessage": "Dieser Kalender zeigt die Daten des aktiven Lernens an.",
+    "description": "Chart description."
+  },
+  "profile.chart.compareAverageSpeedText": {
+    "defaultMessage": "Ihre Durchschnittsgeschwindigkeit über alle Zeiten übertrifft {value} aller anderen Personen.",
+    "description": "Section paragraph."
+  },
+  "profile.chart.compareTitle": {
+    "defaultMessage": "Vergleichen Sie selbst:",
+    "description": "Section title."
+  },
+  "profile.chart.compareTopSpeedText": {
+    "defaultMessage": "Ihre Höchstgeschwindigkeit übertrifft {value} aller anderen Personen.",
+    "description": "Section paragraph."
+  },
+  "profile.chart.histogramCaption": {
+    "defaultMessage": "Relative Tippgeschwindigkeit",
+    "description": "Chart caption."
+  },
+  "profile.chart.histogramDescription": {
+    "defaultMessage": "Dies ist ein Histogramm der Tippgeschwindigkeiten aller Benutzer und Ihrer Position im Verhältnis zu ihnen.",
+    "description": "Chart description."
+  },
+  "profile.chart.histogramLegend": {
+    "defaultMessage": "Sehen Sie, wie schnell Sie im Vergleich zu anderen Benutzern tippen. Je höher der Balken ist, desto mehr Leute tippen mit dieser Geschwindigkeit. Ihre Position wird durch die farbigen vertikalen Linien markiert.",
+    "description": "Chart legend."
+  },
+  "profile.chart.keyFrequencyHeatmapCaption": {
+    "defaultMessage": "Tastenfrequenz-Heatmap",
+    "description": "Chart caption."
+  },
+  "profile.chart.keyFrequencyHeatmapDescription": {
+    "defaultMessage": "Dieses Diagramm zeigt relative Tastenhäufigkeiten als Heatmap an.",
+    "description": "Chart description."
+  },
+  "profile.chart.keyFrequencyHistogramCaption": {
+    "defaultMessage": "Tastenfrequenz-Histogramm",
+    "description": "Chart caption."
+  },
+  "profile.chart.keyFrequencyHistogramDescription": {
+    "defaultMessage": "Dieses Diagramm zeigt relative Tastenhäufigkeiten",
+    "description": "Chart description."
+  },
+  "profile.chart.keyFrequencyHistogramLegend": {
+    "defaultMessage": "Balkenfarbe: {label1} - Trefferanzahl, {label2} - Fehleranzahl, {label3} - Fehler/Treffer-Verhältnis (relative Fehlerhäufigkeit).",
+    "description": "Chart legend."
+  },
+  "profile.chart.keySpeedCaption": {
+    "defaultMessage": "Geschwindigkeit der Tasteneingabe",
+    "description": "Chart caption."
+  },
+  "profile.chart.keySpeedDescription": {
+    "defaultMessage": "Dieses Diagramm zeigt die Änderung der Tippgeschwindigkeit für jede einzelne Taste an.",
+    "description": "Chart description."
+  },
+  "profile.chart.keySpeedHistogramCaption": {
+    "defaultMessage": "Histogramm der Tasteneingabegeschwindigkeit",
+    "description": "Chart caption."
+  },
+  "profile.chart.keySpeedHistogramDescription": {
+    "defaultMessage": "Dieses Diagramm zeigt die durchschnittliche Tippgeschwindigkeit für jede einzelne Taste an.",
+    "description": "Chart description."
+  },
+  "profile.chart.keySpeedLegend": {
+    "defaultMessage": "Horizontale Achse: Lektionsnummer. Vertikale Achse: {label1} - Tippgeschwindigkeit für die aktuell ausgewählte Taste.",
+    "description": "Chart legend."
+  },
+  "profile.chart.progressOverviewCaption": {
+    "defaultMessage": "Übersicht über den Lernfortschritt",
+    "description": "Chart caption."
+  },
+  "profile.chart.progressOverviewDescription": {
+    "defaultMessage": "Dieses Diagramm zeigt die Lernfortschrittsübersicht für alle Tasten an.",
+    "description": "Chart description."
+  },
+  "profile.chart.progressOverviewLegend": {
+    "defaultMessage": "Horizontale Achse: Lektionsnummer. Vertikale Achse: Tippgeschwindigkeit für jede einzelne Taste, {label1} - langsam, {label2} - schnell.",
+    "description": "Chart legend."
+  },
+  "profile.chart.speedCaption": {
+    "defaultMessage": "Tippgeschwindigkeit",
+    "description": "Chart caption."
+  },
+  "profile.chart.speedDescription": {
+    "defaultMessage": "Dieses Diagramm zeigt, wie sich die allgemeine Tippgeschwindigkeit im Laufe der Zeit verändert.",
+    "description": "Chart description."
+  },
+  "profile.chart.speedLegend": {
+    "defaultMessage": "Horizontale Achse: Lektionsnummer. Vertikale Achse: {label1} - Tippgeschwindigkeit, {label2} - Tippgenauigkeit, {label3} - Anzahl der Tasten in den Lektionen.",
+    "description": "Chart legend."
+  },
+  "profile.control.downloadDataLabel": {
+    "defaultMessage": "Daten herunterladen",
+    "description": "Button label."
+  },
+  "profile.control.downloadDataTitle": {
+    "defaultMessage": "Laden Sie alle Ihre Typisierungsdaten im JSON-Format herunter.",
+    "description": "Button title."
+  },
+  "profile.control.groupSelectorLabel": {
+    "defaultMessage": "Statistiken anzeigen für:",
+    "description": "List label."
+  },
+  "profile.control.resetDataConfirmation": {
+    "defaultMessage": "Sind Sie sicher, dass Sie alle Daten löschen und Ihr Profil zurücksetzen möchten? Dieser Vorgang ist dauerhaft und kann nicht rückgängig gemacht werden!",
+    "description": "Confirmation text."
+  },
+  "profile.control.resetDataLabel": {
+    "defaultMessage": "Statistiken zurücksetzen",
+    "description": "Button label."
+  },
+  "profile.control.resetDataTitle": {
+    "defaultMessage": "Löscht alle Ihre Tippdaten dauerhaft und setzt die Statistiken zurück.",
+    "description": "Button title."
+  },
+  "profile.control.shareButtonLabel": {
+    "defaultMessage": "Kopieren",
+    "description": "Button label."
+  },
+  "profile.control.shareButtonTitle": {
+    "defaultMessage": "Profil-Link in die Zwischenablage kopieren.",
+    "description": "Button title."
+  },
+  "profile.control.shareText": {
+    "defaultMessage": "Teilen Sie Ihr Profil:",
+    "description": "Share profile text."
+  },
+  "profile.control.visitButtonLabel": {
+    "defaultMessage": "Besuchen",
+    "description": "Button label."
+  },
+  "profile.control.visitButtonTitle": {
+    "defaultMessage": "Besuchen Sie Ihre öffentliche Profilseite.",
+    "description": "Button title."
+  },
+  "profile.emptyChartCaption": {
+    "defaultMessage": "Nicht genügend Daten",
+    "description": "Empty chart message."
+  },
+  "profile.emptyChartDescription": {
+    "defaultMessage": "Schließen Sie noch ein paar Lektionen ab, um mehr Datenpunkte zu erhalten.",
+    "description": "Empty chart message."
+  },
+  "profile.overview.averageSpeedLabel": {
+    "defaultMessage": "Durchschnittsgeschwindigkeit ({speedUnit})",
+    "description": "Gauge label."
+  },
+  "profile.overview.averageSpeedTitle": {
+    "defaultMessage": "Durchschnittliche Tippgeschwindigkeit ({speedUnitName}).",
+    "description": "Gauge title."
+  },
+  "profile.overview.averageSpeedTodayLabel": {
+    "defaultMessage": "Durchschnittsgeschwindigkeit ({speedUnit})",
+    "description": "Gauge label."
+  },
+  "profile.overview.averageSpeedTodayTitle": {
+    "defaultMessage": "Durchschnittliche Tippgeschwindigkeit heute ({speedUnitName}).",
+    "description": "Gauge title."
+  },
+  "profile.overview.statisticsAllTime": {
+    "defaultMessage": "Alle Zeitstatistiken:",
+    "description": "Header."
+  },
+  "profile.overview.statisticsToday": {
+    "defaultMessage": "Statistik für heute:",
+    "description": "Section header."
+  },
+  "profile.overview.topSpeedLabel": {
+    "defaultMessage": "Höchstgeschwindigkeit ({speedUnit})",
+    "description": "Gauge label."
+  },
+  "profile.overview.topSpeedTitle": {
+    "defaultMessage": "Höchste Tippgeschwindigkeit ({speedUnitName}).",
+    "description": "Gauge title."
+  },
+  "profile.overview.topSpeedTodayLabel": {
+    "defaultMessage": "Höchstgeschwindigkeit ({speedUnit})",
+    "description": "Gauge label."
+  },
+  "profile.overview.topSpeedTodayTitle": {
+    "defaultMessage": "Höchste Tippgeschwindigkeit heute ({speedUnitName}).",
+    "description": "Gauge title."
+  },
+  "profile.overview.totalLessonsLabel": {
+    "defaultMessage": "Lektionen insgesamt",
+    "description": "Gauge label."
+  },
+  "profile.overview.totalLessonsTitle": {
+    "defaultMessage": "Anzahl der abgeschlossenen Lektionen",
+    "description": "Gauge title."
+  },
+  "profile.overview.totalLessonsTodayLabel": {
+    "defaultMessage": "Lektionen insgesamt",
+    "description": "Gauge label."
+  },
+  "profile.overview.totalLessonsTodayTitle": {
+    "defaultMessage": "Anzahl der heute absolvierten Lektionen",
+    "description": "Gauge title."
+  },
+  "profile.overview.totalTimeLabel": {
+    "defaultMessage": "Gesamtzeit",
+    "description": "Gauge label."
+  },
+  "profile.overview.totalTimeTitle": {
+    "defaultMessage": "Für Übungen aufgewendete Zeit.",
+    "description": "Gauge title."
+  },
+  "profile.overview.totalTimeTodayLabel": {
+    "defaultMessage": "Gesamtzeit",
+    "description": "Gauge label."
+  },
+  "profile.overview.totalTimeTodayTitle": {
+    "defaultMessage": "Heute für Übungen aufgewendete Zeit.",
+    "description": "Gauge title."
+  },
+  "profile.smoothnessLabel": {
+    "defaultMessage": "Smoothness:",
+    "description": "Input field label."
+  },
+  "profile.smoothnessTitle": {
+    "defaultMessage": "Rauschen eliminieren, um den langfristigen Trend zu sehen.",
+    "description": "Input field title."
+  },
+  "settings.benfordsLawDescription": {
+    "defaultMessage": "<a>Benfordsches Gesetz</a> ist eine Beobachtung, dass in vielen realen numerischen Datensätzen die führende Ziffer wahrscheinlich klein ist.",
+    "description": "Freeform text."
+  },
+  "settings.benfordsLawLabel": {
+    "defaultMessage": "Benfordsches Gesetz",
+    "description": "Checkbox label."
+  },
+  "settings.benfordsLawTitle": {
+    "defaultMessage": "Generieren Sie Zahlen nach dem Benfordsche Gesetz.",
+    "description": "Checkbox title."
+  },
+  "settings.cleanupTextCaption": {
+    "defaultMessage": "Bereinigungstext:",
+    "description": "Fieldset caption."
+  },
+  "settings.cursorMovementLabel": {
+    "defaultMessage": "Cursorbewegung:",
+    "description": "Checkbox label."
+  },
+  "settings.cursorShapeLabel": {
+    "defaultMessage": "Cursorform:",
+    "description": "Checkbox label."
+  },
+  "settings.customTextExamplesLabel": {
+    "defaultMessage": "Beispiele:",
+    "description": "Text label."
+  },
+  "settings.customTextInputPlaceholder": {
+    "defaultMessage": "Benutzerdefinierter Text...",
+    "description": "Input field placeholder."
+  },
+  "settings.dailyGoalDescription": {
+    "defaultMessage": "Legen Sie die Zeit fest, die Sie täglich für die Übungen aufwenden möchten.",
+    "description": "Input field description."
+  },
+  "settings.dailyGoalLabel": {
+    "defaultMessage": "Tägliches Ziel:",
+    "description": "Input field label."
+  },
+  "settings.dailyGoalTitle": {
+    "defaultMessage": "Tagesziel für die Übungen in Minuten.",
+    "description": "Input field title."
+  },
+  "settings.doneButtonLabel": {
+    "defaultMessage": "Fertig",
+    "description": "Button label."
+  },
+  "settings.doneButtonTitle": {
+    "defaultMessage": "Änderungen speichern und mit dem Üben beginnen.",
+    "description": "Button title."
+  },
+  "settings.emulateLayoutLabel": {
+    "defaultMessage": "Layout emulieren",
+    "description": "Checkbox label."
+  },
+  "settings.emulateLayoutTitle": {
+    "defaultMessage": "Emuliert das ausgewählte Layout, wenn das Standardlayout im System eingestellt ist.",
+    "description": "Checkbox title."
+  },
+  "settings.enableCapitalLettersLabel": {
+    "defaultMessage": "Großbuchstaben aktivieren",
+    "description": "Checkbox label."
+  },
+  "settings.enableCapitalLettersTitle": {
+    "defaultMessage": "Text mit Großbuchstaben generieren.",
+    "description": "Checkbox title."
+  },
+  "settings.enablePunctuationLabel": {
+    "defaultMessage": "Interpunktionszeichen aktivieren.",
+    "description": "Checkbox label."
+  },
+  "settings.enablePunctuationTitle": {
+    "defaultMessage": "Interpunktionszeichen zum generierten Text hinzufügen.",
+    "description": "Checkbox title."
+  },
+  "settings.enableSoundsLabel": {
+    "defaultMessage": "Töne aktivieren",
+    "description": "Checkbox label."
+  },
+  "settings.enableSoundsTitle": {
+    "defaultMessage": "Macht zusätzliche Geräusche beim Tippen und bei Fehlern.",
+    "description": "Checkbox description."
+  },
+  "settings.extendKeySetLabel": {
+    "defaultMessage": "Buchstaben zu Wörtern hinzufügen:",
+    "description": "Input field label."
+  },
+  "settings.extendKeySetTitle": {
+    "defaultMessage": "Füge jedem generierten Wort weitere Buchstaben hinzu.",
+    "description": "Input field title."
+  },
+  "settings.extendLessonLengthLabel": {
+    "defaultMessage": "Wörter zu Lektionen hinzufügen:",
+    "description": "Input field label."
+  },
+  "settings.extendLessonLengthTitle": {
+    "defaultMessage": "Füge jeder generierten Lektion mehr Wörter hinzu.",
+    "description": "Input field title."
+  },
+  "settings.forgiveErrorsDescription": {
+    "defaultMessage": "Wenn Sie diese Option aktivieren, verzeiht das Texteingabefeld einige Arten von Fehlern, indem es sie automatisch korrigiert. Dabei handelt es sich um Fehler wie das Eingeben eines falschen Zeichens oder das Überspringen eines Zeichens.",
+    "description": "Checkbox description."
+  },
+  "settings.forgiveErrorsLabel": {
+    "defaultMessage": "Fehler verzeihen",
+    "description": "Checkbox label."
+  },
+  "settings.interfaceOptionsLegend": {
+    "defaultMessage": "Schnittstellenoptionen",
+    "description": "Fieldset legend."
+  },
+  "settings.keyboardLayoutTabLabel": {
+    "defaultMessage": "Tastaturlayout",
+    "description": "Tab label."
+  },
+  "settings.lessonOptionsLegend": {
+    "defaultMessage": "Lektionsoptionen",
+    "description": "Fieldset legend."
+  },
+  "settings.lessonsTabLabel": {
+    "defaultMessage": "Übungen",
+    "description": "Tab label."
+  },
+  "settings.miscellaneousTabLabel": {
+    "defaultMessage": "Verschiedenes",
+    "description": "Tab label."
+  },
+  "settings.optionsLegend": {
+    "defaultMessage": "Optionen",
+    "description": "Fieldset legend."
+  },
+  "settings.previewLabel": {
+    "defaultMessage": "Vorschau der Lektion",
+    "description": "Fieldset label."
+  },
+  "settings.previewLegend": {
+    "defaultMessage": "Vorschau",
+    "description": "Fieldset legend."
+  },
+  "settings.removePunctuationLabel": {
+    "defaultMessage": "Zeichensetzung entfernen",
+    "description": "Checkbox label."
+  },
+  "settings.removePunctuationTitle": {
+    "defaultMessage": "Entfernen Sie Satzzeichen aus dem Text, um die Eingabe zu vereinfachen.",
+    "description": "Checkbox title."
+  },
+  "settings.selectLanguageLabel": {
+    "defaultMessage": "Sprache:",
+    "description": "Dropdown label."
+  },
+  "settings.selectLanguageTitle": {
+    "defaultMessage": "Wählen Sie Ihre gesprochene Sprache.",
+    "description": "Dropdown title."
+  },
+  "settings.selectLayoutLabel": {
+    "defaultMessage": "Layout:",
+    "description": "Dropdown label."
+  },
+  "settings.selectLayoutTitle": {
+    "defaultMessage": "Wählen Sie das Tastaturlayout, mit dem Sie üben möchten. Für jede Sprache können mehrere Layouts verfügbar sein.",
+    "description": "Dropdown title."
+  },
+  "settings.stopCursorOnErrorDescription": {
+    "defaultMessage": "Wenn aktiviert, wird der Textcursor angehalten, bis an der aktuellen Position die richtige Taste gedrückt wird. Wenn deaktiviert, werden alle Fehler im Texteingabefeld akkumuliert und müssen mit der Löschtaste gelöscht werden.",
+    "description": "Checkbox description."
+  },
+  "settings.stopCursorOnErrorLabel": {
+    "defaultMessage": "Halte den Cursor an, wenn ein Fehler auftritt",
+    "description": "Checkbox label."
+  },
+  "settings.textAppearanceLegend": {
+    "defaultMessage": "Textdarstellung",
+    "description": "Fieldset legend."
+  },
+  "settings.transformToLowercaseLabel": {
+    "defaultMessage": "In Kleinbuchstaben umwandeln",
+    "description": "Checkbox label."
+  },
+  "settings.transformToLowercaseTitle": {
+    "defaultMessage": "Den gesamten Text in Kleinbuchstaben umwandeln, um die Eingabe zu vereinfachen.",
+    "description": "Checkbox title."
+  },
+  "settings.typingOptionsLegend": {
+    "defaultMessage": "Tippoptions",
+    "description": "Fieldset legend."
+  },
+  "settings.typingSpeedUnitCaption": {
+    "defaultMessage": "Tippgeschwindigkeit messen in:",
+    "description": "Radio button group caption."
+  },
+  "settings.typingSpeedUnitDescription": {
+    "defaultMessage": "Für die Messung der Tippgeschwindigkeit ist jedes Wort auf fünf Zeichen oder Anschläge in Englisch standardisiert, einschließlich Leerzeichen und Interpunktion.",
+    "description": "Radio button group description."
+  },
+  "settings.typingTabLabel": {
+    "defaultMessage": "Texteingabe",
+    "description": "Tab label."
+  },
+  "settings.whitespaceLabel": {
+    "defaultMessage": "Leerzeichen:",
+    "description": "Checkbox label."
+  },
+  "speedUnit.cpm.description": {
+    "defaultMessage": "Misst die Tippgeschwindigkeit in Zeichen pro Minute.",
+    "description": "Widget title."
+  },
+  "speedUnit.cpm.name": {
+    "defaultMessage": "Zeichen pro Minute",
+    "description": "Widget label."
+  },
+  "speedUnit.cps.description": {
+    "defaultMessage": "Misst die Tippgeschwindigkeit in Zeichen pro Sekunde.",
+    "description": "Widget title."
+  },
+  "speedUnit.cps.name": {
+    "defaultMessage": "Zeichen pro Sekunde",
+    "description": "Widget label."
+  },
+  "speedUnit.wpm.description": {
+    "defaultMessage": "Misst die Tippgeschwindigkeit in Wörtern pro Minute.",
+    "description": "Widget title."
+  },
+  "speedUnit.wpm.name": {
+    "defaultMessage": "Wörter pro Minute",
+    "description": "Widget label."
+  },
+  "textStats.allWordCount": {
+    "defaultMessage": "Alle Wörter",
+    "description": "Text label."
+  },
+  "textStats.averageWordLength": {
+    "defaultMessage": "Durchschnittliche Wortlänge",
+    "description": "Text label."
+  },
+  "textStats.charsExcludingWhitespace": {
+    "defaultMessage": "Zeichen ohne Leerzeichen",
+    "description": "Text label."
+  },
+  "textStats.charsIncludingWhitespace": {
+    "defaultMessage": "Zeichen mit Leerzeichen",
+    "description": "Text label."
+  },
+  "textStats.mostCommonWords": {
+    "defaultMessage": "Top {count} häufigste Wörter",
+    "description": "Text fragment."
+  },
+  "textStats.timeToRead": {
+    "defaultMessage": "Bei einer durchschnittlichen Lesegeschwindigkeit von {speed} WPM würde es {time} dauern, diesen Text zu lesen.",
+    "description": "Text fragment."
+  },
+  "textStats.timeToType": {
+    "defaultMessage": "Bei einer durchschnittlichen Tippgeschwindigkeit von {speed} WPM würde es {time} dauern, diesen Text zu tippen.",
+    "description": "Text fragment."
+  },
+  "textStats.uniqueWordCount": {
+    "defaultMessage": "Einmalige Wörter",
+    "description": "Text label."
+  },
+  "textTools.emptyTextMessage": {
+    "defaultMessage": "Bitte geben Sie einen Text an, um die zugehörige Statistik zu berechnen.",
+    "description": "Freeform text."
+  },
+  "textTools.exampleText": {
+    "defaultMessage": "(Beispieltext, hier klicken, um ihn zu löschen.)",
+    "description": "Text fragment."
+  },
+  "textTools.textInputPlaceholder": {
+    "defaultMessage": "Fügen Sie Ihren Text hier ein",
+    "description": "Input field placeholder."
+  },
+  "textType.digits": {
+    "defaultMessage": "Ziffern",
+    "description": "Label."
+  },
+  "textType.letters": {
+    "defaultMessage": "Buchstaben",
+    "description": "Label."
+  },
+  "theme.enterFullscreenTitle": {
+    "defaultMessage": "Vollbildmodus ausführen",
+    "description": "Theme switching button."
+  },
+  "theme.exitFullscreenTitle": {
+    "defaultMessage": "Vollbildmodus beenden.",
+    "description": "Theme switching button."
+  },
+  "theme.fullscreenNotSupportedTitle": {
+    "defaultMessage": "Vollbildmodus wird nicht unterstützt.",
+    "description": "Theme switching button."
+  },
+  "theme.switchThemeTitle": {
+    "defaultMessage": "Zum Thema {name} wechseln.",
+    "description": "Theme switching button."
+  },
+  "tour.close": {
+    "defaultMessage": "Schließen",
+    "description": "Button name"
+  },
+  "tour.next": {
+    "defaultMessage": "Weiter",
+    "description": "Button name"
+  },
+  "tour.previous": {
+    "defaultMessage": "Zurück",
+    "description": "Button name"
+  }
+}

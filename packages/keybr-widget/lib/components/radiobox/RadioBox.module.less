@@ -1,0 +1,44 @@
+@import "../mixins";
+
+.radioBox {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  min-height: @field-height;
+  line-height: @field-height;
+  cursor: default;
+
+  input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: none;
+    opacity: 0;
+    appearance: none;
+  }
+}
+
+.icon {
+  width: @field-height;
+  height: @field-height;
+  fill: var(--Button__background-color);
+}
+
+.radioBox:focus-within {
+  .icon {
+    outline: 1px dotted var(--text-color);
+    outline-offset: 2px;
+  }
+}
+
+.label {
+  height: @field-height;
+}
+
+.icon + .label {
+  margin-left: 0.5rem;
+}
+
+.disabled {
+  .is-disabled();
+}

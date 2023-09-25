@@ -1,0 +1,33 @@
+{
+  "private": true,
+  "name": "@keybr/multiplayer-server",
+  "version": "0.0.0",
+  "main": "lib/index.ts",
+  "types": ".types/index.d.ts",
+  "dependencies": {
+    "@keybr/content-quotes": "*",
+    "@keybr/multiplayer-shared": "*",
+    "@keybr/pages-shared": "*",
+    "@keybr/textinput": "*",
+    "@keybr/timer": "*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "clean": "rm -fr .types",
+    "compile": "tsc",
+    "test": "ava"
+  },
+  "ava": {
+    "extensions": [
+      "ts",
+      "tsx"
+    ],
+    "files": [
+      "lib/**/*.test.*"
+    ],
+    "require": [
+      "@keybr/tsl",
+      "reflect-metadata"
+    ]
+  }
+}

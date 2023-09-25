@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE keyboard SYSTEM "../dtd/ldmlKeyboard.dtd">
+<keyboard locale="he-t-k0-android-768dpi">
+	<version platform="4.4" number="$Revision$"/>
+	<names>
+		<name value="Hebrew (768dpi)"/>
+	</names>
+	<keyMap>
+		<map iso="D01" to="&apos;" longPress="\u{22}"/> <!-- Q  long="  -->
+		<map iso="D02" to="-" longPress="_"/> <!-- W -->
+		<map iso="D03" to="ק"/> <!-- E -->
+		<map iso="D04" to="ר"/> <!-- R -->
+		<map iso="D05" to="א"/> <!-- T -->
+		<map iso="D06" to="ט"/> <!-- Y -->
+		<map iso="D07" to="ו"/> <!-- U -->
+		<map iso="D08" to="ן"/> <!-- I -->
+		<map iso="D09" to="ם"/> <!-- O -->
+		<map iso="D10" to="פ"/> <!-- P -->
+		<map iso="C01" to="ש"/> <!-- A -->
+		<map iso="C02" to="ד"/> <!-- S -->
+		<map iso="C03" to="ג" longPress="ג׳"/> <!-- D -->
+		<map iso="C04" to="כ"/> <!-- F -->
+		<map iso="C05" to="ע"/> <!-- G -->
+		<map iso="C06" to="י" longPress="ײ\u{5B7}"/> <!-- H  long=ײַ  -->
+		<map iso="C07" to="ח" longPress="ח׳"/> <!-- J -->
+		<map iso="C08" to="ל"/> <!-- K -->
+		<map iso="C09" to="ך"/> <!-- L -->
+		<map iso="C10" to="ף"/> <!-- ; -->
+		<map iso="B01" to="ז" longPress="ז׳"/> <!-- Z -->
+		<map iso="B02" to="ס"/> <!-- X -->
+		<map iso="B03" to="ב"/> <!-- C -->
+		<map iso="B04" to="ה"/> <!-- V -->
+		<map iso="B05" to="נ"/> <!-- B -->
+		<map iso="B06" to="מ"/> <!-- N -->
+		<map iso="B07" to="צ" longPress="צ׳"/> <!-- M -->
+		<map iso="B08" to="ת" longPress="ת׳"/> <!-- , -->
+		<map iso="B09" to="ץ" longPress="ץ׳"/> <!-- . -->
+		<map iso="A02" to=","/> <!-- (key to left of space) -->
+		<map iso="A03" to=" "/> <!-- space -->
+		<map iso="A04" to="." longPress="# ! , ? - : ' @"/> <!-- (key to right of space) -->
+	</keyMap>
+	<keyMap modifiers="opt">
+		<map iso="D01" to="1" longPress="¹ ½ ⅓ ¼ ⅛"/> <!-- Q  base=' -->
+		<map iso="D02" to="2" longPress="² ⅔"/> <!-- W  base=- -->
+		<map iso="D03" to="3" longPress="³ ¾ ⅜"/> <!-- E  base=ק -->
+		<map iso="D04" to="4" longPress="⁴"/> <!-- R  base=ר -->
+		<map iso="D05" to="5" longPress="⅝"/> <!-- T  base=א -->
+		<map iso="D06" to="6"/> <!-- Y  base=ט -->
+		<map iso="D07" to="7" longPress="⅞"/> <!-- U  base=ו -->
+		<map iso="D08" to="8"/> <!-- I  base=ן -->
+		<map iso="D09" to="9"/> <!-- O  base=ם -->
+		<map iso="D10" to="0" longPress="ⁿ ∅"/> <!-- P  base=פ -->
+		<map iso="C01" to="@"/> <!-- A  base=ש -->
+		<map iso="C02" to="#"/> <!-- S  base=ד -->
+		<map iso="C03" to="₪" longPress="$ ¢ € £ ¥ ₱"/> <!-- D  base=ג -->
+		<map iso="C04" to="%" longPress="‰"/> <!-- F  base=כ -->
+		<map iso="C05" to="&amp;"/> <!-- G  base=ע -->
+		<map iso="C06" to="-" longPress="_ – — ·"/> <!-- H  base=י -->
+		<map iso="C07" to="+" longPress="± ﬩"/> <!-- J  base=ח -->
+		<map iso="C08" to="(" longPress="&gt; } ]"/> <!-- K  base=ל -->
+		<map iso="C09" to=")" longPress="&lt; { ["/> <!-- L  base=ך -->
+		<map iso="B01" to="*" longPress="★"/> <!-- Z  base=ז -->
+		<map iso="B02" to="\u{22}" longPress="“ ” « »"/> <!-- X  base=ס  to= "  -->
+		<map iso="B03" to="&apos;" longPress="‘ ’ ‹ ›"/> <!-- C  base=ב -->
+		<map iso="B04" to=":"/> <!-- V  base=ה -->
+		<map iso="B05" to=";"/> <!-- B  base=נ -->
+		<map iso="B06" to="!" longPress="¡"/> <!-- N  base=מ -->
+		<map iso="B07" to="?" longPress="¿"/> <!-- M  base=צ -->
+		<map iso="A00" to="_"/> <!-- (3 keys to left of space) -->
+		<map iso="A01" to="/"/> <!-- (2 keys to left of space) -->
+		<map iso="A02" to=" "/> <!-- (key to left of space)  base=, -->
+		<map iso="A03" to="," longPress="!"/> <!-- space -->
+		<map iso="A04" to="."/> <!-- (key to right of space) -->
+	</keyMap>
+	<keyMap modifiers="opt+shift">
+		<map iso="D01" to="~"/> <!-- Q  base=' -->
+		<map iso="D02" to="`"/> <!-- W  base=- -->
+		<map iso="D03" to="|"/> <!-- E  base=ק -->
+		<map iso="D04" to="•" longPress="♪ ♥ ♠ ♦ ♣"/> <!-- R  base=ר -->
+		<map iso="D05" to="√"/> <!-- T  base=א -->
+		<map iso="D06" to="Π" longPress="π"/> <!-- Y  base=ט -->
+		<map iso="D07" to="÷"/> <!-- U  base=ו -->
+		<map iso="D08" to="×"/> <!-- I  base=ן -->
+		<map iso="D09" to="¶" longPress="§"/> <!-- O  base=ם -->
+		<map iso="D10" to="∆"/> <!-- P  base=פ -->
+		<map iso="C01" to="£"/> <!-- A  base=ש -->
+		<map iso="C02" to="€"/> <!-- S  base=ד -->
+		<map iso="C03" to="$" longPress="¢"/> <!-- D  base=ג -->
+		<map iso="C04" to="¢"/> <!-- F  base=כ -->
+		<map iso="C05" to="^" longPress="↑ ↓ ← →"/> <!-- G  base=ע -->
+		<map iso="C06" to="°" longPress="′ ″"/> <!-- H  base=י -->
+		<map iso="C07" to="=" longPress="≠ ≈ ∞"/> <!-- J  base=ח -->
+		<map iso="C08" to="{"/> <!-- K  base=ל -->
+		<map iso="C09" to="}"/> <!-- L  base=ך -->
+		<map iso="B01" to="\"/> <!-- Z  base=ז -->
+		<map iso="B02" to="©"/> <!-- X  base=ס -->
+		<map iso="B03" to="®"/> <!-- C  base=ב -->
+		<map iso="B04" to="™"/> <!-- V  base=ה -->
+		<map iso="B05" to="℅"/> <!-- B  base=נ -->
+		<map iso="B06" to="["/> <!-- N  base=מ -->
+		<map iso="B07" to="]"/> <!-- M  base=צ -->
+		<map iso="A00" to="&lt;" longPress="› ≥ »"/> <!-- (3 keys to left of space) -->
+		<map iso="A01" to="&gt;" longPress="‹ ≤ «"/> <!-- (2 keys to left of space) -->
+		<map iso="A02" to=" "/> <!-- (key to left of space)  base=, -->
+		<map iso="A03" to="," longPress="!"/> <!-- space -->
+		<map iso="A04" to="."/> <!-- (key to right of space) -->
+	</keyMap>
+</keyboard>

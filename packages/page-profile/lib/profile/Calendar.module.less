@@ -1,0 +1,77 @@
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: -0.5rem;
+}
+
+.calendar {
+  margin: 0.5rem;
+  border: 1px solid var(--separator-color);
+
+  table {
+    table-layout: fixed;
+
+    caption {
+      font-weight: normal;
+      font-style: normal;
+      text-align: center;
+    }
+
+    th,
+    td {
+      vertical-align: middle;
+      width: 1.5rem;
+      height: 1.5rem;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+  }
+}
+
+.table {
+  /* empty */
+}
+
+.caption {
+  background-color: var(--Calendar-caption__background-color);
+}
+
+.headerCell {
+  background-color: var(--Calendar-headerCell__background-color);
+  font-weight: bold;
+  font-style: normal;
+  cursor: default;
+}
+
+.cell {
+  font-weight: normal;
+  font-style: normal;
+  cursor: default;
+}
+
+.cell_s0 {
+  color: var(--Calendar-cell__color);
+  background-color: var(--Calendar-cell--s0__background-color);
+}
+
+.cell_s1 {
+  color: var(--Calendar-cell__color);
+  background-color: var(--Calendar-cell--s1__background-color);
+}
+
+.cell_s2 {
+  color: var(--Calendar-cell__color);
+  background-color: var(--Calendar-cell--s2__background-color);
+}
+
+.cell_s3 {
+  color: var(--Calendar-cell__color);
+  background-color: var(--Calendar-cell--s3__background-color);
+}
+
+.cell_z {
+  background-color: var(--Calendar-cell--z__background-color);
+}

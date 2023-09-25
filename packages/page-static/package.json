@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "name": "@keybr/page-static",
+  "version": "0.0.0",
+  "main": "lib/index.ts",
+  "types": ".types/index.d.ts",
+  "dependencies": {
+    "@keybr/pages-browser": "*",
+    "@keybr/pages-server": "*",
+    "@keybr/pages-shared": "*",
+    "@keybr/thirdparties": "*",
+    "@keybr/widget": "*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "clean": "rm -fr .types",
+    "compile": "tsc"
+  }
+}

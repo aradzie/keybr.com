@@ -1,0 +1,6 @@
+packages/*/.types/
+packages/*/public/
+node_modules/
+root/
+build/
+tmp/

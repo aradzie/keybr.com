@@ -1,0 +1,5 @@
+export const EXAMPLE = `Touch typing (also called touch type or touch keyboarding) is typing without using the sense of sight to find the keys. Specifically, a touch typist will know their location on the keyboard through muscle memory. Touch typing typically involves placing the eight fingers in a horizontal row along the middle of the keyboard (the home row) and having them reach for other keys. Both two-handed touch typing and one-handed touch typing are possible.
+
+Touch type training can improve any individual's typing speed and accuracy dramatically. The accepted average typing speed is 40 WPM (words per minute), and professional career typists can exceed 100 WPM repeatedly and continuously (secretarial, data entry, etc.). Every individual learns at a different pace, and routine practice is required to maintain a high typing speed and accuracy.
+
+A touch typist does not need to move the sight between the keyboard (that is obscured with fingers and may be poorly lit) and other areas that require attention. This increases productivity and reduces the number of errors.`;

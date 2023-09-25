@@ -1,0 +1,97 @@
+.lessonKey {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  color: var(--LessonKey__color);
+  outline: 1px solid transparent;
+  font-family: var(--monospace-font-family);
+  text-align: center;
+  cursor: default;
+}
+
+.lessonKey_normal {
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 0.9rem;
+  line-height: calc(1.5rem - 2px);
+}
+
+.lessonKey_large {
+  width: 3rem;
+  height: 3rem;
+  font-size: 2rem;
+  line-height: calc(3rem - 2px);
+}
+
+.lessonKey_announcement {
+  width: 10rem;
+  height: 10rem;
+  font-size: 8rem;
+  line-height: calc(10rem - 2px);
+}
+
+.lessonKey + .lessonKey {
+  margin-left: 1px;
+}
+
+.lessonKey_included {
+  color: var(--LessonKey--included__color);
+  background-color: var(--LessonKey--included__background-color);
+  outline: 1px solid var(--LessonKey--included__outline-color);
+}
+
+.lessonKey_excluded {
+  color: var(--LessonKey--excluded__color);
+  background-color: var(--LessonKey--excluded__background-color);
+  outline: 1px solid var(--LessonKey--excluded__outline-color);
+}
+
+.lessonKey_uncalibrated {
+  color: var(--LessonKey--uncalibrated__color);
+  background-color: var(--LessonKey--uncalibrated__background-color);
+  outline: 1px solid var(--LessonKey--uncalibrated__outline-color);
+}
+
+.lessonKey_boosted {
+  color: var(--LessonKey--boosted__color);
+  outline: 1px solid var(--LessonKey--boosted__outline-color);
+}
+
+.lessonKey_forced {
+  color: var(--LessonKey--forced__color);
+  outline: 1px solid var(--LessonKey--forced__outline-color);
+  text-decoration: underline;
+}
+
+.lessonKey_selectable {
+  cursor: pointer;
+}
+
+.lessonKey_current {
+  z-index: 1;
+  outline: 3px solid var(--LessonKey--current__outline-color);
+}
+
+.keyDetails {
+  display: inline-block;
+}
+
+.keyDetails_calibrated {
+  /* empty */
+}
+
+.keyDetails_uncalibrated {
+  /* empty */
+}
+
+.lessonKey + .keyDetails {
+  margin-left: 0.5rem;
+}
+
+.keyTimeDelta {
+  display: inline-block;
+}
+
+.keyTimeDelta + .keyTimeDelta {
+  margin-left: 0.5rem;
+}

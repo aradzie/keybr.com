@@ -1,0 +1,84 @@
+@import "../mixins";
+
+.optionList {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  min-width: 20rem;
+  margin: 0;
+  padding: 0;
+  border: none;
+  color: var(--Button__color);
+  background-color: var(--Button__background-color);
+  font-family: var(--default-font-family);
+  font-size: 0.85rem;
+  font-weight: normal;
+  font-style: normal;
+  text-align: left;
+  text-transform: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.focused {
+  color: var(--Button--focused__color);
+  background-color: var(--Button--focused__background-color);
+  outline: none;
+}
+
+.placeholder {
+  display: flex;
+}
+
+.placeholderName {
+  flex: 1;
+  vertical-align: middle;
+  overflow: hidden;
+  max-width: 100%;
+  height: @field-height;
+  margin: 0;
+  padding: 0 1.5rem;
+  line-height: @field-height;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.placeholderArrow {
+  vertical-align: middle;
+  height: @field-height;
+  margin: 0;
+  padding: 0 1.5rem 0 0;
+  line-height: @field-height;
+}
+
+.list {
+  display: block;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.item {
+  display: block;
+  overflow: hidden;
+  max-width: 100%;
+  height: @field-height;
+  padding: 0 1.5rem;
+  color: var(--MenuItem__color);
+  background-color: var(--MenuItem__background-color);
+  line-height: @field-height;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.item_selected,
+.item_highlighted {
+  color: var(--MenuItem--selected__color);
+  background-color: var(--MenuItem--selected__background-color);
+}
+
+.disabled {
+  .is-disabled();
+}

@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "name": "@keybr/pages-browser",
+  "version": "0.0.0",
+  "main": "lib/index.ts",
+  "types": ".types/index.d.ts",
+  "dependencies": {
+    "@keybr/debug": "*",
+    "@keybr/intl": "*",
+    "@keybr/lnf": "*",
+    "@keybr/lnf-browser": "*",
+    "@keybr/pages-shared": "*",
+    "@keybr/widget": "*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "clean": "rm -fr .types",
+    "compile": "tsc"
+  }
+}

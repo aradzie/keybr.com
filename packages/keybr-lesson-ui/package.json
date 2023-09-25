@@ -1,0 +1,35 @@
+{
+  "private": true,
+  "name": "@keybr/lesson-ui",
+  "version": "0.0.0",
+  "main": "lib/index.ts",
+  "types": ".types/index.d.ts",
+  "dependencies": {
+    "@keybr/intl": "*",
+    "@keybr/lesson": "*",
+    "@keybr/phonetic-model": "*",
+    "@keybr/result": "*",
+    "@keybr/settings": "*",
+    "@keybr/widget": "*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "clean": "rm -fr .types",
+    "compile": "tsc",
+    "test": "ava"
+  },
+  "ava": {
+    "extensions": [
+      "ts",
+      "tsx"
+    ],
+    "files": [
+      "lib/**/*.test.*"
+    ],
+    "require": [
+      "@keybr/tsl",
+      "@keybr/test-env-browser",
+      "@keybr/test-env-bundler"
+    ]
+  }
+}

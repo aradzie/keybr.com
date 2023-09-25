@@ -1,0 +1,46 @@
+diff --git a/node_modules/ws/lib/buffer-util.js b/node_modules/ws/lib/buffer-util.js
+index f7536e2..63bee17 100644
+--- a/node_modules/ws/lib/buffer-util.js
++++ b/node_modules/ws/lib/buffer-util.js
+@@ -110,22 +110,3 @@ module.exports = {
+   toBuffer,
+   unmask: _unmask
+ };
+-
+-/* istanbul ignore else  */
+-if (!process.env.WS_NO_BUFFER_UTIL) {
+-  try {
+-    const bufferUtil = require('bufferutil');
+-
+-    module.exports.mask = function (source, mask, output, offset, length) {
+-      if (length < 48) _mask(source, mask, output, offset, length);
+-      else bufferUtil.mask(source, mask, output, offset, length);
+-    };
+-
+-    module.exports.unmask = function (buffer, mask) {
+-      if (buffer.length < 32) _unmask(buffer, mask);
+-      else bufferUtil.unmask(buffer, mask);
+-    };
+-  } catch (e) {
+-    // Continue regardless of the error.
+-  }
+-}
+diff --git a/node_modules/ws/lib/validation.js b/node_modules/ws/lib/validation.js
+index c352e6e..b44c4f7 100644
+--- a/node_modules/ws/lib/validation.js
++++ b/node_modules/ws/lib/validation.js
+@@ -117,14 +117,4 @@ if (isUtf8) {
+   module.exports.isValidUTF8 = function (buf) {
+     return buf.length < 24 ? _isValidUTF8(buf) : isUtf8(buf);
+   };
+-} /* istanbul ignore else  */ else if (!process.env.WS_NO_UTF_8_VALIDATE) {
+-  try {
+-    const isValidUTF8 = require('utf-8-validate');
+-
+-    module.exports.isValidUTF8 = function (buf) {
+-      return buf.length < 32 ? _isValidUTF8(buf) : isValidUTF8(buf);
+-    };
+-  } catch (e) {
+-    // Continue regardless of the error.
+-  }
+ }

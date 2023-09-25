@@ -1,0 +1,42 @@
+.tour {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 2.5rem 2rem 2.5rem;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.meter {
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+}
+
+.meterItem {
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  background-color: var(--separator-color);
+
+  & + & {
+    margin-left: 0.2rem;
+  }
+
+  &_current {
+    background-color: var(--text-color);
+  }
+}
+
+.prevButton + .nextButton {
+  margin-left: 1rem;
+}

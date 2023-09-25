@@ -1,0 +1,82 @@
+.frame {
+  fill: var(--Chart-frame__color);
+  fill-opacity: 0.3;
+}
+
+.lighterFrame {
+  fill-opacity: 0.2;
+}
+
+.keyLabel {
+  fill: var(--text-color);
+  font-family: var(--monospace-font-family);
+  font-size: 1.1rem;
+}
+
+.valueLabel {
+  fill: var(--text-color);
+  font-family: var(--value-font-family);
+  font-size: 0.7rem;
+}
+
+.headerText {
+  fill: var(--Chart-headerText__color);
+  font-family: var(--header-font-family);
+  font-size: 2.2rem;
+}
+
+.subheaderText {
+  fill: var(--Chart-subheaderText__color);
+  font-family: var(--header-font-family);
+  font-size: 1rem;
+}
+
+.normalText {
+  fill: var(--text-color);
+  font-family: var(--default-font-family);
+  font-size: 1rem;
+}
+
+.speed {
+  fill: var(--Chart-speed__color);
+  stroke: var(--Chart-speed__color);
+  stroke-linecap: square;
+}
+
+.accuracy {
+  fill: var(--Chart-accuracy__color);
+  stroke: var(--Chart-accuracy__color);
+  stroke-linecap: square;
+}
+
+.keyCount {
+  fill: var(--Chart-keyCount__color);
+  stroke: var(--Chart-keyCount__color);
+  stroke-linecap: square;
+}
+
+.threshold {
+  fill: var(--Chart-threshold__color);
+  stroke: var(--Chart-threshold__color);
+  stroke-linecap: square;
+}
+
+.keySpeed {
+  &_b {
+    fill: var(--Chart-keySpeed__color);
+  }
+}
+
+.keyFrequency {
+  &_h {
+    fill: var(--Chart-keyFrequency-h__color);
+  }
+
+  &_m {
+    fill: var(--Chart-keyFrequency-m__color);
+  }
+
+  &_r {
+    fill: var(--Chart-keyFrequency-r__color);
+  }
+}

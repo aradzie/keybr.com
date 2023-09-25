@@ -1,0 +1,31 @@
+{
+  "private": true,
+  "name": "@keybr/highscores",
+  "version": "0.0.0",
+  "main": "lib/index.ts",
+  "types": ".types/index.d.ts",
+  "dependencies": {
+    "@keybr/config": "*",
+    "@keybr/layout": "*",
+    "@keybr/result": "*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "clean": "rm -fr .types",
+    "compile": "tsc",
+    "test": "ava"
+  },
+  "ava": {
+    "extensions": [
+      "ts",
+      "tsx"
+    ],
+    "files": [
+      "lib/**/*.test.*"
+    ],
+    "require": [
+      "@keybr/tsl",
+      "@keybr/test-env-server"
+    ]
+  }
+}

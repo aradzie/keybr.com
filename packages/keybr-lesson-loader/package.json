@@ -1,0 +1,37 @@
+{
+  "private": true,
+  "name": "@keybr/lesson-loader",
+  "version": "0.0.0",
+  "main": "lib/index.ts",
+  "types": ".types/index.d.ts",
+  "dependencies": {
+    "@keybr/content-words": "*",
+    "@keybr/debug": "*",
+    "@keybr/keyboard": "*",
+    "@keybr/lesson": "*",
+    "@keybr/pages-shared": "*",
+    "@keybr/phonetic-model": "*",
+    "@keybr/phonetic-model-loader": "*",
+    "@keybr/settings": "*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "clean": "rm -fr .types",
+    "compile": "tsc",
+    "test": "ava"
+  },
+  "ava": {
+    "extensions": [
+      "ts",
+      "tsx"
+    ],
+    "files": [
+      "lib/**/*.test.*"
+    ],
+    "require": [
+      "@keybr/tsl",
+      "@keybr/test-env-browser",
+      "@keybr/test-env-bundler"
+    ]
+  }
+}

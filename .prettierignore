@@ -1,0 +1,11 @@
+packages/*/.types/
+packages/*/public/
+node_modules/
+root/
+build/
+tmp/
+package.json
+package-lock.json
+tsconfig.json
+*.snap
+*.module.less.d.ts

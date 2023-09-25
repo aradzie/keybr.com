@@ -1,0 +1,31 @@
+@import "../mixins";
+
+.iconButton {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  min-width: @field-height;
+  min-height: @field-height;
+  margin: 0;
+  padding: 0;
+  border: none;
+  color: var(--text-color);
+  background: none;
+  font-family: var(--default-font-family);
+  font-size: 0.85rem;
+  font-weight: normal;
+  font-style: normal;
+  line-height: @field-height;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.iconButton:focus {
+  outline: 1px dotted var(--text-color);
+}
+
+.disabled {
+  .is-disabled();
+}

@@ -1,0 +1,35 @@
+@import "../mixins";
+
+.nameValue {
+  display: inline-block;
+  //.u-truncate();
+}
+
+.name {
+  display: inline-block;
+  color: var(--Name-color);
+  //.u-truncate();
+}
+
+.value {
+  display: inline-block;
+  color: var(--Value-color);
+  font-family: var(--value-font-family);
+  //.u-truncate();
+}
+
+.valueDelta_more {
+  color: var(--ValueDelta--more__color);
+}
+
+.valueDelta_less {
+  color: var(--ValueDelta--less__color);
+}
+
+.nameValue + .nameValue {
+  margin-left: 0.4rem;
+}
+
+.name + .value {
+  margin-left: 0.2rem;
+}

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyboard SYSTEM "../dtd/ldmlKeyboard.dtd">
+<keyboard locale="srb-t-k0-windows">
+	<version platform="10" number="$Revision$"/>
+	<names>
+		<name value="Sora"/>
+	</names>
+	<settings fallback="omit"/>
+	<keyMap>
+		<map iso="E00" to="`"/>
+		<map iso="E01" to="ჱ"/> <!-- 1 -->
+		<map iso="E02" to="ჲ"/> <!-- 2 -->
+		<map iso="E03" to="ჳ"/> <!-- 3 -->
+		<map iso="E04" to="ჴ"/> <!-- 4 -->
+		<map iso="E05" to="ჵ"/> <!-- 5 -->
+		<map iso="E06" to="ჶ"/> <!-- 6 -->
+		<map iso="E07" to="ჷ"/> <!-- 7 -->
+		<map iso="E08" to="ჸ"/> <!-- 8 -->
+		<map iso="E09" to="ჹ"/> <!-- 9 -->
+		<map iso="E10" to="ჰ"/> <!-- 0 -->
+		<map iso="E11" to="-"/>
+		<map iso="E12" to="="/>
+		<map iso="D02" to="ყ"/> <!-- W -->
+		<map iso="D03" to="უ"/> <!-- E -->
+		<map iso="D04" to="ო"/> <!-- R -->
+		<map iso="D05" to="ბ"/> <!-- T -->
+		<map iso="D06" to="ნ"/> <!-- Y -->
+		<map iso="D07" to="ქ"/> <!-- U -->
+		<map iso="D08" to="ფ"/> <!-- I -->
+		<map iso="D09" to="ღ"/> <!-- O -->
+		<map iso="D10" to="მ"/> <!-- P -->
+		<map iso="D11" to="["/>
+		<map iso="D12" to="]"/>
+		<map iso="C01" to="ტ"/> <!-- A -->
+		<map iso="C02" to="ა"/> <!-- S -->
+		<map iso="C03" to="ე"/> <!-- D -->
+		<map iso="C04" to="თ"/> <!-- F -->
+		<map iso="C05" to="ვ"/> <!-- G -->
+		<map iso="C06" to="პ"/> <!-- H -->
+		<map iso="C07" to="რ"/> <!-- J -->
+		<map iso="C08" to="ჟ"/> <!-- K -->
+		<map iso="C09" to="ი"/> <!-- L -->
+		<map iso="C10" to=";"/>
+		<map iso="C11" to="&apos;"/>
+		<map iso="C12" to="\"/> <!-- (key to right of ') -->
+		<map iso="B00" to="\"/> <!-- (key to left of Z) -->
+		<map iso="B01" to="შ"/> <!-- Z -->
+		<map iso="B02" to="ს"/> <!-- X -->
+		<map iso="B03" to="დ"/> <!-- C -->
+		<map iso="B04" to="ლ"/> <!-- V -->
+		<map iso="B05" to="გ"/> <!-- B -->
+		<map iso="B06" to="კ"/> <!-- N -->
+		<map iso="B07" to="ზ"/> <!-- M -->
+		<map iso="B08" to=","/>
+		<map iso="B09" to="."/>
+		<map iso="B10" to="/"/>
+		<map iso="A03" to=" "/> <!-- space -->
+	</keyMap>
+	<keyMap modifiers="shift+caps?">
+		<map iso="E00" to="~"/> <!-- ` -->
+		<map iso="E01" to="!"/> <!-- 1  base=ჱ -->
+		<map iso="E02" to="@"/> <!-- 2  base=ჲ -->
+		<map iso="E03" to="#"/> <!-- 3  base=ჳ -->
+		<map iso="E04" to="$"/> <!-- 4  base=ჴ -->
+		<map iso="E05" to="%"/> <!-- 5  base=ჵ -->
+		<map iso="E06" to="^"/> <!-- 6  base=ჶ -->
+		<map iso="E07" to="&amp;"/> <!-- 7  base=ჷ -->
+		<map iso="E08" to="*"/> <!-- 8  base=ჸ -->
+		<map iso="E09" to="("/> <!-- 9  base=ჹ -->
+		<map iso="E10" to=")"/> <!-- 0  base=ჰ -->
+		<map iso="E11" to="_"/> <!-- - -->
+		<map iso="E12" to="+"/> <!-- = -->
+		<map iso="D11" to="{"/> <!-- [ -->
+		<map iso="D12" to="}"/> <!-- ] -->
+		<map iso="C10" to=":"/> <!-- ; -->
+		<map iso="C11" to="\u{22}"/> <!-- '  to= "  -->
+		<map iso="C12" to="|"/> <!-- (key to right of ')  base=\ -->
+		<map iso="B00" to="|"/> <!-- (key to left of Z)  base=\ -->
+		<map iso="B08" to="&lt;"/> <!-- , -->
+		<map iso="B09" to="&gt;"/> <!-- . -->
+		<map iso="B10" to="?"/> <!-- / -->
+		<map iso="A03" to=" "/> <!-- space -->
+	</keyMap>
+	<keyMap modifiers="ctrl+caps?">
+		<map iso="D11" to="\u{1B}"/> <!-- [ -->
+		<map iso="D12" to="\u{1D}"/> <!-- ] -->
+		<map iso="C12" to="\u{1C}"/> <!-- (key to right of ')  base=\ -->
+		<map iso="B00" to="\u{1C}"/> <!-- (key to left of Z)  base=\ -->
+	</keyMap>
+	<keyMap modifiers="ctrl+shift+caps?">
+		<map iso="E04" to="₹"/> <!-- 4  base=ჴ -->
+	</keyMap>
+</keyboard>

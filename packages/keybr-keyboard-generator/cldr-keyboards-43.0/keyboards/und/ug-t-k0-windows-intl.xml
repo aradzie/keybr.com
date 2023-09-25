@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE keyboard SYSTEM "../dtd/ldmlKeyboard.dtd">
+<!-- Originally prepared by Waris Abdukerim Janbaz <oyghan@gmail.com> of the Uyghur Computer Science Association http://ukij.org -->
+<!-- Uyghur letter names in comments are written in Latin-Script Uyghur alphabet -->
+<keyboard locale='ug-t-k0-windows-intl'>
+	<version platform='6.1' number='$Revision$'/>
+	<names>
+		<name value='Uyghur (International)'/>
+	</names>
+	<settings fallback='omit'/>
+	<keyMap>
+		<map iso="E00" to="`"/>
+		<map iso="E01" to="1"/>
+		<map iso="E02" to="2"/>
+		<map iso="E03" to="3"/>
+		<map iso="E04" to="4"/>
+		<map iso="E05" to="5"/>
+		<map iso="E06" to="6"/>
+		<map iso="E07" to="7"/>
+		<map iso="E08" to="8"/>
+		<map iso="E09" to="9"/>
+		<map iso="E10" to="0"/>
+		<map iso="E11" to="-"/>
+		<map iso="E12" to="="/>
+		<map iso="D01" to="ق"/> <!-- Uyghur letter Q, key q -->
+		<map iso="D02" to="ۋ"/> <!-- Uyghur letter W, key w -->
+		<map iso="D03" to="ە"/> <!-- Uyghur letter E, key e -->
+		<map iso="D04" to="ر"/> <!-- Uyghur letter R, key r -->
+		<map iso="D05" to="ت"/> <!-- Uyghur letter T, key t -->
+		<map iso="D06" to="ي"/> <!-- Uyghur letter Y, key y -->
+		<map iso="D07" to="ۇ"/> <!-- Uyghur letter U, key u -->
+		<map iso="D08" to="ى"/> <!-- Uyghur letter I, key i -->
+		<map iso="D09" to="و"/> <!-- Uyghur letter O, key o -->
+		<map iso="D10" to="پ"/> <!-- Uyghur letter P, key p -->
+		<map iso="D11" to="]"/> <!-- [ -->
+		<map iso="D12" to="["/> <!-- ] -->
+		<map iso="C01" to="ا"/> <!-- Uyghur letter A, key a -->
+		<map iso="C02" to="س"/> <!-- Uyghur letter S, key s -->
+		<map iso="C03" to="د"/> <!-- Uyghur letter D, key d -->
+		<map iso="C04" to="ف"/> <!-- Uyghur letter F, key f -->
+		<map iso="C05" to="گ"/> <!-- Uyghur letter G, key g -->
+		<map iso="C06" to="ھ"/> <!-- Uyghur letter H, key h -->
+		<map iso="C07" to="ج"/> <!-- Uyghur letter j, key j -->
+		<map iso="C08" to="ك"/> <!-- Uyghur letter K, key k -->
+		<map iso="C09" to="ل"/> <!-- Uyghur letter L, key l -->
+		<map iso="C10" to="؛"/> <!-- ; -->
+		<map iso="C11" to="&apos;"/>
+		<map iso="C12" to="\"/> <!-- (1 key to right of ') -->
+		<map iso="B01" to="ز"/> <!-- Uyghur letter Z, key z -->
+		<map iso="B02" to="خ"/> <!-- Uyghur letter X, key x -->
+		<map iso="B03" to="چ"/> <!-- Uyghur letter ch, key C -->
+		<map iso="B05" to="ب"/> <!-- Uyghur letter B, key b -->
+		<map iso="B06" to="ن"/> <!-- Uyghur letter N, key n -->
+		<map iso="B07" to="م"/> <!-- Uyghur letter M, key m -->
+		<map iso="B08" to="،"/> <!-- Uyghur comma , key ,-->
+		<map iso="B09" to="."/>
+		<!-- 16 Composite Uyghur vowel forms are expressed as a combination of the initial and medial shapes 
+			of the following Arabic letter YEY ئ 0626 followed by the medial and final forms of Uyghur vowels -->
+		<map iso="B10" to="ئ"/> <!-- see above, key / -->
+		<map iso="A03" to=" "/> <!-- space -->
+	</keyMap>
+	<keyMap modifiers='shift'>
+		<map iso="E00" to="~"/> <!-- ` -->
+		<map iso="E01" to="!"/> <!-- 1 -->
+		<map iso="E02" to="@"/> <!-- 2 -->
+		<map iso="E03" to="#"/> <!-- 3 -->
+		<map iso="E04" to="$"/> <!-- 4 -->
+		<map iso="E05" to="%"/> <!-- 5 -->
+		<map iso="E06" to="^"/> <!-- 6 -->
+		<map iso="E07" to="&amp;"/> <!-- 7 -->
+		<map iso="E08" to="*"/> <!-- 8 -->
+		<map iso="E09" to=")"/> <!-- 9 -->
+		<map iso="E10" to="("/> <!-- 0 -->
+		<map iso="E11" to="—"/> <!-- long dash for Uyghur - -->
+		<map iso="E12" to="+"/> <!-- = -->
+		<map iso="D03" to="ې"/><!-- Uyghur letter é, key E  base=ە -->
+		<map iso="D05" to="ـ"/><!-- Kashida inserted to stretch Uyghur Arabic letters, key T  base=ت -->
+		<map iso="D07" to="ۈ"/><!-- Uyghur letter ü, key U  base=ۇ -->
+		<map iso="D09" to="ۆ"/><!-- Uyghur letter ö, key O  base=و -->
+		<map iso="D11" to="»"/> <!-- [  base=] -->
+		<map iso="D12" to="«"/> <!-- ]  base=[ -->
+		<map iso="C02" to="ش"/> <!-- Uyghur letter SH, key S  base=س -->
+		<map iso="C05" to="غ"/><!-- Uyghur letter GH, key G  base=گ -->
+		<map iso="C07" to="ژ"/> <!-- Uyghur letter J, key J  base=ج -->
+		<map iso="C09" to="لا"/> <!-- Uyghur letter LA, key L  base=ل -->
+		<map iso="C10" to=":"/> <!-- ;  base=؛ -->
+		<map iso="C11" to="\u{22}"/> <!-- '  to= "  -->
+		<map iso="C12" to="|"/> <!-- (1 key to right of ')  base=\ -->
+		<map iso="B06" to="ڭ"/><!-- Uyghur letter NG, key N, base ن -->
+		<map iso="B08" to="›"/> <!-- Uyghur opening little parenthesis  -->
+		<map iso="B09" to="‹"/> <!-- Uyghur closing little parenthesis  -->
+		<map iso="B10" to="؟"/> <!-- /  base=ئ -->
+		<map iso="A03" to=" "/> <!-- space -->
+	</keyMap>
+	<keyMap modifiers='caps+shift'>
+		<map iso="E00" to="~"/> <!-- ` -->
+		<map iso="E01" to="!"/> <!-- 1 -->
+		<map iso="E02" to="@"/> <!-- 2 -->
+		<map iso="E03" to="#"/> <!-- 3 -->
+		<map iso="E04" to="$"/> <!-- 4 -->
+		<map iso="E05" to="%"/> <!-- 5 -->
+		<map iso="E06" to="^"/> <!-- 6 -->
+		<map iso="E07" to="&amp;"/> <!-- 7 -->
+		<map iso="E08" to="*"/> <!-- 8 -->
+		<map iso="E09" to=")"/> <!-- 9 -->
+		<map iso="E10" to="("/> <!-- 0 -->
+		<map iso="E11" to="—"/> <!-- long dash for Uyghur - -->
+		<map iso="E12" to="+"/> <!-- = -->
+		<map iso="D03" to="ې"/><!-- Uyghur letter é, key E  base=ە -->
+		<map iso="D05" to="ـ"/><!-- Kashida inserted to stretch Uyghur Arabic letters, key T  base=ت -->
+		<map iso="D07" to="ۈ"/><!-- Uyghur letter ü, key U  base=ۇ -->
+		<map iso="D09" to="ۆ"/><!-- Uyghur letter ö, key O  base=و -->
+		<map iso="D11" to="»"/> <!-- [  base=] -->
+		<map iso="D12" to="«"/> <!-- ]  base=[ -->
+		<map iso="C02" to="ش"/> <!-- Uyghur letter SH, key S  base=س -->
+		<map iso="C05" to="غ"/><!-- Uyghur letter GH, key G  base=گ -->
+		<map iso="C07" to="ژ"/> <!-- Uyghur letter J, key J  base=ج -->
+		<map iso="C09" to="لا"/> <!-- Uyghur letter LA, key L  base=ل -->
+		<map iso="C10" to=":"/> <!-- ;  base=؛ -->
+		<map iso="C11" to="\u{22}"/> <!-- '  to= "  -->
+		<map iso="C12" to="|"/> <!-- (1 key to right of ')  base=\ -->
+		<map iso="B06" to="ڭ"/><!-- Uyghur letter NG, key N, base ن -->		
+		<map iso="B08" to="›"/> <!-- Uyghur opening little parenthesis  -->
+		<map iso="B09" to="‹"/> <!-- Uyghur closing little parenthesis  -->
+		<map iso="B10" to="؟"/> <!-- /  base=ئ -->
+		<map iso="A03" to=" "/> <!-- space -->
+	</keyMap>
+</keyboard>

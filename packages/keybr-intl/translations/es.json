@@ -1,0 +1,1482 @@
+{
+  "account.accountDetailsLegend": {
+    "defaultMessage": "Detalles de la Cuenta",
+    "description": "Fieldset legend."
+  },
+  "account.accountPageDescription": {
+    "defaultMessage": "<p>Utilizas una cuenta para almacenar tus datos de escritura en nuestros servidores en la nube. Podrás acceder a tu perfil desde cualquier ordenador o navegador.</p>",
+    "description": "Freeform text."
+  },
+  "account.anonymizeButtonLabel": {
+    "defaultMessage": "Hazme Anónimo",
+    "description": "Button label."
+  },
+  "account.anonymizeButtonTitle": {
+    "defaultMessage": "Oculta tu imagen de usuario real y tu nombre del público.",
+    "description": "Button title."
+  },
+  "account.anonymizeDescription": {
+    "defaultMessage": "La anonimización sustituye tu imagen y nombre de usuario real por el que te ofrecemos nosotros. Puedes alternar tu nombre real y el anónimo tantas veces como quieras.",
+    "description": "Freeform text."
+  },
+  "account.anonymousUserName": {
+    "defaultMessage": "Usuario Anónimo",
+    "description": "Text label."
+  },
+  "account.avatarDescription": {
+    "defaultMessage": "Tu imagen y nombre de usuario son visibles para el público en tu perfil, la tabla de puntuaciones y el juego multijugador.",
+    "description": "Freeform text."
+  },
+  "account.checkout.description": {
+    "defaultMessage": "Adquiere una cuenta premium para desbloquear funciones extra y disfrutar de una experiencia sin anuncios.",
+    "description": "Form description."
+  },
+  "account.checkout.title": {
+    "defaultMessage": "Cuenta Premium",
+    "description": "Form title."
+  },
+  "account.checkoutButtonLabel": {
+    "defaultMessage": "Comprar una Cuenta Premium",
+    "description": "Button label."
+  },
+  "account.checkoutButtonTitle": {
+    "defaultMessage": "Abrir el formulario de compra.",
+    "description": "Button title."
+  },
+  "account.deleteAccountButtonLabel": {
+    "defaultMessage": "Eliminar Cuenta",
+    "description": "Button label."
+  },
+  "account.deleteAccountButtonTitle": {
+    "defaultMessage": "Eliminar permanentemente tu cuenta.",
+    "description": "Button title."
+  },
+  "account.deleteAccountConfirmation": {
+    "defaultMessage": "¿Estás seguro de que quieres eliminar tu cuenta? ¡Esta operación es permanente y no puede deshacerse! Aun así, puedes crear una nueva cuenta en cualquier momento.",
+    "description": "Confirmation text."
+  },
+  "account.deleteAccountDescription": {
+    "defaultMessage": "Esto eliminará toda tu información personal identificable, como tu nombre y dirección de correo electrónico de nuestra base de datos. ¡Esta operación no puede deshacerse! Si solo quieres borrar tus estadísticas de escritura y empezar de nuevo, puedes hacerlo en la página del perfil.",
+    "description": "Freeform text."
+  },
+  "account.deleteAccountLegend": {
+    "defaultMessage": "Eliminar Cuenta",
+    "description": "Fieldset legend."
+  },
+  "account.emailFormDescription": {
+    "defaultMessage": "Inicio de sesión sencillo que no utiliza contraseñas. Simplemente ingrese su dirección de correo electrónico y le enviaremos un enlace de inicio de sesión. Vaya a su bandeja de entrada, haga clic en el enlace para crear una cuenta nueva o abrir una cuenta existente para la dirección de correo electrónico proporcionada. El enlace es temporal y caduca en unas horas. Para volver a iniciar sesión más tarde, ingrese la misma dirección de correo electrónico y le enviaremos un nuevo enlace para la misma cuenta.",
+    "description": "Freeform text."
+  },
+  "account.emailPlaceholder": {
+    "defaultMessage": "Tu dirección de correo electrónico...",
+    "description": "Input field placeholder."
+  },
+  "account.emailSignInHeader": {
+    "defaultMessage": "Inicio de sesión con correo electrónico",
+    "description": "Freeform header."
+  },
+  "account.emailState.errorText": {
+    "defaultMessage": "No se ha podido enviar el correo electrónico a <strong>{email}</strong>: {message}",
+    "description": "Text message."
+  },
+  "account.emailState.sendingText": {
+    "defaultMessage": "Enviando un correo electrónico con el enlace de inicio de sesión a <strong>{email}</strong>... Por favor, espera un segundo.",
+    "description": "Text message."
+  },
+  "account.emailState.sentText": {
+    "defaultMessage": "Hemos enviado un correo electrónico con el enlace de incicio de sesión a <strong>{email}</strong>. Debería llegarte en breve, comprueba tu bandeja de entrada en uno o dos minutos.",
+    "description": "Text message."
+  },
+  "account.emailTitle": {
+    "defaultMessage": "Esta es la dirección de correo electrónico a la que enviaremos el enlace de inicio de sesión.",
+    "description": "Input field title."
+  },
+  "account.freeAccountOverview": {
+    "defaultMessage": "<p>Adquiere una <strong>cuenta premium</strong> para desbloquear funciones extra y disfrutar de una experiencia sin anuncios. Esta es la lista de beneficios que ofrece la cuenta premium:</p><ul><li><strong> Sin anuncios.</strong> Los anuncios pueden distraer e impedir tu progreso en el aprendizaje. Esta es una buena forma de deshacerse de ellos.</li><li><strong>Sin rastreadores.</strong> Los rastreadores inevitablemente vienen con los anuncios. Elimina todos los rastreadores para obtener una completa privacidad online.</li><li><strong>Respuesta ultrarápida.</strong> Los anuncios tardan bastante tiempo en cargarse. Si te deshaces de ellos los tiempos de carga son más rápidos en todas las páginas.</li></ul><p>Es un pago único que proporciona acceso de por vida.</p>",
+    "description": "Freeform text."
+  },
+  "account.pageTitle": {
+    "defaultMessage": "Cuenta | {name}",
+    "description": "Page title."
+  },
+  "account.premiumAccountHeader": {
+    "defaultMessage": "Cuenta Premium",
+    "description": "Freeform header."
+  },
+  "account.premiumAccountLegend": {
+    "defaultMessage": "Cuenta Premium",
+    "description": "Fieldset legend."
+  },
+  "account.premiumAccountOverview": {
+    "defaultMessage": "<p>¡Gracias por adquirir una cuenta premium! Ahora puedes disfrutar de funciones extra y de una experiencia sin anuncios.</p>",
+    "description": "Freeform text."
+  },
+  "account.resendButtonLabel": {
+    "defaultMessage": "Reenviar",
+    "description": "Button label."
+  },
+  "account.resendButtonTitle": {
+    "defaultMessage": "Enviar un correo electrónico más.",
+    "description": "Button title."
+  },
+  "account.retryButtonLabel": {
+    "defaultMessage": "Reintentar",
+    "description": "Button label."
+  },
+  "account.retryButtonTitle": {
+    "defaultMessage": "Enviar otro correo electrónico más.",
+    "description": "Button title."
+  },
+  "account.sendButtonLabel": {
+    "defaultMessage": "Enviar Enlace de Inicio de Sesión",
+    "description": "Button label."
+  },
+  "account.sendButtonTitle": {
+    "defaultMessage": "Iniciar sesión con el correo electrónico.",
+    "description": "Button title."
+  },
+  "account.signInPageDescription": {
+    "defaultMessage": "<p>Crea una cuenta para almacenar tus datos de escritura en nuestros servidores en la nube. Esto te permite acceder a tu perfil desde cualquier ordenador o navegador. Si no tienes una cuenta, tus datos de mecanografía se almacenan localmente y solo son accesibles desde tu ordenador actual</p><p>No almacenamos ninguna contraseña. En su lugar, utilizamos servicios de terceros para autenticar a nuestros usuarios. Ofrecemos varias formas cómodas de crear una cuenta e iniciar sesión.</p><p>Puedes darte de baja en cualquier momento. Eliminar una cuenta es tan sencillo como crearla</p>",
+    "description": "Freeform text."
+  },
+  "account.signOutButtonLabel": {
+    "defaultMessage": "Cerrar Sesión",
+    "description": "Button label."
+  },
+  "account.signOutButtonTitle": {
+    "defaultMessage": "Salir de la aplicación.",
+    "description": "Button title."
+  },
+  "account.socialFormDescription": {
+    "defaultMessage": "Inicia sesión con tu red social favorita. Respetamos tu privacidad y nos comprometemos a no enviar nunca spam en tu muro, a tu amigos o correo electrónico.",
+    "description": "Freeform text."
+  },
+  "account.socialSignInButtonLabel": {
+    "defaultMessage": "Iniciar sesión con {name}",
+    "description": "Button title."
+  },
+  "account.socialSignInButtonTitle": {
+    "defaultMessage": "Iniciar sesión con una red social.",
+    "description": "Button title."
+  },
+  "account.socialSignInHeader": {
+    "defaultMessage": "Iniciar Sesión con Redes Sociales",
+    "description": "Freeform header."
+  },
+  "calendar.weekDayName": {
+    "defaultMessage": "Lu|Ma|Mi|Ju|Vi|Sa|Do",
+    "description": "Day of week name."
+  },
+  "common.javaScriptDisabledText": {
+    "defaultMessage": "¡Esta aplicación no funcionará porque JavaScript está deshabilitado en tu navegador!",
+    "description": "Common text."
+  },
+  "common.loadingText": {
+    "defaultMessage": "Cargando la aplicación, espera un segundo...",
+    "description": "Common text."
+  },
+  "footer.discordLinkTitle": {
+    "defaultMessage": "Discute en nuestro servidor Discord.",
+    "description": "Footer Discord link title."
+  },
+  "footer.emailLinkTitle": {
+    "defaultMessage": "Envía tus comentarios y sugerencias a info@keybr.com",
+    "description": "Footer email link title."
+  },
+  "help.example1": {
+    "defaultMessage": "<a>Ejemplo 1</a>, de 30 a 70 PPM después de 4 horas 20 minutos de práctica durante 15 días.",
+    "description": "Example profile text."
+  },
+  "help.example2": {
+    "defaultMessage": "<a>Ejemplo 2</a>, de 35 a 70 PPM después de 2 horas 20 minutos de práctica durante 12 días.",
+    "description": "Example profile text."
+  },
+  "help.example3": {
+    "defaultMessage": "<a>Ejemplo 3</a>, un decente salto desde menos de 20 a 40 PPM después de 5 horas 30 minutos de práctica durante 11 días.",
+    "description": "Example profile text."
+  },
+  "help.example4": {
+    "defaultMessage": "<a>Ejemplo 4</a>, después de 2 horas 10 minutos de práctica durante 11 días, la velocidad de escritura se mantuvo en ~70 PPM (que ya es bastante alta), pero la precisión mejoró.",
+    "description": "Example profile text."
+  },
+  "help.example5": {
+    "defaultMessage": "<a>Ejemplo 5</a>, de 20 a 45 PPM después de unas 10 horas de práctica durante 22 días (sí, a veces lleva más tiempo).",
+    "description": "Example profile text."
+  },
+  "help.indicatorsCaption": {
+    "defaultMessage": "Código de colores de los indicadores.",
+    "description": "Figure legend."
+  },
+  "help.keyboardZonesCaption": {
+    "defaultMessage": "Zonas del teclado y colocación adecuada de los dedos.",
+    "description": "Figure legend."
+  },
+  "help.rule1.body": {
+    "defaultMessage": "<p>Cuando empiezas a practicar por primera vez, el ordenador no sabe nada sobre tus habilidades de mecanografía, así que utiliza un pequeño conjunto de las letras más comunes para generar palabras como ‘<em>E</em>’, ‘<em>N</em>’, ‘ <em>I</em>’, ‘<em>T</em>’, ‘<em>R</em>’ y ‘<em>L</em>’. Todas las palabras generadas estarán formadas por este pequeño conjunto de letras, y el resto no se utilizará. Como las estadísticas de las letras son desconocidas, los indicadores correspondientes son grises</p>",
+    "description": "Paragraph text."
+  },
+  "help.rule1.title": {
+    "defaultMessage": "El algoritmo comienza con las letras iniciales",
+    "description": "Header text."
+  },
+  "help.rule2.body": {
+    "defaultMessage": "<p>A medida que empiezas a teclear las palabras generadas, el ordenador recoge tus estadísticas de escritura. Los indicadores comienzan a cambiar sus colores de rojo a verde. El color rojo indica que la velocidad de escritura para esa tecla concreta es lenta, y el color verde muestra lo contrario. En esta etapa tu objetivo es hacer que todas las letras sean verdes mejorando tu velocidad de mecanografiado. Ten en cuenta que, en este ejemplo, la letra ‘<em>T</em>’ está resaltada porque tiene la peor métrica de velocidad de mecanografía, por lo que se convierte en la letra objetivo. La letra objetivo se incluye en cada palabra generada y este es un dato crucial que hay que conocer. Esto significa que en cualquier momento practicas la tecla exacta que te ofrece más problemas.</p>",
+    "description": "Paragraph text."
+  },
+  "help.rule2.title": {
+    "defaultMessage": "Aprendes las letras iniciales",
+    "description": "Header text."
+  },
+  "help.rule3.body": {
+    "defaultMessage": "<p>Cuando tu velocidad de mecanografía mejore, y todas las letras se vuelvan finalmente verdes, se añadirá una nueva letra ‘<em>S</em>’ al conjunto. Se generarán palabras aleatorias a partir de este nuevo conjunto ampliado de letras. La letra ‘<em>S</em>’ es la letra objetivo y aparece en todas las palabras generadas. De nuevo, el color del indicador de esta letra es gris porque tus estadísticas de mecanografía son desconocidas</p>",
+    "description": "Paragraph text."
+  },
+  "help.rule3.title": {
+    "defaultMessage": "El algoritmo añade más letras",
+    "description": "Header text."
+  },
+  "help.rule4.body": {
+    "defaultMessage": "<p>En este paso tu objetivo es hacer que esta nueva letra se vuelva verde, y cuando esto suceda, se añade otra letra al conjunto, y el ciclo continúa. Siendo realistas, es muy probable que la velocidad de mecanografía de las letras anteriores se degrade, y verás que vuelven a ser rojas, como en el ejemplo. Esto es de esperar, tu objetivo sigue siendo el mismo, hacer que la nueva letra objetivo se vuelva verde para desbloquear la siguiente</p>",
+    "description": "Paragraph text."
+  },
+  "help.rule4.title": {
+    "defaultMessage": "Aprendes letras adicionales",
+    "description": "Header text."
+  },
+  "help.rule5.body": {
+    "defaultMessage": "<p>Si eres lo suficientemente persistente, tarde o temprano todas las letras se volverán verdes. Enhorabuena, ¡has conseguido tu objetivo principal! Aun así, esto no significa que debas dejar de aprender, puedes continuar todo el tiempo que quieras</p>,",
+    "description": "Paragraph text."
+  },
+  "help.rule5.title": {
+    "defaultMessage": "El ciclo se repite",
+    "description": "Header text."
+  },
+  "help.section1": {
+    "defaultMessage": "<h1>Aprende a escribir más rápido</h1><h2>Mecanografía al tacto</h2><p>Esta aplicación web te ayudará a aprender <em>mecanografía al tacto</em>, que significa escribir a través de la memoria muscular sin usar la vista para encontrar las teclas del teclado. Puedes mejorar tu velocidad y precisión de mecanografiado de forma espectacular. Lo contrario es la <em>mecanografía buscar y cazar</em>, un método de mecanografía en el que se mira el teclado en lugar de la pantalla, y se utilizan únicamente los dedos índices.</p>",
+    "description": "Freeform text."
+  },
+  "help.section2": {
+    "defaultMessage": "<h2>El método de enseñanza</h2><p>Esta aplicación utiliza un enfoque único. Emplea estadísticas y algoritmos inteligentes para crear de forma automática lecciones de mecanografía que se ajusten a tu nivel de habilidad actual. Funciona repitiendo el siguiente ciclo:</p><ol><li>El algoritmo genera una lista de palabras aleatorias para ti, basándose en tus habilidades de mecanografía. Tu nivel de habilidad se mide utilizando las estadísticas de mecanografía recogidas hasta el momento. Las palabras se componen de un conjunto de letras seleccionadas por el algoritmo.</li><li>Tú tecleas las palabras dadas. Intenta hacer el mínimo de errores posible.</li><li>A medida que escribes, el algoritmo recoge tus estadísticas de mecanografía, como la métrica del tiempo de escritura de cada tecla. Al final, estas estadísticas se utilizan para generar la siguiente lista de palabras para el paso uno.</li></ol><p>En cada etapa solo tienes que teclear las listas de palabras proporcionadas y el ordenador hará el resto.</p>",
+    "description": "Freeform text."
+  },
+  "help.section3": {
+    "defaultMessage": "<h2>El algoritmo de generación de palabras</h2><p>Esta aplicación genera palabras aleatorias pero legibles y pronunciables, utilizando las reglas fonéticas de tu idioma nativo. Estas palabras parecen casi naturales, y a menudo lo son. Teclear un texto coherente es mucho más fácil que repetir letras al azar, y te ayuda a recordar combinaciones de teclas frecuentes. El último punto es crucial. Por ejemplo, es casi imposible que la letra ‘<em>W</em>’ siga a la ‘<em>Z</em>’ en inglés, y nunca teclearás esa combinación en esta aplicación. En cambio, escribirás palabras más comunes, como «<em>the</em>,» « <em>that</em>,» «<em>with</em>,» etc. Pronto aprenderás a escribir la combinación «<em>est</em>\" realmente rápido.</p><p>Las palabras se generan a partir de las letras que se seleccionan utilizando las siguientes reglas.</p>",
+    "description": "Freeform text."
+  },
+  "help.section4": {
+    "defaultMessage": "<p>El significado preciso de cada indicador de color se muestra en la siguiente leyenda.</p>",
+    "description": "Freeform text."
+  },
+  "help.section5": {
+    "defaultMessage": "<h2>Forma correcta de usar el teclado</h2><p>Pon todos tus dedos en la fila de inicio, la que contiene la tecla <em>Mayúsculas</em>. Hay unas pequeñas protuberancias en las teclas ‘<em>F</em>’ y ‘<em>J</em>’, pon tus dedos índices en las protuberancias. Cada dedo es responsable de su propio conjunto de teclas, tal y como se explica en la siguiente ilustración</p>",
+    "description": "Freeform text."
+  },
+  "help.section6": {
+    "defaultMessage": "<h2>Eficacia de esta aplicación</h2><p>Hemos elegido algunos perfiles de ejemplo para mostrarte cómo progresa la gente en el aprendizaje de la mecanografía al tacto con esta aplicación. Se trata de perfiles de usuarios reales y anónimos. Esperamos que te inspiren a seguir aprendiendo!</p>",
+    "description": "Freeform text."
+  },
+  "highScores.layoutColumn": {
+    "defaultMessage": "Disposición",
+    "description": "Table column name."
+  },
+  "highScores.scoreColumn": {
+    "defaultMessage": "Puntuación",
+    "description": "Table column name."
+  },
+  "highScores.typingSpeedColumn": {
+    "defaultMessage": "Velocidad",
+    "description": "Table column name."
+  },
+  "highScores.userColumn": {
+    "defaultMessage": "Usuario",
+    "description": "Table column name."
+  },
+  "language.be.name": {
+    "defaultMessage": "Belarusian (Беларуская)",
+    "description": "Language name."
+  },
+  "language.de.name": {
+    "defaultMessage": "Alemán (Deutsch)",
+    "description": "Language name."
+  },
+  "language.en.name": {
+    "defaultMessage": "Inglés (English)",
+    "description": "Language name."
+  },
+  "language.es.name": {
+    "defaultMessage": "Español",
+    "description": "Language name."
+  },
+  "language.fr.name": {
+    "defaultMessage": "Francés (Français)",
+    "description": "Language name."
+  },
+  "language.it.name": {
+    "defaultMessage": "Italiano (Italiano)",
+    "description": "Language name."
+  },
+  "language.pl.name": {
+    "defaultMessage": "Polaco (Polski)",
+    "description": "Language name."
+  },
+  "language.pt.name": {
+    "defaultMessage": "Portugués (Português)",
+    "description": "Language name."
+  },
+  "language.ru.name": {
+    "defaultMessage": "Ruso (Русский)",
+    "description": "Language name."
+  },
+  "language.uk.name": {
+    "defaultMessage": "Ukrainian (Українська)",
+    "description": "Language name."
+  },
+  "layouts.bottomRowKeysText": {
+    "defaultMessage": "Teclas en la fila inferior:",
+    "description": "Field name."
+  },
+  "layouts.bottomRowKeysTitle": {
+    "defaultMessage": "Porcentaje de teclas mecanografiadas en la fila de Mayúsculas, cuanto menos mejor.",
+    "description": "Field title."
+  },
+  "layouts.description.colemak": {
+    "defaultMessage": "<p>La disposición Colemak está diseñada para ser una alternativa práctica a las disposiciones de teclado Qwerty y Dvorak, ofreciendo un cambio más gradual para los usuarios ya acostumbrados a la disposición estándar.</p><p>La disposición Colemak se diseñó con la disposición QWERTY como base, cambiando las posiciones de 17 teclas y conservando las posiciones QWERTY de la mayoría de los caracteres no alfabéticos y muchos atajos de teclado populares. Esto hace que sea más fácil de aprender para las personas que ya teclean en QWERTY. Comparte varios objetivos de diseño con la disposición Dvorak, como minimizar la distancia de recorrido del dedo y hacer un uso intensivo de la fila de inicio.</p><p>Es compatible con muchos de los principales sistemas operativos modernos.</p>",
+    "description": "Freeform text."
+  },
+  "layouts.description.dvorak": {
+    "defaultMessage": "<p>Dvorak es una distribución de teclado para el inglés creada en 1936 por August Dvorak y William Dealey. Fue diseñada como una alternativa más rápida y ergonómica al diseño QWERTY. Los defensores de Dvorak afirman que requiere menos movimiento de los dedos y, como resultado, reduce los errores, aumenta la velocidad de mecanografía, reduce las lesiones por esfuerzo repetitivo y ofrece una experiencia más cómoda en comparación con la QWERTY.</p><p>Sin embargo, no logró reemplazar a la QWERTY como la distribución de teclado más común, principalmente debido a que la QWERTY se había introducido 60 años antes.</p><p>En 2005 Barbara Blackburn estableció el récord mundial de mecanografía en inglés utilizando la distribución de teclado Dvorak.</p><p>Casi todos los principales sistemas operativos modernos permiten al usuario cambiar a la distribución Dvorak y hay muchas probabilidades de que tu sistema operativo también la soporte.</p>",
+    "description": "Freeform text."
+  },
+  "layouts.description.qwerty": {
+    "defaultMessage": "<p>Todo comenzó en la década de 1860. Un inventor aficionado, político, impresor y periodista de Milwaukee llamado Christopher Latham Sholes, solía dedicar su tiempo libre a retocar y crear nuevas máquinas para mejorar la eficacia de sus negocios.</p><p>La sabiduría popular afirma que Sholes tuvo que rediseñar el teclado en respuesta a los fallos mecánicos de las primeras máquinas de escribir. Las barras tipográficas que conectaban la tecla y la placa de letras colgaban en un ciclo por debajo del papel. Si un usuario escribía rápidamente una sucesión de letras cuyas barras tipográficas estaban cerca unas de otras, la delicada maquinaria se atascaba</p><p>Sholes rediseñó la disposición para separar las secuencias más comunes de letras como \"th\" o \"he\". La máquina fue fabricada bajo licencia en 1875 por el fabricante de armas de Nueva York, Remington and Sons. La máquina recibió el nombre de Remington nº 1 y fue un fracaso comercial al no venderse en grandes cantidades</p><p>Siguiendo los comentarios, la empresa Remington actualizó la máquina para crear la Remington nº 2. Esta nueva máquina salió al mercado en 1877 y tuvo un gran éxito. Fue la primera en utilizar la disposición del teclado QWERTY tal y como la conocemos hoy en día, ofreciendo a los usuarios la opción de escribir letras mayúsculas y minúsculas, pasando de una a otra mediante el uso de una tecla \"Shift\"</p><p>La disposición clásica del teclado QWERTY es un desafortunado accidente histórico y no es óptima, por eso se inventaron el resto de disposiciones.</p>",
+    "description": "Freeform text."
+  },
+  "layouts.description.workman": {
+    "defaultMessage": "<p>La disposición Workman redujo el movimiento lateral de los dedos y las muñecas, un uso más equilibrado de la mano izquierda y derecha. Los 21 caracteres son diferentes de los Qwerty.</p><p>La disposición Workman ofrece muchas ventajas. Es cómoda, ergonómica y eficaz, ya que las teclas más frecuentes están situadas dentro del rango de movimiento natural de los dedos. La necesidad de movimiento lateral se reduce a los dedos y las muñecas. El recorrido general de los dedos es muy reducido</p><p>La disposición Workman consigue una distancia de recorrido de los dedos para el idioma inglés menor que la de Colemak. Sin embargo, en general, incurre en mayores frecuencias de n-gramas del mismo dedo; o en otras palabras, un dedo tendrá que pulsar dos teclas en sucesión con mayor frecuencia que en otras disposiciones.</p>,",
+    "description": "Freeform text."
+  },
+  "layouts.heatmapCaption": {
+    "defaultMessage": "Mapa de calor de frecuencia de teclas para {name}",
+    "description": "Figure caption."
+  },
+  "layouts.heatmapDescription": {
+    "defaultMessage": "Este gráfico muestra las frecuencias relativas de las teclas en forma de mapa de calor.",
+    "description": "Figure description."
+  },
+  "layouts.homeRowKeysText": {
+    "defaultMessage": "Teclas en la fila de inicio:",
+    "description": "Field name."
+  },
+  "layouts.homeRowKeysTitle": {
+    "defaultMessage": "Porcentaje de teclas mecanografiadas sin dejar la fila de Mayúsculas, cuanto más mejor.",
+    "description": "Field title."
+  },
+  "layouts.layoutNameHeader": {
+    "defaultMessage": "Disposición {name}",
+    "description": "Text header."
+  },
+  "layouts.sameFingerKeysText": {
+    "defaultMessage": "Teclas mecanografiadas con el mismo dedo:",
+    "description": "Field name."
+  },
+  "layouts.sameFingerKeysTitle": {
+    "defaultMessage": "Porcentaje de teclas mecanografiadas por el mismo dedo, cuanto menos mejor.",
+    "description": "Field title."
+  },
+  "layouts.sameHandKeysText": {
+    "defaultMessage": "Teclas mecanografiadas por la misma mano:",
+    "description": "Field name."
+  },
+  "layouts.sameHandKeysTitle": {
+    "defaultMessage": "Porcentaje de teclas mecanografiadas por la misma mano, cuanto menos mejor.",
+    "description": "Field title."
+  },
+  "layouts.topRowKeysText": {
+    "defaultMessage": "Teclas en la fila superior:",
+    "description": "Field name."
+  },
+  "layouts.topRowKeysTitle": {
+    "defaultMessage": "Porcentaje de teclas mecanografiadas en la fila de Tabulador, cuanto menos mejor.",
+    "description": "Field title."
+  },
+  "layouts.websiteLinkText": {
+    "defaultMessage": "Página web oficial",
+    "description": "Link text."
+  },
+  "layouts.wikipediaLinkText": {
+    "defaultMessage": "Artículo de Wikipedia",
+    "description": "Link text."
+  },
+  "learningRate.alreadyUnlocked": {
+    "defaultMessage": "This letter is already unlocked.",
+    "description": "Message text."
+  },
+  "learningRate.remainingLessons": {
+    "defaultMessage": "Approximately {remainingLessons} lessons remaining to unlock this letter ({certainty} certainty).",
+    "description": "Message text."
+  },
+  "learningRate.unknown": {
+    "defaultMessage": "Need more data to compute the remaining lessons to unlock this letter.",
+    "description": "Message text."
+  },
+  "lesson.averageSpeedLabel": {
+    "defaultMessage": "Velocidad media de mecanografía",
+    "description": "Label name."
+  },
+  "lesson.averageSpeedTitle": {
+    "defaultMessage": "Velocidad media de mecanografía ({speedUnitName}).",
+    "description": "Label title."
+  },
+  "lesson.bestSpeedLabel": {
+    "defaultMessage": "Mejor velocidad de mecanografía",
+    "description": "Label name."
+  },
+  "lesson.bestSpeedTitle": {
+    "defaultMessage": "Mejor velocidad de mecanografía ({speedUnitName}).",
+    "description": "Label title."
+  },
+  "lesson.boostedKeyText": {
+    "defaultMessage": "Tecla con frecuencia aumentada.",
+    "description": "Character details text."
+  },
+  "lesson.characterName": {
+    "defaultMessage": "Carácter ''{name}''",
+    "description": "Character details text."
+  },
+  "lesson.confidenceLevelLabel": {
+    "defaultMessage": "Nivel de confianza",
+    "description": "Label name."
+  },
+  "lesson.confidenceLevelTitle": {
+    "defaultMessage": "Nivel de confianza (de 0 a 1).",
+    "description": "Label title."
+  },
+  "lesson.currentKeyPanelLabel": {
+    "defaultMessage": "Tecla actual",
+    "description": "Panel label."
+  },
+  "lesson.dailyGoalPanelLabel": {
+    "defaultMessage": "Meta diaria",
+    "description": "Panel label."
+  },
+  "lesson.dailyGoalPanelTitle": {
+    "defaultMessage": "El progreso en el camino hacia su meta diaria.",
+    "description": "Panel title."
+  },
+  "lesson.forcedKeyText": {
+    "defaultMessage": "Una tecla añadida manualmente.",
+    "description": "Character details text."
+  },
+  "lesson.gaugesPanelLabel": {
+    "defaultMessage": "Métricas",
+    "description": "Panel label."
+  },
+  "lesson.indicator.boostedFrequency": {
+    "defaultMessage": "Tecla con frecuencia aumentada. Esta es la que más tiempo te cuesta encontrar, por lo que el algoritmo la ha elegido para incluirla en cada palabra generada.",
+    "description": "Indicator description."
+  },
+  "lesson.indicator.includedManually": {
+    "defaultMessage": "Una tecla incluida manualmente en las lecciones.",
+    "description": "Indicator description."
+  },
+  "lesson.indicator.leastConfidence": {
+    "defaultMessage": "Una tecla calibrada con el mínimo nivel de confianza. Cuantas más veces se pulse esta tecla, más precisa será esta métrica.",
+    "description": "Indicator description."
+  },
+  "lesson.indicator.mostConfidence": {
+    "defaultMessage": "Una tecla calibrada con el máximo nivel de confianza. Cuantas más veces se pulse esta tecla, más precisa será esta métrica.",
+    "description": "Indicator description."
+  },
+  "lesson.indicator.notCalibrated": {
+    "defaultMessage": "Una tecla no calibrada con un nivel de confianza desconocido. Aún no has pulsado esta tecla.",
+    "description": "Indicator description."
+  },
+  "lesson.indicator.notIncluded": {
+    "defaultMessage": "Una tecla que aún no ha sido incluida en las lecciones.",
+    "description": "Indicator description."
+  },
+  "lesson.keySetPanelLabel": {
+    "defaultMessage": "Todas las teclas",
+    "description": "Panel label."
+  },
+  "lesson.notCalibratedText": {
+    "defaultMessage": "No está calibrado, se necesitan más muestras",
+    "description": "Panel text."
+  },
+  "lessonType.customText.description": {
+    "defaultMessage": "Genere lecciones de mecanografía a partir de las palabras de su propio texto personalizado que se proporcionan aquí. De forma predeterminada, todas las claves están habilitadas.",
+    "description": "Description text."
+  },
+  "lessonType.customText.name": {
+    "defaultMessage": "Texto personalizado",
+    "description": "Widget label."
+  },
+  "lessonType.guided.description": {
+    "defaultMessage": "Este modo generará automáticamente lecciones de mecanografía con palabras aleatorias utilizando las reglas fonéticas de tu idioma. El conjunto de teclas se amplía dinámicamente en función de tu rendimiento.",
+    "description": "Description text."
+  },
+  "lessonType.guided.name": {
+    "defaultMessage": "Lecciones guiadas",
+    "description": "Widget label."
+  },
+  "lessonType.numbers.name": {
+    "defaultMessage": "Números",
+    "description": "Widget label."
+  },
+  "lessonType.wordList.description": {
+    "defaultMessage": "Genere lecciones a partir de la lista de las palabras más comunes. De forma predeterminada, todas las claves están habilitadas.",
+    "description": "Description text."
+  },
+  "lessonType.wordlist.name": {
+    "defaultMessage": "Palabras comunes",
+    "description": "Widget label."
+  },
+  "multiplayer.intro": {
+    "defaultMessage": "Compite contra otros jugadores en este juego multijugador online. Cuanto más rápido teclees, más rápido irá tu coche. ¡Teclea tan rápido como puedas para ganar la carrera!",
+    "description": "Freeform text."
+  },
+  "multiplayer.state.connecting": {
+    "defaultMessage": "<h1>Conectando con el Servidor...</h1><p>Estableciendo conexión con el servidor del juego.</p>",
+    "description": "Freeform text."
+  },
+  "multiplayer.state.kicked": {
+    "defaultMessage": "<h1>Expulsado del Juego</h1><p>Has sido expulsado del juego por mantenerte inactivo.</p>",
+    "description": "Freeform text."
+  },
+  "multiplayer.state.offline": {
+    "defaultMessage": "<h1>El servidor está Desconectado</h1><p>Hay algún problema en nuestro servidor de juegos.</p><p>Vuelve a visitar este sitio en unos minutos mientras solucionamos el problema.</p>",
+    "description": "Freeform text."
+  },
+  "multiplayer.ui.countDownTicker": {
+    "defaultMessage": "Inicio en {countDown}",
+    "description": "Ticker text."
+  },
+  "multiplayer.ui.distanceLabel": {
+    "defaultMessage": "Progreso",
+    "description": "Label."
+  },
+  "multiplayer.ui.distanceTitle": {
+    "defaultMessage": "Distancia completada.",
+    "description": "Label title."
+  },
+  "multiplayer.ui.errorsLabel": {
+    "defaultMessage": "Errores",
+    "description": "Label."
+  },
+  "multiplayer.ui.errorsTitle": {
+    "defaultMessage": "Número de errores.",
+    "description": "Label title."
+  },
+  "multiplayer.ui.initializingTicker": {
+    "defaultMessage": "Iniciando...",
+    "description": "Ticker text."
+  },
+  "multiplayer.ui.nameLabel": {
+    "defaultMessage": "Velocidad",
+    "description": "Label."
+  },
+  "multiplayer.ui.nameTitle": {
+    "defaultMessage": "Velocidad de mecanografía.",
+    "description": "Label title."
+  },
+  "multiplayer.ui.positionLabel": {
+    "defaultMessage": "Posición",
+    "description": "Label."
+  },
+  "multiplayer.ui.positionTicker": {
+    "defaultMessage": "¡Has finalizado {position}!",
+    "description": "Ticker text."
+  },
+  "multiplayer.ui.positionTitle": {
+    "defaultMessage": "Posición en la pista.",
+    "description": "Label title."
+  },
+  "multiplayer.ui.raceFinishedTicker": {
+    "defaultMessage": "¡Carrera terminada!",
+    "description": "Ticker text."
+  },
+  "multiplayer.ui.raceStartedTicker": {
+    "defaultMessage": "¡Carrera iniciada!",
+    "description": "Ticker text."
+  },
+  "multiplayer.ui.startTicker": {
+    "defaultMessage": "¡YA!",
+    "description": "Ticker text."
+  },
+  "multiplayer.ui.waitingMorePlayersTicker": {
+    "defaultMessage": "Esperando a más jugadores..",
+    "description": "Ticker text."
+  },
+  "multiplayer.ui.waitingNextRaceTicker": {
+    "defaultMessage": "Zzz... Esperando la próxima carrera",
+    "description": "Ticker text."
+  },
+  "multiplayer.ui.winnerPositionTicker": {
+    "defaultMessage": "¡Has gaando la carrera!",
+    "description": "Ticker text."
+  },
+  "nav.accountName": {
+    "defaultMessage": "{name}",
+    "description": "Navigation menu item name."
+  },
+  "nav.accountTitle": {
+    "defaultMessage": "Gestiona tu cuenta online.",
+    "description": "Navigation menu item title."
+  },
+  "nav.helpName": {
+    "defaultMessage": "Ayuda",
+    "description": "Navigation menu item name."
+  },
+  "nav.helpTitle": {
+    "defaultMessage": "Consigue las instrucciones de uso de esta aplicación.",
+    "description": "Navigation menu item title."
+  },
+  "nav.highScoresName": {
+    "defaultMessage": "Mejores Puntuaciones",
+    "description": "Navigation menu item name."
+  },
+  "nav.highScoresTitle": {
+    "defaultMessage": "Mira la tabla de mejores puntuaciones con los mecanógrafos más rápidos.",
+    "description": "Navigation menu item title."
+  },
+  "nav.layoutsName": {
+    "defaultMessage": "Disposiciones",
+    "description": "Navigation menu item name."
+  },
+  "nav.layoutsTitle": {
+    "defaultMessage": "Compara la eficacia de las distintas distribuciones de teclado.",
+    "description": "Navigation menu item title."
+  },
+  "nav.multiplayerName": {
+    "defaultMessage": "Multijugador",
+    "description": "Navigation menu item name."
+  },
+  "nav.multiplayerTitle": {
+    "defaultMessage": "Compite contra otros jugadores en un juego multijugador online.",
+    "description": "Navigation menu item title."
+  },
+  "nav.practiceName": {
+    "defaultMessage": "Práctica",
+    "description": "Navigation menu item name."
+  },
+  "nav.practiceTitle": {
+    "defaultMessage": "Practica lecciones de mecanografía para mejorar tu velocidad de mecanografía.",
+    "description": "Navigation menu item title."
+  },
+  "nav.privacyPolicyName": {
+    "defaultMessage": "Política de Privacidad",
+    "description": "Navigation menu item name."
+  },
+  "nav.privacyPolicyTitle": {
+    "defaultMessage": "Política de privacidad.",
+    "description": "Navigation menu item title."
+  },
+  "nav.profileName": {
+    "defaultMessage": "Perfil",
+    "description": "Navigation menu item name."
+  },
+  "nav.profileTitle": {
+    "defaultMessage": "Mira las estadísticas detalladas sobre su progreso de aprendizaje.",
+    "description": "Navigation menu item title."
+  },
+  "nav.publicProfileName": {
+    "defaultMessage": "Perfil Público de {name}",
+    "description": "Navigation menu item name."
+  },
+  "nav.publicProfileTitle": {
+    "defaultMessage": "Ver el perfil público del usuario {name}.",
+    "description": "Navigation menu item title."
+  },
+  "nav.signInName": {
+    "defaultMessage": "Iniciar Sesión",
+    "description": "Navigation menu item name."
+  },
+  "nav.signInTitle": {
+    "defaultMessage": "Iniciar sesión en una cuenta online.",
+    "description": "Navigation menu item title."
+  },
+  "nav.termsOfServiceName": {
+    "defaultMessage": "Términos y Condiciones del Servicio",
+    "description": "Navigation menu item name."
+  },
+  "nav.termsOfServiceTitle": {
+    "defaultMessage": "Términos y Condiciones del Servicio.",
+    "description": "Navigation menu item title."
+  },
+  "nav.textToolsName": {
+    "defaultMessage": "Herramientas de Texto",
+    "description": "Navigation menu item name."
+  },
+  "nav.textToolsTitle": {
+    "defaultMessage": "Cuenta los caracteres y las palabras de tu texto.",
+    "description": "Navigation menu item title."
+  },
+  "nav.typingTestName": {
+    "defaultMessage": "Typing Test",
+    "description": "Navigation menu item name."
+  },
+  "nav.typingTestTitle": {
+    "defaultMessage": "Take a typing speed test.",
+    "description": "Navigation menu item title."
+  },
+  "page.help.description": {
+    "defaultMessage": "Aprende a escribir más rápido.",
+    "description": "Page description."
+  },
+  "page.help.title": {
+    "defaultMessage": "Ayuda",
+    "description": "Page title."
+  },
+  "page.highScores.content": {
+    "defaultMessage": "<h1>Mejores Puntuaciones</h1><p>La tabla de los mecanógrafos más rápidos de los últimos días, ordenados por sus puntuaciones de mejor a peor. La puntuación de mecanografía se mide a partir de la velocidad de mecanografía, la longitud del texto, el número de caracteres diferentes en el texto y el número de errores. La fórmula ha sido diseñada para premiar la velocidad, la longitud del texto y el tamaño del alfabeto, aunque castiga el número de errores</p>",
+    "description": "Page content."
+  },
+  "page.highScores.description": {
+    "defaultMessage": "Tabla de usuarios clasificados según su velocidad de mecanografía.",
+    "description": "Page description."
+  },
+  "page.highScores.title": {
+    "defaultMessage": "Tabla de Mejores Puntuaciones",
+    "description": "Page title."
+  },
+  "page.layouts.description": {
+    "defaultMessage": "Tablas de comparación de disposiciones de teclado.",
+    "description": "Page description."
+  },
+  "page.layouts.title": {
+    "defaultMessage": "Disposiciones de Teclado.",
+    "description": "Page title."
+  },
+  "page.multiplayer.content": {
+    "defaultMessage": "<h1>Juego de Mecanografía Multijugador Online</h1><p>Compite contra otros jugadores en este juego de mecanografía multijugador online. Cuanto más rápido teclees, más rápido irá tu coche. ¡Teclea tan rápido como puedas para ganar la carrera!</p>",
+    "description": "Page content."
+  },
+  "page.multiplayer.description": {
+    "defaultMessage": "Juego de carreras multijugador online.",
+    "description": "Page description."
+  },
+  "page.multiplayer.title": {
+    "defaultMessage": "Multijugador",
+    "description": "Page title."
+  },
+  "page.practice.content": {
+    "defaultMessage": "<h1>Lecciones de Mecanografía</h1><p>Haz una prueba de velocidad de mecanografía, aprende a escribir más rápido y con menos errores con este tutor de mecanografía online gratuito.</p>",
+    "description": "Page content."
+  },
+  "page.practice.description": {
+    "defaultMessage": "Haz una prueba de mecanografía, practica lecciones de mecanografía, aprende a escribir más rápido.",
+    "description": "Page description."
+  },
+  "page.practice.title": {
+    "defaultMessage": "Practica de Mecanografía",
+    "description": "Page title."
+  },
+  "page.profile.content": {
+    "defaultMessage": "<h1>Mi Perfil</h1><p>Esta es una página con estadísticas detalladas sobre tu progreso de aprendizaje. Cuantas más lecciones completes, más detalladas y precisas serán estas estadísticas</p>",
+    "description": "Page content."
+  },
+  "page.profile.description": {
+    "defaultMessage": "Mi perfil detallado.",
+    "description": "Page description."
+  },
+  "page.profile.title": {
+    "defaultMessage": "Mi Perfíl",
+    "description": "Page title."
+  },
+  "page.publicProfile.description": {
+    "defaultMessage": "Perfil público del usuario ''{name}''.",
+    "description": "Page description."
+  },
+  "page.publicProfile.title": {
+    "defaultMessage": "{name} | Perfil Público",
+    "description": "Page title."
+  },
+  "page.textTools.content": {
+    "defaultMessage": "<h1>Herramientas de Texto</h1><p>Cuenta los caracteres y palabras de tu texto. Averigua cuáles son las palabras más comunes. Mide el tiempo que se tarda en leer estas palabras</p>",
+    "description": "Page content."
+  },
+  "page.textTools.description": {
+    "defaultMessage": "Cuenta los caracteres y las palabras de tu texto.",
+    "description": "Page description."
+  },
+  "page.textTools.title": {
+    "defaultMessage": "Herramientas de Texto",
+    "description": "Page title."
+  },
+  "page.typingTest.content": {
+    "defaultMessage": "<h1>Typing Speed Test</h1><p>Take a typing speed test.</p>",
+    "description": "Page content."
+  },
+  "page.typingTest.description": {
+    "defaultMessage": "Take a typing speed test.",
+    "description": "Page description."
+  },
+  "page.typingTest.title": {
+    "defaultMessage": "Speed Test",
+    "description": "Page title."
+  },
+  "practice.accuracyDeltaValueTitle": {
+    "defaultMessage": "Diferencia con el valor medio.",
+    "description": "Value delta title."
+  },
+  "practice.accuracyLabel": {
+    "defaultMessage": "Exactitud",
+    "description": "Label text."
+  },
+  "practice.accuracyValueTitle": {
+    "defaultMessage": "El porcentaje de caracteres escritos sin errores en la última lección.",
+    "description": "Value title."
+  },
+  "practice.focusText": {
+    "defaultMessage": "Haz clic para activar...",
+    "description": "Freeform text."
+  },
+  "practice.resetLessonButtonTitle": {
+    "defaultMessage": "Reiniciar la lección actual (Ctrl + Flecha Izquierda).",
+    "description": "Button title."
+  },
+  "practice.scoreDeltaValueTitle": {
+    "defaultMessage": "Diferencia con el valor medio.",
+    "description": "Value delta title."
+  },
+  "practice.scoreLabel": {
+    "defaultMessage": "Puntuación",
+    "description": "Label text."
+  },
+  "practice.scoreValueTitle": {
+    "defaultMessage": "Puntuación de la última lección en puntos abstractos. Las puntuaciones son mayores cuando se teclea más rápido y con menos errores.",
+    "description": "Value title."
+  },
+  "practice.settingButtonName": {
+    "defaultMessage": "Ajustes...",
+    "description": "Button name."
+  },
+  "practice.settingButtonTitle": {
+    "defaultMessage": "Cambia los ajustes de la lección, configura el idioma, la disposición del teclado, etc.",
+    "description": "Button title."
+  },
+  "practice.showHelpSlidesButtonTitle": {
+    "defaultMessage": "Mostrar una visita guiada con diapositivas de ayuda.",
+    "description": "Button title."
+  },
+  "practice.skipLessonButtonTitle": {
+    "defaultMessage": "Saltar la lección actual (Ctrl + Flecha Derecha).",
+    "description": "Button title."
+  },
+  "practice.speedDeltaValueTitle": {
+    "defaultMessage": "Diferencia con el valor medio.",
+    "description": "Value delta title."
+  },
+  "practice.speedLabel": {
+    "defaultMessage": "Velocidad",
+    "description": "Label text."
+  },
+  "practice.speedValueTitle": {
+    "defaultMessage": "Velocidad de mecanografía en la última lección.",
+    "description": "Value title."
+  },
+  "practice.switchInterfaceButtonTitle": {
+    "defaultMessage": "Cambiar la disposición de la interfaz actual.",
+    "description": "Button title."
+  },
+  "practice.tourSlide1": {
+    "defaultMessage": "<h1>Aprende a Teclear más Rápido</h1><p>Esta aplicación web te ayudará a aprender a <em>teclear al tacto</em> lo que significa teclear a través de la memoria muscular sin usar la vista para encontrar las teclas. Puedes mejorar tu velocidad y precisión de mecanografiado de forma espectacular. Lo contrario es la <em>mecanografía buscar y cazar</em>, un método de escritura en el que se mira el teclado en lugar de la pantalla, y se utilizan únicamente los dedos índices.</p><p>Este es un breve tutorial que te explicará cómo funciona esta aplicación.</p><p>Puedes utilizar las teclas de flecha izquierda y derecha para navegar por estas diapositivas.</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide10": {
+    "defaultMessage": "<p>Este indicador muestra el subconjunto actual de letras utilizado para generar las lecciones y tu nivel de confianza para cada letra del subconjunto:</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide11": {
+    "defaultMessage": "<p>Este indicador muestra detalles sobre la tecla con frecuencia aumentada, que actualmente se incluye en cada palabra generada:</p>[dl][dt]Velocidad media de mecanografía[/dt][dd]Tu velocidad media de mecanografía para esta tecla concreta.[/dd][dt]Mejor velocidad de mecanografía[/dt][dd]Tu mejor velocidad de mecanografía para esta tecla concreta.[/dd][dt]Nivel de confianza[/dt][dd]Un número en un rango de cero a uno que se computa usando tu velocidad de mecanografía e indica tu familiaridad con dicha tecla. Se considera que una tecla está completamente aprendida cuando su nivel de confianza llega a uno.[/dd][/dl]",
+    "description": "Slide content."
+  },
+  "practice.tourSlide12": {
+    "defaultMessage": "<p>This indicator shows details about the letter with boosted frequency, which is currently included in every generated word:</p><dl><dt>Average typing speed</dt><dd>Your average typing speed for this individual letter.</dd><dt>Best typing speed</dt><dd>Your best typing speed for this individual letter.</dd><dt>Confidence level</dt><dd>A number in range from zero to one which is computed using your typing speed, and indicates your familiarity with this letter. A letter is considered fully learned when it's confidence level reaches one.</dd></dl>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide2": {
+    "defaultMessage": "<p>Nuestro método de enseñanza se basa en estos principios:</p><p>No hay ejercicios aburridos y repetitivos. A diferencia de la mayoría de tutores de mecanografía, esta aplicación no te obliga a repetir las mismas lecciones como '<em>jjf jjk jjf jjk</em>' una y otra vez. Esto es muy molesto y contribuye muy poco a tu aprendizaje general.</p><p>Esta aplicación utiliza un sofisticado algoritmo informático para generar lecciones de mecanografía que se ajusten a tu nivel de habilidad. Estas lecciones se componen de palabras aleatorias generadas usando un subconjunto del alfabeto completo de letras. El tamaño del subconjunto y la frecuencia de cada letra los controla el algoritmo, lo que te proporciona la mejor experiencia de aprendizaje.</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide3": {
+    "defaultMessage": "<p>Al principio comienza a generar palabras a partir de un pequeño subconjunto de las letras más frecuentes del alfabeto.</p><p>Cuando escribes estas palabras, la aplicación mide la métrica del tiempo para escribir cada letra de ese subconjunto. Este tiempo se utiliza para medir tu progreso en el aprendizaje. Cuanto más te familiarices con una letra, menos tiempo tardarás en teclearla.</p><p>Una vez familiarizado con todo el subconjunto actual de letras, el algoritmo lo amplía añadiendo más y más letras al subconjunto.</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide4": {
+    "defaultMessage": "<p>Cuando el algoritmo incluya una nueva letra al subconjunto actual, la frecuencia de esta letra se aumenta artificialmente para que se incluya en cada palabra generada de una lección.</p><p>El algoritmo también puede reordenar artificialmente las frecuencias de las letras, poniendo énfasis en las letras con la peor métrica de tiempo para mecanografiar.</p><p>Esto significa que siempre teclearás las letras con las que estás menos familiarizado.</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide5": {
+    "defaultMessage": "<p>Este es el tablero de texto. Muestra el texto a mecanografiar. El texto cambia en cada nueva lección. El texto se genera automáticamente a partir del subconjunto actual de letras. La mayoría de las palabras no son reales, sino que se generan utilizando las reglas fonéticas de tu idioma, por lo que suenan naturales y deberían ser fáciles de pronunciar. Además de ser divertido, esto nos ofrece la flexibilidad de utilizar más palabras de las que realmente existen.</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide6": {
+    "defaultMessage": "<p>Este es el teclado virtual. Te ayuda a memorizar las posiciones de las teclas. Utilízalo para encontrar las teclas e intenta no mirar tu teclado físico. Hay unas pequeñas protuberancias en las teclas <em>F</em> y <em>J</em> de tu teclado. Úsalas para colocar correctamente tus dedos índices sin tener que mirar las teclas. Una vez hayas colocado los dedos índices en la posición correcta podrás localizar el resto de las teclas</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide7": {
+    "defaultMessage": "<p>Este es el indicador de velocidad de mecanografía y la diferencia con el valor medio. Tu objetivo es aumentar esta métrica, es decir, los valores más altos son mejores.</p><p>La velocidad de mecanografía se mide en <em>Palabras por minuto (PPM)</em> o <em>Caracteres por Minuto (CPM)</em>. La definición de una palabra está estandarizada en cinco caracteres, por lo que <em>10PPM</em> es igual a <em>50CPM</em>.</p><p>Puedes cambiar entre los modos de visualización en <em>PPM</em> o <em>CPM</em> en la página de Ajustes.</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide8": {
+    "defaultMessage": "<p>Este es el indicador de precisión y la diferencia con el valor medio. Tu objetivo es aumentar esta métrica, es decir, los valores más altos son mejores.</p><p>La precisión se calcula como el porcentaje de caracteres escritos sin errores. Muchas erratas en la misma posición cuentan como un error.</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide9": {
+    "defaultMessage": "<p>Este es el indicador de puntuación de mecanografía en puntos abstractos y la diferencia con el valor medio.</p><p>La puntuación se calcula a partir de tu velocidad de mecanografía, el número de errores y el tamaño actual del conjunto de letras. La fórmula está diseñada para premiar la velocidad de mecanografía y castigar el número de errores. No puedes obtener una puntuación alta escribiendo rápido y cometiendo muchos errores.</p><p>Los usuarios que obtienen la mayor puntuación se registran en la tabla de mejores puntuaciones.</p>",
+    "description": "Slide content."
+  },
+  "profile.calendar.averageSpeedTitle": {
+    "defaultMessage": "Velocidad media: {value}",
+    "description": "Calendar cell title."
+  },
+  "profile.calendar.topSpeedTitle": {
+    "defaultMessage": "Velocidad máxima {value}",
+    "description": "Calendar cell title."
+  },
+  "profile.calendar.totalLessonsTitle": {
+    "defaultMessage": "Número de lecciones: {value}",
+    "description": "Calendar cell title."
+  },
+  "profile.calendar.totalTimeTitle": {
+    "defaultMessage": "Tiempo de las lecciones: {value}",
+    "description": "Calendar cell title."
+  },
+  "profile.chart.calendarCaption": {
+    "defaultMessage": "Calendario de Prácticas",
+    "description": "Chart caption."
+  },
+  "profile.chart.calendarDescription": {
+    "defaultMessage": "Este calendario muestra las fechas de aprendizaje activo.",
+    "description": "Chart description."
+  },
+  "profile.chart.compareAverageSpeedText": {
+    "defaultMessage": "Tu velocidad media de todos los tiempos supera el {value} de resto de personas.",
+    "description": "Section paragraph."
+  },
+  "profile.chart.compareTitle": {
+    "defaultMessage": "Compárate:",
+    "description": "Section title."
+  },
+  "profile.chart.compareTopSpeedText": {
+    "defaultMessage": "Tu velocidad máxima de todos los tiempos supera el {value} de resto de personas.",
+    "description": "Section paragraph."
+  },
+  "profile.chart.histogramCaption": {
+    "defaultMessage": "Velocidad de Escritura Relativa",
+    "description": "Chart caption."
+  },
+  "profile.chart.histogramDescription": {
+    "defaultMessage": "Este es un histograma de las velocidades de mecanografía de todos los usuarios y tu posición en relación a ellos.",
+    "description": "Chart description."
+  },
+  "profile.chart.histogramLegend": {
+    "defaultMessage": "Mira lo rápido que tecleas en comparación con otros usuarios. Cuanto más alta sea la barra, más gente escribe a esa velocidad. Tu posición viene marcada por las líneas verticales de color.",
+    "description": "Chart legend."
+  },
+  "profile.chart.keyFrequencyHeatmapCaption": {
+    "defaultMessage": "Mapa de Calor de Frecuencia de las Teclas",
+    "description": "Chart caption."
+  },
+  "profile.chart.keyFrequencyHeatmapDescription": {
+    "defaultMessage": "Este gráfico muestra las frecuencias relativas de las teclas en forma de mapa de calor.",
+    "description": "Chart description."
+  },
+  "profile.chart.keyFrequencyHistogramCaption": {
+    "defaultMessage": "Histograma de Frecuencias de Teclas",
+    "description": "Chart caption."
+  },
+  "profile.chart.keyFrequencyHistogramDescription": {
+    "defaultMessage": "Este gráfico muestra las frecuencias relativas de las teclas.",
+    "description": "Chart description."
+  },
+  "profile.chart.keyFrequencyHistogramLegend": {
+    "defaultMessage": "Color de la barra: {label1} - recuento de aciertos, {label2} - recuento de fallos, {label3} - tasa de fallos/fallos (frecuencia relativa de fallos).",
+    "description": "Chart legend."
+  },
+  "profile.chart.keySpeedCaption": {
+    "defaultMessage": "Velocidad de Mecanografía de las Teclas,",
+    "description": "Chart caption."
+  },
+  "profile.chart.keySpeedDescription": {
+    "defaultMessage": "Este gráfico muestra el cambio de velocidad de mecanografía de cada tecla.",
+    "description": "Chart description."
+  },
+  "profile.chart.keySpeedHistogramCaption": {
+    "defaultMessage": "Histograma de Velocidad de Mecanografía de las Teclas",
+    "description": "Chart caption."
+  },
+  "profile.chart.keySpeedHistogramDescription": {
+    "defaultMessage": "Este gráfico muestra la velocidad media de mecanografía de cada tecla.",
+    "description": "Chart description."
+  },
+  "profile.chart.keySpeedLegend": {
+    "defaultMessage": "Eje horizontal: número de lección. Eje vertical: {label1} - velocidad de mecanografía para la tecla seleccionada actualmente.",
+    "description": "Chart legend."
+  },
+  "profile.chart.progressOverviewCaption": {
+    "defaultMessage": "Resumen del Progreso de Aprendizaje",
+    "description": "Chart caption."
+  },
+  "profile.chart.progressOverviewDescription": {
+    "defaultMessage": "Este gráfico muestra un resumen del progreso de aprendizaje de todas las teclas.",
+    "description": "Chart description."
+  },
+  "profile.chart.progressOverviewLegend": {
+    "defaultMessage": "Eje horizontal: número de lección. Eje vertical: velocidad de mecanografía para cada tecla, {label1} - lenta, {label2} - rápida.",
+    "description": "Chart legend."
+  },
+  "profile.chart.speedCaption": {
+    "defaultMessage": "Velocidad de Mecanografía",
+    "description": "Chart caption."
+  },
+  "profile.chart.speedDescription": {
+    "defaultMessage": "Este gráfico muestra cómo cambia la velocidad de mecanografía en general a lo largo del tiempo.",
+    "description": "Chart description."
+  },
+  "profile.chart.speedLegend": {
+    "defaultMessage": "Eje horizontal: número de lección. Eje vertical: {label1} - velocidad de mecanografía, {label2} - precisión de mecanografía, {label3} - número de teclas en las lecciones.",
+    "description": "Chart legend."
+  },
+  "profile.control.downloadDataLabel": {
+    "defaultMessage": "Descarga Datos",
+    "description": "Button label."
+  },
+  "profile.control.downloadDataTitle": {
+    "defaultMessage": "Descarga todos tus datos de mecanografía en formato JSON.",
+    "description": "Button title."
+  },
+  "profile.control.groupSelectorLabel": {
+    "defaultMessage": "Mostrar estadísticas para:",
+    "description": "List label."
+  },
+  "profile.control.resetDataConfirmation": {
+    "defaultMessage": "¿Estás seguro de que quieres eliminar todos los datos y reiniciar tu perfil? ¡Esta operación es permanente y no puede deshacerse!",
+    "description": "Confirmation text."
+  },
+  "profile.control.resetDataLabel": {
+    "defaultMessage": "Reiniciar Estadísticas",
+    "description": "Button label."
+  },
+  "profile.control.resetDataTitle": {
+    "defaultMessage": "Eliminar permanentemente todos tus datos de mecanografía y reiniciar las estadísticas.",
+    "description": "Button title."
+  },
+  "profile.control.shareButtonLabel": {
+    "defaultMessage": "Copiar",
+    "description": "Button label."
+  },
+  "profile.control.shareButtonTitle": {
+    "defaultMessage": "Copiar el enlace del perfil al portapapeles.",
+    "description": "Button title."
+  },
+  "profile.control.shareText": {
+    "defaultMessage": "Compartir tu perfil:",
+    "description": "Share profile text."
+  },
+  "profile.control.visitButtonLabel": {
+    "defaultMessage": "Visitar",
+    "description": "Button label."
+  },
+  "profile.control.visitButtonTitle": {
+    "defaultMessage": "Visitar la página de tu perfil público.",
+    "description": "Button title."
+  },
+  "profile.emptyChartCaption": {
+    "defaultMessage": "No hay suficientes datos",
+    "description": "Empty chart message."
+  },
+  "profile.emptyChartDescription": {
+    "defaultMessage": "Completa algunas lecciones más para obtener más puntos de datos.",
+    "description": "Empty chart message."
+  },
+  "profile.overview.averageSpeedLabel": {
+    "defaultMessage": "Velocidad Media ({speedUnit})",
+    "description": "Gauge label."
+  },
+  "profile.overview.averageSpeedTitle": {
+    "defaultMessage": "Velocidad media de mecanografía ({speedUnitName}).",
+    "description": "Gauge title."
+  },
+  "profile.overview.averageSpeedTodayLabel": {
+    "defaultMessage": "Velocidad Media ({speedUnit})",
+    "description": "Gauge label."
+  },
+  "profile.overview.averageSpeedTodayTitle": {
+    "defaultMessage": "Velocidad media de mecanografía hoy ({speedUnitName}).",
+    "description": "Gauge title."
+  },
+  "profile.overview.statisticsAllTime": {
+    "defaultMessage": "Estadísticas de Todos los Tiempos:",
+    "description": "Header."
+  },
+  "profile.overview.statisticsToday": {
+    "defaultMessage": "Estadísticas de Hoy:",
+    "description": "Section header."
+  },
+  "profile.overview.topSpeedLabel": {
+    "defaultMessage": "Velocidad Máxima ({speedUnit})",
+    "description": "Gauge label."
+  },
+  "profile.overview.topSpeedTitle": {
+    "defaultMessage": "Velocidad máxima de mecanografía ({speedUnitName}).",
+    "description": "Gauge title."
+  },
+  "profile.overview.topSpeedTodayLabel": {
+    "defaultMessage": "Velocidad Máxima ({speedUnit})",
+    "description": "Gauge label."
+  },
+  "profile.overview.topSpeedTodayTitle": {
+    "defaultMessage": "Velocidad máxima de mecanografía hoy ({speedUnitName}).",
+    "description": "Gauge title."
+  },
+  "profile.overview.totalLessonsLabel": {
+    "defaultMessage": "Total de Lecciones",
+    "description": "Gauge label."
+  },
+  "profile.overview.totalLessonsTitle": {
+    "defaultMessage": "Número de lecciones completadas.",
+    "description": "Gauge title."
+  },
+  "profile.overview.totalLessonsTodayLabel": {
+    "defaultMessage": "Total de Lecciones",
+    "description": "Gauge label."
+  },
+  "profile.overview.totalLessonsTodayTitle": {
+    "defaultMessage": "Número de lecciones completadas hoy.",
+    "description": "Gauge title."
+  },
+  "profile.overview.totalTimeLabel": {
+    "defaultMessage": "Tiempo Total",
+    "description": "Gauge label."
+  },
+  "profile.overview.totalTimeTitle": {
+    "defaultMessage": "Tiempo dedicado a los ejercicios.",
+    "description": "Gauge title."
+  },
+  "profile.overview.totalTimeTodayLabel": {
+    "defaultMessage": "Tiempo Total",
+    "description": "Gauge label."
+  },
+  "profile.overview.totalTimeTodayTitle": {
+    "defaultMessage": "Tiempo dedicado a los ejercicios hoy.",
+    "description": "Gauge title."
+  },
+  "profile.smoothnessLabel": {
+    "defaultMessage": "Fluidez:",
+    "description": "Input field label."
+  },
+  "profile.smoothnessTitle": {
+    "defaultMessage": "Eliminar el ruido para ver la tendencia a largo plazo.",
+    "description": "Input field title."
+  },
+  "settings.benfordsLawDescription": {
+    "defaultMessage": "<a>Benford's law</a> is an observation that in many real-life numerical data sets, the leading digit is likely to be small.",
+    "description": "Freeform text."
+  },
+  "settings.benfordsLawLabel": {
+    "defaultMessage": "Benford's law",
+    "description": "Checkbox label."
+  },
+  "settings.benfordsLawTitle": {
+    "defaultMessage": "Generate numbers following the Benford's law.",
+    "description": "Checkbox title."
+  },
+  "settings.cleanupTextCaption": {
+    "defaultMessage": "Limpiar el texto:",
+    "description": "Fieldset caption."
+  },
+  "settings.cursorMovementLabel": {
+    "defaultMessage": "Movimiento del cursor:",
+    "description": "Checkbox label."
+  },
+  "settings.cursorShapeLabel": {
+    "defaultMessage": "Forma del cursor:",
+    "description": "Checkbox label."
+  },
+  "settings.customTextExamplesLabel": {
+    "defaultMessage": "Ejemplos:",
+    "description": "Text label."
+  },
+  "settings.customTextInputPlaceholder": {
+    "defaultMessage": "Texto personalizado...",
+    "description": "Input field placeholder."
+  },
+  "settings.dailyGoalDescription": {
+    "defaultMessage": "Establezca el tiempo que desea dedicar a los ejercicios diariamente.",
+    "description": "Input field description."
+  },
+  "settings.dailyGoalLabel": {
+    "defaultMessage": "Meta diaria:",
+    "description": "Input field label."
+  },
+  "settings.dailyGoalTitle": {
+    "defaultMessage": "Meta diaria para gastar en los ejercicios en minutos.",
+    "description": "Input field title."
+  },
+  "settings.doneButtonLabel": {
+    "defaultMessage": "Hecho",
+    "description": "Button label."
+  },
+  "settings.doneButtonTitle": {
+    "defaultMessage": "Guarda los cambios y empieza a practicar.",
+    "description": "Button title."
+  },
+  "settings.emulateLayoutLabel": {
+    "defaultMessage": "Emular disposición",
+    "description": "Checkbox label."
+  },
+  "settings.emulateLayoutTitle": {
+    "defaultMessage": "Emular la disposición seleccionada cuando el diseño estándar se establece en el sistema.",
+    "description": "Checkbox title."
+  },
+  "settings.enableCapitalLettersLabel": {
+    "defaultMessage": "Habilitar mayúsculas",
+    "description": "Checkbox label."
+  },
+  "settings.enableCapitalLettersTitle": {
+    "defaultMessage": "Generar texto con letras mayúsculas.",
+    "description": "Checkbox title."
+  },
+  "settings.enablePunctuationLabel": {
+    "defaultMessage": "Habilitar signos de puntuación.",
+    "description": "Checkbox label."
+  },
+  "settings.enablePunctuationTitle": {
+    "defaultMessage": "Añadir signos de puntuación al texto generado.",
+    "description": "Checkbox title."
+  },
+  "settings.enableSoundsLabel": {
+    "defaultMessage": "Activas sonidos",
+    "description": "Checkbox label."
+  },
+  "settings.enableSoundsTitle": {
+    "defaultMessage": "Hacer ruido extra al teclear y en los errores.",
+    "description": "Checkbox description."
+  },
+  "settings.extendKeySetLabel": {
+    "defaultMessage": "Añadir letras a las palabras:",
+    "description": "Input field label."
+  },
+  "settings.extendKeySetTitle": {
+    "defaultMessage": "Añadir más letras a cada palabra generada.",
+    "description": "Input field title."
+  },
+  "settings.extendLessonLengthLabel": {
+    "defaultMessage": "Añadir palabras a las lecciones:",
+    "description": "Input field label."
+  },
+  "settings.extendLessonLengthTitle": {
+    "defaultMessage": "Añadir más palabras a cada lección generada.",
+    "description": "Input field title."
+  },
+  "settings.forgiveErrorsDescription": {
+    "defaultMessage": "Al activar esta opción el campo de entrada de texto perdona algunos tipos de errores corrigiéndolos automáticamente. Se trata de errores del tipo teclear un carácter incorrecto u omitir un carácter.",
+    "description": "Checkbox description."
+  },
+  "settings.forgiveErrorsLabel": {
+    "defaultMessage": "Perdonar errores",
+    "description": "Checkbox label."
+  },
+  "settings.interfaceOptionsLegend": {
+    "defaultMessage": "Opciones del Interfaz",
+    "description": "Fieldset legend."
+  },
+  "settings.keyboardLayoutTabLabel": {
+    "defaultMessage": "Disposición del Teclado",
+    "description": "Tab label."
+  },
+  "settings.lessonOptionsLegend": {
+    "defaultMessage": "Opciones de la Lección",
+    "description": "Fieldset legend."
+  },
+  "settings.lessonsTabLabel": {
+    "defaultMessage": "Ejercicios",
+    "description": "Tab label."
+  },
+  "settings.miscellaneousTabLabel": {
+    "defaultMessage": "Miscelánea",
+    "description": "Tab label."
+  },
+  "settings.optionsLegend": {
+    "defaultMessage": "Opciones",
+    "description": "Fieldset legend."
+  },
+  "settings.previewLabel": {
+    "defaultMessage": "Vista previa de la Lección",
+    "description": "Fieldset label."
+  },
+  "settings.previewLegend": {
+    "defaultMessage": "Vista previa",
+    "description": "Fieldset legend."
+  },
+  "settings.removePunctuationLabel": {
+    "defaultMessage": "Eliminar signos de puntuación",
+    "description": "Checkbox label."
+  },
+  "settings.removePunctuationTitle": {
+    "defaultMessage": "Eliminar los signos de puntuación del texto para facilitar la mecanografía.",
+    "description": "Checkbox title."
+  },
+  "settings.selectLanguageLabel": {
+    "defaultMessage": "Idioma:",
+    "description": "Dropdown label."
+  },
+  "settings.selectLanguageTitle": {
+    "defaultMessage": "Elige el idioma que hablas.",
+    "description": "Dropdown title."
+  },
+  "settings.selectLayoutLabel": {
+    "defaultMessage": "Disposición:",
+    "description": "Dropdown label."
+  },
+  "settings.selectLayoutTitle": {
+    "defaultMessage": "Elige la disposición del teclado con la que deseas practicar. Puede haber muchas disposiciones disponibles para cada idioma.",
+    "description": "Dropdown title."
+  },
+  "settings.stopCursorOnErrorDescription": {
+    "defaultMessage": "Si se activa, el cursor de texto deja de avanzar hasta que se pulsa la tecla correcta en la posición actual. Si se desactiva, todos los errores se acumularán en el campo de entrada de texto y deberán eliminarse con la tecla de eliminar.",
+    "description": "Checkbox description."
+  },
+  "settings.stopCursorOnErrorLabel": {
+    "defaultMessage": "Detener el cursor cuando se produce un error",
+    "description": "Checkbox label."
+  },
+  "settings.textAppearanceLegend": {
+    "defaultMessage": "Apariencia del texto",
+    "description": "Fieldset legend."
+  },
+  "settings.transformToLowercaseLabel": {
+    "defaultMessage": "Transformar a minúsculas",
+    "description": "Checkbox label."
+  },
+  "settings.transformToLowercaseTitle": {
+    "defaultMessage": "Transformar todo el texto a minúsculas para facilitar la mecanografía.",
+    "description": "Checkbox title."
+  },
+  "settings.typingOptionsLegend": {
+    "defaultMessage": "Opciones de Mecanografía",
+    "description": "Fieldset legend."
+  },
+  "settings.typingSpeedUnitCaption": {
+    "defaultMessage": "Medir la velocidad de mecanografía en:",
+    "description": "Radio button group caption."
+  },
+  "settings.typingSpeedUnitDescription": {
+    "defaultMessage": "Para medir la velocidad de mecanografía, cada palabra se estandariza en cinco caracteres o pulsaciones en inglés, incluyendo los espacios y la puntuación.",
+    "description": "Radio button group description."
+  },
+  "settings.typingTabLabel": {
+    "defaultMessage": "Mecanografía de texto",
+    "description": "Tab label."
+  },
+  "settings.whitespaceLabel": {
+    "defaultMessage": "Espacio en blanco:",
+    "description": "Checkbox label."
+  },
+  "speedUnit.cpm.description": {
+    "defaultMessage": "Mide la velocidad de mecanografía en caracteres por minuto.",
+    "description": "Widget title."
+  },
+  "speedUnit.cpm.name": {
+    "defaultMessage": "Caracteres por minuto",
+    "description": "Widget label."
+  },
+  "speedUnit.cps.description": {
+    "defaultMessage": "Mide la velocidad de mecanografía en caracteres por segundo.",
+    "description": "Widget title."
+  },
+  "speedUnit.cps.name": {
+    "defaultMessage": "Caracteres por segundo",
+    "description": "Widget label."
+  },
+  "speedUnit.wpm.description": {
+    "defaultMessage": "Medir la velocidad de mecanografía en palabras por minuto.",
+    "description": "Widget title."
+  },
+  "speedUnit.wpm.name": {
+    "defaultMessage": "Palabras por minuto",
+    "description": "Widget label."
+  },
+  "textStats.allWordCount": {
+    "defaultMessage": "Todas las palabras",
+    "description": "Text label."
+  },
+  "textStats.averageWordLength": {
+    "defaultMessage": "Longitud media de las palabras",
+    "description": "Text label."
+  },
+  "textStats.charsExcludingWhitespace": {
+    "defaultMessage": "Caracteres excluyendo los espacios en blanco",
+    "description": "Text label."
+  },
+  "textStats.charsIncludingWhitespace": {
+    "defaultMessage": "Caracteres con espacios en blanco",
+    "description": "Text label."
+  },
+  "textStats.mostCommonWords": {
+    "defaultMessage": "Top {count} de palabras más comunes",
+    "description": "Text fragment."
+  },
+  "textStats.timeToRead": {
+    "defaultMessage": "A una velocidad media de lectura de {speed} PPM, llevaría {time} para leer este texto.",
+    "description": "Text fragment."
+  },
+  "textStats.timeToType": {
+    "defaultMessage": "A una velocidad media de mecanografía de {speed} PPM, llevaría {time} para leer este texto.",
+    "description": "Text fragment."
+  },
+  "textStats.uniqueWordCount": {
+    "defaultMessage": "Palabras únicas",
+    "description": "Text label."
+  },
+  "textTools.emptyTextMessage": {
+    "defaultMessage": "Incluye algún texto para calcular las estadísticas asociadas.",
+    "description": "Freeform text."
+  },
+  "textTools.exampleText": {
+    "defaultMessage": "(Texto de ejemplo, haz clic aquí para eliminarlo.)",
+    "description": "Text fragment."
+  },
+  "textTools.textInputPlaceholder": {
+    "defaultMessage": "Pega tu texto aquí",
+    "description": "Input field placeholder."
+  },
+  "textType.digits": {
+    "defaultMessage": "Dígitos",
+    "description": "Label."
+  },
+  "textType.letters": {
+    "defaultMessage": "Letras",
+    "description": "Label."
+  },
+  "theme.enterFullscreenTitle": {
+    "defaultMessage": "Entrar en modo pantalla completa.",
+    "description": "Theme switching button."
+  },
+  "theme.exitFullscreenTitle": {
+    "defaultMessage": "Salir del modo pantalla completa.",
+    "description": "Theme switching button."
+  },
+  "theme.fullscreenNotSupportedTitle": {
+    "defaultMessage": "Modo pantalla completa no soportado.",
+    "description": "Theme switching button."
+  },
+  "theme.switchThemeTitle": {
+    "defaultMessage": "Cambiar al tema {name}.",
+    "description": "Theme switching button."
+  },
+  "tour.close": {
+    "defaultMessage": "Cerrar",
+    "description": "Button name"
+  },
+  "tour.next": {
+    "defaultMessage": "Siguiente",
+    "description": "Button name"
+  },
+  "tour.previous": {
+    "defaultMessage": "Anterior",
+    "description": "Button name"
+  }
+}

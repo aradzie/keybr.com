@@ -1,0 +1,1482 @@
+{
+  "account.accountDetailsLegend": {
+    "defaultMessage": "Account Details",
+    "description": "Fieldset legend."
+  },
+  "account.accountPageDescription": {
+    "defaultMessage": "<p>You are using an account to store your typing data on our servers in the cloud. You will be able to access your profile from any computer or browser.</p>",
+    "description": "Freeform text."
+  },
+  "account.anonymizeButtonLabel": {
+    "defaultMessage": "Anonymize Me",
+    "description": "Button label."
+  },
+  "account.anonymizeButtonTitle": {
+    "defaultMessage": "Hide your real user image and name from the public.",
+    "description": "Button title."
+  },
+  "account.anonymizeDescription": {
+    "defaultMessage": "Anonymization replaces your real user image and name with the one that we give you. You can switch between your real and anonymous name any number of times.",
+    "description": "Freeform text."
+  },
+  "account.anonymousUserName": {
+    "defaultMessage": "Anonymous User",
+    "description": "Text label."
+  },
+  "account.avatarDescription": {
+    "defaultMessage": "Your user image and name as they are visible to the public in your profile, the high scores table, and the multiplayer game.",
+    "description": "Freeform text."
+  },
+  "account.checkout.description": {
+    "defaultMessage": "Purchase a premium account to unlock additional features and enjoy an ad-free experience.",
+    "description": "Form description."
+  },
+  "account.checkout.title": {
+    "defaultMessage": "Premium Account",
+    "description": "Form title."
+  },
+  "account.checkoutButtonLabel": {
+    "defaultMessage": "Buy a Premium Account",
+    "description": "Button label."
+  },
+  "account.checkoutButtonTitle": {
+    "defaultMessage": "Open the checkout form.",
+    "description": "Button title."
+  },
+  "account.deleteAccountButtonLabel": {
+    "defaultMessage": "Delete Account",
+    "description": "Button label."
+  },
+  "account.deleteAccountButtonTitle": {
+    "defaultMessage": "Permanently delete your account.",
+    "description": "Button title."
+  },
+  "account.deleteAccountConfirmation": {
+    "defaultMessage": "Are you sure you want to delete your account? This operation is permanent and cannot be undone! However, you can create a new account at any time.",
+    "description": "Confirmation text."
+  },
+  "account.deleteAccountDescription": {
+    "defaultMessage": "This will delete all your personally identifiable information, such as your name and e-mail address from our database. This operation cannot be undone! If you only want to clear your typing statistics and start over, you can do this on the profile page.",
+    "description": "Freeform text."
+  },
+  "account.deleteAccountLegend": {
+    "defaultMessage": "Delete Account",
+    "description": "Fieldset legend."
+  },
+  "account.emailFormDescription": {
+    "defaultMessage": "Simple sign‑in that does not use passwords. Just enter your e‑mail address, and we will send you a login link. Go to your inbox, click the link to create a new account or to open an existing account for the e‑mail address given. The link is temporary and expires in a few hours. To sign‑in again later, enter the same e‑mail address, and we will send a new link for the same account.",
+    "description": "Freeform text."
+  },
+  "account.emailPlaceholder": {
+    "defaultMessage": "Your e‑mail address...",
+    "description": "Input field placeholder."
+  },
+  "account.emailSignInHeader": {
+    "defaultMessage": "Sign‑In with E‑mail",
+    "description": "Freeform header."
+  },
+  "account.emailState.errorText": {
+    "defaultMessage": "Could not send e‑mail to <strong>{email}</strong>: {message}",
+    "description": "Text message."
+  },
+  "account.emailState.sendingText": {
+    "defaultMessage": "Sending an e‑mail with the login link to <strong>{email}</strong>... Please wait a second.",
+    "description": "Text message."
+  },
+  "account.emailState.sentText": {
+    "defaultMessage": "We have sent an e‑mail with the login link to <strong>{email}</strong>. It should arrive soon, please check your inbox in a minute or two.",
+    "description": "Text message."
+  },
+  "account.emailTitle": {
+    "defaultMessage": "This is the e‑mail address we will send the sign‑in link to.",
+    "description": "Input field title."
+  },
+  "account.freeAccountOverview": {
+    "defaultMessage": "<p>Buy a <strong>premium account</strong> to unlock additional features and enjoy an ad-free experience. Here is the list of premium account benefits:</p><ul><li><strong>No ads.</strong> Ads may be distracting and impede your learning progress. This is a good way to get rid of them.</li><li><strong>No trackers.</strong> Trackers inevitably come with ads. Remove all trackers for complete online privacy.</li><li><strong>Ultra-fast responsiveness.</strong> Ads take quite some time to load. Getting rid of them means faster loading times for all pages.</li></ul><p>It is a single payment that provides lifetime access.</p>",
+    "description": "Freeform text."
+  },
+  "account.pageTitle": {
+    "defaultMessage": "Account | {name}",
+    "description": "Page title."
+  },
+  "account.premiumAccountHeader": {
+    "defaultMessage": "Premium Account",
+    "description": "Freeform header."
+  },
+  "account.premiumAccountLegend": {
+    "defaultMessage": "Premium Account",
+    "description": "Fieldset legend."
+  },
+  "account.premiumAccountOverview": {
+    "defaultMessage": "<p>Thank you for purchasing a premium account! Now you can enjoy additional features and an ad-free experience.</p>",
+    "description": "Freeform text."
+  },
+  "account.resendButtonLabel": {
+    "defaultMessage": "Resend",
+    "description": "Button label."
+  },
+  "account.resendButtonTitle": {
+    "defaultMessage": "Send one more e‑mail.",
+    "description": "Button title."
+  },
+  "account.retryButtonLabel": {
+    "defaultMessage": "Retry",
+    "description": "Button label."
+  },
+  "account.retryButtonTitle": {
+    "defaultMessage": "Send another e‑mail.",
+    "description": "Button title."
+  },
+  "account.sendButtonLabel": {
+    "defaultMessage": "Send Sign‑in Link",
+    "description": "Button label."
+  },
+  "account.sendButtonTitle": {
+    "defaultMessage": "Sign-in with e-mail.",
+    "description": "Button title."
+  },
+  "account.signInPageDescription": {
+    "defaultMessage": "<p>Create an account to store your typing data on our servers in the cloud. This allows you to access your profile from any computer or browser. If you don't have an account then your typing data is stored locally and is accessible only from your current computer.</p><p>We don't store any passwords. Instead we use third-party services to authenticate our users. We offer several convenient ways to create an account and sign‑in.</p><p>You can opt-out at any time. Deleting an account is as simple as creating one.</p>",
+    "description": "Freeform text."
+  },
+  "account.signOutButtonLabel": {
+    "defaultMessage": "Sign Out",
+    "description": "Button label."
+  },
+  "account.signOutButtonTitle": {
+    "defaultMessage": "Sign out from the application.",
+    "description": "Button title."
+  },
+  "account.socialFormDescription": {
+    "defaultMessage": "Sign‑in with your preferred social network. We respect your privacy and promise to never spam your wall, friends, or e‑mail.",
+    "description": "Freeform text."
+  },
+  "account.socialSignInButtonLabel": {
+    "defaultMessage": "Sign‑in with {name}",
+    "description": "Button title."
+  },
+  "account.socialSignInButtonTitle": {
+    "defaultMessage": "Sign‑in with a social network.",
+    "description": "Button title."
+  },
+  "account.socialSignInHeader": {
+    "defaultMessage": "Sign‑In with Social Networks",
+    "description": "Freeform header."
+  },
+  "calendar.weekDayName": {
+    "defaultMessage": "M|T|W|T|F|S|S",
+    "description": "Day of week name."
+  },
+  "common.javaScriptDisabledText": {
+    "defaultMessage": "This application will not work because JavaScript is disabled in your browser!",
+    "description": "Common text."
+  },
+  "common.loadingText": {
+    "defaultMessage": "The application is loading, please wait a second...",
+    "description": "Common text."
+  },
+  "footer.discordLinkTitle": {
+    "defaultMessage": "Discuss on our Discord server.",
+    "description": "Footer Discord link title."
+  },
+  "footer.emailLinkTitle": {
+    "defaultMessage": "Send your comments and suggestions to info@keybr.com",
+    "description": "Footer email link title."
+  },
+  "help.example1": {
+    "defaultMessage": "<a>Example 1</a>, from 30 to 70 WPM after 4 hours 20 minutes of practicing in the course of 15 days.",
+    "description": "Example profile text."
+  },
+  "help.example2": {
+    "defaultMessage": "<a>Example 2</a>, from 35 to 70 WPM after 2 hours and 20 minutes of practicing in the course of 12 days.",
+    "description": "Example profile text."
+  },
+  "help.example3": {
+    "defaultMessage": "<a>Example 3</a>, a decent jump from less than 20 to 40 WPM after 5 hours and 30 minutes of practicing in the course of 11 days.",
+    "description": "Example profile text."
+  },
+  "help.example4": {
+    "defaultMessage": "<a>Example 4</a>, after 2 hours and 10 minutes of practicing in the course of 11 days, typing speed stayed at ~70 WPM (which is already pretty high), but accuracy improved.",
+    "description": "Example profile text."
+  },
+  "help.example5": {
+    "defaultMessage": "<a>Example 5</a>, from 20 to 45 WPM after about 10 hours of practicing in the course of 22 day (yes, sometimes it takes longer).",
+    "description": "Example profile text."
+  },
+  "help.indicatorsCaption": {
+    "defaultMessage": "Indicator color coding.",
+    "description": "Figure legend."
+  },
+  "help.keyboardZonesCaption": {
+    "defaultMessage": "Keyboard zones and the proper finger placement.",
+    "description": "Figure legend."
+  },
+  "help.rule1.body": {
+    "defaultMessage": "<p>When you start practicing for the first time the computer knows nothing about your typing skills, so it uses a small set of the most common letters to generate words such as ‘<em>E</em>’, ‘<em>N</em>’, ‘ <em>I</em>’, ‘<em>T</em>’, ‘<em>R</em>’ and ‘<em>L</em>’. All generated words will consist of this small letter set, with the remaining letters being unused. As the statistics for the letters are unknown, the corresponding indicators are gray.</p>",
+    "description": "Paragraph text."
+  },
+  "help.rule1.title": {
+    "defaultMessage": "The algorithm starts with the initial letters",
+    "description": "Header text."
+  },
+  "help.rule2.body": {
+    "defaultMessage": "<p>As you begin to type the generated words, the computer collects your typing statistics. The indicators start to change their colors from red to green. The color red means the typing speed for that individual key is slow, and the color green indicates the opposite. At this stage your goal is to make all the letters green by improving your typing speed. Please note that in this example, letter ‘<em>T</em>’ is highlighted as it has the worst typing speed metric, so it becomes the target letter. The target letter is included in every generated word and this is a crucial piece of information to know. It means that at any given time you are practicing the exact key that gives you the most trouble.</p>",
+    "description": "Paragraph text."
+  },
+  "help.rule2.title": {
+    "defaultMessage": "You learn the initial letters",
+    "description": "Header text."
+  },
+  "help.rule3.body": {
+    "defaultMessage": "<p>When your typing speed improves, and all the letters finally become green, a new letter ‘<em>S</em>’ is added to the set. The random words will be generated from this new expanded set of letters. Letter ‘<em>S</em>’ is the target letter and appears in every generated word. Again, the indicator color of this letter is gray because its typing statistics are unknown.</p>",
+    "description": "Paragraph text."
+  },
+  "help.rule3.title": {
+    "defaultMessage": "The algorithm adds more letters",
+    "description": "Header text."
+  },
+  "help.rule4.body": {
+    "defaultMessage": "<p>At this step your goal is to make this new letter green, and when this happens, yet another letter is added to the set, and the cycle continues. Realistically speaking, it is very likely that the typing speed of the previous letters will degrade, and you will see that they become red again, as in the example. This is expected, your goal is still the same, to make the new target letter green to unlock the next one.</p>",
+    "description": "Paragraph text."
+  },
+  "help.rule4.title": {
+    "defaultMessage": "You learn additional letters",
+    "description": "Header text."
+  },
+  "help.rule5.body": {
+    "defaultMessage": "<p>If you are persistent enough, sooner or later all the letters will become green. Congratulations, you have achieved your main goal! However, this does not mean that you should stop learning, you can keep going for as long as you wish.</p>",
+    "description": "Paragraph text."
+  },
+  "help.rule5.title": {
+    "defaultMessage": "The cycle repeats",
+    "description": "Header text."
+  },
+  "help.section1": {
+    "defaultMessage": "<h1>Learn to type faster</h1><h2>Touch typing</h2><p>This web application will help you to learn <em>touch typing</em>, which means typing through muscle memory without using your eyesight to find the keys on the keyboard. It can improve your typing speed and accuracy dramatically. The opposite is <em>hunt-and-peck typing</em>, a method of typing in which you look at the keyboard instead of the screen, and use only the index fingers.</p>",
+    "description": "Freeform text."
+  },
+  "help.section2": {
+    "defaultMessage": "<h2>The teaching method</h2><p>This application uses a unique approach. It employs statistics and smart algorithms to automatically create typing lessons that match your current skill level. It works by repeating the following cycle:</p><ol><li>The algorithm generates a list of random words for you, based on your typing skills. Your skill level is measured using the typing statistics collected so far. The words consist of a set of letters selected by the algorithm.</li><li>You type the given words. You try to make as few mistakes as possible.</li><li>As you type, the algorithm collects your typing statistics, such as the time-to-type metric for each individual key. At the end, these statistics are used to generate the next list of words for step one.</li></ol><p>At each stage you just type the provided lists of words, and the computer does the rest.</p>",
+    "description": "Freeform text."
+  },
+  "help.section3": {
+    "defaultMessage": "<h2>The word generating algorithm</h2><p>This application generates random but readable and pronounceable words, using the phonetic rules of your native language. These words look almost natural, and often are. Typing sensible text is much easier than repeating random letters, and it helps you remember frequent key combinations. The latest point is crucial. For example, it’s almost impossible for the letter ‘<em>W</em>’ to follow the ‘<em>Z</em>’ in English, and you will never type such a combination in this application. Instead, you will type more common words, such as «<em>the</em>,» « <em>that</em>,» «<em>with</em>,» and so on. Soon you will learn how to type the «<em>th</em>» combo really fast.</p><p>The words are generated from the letters which are selected using the following rules.</p>",
+    "description": "Freeform text."
+  },
+  "help.section4": {
+    "defaultMessage": "<p>The precise meaning of each indicator color is given in the following legend.</p>",
+    "description": "Freeform text."
+  },
+  "help.section5": {
+    "defaultMessage": "<h2>The right way to use keyboard</h2><p>Put all your fingers on the home row, the one containing the <em>Caps Lock</em> key. There are small bumps on the keys ‘<em>F</em>’ and ‘<em>J</em>’, put your index fingers on the bumps. Each finger is responsible for its own set of keys, as explained in the next illustration.</p>",
+    "description": "Freeform text."
+  },
+  "help.section6": {
+    "defaultMessage": "<h2>The effectiveness of this application</h2><p>We selected a few example profiles to show you how people progress in learning touch typing when using this application. These are real, anonymized user profiles. Hopefully they will inspire you to keep learning!</p>",
+    "description": "Freeform text."
+  },
+  "highScores.layoutColumn": {
+    "defaultMessage": "Layout",
+    "description": "Table column name."
+  },
+  "highScores.scoreColumn": {
+    "defaultMessage": "Score",
+    "description": "Table column name."
+  },
+  "highScores.typingSpeedColumn": {
+    "defaultMessage": "Typing Speed",
+    "description": "Table column name."
+  },
+  "highScores.userColumn": {
+    "defaultMessage": "User",
+    "description": "Table column name."
+  },
+  "language.be.name": {
+    "defaultMessage": "Belarusian (Беларуская)",
+    "description": "Language name."
+  },
+  "language.de.name": {
+    "defaultMessage": "German (Deutsch)",
+    "description": "Language name."
+  },
+  "language.en.name": {
+    "defaultMessage": "English",
+    "description": "Language name."
+  },
+  "language.es.name": {
+    "defaultMessage": "Spanish (Español)",
+    "description": "Language name."
+  },
+  "language.fr.name": {
+    "defaultMessage": "French (Français)",
+    "description": "Language name."
+  },
+  "language.it.name": {
+    "defaultMessage": "Italian (Italiano)",
+    "description": "Language name."
+  },
+  "language.pl.name": {
+    "defaultMessage": "Polish (Polski)",
+    "description": "Language name."
+  },
+  "language.pt.name": {
+    "defaultMessage": "Portuguese (Português)",
+    "description": "Language name."
+  },
+  "language.ru.name": {
+    "defaultMessage": "Russian (Русский)",
+    "description": "Language name."
+  },
+  "language.uk.name": {
+    "defaultMessage": "Ukrainian (Українська)",
+    "description": "Language name."
+  },
+  "layouts.bottomRowKeysText": {
+    "defaultMessage": "Keys on the bottom row:",
+    "description": "Field name."
+  },
+  "layouts.bottomRowKeysTitle": {
+    "defaultMessage": "Percentage of keys typed on the Shift row, the less the better.",
+    "description": "Field title."
+  },
+  "layouts.description.colemak": {
+    "defaultMessage": "<p>The Colemak layout is designed to be a practical alternative to the Qwerty and Dvorak keyboard layouts, offering a more incremental change for users already accustomed to the standard layout.</p><p>The Colemak layout was designed with the QWERTY layout as a base, changing the positions of 17 keys while retaining the QWERTY positions of most non-alphabetic characters and many popular keyboard shortcuts. This makes it easier to learn for people who already type in QWERTY. It shares several design goals with the Dvorak layout, such as minimizing finger path distance and making heavy use of the home row.</p><p>It is supported by many major modern operating systems.</p>",
+    "description": "Freeform text."
+  },
+  "layouts.description.dvorak": {
+    "defaultMessage": "<p>Dvorak is a keyboard layout for the English language created in 1936 by August Dvorak and William Dealey. It was designed to be a faster, more ergonomic alternative to the QWERTY layout. Dvorak proponents claim that it requires less finger motion and as a result reduces errors, increases typing speed, reduces repetitive strain injuries, and offers a more comfortable experience compared to QWERTY.</p><p>However, it failed to replace QWERTY as the most common keyboard layout mainly due to QWERTY being introduced 60 years earlier.</p><p>As of 2005, the fastest English language typist in the world record was set using the Dvorak keyboard layout by Barbara Blackburn.</p><p>Almost all major modern operating systems allow a user to switch to the Dvorak layout, and there is a good chance that your OS supports it too.</p>",
+    "description": "Freeform text."
+  },
+  "layouts.description.qwerty": {
+    "defaultMessage": "<p>It all started in the 1860s. An amateur inventor, politician, printer and newspaper man in Milwaukee by the name of Christopher Latham Sholes, often spent his spare time tinkering with and creating new machines to make his businesses more efficient.</p><p>The popular theory states that Sholes had to redesign the keyboard in response to the mechanical failings of early typewriters. The type bars connecting the key and the letter plate hung in a cycle beneath the paper. If a user quickly typed a succession of letters whose type bars were near each other, the delicate machinery would get jammed.</p><p>Sholes redesigned the arrangement to separate the most common sequences of letters like “th” or “he”. The machine was produced under licence in 1875 by the New York based arms manufacturer, Remington and Sons. The machine was named the Remington No. 1 and was a commercial failure failing to sell in large numbers.</p><p>After receiving feedback, the Remington company updated the machine to create the Remington No. 2. This new machine was released in 1877 and was hugely successful. It was the first to use the QWERTY keyboard layout as we know it today, giving users the option to type upper and lower case letters, moving between the two by use of a “Shift” key.</p><p>The classic QWERTY keyboard layout is an unfortunate historical accident and is not optimal, and that is why the other layouts were invented.</p>",
+    "description": "Freeform text."
+  },
+  "layouts.description.workman": {
+    "defaultMessage": "<p>The Workman layout reduced lateral movement of the fingers and wrists, more balanced left and right hand usage. 21 characters are different from Qwerty.</p><p>The Workman layout offers many benefits. It is comfortable, ergonomic, and efficient, with frequent keys being placed within the natural range of motion of the fingers. The need for lateral movement is reduced for the fingers and wrists. There is also very low overall finger travel.</p><p>The Workman layout is found to achieve overall less travel distance of the fingers for the English language than even Colemak. It does however generally incur higher same-finger n-gram frequencies; or in other words, one finger will need to hit two keys in succession more often than in other layouts.</p>",
+    "description": "Freeform text."
+  },
+  "layouts.heatmapCaption": {
+    "defaultMessage": "Key Frequency Heatmap for {name}",
+    "description": "Figure caption."
+  },
+  "layouts.heatmapDescription": {
+    "defaultMessage": "This chart shows relative key frequencies as a heatmap.",
+    "description": "Figure description."
+  },
+  "layouts.homeRowKeysText": {
+    "defaultMessage": "Keys on the home row:",
+    "description": "Field name."
+  },
+  "layouts.homeRowKeysTitle": {
+    "defaultMessage": "Percentage of keys typed without leaving the Caps Lock row, the more the better.",
+    "description": "Field title."
+  },
+  "layouts.layoutNameHeader": {
+    "defaultMessage": "{name} Layout",
+    "description": "Text header."
+  },
+  "layouts.sameFingerKeysText": {
+    "defaultMessage": "Keys typed by the same finger:",
+    "description": "Field name."
+  },
+  "layouts.sameFingerKeysTitle": {
+    "defaultMessage": "Percentage of keys typed by the same finger, the less the better.",
+    "description": "Field title."
+  },
+  "layouts.sameHandKeysText": {
+    "defaultMessage": "Keys typed by the same hand:",
+    "description": "Field name."
+  },
+  "layouts.sameHandKeysTitle": {
+    "defaultMessage": "Percentage of keys typed by the same hand, the less the better.",
+    "description": "Field title."
+  },
+  "layouts.topRowKeysText": {
+    "defaultMessage": "Keys on the top row:",
+    "description": "Field name."
+  },
+  "layouts.topRowKeysTitle": {
+    "defaultMessage": "Percentage of keys typed on the Tab row, the less the better.",
+    "description": "Field title."
+  },
+  "layouts.websiteLinkText": {
+    "defaultMessage": "Official website",
+    "description": "Link text."
+  },
+  "layouts.wikipediaLinkText": {
+    "defaultMessage": "Wikipedia article",
+    "description": "Link text."
+  },
+  "learningRate.alreadyUnlocked": {
+    "defaultMessage": "This letter is already unlocked.",
+    "description": "Message text."
+  },
+  "learningRate.remainingLessons": {
+    "defaultMessage": "Approximately {remainingLessons} lessons remaining to unlock this letter ({certainty} certainty).",
+    "description": "Message text."
+  },
+  "learningRate.unknown": {
+    "defaultMessage": "Need more data to compute the remaining lessons to unlock this letter.",
+    "description": "Message text."
+  },
+  "lesson.averageSpeedLabel": {
+    "defaultMessage": "Average typing speed",
+    "description": "Label name."
+  },
+  "lesson.averageSpeedTitle": {
+    "defaultMessage": "Average typing speed ({speedUnitName}).",
+    "description": "Label title."
+  },
+  "lesson.bestSpeedLabel": {
+    "defaultMessage": "Best typing speed",
+    "description": "Label name."
+  },
+  "lesson.bestSpeedTitle": {
+    "defaultMessage": "Best typing speed ({speedUnitName}).",
+    "description": "Label title."
+  },
+  "lesson.boostedKeyText": {
+    "defaultMessage": "A key with boosted frequency.",
+    "description": "Character details text."
+  },
+  "lesson.characterName": {
+    "defaultMessage": "Character ''{name}''",
+    "description": "Character details text."
+  },
+  "lesson.confidenceLevelLabel": {
+    "defaultMessage": "Confidence level",
+    "description": "Label name."
+  },
+  "lesson.confidenceLevelTitle": {
+    "defaultMessage": "Confidence level (from 0 to 1).",
+    "description": "Label title."
+  },
+  "lesson.currentKeyPanelLabel": {
+    "defaultMessage": "Current key",
+    "description": "Panel label."
+  },
+  "lesson.dailyGoalPanelLabel": {
+    "defaultMessage": "Daily goal",
+    "description": "Panel label."
+  },
+  "lesson.dailyGoalPanelTitle": {
+    "defaultMessage": "The progress to your daily goal.",
+    "description": "Panel title."
+  },
+  "lesson.forcedKeyText": {
+    "defaultMessage": "A manually added key.",
+    "description": "Character details text."
+  },
+  "lesson.gaugesPanelLabel": {
+    "defaultMessage": "Metrics",
+    "description": "Panel label."
+  },
+  "lesson.indicator.boostedFrequency": {
+    "defaultMessage": "A key with boosted frequency. It takes you the most time to find this key so the algorithm chose it to be included in every generated word.",
+    "description": "Indicator description."
+  },
+  "lesson.indicator.includedManually": {
+    "defaultMessage": "A key which was manually included in the lessons.",
+    "description": "Indicator description."
+  },
+  "lesson.indicator.leastConfidence": {
+    "defaultMessage": "A calibrated key with the lowest confidence level. The more times you press this key, the more accurate this metric becomes.",
+    "description": "Indicator description."
+  },
+  "lesson.indicator.mostConfidence": {
+    "defaultMessage": "A calibrated key with the highest confidence level. The more times you press this key, the more accurate this metric becomes.",
+    "description": "Indicator description."
+  },
+  "lesson.indicator.notCalibrated": {
+    "defaultMessage": "A non-calibrated key with an unknown confidence level. You still have not pressed this key yet.",
+    "description": "Indicator description."
+  },
+  "lesson.indicator.notIncluded": {
+    "defaultMessage": "A key which was not yet included in the lessons.",
+    "description": "Indicator description."
+  },
+  "lesson.keySetPanelLabel": {
+    "defaultMessage": "All keys",
+    "description": "Panel label."
+  },
+  "lesson.notCalibratedText": {
+    "defaultMessage": "Not calibrated, need more samples",
+    "description": "Panel text."
+  },
+  "lessonType.customText.description": {
+    "defaultMessage": "Generate typing lessons from the words of your own custom text. All keys are included by default.",
+    "description": "Description text."
+  },
+  "lessonType.customText.name": {
+    "defaultMessage": "Custom text",
+    "description": "Widget label."
+  },
+  "lessonType.guided.description": {
+    "defaultMessage": "Generate typing lessons with random words using the phonetic rules of your language. The key set is expanded dynamically based on your performance.",
+    "description": "Description text."
+  },
+  "lessonType.guided.name": {
+    "defaultMessage": "Guided lessons",
+    "description": "Widget label."
+  },
+  "lessonType.numbers.name": {
+    "defaultMessage": "Numbers",
+    "description": "Widget label."
+  },
+  "lessonType.wordList.description": {
+    "defaultMessage": "Generate typing lessons from the list of the most common words of your language. All keys are included by default.",
+    "description": "Description text."
+  },
+  "lessonType.wordlist.name": {
+    "defaultMessage": "Common words",
+    "description": "Widget label."
+  },
+  "multiplayer.intro": {
+    "defaultMessage": "Compete against other players in this online multiplayer game. The faster you type, the faster your car goes. Type as fast as you can to win the race!",
+    "description": "Freeform text."
+  },
+  "multiplayer.state.connecting": {
+    "defaultMessage": "<h1>Connecting to Server...</h1><p>Establishing connection to the game server.</p>",
+    "description": "Freeform text."
+  },
+  "multiplayer.state.kicked": {
+    "defaultMessage": "<h1>Kicked out of the Game</h1><p>You were kicked out of the game for being inactive.</p>",
+    "description": "Freeform text."
+  },
+  "multiplayer.state.offline": {
+    "defaultMessage": "<h1>Server is Offline</h1><p>Something is wrong with our game server.</p><p>Please revisit this site in a few minutes while we are fixing the problem.</p>",
+    "description": "Freeform text."
+  },
+  "multiplayer.ui.countDownTicker": {
+    "defaultMessage": "Start in {countDown}",
+    "description": "Ticker text."
+  },
+  "multiplayer.ui.distanceLabel": {
+    "defaultMessage": "Progress",
+    "description": "Label."
+  },
+  "multiplayer.ui.distanceTitle": {
+    "defaultMessage": "Distance completed.",
+    "description": "Label title."
+  },
+  "multiplayer.ui.errorsLabel": {
+    "defaultMessage": "Errors",
+    "description": "Label."
+  },
+  "multiplayer.ui.errorsTitle": {
+    "defaultMessage": "Number of errors.",
+    "description": "Label title."
+  },
+  "multiplayer.ui.initializingTicker": {
+    "defaultMessage": "Initializing...",
+    "description": "Ticker text."
+  },
+  "multiplayer.ui.nameLabel": {
+    "defaultMessage": "Speed",
+    "description": "Label."
+  },
+  "multiplayer.ui.nameTitle": {
+    "defaultMessage": "Typing speed.",
+    "description": "Label title."
+  },
+  "multiplayer.ui.positionLabel": {
+    "defaultMessage": "Position",
+    "description": "Label."
+  },
+  "multiplayer.ui.positionTicker": {
+    "defaultMessage": "You finished {position}!",
+    "description": "Ticker text."
+  },
+  "multiplayer.ui.positionTitle": {
+    "defaultMessage": "Position on the track.",
+    "description": "Label title."
+  },
+  "multiplayer.ui.raceFinishedTicker": {
+    "defaultMessage": "Race finished!",
+    "description": "Ticker text."
+  },
+  "multiplayer.ui.raceStartedTicker": {
+    "defaultMessage": "Race started!",
+    "description": "Ticker text."
+  },
+  "multiplayer.ui.startTicker": {
+    "defaultMessage": "GO!",
+    "description": "Ticker text."
+  },
+  "multiplayer.ui.waitingMorePlayersTicker": {
+    "defaultMessage": "Waiting for more players...",
+    "description": "Ticker text."
+  },
+  "multiplayer.ui.waitingNextRaceTicker": {
+    "defaultMessage": "Zzz... Wait for the next race",
+    "description": "Ticker text."
+  },
+  "multiplayer.ui.winnerPositionTicker": {
+    "defaultMessage": "You won the race!",
+    "description": "Ticker text."
+  },
+  "nav.accountName": {
+    "defaultMessage": "{name}",
+    "description": "Navigation menu item name."
+  },
+  "nav.accountTitle": {
+    "defaultMessage": "Manage your online account.",
+    "description": "Navigation menu item title."
+  },
+  "nav.helpName": {
+    "defaultMessage": "Help",
+    "description": "Navigation menu item name."
+  },
+  "nav.helpTitle": {
+    "defaultMessage": "Get the instructions on how to use this application.",
+    "description": "Navigation menu item title."
+  },
+  "nav.highScoresName": {
+    "defaultMessage": "High Scores",
+    "description": "Navigation menu item name."
+  },
+  "nav.highScoresTitle": {
+    "defaultMessage": "See the high score table featuring the fastest typists.",
+    "description": "Navigation menu item title."
+  },
+  "nav.layoutsName": {
+    "defaultMessage": "Layouts",
+    "description": "Navigation menu item name."
+  },
+  "nav.layoutsTitle": {
+    "defaultMessage": "Compare the efficiency of different keyboard layouts.",
+    "description": "Navigation menu item title."
+  },
+  "nav.multiplayerName": {
+    "defaultMessage": "Multiplayer",
+    "description": "Navigation menu item name."
+  },
+  "nav.multiplayerTitle": {
+    "defaultMessage": "Compete against other players in an online multiplayer game.",
+    "description": "Navigation menu item title."
+  },
+  "nav.practiceName": {
+    "defaultMessage": "Practice",
+    "description": "Navigation menu item name."
+  },
+  "nav.practiceTitle": {
+    "defaultMessage": "Practice typing lessons to improve your typing speed.",
+    "description": "Navigation menu item title."
+  },
+  "nav.privacyPolicyName": {
+    "defaultMessage": "Privacy Policy",
+    "description": "Navigation menu item name."
+  },
+  "nav.privacyPolicyTitle": {
+    "defaultMessage": "Privacy policy.",
+    "description": "Navigation menu item title."
+  },
+  "nav.profileName": {
+    "defaultMessage": "Profile",
+    "description": "Navigation menu item name."
+  },
+  "nav.profileTitle": {
+    "defaultMessage": "See the detailed statistics about your learning progress.",
+    "description": "Navigation menu item title."
+  },
+  "nav.publicProfileName": {
+    "defaultMessage": "Public Profile of {name}",
+    "description": "Navigation menu item name."
+  },
+  "nav.publicProfileTitle": {
+    "defaultMessage": "Observe the public profile of user {name}.",
+    "description": "Navigation menu item title."
+  },
+  "nav.signInName": {
+    "defaultMessage": "Sign-In",
+    "description": "Navigation menu item name."
+  },
+  "nav.signInTitle": {
+    "defaultMessage": "Sign‑in for an online account.",
+    "description": "Navigation menu item title."
+  },
+  "nav.termsOfServiceName": {
+    "defaultMessage": "Terms of Service",
+    "description": "Navigation menu item name."
+  },
+  "nav.termsOfServiceTitle": {
+    "defaultMessage": "Terms of service.",
+    "description": "Navigation menu item title."
+  },
+  "nav.textToolsName": {
+    "defaultMessage": "Text Tools",
+    "description": "Navigation menu item name."
+  },
+  "nav.textToolsTitle": {
+    "defaultMessage": "Count the characters and words in your text.",
+    "description": "Navigation menu item title."
+  },
+  "nav.typingTestName": {
+    "defaultMessage": "Typing Test",
+    "description": "Navigation menu item name."
+  },
+  "nav.typingTestTitle": {
+    "defaultMessage": "Take a typing speed test.",
+    "description": "Navigation menu item title."
+  },
+  "page.help.description": {
+    "defaultMessage": "Learn to type faster.",
+    "description": "Page description."
+  },
+  "page.help.title": {
+    "defaultMessage": "Help",
+    "description": "Page title."
+  },
+  "page.highScores.content": {
+    "defaultMessage": "<h1>High Scores</h1><p>The table of the fastest typists for the last few days, arranged by their scores from best to worst. Typing score is measured from typing speed, text length, the number of different characters in the text, and the number of errors. The formula is designed in such a way to reward for a faster speed, longer text and a larger alphabet, but to punish for the number of errors.</p>",
+    "description": "Page content."
+  },
+  "page.highScores.description": {
+    "defaultMessage": "The table of users ranked by their typing speed.",
+    "description": "Page description."
+  },
+  "page.highScores.title": {
+    "defaultMessage": "High Scores Table",
+    "description": "Page title."
+  },
+  "page.layouts.description": {
+    "defaultMessage": "Keyboard layouts comparison charts.",
+    "description": "Page description."
+  },
+  "page.layouts.title": {
+    "defaultMessage": "Keyboard Layouts.",
+    "description": "Page title."
+  },
+  "page.multiplayer.content": {
+    "defaultMessage": "<h1>Online Multiplayer Typing Game</h1><p>Compete against other players in this online multiplayer typing game. The faster you type, the faster your car goes. Type as fast as you can to win the race!</p>",
+    "description": "Page content."
+  },
+  "page.multiplayer.description": {
+    "defaultMessage": "Online multiplayer type racing game.",
+    "description": "Page description."
+  },
+  "page.multiplayer.title": {
+    "defaultMessage": "Multiplayer",
+    "description": "Page title."
+  },
+  "page.practice.content": {
+    "defaultMessage": "<h1>Typing Lessons</h1><p>Take a typing speed test, learn to type faster and with fewer errors with this free online typing tutor.</p>",
+    "description": "Page content."
+  },
+  "page.practice.description": {
+    "defaultMessage": "Take a typing test, practice typing lessons, learn to type faster.",
+    "description": "Page description."
+  },
+  "page.practice.title": {
+    "defaultMessage": "Typing Practice",
+    "description": "Page title."
+  },
+  "page.profile.content": {
+    "defaultMessage": "<h1>My Profile</h1><p>This is a page with detailed statistics about your learning progress. The more lessons you complete, the more detailed and accurate these statistics will be.</p>",
+    "description": "Page content."
+  },
+  "page.profile.description": {
+    "defaultMessage": "My detailed profile.",
+    "description": "Page description."
+  },
+  "page.profile.title": {
+    "defaultMessage": "My Profile",
+    "description": "Page title."
+  },
+  "page.publicProfile.description": {
+    "defaultMessage": "Public profile of user ''{name}''.",
+    "description": "Page description."
+  },
+  "page.publicProfile.title": {
+    "defaultMessage": "{name} | Public Profile",
+    "description": "Page title."
+  },
+  "page.textTools.content": {
+    "defaultMessage": "<h1>Text Tools</h1><p>Count the characters and words in your text. Find out what the most common words are. Measure the time taken to type read these words.</p>",
+    "description": "Page content."
+  },
+  "page.textTools.description": {
+    "defaultMessage": "Count the characters and words in your text.",
+    "description": "Page description."
+  },
+  "page.textTools.title": {
+    "defaultMessage": "Text Tools",
+    "description": "Page title."
+  },
+  "page.typingTest.content": {
+    "defaultMessage": "<h1>Typing Speed Test</h1><p>Take a typing speed test.</p>",
+    "description": "Page content."
+  },
+  "page.typingTest.description": {
+    "defaultMessage": "Take a typing speed test.",
+    "description": "Page description."
+  },
+  "page.typingTest.title": {
+    "defaultMessage": "Speed Test",
+    "description": "Page title."
+  },
+  "practice.accuracyDeltaValueTitle": {
+    "defaultMessage": "The difference from the average value.",
+    "description": "Value delta title."
+  },
+  "practice.accuracyLabel": {
+    "defaultMessage": "Accuracy",
+    "description": "Label text."
+  },
+  "practice.accuracyValueTitle": {
+    "defaultMessage": "The percentage of characters typed without errors in the last lesson.",
+    "description": "Value title."
+  },
+  "practice.focusText": {
+    "defaultMessage": "Click to activate...",
+    "description": "Freeform text."
+  },
+  "practice.resetLessonButtonTitle": {
+    "defaultMessage": "Reset the current lesson (Ctrl + Left Arrow).",
+    "description": "Button title."
+  },
+  "practice.scoreDeltaValueTitle": {
+    "defaultMessage": "The difference from the average value.",
+    "description": "Value delta title."
+  },
+  "practice.scoreLabel": {
+    "defaultMessage": "Score",
+    "description": "Label text."
+  },
+  "practice.scoreValueTitle": {
+    "defaultMessage": "Score of the last lesson in abstract points. Scores are greater when you type faster and with fewer errors.",
+    "description": "Value title."
+  },
+  "practice.settingButtonName": {
+    "defaultMessage": "Settings...",
+    "description": "Button name."
+  },
+  "practice.settingButtonTitle": {
+    "defaultMessage": "Change lesson settings, configure language, keyboard layout, etc.",
+    "description": "Button title."
+  },
+  "practice.showHelpSlidesButtonTitle": {
+    "defaultMessage": "Show a guided tour with help slides.",
+    "description": "Button title."
+  },
+  "practice.skipLessonButtonTitle": {
+    "defaultMessage": "Skip the current lesson (Ctrl + Right Arrow).",
+    "description": "Button title."
+  },
+  "practice.speedDeltaValueTitle": {
+    "defaultMessage": "The difference from the average value.",
+    "description": "Value delta title."
+  },
+  "practice.speedLabel": {
+    "defaultMessage": "Speed",
+    "description": "Label text."
+  },
+  "practice.speedValueTitle": {
+    "defaultMessage": "Typing speed in the last lesson.",
+    "description": "Value title."
+  },
+  "practice.switchInterfaceButtonTitle": {
+    "defaultMessage": "Switch the current interface layout.",
+    "description": "Button title."
+  },
+  "practice.tourSlide1": {
+    "defaultMessage": "<h1>Learn to Type Faster</h1><p>This web application will help you to learn <em>touch typing</em> which means typing through muscle memory without using your eyesight to find the keys. It can improve your typing speed and accuracy dramatically. The opposite is <em>hunt and peck typing</em>, a method of typing in which you look at the keyboard instead of the screen, and use only the index fingers.</p><p>This is a short tutorial that will explain how this application works.</p> <p>You can use the left and right arrow keys to navigate through these slides.</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide10": {
+    "defaultMessage": "<p>This indicator shows the current subset of letters used to generate the lessons, and your confidence level for every letter in the subset:</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide11": {
+    "defaultMessage": "<p>This indicator can also be used to predict the remaining number of lessons that are needed to fully unlock a letter, like in the example chart below. Visit it regularly to get more insight on how your learning is going, to see if you are making a progress.</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide12": {
+    "defaultMessage": "<p>This indicator shows details about the letter with boosted frequency, which is currently included in every generated word:</p><dl><dt>Average typing speed</dt><dd>Your average typing speed for this individual letter.</dd><dt>Best typing speed</dt><dd>Your best typing speed for this individual letter.</dd><dt>Confidence level</dt><dd>A number in range from zero to one which is computed using your typing speed, and indicates your familiarity with this letter. A letter is considered fully learned when it's confidence level reaches one.</dd></dl>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide2": {
+    "defaultMessage": "<p>Our teaching method is based on these principles:</p><p>No boring repetitive exercises. Unlike most other typing tutors, this application does not force you to repeat the same lessons like ‘<em>jjf jjk jjf jjk</em>’ over and over again. This is very annoying and contributes very little to your overall learning.</p><p>This application uses a sophisticated computer algorithm to generate typing lessons that match your skill level. These lessons consist of random words generated using a subset of the full alphabet of letters. The size of the subset and individual letter frequency is controlled by the algorithm, which provides you with the best learning experience.</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide3": {
+    "defaultMessage": "<p>Initially it starts generating words from a small subset of the most frequent letters in the alphabet.</p><p>When you are typing these words, the application measures the time-to-type metric for every letter in that subset. This time is used to measure your learning progress. The more familiar you become with a letter, the less time it takes for you to type it.</p> <p>Once you familiarize yourself with the entire current subset of letters, the algorithm expands it by adding more and more letters to the subset.</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide4": {
+    "defaultMessage": "<p>When the algorithm includes a new letter to the current subset, the frequency of this letter is artificially boosted so that it will be included in every generated word of a lesson.</p><p>The algorithm can also artificially rearrange letter frequencies, placing an emphasis on the letters with the worst time-to-type metric.</p><p>This means you will always be typing the letters that you are least familiar with.</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide5": {
+    "defaultMessage": "<p>This is the text board. It displays the text to type out. The text changes for each new lesson. The text is generated automatically from the current subset of letters. Most of the words are not real, but are generated using the phonetic rules of your language so they sound natural and should be easy to pronounce. Besides being funny, this gives us the flexibility to use more words than actually exist.</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide6": {
+    "defaultMessage": "<p>This is the virtual keyboard. It helps you memorize key positions. Use it to find the keys and try not to look at your physical keyboard. There are small bumps on the <em>F</em> and <em>J</em> keys of your keyboard. Use these to correctly position your index fingers without having to look at the keys. Once your index fingers are in the right position you will be able to locate the remainder of the keys.</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide7": {
+    "defaultMessage": "<p>This is the typing speed indicator and the difference from the average value. Your goal is to increase this metric, meaning higher values are better.</p><p>Typing speed is measured in either <em>Words per Minute (WPM)</em> or <em>Characters per Minute (CPM)</em>. The definition of a word is standardized to be five characters, so <em>10WPM</em> is equal to <em>50CPM</em>.</p><p>You can switch between the <em>WPM</em> and the <em>CPM</em> display modes on the Settings page.</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide8": {
+    "defaultMessage": "<p>This is the accuracy indicator and the difference from the average value. Your goal is to increase this metric, meaning higher values are better.</p><p>Accuracy is computed as the percentage of characters typed without errors. Many typos in the same position count as one error.</p>",
+    "description": "Slide content."
+  },
+  "practice.tourSlide9": {
+    "defaultMessage": "<p>This is the typing score indicator in abstract points and the difference from the average value.</p><p>The score is calculated from your typing speed, error count, and the current size of the letter set. The formula is designed to reward for typing speed, and punish for error count. You cannot obtain a high score by typing fast while also making many errors.</p><p>Users who score the highest points are recorded in the high score table.</p>",
+    "description": "Slide content."
+  },
+  "profile.calendar.averageSpeedTitle": {
+    "defaultMessage": "Average speed: {value}",
+    "description": "Calendar cell title."
+  },
+  "profile.calendar.topSpeedTitle": {
+    "defaultMessage": "Top speed: {value}",
+    "description": "Calendar cell title."
+  },
+  "profile.calendar.totalLessonsTitle": {
+    "defaultMessage": "Number of lessons: {value}",
+    "description": "Calendar cell title."
+  },
+  "profile.calendar.totalTimeTitle": {
+    "defaultMessage": "Time of lessons: {value}",
+    "description": "Calendar cell title."
+  },
+  "profile.chart.calendarCaption": {
+    "defaultMessage": "Practice Calendar",
+    "description": "Chart caption."
+  },
+  "profile.chart.calendarDescription": {
+    "defaultMessage": "This calendar shows the dates of active learning.",
+    "description": "Chart description."
+  },
+  "profile.chart.compareAverageSpeedText": {
+    "defaultMessage": "Your all time average speed beats {value} of all other people.",
+    "description": "Section paragraph."
+  },
+  "profile.chart.compareTitle": {
+    "defaultMessage": "Compare Yourself:",
+    "description": "Section title."
+  },
+  "profile.chart.compareTopSpeedText": {
+    "defaultMessage": "Your all time top speed beats {value} of all other people.",
+    "description": "Section paragraph."
+  },
+  "profile.chart.histogramCaption": {
+    "defaultMessage": "Relative Typing Speed",
+    "description": "Chart caption."
+  },
+  "profile.chart.histogramDescription": {
+    "defaultMessage": "This is a histogram of the typing speeds of all users, and your position in relation to them.",
+    "description": "Chart description."
+  },
+  "profile.chart.histogramLegend": {
+    "defaultMessage": "See how fast you type relative to other users. The higher the bar is, the more people type at that speed. Your position is marked with the colored vertical lines.",
+    "description": "Chart legend."
+  },
+  "profile.chart.keyFrequencyHeatmapCaption": {
+    "defaultMessage": "Key Frequency Heatmap",
+    "description": "Chart caption."
+  },
+  "profile.chart.keyFrequencyHeatmapDescription": {
+    "defaultMessage": "This chart shows relative key frequencies as a heatmap.",
+    "description": "Chart description."
+  },
+  "profile.chart.keyFrequencyHistogramCaption": {
+    "defaultMessage": "Key Frequency Histogram",
+    "description": "Chart caption."
+  },
+  "profile.chart.keyFrequencyHistogramDescription": {
+    "defaultMessage": "This chart shows relative key frequencies.",
+    "description": "Chart description."
+  },
+  "profile.chart.keyFrequencyHistogramLegend": {
+    "defaultMessage": "Bar color: {label1} – hit count, {label2} – miss count, {label3} – miss/hit ratio (relative miss frequency).",
+    "description": "Chart legend."
+  },
+  "profile.chart.keySpeedCaption": {
+    "defaultMessage": "Key Typing Speed",
+    "description": "Chart caption."
+  },
+  "profile.chart.keySpeedDescription": {
+    "defaultMessage": "This chart shows the typing speed change for each individual key.",
+    "description": "Chart description."
+  },
+  "profile.chart.keySpeedHistogramCaption": {
+    "defaultMessage": "Key Typing Speed Histogram",
+    "description": "Chart caption."
+  },
+  "profile.chart.keySpeedHistogramDescription": {
+    "defaultMessage": "This chart shows the average typing speed for each individual key.",
+    "description": "Chart description."
+  },
+  "profile.chart.keySpeedLegend": {
+    "defaultMessage": "Horizontal axis: lesson number. Vertical axis: {label1} – typing speed for the currently selected key.",
+    "description": "Chart legend."
+  },
+  "profile.chart.progressOverviewCaption": {
+    "defaultMessage": "Learning Progress Overview",
+    "description": "Chart caption."
+  },
+  "profile.chart.progressOverviewDescription": {
+    "defaultMessage": "This chart shows the learning progress overview for all keys.",
+    "description": "Chart description."
+  },
+  "profile.chart.progressOverviewLegend": {
+    "defaultMessage": "Horizontal axis: lesson number. Vertical axis: typing speed for each individual key, {label1} – slow, {label2} – fast.",
+    "description": "Chart legend."
+  },
+  "profile.chart.speedCaption": {
+    "defaultMessage": "Typing Speed",
+    "description": "Chart caption."
+  },
+  "profile.chart.speedDescription": {
+    "defaultMessage": "This chart shows how overall typing speed changes over time.",
+    "description": "Chart description."
+  },
+  "profile.chart.speedLegend": {
+    "defaultMessage": "Horizontal axis: lesson number. Vertical axis: {label1} – typing speed, {label2} – typing accuracy, {label3} – number of keys in the lessons.",
+    "description": "Chart legend."
+  },
+  "profile.control.downloadDataLabel": {
+    "defaultMessage": "Download Data",
+    "description": "Button label."
+  },
+  "profile.control.downloadDataTitle": {
+    "defaultMessage": "Download all your typing data in JSON format.",
+    "description": "Button title."
+  },
+  "profile.control.groupSelectorLabel": {
+    "defaultMessage": "Show statistics for:",
+    "description": "List label."
+  },
+  "profile.control.resetDataConfirmation": {
+    "defaultMessage": "Are you sure you want to delete all data and reset your profile? This operation is permanent and cannot be undone!",
+    "description": "Confirmation text."
+  },
+  "profile.control.resetDataLabel": {
+    "defaultMessage": "Reset Statistics",
+    "description": "Button label."
+  },
+  "profile.control.resetDataTitle": {
+    "defaultMessage": "Permanently delete all of your typing data and reset statistics.",
+    "description": "Button title."
+  },
+  "profile.control.shareButtonLabel": {
+    "defaultMessage": "Copy",
+    "description": "Button label."
+  },
+  "profile.control.shareButtonTitle": {
+    "defaultMessage": "Copy profile link to the clipboard.",
+    "description": "Button title."
+  },
+  "profile.control.shareText": {
+    "defaultMessage": "Share your profile:",
+    "description": "Share profile text."
+  },
+  "profile.control.visitButtonLabel": {
+    "defaultMessage": "Visit",
+    "description": "Button label."
+  },
+  "profile.control.visitButtonTitle": {
+    "defaultMessage": "Visit your public profile page.",
+    "description": "Button title."
+  },
+  "profile.emptyChartCaption": {
+    "defaultMessage": "Not enough data",
+    "description": "Empty chart message."
+  },
+  "profile.emptyChartDescription": {
+    "defaultMessage": "Complete a few more lessons to get more data points.",
+    "description": "Empty chart message."
+  },
+  "profile.overview.averageSpeedLabel": {
+    "defaultMessage": "Average Speed ({speedUnit})",
+    "description": "Gauge label."
+  },
+  "profile.overview.averageSpeedTitle": {
+    "defaultMessage": "Average typing speed ({speedUnitName}).",
+    "description": "Gauge title."
+  },
+  "profile.overview.averageSpeedTodayLabel": {
+    "defaultMessage": "Average Speed ({speedUnit})",
+    "description": "Gauge label."
+  },
+  "profile.overview.averageSpeedTodayTitle": {
+    "defaultMessage": "Average typing speed today ({speedUnitName}).",
+    "description": "Gauge title."
+  },
+  "profile.overview.statisticsAllTime": {
+    "defaultMessage": "All Time Statistics:",
+    "description": "Header."
+  },
+  "profile.overview.statisticsToday": {
+    "defaultMessage": "Statistics for Today:",
+    "description": "Section header."
+  },
+  "profile.overview.topSpeedLabel": {
+    "defaultMessage": "Top Speed ({speedUnit})",
+    "description": "Gauge label."
+  },
+  "profile.overview.topSpeedTitle": {
+    "defaultMessage": "Top typing speed ({speedUnitName}).",
+    "description": "Gauge title."
+  },
+  "profile.overview.topSpeedTodayLabel": {
+    "defaultMessage": "Top Speed ({speedUnit})",
+    "description": "Gauge label."
+  },
+  "profile.overview.topSpeedTodayTitle": {
+    "defaultMessage": "Top typing speed today ({speedUnitName}).",
+    "description": "Gauge title."
+  },
+  "profile.overview.totalLessonsLabel": {
+    "defaultMessage": "Total Lessons",
+    "description": "Gauge label."
+  },
+  "profile.overview.totalLessonsTitle": {
+    "defaultMessage": "Number of lessons completed.",
+    "description": "Gauge title."
+  },
+  "profile.overview.totalLessonsTodayLabel": {
+    "defaultMessage": "Total Lessons",
+    "description": "Gauge label."
+  },
+  "profile.overview.totalLessonsTodayTitle": {
+    "defaultMessage": "Number of lessons completed today.",
+    "description": "Gauge title."
+  },
+  "profile.overview.totalTimeLabel": {
+    "defaultMessage": "Total Time",
+    "description": "Gauge label."
+  },
+  "profile.overview.totalTimeTitle": {
+    "defaultMessage": "Time spent on exercises.",
+    "description": "Gauge title."
+  },
+  "profile.overview.totalTimeTodayLabel": {
+    "defaultMessage": "Total Time",
+    "description": "Gauge label."
+  },
+  "profile.overview.totalTimeTodayTitle": {
+    "defaultMessage": "Time spent on exercises today.",
+    "description": "Gauge title."
+  },
+  "profile.smoothnessLabel": {
+    "defaultMessage": "Smoothness:",
+    "description": "Input field label."
+  },
+  "profile.smoothnessTitle": {
+    "defaultMessage": "Eliminate noise to see the long-term trend.",
+    "description": "Input field title."
+  },
+  "settings.benfordsLawDescription": {
+    "defaultMessage": "<a>Benford's law</a> is an observation that in many real-life numerical data sets, the leading digit is likely to be small.",
+    "description": "Freeform text."
+  },
+  "settings.benfordsLawLabel": {
+    "defaultMessage": "Benford's law",
+    "description": "Checkbox label."
+  },
+  "settings.benfordsLawTitle": {
+    "defaultMessage": "Generate numbers following the Benford's law.",
+    "description": "Checkbox title."
+  },
+  "settings.cleanupTextCaption": {
+    "defaultMessage": "Clean-up text:",
+    "description": "Fieldset caption."
+  },
+  "settings.cursorMovementLabel": {
+    "defaultMessage": "Cursor movement:",
+    "description": "Checkbox label."
+  },
+  "settings.cursorShapeLabel": {
+    "defaultMessage": "Cursor shape:",
+    "description": "Checkbox label."
+  },
+  "settings.customTextExamplesLabel": {
+    "defaultMessage": "Examples:",
+    "description": "Text label."
+  },
+  "settings.customTextInputPlaceholder": {
+    "defaultMessage": "Custom text...",
+    "description": "Input field placeholder."
+  },
+  "settings.dailyGoalDescription": {
+    "defaultMessage": "Set the time you want to spend on the exercises daily.",
+    "description": "Input field description."
+  },
+  "settings.dailyGoalLabel": {
+    "defaultMessage": "Daily goal:",
+    "description": "Input field label."
+  },
+  "settings.dailyGoalTitle": {
+    "defaultMessage": "Daily goal to spend on the exercises in minutes.",
+    "description": "Input field title."
+  },
+  "settings.doneButtonLabel": {
+    "defaultMessage": "Done",
+    "description": "Button label."
+  },
+  "settings.doneButtonTitle": {
+    "defaultMessage": "Save changes and start practicing.",
+    "description": "Button title."
+  },
+  "settings.emulateLayoutLabel": {
+    "defaultMessage": "Emulate layout",
+    "description": "Checkbox label."
+  },
+  "settings.emulateLayoutTitle": {
+    "defaultMessage": "Emulate the selected layout when the standard layout is set in the system.",
+    "description": "Checkbox title."
+  },
+  "settings.enableCapitalLettersLabel": {
+    "defaultMessage": "Enable capital letters",
+    "description": "Checkbox label."
+  },
+  "settings.enableCapitalLettersTitle": {
+    "defaultMessage": "Generate text with capital letters.",
+    "description": "Checkbox title."
+  },
+  "settings.enablePunctuationLabel": {
+    "defaultMessage": "Enable punctuation characters.",
+    "description": "Checkbox label."
+  },
+  "settings.enablePunctuationTitle": {
+    "defaultMessage": "Add punctuation characters to the generated text.",
+    "description": "Checkbox title."
+  },
+  "settings.enableSoundsLabel": {
+    "defaultMessage": "Enable sounds",
+    "description": "Checkbox label."
+  },
+  "settings.enableSoundsTitle": {
+    "defaultMessage": "Make extra noise when typing and on errors.",
+    "description": "Checkbox description."
+  },
+  "settings.extendKeySetLabel": {
+    "defaultMessage": "Add letters to words:",
+    "description": "Input field label."
+  },
+  "settings.extendKeySetTitle": {
+    "defaultMessage": "Add more letters to every generated word.",
+    "description": "Input field title."
+  },
+  "settings.extendLessonLengthLabel": {
+    "defaultMessage": "Add words to lessons:",
+    "description": "Input field label."
+  },
+  "settings.extendLessonLengthTitle": {
+    "defaultMessage": "Add more words to every generated lesson.",
+    "description": "Input field title."
+  },
+  "settings.forgiveErrorsDescription": {
+    "defaultMessage": "Enabling this option makes the text input field forgive some kinds of errors by automatically fixing them. These are errors such as typing a wrong character or skipping a character.",
+    "description": "Checkbox description."
+  },
+  "settings.forgiveErrorsLabel": {
+    "defaultMessage": "Forgive errors.",
+    "description": "Checkbox label."
+  },
+  "settings.interfaceOptionsLegend": {
+    "defaultMessage": "Interface Options",
+    "description": "Fieldset legend."
+  },
+  "settings.keyboardLayoutTabLabel": {
+    "defaultMessage": "Keyboard Layout",
+    "description": "Tab label."
+  },
+  "settings.lessonOptionsLegend": {
+    "defaultMessage": "Lesson Options",
+    "description": "Fieldset legend."
+  },
+  "settings.lessonsTabLabel": {
+    "defaultMessage": "Lessons",
+    "description": "Tab label."
+  },
+  "settings.miscellaneousTabLabel": {
+    "defaultMessage": "Miscellaneous",
+    "description": "Tab label."
+  },
+  "settings.optionsLegend": {
+    "defaultMessage": "Options",
+    "description": "Fieldset legend."
+  },
+  "settings.previewLabel": {
+    "defaultMessage": "Lesson Preview",
+    "description": "Fieldset label."
+  },
+  "settings.previewLegend": {
+    "defaultMessage": "Preview",
+    "description": "Fieldset legend."
+  },
+  "settings.removePunctuationLabel": {
+    "defaultMessage": "Remove punctuation",
+    "description": "Checkbox label."
+  },
+  "settings.removePunctuationTitle": {
+    "defaultMessage": "Remove punctuation from the text to make it simpler to type.",
+    "description": "Checkbox title."
+  },
+  "settings.selectLanguageLabel": {
+    "defaultMessage": "Language:",
+    "description": "Dropdown label."
+  },
+  "settings.selectLanguageTitle": {
+    "defaultMessage": "Select your spoken language.",
+    "description": "Dropdown title."
+  },
+  "settings.selectLayoutLabel": {
+    "defaultMessage": "Layout:",
+    "description": "Dropdown label."
+  },
+  "settings.selectLayoutTitle": {
+    "defaultMessage": "Select the keyboard layout you wish to practice with. There may be many layouts available for each language.",
+    "description": "Dropdown title."
+  },
+  "settings.stopCursorOnErrorDescription": {
+    "defaultMessage": "If enabled, the text cursor stops advancing until the right key is pressed at the current position. If disabled, all errors will be accumulated in the text input field and must be cleared with the delete key.",
+    "description": "Checkbox description."
+  },
+  "settings.stopCursorOnErrorLabel": {
+    "defaultMessage": "Stop the cursor when an error occurs.",
+    "description": "Checkbox label."
+  },
+  "settings.textAppearanceLegend": {
+    "defaultMessage": "Text Appearance",
+    "description": "Fieldset legend."
+  },
+  "settings.transformToLowercaseLabel": {
+    "defaultMessage": "Transform to lowercase",
+    "description": "Checkbox label."
+  },
+  "settings.transformToLowercaseTitle": {
+    "defaultMessage": "Transform all text to lower case to make it simpler to type.",
+    "description": "Checkbox title."
+  },
+  "settings.typingOptionsLegend": {
+    "defaultMessage": "Typing Options",
+    "description": "Fieldset legend."
+  },
+  "settings.typingSpeedUnitCaption": {
+    "defaultMessage": "Measure typing speed in:",
+    "description": "Radio button group caption."
+  },
+  "settings.typingSpeedUnitDescription": {
+    "defaultMessage": "For the purpose of typing measurement, each word is standardized to be five characters or keystrokes in English, including spaces and punctuation.",
+    "description": "Radio button group description."
+  },
+  "settings.typingTabLabel": {
+    "defaultMessage": "Typing",
+    "description": "Tab label."
+  },
+  "settings.whitespaceLabel": {
+    "defaultMessage": "Whitespace:",
+    "description": "Checkbox label."
+  },
+  "speedUnit.cpm.description": {
+    "defaultMessage": "Measure typing speed in characters per minute.",
+    "description": "Widget title."
+  },
+  "speedUnit.cpm.name": {
+    "defaultMessage": "Characters per minute",
+    "description": "Widget label."
+  },
+  "speedUnit.cps.description": {
+    "defaultMessage": "Measure typing speed in characters per second.",
+    "description": "Widget title."
+  },
+  "speedUnit.cps.name": {
+    "defaultMessage": "Characters per second",
+    "description": "Widget label."
+  },
+  "speedUnit.wpm.description": {
+    "defaultMessage": "Measure typing speed in words per minute.",
+    "description": "Widget title."
+  },
+  "speedUnit.wpm.name": {
+    "defaultMessage": "Words per minute",
+    "description": "Widget label."
+  },
+  "textStats.allWordCount": {
+    "defaultMessage": "All words",
+    "description": "Text label."
+  },
+  "textStats.averageWordLength": {
+    "defaultMessage": "Average word length",
+    "description": "Text label."
+  },
+  "textStats.charsExcludingWhitespace": {
+    "defaultMessage": "Characters excluding whitespace",
+    "description": "Text label."
+  },
+  "textStats.charsIncludingWhitespace": {
+    "defaultMessage": "Characters including whitespace",
+    "description": "Text label."
+  },
+  "textStats.mostCommonWords": {
+    "defaultMessage": "Top {count} most common words",
+    "description": "Text fragment."
+  },
+  "textStats.timeToRead": {
+    "defaultMessage": "At the average reading speed of {speed} WPM, it would take {time} to read this text.",
+    "description": "Text fragment."
+  },
+  "textStats.timeToType": {
+    "defaultMessage": "At the average typing speed of {speed} WPM, it would take {time} to type this text.",
+    "description": "Text fragment."
+  },
+  "textStats.uniqueWordCount": {
+    "defaultMessage": "Unique words",
+    "description": "Text label."
+  },
+  "textTools.emptyTextMessage": {
+    "defaultMessage": "Please provide some text in order to calculate the associated statistics.",
+    "description": "Freeform text."
+  },
+  "textTools.exampleText": {
+    "defaultMessage": "(Example text, click here to clear it.)",
+    "description": "Text fragment."
+  },
+  "textTools.textInputPlaceholder": {
+    "defaultMessage": "Paste your text here",
+    "description": "Input field placeholder."
+  },
+  "textType.digits": {
+    "defaultMessage": "Digits",
+    "description": "Label."
+  },
+  "textType.letters": {
+    "defaultMessage": "Letters",
+    "description": "Label."
+  },
+  "theme.enterFullscreenTitle": {
+    "defaultMessage": "Enter full-screen mode.",
+    "description": "Theme switching button."
+  },
+  "theme.exitFullscreenTitle": {
+    "defaultMessage": "Exit full-screen mode.",
+    "description": "Theme switching button."
+  },
+  "theme.fullscreenNotSupportedTitle": {
+    "defaultMessage": "Full-screen mode not supported.",
+    "description": "Theme switching button."
+  },
+  "theme.switchThemeTitle": {
+    "defaultMessage": "Switch to theme {name}.",
+    "description": "Theme switching button."
+  },
+  "tour.close": {
+    "defaultMessage": "Close",
+    "description": "Button name"
+  },
+  "tour.next": {
+    "defaultMessage": "Next",
+    "description": "Button name"
+  },
+  "tour.previous": {
+    "defaultMessage": "Previous",
+    "description": "Button name"
+  }
+}

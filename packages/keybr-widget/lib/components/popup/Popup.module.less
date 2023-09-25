@@ -1,0 +1,50 @@
+.popup {
+  position: fixed;
+  color: var(--Popup__color);
+  background-color: var(--Popup__background-color);
+  box-shadow: 0 0.5rem 3rem var(--Popup__shadow-color);
+}
+
+.popupBefore() {
+  content: " ";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: solid transparent;
+}
+
+.n::before,
+.s::before {
+  .popupBefore();
+  left: 50%;
+  margin-left: -10px;
+  border-width: 10px;
+}
+
+.e::before,
+.w::before {
+  .popupBefore();
+  top: 50%;
+  margin-top: -10px;
+  border-width: 10px;
+}
+
+.n::before {
+  top: 100%;
+  border-top-color: var(--Popup__background-color);
+}
+
+.s::before {
+  bottom: 100%;
+  border-bottom-color: var(--Popup__background-color);
+}
+
+.e::before {
+  right: 100%;
+  border-right-color: var(--Popup__background-color);
+}
+
+.w::before {
+  left: 100%;
+  border-left-color: var(--Popup__background-color);
+}

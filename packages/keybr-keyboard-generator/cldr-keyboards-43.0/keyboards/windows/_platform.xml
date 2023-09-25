@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE platform SYSTEM "../dtd/ldmlPlatform.dtd">
+<platform id="windows">
+	<hardwareMap>
+		<map keycode="2" iso="E01"/>
+		<map keycode="3" iso="E02"/>
+		<map keycode="4" iso="E03"/>
+		<map keycode="5" iso="E04"/>
+		<map keycode="6" iso="E05"/>
+		<map keycode="7" iso="E06"/>
+		<map keycode="8" iso="E07"/>
+		<map keycode="9" iso="E08"/>
+		<map keycode="10" iso="E09"/>
+		<map keycode="11" iso="E10"/>
+		<map keycode="12" iso="E11"/>
+		<map keycode="13" iso="E12"/>
+		<map keycode="16" iso="D01"/>
+		<map keycode="17" iso="D02"/>
+		<map keycode="18" iso="D03"/>
+		<map keycode="19" iso="D04"/>
+		<map keycode="20" iso="D05"/>
+		<map keycode="21" iso="D06"/>
+		<map keycode="22" iso="D07"/>
+		<map keycode="23" iso="D08"/>
+		<map keycode="24" iso="D09"/>
+		<map keycode="25" iso="D10"/>
+		<map keycode="26" iso="D11"/>
+		<map keycode="27" iso="D12"/>
+		<map keycode="30" iso="C01"/>
+		<map keycode="31" iso="C02"/>
+		<map keycode="32" iso="C03"/>
+		<map keycode="33" iso="C04"/>
+		<map keycode="34" iso="C05"/>
+		<map keycode="35" iso="C06"/>
+		<map keycode="36" iso="C07"/>
+		<map keycode="37" iso="C08"/>
+		<map keycode="38" iso="C09"/>
+		<map keycode="39" iso="C10"/>
+		<map keycode="40" iso="C11"/>
+		<map keycode="41" iso="E00"/>
+		<map keycode="43" iso="C12"/>
+		<map keycode="44" iso="B01"/>
+		<map keycode="45" iso="B02"/>
+		<map keycode="46" iso="B03"/>
+		<map keycode="47" iso="B04"/>
+		<map keycode="48" iso="B05"/>
+		<map keycode="49" iso="B06"/>
+		<map keycode="50" iso="B07"/>
+		<map keycode="51" iso="B08"/>
+		<map keycode="52" iso="B09"/>
+		<map keycode="53" iso="B10"/>
+		<map keycode="57" iso="A03"/>
+		<map keycode="86" iso="B00"/>
+		<map keycode="115" iso="B11"/>
+	</hardwareMap>
+</platform>

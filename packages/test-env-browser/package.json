@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "name": "@keybr/test-env-browser",
+  "version": "0.0.0",
+  "main": "lib/index.ts",
+  "dependencies": {
+    "fake-indexeddb": "^4.0.2",
+    "jsdom": "^22.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "clean": "rm -fr .types",
+    "compile": "tsc"
+  }
+}

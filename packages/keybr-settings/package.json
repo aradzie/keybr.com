@@ -1,0 +1,31 @@
+{
+  "private": true,
+  "name": "@keybr/settings",
+  "version": "0.0.0",
+  "main": "lib/index.ts",
+  "types": ".types/index.d.ts",
+  "dependencies": {
+    "@keybr/lang": "*",
+    "@keybr/layout": "*",
+    "@keybr/result": "*",
+    "@keybr/textinput-settings": "*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "clean": "rm -fr .types",
+    "compile": "tsc",
+    "test": "ava"
+  },
+  "ava": {
+    "extensions": [
+      "ts",
+      "tsx"
+    ],
+    "files": [
+      "lib/**/*.test.*"
+    ],
+    "require": [
+      "@keybr/tsl"
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "private": true,
+  "name": "@keybr/database",
+  "version": "0.0.0",
+  "main": "lib/index.ts",
+  "types": ".types/index.d.ts",
+  "dependencies": {
+    "@keybr/config": "*",
+    "@keybr/names": "*",
+    "@keybr/oauth": "*",
+    "@keybr/pages-shared": "*",
+    "@keybr/publicid": "*",
+    "@keybr/rand": "*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "clean": "rm -fr .types",
+    "compile": "tsc",
+    "test": "ava"
+  },
+  "ava": {
+    "extensions": [
+      "ts",
+      "tsx"
+    ],
+    "files": [
+      "lib/**/*.test.*"
+    ],
+    "require": [
+      "@keybr/tsl",
+      "@keybr/test-env-server",
+      "reflect-metadata"
+    ],
+    "serial": true
+  }
+}

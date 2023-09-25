@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "name": "@keybr/test-env-bundler",
+  "version": "0.0.0",
+  "main": "lib/index.ts",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "clean": "rm -fr .types",
+    "compile": "tsc"
+  }
+}

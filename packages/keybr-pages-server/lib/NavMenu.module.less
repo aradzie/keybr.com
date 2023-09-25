@@ -1,0 +1,74 @@
+.navMenu {
+  position: sticky;
+  top: 0;
+  max-width: 12rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navMenuItem {
+  border-bottom: 1px solid var(--separator-color);
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  height: 3rem;
+  margin: 0;
+  padding: 0 1rem;
+  color: var(--NavLink__color);
+  background-color: var(--NavLink__background-color);
+  line-height: 3rem;
+
+  &:hover {
+    color: var(--NavLink--current__color);
+    background-color: var(--NavLink--current__background-color);
+  }
+
+  &.isCurrent {
+    color: var(--NavLink--current__color);
+    background-color: var(--NavLink--current__background-color);
+  }
+}
+
+.navLinkIcon {
+  display: inline-block;
+}
+
+.navLinkLabel {
+  display: inline-block;
+  overflow: hidden;
+  max-width: 100%;
+  margin-left: 0.5rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.accountLink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0;
+  color: var(--NavLink__color);
+  background-color: var(--NavLink__background-color);
+
+  &:hover {
+    color: var(--NavLink--current__color);
+    background-color: var(--NavLink--current__background-color);
+  }
+
+  &.isCurrent {
+    color: var(--NavLink--current__color);
+    background-color: var(--NavLink--current__background-color);
+  }
+}
+
+.accountLinkName {
+  overflow: hidden;
+  max-width: 10rem;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: normal;
+}

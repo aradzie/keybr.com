@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyboard SYSTEM "../dtd/ldmlKeyboard.dtd">
+<keyboard locale="sat-t-k0-windows">
+	<version platform="10" number="$Revision$"/>
+	<names>
+		<name value="Ol Chiki"/>
+	</names>
+	<settings fallback="omit"/>
+	<keyMap>
+		<map iso="E01" to="᱑"/> <!-- 1 -->
+		<map iso="E02" to="᱒"/> <!-- 2 -->
+		<map iso="E03" to="᱓"/> <!-- 3 -->
+		<map iso="E04" to="᱔"/> <!-- 4 -->
+		<map iso="E05" to="᱕"/> <!-- 5 -->
+		<map iso="E06" to="᱖"/> <!-- 6 -->
+		<map iso="E07" to="᱗"/> <!-- 7 -->
+		<map iso="E08" to="᱘"/> <!-- 8 -->
+		<map iso="E09" to="᱙"/> <!-- 9 -->
+		<map iso="E10" to="᱐"/> <!-- 0 -->
+		<map iso="D03" to="ᱟ"/> <!-- E -->
+		<map iso="D06" to="ᱵ"/> <!-- Y -->
+		<map iso="D07" to="ᱦ"/> <!-- U -->
+		<map iso="D08" to="ᱜ"/> <!-- I -->
+		<map iso="D09" to="ᱫ"/> <!-- O -->
+		<map iso="D10" to="ᱡ"/> <!-- P -->
+		<map iso="D11" to="ᱰ"/> <!-- [ -->
+		<map iso="D12" to="ᱹ"/> <!-- ] -->
+		<map iso="C01" to="ᱳ"/> <!-- A -->
+		<map iso="C02" to="ᱮ"/> <!-- S -->
+		<map iso="C03" to="ᱚ"/> <!-- D -->
+		<map iso="C04" to="ᱤ"/> <!-- F -->
+		<map iso="C05" to="ᱩ"/> <!-- G -->
+		<map iso="C06" to="ᱯ"/> <!-- H -->
+		<map iso="C07" to="ᱨ"/> <!-- J -->
+		<map iso="C08" to="ᱠ"/> <!-- K -->
+		<map iso="C09" to="ᱛ"/> <!-- L -->
+		<map iso="C10" to="ᱪ"/> <!-- ; -->
+		<map iso="C11" to="ᱴ"/> <!-- ' -->
+		<map iso="B01" to="ᱷ"/> <!-- Z -->
+		<map iso="B02" to="ᱸ"/> <!-- X -->
+		<map iso="B03" to="ᱢ"/> <!-- C -->
+		<map iso="B04" to="ᱱ"/> <!-- V -->
+		<map iso="B05" to="ᱣ"/> <!-- B -->
+		<map iso="B06" to="ᱞ"/> <!-- N -->
+		<map iso="B07" to="ᱥ"/> <!-- M -->
+		<map iso="B08" to=","/>
+		<map iso="B09" to="."/>
+		<map iso="B10" to="ᱭ"/> <!-- / -->
+		<map iso="A03" to=" "/> <!-- space -->
+	</keyMap>
+	<keyMap modifiers="shift+caps?">
+		<map iso="E00" to="ᱻ"/> <!-- ` -->
+		<map iso="E11" to="ᱼ"/> <!-- - -->
+		<map iso="D07" to="ᱝ"/> <!-- U  base=ᱦ -->
+		<map iso="D11" to="ᱲ"/> <!-- [  base=ᱰ -->
+		<map iso="D12" to="ᱧ"/> <!-- ]  base=ᱹ -->
+		<map iso="C10" to="ᱺ"/> <!-- ;  base=ᱪ -->
+		<map iso="B01" to="ᱽ"/> <!-- Z  base=ᱷ -->
+		<map iso="B03" to="ᱬ"/> <!-- C  base=ᱢ -->
+		<map iso="B05" to="ᱶ"/> <!-- B  base=ᱣ -->
+		<map iso="B08" to="᱿"/> <!-- , -->
+		<map iso="B09" to="᱾"/> <!-- . -->
+		<map iso="A03" to=" "/> <!-- space -->
+	</keyMap>
+	<keyMap modifiers="ctrl+shift+caps?">
+		<map iso="E04" to="₹"/> <!-- 4  base=᱔ -->
+	</keyMap>
+</keyboard>

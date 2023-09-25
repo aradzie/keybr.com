@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyboard SYSTEM "../dtd/ldmlKeyboard.dtd">
+<keyboard locale="chr-t-k0-windows-phonetic">
+	<version platform="10" number="$Revision$"/>
+	<names>
+		<name value="Cherokee Phonetic"/>
+	</names>
+	<settings fallback="omit" transformPartial="hide"/>
+	<keyMap>
+		<map iso="E00" to="`"/>
+		<map iso="E01" to="1"/>
+		<map iso="E02" to="2"/>
+		<map iso="E03" to="3"/>
+		<map iso="E04" to="4"/>
+		<map iso="E05" to="5"/>
+		<map iso="E06" to="6"/>
+		<map iso="E07" to="7"/>
+		<map iso="E08" to="8"/>
+		<map iso="E09" to="9"/>
+		<map iso="E10" to="0"/>
+		<map iso="E11" to="-"/>
+		<map iso="E12" to="="/>
+		<map iso="D01" to="q"/>
+		<map iso="D02" to="w"/>
+		<map iso="D03" to="Ꭱ"/> <!-- E -->
+		<map iso="D05" to="t"/>
+		<map iso="D06" to="y"/>
+		<map iso="D07" to="Ꭴ"/> <!-- U -->
+		<map iso="D08" to="Ꭲ"/> <!-- I -->
+		<map iso="D09" to="Ꭳ"/> <!-- O -->
+		<map iso="D11" to="["/>
+		<map iso="D12" to="]"/>
+		<map iso="C01" to="Ꭰ"/> <!-- A -->
+		<map iso="C02" to="s"/>
+		<map iso="C03" to="d"/>
+		<map iso="C05" to="g"/>
+		<map iso="C06" to="h"/>
+		<map iso="C07" to="j"/>
+		<map iso="C08" to="k"/>
+		<map iso="C09" to="l"/>
+		<map iso="C10" to=";"/>
+		<map iso="C11" to="&apos;"/>
+		<map iso="C12" to="\"/> <!-- (key to right of ') -->
+		<map iso="B00" to="\"/> <!-- (key to left of Z) -->
+		<map iso="B02" to="x"/>
+		<map iso="B03" to="c"/>
+		<map iso="B04" to="Ꭵ"/> <!-- V -->
+		<map iso="B06" to="n"/>
+		<map iso="B07" to="m"/>
+		<map iso="B08" to=","/>
+		<map iso="B09" to="."/>
+		<map iso="B10" to="/"/>
+		<map iso="A03" to=" "/> <!-- space -->
+	</keyMap>
+	<keyMap modifiers="shift+caps?">
+		<map iso="E00" to="~"/> <!-- ` -->
+		<map iso="E01" to="!"/> <!-- 1 -->
+		<map iso="E02" to="@"/> <!-- 2 -->
+		<map iso="E03" to="#"/> <!-- 3 -->
+		<map iso="E04" to="$"/> <!-- 4 -->
+		<map iso="E05" to="%"/> <!-- 5 -->
+		<map iso="E06" to="^"/> <!-- 6 -->
+		<map iso="E07" to="&amp;"/> <!-- 7 -->
+		<map iso="E08" to="*"/> <!-- 8 -->
+		<map iso="E09" to="("/> <!-- 9 -->
+		<map iso="E10" to=")"/> <!-- 0 -->
+		<map iso="E11" to="_"/> <!-- - -->
+		<map iso="E12" to="+"/> <!-- = -->
+		<map iso="D01" to="Q"/>
+		<map iso="D02" to="W"/>
+		<map iso="D03" to="Ꭱ"/> <!-- E -->
+		<map iso="D05" to="T"/>
+		<map iso="D06" to="Y"/>
+		<map iso="D07" to="Ꭴ"/> <!-- U -->
+		<map iso="D08" to="Ꭲ"/> <!-- I -->
+		<map iso="D09" to="Ꭳ"/> <!-- O -->
+		<map iso="D11" to="{"/> <!-- [ -->
+		<map iso="D12" to="}"/> <!-- ] -->
+		<map iso="C01" to="Ꭰ"/> <!-- A -->
+		<map iso="C02" to="S"/>
+		<map iso="C03" to="D"/>
+		<map iso="C05" to="G"/>
+		<map iso="C06" to="H"/>
+		<map iso="C07" to="J"/>
+		<map iso="C08" to="K"/>
+		<map iso="C09" to="L"/>
+		<map iso="C10" to=":"/> <!-- ; -->
+		<map iso="C11" to="\u{22}"/> <!-- '  to= "  -->
+		<map iso="C12" to="|"/> <!-- (key to right of ')  base=\ -->
+		<map iso="B00" to="|"/> <!-- (key to left of Z)  base=\ -->
+		<map iso="B02" to="X"/>
+		<map iso="B03" to="C"/>
+		<map iso="B04" to="Ꭵ"/> <!-- V -->
+		<map iso="B06" to="N"/>
+		<map iso="B07" to="M"/>
+		<map iso="B08" to="&lt;"/> <!-- , -->
+		<map iso="B09" to="&gt;"/> <!-- . -->
+		<map iso="B10" to="?"/> <!-- / -->
+		<map iso="A03" to=" "/> <!-- space -->
+	</keyMap>
+	<keyMap modifiers="ctrl+caps?">
+		<map iso="D11" to="\u{1B}"/> <!-- [ -->
+		<map iso="D12" to="\u{1D}"/> <!-- ] -->
+		<map iso="C12" to="\u{1C}"/> <!-- (key to right of ')  base=\ -->
+		<map iso="B00" to="\u{1C}"/> <!-- (key to left of Z)  base=\ -->
+	</keyMap>
+	<transforms type="simple">
+		<transform from="c " to="Ꭷ"/>
+		<transform from="C " to="Ꭷ"/>
+		<transform from="cᎠ" to="Ꭷ"/>
+		<transform from="CᎠ" to="Ꭷ"/>
+		<transform from="d " to="Ꮣ"/>
+		<transform from="D " to="Ꮣ"/>
+		<transform from="d," to=","/>
+		<transform from="D," to=","/>
+		<transform from="d;" to=";"/>
+		<transform from="D;" to=";"/>
+		<transform from="d:" to=":"/>
+		<transform from="D:" to=":"/>
+		<transform from="d[" to="["/>
+		<transform from="D[" to="["/>
+		<transform from="d{" to="{"/>
+		<transform from="D{" to="{"/>
+		<transform from="d&lt;" to="&lt;"/>
+		<transform from="D&lt;" to="&lt;"/>
+		<transform from="d|" to="|"/>
+		<transform from="D|" to="|"/>
+		<transform from="dᎠ" to="Ꮣ"/>
+		<transform from="DᎠ" to="Ꮣ"/>
+		<transform from="dᎡ" to="Ꮥ"/>
+		<transform from="DᎡ" to="Ꮥ"/>
+		<transform from="dᎢ" to="Ꮧ"/>
+		<transform from="DᎢ" to="Ꮧ"/>
+		<transform from="dᎣ" to="Ꮩ"/>
+		<transform from="DᎣ" to="Ꮩ"/>
+		<transform from="dᎤ" to="Ꮪ"/>
+		<transform from="DᎤ" to="Ꮪ"/>
+		<transform from="dᎥ" to="Ꮫ"/>
+		<transform from="DᎥ" to="Ꮫ"/>
+		<transform from="dd" to="d"/>
+		<transform from="dD" to="D"/>
+		<transform from="Dd" to="d"/>
+		<transform from="DD" to="D"/>
+		<transform from="dn" to="n"/>
+		<transform from="dN" to="N"/>
+		<transform from="Dn" to="n"/>
+		<transform from="DN" to="N"/>
+		<transform from="g " to="Ꭶ"/>
+		<transform from="G " to="Ꭶ"/>
+		<transform from="gᎠ" to="Ꭶ"/>
+		<transform from="GᎠ" to="Ꭶ"/>
+		<transform from="gᎡ" to="Ꭸ"/>
+		<transform from="GᎡ" to="Ꭸ"/>
+		<transform from="gᎢ" to="Ꭹ"/>
+		<transform from="GᎢ" to="Ꭹ"/>
+		<transform from="gᎣ" to="Ꭺ"/>
+		<transform from="GᎣ" to="Ꭺ"/>
+		<transform from="gᎤ" to="Ꭻ"/>
+		<transform from="GᎤ" to="Ꭻ"/>
+		<transform from="gᎥ" to="Ꭼ"/>
+		<transform from="GᎥ" to="Ꭼ"/>
+		<transform from="h " to="Ꭽ"/>
+		<transform from="H " to="Ꭽ"/>
+		<transform from="hᎠ" to="Ꭽ"/>
+		<transform from="HᎠ" to="Ꭽ"/>
+		<transform from="hᎡ" to="Ꭾ"/>
+		<transform from="HᎡ" to="Ꭾ"/>
+		<transform from="hᎢ" to="Ꭿ"/>
+		<transform from="HᎢ" to="Ꭿ"/>
+		<transform from="hᎣ" to="Ꮀ"/>
+		<transform from="HᎣ" to="Ꮀ"/>
+		<transform from="hᎤ" to="Ꮁ"/>
+		<transform from="HᎤ" to="Ꮁ"/>
+		<transform from="hᎥ" to="Ꮂ"/>
+		<transform from="HᎥ" to="Ꮂ"/>
+		<transform from="j " to="Ꮳ"/>
+		<transform from="J " to="Ꮳ"/>
+		<transform from="jᎠ" to="Ꮳ"/>
+		<transform from="JᎠ" to="Ꮳ"/>
+		<transform from="jᎡ" to="Ꮴ"/>
+		<transform from="JᎡ" to="Ꮴ"/>
+		<transform from="jᎢ" to="Ꮵ"/>
+		<transform from="JᎢ" to="Ꮵ"/>
+		<transform from="jᎣ" to="Ꮶ"/>
+		<transform from="JᎣ" to="Ꮶ"/>
+		<transform from="jᎤ" to="Ꮷ"/>
+		<transform from="JᎤ" to="Ꮷ"/>
+		<transform from="jᎥ" to="Ꮸ"/>
+		<transform from="JᎥ" to="Ꮸ"/>
+		<transform from="k " to="Ꭷ"/>
+		<transform from="K " to="Ꭷ"/>
+		<transform from="kᎠ" to="Ꭷ"/>
+		<transform from="KᎠ" to="Ꭷ"/>
+		<transform from="kᎣ" to="Ꭺ"/>
+		<transform from="KᎣ" to="Ꭺ"/>
+		<transform from="l " to="Ꮃ"/>
+		<transform from="L " to="Ꮃ"/>
+		<transform from="lᎠ" to="Ꮃ"/>
+		<transform from="LᎠ" to="Ꮃ"/>
+		<transform from="lᎡ" to="Ꮄ"/>
+		<transform from="LᎡ" to="Ꮄ"/>
+		<transform from="lᎢ" to="Ꮅ"/>
+		<transform from="LᎢ" to="Ꮅ"/>
+		<transform from="lᎣ" to="Ꮆ"/>
+		<transform from="LᎣ" to="Ꮆ"/>
+		<transform from="lᎤ" to="Ꮇ"/>
+		<transform from="LᎤ" to="Ꮇ"/>
+		<transform from="lᎥ" to="Ꮈ"/>
+		<transform from="LᎥ" to="Ꮈ"/>
+		<transform from="m " to="Ꮉ"/>
+		<transform from="M " to="Ꮉ"/>
+		<transform from="mᎠ" to="Ꮉ"/>
+		<transform from="MᎠ" to="Ꮉ"/>
+		<transform from="mᎡ" to="Ꮊ"/>
+		<transform from="MᎡ" to="Ꮊ"/>
+		<transform from="mᎢ" to="Ꮋ"/>
+		<transform from="MᎢ" to="Ꮋ"/>
+		<transform from="mᎣ" to="Ꮌ"/>
+		<transform from="MᎣ" to="Ꮌ"/>
+		<transform from="mᎤ" to="Ꮍ"/>
+		<transform from="MᎤ" to="Ꮍ"/>
+		<transform from="n " to="Ꮎ"/>
+		<transform from="N " to="Ꮎ"/>
+		<transform from="nᎠ" to="Ꮎ"/>
+		<transform from="NᎠ" to="Ꮎ"/>
+		<transform from="nᎡ" to="Ꮑ"/>
+		<transform from="NᎡ" to="Ꮑ"/>
+		<transform from="nᎢ" to="Ꮒ"/>
+		<transform from="NᎢ" to="Ꮒ"/>
+		<transform from="nᎣ" to="Ꮓ"/>
+		<transform from="NᎣ" to="Ꮓ"/>
+		<transform from="nᎤ" to="Ꮔ"/>
+		<transform from="NᎤ" to="Ꮔ"/>
+		<transform from="nᎥ" to="Ꮕ"/>
+		<transform from="NᎥ" to="Ꮕ"/>
+		<transform from="nh" to="Ꮐ"/>
+		<transform from="nH" to="Ꮐ"/>
+		<transform from="Nh" to="Ꮐ"/>
+		<transform from="NH" to="Ꮐ"/>
+		<transform from="q " to="Ꮚ"/>
+		<transform from="Q " to="Ꮚ"/>
+		<transform from="qᎠ" to="Ꮖ"/>
+		<transform from="QᎠ" to="Ꮖ"/>
+		<transform from="qᎡ" to="Ꮗ"/>
+		<transform from="QᎡ" to="Ꮗ"/>
+		<transform from="qᎢ" to="Ꮘ"/>
+		<transform from="QᎢ" to="Ꮘ"/>
+		<transform from="qᎣ" to="Ꮙ"/>
+		<transform from="QᎣ" to="Ꮙ"/>
+		<transform from="qᎥ" to="Ꮛ"/>
+		<transform from="QᎥ" to="Ꮛ"/>
+		<transform from="s " to="Ꮝ"/>
+		<transform from="S " to="Ꮝ"/>
+		<transform from="s`" to="Ꮝ"/>
+		<transform from="S`" to="Ꮝ"/>
+		<transform from="sᎠ" to="Ꮜ"/>
+		<transform from="SᎠ" to="Ꮜ"/>
+		<transform from="sᎡ" to="Ꮞ"/>
+		<transform from="SᎡ" to="Ꮞ"/>
+		<transform from="sᎢ" to="Ꮟ"/>
+		<transform from="SᎢ" to="Ꮟ"/>
+		<transform from="sᎣ" to="Ꮠ"/>
+		<transform from="SᎣ" to="Ꮠ"/>
+		<transform from="sᎤ" to="Ꮡ"/>
+		<transform from="SᎤ" to="Ꮡ"/>
+		<transform from="sᎥ" to="Ꮢ"/>
+		<transform from="SᎥ" to="Ꮢ"/>
+		<transform from="sx" to="Ꮝ"/>
+		<transform from="sX" to="Ꮝ"/>
+		<transform from="Sx" to="Ꮝ"/>
+		<transform from="SX" to="Ꮝ"/>
+		<transform from="t " to="Ꮤ"/>
+		<transform from="T " to="Ꮤ"/>
+		<transform from="tᎠ" to="Ꮤ"/>
+		<transform from="TᎠ" to="Ꮤ"/>
+		<transform from="tᎡ" to="Ꮦ"/>
+		<transform from="TᎡ" to="Ꮦ"/>
+		<transform from="tᎢ" to="Ꮨ"/>
+		<transform from="TᎢ" to="Ꮨ"/>
+		<transform from="tᎤ" to="Ꮪ"/>
+		<transform from="TᎤ" to="Ꮪ"/>
+		<transform from="tᎥ" to="Ꮫ"/>
+		<transform from="TᎥ" to="Ꮫ"/>
+		<transform from="w " to="Ꮹ"/>
+		<transform from="W " to="Ꮹ"/>
+		<transform from="wᎠ" to="Ꮹ"/>
+		<transform from="WᎠ" to="Ꮹ"/>
+		<transform from="wᎡ" to="Ꮺ"/>
+		<transform from="WᎡ" to="Ꮺ"/>
+		<transform from="wᎢ" to="Ꮻ"/>
+		<transform from="WᎢ" to="Ꮻ"/>
+		<transform from="wᎣ" to="Ꮼ"/>
+		<transform from="WᎣ" to="Ꮼ"/>
+		<transform from="wᎤ" to="Ꮽ"/>
+		<transform from="WᎤ" to="Ꮽ"/>
+		<transform from="wᎥ" to="Ꮾ"/>
+		<transform from="WᎥ" to="Ꮾ"/>
+		<transform from="x " to="x"/>
+		<transform from="X " to="X"/>
+		<transform from="y " to="Ꮿ"/>
+		<transform from="Y " to="Ꮿ"/>
+		<transform from="yᎠ" to="Ꮿ"/>
+		<transform from="YᎠ" to="Ꮿ"/>
+		<transform from="yᎡ" to="Ᏸ"/>
+		<transform from="YᎡ" to="Ᏸ"/>
+		<transform from="yᎢ" to="Ᏹ"/>
+		<transform from="YᎢ" to="Ᏹ"/>
+		<transform from="yᎣ" to="Ᏺ"/>
+		<transform from="YᎣ" to="Ᏺ"/>
+		<transform from="yᎤ" to="Ᏻ"/>
+		<transform from="YᎤ" to="Ᏻ"/>
+		<transform from="yᎥ" to="Ᏼ"/>
+		<transform from="YᎥ" to="Ᏼ"/>
+	</transforms>
+</keyboard>

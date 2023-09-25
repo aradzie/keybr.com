@@ -1,0 +1,61 @@
+@import "../mixins";
+
+.tabList {
+  /* empty */
+}
+
+.menu {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.menu + .body {
+  margin-top: 1rem;
+}
+
+.item {
+  min-width: 14rem;
+  height: 3rem;
+  border-top: 1px solid var(--separator-color);
+  border-right: 1px solid var(--separator-color);
+  border-left: 1px solid var(--separator-color);
+  line-height: 3rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.item:focus {
+  outline: 1px dotted var(--text-color);
+}
+
+.item_active {
+  color: var(--TabList-item--active__color);
+}
+
+.item_inactive {
+  border-bottom: 1px solid var(--separator-color);
+  color: var(--TabList-item--inactive__color);
+}
+
+.spacer {
+  height: 3rem;
+  border-bottom: 1px solid var(--separator-color);
+  line-height: 3rem;
+}
+
+.spacer_middle {
+  width: 1rem;
+}
+
+.spacer_first {
+  width: 3rem;
+}
+
+.spacer_last {
+  flex: 1;
+}
+
+.disabled {
+  .is-disabled();
+}

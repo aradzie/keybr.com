@@ -1,0 +1,42 @@
+.legend {
+  .color-coding(@color) {
+    display: inline-block;
+    vertical-align: middle;
+    width: 1rem;
+    height: 1rem;
+    background-color: @color;
+    line-height: 1rem;
+  }
+
+  &_slow {
+    .color-coding(var(--LessonKey--slow__color));
+  }
+
+  &_fast {
+    .color-coding(var(--LessonKey--fast__color));
+  }
+
+  &_speed {
+    .color-coding(var(--Chart-speed__color));
+  }
+
+  &_accuracy {
+    .color-coding(var(--Chart-accuracy__color));
+  }
+
+  &_keyCount {
+    .color-coding(var(--Chart-keyCount__color));
+  }
+
+  &_histogram_h {
+    .color-coding(var(--Chart-keyFrequency-h__color));
+  }
+
+  &_histogram_m {
+    .color-coding(var(--Chart-keyFrequency-m__color));
+  }
+
+  &_histogram_r {
+    .color-coding(var(--Chart-keyFrequency-r__color));
+  }
+}

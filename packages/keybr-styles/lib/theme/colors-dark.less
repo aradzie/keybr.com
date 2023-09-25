@@ -1,0 +1,139 @@
+@text-color: #9a9998;
+@link-color: #688db1;
+@header-color: #9a9998;
+@legend-color: fadeout(@text-color, 30%);
+@background-color: #222020;
+@separator-color: rgba(199, 209, 219, 0.1);
+
+@Keyboard-frame__color: #494444;
+@KeyboardKey-button__color: #363636;
+@KeyboardKey-button--special__color: darken(@KeyboardKey-button__color, 5%);
+@KeyboardKey-button--depressed__color: #c2bdbb;
+@KeyboardKey-symbol__color: #a39f98;
+@KeyboardKey-symbol--special__color: #a39f98;
+@KeyboardKey-symbol--depressed__color: #2f2f2e;
+@KeyboardKey-symbol--dead__color: #cc0000;
+
+@KeyboardZone--a__color: #585d5f;
+@KeyboardZone--a__colorAlt: darken(@KeyboardZone--a__color, 5%);
+@KeyboardZone--b__color: #697377;
+@KeyboardZone--b__colorAlt: darken(@KeyboardZone--b__color, 5%);
+
+@TextInput-item__color: @text-color;
+@TextInput-item--special__color: fadeout(@text-color, 50%);
+@TextInput-item--hit__color: fadeout(@text-color, 70%);
+@TextInput-item--miss__background-color: #ce4552;
+@TextInput-item--garbage__color: #ffffff;
+@TextInput-item--garbage__background-color: #ce4552;
+@TextInput-cursor__color: #000000;
+@TextInput-cursor__background-color: #ffffff;
+
+@LessonKey__color: #000000;
+@LessonKey--included__color: #000000;
+@LessonKey--included__background-color: transparent;
+@LessonKey--included__outline-color: transparent;
+@LessonKey--excluded__color: #aaaaaa;
+@LessonKey--excluded__background-color: #2f2b2b;
+@LessonKey--excluded__outline-color: transparent;
+@LessonKey--uncalibrated__color: #000000;
+@LessonKey--uncalibrated__background-color: #dddddd;
+@LessonKey--uncalibrated__outline-color: transparent;
+@LessonKey--boosted__color: #000000;
+@LessonKey--boosted__outline-color: #ffffff;
+@LessonKey--forced__color: #000000;
+@LessonKey--forced__outline-color: transparent;
+@LessonKey--current__outline-color: #ffffff;
+@LessonKey--slow__color: #cc0000;
+@LessonKey--fast__color: #60d788;
+
+@DailyGoal-bar__color: #444444;
+@DailyGoal-frame__color: #737373;
+
+@Chart-frame__color: #666666;
+@Chart-headerText__color: fadeout(@text-color, 50%);
+@Chart-subheaderText__color: fadeout(@text-color, 50%);
+@Chart-speed__color: #6fb48c;
+@Chart-accuracy__color: #ef522f;
+@Chart-keyCount__color: #ac71d0;
+@Chart-threshold__color: #d2649a;
+@Chart-keySpeed__color: #5f6cb4;
+@Chart-keyFrequency-h__color: #6fb48c;
+@Chart-keyFrequency-m__color: #b43f3e;
+@Chart-keyFrequency-r__color: #b140b4;
+
+@Calendar-caption__background-color: @background-color;
+@Calendar-headerCell__background-color: darken(@background-color, 10%);
+@Calendar-cell__color: #000000;
+@Calendar-cell__background-color: #4ba0f2;
+@Calendar-cell--s0__background-color: fadeout(
+  @Calendar-cell__background-color,
+  60%
+);
+@Calendar-cell--s1__background-color: fadeout(
+  @Calendar-cell__background-color,
+  40%
+);
+@Calendar-cell--s2__background-color: fadeout(
+  @Calendar-cell__background-color,
+  20%
+);
+@Calendar-cell--s3__background-color: fadeout(
+  @Calendar-cell__background-color,
+  0%
+);
+@Calendar-cell--z__background-color: darken(@background-color, 4%);
+
+@Name-color: fadeout(@text-color, 30%);
+@Value-color: darken(@text-color, 10%);
+@ValueDelta--more__color: #68a162;
+@ValueDelta--less__color: #a1464e;
+
+@Popup__color: @text-color;
+@Popup__background-color: lighten(@background-color, 3%);
+@Popup__shadow-color: rgba(0, 0, 0, 0.5);
+
+@Spotlight__background-color: rgba(61, 61, 61, 0.5);
+@Spotlight__border-color: rgba(0, 103, 163, 0.7);
+@Spotlight-marker__shadow-color: rgba(26, 26, 26, 0.7);
+
+@Player__background-color: transparent;
+@Player--me__background-color: fadeout(lighten(@background-color, 4%), 10%);
+@Player--finished__background-color: rgba(104, 191, 215, 0.3);
+@PlayerDetails__color: @text-color;
+@PlayerDetails__background-color: fadeout(lighten(@background-color, 6%), 20%);
+
+@Icon__color: fadeout(@text-color, 15%);
+
+@TabList-item--active__color: @text-color;
+@TabList-item--inactive__color: fadeout(@text-color, 50%);
+
+@Button__color: #ffffff;
+@Button__background-color: #686161;
+@Button--focused__color: lighten(@Button__color, 5%);
+@Button--focused__background-color: lighten(@Button__background-color, 20%);
+
+@TextField__color: lighten(@text-color, 10%);
+@TextField__background-color: lighten(@background-color, 10%);
+@TextField__border-color: @separator-color;
+@TextField--focused__color: @TextField__color;
+@TextField--focused__background-color: @TextField__background-color;
+@TextField--focused__border-color: lighten(@TextField__border-color, 25%);
+
+@MenuItem__color: @Button__color;
+@MenuItem__background-color: lighten(@Button__background-color, 25%);
+@MenuItem--selected__color: @Button__color;
+@MenuItem--selected__background-color: @Button__background-color;
+
+@ProgressBar__color: fadeout(@text-color, 15%);
+
+@NavLink__color: @text-color;
+@NavLink__background-color: transparent;
+@NavLink--current__color: @text-color;
+@NavLink--current__background-color: fadeout(
+  lighten(@background-color, 10%),
+  50%
+);
+
+@Body__background-image: data-uri("../../assets/page-bg-dark.svg");
+@Nav__background-image: data-uri("../../assets/nav-bg-dark.svg");
+@ExternalLink__background-image: data-uri("../../assets/open-in-new-dark.svg");

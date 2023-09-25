@@ -1,0 +1,12 @@
+[Unit]
+Description=keybr.com database backup service
+
+[Service]
+ExecStart=/bin/bash /opt/keybr/etc/keybr-backup-database.sh
+Type=oneshot
+WorkingDirectory=/opt/keybr
+# User=www-data
+# Group=www-data
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyboard SYSTEM "../dtd/ldmlKeyboard.dtd">
+<keyboard locale="non-t-k0-windows">
+	<version platform="10" number="$Revision$"/>
+	<names>
+		<name value="Futhark"/>
+	</names>
+	<settings fallback="omit" transformPartial="hide"/>
+	<keyMap>
+		<map iso="E00" to="ᚻ"/> <!-- ` -->
+		<map iso="E07" to="ᛮ"/> <!-- 7 -->
+		<map iso="E08" to="ᛯ"/> <!-- 8 -->
+		<map iso="E09" to="ᛰ"/> <!-- 9 -->
+		<map iso="E10" to="0"/>
+		<map iso="D01" to="ᚦ"/> <!-- Q -->
+		<map iso="D02" to="ᚹ"/> <!-- W -->
+		<map iso="D03" to="ᛖ"/> <!-- E -->
+		<map iso="D04" to="ᚱ"/> <!-- R -->
+		<map iso="D05" to="ᛏ"/> <!-- T -->
+		<map iso="D06" to="ᛇ"/> <!-- Y -->
+		<map iso="D07" to="ᚢ"/> <!-- U -->
+		<map iso="D08" to="ᛁ"/> <!-- I -->
+		<map iso="D09" to="ᛟ"/> <!-- O -->
+		<map iso="D10" to="ᛈ"/> <!-- P -->
+		<map iso="C01" to="ᚨ"/> <!-- A -->
+		<map iso="C02" to="ᛊ"/> <!-- S -->
+		<map iso="C03" to="ᛞ"/> <!-- D -->
+		<map iso="C04" to="ᚠ"/> <!-- F -->
+		<map iso="C05" to="ᚷ"/> <!-- G -->
+		<map iso="C06" to="ᚺ"/> <!-- H -->
+		<map iso="C07" to="ᛃ"/> <!-- J -->
+		<map iso="C08" to="ᚲ"/> <!-- K -->
+		<map iso="C09" to="ᛚ"/> <!-- L -->
+		<map iso="C10" to="ᛜ"/> <!-- ; -->
+		<map iso="C11" to="ᛝ"/> <!-- ' -->
+		<map iso="C12" to="\"/> <!-- (key to right of ') -->
+		<map iso="B01" to="ᛉ"/> <!-- Z -->
+		<map iso="B05" to="ᛒ"/> <!-- B -->
+		<map iso="B06" to="ᚾ"/> <!-- N -->
+		<map iso="B07" to="ᛗ"/> <!-- M -->
+		<map iso="B08" to="᛫"/> <!-- , -->
+		<map iso="B09" to="᛬"/> <!-- . -->
+		<map iso="B10" to="᛭"/> <!-- / -->
+		<map iso="A03" to=" "/> <!-- space -->
+	</keyMap>
+	<keyMap modifiers="shift">
+		<map iso="D04" to="ᛦ"/> <!-- R  base=ᚱ -->
+		<map iso="C01" to="ᚬ"/> <!-- A  base=ᚨ -->
+		<map iso="C02" to="ᛋ"/> <!-- S  base=ᛊ -->
+		<map iso="C06" to="ᚼ"/> <!-- H  base=ᚺ -->
+		<map iso="C07" to="ᛅ"/> <!-- J  base=ᛃ -->
+		<map iso="C08" to="ᚴ"/> <!-- K  base=ᚲ -->
+		<map iso="C12" to="|"/> <!-- (key to right of ')  base=\ -->
+		<map iso="B07" to="ᛘ"/> <!-- M  base=ᛗ -->
+		<map iso="A03" to=" "/> <!-- space -->
+	</keyMap>
+	<keyMap modifiers="caps">
+		<map iso="E00" to="ᚻ"/> <!-- ` -->
+		<map iso="E07" to="ᛮ"/> <!-- 7 -->
+		<map iso="E08" to="ᛯ"/> <!-- 8 -->
+		<map iso="E09" to="ᛰ"/> <!-- 9 -->
+		<map iso="E10" to="0"/>
+		<map iso="D01" to="ᚦ"/> <!-- Q -->
+		<map iso="D02" to="ᚹ"/> <!-- W -->
+		<map iso="D03" to="ᛖ"/> <!-- E -->
+		<map iso="D04" to="ᛦ"/> <!-- R  base=ᚱ -->
+		<map iso="D05" to="ᛏ"/> <!-- T -->
+		<map iso="D06" to="ᛇ"/> <!-- Y -->
+		<map iso="D07" to="ᚢ"/> <!-- U -->
+		<map iso="D08" to="ᛁ"/> <!-- I -->
+		<map iso="D09" to="ᛟ"/> <!-- O -->
+		<map iso="D10" to="ᛈ"/> <!-- P -->
+		<map iso="C01" to="ᚬ"/> <!-- A  base=ᚨ -->
+		<map iso="C02" to="ᛋ"/> <!-- S  base=ᛊ -->
+		<map iso="C03" to="ᛞ"/> <!-- D -->
+		<map iso="C04" to="ᚠ"/> <!-- F -->
+		<map iso="C05" to="ᚷ"/> <!-- G -->
+		<map iso="C06" to="ᚼ"/> <!-- H  base=ᚺ -->
+		<map iso="C07" to="ᛅ"/> <!-- J  base=ᛃ -->
+		<map iso="C08" to="ᚴ"/> <!-- K  base=ᚲ -->
+		<map iso="C09" to="ᛚ"/> <!-- L -->
+		<map iso="C10" to="ᛜ"/> <!-- ; -->
+		<map iso="C11" to="ᛝ"/> <!-- ' -->
+		<map iso="C12" to="\"/> <!-- (key to right of ') -->
+		<map iso="B01" to="ᛉ"/> <!-- Z -->
+		<map iso="B05" to="ᛒ"/> <!-- B -->
+		<map iso="B06" to="ᚾ"/> <!-- N -->
+		<map iso="B07" to="ᛘ"/> <!-- M  base=ᛗ -->
+		<map iso="B08" to="᛫"/> <!-- , -->
+		<map iso="B09" to="᛬"/> <!-- . -->
+		<map iso="B10" to="᛭"/> <!-- / -->
+		<map iso="A03" to=" "/> <!-- space -->
+	</keyMap>
+	<keyMap modifiers="caps+shift">
+		<map iso="D04" to="ᚱ"/> <!-- R -->
+		<map iso="C01" to="ᚨ"/> <!-- A -->
+		<map iso="C02" to="ᛊ"/> <!-- S -->
+		<map iso="C06" to="ᚺ"/> <!-- H -->
+		<map iso="C07" to="ᛃ"/> <!-- J -->
+		<map iso="C08" to="ᚲ"/> <!-- K -->
+		<map iso="C12" to="|"/> <!-- (key to right of ')  base=\ -->
+		<map iso="B07" to="ᛗ"/> <!-- M -->
+		<map iso="A03" to=" "/> <!-- space -->
+	</keyMap>
+	<transforms type="simple">
+		<transform from="\ " to="~"/>
+		<transform from="\ᚬ" to="ᚭ"/>
+		<transform from="\ᚼ" to="ᚽ"/>
+		<transform from="\ᛅ" to="ᛆ"/>
+		<transform from="\ᛋ" to="ᛌ"/>
+		<transform from="\ᛒ" to="ᛓ"/>
+		<transform from="\ᛘ" to="ᛙ"/>
+		<transform from="\ᛦ" to="ᛧ"/>
+		<transform from="| " to="|"/>
+		<transform from="|ᚬ" to="ᚭ"/>
+		<transform from="|ᚼ" to="ᚽ"/>
+		<transform from="|ᛅ" to="ᛆ"/>
+		<transform from="|ᛋ" to="ᛌ"/>
+		<transform from="|ᛒ" to="ᛓ"/>
+		<transform from="|ᛘ" to="ᛙ"/>
+		<transform from="|ᛦ" to="ᛧ"/>
+	</transforms>
+</keyboard>

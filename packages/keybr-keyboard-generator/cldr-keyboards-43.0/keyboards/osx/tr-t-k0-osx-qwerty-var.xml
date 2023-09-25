@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE keyboard SYSTEM "../dtd/ldmlKeyboard.dtd">
+<keyboard locale="tr-t-k0-osx-qwerty-var">
+	<version platform="10.9" number="$Revision$"/>
+	<names>
+		<name value="Turkish-QWERTY-PC"/>
+	</names>
+	<keyMap>
+		<map iso="E00" to="&lt;"/> <!-- ` -->
+		<map iso="E01" to="1"/>
+		<map iso="E02" to="2"/>
+		<map iso="E03" to="3"/>
+		<map iso="E04" to="4"/>
+		<map iso="E05" to="5"/>
+		<map iso="E06" to="6"/>
+		<map iso="E07" to="7"/>
+		<map iso="E08" to="8"/>
+		<map iso="E09" to="9"/>
+		<map iso="E10" to="0"/>
+		<map iso="E11" to="*"/> <!-- - -->
+		<map iso="E12" to="-"/> <!-- = -->
+		<map iso="D01" to="q"/>
+		<map iso="D02" to="w"/>
+		<map iso="D03" to="e"/>
+		<map iso="D04" to="r"/>
+		<map iso="D05" to="t"/>
+		<map iso="D06" to="y"/>
+		<map iso="D07" to="u"/>
+		<map iso="D08" to="ı"/>
+		<map iso="D09" to="o"/>
+		<map iso="D10" to="p"/>
+		<map iso="D11" to="ğ"/> <!-- [ -->
+		<map iso="D12" to="ü"/> <!-- ] -->
+		<map iso="D13" to=","/> <!-- \ -->
+		<map iso="C01" to="a"/>
+		<map iso="C02" to="s"/>
+		<map iso="C03" to="d"/>
+		<map iso="C04" to="f"/>
+		<map iso="C05" to="g"/>
+		<map iso="C06" to="h"/>
+		<map iso="C07" to="j"/>
+		<map iso="C08" to="k"/>
+		<map iso="C09" to="l"/>
+		<map iso="C10" to="ş"/> <!-- ; -->
+		<map iso="C11" to="i"/> <!-- ' -->
+		<map iso="B00" to="\u{22}"/> <!-- (key to left of Z)  to= "  -->
+		<map iso="B01" to="z"/>
+		<map iso="B02" to="x"/>
+		<map iso="B03" to="c"/>
+		<map iso="B04" to="v"/>
+		<map iso="B05" to="b"/>
+		<map iso="B06" to="n"/>
+		<map iso="B07" to="m"/>
+		<map iso="B08" to="ö"/> <!-- , -->
+		<map iso="B09" to="ç"/> <!-- . -->
+		<map iso="B10" to="."/> <!-- / -->
+		<map iso="A03" to=" "/> <!-- space -->
+	</keyMap>
+	<keyMap modifiers="shift+caps?">
+		<map iso="E00" to="&gt;"/> <!-- `  base=< -->
+		<map iso="E01" to="!"/> <!-- 1 -->
+		<map iso="E02" to="&apos;"/> <!-- 2 -->
+		<map iso="E03" to="^"/> <!-- 3 -->
+		<map iso="E04" to="+"/> <!-- 4 -->
+		<map iso="E05" to="%"/> <!-- 5 -->
+		<map iso="E06" to="&amp;"/> <!-- 6 -->
+		<map iso="E07" to="/"/> <!-- 7 -->
+		<map iso="E08" to="("/> <!-- 8 -->
+		<map iso="E09" to=")"/> <!-- 9 -->
+		<map iso="E10" to="="/> <!-- 0 -->
+		<map iso="E11" to="?"/> <!-- -  base=* -->
+		<map iso="E12" to="_"/> <!-- =  base=- -->
+		<map iso="D01" to="Q"/>
+		<map iso="D02" to="W"/>
+		<map iso="D03" to="E"/>
+		<map iso="D04" to="R"/>
+		<map iso="D05" to="T"/>
+		<map iso="D06" to="Y"/>
+		<map iso="D07" to="U"/>
+		<map iso="D08" to="I"/>
+		<map iso="D09" to="O"/>
+		<map iso="D10" to="P"/>
+		<map iso="D11" to="Ğ"/> <!-- [ -->
+		<map iso="D12" to="Ü"/> <!-- ] -->
+		<map iso="D13" to=";"/> <!-- \  base=, -->
+		<map iso="C01" to="A"/>
+		<map iso="C02" to="S"/>
+		<map iso="C03" to="D"/>
+		<map iso="C04" to="F"/>
+		<map iso="C05" to="G"/>
+		<map iso="C06" to="H"/>
+		<map iso="C07" to="J"/>
+		<map iso="C08" to="K"/>
+		<map iso="C09" to="L"/>
+		<map iso="C10" to="Ş"/> <!-- ; -->
+		<map iso="C11" to="İ"/> <!-- '  base=i -->
+		<map iso="B00" to="é"/> <!-- (key to left of Z)  base=" -->
+		<map iso="B01" to="Z"/>
+		<map iso="B02" to="X"/>
+		<map iso="B03" to="C"/>
+		<map iso="B04" to="V"/>
+		<map iso="B05" to="B"/>
+		<map iso="B06" to="N"/>
+		<map iso="B07" to="M"/>
+		<map iso="B08" to="Ö"/> <!-- , -->
+		<map iso="B09" to="Ç"/> <!-- . -->
+		<map iso="B10" to=":"/> <!-- /  base=. -->
+		<map iso="A03" to=" "/> <!-- space -->
+	</keyMap>
+	<keyMap modifiers="caps+cmd?">
+		<map iso="E00" to="&lt;"/> <!-- ` -->
+		<map iso="E01" to="1"/>
+		<map iso="E02" to="2"/>
+		<map iso="E03" to="3"/>
+		<map iso="E04" to="4"/>
+		<map iso="E05" to="5"/>
+		<map iso="E06" to="6"/>
+		<map iso="E07" to="7"/>
+		<map iso="E08" to="8"/>
+		<map iso="E09" to="9"/>
+		<map iso="E10" to="0"/>
+		<map iso="E11" to="*"/> <!-- - -->
+		<map iso="E12" to="-"/> <!-- = -->
+		<map iso="D01" to="Q"/>
+		<map iso="D02" to="W"/>
+		<map iso="D03" to="E"/>
+		<map iso="D04" to="R"/>
+		<map iso="D05" to="T"/>
+		<map iso="D06" to="Y"/>
+		<map iso="D07" to="U"/>
+		<map iso="D08" to="I"/>
+		<map iso="D09" to="O"/>
+		<map iso="D10" to="P"/>
+		<map iso="D11" to="Ğ"/> <!-- [ -->
+		<map iso="D12" to="Ü"/> <!-- ] -->
+		<map iso="D13" to=","/> <!-- \ -->
+		<map iso="C01" to="A"/>
+		<map iso="C02" to="S"/>
+		<map iso="C03" to="D"/>
+		<map iso="C04" to="F"/>
+		<map iso="C05" to="G"/>
+		<map iso="C06" to="H"/>
+		<map iso="C07" to="J"/>
+		<map iso="C08" to="K"/>
+		<map iso="C09" to="L"/>
+		<map iso="C10" to="Ş"/> <!-- ; -->
+		<map iso="C11" to="İ"/> <!-- '  base=i -->
+		<map iso="B00" to="\u{22}"/> <!-- (key to left of Z)  to= "  -->
+		<map iso="B01" to="Z"/>
+		<map iso="B02" to="X"/>
+		<map iso="B03" to="C"/>
+		<map iso="B04" to="V"/>
+		<map iso="B05" to="B"/>
+		<map iso="B06" to="N"/>
+		<map iso="B07" to="M"/>
+		<map iso="B08" to="Ö"/> <!-- , -->
+		<map iso="B09" to="Ç"/> <!-- . -->
+		<map iso="B10" to="."/> <!-- / -->
+		<map iso="A03" to=" "/> <!-- space -->
+	</keyMap>
+	<keyMap modifiers="opt">
+		<map iso="E00" to="|"/> <!-- `  base=< -->
+		<map iso="E01" to="&gt;"/> <!-- 1 -->
+		<map iso="E02" to="£"/> <!-- 2 -->
+		<map iso="E03" to="#"/> <!-- 3 -->
+		<map iso="E04" to="$"/> <!-- 4 -->
+		<map iso="E05" to="½"/> <!-- 5 -->
+		<map iso="E06" to="§"/> <!-- 6 -->
+		<map iso="E07" to="{"/> <!-- 7 -->
+		<map iso="E08" to="["/> <!-- 8 -->
+		<map iso="E09" to="]"/> <!-- 9 -->
+		<map iso="E10" to="}"/> <!-- 0 -->
+		<map iso="E11" to="\"/> <!-- -  base=* -->
+		<map iso="E12" to="|"/> <!-- =  base=- -->
+		<map iso="D01" to="@"/> <!-- Q -->
+		<map iso="D02" to="∑"/> <!-- W -->
+		<map iso="D03" to="€"/> <!-- E -->
+		<map iso="D04" to="®"/> <!-- R -->
+		<map iso="D05" to="†"/> <!-- T -->
+		<map iso="D06" to="¥"/> <!-- Y -->
+		<map iso="D07" to="ü"/> <!-- U -->
+		<map iso="D08" to="i"/>
+		<map iso="D09" to="ö"/> <!-- O -->
+		<map iso="D10" to="π"/> <!-- P -->
+		<map iso="D11" to="¨"/> <!-- [  base=ğ -->
+		<map iso="D12" to="~"/> <!-- ]  base=ü -->
+		<map iso="D13" to="`"/> <!-- \  base=, -->
+		<map iso="C01" to="æ"/> <!-- A -->
+		<map iso="C02" to="ß"/> <!-- S -->
+		<map iso="C03" to="∂"/> <!-- D -->
+		<map iso="C04" to="ƒ"/> <!-- F -->
+		<map iso="C05" to="ğ"/> <!-- G -->
+		<map iso="C06" to="^" transform="no"/> <!-- H -->
+		<map iso="C07" to="∆"/> <!-- J -->
+		<map iso="C08" to="¨" transform="no"/> <!-- K -->
+		<map iso="C09" to="¬"/> <!-- L -->
+		<map iso="C10" to="´"/> <!-- ;  base=ş -->
+		<map iso="C11" to="æ"/> <!-- '  base=i -->
+		<map iso="B00" to="&lt;"/> <!-- (key to left of Z)  base=" -->
+		<map iso="B01" to="Ω"/> <!-- Z -->
+		<map iso="B02" to="≈"/> <!-- X -->
+		<map iso="B03" to="ç"/> <!-- C -->
+		<map iso="B04" to="√"/> <!-- V -->
+		<map iso="B05" to="∫"/> <!-- B -->
+		<map iso="B06" to="~" transform="no"/> <!-- N -->
+		<map iso="B07" to="µ"/> <!-- M -->
+		<map iso="B08" to="≤"/> <!-- ,  base=ö -->
+		<map iso="B09" to="≥"/> <!-- .  base=ç -->
+		<map iso="B10" to="÷"/> <!-- /  base=. -->
+		<map iso="A03" to="\u{A0}"/> <!-- space -->
+	</keyMap>
+	<keyMap modifiers="opt+shift+cmd?+caps?">
+		<map iso="E00" to="Ÿ"/> <!-- `  base=< -->
+		<map iso="E01" to="·"/> <!-- 1 -->
+		<map iso="E02" to="€"/> <!-- 2 -->
+		<map iso="E03" to="©"/> <!-- 3 -->
+		<map iso="E04" to="‚"/> <!-- 4 -->
+		<map iso="E05" to="˚"/> <!-- 5 -->
+		<map iso="E06" to="˙"/> <!-- 6 -->
+		<map iso="E07" to="‡"/> <!-- 7 -->
+		<map iso="E08" to="°"/> <!-- 8 -->
+		<map iso="E09" to="Ø"/> <!-- 9 -->
+		<map iso="E10" to="ø"/> <!-- 0 -->
+		<map iso="E11" to="—"/> <!-- -  base=* -->
+		<map iso="E12" to="±"/> <!-- =  base=- -->
+		<map iso="D01" to="Œ"/> <!-- Q -->
+		<map iso="D02" to="„"/> <!-- W -->
+		<map iso="D03" to="‰"/> <!-- E -->
+		<map iso="D04" to="Â"/> <!-- R -->
+		<map iso="D05" to="Ê"/> <!-- T -->
+		<map iso="D06" to="Á"/> <!-- Y -->
+		<map iso="D07" to="Ü"/> <!-- U -->
+		<map iso="D08" to="İ"/> <!-- I -->
+		<map iso="D09" to="Ö"/> <!-- O -->
+		<map iso="D10" to="∏"/> <!-- P -->
+		<map iso="D11" to="”"/> <!-- [  base=ğ -->
+		<map iso="D12" to="’"/> <!-- ]  base=ü -->
+		<map iso="D13" to="»"/> <!-- \  base=, -->
+		<map iso="C01" to="Æ"/> <!-- A -->
+		<map iso="C02" to="Ş"/> <!-- S -->
+		<map iso="C03" to="Î"/> <!-- D -->
+		<map iso="C04" to="Ï"/> <!-- F -->
+		<map iso="C05" to="Ğ"/> <!-- G -->
+		<map iso="C06" to="Ó"/> <!-- H -->
+		<map iso="C07" to="Ô"/> <!-- J -->
+		<map iso="C08" to="\u{F8FF}"/> <!-- K -->
+		<map iso="C09" to="Ò"/> <!-- L -->
+		<map iso="C10" to="Ú"/> <!-- ;  base=ş -->
+		<map iso="C11" to="Æ"/> <!-- '  base=i -->
+		<map iso="B01" to="Û"/> <!-- Z -->
+		<map iso="B02" to="Ù"/> <!-- X -->
+		<map iso="B03" to="Ç"/> <!-- C -->
+		<map iso="B04" to="◊"/> <!-- V -->
+		<map iso="B05" to="ß"/> <!-- B -->
+		<map iso="B06" to="ˆ"/> <!-- N -->
+		<map iso="B07" to="˜"/> <!-- M -->
+		<map iso="B08" to="¯"/> <!-- ,  base=ö -->
+		<map iso="B09" to="˘"/> <!-- .  base=ç -->
+		<map iso="B10" to="¿"/> <!-- /  base=. -->
+		<map iso="A03" to="\u{A0}"/> <!-- space -->
+	</keyMap>
+	<keyMap modifiers="opt+caps+cmd?">
+		<map iso="E00" to="|"/> <!-- `  base=< -->
+		<map iso="E01" to="&gt;"/> <!-- 1 -->
+		<map iso="E02" to="£"/> <!-- 2 -->
+		<map iso="E03" to="#"/> <!-- 3 -->
+		<map iso="E04" to="$"/> <!-- 4 -->
+		<map iso="E05" to="½"/> <!-- 5 -->
+		<map iso="E06" to="§"/> <!-- 6 -->
+		<map iso="E07" to="{"/> <!-- 7 -->
+		<map iso="E08" to="["/> <!-- 8 -->
+		<map iso="E09" to="]"/> <!-- 9 -->
+		<map iso="E10" to="}"/> <!-- 0 -->
+		<map iso="E11" to="\"/> <!-- -  base=* -->
+		<map iso="E12" to="|"/> <!-- =  base=- -->
+		<map iso="D01" to="@"/> <!-- Q -->
+		<map iso="D02" to="„"/> <!-- W -->
+		<map iso="D03" to="€"/> <!-- E -->
+		<map iso="D04" to="Â"/> <!-- R -->
+		<map iso="D05" to="Ê"/> <!-- T -->
+		<map iso="D06" to="Á"/> <!-- Y -->
+		<map iso="D07" to="Ü"/> <!-- U -->
+		<map iso="D08" to="İ"/> <!-- I -->
+		<map iso="D09" to="Ö"/> <!-- O -->
+		<map iso="D10" to="∏"/> <!-- P -->
+		<map iso="D11" to="¨"/> <!-- [  base=ğ -->
+		<map iso="D12" to="~"/> <!-- ]  base=ü -->
+		<map iso="D13" to="`"/> <!-- \  base=, -->
+		<map iso="C01" to="Æ"/> <!-- A -->
+		<map iso="C02" to="ß"/> <!-- S -->
+		<map iso="C03" to="Î"/> <!-- D -->
+		<map iso="C04" to="Ï"/> <!-- F -->
+		<map iso="C05" to="Ğ"/> <!-- G -->
+		<map iso="C06" to="Ó"/> <!-- H -->
+		<map iso="C07" to="Ô"/> <!-- J -->
+		<map iso="C08" to="\u{F8FF}"/> <!-- K -->
+		<map iso="C09" to="Ò"/> <!-- L -->
+		<map iso="C10" to="´"/> <!-- ;  base=ş -->
+		<map iso="C11" to="Å"/> <!-- '  base=i -->
+		<map iso="B00" to="&lt;"/> <!-- (key to left of Z)  base=" -->
+		<map iso="B01" to="Û"/> <!-- Z -->
+		<map iso="B02" to="Ù"/> <!-- X -->
+		<map iso="B03" to="Ç"/> <!-- C -->
+		<map iso="B04" to="◊"/> <!-- V -->
+		<map iso="B05" to="€"/> <!-- B -->
+		<map iso="B06" to="ˆ"/> <!-- N -->
+		<map iso="B07" to="˜"/> <!-- M -->
+		<map iso="B08" to="≤"/> <!-- ,  base=ö -->
+		<map iso="B09" to="≥"/> <!-- .  base=ç -->
+		<map iso="B10" to="÷"/> <!-- /  base=. -->
+		<map iso="A03" to="\u{A0}"/> <!-- space -->
+	</keyMap>
+	<keyMap modifiers="ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?">
+		<map iso="E00" to="`" transform="no"/> <!--   base=< -->
+		<map iso="E01" to="1"/>
+		<map iso="E02" to="2"/>
+		<map iso="E03" to="3"/>
+		<map iso="E04" to="4"/>
+		<map iso="E05" to="5"/>
+		<map iso="E06" to="6"/>
+		<map iso="E07" to="7"/>
+		<map iso="E08" to="8"/>
+		<map iso="E09" to="9"/>
+		<map iso="E10" to="0"/>
+		<map iso="E11" to="\u{1F}"/> <!-- -  base=* -->
+		<map iso="E12" to="+"/> <!-- =  base=- -->
+		<map iso="D01" to="\u{11}"/> <!-- Q -->
+		<map iso="D02" to="\u{17}"/> <!-- W -->
+		<map iso="D03" to="\u{5}"/> <!-- E -->
+		<map iso="D04" to="\u{12}"/> <!-- R -->
+		<map iso="D05" to="\u{14}"/> <!-- T -->
+		<map iso="D06" to="\u{19}"/> <!-- Y -->
+		<map iso="D07" to="\u{15}"/> <!-- U -->
+		<map iso="D08" to="\u{9}"/> <!-- I -->
+		<map iso="D09" to="\u{F}"/> <!-- O -->
+		<map iso="D10" to="\u{10}"/> <!-- P -->
+		<map iso="D11" to="\u{1B}"/> <!-- [  base=ğ -->
+		<map iso="D12" to="\u{1D}"/> <!-- ]  base=ü -->
+		<map iso="D13" to="\u{1C}"/> <!-- \  base=, -->
+		<map iso="C01" to="\u{1}"/> <!-- A -->
+		<map iso="C02" to="\u{13}"/> <!-- S -->
+		<map iso="C03" to="\u{4}"/> <!-- D -->
+		<map iso="C04" to="\u{6}"/> <!-- F -->
+		<map iso="C05" to="\u{7}"/> <!-- G -->
+		<map iso="C06" to="\u{8}"/> <!-- H -->
+		<map iso="C07" to="\u{A}"/> <!-- J -->
+		<map iso="C08" to="\u{B}"/> <!-- K -->
+		<map iso="C09" to="\u{C}"/> <!-- L -->
+		<map iso="C10" to=":"/> <!-- ;  base=ş -->
+		<map iso="C11" to="\u{22}"/> <!-- '  base=i  to= "  -->
+		<map iso="B00" to="0"/> <!-- (key to left of Z)  base=" -->
+		<map iso="B01" to="\u{1A}"/> <!-- Z -->
+		<map iso="B02" to="\u{18}"/> <!-- X -->
+		<map iso="B03" to="\u{3}"/> <!-- C -->
+		<map iso="B04" to="\u{16}"/> <!-- V -->
+		<map iso="B05" to="\u{2}"/> <!-- B -->
+		<map iso="B06" to="\u{E}"/> <!-- N -->
+		<map iso="B07" to="\u{D}"/> <!-- M -->
+		<map iso="B08" to=","/> <!--   base=ö -->
+		<map iso="B09" to="."/> <!--   base=ç -->
+		<map iso="B10" to="/"/> <!--   base=. -->
+		<map iso="A03" to=" "/> <!-- space -->
+	</keyMap>
+	<keyMap modifiers="cmd+opt">
+		<map iso="E00" to="|"/> <!-- `  base=< -->
+		<map iso="E01" to="¡"/> <!-- 1 -->
+		<map iso="E02" to="™"/> <!-- 2 -->
+		<map iso="E03" to="#"/> <!-- 3 -->
+		<map iso="E04" to="$"/> <!-- 4 -->
+		<map iso="E05" to="∞"/> <!-- 5 -->
+		<map iso="E06" to="§"/> <!-- 6 -->
+		<map iso="E07" to="{"/> <!-- 7 -->
+		<map iso="E08" to="["/> <!-- 8 -->
+		<map iso="E09" to="]"/> <!-- 9 -->
+		<map iso="E10" to="}"/> <!-- 0 -->
+		<map iso="E11" to="\"/> <!-- -  base=* -->
+		<map iso="E12" to="≠"/> <!-- =  base=- -->
+		<map iso="D01" to="@"/> <!-- Q -->
+		<map iso="D02" to="∑"/> <!-- W -->
+		<map iso="D03" to="´" transform="no"/> <!-- E -->
+		<map iso="D04" to="®"/> <!-- R -->
+		<map iso="D05" to="†"/> <!-- T -->
+		<map iso="D06" to="¥"/> <!-- Y -->
+		<map iso="D07" to="ü"/> <!-- U -->
+		<map iso="D08" to="i" transform="no"/>
+		<map iso="D09" to="ö"/> <!-- O -->
+		<map iso="D10" to="π"/> <!-- P -->
+		<map iso="D11" to="¨" transform="no"/> <!-- [  base=ğ -->
+		<map iso="D12" to="~" transform="no"/> <!-- ]  base=ü -->
+		<map iso="D13" to="`" transform="no"/> <!-- \  base=, -->
+		<map iso="C01" to="æ"/> <!-- A -->
+		<map iso="C02" to="ß"/> <!-- S -->
+		<map iso="C03" to="∂"/> <!-- D -->
+		<map iso="C04" to="ƒ"/> <!-- F -->
+		<map iso="C05" to="ğ"/> <!-- G -->
+		<map iso="C06" to="^" transform="no"/> <!-- H -->
+		<map iso="C07" to="∆"/> <!-- J -->
+		<map iso="C08" to="¨" transform="no"/> <!-- K -->
+		<map iso="C09" to="¬"/> <!-- L -->
+		<map iso="C10" to="´" transform="no"/> <!-- ;  base=ş -->
+		<map iso="C11" to="æ"/> <!-- '  base=i -->
+		<map iso="B01" to="Ω"/> <!-- Z -->
+		<map iso="B02" to="≈"/> <!-- X -->
+		<map iso="B03" to="ç"/> <!-- C -->
+		<map iso="B04" to="√"/> <!-- V -->
+		<map iso="B05" to="∫"/> <!-- B -->
+		<map iso="B06" to="~" transform="no"/> <!-- N -->
+		<map iso="B07" to="µ"/> <!-- M -->
+		<map iso="B08" to="≤"/> <!-- ,  base=ö -->
+		<map iso="B09" to="≥"/> <!-- .  base=ç -->
+		<map iso="B10" to="÷"/> <!-- /  base=. -->
+		<map iso="A03" to="\u{A0}"/> <!-- space -->
+	</keyMap>
+	<transforms type="simple">
+		<transform from="` " to="`"/>
+		<transform from="`a" to="à"/>
+		<transform from="`A" to="À"/>
+		<transform from="`e" to="è"/>
+		<transform from="`E" to="È"/>
+		<transform from="`I" to="Ì"/>
+		<transform from="`i" to="ì"/>
+		<transform from="`o" to="ò"/>
+		<transform from="`O" to="Ò"/>
+		<transform from="`u" to="ù"/>
+		<transform from="`U" to="Ù"/>
+		<transform from="´ " to="´"/>
+		<transform from="´a" to="á"/>
+		<transform from="´A" to="Á"/>
+		<transform from="´e" to="é"/>
+		<transform from="´E" to="É"/>
+		<transform from="´I" to="Í"/>
+		<transform from="´i" to="í"/>
+		<transform from="´o" to="ó"/>
+		<transform from="´O" to="Ó"/>
+		<transform from="´u" to="ú"/>
+		<transform from="´U" to="Ú"/>
+		<transform from="^ " to="^"/>
+		<transform from="^a" to="â"/>
+		<transform from="^A" to="Â"/>
+		<transform from="^e" to="ê"/>
+		<transform from="^E" to="Ê"/>
+		<transform from="^I" to="Î"/>
+		<transform from="^i" to="î"/>
+		<transform from="^o" to="ô"/>
+		<transform from="^O" to="Ô"/>
+		<transform from="^u" to="û"/>
+		<transform from="^U" to="Û"/>
+		<transform from="¨ " to="¨"/>
+		<transform from="¨a" to="ä"/>
+		<transform from="¨A" to="Ä"/>
+		<transform from="¨e" to="ë"/>
+		<transform from="¨E" to="Ë"/>
+		<transform from="¨I" to="Ï"/>
+		<transform from="¨i" to="ï"/>
+		<transform from="¨o" to="ö"/>
+		<transform from="¨O" to="Ö"/>
+		<transform from="¨u" to="ü"/>
+		<transform from="¨U" to="Ü"/>
+		<transform from="¨y" to="ÿ"/>
+		<transform from="¨Y" to="Ÿ"/>
+		<transform from="~ " to="~"/>
+		<transform from="~a" to="ã"/>
+		<transform from="~A" to="Ã"/>
+		<transform from="~n" to="ñ"/>
+		<transform from="~N" to="Ñ"/>
+		<transform from="~o" to="õ"/>
+		<transform from="~O" to="Õ"/>
+	</transforms>
+</keyboard>
+

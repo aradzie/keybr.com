@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "name": "@keybr/timer",
+  "version": "0.0.0",
+  "main": "lib/index.ts",
+  "types": ".types/index.d.ts",
+  "browser": {
+    "./lib/impl.ts": "./lib/impl.browser.ts"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "clean": "rm -fr .types",
+    "compile": "tsc"
+  }
+}

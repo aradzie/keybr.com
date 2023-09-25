@@ -1,0 +1,19 @@
+@import "../mixins";
+
+.form {
+  cursor: default;
+}
+
+.fieldSet {
+  margin: 0;
+  padding: 1rem;
+  border: 1px solid var(--separator-color);
+
+  & + & {
+    margin-top: 1rem;
+  }
+}
+
+.legend {
+  color: var(--legend-color);
+}

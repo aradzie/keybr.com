@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE keyboard SYSTEM "../dtd/ldmlKeyboard.dtd">
+<keyboard locale="la-Ital-t-k0-windows">
+	<version platform="10" number="$Revision$"/>
+	<names>
+		<name value="Old Italic"/>
+	</names>
+	<settings fallback="omit"/>
+	<keyMap>
+		<map iso="E01" to="\u{320}"/> <!-- 1  to= ̠  -->
+		<map iso="E05" to="\u{321}"/> <!-- 5  to= ̡  -->
+		<map iso="E10" to="\u{322}"/> <!-- 0  to= ̢  -->
+		<map iso="E11" to="\u{323}"/> <!-- -  to= ̣  -->
+		<map iso="D01" to="\u{312}"/> <!-- Q  to= ̒  -->
+		<map iso="D03" to="\u{304}"/> <!-- E  to= ̄  -->
+		<map iso="D04" to="\u{313}"/> <!-- R  to= ̓  -->
+		<map iso="D05" to="\u{315}"/> <!-- T  to= ̕  -->
+		<map iso="D07" to="\u{316}"/> <!-- U  to= ̖  -->
+		<map iso="D08" to="\u{309}"/> <!-- I  to= ̉  -->
+		<map iso="D09" to="\u{30F}"/> <!-- O  to= ̏  -->
+		<map iso="D10" to="\u{310}"/> <!-- P  to= ̐  -->
+		<map iso="C01" to="\u{300}"/> <!-- A  to= ̀  -->
+		<map iso="C02" to="\u{314}"/> <!-- S  to= ̔  -->
+		<map iso="C03" to="\u{303}"/> <!-- D  to= ̃  -->
+		<map iso="C04" to="\u{305}"/> <!-- F  to= ̅  -->
+		<map iso="C06" to="\u{307}"/> <!-- H  to= ̇  -->
+		<map iso="C08" to="\u{30A}"/> <!-- K  to= ̊  -->
+		<map iso="C09" to="\u{30B}"/> <!-- L  to= ̋  -->
+		<map iso="C10" to=":"/> <!-- ; -->
+		<map iso="B01" to="\u{306}"/> <!-- Z  to= ̆  -->
+		<map iso="B02" to="\u{317}"/> <!-- X  to= ̗  -->
+		<map iso="B03" to="\u{302}"/> <!-- C  to= ̂  -->
+		<map iso="B05" to="\u{301}"/> <!-- B  to= ́  -->
+		<map iso="B06" to="\u{30D}"/> <!-- N  to= ̍  -->
+		<map iso="B07" to="\u{30C}"/> <!-- M  to= ̌  -->
+		<map iso="B09" to="·"/> <!-- . -->
+		<map iso="A03" to=" "/> <!-- space -->
+	</keyMap>
+	<keyMap modifiers="shift+caps?">
+		<map iso="D04" to="\u{31B}"/> <!-- R  base=̓  to= ̛  -->
+		<map iso="D05" to="\u{308}"/> <!-- T  base=̕  to= ̈  -->
+		<map iso="D07" to="\u{31E}"/> <!-- U  base=̖  to= ̞  -->
+		<map iso="D08" to="\u{31D}"/> <!-- I  base=̉  to= ̝  -->
+		<map iso="D10" to="\u{318}"/> <!-- P  base=̐  to= ̘  -->
+		<map iso="C02" to="\u{311}"/> <!-- S  base=̔  to= ̑  -->
+		<map iso="C04" to="\u{31A}"/> <!-- F  base=̅  to= ̚  -->
+		<map iso="C08" to="\u{319}"/> <!-- K  base=̊  to= ̙  -->
+		<map iso="C10" to="⁝"/> <!-- ;  base=: -->
+		<map iso="B01" to="\u{30E}"/> <!-- Z  base=̆  to= ̎  -->
+		<map iso="B03" to="\u{31C}"/> <!-- C  base=̂  to= ̜  -->
+		<map iso="A03" to=" "/> <!-- space -->
+	</keyMap>
+</keyboard>

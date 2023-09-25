@@ -1,0 +1,80 @@
+@height: 3rem;
+@width: 12rem;
+
+.player {
+  position: relative;
+  width: 100%;
+  height: @height;
+  border-top: 1px solid var(--separator-color);
+  background-color: var(--Player__background-color);
+}
+
+.isFiller {
+  /* empty */
+}
+
+.isMe {
+  background-color: var(--Player--me__background-color);
+}
+
+.isSpectator {
+  animation: pulseAnimation 0.6s infinite ease-in-out;
+}
+
+.isFinished {
+  background-color: var(--Player--finished__background-color);
+}
+
+.name {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: @width;
+  height: @height;
+}
+
+.details {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 0.5em 1em;
+  color: var(--PlayerDetails__color);
+  background-color: var(--PlayerDetails__background-color);
+  font-size: 0.8rem;
+  line-height: 0.8rem;
+}
+
+.lane {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: @width;
+  height: @height;
+  border-left: 1px solid var(--separator-color);
+}
+
+.car {
+  position: absolute;
+}
+
+.carImage {
+  display: block;
+  width: (@height * 1.66);
+  height: @height;
+}
+
+.wideValue {
+  min-width: 4rem;
+}
+
+@keyframes pulseAnimation {
+  from {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
