@@ -17,8 +17,6 @@ export const zone5: string;
 export const zone6: string;
 export const zone7: string;
 export const zone8: string;
-export const keyPointer: string;
-export const keyPointerAnimation: string;
 export const patternBackground: string;
 export const patternA: string;
 export const patternB: string;
