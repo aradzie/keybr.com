@@ -30,6 +30,48 @@ const key = (props: KeyProps): ReactNode => {
     </Key>
   );
 };
+const keyF = (props: KeyProps): ReactNode => {
+  const {
+    keyboardKey: {
+      codePoints: { a, b, c, d },
+    },
+  } = props;
+  const ab = a > 0 && b > 0 && keySymbol(a) === keySymbol(b);
+  const cd = c > 0 && d > 0 && keySymbol(c) === keySymbol(d);
+  return (
+    <Key {...props}>
+      <rect className={styles.keyButton} x={0} y={0} width={40} height={40} />
+      <circle className={styles.keyBump} cx={20} cy={35} r={3} />
+      {b > 0 && !ab && <Secondary x={10} y={15} codePoint={b} />}
+      {a > 0 && !ab && <Secondary x={10} y={30} codePoint={a} />}
+      {d > 0 && !cd && <Secondary x={28} y={15} codePoint={d} />}
+      {c > 0 && !cd && <Secondary x={28} y={30} codePoint={c} />}
+      {a > 0 && ab && <Primary x={15} y={25} codePoint={a} />}
+      {c > 0 && cd && <Primary x={28} y={30} codePoint={c} />}
+    </Key>
+  );
+};
+const keyJ = (props: KeyProps): ReactNode => {
+  const {
+    keyboardKey: {
+      codePoints: { a, b, c, d },
+    },
+  } = props;
+  const ab = a > 0 && b > 0 && keySymbol(a) === keySymbol(b);
+  const cd = c > 0 && d > 0 && keySymbol(c) === keySymbol(d);
+  return (
+    <Key {...props}>
+      <rect className={styles.keyButton} x={0} y={0} width={40} height={40} />
+      <circle className={styles.keyBump} cx={20} cy={35} r={3} />
+      {b > 0 && !ab && <Secondary x={10} y={15} codePoint={b} />}
+      {a > 0 && !ab && <Secondary x={10} y={30} codePoint={a} />}
+      {d > 0 && !cd && <Secondary x={28} y={15} codePoint={d} />}
+      {c > 0 && !cd && <Secondary x={28} y={30} codePoint={c} />}
+      {a > 0 && ab && <Primary x={15} y={25} codePoint={a} />}
+      {c > 0 && cd && <Primary x={28} y={30} codePoint={c} />}
+    </Key>
+  );
+};
 const keyBackslash = (props: KeyProps): ReactNode => {
   const {
     keyboardKey: {
@@ -299,6 +341,8 @@ const keyNp9 = (props: KeyProps): ReactNode => (
 
 const keys = new Map<string, FunctionComponent<KeyProps>>([
   ["key", key],
+  ["key-f", keyF],
+  ["key-j", keyJ],
   ["key-backslash", keyBackslash],
   ["key-left-shift", keyLeftShift],
   ["key-left-shift-standard-102", keyLeftShiftStandard102],

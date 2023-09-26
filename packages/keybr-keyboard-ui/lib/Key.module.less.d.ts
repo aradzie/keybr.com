@@ -5,6 +5,7 @@ export const keySymbol: string;
 export const keyPrimarySymbol: string;
 export const keySecondarySymbol: string;
 export const keyDeadSymbol: string;
+export const keyBump: string;
 export const simpleKey: string;
 export const specialKey: string;
 export const depressedKey: string;
