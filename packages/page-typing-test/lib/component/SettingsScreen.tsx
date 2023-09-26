@@ -22,29 +22,27 @@ export class SettingsScreen extends Component<Props, State> {
     const { onSubmit } = this.props;
     const { settings } = this.state;
     return (
-      <div className={styles.wrap}>
-        <div className={styles.settingsScreen}>
-          <SettingsEditor
-            settings={settings}
-            patchSettings={(settings) => {
-              this.setState({ settings });
-            }}
-          />
+      <div className={styles.settings}>
+        <SettingsEditor
+          settings={settings}
+          patchSettings={(settings) => {
+            this.setState({ settings });
+          }}
+        />
 
-          <FieldList>
-            <Field.Filler />
-            <Field>
-              <Button
-                icon={<Icon shape={mdiCheckCircle} />}
-                label="Done"
-                title="Save settings and return to the test."
-                onClick={() => {
-                  onSubmit(settings);
-                }}
-              />
-            </Field>
-          </FieldList>
-        </div>
+        <FieldList>
+          <Field.Filler />
+          <Field>
+            <Button
+              icon={<Icon shape={mdiCheckCircle} />}
+              label="Done"
+              title="Save settings and return to the test."
+              onClick={() => {
+                onSubmit(settings);
+              }}
+            />
+          </Field>
+        </FieldList>
       </div>
     );
   }

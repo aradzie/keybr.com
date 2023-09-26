@@ -1,2 +1,1 @@
-export const wrap: string;
-export const testScreen: string;
+export const test: string;

@@ -86,24 +86,22 @@ export class TestScreen extends Component<Props, State> {
 
   override render(): ReactNode {
     return (
-      <div className={styles.wrap}>
-        <div className={styles.testScreen}>
-          <Toolbar
-            settings={this.props.settings}
-            onChangeSettings={this.props.onChangeSettings}
-            onHelp={this.props.onHelp}
-            onConfigure={this.props.onConfigure}
-          />
-          <TextArea
-            ref={this.textArea}
-            settings={this.props.settings.textDisplay}
-            lines={this.state.lines}
-            onFocus={this.handleFocus}
-            onBlur={this.handleBlur}
-            onInput={this.handleInput}
-            lineTemplate={LineTemplate}
-          />
-        </div>
+      <div className={styles.test}>
+        <Toolbar
+          settings={this.props.settings}
+          onChangeSettings={this.props.onChangeSettings}
+          onHelp={this.props.onHelp}
+          onConfigure={this.props.onConfigure}
+        />
+        <TextArea
+          ref={this.textArea}
+          settings={this.props.settings.textDisplay}
+          lines={this.state.lines}
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
+          onInput={this.handleInput}
+          lineTemplate={LineTemplate}
+        />
       </div>
     );
   }
