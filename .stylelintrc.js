@@ -5,6 +5,27 @@ module.exports = {
   extends: ["stylelint-config-recommended"],
   plugins: ["stylelint-order"],
   rules: {
+    "property-no-unknown": [
+      true,
+      {
+        ignoreProperties: [
+          // CSS Modules composition
+          // https://github.com/css-modules/css-modules#composition
+          "composes",
+        ],
+      },
+    ],
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        ignorePseudoClasses: [
+          // CSS Modules :global and :local scopes
+          // https://github.com/css-modules/css-modules#exceptions
+          "global",
+          "local",
+        ],
+      },
+    ],
     "no-invalid-position-at-import-rule": null,
     "order/order": [
       [
@@ -26,6 +47,7 @@ module.exports = {
     ],
     "order/properties-order": [
       [
+        "composes",
         "all",
         "content",
         "display",
