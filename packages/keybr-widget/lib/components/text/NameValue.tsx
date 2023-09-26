@@ -61,8 +61,8 @@ export function Value({
     <span
       className={clsx(
         styles.value,
-        delta != null && delta > 0 && styles.valueDelta_more,
-        delta != null && delta < 0 && styles.valueDelta_less,
+        delta != null && delta > 0 && styles.value_more,
+        delta != null && delta < 0 && styles.value_less,
         className,
       )}
       title={title}
