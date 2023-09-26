@@ -72,7 +72,7 @@ export type LabelProps = {
 
 export const Label = memo(function Label(props: LabelProps): ReactNode {
   const { className, x, y, text, textAnchor } = props;
-  const cn = clsx(styles.keySymbol, className);
+  const cn = clsx(styles.symbol, className);
   return (
     <text className={cn} x={x} y={y} textAnchor={textAnchor}>
       {text}
@@ -100,12 +100,12 @@ export const Primary = memo(function Primary({
   if (codePoint != null && codePoint > 0) {
     if (isDiacritic(codePoint)) {
       text = deadKeySymbol(codePoint);
-      className = [styles.keyDeadSymbol, className];
+      className = [styles.deadSymbol, className];
     } else {
       text = keySymbol(codePoint);
     }
   }
-  const cn = clsx(styles.keySymbol, styles.keyPrimarySymbol, className);
+  const cn = clsx(styles.symbol, styles.primarySymbol, className);
   return (
     <text className={cn} x={x} y={y} textAnchor={textAnchor}>
       {text}
@@ -133,12 +133,12 @@ export const Secondary = memo(function Secondary({
   if (codePoint != null && codePoint > 0) {
     if (isDiacritic(codePoint)) {
       text = deadKeySymbol(codePoint);
-      className = [styles.keyDeadSymbol, className];
+      className = [styles.deadSymbol, className];
     } else {
       text = keySymbol(codePoint);
     }
   }
-  const cn = clsx(styles.keySymbol, styles.keySecondarySymbol, className);
+  const cn = clsx(styles.symbol, styles.secondarySymbol, className);
   return (
     <text className={cn} x={x} y={y} textAnchor={textAnchor}>
       {text}
