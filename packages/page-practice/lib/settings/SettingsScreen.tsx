@@ -1,4 +1,5 @@
 import { KeyboardContext, loadKeyboard } from "@keybr/keyboard";
+import { Screen } from "@keybr/pages-shared";
 import { type Settings, SettingsContext, useSettings } from "@keybr/settings";
 import { Button, Field, FieldList, Icon, Tab, TabList } from "@keybr/widget";
 import { mdiCheckCircle } from "@mdi/js";
@@ -7,7 +8,6 @@ import { useIntl } from "react-intl";
 import { LayoutSettings } from "./LayoutSettings.tsx";
 import { LessonSettings } from "./LessonSettings.tsx";
 import { MiscSettings } from "./MiscSettings.tsx";
-import * as styles from "./SettingsScreen.module.less";
 import { TypingSettings } from "./TypingSettings.tsx";
 
 export function SettingsScreen({
@@ -47,7 +47,7 @@ function Content({ onSubmit }: { readonly onSubmit: () => void }): ReactNode {
   const [tabIndex, setTabIndex] = useState(0);
 
   return (
-    <div className={styles.settings}>
+    <Screen>
       <TabList
         selectedIndex={tabIndex}
         onSelect={(tabIndex) => {
@@ -116,6 +116,6 @@ function Content({ onSubmit }: { readonly onSubmit: () => void }): ReactNode {
           />
         </Field>
       </FieldList>
-    </div>
+    </Screen>
   );
 }

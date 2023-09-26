@@ -1,8 +1,8 @@
 import { addKey, deleteKey } from "@keybr/keyboard-ui";
+import { Screen } from "@keybr/pages-shared";
 import { type LineData } from "@keybr/textinput";
 import { type KeyEvent } from "@keybr/textinput-events";
 import { TextArea } from "@keybr/textinput-ui";
-import { clsx } from "clsx";
 import { PureComponent, type ReactNode } from "react";
 import { Announcer } from "./Announcer.tsx";
 import { Controls } from "./Controls.tsx";
@@ -266,13 +266,10 @@ function NormalLayout({
   readonly tour: ReactNode;
 }): ReactNode {
   return (
-    <div className={clsx(styles.practice, styles.practice_normal)}>
+    <Screen>
       <Indicators state={state} />
       {controls}
-      <div
-        id={names.textInput}
-        className={clsx(styles.textInput, styles.textInput_normal)}
-      >
+      <div id={names.textInput} className={styles.textInput_normal}>
         {textInput}
       </div>
       <div id={names.keyboard} className={styles.keyboard}>
@@ -283,7 +280,7 @@ function NormalLayout({
       </div>
       <Announcer state={state} />
       {tour}
-    </div>
+    </Screen>
   );
 }
 
@@ -299,14 +296,14 @@ function CompactLayout({
   readonly textInput: ReactNode;
 }): ReactNode {
   return (
-    <div className={clsx(styles.practice, styles.practice_compact)}>
+    <Screen>
       <Indicators state={state} />
       {controls}
-      <div className={clsx(styles.textInput, styles.textInput_compact)}>
+      <div id={names.textInput} className={styles.textInput_compact}>
         {textInput}
       </div>
       <Announcer state={state} />
-    </div>
+    </Screen>
   );
 }
 
@@ -322,13 +319,13 @@ function BareLayout({
   readonly textInput: ReactNode;
 }): ReactNode {
   return (
-    <div className={clsx(styles.practice, styles.practice_bare)}>
+    <Screen>
       {controls}
-      <div className={clsx(styles.textInput, styles.textInput_bare)}>
+      <div id={names.textInput} className={styles.textInput_bare}>
         {textInput}
       </div>
       <Announcer state={state} />
-    </div>
+    </Screen>
   );
 }
 

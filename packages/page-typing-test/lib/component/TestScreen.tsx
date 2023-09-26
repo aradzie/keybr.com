@@ -1,3 +1,4 @@
+import { Screen } from "@keybr/pages-shared";
 import { type LineData, newStats, type Stats } from "@keybr/textinput";
 import { TextArea } from "@keybr/textinput-ui";
 import { Component, createRef, type ReactNode } from "react";
@@ -5,7 +6,6 @@ import { type Mark, type TextGenerator } from "../generator/index.ts";
 import { Session, type SessionSettings } from "../session/index.ts";
 import { LineTemplate } from "./LineTemplate.tsx";
 import { type CompositeSettings } from "./settings/index.ts";
-import * as styles from "./TestScreen.module.less";
 import { Toolbar } from "./Toolbar.tsx";
 
 type Props = {
@@ -86,7 +86,7 @@ export class TestScreen extends Component<Props, State> {
 
   override render(): ReactNode {
     return (
-      <div className={styles.test}>
+      <Screen>
         <Toolbar
           settings={this.props.settings}
           onChangeSettings={this.props.onChangeSettings}
@@ -102,7 +102,7 @@ export class TestScreen extends Component<Props, State> {
           onInput={this.handleInput}
           lineTemplate={LineTemplate}
         />
-      </div>
+      </Screen>
     );
   }
 }

@@ -1,3 +1,4 @@
+import { Screen } from "@keybr/pages-shared";
 import { type KeyStatsMap } from "@keybr/result";
 import { type ReactNode } from "react";
 import { CalendarSection } from "./profile/CalendarSection.tsx";
@@ -11,17 +12,16 @@ import { ResultGrouper } from "./profile/ResultGrouper.tsx";
 import { newSpeedDistribution } from "./profile/speed/dist.ts";
 import { AllTimeSummary, useSummary } from "./profile/Summary.tsx";
 import { TypingSpeedSection } from "./profile/TypingSpeedSection.tsx";
-import * as styles from "./styles.module.less";
 
 export function PublicProfileApp(): ReactNode {
   return (
-    <div className={styles.profile}>
+    <Screen>
       <ResultGrouper>
         {(keyStatsMap) => {
           return <Content keyStatsMap={keyStatsMap} />;
         }}
       </ResultGrouper>
-    </div>
+    </Screen>
   );
 }
 

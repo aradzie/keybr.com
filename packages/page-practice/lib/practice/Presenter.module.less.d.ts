@@ -1,7 +1,3 @@
-export const practice: string;
-export const practice_normal: string;
-export const practice_compact: string;
-export const practice_bare: string;
 export const textInput: string;
 export const textInput_normal: string;
 export const textInput_compact: string;
