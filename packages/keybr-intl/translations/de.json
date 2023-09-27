@@ -503,9 +503,25 @@
     "defaultMessage": "Alle Tasten",
     "description": "Panel label."
   },
+  "lesson.learningRateLabel": {
+    "defaultMessage": "Lernrate",
+    "description": "Label name."
+  },
+  "lesson.learningRateTitle": {
+    "defaultMessage": "Lernrate.",
+    "description": "Label title."
+  },
+  "lesson.learningRateValue": {
+    "defaultMessage": "{learningRate} per lesson",
+    "description": "Value format."
+  },
   "lesson.notCalibratedText": {
     "defaultMessage": "Nicht kalibriert, mehr Beispiele erforderlich",
     "description": "Panel text."
+  },
+  "lesson.uncertainValue": {
+    "defaultMessage": "Uncertain",
+    "description": "Value format."
   },
   "lessonType.customText.description": {
     "defaultMessage": "Generieren Sie Lektionen aus den Wörtern Ihres eigenen, hier bereitgestellten benutzerdefinierten Textes. Alle Tastaturtasten sind standardmäßig enthalten.",

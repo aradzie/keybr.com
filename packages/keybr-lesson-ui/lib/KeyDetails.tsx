@@ -1,5 +1,4 @@
-import { useIntlNumbers } from "@keybr/intl";
-import { type LessonKey } from "@keybr/lesson";
+import { LearningRate, type LessonKey } from "@keybr/lesson";
 import { timeToSpeed } from "@keybr/result";
 import { type ClassName, Name, NameValue, Value } from "@keybr/widget";
 import { clsx } from "clsx";
@@ -11,15 +10,15 @@ import * as styles from "./styles.module.less";
 
 export const KeyDetails = ({
   className,
-  lessonKey: { timeToType, bestTimeToType, confidence },
+  lessonKey,
 }: {
   readonly className?: ClassName;
   readonly lessonKey: LessonKey;
 }): ReactNode => {
   const { formatMessage } = useIntl();
-  const { formatNumber } = useIntlNumbers();
   const fmt = useFormatter();
-  if (confidence != null) {
+  if (lessonKey.confidence != null) {
+    const lr = LearningRate.from(lessonKey.samples);
     const { speedUnitName } = fmt;
     return (
       <span
@@ -30,19 +29,19 @@ export const KeyDetails = ({
         )}
       >
         <NameValue
-          name={<Name name={formatMessage(messages.averageSpeedLabel)} />}
-          value={<Value value={fmt(timeToSpeed(timeToType))} />}
-          title={formatMessage(messages.averageSpeedTitle, { speedUnitName })}
-        />
-        <NameValue
           name={<Name name={formatMessage(messages.bestSpeedLabel)} />}
-          value={<Value value={fmt(timeToSpeed(bestTimeToType))} />}
+          value={<Value value={fmt(timeToSpeed(lessonKey.bestTimeToType))} />}
           title={formatMessage(messages.bestSpeedTitle, { speedUnitName })}
         />
         <NameValue
           name={<Name name={formatMessage(messages.confidenceLevelLabel)} />}
-          value={<Value value={formatNumber(confidence, 2)} />}
+          value={<Value value={fmt.confidence(lessonKey.confidence)} />}
           title={formatMessage(messages.confidenceLevelTitle)}
+        />
+        <NameValue
+          name={<Name name={formatMessage(messages.learningRateLabel)} />}
+          value={<Value value={fmt.learningRate(lr)} />}
+          title={formatMessage(messages.learningRateTitle)}
         />
       </span>
     );

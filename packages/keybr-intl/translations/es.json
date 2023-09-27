@@ -503,9 +503,25 @@
     "defaultMessage": "Todas las teclas",
     "description": "Panel label."
   },
+  "lesson.learningRateLabel": {
+    "defaultMessage": "Tasa de aprendizaje",
+    "description": "Label name."
+  },
+  "lesson.learningRateTitle": {
+    "defaultMessage": "Tasa de aprendizaje.",
+    "description": "Label title."
+  },
+  "lesson.learningRateValue": {
+    "defaultMessage": "{learningRate} per lesson",
+    "description": "Value format."
+  },
   "lesson.notCalibratedText": {
     "defaultMessage": "No está calibrado, se necesitan más muestras",
     "description": "Panel text."
+  },
+  "lesson.uncertainValue": {
+    "defaultMessage": "Uncertain",
+    "description": "Value format."
   },
   "lessonType.customText.description": {
     "defaultMessage": "Genere lecciones de mecanografía a partir de las palabras de su propio texto personalizado que se proporcionan aquí. De forma predeterminada, todas las claves están habilitadas.",

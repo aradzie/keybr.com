@@ -503,9 +503,25 @@
     "defaultMessage": "Все буквы",
     "description": "Panel label."
   },
+  "lesson.learningRateLabel": {
+    "defaultMessage": "Темп обучения",
+    "description": "Label name."
+  },
+  "lesson.learningRateTitle": {
+    "defaultMessage": "Темп обучения.",
+    "description": "Label title."
+  },
+  "lesson.learningRateValue": {
+    "defaultMessage": "{learningRate} за урок",
+    "description": "Value format."
+  },
   "lesson.notCalibratedText": {
     "defaultMessage": "Недостаточно данных, закончите больше уроков",
     "description": "Panel text."
+  },
+  "lesson.uncertainValue": {
+    "defaultMessage": "Неопределенный",
+    "description": "Value format."
   },
   "lessonType.customText.description": {
     "defaultMessage": "Генерировать уроки используя слова, взятые из вашего собственного текста. Все буквы включены по умолчанию.",

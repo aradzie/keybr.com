@@ -503,9 +503,25 @@
     "defaultMessage": "Toutes les touches",
     "description": "Panel label."
   },
+  "lesson.learningRateLabel": {
+    "defaultMessage": "Taux d'apprentissage",
+    "description": "Label name."
+  },
+  "lesson.learningRateTitle": {
+    "defaultMessage": "Taux d'apprentissage.",
+    "description": "Label title."
+  },
+  "lesson.learningRateValue": {
+    "defaultMessage": "{learningRate} per lesson",
+    "description": "Value format."
+  },
   "lesson.notCalibratedText": {
     "defaultMessage": "Non calibré, besoin de plus d'échantillons",
     "description": "Panel text."
+  },
+  "lesson.uncertainValue": {
+    "defaultMessage": "Uncertain",
+    "description": "Value format."
   },
   "lessonType.customText.description": {
     "defaultMessage": "Générez des leçons de dactylographie à partir des mots de votre propre texte personnalisé fourni ici. Par défaut, toutes les clés sont activées.",

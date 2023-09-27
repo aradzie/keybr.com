@@ -9,7 +9,8 @@ export const messages = defineMessages({
   averageSpeedTitle: {
     id: "lesson.averageSpeedTitle",
     description: "Label title.",
-    defaultMessage: "Average typing speed ({speedUnitName}).",
+    defaultMessage:
+      "Average typing speed ({speedUnitName}). The more, the better.",
   },
   bestSpeedLabel: {
     id: "lesson.bestSpeedLabel",
@@ -19,7 +20,8 @@ export const messages = defineMessages({
   bestSpeedTitle: {
     id: "lesson.bestSpeedTitle",
     description: "Label title.",
-    defaultMessage: "Best typing speed ({speedUnitName}).",
+    defaultMessage:
+      "Best typing speed ({speedUnitName}). The more, the better.",
   },
   confidenceLevelLabel: {
     id: "lesson.confidenceLevelLabel",
@@ -29,7 +31,27 @@ export const messages = defineMessages({
   confidenceLevelTitle: {
     id: "lesson.confidenceLevelTitle",
     description: "Label title.",
-    defaultMessage: "Confidence level (from 0 to 1).",
+    defaultMessage: "How close you are to unlocking this key.",
+  },
+  learningRateLabel: {
+    id: "lesson.learningRateLabel",
+    description: "Label name.",
+    defaultMessage: "Learning rate",
+  },
+  learningRateTitle: {
+    id: "lesson.learningRateTitle",
+    description: "Label title.",
+    defaultMessage: "How much typing speed you gained with each lesson.",
+  },
+  learningRateValue: {
+    id: "lesson.learningRateValue",
+    description: "Value format.",
+    defaultMessage: "{learningRate} per lesson",
+  },
+  uncertainValue: {
+    id: "lesson.uncertainValue",
+    description: "Value format.",
+    defaultMessage: "Uncertain",
   },
   notCalibratedText: {
     id: "lesson.notCalibratedText",

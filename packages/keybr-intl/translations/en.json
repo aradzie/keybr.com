@@ -428,7 +428,7 @@
     "description": "Label name."
   },
   "lesson.averageSpeedTitle": {
-    "defaultMessage": "Average typing speed ({speedUnitName}).",
+    "defaultMessage": "Average typing speed ({speedUnitName}). The more, the better.",
     "description": "Label title."
   },
   "lesson.bestSpeedLabel": {
@@ -436,7 +436,7 @@
     "description": "Label name."
   },
   "lesson.bestSpeedTitle": {
-    "defaultMessage": "Best typing speed ({speedUnitName}).",
+    "defaultMessage": "Best typing speed ({speedUnitName}). The more, the better.",
     "description": "Label title."
   },
   "lesson.boostedKeyText": {
@@ -452,7 +452,7 @@
     "description": "Label name."
   },
   "lesson.confidenceLevelTitle": {
-    "defaultMessage": "Confidence level (from 0 to 1).",
+    "defaultMessage": "How close you are to unlocking this key.",
     "description": "Label title."
   },
   "lesson.currentKeyPanelLabel": {
@@ -503,9 +503,25 @@
     "defaultMessage": "All keys",
     "description": "Panel label."
   },
+  "lesson.learningRateLabel": {
+    "defaultMessage": "Learning rate",
+    "description": "Label name."
+  },
+  "lesson.learningRateTitle": {
+    "defaultMessage": "How much typing speed you gained with each lesson.",
+    "description": "Label title."
+  },
+  "lesson.learningRateValue": {
+    "defaultMessage": "{learningRate} per lesson",
+    "description": "Value format."
+  },
   "lesson.notCalibratedText": {
     "defaultMessage": "Not calibrated, need more samples",
     "description": "Panel text."
+  },
+  "lesson.uncertainValue": {
+    "defaultMessage": "Uncertain",
+    "description": "Value format."
   },
   "lessonType.customText.description": {
     "defaultMessage": "Generate typing lessons from the words of your own custom text. All keys are included by default.",

@@ -503,9 +503,25 @@
     "defaultMessage": "Wszystkie klawisze",
     "description": "Panel label."
   },
+  "lesson.learningRateLabel": {
+    "defaultMessage": "Tempo nauki.",
+    "description": "Label name."
+  },
+  "lesson.learningRateTitle": {
+    "defaultMessage": "Tempo nauki.",
+    "description": "Label title."
+  },
+  "lesson.learningRateValue": {
+    "defaultMessage": "{learningRate} na lekcję",
+    "description": "Value format."
+  },
   "lesson.notCalibratedText": {
     "defaultMessage": "Nie skalibrowano, wymagana większa liczba próbek",
     "description": "Panel text."
+  },
+  "lesson.uncertainValue": {
+    "defaultMessage": "Niepewny",
+    "description": "Value format."
   },
   "lessonType.customText.description": {
     "defaultMessage": "Wygeneruj lekcje pisania na podstawie słów własnego, niestandardowego tekstu podanego tutaj. Wszystkie klawisze są domyślnie włączone.",
