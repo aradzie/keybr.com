@@ -12,6 +12,7 @@ test("render no key", (t) => {
   const lessonKeys = new LessonKeys([
     new LessonKey({
       letter: letters[0],
+      samples: [],
       timeToType: 100,
       bestTimeToType: 100,
     }).asIncluded(),
@@ -32,6 +33,7 @@ test("render key", (t) => {
   const lessonKeys = new LessonKeys([
     new LessonKey({
       letter: letters[0],
+      samples: [],
       timeToType: 100,
       bestTimeToType: 100,
     }).asBoosted(),

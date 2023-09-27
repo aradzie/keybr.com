@@ -1,13 +1,14 @@
 import { type Letter } from "@keybr/phonetic-model";
-import { type KeyStats, type KeyStatsMap } from "@keybr/result";
+import { type KeySample, type KeyStats, type KeyStatsMap } from "@keybr/result";
 import { type CodePoint } from "@keybr/unicode";
 import { timeToConfidence } from "./confidence.ts";
 
-export class LessonKey {
+export class LessonKey implements KeyStats {
   static from(keyStats: KeyStats): LessonKey {
-    const { letter, timeToType, bestTimeToType } = keyStats;
+    const { letter, samples, timeToType, bestTimeToType } = keyStats;
     return new LessonKey({
       letter,
+      samples,
       timeToType,
       bestTimeToType,
     });
@@ -27,6 +28,7 @@ export class LessonKey {
   }
 
   readonly letter: Letter;
+  readonly samples: readonly KeySample[];
   readonly timeToType: number;
   readonly bestTimeToType: number;
   readonly confidence: number | null;
@@ -37,6 +39,7 @@ export class LessonKey {
 
   constructor({
     letter,
+    samples,
     timeToType,
     bestTimeToType,
     isIncluded = false,
@@ -44,6 +47,7 @@ export class LessonKey {
     isForced = false,
   }: {
     letter: Letter;
+    samples: readonly KeySample[];
     timeToType: number;
     bestTimeToType: number;
     isIncluded?: boolean;
@@ -51,6 +55,7 @@ export class LessonKey {
     isForced?: boolean;
   }) {
     this.letter = letter;
+    this.samples = samples;
     this.timeToType = timeToType;
     this.bestTimeToType = bestTimeToType;
     this.confidence = timeToConfidence(timeToType);

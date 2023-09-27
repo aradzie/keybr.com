@@ -15,6 +15,7 @@ export function makeExampleLesson(
       keys.push(
         new LessonKey({
           letter,
+          samples: [],
           timeToType: t,
           bestTimeToType: t,
         }).asIncluded(),
@@ -23,6 +24,7 @@ export function makeExampleLesson(
       keys.push(
         new LessonKey({
           letter,
+          samples: [],
           timeToType: NaN,
           bestTimeToType: NaN,
         }).asExcluded(),

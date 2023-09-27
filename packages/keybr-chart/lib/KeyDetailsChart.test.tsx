@@ -16,6 +16,7 @@ test("render empty", (t) => {
           lessonKey={
             new LessonKey({
               letter: FakePhoneticModel.letter1,
+              samples: [],
               timeToType: 500,
               bestTimeToType: 500,
             })
@@ -41,6 +42,7 @@ test("render non-empty", (t) => {
           lessonKey={
             new LessonKey({
               letter: FakePhoneticModel.letter1,
+              samples: [],
               timeToType: 500,
               bestTimeToType: 500,
             })

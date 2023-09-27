@@ -15,6 +15,7 @@ test("provide key set", (t) => {
   t.deepEqual(lessonKeys.findIncludedKeys(), [
     new LessonKey({
       letter: Letter.digits[0],
+      samples: [],
       timeToType: NaN,
       bestTimeToType: NaN,
       isIncluded: true,
@@ -23,6 +24,7 @@ test("provide key set", (t) => {
     }),
     new LessonKey({
       letter: Letter.digits[1],
+      samples: [],
       timeToType: NaN,
       bestTimeToType: NaN,
       isIncluded: true,
@@ -31,6 +33,7 @@ test("provide key set", (t) => {
     }),
     new LessonKey({
       letter: Letter.digits[2],
+      samples: [],
       timeToType: NaN,
       bestTimeToType: NaN,
       isIncluded: true,
@@ -39,6 +42,7 @@ test("provide key set", (t) => {
     }),
     new LessonKey({
       letter: Letter.digits[3],
+      samples: [],
       timeToType: NaN,
       bestTimeToType: NaN,
       isIncluded: true,
@@ -47,6 +51,7 @@ test("provide key set", (t) => {
     }),
     new LessonKey({
       letter: Letter.digits[4],
+      samples: [],
       timeToType: NaN,
       bestTimeToType: NaN,
       isIncluded: true,
@@ -55,6 +60,7 @@ test("provide key set", (t) => {
     }),
     new LessonKey({
       letter: Letter.digits[5],
+      samples: [],
       timeToType: NaN,
       bestTimeToType: NaN,
       isIncluded: true,
@@ -63,6 +69,7 @@ test("provide key set", (t) => {
     }),
     new LessonKey({
       letter: Letter.digits[6],
+      samples: [],
       timeToType: NaN,
       bestTimeToType: NaN,
       isIncluded: true,
@@ -71,6 +78,7 @@ test("provide key set", (t) => {
     }),
     new LessonKey({
       letter: Letter.digits[7],
+      samples: [],
       timeToType: NaN,
       bestTimeToType: NaN,
       isIncluded: true,
@@ -79,6 +87,7 @@ test("provide key set", (t) => {
     }),
     new LessonKey({
       letter: Letter.digits[8],
+      samples: [],
       timeToType: NaN,
       bestTimeToType: NaN,
       isIncluded: true,
@@ -87,6 +96,7 @@ test("provide key set", (t) => {
     }),
     new LessonKey({
       letter: Letter.digits[9],
+      samples: [],
       timeToType: NaN,
       bestTimeToType: NaN,
       isIncluded: true,

@@ -12,21 +12,25 @@ test("render", (t) => {
   const lessonKeys = new LessonKeys([
     new LessonKey({
       letter: letters[0],
+      samples: [],
       timeToType: 100,
       bestTimeToType: 100,
     }).asBoosted(),
     new LessonKey({
       letter: letters[1],
+      samples: [],
       timeToType: 100,
       bestTimeToType: 100,
     }).asIncluded(),
     new LessonKey({
       letter: letters[2],
+      samples: [],
       timeToType: 100,
       bestTimeToType: 100,
     }).asForced(),
     new LessonKey({
       letter: letters[3],
+      samples: [],
       timeToType: 100,
       bestTimeToType: 100,
     }),

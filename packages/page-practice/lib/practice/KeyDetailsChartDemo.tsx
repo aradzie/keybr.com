@@ -7,6 +7,7 @@ import * as styles from "./KeyDetailsChartDemo.module.less";
 export function KeyDetailsChartDemo(): ReactNode {
   const lessonKey = new LessonKey({
     letter: new Letter(/* a */ 0x61, 1),
+    samples: [],
     timeToType: 380,
     bestTimeToType: 380,
   });

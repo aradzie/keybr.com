@@ -9,6 +9,7 @@ import { KeyDetails } from "./KeyDetails.tsx";
 test("render uncalibrated", (t) => {
   const lessonKey = new LessonKey({
     letter: FakePhoneticModel.letter1,
+    samples: [],
     timeToType: NaN,
     bestTimeToType: NaN,
   });
@@ -27,6 +28,7 @@ test("render uncalibrated", (t) => {
 test("render calibrated", (t) => {
   const lessonKey = new LessonKey({
     letter: FakePhoneticModel.letter1,
+    samples: [],
     timeToType: MIN_TIME,
     bestTimeToType: MIN_TIME,
   });

@@ -17,6 +17,7 @@ test("provide key set", (t) => {
   t.deepEqual(lessonKeys.findIncludedKeys(), [
     new LessonKey({
       letter: FakePhoneticModel.letter1,
+      samples: [],
       timeToType: NaN,
       bestTimeToType: NaN,
       isIncluded: true,
@@ -25,6 +26,7 @@ test("provide key set", (t) => {
     }),
     new LessonKey({
       letter: FakePhoneticModel.letter2,
+      samples: [],
       timeToType: NaN,
       bestTimeToType: NaN,
       isIncluded: true,
@@ -33,6 +35,7 @@ test("provide key set", (t) => {
     }),
     new LessonKey({
       letter: FakePhoneticModel.letter3,
+      samples: [],
       timeToType: NaN,
       bestTimeToType: NaN,
       isIncluded: true,
@@ -41,6 +44,7 @@ test("provide key set", (t) => {
     }),
     new LessonKey({
       letter: FakePhoneticModel.letter4,
+      samples: [],
       timeToType: NaN,
       bestTimeToType: NaN,
       isIncluded: true,
@@ -49,6 +53,7 @@ test("provide key set", (t) => {
     }),
     new LessonKey({
       letter: FakePhoneticModel.letter5,
+      samples: [],
       timeToType: NaN,
       bestTimeToType: NaN,
       isIncluded: true,
@@ -57,6 +62,7 @@ test("provide key set", (t) => {
     }),
     new LessonKey({
       letter: FakePhoneticModel.letter6,
+      samples: [],
       timeToType: NaN,
       bestTimeToType: NaN,
       isIncluded: true,
@@ -65,6 +71,7 @@ test("provide key set", (t) => {
     }),
     new LessonKey({
       letter: FakePhoneticModel.letter7,
+      samples: [],
       timeToType: NaN,
       bestTimeToType: NaN,
       isIncluded: true,
@@ -73,6 +80,7 @@ test("provide key set", (t) => {
     }),
     new LessonKey({
       letter: FakePhoneticModel.letter8,
+      samples: [],
       timeToType: NaN,
       bestTimeToType: NaN,
       isIncluded: true,
@@ -81,6 +89,7 @@ test("provide key set", (t) => {
     }),
     new LessonKey({
       letter: FakePhoneticModel.letter9,
+      samples: [],
       timeToType: NaN,
       bestTimeToType: NaN,
       isIncluded: true,
@@ -89,6 +98,7 @@ test("provide key set", (t) => {
     }),
     new LessonKey({
       letter: FakePhoneticModel.letter10,
+      samples: [],
       timeToType: NaN,
       bestTimeToType: NaN,
       isIncluded: true,

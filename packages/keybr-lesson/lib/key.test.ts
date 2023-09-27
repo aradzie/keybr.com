@@ -16,16 +16,19 @@ test("find boosted key when all keys have max confidence", (t) => {
 
   const a = new LessonKey({
     letter: letter1,
+    samples: [],
     timeToType: MIN_TIME + 10,
     bestTimeToType: MIN_TIME,
   });
   const b = new LessonKey({
     letter: letter2,
+    samples: [],
     timeToType: MIN_TIME + 10,
     bestTimeToType: MIN_TIME,
   });
   const c = new LessonKey({
     letter: letter3,
+    samples: [],
     timeToType: MIN_TIME + 10,
     bestTimeToType: MIN_TIME,
   });
@@ -43,16 +46,19 @@ test("find boosted key with least confidence", (t) => {
 
   const a = new LessonKey({
     letter: letter1,
+    samples: [],
     timeToType: MAX_TIME,
     bestTimeToType: MAX_TIME - 30,
   });
   const b = new LessonKey({
     letter: letter2,
+    samples: [],
     timeToType: MAX_TIME,
     bestTimeToType: MAX_TIME - 20,
   });
   const c = new LessonKey({
     letter: letter3,
+    samples: [],
     timeToType: MAX_TIME,
     bestTimeToType: MAX_TIME - 10,
   });
@@ -72,16 +78,19 @@ test("lesson keys", (t) => {
   const keys = new LessonKeys([
     new LessonKey({
       letter: letter1,
+      samples: [],
       timeToType: MIN_TIME,
       bestTimeToType: MIN_TIME,
     }),
     new LessonKey({
       letter: letter2,
+      samples: [],
       timeToType: MIN_TIME,
       bestTimeToType: MIN_TIME,
     }),
     new LessonKey({
       letter: letter3,
+      samples: [],
       timeToType: MIN_TIME,
       bestTimeToType: MIN_TIME,
     }),
@@ -99,6 +108,7 @@ test("lesson keys", (t) => {
     [
       new LessonKey({
         letter: letter1,
+        samples: [],
         timeToType: MIN_TIME,
         bestTimeToType: MIN_TIME,
         isIncluded: true,
@@ -107,6 +117,7 @@ test("lesson keys", (t) => {
       }),
       new LessonKey({
         letter: letter2,
+        samples: [],
         timeToType: MIN_TIME,
         bestTimeToType: MIN_TIME,
         isIncluded: false,
@@ -115,6 +126,7 @@ test("lesson keys", (t) => {
       }),
       new LessonKey({
         letter: letter3,
+        samples: [],
         timeToType: MIN_TIME,
         bestTimeToType: MIN_TIME,
         isIncluded: false,
@@ -126,6 +138,7 @@ test("lesson keys", (t) => {
   t.deepEqual(keys.findIncludedKeys(), [
     new LessonKey({
       letter: letter1,
+      samples: [],
       timeToType: MIN_TIME,
       bestTimeToType: MIN_TIME,
       isIncluded: true,
@@ -136,6 +149,7 @@ test("lesson keys", (t) => {
   t.deepEqual(keys.findExcludedKeys(), [
     new LessonKey({
       letter: letter2,
+      samples: [],
       timeToType: MIN_TIME,
       bestTimeToType: MIN_TIME,
       isIncluded: false,
@@ -144,6 +158,7 @@ test("lesson keys", (t) => {
     }),
     new LessonKey({
       letter: letter3,
+      samples: [],
       timeToType: MIN_TIME,
       bestTimeToType: MIN_TIME,
       isIncluded: false,
@@ -155,6 +170,7 @@ test("lesson keys", (t) => {
     keys.findBoostedKey(),
     new LessonKey({
       letter: letter1,
+      samples: [],
       timeToType: MIN_TIME,
       bestTimeToType: MIN_TIME,
       isIncluded: true,

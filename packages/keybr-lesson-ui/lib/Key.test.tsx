@@ -9,6 +9,7 @@ import { Key } from "./Key.tsx";
 test("render excluded", (t) => {
   const lessonKey = new LessonKey({
     letter: FakePhoneticModel.letter1,
+    samples: [],
     timeToType: NaN,
     bestTimeToType: NaN,
   }).asExcluded();
@@ -27,6 +28,7 @@ test("render excluded", (t) => {
 test("render included", (t) => {
   const lessonKey = new LessonKey({
     letter: FakePhoneticModel.letter1,
+    samples: [],
     timeToType: NaN,
     bestTimeToType: NaN,
   }).asIncluded();
@@ -45,6 +47,7 @@ test("render included", (t) => {
 test("render boosted", (t) => {
   const lessonKey = new LessonKey({
     letter: FakePhoneticModel.letter1,
+    samples: [],
     timeToType: NaN,
     bestTimeToType: NaN,
   }).asBoosted();
