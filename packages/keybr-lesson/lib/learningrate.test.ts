@@ -19,8 +19,9 @@ test("decreasing time", (t) => {
       timeToTypeStep: +10,
     }),
   ) as LearningRate;
-  t.is(lr.remainingLessons, 3);
   t.is(lr.certainty, 0.9990293383742471);
+  t.is(lr.learningRate, 4.164934164934164);
+  t.is(lr.remainingLessons, 3);
 });
 
 test("increasing time", (t) => {
@@ -30,23 +31,14 @@ test("increasing time", (t) => {
       timeToTypeStep: -10,
     }),
   ) as LearningRate;
+  t.is(lr.certainty, 0.9992055903829036);
+  t.is(lr.learningRate, -3.4079306966431178);
   t.is(lr.remainingLessons, NaN);
-  t.is(lr.certainty, NaN);
 });
 
-test("non changing time", (t) => {
-  const lr = LearningRate.from(
-    generateKeySamples(5, {
-      timeToTypeStart: 400,
-      timeToTypeStep: 0,
-    }),
-  ) as LearningRate;
-  t.is(lr.remainingLessons, NaN);
-  t.is(lr.certainty, NaN);
-});
-
-test("example", (t) => {
+test("learning rate of the example data", (t) => {
   const lr = LearningRate.example();
-  t.is(lr.remainingLessons, 3);
   t.is(lr.certainty, 0.9999384065091098);
+  t.is(lr.learningRate, 4.234223847240317);
+  t.is(lr.remainingLessons, 3);
 });

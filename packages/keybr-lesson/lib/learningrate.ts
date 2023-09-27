@@ -1,6 +1,6 @@
 import {
   hasData,
-  type Model,
+  type Polynomial,
   polynomialRegression,
   r2,
   Vector,
@@ -39,10 +39,11 @@ export class LearningRate {
 
   readonly vIndex: Vector;
   readonly vSpeed: Vector;
-  readonly mSpeed: Model;
+  readonly mSpeed: Polynomial;
 
-  readonly remainingLessons: number = NaN;
   readonly certainty: number = NaN;
+  readonly learningRate: number = NaN;
+  readonly remainingLessons: number = NaN;
 
   constructor(readonly samples: readonly KeySample[]) {
     const { length } = samples;
@@ -53,7 +54,7 @@ export class LearningRate {
       vIndex.add(sample.index + 1);
       vSpeed.add(timeToSpeed(sample.filteredTimeToType));
     }
-    let mSpeed: Model;
+    let mSpeed: Polynomial;
     const session = findSession(samples);
     if (hasData(session)) {
       const { length } = session;
@@ -80,14 +81,15 @@ export class LearningRate {
     this.vSpeed = vSpeed;
     this.mSpeed = mSpeed;
     const lastIndex = samples[length - 1].index;
-    for (let i = 1; i <= 50; i++) {
-      if (mSpeed.eval(lastIndex + i + 1) >= SPEED_THRESHOLD) {
-        const certainty = r2(vIndex.values, vSpeed.values, mSpeed);
-        if (certainty >= 0.5) {
+    const certainty = r2(vIndex.values, vSpeed.values, mSpeed);
+    if (certainty >= 0.8) {
+      this.certainty = certainty;
+      this.learningRate = mSpeed.derivative().eval(lastIndex);
+      for (let i = 1; i <= 50; i++) {
+        if (mSpeed.eval(lastIndex + i + 1) >= SPEED_THRESHOLD) {
           this.remainingLessons = i;
-          this.certainty = certainty;
+          break;
         }
-        break;
       }
     }
   }
