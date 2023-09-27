@@ -1,4 +1,4 @@
-import { type Distribution, newDistribution } from "@keybr/chart";
+import { type Distribution, newDistribution } from "@keybr/math";
 import data from "./dist.json";
 import { bucketize, smooth } from "./util.ts";
 

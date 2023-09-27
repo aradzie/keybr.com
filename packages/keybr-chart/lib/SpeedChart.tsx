@@ -1,12 +1,11 @@
 import { useIntlNumbers } from "@keybr/intl";
 import { useFormatter } from "@keybr/lesson-ui";
-import { linearRegression } from "@keybr/math";
+import { hasData, linearRegression, Range, smooth, Vector } from "@keybr/math";
 import { type Result } from "@keybr/result";
 import { Canvas, type Rect, type ShapeList } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
 import { Chart, chartArea, type SizeProps } from "./Chart.tsx";
-import { hasData, Range, smooth, Vector } from "./data.ts";
 import { paintAxis, paintGrid, paintNoData, paintTicks } from "./decoration.ts";
 import { paintCurve, paintScatterPlot, projection } from "./graph.ts";
 import { chartStyles } from "./styles.ts";

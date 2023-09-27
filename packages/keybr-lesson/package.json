@@ -7,6 +7,7 @@
   "dependencies": {
     "@keybr/content-books": "*",
     "@keybr/content-words": "*",
+    "@keybr/math": "*",
     "@keybr/phonetic-model": "*",
     "@keybr/plaintext": "*",
     "@keybr/rand": "*",

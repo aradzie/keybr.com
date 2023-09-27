@@ -1,6 +1,7 @@
-import { hasData, KeySpeedChart, Marker } from "@keybr/chart";
+import { KeySpeedChart, Marker } from "@keybr/chart";
 import { LessonKey } from "@keybr/lesson";
 import { KeyDetails, KeySelector } from "@keybr/lesson-ui";
+import { hasData } from "@keybr/math";
 import { type KeyStatsMap } from "@keybr/result";
 import { Figure, Para, styleTextCenter } from "@keybr/widget";
 import { type ReactNode, useState } from "react";

@@ -1,12 +1,11 @@
 import { useFormatter } from "@keybr/lesson-ui";
+import { type Distribution, hasData, Range, Vector } from "@keybr/math";
 import { newSummaryStats, type Result } from "@keybr/result";
 import { Canvas, type Rect, type ShapeList, Shapes } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
 import { Chart, chartArea, type SizeProps } from "./Chart.tsx";
-import { hasData, Range, Vector } from "./data.ts";
 import { paintAxis, paintGrid, paintNoData, paintTicks } from "./decoration.ts";
-import { type Distribution } from "./dist.ts";
 import { chartStyles } from "./styles.ts";
 
 export function DistributionChart({

@@ -1,4 +1,4 @@
-import { newFilter } from "@keybr/math";
+import { newFilter } from "./filter.ts";
 
 export class Range {
   static from(vector: Iterable<number>): Range {

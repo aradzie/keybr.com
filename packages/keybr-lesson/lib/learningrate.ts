@@ -1,7 +1,12 @@
-import { SPEED_THRESHOLD } from "@keybr/lesson";
-import { type Model, polynomialRegression, r2 } from "@keybr/math";
+import {
+  hasData,
+  type Model,
+  polynomialRegression,
+  r2,
+  Vector,
+} from "@keybr/math";
 import { type KeySample, timeToSpeed } from "@keybr/result";
-import { hasData, Vector } from "./data.ts";
+import { SPEED_THRESHOLD } from "./confidence.ts";
 import { findSession } from "./learningsession.ts";
 
 export class LearningRate {

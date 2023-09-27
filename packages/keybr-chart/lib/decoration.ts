@@ -1,3 +1,4 @@
+import { type Range } from "@keybr/math";
 import {
   type GraphicsStyle,
   type Rect,
@@ -5,7 +6,6 @@ import {
   Shapes,
 } from "@keybr/widget";
 import { type MessageDescriptor } from "react-intl";
-import { type Range } from "./data.ts";
 import { hBoxes, hTicks, vBoxes, vTicks } from "./geometry.ts";
 import { chartStyles } from "./styles.ts";
 

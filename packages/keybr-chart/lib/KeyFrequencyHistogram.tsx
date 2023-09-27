@@ -1,9 +1,9 @@
+import { hasData, Range } from "@keybr/math";
 import { type KeyStatsMap } from "@keybr/result";
 import { Canvas, Rect, type ShapeList } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
 import { Chart, chartArea, type SizeProps } from "./Chart.tsx";
-import { hasData, Range } from "./data.ts";
 import { paintFrame, paintKeyTicks, paintNoData } from "./decoration.ts";
 import { paintHistogram } from "./graph.ts";
 import { hitMissRatio, keyUsage } from "./keyusage.ts";

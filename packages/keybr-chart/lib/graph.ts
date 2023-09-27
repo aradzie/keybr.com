@@ -1,4 +1,4 @@
-import { type Model } from "@keybr/math";
+import { type Model, type Range, type Vector } from "@keybr/math";
 import {
   type Graphics,
   type GraphicsStyle,
@@ -7,7 +7,6 @@ import {
   Shapes,
 } from "@keybr/widget";
 import clamp from "lodash/clamp";
-import { type Range, type Vector } from "./data.ts";
 import { vBoxes } from "./geometry.ts";
 
 export type Projection = {

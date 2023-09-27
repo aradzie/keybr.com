@@ -1,6 +1,6 @@
+import { Histogram, KeySet } from "@keybr/math";
 import { type Letter } from "@keybr/phonetic-model";
 import { type KeyStatsMap } from "@keybr/result";
-import { Histogram, KeySet } from "./data.ts";
 
 export function keyUsage(keyStatsMap: KeyStatsMap) {
   const { letters } = keyStatsMap;

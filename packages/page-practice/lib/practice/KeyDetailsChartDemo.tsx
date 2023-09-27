@@ -1,5 +1,5 @@
-import { KeyDetailsChart, LearningRate } from "@keybr/chart";
-import { LessonKey } from "@keybr/lesson";
+import { KeyDetailsChart } from "@keybr/chart";
+import { LearningRate, LessonKey } from "@keybr/lesson";
 import { Letter } from "@keybr/phonetic-model";
 import { type ReactNode } from "react";
 import * as styles from "./KeyDetailsChartDemo.module.less";

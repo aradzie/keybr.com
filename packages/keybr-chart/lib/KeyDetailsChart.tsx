@@ -1,15 +1,17 @@
 import { useIntlNumbers } from "@keybr/intl";
-import { type LessonKey, SPEED_THRESHOLD } from "@keybr/lesson";
+import {
+  type LearningRate,
+  type LessonKey,
+  SPEED_THRESHOLD,
+} from "@keybr/lesson";
 import { useFormatter } from "@keybr/lesson-ui";
-import { constModel } from "@keybr/math";
+import { constModel, Range } from "@keybr/math";
 import { Canvas, type Rect, type ShapeList, Shapes } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
 import { Chart, chartArea, type SizeProps } from "./Chart.tsx";
-import { Range } from "./data.ts";
 import { paintAxis, paintGrid, paintNoData, paintTicks } from "./decoration.ts";
 import { paintCurve, paintScatterPlot, projection } from "./graph.ts";
-import { type LearningRate } from "./learningrate.ts";
 import { chartStyles } from "./styles.ts";
 
 export function KeyDetailsChart({

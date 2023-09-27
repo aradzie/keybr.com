@@ -1,12 +1,11 @@
 import { FakeIntlProvider } from "@keybr/intl";
-import { LessonKey } from "@keybr/lesson";
+import { LearningRate, LessonKey } from "@keybr/lesson";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { generateKeySamples } from "@keybr/result";
 import { FakeSettingsContext } from "@keybr/settings";
 import { render } from "@testing-library/react";
 import test from "ava";
 import { KeyDetailsChart } from "./KeyDetailsChart.tsx";
-import { LearningRate } from "./learningrate.ts";
 
 test("render empty", (t) => {
   const r = render(

@@ -1,10 +1,10 @@
 import { FakeIntlProvider } from "@keybr/intl";
+import { newDistribution } from "@keybr/math";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { ResultFaker } from "@keybr/result";
 import { FakeSettingsContext } from "@keybr/settings";
 import { render } from "@testing-library/react";
 import test from "ava";
-import { newDistribution } from "./dist.ts";
 import { DistributionChart } from "./DistributionChart.tsx";
 
 test("render empty", (t) => {

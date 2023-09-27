@@ -1,6 +1,6 @@
-import { type Distribution } from "@keybr/chart";
 import { useIntlNumbers } from "@keybr/intl";
 import { useFormatter } from "@keybr/lesson-ui";
+import { type Distribution } from "@keybr/math";
 import {
   LocalDate,
   newSummaryStats,

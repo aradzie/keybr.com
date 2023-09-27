@@ -11,6 +11,7 @@
     "@keybr/layout": "*",
     "@keybr/lesson": "*",
     "@keybr/lesson-ui": "*",
+    "@keybr/math": "*",
     "@keybr/pages-browser": "*",
     "@keybr/pages-server": "*",
     "@keybr/pages-shared": "*",

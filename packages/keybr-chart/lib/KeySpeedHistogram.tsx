@@ -1,10 +1,10 @@
 import { useFormatter } from "@keybr/lesson-ui";
+import { hasData, Histogram, KeySet, Range } from "@keybr/math";
 import { type KeyStatsMap, timeToSpeed } from "@keybr/result";
 import { Canvas, type Rect, type ShapeList } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
 import { Chart, chartArea, type SizeProps } from "./Chart.tsx";
-import { hasData, Histogram, KeySet, Range } from "./data.ts";
 import {
   paintFrame,
   paintGrid,

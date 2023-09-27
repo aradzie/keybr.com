@@ -1,4 +1,5 @@
-import { type Distribution, DistributionChart } from "@keybr/chart";
+import { DistributionChart } from "@keybr/chart";
+import { type Distribution } from "@keybr/math";
 import { type Result } from "@keybr/result";
 import { Figure } from "@keybr/widget";
 import { type ReactNode } from "react";

@@ -1,6 +1,5 @@
-import { type LearningRate } from "@keybr/chart";
 import { useIntlNumbers } from "@keybr/intl";
-import { type LessonKey } from "@keybr/lesson";
+import { type LearningRate, type LessonKey } from "@keybr/lesson";
 import { Para, Value } from "@keybr/widget";
 import { clsx } from "clsx";
 import { type ReactNode } from "react";

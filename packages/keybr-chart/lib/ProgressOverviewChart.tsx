@@ -1,6 +1,7 @@
 import { useIntlNumbers } from "@keybr/intl";
 import { timeToConfidence } from "@keybr/lesson";
 import { confidenceColor } from "@keybr/lesson-ui";
+import { hasData, Range, resample, Vector } from "@keybr/math";
 import { type KeyStats, type KeyStatsMap } from "@keybr/result";
 import {
   Canvas,
@@ -12,7 +13,6 @@ import {
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
 import { Chart, chartArea, type SizeProps } from "./Chart.tsx";
-import { hasData, Range, resample, Vector } from "./data.ts";
 import {
   paintFrame,
   paintGrid,

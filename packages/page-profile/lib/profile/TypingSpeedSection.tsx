@@ -1,4 +1,5 @@
-import { hasData, Marker, SpeedChart } from "@keybr/chart";
+import { Marker, SpeedChart } from "@keybr/chart";
+import { hasData } from "@keybr/math";
 import { type Result } from "@keybr/result";
 import { Figure } from "@keybr/widget";
 import { type ReactNode, useState } from "react";
