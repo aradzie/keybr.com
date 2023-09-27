@@ -528,7 +528,7 @@
     "description": "Label name."
   },
   "metric.averageSpeed.title": {
-    "defaultMessage": "Średnie tempo pisania na klawiaturze ({speedUnitName}).",
+    "defaultMessage": "Średnie tempo pisania na klawiaturze ({speedUnitName}). Im więcej tym lepiej.",
     "description": "Label title."
   },
   "metric.bestSpeed.label": {
@@ -536,7 +536,7 @@
     "description": "Label name."
   },
   "metric.bestSpeed.title": {
-    "defaultMessage": "Najwyższe tempo pisania na klawiaturze ({speedUnitName}).",
+    "defaultMessage": "Najwyższe tempo pisania na klawiaturze ({speedUnitName}). Im więcej tym lepiej.",
     "description": "Label title."
   },
   "metric.confidenceLevel.label": {
@@ -544,7 +544,7 @@
     "description": "Label name."
   },
   "metric.confidenceLevel.title": {
-    "defaultMessage": "Poziom pewności (od 0 do 1).",
+    "defaultMessage": "Jak blisko jesteś odblokowania tej litery.",
     "description": "Label title."
   },
   "metric.learningRate.label": {
@@ -552,7 +552,7 @@
     "description": "Label name."
   },
   "metric.learningRate.title": {
-    "defaultMessage": "Tempo nauki.",
+    "defaultMessage": "Jak bardzo prędkość pisania zmienia się z każdą lekcją.",
     "description": "Label title."
   },
   "metric.learningRate.value": {

@@ -552,7 +552,7 @@
     "description": "Label name."
   },
   "metric.learningRate.title": {
-    "defaultMessage": "How much typing speed you gained with each lesson.",
+    "defaultMessage": "How your typing speed is changing with each lesson.",
     "description": "Label title."
   },
   "metric.learningRate.value": {

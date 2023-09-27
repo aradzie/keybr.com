@@ -544,7 +544,7 @@
     "description": "Label name."
   },
   "metric.confidenceLevel.title": {
-    "defaultMessage": "Niveau de confiance (de 0 à 1).",
+    "defaultMessage": "À quel point vous êtes sur le point de déverrouiller cette lettre.",
     "description": "Label title."
   },
   "metric.learningRate.label": {
@@ -552,11 +552,11 @@
     "description": "Label name."
   },
   "metric.learningRate.title": {
-    "defaultMessage": "Taux d'apprentissage.",
+    "defaultMessage": "Comment votre vitesse de frappe change à chaque leçon.",
     "description": "Label title."
   },
   "metric.learningRate.value": {
-    "defaultMessage": "{learningRate} per lesson",
+    "defaultMessage": "{learningRate} par leçon",
     "description": "Value format."
   },
   "metric.score.label": {

@@ -528,7 +528,7 @@
     "description": "Label name."
   },
   "metric.averageSpeed.title": {
-    "defaultMessage": "Средняя скорость ({speedUnitName}).",
+    "defaultMessage": "Средняя скорость ({speedUnitName}). Чем больше, тем лучше.",
     "description": "Label title."
   },
   "metric.bestSpeed.label": {
@@ -536,7 +536,7 @@
     "description": "Label name."
   },
   "metric.bestSpeed.title": {
-    "defaultMessage": "Лучшая скорость ({speedUnitName}).",
+    "defaultMessage": "Лучшая скорость ({speedUnitName}). Чем больше, тем лучше.",
     "description": "Label title."
   },
   "metric.confidenceLevel.label": {
@@ -544,7 +544,7 @@
     "description": "Label name."
   },
   "metric.confidenceLevel.title": {
-    "defaultMessage": "Уровень владения (от 0 до 1).",
+    "defaultMessage": "Насколько вы близки к разблокировке этой буквы.",
     "description": "Label title."
   },
   "metric.learningRate.label": {
@@ -552,7 +552,7 @@
     "description": "Label name."
   },
   "metric.learningRate.title": {
-    "defaultMessage": "Темп обучения.",
+    "defaultMessage": "Насколько меняется скорость набора текста с каждым уроком.",
     "description": "Label title."
   },
   "metric.learningRate.value": {

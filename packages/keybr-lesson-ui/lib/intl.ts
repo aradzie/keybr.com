@@ -41,7 +41,7 @@ export const messages = defineMessages({
   learningRateTitle: {
     id: "metric.learningRate.title",
     description: "Label title.",
-    defaultMessage: "How much typing speed you gained with each lesson.",
+    defaultMessage: "How your typing speed is changing with each lesson.",
   },
   learningRateValue: {
     id: "metric.learningRate.value",

@@ -528,7 +528,7 @@
     "description": "Label name."
   },
   "metric.averageSpeed.title": {
-    "defaultMessage": "Durchschnittliche Tippgeschwindigkeit ({speedUnitName}).",
+    "defaultMessage": "Durchschnittliche Tippgeschwindigkeit ({speedUnitName}). Je mehr desto besser.",
     "description": "Label title."
   },
   "metric.bestSpeed.label": {
@@ -536,7 +536,7 @@
     "description": "Label name."
   },
   "metric.bestSpeed.title": {
-    "defaultMessage": "Beste Tippgeschwindigkeit ({speedUnitName}).",
+    "defaultMessage": "Beste Tippgeschwindigkeit ({speedUnitName}). Je mehr desto besser.",
     "description": "Label title."
   },
   "metric.confidenceLevel.label": {
@@ -544,7 +544,7 @@
     "description": "Label name."
   },
   "metric.confidenceLevel.title": {
-    "defaultMessage": "Vertrauensniveau (von 0 auf 1).",
+    "defaultMessage": "How close you are to unlocking this key.",
     "description": "Label title."
   },
   "metric.learningRate.label": {
@@ -552,11 +552,11 @@
     "description": "Label name."
   },
   "metric.learningRate.title": {
-    "defaultMessage": "Lernrate.",
+    "defaultMessage": "How your typing speed is changing with each lesson.",
     "description": "Label title."
   },
   "metric.learningRate.value": {
-    "defaultMessage": "{learningRate} per lesson",
+    "defaultMessage": "{learningRate} pro Lektion",
     "description": "Value format."
   },
   "metric.score.label": {
