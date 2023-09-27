@@ -37,8 +37,11 @@ export class LearningRate {
     );
   }
 
+  /** A vector of indices which are lesson numbers. */
   readonly vIndex: Vector;
+  /** A vector of values which are typing speeds. */
   readonly vSpeed: Vector;
+  /** A derived model which approximates values. */
   readonly mSpeed: Polynomial;
 
   readonly certainty: number = NaN;
@@ -46,6 +49,12 @@ export class LearningRate {
   readonly remainingLessons: number = NaN;
 
   constructor(readonly samples: readonly KeySample[]) {
+    const session = findSession(samples);
+    if (hasData(session)) {
+      // Replace all samples with the latest learning session
+      // of lessons without breaks between them.
+      samples = session;
+    }
     const { length } = samples;
     const vIndex = new Vector();
     const vSpeed = new Vector();
@@ -54,35 +63,17 @@ export class LearningRate {
       vIndex.add(sample.index + 1);
       vSpeed.add(timeToSpeed(sample.filteredTimeToType));
     }
-    let mSpeed: Polynomial;
-    const session = findSession(samples);
-    if (hasData(session)) {
-      const { length } = session;
-      const vIndex = new Vector();
-      const vSpeed = new Vector();
-      for (let index = 0; index < length; index++) {
-        const sample = session[index];
-        vIndex.add(sample.index + 1);
-        vSpeed.add(timeToSpeed(sample.filteredTimeToType));
-      }
-      mSpeed = polynomialRegression(
-        vIndex.values,
-        vSpeed.values,
-        getPolyDegree(length),
-      );
-    } else {
-      mSpeed = polynomialRegression(
-        vIndex.values,
-        vSpeed.values,
-        getPolyDegree(length),
-      );
-    }
+    const mSpeed = polynomialRegression(
+      vIndex.values,
+      vSpeed.values,
+      getPolynomialDegree(length),
+    );
     this.vIndex = vIndex;
     this.vSpeed = vSpeed;
     this.mSpeed = mSpeed;
     const lastIndex = samples[length - 1].index;
     const certainty = r2(vIndex.values, vSpeed.values, mSpeed);
-    if (certainty >= 0.8) {
+    if (certainty >= 0.5) {
       this.certainty = certainty;
       this.learningRate = mSpeed.derivative().eval(lastIndex);
       for (let i = 1; i <= 50; i++) {
@@ -95,7 +86,7 @@ export class LearningRate {
   }
 }
 
-function getPolyDegree(length: number): number {
+function getPolynomialDegree(length: number): number {
   if (length > 20) {
     return 3; // Fit cubic polynomial.
   }
