@@ -423,22 +423,6 @@
     "defaultMessage": "Need more data to compute the remaining lessons to unlock this letter.",
     "description": "Message text."
   },
-  "lesson.averageSpeedLabel": {
-    "defaultMessage": "Average typing speed",
-    "description": "Label name."
-  },
-  "lesson.averageSpeedTitle": {
-    "defaultMessage": "Average typing speed ({speedUnitName}). The more, the better.",
-    "description": "Label title."
-  },
-  "lesson.bestSpeedLabel": {
-    "defaultMessage": "Best typing speed",
-    "description": "Label name."
-  },
-  "lesson.bestSpeedTitle": {
-    "defaultMessage": "Best typing speed ({speedUnitName}). The more, the better.",
-    "description": "Label title."
-  },
   "lesson.boostedKeyText": {
     "defaultMessage": "A key with boosted frequency.",
     "description": "Character details text."
@@ -446,14 +430,6 @@
   "lesson.characterName": {
     "defaultMessage": "Character ''{name}''",
     "description": "Character details text."
-  },
-  "lesson.confidenceLevelLabel": {
-    "defaultMessage": "Confidence level",
-    "description": "Label name."
-  },
-  "lesson.confidenceLevelTitle": {
-    "defaultMessage": "How close you are to unlocking this key.",
-    "description": "Label title."
   },
   "lesson.currentKeyPanelLabel": {
     "defaultMessage": "Current key",
@@ -503,25 +479,9 @@
     "defaultMessage": "All keys",
     "description": "Panel label."
   },
-  "lesson.learningRateLabel": {
-    "defaultMessage": "Learning rate",
-    "description": "Label name."
-  },
-  "lesson.learningRateTitle": {
-    "defaultMessage": "How much typing speed you gained with each lesson.",
-    "description": "Label title."
-  },
-  "lesson.learningRateValue": {
-    "defaultMessage": "{learningRate} per lesson",
-    "description": "Value format."
-  },
   "lesson.notCalibratedText": {
     "defaultMessage": "Not calibrated, need more samples",
     "description": "Panel text."
-  },
-  "lesson.uncertainValue": {
-    "defaultMessage": "Uncertain",
-    "description": "Value format."
   },
   "lessonType.customText.description": {
     "defaultMessage": "Generate typing lessons from the words of your own custom text. All keys are included by default.",
@@ -550,6 +510,82 @@
   "lessonType.wordlist.name": {
     "defaultMessage": "Common words",
     "description": "Widget label."
+  },
+  "metric.accuracy.label": {
+    "defaultMessage": "Accuracy",
+    "description": "Label text."
+  },
+  "metric.accuracy.title": {
+    "defaultMessage": "The percentage of characters typed without errors in the last lesson.",
+    "description": "Value title."
+  },
+  "metric.accuracyChange.title": {
+    "defaultMessage": "The difference from the average value.",
+    "description": "Value change title."
+  },
+  "metric.averageSpeed.label": {
+    "defaultMessage": "Average typing speed",
+    "description": "Label name."
+  },
+  "metric.averageSpeed.title": {
+    "defaultMessage": "Average typing speed ({speedUnitName}). The more, the better.",
+    "description": "Label title."
+  },
+  "metric.bestSpeed.label": {
+    "defaultMessage": "Best typing speed",
+    "description": "Label name."
+  },
+  "metric.bestSpeed.title": {
+    "defaultMessage": "Best typing speed ({speedUnitName}). The more, the better.",
+    "description": "Label title."
+  },
+  "metric.confidenceLevel.label": {
+    "defaultMessage": "Confidence level",
+    "description": "Label name."
+  },
+  "metric.confidenceLevel.title": {
+    "defaultMessage": "How close you are to unlocking this key.",
+    "description": "Label title."
+  },
+  "metric.learningRate.label": {
+    "defaultMessage": "Learning rate",
+    "description": "Label name."
+  },
+  "metric.learningRate.title": {
+    "defaultMessage": "How much typing speed you gained with each lesson.",
+    "description": "Label title."
+  },
+  "metric.learningRate.value": {
+    "defaultMessage": "{learningRate} per lesson",
+    "description": "Value format."
+  },
+  "metric.score.label": {
+    "defaultMessage": "Score",
+    "description": "Label text."
+  },
+  "metric.score.title": {
+    "defaultMessage": "Score of the last lesson in abstract points. Scores are greater when you type faster and with fewer errors.",
+    "description": "Value title."
+  },
+  "metric.scoreChange.title": {
+    "defaultMessage": "The difference from the average value.",
+    "description": "Value change title."
+  },
+  "metric.speed.label": {
+    "defaultMessage": "Speed",
+    "description": "Label text."
+  },
+  "metric.speed.title": {
+    "defaultMessage": "Typing speed in the last lesson.",
+    "description": "Value title."
+  },
+  "metric.speedChange.title": {
+    "defaultMessage": "The difference from the average value.",
+    "description": "Value change title."
+  },
+  "metric.uncertainValue": {
+    "defaultMessage": "Uncertain",
+    "description": "Value text."
   },
   "multiplayer.intro": {
     "defaultMessage": "Compete against other players in this online multiplayer game. The faster you type, the faster your car goes. Type as fast as you can to win the race!",
@@ -835,18 +871,6 @@
     "defaultMessage": "Speed Test",
     "description": "Page title."
   },
-  "practice.accuracyDeltaValueTitle": {
-    "defaultMessage": "The difference from the average value.",
-    "description": "Value delta title."
-  },
-  "practice.accuracyLabel": {
-    "defaultMessage": "Accuracy",
-    "description": "Label text."
-  },
-  "practice.accuracyValueTitle": {
-    "defaultMessage": "The percentage of characters typed without errors in the last lesson.",
-    "description": "Value title."
-  },
   "practice.focusText": {
     "defaultMessage": "Click to activate...",
     "description": "Freeform text."
@@ -854,18 +878,6 @@
   "practice.resetLessonButtonTitle": {
     "defaultMessage": "Reset the current lesson (Ctrl + Left Arrow).",
     "description": "Button title."
-  },
-  "practice.scoreDeltaValueTitle": {
-    "defaultMessage": "The difference from the average value.",
-    "description": "Value delta title."
-  },
-  "practice.scoreLabel": {
-    "defaultMessage": "Score",
-    "description": "Label text."
-  },
-  "practice.scoreValueTitle": {
-    "defaultMessage": "Score of the last lesson in abstract points. Scores are greater when you type faster and with fewer errors.",
-    "description": "Value title."
   },
   "practice.settingButtonName": {
     "defaultMessage": "Settings...",
@@ -882,18 +894,6 @@
   "practice.skipLessonButtonTitle": {
     "defaultMessage": "Skip the current lesson (Ctrl + Right Arrow).",
     "description": "Button title."
-  },
-  "practice.speedDeltaValueTitle": {
-    "defaultMessage": "The difference from the average value.",
-    "description": "Value delta title."
-  },
-  "practice.speedLabel": {
-    "defaultMessage": "Speed",
-    "description": "Label text."
-  },
-  "practice.speedValueTitle": {
-    "defaultMessage": "Typing speed in the last lesson.",
-    "description": "Value title."
   },
   "practice.switchInterfaceButtonTitle": {
     "defaultMessage": "Switch the current interface layout.",

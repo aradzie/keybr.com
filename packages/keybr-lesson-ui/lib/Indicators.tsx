@@ -63,7 +63,7 @@ export const SpeedGauge = memo(function SpeedGauge({
       name={
         <Name
           name={formatMessage({
-            id: "practice.speedLabel",
+            id: "metric.speed.label",
             description: "Label text.",
             defaultMessage: "Speed",
           })}
@@ -75,14 +75,14 @@ export const SpeedGauge = memo(function SpeedGauge({
           value={signed(fmt(delta), delta)}
           delta={delta}
           title={formatMessage({
-            id: "practice.speedDeltaValueTitle",
-            description: "Value delta title.",
+            id: "metric.speedChange.title",
+            description: "Value change title.",
             defaultMessage: "The difference from the average value.",
           })}
         />
       }
       title={formatMessage({
-        id: "practice.speedValueTitle",
+        id: "metric.speed.title",
         description: "Value title.",
         defaultMessage: "Typing speed in the last lesson.",
       })}
@@ -106,7 +106,7 @@ export const AccuracyGauge = memo(function AccuracyGauge({
       name={
         <Name
           name={formatMessage({
-            id: "practice.accuracyLabel",
+            id: "metric.accuracy.label",
             description: "Label text.",
             defaultMessage: "Accuracy",
           })}
@@ -118,14 +118,14 @@ export const AccuracyGauge = memo(function AccuracyGauge({
           value={signed(formatPercents(delta), delta)}
           delta={delta}
           title={formatMessage({
-            id: "practice.accuracyDeltaValueTitle",
-            description: "Value delta title.",
+            id: "metric.accuracyChange.title",
+            description: "Value change title.",
             defaultMessage: "The difference from the average value.",
           })}
         />
       }
       title={formatMessage({
-        id: "practice.accuracyValueTitle",
+        id: "metric.accuracy.title",
         description: "Value title.",
         defaultMessage:
           "The percentage of characters typed without errors in the last lesson.",
@@ -150,7 +150,7 @@ export const ScoreGauge = memo(function ScoreGauge({
       name={
         <Name
           name={formatMessage({
-            id: "practice.scoreLabel",
+            id: "metric.score.label",
             description: "Label text.",
             defaultMessage: "Score",
           })}
@@ -162,14 +162,14 @@ export const ScoreGauge = memo(function ScoreGauge({
           value={signed(formatNumber(delta, 0), delta)}
           delta={delta}
           title={formatMessage({
-            id: "practice.scoreDeltaValueTitle",
-            description: "Value delta title.",
+            id: "metric.scoreChange.title",
+            description: "Value change title.",
             defaultMessage: "The difference from the average value.",
           })}
         />
       }
       title={formatMessage({
-        id: "practice.scoreValueTitle",
+        id: "metric.score.title",
         description: "Value title.",
         defaultMessage:
           "Score of the last lesson in abstract points. " +

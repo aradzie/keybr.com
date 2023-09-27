@@ -423,22 +423,6 @@
     "defaultMessage": "Need more data to compute the remaining lessons to unlock this letter.",
     "description": "Message text."
   },
-  "lesson.averageSpeedLabel": {
-    "defaultMessage": "Durchschnittliche Tippgeschwindigkeit",
-    "description": "Label name."
-  },
-  "lesson.averageSpeedTitle": {
-    "defaultMessage": "Durchschnittliche Tippgeschwindigkeit ({speedUnitName}).",
-    "description": "Label title."
-  },
-  "lesson.bestSpeedLabel": {
-    "defaultMessage": "Beste Tippgeschwindigkeit",
-    "description": "Label name."
-  },
-  "lesson.bestSpeedTitle": {
-    "defaultMessage": "Beste Tippgeschwindigkeit ({speedUnitName}).",
-    "description": "Label title."
-  },
   "lesson.boostedKeyText": {
     "defaultMessage": "Taste mit erhöhter Frequenz.",
     "description": "Character details text."
@@ -446,14 +430,6 @@
   "lesson.characterName": {
     "defaultMessage": "Zeichen ''{name}''",
     "description": "Character details text."
-  },
-  "lesson.confidenceLevelLabel": {
-    "defaultMessage": "Vertrauensniveau",
-    "description": "Label name."
-  },
-  "lesson.confidenceLevelTitle": {
-    "defaultMessage": "Vertrauensniveau (von 0 auf 1).",
-    "description": "Label title."
   },
   "lesson.currentKeyPanelLabel": {
     "defaultMessage": "Aktuelle Taste",
@@ -503,25 +479,9 @@
     "defaultMessage": "Alle Tasten",
     "description": "Panel label."
   },
-  "lesson.learningRateLabel": {
-    "defaultMessage": "Lernrate",
-    "description": "Label name."
-  },
-  "lesson.learningRateTitle": {
-    "defaultMessage": "Lernrate.",
-    "description": "Label title."
-  },
-  "lesson.learningRateValue": {
-    "defaultMessage": "{learningRate} per lesson",
-    "description": "Value format."
-  },
   "lesson.notCalibratedText": {
     "defaultMessage": "Nicht kalibriert, mehr Beispiele erforderlich",
     "description": "Panel text."
-  },
-  "lesson.uncertainValue": {
-    "defaultMessage": "Uncertain",
-    "description": "Value format."
   },
   "lessonType.customText.description": {
     "defaultMessage": "Generieren Sie Lektionen aus den Wörtern Ihres eigenen, hier bereitgestellten benutzerdefinierten Textes. Alle Tastaturtasten sind standardmäßig enthalten.",
@@ -550,6 +510,82 @@
   "lessonType.wordlist.name": {
     "defaultMessage": "Gebräuchliche Worte",
     "description": "Widget label."
+  },
+  "metric.accuracy.label": {
+    "defaultMessage": "Genauigkeit",
+    "description": "Label text."
+  },
+  "metric.accuracy.title": {
+    "defaultMessage": "Der Prozentsatz der Zeichen, die in der letzten Lektion fehlerfrei eingegeben wurden.",
+    "description": "Value title."
+  },
+  "metric.accuracyChange.title": {
+    "defaultMessage": "Die Differenz zum Durchschnittswert.",
+    "description": "Value change title."
+  },
+  "metric.averageSpeed.label": {
+    "defaultMessage": "Durchschnittliche Tippgeschwindigkeit",
+    "description": "Label name."
+  },
+  "metric.averageSpeed.title": {
+    "defaultMessage": "Durchschnittliche Tippgeschwindigkeit ({speedUnitName}).",
+    "description": "Label title."
+  },
+  "metric.bestSpeed.label": {
+    "defaultMessage": "Beste Tippgeschwindigkeit",
+    "description": "Label name."
+  },
+  "metric.bestSpeed.title": {
+    "defaultMessage": "Beste Tippgeschwindigkeit ({speedUnitName}).",
+    "description": "Label title."
+  },
+  "metric.confidenceLevel.label": {
+    "defaultMessage": "Vertrauensniveau",
+    "description": "Label name."
+  },
+  "metric.confidenceLevel.title": {
+    "defaultMessage": "Vertrauensniveau (von 0 auf 1).",
+    "description": "Label title."
+  },
+  "metric.learningRate.label": {
+    "defaultMessage": "Lernrate",
+    "description": "Label name."
+  },
+  "metric.learningRate.title": {
+    "defaultMessage": "Lernrate.",
+    "description": "Label title."
+  },
+  "metric.learningRate.value": {
+    "defaultMessage": "{learningRate} per lesson",
+    "description": "Value format."
+  },
+  "metric.score.label": {
+    "defaultMessage": "Punktestand",
+    "description": "Label text."
+  },
+  "metric.score.title": {
+    "defaultMessage": "Ergebnis der letzten Lektion in abstrakten Punkten. Die Punktzahl ist höher, wenn Sie schneller und mit weniger Fehlern tippen.",
+    "description": "Value title."
+  },
+  "metric.scoreChange.title": {
+    "defaultMessage": "Die Differenz zum Durchschnittswert.",
+    "description": "Value change title."
+  },
+  "metric.speed.label": {
+    "defaultMessage": "Geschwindigkeit",
+    "description": "Label text."
+  },
+  "metric.speed.title": {
+    "defaultMessage": "Tippgeschwindigkeit in der letzten Lektion.",
+    "description": "Value title."
+  },
+  "metric.speedChange.title": {
+    "defaultMessage": "Die Differenz zum Durchschnittswert.",
+    "description": "Value change title."
+  },
+  "metric.uncertainValue": {
+    "defaultMessage": "Uncertain",
+    "description": "Value text."
   },
   "multiplayer.intro": {
     "defaultMessage": "Treten Sie in diesem Online-Multispielerspiel gegen andere Spieler an. Je schneller Sie tippen, desto schneller fährt Ihr Auto. Tippen Sie so schnell sie können, um das Rennen zu gewinnen!",
@@ -835,18 +871,6 @@
     "defaultMessage": "Speed Test",
     "description": "Page title."
   },
-  "practice.accuracyDeltaValueTitle": {
-    "defaultMessage": "Die Differenz zum Durchschnittswert.",
-    "description": "Value delta title."
-  },
-  "practice.accuracyLabel": {
-    "defaultMessage": "Genauigkeit",
-    "description": "Label text."
-  },
-  "practice.accuracyValueTitle": {
-    "defaultMessage": "Der Prozentsatz der Zeichen, die in der letzten Lektion fehlerfrei eingegeben wurden.",
-    "description": "Value title."
-  },
   "practice.focusText": {
     "defaultMessage": "Zum Aktivieren anklicken...",
     "description": "Freeform text."
@@ -854,18 +878,6 @@
   "practice.resetLessonButtonTitle": {
     "defaultMessage": "Die aktuelle Lektion zurücksetzen (Strg + Pfeil nach links).",
     "description": "Button title."
-  },
-  "practice.scoreDeltaValueTitle": {
-    "defaultMessage": "Die Differenz zum Durchschnittswert.",
-    "description": "Value delta title."
-  },
-  "practice.scoreLabel": {
-    "defaultMessage": "Punktestand",
-    "description": "Label text."
-  },
-  "practice.scoreValueTitle": {
-    "defaultMessage": "Ergebnis der letzten Lektion in abstrakten Punkten. Die Punktzahl ist höher, wenn Sie schneller und mit weniger Fehlern tippen.",
-    "description": "Value title."
   },
   "practice.settingButtonName": {
     "defaultMessage": "Einstellungen...",
@@ -882,18 +894,6 @@
   "practice.skipLessonButtonTitle": {
     "defaultMessage": "Überspringen Sie die aktuelle Lektion (Strg + Pfeil rechts).",
     "description": "Button title."
-  },
-  "practice.speedDeltaValueTitle": {
-    "defaultMessage": "Die Differenz zum Durchschnittswert.",
-    "description": "Value delta title."
-  },
-  "practice.speedLabel": {
-    "defaultMessage": "Geschwindigkeit",
-    "description": "Label text."
-  },
-  "practice.speedValueTitle": {
-    "defaultMessage": "Tippgeschwindigkeit in der letzten Lektion.",
-    "description": "Value title."
   },
   "practice.switchInterfaceButtonTitle": {
     "defaultMessage": "Wechseln Sie das aktuelle Schnittstellenlayout.",

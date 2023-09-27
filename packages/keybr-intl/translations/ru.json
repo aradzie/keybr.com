@@ -423,22 +423,6 @@
     "defaultMessage": "Need more data to compute the remaining lessons to unlock this letter.",
     "description": "Message text."
   },
-  "lesson.averageSpeedLabel": {
-    "defaultMessage": "Средняя скорость",
-    "description": "Label name."
-  },
-  "lesson.averageSpeedTitle": {
-    "defaultMessage": "Средняя скорость ({speedUnitName}).",
-    "description": "Label title."
-  },
-  "lesson.bestSpeedLabel": {
-    "defaultMessage": "Лучшая скорость",
-    "description": "Label name."
-  },
-  "lesson.bestSpeedTitle": {
-    "defaultMessage": "Лучшая скорость ({speedUnitName}).",
-    "description": "Label title."
-  },
   "lesson.boostedKeyText": {
     "defaultMessage": "Буква с увеличенной частотой.",
     "description": "Character details text."
@@ -446,14 +430,6 @@
   "lesson.characterName": {
     "defaultMessage": "Буква ''{name}''",
     "description": "Character details text."
-  },
-  "lesson.confidenceLevelLabel": {
-    "defaultMessage": "Уровень владения",
-    "description": "Label name."
-  },
-  "lesson.confidenceLevelTitle": {
-    "defaultMessage": "Уровень владения (от 0 до 1).",
-    "description": "Label title."
   },
   "lesson.currentKeyPanelLabel": {
     "defaultMessage": "Текущая буква",
@@ -503,25 +479,9 @@
     "defaultMessage": "Все буквы",
     "description": "Panel label."
   },
-  "lesson.learningRateLabel": {
-    "defaultMessage": "Темп обучения",
-    "description": "Label name."
-  },
-  "lesson.learningRateTitle": {
-    "defaultMessage": "Темп обучения.",
-    "description": "Label title."
-  },
-  "lesson.learningRateValue": {
-    "defaultMessage": "{learningRate} за урок",
-    "description": "Value format."
-  },
   "lesson.notCalibratedText": {
     "defaultMessage": "Недостаточно данных, закончите больше уроков",
     "description": "Panel text."
-  },
-  "lesson.uncertainValue": {
-    "defaultMessage": "Неопределенный",
-    "description": "Value format."
   },
   "lessonType.customText.description": {
     "defaultMessage": "Генерировать уроки используя слова, взятые из вашего собственного текста. Все буквы включены по умолчанию.",
@@ -550,6 +510,82 @@
   "lessonType.wordlist.name": {
     "defaultMessage": "Частые слова",
     "description": "Widget label."
+  },
+  "metric.accuracy.label": {
+    "defaultMessage": "Точность",
+    "description": "Label text."
+  },
+  "metric.accuracy.title": {
+    "defaultMessage": "Процент символов, набранных без ошибок в последнем уроке.",
+    "description": "Value title."
+  },
+  "metric.accuracyChange.title": {
+    "defaultMessage": "Разница со средним значением.",
+    "description": "Value change title."
+  },
+  "metric.averageSpeed.label": {
+    "defaultMessage": "Средняя скорость",
+    "description": "Label name."
+  },
+  "metric.averageSpeed.title": {
+    "defaultMessage": "Средняя скорость ({speedUnitName}).",
+    "description": "Label title."
+  },
+  "metric.bestSpeed.label": {
+    "defaultMessage": "Лучшая скорость",
+    "description": "Label name."
+  },
+  "metric.bestSpeed.title": {
+    "defaultMessage": "Лучшая скорость ({speedUnitName}).",
+    "description": "Label title."
+  },
+  "metric.confidenceLevel.label": {
+    "defaultMessage": "Уровень владения",
+    "description": "Label name."
+  },
+  "metric.confidenceLevel.title": {
+    "defaultMessage": "Уровень владения (от 0 до 1).",
+    "description": "Label title."
+  },
+  "metric.learningRate.label": {
+    "defaultMessage": "Темп обучения",
+    "description": "Label name."
+  },
+  "metric.learningRate.title": {
+    "defaultMessage": "Темп обучения.",
+    "description": "Label title."
+  },
+  "metric.learningRate.value": {
+    "defaultMessage": "{learningRate} за урок",
+    "description": "Value format."
+  },
+  "metric.score.label": {
+    "defaultMessage": "Баллы",
+    "description": "Label text."
+  },
+  "metric.score.title": {
+    "defaultMessage": "Баллы в последнем уроке. Вы получаете больше баллов если печатаете быстрее и делаете меньше ошибок.",
+    "description": "Value title."
+  },
+  "metric.scoreChange.title": {
+    "defaultMessage": "Разница со средним значением.",
+    "description": "Value change title."
+  },
+  "metric.speed.label": {
+    "defaultMessage": "Скорость",
+    "description": "Label text."
+  },
+  "metric.speed.title": {
+    "defaultMessage": "Скорость набора в последнем уроке.",
+    "description": "Value title."
+  },
+  "metric.speedChange.title": {
+    "defaultMessage": "Разница со средним значением.",
+    "description": "Value change title."
+  },
+  "metric.uncertainValue": {
+    "defaultMessage": "Неопределенный",
+    "description": "Value text."
   },
   "multiplayer.intro": {
     "defaultMessage": "Соревнуйтесь с другими игроками в этой многопользовательской онлайн-игре. Чем быстрее вы печатаете, тем быстрее едет ваша машина. Печатайте как можно быстрее, чтобы выиграть гонку!",
@@ -835,18 +871,6 @@
     "defaultMessage": "Speed Test",
     "description": "Page title."
   },
-  "practice.accuracyDeltaValueTitle": {
-    "defaultMessage": "Разница со средним значением.",
-    "description": "Value delta title."
-  },
-  "practice.accuracyLabel": {
-    "defaultMessage": "Точность",
-    "description": "Label text."
-  },
-  "practice.accuracyValueTitle": {
-    "defaultMessage": "Процент символов, набранных без ошибок в последнем уроке.",
-    "description": "Value title."
-  },
   "practice.focusText": {
     "defaultMessage": "Кликните, чтобы активировать...",
     "description": "Freeform text."
@@ -854,18 +878,6 @@
   "practice.resetLessonButtonTitle": {
     "defaultMessage": "Начать текущий урок сначала (Ctrl + Left Arrow).",
     "description": "Button title."
-  },
-  "practice.scoreDeltaValueTitle": {
-    "defaultMessage": "Разница со средним значением.",
-    "description": "Value delta title."
-  },
-  "practice.scoreLabel": {
-    "defaultMessage": "Баллы",
-    "description": "Label text."
-  },
-  "practice.scoreValueTitle": {
-    "defaultMessage": "Баллы в последнем уроке. Вы получаете больше баллов если печатаете быстрее и делаете меньше ошибок.",
-    "description": "Value title."
   },
   "practice.settingButtonName": {
     "defaultMessage": "Настройки...",
@@ -882,18 +894,6 @@
   "practice.skipLessonButtonTitle": {
     "defaultMessage": "Пропустить текущий урок (Ctrl + Right Arrow).",
     "description": "Button title."
-  },
-  "practice.speedDeltaValueTitle": {
-    "defaultMessage": "Разница со средним значением.",
-    "description": "Value delta title."
-  },
-  "practice.speedLabel": {
-    "defaultMessage": "Скорость",
-    "description": "Label text."
-  },
-  "practice.speedValueTitle": {
-    "defaultMessage": "Скорость набора в последнем уроке.",
-    "description": "Value title."
   },
   "practice.switchInterfaceButtonTitle": {
     "defaultMessage": "Сменить расположение элементов интерфейса.",

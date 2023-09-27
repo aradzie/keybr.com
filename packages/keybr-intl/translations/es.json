@@ -423,22 +423,6 @@
     "defaultMessage": "Need more data to compute the remaining lessons to unlock this letter.",
     "description": "Message text."
   },
-  "lesson.averageSpeedLabel": {
-    "defaultMessage": "Velocidad media de mecanografía",
-    "description": "Label name."
-  },
-  "lesson.averageSpeedTitle": {
-    "defaultMessage": "Velocidad media de mecanografía ({speedUnitName}).",
-    "description": "Label title."
-  },
-  "lesson.bestSpeedLabel": {
-    "defaultMessage": "Mejor velocidad de mecanografía",
-    "description": "Label name."
-  },
-  "lesson.bestSpeedTitle": {
-    "defaultMessage": "Mejor velocidad de mecanografía ({speedUnitName}).",
-    "description": "Label title."
-  },
   "lesson.boostedKeyText": {
     "defaultMessage": "Tecla con frecuencia aumentada.",
     "description": "Character details text."
@@ -446,14 +430,6 @@
   "lesson.characterName": {
     "defaultMessage": "Carácter ''{name}''",
     "description": "Character details text."
-  },
-  "lesson.confidenceLevelLabel": {
-    "defaultMessage": "Nivel de confianza",
-    "description": "Label name."
-  },
-  "lesson.confidenceLevelTitle": {
-    "defaultMessage": "Nivel de confianza (de 0 a 1).",
-    "description": "Label title."
   },
   "lesson.currentKeyPanelLabel": {
     "defaultMessage": "Tecla actual",
@@ -503,25 +479,9 @@
     "defaultMessage": "Todas las teclas",
     "description": "Panel label."
   },
-  "lesson.learningRateLabel": {
-    "defaultMessage": "Tasa de aprendizaje",
-    "description": "Label name."
-  },
-  "lesson.learningRateTitle": {
-    "defaultMessage": "Tasa de aprendizaje.",
-    "description": "Label title."
-  },
-  "lesson.learningRateValue": {
-    "defaultMessage": "{learningRate} per lesson",
-    "description": "Value format."
-  },
   "lesson.notCalibratedText": {
     "defaultMessage": "No está calibrado, se necesitan más muestras",
     "description": "Panel text."
-  },
-  "lesson.uncertainValue": {
-    "defaultMessage": "Uncertain",
-    "description": "Value format."
   },
   "lessonType.customText.description": {
     "defaultMessage": "Genere lecciones de mecanografía a partir de las palabras de su propio texto personalizado que se proporcionan aquí. De forma predeterminada, todas las claves están habilitadas.",
@@ -550,6 +510,82 @@
   "lessonType.wordlist.name": {
     "defaultMessage": "Palabras comunes",
     "description": "Widget label."
+  },
+  "metric.accuracy.label": {
+    "defaultMessage": "Exactitud",
+    "description": "Label text."
+  },
+  "metric.accuracy.title": {
+    "defaultMessage": "El porcentaje de caracteres escritos sin errores en la última lección.",
+    "description": "Value title."
+  },
+  "metric.accuracyChange.title": {
+    "defaultMessage": "Diferencia con el valor medio.",
+    "description": "Value change title."
+  },
+  "metric.averageSpeed.label": {
+    "defaultMessage": "Velocidad media de mecanografía",
+    "description": "Label name."
+  },
+  "metric.averageSpeed.title": {
+    "defaultMessage": "Velocidad media de mecanografía ({speedUnitName}).",
+    "description": "Label title."
+  },
+  "metric.bestSpeed.label": {
+    "defaultMessage": "Mejor velocidad de mecanografía",
+    "description": "Label name."
+  },
+  "metric.bestSpeed.title": {
+    "defaultMessage": "Mejor velocidad de mecanografía ({speedUnitName}).",
+    "description": "Label title."
+  },
+  "metric.confidenceLevel.label": {
+    "defaultMessage": "Nivel de confianza",
+    "description": "Label name."
+  },
+  "metric.confidenceLevel.title": {
+    "defaultMessage": "Nivel de confianza (de 0 a 1).",
+    "description": "Label title."
+  },
+  "metric.learningRate.label": {
+    "defaultMessage": "Tasa de aprendizaje",
+    "description": "Label name."
+  },
+  "metric.learningRate.title": {
+    "defaultMessage": "Tasa de aprendizaje.",
+    "description": "Label title."
+  },
+  "metric.learningRate.value": {
+    "defaultMessage": "{learningRate} per lesson",
+    "description": "Value format."
+  },
+  "metric.score.label": {
+    "defaultMessage": "Puntuación",
+    "description": "Label text."
+  },
+  "metric.score.title": {
+    "defaultMessage": "Puntuación de la última lección en puntos abstractos. Las puntuaciones son mayores cuando se teclea más rápido y con menos errores.",
+    "description": "Value title."
+  },
+  "metric.scoreChange.title": {
+    "defaultMessage": "Diferencia con el valor medio.",
+    "description": "Value change title."
+  },
+  "metric.speed.label": {
+    "defaultMessage": "Velocidad",
+    "description": "Label text."
+  },
+  "metric.speed.title": {
+    "defaultMessage": "Velocidad de mecanografía en la última lección.",
+    "description": "Value title."
+  },
+  "metric.speedChange.title": {
+    "defaultMessage": "Diferencia con el valor medio.",
+    "description": "Value change title."
+  },
+  "metric.uncertainValue": {
+    "defaultMessage": "Uncertain",
+    "description": "Value text."
   },
   "multiplayer.intro": {
     "defaultMessage": "Compite contra otros jugadores en este juego multijugador online. Cuanto más rápido teclees, más rápido irá tu coche. ¡Teclea tan rápido como puedas para ganar la carrera!",
@@ -835,18 +871,6 @@
     "defaultMessage": "Speed Test",
     "description": "Page title."
   },
-  "practice.accuracyDeltaValueTitle": {
-    "defaultMessage": "Diferencia con el valor medio.",
-    "description": "Value delta title."
-  },
-  "practice.accuracyLabel": {
-    "defaultMessage": "Exactitud",
-    "description": "Label text."
-  },
-  "practice.accuracyValueTitle": {
-    "defaultMessage": "El porcentaje de caracteres escritos sin errores en la última lección.",
-    "description": "Value title."
-  },
   "practice.focusText": {
     "defaultMessage": "Haz clic para activar...",
     "description": "Freeform text."
@@ -854,18 +878,6 @@
   "practice.resetLessonButtonTitle": {
     "defaultMessage": "Reiniciar la lección actual (Ctrl + Flecha Izquierda).",
     "description": "Button title."
-  },
-  "practice.scoreDeltaValueTitle": {
-    "defaultMessage": "Diferencia con el valor medio.",
-    "description": "Value delta title."
-  },
-  "practice.scoreLabel": {
-    "defaultMessage": "Puntuación",
-    "description": "Label text."
-  },
-  "practice.scoreValueTitle": {
-    "defaultMessage": "Puntuación de la última lección en puntos abstractos. Las puntuaciones son mayores cuando se teclea más rápido y con menos errores.",
-    "description": "Value title."
   },
   "practice.settingButtonName": {
     "defaultMessage": "Ajustes...",
@@ -882,18 +894,6 @@
   "practice.skipLessonButtonTitle": {
     "defaultMessage": "Saltar la lección actual (Ctrl + Flecha Derecha).",
     "description": "Button title."
-  },
-  "practice.speedDeltaValueTitle": {
-    "defaultMessage": "Diferencia con el valor medio.",
-    "description": "Value delta title."
-  },
-  "practice.speedLabel": {
-    "defaultMessage": "Velocidad",
-    "description": "Label text."
-  },
-  "practice.speedValueTitle": {
-    "defaultMessage": "Velocidad de mecanografía en la última lección.",
-    "description": "Value title."
   },
   "practice.switchInterfaceButtonTitle": {
     "defaultMessage": "Cambiar la disposición de la interfaz actual.",
