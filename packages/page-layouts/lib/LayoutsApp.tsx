@@ -3,7 +3,6 @@ import { Layout } from "@keybr/layout";
 import { Article, Header, Link, Para } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
-import { letters } from "./english.ts";
 import { KeyFrequencyHeatmap } from "./KeyFrequencyHeatmap.tsx";
 
 export function LayoutsApp(): ReactNode {
@@ -34,7 +33,7 @@ export function LayoutsApp(): ReactNode {
         }
       />
 
-      <KeyFrequencyHeatmap keyboard={qwerty} letters={letters} />
+      <KeyFrequencyHeatmap keyboard={qwerty} />
 
       <Header level={2}>
         <LayoutName layout={dvorak.layout} />
@@ -55,7 +54,7 @@ export function LayoutsApp(): ReactNode {
         }
       />
 
-      <KeyFrequencyHeatmap keyboard={dvorak} letters={letters} />
+      <KeyFrequencyHeatmap keyboard={dvorak} />
 
       <Header level={2}>
         <LayoutName layout={colemak.layout} />
@@ -76,7 +75,7 @@ export function LayoutsApp(): ReactNode {
         }
       />
 
-      <KeyFrequencyHeatmap keyboard={colemak} letters={letters} />
+      <KeyFrequencyHeatmap keyboard={colemak} />
 
       <Header level={2}>
         <LayoutName layout={workman.layout} />
@@ -96,7 +95,7 @@ export function LayoutsApp(): ReactNode {
         }
       />
 
-      <KeyFrequencyHeatmap keyboard={workman} letters={letters} />
+      <KeyFrequencyHeatmap keyboard={workman} />
     </Article>
   );
 }

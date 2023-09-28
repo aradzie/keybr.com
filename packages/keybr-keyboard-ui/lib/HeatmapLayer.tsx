@@ -1,15 +1,19 @@
-import { useKeyboard } from "@keybr/keyboard";
-import { type Letter } from "@keybr/phonetic-model";
+import {
+  type HasCodePoint,
+  type Keyboard,
+  type KeyboardKey,
+  useKeyboard,
+  visualSortKeys,
+} from "@keybr/keyboard";
 import { clsx } from "clsx";
 import { memo, type ReactNode } from "react";
 import * as styles from "./HeatmapLayer.module.less";
-import { keyFrequencies } from "./util.ts";
 
 export const HeatmapLayer = memo(function HeatmapLayer({
   histogram,
   modifier,
 }: {
-  readonly histogram: ReadonlyMap<Letter, number>;
+  readonly histogram: Iterable<[HasCodePoint, number]>;
   readonly modifier: "h" | "m" | "f";
 }): ReactNode {
   const keyboard = useKeyboard();
@@ -63,3 +67,34 @@ export const HeatmapLayer = memo(function HeatmapLayer({
     </svg>
   );
 });
+
+type KeyFrequency = [keyboardKey: KeyboardKey, relativeFrequency: number];
+
+function keyFrequencies(
+  keyboard: Keyboard,
+  histogram: Iterable<[HasCodePoint, number]>,
+): KeyFrequency[] {
+  const list: KeyFrequency[] = [];
+  let min = 0;
+  let max = 0;
+  for (const [{ codePoint }, count] of histogram) {
+    if (count > 0) {
+      const keyCombo = keyboard.getKeyCombo(codePoint);
+      if (keyCombo != null && keyCombo.prefix == null) {
+        if (list.length === 0) {
+          min = count;
+          max = count;
+        } else {
+          min = Math.min(min, count);
+          max = Math.max(max, count);
+        }
+        list.push([keyCombo.key, count]);
+      }
+    }
+  }
+  return list
+    .sort(([a], [b]) => visualSortKeys(a, b))
+    .map(([key, count]) =>
+      max === min ? [key, 1] : [key, (count - min) / (max - min)],
+    );
+}

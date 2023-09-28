@@ -15,8 +15,8 @@ export function KeyFrequencyHeatmap({
   return (
     <VirtualKeyboard keyboard={keyboard}>
       <KeyLayer />
-      <HeatmapLayer histogram={miss.asMap()} modifier="m" />
-      <HeatmapLayer histogram={hit.asMap()} modifier="h" />
+      <HeatmapLayer histogram={miss} modifier="m" />
+      <HeatmapLayer histogram={hit} modifier="h" />
     </VirtualKeyboard>
   );
 }

@@ -31,3 +31,7 @@ export type GeometryDict = {
     zone?: string,
   ];
 };
+
+export type HasCodePoint = {
+  readonly codePoint: CodePoint;
+};

@@ -1,8 +1,8 @@
 import { type KeyboardKey } from "./keyboardkey.ts";
 import { KeyModifier } from "./keymodifier.ts";
-import { type CodePoint } from "./types.ts";
+import { type CodePoint, type HasCodePoint } from "./types.ts";
 
-export class KeyCombo {
+export class KeyCombo implements HasCodePoint {
   readonly complexity: number;
   readonly usesShift: boolean;
   readonly usesAlt: boolean;

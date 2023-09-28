@@ -1,11 +1,10 @@
 import { useIntlNumbers } from "@keybr/intl";
 import { type Keyboard } from "@keybr/keyboard";
 import { HeatmapLayer, KeyLayer, VirtualKeyboard } from "@keybr/keyboard-ui";
-import { type Letter } from "@keybr/phonetic-model";
 import { Figure, Value } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { transitions } from "./english.ts";
+import { letters, transitions } from "./english.ts";
 import {
   bottomRowKeys,
   homeRowKeys,
@@ -17,17 +16,11 @@ import { fingerSwitches, handSwitches, keysOnRow } from "./stats.ts";
 
 export function KeyFrequencyHeatmap({
   keyboard,
-  letters,
 }: {
   keyboard: Keyboard;
-  letters: readonly Letter[];
 }): ReactNode {
   const { formatMessage } = useIntl();
   const { formatPercents } = useIntlNumbers();
-  const histogram = new Map<Letter, number>();
-  for (const letter of letters) {
-    histogram.set(letter, letter.f);
-  }
   const homeRow = keysOnRow(letters, keyboard, homeRowKeys);
   const topRow = keysOnRow(letters, keyboard, topRowKeys);
   const bottomRow = keysOnRow(letters, keyboard, bottomRowKeys);
@@ -134,7 +127,10 @@ export function KeyFrequencyHeatmap({
 
       <VirtualKeyboard keyboard={keyboard}>
         <KeyLayer />
-        <HeatmapLayer histogram={histogram} modifier="f" />
+        <HeatmapLayer
+          histogram={letters.map((letter) => [letter, letter.f])}
+          modifier="f"
+        />
       </VirtualKeyboard>
     </Figure>
   );

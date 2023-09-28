@@ -1,4 +1,9 @@
-import { type Keyboard, type KeyboardKey, useKeyboard } from "@keybr/keyboard";
+import {
+  type Keyboard,
+  type KeyboardKey,
+  useKeyboard,
+  visualSortKeys,
+} from "@keybr/keyboard";
 import {
   type ComponentType,
   memo,
@@ -8,7 +13,6 @@ import {
 } from "react";
 import { type KeyProps } from "./Key.tsx";
 import { getKeyComponent } from "./keys.tsx";
-import { getKeyboardKeys } from "./util.ts";
 
 type KeyId = string;
 type KeyIdList = readonly KeyId[];
@@ -46,7 +50,9 @@ export const KeyLayer = memo(function KeyLayer({
 });
 
 function getKeyElements(keyboard: Keyboard): MemoizedKeyElement[] {
-  return getKeyboardKeys(keyboard).map((key) => new MemoizedKeyElement(key));
+  return [...keyboard.keys, ...keyboard.specialKeys, ...keyboard.extraKeys]
+    .sort(visualSortKeys)
+    .map((key) => new MemoizedKeyElement(key));
 }
 
 class MemoizedKeyElement {

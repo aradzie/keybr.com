@@ -3,12 +3,10 @@ import { type Letter } from "@keybr/phonetic-model";
 
 export class Transition {
   constructor(
-    public readonly fromCodePoint: number,
-    public readonly toCodePoint: number,
-    public readonly frequency: number,
-  ) {
-    Object.freeze(this);
-  }
+    readonly fromCodePoint: number,
+    readonly toCodePoint: number,
+    readonly frequency: number,
+  ) {}
 }
 
 export function keysOnRow(

@@ -51,3 +51,7 @@ export class KeyboardKey {
     );
   }
 }
+
+export const visualSortKeys = (a: KeyboardKey, b: KeyboardKey): number => {
+  return a.geometry.y - b.geometry.y || a.geometry.x - b.geometry.x;
+};
