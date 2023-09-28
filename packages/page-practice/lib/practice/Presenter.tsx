@@ -276,6 +276,7 @@ function NormalLayout({
         <DeferredKeyboardPresenter
           focus={focus}
           depressedKeys={depressedKeys}
+          lastLesson={state.lastLesson}
         />
       </div>
       <Announcer state={state} />

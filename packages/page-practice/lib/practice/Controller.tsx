@@ -61,17 +61,17 @@ function usePracticeState(state: PracticeState) {
       state.handleSkip();
       setLines(state.lines);
     };
-    const onInput0 = (codePoint: number, timeStamp: number): void => {
-      const feedback = state.handleInput(codePoint, timeStamp);
-      setLines(state.lines);
-      playFeedbackSound(feedback);
-    };
     const { onKeyDown, onKeyUp, onInput } = emulateLayout(
       keyboard,
       {
         onKeyDown: () => {},
         onKeyUp: () => {},
-        onInput: onInput0,
+        onInput: (codePoint, timeStamp) => {
+          state.lastLesson = null;
+          const feedback = state.handleInput(codePoint, timeStamp);
+          setLines(state.lines);
+          playFeedbackSound(feedback);
+        },
       },
       state.settings.emulateLayout,
     );

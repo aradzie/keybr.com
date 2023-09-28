@@ -11,13 +11,21 @@ test.serial("deferred render", async (t) => {
 
   const r = render(
     <KeyboardContext.Provider value={keyboard}>
-      <DeferredKeyboardPresenter focus={false} depressedKeys={[]} />
+      <DeferredKeyboardPresenter
+        focus={false}
+        depressedKeys={[]}
+        lastLesson={null}
+      />
     </KeyboardContext.Provider>,
   );
 
   r.rerender(
     <KeyboardContext.Provider value={keyboard}>
-      <DeferredKeyboardPresenter focus={true} depressedKeys={["KeyA"]} />
+      <DeferredKeyboardPresenter
+        focus={true}
+        depressedKeys={["KeyA"]}
+        lastLesson={null}
+      />
     </KeyboardContext.Provider>,
   );
 

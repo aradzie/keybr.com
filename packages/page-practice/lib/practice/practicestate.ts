@@ -1,4 +1,6 @@
+import { type HasCodePoint } from "@keybr/keyboard";
 import { type Lesson, type LessonKeys } from "@keybr/lesson";
+import { Histogram, KeySet } from "@keybr/math";
 import { type KeyStatsMap, Result } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
 import {
@@ -10,10 +12,18 @@ import {
 } from "@keybr/textinput";
 import { type Announcement } from "./Announcer.tsx";
 
+export type LastLesson = {
+  readonly result: Result;
+  readonly hits: Histogram<HasCodePoint>;
+  readonly misses: Histogram<HasCodePoint>;
+};
+
 export class PracticeState {
   readonly keyStatsMap: KeyStatsMap;
   readonly lessonKeys: LessonKeys;
   readonly announcements: Announcement[] = [];
+
+  lastLesson: LastLesson | null = null;
 
   textInput!: TextInput; // Mutable.
   lines!: readonly LineData[]; // Mutable.
@@ -71,4 +81,15 @@ export class PracticeState {
       }
     }
   }
+}
+
+export function makeLastLesson(result: Result): LastLesson {
+  const keySet = new KeySet<HasCodePoint>([]);
+  const hits = new Histogram(keySet);
+  const misses = new Histogram(keySet);
+  for (const { codePoint, hitCount, missCount } of result.histogram) {
+    hits.set({ codePoint }, hitCount);
+    misses.set({ codePoint }, missCount);
+  }
+  return { result, hits, misses };
 }
