@@ -6,7 +6,7 @@ import { useIntl } from "react-intl";
 import { Chart, chartArea, type SizeProps } from "./Chart.tsx";
 import { paintFrame, paintKeyTicks, paintNoData } from "./decoration.ts";
 import { paintHistogram } from "./graph.ts";
-import { hitMissRatio, keyUsage } from "./keyusage.ts";
+import { keyUsage } from "./keyusage.ts";
 import { chartStyles } from "./styles.ts";
 
 export function KeyFrequencyHistogram({
@@ -42,8 +42,7 @@ function usePaint(keyStatsMap: KeyStatsMap) {
     };
   }
 
-  const { keySet, hit, miss } = keyUsage(keyStatsMap);
-  const ratio = hitMissRatio(keySet, hit, miss);
+  const { hit, miss, ratio } = keyUsage(keyStatsMap);
   const vHit = hit.asVector();
   const vMiss = miss.asVector();
   const vRatio = ratio.asVector();

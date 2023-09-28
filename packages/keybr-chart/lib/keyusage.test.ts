@@ -7,17 +7,19 @@ const faker = new ResultFaker();
 const { letters } = FakePhoneticModel;
 
 test("empty", (t) => {
-  const { keySet, hit, miss } = keyUsage(newKeyStatsMap(letters, []));
+  const { keySet, hit, miss, ratio } = keyUsage(newKeyStatsMap(letters, []));
   t.deepEqual([...keySet], letters);
-  t.deepEqual(hit.asVector().values, [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
-  t.deepEqual(miss.asVector().values, [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+  t.deepEqual([...hit.values()], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+  t.deepEqual([...miss.values()], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+  t.deepEqual([...ratio.values()], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
 });
 
 test("not empty", (t) => {
-  const { keySet, hit, miss } = keyUsage(
+  const { keySet, hit, miss, ratio } = keyUsage(
     newKeyStatsMap(letters, faker.nextResultList(3)),
   );
   t.deepEqual([...keySet], letters);
-  t.deepEqual(hit.asVector().values, [30, 30, 30, 30, 30, 30, 30, 30, 30, 30]);
-  t.deepEqual(miss.asVector().values, [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+  t.deepEqual([...hit.values()], [30, 30, 30, 30, 30, 30, 30, 30, 30, 30]);
+  t.deepEqual([...miss.values()], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+  t.deepEqual([...ratio.values()], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
 });
