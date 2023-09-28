@@ -1,10 +1,10 @@
 import { type Keyboard } from "@keybr/keyboard";
 import { type Letter } from "@keybr/phonetic-model";
 
-export class Transition {
+export class Bigram {
   constructor(
-    readonly fromCodePoint: number,
-    readonly toCodePoint: number,
+    readonly codePoint0: number,
+    readonly codePoint1: number,
     readonly frequency: number,
   ) {}
 }
@@ -30,20 +30,20 @@ export function keysOnRow(
 }
 
 export function handSwitches(
-  transitions: readonly Transition[],
+  bigrams: readonly Bigram[],
   keyboard: Keyboard,
   leftKeys: ReadonlySet<string>,
   rightKeys: ReadonlySet<string>,
 ): number {
   let a = 0;
   let b = 0;
-  for (const { fromCodePoint, toCodePoint, frequency } of transitions) {
-    const fromKey = keyboard.getKeyCombo(fromCodePoint);
-    const toKey = keyboard.getKeyCombo(toCodePoint);
-    if (fromKey && toKey) {
+  for (const { codePoint0, codePoint1, frequency } of bigrams) {
+    const key0 = keyboard.getKeyCombo(codePoint0);
+    const key1 = keyboard.getKeyCombo(codePoint1);
+    if (key0 && key1) {
       if (
-        (leftKeys.has(fromKey.key.id) && rightKeys.has(toKey.key.id)) ||
-        (rightKeys.has(fromKey.key.id) && leftKeys.has(toKey.key.id))
+        (leftKeys.has(key0.key.id) && rightKeys.has(key1.key.id)) ||
+        (rightKeys.has(key0.key.id) && leftKeys.has(key1.key.id))
       ) {
         a += frequency;
       } else {
@@ -55,16 +55,16 @@ export function handSwitches(
 }
 
 export function fingerSwitches(
-  transitions: readonly Transition[],
+  bigrams: readonly Bigram[],
   keyboard: Keyboard,
 ): number {
   let a = 0;
   let b = 0;
-  for (const { fromCodePoint, toCodePoint, frequency } of transitions) {
-    const fromKey = keyboard.getKeyCombo(fromCodePoint);
-    const toKey = keyboard.getKeyCombo(toCodePoint);
-    if (fromKey && toKey) {
-      if (fromKey.key.geometry.zone !== toKey.key.geometry.zone) {
+  for (const { codePoint0, codePoint1, frequency } of bigrams) {
+    const key0 = keyboard.getKeyCombo(codePoint0);
+    const key1 = keyboard.getKeyCombo(codePoint1);
+    if (key0 && key1) {
+      if (key0.key.geometry.zone !== key1.key.geometry.zone) {
         a += frequency;
       } else {
         b += frequency;

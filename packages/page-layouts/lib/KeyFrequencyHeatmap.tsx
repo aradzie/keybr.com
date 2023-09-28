@@ -4,7 +4,7 @@ import { HeatmapLayer, KeyLayer, VirtualKeyboard } from "@keybr/keyboard-ui";
 import { Figure, Value } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { letters, transitions } from "./english.ts";
+import { bigrams, letters } from "./english.ts";
 import {
   bottomRowKeys,
   homeRowKeys,
@@ -25,8 +25,8 @@ export function KeyFrequencyHeatmap({
   const topRow = keysOnRow(letters, keyboard, topRowKeys);
   const bottomRow = keysOnRow(letters, keyboard, bottomRowKeys);
   const sameHand =
-    1 - handSwitches(transitions, keyboard, leftHandKeys, rightHandKeys);
-  const sameFinger = 1 - fingerSwitches(transitions, keyboard);
+    1 - handSwitches(bigrams, keyboard, leftHandKeys, rightHandKeys);
+  const sameFinger = 1 - fingerSwitches(bigrams, keyboard);
 
   return (
     <Figure>
