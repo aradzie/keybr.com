@@ -1,4 +1,4 @@
-export const digitRowKeys: ReadonlySet<string> = new Set<string>([
+export const digitRowKeys: ReadonlySet<string> = new Set([
   "Backquote",
   "Digit1",
   "Digit2",
@@ -14,7 +14,7 @@ export const digitRowKeys: ReadonlySet<string> = new Set<string>([
   "Equal",
 ]);
 
-export const topRowKeys: ReadonlySet<string> = new Set<string>([
+export const topRowKeys: ReadonlySet<string> = new Set([
   "Tab",
   "KeyQ",
   "KeyW",
@@ -31,7 +31,7 @@ export const topRowKeys: ReadonlySet<string> = new Set<string>([
   "Backslash",
 ]);
 
-export const homeRowKeys: ReadonlySet<string> = new Set<string>([
+export const homeRowKeys: ReadonlySet<string> = new Set([
   "CapsLock",
   "KeyA",
   "KeyA",
@@ -48,7 +48,7 @@ export const homeRowKeys: ReadonlySet<string> = new Set<string>([
   "Enter",
 ]);
 
-export const bottomRowKeys: ReadonlySet<string> = new Set<string>([
+export const bottomRowKeys: ReadonlySet<string> = new Set([
   "ShiftLeft",
   "KeyZ",
   "KeyX",
@@ -63,7 +63,7 @@ export const bottomRowKeys: ReadonlySet<string> = new Set<string>([
   "ShiftRight",
 ]);
 
-export const leftHandKeys: ReadonlySet<string> = new Set<string>([
+export const leftHandKeys: ReadonlySet<string> = new Set([
   "Backquote",
   "Digit1",
   "Digit2",
@@ -90,7 +90,7 @@ export const leftHandKeys: ReadonlySet<string> = new Set<string>([
   "KeyB",
 ]);
 
-export const rightHandKeys: ReadonlySet<string> = new Set<string>([
+export const rightHandKeys: ReadonlySet<string> = new Set([
   "Digit6",
   "Digit7",
   "Digit8",

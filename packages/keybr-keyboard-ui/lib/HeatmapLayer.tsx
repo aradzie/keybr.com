@@ -3,7 +3,6 @@ import {
   type Keyboard,
   type KeyboardKey,
   useKeyboard,
-  visualSortKeys,
 } from "@keybr/keyboard";
 import { clsx } from "clsx";
 import { memo, type ReactNode } from "react";
@@ -19,7 +18,7 @@ export const HeatmapLayer = memo(function HeatmapLayer({
   const keyboard = useKeyboard();
   return (
     <svg x={21} y={21}>
-      {keyFrequencies(keyboard, histogram).map(([key, frequency]) => {
+      {normalize(keyboard, histogram).map(([key, frequency]) => {
         const {
           id,
           geometry: { x, y, w, h },
@@ -68,33 +67,29 @@ export const HeatmapLayer = memo(function HeatmapLayer({
   );
 });
 
-type KeyFrequency = [keyboardKey: KeyboardKey, relativeFrequency: number];
-
-function keyFrequencies(
+function normalize(
   keyboard: Keyboard,
   histogram: Iterable<[HasCodePoint, number]>,
-): KeyFrequency[] {
-  const list: KeyFrequency[] = [];
-  let min = 0;
-  let max = 0;
+): [KeyboardKey, number][] {
+  const map = new Map<KeyboardKey, number>();
   for (const [{ codePoint }, count] of histogram) {
     if (count > 0) {
       const keyCombo = keyboard.getKeyCombo(codePoint);
       if (keyCombo != null && keyCombo.prefix == null) {
-        if (list.length === 0) {
-          min = count;
-          max = count;
-        } else {
-          min = Math.min(min, count);
-          max = Math.max(max, count);
-        }
-        list.push([keyCombo.key, count]);
+        map.set(keyCombo.key, count);
       }
     }
   }
-  return list
-    .sort(([a], [b]) => visualSortKeys(a, b))
-    .map(([key, count]) =>
-      max === min ? [key, 1] : [key, (count - min) / (max - min)],
-    );
+  if (map.size > 0) {
+    const min = Math.min(...map.values());
+    const max = Math.max(...map.values());
+    return [...map]
+      .sort((a, b) => a[1] - b[1])
+      .map(([key, count]) => [
+        key,
+        max > min ? (count - min) / (max - min) : 0.5,
+      ]);
+  } else {
+    return [];
+  }
 }
