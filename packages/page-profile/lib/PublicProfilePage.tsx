@@ -1,10 +1,5 @@
-import { LoadingBanner, StandardLayout } from "@keybr/pages-server";
-import {
-  LoadingProgress,
-  Screen,
-  Sitemap,
-  usePageData,
-} from "@keybr/pages-shared";
+import { StandardLayout } from "@keybr/pages-server";
+import { LoadingProgress, Sitemap, usePageData } from "@keybr/pages-shared";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
 
@@ -40,10 +35,7 @@ export function PublicProfilePage(): ReactNode {
         entrypoint: "page-profile",
       }}
     >
-      <Screen>
-        <LoadingBanner />
-        <LoadingProgress total={0} current={0} />
-      </Screen>
+      <LoadingProgress total={0} current={0} />
     </StandardLayout>
   );
 }

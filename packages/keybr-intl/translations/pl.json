@@ -803,10 +803,6 @@
     "defaultMessage": "Układy klawiatury.",
     "description": "Page title."
   },
-  "page.multiplayer.content": {
-    "defaultMessage": "<h1>Gra online w trybie wieloosobowych polegająca na pisaniu na klawiaturze</h1><p>Konkuruj z innymi graczami w tej grze online w trybie wieloosobowym polegającej na pisaniu na klawiaturze. Im szybciej piszesz na klawiaturze, tym szybciej jedzie twój samochód. Pisz jak najszybciej, aby wygrać wyścig!</p>",
-    "description": "Page content."
-  },
   "page.multiplayer.description": {
     "defaultMessage": "Gra wyścigowa online w trybie wieloosobowym.",
     "description": "Page description."
@@ -815,10 +811,6 @@
     "defaultMessage": "Tryb wieloosobowy",
     "description": "Page title."
   },
-  "page.practice.content": {
-    "defaultMessage": "<h1>Lekcje pisania na klawiaturze</h1><p>Wykonaj test tempa pisania na klawiaturze, naucz się pisać szybciej z mniejszą liczbą błędów dzięki tym darmowym lekcjom pisania na klawiaturze online.</p>",
-    "description": "Page content."
-  },
   "page.practice.description": {
     "defaultMessage": "Wykonaj test tempa pisania na klawiaturze, przechodź przez lekcje pisania na klawiaturze, naucz się pisać na klawiaturze szybciej.",
     "description": "Page description."
@@ -826,10 +818,6 @@
   "page.practice.title": {
     "defaultMessage": "Ćwiczenia w pisaniu na klawiaturze",
     "description": "Page title."
-  },
-  "page.profile.content": {
-    "defaultMessage": "<h1>Mój profil</h1><p>To jest strona ze szczegółowymi statystykami twoich postępów w nauce. Im więcej ukończonych lekcji, tym bardziej szczegółowe i dokładne będą to statystyki.</p>",
-    "description": "Page content."
   },
   "page.profile.description": {
     "defaultMessage": "Mój szczegółowy profil.",
@@ -858,10 +846,6 @@
   "page.textTools.title": {
     "defaultMessage": "Narzędzia tekstowe",
     "description": "Page title."
-  },
-  "page.typingTest.content": {
-    "defaultMessage": "<h1>Typing Speed Test</h1><p>Take a typing speed test.</p>",
-    "description": "Page content."
   },
   "page.typingTest.description": {
     "defaultMessage": "Take a typing speed test.",
