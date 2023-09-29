@@ -19,7 +19,7 @@ export function PracticeScreen({
   readonly onConfigure: () => void;
 }): ReactNode {
   const { settings } = useSettings();
-  const keyboard = loadKeyboard(settings.layout, { full: true });
+  const keyboard = loadKeyboard(settings.layout, { full: false });
   return (
     <KeyboardContext.Provider value={keyboard}>
       <LessonLoader>
