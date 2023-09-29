@@ -1,5 +1,5 @@
-import { KeySet } from "./data-keyset.ts";
-import { Vector } from "./data-vector.ts";
+import { KeySet } from "./keyset.ts";
+import { Vector } from "./vector.ts";
 
 export class Histogram<T> implements Iterable<[T, number]> {
   readonly #keySet: KeySet<T>;

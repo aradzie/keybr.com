@@ -1,6 +1,6 @@
 import test from "ava";
-import { Vector } from "./data-vector.ts";
 import { r2 } from "./model.ts";
+import { Vector } from "./vector.ts";
 
 test("r2", (t) => {
   const vx = new Vector([1, 2, 3, 4, 5]);

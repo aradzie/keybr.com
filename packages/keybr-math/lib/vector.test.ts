@@ -1,5 +1,5 @@
 import test from "ava";
-import { Vector } from "./data-vector.ts";
+import { Vector } from "./vector.ts";
 
 test("validate arguments", (t) => {
   t.throws(() => new Vector([NaN]));

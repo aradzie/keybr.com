@@ -1,5 +1,5 @@
-import { type Vector } from "./data-vector.ts";
 import { Polynomial } from "./polynomial.ts";
+import { type Vector } from "./vector.ts";
 
 export function linearRegression(vx: Vector, vy: Vector): Polynomial {
   const { length } = vx;

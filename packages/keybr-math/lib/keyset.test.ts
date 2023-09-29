@@ -1,5 +1,5 @@
 import test from "ava";
-import { KeySet } from "./data-keyset.ts";
+import { KeySet } from "./keyset.ts";
 
 test("construct", (t) => {
   const keySet = new KeySet([1, 1, 1, 2]);

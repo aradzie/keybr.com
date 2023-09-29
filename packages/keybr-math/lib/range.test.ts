@@ -1,5 +1,5 @@
 import test from "ava";
-import { Range } from "./data-range.ts";
+import { Range } from "./range.ts";
 
 test("construct", (t) => {
   t.is(new Range().min, NaN);

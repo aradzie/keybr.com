@@ -1,4 +1,4 @@
-import { type Vector } from "./data-vector.ts";
+import { type Vector } from "./vector.ts";
 
 export type Model = {
   eval(x: number): number;

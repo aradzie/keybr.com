@@ -20,10 +20,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import { type Vector } from "./data-vector.ts";
 import { linearRegression } from "./linear-regression.ts";
 import { Polynomial } from "./polynomial.ts";
 import { Sle } from "./sle.ts";
+import { type Vector } from "./vector.ts";
 
 export function polynomialRegression(
   vx: Vector,

@@ -1,6 +1,6 @@
 import test from "ava";
-import { Histogram } from "./data-histogram.ts";
-import { KeySet } from "./data-keyset.ts";
+import { Histogram } from "./histogram.ts";
+import { KeySet } from "./keyset.ts";
 
 test("mutate histograms with a shared key set", (t) => {
   const keySet = new KeySet<string>(["a", "b"]);

@@ -1,6 +1,6 @@
 import test from "ava";
-import { Vector } from "./data-vector.ts";
 import { polynomialRegression } from "./polynomial-regression.ts";
+import { Vector } from "./vector.ts";
 
 test("a", (t) => {
   const poly = polynomialRegression(
