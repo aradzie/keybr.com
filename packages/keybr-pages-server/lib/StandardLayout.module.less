@@ -33,9 +33,9 @@ body {
 
 .bodyAlt {
   display: grid;
-  grid-template-areas: "nav main .";
+  grid-template-areas: ". main nav";
   grid-template-rows: 1fr;
-  grid-template-columns: auto 1fr 12rem;
+  grid-template-columns: 12rem 1fr auto;
   min-height: 100vh;
 }
 
@@ -60,8 +60,7 @@ body {
   grid-area: nav;
   margin: 0;
   padding: 1rem;
-  border-right: var(--separator-border);
-  background-image: var(--Nav__background-image);
+  border-left: var(--separator-border);
 }
 
 .topbar {
