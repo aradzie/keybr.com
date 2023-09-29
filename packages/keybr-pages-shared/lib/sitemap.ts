@@ -212,24 +212,24 @@ export class Sitemap {
   static readonly menuItems: readonly PageLinkTemplate[] = [
     Sitemap.practice,
     Sitemap.profile,
-    Sitemap.typingTest,
     Sitemap.help,
     Sitemap.highScores,
     Sitemap.multiplayer,
+    Sitemap.typingTest,
     Sitemap.layouts,
     Sitemap.textTools,
   ];
 
   static readonly sitemapLinks: readonly PageLinkTemplate[] = [
     Sitemap.practice,
-    Sitemap.help,
     Sitemap.profile,
+    Sitemap.help,
+    Sitemap.highScores,
     Sitemap.multiplayer,
     Sitemap.typingTest,
-    Sitemap.signIn,
-    Sitemap.highScores,
     Sitemap.layouts,
     Sitemap.textTools,
+    Sitemap.signIn,
     Sitemap.privacyPolicy,
     Sitemap.termsOfService,
   ];
