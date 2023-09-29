@@ -1,6 +1,5 @@
 import { LoadingBanner, StandardLayout } from "@keybr/pages-server";
-import { LoadingProgress, Sitemap } from "@keybr/pages-shared";
-import { Article } from "@keybr/widget";
+import { LoadingProgress, Screen, Sitemap } from "@keybr/pages-shared";
 import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
@@ -24,7 +23,7 @@ export function MultiplayerPage(): ReactNode {
         entrypoint: "page-multiplayer",
       }}
     >
-      <Article>
+      <Screen>
         <FormattedMessage
           id="page.multiplayer.content"
           description="Page content."
@@ -35,7 +34,7 @@ export function MultiplayerPage(): ReactNode {
         />
         <LoadingBanner />
         <LoadingProgress current={0} total={0} />
-      </Article>
+      </Screen>
     </StandardLayout>
   );
 }

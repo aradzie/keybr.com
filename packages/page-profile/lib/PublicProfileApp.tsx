@@ -1,5 +1,6 @@
-import { Screen } from "@keybr/pages-shared";
+import { type NamedUser, Screen, UserName } from "@keybr/pages-shared";
 import { type KeyStatsMap } from "@keybr/result";
+import { Header } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { CalendarSection } from "./profile/CalendarSection.tsx";
 import { HistogramSection } from "./profile/HistogramSection.tsx";
@@ -13,13 +14,18 @@ import { newSpeedDistribution } from "./profile/speed/dist.ts";
 import { AllTimeSummary, useSummary } from "./profile/Summary.tsx";
 import { TypingSpeedSection } from "./profile/TypingSpeedSection.tsx";
 
-export function PublicProfileApp(): ReactNode {
+export function PublicProfileApp({
+  profileOwner,
+}: {
+  readonly profileOwner: NamedUser;
+}): ReactNode {
   return (
     <Screen>
+      <Header level={1}>
+        <UserName user={profileOwner} />
+      </Header>
       <ResultGrouper>
-        {(keyStatsMap) => {
-          return <Content keyStatsMap={keyStatsMap} />;
-        }}
+        {(keyStatsMap) => <Content keyStatsMap={keyStatsMap} />}
       </ResultGrouper>
     </Screen>
   );

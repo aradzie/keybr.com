@@ -1,11 +1,10 @@
 import { LoadingBanner, StandardLayout } from "@keybr/pages-server";
 import {
   LoadingProgress,
+  Screen,
   Sitemap,
   usePageData,
-  UserName,
 } from "@keybr/pages-shared";
-import { Article, Header } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
 
@@ -41,18 +40,10 @@ export function PublicProfilePage(): ReactNode {
         entrypoint: "page-profile",
       }}
     >
-      <Article>
-        <Header level={1}>
-          <UserName user={profileOwner} />
-        </Header>
-      </Article>
-
-      <div id="root">
-        <Article>
-          <LoadingBanner />
-          <LoadingProgress total={0} current={0} />
-        </Article>
-      </div>
+      <Screen>
+        <LoadingBanner />
+        <LoadingProgress total={0} current={0} />
+      </Screen>
     </StandardLayout>
   );
 }

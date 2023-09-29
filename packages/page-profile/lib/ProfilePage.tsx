@@ -1,6 +1,5 @@
 import { LoadingBanner, StandardLayout } from "@keybr/pages-server";
-import { LoadingProgress, Sitemap } from "@keybr/pages-shared";
-import { Article } from "@keybr/widget";
+import { LoadingProgress, Screen, Sitemap } from "@keybr/pages-shared";
 import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
@@ -24,7 +23,7 @@ export function ProfilePage(): ReactNode {
         entrypoint: "page-profile",
       }}
     >
-      <Article>
+      <Screen>
         <FormattedMessage
           id="page.profile.content"
           description="Page content."
@@ -33,14 +32,9 @@ export function ProfilePage(): ReactNode {
             "<p>This is a page with detailed statistics about your learning progress. The more lessons you complete, the more detailed and accurate these statistics will be.</p>"
           }
         />
-      </Article>
-
-      <div id="root">
-        <Article>
-          <LoadingBanner />
-          <LoadingProgress total={0} current={0} />
-        </Article>
-      </div>
+        <LoadingBanner />
+        <LoadingProgress total={0} current={0} />
+      </Screen>
     </StandardLayout>
   );
 }

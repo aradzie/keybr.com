@@ -24,9 +24,7 @@ export function ProfileApp(): ReactNode {
   return (
     <Screen>
       <ResultGrouper>
-        {(keyStatsMap) => {
-          return <Content keyStatsMap={keyStatsMap} />;
-        }}
+        {(keyStatsMap) => <Content keyStatsMap={keyStatsMap} />}
       </ResultGrouper>
     </Screen>
   );

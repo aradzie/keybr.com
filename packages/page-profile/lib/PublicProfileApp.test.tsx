@@ -20,7 +20,14 @@ test.serial("render", async (t) => {
       >
         <FakeSettingsContext>
           <FakeResultContext initialResults={faker.nextResultList(100)}>
-            <PublicProfileApp />
+            <PublicProfileApp
+              profileOwner={{
+                id: "abc",
+                name: "User",
+                imageUrl: null,
+                premium: false,
+              }}
+            />
           </FakeResultContext>
         </FakeSettingsContext>
       </PageDataContext.Provider>

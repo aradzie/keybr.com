@@ -7,7 +7,7 @@ import { ProfileApp } from "./ProfileApp.tsx";
 import { PublicProfileApp } from "./PublicProfileApp.tsx";
 
 init(
-  <Slot selector="#root">
+  <Slot selector="main">
     <Main />
   </Slot>,
 );
@@ -20,7 +20,7 @@ function Main(): ReactNode {
     <SettingsLoader>
       {profileOwner != null ? (
         <PublicResultLoader>
-          <PublicProfileApp />
+          <PublicProfileApp profileOwner={profileOwner} />
         </PublicResultLoader>
       ) : (
         <ResultLoader>

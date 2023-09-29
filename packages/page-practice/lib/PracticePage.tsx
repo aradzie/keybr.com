@@ -1,6 +1,5 @@
 import { LoadingBanner, StandardLayout } from "@keybr/pages-server";
-import { LoadingProgress, Sitemap } from "@keybr/pages-shared";
-import { Article } from "@keybr/widget";
+import { LoadingProgress, Screen, Sitemap } from "@keybr/pages-shared";
 import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
@@ -25,7 +24,7 @@ export function PracticePage(): ReactNode {
         entrypoint: "page-practice",
       }}
     >
-      <Article>
+      <Screen>
         <FormattedMessage
           id="page.practice.content"
           description="Page content."
@@ -36,7 +35,7 @@ export function PracticePage(): ReactNode {
         />
         <LoadingBanner />
         <LoadingProgress current={0} total={0} />
-      </Article>
+      </Screen>
     </StandardLayout>
   );
 }
