@@ -1,7 +1,7 @@
 import { StandardLayout } from "@keybr/pages-server";
 import { LoadingProgress, Sitemap } from "@keybr/pages-shared";
 import { type ReactNode } from "react";
-import { useIntl } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 
 export function TypingTestPage(): ReactNode {
   const { formatMessage } = useIntl();
@@ -23,6 +23,14 @@ export function TypingTestPage(): ReactNode {
         entrypoint: "page-typing-test",
       }}
     >
+      <FormattedMessage
+        id="page.typingTest.content"
+        description="Page content."
+        defaultMessage={
+          "<h1>Typing a Speed Test</h1>" +
+          "<p>Measure how fast you can type.</p>"
+        }
+      />
       <LoadingProgress current={0} total={0} />
     </StandardLayout>
   );

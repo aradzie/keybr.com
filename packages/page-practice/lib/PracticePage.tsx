@@ -1,7 +1,7 @@
 import { StandardLayout } from "@keybr/pages-server";
 import { LoadingProgress, Sitemap } from "@keybr/pages-shared";
 import { type ReactNode } from "react";
-import { useIntl } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 
 export function PracticePage(): ReactNode {
   const { formatMessage } = useIntl();
@@ -24,6 +24,14 @@ export function PracticePage(): ReactNode {
         entrypoint: "page-practice",
       }}
     >
+      <FormattedMessage
+        id="page.practice.content"
+        description="Page content."
+        defaultMessage={
+          "<h1>Typing Lessons</h1>" +
+          "<p>Take a typing speed test, learn to type faster and with fewer errors with this free online typing tutor.</p>"
+        }
+      />
       <LoadingProgress current={0} total={0} />
     </StandardLayout>
   );

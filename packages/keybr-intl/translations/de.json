@@ -831,6 +831,10 @@
     "defaultMessage": "Tastaturlayouts.",
     "description": "Page title."
   },
+  "page.multiplayer.content": {
+    "defaultMessage": "<h1>Online-Multiplayer-Tippspiel</h1><p>Treten Sie in diesem Online-Multiplayer-Tippspiel gegen andere Spieler an. Je schneller Sie tippen, desto schneller fährt Ihr Auto. Tippen Sie so schnell Sie können, um das Rennen zu gewinnen!</p>",
+    "description": "Page content."
+  },
   "page.multiplayer.description": {
     "defaultMessage": "Online-Multiplayer Tipp-Rennspiel.",
     "description": "Page description."
@@ -839,6 +843,10 @@
     "defaultMessage": "Multiplayer",
     "description": "Page title."
   },
+  "page.practice.content": {
+    "defaultMessage": "<h1>Tippen lernen</h1><p>Machen Sie einen Test der Tippgeschwindigkeit, lernen Sie schneller und mit weniger Fehlern zu tippen mit diesem kostenlosen Online-Tipptutor.</p>",
+    "description": "Page content."
+  },
   "page.practice.description": {
     "defaultMessage": "Machen Sie einen Tipptest, üben Sie zu tippen, lernen Sie schneller zu tippen.",
     "description": "Page description."
@@ -846,6 +854,10 @@
   "page.practice.title": {
     "defaultMessage": "Tippen üben",
     "description": "Page title."
+  },
+  "page.profile.content": {
+    "defaultMessage": "<h1>Mein Profil</h1><p>Dies ist eine Seite mit detaillierten Statistiken über Ihren Lernfortschritt. Je mehr Lektionen Sie absolvieren, desto detaillierter und genauer werden diese Statistiken.</p>",
+    "description": "Page content."
   },
   "page.profile.description": {
     "defaultMessage": "Mein detailliertes Profil.",
@@ -874,6 +886,10 @@
   "page.textTools.title": {
     "defaultMessage": "Text Tools",
     "description": "Page title."
+  },
+  "page.typingTest.content": {
+    "defaultMessage": "<h1>Typing Speed Test</h1><p>Take a typing speed test.</p>",
+    "description": "Page content."
   },
   "page.typingTest.description": {
     "defaultMessage": "Take a typing speed test.",

@@ -1,7 +1,7 @@
 import { StandardLayout } from "@keybr/pages-server";
 import { LoadingProgress, Sitemap } from "@keybr/pages-shared";
 import { type ReactNode } from "react";
-import { useIntl } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 
 export function MultiplayerPage(): ReactNode {
   const { formatMessage } = useIntl();
@@ -23,6 +23,14 @@ export function MultiplayerPage(): ReactNode {
         entrypoint: "page-multiplayer",
       }}
     >
+      <FormattedMessage
+        id="page.multiplayer.content"
+        description="Page content."
+        defaultMessage={
+          "<h1>Online Multiplayer Typing Game</h1>" +
+          "<p>Compete against other players in this online multiplayer typing game. The faster you type, the faster your car goes. Type as fast as you can to win the race!</p>"
+        }
+      />
       <LoadingProgress current={0} total={0} />
     </StandardLayout>
   );

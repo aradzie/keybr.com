@@ -831,6 +831,10 @@
     "defaultMessage": "Disposiciones de Teclado.",
     "description": "Page title."
   },
+  "page.multiplayer.content": {
+    "defaultMessage": "<h1>Juego de Mecanografía Multijugador Online</h1><p>Compite contra otros jugadores en este juego de mecanografía multijugador online. Cuanto más rápido teclees, más rápido irá tu coche. ¡Teclea tan rápido como puedas para ganar la carrera!</p>",
+    "description": "Page content."
+  },
   "page.multiplayer.description": {
     "defaultMessage": "Juego de carreras multijugador online.",
     "description": "Page description."
@@ -839,6 +843,10 @@
     "defaultMessage": "Multijugador",
     "description": "Page title."
   },
+  "page.practice.content": {
+    "defaultMessage": "<h1>Lecciones de Mecanografía</h1><p>Haz una prueba de velocidad de mecanografía, aprende a escribir más rápido y con menos errores con este tutor de mecanografía online gratuito.</p>",
+    "description": "Page content."
+  },
   "page.practice.description": {
     "defaultMessage": "Haz una prueba de mecanografía, practica lecciones de mecanografía, aprende a escribir más rápido.",
     "description": "Page description."
@@ -846,6 +854,10 @@
   "page.practice.title": {
     "defaultMessage": "Practica de Mecanografía",
     "description": "Page title."
+  },
+  "page.profile.content": {
+    "defaultMessage": "<h1>Mi Perfil</h1><p>Esta es una página con estadísticas detalladas sobre tu progreso de aprendizaje. Cuantas más lecciones completes, más detalladas y precisas serán estas estadísticas</p>",
+    "description": "Page content."
   },
   "page.profile.description": {
     "defaultMessage": "Mi perfil detallado.",
@@ -874,6 +886,10 @@
   "page.textTools.title": {
     "defaultMessage": "Herramientas de Texto",
     "description": "Page title."
+  },
+  "page.typingTest.content": {
+    "defaultMessage": "<h1>Typing Speed Test</h1><p>Take a typing speed test.</p>",
+    "description": "Page content."
   },
   "page.typingTest.description": {
     "defaultMessage": "Take a typing speed test.",
