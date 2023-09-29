@@ -1,8 +1,12 @@
 import test from "ava";
+import { Vector } from "./data-vector.ts";
 import { linearRegression } from "./linear-regression.ts";
 
 test("a", (t) => {
-  const poly = linearRegression([0, 1, 2, 3, 4], [0, 0, 0, 0, 0]);
+  const poly = linearRegression(
+    new Vector([0, 1, 2, 3, 4]),
+    new Vector([0, 0, 0, 0, 0]),
+  );
 
   t.is(poly.degree, 0);
   t.deepEqual(poly.coef, [0]);
@@ -13,7 +17,10 @@ test("a", (t) => {
 });
 
 test("b", (t) => {
-  const poly = linearRegression([0, 1, 2, 3, 4], [1, 1, 1, 1, 1]);
+  const poly = linearRegression(
+    new Vector([0, 1, 2, 3, 4]),
+    new Vector([1, 1, 1, 1, 1]),
+  );
 
   t.is(poly.degree, 0);
   t.deepEqual(poly.coef, [1]);
@@ -24,7 +31,10 @@ test("b", (t) => {
 });
 
 test("c", (t) => {
-  const poly = linearRegression([0, 1, 2, 3, 4], [1, 2, 3, 4, 5]);
+  const poly = linearRegression(
+    new Vector([0, 1, 2, 3, 4]),
+    new Vector([1, 2, 3, 4, 5]),
+  );
 
   t.is(poly.degree, 1);
   t.deepEqual(poly.coef, [1, 1]);

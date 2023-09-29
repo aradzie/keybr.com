@@ -1,9 +1,7 @@
+import { type Vector } from "./data-vector.ts";
 import { Polynomial } from "./polynomial.ts";
 
-export function linearRegression(
-  vx: ArrayLike<number>,
-  vy: ArrayLike<number>,
-): Polynomial {
+export function linearRegression(vx: Vector, vy: Vector): Polynomial {
   const { length } = vx;
   if (length !== vy.length) {
     throw new Error();
@@ -15,8 +13,8 @@ export function linearRegression(
   let sx = 0;
   let sy = 0;
   for (let i = 0; i < length; i++) {
-    sx = sx + vx[i];
-    sy = sy + vy[i];
+    sx = sx + vx.at(i);
+    sy = sy + vy.at(i);
   }
   const mx = sx / length;
   const my = sy / length;
@@ -24,8 +22,8 @@ export function linearRegression(
   let s1 = 0;
   let s2 = 0;
   for (let i = 0; i < length; i++) {
-    const t0 = vx[i] - mx;
-    const t1 = vy[i] - my;
+    const t0 = vx.at(i) - mx;
+    const t1 = vy.at(i) - my;
     s1 = s1 + t0 * t1;
     s2 = s2 + t0 * t0;
   }

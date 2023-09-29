@@ -66,7 +66,7 @@ function usePaint(samples: readonly KeySample[], smoothness: number) {
   rSpeed.max = SPEED_THRESHOLD;
   rSpeed.round(5);
 
-  const mSpeed = linearRegression(vIndex.values, vSpeed.values);
+  const mSpeed = linearRegression(vIndex, vSpeed);
 
   return (box: Rect): ShapeList => {
     const proj = projection(box, rIndex, rSpeed);

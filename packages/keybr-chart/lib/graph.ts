@@ -97,11 +97,10 @@ export function paintHistogram(
     readonly style: GraphicsStyle;
   },
 ): ShapeList {
-  const { values } = data;
   const { min, max } = range;
   return Shapes.fill(
     style,
-    vBoxes(box, values, { margin }).map(({ value, rect }) => {
+    vBoxes(box, [...data], { margin }).map(({ value, rect }) => {
       if (value > 0) {
         const width = rect.width;
         const height = Math.round(((value - min) / (max - min)) * box.height);

@@ -61,7 +61,7 @@ function usePaint(results: readonly Result[], smoothness: number) {
   const rIndex = Range.from(vIndex);
   const rSpeed = Range.from(vSpeed).round(5);
 
-  const mSpeed = linearRegression(vIndex.values, vSpeed.values);
+  const mSpeed = linearRegression(vIndex, vSpeed);
 
   return (box: Rect): ShapeList => {
     const projComplexity = projection(box, rIndex, Range.from(vComplexity));

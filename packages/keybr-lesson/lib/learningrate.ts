@@ -64,15 +64,15 @@ export class LearningRate {
       vSpeed.add(timeToSpeed(sample.filteredTimeToType));
     }
     const mSpeed = polynomialRegression(
-      vIndex.values,
-      vSpeed.values,
+      vIndex,
+      vSpeed,
       getPolynomialDegree(length),
     );
     this.vIndex = vIndex;
     this.vSpeed = vSpeed;
     this.mSpeed = mSpeed;
     const lastIndex = samples[length - 1].index;
-    const certainty = r2(vIndex.values, vSpeed.values, mSpeed);
+    const certainty = r2(vIndex, vSpeed, mSpeed);
     if (certainty >= 0.5) {
       this.certainty = certainty;
       this.learningRate = mSpeed.derivative().eval(lastIndex);

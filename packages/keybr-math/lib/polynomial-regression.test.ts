@@ -1,8 +1,13 @@
 import test from "ava";
+import { Vector } from "./data-vector.ts";
 import { polynomialRegression } from "./polynomial-regression.ts";
 
 test("a", (t) => {
-  const poly = polynomialRegression([0, 1, 2, 3, 4], [0, 0, 0, 0, 0], 2);
+  const poly = polynomialRegression(
+    new Vector([0, 1, 2, 3, 4]),
+    new Vector([0, 0, 0, 0, 0]),
+    2,
+  );
 
   t.is(poly.degree, 0);
   t.deepEqual(poly.coef, [0]);
@@ -13,7 +18,11 @@ test("a", (t) => {
 });
 
 test("b", (t) => {
-  const poly = polynomialRegression([0, 1, 2, 3, 4], [1, 1, 1, 1, 1], 2);
+  const poly = polynomialRegression(
+    new Vector([0, 1, 2, 3, 4]),
+    new Vector([1, 1, 1, 1, 1]),
+    2,
+  );
 
   t.is(poly.degree, 0);
   t.deepEqual(poly.coef, [1]);
@@ -24,7 +33,11 @@ test("b", (t) => {
 });
 
 test("c", (t) => {
-  const poly = polynomialRegression([0, 1, 2, 3, 4], [1, 2, 3, 4, 5], 2);
+  const poly = polynomialRegression(
+    new Vector([0, 1, 2, 3, 4]),
+    new Vector([1, 2, 3, 4, 5]),
+    2,
+  );
 
   t.is(poly.degree, 1);
   t.deepEqual(poly.coef, [1, 1]);
@@ -35,7 +48,11 @@ test("c", (t) => {
 });
 
 test("d", (t) => {
-  const poly = polynomialRegression([0, 1, 2, 3, 4], [3, 6, 11, 18, 27], 2);
+  const poly = polynomialRegression(
+    new Vector([0, 1, 2, 3, 4]),
+    new Vector([3, 6, 11, 18, 27]),
+    2,
+  );
 
   t.is(poly.degree, 2);
   t.deepEqual(

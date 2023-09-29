@@ -20,13 +20,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+import { type Vector } from "./data-vector.ts";
 import { linearRegression } from "./linear-regression.ts";
 import { Polynomial } from "./polynomial.ts";
 import { Sle } from "./sle.ts";
 
 export function polynomialRegression(
-  vx: ArrayLike<number>,
-  vy: ArrayLike<number>,
+  vx: Vector,
+  vy: Vector,
   degree: number,
 ): Polynomial {
   if (degree === 1) {
@@ -47,7 +48,7 @@ export function polynomialRegression(
     for (let j = 0; j < size; j++) {
       let t = 0;
       for (let l = 0; l < length; l++) {
-        t += vx[l] ** (i + j);
+        t += vx.at(l) ** (i + j);
       }
       sle.A[i][j] = t;
     }
@@ -55,7 +56,7 @@ export function polynomialRegression(
   for (let i = 0; i < size; i++) {
     let t = 0;
     for (let l = 0; l < length; l++) {
-      t += vx[l] ** i * vy[l];
+      t += vx.at(l) ** i * vy.at(l);
     }
     sle.y[i] = t;
   }
