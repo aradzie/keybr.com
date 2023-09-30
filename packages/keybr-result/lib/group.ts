@@ -2,7 +2,10 @@ import { type Layout, type LayoutFamily } from "@keybr/layout";
 import { LocalDate } from "./localdate.ts";
 import { type Result } from "./result.ts";
 
-export type Group<T> = { key: T; results: Result[] };
+export type Group<T> = {
+  readonly key: T;
+  readonly results: readonly Result[];
+};
 
 export type KeyOf<T> = (result: Result) => T;
 
@@ -38,11 +41,11 @@ export class ResultGroups<T> implements Iterable<Group<T>> {
     new ResultGroups(dateKey()).add(results);
 
   readonly #keyOf: KeyOf<T>;
-  readonly #map: Map<string, Group<T>>;
+  readonly #map: Map<string, { readonly key: T; readonly results: Result[] }>;
 
   constructor(keyOf: KeyOf<T>) {
     this.#keyOf = keyOf;
-    this.#map = new Map<string, Group<T>>();
+    this.#map = new Map();
   }
 
   [Symbol.iterator](): IterableIterator<Group<T>> {
@@ -55,7 +58,7 @@ export class ResultGroups<T> implements Iterable<Group<T>> {
     }
   }
 
-  get(key: T): Result[] {
+  get(key: T): readonly Result[] {
     return this.#getGroup(key).results;
   }
 
@@ -66,7 +69,7 @@ export class ResultGroups<T> implements Iterable<Group<T>> {
     return this;
   }
 
-  #getGroup(key: T): Group<T> {
+  #getGroup(key: T) {
     const stringKey = String(key);
     let group = this.#map.get(stringKey);
     if (group == null) {

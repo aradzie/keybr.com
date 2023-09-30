@@ -15,7 +15,7 @@ import * as styles from "./Summary.module.less";
 export type Summary = {
   readonly today: LocalDate;
   readonly resultsByDate: ResultGroups<LocalDate>;
-  readonly resultsToday: Result[];
+  readonly resultsToday: readonly Result[];
   readonly totalTime: string;
   readonly totalLessons: string;
   readonly topSpeed: string;
