@@ -1,36 +1,37 @@
+import { Layout } from "@keybr/layout";
 import test from "ava";
 import { ResultFaker } from "./fake.tsx";
 import { ResultGroups } from "./group.ts";
 import { LocalDate } from "./localdate.ts";
 
-test("group results", (t) => {
+test("group results by layout", (t) => {
   const faker = new ResultFaker();
-  const r1 = faker.nextResult();
-  const r2 = faker.nextResult();
+  const r1 = faker.nextResult({ layout: Layout.EN_US });
+  const r2 = faker.nextResult({ layout: Layout.DE_DE });
 
-  const map = new ResultGroups<number>();
+  const map = new ResultGroups(({ layout }) => layout);
 
   t.deepEqual([...map.keys()], []);
   t.deepEqual([...map], []);
 
-  map.get(1);
+  map.get(Layout.EN_US);
 
-  t.deepEqual([...map.keys()], [1]);
-  t.deepEqual([...map], [{ key: 1, results: [] }]);
+  t.deepEqual([...map.keys()], [Layout.EN_US]);
+  t.deepEqual([...map], [{ key: Layout.EN_US, results: [] }]);
 
-  map.add(1, r1);
+  map.add([r1]);
 
-  t.deepEqual([...map.keys()], [1]);
-  t.deepEqual([...map], [{ key: 1, results: [r1] }]);
+  t.deepEqual([...map.keys()], [Layout.EN_US]);
+  t.deepEqual([...map], [{ key: Layout.EN_US, results: [r1] }]);
 
-  map.add(2, r2);
+  map.add([r2]);
 
-  t.deepEqual([...map.keys()], [1, 2]);
+  t.deepEqual([...map.keys()], [Layout.EN_US, Layout.DE_DE]);
   t.deepEqual(
     [...map],
     [
-      { key: 1, results: [r1] },
-      { key: 2, results: [r2] },
+      { key: Layout.EN_US, results: [r1] },
+      { key: Layout.DE_DE, results: [r2] },
     ],
   );
 });

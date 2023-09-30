@@ -29,15 +29,21 @@ const dateKey = (): KeyOf<LocalDate> => {
 
 export class ResultGroups<T> implements Iterable<Group<T>> {
   static readonly byLayout = (results: Iterable<Result>) =>
-    new ResultGroups<Layout>().addAll(results, layoutKey());
+    new ResultGroups(layoutKey()).add(results);
 
   static readonly byLayoutFamily = (results: Iterable<Result>) =>
-    new ResultGroups<LayoutFamily>().addAll(results, layoutFamilyKey());
+    new ResultGroups(layoutFamilyKey()).add(results);
 
   static readonly byDate = (results: Iterable<Result>) =>
-    new ResultGroups<LocalDate>().addAll(results, dateKey());
+    new ResultGroups(dateKey()).add(results);
 
-  readonly #map = new Map<string, Group<T>>();
+  readonly #keyOf: KeyOf<T>;
+  readonly #map: Map<string, Group<T>>;
+
+  constructor(keyOf: KeyOf<T>) {
+    this.#keyOf = keyOf;
+    this.#map = new Map<string, Group<T>>();
+  }
 
   [Symbol.iterator](): IterableIterator<Group<T>> {
     return this.#map.values();
@@ -50,28 +56,22 @@ export class ResultGroups<T> implements Iterable<Group<T>> {
   }
 
   get(key: T): Result[] {
-    const stringKey = String(key);
-    let group = this.#map.get(stringKey);
-    if (group == null) {
-      this.#map.set(stringKey, (group = { key, results: [] }));
-    }
-    return group.results;
+    return this.#getGroup(key).results;
   }
 
-  add(key: T, result: Result): this {
-    const stringKey = String(key);
-    let group = this.#map.get(stringKey);
-    if (group == null) {
-      this.#map.set(stringKey, (group = { key, results: [] }));
-    }
-    group.results.push(result);
-    return this;
-  }
-
-  addAll(results: Iterable<Result>, keyOf: KeyOf<T>): this {
+  add(results: Iterable<Result>): this {
     for (const result of results) {
-      this.add(keyOf(result), result);
+      this.#getGroup(this.#keyOf(result)).results.push(result);
     }
     return this;
+  }
+
+  #getGroup(key: T): Group<T> {
+    const stringKey = String(key);
+    let group = this.#map.get(stringKey);
+    if (group == null) {
+      this.#map.set(stringKey, (group = { key, results: [] }));
+    }
+    return group;
   }
 }
