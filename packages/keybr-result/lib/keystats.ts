@@ -21,7 +21,7 @@ export function newKeyStatsMap(
       return results;
     }
 
-    [Symbol.iterator](): Iterator<KeyStats> {
+    [Symbol.iterator](): IterableIterator<KeyStats> {
       return map.values();
     }
 

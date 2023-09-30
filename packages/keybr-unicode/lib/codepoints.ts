@@ -15,10 +15,13 @@ export const charCount = (codePoint: CodePoint): number =>
 export const toCodePoints = (text: string): Iterable<CodePoint> => {
   const { length } = text;
   return {
-    [Symbol.iterator](): Iterator<CodePoint> {
+    [Symbol.iterator](): IterableIterator<CodePoint> {
       let index = 0;
       const result = { done: true, value: -1 } as IteratorResult<CodePoint>;
-      return {
+      const iterator = {
+        [Symbol.iterator](): IterableIterator<CodePoint> {
+          return iterator;
+        },
         next(): IteratorResult<CodePoint> {
           if (index < length) {
             const codePoint = text.codePointAt(index) ?? 0;
@@ -32,6 +35,7 @@ export const toCodePoints = (text: string): Iterable<CodePoint> => {
           return result;
         },
       };
+      return iterator;
     },
   };
 };

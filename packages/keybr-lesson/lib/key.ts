@@ -114,7 +114,7 @@ export class LessonKeys implements Iterable<LessonKey> {
     this.#keys = new Map(keys.map((key) => [key.letter.codePoint, key]));
   }
 
-  [Symbol.iterator](): Iterator<LessonKey> {
+  [Symbol.iterator](): IterableIterator<LessonKey> {
     return this.#keys.values();
   }
 

@@ -13,7 +13,7 @@ export class Histogram implements Iterable<Sample> {
     );
   }
 
-  [Symbol.iterator](): Iterator<Sample> {
+  [Symbol.iterator](): IterableIterator<Sample> {
     return this.#map.values();
   }
 

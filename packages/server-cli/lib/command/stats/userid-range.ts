@@ -30,7 +30,7 @@ export class UserIdRange implements Iterable<number> {
     this.items = items;
   }
 
-  *[Symbol.iterator](): Iterator<number> {
+  *[Symbol.iterator](): IterableIterator<number> {
     for (const { from, to } of this.items) {
       for (let n = from; n <= to; n++) {
         yield n;

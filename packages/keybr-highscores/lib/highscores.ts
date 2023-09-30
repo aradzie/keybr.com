@@ -22,7 +22,7 @@ export class HighScores implements Iterable<HighScoresRow> {
     this.#dirty = false;
   }
 
-  *[Symbol.iterator](): Iterator<HighScoresRow> {
+  *[Symbol.iterator](): IterableIterator<HighScoresRow> {
     for (const row of this.#rows) {
       yield row;
     }

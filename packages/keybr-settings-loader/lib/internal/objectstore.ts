@@ -5,7 +5,7 @@ export class ObjectStorage implements Iterable<string> {
     this.#storage = storage;
   }
 
-  *[Symbol.iterator](): Iterator<string> {
+  *[Symbol.iterator](): IterableIterator<string> {
     const { length } = this.#storage;
     for (let i = 0; i < length; i++) {
       const key = this.#storage.key(i);

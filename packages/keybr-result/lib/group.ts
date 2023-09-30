@@ -20,11 +20,11 @@ export class ResultGroups<T> implements Iterable<Group<T>> {
 
   constructor() {}
 
-  [Symbol.iterator](): Iterator<Group<T>> {
+  [Symbol.iterator](): IterableIterator<Group<T>> {
     return this.#map.values();
   }
 
-  *keys(): Iterable<T> {
+  *keys(): IterableIterator<T> {
     for (const { key } of this.#map.values()) {
       yield key;
     }
