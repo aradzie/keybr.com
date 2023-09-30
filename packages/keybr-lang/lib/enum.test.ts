@@ -4,10 +4,10 @@ import { Enum, type EnumItem, XEnum, type XEnumItem } from "./enum.ts";
 test("enum", (t) => {
   class Subject implements EnumItem {
     constructor(readonly id: string) {}
-    toString(): string {
+    toString() {
       return this.id;
     }
-    toJSON(): unknown {
+    toJSON() {
       return this.id;
     }
   }
@@ -52,10 +52,10 @@ test("xenum", (t) => {
       readonly id: string,
       readonly xid: number,
     ) {}
-    toString(): string {
+    toString() {
       return this.id;
     }
-    toJSON(): unknown {
+    toJSON() {
       return this.id;
     }
   }

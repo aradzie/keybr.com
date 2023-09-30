@@ -20,11 +20,11 @@ export class LessonType implements EnumItem {
     Object.freeze(this);
   }
 
-  toString(): string {
+  toString() {
     return this.id;
   }
 
-  toJSON(): unknown {
+  toJSON() {
     return this.id;
   }
 }

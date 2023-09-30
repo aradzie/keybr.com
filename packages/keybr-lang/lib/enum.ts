@@ -1,7 +1,7 @@
 export type EnumItem = {
   readonly id: string;
   toString(): string;
-  toJSON(): unknown;
+  toJSON(): string;
 };
 
 export class Enum<T extends EnumItem> implements Iterable<T> {
@@ -57,7 +57,7 @@ export type XEnumItem = {
   readonly id: string;
   readonly xid: number;
   toString(): string;
-  toJSON(): unknown;
+  toJSON(): string;
 };
 
 export class XEnum<T extends XEnumItem> implements Iterable<T> {

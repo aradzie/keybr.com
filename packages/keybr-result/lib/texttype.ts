@@ -17,11 +17,11 @@ export class TextType implements XEnumItem {
     Object.freeze(this);
   }
 
-  toString(): string {
+  toString() {
     return this.id;
   }
 
-  toJSON(): unknown {
+  toJSON() {
     return this.id;
   }
 }
