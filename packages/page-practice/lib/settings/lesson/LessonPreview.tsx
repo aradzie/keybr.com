@@ -8,6 +8,7 @@ import { StaticText } from "@keybr/textinput-ui";
 import { FieldSet } from "@keybr/widget";
 import { type ReactNode, useMemo } from "react";
 import { useIntl } from "react-intl";
+import * as styles from "./LessonPreview.module.less";
 
 export function LessonPreview({
   lesson,
@@ -36,9 +37,11 @@ export function LessonPreview({
         defaultMessage: "Lesson Preview",
       })}
     >
-      <KeySetRow lessonKeys={lessonKeys} />
-      <CurrentKeyRow lessonKeys={lessonKeys} />
-      <StaticText settings={settings} chars={textInput.getChars()} />
+      <div className={styles.preview}>
+        <KeySetRow lessonKeys={lessonKeys} />
+        <CurrentKeyRow lessonKeys={lessonKeys} />
+        <StaticText settings={settings} chars={textInput.getChars()} />
+      </div>
     </FieldSet>
   );
 }
