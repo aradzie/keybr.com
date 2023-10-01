@@ -484,7 +484,7 @@
     "description": "Panel text."
   },
   "lessonType.customText.description": {
-    "defaultMessage": "Genere lecciones de mecanografía a partir de las palabras de su propio texto personalizado que se proporcionan aquí. De forma predeterminada, todas las claves están habilitadas.",
+    "defaultMessage": "Genere lecciones de mecanografía a partir de las palabras de su propio texto personalizado que se proporcionan aquí. De forma predeterminada, todas las claves están habilitadas. Este modo es para los profesionales.",
     "description": "Description text."
   },
   "lessonType.customText.name": {
@@ -492,7 +492,7 @@
     "description": "Widget label."
   },
   "lessonType.guided.description": {
-    "defaultMessage": "Este modo generará automáticamente lecciones de mecanografía con palabras aleatorias utilizando las reglas fonéticas de tu idioma. El conjunto de teclas se amplía dinámicamente en función de tu rendimiento.",
+    "defaultMessage": "Este modo generará automáticamente lecciones de mecanografía con palabras aleatorias utilizando las reglas fonéticas de tu idioma. El conjunto de teclas se amplía dinámicamente en función de tu rendimiento. Este modo es para principiantes.",
     "description": "Description text."
   },
   "lessonType.guided.name": {
@@ -504,7 +504,7 @@
     "description": "Widget label."
   },
   "lessonType.wordList.description": {
-    "defaultMessage": "Genere lecciones a partir de la lista de las palabras más comunes. De forma predeterminada, todas las claves están habilitadas.",
+    "defaultMessage": "Genere lecciones a partir de la lista de las palabras más comunes. De forma predeterminada, todas las claves están habilitadas. Este modo es para los profesionales.",
     "description": "Description text."
   },
   "lessonType.wordlist.name": {
@@ -1287,8 +1287,8 @@
     "defaultMessage": "Opciones del Interfaz",
     "description": "Fieldset legend."
   },
-  "settings.keyboardLayoutTabLabel": {
-    "defaultMessage": "Disposición del Teclado",
+  "settings.keyboardTabLabel": {
+    "defaultMessage": "Teclado",
     "description": "Tab label."
   },
   "settings.lessonOptionsLegend": {

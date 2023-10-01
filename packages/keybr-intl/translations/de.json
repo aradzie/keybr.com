@@ -484,7 +484,7 @@
     "description": "Panel text."
   },
   "lessonType.customText.description": {
-    "defaultMessage": "Generieren Sie Lektionen aus den Wörtern Ihres eigenen, hier bereitgestellten benutzerdefinierten Textes. Alle Tastaturtasten sind standardmäßig enthalten.",
+    "defaultMessage": "Generieren Sie Lektionen aus den Wörtern Ihres eigenen, hier bereitgestellten benutzerdefinierten Textes. Alle Tastaturtasten sind standardmäßig enthalten. Dieser Modus ist für Profis.",
     "description": "Description text."
   },
   "lessonType.customText.name": {
@@ -492,7 +492,7 @@
     "description": "Widget label."
   },
   "lessonType.guided.description": {
-    "defaultMessage": "In diesem Modus werden automatisch Tipplektionen mit zufälligen Wörtern nach den phonetischen Regeln Ihrer Sprache erstellt. Der Tastensatz wird dynamisch auf der Grundlage Ihrer Leistung erweitert.",
+    "defaultMessage": "In diesem Modus werden automatisch Tipplektionen mit zufälligen Wörtern nach den phonetischen Regeln Ihrer Sprache erstellt. Der Tastensatz wird dynamisch auf der Grundlage Ihrer Leistung erweitert. Dieser Modus ist für Anfänger.",
     "description": "Description text."
   },
   "lessonType.guided.name": {
@@ -504,7 +504,7 @@
     "description": "Widget label."
   },
   "lessonType.wordList.description": {
-    "defaultMessage": "Generieren Sie Lektionen aus der Liste der häufigsten Wörter. Alle Tastaturtasten sind standardmäßig enthalten.",
+    "defaultMessage": "Generieren Sie Lektionen aus der Liste der häufigsten Wörter. Alle Tastaturtasten sind standardmäßig enthalten. Dieser Modus ist für Profis.",
     "description": "Description text."
   },
   "lessonType.wordlist.name": {
@@ -1287,8 +1287,8 @@
     "defaultMessage": "Schnittstellenoptionen",
     "description": "Fieldset legend."
   },
-  "settings.keyboardLayoutTabLabel": {
-    "defaultMessage": "Tastaturlayout",
+  "settings.keyboardTabLabel": {
+    "defaultMessage": "Tastatur",
     "description": "Tab label."
   },
   "settings.lessonOptionsLegend": {

@@ -76,9 +76,9 @@ function Content({ onSubmit }: { readonly onSubmit: () => void }): ReactNode {
 
         <Tab
           label={formatMessage({
-            id: "settings.keyboardLayoutTabLabel",
+            id: "settings.keyboardTabLabel",
             description: "Tab label.",
-            defaultMessage: "Keyboard Layout",
+            defaultMessage: "Keyboard",
           })}
         >
           <LayoutSettings />

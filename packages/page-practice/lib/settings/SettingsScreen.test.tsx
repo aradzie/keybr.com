@@ -24,7 +24,7 @@ test.serial("render", async (t) => {
 
   t.not(await r.findByText("Lessons"), null);
   t.not(await r.findByText("Typing"), null);
-  t.not(await r.findByText("Keyboard Layout"), null);
+  t.not(await r.findByText("Keyboard"), null);
   t.not(await r.findByText("Miscellaneous"), null);
 
   fireEvent.click(r.getByText("Lessons"));
@@ -36,7 +36,7 @@ test.serial("render", async (t) => {
 
   t.not(r.queryByText("Typing Options"), null);
 
-  fireEvent.click(r.getByText("Keyboard Layout"));
+  fireEvent.click(r.getByText("Keyboard"));
 
   t.not(r.queryByText("Options"), null);
   t.not(r.queryByText("Preview"), null);

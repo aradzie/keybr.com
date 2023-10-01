@@ -484,7 +484,7 @@
     "description": "Panel text."
   },
   "lessonType.customText.description": {
-    "defaultMessage": "Wygeneruj lekcje pisania na podstawie słów własnego, niestandardowego tekstu podanego tutaj. Wszystkie klawisze są domyślnie włączone.",
+    "defaultMessage": "Wygeneruj lekcje pisania na podstawie słów własnego, niestandardowego tekstu podanego tutaj. Wszystkie klawisze są domyślnie włączone. Ten tryb jest dla profesjonalistów.",
     "description": "Description text."
   },
   "lessonType.customText.name": {
@@ -492,7 +492,7 @@
     "description": "Widget label."
   },
   "lessonType.guided.description": {
-    "defaultMessage": "Ten tryb będzie automatycznie generował lekcje pisania na klawiaturze z wykorzystaniem losowych słów oraz reguł fonetycznych twojego języka. Podstawowy zestaw jest powiększany dynamicznie w oparciu o twoje wyniki.",
+    "defaultMessage": "Ten tryb będzie automatycznie generował lekcje pisania na klawiaturze z wykorzystaniem losowych słów oraz reguł fonetycznych twojego języka. Podstawowy zestaw jest powiększany dynamicznie w oparciu o twoje wyniki. Ten tryb jest przeznaczony dla początkujących.",
     "description": "Description text."
   },
   "lessonType.guided.name": {
@@ -504,7 +504,7 @@
     "description": "Widget label."
   },
   "lessonType.wordList.description": {
-    "defaultMessage": "Wygeneruj lekcje pisania na podstawie listy najpopularniejszych słów w twoim języku. Wszystkie klawisze są domyślnie włączone.",
+    "defaultMessage": "Wygeneruj lekcje pisania na podstawie listy najpopularniejszych słów w twoim języku. Wszystkie klawisze są domyślnie włączone. Ten tryb jest dla profesjonalistów.",
     "description": "Description text."
   },
   "lessonType.wordlist.name": {
@@ -1287,8 +1287,8 @@
     "defaultMessage": "Opcje interfejsu",
     "description": "Fieldset legend."
   },
-  "settings.keyboardLayoutTabLabel": {
-    "defaultMessage": "Układ klawiatury",
+  "settings.keyboardTabLabel": {
+    "defaultMessage": "Klawiatura",
     "description": "Tab label."
   },
   "settings.lessonOptionsLegend": {

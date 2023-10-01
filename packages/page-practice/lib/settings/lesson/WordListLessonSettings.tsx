@@ -40,7 +40,7 @@ function Content({ lesson }: { readonly lesson: WordListLesson }): ReactNode {
           id: "lessonType.wordList.description",
           description: "Description text.",
           defaultMessage:
-            "Generate typing lessons from the list of the most common words of your language. All keys are included by default.",
+            "Generate typing lessons from the list of the most common words of your language. All keys are included by default. This mode is for the pros.",
         })}
       </Para>
 

@@ -484,7 +484,7 @@
     "description": "Panel text."
   },
   "lessonType.customText.description": {
-    "defaultMessage": "Генерировать уроки используя слова, взятые из вашего собственного текста. Все буквы включены по умолчанию.",
+    "defaultMessage": "Генерировать уроки используя слова, взятые из вашего собственного текста. Все буквы включены по умолчанию. Этот режим для профессионалов.",
     "description": "Description text."
   },
   "lessonType.customText.name": {
@@ -492,7 +492,7 @@
     "description": "Widget label."
   },
   "lessonType.guided.description": {
-    "defaultMessage": "Генерировать уроки со случайными словами используя фонетические правила вашего языка. Набор букв, из которого генерируются слова изменяется динамически, в зависимости от ваших успехов.",
+    "defaultMessage": "Генерировать уроки со случайными словами используя фонетические правила вашего языка. Набор букв, из которого генерируются слова изменяется динамически, в зависимости от ваших успехов. Этот режим для новичков.",
     "description": "Description text."
   },
   "lessonType.guided.name": {
@@ -504,7 +504,7 @@
     "description": "Widget label."
   },
   "lessonType.wordList.description": {
-    "defaultMessage": "Генерировать уроки из списка наиболее распространенных слов вашего языка. Все буквы включены по умолчанию.",
+    "defaultMessage": "Генерировать уроки из списка наиболее распространенных слов вашего языка. Все буквы включены по умолчанию. Этот режим для профессионалов.",
     "description": "Description text."
   },
   "lessonType.wordlist.name": {
@@ -1287,8 +1287,8 @@
     "defaultMessage": "Настройки интерфейса",
     "description": "Fieldset legend."
   },
-  "settings.keyboardLayoutTabLabel": {
-    "defaultMessage": "Раскладка клавиатуры",
+  "settings.keyboardTabLabel": {
+    "defaultMessage": "Клавиатура",
     "description": "Tab label."
   },
   "settings.lessonOptionsLegend": {

@@ -484,7 +484,7 @@
     "description": "Panel text."
   },
   "lessonType.customText.description": {
-    "defaultMessage": "Générez des leçons de dactylographie à partir des mots de votre propre texte personnalisé fourni ici. Par défaut, toutes les clés sont activées.",
+    "defaultMessage": "Générez des leçons de dactylographie à partir des mots de votre propre texte personnalisé fourni ici. Par défaut, toutes les clés sont activées. Ce mode est destiné aux pros.",
     "description": "Description text."
   },
   "lessonType.customText.name": {
@@ -492,7 +492,7 @@
     "description": "Widget label."
   },
   "lessonType.guided.description": {
-    "defaultMessage": "Ce mode générera automatiquement des leçons de dactylographie avec des mots aléatoires en utilisant les règles phonétiques de votre langue. Le jeu de touches est étendu de manière dynamique en fonction de vos performances.",
+    "defaultMessage": "Ce mode générera automatiquement des leçons de dactylographie avec des mots aléatoires en utilisant les règles phonétiques de votre langue. Le jeu de touches est étendu de manière dynamique en fonction de vos performances. Ce mode est destiné aux débutants.",
     "description": "Description text."
   },
   "lessonType.guided.name": {
@@ -504,7 +504,7 @@
     "description": "Widget label."
   },
   "lessonType.wordList.description": {
-    "defaultMessage": "Générez des leçons à partir de la liste des mots les plus courants. Par défaut, toutes les clés sont activées.",
+    "defaultMessage": "Générez des leçons à partir de la liste des mots les plus courants. Par défaut, toutes les clés sont activées. Ce mode est destiné aux pros.",
     "description": "Description text."
   },
   "lessonType.wordlist.name": {
@@ -1287,8 +1287,8 @@
     "defaultMessage": "Options d'interface",
     "description": "Fieldset legend."
   },
-  "settings.keyboardLayoutTabLabel": {
-    "defaultMessage": "Disposition du clavier",
+  "settings.keyboardTabLabel": {
+    "defaultMessage": "Clavier",
     "description": "Tab label."
   },
   "settings.lessonOptionsLegend": {

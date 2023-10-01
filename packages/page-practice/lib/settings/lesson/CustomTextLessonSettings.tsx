@@ -44,7 +44,7 @@ function Content({ lesson }: { readonly lesson: CustomTextLesson }): ReactNode {
           id: "lessonType.customText.description",
           description: "Description text.",
           defaultMessage:
-            "Generate typing lessons from the words of your own custom text. All keys are included by default.",
+            "Generate typing lessons from the words of your own custom text. All keys are included by default. This mode is for the pros.",
         })}
       </Para>
 

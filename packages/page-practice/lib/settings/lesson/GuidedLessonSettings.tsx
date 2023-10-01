@@ -33,7 +33,7 @@ function Content({ lesson }: { readonly lesson: GuidedLesson }): ReactNode {
           id: "lessonType.guided.description",
           description: "Description text.",
           defaultMessage:
-            "Generate typing lessons with random words using the phonetic rules of your language. The key set is expanded dynamically based on your performance.",
+            "Generate typing lessons with random words using the phonetic rules of your language. The key set is expanded dynamically based on your performance. This mode is for the beginners.",
         })}
       </Para>
 

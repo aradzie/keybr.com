@@ -484,7 +484,7 @@
     "description": "Panel text."
   },
   "lessonType.customText.description": {
-    "defaultMessage": "Generate typing lessons from the words of your own custom text. All keys are included by default.",
+    "defaultMessage": "Generate typing lessons from the words of your own custom text. All keys are included by default. This mode is for the pros.",
     "description": "Description text."
   },
   "lessonType.customText.name": {
@@ -492,7 +492,7 @@
     "description": "Widget label."
   },
   "lessonType.guided.description": {
-    "defaultMessage": "Generate typing lessons with random words using the phonetic rules of your language. The key set is expanded dynamically based on your performance.",
+    "defaultMessage": "Generate typing lessons with random words using the phonetic rules of your language. The key set is expanded dynamically based on your performance. This mode is for the beginners.",
     "description": "Description text."
   },
   "lessonType.guided.name": {
@@ -504,7 +504,7 @@
     "description": "Widget label."
   },
   "lessonType.wordList.description": {
-    "defaultMessage": "Generate typing lessons from the list of the most common words of your language. All keys are included by default.",
+    "defaultMessage": "Generate typing lessons from the list of the most common words of your language. All keys are included by default. This mode is for the pros.",
     "description": "Description text."
   },
   "lessonType.wordlist.name": {
@@ -1287,8 +1287,8 @@
     "defaultMessage": "Interface Options",
     "description": "Fieldset legend."
   },
-  "settings.keyboardLayoutTabLabel": {
-    "defaultMessage": "Keyboard Layout",
+  "settings.keyboardTabLabel": {
+    "defaultMessage": "Keyboard",
     "description": "Tab label."
   },
   "settings.lessonOptionsLegend": {
