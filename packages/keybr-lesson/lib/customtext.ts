@@ -1,4 +1,3 @@
-import { type WordList } from "@keybr/content-words";
 import { Letter, type PhoneticModel } from "@keybr/phonetic-model";
 import { type KeyStatsMap, newKeyStatsMap, type Result } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
@@ -16,7 +15,7 @@ import {
 } from "./text/words.ts";
 
 export class CustomTextLesson extends Lesson {
-  readonly wordList: WordList;
+  readonly wordList: readonly string[];
   wordIndex = 0;
 
   constructor(

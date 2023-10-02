@@ -9,9 +9,12 @@ import { type Settings } from "@keybr/settings";
 import { type CodePointSet } from "@keybr/unicode";
 import { LessonKeys } from "./key.ts";
 import { Lesson } from "./lesson.ts";
+import { generateFragment } from "./text/fragment.ts";
+import { wordSequence } from "./text/words.ts";
 
 export class BookContentLesson extends Lesson {
-  private readonly words: readonly string[];
+  readonly wordList: readonly string[];
+  wordIndex = 0;
 
   constructor(
     settings: Settings,
@@ -20,7 +23,7 @@ export class BookContentLesson extends Lesson {
     content: Content,
   ) {
     super(settings, model, codePoints);
-    this.words = flattenContent(content)
+    this.wordList = flattenContent(content)
       .map((para) => splitParagraph(para))
       .flat();
   }
@@ -34,6 +37,6 @@ export class BookContentLesson extends Lesson {
   }
 
   override generate(): string {
-    return this.words.slice(0, 30).join(" ");
+    return generateFragment(this.settings, wordSequence(this.wordList, this));
   }
 }

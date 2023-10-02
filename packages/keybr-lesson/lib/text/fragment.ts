@@ -9,7 +9,7 @@ export function generateFragment(
   const words: string[] = [];
   let wordsLength = 0;
   while (true) {
-    const word = nextWord();
+    const word = nextWord() || "?";
     words.push(word);
     wordsLength += word.length;
     if (wordsLength >= textLength) {
