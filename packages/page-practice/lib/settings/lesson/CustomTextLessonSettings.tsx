@@ -1,6 +1,5 @@
 import { useIntlNumbers } from "@keybr/intl";
 import { type CustomTextLesson } from "@keybr/lesson";
-import { LessonLoader } from "@keybr/lesson-loader";
 import { textStatsOf } from "@keybr/plaintext";
 import { useSettings } from "@keybr/settings";
 import {
@@ -18,17 +17,12 @@ import {
 import { type ReactNode, useMemo } from "react";
 import { useIntl } from "react-intl";
 import { EXAMPLE_TEXT } from "./example.ts";
-import { LessonPreview } from "./LessonPreview.tsx";
 
-export function CustomTextLessonSettings(): ReactNode {
-  return (
-    <LessonLoader>
-      {(lesson) => <Content lesson={lesson as CustomTextLesson} />}
-    </LessonLoader>
-  );
-}
-
-function Content({ lesson }: { readonly lesson: CustomTextLesson }): ReactNode {
+export function CustomTextLessonSettings({
+  lesson,
+}: {
+  readonly lesson: CustomTextLesson;
+}): ReactNode {
   const { formatMessage } = useIntl();
   const { formatNumber } = useIntlNumbers();
   const { settings, updateSettings } = useSettings();
@@ -221,8 +215,6 @@ function Content({ lesson }: { readonly lesson: CustomTextLesson }): ReactNode {
           </Field>
         </FieldList>
       </FieldSet>
-
-      <LessonPreview lesson={lesson} />
     </>
   );
 }

@@ -1,7 +1,6 @@
 import { wordListStats } from "@keybr/content-words";
 import { useIntlNumbers } from "@keybr/intl";
 import { type WordListLesson } from "@keybr/lesson";
-import { LessonLoader } from "@keybr/lesson-loader";
 import { useSettings } from "@keybr/settings";
 import {
   CheckBox,
@@ -17,17 +16,12 @@ import {
 } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
-import { LessonPreview } from "./LessonPreview.tsx";
 
-export function WordListLessonSettings(): ReactNode {
-  return (
-    <LessonLoader>
-      {(lesson) => <Content lesson={lesson as WordListLesson} />}
-    </LessonLoader>
-  );
-}
-
-function Content({ lesson }: { readonly lesson: WordListLesson }): ReactNode {
+export function WordListLessonSettings({
+  lesson,
+}: {
+  readonly lesson: WordListLesson;
+}): ReactNode {
   const { formatMessage } = useIntl();
   const { formatNumber } = useIntlNumbers();
   const { settings, updateSettings } = useSettings();
@@ -162,8 +156,6 @@ function Content({ lesson }: { readonly lesson: WordListLesson }): ReactNode {
           </Field>
         </FieldList>
       </FieldSet>
-
-      <LessonPreview lesson={lesson} />
     </>
   );
 }

@@ -1,5 +1,4 @@
 import { type NumbersLesson } from "@keybr/lesson";
-import { LessonLoader } from "@keybr/lesson-loader";
 import { useSettings } from "@keybr/settings";
 import {
   CheckBox,
@@ -11,17 +10,12 @@ import {
 } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { LessonPreview } from "./LessonPreview.tsx";
 
-export function NumbersLessonSettings(): ReactNode {
-  return (
-    <LessonLoader>
-      {(lesson) => <Content lesson={lesson as NumbersLesson} />}
-    </LessonLoader>
-  );
-}
-
-function Content({ lesson }: { readonly lesson: NumbersLesson }): ReactNode {
+export function NumbersLessonSettings({
+  lesson,
+}: {
+  readonly lesson: NumbersLesson;
+}): ReactNode {
   const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
 
@@ -74,8 +68,6 @@ function Content({ lesson }: { readonly lesson: NumbersLesson }): ReactNode {
           />
         </Para>
       </FieldSet>
-
-      <LessonPreview lesson={lesson} />
     </>
   );
 }

@@ -1,5 +1,4 @@
 import { type GuidedLesson } from "@keybr/lesson";
-import { LessonLoader } from "@keybr/lesson-loader";
 import { useSettings } from "@keybr/settings";
 import {
   CheckBox,
@@ -12,17 +11,12 @@ import {
 } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
-import { LessonPreview } from "./LessonPreview.tsx";
 
-export function GuidedLessonSettings(): ReactNode {
-  return (
-    <LessonLoader>
-      {(lesson) => <Content lesson={lesson as GuidedLesson} />}
-    </LessonLoader>
-  );
-}
-
-function Content({ lesson }: { readonly lesson: GuidedLesson }): ReactNode {
+export function GuidedLessonSettings({
+  lesson,
+}: {
+  readonly lesson: GuidedLesson;
+}): ReactNode {
   const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
 
@@ -151,8 +145,6 @@ function Content({ lesson }: { readonly lesson: GuidedLesson }): ReactNode {
           </Field>
         </FieldList>
       </FieldSet>
-
-      <LessonPreview lesson={lesson} />
     </>
   );
 }
