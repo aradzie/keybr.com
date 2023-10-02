@@ -20,7 +20,7 @@ export type LessonSettings = {
   readonly textContent: string;
   readonly textSimplify: boolean;
   readonly textLowercase: boolean;
-  readonly lessonDailyGoal: number;
+  readonly dailyGoal: number;
 };
 
 export type UiSettings = {

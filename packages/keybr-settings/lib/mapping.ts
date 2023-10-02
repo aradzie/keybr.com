@@ -61,8 +61,8 @@ export const MAPPING: readonly [
     booleanValue("lesson.text.lowercase", defaults.textLowercase),
   ],
   [
-    "lessonDailyGoal", //
-    numberValue("lesson.dailyGoal", defaults.lessonDailyGoal, clamp(0, 120)),
+    "dailyGoal", //
+    numberValue("lesson.dailyGoal", defaults.dailyGoal, clamp(0, 120)),
   ],
   [
     "stopOnError", //

@@ -42,7 +42,7 @@ export function DailyGoalSettings(): ReactNode {
             min={0}
             max={24}
             step={1}
-            value={Math.round(settings.lessonDailyGoal / 5)}
+            value={Math.round(settings.dailyGoal / 5)}
             title={formatMessage({
               id: "settings.dailyGoalTitle",
               description: "Input field title.",
@@ -52,19 +52,17 @@ export function DailyGoalSettings(): ReactNode {
             onChange={(value) => {
               updateSettings(
                 settings.patch({
-                  lessonDailyGoal: value * 5,
+                  dailyGoal: value * 5,
                 }),
               );
             }}
           />
         </Field>
         <Field>
-          {settings.lessonDailyGoal === 0 ? (
+          {settings.dailyGoal === 0 ? (
             "Not set"
           ) : (
-            <Value
-              value={formatDuration({ minutes: settings.lessonDailyGoal })}
-            />
+            <Value value={formatDuration({ minutes: settings.dailyGoal })} />
           )}
         </Field>
       </FieldList>

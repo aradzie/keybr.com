@@ -83,6 +83,6 @@ function useSummaryStats(state: PracticeState): SummaryStats {
 function useDailyGoal(state: PracticeState): DailyGoal {
   return useMemo(() => {
     const today = ResultGroups.byDate(state.results).get(LocalDate.now());
-    return computeDailyGoal(today, state.settings.lessonDailyGoal);
+    return computeDailyGoal(today, state.settings.dailyGoal);
   }, [state]);
 }

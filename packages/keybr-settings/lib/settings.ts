@@ -27,7 +27,7 @@ export class Settings implements AllSettings {
   readonly textContent: string;
   readonly textSimplify: boolean;
   readonly textLowercase: boolean;
-  readonly lessonDailyGoal: number;
+  readonly dailyGoal: number;
   readonly stopOnError: boolean;
   readonly forgiveErrors: boolean;
   readonly caretShapeStyle: CaretShapeStyle;
@@ -49,7 +49,7 @@ export class Settings implements AllSettings {
       textContent = defaults.textContent,
       textSimplify = defaults.textSimplify,
       textLowercase = defaults.textLowercase,
-      lessonDailyGoal = defaults.lessonDailyGoal,
+      dailyGoal = defaults.dailyGoal,
       stopOnError = defaults.stopOnError,
       forgiveErrors = defaults.forgiveErrors,
       caretShapeStyle = defaults.caretShapeStyle,
@@ -70,7 +70,7 @@ export class Settings implements AllSettings {
     this.textContent = textContent;
     this.textSimplify = textSimplify;
     this.textLowercase = textLowercase;
-    this.lessonDailyGoal = lessonDailyGoal;
+    this.dailyGoal = dailyGoal;
     this.stopOnError = stopOnError;
     this.forgiveErrors = forgiveErrors;
     this.caretShapeStyle = caretShapeStyle;
@@ -93,7 +93,7 @@ export class Settings implements AllSettings {
     textContent = this.textContent,
     textSimplify = this.textSimplify,
     textLowercase = this.textLowercase,
-    lessonDailyGoal = this.lessonDailyGoal,
+    dailyGoal = this.dailyGoal,
     stopOnError = this.stopOnError,
     forgiveErrors = this.forgiveErrors,
     caretShapeStyle = this.caretShapeStyle,
@@ -113,7 +113,7 @@ export class Settings implements AllSettings {
       textContent,
       textSimplify,
       textLowercase,
-      lessonDailyGoal,
+      dailyGoal,
       stopOnError,
       forgiveErrors,
       caretShapeStyle,

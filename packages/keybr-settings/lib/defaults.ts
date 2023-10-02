@@ -18,7 +18,7 @@ export const defaults = Object.freeze<AllSettings>({
   textContent: "The quick brown fox jumps over the lazy dog.",
   textSimplify: true,
   textLowercase: true,
-  lessonDailyGoal: 30,
+  dailyGoal: 30,
   stopOnError: textInputSettings.stopOnError,
   forgiveErrors: textInputSettings.forgiveErrors,
   caretShapeStyle: textDisplaySettings.caretShapeStyle,
