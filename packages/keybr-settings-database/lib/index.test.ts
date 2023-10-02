@@ -46,7 +46,7 @@ test.serial("save new settings", async (t) => {
 
   // Assert.
 
-  t.like(await file.readJson(), { "text.content": "omg" });
+  t.like(await file.readJson(), { "lesson.text.content": "omg" });
 });
 
 test.serial("update existing settings", async (t) => {
@@ -63,7 +63,7 @@ test.serial("update existing settings", async (t) => {
 
   // Assert.
 
-  t.like(await file.readJson(), { "text.content": "omg" });
+  t.like(await file.readJson(), { "lesson.text.content": "omg" });
 });
 
 test.serial("read missing settings", async (t) => {
@@ -97,5 +97,5 @@ test.serial("read existing settings", async (t) => {
 
   // Assert.
 
-  t.like(settings?.toJSON(), { "text.content": "omg" });
+  t.like(settings?.toJSON(), { "lesson.text.content": "omg" });
 });

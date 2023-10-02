@@ -24,10 +24,10 @@ export class Settings implements AllSettings {
   readonly lessonLength: number;
   readonly lessonCapitals: boolean;
   readonly lessonPunctuators: boolean;
-  readonly lessonDailyGoal: number;
   readonly textContent: string;
   readonly textSimplify: boolean;
   readonly textLowercase: boolean;
+  readonly lessonDailyGoal: number;
   readonly stopOnError: boolean;
   readonly forgiveErrors: boolean;
   readonly caretShapeStyle: CaretShapeStyle;
@@ -46,10 +46,10 @@ export class Settings implements AllSettings {
       lessonLength = defaults.lessonLength,
       lessonCapitals = defaults.lessonCapitals,
       lessonPunctuators = defaults.lessonPunctuators,
-      lessonDailyGoal = defaults.lessonDailyGoal,
       textContent = defaults.textContent,
       textSimplify = defaults.textSimplify,
       textLowercase = defaults.textLowercase,
+      lessonDailyGoal = defaults.lessonDailyGoal,
       stopOnError = defaults.stopOnError,
       forgiveErrors = defaults.forgiveErrors,
       caretShapeStyle = defaults.caretShapeStyle,
@@ -67,10 +67,10 @@ export class Settings implements AllSettings {
     this.lessonLength = lessonLength;
     this.lessonCapitals = lessonCapitals;
     this.lessonPunctuators = lessonPunctuators;
-    this.lessonDailyGoal = lessonDailyGoal;
     this.textContent = textContent;
     this.textSimplify = textSimplify;
     this.textLowercase = textLowercase;
+    this.lessonDailyGoal = lessonDailyGoal;
     this.stopOnError = stopOnError;
     this.forgiveErrors = forgiveErrors;
     this.caretShapeStyle = caretShapeStyle;
@@ -90,10 +90,10 @@ export class Settings implements AllSettings {
     lessonLength = this.lessonLength,
     lessonCapitals = this.lessonCapitals,
     lessonPunctuators = this.lessonPunctuators,
-    lessonDailyGoal = this.lessonDailyGoal,
     textContent = this.textContent,
     textSimplify = this.textSimplify,
     textLowercase = this.textLowercase,
+    lessonDailyGoal = this.lessonDailyGoal,
     stopOnError = this.stopOnError,
     forgiveErrors = this.forgiveErrors,
     caretShapeStyle = this.caretShapeStyle,
@@ -110,10 +110,10 @@ export class Settings implements AllSettings {
       lessonLength,
       lessonCapitals,
       lessonPunctuators,
-      lessonDailyGoal,
       textContent,
       textSimplify,
       textLowercase,
+      lessonDailyGoal,
       stopOnError,
       forgiveErrors,
       caretShapeStyle,

@@ -49,20 +49,20 @@ export const MAPPING: readonly [
     booleanValue("lesson.punctuators", defaults.lessonPunctuators),
   ],
   [
-    "lessonDailyGoal", //
-    numberValue("lesson.dailyGoal", defaults.lessonDailyGoal, clamp(0, 120)),
-  ],
-  [
     "textContent", //
-    stringValue("text.content", defaults.textContent, maxLength(10_000)),
+    stringValue("lesson.text.content", defaults.textContent, maxLength(10_000)),
   ],
   [
     "textSimplify", //
-    booleanValue("text.simplify", defaults.textSimplify),
+    booleanValue("lesson.text.simplify", defaults.textSimplify),
   ],
   [
     "textLowercase", //
-    booleanValue("text.lowercase", defaults.textLowercase),
+    booleanValue("lesson.text.lowercase", defaults.textLowercase),
+  ],
+  [
+    "lessonDailyGoal", //
+    numberValue("lesson.dailyGoal", defaults.lessonDailyGoal, clamp(0, 120)),
   ],
   [
     "stopOnError", //

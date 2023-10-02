@@ -17,13 +17,10 @@ export type LessonSettings = {
   readonly lessonLength: number;
   readonly lessonCapitals: boolean;
   readonly lessonPunctuators: boolean;
-  readonly lessonDailyGoal: number;
-};
-
-export type TextSettings = {
   readonly textContent: string;
   readonly textSimplify: boolean;
   readonly textLowercase: boolean;
+  readonly lessonDailyGoal: number;
 };
 
 export type UiSettings = {
@@ -32,7 +29,6 @@ export type UiSettings = {
 
 export type AllSettings = LayoutSettings &
   LessonSettings &
-  TextSettings &
   TextInputSettings &
   TextDisplaySettings &
   UiSettings;

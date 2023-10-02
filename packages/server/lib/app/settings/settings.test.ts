@@ -62,7 +62,7 @@ test.serial("get existing settings", async (t) => {
   t.is(response.headers.get("Content-Type"), "application/json; charset=UTF-8");
   t.is(response.headers.get("Cache-Control"), "private, no-cache");
   t.like(await response.body.json(), {
-    "text.content": "hello world",
+    "lesson.text.content": "hello world",
   });
 });
 
@@ -122,7 +122,7 @@ test.serial("put settings", async (t) => {
 
   t.is(response.status, 204);
   t.like((await database.get(user.id!))?.toJSON(), {
-    "text.content": "hello world",
+    "lesson.text.content": "hello world",
   });
 });
 
