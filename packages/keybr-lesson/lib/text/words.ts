@@ -26,16 +26,19 @@ export function randomWords(
   };
 }
 
-export function wordSequence(wordList: readonly string[]): WordGenerator {
-  const { length } = wordList;
-  let index = 0;
+export function wordSequence(
+  wordList: readonly string[],
+  cursor: { wordIndex: number },
+): WordGenerator {
   return (): string => {
+    const { length } = wordList;
     if (length > 0) {
-      const word = wordList[index];
-      index += 1;
-      if (index >= length) {
-        index = 0;
+      let { wordIndex } = cursor;
+      if (wordIndex >= length) {
+        wordIndex = 0;
       }
+      const word = wordList[wordIndex];
+      cursor.wordIndex = wordIndex + 1;
       return word;
     } else {
       return "?";

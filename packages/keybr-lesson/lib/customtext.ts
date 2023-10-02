@@ -1,3 +1,4 @@
+import { type WordList } from "@keybr/content-words";
 import { Letter, type PhoneticModel } from "@keybr/phonetic-model";
 import { type KeyStatsMap, newKeyStatsMap, type Result } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
@@ -7,10 +8,11 @@ import { Lesson } from "./lesson.ts";
 import { generateFragment } from "./text/fragment.ts";
 import { sanitizeText } from "./text/sanitizetext.ts";
 import { splitText } from "./text/splittext.ts";
-import { type WordGenerator, wordSequence } from "./text/words.ts";
+import { wordSequence } from "./text/words.ts";
 
 export class CustomTextLesson extends Lesson {
-  readonly #words: WordGenerator;
+  readonly wordList: WordList;
+  wordIndex = 0;
 
   constructor(
     settings: Settings,
@@ -18,9 +20,7 @@ export class CustomTextLesson extends Lesson {
     codePoints: CodePointSet,
   ) {
     super(settings, model, codePoints);
-    this.#words = wordSequence(
-      getWordList(settings, model.letters, codePoints),
-    );
+    this.wordList = getWordList(settings, model.letters, codePoints);
   }
 
   override analyze(results: readonly Result[]): KeyStatsMap {
@@ -32,7 +32,7 @@ export class CustomTextLesson extends Lesson {
   }
 
   override generate(): string {
-    return generateFragment(this.settings, this.#words);
+    return generateFragment(this.settings, wordSequence(this.wordList, this));
   }
 }
 
