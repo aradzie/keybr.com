@@ -2,10 +2,9 @@ import { Layout } from "@keybr/layout";
 import {
   CaretMovementStyle,
   CaretShapeStyle,
-  textDisplaySettings,
-  textInputSettings,
   WhitespaceStyle,
 } from "@keybr/textinput-settings";
+import { defaults } from "./defaults.ts";
 import {
   booleanValue,
   clamp,
@@ -24,49 +23,85 @@ export const MAPPING: readonly [
   propertyName: keyof AllSettings,
   settingsValue: SettingsValue<unknown>,
 ][] = [
-  ["layout", itemValue("layout", Layout.ALL, Layout.getDefault())],
-  ["emulateLayout", booleanValue("emulateLayout", false)],
-  ["lessonType", itemValue("lesson.type", LessonType.ALL, LessonType.GUIDED)],
-  ["lessonComplexity", numberValue("lesson.complexity", 0, clamp(0, 1))],
-  ["lessonLength", numberValue("lesson.length", 0, clamp(0, 1))],
-  ["lessonCapitals", booleanValue("lesson.capitals", false)],
-  ["lessonPunctuators", booleanValue("lesson.punctuators", false)],
-  ["lessonDailyGoal", numberValue("lesson.dailyGoal", 30, clamp(0, 120))],
-  ["textContent", stringValue("text.content", "", maxLength(50_000))],
-  ["textSimplify", booleanValue("text.simplify", true)],
-  ["textLowercase", booleanValue("text.lowercase", true)],
   [
-    "stopOnError",
-    booleanValue("textInput.stopOnError", textInputSettings.stopOnError),
+    "layout", //
+    itemValue("layout", Layout.ALL, defaults.layout),
   ],
   [
-    "forgiveErrors",
-    booleanValue("textInput.forgiveErrors", textInputSettings.forgiveErrors),
+    "emulateLayout", //
+    booleanValue("emulateLayout", defaults.emulateLayout),
   ],
   [
-    "caretShapeStyle",
+    "lessonType", //
+    itemValue("lesson.type", LessonType.ALL, defaults.lessonType),
+  ],
+  [
+    "lessonComplexity", //
+    numberValue("lesson.complexity", defaults.lessonComplexity, clamp(0, 1)),
+  ],
+  [
+    "lessonLength", //
+    numberValue("lesson.length", defaults.lessonLength, clamp(0, 1)),
+  ],
+  ["lessonCapitals", booleanValue("lesson.capitals", defaults.lessonCapitals)],
+  [
+    "lessonPunctuators", //
+    booleanValue("lesson.punctuators", defaults.lessonPunctuators),
+  ],
+  [
+    "lessonDailyGoal", //
+    numberValue("lesson.dailyGoal", defaults.lessonDailyGoal, clamp(0, 120)),
+  ],
+  [
+    "textContent", //
+    stringValue("text.content", defaults.textContent, maxLength(10_000)),
+  ],
+  [
+    "textSimplify", //
+    booleanValue("text.simplify", defaults.textSimplify),
+  ],
+  [
+    "textLowercase", //
+    booleanValue("text.lowercase", defaults.textLowercase),
+  ],
+  [
+    "stopOnError", //
+    booleanValue("textInput.stopOnError", defaults.stopOnError),
+  ],
+  [
+    "forgiveErrors", //
+    booleanValue("textInput.forgiveErrors", defaults.forgiveErrors),
+  ],
+  [
+    "caretShapeStyle", //
     enumValue(
       "textDisplay.caretShapeStyle",
       CaretShapeStyle,
-      textDisplaySettings.caretShapeStyle,
+      defaults.caretShapeStyle,
     ),
   ],
   [
-    "caretMovementStyle",
+    "caretMovementStyle", //
     enumValue(
       "textDisplay.caretMovementStyle",
       CaretMovementStyle,
-      textDisplaySettings.caretMovementStyle,
+      defaults.caretMovementStyle,
     ),
   ],
   [
-    "whitespaceStyle",
+    "whitespaceStyle", //
     enumValue(
       "textDisplay.whitespaceStyle",
       WhitespaceStyle,
-      textDisplaySettings.whitespaceStyle,
+      defaults.whitespaceStyle,
     ),
   ],
-  ["sounds", booleanValue("textDisplay.sounds", false)],
-  ["speedUnit", itemValue("ui.speedUnit", SpeedUnit.ALL, SpeedUnit.WPM)],
+  [
+    "sounds", //
+    booleanValue("textDisplay.sounds", defaults.sounds),
+  ],
+  [
+    "speedUnit", //
+    itemValue("ui.speedUnit", SpeedUnit.ALL, defaults.speedUnit),
+  ],
 ];

@@ -88,7 +88,7 @@ export function CustomTextLessonSettings({
             onChange={(value) => {
               updateSettings(
                 settings.patch({
-                  textContent: value,
+                  textContent: value.substring(0, 10_000),
                 }),
               );
             }}

@@ -1,16 +1,15 @@
-import { Layout } from "@keybr/layout";
+import { type Layout } from "@keybr/layout";
 import {
   type CaretMovementStyle,
   type CaretShapeStyle,
-  textDisplaySettings,
-  textInputSettings,
   type WhitespaceStyle,
 } from "@keybr/textinput-settings";
 import isPlainObject from "lodash/isPlainObject";
-import { LessonType } from "./lessontype.ts";
+import { defaults } from "./defaults.ts";
+import { type LessonType } from "./lessontype.ts";
 import { MAPPING } from "./mapping.ts";
 import { type AllSettings } from "./types.ts";
-import { SpeedUnit } from "./units.ts";
+import { type SpeedUnit } from "./units.ts";
 
 export type SettingsStorage = {
   load(): Promise<Settings>;
@@ -40,24 +39,24 @@ export class Settings implements AllSettings {
 
   constructor(
     {
-      layout = Layout.getDefault(),
-      emulateLayout = false,
-      lessonType = LessonType.GUIDED,
-      lessonComplexity = 0,
-      lessonLength = 0,
-      lessonCapitals = false,
-      lessonPunctuators = false,
-      lessonDailyGoal = 30,
-      textContent = "",
-      textSimplify = true,
-      textLowercase = true,
-      stopOnError = textInputSettings.stopOnError,
-      forgiveErrors = textInputSettings.forgiveErrors,
-      caretShapeStyle = textDisplaySettings.caretShapeStyle,
-      caretMovementStyle = textDisplaySettings.caretMovementStyle,
-      whitespaceStyle = textDisplaySettings.whitespaceStyle,
-      sounds = false,
-      speedUnit = SpeedUnit.WPM,
+      layout = defaults.layout,
+      emulateLayout = defaults.emulateLayout,
+      lessonType = defaults.lessonType,
+      lessonComplexity = defaults.lessonComplexity,
+      lessonLength = defaults.lessonLength,
+      lessonCapitals = defaults.lessonCapitals,
+      lessonPunctuators = defaults.lessonPunctuators,
+      lessonDailyGoal = defaults.lessonDailyGoal,
+      textContent = defaults.textContent,
+      textSimplify = defaults.textSimplify,
+      textLowercase = defaults.textLowercase,
+      stopOnError = defaults.stopOnError,
+      forgiveErrors = defaults.forgiveErrors,
+      caretShapeStyle = defaults.caretShapeStyle,
+      caretMovementStyle = defaults.caretMovementStyle,
+      whitespaceStyle = defaults.whitespaceStyle,
+      sounds = defaults.sounds,
+      speedUnit = defaults.speedUnit,
     }: Partial<AllSettings> = {},
     isNew: boolean = false,
   ) {
