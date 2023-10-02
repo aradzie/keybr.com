@@ -72,6 +72,10 @@ export const MAPPING: readonly [
     booleanValue("lesson.text.randomize", defaults.textRandomize),
   ],
   [
+    "benford", //
+    booleanValue("lesson.numbers.benford", defaults.benford),
+  ],
+  [
     "dailyGoal", //
     numberValue("lesson.dailyGoal", defaults.dailyGoal, clamp(0, 120)),
   ],

@@ -1,5 +1,5 @@
 import { Letter, type PhoneticModel } from "@keybr/phonetic-model";
-import { weightedRandomSample } from "@keybr/rand";
+import { randomSample, weightedRandomSample } from "@keybr/rand";
 import { type KeyStatsMap, newKeyStatsMap, type Result } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
 import { type CodePointSet } from "@keybr/unicode";
@@ -38,17 +38,21 @@ export class NumbersLesson extends Lesson {
   }
 
   nextWord(): string {
+    const { rng } = this;
+    const { benford } = this.settings;
     const [zeroDigit, ...nonZeroDigits] = Letter.digits;
     const allDigits = [zeroDigit, ...nonZeroDigits];
-    const length = Math.floor(3 + this.rng() * 4);
+    const length = Math.floor(3 + rng() * 4);
     const word = [];
     let last = null;
     for (let i = 0; i < length; i++) {
       while (true) {
         const digit =
           i === 0
-            ? weightedRandomSample(nonZeroDigits, ({ f }) => f, this.rng)
-            : weightedRandomSample(allDigits, ({ f }) => 1, this.rng);
+            ? benford
+              ? weightedRandomSample(nonZeroDigits, ({ f }) => f, rng)
+              : randomSample(nonZeroDigits, rng)
+            : randomSample(allDigits, rng);
         if (digit !== last) {
           word.push(digit);
           last = digit;

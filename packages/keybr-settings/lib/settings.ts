@@ -29,6 +29,7 @@ export class Settings implements AllSettings {
   readonly textSimplify: boolean;
   readonly textLowercase: boolean;
   readonly textRandomize: boolean;
+  readonly benford: boolean;
   readonly dailyGoal: number;
   readonly stopOnError: boolean;
   readonly forgiveErrors: boolean;
@@ -53,6 +54,7 @@ export class Settings implements AllSettings {
       textSimplify = defaults.textSimplify,
       textLowercase = defaults.textLowercase,
       textRandomize = defaults.textRandomize,
+      benford = defaults.benford,
       dailyGoal = defaults.dailyGoal,
       stopOnError = defaults.stopOnError,
       forgiveErrors = defaults.forgiveErrors,
@@ -76,6 +78,7 @@ export class Settings implements AllSettings {
     this.textSimplify = textSimplify;
     this.textLowercase = textLowercase;
     this.textRandomize = textRandomize;
+    this.benford = benford;
     this.dailyGoal = dailyGoal;
     this.stopOnError = stopOnError;
     this.forgiveErrors = forgiveErrors;
@@ -101,6 +104,7 @@ export class Settings implements AllSettings {
     textSimplify = this.textSimplify,
     textLowercase = this.textLowercase,
     textRandomize = this.textRandomize,
+    benford = this.benford,
     dailyGoal = this.dailyGoal,
     stopOnError = this.stopOnError,
     forgiveErrors = this.forgiveErrors,
@@ -123,6 +127,7 @@ export class Settings implements AllSettings {
       textSimplify,
       textLowercase,
       textRandomize,
+      benford,
       dailyGoal,
       stopOnError,
       forgiveErrors,

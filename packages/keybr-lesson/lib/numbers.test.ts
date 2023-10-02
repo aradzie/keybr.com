@@ -113,8 +113,7 @@ test("generate text using settings", (t) => {
     const model = new FakePhoneticModel();
     const lesson = new NumbersLesson(
       new Settings({
-        lessonCapitals: false,
-        lessonPunctuators: false,
+        benford: true,
       }),
       model,
       allCodePoints,
@@ -125,6 +124,24 @@ test("generate text using settings", (t) => {
     t.is(
       lesson.generate(),
       "260 4036 260 4036 260 4036 260 4036 260 4036 260 4036 260 4036 260",
+    );
+  }
+
+  {
+    const model = new FakePhoneticModel();
+    const lesson = new NumbersLesson(
+      new Settings({
+        benford: false,
+      }),
+      model,
+      allCodePoints,
+    );
+    lesson.update(lesson.analyze([]));
+    lesson.rng = model.rng;
+
+    t.is(
+      lesson.generate(),
+      "460 7036 460 7036 460 7036 460 7036 460 7036 460 7036 460 7036 460",
     );
   }
 });

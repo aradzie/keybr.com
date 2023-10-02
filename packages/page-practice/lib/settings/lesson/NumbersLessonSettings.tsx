@@ -43,8 +43,14 @@ export function NumbersLessonSettings({
                 description: "Checkbox title.",
                 defaultMessage: "Generate numbers following the Benford's law.",
               })}
-              checked={true}
-              onChange={(value) => {}}
+              checked={settings.benford}
+              onChange={(value) => {
+                updateSettings(
+                  settings.patch({
+                    benford: value,
+                  }),
+                );
+              }}
             />
           </Field>
         </FieldList>
