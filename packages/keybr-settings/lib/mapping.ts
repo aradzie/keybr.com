@@ -68,6 +68,10 @@ export const MAPPING: readonly [
     booleanValue("lesson.text.lowercase", defaults.textLowercase),
   ],
   [
+    "textRandomize", //
+    booleanValue("lesson.text.randomize", defaults.textRandomize),
+  ],
+  [
     "dailyGoal", //
     numberValue("lesson.dailyGoal", defaults.dailyGoal, clamp(0, 120)),
   ],

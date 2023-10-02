@@ -1187,10 +1187,6 @@
     "defaultMessage": "Генерируйте числа, следуя закону Бенфорда.",
     "description": "Checkbox title."
   },
-  "settings.cleanupTextCaption": {
-    "defaultMessage": "Очистить текст:",
-    "description": "Fieldset caption."
-  },
   "settings.cursorMovementLabel": {
     "defaultMessage": "Движение курсора:",
     "description": "Checkbox label."
@@ -1338,6 +1334,14 @@
   "settings.selectLayoutTitle": {
     "defaultMessage": "Выберите раскладку которую хотите изучить. Для одного языка может быть несколько раскладок.",
     "description": "Dropdown title."
+  },
+  "settings.shuffleWordsLabel": {
+    "defaultMessage": "Перемешать слова",
+    "description": "Checkbox label."
+  },
+  "settings.shuffleWordsTitle": {
+    "defaultMessage": "Поместить слова из собственного текста в случайном порядке.",
+    "description": "Checkbox title."
   },
   "settings.stopCursorOnErrorDescription": {
     "defaultMessage": "Если включено, то курсор остановится до тех пор, пока не будет нажата правильная клавиша в текущей позиции. Если отключено, все ошибки будут накапливаться перед курсором и должны быть очищены клавишей удаления.",

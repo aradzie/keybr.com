@@ -21,6 +21,7 @@ export type LessonSettings = {
   readonly textContent: string;
   readonly textSimplify: boolean;
   readonly textLowercase: boolean;
+  readonly textRandomize: boolean;
   readonly dailyGoal: number;
 };
 

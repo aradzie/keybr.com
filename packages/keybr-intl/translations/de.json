@@ -1187,10 +1187,6 @@
     "defaultMessage": "Generieren Sie Zahlen nach dem Benfordsche Gesetz.",
     "description": "Checkbox title."
   },
-  "settings.cleanupTextCaption": {
-    "defaultMessage": "Bereinigungstext:",
-    "description": "Fieldset caption."
-  },
   "settings.cursorMovementLabel": {
     "defaultMessage": "Cursorbewegung:",
     "description": "Checkbox label."
@@ -1338,6 +1334,14 @@
   "settings.selectLayoutTitle": {
     "defaultMessage": "Wählen Sie das Tastaturlayout, mit dem Sie üben möchten. Für jede Sprache können mehrere Layouts verfügbar sein.",
     "description": "Dropdown title."
+  },
+  "settings.shuffleWordsLabel": {
+    "defaultMessage": "Mische die Wörter",
+    "description": "Checkbox label."
+  },
+  "settings.shuffleWordsTitle": {
+    "defaultMessage": "Ordnen Sie die Wörter aus dem benutzerdefinierten Text in zufälliger Reihenfolge an.",
+    "description": "Checkbox title."
   },
   "settings.stopCursorOnErrorDescription": {
     "defaultMessage": "Wenn aktiviert, wird der Textcursor angehalten, bis an der aktuellen Position die richtige Taste gedrückt wird. Wenn deaktiviert, werden alle Fehler im Texteingabefeld akkumuliert und müssen mit der Löschtaste gelöscht werden.",

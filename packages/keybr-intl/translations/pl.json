@@ -1187,10 +1187,6 @@
     "defaultMessage": "Generuj liczby zgodnie z Rozkładem Benforda.",
     "description": "Checkbox title."
   },
-  "settings.cleanupTextCaption": {
-    "defaultMessage": "Wyczyść tekst:",
-    "description": "Fieldset caption."
-  },
   "settings.cursorMovementLabel": {
     "defaultMessage": "Ruch kursora:",
     "description": "Checkbox label."
@@ -1338,6 +1334,14 @@
   "settings.selectLayoutTitle": {
     "defaultMessage": "Wybierz układ klawiatury, z którym chcesz ćwiczyć. Dla każdego języka dostępnych jest wiele układów.",
     "description": "Dropdown title."
+  },
+  "settings.shuffleWordsLabel": {
+    "defaultMessage": "Przetasować słowa",
+    "description": "Checkbox label."
+  },
+  "settings.shuffleWordsTitle": {
+    "defaultMessage": "Ułożyć słowa z własnego tekstu w losowej kolejności.",
+    "description": "Checkbox title."
   },
   "settings.stopCursorOnErrorDescription": {
     "defaultMessage": "Po włączeniu kursor nie będzie przechodził dalej do wciśnięcia właściwego klawisza w danej pozycji. Po wyłączeniu wszystkie błędy będą uwzględnione w polu wprowadzania tekstu i będą wymagać wyczyszczenia klawiszem Delete.",

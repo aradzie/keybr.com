@@ -130,13 +130,6 @@ export function CustomTextLessonSettings({
 
         <FieldList>
           <Field>
-            {formatMessage({
-              id: "settings.cleanupTextCaption",
-              description: "Fieldset caption.",
-              defaultMessage: "Clean-up text:",
-            })}
-          </Field>
-          <Field>
             <CheckBox
               checked={settings.textSimplify}
               label={formatMessage({
@@ -177,6 +170,29 @@ export function CustomTextLessonSettings({
                 updateSettings(
                   settings.patch({
                     textLowercase: value,
+                  }),
+                );
+              }}
+            />
+          </Field>
+          <Field>
+            <CheckBox
+              checked={settings.textRandomize}
+              label={formatMessage({
+                id: "settings.shuffleWordsLabel",
+                description: "Checkbox label.",
+                defaultMessage: "Shuffle words",
+              })}
+              title={formatMessage({
+                id: "settings.shuffleWordsTitle",
+                description: "Checkbox title.",
+                defaultMessage:
+                  "Put words from the custom text in a random order.",
+              })}
+              onChange={(value) => {
+                updateSettings(
+                  settings.patch({
+                    textRandomize: value,
                   }),
                 );
               }}

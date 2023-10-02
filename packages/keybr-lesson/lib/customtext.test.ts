@@ -139,11 +139,13 @@ test("generate text using settings", (t) => {
         textContent: "Abc! Def? 123",
         textLowercase: true,
         textSimplify: true,
+        textRandomize: false,
       }),
       model,
       codePoints,
     );
     lesson.update(lesson.analyze([]));
+    lesson.rng = model.rng;
 
     t.is(
       lesson.generate(),
@@ -160,16 +162,66 @@ test("generate text using settings", (t) => {
         textContent: "Abc! Def? 123",
         textLowercase: false,
         textSimplify: false,
+        textRandomize: false,
       }),
       model,
       codePoints,
     );
     lesson.update(lesson.analyze([]));
+    lesson.rng = model.rng;
 
     t.is(
       lesson.generate(),
       "Abc! Def? 123 Abc! Def? 123 Abc! Def? 123 Abc! Def? 123 Abc! Def? 123 " +
         "Abc! Def? 123 Abc! Def? 123 Abc! Def? 123 Abc! Def? 123 Abc!",
+    );
+  }
+});
+
+test("generate randomized text using settings", (t) => {
+  {
+    const model = new FakePhoneticModel();
+    const codePoints = new Set(toCodePoints("abcdefABCDEF123!?"));
+    const lesson = new CustomTextLesson(
+      new Settings({
+        textContent: "Abc! Def? 123 AAA aaa BBB bbb CCC ccc",
+        textLowercase: true,
+        textSimplify: true,
+        textRandomize: true,
+      }),
+      model,
+      codePoints,
+    );
+    lesson.update(lesson.analyze([]));
+    lesson.rng = model.rng;
+
+    t.is(
+      lesson.generate(),
+      "abc aaa bbb abc aaa bbb abc aaa bbb abc aaa bbb abc aaa bbb abc aaa " +
+        "bbb abc aaa bbb abc aaa bbb abc aaa bbb abc aaa bbb abc aaa bbb abc",
+    );
+  }
+
+  {
+    const model = new FakePhoneticModel();
+    const codePoints = new Set(toCodePoints("abcdefABCDEF123!?"));
+    const lesson = new CustomTextLesson(
+      new Settings({
+        textContent: "Abc! Def? 123 AAA aaa BBB bbb CCC ccc",
+        textLowercase: false,
+        textSimplify: false,
+        textRandomize: true,
+      }),
+      model,
+      codePoints,
+    );
+    lesson.update(lesson.analyze([]));
+    lesson.rng = model.rng;
+
+    t.is(
+      lesson.generate(),
+      "Abc! AAA bbb Abc! AAA bbb Abc! AAA bbb Abc! AAA bbb Abc! AAA bbb Abc! " +
+        "AAA bbb Abc! AAA bbb Abc! AAA bbb Abc! AAA bbb Abc! AAA bbb",
     );
   }
 });

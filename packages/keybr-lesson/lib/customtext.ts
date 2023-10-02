@@ -8,7 +8,12 @@ import { Lesson } from "./lesson.ts";
 import { generateFragment } from "./text/fragment.ts";
 import { sanitizeText } from "./text/sanitizetext.ts";
 import { splitText } from "./text/splittext.ts";
-import { wordSequence } from "./text/words.ts";
+import {
+  randomWords,
+  uniqueWords,
+  type WordGenerator,
+  wordSequence,
+} from "./text/words.ts";
 
 export class CustomTextLesson extends Lesson {
   readonly wordList: WordList;
@@ -32,7 +37,15 @@ export class CustomTextLesson extends Lesson {
   }
 
   override generate(): string {
-    return generateFragment(this.settings, wordSequence(this.wordList, this));
+    return generateFragment(this.settings, this.makeWordGenerator());
+  }
+
+  private makeWordGenerator(): WordGenerator {
+    if (this.settings.textRandomize && this.wordList.length > 0) {
+      return uniqueWords(randomWords(this.wordList, this.rng));
+    } else {
+      return wordSequence(this.wordList, this);
+    }
   }
 }
 

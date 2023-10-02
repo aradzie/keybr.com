@@ -1187,10 +1187,6 @@
     "defaultMessage": "Generate numbers following the Benford's law.",
     "description": "Checkbox title."
   },
-  "settings.cleanupTextCaption": {
-    "defaultMessage": "Clean-up text:",
-    "description": "Fieldset caption."
-  },
   "settings.cursorMovementLabel": {
     "defaultMessage": "Cursor movement:",
     "description": "Checkbox label."
@@ -1338,6 +1334,14 @@
   "settings.selectLayoutTitle": {
     "defaultMessage": "Select the keyboard layout you wish to practice with. There may be many layouts available for each language.",
     "description": "Dropdown title."
+  },
+  "settings.shuffleWordsLabel": {
+    "defaultMessage": "Shuffle words",
+    "description": "Checkbox label."
+  },
+  "settings.shuffleWordsTitle": {
+    "defaultMessage": "Put words from the custom text in a random order.",
+    "description": "Checkbox title."
   },
   "settings.stopCursorOnErrorDescription": {
     "defaultMessage": "If enabled, the text cursor stops advancing until the right key is pressed at the current position. If disabled, all errors will be accumulated in the text input field and must be cleared with the delete key.",

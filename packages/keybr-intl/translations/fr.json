@@ -1187,10 +1187,6 @@
     "defaultMessage": "Generate numbers following the Benford's law.",
     "description": "Checkbox title."
   },
-  "settings.cleanupTextCaption": {
-    "defaultMessage": "Nettoyer texte:",
-    "description": "Fieldset caption."
-  },
   "settings.cursorMovementLabel": {
     "defaultMessage": "Mouvement du curseur:",
     "description": "Checkbox label."
@@ -1338,6 +1334,14 @@
   "settings.selectLayoutTitle": {
     "defaultMessage": "Sélectionnez la disposition du clavier avec laquelle vous souhaitez vous entraîner. Il peut y avoir de nombreuses dispositions disponibles pour chaque langue.",
     "description": "Dropdown title."
+  },
+  "settings.shuffleWordsLabel": {
+    "defaultMessage": "Mélangez les mots",
+    "description": "Checkbox label."
+  },
+  "settings.shuffleWordsTitle": {
+    "defaultMessage": "Mettez les mots du texte personnalisé dans un ordre aléatoire.",
+    "description": "Checkbox title."
   },
   "settings.stopCursorOnErrorDescription": {
     "defaultMessage": "Si cette option est activée, le curseur de texte cesse d’avancer jusqu’à ce que la touche de droite soit enfoncée à la position actuelle. Si cette option est désactivée, toutes les erreurs seront accumulées dans le champ de saisie de texte et doivent être effacées avec la touche Suppr.",
