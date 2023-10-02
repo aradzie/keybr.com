@@ -9,23 +9,26 @@ import {
   type Step,
 } from "./types.ts";
 
-const A = 0x61;
-const B = 0x62;
-const C = 0x63;
-const D = 0x64;
-const T = 0x74;
-const E = 0x65;
-const X = 0x78;
-const Backspace = 0x08;
-const Tab = 0x09;
-const LineFeed = 0x0a;
-const CarriageReturn = 0x0d;
+const A = 0x0061;
+const B = 0x0062;
+const C = 0x0063;
+const D = 0x0064;
+const T = 0x0074;
+const E = 0x0065;
+const F = 0x0066;
+const X = 0x0078;
+const Backspace = 0x0008;
+const Tab = 0x0009;
+const LineFeed = 0x000a;
+const CarriageReturn = 0x000d;
+const Space = 0x0020;
 
 test("allow empty text", (t) => {
   t.notThrows(() => {
     new TextInput("", {
       stopOnError: true,
       forgiveErrors: true,
+      spaceSkipsWords: true,
     });
   });
 });
@@ -34,6 +37,7 @@ test("cannot advance past the end of text", (t) => {
   const textInput = new TextInput("", {
     stopOnError: true,
     forgiveErrors: true,
+    spaceSkipsWords: true,
   });
 
   t.true(textInput.completed);
@@ -47,6 +51,7 @@ test("advance to completion", (t) => {
   const textInput = new TextInput("text", {
     stopOnError: true,
     forgiveErrors: true,
+    spaceSkipsWords: true,
   });
 
   // Initial state.
@@ -88,6 +93,7 @@ test("accumulate and delete garbage", (t) => {
   const textInput = new TextInput("text", {
     stopOnError: false,
     forgiveErrors: false,
+    spaceSkipsWords: true,
   });
 
   // Initial state.
@@ -164,6 +170,7 @@ test("emoji", (t) => {
   const textInput = new TextInput("🍬🍭", {
     stopOnError: true,
     forgiveErrors: true,
+    spaceSkipsWords: true,
   });
 
   t.is(stepsString(textInput.getSteps()), "");
@@ -185,6 +192,7 @@ test("handle backspace at the start of text", (t) => {
   const textInput = new TextInput("abc", {
     stopOnError: false,
     forgiveErrors: false,
+    spaceSkipsWords: true,
   });
 
   // Step 1.
@@ -220,6 +228,7 @@ test("handle backspace in the middle of text", (t) => {
   const textInput = new TextInput("abc", {
     stopOnError: false,
     forgiveErrors: false,
+    spaceSkipsWords: true,
   });
 
   // Step 1.
@@ -262,6 +271,7 @@ test("limit garbage length", (t) => {
   const textInput = new TextInput("abc", {
     stopOnError: false,
     forgiveErrors: false,
+    spaceSkipsWords: true,
   });
 
   for (let i = 1; i <= 100; i++) {
@@ -280,6 +290,7 @@ test("forgive an inserted character", (t) => {
   const textInput = new TextInput("abc", {
     stopOnError: true,
     forgiveErrors: true,
+    spaceSkipsWords: true,
   });
 
   // Initial state.
@@ -321,6 +332,7 @@ test("forgive a skipped character", (t) => {
   const textInput = new TextInput("abcd", {
     stopOnError: true,
     forgiveErrors: true,
+    spaceSkipsWords: true,
   });
 
   // Step 1.
@@ -349,6 +361,7 @@ test("forgive a replaced character", (t) => {
   const textInput = new TextInput("abcd", {
     stopOnError: true,
     forgiveErrors: true,
+    spaceSkipsWords: true,
   });
 
   // Step 1.
@@ -384,6 +397,7 @@ test("recover from a forgiven error", (t) => {
   const textInput = new TextInput("abcde", {
     stopOnError: true,
     forgiveErrors: true,
+    spaceSkipsWords: true,
   });
 
   textInput.step(X, 100);
@@ -401,17 +415,165 @@ test("ignore whitespace keys at the start of text", (t) => {
   const textInput = new TextInput("text", {
     stopOnError: true,
     forgiveErrors: false,
+    spaceSkipsWords: true,
   });
 
-  t.is(textInput.step(0x0a, 100), Feedback.Succeeded);
+  t.is(textInput.step(LineFeed, 100), Feedback.Succeeded);
   t.is(stepsString(textInput.getSteps()), "");
   t.is(charsString(textInput.getChars()), "[t]|e|x|t");
   t.false(textInput.completed);
 
-  t.is(textInput.step(0x20, 100), Feedback.Succeeded);
+  t.is(textInput.step(Space, 100), Feedback.Succeeded);
   t.is(stepsString(textInput.getSteps()), "");
   t.is(charsString(textInput.getChars()), "[t]|e|x|t");
   t.false(textInput.completed);
+});
+
+test("space in garbage", (t) => {
+  const textInput = new TextInput("abc", {
+    stopOnError: false,
+    forgiveErrors: false,
+    spaceSkipsWords: false,
+  });
+
+  t.is(textInput.step(A, 100), Feedback.Succeeded);
+  t.is(textInput.step(Space, 200), Feedback.Failed);
+  t.is(stepsString(textInput.getSteps()), "a,100");
+  t.is(charsString(textInput.getChars()), "a|* |[b]|c");
+  t.false(textInput.completed);
+
+  t.is(textInput.step(Backspace, 300), Feedback.Succeeded);
+  t.is(stepsString(textInput.getSteps()), "a,100");
+  t.is(charsString(textInput.getChars()), "a|[b]|c");
+  t.false(textInput.completed);
+
+  t.is(textInput.step(B, 400), Feedback.Recovered);
+  t.is(stepsString(textInput.getSteps()), "a,100|!b,400");
+  t.is(charsString(textInput.getChars()), "a|!b|[c]");
+  t.false(textInput.completed);
+});
+
+test("space skips words at the beginning of a text, ignore space", (t) => {
+  const textInput = new TextInput("abc", {
+    stopOnError: true,
+    forgiveErrors: true,
+    spaceSkipsWords: true,
+  });
+
+  t.is(textInput.step(Space, 100), Feedback.Succeeded);
+  t.is(stepsString(textInput.getSteps()), "");
+  t.is(charsString(textInput.getChars()), "[a]|b|c");
+  t.false(textInput.completed);
+});
+
+test("space skips words at the beginning of a word, ignore space", (t) => {
+  const textInput = new TextInput("x abc", {
+    stopOnError: true,
+    forgiveErrors: true,
+    spaceSkipsWords: true,
+  });
+
+  t.is(textInput.step(X, 100), Feedback.Succeeded);
+  t.is(textInput.step(Space, 200), Feedback.Succeeded);
+  t.is(stepsString(textInput.getSteps()), "x,100| ,200");
+  t.is(charsString(textInput.getChars()), "x| |[a]|b|c");
+  t.false(textInput.completed);
+
+  t.is(textInput.step(Space, 300), Feedback.Succeeded);
+  t.is(stepsString(textInput.getSteps()), "x,100| ,200");
+  t.is(charsString(textInput.getChars()), "x| |[a]|b|c");
+  t.false(textInput.completed);
+});
+
+test("space skips words at the beginning of a text, skip after error", (t) => {
+  const textInput = new TextInput("abc", {
+    stopOnError: true,
+    forgiveErrors: true,
+    spaceSkipsWords: true,
+  });
+
+  t.is(textInput.step(X, 100), Feedback.Failed);
+  t.is(textInput.step(Space, 200), Feedback.Recovered);
+  t.is(stepsString(textInput.getSteps()), "!a,200|!b,200|!c,200");
+  t.is(charsString(textInput.getChars()), "!a|!b|!c");
+  t.true(textInput.completed);
+});
+
+test("space skips words at the beginning of a word, skip after error", (t) => {
+  const textInput = new TextInput("x abc", {
+    stopOnError: true,
+    forgiveErrors: true,
+    spaceSkipsWords: true,
+  });
+
+  t.is(textInput.step(X, 100), Feedback.Succeeded);
+  t.is(textInput.step(Space, 200), Feedback.Succeeded);
+  t.is(stepsString(textInput.getSteps()), "x,100| ,200");
+  t.is(charsString(textInput.getChars()), "x| |[a]|b|c");
+  t.false(textInput.completed);
+
+  t.is(textInput.step(X, 300), Feedback.Failed);
+  t.is(textInput.step(Space, 400), Feedback.Recovered);
+  t.is(stepsString(textInput.getSteps()), "x,100| ,200|!a,400|!b,400|!c,400");
+  t.is(charsString(textInput.getChars()), "x| |!a|!b|!c");
+  t.true(textInput.completed);
+});
+
+test("space skips words in the middle of a word, skip word", (t) => {
+  const textInput = new TextInput("x abc", {
+    stopOnError: true,
+    forgiveErrors: true,
+    spaceSkipsWords: true,
+  });
+
+  t.is(textInput.step(X, 100), Feedback.Succeeded);
+  t.is(textInput.step(Space, 200), Feedback.Succeeded);
+  t.is(textInput.step(A, 300), Feedback.Succeeded);
+  t.is(stepsString(textInput.getSteps()), "x,100| ,200|a,300");
+  t.is(charsString(textInput.getChars()), "x| |a|[b]|c");
+  t.false(textInput.completed);
+
+  t.is(textInput.step(Space, 400), Feedback.Recovered);
+  t.is(stepsString(textInput.getSteps()), "x,100| ,200|a,300|!b,400|!c,400");
+  t.is(charsString(textInput.getChars()), "x| |a|!b|!c");
+  t.true(textInput.completed);
+});
+
+test("space skips words at the beginning of a text, remove garbage", (t) => {
+  const textInput = new TextInput("abc", {
+    stopOnError: false,
+    forgiveErrors: true,
+    spaceSkipsWords: true,
+  });
+
+  t.is(textInput.step(X, 100), Feedback.Failed);
+  t.is(stepsString(textInput.getSteps()), "");
+  t.is(charsString(textInput.getChars()), "*x|[a]|b|c");
+  t.is(textInput.step(Space, 200), Feedback.Recovered);
+  t.is(stepsString(textInput.getSteps()), "!a,200|!b,200|!c,200");
+  t.is(charsString(textInput.getChars()), "!a|!b|!c");
+  t.true(textInput.completed);
+});
+
+test("space skips words in the middle of a word, remove garbage", (t) => {
+  const textInput = new TextInput("x abc", {
+    stopOnError: false,
+    forgiveErrors: true,
+    spaceSkipsWords: true,
+  });
+
+  t.is(textInput.step(X, 100), Feedback.Succeeded);
+  t.is(textInput.step(Space, 200), Feedback.Succeeded);
+  t.is(textInput.step(A, 300), Feedback.Succeeded);
+  t.is(textInput.step(X, 300), Feedback.Failed);
+  t.is(stepsString(textInput.getSteps()), "x,100| ,200|a,300");
+  t.is(charsString(textInput.getChars()), "x| |a|*x|[b]|c");
+  t.false(textInput.completed);
+
+  t.is(textInput.step(Space, 400), Feedback.Recovered);
+  t.is(stepsString(textInput.getSteps()), "x,100| ,200|a,300|!b,400|!c,400");
+  t.is(charsString(textInput.getChars()), "x| |a|!b|!c");
+  t.true(textInput.completed);
 });
 
 test("normalize characters", (t) => {
@@ -419,6 +581,7 @@ test("normalize characters", (t) => {
     const textInput = new TextInput("a ", {
       stopOnError: true,
       forgiveErrors: false,
+      spaceSkipsWords: false,
     });
 
     t.is(textInput.step(A, 100), Feedback.Succeeded);
@@ -432,6 +595,7 @@ test("normalize characters", (t) => {
     const textInput = new TextInput("a ", {
       stopOnError: true,
       forgiveErrors: false,
+      spaceSkipsWords: false,
     });
 
     t.is(textInput.step(A, 100), Feedback.Succeeded);
@@ -445,6 +609,7 @@ test("normalize characters", (t) => {
     const textInput = new TextInput("a ", {
       stopOnError: true,
       forgiveErrors: false,
+      spaceSkipsWords: false,
     });
 
     t.is(textInput.step(A, 100), Feedback.Succeeded);
@@ -458,12 +623,13 @@ test("normalize characters", (t) => {
     const textInput = new TextInput("«a»", {
       stopOnError: true,
       forgiveErrors: false,
+      spaceSkipsWords: false,
     });
 
     t.is(textInput.step(0x0022, 100), Feedback.Succeeded);
     t.is(textInput.step(A, 200), Feedback.Succeeded);
     t.is(textInput.step(0x0022, 300), Feedback.Succeeded);
-    t.is(stepsString(textInput.getSteps()), "«,100|a,200|»,300");
+    t.is(stepsString(textInput.getSteps()), '",100|a,200|",300');
     t.is(charsString(textInput.getChars()), "«|a|»");
     t.true(textInput.completed);
   }

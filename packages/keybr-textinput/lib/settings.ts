@@ -21,22 +21,30 @@ export type TextInputSettings = {
    * like typing a wrong character or skipping a character.
    */
   readonly forgiveErrors: boolean;
+  /**
+   * If enabled then the space key skips all characters of a current word
+   * to the first character of a next word.
+   */
+  readonly spaceSkipsWords: boolean;
 };
 
 export const textInputSettings: TextInputSettings = {
   stopOnError: true,
   forgiveErrors: true,
+  spaceSkipsWords: true,
 };
 
 export const textInputProps = {
   stopOnError: booleanProp("textInput.stopOnError", true),
   forgiveErrors: booleanProp("textInput.forgiveErrors", true),
+  spaceSkipsWords: booleanProp("textInput.spaceSkipsWords", true),
 } as const;
 
 export function toTextInputSettings(settings: Settings): TextInputSettings {
   return {
     stopOnError: settings.get(textInputProps.stopOnError),
     forgiveErrors: settings.get(textInputProps.forgiveErrors),
+    spaceSkipsWords: settings.get(textInputProps.spaceSkipsWords),
   };
 }
 

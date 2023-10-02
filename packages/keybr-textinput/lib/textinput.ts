@@ -1,5 +1,5 @@
-import { toCodePoints } from "@keybr/unicode";
-import { normalize } from "./normalize.ts";
+import { isWhitespace, toCodePoints } from "@keybr/unicode";
+import { normalize, normalizeWhitespace } from "./normalize.ts";
 import { type TextInputSettings } from "./settings.ts";
 import {
   attrCursor,
@@ -20,6 +20,7 @@ export class TextInput {
   public readonly codePoints: readonly number[];
   public readonly stopOnError: boolean;
   public readonly forgiveErrors: boolean;
+  public readonly spaceSkipsWords: boolean;
   public readonly recoverSequenceLength: number;
   public readonly garbageSequenceLength: number;
   private readonly onStep: StepListener;
@@ -30,13 +31,14 @@ export class TextInput {
 
   constructor(
     text: string,
-    { stopOnError, forgiveErrors }: TextInputSettings,
+    { stopOnError, forgiveErrors, spaceSkipsWords }: TextInputSettings,
     onStep: StepListener = () => {},
   ) {
     this.text = text; // TODO Normalize?
     this.codePoints = [...toCodePoints(text)];
     this.stopOnError = stopOnError;
     this.forgiveErrors = forgiveErrors;
+    this.spaceSkipsWords = spaceSkipsWords;
     this.recoverSequenceLength = 3;
     this.garbageSequenceLength = 10;
     this.onStep = onStep;
@@ -60,14 +62,14 @@ export class TextInput {
       throw new Error();
     }
 
-    const expectedCodePoint = this.codePoints[this.steps.length];
+    codePoint = normalizeWhitespace(codePoint);
 
     // Handle whitespace at the beginning of text.
     if (
       this.steps.length === 0 &&
       this.garbage.length === 0 &&
       !this.typo &&
-      codePoint <= 0x20
+      codePoint === 0x0020
     ) {
       return Feedback.Succeeded;
     }
@@ -75,7 +77,7 @@ export class TextInput {
     this.inputEvents.push({ codePoint, timeStamp });
 
     // Handle the delete key.
-    if (codePoint === 0x08) {
+    if (codePoint === 0x0008) {
       if (this.garbage.length > 0) {
         this.garbage.pop();
         return Feedback.Succeeded;
@@ -84,13 +86,60 @@ export class TextInput {
       }
     }
 
+    // Handle the space key.
+    if (
+      codePoint === 0x0020 &&
+      !isWhitespace(this.codePoints[this.steps.length])
+    ) {
+      if (
+        this.garbage.length === 0 &&
+        (this.steps.length === 0 ||
+          isWhitespace(this.codePoints[this.steps.length - 1]))
+      ) {
+        return Feedback.Succeeded;
+      }
+
+      if (this.spaceSkipsWords) {
+        this.addStep({
+          codePoint: this.codePoints[this.steps.length],
+          timeStamp,
+          typo: true,
+        });
+        // Skip the remaining non-space characters inside the word.
+        while (
+          this.steps.length < this.codePoints.length &&
+          !isWhitespace(this.codePoints[this.steps.length])
+        ) {
+          this.addStep({
+            codePoint: this.codePoints[this.steps.length],
+            timeStamp,
+            typo: true,
+          });
+        }
+        // Skip the space character to position at the beginning of next word.
+        if (
+          this.steps.length < this.codePoints.length &&
+          isWhitespace(this.codePoints[this.steps.length])
+        ) {
+          this.addStep({
+            codePoint: this.codePoints[this.steps.length],
+            timeStamp,
+            typo: false,
+          });
+        }
+        this.garbage = [];
+        this.typo = false;
+        return Feedback.Recovered;
+      }
+    }
+
     // Handle input.
     if (
-      normalize(expectedCodePoint) === normalize(codePoint) &&
+      normalize(this.codePoints[this.steps.length]) === codePoint &&
       (this.forgiveErrors || this.garbage.length === 0)
     ) {
       this.addStep({
-        codePoint: expectedCodePoint,
+        codePoint,
         timeStamp,
         typo: this.typo,
       });

@@ -57,6 +57,7 @@ function newState(text: string) {
   const textInput = new TextInput(text, {
     stopOnError: false,
     forgiveErrors: false,
+    spaceSkipsWords: false,
   });
   const chars = textInput.getChars();
   return { textInput, chars };

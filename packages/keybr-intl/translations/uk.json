@@ -167,6 +167,22 @@
     "defaultMessage": "П|В|С|Ч|П|С|",
     "description": "Day of week name."
   },
+  "characterClass.digits": {
+    "defaultMessage": "Digits",
+    "description": "Label."
+  },
+  "characterClass.letters": {
+    "defaultMessage": "Letters",
+    "description": "Label."
+  },
+  "characterClass.punctuationCharacters": {
+    "defaultMessage": "Punctuation characters",
+    "description": "Label."
+  },
+  "characterClass.specialCharacters": {
+    "defaultMessage": "Special characters",
+    "description": "Label."
+  },
   "common.javaScriptDisabledText": {
     "defaultMessage": "Додаток не буде працювати, тому що у вас в браузері відключений JavaScript!",
     "description": "Common text."
@@ -489,7 +505,7 @@
   },
   "lessonType.customText.name": {
     "defaultMessage": "Власний текст",
-    "description": "Widget label."
+    "description": "Input field label."
   },
   "lessonType.guided.description": {
     "defaultMessage": "Генерація уроків з випадковими словами, використовуючи фонетичні правила вашої мови. Набір літер, з яких генеруються слова змінюється динамічно, залежно від успіхів. Цей режим для новачків.",
@@ -497,11 +513,11 @@
   },
   "lessonType.guided.name": {
     "defaultMessage": "Уроки з помічником",
-    "description": "Widget label."
+    "description": "Input field label."
   },
   "lessonType.numbers.name": {
     "defaultMessage": "Числа",
-    "description": "Widget label."
+    "description": "Input field label."
   },
   "lessonType.wordList.description": {
     "defaultMessage": "Генерація уроків зі списку найпоширеніших слів вашої мови. Усі літери включені за промовчанням. Цей режим для професіоналів.",
@@ -509,7 +525,7 @@
   },
   "lessonType.wordlist.name": {
     "defaultMessage": "Часті слова",
-    "description": "Widget label."
+    "description": "Input field label."
   },
   "metric.accuracy.label": {
     "defaultMessage": "Точність",
@@ -861,27 +877,27 @@
   },
   "practice.resetLessonButtonTitle": {
     "defaultMessage": "Почати поточний урок спочатку (Ctrl+Left Arrow).",
-    "description": "Button title."
+    "description": "Input field title."
   },
   "practice.settingButtonName": {
     "defaultMessage": "Налаштування...",
-    "description": "Button name."
+    "description": "Input field label."
   },
   "practice.settingButtonTitle": {
     "defaultMessage": "Змінити налаштування уроків, змінити мову, розкладку клавіатури тощо.",
-    "description": "Button title."
+    "description": "Input field title."
   },
   "practice.showHelpSlidesButtonTitle": {
     "defaultMessage": "Показати довідкові слайди.",
-    "description": "Button title."
+    "description": "Input field title."
   },
   "practice.skipLessonButtonTitle": {
     "defaultMessage": "Пропустити поточний урок (Ctrl+Right Arrow).",
-    "description": "Button title."
+    "description": "Input field title."
   },
   "practice.switchInterfaceButtonTitle": {
     "defaultMessage": "Змінити розташування елементів інтерфейсу.",
-    "description": "Button title."
+    "description": "Input field title."
   },
   "practice.tourSlide1": {
     "defaultMessage": "<h1>Навчіться друкувати наосліп</h1><p>Ця програма допоможе вам навчитися <em>сліпому методу друку</em>, що означає друкувати використовуючи м'язову пам'ять, не дивлячись на клавіатуру щоб шукати клавіші. Це допоможе вам значно покращити швидкість набору та знизити кількість помилок. Протилежність цьому є <em>набір двома пальцями</em>, коли ви дивитеся на клавіатуру, а не екран, і друкуєте вказівними пальцями.</p><p>У цьому короткому уроці ми пояснимо, як працює ця програма.</p><p>Ви можете переміщатися між слайдами за допомогою клавіш <em>Стрілка вліво</em> та <em>Стрілка вправо</em>.</p>",
@@ -1175,117 +1191,105 @@
     "defaultMessage": "Усуньте шум, щоб побачити довгостроковий тренд.",
     "description": "Input field title."
   },
+  "settings.alphabetSizeLabel": {
+    "defaultMessage": "Unlock more letters:",
+    "description": "Input field label."
+  },
   "settings.benfordsLawDescription": {
     "defaultMessage": "<a>Закон Бенфорда</a> це спостереження, згідно з яким у багатьох реальних наборах числових даних перша цифра, швидше за все, буде маленькою.",
-    "description": "Freeform text."
+    "description": "Description text."
   },
   "settings.benfordsLawLabel": {
     "defaultMessage": "Закон Бенфорд.",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
-  "settings.benfordsLawTitle": {
-    "defaultMessage": "Генеруйте числа, дотримуючись закону Бенфорда.",
-    "description": "Checkbox title."
+  "settings.capitalLettersLabel": {
+    "defaultMessage": "Add capital letters:",
+    "description": "Input field label."
   },
   "settings.cursorMovementLabel": {
     "defaultMessage": "Рух курсору:",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.cursorShapeLabel": {
     "defaultMessage": "Форма курсору:",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.customTextExamplesLabel": {
     "defaultMessage": "Приклади:",
-    "description": "Text label."
+    "description": "Input field label."
   },
   "settings.customTextInputPlaceholder": {
     "defaultMessage": "Власний текст...",
     "description": "Input field placeholder."
   },
+  "settings.customTextLettersOnlyLabel": {
+    "defaultMessage": "Remove punctuation",
+    "description": "Input field label."
+  },
+  "settings.customTextLettersOnlyTitle": {
+    "defaultMessage": "Remove punctuation from the text to make it simpler to type.",
+    "description": "Input field title."
+  },
+  "settings.customTextLowercaseLabel": {
+    "defaultMessage": "Transform to lowercase",
+    "description": "Input field label."
+  },
+  "settings.customTextLowercaseTitle": {
+    "defaultMessage": "Transform all text to lower case to make it simpler to type.",
+    "description": "Input field title."
+  },
+  "settings.customTextRandomizeLabel": {
+    "defaultMessage": "Shuffle words",
+    "description": "Input field label."
+  },
+  "settings.customTextRandomizeTitle": {
+    "defaultMessage": "Put words from the custom text in a random order.",
+    "description": "Input field title."
+  },
   "settings.dailyGoalDescription": {
     "defaultMessage": "Встановіть час, який ви бажаєте витрачати на вправи щодня.",
-    "description": "Input field description."
+    "description": "Description text."
   },
   "settings.dailyGoalLabel": {
     "defaultMessage": "Щоденна мета:",
     "description": "Input field label."
   },
-  "settings.dailyGoalTitle": {
-    "defaultMessage": "Щоденна мета витратити на вправи за хвилини.",
-    "description": "Input field title."
-  },
   "settings.doneButtonLabel": {
     "defaultMessage": "Готово",
-    "description": "Button label."
-  },
-  "settings.doneButtonTitle": {
-    "defaultMessage": "Зберегти налаштування та перейти до вправ.",
-    "description": "Button title."
+    "description": "Input field label."
   },
   "settings.emulateLayoutLabel": {
     "defaultMessage": "Емулювати розкладку",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.emulateLayoutTitle": {
     "defaultMessage": "Емулювати вибрану розкладку навіть якщо у вас в системі вибрано іншу розкладку.",
-    "description": "Checkbox title."
-  },
-  "settings.enableCapitalLettersLabel": {
-    "defaultMessage": "Включити великі літери",
-    "description": "Checkbox label."
-  },
-  "settings.enableCapitalLettersTitle": {
-    "defaultMessage": "Генерувати текст із великими літерами.",
-    "description": "Checkbox title."
-  },
-  "settings.enablePunctuationLabel": {
-    "defaultMessage": "Додати розділові знаки",
-    "description": "Checkbox label."
-  },
-  "settings.enablePunctuationTitle": {
-    "defaultMessage": "Додати розділові знаки до згенерованого тексту.",
-    "description": "Checkbox title."
-  },
-  "settings.enableSoundsLabel": {
-    "defaultMessage": "Увімкнути звуки",
-    "description": "Checkbox label."
-  },
-  "settings.enableSoundsTitle": {
-    "defaultMessage": "Видавати звуки під час натискання клавіш і друкарських помилок.",
-    "description": "Checkbox description."
-  },
-  "settings.extendKeySetLabel": {
-    "defaultMessage": "Додати літер у слова:",
-    "description": "Input field label."
-  },
-  "settings.extendKeySetTitle": {
-    "defaultMessage": "Додати більше літер до набору з якого генеруються слова.",
-    "description": "Input field title."
-  },
-  "settings.extendLessonLengthLabel": {
-    "defaultMessage": "Додати слова в уроки:",
-    "description": "Input field label."
-  },
-  "settings.extendLessonLengthTitle": {
-    "defaultMessage": "Додати більше слів на уроки.",
     "description": "Input field title."
   },
   "settings.forgiveErrorsDescription": {
     "defaultMessage": "Це налаштування дозволяє прощати деякі типи помилок шляхом їх автоматичного виправлення. Це такі помилки як неправильний символ у якійсь позиції або пропущений символ.",
-    "description": "Checkbox description."
+    "description": "Description text."
   },
   "settings.forgiveErrorsLabel": {
     "defaultMessage": "Вибачати помилки",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.interfaceOptionsLegend": {
     "defaultMessage": "Налаштування інтерфейсу",
     "description": "Fieldset legend."
   },
+  "settings.keyboardFullViewLabel": {
+    "defaultMessage": "Full keyboard view",
+    "description": "Input field label."
+  },
   "settings.keyboardTabLabel": {
     "defaultMessage": "Клавіатура",
-    "description": "Tab label."
+    "description": "Header text."
+  },
+  "settings.lessonLengthLabel": {
+    "defaultMessage": "Add words to lessons:",
+    "description": "Input field label."
   },
   "settings.lessonOptionsLegend": {
     "defaultMessage": "Налаштування уроків",
@@ -1293,15 +1297,19 @@
   },
   "settings.lessonsTabLabel": {
     "defaultMessage": "Уроки",
-    "description": "Tab label."
+    "description": "Header text."
   },
   "settings.miscellaneousTabLabel": {
     "defaultMessage": "Різне",
-    "description": "Tab label."
+    "description": "Header text."
   },
   "settings.optionsLegend": {
     "defaultMessage": "Налаштування",
     "description": "Fieldset legend."
+  },
+  "settings.playSoundsLabel": {
+    "defaultMessage": "Play sounds:",
+    "description": "Input field label."
   },
   "settings.previewLabel": {
     "defaultMessage": "Перегляд уроку",
@@ -1311,65 +1319,53 @@
     "defaultMessage": "Перегляд",
     "description": "Fieldset legend."
   },
-  "settings.removePunctuationLabel": {
-    "defaultMessage": "Прибрати розділові знаки",
-    "description": "Checkbox label."
-  },
-  "settings.removePunctuationTitle": {
-    "defaultMessage": "Прибрати розділові знаки, щоб спростити набір тексту.",
-    "description": "Checkbox title."
+  "settings.punctuationLabel": {
+    "defaultMessage": "Add punctuation characters:",
+    "description": "Input field label."
   },
   "settings.selectLanguageLabel": {
     "defaultMessage": "Мова:",
-    "description": "Dropdown label."
+    "description": "Input field label."
   },
   "settings.selectLanguageTitle": {
     "defaultMessage": "Виберіть мову клавіатури.",
-    "description": "Dropdown title."
+    "description": "Input field title."
   },
   "settings.selectLayoutLabel": {
     "defaultMessage": "Розкладка:",
-    "description": "Dropdown label."
+    "description": "Input field label."
   },
   "settings.selectLayoutTitle": {
     "defaultMessage": "Виберіть розкладку, яку хочете вивчити. Для однієї мови може бути кілька розкладок.",
-    "description": "Dropdown title."
+    "description": "Input field title."
   },
-  "settings.shuffleWordsLabel": {
-    "defaultMessage": "Перемішати слова",
-    "description": "Checkbox label."
+  "settings.spaceSkipsWordsDescription": {
+    "defaultMessage": "If enabled, pressing the space key in the middle of a word will skip the remaining characters of the word and position cursor at the beginning of the next word.",
+    "description": "Description text."
   },
-  "settings.shuffleWordsTitle": {
-    "defaultMessage": "Помістити слова із власного тексту у випадковому порядку.",
-    "description": "Checkbox title."
+  "settings.spaceSkipsWordsLabel": {
+    "defaultMessage": "Space skips words",
+    "description": "Input field label."
   },
   "settings.stopCursorOnErrorDescription": {
     "defaultMessage": "Якщо увімкнено, то курсор зупиниться доти, доки не буде натиснута правильна клавіша в поточній позиції. Якщо вимкнено, всі помилки будуть накопичуватись перед курсором і повинні бути очищені клавішею видалення.",
-    "description": "Checkbox description."
+    "description": "Description text."
   },
   "settings.stopCursorOnErrorLabel": {
     "defaultMessage": "Зупинити курсор при помилках",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.targetSpeedLabel": {
     "defaultMessage": "Цільова швидкість набору:",
     "description": "Input field label."
   },
-  "settings.targetSpeedTitle": {
-    "defaultMessage": "Set custom target typing speed that you want to achieve.",
-    "description": "Input field title."
-  },
   "settings.textAppearanceLegend": {
     "defaultMessage": "Вид тексту",
     "description": "Fieldset legend."
   },
-  "settings.transformToLowercaseLabel": {
-    "defaultMessage": "Перетворити на нижній регістр",
-    "description": "Checkbox label."
-  },
-  "settings.transformToLowercaseTitle": {
-    "defaultMessage": "Перетворити весь текст на нижній регістр, щоб спростити набір.",
-    "description": "Checkbox title."
+  "settings.typingAssistsDescription": {
+    "defaultMessage": "These are the typing assists which help your preserve your concentration and keep the flow by automatically correcting your errors.",
+    "description": "Description text."
   },
   "settings.typingOptionsLegend": {
     "defaultMessage": "Налаштування набору",
@@ -1385,15 +1381,19 @@
   },
   "settings.typingTabLabel": {
     "defaultMessage": "Набір тексту",
-    "description": "Tab label."
+    "description": "Header text."
   },
   "settings.whitespaceLabel": {
     "defaultMessage": "Прогалини:",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.wordListSizeLabel": {
     "defaultMessage": "Кількість слів:",
     "description": "Input field label."
+  },
+  "settings.wordListSizeTitle": {
+    "defaultMessage": "Chose how many common words to use.",
+    "description": "Input field title."
   },
   "speedUnit.cpm.description": {
     "defaultMessage": "Виміряти швидкість набору в символах за хвилину.",
@@ -1462,14 +1462,6 @@
   "textTools.textInputPlaceholder": {
     "defaultMessage": "Вставте сюди свій текст",
     "description": "Input field placeholder."
-  },
-  "textType.digits": {
-    "defaultMessage": "Цифри",
-    "description": "Label."
-  },
-  "textType.letters": {
-    "defaultMessage": "Літери",
-    "description": "Label."
   },
   "theme.enterFullscreenTitle": {
     "defaultMessage": "Увійти в повноекранний режим.",

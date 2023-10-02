@@ -1339,6 +1339,14 @@
     "defaultMessage": "Elige la disposición del teclado con la que deseas practicar. Puede haber muchas disposiciones disponibles para cada idioma.",
     "description": "Input field title."
   },
+  "settings.spaceSkipsWordsDescription": {
+    "defaultMessage": "If enabled, pressing the space key in the middle of a word will skip the remaining characters of the word and position cursor at the beginning of the next word.",
+    "description": "Description text."
+  },
+  "settings.spaceSkipsWordsLabel": {
+    "defaultMessage": "Space skips words",
+    "description": "Input field label."
+  },
   "settings.stopCursorOnErrorDescription": {
     "defaultMessage": "Si se activa, el cursor de texto deja de avanzar hasta que se pulsa la tecla correcta en la posición actual. Si se desactiva, todos los errores se acumularán en el campo de entrada de texto y deberán eliminarse con la tecla de eliminar.",
     "description": "Description text."
@@ -1354,6 +1362,10 @@
   "settings.textAppearanceLegend": {
     "defaultMessage": "Apariencia del texto",
     "description": "Fieldset legend."
+  },
+  "settings.typingAssistsDescription": {
+    "defaultMessage": "These are the typing assists which help your preserve your concentration and keep the flow by automatically correcting your errors.",
+    "description": "Description text."
   },
   "settings.typingOptionsLegend": {
     "defaultMessage": "Opciones de Mecanografía",

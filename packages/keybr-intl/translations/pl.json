@@ -1339,6 +1339,14 @@
     "defaultMessage": "Wybierz układ klawiatury, z którym chcesz ćwiczyć. Dla każdego języka dostępnych jest wiele układów.",
     "description": "Input field title."
   },
+  "settings.spaceSkipsWordsDescription": {
+    "defaultMessage": "If enabled, pressing the space key in the middle of a word will skip the remaining characters of the word and position cursor at the beginning of the next word.",
+    "description": "Description text."
+  },
+  "settings.spaceSkipsWordsLabel": {
+    "defaultMessage": "Space skips words",
+    "description": "Input field label."
+  },
   "settings.stopCursorOnErrorDescription": {
     "defaultMessage": "Po włączeniu kursor nie będzie przechodził dalej do wciśnięcia właściwego klawisza w danej pozycji. Po wyłączeniu wszystkie błędy będą uwzględnione w polu wprowadzania tekstu i będą wymagać wyczyszczenia klawiszem Delete.",
     "description": "Description text."
@@ -1354,6 +1362,10 @@
   "settings.textAppearanceLegend": {
     "defaultMessage": "Wygląd tekstu",
     "description": "Fieldset legend."
+  },
+  "settings.typingAssistsDescription": {
+    "defaultMessage": "Są to pomoce w pisaniu, które pomagają zachować koncentrację i płynność pisania, automatycznie poprawiając błędy.",
+    "description": "Description text."
   },
   "settings.typingOptionsLegend": {
     "defaultMessage": "Opcje pisania na klawiaturze",

@@ -44,6 +44,7 @@ export function makeTextInput(text: string): TextInput {
   return new TextInput(text, {
     stopOnError: true,
     forgiveErrors: true,
+    spaceSkipsWords: false,
   });
 }
 
