@@ -1379,6 +1379,10 @@
     "defaultMessage": "Whitespace:",
     "description": "Checkbox label."
   },
+  "settings.wordListSizeLabel": {
+    "defaultMessage": "Word list size:",
+    "description": "Input field label."
+  },
   "speedUnit.cpm.description": {
     "defaultMessage": "Measure typing speed in characters per minute.",
     "description": "Widget title."

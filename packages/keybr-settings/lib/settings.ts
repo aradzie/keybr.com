@@ -24,6 +24,7 @@ export class Settings implements AllSettings {
   readonly lessonLength: number;
   readonly lessonCapitals: boolean;
   readonly lessonPunctuators: boolean;
+  readonly wordListSize: number;
   readonly textContent: string;
   readonly textSimplify: boolean;
   readonly textLowercase: boolean;
@@ -46,6 +47,7 @@ export class Settings implements AllSettings {
       lessonLength = defaults.lessonLength,
       lessonCapitals = defaults.lessonCapitals,
       lessonPunctuators = defaults.lessonPunctuators,
+      wordListSize = defaults.wordListSize,
       textContent = defaults.textContent,
       textSimplify = defaults.textSimplify,
       textLowercase = defaults.textLowercase,
@@ -67,6 +69,7 @@ export class Settings implements AllSettings {
     this.lessonLength = lessonLength;
     this.lessonCapitals = lessonCapitals;
     this.lessonPunctuators = lessonPunctuators;
+    this.wordListSize = wordListSize;
     this.textContent = textContent;
     this.textSimplify = textSimplify;
     this.textLowercase = textLowercase;
@@ -90,6 +93,7 @@ export class Settings implements AllSettings {
     lessonLength = this.lessonLength,
     lessonCapitals = this.lessonCapitals,
     lessonPunctuators = this.lessonPunctuators,
+    wordListSize = this.wordListSize,
     textContent = this.textContent,
     textSimplify = this.textSimplify,
     textLowercase = this.textLowercase,
@@ -110,6 +114,7 @@ export class Settings implements AllSettings {
       lessonLength,
       lessonCapitals,
       lessonPunctuators,
+      wordListSize,
       textContent,
       textSimplify,
       textLowercase,

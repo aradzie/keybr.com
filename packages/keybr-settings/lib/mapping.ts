@@ -43,10 +43,17 @@ export const MAPPING: readonly [
     "lessonLength", //
     numberValue("lesson.length", defaults.lessonLength, clamp(0, 1)),
   ],
-  ["lessonCapitals", booleanValue("lesson.capitals", defaults.lessonCapitals)],
+  [
+    "lessonCapitals", //
+    booleanValue("lesson.capitals", defaults.lessonCapitals),
+  ],
   [
     "lessonPunctuators", //
     booleanValue("lesson.punctuators", defaults.lessonPunctuators),
+  ],
+  [
+    "wordListSize", //
+    numberValue("lesson.wordListSize", defaults.wordListSize, clamp(10, 1000)),
   ],
   [
     "textContent", //

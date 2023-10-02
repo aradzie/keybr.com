@@ -67,34 +67,6 @@ export function GuidedLessonSettings({
               }}
             />
           </Field>
-          <Field>
-            {formatMessage({
-              id: "settings.extendLessonLengthLabel",
-              description: "Input field label.",
-              defaultMessage: "Add words to lessons:",
-            })}
-          </Field>
-          <Field>
-            <Range
-              className={styleSizeWide}
-              min={1}
-              max={100}
-              step={1}
-              value={Math.round(settings.lessonLength * 100)}
-              title={formatMessage({
-                id: "settings.extendLessonLengthTitle",
-                description: "Input field title.",
-                defaultMessage: "Add more words to every generated lesson.",
-              })}
-              onChange={(value) => {
-                updateSettings(
-                  settings.patch({
-                    lessonLength: value / 100,
-                  }),
-                );
-              }}
-            />
-          </Field>
         </FieldList>
 
         <FieldList>
@@ -138,6 +110,37 @@ export function GuidedLessonSettings({
                 updateSettings(
                   settings.patch({
                     lessonPunctuators: value,
+                  }),
+                );
+              }}
+            />
+          </Field>
+        </FieldList>
+
+        <FieldList>
+          <Field>
+            {formatMessage({
+              id: "settings.extendLessonLengthLabel",
+              description: "Input field label.",
+              defaultMessage: "Add words to lessons:",
+            })}
+          </Field>
+          <Field>
+            <Range
+              className={styleSizeWide}
+              min={1}
+              max={100}
+              step={1}
+              value={Math.round(settings.lessonLength * 100)}
+              title={formatMessage({
+                id: "settings.extendLessonLengthTitle",
+                description: "Input field title.",
+                defaultMessage: "Add more words to every generated lesson.",
+              })}
+              onChange={(value) => {
+                updateSettings(
+                  settings.patch({
+                    lessonLength: value / 100,
                   }),
                 );
               }}

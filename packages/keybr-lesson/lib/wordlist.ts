@@ -18,9 +18,11 @@ export class WordListLesson extends Lesson {
     wordList: WordList,
   ) {
     super(settings, model, codePoints);
-    this.wordList = wordList.filter((word) =>
-      [...toCodePoints(word)].every((codePoint) => codePoints.has(codePoint)),
-    );
+    this.wordList = wordList
+      .filter((word) =>
+        [...toCodePoints(word)].every((codePoint) => codePoints.has(codePoint)),
+      )
+      .slice(0, settings.wordListSize);
   }
 
   override analyze(results: readonly Result[]): KeyStatsMap {

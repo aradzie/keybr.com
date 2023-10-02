@@ -1379,6 +1379,10 @@
     "defaultMessage": "Leerzeichen:",
     "description": "Checkbox label."
   },
+  "settings.wordListSizeLabel": {
+    "defaultMessage": "Wortzahl:",
+    "description": "Input field label."
+  },
   "speedUnit.cpm.description": {
     "defaultMessage": "Misst die Tippgeschwindigkeit in Zeichen pro Minute.",
     "description": "Widget title."

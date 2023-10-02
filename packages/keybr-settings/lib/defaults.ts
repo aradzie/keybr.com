@@ -15,6 +15,7 @@ export const defaults = Object.freeze<AllSettings>({
   lessonLength: 0,
   lessonCapitals: false,
   lessonPunctuators: false,
+  wordListSize: 1000,
   textContent: "The quick brown fox jumps over the lazy dog.",
   textSimplify: true,
   textLowercase: true,

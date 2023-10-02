@@ -1379,6 +1379,10 @@
     "defaultMessage": "Espace blanc:",
     "description": "Checkbox label."
   },
+  "settings.wordListSizeLabel": {
+    "defaultMessage": "Nombre de mots:",
+    "description": "Input field label."
+  },
   "speedUnit.cpm.description": {
     "defaultMessage": "Mesurer la vitesse de frappe en caractères par minute.",
     "description": "Widget title."

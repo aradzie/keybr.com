@@ -45,11 +45,42 @@ export function WordListLessonSettings({
           defaultMessage: "Lesson Options",
         })}
       >
+        <FieldList>
+          <Field>
+            {formatMessage({
+              id: "settings.wordListSizeLabel",
+              description: "Input field label.",
+              defaultMessage: "Word list size:",
+            })}
+          </Field>
+          <Field>
+            <Range
+              className={styleSizeWide}
+              min={10}
+              max={1000}
+              step={1}
+              value={settings.wordListSize}
+              title={formatMessage({
+                id: "settings.extendLessonLengthTitle",
+                description: "Input field title.",
+                defaultMessage: "Add more words to every generated lesson.",
+              })}
+              onChange={(value) => {
+                updateSettings(
+                  settings.patch({
+                    wordListSize: value,
+                  }),
+                );
+              }}
+            />
+          </Field>
+        </FieldList>
+
         <Para>
           <TextField
             className={styleSizeFull}
             type="textarea"
-            value={[...lesson.wordList].sort().join(", ")}
+            value={[...lesson.wordList].join(", ")}
             disabled={true}
           />
         </Para>
@@ -73,37 +104,6 @@ export function WordListLessonSettings({
                 defaultMessage: "Average word length",
               })}
               value={formatNumber(avgWordLength, 2)}
-            />
-          </Field>
-        </FieldList>
-
-        <FieldList>
-          <Field>
-            {formatMessage({
-              id: "settings.extendLessonLengthLabel",
-              description: "Input field label.",
-              defaultMessage: "Add words to lessons:",
-            })}
-          </Field>
-          <Field>
-            <Range
-              className={styleSizeWide}
-              min={1}
-              max={100}
-              step={1}
-              value={Math.round(settings.lessonLength * 100)}
-              title={formatMessage({
-                id: "settings.extendLessonLengthTitle",
-                description: "Input field title.",
-                defaultMessage: "Add more words to every generated lesson.",
-              })}
-              onChange={(value) => {
-                updateSettings(
-                  settings.patch({
-                    lessonLength: value / 100,
-                  }),
-                );
-              }}
             />
           </Field>
         </FieldList>
@@ -149,6 +149,37 @@ export function WordListLessonSettings({
                 updateSettings(
                   settings.patch({
                     lessonPunctuators: value,
+                  }),
+                );
+              }}
+            />
+          </Field>
+        </FieldList>
+
+        <FieldList>
+          <Field>
+            {formatMessage({
+              id: "settings.extendLessonLengthLabel",
+              description: "Input field label.",
+              defaultMessage: "Add words to lessons:",
+            })}
+          </Field>
+          <Field>
+            <Range
+              className={styleSizeWide}
+              min={1}
+              max={100}
+              step={1}
+              value={Math.round(settings.lessonLength * 100)}
+              title={formatMessage({
+                id: "settings.extendLessonLengthTitle",
+                description: "Input field title.",
+                defaultMessage: "Add more words to every generated lesson.",
+              })}
+              onChange={(value) => {
+                updateSettings(
+                  settings.patch({
+                    lessonLength: value / 100,
                   }),
                 );
               }}

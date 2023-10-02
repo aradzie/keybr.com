@@ -1379,6 +1379,10 @@
     "defaultMessage": "Espacio en blanco:",
     "description": "Checkbox label."
   },
+  "settings.wordListSizeLabel": {
+    "defaultMessage": "El recuento de palabras:",
+    "description": "Input field label."
+  },
   "speedUnit.cpm.description": {
     "defaultMessage": "Mide la velocidad de mecanografía en caracteres por minuto.",
     "description": "Widget title."

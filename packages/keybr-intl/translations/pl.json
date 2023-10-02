@@ -1379,6 +1379,10 @@
     "defaultMessage": "Spacje:",
     "description": "Checkbox label."
   },
+  "settings.wordListSizeLabel": {
+    "defaultMessage": "Liczba słów:",
+    "description": "Input field label."
+  },
   "speedUnit.cpm.description": {
     "defaultMessage": "Zmierz tempo pisania na klawiaturze w znakach na minutę.",
     "description": "Widget title."

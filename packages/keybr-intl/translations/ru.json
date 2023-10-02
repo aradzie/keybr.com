@@ -1379,6 +1379,10 @@
     "defaultMessage": "Пробелы:",
     "description": "Checkbox label."
   },
+  "settings.wordListSizeLabel": {
+    "defaultMessage": "Количество слов:",
+    "description": "Input field label."
+  },
   "speedUnit.cpm.description": {
     "defaultMessage": "Измерять скорость набора в символах в минуту.",
     "description": "Widget title."

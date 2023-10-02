@@ -17,6 +17,7 @@ export type LessonSettings = {
   readonly lessonLength: number;
   readonly lessonCapitals: boolean;
   readonly lessonPunctuators: boolean;
+  readonly wordListSize: number;
   readonly textContent: string;
   readonly textSimplify: boolean;
   readonly textLowercase: boolean;
