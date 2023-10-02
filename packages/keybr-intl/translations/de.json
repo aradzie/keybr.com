@@ -1244,7 +1244,7 @@
     "description": "Checkbox title."
   },
   "settings.enablePunctuationLabel": {
-    "defaultMessage": "Interpunktionszeichen aktivieren.",
+    "defaultMessage": "Interpunktionszeichen aktivieren",
     "description": "Checkbox label."
   },
   "settings.enablePunctuationTitle": {

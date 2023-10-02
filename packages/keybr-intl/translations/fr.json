@@ -1244,7 +1244,7 @@
     "description": "Checkbox title."
   },
   "settings.enablePunctuationLabel": {
-    "defaultMessage": "Activer les caractères de ponctuation.",
+    "defaultMessage": "Activer les caractères de ponctuation",
     "description": "Checkbox label."
   },
   "settings.enablePunctuationTitle": {

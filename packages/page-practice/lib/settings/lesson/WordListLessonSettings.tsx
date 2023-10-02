@@ -136,7 +136,7 @@ export function WordListLessonSettings({
               label={formatMessage({
                 id: "settings.enablePunctuationLabel",
                 description: "Checkbox label.",
-                defaultMessage: "Enable punctuation characters.",
+                defaultMessage: "Enable punctuation characters",
               })}
               title={formatMessage({
                 id: "settings.enablePunctuationTitle",
