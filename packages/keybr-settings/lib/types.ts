@@ -23,6 +23,7 @@ export type LessonSettings = {
   readonly textLowercase: boolean;
   readonly textRandomize: boolean;
   readonly benford: boolean;
+  readonly targetSpeed: number;
   readonly dailyGoal: number;
 };
 

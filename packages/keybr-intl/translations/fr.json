@@ -1351,6 +1351,14 @@
     "defaultMessage": "Arrêter le curseur lorsqu'une erreur se produit",
     "description": "Checkbox label."
   },
+  "settings.targetSpeedLabel": {
+    "defaultMessage": "Target speed:",
+    "description": "Input field label."
+  },
+  "settings.targetSpeedTitle": {
+    "defaultMessage": "Set custom target typing speed that you want to achieve.",
+    "description": "Input field title."
+  },
   "settings.textAppearanceLegend": {
     "defaultMessage": "Apparence du texte",
     "description": "Fieldset legend."

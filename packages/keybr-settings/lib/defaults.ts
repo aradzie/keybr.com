@@ -21,6 +21,7 @@ export const defaults = Object.freeze<AllSettings>({
   textLowercase: true,
   textRandomize: false,
   benford: true,
+  targetSpeed: 175,
   dailyGoal: 30,
   stopOnError: textInputSettings.stopOnError,
   forgiveErrors: textInputSettings.forgiveErrors,

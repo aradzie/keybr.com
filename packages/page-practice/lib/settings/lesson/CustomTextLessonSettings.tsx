@@ -1,5 +1,6 @@
 import { useIntlNumbers } from "@keybr/intl";
 import { type CustomTextLesson } from "@keybr/lesson";
+import { useFormatter } from "@keybr/lesson-ui";
 import { textStatsOf } from "@keybr/plaintext";
 import { useSettings } from "@keybr/settings";
 import {
@@ -13,6 +14,7 @@ import {
   styleSizeFull,
   styleSizeWide,
   TextField,
+  Value,
 } from "@keybr/widget";
 import { type ReactNode, useMemo } from "react";
 import { useIntl } from "react-intl";
@@ -25,6 +27,7 @@ export function CustomTextLessonSettings({
 }): ReactNode {
   const { formatMessage } = useIntl();
   const { formatNumber } = useIntlNumbers();
+  const fmt = useFormatter();
   const { settings, updateSettings } = useSettings();
   const { numWords, numUniqueWords, avgWordLength } = useMemo(
     () => textStatsOf(settings.textContent),
@@ -197,6 +200,41 @@ export function CustomTextLessonSettings({
                 );
               }}
             />
+          </Field>
+        </FieldList>
+
+        <FieldList>
+          <Field>
+            {formatMessage({
+              id: "settings.targetSpeedLabel",
+              description: "Input field label.",
+              defaultMessage: "Target speed:",
+            })}
+          </Field>
+          <Field>
+            <Range
+              className={styleSizeWide}
+              min={175}
+              max={750}
+              step={1}
+              value={settings.targetSpeed}
+              title={formatMessage({
+                id: "settings.targetSpeedTitle",
+                description: "Input field title.",
+                defaultMessage:
+                  "Set custom target typing speed that you want to achieve.",
+              })}
+              onChange={(value) => {
+                updateSettings(
+                  settings.patch({
+                    targetSpeed: value,
+                  }),
+                );
+              }}
+            />
+          </Field>
+          <Field>
+            <Value value={fmt(settings.targetSpeed, { unit: true })} />
           </Field>
         </FieldList>
 

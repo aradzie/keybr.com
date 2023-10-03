@@ -76,6 +76,10 @@ export const MAPPING: readonly [
     booleanValue("lesson.numbers.benford", defaults.benford),
   ],
   [
+    "targetSpeed", //
+    numberValue("lesson.targetSpeed", defaults.targetSpeed, clamp(175, 750)),
+  ],
+  [
     "dailyGoal", //
     numberValue("lesson.dailyGoal", defaults.dailyGoal, clamp(0, 120)),
   ],

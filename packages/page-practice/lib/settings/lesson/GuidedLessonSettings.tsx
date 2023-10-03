@@ -1,4 +1,5 @@
 import { type GuidedLesson } from "@keybr/lesson";
+import { useFormatter } from "@keybr/lesson-ui";
 import { useSettings } from "@keybr/settings";
 import {
   CheckBox,
@@ -8,6 +9,7 @@ import {
   Para,
   Range,
   styleSizeWide,
+  Value,
 } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
@@ -18,6 +20,7 @@ export function GuidedLessonSettings({
   readonly lesson: GuidedLesson;
 }): ReactNode {
   const { formatMessage } = useIntl();
+  const fmt = useFormatter();
   const { settings, updateSettings } = useSettings();
 
   return (
@@ -114,6 +117,41 @@ export function GuidedLessonSettings({
                 );
               }}
             />
+          </Field>
+        </FieldList>
+
+        <FieldList>
+          <Field>
+            {formatMessage({
+              id: "settings.targetSpeedLabel",
+              description: "Input field label.",
+              defaultMessage: "Target speed:",
+            })}
+          </Field>
+          <Field>
+            <Range
+              className={styleSizeWide}
+              min={175}
+              max={750}
+              step={1}
+              value={settings.targetSpeed}
+              title={formatMessage({
+                id: "settings.targetSpeedTitle",
+                description: "Input field title.",
+                defaultMessage:
+                  "Set custom target typing speed that you want to achieve.",
+              })}
+              onChange={(value) => {
+                updateSettings(
+                  settings.patch({
+                    targetSpeed: value,
+                  }),
+                );
+              }}
+            />
+          </Field>
+          <Field>
+            <Value value={fmt(settings.targetSpeed, { unit: true })} />
           </Field>
         </FieldList>
 
