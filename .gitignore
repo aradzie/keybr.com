@@ -7,8 +7,7 @@ id_*
 # Compiled output
 packages/*/.types/
 root/public/assets/
-root/*.js
-root/*.js.map
+root/lib/
 
 # Other
 node_modules/

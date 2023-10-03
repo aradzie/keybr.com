@@ -115,10 +115,10 @@ module.exports = [
     context: __dirname,
     entry: {
       index: "./packages/server/lib/index.ts",
-      tools: "./packages/server-cli/lib/index.ts",
+      keybr: "./packages/server-cli/lib/index.ts",
     },
     output: {
-      path: join(__dirname, "root"),
+      path: join(__dirname, "root", "lib"),
       clean: false,
       filename: "[name].js",
       chunkFilename: "[name].js",
