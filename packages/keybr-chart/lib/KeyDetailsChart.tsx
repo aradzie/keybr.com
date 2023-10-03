@@ -57,7 +57,7 @@ function usePaint(lessonKey: LessonKey, learningRate: LearningRate | null) {
   rSpeed.round(5);
 
   let now = 0;
-  if (lessonKey.bestConfidence !== 1) {
+  if ((lessonKey.bestConfidence ?? 0) < 1) {
     now = rIndex.max;
     rIndex.max = now + 10;
   }

@@ -8,7 +8,7 @@ export function confidenceColor(confidence: number): Color {
   return RgbColor.between(
     MIN_CONFIDENCE_COLOR,
     MAX_CONFIDENCE_COLOR,
-    confidence,
+    Math.max(0, Math.min(1, confidence)),
   );
 }
 

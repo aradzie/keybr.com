@@ -14,7 +14,7 @@ export function LearningRateDescription({
   readonly learningRate: LearningRate | null;
 }): ReactNode {
   const { formatNumber, formatPercents } = useIntlNumbers();
-  if (lessonKey.bestConfidence === 1) {
+  if ((lessonKey.bestConfidence ?? 0) >= 1) {
     return (
       <Para className={clsx(styles.component, styles.alreadyUnlocked)}>
         <FormattedMessage

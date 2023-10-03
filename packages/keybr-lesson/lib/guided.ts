@@ -32,32 +32,30 @@ export class GuidedLesson extends Lesson {
       letters.map((letter) => LessonKey.from(keyStatsMap.get(letter))),
     );
 
-    for (const letter of letters) {
-      const lessonKey = LessonKey.from(keyStatsMap.get(letter));
-
+    for (const lessonKey of lessonKeys) {
       const includedKeys = lessonKeys.findIncludedKeys();
 
       if (includedKeys.length < minSize) {
         // Meet the minimal required alphabet size.
-        lessonKeys.include(letter);
+        lessonKeys.include(lessonKey.letter);
         continue;
       }
 
       if (includedKeys.length >= minSize && includedKeys.length < maxSize) {
         // Meet the maximal required alphabet size.
-        lessonKeys.force(letter);
+        lessonKeys.force(lessonKey.letter);
         continue;
       }
 
-      if (lessonKey.bestConfidence === 1) {
+      if ((lessonKey.bestConfidence ?? 0) >= 1) {
         // Must include all confident keys.
-        lessonKeys.include(letter);
+        lessonKeys.include(lessonKey.letter);
         continue;
       }
 
-      if (includedKeys.every((key) => key.bestConfidence === 1)) {
+      if (includedKeys.every((key) => (key.bestConfidence ?? 0) >= 1)) {
         // Must include at least one non-confident key.
-        lessonKeys.include(letter);
+        lessonKeys.include(lessonKey.letter);
         continue;
       }
     }
