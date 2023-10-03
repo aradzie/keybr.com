@@ -15,24 +15,32 @@ test("render", (t) => {
       samples: [],
       timeToType: 100,
       bestTimeToType: 100,
+      confidence: 1.0,
+      bestConfidence: 1.0,
     }).asBoosted(),
     new LessonKey({
       letter: letters[1],
       samples: [],
       timeToType: 100,
       bestTimeToType: 100,
+      confidence: 1.0,
+      bestConfidence: 1.0,
     }).asIncluded(),
     new LessonKey({
       letter: letters[2],
       samples: [],
       timeToType: 100,
       bestTimeToType: 100,
+      confidence: 1.0,
+      bestConfidence: 1.0,
     }).asForced(),
     new LessonKey({
       letter: letters[3],
       samples: [],
       timeToType: 100,
       bestTimeToType: 100,
+      confidence: 1.0,
+      bestConfidence: 1.0,
     }),
   ]);
 

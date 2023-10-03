@@ -1,5 +1,5 @@
 import { KeyDetailsChart } from "@keybr/chart";
-import { LearningRate, LessonKey } from "@keybr/lesson";
+import { LearningRate, LessonKey, timeToConfidence } from "@keybr/lesson";
 import { Letter } from "@keybr/phonetic-model";
 import { type ReactNode } from "react";
 import * as styles from "./KeyDetailsChartDemo.module.less";
@@ -10,6 +10,8 @@ export function KeyDetailsChartDemo(): ReactNode {
     samples: [],
     timeToType: 380,
     bestTimeToType: 380,
+    confidence: timeToConfidence(380),
+    bestConfidence: timeToConfidence(380),
   });
   const learningRate = LearningRate.example();
   return (

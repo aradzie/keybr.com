@@ -15,6 +15,8 @@ test("render no key", (t) => {
       samples: [],
       timeToType: 100,
       bestTimeToType: 100,
+      confidence: 1.0,
+      bestConfidence: 1.0,
     }).asIncluded(),
   ]);
 
@@ -36,6 +38,8 @@ test("render key", (t) => {
       samples: [],
       timeToType: 100,
       bestTimeToType: 100,
+      confidence: 1.0,
+      bestConfidence: 1.0,
     }).asBoosted(),
   ]);
 

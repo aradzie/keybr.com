@@ -1,5 +1,7 @@
+import { FakeIntlProvider } from "@keybr/intl";
 import { FakePhoneticModel, type Letter } from "@keybr/phonetic-model";
 import { type KeyStatsMap, newKeyStatsMap } from "@keybr/result";
+import { FakeSettingsContext } from "@keybr/settings";
 import { fireEvent, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import test from "ava";
@@ -12,7 +14,11 @@ const keyStatsMap = newKeyStatsMap(letters, []);
 
 test.serial("render", (t) => {
   const testRenderer = TestRenderer.create(
-    <KeySelector keyStatsMap={keyStatsMap} current={letters[0]} />,
+    <FakeIntlProvider>
+      <FakeSettingsContext>
+        <KeySelector keyStatsMap={keyStatsMap} current={letters[0]} />
+      </FakeSettingsContext>
+    </FakeIntlProvider>,
   );
 
   t.snapshot(testRenderer.toJSON());
@@ -20,22 +26,30 @@ test.serial("render", (t) => {
 
 test.serial("props", (t) => {
   const r = render(
-    <KeySelector
-      keyStatsMap={keyStatsMap}
-      current={letters[0]}
-      title="underTest"
-    />,
+    <FakeIntlProvider>
+      <FakeSettingsContext>
+        <KeySelector
+          keyStatsMap={keyStatsMap}
+          current={letters[0]}
+          title="underTest"
+        />
+      </FakeSettingsContext>
+    </FakeIntlProvider>,
   );
   const element = r.getByTitle("underTest");
 
   t.is(element.textContent, "ABCDEFGHIJ");
 
   r.rerender(
-    <KeySelector
-      keyStatsMap={keyStatsMap}
-      current={letters[1]}
-      title="underTest"
-    />,
+    <FakeIntlProvider>
+      <FakeSettingsContext>
+        <KeySelector
+          keyStatsMap={keyStatsMap}
+          current={letters[1]}
+          title="underTest"
+        />
+      </FakeSettingsContext>
+    </FakeIntlProvider>,
   );
 
   t.is(element.textContent, "ABCDEFGHIJ");
@@ -47,12 +61,16 @@ test.serial("controlled", async (t) => {
   let current: Letter | undefined;
 
   const r = render(
-    <Controlled
-      keyStatsMap={keyStatsMap}
-      onChange={(letter) => {
-        current = letter;
-      }}
-    />,
+    <FakeIntlProvider>
+      <FakeSettingsContext>
+        <Controlled
+          keyStatsMap={keyStatsMap}
+          onChange={(letter) => {
+            current = letter;
+          }}
+        />
+      </FakeSettingsContext>
+    </FakeIntlProvider>,
   );
   const element = r.getByTitle("underTest");
 

@@ -1,4 +1,4 @@
-import { LessonKey, LessonKeys, MAX_TIME, MIN_TIME } from "@keybr/lesson";
+import { LessonKey, LessonKeys } from "@keybr/lesson";
 import { Letter } from "@keybr/phonetic-model";
 import { letters } from "./english.ts";
 
@@ -11,13 +11,14 @@ export function makeExampleLesson(
   for (const letter of Letter.frequencyOrder(letters)) {
     if (index < confidences.length) {
       const confidence = confidences[index];
-      const t = confidenceToTime(confidence);
       keys.push(
         new LessonKey({
           letter,
           samples: [],
-          timeToType: t,
-          bestTimeToType: t,
+          timeToType: NaN,
+          bestTimeToType: NaN,
+          confidence: confidence,
+          bestConfidence: confidence,
         }).asIncluded(),
       );
     } else {
@@ -27,6 +28,8 @@ export function makeExampleLesson(
           samples: [],
           timeToType: NaN,
           bestTimeToType: NaN,
+          confidence: null,
+          bestConfidence: null,
         }).asExcluded(),
       );
     }
@@ -42,12 +45,4 @@ export function makeExampleLesson(
   }
 
   return lessonKeys;
-}
-
-function confidenceToTime(confidence: number | null): number {
-  if (confidence != null) {
-    return MIN_TIME + (1 - confidence) * (MAX_TIME - MIN_TIME);
-  } else {
-    return NaN;
-  }
 }

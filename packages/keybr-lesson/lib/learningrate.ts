@@ -71,13 +71,13 @@ export class LearningRate {
     this.vIndex = vIndex;
     this.vSpeed = vSpeed;
     this.mSpeed = mSpeed;
-    const lastIndex = samples[length - 1].index;
     const certainty = r2(vIndex, vSpeed, mSpeed);
     if (certainty >= 0.5) {
+      const lastIndex = samples[length - 1].index + 1;
       this.certainty = certainty;
       this.learningRate = mSpeed.derivative().eval(lastIndex);
       for (let i = 1; i <= 50; i++) {
-        if (mSpeed.eval(lastIndex + i + 1) >= SPEED_THRESHOLD) {
+        if (mSpeed.eval(lastIndex + i) >= SPEED_THRESHOLD) {
           this.remainingLessons = i;
           break;
         }

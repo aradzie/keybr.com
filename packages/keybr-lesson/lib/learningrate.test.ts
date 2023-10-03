@@ -39,6 +39,6 @@ test("increasing time", (t) => {
 test("learning rate of the example data", (t) => {
   const lr = LearningRate.example();
   t.is(lr.certainty, 0.9999384065091098);
-  t.is(lr.learningRate, 4.234223847240317);
+  t.is(lr.learningRate, 4.389111641636653);
   t.is(lr.remainingLessons, 3);
 });

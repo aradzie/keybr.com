@@ -1,5 +1,5 @@
 import { FakeIntlProvider } from "@keybr/intl";
-import { LessonKey, MIN_TIME } from "@keybr/lesson";
+import { LessonKey } from "@keybr/lesson";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { FakeSettingsContext } from "@keybr/settings";
 import test from "ava";
@@ -12,6 +12,8 @@ test("render uncalibrated", (t) => {
     samples: [],
     timeToType: NaN,
     bestTimeToType: NaN,
+    confidence: null,
+    bestConfidence: null,
   });
 
   const testRenderer = TestRenderer.create(
@@ -29,8 +31,10 @@ test("render calibrated", (t) => {
   const lessonKey = new LessonKey({
     letter: FakePhoneticModel.letter1,
     samples: [],
-    timeToType: MIN_TIME,
-    bestTimeToType: MIN_TIME,
+    timeToType: 100,
+    bestTimeToType: 100,
+    confidence: 1.0,
+    bestConfidence: 1.0,
   });
 
   const testRenderer = TestRenderer.create(

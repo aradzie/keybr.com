@@ -11,17 +11,18 @@ export class LessonKey implements KeyStats {
       samples,
       timeToType,
       bestTimeToType,
+      confidence: timeToConfidence(timeToType),
+      bestConfidence: timeToConfidence(bestTimeToType),
     });
   }
 
   static findBoosted(includedKeys: readonly LessonKey[]): LessonKey | null {
-    const byConfidence = (a: LessonKey, b: LessonKey): number =>
-      (a.confidence ?? 0) - (b.confidence ?? 0) || b.letter.f - a.letter.f;
-    const sortedKeys = includedKeys
-      .filter((key) => !(key.bestConfidence === 1))
-      .sort(byConfidence);
-    if (sortedKeys.length > 0) {
-      return sortedKeys[0];
+    const conf = (key: LessonKey): number => key.bestConfidence ?? 0;
+    const candidateKeys = includedKeys
+      .filter((key) => conf(key) < 1)
+      .sort((a, b) => conf(b) - conf(a) || b.letter.f - a.letter.f);
+    if (candidateKeys.length > 0) {
+      return candidateKeys[0];
     } else {
       return null;
     }
@@ -42,6 +43,8 @@ export class LessonKey implements KeyStats {
     samples,
     timeToType,
     bestTimeToType,
+    confidence,
+    bestConfidence,
     isIncluded = false,
     isBoosted = false,
     isForced = false,
@@ -50,6 +53,8 @@ export class LessonKey implements KeyStats {
     samples: readonly KeySample[];
     timeToType: number;
     bestTimeToType: number;
+    confidence: number | null;
+    bestConfidence: number | null;
     isIncluded?: boolean;
     isBoosted?: boolean;
     isForced?: boolean;
@@ -58,8 +63,8 @@ export class LessonKey implements KeyStats {
     this.samples = samples;
     this.timeToType = timeToType;
     this.bestTimeToType = bestTimeToType;
-    this.confidence = timeToConfidence(timeToType);
-    this.bestConfidence = timeToConfidence(bestTimeToType);
+    this.confidence = confidence;
+    this.bestConfidence = bestConfidence;
     this.isIncluded = isIncluded;
     this.isBoosted = isBoosted;
     this.isForced = isForced;

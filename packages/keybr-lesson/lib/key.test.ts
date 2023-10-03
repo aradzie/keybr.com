@@ -1,6 +1,5 @@
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import test from "ava";
-import { MAX_TIME, MIN_TIME } from "./confidence.ts";
 import { LessonKey, LessonKeys } from "./key.ts";
 
 const { letter1, letter2, letter3 } = FakePhoneticModel;
@@ -17,20 +16,26 @@ test("find boosted key when all keys have max confidence", (t) => {
   const a = new LessonKey({
     letter: letter1,
     samples: [],
-    timeToType: MIN_TIME + 10,
-    bestTimeToType: MIN_TIME,
+    timeToType: 100,
+    bestTimeToType: 100,
+    confidence: 1.2,
+    bestConfidence: 1.0,
   });
   const b = new LessonKey({
     letter: letter2,
     samples: [],
-    timeToType: MIN_TIME + 10,
-    bestTimeToType: MIN_TIME,
+    timeToType: 200,
+    bestTimeToType: 200,
+    confidence: 1.1,
+    bestConfidence: 1.0,
   });
   const c = new LessonKey({
     letter: letter3,
     samples: [],
-    timeToType: MIN_TIME + 10,
-    bestTimeToType: MIN_TIME,
+    timeToType: 300,
+    bestTimeToType: 300,
+    confidence: 1.0,
+    bestConfidence: 1.0,
   });
 
   // Assert.
@@ -47,20 +52,26 @@ test("find boosted key with least confidence", (t) => {
   const a = new LessonKey({
     letter: letter1,
     samples: [],
-    timeToType: MAX_TIME,
-    bestTimeToType: MAX_TIME - 30,
+    timeToType: 500,
+    bestTimeToType: 500,
+    confidence: 0.7,
+    bestConfidence: 0.7,
   });
   const b = new LessonKey({
     letter: letter2,
     samples: [],
-    timeToType: MAX_TIME,
-    bestTimeToType: MAX_TIME - 20,
+    timeToType: 400,
+    bestTimeToType: 400,
+    confidence: 0.8,
+    bestConfidence: 0.8,
   });
   const c = new LessonKey({
     letter: letter3,
     samples: [],
-    timeToType: MAX_TIME,
-    bestTimeToType: MAX_TIME - 10,
+    timeToType: 300,
+    bestTimeToType: 300,
+    confidence: 0.9,
+    bestConfidence: 0.9,
   });
 
   // Assert.
@@ -79,20 +90,26 @@ test("lesson keys", (t) => {
     new LessonKey({
       letter: letter1,
       samples: [],
-      timeToType: MIN_TIME,
-      bestTimeToType: MIN_TIME,
+      timeToType: 300,
+      bestTimeToType: 300,
+      confidence: 1.0,
+      bestConfidence: 1.0,
     }),
     new LessonKey({
       letter: letter2,
       samples: [],
-      timeToType: MIN_TIME,
-      bestTimeToType: MIN_TIME,
+      timeToType: 300,
+      bestTimeToType: 300,
+      confidence: 1.0,
+      bestConfidence: 1.0,
     }),
     new LessonKey({
       letter: letter3,
       samples: [],
-      timeToType: MIN_TIME,
-      bestTimeToType: MIN_TIME,
+      timeToType: 300,
+      bestTimeToType: 300,
+      confidence: 1.0,
+      bestConfidence: 1.0,
     }),
   ]);
 
@@ -109,8 +126,10 @@ test("lesson keys", (t) => {
       new LessonKey({
         letter: letter1,
         samples: [],
-        timeToType: MIN_TIME,
-        bestTimeToType: MIN_TIME,
+        timeToType: 300,
+        bestTimeToType: 300,
+        confidence: 1.0,
+        bestConfidence: 1.0,
         isIncluded: true,
         isForced: false,
         isBoosted: true,
@@ -118,8 +137,10 @@ test("lesson keys", (t) => {
       new LessonKey({
         letter: letter2,
         samples: [],
-        timeToType: MIN_TIME,
-        bestTimeToType: MIN_TIME,
+        timeToType: 300,
+        bestTimeToType: 300,
+        confidence: 1.0,
+        bestConfidence: 1.0,
         isIncluded: false,
         isForced: false,
         isBoosted: false,
@@ -127,8 +148,10 @@ test("lesson keys", (t) => {
       new LessonKey({
         letter: letter3,
         samples: [],
-        timeToType: MIN_TIME,
-        bestTimeToType: MIN_TIME,
+        timeToType: 300,
+        bestTimeToType: 300,
+        confidence: 1.0,
+        bestConfidence: 1.0,
         isIncluded: false,
         isForced: false,
         isBoosted: false,
@@ -139,8 +162,10 @@ test("lesson keys", (t) => {
     new LessonKey({
       letter: letter1,
       samples: [],
-      timeToType: MIN_TIME,
-      bestTimeToType: MIN_TIME,
+      timeToType: 300,
+      bestTimeToType: 300,
+      confidence: 1.0,
+      bestConfidence: 1.0,
       isIncluded: true,
       isForced: false,
       isBoosted: true,
@@ -150,8 +175,10 @@ test("lesson keys", (t) => {
     new LessonKey({
       letter: letter2,
       samples: [],
-      timeToType: MIN_TIME,
-      bestTimeToType: MIN_TIME,
+      timeToType: 300,
+      bestTimeToType: 300,
+      confidence: 1.0,
+      bestConfidence: 1.0,
       isIncluded: false,
       isForced: false,
       isBoosted: false,
@@ -159,8 +186,10 @@ test("lesson keys", (t) => {
     new LessonKey({
       letter: letter3,
       samples: [],
-      timeToType: MIN_TIME,
-      bestTimeToType: MIN_TIME,
+      timeToType: 300,
+      bestTimeToType: 300,
+      confidence: 1.0,
+      bestConfidence: 1.0,
       isIncluded: false,
       isForced: false,
       isBoosted: false,
@@ -171,8 +200,10 @@ test("lesson keys", (t) => {
     new LessonKey({
       letter: letter1,
       samples: [],
-      timeToType: MIN_TIME,
-      bestTimeToType: MIN_TIME,
+      timeToType: 300,
+      bestTimeToType: 300,
+      confidence: 1.0,
+      bestConfidence: 1.0,
       isIncluded: true,
       isForced: false,
       isBoosted: true,

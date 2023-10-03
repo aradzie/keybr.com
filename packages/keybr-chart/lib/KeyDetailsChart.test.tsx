@@ -18,6 +18,8 @@ test("render empty", (t) => {
               samples: [],
               timeToType: 500,
               bestTimeToType: 500,
+              confidence: 0.5,
+              bestConfidence: 0.5,
             })
           }
           learningRate={null}
@@ -44,6 +46,8 @@ test("render non-empty", (t) => {
               samples: [],
               timeToType: 500,
               bestTimeToType: 500,
+              confidence: 0.5,
+              bestConfidence: 0.5,
             })
           }
           learningRate={learningRate}

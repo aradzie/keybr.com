@@ -47,6 +47,8 @@ test("compute announcements when the boosted key has no results", (t) => {
         samples: [],
         timeToType: NaN,
         bestTimeToType: NaN,
+        confidence: null,
+        bestConfidence: null,
       }).asBoosted(),
     },
   ]);

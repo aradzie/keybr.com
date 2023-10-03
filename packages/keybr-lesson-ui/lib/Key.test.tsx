@@ -12,6 +12,8 @@ test("render excluded", (t) => {
     samples: [],
     timeToType: NaN,
     bestTimeToType: NaN,
+    confidence: null,
+    bestConfidence: null,
   }).asExcluded();
 
   const testRenderer = TestRenderer.create(
@@ -31,6 +33,8 @@ test("render included", (t) => {
     samples: [],
     timeToType: NaN,
     bestTimeToType: NaN,
+    confidence: null,
+    bestConfidence: null,
   }).asIncluded();
 
   const testRenderer = TestRenderer.create(
@@ -50,6 +54,8 @@ test("render boosted", (t) => {
     samples: [],
     timeToType: NaN,
     bestTimeToType: NaN,
+    confidence: null,
+    bestConfidence: null,
   }).asBoosted();
 
   const testRenderer = TestRenderer.create(
