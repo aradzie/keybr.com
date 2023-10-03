@@ -1,5 +1,5 @@
 import { useIntlNumbers } from "@keybr/intl";
-import { SPEED_THRESHOLD } from "@keybr/lesson";
+import { Target } from "@keybr/lesson";
 import { useFormatter } from "@keybr/lesson-ui";
 import {
   constModel,
@@ -10,6 +10,7 @@ import {
   Vector,
 } from "@keybr/math";
 import { type KeySample, timeToSpeed } from "@keybr/result";
+import { useSettings } from "@keybr/settings";
 import { Canvas, type Rect, type ShapeList } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
@@ -39,6 +40,9 @@ function usePaint(samples: readonly KeySample[], smoothness: number) {
   const { formatMessage } = useIntl();
   const { formatInteger } = useIntlNumbers();
   const fmt = useFormatter();
+  const { settings } = useSettings();
+  const target = new Target(settings);
+  const speedThreshold = timeToSpeed(target.timeToType);
 
   if (!hasData(samples)) {
     return (box: Rect): ShapeList => {
@@ -62,8 +66,8 @@ function usePaint(samples: readonly KeySample[], smoothness: number) {
   }
   const rIndex = Range.from(vIndex);
   const rSpeed = Range.from(vSpeed);
-  rSpeed.min = SPEED_THRESHOLD;
-  rSpeed.max = SPEED_THRESHOLD;
+  rSpeed.min = speedThreshold;
+  rSpeed.max = speedThreshold;
   rSpeed.round(5);
 
   const mSpeed = linearRegression(vIndex, vSpeed);
@@ -82,7 +86,7 @@ function usePaint(samples: readonly KeySample[], smoothness: number) {
           lineWidth: 2,
         },
       }),
-      paintCurve(proj, constModel(SPEED_THRESHOLD), {
+      paintCurve(proj, constModel(speedThreshold), {
         style: {
           ...chartStyles.thresholdLine,
           lineWidth: 2,

@@ -1,5 +1,5 @@
 import { FakeIntlProvider } from "@keybr/intl";
-import { LearningRate, LessonKey } from "@keybr/lesson";
+import { LearningRate, LessonKey, Target } from "@keybr/lesson";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { generateKeySamples } from "@keybr/result";
 import { FakeSettingsContext } from "@keybr/settings";
@@ -34,7 +34,8 @@ test("render empty", (t) => {
 });
 
 test("render non-empty", (t) => {
-  const learningRate = LearningRate.from(generateKeySamples(10));
+  const target = new Target({ targetSpeed: /* 35WPM */ 175 });
+  const learningRate = LearningRate.from(generateKeySamples(10), target);
   t.not(learningRate, null);
   const r = render(
     <FakeIntlProvider>

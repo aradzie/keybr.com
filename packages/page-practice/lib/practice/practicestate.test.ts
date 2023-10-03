@@ -1,4 +1,4 @@
-import { Lesson, LessonKey, LessonKeys } from "@keybr/lesson";
+import { Lesson, LessonKey, LessonKeys, Target } from "@keybr/lesson";
 import { FakePhoneticModel, type PhoneticModel } from "@keybr/phonetic-model";
 import {
   type KeyStatsMap,
@@ -64,7 +64,8 @@ class FakeLesson extends Lesson {
   }
 
   override update(keyStatsMap: KeyStatsMap): LessonKeys {
-    const keys = LessonKeys.includeAll(keyStatsMap);
+    const target = new Target({ targetSpeed: /* 35WPM */ 175 });
+    const keys = LessonKeys.includeAll(keyStatsMap, target);
     keys.boost(FakePhoneticModel.letter1);
     return keys;
   }

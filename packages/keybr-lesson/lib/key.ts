@@ -1,18 +1,18 @@
 import { type Letter } from "@keybr/phonetic-model";
 import { type KeySample, type KeyStats, type KeyStatsMap } from "@keybr/result";
 import { type CodePoint } from "@keybr/unicode";
-import { timeToConfidence } from "./confidence.ts";
+import { type Target } from "./target.ts";
 
 export class LessonKey implements KeyStats {
-  static from(keyStats: KeyStats): LessonKey {
+  static from(keyStats: KeyStats, target: Target): LessonKey {
     const { letter, samples, timeToType, bestTimeToType } = keyStats;
     return new LessonKey({
       letter,
       samples,
       timeToType,
       bestTimeToType,
-      confidence: timeToConfidence(timeToType),
-      bestConfidence: timeToConfidence(bestTimeToType),
+      confidence: target.confidence(timeToType),
+      bestConfidence: target.confidence(bestTimeToType),
     });
   }
 
@@ -105,9 +105,11 @@ export class LessonKey implements KeyStats {
 }
 
 export class LessonKeys implements Iterable<LessonKey> {
-  static includeAll(keyStatsMap: KeyStatsMap): LessonKeys {
+  static includeAll(keyStatsMap: KeyStatsMap, target: Target): LessonKeys {
     return new LessonKeys(
-      [...keyStatsMap].map((keyStats) => LessonKey.from(keyStats).asIncluded()),
+      [...keyStatsMap].map((keyStats) =>
+        LessonKey.from(keyStats, target).asIncluded(),
+      ),
     );
   }
 

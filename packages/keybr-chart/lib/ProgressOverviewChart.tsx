@@ -1,8 +1,9 @@
 import { useIntlNumbers } from "@keybr/intl";
-import { timeToConfidence } from "@keybr/lesson";
+import { Target } from "@keybr/lesson";
 import { confidenceColor } from "@keybr/lesson-ui";
 import { hasData, Range, resample, Vector } from "@keybr/math";
 import { type KeyStats, type KeyStatsMap } from "@keybr/result";
+import { useSettings } from "@keybr/settings";
 import {
   Canvas,
   type Graphics,
@@ -41,7 +42,8 @@ export function ProgressOverviewChart({
 function usePaint(keyStatsMap: KeyStatsMap) {
   const { formatMessage } = useIntl();
   const { formatInteger } = useIntlNumbers();
-
+  const { settings } = useSettings();
+  const target = new Target(settings);
   const { letters, results } = keyStatsMap;
 
   const vIndex = new Vector();
@@ -101,7 +103,7 @@ function usePaint(keyStatsMap: KeyStatsMap) {
       const data = new Array<number>(results.length).fill(NaN);
       for (const { index, timeToType } of samples) {
         if (timeToType != null) {
-          data[index] = timeToConfidence(timeToType);
+          data[index] = target.confidence(timeToType);
         }
       }
       return data;

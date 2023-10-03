@@ -1,6 +1,7 @@
-import { LessonKey } from "@keybr/lesson";
+import { LessonKey, Target } from "@keybr/lesson";
 import { type Letter } from "@keybr/phonetic-model";
 import { type KeyStatsMap } from "@keybr/result";
+import { useSettings } from "@keybr/settings";
 import { type ClassName, type FocusProps, handleHotkeys } from "@keybr/widget";
 import { clsx } from "clsx";
 import { type FocusEvent, type ReactNode } from "react";
@@ -24,6 +25,8 @@ export const KeySelector = ({
   readonly title?: string;
   readonly onSelect?: (letter: Letter) => void;
 } & FocusProps): ReactNode => {
+  const { settings } = useSettings();
+  const target = new Target(settings);
   const { letters } = keyStatsMap;
 
   const handleFocus = (ev: FocusEvent): void => {
@@ -81,7 +84,10 @@ export const KeySelector = ({
       {letters.map((letter) => (
         <Key
           key={letter.codePoint}
-          lessonKey={LessonKey.from(keyStatsMap.get(letter)).asIncluded()}
+          lessonKey={LessonKey.from(
+            keyStatsMap.get(letter),
+            target,
+          ).asIncluded()}
           isSelectable={true}
           isCurrent={current.codePoint === letter.codePoint}
           onClick={() => {

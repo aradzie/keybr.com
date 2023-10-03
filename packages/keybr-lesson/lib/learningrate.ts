@@ -6,22 +6,25 @@ import {
   Vector,
 } from "@keybr/math";
 import { type KeySample, timeToSpeed } from "@keybr/result";
-import { SPEED_THRESHOLD } from "./confidence.ts";
 import { findSession } from "./learningsession.ts";
+import { type Target } from "./target.ts";
 
 export class LearningRate {
-  static from(samples: readonly KeySample[]): LearningRate | null {
+  static from(
+    samples: readonly KeySample[],
+    target: Target,
+  ): LearningRate | null {
     const recent = samples.slice(-30);
     if (hasData(recent)) {
-      return new LearningRate(recent);
+      return new LearningRate(recent, target);
     } else {
       return null;
     }
   }
 
-  static example(): LearningRate {
+  static example(target: Target): LearningRate {
     return new LearningRate(
-      new Array(15).fill(0).map((value, index) => {
+      new Array(14).fill(0).map((value, index) => {
         const timeStamp =
           /* 2001-01-01T12:00:00Z */ 978350400000 + index * 60000;
         const timeToType = 500 - index * 10;
@@ -34,6 +37,7 @@ export class LearningRate {
           filteredTimeToType: timeToType,
         } satisfies KeySample;
       }),
+      target,
     );
   }
 
@@ -48,7 +52,10 @@ export class LearningRate {
   readonly learningRate: number = NaN;
   readonly remainingLessons: number = NaN;
 
-  constructor(readonly samples: readonly KeySample[]) {
+  constructor(
+    readonly samples: readonly KeySample[],
+    readonly target: Target,
+  ) {
     const session = findSession(samples);
     if (hasData(session)) {
       // Replace all samples with the latest learning session
@@ -76,8 +83,9 @@ export class LearningRate {
       const lastIndex = samples[length - 1].index + 1;
       this.certainty = certainty;
       this.learningRate = mSpeed.derivative().eval(lastIndex);
+      const threshold = timeToSpeed(this.target.timeToType);
       for (let i = 1; i <= 50; i++) {
-        if (mSpeed.eval(lastIndex + i) >= SPEED_THRESHOLD) {
+        if (mSpeed.eval(lastIndex + i) >= threshold) {
           this.remainingLessons = i;
           break;
         }

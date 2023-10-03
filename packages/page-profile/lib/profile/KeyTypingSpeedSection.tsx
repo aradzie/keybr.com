@@ -1,8 +1,9 @@
 import { KeySpeedChart, Marker } from "@keybr/chart";
-import { LessonKey } from "@keybr/lesson";
+import { LessonKey, Target } from "@keybr/lesson";
 import { KeyDetails, KeySelector } from "@keybr/lesson-ui";
 import { hasData } from "@keybr/math";
 import { type KeyStatsMap } from "@keybr/result";
+import { useSettings } from "@keybr/settings";
 import { Figure, Para, styleTextCenter } from "@keybr/widget";
 import { type ReactNode, useState } from "react";
 import { FormattedMessage } from "react-intl";
@@ -14,10 +15,11 @@ export function KeyTypingSpeedSection({
 }: {
   readonly keyStatsMap: KeyStatsMap;
 }): ReactNode {
+  const { settings } = useSettings();
   const { letters } = keyStatsMap;
-
   const [current, setCurrent] = useState(letters[0]);
   const [smoothness, setSmoothness] = useState(0.5);
+  const target = new Target(settings);
 
   if (!letters.includes(current)) {
     setCurrent(letters[0]);
@@ -56,7 +58,7 @@ export function KeyTypingSpeedSection({
       </Para>
 
       <Para className={styleTextCenter}>
-        <KeyDetails lessonKey={LessonKey.from(keyStats)} />
+        <KeyDetails lessonKey={LessonKey.from(keyStats, target)} />
       </Para>
 
       <ChartWrapper>

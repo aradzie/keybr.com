@@ -4,6 +4,7 @@ import { type Settings } from "@keybr/settings";
 import { type CodePointSet } from "@keybr/unicode";
 import { LessonKey, LessonKeys } from "./key.ts";
 import { Lesson } from "./lesson.ts";
+import { Target } from "./target.ts";
 import { generateFragment } from "./text/fragment.ts";
 import { mangledWords, phoneticWords, uniqueWords } from "./text/words.ts";
 
@@ -28,8 +29,10 @@ export class GuidedLesson extends Lesson {
       minSize +
       Math.round((letters.length - minSize) * this.settings.lessonComplexity);
 
+    const target = new Target(this.settings);
+
     const lessonKeys = new LessonKeys(
-      letters.map((letter) => LessonKey.from(keyStatsMap.get(letter))),
+      letters.map((letter) => LessonKey.from(keyStatsMap.get(letter), target)),
     );
 
     for (const lessonKey of lessonKeys) {

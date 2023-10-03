@@ -9,6 +9,7 @@ import { type Settings } from "@keybr/settings";
 import { type CodePointSet } from "@keybr/unicode";
 import { LessonKeys } from "./key.ts";
 import { Lesson } from "./lesson.ts";
+import { Target } from "./target.ts";
 import { generateFragment } from "./text/fragment.ts";
 import { wordSequence } from "./text/words.ts";
 
@@ -33,7 +34,7 @@ export class BookContentLesson extends Lesson {
   }
 
   override update(keyStatsMap: KeyStatsMap): LessonKeys {
-    return LessonKeys.includeAll(keyStatsMap);
+    return LessonKeys.includeAll(keyStatsMap, new Target(this.settings));
   }
 
   override generate(): string {
