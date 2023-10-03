@@ -10,8 +10,8 @@ test("render uncalibrated", (t) => {
   const lessonKey = new LessonKey({
     letter: FakePhoneticModel.letter1,
     samples: [],
-    timeToType: NaN,
-    bestTimeToType: NaN,
+    timeToType: null,
+    bestTimeToType: null,
     confidence: null,
     bestConfidence: null,
   });

@@ -10,8 +10,8 @@ test("render excluded", (t) => {
   const lessonKey = new LessonKey({
     letter: FakePhoneticModel.letter1,
     samples: [],
-    timeToType: NaN,
-    bestTimeToType: NaN,
+    timeToType: null,
+    bestTimeToType: null,
     confidence: null,
     bestConfidence: null,
   }).asExcluded();
@@ -31,8 +31,8 @@ test("render included", (t) => {
   const lessonKey = new LessonKey({
     letter: FakePhoneticModel.letter1,
     samples: [],
-    timeToType: NaN,
-    bestTimeToType: NaN,
+    timeToType: null,
+    bestTimeToType: null,
     confidence: null,
     bestConfidence: null,
   }).asIncluded();
@@ -52,8 +52,8 @@ test("render boosted", (t) => {
   const lessonKey = new LessonKey({
     letter: FakePhoneticModel.letter1,
     samples: [],
-    timeToType: NaN,
-    bestTimeToType: NaN,
+    timeToType: null,
+    bestTimeToType: null,
     confidence: null,
     bestConfidence: null,
   }).asBoosted();

@@ -30,8 +30,8 @@ export type KeyStatsMap = {
 export type KeyStats = {
   readonly letter: Letter;
   readonly samples: readonly KeySample[];
-  readonly timeToType: number;
-  readonly bestTimeToType: number;
+  readonly timeToType: number | null;
+  readonly bestTimeToType: number | null;
 };
 
 export type KeySample = {

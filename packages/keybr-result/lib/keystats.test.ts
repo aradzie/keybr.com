@@ -42,8 +42,8 @@ test("compute key stats", (t) => {
   t.deepEqual(newKeyStatsMap([l1, l2], []).get(l1), {
     letter: l1,
     samples: [],
-    timeToType: NaN,
-    bestTimeToType: NaN,
+    timeToType: null,
+    bestTimeToType: null,
   });
 
   t.deepEqual(newKeyStatsMap([l1, l2], [r1]).get(l1), {

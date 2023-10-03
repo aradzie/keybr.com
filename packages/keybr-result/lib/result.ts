@@ -88,11 +88,10 @@ export class Result {
  * @return Typing speed in characters per minute.
  */
 export function timeToSpeed(v: number): number {
-  if (v > 0) {
-    return (60 * 1000) / v;
-  } else {
-    return 0;
+  if (!Number.isFinite(v) || v === 0) {
+    throw new Error();
   }
+  return (60 * 1000) / v;
 }
 
 /**
@@ -101,11 +100,10 @@ export function timeToSpeed(v: number): number {
  * @return Time-to-type in milliseconds.
  */
 export function speedToTime(v: number): number {
-  if (v > 0) {
-    return 1000 / (v / 60);
-  } else {
-    return 0;
+  if (!Number.isFinite(v) || v === 0) {
+    throw new Error();
   }
+  return 1000 / (v / 60);
 }
 
 export function lettersOnly(results: readonly Result[]): Result[] {

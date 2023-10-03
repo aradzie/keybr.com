@@ -30,8 +30,8 @@ export class LessonKey implements KeyStats {
 
   readonly letter: Letter;
   readonly samples: readonly KeySample[];
-  readonly timeToType: number;
-  readonly bestTimeToType: number;
+  readonly timeToType: number | null;
+  readonly bestTimeToType: number | null;
   readonly confidence: number | null;
   readonly bestConfidence: number | null;
   readonly isIncluded: boolean;
@@ -51,8 +51,8 @@ export class LessonKey implements KeyStats {
   }: {
     letter: Letter;
     samples: readonly KeySample[];
-    timeToType: number;
-    bestTimeToType: number;
+    timeToType: number | null;
+    bestTimeToType: number | null;
     confidence: number | null;
     bestConfidence: number | null;
     isIncluded?: boolean;

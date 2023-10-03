@@ -17,7 +17,8 @@ export const KeyDetails = ({
 }): ReactNode => {
   const { formatMessage } = useIntl();
   const fmt = useFormatter();
-  if (lessonKey.confidence != null) {
+  const { bestTimeToType, confidence } = lessonKey;
+  if (bestTimeToType != null && confidence != null) {
     const lr = LearningRate.from(lessonKey.samples);
     const { speedUnitName } = fmt;
     return (
@@ -30,12 +31,12 @@ export const KeyDetails = ({
       >
         <NameValue
           name={<Name name={formatMessage(messages.bestSpeedLabel)} />}
-          value={<Value value={fmt(timeToSpeed(lessonKey.bestTimeToType))} />}
+          value={<Value value={fmt(timeToSpeed(bestTimeToType))} />}
           title={formatMessage(messages.bestSpeedTitle, { speedUnitName })}
         />
         <NameValue
           name={<Name name={formatMessage(messages.confidenceLevelLabel)} />}
-          value={<Value value={fmt.confidence(lessonKey.confidence)} />}
+          value={<Value value={fmt.confidence(confidence)} />}
           title={formatMessage(messages.confidenceLevelTitle)}
         />
         <NameValue

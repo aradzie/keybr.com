@@ -17,13 +17,17 @@ export const SPEED_THRESHOLD = timeToSpeed(MIN_TIME);
  * @param t Time-to-type in milliseconds, or <code>NaN</code> if has no samples.
  * @return Confidence level in range [0, 1], or <code>null</code> if not calibrated yet.
  */
-export function timeToConfidence(t: number): number | null {
-  if (t > 0) {
-    t = Math.max(t, MIN_TIME);
-    t = Math.min(t, MAX_TIME);
-    t = (t - MIN_TIME) / (MAX_TIME - MIN_TIME);
-    return 1 - t;
-  } else {
+export function timeToConfidence(t: number): number;
+export function timeToConfidence(t: null): null;
+export function timeToConfidence(t: number | null): number | null;
+export function timeToConfidence(t: number | null): number | null {
+  if (t == null) {
     return null;
   }
+  if (!Number.isFinite(t) || t === 0) {
+    throw new Error();
+  }
+  t = Math.max(t, MIN_TIME);
+  t = Math.min(t, MAX_TIME);
+  return 1 - (t - MIN_TIME) / (MAX_TIME - MIN_TIME);
 }

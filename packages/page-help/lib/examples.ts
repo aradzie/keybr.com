@@ -15,8 +15,8 @@ export function makeExampleLesson(
         new LessonKey({
           letter,
           samples: [],
-          timeToType: NaN,
-          bestTimeToType: NaN,
+          timeToType: null,
+          bestTimeToType: null,
           confidence: confidence,
           bestConfidence: confidence,
         }).asIncluded(),
@@ -26,8 +26,8 @@ export function makeExampleLesson(
         new LessonKey({
           letter,
           samples: [],
-          timeToType: NaN,
-          bestTimeToType: NaN,
+          timeToType: null,
+          bestTimeToType: null,
           confidence: null,
           bestConfidence: null,
         }).asExcluded(),

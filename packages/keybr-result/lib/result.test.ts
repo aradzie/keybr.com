@@ -90,10 +90,10 @@ test("serialize as JSON", (t) => {
 });
 
 test("convert", (t) => {
-  t.is(timeToSpeed(0), 0);
-  t.is(timeToSpeed(NaN), 0);
-  t.is(speedToTime(0), 0);
-  t.is(speedToTime(NaN), 0);
+  t.throws(() => timeToSpeed(NaN));
+  t.throws(() => timeToSpeed(0));
+  t.throws(() => speedToTime(NaN));
+  t.throws(() => speedToTime(0));
   t.is(timeToSpeed(250), 240);
   t.is(timeToSpeed(100), 600);
   t.is(speedToTime(240), 250);

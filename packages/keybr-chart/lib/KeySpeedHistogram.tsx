@@ -49,7 +49,11 @@ function usePaint(keyStatsMap: KeyStatsMap) {
   const keySet = new KeySet(letters);
   const hSpeed = new Histogram(keySet);
   for (const letter of letters) {
-    hSpeed.set(letter, timeToSpeed(keyStatsMap.get(letter).timeToType));
+    const keyStats = keyStatsMap.get(letter);
+    const { timeToType } = keyStats;
+    if (timeToType != null) {
+      hSpeed.set(letter, timeToSpeed(timeToType));
+    }
   }
   const vSpeed = hSpeed.asVector();
   const rSpeed = Range.from(vSpeed).round(5);

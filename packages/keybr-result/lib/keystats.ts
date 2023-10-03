@@ -64,16 +64,15 @@ function makeKeySamples(
 }
 
 function makeKeyStats(letter: Letter, samples: readonly KeySample[]): KeyStats {
-  let timeToType = NaN;
-  let bestTimeToType = NaN;
+  let timeToType = null;
+  let bestTimeToType = null;
   for (let i = 0; i < samples.length; i++) {
     const { filteredTimeToType } = samples[i];
-    if (i > 0) {
-      timeToType = filteredTimeToType;
-      bestTimeToType = Math.min(bestTimeToType, timeToType);
-    } else {
-      timeToType = filteredTimeToType;
+    timeToType = filteredTimeToType;
+    if (bestTimeToType == null) {
       bestTimeToType = timeToType;
+    } else {
+      bestTimeToType = Math.min(bestTimeToType, timeToType);
     }
   }
   return {

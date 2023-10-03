@@ -100,9 +100,8 @@ function usePaint(keyStatsMap: KeyStatsMap) {
     function makeKeyData({ samples }: KeyStats): number[] {
       const data = new Array<number>(results.length).fill(NaN);
       for (const { index, timeToType } of samples) {
-        const confidence = timeToConfidence(timeToType);
-        if (confidence != null) {
-          data[index] = confidence;
+        if (timeToType != null) {
+          data[index] = timeToConfidence(timeToType);
         }
       }
       return data;
