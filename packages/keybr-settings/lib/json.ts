@@ -9,6 +9,7 @@ export type SettingsJson = {
 
 export type SettingsValue<T> = {
   readonly key: string;
+  readonly defaultValue: T;
   toJson(value: T): boolean | number | string | null;
   fromJson(value: unknown): T;
 };
@@ -23,6 +24,7 @@ export function booleanValue(
 ): SettingsValue<boolean> {
   return {
     key,
+    defaultValue,
     toJson(value: boolean): boolean | null {
       if (isBoolean(value)) {
         return value;
@@ -45,6 +47,7 @@ export function numberValue(
 ): SettingsValue<number> {
   return {
     key,
+    defaultValue,
     toJson(value: number): number | null {
       if (isNumber(value) && Number.isFinite(value)) {
         return validator.check(value, defaultValue);
@@ -67,6 +70,7 @@ export function stringValue(
 ): SettingsValue<string> {
   return {
     key,
+    defaultValue,
     toJson(value: string): string | null {
       if (isString(value)) {
         return validator.check(value, defaultValue);
@@ -91,6 +95,7 @@ export function enumValue<T extends EnumLike>(
 ): SettingsValue<number> {
   return {
     key,
+    defaultValue,
     toJson(value: number): string | null {
       if (isNumber(value)) {
         const enumValue = all[value];
@@ -123,6 +128,7 @@ export function itemValue<T extends EnumItem>(
 ): SettingsValue<T> {
   return {
     key,
+    defaultValue,
     toJson(value: T): string | null {
       return value.id;
     },

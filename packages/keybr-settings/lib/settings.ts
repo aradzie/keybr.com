@@ -7,7 +7,7 @@ import {
 import isPlainObject from "lodash/isPlainObject";
 import { defaults } from "./defaults.ts";
 import { type LessonType } from "./lessontype.ts";
-import { MAPPING } from "./mapping.ts";
+import { SCHEMA } from "./schema.ts";
 import { type AllSettings } from "./types.ts";
 import { type SpeedUnit } from "./units.ts";
 
@@ -144,19 +144,19 @@ export class Settings implements AllSettings {
     });
   }
 
-  toJSON(): Record<string, unknown> {
-    const entries: [string, unknown][] = [];
-    for (const [propertyName, { key, toJson }] of MAPPING) {
-      entries.push([key, toJson(this[propertyName])]);
+  toJSON(): unknown {
+    const entries = [];
+    for (const [prop, { key, toJson }] of Object.entries(SCHEMA)) {
+      entries.push([key, toJson((this as any)[prop])]);
     }
     return Object.fromEntries(entries);
   }
 
   static fromJSON(json: unknown): Settings {
-    const entries: [string, unknown][] = [];
+    const entries = [];
     if (isPlainObject(json)) {
-      for (const [propertyName, { key, fromJson }] of MAPPING) {
-        entries.push([propertyName, fromJson((json as any)[key] ?? null)]);
+      for (const [prop, { key, fromJson }] of Object.entries(SCHEMA)) {
+        entries.push([prop, fromJson((json as any)[key] ?? null)]);
       }
     }
     return new Settings(Object.fromEntries(entries));

@@ -116,7 +116,7 @@ test.serial("put settings", async (t) => {
 
   const response = await request
     .PUT("/_/sync/settings")
-    .send(new Settings({ textContent: "hello world" }).toJSON());
+    .send(new Settings({ textContent: "hello world" }).toJSON() as object);
 
   // Assert.
 
