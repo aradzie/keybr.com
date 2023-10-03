@@ -1352,7 +1352,7 @@
     "description": "Checkbox label."
   },
   "settings.targetSpeedLabel": {
-    "defaultMessage": "Target speed:",
+    "defaultMessage": "Целевая скорость набора:",
     "description": "Input field label."
   },
   "settings.targetSpeedTitle": {
@@ -1372,7 +1372,7 @@
     "description": "Checkbox title."
   },
   "settings.typingOptionsLegend": {
-    "defaultMessage": "Настройки печатания",
+    "defaultMessage": "Настройки набора",
     "description": "Fieldset legend."
   },
   "settings.typingSpeedUnitCaption": {

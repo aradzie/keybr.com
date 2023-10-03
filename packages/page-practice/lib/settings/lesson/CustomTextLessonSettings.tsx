@@ -208,7 +208,7 @@ export function CustomTextLessonSettings({
             {formatMessage({
               id: "settings.targetSpeedLabel",
               description: "Input field label.",
-              defaultMessage: "Target speed:",
+              defaultMessage: "Target typing speed:",
             })}
           </Field>
           <Field>

@@ -1352,7 +1352,7 @@
     "description": "Checkbox label."
   },
   "settings.targetSpeedLabel": {
-    "defaultMessage": "Target speed:",
+    "defaultMessage": "Velocidad de escritura objetivo:",
     "description": "Input field label."
   },
   "settings.targetSpeedTitle": {
