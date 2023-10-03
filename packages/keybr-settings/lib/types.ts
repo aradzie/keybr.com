@@ -6,11 +6,6 @@ import {
 import { type LessonType } from "./lessontype.ts";
 import { type SpeedUnit } from "./units.ts";
 
-export type LayoutSettings = {
-  readonly layout: Layout;
-  readonly emulateLayout: boolean;
-};
-
 export type LessonSettings = {
   readonly lessonType: LessonType;
   readonly lessonComplexity: number;
@@ -27,12 +22,17 @@ export type LessonSettings = {
   readonly dailyGoal: number;
 };
 
+export type KeyboardSettings = {
+  readonly layout: Layout;
+  readonly emulateLayout: boolean;
+};
+
 export type UiSettings = {
   readonly speedUnit: SpeedUnit;
 };
 
-export type AllSettings = LayoutSettings &
-  LessonSettings &
+export type AllSettings = LessonSettings &
+  KeyboardSettings &
   TextInputSettings &
   TextDisplaySettings &
   UiSettings;

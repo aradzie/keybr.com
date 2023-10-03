@@ -5,7 +5,7 @@ import { Button, Field, FieldList, Icon, Tab, TabList } from "@keybr/widget";
 import { mdiCheckCircle } from "@mdi/js";
 import { type ReactNode, useMemo, useState } from "react";
 import { useIntl } from "react-intl";
-import { LayoutSettings } from "./LayoutSettings.tsx";
+import { KeyboardSettings } from "./KeyboardSettings.tsx";
 import { LessonSettings } from "./LessonSettings.tsx";
 import { MiscSettings } from "./MiscSettings.tsx";
 import { TypingSettings } from "./TypingSettings.tsx";
@@ -81,7 +81,7 @@ function Content({ onSubmit }: { readonly onSubmit: () => void }): ReactNode {
             defaultMessage: "Keyboard",
           })}
         >
-          <LayoutSettings />
+          <KeyboardSettings />
         </Tab>
 
         <Tab

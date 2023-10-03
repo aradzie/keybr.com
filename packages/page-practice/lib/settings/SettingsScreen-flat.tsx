@@ -5,7 +5,7 @@ import { Button, Field, FieldList, Header, Icon } from "@keybr/widget";
 import { mdiCheckCircle } from "@mdi/js";
 import { type ReactNode, useMemo, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { LayoutSettings } from "./LayoutSettings.tsx";
+import { KeyboardSettings } from "./KeyboardSettings.tsx";
 import { LessonSettings } from "./LessonSettings-flat.tsx";
 import { MiscSettings } from "./MiscSettings.tsx";
 import * as styles from "./SettingsScreen-flat.module.less";
@@ -77,7 +77,7 @@ function Content({ onSubmit }: { readonly onSubmit: () => void }): ReactNode {
           defaultMessage="Keyboard"
         />
       </Header>
-      <LayoutSettings />
+      <KeyboardSettings />
 
       <div className={styles.spacer} />
 

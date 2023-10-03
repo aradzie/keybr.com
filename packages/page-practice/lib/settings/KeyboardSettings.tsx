@@ -19,7 +19,7 @@ import {
 import { type ReactNode, useState } from "react";
 import { useIntl } from "react-intl";
 
-export function LayoutSettings(): ReactNode {
+export function KeyboardSettings(): ReactNode {
   const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
   const keyboard = useKeyboard();
