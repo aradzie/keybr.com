@@ -16,7 +16,7 @@ test.afterEach(() => {
 test.serial("success", (t) => {
   const r = render(
     <ErrorHandler details={DetailsMessage}>
-      <Child fail={false} />
+      <Child />
     </ErrorHandler>,
   );
 
@@ -34,11 +34,11 @@ test.serial("mount failure", (t) => {
 
   const r = render(
     <ErrorHandler details={DetailsMessage}>
-      <Child fail={true} />
+      <Child fail={new Error("abc", { cause: new Error("xyz") })} />
     </ErrorHandler>,
   );
 
-  t.is(r.container.textContent, "Error: OMG\nBecause: TypeError: Cause");
+  t.is(r.container.textContent, "Error: abc\n\nCause: Error: xyz");
   t.is(logged.length, 0); // We cancelled logging in tests.
 
   console.error = saved;
@@ -54,7 +54,7 @@ test.serial("external failure", (t) => {
 
   const r = render(
     <ErrorHandler details={DetailsMessage}>
-      <Child fail={false} />
+      <Child />
     </ErrorHandler>,
   );
 
@@ -73,9 +73,9 @@ function DetailsMessage({ report }: { readonly report: string }) {
   return <div>{report}</div>;
 }
 
-function Child({ fail }: { readonly fail: boolean }) {
-  if (fail) {
-    throw new Error("OMG", { cause: new TypeError("Cause") });
+function Child({ fail = null }: { readonly fail?: any }) {
+  if (fail != null) {
+    throw fail;
   } else {
     return <div>OK</div>;
   }

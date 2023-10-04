@@ -1,4 +1,4 @@
-import { format } from "./format.ts";
+import { formatReport, inspectError } from "./inspect.ts";
 
 type Handler = (report: string) => void;
 
@@ -10,7 +10,7 @@ export function catchError(error: any): void {
 }
 
 export function silentCatchError(error: any): void {
-  const report = format(error);
+  const report = formatReport(inspectError(error));
   for (const handler of handlers) {
     try {
       handler(report);
