@@ -35,7 +35,7 @@ export function openSettingsStorage(
       async send(settings: Settings): Promise<void> {
         const response = await request
           .PUT("/_/sync/settings")
-          .send(settings.toJSON() as object);
+          .send(settings.toJSON());
         await response.blob(); // Ignore.
       }
     })();
@@ -46,7 +46,7 @@ export function openSettingsStorage(
         if (value != null) {
           return Settings.fromJSON(value);
         } else {
-          const settings = new Settings({}, true);
+          const settings = new Settings(undefined, true);
           storage.set(STORAGE_KEY, settings.toJSON());
           return settings;
         }

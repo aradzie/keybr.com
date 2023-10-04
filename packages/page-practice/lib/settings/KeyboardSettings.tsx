@@ -1,5 +1,5 @@
 import { languageName } from "@keybr/intl";
-import { useKeyboard } from "@keybr/keyboard";
+import { keyboardProps, useKeyboard } from "@keybr/keyboard";
 import {
   addKey,
   deleteKey,
@@ -24,6 +24,8 @@ export function KeyboardSettings(): ReactNode {
   const { settings, updateSettings } = useSettings();
   const keyboard = useKeyboard();
   const depressedKeys = useDepressedKeys();
+  const layout = settings.get(keyboardProps.layout);
+  const emulate = settings.get(keyboardProps.emulate);
 
   return (
     <>
@@ -54,12 +56,13 @@ export function KeyboardSettings(): ReactNode {
                 description: "Dropdown title.",
                 defaultMessage: "Select your spoken language.",
               })}
-              value={settings.layout.language.id}
+              value={layout.language.id}
               onSelect={(id) => {
                 updateSettings(
-                  settings.patch({
-                    layout: Layout.ALL.find((item) => item.language.id === id),
-                  }),
+                  settings.set(
+                    keyboardProps.layout,
+                    Layout.ALL.find((item) => item.language.id === id),
+                  ),
                 );
               }}
             />
@@ -76,7 +79,7 @@ export function KeyboardSettings(): ReactNode {
           <Field>
             <OptionList
               options={Layout.ALL.filter(
-                (item) => item.language.id === settings.layout.language.id,
+                (item) => item.language.id === layout.language.id,
               ).map((item) => ({
                 value: item.id,
                 name: item.name,
@@ -87,12 +90,10 @@ export function KeyboardSettings(): ReactNode {
                 defaultMessage:
                   "Select the keyboard layout you wish to practice with. There may be many layouts available for each language.",
               })}
-              value={settings.layout.id}
+              value={layout.id}
               onSelect={(id) => {
                 updateSettings(
-                  settings.patch({
-                    layout: Layout.ALL.get(id),
-                  }),
+                  settings.set(keyboardProps.layout, Layout.ALL.get(id)),
                 );
               }}
             />
@@ -100,8 +101,8 @@ export function KeyboardSettings(): ReactNode {
 
           <Field>
             <CheckBox
-              checked={settings.emulateLayout}
-              disabled={!settings.layout.emulate}
+              checked={emulate}
+              disabled={!layout.emulate}
               label={formatMessage({
                 id: "settings.emulateLayoutLabel",
                 description: "Checkbox label.",
@@ -114,11 +115,7 @@ export function KeyboardSettings(): ReactNode {
                   "Emulate the selected layout when the standard layout is set in the system.",
               })}
               onChange={(value) => {
-                updateSettings(
-                  settings.patch({
-                    emulateLayout: value,
-                  }),
-                );
+                updateSettings(settings.set(keyboardProps.emulate, value));
               }}
             />
           </Field>

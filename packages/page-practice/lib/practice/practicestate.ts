@@ -1,5 +1,5 @@
-import { type HasCodePoint } from "@keybr/keyboard";
-import { type Lesson, type LessonKeys } from "@keybr/lesson";
+import { type HasCodePoint, keyboardProps } from "@keybr/keyboard";
+import { type Lesson, type LessonKeys, lessonProps } from "@keybr/lesson";
 import { Histogram, KeySet } from "@keybr/math";
 import { type KeyStatsMap, Result } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
@@ -10,6 +10,12 @@ import {
   singleLine,
   TextInput,
 } from "@keybr/textinput";
+import {
+  type TextDisplaySettings,
+  type TextInputSettings,
+  toTextDisplaySettings,
+  toTextInputSettings,
+} from "@keybr/textinput-settings";
 import { type Announcement } from "./Announcer.tsx";
 
 export type LastLesson = {
@@ -19,6 +25,9 @@ export type LastLesson = {
 };
 
 export class PracticeState {
+  readonly showTour: boolean;
+  readonly textInputSettings: TextInputSettings;
+  readonly textDisplaySettings: TextDisplaySettings;
   readonly keyStatsMap: KeyStatsMap;
   readonly lessonKeys: LessonKeys;
   readonly announcements: Announcement[] = [];
@@ -34,6 +43,9 @@ export class PracticeState {
     readonly results: readonly Result[],
     readonly appendResult: (result: Result) => void,
   ) {
+    this.showTour = settings.isNew;
+    this.textInputSettings = toTextInputSettings(settings);
+    this.textDisplaySettings = toTextDisplaySettings(settings);
     this.keyStatsMap = this.lesson.analyze(this.results);
     this.lessonKeys = this.lesson.update(this.keyStatsMap);
     this.#reset(this.lesson.generate(this.lessonKeys));
@@ -54,8 +66,8 @@ export class PracticeState {
     if (this.textInput.completed) {
       this.appendResult(
         Result.fromStats(
-          this.settings.layout,
-          this.settings.lessonType.textType,
+          this.settings.get(keyboardProps.layout),
+          this.settings.get(lessonProps.type).textType,
           Date.now(),
           newStats(this.textInput.getSteps()),
         ),
@@ -65,7 +77,7 @@ export class PracticeState {
   };
 
   #reset(fragment: string): void {
-    this.textInput = new TextInput(fragment, this.settings);
+    this.textInput = new TextInput(fragment, this.textInputSettings);
     this.lines = singleLine(this.textInput.getChars());
   }
 

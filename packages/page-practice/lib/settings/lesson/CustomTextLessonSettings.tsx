@@ -1,5 +1,5 @@
 import { useIntlNumbers } from "@keybr/intl";
-import { type CustomTextLesson } from "@keybr/lesson";
+import { type CustomTextLesson, lessonProps } from "@keybr/lesson";
 import { useFormatter } from "@keybr/lesson-ui";
 import { textStatsOf } from "@keybr/plaintext";
 import { useSettings } from "@keybr/settings";
@@ -30,7 +30,7 @@ export function CustomTextLessonSettings({
   const fmt = useFormatter();
   const { settings, updateSettings } = useSettings();
   const { numWords, numUniqueWords, avgWordLength } = useMemo(
-    () => textStatsOf(settings.textContent),
+    () => textStatsOf(settings.get(lessonProps.customText.content)),
     [settings],
   );
 
@@ -66,9 +66,7 @@ export function CustomTextLessonSettings({
                 onClick={(ev) => {
                   ev.preventDefault();
                   updateSettings(
-                    settings.patch({
-                      textContent: content,
-                    }),
+                    settings.set(lessonProps.customText.content, content),
                   );
                 }}
               >
@@ -81,7 +79,7 @@ export function CustomTextLessonSettings({
         <Para>
           <TextField
             className={styleSizeFull}
-            value={settings.textContent}
+            value={settings.get(lessonProps.customText.content)}
             type="textarea"
             placeholder={formatMessage({
               id: "settings.customTextInputPlaceholder",
@@ -90,9 +88,7 @@ export function CustomTextLessonSettings({
             })}
             onChange={(value) => {
               updateSettings(
-                settings.patch({
-                  textContent: value.substring(0, 10_000),
-                }),
+                settings.set(lessonProps.customText.content, value),
               );
             }}
           />
@@ -134,7 +130,7 @@ export function CustomTextLessonSettings({
         <FieldList>
           <Field>
             <CheckBox
-              checked={settings.textSimplify}
+              checked={settings.get(lessonProps.customText.lettersOnly)}
               label={formatMessage({
                 id: "settings.removePunctuationLabel",
                 description: "Checkbox label.",
@@ -148,16 +144,14 @@ export function CustomTextLessonSettings({
               })}
               onChange={(value) => {
                 updateSettings(
-                  settings.patch({
-                    textSimplify: value,
-                  }),
+                  settings.set(lessonProps.customText.lettersOnly, value),
                 );
               }}
             />
           </Field>
           <Field>
             <CheckBox
-              checked={settings.textLowercase}
+              checked={settings.get(lessonProps.customText.lowercase)}
               label={formatMessage({
                 id: "settings.transformToLowercaseLabel",
                 description: "Checkbox label.",
@@ -171,16 +165,14 @@ export function CustomTextLessonSettings({
               })}
               onChange={(value) => {
                 updateSettings(
-                  settings.patch({
-                    textLowercase: value,
-                  }),
+                  settings.set(lessonProps.customText.lowercase, value),
                 );
               }}
             />
           </Field>
           <Field>
             <CheckBox
-              checked={settings.textRandomize}
+              checked={settings.get(lessonProps.customText.randomize)}
               label={formatMessage({
                 id: "settings.shuffleWordsLabel",
                 description: "Checkbox label.",
@@ -194,9 +186,7 @@ export function CustomTextLessonSettings({
               })}
               onChange={(value) => {
                 updateSettings(
-                  settings.patch({
-                    textRandomize: value,
-                  }),
+                  settings.set(lessonProps.customText.randomize, value),
                 );
               }}
             />
@@ -214,10 +204,10 @@ export function CustomTextLessonSettings({
           <Field>
             <Range
               className={styleSizeWide}
-              min={175}
-              max={750}
+              min={lessonProps.targetSpeed.min}
+              max={lessonProps.targetSpeed.max}
               step={1}
-              value={settings.targetSpeed}
+              value={settings.get(lessonProps.targetSpeed)}
               title={formatMessage({
                 id: "settings.targetSpeedTitle",
                 description: "Input field title.",
@@ -225,16 +215,14 @@ export function CustomTextLessonSettings({
                   "Set custom target typing speed that you want to achieve.",
               })}
               onChange={(value) => {
-                updateSettings(
-                  settings.patch({
-                    targetSpeed: value,
-                  }),
-                );
+                updateSettings(settings.set(lessonProps.targetSpeed, value));
               }}
             />
           </Field>
           <Field>
-            <Value value={fmt(settings.targetSpeed, { unit: true })} />
+            <Value
+              value={fmt(settings.get(lessonProps.targetSpeed), { unit: true })}
+            />
           </Field>
         </FieldList>
 
@@ -252,18 +240,14 @@ export function CustomTextLessonSettings({
               min={1}
               max={100}
               step={1}
-              value={Math.round(settings.lessonLength * 100)}
+              value={Math.round(settings.get(lessonProps.length) * 100)}
               title={formatMessage({
                 id: "settings.extendLessonLengthTitle",
                 description: "Input field title.",
                 defaultMessage: "Add more words to every generated lesson.",
               })}
               onChange={(value) => {
-                updateSettings(
-                  settings.patch({
-                    lessonLength: value / 100,
-                  }),
-                );
+                updateSettings(settings.set(lessonProps.length, value / 100));
               }}
             />
           </Field>

@@ -4,11 +4,12 @@ import { toCodePoints } from "@keybr/unicode";
 import test from "ava";
 import { CustomTextLesson } from "./customtext.ts";
 import { LessonKey } from "./key.ts";
+import { lessonProps } from "./settings.ts";
 
 const allCodePoints = { has: () => true };
 
 test("provide key set", (t) => {
-  const settings = new Settings({ textContent: "example test" });
+  const settings = new Settings();
   const model = new FakePhoneticModel();
   const lesson = new CustomTextLesson(settings, model, allCodePoints);
   const lessonKeys = lesson.update(lesson.analyze([]));
@@ -130,7 +131,7 @@ test("provide key set", (t) => {
 });
 
 test("generate text with empty settings", (t) => {
-  const settings = new Settings({ textContent: "" });
+  const settings = new Settings().set(lessonProps.customText.content, "");
   const model = new FakePhoneticModel();
   const lesson = new CustomTextLesson(settings, model, allCodePoints);
   lesson.update(lesson.analyze([]));
@@ -152,18 +153,14 @@ test("generate text with empty settings", (t) => {
 
 test("generate text using settings", (t) => {
   {
+    const settings = new Settings()
+      .set(lessonProps.customText.content, "Abc! Def? 123")
+      .set(lessonProps.customText.lowercase, true)
+      .set(lessonProps.customText.lettersOnly, true)
+      .set(lessonProps.customText.randomize, false);
     const model = new FakePhoneticModel();
     const codePoints = new Set(toCodePoints("abcdefABCDEF123!?"));
-    const lesson = new CustomTextLesson(
-      new Settings({
-        textContent: "Abc! Def? 123",
-        textLowercase: true,
-        textSimplify: true,
-        textRandomize: false,
-      }),
-      model,
-      codePoints,
-    );
+    const lesson = new CustomTextLesson(settings, model, codePoints);
     lesson.update(lesson.analyze([]));
     lesson.rng = model.rng;
 
@@ -175,18 +172,14 @@ test("generate text using settings", (t) => {
   }
 
   {
+    const settings = new Settings()
+      .set(lessonProps.customText.content, "Abc! Def? 123")
+      .set(lessonProps.customText.lowercase, false)
+      .set(lessonProps.customText.lettersOnly, false)
+      .set(lessonProps.customText.randomize, false);
     const model = new FakePhoneticModel();
     const codePoints = new Set(toCodePoints("abcdefABCDEF123!?"));
-    const lesson = new CustomTextLesson(
-      new Settings({
-        textContent: "Abc! Def? 123",
-        textLowercase: false,
-        textSimplify: false,
-        textRandomize: false,
-      }),
-      model,
-      codePoints,
-    );
+    const lesson = new CustomTextLesson(settings, model, codePoints);
     lesson.update(lesson.analyze([]));
     lesson.rng = model.rng;
 
@@ -200,18 +193,17 @@ test("generate text using settings", (t) => {
 
 test("generate randomized text using settings", (t) => {
   {
+    const settings = new Settings()
+      .set(
+        lessonProps.customText.content,
+        "Abc! Def? 123 AAA aaa BBB bbb CCC ccc",
+      )
+      .set(lessonProps.customText.lowercase, true)
+      .set(lessonProps.customText.lettersOnly, true)
+      .set(lessonProps.customText.randomize, true);
     const model = new FakePhoneticModel();
     const codePoints = new Set(toCodePoints("abcdefABCDEF123!?"));
-    const lesson = new CustomTextLesson(
-      new Settings({
-        textContent: "Abc! Def? 123 AAA aaa BBB bbb CCC ccc",
-        textLowercase: true,
-        textSimplify: true,
-        textRandomize: true,
-      }),
-      model,
-      codePoints,
-    );
+    const lesson = new CustomTextLesson(settings, model, codePoints);
     lesson.update(lesson.analyze([]));
     lesson.rng = model.rng;
 
@@ -223,18 +215,17 @@ test("generate randomized text using settings", (t) => {
   }
 
   {
+    const settings = new Settings()
+      .set(
+        lessonProps.customText.content,
+        "Abc! Def? 123 AAA aaa BBB bbb CCC ccc",
+      )
+      .set(lessonProps.customText.lowercase, false)
+      .set(lessonProps.customText.lettersOnly, false)
+      .set(lessonProps.customText.randomize, true);
     const model = new FakePhoneticModel();
     const codePoints = new Set(toCodePoints("abcdefABCDEF123!?"));
-    const lesson = new CustomTextLesson(
-      new Settings({
-        textContent: "Abc! Def? 123 AAA aaa BBB bbb CCC ccc",
-        textLowercase: false,
-        textSimplify: false,
-        textRandomize: true,
-      }),
-      model,
-      codePoints,
-    );
+    const lesson = new CustomTextLesson(settings, model, codePoints);
     lesson.update(lesson.analyze([]));
     lesson.rng = model.rng;
 

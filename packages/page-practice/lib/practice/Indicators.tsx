@@ -1,4 +1,4 @@
-import { type LessonKey } from "@keybr/lesson";
+import { type LessonKey, lessonProps } from "@keybr/lesson";
 import {
   CurrentKeyRow,
   DailyGoalRow,
@@ -83,6 +83,6 @@ function useSummaryStats(state: PracticeState): SummaryStats {
 function useDailyGoal(state: PracticeState): DailyGoal {
   return useMemo(() => {
     const today = ResultGroups.byDate(state.results).get(LocalDate.now());
-    return computeDailyGoal(today, state.settings.dailyGoal);
+    return computeDailyGoal(today, state.settings.get(lessonProps.dailyGoal));
   }, [state]);
 }

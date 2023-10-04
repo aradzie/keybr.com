@@ -1,5 +1,5 @@
 import { fakeAdapter, Recorder } from "@fastr/fetch";
-import { Settings } from "@keybr/settings";
+import { Settings, stringProp } from "@keybr/settings";
 import test from "ava";
 import { openSettingsStorage, STORAGE_KEY } from "./storage.ts";
 
@@ -16,9 +16,7 @@ test.afterEach(() => {
 test.serial("anonymous user - store and load settings", async (t) => {
   // Arrange.
 
-  const settings = new Settings({
-    textContent: "custom text content",
-  });
+  const settings = new Settings().set(stringProp("prop", "abc"), "xyz");
 
   // Store settings.
 
@@ -37,7 +35,7 @@ test.serial("anonymous user - validate stored settings", async (t) => {
   localStorage.setItem(STORAGE_KEY, "garbage");
   t.deepEqual(
     await openSettingsStorage(null, null).load(),
-    new Settings({}, true),
+    new Settings(undefined, true),
   );
 
   // Load from valid data.
@@ -45,7 +43,7 @@ test.serial("anonymous user - validate stored settings", async (t) => {
   localStorage.setItem(STORAGE_KEY, "{}");
   t.deepEqual(
     await openSettingsStorage(null, null).load(),
-    new Settings({}, false),
+    new Settings(undefined, false),
   );
 });
 
@@ -68,7 +66,7 @@ test.serial("named user - save to remote settings", async (t) => {
   fakeAdapter.on
     .PUT("/_/sync/settings")
     .replyWith("", { status: 204 }, recorder);
-  const settings = new Settings({ textContent: "omg" });
+  const settings = new Settings().set(stringProp("prop", "abc"), "xyz");
   localStorage.removeItem(STORAGE_KEY);
 
   // Act.
@@ -91,7 +89,7 @@ test.serial("named user - load from remote settings", async (t) => {
   fakeAdapter.on
     .PUT("/_/sync/settings")
     .replyWith("", { status: 204 }, recorder);
-  const settings = new Settings({ textContent: "omg" });
+  const settings = new Settings().set(stringProp("prop", "abc"), "xyz");
   localStorage.removeItem(STORAGE_KEY);
 
   // Act.
@@ -113,7 +111,7 @@ test.serial("named user - load from local settings", async (t) => {
   fakeAdapter.on
     .PUT("/_/sync/settings")
     .replyWith("", { status: 204 }, recorder);
-  const settings = new Settings({ textContent: "omg" });
+  const settings = new Settings().set(stringProp("prop", "abc"), "xyz");
   localStorage.setItem(STORAGE_KEY, JSON.stringify(settings.toJSON()));
 
   // Act.

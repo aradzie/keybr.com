@@ -2,6 +2,9 @@ import { useSettings } from "@keybr/settings";
 import {
   CaretMovementStyle,
   CaretShapeStyle,
+  textDisplayProps,
+  textInputProps,
+  toTextDisplaySettings,
   WhitespaceStyle,
 } from "@keybr/textinput-settings";
 import { AnimatedText } from "@keybr/textinput-ui";
@@ -40,13 +43,9 @@ export function TypingSettings(): ReactNode {
                 description: "Checkbox label.",
                 defaultMessage: "Stop the cursor when an error occurs.",
               })}
-              checked={settings.stopOnError}
+              checked={settings.get(textInputProps.stopOnError)}
               onChange={(value) => {
-                updateSettings(
-                  settings.patch({
-                    stopOnError: value,
-                  }),
-                );
+                updateSettings(settings.set(textInputProps.stopOnError, value));
               }}
             />
           </Field>
@@ -69,12 +68,10 @@ export function TypingSettings(): ReactNode {
                 description: "Checkbox label.",
                 defaultMessage: "Forgive errors.",
               })}
-              checked={settings.forgiveErrors}
+              checked={settings.get(textInputProps.forgiveErrors)}
               onChange={(value) => {
                 updateSettings(
-                  settings.patch({
-                    forgiveErrors: value,
-                  }),
+                  settings.set(textInputProps.forgiveErrors, value),
                 );
               }}
             />
@@ -100,7 +97,7 @@ export function TypingSettings(): ReactNode {
       >
         <HBox justifyContent="center" className={styles.demoText}>
           <AnimatedText
-            settings={settings}
+            settings={toTextDisplaySettings(settings)}
             text="The quick brown fox jumps over the lazy dog."
           />
         </HBox>
@@ -117,12 +114,16 @@ export function TypingSettings(): ReactNode {
             <RadioBox
               label="No whitespace"
               name="whitespace-style"
-              checked={settings.whitespaceStyle === WhitespaceStyle.None}
+              checked={
+                settings.get(textDisplayProps.whitespaceStyle) ===
+                WhitespaceStyle.Space
+              }
               onSelect={() => {
                 updateSettings(
-                  settings.patch({
-                    whitespaceStyle: WhitespaceStyle.None,
-                  }),
+                  settings.set(
+                    textDisplayProps.whitespaceStyle,
+                    WhitespaceStyle.Space,
+                  ),
                 );
               }}
             />
@@ -131,12 +132,16 @@ export function TypingSettings(): ReactNode {
             <RadioBox
               label="Bar whitespace"
               name="whitespace-style"
-              checked={settings.whitespaceStyle === WhitespaceStyle.Bar}
+              checked={
+                settings.get(textDisplayProps.whitespaceStyle) ===
+                WhitespaceStyle.Bar
+              }
               onSelect={() => {
                 updateSettings(
-                  settings.patch({
-                    whitespaceStyle: WhitespaceStyle.Bar,
-                  }),
+                  settings.set(
+                    textDisplayProps.whitespaceStyle,
+                    WhitespaceStyle.Bar,
+                  ),
                 );
               }}
             />
@@ -145,12 +150,16 @@ export function TypingSettings(): ReactNode {
             <RadioBox
               label="Bullet whitespace"
               name="whitespace-style"
-              checked={settings.whitespaceStyle === WhitespaceStyle.Bullet}
+              checked={
+                settings.get(textDisplayProps.whitespaceStyle) ===
+                WhitespaceStyle.Bullet
+              }
               onSelect={() => {
                 updateSettings(
-                  settings.patch({
-                    whitespaceStyle: WhitespaceStyle.Bullet,
-                  }),
+                  settings.set(
+                    textDisplayProps.whitespaceStyle,
+                    WhitespaceStyle.Bullet,
+                  ),
                 );
               }}
             />
@@ -169,12 +178,16 @@ export function TypingSettings(): ReactNode {
             <RadioBox
               label="Block cursor"
               name="cursor-shape-style"
-              checked={settings.caretShapeStyle === CaretShapeStyle.Block}
+              checked={
+                settings.get(textDisplayProps.caretShapeStyle) ===
+                CaretShapeStyle.Block
+              }
               onSelect={() => {
                 updateSettings(
-                  settings.patch({
-                    caretShapeStyle: CaretShapeStyle.Block,
-                  }),
+                  settings.set(
+                    textDisplayProps.caretShapeStyle,
+                    CaretShapeStyle.Block,
+                  ),
                 );
               }}
             />
@@ -183,12 +196,16 @@ export function TypingSettings(): ReactNode {
             <RadioBox
               label="Box cursor"
               name="cursor-shape-style"
-              checked={settings.caretShapeStyle === CaretShapeStyle.Box}
+              checked={
+                settings.get(textDisplayProps.caretShapeStyle) ===
+                CaretShapeStyle.Box
+              }
               onSelect={() => {
                 updateSettings(
-                  settings.patch({
-                    caretShapeStyle: CaretShapeStyle.Box,
-                  }),
+                  settings.set(
+                    textDisplayProps.caretShapeStyle,
+                    CaretShapeStyle.Box,
+                  ),
                 );
               }}
             />
@@ -197,12 +214,16 @@ export function TypingSettings(): ReactNode {
             <RadioBox
               label="Line cursor"
               name="cursor-shape-style"
-              checked={settings.caretShapeStyle === CaretShapeStyle.Line}
+              checked={
+                settings.get(textDisplayProps.caretShapeStyle) ===
+                CaretShapeStyle.Line
+              }
               onSelect={() => {
                 updateSettings(
-                  settings.patch({
-                    caretShapeStyle: CaretShapeStyle.Line,
-                  }),
+                  settings.set(
+                    textDisplayProps.caretShapeStyle,
+                    CaretShapeStyle.Line,
+                  ),
                 );
               }}
             />
@@ -211,12 +232,16 @@ export function TypingSettings(): ReactNode {
             <RadioBox
               label="Underline cursor"
               name="cursor-shape-style"
-              checked={settings.caretShapeStyle === CaretShapeStyle.Underline}
+              checked={
+                settings.get(textDisplayProps.caretShapeStyle) ===
+                CaretShapeStyle.Underline
+              }
               onSelect={() => {
                 updateSettings(
-                  settings.patch({
-                    caretShapeStyle: CaretShapeStyle.Underline,
-                  }),
+                  settings.set(
+                    textDisplayProps.caretShapeStyle,
+                    CaretShapeStyle.Underline,
+                  ),
                 );
               }}
             />
@@ -236,13 +261,15 @@ export function TypingSettings(): ReactNode {
               label="Jumping cursor"
               name="cursor-movement-style"
               checked={
-                settings.caretMovementStyle === CaretMovementStyle.Jumping
+                settings.get(textDisplayProps.caretMovementStyle) ===
+                CaretMovementStyle.Jumping
               }
               onSelect={() => {
                 updateSettings(
-                  settings.patch({
-                    caretMovementStyle: CaretMovementStyle.Jumping,
-                  }),
+                  settings.set(
+                    textDisplayProps.caretMovementStyle,
+                    CaretMovementStyle.Jumping,
+                  ),
                 );
               }}
             />
@@ -252,13 +279,15 @@ export function TypingSettings(): ReactNode {
               label="Smooth cursor"
               name="cursor-movement-style"
               checked={
-                settings.caretMovementStyle === CaretMovementStyle.Smooth
+                settings.get(textDisplayProps.caretMovementStyle) ===
+                CaretMovementStyle.Smooth
               }
               onChange={() => {
                 updateSettings(
-                  settings.patch({
-                    caretMovementStyle: CaretMovementStyle.Smooth,
-                  }),
+                  settings.set(
+                    textDisplayProps.caretMovementStyle,
+                    CaretMovementStyle.Smooth,
+                  ),
                 );
               }}
             />
@@ -278,13 +307,9 @@ export function TypingSettings(): ReactNode {
                 description: "Checkbox description.",
                 defaultMessage: "Make extra noise when typing and on errors.",
               })}
-              checked={settings.sounds}
+              checked={settings.get(textDisplayProps.sounds)}
               onChange={(value) => {
-                updateSettings(
-                  settings.patch({
-                    sounds: value,
-                  }),
-                );
+                updateSettings(settings.set(textDisplayProps.sounds, value));
               }}
             />
           </Field>

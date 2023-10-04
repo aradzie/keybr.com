@@ -13,7 +13,7 @@
     "@keybr/pages-browser": "*",
     "@keybr/pages-server": "*",
     "@keybr/pages-shared": "*",
-    "@keybr/settings": "*",
+    "@keybr/result": "*",
     "@keybr/widget": "*"
   },
   "devDependencies": {},

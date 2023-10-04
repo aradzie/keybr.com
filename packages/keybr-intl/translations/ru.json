@@ -1395,6 +1395,10 @@
     "defaultMessage": "Количество слов:",
     "description": "Input field label."
   },
+  "settings.wordListSizeTitle": {
+    "defaultMessage": "Выберите, сколько общих слов использовать.",
+    "description": "Input field title."
+  },
   "speedUnit.cpm.description": {
     "defaultMessage": "Измерять скорость набора в символах в минуту.",
     "description": "Widget title."

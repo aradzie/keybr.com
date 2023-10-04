@@ -1395,6 +1395,10 @@
     "defaultMessage": "Nombre de mots:",
     "description": "Input field label."
   },
+  "settings.wordListSizeTitle": {
+    "defaultMessage": "Choisissez le nombre de mots courants à utiliser.",
+    "description": "Input field title."
+  },
   "speedUnit.cpm.description": {
     "defaultMessage": "Mesurer la vitesse de frappe en caractères par minute.",
     "description": "Widget title."

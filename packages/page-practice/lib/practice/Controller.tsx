@@ -1,4 +1,4 @@
-import { useKeyboard } from "@keybr/keyboard";
+import { keyboardProps, useKeyboard } from "@keybr/keyboard";
 import { playSound } from "@keybr/sound";
 import { Feedback } from "@keybr/textinput";
 import { emulateLayout } from "@keybr/textinput-events";
@@ -73,7 +73,7 @@ function usePracticeState(state: PracticeState) {
           playFeedbackSound(feedback);
         },
       },
-      state.settings.emulateLayout,
+      state.settings.get(keyboardProps.emulate),
     );
     return {
       handleReset,

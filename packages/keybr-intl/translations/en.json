@@ -1236,7 +1236,7 @@
     "description": "Checkbox label."
   },
   "settings.enableCapitalLettersTitle": {
-    "defaultMessage": "Generate text with capital letters.",
+    "defaultMessage": "Add capital letters to the generated text.",
     "description": "Checkbox title."
   },
   "settings.enablePunctuationLabel": {
@@ -1394,6 +1394,10 @@
   "settings.wordListSizeLabel": {
     "defaultMessage": "Word list size:",
     "description": "Input field label."
+  },
+  "settings.wordListSizeTitle": {
+    "defaultMessage": "Chose how many common words to use.",
+    "description": "Input field title."
   },
   "speedUnit.cpm.description": {
     "defaultMessage": "Measure typing speed in characters per minute.",

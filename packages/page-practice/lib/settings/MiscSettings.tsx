@@ -1,5 +1,6 @@
 import { messages } from "@keybr/lesson-ui";
-import { SpeedUnit, useSettings } from "@keybr/settings";
+import { SpeedUnit, uiProps } from "@keybr/result";
+import { useSettings } from "@keybr/settings";
 import { Field, FieldList, FieldSet, Para, RadioBox } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
@@ -28,48 +29,36 @@ export function MiscSettings(): ReactNode {
 
           <Field>
             <RadioBox
-              checked={settings.speedUnit === SpeedUnit.WPM}
+              checked={settings.get(uiProps.speedUnit) === SpeedUnit.WPM}
               name="speed-unit"
               label={formatMessage(messages.wpmName)}
               title={formatMessage(messages.wpmDescription)}
               onSelect={() =>
-                updateSettings(
-                  settings.patch({
-                    speedUnit: SpeedUnit.WPM,
-                  }),
-                )
+                updateSettings(settings.set(uiProps.speedUnit, SpeedUnit.WPM))
               }
             />
           </Field>
 
           <Field>
             <RadioBox
-              checked={settings.speedUnit === SpeedUnit.CPM}
+              checked={settings.get(uiProps.speedUnit) === SpeedUnit.CPM}
               name="speed-unit"
               label={formatMessage(messages.cpmName)}
               title={formatMessage(messages.cpmDescription)}
               onSelect={() =>
-                updateSettings(
-                  settings.patch({
-                    speedUnit: SpeedUnit.CPM,
-                  }),
-                )
+                updateSettings(settings.set(uiProps.speedUnit, SpeedUnit.CPM))
               }
             />
           </Field>
 
           <Field>
             <RadioBox
-              checked={settings.speedUnit === SpeedUnit.CPS}
+              checked={settings.get(uiProps.speedUnit) === SpeedUnit.CPS}
               name="speed-unit"
               label={formatMessage(messages.cpsName)}
               title={formatMessage(messages.cpsDescription)}
               onSelect={() =>
-                updateSettings(
-                  settings.patch({
-                    speedUnit: SpeedUnit.CPS,
-                  }),
-                )
+                updateSettings(settings.set(uiProps.speedUnit, SpeedUnit.CPS))
               }
             />
           </Field>

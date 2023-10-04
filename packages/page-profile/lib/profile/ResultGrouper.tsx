@@ -1,4 +1,4 @@
-import { KeyboardContext, loadKeyboard } from "@keybr/keyboard";
+import { KeyboardContext, keyboardProps, loadKeyboard } from "@keybr/keyboard";
 import { Layout } from "@keybr/layout";
 import { Letter } from "@keybr/phonetic-model";
 import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
@@ -24,19 +24,22 @@ export function ResultGrouper({
   const { settings } = useSettings();
   const { results } = useResults();
   const groups = ResultGroups.byLayout(results);
-  const layouts = new Set(groups.keys());
-  if (layouts.size === 0) {
-    layouts.add(settings.layout);
+  const resultsLayouts = new Set(groups.keys());
+  const configuredLayout = settings.get(keyboardProps.layout);
+  if (resultsLayouts.size === 0) {
+    resultsLayouts.add(configuredLayout);
   }
   const defaultLayout = () =>
-    layouts.has(settings.layout) ? settings.layout : [...layouts][0];
-  const [layout, setLayout] = useState(defaultLayout);
+    resultsLayouts.has(configuredLayout)
+      ? configuredLayout
+      : [...resultsLayouts][0];
+  const [selectedLayout, setSelectedLayout] = useState(defaultLayout);
   const [textType, setTextType] = useState("letters");
-  if (!layouts.has(layout)) {
-    setLayout(defaultLayout());
+  if (!resultsLayouts.has(selectedLayout)) {
+    setSelectedLayout(defaultLayout());
   }
-  const keyboard = loadKeyboard(layout, { full: false });
-  const group = groups.get(layout);
+  const keyboard = loadKeyboard(selectedLayout, { full: false });
+  const group = groups.get(selectedLayout);
 
   return (
     <>
@@ -50,15 +53,15 @@ export function ResultGrouper({
         </Field>
         <Field>
           <OptionList
-            options={[...layouts].map((layout) => {
+            options={[...resultsLayouts].map((layout) => {
               return {
                 value: String(layout),
                 name: `${layout.name}`,
               };
             })}
-            value={String(layout)}
+            value={String(selectedLayout)}
             onSelect={(value) => {
-              setLayout(Layout.ALL.get(value));
+              setSelectedLayout(Layout.ALL.get(value));
             }}
           />
         </Field>
@@ -93,7 +96,7 @@ export function ResultGrouper({
       </FieldList>
 
       <KeyboardContext.Provider value={keyboard}>
-        <PhoneticModelLoader language={layout.language}>
+        <PhoneticModelLoader language={selectedLayout.language}>
           {({ letters }) => {
             switch (textType) {
               case "letters":

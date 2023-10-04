@@ -9,6 +9,7 @@
     "@keybr/layout": "*",
     "@keybr/math": "*",
     "@keybr/phonetic-model": "*",
+    "@keybr/settings": "*",
     "@keybr/textinput": "*"
   },
   "devDependencies": {},

@@ -5,6 +5,7 @@ import { type Settings } from "@keybr/settings";
 import { type CodePointSet } from "@keybr/unicode";
 import { LessonKeys } from "./key.ts";
 import { Lesson } from "./lesson.ts";
+import { lessonProps } from "./settings.ts";
 import { Target } from "./target.ts";
 
 export class NumbersLesson extends Lesson {
@@ -40,7 +41,7 @@ export class NumbersLesson extends Lesson {
 
   nextWord(): string {
     const { rng } = this;
-    const { benford } = this.settings;
+    const benford = this.settings.get(lessonProps.numbers.benford);
     const [zeroDigit, ...nonZeroDigits] = Letter.digits;
     const allDigits = [zeroDigit, ...nonZeroDigits];
     const length = Math.floor(3 + rng() * 4);

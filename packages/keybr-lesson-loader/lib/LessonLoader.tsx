@@ -1,17 +1,19 @@
 import { loadWordList } from "@keybr/content-words";
 import { catchError } from "@keybr/debug";
-import { useKeyboard } from "@keybr/keyboard";
+import { keyboardProps, useKeyboard } from "@keybr/keyboard";
 import {
   CustomTextLesson,
   GuidedLesson,
   type Lesson,
+  lessonProps,
+  LessonType,
   NumbersLesson,
   WordListLesson,
 } from "@keybr/lesson";
 import { LoadingProgress } from "@keybr/pages-shared";
 import { PhoneticModel } from "@keybr/phonetic-model";
 import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
-import { LessonType, useSettings } from "@keybr/settings";
+import { useSettings } from "@keybr/settings";
 import { type ReactNode, useEffect, useState } from "react";
 
 export function LessonLoader({
@@ -22,10 +24,12 @@ export function LessonLoader({
   readonly fallback?: ReactNode;
 }): ReactNode {
   const { settings } = useSettings();
+  const lessonType = settings.get(lessonProps.type);
+  const layout = settings.get(keyboardProps.layout);
   return (
-    <PhoneticModelLoader language={settings.layout.language}>
+    <PhoneticModelLoader language={layout.language}>
       {(model) => (
-        <Loader key={settings.lessonType.id} model={model} fallback={fallback}>
+        <Loader key={lessonType.id} model={model} fallback={fallback}>
           {children}
         </Loader>
       )}
@@ -61,8 +65,10 @@ function useLoader(model: PhoneticModel): Lesson | null {
     const load = async (): Promise<void> => {
       const codePoints = keyboard.codePoints();
       const newModel = PhoneticModel.restrict(model, codePoints);
+      const lessonType = settings.get(lessonProps.type);
+      const layout = settings.get(keyboardProps.layout);
 
-      switch (settings.lessonType) {
+      switch (lessonType) {
         case LessonType.GUIDED: {
           if (!didCancel) {
             setResult(new GuidedLesson(settings, newModel, codePoints));
@@ -70,7 +76,7 @@ function useLoader(model: PhoneticModel): Lesson | null {
           break;
         }
         case LessonType.WORDLIST: {
-          const wordList = await loadWordList(settings.layout.language);
+          const wordList = await loadWordList(layout.language);
           if (!didCancel) {
             setResult(
               new WordListLesson(settings, newModel, codePoints, wordList),

@@ -1395,6 +1395,10 @@
     "defaultMessage": "Wortzahl:",
     "description": "Input field label."
   },
+  "settings.wordListSizeTitle": {
+    "defaultMessage": "Wählen Sie aus, wie viele gebräuchliche Wörter Sie verwenden möchten.",
+    "description": "Input field title."
+  },
   "speedUnit.cpm.description": {
     "defaultMessage": "Misst die Tippgeschwindigkeit in Zeichen pro Minute.",
     "description": "Widget title."

@@ -1,4 +1,4 @@
-import { KeyboardContext, loadKeyboard } from "@keybr/keyboard";
+import { KeyboardContext, keyboardProps, loadKeyboard } from "@keybr/keyboard";
 import { Screen } from "@keybr/pages-shared";
 import { type Settings, SettingsContext, useSettings } from "@keybr/settings";
 import { Button, Field, FieldList, Header, Icon } from "@keybr/widget";
@@ -19,8 +19,8 @@ export function SettingsScreen({
   const { settings } = useSettings();
   const [newSettings, setNewSettings] = useState(settings);
   const keyboard = useMemo(
-    () => loadKeyboard(newSettings.layout, { full: true }),
-    [newSettings.layout],
+    () => loadKeyboard(newSettings.get(keyboardProps.layout), { full: true }),
+    [newSettings],
   );
 
   return (

@@ -2,11 +2,13 @@ import {
   type CustomTextLesson,
   type GuidedLesson,
   type Lesson,
+  lessonProps,
+  LessonType,
   type NumbersLesson,
   type WordListLesson,
 } from "@keybr/lesson";
 import { LessonLoader } from "@keybr/lesson-loader";
-import { LessonType, useSettings } from "@keybr/settings";
+import { useSettings } from "@keybr/settings";
 import { RadioBox } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
@@ -25,7 +27,7 @@ export function LessonSettings(): ReactNode {
 function Content({ lesson }: { readonly lesson: Lesson }): ReactNode {
   const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
-  const { lessonType } = settings;
+  const lessonType = settings.get(lessonProps.type);
 
   return (
     <>
@@ -33,11 +35,7 @@ function Content({ lesson }: { readonly lesson: Lesson }): ReactNode {
         <div className={styles.lessonTypeSwitchItem}>
           <RadioBox
             onSelect={() =>
-              updateSettings(
-                settings.patch({
-                  lessonType: LessonType.GUIDED,
-                }),
-              )
+              updateSettings(settings.set(lessonProps.type, LessonType.GUIDED))
             }
             checked={lessonType === LessonType.GUIDED}
             name="lesson-type"
@@ -53,9 +51,7 @@ function Content({ lesson }: { readonly lesson: Lesson }): ReactNode {
           <RadioBox
             onSelect={() =>
               updateSettings(
-                settings.patch({
-                  lessonType: LessonType.WORDLIST,
-                }),
+                settings.set(lessonProps.type, LessonType.WORDLIST),
               )
             }
             checked={lessonType === LessonType.WORDLIST}
@@ -71,11 +67,7 @@ function Content({ lesson }: { readonly lesson: Lesson }): ReactNode {
         <div className={styles.lessonTypeSwitchItem}>
           <RadioBox
             onSelect={() =>
-              updateSettings(
-                settings.patch({
-                  lessonType: LessonType.CUSTOM,
-                }),
-              )
+              updateSettings(settings.set(lessonProps.type, LessonType.CUSTOM))
             }
             checked={lessonType === LessonType.CUSTOM}
             name="lesson-type"
@@ -90,11 +82,7 @@ function Content({ lesson }: { readonly lesson: Lesson }): ReactNode {
         <div className={styles.lessonTypeSwitchItem}>
           <RadioBox
             onSelect={() =>
-              updateSettings(
-                settings.patch({
-                  lessonType: LessonType.NUMBERS,
-                }),
-              )
+              updateSettings(settings.set(lessonProps.type, LessonType.NUMBERS))
             }
             checked={lessonType === LessonType.NUMBERS}
             name="lesson-type"

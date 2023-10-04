@@ -6,4 +6,5 @@ export * from "./keycode.ts";
 export * from "./keycombo.ts";
 export * from "./keymodifier.ts";
 export * from "./load.ts";
+export * from "./settings.ts";
 export * from "./types.ts";

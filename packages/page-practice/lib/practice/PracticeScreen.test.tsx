@@ -1,8 +1,9 @@
 import { FakeIntlProvider } from "@keybr/intl";
+import { lessonProps, LessonType } from "@keybr/lesson";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
 import { FakeResultContext, ResultFaker } from "@keybr/result";
-import { FakeSettingsContext, LessonType, Settings } from "@keybr/settings";
+import { FakeSettingsContext, Settings } from "@keybr/settings";
 import { render } from "@testing-library/react";
 import test from "ava";
 import { PracticeScreen } from "./PracticeScreen.tsx";
@@ -15,12 +16,9 @@ test.serial("render", async (t) => {
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext
-        initialSettings={
-          new Settings({
-            lessonType: LessonType.CUSTOM,
-            textContent: "abcdefghij",
-          })
-        }
+        initialSettings={new Settings()
+          .set(lessonProps.type, LessonType.CUSTOM)
+          .set(lessonProps.customText.content, "abcdefghij")}
       >
         <FakeResultContext initialResults={faker.nextResultList(100)}>
           <PracticeScreen onConfigure={() => {}} />

@@ -1,3 +1,5 @@
+import { booleanProp, type Settings } from "@keybr/settings";
+
 /**
  * Text input settings.
  */
@@ -20,3 +22,15 @@ export const textInputSettings: TextInputSettings = {
   stopOnError: true,
   forgiveErrors: true,
 };
+
+export const textInputProps = {
+  stopOnError: booleanProp("textInput.stopOnError", true),
+  forgiveErrors: booleanProp("textInput.forgiveErrors", true),
+} as const;
+
+export function toTextInputSettings(settings: Settings): TextInputSettings {
+  return {
+    stopOnError: settings.get(textInputProps.stopOnError),
+    forgiveErrors: settings.get(textInputProps.forgiveErrors),
+  };
+}

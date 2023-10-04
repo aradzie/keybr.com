@@ -148,7 +148,7 @@ export function renderChars({
 
 function whitespaceChar(whitespaceStyle: WhitespaceStyle): string {
   switch (whitespaceStyle) {
-    case WhitespaceStyle.None:
+    case WhitespaceStyle.Space:
       return spaceChar;
     case WhitespaceStyle.Bar:
       return spaceBarChar;

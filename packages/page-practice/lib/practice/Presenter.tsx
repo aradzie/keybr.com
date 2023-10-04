@@ -2,6 +2,7 @@ import { addKey, deleteKey } from "@keybr/keyboard-ui";
 import { Screen } from "@keybr/pages-shared";
 import { type LineData } from "@keybr/textinput";
 import { type KeyEvent } from "@keybr/textinput-events";
+import { toTextDisplaySettings } from "@keybr/textinput-settings";
 import { TextArea } from "@keybr/textinput-ui";
 import { PureComponent, type ReactNode } from "react";
 import { Announcer } from "./Announcer.tsx";
@@ -42,7 +43,7 @@ export class Presenter extends PureComponent<Props, State> {
   };
 
   override componentDidMount(): void {
-    if (this.props.state.settings.isNew) {
+    if (this.props.state.showTour) {
       this.setState({
         layout: "normal",
         tour: true,
@@ -65,7 +66,6 @@ export class Presenter extends PureComponent<Props, State> {
       handleHelp,
       handleTourClose,
     } = this;
-    const { settings } = state;
     switch (layout) {
       case "normal":
         return (
@@ -84,7 +84,7 @@ export class Presenter extends PureComponent<Props, State> {
             }
             textInput={
               <TextArea
-                settings={settings}
+                settings={state.textDisplaySettings}
                 lines={lines}
                 size="X0"
                 onFocus={handleFocus}
@@ -114,7 +114,7 @@ export class Presenter extends PureComponent<Props, State> {
             }
             textInput={
               <TextArea
-                settings={settings}
+                settings={state.textDisplaySettings}
                 lines={lines}
                 size="X1"
                 onFocus={handleFocus}
@@ -143,7 +143,7 @@ export class Presenter extends PureComponent<Props, State> {
             }
             textInput={
               <TextArea
-                settings={settings}
+                settings={state.textDisplaySettings}
                 lines={lines}
                 size="X2"
                 onFocus={handleFocus}

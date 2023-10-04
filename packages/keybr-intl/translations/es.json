@@ -1395,6 +1395,10 @@
     "defaultMessage": "El recuento de palabras:",
     "description": "Input field label."
   },
+  "settings.wordListSizeTitle": {
+    "defaultMessage": "Elija cuántas palabras comunes usar.",
+    "description": "Input field title."
+  },
   "speedUnit.cpm.description": {
     "defaultMessage": "Mide la velocidad de mecanografía en caracteres por minuto.",
     "description": "Widget title."

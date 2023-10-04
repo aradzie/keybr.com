@@ -1,6 +1,6 @@
 import { wordListStats } from "@keybr/content-words";
 import { useIntlNumbers } from "@keybr/intl";
-import { type WordListLesson } from "@keybr/lesson";
+import { lessonProps, type WordListLesson } from "@keybr/lesson";
 import { useFormatter } from "@keybr/lesson-ui";
 import { useSettings } from "@keybr/settings";
 import {
@@ -59,20 +59,18 @@ export function WordListLessonSettings({
           <Field>
             <Range
               className={styleSizeWide}
-              min={10}
-              max={1000}
+              min={lessonProps.wordList.wordListSize.min}
+              max={lessonProps.wordList.wordListSize.max}
               step={1}
-              value={settings.wordListSize}
+              value={settings.get(lessonProps.wordList.wordListSize)}
               title={formatMessage({
-                id: "settings.extendLessonLengthTitle",
+                id: "settings.wordListSizeTitle",
                 description: "Input field title.",
-                defaultMessage: "Add more words to every generated lesson.",
+                defaultMessage: "Chose how many common words to use.",
               })}
               onChange={(value) => {
                 updateSettings(
-                  settings.patch({
-                    wordListSize: value,
-                  }),
+                  settings.set(lessonProps.wordList.wordListSize, value),
                 );
               }}
             />
@@ -122,15 +120,11 @@ export function WordListLessonSettings({
               title={formatMessage({
                 id: "settings.enableCapitalLettersTitle",
                 description: "Checkbox title.",
-                defaultMessage: "Generate text with capital letters.",
+                defaultMessage: "Add capital letters to the generated text.",
               })}
-              checked={settings.lessonCapitals}
+              checked={settings.get(lessonProps.capitals)}
               onChange={(value) => {
-                updateSettings(
-                  settings.patch({
-                    lessonCapitals: value,
-                  }),
-                );
+                updateSettings(settings.set(lessonProps.capitals, value));
               }}
             />
           </Field>
@@ -147,13 +141,9 @@ export function WordListLessonSettings({
                 defaultMessage:
                   "Add punctuation characters to the generated text.",
               })}
-              checked={settings.lessonPunctuators}
+              checked={settings.get(lessonProps.punctuators)}
               onChange={(value) => {
-                updateSettings(
-                  settings.patch({
-                    lessonPunctuators: value,
-                  }),
-                );
+                updateSettings(settings.set(lessonProps.punctuators, value));
               }}
             />
           </Field>
@@ -170,10 +160,10 @@ export function WordListLessonSettings({
           <Field>
             <Range
               className={styleSizeWide}
-              min={175}
-              max={750}
+              min={lessonProps.targetSpeed.min}
+              max={lessonProps.targetSpeed.max}
               step={1}
-              value={settings.targetSpeed}
+              value={settings.get(lessonProps.targetSpeed)}
               title={formatMessage({
                 id: "settings.targetSpeedTitle",
                 description: "Input field title.",
@@ -181,16 +171,14 @@ export function WordListLessonSettings({
                   "Set custom target typing speed that you want to achieve.",
               })}
               onChange={(value) => {
-                updateSettings(
-                  settings.patch({
-                    targetSpeed: value,
-                  }),
-                );
+                updateSettings(settings.set(lessonProps.targetSpeed, value));
               }}
             />
           </Field>
           <Field>
-            <Value value={fmt(settings.targetSpeed, { unit: true })} />
+            <Value
+              value={fmt(settings.get(lessonProps.targetSpeed), { unit: true })}
+            />
           </Field>
         </FieldList>
 
@@ -208,18 +196,14 @@ export function WordListLessonSettings({
               min={1}
               max={100}
               step={1}
-              value={Math.round(settings.lessonLength * 100)}
+              value={Math.round(settings.get(lessonProps.length) * 100)}
               title={formatMessage({
                 id: "settings.extendLessonLengthTitle",
                 description: "Input field title.",
                 defaultMessage: "Add more words to every generated lesson.",
               })}
               onChange={(value) => {
-                updateSettings(
-                  settings.patch({
-                    lessonLength: value / 100,
-                  }),
-                );
+                updateSettings(settings.set(lessonProps.length, value / 100));
               }}
             />
           </Field>

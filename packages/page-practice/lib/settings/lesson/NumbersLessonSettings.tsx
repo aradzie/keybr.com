@@ -1,4 +1,4 @@
-import { type NumbersLesson } from "@keybr/lesson";
+import { lessonProps, type NumbersLesson } from "@keybr/lesson";
 import { useSettings } from "@keybr/settings";
 import {
   CheckBox,
@@ -43,12 +43,10 @@ export function NumbersLessonSettings({
                 description: "Checkbox title.",
                 defaultMessage: "Generate numbers following the Benford's law.",
               })}
-              checked={settings.benford}
+              checked={settings.get(lessonProps.numbers.benford)}
               onChange={(value) => {
                 updateSettings(
-                  settings.patch({
-                    benford: value,
-                  }),
+                  settings.set(lessonProps.numbers.benford, value),
                 );
               }}
             />

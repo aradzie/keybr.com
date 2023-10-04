@@ -1395,6 +1395,10 @@
     "defaultMessage": "Liczba słów:",
     "description": "Input field label."
   },
+  "settings.wordListSizeTitle": {
+    "defaultMessage": "Wybierz liczbę najczęściej powtarzających słów, których chcesz użyć.",
+    "description": "Input field title."
+  },
   "speedUnit.cpm.description": {
     "defaultMessage": "Zmierz tempo pisania na klawiaturze w znakach na minutę.",
     "description": "Widget title."

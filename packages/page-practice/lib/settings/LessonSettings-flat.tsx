@@ -1,11 +1,13 @@
 import {
   type CustomTextLesson,
   type GuidedLesson,
+  lessonProps,
+  LessonType,
   type NumbersLesson,
   type WordListLesson,
 } from "@keybr/lesson";
 import { LessonLoader } from "@keybr/lesson-loader";
-import { LessonType, useSettings } from "@keybr/settings";
+import { useSettings } from "@keybr/settings";
 import { Tab, TabList } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
@@ -34,11 +36,11 @@ export function LessonSettings(): ReactNode {
           <>
             <TabList
               selectedIndex={lessonTypes.findIndex(
-                (type) => type === settings.lessonType,
+                (type) => type === settings.get(lessonProps.type),
               )}
               onSelect={(index) => {
                 updateSettings(
-                  settings.patch({ lessonType: lessonTypes[index] }),
+                  settings.set(lessonProps.type, lessonTypes[index]),
                 );
               }}
             >

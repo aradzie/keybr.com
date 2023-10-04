@@ -1,6 +1,7 @@
 import { useIntlNumbers } from "@keybr/intl";
 import { type LearningRate } from "@keybr/lesson";
-import { SpeedUnit, useSettings } from "@keybr/settings";
+import { SpeedUnit, uiProps } from "@keybr/result";
+import { useSettings } from "@keybr/settings";
 import { useMemo } from "react";
 import { type FormatNumberOptions, useIntl } from "react-intl";
 import { messages } from "./intl.ts";
@@ -25,7 +26,7 @@ export const useFormatter = (): Formatter => {
   const { formatNumber } = useIntlNumbers();
   const { settings } = useSettings();
   return useMemo(() => {
-    const { speedUnit } = settings;
+    const speedUnit = settings.get(uiProps.speedUnit);
     let opts: FormatNumberOptions;
     let speedUnitName: string;
     switch (speedUnit) {

@@ -123,13 +123,13 @@ export function TypingSettings({
             <RadioBox
               label="No whitespace"
               name="whitespace-style"
-              checked={textDisplay.whitespaceStyle === WhitespaceStyle.None}
+              checked={textDisplay.whitespaceStyle === WhitespaceStyle.Space}
               onSelect={() => {
                 patchSettings({
                   ...settings,
                   textDisplay: {
                     ...textDisplay,
-                    whitespaceStyle: WhitespaceStyle.None,
+                    whitespaceStyle: WhitespaceStyle.Space,
                   },
                 });
               }}
