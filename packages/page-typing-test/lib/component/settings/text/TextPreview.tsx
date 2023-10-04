@@ -1,5 +1,4 @@
-import { toChars } from "@keybr/textinput";
-import { type TextDisplaySettings } from "@keybr/textinput-settings";
+import { type TextDisplaySettings, toChars } from "@keybr/textinput";
 import { StaticText } from "@keybr/textinput-ui";
 import { memo, type ReactNode, useMemo } from "react";
 import {

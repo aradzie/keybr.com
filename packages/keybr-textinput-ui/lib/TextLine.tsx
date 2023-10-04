@@ -1,5 +1,8 @@
-import { type Char, charsAreEqual } from "@keybr/textinput";
-import { type TextDisplaySettings } from "@keybr/textinput-settings";
+import {
+  type Char,
+  charsAreEqual,
+  type TextDisplaySettings,
+} from "@keybr/textinput";
 import { clsx } from "clsx";
 import { memo, type ReactNode } from "react";
 import { renderChars, splitIntoItems } from "./chars.tsx";

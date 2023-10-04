@@ -5,11 +5,9 @@ import {
   attrMiss,
   attrNormal,
   type Char,
-} from "@keybr/textinput";
-import {
   type TextDisplaySettings,
   WhitespaceStyle,
-} from "@keybr/textinput-settings";
+} from "@keybr/textinput";
 import { clsx } from "clsx";
 import { type ReactNode } from "react";
 import * as styles from "./chars.module.less";

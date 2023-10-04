@@ -2,7 +2,7 @@ import {
   CaretMovementStyle,
   CaretShapeStyle,
   WhitespaceStyle,
-} from "@keybr/textinput-settings";
+} from "@keybr/textinput";
 import { AnimatedText } from "@keybr/textinput-ui";
 import {
   CheckBox,

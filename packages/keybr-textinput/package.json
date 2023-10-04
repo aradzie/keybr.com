@@ -5,7 +5,7 @@
   "main": "lib/index.ts",
   "types": ".types/index.d.ts",
   "dependencies": {
-    "@keybr/textinput-settings": "*",
+    "@keybr/settings": "*",
     "@keybr/unicode": "*"
   },
   "devDependencies": {},

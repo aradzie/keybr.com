@@ -29,7 +29,6 @@
     "@keybr/sound": "*",
     "@keybr/textinput": "*",
     "@keybr/textinput-events": "*",
-    "@keybr/textinput-settings": "*",
     "@keybr/textinput-sounds": "*",
     "@keybr/textinput-ui": "*",
     "@keybr/widget": "*"

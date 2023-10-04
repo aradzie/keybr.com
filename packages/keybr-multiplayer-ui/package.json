@@ -9,7 +9,7 @@
     "@keybr/multiplayer-shared": "*",
     "@keybr/pages-shared": "*",
     "@keybr/rand": "*",
-    "@keybr/textinput-settings": "*",
+    "@keybr/textinput": "*",
     "@keybr/textinput-ui": "*",
     "@keybr/timer": "*",
     "@keybr/widget": "*"

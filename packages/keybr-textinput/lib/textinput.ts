@@ -1,6 +1,6 @@
-import { type TextInputSettings } from "@keybr/textinput-settings";
 import { toCodePoints } from "@keybr/unicode";
 import { normalize } from "./normalize.ts";
+import { type TextInputSettings } from "./settings.ts";
 import {
   attrCursor,
   attrGarbage,

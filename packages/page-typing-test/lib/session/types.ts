@@ -1,8 +1,8 @@
-import { type LineData } from "@keybr/textinput";
 import {
+  type LineData,
   type TextDisplaySettings,
   type TextInputSettings,
-} from "@keybr/textinput-settings";
+} from "@keybr/textinput";
 
 export type TimeLimit = {
   readonly type: "time";

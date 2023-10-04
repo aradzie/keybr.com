@@ -8,14 +8,12 @@ import {
   type LineData,
   newStats,
   singleLine,
-  TextInput,
-} from "@keybr/textinput";
-import {
   type TextDisplaySettings,
+  TextInput,
   type TextInputSettings,
   toTextDisplaySettings,
   toTextInputSettings,
-} from "@keybr/textinput-settings";
+} from "@keybr/textinput";
 import { type Announcement } from "./Announcer.tsx";
 
 export type LastLesson = {

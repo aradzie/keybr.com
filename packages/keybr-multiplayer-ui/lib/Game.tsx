@@ -9,7 +9,7 @@ import {
   updateWorldState,
   type WorldState,
 } from "@keybr/multiplayer-shared";
-import { textDisplaySettings } from "@keybr/textinput-settings";
+import { textDisplaySettings } from "@keybr/textinput";
 import { TextArea } from "@keybr/textinput-ui";
 import { useScreenSize } from "@keybr/widget";
 import { EventEmitter } from "events";

@@ -1,9 +1,6 @@
 import { type WordList } from "@keybr/content-words";
 import { FakeRNGStream } from "@keybr/rand";
-import {
-  textDisplaySettings,
-  textInputSettings,
-} from "@keybr/textinput-settings";
+import { textDisplaySettings, textInputSettings } from "@keybr/textinput";
 import test from "ava";
 import { CommonWordsGenerator } from "../generator/index.ts";
 import { Session } from "./session.ts";

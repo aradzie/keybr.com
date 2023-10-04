@@ -1,7 +1,7 @@
 import {
   type TextDisplaySettings,
   type TextInputSettings,
-} from "@keybr/textinput-settings";
+} from "@keybr/textinput";
 import { type TextSource } from "../../generator/index.ts";
 import { type Limit } from "../../session/index.ts";
 

@@ -4,11 +4,11 @@ import { CurrentKeyRow, KeySetRow } from "@keybr/lesson-ui";
 import { LCG } from "@keybr/rand";
 import { ResultGroups, useResults } from "@keybr/result";
 import { useSettings } from "@keybr/settings";
-import { TextInput } from "@keybr/textinput";
 import {
+  TextInput,
   toTextDisplaySettings,
   toTextInputSettings,
-} from "@keybr/textinput-settings";
+} from "@keybr/textinput";
 import { StaticText } from "@keybr/textinput-ui";
 import { FieldSet } from "@keybr/widget";
 import { type ReactNode, useMemo } from "react";

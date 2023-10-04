@@ -1,8 +1,7 @@
 import { addKey, deleteKey } from "@keybr/keyboard-ui";
 import { Screen } from "@keybr/pages-shared";
-import { type LineData } from "@keybr/textinput";
+import { type LineData, toTextDisplaySettings } from "@keybr/textinput";
 import { type KeyEvent } from "@keybr/textinput-events";
-import { toTextDisplaySettings } from "@keybr/textinput-settings";
 import { TextArea } from "@keybr/textinput-ui";
 import { PureComponent, type ReactNode } from "react";
 import { Announcer } from "./Announcer.tsx";

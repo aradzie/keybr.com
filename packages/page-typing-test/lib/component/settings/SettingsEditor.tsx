@@ -1,5 +1,5 @@
 import { Language } from "@keybr/layout";
-import { textDisplaySettings } from "@keybr/textinput-settings";
+import { textDisplaySettings } from "@keybr/textinput";
 import { Tab, TabList } from "@keybr/widget";
 import { type ReactNode, useState } from "react";
 import { limit_30_seconds } from "../../session/index.ts";
