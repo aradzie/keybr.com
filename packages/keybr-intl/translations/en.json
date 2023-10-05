@@ -1175,6 +1175,14 @@
     "defaultMessage": "Eliminate noise to see the long-term trend.",
     "description": "Input field title."
   },
+  "settings.alphabetSizeLabel": {
+    "defaultMessage": "Add letters to words:",
+    "description": "Input field label."
+  },
+  "settings.alphabetSizeTitle": {
+    "defaultMessage": "Add more letters to every generated word.",
+    "description": "Input field title."
+  },
   "settings.benfordsLawDescription": {
     "defaultMessage": "<a>Benford's law</a> is an observation that in many real-life numerical data sets, the leading digit is likely to be small.",
     "description": "Freeform text."
@@ -1202,6 +1210,30 @@
   "settings.customTextInputPlaceholder": {
     "defaultMessage": "Custom text...",
     "description": "Input field placeholder."
+  },
+  "settings.customTextLettersOnlyLabel": {
+    "defaultMessage": "Remove punctuation",
+    "description": "Checkbox label."
+  },
+  "settings.customTextLettersOnlyTitle": {
+    "defaultMessage": "Remove punctuation from the text to make it simpler to type.",
+    "description": "Checkbox title."
+  },
+  "settings.customTextLowercaseLabel": {
+    "defaultMessage": "Transform to lowercase",
+    "description": "Checkbox label."
+  },
+  "settings.customTextLowercaseTitle": {
+    "defaultMessage": "Transform all text to lower case to make it simpler to type.",
+    "description": "Checkbox title."
+  },
+  "settings.customTextRandomizeLabel": {
+    "defaultMessage": "Shuffle words",
+    "description": "Checkbox label."
+  },
+  "settings.customTextRandomizeTitle": {
+    "defaultMessage": "Put words from the custom text in a random order.",
+    "description": "Checkbox title."
   },
   "settings.dailyGoalDescription": {
     "defaultMessage": "Set the time you want to spend on the exercises daily.",
@@ -1255,22 +1287,6 @@
     "defaultMessage": "Make extra noise when typing and on errors.",
     "description": "Checkbox description."
   },
-  "settings.extendKeySetLabel": {
-    "defaultMessage": "Add letters to words:",
-    "description": "Input field label."
-  },
-  "settings.extendKeySetTitle": {
-    "defaultMessage": "Add more letters to every generated word.",
-    "description": "Input field title."
-  },
-  "settings.extendLessonLengthLabel": {
-    "defaultMessage": "Add words to lessons:",
-    "description": "Input field label."
-  },
-  "settings.extendLessonLengthTitle": {
-    "defaultMessage": "Add more words to every generated lesson.",
-    "description": "Input field title."
-  },
   "settings.forgiveErrorsDescription": {
     "defaultMessage": "Enabling this option makes the text input field forgive some kinds of errors by automatically fixing them. These are errors such as typing a wrong character or skipping a character.",
     "description": "Checkbox description."
@@ -1286,6 +1302,14 @@
   "settings.keyboardTabLabel": {
     "defaultMessage": "Keyboard",
     "description": "Tab label."
+  },
+  "settings.lessonLengthLabel": {
+    "defaultMessage": "Add words to lessons:",
+    "description": "Input field label."
+  },
+  "settings.lessonLengthTitle": {
+    "defaultMessage": "Add more words to every generated lesson.",
+    "description": "Input field title."
   },
   "settings.lessonOptionsLegend": {
     "defaultMessage": "Lesson Options",
@@ -1311,14 +1335,6 @@
     "defaultMessage": "Preview",
     "description": "Fieldset legend."
   },
-  "settings.removePunctuationLabel": {
-    "defaultMessage": "Remove punctuation",
-    "description": "Checkbox label."
-  },
-  "settings.removePunctuationTitle": {
-    "defaultMessage": "Remove punctuation from the text to make it simpler to type.",
-    "description": "Checkbox title."
-  },
   "settings.selectLanguageLabel": {
     "defaultMessage": "Language:",
     "description": "Dropdown label."
@@ -1334,14 +1350,6 @@
   "settings.selectLayoutTitle": {
     "defaultMessage": "Select the keyboard layout you wish to practice with. There may be many layouts available for each language.",
     "description": "Dropdown title."
-  },
-  "settings.shuffleWordsLabel": {
-    "defaultMessage": "Shuffle words",
-    "description": "Checkbox label."
-  },
-  "settings.shuffleWordsTitle": {
-    "defaultMessage": "Put words from the custom text in a random order.",
-    "description": "Checkbox title."
   },
   "settings.stopCursorOnErrorDescription": {
     "defaultMessage": "If enabled, the text cursor stops advancing until the right key is pressed at the current position. If disabled, all errors will be accumulated in the text input field and must be cleared with the delete key.",
@@ -1362,14 +1370,6 @@
   "settings.textAppearanceLegend": {
     "defaultMessage": "Text Appearance",
     "description": "Fieldset legend."
-  },
-  "settings.transformToLowercaseLabel": {
-    "defaultMessage": "Transform to lowercase",
-    "description": "Checkbox label."
-  },
-  "settings.transformToLowercaseTitle": {
-    "defaultMessage": "Transform all text to lower case to make it simpler to type.",
-    "description": "Checkbox title."
   },
   "settings.typingOptionsLegend": {
     "defaultMessage": "Typing Options",

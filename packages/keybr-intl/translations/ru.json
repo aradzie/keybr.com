@@ -1175,6 +1175,14 @@
     "defaultMessage": "Устраните шум чтобы увидеть долгосрочный тренд.",
     "description": "Input field title."
   },
+  "settings.alphabetSizeLabel": {
+    "defaultMessage": "Добавить букв в слова:",
+    "description": "Input field label."
+  },
+  "settings.alphabetSizeTitle": {
+    "defaultMessage": "Добавить больше букв в набор из которого генерируются слова.",
+    "description": "Input field title."
+  },
   "settings.benfordsLawDescription": {
     "defaultMessage": "<a>Закон Бенфорда</a> это наблюдение, согласно которому во многих реальных наборах числовых данных первая цифра, скорее всего, будет маленькой.",
     "description": "Freeform text."
@@ -1202,6 +1210,30 @@
   "settings.customTextInputPlaceholder": {
     "defaultMessage": "Собственный текст...",
     "description": "Input field placeholder."
+  },
+  "settings.customTextLettersOnlyLabel": {
+    "defaultMessage": "Убрать знаки препинания",
+    "description": "Checkbox label."
+  },
+  "settings.customTextLettersOnlyTitle": {
+    "defaultMessage": "Убрать знаки препинания чтобы упростить набор текста.",
+    "description": "Checkbox title."
+  },
+  "settings.customTextLowercaseLabel": {
+    "defaultMessage": "Преобразовать в нижний регистр",
+    "description": "Checkbox label."
+  },
+  "settings.customTextLowercaseTitle": {
+    "defaultMessage": "Преобразовать весь текст в нижний регистр чтобы упростить набор.",
+    "description": "Checkbox title."
+  },
+  "settings.customTextRandomizeLabel": {
+    "defaultMessage": "Перемешать слова",
+    "description": "Checkbox label."
+  },
+  "settings.customTextRandomizeTitle": {
+    "defaultMessage": "Поместить слова из собственного текста в случайном порядке.",
+    "description": "Checkbox title."
   },
   "settings.dailyGoalDescription": {
     "defaultMessage": "Установите время, которое вы хотите тратить на упражнения ежедневно.",
@@ -1255,22 +1287,6 @@
     "defaultMessage": "Издавать звуки при нажатии клавиш и опечатках.",
     "description": "Checkbox description."
   },
-  "settings.extendKeySetLabel": {
-    "defaultMessage": "Добавить букв в слова:",
-    "description": "Input field label."
-  },
-  "settings.extendKeySetTitle": {
-    "defaultMessage": "Добавить больше букв в набор из которого генерируются слова.",
-    "description": "Input field title."
-  },
-  "settings.extendLessonLengthLabel": {
-    "defaultMessage": "Добавить слов в уроки:",
-    "description": "Input field label."
-  },
-  "settings.extendLessonLengthTitle": {
-    "defaultMessage": "Добавить больше слов в уроки.",
-    "description": "Input field title."
-  },
   "settings.forgiveErrorsDescription": {
     "defaultMessage": "Эта настройка позволяет прощать некоторые типы ошибок путем их автоматическкого исправления. Это такие ошибки как неправильный символ в какой то позиции или пропущенный символ.",
     "description": "Checkbox description."
@@ -1286,6 +1302,14 @@
   "settings.keyboardTabLabel": {
     "defaultMessage": "Клавиатура",
     "description": "Tab label."
+  },
+  "settings.lessonLengthLabel": {
+    "defaultMessage": "Добавить слов в уроки:",
+    "description": "Input field label."
+  },
+  "settings.lessonLengthTitle": {
+    "defaultMessage": "Добавить больше слов в уроки.",
+    "description": "Input field title."
   },
   "settings.lessonOptionsLegend": {
     "defaultMessage": "Настройки уроков",
@@ -1311,14 +1335,6 @@
     "defaultMessage": "Предосмотр",
     "description": "Fieldset legend."
   },
-  "settings.removePunctuationLabel": {
-    "defaultMessage": "Убрать знаки препинания",
-    "description": "Checkbox label."
-  },
-  "settings.removePunctuationTitle": {
-    "defaultMessage": "Убрать знаки препинания чтобы упростить набор текста.",
-    "description": "Checkbox title."
-  },
   "settings.selectLanguageLabel": {
     "defaultMessage": "Язык:",
     "description": "Dropdown label."
@@ -1334,14 +1350,6 @@
   "settings.selectLayoutTitle": {
     "defaultMessage": "Выберите раскладку которую хотите изучить. Для одного языка может быть несколько раскладок.",
     "description": "Dropdown title."
-  },
-  "settings.shuffleWordsLabel": {
-    "defaultMessage": "Перемешать слова",
-    "description": "Checkbox label."
-  },
-  "settings.shuffleWordsTitle": {
-    "defaultMessage": "Поместить слова из собственного текста в случайном порядке.",
-    "description": "Checkbox title."
   },
   "settings.stopCursorOnErrorDescription": {
     "defaultMessage": "Если включено, то курсор остановится до тех пор, пока не будет нажата правильная клавиша в текущей позиции. Если отключено, все ошибки будут накапливаться перед курсором и должны быть очищены клавишей удаления.",
@@ -1362,14 +1370,6 @@
   "settings.textAppearanceLegend": {
     "defaultMessage": "Вид текста",
     "description": "Fieldset legend."
-  },
-  "settings.transformToLowercaseLabel": {
-    "defaultMessage": "Преобразовать в нижний регистр",
-    "description": "Checkbox label."
-  },
-  "settings.transformToLowercaseTitle": {
-    "defaultMessage": "Преобразовать весь текст в нижний регистр чтобы упростить набор.",
-    "description": "Checkbox title."
   },
   "settings.typingOptionsLegend": {
     "defaultMessage": "Настройки набора",

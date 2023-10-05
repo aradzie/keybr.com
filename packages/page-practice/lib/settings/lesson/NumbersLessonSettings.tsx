@@ -18,7 +18,6 @@ export function NumbersLessonSettings({
 }): ReactNode {
   const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
-
   return (
     <>
       <Para>Practice numbers only. No letters are used.</Para>

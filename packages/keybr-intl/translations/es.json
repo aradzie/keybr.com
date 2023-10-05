@@ -1175,6 +1175,14 @@
     "defaultMessage": "Eliminar el ruido para ver la tendencia a largo plazo.",
     "description": "Input field title."
   },
+  "settings.alphabetSizeLabel": {
+    "defaultMessage": "Añadir letras a las palabras:",
+    "description": "Input field label."
+  },
+  "settings.alphabetSizeTitle": {
+    "defaultMessage": "Añadir más letras a cada palabra generada.",
+    "description": "Input field title."
+  },
   "settings.benfordsLawDescription": {
     "defaultMessage": "<a>Benford's law</a> is an observation that in many real-life numerical data sets, the leading digit is likely to be small.",
     "description": "Freeform text."
@@ -1202,6 +1210,30 @@
   "settings.customTextInputPlaceholder": {
     "defaultMessage": "Texto personalizado...",
     "description": "Input field placeholder."
+  },
+  "settings.customTextLettersOnlyLabel": {
+    "defaultMessage": "Eliminar signos de puntuación",
+    "description": "Checkbox label."
+  },
+  "settings.customTextLettersOnlyTitle": {
+    "defaultMessage": "Eliminar los signos de puntuación del texto para facilitar la mecanografía.",
+    "description": "Checkbox title."
+  },
+  "settings.customTextLowercaseLabel": {
+    "defaultMessage": "Transformar a minúsculas",
+    "description": "Checkbox label."
+  },
+  "settings.customTextLowercaseTitle": {
+    "defaultMessage": "Transformar todo el texto a minúsculas para facilitar la mecanografía.",
+    "description": "Checkbox title."
+  },
+  "settings.customTextRandomizeLabel": {
+    "defaultMessage": "Mezclar las palabras",
+    "description": "Checkbox label."
+  },
+  "settings.customTextRandomizeTitle": {
+    "defaultMessage": "Coloque las palabras del texto personalizado en orden aleatorio.",
+    "description": "Checkbox title."
   },
   "settings.dailyGoalDescription": {
     "defaultMessage": "Establezca el tiempo que desea dedicar a los ejercicios diariamente.",
@@ -1255,22 +1287,6 @@
     "defaultMessage": "Hacer ruido extra al teclear y en los errores.",
     "description": "Checkbox description."
   },
-  "settings.extendKeySetLabel": {
-    "defaultMessage": "Añadir letras a las palabras:",
-    "description": "Input field label."
-  },
-  "settings.extendKeySetTitle": {
-    "defaultMessage": "Añadir más letras a cada palabra generada.",
-    "description": "Input field title."
-  },
-  "settings.extendLessonLengthLabel": {
-    "defaultMessage": "Añadir palabras a las lecciones:",
-    "description": "Input field label."
-  },
-  "settings.extendLessonLengthTitle": {
-    "defaultMessage": "Añadir más palabras a cada lección generada.",
-    "description": "Input field title."
-  },
   "settings.forgiveErrorsDescription": {
     "defaultMessage": "Al activar esta opción el campo de entrada de texto perdona algunos tipos de errores corrigiéndolos automáticamente. Se trata de errores del tipo teclear un carácter incorrecto u omitir un carácter.",
     "description": "Checkbox description."
@@ -1286,6 +1302,14 @@
   "settings.keyboardTabLabel": {
     "defaultMessage": "Teclado",
     "description": "Tab label."
+  },
+  "settings.lessonLengthLabel": {
+    "defaultMessage": "Añadir palabras a las lecciones:",
+    "description": "Input field label."
+  },
+  "settings.lessonLengthTitle": {
+    "defaultMessage": "Añadir más palabras a cada lección generada.",
+    "description": "Input field title."
   },
   "settings.lessonOptionsLegend": {
     "defaultMessage": "Opciones de la Lección",
@@ -1311,14 +1335,6 @@
     "defaultMessage": "Vista previa",
     "description": "Fieldset legend."
   },
-  "settings.removePunctuationLabel": {
-    "defaultMessage": "Eliminar signos de puntuación",
-    "description": "Checkbox label."
-  },
-  "settings.removePunctuationTitle": {
-    "defaultMessage": "Eliminar los signos de puntuación del texto para facilitar la mecanografía.",
-    "description": "Checkbox title."
-  },
   "settings.selectLanguageLabel": {
     "defaultMessage": "Idioma:",
     "description": "Dropdown label."
@@ -1334,14 +1350,6 @@
   "settings.selectLayoutTitle": {
     "defaultMessage": "Elige la disposición del teclado con la que deseas practicar. Puede haber muchas disposiciones disponibles para cada idioma.",
     "description": "Dropdown title."
-  },
-  "settings.shuffleWordsLabel": {
-    "defaultMessage": "Mezclar las palabras",
-    "description": "Checkbox label."
-  },
-  "settings.shuffleWordsTitle": {
-    "defaultMessage": "Coloque las palabras del texto personalizado en orden aleatorio.",
-    "description": "Checkbox title."
   },
   "settings.stopCursorOnErrorDescription": {
     "defaultMessage": "Si se activa, el cursor de texto deja de avanzar hasta que se pulsa la tecla correcta en la posición actual. Si se desactiva, todos los errores se acumularán en el campo de entrada de texto y deberán eliminarse con la tecla de eliminar.",
@@ -1362,14 +1370,6 @@
   "settings.textAppearanceLegend": {
     "defaultMessage": "Apariencia del texto",
     "description": "Fieldset legend."
-  },
-  "settings.transformToLowercaseLabel": {
-    "defaultMessage": "Transformar a minúsculas",
-    "description": "Checkbox label."
-  },
-  "settings.transformToLowercaseTitle": {
-    "defaultMessage": "Transformar todo el texto a minúsculas para facilitar la mecanografía.",
-    "description": "Checkbox title."
   },
   "settings.typingOptionsLegend": {
     "defaultMessage": "Opciones de Mecanografía",

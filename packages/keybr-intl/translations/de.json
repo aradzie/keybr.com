@@ -1175,6 +1175,14 @@
     "defaultMessage": "Rauschen eliminieren, um den langfristigen Trend zu sehen.",
     "description": "Input field title."
   },
+  "settings.alphabetSizeLabel": {
+    "defaultMessage": "Buchstaben zu Wörtern hinzufügen:",
+    "description": "Input field label."
+  },
+  "settings.alphabetSizeTitle": {
+    "defaultMessage": "Füge jedem generierten Wort weitere Buchstaben hinzu.",
+    "description": "Input field title."
+  },
   "settings.benfordsLawDescription": {
     "defaultMessage": "<a>Benfordsches Gesetz</a> ist eine Beobachtung, dass in vielen realen numerischen Datensätzen die führende Ziffer wahrscheinlich klein ist.",
     "description": "Freeform text."
@@ -1202,6 +1210,30 @@
   "settings.customTextInputPlaceholder": {
     "defaultMessage": "Benutzerdefinierter Text...",
     "description": "Input field placeholder."
+  },
+  "settings.customTextLettersOnlyLabel": {
+    "defaultMessage": "Zeichensetzung entfernen",
+    "description": "Checkbox label."
+  },
+  "settings.customTextLettersOnlyTitle": {
+    "defaultMessage": "Entfernen Sie Satzzeichen aus dem Text, um die Eingabe zu vereinfachen.",
+    "description": "Checkbox title."
+  },
+  "settings.customTextLowercaseLabel": {
+    "defaultMessage": "In Kleinbuchstaben umwandeln",
+    "description": "Checkbox label."
+  },
+  "settings.customTextLowercaseTitle": {
+    "defaultMessage": "Den gesamten Text in Kleinbuchstaben umwandeln, um die Eingabe zu vereinfachen.",
+    "description": "Checkbox title."
+  },
+  "settings.customTextRandomizeLabel": {
+    "defaultMessage": "Mische die Wörter",
+    "description": "Checkbox label."
+  },
+  "settings.customTextRandomizeTitle": {
+    "defaultMessage": "Ordnen Sie die Wörter aus dem benutzerdefinierten Text in zufälliger Reihenfolge an.",
+    "description": "Checkbox title."
   },
   "settings.dailyGoalDescription": {
     "defaultMessage": "Legen Sie die Zeit fest, die Sie täglich für die Übungen aufwenden möchten.",
@@ -1255,22 +1287,6 @@
     "defaultMessage": "Macht zusätzliche Geräusche beim Tippen und bei Fehlern.",
     "description": "Checkbox description."
   },
-  "settings.extendKeySetLabel": {
-    "defaultMessage": "Buchstaben zu Wörtern hinzufügen:",
-    "description": "Input field label."
-  },
-  "settings.extendKeySetTitle": {
-    "defaultMessage": "Füge jedem generierten Wort weitere Buchstaben hinzu.",
-    "description": "Input field title."
-  },
-  "settings.extendLessonLengthLabel": {
-    "defaultMessage": "Wörter zu Lektionen hinzufügen:",
-    "description": "Input field label."
-  },
-  "settings.extendLessonLengthTitle": {
-    "defaultMessage": "Füge jeder generierten Lektion mehr Wörter hinzu.",
-    "description": "Input field title."
-  },
   "settings.forgiveErrorsDescription": {
     "defaultMessage": "Wenn Sie diese Option aktivieren, verzeiht das Texteingabefeld einige Arten von Fehlern, indem es sie automatisch korrigiert. Dabei handelt es sich um Fehler wie das Eingeben eines falschen Zeichens oder das Überspringen eines Zeichens.",
     "description": "Checkbox description."
@@ -1286,6 +1302,14 @@
   "settings.keyboardTabLabel": {
     "defaultMessage": "Tastatur",
     "description": "Tab label."
+  },
+  "settings.lessonLengthLabel": {
+    "defaultMessage": "Wörter zu Lektionen hinzufügen:",
+    "description": "Input field label."
+  },
+  "settings.lessonLengthTitle": {
+    "defaultMessage": "Füge jeder generierten Lektion mehr Wörter hinzu.",
+    "description": "Input field title."
   },
   "settings.lessonOptionsLegend": {
     "defaultMessage": "Lektionsoptionen",
@@ -1311,14 +1335,6 @@
     "defaultMessage": "Vorschau",
     "description": "Fieldset legend."
   },
-  "settings.removePunctuationLabel": {
-    "defaultMessage": "Zeichensetzung entfernen",
-    "description": "Checkbox label."
-  },
-  "settings.removePunctuationTitle": {
-    "defaultMessage": "Entfernen Sie Satzzeichen aus dem Text, um die Eingabe zu vereinfachen.",
-    "description": "Checkbox title."
-  },
   "settings.selectLanguageLabel": {
     "defaultMessage": "Sprache:",
     "description": "Dropdown label."
@@ -1334,14 +1350,6 @@
   "settings.selectLayoutTitle": {
     "defaultMessage": "Wählen Sie das Tastaturlayout, mit dem Sie üben möchten. Für jede Sprache können mehrere Layouts verfügbar sein.",
     "description": "Dropdown title."
-  },
-  "settings.shuffleWordsLabel": {
-    "defaultMessage": "Mische die Wörter",
-    "description": "Checkbox label."
-  },
-  "settings.shuffleWordsTitle": {
-    "defaultMessage": "Ordnen Sie die Wörter aus dem benutzerdefinierten Text in zufälliger Reihenfolge an.",
-    "description": "Checkbox title."
   },
   "settings.stopCursorOnErrorDescription": {
     "defaultMessage": "Wenn aktiviert, wird der Textcursor angehalten, bis an der aktuellen Position die richtige Taste gedrückt wird. Wenn deaktiviert, werden alle Fehler im Texteingabefeld akkumuliert und müssen mit der Löschtaste gelöscht werden.",
@@ -1362,14 +1370,6 @@
   "settings.textAppearanceLegend": {
     "defaultMessage": "Textdarstellung",
     "description": "Fieldset legend."
-  },
-  "settings.transformToLowercaseLabel": {
-    "defaultMessage": "In Kleinbuchstaben umwandeln",
-    "description": "Checkbox label."
-  },
-  "settings.transformToLowercaseTitle": {
-    "defaultMessage": "Den gesamten Text in Kleinbuchstaben umwandeln, um die Eingabe zu vereinfachen.",
-    "description": "Checkbox title."
   },
   "settings.typingOptionsLegend": {
     "defaultMessage": "Tippoptions",
