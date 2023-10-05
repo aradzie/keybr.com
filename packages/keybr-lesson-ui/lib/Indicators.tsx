@@ -55,7 +55,7 @@ export const SpeedGauge = memo(function SpeedGauge({
   readonly names?: Names;
 }): ReactNode {
   const { formatMessage } = useIntl();
-  const fmt = useFormatter();
+  const { formatSpeed } = useFormatter();
   const { last, delta } = summaryStats.speed;
   return (
     <Gauge
@@ -69,10 +69,10 @@ export const SpeedGauge = memo(function SpeedGauge({
           })}
         />
       }
-      value={<Value value={fmt(last)} />}
+      value={<Value value={formatSpeed(last)} />}
       delta={
         <Value
-          value={signed(fmt(delta), delta)}
+          value={signed(formatSpeed(delta), delta)}
           delta={delta}
           title={formatMessage({
             id: "metric.speedChange.title",

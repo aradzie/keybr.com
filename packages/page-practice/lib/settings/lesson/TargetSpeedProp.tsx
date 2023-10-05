@@ -7,7 +7,7 @@ import { useIntl } from "react-intl";
 
 export function TargetSpeedProp(): ReactNode {
   const { formatMessage } = useIntl();
-  const fmt = useFormatter();
+  const { formatSpeed } = useFormatter();
   const { settings, updateSettings } = useSettings();
   return (
     <FieldList>
@@ -38,7 +38,9 @@ export function TargetSpeedProp(): ReactNode {
       </Field>
       <Field>
         <Value
-          value={fmt(settings.get(lessonProps.targetSpeed), { unit: true })}
+          value={formatSpeed(settings.get(lessonProps.targetSpeed), {
+            unit: true,
+          })}
         />
       </Field>
     </FieldList>

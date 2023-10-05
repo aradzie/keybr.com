@@ -35,7 +35,7 @@ export function useSummary(
   distribution: Distribution,
 ): Summary {
   const { formatNumber, formatPercents } = useIntlNumbers();
-  const fmt = useFormatter();
+  const { formatSpeed } = useFormatter();
 
   const today = LocalDate.now();
   const resultsByDate = ResultGroups.byDate(results);
@@ -59,8 +59,8 @@ export function useSummary(
 
     totalTime = formatDuration(stats.totalTime);
     totalLessons = formatNumber(results.length);
-    topSpeed = fmt(stats.speed.max, { unit: false });
-    avgSpeed = fmt(stats.speed.avg, { unit: false });
+    topSpeed = formatSpeed(stats.speed.max, { unit: false });
+    avgSpeed = formatSpeed(stats.speed.avg, { unit: false });
     topProb = formatPercents(distribution.cdf(stats.speed.max));
     avgProb = formatPercents(distribution.cdf(stats.speed.avg));
 
@@ -69,8 +69,8 @@ export function useSummary(
 
       totalTimeToday = formatDuration(statsToday.totalTime);
       totalLessonsToday = formatNumber(resultsToday.length);
-      topSpeedToday = fmt(statsToday.speed.max, { unit: false });
-      avgSpeedToday = fmt(statsToday.speed.avg, { unit: false });
+      topSpeedToday = formatSpeed(statsToday.speed.max, { unit: false });
+      avgSpeedToday = formatSpeed(statsToday.speed.avg, { unit: false });
       topProbToday = formatPercents(distribution.cdf(statsToday.speed.max));
       avgProbToday = formatPercents(distribution.cdf(statsToday.speed.avg));
     }

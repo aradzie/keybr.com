@@ -27,7 +27,7 @@ export function DistributionChart({
 
 function usePaint(results: readonly Result[], { samples }: Distribution) {
   const { formatMessage } = useIntl();
-  const fmt = useFormatter();
+  const { formatSpeed } = useFormatter();
 
   const stats = newSummaryStats(results);
   const vIndex = new Vector();
@@ -61,7 +61,7 @@ function usePaint(results: readonly Result[], { samples }: Distribution) {
         : paintNoData(box, formatMessage),
       paintAxis(box, "bottom"),
       paintAxis(box, "left"),
-      paintTicks(box, rIndex, "bottom", { lines: 5, fmt }),
+      paintTicks(box, rIndex, "bottom", { lines: 5, fmt: formatSpeed }),
     ];
 
     function paintHistogram(): ShapeList {
@@ -102,7 +102,7 @@ function usePaint(results: readonly Result[], { samples }: Distribution) {
         Shapes.fillText({
           x: box.x + x + 2,
           y: box.y + 1,
-          value: fmt(value),
+          value: formatSpeed(value),
           style: {
             ...chartStyles.thresholdLabel,
             textAlign: "left",

@@ -39,7 +39,7 @@ export function KeySpeedChart({
 function usePaint(samples: readonly KeySample[], smoothness: number) {
   const { formatMessage } = useIntl();
   const { formatInteger } = useIntlNumbers();
-  const fmt = useFormatter();
+  const { formatSpeed } = useFormatter();
   const { settings } = useSettings();
   const target = new Target(settings);
   const speedThreshold = timeToSpeed(target.timeToType);
@@ -94,7 +94,7 @@ function usePaint(samples: readonly KeySample[], smoothness: number) {
       }),
       paintAxis(box, "left"),
       paintAxis(box, "bottom"),
-      paintTicks(box, rSpeed, "left", { fmt }),
+      paintTicks(box, rSpeed, "left", { fmt: formatSpeed }),
       paintTicks(box, rIndex, "bottom", { lines: 5, fmt: formatInteger }),
     ];
   };
