@@ -74,7 +74,7 @@
     "tslib": "^2.6.2",
     "ws": "^8.14.1",
     "xml-js": "^1.6.11",
-    "zod": "^3.22.2"
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
