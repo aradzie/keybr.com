@@ -6,8 +6,6 @@ test("generate words", (t) => {
   const generator = new BookParagraphsGenerator(
     {
       paragraphIndex: 0,
-      capitals: true,
-      punctuators: true,
     },
     {
       book: Book.EN_ALICE_WONDERLAND,

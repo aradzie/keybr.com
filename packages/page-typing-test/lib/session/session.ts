@@ -1,6 +1,6 @@
 import { type Feedback, type Step, TextInput, toChars } from "@keybr/textinput";
 import { type TextGenerator } from "../generator/index.ts";
-import { computeProgress } from "./limit.ts";
+import { computeProgress } from "./duration.ts";
 import {
   type Progress,
   type SessionLineData,
@@ -51,7 +51,7 @@ export class Session {
     const feedback = this.textInput.step(codePoint, timeStamp);
     const [progress, completed] = computeProgress(
       this.steps,
-      this.settings.limit,
+      this.settings.duration,
     );
     this.updateActiveLine(progress);
     if (this.textInput.completed) {

@@ -1,3 +1,4 @@
+import { useSettings } from "@keybr/settings";
 import {
   Button,
   Field,
@@ -9,28 +10,21 @@ import {
 import { mdiCog, mdiHelpCircleOutline } from "@mdi/js";
 import { clsx } from "clsx";
 import { memo, type ReactNode } from "react";
-import { limits } from "../session/index.ts";
-import { type CompositeSettings } from "./settings/index.ts";
+import { durations } from "../session/index.ts";
+import { toCompositeSettings, typingTestProps } from "../settings.ts";
 import * as styles from "./Toolbar.module.less";
 
 export const Toolbar = memo(function Toolbar({
-  settings,
-  onChangeSettings,
   onHelp,
   onConfigure,
 }: {
-  readonly settings: CompositeSettings;
-  readonly onChangeSettings: (settings: CompositeSettings) => void;
   readonly onHelp: () => void;
   readonly onConfigure: () => void;
 }): ReactNode {
   return (
     <FieldList className={styles.toolbar}>
       <Field>
-        <LimitSwitcher
-          settings={settings}
-          onChangeSettings={onChangeSettings}
-        />
+        <DurationSwitcher />
       </Field>
       <Field.Filler />
       <Field>
@@ -50,15 +44,11 @@ export const Toolbar = memo(function Toolbar({
   );
 });
 
-export const LimitSwitcher = memo(function LimitSwitcher({
-  settings,
-  onChangeSettings,
-}: {
-  readonly settings: CompositeSettings;
-  readonly onChangeSettings: (settings: CompositeSettings) => void;
-}): ReactNode {
+export const DurationSwitcher = memo(function DurationSwitcher(): ReactNode {
+  const { settings, updateSettings } = useSettings();
+  const compositeSettings = toCompositeSettings(settings);
   const children: ReactNode[] = [];
-  limits.forEach(({ limit, label }, index) => {
+  durations.forEach(({ duration, label }, index) => {
     if (index > 0) {
       children.push(
         <span //
@@ -73,12 +63,18 @@ export const LimitSwitcher = memo(function LimitSwitcher({
         key={children.length}
         className={clsx(
           styles.item,
-          limit === settings.limit && styles.item_active,
+          duration.type === compositeSettings.duration.type &&
+            duration.value === compositeSettings.duration.value &&
+            styles.item_active,
         )}
         href="#"
         onClick={(ev) => {
           ev.preventDefault();
-          onChangeSettings({ ...settings, limit });
+          updateSettings(
+            settings
+              .set(typingTestProps.duration.type, duration.type)
+              .set(typingTestProps.duration.value, duration.value),
+          );
         }}
       >
         {label}

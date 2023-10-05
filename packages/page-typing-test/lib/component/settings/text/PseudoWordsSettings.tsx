@@ -2,37 +2,25 @@ import { languageName } from "@keybr/intl";
 import { Language } from "@keybr/layout";
 import { Filter, type PhoneticModel } from "@keybr/phonetic-model";
 import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
+import { useSettings } from "@keybr/settings";
 import { Field, FieldList, FieldSet, OptionList, Para } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
-import { type PseudoWordsSource } from "../../../generator/index.ts";
-import { type SettingsEditorProps } from "../types.ts";
+import { typingTestProps } from "../../../settings.ts";
 
-export function PseudoWordsSettings({
-  settings,
-  patchSettings,
-}: SettingsEditorProps): ReactNode {
-  const { textSource } = settings as { readonly textSource: PseudoWordsSource };
+export function PseudoWordsSettings(): ReactNode {
+  const { settings } = useSettings();
   return (
-    <PhoneticModelLoader language={textSource.language}>
-      {(model) => (
-        <Tab settings={settings} patchSettings={patchSettings} model={model} />
-      )}
+    <PhoneticModelLoader language={settings.get(typingTestProps.language)}>
+      {(model) => <Content model={model} />}
     </PhoneticModelLoader>
   );
 }
 
-function Tab({
-  settings,
-  patchSettings,
-  model,
-}: SettingsEditorProps & {
-  readonly model: PhoneticModel;
-}): ReactNode {
+function Content({ model }: { readonly model: PhoneticModel }): ReactNode {
+  const { settings, updateSettings } = useSettings();
   const { formatMessage } = useIntl();
-  const { textSource } = settings as { readonly textSource: PseudoWordsSource };
-  const { letters } = model;
-  const alphabet: string[] = letters.map(({ label }) => label);
+  const alphabet: string[] = model.letters.map(({ label }) => label);
   const words: string[] = [];
   for (let i = 0; i < 50; i++) {
     words.push(model.nextWord(Filter.empty));
@@ -64,15 +52,11 @@ function Tab({
               description: "Dropdown title.",
               defaultMessage: "Select your spoken language.",
             })}
-            value={textSource.language.id}
+            value={String(settings.get(typingTestProps.language))}
             onSelect={(id) => {
-              patchSettings({
-                ...settings,
-                textSource: {
-                  ...textSource,
-                  language: Language.ALL.find((item) => item.id === id)!,
-                },
-              });
+              updateSettings(
+                settings.set(typingTestProps.language, Language.ALL.get(id)),
+              );
             }}
           />
         </Field>

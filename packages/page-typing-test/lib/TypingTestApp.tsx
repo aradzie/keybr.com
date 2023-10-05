@@ -1,91 +1,65 @@
-import { type Stats } from "@keybr/textinput";
-import { Component, createRef, type ReactNode } from "react";
+import { useSettings } from "@keybr/settings";
+import { newStats, type Stats } from "@keybr/textinput";
+import { type ReactNode, useMemo, useState } from "react";
 import { Report } from "./component/Report.tsx";
-import {
-  type CompositeSettings,
-  defaultSettings,
-} from "./component/settings/index.ts";
 import { SettingsScreen } from "./component/SettingsScreen.tsx";
 import { TestScreen } from "./component/TestScreen.tsx";
 import { TextGeneratorLoader } from "./generator/index.ts";
+import { toCompositeSettings } from "./settings.ts";
 
-type Props = {
-  /* Empty. */
-};
+export function TypingTestApp(): ReactNode {
+  const enum View {
+    Test,
+    Report,
+    Settings,
+  }
 
-type State = {
-  readonly settings: CompositeSettings;
-  readonly view: "test" | "report" | "settings";
-  readonly stats: Stats | null;
-};
+  const { settings } = useSettings();
+  const compositeSettings = useMemo(
+    () => toCompositeSettings(settings),
+    [settings],
+  );
+  const [view, setView] = useState(View.Test);
+  const [stats, setStats] = useState<Stats>(newStats([]));
 
-export class TypingTestApp extends Component<Props, State> {
-  private readonly testScreen = createRef<TestScreen>();
-
-  override state: State = {
-    settings: { ...defaultSettings },
-    view: "test",
-    stats: null,
-  };
-
-  override render(): ReactNode {
-    const { settings, view, stats } = this.state;
-    switch (view) {
-      case "test":
-        return (
-          <TextGeneratorLoader textSource={settings.textSource}>
-            {(textGenerator) => (
+  switch (view) {
+    case View.Test:
+      return (
+        <TextGeneratorLoader textSource={compositeSettings.textSource}>
+          {(textGenerator) => {
+            return (
               <TestScreen
-                ref={this.testScreen}
-                settings={settings}
+                settings={compositeSettings}
                 textGenerator={textGenerator}
-                onChangeSettings={(settings) => {
-                  this.setState(
-                    {
-                      settings,
-                    },
-                    () => {
-                      this.testScreen.current?.focus();
-                    },
-                  );
-                }}
                 onComplete={(stats) => {
-                  this.setState({
-                    view: "report",
-                    stats,
-                  });
+                  setView(View.Report);
+                  setStats(stats);
                 }}
                 onHelp={() => {}}
                 onConfigure={() => {
-                  this.setState({
-                    view: "settings",
-                  });
+                  setView(View.Settings);
                 }}
               />
-            )}
-          </TextGeneratorLoader>
-        );
-      case "report":
-        return (
-          <Report
-            stats={stats!}
-            onNext={() => {
-              this.setState({ view: "test" });
-            }}
-          />
-        );
-      case "settings":
-        return (
-          <SettingsScreen
-            defaultSettings={settings}
-            onSubmit={(settings) => {
-              this.setState({
-                settings,
-                view: "test",
-              });
-            }}
-          />
-        );
-    }
+            );
+          }}
+        </TextGeneratorLoader>
+      );
+    case View.Report:
+      return (
+        <Report
+          stats={stats!}
+          onNext={() => {
+            setView(View.Test);
+          }}
+        />
+      );
+    case View.Settings:
+      return (
+        <SettingsScreen
+          onSubmit={() => {
+            setView(View.Test);
+          }}
+        />
+      );
   }
 }

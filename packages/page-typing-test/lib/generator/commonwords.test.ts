@@ -17,7 +17,11 @@ test("generate words", (t) => {
     "ten",
   ];
   const random = FakeRNGStream(wordList.length);
-  const generator = new CommonWordsGenerator(wordList, random);
+  const generator = new CommonWordsGenerator(
+    { wordListSize: 1000 },
+    wordList,
+    random,
+  );
 
   const mark0 = generator.mark();
 

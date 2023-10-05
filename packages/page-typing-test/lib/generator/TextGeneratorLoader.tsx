@@ -3,10 +3,11 @@ import { WordListLoader } from "@keybr/content-words";
 import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
 import { LCG, type RNGStream } from "@keybr/rand";
 import { type ReactNode } from "react";
+import { type TextSource, TextSourceType } from "../settings.ts";
 import { BookParagraphsGenerator } from "./book.ts";
 import { CommonWordsGenerator } from "./commonwords.ts";
 import { PseudoWordsGenerator } from "./pseudowords.ts";
-import { type TextGenerator, type TextSource } from "./types.ts";
+import { type TextGenerator } from "./types.ts";
 
 export function TextGeneratorLoader({
   textSource,
@@ -16,19 +17,21 @@ export function TextGeneratorLoader({
   readonly children: (textGenerator: TextGenerator) => ReactNode;
 }): ReactNode {
   switch (textSource.type) {
-    case "common-words":
+    case TextSourceType.CommonWords:
       return (
         <WordListLoader language={textSource.language}>
-          {(wordList) => children(new CommonWordsGenerator(wordList, rng()))}
+          {(wordList) =>
+            children(new CommonWordsGenerator(textSource, wordList, rng()))
+          }
         </WordListLoader>
       );
-    case "pseudo-words":
+    case TextSourceType.PseudoWords:
       return (
         <PhoneticModelLoader language={textSource.language}>
           {(model) => children(new PseudoWordsGenerator(model, rng()))}
         </PhoneticModelLoader>
       );
-    case "book":
+    case TextSourceType.Book:
       return (
         <BookContentLoader book={textSource.book}>
           {(bookContent) =>

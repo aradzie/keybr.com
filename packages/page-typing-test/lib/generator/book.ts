@@ -1,15 +1,12 @@
 import {
-  type Book,
   type BookContent,
   flattenContent,
   splitParagraph,
 } from "@keybr/content-books";
 import { type TextGenerator } from "./types.ts";
 
-export type Settings = {
+type BookSettings = {
   readonly paragraphIndex: number;
-  readonly capitals: boolean;
-  readonly punctuators: boolean;
 };
 
 type Mark = {
@@ -18,21 +15,17 @@ type Mark = {
 };
 
 export class BookParagraphsGenerator implements TextGenerator<Mark> {
-  private readonly settings: Settings;
-  private readonly book: Book;
   private readonly paragraphs: readonly string[];
   private paragraphIndex: number;
   private words: readonly string[] = [];
   private wordIndex: number = 0;
 
-  constructor(settings: Settings, { book, content }: BookContent) {
+  constructor(settings: BookSettings, { content }: BookContent) {
     const paragraphs = flattenContent(content);
     const paragraphIndex = Math.max(
       0,
       Math.min(paragraphs.length - 1, settings.paragraphIndex),
     );
-    this.settings = settings;
-    this.book = book;
     this.paragraphs = paragraphs;
     this.paragraphIndex = paragraphIndex;
     this.words = splitParagraph(paragraphs[paragraphIndex]);

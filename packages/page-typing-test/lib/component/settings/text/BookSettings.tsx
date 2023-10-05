@@ -5,8 +5,8 @@ import {
   BookPreview,
   flattenContent,
 } from "@keybr/content-books";
+import { useSettings } from "@keybr/settings";
 import {
-  CheckBox,
   Field,
   FieldList,
   FieldSet,
@@ -20,35 +20,30 @@ import {
 } from "@keybr/widget";
 import { mdiSkipNext, mdiSkipPrevious } from "@mdi/js";
 import { type ReactNode, useMemo } from "react";
-import { type BookSource } from "../../../generator/index.ts";
-import { type SettingsEditorProps } from "../types.ts";
+import { typingTestProps } from "../../../settings.ts";
 import { ParagraphIndex, ParagraphPreview } from "./ParagraphPreview.tsx";
 
-export function BookSettings({
-  settings,
-  patchSettings,
-}: SettingsEditorProps): ReactNode {
-  const { textSource } = settings as { readonly textSource: BookSource };
+export function BookSettings(): ReactNode {
+  const { settings } = useSettings();
   return (
-    <BookContentLoader book={textSource.book}>
-      {(bookContent) => (
-        <Tab
-          settings={settings}
-          patchSettings={patchSettings}
-          bookContent={bookContent}
-        />
-      )}
+    <BookContentLoader book={settings.get(typingTestProps.book)}>
+      {(bookContent) => <Content bookContent={bookContent} />}
     </BookContentLoader>
   );
 }
 
-function Tab({
-  settings,
-  patchSettings,
-  bookContent: { book, content },
-}: SettingsEditorProps & { readonly bookContent: BookContent }): ReactNode {
-  const { textSource } = settings as { readonly textSource: BookSource };
-  const paragraphs = useMemo(() => flattenContent(content), [content]);
+function Content({
+  bookContent,
+}: {
+  readonly bookContent: BookContent;
+}): ReactNode {
+  const { settings, updateSettings } = useSettings();
+  const paragraphs = useMemo(
+    () => flattenContent(bookContent.content),
+    [bookContent],
+  );
+  const book = settings.get(typingTestProps.book);
+  const paragraphIndex = settings.get(typingTestProps.bookParagraphIndex);
   return (
     <FieldSet legend="Book paragraphs">
       <Para>Type the content of a book.</Para>
@@ -62,27 +57,22 @@ function Tab({
               value: id,
               name: title,
             }))}
-            value={textSource.book.id}
+            value={book.id}
             onSelect={(value) => {
-              patchSettings({
-                ...settings,
-                textSource: {
-                  ...textSource,
-                  book: Book.ALL.get(value),
-                  paragraphIndex: 0,
-                },
-              });
+              updateSettings(
+                settings.set(typingTestProps.book, Book.ALL.get(value)),
+              );
             }}
           />
         </Field>
       </FieldList>
 
-      <BookPreview book={book} content={content} />
+      <BookPreview {...bookContent} />
 
       <FieldList>
         <Field>Paragraph:</Field>
         <Field>
-          <ParagraphIndex paragraphIndex={textSource.paragraphIndex} />
+          <ParagraphIndex paragraphIndex={paragraphIndex} />
         </Field>
         <Field>
           <Range
@@ -90,15 +80,11 @@ function Tab({
             min={0}
             max={paragraphs.length - 1}
             step={1}
-            value={textSource.paragraphIndex}
+            value={paragraphIndex}
             onChange={(value) => {
-              patchSettings({
-                ...settings,
-                textSource: {
-                  ...textSource,
-                  paragraphIndex: value,
-                },
-              });
+              updateSettings(
+                settings.set(typingTestProps.bookParagraphIndex, value),
+              );
             }}
           />
         </Field>
@@ -107,14 +93,13 @@ function Tab({
             title="Previous paragraph."
             icon={<Icon shape={mdiSkipPrevious} />}
             onClick={() => {
-              if (textSource.paragraphIndex > 0) {
-                patchSettings({
-                  ...settings,
-                  textSource: {
-                    ...textSource,
-                    paragraphIndex: textSource.paragraphIndex - 1,
-                  },
-                });
+              if (paragraphIndex > 0) {
+                updateSettings(
+                  settings.set(
+                    typingTestProps.bookParagraphIndex,
+                    paragraphIndex - 1,
+                  ),
+                );
               }
             }}
           />
@@ -122,14 +107,13 @@ function Tab({
             title="Next paragraph."
             icon={<Icon shape={mdiSkipNext} />}
             onClick={() => {
-              if (textSource.paragraphIndex < paragraphs.length - 1) {
-                patchSettings({
-                  ...settings,
-                  textSource: {
-                    ...textSource,
-                    paragraphIndex: textSource.paragraphIndex + 1,
-                  },
-                });
+              if (paragraphIndex < paragraphs.length - 1) {
+                updateSettings(
+                  settings.set(
+                    typingTestProps.bookParagraphIndex,
+                    paragraphIndex + 1,
+                  ),
+                );
               }
             }}
           />
@@ -138,43 +122,8 @@ function Tab({
 
       <ParagraphPreview
         paragraphs={paragraphs}
-        paragraphIndex={textSource.paragraphIndex}
+        paragraphIndex={paragraphIndex}
       />
-
-      <FieldList>
-        <Field>
-          <CheckBox
-            label="Allow capital letters"
-            checked={textSource.capitals}
-            onChange={(checked) => {
-              patchSettings({
-                ...settings,
-                textSource: {
-                  ...textSource,
-                  capitals: checked,
-                },
-              });
-            }}
-            disabled={true}
-          />
-        </Field>
-        <Field>
-          <CheckBox
-            label="Allow punctuation characters"
-            checked={textSource.punctuators}
-            onChange={(checked) => {
-              patchSettings({
-                ...settings,
-                textSource: {
-                  ...textSource,
-                  punctuators: checked,
-                },
-              });
-            }}
-            disabled={true}
-          />
-        </Field>
-      </FieldList>
     </FieldSet>
   );
 }

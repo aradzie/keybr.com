@@ -1,6 +1,10 @@
+import { useSettings } from "@keybr/settings";
 import {
   CaretMovementStyle,
   CaretShapeStyle,
+  textDisplayProps,
+  textInputProps,
+  toTextDisplaySettings,
   WhitespaceStyle,
 } from "@keybr/textinput";
 import { AnimatedText } from "@keybr/textinput-ui";
@@ -16,15 +20,12 @@ import {
 } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
-import { type SettingsEditorProps } from "./types.ts";
 import * as styles from "./TypingSettings.module.less";
 
-export function TypingSettings({
-  settings,
-  patchSettings,
-}: SettingsEditorProps): ReactNode {
+export function TypingSettings(): ReactNode {
   const { formatMessage } = useIntl();
-  const { textInput, textDisplay } = settings;
+  const { settings, updateSettings } = useSettings();
+
   return (
     <>
       <FieldSet
@@ -42,15 +43,9 @@ export function TypingSettings({
                 description: "Checkbox label.",
                 defaultMessage: "Stop the cursor when an error occurs.",
               })}
-              checked={textInput.stopOnError}
+              checked={settings.get(textInputProps.stopOnError)}
               onChange={(value) => {
-                patchSettings({
-                  ...settings,
-                  textInput: {
-                    ...textInput,
-                    stopOnError: value,
-                  },
-                });
+                updateSettings(settings.set(textInputProps.stopOnError, value));
               }}
             />
           </Field>
@@ -73,15 +68,11 @@ export function TypingSettings({
                 description: "Checkbox label.",
                 defaultMessage: "Forgive errors.",
               })}
-              checked={textInput.forgiveErrors}
+              checked={settings.get(textInputProps.forgiveErrors)}
               onChange={(value) => {
-                patchSettings({
-                  ...settings,
-                  textInput: {
-                    ...textInput,
-                    forgiveErrors: value,
-                  },
-                });
+                updateSettings(
+                  settings.set(textInputProps.forgiveErrors, value),
+                );
               }}
             />
           </Field>
@@ -106,7 +97,7 @@ export function TypingSettings({
       >
         <HBox justifyContent="center" className={styles.demoText}>
           <AnimatedText
-            settings={textDisplay}
+            settings={toTextDisplaySettings(settings)}
             text="The quick brown fox jumps over the lazy dog."
           />
         </HBox>
@@ -123,15 +114,17 @@ export function TypingSettings({
             <RadioBox
               label="No whitespace"
               name="whitespace-style"
-              checked={textDisplay.whitespaceStyle === WhitespaceStyle.Space}
+              checked={
+                settings.get(textDisplayProps.whitespaceStyle) ===
+                WhitespaceStyle.Space
+              }
               onSelect={() => {
-                patchSettings({
-                  ...settings,
-                  textDisplay: {
-                    ...textDisplay,
-                    whitespaceStyle: WhitespaceStyle.Space,
-                  },
-                });
+                updateSettings(
+                  settings.set(
+                    textDisplayProps.whitespaceStyle,
+                    WhitespaceStyle.Space,
+                  ),
+                );
               }}
             />
           </Field>
@@ -139,15 +132,17 @@ export function TypingSettings({
             <RadioBox
               label="Bar whitespace"
               name="whitespace-style"
-              checked={textDisplay.whitespaceStyle === WhitespaceStyle.Bar}
+              checked={
+                settings.get(textDisplayProps.whitespaceStyle) ===
+                WhitespaceStyle.Bar
+              }
               onSelect={() => {
-                patchSettings({
-                  ...settings,
-                  textDisplay: {
-                    ...textDisplay,
-                    whitespaceStyle: WhitespaceStyle.Bar,
-                  },
-                });
+                updateSettings(
+                  settings.set(
+                    textDisplayProps.whitespaceStyle,
+                    WhitespaceStyle.Bar,
+                  ),
+                );
               }}
             />
           </Field>
@@ -155,15 +150,17 @@ export function TypingSettings({
             <RadioBox
               label="Bullet whitespace"
               name="whitespace-style"
-              checked={textDisplay.whitespaceStyle === WhitespaceStyle.Bullet}
+              checked={
+                settings.get(textDisplayProps.whitespaceStyle) ===
+                WhitespaceStyle.Bullet
+              }
               onSelect={() => {
-                patchSettings({
-                  ...settings,
-                  textDisplay: {
-                    ...textDisplay,
-                    whitespaceStyle: WhitespaceStyle.Bullet,
-                  },
-                });
+                updateSettings(
+                  settings.set(
+                    textDisplayProps.whitespaceStyle,
+                    WhitespaceStyle.Bullet,
+                  ),
+                );
               }}
             />
           </Field>
@@ -181,15 +178,17 @@ export function TypingSettings({
             <RadioBox
               label="Block cursor"
               name="cursor-shape-style"
-              checked={textDisplay.caretShapeStyle === CaretShapeStyle.Block}
+              checked={
+                settings.get(textDisplayProps.caretShapeStyle) ===
+                CaretShapeStyle.Block
+              }
               onSelect={() => {
-                patchSettings({
-                  ...settings,
-                  textDisplay: {
-                    ...textDisplay,
-                    caretShapeStyle: CaretShapeStyle.Block,
-                  },
-                });
+                updateSettings(
+                  settings.set(
+                    textDisplayProps.caretShapeStyle,
+                    CaretShapeStyle.Block,
+                  ),
+                );
               }}
             />
           </Field>
@@ -197,15 +196,17 @@ export function TypingSettings({
             <RadioBox
               label="Box cursor"
               name="cursor-shape-style"
-              checked={textDisplay.caretShapeStyle === CaretShapeStyle.Box}
+              checked={
+                settings.get(textDisplayProps.caretShapeStyle) ===
+                CaretShapeStyle.Box
+              }
               onSelect={() => {
-                patchSettings({
-                  ...settings,
-                  textDisplay: {
-                    ...textDisplay,
-                    caretShapeStyle: CaretShapeStyle.Box,
-                  },
-                });
+                updateSettings(
+                  settings.set(
+                    textDisplayProps.caretShapeStyle,
+                    CaretShapeStyle.Box,
+                  ),
+                );
               }}
             />
           </Field>
@@ -213,15 +214,17 @@ export function TypingSettings({
             <RadioBox
               label="Line cursor"
               name="cursor-shape-style"
-              checked={textDisplay.caretShapeStyle === CaretShapeStyle.Line}
+              checked={
+                settings.get(textDisplayProps.caretShapeStyle) ===
+                CaretShapeStyle.Line
+              }
               onSelect={() => {
-                patchSettings({
-                  ...settings,
-                  textDisplay: {
-                    ...textDisplay,
-                    caretShapeStyle: CaretShapeStyle.Line,
-                  },
-                });
+                updateSettings(
+                  settings.set(
+                    textDisplayProps.caretShapeStyle,
+                    CaretShapeStyle.Line,
+                  ),
+                );
               }}
             />
           </Field>
@@ -230,16 +233,16 @@ export function TypingSettings({
               label="Underline cursor"
               name="cursor-shape-style"
               checked={
-                textDisplay.caretShapeStyle === CaretShapeStyle.Underline
+                settings.get(textDisplayProps.caretShapeStyle) ===
+                CaretShapeStyle.Underline
               }
               onSelect={() => {
-                patchSettings({
-                  ...settings,
-                  textDisplay: {
-                    ...textDisplay,
-                    caretShapeStyle: CaretShapeStyle.Underline,
-                  },
-                });
+                updateSettings(
+                  settings.set(
+                    textDisplayProps.caretShapeStyle,
+                    CaretShapeStyle.Underline,
+                  ),
+                );
               }}
             />
           </Field>
@@ -258,16 +261,16 @@ export function TypingSettings({
               label="Jumping cursor"
               name="cursor-movement-style"
               checked={
-                textDisplay.caretMovementStyle === CaretMovementStyle.Jumping
+                settings.get(textDisplayProps.caretMovementStyle) ===
+                CaretMovementStyle.Jumping
               }
               onSelect={() => {
-                patchSettings({
-                  ...settings,
-                  textDisplay: {
-                    ...textDisplay,
-                    caretMovementStyle: CaretMovementStyle.Jumping,
-                  },
-                });
+                updateSettings(
+                  settings.set(
+                    textDisplayProps.caretMovementStyle,
+                    CaretMovementStyle.Jumping,
+                  ),
+                );
               }}
             />
           </Field>
@@ -276,16 +279,16 @@ export function TypingSettings({
               label="Smooth cursor"
               name="cursor-movement-style"
               checked={
-                textDisplay.caretMovementStyle === CaretMovementStyle.Smooth
+                settings.get(textDisplayProps.caretMovementStyle) ===
+                CaretMovementStyle.Smooth
               }
               onChange={() => {
-                patchSettings({
-                  ...settings,
-                  textDisplay: {
-                    ...textDisplay,
-                    caretMovementStyle: CaretMovementStyle.Smooth,
-                  },
-                });
+                updateSettings(
+                  settings.set(
+                    textDisplayProps.caretMovementStyle,
+                    CaretMovementStyle.Smooth,
+                  ),
+                );
               }}
             />
           </Field>
@@ -304,17 +307,10 @@ export function TypingSettings({
                 description: "Checkbox description.",
                 defaultMessage: "Make extra noise when typing and on errors.",
               })}
-              checked={textDisplay.sounds}
+              checked={settings.get(textDisplayProps.sounds)}
               onChange={(value) => {
-                patchSettings({
-                  ...settings,
-                  textDisplay: {
-                    ...textDisplay,
-                    sounds: value,
-                  },
-                });
+                updateSettings(settings.set(textDisplayProps.sounds, value));
               }}
-              disabled={true}
             />
           </Field>
         </FieldList>

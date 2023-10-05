@@ -1,17 +1,19 @@
 import { FakeIntlProvider } from "@keybr/intl";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
+import { FakeSettingsContext } from "@keybr/settings";
 import { fireEvent, render } from "@testing-library/react";
 import test from "ava";
-import { type ReactNode, useState } from "react";
-import { defaultSettings, SettingsEditor } from "./SettingsEditor.tsx";
+import { SettingsScreen } from "./SettingsScreen.tsx";
 
 test("render", async (t) => {
   PhoneticModelLoader.loader = FakePhoneticModel.loader;
 
   const r = render(
     <FakeIntlProvider>
-      <TestClient />
+      <FakeSettingsContext>
+        <SettingsScreen onSubmit={() => {}} />
+      </FakeSettingsContext>
     </FakeIntlProvider>,
   );
 
@@ -44,15 +46,3 @@ test("render", async (t) => {
 
   r.unmount();
 });
-
-function TestClient(): ReactNode {
-  const [settings, setSettings] = useState({ ...defaultSettings });
-  return (
-    <SettingsEditor
-      settings={settings}
-      patchSettings={(newSettings) => {
-        setSettings({ ...newSettings });
-      }}
-    />
-  );
-}

@@ -1,18 +1,15 @@
-import { Book } from "@keybr/content-books";
-import { Language } from "@keybr/layout";
+import { useSettings } from "@keybr/settings";
+import { toTextDisplaySettings } from "@keybr/textinput";
 import { Field, FieldList, FieldSet, Para, RadioBox } from "@keybr/widget";
 import { type ReactNode } from "react";
+import { TextSourceType, typingTestProps } from "../../settings.ts";
 import { BookSettings } from "./text/BookSettings.tsx";
 import { CommonWordsSettings } from "./text/CommonWordsSettings.tsx";
 import { PseudoWordsSettings } from "./text/PseudoWordsSettings.tsx";
 import { TextPreview } from "./text/TextPreview.tsx";
-import { type SettingsEditorProps } from "./types.ts";
 
-export function TextGeneratorSettings({
-  settings,
-  patchSettings,
-}: SettingsEditorProps): ReactNode {
-  const { textSource } = settings;
+export function TextGeneratorSettings(): ReactNode {
+  const { settings, updateSettings } = useSettings();
   return (
     <>
       <FieldSet legend="Text Settings">
@@ -24,15 +21,17 @@ export function TextGeneratorSettings({
               label="Common words"
               name="text-source"
               value="text-source-common-words"
-              checked={textSource.type === "common-words"}
+              checked={
+                settings.get(typingTestProps.type) ===
+                TextSourceType.CommonWords
+              }
               onSelect={() => {
-                patchSettings({
-                  ...settings,
-                  textSource: {
-                    type: "common-words",
-                    language: Language.EN,
-                  },
-                });
+                updateSettings(
+                  settings.set(
+                    typingTestProps.type,
+                    TextSourceType.CommonWords,
+                  ),
+                );
               }}
             />
           </Field>
@@ -41,15 +40,17 @@ export function TextGeneratorSettings({
               label="Pseudo words"
               name="text-source"
               value="text-source-pseudo-words"
-              checked={textSource.type === "pseudo-words"}
+              checked={
+                settings.get(typingTestProps.type) ===
+                TextSourceType.PseudoWords
+              }
               onSelect={() => {
-                patchSettings({
-                  ...settings,
-                  textSource: {
-                    type: "pseudo-words",
-                    language: Language.EN,
-                  },
-                });
+                updateSettings(
+                  settings.set(
+                    typingTestProps.type,
+                    TextSourceType.PseudoWords,
+                  ),
+                );
               }}
             />
           </Field>
@@ -58,43 +59,35 @@ export function TextGeneratorSettings({
               label="Book paragraphs"
               name="text-source"
               value="text-source-book"
-              checked={textSource.type === "book"}
+              checked={
+                settings.get(typingTestProps.type) === TextSourceType.Book
+              }
               onSelect={() => {
-                patchSettings({
-                  ...settings,
-                  textSource: {
-                    type: "book",
-                    book: Book.EN_ALICE_WONDERLAND,
-                    paragraphIndex: 0,
-                    capitals: true,
-                    punctuators: true,
-                  },
-                });
+                updateSettings(
+                  settings.set(typingTestProps.type, TextSourceType.Book),
+                );
               }}
             />
           </Field>
         </FieldList>
       </FieldSet>
 
-      {textSource.type === "common-words" && (
-        <CommonWordsSettings
-          settings={settings}
-          patchSettings={patchSettings}
-        />
+      {settings.get(typingTestProps.type) === TextSourceType.CommonWords && (
+        <CommonWordsSettings />
       )}
-      {textSource.type === "pseudo-words" && (
-        <PseudoWordsSettings
-          settings={settings}
-          patchSettings={patchSettings}
-        />
+      {settings.get(typingTestProps.type) === TextSourceType.PseudoWords && (
+        <PseudoWordsSettings />
       )}
-      {textSource.type === "book" && (
-        <BookSettings settings={settings} patchSettings={patchSettings} />
+      {settings.get(typingTestProps.type) === TextSourceType.Book && (
+        <BookSettings />
       )}
 
       {false && (
         <FieldSet legend="Preview">
-          <TextPreview settings={settings.textDisplay} textGenerator={null!} />
+          <TextPreview
+            settings={toTextDisplaySettings(settings)}
+            textGenerator={null!}
+          />
         </FieldSet>
       )}
     </>
