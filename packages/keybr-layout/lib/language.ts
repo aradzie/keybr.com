@@ -21,8 +21,8 @@ export class Language implements EnumItem {
     Language.IT,
     // Language.PL,
     Language.PT,
+    Language.UK,
     Language.RU,
-    // Language.UK,
   );
 
   private constructor(

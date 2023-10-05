@@ -1,4 +1,4 @@
-export type LocaleId = "de" | "en" | "es" | "fr" | "pl" | "ru";
+export type LocaleId = "de" | "en" | "es" | "fr" | "pl" | "ru" | "uk" ;
 
 export const allLocales: readonly LocaleId[] = [
   "de",
@@ -7,6 +7,7 @@ export const allLocales: readonly LocaleId[] = [
   "fr",
   "pl",
   "ru",
+  "uk",
 ];
 
 export const defaultLocale: LocaleId = "en";
