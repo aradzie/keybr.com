@@ -23,12 +23,6 @@ Install dependencies:
 npm install
 ```
 
-Install Git Hooks
-```shell
-npm run postinstall
-```
-
-
 Create your own config file by copying `.env.example` to either `.env` or to a global location `/etc/keybr/env`. The latter is better because it allows you to run scripts from any location, not only from the root directory of the repository.
 
 ```shell
