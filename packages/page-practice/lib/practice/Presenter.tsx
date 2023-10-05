@@ -35,7 +35,7 @@ type DisplayLayout = "normal" | "compact" | "bare";
 
 export class Presenter extends PureComponent<Props, State> {
   override state: State = {
-    layout: "normal",
+    layout: getLayoutFromStorageOrDefault(),
     tour: false,
     focus: false,
     depressedKeys: [],
@@ -216,9 +216,11 @@ export class Presenter extends PureComponent<Props, State> {
 
   private handleLayout = (): void => {
     this.setState(
-      ({ layout }) => ({
-        layout: nextLayout(layout),
-      }),
+      ({ layout }) => {
+        const next_layout = nextLayout(layout);
+        localStorage.setItem("presenter-layout", next_layout);
+        return { layout: next_layout };
+      },
       () => {
         this.props.onReset();
       },
@@ -339,6 +341,23 @@ function nextLayout(layout: DisplayLayout): DisplayLayout {
     case "bare":
       return "normal";
     default:
+      return "normal";
+  }
+}
+
+/**
+ *
+ * @returns The layout stored in local storage, or "normal" if no layout is stored.
+ */
+function getLayoutFromStorageOrDefault(): DisplayLayout {
+  const layout = localStorage.getItem("presenter-layout");
+  switch (layout) {
+    case "normal":
+    case "compact":
+    case "bare":
+      return layout;
+    default:
+      localStorage.setItem("presenter-layout", "normal");
       return "normal";
   }
 }
