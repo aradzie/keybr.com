@@ -86,8 +86,8 @@ export class GuidedLesson extends Lesson {
       uniqueWords(wordGenerator),
       Letter.restrict(Letter.punctuators, this.codePoints),
       {
-        withCapitals: this.settings.get(lessonProps.capitals) ? 0.3 : 0,
-        withPunctuators: this.settings.get(lessonProps.punctuators) ? 0.3 : 0,
+        withCapitals: this.settings.get(lessonProps.capitals),
+        withPunctuators: this.settings.get(lessonProps.punctuators),
       },
       this.rng,
     );

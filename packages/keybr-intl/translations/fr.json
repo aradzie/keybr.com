@@ -1195,6 +1195,10 @@
     "defaultMessage": "Generate numbers following the Benford's law.",
     "description": "Checkbox title."
   },
+  "settings.capitalLettersLabel": {
+    "defaultMessage": "Ajoutez des majuscules:",
+    "description": "Input field label."
+  },
   "settings.cursorMovementLabel": {
     "defaultMessage": "Mouvement du curseur:",
     "description": "Checkbox label."
@@ -1263,22 +1267,6 @@
     "defaultMessage": "Émuler la disposition de clavier sélectionnée si la disposition standard est définie dans le système.",
     "description": "Checkbox title."
   },
-  "settings.enableCapitalLettersLabel": {
-    "defaultMessage": "Activer les majuscules",
-    "description": "Checkbox label."
-  },
-  "settings.enableCapitalLettersTitle": {
-    "defaultMessage": "Générer du texte avec des majuscules.",
-    "description": "Checkbox title."
-  },
-  "settings.enablePunctuationLabel": {
-    "defaultMessage": "Activer les caractères de ponctuation",
-    "description": "Checkbox label."
-  },
-  "settings.enablePunctuationTitle": {
-    "defaultMessage": "Ajouter des caractères de ponctuation au texte généré.",
-    "description": "Checkbox title."
-  },
   "settings.enableSoundsLabel": {
     "defaultMessage": "Activer les effets sonores",
     "description": "Checkbox label."
@@ -1334,6 +1322,10 @@
   "settings.previewLegend": {
     "defaultMessage": "Aperçu",
     "description": "Fieldset legend."
+  },
+  "settings.punctuationLabel": {
+    "defaultMessage": "Ajouter la ponctuation:",
+    "description": "Input field label."
   },
   "settings.selectLanguageLabel": {
     "defaultMessage": "Langue:",

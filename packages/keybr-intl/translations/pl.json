@@ -1195,6 +1195,10 @@
     "defaultMessage": "Generuj liczby zgodnie z Rozkładem Benforda.",
     "description": "Checkbox title."
   },
+  "settings.capitalLettersLabel": {
+    "defaultMessage": "Dodać wielkie litery:",
+    "description": "Input field label."
+  },
   "settings.cursorMovementLabel": {
     "defaultMessage": "Ruch kursora:",
     "description": "Checkbox label."
@@ -1263,22 +1267,6 @@
     "defaultMessage": "Emuluj wybrany układ, jeśli w systemie ustawiono układ standardowy.",
     "description": "Checkbox title."
   },
-  "settings.enableCapitalLettersLabel": {
-    "defaultMessage": "Włącz wielkie litery",
-    "description": "Checkbox label."
-  },
-  "settings.enableCapitalLettersTitle": {
-    "defaultMessage": "Generuj tekst z wielkimi literami.",
-    "description": "Checkbox title."
-  },
-  "settings.enablePunctuationLabel": {
-    "defaultMessage": "Włącz znaki interpunkcyjne.",
-    "description": "Checkbox label."
-  },
-  "settings.enablePunctuationTitle": {
-    "defaultMessage": "Dodaj znaki interpunkcyjne do generowanego tekstu.",
-    "description": "Checkbox title."
-  },
   "settings.enableSoundsLabel": {
     "defaultMessage": "Włącz dźwięki",
     "description": "Checkbox label."
@@ -1334,6 +1322,10 @@
   "settings.previewLegend": {
     "defaultMessage": "Podgląd",
     "description": "Fieldset legend."
+  },
+  "settings.punctuationLabel": {
+    "defaultMessage": "Dodać znaki interpunkcyjne:",
+    "description": "Input field label."
   },
   "settings.selectLanguageLabel": {
     "defaultMessage": "Język:",

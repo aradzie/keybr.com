@@ -1195,6 +1195,10 @@
     "defaultMessage": "Generate numbers following the Benford's law.",
     "description": "Checkbox title."
   },
+  "settings.capitalLettersLabel": {
+    "defaultMessage": "Add capital letters:",
+    "description": "Input field label."
+  },
   "settings.cursorMovementLabel": {
     "defaultMessage": "Cursor movement:",
     "description": "Checkbox label."
@@ -1263,22 +1267,6 @@
     "defaultMessage": "Emulate the selected layout when the standard layout is set in the system.",
     "description": "Checkbox title."
   },
-  "settings.enableCapitalLettersLabel": {
-    "defaultMessage": "Enable capital letters",
-    "description": "Checkbox label."
-  },
-  "settings.enableCapitalLettersTitle": {
-    "defaultMessage": "Add capital letters to the generated text.",
-    "description": "Checkbox title."
-  },
-  "settings.enablePunctuationLabel": {
-    "defaultMessage": "Enable punctuation characters",
-    "description": "Checkbox label."
-  },
-  "settings.enablePunctuationTitle": {
-    "defaultMessage": "Add punctuation characters to the generated text.",
-    "description": "Checkbox title."
-  },
   "settings.enableSoundsLabel": {
     "defaultMessage": "Enable sounds",
     "description": "Checkbox label."
@@ -1334,6 +1322,10 @@
   "settings.previewLegend": {
     "defaultMessage": "Preview",
     "description": "Fieldset legend."
+  },
+  "settings.punctuationLabel": {
+    "defaultMessage": "Add punctuation characters:",
+    "description": "Input field label."
   },
   "settings.selectLanguageLabel": {
     "defaultMessage": "Language:",

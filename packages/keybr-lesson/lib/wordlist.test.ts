@@ -144,8 +144,8 @@ test("filter words", (t) => {
 test("generate text using settings", (t) => {
   {
     const settings = new Settings()
-      .set(lessonProps.capitals, false)
-      .set(lessonProps.punctuators, false);
+      .set(lessonProps.capitals, 0)
+      .set(lessonProps.punctuators, 0);
     const model = new FakePhoneticModel();
     const wordList = ["abc", "def", "ghi"];
     const lesson = new WordListLesson(settings, model, allCodePoints, wordList);
@@ -161,8 +161,8 @@ test("generate text using settings", (t) => {
 
   {
     const settings = new Settings()
-      .set(lessonProps.capitals, true)
-      .set(lessonProps.punctuators, true);
+      .set(lessonProps.capitals, 1)
+      .set(lessonProps.punctuators, 1);
     const model = new FakePhoneticModel();
     const wordList = ["abc", "def", "ghi"];
     const lesson = new WordListLesson(settings, model, allCodePoints, wordList);
@@ -171,8 +171,8 @@ test("generate text using settings", (t) => {
 
     t.is(
       lesson.generate(),
-      "abc def, Ghi abc def, Ghi abc def, Ghi abc def, Ghi abc def, Ghi abc " +
-        "def, Ghi abc def, Ghi abc def, Ghi abc def, Ghi abc def, Ghi",
+      "Abc! Def, Ghi. Abc! Def, Ghi. Abc! Def, Ghi. Abc! Def, Ghi. Abc! Def," +
+        " Ghi. Abc! Def, Ghi. Abc! Def, Ghi. Abc! Def, Ghi. Abc!",
     );
   }
 });

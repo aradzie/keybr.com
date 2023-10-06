@@ -1,50 +1,84 @@
+import { useIntlNumbers } from "@keybr/intl";
 import { lessonProps } from "@keybr/lesson";
 import { useSettings } from "@keybr/settings";
-import { CheckBox, Field, FieldList } from "@keybr/widget";
+import {
+  Field,
+  FieldList,
+  Para,
+  Range,
+  styleSizeWide,
+  Value,
+} from "@keybr/widget";
 import { type ReactNode } from "react";
-import { useIntl } from "react-intl";
+import { FormattedMessage } from "react-intl";
 
 export function TextManglingProp(): ReactNode {
-  const { formatMessage } = useIntl();
+  const { formatPercents } = useIntlNumbers();
   const { settings, updateSettings } = useSettings();
   return (
-    <FieldList>
-      <Field>
-        <CheckBox
-          label={formatMessage({
-            id: "settings.enableCapitalLettersLabel",
-            description: "Checkbox label.",
-            defaultMessage: "Enable capital letters",
-          })}
-          title={formatMessage({
-            id: "settings.enableCapitalLettersTitle",
-            description: "Checkbox title.",
-            defaultMessage: "Add capital letters to the generated text.",
-          })}
-          checked={settings.get(lessonProps.capitals)}
-          onChange={(value) => {
-            updateSettings(settings.set(lessonProps.capitals, value));
-          }}
-        />
-      </Field>
-      <Field>
-        <CheckBox
-          label={formatMessage({
-            id: "settings.enablePunctuationLabel",
-            description: "Checkbox label.",
-            defaultMessage: "Enable punctuation characters",
-          })}
-          title={formatMessage({
-            id: "settings.enablePunctuationTitle",
-            description: "Checkbox title.",
-            defaultMessage: "Add punctuation characters to the generated text.",
-          })}
-          checked={settings.get(lessonProps.punctuators)}
-          onChange={(value) => {
-            updateSettings(settings.set(lessonProps.punctuators, value));
-          }}
-        />
-      </Field>
-    </FieldList>
+    <>
+      <FieldList>
+        <Field>
+          <FormattedMessage
+            id="settings.capitalLettersLabel"
+            description="Input field label."
+            defaultMessage="Add capital letters:"
+          />
+        </Field>
+        <Field>
+          <Range
+            className={styleSizeWide}
+            min={0}
+            max={100}
+            step={1}
+            value={Math.round(settings.get(lessonProps.capitals) * 100)}
+            onChange={(value) => {
+              updateSettings(settings.set(lessonProps.capitals, value / 100));
+            }}
+          />
+        </Field>
+        <Field>
+          <Value value={formatPercents(settings.get(lessonProps.capitals))} />
+        </Field>
+      </FieldList>
+      {false && (
+        <Para>
+          Adjust the amount of capital letters added to the lesson text.
+        </Para>
+      )}
+      <FieldList>
+        <Field>
+          <FormattedMessage
+            id="settings.punctuationLabel"
+            description="Input field label."
+            defaultMessage="Add punctuation characters:"
+          />
+        </Field>
+        <Field>
+          <Range
+            className={styleSizeWide}
+            min={0}
+            max={100}
+            step={1}
+            value={Math.round(settings.get(lessonProps.punctuators) * 100)}
+            onChange={(value) => {
+              updateSettings(
+                settings.set(lessonProps.punctuators, value / 100),
+              );
+            }}
+          />
+        </Field>
+        <Field>
+          <Value
+            value={formatPercents(settings.get(lessonProps.punctuators))}
+          />
+        </Field>
+      </FieldList>
+      {false && (
+        <Para>
+          Adjust the amount of punctuation characters added to the lesson text.
+        </Para>
+      )}
+    </>
   );
 }

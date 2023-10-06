@@ -17,6 +17,7 @@ import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
 import { LessonLengthProp } from "./LessonLengthProp.tsx";
 import { TargetSpeedProp } from "./TargetSpeedProp.tsx";
+import { TextManglingProp } from "./TextManglingProp.tsx";
 
 export function WordListLessonSettings({
   lesson,
@@ -44,6 +45,7 @@ export function WordListLessonSettings({
         <WordListPreview lesson={lesson} />
         <WordListStats lesson={lesson} />
         <TargetSpeedProp />
+        <TextManglingProp />
         <LessonLengthProp />
       </FieldSet>
     </>

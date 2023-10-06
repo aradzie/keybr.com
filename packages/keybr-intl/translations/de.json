@@ -1195,6 +1195,10 @@
     "defaultMessage": "Generieren Sie Zahlen nach dem Benfordsche Gesetz.",
     "description": "Checkbox title."
   },
+  "settings.capitalLettersLabel": {
+    "defaultMessage": "Großbuchstaben hinzufügen:",
+    "description": "Input field label."
+  },
   "settings.cursorMovementLabel": {
     "defaultMessage": "Cursorbewegung:",
     "description": "Checkbox label."
@@ -1263,22 +1267,6 @@
     "defaultMessage": "Emuliert das ausgewählte Layout, wenn das Standardlayout im System eingestellt ist.",
     "description": "Checkbox title."
   },
-  "settings.enableCapitalLettersLabel": {
-    "defaultMessage": "Großbuchstaben aktivieren",
-    "description": "Checkbox label."
-  },
-  "settings.enableCapitalLettersTitle": {
-    "defaultMessage": "Text mit Großbuchstaben generieren.",
-    "description": "Checkbox title."
-  },
-  "settings.enablePunctuationLabel": {
-    "defaultMessage": "Interpunktionszeichen aktivieren",
-    "description": "Checkbox label."
-  },
-  "settings.enablePunctuationTitle": {
-    "defaultMessage": "Interpunktionszeichen zum generierten Text hinzufügen.",
-    "description": "Checkbox title."
-  },
   "settings.enableSoundsLabel": {
     "defaultMessage": "Töne aktivieren",
     "description": "Checkbox label."
@@ -1334,6 +1322,10 @@
   "settings.previewLegend": {
     "defaultMessage": "Vorschau",
     "description": "Fieldset legend."
+  },
+  "settings.punctuationLabel": {
+    "defaultMessage": "Satzzeichen hinzufügen:",
+    "description": "Input field label."
   },
   "settings.selectLanguageLabel": {
     "defaultMessage": "Sprache:",

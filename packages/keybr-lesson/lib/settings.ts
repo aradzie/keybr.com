@@ -29,8 +29,8 @@ export const lessonProps = {
   numbers: {
     benford: booleanProp("lesson.numbers.benford", true),
   } as const,
-  capitals: booleanProp("lesson.capitals", false),
-  punctuators: booleanProp("lesson.punctuators", false),
+  capitals: numberProp("lesson.capitals", 0, { min: 0, max: 1 }),
+  punctuators: numberProp("lesson.punctuators", 0, { min: 0, max: 1 }),
   targetSpeed: numberProp("lesson.targetSpeed", 175, { min: 175, max: 750 }),
   dailyGoal: numberProp("lesson.dailyGoal", 30, { min: 0, max: 120 }),
 } as const;
