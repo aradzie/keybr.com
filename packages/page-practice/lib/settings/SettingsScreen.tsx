@@ -1,13 +1,14 @@
 import { KeyboardContext, keyboardProps, loadKeyboard } from "@keybr/keyboard";
 import { Screen } from "@keybr/pages-shared";
 import { type Settings, SettingsContext, useSettings } from "@keybr/settings";
-import { Button, Field, FieldList, Icon, Tab, TabList } from "@keybr/widget";
+import { Button, Field, FieldList, Header, Icon } from "@keybr/widget";
 import { mdiCheckCircle } from "@mdi/js";
 import { type ReactNode, useMemo, useState } from "react";
-import { useIntl } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { KeyboardSettings } from "./KeyboardSettings.tsx";
 import { LessonSettings } from "./LessonSettings.tsx";
 import { MiscSettings } from "./MiscSettings.tsx";
+import * as styles from "./SettingsScreen.module.less";
 import { TypingSettings } from "./TypingSettings.tsx";
 
 export function SettingsScreen({
@@ -44,56 +45,52 @@ export function SettingsScreen({
 
 function Content({ onSubmit }: { readonly onSubmit: () => void }): ReactNode {
   const { formatMessage } = useIntl();
-  const [tabIndex, setTabIndex] = useState(0);
 
   return (
     <Screen>
-      <TabList
-        selectedIndex={tabIndex}
-        onSelect={(tabIndex) => {
-          setTabIndex(tabIndex);
-        }}
-      >
-        <Tab
-          label={formatMessage({
-            id: "settings.lessonsTabLabel",
-            description: "Tab label.",
-            defaultMessage: "Lessons",
-          })}
-        >
-          <LessonSettings />
-        </Tab>
+      <Header level={1}>
+        <FormattedMessage
+          id="settings.lessonsTabLabel"
+          description="Tab label."
+          defaultMessage="Lessons"
+        />
+      </Header>
+      <LessonSettings />
 
-        <Tab
-          label={formatMessage({
-            id: "settings.typingTabLabel",
-            description: "Tab label.",
-            defaultMessage: "Typing",
-          })}
-        >
-          <TypingSettings />
-        </Tab>
+      <div className={styles.spacer} />
 
-        <Tab
-          label={formatMessage({
-            id: "settings.keyboardTabLabel",
-            description: "Tab label.",
-            defaultMessage: "Keyboard",
-          })}
-        >
-          <KeyboardSettings />
-        </Tab>
+      <Header level={1}>
+        <FormattedMessage
+          id="settings.typingTabLabel"
+          description="Tab label."
+          defaultMessage="Typing"
+        />
+      </Header>
+      <TypingSettings />
 
-        <Tab
-          label={formatMessage({
-            id: "settings.miscellaneousTabLabel",
-            description: "Tab label.",
-            defaultMessage: "Miscellaneous",
-          })}
-        >
-          <MiscSettings />
-        </Tab>
-      </TabList>
+      <div className={styles.spacer} />
+
+      <Header level={1}>
+        <FormattedMessage
+          id="settings.keyboardTabLabel"
+          description="Tab label."
+          defaultMessage="Keyboard"
+        />
+      </Header>
+      <KeyboardSettings />
+
+      <div className={styles.spacer} />
+
+      <Header level={1}>
+        <FormattedMessage
+          id="settings.miscellaneousTabLabel"
+          description="Tab label."
+          defaultMessage="Miscellaneous"
+        />
+      </Header>
+      <MiscSettings />
+
+      <div className={styles.spacer} />
 
       <FieldList>
         <Field.Filler />
