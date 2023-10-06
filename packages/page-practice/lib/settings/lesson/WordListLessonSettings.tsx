@@ -76,11 +76,6 @@ function WordListPreview({
             max={lessonProps.wordList.wordListSize.max}
             step={1}
             value={settings.get(lessonProps.wordList.wordListSize)}
-            title={formatMessage({
-              id: "settings.wordListSizeTitle",
-              description: "Input field title.",
-              defaultMessage: "Chose how many common words to use.",
-            })}
             onChange={(value) => {
               updateSettings(
                 settings.set(lessonProps.wordList.wordListSize, value),

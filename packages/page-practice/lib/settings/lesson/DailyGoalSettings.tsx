@@ -42,12 +42,6 @@ export function DailyGoalSettings(): ReactNode {
             max={24}
             step={1}
             value={Math.round(settings.get(lessonProps.dailyGoal) / 5)}
-            title={formatMessage({
-              id: "settings.dailyGoalTitle",
-              description: "Input field title.",
-              defaultMessage:
-                "Daily goal to spend on the exercises in minutes.",
-            })}
             onChange={(value) => {
               updateSettings(settings.set(lessonProps.dailyGoal, value * 5));
             }}

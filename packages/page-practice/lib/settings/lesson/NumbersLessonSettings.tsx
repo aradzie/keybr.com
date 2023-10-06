@@ -46,11 +46,6 @@ function BenfordProp(): ReactNode {
               description: "Checkbox label.",
               defaultMessage: "Benford's law",
             })}
-            title={formatMessage({
-              id: "settings.benfordsLawTitle",
-              description: "Checkbox title.",
-              defaultMessage: "Generate numbers following the Benford's law.",
-            })}
             checked={settings.get(lessonProps.numbers.benford)}
             onChange={(value) => {
               updateSettings(settings.set(lessonProps.numbers.benford, value));

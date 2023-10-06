@@ -23,11 +23,6 @@ export function LessonLengthProp(): ReactNode {
           max={100}
           step={1}
           value={Math.round(settings.get(lessonProps.length) * 100)}
-          title={formatMessage({
-            id: "settings.lessonLengthTitle",
-            description: "Input field title.",
-            defaultMessage: "Add more words to every generated lesson.",
-          })}
           onChange={(value) => {
             updateSettings(settings.set(lessonProps.length, value / 100));
           }}

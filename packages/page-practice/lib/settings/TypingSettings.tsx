@@ -337,11 +337,6 @@ function SoundsProp(): ReactNode {
             description: "Checkbox label.",
             defaultMessage: "Enable sounds",
           })}
-          title={formatMessage({
-            id: "settings.enableSoundsTitle",
-            description: "Checkbox description.",
-            defaultMessage: "Make extra noise when typing and on errors.",
-          })}
           checked={settings.get(textDisplayProps.sounds)}
           onChange={(value) => {
             updateSettings(settings.set(textDisplayProps.sounds, value));

@@ -1179,10 +1179,6 @@
     "defaultMessage": "Añadir letras a las palabras:",
     "description": "Input field label."
   },
-  "settings.alphabetSizeTitle": {
-    "defaultMessage": "Añadir más letras a cada palabra generada.",
-    "description": "Input field title."
-  },
   "settings.benfordsLawDescription": {
     "defaultMessage": "<a>Benford's law</a> is an observation that in many real-life numerical data sets, the leading digit is likely to be small.",
     "description": "Freeform text."
@@ -1190,10 +1186,6 @@
   "settings.benfordsLawLabel": {
     "defaultMessage": "Benford's law",
     "description": "Checkbox label."
-  },
-  "settings.benfordsLawTitle": {
-    "defaultMessage": "Generate numbers following the Benford's law.",
-    "description": "Checkbox title."
   },
   "settings.capitalLettersLabel": {
     "defaultMessage": "Añade letras mayúsculas:",
@@ -1247,17 +1239,9 @@
     "defaultMessage": "Meta diaria:",
     "description": "Input field label."
   },
-  "settings.dailyGoalTitle": {
-    "defaultMessage": "Meta diaria para gastar en los ejercicios en minutos.",
-    "description": "Input field title."
-  },
   "settings.doneButtonLabel": {
     "defaultMessage": "Hecho",
     "description": "Button label."
-  },
-  "settings.doneButtonTitle": {
-    "defaultMessage": "Guarda los cambios y empieza a practicar.",
-    "description": "Button title."
   },
   "settings.emulateLayoutLabel": {
     "defaultMessage": "Emular disposición",
@@ -1294,10 +1278,6 @@
   "settings.lessonLengthLabel": {
     "defaultMessage": "Añadir palabras a las lecciones:",
     "description": "Input field label."
-  },
-  "settings.lessonLengthTitle": {
-    "defaultMessage": "Añadir más palabras a cada lección generada.",
-    "description": "Input field title."
   },
   "settings.lessonOptionsLegend": {
     "defaultMessage": "Opciones de la Lección",
@@ -1354,10 +1334,6 @@
   "settings.targetSpeedLabel": {
     "defaultMessage": "Velocidad de escritura objetivo:",
     "description": "Input field label."
-  },
-  "settings.targetSpeedTitle": {
-    "defaultMessage": "Set custom target typing speed that you want to achieve.",
-    "description": "Input field title."
   },
   "settings.textAppearanceLegend": {
     "defaultMessage": "Apariencia del texto",

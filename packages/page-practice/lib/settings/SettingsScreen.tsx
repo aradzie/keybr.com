@@ -101,11 +101,6 @@ function Content({ onSubmit }: { readonly onSubmit: () => void }): ReactNode {
               description: "Button label.",
               defaultMessage: "Done",
             })}
-            title={formatMessage({
-              id: "settings.doneButtonTitle",
-              description: "Button title.",
-              defaultMessage: "Save changes and start practicing.",
-            })}
             onClick={() => {
               onSubmit();
             }}

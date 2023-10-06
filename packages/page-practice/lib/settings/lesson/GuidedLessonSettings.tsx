@@ -38,8 +38,8 @@ export function GuidedLessonSettings({
         })}
       >
         <AlphabetSize />
-        <TextManglingProp />
         <TargetSpeedProp />
+        <TextManglingProp />
         <LessonLengthProp />
       </FieldSet>
     </>
@@ -55,7 +55,7 @@ function AlphabetSize(): ReactNode {
         {formatMessage({
           id: "settings.alphabetSizeLabel",
           description: "Input field label.",
-          defaultMessage: "Add letters to words:",
+          defaultMessage: "Unlock more letters:",
         })}
       </Field>
       <Field>
@@ -67,11 +67,6 @@ function AlphabetSize(): ReactNode {
           value={Math.round(
             settings.get(lessonProps.guided.alphabetSize) * 100,
           )}
-          title={formatMessage({
-            id: "settings.alphabetSizeTitle",
-            description: "Input field title.",
-            defaultMessage: "Add more letters to every generated word.",
-          })}
           onChange={(value) => {
             updateSettings(
               settings.set(lessonProps.guided.alphabetSize, value / 100),

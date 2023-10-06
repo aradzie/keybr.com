@@ -25,12 +25,6 @@ export function TargetSpeedProp(): ReactNode {
           max={lessonProps.targetSpeed.max}
           step={1}
           value={settings.get(lessonProps.targetSpeed)}
-          title={formatMessage({
-            id: "settings.targetSpeedTitle",
-            description: "Input field title.",
-            defaultMessage:
-              "Set custom target typing speed that you want to achieve.",
-          })}
           onChange={(value) => {
             updateSettings(settings.set(lessonProps.targetSpeed, value));
           }}
