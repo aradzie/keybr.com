@@ -7,7 +7,11 @@ import {
   toTextDisplaySettings,
   toTextInputSettings,
 } from "@keybr/textinput";
-import { type Duration, DurationType } from "./session/index.ts";
+import {
+  type Duration,
+  duration_15_seconds,
+  DurationType,
+} from "./session/index.ts";
 
 export enum TextSourceType {
   CommonWords = 1,
@@ -63,10 +67,13 @@ export const typingTestProps = {
 } as const;
 
 export function toDuration(settings: Settings): Duration {
-  return {
-    type: settings.get(typingTestProps.duration.type),
-    value: settings.get(typingTestProps.duration.value),
-  };
+  const type = settings.get(typingTestProps.duration.type);
+  const value = settings.get(typingTestProps.duration.value);
+  if (value === 0) {
+    return duration_15_seconds;
+  } else {
+    return { type, value };
+  }
 }
 
 export function toTextSource(settings: Settings): TextSource {
