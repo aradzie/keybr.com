@@ -167,6 +167,22 @@
     "defaultMessage": "Lu|Ma|Mi|Ju|Vi|Sa|Do",
     "description": "Day of week name."
   },
+  "characterClass.digits": {
+    "defaultMessage": "Dígitos",
+    "description": "Label."
+  },
+  "characterClass.letters": {
+    "defaultMessage": "Letras",
+    "description": "Label."
+  },
+  "characterClass.punctuationCharacters": {
+    "defaultMessage": "Caracteres de puntuación",
+    "description": "Label."
+  },
+  "characterClass.specialCharacters": {
+    "defaultMessage": "Caracteres especiales",
+    "description": "Label."
+  },
   "common.javaScriptDisabledText": {
     "defaultMessage": "¡Esta aplicación no funcionará porque JavaScript está deshabilitado en tu navegador!",
     "description": "Common text."
@@ -1434,14 +1450,6 @@
   "textTools.textInputPlaceholder": {
     "defaultMessage": "Pega tu texto aquí",
     "description": "Input field placeholder."
-  },
-  "textType.digits": {
-    "defaultMessage": "Dígitos",
-    "description": "Label."
-  },
-  "textType.letters": {
-    "defaultMessage": "Letras",
-    "description": "Label."
   },
   "theme.enterFullscreenTitle": {
     "defaultMessage": "Entrar en modo pantalla completa.",

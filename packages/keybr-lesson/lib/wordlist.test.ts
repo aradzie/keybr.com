@@ -171,8 +171,8 @@ test("generate text using settings", (t) => {
 
     t.is(
       lesson.generate(),
-      "Abc! Def, Ghi. Abc! Def, Ghi. Abc! Def, Ghi. Abc! Def, Ghi. Abc! Def," +
-        " Ghi. Abc! Def, Ghi. Abc! Def, Ghi. Abc! Def, Ghi. Abc!",
+      "Abc, Def, Ghi! Abc, Def, Ghi! Abc, Def, Ghi! Abc, Def, Ghi! Abc, Def, " +
+        "Ghi! Abc, Def, Ghi! Abc, Def, Ghi! Abc, Def, Ghi! Abc,",
     );
   }
 });

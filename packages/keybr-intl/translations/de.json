@@ -167,6 +167,22 @@
     "defaultMessage": "Mo|Di|Mi|Do|Fr|Sa|So",
     "description": "Day of week name."
   },
+  "characterClass.digits": {
+    "defaultMessage": "Ziffern",
+    "description": "Label."
+  },
+  "characterClass.letters": {
+    "defaultMessage": "Buchstaben",
+    "description": "Label."
+  },
+  "characterClass.punctuationCharacters": {
+    "defaultMessage": "Satzzeichen",
+    "description": "Label."
+  },
+  "characterClass.specialCharacters": {
+    "defaultMessage": "Sonderzeichen",
+    "description": "Label."
+  },
   "common.javaScriptDisabledText": {
     "defaultMessage": "Diese App wird nicht funktionieren, weil JavaScript in Ihrem Browser deaktiviert ist!",
     "description": "Common text."
@@ -1434,14 +1450,6 @@
   "textTools.textInputPlaceholder": {
     "defaultMessage": "Fügen Sie Ihren Text hier ein",
     "description": "Input field placeholder."
-  },
-  "textType.digits": {
-    "defaultMessage": "Ziffern",
-    "description": "Label."
-  },
-  "textType.letters": {
-    "defaultMessage": "Buchstaben",
-    "description": "Label."
   },
   "theme.enterFullscreenTitle": {
     "defaultMessage": "Vollbildmodus ausführen",

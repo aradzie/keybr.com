@@ -167,6 +167,22 @@
     "defaultMessage": "П|В|С|Ч|П|С|В",
     "description": "Day of week name."
   },
+  "characterClass.digits": {
+    "defaultMessage": "Цифры",
+    "description": "Label."
+  },
+  "characterClass.letters": {
+    "defaultMessage": "Буквы",
+    "description": "Label."
+  },
+  "characterClass.punctuationCharacters": {
+    "defaultMessage": "Знаки пунктуации",
+    "description": "Label."
+  },
+  "characterClass.specialCharacters": {
+    "defaultMessage": "Специальные символы",
+    "description": "Label."
+  },
   "common.javaScriptDisabledText": {
     "defaultMessage": "Приложение не будет работать потому что у вас в браузере отключен JavaScript!",
     "description": "Common text."
@@ -1434,14 +1450,6 @@
   "textTools.textInputPlaceholder": {
     "defaultMessage": "Вставьте сюда свой текст",
     "description": "Input field placeholder."
-  },
-  "textType.digits": {
-    "defaultMessage": "Цифры",
-    "description": "Label."
-  },
-  "textType.letters": {
-    "defaultMessage": "Буквы",
-    "description": "Label."
   },
   "theme.enterFullscreenTitle": {
     "defaultMessage": "Войти в полноэкранный режим.",

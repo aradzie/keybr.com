@@ -167,6 +167,22 @@
     "defaultMessage": "M|T|W|T|F|S|S",
     "description": "Day of week name."
   },
+  "characterClass.digits": {
+    "defaultMessage": "Digits",
+    "description": "Label."
+  },
+  "characterClass.letters": {
+    "defaultMessage": "Letters",
+    "description": "Label."
+  },
+  "characterClass.punctuationCharacters": {
+    "defaultMessage": "Punctuation characters",
+    "description": "Label."
+  },
+  "characterClass.specialCharacters": {
+    "defaultMessage": "Special characters",
+    "description": "Label."
+  },
   "common.javaScriptDisabledText": {
     "defaultMessage": "This application will not work because JavaScript is disabled in your browser!",
     "description": "Common text."
@@ -1434,14 +1450,6 @@
   "textTools.textInputPlaceholder": {
     "defaultMessage": "Paste your text here",
     "description": "Input field placeholder."
-  },
-  "textType.digits": {
-    "defaultMessage": "Digits",
-    "description": "Label."
-  },
-  "textType.letters": {
-    "defaultMessage": "Letters",
-    "description": "Label."
   },
   "theme.enterFullscreenTitle": {
     "defaultMessage": "Enter full-screen mode.",

@@ -167,6 +167,22 @@
     "defaultMessage": "P|W|Ś|C|P|S|N",
     "description": "Day of week name."
   },
+  "characterClass.digits": {
+    "defaultMessage": "Cyfry",
+    "description": "Label."
+  },
+  "characterClass.letters": {
+    "defaultMessage": "Litery",
+    "description": "Label."
+  },
+  "characterClass.punctuationCharacters": {
+    "defaultMessage": "Znaki interpunkcyjne",
+    "description": "Label."
+  },
+  "characterClass.specialCharacters": {
+    "defaultMessage": "Znaki specjalne",
+    "description": "Label."
+  },
   "common.javaScriptDisabledText": {
     "defaultMessage": "Aplikacja nie działa, ponieważ twoja przeglądarka internetowa nie obsługuje języka JavaScript!",
     "description": "Common text."
@@ -1434,14 +1450,6 @@
   "textTools.textInputPlaceholder": {
     "defaultMessage": "Tutaj wklej swój tekst",
     "description": "Input field placeholder."
-  },
-  "textType.digits": {
-    "defaultMessage": "Cyfry",
-    "description": "Label."
-  },
-  "textType.letters": {
-    "defaultMessage": "Litery",
-    "description": "Label."
   },
   "theme.enterFullscreenTitle": {
     "defaultMessage": "Przejdź do trybu pełnoekranowego.",
