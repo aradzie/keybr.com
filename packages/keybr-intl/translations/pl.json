@@ -489,7 +489,7 @@
   },
   "lessonType.customText.name": {
     "defaultMessage": "Tekst niestandardowy",
-    "description": "Widget label."
+    "description": "Input field label."
   },
   "lessonType.guided.description": {
     "defaultMessage": "Ten tryb będzie automatycznie generował lekcje pisania na klawiaturze z wykorzystaniem losowych słów oraz reguł fonetycznych twojego języka. Podstawowy zestaw jest powiększany dynamicznie w oparciu o twoje wyniki. Ten tryb jest przeznaczony dla początkujących.",
@@ -497,11 +497,11 @@
   },
   "lessonType.guided.name": {
     "defaultMessage": "Lekcje z prowadzeniem",
-    "description": "Widget label."
+    "description": "Input field label."
   },
   "lessonType.numbers.name": {
     "defaultMessage": "Liczby",
-    "description": "Widget label."
+    "description": "Input field label."
   },
   "lessonType.wordList.description": {
     "defaultMessage": "Wygeneruj lekcje pisania na podstawie listy najpopularniejszych słów w twoim języku. Wszystkie klawisze są domyślnie włączone. Ten tryb jest dla profesjonalistów.",
@@ -509,7 +509,7 @@
   },
   "lessonType.wordlist.name": {
     "defaultMessage": "Najczęstsze słowa",
-    "description": "Widget label."
+    "description": "Input field label."
   },
   "metric.accuracy.label": {
     "defaultMessage": "Dokładność",
@@ -861,27 +861,27 @@
   },
   "practice.resetLessonButtonTitle": {
     "defaultMessage": "Zresetuj bieżącą lekcję (Ctrl + strzałka w lewo).",
-    "description": "Button title."
+    "description": "Input field title."
   },
   "practice.settingButtonName": {
     "defaultMessage": "Ustawienia...",
-    "description": "Button name."
+    "description": "Input field label."
   },
   "practice.settingButtonTitle": {
     "defaultMessage": "Zmień ustawienia lekcji, konfiguruj język, układ klawiatury itp.",
-    "description": "Button title."
+    "description": "Input field title."
   },
   "practice.showHelpSlidesButtonTitle": {
     "defaultMessage": "Wyświetl samouczek ze slajdami pomocy.",
-    "description": "Button title."
+    "description": "Input field title."
   },
   "practice.skipLessonButtonTitle": {
     "defaultMessage": "Pomiń bieżącą lekcję (Ctrl + strzałka w prawo).",
-    "description": "Button title."
+    "description": "Input field title."
   },
   "practice.switchInterfaceButtonTitle": {
     "defaultMessage": "Przełącz bieżący układ interfejsu.",
-    "description": "Button title."
+    "description": "Input field title."
   },
   "practice.tourSlide1": {
     "defaultMessage": "<h1>Nauka szybszego pisania na klawiaturze</h1><p>Ta aplikacja sieciowa pomoże ci nauczyć się <em>pisania bez kontroli wzroku</em>, które wykorzystuje pamięć mięśniową do znajdowania klawiszy. Dzięki temu twoje tempo pisania na klawiaturze oraz dokładność mogą poprawić się dramatycznie. Przeciwieństwem tej techniki jest <em>pisanie palcami wskazującymi</em> – metoda, w której użytkownik patrzy na klawiaturę zamiast na ekran.</p><p>To jest krótki samouczek objaśniający działanie tej aplikacji.</p><p>Można używać strzałek w lewo i w prawo, aby zmieniać slajdy.</p>",
@@ -1181,11 +1181,11 @@
   },
   "settings.benfordsLawDescription": {
     "defaultMessage": "<a>Rozkład Benforda</a> to obserwacja, że w wielu rzeczywistych zbiorach danych liczbowych cyfra wiodąca jest prawdopodobnie mała.",
-    "description": "Freeform text."
+    "description": "Description text."
   },
   "settings.benfordsLawLabel": {
     "defaultMessage": "Rozkład Benforda",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.capitalLettersLabel": {
     "defaultMessage": "Dodać wielkie litery:",
@@ -1193,15 +1193,15 @@
   },
   "settings.cursorMovementLabel": {
     "defaultMessage": "Ruch kursora:",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.cursorShapeLabel": {
     "defaultMessage": "Kształt kursora:",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.customTextExamplesLabel": {
     "defaultMessage": "Przykłady:",
-    "description": "Text label."
+    "description": "Input field label."
   },
   "settings.customTextInputPlaceholder": {
     "defaultMessage": "Tekst niestandardowy...",
@@ -1209,31 +1209,31 @@
   },
   "settings.customTextLettersOnlyLabel": {
     "defaultMessage": "Usuń znaki interpunkcyjne",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.customTextLettersOnlyTitle": {
     "defaultMessage": "Usuń znaki interpunkcyjne z tekstu, aby ułatwić jego wpisywanie.",
-    "description": "Checkbox title."
+    "description": "Input field title."
   },
   "settings.customTextLowercaseLabel": {
     "defaultMessage": "Zmień na małe litery",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.customTextLowercaseTitle": {
     "defaultMessage": "Zmień całość tekstu na małe litery, aby ułatwić wpisywanie.",
-    "description": "Checkbox title."
+    "description": "Input field title."
   },
   "settings.customTextRandomizeLabel": {
     "defaultMessage": "Przetasować słowa",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.customTextRandomizeTitle": {
     "defaultMessage": "Ułożyć słowa z własnego tekstu w losowej kolejności.",
-    "description": "Checkbox title."
+    "description": "Input field title."
   },
   "settings.dailyGoalDescription": {
     "defaultMessage": "Ustaw czas, jaki chcesz codziennie poświęcać na ćwiczenia.",
-    "description": "Input field description."
+    "description": "Set the time you want to spend on the exercises daily."
   },
   "settings.dailyGoalLabel": {
     "defaultMessage": "Dzienny cel:",
@@ -1241,19 +1241,19 @@
   },
   "settings.doneButtonLabel": {
     "defaultMessage": "Gotowe",
-    "description": "Button label."
+    "description": "Input field label."
   },
   "settings.emulateLayoutLabel": {
     "defaultMessage": "Emuluj układ",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.emulateLayoutTitle": {
     "defaultMessage": "Emuluj wybrany układ, jeśli w systemie ustawiono układ standardowy.",
-    "description": "Checkbox title."
+    "description": "Input field title."
   },
   "settings.enableSoundsLabel": {
     "defaultMessage": "Włącz dźwięki",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.enableSoundsTitle": {
     "defaultMessage": "Emituj dodatkowy dźwięk podczas pisania na klawiaturze i w przypadku błędów.",
@@ -1261,11 +1261,11 @@
   },
   "settings.forgiveErrorsDescription": {
     "defaultMessage": "Włączenie tej opcji sprawi, że pole wprowadzania tekstu będzie wybaczać niektóre rodzaje błędów, automatycznie je poprawiając. Są to takie błędy, jak wpisanie nieprawidłowego znaku lub pominięcie znaku.",
-    "description": "Checkbox description."
+    "description": "Description text."
   },
   "settings.forgiveErrorsLabel": {
     "defaultMessage": "Nie uwzględniaj błędów",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.interfaceOptionsLegend": {
     "defaultMessage": "Opcje interfejsu",
@@ -1273,7 +1273,7 @@
   },
   "settings.keyboardTabLabel": {
     "defaultMessage": "Klawiatura",
-    "description": "Tab label."
+    "description": "Header text."
   },
   "settings.lessonLengthLabel": {
     "defaultMessage": "Dodaj słowa do lekcji:",
@@ -1285,11 +1285,11 @@
   },
   "settings.lessonsTabLabel": {
     "defaultMessage": "Ćwiczenia",
-    "description": "Tab label."
+    "description": "Header text."
   },
   "settings.miscellaneousTabLabel": {
     "defaultMessage": "Różne",
-    "description": "Tab label."
+    "description": "Header text."
   },
   "settings.optionsLegend": {
     "defaultMessage": "Opcje",
@@ -1309,27 +1309,27 @@
   },
   "settings.selectLanguageLabel": {
     "defaultMessage": "Język:",
-    "description": "Dropdown label."
+    "description": "Input field label."
   },
   "settings.selectLanguageTitle": {
     "defaultMessage": "Wybierz swój język.",
-    "description": "Dropdown title."
+    "description": "Input field title."
   },
   "settings.selectLayoutLabel": {
     "defaultMessage": "Układ:",
-    "description": "Dropdown label."
+    "description": "Input field label."
   },
   "settings.selectLayoutTitle": {
     "defaultMessage": "Wybierz układ klawiatury, z którym chcesz ćwiczyć. Dla każdego języka dostępnych jest wiele układów.",
-    "description": "Dropdown title."
+    "description": "Input field title."
   },
   "settings.stopCursorOnErrorDescription": {
     "defaultMessage": "Po włączeniu kursor nie będzie przechodził dalej do wciśnięcia właściwego klawisza w danej pozycji. Po wyłączeniu wszystkie błędy będą uwzględnione w polu wprowadzania tekstu i będą wymagać wyczyszczenia klawiszem Delete.",
-    "description": "Checkbox description."
+    "description": "Description text."
   },
   "settings.stopCursorOnErrorLabel": {
     "defaultMessage": "Zatrzymaj kursor po popełnieniu błędu",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.targetSpeedLabel": {
     "defaultMessage": "Docelowa szybkość pisania:",
@@ -1353,11 +1353,11 @@
   },
   "settings.typingTabLabel": {
     "defaultMessage": "Wpisywanie tekstu",
-    "description": "Tab label."
+    "description": "Header text."
   },
   "settings.whitespaceLabel": {
     "defaultMessage": "Spacje:",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.wordListSizeLabel": {
     "defaultMessage": "Liczba słów:",

@@ -31,7 +31,7 @@ export const Controls = memo(function Controls({
         icon={<Icon shape={mdiHelpCircleOutline} />}
         title={formatMessage({
           id: "practice.showHelpSlidesButtonTitle",
-          description: "Button title.",
+          description: "Input field title.",
           defaultMessage: "Show a guided tour with help slides.",
         })}
       />
@@ -40,7 +40,7 @@ export const Controls = memo(function Controls({
         icon={<Icon shape={mdiUndo} />}
         title={formatMessage({
           id: "practice.resetLessonButtonTitle",
-          description: "Button title.",
+          description: "Input field title.",
           defaultMessage: "Reset the current lesson (Ctrl + Left Arrow).",
         })}
       />
@@ -49,7 +49,7 @@ export const Controls = memo(function Controls({
         icon={<Icon shape={mdiRedo} />}
         title={formatMessage({
           id: "practice.skipLessonButtonTitle",
-          description: "Button title.",
+          description: "Input field title.",
           defaultMessage: "Skip the current lesson (Ctrl + Right Arrow).",
         })}
       />
@@ -58,7 +58,7 @@ export const Controls = memo(function Controls({
         icon={<Icon shape={mdiAspectRatio} />}
         title={formatMessage({
           id: "practice.switchInterfaceButtonTitle",
-          description: "Button title.",
+          description: "Input field title.",
           defaultMessage: "Switch the current interface layout.",
         })}
       />
@@ -66,12 +66,12 @@ export const Controls = memo(function Controls({
         icon={<Icon shape={mdiCog} />}
         label={formatMessage({
           id: "practice.settingButtonName",
-          description: "Button name.",
+          description: "Input field label.",
           defaultMessage: "Settings...",
         })}
         title={formatMessage({
           id: "practice.settingButtonTitle",
-          description: "Button title.",
+          description: "Input field title.",
           defaultMessage:
             "Change lesson settings, configure language, keyboard layout, etc.",
         })}

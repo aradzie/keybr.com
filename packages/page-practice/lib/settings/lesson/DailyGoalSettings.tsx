@@ -11,29 +11,27 @@ import {
   Value,
 } from "@keybr/widget";
 import { type ReactNode } from "react";
-import { useIntl } from "react-intl";
+import { FormattedMessage } from "react-intl";
 
 export function DailyGoalSettings(): ReactNode {
-  const { formatMessage } = useIntl();
   const { formatDuration } = useIntlDurations();
   const { settings, updateSettings } = useSettings();
   return (
     <FieldSet>
       <Para>
-        {formatMessage({
-          id: "settings.dailyGoalDescription",
-          description: "Input field description.",
-          defaultMessage:
-            "Set the time you want to spend on the exercises daily.",
-        })}
+        <FormattedMessage
+          id="settings.dailyGoalDescription"
+          defaultMessage="Description text."
+          description="Set the time you want to spend on the exercises daily."
+        />
       </Para>
       <FieldList>
         <Field>
-          {formatMessage({
-            id: "settings.dailyGoalLabel",
-            description: "Input field label.",
-            defaultMessage: "Daily goal:",
-          })}
+          <FormattedMessage
+            id="settings.dailyGoalLabel"
+            description="Input field label."
+            defaultMessage="Daily goal:"
+          />
         </Field>
         <Field>
           <Range

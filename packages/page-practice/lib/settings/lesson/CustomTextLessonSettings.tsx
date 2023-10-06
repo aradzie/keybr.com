@@ -13,7 +13,7 @@ import {
   TextField,
 } from "@keybr/widget";
 import { type ReactNode, useMemo } from "react";
-import { useIntl } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { exampleTexts } from "./example-texts.ts";
 import { LessonLengthProp } from "./LessonLengthProp.tsx";
 import { TargetSpeedProp } from "./TargetSpeedProp.tsx";
@@ -27,12 +27,11 @@ export function CustomTextLessonSettings({
   return (
     <>
       <Para>
-        {formatMessage({
-          id: "lessonType.customText.description",
-          description: "Description text.",
-          defaultMessage:
-            "Generate typing lessons from the words of your own custom text. All keys are included by default. This mode is for the pros.",
-        })}
+        <FormattedMessage
+          id="lessonType.customText.description"
+          description="Description text."
+          defaultMessage="Generate typing lessons from the words of your own custom text. All keys are included by default. This mode is for the pros."
+        />
       </Para>
       <FieldSet
         legend={formatMessage({
@@ -57,11 +56,11 @@ function CustomTextInput(): ReactNode {
   return (
     <>
       <Para>
-        {formatMessage({
-          id: "settings.customTextExamplesLabel",
-          description: "Text label.",
-          defaultMessage: "Examples:",
-        })}{" "}
+        <FormattedMessage
+          id="settings.customTextExamplesLabel"
+          description="Input field label."
+          defaultMessage="Examples:"
+        />{" "}
         {exampleTexts.map(({ title, content }, index) => (
           <span key={index}>
             {index > 0 ? ", " : null}
@@ -153,12 +152,12 @@ function CustomTextProcessing(): ReactNode {
           checked={settings.get(lessonProps.customText.lettersOnly)}
           label={formatMessage({
             id: "settings.customTextLettersOnlyLabel",
-            description: "Checkbox label.",
+            description: "Input field label.",
             defaultMessage: "Remove punctuation",
           })}
           title={formatMessage({
             id: "settings.customTextLettersOnlyTitle",
-            description: "Checkbox title.",
+            description: "Input field title.",
             defaultMessage:
               "Remove punctuation from the text to make it simpler to type.",
           })}
@@ -174,12 +173,12 @@ function CustomTextProcessing(): ReactNode {
           checked={settings.get(lessonProps.customText.lowercase)}
           label={formatMessage({
             id: "settings.customTextLowercaseLabel",
-            description: "Checkbox label.",
+            description: "Input field label.",
             defaultMessage: "Transform to lowercase",
           })}
           title={formatMessage({
             id: "settings.customTextLowercaseTitle",
-            description: "Checkbox title.",
+            description: "Input field title.",
             defaultMessage:
               "Transform all text to lower case to make it simpler to type.",
           })}
@@ -195,12 +194,12 @@ function CustomTextProcessing(): ReactNode {
           checked={settings.get(lessonProps.customText.randomize)}
           label={formatMessage({
             id: "settings.customTextRandomizeLabel",
-            description: "Checkbox label.",
+            description: "Input field label.",
             defaultMessage: "Shuffle words",
           })}
           title={formatMessage({
             id: "settings.customTextRandomizeTitle",
-            description: "Checkbox title.",
+            description: "Input field title.",
             defaultMessage: "Put words from the custom text in a random order.",
           })}
           onChange={(value) => {

@@ -14,7 +14,7 @@ import {
   TextField,
 } from "@keybr/widget";
 import { type ReactNode } from "react";
-import { useIntl } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { LessonLengthProp } from "./LessonLengthProp.tsx";
 import { TargetSpeedProp } from "./TargetSpeedProp.tsx";
 import { TextManglingProp } from "./TextManglingProp.tsx";
@@ -28,12 +28,11 @@ export function WordListLessonSettings({
   return (
     <>
       <Para>
-        {formatMessage({
-          id: "lessonType.wordList.description",
-          description: "Description text.",
-          defaultMessage:
-            "Generate typing lessons from the list of the most common words of your language. All keys are included by default. This mode is for the pros.",
-        })}
+        <FormattedMessage
+          id="lessonType.wordList.description"
+          description="Description text."
+          defaultMessage="Generate typing lessons from the list of the most common words of your language. All keys are included by default. This mode is for the pros."
+        />
       </Para>
       <FieldSet
         legend={formatMessage({
@@ -57,17 +56,16 @@ function WordListPreview({
 }: {
   readonly lesson: WordListLesson;
 }): ReactNode {
-  const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
   return (
     <>
       <FieldList>
         <Field>
-          {formatMessage({
-            id: "settings.wordListSizeLabel",
-            description: "Input field label.",
-            defaultMessage: "Word list size:",
-          })}
+          <FormattedMessage
+            id="settings.wordListSizeLabel"
+            description="Input field label."
+            defaultMessage="Word list size:"
+          />
         </Field>
         <Field>
           <Range

@@ -16,7 +16,7 @@ import {
   styleSizeWide,
 } from "@keybr/widget";
 import { type ReactNode } from "react";
-import { useIntl } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { ExampleText } from "./ExampleText.tsx";
 
 export function TypingSettings(): ReactNode {
@@ -33,7 +33,6 @@ export function TypingSettings(): ReactNode {
         <StopOnErrorProp />
         <ForgiveErrorsProp />
       </FieldSet>
-
       <FieldSet
         legend={formatMessage({
           id: "settings.textAppearanceLegend",
@@ -61,7 +60,7 @@ function StopOnErrorProp(): ReactNode {
           <CheckBox
             label={formatMessage({
               id: "settings.stopCursorOnErrorLabel",
-              description: "Checkbox label.",
+              description: "Input field label.",
               defaultMessage: "Stop the cursor when an error occurs.",
             })}
             checked={settings.get(textInputProps.stopOnError)}
@@ -72,12 +71,11 @@ function StopOnErrorProp(): ReactNode {
         </Field>
       </FieldList>
       <Para>
-        {formatMessage({
-          id: "settings.stopCursorOnErrorDescription",
-          description: "Checkbox description.",
-          defaultMessage:
-            "If enabled, the text cursor stops advancing until the right key is pressed at the current position. If disabled, all errors will be accumulated in the text input field and must be cleared with the delete key.",
-        })}
+        <FormattedMessage
+          id="settings.stopCursorOnErrorDescription"
+          description="Description text."
+          defaultMessage="If enabled, the text cursor stops advancing until the right key is pressed at the current position. If disabled, all errors will be accumulated in the text input field and must be cleared with the delete key."
+        />
       </Para>
     </>
   );
@@ -93,7 +91,7 @@ function ForgiveErrorsProp(): ReactNode {
           <CheckBox
             label={formatMessage({
               id: "settings.forgiveErrorsLabel",
-              description: "Checkbox label.",
+              description: "Input field label.",
               defaultMessage: "Forgive errors.",
             })}
             checked={settings.get(textInputProps.forgiveErrors)}
@@ -104,28 +102,26 @@ function ForgiveErrorsProp(): ReactNode {
         </Field>
       </FieldList>
       <Para>
-        {formatMessage({
-          id: "settings.forgiveErrorsDescription",
-          description: "Checkbox description.",
-          defaultMessage:
-            "Enabling this option makes the text input field forgive some kinds of errors by automatically fixing them. These are errors such as typing a wrong character or skipping a character.",
-        })}
+        <FormattedMessage
+          id="settings.forgiveErrorsDescription"
+          description="Description text."
+          defaultMessage="Enabling this option makes the text input field forgive some kinds of errors by automatically fixing them. These are errors such as typing a wrong character or skipping a character."
+        />
       </Para>
     </>
   );
 }
 
 function WhitespaceProp(): ReactNode {
-  const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
   return (
     <FieldList>
       <Field className={styleSizeWide}>
-        {formatMessage({
-          id: "settings.whitespaceLabel",
-          description: "Checkbox label.",
-          defaultMessage: "Whitespace:",
-        })}
+        <FormattedMessage
+          id="settings.whitespaceLabel"
+          description="Input field label."
+          defaultMessage="Whitespace:"
+        />
       </Field>
       <Field>
         <RadioBox
@@ -186,16 +182,15 @@ function WhitespaceProp(): ReactNode {
 }
 
 function CursorShapeProp(): ReactNode {
-  const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
   return (
     <FieldList>
       <Field className={styleSizeWide}>
-        {formatMessage({
-          id: "settings.cursorShapeLabel",
-          description: "Checkbox label.",
-          defaultMessage: "Cursor shape:",
-        })}
+        <FormattedMessage
+          id="settings.cursorShapeLabel"
+          description="Input field label."
+          defaultMessage="Cursor shape:"
+        />
       </Field>
       <Field>
         <RadioBox
@@ -274,16 +269,15 @@ function CursorShapeProp(): ReactNode {
 }
 
 function CursorMovementProp(): ReactNode {
-  const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
   return (
     <FieldList>
       <Field className={styleSizeWide}>
-        {formatMessage({
-          id: "settings.cursorMovementLabel",
-          description: "Checkbox label.",
-          defaultMessage: "Cursor movement:",
-        })}
+        <FormattedMessage
+          id="settings.cursorMovementLabel"
+          description="Input field label."
+          defaultMessage="Cursor movement:"
+        />
       </Field>
       <Field>
         <RadioBox
@@ -334,7 +328,7 @@ function SoundsProp(): ReactNode {
         <CheckBox
           label={formatMessage({
             id: "settings.enableSoundsLabel",
-            description: "Checkbox label.",
+            description: "Input field label.",
             defaultMessage: "Enable sounds",
           })}
           checked={settings.get(textDisplayProps.sounds)}

@@ -3,7 +3,7 @@ import { SpeedUnit, uiProps } from "@keybr/result";
 import { useSettings } from "@keybr/settings";
 import { Field, FieldList, FieldSet, Para, RadioBox } from "@keybr/widget";
 import { type ReactNode } from "react";
-import { useIntl } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 
 export function MiscSettings(): ReactNode {
   const { formatMessage } = useIntl();
@@ -29,13 +29,12 @@ function SpeedUnitProp(): ReactNode {
     <>
       <FieldList>
         <Field>
-          {formatMessage({
-            id: "settings.typingSpeedUnitCaption",
-            description: "Radio button group caption.",
-            defaultMessage: "Measure typing speed in:",
-          })}
+          <FormattedMessage
+            id="settings.typingSpeedUnitCaption"
+            description="Radio button group caption."
+            defaultMessage="Measure typing speed in:"
+          />
         </Field>
-
         <Field>
           <RadioBox
             checked={settings.get(uiProps.speedUnit) === SpeedUnit.WPM}
@@ -47,7 +46,6 @@ function SpeedUnitProp(): ReactNode {
             }
           />
         </Field>
-
         <Field>
           <RadioBox
             checked={settings.get(uiProps.speedUnit) === SpeedUnit.CPM}
@@ -59,7 +57,6 @@ function SpeedUnitProp(): ReactNode {
             }
           />
         </Field>
-
         <Field>
           <RadioBox
             checked={settings.get(uiProps.speedUnit) === SpeedUnit.CPS}
@@ -72,14 +69,12 @@ function SpeedUnitProp(): ReactNode {
           />
         </Field>
       </FieldList>
-
       <Para>
-        {formatMessage({
-          id: "settings.typingSpeedUnitDescription",
-          description: "Radio button group description.",
-          defaultMessage:
-            "For the purpose of typing measurement, each word is standardized to be five characters or keystrokes in English, including spaces and punctuation.",
-        })}
+        <FormattedMessage
+          id="settings.typingSpeedUnitDescription"
+          description="Radio button group description."
+          defaultMessage="For the purpose of typing measurement, each word is standardized to be five characters or keystrokes in English, including spaces and punctuation."
+        />
       </Para>
     </>
   );

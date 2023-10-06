@@ -2,19 +2,18 @@ import { lessonProps } from "@keybr/lesson";
 import { useSettings } from "@keybr/settings";
 import { Field, FieldList, Range, styleSizeWide } from "@keybr/widget";
 import { type ReactNode } from "react";
-import { useIntl } from "react-intl";
+import { FormattedMessage } from "react-intl";
 
 export function LessonLengthProp(): ReactNode {
-  const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
   return (
     <FieldList>
       <Field>
-        {formatMessage({
-          id: "settings.lessonLengthLabel",
-          description: "Input field label.",
-          defaultMessage: "Add words to lessons:",
-        })}
+        <FormattedMessage
+          id="settings.lessonLengthLabel"
+          description="Input field label."
+          defaultMessage="Add words to lessons:"
+        />
       </Field>
       <Field>
         <Range

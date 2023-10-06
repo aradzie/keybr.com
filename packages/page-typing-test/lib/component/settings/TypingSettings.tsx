@@ -40,7 +40,7 @@ export function TypingSettings(): ReactNode {
             <CheckBox
               label={formatMessage({
                 id: "settings.stopCursorOnErrorLabel",
-                description: "Checkbox label.",
+                description: "Input field label.",
                 defaultMessage: "Stop the cursor when an error occurs.",
               })}
               checked={settings.get(textInputProps.stopOnError)}
@@ -54,7 +54,7 @@ export function TypingSettings(): ReactNode {
         <Para>
           {formatMessage({
             id: "settings.stopCursorOnErrorDescription",
-            description: "Checkbox description.",
+            description: "Description text.",
             defaultMessage:
               "If enabled, the text cursor stops advancing until the right key is pressed at the current position. If disabled, all errors will be accumulated in the text input field and must be cleared with the delete key.",
           })}
@@ -65,7 +65,7 @@ export function TypingSettings(): ReactNode {
             <CheckBox
               label={formatMessage({
                 id: "settings.forgiveErrorsLabel",
-                description: "Checkbox label.",
+                description: "Input field label.",
                 defaultMessage: "Forgive errors.",
               })}
               checked={settings.get(textInputProps.forgiveErrors)}
@@ -81,7 +81,7 @@ export function TypingSettings(): ReactNode {
         <Para>
           {formatMessage({
             id: "settings.forgiveErrorsDescription",
-            description: "Checkbox description.",
+            description: "Description text.",
             defaultMessage:
               "Enabling this option makes the text input field forgive some kinds of errors by automatically fixing them. These are errors such as typing a wrong character or skipping a character.",
           })}
@@ -106,7 +106,7 @@ export function TypingSettings(): ReactNode {
           <Field className={styleSizeWide}>
             {formatMessage({
               id: "settings.whitespaceLabel",
-              description: "Checkbox label.",
+              description: "Input field label.",
               defaultMessage: "Whitespace:",
             })}
           </Field>
@@ -170,7 +170,7 @@ export function TypingSettings(): ReactNode {
           <Field className={styleSizeWide}>
             {formatMessage({
               id: "settings.cursorShapeLabel",
-              description: "Checkbox label.",
+              description: "Input field label.",
               defaultMessage: "Cursor shape:",
             })}
           </Field>
@@ -252,7 +252,7 @@ export function TypingSettings(): ReactNode {
           <Field className={styleSizeWide}>
             {formatMessage({
               id: "settings.cursorMovementLabel",
-              description: "Checkbox label.",
+              description: "Input field label.",
               defaultMessage: "Cursor movement:",
             })}
           </Field>
@@ -299,7 +299,7 @@ export function TypingSettings(): ReactNode {
             <CheckBox
               label={formatMessage({
                 id: "settings.enableSoundsLabel",
-                description: "Checkbox label.",
+                description: "Input field label.",
                 defaultMessage: "Enable sounds",
               })}
               title={formatMessage({

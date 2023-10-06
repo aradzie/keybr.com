@@ -489,7 +489,7 @@
   },
   "lessonType.customText.name": {
     "defaultMessage": "Собственный текст",
-    "description": "Widget label."
+    "description": "Input field label."
   },
   "lessonType.guided.description": {
     "defaultMessage": "Генерировать уроки со случайными словами используя фонетические правила вашего языка. Набор букв, из которого генерируются слова изменяется динамически, в зависимости от ваших успехов. Этот режим для новичков.",
@@ -497,11 +497,11 @@
   },
   "lessonType.guided.name": {
     "defaultMessage": "Компьютерные уроки",
-    "description": "Widget label."
+    "description": "Input field label."
   },
   "lessonType.numbers.name": {
     "defaultMessage": "Числа",
-    "description": "Widget label."
+    "description": "Input field label."
   },
   "lessonType.wordList.description": {
     "defaultMessage": "Генерировать уроки из списка наиболее распространенных слов вашего языка. Все буквы включены по умолчанию. Этот режим для профессионалов.",
@@ -509,7 +509,7 @@
   },
   "lessonType.wordlist.name": {
     "defaultMessage": "Частые слова",
-    "description": "Widget label."
+    "description": "Input field label."
   },
   "metric.accuracy.label": {
     "defaultMessage": "Точность",
@@ -861,27 +861,27 @@
   },
   "practice.resetLessonButtonTitle": {
     "defaultMessage": "Начать текущий урок сначала (Ctrl + Left Arrow).",
-    "description": "Button title."
+    "description": "Input field title."
   },
   "practice.settingButtonName": {
     "defaultMessage": "Настройки...",
-    "description": "Button name."
+    "description": "Input field label."
   },
   "practice.settingButtonTitle": {
     "defaultMessage": "Изменить настройки уроков, поменять язык, раскладку клавиатуры и так далее.",
-    "description": "Button title."
+    "description": "Input field title."
   },
   "practice.showHelpSlidesButtonTitle": {
     "defaultMessage": "Показать справочные слайды.",
-    "description": "Button title."
+    "description": "Input field title."
   },
   "practice.skipLessonButtonTitle": {
     "defaultMessage": "Пропустить текущий урок (Ctrl + Right Arrow).",
-    "description": "Button title."
+    "description": "Input field title."
   },
   "practice.switchInterfaceButtonTitle": {
     "defaultMessage": "Сменить расположение элементов интерфейса.",
-    "description": "Button title."
+    "description": "Input field title."
   },
   "practice.tourSlide1": {
     "defaultMessage": "<h1>Научитесь печатать вслепую</h1><p>Это приложение поможет вам научиться <em>слепому метод печати</em>, что значит печатать используя мышечную память, не глядя на клавиатуру чтобы искать клавиши. Это поможет вам значительно улучшить скорость набора и снизить число ошибок. Противоположность этому является <em>набор двумя пальцами</em>, когда вы смотрите на клавиатуру, а не экран, и печатаете указательными пальцами.</p><p>В этом коротком уроке мы объясним, как работает это приложение.</p><p>Вы можете перемещаться между слайдами используя клавиши <em>Стрелка влево</em> и <em>Стрелка вправо</em>.</p>",
@@ -1181,11 +1181,11 @@
   },
   "settings.benfordsLawDescription": {
     "defaultMessage": "<a>Закон Бенфорда</a> это наблюдение, согласно которому во многих реальных наборах числовых данных первая цифра, скорее всего, будет маленькой.",
-    "description": "Freeform text."
+    "description": "Description text."
   },
   "settings.benfordsLawLabel": {
     "defaultMessage": "Закон Бенфорда.",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.capitalLettersLabel": {
     "defaultMessage": "Добавить заглавные буквы:",
@@ -1193,15 +1193,15 @@
   },
   "settings.cursorMovementLabel": {
     "defaultMessage": "Движение курсора:",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.cursorShapeLabel": {
     "defaultMessage": "Форма курсора:",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.customTextExamplesLabel": {
     "defaultMessage": "Примеры:",
-    "description": "Text label."
+    "description": "Input field label."
   },
   "settings.customTextInputPlaceholder": {
     "defaultMessage": "Собственный текст...",
@@ -1209,31 +1209,31 @@
   },
   "settings.customTextLettersOnlyLabel": {
     "defaultMessage": "Убрать знаки препинания",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.customTextLettersOnlyTitle": {
     "defaultMessage": "Убрать знаки препинания чтобы упростить набор текста.",
-    "description": "Checkbox title."
+    "description": "Input field title."
   },
   "settings.customTextLowercaseLabel": {
     "defaultMessage": "Преобразовать в нижний регистр",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.customTextLowercaseTitle": {
     "defaultMessage": "Преобразовать весь текст в нижний регистр чтобы упростить набор.",
-    "description": "Checkbox title."
+    "description": "Input field title."
   },
   "settings.customTextRandomizeLabel": {
     "defaultMessage": "Перемешать слова",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.customTextRandomizeTitle": {
     "defaultMessage": "Поместить слова из собственного текста в случайном порядке.",
-    "description": "Checkbox title."
+    "description": "Input field title."
   },
   "settings.dailyGoalDescription": {
     "defaultMessage": "Установите время, которое вы хотите тратить на упражнения ежедневно.",
-    "description": "Input field description."
+    "description": "Set the time you want to spend on the exercises daily."
   },
   "settings.dailyGoalLabel": {
     "defaultMessage": "Ежедневная цель:",
@@ -1241,19 +1241,19 @@
   },
   "settings.doneButtonLabel": {
     "defaultMessage": "Готово",
-    "description": "Button label."
+    "description": "Input field label."
   },
   "settings.emulateLayoutLabel": {
     "defaultMessage": "Эмулировать раскладку",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.emulateLayoutTitle": {
     "defaultMessage": "Эмулировать выбранную раскладку даже если у вас в системе выбрана другая раскладка.",
-    "description": "Checkbox title."
+    "description": "Input field title."
   },
   "settings.enableSoundsLabel": {
     "defaultMessage": "Включить звуки",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.enableSoundsTitle": {
     "defaultMessage": "Издавать звуки при нажатии клавиш и опечатках.",
@@ -1261,11 +1261,11 @@
   },
   "settings.forgiveErrorsDescription": {
     "defaultMessage": "Эта настройка позволяет прощать некоторые типы ошибок путем их автоматическкого исправления. Это такие ошибки как неправильный символ в какой то позиции или пропущенный символ.",
-    "description": "Checkbox description."
+    "description": "Description text."
   },
   "settings.forgiveErrorsLabel": {
     "defaultMessage": "Прощать ошибки",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.interfaceOptionsLegend": {
     "defaultMessage": "Настройки интерфейса",
@@ -1273,7 +1273,7 @@
   },
   "settings.keyboardTabLabel": {
     "defaultMessage": "Клавиатура",
-    "description": "Tab label."
+    "description": "Header text."
   },
   "settings.lessonLengthLabel": {
     "defaultMessage": "Добавить слов в уроки:",
@@ -1285,11 +1285,11 @@
   },
   "settings.lessonsTabLabel": {
     "defaultMessage": "Уроки",
-    "description": "Tab label."
+    "description": "Header text."
   },
   "settings.miscellaneousTabLabel": {
     "defaultMessage": "Разное",
-    "description": "Tab label."
+    "description": "Header text."
   },
   "settings.optionsLegend": {
     "defaultMessage": "Настройки",
@@ -1309,27 +1309,27 @@
   },
   "settings.selectLanguageLabel": {
     "defaultMessage": "Язык:",
-    "description": "Dropdown label."
+    "description": "Input field label."
   },
   "settings.selectLanguageTitle": {
     "defaultMessage": "Выберите язык клавиатурной раскладки.",
-    "description": "Dropdown title."
+    "description": "Input field title."
   },
   "settings.selectLayoutLabel": {
     "defaultMessage": "Раскладка:",
-    "description": "Dropdown label."
+    "description": "Input field label."
   },
   "settings.selectLayoutTitle": {
     "defaultMessage": "Выберите раскладку которую хотите изучить. Для одного языка может быть несколько раскладок.",
-    "description": "Dropdown title."
+    "description": "Input field title."
   },
   "settings.stopCursorOnErrorDescription": {
     "defaultMessage": "Если включено, то курсор остановится до тех пор, пока не будет нажата правильная клавиша в текущей позиции. Если отключено, все ошибки будут накапливаться перед курсором и должны быть очищены клавишей удаления.",
-    "description": "Checkbox description."
+    "description": "Description text."
   },
   "settings.stopCursorOnErrorLabel": {
     "defaultMessage": "Остановить курсор при ошибках",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.targetSpeedLabel": {
     "defaultMessage": "Целевая скорость набора:",
@@ -1353,11 +1353,11 @@
   },
   "settings.typingTabLabel": {
     "defaultMessage": "Набор текста",
-    "description": "Tab label."
+    "description": "Header text."
   },
   "settings.whitespaceLabel": {
     "defaultMessage": "Пробелы:",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.wordListSizeLabel": {
     "defaultMessage": "Количество слов:",

@@ -51,7 +51,7 @@ function Content({ wordList }: { readonly wordList: WordList }): ReactNode {
         <Field>
           {formatMessage({
             id: "settings.selectLanguageLabel",
-            description: "Dropdown label.",
+            description: "Input field label.",
             defaultMessage: "Language:",
           })}
         </Field>
@@ -64,7 +64,7 @@ function Content({ wordList }: { readonly wordList: WordList }): ReactNode {
             }))}
             title={formatMessage({
               id: "settings.selectLanguageTitle",
-              description: "Dropdown title.",
+              description: "Input field title.",
               defaultMessage: "Select your spoken language.",
             })}
             value={String(settings.get(typingTestProps.language))}

@@ -17,7 +17,7 @@ import {
   useWindowEvent,
 } from "@keybr/widget";
 import { type ReactNode, useState } from "react";
-import { useIntl } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 
 export function KeyboardSettings(): ReactNode {
   const { formatMessage } = useIntl();
@@ -54,11 +54,11 @@ function LayoutProp(): ReactNode {
     <>
       <FieldList>
         <Field>
-          {formatMessage({
-            id: "settings.selectLanguageLabel",
-            description: "Dropdown label.",
-            defaultMessage: "Language:",
-          })}
+          <FormattedMessage
+            id="settings.selectLanguageLabel"
+            description="Input field label."
+            defaultMessage="Language:"
+          />
         </Field>
         <Field>
           <OptionList
@@ -68,7 +68,7 @@ function LayoutProp(): ReactNode {
             }))}
             title={formatMessage({
               id: "settings.selectLanguageTitle",
-              description: "Dropdown title.",
+              description: "Input field title.",
               defaultMessage: "Select your spoken language.",
             })}
             value={layout.language.id}
@@ -83,11 +83,11 @@ function LayoutProp(): ReactNode {
           />
         </Field>
         <Field>
-          {formatMessage({
-            id: "settings.selectLayoutLabel",
-            description: "Dropdown label.",
-            defaultMessage: "Layout:",
-          })}
+          <FormattedMessage
+            id="settings.selectLayoutLabel"
+            description="Input field label."
+            defaultMessage="Layout:"
+          />
         </Field>
         <Field>
           <OptionList
@@ -99,7 +99,7 @@ function LayoutProp(): ReactNode {
             }))}
             title={formatMessage({
               id: "settings.selectLayoutTitle",
-              description: "Dropdown title.",
+              description: "Input field title.",
               defaultMessage:
                 "Select the keyboard layout you wish to practice with. There may be many layouts available for each language.",
             })}
@@ -117,12 +117,12 @@ function LayoutProp(): ReactNode {
             disabled={!layout.emulate}
             label={formatMessage({
               id: "settings.emulateLayoutLabel",
-              description: "Checkbox label.",
+              description: "Input field label.",
               defaultMessage: "Emulate layout",
             })}
             title={formatMessage({
               id: "settings.emulateLayoutTitle",
-              description: "Checkbox title.",
+              description: "Input field title.",
               defaultMessage:
                 "Emulate the selected layout when the standard layout is set in the system.",
             })}
