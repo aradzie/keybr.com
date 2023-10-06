@@ -26,6 +26,7 @@
     "format": "prettier '{**/*,*}.{js,jsx,ts,tsx,less,css}' --write",
     "build": "env NODE_ENV=production webpack",
     "build-dev": "env NODE_ENV=development webpack",
+    "watch-dev": "env NODE_ENV=development webpack --watch",
     "start": "env NODE_ENV=development node --enable-source-maps ./root/index.js"
   },
   "dependencies": {
