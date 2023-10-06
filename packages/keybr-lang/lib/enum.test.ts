@@ -25,7 +25,9 @@ test("enum", (t) => {
   t.is(items.at(0), a);
   t.is(items.at(1), b);
   t.is(items.at(2), c);
-  t.is(items.at(3), undefined);
+  t.throws(() => items.at(-1));
+  t.throws(() => items.at(3));
+  t.throws(() => items.at(0.1));
   t.is(items.get("a"), a);
   t.is(items.get("b"), b);
   t.is(items.get("x", c), c);
@@ -73,7 +75,9 @@ test("xenum", (t) => {
   t.is(items.at(0), a);
   t.is(items.at(1), b);
   t.is(items.at(2), c);
-  t.is(items.at(3), undefined);
+  t.throws(() => items.at(-1));
+  t.throws(() => items.at(3));
+  t.throws(() => items.at(0.1));
   t.is(items.get("a"), a);
   t.is(items.get("b"), b);
   t.is(items.get("x", c), c);
