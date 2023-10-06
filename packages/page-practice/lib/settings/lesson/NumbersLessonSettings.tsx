@@ -17,11 +17,9 @@ export function NumbersLessonSettings({
   readonly lesson: NumbersLesson;
 }): ReactNode {
   const { formatMessage } = useIntl();
-  const { settings, updateSettings } = useSettings();
   return (
     <>
       <Para>Practice numbers only. No letters are used.</Para>
-
       <FieldSet
         legend={formatMessage({
           id: "settings.lessonOptionsLegend",
@@ -29,48 +27,55 @@ export function NumbersLessonSettings({
           defaultMessage: "Lesson Options",
         })}
       >
-        <FieldList>
-          <Field>
-            <CheckBox
-              label={formatMessage({
-                id: "settings.benfordsLawLabel",
-                description: "Checkbox label.",
-                defaultMessage: "Benford's law",
-              })}
-              title={formatMessage({
-                id: "settings.benfordsLawTitle",
-                description: "Checkbox title.",
-                defaultMessage: "Generate numbers following the Benford's law.",
-              })}
-              checked={settings.get(lessonProps.numbers.benford)}
-              onChange={(value) => {
-                updateSettings(
-                  settings.set(lessonProps.numbers.benford, value),
-                );
-              }}
-            />
-          </Field>
-        </FieldList>
+        <BenfordProp />
+      </FieldSet>
+    </>
+  );
+}
 
-        <Para>
-          <FormattedMessage
-            id="settings.benfordsLawDescription"
-            description="Freeform text."
-            defaultMessage="<a>Benford's law</a> is an observation that in many real-life numerical data sets, the leading digit is likely to be small."
-            values={{
-              a: (chunks: ReactNode): ReactNode => (
-                <Link
-                  href="https://en.wikipedia.org/wiki/Benford's_law"
-                  target="_blank"
-                  external={true}
-                >
-                  {chunks}
-                </Link>
-              ),
+function BenfordProp(): ReactNode {
+  const { formatMessage } = useIntl();
+  const { settings, updateSettings } = useSettings();
+  return (
+    <>
+      <FieldList>
+        <Field>
+          <CheckBox
+            label={formatMessage({
+              id: "settings.benfordsLawLabel",
+              description: "Checkbox label.",
+              defaultMessage: "Benford's law",
+            })}
+            title={formatMessage({
+              id: "settings.benfordsLawTitle",
+              description: "Checkbox title.",
+              defaultMessage: "Generate numbers following the Benford's law.",
+            })}
+            checked={settings.get(lessonProps.numbers.benford)}
+            onChange={(value) => {
+              updateSettings(settings.set(lessonProps.numbers.benford, value));
             }}
           />
-        </Para>
-      </FieldSet>
+        </Field>
+      </FieldList>
+      <Para>
+        <FormattedMessage
+          id="settings.benfordsLawDescription"
+          description="Freeform text."
+          defaultMessage="<a>Benford's law</a> is an observation that in many real-life numerical data sets, the leading digit is likely to be small."
+          values={{
+            a: (chunks) => (
+              <Link
+                href="https://en.wikipedia.org/wiki/Benford's_law"
+                target="_blank"
+                external={true}
+              >
+                {chunks}
+              </Link>
+            ),
+          }}
+        />
+      </Para>
     </>
   );
 }

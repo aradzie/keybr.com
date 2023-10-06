@@ -21,26 +21,18 @@ import { WordListLessonSettings } from "./lesson/WordListLessonSettings.tsx";
 export function LessonSettings(): ReactNode {
   const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
-
-  const lessonTypes = [
-    LessonType.GUIDED,
-    LessonType.WORDLIST,
-    LessonType.CUSTOM,
-    LessonType.NUMBERS,
-  ];
-
   return (
     <LessonLoader>
       {(lesson) => {
         return (
           <>
             <TabList
-              selectedIndex={lessonTypes.findIndex(
-                (type) => type === settings.get(lessonProps.type),
+              selectedIndex={LessonType.ALL.indexOf(
+                settings.get(lessonProps.type),
               )}
               onSelect={(index) => {
                 updateSettings(
-                  settings.set(lessonProps.type, lessonTypes[index]),
+                  settings.set(lessonProps.type, LessonType.ALL.at(index)),
                 );
               }}
             >

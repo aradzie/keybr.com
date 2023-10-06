@@ -4,7 +4,7 @@ import { CheckBox, Field, FieldList } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
 
-export function MangleTextProp(): ReactNode {
+export function TextManglingProp(): ReactNode {
   const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
   return (

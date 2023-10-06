@@ -18,11 +18,11 @@ export function SettingsScreen({
 }): ReactNode {
   const { settings } = useSettings();
   const [newSettings, setNewSettings] = useState(settings);
+  const layout = newSettings.get(keyboardProps.layout);
   const keyboard = useMemo(
-    () => loadKeyboard(newSettings.get(keyboardProps.layout), { full: true }),
-    [newSettings],
+    () => loadKeyboard(layout, { full: true }),
+    [layout],
   );
-
   return (
     <SettingsContext.Provider
       value={{
@@ -45,7 +45,6 @@ export function SettingsScreen({
 
 function Content({ onSubmit }: { readonly onSubmit: () => void }): ReactNode {
   const { formatMessage } = useIntl();
-
   return (
     <Screen>
       <Header level={1}>

@@ -24,16 +24,18 @@ export function LessonPreview({
   const { settings } = useSettings();
   const { results } = useResults();
   const layout = settings.get(keyboardProps.layout);
-  const group = useMemo(
-    () => ResultGroups.byLayoutFamily(results).get(layout.family),
-    [results, layout],
-  );
-  const keyStatsMap = useMemo(() => lesson.analyze(group), [lesson, group]);
-  lesson.rng = LCG(123);
-  const lessonKeys = lesson.update(keyStatsMap);
-  const fragment = lesson.generate(lessonKeys);
-  const textInput = new TextInput(fragment, toTextInputSettings(settings));
-
+  const keyStatsMap = useMemo(() => {
+    return lesson.analyze(
+      ResultGroups.byLayoutFamily(results).get(layout.family),
+    );
+  }, [lesson, results, layout]);
+  const [lessonKeys, textInput] = useMemo(() => {
+    lesson.rng = LCG(123);
+    const lessonKeys = lesson.update(keyStatsMap);
+    const fragment = lesson.generate(lessonKeys);
+    const textInput = new TextInput(fragment, toTextInputSettings(settings));
+    return [lessonKeys, textInput];
+  }, [lesson, settings, keyStatsMap]);
   return (
     <FieldSet
       legend={formatMessage({

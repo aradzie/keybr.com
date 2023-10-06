@@ -14,7 +14,7 @@ import {
 } from "@keybr/widget";
 import { type ReactNode, useMemo } from "react";
 import { useIntl } from "react-intl";
-import { EXAMPLE_TEXT } from "./example.ts";
+import { exampleTexts } from "./example-texts.ts";
 import { LessonLengthProp } from "./LessonLengthProp.tsx";
 import { TargetSpeedProp } from "./TargetSpeedProp.tsx";
 
@@ -34,7 +34,6 @@ export function CustomTextLessonSettings({
             "Generate typing lessons from the words of your own custom text. All keys are included by default. This mode is for the pros.",
         })}
       </Para>
-
       <FieldSet
         legend={formatMessage({
           id: "settings.lessonOptionsLegend",
@@ -43,13 +42,9 @@ export function CustomTextLessonSettings({
         })}
       >
         <CustomTextInput />
-
         <CustomTextStats />
-
         <CustomTextProcessing />
-
         <TargetSpeedProp />
-
         <LessonLengthProp />
       </FieldSet>
     </>
@@ -67,7 +62,7 @@ function CustomTextInput(): ReactNode {
           description: "Text label.",
           defaultMessage: "Examples:",
         })}{" "}
-        {EXAMPLE_TEXT.map(({ title, content }, index) => (
+        {exampleTexts.map(({ title, content }, index) => (
           <span key={index}>
             {index > 0 ? ", " : null}
             <a
@@ -84,7 +79,6 @@ function CustomTextInput(): ReactNode {
           </span>
         ))}
       </Para>
-
       <Para>
         <TextField
           className={styleSizeFull}
@@ -108,9 +102,10 @@ function CustomTextStats(): ReactNode {
   const { formatMessage } = useIntl();
   const { formatNumber } = useIntlNumbers();
   const { settings } = useSettings();
+  const customText = settings.get(lessonProps.customText.content);
   const { numWords, numUniqueWords, avgWordLength } = useMemo(
-    () => textStatsOf(settings.get(lessonProps.customText.content)),
-    [settings],
+    () => textStatsOf(customText),
+    [customText],
   );
   return (
     <FieldList>

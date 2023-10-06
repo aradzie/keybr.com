@@ -3,7 +3,7 @@ export type ExampleText = {
   readonly content: string;
 };
 
-const JABBERWOCKY: ExampleText = {
+const jabberwocky: ExampleText = {
   title: "Jabberwocky",
   content:
     "Jabberwocky\n" +
@@ -44,7 +44,7 @@ const JABBERWOCKY: ExampleText = {
     "And the mome raths outgrabe.",
 };
 
-const LOREM_IPSUM: ExampleText = {
+const loremIpsum: ExampleText = {
   title: "Lorem Ipsum",
   content:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " +
@@ -61,7 +61,7 @@ const LOREM_IPSUM: ExampleText = {
     "Praesent non vulputate tortor, ac semper diam.",
 };
 
-const A_SHORT_STORY: ExampleText = {
+const aShortStory: ExampleText = {
   title: "A Short Story",
   content:
     "Imagine all human beings swept off the face of the earth, excepting one man. " +
@@ -70,8 +70,8 @@ const A_SHORT_STORY: ExampleText = {
     "sitting in a house and hearing a ring at the door-bell!",
 };
 
-export const EXAMPLE_TEXT: readonly ExampleText[] = [
-  JABBERWOCKY,
-  LOREM_IPSUM,
-  A_SHORT_STORY,
+export const exampleTexts: readonly ExampleText[] = [
+  jabberwocky,
+  loremIpsum,
+  aShortStory,
 ];

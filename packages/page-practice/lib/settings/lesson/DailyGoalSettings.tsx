@@ -17,7 +17,6 @@ export function DailyGoalSettings(): ReactNode {
   const { formatMessage } = useIntl();
   const { formatDuration } = useIntlDurations();
   const { settings, updateSettings } = useSettings();
-
   return (
     <FieldSet>
       <Para>
@@ -28,7 +27,6 @@ export function DailyGoalSettings(): ReactNode {
             "Set the time you want to spend on the exercises daily.",
         })}
       </Para>
-
       <FieldList>
         <Field>
           {formatMessage({

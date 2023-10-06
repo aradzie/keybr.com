@@ -11,8 +11,8 @@ import {
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
 import { LessonLengthProp } from "./LessonLengthProp.tsx";
-import { MangleTextProp } from "./MangleTextProp.tsx";
 import { TargetSpeedProp } from "./TargetSpeedProp.tsx";
+import { TextManglingProp } from "./TextManglingProp.tsx";
 
 export function GuidedLessonSettings({
   lesson,
@@ -30,7 +30,6 @@ export function GuidedLessonSettings({
             "Generate typing lessons with random words using the phonetic rules of your language. The key set is expanded dynamically based on your performance. This mode is for the beginners.",
         })}
       </Para>
-
       <FieldSet
         legend={formatMessage({
           id: "settings.lessonOptionsLegend",
@@ -39,11 +38,8 @@ export function GuidedLessonSettings({
         })}
       >
         <AlphabetSize />
-
-        <MangleTextProp />
-
+        <TextManglingProp />
         <TargetSpeedProp />
-
         <LessonLengthProp />
       </FieldSet>
     </>

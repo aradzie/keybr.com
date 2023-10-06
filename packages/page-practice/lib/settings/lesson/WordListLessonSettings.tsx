@@ -34,7 +34,6 @@ export function WordListLessonSettings({
             "Generate typing lessons from the list of the most common words of your language. All keys are included by default. This mode is for the pros.",
         })}
       </Para>
-
       <FieldSet
         legend={formatMessage({
           id: "settings.lessonOptionsLegend",
@@ -43,11 +42,8 @@ export function WordListLessonSettings({
         })}
       >
         <WordListPreview lesson={lesson} />
-
         <WordListStats lesson={lesson} />
-
         <TargetSpeedProp />
-
         <LessonLengthProp />
       </FieldSet>
     </>
@@ -91,7 +87,6 @@ function WordListPreview({
           />
         </Field>
       </FieldList>
-
       <Para>
         <TextField
           className={styleSizeFull}
