@@ -1233,7 +1233,7 @@
   },
   "settings.dailyGoalDescription": {
     "defaultMessage": "Установите время, которое вы хотите тратить на упражнения ежедневно.",
-    "description": "Set the time you want to spend on the exercises daily."
+    "description": "Description text."
   },
   "settings.dailyGoalLabel": {
     "defaultMessage": "Ежедневная цель:",

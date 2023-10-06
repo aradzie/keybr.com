@@ -1233,7 +1233,7 @@
   },
   "settings.dailyGoalDescription": {
     "defaultMessage": "Legen Sie die Zeit fest, die Sie täglich für die Übungen aufwenden möchten.",
-    "description": "Set the time you want to spend on the exercises daily."
+    "description": "Description text."
   },
   "settings.dailyGoalLabel": {
     "defaultMessage": "Tägliches Ziel:",

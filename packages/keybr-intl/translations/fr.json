@@ -1233,7 +1233,7 @@
   },
   "settings.dailyGoalDescription": {
     "defaultMessage": "Définissez le temps que vous souhaitez consacrer quotidiennement aux exercices.",
-    "description": "Set the time you want to spend on the exercises daily."
+    "description": "Description text."
   },
   "settings.dailyGoalLabel": {
     "defaultMessage": "Objectif quotidien:",

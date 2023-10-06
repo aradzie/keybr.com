@@ -21,8 +21,8 @@ export function DailyGoalSettings(): ReactNode {
       <Para>
         <FormattedMessage
           id="settings.dailyGoalDescription"
-          defaultMessage="Description text."
-          description="Set the time you want to spend on the exercises daily."
+          description="Description text."
+          defaultMessage="Set the time you want to spend on the exercises daily."
         />
       </Para>
       <FieldList>

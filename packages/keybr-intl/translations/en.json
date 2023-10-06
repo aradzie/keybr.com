@@ -1232,8 +1232,8 @@
     "description": "Input field title."
   },
   "settings.dailyGoalDescription": {
-    "defaultMessage": "Description text.",
-    "description": "Set the time you want to spend on the exercises daily."
+    "defaultMessage": "Set the time you want to spend on the exercises daily.",
+    "description": "Description text."
   },
   "settings.dailyGoalLabel": {
     "defaultMessage": "Daily goal:",
