@@ -38,6 +38,7 @@ export function toTextInputSettings(settings: Settings): TextInputSettings {
 export type TextDisplaySettings = {
   readonly caretShapeStyle: CaretShapeStyle;
   readonly caretMovementStyle: CaretMovementStyle;
+  readonly enableSoundStyle: EnableSoundStyle;
   readonly whitespaceStyle: WhitespaceStyle;
   readonly sounds: boolean;
 };
@@ -59,10 +60,15 @@ export enum WhitespaceStyle {
   Bar = 2,
   Bullet = 3,
 }
+export enum EnableSoundStyle {
+  All = 1,
+  Error = 2,
+}
 
 export const textDisplaySettings: TextDisplaySettings = {
   caretShapeStyle: CaretShapeStyle.Underline,
   caretMovementStyle: CaretMovementStyle.Smooth,
+  enableSoundStyle: EnableSoundStyle.All,
   whitespaceStyle: WhitespaceStyle.Bullet,
   sounds: false,
 };
@@ -84,12 +90,18 @@ export const textDisplayProps = {
     WhitespaceStyle.Bullet,
   ),
   sounds: booleanProp("textDisplay.sounds", false),
+  enableSoundStyle: enumProp(
+    "textDisplay.enableSoundStyle",
+    EnableSoundStyle,
+    EnableSoundStyle.All,
+  ),
 } as const;
 
 export function toTextDisplaySettings(settings: Settings): TextDisplaySettings {
   return {
     caretShapeStyle: settings.get(textDisplayProps.caretShapeStyle),
     caretMovementStyle: settings.get(textDisplayProps.caretMovementStyle),
+    enableSoundStyle: settings.get(textDisplayProps.enableSoundStyle),
     whitespaceStyle: settings.get(textDisplayProps.whitespaceStyle),
     sounds: settings.get(textDisplayProps.sounds),
   };

@@ -4,8 +4,8 @@ import { LessonLoader } from "@keybr/lesson-loader";
 import { ResultGroups, useResults } from "@keybr/result";
 import { type Settings, useSettings } from "@keybr/settings";
 import { enableSounds, loadSounds } from "@keybr/sound";
-import { textDisplayProps } from "@keybr/textinput";
-import { textInputSounds } from "@keybr/textinput-sounds";
+import { EnableSoundStyle, textDisplayProps } from "@keybr/textinput";
+import { TextInputSound, textInputSounds } from "@keybr/textinput-sounds";
 import { type ReactNode, useEffect, useRef } from "react";
 import { Controller } from "./Controller.tsx";
 import {
@@ -37,7 +37,6 @@ export function PracticeScreen({
     </KeyboardContext.Provider>
   );
 }
-
 function ResultUpdater({
   settings,
   lesson,
@@ -49,9 +48,22 @@ function ResultUpdater({
 }): ReactNode {
   const { results, appendResults } = useResults();
   const lastLesson = useRef<LastLesson | null>(null);
+  const soundOptions = soundStyleOption();
+
+  const handleEnableSounds = () => {
+    if (soundOptions) {
+      console.log("Sound Options:", soundOptions);
+      loadSounds(soundOptions);
+
+      // Ensure that enabling sounds happens within a user-initiated event.
+      const soundSettings = settings.get(textDisplayProps.sounds);
+      console.log("Sound Settings:", soundSettings);
+      enableSounds(soundSettings);
+    }
+  };
+
   useEffect(() => {
-    loadSounds(textInputSounds);
-    enableSounds(settings.get(textDisplayProps.sounds));
+    handleEnableSounds();
   }, [settings]);
   const group = ResultGroups.byLayoutFamily(results).get(
     settings.get(keyboardProps.layout).family,
@@ -67,3 +79,13 @@ function ResultUpdater({
   state.lastLesson = lastLesson.current;
   return <Controller state={state} onConfigure={onConfigure} />;
 }
+const soundStyleOption = () => {
+  switch (EnableSoundStyle) {
+    case EnableSoundStyle.All:
+      return textInputSounds;
+    case EnableSoundStyle.Error:
+      return {
+        [TextInputSound.Blip]: textInputSounds[TextInputSound.Blip],
+      };
+  }
+};

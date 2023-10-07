@@ -2,6 +2,7 @@ import { useSettings } from "@keybr/settings";
 import {
   CaretMovementStyle,
   CaretShapeStyle,
+  EnableSoundStyle,
   textDisplayProps,
   textInputProps,
   WhitespaceStyle,
@@ -324,7 +325,7 @@ function SoundsProp(): ReactNode {
   const { settings, updateSettings } = useSettings();
   return (
     <FieldList>
-      <Field>
+      <Field className={styleSizeWide}>
         <CheckBox
           label={formatMessage({
             id: "settings.enableSoundsLabel",
@@ -334,6 +335,44 @@ function SoundsProp(): ReactNode {
           checked={settings.get(textDisplayProps.sounds)}
           onChange={(value) => {
             updateSettings(settings.set(textDisplayProps.sounds, value));
+          }}
+        />
+      </Field>
+
+      <Field>
+        <RadioBox
+          label="All Sounds"
+          name="enable-sound-style"
+          checked={
+            settings.get(textDisplayProps.enableSoundStyle) ===
+            EnableSoundStyle.All
+          }
+          onChange={() => {
+            updateSettings(
+              settings.set(
+                textDisplayProps.enableSoundStyle,
+                EnableSoundStyle.All,
+              ),
+            );
+          }}
+        />
+      </Field>
+
+      <Field>
+        <RadioBox
+          label="Only Errors"
+          name="enable-sounds-style"
+          checked={
+            settings.get(textDisplayProps.enableSoundStyle) ===
+            EnableSoundStyle.Error
+          }
+          onChange={() => {
+            updateSettings(
+              settings.set(
+                textDisplayProps.enableSoundStyle,
+                EnableSoundStyle.Error,
+              ),
+            );
           }}
         />
       </Field>
