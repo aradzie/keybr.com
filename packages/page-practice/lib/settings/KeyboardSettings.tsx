@@ -16,7 +16,7 @@ import {
   OptionList,
   useWindowEvent,
 } from "@keybr/widget";
-import { type ReactNode, useState } from "react";
+import { type ReactNode, useRef, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
 export function KeyboardSettings(): ReactNode {
@@ -146,10 +146,24 @@ function KeyboardPreview(): ReactNode {
   );
 }
 
+/**
+ * Handle modifier keys only on keydown event for os and
+ * browser compatibility.
+ */
 function useDepressedKeys(): readonly string[] {
   const [depressedKeys, setDepressedKeys] = useState<readonly string[]>([]);
+  const modifierKeys = useRef(["CapsLock", "NumLock"]);
+
   useWindowEvent("keydown", (ev) => {
-    setDepressedKeys(addKey(depressedKeys, ev.code));
+    if (modifierKeys.current.includes(ev.code)) {
+      if (ev.getModifierState(ev.code)) {
+        setDepressedKeys(addKey(depressedKeys, ev.code));
+      } else {
+        setDepressedKeys(deleteKey(depressedKeys, ev.code));
+      }
+    } else {
+      setDepressedKeys(addKey(depressedKeys, ev.code));
+    }
   });
   useWindowEvent("keyup", (ev) => {
     setDepressedKeys(deleteKey(depressedKeys, ev.code));

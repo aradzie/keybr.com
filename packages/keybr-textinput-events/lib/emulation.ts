@@ -51,36 +51,17 @@ export function newLayoutEmulator(
   };
 }
 
-function remap(
-  layout: Keyboard,
-  {
-    timeStamp,
-    code,
-    key,
-    shiftKey,
-    altKey,
-    ctrlKey,
-    metaKey,
-    location,
-    repeat,
-  }: KeyEvent,
-): KeyEvent {
+function remap(layout: Keyboard, keyEvent: KeyEvent): KeyEvent {
+  const { code, shiftKey, altKey } = keyEvent;
   const layoutKey = layout.getKey(code);
   if (layoutKey != null) {
     const codePoint = layoutKey.codePoint(KeyModifier.of({ shiftKey, altKey }));
     if (codePoint > 0) {
-      key = String.fromCodePoint(codePoint);
+      Object.defineProperty(keyEvent, "key", {
+        value: String.fromCodePoint(codePoint),
+        writable: false,
+      });
     }
   }
-  return {
-    timeStamp,
-    code,
-    key,
-    shiftKey,
-    altKey,
-    ctrlKey,
-    metaKey,
-    location,
-    repeat,
-  };
+  return keyEvent;
 }
