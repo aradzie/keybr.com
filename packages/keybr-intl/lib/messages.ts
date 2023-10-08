@@ -30,7 +30,7 @@ export async function loadMessages(locale: LocaleId): Promise<Messages> {
       ).default;
     case "uk":
       return (
-        await import(/* webpackChunkName: "i18n-ru" */ "./messages/uk.json")
+        await import(/* webpackChunkName: "i18n-uk" */ "./messages/uk.json")
       ).default;
   }
 }
