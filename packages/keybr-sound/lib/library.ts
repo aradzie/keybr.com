@@ -3,7 +3,6 @@ import { type Player, type SoundAssets, type SoundName } from "./types.ts";
 
 const library = {
   players: new Map<SoundName, Player>(),
-  enable: false,
 };
 
 export function loadSounds(assets: SoundAssets): void {
@@ -22,16 +21,10 @@ export function loadSounds(assets: SoundAssets): void {
   }
 }
 
-export function enableSounds(enable: boolean): void {
-  library.enable = enable;
-}
-
 export function playSound(name: SoundName): void {
   const player = library.players.get(name);
   if (player == null) {
     throw new Error(String(name));
   }
-  if (library.enable) {
-    player.play();
-  }
+  player.play();
 }

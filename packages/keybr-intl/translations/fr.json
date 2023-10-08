@@ -1267,14 +1267,6 @@
     "defaultMessage": "Émuler la disposition de clavier sélectionnée si la disposition standard est définie dans le système.",
     "description": "Input field title."
   },
-  "settings.enableSoundsLabel": {
-    "defaultMessage": "Activer les effets sonores",
-    "description": "Input field label."
-  },
-  "settings.enableSoundsTitle": {
-    "defaultMessage": "Faire du bruit supplémentaire lors de la frappe et en cas d'erreurs.",
-    "description": "Checkbox description."
-  },
   "settings.forgiveErrorsDescription": {
     "defaultMessage": "L'activation de cette option permet de pardonner certains types d'erreurs et les corriger automatiquement dans le champ de saisie de texte. Il s'agit d'erreurs telles que la saisie d'un caractère erroné ou l'omission d'un caractère.",
     "description": "Description text."
@@ -1314,6 +1306,10 @@
   "settings.optionsLegend": {
     "defaultMessage": "Options",
     "description": "Fieldset legend."
+  },
+  "settings.playSoundsLabel": {
+    "defaultMessage": "Play sounds:",
+    "description": "Input field label."
   },
   "settings.previewLabel": {
     "defaultMessage": "Aperçu de la leçon",

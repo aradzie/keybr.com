@@ -2,6 +2,7 @@ import { useSettings } from "@keybr/settings";
 import {
   CaretMovementStyle,
   CaretShapeStyle,
+  PlaySounds,
   textDisplayProps,
   textInputProps,
   WhitespaceStyle,
@@ -320,20 +321,53 @@ function CursorMovementProp(): ReactNode {
 }
 
 function SoundsProp(): ReactNode {
-  const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
   return (
     <FieldList>
+      <Field className={styleSizeWide}>
+        <FormattedMessage
+          id="settings.playSoundsLabel"
+          description="Input field label."
+          defaultMessage="Play sounds:"
+        />
+      </Field>
       <Field>
-        <CheckBox
-          label={formatMessage({
-            id: "settings.enableSoundsLabel",
-            description: "Input field label.",
-            defaultMessage: "Enable sounds",
-          })}
-          checked={settings.get(textDisplayProps.sounds)}
-          onChange={(value) => {
-            updateSettings(settings.set(textDisplayProps.sounds, value));
+        <RadioBox
+          label="No Sounds"
+          name="play-sounds"
+          checked={
+            settings.get(textDisplayProps.playSounds) === PlaySounds.None
+          }
+          onSelect={() => {
+            updateSettings(
+              settings.set(textDisplayProps.playSounds, PlaySounds.None),
+            );
+          }}
+        />
+      </Field>
+      <Field>
+        <RadioBox
+          label="Error Sounds Only"
+          name="play-sounds"
+          checked={
+            settings.get(textDisplayProps.playSounds) === PlaySounds.ErrorsOnly
+          }
+          onChange={() => {
+            updateSettings(
+              settings.set(textDisplayProps.playSounds, PlaySounds.ErrorsOnly),
+            );
+          }}
+        />
+      </Field>
+      <Field>
+        <RadioBox
+          label="All Sounds"
+          name="play-sounds"
+          checked={settings.get(textDisplayProps.playSounds) === PlaySounds.All}
+          onChange={() => {
+            updateSettings(
+              settings.set(textDisplayProps.playSounds, PlaySounds.All),
+            );
           }}
         />
       </Field>

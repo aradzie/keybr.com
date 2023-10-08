@@ -39,7 +39,7 @@ export type TextDisplaySettings = {
   readonly caretShapeStyle: CaretShapeStyle;
   readonly caretMovementStyle: CaretMovementStyle;
   readonly whitespaceStyle: WhitespaceStyle;
-  readonly sounds: boolean;
+  readonly playSounds: PlaySounds;
 };
 
 export enum CaretShapeStyle {
@@ -60,11 +60,17 @@ export enum WhitespaceStyle {
   Bullet = 3,
 }
 
+export enum PlaySounds {
+  None = 1,
+  ErrorsOnly = 2,
+  All = 3,
+}
+
 export const textDisplaySettings: TextDisplaySettings = {
   caretShapeStyle: CaretShapeStyle.Underline,
   caretMovementStyle: CaretMovementStyle.Smooth,
   whitespaceStyle: WhitespaceStyle.Bullet,
-  sounds: false,
+  playSounds: PlaySounds.None,
 };
 
 export const textDisplayProps = {
@@ -83,7 +89,7 @@ export const textDisplayProps = {
     WhitespaceStyle,
     WhitespaceStyle.Bullet,
   ),
-  sounds: booleanProp("textDisplay.sounds", false),
+  playSounds: enumProp("textDisplay.playSounds", PlaySounds, PlaySounds.None),
 } as const;
 
 export function toTextDisplaySettings(settings: Settings): TextDisplaySettings {
@@ -91,6 +97,6 @@ export function toTextDisplaySettings(settings: Settings): TextDisplaySettings {
     caretShapeStyle: settings.get(textDisplayProps.caretShapeStyle),
     caretMovementStyle: settings.get(textDisplayProps.caretMovementStyle),
     whitespaceStyle: settings.get(textDisplayProps.whitespaceStyle),
-    sounds: settings.get(textDisplayProps.sounds),
+    playSounds: settings.get(textDisplayProps.playSounds),
   };
 }

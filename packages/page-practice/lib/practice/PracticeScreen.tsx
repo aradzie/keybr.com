@@ -3,8 +3,7 @@ import { type Lesson } from "@keybr/lesson";
 import { LessonLoader } from "@keybr/lesson-loader";
 import { ResultGroups, useResults } from "@keybr/result";
 import { type Settings, useSettings } from "@keybr/settings";
-import { enableSounds, loadSounds } from "@keybr/sound";
-import { textDisplayProps } from "@keybr/textinput";
+import { loadSounds } from "@keybr/sound";
 import { textInputSounds } from "@keybr/textinput-sounds";
 import { type ReactNode, useEffect, useRef } from "react";
 import { Controller } from "./Controller.tsx";
@@ -51,7 +50,6 @@ function ResultUpdater({
   const lastLesson = useRef<LastLesson | null>(null);
   useEffect(() => {
     loadSounds(textInputSounds);
-    enableSounds(settings.get(textDisplayProps.sounds));
   }, [settings]);
   const group = ResultGroups.byLayoutFamily(results).get(
     settings.get(keyboardProps.layout).family,
