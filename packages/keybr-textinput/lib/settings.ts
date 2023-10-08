@@ -1,4 +1,9 @@
-import { booleanProp, enumProp, type Settings } from "@keybr/settings";
+import {
+  booleanProp,
+  enumProp,
+  numberProp,
+  type Settings,
+} from "@keybr/settings";
 
 /**
  * Text input settings.
@@ -40,6 +45,7 @@ export type TextDisplaySettings = {
   readonly caretMovementStyle: CaretMovementStyle;
   readonly whitespaceStyle: WhitespaceStyle;
   readonly playSounds: PlaySounds;
+  readonly soundVolume: number;
 };
 
 export enum CaretShapeStyle {
@@ -71,6 +77,7 @@ export const textDisplaySettings: TextDisplaySettings = {
   caretMovementStyle: CaretMovementStyle.Smooth,
   whitespaceStyle: WhitespaceStyle.Bullet,
   playSounds: PlaySounds.None,
+  soundVolume: 1,
 };
 
 export const textDisplayProps = {
@@ -90,6 +97,7 @@ export const textDisplayProps = {
     WhitespaceStyle.Bullet,
   ),
   playSounds: enumProp("textDisplay.playSounds", PlaySounds, PlaySounds.None),
+  soundVolume: numberProp("textDisplay.soundVolume", 1, { min: 0, max: 1 }),
 } as const;
 
 export function toTextDisplaySettings(settings: Settings): TextDisplaySettings {
@@ -98,5 +106,6 @@ export function toTextDisplaySettings(settings: Settings): TextDisplaySettings {
     caretMovementStyle: settings.get(textDisplayProps.caretMovementStyle),
     whitespaceStyle: settings.get(textDisplayProps.whitespaceStyle),
     playSounds: settings.get(textDisplayProps.playSounds),
+    soundVolume: settings.get(textDisplayProps.soundVolume),
   };
 }

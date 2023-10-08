@@ -21,10 +21,11 @@ export function loadSounds(assets: SoundAssets): void {
   }
 }
 
-export function playSound(name: SoundName): void {
+export function playSound(name: SoundName, volume: number = 1): void {
   const player = library.players.get(name);
   if (player == null) {
     throw new Error(String(name));
   }
+  player.volume(volume);
   player.play();
 }

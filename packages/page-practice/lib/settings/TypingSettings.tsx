@@ -14,6 +14,7 @@ import {
   FieldSet,
   Para,
   RadioBox,
+  Range,
   styleSizeWide,
 } from "@keybr/widget";
 import { type ReactNode } from "react";
@@ -367,6 +368,20 @@ function SoundsProp(): ReactNode {
           onChange={() => {
             updateSettings(
               settings.set(textDisplayProps.playSounds, PlaySounds.All),
+            );
+          }}
+        />
+      </Field>
+      <Field>Volume:</Field>
+      <Field>
+        <Range
+          min={0}
+          max={100}
+          step={1}
+          value={Math.round(settings.get(textDisplayProps.soundVolume) * 100)}
+          onChange={(value) => {
+            updateSettings(
+              settings.set(textDisplayProps.soundVolume, value / 100),
             );
           }}
         />
