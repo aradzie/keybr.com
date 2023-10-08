@@ -24,24 +24,6 @@ test("render", async (t) => {
   fireEvent.click(r.getByText("Pseudo words", { selector: "span" }));
   fireEvent.click(r.getByText("Book paragraphs", { selector: "span" }));
 
-  fireEvent.click(r.getByText("Typing"));
-  await r.findByText("Typing Options");
-
-  fireEvent.click(r.getByText("Stop cursor on error"));
-  fireEvent.click(r.getByText("Forgive errors"));
-
-  fireEvent.click(r.getByText("No whitespace"));
-  fireEvent.click(r.getByText("Bar whitespace"));
-  fireEvent.click(r.getByText("Bullet whitespace"));
-
-  fireEvent.click(r.getByText("Block cursor"));
-  fireEvent.click(r.getByText("Box cursor"));
-  fireEvent.click(r.getByText("Line cursor"));
-  fireEvent.click(r.getByText("Underline cursor"));
-
-  fireEvent.click(r.getByText("Jumping cursor"));
-  fireEvent.click(r.getByText("Smooth cursor"));
-
   t.pass();
 
   r.unmount();

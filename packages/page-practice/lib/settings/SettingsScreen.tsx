@@ -1,6 +1,7 @@
 import { KeyboardContext, keyboardProps, loadKeyboard } from "@keybr/keyboard";
 import { Screen } from "@keybr/pages-shared";
 import { type Settings, SettingsContext, useSettings } from "@keybr/settings";
+import { TypingSettings } from "@keybr/textinput-ui";
 import { Button, Field, FieldList, Header, Icon } from "@keybr/widget";
 import { mdiCheckCircle } from "@mdi/js";
 import { type ReactNode, useMemo, useState } from "react";
@@ -9,7 +10,6 @@ import { KeyboardSettings } from "./KeyboardSettings.tsx";
 import { LessonSettings } from "./LessonSettings.tsx";
 import { MiscSettings } from "./MiscSettings.tsx";
 import * as styles from "./SettingsScreen.module.less";
-import { TypingSettings } from "./TypingSettings.tsx";
 
 export function SettingsScreen({
   onSubmit,

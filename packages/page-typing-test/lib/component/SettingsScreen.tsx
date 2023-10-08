@@ -1,9 +1,9 @@
 import { Screen } from "@keybr/pages-shared";
+import { TypingSettings } from "@keybr/textinput-ui";
 import { Button, Field, FieldList, Icon, Tab, TabList } from "@keybr/widget";
 import { mdiCheckCircle } from "@mdi/js";
 import { type ReactNode, useState } from "react";
 import { TextGeneratorSettings } from "./settings/TextGeneratorSettings.tsx";
-import { TypingSettings } from "./settings/TypingSettings.tsx";
 
 export function SettingsScreen({
   onSubmit,

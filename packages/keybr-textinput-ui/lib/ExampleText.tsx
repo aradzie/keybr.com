@@ -1,8 +1,8 @@
 import { useSettings } from "@keybr/settings";
 import { toTextDisplaySettings } from "@keybr/textinput";
-import { AnimatedText } from "@keybr/textinput-ui";
 import { HBox } from "@keybr/widget";
 import { type ReactNode } from "react";
+import { AnimatedText } from "./AnimatedText.tsx";
 import * as styles from "./ExampleText.module.less";
 
 export function ExampleText({
