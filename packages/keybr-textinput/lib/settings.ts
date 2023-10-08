@@ -77,7 +77,7 @@ export const textDisplaySettings: TextDisplaySettings = {
   caretMovementStyle: CaretMovementStyle.Smooth,
   whitespaceStyle: WhitespaceStyle.Bullet,
   playSounds: PlaySounds.None,
-  soundVolume: 1,
+  soundVolume: 0.5,
 };
 
 export const textDisplayProps = {
@@ -97,7 +97,7 @@ export const textDisplayProps = {
     WhitespaceStyle.Bullet,
   ),
   playSounds: enumProp("textDisplay.playSounds", PlaySounds, PlaySounds.None),
-  soundVolume: numberProp("textDisplay.soundVolume", 1, { min: 0, max: 1 }),
+  soundVolume: numberProp("textDisplay.soundVolume", 0.5, { min: 0, max: 1 }),
 } as const;
 
 export function toTextDisplaySettings(settings: Settings): TextDisplaySettings {
