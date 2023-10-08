@@ -137,12 +137,31 @@ function LayoutProp(): ReactNode {
 }
 
 function KeyboardPreview(): ReactNode {
+  const { formatMessage } = useIntl();
+  const { settings, updateSettings } = useSettings();
   const keyboard = useKeyboard();
   const depressedKeys = useDepressedKeys();
   return (
-    <VirtualKeyboard keyboard={keyboard}>
-      <KeyLayer depressedKeys={depressedKeys} />
-    </VirtualKeyboard>
+    <>
+      <VirtualKeyboard keyboard={keyboard}>
+        <KeyLayer depressedKeys={depressedKeys} />
+      </VirtualKeyboard>
+      <FieldList>
+        <Field>
+          <CheckBox
+            label={formatMessage({
+              id: "settings.keyboardFullViewLabel",
+              description: "Input field label.",
+              defaultMessage: "Full keyboard view",
+            })}
+            checked={settings.get(keyboardProps.full)}
+            onChange={(value) => {
+              updateSettings(settings.set(keyboardProps.full, value));
+            }}
+          />
+        </Field>
+      </FieldList>
+    </>
   );
 }
 

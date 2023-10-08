@@ -1287,6 +1287,10 @@
     "defaultMessage": "Opciones del Interfaz",
     "description": "Fieldset legend."
   },
+  "settings.keyboardFullViewLabel": {
+    "defaultMessage": "Vista completa del teclado",
+    "description": "Input field label."
+  },
   "settings.keyboardTabLabel": {
     "defaultMessage": "Teclado",
     "description": "Header text."

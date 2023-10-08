@@ -1287,6 +1287,10 @@
     "defaultMessage": "Schnittstellenoptionen",
     "description": "Fieldset legend."
   },
+  "settings.keyboardFullViewLabel": {
+    "defaultMessage": "Vollständige Tastaturansicht",
+    "description": "Input field label."
+  },
   "settings.keyboardTabLabel": {
     "defaultMessage": "Tastatur",
     "description": "Header text."

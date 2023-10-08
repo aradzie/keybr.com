@@ -1,6 +1,6 @@
 import { addKey, deleteKey } from "@keybr/keyboard-ui";
 import { Screen } from "@keybr/pages-shared";
-import { type LineData, toTextDisplaySettings } from "@keybr/textinput";
+import { type LineData } from "@keybr/textinput";
 import { type KeyEvent } from "@keybr/textinput-events";
 import { TextArea } from "@keybr/textinput-ui";
 import { PureComponent, type ReactNode } from "react";
@@ -273,7 +273,7 @@ function NormalLayout({
       <div id={names.textInput} className={styles.textInput_normal}>
         {textInput}
       </div>
-      <div id={names.keyboard} className={styles.keyboard}>
+      <div id={names.keyboard}>
         <DeferredKeyboardPresenter
           focus={focus}
           depressedKeys={depressedKeys}

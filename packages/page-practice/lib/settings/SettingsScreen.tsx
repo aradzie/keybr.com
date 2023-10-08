@@ -18,11 +18,11 @@ export function SettingsScreen({
 }): ReactNode {
   const { settings } = useSettings();
   const [newSettings, setNewSettings] = useState(settings);
-  const layout = newSettings.get(keyboardProps.layout);
-  const keyboard = useMemo(
-    () => loadKeyboard(layout, { full: true }),
-    [layout],
-  );
+  const keyboard = useMemo(() => {
+    const layout = newSettings.get(keyboardProps.layout);
+    const full = newSettings.get(keyboardProps.full);
+    return loadKeyboard(layout, { full });
+  }, [newSettings]);
   return (
     <SettingsContext.Provider
       value={{
