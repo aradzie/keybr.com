@@ -143,7 +143,7 @@ function KeyboardPreview(): ReactNode {
   const depressedKeys = useDepressedKeys();
   return (
     <>
-      <VirtualKeyboard keyboard={keyboard}>
+      <VirtualKeyboard keyboard={keyboard} height="16rem">
         <KeyLayer depressedKeys={depressedKeys} />
       </VirtualKeyboard>
       <FieldList>

@@ -21,7 +21,7 @@ export const KeyboardPresenter = memo(function KeyboardPresenter({
 }): ReactNode {
   const keyboard = useKeyboard();
   return (
-    <VirtualKeyboard keyboard={keyboard}>
+    <VirtualKeyboard keyboard={keyboard} height="16rem">
       <KeyLayer depressedKeys={depressedKeys} showZones={!focus} />
       {focus && <MarkerLayer />}
       {focus && lastLesson && (
