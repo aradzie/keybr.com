@@ -27,8 +27,8 @@ test("render", async (t) => {
   fireEvent.click(r.getByText("Typing"));
   await r.findByText("Typing Options");
 
-  fireEvent.click(r.getByText("Stop the cursor when an error occurs."));
-  fireEvent.click(r.getByText("Forgive errors."));
+  fireEvent.click(r.getByText("Stop cursor on error"));
+  fireEvent.click(r.getByText("Forgive errors"));
 
   fireEvent.click(r.getByText("No whitespace"));
   fireEvent.click(r.getByText("Bar whitespace"));

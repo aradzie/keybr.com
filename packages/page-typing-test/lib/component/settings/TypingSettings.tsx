@@ -42,7 +42,7 @@ export function TypingSettings(): ReactNode {
               label={formatMessage({
                 id: "settings.stopCursorOnErrorLabel",
                 description: "Input field label.",
-                defaultMessage: "Stop the cursor when an error occurs.",
+                defaultMessage: "Stop cursor on error",
               })}
               checked={settings.get(textInputProps.stopOnError)}
               onChange={(value) => {
@@ -67,7 +67,7 @@ export function TypingSettings(): ReactNode {
               label={formatMessage({
                 id: "settings.forgiveErrorsLabel",
                 description: "Input field label.",
-                defaultMessage: "Forgive errors.",
+                defaultMessage: "Forgive errors",
               })}
               checked={settings.get(textInputProps.forgiveErrors)}
               onChange={(value) => {

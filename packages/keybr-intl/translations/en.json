@@ -1272,7 +1272,7 @@
     "description": "Description text."
   },
   "settings.forgiveErrorsLabel": {
-    "defaultMessage": "Forgive errors.",
+    "defaultMessage": "Forgive errors",
     "description": "Input field label."
   },
   "settings.interfaceOptionsLegend": {
@@ -1344,7 +1344,7 @@
     "description": "Description text."
   },
   "settings.stopCursorOnErrorLabel": {
-    "defaultMessage": "Stop the cursor when an error occurs.",
+    "defaultMessage": "Stop cursor on error",
     "description": "Input field label."
   },
   "settings.targetSpeedLabel": {

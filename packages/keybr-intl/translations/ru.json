@@ -1344,7 +1344,7 @@
     "description": "Description text."
   },
   "settings.stopCursorOnErrorLabel": {
-    "defaultMessage": "Остановить курсор при ошибках",
+    "defaultMessage": "Остановить курсор при ошибке",
     "description": "Input field label."
   },
   "settings.targetSpeedLabel": {
