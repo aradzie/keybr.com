@@ -4,7 +4,7 @@ import { LessonLoader } from "@keybr/lesson-loader";
 import { ResultGroups, useResults } from "@keybr/result";
 import { type Settings, useSettings } from "@keybr/settings";
 import { enableSounds, loadSounds } from "@keybr/sound";
-import { EnableSoundStyle, textDisplayProps } from "@keybr/textinput";
+import { textDisplayProps } from "@keybr/textinput";
 import { TextInputSound, textInputSounds } from "@keybr/textinput-sounds";
 import { type ReactNode, useEffect, useRef } from "react";
 import { Controller } from "./Controller.tsx";
@@ -48,16 +48,13 @@ function ResultUpdater({
 }): ReactNode {
   const { results, appendResults } = useResults();
   const lastLesson = useRef<LastLesson | null>(null);
-  const soundOptions = soundStyleOption();
-
+  const soundOptions = soundStyleOption(
+    settings.get(textDisplayProps.enableSoundStyle),
+  );
   const handleEnableSounds = () => {
     if (soundOptions) {
-      console.log("Sound Options:", soundOptions);
       loadSounds(soundOptions);
-
-      // Ensure that enabling sounds happens within a user-initiated event.
       const soundSettings = settings.get(textDisplayProps.sounds);
-      console.log("Sound Settings:", soundSettings);
       enableSounds(soundSettings);
     }
   };
@@ -79,13 +76,15 @@ function ResultUpdater({
   state.lastLesson = lastLesson.current;
   return <Controller state={state} onConfigure={onConfigure} />;
 }
-const soundStyleOption = () => {
-  switch (EnableSoundStyle) {
-    case EnableSoundStyle.All:
+const soundStyleOption = (options: number) => {
+  switch (options) {
+    case 1:
       return textInputSounds;
-    case EnableSoundStyle.Error:
+    case 2:
       return {
         [TextInputSound.Blip]: textInputSounds[TextInputSound.Blip],
       };
+    default:
+      return textInputSounds;
   }
 };

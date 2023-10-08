@@ -1,6 +1,7 @@
 import { keyboardProps, useKeyboard } from "@keybr/keyboard";
+import { useSettings } from "@keybr/settings";
 import { playSound } from "@keybr/sound";
-import { Feedback } from "@keybr/textinput";
+import { Feedback, textDisplayProps } from "@keybr/textinput";
 import { emulateLayout } from "@keybr/textinput-events";
 import { TextInputSound } from "@keybr/textinput-sounds";
 import {
@@ -49,7 +50,7 @@ export const Controller = memo(function Controller({
 function usePracticeState(state: PracticeState) {
   const keyboard = useKeyboard();
   const [lines, setLines] = useState(state.lines); // Forces ui update.
-
+  const { settings } = useSettings();
   return useMemo(() => {
     // New lesson.
     setLines(state.lines);
@@ -70,7 +71,10 @@ function usePracticeState(state: PracticeState) {
           state.lastLesson = null;
           const feedback = state.handleInput(codePoint, timeStamp);
           setLines(state.lines);
-          playFeedbackSound(feedback);
+          playFeedbackSound(
+            feedback,
+            settings.get(textDisplayProps.enableSoundStyle),
+          );
         },
       },
       state.settings.get(keyboardProps.emulate),
@@ -90,16 +94,23 @@ function usePracticeState(state: PracticeState) {
   }, [state, keyboard]);
 }
 
-function playFeedbackSound(feedback: Feedback): void {
-  switch (feedback) {
-    case Feedback.Succeeded:
-      playSound(TextInputSound.Click);
-      break;
-    case Feedback.Recovered:
-      playSound(TextInputSound.Click);
-      break;
-    case Feedback.Failed:
-      playSound(TextInputSound.Blip);
-      break;
+function playFeedbackSound(feedback: Feedback, option: number): void {
+  if (option === 1) {
+    switch (feedback) {
+      case Feedback.Succeeded:
+        playSound(TextInputSound.Click);
+        break;
+      case Feedback.Recovered:
+        playSound(TextInputSound.Click);
+        break;
+      case Feedback.Failed:
+        playSound(TextInputSound.Blip);
+        break;
+    }
+  } else {
+    switch (feedback) {
+      case Feedback.Failed:
+        playSound(TextInputSound.Blip);
+    }
   }
 }
