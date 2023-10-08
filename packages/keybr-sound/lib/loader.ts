@@ -8,7 +8,6 @@ export async function loadPlayer(config: PlayerConfig): Promise<Player> {
   const context = getAudioContext();
   if (context != null) {
     const url = pickUrl(config.urls);
-    context?.resume();
     if (url != null) {
       const response = await request.use(expectType("audio/*")).GET(url).send();
       const body = await response.arrayBuffer();

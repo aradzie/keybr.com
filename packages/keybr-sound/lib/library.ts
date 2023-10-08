@@ -1,4 +1,3 @@
-import { number } from "zod";
 import { loadPlayer, nullPlayer } from "./loader.ts";
 import { type Player, type SoundAssets, type SoundName } from "./types.ts";
 
