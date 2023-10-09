@@ -1,9 +1,10 @@
-import { type Char, type LineData } from "@keybr/textinput";
-import { type KeyEvent, TextEvents } from "@keybr/textinput-events";
 import {
+  type Char,
+  type LineData,
   type TextDisplaySettings,
   textDisplaySettings,
-} from "@keybr/textinput-settings";
+} from "@keybr/textinput";
+import { type KeyEvent, TextEvents } from "@keybr/textinput-events";
 import { clsx } from "clsx";
 import {
   type ComponentType,

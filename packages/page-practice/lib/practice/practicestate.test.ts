@@ -64,8 +64,7 @@ class FakeLesson extends Lesson {
   }
 
   override update(keyStatsMap: KeyStatsMap): LessonKeys {
-    const target = new Target({ targetSpeed: /* 35WPM */ 175 });
-    const keys = LessonKeys.includeAll(keyStatsMap, target);
+    const keys = LessonKeys.includeAll(keyStatsMap, new Target(this.settings));
     keys.boost(FakePhoneticModel.letter1);
     return keys;
   }

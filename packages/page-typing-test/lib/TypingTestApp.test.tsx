@@ -1,6 +1,7 @@
 import { FakeIntlProvider } from "@keybr/intl";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
+import { FakeSettingsContext } from "@keybr/settings";
 import { fireEvent, render } from "@testing-library/react";
 import test from "ava";
 import { TypingTestApp } from "./TypingTestApp.tsx";
@@ -10,7 +11,9 @@ test("render", async (t) => {
 
   const r = render(
     <FakeIntlProvider>
-      <TypingTestApp />
+      <FakeSettingsContext>
+        <TypingTestApp />
+      </FakeSettingsContext>
     </FakeIntlProvider>,
   );
 

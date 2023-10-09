@@ -5,9 +5,11 @@
   "main": "lib/index.ts",
   "types": ".types/index.d.ts",
   "dependencies": {
+    "@keybr/intl": "*",
+    "@keybr/settings": "*",
     "@keybr/textinput": "*",
     "@keybr/textinput-events": "*",
-    "@keybr/textinput-settings": "*"
+    "@keybr/widget": "*"
   },
   "devDependencies": {},
   "scripts": {

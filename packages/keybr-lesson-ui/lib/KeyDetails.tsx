@@ -17,7 +17,8 @@ export const KeyDetails = ({
   readonly lessonKey: LessonKey;
 }): ReactNode => {
   const { formatMessage } = useIntl();
-  const fmt = useFormatter();
+  const { speedUnitName, formatSpeed, formatConfidence, formatLearningRate } =
+    useFormatter();
   const { settings } = useSettings();
   const { bestTimeToType, confidence } = lessonKey;
   if (bestTimeToType != null && confidence != null) {
@@ -25,7 +26,6 @@ export const KeyDetails = ({
       lessonKey.samples,
       new Target(settings),
     );
-    const { speedUnitName } = fmt;
     return (
       <span
         className={clsx(
@@ -36,17 +36,17 @@ export const KeyDetails = ({
       >
         <NameValue
           name={<Name name={formatMessage(messages.bestSpeedLabel)} />}
-          value={<Value value={fmt(timeToSpeed(bestTimeToType))} />}
+          value={<Value value={formatSpeed(timeToSpeed(bestTimeToType))} />}
           title={formatMessage(messages.bestSpeedTitle, { speedUnitName })}
         />
         <NameValue
           name={<Name name={formatMessage(messages.confidenceLevelLabel)} />}
-          value={<Value value={fmt.confidence(confidence)} />}
+          value={<Value value={formatConfidence(confidence)} />}
           title={formatMessage(messages.confidenceLevelTitle)}
         />
         <NameValue
           name={<Name name={formatMessage(messages.learningRateLabel)} />}
-          value={<Value value={fmt.learningRate(learningRate)} />}
+          value={<Value value={formatLearningRate(learningRate)} />}
           title={formatMessage(messages.learningRateTitle)}
         />
       </span>

@@ -4,14 +4,13 @@ import { TextArea } from "@keybr/textinput-ui";
 import { Component, createRef, type ReactNode } from "react";
 import { type Mark, type TextGenerator } from "../generator/index.ts";
 import { Session, type SessionSettings } from "../session/index.ts";
+import { type CompositeSettings } from "../settings.ts";
 import { LineTemplate } from "./LineTemplate.tsx";
-import { type CompositeSettings } from "./settings/index.ts";
 import { Toolbar } from "./Toolbar.tsx";
 
 type Props = {
   readonly settings: CompositeSettings;
   readonly textGenerator: TextGenerator;
-  readonly onChangeSettings: (settings: CompositeSettings) => void;
   readonly onComplete: (stats: Stats) => void;
   readonly onHelp: () => void;
   readonly onConfigure: () => void;
@@ -88,8 +87,6 @@ export class TestScreen extends Component<Props, State> {
     return (
       <Screen>
         <Toolbar
-          settings={this.props.settings}
-          onChangeSettings={this.props.onChangeSettings}
           onHelp={this.props.onHelp}
           onConfigure={this.props.onConfigure}
         />
@@ -125,10 +122,10 @@ const numCols = 55;
 
 function getSessionSettings(props: Props): SessionSettings {
   const {
-    settings: { limit, textInput, textDisplay },
+    settings: { duration, textInput, textDisplay },
   } = props;
   return {
-    limit,
+    duration,
     textInput,
     textDisplay,
     numLines,

@@ -1,10 +1,3 @@
-import { type Layout } from "@keybr/layout";
-
-export type LayoutSettings = {
-  readonly layout: Layout;
-  readonly emulateLayout: boolean;
-};
-
 export type KeyEventListener = {
   readonly onKeyDown: (event: KeyEvent) => void;
   readonly onKeyUp: (event: KeyEvent) => void;

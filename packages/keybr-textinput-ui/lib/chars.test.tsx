@@ -1,5 +1,10 @@
-import { attrCursor, attrHit, attrMiss, attrNormal } from "@keybr/textinput";
-import { textDisplaySettings } from "@keybr/textinput-settings";
+import {
+  attrCursor,
+  attrHit,
+  attrMiss,
+  attrNormal,
+  textDisplaySettings,
+} from "@keybr/textinput";
 import test from "ava";
 import { renderChars } from "./chars.tsx";
 

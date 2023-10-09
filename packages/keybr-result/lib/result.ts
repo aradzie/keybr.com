@@ -1,6 +1,6 @@
 import { type Layout } from "@keybr/layout";
 import { type Histogram, type Stats } from "@keybr/textinput";
-import { TextType } from "./texttype.ts";
+import { type TextType } from "./texttype.ts";
 
 const MIN_TIME = 1000;
 const MIN_LENGTH = 10;
@@ -104,12 +104,4 @@ export function speedToTime(v: number): number {
     throw new Error();
   }
   return 1000 / (v / 60);
-}
-
-export function lettersOnly(results: readonly Result[]): Result[] {
-  return results.filter(({ textType }) => textType !== TextType.NUMBERS);
-}
-
-export function digitsOnly(results: readonly Result[]): Result[] {
-  return results.filter(({ textType }) => textType === TextType.NUMBERS);
 }

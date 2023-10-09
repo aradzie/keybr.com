@@ -5,10 +5,7 @@
   "main": "lib/index.ts",
   "types": ".types/index.d.ts",
   "dependencies": {
-    "@keybr/lang": "*",
-    "@keybr/layout": "*",
-    "@keybr/result": "*",
-    "@keybr/textinput-settings": "*"
+    "@keybr/lang": "*"
   },
   "devDependencies": {},
   "scripts": {

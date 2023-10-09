@@ -1,7 +1,7 @@
 import { useSettings } from "@keybr/settings";
 import { type ReactNode, useState } from "react";
 import { PracticeScreen } from "./practice/PracticeScreen.tsx";
-import { SettingsScreen } from "./settings/SettingsScreen-flat.tsx";
+import { SettingsScreen } from "./settings/SettingsScreen.tsx";
 
 export function PracticeApp(): ReactNode {
   const { updateSettings } = useSettings();

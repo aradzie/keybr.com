@@ -1,5 +1,5 @@
 import { DataDir } from "@keybr/config";
-import { Settings } from "@keybr/settings";
+import { Settings, stringProp } from "@keybr/settings";
 import { removeDir } from "@sosimple/fsx";
 import { File } from "@sosimple/fsx-file";
 import test from "ava";
@@ -39,14 +39,13 @@ test.serial("save new settings", async (t) => {
   const database = new SettingsDatabase(dataDir);
   const file = new File(dataDir.userSettingsFile(123));
   await file.delete();
-
   // Act.
 
-  await database.set(123, new Settings({ textContent: "omg" }));
+  await database.set(123, new Settings().set(stringProp("prop", "abc"), "xyz"));
 
   // Assert.
 
-  t.like(await file.readJson(), { "lesson.text.content": "omg" });
+  t.like(await file.readJson(), { prop: "xyz" });
 });
 
 test.serial("update existing settings", async (t) => {
@@ -56,14 +55,13 @@ test.serial("update existing settings", async (t) => {
   const database = new SettingsDatabase(dataDir);
   const file = new File(dataDir.userSettingsFile(123));
   await file.write("something");
-
   // Act.
 
-  await database.set(123, new Settings({ textContent: "omg" }));
+  await database.set(123, new Settings().set(stringProp("prop", "abc"), "xyz"));
 
   // Assert.
 
-  t.like(await file.readJson(), { "lesson.text.content": "omg" });
+  t.like(await file.readJson(), { prop: "xyz" });
 });
 
 test.serial("read missing settings", async (t) => {
@@ -89,7 +87,9 @@ test.serial("read existing settings", async (t) => {
   const dataDir = new DataDir(testDataDir);
   const database = new SettingsDatabase(dataDir);
   const file = new File(dataDir.userSettingsFile(123));
-  await file.writeJson(new Settings({ textContent: "omg" }).toJSON());
+  await file.writeJson(
+    new Settings().set(stringProp("prop", "abc"), "xyz").toJSON(),
+  );
 
   // Act.
 
@@ -97,5 +97,5 @@ test.serial("read existing settings", async (t) => {
 
   // Assert.
 
-  t.like(settings?.toJSON(), { "lesson.text.content": "omg" });
+  t.like(settings?.toJSON(), { prop: "xyz" });
 });

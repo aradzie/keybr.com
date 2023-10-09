@@ -32,7 +32,7 @@ export function KeySpeedHistogram({
 
 function usePaint(keyStatsMap: KeyStatsMap) {
   const { formatMessage } = useIntl();
-  const fmt = useFormatter();
+  const { formatSpeed } = useFormatter();
 
   const { letters, results } = keyStatsMap;
 
@@ -63,7 +63,7 @@ function usePaint(keyStatsMap: KeyStatsMap) {
       paintGrid(box, "horizontal"),
       paintHistogram(box, vSpeed, rSpeed, { style: chartStyles.keySpeedBar }),
       paintFrame(box),
-      paintTicks(box, rSpeed, "left", { fmt }),
+      paintTicks(box, rSpeed, "left", { fmt: formatSpeed }),
       paintKeyTicks(box, letters, "bottom"),
     ];
   };

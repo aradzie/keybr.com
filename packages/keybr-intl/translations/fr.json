@@ -167,6 +167,22 @@
     "defaultMessage": "Lu|Ma|Me|Je|Ve|Sa|Di",
     "description": "Day of week name."
   },
+  "characterClass.digits": {
+    "defaultMessage": "Chiffres",
+    "description": "Label."
+  },
+  "characterClass.letters": {
+    "defaultMessage": "Lettres",
+    "description": "Label."
+  },
+  "characterClass.punctuationCharacters": {
+    "defaultMessage": "Caractères de ponctuation",
+    "description": "Label."
+  },
+  "characterClass.specialCharacters": {
+    "defaultMessage": "Caractères spéciaux",
+    "description": "Label."
+  },
   "common.javaScriptDisabledText": {
     "defaultMessage": "Cette application ne fonctionnera pas car JavaScript est désactivé dans votre navigateur!",
     "description": "Common text."
@@ -489,7 +505,7 @@
   },
   "lessonType.customText.name": {
     "defaultMessage": "Texte personnalisé",
-    "description": "Widget label."
+    "description": "Input field label."
   },
   "lessonType.guided.description": {
     "defaultMessage": "Ce mode générera automatiquement des leçons de dactylographie avec des mots aléatoires en utilisant les règles phonétiques de votre langue. Le jeu de touches est étendu de manière dynamique en fonction de vos performances. Ce mode est destiné aux débutants.",
@@ -497,11 +513,11 @@
   },
   "lessonType.guided.name": {
     "defaultMessage": "Leçons guidées",
-    "description": "Widget label."
+    "description": "Input field label."
   },
   "lessonType.numbers.name": {
     "defaultMessage": "Nombres",
-    "description": "Widget label."
+    "description": "Input field label."
   },
   "lessonType.wordList.description": {
     "defaultMessage": "Générez des leçons à partir de la liste des mots les plus courants. Par défaut, toutes les clés sont activées. Ce mode est destiné aux pros.",
@@ -509,7 +525,7 @@
   },
   "lessonType.wordlist.name": {
     "defaultMessage": "Mots communs",
-    "description": "Widget label."
+    "description": "Input field label."
   },
   "metric.accuracy.label": {
     "defaultMessage": "Précision",
@@ -861,27 +877,27 @@
   },
   "practice.resetLessonButtonTitle": {
     "defaultMessage": "Remise à zéro de la leçon en cours (Ctrl + Flèche Gauche).",
-    "description": "Button title."
+    "description": "Input field title."
   },
   "practice.settingButtonName": {
     "defaultMessage": "Paramètres...",
-    "description": "Button name."
+    "description": "Input field label."
   },
   "practice.settingButtonTitle": {
     "defaultMessage": "Modifier les paramètres de la leçon, configurez la langue, la disposition du clavier etc.",
-    "description": "Button title."
+    "description": "Input field title."
   },
   "practice.showHelpSlidesButtonTitle": {
     "defaultMessage": "Montrer une visite guidée avec des diapositives d'aide.",
-    "description": "Button title."
+    "description": "Input field title."
   },
   "practice.skipLessonButtonTitle": {
     "defaultMessage": "Passer la leçon en cours (Ctrl + Flèche Droite).",
-    "description": "Button title."
+    "description": "Input field title."
   },
   "practice.switchInterfaceButtonTitle": {
     "defaultMessage": "Basculer la disposition actuelle de l’interface.",
-    "description": "Button title."
+    "description": "Input field title."
   },
   "practice.tourSlide1": {
     "defaultMessage": "<h1>Apprendre à taper plus vite</h1><p>Cette application Web vous aidera à apprendre la <em>dactylographie tactile</em>, à savoir taper en utilisant la mémoire musculaire sans regarder pour trouver les touches. Elle peut améliorer considérablement votre vitesse et votre précision de frappe. L'opposé est la <em>dactylographie à deux doigts</em>, une méthode de frappe dans laquelle vous regardez le clavier au lieu de l'écran et n'utilisez que les index.</p><p>Ce court tutoriel vous expliquera le fonctionnement de cette application.</p><p>Pour naviguer dans ces diapositives, vous pouvez utiliser les touches fléchées gauche et droite.</p>",
@@ -1175,117 +1191,105 @@
     "defaultMessage": "Éliminez le bruit pour voir la tendance à long terme.",
     "description": "Input field title."
   },
+  "settings.alphabetSizeLabel": {
+    "defaultMessage": "Ajouter des lettres aux mots:",
+    "description": "Input field label."
+  },
   "settings.benfordsLawDescription": {
     "defaultMessage": "<a>Benford's law</a> is an observation that in many real-life numerical data sets, the leading digit is likely to be small.",
-    "description": "Freeform text."
+    "description": "Description text."
   },
   "settings.benfordsLawLabel": {
     "defaultMessage": "Benford's law",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
-  "settings.benfordsLawTitle": {
-    "defaultMessage": "Generate numbers following the Benford's law.",
-    "description": "Checkbox title."
+  "settings.capitalLettersLabel": {
+    "defaultMessage": "Ajoutez des majuscules:",
+    "description": "Input field label."
   },
   "settings.cursorMovementLabel": {
     "defaultMessage": "Mouvement du curseur:",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.cursorShapeLabel": {
     "defaultMessage": "Forme du curseur:",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.customTextExamplesLabel": {
     "defaultMessage": "Exemples:",
-    "description": "Text label."
+    "description": "Input field label."
   },
   "settings.customTextInputPlaceholder": {
     "defaultMessage": "Texte personnalisé...",
     "description": "Input field placeholder."
   },
+  "settings.customTextLettersOnlyLabel": {
+    "defaultMessage": "Supprimer la ponctuation",
+    "description": "Input field label."
+  },
+  "settings.customTextLettersOnlyTitle": {
+    "defaultMessage": "Supprimer la ponctuation pour rendre le texte plus simple à saisir.",
+    "description": "Input field title."
+  },
+  "settings.customTextLowercaseLabel": {
+    "defaultMessage": "Transformer en minuscules",
+    "description": "Input field label."
+  },
+  "settings.customTextLowercaseTitle": {
+    "defaultMessage": "Transformer tout le texte en minuscules pour le rendre plus simple à saisir.",
+    "description": "Input field title."
+  },
+  "settings.customTextRandomizeLabel": {
+    "defaultMessage": "Mélangez les mots",
+    "description": "Input field label."
+  },
+  "settings.customTextRandomizeTitle": {
+    "defaultMessage": "Mettez les mots du texte personnalisé dans un ordre aléatoire.",
+    "description": "Input field title."
+  },
   "settings.dailyGoalDescription": {
     "defaultMessage": "Définissez le temps que vous souhaitez consacrer quotidiennement aux exercices.",
-    "description": "Input field description."
+    "description": "Description text."
   },
   "settings.dailyGoalLabel": {
     "defaultMessage": "Objectif quotidien:",
     "description": "Input field label."
   },
-  "settings.dailyGoalTitle": {
-    "defaultMessage": "Objectif quotidien à consacrer aux exercices en quelques minutes.",
-    "description": "Input field title."
-  },
   "settings.doneButtonLabel": {
     "defaultMessage": "Terminé",
-    "description": "Button label."
-  },
-  "settings.doneButtonTitle": {
-    "defaultMessage": "Enregistrer les modifications et commencer à vous entraîner.",
-    "description": "Button title."
+    "description": "Input field label."
   },
   "settings.emulateLayoutLabel": {
     "defaultMessage": "Émuler la disposition",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.emulateLayoutTitle": {
     "defaultMessage": "Émuler la disposition de clavier sélectionnée si la disposition standard est définie dans le système.",
-    "description": "Checkbox title."
-  },
-  "settings.enableCapitalLettersLabel": {
-    "defaultMessage": "Activer les majuscules",
-    "description": "Checkbox label."
-  },
-  "settings.enableCapitalLettersTitle": {
-    "defaultMessage": "Générer du texte avec des majuscules.",
-    "description": "Checkbox title."
-  },
-  "settings.enablePunctuationLabel": {
-    "defaultMessage": "Activer les caractères de ponctuation",
-    "description": "Checkbox label."
-  },
-  "settings.enablePunctuationTitle": {
-    "defaultMessage": "Ajouter des caractères de ponctuation au texte généré.",
-    "description": "Checkbox title."
-  },
-  "settings.enableSoundsLabel": {
-    "defaultMessage": "Activer les effets sonores",
-    "description": "Checkbox label."
-  },
-  "settings.enableSoundsTitle": {
-    "defaultMessage": "Faire du bruit supplémentaire lors de la frappe et en cas d'erreurs.",
-    "description": "Checkbox description."
-  },
-  "settings.extendKeySetLabel": {
-    "defaultMessage": "Ajouter des lettres aux mots:",
-    "description": "Input field label."
-  },
-  "settings.extendKeySetTitle": {
-    "defaultMessage": "Ajoutez plus de lettres à chaque mot généré.",
-    "description": "Input field title."
-  },
-  "settings.extendLessonLengthLabel": {
-    "defaultMessage": "Ajouter des mots aux leçons:",
-    "description": "Input field label."
-  },
-  "settings.extendLessonLengthTitle": {
-    "defaultMessage": "Ajouter plus de mots à chaque leçon générée.",
     "description": "Input field title."
   },
   "settings.forgiveErrorsDescription": {
     "defaultMessage": "L'activation de cette option permet de pardonner certains types d'erreurs et les corriger automatiquement dans le champ de saisie de texte. Il s'agit d'erreurs telles que la saisie d'un caractère erroné ou l'omission d'un caractère.",
-    "description": "Checkbox description."
+    "description": "Description text."
   },
   "settings.forgiveErrorsLabel": {
     "defaultMessage": "Pardonner les erreurs",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.interfaceOptionsLegend": {
     "defaultMessage": "Options d'interface",
     "description": "Fieldset legend."
   },
+  "settings.keyboardFullViewLabel": {
+    "defaultMessage": "Vue complète du clavier",
+    "description": "Input field label."
+  },
   "settings.keyboardTabLabel": {
     "defaultMessage": "Clavier",
-    "description": "Tab label."
+    "description": "Header text."
+  },
+  "settings.lessonLengthLabel": {
+    "defaultMessage": "Ajouter des mots aux leçons:",
+    "description": "Input field label."
   },
   "settings.lessonOptionsLegend": {
     "defaultMessage": "Options de leçons",
@@ -1293,15 +1297,19 @@
   },
   "settings.lessonsTabLabel": {
     "defaultMessage": "Exercices",
-    "description": "Tab label."
+    "description": "Header text."
   },
   "settings.miscellaneousTabLabel": {
     "defaultMessage": "Divers",
-    "description": "Tab label."
+    "description": "Header text."
   },
   "settings.optionsLegend": {
     "defaultMessage": "Options",
     "description": "Fieldset legend."
+  },
+  "settings.playSoundsLabel": {
+    "defaultMessage": "Play sounds:",
+    "description": "Input field label."
   },
   "settings.previewLabel": {
     "defaultMessage": "Aperçu de la leçon",
@@ -1311,65 +1319,41 @@
     "defaultMessage": "Aperçu",
     "description": "Fieldset legend."
   },
-  "settings.removePunctuationLabel": {
-    "defaultMessage": "Supprimer la ponctuation",
-    "description": "Checkbox label."
-  },
-  "settings.removePunctuationTitle": {
-    "defaultMessage": "Supprimer la ponctuation pour rendre le texte plus simple à saisir.",
-    "description": "Checkbox title."
+  "settings.punctuationLabel": {
+    "defaultMessage": "Ajouter la ponctuation:",
+    "description": "Input field label."
   },
   "settings.selectLanguageLabel": {
     "defaultMessage": "Langue:",
-    "description": "Dropdown label."
+    "description": "Input field label."
   },
   "settings.selectLanguageTitle": {
     "defaultMessage": "Sélectionner votre langue parlée.",
-    "description": "Dropdown title."
+    "description": "Input field title."
   },
   "settings.selectLayoutLabel": {
     "defaultMessage": "Disposition:",
-    "description": "Dropdown label."
+    "description": "Input field label."
   },
   "settings.selectLayoutTitle": {
     "defaultMessage": "Sélectionnez la disposition du clavier avec laquelle vous souhaitez vous entraîner. Il peut y avoir de nombreuses dispositions disponibles pour chaque langue.",
-    "description": "Dropdown title."
-  },
-  "settings.shuffleWordsLabel": {
-    "defaultMessage": "Mélangez les mots",
-    "description": "Checkbox label."
-  },
-  "settings.shuffleWordsTitle": {
-    "defaultMessage": "Mettez les mots du texte personnalisé dans un ordre aléatoire.",
-    "description": "Checkbox title."
+    "description": "Input field title."
   },
   "settings.stopCursorOnErrorDescription": {
     "defaultMessage": "Si cette option est activée, le curseur de texte cesse d’avancer jusqu’à ce que la touche de droite soit enfoncée à la position actuelle. Si cette option est désactivée, toutes les erreurs seront accumulées dans le champ de saisie de texte et doivent être effacées avec la touche Suppr.",
-    "description": "Checkbox description."
+    "description": "Description text."
   },
   "settings.stopCursorOnErrorLabel": {
     "defaultMessage": "Arrêter le curseur lorsqu'une erreur se produit",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.targetSpeedLabel": {
     "defaultMessage": "Vitesse de frappe cible:",
     "description": "Input field label."
   },
-  "settings.targetSpeedTitle": {
-    "defaultMessage": "Set custom target typing speed that you want to achieve.",
-    "description": "Input field title."
-  },
   "settings.textAppearanceLegend": {
     "defaultMessage": "Apparence du texte",
     "description": "Fieldset legend."
-  },
-  "settings.transformToLowercaseLabel": {
-    "defaultMessage": "Transformer en minuscules",
-    "description": "Checkbox label."
-  },
-  "settings.transformToLowercaseTitle": {
-    "defaultMessage": "Transformer tout le texte en minuscules pour le rendre plus simple à saisir.",
-    "description": "Checkbox title."
   },
   "settings.typingOptionsLegend": {
     "defaultMessage": "Options de frappe",
@@ -1385,15 +1369,19 @@
   },
   "settings.typingTabLabel": {
     "defaultMessage": "Saisie de texte",
-    "description": "Tab label."
+    "description": "Header text."
   },
   "settings.whitespaceLabel": {
     "defaultMessage": "Espace blanc:",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.wordListSizeLabel": {
     "defaultMessage": "Nombre de mots:",
     "description": "Input field label."
+  },
+  "settings.wordListSizeTitle": {
+    "defaultMessage": "Choisissez le nombre de mots courants à utiliser.",
+    "description": "Input field title."
   },
   "speedUnit.cpm.description": {
     "defaultMessage": "Mesurer la vitesse de frappe en caractères par minute.",
@@ -1462,14 +1450,6 @@
   "textTools.textInputPlaceholder": {
     "defaultMessage": "Collez votre texte ici",
     "description": "Input field placeholder."
-  },
-  "textType.digits": {
-    "defaultMessage": "Chiffres",
-    "description": "Label."
-  },
-  "textType.letters": {
-    "defaultMessage": "Lettres",
-    "description": "Label."
   },
   "theme.enterFullscreenTitle": {
     "defaultMessage": "Passer en mode plein écran.",

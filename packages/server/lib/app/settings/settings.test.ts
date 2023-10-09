@@ -1,5 +1,5 @@
 import { Application } from "@fastr/core";
-import { Settings } from "@keybr/settings";
+import { Settings, stringProp } from "@keybr/settings";
 import { SettingsDatabase } from "@keybr/settings-database";
 import { kMain } from "../module.ts";
 import { test } from "../test/context.ts";
@@ -47,9 +47,7 @@ test.serial("get existing settings", async (t) => {
   const database = t.context.get(SettingsDatabase);
   await database.set(
     user.id!,
-    new Settings({
-      textContent: "hello world",
-    }),
+    new Settings().set(stringProp("prop", "abc"), "abc"),
   );
 
   // Act.
@@ -62,7 +60,7 @@ test.serial("get existing settings", async (t) => {
   t.is(response.headers.get("Content-Type"), "application/json; charset=UTF-8");
   t.is(response.headers.get("Cache-Control"), "private, no-cache");
   t.like(await response.body.json(), {
-    "lesson.text.content": "hello world",
+    prop: "abc",
   });
 });
 
@@ -116,14 +114,12 @@ test.serial("put settings", async (t) => {
 
   const response = await request
     .PUT("/_/sync/settings")
-    .send(new Settings({ textContent: "hello world" }).toJSON() as object);
+    .send(new Settings().set(stringProp("prop", "abc"), "abc").toJSON());
 
   // Assert.
 
   t.is(response.status, 204);
-  t.like((await database.get(user.id!))?.toJSON(), {
-    "lesson.text.content": "hello world",
-  });
+  t.like((await database.get(user.id!))?.toJSON(), { prop: "abc" });
 });
 
 test.serial("delete settings", async (t) => {
@@ -136,9 +132,7 @@ test.serial("delete settings", async (t) => {
   const database = t.context.get(SettingsDatabase);
   await database.set(
     user.id!,
-    new Settings({
-      textContent: "hello world",
-    }),
+    new Settings().set(stringProp("prop", "abc"), "abc"),
   );
 
   // Act.

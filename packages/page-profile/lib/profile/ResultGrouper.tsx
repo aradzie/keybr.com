@@ -1,11 +1,9 @@
-import { KeyboardContext, loadKeyboard } from "@keybr/keyboard";
+import { KeyboardContext, keyboardProps, loadKeyboard } from "@keybr/keyboard";
 import { Layout } from "@keybr/layout";
 import { Letter } from "@keybr/phonetic-model";
 import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
 import {
-  digitsOnly,
   type KeyStatsMap,
-  lettersOnly,
   newKeyStatsMap,
   ResultGroups,
   useResults,
@@ -20,23 +18,32 @@ export function ResultGrouper({
 }: {
   readonly children: (keyStatsMap: KeyStatsMap) => ReactNode;
 }): ReactNode {
+  const enum CharClass {
+    Letters,
+    Digits,
+    Punctuators,
+    Specials,
+  }
   const { formatMessage } = useIntl();
   const { settings } = useSettings();
   const { results } = useResults();
   const groups = ResultGroups.byLayout(results);
-  const layouts = new Set(groups.keys());
-  if (layouts.size === 0) {
-    layouts.add(settings.layout);
+  const resultsLayouts = new Set(groups.keys());
+  const configuredLayout = settings.get(keyboardProps.layout);
+  if (resultsLayouts.size === 0) {
+    resultsLayouts.add(configuredLayout);
   }
   const defaultLayout = () =>
-    layouts.has(settings.layout) ? settings.layout : [...layouts][0];
-  const [layout, setLayout] = useState(defaultLayout);
-  const [textType, setTextType] = useState("letters");
-  if (!layouts.has(layout)) {
-    setLayout(defaultLayout());
+    resultsLayouts.has(configuredLayout)
+      ? configuredLayout
+      : [...resultsLayouts][0];
+  const [selectedLayout, setSelectedLayout] = useState(defaultLayout);
+  const [charClass, setCharClass] = useState(CharClass.Letters);
+  if (!resultsLayouts.has(selectedLayout)) {
+    setSelectedLayout(defaultLayout());
   }
-  const keyboard = loadKeyboard(layout, { full: false });
-  const group = groups.get(layout);
+  const keyboard = loadKeyboard(selectedLayout, { full: false });
+  const group = groups.get(selectedLayout);
 
   return (
     <>
@@ -50,15 +57,15 @@ export function ResultGrouper({
         </Field>
         <Field>
           <OptionList
-            options={[...layouts].map((layout) => {
+            options={[...resultsLayouts].map((layout) => {
               return {
                 value: String(layout),
                 name: `${layout.name}`,
               };
             })}
-            value={String(layout)}
+            value={String(selectedLayout)}
             onSelect={(value) => {
-              setLayout(Layout.ALL.get(value));
+              setSelectedLayout(Layout.ALL.get(value));
             }}
           />
         </Field>
@@ -66,13 +73,13 @@ export function ResultGrouper({
           <RadioBox
             name="text-type"
             label={formatMessage({
-              id: "textType.letters",
+              id: "characterClass.letters",
               description: "Label.",
               defaultMessage: "Letters",
             })}
-            checked={textType === "letters"}
+            checked={charClass === CharClass.Letters}
             onSelect={() => {
-              setTextType("letters");
+              setCharClass(CharClass.Letters);
             }}
           />
         </Field>
@@ -80,33 +87,63 @@ export function ResultGrouper({
           <RadioBox
             name="text-type"
             label={formatMessage({
-              id: "textType.digits",
+              id: "characterClass.digits",
               description: "Label.",
               defaultMessage: "Digits",
             })}
-            checked={textType === "digits"}
+            checked={charClass === CharClass.Digits}
             onSelect={() => {
-              setTextType("digits");
+              setCharClass(CharClass.Digits);
+            }}
+          />
+        </Field>
+        <Field>
+          <RadioBox
+            name="text-type"
+            label={formatMessage({
+              id: "characterClass.punctuationCharacters",
+              description: "Label.",
+              defaultMessage: "Punctuation characters",
+            })}
+            checked={charClass === CharClass.Punctuators}
+            onSelect={() => {
+              setCharClass(CharClass.Punctuators);
+            }}
+          />
+        </Field>
+        <Field>
+          <RadioBox
+            name="text-type"
+            label={formatMessage({
+              id: "characterClass.specialCharacters",
+              description: "Label.",
+              defaultMessage: "Special characters",
+            })}
+            checked={charClass === CharClass.Specials}
+            onSelect={() => {
+              setCharClass(CharClass.Specials);
             }}
           />
         </Field>
       </FieldList>
 
       <KeyboardContext.Provider value={keyboard}>
-        <PhoneticModelLoader language={layout.language}>
+        <PhoneticModelLoader language={selectedLayout.language}>
           {({ letters }) => {
-            switch (textType) {
-              case "letters":
+            switch (charClass) {
+              case CharClass.Letters:
                 return children(
                   newKeyStatsMap(
                     Letter.restrict(letters, keyboard.codePoints()),
-                    lettersOnly(group),
+                    group,
                   ),
                 );
-              case "digits":
-                return children(
-                  newKeyStatsMap(Letter.digits, digitsOnly(group)),
-                );
+              case CharClass.Digits:
+                return children(newKeyStatsMap(Letter.digits, group));
+              case CharClass.Punctuators:
+                return children(newKeyStatsMap(Letter.punctuators, group));
+              case CharClass.Specials:
+                return children(newKeyStatsMap(Letter.specials, group));
               default:
                 throw new Error();
             }

@@ -5,6 +5,7 @@ import {
 } from "@keybr/content-words";
 import { languageName, useIntlNumbers } from "@keybr/intl";
 import { Language } from "@keybr/layout";
+import { useSettings } from "@keybr/settings";
 import {
   Field,
   FieldList,
@@ -12,42 +13,35 @@ import {
   NameValue,
   OptionList,
   Para,
+  Range,
   styleSizeFull,
+  styleSizeWide,
   TextField,
 } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
-import { type CommonWordsSource } from "../../../generator/index.ts";
-import { type SettingsEditorProps } from "../types.ts";
+import { typingTestProps } from "../../../settings.ts";
 
-export function CommonWordsSettings({
-  settings,
-  patchSettings,
-}: SettingsEditorProps): ReactNode {
-  const { textSource } = settings as { readonly textSource: CommonWordsSource };
+export function CommonWordsSettings(): ReactNode {
+  const { settings } = useSettings();
   return (
-    <WordListLoader language={textSource.language}>
+    <WordListLoader language={settings.get(typingTestProps.language)}>
       {(wordList) => (
-        <Tab
-          settings={settings}
-          patchSettings={patchSettings}
-          wordList={wordList}
+        <Content
+          wordList={wordList.slice(
+            0,
+            settings.get(typingTestProps.wordList.wordListSize),
+          )}
         />
       )}
     </WordListLoader>
   );
 }
 
-function Tab({
-  settings,
-  patchSettings,
-  wordList,
-}: SettingsEditorProps & {
-  readonly wordList: WordList;
-}): ReactNode {
+function Content({ wordList }: { readonly wordList: WordList }): ReactNode {
+  const { settings, updateSettings } = useSettings();
   const { formatMessage } = useIntl();
   const { formatNumber } = useIntlNumbers();
-  const { textSource } = settings as { readonly textSource: CommonWordsSource };
   const { wordCount, avgWordLength } = wordListStats(wordList);
   return (
     <FieldSet legend="Common words">
@@ -57,7 +51,7 @@ function Tab({
         <Field>
           {formatMessage({
             id: "settings.selectLanguageLabel",
-            description: "Dropdown label.",
+            description: "Input field label.",
             defaultMessage: "Language:",
           })}
         </Field>
@@ -70,18 +64,43 @@ function Tab({
             }))}
             title={formatMessage({
               id: "settings.selectLanguageTitle",
-              description: "Dropdown title.",
+              description: "Input field title.",
               defaultMessage: "Select your spoken language.",
             })}
-            value={textSource.language.id}
+            value={String(settings.get(typingTestProps.language))}
             onSelect={(id) => {
-              patchSettings({
-                ...settings,
-                textSource: {
-                  ...textSource,
-                  language: Language.ALL.find((item) => item.id === id)!,
-                },
-              });
+              updateSettings(
+                settings.set(typingTestProps.language, Language.ALL.get(id)),
+              );
+            }}
+          />
+        </Field>
+      </FieldList>
+
+      <FieldList>
+        <Field>
+          {formatMessage({
+            id: "settings.wordListSizeLabel",
+            description: "Input field label.",
+            defaultMessage: "Word list size:",
+          })}
+        </Field>
+        <Field>
+          <Range
+            className={styleSizeWide}
+            min={typingTestProps.wordList.wordListSize.min}
+            max={typingTestProps.wordList.wordListSize.max}
+            step={1}
+            value={settings.get(typingTestProps.wordList.wordListSize)}
+            title={formatMessage({
+              id: "settings.wordListSizeTitle",
+              description: "Input field title.",
+              defaultMessage: "Chose how many common words to use.",
+            })}
+            onChange={(value) => {
+              updateSettings(
+                settings.set(typingTestProps.wordList.wordListSize, value),
+              );
             }}
           />
         </Field>
@@ -91,19 +110,33 @@ function Tab({
         <TextField
           className={styleSizeFull}
           type="textarea"
-          value={[...wordList].sort().join(", ")}
+          value={wordList.join(", ")}
           disabled={true}
         />
       </Para>
-      <Para>
-        <NameValue name="Unique words" value={formatNumber(wordCount)} />
-      </Para>
-      <Para>
-        <NameValue
-          name="Average word length"
-          value={formatNumber(avgWordLength, 2)}
-        />
-      </Para>
+
+      <FieldList>
+        <Field>
+          <NameValue
+            name={formatMessage({
+              id: "textStats.uniqueWordCount",
+              description: "Text label.",
+              defaultMessage: "Unique words",
+            })}
+            value={formatNumber(wordCount)}
+          />
+        </Field>
+        <Field>
+          <NameValue
+            name={formatMessage({
+              id: "textStats.averageWordLength",
+              description: "Text label.",
+              defaultMessage: "Average word length",
+            })}
+            value={formatNumber(avgWordLength, 2)}
+          />
+        </Field>
+      </FieldList>
     </FieldSet>
   );
 }

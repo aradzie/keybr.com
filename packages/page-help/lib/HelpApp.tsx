@@ -261,9 +261,7 @@ export function HelpApp(): ReactNode {
             description="Example profile text."
             defaultMessage="<a>Example 1</a>, from 30 to 70 WPM after 4 hours 20 minutes of practicing in the course of 15 days."
             values={{
-              a: (chunks: ReactNode): ReactNode => (
-                <ExampleLink index={1}>{chunks}</ExampleLink>
-              ),
+              a: (chunks) => <ExampleLink index={1}>{chunks}</ExampleLink>,
             }}
           />
         </li>
@@ -274,9 +272,7 @@ export function HelpApp(): ReactNode {
             description="Example profile text."
             defaultMessage="<a>Example 2</a>, from 35 to 70 WPM after 2 hours and 20 minutes of practicing in the course of 12 days."
             values={{
-              a: (chunks: ReactNode): ReactNode => (
-                <ExampleLink index={2}>{chunks}</ExampleLink>
-              ),
+              a: (chunks) => <ExampleLink index={2}>{chunks}</ExampleLink>,
             }}
           />
         </li>
@@ -287,9 +283,7 @@ export function HelpApp(): ReactNode {
             description="Example profile text."
             defaultMessage="<a>Example 3</a>, a decent jump from less than 20 to 40 WPM after 5 hours and 30 minutes of practicing in the course of 11 days."
             values={{
-              a: (chunks: ReactNode): ReactNode => (
-                <ExampleLink index={3}>{chunks}</ExampleLink>
-              ),
+              a: (chunks) => <ExampleLink index={3}>{chunks}</ExampleLink>,
             }}
           />
         </li>
@@ -300,9 +294,7 @@ export function HelpApp(): ReactNode {
             description="Example profile text."
             defaultMessage="<a>Example 4</a>, after 2 hours and 10 minutes of practicing in the course of 11 days, typing speed stayed at ~70 WPM (which is already pretty high), but accuracy improved."
             values={{
-              a: (chunks: ReactNode): ReactNode => (
-                <ExampleLink index={4}>{chunks}</ExampleLink>
-              ),
+              a: (chunks) => <ExampleLink index={4}>{chunks}</ExampleLink>,
             }}
           />
         </li>
@@ -313,9 +305,7 @@ export function HelpApp(): ReactNode {
             description="Example profile text."
             defaultMessage="<a>Example 5</a>, from 20 to 45 WPM after about 10 hours of practicing in the course of 22 day (yes, sometimes it takes longer)."
             values={{
-              a: (chunks: ReactNode): ReactNode => (
-                <ExampleLink index={5}>{chunks}</ExampleLink>
-              ),
+              a: (chunks) => <ExampleLink index={5}>{chunks}</ExampleLink>,
             }}
           />
         </li>

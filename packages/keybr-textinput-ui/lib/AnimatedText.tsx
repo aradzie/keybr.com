@@ -1,5 +1,8 @@
-import { type Char, TextInput } from "@keybr/textinput";
-import { type TextDisplaySettings } from "@keybr/textinput-settings";
+import {
+  type Char,
+  type TextDisplaySettings,
+  TextInput,
+} from "@keybr/textinput";
 import { type ReactNode, useEffect, useState } from "react";
 import { StaticText, type TextAreaSize } from "./TextArea.tsx";
 

@@ -1,8 +1,8 @@
 import { FakeIntlProvider } from "@keybr/intl";
-import { LearningRate, LessonKey, Target } from "@keybr/lesson";
+import { LearningRate, LessonKey, lessonProps, Target } from "@keybr/lesson";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { generateKeySamples } from "@keybr/result";
-import { FakeSettingsContext } from "@keybr/settings";
+import { FakeSettingsContext, Settings } from "@keybr/settings";
 import { render } from "@testing-library/react";
 import test from "ava";
 import { KeyDetailsChart } from "./KeyDetailsChart.tsx";
@@ -34,7 +34,8 @@ test("render empty", (t) => {
 });
 
 test("render non-empty", (t) => {
-  const target = new Target({ targetSpeed: /* 35WPM */ 175 });
+  const settings = new Settings().set(lessonProps.targetSpeed, /* 35WPM */ 175);
+  const target = new Target(settings);
   const learningRate = LearningRate.from(generateKeySamples(10), target);
   t.not(learningRate, null);
   const r = render(

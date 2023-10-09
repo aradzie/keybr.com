@@ -2,7 +2,7 @@ import {
   CaretMovementStyle,
   CaretShapeStyle,
   type TextDisplaySettings,
-} from "@keybr/textinput-settings";
+} from "@keybr/textinput";
 import { clsx } from "clsx";
 import {
   Component,

@@ -6,7 +6,7 @@ Source code of the [keybr.com](https://www.keybr.com/) web application.
 
 <img src="assets/screenshot.png" alt="screenshot" style="width: 500px; display: block; margin: 0 auto;"/>
 
-### So you want to run a local copy of keybr.com
+## So you want to run a local copy of keybr.com
 
 This is a [nodejs](https://nodejs.org/) application, so proficiency with the node ecosystem is required. 
 
@@ -51,3 +51,8 @@ npm start
 ```
 
 With the default config the application should be accessible at [http://localhost:3000/](http://localhost:3000/)
+
+
+## License
+
+Released under the GNU Affero General Public License v3.0.

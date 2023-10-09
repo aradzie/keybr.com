@@ -1,6 +1,7 @@
-import { useKeyboard } from "@keybr/keyboard";
+import { keyboardProps, useKeyboard } from "@keybr/keyboard";
+import { type Settings } from "@keybr/settings";
 import { playSound } from "@keybr/sound";
-import { Feedback } from "@keybr/textinput";
+import { Feedback, PlaySounds, textDisplayProps } from "@keybr/textinput";
 import { emulateLayout } from "@keybr/textinput-events";
 import { TextInputSound } from "@keybr/textinput-sounds";
 import {
@@ -61,6 +62,7 @@ function usePracticeState(state: PracticeState) {
       state.handleSkip();
       setLines(state.lines);
     };
+    const playSounds = makeSoundPlayer(state.settings);
     const { onKeyDown, onKeyUp, onInput } = emulateLayout(
       keyboard,
       {
@@ -70,10 +72,10 @@ function usePracticeState(state: PracticeState) {
           state.lastLesson = null;
           const feedback = state.handleInput(codePoint, timeStamp);
           setLines(state.lines);
-          playFeedbackSound(feedback);
+          playSounds(feedback);
         },
       },
-      state.settings.emulateLayout,
+      state.settings.get(keyboardProps.emulate),
     );
     return {
       handleReset,
@@ -90,16 +92,29 @@ function usePracticeState(state: PracticeState) {
   }, [state, keyboard]);
 }
 
-function playFeedbackSound(feedback: Feedback): void {
-  switch (feedback) {
-    case Feedback.Succeeded:
-      playSound(TextInputSound.Click);
-      break;
-    case Feedback.Recovered:
-      playSound(TextInputSound.Click);
-      break;
-    case Feedback.Failed:
-      playSound(TextInputSound.Blip);
-      break;
-  }
+function makeSoundPlayer(settings: Settings) {
+  const playSounds = settings.get(textDisplayProps.playSounds);
+  const soundVolume = settings.get(textDisplayProps.soundVolume);
+  return (feedback: Feedback): void => {
+    if (playSounds === PlaySounds.All) {
+      switch (feedback) {
+        case Feedback.Succeeded:
+          playSound(TextInputSound.Click, soundVolume);
+          break;
+        case Feedback.Recovered:
+          playSound(TextInputSound.Click, soundVolume);
+          break;
+        case Feedback.Failed:
+          playSound(TextInputSound.Blip, soundVolume);
+          break;
+      }
+    }
+    if (playSounds === PlaySounds.ErrorsOnly) {
+      switch (feedback) {
+        case Feedback.Failed:
+          playSound(TextInputSound.Blip, soundVolume);
+          break;
+      }
+    }
+  };
 }

@@ -1,27 +1,29 @@
 import { type WordList } from "@keybr/content-words";
 import { FakeRNGStream } from "@keybr/rand";
-import {
-  textDisplaySettings,
-  textInputSettings,
-} from "@keybr/textinput-settings";
+import { textDisplaySettings, textInputSettings } from "@keybr/textinput";
 import test from "ava";
 import { CommonWordsGenerator } from "../generator/index.ts";
 import { Session } from "./session.ts";
+import { DurationType } from "./types.ts";
 
 test("lines", (t) => {
   const wordList: WordList = ["one", "two", "three", "four", "five"];
   const session = new Session(
     {
-      limit: {
-        type: "length",
-        length: 10,
+      duration: {
+        type: DurationType.Length,
+        value: 10,
       },
       numLines: 3,
       numCols: 3,
       textInput: textInputSettings,
       textDisplay: textDisplaySettings,
     },
-    new CommonWordsGenerator(wordList, FakeRNGStream(wordList.length)),
+    new CommonWordsGenerator(
+      { wordListSize: 1000 },
+      wordList,
+      FakeRNGStream(wordList.length),
+    ),
   );
 
   {

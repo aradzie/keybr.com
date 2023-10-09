@@ -3,6 +3,7 @@ import { Settings } from "@keybr/settings";
 import { toCodePoints } from "@keybr/unicode";
 import test from "ava";
 import { LessonKey } from "./key.ts";
+import { lessonProps } from "./settings.ts";
 import { WordListLesson } from "./wordlist.ts";
 
 const allCodePoints = { has: () => true };
@@ -142,17 +143,12 @@ test("filter words", (t) => {
 
 test("generate text using settings", (t) => {
   {
+    const settings = new Settings()
+      .set(lessonProps.capitals, 0)
+      .set(lessonProps.punctuators, 0);
     const model = new FakePhoneticModel();
     const wordList = ["abc", "def", "ghi"];
-    const lesson = new WordListLesson(
-      new Settings({
-        lessonCapitals: false,
-        lessonPunctuators: false,
-      }),
-      model,
-      allCodePoints,
-      wordList,
-    );
+    const lesson = new WordListLesson(settings, model, allCodePoints, wordList);
     lesson.update(lesson.analyze([]));
     lesson.rng = model.rng;
 
@@ -164,24 +160,19 @@ test("generate text using settings", (t) => {
   }
 
   {
+    const settings = new Settings()
+      .set(lessonProps.capitals, 1)
+      .set(lessonProps.punctuators, 1);
     const model = new FakePhoneticModel();
     const wordList = ["abc", "def", "ghi"];
-    const lesson = new WordListLesson(
-      new Settings({
-        lessonCapitals: true,
-        lessonPunctuators: true,
-      }),
-      model,
-      allCodePoints,
-      wordList,
-    );
+    const lesson = new WordListLesson(settings, model, allCodePoints, wordList);
     lesson.update(lesson.analyze([]));
     lesson.rng = model.rng;
 
     t.is(
       lesson.generate(),
-      "abc def, Ghi abc def, Ghi abc def, Ghi abc def, Ghi abc def, Ghi abc " +
-        "def, Ghi abc def, Ghi abc def, Ghi abc def, Ghi abc def, Ghi",
+      "Abc, Def, Ghi! Abc, Def, Ghi! Abc, Def, Ghi! Abc, Def, Ghi! Abc, Def, " +
+        "Ghi! Abc, Def, Ghi! Abc, Def, Ghi! Abc, Def, Ghi! Abc,",
     );
   }
 });

@@ -1,20 +1,18 @@
-import { type LineData } from "@keybr/textinput";
 import {
+  type LineData,
   type TextDisplaySettings,
   type TextInputSettings,
-} from "@keybr/textinput-settings";
+} from "@keybr/textinput";
 
-export type TimeLimit = {
-  readonly type: "time";
-  readonly time: number;
+export enum DurationType {
+  Time = 1,
+  Length = 2,
+}
+
+export type Duration = {
+  readonly type: DurationType;
+  readonly value: number;
 };
-
-export type LengthLimit = {
-  readonly type: "length";
-  readonly length: number;
-};
-
-export type Limit = TimeLimit | LengthLimit;
 
 export type Progress = {
   /** Time passed in millis. */
@@ -26,7 +24,7 @@ export type Progress = {
 };
 
 export type SessionSettings = {
-  readonly limit: Limit;
+  readonly duration: Duration;
   readonly textInput: TextInputSettings;
   readonly textDisplay: TextDisplaySettings;
   readonly numLines: number;

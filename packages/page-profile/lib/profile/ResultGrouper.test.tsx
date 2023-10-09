@@ -1,5 +1,5 @@
 import { FakeIntlProvider } from "@keybr/intl";
-import { useKeyboard } from "@keybr/keyboard";
+import { keyboardProps, useKeyboard } from "@keybr/keyboard";
 import { Layout } from "@keybr/layout";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
@@ -23,7 +23,10 @@ test.serial("empty database", async (t) => {
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext
-        initialSettings={new Settings({ layout: Layout.EN_US_DVORAK })}
+        initialSettings={new Settings().set(
+          keyboardProps.layout,
+          Layout.EN_US_DVORAK,
+        )}
       >
         <FakeResultContext>
           <ResultGrouper>
@@ -45,7 +48,10 @@ test.serial("select default layout", async (t) => {
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext
-        initialSettings={new Settings({ layout: Layout.EN_US_DVORAK })}
+        initialSettings={new Settings().set(
+          keyboardProps.layout,
+          Layout.EN_US_DVORAK,
+        )}
       >
         <FakeResultContext
           initialResults={[faker.nextResult({ layout: Layout.EN_US_COLEMAK })]}
@@ -73,7 +79,7 @@ test.serial("select text type", async (t) => {
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext
-        initialSettings={new Settings({ layout: Layout.EN_US })}
+        initialSettings={new Settings().set(keyboardProps.layout, Layout.EN_US)}
       >
         <FakeResultContext
           initialResults={[faker.nextResult({ layout: Layout.EN_US })]}

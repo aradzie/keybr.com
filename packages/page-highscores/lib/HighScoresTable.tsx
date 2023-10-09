@@ -1,6 +1,6 @@
 import { useIntlNumbers } from "@keybr/intl";
 import { Sitemap, UserName } from "@keybr/pages-shared";
-import { SpeedUnit } from "@keybr/settings";
+import { SpeedUnit } from "@keybr/result";
 import { type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
 import * as styles from "./HighScoresTable.module.less";

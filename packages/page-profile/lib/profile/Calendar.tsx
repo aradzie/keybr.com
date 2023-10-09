@@ -80,7 +80,7 @@ type CellData = {
 
 function Cell({ cell }: { readonly cell: CellData | null }): ReactNode {
   const { formatMessage } = useIntl();
-  const fmt = useFormatter();
+  const { formatSpeed } = useFormatter();
   if (cell == null) {
     return <td className={styles.cell} />;
   }
@@ -128,7 +128,7 @@ function Cell({ cell }: { readonly cell: CellData | null }): ReactNode {
         description: "Calendar cell title.",
         defaultMessage: "Top speed: {value}",
       },
-      { value: fmt(stats.speed.max) },
+      { value: formatSpeed(stats.speed.max) },
     ),
     formatMessage(
       {
@@ -136,7 +136,7 @@ function Cell({ cell }: { readonly cell: CellData | null }): ReactNode {
         description: "Calendar cell title.",
         defaultMessage: "Average speed: {value}",
       },
-      { value: fmt(stats.speed.avg) },
+      { value: formatSpeed(stats.speed.avg) },
     ),
   ].join(",\n");
   return (

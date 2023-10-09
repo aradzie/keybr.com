@@ -5,6 +5,7 @@ import { type Settings } from "@keybr/settings";
 import { type CodePointSet, toCodePoints } from "@keybr/unicode";
 import { LessonKeys } from "./key.ts";
 import { Lesson } from "./lesson.ts";
+import { lessonProps } from "./settings.ts";
 import { Target } from "./target.ts";
 import { generateFragment } from "./text/fragment.ts";
 import { mangledWords, randomWords, uniqueWords } from "./text/words.ts";
@@ -23,7 +24,7 @@ export class WordListLesson extends Lesson {
       .filter((word) =>
         [...toCodePoints(word)].every((codePoint) => codePoints.has(codePoint)),
       )
-      .slice(0, settings.wordListSize);
+      .slice(0, settings.get(lessonProps.wordList.wordListSize));
   }
 
   override analyze(results: readonly Result[]): KeyStatsMap {
@@ -40,8 +41,8 @@ export class WordListLesson extends Lesson {
       uniqueWords(wordGenerator),
       Letter.restrict(Letter.punctuators, this.codePoints),
       {
-        withCapitals: this.settings.lessonCapitals ? 0.3 : 0,
-        withPunctuators: this.settings.lessonPunctuators ? 0.3 : 0,
+        withCapitals: this.settings.get(lessonProps.capitals),
+        withPunctuators: this.settings.get(lessonProps.punctuators),
       },
       this.rng,
     );

@@ -1,11 +1,13 @@
 import { KeyDetailsChart } from "@keybr/chart";
-import { LearningRate, LessonKey, Target } from "@keybr/lesson";
+import { LearningRate, LessonKey, lessonProps, Target } from "@keybr/lesson";
 import { Letter } from "@keybr/phonetic-model";
+import { Settings } from "@keybr/settings";
 import { type ReactNode } from "react";
 import * as styles from "./KeyDetailsChartDemo.module.less";
 
 export function KeyDetailsChartDemo(): ReactNode {
-  const target = new Target({ targetSpeed: /* 35WPM */ 175 });
+  const settings = new Settings().set(lessonProps.targetSpeed, /* 35WPM */ 175);
+  const target = new Target(settings);
   const lessonKey = new LessonKey({
     letter: new Letter(/* a */ 0x61, 1),
     samples: [],

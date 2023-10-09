@@ -1,6 +1,7 @@
 import { useIntlNumbers } from "@keybr/intl";
 import { type LearningRate } from "@keybr/lesson";
-import { SpeedUnit, useSettings } from "@keybr/settings";
+import { SpeedUnit, uiProps } from "@keybr/result";
+import { useSettings } from "@keybr/settings";
 import { useMemo } from "react";
 import { type FormatNumberOptions, useIntl } from "react-intl";
 import { messages } from "./intl.ts";
@@ -13,11 +14,11 @@ export type FormatterOptions = {
 };
 
 export type Formatter = {
-  (value: number, options?: FormatterOptions): string;
-  readonly confidence: (value: number | null) => string;
-  readonly learningRate: (lr: LearningRate | null) => string;
   readonly speedUnit: SpeedUnit;
   readonly speedUnitName: string;
+  readonly formatSpeed: (value: number, options?: FormatterOptions) => string;
+  readonly formatConfidence: (value: number | null) => string;
+  readonly formatLearningRate: (lr: LearningRate | null) => string;
 };
 
 export const useFormatter = (): Formatter => {
@@ -25,7 +26,7 @@ export const useFormatter = (): Formatter => {
   const { formatNumber } = useIntlNumbers();
   const { settings } = useSettings();
   return useMemo(() => {
-    const { speedUnit } = settings;
+    const speedUnit = settings.get(uiProps.speedUnit);
     let opts: FormatNumberOptions;
     let speedUnitName: string;
     switch (speedUnit) {
@@ -44,7 +45,7 @@ export const useFormatter = (): Formatter => {
       default:
         throw new Error();
     }
-    const formatter = (
+    const formatSpeed = (
       value: number,
       { unit = true }: FormatterOptions = {},
     ): string => {
@@ -55,18 +56,18 @@ export const useFormatter = (): Formatter => {
         return s;
       }
     };
-    formatter.confidence = (confidence: number | null): string => {
+    const formatConfidence = (confidence: number | null): string => {
       if (confidence != null) {
         return formatNumber(confidence, 2);
       } else {
         return formatMessage(messages.uncertainValue);
       }
     };
-    formatter.learningRate = (lr: LearningRate | null): string => {
+    const formatLearningRate = (lr: LearningRate | null): string => {
       if (lr != null && lr.learningRate === lr.learningRate) {
         return signed(
           formatMessage(messages.learningRateValue, {
-            learningRate: formatter(lr.learningRate),
+            learningRate: formatSpeed(lr.learningRate),
           }),
           lr.learningRate,
         );
@@ -74,9 +75,13 @@ export const useFormatter = (): Formatter => {
         return formatMessage(messages.uncertainValue);
       }
     };
-    formatter.speedUnit = speedUnit;
-    formatter.speedUnitName = speedUnitName;
-    return formatter;
+    return {
+      speedUnit,
+      speedUnitName,
+      formatSpeed,
+      formatConfidence,
+      formatLearningRate,
+    };
   }, [formatMessage, formatNumber, settings]);
 };
 

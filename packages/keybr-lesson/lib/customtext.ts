@@ -4,6 +4,7 @@ import { type Settings } from "@keybr/settings";
 import { type CodePointSet, toCodePoints } from "@keybr/unicode";
 import { LessonKeys } from "./key.ts";
 import { Lesson } from "./lesson.ts";
+import { lessonProps } from "./settings.ts";
 import { Target } from "./target.ts";
 import { generateFragment } from "./text/fragment.ts";
 import { sanitizeText } from "./text/sanitizetext.ts";
@@ -41,7 +42,8 @@ export class CustomTextLesson extends Lesson {
   }
 
   private makeWordGenerator(): WordGenerator {
-    if (this.settings.textRandomize && this.wordList.length > 0) {
+    const randomize = this.settings.get(lessonProps.customText.randomize);
+    if (randomize && this.wordList.length > 0) {
       return uniqueWords(randomWords(this.wordList, this.rng));
     } else {
       return wordSequence(this.wordList, this);
@@ -54,12 +56,15 @@ function getWordList(
   letters: readonly Letter[],
   codePoints: CodePointSet,
 ): string[] {
-  if (settings.textSimplify) {
+  const content = settings.get(lessonProps.customText.content);
+  const lettersOnly = settings.get(lessonProps.customText.lettersOnly);
+  const lowercase = settings.get(lessonProps.customText.lowercase);
+  if (lettersOnly) {
     const s = String.fromCodePoint(...letters.map(Letter.codePointOf));
     codePoints = new Set(toCodePoints(s.toLowerCase() + s.toUpperCase()));
   }
-  let text = sanitizeText(settings.textContent, codePoints);
-  if (settings.textLowercase) {
+  let text = sanitizeText(content, codePoints);
+  if (lowercase) {
     text = text.toLowerCase();
   }
   return splitText(text);

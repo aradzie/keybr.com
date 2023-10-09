@@ -1,10 +1,13 @@
 import { generateKeySamples } from "@keybr/result";
+import { Settings } from "@keybr/settings";
 import test from "ava";
 import { LearningRate } from "./learningrate.ts";
+import { lessonProps } from "./settings.ts";
 import { Target } from "./target.ts";
 
 test("too few samples", (t) => {
-  const target = new Target({ targetSpeed: /* 35WPM */ 175 });
+  const settings = new Settings().set(lessonProps.targetSpeed, /* 35WPM */ 175);
+  const target = new Target(settings);
   t.is(LearningRate.from([], target), null);
   t.is(LearningRate.from(generateKeySamples(0), target), null);
   t.is(LearningRate.from(generateKeySamples(1), target), null);
@@ -15,7 +18,8 @@ test("too few samples", (t) => {
 });
 
 test("decreasing time", (t) => {
-  const target = new Target({ targetSpeed: /* 35WPM */ 175 });
+  const settings = new Settings().set(lessonProps.targetSpeed, /* 35WPM */ 175);
+  const target = new Target(settings);
   const learningRate = LearningRate.from(
     generateKeySamples(5, {
       timeToTypeStart: 400,
@@ -29,7 +33,8 @@ test("decreasing time", (t) => {
 });
 
 test("increasing time", (t) => {
-  const target = new Target({ targetSpeed: /* 35WPM */ 175 });
+  const settings = new Settings().set(lessonProps.targetSpeed, /* 35WPM */ 175);
+  const target = new Target(settings);
   const learningRate = LearningRate.from(
     generateKeySamples(5, {
       timeToTypeStart: 400,
@@ -43,7 +48,8 @@ test("increasing time", (t) => {
 });
 
 test("learning rate of the example data", (t) => {
-  const target = new Target({ targetSpeed: /* 35WPM */ 175 });
+  const settings = new Settings().set(lessonProps.targetSpeed, /* 35WPM */ 175);
+  const target = new Target(settings);
   const learningRate = LearningRate.example(target);
   t.is(learningRate.certainty, 0.9999559701751027);
   t.is(learningRate.learningRate, 4.1890206530121485);

@@ -1,10 +1,12 @@
 import { speedToTime } from "@keybr/result";
+import { type Settings } from "@keybr/settings";
+import { lessonProps } from "./settings.ts";
 
 export class Target {
   readonly timeToType: number;
 
-  constructor({ targetSpeed }: { readonly targetSpeed: number }) {
-    this.timeToType = speedToTime(targetSpeed);
+  constructor(settings: Settings) {
+    this.timeToType = speedToTime(settings.get(lessonProps.targetSpeed));
   }
 
   confidence(timeToType: number): number;

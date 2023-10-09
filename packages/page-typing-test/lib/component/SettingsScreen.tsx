@@ -1,49 +1,47 @@
 import { Screen } from "@keybr/pages-shared";
-import { Button, Field, FieldList, Icon } from "@keybr/widget";
+import { TypingSettings } from "@keybr/textinput-ui";
+import { Button, Field, FieldList, Icon, Tab, TabList } from "@keybr/widget";
 import { mdiCheckCircle } from "@mdi/js";
-import { Component, type ReactNode } from "react";
-import { type CompositeSettings, SettingsEditor } from "./settings/index.ts";
+import { type ReactNode, useState } from "react";
+import { TextGeneratorSettings } from "./settings/TextGeneratorSettings.tsx";
 
-type Props = {
-  readonly defaultSettings: CompositeSettings;
-  readonly onSubmit: (settings: CompositeSettings) => void;
-};
+export function SettingsScreen({
+  onSubmit,
+}: {
+  readonly onSubmit: () => void;
+}): ReactNode {
+  const [tabIndex, setTabIndex] = useState(0);
 
-type State = {
-  readonly settings: CompositeSettings;
-};
+  return (
+    <Screen>
+      <TabList
+        selectedIndex={tabIndex}
+        onSelect={(tabIndex) => {
+          setTabIndex(tabIndex);
+        }}
+      >
+        <Tab label="Text">
+          <TextGeneratorSettings />
+        </Tab>
 
-export class SettingsScreen extends Component<Props, State> {
-  override state: State = {
-    settings: { ...this.props.defaultSettings },
-  };
+        <Tab label="Typing">
+          <TypingSettings />
+        </Tab>
+      </TabList>
 
-  override render(): ReactNode {
-    const { onSubmit } = this.props;
-    const { settings } = this.state;
-    return (
-      <Screen>
-        <SettingsEditor
-          settings={settings}
-          patchSettings={(settings) => {
-            this.setState({ settings });
-          }}
-        />
-
-        <FieldList>
-          <Field.Filler />
-          <Field>
-            <Button
-              icon={<Icon shape={mdiCheckCircle} />}
-              label="Done"
-              title="Save settings and return to the test."
-              onClick={() => {
-                onSubmit(settings);
-              }}
-            />
-          </Field>
-        </FieldList>
-      </Screen>
-    );
-  }
+      <FieldList>
+        <Field.Filler />
+        <Field>
+          <Button
+            icon={<Icon shape={mdiCheckCircle} />}
+            label="Done"
+            title="Save settings and return to the test."
+            onClick={() => {
+              onSubmit();
+            }}
+          />
+        </Field>
+      </FieldList>
+    </Screen>
+  );
 }

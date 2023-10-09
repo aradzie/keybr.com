@@ -30,7 +30,7 @@ export function SpeedChart({
 function usePaint(results: readonly Result[], smoothness: number) {
   const { formatMessage } = useIntl();
   const { formatInteger } = useIntlNumbers();
-  const fmt = useFormatter();
+  const { formatSpeed } = useFormatter();
 
   if (!hasData(results)) {
     return (box: Rect): ShapeList => {
@@ -88,7 +88,7 @@ function usePaint(results: readonly Result[], smoothness: number) {
       paintAxis(box, "left"),
       paintAxis(box, "bottom"),
       paintTicks(box, rIndex, "bottom", { lines: 5, fmt: formatInteger }),
-      paintTicks(box, rSpeed, "left", { fmt }),
+      paintTicks(box, rSpeed, "left", { fmt: formatSpeed }),
     ];
   };
 }

@@ -167,6 +167,22 @@
     "defaultMessage": "M|T|W|T|F|S|S",
     "description": "Day of week name."
   },
+  "characterClass.digits": {
+    "defaultMessage": "Digits",
+    "description": "Label."
+  },
+  "characterClass.letters": {
+    "defaultMessage": "Letters",
+    "description": "Label."
+  },
+  "characterClass.punctuationCharacters": {
+    "defaultMessage": "Punctuation characters",
+    "description": "Label."
+  },
+  "characterClass.specialCharacters": {
+    "defaultMessage": "Special characters",
+    "description": "Label."
+  },
   "common.javaScriptDisabledText": {
     "defaultMessage": "This application will not work because JavaScript is disabled in your browser!",
     "description": "Common text."
@@ -489,7 +505,7 @@
   },
   "lessonType.customText.name": {
     "defaultMessage": "Custom text",
-    "description": "Widget label."
+    "description": "Input field label."
   },
   "lessonType.guided.description": {
     "defaultMessage": "Generate typing lessons with random words using the phonetic rules of your language. The key set is expanded dynamically based on your performance. This mode is for the beginners.",
@@ -497,11 +513,11 @@
   },
   "lessonType.guided.name": {
     "defaultMessage": "Guided lessons",
-    "description": "Widget label."
+    "description": "Input field label."
   },
   "lessonType.numbers.name": {
     "defaultMessage": "Numbers",
-    "description": "Widget label."
+    "description": "Input field label."
   },
   "lessonType.wordList.description": {
     "defaultMessage": "Generate typing lessons from the list of the most common words of your language. All keys are included by default. This mode is for the pros.",
@@ -509,7 +525,7 @@
   },
   "lessonType.wordlist.name": {
     "defaultMessage": "Common words",
-    "description": "Widget label."
+    "description": "Input field label."
   },
   "metric.accuracy.label": {
     "defaultMessage": "Accuracy",
@@ -861,27 +877,27 @@
   },
   "practice.resetLessonButtonTitle": {
     "defaultMessage": "Reset the current lesson (Ctrl + Left Arrow).",
-    "description": "Button title."
+    "description": "Input field title."
   },
   "practice.settingButtonName": {
     "defaultMessage": "Settings...",
-    "description": "Button name."
+    "description": "Input field label."
   },
   "practice.settingButtonTitle": {
     "defaultMessage": "Change lesson settings, configure language, keyboard layout, etc.",
-    "description": "Button title."
+    "description": "Input field title."
   },
   "practice.showHelpSlidesButtonTitle": {
     "defaultMessage": "Show a guided tour with help slides.",
-    "description": "Button title."
+    "description": "Input field title."
   },
   "practice.skipLessonButtonTitle": {
     "defaultMessage": "Skip the current lesson (Ctrl + Right Arrow).",
-    "description": "Button title."
+    "description": "Input field title."
   },
   "practice.switchInterfaceButtonTitle": {
     "defaultMessage": "Switch the current interface layout.",
-    "description": "Button title."
+    "description": "Input field title."
   },
   "practice.tourSlide1": {
     "defaultMessage": "<h1>Learn to Type Faster</h1><p>This web application will help you to learn <em>touch typing</em> which means typing through muscle memory without using your eyesight to find the keys. It can improve your typing speed and accuracy dramatically. The opposite is <em>hunt and peck typing</em>, a method of typing in which you look at the keyboard instead of the screen, and use only the index fingers.</p><p>This is a short tutorial that will explain how this application works.</p> <p>You can use the left and right arrow keys to navigate through these slides.</p>",
@@ -1175,117 +1191,105 @@
     "defaultMessage": "Eliminate noise to see the long-term trend.",
     "description": "Input field title."
   },
+  "settings.alphabetSizeLabel": {
+    "defaultMessage": "Unlock more letters:",
+    "description": "Input field label."
+  },
   "settings.benfordsLawDescription": {
     "defaultMessage": "<a>Benford's law</a> is an observation that in many real-life numerical data sets, the leading digit is likely to be small.",
-    "description": "Freeform text."
+    "description": "Description text."
   },
   "settings.benfordsLawLabel": {
     "defaultMessage": "Benford's law",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
-  "settings.benfordsLawTitle": {
-    "defaultMessage": "Generate numbers following the Benford's law.",
-    "description": "Checkbox title."
+  "settings.capitalLettersLabel": {
+    "defaultMessage": "Add capital letters:",
+    "description": "Input field label."
   },
   "settings.cursorMovementLabel": {
     "defaultMessage": "Cursor movement:",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.cursorShapeLabel": {
     "defaultMessage": "Cursor shape:",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.customTextExamplesLabel": {
     "defaultMessage": "Examples:",
-    "description": "Text label."
+    "description": "Input field label."
   },
   "settings.customTextInputPlaceholder": {
     "defaultMessage": "Custom text...",
     "description": "Input field placeholder."
   },
+  "settings.customTextLettersOnlyLabel": {
+    "defaultMessage": "Remove punctuation",
+    "description": "Input field label."
+  },
+  "settings.customTextLettersOnlyTitle": {
+    "defaultMessage": "Remove punctuation from the text to make it simpler to type.",
+    "description": "Input field title."
+  },
+  "settings.customTextLowercaseLabel": {
+    "defaultMessage": "Transform to lowercase",
+    "description": "Input field label."
+  },
+  "settings.customTextLowercaseTitle": {
+    "defaultMessage": "Transform all text to lower case to make it simpler to type.",
+    "description": "Input field title."
+  },
+  "settings.customTextRandomizeLabel": {
+    "defaultMessage": "Shuffle words",
+    "description": "Input field label."
+  },
+  "settings.customTextRandomizeTitle": {
+    "defaultMessage": "Put words from the custom text in a random order.",
+    "description": "Input field title."
+  },
   "settings.dailyGoalDescription": {
     "defaultMessage": "Set the time you want to spend on the exercises daily.",
-    "description": "Input field description."
+    "description": "Description text."
   },
   "settings.dailyGoalLabel": {
     "defaultMessage": "Daily goal:",
     "description": "Input field label."
   },
-  "settings.dailyGoalTitle": {
-    "defaultMessage": "Daily goal to spend on the exercises in minutes.",
-    "description": "Input field title."
-  },
   "settings.doneButtonLabel": {
     "defaultMessage": "Done",
-    "description": "Button label."
-  },
-  "settings.doneButtonTitle": {
-    "defaultMessage": "Save changes and start practicing.",
-    "description": "Button title."
+    "description": "Input field label."
   },
   "settings.emulateLayoutLabel": {
     "defaultMessage": "Emulate layout",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.emulateLayoutTitle": {
     "defaultMessage": "Emulate the selected layout when the standard layout is set in the system.",
-    "description": "Checkbox title."
-  },
-  "settings.enableCapitalLettersLabel": {
-    "defaultMessage": "Enable capital letters",
-    "description": "Checkbox label."
-  },
-  "settings.enableCapitalLettersTitle": {
-    "defaultMessage": "Generate text with capital letters.",
-    "description": "Checkbox title."
-  },
-  "settings.enablePunctuationLabel": {
-    "defaultMessage": "Enable punctuation characters",
-    "description": "Checkbox label."
-  },
-  "settings.enablePunctuationTitle": {
-    "defaultMessage": "Add punctuation characters to the generated text.",
-    "description": "Checkbox title."
-  },
-  "settings.enableSoundsLabel": {
-    "defaultMessage": "Enable sounds",
-    "description": "Checkbox label."
-  },
-  "settings.enableSoundsTitle": {
-    "defaultMessage": "Make extra noise when typing and on errors.",
-    "description": "Checkbox description."
-  },
-  "settings.extendKeySetLabel": {
-    "defaultMessage": "Add letters to words:",
-    "description": "Input field label."
-  },
-  "settings.extendKeySetTitle": {
-    "defaultMessage": "Add more letters to every generated word.",
-    "description": "Input field title."
-  },
-  "settings.extendLessonLengthLabel": {
-    "defaultMessage": "Add words to lessons:",
-    "description": "Input field label."
-  },
-  "settings.extendLessonLengthTitle": {
-    "defaultMessage": "Add more words to every generated lesson.",
     "description": "Input field title."
   },
   "settings.forgiveErrorsDescription": {
     "defaultMessage": "Enabling this option makes the text input field forgive some kinds of errors by automatically fixing them. These are errors such as typing a wrong character or skipping a character.",
-    "description": "Checkbox description."
+    "description": "Description text."
   },
   "settings.forgiveErrorsLabel": {
-    "defaultMessage": "Forgive errors.",
-    "description": "Checkbox label."
+    "defaultMessage": "Forgive errors",
+    "description": "Input field label."
   },
   "settings.interfaceOptionsLegend": {
     "defaultMessage": "Interface Options",
     "description": "Fieldset legend."
   },
+  "settings.keyboardFullViewLabel": {
+    "defaultMessage": "Full keyboard view",
+    "description": "Input field label."
+  },
   "settings.keyboardTabLabel": {
     "defaultMessage": "Keyboard",
-    "description": "Tab label."
+    "description": "Header text."
+  },
+  "settings.lessonLengthLabel": {
+    "defaultMessage": "Add words to lessons:",
+    "description": "Input field label."
   },
   "settings.lessonOptionsLegend": {
     "defaultMessage": "Lesson Options",
@@ -1293,15 +1297,19 @@
   },
   "settings.lessonsTabLabel": {
     "defaultMessage": "Lessons",
-    "description": "Tab label."
+    "description": "Header text."
   },
   "settings.miscellaneousTabLabel": {
     "defaultMessage": "Miscellaneous",
-    "description": "Tab label."
+    "description": "Header text."
   },
   "settings.optionsLegend": {
     "defaultMessage": "Options",
     "description": "Fieldset legend."
+  },
+  "settings.playSoundsLabel": {
+    "defaultMessage": "Play sounds:",
+    "description": "Input field label."
   },
   "settings.previewLabel": {
     "defaultMessage": "Lesson Preview",
@@ -1311,65 +1319,41 @@
     "defaultMessage": "Preview",
     "description": "Fieldset legend."
   },
-  "settings.removePunctuationLabel": {
-    "defaultMessage": "Remove punctuation",
-    "description": "Checkbox label."
-  },
-  "settings.removePunctuationTitle": {
-    "defaultMessage": "Remove punctuation from the text to make it simpler to type.",
-    "description": "Checkbox title."
+  "settings.punctuationLabel": {
+    "defaultMessage": "Add punctuation characters:",
+    "description": "Input field label."
   },
   "settings.selectLanguageLabel": {
     "defaultMessage": "Language:",
-    "description": "Dropdown label."
+    "description": "Input field label."
   },
   "settings.selectLanguageTitle": {
     "defaultMessage": "Select your spoken language.",
-    "description": "Dropdown title."
+    "description": "Input field title."
   },
   "settings.selectLayoutLabel": {
     "defaultMessage": "Layout:",
-    "description": "Dropdown label."
+    "description": "Input field label."
   },
   "settings.selectLayoutTitle": {
     "defaultMessage": "Select the keyboard layout you wish to practice with. There may be many layouts available for each language.",
-    "description": "Dropdown title."
-  },
-  "settings.shuffleWordsLabel": {
-    "defaultMessage": "Shuffle words",
-    "description": "Checkbox label."
-  },
-  "settings.shuffleWordsTitle": {
-    "defaultMessage": "Put words from the custom text in a random order.",
-    "description": "Checkbox title."
+    "description": "Input field title."
   },
   "settings.stopCursorOnErrorDescription": {
     "defaultMessage": "If enabled, the text cursor stops advancing until the right key is pressed at the current position. If disabled, all errors will be accumulated in the text input field and must be cleared with the delete key.",
-    "description": "Checkbox description."
+    "description": "Description text."
   },
   "settings.stopCursorOnErrorLabel": {
-    "defaultMessage": "Stop the cursor when an error occurs.",
-    "description": "Checkbox label."
+    "defaultMessage": "Stop cursor on error",
+    "description": "Input field label."
   },
   "settings.targetSpeedLabel": {
     "defaultMessage": "Target typing speed:",
     "description": "Input field label."
   },
-  "settings.targetSpeedTitle": {
-    "defaultMessage": "Set custom target typing speed that you want to achieve.",
-    "description": "Input field title."
-  },
   "settings.textAppearanceLegend": {
     "defaultMessage": "Text Appearance",
     "description": "Fieldset legend."
-  },
-  "settings.transformToLowercaseLabel": {
-    "defaultMessage": "Transform to lowercase",
-    "description": "Checkbox label."
-  },
-  "settings.transformToLowercaseTitle": {
-    "defaultMessage": "Transform all text to lower case to make it simpler to type.",
-    "description": "Checkbox title."
   },
   "settings.typingOptionsLegend": {
     "defaultMessage": "Typing Options",
@@ -1385,15 +1369,19 @@
   },
   "settings.typingTabLabel": {
     "defaultMessage": "Typing",
-    "description": "Tab label."
+    "description": "Header text."
   },
   "settings.whitespaceLabel": {
     "defaultMessage": "Whitespace:",
-    "description": "Checkbox label."
+    "description": "Input field label."
   },
   "settings.wordListSizeLabel": {
     "defaultMessage": "Word list size:",
     "description": "Input field label."
+  },
+  "settings.wordListSizeTitle": {
+    "defaultMessage": "Chose how many common words to use.",
+    "description": "Input field title."
   },
   "speedUnit.cpm.description": {
     "defaultMessage": "Measure typing speed in characters per minute.",
@@ -1462,14 +1450,6 @@
   "textTools.textInputPlaceholder": {
     "defaultMessage": "Paste your text here",
     "description": "Input field placeholder."
-  },
-  "textType.digits": {
-    "defaultMessage": "Digits",
-    "description": "Label."
-  },
-  "textType.letters": {
-    "defaultMessage": "Letters",
-    "description": "Label."
   },
   "theme.enterFullscreenTitle": {
     "defaultMessage": "Enter full-screen mode.",

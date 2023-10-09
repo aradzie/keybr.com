@@ -1,5 +1,6 @@
 import { addKey, deleteKey } from "@keybr/keyboard-ui";
 import { Screen } from "@keybr/pages-shared";
+import { enumProp } from "@keybr/settings";
 import { type LineData } from "@keybr/textinput";
 import { type KeyEvent } from "@keybr/textinput-events";
 import { TextArea } from "@keybr/textinput-ui";
@@ -11,6 +12,7 @@ import { DeferredKeyboardPresenter } from "./KeyboardPresenter.tsx";
 import * as names from "./names.module.less";
 import { type PracticeState } from "./practicestate.ts";
 import { PracticeTour } from "./PracticeTour.tsx";
+import { Prefs } from "./prefs.ts";
 import * as styles from "./Presenter.module.less";
 
 type Props = {
@@ -25,26 +27,43 @@ type Props = {
 };
 
 type State = {
-  readonly layout: DisplayLayout;
+  readonly view: View;
   readonly tour: boolean;
   readonly focus: boolean;
   readonly depressedKeys: readonly string[];
 };
 
-type DisplayLayout = "normal" | "compact" | "bare";
+enum View {
+  Normal = 1,
+  Compact = 2,
+  Bare = 3,
+}
+
+function getNextView(view: View): View {
+  switch (view) {
+    case View.Normal:
+      return View.Compact;
+    case View.Compact:
+      return View.Bare;
+    case View.Bare:
+      return View.Normal;
+  }
+}
+
+const propView = enumProp("prefs.practice.view", View, View.Normal);
 
 export class Presenter extends PureComponent<Props, State> {
   override state: State = {
-    layout: "normal",
+    view: Prefs.get(propView),
     tour: false,
     focus: false,
     depressedKeys: [],
   };
 
   override componentDidMount(): void {
-    if (this.props.state.settings.isNew) {
+    if (this.props.state.showTour) {
       this.setState({
-        layout: "normal",
+        view: View.Normal,
         tour: true,
       });
     }
@@ -53,7 +72,7 @@ export class Presenter extends PureComponent<Props, State> {
   override render(): ReactNode {
     const {
       props: { state, lines, onConfigure },
-      state: { layout, tour, focus, depressedKeys },
+      state: { view, tour, focus, depressedKeys },
       handleReset,
       handleSkip,
       handleKeyDown,
@@ -65,9 +84,8 @@ export class Presenter extends PureComponent<Props, State> {
       handleHelp,
       handleTourClose,
     } = this;
-    const { settings } = state;
-    switch (layout) {
-      case "normal":
+    switch (view) {
+      case View.Normal:
         return (
           <NormalLayout
             state={state}
@@ -84,7 +102,7 @@ export class Presenter extends PureComponent<Props, State> {
             }
             textInput={
               <TextArea
-                settings={settings}
+                settings={state.textDisplaySettings}
                 lines={lines}
                 size="X0"
                 onFocus={handleFocus}
@@ -97,7 +115,7 @@ export class Presenter extends PureComponent<Props, State> {
             tour={tour && <PracticeTour onClose={handleTourClose} />}
           />
         );
-      case "compact":
+      case View.Compact:
         return (
           <CompactLayout
             state={state}
@@ -114,7 +132,7 @@ export class Presenter extends PureComponent<Props, State> {
             }
             textInput={
               <TextArea
-                settings={settings}
+                settings={state.textDisplaySettings}
                 lines={lines}
                 size="X1"
                 onFocus={handleFocus}
@@ -126,7 +144,7 @@ export class Presenter extends PureComponent<Props, State> {
             }
           />
         );
-      case "bare":
+      case View.Bare:
         return (
           <BareLayout
             state={state}
@@ -143,7 +161,7 @@ export class Presenter extends PureComponent<Props, State> {
             }
             textInput={
               <TextArea
-                settings={settings}
+                settings={state.textDisplaySettings}
                 lines={lines}
                 size="X2"
                 onFocus={handleFocus}
@@ -216,9 +234,11 @@ export class Presenter extends PureComponent<Props, State> {
 
   private handleLayout = (): void => {
     this.setState(
-      ({ layout }) => ({
-        layout: nextLayout(layout),
-      }),
+      ({ view }) => {
+        const nextView = getNextView(view);
+        Prefs.set(propView, nextView);
+        return { view: nextView };
+      },
       () => {
         this.props.onReset();
       },
@@ -228,7 +248,7 @@ export class Presenter extends PureComponent<Props, State> {
   private handleHelp = (): void => {
     this.setState(
       {
-        layout: "normal",
+        view: View.Normal,
         tour: true,
       },
       () => {
@@ -240,7 +260,7 @@ export class Presenter extends PureComponent<Props, State> {
   private handleTourClose = (): void => {
     this.setState(
       {
-        layout: "normal",
+        view: View.Normal,
         tour: false,
       },
       () => {
@@ -272,7 +292,7 @@ function NormalLayout({
       <div id={names.textInput} className={styles.textInput_normal}>
         {textInput}
       </div>
-      <div id={names.keyboard} className={styles.keyboard}>
+      <div id={names.keyboard}>
         <DeferredKeyboardPresenter
           focus={focus}
           depressedKeys={depressedKeys}
@@ -328,17 +348,4 @@ function BareLayout({
       <Announcer state={state} />
     </Screen>
   );
-}
-
-function nextLayout(layout: DisplayLayout): DisplayLayout {
-  switch (layout) {
-    case "normal":
-      return "compact";
-    case "compact":
-      return "bare";
-    case "bare":
-      return "normal";
-    default:
-      return "normal";
-  }
 }
