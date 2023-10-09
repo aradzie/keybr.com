@@ -14,4 +14,5 @@ export type KeyEvent = {
   readonly metaKey: boolean;
   readonly location: number;
   readonly repeat: boolean;
+  readonly modifiers: readonly string[];
 };

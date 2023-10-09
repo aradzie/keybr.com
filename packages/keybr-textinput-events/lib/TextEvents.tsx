@@ -226,19 +226,12 @@ export class TextEvents extends PureComponent<Props> {
   }
 }
 
-function toKeyEvent(
-  {
-    code,
-    key,
-    shiftKey,
-    altKey,
-    ctrlKey,
-    metaKey,
-    location,
-    repeat,
-  }: KeyboardEvent,
-  timeStamp: number,
-): KeyEvent {
+function toKeyEvent(ev: KeyboardEvent, timeStamp: number): KeyEvent {
+  const { code, key, shiftKey, altKey, ctrlKey, metaKey, location, repeat } =
+    ev;
+  const modifierKeys = ["CapsLock", "NumLock"];
+  const modifiers = modifierKeys.filter((key) => ev.getModifierState(key));
+
   return {
     timeStamp,
     code,
@@ -249,5 +242,6 @@ function toKeyEvent(
     metaKey,
     location,
     repeat,
+    modifiers,
   };
 }

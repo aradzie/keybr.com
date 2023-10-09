@@ -31,6 +31,7 @@ type State = {
   readonly tour: boolean;
   readonly focus: boolean;
   readonly depressedKeys: readonly string[];
+  readonly modifierKeys: readonly string[];
 };
 
 enum View {
@@ -58,6 +59,7 @@ export class Presenter extends PureComponent<Props, State> {
     tour: false,
     focus: false,
     depressedKeys: [],
+    modifierKeys: ["CapsLock", "NumLock"],
   };
 
   override componentDidMount(): void {
@@ -186,18 +188,51 @@ export class Presenter extends PureComponent<Props, State> {
 
   private handleKeyDown = (ev: KeyEvent): void => {
     if (this.state.focus) {
-      this.setState(({ depressedKeys }) => ({
-        depressedKeys: addKey(depressedKeys, ev.code),
-      }));
+      if (this.state.modifierKeys.includes(ev.code)) {
+        if (/Mac/.test(navigator.userAgent)) {
+          if (ev.modifiers.includes(ev.code)) {
+            this.setState(({ depressedKeys }) => ({
+              depressedKeys: addKey(depressedKeys, ev.code),
+            }));
+          } else {
+            this.setState(({ depressedKeys }) => ({
+              depressedKeys: deleteKey(depressedKeys, ev.code),
+            }));
+          }
+        }
+      } else {
+        this.setState(({ depressedKeys }) => ({
+          depressedKeys: addKey(depressedKeys, ev.code),
+        }));
+      }
+
       this.props.onKeyDown(ev);
     }
   };
 
   private handleKeyUp = (ev: KeyEvent): void => {
     if (this.state.focus) {
-      this.setState(({ depressedKeys }) => ({
-        depressedKeys: deleteKey(depressedKeys, ev.code),
-      }));
+      if (this.state.modifierKeys.includes(ev.code)) {
+        if (/Linux|Windows/.test(navigator.userAgent)) {
+          if (this.state.depressedKeys.includes(ev.code)) {
+            this.setState(({ depressedKeys }) => ({
+              depressedKeys: deleteKey(depressedKeys, ev.code),
+            }));
+          } else {
+            this.setState(({ depressedKeys }) => ({
+              depressedKeys: addKey(depressedKeys, ev.code),
+            }));
+          }
+        } else if (/Mac/.test(navigator.userAgent)) {
+          this.setState(({ depressedKeys }) => ({
+            depressedKeys: deleteKey(depressedKeys, ev.code),
+          }));
+        }
+      } else {
+        this.setState(({ depressedKeys }) => ({
+          depressedKeys: deleteKey(depressedKeys, ev.code),
+        }));
+      }
       this.props.onKeyUp(ev);
     }
   };
