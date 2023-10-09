@@ -156,21 +156,36 @@ function useDepressedKeys(): readonly string[] {
 
   useWindowEvent("keydown", (ev) => {
     if (modifierKeys.current.includes(ev.code)) {
-      const modifiers = modifierKeys.current.filter((key) =>
-        ev.getModifierState(key),
-      );
-      console.log(modifiers);
-      if (modifiers.includes(ev.code)) {
-        setDepressedKeys(addKey(depressedKeys, ev.code));
-      } else {
-        setDepressedKeys(deleteKey(depressedKeys, ev.code));
+      if (/Mac/.test(navigator.userAgent)) {
+        const modifiers = modifierKeys.current.filter((key) =>
+          ev.getModifierState(key),
+        );
+        if (modifiers.includes(ev.code)) {
+          setDepressedKeys(addKey(depressedKeys, ev.code));
+        } else {
+          setDepressedKeys(deleteKey(depressedKeys, ev.code));
+        }
       }
     } else {
       setDepressedKeys(addKey(depressedKeys, ev.code));
     }
   });
   useWindowEvent("keyup", (ev) => {
-    setDepressedKeys(deleteKey(depressedKeys, ev.code));
+    if (modifierKeys.current.includes(ev.code)) {
+      if (/Linux|Windows/.test(navigator.userAgent)) {
+        setDepressedKeys((depressedKeys) => {
+          if (depressedKeys.includes(ev.code)) {
+            return deleteKey(depressedKeys, ev.code);
+          } else {
+            return addKey(depressedKeys, ev.code);
+          }
+        });
+      } else if (/Mac/.test(navigator.userAgent)) {
+        setDepressedKeys(deleteKey(depressedKeys, ev.code));
+      }
+    } else {
+      setDepressedKeys(deleteKey(depressedKeys, ev.code));
+    }
   });
   return depressedKeys;
 }
