@@ -496,7 +496,7 @@
     "description": "Description text."
   },
   "lessonType.guided.name": {
-    "defaultMessage": "Комп'ютерні уроки",
+    "defaultMessage": "Уроки з помічником",
     "description": "Widget label."
   },
   "lessonType.numbers.name": {
