@@ -107,7 +107,11 @@ export class TextInput {
     this.typo = true;
     if (!this.stopOnError || this.forgiveErrors) {
       if (this.garbage.length < this.garbageSequenceLength) {
-        this.garbage.push({ codePoint, timeStamp, typo: false });
+        this.garbage.push({
+          codePoint,
+          timeStamp,
+          typo: false,
+        });
       }
     }
     if (this.forgiveErrors) {
@@ -131,18 +135,17 @@ export class TextInput {
   }
 
   getChars(): readonly Char[] {
-    const { codePoints, steps, garbage } = this;
     const chars: Char[] = [];
-    for (let i = 0; i < codePoints.length; i++) {
-      const codePoint = codePoints[i];
-      if (i < steps.length) {
+    for (let i = 0; i < this.codePoints.length; i++) {
+      const codePoint = this.codePoints[i];
+      if (i < this.steps.length) {
         // Append characters before cursor.
-        const step = steps[i];
+        const step = this.steps[i];
         chars.push(toChar(codePoint, step.typo ? attrMiss : attrHit));
-      } else if (i === steps.length) {
+      } else if (i === this.steps.length) {
         if (!this.stopOnError) {
           // Append buffered garbage.
-          for (const { codePoint } of garbage) {
+          for (const { codePoint } of this.garbage) {
             chars.push(toChar(codePoint, attrGarbage));
           }
         }
@@ -183,7 +186,7 @@ export class TextInput {
       }
     }
 
-    // Append step with error.
+    // Append a step with an error.
     this.addStep({
       codePoint: this.codePoints[this.steps.length],
       timeStamp: this.garbage[0].timeStamp,
@@ -226,7 +229,7 @@ export class TextInput {
       }
     }
 
-    // Append step with error.
+    // Append a step with an error.
     this.addStep({
       codePoint: this.codePoints[this.steps.length],
       timeStamp: this.garbage[0].timeStamp,

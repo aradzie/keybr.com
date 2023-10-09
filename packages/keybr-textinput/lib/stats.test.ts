@@ -24,30 +24,10 @@ test("compute", (t) => {
     errors: 1,
     accuracy: 0.75,
     histogram: new Histogram([
-      {
-        codePoint: Space,
-        hitCount: 1,
-        missCount: 1,
-        timeToType: 0,
-      },
-      {
-        codePoint: A,
-        hitCount: 1,
-        missCount: 0,
-        timeToType: 100,
-      },
-      {
-        codePoint: B,
-        hitCount: 1,
-        missCount: 0,
-        timeToType: 100,
-      },
-      {
-        codePoint: C,
-        hitCount: 1,
-        missCount: 0,
-        timeToType: 100,
-      },
+      { codePoint: Space, hitCount: 1, missCount: 1, timeToType: 0 },
+      { codePoint: A, hitCount: 1, missCount: 0, timeToType: 100 },
+      { codePoint: B, hitCount: 1, missCount: 0, timeToType: 100 },
+      { codePoint: C, hitCount: 1, missCount: 0, timeToType: 100 },
     ]),
   });
 });
@@ -72,30 +52,10 @@ test("compute with started at", (t) => {
     errors: 1,
     accuracy: 0.75,
     histogram: new Histogram([
-      {
-        codePoint: Space,
-        hitCount: 1,
-        missCount: 1,
-        timeToType: 0,
-      },
-      {
-        codePoint: A,
-        hitCount: 1,
-        missCount: 0,
-        timeToType: 100,
-      },
-      {
-        codePoint: B,
-        hitCount: 1,
-        missCount: 0,
-        timeToType: 100,
-      },
-      {
-        codePoint: C,
-        hitCount: 1,
-        missCount: 0,
-        timeToType: 100,
-      },
+      { codePoint: Space, hitCount: 1, missCount: 1, timeToType: 0 },
+      { codePoint: A, hitCount: 1, missCount: 0, timeToType: 100 },
+      { codePoint: B, hitCount: 1, missCount: 0, timeToType: 100 },
+      { codePoint: C, hitCount: 1, missCount: 0, timeToType: 100 },
     ]),
   });
 });
@@ -121,30 +81,10 @@ test("compute with ended at", (t) => {
     errors: 1,
     accuracy: 0.75,
     histogram: new Histogram([
-      {
-        codePoint: Space,
-        hitCount: 1,
-        missCount: 1,
-        timeToType: 0,
-      },
-      {
-        codePoint: A,
-        hitCount: 1,
-        missCount: 0,
-        timeToType: 100,
-      },
-      {
-        codePoint: B,
-        hitCount: 1,
-        missCount: 0,
-        timeToType: 100,
-      },
-      {
-        codePoint: C,
-        hitCount: 1,
-        missCount: 0,
-        timeToType: 100,
-      },
+      { codePoint: Space, hitCount: 1, missCount: 1, timeToType: 0 },
+      { codePoint: A, hitCount: 1, missCount: 0, timeToType: 100 },
+      { codePoint: B, hitCount: 1, missCount: 0, timeToType: 100 },
+      { codePoint: C, hitCount: 1, missCount: 0, timeToType: 100 },
     ]),
   });
 });
@@ -170,30 +110,10 @@ test("compute with started at and ended at", (t) => {
     errors: 1,
     accuracy: 0.75,
     histogram: new Histogram([
-      {
-        codePoint: Space,
-        hitCount: 1,
-        missCount: 1,
-        timeToType: 0,
-      },
-      {
-        codePoint: A,
-        hitCount: 1,
-        missCount: 0,
-        timeToType: 100,
-      },
-      {
-        codePoint: B,
-        hitCount: 1,
-        missCount: 0,
-        timeToType: 100,
-      },
-      {
-        codePoint: C,
-        hitCount: 1,
-        missCount: 0,
-        timeToType: 100,
-      },
+      { codePoint: Space, hitCount: 1, missCount: 1, timeToType: 0 },
+      { codePoint: A, hitCount: 1, missCount: 0, timeToType: 100 },
+      { codePoint: B, hitCount: 1, missCount: 0, timeToType: 100 },
+      { codePoint: C, hitCount: 1, missCount: 0, timeToType: 100 },
     ]),
   });
 });

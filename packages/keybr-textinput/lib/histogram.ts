@@ -46,22 +46,14 @@ export class Histogram implements Iterable<Sample> {
     const samples = new Map<number, MutableSample>();
     let last: Step | null =
       startedAt != null
-        ? {
-            codePoint: 0,
-            timeStamp: startedAt,
-            typo: false,
-          }
+        ? { codePoint: 0, timeStamp: startedAt, typo: false }
         : null;
     for (const step of steps) {
       let sample = samples.get(step.codePoint);
       if (sample == null) {
         samples.set(
           step.codePoint,
-          (sample = {
-            hitCount: 0,
-            missCount: 0,
-            timeToType: [],
-          }),
+          (sample = { hitCount: 0, missCount: 0, timeToType: [] }),
         );
       }
       sample.hitCount += 1;
