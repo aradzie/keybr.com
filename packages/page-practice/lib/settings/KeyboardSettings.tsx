@@ -8,6 +8,7 @@ import {
 } from "@keybr/keyboard-ui";
 import { Language, Layout } from "@keybr/layout";
 import { useSettings } from "@keybr/settings";
+import { allModifiers } from "@keybr/textinput-events";
 import {
   CheckBox,
   Field,
@@ -16,7 +17,7 @@ import {
   OptionList,
   useWindowEvent,
 } from "@keybr/widget";
-import { type ReactNode, useRef, useState } from "react";
+import { type ReactNode, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
 export function KeyboardSettings(): ReactNode {
@@ -171,12 +172,10 @@ function KeyboardPreview(): ReactNode {
  */
 function useDepressedKeys(): readonly string[] {
   const [depressedKeys, setDepressedKeys] = useState<readonly string[]>([]);
-  const modifierKeys = useRef(["CapsLock", "NumLock"]);
-
   useWindowEvent("keydown", (ev) => {
-    if (modifierKeys.current.includes(ev.code)) {
+    if (allModifiers.includes(ev.code)) {
       if (/Mac/.test(navigator.userAgent)) {
-        const modifiers = modifierKeys.current.filter((key) =>
+        const modifiers = allModifiers.filter((key) =>
           ev.getModifierState(key),
         );
         if (modifiers.includes(ev.code)) {
@@ -190,7 +189,7 @@ function useDepressedKeys(): readonly string[] {
     }
   });
   useWindowEvent("keyup", (ev) => {
-    if (modifierKeys.current.includes(ev.code)) {
+    if (allModifiers.includes(ev.code)) {
       if (/Linux|Windows/.test(navigator.userAgent)) {
         setDepressedKeys((depressedKeys) => {
           if (depressedKeys.includes(ev.code)) {

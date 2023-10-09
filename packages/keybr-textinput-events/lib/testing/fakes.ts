@@ -23,6 +23,7 @@ export function newFakeKeyboardEvent({
   altKey = false,
   ctrlKey = false,
   metaKey = false,
+  modifiers = [],
 }: {
   type: "keydown" | "keyup";
   timeStamp?: number;
@@ -32,6 +33,7 @@ export function newFakeKeyboardEvent({
   altKey?: boolean;
   ctrlKey?: boolean;
   metaKey?: boolean;
+  modifiers?: readonly string[];
 }) {
   return new (class FakeKeyboardEvent extends FakeEvent {
     readonly code = code;
@@ -42,6 +44,10 @@ export function newFakeKeyboardEvent({
     readonly metaKey = metaKey;
     readonly location = 0;
     readonly repeat = false;
+
+    getModifierState(modifier: string): boolean {
+      return modifiers.includes(modifier);
+    }
 
     constructor() {
       super(type, timeStamp);

@@ -1,3 +1,5 @@
+export const allModifiers: readonly string[] = ["CapsLock", "NumLock"];
+
 export type KeyEventListener = {
   readonly onKeyDown: (event: KeyEvent) => void;
   readonly onKeyUp: (event: KeyEvent) => void;

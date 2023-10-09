@@ -3,12 +3,12 @@ import { Layout } from "@keybr/layout";
 import test from "ava";
 import { Char_Backspace, Char_LineFeed, Char_Tab } from "./chars.ts";
 import { emulateLayout } from "./emulation.ts";
-import { newFakeKeyboardEvent, tracingListener } from "./testing/fakes.ts";
+import { tracingListener } from "./testing/fakes.ts";
+import { type KeyEvent } from "./types.ts";
 
 test("translate without emulation", (t) => {
   const trace: string[] = [];
-  const layout = Layout.EN_US;
-  const keyboard = loadKeyboard(layout, { full: false });
+  const keyboard = loadKeyboard(Layout.EN_US, { full: false });
   const target = tracingListener(trace);
   const listener = emulateLayout(keyboard, target, false);
 
@@ -26,18 +26,16 @@ test("translate normal keys without modifiers", (t) => {
   // Input "s".
 
   listener.onKeyDown(
-    newFakeKeyboardEvent({
+    newKeyEvent({
       timeStamp: 1,
-      type: "keydown",
       code: "KeyS",
       key: "s",
     }),
   );
   listener.onInput(0x73, 1);
   listener.onKeyUp(
-    newFakeKeyboardEvent({
+    newKeyEvent({
       timeStamp: 2,
-      type: "keyup",
       code: "KeyS",
       key: "s",
     }),
@@ -46,9 +44,8 @@ test("translate normal keys without modifiers", (t) => {
   // Press Shift.
 
   listener.onKeyDown(
-    newFakeKeyboardEvent({
+    newKeyEvent({
       timeStamp: 3,
-      type: "keydown",
       code: "ShiftLeft",
       key: "Shift",
       shiftKey: true,
@@ -58,9 +55,8 @@ test("translate normal keys without modifiers", (t) => {
   // Input Shift "S".
 
   listener.onKeyDown(
-    newFakeKeyboardEvent({
+    newKeyEvent({
       timeStamp: 4,
-      type: "keydown",
       code: "KeyS",
       key: "S",
       shiftKey: true,
@@ -68,9 +64,8 @@ test("translate normal keys without modifiers", (t) => {
   );
   listener.onInput(0x53, 4);
   listener.onKeyUp(
-    newFakeKeyboardEvent({
+    newKeyEvent({
       timeStamp: 5,
-      type: "keyup",
       code: "KeyS",
       key: "S",
       shiftKey: true,
@@ -80,9 +75,8 @@ test("translate normal keys without modifiers", (t) => {
   // Release Shift.
 
   listener.onKeyUp(
-    newFakeKeyboardEvent({
+    newKeyEvent({
       timeStamp: 6,
-      type: "keyup",
       code: "ShiftLeft",
       key: "Shift",
       shiftKey: false,
@@ -116,9 +110,8 @@ test("translate normal keys with modifiers", (t) => {
   // Press Control.
 
   listener.onKeyDown(
-    newFakeKeyboardEvent({
+    newKeyEvent({
       timeStamp: 1,
-      type: "keydown",
       code: "ControlLeft",
       key: "Control",
       ctrlKey: true,
@@ -128,18 +121,16 @@ test("translate normal keys with modifiers", (t) => {
   // Input Ctrl "s".
 
   listener.onKeyDown(
-    newFakeKeyboardEvent({
+    newKeyEvent({
       timeStamp: 2,
-      type: "keydown",
       code: "KeyS",
       key: "s",
       ctrlKey: true,
     }),
   );
   listener.onKeyUp(
-    newFakeKeyboardEvent({
+    newKeyEvent({
       timeStamp: 3,
-      type: "keyup",
       code: "KeyS",
       key: "s",
       ctrlKey: true,
@@ -149,9 +140,8 @@ test("translate normal keys with modifiers", (t) => {
   // Release Control.
 
   listener.onKeyUp(
-    newFakeKeyboardEvent({
+    newKeyEvent({
       timeStamp: 4,
-      type: "keyup",
       code: "ControlLeft",
       key: "Control",
       ctrlKey: false,
@@ -180,18 +170,16 @@ test("translate special keys without modifiers", (t) => {
   // Input Backspace.
 
   listener.onKeyDown(
-    newFakeKeyboardEvent({
+    newKeyEvent({
       timeStamp: 1,
-      type: "keydown",
       code: "Backspace",
       key: "Backspace",
     }),
   );
   listener.onInput(Char_Backspace, 1);
   listener.onKeyUp(
-    newFakeKeyboardEvent({
+    newKeyEvent({
       timeStamp: 2,
-      type: "keyup",
       code: "Backspace",
       key: "Backspace",
     }),
@@ -200,18 +188,16 @@ test("translate special keys without modifiers", (t) => {
   // Input Tab.
 
   listener.onKeyDown(
-    newFakeKeyboardEvent({
+    newKeyEvent({
       timeStamp: 3,
-      type: "keydown",
       code: "Tab",
       key: "Tab",
     }),
   );
   listener.onInput(Char_Tab, 3);
   listener.onKeyUp(
-    newFakeKeyboardEvent({
+    newKeyEvent({
       timeStamp: 4,
-      type: "keyup",
       code: "Tab",
       key: "Tab",
     }),
@@ -220,18 +206,16 @@ test("translate special keys without modifiers", (t) => {
   // Input Enter.
 
   listener.onKeyDown(
-    newFakeKeyboardEvent({
+    newKeyEvent({
       timeStamp: 5,
-      type: "keydown",
       code: "Enter",
       key: "Enter",
     }),
   );
   listener.onInput(Char_LineFeed, 5);
   listener.onKeyUp(
-    newFakeKeyboardEvent({
+    newKeyEvent({
       timeStamp: 6,
-      type: "keyup",
       code: "Enter",
       key: "Enter",
     }),
@@ -266,9 +250,8 @@ test("translate special keys with modifiers", (t) => {
   // Press Control.
 
   listener.onKeyDown(
-    newFakeKeyboardEvent({
+    newKeyEvent({
       timeStamp: 1,
-      type: "keydown",
       code: "ControlLeft",
       key: "Control",
       ctrlKey: true,
@@ -278,18 +261,16 @@ test("translate special keys with modifiers", (t) => {
   // Input Backspace.
 
   listener.onKeyDown(
-    newFakeKeyboardEvent({
+    newKeyEvent({
       timeStamp: 2,
-      type: "keydown",
       code: "Backspace",
       key: "Backspace",
       ctrlKey: true,
     }),
   );
   listener.onKeyUp(
-    newFakeKeyboardEvent({
+    newKeyEvent({
       timeStamp: 3,
-      type: "keyup",
       code: "Backspace",
       key: "Backspace",
       ctrlKey: true,
@@ -299,18 +280,16 @@ test("translate special keys with modifiers", (t) => {
   // Input Tab.
 
   listener.onKeyDown(
-    newFakeKeyboardEvent({
+    newKeyEvent({
       timeStamp: 4,
-      type: "keydown",
       code: "Tab",
       key: "Tab",
       ctrlKey: true,
     }),
   );
   listener.onKeyUp(
-    newFakeKeyboardEvent({
+    newKeyEvent({
       timeStamp: 5,
-      type: "keyup",
       code: "Tab",
       key: "Tab",
       ctrlKey: true,
@@ -320,18 +299,16 @@ test("translate special keys with modifiers", (t) => {
   // Input Enter.
 
   listener.onKeyDown(
-    newFakeKeyboardEvent({
+    newKeyEvent({
       timeStamp: 6,
-      type: "keydown",
       code: "Enter",
       key: "Enter",
       ctrlKey: true,
     }),
   );
   listener.onKeyUp(
-    newFakeKeyboardEvent({
+    newKeyEvent({
       timeStamp: 7,
-      type: "keyup",
       code: "Enter",
       key: "Enter",
       ctrlKey: true,
@@ -341,9 +318,8 @@ test("translate special keys with modifiers", (t) => {
   // Release Control.
 
   listener.onKeyUp(
-    newFakeKeyboardEvent({
+    newKeyEvent({
       timeStamp: 8,
-      type: "keyup",
       code: "ControlLeft",
       key: "Control",
       ctrlKey: false,
@@ -368,3 +344,40 @@ test("translate special keys with modifiers", (t) => {
     "keyup:ControlLeft,Control,8",
   ]);
 });
+
+function newKeyEvent({
+  timeStamp = 0,
+  code,
+  key,
+  shiftKey = false,
+  altKey = false,
+  ctrlKey = false,
+  metaKey = false,
+  location = 0,
+  repeat = false,
+  modifiers = [],
+}: {
+  timeStamp?: number;
+  code: string;
+  key: string;
+  shiftKey?: boolean;
+  altKey?: boolean;
+  ctrlKey?: boolean;
+  metaKey?: boolean;
+  location?: number;
+  repeat?: boolean;
+  modifiers?: readonly string[];
+}): KeyEvent {
+  return {
+    timeStamp,
+    code,
+    key,
+    shiftKey,
+    altKey,
+    ctrlKey,
+    metaKey,
+    location,
+    repeat,
+    modifiers,
+  };
+}

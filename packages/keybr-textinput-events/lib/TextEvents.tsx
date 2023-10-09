@@ -1,7 +1,7 @@
 import { type CSSProperties, PureComponent, type ReactNode } from "react";
 import { Char_Backspace, Char_LineFeed, Char_Tab } from "./chars.ts";
 import { eventTimeStamp } from "./events.ts";
-import { type KeyEvent } from "./types.ts";
+import { allModifiers, type KeyEvent } from "./types.ts";
 
 // https://w3c.github.io/uievents/
 // https://www.w3.org/TR/input-events-1/
@@ -229,9 +229,9 @@ export class TextEvents extends PureComponent<Props> {
 function toKeyEvent(ev: KeyboardEvent, timeStamp: number): KeyEvent {
   const { code, key, shiftKey, altKey, ctrlKey, metaKey, location, repeat } =
     ev;
-  const modifierKeys = ["CapsLock", "NumLock"];
-  const modifiers = modifierKeys.filter((key) => ev.getModifierState(key));
-
+  const modifiers = allModifiers.filter((modifier) =>
+    ev.getModifierState(modifier),
+  );
   return {
     timeStamp,
     code,

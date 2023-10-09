@@ -2,7 +2,7 @@ import { addKey, deleteKey } from "@keybr/keyboard-ui";
 import { Screen } from "@keybr/pages-shared";
 import { enumProp } from "@keybr/settings";
 import { type LineData } from "@keybr/textinput";
-import { type KeyEvent } from "@keybr/textinput-events";
+import { allModifiers, type KeyEvent } from "@keybr/textinput-events";
 import { TextArea } from "@keybr/textinput-ui";
 import { PureComponent, type ReactNode } from "react";
 import { Announcer } from "./Announcer.tsx";
@@ -59,7 +59,7 @@ export class Presenter extends PureComponent<Props, State> {
     tour: false,
     focus: false,
     depressedKeys: [],
-    modifierKeys: ["CapsLock", "NumLock"],
+    modifierKeys: [...allModifiers],
   };
 
   override componentDidMount(): void {
