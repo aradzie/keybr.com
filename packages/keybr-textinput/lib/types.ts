@@ -4,10 +4,6 @@ export const attrMiss = 2 as number;
 export const attrGarbage = 4 as number;
 export const attrCursor = 8 as number;
 
-export type Fragment = {
-  readonly chars: readonly Char[];
-};
-
 export type Step = {
   readonly codePoint: number;
   readonly timeStamp: number;
@@ -20,15 +16,8 @@ export type Char = {
 };
 
 export type LineData = {
-  /** Line chars. */
   readonly chars: readonly Char[];
-  /** Unique line identifier. */
   readonly key: number | string;
-};
-
-export type InputEvent = {
-  readonly codePoint: number;
-  readonly timeStamp: number;
 };
 
 export enum Feedback {

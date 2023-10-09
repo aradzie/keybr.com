@@ -99,8 +99,6 @@ function makeSoundPlayer(settings: Settings) {
     if (playSounds === PlaySounds.All) {
       switch (feedback) {
         case Feedback.Succeeded:
-          playSound(TextInputSound.Click, soundVolume);
-          break;
         case Feedback.Recovered:
           playSound(TextInputSound.Click, soundVolume);
           break;
