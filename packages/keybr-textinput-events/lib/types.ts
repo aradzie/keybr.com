@@ -21,5 +21,5 @@ export type KeyEvent = {
   readonly metaKey: boolean;
   readonly location: number;
   readonly repeat: boolean;
-  readonly getModifierState: (keyArg: string) => boolean;
+  readonly modifiers: readonly string[];
 };

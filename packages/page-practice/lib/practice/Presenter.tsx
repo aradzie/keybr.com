@@ -166,21 +166,20 @@ export class Presenter extends PureComponent<Props, State> {
   };
 
   private handleKeyDown = (ev: KeyEvent): void => {
-    const modifierKeys = ["CapsLock", "NumLock"];
+    // const modifierKeys = new Set(["CapsLock", "NumLock"]);
 
     if (this.state.focus) {
-      if (modifierKeys.includes(ev.code)) {
-        const state = ev.getModifierState(ev.code);
-        this.setState(({ depressedKeys }) => ({
-          depressedKeys: state
-            ? addKey(depressedKeys, ev.code)
-            : deleteKey(depressedKeys, ev.code),
-        }));
-      } else {
-        this.setState(({ depressedKeys }) => ({
-          depressedKeys: addKey(depressedKeys, ev.code),
-        }));
-      }
+      this.setState(({ depressedKeys }) => {
+        if (ev.modifiers.includes(ev.code)) {
+          return {
+            depressedKeys: addKey(depressedKeys, ev.code),
+          };
+        } else {
+          return {
+            depressedKeys: deleteKey(depressedKeys, ev.code),
+          };
+        }
+      });
       this.props.onKeyDown(ev);
     }
   };

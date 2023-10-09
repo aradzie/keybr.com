@@ -226,17 +226,22 @@ export class TextEvents extends PureComponent<Props> {
   }
 }
 
-/**
- * Process keyboard event by adding timestamp.
- * @param ev
- * @param timeStamp
- * @returns Original keyboard event with a timestamp
- */
 function toKeyEvent(ev: KeyboardEvent, timeStamp: number): KeyEvent {
-  const keyEvent = ev as KeyEvent;
-  Object.defineProperty(keyEvent, "timeStamp", {
-    value: timeStamp,
-    writable: false,
-  });
-  return keyEvent;
+  const { code, key, shiftKey, altKey, ctrlKey, metaKey, location, repeat } =
+    ev;
+  const modifierKeys = ["CapsLock", "NumLock"];
+  const modifiers = modifierKeys.filter((key) => ev.getModifierState(key));
+
+  return {
+    timeStamp,
+    code,
+    key,
+    shiftKey,
+    altKey,
+    ctrlKey,
+    metaKey,
+    location,
+    repeat,
+    modifiers,
+  };
 }
