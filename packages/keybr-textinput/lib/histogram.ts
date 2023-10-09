@@ -37,13 +37,10 @@ export class Histogram implements Iterable<Sample> {
       readonly startedAt?: number | null;
     } = {},
   ): Histogram {
-    type MutableSample = {
-      hitCount: number;
-      missCount: number;
-      timeToType: number[];
-    };
-
-    const samples = new Map<number, MutableSample>();
+    const samples = new Map<
+      number,
+      { hitCount: number; missCount: number; timeToType: number }
+    >();
     let last: Step | null =
       startedAt != null
         ? { codePoint: 0, timeStamp: startedAt, typo: false }
@@ -53,14 +50,14 @@ export class Histogram implements Iterable<Sample> {
       if (sample == null) {
         samples.set(
           step.codePoint,
-          (sample = { hitCount: 0, missCount: 0, timeToType: [] }),
+          (sample = { hitCount: 0, missCount: 0, timeToType: 0 }),
         );
       }
       sample.hitCount += 1;
       if (step.typo) {
         sample.missCount += 1;
       } else if (last != null) {
-        sample.timeToType.push(step.timeStamp - last.timeStamp);
+        sample.timeToType += step.timeStamp - last.timeStamp;
       }
       last = step;
     }
@@ -70,25 +67,9 @@ export class Histogram implements Iterable<Sample> {
           codePoint,
           hitCount,
           missCount,
-          timeToType: Math.round(average(timeToType)),
+          timeToType: Math.round(timeToType / hitCount),
         }),
       ),
     );
-  }
-}
-
-function average(list: readonly number[]): number {
-  let sum = 0;
-  let count = 0;
-  for (const v of list) {
-    if (v > 0) {
-      sum += v;
-      count += 1;
-    }
-  }
-  if (count > 0) {
-    return sum / count;
-  } else {
-    return 0;
   }
 }
