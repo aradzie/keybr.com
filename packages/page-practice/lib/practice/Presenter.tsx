@@ -204,6 +204,10 @@ export class Presenter extends PureComponent<Props, State> {
               depressedKeys: addKey(depressedKeys, ev.code),
             }));
           }
+        } else if (/Mac/.test(navigator.userAgent)) {
+          this.setState(({ depressedKeys }) => ({
+            depressedKeys: deleteKey(depressedKeys, ev.code),
+          }));
         }
       } else {
         this.setState(({ depressedKeys }) => ({
