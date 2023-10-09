@@ -16,7 +16,8 @@
   "scripts": {
     "clean": "rm -fr .types",
     "compile": "tsc",
-    "test": "ava"
+    "test": "ava",
+    "test-update": "ava -u"
   },
   "ava": {
     "extensions": [

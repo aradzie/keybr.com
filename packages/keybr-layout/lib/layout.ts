@@ -167,6 +167,7 @@ export class Layout implements EnumItem {
     Layout.ES_ES,
     Layout.PT_BR,
     Layout.PT_PT,
+    Layout.UK_UA,
     Layout.RU_RU,
     // Layout.EN_CUSTOM,
   );

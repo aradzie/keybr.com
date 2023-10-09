@@ -6,6 +6,7 @@ import langFrData from "@keybr/phonetic-model/assets/lang-fr.data";
 import langItData from "@keybr/phonetic-model/assets/lang-it.data";
 import langPtData from "@keybr/phonetic-model/assets/lang-pt.data";
 import langRuData from "@keybr/phonetic-model/assets/lang-ru.data";
+import langUkData from "@keybr/phonetic-model/assets/lang-uk.data";
 
 export function modelAssetPath(language: Language): string {
   switch (language) {
@@ -23,6 +24,8 @@ export function modelAssetPath(language: Language): string {
       return langPtData;
     case Language.RU:
       return langRuData;
+    case Language.UK:
+      return langUkData;
     default:
       throw new Error();
   }
