@@ -8,7 +8,7 @@ const C = 0x63;
 const X = 0x78;
 const Space = 32;
 
-test("compute", (t) => {
+test("compute stats", (t) => {
   const stats = newStats([
     { codePoint: X, timeStamp: 100, typo: false }, // Trigger is ignored.
     { codePoint: A, timeStamp: 200, typo: false },
@@ -23,6 +23,7 @@ test("compute", (t) => {
     length: 4,
     errors: 1,
     accuracy: 0.75,
+    alternations: 1,
     histogram: new Histogram([
       { codePoint: Space, hitCount: 1, missCount: 1, timeToType: 0 },
       { codePoint: A, hitCount: 1, missCount: 0, timeToType: 100 },
@@ -51,6 +52,7 @@ test("compute with started at", (t) => {
     length: 4,
     errors: 1,
     accuracy: 0.75,
+    alternations: 1,
     histogram: new Histogram([
       { codePoint: Space, hitCount: 1, missCount: 1, timeToType: 0 },
       { codePoint: A, hitCount: 1, missCount: 0, timeToType: 100 },
@@ -80,6 +82,7 @@ test("compute with ended at", (t) => {
     length: 4,
     errors: 1,
     accuracy: 0.75,
+    alternations: 1,
     histogram: new Histogram([
       { codePoint: Space, hitCount: 1, missCount: 1, timeToType: 0 },
       { codePoint: A, hitCount: 1, missCount: 0, timeToType: 100 },
@@ -109,6 +112,7 @@ test("compute with started at and ended at", (t) => {
     length: 4,
     errors: 1,
     accuracy: 0.75,
+    alternations: 1,
     histogram: new Histogram([
       { codePoint: Space, hitCount: 1, missCount: 1, timeToType: 0 },
       { codePoint: A, hitCount: 1, missCount: 0, timeToType: 100 },
@@ -149,6 +153,43 @@ test("compute accuracy", (t) => {
       { codePoint: C, timeStamp: 400, typo: false },
       { codePoint: Space, timeStamp: 500, typo: false },
     ]).accuracy,
+    1,
+  );
+});
+
+test("compute alternations", (t) => {
+  t.is(newStats([]).alternations, 0);
+
+  t.is(
+    newStats([
+      { codePoint: X, timeStamp: 100, typo: false }, // Trigger is ignored.
+      { codePoint: X, timeStamp: 200, typo: false },
+      { codePoint: X, timeStamp: 300, typo: false },
+      { codePoint: X, timeStamp: 400, typo: false },
+      { codePoint: Space, timeStamp: 500, typo: false },
+    ]).alternations,
+    0.3333333333333333,
+  );
+
+  t.is(
+    newStats([
+      { codePoint: X, timeStamp: 100, typo: false }, // Trigger is ignored.
+      { codePoint: A, timeStamp: 200, typo: false },
+      { codePoint: B, timeStamp: 300, typo: false },
+      { codePoint: C, timeStamp: 400, typo: false },
+      { codePoint: Space, timeStamp: 500, typo: false },
+    ]).alternations,
+    1,
+  );
+
+  t.is(
+    newStats([
+      { codePoint: X, timeStamp: 100, typo: true }, // Trigger is ignored.
+      { codePoint: A, timeStamp: 200, typo: true },
+      { codePoint: B, timeStamp: 300, typo: true },
+      { codePoint: C, timeStamp: 400, typo: true },
+      { codePoint: Space, timeStamp: 500, typo: true },
+    ]).alternations,
     1,
   );
 });

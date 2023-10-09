@@ -7,6 +7,7 @@ export type Stats = {
   readonly length: number;
   readonly errors: number;
   readonly accuracy: number;
+  readonly alternations: number;
   readonly histogram: Histogram;
 };
 
@@ -27,6 +28,7 @@ export function newStats(
       length: 0,
       errors: 0,
       accuracy: 0,
+      alternations: 0,
       histogram: Histogram.empty,
     };
   }
@@ -54,24 +56,41 @@ function compute(
   const speed = computeSpeed(length, time);
   const errors = countErrors(steps);
   const accuracy = (length - errors) / length;
+  const alternations = computeAlterations(steps);
   return {
     time,
     speed,
     length,
     errors,
     accuracy,
+    alternations,
     histogram: Histogram.from(steps, { startedAt }),
   };
 }
 
 function countErrors(steps: readonly Step[]): number {
+  const { length } = steps;
   let errors = 0;
-  for (const step of steps) {
-    if (step.typo) {
+  for (let i = 0; i < length; i++) {
+    if (steps[i].typo) {
       errors += 1;
     }
   }
   return errors;
+}
+
+function computeAlterations(steps: readonly Step[]): number {
+  const { length } = steps;
+  if (length < 2) {
+    throw new Error();
+  }
+  let alterations = 0;
+  for (let i = 1; i < length; i++) {
+    if (steps[i - 1].codePoint !== steps[i].codePoint) {
+      alterations += 1;
+    }
+  }
+  return alterations / (length - 1);
 }
 
 export function computeSpeed(length: number, time: number): number {
