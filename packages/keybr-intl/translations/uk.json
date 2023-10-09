@@ -1340,11 +1340,11 @@
     "description": "Input field title."
   },
   "settings.spaceSkipsWordsDescription": {
-    "defaultMessage": "If enabled, pressing the space key in the middle of a word will skip the remaining characters of the word and position cursor at the beginning of the next word.",
+    "defaultMessage": "Якщо ввімкнено, натискання клавіші пробілу в середині слова пропускатиме решту символів у слові та розташовуватиме курсор на початку наступного слова.",
     "description": "Description text."
   },
   "settings.spaceSkipsWordsLabel": {
-    "defaultMessage": "Space skips words",
+    "defaultMessage": "Використовувати пробіл для пропуску слів",
     "description": "Input field label."
   },
   "settings.stopCursorOnErrorDescription": {
@@ -1364,7 +1364,7 @@
     "description": "Fieldset legend."
   },
   "settings.typingAssistsDescription": {
-    "defaultMessage": "These are the typing assists which help your preserve your concentration and keep the flow by automatically correcting your errors.",
+    "defaultMessage": "Це засоби допомоги при наборі тексту, які допомагають вам зберегти концентрацію та продовжувати друкувати, автоматично виправляючи ваші помилки.",
     "description": "Description text."
   },
   "settings.typingOptionsLegend": {
