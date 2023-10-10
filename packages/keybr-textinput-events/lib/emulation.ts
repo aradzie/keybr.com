@@ -63,7 +63,6 @@ function remap(
     metaKey,
     location,
     repeat,
-    modifiers,
   }: KeyEvent,
 ): KeyEvent {
   const layoutKey = layout.getKey(code);
@@ -83,6 +82,5 @@ function remap(
     metaKey,
     location,
     repeat,
-    modifiers,
   };
 }

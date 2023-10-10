@@ -1,7 +1,7 @@
 import { type CSSProperties, PureComponent, type ReactNode } from "react";
 import { Char_Backspace, Char_LineFeed, Char_Tab } from "./chars.ts";
-import { eventTimeStamp } from "./events.ts";
-import { allModifiers, type KeyEvent } from "./types.ts";
+import { ModifierState } from "./modifiers.ts";
+import { type KeyEvent } from "./types.ts";
 
 // https://w3c.github.io/uievents/
 // https://www.w3.org/TR/input-events-1/
@@ -41,6 +41,7 @@ export class TextEvents extends PureComponent<Props> {
   private compositing = false;
 
   override componentDidMount(): void {
+    ModifierState.initialize();
     const { input } = this;
     if (input != null) {
       input.addEventListener("focus", this.handleFocus);
@@ -128,7 +129,7 @@ export class TextEvents extends PureComponent<Props> {
         return;
       }
     }
-    const timeStamp = eventTimeStamp(event);
+    const timeStamp = timeStampOf(event);
     const { onKeyDown } = this.props;
     if (onKeyDown != null) {
       onKeyDown(toKeyEvent(event, timeStamp));
@@ -158,7 +159,7 @@ export class TextEvents extends PureComponent<Props> {
         return;
       }
     }
-    const timeStamp = eventTimeStamp(event);
+    const timeStamp = timeStampOf(event);
     const { onKeyUp } = this.props;
     if (onKeyUp != null) {
       onKeyUp(toKeyEvent(event, timeStamp));
@@ -171,7 +172,7 @@ export class TextEvents extends PureComponent<Props> {
         return;
       }
     }
-    const timeStamp = eventTimeStamp(event);
+    const timeStamp = timeStampOf(event);
     switch (event.inputType) {
       case "insertText":
       case "insertCompositionText":
@@ -183,7 +184,7 @@ export class TextEvents extends PureComponent<Props> {
   };
 
   private handleComposition = (event: CompositionEvent): void => {
-    const timeStamp = eventTimeStamp(event);
+    const timeStamp = timeStampOf(event);
     switch (event.type) {
       case "compositionstart":
       case "compositionupdate":
@@ -226,12 +227,19 @@ export class TextEvents extends PureComponent<Props> {
   }
 }
 
-function toKeyEvent(ev: KeyboardEvent, timeStamp: number): KeyEvent {
-  const { code, key, shiftKey, altKey, ctrlKey, metaKey, location, repeat } =
-    ev;
-  const modifiers = allModifiers.filter((modifier) =>
-    ev.getModifierState(modifier),
-  );
+function toKeyEvent(
+  {
+    code,
+    key,
+    shiftKey,
+    altKey,
+    ctrlKey,
+    metaKey,
+    location,
+    repeat,
+  }: KeyboardEvent,
+  timeStamp: number,
+): KeyEvent {
   return {
     timeStamp,
     code,
@@ -242,6 +250,10 @@ function toKeyEvent(ev: KeyboardEvent, timeStamp: number): KeyEvent {
     metaKey,
     location,
     repeat,
-    modifiers,
   };
+}
+
+function timeStampOf({ timeStamp }: { timeStamp: number }): number {
+  // Mobile Safari reports zero time stamps, so here's a workaround.
+  return Math.round(timeStamp || performance.now());
 }

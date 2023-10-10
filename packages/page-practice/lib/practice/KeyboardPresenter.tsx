@@ -13,17 +13,23 @@ import { type LastLesson } from "./practicestate.ts";
 export const KeyboardPresenter = memo(function KeyboardPresenter({
   focus,
   depressedKeys,
+  toggledKeys,
   lastLesson,
 }: {
   readonly focus: boolean;
   readonly depressedKeys: readonly string[];
+  readonly toggledKeys: readonly string[];
   readonly lastLesson: LastLesson | null;
 }): ReactNode {
   const keyboard = useKeyboard();
   const zoom = useZoom();
   return (
     <VirtualKeyboard keyboard={keyboard} height="16rem" {...zoom}>
-      <KeyLayer depressedKeys={depressedKeys} showZones={!focus} />
+      <KeyLayer
+        depressedKeys={depressedKeys}
+        toggledKeys={toggledKeys}
+        showZones={!focus}
+      />
       {focus && <MarkerLayer />}
       {focus && lastLesson && (
         <HeatmapLayer histogram={lastLesson.misses} modifier="m" />

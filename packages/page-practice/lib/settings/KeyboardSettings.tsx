@@ -8,7 +8,7 @@ import {
 } from "@keybr/keyboard-ui";
 import { Language, Layout } from "@keybr/layout";
 import { useSettings } from "@keybr/settings";
-import { allModifiers } from "@keybr/textinput-events";
+import { ModifierState } from "@keybr/textinput-events";
 import {
   CheckBox,
   Field,
@@ -145,7 +145,10 @@ function KeyboardPreview(): ReactNode {
   return (
     <>
       <VirtualKeyboard keyboard={keyboard} height="16rem">
-        <KeyLayer depressedKeys={depressedKeys} />
+        <KeyLayer
+          depressedKeys={depressedKeys}
+          toggledKeys={ModifierState.modifiers}
+        />
       </VirtualKeyboard>
       <FieldList>
         <Field>
@@ -166,44 +169,13 @@ function KeyboardPreview(): ReactNode {
   );
 }
 
-/**
- * Handle modifier keys only on keydown event for os and
- * browser compatibility.
- */
 function useDepressedKeys(): readonly string[] {
   const [depressedKeys, setDepressedKeys] = useState<readonly string[]>([]);
   useWindowEvent("keydown", (ev) => {
-    if (allModifiers.includes(ev.code)) {
-      if (/Mac/.test(navigator.userAgent)) {
-        const modifiers = allModifiers.filter((key) =>
-          ev.getModifierState(key),
-        );
-        if (modifiers.includes(ev.code)) {
-          setDepressedKeys(addKey(depressedKeys, ev.code));
-        } else {
-          setDepressedKeys(deleteKey(depressedKeys, ev.code));
-        }
-      }
-    } else {
-      setDepressedKeys(addKey(depressedKeys, ev.code));
-    }
+    setDepressedKeys(addKey(depressedKeys, ev.code));
   });
   useWindowEvent("keyup", (ev) => {
-    if (allModifiers.includes(ev.code)) {
-      if (/Linux|Windows/.test(navigator.userAgent)) {
-        setDepressedKeys((depressedKeys) => {
-          if (depressedKeys.includes(ev.code)) {
-            return deleteKey(depressedKeys, ev.code);
-          } else {
-            return addKey(depressedKeys, ev.code);
-          }
-        });
-      } else if (/Mac/.test(navigator.userAgent)) {
-        setDepressedKeys(deleteKey(depressedKeys, ev.code));
-      }
-    } else {
-      setDepressedKeys(deleteKey(depressedKeys, ev.code));
-    }
+    setDepressedKeys(deleteKey(depressedKeys, ev.code));
   });
   return depressedKeys;
 }

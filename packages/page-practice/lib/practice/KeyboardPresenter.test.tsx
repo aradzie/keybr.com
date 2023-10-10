@@ -14,6 +14,7 @@ test.serial("deferred render", async (t) => {
       <DeferredKeyboardPresenter
         focus={false}
         depressedKeys={[]}
+        toggledKeys={[]}
         lastLesson={null}
       />
     </KeyboardContext.Provider>,
@@ -24,6 +25,7 @@ test.serial("deferred render", async (t) => {
       <DeferredKeyboardPresenter
         focus={true}
         depressedKeys={["KeyA"]}
+        toggledKeys={["CapsLock"]}
         lastLesson={null}
       />
     </KeyboardContext.Provider>,

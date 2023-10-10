@@ -355,7 +355,6 @@ function newKeyEvent({
   metaKey = false,
   location = 0,
   repeat = false,
-  modifiers = [],
 }: {
   timeStamp?: number;
   code: string;
@@ -366,7 +365,6 @@ function newKeyEvent({
   metaKey?: boolean;
   location?: number;
   repeat?: boolean;
-  modifiers?: readonly string[];
 }): KeyEvent {
   return {
     timeStamp,
@@ -378,6 +376,5 @@ function newKeyEvent({
     metaKey,
     location,
     repeat,
-    modifiers,
   };
 }

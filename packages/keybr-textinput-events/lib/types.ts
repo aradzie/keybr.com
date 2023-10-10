@@ -1,5 +1,3 @@
-export const allModifiers: readonly string[] = ["CapsLock", "NumLock"];
-
 export type KeyEventListener = {
   readonly onKeyDown: (event: KeyEvent) => void;
   readonly onKeyUp: (event: KeyEvent) => void;
@@ -16,5 +14,4 @@ export type KeyEvent = {
   readonly metaKey: boolean;
   readonly location: number;
   readonly repeat: boolean;
-  readonly modifiers: readonly string[];
 };
