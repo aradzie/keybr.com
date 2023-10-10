@@ -1,5 +1,5 @@
 {
-  "extends": "../tsconfig-template-dom.json",
+  "extends": "../tsconfig-template.json",
   "compilerOptions": {
     "rootDir": "lib",
     "outDir": ".types",
