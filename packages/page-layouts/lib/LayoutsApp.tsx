@@ -103,7 +103,7 @@ export function LayoutsApp(): ReactNode {
       </Header>
 
       <Para>
-        <WebsiteLink href="http://workmanlayout.org/" />
+        <WebsiteLink href="https://colemakmods.github.io/mod-dh/" />
       </Para>
 
       <FormattedMessage
