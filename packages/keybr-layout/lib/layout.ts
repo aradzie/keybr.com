@@ -151,6 +151,15 @@ export class Layout implements EnumItem {
     /* emulate= */ true,
   );
 
+  static readonly EN_US_COLEMAK_DH = new Layout(
+    /* id= */ "us-colemak-dh",
+    /* xid= */ 0x7a,
+    /* name= */ "US Colemak-DH",
+    /* family= */ LayoutFamily.COLEMAK_DH,
+    /* language= */ Language.EN,
+    /* emulate= */ true,
+  );
+
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
     Layout.EN_US_DVORAK,
@@ -169,6 +178,7 @@ export class Layout implements EnumItem {
     Layout.PT_PT,
     Layout.UK_UA,
     Layout.RU_RU,
+    Layout.EN_US_COLEMAK_DH,
     // Layout.EN_CUSTOM,
   );
 

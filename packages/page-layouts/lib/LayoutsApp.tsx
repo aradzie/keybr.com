@@ -10,6 +10,7 @@ export function LayoutsApp(): ReactNode {
   const dvorak = loadKeyboard(Layout.EN_US_DVORAK, { full: false });
   const colemak = loadKeyboard(Layout.EN_US_COLEMAK, { full: false });
   const workman = loadKeyboard(Layout.EN_US_WORKMAN, { full: false });
+  const colemak_dh = loadKeyboard(Layout.EN_US_COLEMAK_DH, { full: false });
 
   return (
     <Article>
@@ -96,6 +97,22 @@ export function LayoutsApp(): ReactNode {
       />
 
       <KeyFrequencyHeatmap keyboard={workman} />
+
+      <Header level={2}>
+        <LayoutName layout={colemak_dh.layout} />
+      </Header>
+
+      <Para>
+        <WebsiteLink href="http://workmanlayout.org/" />
+      </Para>
+
+      <FormattedMessage
+        id="layouts.description.colemak_dh"
+        description="Freeform text."
+        defaultMessage="<p>The Colemak-DH layout serves as a practical alternative to both QWERTY and Dvorak keyboard layouts, offering a smoother transition for users accustomed to the standard layout. Building upon QWERTY, it relocates 17 keys while retaining the positions of non-alphabetic characters and popular shortcuts, making it user-friendly for those familiar with QWERTY. It shares design goals with Dvorak, emphasizing minimized finger movement and home row utilization. Colemak-DH enjoys widespread support across modern operating systems, ensuring accessibility and ergonomic benefits for users.</p>"
+      />
+
+      <KeyFrequencyHeatmap keyboard={colemak_dh} />
     </Article>
   );
 }

@@ -375,6 +375,10 @@
     "defaultMessage": "<p>The Workman layout reduced lateral movement of the fingers and wrists, more balanced left and right hand usage. 21 characters are different from Qwerty.</p><p>The Workman layout offers many benefits. It is comfortable, ergonomic, and efficient, with frequent keys being placed within the natural range of motion of the fingers. The need for lateral movement is reduced for the fingers and wrists. There is also very low overall finger travel.</p><p>The Workman layout is found to achieve overall less travel distance of the fingers for the English language than even Colemak. It does however generally incur higher same-finger n-gram frequencies; or in other words, one finger will need to hit two keys in succession more often than in other layouts.</p>",
     "description": "Freeform text."
   },
+  "layouts.description.colemak_dh": {
+    "defaultMessage": "<p>The Colemak-DH layout serves as a practical alternative to both QWERTY and Dvorak keyboard layouts, offering a smoother transition for users accustomed to the standard layout. Building upon QWERTY, it relocates 17 keys while retaining the positions of non-alphabetic characters and popular shortcuts, making it user-friendly for those familiar with QWERTY. It shares design goals with Dvorak, emphasizing minimized finger movement and home row utilization. Colemak-DH enjoys widespread support across modern operating systems, ensuring accessibility and ergonomic benefits for users.</p>",
+    "description": "Freeform text."
+  },
   "layouts.heatmapCaption": {
     "defaultMessage": "Key Frequency Heatmap for {name}",
     "description": "Figure caption."

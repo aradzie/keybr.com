@@ -38,6 +38,11 @@ export class LayoutFamily implements EnumItem {
     /* script= */ "latin",
   );
 
+  static readonly COLEMAK_DH = new LayoutFamily(
+    /* id= */ "colemak-dh",
+    /* script= */ "latin",
+  );
+
   static readonly ALL = new Enum<LayoutFamily>(
     LayoutFamily.QWERTY,
     LayoutFamily.QWERTZ,
@@ -47,6 +52,7 @@ export class LayoutFamily implements EnumItem {
     LayoutFamily.WORKMAN,
     LayoutFamily.BEPO,
     LayoutFamily.ЙЦУКЕН,
+    LayoutFamily.COLEMAK_DH,
     // LayoutFamily.CUSTOM,
   );
 

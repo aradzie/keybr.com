@@ -3,6 +3,7 @@ export { LAYOUT_DE_CH_WIN } from "./layout/de_ch-win.ts";
 export { LAYOUT_DE_DE_WIN } from "./layout/de_de-win.ts";
 export { LAYOUT_EN_UK_WIN } from "./layout/en_uk-win.ts";
 export { LAYOUT_EN_US_COLEMAK } from "./layout/en_us_colemak.ts";
+export { LAYOUT_EN_US_COLEMAK_DH } from "./layout/en_us_colemak_dh.ts";
 export { LAYOUT_EN_US_DVORAK_WIN } from "./layout/en_us_dvorak-win.ts";
 export { LAYOUT_EN_US_WORKMAN } from "./layout/en_us_workman.ts";
 export { LAYOUT_EN_US_WIN } from "./layout/en_us-win.ts";
