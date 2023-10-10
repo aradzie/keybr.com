@@ -12,6 +12,7 @@ export type ClassName = any;
 
 export type KeyProps = {
   readonly depressed?: boolean;
+  readonly toggled?: boolean;
   readonly keyboardKey: KeyboardKey;
   readonly onClick?: MouseEventHandler;
   readonly onMouseDown?: MouseEventHandler;
@@ -29,6 +30,7 @@ function makeKeyComponent(special: boolean): FunctionComponent<KeyProps> {
   return function Key(props: KeyProps): ReactNode {
     const {
       depressed,
+      toggled,
       keyboardKey: { id, geometry },
       showZones,
       children,
@@ -42,6 +44,7 @@ function makeKeyComponent(special: boolean): FunctionComponent<KeyProps> {
       styles.key,
       special ? styles.specialKey : styles.simpleKey,
       depressed && styles.depressedKey,
+      toggled && styles.toggledKey,
       showZones && zoneStyleName(geometry.zone),
     );
     return (
@@ -57,6 +60,7 @@ function makeKeyComponent(special: boolean): FunctionComponent<KeyProps> {
         {...{ "data-key": id }}
       >
         {children}
+        {toggled && <circle className={styles.toggle} cx={6} cy={35} r={4} />}
       </svg>
     );
   };

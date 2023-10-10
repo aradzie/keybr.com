@@ -21,7 +21,10 @@ test("update", (t) => {
 
   const testRenderer = TestRenderer.create(
     <KeyboardContext.Provider value={keyboard}>
-      <KeyLayer depressedKeys={["KeyA", "KeyB", "KeyC"]} />
+      <KeyLayer
+        depressedKeys={["KeyA", "KeyB", "KeyC"]}
+        toggledKeys={["CapsLock", "NumLock"]}
+      />
     </KeyboardContext.Provider>,
   );
 

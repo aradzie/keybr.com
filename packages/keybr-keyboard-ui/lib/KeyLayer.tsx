@@ -35,16 +35,20 @@ export function deleteKey(keys: KeyIdList, key: KeyId): KeyIdList {
 
 export const KeyLayer = memo(function KeyLayer({
   depressedKeys = [],
+  toggledKeys = [],
   showZones = false,
 }: {
   readonly depressedKeys?: KeyIdList;
+  readonly toggledKeys?: KeyIdList;
   readonly showZones?: boolean;
 }): ReactNode {
   const keyboard = useKeyboard();
   const children = useMemo(() => getKeyElements(keyboard), [keyboard]);
   return (
     <svg x={21} y={21}>
-      {children.map((child) => child.select(depressedKeys, showZones))}
+      {children.map((child) =>
+        child.select(depressedKeys, toggledKeys, showZones),
+      )}
     </svg>
   );
 });
@@ -70,6 +74,7 @@ class MemoizedKeyElement {
         key={keyboardKey.id}
         keyboardKey={keyboardKey}
         depressed={false}
+        toggled={false}
         showZones={false}
       />
     );
@@ -78,6 +83,7 @@ class MemoizedKeyElement {
         key={keyboardKey.id}
         keyboardKey={keyboardKey}
         depressed={true}
+        toggled={false}
         showZones={false}
       />
     );
@@ -86,7 +92,8 @@ class MemoizedKeyElement {
         key={keyboardKey.id}
         keyboardKey={keyboardKey}
         depressed={false}
-        showZones={true}
+        toggled={true}
+        showZones={false}
       />
     );
     this.state3 = (
@@ -94,31 +101,41 @@ class MemoizedKeyElement {
         key={keyboardKey.id}
         keyboardKey={keyboardKey}
         depressed={true}
-        showZones={true}
+        toggled={true}
+        showZones={false}
       />
     );
   }
 
-  select(depressedKeys: KeyIdList, showZones: boolean): ReactElement<KeyProps> {
+  select(
+    depressedKeys: KeyIdList,
+    toggledKeys: KeyIdList,
+    showZones: boolean,
+  ): ReactElement<KeyProps> {
     const { keyboardKey, component: Component } = this;
     const depressed = depressedKeys.includes(keyboardKey.id);
-    if (!depressed && !showZones) {
-      return this.state0;
-    }
-    if (depressed && !showZones) {
-      return this.state1;
-    }
-    if (!depressed && showZones) {
-      return this.state2;
-    }
-    if (depressed && showZones) {
-      return this.state3;
+    const toggled = toggledKeys.includes(keyboardKey.id);
+    if (!showZones) {
+      if (!toggled) {
+        if (!depressed) {
+          return this.state0;
+        } else {
+          return this.state1;
+        }
+      } else {
+        if (!depressed) {
+          return this.state2;
+        } else {
+          return this.state3;
+        }
+      }
     }
     return (
       <Component
         key={keyboardKey.id}
         keyboardKey={keyboardKey}
         depressed={depressed}
+        toggled={toggled}
         showZones={showZones}
       />
     );
