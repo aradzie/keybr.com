@@ -116,8 +116,10 @@ export class Controller {
     } else {
       throw new ForbiddenError("Invalid login link", {
         description:
-          "The login link which you are currently using is either expired or invalid. " +
-          "Please enter your e-mail address again to receive a new login link.",
+          "The login link that you are currently using is either expired or invalid. " +
+          "Please enter your e-mail address again to receive a new login link. " +
+          "Don't worry, your account is safe! " +
+          "You likely got here because you used an old link that does not work anymore.",
       });
     }
   }
