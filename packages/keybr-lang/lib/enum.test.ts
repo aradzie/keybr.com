@@ -12,6 +12,8 @@ test("enum", (t) => {
     }
   }
 
+  t.throws(() => new Enum(new Subject("a"), new Subject("a")));
+
   const a = new Subject("a");
   const b = new Subject("b");
   const c = new Subject("c");
@@ -61,6 +63,9 @@ test("xenum", (t) => {
       return this.id;
     }
   }
+
+  t.throws(() => new XEnum(new Subject("a", 1), new Subject("a", 2)));
+  t.throws(() => new XEnum(new Subject("a", 1), new Subject("b", 1)));
 
   const a = new Subject("a", 1);
   const b = new Subject("b", 2);

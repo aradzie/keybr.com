@@ -10,7 +10,14 @@ export class Enum<T extends EnumItem> implements Iterable<T> {
 
   constructor(...items: readonly T[]) {
     this.#items = [...items];
-    this.#byId = new Map(this.#items.map((item) => [item.id, item]));
+    this.#byId = new Map();
+    for (const item of this.#items) {
+      if (this.#byId.has(item.id)) {
+        throw new Error(); // Duplicate id.
+      } else {
+        this.#byId.set(item.id, item);
+      }
+    }
   }
 
   [Symbol.iterator](): IterableIterator<T> {
@@ -74,8 +81,22 @@ export class XEnum<T extends XEnumItem> implements Iterable<T> {
 
   constructor(...items: readonly T[]) {
     this.#items = [...items];
-    this.#byId = new Map(this.#items.map((item) => [item.id, item]));
-    this.#byXId = new Map(this.#items.map((item) => [item.xid, item]));
+    this.#byId = new Map();
+    for (const item of this.#items) {
+      if (this.#byId.has(item.id)) {
+        throw new Error(); // Duplicate id.
+      } else {
+        this.#byId.set(item.id, item);
+      }
+    }
+    this.#byXId = new Map();
+    for (const item of this.#items) {
+      if (this.#byXId.has(item.xid)) {
+        throw new Error(); // Duplicate xid.
+      } else {
+        this.#byXId.set(item.xid, item);
+      }
+    }
   }
 
   [Symbol.iterator](): IterableIterator<T> {
