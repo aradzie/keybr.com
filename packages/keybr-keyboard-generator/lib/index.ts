@@ -75,14 +75,14 @@ const files: readonly [input: string | LayoutConfig, output: string][] = [
     "../keybr-keyboard/lib/data/layout/uk_ua-win.ts",
   ],
   [LAYOUT_EN_US_COLEMAK, "../keybr-keyboard/lib/data/layout/en_us_colemak.ts"],
-  [LAYOUT_EN_US_WORKMAN, "../keybr-keyboard/lib/data/layout/en_us_workman.ts"],
-  [LAYOUT_FR_BEPO, "../keybr-keyboard/lib/data/layout/fr_bepo.ts"],
-  [LAYOUT_FR_OPTIMOT, "../keybr-keyboard/lib/data/layout/fr_optimot.ts"],
-  [LAYOUT_EN_CUSTOM, "../keybr-keyboard/lib/data/layout/en_custom.ts"],
   [
     LAYOUT_EN_US_COLEMAK_DH,
     "../keybr-keyboard/lib/data/layout/en_us_colemak_dh.ts",
   ],
+  [LAYOUT_EN_US_WORKMAN, "../keybr-keyboard/lib/data/layout/en_us_workman.ts"],
+  [LAYOUT_FR_BEPO, "../keybr-keyboard/lib/data/layout/fr_bepo.ts"],
+  [LAYOUT_FR_OPTIMOT, "../keybr-keyboard/lib/data/layout/fr_optimot.ts"],
+  [LAYOUT_EN_CUSTOM, "../keybr-keyboard/lib/data/layout/en_custom.ts"],
 ];
 
 for (const [input, output] of files) {
