@@ -62,9 +62,6 @@ async function syncTranslations() {
           description: defaultTranslation.description,
         },
       ]);
-      if (defaultTranslation.defaultMessage === translation.defaultMessage) {
-        console.warn(`Not translated [${locale}:${id}].`);
-      }
     }
     writeJsonSync(translationsFile, Object.fromEntries(entries));
   }
