@@ -47,8 +47,8 @@ const rule_ts = () => ({
       options: {
         transpileOnly: true,
         compilerOptions: {
-          target: "es2022",
-          module: "es2022",
+          target: "es2020",
+          module: "es2020",
           jsx: mode === "development" ? "react-jsxdev" : "react-jsx",
         },
         getCustomTransformers: () => ({
