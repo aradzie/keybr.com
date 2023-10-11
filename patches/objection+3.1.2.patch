@@ -1,5 +1,5 @@
 diff --git a/node_modules/objection/lib/utils/resolveModel.js b/node_modules/objection/lib/utils/resolveModel.js
-index 64716b8..672ab80 100644
+index 3e7d178..672ab80 100644
 --- a/node_modules/objection/lib/utils/resolveModel.js
 +++ b/node_modules/objection/lib/utils/resolveModel.js
 @@ -1,100 +1,21 @@
@@ -25,7 +25,7 @@ index 64716b8..672ab80 100644
 -
 -      if (!isModelClass(modelRef)) {
 -        throw new ResolveError(
--          `is not a subclass of Model or a file path to a module that exports one. You may be dealing with a require loop. See the documentation section about require loops.`
+-          `is not a subclass of Model or a file path to a module that exports one. You may be dealing with a require loop. See the documentation section about require loops.`,
 -        );
 -      }
 -
@@ -89,7 +89,7 @@ index 64716b8..672ab80 100644
 -      if (isModelClass(exp)) {
 -        if (modelClass !== null) {
 -          throw new ResolveError(
--            `path ${modelPath} exports multiple models. Don't know which one to choose.`
+-            `path ${modelPath} exports multiple models. Don't know which one to choose.`,
 -          );
 -        }
  
