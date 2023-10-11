@@ -1,4 +1,4 @@
-import { isWhitespace, toCodePoints } from "@keybr/unicode";
+import { toCodePoints } from "@keybr/unicode";
 import { normalize, normalizeWhitespace } from "./normalize.ts";
 import { type TextInputSettings } from "./settings.ts";
 import {
@@ -33,8 +33,8 @@ export class TextInput {
     { stopOnError, forgiveErrors, spaceSkipsWords }: TextInputSettings,
     onStep: StepListener = () => {},
   ) {
-    this.text = text; // TODO Normalize?
-    this.codePoints = [...toCodePoints(text)];
+    this.text = text.normalize("NFC");
+    this.codePoints = [...toCodePoints(text)].map(normalizeWhitespace);
     this.stopOnError = stopOnError;
     this.forgiveErrors = forgiveErrors;
     this.spaceSkipsWords = spaceSkipsWords;
@@ -58,14 +58,12 @@ export class TextInput {
       throw new Error();
     }
 
-    codePoint = normalizeWhitespace(codePoint);
-
     // Handle whitespace at the beginning of text.
     if (
       this.#steps.length === 0 &&
       this.#garbage.length === 0 &&
       !this.#typo &&
-      codePoint === 0x0020
+      normalizeWhitespace(codePoint) === 0x0020
     ) {
       return Feedback.Succeeded;
     }
@@ -83,12 +81,12 @@ export class TextInput {
     // Handle the space key.
     if (
       codePoint === 0x0020 &&
-      !isWhitespace(this.codePoints[this.#steps.length])
+      this.codePoints[this.#steps.length] !== 0x0020
     ) {
       if (
         this.#garbage.length === 0 &&
         (this.#steps.length === 0 ||
-          isWhitespace(this.codePoints[this.#steps.length - 1]))
+          this.codePoints[this.#steps.length - 1] === 0x0020)
       ) {
         // At the beginning of a word.
         return Feedback.Succeeded;
@@ -184,7 +182,7 @@ export class TextInput {
     // Skip the remaining non-space characters inside the word.
     while (
       this.#steps.length < this.codePoints.length &&
-      !isWhitespace(this.codePoints[this.#steps.length])
+      this.codePoints[this.#steps.length] !== 0x0020
     ) {
       this.#addStep({
         codePoint: this.codePoints[this.#steps.length],
@@ -195,7 +193,7 @@ export class TextInput {
     // Skip the space character to position at the beginning of next word.
     if (
       this.#steps.length < this.codePoints.length &&
-      isWhitespace(this.codePoints[this.#steps.length])
+      this.codePoints[this.#steps.length] === 0x0020
     ) {
       this.#addStep({
         codePoint: this.codePoints[this.#steps.length],
