@@ -11,6 +11,7 @@ import { useSettings } from "@keybr/settings";
 import { ModifierState } from "@keybr/textinput-events";
 import {
   CheckBox,
+  Explainer,
   Field,
   FieldList,
   FieldSet,
@@ -133,6 +134,14 @@ function LayoutProp(): ReactNode {
           />
         </Field>
       </FieldList>
+      <Explainer>
+        Keyboard emulation ignores the keyboard layout configured in your system
+        and allows you to practice the selected keyboard regardless of how your
+        system is configured. In most cases it is safe to keep the emulation
+        option enabled. Please note that we do not (yet) support
+        &quot;smart&quot; keyboards which can do the layout switching in
+        hardware or have custom profiles.
+      </Explainer>
     </>
   );
 }

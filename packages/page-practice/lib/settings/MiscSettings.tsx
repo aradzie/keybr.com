@@ -1,7 +1,7 @@
 import { messages } from "@keybr/lesson-ui";
 import { SpeedUnit, uiProps } from "@keybr/result";
 import { useSettings } from "@keybr/settings";
-import { Field, FieldList, FieldSet, Para, RadioBox } from "@keybr/widget";
+import { Explainer, Field, FieldList, FieldSet, RadioBox } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
@@ -69,13 +69,13 @@ function SpeedUnitProp(): ReactNode {
           />
         </Field>
       </FieldList>
-      <Para>
+      <Explainer>
         <FormattedMessage
           id="settings.typingSpeedUnitDescription"
           description="Radio button group description."
           defaultMessage="For the purpose of typing measurement, each word is standardized to be five characters or keystrokes in English, including spaces and punctuation."
         />
-      </Para>
+      </Explainer>
     </>
   );
 }

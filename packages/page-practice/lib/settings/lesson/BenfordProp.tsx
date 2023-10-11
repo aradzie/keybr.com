@@ -1,6 +1,6 @@
 import { lessonProps } from "@keybr/lesson";
 import { useSettings } from "@keybr/settings";
-import { CheckBox, Field, FieldList, Link, Para } from "@keybr/widget";
+import { CheckBox, Explainer, Field, FieldList, Link } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
@@ -24,7 +24,7 @@ export function BenfordProp(): ReactNode {
           />
         </Field>
       </FieldList>
-      <Para>
+      <Explainer>
         <FormattedMessage
           id="settings.benfordsLawDescription"
           description="Description text."
@@ -41,7 +41,7 @@ export function BenfordProp(): ReactNode {
             ),
           }}
         />
-      </Para>
+      </Explainer>
     </>
   );
 }

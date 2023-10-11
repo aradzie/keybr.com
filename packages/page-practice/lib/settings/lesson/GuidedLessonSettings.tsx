@@ -1,5 +1,5 @@
 import { type GuidedLesson } from "@keybr/lesson";
-import { FieldSet, Para } from "@keybr/widget";
+import { Explainer, FieldSet } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { AlphabetSizeProp } from "./AlphabetSizeProp.tsx";
@@ -15,13 +15,13 @@ export function GuidedLessonSettings({
   const { formatMessage } = useIntl();
   return (
     <>
-      <Para>
+      <Explainer>
         <FormattedMessage
           id="lessonType.guided.description"
           description="Description text."
           defaultMessage="Generate typing lessons with random words using the phonetic rules of your language. The key set is expanded dynamically based on your performance. This mode is for the beginners."
         />
-      </Para>
+      </Explainer>
       <FieldSet
         legend={formatMessage({
           id: "settings.lessonOptionsLegend",
@@ -29,8 +29,8 @@ export function GuidedLessonSettings({
           defaultMessage: "Lesson Options",
         })}
       >
-        <AlphabetSizeProp />
         <TargetSpeedProp />
+        <AlphabetSizeProp />
         <TextManglingProp />
         <LessonLengthProp />
       </FieldSet>

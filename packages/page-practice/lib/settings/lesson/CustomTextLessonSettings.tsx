@@ -4,6 +4,7 @@ import { textStatsOf } from "@keybr/plaintext";
 import { useSettings } from "@keybr/settings";
 import {
   CheckBox,
+  Explainer,
   Field,
   FieldList,
   FieldSet,
@@ -12,7 +13,7 @@ import {
   styleSizeFull,
   TextField,
 } from "@keybr/widget";
-import { type ReactNode, useMemo } from "react";
+import React, { type ReactNode, useMemo } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { exampleTexts } from "./example-texts.ts";
 import { LessonLengthProp } from "./LessonLengthProp.tsx";
@@ -26,13 +27,13 @@ export function CustomTextLessonSettings({
   const { formatMessage } = useIntl();
   return (
     <>
-      <Para>
+      <Explainer>
         <FormattedMessage
           id="lessonType.customText.description"
           description="Description text."
           defaultMessage="Generate typing lessons from the words of your own custom text. All keys are included by default. This mode is for the pros."
         />
-      </Para>
+      </Explainer>
       <FieldSet
         legend={formatMessage({
           id: "settings.lessonOptionsLegend",
