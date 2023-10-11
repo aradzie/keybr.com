@@ -9,35 +9,35 @@ import {
 
 export class Session {
   /** Currently visible lines. */
-  #lines!: SessionLineData[];
+  private _lines!: SessionLineData[];
   /** Index of the edited line. */
-  #activeLine!: number;
+  private _activeLine!: number;
   /** Text input for the edited line. */
-  #textInput!: TextInput;
+  private _textInput!: TextInput;
   /** Steps accumulated from all lines. */
-  #steps!: Step[];
+  private _steps!: Step[];
   /** Generates unique element keys. */
-  #key = 0;
+  private _key = 0;
 
   constructor(
     readonly settings: SessionSettings,
     readonly generator: TextGenerator,
   ) {
-    this.#lines = [];
-    this.#activeLine = 0;
-    this.#steps = [];
-    while (this.#lines.length < this.settings.numLines) {
-      this.#appendLine();
+    this._lines = [];
+    this._activeLine = 0;
+    this._steps = [];
+    while (this._lines.length < this.settings.numLines) {
+      this._appendLine();
     }
-    this.#setActiveLine();
+    this._setActiveLine();
   }
 
   getLines(): readonly SessionLineData[] {
-    return this.#lines;
+    return this._lines;
   }
 
   getSteps(): readonly Step[] {
-    return this.#steps;
+    return this._steps;
   }
 
   handleInput(
@@ -48,30 +48,30 @@ export class Session {
     progress: Progress,
     completed: boolean,
   ] {
-    const feedback = this.#textInput.step(codePoint, timeStamp);
+    const feedback = this._textInput.step(codePoint, timeStamp);
     const [progress, completed] = computeProgress(
-      this.#steps,
+      this._steps,
       this.settings.duration,
     );
-    this.#updateActiveLine(progress);
-    if (this.#textInput.completed) {
-      if (this.#activeLine < this.#lines.length - 3) {
-        this.#activeLine += 1;
+    this._updateActiveLine(progress);
+    if (this._textInput.completed) {
+      if (this._activeLine < this._lines.length - 3) {
+        this._activeLine += 1;
       } else {
-        this.#lines.shift();
-        this.#appendLine();
+        this._lines.shift();
+        this._appendLine();
       }
-      this.#setActiveLine();
+      this._setActiveLine();
     }
     return [feedback, progress, completed];
   }
 
-  #appendLine(): void {
+  private _appendLine(): void {
     const mark = this.generator.mark();
-    const text = this.#generateLine();
+    const text = this._generateLine();
     const chars = toChars(text);
-    const key = (this.#key += 1);
-    this.#lines.push({
+    const key = (this._key += 1);
+    this._lines.push({
       mark,
       index: key,
       text,
@@ -81,22 +81,22 @@ export class Session {
     });
   }
 
-  #setActiveLine(): void {
-    const { text } = this.#lines[this.#activeLine];
-    this.#textInput = new TextInput(
+  private _setActiveLine(): void {
+    const { text } = this._lines[this._activeLine];
+    this._textInput = new TextInput(
       text,
       this.settings.textInput,
       (step: Step) => {
-        this.#steps.push(step);
+        this._steps.push(step);
       },
     );
-    this.#updateActiveLine();
+    this._updateActiveLine();
   }
 
-  #updateActiveLine(progress: Progress | null = null): void {
-    const { mark, index, text, key } = this.#lines[this.#activeLine];
-    const chars = this.#textInput.getChars();
-    this.#lines[this.#activeLine] = {
+  private _updateActiveLine(progress: Progress | null = null): void {
+    const { mark, index, text, key } = this._lines[this._activeLine];
+    const chars = this._textInput.getChars();
+    this._lines[this._activeLine] = {
       mark,
       index,
       text,
@@ -106,7 +106,7 @@ export class Session {
     };
   }
 
-  #generateLine(): string {
+  private _generateLine(): string {
     const {
       settings: { numCols },
       generator,

@@ -7,8 +7,8 @@ export type SettingsStorage = {
 };
 
 export class Settings {
-  readonly #json: Record<string, unknown>;
-  readonly #isNew: boolean;
+  private readonly _json: Record<string, unknown>;
+  private readonly _isNew: boolean;
 
   constructor(
     json: Record<string, unknown> = Object.create(null),
@@ -17,26 +17,26 @@ export class Settings {
     if (!isPlainObject(json)) {
       throw new TypeError();
     }
-    this.#json = json;
-    this.#isNew = isNew;
+    this._json = json;
+    this._isNew = isNew;
   }
 
   get isNew(): boolean {
-    return this.#isNew;
+    return this._isNew;
   }
 
   get<T>(prop: AnyProp<T>): T {
-    return prop.fromJson(this.#json[prop.key]);
+    return prop.fromJson(this._json[prop.key]);
   }
 
   set<T>(prop: AnyProp<T>, value: T): Settings {
-    return new Settings({ ...this.#json, [prop.key]: prop.toJson(value) });
+    return new Settings({ ...this._json, [prop.key]: prop.toJson(value) });
   }
 
   toJSON(): Record<string, unknown> {
     const entries = [];
-    for (const key of Object.keys(this.#json).sort()) {
-      entries.push([key, this.#json[key]]);
+    for (const key of Object.keys(this._json).sort()) {
+      entries.push([key, this._json[key]]);
     }
     return Object.fromEntries(entries);
   }

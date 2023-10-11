@@ -46,16 +46,16 @@ export class PracticeState {
     this.textDisplaySettings = toTextDisplaySettings(settings);
     this.keyStatsMap = this.lesson.analyze(this.results);
     this.lessonKeys = this.lesson.update(this.keyStatsMap);
-    this.#reset(this.lesson.generate(this.lessonKeys));
-    this.#computeAnnouncements();
+    this._reset(this.lesson.generate(this.lessonKeys));
+    this._computeAnnouncements();
   }
 
   readonly handleReset = (): void => {
-    this.#reset(this.textInput.text);
+    this._reset(this.textInput.text);
   };
 
   readonly handleSkip = (): void => {
-    this.#reset(this.lesson.generate(this.lessonKeys));
+    this._reset(this.lesson.generate(this.lessonKeys));
   };
 
   readonly handleInput = (codePoint: number, timeStamp: number): Feedback => {
@@ -74,12 +74,12 @@ export class PracticeState {
     return feedback;
   };
 
-  #reset(fragment: string): void {
+  private _reset(fragment: string): void {
     this.textInput = new TextInput(fragment, this.textInputSettings);
     this.lines = singleLine(this.textInput.getChars());
   }
 
-  #computeAnnouncements(): void {
+  private _computeAnnouncements(): void {
     const { results, keyStatsMap, lessonKeys } = this;
     if (results.length > 0) {
       const boostedKey = lessonKeys.findBoostedKey();

@@ -76,31 +76,31 @@ export const Game = ({
 };
 
 class WorldStateWrapper extends EventEmitter {
-  #worldState: WorldState;
+  private _worldState: WorldState;
 
   constructor(
     readonly transport: Transport<ServerMessage, ClientMessage>,
     readonly intl: IntlShape,
   ) {
     super();
-    this.#worldState = makeWorldState(this.intl);
+    this._worldState = makeWorldState(this.intl);
   }
 
   get worldState(): WorldState {
-    return this.#worldState;
+    return this._worldState;
   }
 
   setWorldState(worldState: WorldState): void {
-    this.#worldState = worldState;
+    this._worldState = worldState;
     this.emit(WORLD_CHANGE_EVENT, worldState);
   }
 
   handleReceive = (message: ServerMessage): void => {
-    this.setWorldState(updateWorldState(this.intl, this.#worldState, message));
+    this.setWorldState(updateWorldState(this.intl, this._worldState, message));
   };
 
   handleInput = (codePoint: number): void => {
-    const result = handleInput(this.#worldState, codePoint);
+    const result = handleInput(this._worldState, codePoint);
     if (result != null) {
       const { worldState, elapsed } = result;
       this.setWorldState(worldState);

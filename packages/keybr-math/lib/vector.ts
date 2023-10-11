@@ -1,5 +1,5 @@
 export class Vector implements Iterable<number> {
-  readonly #values: number[] = [];
+  private readonly _values: number[] = [];
 
   constructor(values: Iterable<number> = []) {
     for (const value of values) {
@@ -8,7 +8,7 @@ export class Vector implements Iterable<number> {
   }
 
   *[Symbol.iterator](): IterableIterator<number> {
-    for (const item of this.#values) {
+    for (const item of this._values) {
       yield item;
     }
   }
@@ -17,20 +17,20 @@ export class Vector implements Iterable<number> {
     if (value !== value) {
       throw new Error();
     }
-    this.#values.push(value);
+    this._values.push(value);
   }
 
   get length(): number {
-    return this.#values.length;
+    return this._values.length;
   }
 
   at(index: number): number {
     if (!Number.isSafeInteger(index)) {
       throw new RangeError();
     }
-    if (index < 0 || index >= this.#values.length) {
+    if (index < 0 || index >= this._values.length) {
       throw new RangeError();
     }
-    return this.#values[index];
+    return this._values[index];
   }
 }

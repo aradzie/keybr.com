@@ -3,10 +3,10 @@ import { type Sample, type Step } from "./types.ts";
 export class Histogram implements Iterable<Sample> {
   static readonly empty = Histogram.from([]);
 
-  readonly #map: Map<number, Sample>;
+  private readonly _data: Map<number, Sample>;
 
   constructor(samples: readonly Sample[]) {
-    this.#map = new Map(
+    this._data = new Map(
       Array.from(samples)
         .sort((a, b) => a.codePoint - b.codePoint)
         .map((sample) => [sample.codePoint, sample]),
@@ -14,19 +14,19 @@ export class Histogram implements Iterable<Sample> {
   }
 
   [Symbol.iterator](): IterableIterator<Sample> {
-    return this.#map.values();
+    return this._data.values();
   }
 
   get complexity(): number {
-    return this.#map.size;
+    return this._data.size;
   }
 
   has(codePoint: number): boolean {
-    return this.#map.has(codePoint);
+    return this._data.has(codePoint);
   }
 
   get(codePoint: number): Sample | null {
-    return this.#map.get(codePoint) ?? null;
+    return this._data.get(codePoint) ?? null;
   }
 
   static from(
