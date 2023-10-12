@@ -35,31 +35,25 @@
 }
 
 .lessonKey_included {
-  color: var(--LessonKey--included__color);
   background-color: var(--LessonKey--included__background-color);
   outline: 1px solid var(--LessonKey--included__outline-color);
 }
 
 .lessonKey_excluded {
-  color: var(--LessonKey--excluded__color);
   background-color: var(--LessonKey--excluded__background-color);
   outline: 1px solid var(--LessonKey--excluded__outline-color);
-  text-decoration: line-through;
 }
 
 .lessonKey_uncalibrated {
-  color: var(--LessonKey--uncalibrated__color);
   background-color: var(--LessonKey--uncalibrated__background-color);
   outline: 1px solid var(--LessonKey--uncalibrated__outline-color);
 }
 
 .lessonKey_boosted {
-  color: var(--LessonKey--boosted__color);
   outline: 1px solid var(--LessonKey--boosted__outline-color);
 }
 
 .lessonKey_forced {
-  color: var(--LessonKey--forced__color);
   outline: 1px solid var(--LessonKey--forced__outline-color);
   text-decoration: underline;
 }
@@ -89,10 +83,9 @@
   margin-left: 0.5rem;
 }
 
-.keyTimeDelta {
-  display: inline-block;
-}
-
-.keyTimeDelta + .keyTimeDelta {
-  margin-left: 0.5rem;
+.cross {
+  position: absolute;
+  inset: 0;
+  stroke: var(--LessonKey__color);
+  stroke-width: 2px;
 }

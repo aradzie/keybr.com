@@ -113,51 +113,51 @@ export class LessonKeys implements Iterable<LessonKey> {
     );
   }
 
-  readonly #letters: readonly Letter[];
-  readonly #keys: Map<CodePoint, LessonKey>;
+  private readonly _letters: readonly Letter[];
+  private readonly _keys: Map<CodePoint, LessonKey>;
 
   constructor(keys: readonly LessonKey[]) {
-    this.#letters = [...keys.map(({ letter }) => letter)];
-    this.#keys = new Map(keys.map((key) => [key.letter.codePoint, key]));
-  }
-
-  [Symbol.iterator](): IterableIterator<LessonKey> {
-    return this.#keys.values();
+    this._letters = [...keys.map(({ letter }) => letter)];
+    this._keys = new Map(keys.map((key) => [key.letter.codePoint, key]));
   }
 
   get letters(): readonly Letter[] {
-    return this.#letters;
+    return this._letters;
+  }
+
+  [Symbol.iterator](): IterableIterator<LessonKey> {
+    return this._keys.values();
   }
 
   findIncludedKeys(): LessonKey[] {
-    return [...this.#keys.values()].filter((key) => key.isIncluded);
+    return [...this._keys.values()].filter((key) => key.isIncluded);
   }
 
   findExcludedKeys(): LessonKey[] {
-    return [...this.#keys.values()].filter((key) => !key.isIncluded);
+    return [...this._keys.values()].filter((key) => !key.isIncluded);
   }
 
   findBoostedKey(): LessonKey | null {
-    return [...this.#keys.values()].find((key) => key.isBoosted) ?? null;
+    return [...this._keys.values()].find((key) => key.isBoosted) ?? null;
   }
 
   include({ codePoint }: Letter): void {
-    this.#keys.set(codePoint, this.#keys.get(codePoint)!.asIncluded());
+    this._keys.set(codePoint, this._keys.get(codePoint)!.asIncluded());
   }
 
   exclude({ codePoint }: Letter): void {
-    this.#keys.set(codePoint, this.#keys.get(codePoint)!.asExcluded());
+    this._keys.set(codePoint, this._keys.get(codePoint)!.asExcluded());
   }
 
   force({ codePoint }: Letter): void {
-    this.#keys.set(codePoint, this.#keys.get(codePoint)!.asForced());
+    this._keys.set(codePoint, this._keys.get(codePoint)!.asForced());
   }
 
   boost({ codePoint }: Letter): void {
-    this.#keys.set(codePoint, this.#keys.get(codePoint)!.asBoosted());
+    this._keys.set(codePoint, this._keys.get(codePoint)!.asBoosted());
   }
 
   find(codePoint: CodePoint): LessonKey | null {
-    return this.#keys.get(codePoint) ?? null;
+    return this._keys.get(codePoint) ?? null;
   }
 }

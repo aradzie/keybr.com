@@ -40,40 +40,43 @@ export class ResultGroups<T> implements Iterable<Group<T>> {
   static readonly byDate = (results: Iterable<Result>) =>
     new ResultGroups(dateKey()).add(results);
 
-  readonly #keyOf: KeyOf<T>;
-  readonly #map: Map<string, { readonly key: T; readonly results: Result[] }>;
+  private readonly _keyOf: KeyOf<T>;
+  private readonly _map: Map<
+    string,
+    { readonly key: T; readonly results: Result[] }
+  >;
 
   constructor(keyOf: KeyOf<T>) {
-    this.#keyOf = keyOf;
-    this.#map = new Map();
+    this._keyOf = keyOf;
+    this._map = new Map();
   }
 
   [Symbol.iterator](): IterableIterator<Group<T>> {
-    return this.#map.values();
+    return this._map.values();
   }
 
   *keys(): IterableIterator<T> {
-    for (const { key } of this.#map.values()) {
+    for (const { key } of this._map.values()) {
       yield key;
     }
   }
 
   get(key: T): readonly Result[] {
-    return this.#getGroup(key).results;
+    return this.getGroup(key).results;
   }
 
   add(results: Iterable<Result>): this {
     for (const result of results) {
-      this.#getGroup(this.#keyOf(result)).results.push(result);
+      this.getGroup(this._keyOf(result)).results.push(result);
     }
     return this;
   }
 
-  #getGroup(key: T) {
+  private getGroup(key: T) {
     const stringKey = String(key);
-    let group = this.#map.get(stringKey);
+    let group = this._map.get(stringKey);
     if (group == null) {
-      this.#map.set(stringKey, (group = { key, results: [] }));
+      this._map.set(stringKey, (group = { key, results: [] }));
     }
     return group;
   }

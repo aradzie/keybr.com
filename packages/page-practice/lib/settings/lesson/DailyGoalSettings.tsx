@@ -2,10 +2,10 @@ import { useIntlDurations } from "@keybr/intl";
 import { lessonProps } from "@keybr/lesson";
 import { useSettings } from "@keybr/settings";
 import {
+  Explainer,
   Field,
   FieldList,
   FieldSet,
-  Para,
   Range,
   styleSizeWide,
   Value,
@@ -18,13 +18,6 @@ export function DailyGoalSettings(): ReactNode {
   const { settings, updateSettings } = useSettings();
   return (
     <FieldSet>
-      <Para>
-        <FormattedMessage
-          id="settings.dailyGoalDescription"
-          description="Description text."
-          defaultMessage="Set the time you want to spend on the exercises daily."
-        />
-      </Para>
       <FieldList>
         <Field>
           <FormattedMessage
@@ -57,6 +50,13 @@ export function DailyGoalSettings(): ReactNode {
           )}
         </Field>
       </FieldList>
+      <Explainer>
+        <FormattedMessage
+          id="settings.dailyGoalDescription"
+          description="Description text."
+          defaultMessage="Set the time you want to spend on the exercises daily."
+        />
+      </Explainer>
     </FieldSet>
   );
 }

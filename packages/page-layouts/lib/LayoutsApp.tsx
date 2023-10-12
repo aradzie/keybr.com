@@ -83,7 +83,7 @@ export function LayoutsApp(): ReactNode {
       </Header>
 
       <Para>
-        <WebsiteLink href="http://workmanlayout.org/" />
+        <WebsiteLink href="https://workmanlayout.org/" />
       </Para>
 
       <FormattedMessage

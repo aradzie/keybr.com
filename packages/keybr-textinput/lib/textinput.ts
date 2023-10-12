@@ -1,4 +1,4 @@
-import { isWhitespace, toCodePoints } from "@keybr/unicode";
+import { toCodePoints } from "@keybr/unicode";
 import { normalize, normalizeWhitespace } from "./normalize.ts";
 import { type TextInputSettings } from "./settings.ts";
 import {
@@ -23,33 +23,33 @@ export class TextInput {
   readonly stopOnError: boolean;
   readonly forgiveErrors: boolean;
   readonly spaceSkipsWords: boolean;
-  readonly #onStep: StepListener;
-  #steps: Step[] = [];
-  #garbage: Step[] = [];
-  #typo: boolean = false;
+  readonly onStep: StepListener;
+  private _steps: Step[] = [];
+  private _garbage: Step[] = [];
+  private _typo: boolean = false;
 
   constructor(
     text: string,
     { stopOnError, forgiveErrors, spaceSkipsWords }: TextInputSettings,
     onStep: StepListener = () => {},
   ) {
-    this.text = text; // TODO Normalize?
-    this.codePoints = [...toCodePoints(text)];
+    this.text = text.normalize("NFC");
+    this.codePoints = [...toCodePoints(text)].map(normalizeWhitespace);
     this.stopOnError = stopOnError;
     this.forgiveErrors = forgiveErrors;
     this.spaceSkipsWords = spaceSkipsWords;
-    this.#onStep = onStep;
+    this.onStep = onStep;
     this.reset();
   }
 
   reset(): void {
-    this.#steps = [];
-    this.#garbage = [];
-    this.#typo = false;
+    this._steps = [];
+    this._garbage = [];
+    this._typo = false;
   }
 
   get completed(): boolean {
-    return this.#steps.length === this.codePoints.length;
+    return this._steps.length === this.codePoints.length;
   }
 
   step(codePoint: number, timeStamp: number): Feedback {
@@ -58,22 +58,20 @@ export class TextInput {
       throw new Error();
     }
 
-    codePoint = normalizeWhitespace(codePoint);
-
     // Handle whitespace at the beginning of text.
     if (
-      this.#steps.length === 0 &&
-      this.#garbage.length === 0 &&
-      !this.#typo &&
-      codePoint === 0x0020
+      this._steps.length === 0 &&
+      this._garbage.length === 0 &&
+      !this._typo &&
+      normalizeWhitespace(codePoint) === 0x0020
     ) {
       return Feedback.Succeeded;
     }
 
     // Handle the delete key.
     if (codePoint === 0x0008) {
-      if (this.#garbage.length > 0) {
-        this.#garbage.pop();
+      if (this._garbage.length > 0) {
+        this._garbage.pop();
         return Feedback.Succeeded;
       } else {
         return Feedback.Failed;
@@ -83,12 +81,12 @@ export class TextInput {
     // Handle the space key.
     if (
       codePoint === 0x0020 &&
-      !isWhitespace(this.codePoints[this.#steps.length])
+      this.codePoints[this._steps.length] !== 0x0020
     ) {
       if (
-        this.#garbage.length === 0 &&
-        (this.#steps.length === 0 ||
-          isWhitespace(this.codePoints[this.#steps.length - 1]))
+        this._garbage.length === 0 &&
+        (this._steps.length === 0 ||
+          this.codePoints[this._steps.length - 1] === 0x0020)
       ) {
         // At the beginning of a word.
         return Feedback.Succeeded;
@@ -96,24 +94,24 @@ export class TextInput {
 
       if (this.spaceSkipsWords) {
         // Inside a word.
-        this.#handleSpace(timeStamp);
+        this._handleSpace(timeStamp);
         return Feedback.Recovered;
       }
     }
 
     // Handle correct input.
     if (
-      normalize(this.codePoints[this.#steps.length]) === codePoint &&
-      (this.forgiveErrors || this.#garbage.length === 0)
+      normalize(this.codePoints[this._steps.length]) === codePoint &&
+      (this.forgiveErrors || this._garbage.length === 0)
     ) {
-      const typo = this.#typo;
-      this.#addStep({
+      const typo = this._typo;
+      this._addStep({
         codePoint,
         timeStamp,
         typo,
       });
-      this.#garbage = [];
-      this.#typo = false;
+      this._garbage = [];
+      this._typo = false;
       if (typo) {
         return Feedback.Recovered;
       } else {
@@ -122,10 +120,10 @@ export class TextInput {
     }
 
     // Handle incorrect input.
-    this.#typo = true;
+    this._typo = true;
     if (!this.stopOnError || this.forgiveErrors) {
-      if (this.#garbage.length < garbageBufferLength) {
-        this.#garbage.push({
+      if (this._garbage.length < garbageBufferLength) {
+        this._garbage.push({
           codePoint,
           timeStamp,
           typo: false,
@@ -134,7 +132,7 @@ export class TextInput {
     }
     if (
       this.forgiveErrors &&
-      (this.#handleReplacedCharacter() || this.#handleSkippedCharacter())
+      (this._handleReplacedCharacter() || this._handleSkippedCharacter())
     ) {
       return Feedback.Recovered;
     }
@@ -142,21 +140,21 @@ export class TextInput {
   }
 
   getSteps(): readonly Step[] {
-    return this.#steps;
+    return this._steps;
   }
 
   getChars(): readonly Char[] {
     const chars: Char[] = [];
     for (let i = 0; i < this.codePoints.length; i++) {
       const codePoint = this.codePoints[i];
-      if (i < this.#steps.length) {
+      if (i < this._steps.length) {
         // Append characters before cursor.
-        const step = this.#steps[i];
+        const step = this._steps[i];
         chars.push(toChar(codePoint, step.typo ? attrMiss : attrHit));
-      } else if (i === this.#steps.length) {
+      } else if (i === this._steps.length) {
         if (!this.stopOnError) {
           // Append buffered garbage.
-          for (const { codePoint } of this.#garbage) {
+          for (const { codePoint } of this._garbage) {
             chars.push(toChar(codePoint, attrGarbage));
           }
         }
@@ -170,126 +168,126 @@ export class TextInput {
     return chars;
   }
 
-  #addStep(step: Step): void {
-    this.#steps.push(step);
-    this.#onStep(step);
+  private _addStep(step: Step): void {
+    this._steps.push(step);
+    this.onStep(step);
   }
 
-  #handleSpace(timeStamp: number): void {
-    this.#addStep({
-      codePoint: this.codePoints[this.#steps.length],
+  private _handleSpace(timeStamp: number): void {
+    this._addStep({
+      codePoint: this.codePoints[this._steps.length],
       timeStamp,
       typo: true,
     });
     // Skip the remaining non-space characters inside the word.
     while (
-      this.#steps.length < this.codePoints.length &&
-      !isWhitespace(this.codePoints[this.#steps.length])
+      this._steps.length < this.codePoints.length &&
+      this.codePoints[this._steps.length] !== 0x0020
     ) {
-      this.#addStep({
-        codePoint: this.codePoints[this.#steps.length],
+      this._addStep({
+        codePoint: this.codePoints[this._steps.length],
         timeStamp,
         typo: true,
       });
     }
     // Skip the space character to position at the beginning of next word.
     if (
-      this.#steps.length < this.codePoints.length &&
-      isWhitespace(this.codePoints[this.#steps.length])
+      this._steps.length < this.codePoints.length &&
+      this.codePoints[this._steps.length] === 0x0020
     ) {
-      this.#addStep({
-        codePoint: this.codePoints[this.#steps.length],
+      this._addStep({
+        codePoint: this.codePoints[this._steps.length],
         timeStamp,
         typo: false,
       });
     }
-    this.#garbage = [];
-    this.#typo = false;
+    this._garbage = [];
+    this._typo = false;
   }
 
-  #handleReplacedCharacter(): boolean {
+  private _handleReplacedCharacter(): boolean {
     // text:    abcd
     // garbage: xbcd
     // offset:  0
 
     // Check if the buffer size is right.
     if (
-      this.#garbage.length < recoverBufferLength + 1 ||
-      this.#steps.length + recoverBufferLength + 1 > this.codePoints.length
+      this._garbage.length < recoverBufferLength + 1 ||
+      this._steps.length + recoverBufferLength + 1 > this.codePoints.length
     ) {
       return false;
     }
 
     // Check if can recover.
     for (let i = 0; i < recoverBufferLength; i++) {
-      const codePoint = this.codePoints[this.#steps.length + i + 1];
-      if (codePoint !== this.#garbage[i + 1].codePoint) {
+      const codePoint = this.codePoints[this._steps.length + i + 1];
+      if (codePoint !== this._garbage[i + 1].codePoint) {
         return false;
       }
     }
 
     // Append a step with an error.
-    this.#addStep({
-      codePoint: this.codePoints[this.#steps.length],
-      timeStamp: this.#garbage[0].timeStamp,
+    this._addStep({
+      codePoint: this.codePoints[this._steps.length],
+      timeStamp: this._garbage[0].timeStamp,
       typo: true,
     });
 
     // Append successful steps.
-    for (let i = 1; i < this.#garbage.length; i++) {
-      const { codePoint, timeStamp } = this.#garbage[i];
-      this.#addStep({
+    for (let i = 1; i < this._garbage.length; i++) {
+      const { codePoint, timeStamp } = this._garbage[i];
+      this._addStep({
         codePoint,
         timeStamp,
         typo: false,
       });
     }
 
-    this.#garbage = [];
-    this.#typo = false;
+    this._garbage = [];
+    this._typo = false;
     return true;
   }
 
-  #handleSkippedCharacter(): boolean {
+  private _handleSkippedCharacter(): boolean {
     // text:    abcd
     // garbage: bcd
     // offset:  0
 
     // Check if the buffer size is right.
     if (
-      this.#garbage.length < recoverBufferLength ||
-      this.#steps.length + recoverBufferLength + 1 > this.codePoints.length
+      this._garbage.length < recoverBufferLength ||
+      this._steps.length + recoverBufferLength + 1 > this.codePoints.length
     ) {
       return false;
     }
 
     // Check if can recover.
     for (let i = 0; i < recoverBufferLength; i++) {
-      const codePoint = this.codePoints[this.#steps.length + i + 1];
-      if (codePoint !== this.#garbage[i].codePoint) {
+      const codePoint = this.codePoints[this._steps.length + i + 1];
+      if (codePoint !== this._garbage[i].codePoint) {
         return false;
       }
     }
 
     // Append a step with an error.
-    this.#addStep({
-      codePoint: this.codePoints[this.#steps.length],
-      timeStamp: this.#garbage[0].timeStamp,
+    this._addStep({
+      codePoint: this.codePoints[this._steps.length],
+      timeStamp: this._garbage[0].timeStamp,
       typo: true,
     });
 
     // Append successful steps.
-    for (let i = 0; i < this.#garbage.length; i++) {
-      const { codePoint, timeStamp } = this.#garbage[i];
-      this.#addStep({
+    for (let i = 0; i < this._garbage.length; i++) {
+      const { codePoint, timeStamp } = this._garbage[i];
+      this._addStep({
         codePoint,
         timeStamp,
         typo: false,
       });
     }
 
-    this.#garbage = [];
-    this.#typo = false;
+    this._garbage = [];
+    this._typo = false;
     return true;
   }
 }

@@ -1,15 +1,8 @@
-import { type GuidedLesson, lessonProps } from "@keybr/lesson";
-import { useSettings } from "@keybr/settings";
-import {
-  Field,
-  FieldList,
-  FieldSet,
-  Para,
-  Range,
-  styleSizeWide,
-} from "@keybr/widget";
+import { type GuidedLesson } from "@keybr/lesson";
+import { Explainer, FieldSet } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
+import { AlphabetSizeProp } from "./AlphabetSizeProp.tsx";
 import { LessonLengthProp } from "./LessonLengthProp.tsx";
 import { TargetSpeedProp } from "./TargetSpeedProp.tsx";
 import { TextManglingProp } from "./TextManglingProp.tsx";
@@ -22,13 +15,13 @@ export function GuidedLessonSettings({
   const { formatMessage } = useIntl();
   return (
     <>
-      <Para>
+      <Explainer>
         <FormattedMessage
           id="lessonType.guided.description"
           description="Description text."
           defaultMessage="Generate typing lessons with random words using the phonetic rules of your language. The key set is expanded dynamically based on your performance. This mode is for the beginners."
         />
-      </Para>
+      </Explainer>
       <FieldSet
         legend={formatMessage({
           id: "settings.lessonOptionsLegend",
@@ -36,42 +29,11 @@ export function GuidedLessonSettings({
           defaultMessage: "Lesson Options",
         })}
       >
-        <AlphabetSize />
         <TargetSpeedProp />
+        <AlphabetSizeProp />
         <TextManglingProp />
         <LessonLengthProp />
       </FieldSet>
     </>
-  );
-}
-
-function AlphabetSize(): ReactNode {
-  const { settings, updateSettings } = useSettings();
-  return (
-    <FieldList>
-      <Field>
-        <FormattedMessage
-          id="settings.alphabetSizeLabel"
-          description="Input field label."
-          defaultMessage="Unlock more letters:"
-        />
-      </Field>
-      <Field>
-        <Range
-          className={styleSizeWide}
-          min={1}
-          max={100}
-          step={1}
-          value={Math.round(
-            settings.get(lessonProps.guided.alphabetSize) * 100,
-          )}
-          onChange={(value) => {
-            updateSettings(
-              settings.set(lessonProps.guided.alphabetSize, value / 100),
-            );
-          }}
-        />
-      </Field>
-    </FieldList>
   );
 }

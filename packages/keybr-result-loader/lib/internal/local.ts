@@ -8,10 +8,10 @@ import {
 import { type LocalResultStorage } from "./types.ts";
 
 export class PersistentResultStorage implements LocalResultStorage {
-  readonly #factory = new DBNamedFactory(indexedDB, "history", 1);
+  private readonly _factory = new DBNamedFactory(indexedDB, "history", 1);
 
   async load(): Promise<Result[]> {
-    const db = await this.#factory.openDatabase(migration);
+    const db = await this._factory.openDatabase(migration);
     try {
       const tx = db.transaction(db.name, "readonly");
       const store = tx.objectStore(db.name);
@@ -31,7 +31,7 @@ export class PersistentResultStorage implements LocalResultStorage {
   }
 
   async append(results: readonly Result[]): Promise<void> {
-    const db = await this.#factory.openDatabase(migration);
+    const db = await this._factory.openDatabase(migration);
     try {
       const tx = db.transaction(db.name, "readwrite");
       const store = tx.objectStore(db.name);
@@ -45,7 +45,7 @@ export class PersistentResultStorage implements LocalResultStorage {
   }
 
   async clear(): Promise<void> {
-    return await this.#factory.deleteDatabase();
+    return await this._factory.deleteDatabase();
   }
 }
 

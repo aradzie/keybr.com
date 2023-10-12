@@ -2,9 +2,9 @@ import { useIntlNumbers } from "@keybr/intl";
 import { lessonProps } from "@keybr/lesson";
 import { useSettings } from "@keybr/settings";
 import {
+  Explainer,
   Field,
   FieldList,
-  Para,
   Range,
   styleSizeWide,
   Value,
@@ -41,11 +41,11 @@ export function TextManglingProp(): ReactNode {
           <Value value={formatPercents(settings.get(lessonProps.capitals))} />
         </Field>
       </FieldList>
-      {false && (
-        <Para>
-          Adjust the amount of capital letters added to the lesson text.
-        </Para>
-      )}
+      <Explainer>
+        Adjust the amount of capital letters added to the lesson text. Use this
+        option to practice typing the capital letters. We recommend to increase
+        this value only if you have all letters above the target speed.
+      </Explainer>
       <FieldList>
         <Field>
           <FormattedMessage
@@ -74,11 +74,12 @@ export function TextManglingProp(): ReactNode {
           />
         </Field>
       </FieldList>
-      {false && (
-        <Para>
-          Adjust the amount of punctuation characters added to the lesson text.
-        </Para>
-      )}
+      <Explainer>
+        Adjust the amount of basic punctuation characters added to the lesson
+        text. Use this option to practice typing the punctuation characters. We
+        recommend to increase this value only if you have all letters above the
+        target speed.
+      </Explainer>
     </>
   );
 }

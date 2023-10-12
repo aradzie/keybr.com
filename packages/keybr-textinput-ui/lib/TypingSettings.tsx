@@ -9,10 +9,10 @@ import {
 } from "@keybr/textinput";
 import {
   CheckBox,
+  Explainer,
   Field,
   FieldList,
   FieldSet,
-  Para,
   RadioBox,
   Range,
   styleSizeWide,
@@ -32,13 +32,13 @@ export function TypingSettings(): ReactNode {
           defaultMessage: "Typing Options",
         })}
       >
-        <Para>
+        <Explainer>
           <FormattedMessage
             id="settings.typingAssistsDescription"
             description="Description text."
             defaultMessage="These are the typing assists which help your preserve your concentration and keep the flow by automatically correcting your errors."
           />
-        </Para>
+        </Explainer>
         <StopOnErrorProp />
         <ForgiveErrorsProp />
         <SpaceSkipsWordsProp />
@@ -80,13 +80,13 @@ function StopOnErrorProp(): ReactNode {
           />
         </Field>
       </FieldList>
-      <Para>
+      <Explainer>
         <FormattedMessage
           id="settings.stopCursorOnErrorDescription"
           description="Description text."
           defaultMessage="If enabled, the text cursor stops advancing until the right key is pressed at the current position. If disabled, all errors will be accumulated in the text input field and must be cleared with the delete key."
         />
-      </Para>
+      </Explainer>
     </>
   );
 }
@@ -111,13 +111,13 @@ function ForgiveErrorsProp(): ReactNode {
           />
         </Field>
       </FieldList>
-      <Para>
+      <Explainer>
         <FormattedMessage
           id="settings.forgiveErrorsDescription"
           description="Description text."
           defaultMessage="If enabled, the text input field will forgive some kinds of errors by automatically fixing them. These are errors such as typing a wrong character or skipping a character."
         />
-      </Para>
+      </Explainer>
     </>
   );
 }
@@ -144,13 +144,13 @@ function SpaceSkipsWordsProp(): ReactNode {
           />
         </Field>
       </FieldList>
-      <Para>
+      <Explainer>
         <FormattedMessage
           id="settings.spaceSkipsWordsDescription"
           description="Description text."
           defaultMessage="If enabled, pressing the space key in the middle of a word will skip the remaining characters of the word and position cursor at the beginning of the next word."
         />
-      </Para>
+      </Explainer>
     </>
   );
 }

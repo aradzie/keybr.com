@@ -3,6 +3,7 @@ import { useIntlNumbers } from "@keybr/intl";
 import { lessonProps, type WordListLesson } from "@keybr/lesson";
 import { useSettings } from "@keybr/settings";
 import {
+  Explainer,
   Field,
   FieldList,
   FieldSet,
@@ -27,13 +28,13 @@ export function WordListLessonSettings({
   const { formatMessage } = useIntl();
   return (
     <>
-      <Para>
+      <Explainer>
         <FormattedMessage
           id="lessonType.wordList.description"
           description="Description text."
           defaultMessage="Generate typing lessons from the list of the most common words of your language. All keys are included by default. This mode is for the pros."
         />
-      </Para>
+      </Explainer>
       <FieldSet
         legend={formatMessage({
           id: "settings.lessonOptionsLegend",

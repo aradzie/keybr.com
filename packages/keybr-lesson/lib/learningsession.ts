@@ -2,14 +2,15 @@ import { type KeySample } from "@keybr/result";
 
 export function findSession(samples: readonly KeySample[]): KeySample[] {
   const { length } = samples;
-  let start = length - 1;
-  for (let i = length; i > 1; i--) {
-    const a = samples[i - 2];
-    const b = samples[i - 1];
-    if (b.timeStamp - a.timeStamp > /* eight hours */ 28800000) {
-      break;
+  for (let i = length - 1; i > 0; i--) {
+    const a = samples[i - 1];
+    const b = samples[i];
+    if (b.timeStamp - a.timeStamp > /* one hour */ 3600000) {
+      return samples.slice(i);
     }
-    start = i - 2;
+    if (b.filteredTimeToType > a.filteredTimeToType && length - i + 1 >= 5) {
+      return samples.slice(i);
+    }
   }
-  return samples.slice(start);
+  return samples.slice(0);
 }

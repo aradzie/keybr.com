@@ -80,50 +80,50 @@ export function translateErrors(storage: ResultStorage): ResultStorage {
 }
 
 export class ResultStorageOfAnonymousUser implements ResultStorage {
-  readonly #local: LocalResultStorage;
+  private readonly _local: LocalResultStorage;
 
   constructor(local: LocalResultStorage) {
-    this.#local = local;
+    this._local = local;
   }
 
   async load(
     progressListener = (total: number, current: number) => {},
   ): Promise<Result[]> {
-    return await this.#local.load();
+    return await this._local.load();
   }
 
   async append(
     results: readonly Result[],
     progressListener = (total: number, current: number) => {},
   ): Promise<void> {
-    await this.#local.append(results);
+    await this._local.append(results);
   }
 
   async clear(): Promise<void> {
-    await this.#local.clear();
+    await this._local.clear();
   }
 }
 
 export class ResultStorageOfNamedUser implements ResultStorage {
-  readonly #local: LocalResultStorage;
-  readonly #remote: RemoteResultSync;
+  private readonly _local: LocalResultStorage;
+  private readonly _remote: RemoteResultSync;
 
   constructor(local: LocalResultStorage, remote: RemoteResultSync) {
-    this.#local = local;
-    this.#remote = remote;
+    this._local = local;
+    this._remote = remote;
   }
 
   async load(
     progressListener = (total: number, current: number) => {},
   ): Promise<Result[]> {
-    const results = await this.#remote.receive(progressListener);
+    const results = await this._remote.receive(progressListener);
     if (results.length > 0) {
       return results;
     } else {
-      const results = await this.#local.load();
+      const results = await this._local.load();
       if (results.length > 0) {
-        await this.#remote.send(results, progressListener);
-        await this.#local.clear();
+        await this._remote.send(results, progressListener);
+        await this._local.clear();
         return results;
       }
     }
@@ -134,25 +134,25 @@ export class ResultStorageOfNamedUser implements ResultStorage {
     results: readonly Result[],
     progressListener = (total: number, current: number) => {},
   ): Promise<void> {
-    await this.#remote.send(results, progressListener);
+    await this._remote.send(results, progressListener);
   }
 
   async clear(): Promise<void> {
-    await this.#remote.clear();
+    await this._remote.clear();
   }
 }
 
 export class ResultStorageOfPublicUser implements ResultStorage {
-  readonly #remote: RemoteResultSync;
+  private readonly _remote: RemoteResultSync;
 
   constructor(remote: RemoteResultSync) {
-    this.#remote = remote;
+    this._remote = remote;
   }
 
   async load(
     progressListener = (total: number, current: number) => {},
   ): Promise<Result[]> {
-    return await this.#remote.receive(progressListener);
+    return await this._remote.receive(progressListener);
   }
 
   async append(

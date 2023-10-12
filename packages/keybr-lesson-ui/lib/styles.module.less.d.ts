@@ -12,4 +12,4 @@ export const lessonKey_current: string;
 export const keyDetails: string;
 export const keyDetails_calibrated: string;
 export const keyDetails_uncalibrated: string;
-export const keyTimeDelta: string;
+export const cross: string;

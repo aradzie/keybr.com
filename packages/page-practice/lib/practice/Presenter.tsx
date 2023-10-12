@@ -5,6 +5,7 @@ import { type LineData } from "@keybr/textinput";
 import { type KeyEvent, ModifierState } from "@keybr/textinput-events";
 import { TextArea } from "@keybr/textinput-ui";
 import { PureComponent, type ReactNode } from "react";
+import { Prefs } from "../prefs.ts";
 import { Announcer } from "./Announcer.tsx";
 import { Controls } from "./Controls.tsx";
 import { Indicators } from "./Indicators.tsx";
@@ -12,7 +13,6 @@ import { DeferredKeyboardPresenter } from "./KeyboardPresenter.tsx";
 import * as names from "./names.module.less";
 import { type PracticeState } from "./practicestate.ts";
 import { PracticeTour } from "./PracticeTour.tsx";
-import { Prefs } from "./prefs.ts";
 import * as styles from "./Presenter.module.less";
 
 type Props = {

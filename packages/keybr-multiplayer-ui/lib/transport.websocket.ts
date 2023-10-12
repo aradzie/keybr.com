@@ -4,23 +4,23 @@ import { type Transport } from "./transport.ts";
 export class WebSocketTransport<ServerMessage, ClientMessage>
   implements Transport<ServerMessage, ClientMessage>
 {
-  readonly #listeners = new Set<{
+  private readonly _listeners = new Set<{
     (event: MessageEvent): void;
     receiver: (...args: any) => void;
   }>();
 
   constructor(
-    private readonly webSocket: WebSocket,
-    private readonly codec: Codec<ServerMessage, ClientMessage>,
+    private readonly _webSocket: WebSocket,
+    private readonly _codec: Codec<ServerMessage, ClientMessage>,
   ) {
-    this.webSocket.binaryType = "arraybuffer";
+    this._webSocket.binaryType = "arraybuffer";
   }
 
   addReceiver(receiver: (message: ServerMessage) => void): void {
     const listener = (event: MessageEvent): void => {
       let message;
       try {
-        message = this.codec.decode(new Uint8Array(event.data));
+        message = this._codec.decode(new Uint8Array(event.data));
       } catch (err: any) {
         this.close(4000, err.message);
         throw err;
@@ -28,15 +28,15 @@ export class WebSocketTransport<ServerMessage, ClientMessage>
       receiver(message);
     };
     listener.receiver = receiver;
-    this.webSocket.addEventListener("message", listener);
-    this.#listeners.add(listener);
+    this._webSocket.addEventListener("message", listener);
+    this._listeners.add(listener);
   }
 
   removeReceiver(receiver: (message: ServerMessage) => void): void {
-    for (const listener of this.#listeners) {
+    for (const listener of this._listeners) {
       if (listener.receiver === receiver) {
-        this.webSocket.removeEventListener("message", listener);
-        this.#listeners.delete(listener);
+        this._webSocket.removeEventListener("message", listener);
+        this._listeners.delete(listener);
       }
     }
   }
@@ -44,15 +44,15 @@ export class WebSocketTransport<ServerMessage, ClientMessage>
   send(message: ClientMessage): void {
     let data;
     try {
-      data = this.codec.encode(message);
+      data = this._codec.encode(message);
     } catch (err: any) {
       this.close(4000, err.message);
       throw err;
     }
-    this.webSocket.send(data);
+    this._webSocket.send(data);
   }
 
   close(code?: number, reason?: string): void {
-    this.webSocket.close(code, reason);
+    this._webSocket.close(code, reason);
   }
 }
