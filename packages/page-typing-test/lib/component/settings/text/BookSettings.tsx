@@ -15,8 +15,8 @@ import {
   OptionList,
   Para,
   Range,
-  styleSizeExtraExtraWide,
-  styleSizeExtraWide,
+  styleWidthExtraExtraWide,
+  styleWidthExtraWide,
 } from "@keybr/widget";
 import { mdiSkipNext, mdiSkipPrevious } from "@mdi/js";
 import { type ReactNode, useMemo } from "react";
@@ -52,7 +52,7 @@ function Content({
         <Field>Book:</Field>
         <Field>
           <OptionList
-            className={styleSizeExtraWide}
+            className={styleWidthExtraWide}
             options={Book.ALL.map(({ id, title }) => ({
               value: id,
               name: title,
@@ -76,7 +76,7 @@ function Content({
         </Field>
         <Field>
           <Range
-            className={styleSizeExtraExtraWide}
+            className={styleWidthExtraExtraWide}
             min={0}
             max={paragraphs.length - 1}
             step={1}

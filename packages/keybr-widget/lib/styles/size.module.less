@@ -3,7 +3,7 @@
  */
 
 .sizeFit {
-  flex-basis: auto !important;
+  flex-basis: auto;
 }
 
 /**
@@ -11,7 +11,7 @@
  */
 
 .sizeFill {
-  flex: 1 1 0 !important;
+  flex: 1 1 0;
 }
 
 /**
@@ -22,7 +22,7 @@
  */
 
 .sizeFillAlt {
-  flex: 1 1 auto !important;
+  flex: 1 1 auto;
 }
 
 /**
@@ -30,19 +30,27 @@
  */
 
 .sizeFull {
-  display: block !important;
-  box-sizing: border-box !important;
-  width: 100% !important;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
 }
 
-.wide {
+.widthNormal {
+  min-width: 10rem;
+}
+
+.widthWide {
   min-width: 16rem;
 }
 
-.extraWide {
+.widthExtraWide {
   min-width: 24rem;
 }
 
-.extraExtraWide {
+.widthExtraExtraWide {
   min-width: 32rem;
+}
+
+.widthFull {
+  width: 100%;
 }

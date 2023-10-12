@@ -4,7 +4,7 @@ import {
   Field,
   FieldList,
   Icon,
-  styleSizeExtraWide,
+  styleWidthExtraWide,
   TextField,
   useClipboard,
 } from "@keybr/widget";
@@ -38,7 +38,7 @@ export function ShareProfileLink({
       <Field>
         <TextField
           ref={textFieldRef}
-          className={styleSizeExtraWide}
+          className={styleWidthExtraWide}
           value={href}
           onFocus={() => {
             const { current } = textFieldRef;

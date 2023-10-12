@@ -1,4 +1,4 @@
-import { Field, Range, styleSizeWide } from "@keybr/widget";
+import { Field, Range, styleWidthWide } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { defineMessage, useIntl } from "react-intl";
 
@@ -28,7 +28,7 @@ export function SmoothnessRange({
       </Field>
       <Field>
         <Range
-          className={styleSizeWide}
+          className={styleWidthWide}
           disabled={disabled}
           min={0}
           max={100}

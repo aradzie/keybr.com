@@ -5,7 +5,7 @@ import {
   Field,
   FieldList,
   Range,
-  styleSizeWide,
+  styleWidthWide,
 } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
@@ -24,7 +24,7 @@ export function AlphabetSizeProp(): ReactNode {
         </Field>
         <Field>
           <Range
-            className={styleSizeWide}
+            className={styleWidthWide}
             min={1}
             max={100}
             step={1}

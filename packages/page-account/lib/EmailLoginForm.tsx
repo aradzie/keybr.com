@@ -4,8 +4,8 @@ import {
   FieldList,
   Icon,
   Para,
-  styleSizeExtraWide,
-  styleSizeWide,
+  styleWidthExtraWide,
+  styleWidthWide,
   TextField,
 } from "@keybr/widget";
 import { mdiRepeat, mdiSend } from "@mdi/js";
@@ -77,7 +77,7 @@ export function EmailLoginForm({
           <Para>
             <Button
               onClick={handleClickRetry}
-              className={styleSizeWide}
+              className={styleWidthWide}
               icon={<Icon shape={mdiRepeat} />}
               label={formatMessage({
                 id: "account.resendButtonLabel",
@@ -109,7 +109,7 @@ export function EmailLoginForm({
           <Para>
             <Button
               onClick={handleClickRetry}
-              className={styleSizeWide}
+              className={styleWidthWide}
               icon={<Icon shape={mdiRepeat} />}
               label={formatMessage({
                 id: "account.retryButtonLabel",
@@ -133,7 +133,7 @@ export function EmailLoginForm({
             <Field>
               <TextField
                 onChange={handleChangeEmail}
-                className={styleSizeExtraWide}
+                className={styleWidthExtraWide}
                 type="email"
                 placeholder={formatMessage({
                   id: "account.emailPlaceholder",
@@ -152,7 +152,7 @@ export function EmailLoginForm({
             <Field>
               <Button
                 onClick={handleClickLogin}
-                className={styleSizeWide}
+                className={styleWidthWide}
                 icon={<Icon shape={mdiSend} />}
                 label={formatMessage({
                   id: "account.sendButtonLabel",

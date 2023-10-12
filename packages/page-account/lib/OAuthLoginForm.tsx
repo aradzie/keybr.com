@@ -4,7 +4,7 @@ import {
   FieldList,
   Icon,
   Para,
-  styleSizeWide,
+  styleWidthWide,
 } from "@keybr/widget";
 import { mdiFacebook, mdiGoogle, mdiMicrosoft } from "@mdi/js";
 import { type ReactNode } from "react";
@@ -51,7 +51,7 @@ export function OAuthLoginForm(): ReactNode {
         {providers.map(({ id, name, icon }) => (
           <Field key={id}>
             <Button
-              className={styleSizeWide}
+              className={styleWidthWide}
               href={`/auth/oauth-init/${id}`}
               icon={<Icon shape={icon} />}
               label={formatMessage(signInButtonLabel, { name })}

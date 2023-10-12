@@ -1,5 +1,5 @@
 import { useResults } from "@keybr/result";
-import { Button, Field, FieldList, Icon, styleSizeWide } from "@keybr/widget";
+import { Button, Field, FieldList, Icon, styleWidthWide } from "@keybr/widget";
 import { mdiDeleteForever, mdiDownload } from "@mdi/js";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
@@ -15,7 +15,7 @@ export function FooterSection(): ReactNode {
           onClick={() => {
             handleDownloadData();
           }}
-          className={styleSizeWide}
+          className={styleWidthWide}
           icon={<Icon shape={mdiDownload} />}
           label={formatMessage({
             id: "profile.control.downloadDataLabel",
@@ -35,7 +35,7 @@ export function FooterSection(): ReactNode {
           onClick={() => {
             handleResetData();
           }}
-          className={styleSizeWide}
+          className={styleWidthWide}
           icon={<Icon shape={mdiDeleteForever} />}
           label={formatMessage({
             id: "profile.control.resetDataLabel",
