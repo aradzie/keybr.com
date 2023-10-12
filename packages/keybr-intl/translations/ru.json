@@ -1303,6 +1303,10 @@
     "defaultMessage": "Уроки",
     "description": "Header text."
   },
+  "settings.longWordsOnlyLabel": {
+    "defaultMessage": "Только длинные слова",
+    "description": "Input field label."
+  },
   "settings.miscellaneousTabLabel": {
     "defaultMessage": "Разное",
     "description": "Header text."

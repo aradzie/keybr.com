@@ -20,11 +20,14 @@ export class WordListLesson extends Lesson {
     wordList: WordList,
   ) {
     super(settings, model, codePoints);
+    const wordListSize = settings.get(lessonProps.wordList.wordListSize);
+    const longWordsOnly = settings.get(lessonProps.wordList.longWordsOnly);
     this.wordList = wordList
       .filter((word) =>
         [...toCodePoints(word)].every((codePoint) => codePoints.has(codePoint)),
       )
-      .slice(0, settings.get(lessonProps.wordList.wordListSize));
+      .filter((word) => !longWordsOnly || word.length > 3)
+      .slice(0, wordListSize);
   }
 
   override analyze(results: readonly Result[]): KeyStatsMap {

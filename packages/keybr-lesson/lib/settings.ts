@@ -15,6 +15,7 @@ export const lessonProps = {
       min: 10,
       max: 1000,
     }),
+    longWordsOnly: booleanProp("lesson.wordList.longWordsOnly", false),
   } as const,
   customText: {
     content: stringProp(

@@ -3,6 +3,7 @@ import { useIntlNumbers } from "@keybr/intl";
 import { lessonProps, type WordListLesson } from "@keybr/lesson";
 import { useSettings } from "@keybr/settings";
 import {
+  CheckBox,
   Explainer,
   Field,
   FieldList,
@@ -57,6 +58,7 @@ function WordListPreview({
 }: {
   readonly lesson: WordListLesson;
 }): ReactNode {
+  const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
   return (
     <>
@@ -78,6 +80,21 @@ function WordListPreview({
             onChange={(value) => {
               updateSettings(
                 settings.set(lessonProps.wordList.wordListSize, value),
+              );
+            }}
+          />
+        </Field>
+        <Field>
+          <CheckBox
+            label={formatMessage({
+              id: "settings.longWordsOnlyLabel",
+              description: "Input field label.",
+              defaultMessage: "Long words only",
+            })}
+            checked={settings.get(lessonProps.wordList.longWordsOnly)}
+            onChange={(value) => {
+              updateSettings(
+                settings.set(lessonProps.wordList.longWordsOnly, value),
               );
             }}
           />

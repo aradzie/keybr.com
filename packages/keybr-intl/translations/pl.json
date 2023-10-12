@@ -1303,6 +1303,10 @@
     "defaultMessage": "Ćwiczenia",
     "description": "Header text."
   },
+  "settings.longWordsOnlyLabel": {
+    "defaultMessage": "Tylko długie słowa",
+    "description": "Input field label."
+  },
   "settings.miscellaneousTabLabel": {
     "defaultMessage": "Różne",
     "description": "Header text."
