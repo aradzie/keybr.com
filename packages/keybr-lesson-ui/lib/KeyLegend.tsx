@@ -47,6 +47,11 @@ export const KeyLegend = ({
       onMouseUp={onMouseUp}
     >
       ?
+      {isIncluded || (
+        <svg viewBox="0 0 100 100" className={styles.cross}>
+          <path d="M 0 100 L 100 0" />
+        </svg>
+      )}
     </span>
   );
 };
