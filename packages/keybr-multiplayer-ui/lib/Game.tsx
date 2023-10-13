@@ -34,17 +34,14 @@ export const Game = ({
     [transport, intl],
   );
   const [worldState, setWorldState] = useState(wrapper.worldState);
-  const refTextArea = useRef<TextArea>(null);
+  const textAreaRef = useRef<TextArea>(null);
   useEffect(() => {
     const eventListener = (): void => {
       setWorldState(wrapper.worldState);
       switch (wrapper.worldState.gameState) {
         case GameState.STARTING:
         case GameState.RUNNING: {
-          const textArea = refTextArea.current;
-          if (textArea != null) {
-            textArea.focus();
-          }
+          textAreaRef.current?.focus();
           break;
         }
       }
@@ -63,7 +60,7 @@ export const Game = ({
       <DeferredTrack ticker={ticker} players={players} />
       <div className={styles.textArea}>
         <TextArea
-          ref={refTextArea}
+          ref={textAreaRef}
           settings={textDisplaySettings}
           lines={lines}
           onFocus={handleFocus}
