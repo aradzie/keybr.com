@@ -4,7 +4,8 @@ import {
   TextInput,
 } from "@keybr/textinput";
 import { type ReactNode, useEffect, useState } from "react";
-import { StaticText, type TextAreaSize } from "./TextArea.tsx";
+import { StaticText } from "./StaticText.tsx";
+import { type TextLineSize } from "./TextLines.tsx";
 
 export function AnimatedText({
   settings,
@@ -15,7 +16,7 @@ export function AnimatedText({
   readonly settings: TextDisplaySettings;
   readonly text: string;
   readonly wrap?: boolean;
-  readonly size?: TextAreaSize;
+  readonly size?: TextLineSize;
 }): ReactNode {
   const chars = useAnimatedTextState(text);
   return (

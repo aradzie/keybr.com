@@ -10,7 +10,7 @@ import {
   type WorldState,
 } from "@keybr/multiplayer-shared";
 import { textDisplaySettings } from "@keybr/textinput";
-import { TextArea } from "@keybr/textinput-ui";
+import { type Focusable, TextArea } from "@keybr/textinput-ui";
 import { useScreenSize } from "@keybr/widget";
 import { EventEmitter } from "events";
 import { type ReactNode, useEffect, useMemo, useRef, useState } from "react";
@@ -34,14 +34,14 @@ export const Game = ({
     [transport, intl],
   );
   const [worldState, setWorldState] = useState(wrapper.worldState);
-  const textAreaRef = useRef<TextArea>(null);
+  const focusRef = useRef<Focusable>(null);
   useEffect(() => {
     const eventListener = (): void => {
       setWorldState(wrapper.worldState);
       switch (wrapper.worldState.gameState) {
         case GameState.STARTING:
         case GameState.RUNNING: {
-          textAreaRef.current?.focus();
+          focusRef.current?.focus();
           break;
         }
       }
@@ -60,7 +60,7 @@ export const Game = ({
       <DeferredTrack ticker={ticker} players={players} />
       <div className={styles.textArea}>
         <TextArea
-          ref={textAreaRef}
+          focusRef={focusRef}
           settings={textDisplaySettings}
           lines={lines}
           onFocus={handleFocus}

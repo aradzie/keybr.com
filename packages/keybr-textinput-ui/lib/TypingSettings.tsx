@@ -5,6 +5,7 @@ import {
   PlaySounds,
   textDisplayProps,
   textInputProps,
+  toTextDisplaySettings,
   WhitespaceStyle,
 } from "@keybr/textinput";
 import {
@@ -19,7 +20,8 @@ import {
 } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { ExampleText } from "./ExampleText.tsx";
+import { AnimatedText } from "./AnimatedText.tsx";
+import * as styles from "./TypingSettings.module.less";
 
 export function TypingSettings(): ReactNode {
   const { formatMessage } = useIntl();
@@ -57,6 +59,19 @@ export function TypingSettings(): ReactNode {
         <SoundsProp />
       </FieldSet>
     </>
+  );
+}
+
+function ExampleText({
+  text = "The quick brown fox jumps over the lazy dog.",
+}: {
+  readonly text?: string;
+}): ReactNode {
+  const { settings } = useSettings();
+  return (
+    <div className={styles.exampleText}>
+      <AnimatedText settings={toTextDisplaySettings(settings)} text={text} />
+    </div>
   );
 }
 

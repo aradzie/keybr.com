@@ -15,3 +15,8 @@ export type KeyEvent = {
   readonly location: number;
   readonly repeat: boolean;
 };
+
+export type Focusable = {
+  blur(): void;
+  focus(): void;
+};

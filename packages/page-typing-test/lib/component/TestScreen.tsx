@@ -1,6 +1,6 @@
 import { Screen } from "@keybr/pages-shared";
 import { type LineData, newStats, type Stats } from "@keybr/textinput";
-import { TextArea } from "@keybr/textinput-ui";
+import { type Focusable, TextArea } from "@keybr/textinput-ui";
 import { Component, createRef, type ReactNode } from "react";
 import { type Mark, type TextGenerator } from "../generator/index.ts";
 import { Session, type SessionSettings } from "../session/index.ts";
@@ -28,19 +28,7 @@ type State = {
 };
 
 export class TestScreen extends Component<Props, State> {
-  private readonly textAreaRef = createRef<TextArea>();
-
-  isFocused(): boolean {
-    return this.textAreaRef.current?.isFocused() ?? false;
-  }
-
-  focus(): void {
-    this.textAreaRef.current?.focus();
-  }
-
-  blur(): void {
-    this.textAreaRef.current?.blur();
-  }
+  private readonly focusRef = createRef<Focusable>();
 
   override state: State = nextTest(this.props, this.props.textGenerator.mark());
 
@@ -91,9 +79,10 @@ export class TestScreen extends Component<Props, State> {
           onConfigure={this.props.onConfigure}
         />
         <TextArea
-          ref={this.textAreaRef}
+          focusRef={this.focusRef}
           settings={this.props.settings.textDisplay}
           lines={this.state.lines}
+          wrap={false}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
           onInput={this.handleInput}
