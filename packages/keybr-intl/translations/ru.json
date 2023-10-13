@@ -1252,7 +1252,7 @@
     "description": "Input field title."
   },
   "settings.dailyGoalDescription": {
-    "defaultMessage": "Установите время, которое вы хотите тратить на упражнения ежедневно.",
+    "defaultMessage": "Установите время, которое вы хотите тратить на упражнения ежедневно. Это простое напоминание, которое вас ни в чем не ограничивает. Вы можете прекратить занятия, когда захотите.",
     "description": "Description text."
   },
   "settings.dailyGoalLabel": {

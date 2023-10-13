@@ -1252,7 +1252,7 @@
     "description": "Input field title."
   },
   "settings.dailyGoalDescription": {
-    "defaultMessage": "Встановіть час, який ви бажаєте витрачати на вправи щодня.",
+    "defaultMessage": "Встановіть час, який ви бажаєте витрачати на вправи щодня. Це просте нагадування, яке жодним чином не обмежує вас. Ви можете припинити тренування, коли захочете.",
     "description": "Description text."
   },
   "settings.dailyGoalLabel": {

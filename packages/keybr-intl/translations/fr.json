@@ -1252,7 +1252,7 @@
     "description": "Input field title."
   },
   "settings.dailyGoalDescription": {
-    "defaultMessage": "Définissez le temps que vous souhaitez consacrer quotidiennement aux exercices.",
+    "defaultMessage": "Définissez le temps que vous souhaitez consacrer quotidiennement aux exercices. C'est un simple rappel qui ne vous limite en rien. Vous pouvez arrêter de pratiquer quand vous le souhaitez.",
     "description": "Description text."
   },
   "settings.dailyGoalLabel": {
