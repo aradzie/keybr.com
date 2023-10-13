@@ -1,6 +1,6 @@
 import { fireEvent, render } from "@testing-library/react";
 import test from "ava";
-import { Component, type ReactNode } from "react";
+import { type ReactNode, useState } from "react";
 import { Range } from "./Range.tsx";
 
 test.serial("props", (t) => {
@@ -32,24 +32,17 @@ test.serial("controlled", (t) => {
   r.unmount();
 });
 
-class Controlled extends Component<unknown, { value: number }> {
-  override state = {
-    value: 1,
-  };
-
-  override render(): ReactNode {
-    return (
-      <Range
-        min={1}
-        max={100}
-        step={1}
-        value={this.state.value}
-        onChange={this.handleChange}
-      />
-    );
-  }
-
-  private handleChange = (value: number): void => {
-    this.setState({ value });
-  };
+function Controlled(): ReactNode {
+  const [value, setValue] = useState(1);
+  return (
+    <Range
+      min={1}
+      max={100}
+      step={1}
+      value={value}
+      onChange={(value) => {
+        setValue(value);
+      }}
+    />
+  );
 }

@@ -1,7 +1,7 @@
 import { fireEvent, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import test from "ava";
-import { Component, type ReactNode } from "react";
+import { type ReactNode, useState } from "react";
 import { Tab, TabList } from "./TabList.tsx";
 
 test.serial("props", (t) => {
@@ -72,33 +72,24 @@ test.serial("controlled", async (t) => {
   r.unmount();
 });
 
-class Controlled extends Component<unknown, { selectedIndex: number }> {
-  override state = {
-    selectedIndex: 0,
-  };
-
-  override render(): ReactNode {
-    return (
-      <TabList
-        selectedIndex={this.state.selectedIndex}
-        onSelect={this.handleSelect}
-      >
-        <Tab label="Tab1">
-          <div>aaa</div>
-        </Tab>
-        <Tab label="Tab2">
-          <div>bbb</div>
-        </Tab>
-        <Tab label="Tab3">
-          <div>ccc</div>
-        </Tab>
-      </TabList>
-    );
-  }
-
-  private handleSelect = (selectedIndex: number): void => {
-    this.setState({
-      selectedIndex,
-    });
-  };
+function Controlled(): ReactNode {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  return (
+    <TabList
+      selectedIndex={selectedIndex}
+      onSelect={(selectedIndex) => {
+        setSelectedIndex(selectedIndex);
+      }}
+    >
+      <Tab label="Tab1">
+        <div>aaa</div>
+      </Tab>
+      <Tab label="Tab2">
+        <div>bbb</div>
+      </Tab>
+      <Tab label="Tab3">
+        <div>ccc</div>
+      </Tab>
+    </TabList>
+  );
 }

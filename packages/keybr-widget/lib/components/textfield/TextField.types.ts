@@ -3,7 +3,7 @@ import {
   type KeyboardProps,
   type MouseProps,
 } from "../props.ts";
-import { type ClassName } from "../types.ts";
+import { type ClassName, type Focusable, type Selectable } from "../types.ts";
 
 export type TextFieldType = "text" | "textarea" | "email" | "url" | "password";
 
@@ -19,3 +19,5 @@ export type TextFieldProps = {
 } & FocusProps &
   MouseProps &
   KeyboardProps;
+
+export type TextFieldRef = Focusable & Selectable;

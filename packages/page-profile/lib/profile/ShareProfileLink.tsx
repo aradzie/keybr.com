@@ -6,6 +6,7 @@ import {
   Icon,
   styleWidthExtraWide,
   TextField,
+  type TextFieldRef,
   useClipboard,
 } from "@keybr/widget";
 import { mdiContentCopy, mdiOpenInNew } from "@mdi/js";
@@ -18,7 +19,7 @@ export function ShareProfileLink({
   readonly user: NamedUser;
 }): ReactNode {
   const { formatMessage } = useIntl();
-  const textFieldRef = useRef<TextField>(null);
+  const textFieldRef = useRef<TextFieldRef>(null);
   const { copyText } = useClipboard();
 
   const url = new URL(window.location.href);

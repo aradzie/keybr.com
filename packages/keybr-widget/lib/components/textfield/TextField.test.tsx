@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import test from "ava";
-import { Component, type ReactNode } from "react";
+import { type ReactNode, useState } from "react";
 import { TextField } from "./TextField.tsx";
 
 test.serial("props", (t) => {
@@ -34,16 +34,14 @@ test.serial("controlled", async (t) => {
   r.unmount();
 });
 
-class Controlled extends Component<unknown, { value: string }> {
-  override state = {
-    value: "abc",
-  };
-
-  override render(): ReactNode {
-    return <TextField value={this.state.value} onChange={this.handleChange} />;
-  }
-
-  private handleChange = (value: string): void => {
-    this.setState({ value });
-  };
+function Controlled(): ReactNode {
+  const [value, setValue] = useState("abc");
+  return (
+    <TextField
+      value={value}
+      onChange={(value) => {
+        setValue(value);
+      }}
+    />
+  );
 }
