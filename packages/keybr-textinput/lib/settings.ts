@@ -37,7 +37,7 @@ export const textInputSettings: TextInputSettings = {
 export const textInputProps = {
   stopOnError: booleanProp("textInput.stopOnError", true),
   forgiveErrors: booleanProp("textInput.forgiveErrors", true),
-  spaceSkipsWords: booleanProp("textInput.spaceSkipsWords", true),
+  spaceSkipsWords: booleanProp("textInput.spaceSkipsWords", false),
 } as const;
 
 export function toTextInputSettings(settings: Settings): TextInputSettings {
