@@ -5,18 +5,14 @@ import * as styles from "./LineTemplate.module.less";
 
 export const LineTemplate = memo(function LineTemplate({
   children,
-  index,
   progress,
 }: {
   readonly children: ReactNode;
 } & SessionLineData): ReactNode {
   return (
     <div className={styles.line}>
-      <div className={styles.prefix}>
-        <Value value={index} />
-      </div>
       <div className={styles.text}>{children}</div>
-      <div className={styles.suffix}>{progress && <Stats {...progress} />}</div>
+      <div className={styles.stats}>{progress && <Stats {...progress} />}</div>
     </div>
   );
 });
