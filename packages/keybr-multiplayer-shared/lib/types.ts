@@ -1,5 +1,5 @@
 import { type AnyUser } from "@keybr/pages-shared";
-import { type LineData, type TextInput } from "@keybr/textinput";
+import { type LineList, type TextInput } from "@keybr/textinput";
 import { type Timer } from "@keybr/timer";
 import { type GameState } from "./messages.ts";
 
@@ -7,7 +7,7 @@ export type WorldState = {
   readonly gameState: GameState;
   readonly players: PlayerList;
   readonly textInput: TextInput;
-  readonly lines: readonly LineData[];
+  readonly lines: LineList;
   readonly timer: Timer;
   readonly ticker: string;
 };

@@ -17,7 +17,7 @@ export class Session {
   /** Steps accumulated from all lines. */
   private _steps!: Step[];
   /** Generates unique element keys. */
-  private _key = 0;
+  private _index = 0;
 
   constructor(
     readonly settings: SessionSettings,
@@ -70,13 +70,12 @@ export class Session {
     const mark = this.generator.mark();
     const text = this._generateLine();
     const chars = toChars(text);
-    const key = (this._key += 1);
+    const index = (this._index += 1);
     this._lines.push({
       mark,
-      index: key,
+      index,
       text,
       chars,
-      key,
       progress: null,
     });
   }
@@ -94,14 +93,13 @@ export class Session {
   }
 
   private _updateActiveLine(progress: Progress | null = null): void {
-    const { mark, index, text, key } = this._lines[this._activeLine];
+    const { mark, index, text } = this._lines[this._activeLine];
     const chars = this._textInput.getChars();
     this._lines[this._activeLine] = {
       mark,
       index,
       text,
       chars,
-      key,
       progress,
     };
   }

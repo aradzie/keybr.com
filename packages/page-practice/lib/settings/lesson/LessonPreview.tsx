@@ -49,7 +49,7 @@ export function LessonPreview({
         <CurrentKeyRow lessonKeys={lessonKeys} />
         <StaticText
           settings={toTextDisplaySettings(settings)}
-          chars={textInput.getChars()}
+          lines={textInput.getLines()}
         />
       </div>
     </FieldSet>

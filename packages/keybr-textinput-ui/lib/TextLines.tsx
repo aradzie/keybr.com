@@ -1,7 +1,8 @@
 import {
   type Char,
   charsAreEqual,
-  type LineData,
+  type Line,
+  type LineList,
   type TextDisplaySettings,
   textDisplaySettings,
 } from "@keybr/textinput";
@@ -22,7 +23,7 @@ export const TextLines = memo(function TextLines({
   cursor,
   focus,
 }: {
-  readonly lines: readonly LineData[];
+  readonly lines: LineList;
   readonly settings?: TextDisplaySettings;
   readonly wrap?: boolean;
   readonly size?: TextLineSize;
@@ -42,17 +43,16 @@ export const TextLines = memo(function TextLines({
 
 function useTextLines(
   settings: TextDisplaySettings,
-  lines: readonly LineData[],
+  lines: LineList,
   className: string,
   LineTemplate?: ComponentType<any>,
 ): ReactNode {
   // TODO Use a memo to turn lines into nodes.
-  return lines.map((lineData: LineData): ReactNode => {
-    const { chars, key, ...rest } = lineData;
+  return lines.lines.map(({ text, chars, ...rest }: Line): ReactNode => {
     return LineTemplate != null ? (
-      <LineTemplate key={key} {...rest}>
+      <LineTemplate key={text} {...rest}>
         <TextLine
-          key={key}
+          key={text}
           settings={settings}
           chars={chars}
           className={className}
@@ -60,7 +60,7 @@ function useTextLines(
       </LineTemplate>
     ) : (
       <TextLine
-        key={key}
+        key={text}
         settings={settings}
         chars={chars}
         className={className}

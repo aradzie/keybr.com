@@ -1,4 +1,4 @@
-import { textDisplaySettings, toChars } from "@keybr/textinput";
+import { textDisplaySettings, toLine } from "@keybr/textinput";
 import test from "ava";
 import { IntlProvider } from "react-intl";
 import TestRenderer from "react-test-renderer";
@@ -7,7 +7,10 @@ import { TextArea } from "./TextArea.tsx";
 test("empty", (t) => {
   const testRenderer = TestRenderer.create(
     <IntlProvider locale="en">
-      <TextArea settings={textDisplaySettings} lines={[]} />
+      <TextArea
+        settings={textDisplaySettings}
+        lines={{ text: "", lines: [] }}
+      />
     </IntlProvider>,
   );
 
@@ -19,16 +22,7 @@ test("render items", (t) => {
     <IntlProvider locale="en">
       <TextArea
         settings={textDisplaySettings}
-        lines={[
-          {
-            chars: toChars("abc"),
-            key: 1,
-          },
-          {
-            chars: toChars("xyz"),
-            key: 2,
-          },
-        ]}
+        lines={{ text: "abc xyz", lines: [toLine("abc"), toLine("xyz")] }}
       />
     </IntlProvider>,
   );

@@ -5,9 +5,8 @@ import { type KeyStatsMap, Result } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
 import {
   type Feedback,
-  type LineData,
+  type LineList,
   newStats,
-  singleLine,
   type TextDisplaySettings,
   TextInput,
   type TextInputSettings,
@@ -33,7 +32,7 @@ export class PracticeState {
   lastLesson: LastLesson | null = null;
 
   textInput!: TextInput; // Mutable.
-  lines!: readonly LineData[]; // Mutable.
+  lines!: LineList; // Mutable.
 
   constructor(
     readonly settings: Settings,
@@ -60,7 +59,7 @@ export class PracticeState {
 
   readonly handleInput = (codePoint: number, timeStamp: number): Feedback => {
     const feedback = this.textInput.step(codePoint, timeStamp);
-    this.lines = singleLine(this.textInput.getChars());
+    this.lines = this.textInput.getLines();
     if (this.textInput.completed) {
       this.appendResult(
         Result.fromStats(
@@ -76,7 +75,7 @@ export class PracticeState {
 
   private _reset(fragment: string): void {
     this.textInput = new TextInput(fragment, this.textInputSettings);
-    this.lines = singleLine(this.textInput.getChars());
+    this.lines = this.textInput.getLines();
   }
 
   private _computeAnnouncements(): void {

@@ -8,7 +8,7 @@ import {
 import { Layout } from "@keybr/layout";
 import { KeyLegendList } from "@keybr/lesson-ui";
 import { usePageData } from "@keybr/pages-shared";
-import { toChars } from "@keybr/textinput";
+import { singleLine } from "@keybr/textinput";
 import { StaticText } from "@keybr/textinput-ui";
 import { Article, Figure } from "@keybr/widget";
 import { type ReactNode } from "react";
@@ -77,7 +77,7 @@ export function HelpApp(): ReactNode {
 
         <div className={styles.example}>
           <StaticText
-            chars={toChars(
+            lines={singleLine(
               "teen nien neer nient relier ine neerine elerine neer",
             )}
           />
@@ -106,7 +106,7 @@ export function HelpApp(): ReactNode {
 
         <div className={styles.example}>
           <StaticText
-            chars={toChars(
+            lines={singleLine(
               "entin entle intell letter rittle ritin tete titient",
             )}
           />
@@ -135,7 +135,7 @@ export function HelpApp(): ReactNode {
 
         <div className={styles.example}>
           <StaticText
-            chars={toChars(
+            lines={singleLine(
               "less les list res rise ins test tes listree listree",
             )}
           />
@@ -164,7 +164,7 @@ export function HelpApp(): ReactNode {
 
         <div className={styles.example}>
           <StaticText
-            chars={toChars(
+            lines={singleLine(
               "res ress risin its seen rise ensiste liste its estine",
             )}
           />
@@ -194,7 +194,9 @@ export function HelpApp(): ReactNode {
         </div>
 
         <div className={styles.example}>
-          <StaticText chars={toChars("a list of words with all the letters")} />
+          <StaticText
+            lines={singleLine("a list of words with all the letters")}
+          />
         </div>
 
         <FormattedMessage

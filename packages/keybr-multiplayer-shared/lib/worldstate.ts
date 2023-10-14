@@ -1,5 +1,5 @@
 import { type AnyUser } from "@keybr/pages-shared";
-import { singleLine, TextInput } from "@keybr/textinput";
+import { TextInput } from "@keybr/textinput";
 import { Timer } from "@keybr/timer";
 import { type IntlShape } from "react-intl";
 import {
@@ -50,8 +50,7 @@ export function makeTextInput(text: string): TextInput {
 
 export function makeWorldState(intl: IntlShape): WorldState {
   const textInput = makeTextInput("");
-  const chars = textInput.getChars();
-  const lines = singleLine(chars);
+  const lines = textInput.getLines();
   return {
     gameState: GameState.INITIALIZING,
     players: {
@@ -80,8 +79,7 @@ export function handleInput(
   if (!players.me.spectator && gameState === GameState.RUNNING) {
     const elapsed = timer.elapsed();
     textInput.step(codePoint, elapsed);
-    const chars = textInput.getChars();
-    const lines = singleLine(chars);
+    const lines = textInput.getLines();
     return { worldState: { ...worldState, lines }, elapsed };
   } else {
     return null;
@@ -142,8 +140,7 @@ function handleGameConfigMessage(
   { text }: GameConfigMessage,
 ): WorldState {
   const textInput = makeTextInput(text);
-  const chars = textInput.getChars();
-  const lines = singleLine(chars);
+  const lines = textInput.getLines();
   return { ...worldState, textInput, lines };
 }
 

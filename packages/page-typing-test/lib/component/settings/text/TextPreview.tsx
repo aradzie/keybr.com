@@ -1,4 +1,4 @@
-import { type TextDisplaySettings, toChars } from "@keybr/textinput";
+import { singleLine, type TextDisplaySettings } from "@keybr/textinput";
 import { StaticText } from "@keybr/textinput-ui";
 import { memo, type ReactNode, useMemo } from "react";
 import {
@@ -13,9 +13,6 @@ export const TextPreview = memo(function TextPreview({
   readonly settings: TextDisplaySettings;
   readonly textGenerator: TextGenerator;
 }): ReactNode {
-  const example = useMemo(
-    () => generateExample(textGenerator),
-    [textGenerator],
-  );
-  return <StaticText settings={settings} chars={toChars(example)} />;
+  const text = useMemo(() => generateExample(textGenerator), [textGenerator]);
+  return <StaticText settings={settings} lines={singleLine(text)} />;
 });

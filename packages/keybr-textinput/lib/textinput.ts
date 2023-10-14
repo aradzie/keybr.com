@@ -9,6 +9,7 @@ import {
   attrNormal,
   type Char,
   Feedback,
+  type LineList,
   type Step,
 } from "./types.ts";
 
@@ -166,6 +167,12 @@ export class TextInput {
       }
     }
     return chars;
+  }
+
+  getLines(): LineList {
+    const { text } = this;
+    const chars = this.getChars();
+    return { text, lines: [{ text, chars }] };
   }
 
   private _addStep(step: Step): void {

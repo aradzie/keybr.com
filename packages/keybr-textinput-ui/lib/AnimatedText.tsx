@@ -22,7 +22,7 @@ export function AnimatedText({
   return (
     <StaticText
       settings={settings}
-      chars={chars}
+      lines={{ text, lines: [{ text, chars }] }}
       cursor={true}
       wrap={wrap}
       size={size}

@@ -1,4 +1,4 @@
-import { type LineData, type TextDisplaySettings } from "@keybr/textinput";
+import { type LineList, type TextDisplaySettings } from "@keybr/textinput";
 import { type KeyEvent, TextEvents } from "@keybr/textinput-events";
 import {
   type BaseSyntheticEvent,
@@ -33,7 +33,7 @@ export function TextArea({
   focusRef,
 }: {
   readonly settings: TextDisplaySettings;
-  readonly lines: readonly LineData[];
+  readonly lines: LineList;
   readonly wrap?: boolean;
   readonly size?: TextLineSize;
   readonly lineTemplate?: ComponentType<any>;

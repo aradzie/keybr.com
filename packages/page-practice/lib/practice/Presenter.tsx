@@ -1,7 +1,7 @@
 import { addKey, deleteKey } from "@keybr/keyboard-ui";
 import { Screen } from "@keybr/pages-shared";
 import { enumProp } from "@keybr/settings";
-import { type LineData } from "@keybr/textinput";
+import { type LineList } from "@keybr/textinput";
 import { type KeyEvent, ModifierState } from "@keybr/textinput-events";
 import { TextArea } from "@keybr/textinput-ui";
 import { PureComponent, type ReactNode } from "react";
@@ -17,7 +17,7 @@ import * as styles from "./Presenter.module.less";
 
 type Props = {
   readonly state: PracticeState;
-  readonly lines: readonly LineData[];
+  readonly lines: LineList;
   readonly onReset: () => void;
   readonly onSkip: () => void;
   readonly onKeyDown: (ev: KeyEvent) => void;

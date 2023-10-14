@@ -1,5 +1,5 @@
 import { Screen } from "@keybr/pages-shared";
-import { type LineData, newStats, type Stats } from "@keybr/textinput";
+import { type LineList, newStats, type Stats } from "@keybr/textinput";
 import { type Focusable, TextArea } from "@keybr/textinput-ui";
 import { Component, createRef, type ReactNode } from "react";
 import { type Mark, type TextGenerator } from "../generator/index.ts";
@@ -24,7 +24,7 @@ type State = {
   /** A mutable fixed part of state. */
   readonly session: Session;
   /** An immutable changing part of state. */
-  readonly lines: readonly LineData[];
+  readonly lines: LineList;
 };
 
 export class TestScreen extends Component<Props, State> {
@@ -65,7 +65,9 @@ export class TestScreen extends Component<Props, State> {
       timeStamp,
     );
     const lines = [...session.getLines()]; // Make a copy to force render.
-    this.setState({ lines });
+    this.setState({
+      lines: { text: "", lines },
+    });
     if (completed) {
       this.props.onComplete(newStats(session.getSteps()));
     }
@@ -102,7 +104,7 @@ function nextTest(props: Props, mark: Mark): State {
     settings,
     mark,
     session,
-    lines,
+    lines: { text: "", lines },
   };
 }
 

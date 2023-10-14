@@ -15,9 +15,14 @@ export type Char = {
   readonly attrs: number;
 };
 
-export type LineData = {
+export type Line = {
+  readonly text: string;
   readonly chars: readonly Char[];
-  readonly key: number | string;
+};
+
+export type LineList = {
+  readonly text: string;
+  readonly lines: readonly Line[];
 };
 
 export enum Feedback {

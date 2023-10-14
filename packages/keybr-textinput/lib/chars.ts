@@ -1,5 +1,5 @@
 import { toCodePoints } from "@keybr/unicode";
-import { attrNormal, type Char, type LineData } from "./types.ts";
+import { attrNormal, type Char, type Line, type LineList } from "./types.ts";
 
 export const charsAreEqual = (
   a: readonly Char[],
@@ -23,13 +23,17 @@ export const charsAreEqual = (
   return true;
 };
 
-export const toChars = (text: string): readonly Char[] => {
+export const toChars = (text: string): Char[] => {
   return [...toCodePoints(text)].map((codePoint) => ({
     codePoint,
     attrs: attrNormal,
   }));
 };
 
-export const singleLine = (chars: readonly Char[]): readonly LineData[] => {
-  return [{ chars, key: "single" }];
+export const toLine = (text: string): Line => {
+  return { text, chars: toChars(text) };
+};
+
+export const singleLine = (text: string): LineList => {
+  return { text, lines: [toLine(text)] };
 };
