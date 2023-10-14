@@ -1252,7 +1252,7 @@
     "description": "Input field title."
   },
   "settings.dailyGoalDescription": {
-    "defaultMessage": "Legen Sie die Zeit fest, die Sie täglich für die Übungen aufwenden möchten.",
+    "defaultMessage": "Legen Sie die Zeit fest, die Sie täglich für die Übungen aufwenden möchten. Es ist eine einfache Erinnerung, die Sie in keiner Weise einschränkt. Sie können jederzeit mit dem Üben aufhören.",
     "description": "Description text."
   },
   "settings.dailyGoalLabel": {
@@ -1302,6 +1302,10 @@
   "settings.lessonsTabLabel": {
     "defaultMessage": "Übungen",
     "description": "Header text."
+  },
+  "settings.longWordsOnlyLabel": {
+    "defaultMessage": "Nur lange Wörter",
+    "description": "Input field label."
   },
   "settings.miscellaneousTabLabel": {
     "defaultMessage": "Verschiedenes",

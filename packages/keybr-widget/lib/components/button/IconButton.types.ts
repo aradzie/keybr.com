@@ -5,7 +5,7 @@ import {
   type KeyboardProps,
   type MouseProps,
 } from "../props.ts";
-import { type ClassName } from "../types.ts";
+import { type ClassName, type Focusable } from "../types.ts";
 
 export type IconButtonProps = {
   readonly children?: ReactNode;
@@ -18,3 +18,5 @@ export type IconButtonProps = {
 } & FocusProps &
   MouseProps &
   KeyboardProps;
+
+export type IconButtonRef = Focusable;

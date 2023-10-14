@@ -8,31 +8,6 @@ import { memo, type ReactNode } from "react";
 import { renderChars, splitIntoItems } from "./chars.tsx";
 import * as styles from "./TextLine.module.less";
 
-export const TextItem = memo(
-  function TextItem({
-    settings,
-    chars,
-  }: {
-    readonly settings: TextDisplaySettings;
-    readonly chars: readonly Char[];
-  }): ReactNode {
-    return (
-      <span className={styles.item}>
-        {renderChars({
-          settings,
-          chars,
-        })}
-      </span>
-    );
-  },
-  (prevProps, nextProps) => {
-    return (
-      prevProps.settings === nextProps.settings &&
-      charsAreEqual(prevProps.chars, nextProps.chars) // deep equality
-    );
-  },
-);
-
 export const TextLine = memo(
   function TextLine({
     settings,
@@ -61,6 +36,31 @@ export const TextLine = memo(
       prevProps.settings === nextProps.settings &&
       charsAreEqual(prevProps.chars, nextProps.chars) && // deep equality
       prevProps.wrap === nextProps.wrap
+    );
+  },
+);
+
+export const TextItem = memo(
+  function TextItem({
+    settings,
+    chars,
+  }: {
+    readonly settings: TextDisplaySettings;
+    readonly chars: readonly Char[];
+  }): ReactNode {
+    return (
+      <span className={styles.item}>
+        {renderChars({
+          settings,
+          chars,
+        })}
+      </span>
+    );
+  },
+  (prevProps, nextProps) => {
+    return (
+      prevProps.settings === nextProps.settings &&
+      charsAreEqual(prevProps.chars, nextProps.chars) // deep equality
     );
   },
 );

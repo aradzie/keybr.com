@@ -7,7 +7,7 @@ import {
   FieldList,
   FieldSet,
   Range,
-  styleSizeWide,
+  styleWidthWide,
   Value,
 } from "@keybr/widget";
 import { type ReactNode } from "react";
@@ -28,7 +28,7 @@ export function DailyGoalSettings(): ReactNode {
         </Field>
         <Field>
           <Range
-            className={styleSizeWide}
+            className={styleWidthWide}
             min={0}
             max={24}
             step={1}
@@ -54,7 +54,7 @@ export function DailyGoalSettings(): ReactNode {
         <FormattedMessage
           id="settings.dailyGoalDescription"
           description="Description text."
-          defaultMessage="Set the time you want to spend on the exercises daily."
+          defaultMessage="Set the time you want to spend on the exercises daily. It is a simple reminder which does not limit you in any way. You can stop practicing whenever you want."
         />
       </Explainer>
     </FieldSet>

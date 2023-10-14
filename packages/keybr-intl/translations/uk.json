@@ -1252,7 +1252,7 @@
     "description": "Input field title."
   },
   "settings.dailyGoalDescription": {
-    "defaultMessage": "Встановіть час, який ви бажаєте витрачати на вправи щодня.",
+    "defaultMessage": "Встановіть час, який ви бажаєте витрачати на вправи щодня. Це просте нагадування, яке жодним чином не обмежує вас. Ви можете припинити тренування, коли захочете.",
     "description": "Description text."
   },
   "settings.dailyGoalLabel": {
@@ -1302,6 +1302,10 @@
   "settings.lessonsTabLabel": {
     "defaultMessage": "Уроки",
     "description": "Header text."
+  },
+  "settings.longWordsOnlyLabel": {
+    "defaultMessage": "Тільки довгі слова",
+    "description": "Input field label."
   },
   "settings.miscellaneousTabLabel": {
     "defaultMessage": "Різне",

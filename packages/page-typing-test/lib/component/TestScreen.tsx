@@ -28,18 +28,18 @@ type State = {
 };
 
 export class TestScreen extends Component<Props, State> {
-  private readonly textArea = createRef<TextArea>();
+  private readonly textAreaRef = createRef<TextArea>();
 
   isFocused(): boolean {
-    return this.textArea.current?.isFocused() ?? false;
+    return this.textAreaRef.current?.isFocused() ?? false;
   }
 
   focus(): void {
-    this.textArea.current?.focus();
+    this.textAreaRef.current?.focus();
   }
 
   blur(): void {
-    this.textArea.current?.blur();
+    this.textAreaRef.current?.blur();
   }
 
   override state: State = nextTest(this.props, this.props.textGenerator.mark());
@@ -91,7 +91,7 @@ export class TestScreen extends Component<Props, State> {
           onConfigure={this.props.onConfigure}
         />
         <TextArea
-          ref={this.textArea}
+          ref={this.textAreaRef}
           settings={this.props.settings.textDisplay}
           lines={this.state.lines}
           onFocus={this.handleFocus}

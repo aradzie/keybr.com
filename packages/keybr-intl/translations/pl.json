@@ -1252,7 +1252,7 @@
     "description": "Input field title."
   },
   "settings.dailyGoalDescription": {
-    "defaultMessage": "Ustaw czas, jaki chcesz codziennie poświęcać na ćwiczenia.",
+    "defaultMessage": "Ustaw czas, jaki chcesz codziennie poświęcać na ćwiczenia. Jest to proste przypomnienie, które w żaden sposób Cię nie ogranicza. Możesz przestać ćwiczyć, kiedy tylko chcesz.",
     "description": "Description text."
   },
   "settings.dailyGoalLabel": {
@@ -1302,6 +1302,10 @@
   "settings.lessonsTabLabel": {
     "defaultMessage": "Ćwiczenia",
     "description": "Header text."
+  },
+  "settings.longWordsOnlyLabel": {
+    "defaultMessage": "Tylko długie słowa",
+    "description": "Input field label."
   },
   "settings.miscellaneousTabLabel": {
     "defaultMessage": "Różne",

@@ -38,22 +38,22 @@ type State = {
 };
 
 export class TextArea extends PureComponent<Props, State> {
-  private textEvents = createRef<TextEvents>();
+  private textEventsRef = createRef<TextEvents>();
 
   override state: State = {
     focus: false,
   };
 
   isFocused(): boolean {
-    return this.textEvents.current?.isFocused() ?? false;
+    return this.textEventsRef.current?.isFocused() ?? false;
   }
 
   focus(): void {
-    this.textEvents.current?.focus();
+    this.textEventsRef.current?.focus();
   }
 
   blur(): void {
-    this.textEvents.current?.blur();
+    this.textEventsRef.current?.blur();
   }
 
   private handleFocus = (): void => {
@@ -125,7 +125,7 @@ export class TextArea extends PureComponent<Props, State> {
         onClick={this.handleClick}
       >
         <TextEvents
-          ref={this.textEvents}
+          ref={this.textEventsRef}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
           onKeyDown={this.handleKeyDown}

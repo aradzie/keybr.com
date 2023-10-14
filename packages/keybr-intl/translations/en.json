@@ -1252,7 +1252,7 @@
     "description": "Input field title."
   },
   "settings.dailyGoalDescription": {
-    "defaultMessage": "Set the time you want to spend on the exercises daily.",
+    "defaultMessage": "Set the time you want to spend on the exercises daily. It is a simple reminder which does not limit you in any way. You can stop practicing whenever you want.",
     "description": "Description text."
   },
   "settings.dailyGoalLabel": {
@@ -1302,6 +1302,10 @@
   "settings.lessonsTabLabel": {
     "defaultMessage": "Lessons",
     "description": "Header text."
+  },
+  "settings.longWordsOnlyLabel": {
+    "defaultMessage": "Long words only",
+    "description": "Input field label."
   },
   "settings.miscellaneousTabLabel": {
     "defaultMessage": "Miscellaneous",

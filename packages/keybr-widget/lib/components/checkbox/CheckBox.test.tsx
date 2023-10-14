@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import test from "ava";
-import { Component, type ReactNode } from "react";
+import { type ReactNode, useState } from "react";
 import { CheckBox } from "./CheckBox.tsx";
 
 test.serial("props", (t) => {
@@ -30,18 +30,14 @@ test.serial("controlled", async (t) => {
   r.unmount();
 });
 
-class Controlled extends Component<unknown, { checked: boolean }> {
-  override state = {
-    checked: false,
-  };
-
-  override render(): ReactNode {
-    return (
-      <CheckBox checked={this.state.checked} onChange={this.handleChange} />
-    );
-  }
-
-  private handleChange = (checked: boolean): void => {
-    this.setState({ checked });
-  };
+function Controlled(): ReactNode {
+  const [checked, setChecked] = useState(false);
+  return (
+    <CheckBox
+      checked={checked}
+      onChange={(value) => {
+        setChecked(value);
+      }}
+    />
+  );
 }

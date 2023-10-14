@@ -1,6 +1,6 @@
 import { newTextScanner } from "@keybr/plaintext";
 
-export function splitText(text: string, maxWordLength = 15): string[] {
+export function splitText(text: string, maxWordLength: number = 30): string[] {
   const scanner = newTextScanner(text);
   const words = [];
   while (!scanner.end) {

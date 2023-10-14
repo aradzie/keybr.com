@@ -4,7 +4,7 @@ import {
   type KeyboardProps,
   type MouseProps,
 } from "../props.ts";
-import { type ClassName } from "../types.ts";
+import { type ClassName, type Focusable } from "../types.ts";
 
 export type RadioBoxProps = {
   readonly checked?: boolean;
@@ -19,3 +19,5 @@ export type RadioBoxProps = {
 } & FocusProps &
   MouseProps &
   KeyboardProps;
+
+export type RadioBoxRef = Focusable;

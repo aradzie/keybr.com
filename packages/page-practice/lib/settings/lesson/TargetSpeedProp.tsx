@@ -6,7 +6,7 @@ import {
   Field,
   FieldList,
   Range,
-  styleSizeWide,
+  styleWidthWide,
   Value,
 } from "@keybr/widget";
 import { type ReactNode } from "react";
@@ -27,7 +27,7 @@ export function TargetSpeedProp(): ReactNode {
         </Field>
         <Field>
           <Range
-            className={styleSizeWide}
+            className={styleWidthWide}
             min={lessonProps.targetSpeed.min}
             max={lessonProps.targetSpeed.max}
             step={1}

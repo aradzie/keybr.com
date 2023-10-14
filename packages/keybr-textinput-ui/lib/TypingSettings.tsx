@@ -15,7 +15,7 @@ import {
   FieldSet,
   RadioBox,
   Range,
-  styleSizeWide,
+  styleWidthNormal,
 } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -159,7 +159,7 @@ function WhitespaceProp(): ReactNode {
   const { settings, updateSettings } = useSettings();
   return (
     <FieldList>
-      <Field className={styleSizeWide}>
+      <Field className={styleWidthNormal}>
         <FormattedMessage
           id="settings.whitespaceLabel"
           description="Input field label."
@@ -228,7 +228,7 @@ function CursorShapeProp(): ReactNode {
   const { settings, updateSettings } = useSettings();
   return (
     <FieldList>
-      <Field className={styleSizeWide}>
+      <Field className={styleWidthNormal}>
         <FormattedMessage
           id="settings.cursorShapeLabel"
           description="Input field label."
@@ -315,7 +315,7 @@ function CursorMovementProp(): ReactNode {
   const { settings, updateSettings } = useSettings();
   return (
     <FieldList>
-      <Field className={styleSizeWide}>
+      <Field className={styleWidthNormal}>
         <FormattedMessage
           id="settings.cursorMovementLabel"
           description="Input field label."
@@ -366,7 +366,7 @@ function SoundsProp(): ReactNode {
   const { settings, updateSettings } = useSettings();
   return (
     <FieldList>
-      <Field className={styleSizeWide}>
+      <Field className={styleWidthNormal}>
         <FormattedMessage
           id="settings.playSoundsLabel"
           description="Input field label."

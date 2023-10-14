@@ -1,7 +1,7 @@
 import { fireEvent, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import test from "ava";
-import { Component, type ReactNode } from "react";
+import { type ReactNode, useState } from "react";
 import { OptionList } from "./OptionList.tsx";
 import { type OptionListOption } from "./OptionList.types.ts";
 
@@ -93,33 +93,23 @@ test.serial("controlled", async (t) => {
   r.unmount();
 });
 
-class Controlled extends Component<
-  {
-    options: readonly OptionListOption[];
-    onChange: (value: string) => void;
-  },
-  {
-    value: string;
-  }
-> {
-  override state = {
-    value: "1",
-  };
-
-  override render(): ReactNode {
-    return (
-      <OptionList
-        options={this.props.options}
-        value={this.state.value}
-        onSelect={this.handleSelect}
-        title="underTest"
-      />
-    );
-  }
-
-  private handleSelect = (value: string): void => {
-    this.setState({ value }, () => {
-      this.props.onChange(value);
-    });
-  };
+function Controlled({
+  options,
+  onChange,
+}: {
+  readonly options: readonly OptionListOption[];
+  readonly onChange: (value: string) => void;
+}): ReactNode {
+  const [value, setValue] = useState("1");
+  return (
+    <OptionList
+      options={options}
+      value={value}
+      onSelect={(value) => {
+        setValue(value);
+        onChange(value);
+      }}
+      title="underTest"
+    />
+  );
 }
