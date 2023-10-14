@@ -20,7 +20,7 @@ export class LessonKey implements KeyStats {
     const conf = (key: LessonKey): number => key.bestConfidence ?? 0;
     const candidateKeys = includedKeys
       .filter((key) => conf(key) < 1)
-      .sort((a, b) => conf(b) - conf(a) || b.letter.f - a.letter.f);
+      .sort((a, b) => conf(a) - conf(b) || b.letter.f - a.letter.f);
     if (candidateKeys.length > 0) {
       return candidateKeys[0];
     } else {

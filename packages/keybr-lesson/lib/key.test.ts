@@ -18,7 +18,7 @@ test("find boosted key when all keys have max confidence", (t) => {
     samples: [],
     timeToType: 100,
     bestTimeToType: 100,
-    confidence: 1.2,
+    confidence: 0.1,
     bestConfidence: 1.0,
   });
   const b = new LessonKey({
@@ -26,7 +26,7 @@ test("find boosted key when all keys have max confidence", (t) => {
     samples: [],
     timeToType: 200,
     bestTimeToType: 200,
-    confidence: 1.1,
+    confidence: 0.1,
     bestConfidence: 1.0,
   });
   const c = new LessonKey({
@@ -34,7 +34,7 @@ test("find boosted key when all keys have max confidence", (t) => {
     samples: [],
     timeToType: 300,
     bestTimeToType: 300,
-    confidence: 1.0,
+    confidence: 0.1,
     bestConfidence: 1.0,
   });
 
@@ -54,7 +54,7 @@ test("find boosted key with least confidence", (t) => {
     samples: [],
     timeToType: 500,
     bestTimeToType: 500,
-    confidence: 0.7,
+    confidence: 0.9,
     bestConfidence: 0.7,
   });
   const b = new LessonKey({
@@ -70,7 +70,7 @@ test("find boosted key with least confidence", (t) => {
     samples: [],
     timeToType: 300,
     bestTimeToType: 300,
-    confidence: 0.9,
+    confidence: 0.7,
     bestConfidence: 0.9,
   });
 
@@ -79,8 +79,8 @@ test("find boosted key with least confidence", (t) => {
   t.is(LessonKey.findBoosted([a]), a);
   t.is(LessonKey.findBoosted([b]), b);
   t.is(LessonKey.findBoosted([c]), c);
-  t.is(LessonKey.findBoosted([a, b, c]), c);
-  t.is(LessonKey.findBoosted([c, b, a]), c);
+  t.is(LessonKey.findBoosted([a, b, c]), a);
+  t.is(LessonKey.findBoosted([c, b, a]), a);
 });
 
 test("lesson keys", (t) => {
