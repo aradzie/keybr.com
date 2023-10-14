@@ -42,6 +42,14 @@ export class Layout implements EnumItem {
     /* language= */ Language.EN,
     /* emulate= */ true,
   );
+  static readonly EN_US_COLEMAK_DH_MATRIX = new Layout(
+    /* id= */ "us-colemak-dh-matrix",
+    /* xid= */ 0x1c,
+    /* name= */ "US Colemak-DH (matrix)",
+    /* family= */ LayoutFamily.COLEMAK_DH_MATRIX,
+    /* language= */ Language.EN,
+    /* emulate= */ true,
+  );
   static readonly EN_UK = new Layout(
     /* id= */ "uk",
     /* xid= */ 0x11,
@@ -164,6 +172,7 @@ export class Layout implements EnumItem {
     Layout.EN_US_DVORAK,
     Layout.EN_US_COLEMAK,
     Layout.EN_US_COLEMAK_DH,
+    Layout.EN_US_COLEMAK_DH_MATRIX,
     Layout.EN_US_WORKMAN,
     Layout.EN_UK,
     Layout.DE_DE,
