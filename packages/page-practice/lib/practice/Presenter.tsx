@@ -303,7 +303,7 @@ function NormalLayout({
           depressedKeys={depressedKeys}
           toggledKeys={toggledKeys}
           lastLesson={state.lastLesson}
-          showColors={settings.get(keyboardProps.color) || !focus}
+          showColors={settings.get(keyboardProps.colors) || !focus}
         />
       </div>
       <Announcer state={state} />
