@@ -7,6 +7,7 @@ import { LAYOUT_EN_US_COLEMAK_DH } from "./layout/layout_en_us_colemak_dh.ts";
 import { LAYOUT_EN_US_COLEMAK_DH_MATRIX } from "./layout/layout_en_us_colemak_dh_matrix.ts";
 import { LAYOUT_EN_US_WORKMAN } from "./layout/layout_en_us_workman.ts";
 import { LAYOUT_FR_BEPO } from "./layout/layout_fr_bepo.ts";
+import { LAYOUT_FR_ERGO_L } from "./layout/layout_fr_ergol.ts";
 import { LAYOUT_FR_OPTIMOT } from "./layout/layout_fr_optimot.ts";
 import { readXml } from "./xml.ts";
 
@@ -86,6 +87,7 @@ const files: readonly [input: string | LayoutConfig, output: string][] = [
   ],
   [LAYOUT_EN_US_WORKMAN, "../keybr-keyboard/lib/data/layout/en_us_workman.ts"],
   [LAYOUT_FR_BEPO, "../keybr-keyboard/lib/data/layout/fr_bepo.ts"],
+  [LAYOUT_FR_ERGO_L, "../keybr-keyboard/lib/data/layout/fr_ergol.ts"],
   [LAYOUT_FR_OPTIMOT, "../keybr-keyboard/lib/data/layout/fr_optimot.ts"],
   [LAYOUT_EN_CUSTOM, "../keybr-keyboard/lib/data/layout/en_custom.ts"],
 ];

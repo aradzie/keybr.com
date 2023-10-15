@@ -10,6 +10,7 @@ export { LAYOUT_EN_US_WORKMAN } from "./layout/en_us_workman.ts";
 export { LAYOUT_EN_US_WIN } from "./layout/en_us-win.ts";
 export { LAYOUT_ES_ES_WIN } from "./layout/es_es-win.ts";
 export { LAYOUT_FR_BEPO } from "./layout/fr_bepo.ts";
+export { LAYOUT_FR_ERGO_L } from "./layout/fr_ergol.ts";
 export { LAYOUT_FR_CA_WIN } from "./layout/fr_ca-win.ts";
 export { LAYOUT_FR_CH_WIN } from "./layout/fr_ch-win.ts";
 export { LAYOUT_FR_FR_WIN } from "./layout/fr_fr-win.ts";
