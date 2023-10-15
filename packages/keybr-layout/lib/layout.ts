@@ -99,6 +99,13 @@ export class Layout implements EnumItem {
     /* family= */ LayoutFamily.BEPO,
     /* language= */ Language.FR,
   );
+  static readonly FR_ERGO_L = new Layout(
+    /* id= */ "fr-ergol",
+    /* xid= */ 0x34,
+    /* name= */ "Ergo-L",
+    /* family= */ LayoutFamily.WORKMAN,
+    /* language= */ Language.FR,
+  );
   static readonly IT_IT = new Layout(
     /* id= */ "it",
     /* xid= */ 0x40,
