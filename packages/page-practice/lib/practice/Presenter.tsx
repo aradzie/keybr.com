@@ -1,6 +1,7 @@
+import { keyboardProps } from "@keybr/keyboard";
 import { addKey, deleteKey } from "@keybr/keyboard-ui";
 import { Screen } from "@keybr/pages-shared";
-import { enumProp } from "@keybr/settings";
+import { enumProp, useSettings } from "@keybr/settings";
 import { type LineList } from "@keybr/textinput";
 import { type KeyEvent, ModifierState } from "@keybr/textinput-events";
 import { TextArea } from "@keybr/textinput-ui";
@@ -288,6 +289,8 @@ function NormalLayout({
   readonly textInput: ReactNode;
   readonly tour: ReactNode;
 }): ReactNode {
+  const { settings } = useSettings();
+  const showColors = settings.get(keyboardProps.color);
   return (
     <Screen>
       <Indicators state={state} />
@@ -301,6 +304,7 @@ function NormalLayout({
           depressedKeys={depressedKeys}
           toggledKeys={toggledKeys}
           lastLesson={state.lastLesson}
+          showColors={showColors}
         />
       </div>
       <Announcer state={state} />

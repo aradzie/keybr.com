@@ -15,9 +15,9 @@ test("keys", (t) => {
     Equal: [769, 768],
   };
   const geometryDict: GeometryDict = {
-    KeyA: [72, 84, 40, 40, "key", "z1"],
-    Equal: [504, 0, 40, 40, "key", "z8"],
-    Enter: [534, 84, 95, 40, "key-enter"],
+    KeyA: [72, 84, 40, 40, "key", "z1", "pinky"],
+    Equal: [504, 0, 40, 40, "key", "z8", "pinky"],
+    Enter: [534, 84, 95, 40, "key-enter", "pinky"],
   };
 
   const keyboard = new Keyboard(
@@ -32,18 +32,28 @@ test("keys", (t) => {
       c: /* b */ 0x0062,
       d: /* B */ 0x0042,
     },
-    { x: 72, y: 84, w: 40, h: 40, shape: "key", zone: "z1" },
+    { x: 72, y: 84, w: 40, h: 40, shape: "key", zone: "z1", finger: "pinky" },
   );
   const deadKey1 = new KeyboardKey(
     "Equal",
     { a: 0x0301, b: 0x0300, c: 0x0000, d: 0x0000 },
-    { x: 504, y: 0, w: 40, h: 40, shape: "key", zone: "z8" },
+    { x: 504, y: 0, w: 40, h: 40, shape: "key", zone: "z8", finger: "pinky" },
   );
+  // Not sure why this works
   const specialKey1 = new KeyboardKey(
     "Enter",
     { a: 0x0000, b: 0x0000, c: 0x0000, d: 0x0000 },
-    { x: 534, y: 84, w: 95, h: 40, shape: "key-enter", zone: null },
+    {
+      x: 534,
+      y: 84,
+      w: 95,
+      h: 40,
+      shape: "key-enter",
+      zone: "pinky",
+      finger: null,
+    },
   );
+
   const { None, Shift, Alt, ShiftAlt } = KeyModifier;
   const kc0x0300 = new KeyCombo(0x0300, deadKey1, Shift);
   const kc0x0301 = new KeyCombo(0x0301, deadKey1, None);

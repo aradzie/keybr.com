@@ -14,12 +14,14 @@ export type KeyProps = {
   readonly depressed?: boolean;
   readonly toggled?: boolean;
   readonly keyboardKey: KeyboardKey;
+  readonly showColors?: boolean;
   readonly onClick?: MouseEventHandler;
   readonly onMouseDown?: MouseEventHandler;
   readonly onMouseEnter?: MouseEventHandler;
   readonly onMouseLeave?: MouseEventHandler;
   readonly onMouseUp?: MouseEventHandler;
   readonly showZones?: boolean;
+  readonly showFingers?: boolean;
   readonly children?: ReactNode;
 };
 
@@ -33,6 +35,7 @@ function makeKeyComponent(special: boolean): FunctionComponent<KeyProps> {
       toggled,
       keyboardKey: { id, geometry },
       showZones,
+      showColors,
       children,
       onClick,
       onMouseDown,
@@ -46,6 +49,7 @@ function makeKeyComponent(special: boolean): FunctionComponent<KeyProps> {
       depressed && styles.depressedKey,
       toggled && styles.toggledKey,
       showZones && zoneStyleName(geometry.zone),
+      showColors && !showZones && fingerName(geometry.finger),
     );
     return (
       <svg
@@ -204,6 +208,25 @@ function zoneStyleName(zone: string | null): string | null {
       return styles.zone7;
     case "z8":
       return styles.zone8;
+    default:
+      return null;
+  }
+}
+
+function fingerName(finger: string | null): string | null {
+  switch (finger) {
+    case "pinky":
+      return styles.pinky;
+    case "ring":
+      return styles.ring;
+    case "middle":
+      return styles.middle;
+    case "indexLeft":
+      return styles.indexLeft;
+    case "indexRight":
+      return styles.indexRight;
+    case "thumb":
+      return styles.thumb;
     default:
       return null;
   }
