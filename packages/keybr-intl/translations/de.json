@@ -1283,8 +1283,8 @@
     "defaultMessage": "Schnittstellenoptionen",
     "description": "Fieldset legend."
   },
-  "settings.keyboardColorLabel": {
-    "defaultMessage": "Colored keys",
+  "settings.keyboardColorsLabel": {
+    "defaultMessage": "Farbige Tasten",
     "description": "Input field label."
   },
   "settings.keyboardFullViewLabel": {

@@ -179,7 +179,7 @@ function KeyboardPreview(): ReactNode {
         <Field>
           <CheckBox
             label={formatMessage({
-              id: "settings.keyboardColorLabel",
+              id: "settings.keyboardColorsLabel",
               description: "Input field label.",
               defaultMessage: "Colored keys",
             })}
