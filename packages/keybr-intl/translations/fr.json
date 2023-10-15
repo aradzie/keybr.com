@@ -1283,6 +1283,10 @@
     "defaultMessage": "Options d'interface",
     "description": "Fieldset legend."
   },
+  "settings.keyboardColorLabel": {
+    "defaultMessage": "Colored keys",
+    "description": "Input field label."
+  },
   "settings.keyboardFullViewLabel": {
     "defaultMessage": "Vue complète du clavier",
     "description": "Input field label."

@@ -157,6 +157,7 @@ function KeyboardPreview(): ReactNode {
         <KeyLayer
           depressedKeys={depressedKeys}
           toggledKeys={ModifierState.modifiers}
+          showColors={settings.get(keyboardProps.color)}
         />
       </VirtualKeyboard>
       <FieldList>
@@ -170,6 +171,21 @@ function KeyboardPreview(): ReactNode {
             checked={settings.get(keyboardProps.full)}
             onChange={(value) => {
               updateSettings(settings.set(keyboardProps.full, value));
+            }}
+          />
+        </Field>
+      </FieldList>
+      <FieldList>
+        <Field>
+          <CheckBox
+            label={formatMessage({
+              id: "settings.keyboardColorLabel",
+              description: "Input field label.",
+              defaultMessage: "Colored keys",
+            })}
+            checked={settings.get(keyboardProps.color)}
+            onChange={(value) => {
+              updateSettings(settings.set(keyboardProps.color, value));
             }}
           />
         </Field>

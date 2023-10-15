@@ -15,11 +15,13 @@ export const KeyboardPresenter = memo(function KeyboardPresenter({
   depressedKeys,
   toggledKeys,
   lastLesson,
+  showColors,
 }: {
   readonly focus: boolean;
   readonly depressedKeys: readonly string[];
   readonly toggledKeys: readonly string[];
   readonly lastLesson: LastLesson | null;
+  readonly showColors?: boolean;
 }): ReactNode {
   const keyboard = useKeyboard();
   const zoom = useZoom();
@@ -29,6 +31,7 @@ export const KeyboardPresenter = memo(function KeyboardPresenter({
         depressedKeys={depressedKeys}
         toggledKeys={toggledKeys}
         showZones={!focus}
+        showColors={showColors}
       />
       {focus && <MarkerLayer />}
       {focus && lastLesson && (

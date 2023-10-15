@@ -37,17 +37,19 @@ export const KeyLayer = memo(function KeyLayer({
   depressedKeys = [],
   toggledKeys = [],
   showZones = false,
+  showColors = false,
 }: {
   readonly depressedKeys?: KeyIdList;
   readonly toggledKeys?: KeyIdList;
   readonly showZones?: boolean;
+  readonly showColors?: boolean;
 }): ReactNode {
   const keyboard = useKeyboard();
   const children = useMemo(() => getKeyElements(keyboard), [keyboard]);
   return (
     <svg x={21} y={21}>
       {children.map((child) =>
-        child.select(depressedKeys, toggledKeys, showZones),
+        child.select(depressedKeys, toggledKeys, showZones, showColors),
       )}
     </svg>
   );
@@ -65,6 +67,10 @@ class MemoizedKeyElement {
   readonly state1: ReactElement<KeyProps>;
   readonly state2: ReactElement<KeyProps>;
   readonly state3: ReactElement<KeyProps>;
+  readonly state4: ReactElement<KeyProps>;
+  readonly state5: ReactElement<KeyProps>;
+  readonly state6: ReactElement<KeyProps>;
+  readonly state7: ReactElement<KeyProps>;
 
   constructor(readonly keyboardKey: KeyboardKey) {
     const Component = getKeyComponent(keyboardKey.geometry.shape);
@@ -76,6 +82,7 @@ class MemoizedKeyElement {
         depressed={false}
         toggled={false}
         showZones={false}
+        showColors={false}
       />
     );
     this.state1 = (
@@ -105,28 +112,82 @@ class MemoizedKeyElement {
         showZones={false}
       />
     );
+    this.state4 = (
+      <Component
+        key={keyboardKey.id}
+        keyboardKey={keyboardKey}
+        depressed={false}
+        toggled={false}
+        showZones={false}
+        showColors={true}
+      />
+    );
+    this.state5 = (
+      <Component
+        key={keyboardKey.id}
+        keyboardKey={keyboardKey}
+        depressed={true}
+        toggled={false}
+        showZones={true}
+      />
+    );
+    this.state6 = (
+      <Component
+        key={keyboardKey.id}
+        keyboardKey={keyboardKey}
+        depressed={false}
+        toggled={true}
+        showZones={true}
+      />
+    );
+    this.state7 = (
+      <Component
+        key={keyboardKey.id}
+        keyboardKey={keyboardKey}
+        depressed={true}
+        toggled={true}
+        showZones={true}
+      />
+    );
   }
 
   select(
     depressedKeys: KeyIdList,
     toggledKeys: KeyIdList,
     showZones: boolean,
+    showColors: boolean,
   ): ReactElement<KeyProps> {
     const { keyboardKey, component: Component } = this;
     const depressed = depressedKeys.includes(keyboardKey.id);
     const toggled = toggledKeys.includes(keyboardKey.id);
     if (!showZones) {
-      if (!toggled) {
-        if (!depressed) {
-          return this.state0;
+      if (!showColors) {
+        if (!toggled) {
+          if (!depressed) {
+            return this.state0;
+          } else {
+            return this.state1;
+          }
         } else {
-          return this.state1;
+          if (!depressed) {
+            return this.state2;
+          } else {
+            return this.state3;
+          }
         }
       } else {
-        if (!depressed) {
-          return this.state2;
+        if (!toggled) {
+          if (!depressed) {
+            return this.state4;
+          } else {
+            return this.state5;
+          }
         } else {
-          return this.state3;
+          if (!depressed) {
+            return this.state6;
+          } else {
+            return this.state7;
+          }
         }
       }
     }
@@ -137,6 +198,7 @@ class MemoizedKeyElement {
         depressed={depressed}
         toggled={toggled}
         showZones={showZones}
+        showColors={showColors}
       />
     );
   }

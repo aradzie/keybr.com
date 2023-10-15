@@ -1,5 +1,6 @@
 import { Layout } from "@keybr/layout";
 import {
+  GEOMETRY_ANGLEMOD,
   GEOMETRY_STANDARD_101,
   GEOMETRY_STANDARD_102,
 } from "./data/geometry.ts";
@@ -43,7 +44,7 @@ const config = ((entries: [Layout, CodePointDict, GeometryDict][]) =>
   [Layout.EN_UK, LAYOUT_EN_UK_WIN, GEOMETRY_STANDARD_102],
   [Layout.EN_US, LAYOUT_EN_US_WIN, GEOMETRY_STANDARD_101],
   [Layout.EN_US_COLEMAK, LAYOUT_EN_US_COLEMAK, GEOMETRY_STANDARD_101],
-  [Layout.EN_US_COLEMAK_DH, LAYOUT_EN_US_COLEMAK_DH, GEOMETRY_STANDARD_101],
+  [Layout.EN_US_COLEMAK_DH, LAYOUT_EN_US_COLEMAK_DH, GEOMETRY_ANGLEMOD],
   [
     Layout.EN_US_COLEMAK_DH_MATRIX,
     LAYOUT_EN_US_COLEMAK_DH_MATRIX,
