@@ -13,23 +13,6 @@ import {
 import { cn } from "./chars.tsx";
 import * as styles from "./Cursor.module.less";
 
-const containerStyle: CSSProperties = {
-  display: "block",
-  position: "relative",
-};
-
-const cursorStyle: CSSProperties = {
-  display: "block",
-  position: "absolute",
-  left: 0,
-  top: 0,
-  width: 0,
-  height: 0,
-  lineHeight: 1,
-};
-
-const cursorItemSelector = `.${cn.charsCursor}`;
-
 type Props = {
   readonly settings: TextDisplaySettings;
   readonly children: ReactNode;
@@ -73,6 +56,17 @@ export class Cursor extends Component<Props> {
     const { caretShapeStyle, caretMovementStyle } = this.props.settings;
 
     const { style } = cursor;
+
+    if (style.fontFamily === "") {
+      const from = window.getComputedStyle(char);
+      style.fontFamily = from.fontFamily;
+      style.fontSize = from.fontSize;
+      style.fontStyle = from.fontStyle;
+      style.fontWeight = from.fontWeight;
+      style.fontVariant = from.fontVariant;
+      style.fontKerning = from.fontKerning;
+      style.lineHeight = from.lineHeight;
+    }
 
     const x = char.offsetLeft;
     const y = char.offsetTop;
@@ -201,6 +195,22 @@ export class Cursor extends Component<Props> {
     );
   }
 }
+
+const containerStyle: CSSProperties = {
+  display: "block",
+  position: "relative",
+};
+
+const cursorStyle: CSSProperties = {
+  display: "block",
+  position: "absolute",
+  left: 0,
+  top: 0,
+  width: 0,
+  height: 0,
+};
+
+const cursorItemSelector = `.${cn.charsCursor}`;
 
 const cnBlock = clsx(cn.chars, styles.cursor_block);
 const cnBox = clsx(cn.chars, styles.cursor_box);
