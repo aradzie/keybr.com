@@ -548,7 +548,7 @@
     "description": "Label name."
   },
   "metric.averageSpeed.title": {
-    "defaultMessage": "Average typing speed ({speedUnitName}). The more, the better.",
+    "defaultMessage": "Average typing speed in all lessons ({speedUnitName}). The more, the better.",
     "description": "Label title."
   },
   "metric.bestSpeed.label": {
@@ -556,7 +556,7 @@
     "description": "Label name."
   },
   "metric.bestSpeed.title": {
-    "defaultMessage": "Best typing speed ({speedUnitName}). The more, the better.",
+    "defaultMessage": "Best typing speed in all lessons ({speedUnitName}). The more, the better.",
     "description": "Label title."
   },
   "metric.confidenceLevel.label": {
@@ -565,6 +565,14 @@
   },
   "metric.confidenceLevel.title": {
     "defaultMessage": "How close you are to unlocking this key.",
+    "description": "Label title."
+  },
+  "metric.lastSpeed.label": {
+    "defaultMessage": "Last typing speed",
+    "description": "Label name."
+  },
+  "metric.lastSpeed.title": {
+    "defaultMessage": "Typing speed in the last lesson ({speedUnitName}). The more, the better.",
     "description": "Label title."
   },
   "metric.learningRate.label": {

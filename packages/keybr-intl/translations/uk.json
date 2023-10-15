@@ -556,7 +556,7 @@
     "description": "Label name."
   },
   "metric.bestSpeed.title": {
-    "defaultMessage": "Найкраща швидкість ({speedUnitName}). Чим більше тим краще.",
+    "defaultMessage": "Найкраща швидкість набору тексту на всіх уроках ({speedUnitName}). Чим більше тим краще.",
     "description": "Label title."
   },
   "metric.confidenceLevel.label": {
@@ -565,6 +565,14 @@
   },
   "metric.confidenceLevel.title": {
     "defaultMessage": "Наскільки ви близькі до розблокування цієї літери.",
+    "description": "Label title."
+  },
+  "metric.lastSpeed.label": {
+    "defaultMessage": "Остання швидкість",
+    "description": "Label name."
+  },
+  "metric.lastSpeed.title": {
+    "defaultMessage": "Швидкість набору тексту на останньому уроці ({speedUnitName}). Чим більше тим краще.",
     "description": "Label title."
   },
   "metric.learningRate.label": {

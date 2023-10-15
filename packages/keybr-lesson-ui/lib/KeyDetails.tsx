@@ -17,11 +17,16 @@ export const KeyDetails = ({
   readonly lessonKey: LessonKey;
 }): ReactNode => {
   const { formatMessage } = useIntl();
-  const { speedUnitName, formatSpeed, formatConfidence, formatLearningRate } =
+  const { formatSpeed, formatConfidence, formatLearningRate, speedUnitName } =
     useFormatter();
   const { settings } = useSettings();
-  const { bestTimeToType, confidence } = lessonKey;
-  if (bestTimeToType != null && confidence != null) {
+  const { timeToType, bestTimeToType, confidence, bestConfidence } = lessonKey;
+  if (
+    timeToType != null &&
+    bestTimeToType != null &&
+    confidence != null &&
+    bestConfidence != null
+  ) {
     const learningRate = LearningRate.from(
       lessonKey.samples,
       new Target(settings),
@@ -35,14 +40,24 @@ export const KeyDetails = ({
         )}
       >
         <NameValue
-          name={<Name name={formatMessage(messages.bestSpeedLabel)} />}
-          value={<Value value={formatSpeed(timeToSpeed(bestTimeToType))} />}
-          title={formatMessage(messages.bestSpeedTitle, { speedUnitName })}
+          name={<Name name={formatMessage(messages.lastSpeedLabel)} />}
+          value={
+            <Value>
+              {`${formatSpeed(timeToSpeed(timeToType))}`}
+              {` (${formatConfidence(confidence)})`}
+            </Value>
+          }
+          title={formatMessage(messages.lastSpeedTitle, { speedUnitName })}
         />
         <NameValue
-          name={<Name name={formatMessage(messages.confidenceLevelLabel)} />}
-          value={<Value value={formatConfidence(confidence)} />}
-          title={formatMessage(messages.confidenceLevelTitle)}
+          name={<Name name={formatMessage(messages.bestSpeedLabel)} />}
+          value={
+            <Value>
+              {`${formatSpeed(timeToSpeed(bestTimeToType))}`}
+              {` (${formatConfidence(bestConfidence)})`}
+            </Value>
+          }
+          title={formatMessage(messages.bestSpeedTitle, { speedUnitName })}
         />
         <NameValue
           name={<Name name={formatMessage(messages.learningRateLabel)} />}

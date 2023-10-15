@@ -567,6 +567,14 @@
     "defaultMessage": "À quel point vous êtes sur le point de déverrouiller cette lettre.",
     "description": "Label title."
   },
+  "metric.lastSpeed.label": {
+    "defaultMessage": "Last typing speed",
+    "description": "Label name."
+  },
+  "metric.lastSpeed.title": {
+    "defaultMessage": "Typing speed in the last lesson ({speedUnitName}). The more, the better.",
+    "description": "Label title."
+  },
   "metric.learningRate.label": {
     "defaultMessage": "Taux d'apprentissage",
     "description": "Label name."

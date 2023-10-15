@@ -10,7 +10,7 @@ export const messages = defineMessages({
     id: "metric.averageSpeed.title",
     description: "Label title.",
     defaultMessage:
-      "Average typing speed ({speedUnitName}). The more, the better.",
+      "Average typing speed in all lessons ({speedUnitName}). The more, the better.",
   },
   bestSpeedLabel: {
     id: "metric.bestSpeed.label",
@@ -21,7 +21,18 @@ export const messages = defineMessages({
     id: "metric.bestSpeed.title",
     description: "Label title.",
     defaultMessage:
-      "Best typing speed ({speedUnitName}). The more, the better.",
+      "Best typing speed in all lessons ({speedUnitName}). The more, the better.",
+  },
+  lastSpeedLabel: {
+    id: "metric.lastSpeed.label",
+    description: "Label name.",
+    defaultMessage: "Last typing speed",
+  },
+  lastSpeedTitle: {
+    id: "metric.lastSpeed.title",
+    description: "Label title.",
+    defaultMessage:
+      "Typing speed in the last lesson ({speedUnitName}). The more, the better.",
   },
   confidenceLevelLabel: {
     id: "metric.confidenceLevel.label",

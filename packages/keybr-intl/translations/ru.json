@@ -556,7 +556,7 @@
     "description": "Label name."
   },
   "metric.bestSpeed.title": {
-    "defaultMessage": "Лучшая скорость ({speedUnitName}). Чем больше, тем лучше.",
+    "defaultMessage": "Лучшая скорость печати во всех уроках ({speedUnitName}). Чем больше, тем лучше.",
     "description": "Label title."
   },
   "metric.confidenceLevel.label": {
@@ -565,6 +565,14 @@
   },
   "metric.confidenceLevel.title": {
     "defaultMessage": "Насколько вы близки к разблокировке этой буквы.",
+    "description": "Label title."
+  },
+  "metric.lastSpeed.label": {
+    "defaultMessage": "Последняя скорость",
+    "description": "Label name."
+  },
+  "metric.lastSpeed.title": {
+    "defaultMessage": "Скорость печати в последнем уроке ({speedUnitName}). Чем больше, тем лучше.",
     "description": "Label title."
   },
   "metric.learningRate.label": {

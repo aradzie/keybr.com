@@ -58,7 +58,7 @@ export const useFormatter = (): Formatter => {
     };
     const formatConfidence = (confidence: number | null): string => {
       if (confidence != null) {
-        return formatNumber(confidence, 2);
+        return formatNumber(confidence, f2);
       } else {
         return formatMessage(messages.uncertainValue);
       }
