@@ -103,7 +103,7 @@ export class Layout implements EnumItem {
     /* id= */ "fr-ergol",
     /* xid= */ 0x34,
     /* name= */ "Ergo-L",
-    /* family= */ LayoutFamily.WORKMAN,
+    /* family= */ LayoutFamily.ERGO_L,
     /* language= */ Language.FR,
   );
   static readonly IT_IT = new Layout(
@@ -188,6 +188,7 @@ export class Layout implements EnumItem {
     Layout.FR_CA,
     Layout.FR_CH,
     Layout.FR_BEPO,
+    Layout.FR_ERGO_L,
     Layout.IT_IT,
     Layout.ES_ES,
     Layout.PT_BR,

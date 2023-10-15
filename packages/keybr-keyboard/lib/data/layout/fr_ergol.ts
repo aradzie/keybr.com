@@ -3,7 +3,7 @@
 import { type CodePointDict } from "../../types.ts";
 
 // prettier-ignore
-export const LAYOUT_FR_ERGO_L: CodePointDict = {
+export const LAYOUT_FR_ERGOL: CodePointDict = {
   Backquote: [/* ` */ 0x0060, /* ~ */ 0x007e],
   Digit1: [/* 1 */ 0x0031, /* ! */ 0x0021],
   Digit2: [/* 2 */ 0x0032, /* @ */ 0x0040],
@@ -17,8 +17,6 @@ export const LAYOUT_FR_ERGO_L: CodePointDict = {
   Digit0: [/* 0 */ 0x0030, /* ) */ 0x0029],
   Minus: [/* - */ 0x002d, /* _ */ 0x005f],
   Equal: [/* = */ 0x003d, /* + */ 0x002b],
-
-
   KeyQ: [/* q */ 0x0071, /* Q */ 0x0051],
   KeyW: [/* c */ 0x0063, /* C */ 0x0043],
   KeyE: [/* o */ 0x006f, /* O */ 0x004f],
@@ -32,7 +30,6 @@ export const LAYOUT_FR_ERGO_L: CodePointDict = {
   BracketLeft: [/* [ */ 0x005b, /* { */ 0x007b],
   BracketRight: [/* ] */ 0x005d, /* } */ 0x007d],
   Backslash: [/* \ */ 0x005c, /* | */ 0x007c],
-
   KeyA: [/* a */ 0x0061, /* A */ 0x0041],
   KeyS: [/* s */ 0x0073, /* S */ 0x0053],
   KeyD: [/* e */ 0x0065, /* E */ 0x0045],
@@ -43,11 +40,8 @@ export const LAYOUT_FR_ERGO_L: CodePointDict = {
   KeyK: [/* t */ 0x0074, /* T */ 0x0054],
   KeyL: [/* i */ 0x0069, /* I */ 0x0049],
   Semicolon: [/* u */ 0x0075, /* U */ 0x0055],
-
   Quote: [/* ' */ 0x0027, /* " */ 0x0022],
   IntlBackslash: [/* \ */ 0x005c, /* | */ 0x007c],
-  
-
   KeyZ: [/* z */ 0x007a, /* Z */ 0x005a],
   KeyX: [/* x */ 0x0078, /* X */ 0x0058],
   KeyC: [/* - */ 0x002d, /* ? */ 0x003f],
