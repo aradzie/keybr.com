@@ -1,6 +1,6 @@
 import { type LayoutConfig } from "../layout.ts";
 
-export const LAYOUT_FR_OPTIMOT: LayoutConfig = {
+export const LAYOUT_FR_OPTIMOT_ERGO: LayoutConfig = {
   codePoints: {
     Backquote: ["$", "€", "£", "©"],
     Digit1: ["«", "1", "“", "¼"],

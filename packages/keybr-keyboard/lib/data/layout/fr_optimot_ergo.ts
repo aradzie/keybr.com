@@ -3,7 +3,7 @@
 import { type CodePointDict } from "../../types.ts";
 
 // prettier-ignore
-export const LAYOUT_FR_OPTIMOT: CodePointDict = {
+export const LAYOUT_FR_OPTIMOT_ERGO: CodePointDict = {
   Backquote: [/* $ */ 0x0024, /* € */ 0x20ac, /* £ */ 0x00a3, /* © */ 0x00a9],
   Digit1: [/* « */ 0x00ab, /* 1 */ 0x0031, /* “ */ 0x201c, /* ¼ */ 0x00bc],
   Digit2: [/* » */ 0x00bb, /* 2 */ 0x0032, /* ” */ 0x201d, /* ½ */ 0x00bd],

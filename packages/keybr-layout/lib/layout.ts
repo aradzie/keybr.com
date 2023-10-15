@@ -106,11 +106,11 @@ export class Layout implements EnumItem {
     /* family= */ LayoutFamily.ERGO_L,
     /* language= */ Language.FR,
   );
-  static readonly FR_OPTIMOT = new Layout(
-    /* id= */ "fr-optimot",
+  static readonly FR_OPTIMOT_ERGO = new Layout(
+    /* id= */ "fr-optimot-ergo",
     /* xid= */ 0x35,
-    /* name= */ "Optimot",
-    /* family= */ LayoutFamily.OPTIMOT,
+    /* name= */ "Optimot Ergo",
+    /* family= */ LayoutFamily.OPTIMOT_ERGO,
     /* language= */ Language.FR,
   );
   static readonly IT_IT = new Layout(
@@ -196,7 +196,7 @@ export class Layout implements EnumItem {
     Layout.FR_CH,
     Layout.FR_BEPO,
     Layout.FR_ERGO_L,
-    Layout.FR_OPTIMOT,
+    Layout.FR_OPTIMOT_ERGO,
     Layout.IT_IT,
     Layout.ES_ES,
     Layout.PT_BR,
