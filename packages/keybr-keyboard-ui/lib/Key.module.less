@@ -1,7 +1,3 @@
-.key {
-  /* empty */
-}
-
 .button {
   fill: var(--KeyboardKey-button__color);
 }
@@ -65,9 +61,69 @@
   }
 }
 
+.fingerPinky {
+  .button {
+    fill: url(#finger-pinky);
+  }
+}
+
+.patternPinky {
+  fill: var(--KeyboardKey-pinky__color);
+}
+
+.fingerRing {
+  .button {
+    fill: url(#finger-ring);
+  }
+}
+
+.patternRing {
+  fill: var(--KeyboardKey-ring__color);
+}
+
+.fingerMiddle {
+  .button {
+    fill: url(#finger-middle);
+  }
+}
+
+.patternMiddle {
+  fill: var(--KeyboardKey-middle__color);
+}
+
+.fingerIndexLeft {
+  .button {
+    fill: url(#finger-indexLeft);
+  }
+}
+
+.patternIndexLeft {
+  fill: var(--KeyboardKey-indexLeft__color);
+}
+
+.fingerIndexRight {
+  .button {
+    fill: url(#finger-indexRight);
+  }
+}
+
+.patternIndexRight {
+  fill: var(--KeyboardKey-indexRight__color);
+}
+
+.fingerThumb {
+  .button {
+    fill: url(#finger-thumb);
+  }
+}
+
+.patternThumb {
+  fill: var(--KeyboardKey-thumb__color);
+}
+
 .depressedKey {
   .button {
-    fill: var(--KeyboardKey-button--depressed__color) !important;
+    fill: var(--KeyboardKey-button--depressed__color);
   }
 
   .text,
@@ -80,102 +136,4 @@
   .button {
     /* empty */
   }
-}
-
-.zone1 {
-  .button {
-    fill: url(#key-zone-a);
-  }
-}
-
-.zone2 {
-  .button {
-    fill: url(#key-zone-b);
-  }
-}
-
-.zone3 {
-  .button {
-    fill: url(#key-zone-a);
-  }
-}
-
-.zone4 {
-  .button {
-    fill: url(#key-zone-b);
-  }
-}
-
-.zone5 {
-  .button {
-    fill: url(#key-zone-a);
-  }
-}
-
-.zone6 {
-  .button {
-    fill: url(#key-zone-b);
-  }
-}
-
-.zone7 {
-  .button {
-    fill: url(#key-zone-a);
-  }
-}
-
-.zone8 {
-  .button {
-    fill: url(#key-zone-b);
-  }
-}
-
-.pinky {
-  .button {
-    fill: var(--KeyboardKey-pinky__color);
-  }
-}
-
-.ring {
-  .button {
-    fill: var(--KeyboardKey-ring__color);
-  }
-}
-
-.middle {
-  .button {
-    fill: var(--KeyboardKey-middle__color);
-  }
-}
-
-.indexLeft {
-  .button {
-    fill: var(--KeyboardKey-index-left__color);
-  }
-}
-
-.indexRight {
-  .button {
-    fill: var(--KeyboardKey-index-right__color);
-  }
-}
-
-.thumb {
-  .button {
-    fill: var(--KeyboardKey-thumb__color);
-  }
-}
-
-.patternBackground {
-  fill: var(--KeyboardKey-button__color);
-}
-
-.patternA {
-  stroke: var(--KeyboardZone--a__color);
-  stroke-width: 3px;
-}
-
-.patternB {
-  stroke: var(--KeyboardZone--b__color);
-  stroke-width: 3px;
 }

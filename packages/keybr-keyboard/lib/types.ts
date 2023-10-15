@@ -27,9 +27,7 @@ export type GeometryDict = {
     h: number,
     /** Key shape name, such as "key", "key-backspace", etc. */
     shape: string,
-    /** Keyboard zone name. */
-    zone?: string,
-    /** Finger to type key with */
+    /** Finger to type key with. */
     finger?: string,
   ];
 };

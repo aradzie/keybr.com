@@ -30,7 +30,6 @@ export const KeyboardPresenter = memo(function KeyboardPresenter({
       <KeyLayer
         depressedKeys={depressedKeys}
         toggledKeys={toggledKeys}
-        showZones={!focus}
         showColors={showColors}
       />
       {focus && <MarkerLayer />}

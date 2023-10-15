@@ -64,7 +64,7 @@ export function fingerSwitches(
     const key0 = keyboard.getKeyCombo(codePoint0);
     const key1 = keyboard.getKeyCombo(codePoint1);
     if (key0 && key1) {
-      if (key0.key.geometry.zone !== key1.key.geometry.zone) {
+      if (key0.key.geometry.finger !== key1.key.geometry.finger) {
         a += frequency;
       } else {
         b += frequency;

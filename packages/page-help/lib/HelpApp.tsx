@@ -241,7 +241,7 @@ export function HelpApp(): ReactNode {
           />
         </Figure.Caption>
         <VirtualKeyboard keyboard={keyboard}>
-          <KeyLayer showZones={true} />
+          <KeyLayer showColors={true} />
           <MarkerLayer />
           <ZonesLayer />
         </VirtualKeyboard>

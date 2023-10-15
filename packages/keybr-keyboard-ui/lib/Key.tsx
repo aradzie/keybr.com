@@ -20,7 +20,6 @@ export type KeyProps = {
   readonly onMouseEnter?: MouseEventHandler;
   readonly onMouseLeave?: MouseEventHandler;
   readonly onMouseUp?: MouseEventHandler;
-  readonly showZones?: boolean;
   readonly showFingers?: boolean;
   readonly children?: ReactNode;
 };
@@ -34,7 +33,6 @@ function makeKeyComponent(special: boolean): FunctionComponent<KeyProps> {
       depressed,
       toggled,
       keyboardKey: { id, geometry },
-      showZones,
       showColors,
       children,
       onClick,
@@ -44,12 +42,10 @@ function makeKeyComponent(special: boolean): FunctionComponent<KeyProps> {
       onMouseUp,
     } = props;
     const cn = clsx(
-      styles.key,
       special ? styles.specialKey : styles.simpleKey,
       depressed && styles.depressedKey,
       toggled && styles.toggledKey,
-      showZones && zoneStyleName(geometry.zone),
-      showColors && !showZones && fingerName(geometry.finger),
+      showColors && fingerStyleName(geometry.finger),
     );
     return (
       <svg
@@ -155,25 +151,58 @@ export const Secondary = memo(function Secondary({
 });
 
 export const Patterns = memo(function Patterns(): ReactNode {
+  const x = "M10 0H0v10h10z";
+  const a = "M-1 1l2-2M0 10L10 0M9 11l2-2";
+  const b = "M11 1L9-1m1 11L0 0m1 11l-2-2";
   return (
     <>
       <pattern
-        id="key-zone-a"
+        id="finger-pinky"
         patternUnits="userSpaceOnUse"
         width="10"
         height="10"
       >
-        <path className={styles.patternBackground} d="M0 0h10v10H0z" />
-        <path className={styles.patternA} d="M-1 1l2-2M0 10L10 0M9 11l2-2" />
+        <path className={styles.patternPinky} d={x} />
       </pattern>
       <pattern
-        id="key-zone-b"
+        id="finger-ring"
         patternUnits="userSpaceOnUse"
         width="10"
         height="10"
       >
-        <path className={styles.patternBackground} d="M10 0H0v10h10z" />
-        <path className={styles.patternB} d="M11 1L9-1m1 11L0 0m1 11l-2-2" />
+        <path className={styles.patternRing} d={x} />
+      </pattern>
+      <pattern
+        id="finger-middle"
+        patternUnits="userSpaceOnUse"
+        width="10"
+        height="10"
+      >
+        <path className={styles.patternMiddle} d={x} />
+      </pattern>
+      <pattern
+        id="finger-indexLeft"
+        patternUnits="userSpaceOnUse"
+        width="10"
+        height="10"
+      >
+        <path className={styles.patternIndexLeft} d={x} />
+      </pattern>
+      <pattern
+        id="finger-indexRight"
+        patternUnits="userSpaceOnUse"
+        width="10"
+        height="10"
+      >
+        <path className={styles.patternIndexRight} d={x} />
+      </pattern>
+      <pattern
+        id="finger-thumb"
+        patternUnits="userSpaceOnUse"
+        width="10"
+        height="10"
+      >
+        <path className={styles.patternThumb} d={x} />
       </pattern>
     </>
   );
@@ -190,43 +219,20 @@ export function deadKeySymbol(codePoint: number): string {
   return String.fromCodePoint(/* ◌ */ 0x25cc, codePoint);
 }
 
-function zoneStyleName(zone: string | null): string | null {
-  switch (zone) {
-    case "z1":
-      return styles.zone1;
-    case "z2":
-      return styles.zone2;
-    case "z3":
-      return styles.zone3;
-    case "z4":
-      return styles.zone4;
-    case "z5":
-      return styles.zone5;
-    case "z6":
-      return styles.zone6;
-    case "z7":
-      return styles.zone7;
-    case "z8":
-      return styles.zone8;
-    default:
-      return null;
-  }
-}
-
-function fingerName(finger: string | null): string | null {
+function fingerStyleName(finger: string | null): string | null {
   switch (finger) {
     case "pinky":
-      return styles.pinky;
+      return styles.fingerPinky;
     case "ring":
-      return styles.ring;
+      return styles.fingerRing;
     case "middle":
-      return styles.middle;
+      return styles.fingerMiddle;
     case "indexLeft":
-      return styles.indexLeft;
+      return styles.fingerIndexLeft;
     case "indexRight":
-      return styles.indexRight;
+      return styles.fingerIndexRight;
     case "thumb":
-      return styles.thumb;
+      return styles.fingerThumb;
     default:
       return null;
   }

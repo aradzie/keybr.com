@@ -14,7 +14,6 @@ export type KeyGeometry = {
   readonly w: number;
   readonly h: number;
   readonly shape: string;
-  readonly zone: string | null;
   readonly finger: string | null;
 };
 
@@ -43,12 +42,12 @@ export class KeyboardKey {
 
   static special(
     id: KeyId,
-    { x, y, w, h, shape, zone, finger }: KeyGeometry,
+    { x, y, w, h, shape, finger }: KeyGeometry,
   ): KeyboardKey {
     return new KeyboardKey(
       id,
       { a: 0, b: 0, c: 0, d: 0 },
-      { x, y, w, h, shape, zone, finger },
+      { x, y, w, h, shape, finger },
     );
   }
 }

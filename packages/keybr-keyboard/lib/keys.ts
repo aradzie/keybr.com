@@ -22,23 +22,17 @@ export const makeKeys = (
     const geometry = geometryDict[id];
     if (geometry != null) {
       const [a = 0, b = 0, c = 0, d = 0] = codePoints;
-      const [x, y, w, h, shape, zone = null, finger = null] = geometry;
+      const [x, y, w, h, shape, finger = null] = geometry;
       keys.push(
-        new KeyboardKey(
-          id,
-          { a, b, c, d },
-          { x, y, w, h, shape, zone, finger },
-        ),
+        new KeyboardKey(id, { a, b, c, d }, { x, y, w, h, shape, finger }),
       );
     }
   }
   for (const [id, geometry] of Object.entries(geometryDict)) {
     const codePoints = codePointDict[id];
     if (codePoints == null) {
-      const [x, y, w, h, shape, zone = null, finger = null] = geometry;
-      specialKeys.push(
-        KeyboardKey.special(id, { x, y, w, h, shape, zone, finger }),
-      );
+      const [x, y, w, h, shape, finger = null] = geometry;
+      specialKeys.push(KeyboardKey.special(id, { x, y, w, h, shape, finger }));
     }
   }
   if (full) {
@@ -47,13 +41,10 @@ export const makeKeys = (
       GEOMETRY_CURSOR_PAD,
       GEOMETRY_NUM_PAD,
     ]) {
-      for (const [
-        id,
-        [x, y, w, h, shape, zone = null, finger = null],
-      ] of Object.entries(g)) {
-        extraKeys.push(
-          KeyboardKey.special(id, { x, y, w, h, shape, zone, finger }),
-        );
+      for (const [id, [x, y, w, h, shape, finger = null]] of Object.entries(
+        g,
+      )) {
+        extraKeys.push(KeyboardKey.special(id, { x, y, w, h, shape, finger }));
       }
     }
   }

@@ -290,7 +290,6 @@ function NormalLayout({
   readonly tour: ReactNode;
 }): ReactNode {
   const { settings } = useSettings();
-  const showColors = settings.get(keyboardProps.color);
   return (
     <Screen>
       <Indicators state={state} />
@@ -304,7 +303,7 @@ function NormalLayout({
           depressedKeys={depressedKeys}
           toggledKeys={toggledKeys}
           lastLesson={state.lastLesson}
-          showColors={showColors}
+          showColors={settings.get(keyboardProps.color) || !focus}
         />
       </div>
       <Announcer state={state} />
