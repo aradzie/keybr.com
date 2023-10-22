@@ -4,7 +4,7 @@ import { type CodePointDict } from "../../types.ts";
 
 // prettier-ignore
 export const LAYOUT_FR_ERGOL: CodePointDict = {
-  Backquote: [/* ` */ 0x0060, /* ~ */ 0x007e],
+  Backquote: [/* < */ 0x003c, /* > */ 0x003e],
   Digit1: [/* 1 */ 0x0031, /* ! */ 0x0021],
   Digit2: [/* 2 */ 0x0032, /* @ */ 0x0040],
   Digit3: [/* 3 */ 0x0033, /* # */ 0x0023],
@@ -41,7 +41,7 @@ export const LAYOUT_FR_ERGOL: CodePointDict = {
   KeyL: [/* i */ 0x0069, /* I */ 0x0049],
   Semicolon: [/* u */ 0x0075, /* U */ 0x0055],
   Quote: [/* ' */ 0x0027, /* " */ 0x0022],
-  IntlBackslash: [/* \ */ 0x005c, /* | */ 0x007c],
+  IntlBackslash: [/* ` */ 0x0060, /* ~ */ 0x007e],
   KeyZ: [/* z */ 0x007a, /* Z */ 0x005a],
   KeyX: [/* x */ 0x0078, /* X */ 0x0058],
   KeyC: [/* - */ 0x002d, /* ? */ 0x003f],
