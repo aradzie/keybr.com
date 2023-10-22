@@ -168,19 +168,19 @@
     "description": "Day of week name."
   },
   "characterClass.digits": {
-    "defaultMessage": "Digits",
+    "defaultMessage": "Цифри",
     "description": "Label."
   },
   "characterClass.letters": {
-    "defaultMessage": "Letters",
+    "defaultMessage": "Букви",
     "description": "Label."
   },
   "characterClass.punctuationCharacters": {
-    "defaultMessage": "Punctuation characters",
+    "defaultMessage": "Розділові знаки",
     "description": "Label."
   },
   "characterClass.specialCharacters": {
-    "defaultMessage": "Special characters",
+    "defaultMessage": "Спеціальні символи",
     "description": "Label."
   },
   "common.javaScriptDisabledText": {
@@ -432,7 +432,7 @@
     "description": "Link text."
   },
   "learningRate.alreadyUnlocked": {
-    "defaultMessage": "Цей літера вже розблокована.",
+    "defaultMessage": "Ця літера вже розблокована.",
     "description": "Message text."
   },
   "learningRate.remainingLessons": {
@@ -1012,7 +1012,7 @@
     "description": "Chart caption."
   },
   "profile.chart.keyFrequencyHeatmapDescription": {
-    "defaultMessage": "Ця діаграма показує відносну частоту літер як теплової карти.",
+    "defaultMessage": "Ця діаграма показує відносну частоту літер як теплову карту.",
     "description": "Chart description."
   },
   "profile.chart.keyFrequencyHistogramCaption": {
@@ -1020,7 +1020,7 @@
     "description": "Chart caption."
   },
   "profile.chart.keyFrequencyHistogramDescription": {
-    "defaultMessage": "Ця діаграма показує відносну частоту літер як гістограми.",
+    "defaultMessage": "Ця діаграма показує відносну частоту літер як гістограму.",
     "description": "Chart description."
   },
   "profile.chart.keyFrequencyHistogramLegend": {
@@ -1100,7 +1100,7 @@
     "description": "Button label."
   },
   "profile.control.shareButtonTitle": {
-    "defaultMessage": "Скопіюйте посилання на загальнодоступний профіль у буфер обміну.",
+    "defaultMessage": "Скопіює посилання на загальнодоступний профіль у буфер обміну.",
     "description": "Button title."
   },
   "profile.control.shareText": {
@@ -1204,7 +1204,7 @@
     "description": "Input field title."
   },
   "settings.alphabetSizeLabel": {
-    "defaultMessage": "Unlock more letters:",
+    "defaultMessage": "Відкрити більше літер:",
     "description": "Input field label."
   },
   "settings.benfordsLawDescription": {
@@ -1212,11 +1212,11 @@
     "description": "Description text."
   },
   "settings.benfordsLawLabel": {
-    "defaultMessage": "Закон Бенфорд.",
+    "defaultMessage": "Закон Бенфорда.",
     "description": "Input field label."
   },
   "settings.capitalLettersLabel": {
-    "defaultMessage": "Add capital letters:",
+    "defaultMessage": "Додати великі літери:",
     "description": "Input field label."
   },
   "settings.cursorMovementLabel": {
@@ -1236,27 +1236,27 @@
     "description": "Input field placeholder."
   },
   "settings.customTextLettersOnlyLabel": {
-    "defaultMessage": "Remove punctuation",
+    "defaultMessage": "Видалити розділові знаки",
     "description": "Input field label."
   },
   "settings.customTextLettersOnlyTitle": {
-    "defaultMessage": "Remove punctuation from the text to make it simpler to type.",
+    "defaultMessage": "Видаляє розділові знаки з тексту, щоб зробити його легшим для набору.",
     "description": "Input field title."
   },
   "settings.customTextLowercaseLabel": {
-    "defaultMessage": "Transform to lowercase",
+    "defaultMessage": "Перетворити на маленькі літери",
     "description": "Input field label."
   },
   "settings.customTextLowercaseTitle": {
-    "defaultMessage": "Transform all text to lower case to make it simpler to type.",
+    "defaultMessage": "Перетворює весь текст на маленькі літери, щоб зробити його легшим для набору.",
     "description": "Input field title."
   },
   "settings.customTextRandomizeLabel": {
-    "defaultMessage": "Shuffle words",
+    "defaultMessage": "Перемішати слова",
     "description": "Input field label."
   },
   "settings.customTextRandomizeTitle": {
-    "defaultMessage": "Put words from the custom text in a random order.",
+    "defaultMessage": "Розміщає слова в довільному порядку.",
     "description": "Input field title."
   },
   "settings.dailyGoalDescription": {
@@ -1296,7 +1296,7 @@
     "description": "Input field label."
   },
   "settings.keyboardFullViewLabel": {
-    "defaultMessage": "Full keyboard view",
+    "defaultMessage": "Повнорозмірна клавіатура",
     "description": "Input field label."
   },
   "settings.keyboardTabLabel": {
@@ -1304,7 +1304,7 @@
     "description": "Header text."
   },
   "settings.lessonLengthLabel": {
-    "defaultMessage": "Add words to lessons:",
+    "defaultMessage": "Додати слів до уроків:",
     "description": "Input field label."
   },
   "settings.lessonOptionsLegend": {
@@ -1328,7 +1328,7 @@
     "description": "Fieldset legend."
   },
   "settings.playSoundsLabel": {
-    "defaultMessage": "Play sounds:",
+    "defaultMessage": "Програвати звуки:",
     "description": "Input field label."
   },
   "settings.previewLabel": {
@@ -1340,7 +1340,7 @@
     "description": "Fieldset legend."
   },
   "settings.punctuationLabel": {
-    "defaultMessage": "Add punctuation characters:",
+    "defaultMessage": "Додати розділові знаки:",
     "description": "Input field label."
   },
   "settings.selectLanguageLabel": {
