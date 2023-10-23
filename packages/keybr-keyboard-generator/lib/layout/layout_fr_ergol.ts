@@ -2,7 +2,7 @@ import { type LayoutConfig } from "../layout.ts";
 
 export const LAYOUT_FR_ERGO_L: LayoutConfig = {
   codePoints: {
-    Backquote: "`~",
+    Backquote: "<>",
     Digit1: "1!",
     Digit2: "2@",
     Digit3: "3#",
@@ -39,7 +39,7 @@ export const LAYOUT_FR_ERGO_L: LayoutConfig = {
     KeyL: "iI",
     Semicolon: "uU",
     Quote: `'"`,
-    IntlBackslash: "\\|",
+    IntlBackslash: "`~",
     KeyZ: "zZ",
     KeyX: "xX",
     KeyC: "-?",
