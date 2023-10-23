@@ -1,3 +1,5 @@
+import "./buildinfo.ts";
+
 export * from "./init.tsx";
 export * from "./Slot.tsx";
 

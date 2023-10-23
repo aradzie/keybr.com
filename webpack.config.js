@@ -10,6 +10,7 @@ const ManifestPlugin = require("./webpack-manifest.js");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 const { transform } = require("@formatjs/ts-transformer");
 const { getHashDigest } = require("./scripts/lib/message-id.js");
+const gitCommitInfo = require("git-commit-info");
 const ENV = require("./packages/thirdparties/webpack-env.js");
 
 const mode = process.env.NODE_ENV || "production";
@@ -37,6 +38,8 @@ const assetModuleFilename = dev ? "[name]" : "[contenthash:16]";
 const localIdentName = dev
   ? "[name]__[local]__[hash:base64:10]"
   : "[hash:base64:10]";
+
+const commitInfo = gitCommitInfo({ cwd: __dirname });
 
 const rule_ts = () => ({
   test: /\.(ts|tsx)$/,
@@ -154,6 +157,7 @@ module.exports = [
     plugins: [
       new DefinePlugin({
         ...ENV,
+        "COMMIT_ID": JSON.stringify(commitInfo.hash),
         "typeof window": JSON.stringify("undefined"),
       }),
       new MiniCssExtractPlugin(),
@@ -244,6 +248,7 @@ module.exports = [
     plugins: [
       new DefinePlugin({
         ...ENV,
+        "COMMIT_ID": JSON.stringify(commitInfo.hash),
         "typeof window": JSON.stringify("object"),
       }),
       new MiniCssExtractPlugin({
