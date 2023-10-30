@@ -10,7 +10,7 @@ import {
   type CSSProperties,
   type ReactNode,
 } from "react";
-import { cn } from "./chars.tsx";
+import { classNames } from "./chars.tsx";
 import * as styles from "./Cursor.module.less";
 
 type Props = {
@@ -210,12 +210,12 @@ const cursorStyle: CSSProperties = {
   height: 0,
 };
 
-const cursorItemSelector = `.${cn.charsCursor}`;
+const cursorItemSelector = `.${classNames.cursor}`;
 
-const cnBlock = clsx(cn.chars, styles.cursor_block);
-const cnBox = clsx(cn.chars, styles.cursor_box);
-const cnLine = clsx(cn.chars, styles.cursor_line);
-const cnUnderline = clsx(cn.chars, styles.cursor_underline);
+const cnBlock = clsx(classNames.chars, styles.block);
+const cnBox = clsx(classNames.chars, styles.box);
+const cnLine = clsx(classNames.chars, styles.line);
+const cnUnderline = clsx(classNames.chars, styles.underline);
 
 function cursorClassName({
   caretShapeStyle,

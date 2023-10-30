@@ -90,7 +90,7 @@ export function TextArea({
     onFocus?.();
   }, [onFocus]);
   const handleBlur = useCallback(() => {
-    setFocus(false);
+    // setFocus(false);
     onBlur?.();
   }, [onBlur]);
   const handleClick = (event: BaseSyntheticEvent): void => {
