@@ -2,11 +2,11 @@ import { type Layout } from "@keybr/layout";
 import { type Histogram, type Stats } from "@keybr/textinput";
 import { type TextType } from "./texttype.ts";
 
-const MIN_TIME = 1000;
-const MIN_LENGTH = 10;
-const MIN_COMPLEXITY = 2;
-const MIN_VALID_SPEED = 50; // 50 CPM, 10 WPM
-const MAX_VALID_SPEED = 750; // 750 CPM, 150 WPM
+const kMinTime = 1000;
+const kMinLength = 10;
+const kMinComplexity = 2;
+const kMinSpeed = 5; // 5 CPM, 1 WPM
+const kMaxSpeed = 750; // 750 CPM, 150 WPM
 
 export class Result {
   static fromStats(
@@ -60,11 +60,11 @@ export class Result {
 
   validate(): boolean {
     return (
-      this.time >= MIN_TIME &&
-      this.length >= MIN_LENGTH &&
-      this.complexity >= MIN_COMPLEXITY &&
-      this.speed >= MIN_VALID_SPEED &&
-      this.speed <= MAX_VALID_SPEED
+      this.time >= kMinTime &&
+      this.length >= kMinLength &&
+      this.complexity >= kMinComplexity &&
+      this.speed >= kMinSpeed &&
+      this.speed <= kMaxSpeed
     );
   }
 
