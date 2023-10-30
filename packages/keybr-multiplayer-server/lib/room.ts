@@ -182,7 +182,7 @@ export class Room {
     if (this.#gameState === GameState.RUNNING) {
       if (!player.spectator && !player.finished) {
         player.lastInput = now;
-        player.textInput.step(message.codePoint, now);
+        player.textInput.appendChar(message.codePoint, now);
         updatePlayer(player, this.#started);
         if (player.offset === this.#text.length) {
           player.finished = true;

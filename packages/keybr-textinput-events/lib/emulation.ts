@@ -1,6 +1,9 @@
 import { type Keyboard, KeyModifier } from "@keybr/keyboard";
-import { Char_Backspace, Char_LineFeed, Char_Tab } from "./chars.ts";
-import { type KeyEvent, type TextInputListener } from "./types.ts";
+import {
+  type KeyEvent,
+  type TextInputEvent,
+  type TextInputListener,
+} from "./types.ts";
 
 export function emulateLayout(
   keyboard: Keyboard,
@@ -20,34 +23,36 @@ export function newLayoutEmulator(
 ): TextInputListener {
   return {
     onKeyDown: (event: KeyEvent): void => {
-      const mapped = remap(keyboard, event);
+      const [codePoint, mapped] = remap(keyboard, event);
       target.onKeyDown(mapped);
-      const { ctrlKey, altKey, metaKey, key, timeStamp } = mapped;
-      if (!(ctrlKey || altKey || metaKey)) {
-        switch (key) {
-          case "Backspace":
-            target.onTextInput(Char_Backspace, timeStamp);
-            break;
-          case "Tab":
-            target.onTextInput(Char_Tab, timeStamp);
-            break;
-          case "Enter":
-            target.onTextInput(Char_LineFeed, timeStamp);
-            break;
-          default: {
-            if (key.length === 1) {
-              target.onTextInput(key.codePointAt(0) ?? 0, timeStamp);
-            }
-            break;
-          }
+      if (codePoint > 0x0000) {
+        const { ctrlKey, altKey, metaKey, timeStamp } = mapped;
+        if (!(ctrlKey || altKey || metaKey)) {
+          target.onTextInput({
+            timeStamp,
+            inputType: "appendChar",
+            codePoint,
+          });
         }
       }
     },
     onKeyUp: (event: KeyEvent): void => {
-      const mapped = remap(keyboard, event);
+      const [codePoint, mapped] = remap(keyboard, event);
       target.onKeyUp(mapped);
     },
-    onTextInput: (codePoint: number, timeStamp: number): void => {},
+    onTextInput: (event: TextInputEvent): void => {
+      switch (event.inputType) {
+        case "appendChar":
+          if (event.codePoint === 0x0020) {
+            target.onTextInput(event);
+          }
+          break;
+        case "clearChar":
+        case "clearWord":
+          target.onTextInput(event);
+          break;
+      }
+    },
   };
 }
 
@@ -64,23 +69,27 @@ function remap(
     location,
     repeat,
   }: KeyEvent,
-): KeyEvent {
+): [number, KeyEvent] {
   const layoutKey = layout.getKey(code);
+  let codePoint = 0x0000;
   if (layoutKey != null) {
-    const codePoint = layoutKey.codePoint(KeyModifier.of({ shiftKey, altKey }));
-    if (codePoint > 0) {
+    codePoint = layoutKey.codePoint(KeyModifier.of({ shiftKey, altKey }));
+    if (codePoint > 0x0000) {
       key = String.fromCodePoint(codePoint);
     }
   }
-  return {
-    timeStamp,
-    code,
-    key,
-    shiftKey,
-    altKey,
-    ctrlKey,
-    metaKey,
-    location,
-    repeat,
-  };
+  return [
+    codePoint,
+    {
+      timeStamp,
+      code,
+      key,
+      shiftKey,
+      altKey,
+      ctrlKey,
+      metaKey,
+      location,
+      repeat,
+    },
+  ];
 }

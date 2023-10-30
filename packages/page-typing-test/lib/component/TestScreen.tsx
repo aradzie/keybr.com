@@ -1,5 +1,6 @@
 import { Screen } from "@keybr/pages-shared";
 import { type LineList, newStats, type Stats } from "@keybr/textinput";
+import { type TextInputEvent } from "@keybr/textinput-events";
 import { type Focusable, TextArea } from "@keybr/textinput-ui";
 import { Component, createRef, type ReactNode } from "react";
 import { type Mark, type TextGenerator } from "../generator/index.ts";
@@ -58,12 +59,9 @@ export class TestScreen extends Component<Props, State> {
     this.setState(nextTest(this.props, this.state.mark));
   };
 
-  private handleTextInput = (codePoint: number, timeStamp: number): void => {
+  private handleTextInput = (event: TextInputEvent): void => {
     const { session } = this.state;
-    const [feedback, progress, completed] = session.handleTextInput(
-      codePoint,
-      timeStamp,
-    );
+    const [feedback, progress, completed] = session.handleTextInput(event);
     const lines = [...session.getLines()]; // Make a copy to force render.
     this.setState({
       lines: { text: "", lines },

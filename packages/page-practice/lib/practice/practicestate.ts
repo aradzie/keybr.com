@@ -13,6 +13,7 @@ import {
   toTextDisplaySettings,
   toTextInputSettings,
 } from "@keybr/textinput";
+import { type TextInputEvent } from "@keybr/textinput-events";
 import { type Announcement } from "./Announcer.tsx";
 
 export type LastLesson = {
@@ -57,8 +58,8 @@ export class PracticeState {
     this._reset(this.lesson.generate(this.lessonKeys));
   }
 
-  handleTextInput(codePoint: number, timeStamp: number): Feedback {
-    const feedback = this.textInput.step(codePoint, timeStamp);
+  handleTextInput(event: TextInputEvent): Feedback {
+    const feedback = this.textInput.onTextInput(event);
     this.lines = this.textInput.getLines();
     if (this.textInput.completed) {
       this.appendResult(

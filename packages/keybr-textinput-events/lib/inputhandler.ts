@@ -1,6 +1,5 @@
-import { Char_Backspace, Char_LineFeed, Char_Tab } from "./chars.ts";
 import { ModifierState } from "./modifiers.ts";
-import { type Focusable, type KeyEvent } from "./types.ts";
+import { type Focusable, type KeyEvent, type TextInputEvent } from "./types.ts";
 
 // https://w3c.github.io/uievents/
 // https://www.w3.org/TR/input-events-1/
@@ -12,7 +11,7 @@ export type Listeners = {
   readonly onBlur?: () => void;
   readonly onKeyDown?: (event: KeyEvent) => void;
   readonly onKeyUp?: (event: KeyEvent) => void;
-  readonly onTextInput?: (codePoint: number, timeStamp: number) => void;
+  readonly onTextInput?: (event: TextInputEvent) => void;
 };
 
 export class InputHandler implements Focusable {
@@ -50,13 +49,11 @@ export class InputHandler implements Focusable {
       input.addEventListener("blur", this.handleBlur);
       input.addEventListener("keydown", this.handleKeyDown);
       input.addEventListener("keyup", this.handleKeyUp);
+      input.addEventListener("beforeinput", this.handleBeforeInput as any);
       input.addEventListener("input", this.handleInput as any);
       input.addEventListener("compositionstart", this.handleComposition);
       input.addEventListener("compositionupdate", this.handleComposition);
       input.addEventListener("compositionend", this.handleComposition);
-      input.addEventListener("cut", this.handleClipboard);
-      input.addEventListener("copy", this.handleClipboard);
-      input.addEventListener("paste", this.handleClipboard);
     }
     this.focus();
     this.clearInput();
@@ -69,13 +66,11 @@ export class InputHandler implements Focusable {
       input.removeEventListener("blur", this.handleBlur);
       input.removeEventListener("keydown", this.handleKeyDown);
       input.removeEventListener("keyup", this.handleKeyUp);
+      input.removeEventListener("beforeinput", this.handleBeforeInput as any);
       input.removeEventListener("input", this.handleInput as any);
       input.removeEventListener("compositionstart", this.handleComposition);
       input.removeEventListener("compositionupdate", this.handleComposition);
       input.removeEventListener("compositionend", this.handleComposition);
-      input.removeEventListener("cut", this.handleClipboard);
-      input.removeEventListener("copy", this.handleClipboard);
-      input.removeEventListener("paste", this.handleClipboard);
     }
   }
 
@@ -102,19 +97,10 @@ export class InputHandler implements Focusable {
     }
     const timeStamp = timeStampOf(event);
     this.listeners.onKeyDown?.(toKeyEvent(event, timeStamp));
-    const { ctrlKey, altKey, metaKey, key } = event;
+    const { ctrlKey, altKey, metaKey, code } = event;
     if (!(ctrlKey || altKey || metaKey)) {
-      switch (key) {
-        case "Backspace":
-          this.sendChar(Char_Backspace, timeStamp);
-          event.preventDefault();
-          break;
+      switch (code) {
         case "Tab":
-          this.sendChar(Char_Tab, timeStamp);
-          event.preventDefault();
-          break;
-        case "Enter":
-          this.sendChar(Char_LineFeed, timeStamp);
           event.preventDefault();
           break;
       }
@@ -131,6 +117,41 @@ export class InputHandler implements Focusable {
     this.listeners.onKeyUp?.(toKeyEvent(event, timeStamp));
   };
 
+  private handleBeforeInput = (event: InputEvent): void => {
+    if (process.env.NODE_ENV === "production") {
+      if (!(event instanceof InputEvent && event.isTrusted)) {
+        return;
+      }
+    }
+    const timeStamp = timeStampOf(event);
+    switch (event.inputType) {
+      case "insertLineBreak":
+        this.listeners.onTextInput?.({
+          timeStamp,
+          inputType: "appendChar",
+          codePoint: 0x0020,
+        });
+        this.clearInput();
+        break;
+      case "deleteContentBackward":
+        this.listeners.onTextInput?.({
+          timeStamp,
+          inputType: "clearChar",
+          codePoint: 0x0000,
+        });
+        this.clearInput();
+        break;
+      case "deleteWordBackward":
+        this.listeners.onTextInput?.({
+          timeStamp,
+          inputType: "clearWord",
+          codePoint: 0x0000,
+        });
+        this.clearInput();
+        break;
+    }
+  };
+
   private handleInput = (event: InputEvent): void => {
     if (process.env.NODE_ENV === "production") {
       if (!(event instanceof InputEvent && event.isTrusted)) {
@@ -140,10 +161,8 @@ export class InputHandler implements Focusable {
     const timeStamp = timeStampOf(event);
     switch (event.inputType) {
       case "insertText":
-      case "insertCompositionText":
-        if (!this.compositing) {
-          this.sendEventData(event.data, timeStamp);
-        }
+        this.appendChar(event.data, timeStamp);
+        this.clearInput();
         break;
     }
   };
@@ -157,25 +176,23 @@ export class InputHandler implements Focusable {
         break;
       case "compositionend":
         this.compositing = false;
-        this.sendEventData(event.data, timeStamp);
+        this.appendChar(event.data, timeStamp);
+        this.clearInput();
         break;
     }
   };
 
-  private handleClipboard = (event: ClipboardEvent): void => {
-    event.preventDefault();
-  };
-
-  private sendChar(codePoint: number, timeStamp: number): void {
-    this.listeners.onTextInput?.(codePoint, timeStamp);
-    this.clearInput();
-  }
-
-  private sendEventData(data: string | null, timeStamp: number): void {
+  private appendChar(data: string | null, timeStamp: number): void {
     if (data != null && data.length > 0) {
-      this.listeners.onTextInput?.(data.codePointAt(0) ?? 0, timeStamp);
+      const codePoint = data.codePointAt(0) ?? 0x0000;
+      if (codePoint > 0x0000) {
+        this.listeners.onTextInput?.({
+          timeStamp,
+          inputType: "appendChar",
+          codePoint,
+        });
+      }
     }
-    this.clearInput();
   }
 }
 

@@ -1,5 +1,9 @@
 import { type LineList, type TextDisplaySettings } from "@keybr/textinput";
-import { type KeyEvent, TextEvents } from "@keybr/textinput-events";
+import {
+  type KeyEvent,
+  TextEvents,
+  type TextInputEvent,
+} from "@keybr/textinput-events";
 import {
   type BaseSyntheticEvent,
   type ComponentType,
@@ -41,7 +45,7 @@ export function TextArea({
   readonly onBlur?: () => void;
   readonly onKeyDown?: (event: KeyEvent) => void;
   readonly onKeyUp?: (event: KeyEvent) => void;
-  readonly onTextInput?: (codePoint: number, timeStamp: number) => void;
+  readonly onTextInput?: (event: TextInputEvent) => void;
   readonly focusRef?: RefObject<Focusable>;
 }): ReactNode {
   const innerRef = useRef<Focusable>(null);

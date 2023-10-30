@@ -3,7 +3,11 @@ import { addKey, deleteKey } from "@keybr/keyboard-ui";
 import { Screen } from "@keybr/pages-shared";
 import { enumProp, useSettings } from "@keybr/settings";
 import { type LineList } from "@keybr/textinput";
-import { type KeyEvent, ModifierState } from "@keybr/textinput-events";
+import {
+  type KeyEvent,
+  ModifierState,
+  type TextInputEvent,
+} from "@keybr/textinput-events";
 import { TextArea } from "@keybr/textinput-ui";
 import { PureComponent, type ReactNode } from "react";
 import { Prefs } from "../prefs.ts";
@@ -23,7 +27,7 @@ type Props = {
   readonly onSkipLesson: () => void;
   readonly onKeyDown: (ev: KeyEvent) => void;
   readonly onKeyUp: (ev: KeyEvent) => void;
-  readonly onTextInput: (codePoint: number, timeStamp: number) => void;
+  readonly onTextInput: (ev: TextInputEvent) => void;
   readonly onConfigure: () => void;
 };
 
@@ -204,9 +208,9 @@ export class Presenter extends PureComponent<Props, State> {
     }
   };
 
-  private handleTextInput = (codePoint: number, timeStamp: number): void => {
+  private handleTextInput = (ev: TextInputEvent): void => {
     if (this.state.focus) {
-      this.props.onTextInput(codePoint, timeStamp);
+      this.props.onTextInput(ev);
     }
   };
 

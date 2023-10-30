@@ -1,4 +1,8 @@
-import { type KeyEvent, type TextInputListener } from "../types.ts";
+import {
+  type KeyEvent,
+  type TextInputEvent,
+  type TextInputListener,
+} from "../types.ts";
 
 class FakeEvent {
   readonly isTrusted: boolean = true;
@@ -65,10 +69,10 @@ export function newFakeInputEvent({
   inputType,
   data = null,
 }: {
-  type: "input";
+  type: "beforeinput" | "input";
   timeStamp?: number;
   inputType: string;
-  data: string | null;
+  data?: string | null;
 }) {
   return new (class FakeInputEvent extends FakeEvent {
     readonly inputType = inputType;
@@ -106,8 +110,14 @@ export function tracingListener(trace: string[]): TextInputListener {
     onKeyUp = ({ code, key, timeStamp }: KeyEvent): void => {
       trace.push(`keyup:${code},${key},${timeStamp}`);
     };
-    onTextInput = (codePoint: number, timeStamp: number): void => {
-      trace.push(`input:${String.fromCodePoint(codePoint)},${timeStamp}`);
+    onTextInput = ({
+      inputType,
+      codePoint,
+      timeStamp,
+    }: TextInputEvent): void => {
+      trace.push(
+        `${inputType}:${String.fromCodePoint(codePoint)},${timeStamp}`,
+      );
     };
   })();
 }

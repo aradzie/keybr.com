@@ -34,8 +34,11 @@ export class TextInput {
     { stopOnError, forgiveErrors, spaceSkipsWords }: TextInputSettings,
     onStep: StepListener = () => {},
   ) {
-    this.text = text.normalize("NFC");
-    this.codePoints = [...toCodePoints(text)].map(normalizeWhitespace);
+    const codePoints = [...toCodePoints(text.normalize("NFC"))].map(
+      normalizeWhitespace,
+    );
+    this.text = String.fromCodePoint(...codePoints);
+    this.codePoints = codePoints;
     this.stopOnError = stopOnError;
     this.forgiveErrors = forgiveErrors;
     this.spaceSkipsWords = spaceSkipsWords;
@@ -53,7 +56,49 @@ export class TextInput {
     return this._steps.length === this.codePoints.length;
   }
 
-  step(codePoint: number, timeStamp: number): Feedback {
+  onTextInput({
+    timeStamp,
+    inputType,
+    codePoint,
+  }: {
+    readonly timeStamp: number;
+    readonly inputType: "appendChar" | "clearChar" | "clearWord";
+    readonly codePoint: number;
+  }): Feedback {
+    switch (inputType) {
+      case "appendChar":
+        return this.appendChar(codePoint, timeStamp);
+      case "clearChar":
+        return this.clearChar();
+      case "clearWord":
+        return this.clearWord();
+    }
+  }
+
+  clearChar(): Feedback {
+    if (this._garbage.length > 0) {
+      this._garbage.pop();
+    }
+    this._typo = true;
+    return Feedback.Succeeded;
+  }
+
+  clearWord(): Feedback {
+    if (this._garbage.length > 0) {
+      this._garbage = [];
+    }
+    while (this._steps.length > 0) {
+      if (this.codePoints[this._steps.length - 1] !== 0x0020) {
+        this._steps.pop();
+      } else {
+        break;
+      }
+    }
+    this._typo = true;
+    return Feedback.Succeeded;
+  }
+
+  appendChar(codePoint: number, timeStamp: number): Feedback {
     if (this.completed) {
       // Cannot enter any more characters if already completed.
       throw new Error();
@@ -64,19 +109,9 @@ export class TextInput {
       this._steps.length === 0 &&
       this._garbage.length === 0 &&
       !this._typo &&
-      normalizeWhitespace(codePoint) === 0x0020
+      codePoint === 0x0020
     ) {
       return Feedback.Succeeded;
-    }
-
-    // Handle the delete key.
-    if (codePoint === 0x0008) {
-      if (this._garbage.length > 0) {
-        this._garbage.pop();
-        return Feedback.Succeeded;
-      } else {
-        return Feedback.Failed;
-      }
     }
 
     // Handle the space key.
@@ -90,12 +125,13 @@ export class TextInput {
           this.codePoints[this._steps.length - 1] === 0x0020)
       ) {
         // At the beginning of a word.
-        return Feedback.Succeeded;
+        this._typo = true;
+        return Feedback.Failed;
       }
 
       if (this.spaceSkipsWords) {
         // Inside a word.
-        this._handleSpace(timeStamp);
+        this._skipWord(timeStamp);
         return Feedback.Recovered;
       }
     }
@@ -180,7 +216,7 @@ export class TextInput {
     this.onStep(step);
   }
 
-  private _handleSpace(timeStamp: number): void {
+  private _skipWord(timeStamp: number): void {
     this._addStep({
       codePoint: this.codePoints[this._steps.length],
       timeStamp,

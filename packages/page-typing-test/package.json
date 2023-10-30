@@ -18,6 +18,7 @@
     "@keybr/settings": "*",
     "@keybr/settings-loader": "*",
     "@keybr/textinput": "*",
+    "@keybr/textinput-events": "*",
     "@keybr/textinput-ui": "*",
     "@keybr/widget": "*"
   },

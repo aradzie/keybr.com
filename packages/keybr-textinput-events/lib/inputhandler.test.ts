@@ -7,9 +7,13 @@ import {
   tracingListener,
 } from "./testing/fakes.ts";
 
-test("handle a normal key press", (t) => {
+test("handle a normal input", (t) => {
+  // Arrange.
+
   const trace: string[] = [];
   const handler = tracingInputHandler(trace);
+
+  // Act.
 
   handler.handleKeyDown(
     newFakeKeyboardEvent({
@@ -36,19 +40,33 @@ test("handle a normal key press", (t) => {
     }),
   );
 
-  t.deepEqual(trace, ["keydown:KeyA,a,1", "input:a,1", "keyup:KeyA,a,2"]);
+  // Assert.
+
+  t.deepEqual(trace, ["keydown:KeyA,a,1", "appendChar:a,1", "keyup:KeyA,a,2"]);
 });
 
-test("handle a composite key press", (t) => {
+test("handle a composite input", (t) => {
+  // Arrange.
+
   const trace: string[] = [];
   const handler = tracingInputHandler(trace);
+
+  // Act.
 
   handler.handleKeyDown(
     newFakeKeyboardEvent({
       type: "keydown",
       timeStamp: 1.123,
-      code: "KeyA",
-      key: "a",
+      code: "AltRight",
+      key: "AltGraph",
+    }),
+  );
+  handler.handleKeyDown(
+    newFakeKeyboardEvent({
+      type: "keydown",
+      timeStamp: 2.123,
+      code: "Semicolon",
+      key: "Dead",
     }),
   );
   handler.handleComposition(
@@ -58,73 +76,248 @@ test("handle a composite key press", (t) => {
       data: "",
     }),
   );
-  handler.handleInput(
+  handler.handleBeforeInput(
     newFakeInputEvent({
-      type: "input",
-      timeStamp: 3.123,
-      inputType: "insertText",
-      data: "a",
+      type: "beforeinput",
+      timeStamp: 2.123,
+      inputType: "insertCompositionText",
+      data: "´",
     }),
   );
   handler.handleComposition(
     newFakeCompositionEvent({
-      type: "compositionend",
-      timeStamp: 4.123,
-      data: "ä",
+      type: "compositionupdate",
+      timeStamp: 2.123,
+      data: "´",
+    }),
+  );
+  handler.handleInput(
+    newFakeInputEvent({
+      type: "input",
+      timeStamp: 2.123,
+      inputType: "insertCompositionText",
+      data: "´",
     }),
   );
   handler.handleKeyUp(
     newFakeKeyboardEvent({
       type: "keyup",
+      timeStamp: 3.123,
+      code: "Semicolon",
+      key: "Dead",
+    }),
+  );
+  handler.handleKeyUp(
+    newFakeKeyboardEvent({
+      type: "keyup",
+      timeStamp: 4.123,
+      code: "AltRight",
+      key: "AltGraph",
+    }),
+  );
+  handler.handleKeyDown(
+    newFakeKeyboardEvent({
+      type: "keydown",
       timeStamp: 5.123,
       code: "KeyA",
       key: "a",
     }),
   );
+  handler.handleBeforeInput(
+    newFakeInputEvent({
+      type: "beforeinput",
+      timeStamp: 5.123,
+      inputType: "insertCompositionText",
+      data: "á",
+    }),
+  );
+  handler.handleComposition(
+    newFakeCompositionEvent({
+      type: "compositionupdate",
+      timeStamp: 5.123,
+      data: "á",
+    }),
+  );
+  handler.handleInput(
+    newFakeInputEvent({
+      type: "input",
+      timeStamp: 5.123,
+      inputType: "insertCompositionText",
+      data: "á",
+    }),
+  );
+  handler.handleComposition(
+    newFakeCompositionEvent({
+      type: "compositionend",
+      timeStamp: 5.123,
+      data: "á",
+    }),
+  );
+  handler.handleKeyDown(
+    newFakeKeyboardEvent({
+      type: "keyup",
+      timeStamp: 6.123,
+      code: "KeyA",
+      key: "a",
+    }),
+  );
 
-  t.deepEqual(trace, ["keydown:KeyA,a,1", "input:ä,4", "keyup:KeyA,a,5"]);
+  // Assert.
+
+  t.deepEqual(trace, [
+    "keydown:AltRight,AltGraph,1",
+    "keydown:Semicolon,Dead,2",
+    "keyup:Semicolon,Dead,3",
+    "keyup:AltRight,AltGraph,4",
+    "keydown:KeyA,a,5",
+    "appendChar:á,5",
+    "keydown:KeyA,a,6",
+  ]);
 });
 
-test("handle a special key press without modifiers", (t) => {
+test("handle a clear char input", (t) => {
+  // Arrange.
+
   const trace: string[] = [];
   const handler = tracingInputHandler(trace);
 
-  let keyDown: any;
-  let keyUp: any;
+  // Act.
 
   handler.handleKeyDown(
-    (keyDown = newFakeKeyboardEvent({
+    newFakeKeyboardEvent({
       type: "keydown",
       timeStamp: 1.123,
       code: "Backspace",
       key: "Backspace",
-    })),
+      ctrlKey: false,
+    }),
+  );
+  handler.handleBeforeInput(
+    newFakeInputEvent({
+      type: "beforeinput",
+      inputType: "deleteContentBackward",
+      timeStamp: 1.123,
+    }),
   );
   handler.handleKeyUp(
-    (keyUp = newFakeKeyboardEvent({
+    newFakeKeyboardEvent({
       type: "keyup",
       timeStamp: 2.123,
       code: "Backspace",
       key: "Backspace",
-    })),
+      ctrlKey: false,
+    }),
   );
 
-  t.true(keyDown.defaultPrevented);
-  t.false(keyUp.defaultPrevented);
+  // Assert.
 
   t.deepEqual(trace, [
     "keydown:Backspace,Backspace,1",
-    "input:\u0008,1",
+    "clearChar:\u0000,1",
     "keyup:Backspace,Backspace,2",
   ]);
 });
 
-test("handle a special key press with modifiers", (t) => {
+test("handle a clear word input", (t) => {
+  // Arrange.
+
+  const trace: string[] = [];
+  const handler = tracingInputHandler(trace);
+
+  // Act.
+
+  handler.handleKeyDown(
+    newFakeKeyboardEvent({
+      type: "keydown",
+      timeStamp: 1.123,
+      code: "Backspace",
+      key: "Backspace",
+      ctrlKey: true,
+    }),
+  );
+  handler.handleBeforeInput(
+    newFakeInputEvent({
+      type: "beforeinput",
+      inputType: "deleteWordBackward",
+      timeStamp: 1.123,
+    }),
+  );
+  handler.handleKeyUp(
+    newFakeKeyboardEvent({
+      type: "keyup",
+      timeStamp: 2.123,
+      code: "Backspace",
+      key: "Backspace",
+      ctrlKey: true,
+    }),
+  );
+
+  // Assert.
+
+  t.deepEqual(trace, [
+    "keydown:Backspace,Backspace,1",
+    "clearWord:\u0000,1",
+    "keyup:Backspace,Backspace,2",
+  ]);
+});
+
+test("handle the enter key", (t) => {
+  // Arrange.
+
   const trace: string[] = [];
   const handler = tracingInputHandler(trace);
 
   let keyDown: any;
   let keyUp: any;
+
+  // Act.
+
+  handler.handleKeyDown(
+    (keyDown = newFakeKeyboardEvent({
+      type: "keydown",
+      timeStamp: 1.123,
+      code: "NumpadEnter",
+      key: "Enter",
+    })),
+  );
+  handler.handleBeforeInput(
+    newFakeInputEvent({
+      type: "beforeinput",
+      inputType: "insertLineBreak",
+      timeStamp: 1.123,
+    }),
+  );
+  handler.handleKeyUp(
+    (keyUp = newFakeKeyboardEvent({
+      type: "keyup",
+      timeStamp: 2.123,
+      code: "NumpadEnter",
+      key: "Enter",
+    })),
+  );
+
+  // Assert.
+
+  t.false(keyDown.defaultPrevented);
+  t.false(keyUp.defaultPrevented);
+
+  t.deepEqual(trace, [
+    "keydown:NumpadEnter,Enter,1",
+    "appendChar: ,1",
+    "keyup:NumpadEnter,Enter,2",
+  ]);
+});
+
+test("handle the tab", (t) => {
+  // Arrange.
+
+  const trace: string[] = [];
+  const handler = tracingInputHandler(trace);
+
+  let keyDown: any;
+  let keyUp: any;
+
+  // Act.
 
   handler.handleKeyDown(
     (keyDown = newFakeKeyboardEvent({
@@ -132,7 +325,6 @@ test("handle a special key press with modifiers", (t) => {
       timeStamp: 1.123,
       code: "Tab",
       key: "Tab",
-      ctrlKey: true,
     })),
   );
   handler.handleKeyUp(
@@ -141,11 +333,12 @@ test("handle a special key press with modifiers", (t) => {
       timeStamp: 2.123,
       code: "Tab",
       key: "Tab",
-      ctrlKey: true,
     })),
   );
 
-  t.false(keyDown.defaultPrevented);
+  // Assert.
+
+  t.true(keyDown.defaultPrevented);
   t.false(keyUp.defaultPrevented);
 
   t.deepEqual(trace, ["keydown:Tab,Tab,1", "keyup:Tab,Tab,2"]);

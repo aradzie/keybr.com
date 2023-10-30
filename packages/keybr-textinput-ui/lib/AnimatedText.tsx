@@ -42,7 +42,7 @@ function useAnimatedTextState(text: string): readonly Char[] {
       if (codePoints.length === steps.length) {
         textInput.reset();
       } else {
-        textInput.step(codePoints[steps.length], 0);
+        textInput.appendChar(codePoints[steps.length], 0);
       }
       const chars = textInput.getChars();
       setState({ textInput, chars });

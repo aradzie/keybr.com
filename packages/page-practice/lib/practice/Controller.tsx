@@ -68,9 +68,9 @@ function usePracticeState(state: PracticeState) {
       {
         onKeyDown: () => {},
         onKeyUp: () => {},
-        onTextInput: (codePoint, timeStamp) => {
+        onTextInput: (event) => {
           state.lastLesson = null;
-          const feedback = state.handleTextInput(codePoint, timeStamp);
+          const feedback = state.handleTextInput(event);
           setLines(state.lines);
           playSounds(feedback);
         },

@@ -10,6 +10,7 @@ import {
   type WorldState,
 } from "@keybr/multiplayer-shared";
 import { textDisplaySettings } from "@keybr/textinput";
+import { type TextInputEvent } from "@keybr/textinput-events";
 import { type Focusable, TextArea } from "@keybr/textinput-ui";
 import { useScreenSize } from "@keybr/widget";
 import { EventEmitter } from "events";
@@ -96,16 +97,18 @@ class WorldStateWrapper extends EventEmitter {
     this.setWorldState(updateWorldState(this.intl, this._worldState, message));
   };
 
-  handleTextInput = (codePoint: number): void => {
-    const result = handleTextInput(this._worldState, codePoint);
-    if (result != null) {
-      const { worldState, elapsed } = result;
-      this.setWorldState(worldState);
-      this.transport.send({
-        type: PLAYER_PROGRESS_ID,
-        elapsed,
-        codePoint,
-      });
+  handleTextInput = ({ inputType, codePoint }: TextInputEvent): void => {
+    if (inputType === "appendChar") {
+      const result = handleTextInput(this._worldState, codePoint);
+      if (result != null) {
+        const { worldState, elapsed } = result;
+        this.setWorldState(worldState);
+        this.transport.send({
+          type: PLAYER_PROGRESS_ID,
+          elapsed,
+          codePoint,
+        });
+      }
     }
   };
 

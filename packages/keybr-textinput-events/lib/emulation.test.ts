@@ -1,113 +1,104 @@
 import { loadKeyboard } from "@keybr/keyboard";
 import { Layout } from "@keybr/layout";
 import test from "ava";
-import { Char_Backspace, Char_LineFeed, Char_Tab } from "./chars.ts";
 import { emulateLayout } from "./emulation.ts";
 import { tracingListener } from "./testing/fakes.ts";
 import { type KeyEvent } from "./types.ts";
 
 test("translate without emulation", (t) => {
+  // Arrange.
+
   const trace: string[] = [];
-  const keyboard = loadKeyboard(Layout.EN_US, { full: false });
+  const keyboard = loadKeyboard(Layout.EN_US_DVORAK, { full: false });
   const target = tracingListener(trace);
   const listener = emulateLayout(keyboard, target, false);
+
+  // Assert.
 
   t.is(listener, target);
 });
 
-test("translate normal keys without modifiers", (t) => {
+test("translate with emulation", (t) => {
+  // Arrange.
+
   const trace: string[] = [];
-  const layout = Layout.EN_US_DVORAK;
-  const keyboard = loadKeyboard(layout, { full: false });
+  const keyboard = loadKeyboard(Layout.EN_US_DVORAK, { full: false });
   const target = tracingListener(trace);
   const listener = emulateLayout(keyboard, target, true);
-  t.not(listener, target);
 
-  // Input "s".
+  // Assert.
+
+  t.not(listener, target);
+});
+
+test("translate a normal input", (t) => {
+  // Arrange.
+
+  const trace: string[] = [];
+  const keyboard = loadKeyboard(Layout.EN_US_DVORAK, { full: false });
+  const target = tracingListener(trace);
+  const listener = emulateLayout(keyboard, target, true);
+
+  // Act.
 
   listener.onKeyDown(
     newKeyEvent({
       timeStamp: 1,
-      code: "KeyS",
-      key: "s",
-    }),
-  );
-  listener.onTextInput(0x73, 1);
-  listener.onKeyUp(
-    newKeyEvent({
-      timeStamp: 2,
-      code: "KeyS",
-      key: "s",
-    }),
-  );
-
-  // Press Shift.
-
-  listener.onKeyDown(
-    newKeyEvent({
-      timeStamp: 3,
       code: "ShiftLeft",
       key: "Shift",
       shiftKey: true,
     }),
   );
-
-  // Input Shift "S".
-
   listener.onKeyDown(
     newKeyEvent({
+      timeStamp: 2,
+      code: "KeyS",
+      key: "S",
+      shiftKey: true,
+    }),
+  );
+  listener.onTextInput({
+    timeStamp: 2,
+    inputType: "appendChar",
+    codePoint: 0x0053,
+  });
+  listener.onKeyUp(
+    newKeyEvent({
+      timeStamp: 3,
+      code: "KeyS",
+      key: "S",
+      shiftKey: true,
+    }),
+  );
+  listener.onKeyUp(
+    newKeyEvent({
       timeStamp: 4,
-      code: "KeyS",
-      key: "S",
-      shiftKey: true,
-    }),
-  );
-  listener.onTextInput(0x53, 4);
-  listener.onKeyUp(
-    newKeyEvent({
-      timeStamp: 5,
-      code: "KeyS",
-      key: "S",
-      shiftKey: true,
-    }),
-  );
-
-  // Release Shift.
-
-  listener.onKeyUp(
-    newKeyEvent({
-      timeStamp: 6,
       code: "ShiftLeft",
       key: "Shift",
       shiftKey: false,
     }),
   );
 
-  // Check results.
+  // Assert.
 
   t.deepEqual(trace, [
-    // "s"
-    "keydown:KeyS,o,1",
-    "input:o,1",
-    "keyup:KeyS,o,2",
-    // Shift "S"
-    "keydown:ShiftLeft,Shift,3",
-    "keydown:KeyS,O,4",
-    "input:O,4",
-    "keyup:KeyS,O,5",
-    "keyup:ShiftLeft,Shift,6",
+    "keydown:ShiftLeft,Shift,1",
+    "keydown:KeyS,O,2",
+    "appendChar:O,2",
+    "keyup:KeyS,O,3",
+    "keyup:ShiftLeft,Shift,4",
   ]);
 });
 
-test("translate normal keys with modifiers", (t) => {
+test("translate a control input", (t) => {
+  // Arrange.
+
   const trace: string[] = [];
-  const layout = Layout.EN_US_DVORAK;
-  const keyboard = loadKeyboard(layout, { full: false });
+  const keyboard = loadKeyboard(Layout.EN_US_DVORAK, { full: false });
   const target = tracingListener(trace);
   const listener = emulateLayout(keyboard, target, true);
-  t.not(listener, target);
 
-  // Press Control.
+  // Act.
 
   listener.onKeyDown(
     newKeyEvent({
@@ -117,9 +108,6 @@ test("translate normal keys with modifiers", (t) => {
       ctrlKey: true,
     }),
   );
-
-  // Input Ctrl "s".
-
   listener.onKeyDown(
     newKeyEvent({
       timeStamp: 2,
@@ -136,9 +124,6 @@ test("translate normal keys with modifiers", (t) => {
       ctrlKey: true,
     }),
   );
-
-  // Release Control.
-
   listener.onKeyUp(
     newKeyEvent({
       timeStamp: 4,
@@ -148,10 +133,9 @@ test("translate normal keys with modifiers", (t) => {
     }),
   );
 
-  // Check results.
+  // Assert.
 
   t.deepEqual(trace, [
-    // Ctrl "s"
     "keydown:ControlLeft,Control,1",
     "keydown:KeyS,o,2",
     "keyup:KeyS,o,3",
@@ -159,95 +143,56 @@ test("translate normal keys with modifiers", (t) => {
   ]);
 });
 
-test("translate special keys without modifiers", (t) => {
+test("translate a clear char input", (t) => {
+  // Arrange.
+
   const trace: string[] = [];
-  const layout = Layout.EN_US_DVORAK;
-  const keyboard = loadKeyboard(layout, { full: false });
+  const keyboard = loadKeyboard(Layout.EN_US_DVORAK, { full: false });
   const target = tracingListener(trace);
   const listener = emulateLayout(keyboard, target, true);
-  t.not(listener, target);
 
-  // Input Backspace.
+  // Act.
 
   listener.onKeyDown(
     newKeyEvent({
       timeStamp: 1,
       code: "Backspace",
       key: "Backspace",
+      ctrlKey: false,
     }),
   );
-  listener.onTextInput(Char_Backspace, 1);
+  listener.onTextInput({
+    timeStamp: 1,
+    inputType: "clearChar",
+    codePoint: 0x0000,
+  });
   listener.onKeyUp(
     newKeyEvent({
       timeStamp: 2,
       code: "Backspace",
       key: "Backspace",
+      ctrlKey: false,
     }),
   );
 
-  // Input Tab.
-
-  listener.onKeyDown(
-    newKeyEvent({
-      timeStamp: 3,
-      code: "Tab",
-      key: "Tab",
-    }),
-  );
-  listener.onTextInput(Char_Tab, 3);
-  listener.onKeyUp(
-    newKeyEvent({
-      timeStamp: 4,
-      code: "Tab",
-      key: "Tab",
-    }),
-  );
-
-  // Input Enter.
-
-  listener.onKeyDown(
-    newKeyEvent({
-      timeStamp: 5,
-      code: "Enter",
-      key: "Enter",
-    }),
-  );
-  listener.onTextInput(Char_LineFeed, 5);
-  listener.onKeyUp(
-    newKeyEvent({
-      timeStamp: 6,
-      code: "Enter",
-      key: "Enter",
-    }),
-  );
-
-  // Check results.
+  // Assert.
 
   t.deepEqual(trace, [
-    // Backspace
     "keydown:Backspace,Backspace,1",
-    "input:\u0008,1",
+    "clearChar:\u0000,1",
     "keyup:Backspace,Backspace,2",
-    // Tab
-    "keydown:Tab,Tab,3",
-    "input:\u0009,3",
-    "keyup:Tab,Tab,4",
-    // Enter
-    "keydown:Enter,Enter,5",
-    "input:\u000a,5",
-    "keyup:Enter,Enter,6",
   ]);
 });
 
-test("translate special keys with modifiers", (t) => {
+test("translate a clear word input", (t) => {
+  // Arrange.
+
   const trace: string[] = [];
-  const layout = Layout.EN_US_DVORAK;
-  const keyboard = loadKeyboard(layout, { full: false });
+  const keyboard = loadKeyboard(Layout.EN_US_DVORAK, { full: false });
   const target = tracingListener(trace);
   const listener = emulateLayout(keyboard, target, true);
-  t.not(listener, target);
 
-  // Press Control.
+  // Act.
 
   listener.onKeyDown(
     newKeyEvent({
@@ -257,9 +202,6 @@ test("translate special keys with modifiers", (t) => {
       ctrlKey: true,
     }),
   );
-
-  // Input Backspace.
-
   listener.onKeyDown(
     newKeyEvent({
       timeStamp: 2,
@@ -268,6 +210,11 @@ test("translate special keys with modifiers", (t) => {
       ctrlKey: true,
     }),
   );
+  listener.onTextInput({
+    timeStamp: 2,
+    inputType: "clearWord",
+    codePoint: 0x0000,
+  });
   listener.onKeyUp(
     newKeyEvent({
       timeStamp: 3,
@@ -276,77 +223,28 @@ test("translate special keys with modifiers", (t) => {
       ctrlKey: true,
     }),
   );
-
-  // Input Tab.
-
-  listener.onKeyDown(
+  listener.onKeyUp(
     newKeyEvent({
       timeStamp: 4,
-      code: "Tab",
-      key: "Tab",
-      ctrlKey: true,
-    }),
-  );
-  listener.onKeyUp(
-    newKeyEvent({
-      timeStamp: 5,
-      code: "Tab",
-      key: "Tab",
-      ctrlKey: true,
-    }),
-  );
-
-  // Input Enter.
-
-  listener.onKeyDown(
-    newKeyEvent({
-      timeStamp: 6,
-      code: "Enter",
-      key: "Enter",
-      ctrlKey: true,
-    }),
-  );
-  listener.onKeyUp(
-    newKeyEvent({
-      timeStamp: 7,
-      code: "Enter",
-      key: "Enter",
-      ctrlKey: true,
-    }),
-  );
-
-  // Release Control.
-
-  listener.onKeyUp(
-    newKeyEvent({
-      timeStamp: 8,
       code: "ControlLeft",
       key: "Control",
       ctrlKey: false,
     }),
   );
 
-  // Check results.
+  // Assert.
 
   t.deepEqual(trace, [
-    // Press Control
     "keydown:ControlLeft,Control,1",
-    // Backspace
     "keydown:Backspace,Backspace,2",
+    "clearWord:\u0000,2",
     "keyup:Backspace,Backspace,3",
-    // Tab
-    "keydown:Tab,Tab,4",
-    "keyup:Tab,Tab,5",
-    // Enter
-    "keydown:Enter,Enter,6",
-    "keyup:Enter,Enter,7",
-    // Release Control
-    "keyup:ControlLeft,Control,8",
+    "keyup:ControlLeft,Control,4",
   ]);
 });
 
 function newKeyEvent({
-  timeStamp = 0,
+  timeStamp,
   code,
   key,
   shiftKey = false,
@@ -356,7 +254,7 @@ function newKeyEvent({
   location = 0,
   repeat = false,
 }: {
-  timeStamp?: number;
+  timeStamp: number;
   code: string;
   key: string;
   shiftKey?: boolean;

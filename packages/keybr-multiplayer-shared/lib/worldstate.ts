@@ -78,7 +78,7 @@ export function handleTextInput(
   const { gameState, players, textInput, timer } = worldState;
   if (!players.me.spectator && gameState === GameState.RUNNING) {
     const elapsed = timer.elapsed();
-    textInput.step(codePoint, elapsed);
+    textInput.appendChar(codePoint, elapsed);
     const lines = textInput.getLines();
     return { worldState: { ...worldState, lines }, elapsed };
   } else {

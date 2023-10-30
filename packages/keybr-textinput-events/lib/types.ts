@@ -1,7 +1,7 @@
 export type TextInputListener = {
   readonly onKeyDown: (event: KeyEvent) => void;
   readonly onKeyUp: (event: KeyEvent) => void;
-  readonly onTextInput: (codePoint: number, timeStamp: number) => void;
+  readonly onTextInput: (event: TextInputEvent) => void;
 };
 
 export type KeyEvent = {
@@ -14,6 +14,12 @@ export type KeyEvent = {
   readonly metaKey: boolean;
   readonly location: number;
   readonly repeat: boolean;
+};
+
+export type TextInputEvent = {
+  readonly timeStamp: number;
+  readonly inputType: "appendChar" | "clearChar" | "clearWord";
+  readonly codePoint: number;
 };
 
 export type Focusable = {
