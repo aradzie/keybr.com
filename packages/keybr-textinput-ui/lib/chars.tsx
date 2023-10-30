@@ -12,21 +12,14 @@ import { clsx } from "clsx";
 import { type ReactNode } from "react";
 import * as styles from "./chars.module.less";
 
-export const cn = {
+export const classNames = {
   chars: styles.chars,
-  charsNormal: styles.chars_normal,
-  charsSpecial: styles.chars_special,
-  charsHit: styles.chars_hit,
-  charsMiss: styles.chars_miss,
-  charsGarbage: styles.chars_garbage,
-  charsCursor: styles.chars_cursor,
+  special: styles.special,
+  hit: styles.hit,
+  miss: styles.miss,
+  garbage: styles.garbage,
+  cursor: styles.cursor,
 };
-
-const tabChar = "\u21B9";
-const newlineChar = "\u21B5";
-const spaceChar = "\u00A0";
-const spaceBarChar = "\u2423";
-const spaceBulletChar = "\u2E31";
 
 type Item = {
   readonly chars: readonly Char[];
@@ -144,6 +137,12 @@ export function renderChars({
   return nodes;
 }
 
+const spaceChar = "\u00A0";
+const spaceBulletChar = "\uE000";
+const spaceBarChar = "\uE001";
+const tabChar = "\uE002";
+const newlineChar = "\uE003";
+
 function whitespaceChar(whitespaceStyle: WhitespaceStyle): string {
   switch (whitespaceStyle) {
     case WhitespaceStyle.Space:
@@ -156,19 +155,19 @@ function whitespaceChar(whitespaceStyle: WhitespaceStyle): string {
 }
 
 const cnNormal = {
-  [attrNormal]: clsx([styles.chars, styles.chars_normal]),
-  [attrHit]: clsx([styles.chars, styles.chars_hit]),
-  [attrMiss]: clsx([styles.chars, styles.chars_miss]),
-  [attrGarbage]: clsx([styles.chars, styles.chars_garbage]),
-  [attrCursor]: clsx([styles.chars, styles.chars_cursor]),
+  [attrNormal]: clsx([styles.chars, styles.normal]),
+  [attrHit]: clsx([styles.chars, styles.normal, styles.hit]),
+  [attrMiss]: clsx([styles.chars, styles.normal, styles.miss]),
+  [attrGarbage]: clsx([styles.chars, styles.normal, styles.garbage]),
+  [attrCursor]: clsx([styles.chars, styles.normal, styles.cursor]),
 };
 
 const cnSpecial = {
-  [attrNormal]: clsx([styles.chars, styles.chars_special]),
-  [attrHit]: clsx([styles.chars, styles.chars_hit]),
-  [attrMiss]: clsx([styles.chars, styles.chars_miss]),
-  [attrGarbage]: clsx([styles.chars, styles.chars_garbage]),
-  [attrCursor]: clsx([styles.chars, styles.chars_cursor]),
+  [attrNormal]: clsx([styles.chars, styles.special]),
+  [attrHit]: clsx([styles.chars, styles.special, styles.hit]),
+  [attrMiss]: clsx([styles.chars, styles.special, styles.miss]),
+  [attrGarbage]: clsx([styles.chars, styles.special, styles.garbage]),
+  [attrCursor]: clsx([styles.chars, styles.special, styles.cursor]),
 };
 
 function normalClassName(attrs: number): string {
