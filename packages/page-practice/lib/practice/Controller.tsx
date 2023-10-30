@@ -22,23 +22,23 @@ export const Controller = memo(function Controller({
   readonly onConfigure: () => void;
 }): ReactNode {
   const {
-    handleReset,
-    handleSkip,
+    handleResetLesson,
+    handleSkipLesson,
     handleKeyDown,
     handleKeyUp,
     handleInput,
     hotkeys,
   } = usePracticeState(state);
   useWindowEvent("keydown", hotkeys);
-  useWindowEvent("focus", handleReset);
-  useWindowEvent("blur", handleReset);
-  useDocumentEvent("visibilitychange", handleReset);
+  useWindowEvent("focus", handleResetLesson);
+  useWindowEvent("blur", handleResetLesson);
+  useDocumentEvent("visibilitychange", handleResetLesson);
   return (
     <Presenter
       state={state}
       lines={state.lines}
-      onReset={handleReset}
-      onSkip={handleSkip}
+      onResetLesson={handleResetLesson}
+      onSkipLesson={handleSkipLesson}
       onKeyDown={handleKeyDown}
       onKeyUp={handleKeyUp}
       onInput={handleInput}
@@ -54,12 +54,12 @@ function usePracticeState(state: PracticeState) {
   return useMemo(() => {
     // New lesson.
     setLines(state.lines);
-    const handleReset = (): void => {
-      state.handleReset();
+    const handleResetLesson = (): void => {
+      state.handleResetLesson();
       setLines(state.lines);
     };
-    const handleSkip = (): void => {
-      state.handleSkip();
+    const handleSkipLesson = (): void => {
+      state.handleSkipLesson();
       setLines(state.lines);
     };
     const playSounds = makeSoundPlayer(state.settings);
@@ -78,15 +78,15 @@ function usePracticeState(state: PracticeState) {
       state.settings.get(keyboardProps.emulate),
     );
     return {
-      handleReset,
-      handleSkip,
+      handleResetLesson,
+      handleSkipLesson,
       handleKeyDown: onKeyDown,
       handleKeyUp: onKeyUp,
       handleInput: onInput,
       hotkeys: handleHotkeys(
-        ["ArrowLeft", Ctrl, handleReset],
-        ["ArrowRight", Ctrl, handleSkip],
-        ["Escape", handleReset],
+        ["ArrowLeft", Ctrl, handleResetLesson],
+        ["ArrowRight", Ctrl, handleSkipLesson],
+        ["Escape", handleResetLesson],
       ),
     };
   }, [state, keyboard]);

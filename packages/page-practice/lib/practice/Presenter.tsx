@@ -19,8 +19,8 @@ import * as styles from "./Presenter.module.less";
 type Props = {
   readonly state: PracticeState;
   readonly lines: LineList;
-  readonly onReset: () => void;
-  readonly onSkip: () => void;
+  readonly onResetLesson: () => void;
+  readonly onSkipLesson: () => void;
   readonly onKeyDown: (ev: KeyEvent) => void;
   readonly onKeyUp: (ev: KeyEvent) => void;
   readonly onInput: (codePoint: number, timeStamp: number) => void;
@@ -74,14 +74,14 @@ export class Presenter extends PureComponent<Props, State> {
     const {
       props: { state, lines, onConfigure },
       state: { view, tour, focus, depressedKeys },
-      handleReset,
-      handleSkip,
+      handleResetLesson,
+      handleSkipLesson,
       handleKeyDown,
       handleKeyUp,
       handleInput,
       handleFocus,
       handleBlur,
-      handleLayout,
+      handleChangeView,
       handleHelp,
       handleTourClose,
     } = this;
@@ -95,9 +95,9 @@ export class Presenter extends PureComponent<Props, State> {
             toggledKeys={ModifierState.modifiers}
             controls={
               <Controls
-                onReset={handleReset}
-                onSkip={handleSkip}
-                onLayout={handleLayout}
+                onChangeView={handleChangeView}
+                onResetLesson={handleResetLesson}
+                onSkipLesson={handleSkipLesson}
                 onHelp={handleHelp}
                 onConfigure={onConfigure}
               />
@@ -125,9 +125,9 @@ export class Presenter extends PureComponent<Props, State> {
             depressedKeys={depressedKeys}
             controls={
               <Controls
-                onReset={handleReset}
-                onSkip={handleSkip}
-                onLayout={handleLayout}
+                onChangeView={handleChangeView}
+                onResetLesson={handleResetLesson}
+                onSkipLesson={handleSkipLesson}
                 onHelp={handleHelp}
                 onConfigure={onConfigure}
               />
@@ -154,9 +154,9 @@ export class Presenter extends PureComponent<Props, State> {
             depressedKeys={depressedKeys}
             controls={
               <Controls
-                onReset={handleReset}
-                onSkip={handleSkip}
-                onLayout={handleLayout}
+                onChangeView={handleChangeView}
+                onResetLesson={handleResetLesson}
+                onSkipLesson={handleSkipLesson}
                 onHelp={handleHelp}
                 onConfigure={onConfigure}
               />
@@ -178,12 +178,12 @@ export class Presenter extends PureComponent<Props, State> {
     }
   }
 
-  private handleReset = (): void => {
-    this.props.onReset();
+  private handleResetLesson = (): void => {
+    this.props.onResetLesson();
   };
 
-  private handleSkip = (): void => {
-    this.props.onSkip();
+  private handleSkipLesson = (): void => {
+    this.props.onSkipLesson();
   };
 
   private handleKeyDown = (ev: KeyEvent): void => {
@@ -217,7 +217,7 @@ export class Presenter extends PureComponent<Props, State> {
         depressedKeys: [],
       },
       () => {
-        this.props.onReset();
+        this.props.onResetLesson();
       },
     );
   };
@@ -229,12 +229,12 @@ export class Presenter extends PureComponent<Props, State> {
         depressedKeys: [],
       },
       () => {
-        this.props.onReset();
+        this.props.onResetLesson();
       },
     );
   };
 
-  private handleLayout = (): void => {
+  private handleChangeView = (): void => {
     this.setState(
       ({ view }) => {
         const nextView = getNextView(view);
@@ -242,7 +242,7 @@ export class Presenter extends PureComponent<Props, State> {
         return { view: nextView };
       },
       () => {
-        this.props.onReset();
+        this.props.onResetLesson();
       },
     );
   };
@@ -254,7 +254,7 @@ export class Presenter extends PureComponent<Props, State> {
         tour: true,
       },
       () => {
-        this.props.onReset();
+        this.props.onResetLesson();
       },
     );
   };
@@ -266,7 +266,7 @@ export class Presenter extends PureComponent<Props, State> {
         tour: false,
       },
       () => {
-        this.props.onReset();
+        this.props.onResetLesson();
       },
     );
   };

@@ -49,15 +49,15 @@ export class PracticeState {
     this._computeAnnouncements();
   }
 
-  readonly handleReset = (): void => {
+  handleResetLesson(): void {
     this._reset(this.textInput.text);
-  };
+  }
 
-  readonly handleSkip = (): void => {
+  handleSkipLesson(): void {
     this._reset(this.lesson.generate(this.lessonKeys));
-  };
+  }
 
-  readonly handleInput = (codePoint: number, timeStamp: number): Feedback => {
+  handleInput(codePoint: number, timeStamp: number): Feedback {
     const feedback = this.textInput.step(codePoint, timeStamp);
     this.lines = this.textInput.getLines();
     if (this.textInput.completed) {
@@ -71,7 +71,7 @@ export class PracticeState {
       );
     }
     return feedback;
-  };
+  }
 
   private _reset(fragment: string): void {
     this.textInput = new TextInput(fragment, this.textInputSettings);

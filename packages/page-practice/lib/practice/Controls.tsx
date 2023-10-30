@@ -11,15 +11,15 @@ import { useIntl } from "react-intl";
 import * as names from "./names.module.less";
 
 export const Controls = memo(function Controls({
-  onLayout,
-  onReset,
-  onSkip,
+  onChangeView,
+  onResetLesson,
+  onSkipLesson,
   onHelp,
   onConfigure,
 }: {
-  readonly onLayout: () => void;
-  readonly onReset: () => void;
-  readonly onSkip: () => void;
+  readonly onChangeView: () => void;
+  readonly onResetLesson: () => void;
+  readonly onSkipLesson: () => void;
   readonly onHelp: () => void;
   readonly onConfigure: () => void;
 }): ReactNode {
@@ -36,7 +36,7 @@ export const Controls = memo(function Controls({
         })}
       />
       <IconButton
-        onClick={onReset}
+        onClick={onResetLesson}
         icon={<Icon shape={mdiUndo} />}
         title={formatMessage({
           id: "practice.resetLessonButtonTitle",
@@ -45,7 +45,7 @@ export const Controls = memo(function Controls({
         })}
       />
       <IconButton
-        onClick={onSkip}
+        onClick={onSkipLesson}
         icon={<Icon shape={mdiRedo} />}
         title={formatMessage({
           id: "practice.skipLessonButtonTitle",
@@ -54,7 +54,7 @@ export const Controls = memo(function Controls({
         })}
       />
       <IconButton
-        onClick={onLayout}
+        onClick={onChangeView}
         icon={<Icon shape={mdiAspectRatio} />}
         title={formatMessage({
           id: "practice.switchInterfaceButtonTitle",
