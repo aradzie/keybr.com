@@ -57,7 +57,7 @@ export class PracticeState {
     this._reset(this.lesson.generate(this.lessonKeys));
   }
 
-  handleInput(codePoint: number, timeStamp: number): Feedback {
+  handleTextInput(codePoint: number, timeStamp: number): Feedback {
     const feedback = this.textInput.step(codePoint, timeStamp);
     this.lines = this.textInput.getLines();
     if (this.textInput.completed) {

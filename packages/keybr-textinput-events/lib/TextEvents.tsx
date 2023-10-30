@@ -14,14 +14,14 @@ export const TextEvents = memo(function TextEvents({
   onBlur,
   onKeyDown,
   onKeyUp,
-  onInput,
+  onTextInput,
   focusRef,
 }: Listeners & {
   readonly focusRef?: RefObject<Focusable>;
 }): ReactNode {
   const handler = useInputHandler();
   useImperativeHandle(focusRef, () => handler);
-  handler.setListeners({ onFocus, onBlur, onKeyDown, onKeyUp, onInput });
+  handler.setListeners({ onFocus, onBlur, onKeyDown, onKeyUp, onTextInput });
   return (
     <div style={divStyle}>
       <input

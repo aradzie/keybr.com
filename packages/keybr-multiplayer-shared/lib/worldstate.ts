@@ -68,7 +68,7 @@ export function makeWorldState(intl: IntlShape): WorldState {
   };
 }
 
-export function handleInput(
+export function handleTextInput(
   worldState: WorldState,
   codePoint: number,
 ): {

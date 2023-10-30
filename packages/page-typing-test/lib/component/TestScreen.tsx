@@ -58,9 +58,9 @@ export class TestScreen extends Component<Props, State> {
     this.setState(nextTest(this.props, this.state.mark));
   };
 
-  private handleInput = (codePoint: number, timeStamp: number): void => {
+  private handleTextInput = (codePoint: number, timeStamp: number): void => {
     const { session } = this.state;
-    const [feedback, progress, completed] = session.handleInput(
+    const [feedback, progress, completed] = session.handleTextInput(
       codePoint,
       timeStamp,
     );
@@ -87,7 +87,7 @@ export class TestScreen extends Component<Props, State> {
           wrap={false}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
-          onInput={this.handleInput}
+          onTextInput={this.handleTextInput}
           lineTemplate={LineTemplate}
         />
       </Screen>

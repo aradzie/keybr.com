@@ -1,4 +1,4 @@
-import { type KeyEvent, type KeyEventListener } from "../types.ts";
+import { type KeyEvent, type TextInputListener } from "../types.ts";
 
 class FakeEvent {
   readonly isTrusted: boolean = true;
@@ -98,15 +98,15 @@ export function newFakeCompositionEvent({
   })();
 }
 
-export function tracingListener(trace: string[]): KeyEventListener {
-  return new (class implements KeyEventListener {
+export function tracingListener(trace: string[]): TextInputListener {
+  return new (class implements TextInputListener {
     onKeyDown = ({ code, key, timeStamp }: KeyEvent): void => {
       trace.push(`keydown:${code},${key},${timeStamp}`);
     };
     onKeyUp = ({ code, key, timeStamp }: KeyEvent): void => {
       trace.push(`keyup:${code},${key},${timeStamp}`);
     };
-    onInput = (codePoint: number, timeStamp: number): void => {
+    onTextInput = (codePoint: number, timeStamp: number): void => {
       trace.push(`input:${String.fromCodePoint(codePoint)},${timeStamp}`);
     };
   })();

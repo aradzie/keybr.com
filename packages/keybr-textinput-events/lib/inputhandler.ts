@@ -12,7 +12,7 @@ export type Listeners = {
   readonly onBlur?: () => void;
   readonly onKeyDown?: (event: KeyEvent) => void;
   readonly onKeyUp?: (event: KeyEvent) => void;
-  readonly onInput?: (codePoint: number, timeStamp: number) => void;
+  readonly onTextInput?: (codePoint: number, timeStamp: number) => void;
 };
 
 export class InputHandler implements Focusable {
@@ -167,13 +167,13 @@ export class InputHandler implements Focusable {
   };
 
   private sendChar(codePoint: number, timeStamp: number): void {
-    this.listeners.onInput?.(codePoint, timeStamp);
+    this.listeners.onTextInput?.(codePoint, timeStamp);
     this.clearInput();
   }
 
   private sendEventData(data: string | null, timeStamp: number): void {
     if (data != null && data.length > 0) {
-      this.listeners.onInput?.(data.codePointAt(0) ?? 0, timeStamp);
+      this.listeners.onTextInput?.(data.codePointAt(0) ?? 0, timeStamp);
     }
     this.clearInput();
   }

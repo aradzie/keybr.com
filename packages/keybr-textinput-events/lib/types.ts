@@ -1,7 +1,7 @@
-export type KeyEventListener = {
+export type TextInputListener = {
   readonly onKeyDown: (event: KeyEvent) => void;
   readonly onKeyUp: (event: KeyEvent) => void;
-  readonly onInput: (codePoint: number, timeStamp: number) => void;
+  readonly onTextInput: (codePoint: number, timeStamp: number) => void;
 };
 
 export type KeyEvent = {

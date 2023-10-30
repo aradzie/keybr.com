@@ -40,7 +40,7 @@ export class Session {
     return this._steps;
   }
 
-  handleInput(
+  handleTextInput(
     codePoint: number,
     timeStamp: number,
   ): [

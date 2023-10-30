@@ -32,7 +32,7 @@ test("translate normal keys without modifiers", (t) => {
       key: "s",
     }),
   );
-  listener.onInput(0x73, 1);
+  listener.onTextInput(0x73, 1);
   listener.onKeyUp(
     newKeyEvent({
       timeStamp: 2,
@@ -62,7 +62,7 @@ test("translate normal keys without modifiers", (t) => {
       shiftKey: true,
     }),
   );
-  listener.onInput(0x53, 4);
+  listener.onTextInput(0x53, 4);
   listener.onKeyUp(
     newKeyEvent({
       timeStamp: 5,
@@ -176,7 +176,7 @@ test("translate special keys without modifiers", (t) => {
       key: "Backspace",
     }),
   );
-  listener.onInput(Char_Backspace, 1);
+  listener.onTextInput(Char_Backspace, 1);
   listener.onKeyUp(
     newKeyEvent({
       timeStamp: 2,
@@ -194,7 +194,7 @@ test("translate special keys without modifiers", (t) => {
       key: "Tab",
     }),
   );
-  listener.onInput(Char_Tab, 3);
+  listener.onTextInput(Char_Tab, 3);
   listener.onKeyUp(
     newKeyEvent({
       timeStamp: 4,
@@ -212,7 +212,7 @@ test("translate special keys without modifiers", (t) => {
       key: "Enter",
     }),
   );
-  listener.onInput(Char_LineFeed, 5);
+  listener.onTextInput(Char_LineFeed, 5);
   listener.onKeyUp(
     newKeyEvent({
       timeStamp: 6,

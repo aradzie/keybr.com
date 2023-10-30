@@ -23,7 +23,7 @@ type Props = {
   readonly onSkipLesson: () => void;
   readonly onKeyDown: (ev: KeyEvent) => void;
   readonly onKeyUp: (ev: KeyEvent) => void;
-  readonly onInput: (codePoint: number, timeStamp: number) => void;
+  readonly onTextInput: (codePoint: number, timeStamp: number) => void;
   readonly onConfigure: () => void;
 };
 
@@ -78,7 +78,7 @@ export class Presenter extends PureComponent<Props, State> {
       handleSkipLesson,
       handleKeyDown,
       handleKeyUp,
-      handleInput,
+      handleTextInput,
       handleFocus,
       handleBlur,
       handleChangeView,
@@ -111,7 +111,7 @@ export class Presenter extends PureComponent<Props, State> {
                 onBlur={handleBlur}
                 onKeyDown={handleKeyDown}
                 onKeyUp={handleKeyUp}
-                onInput={handleInput}
+                onTextInput={handleTextInput}
               />
             }
             tour={tour && <PracticeTour onClose={handleTourClose} />}
@@ -141,7 +141,7 @@ export class Presenter extends PureComponent<Props, State> {
                 onBlur={handleBlur}
                 onKeyDown={handleKeyDown}
                 onKeyUp={handleKeyUp}
-                onInput={handleInput}
+                onTextInput={handleTextInput}
               />
             }
           />
@@ -170,7 +170,7 @@ export class Presenter extends PureComponent<Props, State> {
                 onBlur={handleBlur}
                 onKeyDown={handleKeyDown}
                 onKeyUp={handleKeyUp}
-                onInput={handleInput}
+                onTextInput={handleTextInput}
               />
             }
           />
@@ -204,9 +204,9 @@ export class Presenter extends PureComponent<Props, State> {
     }
   };
 
-  private handleInput = (codePoint: number, timeStamp: number): void => {
+  private handleTextInput = (codePoint: number, timeStamp: number): void => {
     if (this.state.focus) {
-      this.props.onInput(codePoint, timeStamp);
+      this.props.onTextInput(codePoint, timeStamp);
     }
   };
 

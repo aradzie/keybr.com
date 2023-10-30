@@ -1,7 +1,7 @@
 import {
   type ClientMessage,
   GameState,
-  handleInput,
+  handleTextInput,
   makeWorldState,
   PLAYER_ANNOUNCE_ID,
   PLAYER_PROGRESS_ID,
@@ -65,7 +65,7 @@ export const Game = ({
           lines={lines}
           onFocus={handleFocus}
           onBlur={handleBlur}
-          onInput={wrapper.handleInput}
+          onTextInput={wrapper.handleTextInput}
         />
       </div>
     </div>
@@ -96,8 +96,8 @@ class WorldStateWrapper extends EventEmitter {
     this.setWorldState(updateWorldState(this.intl, this._worldState, message));
   };
 
-  handleInput = (codePoint: number): void => {
-    const result = handleInput(this._worldState, codePoint);
+  handleTextInput = (codePoint: number): void => {
+    const result = handleTextInput(this._worldState, codePoint);
     if (result != null) {
       const { worldState, elapsed } = result;
       this.setWorldState(worldState);

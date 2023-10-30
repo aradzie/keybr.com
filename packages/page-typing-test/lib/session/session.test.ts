@@ -40,10 +40,10 @@ test("lines", (t) => {
     t.is(lines[2].text, "three ");
   }
 
-  session.handleInput("one ".codePointAt(0)!, 0);
-  session.handleInput("one ".codePointAt(1)!, 0);
-  session.handleInput("one ".codePointAt(2)!, 0);
-  session.handleInput("one ".codePointAt(3)!, 0);
+  session.handleTextInput("one ".codePointAt(0)!, 0);
+  session.handleTextInput("one ".codePointAt(1)!, 0);
+  session.handleTextInput("one ".codePointAt(2)!, 0);
+  session.handleTextInput("one ".codePointAt(3)!, 0);
 
   {
     const lines = session.getLines();

@@ -26,7 +26,7 @@ export const Controller = memo(function Controller({
     handleSkipLesson,
     handleKeyDown,
     handleKeyUp,
-    handleInput,
+    handleTextInput,
     hotkeys,
   } = usePracticeState(state);
   useWindowEvent("keydown", hotkeys);
@@ -41,7 +41,7 @@ export const Controller = memo(function Controller({
       onSkipLesson={handleSkipLesson}
       onKeyDown={handleKeyDown}
       onKeyUp={handleKeyUp}
-      onInput={handleInput}
+      onTextInput={handleTextInput}
       onConfigure={onConfigure}
     />
   );
@@ -63,14 +63,14 @@ function usePracticeState(state: PracticeState) {
       setLines(state.lines);
     };
     const playSounds = makeSoundPlayer(state.settings);
-    const { onKeyDown, onKeyUp, onInput } = emulateLayout(
+    const { onKeyDown, onKeyUp, onTextInput } = emulateLayout(
       keyboard,
       {
         onKeyDown: () => {},
         onKeyUp: () => {},
-        onInput: (codePoint, timeStamp) => {
+        onTextInput: (codePoint, timeStamp) => {
           state.lastLesson = null;
-          const feedback = state.handleInput(codePoint, timeStamp);
+          const feedback = state.handleTextInput(codePoint, timeStamp);
           setLines(state.lines);
           playSounds(feedback);
         },
@@ -82,7 +82,7 @@ function usePracticeState(state: PracticeState) {
       handleSkipLesson,
       handleKeyDown: onKeyDown,
       handleKeyUp: onKeyUp,
-      handleInput: onInput,
+      handleTextInput: onTextInput,
       hotkeys: handleHotkeys(
         ["ArrowLeft", Ctrl, handleResetLesson],
         ["ArrowRight", Ctrl, handleSkipLesson],

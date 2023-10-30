@@ -1,12 +1,12 @@
 import { type Keyboard, KeyModifier } from "@keybr/keyboard";
 import { Char_Backspace, Char_LineFeed, Char_Tab } from "./chars.ts";
-import { type KeyEvent, type KeyEventListener } from "./types.ts";
+import { type KeyEvent, type TextInputListener } from "./types.ts";
 
 export function emulateLayout(
   keyboard: Keyboard,
-  target: KeyEventListener,
+  target: TextInputListener,
   emulate: boolean,
-): KeyEventListener {
+): TextInputListener {
   if (keyboard.layout.emulate && emulate) {
     return newLayoutEmulator(keyboard, target);
   } else {
@@ -16,8 +16,8 @@ export function emulateLayout(
 
 export function newLayoutEmulator(
   keyboard: Keyboard,
-  target: KeyEventListener,
-): KeyEventListener {
+  target: TextInputListener,
+): TextInputListener {
   return {
     onKeyDown: (event: KeyEvent): void => {
       const mapped = remap(keyboard, event);
@@ -26,17 +26,17 @@ export function newLayoutEmulator(
       if (!(ctrlKey || altKey || metaKey)) {
         switch (key) {
           case "Backspace":
-            target.onInput(Char_Backspace, timeStamp);
+            target.onTextInput(Char_Backspace, timeStamp);
             break;
           case "Tab":
-            target.onInput(Char_Tab, timeStamp);
+            target.onTextInput(Char_Tab, timeStamp);
             break;
           case "Enter":
-            target.onInput(Char_LineFeed, timeStamp);
+            target.onTextInput(Char_LineFeed, timeStamp);
             break;
           default: {
             if (key.length === 1) {
-              target.onInput(key.codePointAt(0) ?? 0, timeStamp);
+              target.onTextInput(key.codePointAt(0) ?? 0, timeStamp);
             }
             break;
           }
@@ -47,7 +47,7 @@ export function newLayoutEmulator(
       const mapped = remap(keyboard, event);
       target.onKeyUp(mapped);
     },
-    onInput: (codePoint: number, timeStamp: number): void => {},
+    onTextInput: (codePoint: number, timeStamp: number): void => {},
   };
 }
 

@@ -29,7 +29,7 @@ export function TextArea({
   onBlur,
   onKeyDown,
   onKeyUp,
-  onInput,
+  onTextInput,
   focusRef,
 }: {
   readonly settings: TextDisplaySettings;
@@ -41,7 +41,7 @@ export function TextArea({
   readonly onBlur?: () => void;
   readonly onKeyDown?: (event: KeyEvent) => void;
   readonly onKeyUp?: (event: KeyEvent) => void;
-  readonly onInput?: (codePoint: number, timeStamp: number) => void;
+  readonly onTextInput?: (codePoint: number, timeStamp: number) => void;
   readonly focusRef?: RefObject<Focusable>;
 }): ReactNode {
   const innerRef = useRef<Focusable>(null);
@@ -79,7 +79,7 @@ export function TextArea({
         onBlur={handleBlur}
         onKeyDown={onKeyDown}
         onKeyUp={onKeyUp}
-        onInput={onInput}
+        onTextInput={onTextInput}
       />
       <TextLines
         settings={settings}
