@@ -77,7 +77,9 @@ export class InputHandler implements Focusable {
   private clearInput(): void {
     const { input } = this;
     if (input != null) {
-      input.value = "";
+      // Keep the input value non-empty, otherwise Safari will not generate
+      // events `deleteContentBackward` and `deleteWordBackward`.
+      input.value = "?";
     }
   }
 
