@@ -76,9 +76,9 @@ test("handle a composite input", (t) => {
       data: "",
     }),
   );
-  handler.handleBeforeInput(
+  handler.handleInput(
     newFakeInputEvent({
-      type: "beforeinput",
+      type: "input",
       timeStamp: 2.123,
       inputType: "insertCompositionText",
       data: "´",
@@ -123,9 +123,9 @@ test("handle a composite input", (t) => {
       key: "a",
     }),
   );
-  handler.handleBeforeInput(
+  handler.handleInput(
     newFakeInputEvent({
-      type: "beforeinput",
+      type: "input",
       timeStamp: 5.123,
       inputType: "insertCompositionText",
       data: "á",
@@ -192,9 +192,9 @@ test("handle a clear char input", (t) => {
       ctrlKey: false,
     }),
   );
-  handler.handleBeforeInput(
+  handler.handleInput(
     newFakeInputEvent({
-      type: "beforeinput",
+      type: "input",
       inputType: "deleteContentBackward",
       timeStamp: 1.123,
     }),
@@ -235,9 +235,9 @@ test("handle a clear word input", (t) => {
       ctrlKey: true,
     }),
   );
-  handler.handleBeforeInput(
+  handler.handleInput(
     newFakeInputEvent({
-      type: "beforeinput",
+      type: "input",
       inputType: "deleteWordBackward",
       timeStamp: 1.123,
     }),
@@ -267,39 +267,33 @@ test("handle the enter key", (t) => {
   const trace: string[] = [];
   const handler = tracingInputHandler(trace);
 
-  let keyDown: any;
-  let keyUp: any;
-
   // Act.
 
   handler.handleKeyDown(
-    (keyDown = newFakeKeyboardEvent({
+    newFakeKeyboardEvent({
       type: "keydown",
       timeStamp: 1.123,
       code: "NumpadEnter",
       key: "Enter",
-    })),
+    }),
   );
-  handler.handleBeforeInput(
+  handler.handleInput(
     newFakeInputEvent({
-      type: "beforeinput",
+      type: "input",
       inputType: "insertLineBreak",
       timeStamp: 1.123,
     }),
   );
   handler.handleKeyUp(
-    (keyUp = newFakeKeyboardEvent({
+    newFakeKeyboardEvent({
       type: "keyup",
       timeStamp: 2.123,
       code: "NumpadEnter",
       key: "Enter",
-    })),
+    }),
   );
 
   // Assert.
-
-  t.false(keyDown.defaultPrevented);
-  t.false(keyUp.defaultPrevented);
 
   t.deepEqual(trace, [
     "keydown:NumpadEnter,Enter,1",

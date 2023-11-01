@@ -18,8 +18,8 @@ test.serial("focus and blur", (t) => {
     />,
   );
 
-  const input = r.container.querySelector("input") as HTMLInputElement;
-  t.true(input instanceof HTMLInputElement);
+  const input = r.container.querySelector("textarea") as HTMLTextAreaElement;
+  t.true(input instanceof HTMLTextAreaElement);
 
   t.is(document.activeElement, input);
   t.true(focused);
