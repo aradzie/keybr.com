@@ -24,7 +24,13 @@ export const TextEvents = memo(function TextEvents({
   handler.setListeners({ onFocus, onBlur, onKeyDown, onKeyUp, onTextInput });
   return (
     <div style={divStyle}>
-      <textarea ref={handler.setInput} style={inputStyle} />
+      <textarea
+        ref={handler.setInput}
+        autoCapitalize="off"
+        autoCorrect="off"
+        spellCheck="false"
+        style={inputStyle}
+      />
     </div>
   );
 });
