@@ -12,7 +12,7 @@
     "@keybr/result": "*",
     "@keybr/result-io": "*",
     "@keybr/result-userdata": "*",
-    "commander": "^11.0.0"
+    "commander": "^11.1.0"
   },
   "devDependencies": {},
   "scripts": {

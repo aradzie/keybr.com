@@ -1,8 +1,8 @@
 diff --git a/node_modules/bson/lib/bson.mjs b/node_modules/bson/lib/bson.mjs
-index 20681c5..dd704ff 100644
+index c07d7ad..e16db98 100644
 --- a/node_modules/bson/lib/bson.mjs
 +++ b/node_modules/bson/lib/bson.mjs
-@@ -108,9 +108,9 @@ class BSONRuntimeError extends BSONError {
+@@ -128,9 +128,9 @@ class BSONRuntimeError extends BSONError {
  function nodejsMathRandomBytes(byteLength) {
      return nodeJsByteUtils.fromNumberArray(Array.from({ length: byteLength }, () => Math.floor(Math.random() * 256)));
  }
