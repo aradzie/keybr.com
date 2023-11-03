@@ -11,6 +11,7 @@ import {
   type RefObject,
   useCallback,
   useImperativeHandle,
+  useLayoutEffect,
   useRef,
   useState,
 } from "react";
@@ -48,6 +49,7 @@ export function TextArea({
   readonly onTextInput?: (event: TextInputEvent) => void;
   readonly focusRef?: RefObject<Focusable>;
 }): ReactNode {
+  const ref = useRef<HTMLDivElement>(null);
   const innerRef = useRef<Focusable>(null);
   useImperativeHandle(focusRef, () => ({
     focus() {
@@ -57,6 +59,12 @@ export function TextArea({
       innerRef.current?.blur();
     },
   }));
+  useLayoutEffect(() => {
+    const element = ref.current;
+    if (element != null) {
+      resizeElement(element);
+    }
+  }, [settings, lines.text, wrap, size]);
   const [focus, setFocus] = useState(false);
   const handleFocus = useCallback(() => {
     setFocus(true);
@@ -73,6 +81,7 @@ export function TextArea({
   };
   return (
     <div
+      ref={ref}
       className={styles.textArea}
       onMouseDown={handleClick}
       onMouseUp={handleClick}
@@ -105,4 +114,16 @@ export function TextArea({
       )}
     </div>
   );
+}
+
+function resizeElement(element: HTMLDivElement): void {
+  const { style } = element;
+  style.contain = "none";
+  style.width = "auto";
+  style.height = "auto";
+  const width = element.offsetWidth;
+  const height = element.offsetHeight;
+  style.contain = "strict";
+  style.width = `${width}px`;
+  style.height = `${height}px`;
 }
