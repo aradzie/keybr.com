@@ -1,9 +1,8 @@
 import { PLAYER_KICKED } from "@keybr/multiplayer-shared";
-import { type AnyUser } from "@keybr/pages-shared";
 import { setTimeout, type Timeout } from "@keybr/timer";
 import { useEffect, useState } from "react";
 
-export function useWebSocket(user: AnyUser) {
+export function useWebSocket() {
   const [state, setState] = useState({
     webSocket: null,
     readyState: WebSocket.CONNECTING,
@@ -19,7 +18,7 @@ export function useWebSocket(user: AnyUser) {
     let timeout: Timeout | null = null;
 
     const connect = () => {
-      const newWebSocket = (webSocket = useWebSocket.newWebSocket(user));
+      const newWebSocket = (webSocket = useWebSocket.newWebSocket());
 
       newWebSocket.addEventListener("open", () => {
         console.log("WebSocket connected");
@@ -67,12 +66,12 @@ export function useWebSocket(user: AnyUser) {
         timeout = null;
       }
     };
-  }, [user]);
+  }, []);
 
   return state;
 }
 
-useWebSocket.newWebSocket = (user: AnyUser): WebSocket => {
+useWebSocket.newWebSocket = (): WebSocket => {
   return new WebSocket(webSocketUrl());
 };
 

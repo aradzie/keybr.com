@@ -15,13 +15,7 @@ test.serial("handle websocket ready state changes", (t) => {
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
-        <Connector
-          user={{
-            id: null,
-            name: "somebody",
-            imageUrl: null,
-          }}
-        />
+        <Connector />
       </FakeSettingsContext>
     </FakeIntlProvider>,
   );

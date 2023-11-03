@@ -1,5 +1,4 @@
 import { ClientCodec } from "@keybr/multiplayer-shared";
-import { type AnyUser } from "@keybr/pages-shared";
 import { Article, Para, styleTextCenter } from "@keybr/widget";
 import { type ReactNode, useMemo } from "react";
 import { FormattedMessage } from "react-intl";
@@ -7,8 +6,8 @@ import { Game } from "./Game.tsx";
 import { WebSocketTransport } from "./transport.websocket.ts";
 import { useWebSocket } from "./websocket-hooks.ts";
 
-export function Connector({ user }: { readonly user: AnyUser }): ReactNode {
-  const { transport, readyState, kicked } = useTransport(user);
+export function Connector(): ReactNode {
+  const { transport, readyState, kicked } = useTransport();
   switch (readyState) {
     case WebSocket.CONNECTING:
       return <Connecting />;
@@ -28,8 +27,8 @@ export function Connector({ user }: { readonly user: AnyUser }): ReactNode {
   }
 }
 
-function useTransport(user: AnyUser) {
-  const { webSocket, readyState, kicked } = useWebSocket(user);
+function useTransport() {
+  const { webSocket, readyState, kicked } = useWebSocket();
   const transport = useMemo(() => {
     return webSocket != null
       ? new WebSocketTransport(webSocket, new ClientCodec())
