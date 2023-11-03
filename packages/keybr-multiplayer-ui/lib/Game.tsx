@@ -9,7 +9,8 @@ import {
   updateWorldState,
   type WorldState,
 } from "@keybr/multiplayer-shared";
-import { textDisplaySettings } from "@keybr/textinput";
+import { useSettings } from "@keybr/settings";
+import { toTextDisplaySettings } from "@keybr/textinput";
 import { type TextInputEvent } from "@keybr/textinput-events";
 import { type Focusable, TextArea } from "@keybr/textinput-ui";
 import { useScreenSize } from "@keybr/widget";
@@ -37,7 +38,7 @@ export const Game = ({
   const [worldState, setWorldState] = useState(wrapper.worldState);
   const focusRef = useRef<Focusable>(null);
   useEffect(() => {
-    const eventListener = (): void => {
+    const eventListener = () => {
       setWorldState(wrapper.worldState);
       switch (wrapper.worldState.gameState) {
         case GameState.STARTING:
@@ -54,6 +55,11 @@ export const Game = ({
       wrapper.disconnect();
     };
   }, [wrapper]);
+  const { settings } = useSettings();
+  const textDisplaySettings = useMemo(
+    () => toTextDisplaySettings(settings),
+    [settings],
+  );
   useScreenSize(); // Repaint on window resize.
   const { ticker, players, lines } = worldState;
   return (

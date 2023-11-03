@@ -8,7 +8,8 @@
     "@keybr/multiplayer-ui": "*",
     "@keybr/pages-browser": "*",
     "@keybr/pages-server": "*",
-    "@keybr/pages-shared": "*"
+    "@keybr/pages-shared": "*",
+    "@keybr/settings-loader": "*"
   },
   "devDependencies": {},
   "scripts": {

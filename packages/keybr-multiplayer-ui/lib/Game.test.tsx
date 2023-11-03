@@ -14,6 +14,7 @@ import {
   player2,
   player3,
 } from "@keybr/multiplayer-shared/lib/testing/data.ts";
+import { FakeSettingsContext } from "@keybr/settings";
 import { act, render } from "@testing-library/react";
 import test from "ava";
 import { Game } from "./Game.tsx";
@@ -26,7 +27,9 @@ test.serial("initial state", async (t) => {
 
   const r = render(
     <FakeIntlProvider>
-      <Game transport={transport} />
+      <FakeSettingsContext>
+        <Game transport={transport} />
+      </FakeSettingsContext>
     </FakeIntlProvider>,
   );
 
@@ -44,7 +47,9 @@ test.serial("game config", async (t) => {
 
   const r = render(
     <FakeIntlProvider>
-      <Game transport={transport} />
+      <FakeSettingsContext>
+        <Game transport={transport} />
+      </FakeSettingsContext>
     </FakeIntlProvider>,
   );
 
@@ -75,7 +80,9 @@ test.serial("players join and leave", async (t) => {
 
   const r = render(
     <FakeIntlProvider>
-      <Game transport={transport} />
+      <FakeSettingsContext>
+        <Game transport={transport} />
+      </FakeSettingsContext>
     </FakeIntlProvider>,
   );
 
@@ -123,7 +130,9 @@ test.serial("all together", async (t) => {
 
   const r = render(
     <FakeIntlProvider>
-      <Game transport={transport} />
+      <FakeSettingsContext>
+        <Game transport={transport} />
+      </FakeSettingsContext>
     </FakeIntlProvider>,
   );
 

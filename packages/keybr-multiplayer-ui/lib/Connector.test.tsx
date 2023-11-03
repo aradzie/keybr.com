@@ -1,5 +1,6 @@
 import { FakeIntlProvider } from "@keybr/intl";
 import { PLAYER_KICKED } from "@keybr/multiplayer-shared";
+import { FakeSettingsContext } from "@keybr/settings";
 import { act, render } from "@testing-library/react";
 import test from "ava";
 import { Connector } from "./Connector.tsx";
@@ -13,13 +14,15 @@ test.serial("handle websocket ready state changes", (t) => {
 
   const r = render(
     <FakeIntlProvider>
-      <Connector
-        user={{
-          id: null,
-          name: "somebody",
-          imageUrl: null,
-        }}
-      />
+      <FakeSettingsContext>
+        <Connector
+          user={{
+            id: null,
+            name: "somebody",
+            imageUrl: null,
+          }}
+        />
+      </FakeSettingsContext>
     </FakeIntlProvider>,
   );
 
