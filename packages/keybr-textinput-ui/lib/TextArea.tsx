@@ -4,6 +4,7 @@ import {
   TextEvents,
   type TextInputEvent,
 } from "@keybr/textinput-events";
+import { useWindowEvent } from "@keybr/widget";
 import {
   type BaseSyntheticEvent,
   type ComponentType,
@@ -59,13 +60,25 @@ export function TextArea({
       innerRef.current?.blur();
     },
   }));
+  const [focus, setFocus] = useState(false);
   useLayoutEffect(() => {
     const element = ref.current;
     if (element != null) {
-      resizeElement(element);
+      setElementSize(element);
     }
   }, [settings, lines.text, wrap, size]);
-  const [focus, setFocus] = useState(false);
+  useLayoutEffect(() => {
+    const element = ref.current;
+    if (element != null) {
+      setElementCursor(element, focus ? "none" : "default");
+    }
+  });
+  useWindowEvent("mousemove", () => {
+    const element = ref.current;
+    if (element != null) {
+      setElementCursor(element, "default");
+    }
+  });
   const handleFocus = useCallback(() => {
     setFocus(true);
     onFocus?.();
@@ -116,7 +129,7 @@ export function TextArea({
   );
 }
 
-function resizeElement(element: HTMLDivElement): void {
+function setElementSize(element: HTMLDivElement): void {
   const { style } = element;
   style.contain = "none";
   style.width = "auto";
@@ -126,4 +139,9 @@ function resizeElement(element: HTMLDivElement): void {
   style.contain = "strict";
   style.width = `${width}px`;
   style.height = `${height}px`;
+}
+
+function setElementCursor(element: HTMLDivElement, cursor: string): void {
+  const { style } = element;
+  style.cursor = cursor;
 }
