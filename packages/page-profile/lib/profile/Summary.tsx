@@ -80,7 +80,7 @@ export function AllTimeSummary({
         <FormattedMessage
           id="profile.overview.statisticsAllTime"
           description="Header."
-          defaultMessage="All Time Statistics:"
+          defaultMessage="All Time Statistics"
         />
       </Header>
 
@@ -180,7 +180,7 @@ export function TodaySummary({
         <FormattedMessage
           id="profile.overview.statisticsToday"
           description="Section header."
-          defaultMessage="Statistics for Today:"
+          defaultMessage="Statistics for Today"
         />
       </Header>
 

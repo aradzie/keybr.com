@@ -1004,7 +1004,7 @@
     "description": "Section paragraph."
   },
   "profile.chart.compareTitle": {
-    "defaultMessage": "Comparez-vous:",
+    "defaultMessage": "Comparez-vous",
     "description": "Section title."
   },
   "profile.chart.compareTopSpeedText": {
@@ -1156,11 +1156,11 @@
     "description": "Gauge title."
   },
   "profile.overview.statisticsAllTime": {
-    "defaultMessage": "Statistiques de tous les temps:",
+    "defaultMessage": "Statistiques de tous les temps",
     "description": "Header."
   },
   "profile.overview.statisticsToday": {
-    "defaultMessage": "Statistiques pour aujourd'hui:",
+    "defaultMessage": "Statistiques pour aujourd'hui",
     "description": "Section header."
   },
   "profile.overview.topSpeedLabel": {

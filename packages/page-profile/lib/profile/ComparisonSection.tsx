@@ -17,7 +17,7 @@ export function ComparisonSection({
         <FormattedMessage
           id="profile.chart.compareTitle"
           description="Section title."
-          defaultMessage="Compare Yourself:"
+          defaultMessage="Compare Yourself"
         />
       </Header>
 
