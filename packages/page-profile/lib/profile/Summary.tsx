@@ -6,6 +6,7 @@ import {
   newSummaryStats,
   type Result,
   ResultGroups,
+  type SummaryStats,
 } from "@keybr/result";
 import { formatDuration, Header, Para } from "@keybr/widget";
 import { type ReactNode } from "react";
@@ -14,80 +15,45 @@ import * as styles from "./Summary.module.less";
 
 export type Summary = {
   readonly today: LocalDate;
+  readonly results: readonly Result[];
   readonly resultsByDate: ResultGroups<LocalDate>;
   readonly resultsToday: readonly Result[];
-  readonly totalTime: string;
-  readonly totalLessons: string;
-  readonly topSpeed: string;
-  readonly avgSpeed: string;
-  readonly totalTimeToday: string;
-  readonly totalLessonsToday: string;
-  readonly topSpeedToday: string;
-  readonly avgSpeedToday: string;
-  readonly topProb: string;
-  readonly avgProb: string;
-  readonly topProbToday: string;
-  readonly avgProbToday: string;
+  readonly stats: SummaryStats;
+  readonly statsToday: SummaryStats;
+  readonly topProb: number;
+  readonly avgProb: number;
+  readonly topProbToday: number;
+  readonly avgProbToday: number;
 };
 
 export function useSummary(
   results: readonly Result[],
   distribution: Distribution,
 ): Summary {
-  const { formatNumber, formatPercents } = useIntlNumbers();
-  const { formatSpeed } = useFormatter();
-
   const today = LocalDate.now();
   const resultsByDate = ResultGroups.byDate(results);
   const resultsToday = resultsByDate.get(today);
-
-  let totalTime = formatDuration(0);
-  let totalLessons = "0";
-  let topSpeed = "N/A";
-  let avgSpeed = "N/A";
-  let totalTimeToday = formatDuration(0);
-  let totalLessonsToday = "0";
-  let topSpeedToday = "N/A";
-  let avgSpeedToday = "N/A";
-  let topProb = "N/A";
-  let avgProb = "N/A";
-  let topProbToday = "N/A";
-  let avgProbToday = "N/A";
-
+  const stats = newSummaryStats(results);
+  const statsToday = newSummaryStats(resultsToday);
+  let topProb = NaN;
+  let avgProb = NaN;
   if (results.length > 0) {
-    const stats = newSummaryStats(results);
-
-    totalTime = formatDuration(stats.time);
-    totalLessons = formatNumber(results.length);
-    topSpeed = formatSpeed(stats.speed.max, { unit: false });
-    avgSpeed = formatSpeed(stats.speed.avg, { unit: false });
-    topProb = formatPercents(distribution.cdf(stats.speed.max));
-    avgProb = formatPercents(distribution.cdf(stats.speed.avg));
-
-    if (resultsToday.length > 0) {
-      const statsToday = newSummaryStats(resultsToday);
-
-      totalTimeToday = formatDuration(statsToday.time);
-      totalLessonsToday = formatNumber(resultsToday.length);
-      topSpeedToday = formatSpeed(statsToday.speed.max, { unit: false });
-      avgSpeedToday = formatSpeed(statsToday.speed.avg, { unit: false });
-      topProbToday = formatPercents(distribution.cdf(statsToday.speed.max));
-      avgProbToday = formatPercents(distribution.cdf(statsToday.speed.avg));
-    }
+    topProb = distribution.cdf(stats.speed.max);
+    avgProb = distribution.cdf(stats.speed.avg);
   }
-
+  let topProbToday = NaN;
+  let avgProbToday = NaN;
+  if (resultsToday.length > 0) {
+    topProbToday = distribution.cdf(statsToday.speed.max);
+    avgProbToday = distribution.cdf(statsToday.speed.avg);
+  }
   return {
     today,
+    results,
     resultsByDate,
     resultsToday,
-    totalTime,
-    totalLessons,
-    topSpeed,
-    avgSpeed,
-    totalTimeToday,
-    totalLessonsToday,
-    topSpeedToday,
-    avgSpeedToday,
+    stats,
+    statsToday,
     topProb,
     avgProb,
     topProbToday,
@@ -96,12 +62,17 @@ export function useSummary(
 }
 
 export function AllTimeSummary({
-  summary: { totalTime, totalLessons, topSpeed, avgSpeed },
+  summary,
 }: {
   readonly summary: Summary;
 }): ReactNode {
   const { formatMessage } = useIntl();
-  const { speedUnit, speedUnitName } = useFormatter();
+  const { formatNumber } = useIntlNumbers();
+  const { formatSpeed, speedUnit, speedUnitName } = useFormatter();
+
+  const {
+    stats: { count, time, speed },
+  } = summary;
 
   return (
     <>
@@ -120,7 +91,7 @@ export function AllTimeSummary({
             description: "Gauge label.",
             defaultMessage: "Total Time",
           })}
-          value={totalTime}
+          value={formatDuration(time)}
           title={formatMessage({
             id: "profile.overview.totalTimeTitle",
             description: "Gauge title.",
@@ -134,7 +105,7 @@ export function AllTimeSummary({
             description: "Gauge label.",
             defaultMessage: "Total Lessons",
           })}
-          value={totalLessons}
+          value={formatNumber(count)}
           title={formatMessage({
             id: "profile.overview.totalLessonsTitle",
             description: "Gauge title.",
@@ -151,7 +122,9 @@ export function AllTimeSummary({
             },
             { speedUnit: speedUnit.id },
           )}
-          value={topSpeed}
+          value={
+            speed.max > 0 ? formatSpeed(speed.max, { unit: false }) : "N/A"
+          }
           title={formatMessage(
             {
               id: "profile.overview.topSpeedTitle",
@@ -171,7 +144,9 @@ export function AllTimeSummary({
             },
             { speedUnit: speedUnit.id },
           )}
-          value={avgSpeed}
+          value={
+            speed.avg > 0 ? formatSpeed(speed.avg, { unit: false }) : "N/A"
+          }
           title={formatMessage(
             {
               id: "profile.overview.averageSpeedTitle",
@@ -187,12 +162,17 @@ export function AllTimeSummary({
 }
 
 export function TodaySummary({
-  summary: { totalTimeToday, totalLessonsToday, topSpeedToday, avgSpeedToday },
+  summary,
 }: {
   readonly summary: Summary;
 }): ReactNode {
   const { formatMessage } = useIntl();
-  const { speedUnit, speedUnitName } = useFormatter();
+  const { formatNumber } = useIntlNumbers();
+  const { formatSpeed, speedUnit, speedUnitName } = useFormatter();
+
+  const {
+    statsToday: { count, time, speed },
+  } = summary;
 
   return (
     <>
@@ -211,7 +191,7 @@ export function TodaySummary({
             description: "Gauge label.",
             defaultMessage: "Total Time",
           })}
-          value={totalTimeToday}
+          value={formatDuration(time)}
           title={formatMessage({
             id: "profile.overview.totalTimeTodayTitle",
             description: "Gauge title.",
@@ -225,7 +205,7 @@ export function TodaySummary({
             description: "Gauge label.",
             defaultMessage: "Total Lessons",
           })}
-          value={totalLessonsToday}
+          value={formatNumber(count)}
           title={formatMessage({
             id: "profile.overview.totalLessonsTodayTitle",
             description: "Gauge title.",
@@ -242,7 +222,9 @@ export function TodaySummary({
             },
             { speedUnit: speedUnit.id },
           )}
-          value={topSpeedToday}
+          value={
+            speed.max > 0 ? formatSpeed(speed.max, { unit: false }) : "N/A"
+          }
           title={formatMessage(
             {
               id: "profile.overview.topSpeedTodayTitle",
@@ -262,7 +244,9 @@ export function TodaySummary({
             },
             { speedUnit: speedUnit.id },
           )}
-          value={avgSpeedToday}
+          value={
+            speed.avg > 0 ? formatSpeed(speed.avg, { unit: false }) : "N/A"
+          }
           title={formatMessage(
             {
               id: "profile.overview.averageSpeedTodayTitle",

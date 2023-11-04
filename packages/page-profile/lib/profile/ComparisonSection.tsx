@@ -1,3 +1,4 @@
+import { useIntlNumbers } from "@keybr/intl";
 import { Header, Para, Value } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
@@ -8,6 +9,8 @@ export function ComparisonSection({
 }: {
   readonly summary: Summary;
 }): ReactNode {
+  const { formatPercents } = useIntlNumbers();
+
   return (
     <>
       <Header level={2}>
@@ -24,7 +27,9 @@ export function ComparisonSection({
           description="Section paragraph."
           defaultMessage="Your all time top speed beats {value} of all other people."
           values={{
-            value: <Value value={topProb} />,
+            value: (
+              <Value value={topProb > 0 ? formatPercents(topProb) : "N/A"} />
+            ),
           }}
         />
       </Para>
@@ -35,7 +40,9 @@ export function ComparisonSection({
           description="Section paragraph."
           defaultMessage="Your all time average speed beats {value} of all other people."
           values={{
-            value: <Value value={avgProb} />,
+            value: (
+              <Value value={avgProb > 0 ? formatPercents(avgProb) : "N/A"} />
+            ),
           }}
         />
       </Para>
