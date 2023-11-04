@@ -2,6 +2,7 @@ import { type NamedUser, Screen, UserName } from "@keybr/pages-shared";
 import { type KeyStatsMap } from "@keybr/result";
 import { Header } from "@keybr/widget";
 import { type ReactNode } from "react";
+import { AccuracySection } from "./profile/AccuracySection.tsx";
 import { CalendarSection } from "./profile/CalendarSection.tsx";
 import { HistogramSection } from "./profile/HistogramSection.tsx";
 import { KeyFrequencyHeatmapSection } from "./profile/KeyFrequencyHeatmapSection.tsx";
@@ -43,6 +44,8 @@ function Content({
   return (
     <>
       <AllTimeSummary summary={summary} />
+
+      <AccuracySection results={results} />
 
       <HistogramSection results={results} distribution={distribution} />
 

@@ -1,6 +1,7 @@
 import { type NamedUser, Screen, usePageData } from "@keybr/pages-shared";
 import { type KeyStatsMap } from "@keybr/result";
 import { type ReactNode } from "react";
+import { AccuracySection } from "./profile/AccuracySection.tsx";
 import { CalendarSection } from "./profile/CalendarSection.tsx";
 import { ComparisonSection } from "./profile/ComparisonSection.tsx";
 import { FooterSection } from "./profile/FooterSection.tsx";
@@ -45,6 +46,8 @@ function Content({
       <AllTimeSummary summary={summary} />
 
       <TodaySummary summary={summary} />
+
+      <AccuracySection results={results} />
 
       <ComparisonSection summary={summary} />
 

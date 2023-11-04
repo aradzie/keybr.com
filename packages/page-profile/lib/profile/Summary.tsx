@@ -89,7 +89,7 @@ export function AllTimeSummary({
           name={formatMessage({
             id: "metric.summary.totalTime.label",
             description: "Widget name.",
-            defaultMessage: "Total Time",
+            defaultMessage: "Time",
           })}
           value={formatDuration(time)}
           title={formatMessage({
@@ -103,7 +103,7 @@ export function AllTimeSummary({
           name={formatMessage({
             id: "metric.summary.lessonCount.label",
             description: "Widget name.",
-            defaultMessage: "Total Lessons",
+            defaultMessage: "Lessons",
           })}
           value={formatNumber(count)}
           title={formatMessage({
@@ -173,7 +173,7 @@ export function TodaySummary({
           name={formatMessage({
             id: "metric.summary.totalTimeToday.label",
             description: "Widget name.",
-            defaultMessage: "Total Time",
+            defaultMessage: "Time",
           })}
           value={formatDuration(time)}
           title={formatMessage({
@@ -187,7 +187,7 @@ export function TodaySummary({
           name={formatMessage({
             id: "metric.summary.lessonCountToday.label",
             description: "Widget name.",
-            defaultMessage: "Total Lessons",
+            defaultMessage: "Lessons",
           })}
           value={formatNumber(count)}
           title={formatMessage({
