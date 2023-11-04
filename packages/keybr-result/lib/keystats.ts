@@ -1,7 +1,28 @@
 import { newFilter } from "@keybr/math";
 import { type Letter } from "@keybr/phonetic-model";
 import { type Result } from "./result.ts";
-import { type KeySample, type KeyStats, type KeyStatsMap } from "./types.ts";
+
+export type KeyStatsMap = {
+  readonly letters: readonly Letter[];
+  readonly results: readonly Result[];
+  get(letter: Letter): KeyStats;
+} & Iterable<KeyStats>;
+
+export type KeyStats = {
+  readonly letter: Letter;
+  readonly samples: readonly KeySample[];
+  readonly timeToType: number | null;
+  readonly bestTimeToType: number | null;
+};
+
+export type KeySample = {
+  readonly index: number;
+  readonly timeStamp: number;
+  readonly hitCount: number;
+  readonly missCount: number;
+  readonly timeToType: number;
+  readonly filteredTimeToType: number;
+};
 
 export function newKeyStatsMap(
   letters: readonly Letter[],

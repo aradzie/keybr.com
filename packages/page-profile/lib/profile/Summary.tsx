@@ -57,7 +57,7 @@ export function useSummary(
   if (results.length > 0) {
     const stats = newSummaryStats(results);
 
-    totalTime = formatDuration(stats.totalTime);
+    totalTime = formatDuration(stats.time);
     totalLessons = formatNumber(results.length);
     topSpeed = formatSpeed(stats.speed.max, { unit: false });
     avgSpeed = formatSpeed(stats.speed.avg, { unit: false });
@@ -67,7 +67,7 @@ export function useSummary(
     if (resultsToday.length > 0) {
       const statsToday = newSummaryStats(resultsToday);
 
-      totalTimeToday = formatDuration(statsToday.totalTime);
+      totalTimeToday = formatDuration(statsToday.time);
       totalLessonsToday = formatNumber(resultsToday.length);
       topSpeedToday = formatSpeed(statsToday.speed.max, { unit: false });
       avgSpeedToday = formatSpeed(statsToday.speed.avg, { unit: false });

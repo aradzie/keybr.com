@@ -3,9 +3,9 @@ import { FakePhoneticModel, type Letter } from "@keybr/phonetic-model";
 import { Histogram } from "@keybr/textinput";
 import { type ReactNode, useState } from "react";
 import { ResultContext } from "./context.ts";
+import { type KeySample } from "./keystats.ts";
 import { Result } from "./result.ts";
 import { TextType } from "./texttype.ts";
-import { type KeySample } from "./types.ts";
 
 export class ResultFaker {
   letters: readonly Letter[];

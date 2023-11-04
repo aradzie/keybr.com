@@ -10,4 +10,3 @@ export * from "./settings.ts";
 export * from "./speedunit.ts";
 export * from "./summarystats.ts";
 export * from "./texttype.ts";
-export * from "./types.ts";

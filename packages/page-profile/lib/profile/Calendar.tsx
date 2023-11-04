@@ -94,13 +94,13 @@ function Cell({ cell }: { readonly cell: CellData | null }): ReactNode {
   }
   const stats = newSummaryStats(results);
   const classList: string[] = [];
-  if (stats.totalTime > 30 * 60 * 1000) {
+  if (stats.time > 30 * 60 * 1000) {
     classList.push(styles.cell_s3);
-  } else if (stats.totalTime > 20 * 60 * 1000) {
+  } else if (stats.time > 20 * 60 * 1000) {
     classList.push(styles.cell_s2);
-  } else if (stats.totalTime > 10 * 60 * 1000) {
+  } else if (stats.time > 10 * 60 * 1000) {
     classList.push(styles.cell_s1);
-  } else if (stats.totalTime > 0) {
+  } else if (stats.time > 0) {
     classList.push(styles.cell_s0);
   } else {
     classList.push(styles.cell_z);
@@ -112,7 +112,7 @@ function Cell({ cell }: { readonly cell: CellData | null }): ReactNode {
         description: "Calendar cell title.",
         defaultMessage: "Time of lessons: {value}",
       },
-      { value: formatDuration(stats.totalTime) },
+      { value: formatDuration(stats.time) },
     ),
     formatMessage(
       {
