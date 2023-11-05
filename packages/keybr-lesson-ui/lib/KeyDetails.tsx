@@ -40,29 +40,33 @@ export const KeyDetails = ({
         )}
       >
         <NameValue
-          name={<Name name={formatMessage(messages.lastSpeedLabel)} />}
+          name={<Name name={formatMessage(messages.lastSpeedName)} />}
           value={
             <Value>
               {`${formatSpeed(timeToSpeed(timeToType))}`}
               {` (${formatConfidence(confidence)})`}
             </Value>
           }
-          title={formatMessage(messages.lastSpeedTitle, { speedUnitName })}
+          title={formatMessage(messages.lastSpeedDescription, {
+            speedUnitName,
+          })}
         />
         <NameValue
-          name={<Name name={formatMessage(messages.bestSpeedLabel)} />}
+          name={<Name name={formatMessage(messages.bestSpeedName)} />}
           value={
             <Value>
               {`${formatSpeed(timeToSpeed(bestTimeToType))}`}
               {` (${formatConfidence(bestConfidence)})`}
             </Value>
           }
-          title={formatMessage(messages.bestSpeedTitle, { speedUnitName })}
+          title={formatMessage(messages.bestSpeedDescription, {
+            speedUnitName,
+          })}
         />
         <NameValue
-          name={<Name name={formatMessage(messages.learningRateLabel)} />}
+          name={<Name name={formatMessage(messages.learningRateName)} />}
           value={<Value value={formatLearningRate(learningRate)} />}
-          title={formatMessage(messages.learningRateTitle)}
+          title={formatMessage(messages.learningRateDescription)}
         />
       </span>
     );

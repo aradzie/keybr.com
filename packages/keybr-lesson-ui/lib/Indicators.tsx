@@ -34,7 +34,7 @@ export const GaugeRow = memo(function GaugeRow({
         className={styles.name}
         name={formatMessage({
           id: "lesson.gaugesPanel.label",
-          description: "Panel label.",
+          description: "Widget name.",
           defaultMessage: "Metrics",
         })}
       />
@@ -63,8 +63,8 @@ export const SpeedGauge = memo(function SpeedGauge({
       name={
         <Name
           name={formatMessage({
-            id: "metric.speed.label",
-            description: "Label text.",
+            id: "metric.speed.name",
+            description: "Widget name.",
             defaultMessage: "Speed",
           })}
         />
@@ -75,14 +75,14 @@ export const SpeedGauge = memo(function SpeedGauge({
           value={signed(formatSpeed(delta), delta)}
           delta={delta}
           title={formatMessage({
-            id: "metric.speedChange.title",
+            id: "metric.speedChange.description",
             description: "Widget description.",
             defaultMessage: "The difference from the average value.",
           })}
         />
       }
       title={formatMessage({
-        id: "metric.speed.title",
+        id: "metric.speed.description",
         description: "Widget description.",
         defaultMessage: "Typing speed in the last lesson.",
       })}
@@ -106,8 +106,8 @@ export const AccuracyGauge = memo(function AccuracyGauge({
       name={
         <Name
           name={formatMessage({
-            id: "metric.accuracy.label",
-            description: "Label text.",
+            id: "metric.accuracy.name",
+            description: "Widget name.",
             defaultMessage: "Accuracy",
           })}
         />
@@ -118,14 +118,14 @@ export const AccuracyGauge = memo(function AccuracyGauge({
           value={signed(formatPercents(delta), delta)}
           delta={delta}
           title={formatMessage({
-            id: "metric.accuracyChange.title",
+            id: "metric.accuracyChange.description",
             description: "Widget description.",
             defaultMessage: "The difference from the average value.",
           })}
         />
       }
       title={formatMessage({
-        id: "metric.accuracy.title",
+        id: "metric.accuracy.description",
         description: "Widget description.",
         defaultMessage:
           "The percentage of characters typed without errors in the last lesson.",
@@ -150,8 +150,8 @@ export const ScoreGauge = memo(function ScoreGauge({
       name={
         <Name
           name={formatMessage({
-            id: "metric.score.label",
-            description: "Label text.",
+            id: "metric.score.name",
+            description: "Widget name.",
             defaultMessage: "Score",
           })}
         />
@@ -162,14 +162,14 @@ export const ScoreGauge = memo(function ScoreGauge({
           value={signed(formatNumber(delta, 0), delta)}
           delta={delta}
           title={formatMessage({
-            id: "metric.scoreChange.title",
+            id: "metric.scoreChange.description",
             description: "Widget description.",
             defaultMessage: "The difference from the average value.",
           })}
         />
       }
       title={formatMessage({
-        id: "metric.score.title",
+        id: "metric.score.description",
         description: "Widget description.",
         defaultMessage:
           "Score of the last lesson in abstract points. " +
@@ -215,7 +215,7 @@ export const KeySetRow = memo(function KeySetRow({
         className={styles.name}
         name={formatMessage({
           id: "lesson.keySetPanel.label",
-          description: "Panel label.",
+          description: "Widget name.",
           defaultMessage: "All keys",
         })}
       />
@@ -242,7 +242,7 @@ export const CurrentKeyRow = memo(function CurrentKeyRow({
         className={styles.name}
         name={formatMessage({
           id: "lesson.currentKeyPanel.label",
-          description: "Panel label.",
+          description: "Widget name.",
           defaultMessage: "Current key",
         })}
       />
@@ -270,7 +270,7 @@ export const DailyGoalRow = memo(function DailyGoalRow({
       className={styles.row}
       title={formatMessage({
         id: "lesson.dailyGoalPanel.description",
-        description: "Panel title.",
+        description: "Widget description.",
         defaultMessage: "The progress to your daily goal.",
       })}
     >
@@ -278,7 +278,7 @@ export const DailyGoalRow = memo(function DailyGoalRow({
         className={styles.name}
         name={formatMessage({
           id: "lesson.dailyGoalPanel.label",
-          description: "Panel label.",
+          description: "Widget name.",
           defaultMessage: "Daily goal",
         })}
       />

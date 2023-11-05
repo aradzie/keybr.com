@@ -1,56 +1,56 @@
 import { defineMessages } from "react-intl";
 
 export const messages = defineMessages({
-  averageSpeedLabel: {
-    id: "metric.averageSpeed.label",
+  averageSpeedName: {
+    id: "metric.averageSpeed.name",
     description: "Widget name.",
     defaultMessage: "Average typing speed",
   },
-  averageSpeedTitle: {
-    id: "metric.averageSpeed.title",
+  averageSpeedDescription: {
+    id: "metric.averageSpeed.description",
     description: "Widget description.",
     defaultMessage:
       "Average typing speed in all lessons ({speedUnitName}). The more, the better.",
   },
-  bestSpeedLabel: {
-    id: "metric.bestSpeed.label",
+  bestSpeedName: {
+    id: "metric.bestSpeed.name",
     description: "Widget name.",
     defaultMessage: "Best typing speed",
   },
-  bestSpeedTitle: {
-    id: "metric.bestSpeed.title",
+  bestSpeedDescription: {
+    id: "metric.bestSpeed.description",
     description: "Widget description.",
     defaultMessage:
       "Best typing speed in all lessons ({speedUnitName}). The more, the better.",
   },
-  lastSpeedLabel: {
-    id: "metric.lastSpeed.label",
+  lastSpeedName: {
+    id: "metric.lastSpeed.name",
     description: "Widget name.",
     defaultMessage: "Last typing speed",
   },
-  lastSpeedTitle: {
-    id: "metric.lastSpeed.title",
+  lastSpeedDescription: {
+    id: "metric.lastSpeed.description",
     description: "Widget description.",
     defaultMessage:
       "Typing speed in the last lesson ({speedUnitName}). The more, the better.",
   },
-  confidenceLevelLabel: {
-    id: "metric.confidenceLevel.label",
+  confidenceLevelName: {
+    id: "metric.confidenceLevel.name",
     description: "Widget name.",
     defaultMessage: "Confidence level",
   },
-  confidenceLevelTitle: {
-    id: "metric.confidenceLevel.title",
+  confidenceLevelDescription: {
+    id: "metric.confidenceLevel.description",
     description: "Widget description.",
     defaultMessage: "How close you are to unlocking this key.",
   },
-  learningRateLabel: {
-    id: "metric.learningRate.label",
+  learningRateName: {
+    id: "metric.learningRate.name",
     description: "Widget name.",
     defaultMessage: "Learning rate",
   },
-  learningRateTitle: {
-    id: "metric.learningRate.title",
+  learningRateDescription: {
+    id: "metric.learningRate.description",
     description: "Widget description.",
     defaultMessage: "How your typing speed is changing with each lesson.",
   },
