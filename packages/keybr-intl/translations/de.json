@@ -1140,19 +1140,19 @@
     "description": "Empty chart message."
   },
   "profile.overview.averageSpeedLabel": {
-    "defaultMessage": "Durchschnittsgeschwindigkeit ({speedUnit})",
+    "defaultMessage": "Durchschnittsgeschwindigkeit",
     "description": "Gauge label."
   },
   "profile.overview.averageSpeedTitle": {
-    "defaultMessage": "Durchschnittliche Tippgeschwindigkeit ({speedUnitName}).",
+    "defaultMessage": "Durchschnittliche Tippgeschwindigkeit.",
     "description": "Gauge title."
   },
   "profile.overview.averageSpeedTodayLabel": {
-    "defaultMessage": "Durchschnittsgeschwindigkeit ({speedUnit})",
+    "defaultMessage": "Durchschnittsgeschwindigkeit",
     "description": "Gauge label."
   },
   "profile.overview.averageSpeedTodayTitle": {
-    "defaultMessage": "Durchschnittliche Tippgeschwindigkeit heute ({speedUnitName}).",
+    "defaultMessage": "Durchschnittliche Tippgeschwindigkeit heute.",
     "description": "Gauge title."
   },
   "profile.overview.statisticsAllTime": {
@@ -1164,19 +1164,19 @@
     "description": "Section header."
   },
   "profile.overview.topSpeedLabel": {
-    "defaultMessage": "Höchstgeschwindigkeit ({speedUnit})",
+    "defaultMessage": "Höchstgeschwindigkeit",
     "description": "Gauge label."
   },
   "profile.overview.topSpeedTitle": {
-    "defaultMessage": "Höchste Tippgeschwindigkeit ({speedUnitName}).",
+    "defaultMessage": "Höchste Tippgeschwindigkeit.",
     "description": "Gauge title."
   },
   "profile.overview.topSpeedTodayLabel": {
-    "defaultMessage": "Höchstgeschwindigkeit ({speedUnit})",
+    "defaultMessage": "Höchstgeschwindigkeit",
     "description": "Gauge label."
   },
   "profile.overview.topSpeedTodayTitle": {
-    "defaultMessage": "Höchste Tippgeschwindigkeit heute ({speedUnitName}).",
+    "defaultMessage": "Höchste Tippgeschwindigkeit heute.",
     "description": "Gauge title."
   },
   "profile.overview.totalLessonsLabel": {

@@ -1140,19 +1140,19 @@
     "description": "Empty chart message."
   },
   "profile.overview.averageSpeedLabel": {
-    "defaultMessage": "Середня швидкість (SpeedUnit)",
+    "defaultMessage": "Середня швидкість",
     "description": "Gauge label."
   },
   "profile.overview.averageSpeedTitle": {
-    "defaultMessage": "Середня швидкість набору весь час ({speedUnitName}).",
+    "defaultMessage": "Середня швидкість набору весь час.",
     "description": "Gauge title."
   },
   "profile.overview.averageSpeedTodayLabel": {
-    "defaultMessage": "Середня швидкість (SpeedUnit)",
+    "defaultMessage": "Середня швидкість",
     "description": "Gauge label."
   },
   "profile.overview.averageSpeedTodayTitle": {
-    "defaultMessage": "Середня швидкість набору сьогодні ({speedUnitName}).",
+    "defaultMessage": "Середня швидкість набору сьогодні.",
     "description": "Gauge title."
   },
   "profile.overview.statisticsAllTime": {
@@ -1164,19 +1164,19 @@
     "description": "Section header."
   },
   "profile.overview.topSpeedLabel": {
-    "defaultMessage": "Найкраща швидкість ({speedUnit})",
+    "defaultMessage": "Найкраща швидкість",
     "description": "Gauge label."
   },
   "profile.overview.topSpeedTitle": {
-    "defaultMessage": "Найкраща швидкість набору за весь час ({speedUnitName}).",
+    "defaultMessage": "Найкраща швидкість набору за весь час.",
     "description": "Gauge title."
   },
   "profile.overview.topSpeedTodayLabel": {
-    "defaultMessage": "Найкраща швидкість ({speedUnit})",
+    "defaultMessage": "Найкраща швидкість",
     "description": "Gauge label."
   },
   "profile.overview.topSpeedTodayTitle": {
-    "defaultMessage": "Найкраща швидкість набору за сьогодні ({speedUnitName}).",
+    "defaultMessage": "Найкраща швидкість набору за сьогодні.",
     "description": "Gauge title."
   },
   "profile.overview.totalLessonsLabel": {

@@ -548,7 +548,7 @@
     "description": "Label name."
   },
   "metric.averageSpeed.title": {
-    "defaultMessage": "Vitesse de frappe moyenne ({speedUnitName}).",
+    "defaultMessage": "Vitesse de frappe moyenne.",
     "description": "Label title."
   },
   "metric.bestSpeed.label": {
@@ -556,7 +556,7 @@
     "description": "Label name."
   },
   "metric.bestSpeed.title": {
-    "defaultMessage": "Vitesse de frappe la plus élevée ({speedUnitName}).",
+    "defaultMessage": "Vitesse de frappe la plus élevée.",
     "description": "Label title."
   },
   "metric.confidenceLevel.label": {
@@ -572,7 +572,7 @@
     "description": "Label name."
   },
   "metric.lastSpeed.title": {
-    "defaultMessage": "Typing speed in the last lesson ({speedUnitName}). The more, the better.",
+    "defaultMessage": "Typing speed in the last lesson. The more, the better.",
     "description": "Label title."
   },
   "metric.learningRate.label": {
@@ -1000,7 +1000,7 @@
     "description": "Chart description."
   },
   "profile.chart.compareAverageSpeedText": {
-    "defaultMessage": "Votre vitesse moyenne de tous les temps est supérieure à <span>% </span> de toutes les autres personnes.",
+    "defaultMessage": "Votre vitesse moyenne de tous les temps est supérieure à {value} de toutes les autres personnes.",
     "description": "Section paragraph."
   },
   "profile.chart.compareTitle": {
@@ -1008,7 +1008,7 @@
     "description": "Section title."
   },
   "profile.chart.compareTopSpeedText": {
-    "defaultMessage": "Votre vitesse de pointe de tous les temps est supérieure à <span>% </span> de toutes les autres personnes.",
+    "defaultMessage": "Votre vitesse de pointe de tous les temps est supérieure à {value} de toutes les autres personnes.",
     "description": "Section paragraph."
   },
   "profile.chart.histogramCaption": {
@@ -1140,19 +1140,19 @@
     "description": "Empty chart message."
   },
   "profile.overview.averageSpeedLabel": {
-    "defaultMessage": "Vitesse moyenne ({speedUnit})",
+    "defaultMessage": "Vitesse moyenne",
     "description": "Gauge label."
   },
   "profile.overview.averageSpeedTitle": {
-    "defaultMessage": "Vitesse de frappe moyenne ({speedUnitName}).",
+    "defaultMessage": "Vitesse de frappe moyenne.",
     "description": "Gauge title."
   },
   "profile.overview.averageSpeedTodayLabel": {
-    "defaultMessage": "Vitesse moyenne ({speedUnit})",
+    "defaultMessage": "Vitesse moyenne",
     "description": "Gauge label."
   },
   "profile.overview.averageSpeedTodayTitle": {
-    "defaultMessage": "Vitesse de frappe moyenne aujourd'hui ({speedUnitName}).",
+    "defaultMessage": "Vitesse de frappe moyenne aujourd'hui.",
     "description": "Gauge title."
   },
   "profile.overview.statisticsAllTime": {
@@ -1164,19 +1164,19 @@
     "description": "Section header."
   },
   "profile.overview.topSpeedLabel": {
-    "defaultMessage": "Vitesse de pointe ({speedUnit})",
+    "defaultMessage": "Vitesse de pointe",
     "description": "Gauge label."
   },
   "profile.overview.topSpeedTitle": {
-    "defaultMessage": "Vitesse de frappe la plus élevée ({speedUnitName}).",
+    "defaultMessage": "Vitesse de frappe la plus élevée.",
     "description": "Gauge title."
   },
   "profile.overview.topSpeedTodayLabel": {
-    "defaultMessage": "Vitesse de pointe ({speedUnit})",
+    "defaultMessage": "Vitesse de pointe",
     "description": "Gauge label."
   },
   "profile.overview.topSpeedTodayTitle": {
-    "defaultMessage": "Vitesse de frappe maximale aujourd'hui ({speedUnitName}).",
+    "defaultMessage": "Vitesse de frappe maximale aujourd'hui.",
     "description": "Gauge title."
   },
   "profile.overview.totalLessonsLabel": {

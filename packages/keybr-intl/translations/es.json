@@ -1140,19 +1140,19 @@
     "description": "Empty chart message."
   },
   "profile.overview.averageSpeedLabel": {
-    "defaultMessage": "Velocidad Media ({speedUnit})",
+    "defaultMessage": "Velocidad Media",
     "description": "Gauge label."
   },
   "profile.overview.averageSpeedTitle": {
-    "defaultMessage": "Velocidad media de mecanografía ({speedUnitName}).",
+    "defaultMessage": "Velocidad media de mecanografía.",
     "description": "Gauge title."
   },
   "profile.overview.averageSpeedTodayLabel": {
-    "defaultMessage": "Velocidad Media ({speedUnit})",
+    "defaultMessage": "Velocidad Media",
     "description": "Gauge label."
   },
   "profile.overview.averageSpeedTodayTitle": {
-    "defaultMessage": "Velocidad media de mecanografía hoy ({speedUnitName}).",
+    "defaultMessage": "Velocidad media de mecanografía hoy.",
     "description": "Gauge title."
   },
   "profile.overview.statisticsAllTime": {
@@ -1164,19 +1164,19 @@
     "description": "Section header."
   },
   "profile.overview.topSpeedLabel": {
-    "defaultMessage": "Velocidad Máxima ({speedUnit})",
+    "defaultMessage": "Velocidad Máxima",
     "description": "Gauge label."
   },
   "profile.overview.topSpeedTitle": {
-    "defaultMessage": "Velocidad máxima de mecanografía ({speedUnitName}).",
+    "defaultMessage": "Velocidad máxima de mecanografía.",
     "description": "Gauge title."
   },
   "profile.overview.topSpeedTodayLabel": {
-    "defaultMessage": "Velocidad Máxima ({speedUnit})",
+    "defaultMessage": "Velocidad Máxima)",
     "description": "Gauge label."
   },
   "profile.overview.topSpeedTodayTitle": {
-    "defaultMessage": "Velocidad máxima de mecanografía hoy ({speedUnitName}).",
+    "defaultMessage": "Velocidad máxima de mecanografía hoy.",
     "description": "Gauge title."
   },
   "profile.overview.totalLessonsLabel": {

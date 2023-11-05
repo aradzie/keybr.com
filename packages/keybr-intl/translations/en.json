@@ -1140,19 +1140,19 @@
     "description": "Empty chart message."
   },
   "profile.overview.averageSpeedLabel": {
-    "defaultMessage": "Average Speed ({speedUnit})",
+    "defaultMessage": "Average Speed",
     "description": "Gauge label."
   },
   "profile.overview.averageSpeedTitle": {
-    "defaultMessage": "Average typing speed ({speedUnitName}).",
+    "defaultMessage": "Average typing speed.",
     "description": "Gauge title."
   },
   "profile.overview.averageSpeedTodayLabel": {
-    "defaultMessage": "Average Speed ({speedUnit})",
+    "defaultMessage": "Average Speed",
     "description": "Gauge label."
   },
   "profile.overview.averageSpeedTodayTitle": {
-    "defaultMessage": "Average typing speed today ({speedUnitName}).",
+    "defaultMessage": "Average typing speed today.",
     "description": "Gauge title."
   },
   "profile.overview.statisticsAllTime": {
@@ -1164,19 +1164,19 @@
     "description": "Section header."
   },
   "profile.overview.topSpeedLabel": {
-    "defaultMessage": "Top Speed ({speedUnit})",
+    "defaultMessage": "Top Speed",
     "description": "Gauge label."
   },
   "profile.overview.topSpeedTitle": {
-    "defaultMessage": "Top typing speed ({speedUnitName}).",
+    "defaultMessage": "Top typing speed.",
     "description": "Gauge title."
   },
   "profile.overview.topSpeedTodayLabel": {
-    "defaultMessage": "Top Speed ({speedUnit})",
+    "defaultMessage": "Top Speed",
     "description": "Gauge label."
   },
   "profile.overview.topSpeedTodayTitle": {
-    "defaultMessage": "Top typing speed today ({speedUnitName}).",
+    "defaultMessage": "Top typing speed today.",
     "description": "Gauge title."
   },
   "profile.overview.totalLessonsLabel": {
@@ -1184,7 +1184,7 @@
     "description": "Gauge label."
   },
   "profile.overview.totalLessonsTitle": {
-    "defaultMessage": "Number of lessons completed.",
+    "defaultMessage": "The number of lessons completed.",
     "description": "Gauge title."
   },
   "profile.overview.totalLessonsTodayLabel": {
@@ -1192,7 +1192,7 @@
     "description": "Gauge label."
   },
   "profile.overview.totalLessonsTodayTitle": {
-    "defaultMessage": "Number of lessons completed today.",
+    "defaultMessage": "The number of lessons completed today.",
     "description": "Gauge title."
   },
   "profile.overview.totalTimeLabel": {

@@ -548,7 +548,7 @@
     "description": "Label name."
   },
   "metric.averageSpeed.title": {
-    "defaultMessage": "Средняя скорость ({speedUnitName}). Чем больше, тем лучше.",
+    "defaultMessage": "Средняя скорость. Чем больше, тем лучше.",
     "description": "Label title."
   },
   "metric.bestSpeed.label": {
@@ -556,7 +556,7 @@
     "description": "Label name."
   },
   "metric.bestSpeed.title": {
-    "defaultMessage": "Лучшая скорость печати во всех уроках ({speedUnitName}). Чем больше, тем лучше.",
+    "defaultMessage": "Лучшая скорость печати во всех уроках. Чем больше, тем лучше.",
     "description": "Label title."
   },
   "metric.confidenceLevel.label": {
@@ -572,7 +572,7 @@
     "description": "Label name."
   },
   "metric.lastSpeed.title": {
-    "defaultMessage": "Скорость печати в последнем уроке ({speedUnitName}). Чем больше, тем лучше.",
+    "defaultMessage": "Скорость печати в последнем уроке. Чем больше, тем лучше.",
     "description": "Label title."
   },
   "metric.learningRate.label": {
@@ -1140,19 +1140,19 @@
     "description": "Empty chart message."
   },
   "profile.overview.averageSpeedLabel": {
-    "defaultMessage": "Средняя скорость ({speedUnit})",
+    "defaultMessage": "Средняя скорость",
     "description": "Gauge label."
   },
   "profile.overview.averageSpeedTitle": {
-    "defaultMessage": "Средняя скорость набора за все время ({speedUnitName}).",
+    "defaultMessage": "Средняя скорость набора за все время.",
     "description": "Gauge title."
   },
   "profile.overview.averageSpeedTodayLabel": {
-    "defaultMessage": "Средняя скорость ({speedUnit})",
+    "defaultMessage": "Средняя скорость",
     "description": "Gauge label."
   },
   "profile.overview.averageSpeedTodayTitle": {
-    "defaultMessage": "Средняя скорость набора за сегодня ({speedUnitName}).",
+    "defaultMessage": "Средняя скорость набора за сегодня.",
     "description": "Gauge title."
   },
   "profile.overview.statisticsAllTime": {
@@ -1164,19 +1164,19 @@
     "description": "Section header."
   },
   "profile.overview.topSpeedLabel": {
-    "defaultMessage": "Лучшая скорость ({speedUnit})",
+    "defaultMessage": "Лучшая скорость",
     "description": "Gauge label."
   },
   "profile.overview.topSpeedTitle": {
-    "defaultMessage": "Лучшая скорость набора за все время ({speedUnitName}).",
+    "defaultMessage": "Лучшая скорость набора за все время.",
     "description": "Gauge title."
   },
   "profile.overview.topSpeedTodayLabel": {
-    "defaultMessage": "Лучшая скорость ({speedUnit})",
+    "defaultMessage": "Лучшая скорость",
     "description": "Gauge label."
   },
   "profile.overview.topSpeedTodayTitle": {
-    "defaultMessage": "Лучшая скорость набора за сегодня ({speedUnitName}).",
+    "defaultMessage": "Лучшая скорость набора за сегодня.",
     "description": "Gauge title."
   },
   "profile.overview.totalLessonsLabel": {

@@ -68,7 +68,7 @@ export function AllTimeSummary({
 }): ReactNode {
   const { formatMessage } = useIntl();
   const { formatNumber } = useIntlNumbers();
-  const { formatSpeed, speedUnit, speedUnitName } = useFormatter();
+  const { formatSpeed } = useFormatter();
 
   const {
     stats: { count, time, speed },
@@ -109,52 +109,36 @@ export function AllTimeSummary({
           title={formatMessage({
             id: "profile.overview.totalLessonsTitle",
             description: "Gauge title.",
-            defaultMessage: "Number of lessons completed.",
+            defaultMessage: "The number of lessons completed.",
           })}
         />
 
         <Statistic
-          name={formatMessage(
-            {
-              id: "profile.overview.topSpeedLabel",
-              description: "Gauge label.",
-              defaultMessage: "Top Speed ({speedUnit})",
-            },
-            { speedUnit: speedUnit.id },
-          )}
-          value={
-            speed.max > 0 ? formatSpeed(speed.max, { unit: false }) : "N/A"
-          }
-          title={formatMessage(
-            {
-              id: "profile.overview.topSpeedTitle",
-              description: "Gauge title.",
-              defaultMessage: "Top typing speed ({speedUnitName}).",
-            },
-            { speedUnitName },
-          )}
+          name={formatMessage({
+            id: "profile.overview.topSpeedLabel",
+            description: "Gauge label.",
+            defaultMessage: "Top Speed",
+          })}
+          value={speed.max > 0 ? formatSpeed(speed.max) : "N/A"}
+          title={formatMessage({
+            id: "profile.overview.topSpeedTitle",
+            description: "Gauge title.",
+            defaultMessage: "Top typing speed.",
+          })}
         />
 
         <Statistic
-          name={formatMessage(
-            {
-              id: "profile.overview.averageSpeedLabel",
-              description: "Gauge label.",
-              defaultMessage: "Average Speed ({speedUnit})",
-            },
-            { speedUnit: speedUnit.id },
-          )}
-          value={
-            speed.avg > 0 ? formatSpeed(speed.avg, { unit: false }) : "N/A"
-          }
-          title={formatMessage(
-            {
-              id: "profile.overview.averageSpeedTitle",
-              description: "Gauge title.",
-              defaultMessage: "Average typing speed ({speedUnitName}).",
-            },
-            { speedUnitName },
-          )}
+          name={formatMessage({
+            id: "profile.overview.averageSpeedLabel",
+            description: "Gauge label.",
+            defaultMessage: "Average Speed",
+          })}
+          value={speed.avg > 0 ? formatSpeed(speed.avg) : "N/A"}
+          title={formatMessage({
+            id: "profile.overview.averageSpeedTitle",
+            description: "Gauge title.",
+            defaultMessage: "Average typing speed.",
+          })}
         />
       </Para>
     </>
@@ -168,7 +152,7 @@ export function TodaySummary({
 }): ReactNode {
   const { formatMessage } = useIntl();
   const { formatNumber } = useIntlNumbers();
-  const { formatSpeed, speedUnit, speedUnitName } = useFormatter();
+  const { formatSpeed } = useFormatter();
 
   const {
     statsToday: { count, time, speed },
@@ -209,52 +193,36 @@ export function TodaySummary({
           title={formatMessage({
             id: "profile.overview.totalLessonsTodayTitle",
             description: "Gauge title.",
-            defaultMessage: "Number of lessons completed today.",
+            defaultMessage: "The number of lessons completed today.",
           })}
         />
 
         <Statistic
-          name={formatMessage(
-            {
-              id: "profile.overview.topSpeedTodayLabel",
-              description: "Gauge label.",
-              defaultMessage: "Top Speed ({speedUnit})",
-            },
-            { speedUnit: speedUnit.id },
-          )}
-          value={
-            speed.max > 0 ? formatSpeed(speed.max, { unit: false }) : "N/A"
-          }
-          title={formatMessage(
-            {
-              id: "profile.overview.topSpeedTodayTitle",
-              description: "Gauge title.",
-              defaultMessage: "Top typing speed today ({speedUnitName}).",
-            },
-            { speedUnitName },
-          )}
+          name={formatMessage({
+            id: "profile.overview.topSpeedTodayLabel",
+            description: "Gauge label.",
+            defaultMessage: "Top Speed",
+          })}
+          value={speed.max > 0 ? formatSpeed(speed.max) : "N/A"}
+          title={formatMessage({
+            id: "profile.overview.topSpeedTodayTitle",
+            description: "Gauge title.",
+            defaultMessage: "Top typing speed today.",
+          })}
         />
 
         <Statistic
-          name={formatMessage(
-            {
-              id: "profile.overview.averageSpeedTodayLabel",
-              description: "Gauge label.",
-              defaultMessage: "Average Speed ({speedUnit})",
-            },
-            { speedUnit: speedUnit.id },
-          )}
-          value={
-            speed.avg > 0 ? formatSpeed(speed.avg, { unit: false }) : "N/A"
-          }
-          title={formatMessage(
-            {
-              id: "profile.overview.averageSpeedTodayTitle",
-              description: "Gauge title.",
-              defaultMessage: "Average typing speed today ({speedUnitName}).",
-            },
-            { speedUnitName },
-          )}
+          name={formatMessage({
+            id: "profile.overview.averageSpeedTodayLabel",
+            description: "Gauge label.",
+            defaultMessage: "Average Speed",
+          })}
+          value={speed.avg > 0 ? formatSpeed(speed.avg) : "N/A"}
+          title={formatMessage({
+            id: "profile.overview.averageSpeedTodayTitle",
+            description: "Gauge title.",
+            defaultMessage: "Average typing speed today.",
+          })}
         />
       </Para>
     </>
