@@ -39,8 +39,8 @@ export function LessonPreview({
   return (
     <FieldSet
       legend={formatMessage({
-        id: "settings.previewLabel",
-        description: "Fieldset label.",
+        id: "settings.previewLesson.label",
+        description: "Header text.",
         defaultMessage: "Lesson Preview",
       })}
     >

@@ -14,7 +14,7 @@ export const PracticeTour = memo(function PracticeTour({
     <Tour onClose={onClose}>
       <Slide size="large">
         <FormattedMessage
-          id="practice.tourSlide1"
+          id="practice.tour.slide1"
           description="Slide content."
           defaultMessage={
             "<h1>Learn to Type Faster</h1>" +
@@ -25,7 +25,7 @@ export const PracticeTour = memo(function PracticeTour({
       </Slide>
       <Slide size="large">
         <FormattedMessage
-          id="practice.tourSlide2"
+          id="practice.tour.slide2"
           description="Slide content."
           defaultMessage={
             "<p>Our teaching method is based on these principles:</p>" +
@@ -36,7 +36,7 @@ export const PracticeTour = memo(function PracticeTour({
       </Slide>
       <Slide size="large">
         <FormattedMessage
-          id="practice.tourSlide3"
+          id="practice.tour.slide3"
           description="Slide content."
           defaultMessage={
             "<p>Initially it starts generating words from a small subset of the most frequent letters in the alphabet.</p>" +
@@ -46,7 +46,7 @@ export const PracticeTour = memo(function PracticeTour({
       </Slide>
       <Slide size="large">
         <FormattedMessage
-          id="practice.tourSlide4"
+          id="practice.tour.slide4"
           description="Slide content."
           defaultMessage={
             "<p>When the algorithm includes a new letter to the current subset, the frequency of this letter is artificially boosted so that it will be included in every generated word of a lesson.</p>" +
@@ -57,21 +57,21 @@ export const PracticeTour = memo(function PracticeTour({
       </Slide>
       <Slide size="small" target={`#${names.textInput}`} position="s">
         <FormattedMessage
-          id="practice.tourSlide5"
+          id="practice.tour.slide5"
           description="Slide content."
           defaultMessage="<p>This is the text board. It displays the text to type out. The text changes for each new lesson. The text is generated automatically from the current subset of letters. Most of the words are not real, but are generated using the phonetic rules of your language so they sound natural and should be easy to pronounce. Besides being funny, this gives us the flexibility to use more words than actually exist.</p>"
         />
       </Slide>
       <Slide size="small" target={`#${names.keyboard}`} position="n">
         <FormattedMessage
-          id="practice.tourSlide6"
+          id="practice.tour.slide6"
           description="Slide content."
           defaultMessage="<p>This is the virtual keyboard. It helps you memorize key positions. Use it to find the keys and try not to look at your physical keyboard. There are small bumps on the <em>F</em> and <em>J</em> keys of your keyboard. Use these to correctly position your index fingers without having to look at the keys. Once your index fingers are in the right position you will be able to locate the remainder of the keys.</p>"
         />
       </Slide>
       <Slide size="small" target={`#${names.speed}`} position="s">
         <FormattedMessage
-          id="practice.tourSlide7"
+          id="practice.tour.slide7"
           description="Slide content."
           defaultMessage={
             "<p>This is the typing speed indicator and the difference from the average value. Your goal is to increase this metric, meaning higher values are better.</p>" +
@@ -82,7 +82,7 @@ export const PracticeTour = memo(function PracticeTour({
       </Slide>
       <Slide size="small" target={`#${names.accuracy}`} position="s">
         <FormattedMessage
-          id="practice.tourSlide8"
+          id="practice.tour.slide8"
           description="Slide content."
           defaultMessage={
             "<p>This is the accuracy indicator and the difference from the average value. Your goal is to increase this metric, meaning higher values are better.</p>" +
@@ -92,7 +92,7 @@ export const PracticeTour = memo(function PracticeTour({
       </Slide>
       <Slide size="small" target={`#${names.score}`} position="s">
         <FormattedMessage
-          id="practice.tourSlide9"
+          id="practice.tour.slide9"
           description="Slide content."
           defaultMessage={
             "<p>This is the typing score indicator in abstract points and the difference from the average value.</p>" +
@@ -103,7 +103,7 @@ export const PracticeTour = memo(function PracticeTour({
       </Slide>
       <Slide size="small" target={`#${names.keySet}`} position="s">
         <FormattedMessage
-          id="practice.tourSlide10"
+          id="practice.tour.slide10"
           description="Slide content."
           defaultMessage="<p>This indicator shows the current subset of letters used to generate the lessons, and your confidence level for every letter in the subset:</p>"
         />
@@ -111,7 +111,7 @@ export const PracticeTour = memo(function PracticeTour({
       </Slide>
       <Slide size="small" target={`#${names.keySet}`} position="s">
         <FormattedMessage
-          id="practice.tourSlide11"
+          id="practice.tour.slide11"
           description="Slide content."
           defaultMessage="<p>This indicator can also be used to predict the remaining number of lessons that are needed to fully unlock a letter, like in the example chart below. Visit it regularly to get more insight on how your learning is going, to see if you are making a progress.</p>"
         />
@@ -119,7 +119,7 @@ export const PracticeTour = memo(function PracticeTour({
       </Slide>
       <Slide size="small" target={`#${names.currentKey}`} position="s">
         <FormattedMessage
-          id="practice.tourSlide12"
+          id="practice.tour.slide12"
           description="Slide content."
           defaultMessage={
             "<p>This indicator shows details about the letter with boosted frequency, which is currently included in every generated word:</p>" +

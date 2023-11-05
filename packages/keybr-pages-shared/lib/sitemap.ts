@@ -17,12 +17,12 @@ export class Sitemap {
   static readonly signIn = new PageLinkTemplate({
     path: "/account",
     name: defineMessage({
-      id: "nav.signInName",
+      id: "nav.signIn.name",
       description: "Navigation menu item name.",
       defaultMessage: "Sign-In",
     }),
     title: defineMessage({
-      id: "nav.signInTitle",
+      id: "nav.signIn.description",
       description: "Navigation menu item title.",
       defaultMessage: "Sign‑in for an online account.",
     }),
@@ -32,12 +32,12 @@ export class Sitemap {
   static readonly account = new PageLinkTemplate<NamedUser>({
     path: "/account",
     name: defineMessage({
-      id: "nav.accountName",
+      id: "nav.account.name",
       description: "Navigation menu item name.",
       defaultMessage: "{name}",
     }),
     title: defineMessage({
-      id: "nav.accountTitle",
+      id: "nav.account.description",
       description: "Navigation menu item title.",
       defaultMessage: "Manage your online account.",
     }),
@@ -47,12 +47,12 @@ export class Sitemap {
   static readonly practice = new PageLinkTemplate({
     path: "/",
     name: defineMessage({
-      id: "nav.practiceName",
+      id: "nav.practice.name",
       description: "Navigation menu item name.",
       defaultMessage: "Practice",
     }),
     title: defineMessage({
-      id: "nav.practiceTitle",
+      id: "nav.practice.description",
       description: "Navigation menu item title.",
       defaultMessage: "Practice typing lessons to improve your typing speed.",
     }),
@@ -62,12 +62,12 @@ export class Sitemap {
   static readonly profile = new PageLinkTemplate({
     path: "/profile",
     name: defineMessage({
-      id: "nav.profileName",
+      id: "nav.profile.name",
       description: "Navigation menu item name.",
       defaultMessage: "Profile",
     }),
     title: defineMessage({
-      id: "nav.profileTitle",
+      id: "nav.profile.description",
       description: "Navigation menu item title.",
       defaultMessage:
         "See the detailed statistics about your learning progress.",
@@ -78,12 +78,12 @@ export class Sitemap {
   static readonly typingTest = new PageLinkTemplate({
     path: "/typing-test",
     name: defineMessage({
-      id: "nav.typingTestName",
+      id: "nav.typingTest.name",
       description: "Navigation menu item name.",
       defaultMessage: "Typing Test",
     }),
     title: defineMessage({
-      id: "nav.typingTestTitle",
+      id: "nav.typingTest.description",
       description: "Navigation menu item title.",
       defaultMessage: "Take a typing speed test.",
     }),
@@ -93,12 +93,12 @@ export class Sitemap {
   static readonly help = new PageLinkTemplate({
     path: "/help",
     name: defineMessage({
-      id: "nav.helpName",
+      id: "nav.help.name",
       description: "Navigation menu item name.",
       defaultMessage: "Help",
     }),
     title: defineMessage({
-      id: "nav.helpTitle",
+      id: "nav.help.description",
       description: "Navigation menu item title.",
       defaultMessage: "Get the instructions on how to use this application.",
     }),
@@ -108,12 +108,12 @@ export class Sitemap {
   static readonly publicProfile = new PageLinkTemplate<NamedUser>({
     path: "/profile/:id",
     name: defineMessage({
-      id: "nav.publicProfileName",
+      id: "nav.publicProfile.name",
       description: "Navigation menu item name.",
       defaultMessage: "Public Profile of {name}",
     }),
     title: defineMessage({
-      id: "nav.publicProfileTitle",
+      id: "nav.publicProfile.description",
       description: "Navigation menu item title.",
       defaultMessage: "Observe the public profile of user {name}.",
     }),
@@ -123,12 +123,12 @@ export class Sitemap {
   static readonly highScores = new PageLinkTemplate({
     path: "/high-scores",
     name: defineMessage({
-      id: "nav.highScoresName",
+      id: "nav.highScores.name",
       description: "Navigation menu item name.",
       defaultMessage: "High Scores",
     }),
     title: defineMessage({
-      id: "nav.highScoresTitle",
+      id: "nav.highScores.description",
       description: "Navigation menu item title.",
       defaultMessage: "See the high score table featuring the fastest typists.",
     }),
@@ -138,12 +138,12 @@ export class Sitemap {
   static readonly multiplayer = new PageLinkTemplate({
     path: "/multiplayer",
     name: defineMessage({
-      id: "nav.multiplayerName",
+      id: "nav.multiplayer.name",
       description: "Navigation menu item name.",
       defaultMessage: "Multiplayer",
     }),
     title: defineMessage({
-      id: "nav.multiplayerTitle",
+      id: "nav.multiplayer.description",
       description: "Navigation menu item title.",
       defaultMessage:
         "Compete against other players in an online multiplayer game.",
@@ -154,12 +154,12 @@ export class Sitemap {
   static readonly layouts = new PageLinkTemplate({
     path: "/layouts",
     name: defineMessage({
-      id: "nav.layoutsName",
+      id: "nav.layouts.name",
       description: "Navigation menu item name.",
       defaultMessage: "Layouts",
     }),
     title: defineMessage({
-      id: "nav.layoutsTitle",
+      id: "nav.layouts.description",
       description: "Navigation menu item title.",
       defaultMessage: "Compare the efficiency of different keyboard layouts.",
     }),
@@ -169,12 +169,12 @@ export class Sitemap {
   static readonly textTools = new PageLinkTemplate({
     path: "/text-tools",
     name: defineMessage({
-      id: "nav.textToolsName",
+      id: "nav.textTools.name",
       description: "Navigation menu item name.",
       defaultMessage: "Text Tools",
     }),
     title: defineMessage({
-      id: "nav.textToolsTitle",
+      id: "nav.textTools.description",
       description: "Navigation menu item title.",
       defaultMessage: "Count the characters and words in your text.",
     }),
@@ -184,12 +184,12 @@ export class Sitemap {
   static readonly privacyPolicy = new PageLinkTemplate({
     path: "/privacy-policy",
     name: defineMessage({
-      id: "nav.privacyPolicyName",
+      id: "nav.privacyPolicy.name",
       description: "Navigation menu item name.",
       defaultMessage: "Privacy Policy",
     }),
     title: defineMessage({
-      id: "nav.privacyPolicyTitle",
+      id: "nav.privacyPolicy.description",
       description: "Navigation menu item title.",
       defaultMessage: "Privacy policy.",
     }),
@@ -198,12 +198,12 @@ export class Sitemap {
   static readonly termsOfService = new PageLinkTemplate({
     path: "/terms-of-service",
     name: defineMessage({
-      id: "nav.termsOfServiceName",
+      id: "nav.termsOfService.name",
       description: "Navigation menu item name.",
       defaultMessage: "Terms of Service",
     }),
     title: defineMessage({
-      id: "nav.termsOfServiceTitle",
+      id: "nav.termsOfService.description",
       description: "Navigation menu item title.",
       defaultMessage: "Terms of service.",
     }),

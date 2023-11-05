@@ -32,7 +32,7 @@ export function ShareProfileLink({
       <Field>
         <FormattedMessage
           id="profile.control.shareText"
-          description="Share profile text."
+          description="Widget name."
           defaultMessage="Share your profile:"
         />
       </Field>
@@ -53,13 +53,13 @@ export function ShareProfileLink({
         <Button
           icon={<Icon shape={mdiContentCopy} />}
           label={formatMessage({
-            id: "profile.control.shareButtonLabel",
-            description: "Button label.",
+            id: "profile.control.shareButton.label",
+            description: "Widget name.",
             defaultMessage: "Copy",
           })}
           title={formatMessage({
-            id: "profile.control.shareButtonTitle",
-            description: "Button title.",
+            id: "profile.control.shareButton.description",
+            description: "Widget description.",
             defaultMessage: "Copy profile link to the clipboard.",
           })}
           onClick={() => {
@@ -77,13 +77,13 @@ export function ShareProfileLink({
           href={href}
           target={target}
           label={formatMessage({
-            id: "profile.control.visitButtonLabel",
-            description: "Button label.",
+            id: "profile.control.visitButton.label",
+            description: "Widget name.",
             defaultMessage: "Visit",
           })}
           title={formatMessage({
-            id: "profile.control.visitButtonTitle",
-            description: "Button title.",
+            id: "profile.control.visitButton.description",
+            description: "Widget description.",
             defaultMessage: "Visit your public profile page.",
           })}
         />

@@ -15,16 +15,16 @@ export function KeyFrequencyHeatmapSection({
     <Figure>
       <Figure.Caption>
         <FormattedMessage
-          id="profile.chart.keyFrequencyHeatmapCaption"
-          description="Chart caption."
+          id="profile.chart.keyFrequencyHeatmap.caption"
+          description="Header text."
           defaultMessage="Key Frequency Heatmap"
         />
       </Figure.Caption>
 
       <Figure.Description>
         <FormattedMessage
-          id="profile.chart.keyFrequencyHeatmapDescription"
-          description="Chart description."
+          id="profile.chart.keyFrequencyHeatmap.description"
+          description="Message text."
           defaultMessage="This chart shows relative key frequencies as a heatmap."
         />
       </Figure.Description>

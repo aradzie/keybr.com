@@ -29,15 +29,15 @@ export function AccountSection({
       <AccountName name={user.email} />
 
       <FormattedMessage
-        id="account.accountPageDescription"
-        description="Freeform text."
+        id="account.accountPage.description"
+        description="Message text."
         defaultMessage="<p>You are using an account to store your typing data on our servers in the cloud. You will be able to access your profile from any computer or browser.</p>"
       />
 
       <FieldSet
         legend={formatMessage({
-          id: "account.accountDetailsLegend",
-          description: "Fieldset legend.",
+          id: "account.accountDetails.legend",
+          description: "Header text.",
           defaultMessage: "Account Details",
         })}
       >
@@ -47,8 +47,8 @@ export function AccountSection({
 
         <Para>
           <FormattedMessage
-            id="account.avatarDescription"
-            description="Freeform text."
+            id="account.avatar.description"
+            description="Message text."
             defaultMessage="Your user image and name as they are visible to the public in your profile, the high scores table, and the multiplayer game."
           />
         </Para>
@@ -56,13 +56,13 @@ export function AccountSection({
         <Para>
           <CheckBox
             label={formatMessage({
-              id: "account.anonymizeButtonLabel",
-              description: "Button label.",
+              id: "account.anonymizeButton.label",
+              description: "Widget name.",
               defaultMessage: "Anonymize Me",
             })}
             title={formatMessage({
-              id: "account.anonymizeButtonTitle",
-              description: "Button title.",
+              id: "account.anonymizeButton.description",
+              description: "Widget description.",
               defaultMessage:
                 "Hide your real user image and name from the public.",
             })}
@@ -75,8 +75,8 @@ export function AccountSection({
 
         <Para>
           <FormattedMessage
-            id="account.anonymizeDescription"
-            description="Freeform text."
+            id="account.anonymize.description"
+            description="Message text."
             defaultMessage="Anonymization replaces your real user image and name with the one that we give you. You can switch between your real and anonymous name any number of times."
           />
         </Para>
@@ -88,13 +88,13 @@ export function AccountSection({
             }}
             icon={<Icon shape={mdiExitToApp} />}
             label={formatMessage({
-              id: "account.signOutButtonLabel",
-              description: "Button label.",
+              id: "account.signOutButton.label",
+              description: "Widget name.",
               defaultMessage: "Sign Out",
             })}
             title={formatMessage({
-              id: "account.signOutButtonTitle",
-              description: "Button title.",
+              id: "account.signOutButton.description",
+              description: "Widget description.",
               defaultMessage: "Sign out from the application.",
             })}
           />
@@ -103,8 +103,8 @@ export function AccountSection({
 
       <FieldSet
         legend={formatMessage({
-          id: "account.premiumAccountLegend",
-          description: "Fieldset legend.",
+          id: "account.premiumAccount.legend",
+          description: "Header text.",
           defaultMessage: "Premium Account",
         })}
       >
@@ -123,13 +123,13 @@ export function AccountSection({
                 }}
                 icon={<Icon shape={mdiCreditCard} />}
                 label={formatMessage({
-                  id: "account.checkoutButtonLabel",
-                  description: "Button label.",
+                  id: "account.checkoutButton.label",
+                  description: "Widget name.",
                   defaultMessage: "Buy a Premium Account",
                 })}
                 title={formatMessage({
-                  id: "account.checkoutButtonTitle",
-                  description: "Button title.",
+                  id: "account.checkoutButton.description",
+                  description: "Widget description.",
                   defaultMessage: "Open the checkout form.",
                 })}
               />
@@ -140,8 +140,8 @@ export function AccountSection({
 
       <FieldSet
         legend={formatMessage({
-          id: "account.deleteAccountLegend",
-          description: "Fieldset legend.",
+          id: "account.deleteAccount.legend",
+          description: "Header text.",
           defaultMessage: "Delete Account",
         })}
       >
@@ -152,13 +152,13 @@ export function AccountSection({
             }}
             icon={<Icon shape={mdiDeleteForever} />}
             label={formatMessage({
-              id: "account.deleteAccountButtonLabel",
-              description: "Button label.",
+              id: "account.deleteAccountButton.label",
+              description: "Widget name.",
               defaultMessage: "Delete Account",
             })}
             title={formatMessage({
-              id: "account.deleteAccountButtonTitle",
-              description: "Button title.",
+              id: "account.deleteAccountButton.description",
+              description: "Widget description.",
               defaultMessage: "Permanently delete your account.",
             })}
           />
@@ -166,8 +166,8 @@ export function AccountSection({
 
         <Para>
           <FormattedMessage
-            id="account.deleteAccountDescription"
-            description="Freeform text."
+            id="account.deleteAccount.description"
+            description="Message text."
             defaultMessage="This will delete all your personally identifiable information, such as your name and e-mail address from our database. This operation cannot be undone! If you only want to clear your typing statistics and start over, you can do this on the profile page."
           />
         </Para>

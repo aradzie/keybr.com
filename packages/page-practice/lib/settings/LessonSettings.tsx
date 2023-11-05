@@ -39,7 +39,7 @@ export function LessonSettings(): ReactNode {
               <Tab
                 label={formatMessage({
                   id: "lessonType.guided.name",
-                  description: "Input field label.",
+                  description: "Widget name.",
                   defaultMessage: "Guided lessons",
                 })}
               >
@@ -49,7 +49,7 @@ export function LessonSettings(): ReactNode {
               <Tab
                 label={formatMessage({
                   id: "lessonType.wordlist.name",
-                  description: "Input field label.",
+                  description: "Widget name.",
                   defaultMessage: "Common words",
                 })}
               >
@@ -59,7 +59,7 @@ export function LessonSettings(): ReactNode {
               <Tab
                 label={formatMessage({
                   id: "lessonType.customText.name",
-                  description: "Input field label.",
+                  description: "Widget name.",
                   defaultMessage: "Custom text",
                 })}
               >
@@ -69,7 +69,7 @@ export function LessonSettings(): ReactNode {
               <Tab
                 label={formatMessage({
                   id: "lessonType.numbers.name",
-                  description: "Input field label.",
+                  description: "Widget name.",
                   defaultMessage: "Numbers",
                 })}
               >

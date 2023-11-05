@@ -18,13 +18,13 @@ export function FooterSection(): ReactNode {
           className={styleWidthWide}
           icon={<Icon shape={mdiDownload} />}
           label={formatMessage({
-            id: "profile.control.downloadDataLabel",
-            description: "Button label.",
+            id: "profile.control.downloadData.label",
+            description: "Widget name.",
             defaultMessage: "Download Data",
           })}
           title={formatMessage({
-            id: "profile.control.downloadDataTitle",
-            description: "Button title.",
+            id: "profile.control.downloadData.description",
+            description: "Widget description.",
             defaultMessage: "Download all your typing data in JSON format.",
           })}
         />
@@ -38,13 +38,13 @@ export function FooterSection(): ReactNode {
           className={styleWidthWide}
           icon={<Icon shape={mdiDeleteForever} />}
           label={formatMessage({
-            id: "profile.control.resetDataLabel",
-            description: "Button label.",
+            id: "profile.control.resetData.label",
+            description: "Widget name.",
             defaultMessage: "Reset Statistics",
           })}
           title={formatMessage({
-            id: "profile.control.resetDataTitle",
-            description: "Button title.",
+            id: "profile.control.resetData.description",
+            description: "Widget description.",
             defaultMessage:
               "Permanently delete all of your typing data and reset statistics.",
           })}
@@ -65,7 +65,7 @@ function useCommands() {
     },
     handleResetData: (): void => {
       const message = formatMessage({
-        id: "profile.control.resetDataConfirmation",
+        id: "profile.control.resetData.message",
         description: "Confirmation text.",
         defaultMessage:
           "Are you sure you want to delete all data and reset your profile? " +

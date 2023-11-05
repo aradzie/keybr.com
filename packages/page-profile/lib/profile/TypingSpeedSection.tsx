@@ -18,16 +18,16 @@ export function TypingSpeedSection({
     <Figure>
       <Figure.Caption>
         <FormattedMessage
-          id="profile.chart.speedCaption"
-          description="Chart caption."
+          id="profile.chart.speed.caption"
+          description="Header text."
           defaultMessage="Typing Speed"
         />
       </Figure.Caption>
 
       <Figure.Description>
         <FormattedMessage
-          id="profile.chart.speedDescription"
-          description="Chart description."
+          id="profile.chart.speed.description"
+          description="Message text."
           defaultMessage="This chart shows how overall typing speed changes over time."
         />
       </Figure.Description>
@@ -53,8 +53,8 @@ export function TypingSpeedSection({
 
       <Figure.Legend>
         <FormattedMessage
-          id="profile.chart.speedLegend"
-          description="Chart legend."
+          id="profile.chart.speed.legend"
+          description="Message text."
           defaultMessage="Horizontal axis: lesson number. Vertical axis: {label1} – typing speed, {label2} – typing accuracy, {label3} – number of keys in the lessons."
           values={{
             label1: <Marker type="speed" />,

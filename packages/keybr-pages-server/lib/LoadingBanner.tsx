@@ -9,7 +9,7 @@ export function LoadingBanner(): ReactNode {
     <>
       <Para>
         {formatMessage({
-          id: "common.loadingText",
+          id: "common.loading.message",
           description: "Common text.",
           defaultMessage: "The application is loading, please wait a second...",
         })}
@@ -17,7 +17,7 @@ export function LoadingBanner(): ReactNode {
       <noscript>
         <Para>
           {formatMessage({
-            id: "common.javaScriptDisabledText",
+            id: "common.javaScriptDisabled.message",
             description: "Common text.",
             defaultMessage:
               "This application will not work because JavaScript is disabled in your browser!",

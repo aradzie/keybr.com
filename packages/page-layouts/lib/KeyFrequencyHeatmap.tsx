@@ -32,8 +32,8 @@ export function KeyFrequencyHeatmap({
     <Figure>
       <Figure.Caption>
         <FormattedMessage
-          id="layouts.heatmapCaption"
-          description="Figure caption."
+          id="layouts.heatmap.caption"
+          description="Header text."
           defaultMessage="Key Frequency Heatmap for {name}"
           values={{ name: keyboard.layout.name }}
         />
@@ -41,8 +41,8 @@ export function KeyFrequencyHeatmap({
 
       <Figure.Description>
         <FormattedMessage
-          id="layouts.heatmapDescription"
-          description="Figure description."
+          id="layouts.heatmap.description"
+          description="Message text."
           defaultMessage="This chart shows relative key frequencies as a heatmap."
         />
       </Figure.Description>
@@ -50,75 +50,75 @@ export function KeyFrequencyHeatmap({
       <ul>
         <li
           title={formatMessage({
-            id: "layouts.homeRowKeysTitle",
-            description: "Field title.",
+            id: "layouts.stats.homeRowKeys.description",
+            description: "Widget description.",
             defaultMessage:
               "Percentage of keys typed without leaving the Caps Lock row, the more the better.",
           })}
         >
           <FormattedMessage
-            id="layouts.homeRowKeysText"
-            description="Field name."
+            id="layouts.stats.homeRowKeys.name"
+            description="Widget name."
             defaultMessage="Keys on the home row:"
           />{" "}
           <Value value={formatPercents(homeRow, 0)} />
         </li>
         <li
           title={formatMessage({
-            id: "layouts.topRowKeysTitle",
-            description: "Field title.",
+            id: "layouts.stats.topRowKeys.description",
+            description: "Widget description.",
             defaultMessage:
               "Percentage of keys typed on the Tab row, the less the better.",
           })}
         >
           <FormattedMessage
-            id="layouts.topRowKeysText"
-            description="Field name."
+            id="layouts.stats.topRowKeys.name"
+            description="Widget name."
             defaultMessage="Keys on the top row:"
           />{" "}
           <Value value={formatPercents(topRow, 0)} />
         </li>
         <li
           title={formatMessage({
-            id: "layouts.bottomRowKeysTitle",
-            description: "Field title.",
+            id: "layouts.stats.bottomRowKeys.description",
+            description: "Widget description.",
             defaultMessage:
               "Percentage of keys typed on the Shift row, the less the better.",
           })}
         >
           <FormattedMessage
-            id="layouts.bottomRowKeysText"
-            description="Field name."
+            id="layouts.stats.bottomRowKeys.name"
+            description="Widget name."
             defaultMessage="Keys on the bottom row:"
           />{" "}
           <Value value={formatPercents(bottomRow, 0)} />
         </li>
         <li
           title={formatMessage({
-            id: "layouts.sameHandKeysTitle",
-            description: "Field title.",
+            id: "layouts.stats.sameHandKeys.description",
+            description: "Widget description.",
             defaultMessage:
               "Percentage of keys typed by the same hand, the less the better.",
           })}
         >
           <FormattedMessage
-            id="layouts.sameHandKeysText"
-            description="Field name."
+            id="layouts.stats.sameHandKeys.name"
+            description="Widget name."
             defaultMessage="Keys typed by the same hand:"
           />{" "}
           <Value value={formatPercents(sameHand, 0)} />
         </li>
         <li
           title={formatMessage({
-            id: "layouts.sameFingerKeysTitle",
-            description: "Field title.",
+            id: "layouts.stats.sameFingerKeys.description",
+            description: "Widget description.",
             defaultMessage:
               "Percentage of keys typed by the same finger, the less the better.",
           })}
         >
           <FormattedMessage
-            id="layouts.sameFingerKeysText"
-            description="Field name."
+            id="layouts.stats.sameFingerKeys.name"
+            description="Widget name."
             defaultMessage="Keys typed by the same finger:"
           />{" "}
           <Value value={formatPercents(sameFinger, 0)} />

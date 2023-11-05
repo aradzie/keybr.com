@@ -67,7 +67,7 @@ export const useFormatter = (): Formatter => {
       if (lr != null && lr.learningRate === lr.learningRate) {
         return signed(
           formatMessage(messages.learningRateValue, {
-            learningRate: formatSpeed(lr.learningRate),
+            value: formatSpeed(lr.learningRate),
           }),
           lr.learningRate,
         );

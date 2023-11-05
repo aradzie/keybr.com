@@ -119,8 +119,8 @@ export function TextArea({
       {focus || (
         <div className={styles.label}>
           <FormattedMessage
-            id="practice.focusText"
-            description="Freeform text."
+            id="textArea.focus.message"
+            description="Message text."
             defaultMessage="Click to activate..."
           />
         </div>

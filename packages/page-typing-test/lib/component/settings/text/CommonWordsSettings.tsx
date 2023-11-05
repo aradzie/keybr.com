@@ -50,8 +50,8 @@ function Content({ wordList }: { readonly wordList: WordList }): ReactNode {
       <FieldList>
         <Field>
           {formatMessage({
-            id: "settings.selectLanguageLabel",
-            description: "Input field label.",
+            id: "settings.selectLanguage.label",
+            description: "Widget name.",
             defaultMessage: "Language:",
           })}
         </Field>
@@ -63,8 +63,8 @@ function Content({ wordList }: { readonly wordList: WordList }): ReactNode {
               name: formatMessage(languageName(item.id)),
             }))}
             title={formatMessage({
-              id: "settings.selectLanguageTitle",
-              description: "Input field title.",
+              id: "settings.selectLanguage.description",
+              description: "Widget description.",
               defaultMessage: "Select your spoken language.",
             })}
             value={String(settings.get(typingTestProps.language))}
@@ -80,8 +80,8 @@ function Content({ wordList }: { readonly wordList: WordList }): ReactNode {
       <FieldList>
         <Field>
           {formatMessage({
-            id: "settings.wordListSizeLabel",
-            description: "Input field label.",
+            id: "settings.wordListSize.label",
+            description: "Widget name.",
             defaultMessage: "Word list size:",
           })}
         </Field>
@@ -93,8 +93,8 @@ function Content({ wordList }: { readonly wordList: WordList }): ReactNode {
             step={1}
             value={settings.get(typingTestProps.wordList.wordListSize)}
             title={formatMessage({
-              id: "settings.wordListSizeTitle",
-              description: "Input field title.",
+              id: "settings.wordListSize.description",
+              description: "Widget description.",
               defaultMessage: "Chose how many common words to use.",
             })}
             onChange={(value) => {

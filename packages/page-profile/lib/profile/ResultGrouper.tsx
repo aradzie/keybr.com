@@ -50,8 +50,8 @@ export function ResultGrouper({
       <FieldList>
         <Field>
           <FormattedMessage
-            id="profile.control.groupSelectorLabel"
-            description="List label."
+            id="profile.control.groupSelector.label"
+            description="Widget name."
             defaultMessage="Show statistics for:"
           />
         </Field>
@@ -74,7 +74,7 @@ export function ResultGrouper({
             name="text-type"
             label={formatMessage({
               id: "characterClass.letters",
-              description: "Label.",
+              description: "Widget name.",
               defaultMessage: "Letters",
             })}
             checked={charClass === CharClass.Letters}
@@ -88,7 +88,7 @@ export function ResultGrouper({
             name="text-type"
             label={formatMessage({
               id: "characterClass.digits",
-              description: "Label.",
+              description: "Widget name.",
               defaultMessage: "Digits",
             })}
             checked={charClass === CharClass.Digits}
@@ -102,7 +102,7 @@ export function ResultGrouper({
             name="text-type"
             label={formatMessage({
               id: "characterClass.punctuationCharacters",
-              description: "Label.",
+              description: "Widget name.",
               defaultMessage: "Punctuation characters",
             })}
             checked={charClass === CharClass.Punctuators}
@@ -116,7 +116,7 @@ export function ResultGrouper({
             name="text-type"
             label={formatMessage({
               id: "characterClass.specialCharacters",
-              description: "Label.",
+              description: "Widget name.",
               defaultMessage: "Special characters",
             })}
             checked={charClass === CharClass.Specials}

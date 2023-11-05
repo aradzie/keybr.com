@@ -18,7 +18,7 @@ export function SecondaryMenu({
         href="mailto:info@keybr.com"
         target="email"
         title={formatMessage({
-          id: "footer.emailLinkTitle",
+          id: "footer.emailLink.description",
           description: "Email link title.",
           defaultMessage:
             "Send your comments and suggestions to info@keybr.com",
@@ -30,7 +30,7 @@ export function SecondaryMenu({
         href="https://discord.gg/gY4RA4enVH"
         target="discord"
         title={formatMessage({
-          id: "footer.discordLinkTitle",
+          id: "footer.discordLink.description",
           description: "Discord link title.",
           defaultMessage: "Discuss on our Discord server.",
         })}
@@ -41,7 +41,7 @@ export function SecondaryMenu({
         href="https://github.com/aradzie/keybr.com"
         target="github"
         title={formatMessage({
-          id: "footer.githubLinkTitle",
+          id: "footer.githubLink.description",
           description: "Github link title.",
           defaultMessage:
             "The source code of keybr.com is available on Github.",

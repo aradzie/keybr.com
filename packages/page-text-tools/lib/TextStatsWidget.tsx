@@ -21,7 +21,7 @@ export function TextStatsWidget({
         <Para>
           <FormattedMessage
             id="textTools.emptyTextMessage"
-            description="Freeform text."
+            description="Message text."
             defaultMessage="Please provide some text in order to calculate the associated statistics."
           />
         </Para>

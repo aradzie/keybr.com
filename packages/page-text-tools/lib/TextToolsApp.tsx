@@ -17,7 +17,7 @@ export function TextToolsApp(): ReactNode {
         type="textarea"
         className={styles.textInput}
         placeholder={formatMessage({
-          id: "textTools.textInputPlaceholder",
+          id: "textTools.textInput.placeholder",
           description: "Input field placeholder.",
           defaultMessage: "Paste your text here",
         })}

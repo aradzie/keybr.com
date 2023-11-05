@@ -32,14 +32,14 @@ export function WordListLessonSettings({
       <Explainer>
         <FormattedMessage
           id="lessonType.wordList.description"
-          description="Description text."
+          description="Message text."
           defaultMessage="Generate typing lessons from the list of the most common words of your language. All keys are included by default. This mode is for the pros."
         />
       </Explainer>
       <FieldSet
         legend={formatMessage({
-          id: "settings.lessonOptionsLegend",
-          description: "Fieldset legend.",
+          id: "settings.lessonOptions.legend",
+          description: "Header text.",
           defaultMessage: "Lesson Options",
         })}
       >
@@ -65,8 +65,8 @@ function WordListPreview({
       <FieldList>
         <Field>
           <FormattedMessage
-            id="settings.wordListSizeLabel"
-            description="Input field label."
+            id="settings.wordListSize.label"
+            description="Widget name."
             defaultMessage="Word list size:"
           />
         </Field>
@@ -87,8 +87,8 @@ function WordListPreview({
         <Field>
           <CheckBox
             label={formatMessage({
-              id: "settings.longWordsOnlyLabel",
-              description: "Input field label.",
+              id: "settings.longWordsOnly.label",
+              description: "Widget name.",
               defaultMessage: "Long words only",
             })}
             checked={settings.get(lessonProps.wordList.longWordsOnly)}

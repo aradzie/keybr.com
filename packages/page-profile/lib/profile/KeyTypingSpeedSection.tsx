@@ -33,16 +33,16 @@ export function KeyTypingSpeedSection({
     <Figure>
       <Figure.Caption>
         <FormattedMessage
-          id="profile.chart.keySpeedCaption"
-          description="Chart caption."
+          id="profile.chart.keySpeed.caption"
+          description="Header text."
           defaultMessage="Key Typing Speed"
         />
       </Figure.Caption>
 
       <Figure.Description>
         <FormattedMessage
-          id="profile.chart.keySpeedDescription"
-          description="Chart description."
+          id="profile.chart.keySpeed.description"
+          description="Message text."
           defaultMessage="This chart shows the typing speed change for each individual key."
         />
       </Figure.Description>
@@ -82,8 +82,8 @@ export function KeyTypingSpeedSection({
 
       <Figure.Legend>
         <FormattedMessage
-          id="profile.chart.keySpeedLegend"
-          description="Chart legend."
+          id="profile.chart.keySpeed.legend"
+          description="Message text."
           defaultMessage="Horizontal axis: lesson number. Vertical axis: {label1} – typing speed for the currently selected key."
           values={{
             label1: <Marker type="speed" />,

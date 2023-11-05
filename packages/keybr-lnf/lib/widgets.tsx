@@ -6,23 +6,23 @@ import { useTheme } from "./context.tsx";
 import { TEXT_SIZES, THEMES } from "./options.tsx";
 
 const enterFullscreenTitle = defineMessage({
-  id: "theme.enterFullscreenTitle",
-  description: "Theme switching button.",
+  id: "theme.enterFullscreen.description",
+  description: "Widget description.",
   defaultMessage: "Enter full-screen mode.",
 });
 const exitFullscreenTitle = defineMessage({
-  id: "theme.exitFullscreenTitle",
-  description: "Theme switching button.",
+  id: "theme.exitFullscreen.description",
+  description: "Widget description.",
   defaultMessage: "Exit full-screen mode.",
 });
 const fullscreenNotSupportedTitle = defineMessage({
-  id: "theme.fullscreenNotSupportedTitle",
-  description: "Theme switching button.",
+  id: "theme.fullscreenNotSupported.description",
+  description: "Widget description.",
   defaultMessage: "Full-screen mode not supported.",
 });
 const switchThemeTitle = defineMessage({
-  id: "theme.switchThemeTitle",
-  description: "Theme switching button.",
+  id: "theme.switchTheme.description",
+  description: "Widget description.",
   defaultMessage: "Switch to theme {name}.",
 });
 

@@ -33,7 +33,7 @@ export const GaugeRow = memo(function GaugeRow({
       <Name
         className={styles.name}
         name={formatMessage({
-          id: "lesson.gaugesPanelLabel",
+          id: "lesson.gaugesPanel.label",
           description: "Panel label.",
           defaultMessage: "Metrics",
         })}
@@ -76,14 +76,14 @@ export const SpeedGauge = memo(function SpeedGauge({
           delta={delta}
           title={formatMessage({
             id: "metric.speedChange.title",
-            description: "Value change title.",
+            description: "Widget description.",
             defaultMessage: "The difference from the average value.",
           })}
         />
       }
       title={formatMessage({
         id: "metric.speed.title",
-        description: "Value title.",
+        description: "Widget description.",
         defaultMessage: "Typing speed in the last lesson.",
       })}
     />
@@ -119,14 +119,14 @@ export const AccuracyGauge = memo(function AccuracyGauge({
           delta={delta}
           title={formatMessage({
             id: "metric.accuracyChange.title",
-            description: "Value change title.",
+            description: "Widget description.",
             defaultMessage: "The difference from the average value.",
           })}
         />
       }
       title={formatMessage({
         id: "metric.accuracy.title",
-        description: "Value title.",
+        description: "Widget description.",
         defaultMessage:
           "The percentage of characters typed without errors in the last lesson.",
       })}
@@ -163,14 +163,14 @@ export const ScoreGauge = memo(function ScoreGauge({
           delta={delta}
           title={formatMessage({
             id: "metric.scoreChange.title",
-            description: "Value change title.",
+            description: "Widget description.",
             defaultMessage: "The difference from the average value.",
           })}
         />
       }
       title={formatMessage({
         id: "metric.score.title",
-        description: "Value title.",
+        description: "Widget description.",
         defaultMessage:
           "Score of the last lesson in abstract points. " +
           "Scores are greater when you type faster and with fewer errors.",
@@ -214,7 +214,7 @@ export const KeySetRow = memo(function KeySetRow({
       <Name
         className={styles.name}
         name={formatMessage({
-          id: "lesson.keySetPanelLabel",
+          id: "lesson.keySetPanel.label",
           description: "Panel label.",
           defaultMessage: "All keys",
         })}
@@ -241,7 +241,7 @@ export const CurrentKeyRow = memo(function CurrentKeyRow({
       <Name
         className={styles.name}
         name={formatMessage({
-          id: "lesson.currentKeyPanelLabel",
+          id: "lesson.currentKeyPanel.label",
           description: "Panel label.",
           defaultMessage: "Current key",
         })}
@@ -269,7 +269,7 @@ export const DailyGoalRow = memo(function DailyGoalRow({
     <div
       className={styles.row}
       title={formatMessage({
-        id: "lesson.dailyGoalPanelTitle",
+        id: "lesson.dailyGoalPanel.description",
         description: "Panel title.",
         defaultMessage: "The progress to your daily goal.",
       })}
@@ -277,7 +277,7 @@ export const DailyGoalRow = memo(function DailyGoalRow({
       <Name
         className={styles.name}
         name={formatMessage({
-          id: "lesson.dailyGoalPanelLabel",
+          id: "lesson.dailyGoalPanel.label",
           description: "Panel label.",
           defaultMessage: "Daily goal",
         })}

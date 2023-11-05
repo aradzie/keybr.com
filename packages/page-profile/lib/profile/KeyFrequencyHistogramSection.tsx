@@ -14,16 +14,16 @@ export function KeyFrequencyHistogramSection({
     <Figure>
       <Figure.Caption>
         <FormattedMessage
-          id="profile.chart.keyFrequencyHistogramCaption"
-          description="Chart caption."
+          id="profile.chart.keyFrequencyHistogram.caption"
+          description="Header text."
           defaultMessage="Key Frequency Histogram"
         />
       </Figure.Caption>
 
       <Figure.Description>
         <FormattedMessage
-          id="profile.chart.keyFrequencyHistogramDescription"
-          description="Chart description."
+          id="profile.chart.keyFrequencyHistogram.description"
+          description="Message text."
           defaultMessage="This chart shows relative key frequencies."
         />
       </Figure.Description>
@@ -38,8 +38,8 @@ export function KeyFrequencyHistogramSection({
 
       <Figure.Legend>
         <FormattedMessage
-          id="profile.chart.keyFrequencyHistogramLegend"
-          description="Chart legend."
+          id="profile.chart.keyFrequencyHistogram.legend"
+          description="Message text."
           defaultMessage="Bar color: {label1} – hit count, {label2} – miss count, {label3} – miss/hit ratio (relative miss frequency)."
           values={{
             label1: <Marker type="histogram-h" />,

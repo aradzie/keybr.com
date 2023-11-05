@@ -25,8 +25,8 @@ export function SignInSection({
       />
 
       <FormattedMessage
-        id="account.signInPageDescription"
-        description="Freeform text."
+        id="account.signInPage.description"
+        description="Message text."
         defaultMessage={
           "<p>Create an account to store your typing data on our servers in the cloud. This allows you to access your profile from any computer or browser. If you don't have an account then your typing data is stored locally and is accessible only from your current computer.</p>" +
           "<p>We don't store any passwords. Instead we use third-party services to authenticate our users. We offer several convenient ways to create an account and sign‑in.</p>" +
@@ -36,8 +36,8 @@ export function SignInSection({
 
       <Header level={2}>
         <FormattedMessage
-          id="account.premiumAccountHeader"
-          description="Freeform header."
+          id="account.premiumAccount.header"
+          description="Header text."
           defaultMessage="Premium Account"
         />
       </Header>
@@ -46,8 +46,8 @@ export function SignInSection({
 
       <Header level={2}>
         <FormattedMessage
-          id="account.socialSignInHeader"
-          description="Freeform header."
+          id="account.socialSignIn.header"
+          description="Header text."
           defaultMessage="Sign‑In with Social Networks"
         />
       </Header>
@@ -56,8 +56,8 @@ export function SignInSection({
 
       <Header level={2}>
         <FormattedMessage
-          id="account.emailSignInHeader"
-          description="Freeform header."
+          id="account.emailSignIn.header"
+          description="Header text."
           defaultMessage="Sign‑In with E‑mail"
         />
       </Header>

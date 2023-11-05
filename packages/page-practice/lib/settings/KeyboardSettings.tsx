@@ -27,8 +27,8 @@ export function KeyboardSettings(): ReactNode {
     <>
       <FieldSet
         legend={formatMessage({
-          id: "settings.optionsLegend",
-          description: "Fieldset legend.",
+          id: "settings.options.legend",
+          description: "Header text.",
           defaultMessage: "Options",
         })}
       >
@@ -36,8 +36,8 @@ export function KeyboardSettings(): ReactNode {
       </FieldSet>
       <FieldSet
         legend={formatMessage({
-          id: "settings.previewLegend",
-          description: "Fieldset legend.",
+          id: "settings.preview.legend",
+          description: "Header text.",
           defaultMessage: "Preview",
         })}
       >
@@ -57,8 +57,8 @@ function LayoutProp(): ReactNode {
       <FieldList>
         <Field>
           <FormattedMessage
-            id="settings.selectLanguageLabel"
-            description="Input field label."
+            id="settings.selectLanguage.label"
+            description="Widget name."
             defaultMessage="Language:"
           />
         </Field>
@@ -69,8 +69,8 @@ function LayoutProp(): ReactNode {
               name: formatMessage(languageName(item.id)),
             }))}
             title={formatMessage({
-              id: "settings.selectLanguageTitle",
-              description: "Input field title.",
+              id: "settings.selectLanguage.description",
+              description: "Widget description.",
               defaultMessage: "Select your spoken language.",
             })}
             value={layout.language.id}
@@ -86,8 +86,8 @@ function LayoutProp(): ReactNode {
         </Field>
         <Field>
           <FormattedMessage
-            id="settings.selectLayoutLabel"
-            description="Input field label."
+            id="settings.selectLayout.label"
+            description="Widget name."
             defaultMessage="Layout:"
           />
         </Field>
@@ -100,8 +100,8 @@ function LayoutProp(): ReactNode {
               name: item.name,
             }))}
             title={formatMessage({
-              id: "settings.selectLayoutTitle",
-              description: "Input field title.",
+              id: "settings.selectLayout.description",
+              description: "Widget description.",
               defaultMessage:
                 "Select the keyboard layout you wish to practice with. There may be many layouts available for each language.",
             })}
@@ -118,13 +118,13 @@ function LayoutProp(): ReactNode {
             checked={emulate}
             disabled={!layout.emulate}
             label={formatMessage({
-              id: "settings.emulateLayoutLabel",
-              description: "Input field label.",
+              id: "settings.emulateLayout.label",
+              description: "Widget name.",
               defaultMessage: "Emulate layout",
             })}
             title={formatMessage({
-              id: "settings.emulateLayoutTitle",
-              description: "Input field title.",
+              id: "settings.emulateLayout.description",
+              description: "Widget description.",
               defaultMessage:
                 "Emulate the selected layout when the standard layout is set in the system.",
             })}
@@ -164,8 +164,8 @@ function KeyboardPreview(): ReactNode {
         <Field>
           <CheckBox
             label={formatMessage({
-              id: "settings.keyboardFullViewLabel",
-              description: "Input field label.",
+              id: "settings.keyboardFullView.label",
+              description: "Widget name.",
               defaultMessage: "Full keyboard view",
             })}
             checked={settings.get(keyboardProps.full)}
@@ -179,8 +179,8 @@ function KeyboardPreview(): ReactNode {
         <Field>
           <CheckBox
             label={formatMessage({
-              id: "settings.keyboardColorsLabel",
-              description: "Input field label.",
+              id: "settings.keyboardColors.label",
+              description: "Widget name.",
               defaultMessage: "Colored keys",
             })}
             checked={settings.get(keyboardProps.colors)}

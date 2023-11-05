@@ -108,7 +108,7 @@ function Cell({ cell }: { readonly cell: CellData | null }): ReactNode {
   const title = [
     formatMessage(
       {
-        id: "profile.calendar.totalTimeTitle",
+        id: "profile.calendar.totalTime.description",
         description: "Calendar cell title.",
         defaultMessage: "Time of lessons: {value}",
       },
@@ -116,7 +116,7 @@ function Cell({ cell }: { readonly cell: CellData | null }): ReactNode {
     ),
     formatMessage(
       {
-        id: "profile.calendar.totalLessonsTitle",
+        id: "profile.calendar.totalLessons.description",
         description: "Calendar cell title.",
         defaultMessage: "Number of lessons: {value}",
       },
@@ -124,7 +124,7 @@ function Cell({ cell }: { readonly cell: CellData | null }): ReactNode {
     ),
     formatMessage(
       {
-        id: "profile.calendar.topSpeedTitle",
+        id: "profile.calendar.topSpeed.description",
         description: "Calendar cell title.",
         defaultMessage: "Top speed: {value}",
       },
@@ -132,7 +132,7 @@ function Cell({ cell }: { readonly cell: CellData | null }): ReactNode {
     ),
     formatMessage(
       {
-        id: "profile.calendar.averageSpeedTitle",
+        id: "profile.calendar.averageSpeed.description",
         description: "Calendar cell title.",
         defaultMessage: "Average speed: {value}",
       },

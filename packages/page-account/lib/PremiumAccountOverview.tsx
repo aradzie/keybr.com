@@ -5,7 +5,7 @@ export function PremiumAccountOverview(): ReactNode {
   return (
     <FormattedMessage
       id="account.premiumAccountOverview"
-      description="Freeform text."
+      description="Message text."
       defaultMessage="<p>Thank you for purchasing a premium account! Now you can enjoy additional features and an ad-free experience.</p>"
     />
   );

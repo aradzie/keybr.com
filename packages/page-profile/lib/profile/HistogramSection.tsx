@@ -17,16 +17,16 @@ export function HistogramSection({
     <Figure>
       <Figure.Caption>
         <FormattedMessage
-          id="profile.chart.histogramCaption"
-          description="Chart caption."
+          id="profile.chart.histogram.caption"
+          description="Header text."
           defaultMessage="Relative Typing Speed"
         />
       </Figure.Caption>
 
       <Figure.Description>
         <FormattedMessage
-          id="profile.chart.histogramDescription"
-          description="Chart description."
+          id="profile.chart.histogram.description"
+          description="Message text."
           defaultMessage="This is a histogram of the typing speeds of all users, and your position in relation to them."
         />
       </Figure.Description>
@@ -42,8 +42,8 @@ export function HistogramSection({
 
       <Figure.Legend>
         <FormattedMessage
-          id="profile.chart.histogramLegend"
-          description="Chart legend."
+          id="profile.chart.histogram.legend"
+          description="Message text."
           defaultMessage="See how fast you type relative to other users. The higher the bar is, the more people type at that speed. Your position is marked with the colored vertical lines."
         />
       </Figure.Legend>

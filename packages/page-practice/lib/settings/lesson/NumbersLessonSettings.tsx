@@ -15,8 +15,8 @@ export function NumbersLessonSettings({
       <Explainer>Practice numbers only. No letters are used.</Explainer>
       <FieldSet
         legend={formatMessage({
-          id: "settings.lessonOptionsLegend",
-          description: "Fieldset legend.",
+          id: "settings.lessonOptions.legend",
+          description: "Header text.",
           defaultMessage: "Lesson Options",
         })}
       >

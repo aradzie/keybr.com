@@ -24,8 +24,8 @@ export function useAccountActions(props: {
 
   const deleteAccount = (): void => {
     const message = formatMessage({
-      id: "account.deleteAccountConfirmation",
-      description: "Confirmation text.",
+      id: "account.deleteAccount.message",
+      description: "Message text.",
       defaultMessage:
         "Are you sure you want to delete your account? " +
         "This operation is permanent and cannot be undone! " +
@@ -51,12 +51,12 @@ export function useAccountActions(props: {
       productId: paddleProductId,
       title: formatMessage({
         id: "account.checkout.title",
-        description: "Form title.",
+        description: "Header text.",
         defaultMessage: "Premium Account",
       }),
       message: formatMessage({
         id: "account.checkout.description",
-        description: "Form description.",
+        description: "Message text.",
         defaultMessage:
           "Purchase a premium account to unlock additional features " +
           "and enjoy an ad-free experience.",

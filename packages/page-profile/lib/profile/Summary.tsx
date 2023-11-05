@@ -79,7 +79,7 @@ export function AllTimeSummary({
       <Header level={2}>
         <FormattedMessage
           id="profile.overview.statisticsAllTime"
-          description="Header."
+          description="Header text."
           defaultMessage="All Time Statistics"
         />
       </Header>
@@ -87,56 +87,56 @@ export function AllTimeSummary({
       <Para className={styles.statisticList}>
         <Statistic
           name={formatMessage({
-            id: "profile.overview.totalTimeLabel",
-            description: "Gauge label.",
+            id: "profile.overview.totalTime.label",
+            description: "Widget name.",
             defaultMessage: "Total Time",
           })}
           value={formatDuration(time)}
           title={formatMessage({
-            id: "profile.overview.totalTimeTitle",
-            description: "Gauge title.",
+            id: "profile.overview.totalTime.description",
+            description: "Widget description.",
             defaultMessage: "Time spent on exercises.",
           })}
         />
 
         <Statistic
           name={formatMessage({
-            id: "profile.overview.totalLessonsLabel",
-            description: "Gauge label.",
+            id: "profile.overview.totalLessons.label",
+            description: "Widget name.",
             defaultMessage: "Total Lessons",
           })}
           value={formatNumber(count)}
           title={formatMessage({
-            id: "profile.overview.totalLessonsTitle",
-            description: "Gauge title.",
+            id: "profile.overview.totalLessons.description",
+            description: "Widget description.",
             defaultMessage: "The number of lessons completed.",
           })}
         />
 
         <Statistic
           name={formatMessage({
-            id: "profile.overview.topSpeedLabel",
-            description: "Gauge label.",
+            id: "profile.overview.topSpeed.label",
+            description: "Widget name.",
             defaultMessage: "Top Speed",
           })}
           value={speed.max > 0 ? formatSpeed(speed.max) : "N/A"}
           title={formatMessage({
-            id: "profile.overview.topSpeedTitle",
-            description: "Gauge title.",
+            id: "profile.overview.topSpeed.description",
+            description: "Widget description.",
             defaultMessage: "Top typing speed.",
           })}
         />
 
         <Statistic
           name={formatMessage({
-            id: "profile.overview.averageSpeedLabel",
-            description: "Gauge label.",
+            id: "profile.overview.averageSpeed.label",
+            description: "Widget name.",
             defaultMessage: "Average Speed",
           })}
           value={speed.avg > 0 ? formatSpeed(speed.avg) : "N/A"}
           title={formatMessage({
-            id: "profile.overview.averageSpeedTitle",
-            description: "Gauge title.",
+            id: "profile.overview.averageSpeed.description",
+            description: "Widget description.",
             defaultMessage: "Average typing speed.",
           })}
         />
@@ -163,7 +163,7 @@ export function TodaySummary({
       <Header level={2}>
         <FormattedMessage
           id="profile.overview.statisticsToday"
-          description="Section header."
+          description="Header text."
           defaultMessage="Statistics for Today"
         />
       </Header>
@@ -171,56 +171,56 @@ export function TodaySummary({
       <Para className={styles.statisticList}>
         <Statistic
           name={formatMessage({
-            id: "profile.overview.totalTimeTodayLabel",
-            description: "Gauge label.",
+            id: "profile.overview.totalTimeToday.label",
+            description: "Widget name.",
             defaultMessage: "Total Time",
           })}
           value={formatDuration(time)}
           title={formatMessage({
-            id: "profile.overview.totalTimeTodayTitle",
-            description: "Gauge title.",
+            id: "profile.overview.totalTimeToday.description",
+            description: "Widget description.",
             defaultMessage: "Time spent on exercises today.",
           })}
         />
 
         <Statistic
           name={formatMessage({
-            id: "profile.overview.totalLessonsTodayLabel",
-            description: "Gauge label.",
+            id: "profile.overview.totalLessonsToday.label",
+            description: "Widget name.",
             defaultMessage: "Total Lessons",
           })}
           value={formatNumber(count)}
           title={formatMessage({
-            id: "profile.overview.totalLessonsTodayTitle",
-            description: "Gauge title.",
+            id: "profile.overview.totalLessonsToday.description",
+            description: "Widget description.",
             defaultMessage: "The number of lessons completed today.",
           })}
         />
 
         <Statistic
           name={formatMessage({
-            id: "profile.overview.topSpeedTodayLabel",
-            description: "Gauge label.",
+            id: "profile.overview.topSpeedToday.label",
+            description: "Widget name.",
             defaultMessage: "Top Speed",
           })}
           value={speed.max > 0 ? formatSpeed(speed.max) : "N/A"}
           title={formatMessage({
-            id: "profile.overview.topSpeedTodayTitle",
-            description: "Gauge title.",
+            id: "profile.overview.topSpeedToday.description",
+            description: "Widget description.",
             defaultMessage: "Top typing speed today.",
           })}
         />
 
         <Statistic
           name={formatMessage({
-            id: "profile.overview.averageSpeedTodayLabel",
-            description: "Gauge label.",
+            id: "profile.overview.averageSpeedToday.label",
+            description: "Widget name.",
             defaultMessage: "Average Speed",
           })}
           value={speed.avg > 0 ? formatSpeed(speed.avg) : "N/A"}
           title={formatMessage({
-            id: "profile.overview.averageSpeedTodayTitle",
-            description: "Gauge title.",
+            id: "profile.overview.averageSpeedToday.description",
+            description: "Widget description.",
             defaultMessage: "Average typing speed today.",
           })}
         />

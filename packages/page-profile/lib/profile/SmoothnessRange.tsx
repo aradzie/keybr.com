@@ -19,8 +19,8 @@ export function SmoothnessRange({
         <label>
           {formatMessage(
             defineMessage({
-              id: "profile.smoothnessLabel",
-              description: "Input field label.",
+              id: "profile.smoothness.label",
+              description: "Widget name.",
               defaultMessage: "Smoothness:",
             }),
           )}
@@ -39,8 +39,8 @@ export function SmoothnessRange({
           }}
           title={formatMessage(
             defineMessage({
-              id: "profile.smoothnessTitle",
-              description: "Input field title.",
+              id: "profile.smoothness.description",
+              description: "Widget description.",
               defaultMessage: "Eliminate noise to see the long-term trend.",
             }),
           )}

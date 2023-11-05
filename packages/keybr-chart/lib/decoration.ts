@@ -214,8 +214,8 @@ export function paintNoData(
   return [
     Shapes.fillText({
       value: formatMessage({
-        id: "profile.emptyChartCaption",
-        description: "Empty chart message.",
+        id: "profile.emptyChart.header",
+        description: "Header text.",
         defaultMessage: "Not enough data",
       }),
       x: box.cx,
@@ -228,8 +228,8 @@ export function paintNoData(
     }),
     Shapes.fillText({
       value: formatMessage({
-        id: "profile.emptyChartDescription",
-        description: "Empty chart message.",
+        id: "profile.emptyChart.description",
+        description: "Message text.",
         defaultMessage: "Complete a few more lessons to get more data points.",
       }),
       x: box.cx,

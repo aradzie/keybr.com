@@ -60,7 +60,7 @@ function Content({ onSubmit }: { readonly onSubmit: () => void }): ReactNode {
 
         <Header level={1}>
           <FormattedMessage
-            id="settings.lessonsTabLabel"
+            id="settings.lessonsTab.label"
             description="Header text."
             defaultMessage="Lessons"
           />
@@ -71,7 +71,7 @@ function Content({ onSubmit }: { readonly onSubmit: () => void }): ReactNode {
 
         <Header level={1}>
           <FormattedMessage
-            id="settings.typingTabLabel"
+            id="settings.typingTab.label"
             description="Header text."
             defaultMessage="Typing"
           />
@@ -82,7 +82,7 @@ function Content({ onSubmit }: { readonly onSubmit: () => void }): ReactNode {
 
         <Header level={1}>
           <FormattedMessage
-            id="settings.keyboardTabLabel"
+            id="settings.keyboardTab.label"
             description="Header text."
             defaultMessage="Keyboard"
           />
@@ -93,7 +93,7 @@ function Content({ onSubmit }: { readonly onSubmit: () => void }): ReactNode {
 
         <Header level={1}>
           <FormattedMessage
-            id="settings.miscellaneousTabLabel"
+            id="settings.miscellaneousTab.label"
             description="Header text."
             defaultMessage="Miscellaneous"
           />
@@ -108,8 +108,8 @@ function Content({ onSubmit }: { readonly onSubmit: () => void }): ReactNode {
             <Button
               icon={<Icon shape={mdiCheckCircle} />}
               label={formatMessage({
-                id: "settings.doneButtonLabel",
-                description: "Input field label.",
+                id: "settings.doneButton.label",
+                description: "Widget name.",
                 defaultMessage: "Done",
               })}
               onClick={() => {

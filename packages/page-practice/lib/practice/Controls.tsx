@@ -30,8 +30,8 @@ export const Controls = memo(function Controls({
         onClick={onHelp}
         icon={<Icon shape={mdiHelpCircleOutline} />}
         title={formatMessage({
-          id: "practice.showHelpSlidesButtonTitle",
-          description: "Input field title.",
+          id: "practice.showHelpSlidesButton.description",
+          description: "Widget description.",
           defaultMessage: "Show a guided tour with help slides.",
         })}
       />
@@ -39,8 +39,8 @@ export const Controls = memo(function Controls({
         onClick={onResetLesson}
         icon={<Icon shape={mdiUndo} />}
         title={formatMessage({
-          id: "practice.resetLessonButtonTitle",
-          description: "Input field title.",
+          id: "practice.resetLessonButton.description",
+          description: "Widget description.",
           defaultMessage: "Reset the current lesson (Ctrl + Left Arrow).",
         })}
       />
@@ -48,8 +48,8 @@ export const Controls = memo(function Controls({
         onClick={onSkipLesson}
         icon={<Icon shape={mdiRedo} />}
         title={formatMessage({
-          id: "practice.skipLessonButtonTitle",
-          description: "Input field title.",
+          id: "practice.skipLessonButton.description",
+          description: "Widget description.",
           defaultMessage: "Skip the current lesson (Ctrl + Right Arrow).",
         })}
       />
@@ -57,8 +57,8 @@ export const Controls = memo(function Controls({
         onClick={onChangeView}
         icon={<Icon shape={mdiAspectRatio} />}
         title={formatMessage({
-          id: "practice.switchInterfaceButtonTitle",
-          description: "Input field title.",
+          id: "practice.switchInterfaceButton.description",
+          description: "Widget description.",
           defaultMessage: "Switch the current interface layout.",
         })}
       />
@@ -66,12 +66,12 @@ export const Controls = memo(function Controls({
         icon={<Icon shape={mdiCog} />}
         label={formatMessage({
           id: "practice.settingButtonName",
-          description: "Input field label.",
+          description: "Widget name.",
           defaultMessage: "Settings...",
         })}
         title={formatMessage({
-          id: "practice.settingButtonTitle",
-          description: "Input field title.",
+          id: "practice.settingButton.description",
+          description: "Widget description.",
           defaultMessage:
             "Change lesson settings, configure language, keyboard layout, etc.",
         })}

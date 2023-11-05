@@ -17,8 +17,8 @@ export function AlphabetSizeProp(): ReactNode {
       <FieldList>
         <Field>
           <FormattedMessage
-            id="settings.alphabetSizeLabel"
-            description="Input field label."
+            id="settings.alphabetSize.label"
+            description="Widget name."
             defaultMessage="Unlock more letters:"
           />
         </Field>

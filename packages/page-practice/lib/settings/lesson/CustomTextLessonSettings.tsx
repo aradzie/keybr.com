@@ -30,14 +30,14 @@ export function CustomTextLessonSettings({
       <Explainer>
         <FormattedMessage
           id="lessonType.customText.description"
-          description="Description text."
+          description="Message text."
           defaultMessage="Generate typing lessons from the words of your own custom text. All keys are included by default. This mode is for the pros."
         />
       </Explainer>
       <FieldSet
         legend={formatMessage({
-          id: "settings.lessonOptionsLegend",
-          description: "Fieldset legend.",
+          id: "settings.lessonOptions.legend",
+          description: "Header text.",
           defaultMessage: "Lesson Options",
         })}
       >
@@ -58,8 +58,8 @@ function CustomTextInput(): ReactNode {
     <>
       <Para>
         <FormattedMessage
-          id="settings.customTextExamplesLabel"
-          description="Input field label."
+          id="settings.customTextExamples.label"
+          description="Widget name."
           defaultMessage="Examples:"
         />{" "}
         {exampleTexts.map(({ title, content }, index) => (
@@ -85,7 +85,7 @@ function CustomTextInput(): ReactNode {
           value={settings.get(lessonProps.customText.content)}
           type="textarea"
           placeholder={formatMessage({
-            id: "settings.customTextInputPlaceholder",
+            id: "settings.customTextInput.placeholder",
             description: "Input field placeholder.",
             defaultMessage: "Custom text...",
           })}
@@ -152,13 +152,13 @@ function CustomTextProcessing(): ReactNode {
         <CheckBox
           checked={settings.get(lessonProps.customText.lettersOnly)}
           label={formatMessage({
-            id: "settings.customTextLettersOnlyLabel",
-            description: "Input field label.",
+            id: "settings.customTextLettersOnly.label",
+            description: "Widget name.",
             defaultMessage: "Remove punctuation",
           })}
           title={formatMessage({
-            id: "settings.customTextLettersOnlyTitle",
-            description: "Input field title.",
+            id: "settings.customTextLettersOnly.description",
+            description: "Widget description.",
             defaultMessage:
               "Remove punctuation from the text to make it simpler to type.",
           })}
@@ -173,13 +173,13 @@ function CustomTextProcessing(): ReactNode {
         <CheckBox
           checked={settings.get(lessonProps.customText.lowercase)}
           label={formatMessage({
-            id: "settings.customTextLowercaseLabel",
-            description: "Input field label.",
+            id: "settings.customTextLowercase.label",
+            description: "Widget name.",
             defaultMessage: "Transform to lowercase",
           })}
           title={formatMessage({
-            id: "settings.customTextLowercaseTitle",
-            description: "Input field title.",
+            id: "settings.customTextLowercase.description",
+            description: "Widget description.",
             defaultMessage:
               "Transform all text to lower case to make it simpler to type.",
           })}
@@ -194,13 +194,13 @@ function CustomTextProcessing(): ReactNode {
         <CheckBox
           checked={settings.get(lessonProps.customText.randomize)}
           label={formatMessage({
-            id: "settings.customTextRandomizeLabel",
-            description: "Input field label.",
+            id: "settings.customTextRandomize.label",
+            description: "Widget name.",
             defaultMessage: "Shuffle words",
           })}
           title={formatMessage({
-            id: "settings.customTextRandomizeTitle",
-            description: "Input field title.",
+            id: "settings.customTextRandomize.description",
+            description: "Widget description.",
             defaultMessage: "Put words from the custom text in a random order.",
           })}
           onChange={(value) => {

@@ -14,16 +14,16 @@ export function KeySpeedHistogramSection({
     <Figure>
       <Figure.Caption>
         <FormattedMessage
-          id="profile.chart.keySpeedHistogramCaption"
-          description="Chart caption."
+          id="profile.chart.keySpeedHistogram.caption"
+          description="Header text."
           defaultMessage="Key Typing Speed Histogram"
         />
       </Figure.Caption>
 
       <Figure.Description>
         <FormattedMessage
-          id="profile.chart.keySpeedHistogramDescription"
-          description="Chart description."
+          id="profile.chart.keySpeedHistogram.description"
+          description="Message text."
           defaultMessage="This chart shows the average typing speed for each individual key."
         />
       </Figure.Description>

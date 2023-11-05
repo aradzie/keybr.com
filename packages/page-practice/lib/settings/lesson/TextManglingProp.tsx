@@ -20,8 +20,8 @@ export function TextManglingProp(): ReactNode {
       <FieldList>
         <Field>
           <FormattedMessage
-            id="settings.capitalLettersLabel"
-            description="Input field label."
+            id="settings.capitalLetters.label"
+            description="Widget name."
             defaultMessage="Add capital letters:"
           />
         </Field>
@@ -49,8 +49,8 @@ export function TextManglingProp(): ReactNode {
       <FieldList>
         <Field>
           <FormattedMessage
-            id="settings.punctuationLabel"
-            description="Input field label."
+            id="settings.punctuation.label"
+            description="Widget name."
             defaultMessage="Add punctuation characters:"
           />
         </Field>

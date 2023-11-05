@@ -29,15 +29,15 @@ export function TypingSettings(): ReactNode {
     <>
       <FieldSet
         legend={formatMessage({
-          id: "settings.typingOptionsLegend",
-          description: "Fieldset legend.",
+          id: "settings.typingOptions.legend",
+          description: "Header text.",
           defaultMessage: "Typing Options",
         })}
       >
         <Explainer>
           <FormattedMessage
-            id="settings.typingAssistsDescription"
-            description="Description text."
+            id="settings.typingAssists.description"
+            description="Message text."
             defaultMessage="These are the typing assists which help your preserve your concentration and keep the flow by automatically correcting your errors."
           />
         </Explainer>
@@ -47,8 +47,8 @@ export function TypingSettings(): ReactNode {
       </FieldSet>
       <FieldSet
         legend={formatMessage({
-          id: "settings.textAppearanceLegend",
-          description: "Fieldset legend.",
+          id: "settings.textAppearance.legend",
+          description: "Header text.",
           defaultMessage: "Text Appearance",
         })}
       >
@@ -84,8 +84,8 @@ function StopOnErrorProp(): ReactNode {
         <Field>
           <CheckBox
             label={formatMessage({
-              id: "settings.stopCursorOnErrorLabel",
-              description: "Input field label.",
+              id: "settings.stopCursorOnError.label",
+              description: "Widget name.",
               defaultMessage: "Stop cursor on error",
             })}
             checked={settings.get(textInputProps.stopOnError)}
@@ -97,8 +97,8 @@ function StopOnErrorProp(): ReactNode {
       </FieldList>
       <Explainer>
         <FormattedMessage
-          id="settings.stopCursorOnErrorDescription"
-          description="Description text."
+          id="settings.stopCursorOnError.description"
+          description="Message text."
           defaultMessage="If enabled, the text cursor stops advancing until the right key is pressed at the current position. If disabled, all errors will be accumulated in the text input field and must be cleared with the delete key."
         />
       </Explainer>
@@ -115,8 +115,8 @@ function ForgiveErrorsProp(): ReactNode {
         <Field>
           <CheckBox
             label={formatMessage({
-              id: "settings.forgiveErrorsLabel",
-              description: "Input field label.",
+              id: "settings.forgiveErrors.label",
+              description: "Widget name.",
               defaultMessage: "Forgive errors",
             })}
             checked={settings.get(textInputProps.forgiveErrors)}
@@ -128,8 +128,8 @@ function ForgiveErrorsProp(): ReactNode {
       </FieldList>
       <Explainer>
         <FormattedMessage
-          id="settings.forgiveErrorsDescription"
-          description="Description text."
+          id="settings.forgiveErrors.description"
+          description="Message text."
           defaultMessage="If enabled, the text input field will forgive some kinds of errors by automatically fixing them. These are errors such as typing a wrong character or skipping a character."
         />
       </Explainer>
@@ -146,8 +146,8 @@ function SpaceSkipsWordsProp(): ReactNode {
         <Field>
           <CheckBox
             label={formatMessage({
-              id: "settings.spaceSkipsWordsLabel",
-              description: "Input field label.",
+              id: "settings.spaceSkipsWords.label",
+              description: "Widget name.",
               defaultMessage: "Space skips words",
             })}
             checked={settings.get(textInputProps.spaceSkipsWords)}
@@ -161,8 +161,8 @@ function SpaceSkipsWordsProp(): ReactNode {
       </FieldList>
       <Explainer>
         <FormattedMessage
-          id="settings.spaceSkipsWordsDescription"
-          description="Description text."
+          id="settings.spaceSkipsWords.description"
+          description="Message text."
           defaultMessage="If enabled, pressing the space key in the middle of a word will skip the remaining characters of the word and position cursor at the beginning of the next word."
         />
       </Explainer>
@@ -176,8 +176,8 @@ function WhitespaceProp(): ReactNode {
     <FieldList>
       <Field className={styleWidthNormal}>
         <FormattedMessage
-          id="settings.whitespaceLabel"
-          description="Input field label."
+          id="settings.whitespace.label"
+          description="Widget name."
           defaultMessage="Whitespace:"
         />
       </Field>
@@ -245,8 +245,8 @@ function CursorShapeProp(): ReactNode {
     <FieldList>
       <Field className={styleWidthNormal}>
         <FormattedMessage
-          id="settings.cursorShapeLabel"
-          description="Input field label."
+          id="settings.cursorShape.label"
+          description="Widget name."
           defaultMessage="Cursor shape:"
         />
       </Field>
@@ -332,8 +332,8 @@ function CursorMovementProp(): ReactNode {
     <FieldList>
       <Field className={styleWidthNormal}>
         <FormattedMessage
-          id="settings.cursorMovementLabel"
-          description="Input field label."
+          id="settings.cursorMovement.label"
+          description="Widget name."
           defaultMessage="Cursor movement:"
         />
       </Field>
@@ -383,8 +383,8 @@ function SoundsProp(): ReactNode {
     <FieldList>
       <Field className={styleWidthNormal}>
         <FormattedMessage
-          id="settings.playSoundsLabel"
-          description="Input field label."
+          id="settings.playSounds.label"
+          description="Widget name."
           defaultMessage="Play sounds:"
         />
       </Field>

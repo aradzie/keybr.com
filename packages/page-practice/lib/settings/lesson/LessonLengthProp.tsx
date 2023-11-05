@@ -17,8 +17,8 @@ export function LessonLengthProp(): ReactNode {
       <FieldList>
         <Field>
           <FormattedMessage
-            id="settings.lessonLengthLabel"
-            description="Input field label."
+            id="settings.lessonLength.label"
+            description="Widget name."
             defaultMessage="Add words to lessons:"
           />
         </Field>

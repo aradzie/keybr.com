@@ -35,8 +35,8 @@ function Content({ model }: { readonly model: PhoneticModel }): ReactNode {
       <FieldList>
         <Field>
           {formatMessage({
-            id: "settings.selectLanguageLabel",
-            description: "Input field label.",
+            id: "settings.selectLanguage.label",
+            description: "Widget name.",
             defaultMessage: "Language:",
           })}
         </Field>
@@ -48,8 +48,8 @@ function Content({ model }: { readonly model: PhoneticModel }): ReactNode {
               name: formatMessage(languageName(item.id)),
             }))}
             title={formatMessage({
-              id: "settings.selectLanguageTitle",
-              description: "Input field title.",
+              id: "settings.selectLanguage.description",
+              description: "Widget description.",
               defaultMessage: "Select your spoken language.",
             })}
             value={String(settings.get(typingTestProps.language))}

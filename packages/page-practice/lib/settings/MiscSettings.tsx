@@ -11,8 +11,8 @@ export function MiscSettings(): ReactNode {
     <>
       <FieldSet
         legend={formatMessage({
-          id: "settings.interfaceOptionsLegend",
-          description: "Fieldset legend.",
+          id: "settings.interfaceOptions.legend",
+          description: "Header text.",
           defaultMessage: "Interface Options",
         })}
       >
@@ -30,8 +30,8 @@ function SpeedUnitProp(): ReactNode {
       <FieldList>
         <Field>
           <FormattedMessage
-            id="settings.typingSpeedUnitCaption"
-            description="Radio button group caption."
+            id="settings.typingSpeedUnit.caption"
+            description="Widget name."
             defaultMessage="Measure typing speed in:"
           />
         </Field>
@@ -71,8 +71,8 @@ function SpeedUnitProp(): ReactNode {
       </FieldList>
       <Explainer>
         <FormattedMessage
-          id="settings.typingSpeedUnitDescription"
-          description="Radio button group description."
+          id="settings.typingSpeedUnit.description"
+          description="Widget description."
           defaultMessage="For the purpose of typing measurement, each word is standardized to be five characters or keystrokes in English, including spaces and punctuation."
         />
       </Explainer>

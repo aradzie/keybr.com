@@ -14,7 +14,7 @@ export const KeyLegendList = (): ReactNode => {
         />{" "}
         <FormattedMessage
           id="lesson.indicator.notCalibrated"
-          description="Indicator description."
+          description="Message text."
           defaultMessage="A non-calibrated key with an unknown confidence level. You still have not pressed this key yet."
         />
       </li>
@@ -27,7 +27,7 @@ export const KeyLegendList = (): ReactNode => {
         />{" "}
         <FormattedMessage
           id="lesson.indicator.leastConfidence"
-          description="Indicator description."
+          description="Message text."
           defaultMessage="A calibrated key with the lowest confidence level. The more times you press this key, the more accurate this metric becomes."
         />
       </li>
@@ -40,7 +40,7 @@ export const KeyLegendList = (): ReactNode => {
         />{" "}
         <FormattedMessage
           id="lesson.indicator.mostConfidence"
-          description="Indicator description."
+          description="Message text."
           defaultMessage="A calibrated key with the highest confidence level. The more times you press this key, the more accurate this metric becomes."
         />
       </li>
@@ -53,7 +53,7 @@ export const KeyLegendList = (): ReactNode => {
         />{" "}
         <FormattedMessage
           id="lesson.indicator.boostedFrequency"
-          description="Indicator description."
+          description="Message text."
           defaultMessage="A key with boosted frequency. It takes you the most time to find this key so the algorithm chose it to be included in every generated word."
         />
       </li>
@@ -66,7 +66,7 @@ export const KeyLegendList = (): ReactNode => {
         />{" "}
         <FormattedMessage
           id="lesson.indicator.includedManually"
-          description="Indicator description."
+          description="Message text."
           defaultMessage="A key which was manually included in the lessons."
         />
       </li>
@@ -79,7 +79,7 @@ export const KeyLegendList = (): ReactNode => {
         />{" "}
         <FormattedMessage
           id="lesson.indicator.notIncluded"
-          description="Indicator description."
+          description="Message text."
           defaultMessage="A key which was not yet included in the lessons."
         />
       </li>
