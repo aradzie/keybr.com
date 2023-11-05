@@ -78,7 +78,7 @@ export function AllTimeSummary({
     <>
       <Header level={2}>
         <FormattedMessage
-          id="profile.overview.statisticsAllTime"
+          id="profile.summary.statisticsAllTime"
           description="Header text."
           defaultMessage="All Time Statistics"
         />
@@ -87,13 +87,13 @@ export function AllTimeSummary({
       <Para className={styles.statisticList}>
         <Statistic
           name={formatMessage({
-            id: "profile.overview.totalTime.label",
+            id: "metric.summary.totalTime.label",
             description: "Widget name.",
             defaultMessage: "Total Time",
           })}
           value={formatDuration(time)}
           title={formatMessage({
-            id: "profile.overview.totalTime.description",
+            id: "metric.summary.totalTime.description",
             description: "Widget description.",
             defaultMessage: "Time spent on exercises.",
           })}
@@ -101,13 +101,13 @@ export function AllTimeSummary({
 
         <Statistic
           name={formatMessage({
-            id: "profile.overview.totalLessons.label",
+            id: "metric.summary.lessonCount.label",
             description: "Widget name.",
             defaultMessage: "Total Lessons",
           })}
           value={formatNumber(count)}
           title={formatMessage({
-            id: "profile.overview.totalLessons.description",
+            id: "metric.summary.lessonCount.description",
             description: "Widget description.",
             defaultMessage: "The number of lessons completed.",
           })}
@@ -115,13 +115,13 @@ export function AllTimeSummary({
 
         <Statistic
           name={formatMessage({
-            id: "profile.overview.topSpeed.label",
+            id: "metric.summary.topSpeed.label",
             description: "Widget name.",
             defaultMessage: "Top Speed",
           })}
           value={speed.max > 0 ? formatSpeed(speed.max) : "N/A"}
           title={formatMessage({
-            id: "profile.overview.topSpeed.description",
+            id: "metric.summary.topSpeed.description",
             description: "Widget description.",
             defaultMessage: "Top typing speed.",
           })}
@@ -129,13 +129,13 @@ export function AllTimeSummary({
 
         <Statistic
           name={formatMessage({
-            id: "profile.overview.averageSpeed.label",
+            id: "metric.summary.averageSpeed.label",
             description: "Widget name.",
             defaultMessage: "Average Speed",
           })}
           value={speed.avg > 0 ? formatSpeed(speed.avg) : "N/A"}
           title={formatMessage({
-            id: "profile.overview.averageSpeed.description",
+            id: "metric.summary.averageSpeed.description",
             description: "Widget description.",
             defaultMessage: "Average typing speed.",
           })}
@@ -162,7 +162,7 @@ export function TodaySummary({
     <>
       <Header level={2}>
         <FormattedMessage
-          id="profile.overview.statisticsToday"
+          id="profile.summary.statisticsToday"
           description="Header text."
           defaultMessage="Statistics for Today"
         />
@@ -171,13 +171,13 @@ export function TodaySummary({
       <Para className={styles.statisticList}>
         <Statistic
           name={formatMessage({
-            id: "profile.overview.totalTimeToday.label",
+            id: "metric.summary.totalTimeToday.label",
             description: "Widget name.",
             defaultMessage: "Total Time",
           })}
           value={formatDuration(time)}
           title={formatMessage({
-            id: "profile.overview.totalTimeToday.description",
+            id: "metric.summary.totalTimeToday.description",
             description: "Widget description.",
             defaultMessage: "Time spent on exercises today.",
           })}
@@ -185,13 +185,13 @@ export function TodaySummary({
 
         <Statistic
           name={formatMessage({
-            id: "profile.overview.totalLessonsToday.label",
+            id: "metric.summary.lessonCountToday.label",
             description: "Widget name.",
             defaultMessage: "Total Lessons",
           })}
           value={formatNumber(count)}
           title={formatMessage({
-            id: "profile.overview.totalLessonsToday.description",
+            id: "metric.summary.lessonCountToday.description",
             description: "Widget description.",
             defaultMessage: "The number of lessons completed today.",
           })}
@@ -199,13 +199,13 @@ export function TodaySummary({
 
         <Statistic
           name={formatMessage({
-            id: "profile.overview.topSpeedToday.label",
+            id: "metric.summary.topSpeedToday.label",
             description: "Widget name.",
             defaultMessage: "Top Speed",
           })}
           value={speed.max > 0 ? formatSpeed(speed.max) : "N/A"}
           title={formatMessage({
-            id: "profile.overview.topSpeedToday.description",
+            id: "metric.summary.topSpeedToday.description",
             description: "Widget description.",
             defaultMessage: "Top typing speed today.",
           })}
@@ -213,13 +213,13 @@ export function TodaySummary({
 
         <Statistic
           name={formatMessage({
-            id: "profile.overview.averageSpeedToday.label",
+            id: "metric.summary.averageSpeedToday.label",
             description: "Widget name.",
             defaultMessage: "Average Speed",
           })}
           value={speed.avg > 0 ? formatSpeed(speed.avg) : "N/A"}
           title={formatMessage({
-            id: "profile.overview.averageSpeedToday.description",
+            id: "metric.summary.averageSpeedToday.description",
             description: "Widget description.",
             defaultMessage: "Average typing speed today.",
           })}
