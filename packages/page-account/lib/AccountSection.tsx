@@ -56,12 +56,12 @@ export function AccountSection({
         <Para>
           <CheckBox
             label={formatMessage({
-              id: "account.anonymizeButton.label",
+              id: "account.widget.anonymize.label",
               description: "Widget name.",
               defaultMessage: "Anonymize Me",
             })}
             title={formatMessage({
-              id: "account.anonymizeButton.description",
+              id: "account.widget.anonymize.description",
               description: "Widget description.",
               defaultMessage:
                 "Hide your real user image and name from the public.",
@@ -88,12 +88,12 @@ export function AccountSection({
             }}
             icon={<Icon shape={mdiExitToApp} />}
             label={formatMessage({
-              id: "account.signOutButton.label",
+              id: "account.widget.signOut.label",
               description: "Widget name.",
               defaultMessage: "Sign Out",
             })}
             title={formatMessage({
-              id: "account.signOutButton.description",
+              id: "account.widget.signOut.description",
               description: "Widget description.",
               defaultMessage: "Sign out from the application.",
             })}
@@ -123,12 +123,12 @@ export function AccountSection({
                 }}
                 icon={<Icon shape={mdiCreditCard} />}
                 label={formatMessage({
-                  id: "account.checkoutButton.label",
+                  id: "account.widget.checkout.label",
                   description: "Widget name.",
                   defaultMessage: "Buy a Premium Account",
                 })}
                 title={formatMessage({
-                  id: "account.checkoutButton.description",
+                  id: "account.widget.checkout.description",
                   description: "Widget description.",
                   defaultMessage: "Open the checkout form.",
                 })}
@@ -152,12 +152,12 @@ export function AccountSection({
             }}
             icon={<Icon shape={mdiDeleteForever} />}
             label={formatMessage({
-              id: "account.deleteAccountButton.label",
+              id: "account.widget.deleteAccount.label",
               description: "Widget name.",
               defaultMessage: "Delete Account",
             })}
             title={formatMessage({
-              id: "account.deleteAccountButton.description",
+              id: "account.widget.deleteAccount.description",
               description: "Widget description.",
               defaultMessage: "Permanently delete your account.",
             })}

@@ -55,12 +55,12 @@ export const Lane = memo(function Lane({
       <div className={styles.details}>
         <NameValue
           title={formatMessage({
-            id: "multiplayer.ui.position.description",
+            id: "multiplayer.track.position.description",
             description: "Label title.",
             defaultMessage: "Position on the track.",
           })}
           name={formatMessage({
-            id: "multiplayer.ui.position.label",
+            id: "multiplayer.track.position.label",
             description: "Label.",
             defaultMessage: "Position",
           })}
@@ -73,12 +73,12 @@ export const Lane = memo(function Lane({
         />
         <NameValue
           title={formatMessage({
-            id: "multiplayer.ui.distance.description",
+            id: "multiplayer.track.distance.description",
             description: "Label title.",
             defaultMessage: "Distance completed.",
           })}
           name={formatMessage({
-            id: "multiplayer.ui.distance.label",
+            id: "multiplayer.track.distance.label",
             description: "Label.",
             defaultMessage: "Progress",
           })}
@@ -91,12 +91,12 @@ export const Lane = memo(function Lane({
         />
         <NameValue
           title={formatMessage({
-            id: "multiplayer.ui.name.description",
+            id: "multiplayer.track.name.description",
             description: "Label title.",
             defaultMessage: "Typing speed.",
           })}
           name={formatMessage({
-            id: "multiplayer.ui.name.label",
+            id: "multiplayer.track.name.label",
             description: "Label.",
             defaultMessage: "Speed",
           })}
@@ -109,12 +109,12 @@ export const Lane = memo(function Lane({
         />
         <NameValue
           title={formatMessage({
-            id: "multiplayer.ui.errors.description",
+            id: "multiplayer.track.errors.description",
             description: "Label title.",
             defaultMessage: "Number of errors.",
           })}
           name={formatMessage({
-            id: "multiplayer.ui.errors.label",
+            id: "multiplayer.track.errors.label",
             description: "Label.",
             defaultMessage: "Errors",
           })}

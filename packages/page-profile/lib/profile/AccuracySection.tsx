@@ -68,8 +68,8 @@ function StreakDetails({
       <dt>
         <NameValue
           name={formatMessage({
-            id: "profile.accuracyThreshold.label",
-            description: "Widget name.",
+            id: "profile.chart.accuracy.accuracyThreshold.header",
+            description: "Header text.",
             defaultMessage: "Accuracy Threshold",
           })}
           value={formatPercents(streak.threshold)}

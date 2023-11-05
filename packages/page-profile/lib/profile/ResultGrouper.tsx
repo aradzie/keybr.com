@@ -50,7 +50,7 @@ export function ResultGrouper({
       <FieldList>
         <Field>
           <FormattedMessage
-            id="profile.control.groupSelector.label"
+            id="profile.widget.groupSelector.label"
             description="Widget name."
             defaultMessage="Show statistics for:"
           />

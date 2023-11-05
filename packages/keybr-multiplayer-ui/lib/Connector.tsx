@@ -41,7 +41,7 @@ function Banner(): ReactNode {
   return (
     <Para className={styleTextCenter}>
       <FormattedMessage
-        id="multiplayer.intro.message"
+        id="multiplayer.intro.description"
         description="Message text."
         defaultMessage="Compete against other players in this online multiplayer game. The faster you type, the faster your car goes. Type as fast as you can to win the race!"
       />

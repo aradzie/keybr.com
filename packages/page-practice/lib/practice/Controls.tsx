@@ -30,7 +30,7 @@ export const Controls = memo(function Controls({
         onClick={onHelp}
         icon={<Icon shape={mdiHelpCircleOutline} />}
         title={formatMessage({
-          id: "practice.showHelpSlidesButton.description",
+          id: "practice.widget.showTour.description",
           description: "Widget description.",
           defaultMessage: "Show a guided tour with help slides.",
         })}
@@ -39,7 +39,7 @@ export const Controls = memo(function Controls({
         onClick={onResetLesson}
         icon={<Icon shape={mdiUndo} />}
         title={formatMessage({
-          id: "practice.resetLessonButton.description",
+          id: "practice.widget.resetLesson.description",
           description: "Widget description.",
           defaultMessage: "Reset the current lesson (Ctrl + Left Arrow).",
         })}
@@ -48,7 +48,7 @@ export const Controls = memo(function Controls({
         onClick={onSkipLesson}
         icon={<Icon shape={mdiRedo} />}
         title={formatMessage({
-          id: "practice.skipLessonButton.description",
+          id: "practice.widget.skipLesson.description",
           description: "Widget description.",
           defaultMessage: "Skip the current lesson (Ctrl + Right Arrow).",
         })}
@@ -57,7 +57,7 @@ export const Controls = memo(function Controls({
         onClick={onChangeView}
         icon={<Icon shape={mdiAspectRatio} />}
         title={formatMessage({
-          id: "practice.switchInterfaceButton.description",
+          id: "practice.widget.switchView.description",
           description: "Widget description.",
           defaultMessage: "Switch the current interface layout.",
         })}
@@ -65,12 +65,12 @@ export const Controls = memo(function Controls({
       <Button
         icon={<Icon shape={mdiCog} />}
         label={formatMessage({
-          id: "practice.settingButtonName",
+          id: "practice.widget.settings.name",
           description: "Widget name.",
           defaultMessage: "Settings...",
         })}
         title={formatMessage({
-          id: "practice.settingButton.description",
+          id: "practice.widget.settings.description",
           description: "Widget description.",
           defaultMessage:
             "Change lesson settings, configure language, keyboard layout, etc.",

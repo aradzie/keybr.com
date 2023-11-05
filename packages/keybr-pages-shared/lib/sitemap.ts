@@ -17,12 +17,12 @@ export class Sitemap {
   static readonly signIn = new PageLinkTemplate({
     path: "/account",
     name: defineMessage({
-      id: "nav.signIn.name",
+      id: "page.account.anonymous.link.name",
       description: "Navigation menu item name.",
       defaultMessage: "Sign-In",
     }),
     title: defineMessage({
-      id: "nav.signIn.description",
+      id: "page.account.anonymous.link.description",
       description: "Navigation menu item title.",
       defaultMessage: "Sign‑in for an online account.",
     }),
@@ -32,12 +32,12 @@ export class Sitemap {
   static readonly account = new PageLinkTemplate<NamedUser>({
     path: "/account",
     name: defineMessage({
-      id: "nav.account.name",
+      id: "page.account.named.link.name",
       description: "Navigation menu item name.",
       defaultMessage: "{name}",
     }),
     title: defineMessage({
-      id: "nav.account.description",
+      id: "page.account.named.link.description",
       description: "Navigation menu item title.",
       defaultMessage: "Manage your online account.",
     }),

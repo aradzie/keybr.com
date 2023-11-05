@@ -78,7 +78,7 @@ export function AllTimeSummary({
     <>
       <Header level={2}>
         <FormattedMessage
-          id="profile.summary.statisticsAllTime"
+          id="profile.chart.summary.statisticsAllTime.header"
           description="Header text."
           defaultMessage="All Time Statistics"
         />
@@ -162,7 +162,7 @@ export function TodaySummary({
     <>
       <Header level={2}>
         <FormattedMessage
-          id="profile.summary.statisticsToday"
+          id="profile.chart.summary.statisticsToday.header"
           description="Header text."
           defaultMessage="Statistics for Today"
         />
