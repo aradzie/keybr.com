@@ -11,6 +11,7 @@ export function FakeIntlProvider({
   return (
     <IntlProvider
       locale={defaultLocale}
+      timeZone="UTC"
       defaultRichTextElements={defaultRichTextElements}
     >
       {children}
