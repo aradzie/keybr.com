@@ -33,6 +33,10 @@ export class Settings {
     return new Settings({ ...this._json, [prop.key]: prop.toJson(value) });
   }
 
+  reset(): Settings {
+    return new Settings();
+  }
+
   toJSON(): Record<string, unknown> {
     const entries = [];
     for (const key of Object.keys(this._json).sort()) {

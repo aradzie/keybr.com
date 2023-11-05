@@ -9,8 +9,9 @@ import {
   FieldList,
   Header,
   Icon,
+  styleWidthWide,
 } from "@keybr/widget";
-import { mdiCheckCircle } from "@mdi/js";
+import { mdiCheckCircle, mdiDeleteForever } from "@mdi/js";
 import { type ReactNode, useMemo, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { ExplainSettings } from "./ExplainSettings.tsx";
@@ -53,6 +54,7 @@ export function SettingsScreen({
 
 function Content({ onSubmit }: { readonly onSubmit: () => void }): ReactNode {
   const { formatMessage } = useIntl();
+  const { settings, updateSettings } = useSettings();
   return (
     <Screen>
       <ExplainerBoundary>
@@ -103,14 +105,39 @@ function Content({ onSubmit }: { readonly onSubmit: () => void }): ReactNode {
         <div className={styles.spacer} />
 
         <FieldList>
+          <Field>
+            <Button
+              className={styleWidthWide}
+              icon={<Icon shape={mdiDeleteForever} />}
+              label={formatMessage({
+                id: "settings.widget.reset.name",
+                description: "Widget name.",
+                defaultMessage: "Reset",
+              })}
+              title={formatMessage({
+                id: "settings.widget.reset.description",
+                description: "Widget description.",
+                defaultMessage: "Reset all settings to the default values.",
+              })}
+              onClick={() => {
+                updateSettings(settings.reset());
+              }}
+            />
+          </Field>
           <Field.Filler />
           <Field>
             <Button
+              className={styleWidthWide}
               icon={<Icon shape={mdiCheckCircle} />}
               label={formatMessage({
                 id: "settings.widget.done.name",
                 description: "Widget name.",
                 defaultMessage: "Done",
+              })}
+              title={formatMessage({
+                id: "settings.widget.done.description",
+                description: "Widget description.",
+                defaultMessage: "Save all settings and return to the practice.",
               })}
               onClick={() => {
                 onSubmit();
