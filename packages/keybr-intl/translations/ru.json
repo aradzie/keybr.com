@@ -1,1530 +1,384 @@
 {
-  "account.accountDetailsLegend": {
-    "defaultMessage": "Информация об аккаунте",
-    "description": "Fieldset legend."
-  },
-  "account.accountPageDescription": {
-    "defaultMessage": "<p>Вы используете учетную запись для хранения ваших данных на наших серверах в облаке. Вы можете получить доступ к своему профилю с любого компьютера или браузера.</p>",
-    "description": "Freeform text."
-  },
-  "account.anonymizeButtonLabel": {
-    "defaultMessage": "Обезличить меня",
-    "description": "Button label."
-  },
-  "account.anonymizeButtonTitle": {
-    "defaultMessage": "Скройте свое реальное изображение и имя пользователя.",
-    "description": "Button title."
-  },
-  "account.anonymizeDescription": {
-    "defaultMessage": "Обезличивание заменяет ваше реальное изображение и имя пользователя на то, которое мы придумали для вас. Вы можете переключаться между своим настоящим и обезличенным именем любое количество раз.",
-    "description": "Freeform text."
-  },
-  "account.anonymousUserName": {
-    "defaultMessage": "Безымянный пользователь",
-    "description": "Text label."
-  },
-  "account.avatarDescription": {
-    "defaultMessage": "Ваше изображение и имя пользователя будут видны всем в вашем профиле, в таблице рекордов и в многопользовательской игре.",
-    "description": "Freeform text."
-  },
-  "account.checkout.description": {
-    "defaultMessage": "Купите премиум-аккаунт, чтобы разблокировать дополнительные функции и избавиться от рекламы.",
-    "description": "Form description."
-  },
-  "account.checkout.title": {
-    "defaultMessage": "Премиум аккаунт",
-    "description": "Form title."
-  },
-  "account.checkoutButtonLabel": {
-    "defaultMessage": "Купить премиум аккаунт",
-    "description": "Button label."
-  },
-  "account.checkoutButtonTitle": {
-    "defaultMessage": "Открыть форму оформления заказа.",
-    "description": "Button title."
-  },
-  "account.deleteAccountButtonLabel": {
-    "defaultMessage": "Удалить аккаунт",
-    "description": "Button label."
-  },
-  "account.deleteAccountButtonTitle": {
-    "defaultMessage": "Безвозвратно удалить аккаунт.",
-    "description": "Button title."
-  },
-  "account.deleteAccountConfirmation": {
-    "defaultMessage": "Вы уверены, что хотите удалить свою учетную запись? Эта операция является постоянной и не может быть отменена! Но вы можете создать новую учетную запись позже в любое время.",
-    "description": "Confirmation text."
-  },
-  "account.deleteAccountDescription": {
-    "defaultMessage": "Это приведет к удалению из нашей базы данных всей вашей личной информации, такой как адрес электронной почты и имя. Эту операцию нельзя отменить! Если вы просто хотите очистить статистику и начать заново, вы можете сделать это на странице профиля.",
-    "description": "Freeform text."
-  },
-  "account.deleteAccountLegend": {
-    "defaultMessage": "Удалить аккаунт",
-    "description": "Fieldset legend."
-  },
-  "account.emailFormDescription": {
-    "defaultMessage": "Простой вход без использования паролей. Просто введите свой адрес электронной почты, и мы вышлем вам ссылку для входа. Перейдите в свой почтовый ящик, кликните ссылку, чтобы создать новую учетную запись или открыть существующую учетную запись для указанного адреса электронной почты. Ссылка временная, срок ее действия истекает через несколько часов. Чтобы войти позже, введите тот же адрес электронной почты, и мы вышлем новую ссылку для той же учетной записи.",
-    "description": "Freeform text."
-  },
-  "account.emailPlaceholder": {
-    "defaultMessage": "Ваша почта...",
-    "description": "Input field placeholder."
-  },
-  "account.emailSignInHeader": {
-    "defaultMessage": "Войти с помощью электронной почты",
-    "description": "Freeform header."
-  },
-  "account.emailState.errorText": {
-    "defaultMessage": "Не удалось отправить письмо на адрес <strong>{email}</strong>: {message}",
-    "description": "Text message."
-  },
-  "account.emailState.sendingText": {
-    "defaultMessage": "Отправка письма со ссылкой для входа на адрес <strong>{email}</strong>... Подождите секунду.",
-    "description": "Text message."
-  },
-  "account.emailState.sentText": {
-    "defaultMessage": "Мы отправили письмо со ссылкой для входа на адрес <strong>{email}</strong>. Оно должно прибыть в ближайшее время, пожалуйста, проверьте свой почтовый ящик через минуту или две.",
-    "description": "Text message."
-  },
-  "account.emailTitle": {
-    "defaultMessage": "Адрес почты, на который мы отправим вам ссылку для входа.",
-    "description": "Input field title."
-  },
-  "account.freeAccountOverview": {
-    "defaultMessage": "<p>Купите <strong>премиум-аккаунт</strong>, чтобы разблокировать дополнительные функции и избавиться от рекламы. Вот список преимуществ премиум-аккаунта:</p><ul><li><strong>Отсутствие рекламы.</strong> Реклама может отвлекать и мешать вашему обучению. Это хороший способ избавиться от нее.</li><li><strong>Отсутствие трекеров.</strong> Трекеры неизбежно сопровождают рекламу. Удалите все трекеры чтобы добиться исключительной конфиденциальности в Интернете.</li><li><strong>Сверхбыстрая отзывчивость.</strong> Загрузка рекламы занимает определенное время. Убрав рекламу вы получите значительно более быструю загрузку страниц приложения.</li></ul><p>Всего один платеж, раз и навсегда.</p>",
-    "description": "Freeform text."
-  },
-  "account.pageTitle": {
-    "defaultMessage": "Аккаунт | {name}",
-    "description": "Page title."
-  },
-  "account.premiumAccountHeader": {
-    "defaultMessage": "Премиум аккаунт",
-    "description": "Freeform header."
-  },
-  "account.premiumAccountLegend": {
-    "defaultMessage": "Премиум аккаунт",
-    "description": "Fieldset legend."
-  },
-  "account.premiumAccountOverview": {
-    "defaultMessage": "<p>Благодарим вас за покупку премиум-аккаунта! Теперь вы можете пользоваться дополнительными функциями и наслаждаться отсутствием рекламы.</p>",
-    "description": "Freeform text."
-  },
-  "account.resendButtonLabel": {
-    "defaultMessage": "Отправить повторно",
-    "description": "Button label."
-  },
-  "account.resendButtonTitle": {
-    "defaultMessage": "Отправьте новое письмо.",
-    "description": "Button title."
-  },
-  "account.retryButtonLabel": {
-    "defaultMessage": "Повторить",
-    "description": "Button label."
-  },
-  "account.retryButtonTitle": {
-    "defaultMessage": "Отправить еще одно письмо.",
-    "description": "Button title."
-  },
-  "account.sendButtonLabel": {
-    "defaultMessage": "Отправить ссылку для входа",
-    "description": "Button label."
-  },
-  "account.sendButtonTitle": {
-    "defaultMessage": "Отправить письмо со ссылкой.",
-    "description": "Button title."
-  },
-  "account.signInPageDescription": {
-    "defaultMessage": "<p>Создайте учетную запись для хранения ваших данных на наших серверах в облаке. Таким образом, вы сможете получить доступ к своему профилю с любого компьютера или браузера. Если у вас нет аккаунта, то ваши данные хранятся локально и будут доступны только с вашего текущего компьютера.</p><p>Мы не храним никаких паролей а используем сторонние сервисы для регистрации наших пользователей. Мы предлагаем несколько удобных способов создания учетной записи и входа в приложение.</p><p>Вы можете отказаться в любое время, удалить учетную запись так же просто, как и создать ее.</p>",
-    "description": "Freeform text."
-  },
-  "account.signOutButtonLabel": {
-    "defaultMessage": "Выйти",
-    "description": "Button label."
-  },
-  "account.signOutButtonTitle": {
-    "defaultMessage": "Выйти из приложения.",
-    "description": "Button title."
-  },
-  "account.socialFormDescription": {
-    "defaultMessage": "Войдите с помощью социальной сети по своему усмотрению. Мы уважаем вашу конфиденциальность и никогда не будем спамить вашу почту, стену или друзей.",
-    "description": "Freeform text."
-  },
-  "account.socialSignInButtonLabel": {
-    "defaultMessage": "Войти с {name}",
-    "description": "Button title."
-  },
-  "account.socialSignInButtonTitle": {
-    "defaultMessage": "Войти с помощью социальной сети.",
-    "description": "Button title."
-  },
-  "account.socialSignInHeader": {
-    "defaultMessage": "Войти через социальные сети",
-    "description": "Freeform header."
-  },
-  "calendar.weekDayName": {
-    "defaultMessage": "П|В|С|Ч|П|С|В",
-    "description": "Day of week name."
-  },
-  "characterClass.digits": {
-    "defaultMessage": "Цифры",
-    "description": "Label."
-  },
-  "characterClass.letters": {
-    "defaultMessage": "Буквы",
-    "description": "Label."
-  },
-  "characterClass.punctuationCharacters": {
-    "defaultMessage": "Знаки пунктуации",
-    "description": "Label."
-  },
-  "characterClass.specialCharacters": {
-    "defaultMessage": "Специальные символы",
-    "description": "Label."
-  },
-  "common.javaScriptDisabledText": {
-    "defaultMessage": "Приложение не будет работать потому что у вас в браузере отключен JavaScript!",
-    "description": "Common text."
-  },
-  "common.loadingText": {
-    "defaultMessage": "Приложение загружается, подождите немного...",
-    "description": "Common text."
-  },
-  "footer.discordLinkTitle": {
-    "defaultMessage": "Общайтесь на нашем сервере Discord.",
-    "description": "Discord link title."
-  },
-  "footer.emailLinkTitle": {
-    "defaultMessage": "Отправляйте ваши пожелания и комментарии на info@keybr.com",
-    "description": "Email link title."
-  },
-  "footer.githubLinkTitle": {
-    "defaultMessage": "Исходный код keybr.com доступен на Github.",
-    "description": "Github link title."
-  },
-  "help.example1": {
-    "defaultMessage": "<a>Пример 1</a>, от 30 до 70 слов в минуту после 4 часов 20 минут занятий в течение 15 дней.",
-    "description": "Example profile text."
-  },
-  "help.example2": {
-    "defaultMessage": "<a>Пример 2</a>, от 35 до 70 слов в минуту после 2 часов 20 минут занятий в течение 12 дней.",
-    "description": "Example profile text."
-  },
-  "help.example3": {
-    "defaultMessage": "<a>Пример 3</a>, приличный скачок с менее чем 20 до 40 слов в минуту после 5 часов 30 минут тренировок в течение 11 дней.",
-    "description": "Example profile text."
-  },
-  "help.example4": {
-    "defaultMessage": "<a>Пример 4</a>, после 2 часов 10 минут тренировок в течение 11 дней скорость печати осталась на уровне ~70 слов в минуту (что уже довольно много), но точность улучшилась.",
-    "description": "Example profile text."
-  },
-  "help.example5": {
-    "defaultMessage": "<a>Пример 5</a>, от 20 до 45 слов в минуту после 10 часов практики в течение 22 дней (да, иногда это занимает больше времени).",
-    "description": "Example profile text."
-  },
-  "help.indicatorsCaption": {
-    "defaultMessage": "Цветовая кодировка индикаторов.",
-    "description": "Figure legend."
-  },
-  "help.keyboardZonesCaption": {
-    "defaultMessage": "Зоны клавиатуры и правильное расположение пальцев.",
-    "description": "Figure legend."
-  },
-  "help.rule1.body": {
-    "defaultMessage": "<p>Когда вы начинаете упражнения в первый раз компьютер ничего не знает о ваших навыках печати, так что он использует маленький набор самых часто повторяющихся букв чтобы генерировать слова, такие как ‘<em>E</em>’, ‘<em>N</em>’, ‘ <em>I</em>’, ‘<em>T</em>’, ‘<em>R</em>’ и ‘<em>L</em>’. Все сгенерированные слова будут состоять только из этого маленького набора букв, а остальные буквы не будут использоваться. Так как статистика для этих букв пока не известна, соответствующие индикаторы будут серыми.</p>",
-    "description": "Paragraph text."
-  },
-  "help.rule1.title": {
-    "defaultMessage": "Алгоритм начинает с начальных букв",
-    "description": "Header text."
-  },
-  "help.rule2.body": {
-    "defaultMessage": "<p>Потом вы печатаете сгенерированные слова, и компьютер собирает статистику о том, как вы вводите буквы. Индикаторы начинают менять цвет с красного на зеленый. Красный цвет означает, что скорость набора для этой отдельной клавиши низкая, а зеленый цвет указывает на обратное. На этом этапе ваша цель - сделать все буквы зелеными, увеличив скорость набора текста. Обратите внимание, что в этом примере буква «<em>T</em>» выделена, так как у нее наихудший показатель скорости набора, поэтому она становится целевой буквой. Целевая буква включается в каждое сгенерированное слово, и это важный момент. Это означает, что в любой момент времени вы тренируете ту букву, которая доставляет вам больше проблем.</p>",
-    "description": "Paragraph text."
-  },
-  "help.rule2.title": {
-    "defaultMessage": "Вы учите начальные буквы",
-    "description": "Header text."
-  },
-  "help.rule3.body": {
-    "defaultMessage": "<p>Когда ваша скорость набора текста улучшится и все буквы наконец станут зелеными, в набор добавляется новая буква «<em>S</em>». Случайные слова будут генерироваться из этого нового расширенного набора букв. Буква ‘<em>S</em>’ является целевой буквой и будет появиться в каждом сгенерированном слове. Опять же, цвет индикатора этой буквы серый, потому что статистика скорости печати неизвестна.</p>",
-    "description": "Paragraph text."
-  },
-  "help.rule3.title": {
-    "defaultMessage": "Алгоритм добавляет больше букв",
-    "description": "Header text."
-  },
-  "help.rule4.body": {
-    "defaultMessage": "<p>На этом этапе ваша цель — сделать эту новую букву зеленой, и когда это произойдет, в набор добавится еще одна буква и цикл повторится. На самом деле очень вероятно, что скорость набора предыдущих букв снизится, и вы увидите, что они снова станут красными, как в этом примере. Так и ожидалось, но ваша цель остается прежней — сделать новую букву зеленой, чтобы разблокировать следующую.</p>",
-    "description": "Paragraph text."
-  },
-  "help.rule4.title": {
-    "defaultMessage": "Вы изучаете дополнительные буквы",
-    "description": "Header text."
-  },
-  "help.rule5.body": {
-    "defaultMessage": "<p>Если вы будете достаточно упорны, рано или поздно все буквы станут зелеными. Поздравляем, вы достигли своей главной цели! Однако это не означает, что вы должны прекратить учиться, вы можете продолжать заниматься так долго, как сами этого хотите.</p>",
-    "description": "Paragraph text."
-  },
-  "help.rule5.title": {
-    "defaultMessage": "Цикл повторяется",
-    "description": "Header text."
-  },
-  "help.section1": {
-    "defaultMessage": "<h1>Научитесь печатать быстрее</h1><p>Это веб-приложение поможет вам научиться методу <em>слепой печати</em>, что означает печатать опираясь на мышечную память и без использования зрения для поиска клавиш на клавиатуре. Этот метод может значительно улучшить вашу скорость и точность набора текста. Противоположным ему является метод, при котором вы смотрите на клавиатуру, а не на экран, и используете только указательные пальцы.</p>",
-    "description": "Freeform text."
-  },
-  "help.section2": {
-    "defaultMessage": "<h2>Методика обучения</h2><p>Это приложение использует уникальный подход. Оно использует статистику и интеллектуальные алгоритмы для автоматической генерации уроков набора текста, соответствующих вашим навыкам. Оно работает, повторяя следующий цикл:</p><ol><li>Алгоритм генерирует для вас список случайных слов на основе ваших навыков набора текста. Навыки замеряются на основе собранной статистики о том, как вы набираете текст. Слова состоят из набора букв, выбранных алгоритмом.</li><li>Вы вводите данные слова. Вы стараетесь делать как можно меньше ошибок.</li><li>Во время набора алгоритм собирает статистику о том, как вы нажимаете клавиши, такие как скорость набора для каждой клавиши в отдельности. В конце собранные данные используются для создания следующего списка слов из первого шага.</li></ol><p>Поэтому в любой момент вы просто набираете указанные слова, а компьютер делает все остальное.</p>",
-    "description": "Freeform text."
-  },
-  "help.section3": {
-    "defaultMessage": "<h2>Алгоритм генерации слов</h2><p>Это приложение генерирует случайные, но легко читаемые и произносимые слова, используя фонетические правила вашего языка. Эти слова звучат правдоподобно, иногда попадаются реальные слова. Печатать естественный текст намного проще, чем повторять случайные буквы, и это поможет вам запоминать частые комбинации клавиш. Последний момент имеет решающее значение. Например, почти невозможно, чтобы в  английском языке буква «<em>W</em>» следовала за «<em>Z</em>», и вы никогда не встретите такую комбинацию в этом приложении. Вместо этого вы будете вводить более обычные слова, такие как «<em>the</em>,» «<em>that</em>,» «<em>with</em>» и так далее. И вскоре вы научитесь очень быстро набирать комбинацию «<em>th</em>».</p><p>Эти слова генерируются из букв, выбранных по следующим правилам.</p>",
-    "description": "Freeform text."
-  },
-  "help.section4": {
-    "defaultMessage": "<p>Точное значение каждого цвета индикатора указано в следующей легенде.</p>",
-    "description": "Freeform text."
-  },
-  "help.section5": {
-    "defaultMessage": "<h2>Как правильно использовать клавиатуру</h2><p>Положите все пальцы на главный ряд, содержащий клавишу <em>Caps Lock</em>. На клавишах «<em>F</em>» и «<em>J</em>» есть небольшие выступы, положите на них указательные пальцы. Каждый палец отвечает за свой собственный набор клавиш, как показано на следующей иллюстрации.</p>",
-    "description": "Freeform text."
-  },
-  "help.section6": {
-    "defaultMessage": "<h2>Эффективность этого приложения</h2><p>Мы выбрали несколько примеров профилей, чтобы показать вам, как люди продвигаются в обучении слепому методу печати используя это приложение. Это настоящие, обезличенные профили пользователей. Надеемся, они вдохновят вас на дальнейшее обучение!</p>",
-    "description": "Freeform text."
-  },
-  "highScores.layoutColumn": {
-    "defaultMessage": "Раскладка",
-    "description": "Table column name."
-  },
-  "highScores.scoreColumn": {
-    "defaultMessage": "Баллы",
-    "description": "Table column name."
-  },
-  "highScores.typingSpeedColumn": {
-    "defaultMessage": "Скорость",
-    "description": "Table column name."
-  },
-  "highScores.userColumn": {
-    "defaultMessage": "Пользователь",
-    "description": "Table column name."
-  },
-  "language.be.name": {
-    "defaultMessage": "Беларуский (Беларуская)",
-    "description": "Language name."
-  },
-  "language.de.name": {
-    "defaultMessage": "Немецкий (Deutsch)",
-    "description": "Language name."
-  },
-  "language.en.name": {
-    "defaultMessage": "Английский (English)",
-    "description": "Language name."
-  },
-  "language.es.name": {
-    "defaultMessage": "Испанский (Español)",
-    "description": "Language name."
-  },
-  "language.fr.name": {
-    "defaultMessage": "Французский (Français)",
-    "description": "Language name."
-  },
-  "language.it.name": {
-    "defaultMessage": "Итальянский (Italiano)",
-    "description": "Language name."
-  },
-  "language.pl.name": {
-    "defaultMessage": "Польский (Polski)",
-    "description": "Language name."
-  },
-  "language.pt.name": {
-    "defaultMessage": "Португальский (Português)",
-    "description": "Language name."
-  },
-  "language.ru.name": {
-    "defaultMessage": "Русский",
-    "description": "Language name."
-  },
-  "language.uk.name": {
-    "defaultMessage": "Украинский (Українська)",
-    "description": "Language name."
-  },
-  "layouts.bottomRowKeysText": {
-    "defaultMessage": "Клавиши в нижнем ряду:",
-    "description": "Field name."
-  },
-  "layouts.bottomRowKeysTitle": {
-    "defaultMessage": "Процент клавиш, нажимаемых в ряду Shift, чем меньше, тем лучше.",
-    "description": "Field title."
-  },
-  "layouts.description.colemak": {
-    "defaultMessage": "<p>The Colemak layout is designed to be a practical alternative to the Qwerty and Dvorak keyboard layouts, offering a more incremental change for users already accustomed to the standard layout.</p><p>The Colemak layout was designed with the QWERTY layout as a base, changing the positions of 17 keys while retaining the QWERTY positions of most non-alphabetic characters and many popular keyboard shortcuts. This makes it easier to learn for people who already type in QWERTY. It shares several design goals with the Dvorak layout, such as minimizing finger path distance and making heavy use of the home row.</p><p>It is supported by many major modern operating systems.</p>",
-    "description": "Freeform text."
-  },
-  "layouts.description.colemak_dh": {
-    "defaultMessage": "<p>The Colemak-DH layout serves as a practical alternative to both QWERTY and Dvorak keyboard layouts, offering a smoother transition for users accustomed to the standard layout. Building upon QWERTY, it relocates 17 keys while retaining the positions of non-alphabetic characters and popular shortcuts, making it user-friendly for those familiar with QWERTY. It shares design goals with Dvorak, emphasizing minimized finger movement and home row utilization. Colemak-DH enjoys widespread support across modern operating systems, ensuring accessibility and ergonomic benefits for users.</p>",
-    "description": "Freeform text."
-  },
-  "layouts.description.dvorak": {
-    "defaultMessage": "<p>Dvorak is a keyboard layout for the English language created in 1936 by August Dvorak and William Dealey. It was designed to be a faster, more ergonomic alternative to the QWERTY layout. Dvorak proponents claim that it requires less finger motion and as a result reduces errors, increases typing speed, reduces repetitive strain injuries, and offers a more comfortable experience compared to QWERTY.</p><p>However, it failed to replace QWERTY as the most common keyboard layout mainly due to QWERTY being introduced 60 years earlier.</p><p>As of 2005, the fastest English language typist in the world record was set using the Dvorak keyboard layout by Barbara Blackburn.</p><p>Almost all major modern operating systems allow a user to switch to the Dvorak layout, and there is a good chance that your OS supports it too.</p>",
-    "description": "Freeform text."
-  },
-  "layouts.description.qwerty": {
-    "defaultMessage": "<p>It all started in the 1860s. An amateur inventor, politician, printer and newspaper man in Milwaukee by the name of Christopher Latham Sholes, often spent his spare time tinkering with and creating new machines to make his businesses more efficient.</p><p>The popular theory states that Sholes had to redesign the keyboard in response to the mechanical failings of early typewriters. The type bars connecting the key and the letter plate hung in a cycle beneath the paper. If a user quickly typed a succession of letters whose type bars were near each other, the delicate machinery would get jammed.</p><p>Sholes redesigned the arrangement to separate the most common sequences of letters like “th” or “he”. The machine was produced under licence in 1875 by the New York based arms manufacturer, Remington and Sons. The machine was named the Remington No. 1 and was a commercial failure failing to sell in large numbers.</p><p>After receiving feedback, the Remington company updated the machine to create the Remington No. 2. This new machine was released in 1877 and was hugely successful. It was the first to use the QWERTY keyboard layout as we know it today, giving users the option to type upper and lower case letters, moving between the two by use of a “Shift” key.</p><p>The classic QWERTY keyboard layout is an unfortunate historical accident and is not optimal, and that is why the other layouts were invented.</p>",
-    "description": "Freeform text."
-  },
-  "layouts.description.workman": {
-    "defaultMessage": "<p>The Workman layout reduced lateral movement of the fingers and wrists, more balanced left and right hand usage. 21 characters are different from Qwerty.</p><p>The Workman layout offers many benefits. It is comfortable, ergonomic, and efficient, with frequent keys being placed within the natural range of motion of the fingers. The need for lateral movement is reduced for the fingers and wrists. There is also very low overall finger travel.</p><p>The Workman layout is found to achieve overall less travel distance of the fingers for the English language than even Colemak. It does however generally incur higher same-finger n-gram frequencies; or in other words, one finger will need to hit two keys in succession more often than in other layouts.</p>",
-    "description": "Freeform text."
-  },
-  "layouts.heatmapCaption": {
-    "defaultMessage": "Тепловая карта частоты клавиш для {name}",
-    "description": "Figure caption."
-  },
-  "layouts.heatmapDescription": {
-    "defaultMessage": "Эта диаграмма показывает тепловую карту относительных частот клавиш.",
-    "description": "Figure description."
-  },
-  "layouts.homeRowKeysText": {
-    "defaultMessage": "Клавиши в среднем ряду:",
-    "description": "Field name."
-  },
-  "layouts.homeRowKeysTitle": {
-    "defaultMessage": "Процент клавиш, нажимаемых не покидая ряд Caps Lock, чем больше, тем лучше.",
-    "description": "Field title."
-  },
-  "layouts.layoutNameHeader": {
-    "defaultMessage": "Раскладка {name}",
-    "description": "Text header."
-  },
-  "layouts.sameFingerKeysText": {
-    "defaultMessage": "Клавиши, нажимаемые тем же пальцем:",
-    "description": "Field name."
-  },
-  "layouts.sameFingerKeysTitle": {
-    "defaultMessage": "Процент клавиш, нажимаемых тем же пальцем, чем меньше, тем лучше.",
-    "description": "Field title."
-  },
-  "layouts.sameHandKeysText": {
-    "defaultMessage": "Клавиши, нажимаемые той же рукой:",
-    "description": "Field name."
-  },
-  "layouts.sameHandKeysTitle": {
-    "defaultMessage": "Процент клавиш, нажимаемых той же рукой, чем меньше, тем лучше.",
-    "description": "Field title."
-  },
-  "layouts.topRowKeysText": {
-    "defaultMessage": "Клавиши в верхнем ряду:",
-    "description": "Field name."
-  },
-  "layouts.topRowKeysTitle": {
-    "defaultMessage": "Процент клавиш, нажимаемых в ряду Tab, чем меньше, тем лучше.",
-    "description": "Field title."
-  },
-  "layouts.websiteLinkText": {
-    "defaultMessage": "Официальный веб-сайт",
-    "description": "Link text."
-  },
-  "layouts.wikipediaLinkText": {
-    "defaultMessage": "Статья в Википедии",
-    "description": "Link text."
-  },
-  "learningRate.alreadyUnlocked": {
-    "defaultMessage": "This letter is already unlocked.",
-    "description": "Message text."
-  },
-  "learningRate.remainingLessons": {
-    "defaultMessage": "Approximately {remainingLessons} lessons remaining to unlock this letter ({certainty} certainty).",
-    "description": "Message text."
-  },
-  "learningRate.unknown": {
-    "defaultMessage": "Need more data to compute the remaining lessons to unlock this letter.",
-    "description": "Message text."
-  },
-  "lesson.boostedKeyText": {
-    "defaultMessage": "Буква с увеличенной частотой.",
-    "description": "Character details text."
-  },
-  "lesson.characterName": {
-    "defaultMessage": "Буква ''{name}''",
-    "description": "Character details text."
-  },
-  "lesson.currentKeyPanelLabel": {
-    "defaultMessage": "Текущая буква",
-    "description": "Panel label."
-  },
-  "lesson.dailyGoalPanelLabel": {
-    "defaultMessage": "Ежедневная цель",
-    "description": "Panel label."
-  },
-  "lesson.dailyGoalPanelTitle": {
-    "defaultMessage": "Прогресс на пути к вашей ежедневной цели.",
-    "description": "Panel title."
-  },
-  "lesson.forcedKeyText": {
-    "defaultMessage": "Вручную добавленная буква.",
-    "description": "Character details text."
-  },
-  "lesson.gaugesPanelLabel": {
-    "defaultMessage": "Метрики",
-    "description": "Panel label."
-  },
-  "lesson.indicator.boostedFrequency": {
-    "defaultMessage": "Буква с увеличенной частотой. Эта буква, которую вы ищете дольше всего, так что алгоритм решил добавить ее в каждое слово.",
-    "description": "Indicator description."
-  },
-  "lesson.indicator.includedManually": {
-    "defaultMessage": "Буква, которую вы вручную добавили в уроки.",
-    "description": "Indicator description."
-  },
-  "lesson.indicator.leastConfidence": {
-    "defaultMessage": "Буква с наименьшей скоростью набора. Чем чаще вы нажимаете такую букву, тем точней метрика.",
-    "description": "Indicator description."
-  },
-  "lesson.indicator.mostConfidence": {
-    "defaultMessage": "Буква с наибольшей скоростью набора. Чем чаще вы нажимаете такую букву, тем точней метрика.",
-    "description": "Indicator description."
-  },
-  "lesson.indicator.notCalibrated": {
-    "defaultMessage": "Буква с неизвестной скоростью набора. Вы еще не разу не нажали такую букву.",
-    "description": "Indicator description."
-  },
-  "lesson.indicator.notIncluded": {
-    "defaultMessage": "Буква, которая еще не была добавлена в уроки.",
-    "description": "Indicator description."
-  },
-  "lesson.keySetPanelLabel": {
-    "defaultMessage": "Все буквы",
-    "description": "Panel label."
-  },
-  "lesson.notCalibratedText": {
-    "defaultMessage": "Недостаточно данных, закончите больше уроков",
-    "description": "Panel text."
-  },
-  "lessonType.customText.description": {
-    "defaultMessage": "Генерировать уроки используя слова, взятые из вашего собственного текста. Все буквы включены по умолчанию. Этот режим для профессионалов.",
-    "description": "Description text."
-  },
-  "lessonType.customText.name": {
-    "defaultMessage": "Собственный текст",
-    "description": "Input field label."
-  },
-  "lessonType.guided.description": {
-    "defaultMessage": "Генерировать уроки со случайными словами используя фонетические правила вашего языка. Набор букв, из которого генерируются слова изменяется динамически, в зависимости от ваших успехов. Этот режим для новичков.",
-    "description": "Description text."
-  },
-  "lessonType.guided.name": {
-    "defaultMessage": "Компьютерные уроки",
-    "description": "Input field label."
-  },
-  "lessonType.numbers.name": {
-    "defaultMessage": "Числа",
-    "description": "Input field label."
-  },
-  "lessonType.wordList.description": {
-    "defaultMessage": "Генерировать уроки из списка наиболее распространенных слов вашего языка. Все буквы включены по умолчанию. Этот режим для профессионалов.",
-    "description": "Description text."
-  },
-  "lessonType.wordlist.name": {
-    "defaultMessage": "Частые слова",
-    "description": "Input field label."
-  },
-  "metric.accuracy.label": {
-    "defaultMessage": "Точность",
-    "description": "Label text."
-  },
-  "metric.accuracy.title": {
-    "defaultMessage": "Процент символов, набранных без ошибок в последнем уроке.",
-    "description": "Value title."
-  },
-  "metric.accuracyChange.title": {
-    "defaultMessage": "Разница со средним значением.",
-    "description": "Value change title."
-  },
-  "metric.averageSpeed.label": {
-    "defaultMessage": "Средняя скорость",
-    "description": "Label name."
-  },
-  "metric.averageSpeed.title": {
-    "defaultMessage": "Средняя скорость. Чем больше, тем лучше.",
-    "description": "Label title."
-  },
-  "metric.bestSpeed.label": {
-    "defaultMessage": "Лучшая скорость",
-    "description": "Label name."
-  },
-  "metric.bestSpeed.title": {
-    "defaultMessage": "Лучшая скорость печати во всех уроках. Чем больше, тем лучше.",
-    "description": "Label title."
-  },
-  "metric.confidenceLevel.label": {
-    "defaultMessage": "Уровень владения",
-    "description": "Label name."
-  },
-  "metric.confidenceLevel.title": {
-    "defaultMessage": "Насколько вы близки к разблокировке этой буквы.",
-    "description": "Label title."
-  },
-  "metric.lastSpeed.label": {
-    "defaultMessage": "Последняя скорость",
-    "description": "Label name."
-  },
-  "metric.lastSpeed.title": {
-    "defaultMessage": "Скорость печати в последнем уроке. Чем больше, тем лучше.",
-    "description": "Label title."
-  },
-  "metric.learningRate.label": {
-    "defaultMessage": "Темп обучения",
-    "description": "Label name."
-  },
-  "metric.learningRate.title": {
-    "defaultMessage": "Насколько меняется скорость набора текста с каждым уроком.",
-    "description": "Label title."
-  },
-  "metric.learningRate.value": {
-    "defaultMessage": "{learningRate} за урок",
-    "description": "Value format."
-  },
-  "metric.score.label": {
-    "defaultMessage": "Баллы",
-    "description": "Label text."
-  },
-  "metric.score.title": {
-    "defaultMessage": "Баллы в последнем уроке. Вы получаете больше баллов если печатаете быстрее и делаете меньше ошибок.",
-    "description": "Value title."
-  },
-  "metric.scoreChange.title": {
-    "defaultMessage": "Разница со средним значением.",
-    "description": "Value change title."
-  },
-  "metric.speed.label": {
-    "defaultMessage": "Скорость",
-    "description": "Label text."
-  },
-  "metric.speed.title": {
-    "defaultMessage": "Скорость набора в последнем уроке.",
-    "description": "Value title."
-  },
-  "metric.speedChange.title": {
-    "defaultMessage": "Разница со средним значением.",
-    "description": "Value change title."
-  },
-  "metric.uncertainValue": {
-    "defaultMessage": "Неопределенный",
-    "description": "Value text."
-  },
-  "multiplayer.intro": {
-    "defaultMessage": "Соревнуйтесь с другими игроками в этой многопользовательской онлайн-игре. Чем быстрее вы печатаете, тем быстрее едет ваша машина. Печатайте как можно быстрее, чтобы выиграть гонку!",
-    "description": "Freeform text."
-  },
-  "multiplayer.state.connecting": {
-    "defaultMessage": "<h1>Подключение к серверу...</h1><p>Установка подключения к игровому серверу.</p>",
-    "description": "Freeform text."
-  },
-  "multiplayer.state.kicked": {
-    "defaultMessage": "<h1>Исключены из игры</h1><p>Вас выгнали из игры за слишком долгое бездействие.</p>",
-    "description": "Freeform text."
-  },
-  "multiplayer.state.offline": {
-    "defaultMessage": "<h1>Сервер отключен</h1><p>Что-то не так с нашим игровым сервером.</p><p>Зайдите на наш сайт еще раз через несколько минут, пока мы решаем проблему.</p>",
-    "description": "Freeform text."
-  },
-  "multiplayer.ui.countDownTicker": {
-    "defaultMessage": "Старт через {countDown}",
-    "description": "Ticker text."
-  },
-  "multiplayer.ui.distanceLabel": {
-    "defaultMessage": "Прогресс",
-    "description": "Label."
-  },
-  "multiplayer.ui.distanceTitle": {
-    "defaultMessage": "Пройденная дистанция.",
-    "description": "Label title."
-  },
-  "multiplayer.ui.errorsLabel": {
-    "defaultMessage": "Ошибки",
-    "description": "Label."
-  },
-  "multiplayer.ui.errorsTitle": {
-    "defaultMessage": "Число ошибок.",
-    "description": "Label title."
-  },
-  "multiplayer.ui.initializingTicker": {
-    "defaultMessage": "Инициализация...",
-    "description": "Ticker text."
-  },
-  "multiplayer.ui.nameLabel": {
-    "defaultMessage": "Скорость",
-    "description": "Label."
-  },
-  "multiplayer.ui.nameTitle": {
-    "defaultMessage": "Скорость печати.",
-    "description": "Label title."
-  },
-  "multiplayer.ui.positionLabel": {
-    "defaultMessage": "Позиция",
-    "description": "Label."
-  },
-  "multiplayer.ui.positionTicker": {
-    "defaultMessage": "Ваша позиция на финише {position}!",
-    "description": "Ticker text."
-  },
-  "multiplayer.ui.positionTitle": {
-    "defaultMessage": "Позиция на трассе.",
-    "description": "Label title."
-  },
-  "multiplayer.ui.raceFinishedTicker": {
-    "defaultMessage": "Гонка завершена!",
-    "description": "Ticker text."
-  },
-  "multiplayer.ui.raceStartedTicker": {
-    "defaultMessage": "Гонка началась!",
-    "description": "Ticker text."
-  },
-  "multiplayer.ui.startTicker": {
-    "defaultMessage": "Старт!",
-    "description": "Ticker text."
-  },
-  "multiplayer.ui.waitingMorePlayersTicker": {
-    "defaultMessage": "Ждите новых игроков...",
-    "description": "Ticker text."
-  },
-  "multiplayer.ui.waitingNextRaceTicker": {
-    "defaultMessage": "Ждите следующей гонки...",
-    "description": "Ticker text."
-  },
-  "multiplayer.ui.winnerPositionTicker": {
-    "defaultMessage": "Вы выиграли гонку!",
-    "description": "Ticker text."
-  },
-  "nav.accountName": {
-    "defaultMessage": "{name}",
-    "description": "Navigation menu item name."
-  },
-  "nav.accountTitle": {
-    "defaultMessage": "Управляйте своим аккаунтом.",
-    "description": "Navigation menu item title."
-  },
-  "nav.helpName": {
-    "defaultMessage": "Справка",
-    "description": "Navigation menu item name."
-  },
-  "nav.helpTitle": {
-    "defaultMessage": "Прочитайте информацию о том, как использовать данное приложение.",
-    "description": "Navigation menu item title."
-  },
-  "nav.highScoresName": {
-    "defaultMessage": "Лучшие результаты",
-    "description": "Navigation menu item name."
-  },
-  "nav.highScoresTitle": {
-    "defaultMessage": "Посмотрите таблицу лучших результатов.",
-    "description": "Navigation menu item title."
-  },
-  "nav.layoutsName": {
-    "defaultMessage": "Раскладки",
-    "description": "Navigation menu item name."
-  },
-  "nav.layoutsTitle": {
-    "defaultMessage": "Сравните эффективность разных клавиатурных раскладок.",
-    "description": "Navigation menu item title."
-  },
-  "nav.multiplayerName": {
-    "defaultMessage": "Гонка",
-    "description": "Navigation menu item name."
-  },
-  "nav.multiplayerTitle": {
-    "defaultMessage": "Соревнуйтесь с другими людьми в захватывающей многопользовательской игре.",
-    "description": "Navigation menu item title."
-  },
-  "nav.practiceName": {
-    "defaultMessage": "Тренировка",
-    "description": "Navigation menu item name."
-  },
-  "nav.practiceTitle": {
-    "defaultMessage": "Практикуйтесь с нашими упражнениями чтобы научиться печатать быстрее.",
-    "description": "Navigation menu item title."
-  },
-  "nav.privacyPolicyName": {
-    "defaultMessage": "Политика конфиденциальности",
-    "description": "Navigation menu item name."
-  },
-  "nav.privacyPolicyTitle": {
-    "defaultMessage": "Прочитайте нашу политику конфиденциальности.",
-    "description": "Navigation menu item title."
-  },
-  "nav.profileName": {
-    "defaultMessage": "Профиль",
-    "description": "Navigation menu item name."
-  },
-  "nav.profileTitle": {
-    "defaultMessage": "Получите детальный отчет об успехах в вашем обучении.",
-    "description": "Navigation menu item title."
-  },
-  "nav.publicProfileName": {
-    "defaultMessage": "Публичный профиль {name}",
-    "description": "Navigation menu item name."
-  },
-  "nav.publicProfileTitle": {
-    "defaultMessage": "Посмотрите профиль пользователя {name}.",
-    "description": "Navigation menu item title."
-  },
-  "nav.signInName": {
-    "defaultMessage": "Регистрация",
-    "description": "Navigation menu item name."
-  },
-  "nav.signInTitle": {
-    "defaultMessage": "Зарегистрируйтесь чтобы создать аккаунт.",
-    "description": "Navigation menu item title."
-  },
-  "nav.termsOfServiceName": {
-    "defaultMessage": "Пользовательское соглашение",
-    "description": "Navigation menu item name."
-  },
-  "nav.termsOfServiceTitle": {
-    "defaultMessage": "Прочитайте наше пользовательское соглашение.",
-    "description": "Navigation menu item title."
-  },
-  "nav.textToolsName": {
-    "defaultMessage": "Работа с текстом",
-    "description": "Navigation menu item name."
-  },
-  "nav.textToolsTitle": {
-    "defaultMessage": "Получите подробную статистику о вашем тексте, число слов и символов, время, необходимое для набора и так далее.",
-    "description": "Navigation menu item title."
-  },
-  "nav.typingTestName": {
-    "defaultMessage": "Тест на скорость",
-    "description": "Navigation menu item name."
-  },
-  "nav.typingTestTitle": {
-    "defaultMessage": "Пройдите тест на скорость набора текста.",
-    "description": "Navigation menu item title."
-  },
-  "page.help.description": {
-    "defaultMessage": "Информация о том, как работает клавиатурный тренажер.",
-    "description": "Page description."
-  },
-  "page.help.title": {
-    "defaultMessage": "Справка о клавиатурном тренажере",
-    "description": "Page title."
-  },
-  "page.highScores.content": {
-    "defaultMessage": "<h1>Лучшие результаты</h1><p>Таблица пользователей, показавших лучшие результаты за последние несколько дней, отсортированная по баллам от лучших к худшим. Баллы измеряются на основе скорости набора текста, длины текста, количества различных символов в тексте и количества ошибок.</p>",
-    "description": "Page content."
-  },
-  "page.highScores.description": {
-    "defaultMessage": "Таблица со списком пользователей, которые показали самую быструю скорость печати.",
-    "description": "Page description."
-  },
-  "page.highScores.title": {
-    "defaultMessage": "Таблица лучших достижений",
-    "description": "Page title."
-  },
-  "page.layouts.description": {
-    "defaultMessage": "Графики сравнения эффективности клавиатурных раскладок.",
-    "description": "Page description."
-  },
-  "page.layouts.title": {
-    "defaultMessage": "Сравнение клавиатурных раскладок.",
-    "description": "Page title."
-  },
-  "page.multiplayer.content": {
-    "defaultMessage": "<h1>Многопользовательская онлайн игра-гонка</h1><p>Соревнуйтесь с другими игроками в этой многопользовательской онлайн-игре. Чем быстрее вы печатаете, тем быстрее едет ваша машина. Печатайте как можно быстрее, чтобы выиграть гонку!</p>",
-    "description": "Page content."
-  },
-  "page.multiplayer.description": {
-    "defaultMessage": "Многопользовательская онлайн игра-гонка в которой побеждает тот, кто быстрее печатает.",
-    "description": "Page description."
-  },
-  "page.multiplayer.title": {
-    "defaultMessage": "Онлайн игра-гонка",
-    "description": "Page title."
-  },
-  "page.practice.content": {
-    "defaultMessage": "<h1>Уроки слепого набора печати</h1><p>Пройдите тест скорости набора, научитесь печатать быстрее и с меньшим количеством ошибок на этом клавиатурном тренажере.</p>",
-    "description": "Page content."
-  },
-  "page.practice.description": {
-    "defaultMessage": "Упражнения для тренировки слепому набору печати.",
-    "description": "Page description."
-  },
-  "page.practice.title": {
-    "defaultMessage": "Тренировка слепого набора печати",
-    "description": "Page title."
-  },
-  "page.profile.content": {
-    "defaultMessage": "<h1>Мой профиль</h1><p>Это страница с подробной статистикой о вашем прогрессе в обучении. Чем больше уроков вы закончите, тем точнее и детальнее будет статистика.</p>",
-    "description": "Page content."
-  },
-  "page.profile.description": {
-    "defaultMessage": "Подробный отчет об успехах в обучении слепому набору печати.",
-    "description": "Page description."
-  },
-  "page.profile.title": {
-    "defaultMessage": "Профиль",
-    "description": "Page title."
-  },
-  "page.publicProfile.description": {
-    "defaultMessage": "Подробный отчет об успехах в обучении слепому набору печати пользователя ''{name}''.",
-    "description": "Page description."
-  },
-  "page.publicProfile.title": {
-    "defaultMessage": "{name} | Профиль",
-    "description": "Page title."
-  },
-  "page.textTools.content": {
-    "defaultMessage": "<h1>Работа с текстом</h1><p>Подсчитайте символы и слова в вашем тексте. Узнайте, какие слова используются чаще всего. Узнайте время, необходимое чтобы напечатать и прочитать текст.</p>",
-    "description": "Page content."
-  },
-  "page.textTools.description": {
-    "defaultMessage": "Подсчет количества слов и символов в тесте.",
-    "description": "Page description."
-  },
-  "page.textTools.title": {
-    "defaultMessage": "Данные о тексте",
-    "description": "Page title."
-  },
-  "page.typingTest.content": {
-    "defaultMessage": "<h1>Typing Speed Test</h1><p>Take a typing speed test.</p>",
-    "description": "Page content."
-  },
-  "page.typingTest.description": {
-    "defaultMessage": "Take a typing speed test.",
-    "description": "Page description."
-  },
-  "page.typingTest.title": {
-    "defaultMessage": "Speed Test",
-    "description": "Page title."
-  },
-  "practice.focusText": {
-    "defaultMessage": "Кликните, чтобы активировать...",
-    "description": "Freeform text."
-  },
-  "practice.resetLessonButtonTitle": {
-    "defaultMessage": "Начать текущий урок сначала (Ctrl + Left Arrow).",
-    "description": "Input field title."
-  },
-  "practice.settingButtonName": {
-    "defaultMessage": "Настройки...",
-    "description": "Input field label."
-  },
-  "practice.settingButtonTitle": {
-    "defaultMessage": "Изменить настройки уроков, поменять язык, раскладку клавиатуры и так далее.",
-    "description": "Input field title."
-  },
-  "practice.showHelpSlidesButtonTitle": {
-    "defaultMessage": "Показать справочные слайды.",
-    "description": "Input field title."
-  },
-  "practice.skipLessonButtonTitle": {
-    "defaultMessage": "Пропустить текущий урок (Ctrl + Right Arrow).",
-    "description": "Input field title."
-  },
-  "practice.switchInterfaceButtonTitle": {
-    "defaultMessage": "Сменить расположение элементов интерфейса.",
-    "description": "Input field title."
-  },
-  "practice.tourSlide1": {
-    "defaultMessage": "<h1>Научитесь печатать вслепую</h1><p>Это приложение поможет вам научиться <em>слепому метод печати</em>, что значит печатать используя мышечную память, не глядя на клавиатуру чтобы искать клавиши. Это поможет вам значительно улучшить скорость набора и снизить число ошибок. Противоположность этому является <em>набор двумя пальцами</em>, когда вы смотрите на клавиатуру, а не экран, и печатаете указательными пальцами.</p><p>В этом коротком уроке мы объясним, как работает это приложение.</p><p>Вы можете перемещаться между слайдами используя клавиши <em>Стрелка влево</em> и <em>Стрелка вправо</em>.</p>",
-    "description": "Slide content."
-  },
-  "practice.tourSlide10": {
-    "defaultMessage": "<p>Этот индикатор показывает текущий набор букв, который используется чтобы генерировать слова для урока, а также вашу скорость набора для всех этих букв:</p>",
-    "description": "Slide content."
-  },
-  "practice.tourSlide11": {
-    "defaultMessage": "<p>Этот индикатор показывает информацию о букве с увеличенной частотой, которая включена в каждое сгенерированное слово:</p>[dl][dt]Средняя скорость набора[/dt][dd]Ваша средняя скорость набора только для этой отдельно взятой буквы.[/dd][dt]Лучшая скорость набора[/dt][dd]Ваша лучшая скорость набора только для этой отдельно взятой буквы.[/dd][dt]Уровень владения[/dt][dd]Число в диапазоне от ноля до единицы которое вычисляется из скорости набора и показывает ваш уровень владения этой буквой. Считается, что вы полностью изучили букву, когда ее уровень владения достигает единицы.[/dd][/dl]",
-    "description": "Slide content."
-  },
-  "practice.tourSlide12": {
-    "defaultMessage": "<p>This indicator shows details about the letter with boosted frequency, which is currently included in every generated word:</p><dl><dt>Best typing speed</dt><dd>Your best typing speed for this individual letter.</dd><dt>Confidence level</dt><dd>A number in range from zero to one which is computed using your typing speed, and indicates your familiarity with this letter. A letter is considered fully learned when it's confidence level reaches one.</dd><dt>Learning rate</dt><dd>How your typing speed is changing with each lesson.</dd></dl>",
-    "description": "Slide content."
-  },
-  "practice.tourSlide2": {
-    "defaultMessage": "<p>Наш метод обучения основан на нескольких принципах:</p><p>В отличии от других тренажеров это приложение не заставляет вас снова и снова повторять бессмысленные сочетания ‘<em>фыв фып ыва</em>’. Это очень утомительно и почти ничему не учит.</p><p>Наше приложение использует особенный компьютерных алгоритм чтобы генерировать уроки, которые соответствуют вашим навыкам. Эти уроки  состоят из случайных слов сгенерированных из подмножества букв алфавита. Размер подмножества и частота повторения каждой буквы контролируется алгоритмом с целью преподать вам наилучший урок.</p>",
-    "description": "Slide content."
-  },
-  "practice.tourSlide3": {
-    "defaultMessage": "<p>Изначально уроки начинаются со случайных слов сгенерированных из небольшого подмножества самых часто встречающихся букв.</p><p>Когда вы печатаете эти слова, приложение измеряет скорость набора для каждой буквы в отдельности. Эта метрика используется чтобы определить ваш прогресс. Чем больше вы привыкаете к букве, тем меньше времени занимает ее набор.</p><p>Как только вы привыкните ко всем буквам из текущего набора, алгоритм добавит в него новую букву, и так далее по кругу.</p>",
-    "description": "Slide content."
-  },
-  "practice.tourSlide4": {
-    "defaultMessage": "<p>Когда алгоритм добавляет новую букву в подмножество, ее частота искусственно увеличена так, чтобы она встречалась в каждом слове текущего урока.</p><p>Алгоритм меняет частоту букв таким образом, чтобы сделать упор на букву с наихудшей скоростью набора.</p><p>Так что в любой момент времени вы будете печатать те буквы, которые вам даются тяжелее всего.</p>",
-    "description": "Slide content."
-  },
-  "practice.tourSlide5": {
-    "defaultMessage": "<p>Эта панель изображает текст, который вы будете набирать. Этот текст изменяется с каждым новым уроком. Текст генерируется автоматически из текущего набора букв. Некоторые слова могут оказаться настоящими, но обычно это случайные сочетания букв составленные по фонетическим правилам языка так, чтобы они звучали натурально и легко произносимо. С одной стороны это забавно, с другой стороны это дает нам свободу генерировать гораздо больше слов, чем реально существует.</p>",
-    "description": "Slide content."
-  },
-  "practice.tourSlide6": {
-    "defaultMessage": "<p>Это виртуальная клавиатура, она помогает вам находить и запоминать расположения клавиш. Используйте ее и постарайтесь не смотреть на вашу реальную клавиатуру. На клавишах <em>А (F)</em> и <em>О (J)</em> есть маленькие бугорки, используйте их чтобы правильно расположить пальцы и при этом не смотреть на клавиатуру. Когда ваши указательные пальцы окажутся в правильной позиции, вы сможете определить расположение остальных клавиш.</p>",
-    "description": "Slide content."
-  },
-  "practice.tourSlide7": {
-    "defaultMessage": "<p>Это индикатор отображает скорость набора вместе с отклонением от среднего значения. Ваша цель увеличить эту метрику, так что больше чем это значение, тем лучше.</p><p>Скорость набора измеряется в <em>Словах в минуту (WPM)</em> or <em>Символах в минуту (CPM)</em>. Стандартной длинной слова считается пять символов, так что <em>10WPM</em> равно <em>50CPM</em>.</p><p>Вы можете переключить отображение между <em>WPM</em> и <em>CPM</em> на странице настроек.</p>",
-    "description": "Slide content."
-  },
-  "practice.tourSlide8": {
-    "defaultMessage": "<p>Это индикатор отображает точность вместе с отклонением от среднего значения. Ваша цель увеличить эту метрику, так что чем больше это значение, тем лучше.</p><p>Точность вычисляется как процент символов, напечатанных без ошибок. Опечатки в одной и той же позиции считаются как одна ошибка.</p>",
-    "description": "Slide content."
-  },
-  "practice.tourSlide9": {
-    "defaultMessage": "<p>Это индикатор отображает абстрактные баллы вместе с отклонением от среднего значения.</p><p>При вычислении баллов учитывается скорость набора, количество ошибок а также размер набора букв из которого составляются слова. Формула составлена таким образом, чтобы поощрять за скорость набора и наказывать за ошибки, то есть вы не можете получить высокие баллы за быстрый набор, если при этом делаете много ошибок.</p><p>Мы ведет таблицу лучших результатов в которую попадают пользователи, набравшие самые высокие баллы.</p>",
-    "description": "Slide content."
-  },
-  "profile.calendar.averageSpeedTitle": {
-    "defaultMessage": "Средняя скорость: {value}",
-    "description": "Calendar cell title."
-  },
-  "profile.calendar.topSpeedTitle": {
-    "defaultMessage": "Лучшая скорость: {value}",
-    "description": "Calendar cell title."
-  },
-  "profile.calendar.totalLessonsTitle": {
-    "defaultMessage": "Число уроков: {value}",
-    "description": "Calendar cell title."
-  },
-  "profile.calendar.totalTimeTitle": {
-    "defaultMessage": "Время занятий: {value}",
-    "description": "Calendar cell title."
-  },
-  "profile.chart.calendarCaption": {
-    "defaultMessage": "Календарь занятий",
-    "description": "Chart caption."
-  },
-  "profile.chart.calendarDescription": {
-    "defaultMessage": "Этот календарь показывает даты активного обучения.",
-    "description": "Chart description."
-  },
-  "profile.chart.compareAverageSpeedText": {
-    "defaultMessage": "Ваша средняя скорость за все время больше чем у {value} других людей.",
-    "description": "Section paragraph."
-  },
-  "profile.chart.compareTitle": {
-    "defaultMessage": "Сравните себя",
-    "description": "Section title."
-  },
-  "profile.chart.compareTopSpeedText": {
-    "defaultMessage": "Ваша лучшая скорость за все время больше чем у {value} других людей.",
-    "description": "Section paragraph."
-  },
-  "profile.chart.histogramCaption": {
-    "defaultMessage": "Относительная скорость набора",
-    "description": "Chart caption."
-  },
-  "profile.chart.histogramDescription": {
-    "defaultMessage": "Это гистограмма скорости набора всех пользователей, и ваша позиция по сравнению с ними.",
-    "description": "Chart description."
-  },
-  "profile.chart.histogramLegend": {
-    "defaultMessage": "Узнайте как быстро вы печатаете по сравнению с другими пользователями. Чем выше столбик, тем больше людей печатает с этой скоростью. Ваша позиция отмечена с помощью цветных вертикальных линий.",
-    "description": "Chart legend."
-  },
-  "profile.chart.keyFrequencyHeatmapCaption": {
-    "defaultMessage": "Тепловая карта частоты букв",
-    "description": "Chart caption."
-  },
-  "profile.chart.keyFrequencyHeatmapDescription": {
-    "defaultMessage": "Эта диаграмма показывает относительную частоту букв в виде тепловой карты.",
-    "description": "Chart description."
-  },
-  "profile.chart.keyFrequencyHistogramCaption": {
-    "defaultMessage": "Гистограмма частоты букв",
-    "description": "Chart caption."
-  },
-  "profile.chart.keyFrequencyHistogramDescription": {
-    "defaultMessage": "Эта диаграмма показывает относительную частоту букв в виде гистограммы.",
-    "description": "Chart description."
-  },
-  "profile.chart.keyFrequencyHistogramLegend": {
-    "defaultMessage": "Цвет полос: {label1} – число попаданий, {label2} – число промахов, {label3} – соотношение промахов/попаданий (относительная частота промахов).",
-    "description": "Chart legend."
-  },
-  "profile.chart.keySpeedCaption": {
-    "defaultMessage": "Скорость набора буквы",
-    "description": "Chart caption."
-  },
-  "profile.chart.keySpeedDescription": {
-    "defaultMessage": "Эта диаграмма показывает изменение скорости набора для каждой буквы в отдельности.",
-    "description": "Chart description."
-  },
-  "profile.chart.keySpeedHistogramCaption": {
-    "defaultMessage": "Гистограмма скорости набора буквы",
-    "description": "Chart caption."
-  },
-  "profile.chart.keySpeedHistogramDescription": {
-    "defaultMessage": "Эта диаграмма показывает среднюю скорость набора для каждой буквы в отдельности.",
-    "description": "Chart description."
-  },
-  "profile.chart.keySpeedLegend": {
-    "defaultMessage": "Горизонтальная ось: номер урока. Вертикальная ось: {label1} - скорость набора для текущей выбранной буквы.",
-    "description": "Chart legend."
-  },
-  "profile.chart.progressOverviewCaption": {
-    "defaultMessage": "Обзор прогресса обучения",
-    "description": "Chart caption."
-  },
-  "profile.chart.progressOverviewDescription": {
-    "defaultMessage": "Эта диаграмма показывает обзор прогресса обучения для всех букв.",
-    "description": "Chart description."
-  },
-  "profile.chart.progressOverviewLegend": {
-    "defaultMessage": "Горизонтальная ось: номер урока. Вертикальная ось: скорость набора для каждой отдельной буквы, {label1} - медленно, {label2} - быстро.",
-    "description": "Chart legend."
-  },
-  "profile.chart.speedCaption": {
-    "defaultMessage": "Скорость набора",
-    "description": "Chart caption."
-  },
-  "profile.chart.speedDescription": {
-    "defaultMessage": "Эта диаграмма показывает как меняется общая скорость набора текста с течением времени.",
-    "description": "Chart description."
-  },
-  "profile.chart.speedLegend": {
-    "defaultMessage": "Горизонтальная ось: номер урока. Вертикальная ось: {label1} - скорость набора, {label2} - точность набора, {label3} - количество букв в уроках.",
-    "description": "Chart legend."
-  },
-  "profile.control.downloadDataLabel": {
-    "defaultMessage": "Скачать данные",
-    "description": "Button label."
-  },
-  "profile.control.downloadDataTitle": {
-    "defaultMessage": "Скачайте все ваши данные в формате JSON.",
-    "description": "Button title."
-  },
-  "profile.control.groupSelectorLabel": {
-    "defaultMessage": "Показать статистику для:",
-    "description": "List label."
-  },
-  "profile.control.resetDataConfirmation": {
-    "defaultMessage": "Вы уверены, что хотите удалить все данные и сбросить свой профиль? Эта операция является необратимой и не может быть отменена!",
-    "description": "Confirmation text."
-  },
-  "profile.control.resetDataLabel": {
-    "defaultMessage": "Сбросить данные",
-    "description": "Button label."
-  },
-  "profile.control.resetDataTitle": {
-    "defaultMessage": "Безвозвратно удалите все ваши данные и сбросьте статистику.",
-    "description": "Button title."
-  },
-  "profile.control.shareButtonLabel": {
-    "defaultMessage": "Копировать",
-    "description": "Button label."
-  },
-  "profile.control.shareButtonTitle": {
-    "defaultMessage": "Скопируйте ссылку на ваш общедоступный профиль в буфер обмена.",
-    "description": "Button title."
-  },
-  "profile.control.shareText": {
-    "defaultMessage": "Поделитесь вашим общедоступным профилем:",
-    "description": "Share profile text."
-  },
-  "profile.control.visitButtonLabel": {
-    "defaultMessage": "Открыть",
-    "description": "Button label."
-  },
-  "profile.control.visitButtonTitle": {
-    "defaultMessage": "Откройте страницу вашего общедоступного профиля.",
-    "description": "Button title."
-  },
-  "profile.emptyChartCaption": {
-    "defaultMessage": "Недостаточно данных",
-    "description": "Empty chart message."
-  },
-  "profile.emptyChartDescription": {
-    "defaultMessage": "Закончите еще несколько уроков, чтобы получить больше данных.",
-    "description": "Empty chart message."
-  },
-  "profile.overview.averageSpeedLabel": {
-    "defaultMessage": "Средняя скорость",
-    "description": "Gauge label."
-  },
-  "profile.overview.averageSpeedTitle": {
-    "defaultMessage": "Средняя скорость набора за все время.",
-    "description": "Gauge title."
-  },
-  "profile.overview.averageSpeedTodayLabel": {
-    "defaultMessage": "Средняя скорость",
-    "description": "Gauge label."
-  },
-  "profile.overview.averageSpeedTodayTitle": {
-    "defaultMessage": "Средняя скорость набора за сегодня.",
-    "description": "Gauge title."
-  },
-  "profile.overview.statisticsAllTime": {
-    "defaultMessage": "Статистика за все время",
-    "description": "Header."
-  },
-  "profile.overview.statisticsToday": {
-    "defaultMessage": "Статистика за сегодня",
-    "description": "Section header."
-  },
-  "profile.overview.topSpeedLabel": {
-    "defaultMessage": "Лучшая скорость",
-    "description": "Gauge label."
-  },
-  "profile.overview.topSpeedTitle": {
-    "defaultMessage": "Лучшая скорость набора за все время.",
-    "description": "Gauge title."
-  },
-  "profile.overview.topSpeedTodayLabel": {
-    "defaultMessage": "Лучшая скорость",
-    "description": "Gauge label."
-  },
-  "profile.overview.topSpeedTodayTitle": {
-    "defaultMessage": "Лучшая скорость набора за сегодня.",
-    "description": "Gauge title."
-  },
-  "profile.overview.totalLessonsLabel": {
-    "defaultMessage": "Число уроков",
-    "description": "Gauge label."
-  },
-  "profile.overview.totalLessonsTitle": {
-    "defaultMessage": "Число законченных уроков за все время.",
-    "description": "Gauge title."
-  },
-  "profile.overview.totalLessonsTodayLabel": {
-    "defaultMessage": "Число уроков",
-    "description": "Gauge label."
-  },
-  "profile.overview.totalLessonsTodayTitle": {
-    "defaultMessage": "Число законченных уроков за сегодня.",
-    "description": "Gauge title."
-  },
-  "profile.overview.totalTimeLabel": {
-    "defaultMessage": "Общее время",
-    "description": "Gauge label."
-  },
-  "profile.overview.totalTimeTitle": {
-    "defaultMessage": "Общее время потраченное на упражнения.",
-    "description": "Gauge title."
-  },
-  "profile.overview.totalTimeTodayLabel": {
-    "defaultMessage": "Время сегодня",
-    "description": "Gauge label."
-  },
-  "profile.overview.totalTimeTodayTitle": {
-    "defaultMessage": "Время потраченное на упражнения за сегодня.",
-    "description": "Gauge title."
-  },
-  "profile.smoothnessLabel": {
-    "defaultMessage": "Сглаживание:",
-    "description": "Input field label."
-  },
-  "profile.smoothnessTitle": {
-    "defaultMessage": "Устраните шум чтобы увидеть долгосрочный тренд.",
-    "description": "Input field title."
-  },
-  "settings.alphabetSizeLabel": {
-    "defaultMessage": "Добавить букв в слова:",
-    "description": "Input field label."
-  },
-  "settings.benfordsLawDescription": {
-    "defaultMessage": "<a>Закон Бенфорда</a> это наблюдение, согласно которому во многих реальных наборах числовых данных первая цифра, скорее всего, будет маленькой.",
-    "description": "Description text."
-  },
-  "settings.benfordsLawLabel": {
-    "defaultMessage": "Закон Бенфорда.",
-    "description": "Input field label."
-  },
-  "settings.capitalLettersLabel": {
-    "defaultMessage": "Добавить заглавные буквы:",
-    "description": "Input field label."
-  },
-  "settings.cursorMovementLabel": {
-    "defaultMessage": "Движение курсора:",
-    "description": "Input field label."
-  },
-  "settings.cursorShapeLabel": {
-    "defaultMessage": "Форма курсора:",
-    "description": "Input field label."
-  },
-  "settings.customTextExamplesLabel": {
-    "defaultMessage": "Примеры:",
-    "description": "Input field label."
-  },
-  "settings.customTextInputPlaceholder": {
-    "defaultMessage": "Собственный текст...",
-    "description": "Input field placeholder."
-  },
-  "settings.customTextLettersOnlyLabel": {
-    "defaultMessage": "Убрать знаки препинания",
-    "description": "Input field label."
-  },
-  "settings.customTextLettersOnlyTitle": {
-    "defaultMessage": "Убрать знаки препинания чтобы упростить набор текста.",
-    "description": "Input field title."
-  },
-  "settings.customTextLowercaseLabel": {
-    "defaultMessage": "Преобразовать в нижний регистр",
-    "description": "Input field label."
-  },
-  "settings.customTextLowercaseTitle": {
-    "defaultMessage": "Преобразовать весь текст в нижний регистр чтобы упростить набор.",
-    "description": "Input field title."
-  },
-  "settings.customTextRandomizeLabel": {
-    "defaultMessage": "Перемешать слова",
-    "description": "Input field label."
-  },
-  "settings.customTextRandomizeTitle": {
-    "defaultMessage": "Поместить слова из собственного текста в случайном порядке.",
-    "description": "Input field title."
-  },
-  "settings.dailyGoalDescription": {
-    "defaultMessage": "Установите время, которое вы хотите тратить на упражнения ежедневно. Это простое напоминание, которое вас ни в чем не ограничивает. Вы можете прекратить занятия, когда захотите.",
-    "description": "Description text."
-  },
-  "settings.dailyGoalLabel": {
-    "defaultMessage": "Ежедневная цель:",
-    "description": "Input field label."
-  },
-  "settings.doneButtonLabel": {
-    "defaultMessage": "Готово",
-    "description": "Input field label."
-  },
-  "settings.emulateLayoutLabel": {
-    "defaultMessage": "Эмулировать раскладку",
-    "description": "Input field label."
-  },
-  "settings.emulateLayoutTitle": {
-    "defaultMessage": "Эмулировать выбранную раскладку даже если у вас в системе выбрана другая раскладка.",
-    "description": "Input field title."
-  },
-  "settings.forgiveErrorsDescription": {
-    "defaultMessage": "Эта настройка позволяет прощать некоторые типы ошибок путем их автоматическкого исправления. Это такие ошибки как неправильный символ в какой то позиции или пропущенный символ.",
-    "description": "Description text."
-  },
-  "settings.forgiveErrorsLabel": {
-    "defaultMessage": "Прощать ошибки",
-    "description": "Input field label."
-  },
-  "settings.interfaceOptionsLegend": {
-    "defaultMessage": "Настройки интерфейса",
-    "description": "Fieldset legend."
-  },
-  "settings.keyboardColorsLabel": {
-    "defaultMessage": "Цветные клавиши",
-    "description": "Input field label."
-  },
-  "settings.keyboardFullViewLabel": {
-    "defaultMessage": "Полный вид клавиатуры",
-    "description": "Input field label."
-  },
-  "settings.keyboardTabLabel": {
-    "defaultMessage": "Клавиатура",
-    "description": "Header text."
-  },
-  "settings.lessonLengthLabel": {
-    "defaultMessage": "Добавить слов в уроки:",
-    "description": "Input field label."
-  },
-  "settings.lessonOptionsLegend": {
-    "defaultMessage": "Настройки уроков",
-    "description": "Fieldset legend."
-  },
-  "settings.lessonsTabLabel": {
-    "defaultMessage": "Уроки",
-    "description": "Header text."
-  },
-  "settings.longWordsOnlyLabel": {
-    "defaultMessage": "Только длинные слова",
-    "description": "Input field label."
-  },
-  "settings.miscellaneousTabLabel": {
-    "defaultMessage": "Разное",
-    "description": "Header text."
-  },
-  "settings.optionsLegend": {
-    "defaultMessage": "Настройки",
-    "description": "Fieldset legend."
-  },
-  "settings.playSoundsLabel": {
-    "defaultMessage": "Play sounds:",
-    "description": "Input field label."
-  },
-  "settings.previewLabel": {
-    "defaultMessage": "Предосмотр урока",
-    "description": "Fieldset label."
-  },
-  "settings.previewLegend": {
-    "defaultMessage": "Предосмотр",
-    "description": "Fieldset legend."
-  },
-  "settings.punctuationLabel": {
-    "defaultMessage": "Добавить знаки препинания:",
-    "description": "Input field label."
-  },
-  "settings.selectLanguageLabel": {
-    "defaultMessage": "Язык:",
-    "description": "Input field label."
-  },
-  "settings.selectLanguageTitle": {
-    "defaultMessage": "Выберите язык клавиатурной раскладки.",
-    "description": "Input field title."
-  },
-  "settings.selectLayoutLabel": {
-    "defaultMessage": "Раскладка:",
-    "description": "Input field label."
-  },
-  "settings.selectLayoutTitle": {
-    "defaultMessage": "Выберите раскладку которую хотите изучить. Для одного языка может быть несколько раскладок.",
-    "description": "Input field title."
-  },
-  "settings.spaceSkipsWordsDescription": {
-    "defaultMessage": "If enabled, pressing the space key in the middle of a word will skip the remaining characters of the word and position cursor at the beginning of the next word.",
-    "description": "Description text."
-  },
-  "settings.spaceSkipsWordsLabel": {
-    "defaultMessage": "Space skips words",
-    "description": "Input field label."
-  },
-  "settings.stopCursorOnErrorDescription": {
-    "defaultMessage": "Если включено, то курсор остановится до тех пор, пока не будет нажата правильная клавиша в текущей позиции. Если отключено, все ошибки будут накапливаться перед курсором и должны быть очищены клавишей удаления.",
-    "description": "Description text."
-  },
-  "settings.stopCursorOnErrorLabel": {
-    "defaultMessage": "Остановить курсор при ошибке",
-    "description": "Input field label."
-  },
-  "settings.targetSpeedLabel": {
-    "defaultMessage": "Целевая скорость набора:",
-    "description": "Input field label."
-  },
-  "settings.textAppearanceLegend": {
-    "defaultMessage": "Вид текста",
-    "description": "Fieldset legend."
-  },
-  "settings.typingAssistsDescription": {
-    "defaultMessage": "Это помощники при наборе текста, которые помогут вам сохранить концентрацию, автоматически исправляя ошибки.",
-    "description": "Description text."
-  },
-  "settings.typingOptionsLegend": {
-    "defaultMessage": "Настройки набора",
-    "description": "Fieldset legend."
-  },
-  "settings.typingSpeedUnitCaption": {
-    "defaultMessage": "Измерять скорость набора в:",
-    "description": "Radio button group caption."
-  },
-  "settings.typingSpeedUnitDescription": {
-    "defaultMessage": "Для измерения скорости набора стандартной длинной слова считается пять символов на английском языке, включая пробелы и знаки препинания.",
-    "description": "Radio button group description."
-  },
-  "settings.typingTabLabel": {
-    "defaultMessage": "Набор текста",
-    "description": "Header text."
-  },
-  "settings.whitespaceLabel": {
-    "defaultMessage": "Пробелы:",
-    "description": "Input field label."
-  },
-  "settings.wordListSizeLabel": {
-    "defaultMessage": "Количество слов:",
-    "description": "Input field label."
-  },
-  "settings.wordListSizeTitle": {
-    "defaultMessage": "Выберите, сколько общих слов использовать.",
-    "description": "Input field title."
-  },
-  "speedUnit.cpm.description": {
-    "defaultMessage": "Измерять скорость набора в символах в минуту.",
-    "description": "Widget title."
-  },
-  "speedUnit.cpm.name": {
-    "defaultMessage": "Символы в минуту",
-    "description": "Widget label."
-  },
-  "speedUnit.cps.description": {
-    "defaultMessage": "Измерять скорость набора в символах в секунду.",
-    "description": "Widget title."
-  },
-  "speedUnit.cps.name": {
-    "defaultMessage": "Символы в секунду",
-    "description": "Widget label."
-  },
-  "speedUnit.wpm.description": {
-    "defaultMessage": "Измерять скорость набора в словах в минуту.",
-    "description": "Widget title."
-  },
-  "speedUnit.wpm.name": {
-    "defaultMessage": "Слова в минуту",
-    "description": "Widget label."
-  },
-  "textStats.allWordCount": {
-    "defaultMessage": "Все слова",
-    "description": "Text label."
-  },
-  "textStats.averageWordLength": {
-    "defaultMessage": "Средняя длина слова",
-    "description": "Text label."
-  },
-  "textStats.charsExcludingWhitespace": {
-    "defaultMessage": "Символы без пробелов",
-    "description": "Text label."
-  },
-  "textStats.charsIncludingWhitespace": {
-    "defaultMessage": "Символы с пробелами",
-    "description": "Text label."
-  },
-  "textStats.mostCommonWords": {
-    "defaultMessage": "Список {count} самых часто встречающихся слов",
-    "description": "Text fragment."
-  },
-  "textStats.timeToRead": {
-    "defaultMessage": "При средней скорости чтения {speed} WPM потребуется {time} для того, чтобы прочитать этот текст.",
-    "description": "Text fragment."
-  },
-  "textStats.timeToType": {
-    "defaultMessage": "При средней скорости набора {speed} WPM потребуется {time} для того, чтобы напечатать этот текст.",
-    "description": "Text fragment."
-  },
-  "textStats.uniqueWordCount": {
-    "defaultMessage": "Уникальные слова",
-    "description": "Text label."
-  },
-  "textTools.emptyTextMessage": {
-    "defaultMessage": "Пожалуйста, предоставьте текст для того, чтобы посчитать его статистики.",
-    "description": "Freeform text."
-  },
-  "textTools.exampleText": {
-    "defaultMessage": "(Пример текста, кликните здесь, чтобы убрать его.)",
-    "description": "Text fragment."
-  },
-  "textTools.textInputPlaceholder": {
-    "defaultMessage": "Вставьте сюда свой текст",
-    "description": "Input field placeholder."
-  },
-  "theme.enterFullscreenTitle": {
-    "defaultMessage": "Войти в полноэкранный режим.",
-    "description": "Theme switching button."
-  },
-  "theme.exitFullscreenTitle": {
-    "defaultMessage": "Выйти из полноэкранного режима.",
-    "description": "Theme switching button."
-  },
-  "theme.fullscreenNotSupportedTitle": {
-    "defaultMessage": "Полноэкранный режим не поддерживается.",
-    "description": "Theme switching button."
-  },
-  "theme.switchThemeTitle": {
-    "defaultMessage": "Переключиться на тему {name}.",
-    "description": "Theme switching button."
-  },
-  "tour.close": {
-    "defaultMessage": "Закрыть",
-    "description": "Button name"
-  },
-  "tour.next": {
-    "defaultMessage": "Следующий",
-    "description": "Button name"
-  },
-  "tour.previous": {
-    "defaultMessage": "Предыдущий",
-    "description": "Button name"
-  }
+  "account.accountDetailsLegend": "Информация об аккаунте",
+  "account.accountPageDescription": "<p>Вы используете учетную запись для хранения ваших данных на наших серверах в облаке. Вы можете получить доступ к своему профилю с любого компьютера или браузера.</p>",
+  "account.anonymizeButtonLabel": "Обезличить меня",
+  "account.anonymizeButtonTitle": "Скройте свое реальное изображение и имя пользователя.",
+  "account.anonymizeDescription": "Обезличивание заменяет ваше реальное изображение и имя пользователя на то, которое мы придумали для вас. Вы можете переключаться между своим настоящим и обезличенным именем любое количество раз.",
+  "account.anonymousUserName": "Безымянный пользователь",
+  "account.avatarDescription": "Ваше изображение и имя пользователя будут видны всем в вашем профиле, в таблице рекордов и в многопользовательской игре.",
+  "account.checkout.description": "Купите премиум-аккаунт, чтобы разблокировать дополнительные функции и избавиться от рекламы.",
+  "account.checkout.title": "Премиум аккаунт",
+  "account.checkoutButtonLabel": "Купить премиум аккаунт",
+  "account.checkoutButtonTitle": "Открыть форму оформления заказа.",
+  "account.deleteAccountButtonLabel": "Удалить аккаунт",
+  "account.deleteAccountButtonTitle": "Безвозвратно удалить аккаунт.",
+  "account.deleteAccountConfirmation": "Вы уверены, что хотите удалить свою учетную запись? Эта операция является постоянной и не может быть отменена! Но вы можете создать новую учетную запись позже в любое время.",
+  "account.deleteAccountDescription": "Это приведет к удалению из нашей базы данных всей вашей личной информации, такой как адрес электронной почты и имя. Эту операцию нельзя отменить! Если вы просто хотите очистить статистику и начать заново, вы можете сделать это на странице профиля.",
+  "account.deleteAccountLegend": "Удалить аккаунт",
+  "account.emailFormDescription": "Простой вход без использования паролей. Просто введите свой адрес электронной почты, и мы вышлем вам ссылку для входа. Перейдите в свой почтовый ящик, кликните ссылку, чтобы создать новую учетную запись или открыть существующую учетную запись для указанного адреса электронной почты. Ссылка временная, срок ее действия истекает через несколько часов. Чтобы войти позже, введите тот же адрес электронной почты, и мы вышлем новую ссылку для той же учетной записи.",
+  "account.emailPlaceholder": "Ваша почта...",
+  "account.emailSignInHeader": "Войти с помощью электронной почты",
+  "account.emailState.errorText": "Не удалось отправить письмо на адрес <strong>{email}</strong>: {message}",
+  "account.emailState.sendingText": "Отправка письма со ссылкой для входа на адрес <strong>{email}</strong>... Подождите секунду.",
+  "account.emailState.sentText": "Мы отправили письмо со ссылкой для входа на адрес <strong>{email}</strong>. Оно должно прибыть в ближайшее время, пожалуйста, проверьте свой почтовый ящик через минуту или две.",
+  "account.emailTitle": "Адрес почты, на который мы отправим вам ссылку для входа.",
+  "account.freeAccountOverview": "<p>Купите <strong>премиум-аккаунт</strong>, чтобы разблокировать дополнительные функции и избавиться от рекламы. Вот список преимуществ премиум-аккаунта:</p><ul><li><strong>Отсутствие рекламы.</strong> Реклама может отвлекать и мешать вашему обучению. Это хороший способ избавиться от нее.</li><li><strong>Отсутствие трекеров.</strong> Трекеры неизбежно сопровождают рекламу. Удалите все трекеры чтобы добиться исключительной конфиденциальности в Интернете.</li><li><strong>Сверхбыстрая отзывчивость.</strong> Загрузка рекламы занимает определенное время. Убрав рекламу вы получите значительно более быструю загрузку страниц приложения.</li></ul><p>Всего один платеж, раз и навсегда.</p>",
+  "account.pageTitle": "Аккаунт | {name}",
+  "account.premiumAccountHeader": "Премиум аккаунт",
+  "account.premiumAccountLegend": "Премиум аккаунт",
+  "account.premiumAccountOverview": "<p>Благодарим вас за покупку премиум-аккаунта! Теперь вы можете пользоваться дополнительными функциями и наслаждаться отсутствием рекламы.</p>",
+  "account.resendButtonLabel": "Отправить повторно",
+  "account.resendButtonTitle": "Отправьте новое письмо.",
+  "account.retryButtonLabel": "Повторить",
+  "account.retryButtonTitle": "Отправить еще одно письмо.",
+  "account.sendButtonLabel": "Отправить ссылку для входа",
+  "account.sendButtonTitle": "Отправить письмо со ссылкой.",
+  "account.signInPageDescription": "<p>Создайте учетную запись для хранения ваших данных на наших серверах в облаке. Таким образом, вы сможете получить доступ к своему профилю с любого компьютера или браузера. Если у вас нет аккаунта, то ваши данные хранятся локально и будут доступны только с вашего текущего компьютера.</p><p>Мы не храним никаких паролей а используем сторонние сервисы для регистрации наших пользователей. Мы предлагаем несколько удобных способов создания учетной записи и входа в приложение.</p><p>Вы можете отказаться в любое время, удалить учетную запись так же просто, как и создать ее.</p>",
+  "account.signOutButtonLabel": "Выйти",
+  "account.signOutButtonTitle": "Выйти из приложения.",
+  "account.socialFormDescription": "Войдите с помощью социальной сети по своему усмотрению. Мы уважаем вашу конфиденциальность и никогда не будем спамить вашу почту, стену или друзей.",
+  "account.socialSignInButtonLabel": "Войти с {name}",
+  "account.socialSignInButtonTitle": "Войти с помощью социальной сети.",
+  "account.socialSignInHeader": "Войти через социальные сети",
+  "calendar.weekDayName": "П|В|С|Ч|П|С|В",
+  "characterClass.digits": "Цифры",
+  "characterClass.letters": "Буквы",
+  "characterClass.punctuationCharacters": "Знаки пунктуации",
+  "characterClass.specialCharacters": "Специальные символы",
+  "common.javaScriptDisabledText": "Приложение не будет работать потому что у вас в браузере отключен JavaScript!",
+  "common.loadingText": "Приложение загружается, подождите немного...",
+  "footer.discordLinkTitle": "Общайтесь на нашем сервере Discord.",
+  "footer.emailLinkTitle": "Отправляйте ваши пожелания и комментарии на info@keybr.com",
+  "footer.githubLinkTitle": "Исходный код keybr.com доступен на Github.",
+  "help.example1": "<a>Пример 1</a>, от 30 до 70 слов в минуту после 4 часов 20 минут занятий в течение 15 дней.",
+  "help.example2": "<a>Пример 2</a>, от 35 до 70 слов в минуту после 2 часов 20 минут занятий в течение 12 дней.",
+  "help.example3": "<a>Пример 3</a>, приличный скачок с менее чем 20 до 40 слов в минуту после 5 часов 30 минут тренировок в течение 11 дней.",
+  "help.example4": "<a>Пример 4</a>, после 2 часов 10 минут тренировок в течение 11 дней скорость печати осталась на уровне ~70 слов в минуту (что уже довольно много), но точность улучшилась.",
+  "help.example5": "<a>Пример 5</a>, от 20 до 45 слов в минуту после 10 часов практики в течение 22 дней (да, иногда это занимает больше времени).",
+  "help.indicatorsCaption": "Цветовая кодировка индикаторов.",
+  "help.keyboardZonesCaption": "Зоны клавиатуры и правильное расположение пальцев.",
+  "help.rule1.body": "<p>Когда вы начинаете упражнения в первый раз компьютер ничего не знает о ваших навыках печати, так что он использует маленький набор самых часто повторяющихся букв чтобы генерировать слова, такие как ‘<em>E</em>’, ‘<em>N</em>’, ‘ <em>I</em>’, ‘<em>T</em>’, ‘<em>R</em>’ и ‘<em>L</em>’. Все сгенерированные слова будут состоять только из этого маленького набора букв, а остальные буквы не будут использоваться. Так как статистика для этих букв пока не известна, соответствующие индикаторы будут серыми.</p>",
+  "help.rule1.title": "Алгоритм начинает с начальных букв",
+  "help.rule2.body": "<p>Потом вы печатаете сгенерированные слова, и компьютер собирает статистику о том, как вы вводите буквы. Индикаторы начинают менять цвет с красного на зеленый. Красный цвет означает, что скорость набора для этой отдельной клавиши низкая, а зеленый цвет указывает на обратное. На этом этапе ваша цель - сделать все буквы зелеными, увеличив скорость набора текста. Обратите внимание, что в этом примере буква «<em>T</em>» выделена, так как у нее наихудший показатель скорости набора, поэтому она становится целевой буквой. Целевая буква включается в каждое сгенерированное слово, и это важный момент. Это означает, что в любой момент времени вы тренируете ту букву, которая доставляет вам больше проблем.</p>",
+  "help.rule2.title": "Вы учите начальные буквы",
+  "help.rule3.body": "<p>Когда ваша скорость набора текста улучшится и все буквы наконец станут зелеными, в набор добавляется новая буква «<em>S</em>». Случайные слова будут генерироваться из этого нового расширенного набора букв. Буква ‘<em>S</em>’ является целевой буквой и будет появиться в каждом сгенерированном слове. Опять же, цвет индикатора этой буквы серый, потому что статистика скорости печати неизвестна.</p>",
+  "help.rule3.title": "Алгоритм добавляет больше букв",
+  "help.rule4.body": "<p>На этом этапе ваша цель — сделать эту новую букву зеленой, и когда это произойдет, в набор добавится еще одна буква и цикл повторится. На самом деле очень вероятно, что скорость набора предыдущих букв снизится, и вы увидите, что они снова станут красными, как в этом примере. Так и ожидалось, но ваша цель остается прежней — сделать новую букву зеленой, чтобы разблокировать следующую.</p>",
+  "help.rule4.title": "Вы изучаете дополнительные буквы",
+  "help.rule5.body": "<p>Если вы будете достаточно упорны, рано или поздно все буквы станут зелеными. Поздравляем, вы достигли своей главной цели! Однако это не означает, что вы должны прекратить учиться, вы можете продолжать заниматься так долго, как сами этого хотите.</p>",
+  "help.rule5.title": "Цикл повторяется",
+  "help.section1": "<h1>Научитесь печатать быстрее</h1><p>Это веб-приложение поможет вам научиться методу <em>слепой печати</em>, что означает печатать опираясь на мышечную память и без использования зрения для поиска клавиш на клавиатуре. Этот метод может значительно улучшить вашу скорость и точность набора текста. Противоположным ему является метод, при котором вы смотрите на клавиатуру, а не на экран, и используете только указательные пальцы.</p>",
+  "help.section2": "<h2>Методика обучения</h2><p>Это приложение использует уникальный подход. Оно использует статистику и интеллектуальные алгоритмы для автоматической генерации уроков набора текста, соответствующих вашим навыкам. Оно работает, повторяя следующий цикл:</p><ol><li>Алгоритм генерирует для вас список случайных слов на основе ваших навыков набора текста. Навыки замеряются на основе собранной статистики о том, как вы набираете текст. Слова состоят из набора букв, выбранных алгоритмом.</li><li>Вы вводите данные слова. Вы стараетесь делать как можно меньше ошибок.</li><li>Во время набора алгоритм собирает статистику о том, как вы нажимаете клавиши, такие как скорость набора для каждой клавиши в отдельности. В конце собранные данные используются для создания следующего списка слов из первого шага.</li></ol><p>Поэтому в любой момент вы просто набираете указанные слова, а компьютер делает все остальное.</p>",
+  "help.section3": "<h2>Алгоритм генерации слов</h2><p>Это приложение генерирует случайные, но легко читаемые и произносимые слова, используя фонетические правила вашего языка. Эти слова звучат правдоподобно, иногда попадаются реальные слова. Печатать естественный текст намного проще, чем повторять случайные буквы, и это поможет вам запоминать частые комбинации клавиш. Последний момент имеет решающее значение. Например, почти невозможно, чтобы в  английском языке буква «<em>W</em>» следовала за «<em>Z</em>», и вы никогда не встретите такую комбинацию в этом приложении. Вместо этого вы будете вводить более обычные слова, такие как «<em>the</em>,» «<em>that</em>,» «<em>with</em>» и так далее. И вскоре вы научитесь очень быстро набирать комбинацию «<em>th</em>».</p><p>Эти слова генерируются из букв, выбранных по следующим правилам.</p>",
+  "help.section4": "<p>Точное значение каждого цвета индикатора указано в следующей легенде.</p>",
+  "help.section5": "<h2>Как правильно использовать клавиатуру</h2><p>Положите все пальцы на главный ряд, содержащий клавишу <em>Caps Lock</em>. На клавишах «<em>F</em>» и «<em>J</em>» есть небольшие выступы, положите на них указательные пальцы. Каждый палец отвечает за свой собственный набор клавиш, как показано на следующей иллюстрации.</p>",
+  "help.section6": "<h2>Эффективность этого приложения</h2><p>Мы выбрали несколько примеров профилей, чтобы показать вам, как люди продвигаются в обучении слепому методу печати используя это приложение. Это настоящие, обезличенные профили пользователей. Надеемся, они вдохновят вас на дальнейшее обучение!</p>",
+  "highScores.layoutColumn": "Раскладка",
+  "highScores.scoreColumn": "Баллы",
+  "highScores.typingSpeedColumn": "Скорость",
+  "highScores.userColumn": "Пользователь",
+  "language.be.name": "Беларуский (Беларуская)",
+  "language.de.name": "Немецкий (Deutsch)",
+  "language.en.name": "Английский (English)",
+  "language.es.name": "Испанский (Español)",
+  "language.fr.name": "Французский (Français)",
+  "language.it.name": "Итальянский (Italiano)",
+  "language.pl.name": "Польский (Polski)",
+  "language.pt.name": "Португальский (Português)",
+  "language.ru.name": "Русский",
+  "language.uk.name": "Украинский (Українська)",
+  "layouts.bottomRowKeysText": "Клавиши в нижнем ряду:",
+  "layouts.bottomRowKeysTitle": "Процент клавиш, нажимаемых в ряду Shift, чем меньше, тем лучше.",
+  "layouts.description.colemak": "<p>The Colemak layout is designed to be a practical alternative to the Qwerty and Dvorak keyboard layouts, offering a more incremental change for users already accustomed to the standard layout.</p><p>The Colemak layout was designed with the QWERTY layout as a base, changing the positions of 17 keys while retaining the QWERTY positions of most non-alphabetic characters and many popular keyboard shortcuts. This makes it easier to learn for people who already type in QWERTY. It shares several design goals with the Dvorak layout, such as minimizing finger path distance and making heavy use of the home row.</p><p>It is supported by many major modern operating systems.</p>",
+  "layouts.description.colemak_dh": "<p>The Colemak-DH layout serves as a practical alternative to both QWERTY and Dvorak keyboard layouts, offering a smoother transition for users accustomed to the standard layout. Building upon QWERTY, it relocates 17 keys while retaining the positions of non-alphabetic characters and popular shortcuts, making it user-friendly for those familiar with QWERTY. It shares design goals with Dvorak, emphasizing minimized finger movement and home row utilization. Colemak-DH enjoys widespread support across modern operating systems, ensuring accessibility and ergonomic benefits for users.</p>",
+  "layouts.description.dvorak": "<p>Dvorak is a keyboard layout for the English language created in 1936 by August Dvorak and William Dealey. It was designed to be a faster, more ergonomic alternative to the QWERTY layout. Dvorak proponents claim that it requires less finger motion and as a result reduces errors, increases typing speed, reduces repetitive strain injuries, and offers a more comfortable experience compared to QWERTY.</p><p>However, it failed to replace QWERTY as the most common keyboard layout mainly due to QWERTY being introduced 60 years earlier.</p><p>As of 2005, the fastest English language typist in the world record was set using the Dvorak keyboard layout by Barbara Blackburn.</p><p>Almost all major modern operating systems allow a user to switch to the Dvorak layout, and there is a good chance that your OS supports it too.</p>",
+  "layouts.description.qwerty": "<p>It all started in the 1860s. An amateur inventor, politician, printer and newspaper man in Milwaukee by the name of Christopher Latham Sholes, often spent his spare time tinkering with and creating new machines to make his businesses more efficient.</p><p>The popular theory states that Sholes had to redesign the keyboard in response to the mechanical failings of early typewriters. The type bars connecting the key and the letter plate hung in a cycle beneath the paper. If a user quickly typed a succession of letters whose type bars were near each other, the delicate machinery would get jammed.</p><p>Sholes redesigned the arrangement to separate the most common sequences of letters like “th” or “he”. The machine was produced under licence in 1875 by the New York based arms manufacturer, Remington and Sons. The machine was named the Remington No. 1 and was a commercial failure failing to sell in large numbers.</p><p>After receiving feedback, the Remington company updated the machine to create the Remington No. 2. This new machine was released in 1877 and was hugely successful. It was the first to use the QWERTY keyboard layout as we know it today, giving users the option to type upper and lower case letters, moving between the two by use of a “Shift” key.</p><p>The classic QWERTY keyboard layout is an unfortunate historical accident and is not optimal, and that is why the other layouts were invented.</p>",
+  "layouts.description.workman": "<p>The Workman layout reduced lateral movement of the fingers and wrists, more balanced left and right hand usage. 21 characters are different from Qwerty.</p><p>The Workman layout offers many benefits. It is comfortable, ergonomic, and efficient, with frequent keys being placed within the natural range of motion of the fingers. The need for lateral movement is reduced for the fingers and wrists. There is also very low overall finger travel.</p><p>The Workman layout is found to achieve overall less travel distance of the fingers for the English language than even Colemak. It does however generally incur higher same-finger n-gram frequencies; or in other words, one finger will need to hit two keys in succession more often than in other layouts.</p>",
+  "layouts.heatmapCaption": "Тепловая карта частоты клавиш для {name}",
+  "layouts.heatmapDescription": "Эта диаграмма показывает тепловую карту относительных частот клавиш.",
+  "layouts.homeRowKeysText": "Клавиши в среднем ряду:",
+  "layouts.homeRowKeysTitle": "Процент клавиш, нажимаемых не покидая ряд Caps Lock, чем больше, тем лучше.",
+  "layouts.layoutNameHeader": "Раскладка {name}",
+  "layouts.sameFingerKeysText": "Клавиши, нажимаемые тем же пальцем:",
+  "layouts.sameFingerKeysTitle": "Процент клавиш, нажимаемых тем же пальцем, чем меньше, тем лучше.",
+  "layouts.sameHandKeysText": "Клавиши, нажимаемые той же рукой:",
+  "layouts.sameHandKeysTitle": "Процент клавиш, нажимаемых той же рукой, чем меньше, тем лучше.",
+  "layouts.topRowKeysText": "Клавиши в верхнем ряду:",
+  "layouts.topRowKeysTitle": "Процент клавиш, нажимаемых в ряду Tab, чем меньше, тем лучше.",
+  "layouts.websiteLinkText": "Официальный веб-сайт",
+  "layouts.wikipediaLinkText": "Статья в Википедии",
+  "learningRate.alreadyUnlocked": "This letter is already unlocked.",
+  "learningRate.remainingLessons": "Approximately {remainingLessons} lessons remaining to unlock this letter ({certainty} certainty).",
+  "learningRate.unknown": "Need more data to compute the remaining lessons to unlock this letter.",
+  "lesson.boostedKeyText": "Буква с увеличенной частотой.",
+  "lesson.characterName": "Буква ''{name}''",
+  "lesson.currentKeyPanelLabel": "Текущая буква",
+  "lesson.dailyGoalPanelLabel": "Ежедневная цель",
+  "lesson.dailyGoalPanelTitle": "Прогресс на пути к вашей ежедневной цели.",
+  "lesson.forcedKeyText": "Вручную добавленная буква.",
+  "lesson.gaugesPanelLabel": "Метрики",
+  "lesson.indicator.boostedFrequency": "Буква с увеличенной частотой. Эта буква, которую вы ищете дольше всего, так что алгоритм решил добавить ее в каждое слово.",
+  "lesson.indicator.includedManually": "Буква, которую вы вручную добавили в уроки.",
+  "lesson.indicator.leastConfidence": "Буква с наименьшей скоростью набора. Чем чаще вы нажимаете такую букву, тем точней метрика.",
+  "lesson.indicator.mostConfidence": "Буква с наибольшей скоростью набора. Чем чаще вы нажимаете такую букву, тем точней метрика.",
+  "lesson.indicator.notCalibrated": "Буква с неизвестной скоростью набора. Вы еще не разу не нажали такую букву.",
+  "lesson.indicator.notIncluded": "Буква, которая еще не была добавлена в уроки.",
+  "lesson.keySetPanelLabel": "Все буквы",
+  "lesson.notCalibratedText": "Недостаточно данных, закончите больше уроков",
+  "lessonType.customText.description": "Генерировать уроки используя слова, взятые из вашего собственного текста. Все буквы включены по умолчанию. Этот режим для профессионалов.",
+  "lessonType.customText.name": "Собственный текст",
+  "lessonType.guided.description": "Генерировать уроки со случайными словами используя фонетические правила вашего языка. Набор букв, из которого генерируются слова изменяется динамически, в зависимости от ваших успехов. Этот режим для новичков.",
+  "lessonType.guided.name": "Компьютерные уроки",
+  "lessonType.numbers.name": "Числа",
+  "lessonType.wordList.description": "Генерировать уроки из списка наиболее распространенных слов вашего языка. Все буквы включены по умолчанию. Этот режим для профессионалов.",
+  "lessonType.wordlist.name": "Частые слова",
+  "metric.accuracy.label": "Точность",
+  "metric.accuracy.title": "Процент символов, набранных без ошибок в последнем уроке.",
+  "metric.accuracyChange.title": "Разница со средним значением.",
+  "metric.averageSpeed.label": "Средняя скорость",
+  "metric.averageSpeed.title": "Средняя скорость. Чем больше, тем лучше.",
+  "metric.bestSpeed.label": "Лучшая скорость",
+  "metric.bestSpeed.title": "Лучшая скорость печати во всех уроках. Чем больше, тем лучше.",
+  "metric.confidenceLevel.label": "Уровень владения",
+  "metric.confidenceLevel.title": "Насколько вы близки к разблокировке этой буквы.",
+  "metric.lastSpeed.label": "Последняя скорость",
+  "metric.lastSpeed.title": "Скорость печати в последнем уроке. Чем больше, тем лучше.",
+  "metric.learningRate.label": "Темп обучения",
+  "metric.learningRate.title": "Насколько меняется скорость набора текста с каждым уроком.",
+  "metric.learningRate.value": "{learningRate} за урок",
+  "metric.score.label": "Баллы",
+  "metric.score.title": "Баллы в последнем уроке. Вы получаете больше баллов если печатаете быстрее и делаете меньше ошибок.",
+  "metric.scoreChange.title": "Разница со средним значением.",
+  "metric.speed.label": "Скорость",
+  "metric.speed.title": "Скорость набора в последнем уроке.",
+  "metric.speedChange.title": "Разница со средним значением.",
+  "metric.uncertainValue": "Неопределенный",
+  "multiplayer.intro": "Соревнуйтесь с другими игроками в этой многопользовательской онлайн-игре. Чем быстрее вы печатаете, тем быстрее едет ваша машина. Печатайте как можно быстрее, чтобы выиграть гонку!",
+  "multiplayer.state.connecting": "<h1>Подключение к серверу...</h1><p>Установка подключения к игровому серверу.</p>",
+  "multiplayer.state.kicked": "<h1>Исключены из игры</h1><p>Вас выгнали из игры за слишком долгое бездействие.</p>",
+  "multiplayer.state.offline": "<h1>Сервер отключен</h1><p>Что-то не так с нашим игровым сервером.</p><p>Зайдите на наш сайт еще раз через несколько минут, пока мы решаем проблему.</p>",
+  "multiplayer.ui.countDownTicker": "Старт через {countDown}",
+  "multiplayer.ui.distanceLabel": "Прогресс",
+  "multiplayer.ui.distanceTitle": "Пройденная дистанция.",
+  "multiplayer.ui.errorsLabel": "Ошибки",
+  "multiplayer.ui.errorsTitle": "Число ошибок.",
+  "multiplayer.ui.initializingTicker": "Инициализация...",
+  "multiplayer.ui.nameLabel": "Скорость",
+  "multiplayer.ui.nameTitle": "Скорость печати.",
+  "multiplayer.ui.positionLabel": "Позиция",
+  "multiplayer.ui.positionTicker": "Ваша позиция на финише {position}!",
+  "multiplayer.ui.positionTitle": "Позиция на трассе.",
+  "multiplayer.ui.raceFinishedTicker": "Гонка завершена!",
+  "multiplayer.ui.raceStartedTicker": "Гонка началась!",
+  "multiplayer.ui.startTicker": "Старт!",
+  "multiplayer.ui.waitingMorePlayersTicker": "Ждите новых игроков...",
+  "multiplayer.ui.waitingNextRaceTicker": "Ждите следующей гонки...",
+  "multiplayer.ui.winnerPositionTicker": "Вы выиграли гонку!",
+  "nav.accountName": "{name}",
+  "nav.accountTitle": "Управляйте своим аккаунтом.",
+  "nav.helpName": "Справка",
+  "nav.helpTitle": "Прочитайте информацию о том, как использовать данное приложение.",
+  "nav.highScoresName": "Лучшие результаты",
+  "nav.highScoresTitle": "Посмотрите таблицу лучших результатов.",
+  "nav.layoutsName": "Раскладки",
+  "nav.layoutsTitle": "Сравните эффективность разных клавиатурных раскладок.",
+  "nav.multiplayerName": "Гонка",
+  "nav.multiplayerTitle": "Соревнуйтесь с другими людьми в захватывающей многопользовательской игре.",
+  "nav.practiceName": "Тренировка",
+  "nav.practiceTitle": "Практикуйтесь с нашими упражнениями чтобы научиться печатать быстрее.",
+  "nav.privacyPolicyName": "Политика конфиденциальности",
+  "nav.privacyPolicyTitle": "Прочитайте нашу политику конфиденциальности.",
+  "nav.profileName": "Профиль",
+  "nav.profileTitle": "Получите детальный отчет об успехах в вашем обучении.",
+  "nav.publicProfileName": "Публичный профиль {name}",
+  "nav.publicProfileTitle": "Посмотрите профиль пользователя {name}.",
+  "nav.signInName": "Регистрация",
+  "nav.signInTitle": "Зарегистрируйтесь чтобы создать аккаунт.",
+  "nav.termsOfServiceName": "Пользовательское соглашение",
+  "nav.termsOfServiceTitle": "Прочитайте наше пользовательское соглашение.",
+  "nav.textToolsName": "Работа с текстом",
+  "nav.textToolsTitle": "Получите подробную статистику о вашем тексте, число слов и символов, время, необходимое для набора и так далее.",
+  "nav.typingTestName": "Тест на скорость",
+  "nav.typingTestTitle": "Пройдите тест на скорость набора текста.",
+  "page.help.description": "Информация о том, как работает клавиатурный тренажер.",
+  "page.help.title": "Справка о клавиатурном тренажере",
+  "page.highScores.content": "<h1>Лучшие результаты</h1><p>Таблица пользователей, показавших лучшие результаты за последние несколько дней, отсортированная по баллам от лучших к худшим. Баллы измеряются на основе скорости набора текста, длины текста, количества различных символов в тексте и количества ошибок.</p>",
+  "page.highScores.description": "Таблица со списком пользователей, которые показали самую быструю скорость печати.",
+  "page.highScores.title": "Таблица лучших достижений",
+  "page.layouts.description": "Графики сравнения эффективности клавиатурных раскладок.",
+  "page.layouts.title": "Сравнение клавиатурных раскладок.",
+  "page.multiplayer.content": "<h1>Многопользовательская онлайн игра-гонка</h1><p>Соревнуйтесь с другими игроками в этой многопользовательской онлайн-игре. Чем быстрее вы печатаете, тем быстрее едет ваша машина. Печатайте как можно быстрее, чтобы выиграть гонку!</p>",
+  "page.multiplayer.description": "Многопользовательская онлайн игра-гонка в которой побеждает тот, кто быстрее печатает.",
+  "page.multiplayer.title": "Онлайн игра-гонка",
+  "page.practice.content": "<h1>Уроки слепого набора печати</h1><p>Пройдите тест скорости набора, научитесь печатать быстрее и с меньшим количеством ошибок на этом клавиатурном тренажере.</p>",
+  "page.practice.description": "Упражнения для тренировки слепому набору печати.",
+  "page.practice.title": "Тренировка слепого набора печати",
+  "page.profile.content": "<h1>Мой профиль</h1><p>Это страница с подробной статистикой о вашем прогрессе в обучении. Чем больше уроков вы закончите, тем точнее и детальнее будет статистика.</p>",
+  "page.profile.description": "Подробный отчет об успехах в обучении слепому набору печати.",
+  "page.profile.title": "Профиль",
+  "page.publicProfile.description": "Подробный отчет об успехах в обучении слепому набору печати пользователя ''{name}''.",
+  "page.publicProfile.title": "{name} | Профиль",
+  "page.textTools.content": "<h1>Работа с текстом</h1><p>Подсчитайте символы и слова в вашем тексте. Узнайте, какие слова используются чаще всего. Узнайте время, необходимое чтобы напечатать и прочитать текст.</p>",
+  "page.textTools.description": "Подсчет количества слов и символов в тесте.",
+  "page.textTools.title": "Данные о тексте",
+  "page.typingTest.content": "<h1>Typing Speed Test</h1><p>Take a typing speed test.</p>",
+  "page.typingTest.description": "Take a typing speed test.",
+  "page.typingTest.title": "Speed Test",
+  "practice.focusText": "Кликните, чтобы активировать...",
+  "practice.resetLessonButtonTitle": "Начать текущий урок сначала (Ctrl + Left Arrow).",
+  "practice.settingButtonName": "Настройки...",
+  "practice.settingButtonTitle": "Изменить настройки уроков, поменять язык, раскладку клавиатуры и так далее.",
+  "practice.showHelpSlidesButtonTitle": "Показать справочные слайды.",
+  "practice.skipLessonButtonTitle": "Пропустить текущий урок (Ctrl + Right Arrow).",
+  "practice.switchInterfaceButtonTitle": "Сменить расположение элементов интерфейса.",
+  "practice.tourSlide1": "<h1>Научитесь печатать вслепую</h1><p>Это приложение поможет вам научиться <em>слепому метод печати</em>, что значит печатать используя мышечную память, не глядя на клавиатуру чтобы искать клавиши. Это поможет вам значительно улучшить скорость набора и снизить число ошибок. Противоположность этому является <em>набор двумя пальцами</em>, когда вы смотрите на клавиатуру, а не экран, и печатаете указательными пальцами.</p><p>В этом коротком уроке мы объясним, как работает это приложение.</p><p>Вы можете перемещаться между слайдами используя клавиши <em>Стрелка влево</em> и <em>Стрелка вправо</em>.</p>",
+  "practice.tourSlide10": "<p>Этот индикатор показывает текущий набор букв, который используется чтобы генерировать слова для урока, а также вашу скорость набора для всех этих букв:</p>",
+  "practice.tourSlide11": "<p>Этот индикатор показывает информацию о букве с увеличенной частотой, которая включена в каждое сгенерированное слово:</p>[dl][dt]Средняя скорость набора[/dt][dd]Ваша средняя скорость набора только для этой отдельно взятой буквы.[/dd][dt]Лучшая скорость набора[/dt][dd]Ваша лучшая скорость набора только для этой отдельно взятой буквы.[/dd][dt]Уровень владения[/dt][dd]Число в диапазоне от ноля до единицы которое вычисляется из скорости набора и показывает ваш уровень владения этой буквой. Считается, что вы полностью изучили букву, когда ее уровень владения достигает единицы.[/dd][/dl]",
+  "practice.tourSlide12": "<p>This indicator shows details about the letter with boosted frequency, which is currently included in every generated word:</p><dl><dt>Best typing speed</dt><dd>Your best typing speed for this individual letter.</dd><dt>Confidence level</dt><dd>A number in range from zero to one which is computed using your typing speed, and indicates your familiarity with this letter. A letter is considered fully learned when it's confidence level reaches one.</dd><dt>Learning rate</dt><dd>How your typing speed is changing with each lesson.</dd></dl>",
+  "practice.tourSlide2": "<p>Наш метод обучения основан на нескольких принципах:</p><p>В отличии от других тренажеров это приложение не заставляет вас снова и снова повторять бессмысленные сочетания ‘<em>фыв фып ыва</em>’. Это очень утомительно и почти ничему не учит.</p><p>Наше приложение использует особенный компьютерных алгоритм чтобы генерировать уроки, которые соответствуют вашим навыкам. Эти уроки  состоят из случайных слов сгенерированных из подмножества букв алфавита. Размер подмножества и частота повторения каждой буквы контролируется алгоритмом с целью преподать вам наилучший урок.</p>",
+  "practice.tourSlide3": "<p>Изначально уроки начинаются со случайных слов сгенерированных из небольшого подмножества самых часто встречающихся букв.</p><p>Когда вы печатаете эти слова, приложение измеряет скорость набора для каждой буквы в отдельности. Эта метрика используется чтобы определить ваш прогресс. Чем больше вы привыкаете к букве, тем меньше времени занимает ее набор.</p><p>Как только вы привыкните ко всем буквам из текущего набора, алгоритм добавит в него новую букву, и так далее по кругу.</p>",
+  "practice.tourSlide4": "<p>Когда алгоритм добавляет новую букву в подмножество, ее частота искусственно увеличена так, чтобы она встречалась в каждом слове текущего урока.</p><p>Алгоритм меняет частоту букв таким образом, чтобы сделать упор на букву с наихудшей скоростью набора.</p><p>Так что в любой момент времени вы будете печатать те буквы, которые вам даются тяжелее всего.</p>",
+  "practice.tourSlide5": "<p>Эта панель изображает текст, который вы будете набирать. Этот текст изменяется с каждым новым уроком. Текст генерируется автоматически из текущего набора букв. Некоторые слова могут оказаться настоящими, но обычно это случайные сочетания букв составленные по фонетическим правилам языка так, чтобы они звучали натурально и легко произносимо. С одной стороны это забавно, с другой стороны это дает нам свободу генерировать гораздо больше слов, чем реально существует.</p>",
+  "practice.tourSlide6": "<p>Это виртуальная клавиатура, она помогает вам находить и запоминать расположения клавиш. Используйте ее и постарайтесь не смотреть на вашу реальную клавиатуру. На клавишах <em>А (F)</em> и <em>О (J)</em> есть маленькие бугорки, используйте их чтобы правильно расположить пальцы и при этом не смотреть на клавиатуру. Когда ваши указательные пальцы окажутся в правильной позиции, вы сможете определить расположение остальных клавиш.</p>",
+  "practice.tourSlide7": "<p>Это индикатор отображает скорость набора вместе с отклонением от среднего значения. Ваша цель увеличить эту метрику, так что больше чем это значение, тем лучше.</p><p>Скорость набора измеряется в <em>Словах в минуту (WPM)</em> or <em>Символах в минуту (CPM)</em>. Стандартной длинной слова считается пять символов, так что <em>10WPM</em> равно <em>50CPM</em>.</p><p>Вы можете переключить отображение между <em>WPM</em> и <em>CPM</em> на странице настроек.</p>",
+  "practice.tourSlide8": "<p>Это индикатор отображает точность вместе с отклонением от среднего значения. Ваша цель увеличить эту метрику, так что чем больше это значение, тем лучше.</p><p>Точность вычисляется как процент символов, напечатанных без ошибок. Опечатки в одной и той же позиции считаются как одна ошибка.</p>",
+  "practice.tourSlide9": "<p>Это индикатор отображает абстрактные баллы вместе с отклонением от среднего значения.</p><p>При вычислении баллов учитывается скорость набора, количество ошибок а также размер набора букв из которого составляются слова. Формула составлена таким образом, чтобы поощрять за скорость набора и наказывать за ошибки, то есть вы не можете получить высокие баллы за быстрый набор, если при этом делаете много ошибок.</p><p>Мы ведет таблицу лучших результатов в которую попадают пользователи, набравшие самые высокие баллы.</p>",
+  "profile.calendar.averageSpeedTitle": "Средняя скорость: {value}",
+  "profile.calendar.topSpeedTitle": "Лучшая скорость: {value}",
+  "profile.calendar.totalLessonsTitle": "Число уроков: {value}",
+  "profile.calendar.totalTimeTitle": "Время занятий: {value}",
+  "profile.chart.calendarCaption": "Календарь занятий",
+  "profile.chart.calendarDescription": "Этот календарь показывает даты активного обучения.",
+  "profile.chart.compareAverageSpeedText": "Ваша средняя скорость за все время больше чем у {value} других людей.",
+  "profile.chart.compareTitle": "Сравните себя",
+  "profile.chart.compareTopSpeedText": "Ваша лучшая скорость за все время больше чем у {value} других людей.",
+  "profile.chart.histogramCaption": "Относительная скорость набора",
+  "profile.chart.histogramDescription": "Это гистограмма скорости набора всех пользователей, и ваша позиция по сравнению с ними.",
+  "profile.chart.histogramLegend": "Узнайте как быстро вы печатаете по сравнению с другими пользователями. Чем выше столбик, тем больше людей печатает с этой скоростью. Ваша позиция отмечена с помощью цветных вертикальных линий.",
+  "profile.chart.keyFrequencyHeatmapCaption": "Тепловая карта частоты букв",
+  "profile.chart.keyFrequencyHeatmapDescription": "Эта диаграмма показывает относительную частоту букв в виде тепловой карты.",
+  "profile.chart.keyFrequencyHistogramCaption": "Гистограмма частоты букв",
+  "profile.chart.keyFrequencyHistogramDescription": "Эта диаграмма показывает относительную частоту букв в виде гистограммы.",
+  "profile.chart.keyFrequencyHistogramLegend": "Цвет полос: {label1} – число попаданий, {label2} – число промахов, {label3} – соотношение промахов/попаданий (относительная частота промахов).",
+  "profile.chart.keySpeedCaption": "Скорость набора буквы",
+  "profile.chart.keySpeedDescription": "Эта диаграмма показывает изменение скорости набора для каждой буквы в отдельности.",
+  "profile.chart.keySpeedHistogramCaption": "Гистограмма скорости набора буквы",
+  "profile.chart.keySpeedHistogramDescription": "Эта диаграмма показывает среднюю скорость набора для каждой буквы в отдельности.",
+  "profile.chart.keySpeedLegend": "Горизонтальная ось: номер урока. Вертикальная ось: {label1} - скорость набора для текущей выбранной буквы.",
+  "profile.chart.progressOverviewCaption": "Обзор прогресса обучения",
+  "profile.chart.progressOverviewDescription": "Эта диаграмма показывает обзор прогресса обучения для всех букв.",
+  "profile.chart.progressOverviewLegend": "Горизонтальная ось: номер урока. Вертикальная ось: скорость набора для каждой отдельной буквы, {label1} - медленно, {label2} - быстро.",
+  "profile.chart.speedCaption": "Скорость набора",
+  "profile.chart.speedDescription": "Эта диаграмма показывает как меняется общая скорость набора текста с течением времени.",
+  "profile.chart.speedLegend": "Горизонтальная ось: номер урока. Вертикальная ось: {label1} - скорость набора, {label2} - точность набора, {label3} - количество букв в уроках.",
+  "profile.control.downloadDataLabel": "Скачать данные",
+  "profile.control.downloadDataTitle": "Скачайте все ваши данные в формате JSON.",
+  "profile.control.groupSelectorLabel": "Показать статистику для:",
+  "profile.control.resetDataConfirmation": "Вы уверены, что хотите удалить все данные и сбросить свой профиль? Эта операция является необратимой и не может быть отменена!",
+  "profile.control.resetDataLabel": "Сбросить данные",
+  "profile.control.resetDataTitle": "Безвозвратно удалите все ваши данные и сбросьте статистику.",
+  "profile.control.shareButtonLabel": "Копировать",
+  "profile.control.shareButtonTitle": "Скопируйте ссылку на ваш общедоступный профиль в буфер обмена.",
+  "profile.control.shareText": "Поделитесь вашим общедоступным профилем:",
+  "profile.control.visitButtonLabel": "Открыть",
+  "profile.control.visitButtonTitle": "Откройте страницу вашего общедоступного профиля.",
+  "profile.emptyChartCaption": "Недостаточно данных",
+  "profile.emptyChartDescription": "Закончите еще несколько уроков, чтобы получить больше данных.",
+  "profile.overview.averageSpeedLabel": "Средняя скорость",
+  "profile.overview.averageSpeedTitle": "Средняя скорость набора за все время.",
+  "profile.overview.averageSpeedTodayLabel": "Средняя скорость",
+  "profile.overview.averageSpeedTodayTitle": "Средняя скорость набора за сегодня.",
+  "profile.overview.statisticsAllTime": "Статистика за все время",
+  "profile.overview.statisticsToday": "Статистика за сегодня",
+  "profile.overview.topSpeedLabel": "Лучшая скорость",
+  "profile.overview.topSpeedTitle": "Лучшая скорость набора за все время.",
+  "profile.overview.topSpeedTodayLabel": "Лучшая скорость",
+  "profile.overview.topSpeedTodayTitle": "Лучшая скорость набора за сегодня.",
+  "profile.overview.totalLessonsLabel": "Число уроков",
+  "profile.overview.totalLessonsTitle": "Число законченных уроков за все время.",
+  "profile.overview.totalLessonsTodayLabel": "Число уроков",
+  "profile.overview.totalLessonsTodayTitle": "Число законченных уроков за сегодня.",
+  "profile.overview.totalTimeLabel": "Общее время",
+  "profile.overview.totalTimeTitle": "Общее время потраченное на упражнения.",
+  "profile.overview.totalTimeTodayLabel": "Время сегодня",
+  "profile.overview.totalTimeTodayTitle": "Время потраченное на упражнения за сегодня.",
+  "profile.smoothnessLabel": "Сглаживание:",
+  "profile.smoothnessTitle": "Устраните шум чтобы увидеть долгосрочный тренд.",
+  "settings.alphabetSizeLabel": "Добавить букв в слова:",
+  "settings.benfordsLawDescription": "<a>Закон Бенфорда</a> это наблюдение, согласно которому во многих реальных наборах числовых данных первая цифра, скорее всего, будет маленькой.",
+  "settings.benfordsLawLabel": "Закон Бенфорда.",
+  "settings.capitalLettersLabel": "Добавить заглавные буквы:",
+  "settings.cursorMovementLabel": "Движение курсора:",
+  "settings.cursorShapeLabel": "Форма курсора:",
+  "settings.customTextExamplesLabel": "Примеры:",
+  "settings.customTextInputPlaceholder": "Собственный текст...",
+  "settings.customTextLettersOnlyLabel": "Убрать знаки препинания",
+  "settings.customTextLettersOnlyTitle": "Убрать знаки препинания чтобы упростить набор текста.",
+  "settings.customTextLowercaseLabel": "Преобразовать в нижний регистр",
+  "settings.customTextLowercaseTitle": "Преобразовать весь текст в нижний регистр чтобы упростить набор.",
+  "settings.customTextRandomizeLabel": "Перемешать слова",
+  "settings.customTextRandomizeTitle": "Поместить слова из собственного текста в случайном порядке.",
+  "settings.dailyGoalDescription": "Установите время, которое вы хотите тратить на упражнения ежедневно. Это простое напоминание, которое вас ни в чем не ограничивает. Вы можете прекратить занятия, когда захотите.",
+  "settings.dailyGoalLabel": "Ежедневная цель:",
+  "settings.doneButtonLabel": "Готово",
+  "settings.emulateLayoutLabel": "Эмулировать раскладку",
+  "settings.emulateLayoutTitle": "Эмулировать выбранную раскладку даже если у вас в системе выбрана другая раскладка.",
+  "settings.forgiveErrorsDescription": "Эта настройка позволяет прощать некоторые типы ошибок путем их автоматическкого исправления. Это такие ошибки как неправильный символ в какой то позиции или пропущенный символ.",
+  "settings.forgiveErrorsLabel": "Прощать ошибки",
+  "settings.interfaceOptionsLegend": "Настройки интерфейса",
+  "settings.keyboardColorsLabel": "Цветные клавиши",
+  "settings.keyboardFullViewLabel": "Полный вид клавиатуры",
+  "settings.keyboardTabLabel": "Клавиатура",
+  "settings.lessonLengthLabel": "Добавить слов в уроки:",
+  "settings.lessonOptionsLegend": "Настройки уроков",
+  "settings.lessonsTabLabel": "Уроки",
+  "settings.longWordsOnlyLabel": "Только длинные слова",
+  "settings.miscellaneousTabLabel": "Разное",
+  "settings.optionsLegend": "Настройки",
+  "settings.playSoundsLabel": "Play sounds:",
+  "settings.previewLabel": "Предосмотр урока",
+  "settings.previewLegend": "Предосмотр",
+  "settings.punctuationLabel": "Добавить знаки препинания:",
+  "settings.selectLanguageLabel": "Язык:",
+  "settings.selectLanguageTitle": "Выберите язык клавиатурной раскладки.",
+  "settings.selectLayoutLabel": "Раскладка:",
+  "settings.selectLayoutTitle": "Выберите раскладку которую хотите изучить. Для одного языка может быть несколько раскладок.",
+  "settings.spaceSkipsWordsDescription": "If enabled, pressing the space key in the middle of a word will skip the remaining characters of the word and position cursor at the beginning of the next word.",
+  "settings.spaceSkipsWordsLabel": "Space skips words",
+  "settings.stopCursorOnErrorDescription": "Если включено, то курсор остановится до тех пор, пока не будет нажата правильная клавиша в текущей позиции. Если отключено, все ошибки будут накапливаться перед курсором и должны быть очищены клавишей удаления.",
+  "settings.stopCursorOnErrorLabel": "Остановить курсор при ошибке",
+  "settings.targetSpeedLabel": "Целевая скорость набора:",
+  "settings.textAppearanceLegend": "Вид текста",
+  "settings.typingAssistsDescription": "Это помощники при наборе текста, которые помогут вам сохранить концентрацию, автоматически исправляя ошибки.",
+  "settings.typingOptionsLegend": "Настройки набора",
+  "settings.typingSpeedUnitCaption": "Измерять скорость набора в:",
+  "settings.typingSpeedUnitDescription": "Для измерения скорости набора стандартной длинной слова считается пять символов на английском языке, включая пробелы и знаки препинания.",
+  "settings.typingTabLabel": "Набор текста",
+  "settings.whitespaceLabel": "Пробелы:",
+  "settings.wordListSizeLabel": "Количество слов:",
+  "settings.wordListSizeTitle": "Выберите, сколько общих слов использовать.",
+  "speedUnit.cpm.description": "Измерять скорость набора в символах в минуту.",
+  "speedUnit.cpm.name": "Символы в минуту",
+  "speedUnit.cps.description": "Измерять скорость набора в символах в секунду.",
+  "speedUnit.cps.name": "Символы в секунду",
+  "speedUnit.wpm.description": "Измерять скорость набора в словах в минуту.",
+  "speedUnit.wpm.name": "Слова в минуту",
+  "textStats.allWordCount": "Все слова",
+  "textStats.averageWordLength": "Средняя длина слова",
+  "textStats.charsExcludingWhitespace": "Символы без пробелов",
+  "textStats.charsIncludingWhitespace": "Символы с пробелами",
+  "textStats.mostCommonWords": "Список {count} самых часто встречающихся слов",
+  "textStats.timeToRead": "При средней скорости чтения {speed} WPM потребуется {time} для того, чтобы прочитать этот текст.",
+  "textStats.timeToType": "При средней скорости набора {speed} WPM потребуется {time} для того, чтобы напечатать этот текст.",
+  "textStats.uniqueWordCount": "Уникальные слова",
+  "textTools.emptyTextMessage": "Пожалуйста, предоставьте текст для того, чтобы посчитать его статистики.",
+  "textTools.exampleText": "(Пример текста, кликните здесь, чтобы убрать его.)",
+  "textTools.textInputPlaceholder": "Вставьте сюда свой текст",
+  "theme.enterFullscreenTitle": "Войти в полноэкранный режим.",
+  "theme.exitFullscreenTitle": "Выйти из полноэкранного режима.",
+  "theme.fullscreenNotSupportedTitle": "Полноэкранный режим не поддерживается.",
+  "theme.switchThemeTitle": "Переключиться на тему {name}.",
+  "tour.close": "Закрыть",
+  "tour.next": "Следующий",
+  "tour.previous": "Предыдущий"
 }

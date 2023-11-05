@@ -30,12 +30,20 @@ function findSourceFiles() {
 
 async function extractTranslations() {
   const defaultTranslationsFile = translationsPath(defaultLocale);
-  const defaultTranslations = await extract(findSourceFiles(), {
-    additionalFunctionNames: [],
-    additionalComponentNames: [],
-    preserveWhitespace: true,
-  });
-  writeJsonSync(defaultTranslationsFile, JSON.parse(defaultTranslations));
+  const defaultTranslations = JSON.parse(
+    await extract(findSourceFiles(), {
+      additionalFunctionNames: [],
+      additionalComponentNames: [],
+      preserveWhitespace: true,
+    }),
+  );
+  writeJsonSync(
+    defaultTranslationsFile,
+    remap(defaultTranslations, ([id, { defaultMessage }]) => [
+      id,
+      defaultMessage,
+    ]),
+  );
 }
 
 async function syncTranslations() {
@@ -47,35 +55,23 @@ async function syncTranslations() {
     }
     const translationsFile = translationsPath(locale);
     const translations = readJsonSync(translationsFile);
-    const entries = [];
-    for (const [id, defaultTranslation] of Object.entries(
-      defaultTranslations,
-    )) {
-      const translation = translations[id] ?? {
-        defaultMessage: defaultTranslation.defaultMessage,
-        description: defaultTranslation.description,
-      };
-      entries.push([
+    writeJsonSync(
+      translationsFile,
+      remap(defaultTranslations, ([id, message]) => [
         id,
-        {
-          defaultMessage: translation.defaultMessage,
-          description: defaultTranslation.description,
-        },
-      ]);
-    }
-    writeJsonSync(translationsFile, Object.fromEntries(entries));
+        translations[id] ?? message,
+      ]),
+    );
   }
 }
 
 async function compileMessages() {
   const format = {
     compile: (translations) => {
-      return Object.fromEntries(
-        Object.entries(translations).map(([id, { defaultMessage }]) => [
-          getHashDigest(id),
-          defaultMessage,
-        ]),
-      );
+      return remap(translations, ([id, message]) => [
+        getHashDigest(id),
+        message,
+      ]);
     },
   };
 
@@ -96,6 +92,10 @@ async function run() {
   await extractTranslations();
   await syncTranslations();
   await compileMessages();
+}
+
+function remap(entries, callback) {
+  return Object.fromEntries(Object.entries(entries).map(callback));
 }
 
 function translationsPath(locale) {

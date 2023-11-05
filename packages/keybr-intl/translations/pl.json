@@ -1,1530 +1,384 @@
 {
-  "account.accountDetailsLegend": {
-    "defaultMessage": "Dane konta",
-    "description": "Fieldset legend."
-  },
-  "account.accountPageDescription": {
-    "defaultMessage": "<p>Wykorzystujesz konto do zapisu swoich danych dotyczących pisania na klawiaturze na naszych serwerach w chmurze. Dostęp do swojego profilu możesz uzyskać z dowolnego komputera lub przeglądarki internetowej.</p>",
-    "description": "Freeform text."
-  },
-  "account.anonymizeButtonLabel": {
-    "defaultMessage": "Anonimizuj moje dane",
-    "description": "Button label."
-  },
-  "account.anonymizeButtonTitle": {
-    "defaultMessage": "Ukryj zdjęcie i nazwę użytkownika przed dostępem publicznym.",
-    "description": "Button title."
-  },
-  "account.anonymizeDescription": {
-    "defaultMessage": "Anonimizacja powoduje zastąpienie rzeczywistego zdjęcia oraz nazwy użytkownika naszymi danymi. Można dowolnie przełączać pomiędzy rzeczywistą i zanonimizowaną nazwą użytkownika.",
-    "description": "Freeform text."
-  },
-  "account.anonymousUserName": {
-    "defaultMessage": "Użytkownik anonimowy",
-    "description": "Text label."
-  },
-  "account.avatarDescription": {
-    "defaultMessage": "Twoje zdjęcie i nazwa użytkownika widoczne publicznie w twoim profilu, tabeli najlepszych wyników oraz w grze wieloosobowej.",
-    "description": "Freeform text."
-  },
-  "account.checkout.description": {
-    "defaultMessage": "Wykup konto premium, aby odblokować dodatkowe funkcje i pozbyć się reklam.",
-    "description": "Form description."
-  },
-  "account.checkout.title": {
-    "defaultMessage": "Konto premium",
-    "description": "Form title."
-  },
-  "account.checkoutButtonLabel": {
-    "defaultMessage": "Wykup konto premium",
-    "description": "Button label."
-  },
-  "account.checkoutButtonTitle": {
-    "defaultMessage": "Otwórz formularz finalizacji transakcji.",
-    "description": "Button title."
-  },
-  "account.deleteAccountButtonLabel": {
-    "defaultMessage": "Usuń konto",
-    "description": "Button label."
-  },
-  "account.deleteAccountButtonTitle": {
-    "defaultMessage": "Trwale usuń swoje konto.",
-    "description": "Button title."
-  },
-  "account.deleteAccountConfirmation": {
-    "defaultMessage": "Czy na pewno chcesz usunąć swoje konto? Ta operacja ma charakter trwały i nie można jej cofnąć! Jednak w każdej chwili można utworzyć nowe konto.",
-    "description": "Confirmation text."
-  },
-  "account.deleteAccountDescription": {
-    "defaultMessage": "Spowoduje to usunięcie z naszej bazy danych wszystkich informacji umożliwiających identyfikację twojej tożsamości, takie jak imię i nazwisko oraz adres e-mail. Tej operacji nie można cofnąć! Jeśli chcesz tylko wyczyścić swoje statystyki pisania na klawiaturze i rozpocząć od nowa, możesz to zrobić na stronie profilu.",
-    "description": "Freeform text."
-  },
-  "account.deleteAccountLegend": {
-    "defaultMessage": "Usuń konto",
-    "description": "Fieldset legend."
-  },
-  "account.emailFormDescription": {
-    "defaultMessage": "Proste logowanie bez użycia haseł. Wystarczy, że wpiszesz swój adres e-mail, a my wyślemy Ci link do logowania. Przejdź do swojej skrzynki odbiorczej, kliknij link, aby założyć nowe konto lub otworzyć istniejące konto dla podanego adresu e-mail. Link jest tymczasowy i wygasa za kilka godzin. Aby zalogować się ponownie później, wpisz ten sam adres e-mail, a my wyślemy nowy link do tego samego konta.",
-    "description": "Freeform text."
-  },
-  "account.emailPlaceholder": {
-    "defaultMessage": "Twój adres e-mail...",
-    "description": "Input field placeholder."
-  },
-  "account.emailSignInHeader": {
-    "defaultMessage": "Zaloguj się za pomocą adresu e-mail",
-    "description": "Freeform header."
-  },
-  "account.emailState.errorText": {
-    "defaultMessage": "Nie można wysłać wiadomości poczty elektronicznej na adres <strong>{email}</strong>: {message}",
-    "description": "Text message."
-  },
-  "account.emailState.sendingText": {
-    "defaultMessage": "Wysłanie wiadomości poczty elektronicznej z linkiem do logowania na adres <strong>{email}</strong>... Zaczekaj chwilę.",
-    "description": "Text message."
-  },
-  "account.emailState.sentText": {
-    "defaultMessage": "Wysłaliśmy wiadomość poczty elektronicznej z linkiem do logowania na adres <strong>{email}</strong>. Niedługo powinna dotrzeć – sprawdź swoją skrzynkę odbiorczą za kilka minut.",
-    "description": "Text message."
-  },
-  "account.emailTitle": {
-    "defaultMessage": "Na ten adres e-mail wyślemy link do logowania.",
-    "description": "Input field title."
-  },
-  "account.freeAccountOverview": {
-    "defaultMessage": "<p>Wykup <strong>konto premium</strong>, aby odblokować dodatkowe funkcje i pozbyć się reklam. Tutaj znajduje się lista korzyści wynikających z konta premium:</p><ul><li><strong>Brak reklam.</strong> Reklamy mogą dekoncentrować i spowalniać postępy w nauce. Jest to dobry sposób, aby się ich pozbyć.</li><li><strong>Brak skryptów śledzących.</strong> Skrypty śledzące zawsze są powiązane z reklamami. Pozbądź się wszystkich skryptów śledzących i uzyskaj pełną prywatność online.</li><li><strong>Bardzo krótki czas reakcji.</strong> Załadowanie reklam zajmuje trochę czasu. Pozbycie się ich oznacza krótszy czas ładowania wszystkich stron.</li></ul><p>Jest to jedna płatność, która gwarantuje dożywotni dostęp.</p>",
-    "description": "Freeform text."
-  },
-  "account.pageTitle": {
-    "defaultMessage": "Konto | {name}",
-    "description": "Page title."
-  },
-  "account.premiumAccountHeader": {
-    "defaultMessage": "Konto premium",
-    "description": "Freeform header."
-  },
-  "account.premiumAccountLegend": {
-    "defaultMessage": "Konto premium",
-    "description": "Fieldset legend."
-  },
-  "account.premiumAccountOverview": {
-    "defaultMessage": "<p>Dziękujemy za wykupienie konta premium! Teraz możesz korzystać z dodatkowych funkcji oraz pozbyć się reklam.</p>",
-    "description": "Freeform text."
-  },
-  "account.resendButtonLabel": {
-    "defaultMessage": "Wyślij ponownie",
-    "description": "Button label."
-  },
-  "account.resendButtonTitle": {
-    "defaultMessage": "Wyślij jeszcze jedną wiadomość e-mail.",
-    "description": "Button title."
-  },
-  "account.retryButtonLabel": {
-    "defaultMessage": "Spróbuj ponownie",
-    "description": "Button label."
-  },
-  "account.retryButtonTitle": {
-    "defaultMessage": "Wyślij kolejną wiadomość e-mail.",
-    "description": "Button title."
-  },
-  "account.sendButtonLabel": {
-    "defaultMessage": "Wyślij link do logowania",
-    "description": "Button label."
-  },
-  "account.sendButtonTitle": {
-    "defaultMessage": "Zaloguj się za pomocą adresu e-mail.",
-    "description": "Button title."
-  },
-  "account.signInPageDescription": {
-    "defaultMessage": "<p>Utwórz konto do zapisu swoich danych dotyczących pisania na klawiaturze na naszych serwerach w chmurze. Umożliwi to dostęp do twojego profilu z dowolnego komputera lub przeglądarki internetowej. Jeśli nie masz konta, twoje dane dotyczące pisania na klawiaturze będą przechowywane lokalnie i dostępne wyłącznie na jednym komputerze.</p><p>Nie przechowujemy żadnych haseł. Zamiast tego korzystamy z usług zewnętrznych firm do uwierzytelniania naszych użytkowników. Oferujemy kilka wygodnych sposobów tworzenia konta oraz logowania.</p><p>W każdej chwili można zrezygnować. Usunięcie konta jest tak proste, jak jego utworzenie.</p>",
-    "description": "Freeform text."
-  },
-  "account.signOutButtonLabel": {
-    "defaultMessage": "Wyloguj",
-    "description": "Button label."
-  },
-  "account.signOutButtonTitle": {
-    "defaultMessage": "Wyloguj się z aplikacji.",
-    "description": "Button title."
-  },
-  "account.socialFormDescription": {
-    "defaultMessage": "Zaloguj się za pośrednictwem preferowanych mediów społecznościowych. Szanujemy twoją prywatność i obiecujemy nie spamować twoich aktualności, twoich znajomych ani poczty elektronicznej.",
-    "description": "Freeform text."
-  },
-  "account.socialSignInButtonLabel": {
-    "defaultMessage": "Zaloguj się jako {name}",
-    "description": "Button title."
-  },
-  "account.socialSignInButtonTitle": {
-    "defaultMessage": "Zaloguj się za pośrednictwem mediów społecznościowych.",
-    "description": "Button title."
-  },
-  "account.socialSignInHeader": {
-    "defaultMessage": "Zaloguj się za pośrednictwem mediów społecznościowych",
-    "description": "Freeform header."
-  },
-  "calendar.weekDayName": {
-    "defaultMessage": "P|W|Ś|C|P|S|N",
-    "description": "Day of week name."
-  },
-  "characterClass.digits": {
-    "defaultMessage": "Cyfry",
-    "description": "Label."
-  },
-  "characterClass.letters": {
-    "defaultMessage": "Litery",
-    "description": "Label."
-  },
-  "characterClass.punctuationCharacters": {
-    "defaultMessage": "Znaki interpunkcyjne",
-    "description": "Label."
-  },
-  "characterClass.specialCharacters": {
-    "defaultMessage": "Znaki specjalne",
-    "description": "Label."
-  },
-  "common.javaScriptDisabledText": {
-    "defaultMessage": "Aplikacja nie działa, ponieważ twoja przeglądarka internetowa nie obsługuje języka JavaScript!",
-    "description": "Common text."
-  },
-  "common.loadingText": {
-    "defaultMessage": "Aplikacja ładuje się, zaczekaj chwilę...",
-    "description": "Common text."
-  },
-  "footer.discordLinkTitle": {
-    "defaultMessage": "Rozmawiaj na naszym serwerze Discord.",
-    "description": "Discord link title."
-  },
-  "footer.emailLinkTitle": {
-    "defaultMessage": "Wyślij komentarze i sugestie na adres info@keybr.com",
-    "description": "Email link title."
-  },
-  "footer.githubLinkTitle": {
-    "defaultMessage": "Kod źródłowy keybr.com jest dostępny na Githubie.",
-    "description": "Github link title."
-  },
-  "help.example1": {
-    "defaultMessage": "<a>Przykład 1</a>, od 30 do 70 słów na minutę po 4 godzinach i 20 minutach ćwiczeń w ciągu 15 dni.",
-    "description": "Example profile text."
-  },
-  "help.example2": {
-    "defaultMessage": "<a>Przykład 2</a>, od 35 do 70 słów na minutę po 2 godzinach i 20 minutach ćwiczeń w ciągu 12 dni.",
-    "description": "Example profile text."
-  },
-  "help.example3": {
-    "defaultMessage": "<a>Przykład 3</a>, dobry przeskok z mniej niż 20 do 40 słów na minutę po 5 godzinach i 30 minutach ćwiczeń w ciągu 11 dni.",
-    "description": "Example profile text."
-  },
-  "help.example4": {
-    "defaultMessage": "<a>Przykład 4</a>, po 2 godzinach i 10 minutach ćwiczeń w ciągu 11 dni tempo pisania na klawiaturze utrzymuje się na poziomie ~70 słów na minutę (co jest już dość dobrym wynikiem), lecz poprawia się precyzja.",
-    "description": "Example profile text."
-  },
-  "help.example5": {
-    "defaultMessage": "<a>Przykład 5</a>, od 20 do 45 słów na minutę po około 10 godzinach ćwiczeń w ciągu 22 dni (tak, czasami wymaga to więcej czasu).",
-    "description": "Example profile text."
-  },
-  "help.indicatorsCaption": {
-    "defaultMessage": "Kolory wskaźników.",
-    "description": "Figure legend."
-  },
-  "help.keyboardZonesCaption": {
-    "defaultMessage": "Strefy klawiatury oraz prawidłowe rozmieszczenie palców.",
-    "description": "Figure legend."
-  },
-  "help.rule1.body": {
-    "defaultMessage": "<p>Przy rozpoczynaniu ćwiczeń po raz pierwszy komputer nic nie wie o twoich umiejętnościach pisania na klawiaturze, dlatego wykorzystuje niewielki zestaw najczęściej używanych liter do generowania słów, takich jak „<em>E</em>”, „<em>N</em>”, „<em>I</em>”, „<em>T</em>”, „<em>R</em>” oraz „<em>L</em>”. Wszystkie generowane słowa będą składać się z tego niewielkiego zestawu liter, natomiast pozostałe litery będą pomijane. Statystyki dla liter są nieznane, dlatego odpowiadające im wskaźniki mają kolor szary.</p>",
-    "description": "Paragraph text."
-  },
-  "help.rule1.title": {
-    "defaultMessage": "Algorytm rozpoczyna od liter początkowych",
-    "description": "Header text."
-  },
-  "help.rule2.body": {
-    "defaultMessage": "<p>W miarę wpisywania wygenerowanych słów komputer sporządza statystyki dotyczące pisania na klawiaturze. Wskaźniki zaczynają zmieniać swoje kolory od czerwonego do zielonego. Kolor czerwony oznacza, że tempo wpisywania dla danego klawisza jest niska, natomiast kolor zielony oznacza przeciwny stan rzeczy. Na tym etapie twoim celem jest uzyskanie zielonego koloru wszystkich liter poprzez poprawę tempa pisania. W tym przykładzie litera „<em>T</em>” jest zaznaczona, ponieważ jej statystyki tempa pisania są najgorsze, dlatego staje się literą docelową. Litera docelowa będzie znajdować się w każdym wygenerowanym słowie i jest to bardzo ważna informacja. Oznacza to, że zawsze ćwiczysz ten klawisz, który sprawia ci najwięcej problemów.</p>",
-    "description": "Paragraph text."
-  },
-  "help.rule2.title": {
-    "defaultMessage": "Uczysz się początkowych liter",
-    "description": "Header text."
-  },
-  "help.rule3.body": {
-    "defaultMessage": "<p>Gdy twoje tempo pisania wzrośnie i wszystkie litery będą zielone, do zestawu dodana zostanie nowa litera „<em>S</em>”. Losowe słowa będą generowane z tego nowego, rozszerzonego zestawu liter. Litera „<em>S</em>” jest literą docelową i pojawia się w każdym generowanym słowie. Kolor wskaźnika tej litery jest szary, ponieważ jej statystyka pisania na klawiaturze jest nieznana.</p>",
-    "description": "Paragraph text."
-  },
-  "help.rule3.title": {
-    "defaultMessage": "Algorytm dodaje więcej liter",
-    "description": "Header text."
-  },
-  "help.rule4.body": {
-    "defaultMessage": "<p>Na tym etapie twoim celem jest sprawianie, że ta nowa litera stanie się zielona. Gdy do tego dojdzie, do zestawu dodana zostanie kolejna litera – i tak dalej. W rzeczywistości bardzo prawdopodobne jest, że tempo wpisywania poprzednich liter spadnie i zobaczysz, że znowu będą mieć kolor czerwony, jak przedstawiono na przykładzie. Jest to normalne i cel się nie zmienia – nowa litera docelowa ma uzyskać kolor zielony, aby odblokować kolejną.</p>",
-    "description": "Paragraph text."
-  },
-  "help.rule4.title": {
-    "defaultMessage": "Uczysz się dodatkowych liter",
-    "description": "Header text."
-  },
-  "help.rule5.body": {
-    "defaultMessage": "<p>Jeśli jesteś wystarczająco wytrwały, prędzej czy później wszystkie litery będą mieć kolor zielony. Gratulacje, udało ci się osiągnąć główny cel! Jednak to nie oznacza, że należy zakończyć naukę. Możesz kontynuować tak, długo, jak będziesz mieć ochotę.</p>",
-    "description": "Paragraph text."
-  },
-  "help.rule5.title": {
-    "defaultMessage": "Cykl się powtarza",
-    "description": "Header text."
-  },
-  "help.section1": {
-    "defaultMessage": "<h1>Nauka szybszego pisania na klawiaturze</h1><h2>Pisanie bez kontroli wzroku</h2><p>Ta aplikacja sieciowa pomoże ci nauczyć się <em>pisania bez kontroli wzroku</em>, które wykorzystuje pamięć mięśniową do znajdowania klawiszy na klawiaturze. Dzięki temu twoje tempo pisania na klawiaturze oraz dokładność mogą poprawić się dramatycznie. Przeciwieństwem tej techniki jest <em>pisanie palcami wskazującymi</em> – metoda, w której użytkownik patrzy na klawiaturę zamiast na ekran.</p>",
-    "description": "Freeform text."
-  },
-  "help.section2": {
-    "defaultMessage": "<h2>Metoda nauczania</h2><p>Ta aplikacja wykorzystuje unikatowe podejście. Stosuje statystyki i zaawansowane algorytmy do automatycznego tworzenia lekcji pisania na klawiaturze, które są dopasowane do twojego poziomu umiejętności. To działa na zasadzie powtarzającego się cyklu:</p><ol><li>Algorytm generuje listę losowych słów odpowiadających twoim umiejętnościom w zakresie pisania na klawiaturze. Poziom umiejętności użytkownika jest mierzony za pomocą zebranych do tej pory statystyk dotyczących pisania na klawiaturze. Słowa składają się z zestawu liter dobranych przez algorytm.</li><li>Użytkownik wpisuje wyświetlane słowa. Stara się przy tym popełnić jak najmniej błędów.</li><li>W miarę pisania algorytm gromadzi statystyki dotyczące pisania na klawiaturze, takie jak czas do naciśnięcia każdego klawisza. Na końcu te statystyki są używane do generowania kolejnej listy słów dla kroku pierwszego.</li></ol><p>Na każdym etapie użytkownik wpisuje wyświetloną listę słów, a komputer zajmuje się resztą.</p>",
-    "description": "Freeform text."
-  },
-  "help.section3": {
-    "defaultMessage": "<h2>Algorytm generowania słów</h2><p>Ta aplikacja generuje losowe, lecz możliwe do odczytania i wymowy słowa, stosując reguły fonetyczne danego języka. Słowa te wyglądają prawie jak naturalnie występujące w języku, a często nimi są. Wpisywanie tekstu, który ma sens, jest o wiele łatwiejsze niż powtarzanie losowych liter oraz pomaga w zapamiętywaniu częstych kombinacji klawiszy. Kluczowe znaczenie ma ten ostatni argument. Na przykład prawie niemożliwe jest, aby w języku angielskim litera „<em>W</em>” następowała po literze „<em>Z</em>” i taka kombinacja nie pojawia się w tej aplikacji. Zamiast niej użytkownik wpisuje częściej występujące słowa w języku angielskim, takie jak „<em>the</em>”, „<em>that</em>”, „<em>with</em>” i tak dalej. Niedługo opanujesz naprawdę szybkie wpisywanie kombinacji „<em>th</em>”.</p><p>Słowa są generowane z liter dobieranych na podstawie reguł określonych poniżej.</p>",
-    "description": "Freeform text."
-  },
-  "help.section4": {
-    "defaultMessage": "<p>Dokładne znaczenie każdego koloru wskaźnika podano w legendzie poniżej.</p>",
-    "description": "Freeform text."
-  },
-  "help.section5": {
-    "defaultMessage": "<h2>Właściwy sposób używania klawiatury</h2><p>Umieść wszystkie palce na środkowym szeregu, czyli tym z klawiszem <em>Caps Lock</em>. Na klawiszach „<em>F</em>” oraz „<em>J</em>” znajdują się niewielkie wypustki. Umieść palce wskazujące na tych wypustkach. Każdy z palców ma swój własny zestaw klawiszy, jak widać na kolejnej ilustracji.</p>",
-    "description": "Freeform text."
-  },
-  "help.section6": {
-    "defaultMessage": "<h2>Skuteczność tej aplikacji</h2><p>Wybraliśmy kilka przykładowych profili, aby pokazać ci jak wyglądają postępy innych w nauce pisania na klawiaturze bez kontroli wzroku dzięki korzystaniu z tej aplikacji. Są to prawdziwe, zanonimizowane profile użytkowników. Mamy nadzieję, że zainspirują cię do dalszej nauki!</p>",
-    "description": "Freeform text."
-  },
-  "highScores.layoutColumn": {
-    "defaultMessage": "Układ",
-    "description": "Table column name."
-  },
-  "highScores.scoreColumn": {
-    "defaultMessage": "Wynik",
-    "description": "Table column name."
-  },
-  "highScores.typingSpeedColumn": {
-    "defaultMessage": "Tempo",
-    "description": "Table column name."
-  },
-  "highScores.userColumn": {
-    "defaultMessage": "Użytkownik",
-    "description": "Table column name."
-  },
-  "language.be.name": {
-    "defaultMessage": "Białoruski (Беларуская)",
-    "description": "Language name."
-  },
-  "language.de.name": {
-    "defaultMessage": "Niemiecki (Deutsch)",
-    "description": "Language name."
-  },
-  "language.en.name": {
-    "defaultMessage": "Angielski (English)",
-    "description": "Language name."
-  },
-  "language.es.name": {
-    "defaultMessage": "Hiszpański (Español)",
-    "description": "Language name."
-  },
-  "language.fr.name": {
-    "defaultMessage": "Francuski (Français)",
-    "description": "Language name."
-  },
-  "language.it.name": {
-    "defaultMessage": "Włoski (Italiano)",
-    "description": "Language name."
-  },
-  "language.pl.name": {
-    "defaultMessage": "Polski",
-    "description": "Language name."
-  },
-  "language.pt.name": {
-    "defaultMessage": "Portugalski (Português)",
-    "description": "Language name."
-  },
-  "language.ru.name": {
-    "defaultMessage": "Rosyjski (Русский)",
-    "description": "Language name."
-  },
-  "language.uk.name": {
-    "defaultMessage": "Ukraiński (Українська)",
-    "description": "Language name."
-  },
-  "layouts.bottomRowKeysText": {
-    "defaultMessage": "Klawisze w dolnym szeregu:",
-    "description": "Field name."
-  },
-  "layouts.bottomRowKeysTitle": {
-    "defaultMessage": "Procent klawiszy naciskanych w szeregu z klawiszem Shift – im mniej, tym lepiej.",
-    "description": "Field title."
-  },
-  "layouts.description.colemak": {
-    "defaultMessage": "<p>Układ Colemak został zaprojektowany jako praktyczna alternatywa dla układów Qwerty i Dvoraka i zapewnia bardziej stopniową zmianę dla użytkowników, którzy już znają układ standardowy.</p><p>Układ Colemak został zaprojektowany w oparciu o układ QWERTY, zmieniając pozycję 17 klawiszy, natomiast zachowując pozycje QWERTY większości znaków niealfabetycznych oraz wiele popularnych skrótów klawiaturowych. Dzięki temu opanowanie go jest łatwiejsze dla osób, które już piszą na klawiaturze w układzie QWERTY. Niektóre cele tego układu są takie same, jak w przypadku układu Dvoraka, np. minimalizacja odległości pokonywanych przez palce oraz największe wykorzystanie środkowego szeregu.</p><p>Jest on obsługiwany przez wiele współczesnych systemów operacyjnych.</p>",
-    "description": "Freeform text."
-  },
-  "layouts.description.colemak_dh": {
-    "defaultMessage": "<p>The Colemak-DH layout serves as a practical alternative to both QWERTY and Dvorak keyboard layouts, offering a smoother transition for users accustomed to the standard layout. Building upon QWERTY, it relocates 17 keys while retaining the positions of non-alphabetic characters and popular shortcuts, making it user-friendly for those familiar with QWERTY. It shares design goals with Dvorak, emphasizing minimized finger movement and home row utilization. Colemak-DH enjoys widespread support across modern operating systems, ensuring accessibility and ergonomic benefits for users.</p>",
-    "description": "Freeform text."
-  },
-  "layouts.description.dvorak": {
-    "defaultMessage": "<p>Układ klawiatury Dvoraka został opracowany w 1936 r. przez Augusta Dvoraka i Williama Dealey’a dla języka angielskiego. Miał być szybszą i bardziej ergonomiczną alternatywą dla układu QWERTY. Zwolennicy układu Dvoraka uważają, że układ ten wymaga mniejszych ruchów palców, co w efekcie zmniejsza liczbę błędów, zwiększa tempo pisania na klawiaturze, zmniejsza urazy wynikające z powtarzalnego napięcia oraz zapewnia większy komfort pisania w porównaniu do układu QWERTY.</p><p>Jednak układ ten nie zastąpił układu QWERTY jako najczęściej stosowanego układu klawiatury gównie z tego względu, że układ QWERTY został wprowadzony 60 lat wcześniej.</p><p>Według stanu na 2005 r. rekord świata w tempie pisania na klawiaturze w języku angielskim należy do Barbary Blackburn, która używała układu Dvoraka.</p><p>Prawie wszystkie współczesne systemy operacyjne pozwalają użytkownikowi na przełączenie na układ Dvoraka – jest duża szansa, że twój system operacyjny również go obsługuje.</p>,",
-    "description": "Freeform text."
-  },
-  "layouts.description.qwerty": {
-    "defaultMessage": "<p>Wszystko zaczęło się w latach 60. XIX w. Wynalazca-amator, polityk, drukarz i dziennikarz z Milwaukee o nazwisku Christopher Latham Sholes często spędzał wolny czas na majsterkowaniu i tworzeniu nowych urządzeń, aby zwiększyć wydajność swojej pracy.</p><p>Według popularnej teorii Sholes musiał przeprojektować klawiaturę ze względu na mechaniczne usterki wczesnych maszyn do pisania. Poprzeczki łączące klawisz z płytką litery były zawieszone w cylindrze pod papierem. Jeśli użytkownik pisał szybko po sobie litery, których poprzeczki znajdowały się blisko siebie, delikatne urządzenia zacinały się.</p><p>Sholes przeprojektował układ, oddzielając najczęściej występujące sekwencje liter, takie jak „th” lub „he”. Produkcję maszyny na licencji rozpoczął w 1875 r. producent broni z Nowego Jorku, firma Remington and Sons. Maszynę nazwano Remington No. 1. Okazała się komercyjnym niewypałem, ponieważ nie sprzedało się wiele egzemplarzy.</p><p>Po otrzymaniu opinii zwrotnych firma Remington udoskonaliła maszynę i wyprodukowała wersję Remington No. 2. Nowa maszyna weszła na rynek w 1877 r. i okazała się dużym sukcesem. Jako pierwsza stosowała układ klawiatury QWERTY, jaki znamy dzisiaj, umożliwiając użytkownikom używanie wielkich i małych liter przez korzystanie z klawisza „Shift”.</p><p>Klasyczny układ klawiatury QWERTY jest niefortunnym przypadkiem historycznym, ponieważ jest nieoptymalny, dlatego opracowano inne układy.</p>,",
-    "description": "Freeform text."
-  },
-  "layouts.description.workman": {
-    "defaultMessage": "<p>Układ Workman zmniejszał boczne ruchy palców i nadgarstków oraz bardziej równoważył wykorzystanie lewej i prawej ręki. 21 znaków różni się w stosunku do układu Qwerty.</p><p>Układ Workman zapewnia wiele korzyści. Jest komfortowy, ergonomiczny i wydajny, a często naciskane klawisze są rozmieszczone w naturalnym zasięgu ruchu palców. Zredukowano konieczność bocznych ruchów palców i nadgarstków. Ogólnie palce bardzo mało się przemieszczają.</p><p>Wykazano, że układ Workman zapewnia ogólnie mniejsze przemieszczenia palców w języku angielskim niż nawet układ Colemak. Jednak generalnie powoduje większą częstotliwość n-gramów dla tego samego palca; innymi słowy jeden palec będzie musiał naciskać kolejno dwa klawisze częściej niż w przypadku innych układów.</p>",
-    "description": "Freeform text."
-  },
-  "layouts.heatmapCaption": {
-    "defaultMessage": "Mapa cieplna częstotliwości naciskania klawiszy dla {name}",
-    "description": "Figure caption."
-  },
-  "layouts.heatmapDescription": {
-    "defaultMessage": "Ten diagram pokazuje względne częstotliwości naciskania klawiszy w formie mapy cieplnej.",
-    "description": "Figure description."
-  },
-  "layouts.homeRowKeysText": {
-    "defaultMessage": "Klawisze w środkowym szeregu:",
-    "description": "Field name."
-  },
-  "layouts.homeRowKeysTitle": {
-    "defaultMessage": "Procent klawiszy naciskanych bez opuszczania wiersza z klawiszem Caps Lock – im więcej, tym lepiej.",
-    "description": "Field title."
-  },
-  "layouts.layoutNameHeader": {
-    "defaultMessage": "Układ {name}",
-    "description": "Text header."
-  },
-  "layouts.sameFingerKeysText": {
-    "defaultMessage": "Klawisze naciskane przez ten sam palec:",
-    "description": "Field name."
-  },
-  "layouts.sameFingerKeysTitle": {
-    "defaultMessage": "Procent klawiszy naciskanych przez ten sam palec – im mniej, tym lepiej.",
-    "description": "Field title."
-  },
-  "layouts.sameHandKeysText": {
-    "defaultMessage": "Klawisze naciskane przez tę samą rękę:",
-    "description": "Field name."
-  },
-  "layouts.sameHandKeysTitle": {
-    "defaultMessage": "Procent klawiszy naciskanych przez tę samą rękę – im mniej, tym lepiej.",
-    "description": "Field title."
-  },
-  "layouts.topRowKeysText": {
-    "defaultMessage": "Klawisze w górnym szeregu:",
-    "description": "Field name."
-  },
-  "layouts.topRowKeysTitle": {
-    "defaultMessage": "Procent klawiszy naciskanych w szeregu z klawiszem Tab – im mniej, tym lepiej.",
-    "description": "Field title."
-  },
-  "layouts.websiteLinkText": {
-    "defaultMessage": "Oficjalna witryna internetowa",
-    "description": "Link text."
-  },
-  "layouts.wikipediaLinkText": {
-    "defaultMessage": "Artykuł w Wikipedii",
-    "description": "Link text."
-  },
-  "learningRate.alreadyUnlocked": {
-    "defaultMessage": "This letter is already unlocked.",
-    "description": "Message text."
-  },
-  "learningRate.remainingLessons": {
-    "defaultMessage": "Approximately {remainingLessons} lessons remaining to unlock this letter ({certainty} certainty).",
-    "description": "Message text."
-  },
-  "learningRate.unknown": {
-    "defaultMessage": "Need more data to compute the remaining lessons to unlock this letter.",
-    "description": "Message text."
-  },
-  "lesson.boostedKeyText": {
-    "defaultMessage": "Klawisz o zwiększonej częstotliwości.",
-    "description": "Character details text."
-  },
-  "lesson.characterName": {
-    "defaultMessage": "Znak „{name}”",
-    "description": "Character details text."
-  },
-  "lesson.currentKeyPanelLabel": {
-    "defaultMessage": "Aktualny klawisz",
-    "description": "Panel label."
-  },
-  "lesson.dailyGoalPanelLabel": {
-    "defaultMessage": "Dzienny cel",
-    "description": "Panel label."
-  },
-  "lesson.dailyGoalPanelTitle": {
-    "defaultMessage": "Postęp na drodze do twojego dziennego celu.",
-    "description": "Panel title."
-  },
-  "lesson.forcedKeyText": {
-    "defaultMessage": "Klawisz ręcznie dodany.",
-    "description": "Character details text."
-  },
-  "lesson.gaugesPanelLabel": {
-    "defaultMessage": "Metryki",
-    "description": "Panel label."
-  },
-  "lesson.indicator.boostedFrequency": {
-    "defaultMessage": "Klawisz o zwiększonej częstotliwości. Znalezienie tego klawisza zajmuje ci najwięcej czasu, dlatego algorytm zdecydował o dodaniu go do każdego generowanego słowa.",
-    "description": "Indicator description."
-  },
-  "lesson.indicator.includedManually": {
-    "defaultMessage": "Klawisz, który został ręcznie dodany do lekcji.",
-    "description": "Indicator description."
-  },
-  "lesson.indicator.leastConfidence": {
-    "defaultMessage": "Skalibrowany klawisz z najniższym poziomem pewności. Im więcej razy naciśniesz ten klawisz, tym dokładniejszy będzie ten pomiar.",
-    "description": "Indicator description."
-  },
-  "lesson.indicator.mostConfidence": {
-    "defaultMessage": "Skalibrowany klawisz z najwyższym poziomem pewności. Im więcej razy naciśniesz ten klawisz, tym dokładniejszy będzie ten pomiar.",
-    "description": "Indicator description."
-  },
-  "lesson.indicator.notCalibrated": {
-    "defaultMessage": "Nieskalibrowany klawisz z nieznanym poziomem pewności. Ciągle nie naciśnięto jeszcze tego klawisza.",
-    "description": "Indicator description."
-  },
-  "lesson.indicator.notIncluded": {
-    "defaultMessage": "Klawisz, który jeszcze nie został uwzględniony w lekcjach.",
-    "description": "Indicator description."
-  },
-  "lesson.keySetPanelLabel": {
-    "defaultMessage": "Wszystkie klawisze",
-    "description": "Panel label."
-  },
-  "lesson.notCalibratedText": {
-    "defaultMessage": "Nie skalibrowano, wymagana większa liczba próbek",
-    "description": "Panel text."
-  },
-  "lessonType.customText.description": {
-    "defaultMessage": "Wygeneruj lekcje pisania na podstawie słów własnego, niestandardowego tekstu podanego tutaj. Wszystkie klawisze są domyślnie włączone. Ten tryb jest dla profesjonalistów.",
-    "description": "Description text."
-  },
-  "lessonType.customText.name": {
-    "defaultMessage": "Tekst niestandardowy",
-    "description": "Input field label."
-  },
-  "lessonType.guided.description": {
-    "defaultMessage": "Ten tryb będzie automatycznie generował lekcje pisania na klawiaturze z wykorzystaniem losowych słów oraz reguł fonetycznych twojego języka. Podstawowy zestaw jest powiększany dynamicznie w oparciu o twoje wyniki. Ten tryb jest przeznaczony dla początkujących.",
-    "description": "Description text."
-  },
-  "lessonType.guided.name": {
-    "defaultMessage": "Lekcje z prowadzeniem",
-    "description": "Input field label."
-  },
-  "lessonType.numbers.name": {
-    "defaultMessage": "Liczby",
-    "description": "Input field label."
-  },
-  "lessonType.wordList.description": {
-    "defaultMessage": "Wygeneruj lekcje pisania na podstawie listy najpopularniejszych słów w twoim języku. Wszystkie klawisze są domyślnie włączone. Ten tryb jest dla profesjonalistów.",
-    "description": "Description text."
-  },
-  "lessonType.wordlist.name": {
-    "defaultMessage": "Najczęstsze słowa",
-    "description": "Input field label."
-  },
-  "metric.accuracy.label": {
-    "defaultMessage": "Dokładność",
-    "description": "Label text."
-  },
-  "metric.accuracy.title": {
-    "defaultMessage": "Procent znaków wpisanych bez błędów w ostatniej lekcji.",
-    "description": "Value title."
-  },
-  "metric.accuracyChange.title": {
-    "defaultMessage": "Różnica względem wartości średniej.",
-    "description": "Value change title."
-  },
-  "metric.averageSpeed.label": {
-    "defaultMessage": "Średnie tempo pisania",
-    "description": "Label name."
-  },
-  "metric.averageSpeed.title": {
-    "defaultMessage": "Średnie tempo pisania na klawiaturze. Im więcej tym lepiej.",
-    "description": "Label title."
-  },
-  "metric.bestSpeed.label": {
-    "defaultMessage": "Najwyższe tempo",
-    "description": "Label name."
-  },
-  "metric.bestSpeed.title": {
-    "defaultMessage": "Najwyższe tempo pisania na klawiaturze we wszystkich lekcjach.. Im więcej tym lepiej.",
-    "description": "Label title."
-  },
-  "metric.confidenceLevel.label": {
-    "defaultMessage": "Poziom pewności",
-    "description": "Label name."
-  },
-  "metric.confidenceLevel.title": {
-    "defaultMessage": "Jak blisko jesteś odblokowania tej litery.",
-    "description": "Label title."
-  },
-  "metric.lastSpeed.label": {
-    "defaultMessage": "Ostatnie tempo",
-    "description": "Label name."
-  },
-  "metric.lastSpeed.title": {
-    "defaultMessage": "Tempo pisania na klawiaturze w ostatniej lekcji. Im więcej tym lepiej.",
-    "description": "Label title."
-  },
-  "metric.learningRate.label": {
-    "defaultMessage": "Tempo nauki",
-    "description": "Label name."
-  },
-  "metric.learningRate.title": {
-    "defaultMessage": "Jak bardzo prędkość pisania zmienia się z każdą lekcją.",
-    "description": "Label title."
-  },
-  "metric.learningRate.value": {
-    "defaultMessage": "{learningRate} na lekcję",
-    "description": "Value format."
-  },
-  "metric.score.label": {
-    "defaultMessage": "Wynik",
-    "description": "Label text."
-  },
-  "metric.score.title": {
-    "defaultMessage": "Wynik ostatniej lekcji w abstrakcyjnych punktach. Wyniki są większe przy szybszym pisaniu na klawiaturze z mniejszą liczbą błędów.",
-    "description": "Value title."
-  },
-  "metric.scoreChange.title": {
-    "defaultMessage": "Różnica względem wartości średniej.",
-    "description": "Value change title."
-  },
-  "metric.speed.label": {
-    "defaultMessage": "Tempo",
-    "description": "Label text."
-  },
-  "metric.speed.title": {
-    "defaultMessage": "Tempo pisania na klawiaturze w ostatniej lekcji.",
-    "description": "Value title."
-  },
-  "metric.speedChange.title": {
-    "defaultMessage": "Różnica względem wartości średniej.",
-    "description": "Value change title."
-  },
-  "metric.uncertainValue": {
-    "defaultMessage": "Niepewny",
-    "description": "Value text."
-  },
-  "multiplayer.intro": {
-    "defaultMessage": "Konkuruj z innymi graczami w tej grze online w trybie wieloosobowym. Im szybciej piszesz na klawiaturze, tym szybciej jedzie twój samochód. Pisz jak najszybciej, aby wygrać wyścig!",
-    "description": "Freeform text."
-  },
-  "multiplayer.state.connecting": {
-    "defaultMessage": "<h1>Łączenie z serwerem...</h1><p>Nawiązywanie połączenia z serwerem gry.</p>",
-    "description": "Freeform text."
-  },
-  "multiplayer.state.kicked": {
-    "defaultMessage": "<h1>Wyrzucono z gry</h1><p>Wyrzucono cię z gry za brak aktywności.</p>",
-    "description": "Freeform text."
-  },
-  "multiplayer.state.offline": {
-    "defaultMessage": "<h1>Serwer jest niedostępny</h1><p>Wystąpił problem z naszym serwerem gry.</p><p>Pracujemy nad rozwiązaniem tego problemu. Odwiedź tę stronę ponownie za kilka minut.</p>",
-    "description": "Freeform text."
-  },
-  "multiplayer.ui.countDownTicker": {
-    "defaultMessage": "Rozpoczęcie za {countDown}",
-    "description": "Ticker text."
-  },
-  "multiplayer.ui.distanceLabel": {
-    "defaultMessage": "Postęp",
-    "description": "Label."
-  },
-  "multiplayer.ui.distanceTitle": {
-    "defaultMessage": "Ukończony dystans.",
-    "description": "Label title."
-  },
-  "multiplayer.ui.errorsLabel": {
-    "defaultMessage": "Błędy",
-    "description": "Label."
-  },
-  "multiplayer.ui.errorsTitle": {
-    "defaultMessage": "Liczba błędów.",
-    "description": "Label title."
-  },
-  "multiplayer.ui.initializingTicker": {
-    "defaultMessage": "Inicjowanie...",
-    "description": "Ticker text."
-  },
-  "multiplayer.ui.nameLabel": {
-    "defaultMessage": "Tempo",
-    "description": "Label."
-  },
-  "multiplayer.ui.nameTitle": {
-    "defaultMessage": "Tempo pisania na klawiaturze.",
-    "description": "Label title."
-  },
-  "multiplayer.ui.positionLabel": {
-    "defaultMessage": "Pozycja",
-    "description": "Label."
-  },
-  "multiplayer.ui.positionTicker": {
-    "defaultMessage": "Miejsce {position}!",
-    "description": "Ticker text."
-  },
-  "multiplayer.ui.positionTitle": {
-    "defaultMessage": "Pozycja na torze.",
-    "description": "Label title."
-  },
-  "multiplayer.ui.raceFinishedTicker": {
-    "defaultMessage": "Wyścig ukończony!",
-    "description": "Ticker text."
-  },
-  "multiplayer.ui.raceStartedTicker": {
-    "defaultMessage": "Wyścig rozpoczęty!",
-    "description": "Ticker text."
-  },
-  "multiplayer.ui.startTicker": {
-    "defaultMessage": "START!",
-    "description": "Ticker text."
-  },
-  "multiplayer.ui.waitingMorePlayersTicker": {
-    "defaultMessage": "Oczekiwanie na pozostałych graczy.",
-    "description": "Ticker text."
-  },
-  "multiplayer.ui.waitingNextRaceTicker": {
-    "defaultMessage": "Zzz... Zaczekaj na kolejny wyścig",
-    "description": "Ticker text."
-  },
-  "multiplayer.ui.winnerPositionTicker": {
-    "defaultMessage": "Wyścig wygrany!",
-    "description": "Ticker text."
-  },
-  "nav.accountName": {
-    "defaultMessage": "{name}",
-    "description": "Navigation menu item name."
-  },
-  "nav.accountTitle": {
-    "defaultMessage": "Zarządzaj swoim kontem online.",
-    "description": "Navigation menu item title."
-  },
-  "nav.helpName": {
-    "defaultMessage": "Pomoc",
-    "description": "Navigation menu item name."
-  },
-  "nav.helpTitle": {
-    "defaultMessage": "Uzyskaj instrukcje na temat używania tej aplikacji.",
-    "description": "Navigation menu item title."
-  },
-  "nav.highScoresName": {
-    "defaultMessage": "Najlepsze wyniki",
-    "description": "Navigation menu item name."
-  },
-  "nav.highScoresTitle": {
-    "defaultMessage": "Zobacz tabelę najlepszych wyników z użytkownikami o najwyższym tempie pisania na klawiaturze.",
-    "description": "Navigation menu item title."
-  },
-  "nav.layoutsName": {
-    "defaultMessage": "Układy",
-    "description": "Navigation menu item name."
-  },
-  "nav.layoutsTitle": {
-    "defaultMessage": "Porównaj wydajność różnych układów klawiatury.",
-    "description": "Navigation menu item title."
-  },
-  "nav.multiplayerName": {
-    "defaultMessage": "Tryb wieloosobowy",
-    "description": "Navigation menu item name."
-  },
-  "nav.multiplayerTitle": {
-    "defaultMessage": "Konkuruj z innymi graczami w grze online w trybie wieloosobowym.",
-    "description": "Navigation menu item title."
-  },
-  "nav.practiceName": {
-    "defaultMessage": "Ćwiczenia",
-    "description": "Navigation menu item name."
-  },
-  "nav.practiceTitle": {
-    "defaultMessage": "Przechodź przez lekcje pisania na klawiaturze, aby poprawić swoje tempo pisania na klawiaturze.",
-    "description": "Navigation menu item title."
-  },
-  "nav.privacyPolicyName": {
-    "defaultMessage": "Zasady ochrony prywatności",
-    "description": "Navigation menu item name."
-  },
-  "nav.privacyPolicyTitle": {
-    "defaultMessage": "Zasady ochrony prywatności.",
-    "description": "Navigation menu item title."
-  },
-  "nav.profileName": {
-    "defaultMessage": "Profil",
-    "description": "Navigation menu item name."
-  },
-  "nav.profileTitle": {
-    "defaultMessage": "Zobacz szczegółowe statystyki swoich postępów w nauce.",
-    "description": "Navigation menu item title."
-  },
-  "nav.publicProfileName": {
-    "defaultMessage": "Publiczny profil {name}",
-    "description": "Navigation menu item name."
-  },
-  "nav.publicProfileTitle": {
-    "defaultMessage": "Obserwuj publiczny profil użytkownika {name}.",
-    "description": "Navigation menu item title."
-  },
-  "nav.signInName": {
-    "defaultMessage": "Zarejestruj się",
-    "description": "Navigation menu item name."
-  },
-  "nav.signInTitle": {
-    "defaultMessage": "Zarejestruj się do konta online.",
-    "description": "Navigation menu item title."
-  },
-  "nav.termsOfServiceName": {
-    "defaultMessage": "Regulamin",
-    "description": "Navigation menu item name."
-  },
-  "nav.termsOfServiceTitle": {
-    "defaultMessage": "Regulamin.",
-    "description": "Navigation menu item title."
-  },
-  "nav.textToolsName": {
-    "defaultMessage": "Narzędzia tekstowe",
-    "description": "Navigation menu item name."
-  },
-  "nav.textToolsTitle": {
-    "defaultMessage": "Zliczaj znaki i słowa w swoim tekście.",
-    "description": "Navigation menu item title."
-  },
-  "nav.typingTestName": {
-    "defaultMessage": "Test Pisania",
-    "description": "Navigation menu item name."
-  },
-  "nav.typingTestTitle": {
-    "defaultMessage": "Zrób test szybkości pisania.",
-    "description": "Navigation menu item title."
-  },
-  "page.help.description": {
-    "defaultMessage": "Naucz się szybciej pisać na klawiaturze.",
-    "description": "Page description."
-  },
-  "page.help.title": {
-    "defaultMessage": "Pomoc",
-    "description": "Page title."
-  },
-  "page.highScores.content": {
-    "defaultMessage": "<h1>Najlepsze wyniki</h1><p>Tabela z użytkownikami o największym tempie pisania na klawiaturze w ostatnich kilku dniach ułożona w kolejności od najlepszych do najgorszych wyników. Wyniki są mierzone z uwzględnieniem tempa pisania na klawiaturze, długości tekstu, liczby różnych znaków w tekście oraz liczby błędów. Formuła zakłada nagradzanie większego tempa, dłuższego tekstu oraz większej liczby liter, lecz karze za liczbę błędów.</p>",
-    "description": "Page content."
-  },
-  "page.highScores.description": {
-    "defaultMessage": "Użytkownicy w tabeli są wyświetlani w kolejności tempa pisania na klawiaturze.",
-    "description": "Page description."
-  },
-  "page.highScores.title": {
-    "defaultMessage": "Tabela najlepszych wyników",
-    "description": "Page title."
-  },
-  "page.layouts.description": {
-    "defaultMessage": "Wykresy porównujące układy klawiatury.",
-    "description": "Page description."
-  },
-  "page.layouts.title": {
-    "defaultMessage": "Układy klawiatury.",
-    "description": "Page title."
-  },
-  "page.multiplayer.content": {
-    "defaultMessage": "<h1>Gra online w trybie wieloosobowych polegająca na pisaniu na klawiaturze</h1><p>Konkuruj z innymi graczami w tej grze online w trybie wieloosobowym polegającej na pisaniu na klawiaturze. Im szybciej piszesz na klawiaturze, tym szybciej jedzie twój samochód. Pisz jak najszybciej, aby wygrać wyścig!</p>",
-    "description": "Page content."
-  },
-  "page.multiplayer.description": {
-    "defaultMessage": "Gra wyścigowa online w trybie wieloosobowym.",
-    "description": "Page description."
-  },
-  "page.multiplayer.title": {
-    "defaultMessage": "Tryb wieloosobowy",
-    "description": "Page title."
-  },
-  "page.practice.content": {
-    "defaultMessage": "<h1>Lekcje pisania na klawiaturze</h1><p>Wykonaj test tempa pisania na klawiaturze, naucz się pisać szybciej z mniejszą liczbą błędów dzięki tym darmowym lekcjom pisania na klawiaturze online.</p>",
-    "description": "Page content."
-  },
-  "page.practice.description": {
-    "defaultMessage": "Wykonaj test tempa pisania na klawiaturze, przechodź przez lekcje pisania na klawiaturze, naucz się pisać na klawiaturze szybciej.",
-    "description": "Page description."
-  },
-  "page.practice.title": {
-    "defaultMessage": "Ćwiczenia w pisaniu na klawiaturze",
-    "description": "Page title."
-  },
-  "page.profile.content": {
-    "defaultMessage": "<h1>Mój profil</h1><p>To jest strona ze szczegółowymi statystykami twoich postępów w nauce. Im więcej ukończonych lekcji, tym bardziej szczegółowe i dokładne będą to statystyki.</p>",
-    "description": "Page content."
-  },
-  "page.profile.description": {
-    "defaultMessage": "Mój szczegółowy profil.",
-    "description": "Page description."
-  },
-  "page.profile.title": {
-    "defaultMessage": "Mój profil",
-    "description": "Page title."
-  },
-  "page.publicProfile.description": {
-    "defaultMessage": "Publiczny profil użytkownika „{name}”.",
-    "description": "Page description."
-  },
-  "page.publicProfile.title": {
-    "defaultMessage": "{name} | Profil publiczny",
-    "description": "Page title."
-  },
-  "page.textTools.content": {
-    "defaultMessage": "<h1>Narzędzia tekstowe</h1><p>Zliczaj znaki i słowa w swoim tekście. Dowiedz się, jakie słowa występują najczęściej. Zmierz czas wymagany do wpisania i odczytania tych słów.</p>",
-    "description": "Page content."
-  },
-  "page.textTools.description": {
-    "defaultMessage": "Zliczaj znaki i słowa w swoim tekście.",
-    "description": "Page description."
-  },
-  "page.textTools.title": {
-    "defaultMessage": "Narzędzia tekstowe",
-    "description": "Page title."
-  },
-  "page.typingTest.content": {
-    "defaultMessage": "<h1>Typing Speed Test</h1><p>Take a typing speed test.</p>",
-    "description": "Page content."
-  },
-  "page.typingTest.description": {
-    "defaultMessage": "Take a typing speed test.",
-    "description": "Page description."
-  },
-  "page.typingTest.title": {
-    "defaultMessage": "Speed Test",
-    "description": "Page title."
-  },
-  "practice.focusText": {
-    "defaultMessage": "Kliknij, aby aktywować...",
-    "description": "Freeform text."
-  },
-  "practice.resetLessonButtonTitle": {
-    "defaultMessage": "Zresetuj bieżącą lekcję (Ctrl + strzałka w lewo).",
-    "description": "Input field title."
-  },
-  "practice.settingButtonName": {
-    "defaultMessage": "Ustawienia...",
-    "description": "Input field label."
-  },
-  "practice.settingButtonTitle": {
-    "defaultMessage": "Zmień ustawienia lekcji, konfiguruj język, układ klawiatury itp.",
-    "description": "Input field title."
-  },
-  "practice.showHelpSlidesButtonTitle": {
-    "defaultMessage": "Wyświetl samouczek ze slajdami pomocy.",
-    "description": "Input field title."
-  },
-  "practice.skipLessonButtonTitle": {
-    "defaultMessage": "Pomiń bieżącą lekcję (Ctrl + strzałka w prawo).",
-    "description": "Input field title."
-  },
-  "practice.switchInterfaceButtonTitle": {
-    "defaultMessage": "Przełącz bieżący układ interfejsu.",
-    "description": "Input field title."
-  },
-  "practice.tourSlide1": {
-    "defaultMessage": "<h1>Nauka szybszego pisania na klawiaturze</h1><p>Ta aplikacja sieciowa pomoże ci nauczyć się <em>pisania bez kontroli wzroku</em>, które wykorzystuje pamięć mięśniową do znajdowania klawiszy. Dzięki temu twoje tempo pisania na klawiaturze oraz dokładność mogą poprawić się dramatycznie. Przeciwieństwem tej techniki jest <em>pisanie palcami wskazującymi</em> – metoda, w której użytkownik patrzy na klawiaturę zamiast na ekran.</p><p>To jest krótki samouczek objaśniający działanie tej aplikacji.</p><p>Można używać strzałek w lewo i w prawo, aby zmieniać slajdy.</p>",
-    "description": "Slide content."
-  },
-  "practice.tourSlide10": {
-    "defaultMessage": "<p>Ten wskaźnik pokazuje bieżący podzestaw liter wykorzystywanych do generowania lekcji oraz poziom pewności użytkownika dla każdej litery w podzestawie:</p>",
-    "description": "Slide content."
-  },
-  "practice.tourSlide11": {
-    "defaultMessage": "<p>Ten wskaźnik pokazuje szczegółowe informacje na temat klawisza o zwiększonej częstotliwości występowania, który w danym momencie jest uwzględniany w każdym generowanym słowie:</p>[dl][dt]Średnie tempo pisania na klawiaturze[/dt][dd]Twoje średnie tempo pisania na klawiaturze dla danego klawisza.[/dd][dt]Najwyższe tempo pisania na klawiaturze[/dt][dd]Twoje najwyższe tempo pisania na klawiaturze dla danego klawisza.[/dd][dt]Poziom pewności[/dt][dd]Wartość liczbowa od 0 do 1 obliczana na podstawie twojego tempa pisania na klawiaturze oraz wskazująca znajomość danego klawisza. Klawisz uznaje się za w pełni przyswojony, gdy jego poziom pewności osiągnie wartość jeden.[/dd][/dl]",
-    "description": "Slide content."
-  },
-  "practice.tourSlide12": {
-    "defaultMessage": "<p>This indicator shows details about the letter with boosted frequency, which is currently included in every generated word:</p><dl><dt>Best typing speed</dt><dd>Your best typing speed for this individual letter.</dd><dt>Confidence level</dt><dd>A number in range from zero to one which is computed using your typing speed, and indicates your familiarity with this letter. A letter is considered fully learned when it's confidence level reaches one.</dd><dt>Learning rate</dt><dd>How your typing speed is changing with each lesson.</dd></dl>",
-    "description": "Slide content."
-  },
-  "practice.tourSlide2": {
-    "defaultMessage": "<p>Nasza metoda nauczania opiera się na następujących zasadach:</p><p>Nie stosujemy nudnych, powtarzalnych ćwiczeń. W odróżnieniu od większości pozostałych aplikacji do nauki pisania na klawiaturze, nie zmuszamy cię do ciągłego powtarzania takich samych lekcji, np. „<em>jjf jjk jjf jjk</em>”. Jest to bardzo irytujące i w bardzo niewielki sposób przyczynia się do ogólnej nauki.</p><p>Ta aplikacja wykorzystuje zaawansowany algorytm komputerowy do generowania lekcji pisania na klawiaturze, które są dopasowane do twojego poziomu umiejętności. Lekcje te składają się z losowych słów generowanych z wykorzystaniem podzestawu wszystkich liter. Wielkość podzestawu oraz częstotliwość poszczególnych liter są kontrolowane przez algorytm, aby zapewnić jak największą skuteczność nauki.</p>",
-    "description": "Slide content."
-  },
-  "practice.tourSlide3": {
-    "defaultMessage": "<p>Na początku słowa są generowane z wykorzystaniem niewielkiego podzestawu najczęściej używanych liter alfabetu.</p><p>Podczas wpisywania tych słów aplikacja mierzy czas wpisywania każdej litery z podzestawu. Czas ten jest wykorzystywany do pomiaru twoich postępów w nauce. Im lepiej znasz daną literę, tym mniej czasu potrzebujesz na jej wpisanie.</p><p>Po zapoznaniu się z całym bieżącym podzestawem liter algorytm rozszerzy go przez dodawanie coraz większej liczby liter do podzestawu.</p>",
-    "description": "Slide content."
-  },
-  "practice.tourSlide4": {
-    "defaultMessage": "<p>Gdy algorytm dodaje do bieżącego podzestawu nową literę, częstotliwość tej litery jest sztucznie zwiększana, tak aby znajdowała się w każdym generowanym słowie w lekcji.</p><p>Algorytm może również sztucznie zmieniać częstotliwość liter, kładąc większy nacisk na litery o najgorszych statystykach czasu pisania.</p><p>Oznacza to, że użytkownik zawsze będzie wpisywał te litery, które zna najsłabiej.</p>",
-    "description": "Slide content."
-  },
-  "practice.tourSlide5": {
-    "defaultMessage": "<p>To jest panel tekstowy. Wyświetla tekst do wpisania. Tekst zmienia się z każdą nową lekcją. Tekst jest generowany automatycznie z aktualnego podzestawu liter. Większość słów jest nieprawdziwych, lecz generowanych według reguł fonetycznych twojego języka, tak aby brzmiały naturalnie i były łatwe w wymowie. Poza tym, że jest to zabawne ćwiczenie, zapewnia nam elastyczność wykorzystywania większej liczby słów niż w rzeczywistości istnieje.</p>",
-    "description": "Slide content."
-  },
-  "practice.tourSlide6": {
-    "defaultMessage": "<p>To jest klawiatura wirtualna. Pomaga w zapamiętaniu pozycji klawiszy. Korzystaj z niej, aby znajdować klawisze i staraj się nie patrzeć na klawiaturę fizyczną. Na klawiszach <em>F</em> oraz <em>J</em> twojej klawiatury znajdują się niewielkie wypustki. Użyj ich do prawidłowego ustawienia palców wskazujących bez patrzenia na klawisze. Gdy palce wskazujące znajdą się we właściwej pozycji, użytkownik będzie mógł zlokalizować pozostałe klawisze.</p>",
-    "description": "Slide content."
-  },
-  "practice.tourSlide7": {
-    "defaultMessage": "<p>To jest wskaźnik tempa pisania na klawiaturze oraz różnicy względem wartości średniej. Celem jest zwiększenie tej liczby, czyli uzyskanie jak najwyższych wartości.</p><p>Tempo pisania na klawiaturze jest mierzone w <em>słowach na minutę</em> lub <em>znakach na minutę</em>. Definicja słowa jest ujednolicona do pięciu znaków, dlatego tempo <em>10 słów na minutę</em> jest równa tempu <em>50 znaków na minutę</em>.</p><p>Można przełączać pomiędzy trybami wyświetlania <em>słów na minutę</em> a <em>znaków na minutę</em> na stronie Ustawienia.</p>",
-    "description": "Slide content."
-  },
-  "practice.tourSlide8": {
-    "defaultMessage": "<p>To jest wskaźnik dokładności oraz różnicy względem wartości średniej. Celem jest zwiększenie tej liczby, czyli uzyskanie jak najwyższych wartości.</p><p>Dokładność jest obliczana jako procent znaków wpisanych bez błędów. Wiele błędów dotyczących tego samego klawisza jest liczonych jako jeden błąd.</p>",
-    "description": "Slide content."
-  },
-  "practice.tourSlide9": {
-    "defaultMessage": "<p>To jest wskaźnik wyniku dotyczącego pisania na klawiaturze w abstrakcyjnych punktach oraz różnica względem wartości średniej.</p><p>Wynik jest obliczane na podstawie tempa pisania na klawiaturze, liczby błędów oraz bieżącej wielkości zestawu liter. Formuła nagradza tempo pisania i karze za liczbę błędów. Nie można uzyskać wysokiego wyniku tylko dzięki wysokiemu tempu pisania na klawiaturze przy popełnianiu wielu błędów.</p><p>Użytkownicy o najwyższych wynikach są umieszczani w tabeli najlepszych wyników.</p>",
-    "description": "Slide content."
-  },
-  "profile.calendar.averageSpeedTitle": {
-    "defaultMessage": "Średnie tempo: {value}",
-    "description": "Calendar cell title."
-  },
-  "profile.calendar.topSpeedTitle": {
-    "defaultMessage": "Najwyższe tempo: {value}",
-    "description": "Calendar cell title."
-  },
-  "profile.calendar.totalLessonsTitle": {
-    "defaultMessage": "Liczba lekcji: {value}",
-    "description": "Calendar cell title."
-  },
-  "profile.calendar.totalTimeTitle": {
-    "defaultMessage": "Czas trwania lekcji: {value}",
-    "description": "Calendar cell title."
-  },
-  "profile.chart.calendarCaption": {
-    "defaultMessage": "Kalendarz ćwiczeń",
-    "description": "Chart caption."
-  },
-  "profile.chart.calendarDescription": {
-    "defaultMessage": "Ten kalendarz pokazuje daty aktywnej nauki.",
-    "description": "Chart description."
-  },
-  "profile.chart.compareAverageSpeedText": {
-    "defaultMessage": "Twoje najlepsze średnie tempo jest lepsze niż {value} innych ludzi.",
-    "description": "Section paragraph."
-  },
-  "profile.chart.compareTitle": {
-    "defaultMessage": "Porównaj się",
-    "description": "Section title."
-  },
-  "profile.chart.compareTopSpeedText": {
-    "defaultMessage": "Twoje najlepsze najwyższe tempo jest lepsze niż {value} innych ludzi.",
-    "description": "Section paragraph."
-  },
-  "profile.chart.histogramCaption": {
-    "defaultMessage": "Względne tempo pisania na klawiaturze",
-    "description": "Chart caption."
-  },
-  "profile.chart.histogramDescription": {
-    "defaultMessage": "Jest to histogram tempa pisania na klawiaturze wszystkich użytkowników oraz twoja pozycja względem nich.",
-    "description": "Chart description."
-  },
-  "profile.chart.histogramLegend": {
-    "defaultMessage": "Zobacz jak szybko piszesz na klawiaturze względem innych użytkowników. Im wyżej znajduje się linia, tym więcej osób pisze w tym tempie. Twoja pozycja jest oznaczona kolorowymi liniami pionowymi.",
-    "description": "Chart legend."
-  },
-  "profile.chart.keyFrequencyHeatmapCaption": {
-    "defaultMessage": "Mapa cieplna częstotliwości naciskania klawiszy",
-    "description": "Chart caption."
-  },
-  "profile.chart.keyFrequencyHeatmapDescription": {
-    "defaultMessage": "Ten diagram pokazuje względne częstotliwości naciskania klawiszy w formie mapy cieplnej.",
-    "description": "Chart description."
-  },
-  "profile.chart.keyFrequencyHistogramCaption": {
-    "defaultMessage": "Histogram częstotliwości naciskania klawiszy",
-    "description": "Chart caption."
-  },
-  "profile.chart.keyFrequencyHistogramDescription": {
-    "defaultMessage": "Ten wykres pokazuje względne częstotliwości naciskania klawiszy.",
-    "description": "Chart description."
-  },
-  "profile.chart.keyFrequencyHistogramLegend": {
-    "defaultMessage": "Kolor linii: {label1} – liczba naciśnięć, {label2} – liczba nietrafionych prób, {label3} – stosunek nietrafionych prób/naciśnięć (względna częstotliwość nietrafionych prób).",
-    "description": "Chart legend."
-  },
-  "profile.chart.keySpeedCaption": {
-    "defaultMessage": "Tempo naciskania klawiszy",
-    "description": "Chart caption."
-  },
-  "profile.chart.keySpeedDescription": {
-    "defaultMessage": "Ten wykres pokazuje zmianę tempa pisania na klawiaturze dla każdego klawisza.",
-    "description": "Chart description."
-  },
-  "profile.chart.keySpeedHistogramCaption": {
-    "defaultMessage": "Histogram tempa pisania na klawiaturze dla klawiszy",
-    "description": "Chart caption."
-  },
-  "profile.chart.keySpeedHistogramDescription": {
-    "defaultMessage": "Ten wykres pokazuje średnie tempo pisania na klawiaturze dla każdego klawisza.",
-    "description": "Chart description."
-  },
-  "profile.chart.keySpeedLegend": {
-    "defaultMessage": "Oś pozioma: numer lekcji. Oś pionowa: {label1} – tempo pisania na klawiaturze dla aktualnie wybranego klawisza.",
-    "description": "Chart legend."
-  },
-  "profile.chart.progressOverviewCaption": {
-    "defaultMessage": "Ogólne postępy w nauce",
-    "description": "Chart caption."
-  },
-  "profile.chart.progressOverviewDescription": {
-    "defaultMessage": "Ten wykres pokazuje ogólne postępy w nauce dla wszystkich klawiszy.",
-    "description": "Chart description."
-  },
-  "profile.chart.progressOverviewLegend": {
-    "defaultMessage": "Oś pozioma: numer lekcji. Oś pionowa: tempo pisania na klawiaturze dla każdego klawisza, {label1} – niskie, {label2} – wysokie.",
-    "description": "Chart legend."
-  },
-  "profile.chart.speedCaption": {
-    "defaultMessage": "Tempo pisania na klawiaturze",
-    "description": "Chart caption."
-  },
-  "profile.chart.speedDescription": {
-    "defaultMessage": "Ten wykres pokazuje zmiany ogólnego tempa pisania na klawiaturze w czasie.",
-    "description": "Chart description."
-  },
-  "profile.chart.speedLegend": {
-    "defaultMessage": "Oś pozioma: numer lekcji. Oś pionowa: {label1} – tempo pisania na klawiaturze, {label2} – dokładność pisania, {label3} – liczba klawiszy w lekcjach.",
-    "description": "Chart legend."
-  },
-  "profile.control.downloadDataLabel": {
-    "defaultMessage": "Pobierz dane",
-    "description": "Button label."
-  },
-  "profile.control.downloadDataTitle": {
-    "defaultMessage": "Pobierz wszystkie swoje dane dotyczące pisania na klawiaturze w formacie JSON.",
-    "description": "Button title."
-  },
-  "profile.control.groupSelectorLabel": {
-    "defaultMessage": "Wyświetl statystyki dla:",
-    "description": "List label."
-  },
-  "profile.control.resetDataConfirmation": {
-    "defaultMessage": "Czy na pewno chcesz usunąć wszystkie dane i zresetować swój profil? Ta operacja ma charakter trwały i nie można jej cofnąć!",
-    "description": "Confirmation text."
-  },
-  "profile.control.resetDataLabel": {
-    "defaultMessage": "Zresetuj statystyki",
-    "description": "Button label."
-  },
-  "profile.control.resetDataTitle": {
-    "defaultMessage": "Trwale usuń wszystkie swoje dane dotyczące pisania na klawiaturze i zresetuj statystyki.",
-    "description": "Button title."
-  },
-  "profile.control.shareButtonLabel": {
-    "defaultMessage": "Kopiuj",
-    "description": "Button label."
-  },
-  "profile.control.shareButtonTitle": {
-    "defaultMessage": "Kopiuj łącze do profilu do bufora.",
-    "description": "Button title."
-  },
-  "profile.control.shareText": {
-    "defaultMessage": "Udostępnij swój profil:",
-    "description": "Share profile text."
-  },
-  "profile.control.visitButtonLabel": {
-    "defaultMessage": "Przejdź",
-    "description": "Button label."
-  },
-  "profile.control.visitButtonTitle": {
-    "defaultMessage": "Przejdź na stronę swojego publicznego profilu.",
-    "description": "Button title."
-  },
-  "profile.emptyChartCaption": {
-    "defaultMessage": "Zbyt mało danych",
-    "description": "Empty chart message."
-  },
-  "profile.emptyChartDescription": {
-    "defaultMessage": "Ukończ jeszcze kilka lekcji, aby uzyskać więcej punktów danych.",
-    "description": "Empty chart message."
-  },
-  "profile.overview.averageSpeedLabel": {
-    "defaultMessage": "Średnie tempo",
-    "description": "Gauge label."
-  },
-  "profile.overview.averageSpeedTitle": {
-    "defaultMessage": "Średnie tempo pisania na klawiaturze.",
-    "description": "Gauge title."
-  },
-  "profile.overview.averageSpeedTodayLabel": {
-    "defaultMessage": "Średnie tempo",
-    "description": "Gauge label."
-  },
-  "profile.overview.averageSpeedTodayTitle": {
-    "defaultMessage": "Średnie tempo pisania na klawiaturze dzisiaj.",
-    "description": "Gauge title."
-  },
-  "profile.overview.statisticsAllTime": {
-    "defaultMessage": "Statystyki ogólne",
-    "description": "Header."
-  },
-  "profile.overview.statisticsToday": {
-    "defaultMessage": "Statystyki dzisiejsze",
-    "description": "Section header."
-  },
-  "profile.overview.topSpeedLabel": {
-    "defaultMessage": "Najwyższe tempo",
-    "description": "Gauge label."
-  },
-  "profile.overview.topSpeedTitle": {
-    "defaultMessage": "Najwyższe tempo pisania na klawiaturze.",
-    "description": "Gauge title."
-  },
-  "profile.overview.topSpeedTodayLabel": {
-    "defaultMessage": "Najwyższe tempo",
-    "description": "Gauge label."
-  },
-  "profile.overview.topSpeedTodayTitle": {
-    "defaultMessage": "Najwyższe tempo pisania na klawiaturze dzisiaj.",
-    "description": "Gauge title."
-  },
-  "profile.overview.totalLessonsLabel": {
-    "defaultMessage": "Całkowita liczba lekcji",
-    "description": "Gauge label."
-  },
-  "profile.overview.totalLessonsTitle": {
-    "defaultMessage": "Liczba ukończonych lekcji.",
-    "description": "Gauge title."
-  },
-  "profile.overview.totalLessonsTodayLabel": {
-    "defaultMessage": "Całkowita liczba lekcji",
-    "description": "Gauge label."
-  },
-  "profile.overview.totalLessonsTodayTitle": {
-    "defaultMessage": "Liczba lekcji ukończonych dzisiaj.",
-    "description": "Gauge title."
-  },
-  "profile.overview.totalTimeLabel": {
-    "defaultMessage": "Całkowity czas",
-    "description": "Gauge label."
-  },
-  "profile.overview.totalTimeTitle": {
-    "defaultMessage": "Czas poświęcony na ćwiczenia.",
-    "description": "Gauge title."
-  },
-  "profile.overview.totalTimeTodayLabel": {
-    "defaultMessage": "Całkowity czas",
-    "description": "Gauge label."
-  },
-  "profile.overview.totalTimeTodayTitle": {
-    "defaultMessage": "Czas poświęcony na ćwiczenia dzisiaj.",
-    "description": "Gauge title."
-  },
-  "profile.smoothnessLabel": {
-    "defaultMessage": "Płynność:",
-    "description": "Input field label."
-  },
-  "profile.smoothnessTitle": {
-    "defaultMessage": "Usuń dane jednostkowe, aby zobaczyć trend długoterminowy.",
-    "description": "Input field title."
-  },
-  "settings.alphabetSizeLabel": {
-    "defaultMessage": "Dodaj litery do słów:",
-    "description": "Input field label."
-  },
-  "settings.benfordsLawDescription": {
-    "defaultMessage": "<a>Rozkład Benforda</a> to obserwacja, że w wielu rzeczywistych zbiorach danych liczbowych cyfra wiodąca jest prawdopodobnie mała.",
-    "description": "Description text."
-  },
-  "settings.benfordsLawLabel": {
-    "defaultMessage": "Rozkład Benforda",
-    "description": "Input field label."
-  },
-  "settings.capitalLettersLabel": {
-    "defaultMessage": "Dodać wielkie litery:",
-    "description": "Input field label."
-  },
-  "settings.cursorMovementLabel": {
-    "defaultMessage": "Ruch kursora:",
-    "description": "Input field label."
-  },
-  "settings.cursorShapeLabel": {
-    "defaultMessage": "Kształt kursora:",
-    "description": "Input field label."
-  },
-  "settings.customTextExamplesLabel": {
-    "defaultMessage": "Przykłady:",
-    "description": "Input field label."
-  },
-  "settings.customTextInputPlaceholder": {
-    "defaultMessage": "Tekst niestandardowy...",
-    "description": "Input field placeholder."
-  },
-  "settings.customTextLettersOnlyLabel": {
-    "defaultMessage": "Usuń znaki interpunkcyjne",
-    "description": "Input field label."
-  },
-  "settings.customTextLettersOnlyTitle": {
-    "defaultMessage": "Usuń znaki interpunkcyjne z tekstu, aby ułatwić jego wpisywanie.",
-    "description": "Input field title."
-  },
-  "settings.customTextLowercaseLabel": {
-    "defaultMessage": "Zmień na małe litery",
-    "description": "Input field label."
-  },
-  "settings.customTextLowercaseTitle": {
-    "defaultMessage": "Zmień całość tekstu na małe litery, aby ułatwić wpisywanie.",
-    "description": "Input field title."
-  },
-  "settings.customTextRandomizeLabel": {
-    "defaultMessage": "Przetasować słowa",
-    "description": "Input field label."
-  },
-  "settings.customTextRandomizeTitle": {
-    "defaultMessage": "Ułożyć słowa z własnego tekstu w losowej kolejności.",
-    "description": "Input field title."
-  },
-  "settings.dailyGoalDescription": {
-    "defaultMessage": "Ustaw czas, jaki chcesz codziennie poświęcać na ćwiczenia. Jest to proste przypomnienie, które w żaden sposób Cię nie ogranicza. Możesz przestać ćwiczyć, kiedy tylko chcesz.",
-    "description": "Description text."
-  },
-  "settings.dailyGoalLabel": {
-    "defaultMessage": "Dzienny cel:",
-    "description": "Input field label."
-  },
-  "settings.doneButtonLabel": {
-    "defaultMessage": "Gotowe",
-    "description": "Input field label."
-  },
-  "settings.emulateLayoutLabel": {
-    "defaultMessage": "Emuluj układ",
-    "description": "Input field label."
-  },
-  "settings.emulateLayoutTitle": {
-    "defaultMessage": "Emuluj wybrany układ, jeśli w systemie ustawiono układ standardowy.",
-    "description": "Input field title."
-  },
-  "settings.forgiveErrorsDescription": {
-    "defaultMessage": "Włączenie tej opcji sprawi, że pole wprowadzania tekstu będzie wybaczać niektóre rodzaje błędów, automatycznie je poprawiając. Są to takie błędy, jak wpisanie nieprawidłowego znaku lub pominięcie znaku.",
-    "description": "Description text."
-  },
-  "settings.forgiveErrorsLabel": {
-    "defaultMessage": "Nie uwzględniaj błędów",
-    "description": "Input field label."
-  },
-  "settings.interfaceOptionsLegend": {
-    "defaultMessage": "Opcje interfejsu",
-    "description": "Fieldset legend."
-  },
-  "settings.keyboardColorsLabel": {
-    "defaultMessage": "Kolorowe klawisze",
-    "description": "Input field label."
-  },
-  "settings.keyboardFullViewLabel": {
-    "defaultMessage": "Pełny widok klawiatury",
-    "description": "Input field label."
-  },
-  "settings.keyboardTabLabel": {
-    "defaultMessage": "Klawiatura",
-    "description": "Header text."
-  },
-  "settings.lessonLengthLabel": {
-    "defaultMessage": "Dodaj słowa do lekcji:",
-    "description": "Input field label."
-  },
-  "settings.lessonOptionsLegend": {
-    "defaultMessage": "Opcje lekcji",
-    "description": "Fieldset legend."
-  },
-  "settings.lessonsTabLabel": {
-    "defaultMessage": "Ćwiczenia",
-    "description": "Header text."
-  },
-  "settings.longWordsOnlyLabel": {
-    "defaultMessage": "Tylko długie słowa",
-    "description": "Input field label."
-  },
-  "settings.miscellaneousTabLabel": {
-    "defaultMessage": "Różne",
-    "description": "Header text."
-  },
-  "settings.optionsLegend": {
-    "defaultMessage": "Opcje",
-    "description": "Fieldset legend."
-  },
-  "settings.playSoundsLabel": {
-    "defaultMessage": "Play sounds:",
-    "description": "Input field label."
-  },
-  "settings.previewLabel": {
-    "defaultMessage": "Podgląd lekcji",
-    "description": "Fieldset label."
-  },
-  "settings.previewLegend": {
-    "defaultMessage": "Podgląd",
-    "description": "Fieldset legend."
-  },
-  "settings.punctuationLabel": {
-    "defaultMessage": "Dodać znaki interpunkcyjne:",
-    "description": "Input field label."
-  },
-  "settings.selectLanguageLabel": {
-    "defaultMessage": "Język:",
-    "description": "Input field label."
-  },
-  "settings.selectLanguageTitle": {
-    "defaultMessage": "Wybierz swój język.",
-    "description": "Input field title."
-  },
-  "settings.selectLayoutLabel": {
-    "defaultMessage": "Układ:",
-    "description": "Input field label."
-  },
-  "settings.selectLayoutTitle": {
-    "defaultMessage": "Wybierz układ klawiatury, z którym chcesz ćwiczyć. Dla każdego języka dostępnych jest wiele układów.",
-    "description": "Input field title."
-  },
-  "settings.spaceSkipsWordsDescription": {
-    "defaultMessage": "If enabled, pressing the space key in the middle of a word will skip the remaining characters of the word and position cursor at the beginning of the next word.",
-    "description": "Description text."
-  },
-  "settings.spaceSkipsWordsLabel": {
-    "defaultMessage": "Space skips words",
-    "description": "Input field label."
-  },
-  "settings.stopCursorOnErrorDescription": {
-    "defaultMessage": "Po włączeniu kursor nie będzie przechodził dalej do wciśnięcia właściwego klawisza w danej pozycji. Po wyłączeniu wszystkie błędy będą uwzględnione w polu wprowadzania tekstu i będą wymagać wyczyszczenia klawiszem Delete.",
-    "description": "Description text."
-  },
-  "settings.stopCursorOnErrorLabel": {
-    "defaultMessage": "Zatrzymaj kursor po popełnieniu błędu",
-    "description": "Input field label."
-  },
-  "settings.targetSpeedLabel": {
-    "defaultMessage": "Docelowa szybkość pisania:",
-    "description": "Input field label."
-  },
-  "settings.textAppearanceLegend": {
-    "defaultMessage": "Wygląd tekstu",
-    "description": "Fieldset legend."
-  },
-  "settings.typingAssistsDescription": {
-    "defaultMessage": "Są to pomoce w pisaniu, które pomagają zachować koncentrację i płynność pisania, automatycznie poprawiając błędy.",
-    "description": "Description text."
-  },
-  "settings.typingOptionsLegend": {
-    "defaultMessage": "Opcje pisania na klawiaturze",
-    "description": "Fieldset legend."
-  },
-  "settings.typingSpeedUnitCaption": {
-    "defaultMessage": "Pomiar tempa pisania na klawiaturze w:",
-    "description": "Radio button group caption."
-  },
-  "settings.typingSpeedUnitDescription": {
-    "defaultMessage": "Na potrzeby pomiaru pisania na klawiaturze każde słowo zostaje ujednolicone do 5 znaków lub klawiszy w języku angielskim, łącznie ze spacjami i znakami interpunkcyjnymi.",
-    "description": "Radio button group description."
-  },
-  "settings.typingTabLabel": {
-    "defaultMessage": "Wpisywanie tekstu",
-    "description": "Header text."
-  },
-  "settings.whitespaceLabel": {
-    "defaultMessage": "Spacje:",
-    "description": "Input field label."
-  },
-  "settings.wordListSizeLabel": {
-    "defaultMessage": "Liczba słów:",
-    "description": "Input field label."
-  },
-  "settings.wordListSizeTitle": {
-    "defaultMessage": "Wybierz liczbę najczęściej powtarzających słów, których chcesz użyć.",
-    "description": "Input field title."
-  },
-  "speedUnit.cpm.description": {
-    "defaultMessage": "Zmierz tempo pisania na klawiaturze w znakach na minutę.",
-    "description": "Widget title."
-  },
-  "speedUnit.cpm.name": {
-    "defaultMessage": "Liczba znaków na minutę",
-    "description": "Widget label."
-  },
-  "speedUnit.cps.description": {
-    "defaultMessage": "Zmierz tempo pisania na klawiaturze w znakach na sekundę.",
-    "description": "Widget title."
-  },
-  "speedUnit.cps.name": {
-    "defaultMessage": "Liczba znaków na sekundę",
-    "description": "Widget label."
-  },
-  "speedUnit.wpm.description": {
-    "defaultMessage": "Zmierz tempo pisania na klawiaturze w słowach na minutę.",
-    "description": "Widget title."
-  },
-  "speedUnit.wpm.name": {
-    "defaultMessage": "Słowa na minutę",
-    "description": "Widget label."
-  },
-  "textStats.allWordCount": {
-    "defaultMessage": "Wszystkie słowa",
-    "description": "Text label."
-  },
-  "textStats.averageWordLength": {
-    "defaultMessage": "Średnia długość słowa",
-    "description": "Text label."
-  },
-  "textStats.charsExcludingWhitespace": {
-    "defaultMessage": "Znaki bez znaków niedrukowalnych",
-    "description": "Text label."
-  },
-  "textStats.charsIncludingWhitespace": {
-    "defaultMessage": "Znaki ze znakami niedrukowalnymi",
-    "description": "Text label."
-  },
-  "textStats.mostCommonWords": {
-    "defaultMessage": "{count} najczęściej powtarzających się słów",
-    "description": "Text fragment."
-  },
-  "textStats.timeToRead": {
-    "defaultMessage": "Przy średnim tempie odczytywania {speed} słów na minutę odczytanie tego tekstu zajmie {time}.",
-    "description": "Text fragment."
-  },
-  "textStats.timeToType": {
-    "defaultMessage": "Przy średnim tempie pisania na klawiaturze {speed} słów na minutę wpisanie tego tekstu zajmie {time}.",
-    "description": "Text fragment."
-  },
-  "textStats.uniqueWordCount": {
-    "defaultMessage": "Unikatowe słowa",
-    "description": "Text label."
-  },
-  "textTools.emptyTextMessage": {
-    "defaultMessage": "Załaduj trochę tekstu, aby obliczyć powiązane statystyki.",
-    "description": "Freeform text."
-  },
-  "textTools.exampleText": {
-    "defaultMessage": "(Tekst przykładowy, kliknij tutaj, aby go wyczyścić.)",
-    "description": "Text fragment."
-  },
-  "textTools.textInputPlaceholder": {
-    "defaultMessage": "Tutaj wklej swój tekst",
-    "description": "Input field placeholder."
-  },
-  "theme.enterFullscreenTitle": {
-    "defaultMessage": "Przejdź do trybu pełnoekranowego.",
-    "description": "Theme switching button."
-  },
-  "theme.exitFullscreenTitle": {
-    "defaultMessage": "Wyjdź z trybu pełnoekranowego.",
-    "description": "Theme switching button."
-  },
-  "theme.fullscreenNotSupportedTitle": {
-    "defaultMessage": "Tryb pełnoekranowy nie jest obsługiwany.",
-    "description": "Theme switching button."
-  },
-  "theme.switchThemeTitle": {
-    "defaultMessage": "Przełącz na motyw {name}.",
-    "description": "Theme switching button."
-  },
-  "tour.close": {
-    "defaultMessage": "Zamknąć",
-    "description": "Button name"
-  },
-  "tour.next": {
-    "defaultMessage": "Następny",
-    "description": "Button name"
-  },
-  "tour.previous": {
-    "defaultMessage": "Poprzedni",
-    "description": "Button name"
-  }
+  "account.accountDetailsLegend": "Dane konta",
+  "account.accountPageDescription": "<p>Wykorzystujesz konto do zapisu swoich danych dotyczących pisania na klawiaturze na naszych serwerach w chmurze. Dostęp do swojego profilu możesz uzyskać z dowolnego komputera lub przeglądarki internetowej.</p>",
+  "account.anonymizeButtonLabel": "Anonimizuj moje dane",
+  "account.anonymizeButtonTitle": "Ukryj zdjęcie i nazwę użytkownika przed dostępem publicznym.",
+  "account.anonymizeDescription": "Anonimizacja powoduje zastąpienie rzeczywistego zdjęcia oraz nazwy użytkownika naszymi danymi. Można dowolnie przełączać pomiędzy rzeczywistą i zanonimizowaną nazwą użytkownika.",
+  "account.anonymousUserName": "Użytkownik anonimowy",
+  "account.avatarDescription": "Twoje zdjęcie i nazwa użytkownika widoczne publicznie w twoim profilu, tabeli najlepszych wyników oraz w grze wieloosobowej.",
+  "account.checkout.description": "Wykup konto premium, aby odblokować dodatkowe funkcje i pozbyć się reklam.",
+  "account.checkout.title": "Konto premium",
+  "account.checkoutButtonLabel": "Wykup konto premium",
+  "account.checkoutButtonTitle": "Otwórz formularz finalizacji transakcji.",
+  "account.deleteAccountButtonLabel": "Usuń konto",
+  "account.deleteAccountButtonTitle": "Trwale usuń swoje konto.",
+  "account.deleteAccountConfirmation": "Czy na pewno chcesz usunąć swoje konto? Ta operacja ma charakter trwały i nie można jej cofnąć! Jednak w każdej chwili można utworzyć nowe konto.",
+  "account.deleteAccountDescription": "Spowoduje to usunięcie z naszej bazy danych wszystkich informacji umożliwiających identyfikację twojej tożsamości, takie jak imię i nazwisko oraz adres e-mail. Tej operacji nie można cofnąć! Jeśli chcesz tylko wyczyścić swoje statystyki pisania na klawiaturze i rozpocząć od nowa, możesz to zrobić na stronie profilu.",
+  "account.deleteAccountLegend": "Usuń konto",
+  "account.emailFormDescription": "Proste logowanie bez użycia haseł. Wystarczy, że wpiszesz swój adres e-mail, a my wyślemy Ci link do logowania. Przejdź do swojej skrzynki odbiorczej, kliknij link, aby założyć nowe konto lub otworzyć istniejące konto dla podanego adresu e-mail. Link jest tymczasowy i wygasa za kilka godzin. Aby zalogować się ponownie później, wpisz ten sam adres e-mail, a my wyślemy nowy link do tego samego konta.",
+  "account.emailPlaceholder": "Twój adres e-mail...",
+  "account.emailSignInHeader": "Zaloguj się za pomocą adresu e-mail",
+  "account.emailState.errorText": "Nie można wysłać wiadomości poczty elektronicznej na adres <strong>{email}</strong>: {message}",
+  "account.emailState.sendingText": "Wysłanie wiadomości poczty elektronicznej z linkiem do logowania na adres <strong>{email}</strong>... Zaczekaj chwilę.",
+  "account.emailState.sentText": "Wysłaliśmy wiadomość poczty elektronicznej z linkiem do logowania na adres <strong>{email}</strong>. Niedługo powinna dotrzeć – sprawdź swoją skrzynkę odbiorczą za kilka minut.",
+  "account.emailTitle": "Na ten adres e-mail wyślemy link do logowania.",
+  "account.freeAccountOverview": "<p>Wykup <strong>konto premium</strong>, aby odblokować dodatkowe funkcje i pozbyć się reklam. Tutaj znajduje się lista korzyści wynikających z konta premium:</p><ul><li><strong>Brak reklam.</strong> Reklamy mogą dekoncentrować i spowalniać postępy w nauce. Jest to dobry sposób, aby się ich pozbyć.</li><li><strong>Brak skryptów śledzących.</strong> Skrypty śledzące zawsze są powiązane z reklamami. Pozbądź się wszystkich skryptów śledzących i uzyskaj pełną prywatność online.</li><li><strong>Bardzo krótki czas reakcji.</strong> Załadowanie reklam zajmuje trochę czasu. Pozbycie się ich oznacza krótszy czas ładowania wszystkich stron.</li></ul><p>Jest to jedna płatność, która gwarantuje dożywotni dostęp.</p>",
+  "account.pageTitle": "Konto | {name}",
+  "account.premiumAccountHeader": "Konto premium",
+  "account.premiumAccountLegend": "Konto premium",
+  "account.premiumAccountOverview": "<p>Dziękujemy za wykupienie konta premium! Teraz możesz korzystać z dodatkowych funkcji oraz pozbyć się reklam.</p>",
+  "account.resendButtonLabel": "Wyślij ponownie",
+  "account.resendButtonTitle": "Wyślij jeszcze jedną wiadomość e-mail.",
+  "account.retryButtonLabel": "Spróbuj ponownie",
+  "account.retryButtonTitle": "Wyślij kolejną wiadomość e-mail.",
+  "account.sendButtonLabel": "Wyślij link do logowania",
+  "account.sendButtonTitle": "Zaloguj się za pomocą adresu e-mail.",
+  "account.signInPageDescription": "<p>Utwórz konto do zapisu swoich danych dotyczących pisania na klawiaturze na naszych serwerach w chmurze. Umożliwi to dostęp do twojego profilu z dowolnego komputera lub przeglądarki internetowej. Jeśli nie masz konta, twoje dane dotyczące pisania na klawiaturze będą przechowywane lokalnie i dostępne wyłącznie na jednym komputerze.</p><p>Nie przechowujemy żadnych haseł. Zamiast tego korzystamy z usług zewnętrznych firm do uwierzytelniania naszych użytkowników. Oferujemy kilka wygodnych sposobów tworzenia konta oraz logowania.</p><p>W każdej chwili można zrezygnować. Usunięcie konta jest tak proste, jak jego utworzenie.</p>",
+  "account.signOutButtonLabel": "Wyloguj",
+  "account.signOutButtonTitle": "Wyloguj się z aplikacji.",
+  "account.socialFormDescription": "Zaloguj się za pośrednictwem preferowanych mediów społecznościowych. Szanujemy twoją prywatność i obiecujemy nie spamować twoich aktualności, twoich znajomych ani poczty elektronicznej.",
+  "account.socialSignInButtonLabel": "Zaloguj się jako {name}",
+  "account.socialSignInButtonTitle": "Zaloguj się za pośrednictwem mediów społecznościowych.",
+  "account.socialSignInHeader": "Zaloguj się za pośrednictwem mediów społecznościowych",
+  "calendar.weekDayName": "P|W|Ś|C|P|S|N",
+  "characterClass.digits": "Cyfry",
+  "characterClass.letters": "Litery",
+  "characterClass.punctuationCharacters": "Znaki interpunkcyjne",
+  "characterClass.specialCharacters": "Znaki specjalne",
+  "common.javaScriptDisabledText": "Aplikacja nie działa, ponieważ twoja przeglądarka internetowa nie obsługuje języka JavaScript!",
+  "common.loadingText": "Aplikacja ładuje się, zaczekaj chwilę...",
+  "footer.discordLinkTitle": "Rozmawiaj na naszym serwerze Discord.",
+  "footer.emailLinkTitle": "Wyślij komentarze i sugestie na adres info@keybr.com",
+  "footer.githubLinkTitle": "Kod źródłowy keybr.com jest dostępny na Githubie.",
+  "help.example1": "<a>Przykład 1</a>, od 30 do 70 słów na minutę po 4 godzinach i 20 minutach ćwiczeń w ciągu 15 dni.",
+  "help.example2": "<a>Przykład 2</a>, od 35 do 70 słów na minutę po 2 godzinach i 20 minutach ćwiczeń w ciągu 12 dni.",
+  "help.example3": "<a>Przykład 3</a>, dobry przeskok z mniej niż 20 do 40 słów na minutę po 5 godzinach i 30 minutach ćwiczeń w ciągu 11 dni.",
+  "help.example4": "<a>Przykład 4</a>, po 2 godzinach i 10 minutach ćwiczeń w ciągu 11 dni tempo pisania na klawiaturze utrzymuje się na poziomie ~70 słów na minutę (co jest już dość dobrym wynikiem), lecz poprawia się precyzja.",
+  "help.example5": "<a>Przykład 5</a>, od 20 do 45 słów na minutę po około 10 godzinach ćwiczeń w ciągu 22 dni (tak, czasami wymaga to więcej czasu).",
+  "help.indicatorsCaption": "Kolory wskaźników.",
+  "help.keyboardZonesCaption": "Strefy klawiatury oraz prawidłowe rozmieszczenie palców.",
+  "help.rule1.body": "<p>Przy rozpoczynaniu ćwiczeń po raz pierwszy komputer nic nie wie o twoich umiejętnościach pisania na klawiaturze, dlatego wykorzystuje niewielki zestaw najczęściej używanych liter do generowania słów, takich jak „<em>E</em>”, „<em>N</em>”, „<em>I</em>”, „<em>T</em>”, „<em>R</em>” oraz „<em>L</em>”. Wszystkie generowane słowa będą składać się z tego niewielkiego zestawu liter, natomiast pozostałe litery będą pomijane. Statystyki dla liter są nieznane, dlatego odpowiadające im wskaźniki mają kolor szary.</p>",
+  "help.rule1.title": "Algorytm rozpoczyna od liter początkowych",
+  "help.rule2.body": "<p>W miarę wpisywania wygenerowanych słów komputer sporządza statystyki dotyczące pisania na klawiaturze. Wskaźniki zaczynają zmieniać swoje kolory od czerwonego do zielonego. Kolor czerwony oznacza, że tempo wpisywania dla danego klawisza jest niska, natomiast kolor zielony oznacza przeciwny stan rzeczy. Na tym etapie twoim celem jest uzyskanie zielonego koloru wszystkich liter poprzez poprawę tempa pisania. W tym przykładzie litera „<em>T</em>” jest zaznaczona, ponieważ jej statystyki tempa pisania są najgorsze, dlatego staje się literą docelową. Litera docelowa będzie znajdować się w każdym wygenerowanym słowie i jest to bardzo ważna informacja. Oznacza to, że zawsze ćwiczysz ten klawisz, który sprawia ci najwięcej problemów.</p>",
+  "help.rule2.title": "Uczysz się początkowych liter",
+  "help.rule3.body": "<p>Gdy twoje tempo pisania wzrośnie i wszystkie litery będą zielone, do zestawu dodana zostanie nowa litera „<em>S</em>”. Losowe słowa będą generowane z tego nowego, rozszerzonego zestawu liter. Litera „<em>S</em>” jest literą docelową i pojawia się w każdym generowanym słowie. Kolor wskaźnika tej litery jest szary, ponieważ jej statystyka pisania na klawiaturze jest nieznana.</p>",
+  "help.rule3.title": "Algorytm dodaje więcej liter",
+  "help.rule4.body": "<p>Na tym etapie twoim celem jest sprawianie, że ta nowa litera stanie się zielona. Gdy do tego dojdzie, do zestawu dodana zostanie kolejna litera – i tak dalej. W rzeczywistości bardzo prawdopodobne jest, że tempo wpisywania poprzednich liter spadnie i zobaczysz, że znowu będą mieć kolor czerwony, jak przedstawiono na przykładzie. Jest to normalne i cel się nie zmienia – nowa litera docelowa ma uzyskać kolor zielony, aby odblokować kolejną.</p>",
+  "help.rule4.title": "Uczysz się dodatkowych liter",
+  "help.rule5.body": "<p>Jeśli jesteś wystarczająco wytrwały, prędzej czy później wszystkie litery będą mieć kolor zielony. Gratulacje, udało ci się osiągnąć główny cel! Jednak to nie oznacza, że należy zakończyć naukę. Możesz kontynuować tak, długo, jak będziesz mieć ochotę.</p>",
+  "help.rule5.title": "Cykl się powtarza",
+  "help.section1": "<h1>Nauka szybszego pisania na klawiaturze</h1><h2>Pisanie bez kontroli wzroku</h2><p>Ta aplikacja sieciowa pomoże ci nauczyć się <em>pisania bez kontroli wzroku</em>, które wykorzystuje pamięć mięśniową do znajdowania klawiszy na klawiaturze. Dzięki temu twoje tempo pisania na klawiaturze oraz dokładność mogą poprawić się dramatycznie. Przeciwieństwem tej techniki jest <em>pisanie palcami wskazującymi</em> – metoda, w której użytkownik patrzy na klawiaturę zamiast na ekran.</p>",
+  "help.section2": "<h2>Metoda nauczania</h2><p>Ta aplikacja wykorzystuje unikatowe podejście. Stosuje statystyki i zaawansowane algorytmy do automatycznego tworzenia lekcji pisania na klawiaturze, które są dopasowane do twojego poziomu umiejętności. To działa na zasadzie powtarzającego się cyklu:</p><ol><li>Algorytm generuje listę losowych słów odpowiadających twoim umiejętnościom w zakresie pisania na klawiaturze. Poziom umiejętności użytkownika jest mierzony za pomocą zebranych do tej pory statystyk dotyczących pisania na klawiaturze. Słowa składają się z zestawu liter dobranych przez algorytm.</li><li>Użytkownik wpisuje wyświetlane słowa. Stara się przy tym popełnić jak najmniej błędów.</li><li>W miarę pisania algorytm gromadzi statystyki dotyczące pisania na klawiaturze, takie jak czas do naciśnięcia każdego klawisza. Na końcu te statystyki są używane do generowania kolejnej listy słów dla kroku pierwszego.</li></ol><p>Na każdym etapie użytkownik wpisuje wyświetloną listę słów, a komputer zajmuje się resztą.</p>",
+  "help.section3": "<h2>Algorytm generowania słów</h2><p>Ta aplikacja generuje losowe, lecz możliwe do odczytania i wymowy słowa, stosując reguły fonetyczne danego języka. Słowa te wyglądają prawie jak naturalnie występujące w języku, a często nimi są. Wpisywanie tekstu, który ma sens, jest o wiele łatwiejsze niż powtarzanie losowych liter oraz pomaga w zapamiętywaniu częstych kombinacji klawiszy. Kluczowe znaczenie ma ten ostatni argument. Na przykład prawie niemożliwe jest, aby w języku angielskim litera „<em>W</em>” następowała po literze „<em>Z</em>” i taka kombinacja nie pojawia się w tej aplikacji. Zamiast niej użytkownik wpisuje częściej występujące słowa w języku angielskim, takie jak „<em>the</em>”, „<em>that</em>”, „<em>with</em>” i tak dalej. Niedługo opanujesz naprawdę szybkie wpisywanie kombinacji „<em>th</em>”.</p><p>Słowa są generowane z liter dobieranych na podstawie reguł określonych poniżej.</p>",
+  "help.section4": "<p>Dokładne znaczenie każdego koloru wskaźnika podano w legendzie poniżej.</p>",
+  "help.section5": "<h2>Właściwy sposób używania klawiatury</h2><p>Umieść wszystkie palce na środkowym szeregu, czyli tym z klawiszem <em>Caps Lock</em>. Na klawiszach „<em>F</em>” oraz „<em>J</em>” znajdują się niewielkie wypustki. Umieść palce wskazujące na tych wypustkach. Każdy z palców ma swój własny zestaw klawiszy, jak widać na kolejnej ilustracji.</p>",
+  "help.section6": "<h2>Skuteczność tej aplikacji</h2><p>Wybraliśmy kilka przykładowych profili, aby pokazać ci jak wyglądają postępy innych w nauce pisania na klawiaturze bez kontroli wzroku dzięki korzystaniu z tej aplikacji. Są to prawdziwe, zanonimizowane profile użytkowników. Mamy nadzieję, że zainspirują cię do dalszej nauki!</p>",
+  "highScores.layoutColumn": "Układ",
+  "highScores.scoreColumn": "Wynik",
+  "highScores.typingSpeedColumn": "Tempo",
+  "highScores.userColumn": "Użytkownik",
+  "language.be.name": "Białoruski (Беларуская)",
+  "language.de.name": "Niemiecki (Deutsch)",
+  "language.en.name": "Angielski (English)",
+  "language.es.name": "Hiszpański (Español)",
+  "language.fr.name": "Francuski (Français)",
+  "language.it.name": "Włoski (Italiano)",
+  "language.pl.name": "Polski",
+  "language.pt.name": "Portugalski (Português)",
+  "language.ru.name": "Rosyjski (Русский)",
+  "language.uk.name": "Ukraiński (Українська)",
+  "layouts.bottomRowKeysText": "Klawisze w dolnym szeregu:",
+  "layouts.bottomRowKeysTitle": "Procent klawiszy naciskanych w szeregu z klawiszem Shift – im mniej, tym lepiej.",
+  "layouts.description.colemak": "<p>Układ Colemak został zaprojektowany jako praktyczna alternatywa dla układów Qwerty i Dvoraka i zapewnia bardziej stopniową zmianę dla użytkowników, którzy już znają układ standardowy.</p><p>Układ Colemak został zaprojektowany w oparciu o układ QWERTY, zmieniając pozycję 17 klawiszy, natomiast zachowując pozycje QWERTY większości znaków niealfabetycznych oraz wiele popularnych skrótów klawiaturowych. Dzięki temu opanowanie go jest łatwiejsze dla osób, które już piszą na klawiaturze w układzie QWERTY. Niektóre cele tego układu są takie same, jak w przypadku układu Dvoraka, np. minimalizacja odległości pokonywanych przez palce oraz największe wykorzystanie środkowego szeregu.</p><p>Jest on obsługiwany przez wiele współczesnych systemów operacyjnych.</p>",
+  "layouts.description.colemak_dh": "<p>The Colemak-DH layout serves as a practical alternative to both QWERTY and Dvorak keyboard layouts, offering a smoother transition for users accustomed to the standard layout. Building upon QWERTY, it relocates 17 keys while retaining the positions of non-alphabetic characters and popular shortcuts, making it user-friendly for those familiar with QWERTY. It shares design goals with Dvorak, emphasizing minimized finger movement and home row utilization. Colemak-DH enjoys widespread support across modern operating systems, ensuring accessibility and ergonomic benefits for users.</p>",
+  "layouts.description.dvorak": "<p>Układ klawiatury Dvoraka został opracowany w 1936 r. przez Augusta Dvoraka i Williama Dealey’a dla języka angielskiego. Miał być szybszą i bardziej ergonomiczną alternatywą dla układu QWERTY. Zwolennicy układu Dvoraka uważają, że układ ten wymaga mniejszych ruchów palców, co w efekcie zmniejsza liczbę błędów, zwiększa tempo pisania na klawiaturze, zmniejsza urazy wynikające z powtarzalnego napięcia oraz zapewnia większy komfort pisania w porównaniu do układu QWERTY.</p><p>Jednak układ ten nie zastąpił układu QWERTY jako najczęściej stosowanego układu klawiatury gównie z tego względu, że układ QWERTY został wprowadzony 60 lat wcześniej.</p><p>Według stanu na 2005 r. rekord świata w tempie pisania na klawiaturze w języku angielskim należy do Barbary Blackburn, która używała układu Dvoraka.</p><p>Prawie wszystkie współczesne systemy operacyjne pozwalają użytkownikowi na przełączenie na układ Dvoraka – jest duża szansa, że twój system operacyjny również go obsługuje.</p>,",
+  "layouts.description.qwerty": "<p>Wszystko zaczęło się w latach 60. XIX w. Wynalazca-amator, polityk, drukarz i dziennikarz z Milwaukee o nazwisku Christopher Latham Sholes często spędzał wolny czas na majsterkowaniu i tworzeniu nowych urządzeń, aby zwiększyć wydajność swojej pracy.</p><p>Według popularnej teorii Sholes musiał przeprojektować klawiaturę ze względu na mechaniczne usterki wczesnych maszyn do pisania. Poprzeczki łączące klawisz z płytką litery były zawieszone w cylindrze pod papierem. Jeśli użytkownik pisał szybko po sobie litery, których poprzeczki znajdowały się blisko siebie, delikatne urządzenia zacinały się.</p><p>Sholes przeprojektował układ, oddzielając najczęściej występujące sekwencje liter, takie jak „th” lub „he”. Produkcję maszyny na licencji rozpoczął w 1875 r. producent broni z Nowego Jorku, firma Remington and Sons. Maszynę nazwano Remington No. 1. Okazała się komercyjnym niewypałem, ponieważ nie sprzedało się wiele egzemplarzy.</p><p>Po otrzymaniu opinii zwrotnych firma Remington udoskonaliła maszynę i wyprodukowała wersję Remington No. 2. Nowa maszyna weszła na rynek w 1877 r. i okazała się dużym sukcesem. Jako pierwsza stosowała układ klawiatury QWERTY, jaki znamy dzisiaj, umożliwiając użytkownikom używanie wielkich i małych liter przez korzystanie z klawisza „Shift”.</p><p>Klasyczny układ klawiatury QWERTY jest niefortunnym przypadkiem historycznym, ponieważ jest nieoptymalny, dlatego opracowano inne układy.</p>,",
+  "layouts.description.workman": "<p>Układ Workman zmniejszał boczne ruchy palców i nadgarstków oraz bardziej równoważył wykorzystanie lewej i prawej ręki. 21 znaków różni się w stosunku do układu Qwerty.</p><p>Układ Workman zapewnia wiele korzyści. Jest komfortowy, ergonomiczny i wydajny, a często naciskane klawisze są rozmieszczone w naturalnym zasięgu ruchu palców. Zredukowano konieczność bocznych ruchów palców i nadgarstków. Ogólnie palce bardzo mało się przemieszczają.</p><p>Wykazano, że układ Workman zapewnia ogólnie mniejsze przemieszczenia palców w języku angielskim niż nawet układ Colemak. Jednak generalnie powoduje większą częstotliwość n-gramów dla tego samego palca; innymi słowy jeden palec będzie musiał naciskać kolejno dwa klawisze częściej niż w przypadku innych układów.</p>",
+  "layouts.heatmapCaption": "Mapa cieplna częstotliwości naciskania klawiszy dla {name}",
+  "layouts.heatmapDescription": "Ten diagram pokazuje względne częstotliwości naciskania klawiszy w formie mapy cieplnej.",
+  "layouts.homeRowKeysText": "Klawisze w środkowym szeregu:",
+  "layouts.homeRowKeysTitle": "Procent klawiszy naciskanych bez opuszczania wiersza z klawiszem Caps Lock – im więcej, tym lepiej.",
+  "layouts.layoutNameHeader": "Układ {name}",
+  "layouts.sameFingerKeysText": "Klawisze naciskane przez ten sam palec:",
+  "layouts.sameFingerKeysTitle": "Procent klawiszy naciskanych przez ten sam palec – im mniej, tym lepiej.",
+  "layouts.sameHandKeysText": "Klawisze naciskane przez tę samą rękę:",
+  "layouts.sameHandKeysTitle": "Procent klawiszy naciskanych przez tę samą rękę – im mniej, tym lepiej.",
+  "layouts.topRowKeysText": "Klawisze w górnym szeregu:",
+  "layouts.topRowKeysTitle": "Procent klawiszy naciskanych w szeregu z klawiszem Tab – im mniej, tym lepiej.",
+  "layouts.websiteLinkText": "Oficjalna witryna internetowa",
+  "layouts.wikipediaLinkText": "Artykuł w Wikipedii",
+  "learningRate.alreadyUnlocked": "This letter is already unlocked.",
+  "learningRate.remainingLessons": "Approximately {remainingLessons} lessons remaining to unlock this letter ({certainty} certainty).",
+  "learningRate.unknown": "Need more data to compute the remaining lessons to unlock this letter.",
+  "lesson.boostedKeyText": "Klawisz o zwiększonej częstotliwości.",
+  "lesson.characterName": "Znak „{name}”",
+  "lesson.currentKeyPanelLabel": "Aktualny klawisz",
+  "lesson.dailyGoalPanelLabel": "Dzienny cel",
+  "lesson.dailyGoalPanelTitle": "Postęp na drodze do twojego dziennego celu.",
+  "lesson.forcedKeyText": "Klawisz ręcznie dodany.",
+  "lesson.gaugesPanelLabel": "Metryki",
+  "lesson.indicator.boostedFrequency": "Klawisz o zwiększonej częstotliwości. Znalezienie tego klawisza zajmuje ci najwięcej czasu, dlatego algorytm zdecydował o dodaniu go do każdego generowanego słowa.",
+  "lesson.indicator.includedManually": "Klawisz, który został ręcznie dodany do lekcji.",
+  "lesson.indicator.leastConfidence": "Skalibrowany klawisz z najniższym poziomem pewności. Im więcej razy naciśniesz ten klawisz, tym dokładniejszy będzie ten pomiar.",
+  "lesson.indicator.mostConfidence": "Skalibrowany klawisz z najwyższym poziomem pewności. Im więcej razy naciśniesz ten klawisz, tym dokładniejszy będzie ten pomiar.",
+  "lesson.indicator.notCalibrated": "Nieskalibrowany klawisz z nieznanym poziomem pewności. Ciągle nie naciśnięto jeszcze tego klawisza.",
+  "lesson.indicator.notIncluded": "Klawisz, który jeszcze nie został uwzględniony w lekcjach.",
+  "lesson.keySetPanelLabel": "Wszystkie klawisze",
+  "lesson.notCalibratedText": "Nie skalibrowano, wymagana większa liczba próbek",
+  "lessonType.customText.description": "Wygeneruj lekcje pisania na podstawie słów własnego, niestandardowego tekstu podanego tutaj. Wszystkie klawisze są domyślnie włączone. Ten tryb jest dla profesjonalistów.",
+  "lessonType.customText.name": "Tekst niestandardowy",
+  "lessonType.guided.description": "Ten tryb będzie automatycznie generował lekcje pisania na klawiaturze z wykorzystaniem losowych słów oraz reguł fonetycznych twojego języka. Podstawowy zestaw jest powiększany dynamicznie w oparciu o twoje wyniki. Ten tryb jest przeznaczony dla początkujących.",
+  "lessonType.guided.name": "Lekcje z prowadzeniem",
+  "lessonType.numbers.name": "Liczby",
+  "lessonType.wordList.description": "Wygeneruj lekcje pisania na podstawie listy najpopularniejszych słów w twoim języku. Wszystkie klawisze są domyślnie włączone. Ten tryb jest dla profesjonalistów.",
+  "lessonType.wordlist.name": "Najczęstsze słowa",
+  "metric.accuracy.label": "Dokładność",
+  "metric.accuracy.title": "Procent znaków wpisanych bez błędów w ostatniej lekcji.",
+  "metric.accuracyChange.title": "Różnica względem wartości średniej.",
+  "metric.averageSpeed.label": "Średnie tempo pisania",
+  "metric.averageSpeed.title": "Średnie tempo pisania na klawiaturze. Im więcej tym lepiej.",
+  "metric.bestSpeed.label": "Najwyższe tempo",
+  "metric.bestSpeed.title": "Najwyższe tempo pisania na klawiaturze we wszystkich lekcjach.. Im więcej tym lepiej.",
+  "metric.confidenceLevel.label": "Poziom pewności",
+  "metric.confidenceLevel.title": "Jak blisko jesteś odblokowania tej litery.",
+  "metric.lastSpeed.label": "Ostatnie tempo",
+  "metric.lastSpeed.title": "Tempo pisania na klawiaturze w ostatniej lekcji. Im więcej tym lepiej.",
+  "metric.learningRate.label": "Tempo nauki",
+  "metric.learningRate.title": "Jak bardzo prędkość pisania zmienia się z każdą lekcją.",
+  "metric.learningRate.value": "{learningRate} na lekcję",
+  "metric.score.label": "Wynik",
+  "metric.score.title": "Wynik ostatniej lekcji w abstrakcyjnych punktach. Wyniki są większe przy szybszym pisaniu na klawiaturze z mniejszą liczbą błędów.",
+  "metric.scoreChange.title": "Różnica względem wartości średniej.",
+  "metric.speed.label": "Tempo",
+  "metric.speed.title": "Tempo pisania na klawiaturze w ostatniej lekcji.",
+  "metric.speedChange.title": "Różnica względem wartości średniej.",
+  "metric.uncertainValue": "Niepewny",
+  "multiplayer.intro": "Konkuruj z innymi graczami w tej grze online w trybie wieloosobowym. Im szybciej piszesz na klawiaturze, tym szybciej jedzie twój samochód. Pisz jak najszybciej, aby wygrać wyścig!",
+  "multiplayer.state.connecting": "<h1>Łączenie z serwerem...</h1><p>Nawiązywanie połączenia z serwerem gry.</p>",
+  "multiplayer.state.kicked": "<h1>Wyrzucono z gry</h1><p>Wyrzucono cię z gry za brak aktywności.</p>",
+  "multiplayer.state.offline": "<h1>Serwer jest niedostępny</h1><p>Wystąpił problem z naszym serwerem gry.</p><p>Pracujemy nad rozwiązaniem tego problemu. Odwiedź tę stronę ponownie za kilka minut.</p>",
+  "multiplayer.ui.countDownTicker": "Rozpoczęcie za {countDown}",
+  "multiplayer.ui.distanceLabel": "Postęp",
+  "multiplayer.ui.distanceTitle": "Ukończony dystans.",
+  "multiplayer.ui.errorsLabel": "Błędy",
+  "multiplayer.ui.errorsTitle": "Liczba błędów.",
+  "multiplayer.ui.initializingTicker": "Inicjowanie...",
+  "multiplayer.ui.nameLabel": "Tempo",
+  "multiplayer.ui.nameTitle": "Tempo pisania na klawiaturze.",
+  "multiplayer.ui.positionLabel": "Pozycja",
+  "multiplayer.ui.positionTicker": "Miejsce {position}!",
+  "multiplayer.ui.positionTitle": "Pozycja na torze.",
+  "multiplayer.ui.raceFinishedTicker": "Wyścig ukończony!",
+  "multiplayer.ui.raceStartedTicker": "Wyścig rozpoczęty!",
+  "multiplayer.ui.startTicker": "START!",
+  "multiplayer.ui.waitingMorePlayersTicker": "Oczekiwanie na pozostałych graczy.",
+  "multiplayer.ui.waitingNextRaceTicker": "Zzz... Zaczekaj na kolejny wyścig",
+  "multiplayer.ui.winnerPositionTicker": "Wyścig wygrany!",
+  "nav.accountName": "{name}",
+  "nav.accountTitle": "Zarządzaj swoim kontem online.",
+  "nav.helpName": "Pomoc",
+  "nav.helpTitle": "Uzyskaj instrukcje na temat używania tej aplikacji.",
+  "nav.highScoresName": "Najlepsze wyniki",
+  "nav.highScoresTitle": "Zobacz tabelę najlepszych wyników z użytkownikami o najwyższym tempie pisania na klawiaturze.",
+  "nav.layoutsName": "Układy",
+  "nav.layoutsTitle": "Porównaj wydajność różnych układów klawiatury.",
+  "nav.multiplayerName": "Tryb wieloosobowy",
+  "nav.multiplayerTitle": "Konkuruj z innymi graczami w grze online w trybie wieloosobowym.",
+  "nav.practiceName": "Ćwiczenia",
+  "nav.practiceTitle": "Przechodź przez lekcje pisania na klawiaturze, aby poprawić swoje tempo pisania na klawiaturze.",
+  "nav.privacyPolicyName": "Zasady ochrony prywatności",
+  "nav.privacyPolicyTitle": "Zasady ochrony prywatności.",
+  "nav.profileName": "Profil",
+  "nav.profileTitle": "Zobacz szczegółowe statystyki swoich postępów w nauce.",
+  "nav.publicProfileName": "Publiczny profil {name}",
+  "nav.publicProfileTitle": "Obserwuj publiczny profil użytkownika {name}.",
+  "nav.signInName": "Zarejestruj się",
+  "nav.signInTitle": "Zarejestruj się do konta online.",
+  "nav.termsOfServiceName": "Regulamin",
+  "nav.termsOfServiceTitle": "Regulamin.",
+  "nav.textToolsName": "Narzędzia tekstowe",
+  "nav.textToolsTitle": "Zliczaj znaki i słowa w swoim tekście.",
+  "nav.typingTestName": "Test Pisania",
+  "nav.typingTestTitle": "Zrób test szybkości pisania.",
+  "page.help.description": "Naucz się szybciej pisać na klawiaturze.",
+  "page.help.title": "Pomoc",
+  "page.highScores.content": "<h1>Najlepsze wyniki</h1><p>Tabela z użytkownikami o największym tempie pisania na klawiaturze w ostatnich kilku dniach ułożona w kolejności od najlepszych do najgorszych wyników. Wyniki są mierzone z uwzględnieniem tempa pisania na klawiaturze, długości tekstu, liczby różnych znaków w tekście oraz liczby błędów. Formuła zakłada nagradzanie większego tempa, dłuższego tekstu oraz większej liczby liter, lecz karze za liczbę błędów.</p>",
+  "page.highScores.description": "Użytkownicy w tabeli są wyświetlani w kolejności tempa pisania na klawiaturze.",
+  "page.highScores.title": "Tabela najlepszych wyników",
+  "page.layouts.description": "Wykresy porównujące układy klawiatury.",
+  "page.layouts.title": "Układy klawiatury.",
+  "page.multiplayer.content": "<h1>Gra online w trybie wieloosobowych polegająca na pisaniu na klawiaturze</h1><p>Konkuruj z innymi graczami w tej grze online w trybie wieloosobowym polegającej na pisaniu na klawiaturze. Im szybciej piszesz na klawiaturze, tym szybciej jedzie twój samochód. Pisz jak najszybciej, aby wygrać wyścig!</p>",
+  "page.multiplayer.description": "Gra wyścigowa online w trybie wieloosobowym.",
+  "page.multiplayer.title": "Tryb wieloosobowy",
+  "page.practice.content": "<h1>Lekcje pisania na klawiaturze</h1><p>Wykonaj test tempa pisania na klawiaturze, naucz się pisać szybciej z mniejszą liczbą błędów dzięki tym darmowym lekcjom pisania na klawiaturze online.</p>",
+  "page.practice.description": "Wykonaj test tempa pisania na klawiaturze, przechodź przez lekcje pisania na klawiaturze, naucz się pisać na klawiaturze szybciej.",
+  "page.practice.title": "Ćwiczenia w pisaniu na klawiaturze",
+  "page.profile.content": "<h1>Mój profil</h1><p>To jest strona ze szczegółowymi statystykami twoich postępów w nauce. Im więcej ukończonych lekcji, tym bardziej szczegółowe i dokładne będą to statystyki.</p>",
+  "page.profile.description": "Mój szczegółowy profil.",
+  "page.profile.title": "Mój profil",
+  "page.publicProfile.description": "Publiczny profil użytkownika „{name}”.",
+  "page.publicProfile.title": "{name} | Profil publiczny",
+  "page.textTools.content": "<h1>Narzędzia tekstowe</h1><p>Zliczaj znaki i słowa w swoim tekście. Dowiedz się, jakie słowa występują najczęściej. Zmierz czas wymagany do wpisania i odczytania tych słów.</p>",
+  "page.textTools.description": "Zliczaj znaki i słowa w swoim tekście.",
+  "page.textTools.title": "Narzędzia tekstowe",
+  "page.typingTest.content": "<h1>Typing Speed Test</h1><p>Take a typing speed test.</p>",
+  "page.typingTest.description": "Take a typing speed test.",
+  "page.typingTest.title": "Speed Test",
+  "practice.focusText": "Kliknij, aby aktywować...",
+  "practice.resetLessonButtonTitle": "Zresetuj bieżącą lekcję (Ctrl + strzałka w lewo).",
+  "practice.settingButtonName": "Ustawienia...",
+  "practice.settingButtonTitle": "Zmień ustawienia lekcji, konfiguruj język, układ klawiatury itp.",
+  "practice.showHelpSlidesButtonTitle": "Wyświetl samouczek ze slajdami pomocy.",
+  "practice.skipLessonButtonTitle": "Pomiń bieżącą lekcję (Ctrl + strzałka w prawo).",
+  "practice.switchInterfaceButtonTitle": "Przełącz bieżący układ interfejsu.",
+  "practice.tourSlide1": "<h1>Nauka szybszego pisania na klawiaturze</h1><p>Ta aplikacja sieciowa pomoże ci nauczyć się <em>pisania bez kontroli wzroku</em>, które wykorzystuje pamięć mięśniową do znajdowania klawiszy. Dzięki temu twoje tempo pisania na klawiaturze oraz dokładność mogą poprawić się dramatycznie. Przeciwieństwem tej techniki jest <em>pisanie palcami wskazującymi</em> – metoda, w której użytkownik patrzy na klawiaturę zamiast na ekran.</p><p>To jest krótki samouczek objaśniający działanie tej aplikacji.</p><p>Można używać strzałek w lewo i w prawo, aby zmieniać slajdy.</p>",
+  "practice.tourSlide10": "<p>Ten wskaźnik pokazuje bieżący podzestaw liter wykorzystywanych do generowania lekcji oraz poziom pewności użytkownika dla każdej litery w podzestawie:</p>",
+  "practice.tourSlide11": "<p>Ten wskaźnik pokazuje szczegółowe informacje na temat klawisza o zwiększonej częstotliwości występowania, który w danym momencie jest uwzględniany w każdym generowanym słowie:</p>[dl][dt]Średnie tempo pisania na klawiaturze[/dt][dd]Twoje średnie tempo pisania na klawiaturze dla danego klawisza.[/dd][dt]Najwyższe tempo pisania na klawiaturze[/dt][dd]Twoje najwyższe tempo pisania na klawiaturze dla danego klawisza.[/dd][dt]Poziom pewności[/dt][dd]Wartość liczbowa od 0 do 1 obliczana na podstawie twojego tempa pisania na klawiaturze oraz wskazująca znajomość danego klawisza. Klawisz uznaje się za w pełni przyswojony, gdy jego poziom pewności osiągnie wartość jeden.[/dd][/dl]",
+  "practice.tourSlide12": "<p>This indicator shows details about the letter with boosted frequency, which is currently included in every generated word:</p><dl><dt>Best typing speed</dt><dd>Your best typing speed for this individual letter.</dd><dt>Confidence level</dt><dd>A number in range from zero to one which is computed using your typing speed, and indicates your familiarity with this letter. A letter is considered fully learned when it's confidence level reaches one.</dd><dt>Learning rate</dt><dd>How your typing speed is changing with each lesson.</dd></dl>",
+  "practice.tourSlide2": "<p>Nasza metoda nauczania opiera się na następujących zasadach:</p><p>Nie stosujemy nudnych, powtarzalnych ćwiczeń. W odróżnieniu od większości pozostałych aplikacji do nauki pisania na klawiaturze, nie zmuszamy cię do ciągłego powtarzania takich samych lekcji, np. „<em>jjf jjk jjf jjk</em>”. Jest to bardzo irytujące i w bardzo niewielki sposób przyczynia się do ogólnej nauki.</p><p>Ta aplikacja wykorzystuje zaawansowany algorytm komputerowy do generowania lekcji pisania na klawiaturze, które są dopasowane do twojego poziomu umiejętności. Lekcje te składają się z losowych słów generowanych z wykorzystaniem podzestawu wszystkich liter. Wielkość podzestawu oraz częstotliwość poszczególnych liter są kontrolowane przez algorytm, aby zapewnić jak największą skuteczność nauki.</p>",
+  "practice.tourSlide3": "<p>Na początku słowa są generowane z wykorzystaniem niewielkiego podzestawu najczęściej używanych liter alfabetu.</p><p>Podczas wpisywania tych słów aplikacja mierzy czas wpisywania każdej litery z podzestawu. Czas ten jest wykorzystywany do pomiaru twoich postępów w nauce. Im lepiej znasz daną literę, tym mniej czasu potrzebujesz na jej wpisanie.</p><p>Po zapoznaniu się z całym bieżącym podzestawem liter algorytm rozszerzy go przez dodawanie coraz większej liczby liter do podzestawu.</p>",
+  "practice.tourSlide4": "<p>Gdy algorytm dodaje do bieżącego podzestawu nową literę, częstotliwość tej litery jest sztucznie zwiększana, tak aby znajdowała się w każdym generowanym słowie w lekcji.</p><p>Algorytm może również sztucznie zmieniać częstotliwość liter, kładąc większy nacisk na litery o najgorszych statystykach czasu pisania.</p><p>Oznacza to, że użytkownik zawsze będzie wpisywał te litery, które zna najsłabiej.</p>",
+  "practice.tourSlide5": "<p>To jest panel tekstowy. Wyświetla tekst do wpisania. Tekst zmienia się z każdą nową lekcją. Tekst jest generowany automatycznie z aktualnego podzestawu liter. Większość słów jest nieprawdziwych, lecz generowanych według reguł fonetycznych twojego języka, tak aby brzmiały naturalnie i były łatwe w wymowie. Poza tym, że jest to zabawne ćwiczenie, zapewnia nam elastyczność wykorzystywania większej liczby słów niż w rzeczywistości istnieje.</p>",
+  "practice.tourSlide6": "<p>To jest klawiatura wirtualna. Pomaga w zapamiętaniu pozycji klawiszy. Korzystaj z niej, aby znajdować klawisze i staraj się nie patrzeć na klawiaturę fizyczną. Na klawiszach <em>F</em> oraz <em>J</em> twojej klawiatury znajdują się niewielkie wypustki. Użyj ich do prawidłowego ustawienia palców wskazujących bez patrzenia na klawisze. Gdy palce wskazujące znajdą się we właściwej pozycji, użytkownik będzie mógł zlokalizować pozostałe klawisze.</p>",
+  "practice.tourSlide7": "<p>To jest wskaźnik tempa pisania na klawiaturze oraz różnicy względem wartości średniej. Celem jest zwiększenie tej liczby, czyli uzyskanie jak najwyższych wartości.</p><p>Tempo pisania na klawiaturze jest mierzone w <em>słowach na minutę</em> lub <em>znakach na minutę</em>. Definicja słowa jest ujednolicona do pięciu znaków, dlatego tempo <em>10 słów na minutę</em> jest równa tempu <em>50 znaków na minutę</em>.</p><p>Można przełączać pomiędzy trybami wyświetlania <em>słów na minutę</em> a <em>znaków na minutę</em> na stronie Ustawienia.</p>",
+  "practice.tourSlide8": "<p>To jest wskaźnik dokładności oraz różnicy względem wartości średniej. Celem jest zwiększenie tej liczby, czyli uzyskanie jak najwyższych wartości.</p><p>Dokładność jest obliczana jako procent znaków wpisanych bez błędów. Wiele błędów dotyczących tego samego klawisza jest liczonych jako jeden błąd.</p>",
+  "practice.tourSlide9": "<p>To jest wskaźnik wyniku dotyczącego pisania na klawiaturze w abstrakcyjnych punktach oraz różnica względem wartości średniej.</p><p>Wynik jest obliczane na podstawie tempa pisania na klawiaturze, liczby błędów oraz bieżącej wielkości zestawu liter. Formuła nagradza tempo pisania i karze za liczbę błędów. Nie można uzyskać wysokiego wyniku tylko dzięki wysokiemu tempu pisania na klawiaturze przy popełnianiu wielu błędów.</p><p>Użytkownicy o najwyższych wynikach są umieszczani w tabeli najlepszych wyników.</p>",
+  "profile.calendar.averageSpeedTitle": "Średnie tempo: {value}",
+  "profile.calendar.topSpeedTitle": "Najwyższe tempo: {value}",
+  "profile.calendar.totalLessonsTitle": "Liczba lekcji: {value}",
+  "profile.calendar.totalTimeTitle": "Czas trwania lekcji: {value}",
+  "profile.chart.calendarCaption": "Kalendarz ćwiczeń",
+  "profile.chart.calendarDescription": "Ten kalendarz pokazuje daty aktywnej nauki.",
+  "profile.chart.compareAverageSpeedText": "Twoje najlepsze średnie tempo jest lepsze niż {value} innych ludzi.",
+  "profile.chart.compareTitle": "Porównaj się",
+  "profile.chart.compareTopSpeedText": "Twoje najlepsze najwyższe tempo jest lepsze niż {value} innych ludzi.",
+  "profile.chart.histogramCaption": "Względne tempo pisania na klawiaturze",
+  "profile.chart.histogramDescription": "Jest to histogram tempa pisania na klawiaturze wszystkich użytkowników oraz twoja pozycja względem nich.",
+  "profile.chart.histogramLegend": "Zobacz jak szybko piszesz na klawiaturze względem innych użytkowników. Im wyżej znajduje się linia, tym więcej osób pisze w tym tempie. Twoja pozycja jest oznaczona kolorowymi liniami pionowymi.",
+  "profile.chart.keyFrequencyHeatmapCaption": "Mapa cieplna częstotliwości naciskania klawiszy",
+  "profile.chart.keyFrequencyHeatmapDescription": "Ten diagram pokazuje względne częstotliwości naciskania klawiszy w formie mapy cieplnej.",
+  "profile.chart.keyFrequencyHistogramCaption": "Histogram częstotliwości naciskania klawiszy",
+  "profile.chart.keyFrequencyHistogramDescription": "Ten wykres pokazuje względne częstotliwości naciskania klawiszy.",
+  "profile.chart.keyFrequencyHistogramLegend": "Kolor linii: {label1} – liczba naciśnięć, {label2} – liczba nietrafionych prób, {label3} – stosunek nietrafionych prób/naciśnięć (względna częstotliwość nietrafionych prób).",
+  "profile.chart.keySpeedCaption": "Tempo naciskania klawiszy",
+  "profile.chart.keySpeedDescription": "Ten wykres pokazuje zmianę tempa pisania na klawiaturze dla każdego klawisza.",
+  "profile.chart.keySpeedHistogramCaption": "Histogram tempa pisania na klawiaturze dla klawiszy",
+  "profile.chart.keySpeedHistogramDescription": "Ten wykres pokazuje średnie tempo pisania na klawiaturze dla każdego klawisza.",
+  "profile.chart.keySpeedLegend": "Oś pozioma: numer lekcji. Oś pionowa: {label1} – tempo pisania na klawiaturze dla aktualnie wybranego klawisza.",
+  "profile.chart.progressOverviewCaption": "Ogólne postępy w nauce",
+  "profile.chart.progressOverviewDescription": "Ten wykres pokazuje ogólne postępy w nauce dla wszystkich klawiszy.",
+  "profile.chart.progressOverviewLegend": "Oś pozioma: numer lekcji. Oś pionowa: tempo pisania na klawiaturze dla każdego klawisza, {label1} – niskie, {label2} – wysokie.",
+  "profile.chart.speedCaption": "Tempo pisania na klawiaturze",
+  "profile.chart.speedDescription": "Ten wykres pokazuje zmiany ogólnego tempa pisania na klawiaturze w czasie.",
+  "profile.chart.speedLegend": "Oś pozioma: numer lekcji. Oś pionowa: {label1} – tempo pisania na klawiaturze, {label2} – dokładność pisania, {label3} – liczba klawiszy w lekcjach.",
+  "profile.control.downloadDataLabel": "Pobierz dane",
+  "profile.control.downloadDataTitle": "Pobierz wszystkie swoje dane dotyczące pisania na klawiaturze w formacie JSON.",
+  "profile.control.groupSelectorLabel": "Wyświetl statystyki dla:",
+  "profile.control.resetDataConfirmation": "Czy na pewno chcesz usunąć wszystkie dane i zresetować swój profil? Ta operacja ma charakter trwały i nie można jej cofnąć!",
+  "profile.control.resetDataLabel": "Zresetuj statystyki",
+  "profile.control.resetDataTitle": "Trwale usuń wszystkie swoje dane dotyczące pisania na klawiaturze i zresetuj statystyki.",
+  "profile.control.shareButtonLabel": "Kopiuj",
+  "profile.control.shareButtonTitle": "Kopiuj łącze do profilu do bufora.",
+  "profile.control.shareText": "Udostępnij swój profil:",
+  "profile.control.visitButtonLabel": "Przejdź",
+  "profile.control.visitButtonTitle": "Przejdź na stronę swojego publicznego profilu.",
+  "profile.emptyChartCaption": "Zbyt mało danych",
+  "profile.emptyChartDescription": "Ukończ jeszcze kilka lekcji, aby uzyskać więcej punktów danych.",
+  "profile.overview.averageSpeedLabel": "Średnie tempo",
+  "profile.overview.averageSpeedTitle": "Średnie tempo pisania na klawiaturze.",
+  "profile.overview.averageSpeedTodayLabel": "Średnie tempo",
+  "profile.overview.averageSpeedTodayTitle": "Średnie tempo pisania na klawiaturze dzisiaj.",
+  "profile.overview.statisticsAllTime": "Statystyki ogólne",
+  "profile.overview.statisticsToday": "Statystyki dzisiejsze",
+  "profile.overview.topSpeedLabel": "Najwyższe tempo",
+  "profile.overview.topSpeedTitle": "Najwyższe tempo pisania na klawiaturze.",
+  "profile.overview.topSpeedTodayLabel": "Najwyższe tempo",
+  "profile.overview.topSpeedTodayTitle": "Najwyższe tempo pisania na klawiaturze dzisiaj.",
+  "profile.overview.totalLessonsLabel": "Całkowita liczba lekcji",
+  "profile.overview.totalLessonsTitle": "Liczba ukończonych lekcji.",
+  "profile.overview.totalLessonsTodayLabel": "Całkowita liczba lekcji",
+  "profile.overview.totalLessonsTodayTitle": "Liczba lekcji ukończonych dzisiaj.",
+  "profile.overview.totalTimeLabel": "Całkowity czas",
+  "profile.overview.totalTimeTitle": "Czas poświęcony na ćwiczenia.",
+  "profile.overview.totalTimeTodayLabel": "Całkowity czas",
+  "profile.overview.totalTimeTodayTitle": "Czas poświęcony na ćwiczenia dzisiaj.",
+  "profile.smoothnessLabel": "Płynność:",
+  "profile.smoothnessTitle": "Usuń dane jednostkowe, aby zobaczyć trend długoterminowy.",
+  "settings.alphabetSizeLabel": "Dodaj litery do słów:",
+  "settings.benfordsLawDescription": "<a>Rozkład Benforda</a> to obserwacja, że w wielu rzeczywistych zbiorach danych liczbowych cyfra wiodąca jest prawdopodobnie mała.",
+  "settings.benfordsLawLabel": "Rozkład Benforda",
+  "settings.capitalLettersLabel": "Dodać wielkie litery:",
+  "settings.cursorMovementLabel": "Ruch kursora:",
+  "settings.cursorShapeLabel": "Kształt kursora:",
+  "settings.customTextExamplesLabel": "Przykłady:",
+  "settings.customTextInputPlaceholder": "Tekst niestandardowy...",
+  "settings.customTextLettersOnlyLabel": "Usuń znaki interpunkcyjne",
+  "settings.customTextLettersOnlyTitle": "Usuń znaki interpunkcyjne z tekstu, aby ułatwić jego wpisywanie.",
+  "settings.customTextLowercaseLabel": "Zmień na małe litery",
+  "settings.customTextLowercaseTitle": "Zmień całość tekstu na małe litery, aby ułatwić wpisywanie.",
+  "settings.customTextRandomizeLabel": "Przetasować słowa",
+  "settings.customTextRandomizeTitle": "Ułożyć słowa z własnego tekstu w losowej kolejności.",
+  "settings.dailyGoalDescription": "Ustaw czas, jaki chcesz codziennie poświęcać na ćwiczenia. Jest to proste przypomnienie, które w żaden sposób Cię nie ogranicza. Możesz przestać ćwiczyć, kiedy tylko chcesz.",
+  "settings.dailyGoalLabel": "Dzienny cel:",
+  "settings.doneButtonLabel": "Gotowe",
+  "settings.emulateLayoutLabel": "Emuluj układ",
+  "settings.emulateLayoutTitle": "Emuluj wybrany układ, jeśli w systemie ustawiono układ standardowy.",
+  "settings.forgiveErrorsDescription": "Włączenie tej opcji sprawi, że pole wprowadzania tekstu będzie wybaczać niektóre rodzaje błędów, automatycznie je poprawiając. Są to takie błędy, jak wpisanie nieprawidłowego znaku lub pominięcie znaku.",
+  "settings.forgiveErrorsLabel": "Nie uwzględniaj błędów",
+  "settings.interfaceOptionsLegend": "Opcje interfejsu",
+  "settings.keyboardColorsLabel": "Kolorowe klawisze",
+  "settings.keyboardFullViewLabel": "Pełny widok klawiatury",
+  "settings.keyboardTabLabel": "Klawiatura",
+  "settings.lessonLengthLabel": "Dodaj słowa do lekcji:",
+  "settings.lessonOptionsLegend": "Opcje lekcji",
+  "settings.lessonsTabLabel": "Ćwiczenia",
+  "settings.longWordsOnlyLabel": "Tylko długie słowa",
+  "settings.miscellaneousTabLabel": "Różne",
+  "settings.optionsLegend": "Opcje",
+  "settings.playSoundsLabel": "Play sounds:",
+  "settings.previewLabel": "Podgląd lekcji",
+  "settings.previewLegend": "Podgląd",
+  "settings.punctuationLabel": "Dodać znaki interpunkcyjne:",
+  "settings.selectLanguageLabel": "Język:",
+  "settings.selectLanguageTitle": "Wybierz swój język.",
+  "settings.selectLayoutLabel": "Układ:",
+  "settings.selectLayoutTitle": "Wybierz układ klawiatury, z którym chcesz ćwiczyć. Dla każdego języka dostępnych jest wiele układów.",
+  "settings.spaceSkipsWordsDescription": "If enabled, pressing the space key in the middle of a word will skip the remaining characters of the word and position cursor at the beginning of the next word.",
+  "settings.spaceSkipsWordsLabel": "Space skips words",
+  "settings.stopCursorOnErrorDescription": "Po włączeniu kursor nie będzie przechodził dalej do wciśnięcia właściwego klawisza w danej pozycji. Po wyłączeniu wszystkie błędy będą uwzględnione w polu wprowadzania tekstu i będą wymagać wyczyszczenia klawiszem Delete.",
+  "settings.stopCursorOnErrorLabel": "Zatrzymaj kursor po popełnieniu błędu",
+  "settings.targetSpeedLabel": "Docelowa szybkość pisania:",
+  "settings.textAppearanceLegend": "Wygląd tekstu",
+  "settings.typingAssistsDescription": "Są to pomoce w pisaniu, które pomagają zachować koncentrację i płynność pisania, automatycznie poprawiając błędy.",
+  "settings.typingOptionsLegend": "Opcje pisania na klawiaturze",
+  "settings.typingSpeedUnitCaption": "Pomiar tempa pisania na klawiaturze w:",
+  "settings.typingSpeedUnitDescription": "Na potrzeby pomiaru pisania na klawiaturze każde słowo zostaje ujednolicone do 5 znaków lub klawiszy w języku angielskim, łącznie ze spacjami i znakami interpunkcyjnymi.",
+  "settings.typingTabLabel": "Wpisywanie tekstu",
+  "settings.whitespaceLabel": "Spacje:",
+  "settings.wordListSizeLabel": "Liczba słów:",
+  "settings.wordListSizeTitle": "Wybierz liczbę najczęściej powtarzających słów, których chcesz użyć.",
+  "speedUnit.cpm.description": "Zmierz tempo pisania na klawiaturze w znakach na minutę.",
+  "speedUnit.cpm.name": "Liczba znaków na minutę",
+  "speedUnit.cps.description": "Zmierz tempo pisania na klawiaturze w znakach na sekundę.",
+  "speedUnit.cps.name": "Liczba znaków na sekundę",
+  "speedUnit.wpm.description": "Zmierz tempo pisania na klawiaturze w słowach na minutę.",
+  "speedUnit.wpm.name": "Słowa na minutę",
+  "textStats.allWordCount": "Wszystkie słowa",
+  "textStats.averageWordLength": "Średnia długość słowa",
+  "textStats.charsExcludingWhitespace": "Znaki bez znaków niedrukowalnych",
+  "textStats.charsIncludingWhitespace": "Znaki ze znakami niedrukowalnymi",
+  "textStats.mostCommonWords": "{count} najczęściej powtarzających się słów",
+  "textStats.timeToRead": "Przy średnim tempie odczytywania {speed} słów na minutę odczytanie tego tekstu zajmie {time}.",
+  "textStats.timeToType": "Przy średnim tempie pisania na klawiaturze {speed} słów na minutę wpisanie tego tekstu zajmie {time}.",
+  "textStats.uniqueWordCount": "Unikatowe słowa",
+  "textTools.emptyTextMessage": "Załaduj trochę tekstu, aby obliczyć powiązane statystyki.",
+  "textTools.exampleText": "(Tekst przykładowy, kliknij tutaj, aby go wyczyścić.)",
+  "textTools.textInputPlaceholder": "Tutaj wklej swój tekst",
+  "theme.enterFullscreenTitle": "Przejdź do trybu pełnoekranowego.",
+  "theme.exitFullscreenTitle": "Wyjdź z trybu pełnoekranowego.",
+  "theme.fullscreenNotSupportedTitle": "Tryb pełnoekranowy nie jest obsługiwany.",
+  "theme.switchThemeTitle": "Przełącz na motyw {name}.",
+  "tour.close": "Zamknąć",
+  "tour.next": "Następny",
+  "tour.previous": "Poprzedni"
 }
