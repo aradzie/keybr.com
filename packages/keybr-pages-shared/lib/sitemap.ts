@@ -47,12 +47,12 @@ export class Sitemap {
   static readonly practice = new PageLinkTemplate({
     path: "/",
     name: defineMessage({
-      id: "nav.practice.name",
+      id: "page.practice.link.name",
       description: "Navigation menu item name.",
       defaultMessage: "Practice",
     }),
     title: defineMessage({
-      id: "nav.practice.description",
+      id: "page.practice.link.description",
       description: "Navigation menu item title.",
       defaultMessage: "Practice typing lessons to improve your typing speed.",
     }),
@@ -62,12 +62,12 @@ export class Sitemap {
   static readonly profile = new PageLinkTemplate({
     path: "/profile",
     name: defineMessage({
-      id: "nav.profile.name",
+      id: "page.profile.link.name",
       description: "Navigation menu item name.",
       defaultMessage: "Profile",
     }),
     title: defineMessage({
-      id: "nav.profile.description",
+      id: "page.profile.link.description",
       description: "Navigation menu item title.",
       defaultMessage:
         "See the detailed statistics about your learning progress.",
@@ -78,12 +78,12 @@ export class Sitemap {
   static readonly typingTest = new PageLinkTemplate({
     path: "/typing-test",
     name: defineMessage({
-      id: "nav.typingTest.name",
+      id: "page.typingTest.link.name",
       description: "Navigation menu item name.",
       defaultMessage: "Typing Test",
     }),
     title: defineMessage({
-      id: "nav.typingTest.description",
+      id: "page.typingTest.link.description",
       description: "Navigation menu item title.",
       defaultMessage: "Take a typing speed test.",
     }),
@@ -93,12 +93,12 @@ export class Sitemap {
   static readonly help = new PageLinkTemplate({
     path: "/help",
     name: defineMessage({
-      id: "nav.help.name",
+      id: "page.help.link.name",
       description: "Navigation menu item name.",
       defaultMessage: "Help",
     }),
     title: defineMessage({
-      id: "nav.help.description",
+      id: "page.help.link.description",
       description: "Navigation menu item title.",
       defaultMessage: "Get the instructions on how to use this application.",
     }),
@@ -108,12 +108,12 @@ export class Sitemap {
   static readonly publicProfile = new PageLinkTemplate<NamedUser>({
     path: "/profile/:id",
     name: defineMessage({
-      id: "nav.publicProfile.name",
+      id: "page.publicProfile.link.name",
       description: "Navigation menu item name.",
       defaultMessage: "Public Profile of {name}",
     }),
     title: defineMessage({
-      id: "nav.publicProfile.description",
+      id: "page.publicProfile.link.description",
       description: "Navigation menu item title.",
       defaultMessage: "Observe the public profile of user {name}.",
     }),
@@ -123,12 +123,12 @@ export class Sitemap {
   static readonly highScores = new PageLinkTemplate({
     path: "/high-scores",
     name: defineMessage({
-      id: "nav.highScores.name",
+      id: "page.highScores.link.name",
       description: "Navigation menu item name.",
       defaultMessage: "High Scores",
     }),
     title: defineMessage({
-      id: "nav.highScores.description",
+      id: "page.highScores.link.description",
       description: "Navigation menu item title.",
       defaultMessage: "See the high score table featuring the fastest typists.",
     }),
@@ -138,12 +138,12 @@ export class Sitemap {
   static readonly multiplayer = new PageLinkTemplate({
     path: "/multiplayer",
     name: defineMessage({
-      id: "nav.multiplayer.name",
+      id: "page.multiplayer.link.name",
       description: "Navigation menu item name.",
       defaultMessage: "Multiplayer",
     }),
     title: defineMessage({
-      id: "nav.multiplayer.description",
+      id: "page.multiplayer.link.description",
       description: "Navigation menu item title.",
       defaultMessage:
         "Compete against other players in an online multiplayer game.",
@@ -154,12 +154,12 @@ export class Sitemap {
   static readonly layouts = new PageLinkTemplate({
     path: "/layouts",
     name: defineMessage({
-      id: "nav.layouts.name",
+      id: "page.layouts.link.name",
       description: "Navigation menu item name.",
       defaultMessage: "Layouts",
     }),
     title: defineMessage({
-      id: "nav.layouts.description",
+      id: "page.layouts.link.description",
       description: "Navigation menu item title.",
       defaultMessage: "Compare the efficiency of different keyboard layouts.",
     }),
@@ -169,12 +169,12 @@ export class Sitemap {
   static readonly textTools = new PageLinkTemplate({
     path: "/text-tools",
     name: defineMessage({
-      id: "nav.textTools.name",
+      id: "page.textTools.link.name",
       description: "Navigation menu item name.",
       defaultMessage: "Text Tools",
     }),
     title: defineMessage({
-      id: "nav.textTools.description",
+      id: "page.textTools.link.description",
       description: "Navigation menu item title.",
       defaultMessage: "Count the characters and words in your text.",
     }),
@@ -184,12 +184,12 @@ export class Sitemap {
   static readonly privacyPolicy = new PageLinkTemplate({
     path: "/privacy-policy",
     name: defineMessage({
-      id: "nav.privacyPolicy.name",
+      id: "page.privacyPolicy.link.name",
       description: "Navigation menu item name.",
       defaultMessage: "Privacy Policy",
     }),
     title: defineMessage({
-      id: "nav.privacyPolicy.description",
+      id: "page.privacyPolicy.link.description",
       description: "Navigation menu item title.",
       defaultMessage: "Privacy policy.",
     }),
@@ -198,12 +198,12 @@ export class Sitemap {
   static readonly termsOfService = new PageLinkTemplate({
     path: "/terms-of-service",
     name: defineMessage({
-      id: "nav.termsOfService.name",
+      id: "page.termsOfService.link.name",
       description: "Navigation menu item name.",
       defaultMessage: "Terms of Service",
     }),
     title: defineMessage({
-      id: "nav.termsOfService.description",
+      id: "page.termsOfService.link.description",
       description: "Navigation menu item title.",
       defaultMessage: "Terms of service.",
     }),

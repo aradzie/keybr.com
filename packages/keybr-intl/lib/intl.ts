@@ -35,7 +35,7 @@ function onError(err: any): void {
   if (process.env.NODE_ENV === "test") {
     if (err.code === "MISSING_TRANSLATION") {
       // Error: [@formatjs/intl Error MISSING_TRANSLATION]
-      // Missing message: "nav.multiplayer.name" for locale "pl",
+      // Missing message: "page.multiplayer.link.name" for locale "pl",
       // using default message (Multiplayer) as fallback.
       //
       // When we bundle the sources we rewrite message ids so that
