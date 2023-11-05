@@ -12,9 +12,6 @@ export function FooterSection(): ReactNode {
     <FieldList>
       <Field>
         <Button
-          onClick={() => {
-            handleDownloadData();
-          }}
           className={styleWidthWide}
           icon={<Icon shape={mdiDownload} />}
           label={formatMessage({
@@ -27,14 +24,14 @@ export function FooterSection(): ReactNode {
             description: "Widget description.",
             defaultMessage: "Download all your typing data in JSON format.",
           })}
+          onClick={() => {
+            handleDownloadData();
+          }}
         />
       </Field>
       <Field.Filler />
       <Field>
         <Button
-          onClick={() => {
-            handleResetData();
-          }}
           className={styleWidthWide}
           icon={<Icon shape={mdiDeleteForever} />}
           label={formatMessage({
@@ -48,6 +45,9 @@ export function FooterSection(): ReactNode {
             defaultMessage:
               "Permanently delete all of your typing data and reset statistics.",
           })}
+          onClick={() => {
+            handleResetData();
+          }}
         />
       </Field>
     </FieldList>
