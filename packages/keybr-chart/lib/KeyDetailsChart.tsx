@@ -2,7 +2,6 @@ import { useIntlNumbers } from "@keybr/intl";
 import { type LearningRate, type LessonKey, Target } from "@keybr/lesson";
 import { useFormatter } from "@keybr/lesson-ui";
 import { constModel, Range } from "@keybr/math";
-import { timeToSpeed } from "@keybr/result";
 import { useSettings } from "@keybr/settings";
 import { Canvas, type Rect, type ShapeList, Shapes } from "@keybr/widget";
 import { type ReactNode } from "react";
@@ -35,7 +34,6 @@ function usePaint(lessonKey: LessonKey, learningRate: LearningRate | null) {
   const { formatSpeed } = useFormatter();
   const { settings } = useSettings();
   const target = new Target(settings);
-  const speedThreshold = timeToSpeed(target.timeToType);
 
   if (learningRate == null) {
     return (box: Rect): ShapeList => {
@@ -53,8 +51,8 @@ function usePaint(lessonKey: LessonKey, learningRate: LearningRate | null) {
 
   const rIndex = Range.from(vIndex);
   const rSpeed = Range.from(vSpeed);
-  rSpeed.min = speedThreshold;
-  rSpeed.max = speedThreshold;
+  rSpeed.min = target.targetSpeed;
+  rSpeed.max = target.targetSpeed;
   rSpeed.round(5);
 
   let now = 0;
@@ -78,7 +76,7 @@ function usePaint(lessonKey: LessonKey, learningRate: LearningRate | null) {
           lineWidth: 2,
         },
       }),
-      paintCurve(proj, constModel(speedThreshold), {
+      paintCurve(proj, constModel(target.targetSpeed), {
         style: {
           ...chartStyles.thresholdLine,
           lineWidth: 2,

@@ -5,6 +5,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 import { AlphabetSizeProp } from "./AlphabetSizeProp.tsx";
 import { DoubleWordsProp } from "./DoubleWordsProp.tsx";
 import { LessonLengthProp } from "./LessonLengthProp.tsx";
+import { RecoverKeysProp } from "./RecoverKeysProp.tsx";
 import { TargetSpeedProp } from "./TargetSpeedProp.tsx";
 import { TextManglingProp } from "./TextManglingProp.tsx";
 
@@ -31,6 +32,7 @@ export function GuidedLessonSettings({
         })}
       >
         <TargetSpeedProp />
+        <RecoverKeysProp />
         <DoubleWordsProp />
         <AlphabetSizeProp />
         <TextManglingProp />

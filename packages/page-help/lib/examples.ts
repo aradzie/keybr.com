@@ -39,9 +39,12 @@ export function makeExampleLesson(
   const lessonKeys = new LessonKeys(keys);
 
   // Find the least confident of all included keys and focus on it.
-  const focusedKey = LessonKey.findFocused(lessonKeys.findIncludedKeys());
-  if (focusedKey != null) {
-    lessonKeys.focus(focusedKey.letter);
+  const candidateKeys = lessonKeys
+    .findIncludedKeys()
+    .filter((key) => (key.confidence ?? 0) < 1)
+    .sort((a, b) => (a.confidence ?? 0) - (b.confidence ?? 0));
+  if (candidateKeys.length > 0) {
+    lessonKeys.focus(candidateKeys[0].letter);
   }
 
   return lessonKeys;

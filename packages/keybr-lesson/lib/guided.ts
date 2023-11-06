@@ -23,15 +23,14 @@ export class GuidedLesson extends Lesson {
   }
 
   override update(keyStatsMap: KeyStatsMap): LessonKeys {
+    const alphabetSize = this.settings.get(lessonProps.guided.alphabetSize);
+    const recoverKeys = this.settings.get(lessonProps.guided.recoverKeys);
+
     const letters = Letter.frequencyOrder(this.model.letters);
 
     const minSize = 6;
     const maxSize =
-      minSize +
-      Math.round(
-        (letters.length - minSize) *
-          this.settings.get(lessonProps.guided.alphabetSize),
-      );
+      minSize + Math.round((letters.length - minSize) * alphabetSize);
 
     const target = new Target(this.settings);
 
@@ -60,17 +59,33 @@ export class GuidedLesson extends Lesson {
         continue;
       }
 
-      if (includedKeys.every((key) => (key.bestConfidence ?? 0) >= 1)) {
-        // Must include at least one non-confident key.
-        lessonKeys.include(lessonKey.letter);
-        continue;
+      if (recoverKeys) {
+        if (includedKeys.every((key) => (key.confidence ?? 0) >= 1)) {
+          // Include a new key only when all the previous keys
+          // are now above the target speed.
+          lessonKeys.include(lessonKey.letter);
+          continue;
+        }
+      } else {
+        if (includedKeys.every((key) => (key.bestConfidence ?? 0) >= 1)) {
+          // Include a new key only when all the previous keys
+          // were once above the target speed.
+          lessonKeys.include(lessonKey.letter);
+          continue;
+        }
       }
     }
 
     // Find the least confident of all included keys and focus on it.
-    const focusedKey = LessonKey.findFocused(lessonKeys.findIncludedKeys());
-    if (focusedKey != null) {
-      lessonKeys.focus(focusedKey.letter);
+    const confidenceOf = (key: LessonKey): number => {
+      return recoverKeys ? key.confidence ?? 0 : key.bestConfidence ?? 0;
+    };
+    const weakestKeys = lessonKeys
+      .findIncludedKeys()
+      .filter((key) => confidenceOf(key) < 1)
+      .sort((a, b) => confidenceOf(a) - confidenceOf(b));
+    if (weakestKeys.length > 0) {
+      lessonKeys.focus(weakestKeys[0].letter);
     }
 
     return lessonKeys;

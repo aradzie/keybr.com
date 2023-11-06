@@ -3,10 +3,10 @@ import { type Settings } from "@keybr/settings";
 import { lessonProps } from "./settings.ts";
 
 export class Target {
-  readonly timeToType: number;
+  readonly targetSpeed: number;
 
   constructor(settings: Settings) {
-    this.timeToType = speedToTime(settings.get(lessonProps.targetSpeed));
+    this.targetSpeed = settings.get(lessonProps.targetSpeed);
   }
 
   confidence(timeToType: number): number;
@@ -19,6 +19,6 @@ export class Target {
     if (!Number.isFinite(timeToType) || timeToType === 0) {
       throw new Error();
     }
-    return this.timeToType / timeToType;
+    return speedToTime(this.targetSpeed) / timeToType;
   }
 }

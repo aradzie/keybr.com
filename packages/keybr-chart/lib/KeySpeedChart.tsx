@@ -42,7 +42,6 @@ function usePaint(samples: readonly KeySample[], smoothness: number) {
   const { formatSpeed } = useFormatter();
   const { settings } = useSettings();
   const target = new Target(settings);
-  const speedThreshold = timeToSpeed(target.timeToType);
 
   if (!hasData(samples)) {
     return (box: Rect): ShapeList => {
@@ -66,8 +65,8 @@ function usePaint(samples: readonly KeySample[], smoothness: number) {
   }
   const rIndex = Range.from(vIndex);
   const rSpeed = Range.from(vSpeed);
-  rSpeed.min = speedThreshold;
-  rSpeed.max = speedThreshold;
+  rSpeed.min = target.targetSpeed;
+  rSpeed.max = target.targetSpeed;
   rSpeed.round(5);
 
   const mSpeed = linearRegression(vIndex, vSpeed);
@@ -86,7 +85,7 @@ function usePaint(samples: readonly KeySample[], smoothness: number) {
           lineWidth: 2,
         },
       }),
-      paintCurve(proj, constModel(speedThreshold), {
+      paintCurve(proj, constModel(target.targetSpeed), {
         style: {
           ...chartStyles.thresholdLine,
           lineWidth: 2,

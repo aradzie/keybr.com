@@ -3,7 +3,7 @@ import test from "ava";
 import { lessonProps } from "./settings.ts";
 import { Target } from "./target.ts";
 
-test("confidence", (t) => {
+test("time to confidence", (t) => {
   const settings = new Settings().set(lessonProps.targetSpeed, /* 50WPM */ 250);
   const target = new Target(settings);
   t.throws(() => target.confidence(NaN));

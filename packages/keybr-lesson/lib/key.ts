@@ -16,18 +16,6 @@ export class LessonKey implements KeyStats {
     });
   }
 
-  static findFocused(includedKeys: readonly LessonKey[]): LessonKey | null {
-    const conf = (key: LessonKey): number => key.bestConfidence ?? 0;
-    const candidateKeys = includedKeys
-      .filter((key) => conf(key) < 1)
-      .sort((a, b) => conf(a) - conf(b) || b.letter.f - a.letter.f);
-    if (candidateKeys.length > 0) {
-      return candidateKeys[0];
-    } else {
-      return null;
-    }
-  }
-
   readonly letter: Letter;
   readonly samples: readonly KeySample[];
   readonly timeToType: number | null;
