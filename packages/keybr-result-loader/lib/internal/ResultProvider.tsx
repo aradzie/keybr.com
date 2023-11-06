@@ -18,11 +18,21 @@ export function ResultProvider({
       value={{
         results: results,
         appendResults: (newResults) => {
-          storage.append(newResults).catch(catchError);
+          storage
+            .append(newResults)
+            .catch((err) => {
+              console.error(err);
+            })
+            .catch(catchError);
           setResults([...results, ...newResults]);
         },
         clearResults: () => {
-          storage.clear().catch(catchError);
+          storage
+            .clear()
+            .catch((err) => {
+              console.error(err);
+            })
+            .catch(catchError);
           setResults([]);
         },
       }}
