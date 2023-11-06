@@ -321,6 +321,7 @@
   "settings.customTextRandomize.label": "Przetasować słowa",
   "settings.dailyGoal.description": "Ustaw czas, jaki chcesz codziennie poświęcać na ćwiczenia. Jest to proste przypomnienie, które w żaden sposób Cię nie ogranicza. Możesz przestać ćwiczyć, kiedy tylko chcesz.",
   "settings.dailyGoal.label": "Dzienny cel:",
+  "settings.doubleWords.label": "Podwoić każde słowo:",
   "settings.emulateLayout.description": "Emuluj wybrany układ, jeśli w systemie ustawiono układ standardowy.",
   "settings.emulateLayout.label": "Emuluj układ",
   "settings.forgiveErrors.description": "Włączenie tej opcji sprawi, że pole wprowadzania tekstu będzie wybaczać niektóre rodzaje błędów, automatycznie je poprawiając. Są to takie błędy, jak wpisanie nieprawidłowego znaku lub pominięcie znaku.",

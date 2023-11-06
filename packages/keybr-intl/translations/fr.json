@@ -321,6 +321,7 @@
   "settings.customTextRandomize.label": "Mélangez les mots",
   "settings.dailyGoal.description": "Définissez le temps que vous souhaitez consacrer quotidiennement aux exercices. C'est un simple rappel qui ne vous limite en rien. Vous pouvez arrêter de pratiquer quand vous le souhaitez.",
   "settings.dailyGoal.label": "Objectif quotidien:",
+  "settings.doubleWords.label": "Doublez chaque mot:",
   "settings.emulateLayout.description": "Émuler la disposition de clavier sélectionnée si la disposition standard est définie dans le système.",
   "settings.emulateLayout.label": "Émuler la disposition",
   "settings.forgiveErrors.description": "L'activation de cette option permet de pardonner certains types d'erreurs et les corriger automatiquement dans le champ de saisie de texte. Il s'agit d'erreurs telles que la saisie d'un caractère erroné ou l'omission d'un caractère.",

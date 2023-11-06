@@ -321,6 +321,7 @@
   "settings.customTextRandomize.label": "Mische die Wörter",
   "settings.dailyGoal.description": "Legen Sie die Zeit fest, die Sie täglich für die Übungen aufwenden möchten. Es ist eine einfache Erinnerung, die Sie in keiner Weise einschränkt. Sie können jederzeit mit dem Üben aufhören.",
   "settings.dailyGoal.label": "Tägliches Ziel:",
+  "settings.doubleWords.label": "Verdoppeln Sie jedes Wort:",
   "settings.emulateLayout.description": "Emuliert das ausgewählte Layout, wenn das Standardlayout im System eingestellt ist.",
   "settings.emulateLayout.label": "Layout emulieren",
   "settings.forgiveErrors.description": "Wenn Sie diese Option aktivieren, verzeiht das Texteingabefeld einige Arten von Fehlern, indem es sie automatisch korrigiert. Dabei handelt es sich um Fehler wie das Eingeben eines falschen Zeichens oder das Überspringen eines Zeichens.",

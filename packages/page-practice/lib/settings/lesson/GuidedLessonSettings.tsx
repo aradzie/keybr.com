@@ -3,6 +3,7 @@ import { Explainer, FieldSet } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { AlphabetSizeProp } from "./AlphabetSizeProp.tsx";
+import { DoubleWordsProp } from "./DoubleWordsProp.tsx";
 import { LessonLengthProp } from "./LessonLengthProp.tsx";
 import { TargetSpeedProp } from "./TargetSpeedProp.tsx";
 import { TextManglingProp } from "./TextManglingProp.tsx";
@@ -30,6 +31,7 @@ export function GuidedLessonSettings({
         })}
       >
         <TargetSpeedProp />
+        <DoubleWordsProp />
         <AlphabetSizeProp />
         <TextManglingProp />
         <LessonLengthProp />

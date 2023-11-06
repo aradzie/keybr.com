@@ -17,6 +17,7 @@ import {
 } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
+import { DoubleWordsProp } from "./DoubleWordsProp.tsx";
 import { LessonLengthProp } from "./LessonLengthProp.tsx";
 import { TargetSpeedProp } from "./TargetSpeedProp.tsx";
 import { TextManglingProp } from "./TextManglingProp.tsx";
@@ -46,6 +47,7 @@ export function WordListLessonSettings({
         <WordListPreview lesson={lesson} />
         <WordListStats lesson={lesson} />
         <TargetSpeedProp />
+        <DoubleWordsProp />
         <TextManglingProp />
         <LessonLengthProp />
       </FieldSet>

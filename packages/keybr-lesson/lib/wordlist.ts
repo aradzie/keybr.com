@@ -49,6 +49,8 @@ export class WordListLesson extends Lesson {
       },
       this.rng,
     );
-    return generateFragment(this.settings, words);
+    return generateFragment(this.settings, words, {
+      doubleWords: this.settings.get(lessonProps.doubleWords),
+    });
   }
 }

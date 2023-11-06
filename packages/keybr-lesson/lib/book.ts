@@ -38,6 +38,8 @@ export class BookContentLesson extends Lesson {
   }
 
   override generate(): string {
-    return generateFragment(this.settings, wordSequence(this.wordList, this));
+    return generateFragment(this.settings, wordSequence(this.wordList, this), {
+      doubleWords: false,
+    });
   }
 }
