@@ -10,7 +10,7 @@ test("render not included", (t) => {
         className="custom"
         isIncluded={false}
         confidence={null}
-        isBoosted={false}
+        isFocused={false}
         isForced={false}
       />
     </FakeIntlProvider>,
@@ -26,7 +26,7 @@ test("render included", (t) => {
         className="custom"
         isIncluded={true}
         confidence={0.8}
-        isBoosted={true}
+        isFocused={true}
         isForced={true}
       />
     </FakeIntlProvider>,

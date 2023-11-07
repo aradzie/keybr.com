@@ -16,7 +16,7 @@ export class LessonKey implements KeyStats {
     });
   }
 
-  static findBoosted(includedKeys: readonly LessonKey[]): LessonKey | null {
+  static findFocused(includedKeys: readonly LessonKey[]): LessonKey | null {
     const conf = (key: LessonKey): number => key.bestConfidence ?? 0;
     const candidateKeys = includedKeys
       .filter((key) => conf(key) < 1)
@@ -35,7 +35,7 @@ export class LessonKey implements KeyStats {
   readonly confidence: number | null;
   readonly bestConfidence: number | null;
   readonly isIncluded: boolean;
-  readonly isBoosted: boolean;
+  readonly isFocused: boolean;
   readonly isForced: boolean;
 
   constructor({
@@ -46,7 +46,7 @@ export class LessonKey implements KeyStats {
     confidence,
     bestConfidence,
     isIncluded = false,
-    isBoosted = false,
+    isFocused = false,
     isForced = false,
   }: {
     letter: Letter;
@@ -56,7 +56,7 @@ export class LessonKey implements KeyStats {
     confidence: number | null;
     bestConfidence: number | null;
     isIncluded?: boolean;
-    isBoosted?: boolean;
+    isFocused?: boolean;
     isForced?: boolean;
   }) {
     this.letter = letter;
@@ -66,7 +66,7 @@ export class LessonKey implements KeyStats {
     this.confidence = confidence;
     this.bestConfidence = bestConfidence;
     this.isIncluded = isIncluded;
-    this.isBoosted = isBoosted;
+    this.isFocused = isFocused;
     this.isForced = isForced;
     Object.freeze(this);
   }
@@ -82,7 +82,7 @@ export class LessonKey implements KeyStats {
     return new LessonKey({
       ...this,
       isIncluded: false,
-      isBoosted: false,
+      isFocused: false,
       isForced: false,
     });
   }
@@ -95,11 +95,11 @@ export class LessonKey implements KeyStats {
     });
   }
 
-  asBoosted(): LessonKey {
+  asFocused(): LessonKey {
     return new LessonKey({
       ...this,
       isIncluded: true,
-      isBoosted: true,
+      isFocused: true,
     });
   }
 }
@@ -137,8 +137,8 @@ export class LessonKeys implements Iterable<LessonKey> {
     return [...this._keys.values()].filter((key) => !key.isIncluded);
   }
 
-  findBoostedKey(): LessonKey | null {
-    return [...this._keys.values()].find((key) => key.isBoosted) ?? null;
+  findFocusedKey(): LessonKey | null {
+    return [...this._keys.values()].find((key) => key.isFocused) ?? null;
   }
 
   include({ codePoint }: Letter): void {
@@ -153,8 +153,8 @@ export class LessonKeys implements Iterable<LessonKey> {
     this._keys.set(codePoint, this._keys.get(codePoint)!.asForced());
   }
 
-  boost({ codePoint }: Letter): void {
-    this._keys.set(codePoint, this._keys.get(codePoint)!.asBoosted());
+  focus({ codePoint }: Letter): void {
+    this._keys.set(codePoint, this._keys.get(codePoint)!.asFocused());
   }
 
   find(codePoint: CodePoint): LessonKey | null {

@@ -30,7 +30,7 @@ export const Key = ({
     letter: { codePoint, label },
     confidence,
     isIncluded,
-    isBoosted,
+    isFocused,
     isForced,
   } = lessonKey;
   return (
@@ -43,7 +43,7 @@ export const Key = ({
         size === "announcement" && styles.lessonKey_announcement,
         isIncluded ? styles.lessonKey_included : styles.lessonKey_excluded,
         isIncluded && confidence == null && styles.lessonKey_uncalibrated,
-        isIncluded && isBoosted && styles.lessonKey_boosted,
+        isIncluded && isFocused && styles.lessonKey_focused,
         isIncluded && isForced && styles.lessonKey_forced,
         isSelectable && styles.lessonKey_selectable,
         isCurrent && styles.lessonKey_current,

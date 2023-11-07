@@ -21,7 +21,7 @@ test("provide key set", (t) => {
       confidence: null,
       bestConfidence: null,
       isIncluded: true,
-      isBoosted: true,
+      isFocused: true,
       isForced: false,
     }),
     new LessonKey({
@@ -32,7 +32,7 @@ test("provide key set", (t) => {
       confidence: null,
       bestConfidence: null,
       isIncluded: true,
-      isBoosted: false,
+      isFocused: false,
       isForced: false,
     }),
     new LessonKey({
@@ -43,7 +43,7 @@ test("provide key set", (t) => {
       confidence: null,
       bestConfidence: null,
       isIncluded: true,
-      isBoosted: false,
+      isFocused: false,
       isForced: false,
     }),
     new LessonKey({
@@ -54,7 +54,7 @@ test("provide key set", (t) => {
       confidence: null,
       bestConfidence: null,
       isIncluded: true,
-      isBoosted: false,
+      isFocused: false,
       isForced: false,
     }),
     new LessonKey({
@@ -65,7 +65,7 @@ test("provide key set", (t) => {
       confidence: null,
       bestConfidence: null,
       isIncluded: true,
-      isBoosted: false,
+      isFocused: false,
       isForced: false,
     }),
     new LessonKey({
@@ -76,7 +76,7 @@ test("provide key set", (t) => {
       confidence: null,
       bestConfidence: null,
       isIncluded: true,
-      isBoosted: false,
+      isFocused: false,
       isForced: false,
     }),
   ]);
@@ -89,7 +89,7 @@ test("provide key set", (t) => {
       confidence: null,
       bestConfidence: null,
       isIncluded: false,
-      isBoosted: false,
+      isFocused: false,
       isForced: false,
     }),
     new LessonKey({
@@ -100,7 +100,7 @@ test("provide key set", (t) => {
       confidence: null,
       bestConfidence: null,
       isIncluded: false,
-      isBoosted: false,
+      isFocused: false,
       isForced: false,
     }),
     new LessonKey({
@@ -111,7 +111,7 @@ test("provide key set", (t) => {
       confidence: null,
       bestConfidence: null,
       isIncluded: false,
-      isBoosted: false,
+      isFocused: false,
       isForced: false,
     }),
     new LessonKey({
@@ -122,12 +122,12 @@ test("provide key set", (t) => {
       confidence: null,
       bestConfidence: null,
       isIncluded: false,
-      isBoosted: false,
+      isFocused: false,
       isForced: false,
     }),
   ]);
   t.deepEqual(
-    lessonKeys.findBoostedKey(),
+    lessonKeys.findFocusedKey(),
     new LessonKey({
       letter: FakePhoneticModel.letter10,
       samples: [],
@@ -136,7 +136,7 @@ test("provide key set", (t) => {
       confidence: null,
       bestConfidence: null,
       isIncluded: true,
-      isBoosted: true,
+      isFocused: true,
       isForced: false,
     }),
   );

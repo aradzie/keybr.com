@@ -8,7 +8,7 @@ export const KeyLegend = ({
   className,
   confidence,
   isIncluded,
-  isBoosted,
+  isFocused,
   isForced,
   size = "normal",
   title,
@@ -21,7 +21,7 @@ export const KeyLegend = ({
   readonly className?: ClassName;
   readonly confidence: number | null;
   readonly isIncluded: boolean;
-  readonly isBoosted: boolean;
+  readonly isFocused: boolean;
   readonly isForced: boolean;
   readonly size?: "normal" | "large";
   readonly title?: string;
@@ -34,7 +34,7 @@ export const KeyLegend = ({
         size === "large" && styles.lessonKey_large,
         isIncluded ? styles.lessonKey_included : styles.lessonKey_excluded,
         isIncluded && confidence == null && styles.lessonKey_uncalibrated,
-        isIncluded && isBoosted && styles.lessonKey_boosted,
+        isIncluded && isFocused && styles.lessonKey_focused,
         isIncluded && isForced && styles.lessonKey_forced,
         className,
       )}

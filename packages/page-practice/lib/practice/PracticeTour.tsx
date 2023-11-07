@@ -49,7 +49,7 @@ export const PracticeTour = memo(function PracticeTour({
           id="practice.tour.slide4"
           description="Slide content."
           defaultMessage={
-            "<p>When the algorithm includes a new letter to the current subset, the frequency of this letter is artificially boosted so that it will be included in every generated word of a lesson.</p>" +
+            "<p>When the algorithm includes a new letter to the current subset, the frequency of this letter is artificially increased so that it will be included in every generated word of a lesson.</p>" +
             "<p>The algorithm can also artificially rearrange letter frequencies, placing an emphasis on the letters with the worst time-to-type metric.</p>" +
             "<p>This means you will always be typing the letters that you are least familiar with.</p>"
           }
@@ -122,7 +122,7 @@ export const PracticeTour = memo(function PracticeTour({
           id="practice.tour.slide12"
           description="Slide content."
           defaultMessage={
-            "<p>This indicator shows details about the letter with boosted frequency, which is currently included in every generated word:</p>" +
+            "<p>This indicator shows details about the letter with increased frequency, which is currently included in every generated word:</p>" +
             "<dl>" +
             "<dt>Best typing speed</dt>" +
             "<dd>Your best typing speed for this individual letter.</dd>" +

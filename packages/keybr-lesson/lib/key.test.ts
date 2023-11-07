@@ -4,13 +4,13 @@ import { LessonKey, LessonKeys } from "./key.ts";
 
 const { letter1, letter2, letter3 } = FakePhoneticModel;
 
-test("find boosted key in empty list", (t) => {
+test("find focused key in empty list", (t) => {
   // Assert.
 
-  t.is(LessonKey.findBoosted([]), null);
+  t.is(LessonKey.findFocused([]), null);
 });
 
-test("find boosted key when all keys have max confidence", (t) => {
+test("find focused key when all keys have max confidence", (t) => {
   // Arrange.
 
   const a = new LessonKey({
@@ -40,13 +40,13 @@ test("find boosted key when all keys have max confidence", (t) => {
 
   // Assert.
 
-  t.is(LessonKey.findBoosted([a]), null);
-  t.is(LessonKey.findBoosted([b]), null);
-  t.is(LessonKey.findBoosted([c]), null);
-  t.is(LessonKey.findBoosted([a, b, c]), null);
+  t.is(LessonKey.findFocused([a]), null);
+  t.is(LessonKey.findFocused([b]), null);
+  t.is(LessonKey.findFocused([c]), null);
+  t.is(LessonKey.findFocused([a, b, c]), null);
 });
 
-test("find boosted key with least confidence", (t) => {
+test("find focused key with least confidence", (t) => {
   // Arrange.
 
   const a = new LessonKey({
@@ -76,11 +76,11 @@ test("find boosted key with least confidence", (t) => {
 
   // Assert.
 
-  t.is(LessonKey.findBoosted([a]), a);
-  t.is(LessonKey.findBoosted([b]), b);
-  t.is(LessonKey.findBoosted([c]), c);
-  t.is(LessonKey.findBoosted([a, b, c]), a);
-  t.is(LessonKey.findBoosted([c, b, a]), a);
+  t.is(LessonKey.findFocused([a]), a);
+  t.is(LessonKey.findFocused([b]), b);
+  t.is(LessonKey.findFocused([c]), c);
+  t.is(LessonKey.findFocused([a, b, c]), a);
+  t.is(LessonKey.findFocused([c, b, a]), a);
 });
 
 test("lesson keys", (t) => {
@@ -115,7 +115,7 @@ test("lesson keys", (t) => {
 
   // Act.
 
-  keys.boost(letter1);
+  keys.focus(letter1);
 
   // Assert.
 
@@ -132,7 +132,7 @@ test("lesson keys", (t) => {
         bestConfidence: 1.0,
         isIncluded: true,
         isForced: false,
-        isBoosted: true,
+        isFocused: true,
       }),
       new LessonKey({
         letter: letter2,
@@ -143,7 +143,7 @@ test("lesson keys", (t) => {
         bestConfidence: 1.0,
         isIncluded: false,
         isForced: false,
-        isBoosted: false,
+        isFocused: false,
       }),
       new LessonKey({
         letter: letter3,
@@ -154,7 +154,7 @@ test("lesson keys", (t) => {
         bestConfidence: 1.0,
         isIncluded: false,
         isForced: false,
-        isBoosted: false,
+        isFocused: false,
       }),
     ],
   );
@@ -168,7 +168,7 @@ test("lesson keys", (t) => {
       bestConfidence: 1.0,
       isIncluded: true,
       isForced: false,
-      isBoosted: true,
+      isFocused: true,
     }),
   ]);
   t.deepEqual(keys.findExcludedKeys(), [
@@ -181,7 +181,7 @@ test("lesson keys", (t) => {
       bestConfidence: 1.0,
       isIncluded: false,
       isForced: false,
-      isBoosted: false,
+      isFocused: false,
     }),
     new LessonKey({
       letter: letter3,
@@ -192,11 +192,11 @@ test("lesson keys", (t) => {
       bestConfidence: 1.0,
       isIncluded: false,
       isForced: false,
-      isBoosted: false,
+      isFocused: false,
     }),
   ]);
   t.deepEqual(
-    keys.findBoostedKey(),
+    keys.findFocusedKey(),
     new LessonKey({
       letter: letter1,
       samples: [],
@@ -206,7 +206,7 @@ test("lesson keys", (t) => {
       bestConfidence: 1.0,
       isIncluded: true,
       isForced: false,
-      isBoosted: true,
+      isFocused: true,
     }),
   );
 });

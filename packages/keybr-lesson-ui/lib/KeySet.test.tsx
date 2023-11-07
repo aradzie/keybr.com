@@ -17,7 +17,7 @@ test("render", (t) => {
       bestTimeToType: 100,
       confidence: 1.0,
       bestConfidence: 1.0,
-    }).asBoosted(),
+    }).asFocused(),
     new LessonKey({
       letter: letters[1],
       samples: [],

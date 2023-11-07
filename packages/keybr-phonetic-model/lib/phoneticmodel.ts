@@ -174,15 +174,15 @@ class PrefixList {
   }
 
   findPrefixes(filter: Filter): Prefix[] {
-    const { boostedCodePoint } = filter;
-    if (boostedCodePoint != null) {
+    const { focusedCodePoint } = filter;
+    if (focusedCodePoint != null) {
       const prefixes = this.map
-        .get(boostedCodePoint)!
+        .get(focusedCodePoint)!
         .filter((prefix) => prefix.matches(filter));
       if (prefixes.length > 0) {
         return prefixes;
       } else {
-        return [new Prefix([boostedCodePoint])];
+        return [new Prefix([focusedCodePoint])];
       }
     } else {
       return [];

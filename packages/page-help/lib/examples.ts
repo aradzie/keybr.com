@@ -38,10 +38,10 @@ export function makeExampleLesson(
 
   const lessonKeys = new LessonKeys(keys);
 
-  // Find the least confident of all included keys and boost it.
-  const boostedKey = LessonKey.findBoosted(lessonKeys.findIncludedKeys());
-  if (boostedKey != null) {
-    lessonKeys.boost(boostedKey.letter);
+  // Find the least confident of all included keys and focus on it.
+  const focusedKey = LessonKey.findFocused(lessonKeys.findIncludedKeys());
+  if (focusedKey != null) {
+    lessonKeys.focus(focusedKey.letter);
   }
 
   return lessonKeys;

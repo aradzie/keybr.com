@@ -40,7 +40,7 @@ test("render key", (t) => {
       bestTimeToType: 100,
       confidence: 1.0,
       bestConfidence: 1.0,
-    }).asBoosted(),
+    }).asFocused(),
   ]);
 
   const testRenderer = TestRenderer.create(

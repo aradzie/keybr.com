@@ -15,14 +15,14 @@ export const CurrentKey = ({
   readonly className?: ClassName;
   readonly lessonKeys: LessonKeys;
 }): ReactNode => {
-  const boostedKey = lessonKeys.findBoostedKey();
-  if (boostedKey != null) {
+  const focusedKey = lessonKeys.findFocusedKey();
+  if (focusedKey != null) {
     return (
       <span
         id={id}
         className={clsx(styles.currentKey, styles.nonEmpty, className)}
       >
-        <Key lessonKey={boostedKey} /> <KeyDetails lessonKey={boostedKey} />
+        <Key lessonKey={focusedKey} /> <KeyDetails lessonKey={focusedKey} />
       </span>
     );
   } else {

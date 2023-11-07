@@ -82,11 +82,11 @@ export class PracticeState {
   private _computeAnnouncements(): void {
     const { results, keyStatsMap, lessonKeys } = this;
     if (results.length > 0) {
-      const boostedKey = lessonKeys.findBoostedKey();
-      if (boostedKey != null) {
-        const keyStats = keyStatsMap.get(boostedKey.letter);
+      const focusedKey = lessonKeys.findFocusedKey();
+      if (focusedKey != null) {
+        const keyStats = keyStatsMap.get(focusedKey.letter);
         if (keyStats.samples.length === 0) {
-          this.announcements.push({ lessonKey: boostedKey });
+          this.announcements.push({ lessonKey: focusedKey });
         }
       }
     }

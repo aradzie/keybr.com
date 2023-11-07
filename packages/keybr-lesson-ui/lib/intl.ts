@@ -74,10 +74,10 @@ export const messages = defineMessages({
     description: "Message text.",
     defaultMessage: "Character ''{name}''",
   },
-  boostedKeyText: {
-    id: "lesson.boostedKeyText",
+  focusedKeyText: {
+    id: "lesson.focusedKeyText",
     description: "Message text.",
-    defaultMessage: "A key with boosted frequency.",
+    defaultMessage: "A key with increased frequency.",
   },
   forcedKeyText: {
     id: "lesson.forcedKeyText",

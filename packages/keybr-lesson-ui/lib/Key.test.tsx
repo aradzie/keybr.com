@@ -48,7 +48,7 @@ test("render included", (t) => {
   t.snapshot(testRenderer.toJSON());
 });
 
-test("render boosted", (t) => {
+test("render focused", (t) => {
   const lessonKey = new LessonKey({
     letter: FakePhoneticModel.letter1,
     samples: [],
@@ -56,7 +56,7 @@ test("render boosted", (t) => {
     bestTimeToType: null,
     confidence: null,
     bestConfidence: null,
-  }).asBoosted();
+  }).asFocused();
 
   const testRenderer = TestRenderer.create(
     <FakeIntlProvider>

@@ -67,10 +67,10 @@ export class GuidedLesson extends Lesson {
       }
     }
 
-    // Find the least confident of all included keys and boost it.
-    const boostedKey = LessonKey.findBoosted(lessonKeys.findIncludedKeys());
-    if (boostedKey != null) {
-      lessonKeys.boost(boostedKey.letter);
+    // Find the least confident of all included keys and focus on it.
+    const focusedKey = LessonKey.findFocused(lessonKeys.findIncludedKeys());
+    if (focusedKey != null) {
+      lessonKeys.focus(focusedKey.letter);
     }
 
     return lessonKeys;
@@ -79,7 +79,7 @@ export class GuidedLesson extends Lesson {
   override generate(lessonKeys: LessonKeys): string {
     const filter = new Filter(
       lessonKeys.findIncludedKeys(),
-      lessonKeys.findBoostedKey(),
+      lessonKeys.findFocusedKey(),
     );
     const wordGenerator = phoneticWords(this.model, filter, this.rng);
     const words = mangledWords(

@@ -5,7 +5,7 @@ export const lessonKey_announcement: string;
 export const lessonKey_included: string;
 export const lessonKey_excluded: string;
 export const lessonKey_uncalibrated: string;
-export const lessonKey_boosted: string;
+export const lessonKey_focused: string;
 export const lessonKey_forced: string;
 export const lessonKey_selectable: string;
 export const lessonKey_current: string;

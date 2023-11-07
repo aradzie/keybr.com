@@ -19,7 +19,7 @@ test("compute announcements when no results", (t) => {
   t.deepEqual(state.announcements, []);
 });
 
-test("compute announcements when the boosted key has results", (t) => {
+test("compute announcements when the focused key has results", (t) => {
   const settings = new Settings();
   const model = new FakePhoneticModel();
   const lesson = new FakeLesson(settings, model);
@@ -31,7 +31,7 @@ test("compute announcements when the boosted key has results", (t) => {
   t.deepEqual(state.announcements, []);
 });
 
-test("compute announcements when the boosted key has no results", (t) => {
+test("compute announcements when the focused key has no results", (t) => {
   const settings = new Settings();
   const model = new FakePhoneticModel();
   const lesson = new FakeLesson(settings, model);
@@ -49,7 +49,7 @@ test("compute announcements when the boosted key has no results", (t) => {
         bestTimeToType: null,
         confidence: null,
         bestConfidence: null,
-      }).asBoosted(),
+      }).asFocused(),
     },
   ]);
 });
@@ -65,7 +65,7 @@ class FakeLesson extends Lesson {
 
   override update(keyStatsMap: KeyStatsMap): LessonKeys {
     const keys = LessonKeys.includeAll(keyStatsMap, new Target(this.settings));
-    keys.boost(FakePhoneticModel.letter1);
+    keys.focus(FakePhoneticModel.letter1);
     return keys;
   }
 

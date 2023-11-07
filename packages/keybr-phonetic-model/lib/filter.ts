@@ -11,22 +11,22 @@ export class Filter {
   /**
    * Codepoint of the letter which must appear in each generated word.
    */
-  readonly boostedCodePoint: CodePoint | null;
+  readonly focusedCodePoint: CodePoint | null;
 
   constructor(
     letters0: readonly LetterLike[] | null = null,
-    boosted0: LetterLike | null = null,
+    focused0: LetterLike | null = null,
   ) {
     const letters = letters0 && letters0.map(Letter.toLetter);
-    const boosted = boosted0 && Letter.toLetter(boosted0);
+    const focused = focused0 && Letter.toLetter(focused0);
     if (letters != null && letters.length === 0) {
       throw new Error();
     }
-    if (letters != null && boosted != null && !letters.includes(boosted)) {
+    if (letters != null && focused != null && !letters.includes(focused)) {
       throw new Error();
     }
     this.codePoints = letters && new Set(letters.map(Letter.codePointOf));
-    this.boostedCodePoint = boosted && Letter.codePointOf(boosted);
+    this.focusedCodePoint = focused && Letter.codePointOf(focused);
   }
 
   /**

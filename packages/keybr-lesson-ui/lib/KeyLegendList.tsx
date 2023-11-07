@@ -9,7 +9,7 @@ export const KeyLegendList = (): ReactNode => {
         <KeyLegend //
           isIncluded={true}
           confidence={null}
-          isBoosted={false}
+          isFocused={false}
           isForced={false}
         />{" "}
         <FormattedMessage
@@ -22,7 +22,7 @@ export const KeyLegendList = (): ReactNode => {
         <KeyLegend //
           isIncluded={true}
           confidence={0}
-          isBoosted={false}
+          isFocused={false}
           isForced={false}
         />{" "}
         <FormattedMessage
@@ -35,7 +35,7 @@ export const KeyLegendList = (): ReactNode => {
         <KeyLegend //
           isIncluded={true}
           confidence={1}
-          isBoosted={false}
+          isFocused={false}
           isForced={false}
         />{" "}
         <FormattedMessage
@@ -48,24 +48,24 @@ export const KeyLegendList = (): ReactNode => {
         <KeyLegend //
           isIncluded={true}
           confidence={0.3}
-          isBoosted={true}
+          isFocused={true}
           isForced={false}
         />{" "}
         <FormattedMessage
-          id="lesson.indicator.boostedFrequency"
+          id="lesson.indicator.focused"
           description="Message text."
-          defaultMessage="A key with boosted frequency. It takes you the most time to find this key so the algorithm chose it to be included in every generated word."
+          defaultMessage="A key with increased frequency. It takes you the most time to find this key so the algorithm chose it to be included in every generated word."
         />
       </li>
       <li>
         <KeyLegend //
           isIncluded={true}
           confidence={null}
-          isBoosted={false}
+          isFocused={false}
           isForced={true}
         />{" "}
         <FormattedMessage
-          id="lesson.indicator.includedManually"
+          id="lesson.indicator.forced"
           description="Message text."
           defaultMessage="A key which was manually included in the lessons."
         />
@@ -74,7 +74,7 @@ export const KeyLegendList = (): ReactNode => {
         <KeyLegend //
           isIncluded={false}
           confidence={null}
-          isBoosted={false}
+          isFocused={false}
           isForced={false}
         />{" "}
         <FormattedMessage
