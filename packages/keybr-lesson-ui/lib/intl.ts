@@ -15,7 +15,7 @@ export const messages = defineMessages({
   bestSpeedName: {
     id: "metric.bestSpeed.name",
     description: "Widget name.",
-    defaultMessage: "Best typing speed",
+    defaultMessage: "Best speed",
   },
   bestSpeedDescription: {
     id: "metric.bestSpeed.description",
@@ -26,7 +26,7 @@ export const messages = defineMessages({
   lastSpeedName: {
     id: "metric.lastSpeed.name",
     description: "Widget name.",
-    defaultMessage: "Last typing speed",
+    defaultMessage: "Last speed",
   },
   lastSpeedDescription: {
     id: "metric.lastSpeed.description",
@@ -57,7 +57,7 @@ export const messages = defineMessages({
   learningRateValue: {
     id: "metric.learningRate.value",
     description: "Value text.",
-    defaultMessage: "{value} per lesson",
+    defaultMessage: "{value}/lesson",
   },
   uncertainValue: {
     id: "metric.uncertainValue",
