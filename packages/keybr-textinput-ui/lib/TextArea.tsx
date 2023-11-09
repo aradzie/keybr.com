@@ -11,8 +11,8 @@ import {
   type ReactNode,
   type RefObject,
   useCallback,
+  useEffect,
   useImperativeHandle,
-  useLayoutEffect,
   useRef,
   useState,
 } from "react";
@@ -61,13 +61,13 @@ export function TextArea({
     },
   }));
   const [focus, setFocus] = useState(false);
-  useLayoutEffect(() => {
+  useEffect(() => {
     const element = ref.current;
     if (element != null) {
       setElementSize(element);
     }
   }, [settings, lines.text, wrap, size]);
-  useLayoutEffect(() => {
+  useEffect(() => {
     const element = ref.current;
     if (element != null) {
       setElementCursor(element, focus ? "none" : "default");
