@@ -51,7 +51,7 @@ function Content({
 
       <ComparisonSection summary={summary} />
 
-      <HistogramSection results={results} distribution={distribution} />
+      <HistogramSection distribution={distribution} summary={summary} />
 
       <ProgressOverviewSection keyStatsMap={keyStatsMap} />
 

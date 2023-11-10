@@ -47,7 +47,7 @@ function Content({
 
       <AccuracySection results={results} />
 
-      <HistogramSection results={results} distribution={distribution} />
+      <HistogramSection distribution={distribution} summary={summary} />
 
       <ProgressOverviewSection keyStatsMap={keyStatsMap} />
 

@@ -1,6 +1,5 @@
 import { useFormatter } from "@keybr/lesson-ui";
-import { type Distribution, hasData, Range, Vector } from "@keybr/math";
-import { newSummaryStats, type Result } from "@keybr/result";
+import { type Distribution, Range, Vector } from "@keybr/math";
 import { Canvas, type Rect, type ShapeList, Shapes } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
@@ -8,16 +7,21 @@ import { Chart, chartArea, type SizeProps } from "./Chart.tsx";
 import { paintAxis, paintGrid, paintNoData, paintTicks } from "./decoration.ts";
 import { chartStyles } from "./styles.ts";
 
+export type Threshold = {
+  readonly label: string;
+  readonly value: number;
+};
+
 export function DistributionChart({
-  results,
   distribution,
+  thresholds,
   width,
   height,
 }: {
-  readonly results: readonly Result[];
   readonly distribution: Distribution;
+  readonly thresholds: readonly Threshold[];
 } & SizeProps): ReactNode {
-  const paint = usePaint(results, distribution);
+  const paint = usePaint(distribution, thresholds);
   return (
     <Chart width={width} height={height}>
       <Canvas paint={chartArea(paint)} />
@@ -25,11 +29,10 @@ export function DistributionChart({
   );
 }
 
-function usePaint(results: readonly Result[], { samples }: Distribution) {
+function usePaint({ samples }: Distribution, thresholds: readonly Threshold[]) {
   const { formatMessage } = useIntl();
   const { formatSpeed } = useFormatter();
 
-  const stats = newSummaryStats(results);
   const vIndex = new Vector();
   const vValue = new Vector();
   for (let index = 0; index < samples.length; index++) {
@@ -47,17 +50,8 @@ function usePaint(results: readonly Result[], { samples }: Distribution) {
       paintGrid(box, "vertical", { lines: 5 }),
       paintGrid(box, "horizontal", { lines: 5 }),
       paintHistogram(),
-      hasData(results)
-        ? [
-            paintThresholdLine({
-              label: "All time average",
-              value: stats.speed.avg,
-            }),
-            paintThresholdLine({
-              label: "All time top",
-              value: stats.speed.max,
-            }),
-          ]
+      thresholds.length > 0
+        ? thresholds.map(paintThresholdLine)
         : paintNoData(box, formatMessage),
       paintAxis(box, "bottom"),
       paintAxis(box, "left"),
@@ -89,6 +83,9 @@ function usePaint(results: readonly Result[], { samples }: Distribution) {
       label: string;
       value: number;
     }): ShapeList {
+      if (value < rIndex.min || value > rIndex.max) {
+        return [];
+      }
       const x = Math.round((value - rIndex.min) * sx);
       return [
         Shapes.fill(chartStyles.thresholdLine, [

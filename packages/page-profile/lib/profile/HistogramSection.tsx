@@ -1,18 +1,20 @@
 import { DistributionChart } from "@keybr/chart";
 import { type Distribution } from "@keybr/math";
-import { type Result } from "@keybr/result";
 import { Figure } from "@keybr/widget";
 import { type ReactNode } from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
+import { type Summary } from "./Summary.tsx";
 import { ChartWrapper } from "./widgets.tsx";
 
 export function HistogramSection({
-  results,
   distribution,
+  summary,
 }: {
-  readonly results: readonly Result[];
   readonly distribution: Distribution;
+  readonly summary: Summary;
 }): ReactNode {
+  const { formatMessage } = useIntl();
+
   return (
     <Figure>
       <Figure.Caption>
@@ -33,8 +35,25 @@ export function HistogramSection({
 
       <ChartWrapper>
         <DistributionChart
-          results={results}
           distribution={distribution}
+          thresholds={[
+            {
+              label: formatMessage({
+                id: "metric.averageSpeed.name",
+                description: "Widget name.",
+                defaultMessage: "Average speed",
+              }),
+              value: summary.stats.speed.avg,
+            },
+            {
+              label: formatMessage({
+                id: "metric.bestSpeed.name",
+                description: "Widget name.",
+                defaultMessage: "Best speed",
+              }),
+              value: summary.stats.speed.max,
+            },
+          ]}
           width="100%"
           height="25rem"
         />
