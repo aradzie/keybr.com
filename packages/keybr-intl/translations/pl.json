@@ -136,7 +136,7 @@
   "metric.accuracy.name": "Dokładność",
   "metric.accuracyChange.description": "Różnica względem wartości średniej.",
   "metric.averageSpeed.description": "Średnie tempo pisania na klawiaturze. Im więcej tym lepiej.",
-  "metric.averageSpeed.name": "Średnie tempo pisania",
+  "metric.averageSpeed.name": "Średnie tempo",
   "metric.bestSpeed.description": "Najwyższe tempo pisania na klawiaturze we wszystkich lekcjach.. Im więcej tym lepiej.",
   "metric.bestSpeed.name": "Najwyższe tempo",
   "metric.confidenceLevel.description": "Jak blisko jesteś odblokowania tej litery.",

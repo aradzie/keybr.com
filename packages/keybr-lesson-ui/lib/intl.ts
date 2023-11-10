@@ -4,7 +4,7 @@ export const messages = defineMessages({
   averageSpeedName: {
     id: "metric.averageSpeed.name",
     description: "Widget name.",
-    defaultMessage: "Average typing speed",
+    defaultMessage: "Average speed",
   },
   averageSpeedDescription: {
     id: "metric.averageSpeed.description",

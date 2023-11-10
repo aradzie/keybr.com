@@ -136,7 +136,7 @@
   "metric.accuracy.name": "Accuracy",
   "metric.accuracyChange.description": "The difference from the average value.",
   "metric.averageSpeed.description": "Average typing speed in all lessons ({speedUnitName}). The more, the better.",
-  "metric.averageSpeed.name": "Average typing speed",
+  "metric.averageSpeed.name": "Average speed",
   "metric.bestSpeed.description": "Best typing speed in all lessons ({speedUnitName}). The more, the better.",
   "metric.bestSpeed.name": "Best speed",
   "metric.confidenceLevel.description": "How close you are to unlocking this key.",
