@@ -5,8 +5,8 @@ import { type ReactNode } from "react";
 import { AccuracySection } from "./profile/AccuracySection.tsx";
 import { CalendarSection } from "./profile/CalendarSection.tsx";
 import { ComparisonSection } from "./profile/ComparisonSection.tsx";
+import { DistrobutionSection } from "./profile/DistrobutionSection.tsx";
 import { FooterSection } from "./profile/FooterSection.tsx";
-import { HistogramSection } from "./profile/HistogramSection.tsx";
 import { KeyFrequencyHeatmapSection } from "./profile/KeyFrequencyHeatmapSection.tsx";
 import { KeyFrequencyHistogramSection } from "./profile/KeyFrequencyHistogramSection.tsx";
 import { KeySpeedHistogramSection } from "./profile/KeySpeedHistogramSection.tsx";
@@ -51,7 +51,7 @@ function Content({
 
       <ComparisonSection summary={summary} />
 
-      <HistogramSection distribution={distribution} summary={summary} />
+      <DistrobutionSection distribution={distribution} summary={summary} />
 
       <ProgressOverviewSection keyStatsMap={keyStatsMap} />
 
