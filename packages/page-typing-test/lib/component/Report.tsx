@@ -1,6 +1,16 @@
+import { DistributionChart, newSpeedDistribution } from "@keybr/chart";
 import { useIntlNumbers } from "@keybr/intl";
 import { type Stats } from "@keybr/textinput";
-import { Button, Field, FieldList, formatDuration, Icon } from "@keybr/widget";
+import {
+  Button,
+  Field,
+  FieldList,
+  formatDuration,
+  Icon,
+  Name,
+  NameValue,
+  Value,
+} from "@keybr/widget";
 import { mdiFileImage, mdiSkipNext } from "@mdi/js";
 import { captureElementToImage } from "@sosimple/dom-to-image";
 import { memo, type ReactNode } from "react";
@@ -13,7 +23,9 @@ export const Report = memo(function Report({
   readonly stats: Stats;
   readonly onNext: () => void;
 }): ReactNode {
-  const { formatNumber } = useIntlNumbers();
+  const { formatNumber, formatPercents } = useIntlNumbers();
+  const distribution = newSpeedDistribution();
+  const prob = distribution.cdf(speed);
 
   const handleClickNext = () => {
     onNext();
@@ -37,33 +49,48 @@ export const Report = memo(function Report({
         <div className={styles.indicatorsLine}>
           <Indicator
             name="Speed"
-            value={<Value value={`${formatNumber(speed / 5, 2)}`} unit="WPM" />}
-            title="Typing speed in words per minute."
-          />
-          <Separator />
-          <Indicator
-            name="Speed"
-            value={<Value value={`${formatNumber(speed, 1)}`} unit="CPM" />}
-            title="Typing speed in characters per minute."
+            value={
+              <Metric value={`${formatNumber(speed / 5, 2)}`} unit="WPM" />
+            }
+            title="The typing speed in words per minute."
           />
           <Separator />
           <Indicator
             name="Accuracy"
             value={
-              <Value value={`${formatNumber(accuracy * 100, 2)}`} unit="%" />
+              <Metric value={`${formatNumber(accuracy * 100, 2)}`} unit="%" />
             }
             title="The percentage of characters typed without errors."
           />
         </div>
 
-        <p className={styles.secondaryLine}>
-          Character count: <strong>{formatNumber(length)}</strong>
-          {" | "}
-          Error count: <strong>{formatNumber(errors)}</strong>
-          {" | "}
-          Time taken:{" "}
-          <strong>{formatDuration(time, { showMillis: true })}</strong>
-        </p>
+        <div className={styles.secondaryLine}>
+          <NameValue name="Characters" value={formatNumber(length)} />
+          <NameValue name="Errors" value={formatNumber(errors)} />
+          <NameValue
+            name="Time"
+            value={formatDuration(time, { showMillis: true })}
+          />
+        </div>
+
+        <div className={styles.secondaryLine}>
+          <DistributionChart
+            distribution={distribution}
+            thresholds={[{ label: "Speed", value: speed }]}
+            width="100%"
+            height="15rem"
+          />
+        </div>
+
+        <div className={styles.secondaryLine}>
+          <Name>
+            Faster than <Value value={formatPercents(prob)} /> of all other
+            people.
+          </Name>{" "}
+          <Name>
+            You are in the top <Value value={formatPercents(1 - prob)} />.
+          </Name>
+        </div>
       </div>
 
       <div className={styles.controlsLine}>
@@ -95,19 +122,23 @@ function Indicator({
   value,
   title,
 }: {
-  readonly name: string;
-  value: string | ReactNode;
-  title: string;
+  readonly name: string | ReactNode;
+  readonly value: string | ReactNode;
+  readonly title: string;
 }): ReactNode {
   return (
     <div className={styles.indicator} title={title}>
-      <div className={styles.indicatorValue}>{value}</div>
-      <div className={styles.indicatorName}>{name}</div>
+      <div className={styles.indicatorValue}>
+        <Value>{value}</Value>
+      </div>
+      <div className={styles.indicatorName}>
+        <Name>{name}</Name>
+      </div>
     </div>
   );
 }
 
-function Value({
+function Metric({
   value,
   unit,
 }: {
