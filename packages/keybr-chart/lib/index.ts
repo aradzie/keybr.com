@@ -1,4 +1,5 @@
 export * from "./Chart.tsx";
+export * from "./dist/index.ts";
 export * from "./DistributionChart.tsx";
 export * from "./geometry.ts";
 export * from "./graph.ts";

@@ -1,3 +1,4 @@
+import { newSpeedDistribution } from "@keybr/chart";
 import { type NamedUser, Screen, usePageData } from "@keybr/pages-shared";
 import { type KeyStatsMap } from "@keybr/result";
 import { type ReactNode } from "react";
@@ -13,7 +14,6 @@ import { KeyTypingSpeedSection } from "./profile/KeyTypingSpeedSection.tsx";
 import { ProgressOverviewSection } from "./profile/ProgressOverviewSection.tsx";
 import { ResultGrouper } from "./profile/ResultGrouper.tsx";
 import { ShareProfileLink } from "./profile/ShareProfileLink.tsx";
-import { newSpeedDistribution } from "./profile/speed/dist.ts";
 import {
   AllTimeSummary,
   TodaySummary,
