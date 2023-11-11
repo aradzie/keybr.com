@@ -4,11 +4,11 @@ export const useInterval0 = (callback: () => void, time: number): void => {
   const callbackRef = useRef(callback);
   callbackRef.current = callback;
   useEffect(() => {
-    const id = window.setInterval(() => {
+    const id = setInterval(() => {
       callbackRef.current();
     }, time);
     return () => {
-      window.clearInterval(id);
+      clearInterval(id);
     };
   }, [time]);
 };
@@ -20,31 +20,32 @@ export type IntervalScheduler = {
 };
 
 export const useInterval = (): IntervalScheduler => {
-  const ref = useRef(
-    new (class implements IntervalScheduler {
-      private _id: number = 0;
+  const ref = useRef<IntervalScheduler>(null!);
+  if (ref.current == null) {
+    ref.current = new (class implements IntervalScheduler {
+      private _id: any = null;
 
       get pending(): boolean {
-        return this._id > 0;
+        return this._id != null;
       }
 
       cancel(): void {
-        if (this._id > 0) {
-          window.clearInterval(this._id);
-          this._id = 0;
+        if (this._id != null) {
+          clearInterval(this._id);
+          this._id = null;
         }
       }
 
       schedule(callback: () => void, timeout: number): void {
-        if (this._id > 0) {
-          window.clearInterval(this._id);
+        if (this._id != null) {
+          clearInterval(this._id);
         }
-        this._id = window.setInterval(() => {
+        this._id = setInterval(() => {
           callback();
         }, timeout);
       }
-    })(),
-  );
+    })();
+  }
   useEffect(() => {
     return () => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
