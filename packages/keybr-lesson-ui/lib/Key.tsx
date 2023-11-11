@@ -68,16 +68,16 @@ export const Key = ({
   );
 };
 
-Key.selector = ({ codePoint }: Letter): string => {
-  return `[data-code-point="${codePoint}"]`;
-};
+export function getKeyElementSelector({ codePoint }: Letter): string {
+  return `.${styles.lessonKey}[data-code-point="${codePoint}"]`;
+}
 
-Key.isKey = (el: EventTarget): number | null => {
-  if (el instanceof HTMLElement) {
+export function isKeyElement(el: Element): number | null {
+  if (el instanceof HTMLElement && el.className.includes(styles.lessonKey)) {
     const value = el.dataset["codePoint"] ?? null;
     if (value != null) {
       return Number(value);
     }
   }
   return null;
-};
+}

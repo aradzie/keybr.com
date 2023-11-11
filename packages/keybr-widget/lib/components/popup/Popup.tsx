@@ -57,6 +57,10 @@ export function Popup({ children, target, position }: PopupProps): ReactNode {
   );
 }
 
+export function isPopupElement(el: Element): boolean {
+  return el instanceof HTMLElement && el.className.includes(styles.popup);
+}
+
 function centerPopup(popupRect: Rect): Point {
   const size = screenSize();
   const x = (size.width - popupRect.width) / 2;
