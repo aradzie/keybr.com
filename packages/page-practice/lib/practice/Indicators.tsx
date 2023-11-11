@@ -19,8 +19,8 @@ import {
   isPopupElement,
   Popup,
   Portal,
+  useMouseHover,
   useTimeout,
-  useWindowEvent,
 } from "@keybr/widget";
 import { memo, type ReactNode, useMemo, useState } from "react";
 import * as styles from "./Indicators.module.less";
@@ -82,9 +82,8 @@ function useDailyGoal(state: PracticeState): DailyGoal {
 function useKeySelector(state: PracticeState): LessonKey | null {
   const [selectedKey, setSelectedKey] = useState<LessonKey | null>(null);
   const timeout = useTimeout();
-  useWindowEvent("mousemove", (ev) => {
-    let el = ev.target;
-    while (el instanceof Element) {
+  useMouseHover((el) => {
+    while (el != null) {
       const codePoint = isKeyElement(el);
       if (codePoint != null) {
         timeout.cancel();

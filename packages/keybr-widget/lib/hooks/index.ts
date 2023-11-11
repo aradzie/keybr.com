@@ -4,6 +4,7 @@ export * from "./use-deferred.tsx";
 export * from "./use-document-event.ts";
 export * from "./use-element-size.ts";
 export * from "./use-interval.ts";
+export * from "./use-mouse-hover.ts";
 export * from "./use-screen-scroll.ts";
 export * from "./use-screen-size.ts";
 export * from "./use-timeout.ts";
