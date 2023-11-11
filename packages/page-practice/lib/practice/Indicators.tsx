@@ -15,15 +15,14 @@ import {
   ResultGroups,
   type SummaryStats,
 } from "@keybr/result";
-import { isPopupElement, Popup, Portal, useWindowEvent } from "@keybr/widget";
 import {
-  memo,
-  type ReactNode,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+  isPopupElement,
+  Popup,
+  Portal,
+  useTimeout,
+  useWindowEvent,
+} from "@keybr/widget";
+import { memo, type ReactNode, useMemo, useState } from "react";
 import * as styles from "./Indicators.module.less";
 import { KeyExtendedDetails } from "./KeyExtendedDetails.tsx";
 import * as names from "./names.module.less";
@@ -98,50 +97,11 @@ function useKeySelector(state: PracticeState): LessonKey | null {
       }
       el = el.parentElement;
     }
-    if (!timeout.pending) {
+    if (selectedKey != null && !timeout.pending) {
       timeout.schedule(() => {
         setSelectedKey(null);
       }, 100);
     }
   });
   return selectedKey;
-}
-
-type Timeout = {
-  get pending(): boolean;
-  cancel(): void;
-  schedule(callback: () => void, timeout: number): void;
-};
-
-function useTimeout(): Timeout {
-  const ref = useRef(
-    new (class implements Timeout {
-      _id = 0;
-
-      get pending() {
-        return this._id > 0;
-      }
-
-      cancel(): void {
-        if (this._id > 0) {
-          window.clearTimeout(this._id);
-          this._id = 0;
-        }
-      }
-
-      schedule(callback: () => void, timeout: number): void {
-        this.cancel();
-        this._id = window.setTimeout(() => {
-          this._id = 0;
-          callback();
-        }, timeout);
-      }
-    })(),
-  );
-  useEffect(() => {
-    return () => {
-      ref.current.cancel();
-    };
-  });
-  return ref.current;
 }
