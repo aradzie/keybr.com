@@ -1,12 +1,13 @@
-import { useCallback, useRef } from "react";
+import { useRef } from "react";
 import { useWindowEvent } from "./use-window-event.ts";
 
 export const useMouseHover = (
   callback: (target: Element | null) => void,
 ): void => {
   const callbackRef = useRef(callback);
+  callbackRef.current = callback;
   const targetRef = useRef<EventTarget | null>(null);
-  const handleMouseMove = useCallback((ev: MouseEvent): void => {
+  useWindowEvent("mousemove", (ev) => {
     const { target } = ev;
     if (targetRef.current !== target) {
       targetRef.current = target;
@@ -16,7 +17,5 @@ export const useMouseHover = (
         callbackRef.current(null);
       }
     }
-  }, []);
-  callbackRef.current = callback;
-  useWindowEvent("mousemove", handleMouseMove);
+  });
 };
