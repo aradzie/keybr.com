@@ -27,40 +27,40 @@ export const Controls = memo(function Controls({
   return (
     <div id={names.controls} className={stylePositionTopRight}>
       <IconButton
-        onClick={onHelp}
         icon={<Icon shape={mdiHelpCircleOutline} />}
         title={formatMessage({
           id: "practice.widget.showTour.description",
           description: "Widget description.",
           defaultMessage: "Show a guided tour with help slides.",
         })}
+        onClick={onHelp}
       />
       <IconButton
-        onClick={onResetLesson}
         icon={<Icon shape={mdiUndo} />}
         title={formatMessage({
           id: "practice.widget.resetLesson.description",
           description: "Widget description.",
           defaultMessage: "Reset the current lesson (Ctrl + Left Arrow).",
         })}
+        onClick={onResetLesson}
       />
       <IconButton
-        onClick={onSkipLesson}
         icon={<Icon shape={mdiRedo} />}
         title={formatMessage({
           id: "practice.widget.skipLesson.description",
           description: "Widget description.",
           defaultMessage: "Skip the current lesson (Ctrl + Right Arrow).",
         })}
+        onClick={onSkipLesson}
       />
       <IconButton
-        onClick={onChangeView}
         icon={<Icon shape={mdiAspectRatio} />}
         title={formatMessage({
           id: "practice.widget.switchView.description",
           description: "Widget description.",
           defaultMessage: "Switch the current interface layout.",
         })}
+        onClick={onChangeView}
       />
       <Button
         icon={<Icon shape={mdiCog} />}
