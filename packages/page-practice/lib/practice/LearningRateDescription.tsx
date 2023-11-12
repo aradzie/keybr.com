@@ -30,8 +30,6 @@ export function LearningRateDescription({
     learningRate.remainingLessons > 0 &&
     learningRate.certainty > 0
   ) {
-    const remainingLessons = formatNumber(learningRate.remainingLessons);
-    const certainty = formatPercents(learningRate.certainty);
     return (
       <Para className={styleTextCenter}>
         <Name>
@@ -43,8 +41,12 @@ export function LearningRateDescription({
               "unlock this letter ({certainty} certainty)."
             }
             values={{
-              remainingLessons: <Value value={remainingLessons} />,
-              certainty: <Value value={certainty} />,
+              remainingLessons: (
+                <Value value={formatNumber(learningRate.remainingLessons)} />
+              ),
+              certainty: (
+                <Value value={formatPercents(learningRate.certainty)} />
+              ),
             }}
           />
         </Name>
