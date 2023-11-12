@@ -1,10 +1,8 @@
 import { useIntlNumbers } from "@keybr/intl";
 import { type LearningRate, type LessonKey } from "@keybr/lesson";
-import { Para, Value } from "@keybr/widget";
-import { clsx } from "clsx";
+import { Name, Para, styleTextCenter, Value } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
-import * as styles from "./LearningRateDescription.module.less";
 
 export function LearningRateDescription({
   lessonKey,
@@ -16,12 +14,14 @@ export function LearningRateDescription({
   const { formatNumber, formatPercents } = useIntlNumbers();
   if ((lessonKey.bestConfidence ?? 0) >= 1) {
     return (
-      <Para className={clsx(styles.component, styles.alreadyUnlocked)}>
-        <FormattedMessage
-          id="learningRate.alreadyUnlocked"
-          description="Message text."
-          defaultMessage="This letter is already unlocked."
-        />
+      <Para className={styleTextCenter}>
+        <Name>
+          <FormattedMessage
+            id="learningRate.alreadyUnlocked"
+            description="Message text."
+            defaultMessage="This letter is already unlocked."
+          />
+        </Name>
       </Para>
     );
   }
@@ -33,29 +33,33 @@ export function LearningRateDescription({
     const remainingLessons = formatNumber(learningRate.remainingLessons);
     const certainty = formatPercents(learningRate.certainty);
     return (
-      <Para className={clsx(styles.component, styles.remainingLessons)}>
-        <FormattedMessage
-          id="learningRate.remainingLessons"
-          description="Message text."
-          defaultMessage={
-            "Approximately {remainingLessons} lessons remaining to " +
-            "unlock this letter ({certainty} certainty)."
-          }
-          values={{
-            remainingLessons: <Value value={remainingLessons} />,
-            certainty: <Value value={certainty} />,
-          }}
-        />
+      <Para className={styleTextCenter}>
+        <Name>
+          <FormattedMessage
+            id="learningRate.remainingLessons"
+            description="Message text."
+            defaultMessage={
+              "Approximately {remainingLessons} lessons remaining to " +
+              "unlock this letter ({certainty} certainty)."
+            }
+            values={{
+              remainingLessons: <Value value={remainingLessons} />,
+              certainty: <Value value={certainty} />,
+            }}
+          />
+        </Name>
       </Para>
     );
   }
   return (
-    <Para className={clsx(styles.component, styles.unknown)}>
-      <FormattedMessage
-        id="learningRate.unknown"
-        description="Message text."
-        defaultMessage="Need more data to compute the remaining lessons to unlock this letter."
-      />
+    <Para className={styleTextCenter}>
+      <Name>
+        <FormattedMessage
+          id="learningRate.unknown"
+          description="Message text."
+          defaultMessage="Need more data to compute the remaining lessons to unlock this letter."
+        />
+      </Name>
     </Para>
   );
 }
