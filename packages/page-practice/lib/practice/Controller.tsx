@@ -8,6 +8,7 @@ import {
   Ctrl,
   handleHotkeys,
   useDocumentEvent,
+  useTimeout,
   useWindowEvent,
 } from "@keybr/widget";
 import { memo, type ReactNode, useMemo, useState } from "react";
@@ -49,6 +50,7 @@ export const Controller = memo(function Controller({
 
 function usePracticeState(state: PracticeState) {
   const keyboard = useKeyboard();
+  const timeout = useTimeout();
   const [lines, setLines] = useState(state.lines); // Forces ui update.
 
   return useMemo(() => {
@@ -57,10 +59,12 @@ function usePracticeState(state: PracticeState) {
     const handleResetLesson = (): void => {
       state.handleResetLesson();
       setLines(state.lines);
+      timeout.cancel();
     };
     const handleSkipLesson = (): void => {
       state.handleSkipLesson();
       setLines(state.lines);
+      timeout.cancel();
     };
     const playSounds = makeSoundPlayer(state.settings);
     const { onKeyDown, onKeyUp, onTextInput } = emulateLayout(
@@ -73,6 +77,7 @@ function usePracticeState(state: PracticeState) {
           const feedback = state.handleTextInput(event);
           setLines(state.lines);
           playSounds(feedback);
+          timeout.schedule(handleResetLesson, 5000);
         },
       },
       state.settings.get(keyboardProps.emulate),
@@ -89,7 +94,7 @@ function usePracticeState(state: PracticeState) {
         ["Escape", handleResetLesson],
       ),
     };
-  }, [state, keyboard]);
+  }, [state, keyboard, timeout]);
 }
 
 function makeSoundPlayer(settings: Settings) {
