@@ -102,49 +102,50 @@ function Content({ onSubmit }: { readonly onSubmit: () => void }): ReactNode {
         </Header>
         <MiscSettings />
 
-        <div className={styles.spacer} />
-
-        <FieldList>
-          <Field>
-            <Button
-              className={styleWidthWide}
-              icon={<Icon shape={mdiDeleteForever} />}
-              label={formatMessage({
-                id: "settings.widget.reset.name",
-                description: "Widget name.",
-                defaultMessage: "Reset",
-              })}
-              title={formatMessage({
-                id: "settings.widget.reset.description",
-                description: "Widget description.",
-                defaultMessage: "Reset all settings to the default values.",
-              })}
-              onClick={() => {
-                updateSettings(settings.reset());
-              }}
-            />
-          </Field>
-          <Field.Filler />
-          <Field>
-            <Button
-              className={styleWidthWide}
-              icon={<Icon shape={mdiCheckCircle} />}
-              label={formatMessage({
-                id: "settings.widget.done.name",
-                description: "Widget name.",
-                defaultMessage: "Done",
-              })}
-              title={formatMessage({
-                id: "settings.widget.done.description",
-                description: "Widget description.",
-                defaultMessage: "Save all settings and return to the practice.",
-              })}
-              onClick={() => {
-                onSubmit();
-              }}
-            />
-          </Field>
-        </FieldList>
+        <div className={styles.footer}>
+          <FieldList>
+            <Field>
+              <Button
+                className={styleWidthWide}
+                icon={<Icon shape={mdiDeleteForever} />}
+                label={formatMessage({
+                  id: "settings.widget.reset.name",
+                  description: "Widget name.",
+                  defaultMessage: "Reset",
+                })}
+                title={formatMessage({
+                  id: "settings.widget.reset.description",
+                  description: "Widget description.",
+                  defaultMessage: "Reset all settings to the default values.",
+                })}
+                onClick={() => {
+                  updateSettings(settings.reset());
+                }}
+              />
+            </Field>
+            <Field.Filler />
+            <Field>
+              <Button
+                className={styleWidthWide}
+                icon={<Icon shape={mdiCheckCircle} />}
+                label={formatMessage({
+                  id: "settings.widget.done.name",
+                  description: "Widget name.",
+                  defaultMessage: "Done",
+                })}
+                title={formatMessage({
+                  id: "settings.widget.done.description",
+                  description: "Widget description.",
+                  defaultMessage:
+                    "Save all settings and return to the practice.",
+                })}
+                onClick={() => {
+                  onSubmit();
+                }}
+              />
+            </Field>
+          </FieldList>
+        </div>
       </ExplainerBoundary>
     </Screen>
   );
