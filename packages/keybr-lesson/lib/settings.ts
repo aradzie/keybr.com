@@ -35,6 +35,6 @@ export const lessonProps = {
   capitals: numberProp("lesson.capitals", 0, { min: 0, max: 1 }),
   punctuators: numberProp("lesson.punctuators", 0, { min: 0, max: 1 }),
   doubleWords: booleanProp("lesson.doubleWords", false),
-  targetSpeed: numberProp("lesson.targetSpeed", 175, { min: 175, max: 750 }),
+  targetSpeed: numberProp("lesson.targetSpeed", 175, { min: 75, max: 750 }),
   dailyGoal: numberProp("lesson.dailyGoal", 30, { min: 0, max: 120 }),
 } as const;
