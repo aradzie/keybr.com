@@ -1,3 +1,8 @@
 User-agent: *
 Allow: /
 Disallow: /profile/
+Disallow: /*/profile/
+Disallow: /privacy-policy
+Disallow: /*/privacy-policy
+Disallow: /terms-of-service
+Disallow: /*/terms-of-service
