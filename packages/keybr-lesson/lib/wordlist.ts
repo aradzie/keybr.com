@@ -2,7 +2,8 @@ import { type WordList } from "@keybr/content-words";
 import { Letter, type PhoneticModel } from "@keybr/phonetic-model";
 import { type KeyStatsMap, newKeyStatsMap, type Result } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
-import { type CodePointSet, toCodePoints } from "@keybr/unicode";
+import { type CodePointSet } from "@keybr/unicode";
+import { filterWordList } from "./dictionary.ts";
 import { LessonKeys } from "./key.ts";
 import { Lesson } from "./lesson.ts";
 import { lessonProps } from "./settings.ts";
@@ -22,10 +23,7 @@ export class WordListLesson extends Lesson {
     super(settings, model, codePoints);
     const wordListSize = settings.get(lessonProps.wordList.wordListSize);
     const longWordsOnly = settings.get(lessonProps.wordList.longWordsOnly);
-    this.wordList = wordList
-      .filter((word) =>
-        [...toCodePoints(word)].every((codePoint) => codePoints.has(codePoint)),
-      )
+    this.wordList = filterWordList(wordList, codePoints)
       .filter((word) => !longWordsOnly || word.length > 3)
       .slice(0, wordListSize);
   }

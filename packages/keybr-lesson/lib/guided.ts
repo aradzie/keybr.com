@@ -1,21 +1,35 @@
+import { type WordList } from "@keybr/content-words";
 import { Filter, Letter, type PhoneticModel } from "@keybr/phonetic-model";
 import { type KeyStatsMap, newKeyStatsMap, type Result } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
 import { type CodePointSet } from "@keybr/unicode";
+import { Dictionary, filterWordList } from "./dictionary.ts";
 import { LessonKey, LessonKeys } from "./key.ts";
 import { Lesson } from "./lesson.ts";
 import { lessonProps } from "./settings.ts";
 import { Target } from "./target.ts";
 import { generateFragment } from "./text/fragment.ts";
-import { mangledWords, phoneticWords, uniqueWords } from "./text/words.ts";
+import {
+  mangledWords,
+  phoneticWords,
+  randomWords,
+  uniqueWords,
+  type WordGenerator,
+} from "./text/words.ts";
 
 export class GuidedLesson extends Lesson {
+  readonly dictionary: Dictionary;
+
   constructor(
     settings: Settings,
     model: PhoneticModel,
     codePoints: CodePointSet,
+    wordList: WordList,
   ) {
     super(settings, model, codePoints);
+    this.dictionary = new Dictionary(
+      filterWordList(wordList, codePoints).filter((word) => word.length > 2),
+    );
   }
 
   override analyze(results: readonly Result[]): KeyStatsMap {
@@ -92,11 +106,9 @@ export class GuidedLesson extends Lesson {
   }
 
   override generate(lessonKeys: LessonKeys): string {
-    const filter = new Filter(
-      lessonKeys.findIncludedKeys(),
-      lessonKeys.findFocusedKey(),
+    const wordGenerator = this.makeWordGenerator(
+      new Filter(lessonKeys.findIncludedKeys(), lessonKeys.findFocusedKey()),
     );
-    const wordGenerator = phoneticWords(this.model, filter, this.rng);
     const words = mangledWords(
       uniqueWords(wordGenerator),
       Letter.restrict(Letter.punctuators, this.codePoints),
@@ -109,5 +121,17 @@ export class GuidedLesson extends Lesson {
     return generateFragment(this.settings, words, {
       doubleWords: this.settings.get(lessonProps.doubleWords),
     });
+  }
+
+  private makeWordGenerator(filter: Filter): WordGenerator {
+    const pseudoWords = phoneticWords(this.model, filter, this.rng);
+    if (this.settings.get(lessonProps.guided.naturalWords)) {
+      const words = [...this.dictionary.find(filter)];
+      while (words.length < 15) {
+        words.push(pseudoWords() ?? "?");
+      }
+      return randomWords(words, this.rng);
+    }
+    return pseudoWords;
   }
 }

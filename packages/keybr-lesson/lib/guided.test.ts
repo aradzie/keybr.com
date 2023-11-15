@@ -5,11 +5,13 @@ import { GuidedLesson } from "./guided.ts";
 import { LessonKey } from "./key.ts";
 
 const allCodePoints = { has: () => true };
+const wordList = ["one", "two", "three"];
 
 test("provide key set", (t) => {
   const settings = new Settings();
   const model = new FakePhoneticModel(["uno", "due", "tre"]);
-  const lesson = new GuidedLesson(settings, model, allCodePoints);
+
+  const lesson = new GuidedLesson(settings, model, allCodePoints, wordList);
   const lessonKeys = lesson.update(lesson.analyze([]));
 
   t.deepEqual(lessonKeys.findIncludedKeys(), [
@@ -145,7 +147,7 @@ test("provide key set", (t) => {
 test("generate text", (t) => {
   const settings = new Settings();
   const model = new FakePhoneticModel(["uno", "due", "tre"]);
-  const lesson = new GuidedLesson(settings, model, allCodePoints);
+  const lesson = new GuidedLesson(settings, model, allCodePoints, wordList);
   const lessonKeys = lesson.update(lesson.analyze([]));
   lesson.rng = model.rng;
 
@@ -169,7 +171,7 @@ test("generate text", (t) => {
 test("generate text from broken phonetic model, empty words", (t) => {
   const settings = new Settings();
   const model = new FakePhoneticModel([""]);
-  const lesson = new GuidedLesson(settings, model, allCodePoints);
+  const lesson = new GuidedLesson(settings, model, allCodePoints, wordList);
   const lessonKeys = lesson.update(lesson.analyze([]));
   lesson.rng = model.rng;
 
@@ -191,7 +193,7 @@ test("generate text from broken phonetic model, empty words", (t) => {
 test("generate text from broken phonetic model, repeating words", (t) => {
   const settings = new Settings();
   const model = new FakePhoneticModel(["x"]);
-  const lesson = new GuidedLesson(settings, model, allCodePoints);
+  const lesson = new GuidedLesson(settings, model, allCodePoints, wordList);
   const lessonKeys = lesson.update(lesson.analyze([]));
   lesson.rng = model.rng;
 

@@ -332,6 +332,7 @@
   "settings.lessonLength.label": "Додати слів до уроків:",
   "settings.lessonOptions.legend": "Налаштування уроків",
   "settings.longWordsOnly.label": "Тільки довгі слова",
+  "settings.naturalWords.label": "Віддавати перевагу словам зі словника:",
   "settings.options.legend": "Налаштування",
   "settings.playSounds.label": "Програвати звуки:",
   "settings.preview.legend": "Перегляд",

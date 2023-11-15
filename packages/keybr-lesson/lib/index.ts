@@ -1,4 +1,6 @@
 export * from "./customtext.ts";
+export { Dictionary } from "./dictionary.ts";
+export { filterWordList } from "./dictionary.ts";
 export * from "./guided.ts";
 export * from "./key.ts";
 export * from "./learningrate.ts";

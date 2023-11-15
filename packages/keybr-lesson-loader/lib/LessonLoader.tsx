@@ -70,8 +70,11 @@ function useLoader(model: PhoneticModel): Lesson | null {
 
       switch (lessonType) {
         case LessonType.GUIDED: {
+          const wordList = await loadWordList(layout.language);
           if (!didCancel) {
-            setResult(new GuidedLesson(settings, newModel, codePoints));
+            setResult(
+              new GuidedLesson(settings, newModel, codePoints, wordList),
+            );
           }
           break;
         }
