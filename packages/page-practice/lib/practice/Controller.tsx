@@ -57,12 +57,12 @@ function usePracticeState(state: PracticeState) {
     // New lesson.
     setLines(state.lines);
     const handleResetLesson = (): void => {
-      state.handleResetLesson();
+      state.resetLesson();
       setLines(state.lines);
       timeout.cancel();
     };
     const handleSkipLesson = (): void => {
-      state.handleSkipLesson();
+      state.skipLesson();
       setLines(state.lines);
       timeout.cancel();
     };
@@ -74,7 +74,7 @@ function usePracticeState(state: PracticeState) {
         onKeyUp: () => {},
         onTextInput: (event) => {
           state.lastLesson = null;
-          const feedback = state.handleTextInput(event);
+          const feedback = state.onTextInput(event);
           setLines(state.lines);
           playSounds(feedback);
           timeout.schedule(handleResetLesson, 5000);

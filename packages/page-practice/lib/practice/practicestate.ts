@@ -50,15 +50,15 @@ export class PracticeState {
     this._computeAnnouncements();
   }
 
-  handleResetLesson(): void {
+  resetLesson(): void {
     this._reset(this.textInput.text);
   }
 
-  handleSkipLesson(): void {
+  skipLesson(): void {
     this._reset(this.lesson.generate(this.lessonKeys));
   }
 
-  handleTextInput(event: TextInputEvent): Feedback {
+  onTextInput(event: TextInputEvent): Feedback {
     const feedback = this.textInput.onTextInput(event);
     this.lines = this.textInput.getLines();
     if (this.textInput.completed) {
