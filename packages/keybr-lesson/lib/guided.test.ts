@@ -3,15 +3,14 @@ import { Settings } from "@keybr/settings";
 import test from "ava";
 import { GuidedLesson } from "./guided.ts";
 import { LessonKey } from "./key.ts";
+import { lessonProps } from "./settings.ts";
 
 const allCodePoints = { has: () => true };
-const wordList = ["one", "two", "three"];
 
 test("provide key set", (t) => {
   const settings = new Settings();
   const model = new FakePhoneticModel(["uno", "due", "tre"]);
-
-  const lesson = new GuidedLesson(settings, model, allCodePoints, wordList);
+  const lesson = new GuidedLesson(settings, model, allCodePoints, []);
   const lessonKeys = lesson.update(lesson.analyze([]));
 
   t.deepEqual(lessonKeys.findIncludedKeys(), [
@@ -144,10 +143,54 @@ test("provide key set", (t) => {
   );
 });
 
-test("generate text", (t) => {
+test("generate text from a broken phonetic model, empty words", (t) => {
   const settings = new Settings();
+  const model = new FakePhoneticModel([""]);
+  const lesson = new GuidedLesson(settings, model, allCodePoints, []);
+  const lessonKeys = lesson.update(lesson.analyze([]));
+  lesson.rng = model.rng;
+
+  t.is(
+    lesson.generate(lessonKeys),
+    "? ? ? ? ? ? ? ? ? ? " +
+      "? ? ? ? ? ? ? ? ? ? " +
+      "? ? ? ? ? ? ? ? ? ? " +
+      "? ? ? ? ? ? ? ? ? ? " +
+      "? ? ? ? ? ? ? ? ? ? " +
+      "? ? ? ? ? ? ? ? ? ? " +
+      "? ? ? ? ? ? ? ? ? ? " +
+      "? ? ? ? ? ? ? ? ? ? " +
+      "? ? ? ? ? ? ? ? ? ? " +
+      "? ? ? ? ? ? ? ? ? ?",
+  );
+});
+
+test("generate text from a broken phonetic model, repeating words", (t) => {
+  const settings = new Settings();
+  const model = new FakePhoneticModel(["x"]);
+  const lesson = new GuidedLesson(settings, model, allCodePoints, []);
+  const lessonKeys = lesson.update(lesson.analyze([]));
+  lesson.rng = model.rng;
+
+  t.is(
+    lesson.generate(lessonKeys),
+    "x x x x x x x x x x " +
+      "x x x x x x x x x x " +
+      "x x x x x x x x x x " +
+      "x x x x x x x x x x " +
+      "x x x x x x x x x x " +
+      "x x x x x x x x x x " +
+      "x x x x x x x x x x " +
+      "x x x x x x x x x x " +
+      "x x x x x x x x x x " +
+      "x x x x x x x x x x",
+  );
+});
+
+test("generate text with pseudo words", (t) => {
+  const settings = new Settings().set(lessonProps.guided.naturalWords, false);
   const model = new FakePhoneticModel(["uno", "due", "tre"]);
-  const lesson = new GuidedLesson(settings, model, allCodePoints, wordList);
+  const lesson = new GuidedLesson(settings, model, allCodePoints, []);
   const lessonKeys = lesson.update(lesson.analyze([]));
   lesson.rng = model.rng;
 
@@ -168,46 +211,32 @@ test("generate text", (t) => {
   );
 });
 
-test("generate text from broken phonetic model, empty words", (t) => {
-  const settings = new Settings();
-  const model = new FakePhoneticModel([""]);
-  const lesson = new GuidedLesson(settings, model, allCodePoints, wordList);
+test("generate text with natural words", (t) => {
+  const settings = new Settings().set(lessonProps.guided.naturalWords, true);
+  const model = new FakePhoneticModel(["uno", "due", "tre"]);
+  const lesson = new GuidedLesson(settings, model, allCodePoints, [
+    "efghijee",
+    "efghijef",
+    "efghijeg",
+    "efghijeh",
+    "efghijei",
+    "efghijej",
+    "efghijfe",
+    "efghijff",
+    "efghijfg",
+    "efghijfh",
+    "efghijfi",
+    "efghijfj",
+    "efghijge",
+    "efghijgf",
+    "efghijgg",
+  ]);
   const lessonKeys = lesson.update(lesson.analyze([]));
   lesson.rng = model.rng;
 
   t.is(
     lesson.generate(lessonKeys),
-    "? ? ? ? ? ? ? ? ? ? " +
-      "? ? ? ? ? ? ? ? ? ? " +
-      "? ? ? ? ? ? ? ? ? ? " +
-      "? ? ? ? ? ? ? ? ? ? " +
-      "? ? ? ? ? ? ? ? ? ? " +
-      "? ? ? ? ? ? ? ? ? ? " +
-      "? ? ? ? ? ? ? ? ? ? " +
-      "? ? ? ? ? ? ? ? ? ? " +
-      "? ? ? ? ? ? ? ? ? ? " +
-      "? ? ? ? ? ? ? ? ? ?",
-  );
-});
-
-test("generate text from broken phonetic model, repeating words", (t) => {
-  const settings = new Settings();
-  const model = new FakePhoneticModel(["x"]);
-  const lesson = new GuidedLesson(settings, model, allCodePoints, wordList);
-  const lessonKeys = lesson.update(lesson.analyze([]));
-  lesson.rng = model.rng;
-
-  t.is(
-    lesson.generate(lessonKeys),
-    "x x x x x x x x x x " +
-      "x x x x x x x x x x " +
-      "x x x x x x x x x x " +
-      "x x x x x x x x x x " +
-      "x x x x x x x x x x " +
-      "x x x x x x x x x x " +
-      "x x x x x x x x x x " +
-      "x x x x x x x x x x " +
-      "x x x x x x x x x x " +
-      "x x x x x x x x x x",
+    "efghijee efghijej efghijfi efghijee efghijej efghijfi efghijee " +
+      "efghijej efghijfi efghijee efghijej efghijfi efghijee",
   );
 });

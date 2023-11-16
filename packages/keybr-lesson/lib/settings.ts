@@ -5,7 +5,7 @@ export const lessonProps = {
   type: itemProp("lesson.type", LessonType.ALL, LessonType.GUIDED),
   length: numberProp("lesson.length", 0, { min: 0, max: 1 }),
   guided: {
-    naturalWords: booleanProp("lesson.guided.naturalWords", false),
+    naturalWords: booleanProp("lesson.guided.naturalWords", true),
     alphabetSize: numberProp("lesson.guided.alphabetSize", 0, {
       min: 0,
       max: 1,
