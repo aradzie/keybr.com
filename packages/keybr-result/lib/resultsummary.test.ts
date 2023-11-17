@@ -52,6 +52,7 @@ test("no results today", (t) => {
     results: [],
     stats: newSummaryStats([]),
   });
+  t.false(groups.includes(summary.todayStats));
   t.true(summary.has(yesterday));
   t.false(summary.has(today));
 });
@@ -89,6 +90,7 @@ test("group results group by date", (t) => {
     results: [r2],
     stats: newSummaryStats([r2]),
   });
+  t.true(groups.includes(summary.todayStats));
   t.true(summary.has(yesterday));
   t.true(summary.has(today));
 });
