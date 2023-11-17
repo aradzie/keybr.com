@@ -5,7 +5,7 @@ import { Header } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { AccuracySection } from "./profile/AccuracySection.tsx";
 import { CalendarSection } from "./profile/CalendarSection.tsx";
-import { DistrobutionSection } from "./profile/DistrobutionSection.tsx";
+import { DistributionSection } from "./profile/DistributionSection.tsx";
 import { KeyFrequencyHeatmapSection } from "./profile/KeyFrequencyHeatmapSection.tsx";
 import { KeyFrequencyHistogramSection } from "./profile/KeyFrequencyHistogramSection.tsx";
 import { KeySpeedHistogramSection } from "./profile/KeySpeedHistogramSection.tsx";
@@ -47,7 +47,7 @@ function Content({
 
       <AccuracySection results={results} />
 
-      <DistrobutionSection distribution={distribution} summary={summary} />
+      <DistributionSection distribution={distribution} summary={summary} />
 
       <ProgressOverviewSection keyStatsMap={keyStatsMap} />
 

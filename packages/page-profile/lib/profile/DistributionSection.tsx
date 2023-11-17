@@ -6,7 +6,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 import { type Summary } from "./Summary.tsx";
 import { ChartWrapper } from "./widgets.tsx";
 
-export function DistrobutionSection({
+export function DistributionSection({
   distribution,
   summary,
 }: {
