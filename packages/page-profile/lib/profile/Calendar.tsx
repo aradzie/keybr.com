@@ -3,7 +3,7 @@ import {
   LocalDate,
   newSummaryStats,
   type Result,
-  type ResultGroups,
+  type ResultSummary,
 } from "@keybr/result";
 import { formatDuration } from "@keybr/widget";
 import { clsx } from "clsx";
@@ -12,15 +12,13 @@ import { useIntl } from "react-intl";
 import * as styles from "./Calendar.module.less";
 
 export function Calendar({
-  today,
-  resultsByDate,
+  summary,
 }: {
-  readonly today: LocalDate;
-  readonly resultsByDate: ResultGroups<LocalDate>;
+  readonly summary: ResultSummary;
 }): ReactNode {
   return (
     <div className={styles.wrapper}>
-      {blockList(today, resultsByDate).map((block, index) => (
+      {blockList(summary).map((block, index) => (
         <Block key={index} block={block} />
       ))}
     </div>
@@ -146,19 +144,16 @@ function Cell({ cell }: { readonly cell: CellData | null }): ReactNode {
   );
 }
 
-function blockList(
-  today: LocalDate,
-  resultsByDate: ResultGroups<LocalDate>,
-): BlockData[] {
+function blockList(summary: ResultSummary): BlockData[] {
   const cellMap = new Map<string, CellData>();
-  for (const { key: date, results } of resultsByDate) {
+  for (const { date, results } of summary) {
     cellMap.set(String(date), { date, results });
   }
   const blockMap = new Map<string, BlockData>();
-  for (const { key: date } of resultsByDate) {
+  for (const { date } of summary) {
     addBlock(date);
   }
-  addBlock(today);
+  addBlock(summary.todayStats.date);
   return [...blockMap.values()];
 
   function addBlock({

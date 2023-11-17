@@ -1,15 +1,13 @@
-import { type LocalDate, type ResultGroups } from "@keybr/result";
+import { type ResultSummary } from "@keybr/result";
 import { Figure } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
 import { Calendar } from "./Calendar.tsx";
 
 export function CalendarSection({
-  today,
-  resultsByDate,
+  summary,
 }: {
-  readonly today: LocalDate;
-  readonly resultsByDate: ResultGroups<LocalDate>;
+  readonly summary: ResultSummary;
 }): ReactNode {
   return (
     <Figure>
@@ -29,7 +27,7 @@ export function CalendarSection({
         />
       </Figure.Description>
 
-      <Calendar today={today} resultsByDate={resultsByDate} />
+      <Calendar summary={summary} />
     </Figure>
   );
 }

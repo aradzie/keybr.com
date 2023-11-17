@@ -1,6 +1,6 @@
 import { newSpeedDistribution } from "@keybr/chart";
 import { type NamedUser, Screen, UserName } from "@keybr/pages-shared";
-import { type KeyStatsMap } from "@keybr/result";
+import { type KeyStatsMap, ResultSummary } from "@keybr/result";
 import { Header } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { AccuracySection } from "./profile/AccuracySection.tsx";
@@ -12,7 +12,7 @@ import { KeySpeedHistogramSection } from "./profile/KeySpeedHistogramSection.tsx
 import { KeyTypingSpeedSection } from "./profile/KeyTypingSpeedSection.tsx";
 import { ProgressOverviewSection } from "./profile/ProgressOverviewSection.tsx";
 import { ResultGrouper } from "./profile/ResultGrouper.tsx";
-import { AllTimeSummary, useSummary } from "./profile/Summary.tsx";
+import { AllTimeSummary } from "./profile/Summary.tsx";
 import { TypingSpeedSection } from "./profile/TypingSpeedSection.tsx";
 
 export function PublicProfileApp({
@@ -38,16 +38,16 @@ function Content({
   readonly keyStatsMap: KeyStatsMap;
 }): ReactNode {
   const { results } = keyStatsMap;
+  const summary = new ResultSummary(results);
   const distribution = newSpeedDistribution();
-  const summary = useSummary(results, distribution);
 
   return (
     <>
       <AllTimeSummary summary={summary} />
 
-      <AccuracySection results={results} />
+      <AccuracySection summary={summary} />
 
-      <DistributionSection distribution={distribution} summary={summary} />
+      <DistributionSection summary={summary} distribution={distribution} />
 
       <ProgressOverviewSection keyStatsMap={keyStatsMap} />
 
@@ -61,10 +61,7 @@ function Content({
 
       <KeyFrequencyHeatmapSection keyStatsMap={keyStatsMap} />
 
-      <CalendarSection
-        today={summary.today}
-        resultsByDate={summary.resultsByDate}
-      />
+      <CalendarSection summary={summary} />
     </>
   );
 }

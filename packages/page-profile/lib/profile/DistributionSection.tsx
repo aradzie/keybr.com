@@ -1,19 +1,21 @@
 import { DistributionChart } from "@keybr/chart";
 import { type Distribution } from "@keybr/math";
+import { type ResultSummary } from "@keybr/result";
 import { Figure } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { type Summary } from "./Summary.tsx";
 import { ChartWrapper } from "./widgets.tsx";
 
 export function DistributionSection({
-  distribution,
   summary,
+  distribution,
 }: {
+  readonly summary: ResultSummary;
   readonly distribution: Distribution;
-  readonly summary: Summary;
 }): ReactNode {
   const { formatMessage } = useIntl();
+
+  const { speed } = summary.allTimeStats.stats;
 
   return (
     <Figure>
@@ -43,7 +45,7 @@ export function DistributionSection({
                 description: "Widget name.",
                 defaultMessage: "Average speed",
               }),
-              value: summary.stats.speed.avg,
+              value: speed.avg,
             },
             {
               label: formatMessage({
@@ -51,7 +53,7 @@ export function DistributionSection({
                 description: "Widget name.",
                 defaultMessage: "Best speed",
               }),
-              value: summary.stats.speed.max,
+              value: speed.max,
             },
           ]}
           width="100%"

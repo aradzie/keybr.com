@@ -1,78 +1,21 @@
 import { useIntlNumbers } from "@keybr/intl";
 import { useFormatter } from "@keybr/lesson-ui";
-import { type Distribution } from "@keybr/math";
-import {
-  LocalDate,
-  newSummaryStats,
-  type Result,
-  ResultGroups,
-  type SummaryStats,
-} from "@keybr/result";
+import { type ResultSummary } from "@keybr/result";
 import { formatDuration, Header, Para } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import * as styles from "./Summary.module.less";
 
-export type Summary = {
-  readonly today: LocalDate;
-  readonly results: readonly Result[];
-  readonly resultsByDate: ResultGroups<LocalDate>;
-  readonly resultsToday: readonly Result[];
-  readonly stats: SummaryStats;
-  readonly statsToday: SummaryStats;
-  readonly topProb: number;
-  readonly avgProb: number;
-  readonly topProbToday: number;
-  readonly avgProbToday: number;
-};
-
-export function useSummary(
-  results: readonly Result[],
-  distribution: Distribution,
-): Summary {
-  const today = LocalDate.now();
-  const resultsByDate = ResultGroups.byDate(results);
-  const resultsToday = resultsByDate.get(today);
-  const stats = newSummaryStats(results);
-  const statsToday = newSummaryStats(resultsToday);
-  let topProb = NaN;
-  let avgProb = NaN;
-  if (results.length > 0) {
-    topProb = distribution.cdf(stats.speed.max);
-    avgProb = distribution.cdf(stats.speed.avg);
-  }
-  let topProbToday = NaN;
-  let avgProbToday = NaN;
-  if (resultsToday.length > 0) {
-    topProbToday = distribution.cdf(statsToday.speed.max);
-    avgProbToday = distribution.cdf(statsToday.speed.avg);
-  }
-  return {
-    today,
-    results,
-    resultsByDate,
-    resultsToday,
-    stats,
-    statsToday,
-    topProb,
-    avgProb,
-    topProbToday,
-    avgProbToday,
-  };
-}
-
 export function AllTimeSummary({
   summary,
 }: {
-  readonly summary: Summary;
+  readonly summary: ResultSummary;
 }): ReactNode {
   const { formatMessage } = useIntl();
   const { formatNumber } = useIntlNumbers();
   const { formatSpeed } = useFormatter();
 
-  const {
-    stats: { count, time, speed },
-  } = summary;
+  const { count, time, speed } = summary.allTimeStats.stats;
 
   return (
     <>
@@ -148,15 +91,13 @@ export function AllTimeSummary({
 export function TodaySummary({
   summary,
 }: {
-  readonly summary: Summary;
+  readonly summary: ResultSummary;
 }): ReactNode {
   const { formatMessage } = useIntl();
   const { formatNumber } = useIntlNumbers();
   const { formatSpeed } = useFormatter();
 
-  const {
-    statsToday: { count, time, speed },
-  } = summary;
+  const { count, time, speed } = summary.todayStats.stats;
 
   return (
     <>

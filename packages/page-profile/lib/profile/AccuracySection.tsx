@@ -1,6 +1,6 @@
 import { useIntlNumbers } from "@keybr/intl";
 import { useFormatter } from "@keybr/lesson-ui";
-import { newSummaryStats, type Result } from "@keybr/result";
+import { newSummaryStats, type ResultSummary } from "@keybr/result";
 import {
   Figure,
   Header,
@@ -13,11 +13,11 @@ import { useIntl } from "react-intl";
 import { type AccuracyStreak, accuracyStreaks } from "./accuracy.ts";
 
 export function AccuracySection({
-  results,
+  summary,
 }: {
-  readonly results: readonly Result[];
+  readonly summary: ResultSummary;
 }): ReactNode {
-  const streaks = accuracyStreaks(results);
+  const streaks = accuracyStreaks(summary.allTimeStats.results);
 
   return (
     <>

@@ -1,15 +1,26 @@
 import { useIntlNumbers } from "@keybr/intl";
+import { type Distribution } from "@keybr/math";
+import { type ResultSummary } from "@keybr/result";
 import { Header, Para, Value } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
-import { type Summary } from "./Summary.tsx";
 
 export function ComparisonSection({
-  summary: { topProb, avgProb },
+  summary,
+  distribution,
 }: {
-  readonly summary: Summary;
+  readonly summary: ResultSummary;
+  readonly distribution: Distribution;
 }): ReactNode {
   const { formatPercents } = useIntlNumbers();
+
+  let topProb = NaN;
+  let avgProb = NaN;
+  const { results, stats } = summary.allTimeStats;
+  if (results.length > 0) {
+    topProb = distribution.cdf(stats.speed.max);
+    avgProb = distribution.cdf(stats.speed.avg);
+  }
 
   return (
     <>

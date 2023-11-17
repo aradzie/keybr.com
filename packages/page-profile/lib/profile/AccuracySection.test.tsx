@@ -1,17 +1,21 @@
 import { FakeIntlProvider } from "@keybr/intl";
-import { ResultFaker } from "@keybr/result";
+import { LocalDate, ResultFaker, ResultSummary } from "@keybr/result";
 import { FakeSettingsContext } from "@keybr/settings";
 import test from "ava";
 import TestRenderer from "react-test-renderer";
 import { AccuracySection } from "./AccuracySection.tsx";
 
 test("no streaks", (t) => {
+  // Arrange.
+
+  const summary = new ResultSummary([], new LocalDate(0));
+
   // Act.
 
   const testRenderer = TestRenderer.create(
     <FakeIntlProvider>
       <FakeSettingsContext>
-        <AccuracySection results={[]} />
+        <AccuracySection summary={summary} />
       </FakeSettingsContext>
     </FakeIntlProvider>,
   );
@@ -26,13 +30,14 @@ test("one streak", (t) => {
 
   const faker = new ResultFaker();
   const r1 = faker.nextResult({ length: 100, errors: 0 });
+  const summary = new ResultSummary([r1], new LocalDate(r1.timeStamp));
 
   // Act.
 
   const testRenderer = TestRenderer.create(
     <FakeIntlProvider>
       <FakeSettingsContext>
-        <AccuracySection results={[r1]} />
+        <AccuracySection summary={summary} />
       </FakeSettingsContext>
     </FakeIntlProvider>,
   );

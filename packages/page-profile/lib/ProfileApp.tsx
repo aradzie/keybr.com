@@ -1,6 +1,6 @@
 import { newSpeedDistribution } from "@keybr/chart";
 import { type NamedUser, Screen, usePageData } from "@keybr/pages-shared";
-import { type KeyStatsMap } from "@keybr/result";
+import { type KeyStatsMap, ResultSummary } from "@keybr/result";
 import { type ReactNode } from "react";
 import { AccuracySection } from "./profile/AccuracySection.tsx";
 import { CalendarSection } from "./profile/CalendarSection.tsx";
@@ -14,11 +14,7 @@ import { KeyTypingSpeedSection } from "./profile/KeyTypingSpeedSection.tsx";
 import { ProgressOverviewSection } from "./profile/ProgressOverviewSection.tsx";
 import { ResultGrouper } from "./profile/ResultGrouper.tsx";
 import { ShareProfileLink } from "./profile/ShareProfileLink.tsx";
-import {
-  AllTimeSummary,
-  TodaySummary,
-  useSummary,
-} from "./profile/Summary.tsx";
+import { AllTimeSummary, TodaySummary } from "./profile/Summary.tsx";
 import { TypingSpeedSection } from "./profile/TypingSpeedSection.tsx";
 
 export function ProfileApp(): ReactNode {
@@ -38,8 +34,8 @@ function Content({
 }): ReactNode {
   const { publicUser } = usePageData();
   const { results } = keyStatsMap;
+  const summary = new ResultSummary(results);
   const distribution = newSpeedDistribution();
-  const summary = useSummary(results, distribution);
 
   return (
     <>
@@ -47,11 +43,11 @@ function Content({
 
       <TodaySummary summary={summary} />
 
-      <AccuracySection results={results} />
+      <AccuracySection summary={summary} />
 
-      <ComparisonSection summary={summary} />
+      <ComparisonSection summary={summary} distribution={distribution} />
 
-      <DistributionSection distribution={distribution} summary={summary} />
+      <DistributionSection summary={summary} distribution={distribution} />
 
       <ProgressOverviewSection keyStatsMap={keyStatsMap} />
 
@@ -65,10 +61,7 @@ function Content({
 
       <KeyFrequencyHeatmapSection keyStatsMap={keyStatsMap} />
 
-      <CalendarSection
-        today={summary.today}
-        resultsByDate={summary.resultsByDate}
-      />
+      <CalendarSection summary={summary} />
 
       {publicUser.id != null && (
         <ShareProfileLink user={publicUser as NamedUser} />
