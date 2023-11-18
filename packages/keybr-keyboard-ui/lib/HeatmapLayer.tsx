@@ -1,11 +1,12 @@
 import {
   type HasCodePoint,
   type Keyboard,
-  type KeyboardKey,
+  type KeyShape,
   useKeyboard,
 } from "@keybr/keyboard";
 import { clsx } from "clsx";
 import { memo, type ReactNode } from "react";
+import { frameWidth, keyGap, keySize } from "./constants.ts";
 import * as styles from "./HeatmapLayer.module.less";
 
 export const HeatmapLayer = memo(function HeatmapLayer({
@@ -17,14 +18,11 @@ export const HeatmapLayer = memo(function HeatmapLayer({
 }): ReactNode {
   const keyboard = useKeyboard();
   return (
-    <svg x={21} y={21}>
-      {normalize(keyboard, histogram).map(([key, frequency]) => {
-        const {
-          id,
-          geometry: { x, y, w, h },
-        } = key;
-        const cx = x + w / 2;
-        const cy = y + h / 2;
+    <svg x={frameWidth} y={frameWidth}>
+      {normalize(keyboard, histogram).map(([shape, frequency]) => {
+        const { id, x, y, w, h } = shape;
+        const cx = x * keySize + (w * (keySize - keyGap)) / 2;
+        const cy = y * keySize + (h * (keySize - keyGap)) / 2;
         switch (modifier) {
           case "h": {
             const r = frequency * 15 + 5;
@@ -70,13 +68,16 @@ export const HeatmapLayer = memo(function HeatmapLayer({
 function normalize(
   keyboard: Keyboard,
   histogram: Iterable<[HasCodePoint, number]>,
-): [KeyboardKey, number][] {
-  const map = new Map<KeyboardKey, number>();
+): [KeyShape, number][] {
+  const map = new Map<KeyShape, number>();
   for (const [{ codePoint }, count] of histogram) {
     if (count > 0) {
-      const keyCombo = keyboard.getKeyCombo(codePoint);
-      if (keyCombo != null && keyCombo.prefix == null) {
-        map.set(keyCombo.key, count);
+      const combo = keyboard.getCombo(codePoint);
+      if (combo != null && combo.prefix == null) {
+        const shape = keyboard.getShape(combo.id);
+        if (shape != null) {
+          map.set(shape, count);
+        }
       }
     }
   }
@@ -85,8 +86,8 @@ function normalize(
     const max = Math.max(...map.values());
     return [...map]
       .sort((a, b) => a[1] - b[1])
-      .map(([key, count]) => [
-        key,
+      .map(([shape, count]) => [
+        shape,
         max > min ? (count - min) / (max - min) : 0.5,
       ]);
   } else {

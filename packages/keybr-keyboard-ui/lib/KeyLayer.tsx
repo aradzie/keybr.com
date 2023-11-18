@@ -1,9 +1,4 @@
-import {
-  type Keyboard,
-  type KeyboardKey,
-  useKeyboard,
-  visualSortKeys,
-} from "@keybr/keyboard";
+import { type Keyboard, type KeyShape, useKeyboard } from "@keybr/keyboard";
 import {
   type ComponentType,
   memo,
@@ -11,8 +6,9 @@ import {
   type ReactNode,
   useMemo,
 } from "react";
+import { frameWidth } from "./constants.ts";
 import { type KeyProps } from "./Key.tsx";
-import { getKeyComponent } from "./keys.tsx";
+import { makeKeyComponent } from "./keys.tsx";
 
 type KeyId = string;
 type KeyIdList = readonly KeyId[];
@@ -45,7 +41,7 @@ export const KeyLayer = memo(function KeyLayer({
   const keyboard = useKeyboard();
   const children = useMemo(() => getKeyElements(keyboard), [keyboard]);
   return (
-    <svg x={21} y={21}>
+    <svg x={frameWidth} y={frameWidth}>
       {children.map((child) =>
         child.select(depressedKeys, toggledKeys, showColors),
       )}
@@ -53,13 +49,13 @@ export const KeyLayer = memo(function KeyLayer({
   );
 });
 
-function getKeyElements(keyboard: Keyboard): MemoizedKeyElement[] {
-  return [...keyboard.keys, ...keyboard.specialKeys, ...keyboard.extraKeys]
-    .sort(visualSortKeys)
-    .map((key) => new MemoizedKeyElement(key));
+function getKeyElements(keyboard: Keyboard): MemoizedKeyElements[] {
+  return [...keyboard.shapes.values()].map(
+    (shape) => new MemoizedKeyElements(shape),
+  );
 }
 
-class MemoizedKeyElement {
+class MemoizedKeyElements {
   readonly component: ComponentType<KeyProps>;
   readonly state0: ReactElement<KeyProps>;
   readonly state1: ReactElement<KeyProps>;
@@ -70,13 +66,12 @@ class MemoizedKeyElement {
   readonly state6: ReactElement<KeyProps>;
   readonly state7: ReactElement<KeyProps>;
 
-  constructor(readonly keyboardKey: KeyboardKey) {
-    const Component = getKeyComponent(keyboardKey.geometry.shape);
+  constructor(readonly shape: KeyShape) {
+    const Component = makeKeyComponent(shape);
     this.component = Component;
     this.state0 = (
       <Component
-        key={keyboardKey.id}
-        keyboardKey={keyboardKey}
+        key={shape.id}
         depressed={false}
         toggled={false}
         showColors={false}
@@ -84,8 +79,7 @@ class MemoizedKeyElement {
     );
     this.state1 = (
       <Component
-        key={keyboardKey.id}
-        keyboardKey={keyboardKey}
+        key={shape.id}
         depressed={true}
         toggled={false}
         showColors={false}
@@ -93,8 +87,7 @@ class MemoizedKeyElement {
     );
     this.state2 = (
       <Component
-        key={keyboardKey.id}
-        keyboardKey={keyboardKey}
+        key={shape.id}
         depressed={false}
         toggled={true}
         showColors={false}
@@ -102,8 +95,7 @@ class MemoizedKeyElement {
     );
     this.state3 = (
       <Component
-        key={keyboardKey.id}
-        keyboardKey={keyboardKey}
+        key={shape.id}
         depressed={true}
         toggled={true}
         showColors={false}
@@ -111,8 +103,7 @@ class MemoizedKeyElement {
     );
     this.state4 = (
       <Component
-        key={keyboardKey.id}
-        keyboardKey={keyboardKey}
+        key={shape.id}
         depressed={false}
         toggled={false}
         showColors={true}
@@ -120,8 +111,7 @@ class MemoizedKeyElement {
     );
     this.state5 = (
       <Component
-        key={keyboardKey.id}
-        keyboardKey={keyboardKey}
+        key={shape.id}
         depressed={true}
         toggled={false}
         showColors={true}
@@ -129,8 +119,7 @@ class MemoizedKeyElement {
     );
     this.state6 = (
       <Component
-        key={keyboardKey.id}
-        keyboardKey={keyboardKey}
+        key={shape.id}
         depressed={false}
         toggled={true}
         showColors={true}
@@ -138,8 +127,7 @@ class MemoizedKeyElement {
     );
     this.state7 = (
       <Component
-        key={keyboardKey.id}
-        keyboardKey={keyboardKey}
+        key={shape.id}
         depressed={true}
         toggled={true}
         showColors={true}
@@ -152,9 +140,9 @@ class MemoizedKeyElement {
     toggledKeys: KeyIdList,
     showColors: boolean,
   ): ReactElement<KeyProps> {
-    const { keyboardKey } = this;
-    const depressed = depressedKeys.includes(keyboardKey.id);
-    const toggled = toggledKeys.includes(keyboardKey.id);
+    const { shape } = this;
+    const depressed = depressedKeys.includes(shape.id);
+    const toggled = toggledKeys.includes(shape.id);
     if (!showColors) {
       if (!toggled) {
         if (!depressed) {

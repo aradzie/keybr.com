@@ -9,30 +9,26 @@ import {
 } from "./geometry.ts";
 
 test("geometry", (t) => {
-  const emptySet = new Set();
-
   t.deepEqual(
-    new Set(
-      [...digitRowKeys, ...topRowKeys, ...homeRowKeys, ...bottomRowKeys].sort(),
-    ),
-    new Set([...leftHandKeys, ...rightHandKeys].sort()),
+    [...digitRowKeys, ...topRowKeys, ...homeRowKeys, ...bottomRowKeys].sort(),
+    [...leftHandKeys, ...rightHandKeys].sort(),
   );
 
-  t.deepEqual(intersection(digitRowKeys, topRowKeys), emptySet);
-  t.deepEqual(intersection(digitRowKeys, homeRowKeys), emptySet);
-  t.deepEqual(intersection(digitRowKeys, bottomRowKeys), emptySet);
-  t.deepEqual(intersection(topRowKeys, homeRowKeys), emptySet);
-  t.deepEqual(intersection(topRowKeys, bottomRowKeys), emptySet);
-  t.deepEqual(intersection(homeRowKeys, bottomRowKeys), emptySet);
-  t.deepEqual(intersection(leftHandKeys, rightHandKeys), emptySet);
+  t.deepEqual(intersection(digitRowKeys, topRowKeys), []);
+  t.deepEqual(intersection(digitRowKeys, homeRowKeys), []);
+  t.deepEqual(intersection(digitRowKeys, bottomRowKeys), []);
+  t.deepEqual(intersection(topRowKeys, homeRowKeys), []);
+  t.deepEqual(intersection(topRowKeys, bottomRowKeys), []);
+  t.deepEqual(intersection(homeRowKeys, bottomRowKeys), []);
+  t.deepEqual(intersection(leftHandKeys, rightHandKeys), []);
 });
 
-function intersection<T>(a: ReadonlySet<T>, b: ReadonlySet<T>): Set<T> {
+function intersection<T>(a: ReadonlySet<T>, b: ReadonlySet<T>): T[] {
   const result = new Set<T>();
   for (const value of a) {
     if (b.has(value)) {
       result.add(value);
     }
   }
-  return result;
+  return [...result];
 }

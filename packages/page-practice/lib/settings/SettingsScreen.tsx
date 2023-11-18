@@ -29,8 +29,8 @@ export function SettingsScreen({
   const [newSettings, setNewSettings] = useState(settings);
   const keyboard = useMemo(() => {
     const layout = newSettings.get(keyboardProps.layout);
-    const full = newSettings.get(keyboardProps.full);
-    return loadKeyboard(layout, { full });
+    const geometry = newSettings.get(keyboardProps.geometry);
+    return loadKeyboard(layout, geometry);
   }, [newSettings]);
   return (
     <SettingsContext.Provider

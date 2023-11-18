@@ -6,7 +6,7 @@ import TestRenderer from "react-test-renderer";
 import { KeyFrequencyHeatmap } from "./KeyFrequencyHeatmap.tsx";
 
 test("render", (t) => {
-  const keyboard = loadKeyboard(Layout.getDefault(), { full: false });
+  const keyboard = loadKeyboard(Layout.getDefault());
 
   const testRenderer = TestRenderer.create(
     <FakeIntlProvider>

@@ -7,7 +7,7 @@ import { DeferredKeyboardPresenter } from "./KeyboardPresenter.tsx";
 declare function flushAnimationFrames(): Promise<void>;
 
 test.serial("deferred render", async (t) => {
-  const keyboard = loadKeyboard(Layout.EN_US, { full: true });
+  const keyboard = loadKeyboard(Layout.EN_US);
 
   const r = render(
     <KeyboardContext.Provider value={keyboard}>

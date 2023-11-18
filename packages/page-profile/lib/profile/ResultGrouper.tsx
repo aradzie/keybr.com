@@ -36,7 +36,7 @@ export function ResultGrouper({
   if (!resultsLayouts.has(selectedLayout)) {
     setSelectedLayout(defaultLayout());
   }
-  const keyboard = loadKeyboard(selectedLayout, { full: false });
+  const keyboard = loadKeyboard(selectedLayout);
   const group = groups.get(selectedLayout);
 
   return (

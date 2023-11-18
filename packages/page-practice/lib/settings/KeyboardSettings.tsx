@@ -6,7 +6,7 @@ import {
   KeyLayer,
   VirtualKeyboard,
 } from "@keybr/keyboard-ui";
-import { Language, Layout } from "@keybr/layout";
+import { Geometry, Language, Layout } from "@keybr/layout";
 import { useSettings } from "@keybr/settings";
 import { ModifierState } from "@keybr/textinput-events";
 import {
@@ -42,6 +42,7 @@ export function KeyboardSettings(): ReactNode {
         })}
       >
         <KeyboardPreview />
+        <GeometryProp />
       </FieldSet>
     </>
   );
@@ -57,7 +58,7 @@ function LayoutProp(): ReactNode {
       <FieldList>
         <Field>
           <FormattedMessage
-            id="settings.selectLanguage.label"
+            id="keyboard.language.label"
             description="Widget name."
             defaultMessage="Language:"
           />
@@ -68,11 +69,6 @@ function LayoutProp(): ReactNode {
               value: item.id,
               name: formatMessage(languageName(item.id)),
             }))}
-            title={formatMessage({
-              id: "settings.selectLanguage.description",
-              description: "Widget description.",
-              defaultMessage: "Select your spoken language.",
-            })}
             value={layout.language.id}
             onSelect={(id) => {
               updateSettings(
@@ -86,7 +82,7 @@ function LayoutProp(): ReactNode {
         </Field>
         <Field>
           <FormattedMessage
-            id="settings.selectLayout.label"
+            id="keyboard.layout.label"
             description="Widget name."
             defaultMessage="Layout:"
           />
@@ -99,12 +95,6 @@ function LayoutProp(): ReactNode {
               value: item.id,
               name: item.name,
             }))}
-            title={formatMessage({
-              id: "settings.selectLayout.description",
-              description: "Widget description.",
-              defaultMessage:
-                "Select the keyboard layout you wish to practice with. There may be many layouts available for each language.",
-            })}
             value={layout.id}
             onSelect={(id) => {
               updateSettings(
@@ -118,15 +108,9 @@ function LayoutProp(): ReactNode {
             checked={emulate}
             disabled={!layout.emulate}
             label={formatMessage({
-              id: "settings.emulateLayout.label",
+              id: "keyboard.emulate.label",
               description: "Widget name.",
               defaultMessage: "Emulate layout",
-            })}
-            title={formatMessage({
-              id: "settings.emulateLayout.description",
-              description: "Widget description.",
-              defaultMessage:
-                "Emulate the selected layout when the standard layout is set in the system.",
             })}
             onChange={(value) => {
               updateSettings(settings.set(keyboardProps.emulate, value));
@@ -147,30 +131,45 @@ function LayoutProp(): ReactNode {
 }
 
 function KeyboardPreview(): ReactNode {
-  const { formatMessage } = useIntl();
-  const { settings, updateSettings } = useSettings();
+  const { settings } = useSettings();
   const keyboard = useKeyboard();
   const depressedKeys = useDepressedKeys();
   return (
+    <VirtualKeyboard keyboard={keyboard} height="16rem">
+      <KeyLayer
+        depressedKeys={depressedKeys}
+        toggledKeys={ModifierState.modifiers}
+        showColors={settings.get(keyboardProps.colors)}
+      />
+    </VirtualKeyboard>
+  );
+}
+
+function GeometryProp(): ReactNode {
+  const { formatMessage } = useIntl();
+  const { settings, updateSettings } = useSettings();
+  const geometry = settings.get(keyboardProps.geometry);
+  return (
     <>
-      <VirtualKeyboard keyboard={keyboard} height="16rem">
-        <KeyLayer
-          depressedKeys={depressedKeys}
-          toggledKeys={ModifierState.modifiers}
-          showColors={settings.get(keyboardProps.colors)}
-        />
-      </VirtualKeyboard>
       <FieldList>
         <Field>
-          <CheckBox
-            label={formatMessage({
-              id: "settings.keyboardFullView.label",
-              description: "Widget name.",
-              defaultMessage: "Full keyboard view",
-            })}
-            checked={settings.get(keyboardProps.full)}
-            onChange={(value) => {
-              updateSettings(settings.set(keyboardProps.full, value));
+          <FormattedMessage
+            id="keyboard.geometry.label"
+            description="Widget name."
+            defaultMessage="Geometry:"
+          />
+        </Field>
+        <Field>
+          <OptionList
+            options={Geometry.ALL.map((item) => ({
+              value: item.id,
+              name: item.name,
+            }))}
+            value={geometry.id}
+            onSelect={(id) => {
+              updateSettings(
+                settings.set(keyboardProps.geometry, Geometry.ALL.get(id)),
+              );
             }}
           />
         </Field>

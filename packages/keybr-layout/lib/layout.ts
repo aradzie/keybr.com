@@ -1,8 +1,8 @@
-import { type EnumItem, XEnum } from "@keybr/lang";
+import { XEnum, type XEnumItem } from "@keybr/lang";
 import { Language } from "./language.ts";
 import { LayoutFamily } from "./layoutfamily.ts";
 
-export class Layout implements EnumItem {
+export class Layout implements XEnumItem {
   static readonly EN_US = new Layout(
     /* id= */ "us",
     /* xid= */ 0x10,

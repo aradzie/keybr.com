@@ -20,8 +20,8 @@ export function PracticeScreen({
 }): ReactNode {
   const { settings } = useSettings();
   const layout = settings.get(keyboardProps.layout);
-  const full = settings.get(keyboardProps.full);
-  const keyboard = loadKeyboard(layout, { full });
+  const geometry = settings.get(keyboardProps.geometry);
+  const keyboard = loadKeyboard(layout, geometry);
   return (
     <KeyboardContext.Provider value={keyboard}>
       <LessonLoader>

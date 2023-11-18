@@ -1,4 +1,4 @@
-export const digitRowKeys: ReadonlySet<string> = new Set([
+export const digitRowKeys = new Set([
   "Backquote",
   "Digit1",
   "Digit2",
@@ -12,9 +12,9 @@ export const digitRowKeys: ReadonlySet<string> = new Set([
   "Digit0",
   "Minus",
   "Equal",
-]);
+]) as ReadonlySet<string>;
 
-export const topRowKeys: ReadonlySet<string> = new Set([
+export const topRowKeys = new Set([
   "Tab",
   "KeyQ",
   "KeyW",
@@ -29,9 +29,9 @@ export const topRowKeys: ReadonlySet<string> = new Set([
   "BracketLeft",
   "BracketRight",
   "Backslash",
-]);
+]) as ReadonlySet<string>;
 
-export const homeRowKeys: ReadonlySet<string> = new Set([
+export const homeRowKeys = new Set([
   "CapsLock",
   "KeyA",
   "KeyA",
@@ -46,10 +46,11 @@ export const homeRowKeys: ReadonlySet<string> = new Set([
   "Semicolon",
   "Quote",
   "Enter",
-]);
+]) as ReadonlySet<string>;
 
-export const bottomRowKeys: ReadonlySet<string> = new Set([
+export const bottomRowKeys = new Set([
   "ShiftLeft",
+  "IntlBackslash",
   "KeyZ",
   "KeyX",
   "KeyC",
@@ -61,9 +62,9 @@ export const bottomRowKeys: ReadonlySet<string> = new Set([
   "Period",
   "Slash",
   "ShiftRight",
-]);
+]) as ReadonlySet<string>;
 
-export const leftHandKeys: ReadonlySet<string> = new Set([
+export const leftHandKeys = new Set([
   "Backquote",
   "Digit1",
   "Digit2",
@@ -83,14 +84,15 @@ export const leftHandKeys: ReadonlySet<string> = new Set([
   "KeyF",
   "KeyG",
   "ShiftLeft",
+  "IntlBackslash",
   "KeyZ",
   "KeyX",
   "KeyC",
   "KeyV",
   "KeyB",
-]);
+]) as ReadonlySet<string>;
 
-export const rightHandKeys: ReadonlySet<string> = new Set([
+export const rightHandKeys = new Set([
   "Digit6",
   "Digit7",
   "Digit8",
@@ -119,4 +121,4 @@ export const rightHandKeys: ReadonlySet<string> = new Set([
   "Period",
   "Slash",
   "ShiftRight",
-]);
+]) as ReadonlySet<string>;

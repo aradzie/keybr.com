@@ -17,13 +17,14 @@ for (const layout of [
   Layout.EN_US_WORKMAN,
 ]) {
   test(`all row keys are defined - ${layout.id}`, (t) => {
-    const keyboard = loadKeyboard(layout, { full: false });
-    for (const { id } of keyboard.keys) {
+    const keyboard = loadKeyboard(layout);
+    for (const { id } of keyboard.characters.values()) {
       t.true(
         digitRowKeys.has(id) ||
           topRowKeys.has(id) ||
           homeRowKeys.has(id) ||
           bottomRowKeys.has(id),
+        `Unknown key id ${id}`,
       );
     }
   });
@@ -36,7 +37,7 @@ for (const layout of [
   Layout.EN_US_WORKMAN,
 ]) {
   test(`sum of row keys - ${layout.id}`, (t) => {
-    const keyboard = loadKeyboard(layout, { full: false });
+    const keyboard = loadKeyboard(layout);
     const sum =
       keysOnRow(letters, keyboard, topRowKeys) +
       keysOnRow(letters, keyboard, homeRowKeys) +

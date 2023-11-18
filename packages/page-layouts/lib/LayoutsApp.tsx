@@ -6,11 +6,11 @@ import { FormattedMessage } from "react-intl";
 import { KeyFrequencyHeatmap } from "./KeyFrequencyHeatmap.tsx";
 
 export function LayoutsApp(): ReactNode {
-  const qwerty = loadKeyboard(Layout.EN_US, { full: false });
-  const dvorak = loadKeyboard(Layout.EN_US_DVORAK, { full: false });
-  const colemak = loadKeyboard(Layout.EN_US_COLEMAK, { full: false });
-  const workman = loadKeyboard(Layout.EN_US_WORKMAN, { full: false });
-  const colemak_dh = loadKeyboard(Layout.EN_US_COLEMAK_DH, { full: false });
+  const qwerty = loadKeyboard(Layout.EN_US);
+  const dvorak = loadKeyboard(Layout.EN_US_DVORAK);
+  const colemak = loadKeyboard(Layout.EN_US_COLEMAK);
+  const workman = loadKeyboard(Layout.EN_US_WORKMAN);
+  const colemak_dh = loadKeyboard(Layout.EN_US_COLEMAK_DH);
 
   return (
     <Article>

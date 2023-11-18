@@ -2,18 +2,10 @@
   fill: var(--KeyboardKey-button__color);
 }
 
-.text {
-  fill: var(--KeyboardKey-symbol__color);
-  font-family: var(--default-font-family);
-  font-size: 10px;
-  cursor: default;
-  user-select: none;
-}
-
 .symbol {
   fill: var(--KeyboardKey-symbol__color);
   font-family: var(--default-font-family);
-  font-size: 11px;
+  font-size: 10px;
   cursor: default;
   user-select: none;
 }
@@ -37,28 +29,6 @@
 
 .toggle {
   fill: var(--KeyboardKey-toggle__color);
-}
-
-.simpleKey {
-  .button {
-    /* empty */
-  }
-
-  .text,
-  .symbol {
-    /* empty */
-  }
-}
-
-.specialKey {
-  .button {
-    fill: var(--KeyboardKey-button--special__color);
-  }
-
-  .text,
-  .symbol {
-    fill: var(--KeyboardKey-symbol--special__color);
-  }
 }
 
 .fingerPinky {
@@ -121,12 +91,21 @@
   fill: var(--KeyboardKey-thumb__color);
 }
 
+.key {
+  .button {
+    /* empty */
+  }
+
+  .symbol {
+    /* empty */
+  }
+}
+
 .depressedKey {
   .button {
     fill: var(--KeyboardKey-button--depressed__color);
   }
 
-  .text,
   .symbol {
     fill: var(--KeyboardKey-symbol--depressed__color);
   }
@@ -134,6 +113,10 @@
 
 .toggledKey {
   .button {
+    /* empty */
+  }
+
+  .symbol {
     /* empty */
   }
 }

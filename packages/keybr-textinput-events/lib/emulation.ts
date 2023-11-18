@@ -70,10 +70,10 @@ function remap(
     repeat,
   }: KeyEvent,
 ): [number, KeyEvent] {
-  const layoutKey = layout.getKey(code);
+  const characters = layout.getCharacters(code);
   let codePoint = 0x0000;
-  if (layoutKey != null) {
-    codePoint = layoutKey.codePoint(KeyModifier.of({ shiftKey, altKey }));
+  if (characters != null) {
+    codePoint = characters.codePoint(KeyModifier.of({ shiftKey, altKey }));
     if (codePoint > 0x0000) {
       key = String.fromCodePoint(codePoint);
     }

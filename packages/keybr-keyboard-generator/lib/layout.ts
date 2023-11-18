@@ -6,7 +6,7 @@ import {
 } from "@keybr/keyboard";
 import { toCodePoints } from "@keybr/unicode";
 import { diacritics } from "./diacritics.ts";
-import { allKeys } from "./keys.ts";
+import { characterKeys } from "./keys.ts";
 
 export type CodePointList = string | readonly (string | CodePoint)[];
 
@@ -18,7 +18,7 @@ export type LayoutConfig = {
 
 export function toCodePointDict(config: LayoutConfig): CodePointDict {
   const map = new Map<KeyId, CodePoint[]>();
-  for (const keyId of allKeys) {
+  for (const keyId of characterKeys) {
     map.set(keyId, codePointsOf(config.codePoints[keyId]));
   }
   return Object.fromEntries(map) as any;

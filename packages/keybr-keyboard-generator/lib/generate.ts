@@ -5,7 +5,7 @@ import {
   type CodePointDict,
   getDiacritic,
 } from "@keybr/keyboard";
-import { allKeys } from "./keys.ts";
+import { characterKeys } from "./keys.ts";
 import { type LayoutConfig, toCodePointDict } from "./layout.ts";
 
 export function writeGeneratedFile(
@@ -29,7 +29,7 @@ function generateSourceFile(id: string, dict: CodePointDict): string {
   lines.push("");
   lines.push("// prettier-ignore");
   lines.push(`export const LAYOUT_${id}: CodePointDict = {`);
-  for (const keyId of allKeys) {
+  for (const keyId of characterKeys) {
     const codePoints = dict[keyId];
     const fields = codePoints.map((codePoint) => {
       if (codePoint) {

@@ -1,8 +1,9 @@
-import { Layout } from "@keybr/layout";
+import { Geometry, Layout } from "@keybr/layout";
 import {
-  GEOMETRY_ANGLEMOD,
-  GEOMETRY_STANDARD_101,
-  GEOMETRY_STANDARD_102,
+  STANDARD_101,
+  STANDARD_101_FULL,
+  STANDARD_102,
+  STANDARD_102_FULL,
 } from "./data/geometry.ts";
 import {
   LAYOUT_BE_BY_WIN,
@@ -30,49 +31,48 @@ import {
   LAYOUT_UK_UA_WIN,
 } from "./data/layout.ts";
 import { Keyboard } from "./keyboard.ts";
-import { makeKeys } from "./keys.ts";
 import { type CodePointDict, type GeometryDict } from "./types.ts";
 
-const config = ((entries: [Layout, CodePointDict, GeometryDict][]) =>
-  new Map<Layout, [CodePointDict, GeometryDict]>(
-    entries.map(([layout, codePointDict, geometryDict]) => [
-      layout,
-      [codePointDict, geometryDict],
-    ]),
-  ))([
-  [Layout.BE_BY, LAYOUT_BE_BY_WIN, GEOMETRY_STANDARD_102],
-  [Layout.DE_CH, LAYOUT_DE_CH_WIN, GEOMETRY_STANDARD_102],
-  [Layout.DE_DE, LAYOUT_DE_DE_WIN, GEOMETRY_STANDARD_102],
-  [Layout.EN_UK, LAYOUT_EN_UK_WIN, GEOMETRY_STANDARD_102],
-  [Layout.EN_US, LAYOUT_EN_US_WIN, GEOMETRY_STANDARD_101],
-  [Layout.EN_US_COLEMAK, LAYOUT_EN_US_COLEMAK, GEOMETRY_STANDARD_101],
-  [Layout.EN_US_COLEMAK_DH, LAYOUT_EN_US_COLEMAK_DH, GEOMETRY_ANGLEMOD],
-  [
-    Layout.EN_US_COLEMAK_DH_MATRIX,
-    LAYOUT_EN_US_COLEMAK_DH_MATRIX,
-    GEOMETRY_STANDARD_101,
-  ],
-  [Layout.EN_US_DVORAK, LAYOUT_EN_US_DVORAK_WIN, GEOMETRY_STANDARD_101],
-  [Layout.EN_US_WORKMAN, LAYOUT_EN_US_WORKMAN, GEOMETRY_STANDARD_101],
-  [Layout.ES_ES, LAYOUT_ES_ES_WIN, GEOMETRY_STANDARD_102],
-  [Layout.FR_BEPO, LAYOUT_FR_BEPO, GEOMETRY_STANDARD_102],
-  [Layout.FR_ERGO_L, LAYOUT_FR_ERGOL, GEOMETRY_STANDARD_102],
-  [Layout.FR_CA, LAYOUT_FR_CA_WIN, GEOMETRY_STANDARD_102],
-  [Layout.FR_CH, LAYOUT_FR_CH_WIN, GEOMETRY_STANDARD_102],
-  [Layout.FR_FR, LAYOUT_FR_FR_WIN, GEOMETRY_STANDARD_102],
-  [Layout.FR_OPTIMOT_ERGO, LAYOUT_FR_OPTIMOT_ERGO, GEOMETRY_STANDARD_102],
-  [Layout.IT_IT, LAYOUT_IT_IT_WIN, GEOMETRY_STANDARD_102],
-  [Layout.PL_PL, LAYOUT_PL_PL_WIN, GEOMETRY_STANDARD_102],
-  [Layout.PT_BR, LAYOUT_PT_BR_WIN, GEOMETRY_STANDARD_102],
-  [Layout.PT_PT, LAYOUT_PT_PT_WIN, GEOMETRY_STANDARD_102],
-  [Layout.RU_RU, LAYOUT_RU_RU_WIN, GEOMETRY_STANDARD_102],
-  [Layout.UK_UA, LAYOUT_UK_UA_WIN, GEOMETRY_STANDARD_102],
+const layoutDict = new Map<Layout, CodePointDict>([
+  [Layout.BE_BY, LAYOUT_BE_BY_WIN],
+  [Layout.DE_CH, LAYOUT_DE_CH_WIN],
+  [Layout.DE_DE, LAYOUT_DE_DE_WIN],
+  [Layout.EN_UK, LAYOUT_EN_UK_WIN],
+  [Layout.EN_US, LAYOUT_EN_US_WIN],
+  [Layout.EN_US_COLEMAK, LAYOUT_EN_US_COLEMAK],
+  [Layout.EN_US_COLEMAK_DH, LAYOUT_EN_US_COLEMAK_DH],
+  [Layout.EN_US_COLEMAK_DH_MATRIX, LAYOUT_EN_US_COLEMAK_DH_MATRIX],
+  [Layout.EN_US_DVORAK, LAYOUT_EN_US_DVORAK_WIN],
+  [Layout.EN_US_WORKMAN, LAYOUT_EN_US_WORKMAN],
+  [Layout.ES_ES, LAYOUT_ES_ES_WIN],
+  [Layout.FR_BEPO, LAYOUT_FR_BEPO],
+  [Layout.FR_ERGO_L, LAYOUT_FR_ERGOL],
+  [Layout.FR_CA, LAYOUT_FR_CA_WIN],
+  [Layout.FR_CH, LAYOUT_FR_CH_WIN],
+  [Layout.FR_FR, LAYOUT_FR_FR_WIN],
+  [Layout.FR_OPTIMOT_ERGO, LAYOUT_FR_OPTIMOT_ERGO],
+  [Layout.IT_IT, LAYOUT_IT_IT_WIN],
+  [Layout.PL_PL, LAYOUT_PL_PL_WIN],
+  [Layout.PT_BR, LAYOUT_PT_BR_WIN],
+  [Layout.PT_PT, LAYOUT_PT_PT_WIN],
+  [Layout.RU_RU, LAYOUT_RU_RU_WIN],
+  [Layout.UK_UA, LAYOUT_UK_UA_WIN],
+]);
+
+const geometryDict = new Map<Geometry, GeometryDict>([
+  [Geometry.STANDARD_101, STANDARD_101],
+  [Geometry.STANDARD_101_FULL, STANDARD_101_FULL],
+  [Geometry.STANDARD_102, STANDARD_102],
+  [Geometry.STANDARD_102_FULL, STANDARD_102_FULL],
 ]);
 
 export function loadKeyboard(
   layout: Layout,
-  { full = true }: { full?: boolean },
+  geometry: Geometry = Geometry.STANDARD_101,
 ): Keyboard {
-  const [codePointDict, geometryDict] = config.get(layout)!;
-  return new Keyboard(layout, makeKeys(codePointDict, geometryDict, full));
+  return new Keyboard(
+    layout,
+    layoutDict.get(layout)!,
+    geometryDict.get(geometry)!,
+  );
 }

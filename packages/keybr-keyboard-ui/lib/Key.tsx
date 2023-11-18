@@ -1,4 +1,4 @@
-import { isDiacritic, type KeyboardKey } from "@keybr/keyboard";
+import { type FingerId, isDiacritic, type KeyShape } from "@keybr/keyboard";
 import { clsx } from "clsx";
 import {
   type FunctionComponent,
@@ -6,6 +6,7 @@ import {
   type MouseEventHandler,
   type ReactNode,
 } from "react";
+import { keySize } from "./constants.ts";
 import * as styles from "./Key.module.less";
 
 export type ClassName = any;
@@ -13,7 +14,6 @@ export type ClassName = any;
 export type KeyProps = {
   readonly depressed?: boolean;
   readonly toggled?: boolean;
-  readonly keyboardKey: KeyboardKey;
   readonly showColors?: boolean;
   readonly onClick?: MouseEventHandler;
   readonly onMouseDown?: MouseEventHandler;
@@ -21,20 +21,17 @@ export type KeyProps = {
   readonly onMouseLeave?: MouseEventHandler;
   readonly onMouseUp?: MouseEventHandler;
   readonly showFingers?: boolean;
-  readonly children?: ReactNode;
 };
 
-export const Key = memo(makeKeyComponent(/* special= */ false));
-export const SpecialKey = memo(makeKeyComponent(/* special= */ true));
-
-function makeKeyComponent(special: boolean): FunctionComponent<KeyProps> {
-  return function Key(props: KeyProps): ReactNode {
+export function keyTemplate(
+  shape: KeyShape,
+  children: ReactNode,
+): FunctionComponent<KeyProps> {
+  function KeyComponent(props: KeyProps): ReactNode {
     const {
       depressed,
       toggled,
-      keyboardKey: { id, geometry },
       showColors,
-      children,
       onClick,
       onMouseDown,
       onMouseEnter,
@@ -42,40 +39,47 @@ function makeKeyComponent(special: boolean): FunctionComponent<KeyProps> {
       onMouseUp,
     } = props;
     const cn = clsx(
-      special ? styles.specialKey : styles.simpleKey,
+      styles.key,
       depressed && styles.depressedKey,
       toggled && styles.toggledKey,
-      showColors && fingerStyleName(geometry.finger),
+      showColors && fingerStyleName(shape.finger),
     );
     return (
       <svg
         className={cn}
-        x={geometry.x}
-        y={geometry.y}
+        x={shape.x * keySize}
+        y={shape.y * keySize}
         onClick={onClick}
         onMouseDown={onMouseDown}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
         onMouseUp={onMouseUp}
-        {...{ "data-key": id }}
+        {...{ "data-key": shape.id }}
       >
         {children}
         {toggled && <circle className={styles.toggle} cx={6} cy={35} r={4} />}
       </svg>
     );
-  };
+  }
+
+  KeyComponent.displayName = `Key[${shape.id}]`;
+
+  return memo(KeyComponent);
 }
 
-export type LabelProps = {
+export const Symbol = memo(function Symbol({
+  className,
+  x,
+  y,
+  text,
+  textAnchor,
+}: {
   readonly className?: ClassName;
   readonly x: number;
   readonly y: number;
   readonly text: string;
   readonly textAnchor?: string;
-};
-
-export const Label = memo(function Label(props: LabelProps): ReactNode {
-  const { className, x, y, text, textAnchor } = props;
+}): ReactNode {
   const cn = clsx(styles.symbol, className);
   return (
     <text className={cn} x={x} y={y} textAnchor={textAnchor}>
@@ -84,15 +88,6 @@ export const Label = memo(function Label(props: LabelProps): ReactNode {
   );
 });
 
-export type PrimaryProps = {
-  readonly className?: ClassName;
-  readonly x: number;
-  readonly y: number;
-  readonly text?: string;
-  readonly codePoint?: number;
-  readonly textAnchor?: string;
-};
-
 export const Primary = memo(function Primary({
   className,
   x,
@@ -100,7 +95,14 @@ export const Primary = memo(function Primary({
   text,
   codePoint,
   textAnchor,
-}: PrimaryProps): ReactNode {
+}: {
+  readonly className?: ClassName;
+  readonly x: number;
+  readonly y: number;
+  readonly text?: string;
+  readonly codePoint?: number;
+  readonly textAnchor?: string;
+}): ReactNode {
   if (codePoint != null && codePoint > 0) {
     if (isDiacritic(codePoint)) {
       text = deadKeySymbol(codePoint);
@@ -117,15 +119,6 @@ export const Primary = memo(function Primary({
   );
 });
 
-export type SecondaryProps = {
-  readonly className?: ClassName;
-  readonly x: number;
-  readonly y: number;
-  readonly text?: string;
-  readonly codePoint?: number;
-  readonly textAnchor?: string;
-};
-
 export const Secondary = memo(function Secondary({
   className,
   x,
@@ -133,7 +126,14 @@ export const Secondary = memo(function Secondary({
   text,
   codePoint,
   textAnchor,
-}: SecondaryProps): ReactNode {
+}: {
+  readonly className?: ClassName;
+  readonly x: number;
+  readonly y: number;
+  readonly text?: string;
+  readonly codePoint?: number;
+  readonly textAnchor?: string;
+}): ReactNode {
   if (codePoint != null && codePoint > 0) {
     if (isDiacritic(codePoint)) {
       text = deadKeySymbol(codePoint);
@@ -219,7 +219,7 @@ export function deadKeySymbol(codePoint: number): string {
   return String.fromCodePoint(/* ◌ */ 0x25cc, codePoint);
 }
 
-function fingerStyleName(finger: string | null): string | null {
+function fingerStyleName(finger: FingerId | null): string | null {
   switch (finger) {
     case "pinky":
       return styles.fingerPinky;

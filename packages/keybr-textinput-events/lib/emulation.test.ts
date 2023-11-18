@@ -9,7 +9,7 @@ test("translate without emulation", (t) => {
   // Arrange.
 
   const trace: string[] = [];
-  const keyboard = loadKeyboard(Layout.EN_US_DVORAK, { full: false });
+  const keyboard = loadKeyboard(Layout.EN_US_DVORAK);
   const target = tracingListener(trace);
   const listener = emulateLayout(keyboard, target, false);
 
@@ -22,7 +22,7 @@ test("translate with emulation", (t) => {
   // Arrange.
 
   const trace: string[] = [];
-  const keyboard = loadKeyboard(Layout.EN_US_DVORAK, { full: false });
+  const keyboard = loadKeyboard(Layout.EN_US_DVORAK);
   const target = tracingListener(trace);
   const listener = emulateLayout(keyboard, target, true);
 
@@ -35,7 +35,7 @@ test("translate a normal input", (t) => {
   // Arrange.
 
   const trace: string[] = [];
-  const keyboard = loadKeyboard(Layout.EN_US_DVORAK, { full: false });
+  const keyboard = loadKeyboard(Layout.EN_US_DVORAK);
   const target = tracingListener(trace);
   const listener = emulateLayout(keyboard, target, true);
 
@@ -94,7 +94,7 @@ test("translate a control input", (t) => {
   // Arrange.
 
   const trace: string[] = [];
-  const keyboard = loadKeyboard(Layout.EN_US_DVORAK, { full: false });
+  const keyboard = loadKeyboard(Layout.EN_US_DVORAK);
   const target = tracingListener(trace);
   const listener = emulateLayout(keyboard, target, true);
 
@@ -147,7 +147,7 @@ test("translate a clear char input", (t) => {
   // Arrange.
 
   const trace: string[] = [];
-  const keyboard = loadKeyboard(Layout.EN_US_DVORAK, { full: false });
+  const keyboard = loadKeyboard(Layout.EN_US_DVORAK);
   const target = tracingListener(trace);
   const listener = emulateLayout(keyboard, target, true);
 
@@ -188,7 +188,7 @@ test("translate a clear word input", (t) => {
   // Arrange.
 
   const trace: string[] = [];
-  const keyboard = loadKeyboard(Layout.EN_US_DVORAK, { full: false });
+  const keyboard = loadKeyboard(Layout.EN_US_DVORAK);
   const target = tracingListener(trace);
   const listener = emulateLayout(keyboard, target, true);
 

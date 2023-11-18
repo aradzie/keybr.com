@@ -1,53 +1,41 @@
 import { combineDiacritic, isDiacritic } from "./diacritics.ts";
-import { type KeyboardKey } from "./keyboardkey.ts";
 import { KeyCombo } from "./keycombo.ts";
 import { type KeyModifier } from "./keymodifier.ts";
-import { type CodePoint } from "./types.ts";
+import { type CodePoint, type KeyId } from "./types.ts";
 
-const setKeyCombo = (
-  map: Map<CodePoint, KeyCombo>,
-  keyCombo: KeyCombo,
-): void => {
-  const oldKeyCombo = map.get(keyCombo.codePoint);
-  if (oldKeyCombo == null || oldKeyCombo.complexity > keyCombo.complexity) {
-    map.set(keyCombo.codePoint, keyCombo);
+const setCombo = (map: Map<CodePoint, KeyCombo>, combo: KeyCombo): void => {
+  const oldCombo = map.get(combo.codePoint);
+  if (oldCombo == null || oldCombo.complexity > combo.complexity) {
+    map.set(combo.codePoint, combo);
   }
 };
 
-export const addKeyCombo = (
+export const addCombo = (
   map: Map<CodePoint, KeyCombo>,
   codePoint: CodePoint,
-  key: KeyboardKey,
+  id: KeyId,
   modifier: KeyModifier,
 ): void => {
   if (codePoint > 0 && !isDiacritic(codePoint)) {
-    setKeyCombo(map, new KeyCombo(codePoint, key, modifier));
+    setCombo(map, new KeyCombo(codePoint, id, modifier));
   }
 };
 
-export const addDeadKeyCombo = (
+export const addDeadCombo = (
   map: Map<CodePoint, KeyCombo>,
   codePoint: CodePoint,
-  key: KeyboardKey,
+  id: KeyId,
   modifier: KeyModifier,
 ): void => {
-  const prefix = new KeyCombo(codePoint, key, modifier);
   if (codePoint > 0 && isDiacritic(codePoint)) {
-    for (const keyCombo of map.values()) {
-      if (keyCombo.prefix == null) {
-        const combinedCodePoint = combineDiacritic(
-          keyCombo.codePoint,
-          codePoint,
-        );
-        if (combinedCodePoint !== keyCombo.codePoint) {
-          setKeyCombo(
+    const prefix = new KeyCombo(codePoint, id, modifier);
+    for (const combo of map.values()) {
+      if (combo.prefix == null) {
+        const combinedCodePoint = combineDiacritic(combo.codePoint, codePoint);
+        if (combinedCodePoint !== combo.codePoint) {
+          setCombo(
             map,
-            new KeyCombo(
-              combinedCodePoint,
-              keyCombo.key,
-              keyCombo.modifier,
-              prefix,
-            ),
+            new KeyCombo(combinedCodePoint, combo.id, combo.modifier, prefix),
           );
         }
       }

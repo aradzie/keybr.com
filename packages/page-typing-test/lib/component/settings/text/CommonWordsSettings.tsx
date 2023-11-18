@@ -50,7 +50,7 @@ function Content({ wordList }: { readonly wordList: WordList }): ReactNode {
       <FieldList>
         <Field>
           {formatMessage({
-            id: "settings.selectLanguage.label",
+            id: "keyboard.language.label",
             description: "Widget name.",
             defaultMessage: "Language:",
           })}
@@ -62,11 +62,6 @@ function Content({ wordList }: { readonly wordList: WordList }): ReactNode {
               value: item.id,
               name: formatMessage(languageName(item.id)),
             }))}
-            title={formatMessage({
-              id: "settings.selectLanguage.description",
-              description: "Widget description.",
-              defaultMessage: "Select your spoken language.",
-            })}
             value={String(settings.get(typingTestProps.language))}
             onSelect={(id) => {
               updateSettings(

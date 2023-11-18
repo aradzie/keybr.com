@@ -5,7 +5,7 @@ import TestRenderer from "react-test-renderer";
 import { HeatmapLayer } from "./HeatmapLayer.tsx";
 
 test("render empty", (t) => {
-  const keyboard = loadKeyboard(Layout.getDefault(), { full: true });
+  const keyboard = loadKeyboard(Layout.getDefault());
 
   const testRenderer = TestRenderer.create(
     <KeyboardContext.Provider value={keyboard}>
@@ -17,7 +17,7 @@ test("render empty", (t) => {
 });
 
 test("render with equal counts", (t) => {
-  const keyboard = loadKeyboard(Layout.getDefault(), { full: true });
+  const keyboard = loadKeyboard(Layout.getDefault());
 
   const testRenderer = TestRenderer.create(
     <KeyboardContext.Provider value={keyboard}>
@@ -36,7 +36,7 @@ test("render with equal counts", (t) => {
 });
 
 test("render with different counts", (t) => {
-  const keyboard = loadKeyboard(Layout.getDefault(), { full: true });
+  const keyboard = loadKeyboard(Layout.getDefault());
 
   const testRenderer = TestRenderer.create(
     <KeyboardContext.Provider value={keyboard}>

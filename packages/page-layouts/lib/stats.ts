@@ -1,4 +1,9 @@
-import { type Keyboard } from "@keybr/keyboard";
+import {
+  type CodePoint,
+  type Keyboard,
+  type KeyId,
+  type KeyShape,
+} from "@keybr/keyboard";
 import { type Letter } from "@keybr/phonetic-model";
 
 export class Bigram {
@@ -12,14 +17,14 @@ export class Bigram {
 export function keysOnRow(
   letters: readonly Letter[],
   keyboard: Keyboard,
-  row: ReadonlySet<string>,
+  row: ReadonlySet<KeyId>,
 ): number {
   let a = 0;
   let b = 0;
   for (const { codePoint, f } of letters) {
-    const keyCombo = keyboard.getKeyCombo(codePoint);
-    if (keyCombo) {
-      if (row.has(keyCombo.key.id)) {
+    const key = getShape(keyboard, codePoint);
+    if (key != null) {
+      if (row.has(key.id)) {
         a += f;
       } else {
         b += f;
@@ -32,18 +37,18 @@ export function keysOnRow(
 export function handSwitches(
   bigrams: readonly Bigram[],
   keyboard: Keyboard,
-  leftKeys: ReadonlySet<string>,
-  rightKeys: ReadonlySet<string>,
+  leftKeys: ReadonlySet<KeyId>,
+  rightKeys: ReadonlySet<KeyId>,
 ): number {
   let a = 0;
   let b = 0;
   for (const { codePoint0, codePoint1, frequency } of bigrams) {
-    const key0 = keyboard.getKeyCombo(codePoint0);
-    const key1 = keyboard.getKeyCombo(codePoint1);
-    if (key0 && key1) {
+    const key0 = getShape(keyboard, codePoint0);
+    const key1 = getShape(keyboard, codePoint1);
+    if (key0 != null && key1 != null) {
       if (
-        (leftKeys.has(key0.key.id) && rightKeys.has(key1.key.id)) ||
-        (rightKeys.has(key0.key.id) && leftKeys.has(key1.key.id))
+        (leftKeys.has(key0.id) && rightKeys.has(key1.id)) ||
+        (rightKeys.has(key0.id) && leftKeys.has(key1.id))
       ) {
         a += frequency;
       } else {
@@ -61,10 +66,10 @@ export function fingerSwitches(
   let a = 0;
   let b = 0;
   for (const { codePoint0, codePoint1, frequency } of bigrams) {
-    const key0 = keyboard.getKeyCombo(codePoint0);
-    const key1 = keyboard.getKeyCombo(codePoint1);
-    if (key0 && key1) {
-      if (key0.key.geometry.finger !== key1.key.geometry.finger) {
+    const key0 = getShape(keyboard, codePoint0);
+    const key1 = getShape(keyboard, codePoint1);
+    if (key0 != null && key1 != null) {
+      if (key0.finger !== key1.finger) {
         a += frequency;
       } else {
         b += frequency;
@@ -72,4 +77,9 @@ export function fingerSwitches(
     }
   }
   return a / (a + b);
+}
+
+function getShape(keyboard: Keyboard, codePoint: CodePoint): KeyShape | null {
+  const combo = keyboard.getCombo(codePoint);
+  return combo == null ? null : keyboard.getShape(combo.id);
 }

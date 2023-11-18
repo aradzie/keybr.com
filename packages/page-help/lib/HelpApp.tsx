@@ -20,7 +20,7 @@ import * as styles from "./HelpApp.module.less";
 
 export function HelpApp(): ReactNode {
   const { locale } = usePageData();
-  const keyboard = loadKeyboard(Layout.getDefault(locale), { full: false });
+  const keyboard = loadKeyboard(Layout.getDefault(locale));
 
   return (
     <Article>
