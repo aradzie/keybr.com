@@ -1,5 +1,6 @@
 import { Geometry, Layout } from "@keybr/layout";
 import {
+  MATRIX,
   STANDARD_101,
   STANDARD_101_FULL,
   STANDARD_102,
@@ -64,6 +65,7 @@ const geometryDict = new Map<Geometry, GeometryDict>([
   [Geometry.STANDARD_101_FULL, STANDARD_101_FULL],
   [Geometry.STANDARD_102, STANDARD_102],
   [Geometry.STANDARD_102_FULL, STANDARD_102_FULL],
+  [Geometry.MATRIX, MATRIX],
 ]);
 
 export function loadKeyboard(

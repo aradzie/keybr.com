@@ -11,12 +11,14 @@ export class Geometry implements EnumItem {
     "standard102full",
     "Standard 102 (Full)",
   );
+  static readonly MATRIX = new Geometry("matrix", "Matrix/Ergonomic");
 
   static readonly ALL = new Enum<Geometry>(
     Geometry.STANDARD_101,
     Geometry.STANDARD_101_FULL,
     Geometry.STANDARD_102,
     Geometry.STANDARD_102_FULL,
+    Geometry.MATRIX,
   );
 
   private constructor(
