@@ -6,7 +6,7 @@ import {
   KeyLayer,
   VirtualKeyboard,
 } from "@keybr/keyboard-ui";
-import { Geometry, Language, Layout } from "@keybr/layout";
+import { Language, Layout } from "@keybr/layout";
 import { useSettings } from "@keybr/settings";
 import { ModifierState } from "@keybr/textinput-events";
 import {
@@ -71,11 +71,14 @@ function LayoutProp(): ReactNode {
             }))}
             value={layout.language.id}
             onSelect={(id) => {
+              const [layout] = Layout.ALL.filter(
+                ({ language }) => language.id === id,
+              );
+              const [geometry] = layout.geometries;
               updateSettings(
-                settings.set(
-                  keyboardProps.layout,
-                  Layout.ALL.find((item) => item.language.id === id),
-                ),
+                settings
+                  .set(keyboardProps.layout, layout)
+                  .set(keyboardProps.geometry, geometry),
               );
             }}
           />
@@ -90,15 +93,19 @@ function LayoutProp(): ReactNode {
         <Field>
           <OptionList
             options={Layout.ALL.filter(
-              (item) => item.language.id === layout.language.id,
+              ({ language }) => language.id === layout.language.id,
             ).map((item) => ({
               value: item.id,
               name: item.name,
             }))}
             value={layout.id}
             onSelect={(id) => {
+              const layout = Layout.ALL.get(id);
+              const [geometry] = layout.geometries;
               updateSettings(
-                settings.set(keyboardProps.layout, Layout.ALL.get(id)),
+                settings
+                  .set(keyboardProps.layout, layout)
+                  .set(keyboardProps.geometry, geometry),
               );
             }}
           />
@@ -148,6 +155,7 @@ function KeyboardPreview(): ReactNode {
 function GeometryProp(): ReactNode {
   const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
+  const layout = settings.get(keyboardProps.layout);
   const geometry = settings.get(keyboardProps.geometry);
   return (
     <>
@@ -161,14 +169,14 @@ function GeometryProp(): ReactNode {
         </Field>
         <Field>
           <OptionList
-            options={Geometry.ALL.map((item) => ({
+            options={layout.geometries.map((item) => ({
               value: item.id,
               name: item.name,
             }))}
             value={geometry.id}
             onSelect={(id) => {
               updateSettings(
-                settings.set(keyboardProps.geometry, Geometry.ALL.get(id)),
+                settings.set(keyboardProps.geometry, layout.geometries.get(id)),
               );
             }}
           />

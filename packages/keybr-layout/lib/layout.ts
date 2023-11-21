@@ -1,4 +1,5 @@
-import { XEnum, type XEnumItem } from "@keybr/lang";
+import { Enum, XEnum, type XEnumItem } from "@keybr/lang";
+import { Geometry } from "./geometry.ts";
 import { Language } from "./language.ts";
 import { LayoutFamily } from "./layoutfamily.ts";
 
@@ -9,6 +10,14 @@ export class Layout implements XEnumItem {
     /* name= */ "US",
     /* family= */ LayoutFamily.QWERTY,
     /* language= */ Language.EN,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.MATRIX,
+    ),
   );
   static readonly EN_US_DVORAK = new Layout(
     /* id= */ "us-dvorak",
@@ -17,6 +26,13 @@ export class Layout implements XEnumItem {
     /* family= */ LayoutFamily.DVORAK,
     /* language= */ Language.EN,
     /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.MATRIX,
+    ),
   );
   static readonly EN_US_COLEMAK = new Layout(
     /* id= */ "us-colemak",
@@ -25,6 +41,13 @@ export class Layout implements XEnumItem {
     /* family= */ LayoutFamily.COLEMAK,
     /* language= */ Language.EN,
     /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.MATRIX,
+    ),
   );
   static readonly EN_US_WORKMAN = new Layout(
     /* id= */ "us-workman",
@@ -33,6 +56,13 @@ export class Layout implements XEnumItem {
     /* family= */ LayoutFamily.WORKMAN,
     /* language= */ Language.EN,
     /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.MATRIX,
+    ),
   );
   static readonly EN_US_COLEMAK_DH = new Layout(
     /* id= */ "us-colemak-dh",
@@ -41,6 +71,13 @@ export class Layout implements XEnumItem {
     /* family= */ LayoutFamily.COLEMAK_DH,
     /* language= */ Language.EN,
     /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.MATRIX,
+    ),
   );
   static readonly EN_US_COLEMAK_DH_MATRIX = new Layout(
     /* id= */ "us-colemak-dh-matrix",
@@ -49,6 +86,7 @@ export class Layout implements XEnumItem {
     /* family= */ LayoutFamily.COLEMAK_DH_MATRIX,
     /* language= */ Language.EN,
     /* emulate= */ true,
+    /* geometries= */ new Enum(Geometry.MATRIX),
   );
   static readonly EN_UK = new Layout(
     /* id= */ "uk",
@@ -56,6 +94,14 @@ export class Layout implements XEnumItem {
     /* name= */ "UK",
     /* family= */ LayoutFamily.QWERTY,
     /* language= */ Language.EN,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.MATRIX,
+    ),
   );
   static readonly DE_DE = new Layout(
     /* id= */ "de",
@@ -63,6 +109,14 @@ export class Layout implements XEnumItem {
     /* name= */ "Germany",
     /* family= */ LayoutFamily.QWERTZ,
     /* language= */ Language.DE,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.MATRIX,
+    ),
   );
   static readonly DE_CH = new Layout(
     /* id= */ "de-ch",
@@ -70,6 +124,14 @@ export class Layout implements XEnumItem {
     /* name= */ "Switzerland",
     /* family= */ LayoutFamily.QWERTZ,
     /* language= */ Language.DE,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.MATRIX,
+    ),
   );
   static readonly FR_FR = new Layout(
     /* id= */ "fr",
@@ -77,6 +139,14 @@ export class Layout implements XEnumItem {
     /* name= */ "France",
     /* family= */ LayoutFamily.AZERTY,
     /* language= */ Language.FR,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.MATRIX,
+    ),
   );
   static readonly FR_CA = new Layout(
     /* id= */ "fr-ca",
@@ -84,6 +154,14 @@ export class Layout implements XEnumItem {
     /* name= */ "Canada",
     /* family= */ LayoutFamily.QWERTY,
     /* language= */ Language.FR,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.MATRIX,
+    ),
   );
   static readonly FR_CH = new Layout(
     /* id= */ "fr-ch",
@@ -91,6 +169,14 @@ export class Layout implements XEnumItem {
     /* name= */ "Switzerland",
     /* family= */ LayoutFamily.QWERTZ,
     /* language= */ Language.FR,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.MATRIX,
+    ),
   );
   static readonly FR_BEPO = new Layout(
     /* id= */ "fr-bepo",
@@ -98,6 +184,14 @@ export class Layout implements XEnumItem {
     /* name= */ "Bepo",
     /* family= */ LayoutFamily.BEPO,
     /* language= */ Language.FR,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.MATRIX,
+    ),
   );
   static readonly FR_ERGO_L = new Layout(
     /* id= */ "fr-ergol",
@@ -105,6 +199,14 @@ export class Layout implements XEnumItem {
     /* name= */ "Ergo-L",
     /* family= */ LayoutFamily.ERGO_L,
     /* language= */ Language.FR,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.MATRIX,
+    ),
   );
   static readonly FR_OPTIMOT_ERGO = new Layout(
     /* id= */ "fr-optimot-ergo",
@@ -112,6 +214,14 @@ export class Layout implements XEnumItem {
     /* name= */ "Optimot Ergo",
     /* family= */ LayoutFamily.OPTIMOT_ERGO,
     /* language= */ Language.FR,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.MATRIX,
+    ),
   );
   static readonly IT_IT = new Layout(
     /* id= */ "it",
@@ -119,6 +229,14 @@ export class Layout implements XEnumItem {
     /* name= */ "Italy",
     /* family= */ LayoutFamily.QWERTY,
     /* language= */ Language.IT,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.MATRIX,
+    ),
   );
   static readonly ES_ES = new Layout(
     /* id= */ "es",
@@ -126,6 +244,14 @@ export class Layout implements XEnumItem {
     /* name= */ "Spain",
     /* family= */ LayoutFamily.QWERTY,
     /* language= */ Language.ES,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.MATRIX,
+    ),
   );
   static readonly PL_PL = new Layout(
     /* id= */ "pl",
@@ -133,6 +259,14 @@ export class Layout implements XEnumItem {
     /* name= */ "Poland",
     /* family= */ LayoutFamily.QWERTY,
     /* language= */ Language.PL,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.MATRIX,
+    ),
   );
   static readonly PT_BR = new Layout(
     /* id= */ "pt-br",
@@ -140,6 +274,14 @@ export class Layout implements XEnumItem {
     /* name= */ "Brazil (ABNT2)",
     /* family= */ LayoutFamily.QWERTY,
     /* language= */ Language.PT,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.MATRIX,
+    ),
   );
   static readonly PT_PT = new Layout(
     /* id= */ "pt-pt",
@@ -147,6 +289,14 @@ export class Layout implements XEnumItem {
     /* name= */ "Portugal",
     /* family= */ LayoutFamily.QWERTY,
     /* language= */ Language.PT,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.MATRIX,
+    ),
   );
   static readonly RU_RU = new Layout(
     /* id= */ "ru",
@@ -155,6 +305,13 @@ export class Layout implements XEnumItem {
     /* family= */ LayoutFamily.ЙЦУКЕН,
     /* language= */ Language.RU,
     /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.MATRIX,
+    ),
   );
   static readonly BE_BY = new Layout(
     /* id= */ "be",
@@ -163,6 +320,13 @@ export class Layout implements XEnumItem {
     /* family= */ LayoutFamily.ЙЦУКЕН,
     /* language= */ Language.BE,
     /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.MATRIX,
+    ),
   );
   static readonly UK_UA = new Layout(
     /* id= */ "ua",
@@ -171,6 +335,13 @@ export class Layout implements XEnumItem {
     /* family= */ LayoutFamily.ЙЦУКЕН,
     /* language= */ Language.UK,
     /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.MATRIX,
+    ),
   );
 
   static readonly ALL = new XEnum<Layout>(
@@ -191,9 +362,11 @@ export class Layout implements XEnumItem {
     Layout.FR_OPTIMOT_ERGO,
     Layout.IT_IT,
     Layout.ES_ES,
+    Layout.PL_PL,
     Layout.PT_BR,
     Layout.PT_PT,
     Layout.UK_UA,
+    Layout.BE_BY,
     Layout.RU_RU,
   );
 
@@ -203,7 +376,8 @@ export class Layout implements XEnumItem {
     public readonly name: string,
     public readonly family: LayoutFamily,
     public readonly language: Language,
-    public readonly emulate: boolean = false,
+    public readonly emulate: boolean,
+    public readonly geometries: Enum<Geometry>,
   ) {
     Object.freeze(this);
   }
