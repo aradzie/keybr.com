@@ -365,8 +365,8 @@ export class Layout implements XEnumItem {
     Layout.PL_PL,
     Layout.PT_BR,
     Layout.PT_PT,
-    Layout.UK_UA,
     Layout.BE_BY,
+    Layout.UK_UA,
     Layout.RU_RU,
   );
 

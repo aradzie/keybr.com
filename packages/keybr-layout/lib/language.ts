@@ -13,7 +13,7 @@ export class Language implements EnumItem {
   static readonly UK = new Language("uk", "cyrillic");
 
   static readonly ALL = new Enum<Language>(
-    // Language.BE,
+    Language.BE,
     Language.DE,
     Language.EN,
     Language.ES,

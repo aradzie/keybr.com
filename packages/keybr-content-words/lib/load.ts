@@ -3,6 +3,13 @@ import { type WordList } from "./types.ts";
 
 export async function loadWordList(language: Language): Promise<WordList> {
   switch (language) {
+    case Language.BE:
+      return (
+        await import(
+          /* webpackChunkName: "words-be" */
+          "./data/words-be.json"
+        )
+      ).default as unknown as WordList;
     case Language.DE:
       return (
         await import(
