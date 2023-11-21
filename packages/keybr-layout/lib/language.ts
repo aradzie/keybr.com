@@ -19,7 +19,7 @@ export class Language implements EnumItem {
     Language.ES,
     Language.FR,
     Language.IT,
-    // Language.PL,
+    Language.PL,
     Language.PT,
     Language.UK,
     Language.RU,
