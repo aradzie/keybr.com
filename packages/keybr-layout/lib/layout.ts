@@ -172,14 +172,6 @@ export class Layout implements XEnumItem {
     /* language= */ Language.UK,
     /* emulate= */ true,
   );
-  static readonly EN_CUSTOM = new Layout(
-    /* id= */ "custom",
-    /* xid= */ 0xff,
-    /* name= */ "Custom",
-    /* family= */ LayoutFamily.CUSTOM,
-    /* language= */ Language.EN,
-    /* emulate= */ true,
-  );
 
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
@@ -203,17 +195,7 @@ export class Layout implements XEnumItem {
     Layout.PT_PT,
     Layout.UK_UA,
     Layout.RU_RU,
-    // Layout.EN_CUSTOM,
   );
-
-  static getDefault(locale: string | null = null): Layout {
-    for (const layout of Layout.ALL) {
-      if (layout.language.id === locale) {
-        return layout;
-      }
-    }
-    return Layout.EN_US;
-  }
 
   private constructor(
     public readonly id: string,

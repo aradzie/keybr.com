@@ -7,7 +7,6 @@ import {
 } from "@keybr/keyboard-ui";
 import { Layout } from "@keybr/layout";
 import { KeyLegendList } from "@keybr/lesson-ui";
-import { usePageData } from "@keybr/pages-shared";
 import { singleLine } from "@keybr/textinput";
 import { StaticText } from "@keybr/textinput-ui";
 import { Article, Figure } from "@keybr/widget";
@@ -19,8 +18,7 @@ import { KeySetIllustration } from "./figures.tsx";
 import * as styles from "./HelpApp.module.less";
 
 export function HelpApp(): ReactNode {
-  const { locale } = usePageData();
-  const keyboard = loadKeyboard(Layout.getDefault(locale));
+  const keyboard = loadKeyboard(Layout.EN_US);
 
   return (
     <Article>

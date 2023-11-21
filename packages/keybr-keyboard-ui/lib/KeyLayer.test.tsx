@@ -5,7 +5,7 @@ import TestRenderer from "react-test-renderer";
 import { KeyLayer } from "./KeyLayer.tsx";
 
 test("render", (t) => {
-  const keyboard = loadKeyboard(Layout.getDefault());
+  const keyboard = loadKeyboard(Layout.EN_US);
 
   const testRenderer = TestRenderer.create(
     <KeyboardContext.Provider value={keyboard}>
@@ -17,7 +17,7 @@ test("render", (t) => {
 });
 
 test("update", (t) => {
-  const keyboard = loadKeyboard(Layout.getDefault());
+  const keyboard = loadKeyboard(Layout.EN_US);
 
   const testRenderer = TestRenderer.create(
     <KeyboardContext.Provider value={keyboard}>

@@ -14,11 +14,7 @@ test("keys", (t) => {
     Equal: [0x0301, 0x0300],
   };
   const geometryDict: GeometryDict = {};
-  const keyboard = new Keyboard(
-    Layout.getDefault(),
-    codePointDict,
-    geometryDict,
-  );
+  const keyboard = new Keyboard(Layout.EN_US, codePointDict, geometryDict);
   const key1 = new KeyCharacters(
     "KeyA",
     /* a */ 0x0061,

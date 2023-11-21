@@ -49,10 +49,6 @@ export class LayoutFamily implements EnumItem {
     /* id= */ "йцукен",
     /* script= */ "cyrillic",
   );
-  static readonly CUSTOM = new LayoutFamily(
-    /* id= */ "custom",
-    /* script= */ "latin",
-  );
 
   static readonly ALL = new Enum<LayoutFamily>(
     LayoutFamily.QWERTY,
@@ -64,7 +60,6 @@ export class LayoutFamily implements EnumItem {
     LayoutFamily.WORKMAN,
     LayoutFamily.BEPO,
     LayoutFamily.ЙЦУКЕН,
-    // LayoutFamily.CUSTOM,
   );
 
   private constructor(

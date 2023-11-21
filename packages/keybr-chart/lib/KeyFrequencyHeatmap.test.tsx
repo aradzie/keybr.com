@@ -17,7 +17,7 @@ test("render empty", (t) => {
       <FakeSettingsContext>
         <KeyFrequencyHeatmap
           keyStatsMap={newKeyStatsMap(letters, results)}
-          keyboard={loadKeyboard(Layout.getDefault())}
+          keyboard={loadKeyboard(Layout.EN_US)}
         />
       </FakeSettingsContext>
     </FakeIntlProvider>,
@@ -35,7 +35,7 @@ test("render non-empty", (t) => {
       <FakeSettingsContext>
         <KeyFrequencyHeatmap
           keyStatsMap={newKeyStatsMap(letters, results)}
-          keyboard={loadKeyboard(Layout.getDefault())}
+          keyboard={loadKeyboard(Layout.EN_US)}
         />
       </FakeSettingsContext>
     </FakeIntlProvider>,
