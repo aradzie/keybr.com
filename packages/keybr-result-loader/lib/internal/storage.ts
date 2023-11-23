@@ -1,4 +1,4 @@
-import { Result } from "@keybr/result";
+import { recoverResults, Result } from "@keybr/result";
 import { DatabaseError } from "../errors.ts";
 import { PersistentResultStorage } from "./local.ts";
 import { ResultSyncNamedUser, ResultSyncPublicUser } from "./remotesync.ts";
@@ -97,7 +97,7 @@ function translateErrors(storage: ResultStorage): ResultStorage {
 function validateResults(storage: ResultStorage): ResultStorage {
   return new (class ErrorTranslator implements ResultStorage {
     async load(progressListener?: ProgressListener): Promise<Result[]> {
-      return (await storage.load(progressListener)).filter(Result.isValid);
+      return recoverResults(await storage.load(progressListener));
     }
 
     async append(

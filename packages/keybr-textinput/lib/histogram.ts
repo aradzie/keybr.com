@@ -86,7 +86,7 @@ export class Histogram implements Iterable<Sample> {
   }
 }
 
-function validateSample({ timeToType }: Sample): boolean {
+export function validateSample({ timeToType }: Sample): boolean {
   if (timeToType > 0) {
     if (timeToType < /* 300WPM/1500CPM */ 40) {
       return false; // Too fast.
