@@ -50,6 +50,8 @@
   "footer.discordLink.description": "Diskutieren Sie auf unserem Discord-Server.",
   "footer.emailLink.description": "Senden Sie Ihre Kommentare und Vorschläge an info@keybr.com",
   "footer.githubLink.description": "Der Quellcode von keybr.com ist auf Github verfügbar.",
+  "footer.removeAds.description": "Erwerben Sie ein Premium-Konto, um Anzeigen zu entfernen.",
+  "footer.removeAds.label": "Anzeigen entfernen",
   "help.example1": "<a>Beispiel 1</a>, von 30 auf 70 WPM nach 4 Stunden 20 Minuten Üben im Laufe von 15 Tagen.",
   "help.example2": "<a>Beispiel 2</a>, von 35 auf 70 WPM nach 2 Stunden und 20 Minuten Üben im Laufe von 12 Tagen.",
   "help.example3": "<a>Beispiel 3</a>, ein ordentlicher Sprung von weniger als 20 auf 40 WPM nach 5 Stunden und 30 Minuten Üben im Laufe von 11 Tagen.",

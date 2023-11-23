@@ -50,6 +50,8 @@
   "footer.discordLink.description": "Discute en nuestro servidor Discord.",
   "footer.emailLink.description": "Envía tus comentarios y sugerencias a info@keybr.com",
   "footer.githubLink.description": "El código fuente de keybr.com está disponible en Github.",
+  "footer.removeAds.description": "Compre una cuenta premium para eliminar anuncios.",
+  "footer.removeAds.label": "Quitar anuncios",
   "help.example1": "<a>Ejemplo 1</a>, de 30 a 70 PPM después de 4 horas 20 minutos de práctica durante 15 días.",
   "help.example2": "<a>Ejemplo 2</a>, de 35 a 70 PPM después de 2 horas 20 minutos de práctica durante 12 días.",
   "help.example3": "<a>Ejemplo 3</a>, un decente salto desde menos de 20 a 40 PPM después de 5 horas 30 minutos de práctica durante 11 días.",

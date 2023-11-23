@@ -50,6 +50,8 @@
   "footer.discordLink.description": "Discutez sur notre serveur Discord.",
   "footer.emailLink.description": "Envoyez vos commentaires et suggestions à l'adresse info@keybr.com",
   "footer.githubLink.description": "Le code source de keybr.com est disponible sur Github.",
+  "footer.removeAds.description": "Achetez un compte premium pour supprimer les publicités.",
+  "footer.removeAds.label": "Supprimez la pub",
   "help.example1": "<a>Exemple 1</a>, de 30 à 70 mots par minute après 4 heures 20 minutes de pratique en 15 jours.",
   "help.example2": "<a>Exemple 2</a>, de 35 à 70 mots par minute après 2 heures et 20 minutes de pratique en 12 jours.",
   "help.example3": "<a>Exemple 3</a>, un saut décent de moins de 20 à 40 mots par minute après 5 heures et 30 minutes de pratique au cours de 11 jours.",

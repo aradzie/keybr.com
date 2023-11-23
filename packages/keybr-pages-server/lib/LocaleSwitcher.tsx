@@ -10,22 +10,20 @@ export function LocaleSwitcher({
   readonly currentLink: BoundPageLink;
 }): ReactNode {
   const { formatMessage } = useIntl();
-
-  const children: ReactNode[] = [];
-  for (const localeId of allLocales) {
+  const children = [];
+  for (const locale of allLocales) {
     if (children.length > 0) {
       children.push(" ");
     }
     children.push(
       <Link
-        key={localeId}
-        href={currentLink.formatPath(localeId)}
-        title={formatMessage(languageName(localeId))}
+        key={locale}
+        href={currentLink.formatPath(locale)}
+        title={formatMessage(languageName(locale))}
       >
-        {localeId}
+        {locale}
       </Link>,
     );
   }
-
   return <span>{children}</span>;
 }

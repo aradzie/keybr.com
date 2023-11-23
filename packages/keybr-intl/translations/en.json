@@ -50,6 +50,8 @@
   "footer.discordLink.description": "Discuss on our Discord server.",
   "footer.emailLink.description": "Send your comments and suggestions to info@keybr.com",
   "footer.githubLink.description": "The source code of keybr.com is available on Github.",
+  "footer.removeAds.description": "Purchase a premium account to remove ads.",
+  "footer.removeAds.label": "Remove Ads",
   "help.example1": "<a>Example 1</a>, from 30 to 70 WPM after 4 hours 20 minutes of practicing in the course of 15 days.",
   "help.example2": "<a>Example 2</a>, from 35 to 70 WPM after 2 hours and 20 minutes of practicing in the course of 12 days.",
   "help.example3": "<a>Example 3</a>, a decent jump from less than 20 to 40 WPM after 5 hours and 30 minutes of practicing in the course of 11 days.",

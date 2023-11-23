@@ -50,6 +50,8 @@
   "footer.discordLink.description": "Rozmawiaj na naszym serwerze Discord.",
   "footer.emailLink.description": "Wyślij komentarze i sugestie na adres info@keybr.com",
   "footer.githubLink.description": "Kod źródłowy keybr.com jest dostępny na Githubie.",
+  "footer.removeAds.description": "Kup konto premium, aby usunąć reklamy.",
+  "footer.removeAds.label": "Usuń reklamy",
   "help.example1": "<a>Przykład 1</a>, od 30 do 70 słów na minutę po 4 godzinach i 20 minutach ćwiczeń w ciągu 15 dni.",
   "help.example2": "<a>Przykład 2</a>, od 35 do 70 słów na minutę po 2 godzinach i 20 minutach ćwiczeń w ciągu 12 dni.",
   "help.example3": "<a>Przykład 3</a>, dobry przeskok z mniej niż 20 do 40 słów na minutę po 5 godzinach i 30 minutach ćwiczeń w ciągu 11 dni.",

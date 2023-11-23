@@ -1,4 +1,10 @@
-import { type BoundPageLink, PageLink, Sitemap } from "@keybr/pages-shared";
+import {
+  type BoundPageLink,
+  isPremiumUser,
+  PageLink,
+  Sitemap,
+  usePageData,
+} from "@keybr/pages-shared";
 import { Link } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
@@ -10,48 +16,93 @@ export function SecondaryMenu({
 }: {
   readonly currentLink: BoundPageLink;
 }): ReactNode {
-  const { formatMessage } = useIntl();
-
   return (
     <div className={styles.secondaryMenu}>
-      <Link
-        href="mailto:info@keybr.com"
-        target="email"
-        title={formatMessage({
-          id: "footer.emailLink.description",
-          description: "Email link title.",
-          defaultMessage:
-            "Send your comments and suggestions to info@keybr.com",
-        })}
-      >
-        info@keybr.com
-      </Link>
-      <Link
-        href="https://discord.gg/gY4RA4enVH"
-        target="discord"
-        title={formatMessage({
-          id: "footer.discordLink.description",
-          description: "Discord link title.",
-          defaultMessage: "Discuss on our Discord server.",
-        })}
-      >
-        Discord
-      </Link>
-      <Link
-        href="https://github.com/aradzie/keybr.com"
-        target="github"
-        title={formatMessage({
-          id: "footer.githubLink.description",
-          description: "Github link title.",
-          defaultMessage:
-            "The source code of keybr.com is available on Github.",
-        })}
-      >
-        Github
-      </Link>
+      <MailLink />
+      <DiscordLink />
+      <GithubLink />
       <PageLink link={Sitemap.termsOfService.bind(null)} />
       <PageLink link={Sitemap.privacyPolicy.bind(null)} />
       <LocaleSwitcher currentLink={currentLink} />
+      <RemoveAdsLink />
     </div>
+  );
+}
+
+function MailLink(): ReactNode {
+  const { formatMessage } = useIntl();
+  return (
+    <Link
+      href="mailto:info@keybr.com"
+      target="email"
+      title={formatMessage({
+        id: "footer.emailLink.description",
+        description: "Email link title.",
+        defaultMessage: "Send your comments and suggestions to info@keybr.com",
+      })}
+    >
+      info@keybr.com
+    </Link>
+  );
+}
+
+function DiscordLink(): ReactNode {
+  const { formatMessage } = useIntl();
+  return (
+    <Link
+      href="https://discord.gg/gY4RA4enVH"
+      target="discord"
+      title={formatMessage({
+        id: "footer.discordLink.description",
+        description: "Discord link title.",
+        defaultMessage: "Discuss on our Discord server.",
+      })}
+    >
+      Discord
+    </Link>
+  );
+}
+
+function GithubLink(): ReactNode {
+  const { formatMessage } = useIntl();
+  return (
+    <Link
+      href="https://github.com/aradzie/keybr.com"
+      target="github"
+      title={formatMessage({
+        id: "footer.githubLink.description",
+        description: "Github link title.",
+        defaultMessage: "The source code of keybr.com is available on Github.",
+      })}
+    >
+      Github
+    </Link>
+  );
+}
+
+function RemoveAdsLink(): ReactNode {
+  const { formatMessage } = useIntl();
+  const { publicUser } = usePageData();
+  return (
+    isPremiumUser(publicUser) || (
+      <PageLink link={Sitemap.accountLink(publicUser)}>
+        {({ path }) => (
+          <Link
+            href={path}
+            title={formatMessage({
+              id: "footer.removeAds.description",
+              description: "Link title.",
+              defaultMessage: "Purchase a premium account to remove ads.",
+            })}
+          >
+            {formatMessage({
+              id: "footer.removeAds.label",
+              description: "Link text.",
+              defaultMessage: "Remove Ads",
+            })}
+          </Link>
+        )}
+      </PageLink>
+    )
   );
 }

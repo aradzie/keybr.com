@@ -127,21 +127,17 @@ export function PageLink({
   );
 }
 
-declare class URL {
-  constructor(url: string, base: string);
-}
-
 export function AltLangLinks({
   pageLink,
 }: {
   readonly pageLink: BoundPageLink;
 }): ReactNode {
   const { base } = usePageData();
-  const links = allLocales.map((locale) => ({
-    href: String(new URL(pageLink.formatPath(locale), base)),
-    rel: "alternate",
-    hrefLang: locale,
-  }));
-
-  return links.map((link) => <link key={link.href} {...link} />);
+  return allLocales
+    .map((locale) => ({
+      href: String(new URL(pageLink.formatPath(locale), base)),
+      rel: "alternate",
+      hrefLang: locale,
+    }))
+    .map((link) => <link key={link.href} {...link} />);
 }
