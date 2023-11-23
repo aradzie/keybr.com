@@ -5,7 +5,7 @@ import {
   ResultStorageOfAnonymousUser,
   ResultStorageOfNamedUser,
   ResultStorageOfPublicUser,
-  translateErrors,
+  wrapResultStorage,
 } from "./storage.ts";
 import { type LocalResultStorage, type RemoteResultSync } from "./types.ts";
 
@@ -15,7 +15,7 @@ test("named user - initially is empty", async (t) => {
   const local: Result[] = [];
   const remote: Result[] = [];
 
-  const storage = translateErrors(
+  const storage = wrapResultStorage(
     new ResultStorageOfNamedUser(
       new FakeLocalResultStorage(local),
       new FakeRemoteResultSync(remote),
@@ -37,7 +37,7 @@ test("named user - fetch remote and ignore local data", async (t) => {
   const local: Result[] = [r0, r1];
   const remote: Result[] = [r2, r3];
 
-  const storage = translateErrors(
+  const storage = wrapResultStorage(
     new ResultStorageOfNamedUser(
       new FakeLocalResultStorage(local),
       new FakeRemoteResultSync(remote),
@@ -62,7 +62,7 @@ test("named user - upload local to remote on first sync", async (t) => {
   const local: Result[] = [r0, r1];
   const remote: Result[] = [];
 
-  const storage = translateErrors(
+  const storage = wrapResultStorage(
     new ResultStorageOfNamedUser(
       new FakeLocalResultStorage(local),
       new FakeRemoteResultSync(remote),
@@ -84,14 +84,16 @@ test("named user - upload local to remote on first sync", async (t) => {
 test("anonymous user - append to local", async (t) => {
   const r0 = faker.nextResult();
   const r1 = faker.nextResult();
+  const r2 = faker.nextResult({ length: 0, time: 0 });
   const local: Result[] = [];
 
-  const storage = translateErrors(
+  const storage = wrapResultStorage(
     new ResultStorageOfAnonymousUser(new FakeLocalResultStorage(local)),
   );
 
   await storage.append([r0]);
   await storage.append([r1]);
+  await storage.append([r2]);
   const results = await storage.load();
 
   // Should contain data from updated local store.
@@ -104,10 +106,11 @@ test("anonymous user - append to local", async (t) => {
 test("named user - append to remote", async (t) => {
   const r0 = faker.nextResult();
   const r1 = faker.nextResult();
+  const r2 = faker.nextResult({ length: 0, time: 0 });
   const local: Result[] = [];
   const remote: Result[] = [];
 
-  const storage = translateErrors(
+  const storage = wrapResultStorage(
     new ResultStorageOfNamedUser(
       new FakeLocalResultStorage(local),
       new FakeRemoteResultSync(remote),
@@ -116,6 +119,7 @@ test("named user - append to remote", async (t) => {
 
   await storage.append([r0]);
   await storage.append([r1]);
+  await storage.append([r2]);
   const results = await storage.load();
 
   // Should contain data from updated remote store.
@@ -131,10 +135,10 @@ test("named user - append to remote", async (t) => {
 test("public user - is readonly", async (t) => {
   const r0 = faker.nextResult();
   const r1 = faker.nextResult();
-  const r3 = faker.nextResult();
-  const remote: Result[] = [r0, r1];
+  const r2 = faker.nextResult({ length: 0, time: 0 });
+  const remote: Result[] = [r0, r1, r2];
 
-  const storage = translateErrors(
+  const storage = wrapResultStorage(
     new ResultStorageOfPublicUser(new FakeRemoteResultSync(remote)),
   );
 
@@ -145,7 +149,7 @@ test("public user - is readonly", async (t) => {
   // Try to append.
   await t.throwsAsync(
     async () => {
-      await storage.append([r3]);
+      await storage.append([faker.nextResult()]);
     },
     {
       message: "Cannot add records to database",
@@ -164,9 +168,7 @@ test("public user - is readonly", async (t) => {
 });
 
 test("handle local storage errors", async (t) => {
-  const r0 = faker.nextResult();
-
-  const storage = translateErrors(
+  const storage = wrapResultStorage(
     new ResultStorageOfAnonymousUser(
       new (class FailingLocalResultStorage implements LocalResultStorage {
         async load(): Promise<Result[]> {
@@ -200,7 +202,7 @@ test("handle local storage errors", async (t) => {
   // Try to append.
   error = (await t.throwsAsync(
     async () => {
-      await storage.append([r0]);
+      await storage.append([faker.nextResult()]);
     },
     {
       message: "Cannot add records to database",
@@ -221,9 +223,7 @@ test("handle local storage errors", async (t) => {
 });
 
 test("handle remote sync errors", async (t) => {
-  const r0 = faker.nextResult();
-
-  const storage = translateErrors(
+  const storage = wrapResultStorage(
     new ResultStorageOfNamedUser(
       new FakeLocalResultStorage([]),
       new (class FailingRemoteResultSync implements RemoteResultSync {
@@ -258,7 +258,7 @@ test("handle remote sync errors", async (t) => {
   // Try to append.
   error = (await t.throwsAsync(
     async () => {
-      await storage.append([r0]);
+      await storage.append([faker.nextResult()]);
     },
     {
       message: "Cannot add records to database",

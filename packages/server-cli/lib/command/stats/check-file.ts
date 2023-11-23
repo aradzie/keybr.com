@@ -4,16 +4,14 @@ import { readResult, validateHeader } from "@keybr/result-io";
 
 export type FileStatus =
   | {
-      readonly type: "bad_file";
+      readonly type: "bad";
       /** The recovered results. */
       readonly results: readonly Result[];
-      /** Total file size. */
-      readonly fileSize: number;
-      /** Valid data size. */
-      readonly readSize: number;
+      /** The recovered invalid results. */
+      readonly invalid: readonly Result[];
     }
   | {
-      readonly type: "good_file";
+      readonly type: "good";
       /** The results. */
       readonly results: readonly Result[];
     };
@@ -24,22 +22,25 @@ export function checkFile(buffer: Uint8Array): FileStatus {
 
 function checkFile0(reader: Reader): FileStatus {
   const results: Result[] = [];
-  const fileSize = reader.remaining();
-  let readSize = reader.position();
+  const invalid: Result[] = [];
   if (!validateHeader(reader)) {
-    return { type: "bad_file", results, fileSize, readSize };
+    return { type: "bad", results, invalid };
   }
-  readSize = reader.position();
   while (reader.remaining() > 0) {
+    let result;
     try {
-      results.push(readResult(reader));
+      result = readResult(reader);
     } catch {
-      return { type: "bad_file", results, fileSize, readSize };
+      return { type: "bad", results, invalid };
     }
-    readSize = reader.position();
+    if (result.validate()) {
+      results.push(result);
+    } else {
+      invalid.push(result);
+    }
   }
-  if (results.length === 0) {
-    return { type: "bad_file", results, fileSize, readSize };
+  if (results.length === 0 || invalid.length > 0) {
+    return { type: "bad", results, invalid };
   }
-  return { type: "good_file", results };
+  return { type: "good", results };
 }

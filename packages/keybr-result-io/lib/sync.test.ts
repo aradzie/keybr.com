@@ -19,24 +19,6 @@ test("format and parse results", (t) => {
   t.deepEqual([...parseMessage(buffer)], [result]);
 });
 
-test("serialize should report invalid result", (t) => {
-  const result = new Result(
-    /* layout= */ Layout.EN_US,
-    /* textType= */ TextType.GENERATED,
-    /* timeStamp= */ Date.parse("2001-02-03T03:05:06Z"),
-    /* length= */ 0,
-    /* time= */ 0,
-    /* errors= */ 0,
-    /* histogram= */ new Histogram([]),
-  );
-
-  t.false(result.validate());
-
-  t.throws(() => {
-    formatMessage([result]);
-  });
-});
-
 test("deserialize should ignore empty data", (t) => {
   t.deepEqual([...parseMessage(scramble(new Uint8Array(0)))], []);
 });
@@ -74,7 +56,7 @@ test("deserialize should validate file data", (t) => {
   t.is(err.cause?.message, "Premature end of data");
 });
 
-test("deserialize should ignore invalid result", (t) => {
+test("deserialize should read invalid results", (t) => {
   const result = new Result(
     /* layout= */ Layout.EN_US,
     /* textType= */ TextType.GENERATED,
@@ -94,5 +76,5 @@ test("deserialize should ignore invalid result", (t) => {
 
   const parsed = [...parseMessage(scramble(writer.buffer()))];
 
-  t.deepEqual(parsed, []);
+  t.deepEqual(parsed, [result]);
 });

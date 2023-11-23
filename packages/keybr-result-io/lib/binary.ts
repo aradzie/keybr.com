@@ -1,6 +1,6 @@
 import { type Reader, type Writer } from "@keybr/binary";
 import { Layout } from "@keybr/layout";
-import { InvalidResultError, Result, TextType } from "@keybr/result";
+import { Result, TextType } from "@keybr/result";
 import { Histogram, type Sample } from "@keybr/textinput";
 import { InvalidFormatError } from "./errors.ts";
 import { validateHeader } from "./header.ts";
@@ -24,9 +24,6 @@ export function writeResult(writer: Writer, result: Result): void {
 
 export function writeResults(writer: Writer, results: Iterable<Result>): void {
   for (const result of results) {
-    if (!result.validate()) {
-      throw new InvalidResultError("Invalid result");
-    }
     writeResult(writer, result);
   }
 }
@@ -65,10 +62,7 @@ export function readResult(reader: Reader): Result {
 
 export function* readResults(reader: Reader): Iterable<Result> {
   while (reader.remaining() > 0) {
-    const result = readResult(reader);
-    if (result.validate()) {
-      yield result;
-    }
+    yield readResult(reader);
   }
 }
 

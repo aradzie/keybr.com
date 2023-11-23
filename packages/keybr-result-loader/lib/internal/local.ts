@@ -15,13 +15,8 @@ export class PersistentResultStorage implements LocalResultStorage {
     try {
       const tx = db.transaction(db.name, "readonly");
       const store = tx.objectStore(db.name);
-      const results = await store.readAll<Result>((key: any, value: any) => {
-        const result = resultFromJson(value);
-        if (result != null && result.validate()) {
-          return result;
-        } else {
-          return null;
-        }
+      const results = await store.readAll((key, value) => {
+        return resultFromJson(value);
       });
       await tx.completed;
       return results;

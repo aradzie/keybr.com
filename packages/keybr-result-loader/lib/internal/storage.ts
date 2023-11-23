@@ -1,4 +1,4 @@
-import { type Result } from "@keybr/result";
+import { Result } from "@keybr/result";
 import { DatabaseError } from "../errors.ts";
 import { PersistentResultStorage } from "./local.ts";
 import { ResultSyncNamedUser, ResultSyncPublicUser } from "./remotesync.ts";
@@ -22,27 +22,42 @@ export type OpenRequest =
     };
 
 export function openResultStorage(request: OpenRequest): ResultStorage {
+  return wrapResultStorage(openRawResultStorage(request));
+}
+
+export function wrapResultStorage(storage: ResultStorage): ResultStorage {
+  return translateErrors(validateResults(storage));
+}
+
+function openRawResultStorage(
+  request:
+    | { readonly type: "private"; readonly userId: string | null }
+    | {
+        readonly type: "public";
+        readonly userId: string;
+      },
+) {
   switch (request.type) {
     case "private": {
       const { userId } = request;
       if (userId == null) {
         const local = new PersistentResultStorage();
-        return translateErrors(new ResultStorageOfAnonymousUser(local));
+        return new ResultStorageOfAnonymousUser(local);
       } else {
         const local = new PersistentResultStorage();
         const remote = new ResultSyncNamedUser();
-        return translateErrors(new ResultStorageOfNamedUser(local, remote));
+        return new ResultStorageOfNamedUser(local, remote);
       }
     }
     case "public": {
       const { userId } = request;
       const remote = new ResultSyncPublicUser(userId);
-      return translateErrors(new ResultStorageOfPublicUser(remote));
+      return new ResultStorageOfPublicUser(remote);
     }
   }
 }
 
-export function translateErrors(storage: ResultStorage): ResultStorage {
+function translateErrors(storage: ResultStorage): ResultStorage {
   return new (class ErrorTranslator implements ResultStorage {
     async load(progressListener?: ProgressListener): Promise<Result[]> {
       try {
@@ -75,6 +90,28 @@ export function translateErrors(storage: ResultStorage): ResultStorage {
           cause: err,
         });
       }
+    }
+  })();
+}
+
+function validateResults(storage: ResultStorage): ResultStorage {
+  return new (class ErrorTranslator implements ResultStorage {
+    async load(progressListener?: ProgressListener): Promise<Result[]> {
+      return (await storage.load(progressListener)).filter(Result.isValid);
+    }
+
+    async append(
+      results: readonly Result[],
+      progressListener?: ProgressListener,
+    ): Promise<void> {
+      results = results.filter(Result.isValid);
+      if (results.length > 0) {
+        await storage.append(results, progressListener);
+      }
+    }
+
+    async clear(): Promise<void> {
+      await storage.clear();
     }
   })();
 }

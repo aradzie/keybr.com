@@ -4,6 +4,52 @@ import test from "ava";
 import { Result, speedToTime, timeToSpeed } from "./result.ts";
 import { TextType } from "./texttype.ts";
 
+test("validate", (t) => {
+  t.false(
+    new Result(
+      /* layout= */ Layout.EN_US,
+      /* textType= */ TextType.GENERATED,
+      /* timeStamp= */ Date.parse("2001-02-03T03:05:06Z"),
+      /* length= */ 9,
+      /* time= */ 999,
+      /* errors= */ 0,
+      /* histogram= */ new Histogram([]),
+    ).validate(),
+  );
+
+  t.false(
+    new Result(
+      /* layout= */ Layout.EN_US,
+      /* textType= */ TextType.GENERATED,
+      /* timeStamp= */ Date.parse("2001-02-03T03:05:06Z"),
+      /* length= */ 9,
+      /* time= */ 999,
+      /* errors= */ 0,
+      /* histogram= */ new Histogram([
+        { codePoint: 97, hitCount: 11, missCount: 1, timeToType: 111 },
+        { codePoint: 98, hitCount: 22, missCount: 2, timeToType: 222 },
+        { codePoint: 99, hitCount: 33, missCount: 3, timeToType: 333 },
+      ]),
+    ).validate(),
+  );
+
+  t.true(
+    new Result(
+      /* layout= */ Layout.EN_US,
+      /* textType= */ TextType.GENERATED,
+      /* timeStamp= */ Date.parse("2001-02-03T03:05:06Z"),
+      /* length= */ 10,
+      /* time= */ 1000,
+      /* errors= */ 0,
+      /* histogram= */ new Histogram([
+        { codePoint: 97, hitCount: 11, missCount: 1, timeToType: 111 },
+        { codePoint: 98, hitCount: 22, missCount: 2, timeToType: 222 },
+        { codePoint: 99, hitCount: 33, missCount: 3, timeToType: 333 },
+      ]),
+    ).validate(),
+  );
+});
+
 test("serialize as JSON", (t) => {
   const result = new Result(
     /* layout= */ Layout.EN_US,

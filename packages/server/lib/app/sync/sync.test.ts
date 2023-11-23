@@ -1,18 +1,18 @@
 import { Application } from "@fastr/core";
 import { PublicId } from "@keybr/publicid";
 import { ResultFaker } from "@keybr/result";
+import { formatMessage } from "@keybr/result-io";
 import { UserDataFactory } from "@keybr/result-userdata";
 import { kMain } from "../module.ts";
 import { test } from "../test/context.ts";
 import { startApp } from "../test/request.ts";
 import { findUser } from "../test/sql.ts";
 
-const data = Buffer.from(
-  "MNP5Z1Mvt46icVrELajnGKFdC+51UeyEKeATXNzy" +
-    "92sJzhG+hOgc2AlVa0JHSIbytPYrD92WhaIYbFT83" +
-    "Rlf4mtMuhZMSp/zYR5Jxuyg",
-  "base64",
-);
+const faker = new ResultFaker();
+const invalidBody = formatMessage([faker.nextResult({ length: 0, time: 0 })]);
+const validBody = formatMessage([faker.nextResult()]);
+const garbageBody = Buffer.from("garbage");
+const result = faker.nextResult();
 
 test.serial("handle unauthenticated user", async (t) => {
   // Arrange.
@@ -22,7 +22,7 @@ test.serial("handle unauthenticated user", async (t) => {
   // Assert.
 
   t.is((await request.GET("/_/sync/data").send()).status, 403);
-  t.is((await request.POST("/_/sync/data").send(data)).status, 403);
+  t.is((await request.POST("/_/sync/data").send(validBody)).status, 403);
   t.is((await request.DELETE("/_/sync/data").send()).status, 403);
 });
 
@@ -33,8 +33,7 @@ test.serial("get public user data", async (t) => {
   const user = await findUser("user1@keybr.com");
   const id = new PublicId(user.id!);
   const userData = factory.load(id);
-  const faker = new ResultFaker();
-  await userData.append([faker.nextResult()]);
+  await userData.append([result]);
 
   const request = startApp(t.context.get(Application, kMain));
 
@@ -86,8 +85,7 @@ test.serial("get existing user data", async (t) => {
   const factory = t.context.get(UserDataFactory);
   const user = await findUser("user1@keybr.com");
   const userData = factory.load(new PublicId(user.id!));
-  const faker = new ResultFaker();
-  await userData.append([faker.nextResult()]);
+  await userData.append([result]);
 
   const request = startApp(t.context.get(Application, kMain));
 
@@ -120,7 +118,7 @@ test.serial("validate content type on post", async (t) => {
   const response = await request
     .POST("/_/sync/data")
     .type("text/plain")
-    .send(data);
+    .send(validBody);
 
   // Assert.
 
@@ -136,13 +134,34 @@ test.serial("validate format on post", async (t) => {
 
   // Act.
 
-  const response = await request
-    .POST("/_/sync/data")
-    .send(Buffer.from("garbage"));
+  const response = await request.POST("/_/sync/data").send(garbageBody);
 
   // Assert.
 
   t.is(response.status, 400);
+});
+
+test.serial("validate data on post", async (t) => {
+  // Arrange.
+
+  const factory = t.context.get(UserDataFactory);
+  const user = await findUser("user1@keybr.com");
+  const userData = factory.load(new PublicId(user.id!));
+  await userData.delete();
+
+  const request = startApp(t.context.get(Application, kMain));
+
+  await request.become("user1@keybr.com");
+
+  // Act.
+
+  const response = await request.POST("/_/sync/data").send(invalidBody);
+
+  // Assert.
+
+  t.is(response.status, 204);
+
+  t.false(await userData.exists());
 });
 
 test.serial("post to user data", async (t) => {
@@ -159,7 +178,7 @@ test.serial("post to user data", async (t) => {
 
   // Act.
 
-  const response = await request.POST("/_/sync/data").send(data);
+  const response = await request.POST("/_/sync/data").send(validBody);
 
   // Assert.
 
@@ -202,8 +221,7 @@ test.serial("delete existing user data", async (t) => {
   const factory = t.context.get(UserDataFactory);
   const user = await findUser("user1@keybr.com");
   const userData = factory.load(new PublicId(user.id!));
-  const faker = new ResultFaker();
-  await userData.append([faker.nextResult()]);
+  await userData.append([result]);
 
   const request = startApp(t.context.get(Application, kMain));
 

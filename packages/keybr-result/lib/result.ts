@@ -2,12 +2,6 @@ import { type Layout } from "@keybr/layout";
 import { type Histogram, type Stats } from "@keybr/textinput";
 import { type TextType } from "./texttype.ts";
 
-const kMinLength = 10;
-const kMinTime = 1000;
-const kMinComplexity = 2;
-const kMinSpeed = 5; // 5 CPM, 1 WPM
-const kMaxSpeed = 750; // 750 CPM, 150 WPM
-
 export class Result {
   static fromStats(
     layout: Layout,
@@ -58,13 +52,7 @@ export class Result {
   }
 
   validate(): boolean {
-    return (
-      this.length >= kMinLength &&
-      this.time >= kMinTime &&
-      this.complexity >= kMinComplexity &&
-      this.speed >= kMinSpeed &&
-      this.speed <= kMaxSpeed
-    );
+    return this.length >= 10 && this.time >= 1000 && this.histogram.validate();
   }
 
   toJSON() {

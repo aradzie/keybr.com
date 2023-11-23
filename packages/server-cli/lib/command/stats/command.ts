@@ -14,7 +14,7 @@ export class StatsCommand {
 
   command(): Command {
     return new Command("check-stats")
-      .description("Check and recover user stats.")
+      .description("Check and fix user stats.")
       .addOption(new Option("--fix", "Fix damaged user stats."))
       .addOption(
         new Option(
@@ -22,7 +22,7 @@ export class StatsCommand {
           "Check only files modified since the given timestamp.",
         ).argParser(parseTimestamp),
       )
-      .addOption(new Option("--silent", "Hide the details."))
+      .addOption(new Option("--verbose", "Show more diagnostic messages."))
       .addArgument(
         new Argument(
           "<user-id-range>",
@@ -37,15 +37,15 @@ export class StatsCommand {
     {
       fix = false,
       since = new Date(0),
-      silent = false,
+      verbose = false,
     }: {
       readonly fix?: boolean;
       readonly since?: Date;
-      readonly silent?: boolean;
+      readonly verbose?: boolean;
     },
   ): Promise<void> {
     if (since.getTime() > 0) {
-      if (!silent) {
+      if (verbose) {
         console.log(`Checking stats modified since ${since.toISOString()}.`);
       }
     }
@@ -55,14 +55,14 @@ export class StatsCommand {
       const stat = await fstat(file);
 
       if (stat == null || !stat.isFile()) {
-        if (!silent) {
+        if (verbose) {
           console.log(`No stats of user=[${userId}], file=[${file.name}].`);
         }
         continue;
       }
 
       if (since.getTime() > 0 && stat.mtime.getTime() < since.getTime()) {
-        if (!silent) {
+        if (verbose) {
           console.log(
             `Skipping stats of user=[${userId}], file=[${file.name}].`,
           );
@@ -70,32 +70,29 @@ export class StatsCommand {
         continue;
       }
 
-      if (!silent) {
-        console.log(`Checking stats of user=[${userId}], file=[${file.name}].`);
-      }
-
       const status = checkFile(await file.read());
       switch (status.type) {
-        case "good_file": {
+        case "good": {
           const { results } = status;
-          if (!silent) {
-            console.log(`File is good. Read [${results.length}] results.`);
+          if (verbose) {
+            console.log(
+              `Good data, user=[${userId}], file=[${file.name}]. ` +
+                `Read ${results.length} results.`,
+            );
           }
           break;
         }
-        case "bad_file": {
-          const { results, fileSize, readSize } = status;
-          if (!silent) {
-            console.warn(
-              `File is corrupted! ` +
-                `Recovered [${results.length}] results, ` +
-                `${readSize} of ${fileSize} bytes.`,
-            );
-          }
+        case "bad": {
+          const { results, invalid } = status;
+          console.warn(
+            `Bad data, user=[${userId}], file=[${file.name}]. ` +
+              `Read ${results.length} results. ` +
+              `Ignored ${invalid.length} invalid results.`,
+          );
           if (fix) {
             await fixFile(file, results);
-            if (!silent) {
-              console.log(`File was recovered.`);
+            if (verbose) {
+              console.log(`File was fixed.`);
             }
           }
           break;

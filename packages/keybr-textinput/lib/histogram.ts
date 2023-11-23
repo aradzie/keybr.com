@@ -29,6 +29,18 @@ export class Histogram implements Iterable<Sample> {
     return this._data.get(codePoint) ?? null;
   }
 
+  validate(): boolean {
+    if (this._data.size < 3) {
+      return false; // Too few characters.
+    }
+    for (const sample of this._data.values()) {
+      if (!validateSample(sample)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
   static from(
     steps: readonly Step[],
     {
@@ -62,14 +74,26 @@ export class Histogram implements Iterable<Sample> {
       last = step;
     }
     return new Histogram(
-      [...samples.entries()].map(
-        ([codePoint, { hitCount, missCount, timeToType }]) => ({
+      [...samples.entries()]
+        .map(([codePoint, { hitCount, missCount, timeToType }]) => ({
           codePoint,
           hitCount,
           missCount,
           timeToType: Math.round(timeToType / hitCount),
-        }),
-      ),
+        }))
+        .filter(validateSample),
     );
   }
+}
+
+function validateSample({ timeToType }: Sample): boolean {
+  if (timeToType > 0) {
+    if (timeToType < /* 300WPM/1500CPM */ 40) {
+      return false; // Too fast.
+    }
+    if (timeToType > /* 1WPM/5CPM */ 12000) {
+      return false; // Too slow.
+    }
+  }
+  return true;
 }

@@ -2,12 +2,13 @@ import { Writer } from "@keybr/binary";
 import { ResultFaker } from "@keybr/result";
 import { HEADER, writeResult } from "@keybr/result-io";
 import test from "ava";
-import { checkFile } from "./check-file.ts";
+import { checkFile, type FileStatus } from "./check-file.ts";
 
 const faker = new ResultFaker();
 const r0 = faker.nextResult();
 const r1 = faker.nextResult();
 const r2 = faker.nextResult();
+const rx = faker.nextResult({ length: 0, time: 0 });
 
 test("check empty file", (t) => {
   // Arrange.
@@ -22,11 +23,10 @@ test("check empty file", (t) => {
   // Assert.
 
   t.deepEqual(status, {
-    type: "bad_file",
+    type: "bad",
     results: [],
-    fileSize: 0,
-    readSize: 0,
-  });
+    invalid: [],
+  } satisfies FileStatus);
 });
 
 test("check invalid header", (t) => {
@@ -46,11 +46,30 @@ test("check invalid header", (t) => {
   // Assert.
 
   t.deepEqual(status, {
-    type: "bad_file",
+    type: "bad",
     results: [],
-    fileSize: 16,
-    readSize: 0,
-  });
+    invalid: [],
+  } satisfies FileStatus);
+});
+
+test("check empty data", (t) => {
+  // Arrange.
+
+  const writer = new Writer();
+  writer.putBuffer(HEADER);
+  const buffer = writer.buffer();
+
+  // Act.
+
+  const status = checkFile(buffer);
+
+  // Assert.
+
+  t.deepEqual(status, {
+    type: "bad",
+    results: [],
+    invalid: [],
+  } satisfies FileStatus);
 });
 
 test("check invalid data", (t) => {
@@ -71,18 +90,21 @@ test("check invalid data", (t) => {
   // Assert.
 
   t.deepEqual(status, {
-    type: "bad_file",
+    type: "bad",
     results: [r0, r1, r2],
-    fileSize: 198,
-    readSize: 194,
-  });
+    invalid: [],
+  } satisfies FileStatus);
 });
 
-test("check empty data", (t) => {
+test("check invalid results", (t) => {
   // Arrange.
 
   const writer = new Writer();
   writer.putBuffer(HEADER);
+  writeResult(writer, rx);
+  writeResult(writer, r0);
+  writeResult(writer, r1);
+  writeResult(writer, r2);
   const buffer = writer.buffer();
 
   // Act.
@@ -92,11 +114,10 @@ test("check empty data", (t) => {
   // Assert.
 
   t.deepEqual(status, {
-    type: "bad_file",
-    results: [],
-    fileSize: 8,
-    readSize: 8,
-  });
+    type: "bad",
+    results: [r0, r1, r2],
+    invalid: [rx],
+  } satisfies FileStatus);
 });
 
 test("check valid non-empty data", (t) => {
@@ -116,7 +137,7 @@ test("check valid non-empty data", (t) => {
   // Assert.
 
   t.deepEqual(status, {
-    type: "good_file",
+    type: "good",
     results: [r0, r1, r2],
-  });
+  } satisfies FileStatus);
 });
