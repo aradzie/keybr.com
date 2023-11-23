@@ -84,9 +84,7 @@ test("ignore typos", (t) => {
       { codePoint: B, timeStamp: 200, typo: true },
       { codePoint: C, timeStamp: 300, typo: true },
     ],
-    {
-      startedAt: 0,
-    },
+    { startedAt: 0 },
   );
 
   t.is(histogram.complexity, 3);
@@ -108,9 +106,7 @@ test("compute time to type", (t) => {
       { codePoint: X, timeStamp: 300, typo: false },
       { codePoint: A, timeStamp: 500, typo: false },
     ],
-    {
-      startedAt: 0,
-    },
+    { startedAt: 0 },
   );
 
   t.is(histogram.complexity, 2);

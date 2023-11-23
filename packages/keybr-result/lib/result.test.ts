@@ -13,36 +13,9 @@ test("serialize as JSON", (t) => {
     /* time= */ 10000,
     /* errors= */ 3,
     /* histogram= */ new Histogram([
-      {
-        codePoint: 97,
-        hitCount: 11,
-        missCount: 1,
-        timeToType: 111,
-      },
-      {
-        codePoint: 98,
-        hitCount: 22,
-        missCount: 2,
-        timeToType: 222,
-      },
-      {
-        codePoint: 99,
-        hitCount: 33,
-        missCount: 3,
-        timeToType: 333,
-      },
-      {
-        codePoint: 100,
-        hitCount: 33,
-        missCount: 3,
-        timeToType: 333,
-      },
-      {
-        codePoint: 101,
-        hitCount: 33,
-        missCount: 3,
-        timeToType: 333,
-      },
+      { codePoint: 97, hitCount: 11, missCount: 1, timeToType: 111 },
+      { codePoint: 98, hitCount: 22, missCount: 2, timeToType: 222 },
+      { codePoint: 99, hitCount: 33, missCount: 3, timeToType: 333 },
     ]),
   );
 
@@ -55,41 +28,14 @@ test("serialize as JSON", (t) => {
     errors: 3,
     speed: 600,
     histogram: [
-      {
-        codePoint: 97,
-        hitCount: 11,
-        missCount: 1,
-        timeToType: 111,
-      },
-      {
-        codePoint: 98,
-        hitCount: 22,
-        missCount: 2,
-        timeToType: 222,
-      },
-      {
-        codePoint: 99,
-        hitCount: 33,
-        missCount: 3,
-        timeToType: 333,
-      },
-      {
-        codePoint: 100,
-        hitCount: 33,
-        missCount: 3,
-        timeToType: 333,
-      },
-      {
-        codePoint: 101,
-        hitCount: 33,
-        missCount: 3,
-        timeToType: 333,
-      },
+      { codePoint: 97, hitCount: 11, missCount: 1, timeToType: 111 },
+      { codePoint: 98, hitCount: 22, missCount: 2, timeToType: 222 },
+      { codePoint: 99, hitCount: 33, missCount: 3, timeToType: 333 },
     ],
   });
 });
 
-test("convert", (t) => {
+test("convert units", (t) => {
   t.throws(() => timeToSpeed(Infinity));
   t.throws(() => timeToSpeed(NaN));
   t.throws(() => timeToSpeed(0));

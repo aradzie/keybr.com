@@ -7,11 +7,7 @@ import {
   ResultStorageOfPublicUser,
   translateErrors,
 } from "./storage.ts";
-import {
-  type LocalResultStorage,
-  type RemoteResultSync,
-  type ResultStorage,
-} from "./types.ts";
+import { type LocalResultStorage, type RemoteResultSync } from "./types.ts";
 
 const faker = new ResultFaker();
 
@@ -19,7 +15,7 @@ test("named user - initially is empty", async (t) => {
   const local: Result[] = [];
   const remote: Result[] = [];
 
-  const storage: ResultStorage = translateErrors(
+  const storage = translateErrors(
     new ResultStorageOfNamedUser(
       new FakeLocalResultStorage(local),
       new FakeRemoteResultSync(remote),
@@ -41,7 +37,7 @@ test("named user - fetch remote and ignore local data", async (t) => {
   const local: Result[] = [r0, r1];
   const remote: Result[] = [r2, r3];
 
-  const storage: ResultStorage = translateErrors(
+  const storage = translateErrors(
     new ResultStorageOfNamedUser(
       new FakeLocalResultStorage(local),
       new FakeRemoteResultSync(remote),
@@ -66,7 +62,7 @@ test("named user - upload local to remote on first sync", async (t) => {
   const local: Result[] = [r0, r1];
   const remote: Result[] = [];
 
-  const storage: ResultStorage = translateErrors(
+  const storage = translateErrors(
     new ResultStorageOfNamedUser(
       new FakeLocalResultStorage(local),
       new FakeRemoteResultSync(remote),
@@ -90,7 +86,7 @@ test("anonymous user - append to local", async (t) => {
   const r1 = faker.nextResult();
   const local: Result[] = [];
 
-  const storage: ResultStorage = translateErrors(
+  const storage = translateErrors(
     new ResultStorageOfAnonymousUser(new FakeLocalResultStorage(local)),
   );
 
@@ -111,7 +107,7 @@ test("named user - append to remote", async (t) => {
   const local: Result[] = [];
   const remote: Result[] = [];
 
-  const storage: ResultStorage = translateErrors(
+  const storage = translateErrors(
     new ResultStorageOfNamedUser(
       new FakeLocalResultStorage(local),
       new FakeRemoteResultSync(remote),
@@ -138,7 +134,7 @@ test("public user - is readonly", async (t) => {
   const r3 = faker.nextResult();
   const remote: Result[] = [r0, r1];
 
-  const storage: ResultStorage = translateErrors(
+  const storage = translateErrors(
     new ResultStorageOfPublicUser(new FakeRemoteResultSync(remote)),
   );
 
@@ -170,13 +166,9 @@ test("public user - is readonly", async (t) => {
 test("handle local storage errors", async (t) => {
   const r0 = faker.nextResult();
 
-  const storage: ResultStorage = translateErrors(
+  const storage = translateErrors(
     new ResultStorageOfAnonymousUser(
       new (class FailingLocalResultStorage implements LocalResultStorage {
-        get persistent(): boolean {
-          return false;
-        }
-
         async load(): Promise<Result[]> {
           throw new Error("Test read error");
         }
@@ -231,7 +223,7 @@ test("handle local storage errors", async (t) => {
 test("handle remote sync errors", async (t) => {
   const r0 = faker.nextResult();
 
-  const storage: ResultStorage = translateErrors(
+  const storage = translateErrors(
     new ResultStorageOfNamedUser(
       new FakeLocalResultStorage([]),
       new (class FailingRemoteResultSync implements RemoteResultSync {

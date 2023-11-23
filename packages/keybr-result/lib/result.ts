@@ -2,8 +2,8 @@ import { type Layout } from "@keybr/layout";
 import { type Histogram, type Stats } from "@keybr/textinput";
 import { type TextType } from "./texttype.ts";
 
-const kMinTime = 1000;
 const kMinLength = 10;
+const kMinTime = 1000;
 const kMinComplexity = 2;
 const kMinSpeed = 5; // 5 CPM, 1 WPM
 const kMaxSpeed = 750; // 750 CPM, 150 WPM
@@ -26,8 +26,7 @@ export class Result {
     );
   }
 
-  static compareTimestamps = (a: Result, b: Result): number =>
-    a.timeStamp - b.timeStamp;
+  static readonly isValid = (result: Result): boolean => result.validate();
 
   public readonly complexity: number;
   public readonly speed: number;
@@ -43,11 +42,11 @@ export class Result {
     public readonly errors: number,
     public readonly histogram: Histogram,
   ) {
-    const { complexity } = this.histogram;
+    const { complexity } = histogram;
     let speed = 0;
     let accuracy = 0;
     let score = 0;
-    if (this.time > 0 && this.length > 0 && complexity > 0) {
+    if (length > 0 && time > 0 && complexity > 0) {
       speed = (length / (time / 1000)) * 60;
       accuracy = (length - errors) / length;
       score = ((speed * complexity) / (errors + 1)) * (length / 50);
@@ -60,15 +59,15 @@ export class Result {
 
   validate(): boolean {
     return (
-      this.time >= kMinTime &&
       this.length >= kMinLength &&
+      this.time >= kMinTime &&
       this.complexity >= kMinComplexity &&
       this.speed >= kMinSpeed &&
       this.speed <= kMaxSpeed
     );
   }
 
-  toJSON(): unknown {
+  toJSON() {
     return {
       layout: this.layout.id,
       textType: this.textType.id,

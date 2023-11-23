@@ -6,46 +6,35 @@ import test from "ava";
 import { readResult, writeResult } from "./binary.ts";
 
 test("write and read", (t) => {
+  // Arrange.
+
+  const histogram = new Histogram([
+    { codePoint: 97, hitCount: 11, missCount: 1, timeToType: 111 },
+    { codePoint: 98, hitCount: 22, missCount: 2, timeToType: 222 },
+    { codePoint: 99, hitCount: 33, missCount: 3, timeToType: 333 },
+  ]);
+
   const result = new Result(
     /* layout= */ Layout.EN_US,
     /* textType= */ TextType.GENERATED,
-    /* timeStamp= */ Date.parse("2001-02-03T03:05:06Z"),
-    /* length= */ 100,
-    /* time= */ 10000,
+    /* timeStamp= */ Date.parse("2001-02-03T03:05:06.123Z"),
+    /* length= */ 123,
+    /* time= */ 12345,
     /* errors= */ 3,
-    /* histogram= */ new Histogram([
-      {
-        codePoint: 97,
-        hitCount: 11,
-        missCount: 1,
-        timeToType: 111,
-      },
-      {
-        codePoint: 98,
-        hitCount: 22,
-        missCount: 2,
-        timeToType: 222,
-      },
-      {
-        codePoint: 99,
-        hitCount: 33,
-        missCount: 3,
-        timeToType: 333,
-      },
-      {
-        codePoint: 100,
-        hitCount: 33,
-        missCount: 3,
-        timeToType: 333,
-      },
-      {
-        codePoint: 101,
-        hitCount: 33,
-        missCount: 3,
-        timeToType: 333,
-      },
-    ]),
+    /* histogram= */ histogram,
   );
+
+  const expected = new Result(
+    /* layout= */ Layout.EN_US,
+    /* textType= */ TextType.GENERATED,
+    /* timeStamp= */ Date.parse("2001-02-03T03:05:06Z"),
+    /* length= */ 123,
+    /* time= */ 12345,
+    /* errors= */ 3,
+    /* histogram= */ histogram,
+  );
+
+  // Write.
 
   const writer = new Writer();
 
@@ -55,13 +44,17 @@ test("write and read", (t) => {
 
   const buffer = writer.buffer();
 
-  t.is(buffer.byteLength, 105);
+  t.is(buffer.byteLength, 75);
+
+  // Read.
 
   const reader = new Reader(buffer);
 
-  t.deepEqual(readResult(reader), result);
-  t.deepEqual(readResult(reader), result);
-  t.deepEqual(readResult(reader), result);
-
+  t.is(reader.remaining(), 75);
+  t.deepEqual(readResult(reader), expected);
+  t.is(reader.remaining(), 50);
+  t.deepEqual(readResult(reader), expected);
+  t.is(reader.remaining(), 25);
+  t.deepEqual(readResult(reader), expected);
   t.is(reader.remaining(), 0);
 });

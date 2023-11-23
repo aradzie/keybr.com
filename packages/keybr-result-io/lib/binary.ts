@@ -5,23 +5,20 @@ import { Histogram, type Sample } from "@keybr/textinput";
 import { InvalidFormatError } from "./errors.ts";
 import { validateHeader } from "./header.ts";
 
-export function writeResult(
-  writer: Writer,
-  { layout, textType, timeStamp, time, length, errors, histogram }: Result,
-): void {
-  const samples = [...histogram];
-  writer.putUint8(layout.xid);
-  writer.putUint8(textType.xid);
-  writer.putUint32(Math.round(timeStamp / 1000));
-  writer.putUintVlq(time);
-  writer.putUintVlq(length);
-  writer.putUintVlq(errors);
+export function writeResult(writer: Writer, result: Result): void {
+  const samples = [...result.histogram];
+  writer.putUint8(result.layout.xid);
+  writer.putUint8(result.textType.xid);
+  writer.putUint32(Math.round(result.timeStamp / 1000));
+  writer.putUintVlq(result.time);
+  writer.putUintVlq(result.length);
+  writer.putUintVlq(result.errors);
   writer.putUintVlq(samples.length);
-  for (const { codePoint, hitCount, missCount, timeToType } of samples) {
-    writer.putUintVlq(codePoint);
-    writer.putUintVlq(hitCount);
-    writer.putUintVlq(missCount);
-    writer.putUintVlq(timeToType);
+  for (const sample of samples) {
+    writer.putUintVlq(sample.codePoint);
+    writer.putUintVlq(sample.hitCount);
+    writer.putUintVlq(sample.missCount);
+    writer.putUintVlq(sample.timeToType);
   }
 }
 

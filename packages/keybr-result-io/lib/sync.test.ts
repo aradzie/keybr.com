@@ -8,7 +8,7 @@ import { InvalidFormatError } from "./errors.ts";
 import { HEADER, HEADER_SIGNATURE, HEADER_VERSION } from "./header.ts";
 import { formatMessage, parseMessage } from "./sync.ts";
 
-test("serialize should format and parse valid result", (t) => {
+test("format and parse results", (t) => {
   const faker = new ResultFaker();
   const result = faker.nextResult();
 
