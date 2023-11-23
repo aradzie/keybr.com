@@ -2,11 +2,11 @@ import test from "ava";
 import { Histogram } from "./histogram.ts";
 import { newStats } from "./stats.ts";
 
-const A = 0x61;
-const B = 0x62;
-const C = 0x63;
-const X = 0x78;
-const Space = 32;
+const A = 0x0061;
+const B = 0x0062;
+const C = 0x0063;
+const X = 0x0078;
+const Space = 0x0020;
 
 test("compute stats", (t) => {
   const stats = newStats([

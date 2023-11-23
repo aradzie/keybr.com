@@ -1,10 +1,10 @@
 import test from "ava";
 import { Histogram } from "./histogram.ts";
 
-const A = 0x61;
-const B = 0x62;
-const C = 0x63;
-const X = 0x78;
+const A = 0x0061;
+const B = 0x0062;
+const C = 0x0063;
+const X = 0x0078;
 
 test("build empty histogram", (t) => {
   const histogram = Histogram.from([]);

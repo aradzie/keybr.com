@@ -9,9 +9,9 @@ test("write and read", (t) => {
   // Arrange.
 
   const histogram = new Histogram([
-    { codePoint: 97, hitCount: 11, missCount: 1, timeToType: 111 },
-    { codePoint: 98, hitCount: 22, missCount: 2, timeToType: 222 },
-    { codePoint: 99, hitCount: 33, missCount: 3, timeToType: 333 },
+    { codePoint: 0x0061, hitCount: 11, missCount: 1, timeToType: 111 },
+    { codePoint: 0x0062, hitCount: 22, missCount: 2, timeToType: 222 },
+    { codePoint: 0x0063, hitCount: 33, missCount: 3, timeToType: 333 },
   ]);
 
   const result = new Result(
