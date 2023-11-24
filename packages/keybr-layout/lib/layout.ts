@@ -10,7 +10,7 @@ export class Layout implements XEnumItem {
     /* name= */ "US",
     /* family= */ LayoutFamily.QWERTY,
     /* language= */ Language.EN,
-    /* emulate= */ true,
+    /* emulate= */ false,
     /* geometries= */ new Enum(
       Geometry.STANDARD_101,
       Geometry.STANDARD_101_FULL,
