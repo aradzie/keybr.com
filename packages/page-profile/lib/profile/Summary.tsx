@@ -12,10 +12,10 @@ export function AllTimeSummary({
   readonly summary: ResultSummary;
 }): ReactNode {
   const { formatMessage } = useIntl();
-  const { formatNumber } = useIntlNumbers();
+  const { formatNumber, formatPercents } = useIntlNumbers();
   const { formatSpeed } = useFormatter();
 
-  const { count, time, speed } = summary.allTimeStats.stats;
+  const { count, time, speed, accuracy } = summary.allTimeStats.stats;
 
   return (
     <>
@@ -83,6 +83,34 @@ export function AllTimeSummary({
             defaultMessage: "Average typing speed.",
           })}
         />
+
+        <Statistic
+          name={formatMessage({
+            id: "metric.summary.topAccuracy.label",
+            description: "Widget name.",
+            defaultMessage: "Top Accuracy",
+          })}
+          value={accuracy.max > 0 ? formatPercents(accuracy.max) : "N/A"}
+          title={formatMessage({
+            id: "metric.summary.topAccuracy.description",
+            description: "Widget description.",
+            defaultMessage: "Top typing accuracy.",
+          })}
+        />
+
+        <Statistic
+          name={formatMessage({
+            id: "metric.summary.averageAccuracy.label",
+            description: "Widget name.",
+            defaultMessage: "Average Accuracy",
+          })}
+          value={accuracy.avg > 0 ? formatPercents(accuracy.avg) : "N/A"}
+          title={formatMessage({
+            id: "metric.summary.averageAccuracy.description",
+            description: "Widget description.",
+            defaultMessage: "Average typing accuracy.",
+          })}
+        />
       </Para>
     </>
   );
@@ -94,10 +122,10 @@ export function TodaySummary({
   readonly summary: ResultSummary;
 }): ReactNode {
   const { formatMessage } = useIntl();
-  const { formatNumber } = useIntlNumbers();
+  const { formatNumber, formatPercents } = useIntlNumbers();
   const { formatSpeed } = useFormatter();
 
-  const { count, time, speed } = summary.todayStats.stats;
+  const { count, time, speed, accuracy } = summary.todayStats.stats;
 
   return (
     <>
@@ -163,6 +191,34 @@ export function TodaySummary({
             id: "metric.summary.averageSpeedToday.description",
             description: "Widget description.",
             defaultMessage: "Average typing speed today.",
+          })}
+        />
+
+        <Statistic
+          name={formatMessage({
+            id: "metric.summary.topAccuracyToday.label",
+            description: "Widget name.",
+            defaultMessage: "Top Accuracy",
+          })}
+          value={accuracy.max > 0 ? formatPercents(accuracy.max) : "N/A"}
+          title={formatMessage({
+            id: "metric.summary.topAccuracyToday.description",
+            description: "Widget description.",
+            defaultMessage: "Top typing accuracy today.",
+          })}
+        />
+
+        <Statistic
+          name={formatMessage({
+            id: "metric.summary.averageAccuracyToday.label",
+            description: "Widget name.",
+            defaultMessage: "Average Accuracy",
+          })}
+          value={accuracy.avg > 0 ? formatPercents(accuracy.avg) : "N/A"}
+          title={formatMessage({
+            id: "metric.summary.averageAccuracyToday.description",
+            description: "Widget description.",
+            defaultMessage: "Average typing accuracy today.",
           })}
         />
       </Para>
