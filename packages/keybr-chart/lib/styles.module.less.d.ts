@@ -9,7 +9,6 @@ export const speed: string;
 export const accuracy: string;
 export const complexity: string;
 export const threshold: string;
-export const keySpeed_b: string;
 export const keyFrequency_h: string;
 export const keyFrequency_m: string;
 export const keyFrequency_r: string;

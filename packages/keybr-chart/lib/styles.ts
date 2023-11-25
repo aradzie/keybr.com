@@ -14,7 +14,6 @@ export const chartStyles = {
   complexityLine: calcStyle([styles.complexity]),
   accuracyLine: calcStyle([styles.accuracy]),
   speedLine: calcStyle([styles.speed]),
-  keySpeedBar: calcStyle([styles.keySpeed_b]),
   histHitBar: calcStyle([styles.keyFrequency_h]),
   histMissBar: calcStyle([styles.keyFrequency_m]),
   histRatioBar: calcStyle([styles.keyFrequency_r]),
