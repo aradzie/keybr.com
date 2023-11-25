@@ -360,6 +360,22 @@ export class Layout implements XEnumItem {
     ),
   );
 
+  static readonly CS_CZ = new Layout(
+    /* id= */ "cz",
+    /* xid= */ 0x81,
+    /* name= */ "Czechia",
+    /* family= */ LayoutFamily.QWERTZ,
+    /* language= */ Language.CS,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
+
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
     Layout.EN_US_DVORAK,
@@ -368,6 +384,7 @@ export class Layout implements XEnumItem {
     Layout.EN_US_COLEMAK_DH_MATRIX,
     Layout.EN_US_WORKMAN,
     Layout.EN_UK,
+    Layout.CS_CZ,
     Layout.DE_DE,
     Layout.DE_CH,
     Layout.FR_FR,

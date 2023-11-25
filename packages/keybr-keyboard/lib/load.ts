@@ -8,6 +8,7 @@ import {
 } from "./data/geometry.ts";
 import {
   LAYOUT_BE_BY_WIN,
+  LAYOUT_CS_CZ_WIN,
   LAYOUT_DE_CH_WIN,
   LAYOUT_DE_DE_WIN,
   LAYOUT_EN_UK_WIN,
@@ -37,6 +38,7 @@ import { type CodePointDict, type GeometryDict } from "./types.ts";
 
 const layoutDict = new Map<Layout, CodePointDict>([
   [Layout.BE_BY, LAYOUT_BE_BY_WIN],
+  [Layout.CS_CZ, LAYOUT_CS_CZ_WIN],
   [Layout.DE_CH, LAYOUT_DE_CH_WIN],
   [Layout.DE_DE, LAYOUT_DE_DE_WIN],
   [Layout.EN_UK, LAYOUT_EN_UK_WIN],

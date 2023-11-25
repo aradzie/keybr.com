@@ -7,6 +7,11 @@ export const languageNames = defineMessages({
     description: "Language name.",
     defaultMessage: "Belarusian (Беларуская)",
   },
+  cs: {
+    id: "language.cs.name",
+    description: "Language name.",
+    defaultMessage: "Czech (Čeština)",
+  },
   de: {
     id: "language.de.name",
     description: "Language name.",
