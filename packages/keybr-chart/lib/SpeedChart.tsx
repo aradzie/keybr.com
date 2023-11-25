@@ -29,7 +29,7 @@ export function SpeedChart({
 
 function usePaint(results: readonly Result[], smoothness: number) {
   const { formatMessage } = useIntl();
-  const { formatInteger } = useIntlNumbers();
+  const { formatInteger, formatPercents } = useIntlNumbers();
   const { formatSpeed } = useFormatter();
 
   if (!hasData(results)) {
@@ -59,13 +59,16 @@ function usePaint(results: readonly Result[], smoothness: number) {
     vSpeed.add(sSpeed(result.speed));
   }
   const rIndex = Range.from(vIndex);
+  const rComplexity = Range.from(vComplexity).round(1);
+  const rAccuracy = Range.from(vAccuracy).round(0.01);
   const rSpeed = Range.from(vSpeed).round(5);
+  rComplexity.min = 3;
 
   const mSpeed = linearRegression(vIndex, vSpeed);
 
   return (box: Rect): ShapeList => {
-    const projComplexity = projection(box, rIndex, Range.from(vComplexity));
-    const projAccuracy = projection(box, rIndex, Range.from(vAccuracy));
+    const projComplexity = projection(box, rIndex, rComplexity);
+    const projAccuracy = projection(box, rIndex, rAccuracy);
     const projSpeed = projection(box, rIndex, rSpeed);
     return [
       paintGrid(box, "vertical", { lines: 5 }),
@@ -89,6 +92,7 @@ function usePaint(results: readonly Result[], smoothness: number) {
       paintAxis(box, "bottom"),
       paintTicks(box, rIndex, "bottom", { lines: 5, fmt: formatInteger }),
       paintTicks(box, rSpeed, "left", { fmt: formatSpeed }),
+      paintTicks(box, rAccuracy, "right", { fmt: formatPercents }),
     ];
   };
 }

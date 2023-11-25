@@ -9,7 +9,7 @@ import { type MessageDescriptor } from "react-intl";
 import { hBoxes, hTicks, vBoxes, vTicks } from "./geometry.ts";
 import { chartStyles } from "./styles.ts";
 
-export type Edge = "left" | "bottom";
+export type Edge = "left" | "right" | "top" | "bottom";
 
 export function paintGrid(
   box: Rect,
@@ -112,6 +112,26 @@ export function paintAxis(
           height: box.height + margin,
         }),
       );
+    case "right":
+      return Shapes.fill(
+        style,
+        Shapes.rect({
+          x: box.x + box.width + 1,
+          y: box.y - margin,
+          width: 3,
+          height: box.height + margin,
+        }),
+      );
+    case "top":
+      return Shapes.fill(
+        style,
+        Shapes.rect({
+          x: box.x,
+          y: box.y - 1,
+          width: box.width + margin,
+          height: 3,
+        }),
+      );
     case "bottom":
       return Shapes.fill(
         style,
@@ -148,6 +168,30 @@ export function paintTicks(
             value: fmt(value),
             x: x - 5,
             y,
+            style,
+          }),
+      );
+    }
+    case "right": {
+      style = { ...style, textAlign: "left", textBaseline: "middle" };
+      return hTicks(box, makeTicks(range, lines)).map(
+        ({ value, point: { x, y } }) =>
+          Shapes.fillText({
+            value: fmt(value),
+            x: x + box.width + 5,
+            y,
+            style,
+          }),
+      );
+    }
+    case "top": {
+      style = { ...style, textAlign: "center", textBaseline: "bottom" };
+      return vTicks(box, makeTicks(range, lines)).map(
+        ({ value, point: { x, y } }) =>
+          Shapes.fillText({
+            value: fmt(value),
+            x,
+            y: y - 5,
             style,
           }),
       );
@@ -189,6 +233,28 @@ export function paintKeyTicks<T>(
           value: fmt(value),
           x: box.x - 4,
           y: rect.cy,
+          style,
+        }),
+      );
+    }
+    case "right": {
+      style = { ...style, textAlign: "left", textBaseline: "middle" };
+      return hBoxes(box, items, { margin }).map(({ value, rect }) =>
+        Shapes.fillText({
+          value: fmt(value),
+          x: box.x + box.width + 4,
+          y: rect.cy,
+          style,
+        }),
+      );
+    }
+    case "top": {
+      style = { ...style, textAlign: "center", textBaseline: "bottom" };
+      return vBoxes(box, items, { margin }).map(({ value, rect }) =>
+        Shapes.fillText({
+          value: fmt(value),
+          x: rect.cx,
+          y: box.y - 3,
           style,
         }),
       );
