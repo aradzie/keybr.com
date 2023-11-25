@@ -8,6 +8,7 @@ type Props = {
     | "speed"
     | "accuracy"
     | "complexity"
+    | "threshold"
     | "histogram-h"
     | "histogram-m"
     | "histogram-r";
@@ -30,6 +31,9 @@ export function Marker({ type }: Props): ReactNode {
       break;
     case "complexity":
       cn = styles.legend_complexity;
+      break;
+    case "threshold":
+      cn = styles.legend_threshold;
       break;
     case "histogram-h":
       cn = styles.legend_histogram_h;

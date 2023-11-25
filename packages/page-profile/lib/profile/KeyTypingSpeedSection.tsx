@@ -84,9 +84,10 @@ export function KeyTypingSpeedSection({
         <FormattedMessage
           id="profile.chart.keySpeed.legend"
           description="Message text."
-          defaultMessage="Horizontal axis: lesson number. Vertical axis: {label1} – typing speed for the currently selected key."
+          defaultMessage="Horizontal axis: lesson number. Vertical axis: {label1} – typing speed for the currently selected key, {label2} - target typing speed."
           values={{
             label1: <Marker type="speed" />,
+            label2: <Marker type="threshold" />,
           }}
         />
       </Figure.Legend>

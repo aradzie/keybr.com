@@ -1,4 +1,4 @@
-import { KeyFrequencyHeatmap } from "@keybr/chart";
+import { KeyFrequencyHeatmap, Marker } from "@keybr/chart";
 import { useKeyboard } from "@keybr/keyboard";
 import { type KeyStatsMap } from "@keybr/result";
 import { Figure } from "@keybr/widget";
@@ -30,6 +30,18 @@ export function KeyFrequencyHeatmapSection({
       </Figure.Description>
 
       <KeyFrequencyHeatmap keyStatsMap={keyStatsMap} keyboard={keyboard} />
+
+      <Figure.Legend>
+        <FormattedMessage
+          id="profile.chart.keyFrequencyHeatmap.legend"
+          description="Message text."
+          defaultMessage="Circle color: {label1} – hit count, {label2} – miss count."
+          values={{
+            label1: <Marker type="histogram-h" />,
+            label2: <Marker type="histogram-m" />,
+          }}
+        />
+      </Figure.Legend>
     </Figure>
   );
 }
