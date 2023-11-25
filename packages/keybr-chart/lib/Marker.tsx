@@ -7,7 +7,7 @@ type Props = {
     | "fast"
     | "speed"
     | "accuracy"
-    | "keyCount"
+    | "complexity"
     | "histogram-h"
     | "histogram-m"
     | "histogram-r";
@@ -28,8 +28,8 @@ export function Marker({ type }: Props): ReactNode {
     case "accuracy":
       cn = styles.legend_accuracy;
       break;
-    case "keyCount":
-      cn = styles.legend_keyCount;
+    case "complexity":
+      cn = styles.legend_complexity;
       break;
     case "histogram-h":
       cn = styles.legend_histogram_h;

@@ -11,7 +11,7 @@ export const chartStyles = {
   valueLabel: calcStyle([styles.valueLabel]),
   thresholdLine: calcStyle([styles.threshold]),
   thresholdLabel: calcStyle([styles.threshold, styles.valueLabel]),
-  keyCountLine: calcStyle([styles.keyCount]),
+  complexityLine: calcStyle([styles.complexity]),
   accuracyLine: calcStyle([styles.accuracy]),
   speedLine: calcStyle([styles.speed]),
   keySpeedBar: calcStyle([styles.keySpeed_b]),

@@ -74,7 +74,7 @@ function usePaint(results: readonly Result[], smoothness: number) {
       paintGrid(box, "vertical", { lines: 5 }),
       paintGrid(box, "horizontal", { lines: 5 }),
       paintScatterPlot(projComplexity, vIndex, vComplexity, {
-        style: chartStyles.keyCountLine,
+        style: chartStyles.complexityLine,
       }),
       paintScatterPlot(projAccuracy, vIndex, vAccuracy, {
         style: chartStyles.accuracyLine,

@@ -59,7 +59,7 @@ export function TypingSpeedSection({
           values={{
             label1: <Marker type="speed" />,
             label2: <Marker type="accuracy" />,
-            label3: <Marker type="keyCount" />,
+            label3: <Marker type="complexity" />,
           }}
         />
       </Figure.Legend>

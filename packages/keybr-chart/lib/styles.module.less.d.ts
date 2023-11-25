@@ -7,7 +7,7 @@ export const subheaderText: string;
 export const normalText: string;
 export const speed: string;
 export const accuracy: string;
-export const keyCount: string;
+export const complexity: string;
 export const threshold: string;
 export const keySpeed_b: string;
 export const keyFrequency_h: string;
