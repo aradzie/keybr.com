@@ -74,17 +74,17 @@ function usePaint(results: readonly Result[], smoothness: number) {
       paintGrid(box, "vertical", { lines: 5 }),
       paintGrid(box, "horizontal", { lines: 5 }),
       paintScatterPlot(projComplexity, vIndex, vComplexity, {
-        style: chartStyles.complexityLine,
+        style: chartStyles.complexity,
       }),
       paintScatterPlot(projAccuracy, vIndex, vAccuracy, {
-        style: chartStyles.accuracyLine,
+        style: chartStyles.accuracy,
       }),
       paintScatterPlot(projSpeed, vIndex, vSpeed, {
-        style: chartStyles.speedLine,
+        style: chartStyles.speed,
       }),
       paintCurve(projSpeed, mSpeed, {
         style: {
-          ...chartStyles.speedLine,
+          ...chartStyles.speed,
           lineWidth: 2,
         },
       }),

@@ -77,17 +77,17 @@ function usePaint(samples: readonly KeySample[], smoothness: number) {
       paintGrid(box, "vertical", { lines: 5 }),
       paintGrid(box, "horizontal", { lines: 5 }),
       paintScatterPlot(proj, vIndex, vSpeed, {
-        style: chartStyles.speedLine,
+        style: chartStyles.speed,
       }),
       paintCurve(proj, mSpeed, {
         style: {
-          ...chartStyles.speedLine,
+          ...chartStyles.speed,
           lineWidth: 2,
         },
       }),
       paintCurve(proj, constModel(target.targetSpeed), {
         style: {
-          ...chartStyles.thresholdLine,
+          ...chartStyles.threshold,
           lineWidth: 2,
         },
       }),

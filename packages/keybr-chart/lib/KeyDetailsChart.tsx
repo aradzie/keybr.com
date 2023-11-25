@@ -68,17 +68,17 @@ function usePaint(lessonKey: LessonKey, learningRate: LearningRate | null) {
       paintGrid(box, "horizontal", { lines: 5 }),
       now > 0 && paintThresholdLine({ label: "Now", value: now }),
       paintScatterPlot(proj, vIndex, vSpeed, {
-        style: chartStyles.speedLine,
+        style: chartStyles.speed,
       }),
       paintCurve(proj, mSpeed, {
         style: {
-          ...chartStyles.speedLine,
+          ...chartStyles.speed,
           lineWidth: 2,
         },
       }),
       paintCurve(proj, constModel(target.targetSpeed), {
         style: {
-          ...chartStyles.thresholdLine,
+          ...chartStyles.threshold,
           lineWidth: 2,
         },
       }),
@@ -97,7 +97,7 @@ function usePaint(lessonKey: LessonKey, learningRate: LearningRate | null) {
     }): ShapeList {
       const x = proj.x(value);
       return [
-        Shapes.fill(chartStyles.thresholdLine, [
+        Shapes.fill(chartStyles.threshold, [
           Shapes.rect({
             x: Math.round(x),
             y: box.y - 10,

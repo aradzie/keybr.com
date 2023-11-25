@@ -16,7 +16,7 @@ export function paintGrid(
   direction: "vertical" | "horizontal",
   {
     lines = 3,
-    style = chartStyles.lighterFrameLine,
+    style = chartStyles.lighterFrame,
   }: {
     readonly lines?: number;
     readonly style?: GraphicsStyle;
@@ -53,7 +53,7 @@ export function paintGrid(
 export function paintFrame(
   box: Rect,
   {
-    style = chartStyles.frameLine,
+    style = chartStyles.frame,
   }: {
     readonly style?: GraphicsStyle;
   } = {},
@@ -95,7 +95,7 @@ export function paintAxis(
   edge: Edge,
   {
     margin = 20,
-    style = chartStyles.frameLine,
+    style = chartStyles.frame,
   }: {
     readonly margin?: number;
     readonly style?: GraphicsStyle;

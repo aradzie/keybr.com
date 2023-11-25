@@ -61,7 +61,7 @@ function usePaint(keyStatsMap: KeyStatsMap) {
   return (box: Rect): ShapeList => {
     return [
       paintGrid(box, "horizontal"),
-      paintHistogram(box, vSpeed, rSpeed, { style: chartStyles.speedLine }),
+      paintHistogram(box, vSpeed, rSpeed, { style: chartStyles.speed }),
       paintFrame(box),
       paintTicks(box, rSpeed, "left", { fmt: formatSpeed }),
       paintKeyTicks(box, letters, "bottom"),

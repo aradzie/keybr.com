@@ -53,13 +53,13 @@ function usePaint(keyStatsMap: KeyStatsMap) {
     const [boxHit, boxMiss, boxRatio] = boxes(box);
     return [
       paintHistogram(boxHit, vHit, rHit, {
-        style: chartStyles.histHitBar,
+        style: chartStyles.histHit,
       }),
       paintHistogram(boxMiss, vMiss, rMiss, {
-        style: chartStyles.histMissBar,
+        style: chartStyles.histMiss,
       }),
       paintHistogram(boxRatio, vRatio, rRatio, {
-        style: chartStyles.histRatioBar,
+        style: chartStyles.histRatio,
       }),
       paintFrame(boxHit),
       paintFrame(boxMiss),

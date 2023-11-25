@@ -68,7 +68,7 @@ function usePaint(keyStatsMap: KeyStatsMap) {
     ];
 
     function paintGrid1(): ShapeList {
-      return Shapes.fill(chartStyles.lighterFrameLine, [
+      return Shapes.fill(chartStyles.lighterFrame, [
         boxes.map(({ rect }) =>
           Shapes.rect({
             x: rect.x,

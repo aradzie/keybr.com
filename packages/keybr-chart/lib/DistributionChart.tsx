@@ -60,7 +60,7 @@ function usePaint({ samples }: Distribution, thresholds: readonly Threshold[]) {
 
     function paintHistogram(): ShapeList {
       return Shapes.fill(
-        chartStyles.speedLine,
+        chartStyles.speed,
         samples.map((value, index) => {
           const w = Math.ceil(sx);
           const h = Math.round((value - rValue.min) * sy);
@@ -88,7 +88,7 @@ function usePaint({ samples }: Distribution, thresholds: readonly Threshold[]) {
       }
       const x = Math.round((value - rIndex.min) * sx);
       return [
-        Shapes.fill(chartStyles.thresholdLine, [
+        Shapes.fill(chartStyles.threshold, [
           Shapes.rect({
             x: box.x + x,
             y: box.y - 10,
