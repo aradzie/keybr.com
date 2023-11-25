@@ -90,6 +90,7 @@
   "language.pl.name": "Polski",
   "language.pt.name": "Portugalski (Português)",
   "language.ru.name": "Rosyjski (Русский)",
+  "language.sv.name": "Szwedzki (Svenska)",
   "language.uk.name": "Ukraiński (Українська)",
   "layouts.heatmap.caption": "Mapa cieplna częstotliwości naciskania klawiszy dla {name}",
   "layouts.heatmap.description": "Ten diagram pokazuje względne częstotliwości naciskania klawiszy w formie mapy cieplnej.",

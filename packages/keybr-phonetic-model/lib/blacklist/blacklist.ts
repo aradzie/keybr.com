@@ -8,6 +8,7 @@ import blacklistIt from "./blacklist-it.json";
 import blacklistPl from "./blacklist-pl.json";
 import blacklistPt from "./blacklist-pt.json";
 import blacklistRu from "./blacklist-ru.json";
+import blacklistSv from "./blacklist-sv.json";
 import blacklistUk from "./blacklist-uk.json";
 import { unscrambleWord } from "./scramble.ts";
 
@@ -27,6 +28,7 @@ const blacklistByLanguage = ((items: [Language, string[]][]) =>
   [Language.PL, blacklistPl],
   [Language.PT, blacklistPt],
   [Language.RU, blacklistRu],
+  [Language.SV, blacklistSv],
   [Language.UK, blacklistUk],
 ]);
 

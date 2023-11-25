@@ -90,6 +90,7 @@
   "language.pl.name": "Polish (Polski)",
   "language.pt.name": "Portuguese (Português)",
   "language.ru.name": "Russian (Русский)",
+  "language.sv.name": "Swedish (Svenska)",
   "language.uk.name": "Ukrainian (Українська)",
   "layouts.heatmap.caption": "Key Frequency Heatmap for {name}",
   "layouts.heatmap.description": "This chart shows relative key frequencies as a heatmap.",

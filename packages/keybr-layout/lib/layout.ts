@@ -344,6 +344,22 @@ export class Layout implements XEnumItem {
     ),
   );
 
+  static readonly SV_SE = new Layout(
+    /* id= */ "se",
+    /* xid= */ 0x80,
+    /* name= */ "Sweden",
+    /* family= */ LayoutFamily.QWERTY,
+    /* language= */ Language.SV,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
+
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
     Layout.EN_US_DVORAK,
@@ -366,6 +382,7 @@ export class Layout implements XEnumItem {
     Layout.PT_BR,
     Layout.PT_PT,
     Layout.BE_BY,
+    Layout.SV_SE,
     Layout.UK_UA,
     Layout.RU_RU,
   );

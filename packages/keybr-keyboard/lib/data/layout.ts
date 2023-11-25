@@ -20,4 +20,5 @@ export { LAYOUT_PL_PL_WIN } from "./layout/pl_pl-win.ts";
 export { LAYOUT_PT_BR_WIN } from "./layout/pt_br-win.ts";
 export { LAYOUT_PT_PT_WIN } from "./layout/pt_pt-win.ts";
 export { LAYOUT_RU_RU_WIN } from "./layout/ru_ru-win.ts";
+export { LAYOUT_SV_SE_WIN } from "./layout/sv_se-win.ts";
 export { LAYOUT_UK_UA_WIN } from "./layout/uk_ua-win.ts";

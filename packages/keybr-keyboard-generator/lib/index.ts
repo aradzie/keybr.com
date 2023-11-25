@@ -13,6 +13,18 @@ import { readXml } from "./xml.ts";
 
 const files: readonly [input: string | LayoutConfig, output: string][] = [
   [
+    "cldr-keyboards-43.0/keyboards/windows/be-t-k0-windows.xml",
+    "../keybr-keyboard/lib/data/layout/be_by-win.ts",
+  ],
+  [
+    "cldr-keyboards-43.0/keyboards/windows/de-t-k0-windows.xml",
+    "../keybr-keyboard/lib/data/layout/de_de-win.ts",
+  ],
+  [
+    "cldr-keyboards-43.0/keyboards/windows/de-CH-t-k0-windows.xml",
+    "../keybr-keyboard/lib/data/layout/de_ch-win.ts",
+  ],
+  [
     "cldr-keyboards-43.0/keyboards/windows/en-t-k0-windows.xml",
     "../keybr-keyboard/lib/data/layout/en_us-win.ts",
   ],
@@ -25,12 +37,8 @@ const files: readonly [input: string | LayoutConfig, output: string][] = [
     "../keybr-keyboard/lib/data/layout/en_uk-win.ts",
   ],
   [
-    "cldr-keyboards-43.0/keyboards/windows/de-t-k0-windows.xml",
-    "../keybr-keyboard/lib/data/layout/de_de-win.ts",
-  ],
-  [
-    "cldr-keyboards-43.0/keyboards/windows/de-CH-t-k0-windows.xml",
-    "../keybr-keyboard/lib/data/layout/de_ch-win.ts",
+    "cldr-keyboards-43.0/keyboards/windows/es-t-k0-windows.xml",
+    "../keybr-keyboard/lib/data/layout/es_es-win.ts",
   ],
   [
     "cldr-keyboards-43.0/keyboards/windows/fr-t-k0-windows.xml",
@@ -49,10 +57,6 @@ const files: readonly [input: string | LayoutConfig, output: string][] = [
     "../keybr-keyboard/lib/data/layout/it_it-win.ts",
   ],
   [
-    "cldr-keyboards-43.0/keyboards/windows/es-t-k0-windows.xml",
-    "../keybr-keyboard/lib/data/layout/es_es-win.ts",
-  ],
-  [
     "cldr-keyboards-43.0/keyboards/windows/pl-t-k0-windows-extended.xml",
     "../keybr-keyboard/lib/data/layout/pl_pl-win.ts",
   ],
@@ -64,13 +68,14 @@ const files: readonly [input: string | LayoutConfig, output: string][] = [
     "cldr-keyboards-43.0/keyboards/windows/pt-PT-t-k0-windows.xml",
     "../keybr-keyboard/lib/data/layout/pt_pt-win.ts",
   ],
-  [
-    "cldr-keyboards-43.0/keyboards/windows/be-t-k0-windows.xml",
-    "../keybr-keyboard/lib/data/layout/be_by-win.ts",
-  ],
+
   [
     "cldr-keyboards-43.0/keyboards/windows/ru-t-k0-windows.xml",
     "../keybr-keyboard/lib/data/layout/ru_ru-win.ts",
+  ],
+  [
+    "cldr-keyboards-43.0/keyboards/windows/sv-t-k0-windows.xml",
+    "../keybr-keyboard/lib/data/layout/sv_se-win.ts",
   ],
   [
     "cldr-keyboards-43.0/keyboards/windows/uk-t-k0-windows.xml",
