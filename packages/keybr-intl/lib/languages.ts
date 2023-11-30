@@ -52,6 +52,11 @@ export const languageNames = defineMessages({
     description: "Language name.",
     defaultMessage: "Russian (Русский)",
   },
+  sl: {
+    id: "language.sl.name",
+    description: "Language name.",
+    defaultMessage: "Slovenian (Slovenščina)",
+  },
   sv: {
     id: "language.sv.name",
     description: "Language name.",

@@ -73,6 +73,13 @@ export async function loadWordList(language: Language): Promise<WordList> {
           "./data/words-ru.json"
         )
       ).default as unknown as WordList;
+    case Language.SL:
+      return (
+        await import(
+          /* webpackChunkName: "words-sl" */
+          "./data/words-sl.json"
+        )
+      ).default as unknown as WordList;
     case Language.SV:
       return (
         await import(

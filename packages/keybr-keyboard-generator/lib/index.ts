@@ -78,6 +78,10 @@ const files: readonly [input: string | LayoutConfig, output: string][] = [
     "../keybr-keyboard/lib/data/layout/ru_ru-win.ts",
   ],
   [
+    "cldr-keyboards-43.0/keyboards/windows/sl-t-k0-windows.xml",
+    "../keybr-keyboard/lib/data/layout/sl_si-win.ts",
+  ],
+  [
     "cldr-keyboards-43.0/keyboards/windows/sv-t-k0-windows.xml",
     "../keybr-keyboard/lib/data/layout/sv_se-win.ts",
   ],

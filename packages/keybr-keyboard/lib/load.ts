@@ -30,6 +30,7 @@ import {
   LAYOUT_PT_BR_WIN,
   LAYOUT_PT_PT_WIN,
   LAYOUT_RU_RU_WIN,
+  LAYOUT_SL_SI_WIN,
   LAYOUT_SV_SE_WIN,
   LAYOUT_UK_UA_WIN,
 } from "./data/layout.ts";
@@ -60,6 +61,7 @@ const layoutDict = new Map<Layout, CodePointDict>([
   [Layout.PT_BR, LAYOUT_PT_BR_WIN],
   [Layout.PT_PT, LAYOUT_PT_PT_WIN],
   [Layout.RU_RU, LAYOUT_RU_RU_WIN],
+  [Layout.SL_SI, LAYOUT_SL_SI_WIN],
   [Layout.SV_SE, LAYOUT_SV_SE_WIN],
   [Layout.UK_UA, LAYOUT_UK_UA_WIN],
 ]);

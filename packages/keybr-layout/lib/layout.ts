@@ -375,6 +375,21 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly SL_SI = new Layout(
+    /* id= */ "sl-si",
+    /* xid= */ 0x82,
+    /* name= */ "Slovenia",
+    /* family= */ LayoutFamily.QWERTZ,
+    /* language= */ Language.SL,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
 
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
@@ -399,6 +414,7 @@ export class Layout implements XEnumItem {
     Layout.PT_BR,
     Layout.PT_PT,
     Layout.BE_BY,
+    Layout.SL_SI,
     Layout.SV_SE,
     Layout.UK_UA,
     Layout.RU_RU,
