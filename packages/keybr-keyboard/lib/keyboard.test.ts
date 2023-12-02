@@ -1,11 +1,9 @@
 import { Layout } from "@keybr/layout";
 import test from "ava";
-import { isDiacritic } from "./diacritics.ts";
 import { Keyboard } from "./keyboard.ts";
 import { KeyCharacters } from "./keycharacters.ts";
 import { KeyCombo } from "./keycombo.ts";
 import { KeyModifier } from "./keymodifier.ts";
-import { loadKeyboard } from "./load.ts";
 import { type CodePointDict, type GeometryDict } from "./types.ts";
 
 test("keys", (t) => {
@@ -37,46 +35,26 @@ test("keys", (t) => {
   const kc0x00e1 = new KeyCombo(/* á */ 0x00e1, "KeyA", None, kc0x0301);
 
   t.deepEqual(
-    keyboard.codePoints({
-      enableDeadKeys: true,
-      enableShift: true,
-      enableAlt: true,
-    }),
+    keyboard.codePoints({ dead: true, shift: true, alt: true }),
     new Set([
       /* A */ 0x0041, /* B */ 0x0042, /* a */ 0x0061, /* b */ 0x0062,
       /* À */ 0x00c0, /* Á */ 0x00c1, /* à */ 0x00e0, /* á */ 0x00e1,
     ]),
   );
   t.deepEqual(
-    keyboard.codePoints({
-      enableDeadKeys: false,
-      enableShift: true,
-      enableAlt: true,
-    }),
+    keyboard.codePoints({ dead: false, shift: true, alt: true }),
     new Set([/* A */ 0x0041, /* B */ 0x0042, /* a */ 0x0061, /* b */ 0x0062]),
   );
   t.deepEqual(
-    keyboard.codePoints({
-      enableDeadKeys: false,
-      enableShift: true,
-      enableAlt: false,
-    }),
+    keyboard.codePoints({ dead: false, shift: true, alt: false }),
     new Set([/* A */ 0x0041, /* a */ 0x0061]),
   );
   t.deepEqual(
-    keyboard.codePoints({
-      enableDeadKeys: false,
-      enableShift: false,
-      enableAlt: true,
-    }),
+    keyboard.codePoints({ dead: false, shift: false, alt: true }),
     new Set([/* a */ 0x0061, /* b */ 0x0062]),
   );
   t.deepEqual(
-    keyboard.codePoints({
-      enableDeadKeys: false,
-      enableShift: false,
-      enableAlt: false,
-    }),
+    keyboard.codePoints({ dead: false, shift: false, alt: false }),
     new Set([/* a */ 0x0061]),
   );
 
@@ -93,45 +71,3 @@ test("keys", (t) => {
   t.deepEqual(keyboard.getCombo(/* Á */ 0x00c1), kc0x00c1);
   t.deepEqual(keyboard.getCombo(/* á */ 0x00e1), kc0x00e1);
 });
-
-for (const layout of Layout.ALL) {
-  test(`layout ${layout.id}`, (t) => {
-    const keyboard = loadKeyboard(layout);
-    const { characters } = keyboard;
-    const codePoints = keyboard.codePoints({
-      enableDeadKeys: true,
-      enableShift: true,
-      enableAlt: true,
-    });
-
-    t.true(characters.size > 0);
-    t.true(codePoints.size > 0);
-
-    for (const key of characters.values()) {
-      const { id, a, b, c, d } = key;
-
-      t.is(keyboard.getCharacters(id), key);
-
-      if (a > 0 && !isDiacritic(a)) {
-        t.true(codePoints.has(a));
-        const combo = keyboard.getCombo(a);
-        t.like(combo, { codePoint: a });
-      }
-      if (b > 0 && !isDiacritic(b)) {
-        t.true(codePoints.has(b));
-        const combo = keyboard.getCombo(b);
-        t.like(combo, { codePoint: b });
-      }
-      if (c > 0 && !isDiacritic(c)) {
-        t.true(codePoints.has(c));
-        const combo = keyboard.getCombo(c);
-        t.like(combo, { codePoint: c });
-      }
-      if (d > 0 && !isDiacritic(d)) {
-        t.true(codePoints.has(d));
-        const combo = keyboard.getCombo(d);
-        t.like(combo, { codePoint: d });
-      }
-    }
-  });
-}

@@ -1,71 +1,51 @@
-export enum KeyModifier {
-  None,
-  Shift,
-  Alt,
-  ShiftAlt,
-}
+export class KeyModifier {
+  static readonly None = new KeyModifier(/* shift= */ false, /* alt= */ false);
+  static readonly Shift = new KeyModifier(/* shift= */ true, /* alt= */ false);
+  static readonly Alt = new KeyModifier(/* shift= */ false, /* alt= */ true);
+  static readonly ShiftAlt = new KeyModifier(
+    /* shift= */ true,
+    /* alt= */ true,
+  );
 
-export namespace KeyModifier {
-  const { None, Shift, Alt, ShiftAlt } = KeyModifier;
+  readonly shift: boolean;
+  readonly alt: boolean;
+  readonly complexity: number;
 
-  export const of = ({
+  private constructor(shift: boolean, alt: boolean) {
+    this.shift = shift;
+    this.alt = alt;
+    this.complexity = complexityOf(shift, alt);
+  }
+
+  static readonly from = ({
     shiftKey,
     altKey,
   }: {
-    shiftKey: boolean;
-    altKey: boolean;
+    readonly shiftKey: boolean;
+    readonly altKey: boolean;
   }): KeyModifier => {
     if (shiftKey) {
       if (altKey) {
-        return ShiftAlt;
+        return KeyModifier.ShiftAlt;
       } else {
-        return Shift;
+        return KeyModifier.Shift;
       }
     } else {
       if (altKey) {
-        return Alt;
+        return KeyModifier.Alt;
       } else {
-        return None;
+        return KeyModifier.None;
       }
     }
   };
+}
 
-  export const complexity = (modifier: KeyModifier): number => {
-    switch (modifier) {
-      case None:
-        return 0;
-      case Shift:
-        return 1;
-      case Alt:
-        return 1;
-      case ShiftAlt:
-        return 2;
-    }
-  };
-
-  export const usesShift = (modifier: KeyModifier): boolean => {
-    switch (modifier) {
-      case None:
-        return false;
-      case Shift:
-        return true;
-      case Alt:
-        return false;
-      case ShiftAlt:
-        return true;
-    }
-  };
-
-  export const usesAlt = (modifier: KeyModifier): boolean => {
-    switch (modifier) {
-      case None:
-        return false;
-      case Shift:
-        return false;
-      case Alt:
-        return true;
-      case ShiftAlt:
-        return true;
-    }
-  };
+function complexityOf(shift: boolean, alt: boolean): number {
+  if (shift && alt) {
+    return 2;
+  }
+  if (shift || alt) {
+    return 1;
+  }
+  return 0;
 }

@@ -73,7 +73,7 @@ function remap(
   const characters = layout.getCharacters(code);
   let codePoint = 0x0000;
   if (characters != null) {
-    codePoint = characters.codePoint(KeyModifier.of({ shiftKey, altKey }));
+    codePoint = characters.codePoint(KeyModifier.from({ shiftKey, altKey }));
     if (codePoint > 0x0000) {
       key = String.fromCodePoint(codePoint);
     }

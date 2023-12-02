@@ -1,6 +1,7 @@
 import { type Layout } from "@keybr/layout";
+import { combineDiacritic, isDiacritic } from "./diacritics.ts";
 import { KeyCharacters } from "./keycharacters.ts";
-import { type KeyCombo } from "./keycombo.ts";
+import { KeyCombo } from "./keycombo.ts";
 import { KeyModifier } from "./keymodifier.ts";
 import { KeyShape } from "./keyshape.ts";
 import {
@@ -9,12 +10,11 @@ import {
   type GeometryDict,
   type KeyId,
 } from "./types.ts";
-import { addCombo, addDeadCombo } from "./util.ts";
 
 export class Keyboard {
-  readonly characters: Map<KeyId, KeyCharacters>;
-  readonly combos: Map<CodePoint, KeyCombo>;
-  readonly shapes: Map<KeyId, KeyShape>;
+  readonly characters: ReadonlyMap<KeyId, KeyCharacters>;
+  readonly combos: ReadonlyMap<CodePoint, KeyCombo>;
+  readonly shapes: ReadonlyMap<KeyId, KeyShape>;
 
   constructor(
     readonly layout: Layout,
@@ -66,25 +66,64 @@ export class Keyboard {
   }
 
   codePoints({
-    enableDeadKeys = true,
-    enableShift = true,
-    enableAlt = true,
+    dead = true,
+    shift = true,
+    alt = true,
   }: {
-    enableDeadKeys?: boolean;
-    enableShift?: boolean;
-    enableAlt?: boolean;
+    readonly dead?: boolean;
+    readonly shift?: boolean;
+    readonly alt?: boolean;
   } = {}): Set<CodePoint> {
     const list: CodePoint[] = [];
     for (const combo of this.combos.values()) {
-      const { codePoint, usesShift, usesAlt, prefix } = combo;
       if (
-        (prefix == null || enableDeadKeys) &&
-        (!usesShift || enableShift) &&
-        (!usesAlt || enableAlt)
+        (combo.prefix == null || dead) &&
+        (!combo.shift || shift) &&
+        (!combo.alt || alt)
       ) {
-        list.push(codePoint);
+        list.push(combo.codePoint);
       }
     }
     return new Set(list.sort((a, b) => a - b));
+  }
+}
+
+function setCombo(map: Map<CodePoint, KeyCombo>, combo: KeyCombo): void {
+  const oldCombo = map.get(combo.codePoint);
+  if (oldCombo == null || oldCombo.complexity > combo.complexity) {
+    map.set(combo.codePoint, combo);
+  }
+}
+
+function addCombo(
+  map: Map<CodePoint, KeyCombo>,
+  codePoint: CodePoint,
+  id: KeyId,
+  modifier: KeyModifier,
+): void {
+  if (codePoint > 0 && !isDiacritic(codePoint)) {
+    setCombo(map, new KeyCombo(codePoint, id, modifier));
+  }
+}
+
+function addDeadCombo(
+  map: Map<CodePoint, KeyCombo>,
+  codePoint: CodePoint,
+  id: KeyId,
+  modifier: KeyModifier,
+): void {
+  if (codePoint > 0 && isDiacritic(codePoint)) {
+    const prefix = new KeyCombo(codePoint, id, modifier);
+    for (const combo of map.values()) {
+      if (combo.prefix == null) {
+        const combinedCodePoint = combineDiacritic(combo.codePoint, codePoint);
+        if (combinedCodePoint !== combo.codePoint) {
+          setCombo(
+            map,
+            new KeyCombo(combinedCodePoint, combo.id, combo.modifier, prefix),
+          );
+        }
+      }
+    }
   }
 }

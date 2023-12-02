@@ -1,10 +1,10 @@
-import { KeyModifier } from "./keymodifier.ts";
+import { type KeyModifier } from "./keymodifier.ts";
 import { type CodePoint, type HasCodePoint, type KeyId } from "./types.ts";
 
 export class KeyCombo implements HasCodePoint {
   readonly complexity: number;
-  readonly usesShift: boolean;
-  readonly usesAlt: boolean;
+  readonly shift: boolean;
+  readonly alt: boolean;
 
   constructor(
     readonly codePoint: CodePoint,
@@ -13,18 +13,18 @@ export class KeyCombo implements HasCodePoint {
     readonly prefix: KeyCombo | null = null,
   ) {
     let complexity = 0;
-    let usesShift = false;
-    let usesAlt = false;
+    let shift = false;
+    let alt = false;
     let combo: KeyCombo | null = this; // eslint-disable-line
     while (combo != null) {
       const { modifier } = combo;
-      complexity += 1 + KeyModifier.complexity(modifier);
-      usesShift ||= KeyModifier.usesShift(modifier);
-      usesAlt ||= KeyModifier.usesAlt(modifier);
+      complexity += 1 + modifier.complexity;
+      shift ||= modifier.shift;
+      alt ||= modifier.alt;
       combo = combo.prefix;
     }
     this.complexity = complexity;
-    this.usesShift = usesShift;
-    this.usesAlt = usesAlt;
+    this.shift = shift;
+    this.alt = alt;
   }
 }
