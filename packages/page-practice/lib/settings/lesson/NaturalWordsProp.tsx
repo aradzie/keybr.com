@@ -2,22 +2,21 @@ import { lessonProps } from "@keybr/lesson";
 import { useSettings } from "@keybr/settings";
 import { CheckBox, Explainer, Field, FieldList } from "@keybr/widget";
 import { type ReactNode } from "react";
-import { FormattedMessage } from "react-intl";
+import { useIntl } from "react-intl";
 
 export function NaturalWordsProp(): ReactNode {
+  const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
   return (
     <>
       <FieldList>
         <Field>
-          <FormattedMessage
-            id="settings.naturalWords.label"
-            description="Widget name."
-            defaultMessage="Prefer natural words:"
-          />
-        </Field>
-        <Field>
           <CheckBox
+            label={formatMessage({
+              id: "settings.naturalWords.label",
+              description: "Widget name.",
+              defaultMessage: "Prefer natural words",
+            })}
             checked={settings.get(lessonProps.guided.naturalWords)}
             onChange={(value) => {
               updateSettings(
