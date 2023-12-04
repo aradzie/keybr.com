@@ -1,10 +1,7 @@
 import { writeFileSync } from "node:fs";
 import { basename } from "node:path";
-import {
-  type CodePoint,
-  type CodePointDict,
-  getDiacritic,
-} from "@keybr/keyboard";
+import { type CodePointDict, getDiacritic } from "@keybr/keyboard";
+import { type CodePoint } from "@keybr/unicode";
 import { characterKeys } from "./keys.ts";
 import { type LayoutConfig, toCodePointDict } from "./layout.ts";
 

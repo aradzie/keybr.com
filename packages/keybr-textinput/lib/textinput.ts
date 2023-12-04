@@ -1,4 +1,4 @@
-import { toCodePoints } from "@keybr/unicode";
+import { type CodePoint, toCodePoints } from "@keybr/unicode";
 import { normalize, normalizeWhitespace } from "./normalize.ts";
 import { type TextInputSettings } from "./settings.ts";
 import {
@@ -20,7 +20,7 @@ const garbageBufferLength = 10;
 
 export class TextInput {
   readonly text: string;
-  readonly codePoints: readonly number[];
+  readonly codePoints: readonly CodePoint[];
   readonly stopOnError: boolean;
   readonly forgiveErrors: boolean;
   readonly spaceSkipsWords: boolean;
@@ -63,7 +63,7 @@ export class TextInput {
   }: {
     readonly timeStamp: number;
     readonly inputType: "appendChar" | "clearChar" | "clearWord";
-    readonly codePoint: number;
+    readonly codePoint: CodePoint;
   }): Feedback {
     switch (inputType) {
       case "appendChar":
@@ -98,7 +98,7 @@ export class TextInput {
     return Feedback.Succeeded;
   }
 
-  appendChar(codePoint: number, timeStamp: number): Feedback {
+  appendChar(codePoint: CodePoint, timeStamp: number): Feedback {
     if (this.completed) {
       // Cannot enter any more characters if already completed.
       throw new Error();
@@ -337,7 +337,7 @@ export class TextInput {
 
 const charCache = new Map<number, Char>();
 
-function toChar(codePoint: number, attrs: number): Char {
+function toChar(codePoint: CodePoint, attrs: number): Char {
   const key = (codePoint & 0x00ff_ffff) | ((attrs & 0x0000_00ff) << 24);
   let char = charCache.get(key);
   if (char == null) {

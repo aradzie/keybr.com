@@ -1,5 +1,5 @@
+import { type CodePoint } from "@keybr/unicode";
 import {
-  type CodePoint,
   type CodePointDict,
   type FingerId,
   type GeometryDict,

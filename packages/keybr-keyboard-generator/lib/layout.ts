@@ -1,10 +1,5 @@
-import {
-  type CodePoint,
-  type CodePointDict,
-  isDiacritic,
-  type KeyId,
-} from "@keybr/keyboard";
-import { toCodePoints } from "@keybr/unicode";
+import { type CodePointDict, isDiacritic, type KeyId } from "@keybr/keyboard";
+import { type CodePoint, toCodePoints } from "@keybr/unicode";
 import { diacritics } from "./diacritics.ts";
 import { characterKeys } from "./keys.ts";
 

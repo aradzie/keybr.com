@@ -8,7 +8,7 @@ const signature = Object.freeze<number[]>([
 const empty = Object.freeze<Suffix[]>([]);
 
 export type Suffix = {
-  readonly codePoint: number;
+  readonly codePoint: CodePoint;
   readonly frequency: number;
 };
 
@@ -18,16 +18,16 @@ export class TransitionTableBuilder {
   private readonly chain: Chain;
   private readonly data: Uint8Array;
 
-  constructor(order: number, alphabet: readonly number[]) {
+  constructor(order: number, alphabet: readonly CodePoint[]) {
     this.chain = new Chain(order, alphabet);
     this.data = new Uint8Array(this.chain.entries);
   }
 
-  get(chain: readonly number[]): number {
+  get(chain: readonly CodePoint[]): number {
     return this.data[this.chain.entryIndex(chain)];
   }
 
-  set(chain: readonly number[], frequency: number): void {
+  set(chain: readonly CodePoint[], frequency: number): void {
     if (!Number.isInteger(frequency) || frequency < 0 || frequency > 255) {
       throw new Error();
     }
@@ -73,7 +73,7 @@ export class TransitionTable {
     return this.chain.order;
   }
 
-  get alphabet(): readonly number[] {
+  get alphabet(): readonly CodePoint[] {
     return this.chain.alphabet;
   }
 
@@ -81,7 +81,7 @@ export class TransitionTable {
     return this.chain.size;
   }
 
-  suffixes(chain: readonly number[]): Segment {
+  suffixes(chain: readonly CodePoint[]): Segment {
     return this.segments[this.chain.segmentIndex(chain)];
   }
 
@@ -153,14 +153,14 @@ export class TransitionTable {
 
 class Chain {
   readonly order: number;
-  readonly alphabet: readonly number[];
-  readonly indexes: ReadonlyMap<number, number>;
+  readonly alphabet: readonly CodePoint[];
+  readonly indexes: ReadonlyMap<CodePoint, number>;
   readonly size: number;
   readonly pow: readonly number[];
   readonly segments: number;
   readonly entries: number;
 
-  constructor(order: number, alphabet: readonly number[]) {
+  constructor(order: number, alphabet: readonly CodePoint[]) {
     this.order = order;
     this.alphabet = alphabet;
     this.indexes = new Map(alphabet.map((v) => [v, alphabet.indexOf(v)]));
@@ -170,7 +170,7 @@ class Chain {
     this.entries = Math.pow(this.size, this.order);
   }
 
-  segmentIndex(chain: readonly number[]): number {
+  segmentIndex(chain: readonly CodePoint[]): number {
     const { order, pow } = this;
     const { length } = chain;
     let index = 0;
@@ -181,7 +181,7 @@ class Chain {
     return index;
   }
 
-  entryIndex(chain: readonly number[]): number {
+  entryIndex(chain: readonly CodePoint[]): number {
     const { order, pow } = this;
     const { length } = chain;
     let index = 0;
@@ -192,7 +192,7 @@ class Chain {
     return index;
   }
 
-  codePoint(index: number): number {
+  codePoint(index: number): CodePoint {
     const v = this.alphabet[index];
     if (v === undefined) {
       throw new Error();
@@ -200,7 +200,7 @@ class Chain {
     return v;
   }
 
-  index(codePoint: number): number {
+  index(codePoint: CodePoint): number {
     const v = this.indexes.get(codePoint);
     if (v === undefined) {
       throw new Error();

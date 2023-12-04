@@ -1,5 +1,6 @@
+import { type CodePoint } from "@keybr/unicode";
 import { KeyModifier } from "./keymodifier.ts";
-import { type CodePoint, type KeyId } from "./types.ts";
+import { type KeyId } from "./types.ts";
 
 export class KeyCharacters {
   constructor(

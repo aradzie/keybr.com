@@ -1,15 +1,11 @@
-import {
-  type CodePoint,
-  type Keyboard,
-  type KeyId,
-  type KeyShape,
-} from "@keybr/keyboard";
+import { type Keyboard, type KeyId, type KeyShape } from "@keybr/keyboard";
 import { type Letter } from "@keybr/phonetic-model";
+import { type CodePoint } from "@keybr/unicode";
 
 export class Bigram {
   constructor(
-    readonly codePoint0: number,
-    readonly codePoint1: number,
+    readonly codePoint0: CodePoint,
+    readonly codePoint1: CodePoint,
     readonly frequency: number,
   ) {}
 }

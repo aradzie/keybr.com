@@ -1,3 +1,5 @@
+import { type CodePoint } from "@keybr/unicode";
+
 export type TextInputListener = {
   readonly onKeyDown: (event: KeyEvent) => void;
   readonly onKeyUp: (event: KeyEvent) => void;
@@ -19,7 +21,7 @@ export type KeyEvent = {
 export type TextInputEvent = {
   readonly timeStamp: number;
   readonly inputType: "appendChar" | "clearChar" | "clearWord";
-  readonly codePoint: number;
+  readonly codePoint: CodePoint;
 };
 
 export type Focusable = {

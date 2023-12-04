@@ -1,13 +1,13 @@
-import { type CodePoint } from "./types.ts";
-
 // https://en.wikipedia.org/wiki/Combining_character
 // https://en.wikipedia.org/wiki/Diacritic
 // https://en.wikipedia.org/wiki/List_of_precomposed_Latin_characters_in_Unicode
 // https://bepo.fr/wiki/Touches_mortes
 
+import { type CodePoint } from "@keybr/unicode";
+
 type Spec = readonly [
   name: string,
-  codePoint: number,
+  codePoint: CodePoint,
   baseSet: string,
   precomposedSet: string,
 ];

@@ -1,6 +1,6 @@
-export type KeyId = string;
+import { type CodePoint } from "@keybr/unicode";
 
-export type CodePoint = number;
+export type KeyId = string;
 
 export type HasCodePoint = {
   readonly codePoint: CodePoint;

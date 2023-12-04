@@ -1,9 +1,10 @@
+import { type CodePoint } from "@keybr/unicode";
 import { type Sample, type Step } from "./types.ts";
 
 export class Histogram implements Iterable<Sample> {
   static readonly empty = Histogram.from([]);
 
-  private readonly _data: Map<number, Sample>;
+  private readonly _data: Map<CodePoint, Sample>;
 
   constructor(samples: readonly Sample[]) {
     this._data = new Map(
@@ -21,11 +22,11 @@ export class Histogram implements Iterable<Sample> {
     return this._data.size;
   }
 
-  has(codePoint: number): boolean {
+  has(codePoint: CodePoint): boolean {
     return this._data.has(codePoint);
   }
 
-  get(codePoint: number): Sample | null {
+  get(codePoint: CodePoint): Sample | null {
     return this._data.get(codePoint) ?? null;
   }
 
@@ -50,7 +51,7 @@ export class Histogram implements Iterable<Sample> {
     } = {},
   ): Histogram {
     const samples = new Map<
-      number,
+      CodePoint,
       { hitCount: number; missCount: number; timeToType: number }
     >();
     let last: Step | null =

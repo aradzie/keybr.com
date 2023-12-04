@@ -12,6 +12,7 @@
     "@keybr/pages-server": "*",
     "@keybr/pages-shared": "*",
     "@keybr/phonetic-model": "*",
+    "@keybr/unicode": "*",
     "@keybr/widget": "*"
   },
   "devDependencies": {},

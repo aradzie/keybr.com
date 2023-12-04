@@ -1,5 +1,5 @@
-import { type CodePoint, getDiacritic, type KeyId } from "@keybr/keyboard";
-import { toCodePoints } from "@keybr/unicode";
+import { getDiacritic, type KeyId } from "@keybr/keyboard";
+import { type CodePoint, toCodePoints } from "@keybr/unicode";
 import { type Element } from "xml-js";
 import { diacritics } from "./diacritics.ts";
 import { type LayoutConfig } from "./layout.ts";
@@ -70,9 +70,9 @@ export function parseCldr(root: Element): LayoutConfig {
 
   const codePointsMap = new Map<KeyId, CodePoint[]>();
 
-  const combiners = new Set<number>();
+  const combiners = new Set<CodePoint>();
 
-  const toCombining = (codePoint: number, keep: boolean): number => {
+  const toCombining = (codePoint: CodePoint, keep: boolean): CodePoint => {
     if (keep || !combiners.has(codePoint)) {
       return codePoint;
     } else {

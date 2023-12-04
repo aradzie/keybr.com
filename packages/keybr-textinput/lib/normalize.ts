@@ -1,6 +1,6 @@
-import { isWhitespace } from "@keybr/unicode";
+import { type CodePoint, isWhitespace } from "@keybr/unicode";
 
-export function normalize(codePoint: number): number {
+export function normalize(codePoint: CodePoint): CodePoint {
   if (isWhitespace(codePoint)) {
     return 0x0020; // Space
   }
@@ -30,7 +30,7 @@ export function normalize(codePoint: number): number {
   return codePoint;
 }
 
-export function normalizeWhitespace(codePoint: number): number {
+export function normalizeWhitespace(codePoint: CodePoint): CodePoint {
   if (isWhitespace(codePoint)) {
     return 0x0020; // Space
   }
