@@ -108,19 +108,28 @@ export namespace Letter {
     return "letter" in letter ? letter.letter : letter;
   };
 
-  export const codePointOrder = (letters: readonly Letter[]): Letter[] => {
+  export const codePointOrder = (letters: Iterable<Letter>): Letter[] => {
     return [...letters].sort((a, b) => a.codePoint - b.codePoint);
   };
 
-  export const frequencyOrder = (letters: readonly Letter[]): Letter[] => {
+  export const frequencyOrder = (letters: Iterable<Letter>): Letter[] => {
     return [...letters].sort((a, b) => b.f - a.f || a.codePoint - b.codePoint);
   };
 
+  export const weightedFrequencyOrder = (
+    letters: Iterable<Letter>,
+    weight: (letter: Letter) => number,
+  ): Letter[] => {
+    return [...letters].sort(
+      (a, b) => weight(a) - weight(b) || b.f - a.f || a.codePoint - b.codePoint,
+    );
+  };
+
   export const restrict = (
-    letters: readonly Letter[],
+    letters: Iterable<Letter>,
     codePoints: CodePointSet,
   ): Letter[] => {
-    return letters.filter(({ codePoint }) => codePoints.has(codePoint));
+    return [...letters].filter(({ codePoint }) => codePoints.has(codePoint));
   };
 
   export const normalize = (letters: readonly Letter[]): Letter[] => {

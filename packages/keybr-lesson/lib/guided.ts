@@ -40,7 +40,7 @@ export class GuidedLesson extends Lesson {
     const alphabetSize = this.settings.get(lessonProps.guided.alphabetSize);
     const recoverKeys = this.settings.get(lessonProps.guided.recoverKeys);
 
-    const letters = Letter.frequencyOrder(this.model.letters);
+    const letters = this.getLetters();
 
     const minSize = 6;
     const maxSize =
@@ -121,6 +121,18 @@ export class GuidedLesson extends Lesson {
     return generateFragment(this.settings, words, {
       doubleWords: this.settings.get(lessonProps.doubleWords),
     });
+  }
+
+  private getLetters(): Letter[] {
+    const { letters } = this.model;
+    const { codePoints } = this;
+    if (this.settings.get(lessonProps.guided.keyboardOrder)) {
+      return Letter.weightedFrequencyOrder(letters, ({ codePoint }) =>
+        codePoints.weight(codePoint),
+      );
+    } else {
+      return Letter.frequencyOrder(letters);
+    }
   }
 
   private makeWordGenerator(filter: Filter): WordGenerator {
