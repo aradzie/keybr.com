@@ -6,6 +6,7 @@ export const lessonProps = {
   length: numberProp("lesson.length", 0, { min: 0, max: 1 }),
   guided: {
     naturalWords: booleanProp("lesson.guided.naturalWords", true),
+    keyboardOrder: booleanProp("lesson.guided.keyboardOrder", false),
     alphabetSize: numberProp("lesson.guided.alphabetSize", 0, {
       min: 0,
       max: 1,
