@@ -9,7 +9,8 @@
     "@keybr/intl": "*",
     "@keybr/lang": "*",
     "@keybr/layout": "*",
-    "@keybr/plaintext": "*"
+    "@keybr/plaintext": "*",
+    "@keybr/widget": "*"
   },
   "devDependencies": {},
   "scripts": {

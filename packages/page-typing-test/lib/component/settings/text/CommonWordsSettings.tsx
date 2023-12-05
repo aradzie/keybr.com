@@ -114,7 +114,7 @@ function Content({ wordList }: { readonly wordList: WordList }): ReactNode {
         <Field>
           <NameValue
             name={formatMessage({
-              id: "textStats.uniqueWordCount",
+              id: "textStats.numUniqueWords",
               description: "Text label.",
               defaultMessage: "Unique words",
             })}

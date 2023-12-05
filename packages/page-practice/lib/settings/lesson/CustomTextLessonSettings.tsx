@@ -112,7 +112,7 @@ function CustomTextStats(): ReactNode {
       <Field>
         <NameValue
           name={formatMessage({
-            id: "textStats.allWordCount",
+            id: "textStats.numAllWords",
             description: "Text label.",
             defaultMessage: "All words",
           })}
@@ -122,7 +122,7 @@ function CustomTextStats(): ReactNode {
       <Field>
         <NameValue
           name={formatMessage({
-            id: "textStats.uniqueWordCount",
+            id: "textStats.numUniqueWords",
             description: "Text label.",
             defaultMessage: "Unique words",
           })}

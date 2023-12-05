@@ -14,11 +14,13 @@ test.serial("render", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.true(r.container.textContent?.includes("1 chapters"));
-  t.true(r.container.textContent?.includes("3 paragraphs"));
-  t.true(r.container.textContent?.includes("3 words"));
-  t.true(r.container.textContent?.includes("3 unique words"));
-  t.true(r.container.textContent?.includes("11 characters"));
+  console.log(r.container.textContent);
+
+  t.true(r.container.textContent?.includes("Chapters:1"));
+  t.true(r.container.textContent?.includes("Paragraphs:3"));
+  t.true(r.container.textContent?.includes("All words:3"));
+  t.true(r.container.textContent?.includes("Unique words:3"));
+  t.true(r.container.textContent?.includes("Characters:11"));
 
   r.unmount();
 });

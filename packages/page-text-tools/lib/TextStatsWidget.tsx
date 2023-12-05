@@ -47,7 +47,7 @@ export function TextStatsWidget({
         <Para>
           <NameValue
             name={formatMessage({
-              id: "textStats.charsIncludingWhitespace",
+              id: "textStats.numCharsIncludingWhitespace",
               description: "Text label.",
               defaultMessage: "Characters including whitespace",
             })}
@@ -57,7 +57,7 @@ export function TextStatsWidget({
         <Para>
           <NameValue
             name={formatMessage({
-              id: "textStats.charsExcludingWhitespace",
+              id: "textStats.numCharsExcludingWhitespace",
               description: "Text label.",
               defaultMessage: "Characters excluding whitespace",
             })}
@@ -67,7 +67,7 @@ export function TextStatsWidget({
         <Para>
           <NameValue
             name={formatMessage({
-              id: "textStats.allWordCount",
+              id: "textStats.numAllWords",
               description: "Text label.",
               defaultMessage: "All words",
             })}
@@ -77,7 +77,7 @@ export function TextStatsWidget({
         <Para>
           <NameValue
             name={formatMessage({
-              id: "textStats.uniqueWordCount",
+              id: "textStats.numUniqueWords",
               description: "Text label.",
               defaultMessage: "Unique words",
             })}
