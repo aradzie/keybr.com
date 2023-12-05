@@ -1,8 +1,8 @@
+import { type WeightedCodePointSet } from "@keybr/keyboard";
 import { Letter, type PhoneticModel } from "@keybr/phonetic-model";
 import { randomSample, weightedRandomSample } from "@keybr/rand";
 import { type KeyStatsMap, newKeyStatsMap, type Result } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
-import { type CodePointSet } from "@keybr/unicode";
 import { LessonKeys } from "./key.ts";
 import { Lesson } from "./lesson.ts";
 import { lessonProps } from "./settings.ts";
@@ -12,7 +12,7 @@ export class NumbersLesson extends Lesson {
   constructor(
     settings: Settings,
     model: PhoneticModel,
-    codePoints: CodePointSet,
+    codePoints: WeightedCodePointSet,
   ) {
     super(settings, model, codePoints);
   }

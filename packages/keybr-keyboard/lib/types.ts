@@ -1,5 +1,11 @@
 import { type CodePoint } from "@keybr/unicode";
 
+export type WeightedCodePointSet = {
+  readonly size: number;
+  has(codePoint: CodePoint): boolean;
+  weight(codePoint: CodePoint): number;
+} & Iterable<CodePoint>;
+
 export type KeyId = string;
 
 export type HasCodePoint = {

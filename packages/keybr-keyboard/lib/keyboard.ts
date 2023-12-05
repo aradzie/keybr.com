@@ -5,7 +5,13 @@ import { KeyCharacters } from "./keycharacters.ts";
 import { KeyCombo } from "./keycombo.ts";
 import { KeyModifier } from "./keymodifier.ts";
 import { KeyShape } from "./keyshape.ts";
-import { type CodePointDict, type GeometryDict, type KeyId } from "./types.ts";
+import { keyWeights } from "./keyweights.ts";
+import {
+  type CodePointDict,
+  type GeometryDict,
+  type KeyId,
+  type WeightedCodePointSet,
+} from "./types.ts";
 
 export class Keyboard {
   readonly characters: ReadonlyMap<KeyId, KeyCharacters>;
@@ -69,8 +75,9 @@ export class Keyboard {
     readonly dead?: boolean;
     readonly shift?: boolean;
     readonly alt?: boolean;
-  } = {}): Set<CodePoint> {
+  } = {}): WeightedCodePointSet {
     const list: CodePoint[] = [];
+    const weights = new Map<CodePoint, number>();
     for (const combo of this.combos.values()) {
       if (
         (combo.prefix == null || dead) &&
@@ -78,9 +85,27 @@ export class Keyboard {
         (!combo.alt || alt)
       ) {
         list.push(combo.codePoint);
+        const weight = keyWeights.get(combo.id);
+        if (weight != null) {
+          weights.set(combo.codePoint, weight);
+        }
       }
     }
-    return new Set(list.sort((a, b) => a - b));
+    const codePoints = new Set(list.sort((a, b) => a - b));
+    return new (class implements WeightedCodePointSet {
+      [Symbol.iterator](): IterableIterator<CodePoint> {
+        return codePoints[Symbol.iterator]();
+      }
+      get size(): number {
+        return codePoints.size;
+      }
+      has(codePoint: CodePoint): boolean {
+        return codePoints.has(codePoint);
+      }
+      weight(codePoint: CodePoint): number {
+        return weights.get(codePoint) ?? 1000;
+      }
+    })();
   }
 }
 

@@ -1,3 +1,4 @@
+import { type WeightedCodePointSet } from "@keybr/keyboard";
 import { Letter, type PhoneticModel } from "@keybr/phonetic-model";
 import { type KeyStatsMap, newKeyStatsMap, type Result } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
@@ -23,7 +24,7 @@ export class CustomTextLesson extends Lesson {
   constructor(
     settings: Settings,
     model: PhoneticModel,
-    codePoints: CodePointSet,
+    codePoints: WeightedCodePointSet,
   ) {
     super(settings, model, codePoints);
     this.wordList = getWordList(settings, model.letters, codePoints);

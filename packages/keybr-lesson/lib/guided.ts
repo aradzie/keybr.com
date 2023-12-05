@@ -1,8 +1,8 @@
 import { type WordList } from "@keybr/content-words";
+import { type WeightedCodePointSet } from "@keybr/keyboard";
 import { Filter, Letter, type PhoneticModel } from "@keybr/phonetic-model";
 import { type KeyStatsMap, newKeyStatsMap, type Result } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
-import { type CodePointSet } from "@keybr/unicode";
 import { Dictionary, filterWordList } from "./dictionary.ts";
 import { LessonKey, LessonKeys } from "./key.ts";
 import { Lesson } from "./lesson.ts";
@@ -23,7 +23,7 @@ export class GuidedLesson extends Lesson {
   constructor(
     settings: Settings,
     model: PhoneticModel,
-    codePoints: CodePointSet,
+    codePoints: WeightedCodePointSet,
     wordList: WordList,
   ) {
     super(settings, model, codePoints);

@@ -1,18 +1,16 @@
+import { allCodePoints, codePointsFrom } from "@keybr/keyboard";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { Settings } from "@keybr/settings";
-import { toCodePoints } from "@keybr/unicode";
 import test from "ava";
 import { LessonKey } from "./key.ts";
 import { lessonProps } from "./settings.ts";
 import { WordListLesson } from "./wordlist.ts";
 
-const allCodePoints = { has: () => true };
-
 test("provide key set", (t) => {
   const settings = new Settings();
   const model = new FakePhoneticModel();
   const wordList = ["abc", "def", "ghi"];
-  const lesson = new WordListLesson(settings, model, allCodePoints, wordList);
+  const lesson = new WordListLesson(settings, model, allCodePoints(), wordList);
   const lessonKeys = lesson.update(lesson.analyze([]));
 
   t.deepEqual(lessonKeys.findIncludedKeys(), [
@@ -134,7 +132,7 @@ test("provide key set", (t) => {
 test("filter words", (t) => {
   const settings = new Settings();
   const model = new FakePhoneticModel();
-  const codePoints = new Set(toCodePoints("abcdefABCDEF123!?"));
+  const codePoints = codePointsFrom("abcdefABCDEF123!?");
   const wordList = ["abc", "def", "xyz", "abz", "xbc"];
   const lesson = new WordListLesson(settings, model, codePoints, wordList);
 
@@ -148,7 +146,12 @@ test("generate text using settings", (t) => {
       .set(lessonProps.punctuators, 0);
     const model = new FakePhoneticModel();
     const wordList = ["abc", "def", "ghi"];
-    const lesson = new WordListLesson(settings, model, allCodePoints, wordList);
+    const lesson = new WordListLesson(
+      settings,
+      model,
+      allCodePoints(),
+      wordList,
+    );
     lesson.update(lesson.analyze([]));
     lesson.rng = model.rng;
 
@@ -165,7 +168,12 @@ test("generate text using settings", (t) => {
       .set(lessonProps.punctuators, 1);
     const model = new FakePhoneticModel();
     const wordList = ["abc", "def", "ghi"];
-    const lesson = new WordListLesson(settings, model, allCodePoints, wordList);
+    const lesson = new WordListLesson(
+      settings,
+      model,
+      allCodePoints(),
+      wordList,
+    );
     lesson.update(lesson.analyze([]));
     lesson.rng = model.rng;
 

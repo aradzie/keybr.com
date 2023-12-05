@@ -1,3 +1,4 @@
+import { allCodePoints } from "@keybr/keyboard";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { Settings } from "@keybr/settings";
 import test from "ava";
@@ -5,12 +6,10 @@ import { GuidedLesson } from "./guided.ts";
 import { LessonKey } from "./key.ts";
 import { lessonProps } from "./settings.ts";
 
-const allCodePoints = { has: () => true };
-
 test("provide key set", (t) => {
   const settings = new Settings();
   const model = new FakePhoneticModel(["uno", "due", "tre"]);
-  const lesson = new GuidedLesson(settings, model, allCodePoints, []);
+  const lesson = new GuidedLesson(settings, model, allCodePoints(), []);
   const lessonKeys = lesson.update(lesson.analyze([]));
 
   t.deepEqual(lessonKeys.findIncludedKeys(), [
@@ -146,7 +145,7 @@ test("provide key set", (t) => {
 test("generate text from a broken phonetic model, empty words", (t) => {
   const settings = new Settings();
   const model = new FakePhoneticModel([""]);
-  const lesson = new GuidedLesson(settings, model, allCodePoints, []);
+  const lesson = new GuidedLesson(settings, model, allCodePoints(), []);
   const lessonKeys = lesson.update(lesson.analyze([]));
   lesson.rng = model.rng;
 
@@ -168,7 +167,7 @@ test("generate text from a broken phonetic model, empty words", (t) => {
 test("generate text from a broken phonetic model, repeating words", (t) => {
   const settings = new Settings();
   const model = new FakePhoneticModel(["x"]);
-  const lesson = new GuidedLesson(settings, model, allCodePoints, []);
+  const lesson = new GuidedLesson(settings, model, allCodePoints(), []);
   const lessonKeys = lesson.update(lesson.analyze([]));
   lesson.rng = model.rng;
 
@@ -190,7 +189,7 @@ test("generate text from a broken phonetic model, repeating words", (t) => {
 test("generate text with pseudo words", (t) => {
   const settings = new Settings().set(lessonProps.guided.naturalWords, false);
   const model = new FakePhoneticModel(["uno", "due", "tre"]);
-  const lesson = new GuidedLesson(settings, model, allCodePoints, []);
+  const lesson = new GuidedLesson(settings, model, allCodePoints(), []);
   const lessonKeys = lesson.update(lesson.analyze([]));
   lesson.rng = model.rng;
 
@@ -214,7 +213,7 @@ test("generate text with pseudo words", (t) => {
 test("generate text with natural words", (t) => {
   const settings = new Settings().set(lessonProps.guided.naturalWords, true);
   const model = new FakePhoneticModel(["uno", "due", "tre"]);
-  const lesson = new GuidedLesson(settings, model, allCodePoints, [
+  const lesson = new GuidedLesson(settings, model, allCodePoints(), [
     "efghijee",
     "efghijef",
     "efghijeg",

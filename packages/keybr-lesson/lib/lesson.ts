@@ -1,8 +1,8 @@
+import { type WeightedCodePointSet } from "@keybr/keyboard";
 import { type PhoneticModel } from "@keybr/phonetic-model";
 import { LCG, type RNGStream } from "@keybr/rand";
 import { type KeyStatsMap, type Result } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
-import { type CodePointSet } from "@keybr/unicode";
 import { type LessonKeys } from "./key.ts";
 
 export abstract class Lesson {
@@ -11,7 +11,7 @@ export abstract class Lesson {
   protected constructor(
     readonly settings: Settings,
     readonly model: PhoneticModel,
-    readonly codePoints: CodePointSet,
+    readonly codePoints: WeightedCodePointSet,
   ) {}
 
   abstract analyze(results: readonly Result[]): KeyStatsMap;

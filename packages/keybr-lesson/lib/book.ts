@@ -3,10 +3,10 @@ import {
   flattenContent,
   splitParagraph,
 } from "@keybr/content-books";
+import { type WeightedCodePointSet } from "@keybr/keyboard";
 import { type PhoneticModel } from "@keybr/phonetic-model";
 import { type KeyStatsMap, newKeyStatsMap, type Result } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
-import { type CodePointSet } from "@keybr/unicode";
 import { LessonKeys } from "./key.ts";
 import { Lesson } from "./lesson.ts";
 import { Target } from "./target.ts";
@@ -20,7 +20,7 @@ export class BookContentLesson extends Lesson {
   constructor(
     settings: Settings,
     model: PhoneticModel,
-    codePoints: CodePointSet,
+    codePoints: WeightedCodePointSet,
     content: Content,
   ) {
     super(settings, model, codePoints);

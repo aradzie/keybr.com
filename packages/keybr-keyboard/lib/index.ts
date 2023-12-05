@@ -1,5 +1,6 @@
 export * from "./context.ts";
 export * from "./diacritics.ts";
+export * from "./fakes.ts";
 export * from "./keyboard.ts";
 export * from "./keycharacters.ts";
 export * from "./keycode.ts";

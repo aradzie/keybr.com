@@ -1,4 +1,8 @@
-import { type Keyboard, KeyboardContext } from "@keybr/keyboard";
+import {
+  codePointsFrom,
+  type Keyboard,
+  KeyboardContext,
+} from "@keybr/keyboard";
 import { FakePhoneticModel, type PhoneticModel } from "@keybr/phonetic-model";
 import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
 import { FakeSettingsContext, Settings } from "@keybr/settings";
@@ -16,7 +20,7 @@ test.serial("load", async (t) => {
         value={
           {
             codePoints() {
-              return new Set([/* a */ 0x61, /* b */ 0x62, /* c */ 0x63]);
+              return codePointsFrom("abc");
             },
           } as Keyboard
         }

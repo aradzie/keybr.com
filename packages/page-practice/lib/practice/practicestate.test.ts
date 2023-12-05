@@ -1,3 +1,4 @@
+import { allCodePoints } from "@keybr/keyboard";
 import { Lesson, LessonKey, LessonKeys, Target } from "@keybr/lesson";
 import { FakePhoneticModel, type PhoneticModel } from "@keybr/phonetic-model";
 import {
@@ -56,7 +57,7 @@ test("compute announcements when the focused key has no results", (t) => {
 
 class FakeLesson extends Lesson {
   constructor(settings: Settings, model: PhoneticModel) {
-    super(settings, model, new Set());
+    super(settings, model, allCodePoints());
   }
 
   override analyze(results: readonly Result[]): KeyStatsMap {
