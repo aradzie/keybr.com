@@ -380,7 +380,7 @@
   "speedUnit.cps.name": "Символы в секунду",
   "speedUnit.wpm.description": "Измерять скорость набора в словах в минуту.",
   "speedUnit.wpm.name": "Слова в минуту",
-  "textArea.focus.message": "Кликните, чтобы активировать...",
+  "textArea.focus.message": "Кликните или нажмите Enter, чтобы активировать...",
   "textStats.allWordCount": "Все слова",
   "textStats.averageWordLength": "Средняя длина слова",
   "textStats.charsExcludingWhitespace": "Символы без пробелов",

@@ -380,7 +380,7 @@
   "speedUnit.cps.name": "Caracteres por segundo",
   "speedUnit.wpm.description": "Medir la velocidad de mecanografía en palabras por minuto.",
   "speedUnit.wpm.name": "Palabras por minuto",
-  "textArea.focus.message": "Haz clic para activar...",
+  "textArea.focus.message": "Haga clic o presione Entrar para activar...",
   "textStats.allWordCount": "Todas las palabras",
   "textStats.averageWordLength": "Longitud media de las palabras",
   "textStats.charsExcludingWhitespace": "Caracteres excluyendo los espacios en blanco",

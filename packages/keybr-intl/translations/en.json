@@ -380,7 +380,7 @@
   "speedUnit.cps.name": "Characters per second",
   "speedUnit.wpm.description": "Measure typing speed in words per minute.",
   "speedUnit.wpm.name": "Words per minute",
-  "textArea.focus.message": "Click to activate...",
+  "textArea.focus.message": "Click or press Enter to activate...",
   "textStats.allWordCount": "All words",
   "textStats.averageWordLength": "Average word length",
   "textStats.charsExcludingWhitespace": "Characters excluding whitespace",

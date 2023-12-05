@@ -79,6 +79,11 @@ export function TextArea({
       setElementCursor(element, "default");
     }
   });
+  useWindowEvent("keydown", (ev) => {
+    if (ev.key === "Enter") {
+      innerRef.current?.focus();
+    }
+  });
   const handleFocus = useCallback(() => {
     setFocus(true);
     onFocus?.();
@@ -121,7 +126,7 @@ export function TextArea({
           <FormattedMessage
             id="textArea.focus.message"
             description="Message text."
-            defaultMessage="Click to activate..."
+            defaultMessage="Click or press Enter to activate..."
           />
         </div>
       )}

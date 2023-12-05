@@ -380,7 +380,7 @@
   "speedUnit.cps.name": "Caractères par seconde",
   "speedUnit.wpm.description": "Mesurer la vitesse de frappe en mots par minute.",
   "speedUnit.wpm.name": "Mots par minute",
-  "textArea.focus.message": "Cliquez pour activer...",
+  "textArea.focus.message": "Cliquez ou appuyez sur Entrée pour activer...",
   "textStats.allWordCount": "Tous les mots",
   "textStats.averageWordLength": "Longueur moyenne des mots",
   "textStats.charsExcludingWhitespace": "Caractères sans espaces",

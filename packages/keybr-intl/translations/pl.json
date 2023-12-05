@@ -380,7 +380,7 @@
   "speedUnit.cps.name": "Liczba znaków na sekundę",
   "speedUnit.wpm.description": "Zmierz tempo pisania na klawiaturze w słowach na minutę.",
   "speedUnit.wpm.name": "Słowa na minutę",
-  "textArea.focus.message": "Kliknij, aby aktywować...",
+  "textArea.focus.message": "Kliknij lub naciśnij Enter aby aktywować...",
   "textStats.allWordCount": "Wszystkie słowa",
   "textStats.averageWordLength": "Średnia długość słowa",
   "textStats.charsExcludingWhitespace": "Znaki bez znaków niedrukowalnych",
