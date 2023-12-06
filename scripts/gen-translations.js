@@ -59,13 +59,16 @@ async function syncTranslations() {
       translationsFile,
       remap(defaultTranslations, ([id, message]) => [
         id,
-        translations[id] ?? message,
+        translations[id] !== message ? translations[id] : undefined,
       ]),
     );
   }
 }
 
 async function compileMessages() {
+  const defaultTranslationsFile = translationsPath(defaultLocale);
+  const defaultTranslations = readJsonSync(defaultTranslationsFile);
+
   const format = {
     compile: (translations) => {
       return remap(translations, ([id, message]) => [
@@ -77,9 +80,18 @@ async function compileMessages() {
 
   for (const locale of allLocales) {
     const translationsFile = translationsPath(locale);
+    const translations = readJsonSync(translationsFile);
+    const mergedTranslationsFile = mergedTranslationsPath(locale);
+    writeJsonSync(
+      mergedTranslationsFile,
+      remap(defaultTranslations, ([id, message]) => [
+        id,
+        translations[id] ?? message,
+      ]),
+    );
     const messagesFile = messagesPath(locale);
     const messages = JSON.parse(
-      await compile([translationsFile], {
+      await compile([mergedTranslationsFile], {
         ast: true,
         format,
       }),
@@ -100,6 +112,10 @@ function remap(entries, callback) {
 
 function translationsPath(locale) {
   return join(packageDir, `translations/${locale}.json`);
+}
+
+function mergedTranslationsPath(locale) {
+  return join(packageDir, `translations/${locale}-merged.json`);
 }
 
 function messagesPath(locale) {
