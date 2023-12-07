@@ -4,7 +4,6 @@ export const primarySymbol: string;
 export const secondarySymbol: string;
 export const deadSymbol: string;
 export const bump: string;
-export const toggle: string;
 export const fingerPinky: string;
 export const patternPinky: string;
 export const fingerRing: string;

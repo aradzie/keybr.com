@@ -57,7 +57,6 @@ export function keyTemplate(
         {...{ "data-key": shape.id }}
       >
         {children}
-        {toggled && <circle className={styles.toggle} cx={6} cy={35} r={4} />}
       </svg>
     );
   }
