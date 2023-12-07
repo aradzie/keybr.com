@@ -380,6 +380,7 @@
   "speedUnit.cps.name": "Characters per second",
   "speedUnit.wpm.description": "Measure typing speed in words per minute.",
   "speedUnit.wpm.name": "Words per minute",
+  "textArea.capsLock.message": "Caps Lock is on",
   "textArea.focus.message": "Click or press Enter to activate...",
   "textStats.averageWordLength": "Average word length",
   "textStats.mostCommonWords": "Top {count} most common words",

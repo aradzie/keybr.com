@@ -1,2 +1,3 @@
 export const textArea: string;
-export const label: string;
+export const messageArea: string;
+export const messageText: string;

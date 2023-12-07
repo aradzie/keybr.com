@@ -5,10 +5,16 @@
   will-change: transform;
 }
 
-.label {
+.messageArea {
+  display: flex;
   position: absolute;
-  right: 0;
-  bottom: 1rem;
-  left: 0;
-  text-align: center;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.messageText {
+  padding: 0.5rem 1rem;
+  background-color: var(--background-color);
+  box-shadow: 0 0.5rem 3rem var(--Popup__shadow-color);
 }

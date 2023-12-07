@@ -1,6 +1,7 @@
 import { type LineList, type TextDisplaySettings } from "@keybr/textinput";
 import {
   type KeyEvent,
+  ModifierState,
   TextEvents,
   type TextInputEvent,
 } from "@keybr/textinput-events";
@@ -121,13 +122,26 @@ export function TextArea({
         cursor={focus}
         focus={focus}
       />
+      {focus && ModifierState.capsLock && (
+        <div className={styles.messageArea}>
+          <div className={styles.messageText}>
+            <FormattedMessage
+              id="textArea.capsLock.message"
+              description="Message text."
+              defaultMessage="Caps Lock is on"
+            />
+          </div>
+        </div>
+      )}
       {focus || (
-        <div className={styles.label}>
-          <FormattedMessage
-            id="textArea.focus.message"
-            description="Message text."
-            defaultMessage="Click or press Enter to activate..."
-          />
+        <div className={styles.messageArea}>
+          <div className={styles.messageText}>
+            <FormattedMessage
+              id="textArea.focus.message"
+              description="Message text."
+              defaultMessage="Click or press Enter to activate..."
+            />
+          </div>
         </div>
       )}
     </div>
