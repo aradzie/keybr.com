@@ -7,7 +7,7 @@ import {
 } from "@keybr/pages-shared";
 import { Link } from "@keybr/widget";
 import { type ReactNode } from "react";
-import { useIntl } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { LocaleSwitcher } from "./LocaleSwitcher.tsx";
 import * as styles from "./SecondaryMenu.module.less";
 
@@ -24,6 +24,7 @@ export function SecondaryMenu({
       <PageLink link={Sitemap.termsOfService.bind(null)} />
       <PageLink link={Sitemap.privacyPolicy.bind(null)} />
       <LocaleSwitcher currentLink={currentLink} />
+      <TranslateLink />
       <RemoveAdsLink />
     </div>
   );
@@ -76,6 +77,27 @@ function GithubLink(): ReactNode {
       })}
     >
       Github
+    </Link>
+  );
+}
+
+function TranslateLink(): ReactNode {
+  const { formatMessage } = useIntl();
+  return (
+    <Link
+      href="https://github.com/aradzie/keybr.com/blob/master/docs/translations.md"
+      target="github"
+      title={formatMessage({
+        id: "footer.translateLink.description",
+        description: "Translation link title.",
+        defaultMessage: "Help us translate keybr.com into your language.",
+      })}
+    >
+      <FormattedMessage
+        id="footer.translateLink.text"
+        description="Translation link text."
+        defaultMessage="Translate"
+      />
     </Link>
   );
 }
