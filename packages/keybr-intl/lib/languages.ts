@@ -32,6 +32,11 @@ export const languageNames = defineMessages({
     description: "Language name.",
     defaultMessage: "French (Français)",
   },
+  ja: {
+    id: "language.ja.name",
+    description: "Language name.",
+    defaultMessage: "Japanese (日本語)",
+  },
   it: {
     id: "language.it.name",
     description: "Language name.",

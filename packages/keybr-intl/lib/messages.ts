@@ -4,6 +4,10 @@ export type Messages = Record<string, string | any>;
 
 export async function loadMessages(locale: LocaleId): Promise<Messages> {
   switch (locale) {
+    case "cs":
+      return (
+        await import(/* webpackChunkName: "i18n-cs" */ "./messages/cs.json")
+      ).default;
     case "de":
       return (
         await import(/* webpackChunkName: "i18n-de" */ "./messages/de.json")
@@ -20,6 +24,10 @@ export async function loadMessages(locale: LocaleId): Promise<Messages> {
       return (
         await import(/* webpackChunkName: "i18n-fr" */ "./messages/fr.json")
       ).default;
+    case "ja":
+      return (
+        await import(/* webpackChunkName: "i18n-ja" */ "./messages/ja.json")
+      ).default;
     case "pl":
       return (
         await import(/* webpackChunkName: "i18n-pl" */ "./messages/pl.json")
@@ -27,6 +35,10 @@ export async function loadMessages(locale: LocaleId): Promise<Messages> {
     case "ru":
       return (
         await import(/* webpackChunkName: "i18n-ru" */ "./messages/ru.json")
+      ).default;
+    case "sv":
+      return (
+        await import(/* webpackChunkName: "i18n-sv" */ "./messages/sv.json")
       ).default;
     case "uk":
       return (
