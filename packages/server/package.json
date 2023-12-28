@@ -33,7 +33,11 @@
     "@keybr/result-io": "*",
     "@keybr/result-userdata": "*",
     "@keybr/settings": "*",
-    "@keybr/settings-database": "*"
+    "@keybr/settings-database": "*",
+    "@types/cheerio": "^0.22.35",
+    "@types/ws": "^8.5.10",
+    "cheerio": "^1.0.0-rc.12",
+    "ws": "^8.16.0"
   },
   "devDependencies": {},
   "scripts": {

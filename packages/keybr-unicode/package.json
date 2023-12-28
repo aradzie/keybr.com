@@ -4,7 +4,9 @@
   "version": "0.0.0",
   "main": "lib/index.ts",
   "types": ".types/index.d.ts",
-  "dependencies": {},
+  "dependencies": {
+    "@unicode/unicode-14.0.0": "^1.5.2"
+  },
   "devDependencies": {},
   "scripts": {
     "clean": "rm -fr .types",

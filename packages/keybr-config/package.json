@@ -5,7 +5,9 @@
   "main": "lib/index.ts",
   "types": ".types/index.d.ts",
   "dependencies": {
-    "@keybr/logger": "*"
+    "@keybr/logger": "*",
+    "better-sqlite3": "^9.2.2",
+    "mysql": "^2.18.1"
   },
   "devDependencies": {},
   "scripts": {
