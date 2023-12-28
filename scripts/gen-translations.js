@@ -9,7 +9,7 @@ const { rootDir, findPackages } = require("./root.js");
 
 const packageDir = join(rootDir, "packages/keybr-intl");
 
-const allLocales = ["de", "en", "es", "fr", "pl", "ru", "uk"];
+const allLocales = ["de", "en", "es", "fr", "ja", "pl", "ru", "sv", "uk"];
 
 const defaultLocale = "en";
 
@@ -59,7 +59,9 @@ async function syncTranslations() {
       translationsFile,
       remap(defaultTranslations, ([id, message]) => [
         id,
-        translations[id] !== message ? translations[id] : undefined,
+        translations[id] !== "" && translations[id] !== message
+          ? translations[id]
+          : undefined,
       ]),
     );
   }
