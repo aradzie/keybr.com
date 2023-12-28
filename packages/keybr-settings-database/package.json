@@ -24,8 +24,7 @@
     ],
     "require": [
       "@keybr/tsl",
-      "@keybr/test-env-server",
-      "reflect-metadata"
+      "@keybr/test-env-server"
     ]
   }
 }

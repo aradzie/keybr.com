@@ -1,4 +1,3 @@
-import "reflect-metadata";
 import cluster, { type ClusterSettings } from "node:cluster";
 import { Application } from "@fastr/core";
 import { Container } from "@fastr/invert";

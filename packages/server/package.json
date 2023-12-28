@@ -52,8 +52,7 @@
     "require": [
       "@keybr/tsl",
       "@keybr/test-env-server",
-      "@keybr/test-env-bundler",
-      "reflect-metadata"
+      "@keybr/test-env-bundler"
     ],
     "serial": true
   }

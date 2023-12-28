@@ -1,6 +1,5 @@
 #!/usr/bin/env -S node -r @keybr/tsl
 
-import "reflect-metadata";
 import { Container } from "@fastr/invert";
 import { ConfigModule, Env } from "@keybr/config";
 import { createSchema, UserLoginRequest } from "@keybr/database";

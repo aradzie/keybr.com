@@ -1,4 +1,3 @@
-import "reflect-metadata";
 import { Container } from "@fastr/invert";
 import { ConfigModule, Env } from "@keybr/config";
 import { Command, CommanderError } from "commander";
