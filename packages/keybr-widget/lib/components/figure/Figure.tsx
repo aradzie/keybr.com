@@ -25,10 +25,10 @@ export function Figure(props: FigureProps): ReactNode {
       className={clsx(styles.figure, className)}
       title={title}
     >
-      {caption && <Figure.Caption>caption</Figure.Caption>}
-      {description && <Figure.Description>description</Figure.Description>}
+      {caption && <Figure.Caption>{caption}</Figure.Caption>}
+      {description && <Figure.Description>{description}</Figure.Description>}
       {children}
-      {legend && <Figure.Legend>legend</Figure.Legend>}
+      {legend && <Figure.Legend>{legend}</Figure.Legend>}
     </Component>
   );
 }

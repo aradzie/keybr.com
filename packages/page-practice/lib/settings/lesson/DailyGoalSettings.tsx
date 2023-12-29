@@ -11,9 +11,10 @@ import {
   Value,
 } from "@keybr/widget";
 import { type ReactNode } from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 
 export function DailyGoalSettings(): ReactNode {
+  const { formatMessage } = useIntl();
   const { formatDuration } = useIntlDurations();
   const { settings, updateSettings } = useSettings();
   return (
@@ -39,7 +40,10 @@ export function DailyGoalSettings(): ReactNode {
         </Field>
         <Field>
           {settings.get(lessonProps.dailyGoal) === 0 ? (
-            "Not set"
+            formatMessage({
+              id: "settings.dailyGoal.notSet",
+              defaultMessage: "Not set",
+            })
           ) : (
             <Value
               value={formatDuration({

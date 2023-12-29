@@ -59,6 +59,7 @@ module.exports = {
       "error",
       { ignoreList: "h1,h2,h3,p,ol,ul,li,dl,dt,dd,em,strong,br".split(/,/g) },
     ],
+    "formatjs/no-invalid-icu": "error",
     "formatjs/no-multiple-whitespaces": "error",
     // configure node
     "n/file-extension-in-import": ["error", "always"],

@@ -1,5 +1,6 @@
 import { clsx } from "clsx";
 import { type ReactNode } from "react";
+import { useIntl } from "react-intl";
 import { Avatar } from "./Avatar.tsx";
 import { type BoundPageLink, PageLink } from "./pagelink.tsx";
 import { type AnyUser } from "./types.ts";
@@ -12,11 +13,19 @@ export function UserName({
   readonly user: AnyUser;
   readonly link?: BoundPageLink<any> | null;
 }): ReactNode {
+  const { formatMessage } = useIntl();
   const { id, name } = user;
   return (
     <span
       className={clsx(styles.userName, id == null && styles.anonymousName)}
-      title={id != null ? name : "Anonymous user"}
+      title={
+        id != null
+          ? name
+          : formatMessage({
+              id: "account.anonymousUserName",
+              defaultMessage: "Anonymous User",
+            })
+      }
     >
       <Avatar user={user} size="medium" className={styles.avatar} />
       {link != null ? (

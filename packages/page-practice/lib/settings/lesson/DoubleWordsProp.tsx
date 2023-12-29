@@ -2,7 +2,7 @@ import { lessonProps } from "@keybr/lesson";
 import { useSettings } from "@keybr/settings";
 import { CheckBox, Explainer, Field, FieldList } from "@keybr/widget";
 import { type ReactNode } from "react";
-import { useIntl } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 
 export function DoubleWordsProp(): ReactNode {
   const { formatMessage } = useIntl();
@@ -24,9 +24,10 @@ export function DoubleWordsProp(): ReactNode {
         </Field>
       </FieldList>
       <Explainer>
-        Repeat each word two times. Type a word for the first time to develop
-        your muscle memory. Typing the same word for the second time should be
-        easier.
+        <FormattedMessage
+          id="settings.doubleWords.description"
+          defaultMessage="Repeat each word two times. Type a word for the first time to develop your muscle memory. Typing the same word for the second time should be easier."
+        />
       </Explainer>
     </>
   );

@@ -9,7 +9,7 @@ import {
   styleTextCenter,
 } from "@keybr/widget";
 import { type ReactNode } from "react";
-import { useIntl } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { type AccuracyStreak, accuracyStreaks } from "./accuracy.ts";
 
 export function AccuracySection({
@@ -21,12 +21,19 @@ export function AccuracySection({
 
   return (
     <>
-      <Header level={2}>Accuracy Streaks</Header>
+      <Header level={2}>
+        <FormattedMessage
+          id="profile.accuracy.header"
+          defaultMessage="Accuracy Streaks"
+        />
+      </Header>
 
       <Figure>
         <Figure.Description>
-          These stats show your ability to type long sequences of text with high
-          accuracy, regardless of typing speed.
+          <FormattedMessage
+            id="profile.accuracy.description"
+            defaultMessage="These stats show your ability to type long sequences of text with high accuracy, regardless of typing speed."
+          />
         </Figure.Description>
 
         {streaks.length > 0 ? (
@@ -37,15 +44,18 @@ export function AccuracySection({
           </dl>
         ) : (
           <Para className={styleTextCenter}>
-            You don’t have any accuracy streaks. Consider completing a lesson
-            with a highest accuracy possible, regardless of typing speed.
+            <FormattedMessage
+              id="profile.accuracy.noData"
+              defaultMessage="You don’t have any accuracy streaks. Consider completing a lesson with a highest accuracy possible, regardless of typing speed."
+            />
           </Para>
         )}
 
         <Figure.Legend>
-          Above are listed the longest continuous sequences of lessons with
-          accuracy above a given threshold, along with statistics about every
-          such sequence. The longer the sequence of lessons, the better.
+          <FormattedMessage
+            id="profile.accuracy.legend"
+            defaultMessage="Above are listed the longest continuous sequences of lessons with accuracy above a given threshold, along with statistics about every such sequence. The longer the sequence of lessons, the better."
+          />
         </Figure.Legend>
       </Figure>
     </>
