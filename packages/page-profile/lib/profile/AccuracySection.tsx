@@ -69,7 +69,6 @@ function StreakDetails({
         <NameValue
           name={formatMessage({
             id: "profile.chart.accuracy.accuracyThreshold.header",
-            description: "Header text.",
             defaultMessage: "Accuracy Threshold",
           })}
           value={formatPercents(streak.threshold)}
@@ -79,7 +78,6 @@ function StreakDetails({
         <NameValue
           name={formatMessage({
             id: "metric.summary.lessonCount.label",
-            description: "Widget name.",
             defaultMessage: "Lessons",
           })}
           value={formatNumber(results.length)}
@@ -87,7 +85,6 @@ function StreakDetails({
         <NameValue
           name={formatMessage({
             id: "metric.summary.characterCount.label",
-            description: "Widget name.",
             defaultMessage: "Characters",
           })}
           value={formatNumber(streak.length)}
@@ -95,7 +92,6 @@ function StreakDetails({
         <NameValue
           name={formatMessage({
             id: "metric.summary.topSpeed.label",
-            description: "Widget name.",
             defaultMessage: "Top Speed",
           })}
           value={formatSpeed(stats.speed.max)}
@@ -103,7 +99,6 @@ function StreakDetails({
         <NameValue
           name={formatMessage({
             id: "metric.summary.averageSpeed.label",
-            description: "Widget name.",
             defaultMessage: "Average Speed",
           })}
           value={formatSpeed(stats.speed.avg)}

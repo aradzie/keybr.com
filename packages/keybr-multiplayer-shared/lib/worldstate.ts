@@ -62,7 +62,6 @@ export function makeWorldState(intl: IntlShape): WorldState {
     timer: new Timer(),
     ticker: intl.formatMessage({
       id: "multiplayer.ticker.initializing",
-      description: "Ticker text.",
       defaultMessage: "Initializing...",
     }),
   };
@@ -157,7 +156,6 @@ function handleGameReadyMessage(
         players: resetPlayers(worldState.players),
         ticker: intl.formatMessage({
           id: "multiplayer.ticker.waitingMorePlayers",
-          description: "Ticker text.",
           defaultMessage: "Waiting for more players...",
         }),
       };
@@ -170,7 +168,6 @@ function handleGameReadyMessage(
         ticker: intl.formatMessage(
           {
             id: "multiplayer.ticker.countDown",
-            description: "Ticker text.",
             defaultMessage: "Start in {countDown}",
           },
           { countDown },
@@ -184,7 +181,6 @@ function handleGameReadyMessage(
         timer: new Timer(),
         ticker: intl.formatMessage({
           id: "multiplayer.ticker.raceStarted",
-          description: "Ticker text.",
           defaultMessage: "Race started!",
         }),
       };
@@ -201,7 +197,6 @@ function handleGameReadyMessage(
           gameState,
           ticker: intl.formatMessage({
             id: "multiplayer.ticker.raceFinished",
-            description: "Ticker text.",
             defaultMessage: "Race finished!",
           }),
         };
@@ -224,7 +219,6 @@ function handleGameWorldMessage(
       players,
       ticker: intl.formatMessage({
         id: "multiplayer.ticker.waitingNextRace",
-        description: "Ticker text.",
         defaultMessage: "Zzz... Wait for the next race",
       }),
     };
@@ -235,7 +229,6 @@ function handleGameWorldMessage(
         players,
         ticker: intl.formatMessage({
           id: "multiplayer.ticker.winnerPosition",
-          description: "Ticker text.",
           defaultMessage: "You won the race!",
         }),
       };
@@ -246,7 +239,6 @@ function handleGameWorldMessage(
         ticker: intl.formatMessage(
           {
             id: "multiplayer.ticker.finishedPosition",
-            description: "Ticker text.",
             defaultMessage: `You finished {position}!`,
           },
           { position: positionName(players.me.position) },
@@ -259,7 +251,6 @@ function handleGameWorldMessage(
       players,
       ticker: intl.formatMessage({
         id: "multiplayer.ticker.start",
-        description: "Ticker text.",
         defaultMessage: "GO!",
       }),
     };

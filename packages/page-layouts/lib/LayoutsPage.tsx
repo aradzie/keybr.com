@@ -13,12 +13,10 @@ export function LayoutsPage(): ReactNode {
         pageLink: Sitemap.layouts.bind(null),
         title: formatMessage({
           id: "page.layouts.title",
-          description: "Page title.",
           defaultMessage: "Keyboard Layouts.",
         }),
         description: formatMessage({
           id: "page.layouts.description",
-          description: "Page description.",
           defaultMessage: "Keyboard layouts comparison charts.",
         }),
         entrypoint: "page-static",

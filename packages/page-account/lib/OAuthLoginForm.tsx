@@ -36,12 +36,10 @@ export function OAuthLoginForm(): ReactNode {
   const { formatMessage } = useIntl();
   const signInButtonLabel = defineMessage({
     id: "account.socialSignInButton.label",
-    description: "Widget description.",
     defaultMessage: "Sign‑in with {name}",
   });
   const signInButtonTitle = defineMessage({
     id: "account.socialSignInButton.description",
-    description: "Widget description.",
     defaultMessage: "Sign‑in with a social network.",
   });
 
@@ -64,7 +62,6 @@ export function OAuthLoginForm(): ReactNode {
       <Para>
         <FormattedMessage
           id="account.socialForm.description"
-          description="Message text."
           defaultMessage="Sign‑in with your preferred social network. We respect your privacy and promise to never spam your wall, friends, or e‑mail."
         />
       </Para>

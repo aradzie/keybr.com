@@ -18,7 +18,6 @@ export function TextToolsApp(): ReactNode {
         className={styles.textInput}
         placeholder={formatMessage({
           id: "textTools.textInput.placeholder",
-          description: "Input field placeholder.",
           defaultMessage: "Paste your text here",
         })}
         value={text}
@@ -42,7 +41,6 @@ function useInitialText(): string {
     () =>
       formatMessage({
         id: "textTools.exampleText",
-        description: "Text fragment.",
         defaultMessage: "(Example text, click here to clear it.)",
       }) +
       "\n\n" +

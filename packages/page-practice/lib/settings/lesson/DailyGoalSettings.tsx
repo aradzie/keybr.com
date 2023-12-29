@@ -22,7 +22,6 @@ export function DailyGoalSettings(): ReactNode {
         <Field>
           <FormattedMessage
             id="settings.dailyGoal.label"
-            description="Widget name."
             defaultMessage="Daily goal:"
           />
         </Field>
@@ -53,7 +52,6 @@ export function DailyGoalSettings(): ReactNode {
       <Explainer>
         <FormattedMessage
           id="settings.dailyGoal.description"
-          description="Message text."
           defaultMessage="Set the time you want to spend on the exercises daily. It is a simple reminder which does not limit you in any way. You can stop practicing whenever you want."
         />
       </Explainer>

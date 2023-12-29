@@ -13,12 +13,10 @@ export function TextToolsPage(): ReactNode {
         pageLink: Sitemap.textTools.bind(null),
         title: formatMessage({
           id: "page.textTools.title",
-          description: "Page title.",
           defaultMessage: "Text Tools",
         }),
         description: formatMessage({
           id: "page.textTools.description",
-          description: "Page description.",
           defaultMessage: "Count the characters and words in your text.",
         }),
         entrypoint: "page-text-tools",
@@ -27,7 +25,6 @@ export function TextToolsPage(): ReactNode {
       <Article>
         <FormattedMessage
           id="page.textTools.content"
-          description="Page content."
           defaultMessage={
             "<h1>Text Tools</h1>" +
             "<p>Count the characters and words in your text. Find out what the most common words are. Measure the time taken to type read these words.</p>"

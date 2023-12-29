@@ -30,14 +30,12 @@ export function TypingSettings(): ReactNode {
       <FieldSet
         legend={formatMessage({
           id: "settings.typingOptions.legend",
-          description: "Header text.",
           defaultMessage: "Typing Options",
         })}
       >
         <Explainer>
           <FormattedMessage
             id="settings.typingAssists.description"
-            description="Message text."
             defaultMessage="These are the typing assists which help your preserve your concentration and keep the flow by automatically correcting your errors."
           />
         </Explainer>
@@ -48,7 +46,6 @@ export function TypingSettings(): ReactNode {
       <FieldSet
         legend={formatMessage({
           id: "settings.textAppearance.legend",
-          description: "Header text.",
           defaultMessage: "Text Appearance",
         })}
       >
@@ -85,7 +82,6 @@ function StopOnErrorProp(): ReactNode {
           <CheckBox
             label={formatMessage({
               id: "settings.stopCursorOnError.label",
-              description: "Widget name.",
               defaultMessage: "Stop cursor on error",
             })}
             checked={settings.get(textInputProps.stopOnError)}
@@ -98,7 +94,6 @@ function StopOnErrorProp(): ReactNode {
       <Explainer>
         <FormattedMessage
           id="settings.stopCursorOnError.description"
-          description="Message text."
           defaultMessage="If enabled, the text cursor stops advancing until the right key is pressed at the current position. If disabled, all errors will be accumulated in the text input field and must be cleared with the delete key."
         />
       </Explainer>
@@ -116,7 +111,6 @@ function ForgiveErrorsProp(): ReactNode {
           <CheckBox
             label={formatMessage({
               id: "settings.forgiveErrors.label",
-              description: "Widget name.",
               defaultMessage: "Forgive errors",
             })}
             checked={settings.get(textInputProps.forgiveErrors)}
@@ -129,7 +123,6 @@ function ForgiveErrorsProp(): ReactNode {
       <Explainer>
         <FormattedMessage
           id="settings.forgiveErrors.description"
-          description="Message text."
           defaultMessage="If enabled, the text input field will forgive some kinds of errors by automatically fixing them. These are errors such as typing a wrong character or skipping a character."
         />
       </Explainer>
@@ -147,7 +140,6 @@ function SpaceSkipsWordsProp(): ReactNode {
           <CheckBox
             label={formatMessage({
               id: "settings.spaceSkipsWords.label",
-              description: "Widget name.",
               defaultMessage: "Space skips words",
             })}
             checked={settings.get(textInputProps.spaceSkipsWords)}
@@ -162,7 +154,6 @@ function SpaceSkipsWordsProp(): ReactNode {
       <Explainer>
         <FormattedMessage
           id="settings.spaceSkipsWords.description"
-          description="Message text."
           defaultMessage="If enabled, pressing the space key in the middle of a word will skip the remaining characters of the word and position cursor at the beginning of the next word."
         />
       </Explainer>
@@ -177,7 +168,6 @@ function WhitespaceProp(): ReactNode {
       <Field className={styleWidthNormal}>
         <FormattedMessage
           id="settings.whitespace.label"
-          description="Widget name."
           defaultMessage="Whitespace:"
         />
       </Field>
@@ -246,7 +236,6 @@ function CursorShapeProp(): ReactNode {
       <Field className={styleWidthNormal}>
         <FormattedMessage
           id="settings.cursorShape.label"
-          description="Widget name."
           defaultMessage="Cursor shape:"
         />
       </Field>
@@ -333,7 +322,6 @@ function CursorMovementProp(): ReactNode {
       <Field className={styleWidthNormal}>
         <FormattedMessage
           id="settings.cursorMovement.label"
-          description="Widget name."
           defaultMessage="Cursor movement:"
         />
       </Field>
@@ -384,7 +372,6 @@ function SoundsProp(): ReactNode {
       <Field className={styleWidthNormal}>
         <FormattedMessage
           id="settings.playSounds.label"
-          description="Widget name."
           defaultMessage="Play sounds:"
         />
       </Field>

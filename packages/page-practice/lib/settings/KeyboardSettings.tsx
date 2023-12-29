@@ -28,7 +28,6 @@ export function KeyboardSettings(): ReactNode {
       <FieldSet
         legend={formatMessage({
           id: "settings.options.legend",
-          description: "Header text.",
           defaultMessage: "Options",
         })}
       >
@@ -37,7 +36,6 @@ export function KeyboardSettings(): ReactNode {
       <FieldSet
         legend={formatMessage({
           id: "settings.preview.legend",
-          description: "Header text.",
           defaultMessage: "Preview",
         })}
       >
@@ -59,7 +57,6 @@ function LayoutProp(): ReactNode {
         <Field>
           <FormattedMessage
             id="keyboard.language.label"
-            description="Widget name."
             defaultMessage="Language:"
           />
         </Field>
@@ -86,7 +83,6 @@ function LayoutProp(): ReactNode {
         <Field>
           <FormattedMessage
             id="keyboard.layout.label"
-            description="Widget name."
             defaultMessage="Layout:"
           />
         </Field>
@@ -116,7 +112,6 @@ function LayoutProp(): ReactNode {
             disabled={!layout.emulate}
             label={formatMessage({
               id: "keyboard.emulate.label",
-              description: "Widget name.",
               defaultMessage: "Emulate layout",
             })}
             onChange={(value) => {
@@ -163,7 +158,6 @@ function GeometryProp(): ReactNode {
         <Field>
           <FormattedMessage
             id="keyboard.geometry.label"
-            description="Widget name."
             defaultMessage="Geometry:"
           />
         </Field>
@@ -187,7 +181,6 @@ function GeometryProp(): ReactNode {
           <CheckBox
             label={formatMessage({
               id: "settings.keyboardColors.label",
-              description: "Widget name.",
               defaultMessage: "Colored keys",
             })}
             checked={settings.get(keyboardProps.colors)}

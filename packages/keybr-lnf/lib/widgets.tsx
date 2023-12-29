@@ -7,22 +7,18 @@ import { TEXT_SIZES, THEMES } from "./options.tsx";
 
 const enterFullscreenTitle = defineMessage({
   id: "theme.enterFullscreen.description",
-  description: "Widget description.",
   defaultMessage: "Enter full-screen mode.",
 });
 const exitFullscreenTitle = defineMessage({
   id: "theme.exitFullscreen.description",
-  description: "Widget description.",
   defaultMessage: "Exit full-screen mode.",
 });
 const fullscreenNotSupportedTitle = defineMessage({
   id: "theme.fullscreenNotSupported.description",
-  description: "Widget description.",
   defaultMessage: "Full-screen mode not supported.",
 });
 const switchThemeTitle = defineMessage({
   id: "theme.switchTheme.description",
-  description: "Widget description.",
   defaultMessage: "Switch to theme {name}.",
 });
 

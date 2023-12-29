@@ -19,7 +19,6 @@ export function PublicProfilePage(): ReactNode {
         title: formatMessage(
           {
             id: "page.publicProfile.title",
-            description: "Page title.",
             defaultMessage: "{name} | Public Profile",
           },
           { name: profileOwner.name },
@@ -27,7 +26,6 @@ export function PublicProfilePage(): ReactNode {
         description: formatMessage(
           {
             id: "page.publicProfile.description",
-            description: "Page description.",
             defaultMessage: "Public profile of user ''{name}''.",
           },
           { name: profileOwner.name },

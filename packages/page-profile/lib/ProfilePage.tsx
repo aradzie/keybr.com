@@ -12,12 +12,10 @@ export function ProfilePage(): ReactNode {
         pageLink: Sitemap.profile.bind(null),
         title: formatMessage({
           id: "page.profile.title",
-          description: "Page title.",
           defaultMessage: "My Profile",
         }),
         description: formatMessage({
           id: "page.profile.description",
-          description: "Page description.",
           defaultMessage: "My detailed profile.",
         }),
         entrypoint: "page-profile",
@@ -25,7 +23,6 @@ export function ProfilePage(): ReactNode {
     >
       <FormattedMessage
         id="page.profile.content"
-        description="Page content."
         defaultMessage={
           "<h1>My Profile</h1>" +
           "<p>This is a page with detailed statistics about your learning progress. The more lessons you complete, the more detailed and accurate these statistics will be.</p>"

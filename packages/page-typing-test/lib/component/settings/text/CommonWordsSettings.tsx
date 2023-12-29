@@ -51,7 +51,6 @@ function Content({ wordList }: { readonly wordList: WordList }): ReactNode {
         <Field>
           {formatMessage({
             id: "keyboard.language.label",
-            description: "Widget name.",
             defaultMessage: "Language:",
           })}
         </Field>
@@ -76,7 +75,6 @@ function Content({ wordList }: { readonly wordList: WordList }): ReactNode {
         <Field>
           {formatMessage({
             id: "settings.wordListSize.label",
-            description: "Widget name.",
             defaultMessage: "Word list size:",
           })}
         </Field>
@@ -89,7 +87,6 @@ function Content({ wordList }: { readonly wordList: WordList }): ReactNode {
             value={settings.get(typingTestProps.wordList.wordListSize)}
             title={formatMessage({
               id: "settings.wordListSize.description",
-              description: "Widget description.",
               defaultMessage: "Chose how many common words to use.",
             })}
             onChange={(value) => {
@@ -115,7 +112,6 @@ function Content({ wordList }: { readonly wordList: WordList }): ReactNode {
           <NameValue
             name={formatMessage({
               id: "textStats.numUniqueWords",
-              description: "Text label.",
               defaultMessage: "Unique words",
             })}
             value={formatNumber(wordCount)}
@@ -125,7 +121,6 @@ function Content({ wordList }: { readonly wordList: WordList }): ReactNode {
           <NameValue
             name={formatMessage({
               id: "textStats.averageWordLength",
-              description: "Text label.",
               defaultMessage: "Average word length",
             })}
             value={formatNumber(avgWordLength, 2)}

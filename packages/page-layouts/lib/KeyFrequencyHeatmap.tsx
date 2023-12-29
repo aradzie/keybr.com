@@ -33,7 +33,6 @@ export function KeyFrequencyHeatmap({
       <Figure.Caption>
         <FormattedMessage
           id="layouts.heatmap.caption"
-          description="Header text."
           defaultMessage="Key Frequency Heatmap for {name}"
           values={{ name: keyboard.layout.name }}
         />
@@ -42,7 +41,6 @@ export function KeyFrequencyHeatmap({
       <Figure.Description>
         <FormattedMessage
           id="layouts.heatmap.description"
-          description="Message text."
           defaultMessage="This chart shows relative key frequencies as a heatmap."
         />
       </Figure.Description>
@@ -51,14 +49,12 @@ export function KeyFrequencyHeatmap({
         <li
           title={formatMessage({
             id: "layouts.stats.homeRowKeys.description",
-            description: "Widget description.",
             defaultMessage:
               "Percentage of keys typed without leaving the Caps Lock row, the more the better.",
           })}
         >
           <FormattedMessage
             id="layouts.stats.homeRowKeys.name"
-            description="Widget name."
             defaultMessage="Keys on the home row:"
           />{" "}
           <Value value={formatPercents(homeRow, 0)} />
@@ -66,14 +62,12 @@ export function KeyFrequencyHeatmap({
         <li
           title={formatMessage({
             id: "layouts.stats.topRowKeys.description",
-            description: "Widget description.",
             defaultMessage:
               "Percentage of keys typed on the Tab row, the less the better.",
           })}
         >
           <FormattedMessage
             id="layouts.stats.topRowKeys.name"
-            description="Widget name."
             defaultMessage="Keys on the top row:"
           />{" "}
           <Value value={formatPercents(topRow, 0)} />
@@ -81,14 +75,12 @@ export function KeyFrequencyHeatmap({
         <li
           title={formatMessage({
             id: "layouts.stats.bottomRowKeys.description",
-            description: "Widget description.",
             defaultMessage:
               "Percentage of keys typed on the Shift row, the less the better.",
           })}
         >
           <FormattedMessage
             id="layouts.stats.bottomRowKeys.name"
-            description="Widget name."
             defaultMessage="Keys on the bottom row:"
           />{" "}
           <Value value={formatPercents(bottomRow, 0)} />
@@ -96,14 +88,12 @@ export function KeyFrequencyHeatmap({
         <li
           title={formatMessage({
             id: "layouts.stats.sameHandKeys.description",
-            description: "Widget description.",
             defaultMessage:
               "Percentage of keys typed by the same hand, the less the better.",
           })}
         >
           <FormattedMessage
             id="layouts.stats.sameHandKeys.name"
-            description="Widget name."
             defaultMessage="Keys typed by the same hand:"
           />{" "}
           <Value value={formatPercents(sameHand, 0)} />
@@ -111,14 +101,12 @@ export function KeyFrequencyHeatmap({
         <li
           title={formatMessage({
             id: "layouts.stats.sameFingerKeys.description",
-            description: "Widget description.",
             defaultMessage:
               "Percentage of keys typed by the same finger, the less the better.",
           })}
         >
           <FormattedMessage
             id="layouts.stats.sameFingerKeys.name"
-            description="Widget name."
             defaultMessage="Keys typed by the same finger:"
           />{" "}
           <Value value={formatPercents(sameFinger, 0)} />

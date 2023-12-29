@@ -21,7 +21,6 @@ export function TextStatsWidget({
         <Para>
           <FormattedMessage
             id="textTools.emptyTextMessage"
-            description="Message text."
             defaultMessage="Please provide some text in order to calculate the associated statistics."
           />
         </Para>
@@ -48,7 +47,6 @@ export function TextStatsWidget({
           <NameValue
             name={formatMessage({
               id: "textStats.numCharsIncludingWhitespace",
-              description: "Text label.",
               defaultMessage: "Characters including whitespace",
             })}
             value={formatNumber(numCharacters + numWhitespace)}
@@ -58,7 +56,6 @@ export function TextStatsWidget({
           <NameValue
             name={formatMessage({
               id: "textStats.numCharsExcludingWhitespace",
-              description: "Text label.",
               defaultMessage: "Characters excluding whitespace",
             })}
             value={formatNumber(numCharacters)}
@@ -68,7 +65,6 @@ export function TextStatsWidget({
           <NameValue
             name={formatMessage({
               id: "textStats.numAllWords",
-              description: "Text label.",
               defaultMessage: "All words",
             })}
             value={formatNumber(numWords)}
@@ -78,7 +74,6 @@ export function TextStatsWidget({
           <NameValue
             name={formatMessage({
               id: "textStats.numUniqueWords",
-              description: "Text label.",
               defaultMessage: "Unique words",
             })}
             value={formatNumber(numUniqueWords)}
@@ -88,7 +83,6 @@ export function TextStatsWidget({
           <NameValue
             name={formatMessage({
               id: "textStats.averageWordLength",
-              description: "Text label.",
               defaultMessage: "Average word length",
             })}
             value={formatNumber(avgWordLength, 2)}
@@ -99,7 +93,6 @@ export function TextStatsWidget({
             name={formatMessage(
               {
                 id: "textStats.mostCommonWords",
-                description: "Text fragment.",
                 defaultMessage: "Top {count} most common words",
               },
               { count: formatNumber(wordCount.length) },
@@ -111,7 +104,6 @@ export function TextStatsWidget({
           <Name>
             <FormattedMessage
               id="textStats.timeToType"
-              description="Text fragment."
               defaultMessage="At the average typing speed of {speed} WPM, it would take {time} to type this text."
               values={{
                 speed: formatNumber(avgTypingWpm),
@@ -124,7 +116,6 @@ export function TextStatsWidget({
           <Name>
             <FormattedMessage
               id="textStats.timeToRead"
-              description="Text fragment."
               defaultMessage="At the average reading speed of {speed} WPM, it would take {time} to read this text."
               values={{
                 speed: formatNumber(avgReadingWpm),

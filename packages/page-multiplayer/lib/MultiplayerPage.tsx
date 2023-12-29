@@ -12,12 +12,10 @@ export function MultiplayerPage(): ReactNode {
         pageLink: Sitemap.multiplayer.bind(null),
         title: formatMessage({
           id: "page.multiplayer.title",
-          description: "Page title.",
           defaultMessage: "Multiplayer",
         }),
         description: formatMessage({
           id: "page.multiplayer.description",
-          description: "Page description.",
           defaultMessage: "Online multiplayer type racing game.",
         }),
         entrypoint: "page-multiplayer",
@@ -25,7 +23,6 @@ export function MultiplayerPage(): ReactNode {
     >
       <FormattedMessage
         id="page.multiplayer.content"
-        description="Page content."
         defaultMessage={
           "<h1>Online Multiplayer Typing Game</h1>" +
           "<p>Compete against other players in this online multiplayer typing game. The faster you type, the faster your car goes. Type as fast as you can to win the race!</p>"

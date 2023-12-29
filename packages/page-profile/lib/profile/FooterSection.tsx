@@ -16,12 +16,10 @@ export function FooterSection(): ReactNode {
           icon={<Icon shape={mdiDownload} />}
           label={formatMessage({
             id: "profile.widget.downloadData.label",
-            description: "Widget name.",
             defaultMessage: "Download Data",
           })}
           title={formatMessage({
             id: "profile.widget.downloadData.description",
-            description: "Widget description.",
             defaultMessage: "Download all your typing data in JSON format.",
           })}
           onClick={() => {
@@ -36,12 +34,10 @@ export function FooterSection(): ReactNode {
           icon={<Icon shape={mdiDeleteForever} />}
           label={formatMessage({
             id: "profile.widget.resetData.label",
-            description: "Widget name.",
             defaultMessage: "Reset Statistics",
           })}
           title={formatMessage({
             id: "profile.widget.resetData.description",
-            description: "Widget description.",
             defaultMessage:
               "Permanently delete all of your typing data and reset statistics.",
           })}
@@ -66,7 +62,6 @@ function useCommands() {
     handleResetData: (): void => {
       const message = formatMessage({
         id: "profile.widget.resetData.message",
-        description: "Confirmation text.",
         defaultMessage:
           "Are you sure you want to delete all data and reset your profile? " +
           "This operation is permanent and cannot be undone!",

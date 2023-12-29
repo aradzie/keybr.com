@@ -18,12 +18,10 @@ export function HighScoresPage({
         pageLink: Sitemap.highScores.bind(null),
         title: formatMessage({
           id: "page.highScores.title",
-          description: "Page title.",
           defaultMessage: "High Scores Table",
         }),
         description: formatMessage({
           id: "page.highScores.description",
-          description: "Page description.",
           defaultMessage: "The table of users ranked by their typing speed.",
         }),
         entrypoint: "page-static",

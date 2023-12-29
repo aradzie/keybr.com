@@ -63,7 +63,6 @@ function Content({ onSubmit }: { readonly onSubmit: () => void }): ReactNode {
         <Header level={1}>
           <FormattedMessage
             id="settings.tab.lessons.header"
-            description="Header text."
             defaultMessage="Lessons"
           />
         </Header>
@@ -74,7 +73,6 @@ function Content({ onSubmit }: { readonly onSubmit: () => void }): ReactNode {
         <Header level={1}>
           <FormattedMessage
             id="settings.tab.typing.header"
-            description="Header text."
             defaultMessage="Typing"
           />
         </Header>
@@ -85,7 +83,6 @@ function Content({ onSubmit }: { readonly onSubmit: () => void }): ReactNode {
         <Header level={1}>
           <FormattedMessage
             id="settings.tab.keyboard.header"
-            description="Header text."
             defaultMessage="Keyboard"
           />
         </Header>
@@ -96,7 +93,6 @@ function Content({ onSubmit }: { readonly onSubmit: () => void }): ReactNode {
         <Header level={1}>
           <FormattedMessage
             id="settings.tab.miscellaneous.header"
-            description="Header text."
             defaultMessage="Miscellaneous"
           />
         </Header>
@@ -110,12 +106,10 @@ function Content({ onSubmit }: { readonly onSubmit: () => void }): ReactNode {
                 icon={<Icon shape={mdiDeleteForever} />}
                 label={formatMessage({
                   id: "settings.widget.reset.name",
-                  description: "Widget name.",
                   defaultMessage: "Reset",
                 })}
                 title={formatMessage({
                   id: "settings.widget.reset.description",
-                  description: "Widget description.",
                   defaultMessage: "Reset all settings to the default values.",
                 })}
                 onClick={() => {
@@ -130,12 +124,10 @@ function Content({ onSubmit }: { readonly onSubmit: () => void }): ReactNode {
                 icon={<Icon shape={mdiCheckCircle} />}
                 label={formatMessage({
                   id: "settings.widget.done.name",
-                  description: "Widget name.",
                   defaultMessage: "Done",
                 })}
                 title={formatMessage({
                   id: "settings.widget.done.description",
-                  description: "Widget description.",
                   defaultMessage:
                     "Save all settings and return to the practice.",
                 })}

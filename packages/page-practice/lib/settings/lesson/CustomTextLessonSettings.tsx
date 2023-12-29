@@ -30,14 +30,12 @@ export function CustomTextLessonSettings({
       <Explainer>
         <FormattedMessage
           id="lessonType.customText.description"
-          description="Message text."
           defaultMessage="Generate typing lessons from the words of your own custom text. All keys are included by default. This mode is for the pros."
         />
       </Explainer>
       <FieldSet
         legend={formatMessage({
           id: "settings.lessonOptions.legend",
-          description: "Header text.",
           defaultMessage: "Lesson Options",
         })}
       >
@@ -59,7 +57,6 @@ function CustomTextInput(): ReactNode {
       <Para>
         <FormattedMessage
           id="settings.customTextExamples.label"
-          description="Widget name."
           defaultMessage="Examples:"
         />{" "}
         {exampleTexts.map(({ title, content }, index) => (
@@ -86,7 +83,6 @@ function CustomTextInput(): ReactNode {
           type="textarea"
           placeholder={formatMessage({
             id: "settings.customTextInput.placeholder",
-            description: "Input field placeholder.",
             defaultMessage: "Custom text...",
           })}
           onChange={(value) => {
@@ -113,7 +109,6 @@ function CustomTextStats(): ReactNode {
         <NameValue
           name={formatMessage({
             id: "textStats.numAllWords",
-            description: "Text label.",
             defaultMessage: "All words",
           })}
           value={formatNumber(numWords)}
@@ -123,7 +118,6 @@ function CustomTextStats(): ReactNode {
         <NameValue
           name={formatMessage({
             id: "textStats.numUniqueWords",
-            description: "Text label.",
             defaultMessage: "Unique words",
           })}
           value={formatNumber(numUniqueWords)}
@@ -133,7 +127,6 @@ function CustomTextStats(): ReactNode {
         <NameValue
           name={formatMessage({
             id: "textStats.averageWordLength",
-            description: "Text label.",
             defaultMessage: "Average word length",
           })}
           value={formatNumber(avgWordLength, 2)}
@@ -153,12 +146,10 @@ function CustomTextProcessing(): ReactNode {
           checked={settings.get(lessonProps.customText.lettersOnly)}
           label={formatMessage({
             id: "settings.customTextLettersOnly.label",
-            description: "Widget name.",
             defaultMessage: "Remove punctuation",
           })}
           title={formatMessage({
             id: "settings.customTextLettersOnly.description",
-            description: "Widget description.",
             defaultMessage:
               "Remove punctuation from the text to make it simpler to type.",
           })}
@@ -174,12 +165,10 @@ function CustomTextProcessing(): ReactNode {
           checked={settings.get(lessonProps.customText.lowercase)}
           label={formatMessage({
             id: "settings.customTextLowercase.label",
-            description: "Widget name.",
             defaultMessage: "Transform to lowercase",
           })}
           title={formatMessage({
             id: "settings.customTextLowercase.description",
-            description: "Widget description.",
             defaultMessage:
               "Transform all text to lower case to make it simpler to type.",
           })}
@@ -195,12 +184,10 @@ function CustomTextProcessing(): ReactNode {
           checked={settings.get(lessonProps.customText.randomize)}
           label={formatMessage({
             id: "settings.customTextRandomize.label",
-            description: "Widget name.",
             defaultMessage: "Shuffle words",
           })}
           title={formatMessage({
             id: "settings.customTextRandomize.description",
-            description: "Widget description.",
             defaultMessage: "Put words from the custom text in a random order.",
           })}
           onChange={(value) => {

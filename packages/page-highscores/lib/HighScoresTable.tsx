@@ -21,28 +21,24 @@ export function HighScoresTable({
           <th className={styles.userColumn}>
             <FormattedMessage
               id="highScores.column.user.label"
-              description="Table column name."
               defaultMessage="User"
             />
           </th>
           <th className={styles.layoutColumn}>
             <FormattedMessage
               id="highScores.column.layout.label"
-              description="Table column name."
               defaultMessage="Layout"
             />
           </th>
           <th className={styles.speedColumn}>
             <FormattedMessage
               id="highScores.column.speed.label"
-              description="Table column name."
               defaultMessage="Typing Speed"
             />
           </th>
           <th className={styles.scoreColumn}>
             <FormattedMessage
               id="highScores.column.score.label"
-              description="Table column name."
               defaultMessage="Score"
             />
           </th>

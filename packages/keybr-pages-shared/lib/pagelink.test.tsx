@@ -12,12 +12,10 @@ test("format trivial", (t) => {
     path: "/path",
     name: {
       id: "name",
-      description: "test",
       defaultMessage: "name",
     },
     title: {
       id: "title",
-      description: "test",
       defaultMessage: "title",
     },
     icon: AlertIcon,
@@ -38,12 +36,10 @@ test("format simple", (t) => {
     path: "/prefix/:id",
     name: {
       id: "name",
-      description: "test",
       defaultMessage: "name [{id}]",
     },
     title: {
       id: "title",
-      description: "test",
       defaultMessage: "title [{id}]",
     },
     icon: AlertIcon,
@@ -64,12 +60,10 @@ test("format complex", (t) => {
     path: "/prefix/:a/and/:b",
     name: {
       id: "name",
-      description: "test",
       defaultMessage: "name {a} and {b}",
     },
     title: {
       id: "title",
-      description: "test",
       defaultMessage: "title {a} and {b}",
     },
     icon: AlertIcon,
@@ -88,12 +82,10 @@ test("render with default template", (t) => {
     path: "/path",
     name: {
       id: "name",
-      description: "test",
       defaultMessage: "name",
     },
     title: {
       id: "title",
-      description: "test",
       defaultMessage: "title",
     },
     icon: AlertIcon,
@@ -113,12 +105,10 @@ test("render with custom template", (t) => {
     path: "/path",
     name: {
       id: "name",
-      description: "test",
       defaultMessage: "name",
     },
     title: {
       id: "title",
-      description: "test",
       defaultMessage: "title",
     },
     icon: AlertIcon,

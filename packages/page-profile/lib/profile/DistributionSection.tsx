@@ -22,7 +22,6 @@ export function DistributionSection({
       <Figure.Caption>
         <FormattedMessage
           id="profile.chart.histogram.caption"
-          description="Header text."
           defaultMessage="Relative Typing Speed"
         />
       </Figure.Caption>
@@ -30,7 +29,6 @@ export function DistributionSection({
       <Figure.Description>
         <FormattedMessage
           id="profile.chart.histogram.description"
-          description="Message text."
           defaultMessage="This is a histogram of the typing speeds of all users, and your position in relation to them."
         />
       </Figure.Description>
@@ -42,7 +40,6 @@ export function DistributionSection({
             {
               label: formatMessage({
                 id: "metric.averageSpeed.name",
-                description: "Widget name.",
                 defaultMessage: "Average speed",
               }),
               value: speed.avg,
@@ -50,7 +47,6 @@ export function DistributionSection({
             {
               label: formatMessage({
                 id: "metric.bestSpeed.name",
-                description: "Widget name.",
                 defaultMessage: "Best speed",
               }),
               value: speed.max,
@@ -64,7 +60,6 @@ export function DistributionSection({
       <Figure.Legend>
         <FormattedMessage
           id="profile.chart.histogram.legend"
-          description="Message text."
           defaultMessage="See how fast you type relative to other users. The higher the bar is, the more people type at that speed. Your position is marked with the colored vertical lines."
         />
       </Figure.Legend>

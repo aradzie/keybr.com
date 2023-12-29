@@ -17,12 +17,10 @@ test("render", (t) => {
       path: "/path",
       name: {
         id: "name",
-        description: "test",
         defaultMessage: "name",
       },
       title: {
         id: "title",
-        description: "test",
         defaultMessage: "title",
       },
     }).bind(null),
@@ -79,12 +77,10 @@ test("render alt", (t) => {
       path: "/path",
       name: {
         id: "name",
-        description: "test",
         defaultMessage: "name",
       },
       title: {
         id: "title",
-        description: "test",
         defaultMessage: "title",
       },
     }).bind(null),

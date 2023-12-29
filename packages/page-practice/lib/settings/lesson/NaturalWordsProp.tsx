@@ -14,7 +14,6 @@ export function NaturalWordsProp(): ReactNode {
           <CheckBox
             label={formatMessage({
               id: "settings.naturalWords.label",
-              description: "Widget name.",
               defaultMessage: "Prefer natural words",
             })}
             checked={settings.get(lessonProps.guided.naturalWords)}

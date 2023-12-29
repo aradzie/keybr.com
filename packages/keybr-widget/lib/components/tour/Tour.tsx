@@ -129,7 +129,6 @@ export function Tour({ children, onClose }: TourProps): ReactNode {
                 >
                   {formatMessage({
                     id: "tour.previous",
-                    description: "Widget name.",
                     defaultMessage: "Previous",
                   })}
                 </a>
@@ -142,7 +141,6 @@ export function Tour({ children, onClose }: TourProps): ReactNode {
                 >
                   {formatMessage({
                     id: "tour.next",
-                    description: "Widget name.",
                     defaultMessage: "Next",
                   })}
                 </a>
@@ -154,7 +152,6 @@ export function Tour({ children, onClose }: TourProps): ReactNode {
                 >
                   {formatMessage({
                     id: "tour.close",
-                    description: "Widget name.",
                     defaultMessage: "Close",
                   })}
                 </a>

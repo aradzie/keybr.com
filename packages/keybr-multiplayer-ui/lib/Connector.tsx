@@ -42,7 +42,6 @@ function Banner(): ReactNode {
     <Para className={styleTextCenter}>
       <FormattedMessage
         id="multiplayer.intro.description"
-        description="Message text."
         defaultMessage="Compete against other players in this online multiplayer game. The faster you type, the faster your car goes. Type as fast as you can to win the race!"
       />
     </Para>
@@ -54,7 +53,6 @@ function Connecting(): ReactNode {
     <Article>
       <FormattedMessage
         id="multiplayer.state.connecting"
-        description="Message text."
         defaultMessage={
           "<h1>Connecting to Server...</h1>" +
           "<p>Establishing connection to the game server.</p>"
@@ -69,7 +67,6 @@ function Offline(): ReactNode {
     <Article>
       <FormattedMessage
         id="multiplayer.state.offline"
-        description="Message text."
         defaultMessage={
           "<h1>Server is Offline</h1>" +
           "<p>Something is wrong with our game server.</p>" +
@@ -85,7 +82,6 @@ function Kicked(): ReactNode {
     <Article>
       <FormattedMessage
         id="multiplayer.state.kicked"
-        description="Message text."
         defaultMessage={
           "<h1>Kicked out of the Game</h1>" +
           "<p>You were kicked out of the game for being inactive.</p>"

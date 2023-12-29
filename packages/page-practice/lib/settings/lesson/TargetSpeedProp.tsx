@@ -21,7 +21,6 @@ export function TargetSpeedProp(): ReactNode {
         <Field>
           <FormattedMessage
             id="settings.targetSpeed.label"
-            description="Widget name."
             defaultMessage="Target typing speed:"
           />
         </Field>

@@ -127,7 +127,6 @@ export function TextArea({
           <div className={styles.messageText}>
             <FormattedMessage
               id="textArea.capsLock.message"
-              description="Message text."
               defaultMessage="Caps Lock is on"
             />
           </div>
@@ -138,7 +137,6 @@ export function TextArea({
           <div className={styles.messageText}>
             <FormattedMessage
               id="textArea.focus.message"
-              description="Message text."
               defaultMessage="Click or press Enter to activate..."
             />
           </div>

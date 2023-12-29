@@ -34,7 +34,6 @@ export const GaugeRow = memo(function GaugeRow({
         className={styles.name}
         name={formatMessage({
           id: "lesson.gaugesPanel.label",
-          description: "Widget name.",
           defaultMessage: "Metrics",
         })}
       />
@@ -64,7 +63,6 @@ export const SpeedGauge = memo(function SpeedGauge({
         <Name
           name={formatMessage({
             id: "metric.speed.name",
-            description: "Widget name.",
             defaultMessage: "Speed",
           })}
         />
@@ -76,14 +74,12 @@ export const SpeedGauge = memo(function SpeedGauge({
           delta={delta}
           title={formatMessage({
             id: "metric.speedChange.description",
-            description: "Widget description.",
             defaultMessage: "The difference from the average value.",
           })}
         />
       }
       title={formatMessage({
         id: "metric.speed.description",
-        description: "Widget description.",
         defaultMessage: "Typing speed in the last lesson.",
       })}
     />
@@ -107,7 +103,6 @@ export const AccuracyGauge = memo(function AccuracyGauge({
         <Name
           name={formatMessage({
             id: "metric.accuracy.name",
-            description: "Widget name.",
             defaultMessage: "Accuracy",
           })}
         />
@@ -119,14 +114,12 @@ export const AccuracyGauge = memo(function AccuracyGauge({
           delta={delta}
           title={formatMessage({
             id: "metric.accuracyChange.description",
-            description: "Widget description.",
             defaultMessage: "The difference from the average value.",
           })}
         />
       }
       title={formatMessage({
         id: "metric.accuracy.description",
-        description: "Widget description.",
         defaultMessage:
           "The percentage of characters typed without errors in the last lesson.",
       })}
@@ -151,7 +144,6 @@ export const ScoreGauge = memo(function ScoreGauge({
         <Name
           name={formatMessage({
             id: "metric.score.name",
-            description: "Widget name.",
             defaultMessage: "Score",
           })}
         />
@@ -163,14 +155,12 @@ export const ScoreGauge = memo(function ScoreGauge({
           delta={delta}
           title={formatMessage({
             id: "metric.scoreChange.description",
-            description: "Widget description.",
             defaultMessage: "The difference from the average value.",
           })}
         />
       }
       title={formatMessage({
         id: "metric.score.description",
-        description: "Widget description.",
         defaultMessage:
           "Score of the last lesson in abstract points. " +
           "Scores are greater when you type faster and with fewer errors.",
@@ -215,7 +205,6 @@ export const KeySetRow = memo(function KeySetRow({
         className={styles.name}
         name={formatMessage({
           id: "lesson.keySetPanel.label",
-          description: "Widget name.",
           defaultMessage: "All keys",
         })}
       />
@@ -242,7 +231,6 @@ export const CurrentKeyRow = memo(function CurrentKeyRow({
         className={styles.name}
         name={formatMessage({
           id: "lesson.currentKeyPanel.label",
-          description: "Widget name.",
           defaultMessage: "Current key",
         })}
       />
@@ -270,7 +258,6 @@ export const DailyGoalRow = memo(function DailyGoalRow({
       className={styles.row}
       title={formatMessage({
         id: "lesson.dailyGoalPanel.description",
-        description: "Widget description.",
         defaultMessage: "The progress to your daily goal.",
       })}
     >
@@ -278,7 +265,6 @@ export const DailyGoalRow = memo(function DailyGoalRow({
         className={styles.name}
         name={formatMessage({
           id: "lesson.dailyGoalPanel.label",
-          description: "Widget name.",
           defaultMessage: "Daily goal",
         })}
       />

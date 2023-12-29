@@ -16,7 +16,6 @@ export function NumbersLessonSettings({
       <FieldSet
         legend={formatMessage({
           id: "settings.lessonOptions.legend",
-          description: "Header text.",
           defaultMessage: "Lesson Options",
         })}
       >

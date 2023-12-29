@@ -37,7 +37,6 @@ function Block({ block }: { readonly block: BlockData }): ReactNode {
   const weekDayName = formatMessage({
     id: "calendar.weekDayName",
     defaultMessage: "M|T|W|T|F|S|S",
-    description: "Day of week name.",
   }).split("|");
 
   return (
@@ -107,7 +106,6 @@ function Cell({ cell }: { readonly cell: CellData | null }): ReactNode {
     formatMessage(
       {
         id: "profile.calendar.totalTime.description",
-        description: "Calendar cell title.",
         defaultMessage: "Time of lessons: {value}",
       },
       { value: formatDuration(stats.time) },
@@ -115,7 +113,6 @@ function Cell({ cell }: { readonly cell: CellData | null }): ReactNode {
     formatMessage(
       {
         id: "profile.calendar.totalLessons.description",
-        description: "Calendar cell title.",
         defaultMessage: "Number of lessons: {value}",
       },
       { value: results.length },
@@ -123,7 +120,6 @@ function Cell({ cell }: { readonly cell: CellData | null }): ReactNode {
     formatMessage(
       {
         id: "profile.calendar.topSpeed.description",
-        description: "Calendar cell title.",
         defaultMessage: "Top speed: {value}",
       },
       { value: formatSpeed(stats.speed.max) },
@@ -131,7 +127,6 @@ function Cell({ cell }: { readonly cell: CellData | null }): ReactNode {
     formatMessage(
       {
         id: "profile.calendar.averageSpeed.description",
-        description: "Calendar cell title.",
         defaultMessage: "Average speed: {value}",
       },
       { value: formatSpeed(stats.speed.avg) },

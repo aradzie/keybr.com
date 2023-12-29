@@ -14,7 +14,6 @@ export function DoubleWordsProp(): ReactNode {
           <CheckBox
             label={formatMessage({
               id: "settings.doubleWords.label",
-              description: "Widget name.",
               defaultMessage: "Double each word",
             })}
             checked={settings.get(lessonProps.doubleWords)}

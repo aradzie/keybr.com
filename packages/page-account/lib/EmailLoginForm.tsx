@@ -54,7 +54,6 @@ export function EmailLoginForm({
           <Para>
             <FormattedMessage
               id="account.emailState.sendingText"
-              description="Message text."
               defaultMessage="Sending an e‑mail with the login link to <strong>{email}</strong>... Please wait a second."
               values={{ email }}
             />
@@ -68,7 +67,6 @@ export function EmailLoginForm({
           <Para>
             <FormattedMessage
               id="account.emailState.sentText"
-              description="Message text."
               defaultMessage="We have sent an e‑mail with the login link to <strong>{email}</strong>. It should arrive soon, please check your inbox in a minute or two."
               values={{ email }}
             />
@@ -81,12 +79,10 @@ export function EmailLoginForm({
               icon={<Icon shape={mdiRepeat} />}
               label={formatMessage({
                 id: "account.widget.resend.label",
-                description: "Widget name.",
                 defaultMessage: "Resend",
               })}
               title={formatMessage({
                 id: "account.widget.resend.description",
-                description: "Widget description.",
                 defaultMessage: "Send one more e‑mail.",
               })}
             />
@@ -100,7 +96,6 @@ export function EmailLoginForm({
           <Para>
             <FormattedMessage
               id="account.emailState.errorText"
-              description="Message text."
               defaultMessage="Could not send e‑mail to <strong>{email}</strong>: {message}"
               values={{ email, message }}
             />
@@ -113,12 +108,10 @@ export function EmailLoginForm({
               icon={<Icon shape={mdiRepeat} />}
               label={formatMessage({
                 id: "account.widget.retrySend.label",
-                description: "Widget name.",
                 defaultMessage: "Retry",
               })}
               title={formatMessage({
                 id: "account.widget.retrySend.description",
-                description: "Widget description.",
                 defaultMessage: "Send another e‑mail.",
               })}
             />
@@ -137,12 +130,10 @@ export function EmailLoginForm({
                 type="email"
                 placeholder={formatMessage({
                   id: "account.widget.email.placeholder",
-                  description: "Placeholder text.",
                   defaultMessage: "Your e‑mail address...",
                 })}
                 title={formatMessage({
                   id: "account.widget.email.description",
-                  description: "Widget description.",
                   defaultMessage:
                     "This is the e‑mail address we will send the sign‑in link to.",
                 })}
@@ -156,12 +147,10 @@ export function EmailLoginForm({
                 icon={<Icon shape={mdiSend} />}
                 label={formatMessage({
                   id: "account.widget.send.label",
-                  description: "Widget name.",
                   defaultMessage: "Send Sign‑in Link",
                 })}
                 title={formatMessage({
                   id: "account.widget.send.description",
-                  description: "Widget description.",
                   defaultMessage: "Sign-in with e-mail.",
                 })}
               />
@@ -171,7 +160,6 @@ export function EmailLoginForm({
           <Para>
             <FormattedMessage
               id="account.emailForm.description"
-              description="Message text."
               defaultMessage={
                 "Simple sign‑in that does not use passwords. " +
                 "Just enter your e‑mail address, and we will send you a login link. " +

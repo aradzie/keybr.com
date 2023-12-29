@@ -27,7 +27,6 @@ export function ComparisonSection({
       <Header level={2}>
         <FormattedMessage
           id="profile.chart.compare.description"
-          description="Header text."
           defaultMessage="Compare Yourself"
         />
       </Header>
@@ -35,7 +34,6 @@ export function ComparisonSection({
       <Para>
         <FormattedMessage
           id="profile.chart.compareTopSpeed.description"
-          description="Message text."
           defaultMessage="Your all time top speed beats {value} of all other people."
           values={{
             value: (
@@ -48,7 +46,6 @@ export function ComparisonSection({
       <Para>
         <FormattedMessage
           id="profile.chart.compareAverageSpeed.description"
-          description="Message text."
           defaultMessage="Your all time average speed beats {value} of all other people."
           values={{
             value: (

@@ -36,7 +36,6 @@ function Content({ model }: { readonly model: PhoneticModel }): ReactNode {
         <Field>
           {formatMessage({
             id: "keyboard.language.label",
-            description: "Widget name.",
             defaultMessage: "Language:",
           })}
         </Field>

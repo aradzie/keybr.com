@@ -54,7 +54,6 @@ module.exports = {
     "react/no-unknown-property": ["error", { ignore: ["prefix"] }],
     // configure formatjs
     "formatjs/enforce-id": "error",
-    "formatjs/enforce-description": ["error", "literal"],
     "formatjs/enforce-default-message": ["error", "literal"],
     "formatjs/enforce-placeholders": [
       "error",

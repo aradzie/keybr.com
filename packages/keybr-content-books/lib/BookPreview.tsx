@@ -47,7 +47,6 @@ export const BookPreview = memo(function BookPreview({
           <NameValue
             name={formatMessage({
               id: "textStats.numChapters",
-              description: "Text label.",
               defaultMessage: "Chapters",
             })}
             value={formatNumber(numChapters)}
@@ -55,7 +54,6 @@ export const BookPreview = memo(function BookPreview({
           <NameValue
             name={formatMessage({
               id: "textStats.numParagraphs",
-              description: "Text label.",
               defaultMessage: "Paragraphs",
             })}
             value={formatNumber(numParagraphs)}
@@ -63,7 +61,6 @@ export const BookPreview = memo(function BookPreview({
           <NameValue
             name={formatMessage({
               id: "textStats.numAllWords",
-              description: "Text label.",
               defaultMessage: "All words",
             })}
             value={formatNumber(numWords)}
@@ -71,7 +68,6 @@ export const BookPreview = memo(function BookPreview({
           <NameValue
             name={formatMessage({
               id: "textStats.numUniqueWords",
-              description: "Text label.",
               defaultMessage: "Unique words",
             })}
             value={formatNumber(numUniqueWords)}
@@ -79,7 +75,6 @@ export const BookPreview = memo(function BookPreview({
           <NameValue
             name={formatMessage({
               id: "textStats.numCharacters",
-              description: "Text label.",
               defaultMessage: "Characters",
             })}
             value={formatNumber(numCharacters)}
@@ -89,7 +84,6 @@ export const BookPreview = memo(function BookPreview({
           <NameValue
             name={formatMessage({
               id: "textStats.averageWordLength",
-              description: "Text label.",
               defaultMessage: "Average word length",
             })}
             value={formatNumber(avgWordLength, 2)}

@@ -18,7 +18,6 @@ export function LearningRateDescription({
         <Name>
           <FormattedMessage
             id="learningRate.alreadyUnlocked"
-            description="Message text."
             defaultMessage="This letter is already unlocked."
           />
         </Name>
@@ -35,7 +34,6 @@ export function LearningRateDescription({
         <Name>
           <FormattedMessage
             id="learningRate.remainingLessons"
-            description="Message text."
             defaultMessage={
               "Approximately {remainingLessons} lessons remaining to " +
               "unlock this letter ({certainty} certainty)."
@@ -58,7 +56,6 @@ export function LearningRateDescription({
       <Name>
         <FormattedMessage
           id="learningRate.unknown"
-          description="Message text."
           defaultMessage="Need more data to compute the remaining lessons to unlock this letter."
         />
       </Name>

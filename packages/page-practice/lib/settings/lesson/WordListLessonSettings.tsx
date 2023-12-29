@@ -33,14 +33,12 @@ export function WordListLessonSettings({
       <Explainer>
         <FormattedMessage
           id="lessonType.wordList.description"
-          description="Message text."
           defaultMessage="Generate typing lessons from the list of the most common words of your language. All keys are included by default. This mode is for the pros."
         />
       </Explainer>
       <FieldSet
         legend={formatMessage({
           id: "settings.lessonOptions.legend",
-          description: "Header text.",
           defaultMessage: "Lesson Options",
         })}
       >
@@ -68,7 +66,6 @@ function WordListPreview({
         <Field>
           <FormattedMessage
             id="settings.wordListSize.label"
-            description="Widget name."
             defaultMessage="Word list size:"
           />
         </Field>
@@ -90,7 +87,6 @@ function WordListPreview({
           <CheckBox
             label={formatMessage({
               id: "settings.longWordsOnly.label",
-              description: "Widget name.",
               defaultMessage: "Long words only",
             })}
             checked={settings.get(lessonProps.wordList.longWordsOnly)}
@@ -128,7 +124,6 @@ function WordListStats({
         <NameValue
           name={formatMessage({
             id: "textStats.numUniqueWords",
-            description: "Text label.",
             defaultMessage: "Unique words",
           })}
           value={formatNumber(wordCount)}
@@ -138,7 +133,6 @@ function WordListStats({
         <NameValue
           name={formatMessage({
             id: "textStats.averageWordLength",
-            description: "Text label.",
             defaultMessage: "Average word length",
           })}
           value={formatNumber(avgWordLength, 2)}

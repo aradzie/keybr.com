@@ -7,7 +7,6 @@ export function AccountName({ name }: { readonly name: ReactNode }): ReactNode {
     <Header level={1}>
       <FormattedMessage
         id="account.accountName.header"
-        description="Page title."
         defaultMessage="Account | {name}"
         values={{ name }}
       />

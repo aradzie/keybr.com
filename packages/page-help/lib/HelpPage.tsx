@@ -13,12 +13,10 @@ export function HelpPage(): ReactNode {
         pageLink: Sitemap.help.bind(null),
         title: formatMessage({
           id: "page.help.title",
-          description: "Page title.",
           defaultMessage: "Help",
         }),
         description: formatMessage({
           id: "page.help.description",
-          description: "Page description.",
           defaultMessage: "Learn to type faster.",
         }),
         entrypoint: "page-static",

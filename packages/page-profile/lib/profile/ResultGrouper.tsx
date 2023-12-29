@@ -45,7 +45,6 @@ export function ResultGrouper({
         <Field>
           <FormattedMessage
             id="profile.widget.groupSelector.label"
-            description="Widget name."
             defaultMessage="Show statistics for:"
           />
         </Field>
@@ -69,7 +68,6 @@ export function ResultGrouper({
               {
                 name: formatMessage({
                   id: "characterClass.letters",
-                  description: "Widget name.",
                   defaultMessage: "Letters",
                 }),
                 value: "letters",
@@ -77,7 +75,6 @@ export function ResultGrouper({
               {
                 name: formatMessage({
                   id: "characterClass.digits",
-                  description: "Widget name.",
                   defaultMessage: "Digits",
                 }),
                 value: "digits",
@@ -85,7 +82,6 @@ export function ResultGrouper({
               {
                 name: formatMessage({
                   id: "characterClass.punctuationCharacters",
-                  description: "Widget name.",
                   defaultMessage: "Punctuation characters",
                 }),
                 value: "punctuators",
@@ -93,7 +89,6 @@ export function ResultGrouper({
               {
                 name: formatMessage({
                   id: "characterClass.specialCharacters",
-                  description: "Widget name.",
                   defaultMessage: "Special characters",
                 }),
                 value: "specials",
