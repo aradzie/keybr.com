@@ -25,39 +25,45 @@ export const makeIntlDurations = (intl: IntlShape): IntlDurations => {
     const formatDuration = (duration: Duration): string => {
       const { seconds = 0, minutes = 0, hours = 0 } = duration;
       const parts = [];
-      if (hours > 1) {
-        parts.push(`${hours} hours`);
-      } else if (hours > 0) {
-        parts.push(`one hour`);
+      if (hours > 0) {
+        parts.push(
+          intl.formatNumber(hours, {
+            style: "unit",
+            unit: "hour",
+            unitDisplay: "long",
+          }),
+        );
       }
-      if (minutes > 1) {
-        parts.push(`${minutes} minutes`);
-      } else if (minutes > 0) {
-        parts.push(`one minute`);
+      if (minutes > 0) {
+        parts.push(
+          intl.formatNumber(minutes, {
+            style: "unit",
+            unit: "minute",
+            unitDisplay: "long",
+          }),
+        );
       }
-      if (seconds > 1) {
-        parts.push(`${seconds} seconds`);
-      } else if (seconds > 0) {
-        parts.push(`one second`);
+      if (seconds > 0) {
+        parts.push(
+          intl.formatNumber(seconds, {
+            style: "unit",
+            unit: "second",
+            unitDisplay: "long",
+          }),
+        );
       }
-      let result = "";
-      let index = 0;
-      for (const part of parts) {
-        if (index > 0) {
-          if (index + 1 === parts.length) {
-            result += " and ";
-          } else {
-            result += " ";
-          }
-        }
-        result += part;
-        index += 1;
-      }
-      return result;
+      return intl.formatList(parts, {
+        style: "long",
+        type: "conjunction",
+      });
     };
     const humanizeDuration = (duration: number): string => {
       if (duration < 1) {
-        return "zero seconds";
+        return intl.formatNumber(0, {
+          style: "unit",
+          unit: "second",
+          unitDisplay: "long",
+        });
       }
       const hours = Math.floor(duration / 3600);
       duration = duration - hours * 3600;
