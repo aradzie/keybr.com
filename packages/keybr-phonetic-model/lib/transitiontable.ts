@@ -105,39 +105,6 @@ export class TransitionTable {
     return writer.buffer();
   }
 
-  stats(): {
-    totalSegments: number;
-    usedSegments: number;
-    segmentUseRatio: number;
-    totalEntries: number;
-    usedEntries: number;
-    entryUseRatio: number;
-  } {
-    const totalSegments = this.chain.segments;
-    let usedSegments = 0;
-    const totalEntries = this.chain.entries;
-    let usedEntries = 0;
-    for (const suffixes of this.segments) {
-      if (suffixes.length > 0) {
-        usedSegments += 1;
-        for (const frequency of suffixes) {
-          usedEntries += 1;
-        }
-      }
-    }
-    const segmentUseRatio =
-      Math.round((usedSegments / totalSegments) * 100) / 100;
-    const entryUseRatio = Math.round((usedEntries / totalEntries) * 100) / 100;
-    return {
-      totalSegments,
-      usedSegments,
-      segmentUseRatio,
-      totalEntries,
-      usedEntries,
-      entryUseRatio,
-    };
-  }
-
   letters(): Letter[] {
     const map = new Map<CodePoint, number>(
       this.alphabet.map((codePoint) => [codePoint, 0]),
