@@ -2,61 +2,65 @@ import { defineMessages, type MessageDescriptor } from "react-intl";
 import { type LocaleId } from "./locale.ts";
 
 export const languageNames = defineMessages({
-  be: {
+  "be": {
     id: "language.be.name",
     defaultMessage: "Belarusian (Беларуская)",
   },
-  cs: {
+  "cs": {
     id: "language.cs.name",
     defaultMessage: "Czech (Čeština)",
   },
-  de: {
+  "de": {
     id: "language.de.name",
     defaultMessage: "German (Deutsch)",
   },
-  en: {
+  "en": {
     id: "language.en.name",
     defaultMessage: "English",
   },
-  es: {
+  "es": {
     id: "language.es.name",
     defaultMessage: "Spanish (Español)",
   },
-  fr: {
+  "fr": {
     id: "language.fr.name",
     defaultMessage: "French (Français)",
   },
-  ja: {
+  "ja": {
     id: "language.ja.name",
     defaultMessage: "Japanese (日本語)",
   },
-  it: {
+  "it": {
     id: "language.it.name",
     defaultMessage: "Italian (Italiano)",
   },
-  pl: {
+  "pl": {
     id: "language.pl.name",
     defaultMessage: "Polish (Polski)",
   },
-  pt: {
+  "pt": {
     id: "language.pt.name",
     defaultMessage: "Portuguese (Português)",
   },
-  ru: {
+  "ru": {
     id: "language.ru.name",
     defaultMessage: "Russian (Русский)",
   },
-  sl: {
+  "sl": {
     id: "language.sl.name",
     defaultMessage: "Slovenian (Slovenščina)",
   },
-  sv: {
+  "sv": {
     id: "language.sv.name",
     defaultMessage: "Swedish (Svenska)",
   },
-  uk: {
+  "uk": {
     id: "language.uk.name",
     defaultMessage: "Ukrainian (Українська)",
+  },
+  "zh-Hans": {
+    id: "language.zh-Hans.name",
+    defaultMessage: "Chinese Simplified (汉语)",
   },
 }) as Record<LocaleId | string, MessageDescriptor>;
 
