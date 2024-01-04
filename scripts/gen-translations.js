@@ -9,7 +9,19 @@ const { rootDir, findPackages } = require("./root.js");
 
 const packageDir = join(rootDir, "packages/keybr-intl");
 
-const allLocales = ["cs", "de", "en", "es", "fr", "ja", "pl", "ru", "sv", "uk"];
+const allLocales = [
+  "cs",
+  "de",
+  "en",
+  "es",
+  "fr",
+  "ja",
+  "pl",
+  "ru",
+  "sv",
+  "uk",
+  "zh-Hans",
+];
 
 const defaultLocale = "en";
 
