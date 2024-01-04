@@ -2,17 +2,16 @@ import { DataError, Reader, Writer } from "@keybr/binary";
 import { type CodePoint } from "@keybr/unicode";
 import { Letter } from "./letter.ts";
 
-const signature = Object.freeze<number[]>([
+const signature = Object.freeze([
   0x6b, 0x65, 0x79, 0x62, 0x72, 0x2e, 0x63, 0x6f, 0x6d,
 ]);
-const empty = Object.freeze<Suffix[]>([]);
 
-export type Suffix = {
+export type Entry = {
   readonly codePoint: CodePoint;
   readonly frequency: number;
 };
 
-export type Segment = readonly Suffix[];
+export type Segment = readonly Entry[];
 
 export class TransitionTableBuilder {
   private readonly chain: Chain;
@@ -20,7 +19,7 @@ export class TransitionTableBuilder {
 
   constructor(order: number, alphabet: readonly CodePoint[]) {
     this.chain = new Chain(order, alphabet);
-    this.data = new Uint8Array(this.chain.entries);
+    this.data = new Uint8Array(this.chain.width);
   }
 
   get(chain: readonly CodePoint[]): number {
@@ -81,7 +80,7 @@ export class TransitionTable {
     return this.chain.size;
   }
 
-  suffixes(chain: readonly CodePoint[]): Segment {
+  segment(chain: readonly CodePoint[]): Segment {
     return this.segments[this.chain.segmentIndex(chain)];
   }
 
@@ -95,9 +94,9 @@ export class TransitionTable {
     for (let i = 0; i < this.chain.size; i++) {
       writer.putUint16(this.chain.alphabet[i]);
     }
-    for (const suffixes of this.segments) {
-      writer.putUint8(suffixes.length);
-      for (const { codePoint, frequency } of suffixes) {
+    for (const segment of this.segments) {
+      writer.putUint8(segment.length);
+      for (const { codePoint, frequency } of segment) {
         writer.putUint8(this.chain.index(codePoint));
         writer.putUint8(frequency);
       }
@@ -109,8 +108,8 @@ export class TransitionTable {
     const map = new Map<CodePoint, number>(
       this.alphabet.map((codePoint) => [codePoint, 0]),
     );
-    for (const suffixes of this.segments) {
-      for (const { codePoint, frequency } of suffixes) {
+    for (const segment of this.segments) {
+      for (const { codePoint, frequency } of segment) {
         map.set(codePoint, (map.get(codePoint) ?? 0) + frequency);
       }
     }
@@ -121,20 +120,18 @@ export class TransitionTable {
 class Chain {
   readonly order: number;
   readonly alphabet: readonly CodePoint[];
-  readonly indexes: ReadonlyMap<CodePoint, number>;
   readonly size: number;
   readonly pow: readonly number[];
   readonly segments: number;
-  readonly entries: number;
+  readonly width: number;
 
   constructor(order: number, alphabet: readonly CodePoint[]) {
     this.order = order;
     this.alphabet = alphabet;
-    this.indexes = new Map(alphabet.map((v) => [v, alphabet.indexOf(v)]));
     this.size = this.alphabet.length;
     this.pow = powers(this.size, this.order);
     this.segments = Math.pow(this.size, this.order - 1);
-    this.entries = Math.pow(this.size, this.order);
+    this.width = Math.pow(this.size, this.order);
   }
 
   segmentIndex(chain: readonly CodePoint[]): number {
@@ -160,19 +157,11 @@ class Chain {
   }
 
   codePoint(index: number): CodePoint {
-    const v = this.alphabet[index];
-    if (v === undefined) {
-      throw new Error();
-    }
-    return v;
+    return this.alphabet[index];
   }
 
   index(codePoint: CodePoint): number {
-    const v = this.indexes.get(codePoint);
-    if (v === undefined) {
-      throw new Error();
-    }
-    return v;
+    return this.alphabet.indexOf(codePoint);
   }
 }
 
@@ -189,7 +178,7 @@ function readChain(reader: Reader): Chain {
 function readSegments(reader: Reader, chain: Chain): readonly Segment[] {
   const segments: Segment[] = [];
   for (let segmentIndex = 0; segmentIndex < chain.segments; segmentIndex++) {
-    const segment: Suffix[] = [];
+    const segment: Entry[] = [];
     const count = reader.getUint8();
     if (count >= chain.size) {
       throw new DataError();
@@ -201,45 +190,35 @@ function readSegments(reader: Reader, chain: Chain): readonly Segment[] {
       }
       const codePoint = chain.codePoint(index);
       const frequency = reader.getUint8();
-      segment.push(
-        Object.freeze<Suffix>({
-          codePoint,
-          frequency,
-        }),
-      );
+      segment.push({ codePoint, frequency });
     }
     if (segment.length > 0) {
-      segments.push(Object.freeze(segment));
+      segments.push(segment);
     } else {
-      segments.push(empty);
+      segments.push([]);
     }
   }
-  return Object.freeze(segments);
+  return segments;
 }
 
 function buildSegments(chain: Chain, data: Uint8Array): readonly Segment[] {
   const segments: Segment[] = [];
   for (let segmentIndex = 0; segmentIndex < chain.segments; segmentIndex++) {
-    const segment: Suffix[] = [];
+    const segment: Entry[] = [];
     for (let index = 0; index < chain.size; index++) {
       const frequency = data[segmentIndex * chain.size + index];
       if (frequency > 0) {
         const codePoint = chain.codePoint(index);
-        segment.push(
-          Object.freeze<Suffix>({
-            codePoint,
-            frequency,
-          }),
-        );
+        segment.push({ codePoint, frequency });
       }
     }
     if (segment.length > 0) {
-      segments.push(Object.freeze(segment));
+      segments.push(segment);
     } else {
-      segments.push(empty);
+      segments.push([]);
     }
   }
-  return Object.freeze(segments);
+  return segments;
 }
 
 function powers(size: number, order: number): number[] {

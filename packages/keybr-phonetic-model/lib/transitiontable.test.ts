@@ -15,7 +15,7 @@ test("builds table", (t) => {
   t.is(table.size, 3);
   t.is(table.order, 2);
 
-  t.deepEqual(table.suffixes([0x0020]), [
+  t.deepEqual(table.segment([0x0020]), [
     {
       codePoint: 0x0061,
       frequency: 127,
@@ -25,8 +25,8 @@ test("builds table", (t) => {
       frequency: 128,
     },
   ]);
-  t.deepEqual(table.suffixes([0x0061]), []);
-  t.deepEqual(table.suffixes([0x0062]), [
+  t.deepEqual(table.segment([0x0061]), []);
+  t.deepEqual(table.segment([0x0062]), [
     {
       codePoint: 0x0062,
       frequency: 255,
@@ -78,7 +78,7 @@ test("parses binary data", (t) => {
   t.is(table.size, 3);
   t.is(table.order, 2);
 
-  t.deepEqual(table.suffixes([0]), [
+  t.deepEqual(table.segment([0]), [
     {
       codePoint: 0x0061,
       frequency: 127,
@@ -88,6 +88,6 @@ test("parses binary data", (t) => {
       frequency: 128,
     },
   ]);
-  t.deepEqual(table.suffixes([0x0061]), []);
-  t.deepEqual(table.suffixes([0x0062]), []);
+  t.deepEqual(table.segment([0x0061]), []);
+  t.deepEqual(table.segment([0x0062]), []);
 });

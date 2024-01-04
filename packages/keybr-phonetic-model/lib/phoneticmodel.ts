@@ -12,10 +12,8 @@ export abstract class PhoneticModel {
   constructor(readonly letters: readonly Letter[]) {}
 
   abstract nextWord(filter: Filter, random?: RNG): string;
-}
 
-export namespace PhoneticModel {
-  export function restrict(
+  static restrict(
     model: PhoneticModel,
     codePoints: CodePointSet,
   ): PhoneticModel {
@@ -29,7 +27,9 @@ export namespace PhoneticModel {
       }
     })();
   }
+}
 
+export namespace PhoneticModel {
   export type Loader = {
     (language: Language): Promise<PhoneticModel>;
   };
@@ -66,17 +66,17 @@ export function newPhoneticModel(
     retry();
 
     while (true) {
-      const suffixes = table
-        .suffixes(word)
+      const entries = table
+        .segment(word)
         .filter(({ codePoint }) => {
           if (codePoint === 0x0020) {
             if (word.length < minLength) {
-              // Remove space if the word is still too short.
+              // Remove the space character if the word is still too short.
               return false;
             }
           } else {
             if (!filter.includes(codePoint)) {
-              // Remove letter if it does not match the filter.
+              // Remove a letter if it does not match the filter.
               return false;
             }
           }
@@ -84,14 +84,14 @@ export function newPhoneticModel(
         })
         .map(({ codePoint, frequency }) => {
           if (codePoint === 0x0020) {
-            // Boost space to generate shorter words.
+            // Boost the space character to generate shorter words.
             frequency = frequency * Math.pow(1.3, word.length);
           }
           return { codePoint, frequency };
         });
 
-      if (suffixes.length === 0) {
-        // Cannot continue word from this prefix.
+      if (entries.length === 0) {
+        // Cannot continue a word from this prefix.
         if (retry()) {
           continue;
         } else {
@@ -99,18 +99,18 @@ export function newPhoneticModel(
         }
       }
 
-      const suffix = weightedRandomSample(
-        suffixes,
+      const entry = weightedRandomSample(
+        entries,
         ({ frequency }) => frequency,
         random,
       );
-      if (suffix.codePoint === 0x0020) {
-        // The whole word was generated.
+      if (entry.codePoint === 0x0020) {
+        // A whole word was generated.
         return word;
       }
 
       if (word.length > maxLength) {
-        // The word is too long already.
+        // A word is too long already.
         if (retry()) {
           continue;
         } else {
@@ -118,7 +118,7 @@ export function newPhoneticModel(
         }
       }
 
-      word.push(suffix.codePoint);
+      word.push(entry.codePoint);
     }
   };
 
@@ -152,7 +152,7 @@ class PrefixList {
     );
 
     const walk = (word: CodePoint[]): void => {
-      for (const { codePoint } of this.table.suffixes(word)) {
+      for (const { codePoint } of this.table.segment(word)) {
         if (codePoint !== 0x0020) {
           word.push(codePoint);
 
