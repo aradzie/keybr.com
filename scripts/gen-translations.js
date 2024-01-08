@@ -71,7 +71,9 @@ async function syncTranslations() {
       translationsFile,
       remap(defaultTranslations, ([id, message]) => [
         id,
-        translations[id] !== "" && translations[id] !== message
+        translations[id] !== "" &&
+        translations[id] !== id &&
+        translations[id] !== message
           ? translations[id]
           : undefined,
       ]),
