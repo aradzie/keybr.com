@@ -1,3 +1,4 @@
+import { allLocales, languageName } from "@keybr/intl";
 import {
   type BoundPageLink,
   isPremiumUser,
@@ -8,7 +9,6 @@ import {
 import { Link } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { LocaleSwitcher } from "./LocaleSwitcher.tsx";
 import * as styles from "./SecondaryMenu.module.less";
 
 export function SecondaryMenu({
@@ -120,4 +120,28 @@ function RemoveAdsLink(): ReactNode {
       </PageLink>
     )
   );
+}
+
+function LocaleSwitcher({
+  currentLink,
+}: {
+  readonly currentLink: BoundPageLink;
+}): ReactNode {
+  const { formatMessage } = useIntl();
+  const children = [];
+  for (const locale of allLocales) {
+    if (children.length > 0) {
+      children.push(" ");
+    }
+    children.push(
+      <Link
+        key={locale}
+        href={currentLink.formatPath(locale)}
+        title={formatMessage(languageName(locale))}
+      >
+        {locale}
+      </Link>,
+    );
+  }
+  return <span className={styles.localeSwitcher}>{children}</span>;
 }
