@@ -8,23 +8,17 @@ export function findWords(
 ): Word[] {
   text = text.toLowerCase().normalize("NFC");
   const dict = new Map<string, number>();
-  const word: CodePoint[] = [];
-  const addWord = () => {
-    if (word.length > 0) {
-      const key = String.fromCodePoint(...word);
-      dict.set(key, (dict.get(key) ?? 0) + 1);
-      word.length = 0;
+  const regexp = /(\p{L}|'|-)+/gu;
+  while (true) {
+    const match = regexp.exec(text);
+    if (match == null) {
+      break;
     }
-  };
-  for (const codePoint of toCodePoints(text)) {
-    if (alphabet.includes(codePoint)) {
-      word.push(codePoint);
-    } else {
-      addWord();
+    const [word] = match;
+    if (check(word, alphabet)) {
+      dict.set(word, (dict.get(word) ?? 0) + 1);
     }
   }
-  addWord();
-
   return [...dict]
     .filter(([word, count]) => count >= 3)
     .sort((a, b) => compareStrings(a[0], b[0]));
@@ -50,6 +44,14 @@ export function fromCsv(text: string): Word[] {
   return words;
 }
 
+export function sortByWord(words: readonly Word[]): Word[] {
+  return [...words].sort((a, b) => compareStrings(a[0], b[0]));
+}
+
+export function sortByCount(words: readonly Word[]): Word[] {
+  return [...words].sort((a, b) => b[1] - a[1] || compareStrings(a[0], b[0]));
+}
+
 function compareStrings(a: string, b: string): number {
   if (a > b) {
     return +1;
@@ -58,4 +60,13 @@ function compareStrings(a: string, b: string): number {
     return -1;
   }
   return 0;
+}
+
+function check(word: string, alphabet: readonly CodePoint[]): boolean {
+  for (const codePoint of toCodePoints(word)) {
+    if (!alphabet.includes(codePoint)) {
+      return false;
+    }
+  }
+  return true;
 }

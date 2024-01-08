@@ -4,7 +4,13 @@ import { findWords, fromCsv, toCsv, type Word } from "./words.ts";
 
 test("find words", (t) => {
   const alphabet = [...toCodePoints("abcdefghijklmnopqrstuvwxyz")];
-  const text = "abc One, Two! 'Three' one/two/three ONE-TWO-THREE xyz";
+  const text =
+    "One, Two! (Three) " +
+    "one/two/three " +
+    "ONE+TWO+THREE " +
+    "don't don't don't " +
+    "uno-due uno-due uno-due " +
+    "abc xyz";
   t.deepEqual(findWords(text, []), []);
   t.deepEqual(findWords(text, alphabet), [
     ["one", 3],

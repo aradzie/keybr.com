@@ -5,7 +5,7 @@ import { loadModelSync } from "./fs-load.ts";
 import { Letter } from "./letter.ts";
 
 const alphabet = /^\u{0020}\p{Lowercase_Letter}+$/u;
-const word = /^\p{Lowercase_Letter}{3,}$/u;
+const word = /^\p{Lowercase_Letter}{2,}$/u;
 
 for (const language of Language.ALL) {
   test(`${language.id}`, (t) => {
