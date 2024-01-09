@@ -19,9 +19,7 @@ export function findWords(
       dict.set(word, (dict.get(word) ?? 0) + 1);
     }
   }
-  return [...dict]
-    .filter(([word, count]) => count >= 3)
-    .sort((a, b) => compareStrings(a[0], b[0]));
+  return sortByWord([...dict].filter(([word, count]) => count >= 3));
 }
 
 export function toCsv(words: readonly Word[]): string {

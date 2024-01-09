@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-for file in {*-corpus.txt.gz,*-words.csv.gz}; do
+for file in corpus-*.txt.gz; do
   if [ -f "$file" ]; then
     gunzip "$file"
   fi
