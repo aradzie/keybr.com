@@ -11,6 +11,7 @@ const packageDir = join(rootDir, "packages/keybr-intl");
 
 const allLocales = [
   "cs",
+  "da",
   "de",
   "en",
   "es",
