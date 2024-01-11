@@ -8,6 +8,10 @@ export async function loadMessages(locale: LocaleId): Promise<Messages> {
       return (
         await import(/* webpackChunkName: "i18n-cs" */ "./messages/cs.json")
       ).default;
+    case "da":
+      return (
+        await import(/* webpackChunkName: "i18n-da" */ "./messages/da.json")
+      ).default;
     case "de":
       return (
         await import(/* webpackChunkName: "i18n-de" */ "./messages/de.json")

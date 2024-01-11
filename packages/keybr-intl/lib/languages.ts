@@ -10,6 +10,10 @@ export const languageNames = defineMessages({
     id: "language.cs.name",
     defaultMessage: "Czech (Čeština)",
   },
+  "da": {
+    id: "language.da.name",
+    defaultMessage: "Danish (Dansk)",
+  },
   "de": {
     id: "language.de.name",
     defaultMessage: "German (Deutsch)",
