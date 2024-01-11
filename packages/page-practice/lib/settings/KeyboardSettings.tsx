@@ -1,4 +1,4 @@
-import { languageName } from "@keybr/intl";
+import { useIntlDisplayNames } from "@keybr/intl";
 import { keyboardProps, useKeyboard } from "@keybr/keyboard";
 import {
   addKey,
@@ -48,6 +48,7 @@ export function KeyboardSettings(): ReactNode {
 
 function LayoutProp(): ReactNode {
   const { formatMessage } = useIntl();
+  const { formatLanguageName } = useIntlDisplayNames();
   const { settings, updateSettings } = useSettings();
   const layout = settings.get(keyboardProps.layout);
   const emulate = settings.get(keyboardProps.emulate);
@@ -64,7 +65,7 @@ function LayoutProp(): ReactNode {
           <OptionList
             options={Language.ALL.map((item) => ({
               value: item.id,
-              name: formatMessage(languageName(item.id)),
+              name: formatLanguageName(item.id),
             }))}
             value={layout.language.id}
             onSelect={(id) => {

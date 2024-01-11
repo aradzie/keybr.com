@@ -1,4 +1,4 @@
-import { allLocales, languageName } from "@keybr/intl";
+import { allLocales, useIntlDisplayNames } from "@keybr/intl";
 import {
   type BoundPageLink,
   isPremiumUser,
@@ -127,7 +127,7 @@ function LocaleSwitcher({
 }: {
   readonly currentLink: BoundPageLink;
 }): ReactNode {
-  const { formatMessage } = useIntl();
+  const { formatLanguageName } = useIntlDisplayNames();
   const children = [];
   for (const locale of allLocales) {
     if (children.length > 0) {
@@ -137,7 +137,7 @@ function LocaleSwitcher({
       <Link
         key={locale}
         href={currentLink.formatPath(locale)}
-        title={formatMessage(languageName(locale))}
+        title={formatLanguageName(locale)}
       >
         {locale}
       </Link>,

@@ -1,4 +1,4 @@
-import { languageName } from "@keybr/intl";
+import { useIntlDisplayNames } from "@keybr/intl";
 import { Language } from "@keybr/layout";
 import { Filter, type PhoneticModel } from "@keybr/phonetic-model";
 import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
@@ -20,6 +20,7 @@ export function PseudoWordsSettings(): ReactNode {
 function Content({ model }: { readonly model: PhoneticModel }): ReactNode {
   const { settings, updateSettings } = useSettings();
   const { formatMessage } = useIntl();
+  const { formatLanguageName } = useIntlDisplayNames();
   const alphabet: string[] = model.letters.map(({ label }) => label);
   const words: string[] = [];
   for (let i = 0; i < 50; i++) {
@@ -44,7 +45,7 @@ function Content({ model }: { readonly model: PhoneticModel }): ReactNode {
           <OptionList
             options={Language.ALL.map((item) => ({
               value: item.id,
-              name: formatMessage(languageName(item.id)),
+              name: formatLanguageName(item.id),
             }))}
             value={String(settings.get(typingTestProps.language))}
             onSelect={(id) => {

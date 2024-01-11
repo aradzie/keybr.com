@@ -3,7 +3,7 @@ import {
   WordListLoader,
   wordListStats,
 } from "@keybr/content-words";
-import { languageName, useIntlNumbers } from "@keybr/intl";
+import { useIntlDisplayNames, useIntlNumbers } from "@keybr/intl";
 import { Language } from "@keybr/layout";
 import { useSettings } from "@keybr/settings";
 import {
@@ -41,6 +41,7 @@ export function CommonWordsSettings(): ReactNode {
 function Content({ wordList }: { readonly wordList: WordList }): ReactNode {
   const { settings, updateSettings } = useSettings();
   const { formatMessage } = useIntl();
+  const { formatLanguageName } = useIntlDisplayNames();
   const { formatNumber } = useIntlNumbers();
   const { wordCount, avgWordLength } = wordListStats(wordList);
   return (
@@ -59,7 +60,7 @@ function Content({ wordList }: { readonly wordList: WordList }): ReactNode {
           <OptionList
             options={Language.ALL.map((item) => ({
               value: item.id,
-              name: formatMessage(languageName(item.id)),
+              name: formatLanguageName(item.id),
             }))}
             value={String(settings.get(typingTestProps.language))}
             onSelect={(id) => {
