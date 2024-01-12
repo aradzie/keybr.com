@@ -6,7 +6,6 @@ process("en");
 process("es");
 process("fr");
 process("pl");
-process("ru");
 process("sv");
 process("uk");
 

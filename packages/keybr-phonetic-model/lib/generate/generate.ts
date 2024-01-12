@@ -32,6 +32,7 @@ function generateModel(id: string, alphabet: readonly CodePoint[]): void {
         .slice(0, 3000)
         .map(([word]) => word),
     );
+    console.log(`${words.length} unique words`);
   }
 }
 
