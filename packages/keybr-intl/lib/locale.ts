@@ -2,6 +2,7 @@ export type LocaleId =
   | "cs"
   | "da"
   | "de"
+  | "el"
   | "en"
   | "es"
   | "fr"
@@ -16,6 +17,7 @@ export const allLocales: readonly LocaleId[] = [
   "cs",
   "da",
   "de",
+  "el",
   "en",
   "es",
   "fr",
