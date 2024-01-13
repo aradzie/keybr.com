@@ -12,7 +12,7 @@ export const preloadLinks: readonly PreloadLink[] = [
   ),
   // Preload fonts.
   ...[
-    "/assets/mulish-400.latin.woff2",
+    "/assets/opensans-400.latin.woff2",
     "/assets/ubuntu-mono-400.latin.woff2",
   ].map(
     (href) =>
