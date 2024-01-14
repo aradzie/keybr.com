@@ -2,28 +2,8 @@ import { type CodePoint, toCodePoints } from "@keybr/unicode";
 
 export type Word = readonly [word: string, count: number];
 
-export function findWords(
-  text: string,
-  alphabet: readonly CodePoint[],
-): Word[] {
-  text = text.toLowerCase().normalize("NFC");
-  const dict = new Map<string, number>();
-  const regexp = /(\p{L}|'|-)+/gu;
-  while (true) {
-    const match = regexp.exec(text);
-    if (match == null) {
-      break;
-    }
-    const [word] = match;
-    if (check(word, alphabet)) {
-      dict.set(word, (dict.get(word) ?? 0) + 1);
-    }
-  }
-  return sortByWord([...dict].filter(([word, count]) => count >= 3));
-}
-
-export function toCsv(words: readonly Word[]): string {
-  return words.map(([word, count]) => `${word},${count}\n`).join("");
+export function toCsv(dict: readonly Word[]): string {
+  return dict.map(([word, count]) => `${word},${count}\n`).join("");
 }
 
 export function fromCsv(text: string): Word[] {
@@ -42,12 +22,12 @@ export function fromCsv(text: string): Word[] {
   return words;
 }
 
-export function sortByWord(words: readonly Word[]): Word[] {
-  return [...words].sort((a, b) => compareStrings(a[0], b[0]));
+export function sortByWord(dict: readonly Word[]): Word[] {
+  return [...dict].sort((a, b) => compareStrings(a[0], b[0]));
 }
 
-export function sortByCount(words: readonly Word[]): Word[] {
-  return [...words].sort((a, b) => b[1] - a[1] || compareStrings(a[0], b[0]));
+export function sortByCount(dict: readonly Word[]): Word[] {
+  return [...dict].sort((a, b) => b[1] - a[1] || compareStrings(a[0], b[0]));
 }
 
 function compareStrings(a: string, b: string): number {
@@ -60,7 +40,10 @@ function compareStrings(a: string, b: string): number {
   return 0;
 }
 
-function check(word: string, alphabet: readonly CodePoint[]): boolean {
+export function checkWord(
+  word: string,
+  alphabet: readonly CodePoint[],
+): boolean {
   for (const codePoint of toCodePoints(word)) {
     if (!alphabet.includes(codePoint)) {
       return false;

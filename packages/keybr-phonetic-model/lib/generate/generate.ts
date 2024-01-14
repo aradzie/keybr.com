@@ -2,47 +2,31 @@
 
 import { readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { gunzipSync, gzipSync } from "node:zlib";
-import { type CodePoint } from "@keybr/unicode";
+import { gunzipSync } from "node:zlib";
 import { TransitionTableBuilder } from "./builder.ts";
-import { languages } from "./languages.ts";
-import { findWords, fromCsv, sortByCount, toCsv, type Word } from "./words.ts";
+import { type Language, languages } from "./languages.ts";
+import { checkWord, fromCsv, sortByCount, type Word } from "./words.ts";
 
-for (const { id, alphabet } of languages) {
-  generateWords(id, alphabet);
-  generateModel(id, alphabet);
+for (const language of languages) {
+  generate(language);
 }
 
-function generateWords(id: string, alphabet: readonly CodePoint[]): void {
-  const data = readCompressed(corpusPath(id));
-  if (data != null) {
-    writeCompressed(wordsPath(id), toCsv(findWords(data, alphabet)));
-    console.log(`Generated words ${id}`);
-  }
-}
-
-function generateModel(id: string, alphabet: readonly CodePoint[]): void {
-  const data = readCompressed(wordsPath(id));
-  if (data != null) {
-    const words = fromCsv(data);
-    writeModelFile(id, alphabet, words);
-    writeWordsJsonFile(
+function generate({ id, alphabet }: Language): void {
+  const dict = readDict({ id, alphabet });
+  if (dict != null) {
+    generateModel({ id, alphabet }, dict);
+    generateWordList(
       id,
-      sortByCount(words)
+      sortByCount(dict)
         .slice(0, 3000)
         .map(([word]) => word),
     );
-    console.log(`${words.length} unique words`);
   }
 }
 
-function writeModelFile(
-  id: string,
-  alphabet: readonly CodePoint[],
-  words: Word[],
-): void {
+function generateModel({ id, alphabet }: Language, dict: Word[]): void {
   const builder = new TransitionTableBuilder(4, [0x0020, ...alphabet]);
-  for (const [word, count] of words) {
+  for (const [word, count] of dict) {
     if (word.length >= 3) {
       for (let i = 0; i < count; i++) {
         builder.append(word.toLocaleLowerCase(id));
@@ -51,10 +35,10 @@ function writeModelFile(
   }
   const data = builder.build().compress();
   writeFileSync(modelPath(id), data);
-  console.log(`Generated model ${id} (${data.length} bytes)`);
+  console.log(`[${id}] Generated model (${data.length} bytes)`);
 }
 
-function writeWordsJsonFile(id: string, words: string[]): void {
+function generateWordList(id: string, words: string[]): void {
   const prev = readWordsJson(id);
   if (prev.length > 0) {
     const added = [];
@@ -70,13 +54,68 @@ function writeWordsJsonFile(id: string, words: string[]): void {
       }
     }
     if (added.length > 0) {
-      console.log("Added words:", "\x1b[32m", ...added.sort(), "\x1b[0m");
+      console.log(
+        `[${id}] Added words:`,
+        "\x1b[32m",
+        ...added.sort(),
+        "\x1b[0m",
+      );
     }
     if (deleted.length > 0) {
-      console.log("Deleted words:", "\x1b[31m", ...deleted.sort(), "\x1b[0m");
+      console.log(
+        `[${id}] Deleted words:`,
+        "\x1b[31m",
+        ...deleted.sort(),
+        "\x1b[0m",
+      );
     }
   }
   writeWordsJson(id, words);
+  console.log(`[${id}] Generated word list (${words.length} words)`);
+}
+
+function readDict({ id, alphabet }: Language): Word[] | null {
+  const data = readCompressed(dictPath(id));
+  if (data != null) {
+    const unique = new Set();
+    const dict = fromCsv(data)
+      .filter(([word]) => {
+        if (checkWord(word.toLocaleLowerCase(id), alphabet)) {
+          return true;
+        } else {
+          console.warn(`[${id}] Extraneous word [${word}]`);
+          return false;
+        }
+      })
+      .filter(([word]) => {
+        if (!unique.has(word)) {
+          unique.add(word);
+          return true;
+        } else {
+          console.warn(`[${id}] Duplicate word [${word}]`);
+          return false;
+        }
+      });
+    console.log(`[${id}] ${dict.length} unique words`);
+    return dict;
+  }
+  return null;
+}
+
+function readWordsJson(id: string): string[] {
+  try {
+    return JSON.parse(readFileSync(wordsListPath(id)).toString("utf-8"));
+  } catch (err: any) {
+    if (err.code !== "ENOENT") {
+      throw err;
+    }
+  }
+
+  return [];
+}
+
+function writeWordsJson(id: string, words: readonly string[]): void {
+  writeFileSync(wordsListPath(id), JSON.stringify(words, null, 2));
 }
 
 function readCompressed(path: string): string | null {
@@ -99,31 +138,7 @@ function readCompressed(path: string): string | null {
   return null;
 }
 
-function writeCompressed(path: string, data: string): void {
-  writeFileSync(`${path}.gz`, gzipSync(data, { level: 9 }));
-}
-
-function readWordsJson(id: string): string[] {
-  try {
-    return JSON.parse(readFileSync(wordsJsonPath(id)).toString("utf-8"));
-  } catch (err: any) {
-    if (err.code !== "ENOENT") {
-      throw err;
-    }
-  }
-
-  return [];
-}
-
-function writeWordsJson(id: string, words: readonly string[]): void {
-  writeFileSync(wordsJsonPath(id), JSON.stringify(words, null, 2));
-}
-
-function corpusPath(id: string): string {
-  return resolve(__dirname, "corpus", `corpus-${id}.txt`);
-}
-
-function wordsPath(id: string): string {
+function dictPath(id: string): string {
   return resolve(__dirname, "corpus", `words-${id}.csv`);
 }
 
@@ -139,7 +154,7 @@ function modelPath(id: string): string {
   );
 }
 
-function wordsJsonPath(id: string): string {
+function wordsListPath(id: string): string {
   return resolve(
     __dirname,
     "..",
