@@ -45,12 +45,13 @@ function writeModelFile(
   for (const [word, count] of words) {
     if (word.length >= 3) {
       for (let i = 0; i < count; i++) {
-        builder.append(word);
+        builder.append(word.toLocaleLowerCase(id));
       }
     }
   }
-  writeFileSync(modelPath(id), builder.build().compress());
-  console.log(`Generated model ${id}`);
+  const data = builder.build().compress();
+  writeFileSync(modelPath(id), data);
+  console.log(`Generated model ${id} (${data.length} bytes)`);
 }
 
 function writeWordsJsonFile(id: string, words: string[]): void {
