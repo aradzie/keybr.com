@@ -2,6 +2,7 @@ export { LAYOUT_BE_BY_WIN } from "./layout/be_by-win.ts";
 export { LAYOUT_CS_CZ_WIN } from "./layout/cs_cz-win.ts";
 export { LAYOUT_DE_CH_WIN } from "./layout/de_ch-win.ts";
 export { LAYOUT_DE_DE_WIN } from "./layout/de_de-win.ts";
+export { LAYOUT_EL_GR_WIN } from "./layout/el_gr-win.ts";
 export { LAYOUT_EN_UK_WIN } from "./layout/en_uk-win.ts";
 export { LAYOUT_EN_US_COLEMAK } from "./layout/en_us_colemak.ts";
 export { LAYOUT_EN_US_COLEMAK_DH } from "./layout/en_us_colemak_dh.ts";

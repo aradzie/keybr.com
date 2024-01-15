@@ -15,13 +15,13 @@ type Spec = readonly [
 // prettier-ignore
 const spec: readonly Spec[] = [
   ["GRAVE ACCENT", 0x0300, "AEINOUWYaeinouwy", "ÀÈÌǸÒÙẀỲàèìǹòùẁỳ"],
-  ["ACUTE ACCENT", 0x0301, "ACEGIKLMNOPRSUWYZacegiklmnoprsuwyz", "ÁĆÉǴÍḰĹḾŃÓṔŔŚÚẂÝŹáćéǵíḱĺḿńóṕŕśúẃýź"],
+  ["ACUTE ACCENT", 0x0301, "ACEGIKLMNOPRSUWYZacegiklmnoprsuwyzΑΕΗΙΟΥΩαεηιουω", "ÁĆÉǴÍḰĹḾŃÓṔŔŚÚẂÝŹáćéǵíḱĺḿńóṕŕśúẃýźΆΈΉΊΌΎΏάέήίόύώ"],
   ["CIRCUMFLEX ACCENT", 0x0302, "ACEGHIJOSUWYZaceghijosuwyz", "ÂĈÊĜĤÎĴÔŜÛŴŶẐâĉêĝĥîĵôŝûŵŷẑ"],
   ["TILDE", 0x0303, "AEINOUVYaeinouvy", "ÃẼĨÑÕŨṼỸãẽĩñõũṽỹ"],
   ["MACRON", 0x0304, "AEGIOUYaegiouy", "ĀĒḠĪŌŪȲāēḡīōūȳ"],
   ["BREVE", 0x0306, "AEGIOUaegiou", "ĂĔĞĬŎŬăĕğĭŏŭ"],
   ["DOT ABOVE", 0x0307, "ABCDEFGHIMNOPRSTWXYZabcdefghmnoprstwxyz", "ȦḂĊḊĖḞĠḢİṀṄȮṖṘṠṪẆẊẎŻȧḃċḋėḟġḣṁṅȯṗṙṡṫẇẋẏż"],
-  ["DIAERESIS", 0x0308, "AEHIOUWXYaehiotuwxy", "ÄËḦÏÖÜẄẌŸäëḧïöẗüẅẍÿ"],
+  ["DIAERESIS", 0x0308, "AEHIOUWXYaehiotuwxyΙΥιυ", "ÄËḦÏÖÜẄẌŸäëḧïöẗüẅẍÿΪΫϊϋ"],
   ["RING ABOVE", 0x030a, "AUauwy", "ÅŮåůẘẙ"],
   ["DOUBLE ACUTE", 0x030b, "OUou", "ŐŰőű"],
   ["CARON", 0x030c, "ACDEGHIKLNORSTUZacdeghijklnorstuz", "ǍČĎĚǦȞǏǨĽŇǑŘŠŤǓŽǎčďěǧȟǐǰǩľňǒřšťǔž"],

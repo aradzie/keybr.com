@@ -9,6 +9,7 @@ export const languages: readonly Language[] = [
   { id: "be", alphabet: "абвгдеёжзійклмнопрстуўфхцчшыьэюя" },
   { id: "cs", alphabet: "aábcčdďeéěfghiíjklmnňoóprřsštťuúůvxyýzž" },
   { id: "de", alphabet: "aäbcdefghijklmnoöpqrstuüvwxyzß" },
+  { id: "el", alphabet: "αάβγδεέζηήθιίκλμνξοόπρσςτυύφχψωώ" },
   { id: "en", alphabet: "abcdefghijklmnopqrstuvwxyz" },
   { id: "es", alphabet: "abcdefghijlmnñopqrstuvxyz" },
   { id: "fr", alphabet: "abcçdeéèfghijlmnopqrstuvxyz" },

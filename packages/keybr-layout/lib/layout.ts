@@ -390,6 +390,21 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly EL_GR = new Layout(
+    /* id= */ "el-gr",
+    /* xid= */ 0x83,
+    /* name= */ "Greek",
+    /* family= */ LayoutFamily.GREEK,
+    /* language= */ Language.EL,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
 
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
@@ -399,6 +414,7 @@ export class Layout implements XEnumItem {
     Layout.EN_US_COLEMAK_DH_MATRIX,
     Layout.EN_US_WORKMAN,
     Layout.EN_UK,
+    Layout.EL_GR,
     Layout.CS_CZ,
     Layout.DE_DE,
     Layout.DE_CH,

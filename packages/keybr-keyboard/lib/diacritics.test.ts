@@ -12,8 +12,8 @@ test("get diacritic", (t) => {
   t.deepEqual(getDiacritic(/* combining acute accent */ 0x0301), {
     name: "ACUTE ACCENT",
     codePoint: 0x0301,
-    baseSet: "ACEGIKLMNOPRSUWYZacegiklmnoprsuwyz",
-    precomposedSet: "ÁĆÉǴÍḰĹḾŃÓṔŔŚÚẂÝŹáćéǵíḱĺḿńóṕŕśúẃýź",
+    baseSet: "ACEGIKLMNOPRSUWYZacegiklmnoprsuwyzΑΕΗΙΟΥΩαεηιουω",
+    precomposedSet: "ÁĆÉǴÍḰĹḾŃÓṔŔŚÚẂÝŹáćéǵíḱĺḿńóṕŕśúẃýźΆΈΉΊΌΎΏάέήίόύώ",
   });
 });
 
