@@ -6,12 +6,12 @@ export type Language = {
 };
 
 export const languages: readonly Language[] = [
-  { id: "be", alphabet: "абвгдеёжзійклмнопрстуўфхцчшыьэюя" },
+  { id: "be", alphabet: "абвгдежзійклмнопрстуўфхцчшыьэюя" },
   { id: "cs", alphabet: "aábcčdďeéěfghiíjklmnňoóprřsštťuúůvxyýzž" },
   { id: "de", alphabet: "aäbcdefghijklmnoöpqrstuüvwxyzß" },
   { id: "el", alphabet: "αάβγδεέζηήθιίκλμνξοόπρσςτυύφχψωώ" },
   { id: "en", alphabet: "abcdefghijklmnopqrstuvwxyz" },
-  { id: "es", alphabet: "abcdefghijlmnñopqrstuvxyz" },
+  { id: "es", alphabet: "aábcdeéfghiíjlmnñoópqrstuúüvxyz" },
   { id: "fr", alphabet: "abcçdeéèfghijlmnopqrstuvxyz" },
   { id: "it", alphabet: "abcdefghijklmnopqrstuvwxyz" },
   { id: "pl", alphabet: "aąbcćdeęfghijklłmnńoóprsśtuwyzźż" },
