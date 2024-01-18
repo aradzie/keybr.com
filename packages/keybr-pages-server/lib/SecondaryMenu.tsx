@@ -136,6 +136,7 @@ function LocaleSwitcher({
     children.push(
       <Link
         key={locale}
+        className={styles.localeLink}
         href={currentLink.formatPath(locale)}
         title={formatLanguageName(locale)}
       >
