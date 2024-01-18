@@ -19,6 +19,7 @@ const allLocales = [
   "fr",
   "ja",
   "pl",
+  "pt-br",
   "ru",
   "sv",
   "uk",
