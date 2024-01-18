@@ -133,6 +133,36 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly DE_NEO_2 = new Layout(
+    /* id= */ "de-neo-2",
+    /* xid= */ 0x22,
+    /* name= */ "Neo 2",
+    /* family= */ LayoutFamily.NEO,
+    /* language= */ Language.DE,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
+  static readonly DE_BONE = new Layout(
+    /* id= */ "de-bone",
+    /* xid= */ 0x23,
+    /* name= */ "Bone",
+    /* family= */ LayoutFamily.NEO,
+    /* language= */ Language.DE,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
   static readonly FR_FR = new Layout(
     /* id= */ "fr",
     /* xid= */ 0x30,
@@ -418,6 +448,8 @@ export class Layout implements XEnumItem {
     Layout.CS_CZ,
     Layout.DE_DE,
     Layout.DE_CH,
+    Layout.DE_NEO_2,
+    Layout.DE_BONE,
     Layout.FR_FR,
     Layout.FR_CA,
     Layout.FR_CH,

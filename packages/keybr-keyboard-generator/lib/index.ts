@@ -1,6 +1,9 @@
+import { ByteLengthQueuingStrategy } from "node:stream/web";
 import { parseCldr } from "./cldr.ts";
 import { writeGeneratedFile } from "./generate.ts";
 import { type LayoutConfig } from "./layout.ts";
+import { LAYOUT_DE_BONE } from "./layout/layout_de_bone.ts";
+import { LAYOUT_DE_NEO_2 } from "./layout/layout_de_neo_2.ts";
 import { LAYOUT_EN_CUSTOM } from "./layout/layout_en_custom.ts";
 import { LAYOUT_EN_US_COLEMAK } from "./layout/layout_en_us_colemak.ts";
 import { LAYOUT_EN_US_COLEMAK_DH } from "./layout/layout_en_us_colemak_dh.ts";
@@ -105,6 +108,12 @@ const files: readonly [input: string | LayoutConfig, output: string][] = [
   [LAYOUT_EN_US_WORKMAN, "../keybr-keyboard/lib/data/layout/en_us_workman.ts"],
   [LAYOUT_FR_BEPO, "../keybr-keyboard/lib/data/layout/fr_bepo.ts"],
   [LAYOUT_FR_ERGO_L, "../keybr-keyboard/lib/data/layout/fr_ergol.ts"],
+  [
+    LAYOUT_FR_OPTIMOT_ERGO,
+    "../keybr-keyboard/lib/data/layout/fr_optimot_ergo.ts",
+  ],
+  [LAYOUT_DE_NEO_2, "../keybr-keyboard/lib/data/layout/de_neo_2.ts"],
+  [LAYOUT_DE_BONE, "../keybr-keyboard/lib/data/layout/de_bone.ts"],
   [
     LAYOUT_FR_OPTIMOT_ERGO,
     "../keybr-keyboard/lib/data/layout/fr_optimot_ergo.ts",
