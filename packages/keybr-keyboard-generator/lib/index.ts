@@ -1,4 +1,3 @@
-import { ByteLengthQueuingStrategy } from "node:stream/web";
 import { parseCldr } from "./cldr.ts";
 import { writeGeneratedFile } from "./generate.ts";
 import { type LayoutConfig } from "./layout.ts";

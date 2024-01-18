@@ -45,15 +45,18 @@ export class LayoutFamily implements EnumItem {
     /* id= */ "optimot-ergo",
     /* script= */ "latin",
   );
-  static readonly ЙЦУКЕН = new LayoutFamily(
-    /* id= */ "йцукен",
-    /* script= */ "cyrillic",
+  static readonly NEO = new LayoutFamily(
+    /* id= */ "neo",
+    /* script= */ "latin",
   );
   static readonly GREEK = new LayoutFamily(
     /* id= */ "greek",
     /* script= */ "greek",
   );
-  static readonly NEO = new LayoutFamily(/* id= */ "neo", /* script= */ "neo");
+  static readonly ЙЦУКЕН = new LayoutFamily(
+    /* id= */ "йцукен",
+    /* script= */ "cyrillic",
+  );
 
   static readonly ALL = new Enum<LayoutFamily>(
     LayoutFamily.QWERTY,
@@ -62,11 +65,14 @@ export class LayoutFamily implements EnumItem {
     LayoutFamily.DVORAK,
     LayoutFamily.COLEMAK,
     LayoutFamily.COLEMAK_DH,
+    LayoutFamily.COLEMAK_DH_MATRIX,
     LayoutFamily.WORKMAN,
     LayoutFamily.BEPO,
-    LayoutFamily.ЙЦУКЕН,
-    LayoutFamily.GREEK,
+    LayoutFamily.ERGO_L,
+    LayoutFamily.OPTIMOT_ERGO,
     LayoutFamily.NEO,
+    LayoutFamily.GREEK,
+    LayoutFamily.ЙЦУКЕН,
   );
 
   private constructor(
