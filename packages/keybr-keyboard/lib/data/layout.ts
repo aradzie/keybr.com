@@ -9,6 +9,7 @@ export { LAYOUT_EN_UK_WIN } from "./layout/en_uk-win.ts";
 export { LAYOUT_EN_US_COLEMAK } from "./layout/en_us_colemak.ts";
 export { LAYOUT_EN_US_COLEMAK_DH } from "./layout/en_us_colemak_dh.ts";
 export { LAYOUT_EN_US_COLEMAK_DH_MATRIX } from "./layout/en_us_colemak_dh_matrix.ts";
+export { LAYOUT_EN_US_CANARY_MATRIX } from "./layout/end_us_canary_matrix.ts";
 export { LAYOUT_EN_US_DVORAK_WIN } from "./layout/en_us_dvorak-win.ts";
 export { LAYOUT_EN_US_WORKMAN } from "./layout/en_us_workman.ts";
 export { LAYOUT_EN_US_WIN } from "./layout/en_us-win.ts";

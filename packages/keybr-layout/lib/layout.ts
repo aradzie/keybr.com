@@ -88,6 +88,15 @@ export class Layout implements XEnumItem {
     /* emulate= */ true,
     /* geometries= */ new Enum(Geometry.MATRIX),
   );
+  static readonly EN_US_CANARY_MATRIX = new Layout(
+    /* id= */ "us-canary-matrix",
+    /* xid= */ 0x1d,
+    /* name= */ "US Canary (matrix)",
+    /* family= */ LayoutFamily.CANARY_MATRIX,
+    /* language= */ Language.EN,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(Geometry.MATRIX),
+  );
   static readonly EN_UK = new Layout(
     /* id= */ "uk",
     /* xid= */ 0x11,
@@ -442,6 +451,7 @@ export class Layout implements XEnumItem {
     Layout.EN_US_COLEMAK,
     Layout.EN_US_COLEMAK_DH,
     Layout.EN_US_COLEMAK_DH_MATRIX,
+    Layout.EN_US_CANARY_MATRIX,
     Layout.EN_US_WORKMAN,
     Layout.EN_UK,
     Layout.EL_GR,
