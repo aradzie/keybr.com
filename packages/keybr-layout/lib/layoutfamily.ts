@@ -29,6 +29,10 @@ export class LayoutFamily implements EnumItem {
     /* id= */ "colemak-dh-matrix",
     /* script= */ "latin",
   );
+  static readonly CANARY_MATRIX = new LayoutFamily(
+    /* id= */ "canary-matrix",
+    /* script= */ "latin",
+  );
   static readonly WORKMAN = new LayoutFamily(
     /* id= */ "workman",
     /* script= */ "latin",
