@@ -90,7 +90,7 @@ module.exports = {
       version: "detect",
     },
     node: {
-      version: ">=18",
+      version: ">=20",
       allowModules: [
         ...Object.keys(pkg.dependencies),
         ...Object.keys(pkg.devDependencies),

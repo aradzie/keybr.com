@@ -81,7 +81,7 @@
     "@testing-library/user-event": "^14.5.2",
     "@types/commonmark": "^0.27.9",
     "@types/lodash": "^4.14.202",
-    "@types/node": "^18.19.10",
+    "@types/node": "^20.11.7",
     "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.18",
     "@types/react-test-renderer": "^18.0.7",
