@@ -10,7 +10,7 @@ It's the smartest way to learn touch typing and improve your typing speed.
 On the surface it looks pretty simple, it shows you a piece of text, you type it out.
 The devil is in the details, keybr.com has a few unique features.
 
-* keybr.com track every single key press and computes statistics for each individual keyboard key.
+* keybr.com tracks every single key press and computes statistics for each individual keyboard key.
 * It automatically generates lessons focusing on your weakest keys.
 * It allows you to set your own target typing speed and tracks your progress toward this goal.
 * It starts with a small list of the most frequent letters of your language.
