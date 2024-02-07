@@ -172,6 +172,21 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly DE_MINE = new Layout(
+    /* id= */ "de-mine",
+    /* xid= */ 0x24,
+    /* name= */ "Mine",
+    /* family= */ LayoutFamily.NEO,
+    /* language= */ Language.DE,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
   static readonly FR_FR = new Layout(
     /* id= */ "fr",
     /* xid= */ 0x30,
@@ -460,6 +475,7 @@ export class Layout implements XEnumItem {
     Layout.DE_CH,
     Layout.DE_NEO_2,
     Layout.DE_BONE,
+    Layout.DE_MINE,
     Layout.FR_FR,
     Layout.FR_CA,
     Layout.FR_CH,
