@@ -2,6 +2,7 @@ import { parseCldr } from "./cldr.ts";
 import { writeGeneratedFile } from "./generate.ts";
 import { type LayoutConfig } from "./layout.ts";
 import { LAYOUT_DE_BONE } from "./layout/layout_de_bone.ts";
+import { LAYOUT_DE_MINE } from "./layout/layout_de_mine.ts";
 import { LAYOUT_DE_NEO_2 } from "./layout/layout_de_neo_2.ts";
 import { LAYOUT_EN_CUSTOM } from "./layout/layout_en_custom.ts";
 import { LAYOUT_EN_US_CANARY_MATRIX } from "./layout/layout_en_us_canary_matrix.ts";
@@ -118,6 +119,7 @@ const files: readonly [input: string | LayoutConfig, output: string][] = [
   ],
   [LAYOUT_DE_NEO_2, "../keybr-keyboard/lib/data/layout/de_neo_2.ts"],
   [LAYOUT_DE_BONE, "../keybr-keyboard/lib/data/layout/de_bone.ts"],
+  [LAYOUT_DE_MINE, "../keybr-keyboard/lib/data/layout/de_mine.ts"],
   [
     LAYOUT_FR_OPTIMOT_ERGO,
     "../keybr-keyboard/lib/data/layout/fr_optimot_ergo.ts",
