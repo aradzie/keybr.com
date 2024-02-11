@@ -6,11 +6,15 @@ export type LocaleId =
   | "en"
   | "es"
   | "fr"
+  | "he"
+  | "hu"
   | "ja"
+  | "nl"
   | "pl"
   | "pt-br"
   | "ru"
   | "sv"
+  | "tr"
   | "uk"
   | "zh-Hans";
 
@@ -22,11 +26,15 @@ export const allLocales: readonly LocaleId[] = [
   "en",
   "es",
   "fr",
+  "he",
+  "hu",
   "ja",
+  "nl",
   "pl",
   "pt-br",
   "ru",
   "sv",
+  "tr",
   "uk",
   "zh-Hans",
 ];
