@@ -77,7 +77,7 @@ function usePracticeState(state: PracticeState) {
           const feedback = state.onTextInput(event);
           setLines(state.lines);
           playSounds(feedback);
-          timeout.schedule(handleResetLesson, 5000);
+          timeout.schedule(handleResetLesson, 10000);
         },
       },
       state.settings.get(keyboardProps.emulate),
