@@ -32,9 +32,21 @@ export async function loadMessages(locale: LocaleId): Promise<Messages> {
       return (
         await import(/* webpackChunkName: "i18n-fr" */ "./messages/fr.json")
       ).default;
+    case "he":
+      return (
+        await import(/* webpackChunkName: "i18n-he" */ "./messages/he.json")
+      ).default;
+    case "hu":
+      return (
+        await import(/* webpackChunkName: "i18n-hu" */ "./messages/hu.json")
+      ).default;
     case "ja":
       return (
         await import(/* webpackChunkName: "i18n-ja" */ "./messages/ja.json")
+      ).default;
+    case "nl":
+      return (
+        await import(/* webpackChunkName: "i18n-nl" */ "./messages/nl.json")
       ).default;
     case "pl":
       return (
@@ -53,6 +65,10 @@ export async function loadMessages(locale: LocaleId): Promise<Messages> {
     case "sv":
       return (
         await import(/* webpackChunkName: "i18n-sv" */ "./messages/sv.json")
+      ).default;
+    case "tr":
+      return (
+        await import(/* webpackChunkName: "i18n-tr" */ "./messages/tr.json")
       ).default;
     case "uk":
       return (
