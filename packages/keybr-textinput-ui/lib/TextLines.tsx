@@ -1,3 +1,4 @@
+import { Direction } from "@keybr/layout";
 import {
   type Char,
   charsAreEqual,
@@ -35,6 +36,7 @@ export const TextLines = memo(function TextLines({
     styles.line,
     wrap ? styles.line_wrap : styles.line_nowrap,
     focus ? styles.text_focus : styles.text_blur,
+    settings.direction === Direction.RTL ? styles.line_rtl : styles.line_ltr,
     sizeStyleName(size),
   );
   const children = useTextLines(settings, lines, className, lineTemplate);

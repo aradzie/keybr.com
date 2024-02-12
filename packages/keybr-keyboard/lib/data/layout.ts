@@ -21,6 +21,7 @@ export { LAYOUT_FR_CH_WIN } from "./layout/fr_ch-win.ts";
 export { LAYOUT_FR_ERGOL } from "./layout/fr_ergol.ts";
 export { LAYOUT_FR_FR_WIN } from "./layout/fr_fr-win.ts";
 export { LAYOUT_FR_OPTIMOT_ERGO } from "./layout/fr_optimot_ergo.ts";
+export { LAYOUT_HE_IL_WIN } from "./layout/he_il-win.ts";
 export { LAYOUT_IT_IT_WIN } from "./layout/it_it-win.ts";
 export { LAYOUT_PL_PL_WIN } from "./layout/pl_pl-win.ts";
 export { LAYOUT_PT_BR_WIN } from "./layout/pt_br-win.ts";

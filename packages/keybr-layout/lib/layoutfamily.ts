@@ -61,6 +61,10 @@ export class LayoutFamily implements EnumItem {
     /* id= */ "йцукен",
     /* script= */ "cyrillic",
   );
+  static readonly HEBREW = new LayoutFamily(
+    /* id= */ "hebrew",
+    /* script= */ "hebrew",
+  );
 
   static readonly ALL = new Enum<LayoutFamily>(
     LayoutFamily.QWERTY,
@@ -77,6 +81,7 @@ export class LayoutFamily implements EnumItem {
     LayoutFamily.NEO,
     LayoutFamily.GREEK,
     LayoutFamily.ЙЦУКЕН,
+    LayoutFamily.HEBREW,
   );
 
   private constructor(
