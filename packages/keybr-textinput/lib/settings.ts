@@ -1,3 +1,5 @@
+import { keyboardProps } from "@keybr/keyboard";
+import { Direction } from "@keybr/layout";
 import {
   booleanProp,
   enumProp,
@@ -26,12 +28,15 @@ export type TextInputSettings = {
    * to the first character of a next word.
    */
   readonly spaceSkipsWords: boolean;
+
+  readonly direction: Direction;
 };
 
 export const textInputSettings: TextInputSettings = {
   stopOnError: true,
   forgiveErrors: true,
   spaceSkipsWords: true,
+  direction: Direction.LTR,
 };
 
 export const textInputProps = {
@@ -45,6 +50,7 @@ export function toTextInputSettings(settings: Settings): TextInputSettings {
     stopOnError: settings.get(textInputProps.stopOnError),
     forgiveErrors: settings.get(textInputProps.forgiveErrors),
     spaceSkipsWords: settings.get(textInputProps.spaceSkipsWords),
+    direction: settings.get(keyboardProps.layout).language.direction,
   };
 }
 
@@ -54,6 +60,7 @@ export type TextDisplaySettings = {
   readonly whitespaceStyle: WhitespaceStyle;
   readonly playSounds: PlaySounds;
   readonly soundVolume: number;
+  readonly direction: Direction;
 };
 
 export enum CaretShapeStyle {
@@ -86,6 +93,7 @@ export const textDisplaySettings: TextDisplaySettings = {
   whitespaceStyle: WhitespaceStyle.Bullet,
   playSounds: PlaySounds.None,
   soundVolume: 0.5,
+  direction: Direction.LTR,
 };
 
 export const textDisplayProps = {
@@ -115,5 +123,6 @@ export function toTextDisplaySettings(settings: Settings): TextDisplaySettings {
     whitespaceStyle: settings.get(textDisplayProps.whitespaceStyle),
     playSounds: settings.get(textDisplayProps.playSounds),
     soundVolume: settings.get(textDisplayProps.soundVolume),
+    direction: settings.get(keyboardProps.layout).language.direction,
   };
 }

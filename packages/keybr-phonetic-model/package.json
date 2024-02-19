@@ -14,6 +14,7 @@
   "scripts": {
     "clean": "rm -fr .types",
     "compile": "tsc",
+    "generate": "node -r @keybr/tsl ./lib/generate/generate.ts",
     "test": "ava"
   },
   "ava": {

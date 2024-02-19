@@ -1,3 +1,4 @@
+import { Direction } from "@keybr/layout";
 import { type AnyUser } from "@keybr/pages-shared";
 import { TextInput } from "@keybr/textinput";
 import { Timer } from "@keybr/timer";
@@ -45,6 +46,7 @@ export function makeTextInput(text: string): TextInput {
     stopOnError: true,
     forgiveErrors: true,
     spaceSkipsWords: false,
+    direction: Direction.LTR,
   });
 }
 

@@ -4,8 +4,8 @@ import { Filter } from "./filter.ts";
 import { loadModelSync } from "./fs-load.ts";
 import { Letter } from "./letter.ts";
 
-const alphabet = /^\u{0020}\p{Lowercase_Letter}+$/u;
-const word = /^\p{Lowercase_Letter}+$/u;
+const alphabet = /^\u{0020}\p{Letter}+$/u;
+const word = /^\p{Letter}+$/u;
 
 for (const language of Language.ALL) {
   test(`${language.id}`, (t) => {

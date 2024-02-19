@@ -1,3 +1,4 @@
+import { Direction } from "@keybr/layout";
 import {
   type Char,
   type TextDisplaySettings,
@@ -59,6 +60,7 @@ function newState(text: string) {
     stopOnError: false,
     forgiveErrors: false,
     spaceSkipsWords: false,
+    direction: Direction.LTR,
   });
   const chars = textInput.getChars();
   return { textInput, chars };
