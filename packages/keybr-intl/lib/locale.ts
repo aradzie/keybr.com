@@ -40,3 +40,8 @@ export const allLocales: readonly LocaleId[] = [
 ];
 
 export const defaultLocale: LocaleId = "en";
+
+export const isRtl = (locale: LocaleId): boolean => locale === "he";
+
+export const getDir = (locale: LocaleId): string =>
+  isRtl(locale) ? "rtl" : "ltr";

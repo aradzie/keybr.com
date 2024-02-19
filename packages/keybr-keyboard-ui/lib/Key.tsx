@@ -81,7 +81,7 @@ export const Symbol = memo(function Symbol({
 }): ReactNode {
   const cn = clsx(styles.symbol, className);
   return (
-    <text className={cn} x={x} y={y} textAnchor={textAnchor}>
+    <text className={cn} x={x} y={y} textAnchor={textAnchor} direction="ltr">
       {text}
     </text>
   );
@@ -112,7 +112,7 @@ export const Primary = memo(function Primary({
   }
   const cn = clsx(styles.symbol, styles.primarySymbol, className);
   return (
-    <text className={cn} x={x} y={y} textAnchor={textAnchor}>
+    <text className={cn} x={x} y={y} textAnchor={textAnchor} direction="ltr">
       {text}
     </text>
   );
@@ -143,7 +143,7 @@ export const Secondary = memo(function Secondary({
   }
   const cn = clsx(styles.symbol, styles.secondarySymbol, className);
   return (
-    <text className={cn} x={x} y={y} textAnchor={textAnchor}>
+    <text className={cn} x={x} y={y} textAnchor={textAnchor} direction="ltr">
       {text}
     </text>
   );

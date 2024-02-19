@@ -82,7 +82,7 @@ const TextLine = memo(
     readonly className: string;
   }): ReactNode {
     return (
-      <div className={className}>
+      <div className={className} dir="auto">
         {splitIntoItems(chars).map(({ chars }, index) => (
           <TextItem key={index} settings={settings} chars={chars} />
         ))}
