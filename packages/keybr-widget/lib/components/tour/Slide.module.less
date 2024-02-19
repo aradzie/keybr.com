@@ -5,7 +5,7 @@
 .slide > ol:first-child,
 .slide > ul:first-child,
 .slide > figure:first-child {
-  margin-top: 0;
+  margin-block-start: 0;
 }
 
 .slide > h1:last-child,
@@ -15,16 +15,16 @@
 .slide > ol:last-child,
 .slide > ul:last-child,
 .slide > figure:last-child {
-  margin-bottom: 0;
+  margin-block-end: 0;
 }
 
 .slide_large {
-  width: 36rem;
-  min-height: 24rem;
+  inline-size: 36rem;
+  min-block-size: 24rem;
 }
 
 .slide_small {
-  min-width: 20rem;
-  max-width: 30rem;
-  min-height: 5rem;
+  min-inline-size: 20rem;
+  max-inline-size: 30rem;
+  min-block-size: 5rem;
 }

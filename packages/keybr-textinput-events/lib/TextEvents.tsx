@@ -46,10 +46,10 @@ function useInputHandler(): InputHandler {
 
 const divStyle: CSSProperties = {
   position: "absolute",
-  top: "0px",
-  left: "0px",
-  width: "0px",
-  height: "0px",
+  insetInlineStart: "0px",
+  insetBlockStart: "0px",
+  inlineSize: "0px",
+  blockSize: "0px",
   overflow: "hidden",
 };
 
@@ -57,8 +57,8 @@ const inputStyle: CSSProperties = {
   display: "block",
   margin: "0px",
   padding: "0px",
-  width: "1em",
-  height: "1em",
+  inlineSize: "1em",
+  blockSize: "1em",
   border: "none",
   outline: "none",
 };

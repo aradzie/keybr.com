@@ -1,23 +1,25 @@
 .bookPreview {
   display: flex;
-  margin: 1rem 0;
-  padding: 1rem;
+  margin-inline: 0;
+  margin-block: 1rem;
+  padding-inline: 1rem;
+  padding-block: 1rem;
   border: var(--separator-border);
 }
 
 .coverImage {
-  height: 8rem;
+  block-size: 8rem;
 }
 
 .details {
   flex: 1;
-  margin-left: 1rem;
+  margin-inline-start: 1rem;
 }
 
 .details > p:first-child {
-  margin-top: 0;
+  margin-block-start: 0;
 }
 
 .details > p:last-child {
-  margin-bottom: 0;
+  margin-block-end: 0;
 }

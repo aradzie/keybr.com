@@ -1,10 +1,11 @@
 .figure {
-  padding: 2rem;
+  padding-inline: 2rem;
+  padding-block: 2rem;
   border-radius: 2rem;
 }
 
 .table {
-  width: 100%;
+  inline-size: 100%;
 
   th {
     text-transform: uppercase;
@@ -13,25 +14,26 @@
   td,
   th {
     overflow: hidden;
-    padding: 0.25rem 0.75rem;
-    border-bottom: var(--separator-border);
-    text-align: left;
+    padding-inline: 0.75rem;
+    padding-block: 0.25rem;
+    border-block-end: var(--separator-border);
+    text-align: start;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 }
 
 .userColumn {
-  text-align: left;
+  text-align: start;
 }
 
 .layoutColumn {
-  text-align: left;
+  text-align: start;
 }
 
 .positionColumn,
 .speedColumn,
 .scoreColumn,
 .extraColumn {
-  text-align: right;
+  text-align: end;
 }

@@ -25,8 +25,8 @@ const Gauge = ({ value }: { readonly value: number }): ReactNode => {
   const frameWidth = value > 1 ? Math.round((1 / value) * 100) : 100;
   return (
     <div className={styles.gauge}>
-      <div className={styles.bar} style={{ width: `${barWidth}%` }} />
-      <div className={styles.frame} style={{ width: `${frameWidth}%` }} />
+      <div className={styles.bar} style={{ inlineSize: `${barWidth}%` }} />
+      <div className={styles.frame} style={{ inlineSize: `${frameWidth}%` }} />
     </div>
   );
 };

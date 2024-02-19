@@ -1,22 +1,23 @@
 .navMenu {
   position: sticky;
-  top: 0;
-  max-width: 12rem;
+  inset-block-start: 0;
+  max-inline-size: 12rem;
   margin: 0;
   padding: 0;
 }
 
 .navMenuItem {
-  border-bottom: var(--separator-border);
+  border-block-end: var(--separator-border);
 }
 
 .navLink {
   display: flex;
   align-items: center;
-  justify-content: left;
-  height: 3rem;
+  justify-content: flex-start;
+  block-size: 3rem;
   margin: 0;
-  padding: 0 1rem;
+  padding-inline: 1rem;
+  padding-block: 0;
   color: var(--NavLink__color);
   background-color: var(--NavLink__background-color);
   line-height: 3rem;
@@ -39,8 +40,8 @@
 .navLinkLabel {
   display: inline-block;
   overflow: hidden;
-  max-width: 100%;
-  margin-left: 0.5rem;
+  max-inline-size: 100%;
+  margin-inline-start: 0.5rem;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -50,7 +51,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1rem 0;
+  padding-inline: 0;
+  padding-block: 1rem;
   color: var(--NavLink__color);
   background-color: var(--NavLink__background-color);
 
@@ -67,7 +69,7 @@
 
 .accountLinkName {
   overflow: hidden;
-  max-width: 10rem;
+  max-inline-size: 10rem;
   text-align: center;
   text-overflow: ellipsis;
   white-space: normal;

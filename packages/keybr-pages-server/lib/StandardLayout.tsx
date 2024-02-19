@@ -142,8 +142,8 @@ function EnvName(): ReactNode {
       style={{
         position: "fixed",
         zIndex: "1",
-        right: "0px",
-        bottom: "0px",
+        insetInlineEnd: "0px",
+        insetBlockEnd: "0px",
         padding: "5px",
         margin: "5px",
         border: "1px solid red",

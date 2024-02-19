@@ -16,44 +16,48 @@ a:focus {
 }
 
 h1 {
-  margin: 1rem 0;
+  margin-inline: 0;
+  margin-block: 1rem;
   padding: 0;
   font-size: 2rem;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
-  text-align: left;
+  text-align: start;
 }
 
 h2 {
-  margin: 0.8rem 0;
+  margin-inline: 0;
+  margin-block: 0.8rem;
   padding: 0;
   font-size: 1.6rem;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
-  text-align: left;
+  text-align: start;
 }
 
 h3 {
-  margin: 0.6rem 0;
+  margin-inline: 0;
+  margin-block: 0.6rem;
   padding: 0;
   font-size: 1.2rem;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
-  text-align: left;
+  text-align: start;
 }
 
 p {
-  margin: 1rem 0;
+  margin-inline: 0;
+  margin-block: 1rem;
   padding: 0;
   line-height: 1.5;
   text-align: justify;
 }
 
 li {
-  text-align: left;
+  text-align: start;
 }
 
 h1,
@@ -64,23 +68,27 @@ h3 {
 }
 
 figure {
-  margin: 1rem 0;
-  padding: 1rem;
+  margin-inline: 0;
+  margin-block: 1rem;
+  padding-inline: 1rem;
+  padding-block: 1rem;
   border: var(--separator-border);
 }
 
 figcaption {
-  margin: 1rem 0;
-  padding: 0;
+  margin-inline: 0;
+  margin-block: 1rem;
+  padding-inline: 0;
+  padding-block: 0;
   text-align: center;
 }
 
 figure > figcaption:first-child {
-  margin-top: 0;
+  margin-block-start: 0;
 }
 
 figure > figcaption:last-child {
-  margin-bottom: 0;
+  margin-block-end: 0;
 }
 
 legend + h1,
@@ -89,7 +97,7 @@ legend + h3,
 legend + p,
 legend + ol,
 legend + ul {
-  margin-top: 0;
+  margin-block-start: 0;
 }
 
 article > h1:first-child,
@@ -111,7 +119,7 @@ fieldset > h3:first-child,
 fieldset > p:first-child,
 fieldset > ol:first-child,
 fieldset > ul:first-child {
-  margin-top: 0;
+  margin-block-start: 0;
 }
 
 article > h1:last-child,
@@ -133,13 +141,14 @@ fieldset > h3:last-child,
 fieldset > p:last-child,
 fieldset > ol:last-child,
 fieldset > ul:last-child {
-  margin-bottom: 0;
+  margin-block-end: 0;
 }
 
 blockquote {
-  margin: 1rem 2rem;
+  margin-inline: 2rem;
+  margin-block: 1rem;
   padding: 0;
-  border-left: var(--separator-border);
+  border-inline-start: var(--separator-border);
 }
 
 dt {
@@ -148,16 +157,17 @@ dt {
   font-weight: bold;
   font-style: normal;
   line-height: 1.5;
-  text-align: left;
+  text-align: start;
 }
 
 dd {
-  margin: 0 0 0 2rem;
+  margin-inline: 2rem 0;
+  margin-block: 0;
   padding: 0;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
-  text-align: left;
+  text-align: start;
 }
 
 text {

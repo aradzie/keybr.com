@@ -2,8 +2,14 @@
   /* empty */
 }
 
-.externalLink {
-  padding-right: 1.3rem;
+.externalLink:dir(ltr) {
+  padding-inline-end: 1.3rem;
   background: var(--ExternalLink__background-image) no-repeat center right;
+  background-size: 1rem;
+}
+
+.externalLink:dir(rtl) {
+  padding-inline-end: 1.3rem;
+  background: var(--ExternalLink__background-image) no-repeat center left;
   background-size: 1rem;
 }

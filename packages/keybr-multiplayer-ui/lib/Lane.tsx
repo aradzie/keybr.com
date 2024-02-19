@@ -24,7 +24,7 @@ export const Lane = memo(function Lane({
     if (laneElement != null && carElement != null) {
       const laneWidth = laneElement.offsetWidth;
       const carWidth = carElement.offsetWidth;
-      carElement.style.left =
+      carElement.style.insetInlineStart =
         String((laneWidth - carWidth) * player.progress) + "px";
     }
   };

@@ -14,7 +14,7 @@ export function ProgressBar({
       <div className={clsx(styles.progressBar, className)}>
         <div
           className={clsx(styles.bar, styles.determined)}
-          style={{ width: `${value}%` }}
+          style={{ inlineSize: `${value}%` }}
         />
       </div>
     );
@@ -23,7 +23,7 @@ export function ProgressBar({
       <div className={clsx(styles.progressBar, className)}>
         <div
           className={clsx(styles.bar, styles.intermediate)}
-          style={{ width: "100%" }}
+          style={{ inlineSize: "100%" }}
         />
       </div>
     );

@@ -1,6 +1,7 @@
 .report {
-  width: max-content;
-  margin: 2rem auto;
+  inline-size: max-content;
+  margin-inline: auto;
+  margin-block: 2rem;
 }
 
 .printable {
@@ -12,12 +13,13 @@
 }
 
 .controlsLine {
-  width: max-content;
-  margin: 2rem auto;
+  inline-size: max-content;
+  margin-inline: auto;
+  margin-block: 2rem;
 }
 
 .indicator {
-  min-width: 20rem;
+  min-inline-size: 20rem;
   text-align: center;
 }
 
@@ -27,7 +29,7 @@
 }
 
 .indicatorValue {
-  border-bottom: var(--separator-border);
+  border-block-end: var(--separator-border);
   line-height: 1;
   text-align: center;
 }
@@ -43,11 +45,13 @@
 }
 
 .separator {
-  margin: 1rem;
-  border-left: var(--separator-border);
+  margin-inline: 1rem;
+  margin-block: 1rem;
+  border-inline-start: var(--separator-border);
 }
 
 .secondaryLine {
-  margin: 1rem auto;
+  margin-inline: auto;
+  margin-block: 1rem;
   text-align: center;
 }

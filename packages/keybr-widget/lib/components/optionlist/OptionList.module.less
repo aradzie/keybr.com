@@ -4,7 +4,7 @@
   display: inline-block;
   position: relative;
   vertical-align: middle;
-  min-width: 20rem;
+  min-inline-size: 20rem;
   margin: 0;
   padding: 0;
   border: none;
@@ -14,7 +14,7 @@
   font-size: 0.85rem;
   font-weight: normal;
   font-style: normal;
-  text-align: left;
+  text-align: start;
   text-transform: none;
   white-space: nowrap;
   cursor: pointer;
@@ -34,10 +34,11 @@
   flex: 1;
   vertical-align: middle;
   overflow: hidden;
-  max-width: 100%;
-  height: @field-height;
+  max-inline-size: 100%;
+  block-size: @field-height;
   margin: 0;
-  padding: 0 1.5rem;
+  padding-inline: 1.5rem;
+  padding-block: 0;
   line-height: @field-height;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -45,27 +46,29 @@
 
 .placeholderArrow {
   vertical-align: middle;
-  height: @field-height;
+  block-size: @field-height;
   margin: 0;
-  padding: 0 1.5rem 0 0;
+  padding-inline: 0 1.5rem;
+  padding-block: 0;
   line-height: @field-height;
 }
 
 .list {
   display: block;
   position: absolute;
-  top: 100%;
-  right: 0;
-  left: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
+  inset-block-start: 100%;
   z-index: 1;
 }
 
 .item {
   display: block;
   overflow: hidden;
-  max-width: 100%;
-  height: @field-height;
-  padding: 0 1.5rem;
+  max-inline-size: 100%;
+  block-size: @field-height;
+  padding-inline: 1.5rem;
+  padding-block: 0;
   color: var(--MenuItem__color);
   background-color: var(--MenuItem__background-color);
   line-height: @field-height;

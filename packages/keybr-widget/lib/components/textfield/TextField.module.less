@@ -2,9 +2,10 @@
 
 .textField {
   display: inline-block;
-  min-height: @field-height;
-  margin: -1px;
-  padding: 0 1em;
+  min-block-size: @field-height;
+  margin: 0;
+  padding-inline: 1rem;
+  padding-block: 0;
   border: 1px solid var(--TextField__border-color);
   color: var(--TextField__color);
   background-color: var(--TextField__background-color);
@@ -13,7 +14,7 @@
   font-weight: normal;
   font-style: normal;
   line-height: normal;
-  text-align: left;
+  text-align: start;
   text-transform: none;
 }
 
@@ -25,10 +26,10 @@
 }
 
 textarea.textField {
-  min-height: 10em;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-  resize: vertical;
+  min-block-size: 10em;
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+  resize: block;
 }
 
 .disabled {

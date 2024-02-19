@@ -1,5 +1,5 @@
 .paragraphPreview {
-  width: 50rem; /* TODO Fix this. */
+  inline-size: 50rem; /* TODO Fix this. */
 }
 
 .item {
@@ -7,7 +7,7 @@
 }
 
 .item_active {
-  border-bottom: var(--separator-border);
+  border-block-end: var(--separator-border);
 }
 
 .item_inactive {
@@ -16,14 +16,14 @@
 
 .index {
   display: inline-block;
-  min-width: 4rem;
-  text-align: right;
+  min-inline-size: 4rem;
+  text-align: end;
 }
 
 .content {
   display: inline-block;
   overflow: hidden;
-  max-width: 100%;
+  max-inline-size: 100%;
   font-style: italic;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -31,6 +31,6 @@
 
 .separator {
   display: inline-block;
-  min-width: 1rem;
+  min-inline-size: 1rem;
   text-align: center;
 }

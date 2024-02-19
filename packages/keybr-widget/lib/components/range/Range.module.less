@@ -3,14 +3,14 @@
 .range {
   display: inline-block;
   vertical-align: middle;
-  height: @field-height;
+  block-size: @field-height;
   line-height: @field-height;
 }
 
 .thumb {
-  width: 1.8rem;
-  height: 1.8rem;
-  margin-top: -0.9rem;
+  inline-size: 1.8rem;
+  block-size: 1.8rem;
+  margin-block-start: -0.9rem;
   border: none;
   border-radius: 50%;
   color: transparent;
@@ -19,8 +19,8 @@
 }
 
 .track {
-  width: 100%;
-  height: 1px;
+  inline-size: 100%;
+  block-size: 1px;
   border: none;
   border-radius: 0;
   color: transparent;

@@ -11,15 +11,15 @@
 }
 
 .menu + .body {
-  margin-top: 1rem;
+  margin-block-start: 1rem;
 }
 
 .item {
-  min-width: 14rem;
-  height: 3rem;
-  border-top: var(--separator-border);
-  border-right: var(--separator-border);
-  border-left: var(--separator-border);
+  min-inline-size: 14rem;
+  block-size: 3rem;
+  border-inline-start: var(--separator-border);
+  border-inline-end: var(--separator-border);
+  border-block-start: var(--separator-border);
   line-height: 3rem;
   text-align: center;
   cursor: pointer;
@@ -34,22 +34,22 @@
 }
 
 .item_inactive {
-  border-bottom: var(--separator-border);
+  border-block-end: var(--separator-border);
   color: var(--TabList-item--inactive__color);
 }
 
 .spacer {
-  height: 3rem;
-  border-bottom: var(--separator-border);
+  block-size: 3rem;
+  border-block-end: var(--separator-border);
   line-height: 3rem;
 }
 
 .spacer_middle {
-  width: 1rem;
+  inline-size: 1rem;
 }
 
 .spacer_first {
-  width: 3rem;
+  inline-size: 3rem;
 }
 
 .spacer_last {

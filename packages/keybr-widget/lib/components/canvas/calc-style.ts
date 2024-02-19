@@ -7,8 +7,8 @@ const createElement = (tagName: string, className: ClassValue): HTMLElement => {
   element.textContent = "?";
   element.className = clsx(className);
   element.style.position = "fixed";
-  element.style.left = "0px";
-  element.style.top = "0px";
+  element.style.insetInlineStart = "0px";
+  element.style.insetBlockStart = "0px";
   return element;
 };
 

@@ -4,14 +4,14 @@
   display: inline-flex;
   align-items: center;
   vertical-align: middle;
-  min-height: @field-height;
+  min-block-size: @field-height;
   line-height: @field-height;
   cursor: default;
 
   input {
     position: absolute;
-    width: 0;
-    height: 0;
+    inline-size: 0;
+    block-size: 0;
     border: none;
     opacity: 0;
     appearance: none;
@@ -19,8 +19,8 @@
 }
 
 .icon {
-  width: @field-height;
-  height: @field-height;
+  inline-size: @field-height;
+  block-size: @field-height;
   fill: var(--Button__background-color);
 }
 
@@ -32,11 +32,11 @@
 }
 
 .label {
-  height: @field-height;
+  block-size: @field-height;
 }
 
 .icon + .label {
-  margin-left: 0.5rem;
+  margin-inline-start: 0.5rem;
 }
 
 .disabled {

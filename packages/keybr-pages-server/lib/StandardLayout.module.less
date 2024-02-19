@@ -1,6 +1,6 @@
 body {
-  overflow-x: auto;
-  overflow-y: scroll;
+  overflow-inline: auto;
+  overflow-block: scroll;
   color: var(--text-color);
   background-color: var(--background-color);
 
@@ -28,7 +28,7 @@ body {
     "sidebar main nav";
   grid-template-rows: auto 1fr;
   grid-template-columns: auto 1fr auto;
-  min-height: 100vh;
+  min-block-size: 100vb;
 }
 
 .bodyAlt {
@@ -36,7 +36,7 @@ body {
   grid-template-areas: ". main nav";
   grid-template-rows: 1fr;
   grid-template-columns: 12rem 1fr auto;
-  min-height: 100vh;
+  min-block-size: 100vb;
 }
 
 .app {
@@ -52,13 +52,15 @@ body {
 .nav {
   grid-area: nav;
   margin: 0;
-  padding: 1rem;
+  padding-inline: 1rem;
+  padding-block: 1rem;
 }
 
 .navAlt {
   grid-area: nav;
   margin: 0;
-  padding: 1rem;
+  padding-inline: 1rem;
+  padding-block: 1rem;
 }
 
 .topbar {
@@ -66,7 +68,8 @@ body {
   grid-area: topbar;
   justify-content: center;
   margin: 0;
-  padding: 1rem;
+  padding-inline: 1rem;
+  padding-block: 1rem;
 }
 
 .sidebar {
@@ -74,5 +77,6 @@ body {
   grid-area: sidebar;
   justify-content: center;
   margin: 0;
-  padding: 1rem;
+  padding-inline: 1rem;
+  padding-block: 1rem;
 }

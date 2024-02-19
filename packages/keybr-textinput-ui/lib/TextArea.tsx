@@ -149,13 +149,13 @@ export function TextArea({
 function setElementSize(element: HTMLDivElement): void {
   const { style } = element;
   style.contain = "none";
-  style.width = "auto";
-  style.height = "auto";
+  style.inlineSize = "auto";
+  style.blockSize = "auto";
   const width = element.offsetWidth;
   const height = element.offsetHeight;
   style.contain = "strict";
-  style.width = `${width}px`;
-  style.height = `${height}px`;
+  style.inlineSize = `${width}px`;
+  style.blockSize = `${height}px`;
 }
 
 function setElementCursor(element: HTMLDivElement, cursor: string): void {

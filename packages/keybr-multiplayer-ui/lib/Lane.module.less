@@ -3,9 +3,9 @@
 
 .player {
   position: relative;
-  width: 100%;
-  height: @height;
-  border-top: var(--separator-border);
+  inline-size: 100%;
+  block-size: @height;
+  border-block-start: var(--separator-border);
   background-color: var(--Player__background-color);
 }
 
@@ -27,17 +27,18 @@
 
 .name {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: @width;
-  height: @height;
+  inset-inline-start: 0;
+  inset-block-start: 0;
+  inline-size: @width;
+  block-size: @height;
 }
 
 .details {
   position: absolute;
-  right: 0;
-  bottom: 0;
-  padding: 0.5em 1em;
+  inset-inline-end: 0;
+  inset-block-end: 0;
+  padding-inline: 1em;
+  padding-block: 0.5em;
   color: var(--PlayerDetails__color);
   background-color: var(--PlayerDetails__background-color);
   font-size: 0.8rem;
@@ -46,25 +47,29 @@
 
 .lane {
   position: absolute;
-  top: 0;
-  right: 0;
-  left: @width;
-  height: @height;
-  border-left: var(--separator-border);
+  inset-inline-start: @width;
+  inset-inline-end: 0;
+  inset-block-start: 0;
+  block-size: @height;
+  border-inline-start: var(--separator-border);
 }
 
 .car {
   position: absolute;
 }
 
+.car:dir(rtl) {
+  transform: scaleX(-1);
+}
+
 .carImage {
   display: block;
-  width: (@height * 1.66);
-  height: @height;
+  inline-size: (@height * 1.66);
+  block-size: @height;
 }
 
 .wideValue {
-  min-width: 4rem;
+  min-inline-size: 4rem;
 }
 
 @keyframes pulseAnimation {

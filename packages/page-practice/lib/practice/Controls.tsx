@@ -1,4 +1,4 @@
-import { Button, Icon, IconButton, stylePositionTopRight } from "@keybr/widget";
+import { Button, Icon, IconButton } from "@keybr/widget";
 import {
   mdiAspectRatio,
   mdiCog,
@@ -8,6 +8,7 @@ import {
 } from "@mdi/js";
 import { memo, type ReactNode } from "react";
 import { useIntl } from "react-intl";
+import * as styles from "./Controls.module.less";
 import * as names from "./names.module.less";
 
 export const Controls = memo(function Controls({
@@ -25,7 +26,7 @@ export const Controls = memo(function Controls({
 }): ReactNode {
   const { formatMessage } = useIntl();
   return (
-    <div id={names.controls} className={stylePositionTopRight}>
+    <div id={names.controls} className={styles.controls}>
       <IconButton
         icon={<Icon shape={mdiHelpCircleOutline} />}
         title={formatMessage({

@@ -5,9 +5,9 @@
   "main": "lib/index.ts",
   "types": ".types/index.d.ts",
   "dependencies": {
-    "@keybr/settings": "*",
-    "@keybr/layout": "*",
     "@keybr/keyboard": "*",
+    "@keybr/layout": "*",
+    "@keybr/settings": "*",
     "@keybr/unicode": "*"
   },
   "devDependencies": {},
