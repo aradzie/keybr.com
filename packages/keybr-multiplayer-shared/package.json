@@ -6,7 +6,6 @@
   "types": ".types/index.d.ts",
   "dependencies": {
     "@keybr/binary": "*",
-    "@keybr/layout": "*",
     "@keybr/pages-shared": "*",
     "@keybr/textinput": "*",
     "@keybr/timer": "*"

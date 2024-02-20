@@ -1,4 +1,3 @@
-import { Direction } from "@keybr/layout";
 import test from "ava";
 import { TextInput } from "./textinput.ts";
 import {
@@ -26,7 +25,6 @@ test("allow empty text", (t) => {
       stopOnError: true,
       forgiveErrors: true,
       spaceSkipsWords: true,
-      direction: Direction.LTR,
     });
   });
 });
@@ -36,7 +34,6 @@ test("cannot advance past the end of text", (t) => {
     stopOnError: true,
     forgiveErrors: true,
     spaceSkipsWords: true,
-    direction: Direction.LTR,
   });
 
   t.true(textInput.completed);
@@ -51,7 +48,6 @@ test("advance to completion", (t) => {
     stopOnError: true,
     forgiveErrors: true,
     spaceSkipsWords: true,
-    direction: Direction.LTR,
   });
 
   // Initial state.
@@ -94,7 +90,6 @@ test("accumulate and delete garbage", (t) => {
     stopOnError: false,
     forgiveErrors: false,
     spaceSkipsWords: true,
-    direction: Direction.LTR,
   });
 
   // Initial state.
@@ -172,7 +167,6 @@ test("emoji", (t) => {
     stopOnError: true,
     forgiveErrors: true,
     spaceSkipsWords: true,
-    direction: Direction.LTR,
   });
 
   t.is(stepsString(textInput.getSteps()), "");
@@ -195,7 +189,6 @@ test("handle backspace at the start of text", (t) => {
     stopOnError: false,
     forgiveErrors: false,
     spaceSkipsWords: true,
-    direction: Direction.LTR,
   });
 
   // Step 1.
@@ -232,7 +225,6 @@ test("handle backspace in the middle of text", (t) => {
     stopOnError: false,
     forgiveErrors: false,
     spaceSkipsWords: true,
-    direction: Direction.LTR,
   });
 
   // Step 1.
@@ -276,7 +268,6 @@ test("limit garbage length", (t) => {
     stopOnError: false,
     forgiveErrors: false,
     spaceSkipsWords: true,
-    direction: Direction.LTR,
   });
 
   for (let i = 1; i <= 100; i++) {
@@ -296,7 +287,6 @@ test("forgive an inserted character", (t) => {
     stopOnError: true,
     forgiveErrors: true,
     spaceSkipsWords: true,
-    direction: Direction.LTR,
   });
 
   // Initial state.
@@ -339,7 +329,6 @@ test("forgive a skipped character", (t) => {
     stopOnError: true,
     forgiveErrors: true,
     spaceSkipsWords: true,
-    direction: Direction.LTR,
   });
 
   // Step 1.
@@ -369,7 +358,6 @@ test("forgive a replaced character", (t) => {
     stopOnError: true,
     forgiveErrors: true,
     spaceSkipsWords: true,
-    direction: Direction.LTR,
   });
 
   // Step 1.
@@ -406,7 +394,6 @@ test("recover from a forgiven error", (t) => {
     stopOnError: true,
     forgiveErrors: true,
     spaceSkipsWords: true,
-    direction: Direction.LTR,
   });
 
   textInput.appendChar(X, 100);
@@ -425,7 +412,6 @@ test("ignore whitespace keys at the start of text", (t) => {
     stopOnError: true,
     forgiveErrors: false,
     spaceSkipsWords: true,
-    direction: Direction.LTR,
   });
 
   t.is(textInput.appendChar(Space, 100), Feedback.Succeeded);
@@ -439,7 +425,6 @@ test("space in garbage", (t) => {
     stopOnError: false,
     forgiveErrors: false,
     spaceSkipsWords: false,
-    direction: Direction.LTR,
   });
 
   t.is(textInput.appendChar(A, 100), Feedback.Succeeded);
@@ -464,7 +449,6 @@ test("space skips words at the beginning of a text, ignore space", (t) => {
     stopOnError: true,
     forgiveErrors: true,
     spaceSkipsWords: true,
-    direction: Direction.LTR,
   });
 
   t.is(textInput.appendChar(Space, 100), Feedback.Succeeded);
@@ -478,7 +462,6 @@ test("space skips words at the beginning of a word, ignore space", (t) => {
     stopOnError: true,
     forgiveErrors: true,
     spaceSkipsWords: true,
-    direction: Direction.LTR,
   });
 
   t.is(textInput.appendChar(X, 100), Feedback.Succeeded);
@@ -498,7 +481,6 @@ test("space skips words at the beginning of a text, skip after error", (t) => {
     stopOnError: true,
     forgiveErrors: true,
     spaceSkipsWords: true,
-    direction: Direction.LTR,
   });
 
   t.is(textInput.appendChar(X, 100), Feedback.Failed);
@@ -513,7 +495,6 @@ test("space skips words at the beginning of a word, skip after error", (t) => {
     stopOnError: true,
     forgiveErrors: true,
     spaceSkipsWords: true,
-    direction: Direction.LTR,
   });
 
   t.is(textInput.appendChar(X, 100), Feedback.Succeeded);
@@ -534,7 +515,6 @@ test("space skips words in the middle of a word, skip word", (t) => {
     stopOnError: true,
     forgiveErrors: true,
     spaceSkipsWords: true,
-    direction: Direction.LTR,
   });
 
   t.is(textInput.appendChar(X, 100), Feedback.Succeeded);
@@ -555,7 +535,6 @@ test("space skips words at the beginning of a text, remove garbage", (t) => {
     stopOnError: false,
     forgiveErrors: true,
     spaceSkipsWords: true,
-    direction: Direction.LTR,
   });
 
   t.is(textInput.appendChar(X, 100), Feedback.Failed);
@@ -572,7 +551,6 @@ test("space skips words in the middle of a word, remove garbage", (t) => {
     stopOnError: false,
     forgiveErrors: true,
     spaceSkipsWords: true,
-    direction: Direction.LTR,
   });
 
   t.is(textInput.appendChar(X, 100), Feedback.Succeeded);
@@ -594,7 +572,6 @@ test("normalize characters", (t) => {
     stopOnError: true,
     forgiveErrors: false,
     spaceSkipsWords: false,
-    direction: Direction.LTR,
   });
 
   t.is(textInput.appendChar(/* " */ 0x0022, 100), Feedback.Succeeded);
@@ -610,7 +587,6 @@ test("handle whitespace", (t) => {
     stopOnError: true,
     forgiveErrors: false,
     spaceSkipsWords: false,
-    direction: Direction.LTR,
   });
 
   t.is(textInput.appendChar(A, 100), Feedback.Succeeded);

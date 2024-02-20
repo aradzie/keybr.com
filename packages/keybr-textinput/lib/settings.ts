@@ -28,15 +28,12 @@ export type TextInputSettings = {
    * to the first character of a next word.
    */
   readonly spaceSkipsWords: boolean;
-
-  readonly direction: Direction;
 };
 
 export const textInputSettings: TextInputSettings = {
   stopOnError: true,
   forgiveErrors: true,
   spaceSkipsWords: true,
-  direction: Direction.LTR,
 };
 
 export const textInputProps = {
@@ -50,7 +47,6 @@ export function toTextInputSettings(settings: Settings): TextInputSettings {
     stopOnError: settings.get(textInputProps.stopOnError),
     forgiveErrors: settings.get(textInputProps.forgiveErrors),
     spaceSkipsWords: settings.get(textInputProps.spaceSkipsWords),
-    direction: settings.get(keyboardProps.layout).language.direction,
   };
 }
 
