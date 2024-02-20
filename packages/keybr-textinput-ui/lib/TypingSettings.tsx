@@ -1,3 +1,4 @@
+import { Direction } from "@keybr/layout";
 import { useSettings } from "@keybr/settings";
 import {
   CaretMovementStyle,
@@ -67,7 +68,13 @@ function ExampleText({
   const { settings } = useSettings();
   return (
     <div className={styles.exampleText}>
-      <AnimatedText settings={toTextDisplaySettings(settings)} text={text} />
+      <AnimatedText
+        settings={{
+          ...toTextDisplaySettings(settings),
+          direction: Direction.LTR,
+        }}
+        text={text}
+      />
     </div>
   );
 }

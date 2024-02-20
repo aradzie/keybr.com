@@ -1,6 +1,4 @@
 export const line: string;
-export const line_rtl: string;
-export const line_ltr: string;
 export const line_wrap: string;
 export const line_nowrap: string;
 export const item: string;
