@@ -16,6 +16,7 @@ const allLocales = [
   "el",
   "en",
   "es",
+  "et",
   "fr",
   "he",
   "hu",
