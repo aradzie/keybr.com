@@ -1,4 +1,3 @@
-import { Direction } from "@keybr/layout";
 import {
   type Char,
   charsAreEqual,
@@ -81,10 +80,7 @@ const TextLine = memo(
     readonly className: string;
   }): ReactNode {
     return (
-      <div
-        className={className}
-        dir={settings.direction === Direction.RTL ? "rtl" : "ltr"}
-      >
+      <div className={className} dir={settings.language.direction}>
         {splitIntoItems(chars).map(({ chars }, index) => (
           <TextItem key={index} settings={settings} chars={chars} />
         ))}

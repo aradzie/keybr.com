@@ -108,10 +108,28 @@ export type CompositeSettings = {
 };
 
 export function toCompositeSettings(settings: Settings): CompositeSettings {
-  return {
-    duration: toDuration(settings),
-    textSource: toTextSource(settings),
-    textInput: toTextInputSettings(settings),
-    textDisplay: toTextDisplaySettings(settings),
+  const duration = toDuration(settings);
+  const textSource = toTextSource(settings);
+  const textInput = toTextInputSettings(settings);
+  const textDisplay = {
+    ...toTextDisplaySettings(settings),
+    language: languageOf(textSource),
   };
+  return {
+    duration,
+    textSource,
+    textInput,
+    textDisplay,
+  };
+}
+
+function languageOf(textSource: TextSource): Language {
+  switch (textSource.type) {
+    case TextSourceType.CommonWords:
+      return textSource.language;
+    case TextSourceType.PseudoWords:
+      return textSource.language;
+    case TextSourceType.Book:
+      return textSource.book.language;
+  }
 }

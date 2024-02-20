@@ -1,4 +1,4 @@
-import { Direction } from "@keybr/layout";
+import { Language } from "@keybr/layout";
 import { useSettings } from "@keybr/settings";
 import {
   CaretMovementStyle,
@@ -62,17 +62,16 @@ export function TypingSettings(): ReactNode {
 
 function ExampleText({
   text = "The quick brown fox jumps over the lazy dog.",
+  language = Language.EN,
 }: {
   readonly text?: string;
+  readonly language?: Language;
 }): ReactNode {
   const { settings } = useSettings();
   return (
     <div className={styles.exampleText}>
       <AnimatedText
-        settings={{
-          ...toTextDisplaySettings(settings),
-          direction: Direction.LTR,
-        }}
+        settings={{ ...toTextDisplaySettings(settings), language }}
         text={text}
       />
     </div>
