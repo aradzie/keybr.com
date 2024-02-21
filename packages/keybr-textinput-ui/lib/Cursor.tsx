@@ -25,11 +25,11 @@ export class Cursor extends Component<Props> {
   private animation: Animation | null = null;
 
   override componentDidMount(): void {
-    this.position(true);
+    this.position();
   }
 
   override componentDidUpdate(): void {
-    this.position(false);
+    this.position();
   }
 
   override componentWillUnmount(): void {
@@ -39,7 +39,7 @@ export class Cursor extends Component<Props> {
     }
   }
 
-  position(initial: boolean): void {
+  position(): void {
     const container = this.containerRef.current;
     const cursor = this.cursorRef.current;
     if (container != null && cursor != null) {
@@ -53,7 +53,11 @@ export class Cursor extends Component<Props> {
   }
 
   private move(cursor: HTMLElement, char: HTMLElement): void {
-    const { caretShapeStyle, caretMovementStyle } = this.props.settings;
+    const {
+      caretShapeStyle,
+      caretMovementStyle,
+      language: { direction },
+    } = this.props.settings;
 
     const { style } = cursor;
 
@@ -103,7 +107,14 @@ export class Cursor extends Component<Props> {
         style.borderWidth = "";
         style.width = "2px";
         style.height = `${h}px`;
-        left = x - 2;
+        switch (direction) {
+          case "ltr":
+            left = x - 2;
+            break;
+          case "rtl":
+            left = x + w;
+            break;
+        }
         top = y;
         break;
 
@@ -153,7 +164,7 @@ export class Cursor extends Component<Props> {
             easing: "linear",
           },
         );
-        const clear = (): void => {
+        const clear = () => {
           this.animation = null;
         };
         animation.onfinish = clear;
@@ -182,12 +193,11 @@ export class Cursor extends Component<Props> {
   }
 
   override render(): ReactNode {
-    const { settings } = this.props;
     return (
       <div ref={this.containerRef} style={containerStyle}>
         <span
           ref={this.cursorRef}
-          className={cursorClassName(settings)}
+          className={cursorClassName(this.props.settings)}
           style={cursorStyle}
         />
         {this.props.children}
