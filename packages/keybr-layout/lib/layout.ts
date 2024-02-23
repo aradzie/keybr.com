@@ -342,6 +342,8 @@ export class Layout implements XEnumItem {
     /* language= */ Language.PT,
     /* emulate= */ false,
     /* geometries= */ new Enum(
+      Geometry.BRAZILIAN_104,
+      Geometry.BRAZILIAN_104_FULL,
       Geometry.STANDARD_102,
       Geometry.STANDARD_102_FULL,
       Geometry.STANDARD_101,

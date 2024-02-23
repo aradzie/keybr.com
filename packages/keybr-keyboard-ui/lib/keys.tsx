@@ -43,6 +43,8 @@ const standard = new Map<string, ReactNode>([
       <Symbol x={0} y={34} text="ローマ字" />
     </>,
   ],
+  ["Lang1", <Symbol x={5} y={25} text="한/영" />],
+  ["Lang2", <Symbol x={10} y={25} text="한자" />],
   [
     "PageUp",
     <>

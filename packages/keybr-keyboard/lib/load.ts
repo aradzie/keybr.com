@@ -1,7 +1,11 @@
 import { Geometry, Layout } from "@keybr/layout";
 import {
+  BRAZILIAN_104,
+  BRAZILIAN_104_FULL,
   JAPANESE_106,
   JAPANESE_106_FULL,
+  KOREAN_103,
+  KOREAN_103_FULL,
   MATRIX,
   STANDARD_101,
   STANDARD_101_FULL,
@@ -83,8 +87,12 @@ const layoutDict = new Map<Layout, CodePointDict>([
 ]);
 
 const geometryDict = new Map<Geometry, GeometryDict>([
+  [Geometry.BRAZILIAN_104, BRAZILIAN_104],
+  [Geometry.BRAZILIAN_104_FULL, BRAZILIAN_104_FULL],
   [Geometry.JAPANESE_106, JAPANESE_106],
   [Geometry.JAPANESE_106_FULL, JAPANESE_106_FULL],
+  [Geometry.KOREAN_103, KOREAN_103],
+  [Geometry.KOREAN_103_FULL, KOREAN_103_FULL],
   [Geometry.MATRIX, MATRIX],
   [Geometry.STANDARD_101, STANDARD_101],
   [Geometry.STANDARD_101_FULL, STANDARD_101_FULL],

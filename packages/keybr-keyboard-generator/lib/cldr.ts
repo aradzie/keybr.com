@@ -61,6 +61,7 @@ const keyMapping: {
   B08: "Comma",
   B09: "Period",
   B10: "Slash",
+  B11: "IntlRo",
   // Row A
   A03: "Space",
 };
