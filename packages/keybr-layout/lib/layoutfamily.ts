@@ -64,6 +64,7 @@ export class LayoutFamily implements EnumItem {
   static readonly HEBREW = new LayoutFamily(
     /* id= */ "hebrew",
     /* script= */ "hebrew",
+  );
   static readonly JIS = new LayoutFamily(
     /* id= */ "jis",
     /* script= */ "japanese",

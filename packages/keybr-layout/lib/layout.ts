@@ -473,9 +473,10 @@ export class Layout implements XEnumItem {
       Geometry.STANDARD_101_FULL,
       Geometry.MATRIX,
     ),
+  );
   static readonly EN_JIS = new Layout(
     /* id= */ "ja-jp",
-    /* xid= */ 0x84,
+    /* xid= */ 0x85,
     /* name= */ "Japanese",
     /* family= */ LayoutFamily.JIS,
     /* language= */ Language.EN,
