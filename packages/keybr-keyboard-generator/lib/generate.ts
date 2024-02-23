@@ -37,7 +37,9 @@ function generateSourceFile(id: string, dict: CodePointDict): string {
         return null;
       }
     });
-    lines.push(`  ${keyId}: [${fields.join(", ")}],`);
+    if (fields.length > 0) {
+      lines.push(`  ${keyId}: [${fields.join(", ")}],`);
+    }
   }
   lines.push("};");
   lines.push("");

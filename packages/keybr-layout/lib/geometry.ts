@@ -11,7 +11,11 @@ export class Geometry implements EnumItem {
     "standard102full",
     "Standard 102 (Full)",
   );
-  static readonly STANDARD_109 = new Geometry("standard109", "Standard 109");
+  static readonly JAPANESE_106 = new Geometry("japanese106", "Japanese 106");
+  static readonly JAPANESE_106_FULL = new Geometry(
+    "japanese106full",
+    "Japanese 106 (Full)",
+  );
   static readonly MATRIX = new Geometry("matrix", "Matrix/Ergonomic");
 
   static readonly ALL = new Enum<Geometry>(
@@ -19,7 +23,8 @@ export class Geometry implements EnumItem {
     Geometry.STANDARD_101_FULL,
     Geometry.STANDARD_102,
     Geometry.STANDARD_102_FULL,
-    Geometry.STANDARD_109,
+    Geometry.JAPANESE_106,
+    Geometry.JAPANESE_106_FULL,
     Geometry.MATRIX,
   );
 

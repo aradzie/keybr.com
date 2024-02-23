@@ -15,6 +15,7 @@ export const characterKeys: readonly KeyId[] = [
   "Digit0",
   "Minus",
   "Equal",
+  "IntlYen",
   // ---
   "KeyQ",
   "KeyW",
@@ -53,6 +54,7 @@ export const characterKeys: readonly KeyId[] = [
   "Comma",
   "Period",
   "Slash",
+  "IntlRo",
 ];
 
 export const allKeys: readonly KeyId[] = [
@@ -70,6 +72,7 @@ export const allKeys: readonly KeyId[] = [
   "Digit0",
   "Minus",
   "Equal",
+  "IntlYen",
   "Backspace",
   // ---
   "Tab",
@@ -113,6 +116,7 @@ export const allKeys: readonly KeyId[] = [
   "Comma",
   "Period",
   "Slash",
+  "IntlRo",
   "ShiftRight",
   // ---
   "ControlLeft",

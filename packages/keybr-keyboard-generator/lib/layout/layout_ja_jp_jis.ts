@@ -2,7 +2,6 @@ import { type LayoutConfig } from "../layout.ts";
 
 export const LAYOUT_JA_JP_JIS: LayoutConfig = {
   codePoints: {
-    Backspace: ["Back", "space"],
     Backquote: ["半角/", "全角", "漢字"],
     Digit1: ["1", "!", "ぬ"],
     Digit2: ["2", '"', "ふ"],
@@ -16,6 +15,7 @@ export const LAYOUT_JA_JP_JIS: LayoutConfig = {
     Digit0: ["0", "", "わ", "を"],
     Minus: ["-", "=", "ほ"],
     Equal: ["^", "~", "へ"],
+    IntlYen: ["¥", "_"],
     KeyQ: ["Q", "q", "た"],
     KeyW: ["W", "w", "て"],
     KeyE: ["E", "e", "い", "ぃ"],
@@ -28,7 +28,7 @@ export const LAYOUT_JA_JP_JIS: LayoutConfig = {
     KeyP: ["P", "p", "せ"],
     BracketLeft: ["@", "`", "゛"],
     BracketRight: ["[", "{", "○", "「"],
-    Backslash: "",
+    Backslash: ["]", "}", "む", "」"],
     KeyA: ["A", "a", "ち"],
     KeyS: ["S", "s", "と"],
     KeyD: ["D", "d", "し"],
@@ -51,7 +51,7 @@ export const LAYOUT_JA_JP_JIS: LayoutConfig = {
     Comma: [",", "<", "ね", "`"],
     Period: [".", ">", "る", "○"],
     Slash: ["/", "?", "め", "●"],
-    Space: "  ",
-    CapsLock: ["Caps Lock", "英数"],
+    IntlRo: ["\\", "ろ"],
+    Space: " ",
   },
 };

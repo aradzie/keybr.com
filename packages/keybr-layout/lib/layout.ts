@@ -112,6 +112,18 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly EN_JP = new Layout(
+    /* id= */ "en-jp",
+    /* xid= */ 0x12,
+    /* name= */ "Japan",
+    /* family= */ LayoutFamily.QWERTY,
+    /* language= */ Language.EN,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.JAPANESE_106,
+      Geometry.JAPANESE_106_FULL,
+    ),
+  );
   static readonly DE_DE = new Layout(
     /* id= */ "de",
     /* xid= */ 0x20,
@@ -474,15 +486,6 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
-  static readonly EN_JIS = new Layout(
-    /* id= */ "ja-jp",
-    /* xid= */ 0x85,
-    /* name= */ "Japanese",
-    /* family= */ LayoutFamily.JIS,
-    /* language= */ Language.EN,
-    /* emulate= */ false,
-    /* geometries= */ new Enum(Geometry.STANDARD_109),
-  );
 
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
@@ -493,6 +496,7 @@ export class Layout implements XEnumItem {
     Layout.EN_US_CANARY_MATRIX,
     Layout.EN_US_WORKMAN,
     Layout.EN_UK,
+    Layout.EN_JP,
     Layout.EL_GR,
     Layout.CS_CZ,
     Layout.DE_DE,
@@ -517,7 +521,6 @@ export class Layout implements XEnumItem {
     Layout.SV_SE,
     Layout.UK_UA,
     Layout.RU_RU,
-    Layout.EN_JIS,
   );
 
   private constructor(

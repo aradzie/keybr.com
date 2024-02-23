@@ -4,7 +4,6 @@ import { type CodePointDict } from "../../types.ts";
 
 // prettier-ignore
 export const LAYOUT_JA_JP_JIS: CodePointDict = {
-  Backquote: [],
   Digit1: [/* 1 */ 0x0031, /* ! */ 0x0021, /* ぬ */ 0x306c],
   Digit2: [/* 2 */ 0x0032, /* " */ 0x0022, /* ふ */ 0x3075],
   Digit3: [/* 3 */ 0x0033, /* # */ 0x0023, /* あ */ 0x3042, /* ぁ */ 0x3041],
@@ -17,6 +16,7 @@ export const LAYOUT_JA_JP_JIS: CodePointDict = {
   Digit0: [/* 0 */ 0x0030, /* わ */ 0x308f, /* を */ 0x3092],
   Minus: [/* - */ 0x002d, /* = */ 0x003d, /* ほ */ 0x307b],
   Equal: [/* ^ */ 0x005e, /* ~ */ 0x007e, /* へ */ 0x3078],
+  IntlYen: [/* ¥ */ 0x00a5, /* _ */ 0x005f],
   KeyQ: [/* Q */ 0x0051, /* q */ 0x0071, /* た */ 0x305f],
   KeyW: [/* W */ 0x0057, /* w */ 0x0077, /* て */ 0x3066],
   KeyE: [/* E */ 0x0045, /* e */ 0x0065, /* い */ 0x3044, /* ぃ */ 0x3043],
@@ -29,7 +29,7 @@ export const LAYOUT_JA_JP_JIS: CodePointDict = {
   KeyP: [/* P */ 0x0050, /* p */ 0x0070, /* せ */ 0x305b],
   BracketLeft: [/* @ */ 0x0040, /* ` */ 0x0060, /* ゛ */ 0x309b],
   BracketRight: [/* [ */ 0x005b, /* { */ 0x007b, /* ○ */ 0x25cb, /* 「 */ 0x300c],
-  Backslash: [],
+  Backslash: [/* ] */ 0x005d, /* } */ 0x007d, /* む */ 0x3080, /* 」 */ 0x300d],
   KeyA: [/* A */ 0x0041, /* a */ 0x0061, /* ち */ 0x3061],
   KeyS: [/* S */ 0x0053, /* s */ 0x0073, /* と */ 0x3068],
   KeyD: [/* D */ 0x0044, /* d */ 0x0064, /* し */ 0x3057],
@@ -52,4 +52,5 @@ export const LAYOUT_JA_JP_JIS: CodePointDict = {
   Comma: [/* , */ 0x002c, /* < */ 0x003c, /* ね */ 0x306d, /* ` */ 0x0060],
   Period: [/* . */ 0x002e, /* > */ 0x003e, /* る */ 0x308b, /* ○ */ 0x25cb],
   Slash: [/* / */ 0x002f, /* ? */ 0x003f, /* め */ 0x3081, /* ● */ 0x25cf],
+  IntlRo: [/* \ */ 0x005c, /* ろ */ 0x308d],
 };

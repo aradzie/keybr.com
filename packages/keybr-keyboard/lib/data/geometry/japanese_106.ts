@@ -1,7 +1,7 @@
 import { type GeometryDict } from "../../types.ts";
 
-// See https://www.w3.org/TR/uievents-code/#keyboard-101
-export const STANDARD_109: GeometryDict = {
+// See https://www.w3.org/TR/uievents-code/#keyboard-106
+export const JAPANESE_106: GeometryDict = {
   IntlHanZen: {
     x: 0,
     y: 0,
@@ -208,7 +208,7 @@ export const STANDARD_109: GeometryDict = {
     y: 2,
     finger: "pinky",
   },
-  IntlHash: {
+  Backslash: {
     x: 12.75,
     y: 2,
     finger: "pinky",
@@ -216,7 +216,7 @@ export const STANDARD_109: GeometryDict = {
   Enter: {
     x: 13.5,
     y: 1,
-    w: 2,
+    w: 1.5,
     h: 2,
     shape: "m 0,0 0,38 10,0 0,40 48,0 0,-80 z",
     finger: "pinky",
@@ -293,70 +293,54 @@ export const STANDARD_109: GeometryDict = {
   ControlLeft: {
     x: 0,
     y: 4,
-    w: 1.25,
+    w: 1.5,
     h: 1,
     finger: "pinky",
   },
-  OSLeft: {
-    x: 1.25,
-    y: 4,
-    w: 1.25,
-    finger: "pinky",
-  },
   AltLeft: {
-    x: 2.5,
+    x: 1.5,
     y: 4,
-    w: 1.25,
+    w: 1.5,
     h: 1,
     finger: "pinky",
   },
   IntlMuhenkan: {
-    x: 3.75,
+    x: 3,
     y: 4,
     w: 1,
     h: 1,
     finger: "thumb",
   },
   Space: {
-    x: 4.75,
+    x: 4,
     y: 4,
-    w: 4.25,
+    w: 6,
     h: 1,
     finger: "thumb",
   },
   IntlHenkan: {
-    x: 9,
-    y: 4,
-    h: 1,
-    finger: "thumb",
-  },
-  IntlHiraKata: {
     x: 10,
     y: 4,
     h: 1,
     finger: "thumb",
   },
-  AltRight: {
+  IntlHiraKata: {
     x: 11,
     y: 4,
     h: 1,
-    finger: "pinky",
+    finger: "thumb",
   },
-  OSRight: {
+  AltRight: {
     x: 12,
     y: 4,
-    h: 1,
-    finger: "pinky",
-  },
-  IntlMenu: {
-    x: 13,
-    y: 4,
+    w: 1.5,
     h: 1,
     finger: "pinky",
   },
   ControlRight: {
-    x: 14,
+    x: 13.5,
     y: 4,
+    w: 1.5,
     h: 1,
     finger: "pinky",
   },
