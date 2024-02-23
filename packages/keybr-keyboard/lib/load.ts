@@ -5,6 +5,7 @@ import {
   STANDARD_101_FULL,
   STANDARD_102,
   STANDARD_102_FULL,
+  STANDARD_109,
 } from "./data/geometry.ts";
 import {
   LAYOUT_BE_BY_WIN,
@@ -84,6 +85,7 @@ const geometryDict = new Map<Geometry, GeometryDict>([
   [Geometry.STANDARD_102, STANDARD_102],
   [Geometry.STANDARD_102_FULL, STANDARD_102_FULL],
   [Geometry.MATRIX, MATRIX],
+  [Geometry.STANDARD_109, STANDARD_109],
 ]);
 
 export function loadKeyboard(
