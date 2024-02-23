@@ -138,6 +138,20 @@ export enum KeyCode {
   Space,
   /** The tab key. */
   Tab,
+  /** The 半角/全角 (Hankaku/Zenkaku) key */
+  IntlHanZen,
+  /** The 無変換 (Muhenkan) key found on Japanese keyboards to the left of the
+   * Space key */
+  IntlMuhenkan,
+  /** The 変換 (Henkan) key found on Japanese keyboards to the right of the
+   * Space key */
+  IntlHenkan,
+  /** The ひらがな・カタカナ (Hiragana/Katakana) key found on Japanese keyboards
+   * to the right of the Henkan key */
+  IntlHiraKata,
+  /** The Menu key typically located to the left of the Right Shift key on
+   * Japanese Keyboards. */
+  IntlMenu,
 
   //
   // Control Pad Section
