@@ -473,6 +473,14 @@ export class Layout implements XEnumItem {
       Geometry.STANDARD_101_FULL,
       Geometry.MATRIX,
     ),
+  static readonly EN_JIS = new Layout(
+    /* id= */ "ja-jp",
+    /* xid= */ 0x84,
+    /* name= */ "Japanese",
+    /* family= */ LayoutFamily.JIS,
+    /* language= */ Language.EN,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(Geometry.STANDARD_109),
   );
 
   static readonly ALL = new XEnum<Layout>(
@@ -508,6 +516,7 @@ export class Layout implements XEnumItem {
     Layout.SV_SE,
     Layout.UK_UA,
     Layout.RU_RU,
+    Layout.EN_JIS,
   );
 
   private constructor(

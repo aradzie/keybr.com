@@ -33,6 +33,7 @@ import {
   LAYOUT_FR_OPTIMOT_ERGO,
   LAYOUT_HE_IL_WIN,
   LAYOUT_IT_IT_WIN,
+  LAYOUT_JA_JP_JIS,
   LAYOUT_PL_PL_WIN,
   LAYOUT_PT_BR_WIN,
   LAYOUT_PT_PT_WIN,
@@ -77,6 +78,7 @@ const layoutDict = new Map<Layout, CodePointDict>([
   [Layout.SL_SI, LAYOUT_SL_SI_WIN],
   [Layout.SV_SE, LAYOUT_SV_SE_WIN],
   [Layout.UK_UA, LAYOUT_UK_UA_WIN],
+  [Layout.EN_JIS, LAYOUT_JA_JP_JIS],
 ]);
 
 const geometryDict = new Map<Geometry, GeometryDict>([

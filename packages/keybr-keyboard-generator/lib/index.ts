@@ -13,6 +13,7 @@ import { LAYOUT_EN_US_WORKMAN } from "./layout/layout_en_us_workman.ts";
 import { LAYOUT_FR_BEPO } from "./layout/layout_fr_bepo.ts";
 import { LAYOUT_FR_ERGO_L } from "./layout/layout_fr_ergol.ts";
 import { LAYOUT_FR_OPTIMOT_ERGO } from "./layout/layout_fr_optimot_ergo.ts";
+import { LAYOUT_JA_JP_JIS } from "./layout/layout_ja_jp_jis.ts";
 import { readXml } from "./xml.ts";
 
 const files: readonly [input: string | LayoutConfig, output: string][] = [
@@ -129,6 +130,7 @@ const files: readonly [input: string | LayoutConfig, output: string][] = [
     "../keybr-keyboard/lib/data/layout/fr_optimot_ergo.ts",
   ],
   [LAYOUT_EN_CUSTOM, "../keybr-keyboard/lib/data/layout/en_custom.ts"],
+  [LAYOUT_JA_JP_JIS, "../keybr-keyboard/lib/data/layout/ja_jp_jis.ts"],
 ];
 
 for (const [input, output] of files) {
