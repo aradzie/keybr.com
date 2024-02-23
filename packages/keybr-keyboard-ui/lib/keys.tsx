@@ -26,6 +26,24 @@ const standard = new Map<string, ReactNode>([
   ["Insert", <Symbol x={5} y={16} text="Insert" />],
   ["Home", <Symbol x={5} y={16} text="Home" />],
   [
+    "IntlHanZen",
+    <>
+      <Symbol x={5} y={10} text="半角/" />
+      <Symbol x={5} y={22} text="全角/" />
+      <Symbol x={5} y={34} text="漢字" />
+    </>,
+  ],
+  ["IntlMuhenkan", <Symbol x={5} y={25} text="無変換" />],
+  ["IntlHenkan", <Symbol x={10} y={25} text="変換" />],
+  [
+    "IntlHiraKata",
+    <>
+      <Symbol x={0} y={10} text="カタカナ" />
+      <Symbol x={0} y={22} text="ひらがな" />
+      <Symbol x={0} y={34} text="ローマ字" />
+    </>,
+  ],
+  [
     "PageUp",
     <>
       <Symbol x={5} y={16} text="Page" />
@@ -152,10 +170,10 @@ function makeCharacterKey(shape: KeyShape): FunctionComponent<KeyProps> {
   const children = [
     b > 0 && !ab && <Secondary x={10} y={15} codePoint={b} />,
     a > 0 && !ab && <Secondary x={10} y={30} codePoint={a} />,
-    d > 0 && !cd && <Secondary x={28} y={15} codePoint={d} />,
-    c > 0 && !cd && <Secondary x={28} y={30} codePoint={c} />,
+    d > 0 && !cd && <Secondary x={25} y={15} codePoint={d} />,
+    c > 0 && !cd && <Secondary x={25} y={30} codePoint={c} />,
     a > 0 && ab && <Primary x={10} y={25} codePoint={a} />,
-    c > 0 && cd && <Primary x={28} y={30} codePoint={c} />,
+    c > 0 && cd && <Primary x={25} y={30} codePoint={c} />,
   ].filter(Boolean);
   return keyTemplate(
     shape,
