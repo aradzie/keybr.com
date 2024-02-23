@@ -6,7 +6,7 @@ import {
   type MouseEventHandler,
   type ReactNode,
 } from "react";
-import { keySize } from "./constants.ts";
+import { keyGap, keySize } from "./constants.ts";
 import * as styles from "./Key.module.less";
 
 export type ClassName = any;
@@ -49,6 +49,8 @@ export function keyTemplate(
         className={cn}
         x={shape.x * keySize}
         y={shape.y * keySize}
+        width={shape.w * keySize - keyGap}
+        height={shape.h * keySize - keyGap}
         onClick={onClick}
         onMouseDown={onMouseDown}
         onMouseEnter={onMouseEnter}
