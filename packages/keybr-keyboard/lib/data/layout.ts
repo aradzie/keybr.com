@@ -24,6 +24,8 @@ export { LAYOUT_FR_OPTIMOT_ERGO } from "./layout/fr_optimot_ergo.ts";
 export { LAYOUT_HE_IL_WIN } from "./layout/he_il-win.ts";
 export { LAYOUT_IT_IT_WIN } from "./layout/it_it-win.ts";
 export { LAYOUT_JA_JP_JIS } from "./layout/ja_jp_jis.ts";
+export { LAYOUT_NL_BE_WIN } from "./layout/nl_be-win.ts";
+export { LAYOUT_NL_NL_WIN } from "./layout/nl_nl-win.ts";
 export { LAYOUT_PL_PL_WIN } from "./layout/pl_pl-win.ts";
 export { LAYOUT_PT_BR_WIN } from "./layout/pt_br-win.ts";
 export { LAYOUT_PT_PT_WIN } from "./layout/pt_pt-win.ts";
