@@ -1,6 +1,7 @@
 import { useIntlNumbers } from "@keybr/intl";
 import { type Keyboard } from "@keybr/keyboard";
 import { HeatmapLayer, KeyLayer, VirtualKeyboard } from "@keybr/keyboard-ui";
+import { useFormattedNames } from "@keybr/layout";
 import { Figure, Value } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -21,6 +22,7 @@ export function KeyFrequencyHeatmap({
 }): ReactNode {
   const { formatMessage } = useIntl();
   const { formatPercents } = useIntlNumbers();
+  const { formatLayoutName } = useFormattedNames();
   const homeRow = keysOnRow(letters, keyboard, homeRowKeys);
   const topRow = keysOnRow(letters, keyboard, topRowKeys);
   const bottomRow = keysOnRow(letters, keyboard, bottomRowKeys);
@@ -34,7 +36,7 @@ export function KeyFrequencyHeatmap({
         <FormattedMessage
           id="layouts.heatmap.caption"
           defaultMessage="Key Frequency Heatmap for {name}"
-          values={{ name: keyboard.layout.name }}
+          values={{ name: formatLayoutName(keyboard.layout) }}
         />
       </Figure.Caption>
 

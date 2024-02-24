@@ -56,7 +56,7 @@ export type CodePointList = string | readonly (string | CodePoint)[];
  * }
  * ```
  *
- * Please note that for simplicity we only support dead keys which combine base characters with diacritical marks.
+ * Please note that for simplicity we only support dead keys which combine letters with diacritical marks.
  * We do not support dead keys which switch between different alphabets, produce non-letter characters, etc.
  */
 export type KeyMap = {

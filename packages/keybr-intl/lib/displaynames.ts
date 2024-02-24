@@ -21,7 +21,7 @@ export const makeIntlDisplayNames = (intl: IntlShape): IntlDisplayNames => {
           type: "region",
           fallback: "none",
         });
-        return capitalize(dn.of(id) || "", locale) ?? id;
+        return capitalize(dn.of(id) || "", locale) || id;
       },
       formatLanguageName(id: string): string {
         const dn = intl.formatters.getDisplayNames(locale, {

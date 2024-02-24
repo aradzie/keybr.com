@@ -1,5 +1,6 @@
+import { useCollator } from "@keybr/intl";
 import { KeyboardContext, keyboardProps, loadKeyboard } from "@keybr/keyboard";
-import { Layout } from "@keybr/layout";
+import { Layout, useFormattedNames } from "@keybr/layout";
 import { Letter } from "@keybr/phonetic-model";
 import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
 import {
@@ -36,6 +37,7 @@ export function ResultGrouper({
   if (!resultsLayouts.has(selectedLayout)) {
     setSelectedLayout(defaultLayout());
   }
+  const layoutOptions = useLayoutOptions(resultsLayouts);
   const keyboard = loadKeyboard(selectedLayout);
   const group = groups.get(selectedLayout);
 
@@ -50,13 +52,8 @@ export function ResultGrouper({
         </Field>
         <Field>
           <OptionList
-            options={[...resultsLayouts].map((layout) => {
-              return {
-                value: String(layout),
-                name: `${layout.name}`,
-              };
-            })}
-            value={String(selectedLayout)}
+            options={layoutOptions}
+            value={selectedLayout.id}
             onSelect={(value) => {
               setSelectedLayout(Layout.ALL.get(value));
             }}
@@ -127,4 +124,15 @@ export function ResultGrouper({
       </KeyboardContext.Provider>
     </>
   );
+}
+
+function useLayoutOptions(layouts: Iterable<Layout>) {
+  const { formatFullLayoutName } = useFormattedNames();
+  const { compare } = useCollator();
+  return [...layouts]
+    .map((item) => ({
+      value: item.id,
+      name: formatFullLayoutName(item),
+    }))
+    .sort((a, b) => compare(a.name, b.name));
 }

@@ -6,7 +6,7 @@ You can import keyboard layout definitions from different sources:
 - You can also import keyboard layouts produced by the [Kalamine project](https://github.com/OneDeadKey/kalamine).
 - If none of these are available, you can write your own layout definition files.
 
-Whatever path you choose, the entry point to adding new keyboard layouts is the `keyboard-layout-generator` package.
+Whatever path you choose, the entry point to adding new keyboard layouts is the <nobr>`keyboard-layout-generator`</nobr> package.
 It contains the scripts which take keyboard layout definitions in various formats and generate TypeScript files with the same layouts converted into our own internal representation.
 To start the generator, run the following shell commands:
 
@@ -15,11 +15,11 @@ cd packages/keybr-keyboard-generator
 npm run generate
 ```
 
-The generator will write files to `packages/keybr-keyboard/lib/data/layout`. You should not modify the generated files, as your changes will be lost if the generator is run again.
+The generator will write files to <nobr>`packages/keybr-keyboard/lib/data/layout`</nobr>. You should not modify the generated files, as your changes will be lost if the generator is run again.
 
 ## Adding a custom keyboard layout
 
-Custom keyboard layout definition files are located in `packages/keybr-keyboard-generator/lib/layout`.
+Custom keyboard layout definition files are located in <nobr>`packages/keybr-keyboard-generator/lib/layout`</nobr>.
 
 You can add your own keyboard layout by copying and modifying an existing one. The configuration format is straightforward, each physical key location (like `"KeyA"`, `"KeyB"`, etc.) is mapped to a list of up to four code points.
 The four code points are given for the following key modifiers:
@@ -66,7 +66,7 @@ export default {
 };
 ```
 
-Please note that for simplicity we only support dead keys which combine base characters with diacritical marks.
+Please note that for simplicity we only support dead keys which combine letters with diacritical marks.
 We do not support dead keys which switch between different alphabets, produce non-letter characters, etc.
 
 ## Configuring a keyboard layout
@@ -96,11 +96,22 @@ static readonly EN_CUSTOM = new Layout(
 
 ### Layout id, xid and name
 
-Give the layout a name, select a unique `id` and `xid`
-(Just increase the largest `xid` of an existing layout by one.)
-`id` is a human-readable string that we store in JSON files.
-`xid` is a single-byte numeric identifier that we store in binary files.
+Give the layout a name, select a unique `id` and `xid`:
+
+* `id` is a human-readable string that we store in JSON files.
+  It should follow the next pattern: <nobr>`"{ISO 639-1}-{ISO 3166-2}"`</nobr>,
+  where [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) is a two-letter language code,
+  and [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) is a two-letter country code, all lowercase.
+  Examples are <nobr>`"fr-ca"`</nobr> for the French layout in Canada or <nobr>`"sv-se"`</nobr> for the Swedish layout in Sweden.
+  Or, if you have a custom layout, name it as <nobr>`"{ISO 639-1}-custom-layout-id"`</nobr>.
+* `xid` is a single-byte numeric identifier that we store in binary files.
+  Increase the largest `xid` of an existing layout by one.
+
 Once assigned, these identifiers must never change.
+
+If your layout is used in a specific country, you can include the localizable country name in the layout name.
+For example, if your layout name is <nobr>`"{BR} (ABNT2)"`</nobr>, it will be printed as <nobr>`"Brazil (ABTN2)"`</nobr> when the user interface language is English,
+or as <nobr>`"Βραζιλία (ABNT2)"`</nobr> when the user interface language is Greek.
 
 ### Layout family
 

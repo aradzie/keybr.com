@@ -1,4 +1,4 @@
-import { useCollator, useIntlDisplayNames } from "@keybr/intl";
+import { useCollator } from "@keybr/intl";
 import { keyboardProps, useKeyboard } from "@keybr/keyboard";
 import {
   addKey,
@@ -6,7 +6,7 @@ import {
   KeyLayer,
   VirtualKeyboard,
 } from "@keybr/keyboard-ui";
-import { Language, Layout } from "@keybr/layout";
+import { Language, Layout, useFormattedNames } from "@keybr/layout";
 import { useSettings } from "@keybr/settings";
 import { ModifierState } from "@keybr/textinput-events";
 import {
@@ -189,20 +189,21 @@ function GeometryProp(): ReactNode {
 }
 
 function useLanguageOptions() {
-  const { formatLanguageName } = useIntlDisplayNames();
+  const { formatLanguageName } = useFormattedNames();
   const { compare } = useCollator();
   return Language.ALL.map((item) => ({
     value: item.id,
-    name: formatLanguageName(item.id),
+    name: formatLanguageName(item),
   })).sort((a, b) => compare(a.name, b.name));
 }
 
 function useLayoutOptions(layout: Layout) {
+  const { formatLayoutName } = useFormattedNames();
   return Layout.ALL.filter(
     ({ language }) => language.id === layout.language.id,
   ).map((item) => ({
     value: item.id,
-    name: item.name,
+    name: formatLayoutName(item),
   }));
 }
 

@@ -1,4 +1,5 @@
 import { useIntlNumbers } from "@keybr/intl";
+import { useFormattedNames } from "@keybr/layout";
 import { Sitemap, UserName } from "@keybr/pages-shared";
 import { SpeedUnit } from "@keybr/result";
 import { type ReactNode } from "react";
@@ -12,6 +13,7 @@ export function HighScoresTable({
   readonly entries: readonly HighScoresEntry[];
 }): ReactNode {
   const { formatNumber } = useIntlNumbers();
+  const { formatFullLayoutName } = useFormattedNames();
   const { WPM, CPM } = SpeedUnit;
   return (
     <table className={styles.table}>
@@ -50,8 +52,6 @@ export function HighScoresTable({
           if (user.id != null) {
             link = Sitemap.publicProfile.bind(user);
           }
-          const language = layout.language.id.toUpperCase();
-          const layoutCol = `${language}/${layout.name}`;
           const wpm = formatNumber(WPM.measure(speed), 0);
           const cpm = formatNumber(CPM.measure(speed), 0);
           const speedCol = `${wpm}${WPM.id} / ${cpm}${CPM.id}`;
@@ -62,7 +62,9 @@ export function HighScoresTable({
               <td className={styles.userColumn}>
                 <UserName user={user} link={link} />
               </td>
-              <td className={styles.layoutColumn}>{layoutCol}</td>
+              <td className={styles.layoutColumn}>
+                {formatFullLayoutName(layout)}
+              </td>
               <td className={styles.speedColumn}>{speedCol}</td>
               <td className={styles.scoreColumn}>{scoreCol}</td>
             </tr>
