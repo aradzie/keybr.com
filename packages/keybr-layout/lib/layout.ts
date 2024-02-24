@@ -304,36 +304,6 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
-  static readonly NL_BE = new Layout(
-    /* id= */ "nl-azerty",
-    /* xid= */ 0x91,
-    /* name= */ "Belgium",
-    /* family= */ LayoutFamily.AZERTY,
-    /* language= */ Language.NL,
-    /* emulate= */ false,
-    /* geometries= */ new Enum(
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.MATRIX,
-    ),
-  );
-  static readonly NL_NL = new Layout(
-    /* id= */ "nl",
-    /* xid= */ 0x90,
-    /* name= */ "US",
-    /* family= */ LayoutFamily.QWERTY,
-    /* language= */ Language.NL,
-    /* emulate= */ false,
-    /* geometries= */ new Enum(
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.MATRIX,
-    ),
-  );
   static readonly ES_ES = new Layout(
     /* id= */ "es",
     /* xid= */ 0x50,
@@ -441,7 +411,6 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
-
   static readonly SV_SE = new Layout(
     /* id= */ "se",
     /* xid= */ 0x80,
@@ -457,7 +426,6 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
-
   static readonly CS_CZ = new Layout(
     /* id= */ "cz",
     /* xid= */ 0x81,
@@ -518,6 +486,36 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly NL_NL = new Layout(
+    /* id= */ "nl-nl",
+    /* xid= */ 0x85,
+    /* name= */ "Netherlands",
+    /* family= */ LayoutFamily.QWERTY,
+    /* language= */ Language.NL,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.MATRIX,
+    ),
+  );
+  static readonly NL_BE = new Layout(
+    /* id= */ "nl-be",
+    /* xid= */ 0x86,
+    /* name= */ "Belgium",
+    /* family= */ LayoutFamily.AZERTY,
+    /* language= */ Language.NL,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.MATRIX,
+    ),
+  );
 
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
@@ -544,8 +542,8 @@ export class Layout implements XEnumItem {
     Layout.FR_OPTIMOT_ERGO,
     Layout.HE_IL,
     Layout.IT_IT,
-    Layout.NL_BE,
     Layout.NL_NL,
+    Layout.NL_BE,
     Layout.ES_ES,
     Layout.PL_PL,
     Layout.PT_BR,

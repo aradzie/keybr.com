@@ -74,12 +74,12 @@ const files: readonly [input: string | LayoutConfig, output: string][] = [
     "../keybr-keyboard/lib/data/layout/it_it-win.ts",
   ],
   [
-    "cldr-keyboards-43.0/keyboards/windows/fr-t-k0-windows.xml",
-    "../keybr-keyboard/lib/data/layout/nl_be-win.ts",
+    "cldr-keyboards-43.0/keyboards/windows/nl-t-k0-windows.xml",
+    "../keybr-keyboard/lib/data/layout/nl_nl-win.ts",
   ],
   [
-    "cldr-keyboards-43.0/keyboards/windows/en-t-k0-windows.xml",
-    "../keybr-keyboard/lib/data/layout/nl_nl-win.ts",
+    "cldr-keyboards-43.0/keyboards/windows/nl-BE-t-k0-windows.xml",
+    "../keybr-keyboard/lib/data/layout/nl_be-win.ts",
   ],
   [
     "cldr-keyboards-43.0/keyboards/windows/pl-t-k0-windows-extended.xml",
