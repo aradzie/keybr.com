@@ -5,6 +5,7 @@ import blacklistEn from "./blacklist-en.json";
 import blacklistEs from "./blacklist-es.json";
 import blacklistFr from "./blacklist-fr.json";
 import blacklistIt from "./blacklist-it.json";
+import blacklistNl from "./blacklist-nl.json";
 import blacklistPl from "./blacklist-pl.json";
 import blacklistPt from "./blacklist-pt.json";
 import blacklistRu from "./blacklist-ru.json";
@@ -25,6 +26,7 @@ const blacklistByLanguage = ((items: [Language, string[]][]) =>
   [Language.ES, blacklistEs],
   [Language.FR, blacklistFr],
   [Language.IT, blacklistIt],
+  [Language.NL, blacklistNl],
   [Language.PL, blacklistPl],
   [Language.PT, blacklistPt],
   [Language.RU, blacklistRu],

@@ -304,6 +304,36 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly NL_BE = new Layout(
+    /* id= */ "nl-azerty",
+    /* xid= */ 0x91,
+    /* name= */ "Belgium",
+    /* family= */ LayoutFamily.AZERTY,
+    /* language= */ Language.NL,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.MATRIX,
+    ),
+  );
+  static readonly NL_NL = new Layout(
+    /* id= */ "nl",
+    /* xid= */ 0x90,
+    /* name= */ "US",
+    /* family= */ LayoutFamily.QWERTY,
+    /* language= */ Language.NL,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.MATRIX,
+    ),
+  );
   static readonly ES_ES = new Layout(
     /* id= */ "es",
     /* xid= */ 0x50,
@@ -514,6 +544,8 @@ export class Layout implements XEnumItem {
     Layout.FR_OPTIMOT_ERGO,
     Layout.HE_IL,
     Layout.IT_IT,
+    Layout.NL_BE,
+    Layout.NL_NL,
     Layout.ES_ES,
     Layout.PL_PL,
     Layout.PT_BR,
