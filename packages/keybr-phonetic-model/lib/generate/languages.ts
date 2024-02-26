@@ -23,4 +23,5 @@ export const languages: readonly Language[] = [
   { id: "sl", alphabet: "abcčdefghijklmnoprsštuvzž" },
   { id: "sv", alphabet: "abcdefghijklmnoprstuvwxyåäö" },
   { id: "uk", alphabet: "абвгґдеєжзиіїйклмнопрстуфхцчшщьюя" },
+  { id: "nb", alphabet: "abcdefghijklmnoprstuvwxyæøå" },
 ].map(({ id, alphabet }) => ({ id, alphabet: [...toCodePoints(alphabet)] }));

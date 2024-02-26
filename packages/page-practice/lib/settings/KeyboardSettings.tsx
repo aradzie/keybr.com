@@ -70,6 +70,8 @@ function LayoutProp(): ReactNode {
               const [layout] = Layout.ALL.filter(
                 ({ language }) => language.id === id,
               );
+
+              console.log({ id, layout, layouts: Layout.ALL });
               const [geometry] = layout.geometries;
               updateSettings(
                 settings

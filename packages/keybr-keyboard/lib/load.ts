@@ -41,6 +41,7 @@ import {
   LAYOUT_HU_HU_WIN,
   LAYOUT_IT_IT_WIN,
   LAYOUT_JA_JP_JIS,
+  LAYOUT_NB_NO_WIN,
   LAYOUT_NL_BE_WIN,
   LAYOUT_NL_NL_WIN,
   LAYOUT_PL_PL_WIN,
@@ -92,6 +93,7 @@ const layoutDict = new Map<Layout, CodePointDict>([
   [Layout.SL_SI, LAYOUT_SL_SI_WIN],
   [Layout.SV_SE, LAYOUT_SV_SE_WIN],
   [Layout.UK_UA, LAYOUT_UK_UA_WIN],
+  [Layout.NB_NO, LAYOUT_NB_NO_WIN],
 ]);
 
 const geometryDict = new Map<Geometry, GeometryDict>([

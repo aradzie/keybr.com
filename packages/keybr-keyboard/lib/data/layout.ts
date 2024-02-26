@@ -26,6 +26,7 @@ export { LAYOUT_HE_IL_WIN } from "./layout/he_il-win.ts";
 export { LAYOUT_HU_HU_WIN } from "./layout/hu_hu-win.ts";
 export { LAYOUT_IT_IT_WIN } from "./layout/it_it-win.ts";
 export { LAYOUT_JA_JP_JIS } from "./layout/ja_jp_jis.ts";
+export { LAYOUT_NB_NO_WIN } from "./layout/nb_no-win.ts";
 export { LAYOUT_NL_BE_WIN } from "./layout/nl_be-win.ts";
 export { LAYOUT_NL_NL_WIN } from "./layout/nl_nl-win.ts";
 export { LAYOUT_PL_PL_WIN } from "./layout/pl_pl-win.ts";
