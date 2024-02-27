@@ -28,7 +28,7 @@ The devil is in the details, keybr.com has a few unique features.
 Yes!
 
 * **[Give us a ⭐️.](https://github.com/aradzie/keybr.com)** Help this project gain visibility and stand out.
-* **[Report a bug.](https://github.com/aradzie/keybr.com/issues)** If something is now working, let us know.
+* **[Report a bug.](https://github.com/aradzie/keybr.com/issues)** If something is not working, let us know.
 * **[Suggest a feature.](https://github.com/aradzie/keybr.com/issues)** We are open to new ideas.
 * **[Translate.](./docs/translations.md)** If you want to see keybr.com in your language.
 * **[Getting started.](./docs/getting_started.md)** Launch a local instance of keybr.com, make a pull request.
