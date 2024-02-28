@@ -16,13 +16,7 @@ export const LAYOUT_FR_ERGLACE: LayoutConfig = {
     KeyQ: ["y", "Y", "@", ""],
     KeyW: ["*^", "*^", "<", "\u2264"],
     KeyE: ["o", "O", ">", "\u2265", "ô"],
-    KeyR: [
-      "f",
-      "F",
-      "$",
-      // "*\u00a4",
-      "è",
-    ],
+    KeyR: ["f", "F", "$", "", "è"],
     KeyT: ["k", "K", "%", "\u2030", "ù"],
     KeyY: ["v", "V", "^", "*^", "–"],
     KeyU: ["p", "P", "&"],
@@ -34,12 +28,7 @@ export const LAYOUT_FR_ERGLACE: LayoutConfig = {
     KeyD: ["e", "E", ")", "\u207e", "ê"],
     KeyF: ["u", "U", "}", "", "é"],
     KeyG: [",", ";", "=", "\u2260", "û"],
-    KeyH: [
-      "g",
-      "G",
-      "\\",
-      //"*/"
-    ],
+    KeyH: ["g", "G", "\\"],
     KeyJ: ["t", "T", "+", "\u00b1", "à"],
     KeyK: ["n", "N", "-", "\u2014", "â"],
     KeyL: ["s", "S", "/", "\u00f7", "_"],
