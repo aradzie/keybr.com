@@ -1,3 +1,4 @@
+export * from "./collator.ts";
 export * from "./displaynames.ts";
 export * from "./durations.ts";
 export * from "./FakeIntlProvider.tsx";

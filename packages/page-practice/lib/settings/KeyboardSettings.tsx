@@ -1,4 +1,4 @@
-import { useIntlDisplayNames } from "@keybr/intl";
+import { useCollator, useIntlDisplayNames } from "@keybr/intl";
 import { keyboardProps, useKeyboard } from "@keybr/keyboard";
 import {
   addKey,
@@ -48,10 +48,11 @@ export function KeyboardSettings(): ReactNode {
 
 function LayoutProp(): ReactNode {
   const { formatMessage } = useIntl();
-  const { formatLanguageName } = useIntlDisplayNames();
   const { settings, updateSettings } = useSettings();
   const layout = settings.get(keyboardProps.layout);
   const emulate = settings.get(keyboardProps.emulate);
+  const languageOptions = useLanguageOptions();
+  const layoutOptions = useLayoutOptions(layout);
   return (
     <>
       <FieldList>
@@ -63,10 +64,7 @@ function LayoutProp(): ReactNode {
         </Field>
         <Field>
           <OptionList
-            options={Language.ALL.map((item) => ({
-              value: item.id,
-              name: formatLanguageName(item.id),
-            }))}
+            options={languageOptions}
             value={layout.language.id}
             onSelect={(id) => {
               const [layout] = Layout.ALL.filter(
@@ -89,12 +87,7 @@ function LayoutProp(): ReactNode {
         </Field>
         <Field>
           <OptionList
-            options={Layout.ALL.filter(
-              ({ language }) => language.id === layout.language.id,
-            ).map((item) => ({
-              value: item.id,
-              name: item.name,
-            }))}
+            options={layoutOptions}
             value={layout.id}
             onSelect={(id) => {
               const layout = Layout.ALL.get(id);
@@ -193,6 +186,24 @@ function GeometryProp(): ReactNode {
       </FieldList>
     </>
   );
+}
+
+function useLanguageOptions() {
+  const { formatLanguageName } = useIntlDisplayNames();
+  const { compare } = useCollator();
+  return Language.ALL.map((item) => ({
+    value: item.id,
+    name: formatLanguageName(item.id),
+  })).sort((a, b) => compare(a.name, b.name));
+}
+
+function useLayoutOptions(layout: Layout) {
+  return Layout.ALL.filter(
+    ({ language }) => language.id === layout.language.id,
+  ).map((item) => ({
+    value: item.id,
+    name: item.name,
+  }));
 }
 
 function useDepressedKeys(): readonly string[] {
