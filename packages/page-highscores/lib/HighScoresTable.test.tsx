@@ -24,7 +24,7 @@ test("render", (t) => {
         name: "user name",
         imageUrl: "image url",
       } as NamedUser,
-      layout: Layout.EN_US_DVORAK,
+      layout: Layout.EN_DVORAK,
       speed: 500,
       score: 500,
     },

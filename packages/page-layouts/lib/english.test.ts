@@ -12,9 +12,9 @@ import { keysOnRow } from "./stats.ts";
 
 for (const layout of [
   Layout.EN_US,
-  Layout.EN_US_DVORAK,
-  Layout.EN_US_COLEMAK,
-  Layout.EN_US_WORKMAN,
+  Layout.EN_DVORAK,
+  Layout.EN_COLEMAK,
+  Layout.EN_WORKMAN,
 ]) {
   test(`all row keys are defined - ${layout.id}`, (t) => {
     const keyboard = loadKeyboard(layout);
@@ -32,9 +32,9 @@ for (const layout of [
 
 for (const layout of [
   Layout.EN_US,
-  Layout.EN_US_DVORAK,
-  Layout.EN_US_COLEMAK,
-  Layout.EN_US_WORKMAN,
+  Layout.EN_DVORAK,
+  Layout.EN_COLEMAK,
+  Layout.EN_WORKMAN,
 ]) {
   test(`sum of row keys - ${layout.id}`, (t) => {
     const keyboard = loadKeyboard(layout);

@@ -31,7 +31,7 @@ test.serial("append table", async (t) => {
   const faker = new ResultFaker();
   const timeStamp = now.getTime();
   const result1 = faker.nextResult({ layout: Layout.EN_US, timeStamp });
-  const result2 = faker.nextResult({ layout: Layout.EN_US_DVORAK, timeStamp });
+  const result2 = faker.nextResult({ layout: Layout.EN_DVORAK, timeStamp });
   const row1: HighScoresRow = {
     user: 1,
     layout: Layout.EN_US,
@@ -45,7 +45,7 @@ test.serial("append table", async (t) => {
   };
   const row2: HighScoresRow = {
     user: 2,
-    layout: Layout.EN_US_DVORAK,
+    layout: Layout.EN_DVORAK,
     timeStamp: new Date(result2.timeStamp),
     time: result2.time,
     length: result2.length,

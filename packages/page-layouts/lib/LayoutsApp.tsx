@@ -7,10 +7,10 @@ import { KeyFrequencyHeatmap } from "./KeyFrequencyHeatmap.tsx";
 
 export function LayoutsApp(): ReactNode {
   const qwerty = loadKeyboard(Layout.EN_US);
-  const dvorak = loadKeyboard(Layout.EN_US_DVORAK);
-  const colemak = loadKeyboard(Layout.EN_US_COLEMAK);
-  const workman = loadKeyboard(Layout.EN_US_WORKMAN);
-  const colemak_dh = loadKeyboard(Layout.EN_US_COLEMAK_DH);
+  const dvorak = loadKeyboard(Layout.EN_DVORAK);
+  const colemak = loadKeyboard(Layout.EN_COLEMAK);
+  const workman = loadKeyboard(Layout.EN_WORKMAN);
+  const colemak_dh = loadKeyboard(Layout.EN_COLEMAK_DH);
 
   return (
     <Article>

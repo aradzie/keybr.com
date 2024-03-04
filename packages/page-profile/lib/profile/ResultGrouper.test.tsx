@@ -25,7 +25,7 @@ test.serial("empty database", async (t) => {
       <FakeSettingsContext
         initialSettings={new Settings().set(
           keyboardProps.layout,
-          Layout.EN_US_DVORAK,
+          Layout.EN_DVORAK,
         )}
       >
         <FakeResultContext>
@@ -37,7 +37,7 @@ test.serial("empty database", async (t) => {
     </FakeIntlProvider>,
   );
 
-  t.is((await r.findByTitle("layout")).textContent, "us-dvorak");
+  t.is((await r.findByTitle("layout")).textContent, "en-dvorak");
 
   r.unmount();
 });
@@ -50,11 +50,11 @@ test.serial("select default layout", async (t) => {
       <FakeSettingsContext
         initialSettings={new Settings().set(
           keyboardProps.layout,
-          Layout.EN_US_DVORAK,
+          Layout.EN_DVORAK,
         )}
       >
         <FakeResultContext
-          initialResults={[faker.nextResult({ layout: Layout.EN_US_COLEMAK })]}
+          initialResults={[faker.nextResult({ layout: Layout.EN_COLEMAK })]}
         >
           <ResultGrouper>
             {(keyStatsMap) => <TestChild keyStatsMap={keyStatsMap} />}
@@ -64,11 +64,11 @@ test.serial("select default layout", async (t) => {
     </FakeIntlProvider>,
   );
 
-  t.is((await r.findByTitle("layout")).textContent, "us-colemak");
+  t.is((await r.findByTitle("layout")).textContent, "en-colemak");
 
   fireEvent.click(await r.findByTitle("clear"));
 
-  t.is((await r.findByTitle("layout")).textContent, "us-dvorak");
+  t.is((await r.findByTitle("layout")).textContent, "en-dvorak");
 
   r.unmount();
 });

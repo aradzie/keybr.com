@@ -5,7 +5,7 @@ import { LayoutFamily } from "./layoutfamily.ts";
 
 export class Layout implements XEnumItem {
   static readonly EN_US = new Layout(
-    /* id= */ "us",
+    /* id= */ "en-us",
     /* xid= */ 0x10,
     /* name= */ "US",
     /* family= */ LayoutFamily.QWERTY,
@@ -19,10 +19,10 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
-  static readonly EN_US_DVORAK = new Layout(
-    /* id= */ "us-dvorak",
+  static readonly EN_DVORAK = new Layout(
+    /* id= */ "en-dvorak",
     /* xid= */ 0x18,
-    /* name= */ "US Dvorak",
+    /* name= */ "Dvorak",
     /* family= */ LayoutFamily.DVORAK,
     /* language= */ Language.EN,
     /* emulate= */ true,
@@ -34,10 +34,10 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
-  static readonly EN_US_COLEMAK = new Layout(
-    /* id= */ "us-colemak",
+  static readonly EN_COLEMAK = new Layout(
+    /* id= */ "en-colemak",
     /* xid= */ 0x19,
-    /* name= */ "US Colemak",
+    /* name= */ "Colemak",
     /* family= */ LayoutFamily.COLEMAK,
     /* language= */ Language.EN,
     /* emulate= */ true,
@@ -49,10 +49,10 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
-  static readonly EN_US_WORKMAN = new Layout(
-    /* id= */ "us-workman",
+  static readonly EN_WORKMAN = new Layout(
+    /* id= */ "en-workman",
     /* xid= */ 0x1a,
-    /* name= */ "US Workman",
+    /* name= */ "Workman",
     /* family= */ LayoutFamily.WORKMAN,
     /* language= */ Language.EN,
     /* emulate= */ true,
@@ -64,10 +64,10 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
-  static readonly EN_US_COLEMAK_DH = new Layout(
-    /* id= */ "us-colemak-dh",
+  static readonly EN_COLEMAK_DH = new Layout(
+    /* id= */ "en-colemak-dh",
     /* xid= */ 0x1b,
-    /* name= */ "US Colemak-DH",
+    /* name= */ "Colemak-DH",
     /* family= */ LayoutFamily.COLEMAK_DH,
     /* language= */ Language.EN,
     /* emulate= */ true,
@@ -79,26 +79,26 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
-  static readonly EN_US_COLEMAK_DH_MATRIX = new Layout(
-    /* id= */ "us-colemak-dh-matrix",
+  static readonly EN_COLEMAK_DH_MATRIX = new Layout(
+    /* id= */ "en-colemak-dh-matrix",
     /* xid= */ 0x1c,
-    /* name= */ "US Colemak-DH (matrix)",
+    /* name= */ "Colemak-DH (matrix)",
     /* family= */ LayoutFamily.COLEMAK_DH_MATRIX,
     /* language= */ Language.EN,
     /* emulate= */ true,
     /* geometries= */ new Enum(Geometry.MATRIX),
   );
-  static readonly EN_US_CANARY_MATRIX = new Layout(
-    /* id= */ "us-canary-matrix",
+  static readonly EN_CANARY_MATRIX = new Layout(
+    /* id= */ "en-canary-matrix",
     /* xid= */ 0x1d,
-    /* name= */ "US Canary (matrix)",
+    /* name= */ "Canary (matrix)",
     /* family= */ LayoutFamily.CANARY_MATRIX,
     /* language= */ Language.EN,
     /* emulate= */ true,
     /* geometries= */ new Enum(Geometry.MATRIX),
   );
   static readonly EN_UK = new Layout(
-    /* id= */ "uk",
+    /* id= */ "en-uk",
     /* xid= */ 0x11,
     /* name= */ "UK",
     /* family= */ LayoutFamily.QWERTY,
@@ -125,7 +125,7 @@ export class Layout implements XEnumItem {
     ),
   );
   static readonly DE_DE = new Layout(
-    /* id= */ "de",
+    /* id= */ "de-de",
     /* xid= */ 0x20,
     /* name= */ "Germany",
     /* family= */ LayoutFamily.QWERTZ,
@@ -200,7 +200,7 @@ export class Layout implements XEnumItem {
     ),
   );
   static readonly FR_FR = new Layout(
-    /* id= */ "fr",
+    /* id= */ "fr-fr",
     /* xid= */ 0x30,
     /* name= */ "France",
     /* family= */ LayoutFamily.AZERTY,
@@ -305,7 +305,7 @@ export class Layout implements XEnumItem {
     ),
   );
   static readonly IT_IT = new Layout(
-    /* id= */ "it",
+    /* id= */ "it-it",
     /* xid= */ 0x40,
     /* name= */ "Italy",
     /* family= */ LayoutFamily.QWERTY,
@@ -320,7 +320,7 @@ export class Layout implements XEnumItem {
     ),
   );
   static readonly ES_ES = new Layout(
-    /* id= */ "es",
+    /* id= */ "es-es",
     /* xid= */ 0x50,
     /* name= */ "Spain",
     /* family= */ LayoutFamily.QWERTY,
@@ -335,7 +335,7 @@ export class Layout implements XEnumItem {
     ),
   );
   static readonly PL_PL = new Layout(
-    /* id= */ "pl",
+    /* id= */ "pl-pl",
     /* xid= */ 0x58,
     /* name= */ "Poland",
     /* family= */ LayoutFamily.QWERTY,
@@ -382,7 +382,7 @@ export class Layout implements XEnumItem {
     ),
   );
   static readonly RU_RU = new Layout(
-    /* id= */ "ru",
+    /* id= */ "ru-ru",
     /* xid= */ 0x70,
     /* name= */ "Russia",
     /* family= */ LayoutFamily.ЙЦУКЕН,
@@ -397,7 +397,7 @@ export class Layout implements XEnumItem {
     ),
   );
   static readonly BE_BY = new Layout(
-    /* id= */ "be",
+    /* id= */ "be-by",
     /* xid= */ 0x74,
     /* name= */ "Belarus",
     /* family= */ LayoutFamily.ЙЦУКЕН,
@@ -412,7 +412,7 @@ export class Layout implements XEnumItem {
     ),
   );
   static readonly UK_UA = new Layout(
-    /* id= */ "ua",
+    /* id= */ "uk-ua",
     /* xid= */ 0x78,
     /* name= */ "Ukraine",
     /* family= */ LayoutFamily.ЙЦУКЕН,
@@ -427,7 +427,7 @@ export class Layout implements XEnumItem {
     ),
   );
   static readonly SV_SE = new Layout(
-    /* id= */ "se",
+    /* id= */ "sv-se",
     /* xid= */ 0x80,
     /* name= */ "Sweden",
     /* family= */ LayoutFamily.QWERTY,
@@ -442,7 +442,7 @@ export class Layout implements XEnumItem {
     ),
   );
   static readonly CS_CZ = new Layout(
-    /* id= */ "cz",
+    /* id= */ "cs-cz",
     /* xid= */ 0x81,
     /* name= */ "Czechia",
     /* family= */ LayoutFamily.QWERTZ,
@@ -534,12 +534,12 @@ export class Layout implements XEnumItem {
 
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
-    Layout.EN_US_DVORAK,
-    Layout.EN_US_COLEMAK,
-    Layout.EN_US_COLEMAK_DH,
-    Layout.EN_US_COLEMAK_DH_MATRIX,
-    Layout.EN_US_CANARY_MATRIX,
-    Layout.EN_US_WORKMAN,
+    Layout.EN_DVORAK,
+    Layout.EN_COLEMAK,
+    Layout.EN_COLEMAK_DH,
+    Layout.EN_COLEMAK_DH_MATRIX,
+    Layout.EN_CANARY_MATRIX,
+    Layout.EN_WORKMAN,
     Layout.EN_UK,
     Layout.EN_JP,
     Layout.EL_GR,

@@ -31,7 +31,7 @@ test.serial("map entries", async (t) => {
       },
       {
         user: 999,
-        layout: Layout.EN_US_DVORAK,
+        layout: Layout.EN_DVORAK,
         timeStamp: now,
         time: 50000,
         length: 100,
@@ -59,7 +59,7 @@ test.serial("map entries", async (t) => {
           imageUrl: null,
           name: "deleted user",
         },
-        layout: Layout.EN_US_DVORAK,
+        layout: Layout.EN_DVORAK,
         speed: 500,
         score: 500,
       },

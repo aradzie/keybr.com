@@ -66,7 +66,7 @@ test("serialize as JSON", (t) => {
   );
 
   t.deepEqual(JSON.parse(JSON.stringify(result)), {
-    layout: "us",
+    layout: "en-us",
     textType: "generated",
     timeStamp: "2001-02-03T03:05:06.000Z",
     length: 100,
