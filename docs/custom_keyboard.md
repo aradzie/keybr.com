@@ -24,10 +24,10 @@ Custom keyboard layout definition files are located in `packages/keybr-keyboard-
 You can add your own keyboard layout by copying and modifying an existing one. The configuration format is straightforward, each physical key location (like `"KeyA"`, `"KeyB"`, etc.) is mapped to a list of up to four code points.
 The four code points are given for the following key modifiers:
 
-- No modifier.
-- `Shift` modifier.
-- `AltGr` modifier.
-- `Shift` + `AltGr` modifier.
+1. No modifier.
+2. `Shift` modifier.
+3. `AltGr` modifier.
+4. `Shift` + `AltGr` modifier.
 
 The code points can be given as:
 
@@ -57,7 +57,7 @@ export default {
 };
 ```
 
-Or as a printable combining character prefixed with the `"*"` character:
+Or as a printable diacritical mark string prefixed with the `"*"` character:
 
 ```typescript
 export default {

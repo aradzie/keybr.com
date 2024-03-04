@@ -15,10 +15,10 @@ export type CodePointList = string | readonly (string | CodePoint)[];
  *
  * The four code points are given for the following key modifiers:
  *
- * - No modifier.
- * - Shift modifier.
- * - AltGr modifier.
- * - Shift+AltGr modifier.
+ * 1. No modifier.
+ * 2. Shift modifier.
+ * 3. AltGr modifier.
+ * 3. Shift+AltGr modifier.
  *
  * The code points can be given as:
  *
@@ -34,7 +34,9 @@ export type CodePointList = string | readonly (string | CodePoint)[];
  * }
  * ```
  *
- * Dead keys can be given as [combining diacritical mark](https://en.wikipedia.org/wiki/Combining_Diacritical_Marks) code points:
+ * Your keyboard layout can also include [dead keys](https://en.wikipedia.org/wiki/Dead_key).
+ *
+ * A dead key can be configured as a [combining diacritical mark](https://en.wikipedia.org/wiki/Combining_Diacritical_Marks) code point:
  *
  * ```
  * {
@@ -44,7 +46,7 @@ export type CodePointList = string | readonly (string | CodePoint)[];
  * }
  * ```
  *
- * Or as strings prefixed with the `"*"` character:
+ * Or as a printable diacritical mark string prefixed with the `"*"` character:
  *
  * ```
  * {
@@ -53,6 +55,9 @@ export type CodePointList = string | readonly (string | CodePoint)[];
  *   ...
  * }
  * ```
+ *
+ * Please note that for simplicity we only support dead keys which combine base characters with diacritical marks.
+ * We do not support dead keys which switch between different alphabets, produce non-letter characters, etc.
  */
 export type KeyMap = {
   readonly [key: KeyId]: CodePointList;
