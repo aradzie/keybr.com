@@ -1,11 +1,19 @@
+/**
+ * Converts layout definitions from the CLDR project into our own internal representation.
+ *
+ * @see https://cldr.unicode.org/index/keyboard-workgroup
+ * @see https://unicode.org/reports/tr35/tr35-keyboards.html
+ */
+
+import { readFileSync } from "node:fs";
 import { getDiacritic, type KeyId } from "@keybr/keyboard";
 import { type CodePoint, toCodePoints } from "@keybr/unicode";
-import { type Element } from "xml-js";
-import { diacritics } from "./diacritics.ts";
-import { type LayoutConfig } from "./layout.ts";
-import { walkTree } from "./xml.ts";
+import { type Element, xml2js } from "xml-js";
+import { formatCodePointValue } from "../util/codepoints.ts";
+import { diacritics } from "../util/diacritics.ts";
+import { type KeyMap } from "../util/layout.ts";
 
-const keyMapping: {
+const isoToKeyId: {
   readonly [iso: string]: KeyId;
 } = {
   // Row E
@@ -66,10 +74,14 @@ const keyMapping: {
   A03: "Space",
 };
 
-export function parseCldr(root: Element): LayoutConfig {
+export function convertCldr(filename: string): KeyMap {
+  return convert(xml2js(readFileSync(filename, "utf-8")) as Element);
+}
+
+function convert(root: Element): KeyMap {
   unescape(root);
 
-  const codePointsMap = new Map<KeyId, CodePoint[]>();
+  const keymap = new Map<KeyId, CodePoint[]>();
 
   const combiners = new Set<CodePoint>();
 
@@ -79,11 +91,15 @@ export function parseCldr(root: Element): LayoutConfig {
     } else {
       const combining = diacritics.get(codePoint);
       if (combining == null) {
-        throw new Error();
+        throw new Error(
+          `Unknown combining code point ${formatCodePointValue(codePoint)}`,
+        );
       }
       const diacritic = getDiacritic(combining);
       if (diacritic == null) {
-        throw new Error();
+        throw new Error(
+          `Unknown diacritic code point ${formatCodePointValue(codePoint)}`,
+        );
       }
       return diacritic.codePoint;
     }
@@ -114,13 +130,13 @@ export function parseCldr(root: Element): LayoutConfig {
       const toAttr = (mapEl.attributes?.to ?? "") as string;
       const transformAttr = (mapEl.attributes?.transform ?? "") as string;
 
-      const keyId = keyMapping[isoAttr];
+      const keyId = isoToKeyId[isoAttr];
       if (keyId == null) {
         console.error(`Unknown iso [${isoAttr}]`);
         return;
       }
 
-      const codePoints = codePointsMap.get(keyId) ?? [];
+      const codePoints = keymap.get(keyId) ?? [];
       const toCp = [...toCodePoints(toAttr)];
       if (toCp.length === 1) {
         const codePoint = toCombining(toCp[0], transformAttr === "no");
@@ -128,14 +144,14 @@ export function parseCldr(root: Element): LayoutConfig {
           codePoints[modifier] = codePoint;
         }
       }
-      codePointsMap.set(keyId, codePoints);
+      keymap.set(keyId, codePoints);
     }
   };
 
   walkTree(root, handleTransform);
   walkTree(root, handleMap);
 
-  return { codePoints: Object.fromEntries(codePointsMap) };
+  return Object.fromEntries(keymap);
 }
 
 function* parseModifiers(attr: string): Iterable<number> {
@@ -160,6 +176,24 @@ function* parseModifiers(attr: string): Iterable<number> {
       }
     }
   }
+}
+
+function walkTree(
+  root: Element,
+  enter: (stack: readonly Element[], path: string) => void,
+): void {
+  const stack: Element[] = [];
+
+  const walk = (parent: Element) => {
+    stack.push(parent);
+    enter(stack, stack.map(({ name }) => name).join("/"));
+    for (const element of parent.elements ?? []) {
+      walk(element);
+    }
+    stack.pop();
+  };
+
+  walk(root);
 }
 
 function unescape(root: Element): void {

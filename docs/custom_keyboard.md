@@ -1,75 +1,88 @@
 # Adding a new keyboard layout
 
-*keybr.com* has a lot of different keyboard layouts for different languages. But your layout might not be available.
-This guide will explain how to create a new layout before adding it to the application. Additional it will explain how a new layout family can be added.
+You can import keyboard layout definitions from different sources:
 
-## Creating a new layout
+- A large collection of keyboard layouts can be found in the [CLDR project](https://unicode.org/reports/tr35/tr35-keyboards.html), and we have tools to parse those.
+- You can also import keyboard layouts produced by the [Kalamine project](https://github.com/OneDeadKey/kalamine).
+- If none of these are available, you can write your own layout definition files.
 
-Custom keyboard layouts are located in `packages/keybr-keyboard-generator/lib/layout`.
+Whatever path you choose, the entry point to adding new keyboard layouts is the `keyboard-layout-generator` package.
+It contains the scripts which take keyboard layout definitions in various formats and generate TypeScript files with the same layouts converted into our own internal representation.
+To start the generator, run the following shell commands:
 
-You can add your own layouts by copying and modifying the existing layouts. The configuration format is simple, each physical key location (like KeyA, KeyB, etc) is mapped to either a multi-character string, an array of single-character strings, or an array of numeric code points.
-
-```typescript
-export const LAYOUT_XYZ: LayoutConfig = {
-  codePoints: {
-    ...
-    KeyQ: "qQ",
-    KeyW: ["c", "C"],
-    KeyE: [0x006f, 0x004f],
-    ...
-```
-
-You then have to edit the `index.ts` file and import your layout. Furthermore, your layout has to be added to the `files` array. It could look similar to this:
-
-```typescript
-import { LAYOUT_EN_CUSTOM } from "./layout/layout_en_custom.ts";
-
-const files: readonly [input: string | LayoutConfig, output: string][] = [
-    ...
-    [LAYOUT_EN_CUSTOM, "../keybr-keyboard/lib/data/layout/en_custom.ts"],
-];
-
-```
-
-To start the generator run the following shell commands:
-
-```bash
-cd packages/keybr-keyboard-generator/
+```sh
+cd packages/keybr-keyboard-generator
 npm run generate
 ```
 
-## Adding a new layout
+The generator will write files to `packages/keybr-keyboard/lib/data/layout`. You should not modify the generated files, as your changes will be lost if the generator is run again.
 
-Your new layout will now be generated and stored in `packages/keybr-keyboard/lib/data/layout/`. Do not edit any file in this directory, due to all of them being generated.
+## Adding a custom keyboard layout
 
-But you have to edit the file `layout.ts` in `packages/keybr-keyboard/lib/data/` and export your generated layout. For example:
+Custom keyboard layout definition files are located in `packages/keybr-keyboard-generator/lib/layout`.
+
+You can add your own keyboard layout by copying and modifying an existing one. The configuration format is straightforward, each physical key location (like `"KeyA"`, `"KeyB"`, etc.) is mapped to a list of up to four code points.
+The four code points are given for the following key modifiers:
+
+- No modifier.
+- `Shift` modifier.
+- `AltGr` modifier.
+- `Shift` + `AltGr` modifier.
+
+The code points can be given as:
+
+- A string of up to four characters long.
+- An array of up to four strings or numeric code point values.
 
 ```typescript
-export { LAYOUT_EN_US_DVORAK_WIN } from "./layout/en_us_dvorak-win.ts";
+export default {
+  KeyQ: "qQ",
+  KeyW: ["w", "W"],
+  KeyE: [0x0065, 0x0045],
+  // ... more keys ...
+};
 ```
-Next you have to edit the file `load.ts` in `packages/keybr-keyboard/lib/`, import the exported layout and add it to `layoutDict`. The key `Layout.<LayoutName>` will be defined in a different file. `load.ts` could look similiar to this:
+
+Your keyboard layout can also include [dead keys](https://en.wikipedia.org/wiki/Dead_key).
+
+A dead key can be configured as a [combining diacritical mark](https://en.wikipedia.org/wiki/Combining_Diacritical_Marks) code point:
 
 ```typescript
-import {
-    ...
-    LAYOUT_IT_IT_WIN,
-} from "./data/layout.ts";
-
-const layoutDict = new Map<Layout, CodePointDict>([
-    ...
-    [Layout.IT_IT, LAYOUT_IT_IT_WIN],
-]);
+export default {
+  KeyQ: [
+    /* COMBINING GRAVE ACCENT */ 0x0300,
+    /* COMBINING CIRCUMFLEX ACCENT */ 0x005e,
+  ],
+  // ... more keys ...
+};
 ```
 
-Now we will add `<LayoutName>` to the `Layout` class in `packages/keybr-layout/lib/layout.ts`.
+Or as a printable combining character prefixed with the `"*"` character:
 
 ```typescript
-static readonly FR_OPTIMOT_ERGO = new Layout(
-    /* id= */ "fr-optimot-ergo",
-    /* xid= */ 0x35,
-    /* name= */ "Optimot Ergo",
-    /* family= */ LayoutFamily.OPTIMOT_ERGO,
-    /* language= */ Language.FR,
+export default {
+  KeyQ: ["*`", "*^"],
+  // ... more keys ...
+};
+```
+
+Please note that for simplicity we only support dead keys which combine base characters with diacritical marks.
+We do not support dead keys which switch between different alphabets, produce non-letter characters, etc.
+
+## Configuring a keyboard layout
+
+The generated layout files contain only mappings to code points.
+Each layout must also have an id and a name, and these are configured elsewhere.
+
+To complete a layout configuration, add a new entry to the `Layout` class defined in `packages/keybr-layout/lib/layout.ts`.
+
+```typescript
+static readonly EN_CUSTOM = new Layout(
+    /* id= */ "en-custom",
+    /* xid= */ 0xff,
+    /* name= */ "Custom Layout",
+    /* family= */ LayoutFamily.CUSTOM,
+    /* language= */ Language.EN,
     /* emulate= */ false,
     /* geometries= */ new Enum(
       Geometry.STANDARD_102,
@@ -81,20 +94,22 @@ static readonly FR_OPTIMOT_ERGO = new Layout(
 );
 ```
 
-Select a unique `id` and `xid`. *Just increase the largest `xid` of a language by one.* Give the layout a name and select the language. Geometries allow the selection of *ISO*, *ANSI*, and a matrix layout. The family is something like *QWERTY*, *QWERTZ* or *AZERTY*.
+Select a unique `id` and `xid`. *Just increase the largest `xid` of a language by one.*
+Give the layout a name and select the language. 
+Geometries allow the selection of *ISO*, *ANSI*, and a matrix layout.
 
-## Adding a new layout family
+Lesson results from different keyboard layouts that belong to the same layout family are combined and show together.
+Otherwise, switching from the *United States QWERTY* to the *United Kingdom QWERTY* would invalidate your previous results as if you switched to a completely new layout.
+But since these two layouts belong to the same family, this is not the case.
 
-To add a new layout family, you have to add it to the `LayoutFamily` class in `packages/keybr-layout/lib/layoutfamily.ts`. You first have to create a new family with an `id` and `script`. Furthermore you have to add it to the `ALL`enum.
+We have a predefined collection of the common layout families, such as *QWERTY*, *QWERTZ* or *AZERTY*.
+If you have a new keyboard layout that does not belong to any existing layout family, you must create a new family.
+
+To add a new layout family, add a new entry to the `LayoutFamily` class defined in `packages/keybr-layout/lib/layoutfamily.ts`.
 
 ```typescript
-static readonly NEO = new LayoutFamily(
-    /* id= */ "neo",
+static readonly CUSTOM = new LayoutFamily(
+    /* id= */ "custom",
     /* script= */ "latin",
-);
-
-static readonly ALL = new Enum<LayoutFamily>(
-    ...
-    LayoutFamily.NEO,
 );
 ```

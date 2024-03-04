@@ -1,21 +1,18 @@
 import { writeFileSync } from "node:fs";
 import { basename } from "node:path";
-import { type CodePointDict, getDiacritic } from "@keybr/keyboard";
-import { type CodePoint } from "@keybr/unicode";
+import { type CodePointDict } from "@keybr/keyboard";
+import { formatCodePointName, formatCodePointValue } from "./codepoints.ts";
 import { characterKeys } from "./keys.ts";
-import { type LayoutConfig, toCodePointDict } from "./layout.ts";
+import { type KeyMap, toCodePointDict } from "./layout.ts";
 
-export function writeGeneratedFile(
-  layoutConfig: LayoutConfig,
-  filename: string,
-): void {
+export function writeGeneratedFile(keymap: KeyMap, filename: string): void {
   const id = basename(filename, ".ts")
     .toUpperCase()
     .replaceAll("-", "_")
     .replaceAll(".", "_");
-  const codePointDict = toCodePointDict(layoutConfig);
+  const codePointDict = toCodePointDict(keymap);
   const sourceFile = generateSourceFile(id, codePointDict);
-  writeFileSync(filename, sourceFile, "utf-8");
+  writeFileSync(filename, sourceFile);
 }
 
 function generateSourceFile(id: string, dict: CodePointDict): string {
@@ -44,26 +41,4 @@ function generateSourceFile(id: string, dict: CodePointDict): string {
   lines.push("};");
   lines.push("");
   return lines.join("\n");
-}
-
-function formatCodePointName(codePoint: CodePoint): string {
-  const diacritic = getDiacritic(codePoint);
-  if (diacritic != null) {
-    return `DEAD ${diacritic.name}`;
-  } else {
-    switch (codePoint) {
-      case 0x0020:
-        return "SPACE";
-      case 0x00a0:
-        return "NO-BREAK SPACE";
-      case 0x202f:
-        return "NARROW NO-BREAK SPACE";
-      default:
-        return String.fromCodePoint(codePoint);
-    }
-  }
-}
-
-function formatCodePointValue(codePoint: CodePoint): string {
-  return "0x" + codePoint.toString(16).padStart(4, "0");
 }
