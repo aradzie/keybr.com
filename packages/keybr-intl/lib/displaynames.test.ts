@@ -30,23 +30,29 @@ test("format region name pl-PL", (t) => {
 });
 
 test("format language name en-US", (t) => {
-  const { formatLanguageName } = makeIntlDisplayNames(
+  const { formatLanguageName, formatLocalLanguageName } = makeIntlDisplayNames(
     createIntl({ locale: "en-US" }),
   );
 
   t.is(formatLanguageName("en"), "English");
-  t.is(formatLanguageName("de"), "German (Deutsch)");
-  t.is(formatLanguageName("fr"), "French (Français)");
+  t.is(formatLocalLanguageName("en"), "English");
+  t.is(formatLanguageName("de"), "German");
+  t.is(formatLocalLanguageName("de"), "Deutsch");
+  t.is(formatLanguageName("fr"), "French");
+  t.is(formatLocalLanguageName("fr"), "Français");
 });
 
 test("format language name pl-PL", (t) => {
-  const { formatLanguageName } = makeIntlDisplayNames(
+  const { formatLanguageName, formatLocalLanguageName } = makeIntlDisplayNames(
     createIntl({ locale: "pl-PL" }),
   );
 
-  t.is(formatLanguageName("en"), "Angielski (English)");
-  t.is(formatLanguageName("de"), "Niemiecki (Deutsch)");
-  t.is(formatLanguageName("fr"), "Francuski (Français)");
+  t.is(formatLanguageName("en"), "Angielski");
+  t.is(formatLocalLanguageName("en"), "English");
+  t.is(formatLanguageName("de"), "Niemiecki");
+  t.is(formatLocalLanguageName("de"), "Deutsch");
+  t.is(formatLanguageName("fr"), "Francuski");
+  t.is(formatLocalLanguageName("fr"), "Français");
 });
 
 test("format all language names in all locales", (t) => {
