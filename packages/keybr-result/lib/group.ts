@@ -1,4 +1,4 @@
-import { type Layout, type LayoutFamily } from "@keybr/layout";
+import { type Layout } from "@keybr/layout";
 import { LocalDate } from "./localdate.ts";
 import { type Result } from "./result.ts";
 
@@ -13,7 +13,7 @@ const layoutKey = (): KeyOf<Layout> => {
   return ({ layout }) => layout;
 };
 
-const layoutFamilyKey = (): KeyOf<LayoutFamily> => {
+const layoutFamilyKey = (): KeyOf<string> => {
   return ({ layout }) => layout.family;
 };
 

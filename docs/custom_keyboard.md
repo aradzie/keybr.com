@@ -80,8 +80,8 @@ To complete a layout configuration, add a new entry to the `Layout` class define
 static readonly EN_CUSTOM = new Layout(
     /* id= */ "en-custom",
     /* xid= */ 0xff,
-    /* name= */ "Custom Layout",
-    /* family= */ LayoutFamily.CUSTOM,
+    /* name= */ "My Custom Layout",
+    /* family= */ "qwerty",
     /* language= */ Language.EN,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -94,22 +94,34 @@ static readonly EN_CUSTOM = new Layout(
 );
 ```
 
-Select a unique `id` and `xid`. *Just increase the largest `xid` of a language by one.*
-Give the layout a name and select the language. 
-Geometries allow the selection of *ISO*, *ANSI*, and a matrix layout.
+### Layout id, xid and name
+
+Give the layout a name, select a unique `id` and `xid`
+(Just increase the largest `xid` of an existing layout by one.)
+`id` is a human-readable string that we store in JSON files.
+`xid` is a single-byte numeric identifier that we store in binary files.
+Once assigned, these identifiers must never change.
+
+### Layout family
 
 Lesson results from different keyboard layouts that belong to the same layout family are combined and show together.
-Otherwise, switching from the *United States QWERTY* to the *United Kingdom QWERTY* would invalidate your previous results as if you switched to a completely new layout.
-But since these two layouts belong to the same family, this is not the case.
+Otherwise, switching from the *United States* to the *United Kingdom* would invalidate your previous results as if you switched to a completely new layout.
+However, since these two layouts belong to the same family `"qwerty"`, this is not the case.
 
-We have a predefined collection of the common layout families, such as *QWERTY*, *QWERTZ* or *AZERTY*.
-If you have a new keyboard layout that does not belong to any existing layout family, you must create a new family.
+The most common families are `"qwerty"`, `"qwertz"` and `"azerty"`.
+If your layout does not belong to any of these families, you must select a custom family.
 
-To add a new layout family, add a new entry to the `LayoutFamily` class defined in `packages/keybr-layout/lib/layoutfamily.ts`.
+### Layout language
 
-```typescript
-static readonly CUSTOM = new LayoutFamily(
-    /* id= */ "custom",
-    /* script= */ "latin",
-);
-```
+The language option allows filtering all available layouts by a selected language.
+
+### Layout emulation
+
+The emulation option can be enabled if your layout does not include dead keys.
+
+### Layout geometries
+
+The geometries option allows the selection of the enabled layout geometries, such as *ISO*, *ANSI*, etc.
+Some layouts are only available with a specific geometry, such as *matrix*.
+
+The first listed geometry is the preferred one.

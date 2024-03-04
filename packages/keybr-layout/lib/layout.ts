@@ -1,14 +1,13 @@
 import { Enum, XEnum, type XEnumItem } from "@keybr/lang";
 import { Geometry } from "./geometry.ts";
 import { Language } from "./language.ts";
-import { LayoutFamily } from "./layoutfamily.ts";
 
 export class Layout implements XEnumItem {
   static readonly EN_US = new Layout(
     /* id= */ "en-us",
     /* xid= */ 0x10,
     /* name= */ "US",
-    /* family= */ LayoutFamily.QWERTY,
+    /* family= */ "qwerty",
     /* language= */ Language.EN,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -23,7 +22,7 @@ export class Layout implements XEnumItem {
     /* id= */ "en-dvorak",
     /* xid= */ 0x18,
     /* name= */ "Dvorak",
-    /* family= */ LayoutFamily.DVORAK,
+    /* family= */ "dvorak",
     /* language= */ Language.EN,
     /* emulate= */ true,
     /* geometries= */ new Enum(
@@ -38,7 +37,7 @@ export class Layout implements XEnumItem {
     /* id= */ "en-colemak",
     /* xid= */ 0x19,
     /* name= */ "Colemak",
-    /* family= */ LayoutFamily.COLEMAK,
+    /* family= */ "colemak",
     /* language= */ Language.EN,
     /* emulate= */ true,
     /* geometries= */ new Enum(
@@ -53,7 +52,7 @@ export class Layout implements XEnumItem {
     /* id= */ "en-workman",
     /* xid= */ 0x1a,
     /* name= */ "Workman",
-    /* family= */ LayoutFamily.WORKMAN,
+    /* family= */ "workman",
     /* language= */ Language.EN,
     /* emulate= */ true,
     /* geometries= */ new Enum(
@@ -68,7 +67,7 @@ export class Layout implements XEnumItem {
     /* id= */ "en-colemak-dh",
     /* xid= */ 0x1b,
     /* name= */ "Colemak-DH",
-    /* family= */ LayoutFamily.COLEMAK_DH,
+    /* family= */ "colemak-dh",
     /* language= */ Language.EN,
     /* emulate= */ true,
     /* geometries= */ new Enum(
@@ -83,7 +82,7 @@ export class Layout implements XEnumItem {
     /* id= */ "en-colemak-dh-matrix",
     /* xid= */ 0x1c,
     /* name= */ "Colemak-DH (matrix)",
-    /* family= */ LayoutFamily.COLEMAK_DH_MATRIX,
+    /* family= */ "colemak-dh-matrix",
     /* language= */ Language.EN,
     /* emulate= */ true,
     /* geometries= */ new Enum(Geometry.MATRIX),
@@ -92,7 +91,7 @@ export class Layout implements XEnumItem {
     /* id= */ "en-canary-matrix",
     /* xid= */ 0x1d,
     /* name= */ "Canary (matrix)",
-    /* family= */ LayoutFamily.CANARY_MATRIX,
+    /* family= */ "canary-matrix",
     /* language= */ Language.EN,
     /* emulate= */ true,
     /* geometries= */ new Enum(Geometry.MATRIX),
@@ -101,7 +100,7 @@ export class Layout implements XEnumItem {
     /* id= */ "en-uk",
     /* xid= */ 0x11,
     /* name= */ "UK",
-    /* family= */ LayoutFamily.QWERTY,
+    /* family= */ "qwerty",
     /* language= */ Language.EN,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -116,7 +115,7 @@ export class Layout implements XEnumItem {
     /* id= */ "en-jp",
     /* xid= */ 0x12,
     /* name= */ "Japan",
-    /* family= */ LayoutFamily.QWERTY,
+    /* family= */ "qwerty",
     /* language= */ Language.EN,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -128,7 +127,7 @@ export class Layout implements XEnumItem {
     /* id= */ "de-de",
     /* xid= */ 0x20,
     /* name= */ "Germany",
-    /* family= */ LayoutFamily.QWERTZ,
+    /* family= */ "qwertz",
     /* language= */ Language.DE,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -143,7 +142,7 @@ export class Layout implements XEnumItem {
     /* id= */ "de-ch",
     /* xid= */ 0x21,
     /* name= */ "Switzerland",
-    /* family= */ LayoutFamily.QWERTZ,
+    /* family= */ "qwertz",
     /* language= */ Language.DE,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -158,7 +157,7 @@ export class Layout implements XEnumItem {
     /* id= */ "de-neo-2",
     /* xid= */ 0x22,
     /* name= */ "Neo 2",
-    /* family= */ LayoutFamily.NEO,
+    /* family= */ "neo-2",
     /* language= */ Language.DE,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -173,7 +172,7 @@ export class Layout implements XEnumItem {
     /* id= */ "de-bone",
     /* xid= */ 0x23,
     /* name= */ "Bone",
-    /* family= */ LayoutFamily.NEO,
+    /* family= */ "bone",
     /* language= */ Language.DE,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -188,7 +187,7 @@ export class Layout implements XEnumItem {
     /* id= */ "de-mine",
     /* xid= */ 0x24,
     /* name= */ "Mine",
-    /* family= */ LayoutFamily.NEO,
+    /* family= */ "mine",
     /* language= */ Language.DE,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -203,7 +202,7 @@ export class Layout implements XEnumItem {
     /* id= */ "fr-fr",
     /* xid= */ 0x30,
     /* name= */ "France",
-    /* family= */ LayoutFamily.AZERTY,
+    /* family= */ "azerty",
     /* language= */ Language.FR,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -218,7 +217,7 @@ export class Layout implements XEnumItem {
     /* id= */ "fr-ca",
     /* xid= */ 0x31,
     /* name= */ "Canada",
-    /* family= */ LayoutFamily.QWERTY,
+    /* family= */ "qwerty",
     /* language= */ Language.FR,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -233,7 +232,7 @@ export class Layout implements XEnumItem {
     /* id= */ "fr-ch",
     /* xid= */ 0x32,
     /* name= */ "Switzerland",
-    /* family= */ LayoutFamily.QWERTZ,
+    /* family= */ "qwertz",
     /* language= */ Language.FR,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -248,7 +247,7 @@ export class Layout implements XEnumItem {
     /* id= */ "fr-bepo",
     /* xid= */ 0x33,
     /* name= */ "Bepo",
-    /* family= */ LayoutFamily.BEPO,
+    /* family= */ "bepo",
     /* language= */ Language.FR,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -263,7 +262,7 @@ export class Layout implements XEnumItem {
     /* id= */ "fr-ergol",
     /* xid= */ 0x34,
     /* name= */ "Ergo-L",
-    /* family= */ LayoutFamily.ERGO_L,
+    /* family= */ "ergol",
     /* language= */ Language.FR,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -278,7 +277,7 @@ export class Layout implements XEnumItem {
     /* id= */ "fr-optimot-ergo",
     /* xid= */ 0x35,
     /* name= */ "Optimot Ergo",
-    /* family= */ LayoutFamily.OPTIMOT_ERGO,
+    /* family= */ "optimot-ergo",
     /* language= */ Language.FR,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -293,7 +292,7 @@ export class Layout implements XEnumItem {
     /* id= */ "fr-erglace",
     /* xid= */ 0x36,
     /* name= */ "Erglace",
-    /* family= */ LayoutFamily.ERGLACE,
+    /* family= */ "erglace",
     /* language= */ Language.FR,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -308,7 +307,7 @@ export class Layout implements XEnumItem {
     /* id= */ "it-it",
     /* xid= */ 0x40,
     /* name= */ "Italy",
-    /* family= */ LayoutFamily.QWERTY,
+    /* family= */ "qwerty",
     /* language= */ Language.IT,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -323,7 +322,7 @@ export class Layout implements XEnumItem {
     /* id= */ "es-es",
     /* xid= */ 0x50,
     /* name= */ "Spain",
-    /* family= */ LayoutFamily.QWERTY,
+    /* family= */ "qwerty",
     /* language= */ Language.ES,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -338,7 +337,7 @@ export class Layout implements XEnumItem {
     /* id= */ "pl-pl",
     /* xid= */ 0x58,
     /* name= */ "Poland",
-    /* family= */ LayoutFamily.QWERTY,
+    /* family= */ "qwerty",
     /* language= */ Language.PL,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -353,7 +352,7 @@ export class Layout implements XEnumItem {
     /* id= */ "pt-br",
     /* xid= */ 0x60,
     /* name= */ "Brazil (ABNT2)",
-    /* family= */ LayoutFamily.QWERTY,
+    /* family= */ "qwerty",
     /* language= */ Language.PT,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -370,7 +369,7 @@ export class Layout implements XEnumItem {
     /* id= */ "pt-pt",
     /* xid= */ 0x62,
     /* name= */ "Portugal",
-    /* family= */ LayoutFamily.QWERTY,
+    /* family= */ "qwerty",
     /* language= */ Language.PT,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -385,7 +384,7 @@ export class Layout implements XEnumItem {
     /* id= */ "ru-ru",
     /* xid= */ 0x70,
     /* name= */ "Russia",
-    /* family= */ LayoutFamily.ЙЦУКЕН,
+    /* family= */ "йцукен",
     /* language= */ Language.RU,
     /* emulate= */ true,
     /* geometries= */ new Enum(
@@ -400,7 +399,7 @@ export class Layout implements XEnumItem {
     /* id= */ "be-by",
     /* xid= */ 0x74,
     /* name= */ "Belarus",
-    /* family= */ LayoutFamily.ЙЦУКЕН,
+    /* family= */ "йцукен",
     /* language= */ Language.BE,
     /* emulate= */ true,
     /* geometries= */ new Enum(
@@ -415,7 +414,7 @@ export class Layout implements XEnumItem {
     /* id= */ "uk-ua",
     /* xid= */ 0x78,
     /* name= */ "Ukraine",
-    /* family= */ LayoutFamily.ЙЦУКЕН,
+    /* family= */ "йцукен",
     /* language= */ Language.UK,
     /* emulate= */ true,
     /* geometries= */ new Enum(
@@ -430,7 +429,7 @@ export class Layout implements XEnumItem {
     /* id= */ "sv-se",
     /* xid= */ 0x80,
     /* name= */ "Sweden",
-    /* family= */ LayoutFamily.QWERTY,
+    /* family= */ "qwerty",
     /* language= */ Language.SV,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -445,7 +444,7 @@ export class Layout implements XEnumItem {
     /* id= */ "cs-cz",
     /* xid= */ 0x81,
     /* name= */ "Czechia",
-    /* family= */ LayoutFamily.QWERTZ,
+    /* family= */ "qwertz",
     /* language= */ Language.CS,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -460,7 +459,7 @@ export class Layout implements XEnumItem {
     /* id= */ "sl-si",
     /* xid= */ 0x82,
     /* name= */ "Slovenia",
-    /* family= */ LayoutFamily.QWERTZ,
+    /* family= */ "qwertz",
     /* language= */ Language.SL,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -475,7 +474,7 @@ export class Layout implements XEnumItem {
     /* id= */ "el-gr",
     /* xid= */ 0x83,
     /* name= */ "Greek",
-    /* family= */ LayoutFamily.GREEK,
+    /* family= */ "greek",
     /* language= */ Language.EL,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -490,7 +489,7 @@ export class Layout implements XEnumItem {
     /* id= */ "he-il",
     /* xid= */ 0x84,
     /* name= */ "Hebrew",
-    /* family= */ LayoutFamily.HEBREW,
+    /* family= */ "hebrew",
     /* language= */ Language.HE,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -505,7 +504,7 @@ export class Layout implements XEnumItem {
     /* id= */ "nl-nl",
     /* xid= */ 0x85,
     /* name= */ "Netherlands",
-    /* family= */ LayoutFamily.QWERTY,
+    /* family= */ "qwerty",
     /* language= */ Language.NL,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -520,7 +519,7 @@ export class Layout implements XEnumItem {
     /* id= */ "nl-be",
     /* xid= */ 0x86,
     /* name= */ "Belgium",
-    /* family= */ LayoutFamily.AZERTY,
+    /* family= */ "azerty",
     /* language= */ Language.NL,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -575,7 +574,7 @@ export class Layout implements XEnumItem {
     public readonly id: string,
     public readonly xid: number,
     public readonly name: string,
-    public readonly family: LayoutFamily,
+    public readonly family: string,
     public readonly language: Language,
     public readonly emulate: boolean,
     public readonly geometries: Enum<Geometry>,
