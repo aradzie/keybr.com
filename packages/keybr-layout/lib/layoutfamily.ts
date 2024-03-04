@@ -45,6 +45,10 @@ export class LayoutFamily implements EnumItem {
     /* id= */ "ergol",
     /* script= */ "latin",
   );
+  static readonly ERGLACE = new LayoutFamily(
+    /* id= */ "erglace",
+    /* script= */ "latin",
+  );
   static readonly OPTIMOT_ERGO = new LayoutFamily(
     /* id= */ "optimot-ergo",
     /* script= */ "latin",

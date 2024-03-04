@@ -18,6 +18,7 @@ export { LAYOUT_ES_ES_WIN } from "./layout/es_es-win.ts";
 export { LAYOUT_FR_BEPO } from "./layout/fr_bepo.ts";
 export { LAYOUT_FR_CA_WIN } from "./layout/fr_ca-win.ts";
 export { LAYOUT_FR_CH_WIN } from "./layout/fr_ch-win.ts";
+export { LAYOUT_FR_ERGLACE } from "./layout/fr_erglace.ts";
 export { LAYOUT_FR_ERGOL } from "./layout/fr_ergol.ts";
 export { LAYOUT_FR_FR_WIN } from "./layout/fr_fr-win.ts";
 export { LAYOUT_FR_OPTIMOT_ERGO } from "./layout/fr_optimot_ergo.ts";

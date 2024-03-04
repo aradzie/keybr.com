@@ -289,6 +289,21 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly FR_ERGLACE = new Layout(
+    /* id= */ "fr-erglace",
+    /* xid= */ 0x36,
+    /* name= */ "Erglace",
+    /* family= */ LayoutFamily.ERGLACE,
+    /* language= */ Language.FR,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
   static readonly IT_IT = new Layout(
     /* id= */ "it",
     /* xid= */ 0x40,
@@ -539,6 +554,7 @@ export class Layout implements XEnumItem {
     Layout.FR_CH,
     Layout.FR_BEPO,
     Layout.FR_ERGO_L,
+    Layout.FR_ERGLACE,
     Layout.FR_OPTIMOT_ERGO,
     Layout.HE_IL,
     Layout.IT_IT,
