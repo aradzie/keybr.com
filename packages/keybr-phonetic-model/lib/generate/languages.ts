@@ -16,6 +16,7 @@ export const languages: readonly Language[] = [
   { id: "he", alphabet: "אבגדהוזחטיכךלמםנןסעפףצץקרשת" },
   { id: "hu", alphabet: "aábcdeéfghiíjklmnoóöőpqrstuúüűvwxyz" },
   { id: "it", alphabet: "abcdefghijklmnopqrstuvwxyz" },
+  { id: "nb", alphabet: "abcdefghijklmnoprstuvwxyæøå" },
   { id: "nl", alphabet: "abcdefghijklmnopqrstuvwxyz" },
   { id: "pl", alphabet: "aąbcćdeęfghijklłmnńoóprsśtuwyzźż" },
   { id: "pt", alphabet: "aáâãàbcçdeéêfghiíjklmnoóôõpqrstuúvwxyz" },
@@ -23,5 +24,4 @@ export const languages: readonly Language[] = [
   { id: "sl", alphabet: "abcčdefghijklmnoprsštuvzž" },
   { id: "sv", alphabet: "abcdefghijklmnoprstuvwxyåäö" },
   { id: "uk", alphabet: "абвгґдеєжзиіїйклмнопрстуфхцчшщьюя" },
-  { id: "nb", alphabet: "abcdefghijklmnoprstuvwxyæøå" },
 ].map(({ id, alphabet }) => ({ id, alphabet: [...toCodePoints(alphabet)] }));
