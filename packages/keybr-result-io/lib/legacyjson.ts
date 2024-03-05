@@ -83,7 +83,7 @@ export function resultFromJson(json: ResultJson): Result | null {
   }
   try {
     return new Result(
-      Layout.ALL.get(layoutId),
+      Layout.ALL.get(fixLegacyLayoutId(layoutId)),
       TextType.ALL.get(fixTextTypeId(textTypeId)),
       timeStamp,
       length,
@@ -93,17 +93,6 @@ export function resultFromJson(json: ResultJson): Result | null {
     );
   } catch {
     return null;
-  }
-}
-
-function fixTextTypeId(id: string): string {
-  switch (id) {
-    case "guided":
-      return TextType.GENERATED.id;
-    case "custom":
-      return TextType.NATURAL.id;
-    default:
-      return id;
   }
 }
 
@@ -148,4 +137,57 @@ export function histogramFromJson(json: HistogramtJson): Histogram | null {
     });
   }
   return new Histogram(samples);
+}
+
+function fixLegacyLayoutId(id: string): string {
+  // Fix layout identifiers that were changed in cfafe818d5edd3d72a738183730dae049b967ebc
+  switch (id) {
+    case "be":
+      return Layout.BE_BY.id;
+    case "cz":
+      return Layout.CS_CZ.id;
+    case "de":
+      return Layout.DE_DE.id;
+    case "fr":
+      return Layout.FR_FR.id;
+    case "it":
+      return Layout.IT_IT.id;
+    case "pl":
+      return Layout.PL_PL.id;
+    case "ru":
+      return Layout.RU_RU.id;
+    case "se":
+      return Layout.SV_SE.id;
+    case "ua":
+      return Layout.UK_UA.id;
+    case "uk":
+      return Layout.EN_UK.id;
+    case "us":
+      return Layout.EN_US.id;
+    case "us-canary-matrix":
+      return Layout.EN_CANARY_MATRIX.id;
+    case "us-colemak":
+      return Layout.EN_COLEMAK.id;
+    case "us-colemak-dh":
+      return Layout.EN_COLEMAK_DH.id;
+    case "us-colemak-dh-matrix":
+      return Layout.EN_COLEMAK_DH_MATRIX.id;
+    case "us-dvorak":
+      return Layout.EN_DVORAK.id;
+    case "us-workman":
+      return Layout.EN_WORKMAN.id;
+    default:
+      return id;
+  }
+}
+
+function fixTextTypeId(id: string): string {
+  switch (id) {
+    case "guided":
+      return TextType.GENERATED.id;
+    case "custom":
+      return TextType.NATURAL.id;
+    default:
+      return id;
+  }
 }
