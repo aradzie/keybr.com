@@ -23,6 +23,7 @@ export { LAYOUT_FR_ERGOL } from "./layout/fr_ergol.ts";
 export { LAYOUT_FR_FR_WIN } from "./layout/fr_fr-win.ts";
 export { LAYOUT_FR_OPTIMOT_ERGO } from "./layout/fr_optimot_ergo.ts";
 export { LAYOUT_HE_IL_WIN } from "./layout/he_il-win.ts";
+export { LAYOUT_HU_HU_WIN } from "./layout/hu_hu-win.ts";
 export { LAYOUT_IT_IT_WIN } from "./layout/it_it-win.ts";
 export { LAYOUT_JA_JP_JIS } from "./layout/ja_jp_jis.ts";
 export { LAYOUT_NL_BE_WIN } from "./layout/nl_be-win.ts";

@@ -48,6 +48,7 @@ for (const [output, keymap] of [
   ["fr_fr-win.ts", convertCldr("cldr-keyboards-43.0/keyboards/windows/fr-t-k0-windows.xml")],
   ["fr_optimot_ergo.ts", LAYOUT_FR_OPTIMOT_ERGO],
   ["he_il-win.ts", convertCldr("cldr-keyboards-43.0/keyboards/windows/he-t-k0-windows.xml")],
+  ["hu_hu-win.ts", convertCldr("cldr-keyboards-43.0/keyboards/windows/hu-t-k0-windows.xml")],
   ["it_it-win.ts", convertCldr("cldr-keyboards-43.0/keyboards/windows/it-t-k0-windows.xml")],
   ["ja_jp_jis.ts", LAYOUT_JA_JP_JIS],
   ["nl_be-win.ts", convertCldr("cldr-keyboards-43.0/keyboards/windows/nl-BE-t-k0-windows.xml")],
