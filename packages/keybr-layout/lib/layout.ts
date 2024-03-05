@@ -487,7 +487,7 @@ export class Layout implements XEnumItem {
   );
   static readonly NB_NO = new Layout(
     /* id= */ "no",
-    /* xid= */ 0x87,
+    /* xid= */ 0x88,
     /* name= */ "Norwegian",
     /* family= */ "qwerty",
     /* language= */ Language.NB,
