@@ -11,13 +11,13 @@ export class Language implements EnumItem {
   static readonly HE = new Language("he", "hebrew", "rtl");
   static readonly HU = new Language("hu", "latin", "ltr");
   static readonly IT = new Language("it", "latin", "ltr");
+  static readonly NB = new Language("nb", "latin", "ltr");
   static readonly NL = new Language("nl", "latin", "ltr");
   static readonly PL = new Language("pl", "latin", "ltr");
   static readonly PT = new Language("pt", "latin", "ltr");
   static readonly RU = new Language("ru", "cyrillic", "ltr");
   static readonly SL = new Language("sl", "latin", "ltr");
   static readonly SV = new Language("sv", "latin", "ltr");
-  static readonly NB = new Language("nb", "latin", "ltr");
   static readonly UK = new Language("uk", "cyrillic", "ltr");
 
   static readonly ALL = new Enum<Language>(
@@ -31,6 +31,7 @@ export class Language implements EnumItem {
     Language.HE,
     Language.HU,
     Language.IT,
+    Language.NB,
     Language.NL,
     Language.PL,
     Language.PT,
@@ -38,7 +39,6 @@ export class Language implements EnumItem {
     Language.SL,
     Language.SV,
     Language.UK,
-    Language.NB,
   );
 
   private constructor(

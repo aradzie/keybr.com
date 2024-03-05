@@ -84,6 +84,7 @@ const layoutDict = new Map<Layout, CodePointDict>([
   [Layout.HE_IL, LAYOUT_HE_IL_WIN],
   [Layout.HU_HU, LAYOUT_HU_HU_WIN],
   [Layout.IT_IT, LAYOUT_IT_IT_WIN],
+  [Layout.NB_NO, LAYOUT_NB_NO_WIN],
   [Layout.NL_BE, LAYOUT_NL_BE_WIN],
   [Layout.NL_NL, LAYOUT_NL_NL_WIN],
   [Layout.PL_PL, LAYOUT_PL_PL_WIN],
@@ -93,7 +94,6 @@ const layoutDict = new Map<Layout, CodePointDict>([
   [Layout.SL_SI, LAYOUT_SL_SI_WIN],
   [Layout.SV_SE, LAYOUT_SV_SE_WIN],
   [Layout.UK_UA, LAYOUT_UK_UA_WIN],
-  [Layout.NB_NO, LAYOUT_NB_NO_WIN],
 ]);
 
 const geometryDict = new Map<Geometry, GeometryDict>([

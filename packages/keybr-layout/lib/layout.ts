@@ -485,6 +485,21 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly NB_NO = new Layout(
+    /* id= */ "no",
+    /* xid= */ 0x87,
+    /* name= */ "Norwegian",
+    /* family= */ "qwerty",
+    /* language= */ Language.NB,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
   static readonly HE_IL = new Layout(
     /* id= */ "he-il",
     /* xid= */ 0x84,
@@ -527,21 +542,6 @@ export class Layout implements XEnumItem {
       Geometry.STANDARD_101_FULL,
       Geometry.STANDARD_102,
       Geometry.STANDARD_102_FULL,
-      Geometry.MATRIX,
-    ),
-  );
-  static readonly NB_NO = new Layout(
-    /* id= */ "no",
-    /* xid= */ 0x87,
-    /* name= */ "Norwegian",
-    /* family= */ LayoutFamily.QWERTY,
-    /* language= */ Language.NB,
-    /* emulate= */ false,
-    /* geometries= */ new Enum(
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -588,6 +588,7 @@ export class Layout implements XEnumItem {
     Layout.HE_IL,
     Layout.HU_HU,
     Layout.IT_IT,
+    Layout.NB_NO,
     Layout.NL_NL,
     Layout.NL_BE,
     Layout.ES_ES,
@@ -599,7 +600,6 @@ export class Layout implements XEnumItem {
     Layout.SV_SE,
     Layout.UK_UA,
     Layout.RU_RU,
-    Layout.NB_NO,
   );
 
   private constructor(
