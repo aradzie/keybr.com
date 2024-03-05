@@ -1,5 +1,5 @@
 import { catchError } from "@keybr/debug";
-import { type Language } from "@keybr/layout";
+import { type Language } from "@keybr/keyboard";
 import { LoadingProgress } from "@keybr/pages-shared";
 import {
   type PhoneticModel,

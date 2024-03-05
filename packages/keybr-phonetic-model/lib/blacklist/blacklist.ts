@@ -1,4 +1,4 @@
-import { Language } from "@keybr/layout";
+import { Language } from "@keybr/keyboard";
 import blacklistBe from "./blacklist-be.json";
 import blacklistDe from "./blacklist-de.json";
 import blacklistEn from "./blacklist-en.json";

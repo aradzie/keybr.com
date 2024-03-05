@@ -1,5 +1,4 @@
-import { KeyboardContext, loadKeyboard } from "@keybr/keyboard";
-import { Layout } from "@keybr/layout";
+import { KeyboardContext, Layout, loadKeyboard } from "@keybr/keyboard";
 import test from "ava";
 import TestRenderer from "react-test-renderer";
 import { KeyLayer } from "./KeyLayer.tsx";

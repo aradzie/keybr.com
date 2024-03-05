@@ -1,5 +1,5 @@
 import { DataDir } from "@keybr/config";
-import { Layout } from "@keybr/layout";
+import { Layout } from "@keybr/keyboard";
 import { ResultFaker } from "@keybr/result";
 import { removeDir } from "@sosimple/fsx";
 import test from "ava";

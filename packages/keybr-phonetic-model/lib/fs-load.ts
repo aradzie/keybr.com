@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { type Language } from "@keybr/layout";
+import { type Language } from "@keybr/keyboard";
 import { newPhoneticModel, type PhoneticModel } from "./index.ts";
 import { TransitionTable } from "./transitiontable.ts";
 

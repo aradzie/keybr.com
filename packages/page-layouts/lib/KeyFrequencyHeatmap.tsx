@@ -1,7 +1,6 @@
 import { useIntlNumbers } from "@keybr/intl";
-import { type Keyboard } from "@keybr/keyboard";
+import { type Keyboard, useFormattedNames } from "@keybr/keyboard";
 import { HeatmapLayer, KeyLayer, VirtualKeyboard } from "@keybr/keyboard-ui";
-import { useFormattedNames } from "@keybr/layout";
 import { Figure, Value } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";

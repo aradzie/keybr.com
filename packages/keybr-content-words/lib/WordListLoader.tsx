@@ -1,5 +1,5 @@
 import { catchError } from "@keybr/debug";
-import { type Language } from "@keybr/layout";
+import { type Language } from "@keybr/keyboard";
 import { type ReactNode, useEffect, useState } from "react";
 import { loadWordList } from "./load.ts";
 import { type WordList } from "./types.ts";

@@ -1,5 +1,5 @@
 import { Book } from "@keybr/content-books";
-import { Language } from "@keybr/layout";
+import { Language } from "@keybr/keyboard";
 import { enumProp, itemProp, numberProp, type Settings } from "@keybr/settings";
 import {
   type TextDisplaySettings,

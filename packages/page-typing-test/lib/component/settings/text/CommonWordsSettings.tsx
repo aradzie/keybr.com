@@ -4,7 +4,7 @@ import {
   wordListStats,
 } from "@keybr/content-words";
 import { useIntlDisplayNames, useIntlNumbers } from "@keybr/intl";
-import { Language } from "@keybr/layout";
+import { Language } from "@keybr/keyboard";
 import { useSettings } from "@keybr/settings";
 import {
   Field,

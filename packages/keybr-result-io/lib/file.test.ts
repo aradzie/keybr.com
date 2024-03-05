@@ -1,5 +1,5 @@
 import { Writer } from "@keybr/binary";
-import { Layout } from "@keybr/layout";
+import { Layout } from "@keybr/keyboard";
 import { Result, ResultFaker, TextType } from "@keybr/result";
 import { Histogram } from "@keybr/textinput";
 import test from "ava";

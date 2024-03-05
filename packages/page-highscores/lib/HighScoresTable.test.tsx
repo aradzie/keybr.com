@@ -1,5 +1,5 @@
 import { FakeIntlProvider } from "@keybr/intl";
-import { Layout } from "@keybr/layout";
+import { Layout } from "@keybr/keyboard";
 import { type AnonymousUser, type NamedUser } from "@keybr/pages-shared";
 import test from "ava";
 import TestRenderer from "react-test-renderer";

@@ -1,5 +1,4 @@
-import { loadKeyboard } from "@keybr/keyboard";
-import { Layout } from "@keybr/layout";
+import { Layout, loadKeyboard } from "@keybr/keyboard";
 import { Article, Header, Link, Para } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";

@@ -1,6 +1,6 @@
 import { User } from "@keybr/database";
 import { type HighScoresRow } from "@keybr/highscores";
-import { type Layout } from "@keybr/layout";
+import { type Layout } from "@keybr/keyboard";
 import { type AnyUser } from "@keybr/pages-shared";
 
 export type HighScoresEntry = {

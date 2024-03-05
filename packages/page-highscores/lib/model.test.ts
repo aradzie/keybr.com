@@ -1,7 +1,7 @@
 import { newKnex } from "@keybr/config";
 import { createSchema } from "@keybr/database";
 import { clearTables, seedModels } from "@keybr/database/lib/testing/seeds.ts";
-import { Layout } from "@keybr/layout";
+import { Layout } from "@keybr/keyboard";
 import test from "ava";
 import { mapHighScoresEntries } from "./model.ts";
 

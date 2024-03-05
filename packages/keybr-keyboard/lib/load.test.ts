@@ -1,5 +1,5 @@
-import { Layout } from "@keybr/layout";
 import test from "ava";
+import { Layout } from "./layout.ts";
 import { loadKeyboard } from "./load.ts";
 
 for (const layout of Layout.ALL) {

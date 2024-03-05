@@ -1,4 +1,4 @@
-import { Language } from "@keybr/layout";
+import { Language } from "@keybr/keyboard";
 import langBeData from "@keybr/phonetic-model/assets/lang-be.data";
 import langCsData from "@keybr/phonetic-model/assets/lang-cs.data";
 import langDeData from "@keybr/phonetic-model/assets/lang-de.data";

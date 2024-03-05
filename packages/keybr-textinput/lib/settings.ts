@@ -1,5 +1,4 @@
-import { keyboardProps } from "@keybr/keyboard";
-import { Language } from "@keybr/layout";
+import { keyboardProps, Language } from "@keybr/keyboard";
 import {
   booleanProp,
   enumProp,

@@ -1,5 +1,4 @@
-import { loadKeyboard } from "@keybr/keyboard";
-import { Layout } from "@keybr/layout";
+import { Layout, loadKeyboard } from "@keybr/keyboard";
 import test from "ava";
 import { letters } from "./english.ts";
 import {

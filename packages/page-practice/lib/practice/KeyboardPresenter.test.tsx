@@ -1,5 +1,4 @@
-import { KeyboardContext, loadKeyboard } from "@keybr/keyboard";
-import { Layout } from "@keybr/layout";
+import { KeyboardContext, Layout, loadKeyboard } from "@keybr/keyboard";
 import { act, render } from "@testing-library/react";
 import test from "ava";
 import { DeferredKeyboardPresenter } from "./KeyboardPresenter.tsx";

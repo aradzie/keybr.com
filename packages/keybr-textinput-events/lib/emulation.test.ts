@@ -1,5 +1,4 @@
-import { loadKeyboard } from "@keybr/keyboard";
-import { Layout } from "@keybr/layout";
+import { Layout, loadKeyboard } from "@keybr/keyboard";
 import test from "ava";
 import { emulateLayout } from "./emulation.ts";
 import { tracingListener } from "./testing/fakes.ts";

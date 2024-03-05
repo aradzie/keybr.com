@@ -1,4 +1,4 @@
-import { type Language } from "@keybr/layout";
+import { type Language } from "@keybr/keyboard";
 import { type RNG } from "@keybr/rand";
 import { getBlacklist } from "./blacklist/blacklist.ts";
 import { type Filter } from "./filter.ts";

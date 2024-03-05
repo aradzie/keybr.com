@@ -1,6 +1,6 @@
 #!/usr/bin/env -S node -r @keybr/tsl
 
-import { Language } from "@keybr/layout";
+import { Language } from "@keybr/keyboard";
 import { Filter } from "./filter.ts";
 import { loadModelSync } from "./fs-load.ts";
 

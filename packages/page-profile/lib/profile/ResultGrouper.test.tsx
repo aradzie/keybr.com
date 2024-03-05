@@ -1,6 +1,5 @@
 import { FakeIntlProvider } from "@keybr/intl";
-import { keyboardProps, useKeyboard } from "@keybr/keyboard";
-import { Layout } from "@keybr/layout";
+import { keyboardProps, Layout, useKeyboard } from "@keybr/keyboard";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
 import {

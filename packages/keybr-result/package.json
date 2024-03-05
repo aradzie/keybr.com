@@ -5,8 +5,8 @@
   "main": "lib/index.ts",
   "types": ".types/index.d.ts",
   "dependencies": {
+    "@keybr/keyboard": "*",
     "@keybr/lang": "*",
-    "@keybr/layout": "*",
     "@keybr/math": "*",
     "@keybr/phonetic-model": "*",
     "@keybr/settings": "*",

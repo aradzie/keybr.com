@@ -1,6 +1,11 @@
 import { useCollator } from "@keybr/intl";
-import { KeyboardContext, keyboardProps, loadKeyboard } from "@keybr/keyboard";
-import { Layout, useFormattedNames } from "@keybr/layout";
+import {
+  KeyboardContext,
+  keyboardProps,
+  Layout,
+  loadKeyboard,
+  useFormattedNames,
+} from "@keybr/keyboard";
 import { Letter } from "@keybr/phonetic-model";
 import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
 import {

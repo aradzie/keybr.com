@@ -1,4 +1,4 @@
-import { Layout } from "@keybr/layout";
+import { Layout } from "@keybr/keyboard";
 import test from "ava";
 import { ResultFaker } from "./fake.tsx";
 import { ResultGroups } from "./group.ts";

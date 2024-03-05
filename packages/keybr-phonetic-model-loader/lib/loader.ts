@@ -1,4 +1,4 @@
-import { type Language } from "@keybr/layout";
+import { type Language } from "@keybr/keyboard";
 import {
   censor,
   newPhoneticModel,

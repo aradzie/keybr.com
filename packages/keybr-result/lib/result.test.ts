@@ -1,4 +1,4 @@
-import { Layout } from "@keybr/layout";
+import { Layout } from "@keybr/keyboard";
 import { Histogram } from "@keybr/textinput";
 import test from "ava";
 import { Result, speedToTime, timeToSpeed } from "./result.ts";

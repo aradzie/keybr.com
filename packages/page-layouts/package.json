@@ -8,7 +8,6 @@
     "@keybr/intl": "*",
     "@keybr/keyboard": "*",
     "@keybr/keyboard-ui": "*",
-    "@keybr/layout": "*",
     "@keybr/pages-server": "*",
     "@keybr/pages-shared": "*",
     "@keybr/phonetic-model": "*",

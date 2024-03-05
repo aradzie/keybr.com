@@ -1,12 +1,17 @@
 import { useCollator } from "@keybr/intl";
-import { keyboardProps, useKeyboard } from "@keybr/keyboard";
+import {
+  keyboardProps,
+  Language,
+  Layout,
+  useFormattedNames,
+  useKeyboard,
+} from "@keybr/keyboard";
 import {
   addKey,
   deleteKey,
   KeyLayer,
   VirtualKeyboard,
 } from "@keybr/keyboard-ui";
-import { Language, Layout, useFormattedNames } from "@keybr/layout";
 import { useSettings } from "@keybr/settings";
 import { ModifierState } from "@keybr/textinput-events";
 import {

@@ -1,4 +1,4 @@
-import { Language } from "@keybr/layout";
+import { Language } from "@keybr/keyboard";
 import { useSettings } from "@keybr/settings";
 import {
   CaretMovementStyle,

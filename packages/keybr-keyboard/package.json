@@ -5,7 +5,8 @@
   "main": "lib/index.ts",
   "types": ".types/index.d.ts",
   "dependencies": {
-    "@keybr/layout": "*",
+    "@keybr/intl": "*",
+    "@keybr/lang": "*",
     "@keybr/settings": "*",
     "@keybr/unicode": "*"
   },

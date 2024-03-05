@@ -1,4 +1,4 @@
-import { Layout } from "@keybr/layout";
+import { Layout } from "@keybr/keyboard";
 import { Result, TextType } from "@keybr/result";
 import { Histogram } from "@keybr/textinput";
 import isPlainObject from "lodash/isPlainObject";

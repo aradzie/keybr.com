@@ -1,5 +1,4 @@
-import { loadKeyboard } from "@keybr/keyboard";
-import { Geometry, Layout } from "@keybr/layout";
+import { Geometry, Layout, loadKeyboard } from "@keybr/keyboard";
 import test from "ava";
 import TestRenderer from "react-test-renderer";
 import { VirtualKeyboard } from "./VirtualKeyboard.tsx";

@@ -1,4 +1,4 @@
-import { Layout } from "@keybr/layout";
+import { Layout } from "@keybr/keyboard";
 import { type File } from "@sosimple/fsx-file";
 import { LockFile } from "@sosimple/fsx-lockfile";
 import { exponentialDelay } from "@sosimple/retry";

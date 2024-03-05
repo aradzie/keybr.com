@@ -1,11 +1,10 @@
-import { loadKeyboard } from "@keybr/keyboard";
+import { Layout, loadKeyboard } from "@keybr/keyboard";
 import {
   KeyLayer,
   MarkerLayer,
   VirtualKeyboard,
   ZonesLayer,
 } from "@keybr/keyboard-ui";
-import { Layout } from "@keybr/layout";
 import { KeyLegendList } from "@keybr/lesson-ui";
 import { singleLine } from "@keybr/textinput";
 import { StaticText } from "@keybr/textinput-ui";

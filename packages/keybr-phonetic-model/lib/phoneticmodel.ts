@@ -1,4 +1,4 @@
-import { type Language } from "@keybr/layout";
+import { type Language } from "@keybr/keyboard";
 import { randomSample, type RNG, weightedRandomSample } from "@keybr/rand";
 import { type CodePoint, type CodePointSet } from "@keybr/unicode";
 import { type Filter } from "./filter.ts";

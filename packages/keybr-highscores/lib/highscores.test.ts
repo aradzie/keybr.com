@@ -1,4 +1,4 @@
-import { Layout } from "@keybr/layout";
+import { Layout } from "@keybr/keyboard";
 import test from "ava";
 import MockDate from "mockdate";
 import { HighScores, type HighScoresRow } from "./highscores.ts";

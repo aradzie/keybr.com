@@ -1,9 +1,9 @@
-import { Layout } from "@keybr/layout";
 import test from "ava";
 import { Keyboard } from "./keyboard.ts";
 import { KeyCharacters } from "./keycharacters.ts";
 import { KeyCombo } from "./keycombo.ts";
 import { KeyModifier } from "./keymodifier.ts";
+import { Layout } from "./layout.ts";
 import { type CodePointDict, type GeometryDict } from "./types.ts";
 
 test("keys", (t) => {

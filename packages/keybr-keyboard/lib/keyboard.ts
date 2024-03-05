@@ -1,4 +1,3 @@
-import { type Layout } from "@keybr/layout";
 import { type CodePoint } from "@keybr/unicode";
 import { combineDiacritic, isDiacritic } from "./diacritics.ts";
 import { KeyCharacters } from "./keycharacters.ts";
@@ -6,6 +5,7 @@ import { KeyCombo } from "./keycombo.ts";
 import { KeyModifier } from "./keymodifier.ts";
 import { KeyShape } from "./keyshape.ts";
 import { keyWeights } from "./keyweights.ts";
+import { type Layout } from "./layout.ts";
 import {
   type CodePointDict,
   type GeometryDict,

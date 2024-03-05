@@ -1,5 +1,5 @@
 import { type Reader, type Writer } from "@keybr/binary";
-import { Layout } from "@keybr/layout";
+import { Layout } from "@keybr/keyboard";
 import { Result, TextType } from "@keybr/result";
 import { Histogram, type Sample } from "@keybr/textinput";
 import { InvalidFormatError } from "./errors.ts";

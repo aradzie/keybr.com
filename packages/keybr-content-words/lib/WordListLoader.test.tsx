@@ -1,4 +1,4 @@
-import { Language } from "@keybr/layout";
+import { Language } from "@keybr/keyboard";
 import { render } from "@testing-library/react";
 import test from "ava";
 import { type WordList } from "./types.ts";

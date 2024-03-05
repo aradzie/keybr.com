@@ -6,7 +6,7 @@
   "types": ".types/index.d.ts",
   "dependencies": {
     "@keybr/debug": "*",
-    "@keybr/layout": "*",
+    "@keybr/keyboard": "*",
     "@keybr/pages-shared": "*",
     "@keybr/phonetic-model": "*",
     "@keybr/request": "*"

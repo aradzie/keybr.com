@@ -1,5 +1,5 @@
 import { useIntlNumbers } from "@keybr/intl";
-import { useFormattedNames } from "@keybr/layout";
+import { useFormattedNames } from "@keybr/keyboard";
 import { Sitemap, UserName } from "@keybr/pages-shared";
 import { SpeedUnit } from "@keybr/result";
 import { type ReactNode } from "react";

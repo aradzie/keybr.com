@@ -1,4 +1,4 @@
-import { type Layout } from "@keybr/layout";
+import { type Layout } from "@keybr/keyboard";
 import { type Result } from "@keybr/result";
 
 export type HighScoresRow = {

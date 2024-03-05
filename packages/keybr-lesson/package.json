@@ -9,7 +9,6 @@
     "@keybr/content-words": "*",
     "@keybr/keyboard": "*",
     "@keybr/lang": "*",
-    "@keybr/layout": "*",
     "@keybr/math": "*",
     "@keybr/phonetic-model": "*",
     "@keybr/plaintext": "*",

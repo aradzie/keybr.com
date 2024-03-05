@@ -1,4 +1,3 @@
-import { Geometry, Layout } from "@keybr/layout";
 import {
   BRAZILIAN_104,
   BRAZILIAN_104_FULL,
@@ -52,7 +51,9 @@ import {
   LAYOUT_SV_SE_WIN,
   LAYOUT_UK_UA_WIN,
 } from "./data/layout.ts";
+import { Geometry } from "./geometry.ts";
 import { Keyboard } from "./keyboard.ts";
+import { Layout } from "./layout.ts";
 import { type CodePointDict, type GeometryDict } from "./types.ts";
 
 const layoutDict = new Map<Layout, CodePointDict>([

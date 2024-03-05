@@ -1,4 +1,4 @@
-import { Language } from "@keybr/layout";
+import { Language } from "@keybr/keyboard";
 import { type WordList } from "./types.ts";
 
 export async function loadWordList(language: Language): Promise<WordList> {

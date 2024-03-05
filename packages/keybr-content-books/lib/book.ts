@@ -1,5 +1,5 @@
+import { Language } from "@keybr/keyboard";
 import { Enum, type EnumItem } from "@keybr/lang";
-import { Language } from "@keybr/layout";
 import coverImageAliceWonderland from "../assets/cover-image-alice-wanderland.jpg";
 import coverImageCallWild from "../assets/cover-image-call-wild.jpg";
 import coverImageJekyllHyde from "../assets/cover-image-jekyll-hyde.jpg";

@@ -1,5 +1,5 @@
 import { useIntlDisplayNames } from "@keybr/intl";
-import { Language } from "@keybr/layout";
+import { Language } from "@keybr/keyboard";
 import { Filter, type PhoneticModel } from "@keybr/phonetic-model";
 import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
 import { useSettings } from "@keybr/settings";

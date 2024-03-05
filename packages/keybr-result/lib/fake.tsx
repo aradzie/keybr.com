@@ -1,4 +1,4 @@
-import { Layout } from "@keybr/layout";
+import { Layout } from "@keybr/keyboard";
 import { FakePhoneticModel, type Letter } from "@keybr/phonetic-model";
 import { Histogram } from "@keybr/textinput";
 import { type ReactNode, useState } from "react";

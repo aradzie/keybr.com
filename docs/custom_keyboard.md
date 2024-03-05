@@ -74,7 +74,7 @@ We do not support dead keys which switch between different alphabets, produce no
 The generated layout files contain only mappings to code points.
 Each layout must also have an id and a name, and these are configured elsewhere.
 
-To complete a layout configuration, add a new entry to the `Layout` class defined in `packages/keybr-layout/lib/layout.ts`.
+To complete a layout configuration, add a new entry to the `Layout` class defined in `packages/keybr-keyboard/lib/layout.ts`.
 
 ```typescript
 static readonly EN_CUSTOM = new Layout(

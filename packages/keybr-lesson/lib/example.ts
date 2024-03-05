@@ -1,7 +1,7 @@
 #!/usr/bin/env -S node -r @keybr/tsl
 
 import { loadWordList } from "@keybr/content-words/lib/load.ts";
-import { Language } from "@keybr/layout";
+import { Language } from "@keybr/keyboard";
 import { Filter, Letter } from "@keybr/phonetic-model";
 import { loadModelSync } from "@keybr/phonetic-model/lib/fs-load.ts";
 import { Dictionary } from "./dictionary.ts";

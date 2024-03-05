@@ -10,7 +10,6 @@
     "@keybr/intl": "*",
     "@keybr/keyboard": "*",
     "@keybr/keyboard-ui": "*",
-    "@keybr/layout": "*",
     "@keybr/lesson": "*",
     "@keybr/lesson-loader": "*",
     "@keybr/lesson-ui": "*",

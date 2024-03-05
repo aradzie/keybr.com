@@ -7,8 +7,8 @@
   "dependencies": {
     "@keybr/debug": "*",
     "@keybr/intl": "*",
+    "@keybr/keyboard": "*",
     "@keybr/lang": "*",
-    "@keybr/layout": "*",
     "@keybr/plaintext": "*",
     "@keybr/widget": "*"
   },

@@ -9,7 +9,7 @@
     "@keybr/database": "*",
     "@keybr/highscores": "*",
     "@keybr/intl": "*",
-    "@keybr/layout": "*",
+    "@keybr/keyboard": "*",
     "@keybr/pages-browser": "*",
     "@keybr/pages-server": "*",
     "@keybr/pages-shared": "*",
