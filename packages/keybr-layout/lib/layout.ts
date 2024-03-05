@@ -530,6 +530,21 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly HU_HU = new Layout(
+    /* id= */ "hu-hu",
+    /* xid= */ 0x87,
+    /* name= */ "Hungary",
+    /* family= */ "qwertz",
+    /* language= */ Language.HU,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
 
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
@@ -556,6 +571,7 @@ export class Layout implements XEnumItem {
     Layout.FR_ERGLACE,
     Layout.FR_OPTIMOT_ERGO,
     Layout.HE_IL,
+    Layout.HU_HU,
     Layout.IT_IT,
     Layout.NL_NL,
     Layout.NL_BE,
