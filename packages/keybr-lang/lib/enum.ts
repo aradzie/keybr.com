@@ -13,7 +13,11 @@ export class Enum<T extends EnumItem> implements Iterable<T> {
     this._byId = new Map();
     for (const item of this._items) {
       if (this._byId.has(item.id)) {
-        throw new Error(); // Duplicate id.
+        throw new Error(
+          process.env.NODE_ENV !== "production"
+            ? `Duplicate id ${item.id}`
+            : undefined,
+        );
       } else {
         this._byId.set(item.id, item);
       }
@@ -30,7 +34,11 @@ export class Enum<T extends EnumItem> implements Iterable<T> {
 
   at(index: number): T {
     if (!Number.isInteger(index) || index < 0 || index >= this._items.length) {
-      throw new TypeError();
+      throw new RangeError(
+        process.env.NODE_ENV !== "production"
+          ? `Invalid index ${index}`
+          : undefined,
+      );
     }
     return this._items[index];
   }
@@ -46,7 +54,11 @@ export class Enum<T extends EnumItem> implements Iterable<T> {
     let item: T | null = this._byId.get(id) ?? null;
     if (item == null) {
       if (defaultValue == null) {
-        throw new Error(`Item ${id} not found`);
+        throw new Error(
+          process.env.NODE_ENV !== "production"
+            ? `Item [${id}] not found`
+            : undefined,
+        );
       } else {
         item = defaultValue;
       }
@@ -84,7 +96,11 @@ export class XEnum<T extends XEnumItem> implements Iterable<T> {
     this._byId = new Map();
     for (const item of this._items) {
       if (this._byId.has(item.id)) {
-        throw new Error(); // Duplicate id.
+        throw new Error(
+          process.env.NODE_ENV !== "production"
+            ? `Duplicate item id ${item.id}`
+            : undefined,
+        );
       } else {
         this._byId.set(item.id, item);
       }
@@ -93,8 +109,10 @@ export class XEnum<T extends XEnumItem> implements Iterable<T> {
     for (const item of this._items) {
       if (this._byXId.has(item.xid)) {
         throw new Error(
-          `Duplicate xid (${item.xid}) for item with id ${item.id}`,
-        ); // Duplicate xid.
+          process.env.NODE_ENV !== "production"
+            ? `Duplicate item xid ${item.xid}`
+            : undefined,
+        );
       } else {
         this._byXId.set(item.xid, item);
       }
@@ -111,7 +129,11 @@ export class XEnum<T extends XEnumItem> implements Iterable<T> {
 
   at(index: number): T {
     if (!Number.isInteger(index) || index < 0 || index >= this._items.length) {
-      throw new TypeError();
+      throw new RangeError(
+        process.env.NODE_ENV !== "production"
+          ? `Invalid item index ${index}`
+          : undefined,
+      );
     }
     return this._items[index];
   }
@@ -127,7 +149,11 @@ export class XEnum<T extends XEnumItem> implements Iterable<T> {
     let item: T | null = this._byId.get(id) ?? null;
     if (item == null) {
       if (defaultValue == null) {
-        throw new Error(`Item ${id} not found`);
+        throw new Error(
+          process.env.NODE_ENV !== "production"
+            ? `Item id [${id}] not found`
+            : undefined,
+        );
       } else {
         item = defaultValue;
       }
@@ -142,7 +168,11 @@ export class XEnum<T extends XEnumItem> implements Iterable<T> {
     let item: T | null = this._byXId.get(xid) ?? null;
     if (item == null) {
       if (defaultValue == null) {
-        throw new Error(`Item ${xid} not found`);
+        throw new Error(
+          process.env.NODE_ENV !== "production"
+            ? `Item xid [${xid}] not found`
+            : undefined,
+        );
       } else {
         item = defaultValue;
       }
