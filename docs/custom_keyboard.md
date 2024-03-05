@@ -99,11 +99,11 @@ static readonly EN_CUSTOM = new Layout(
 Give the layout a name, select a unique `id` and `xid`:
 
 * `id` is a human-readable string that we store in JSON files.
-  It should follow the next pattern: <nobr>`"{ISO 639-1}-{ISO 3166-2}"`</nobr>,
-  where [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) is a two-letter language code,
-  and [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) is a two-letter country code, all lowercase.
-  Examples are <nobr>`"fr-ca"`</nobr> for the French layout in Canada or <nobr>`"sv-se"`</nobr> for the Swedish layout in Sweden.
-  Or, if you have a custom layout, name it as <nobr>`"{ISO 639-1}-custom-layout-id"`</nobr>.
+  It should follow the next pattern: <nobr>`"xx-yy"`</nobr>,
+  where `"xx"` is a [ISO 639-1 two-letter language code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes),
+  and `"yy"` is a [ISO 3166-2 two-letter country code](https://en.wikipedia.org/wiki/ISO_3166-2), all lowercase.
+  Examples are <nobr>`"fr-ca"`</nobr> for the French language in Canada or <nobr>`"sv-se"`</nobr> for the Swedish language in Sweden.
+  Or, if you have a custom layout, name it as <nobr>`"xx-custom-layout-id"`</nobr>.
 * `xid` is a single-byte numeric identifier that we store in binary files.
   Increase the largest `xid` of an existing layout by one.
 

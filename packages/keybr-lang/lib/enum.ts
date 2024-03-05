@@ -15,7 +15,7 @@ export class Enum<T extends EnumItem> implements Iterable<T> {
       if (this._byId.has(item.id)) {
         throw new Error(
           process.env.NODE_ENV !== "production"
-            ? `Duplicate id ${item.id}`
+            ? `Duplicate item id ${item.id}`
             : undefined,
         );
       } else {
@@ -36,7 +36,7 @@ export class Enum<T extends EnumItem> implements Iterable<T> {
     if (!Number.isInteger(index) || index < 0 || index >= this._items.length) {
       throw new RangeError(
         process.env.NODE_ENV !== "production"
-          ? `Invalid index ${index}`
+          ? `Invalid item index ${index}`
           : undefined,
       );
     }
