@@ -92,7 +92,9 @@ export class XEnum<T extends XEnumItem> implements Iterable<T> {
     this._byXId = new Map();
     for (const item of this._items) {
       if (this._byXId.has(item.xid)) {
-        throw new Error(); // Duplicate xid.
+        throw new Error(
+          `Duplicate xid (${item.xid}) for item with id ${item.id}`,
+        ); // Duplicate xid.
       } else {
         this._byXId.set(item.xid, item);
       }
