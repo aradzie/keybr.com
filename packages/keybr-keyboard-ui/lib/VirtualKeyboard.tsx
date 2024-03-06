@@ -7,7 +7,7 @@ import {
   type WheelEventHandler,
 } from "react";
 import { frameWidth, keyGap, keySize } from "./constants.ts";
-import { Patterns } from "./Key.tsx";
+import { Patterns } from "./Patterns.tsx";
 import * as styles from "./VirtualKeyboard.module.less";
 
 export const VirtualKeyboard = memo(function VirtualKeyboard({

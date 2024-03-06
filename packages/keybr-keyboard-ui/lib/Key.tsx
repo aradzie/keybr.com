@@ -14,8 +14,6 @@ import {
 import { keyGap, keySize } from "./constants.ts";
 import * as styles from "./Key.module.less";
 
-export type ClassName = any;
-
 export type KeyProps = {
   readonly depressed?: boolean;
   readonly toggled?: boolean;
@@ -28,61 +26,96 @@ export type KeyProps = {
   readonly showFingers?: boolean;
 };
 
-export function keyTemplate(
-  shape: KeyShape,
-  children: ReactNode,
-): FunctionComponent<KeyProps> {
-  function KeyComponent(props: KeyProps): ReactNode {
-    const {
-      depressed,
-      toggled,
-      showColors,
-      onClick,
-      onMouseDown,
-      onMouseEnter,
-      onMouseLeave,
-      onMouseUp,
-    } = props;
-    const cn = clsx(
-      styles.key,
-      depressed && styles.depressedKey,
-      toggled && styles.toggledKey,
-      showColors && fingerStyleName(shape.finger),
-    );
-    return (
-      <svg
-        className={cn}
-        x={shape.x * keySize}
-        y={shape.y * keySize}
+export function makeKeyComponent(shape: KeyShape): FunctionComponent<KeyProps> {
+  const children: ReactNode[] = [];
+  children.push(
+    shape.shape ? (
+      <path className={styles.button} d={shape.shape} />
+    ) : (
+      <rect
+        className={styles.button}
+        x={0}
+        y={0}
         width={shape.w * keySize - keyGap}
         height={shape.h * keySize - keyGap}
+      />
+    ),
+  );
+  const { a, b, c, d } = shape;
+  const ab = a > 0 && b > 0 && keySymbol(a) === keySymbol(b);
+  const cd = c > 0 && d > 0 && keySymbol(c) === keySymbol(d);
+  if (a > 0 && !ab) {
+    children.push(makeSymbolLabel(a, 10, 27, styles.secondarySymbol));
+  }
+  if (b > 0 && !ab) {
+    children.push(makeSymbolLabel(b, 10, 12, styles.secondarySymbol));
+  }
+  if (c > 0 && !cd) {
+    children.push(makeSymbolLabel(c, 25, 27, styles.secondarySymbol));
+  }
+  if (d > 0 && !cd) {
+    children.push(makeSymbolLabel(d, 25, 12, styles.secondarySymbol));
+  }
+  if (a > 0 && ab) {
+    children.push(makeSymbolLabel(a, 10, 12, styles.primarySymbol));
+  }
+  if (c > 0 && cd) {
+    children.push(makeSymbolLabel(c, 25, 27, styles.primarySymbol));
+  }
+  for (const label of shape.labels) {
+    children.push(makeLabel(label));
+  }
+  if (shape.homing) {
+    children.push(<circle className={styles.bump} cx={20} cy={33} r={3} />);
+  }
+  const id = shape.id;
+  const x = shape.x * keySize;
+  const y = shape.y * keySize;
+  const w = shape.w * keySize - keyGap;
+  const h = shape.h * keySize - keyGap;
+  const finger = shape.finger;
+  function KeyComponent({
+    depressed,
+    toggled,
+    showColors,
+    onClick,
+    onMouseDown,
+    onMouseEnter,
+    onMouseLeave,
+    onMouseUp,
+  }: KeyProps): ReactNode {
+    return (
+      <svg
+        className={clsx(
+          styles.key,
+          depressed && styles.depressedKey,
+          toggled && styles.toggledKey,
+          showColors && fingerStyleName(finger),
+        )}
+        x={x}
+        y={y}
+        width={w}
+        height={h}
         onClick={onClick}
         onMouseDown={onMouseDown}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
         onMouseUp={onMouseUp}
-        {...{ "data-key": shape.id }}
+        {...{ "data-key": id }}
       >
-        {children}
+        {...children}
       </svg>
     );
   }
-  KeyComponent.displayName = `Key[${shape.id}]`;
+  KeyComponent.displayName = `Key[${id}]`;
   return memo(KeyComponent);
 }
 
-export const Label = memo(function Label({
-  className,
-  label,
-}: {
-  readonly className?: ClassName;
-  readonly label: LabelShape;
-}): ReactNode {
-  const cn = clsx(styles.symbol, className);
+function makeLabel(label: LabelShape, className: any = null): ReactNode {
   const { text, pos = [10, 20], align = ["s", "m"] } = label;
   const [x, y] = pos;
   const [ha, va] = align;
-  let textAnchor = undefined;
+  let textAnchor;
   switch (ha) {
     case "s":
       textAnchor = "start";
@@ -94,7 +127,7 @@ export const Label = memo(function Label({
       textAnchor = "end";
       break;
   }
-  let dominantBaseline = undefined;
+  let dominantBaseline;
   switch (va) {
     case "b":
       dominantBaseline = "text-after-edge";
@@ -108,7 +141,7 @@ export const Label = memo(function Label({
   }
   return (
     <text
-      className={cn}
+      className={clsx(styles.symbol, className)}
       x={x}
       y={y}
       textAnchor={textAnchor}
@@ -118,136 +151,32 @@ export const Label = memo(function Label({
       {text}
     </text>
   );
-});
+}
 
-export const Primary = memo(function Primary({
-  className,
-  x,
-  y,
-  text,
-  codePoint,
-  textAnchor,
-}: {
-  readonly className?: ClassName;
-  readonly x: number;
-  readonly y: number;
-  readonly text?: string;
-  readonly codePoint?: number;
-  readonly textAnchor?: string;
-}): ReactNode {
-  if (codePoint != null && codePoint > 0) {
-    if (isDiacritic(codePoint)) {
-      text = deadKeySymbol(codePoint);
-      className = [styles.deadSymbol, className];
-    } else {
-      text = keySymbol(codePoint);
-    }
+function makeSymbolLabel(
+  codePoint: number,
+  x: number,
+  y: number,
+  className: any,
+): ReactNode {
+  let text: string;
+  if (isDiacritic(codePoint)) {
+    text = deadKeySymbol(codePoint);
+    className = clsx(styles.deadSymbol, className);
+  } else {
+    text = keySymbol(codePoint);
   }
-  const cn = clsx(styles.symbol, styles.primarySymbol, className);
-  return (
-    <text className={cn} x={x} y={y} textAnchor={textAnchor} direction="ltr">
-      {text}
-    </text>
-  );
-});
+  return makeLabel({ text, pos: [x, y], align: ["m", "m"] }, className);
+}
 
-export const Secondary = memo(function Secondary({
-  className,
-  x,
-  y,
-  text,
-  codePoint,
-  textAnchor,
-}: {
-  readonly className?: ClassName;
-  readonly x: number;
-  readonly y: number;
-  readonly text?: string;
-  readonly codePoint?: number;
-  readonly textAnchor?: string;
-}): ReactNode {
-  if (codePoint != null && codePoint > 0) {
-    if (isDiacritic(codePoint)) {
-      text = deadKeySymbol(codePoint);
-      className = [styles.deadSymbol, className];
-    } else {
-      text = keySymbol(codePoint);
-    }
-  }
-  const cn = clsx(styles.symbol, styles.secondarySymbol, className);
-  return (
-    <text className={cn} x={x} y={y} textAnchor={textAnchor} direction="ltr">
-      {text}
-    </text>
-  );
-});
-
-export const Patterns = memo(function Patterns(): ReactNode {
-  const x = "M10 0H0v10h10z";
-  const a = "M-1 1l2-2M0 10L10 0M9 11l2-2";
-  const b = "M11 1L9-1m1 11L0 0m1 11l-2-2";
-  return (
-    <>
-      <pattern
-        id="finger-pinky"
-        patternUnits="userSpaceOnUse"
-        width="10"
-        height="10"
-      >
-        <path className={styles.patternPinky} d={x} />
-      </pattern>
-      <pattern
-        id="finger-ring"
-        patternUnits="userSpaceOnUse"
-        width="10"
-        height="10"
-      >
-        <path className={styles.patternRing} d={x} />
-      </pattern>
-      <pattern
-        id="finger-middle"
-        patternUnits="userSpaceOnUse"
-        width="10"
-        height="10"
-      >
-        <path className={styles.patternMiddle} d={x} />
-      </pattern>
-      <pattern
-        id="finger-indexLeft"
-        patternUnits="userSpaceOnUse"
-        width="10"
-        height="10"
-      >
-        <path className={styles.patternIndexLeft} d={x} />
-      </pattern>
-      <pattern
-        id="finger-indexRight"
-        patternUnits="userSpaceOnUse"
-        width="10"
-        height="10"
-      >
-        <path className={styles.patternIndexRight} d={x} />
-      </pattern>
-      <pattern
-        id="finger-thumb"
-        patternUnits="userSpaceOnUse"
-        width="10"
-        height="10"
-      >
-        <path className={styles.patternThumb} d={x} />
-      </pattern>
-    </>
-  );
-});
-
-export function keySymbol(codePoint: number): string {
+function keySymbol(codePoint: number): string {
   if (codePoint === /* ß */ 0x00df || codePoint === /* ẞ */ 0x1e9e) {
     return "ẞ";
   }
   return String.fromCodePoint(codePoint).toUpperCase();
 }
 
-export function deadKeySymbol(codePoint: number): string {
+function deadKeySymbol(codePoint: number): string {
   return String.fromCodePoint(/* ◌ */ 0x25cc, codePoint);
 }
 

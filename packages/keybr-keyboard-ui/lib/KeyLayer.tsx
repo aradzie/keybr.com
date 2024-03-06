@@ -7,8 +7,7 @@ import {
   useMemo,
 } from "react";
 import { frameWidth } from "./constants.ts";
-import { type KeyProps } from "./Key.tsx";
-import { makeKeyComponent } from "./keys.tsx";
+import { type KeyProps, makeKeyComponent } from "./Key.tsx";
 
 type KeyId = string;
 type KeyIdList = readonly KeyId[];
