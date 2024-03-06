@@ -1,5 +1,7 @@
 import { useCollator } from "@keybr/intl";
 import {
+  Geometry,
+  KeyboardOptions,
   keyboardProps,
   Language,
   Layout,
@@ -53,11 +55,10 @@ export function KeyboardSettings(): ReactNode {
 
 function LayoutProp(): ReactNode {
   const { formatMessage } = useIntl();
+  const { formatLanguageName, formatLayoutName } = useFormattedNames();
+  const { compare } = useCollator();
   const { settings, updateSettings } = useSettings();
-  const layout = settings.get(keyboardProps.layout);
-  const emulate = settings.get(keyboardProps.emulate);
-  const languageOptions = useLanguageOptions();
-  const layoutOptions = useLayoutOptions(layout);
+  const options = KeyboardOptions.from(settings);
   return (
     <>
       <FieldList>
@@ -69,17 +70,17 @@ function LayoutProp(): ReactNode {
         </Field>
         <Field>
           <OptionList
-            options={languageOptions}
-            value={layout.language.id}
+            options={options
+              .selectableLanguages()
+              .map((item) => ({
+                value: item.id,
+                name: formatLanguageName(item),
+              }))
+              .sort((a, b) => compare(a.name, b.name))}
+            value={options.language.id}
             onSelect={(id) => {
-              const [layout] = Layout.ALL.filter(
-                ({ language }) => language.id === id,
-              );
-              const [geometry] = layout.geometries;
               updateSettings(
-                settings
-                  .set(keyboardProps.layout, layout)
-                  .set(keyboardProps.geometry, geometry),
+                options.withLanguage(Language.ALL.get(id)).save(settings),
               );
             }}
           />
@@ -92,23 +93,22 @@ function LayoutProp(): ReactNode {
         </Field>
         <Field>
           <OptionList
-            options={layoutOptions}
-            value={layout.id}
+            options={options.selectableLayouts().map((item) => ({
+              value: item.id,
+              name: formatLayoutName(item),
+            }))}
+            value={options.layout.id}
             onSelect={(id) => {
-              const layout = Layout.ALL.get(id);
-              const [geometry] = layout.geometries;
               updateSettings(
-                settings
-                  .set(keyboardProps.layout, layout)
-                  .set(keyboardProps.geometry, geometry),
+                options.withLayout(Layout.ALL.get(id)).save(settings),
               );
             }}
           />
         </Field>
         <Field>
           <CheckBox
-            checked={emulate}
-            disabled={!layout.emulate}
+            checked={settings.get(keyboardProps.emulate)}
+            disabled={!options.layout.emulate}
             label={formatMessage({
               id: "keyboard.emulate.label",
               defaultMessage: "Emulate layout",
@@ -149,8 +149,7 @@ function KeyboardPreview(): ReactNode {
 function GeometryProp(): ReactNode {
   const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
-  const layout = settings.get(keyboardProps.layout);
-  const geometry = settings.get(keyboardProps.geometry);
+  const options = KeyboardOptions.from(settings);
   return (
     <>
       <FieldList>
@@ -162,14 +161,14 @@ function GeometryProp(): ReactNode {
         </Field>
         <Field>
           <OptionList
-            options={layout.geometries.map((item) => ({
+            options={options.selectableGeometries().map((item) => ({
               value: item.id,
               name: item.name,
             }))}
-            value={geometry.id}
+            value={options.geometry.id}
             onSelect={(id) => {
               updateSettings(
-                settings.set(keyboardProps.geometry, layout.geometries.get(id)),
+                options.withGeometry(Geometry.ALL.get(id)).save(settings),
               );
             }}
           />
@@ -191,25 +190,6 @@ function GeometryProp(): ReactNode {
       </FieldList>
     </>
   );
-}
-
-function useLanguageOptions() {
-  const { formatLanguageName } = useFormattedNames();
-  const { compare } = useCollator();
-  return Language.ALL.map((item) => ({
-    value: item.id,
-    name: formatLanguageName(item),
-  })).sort((a, b) => compare(a.name, b.name));
-}
-
-function useLayoutOptions(layout: Layout) {
-  const { formatLayoutName } = useFormattedNames();
-  return Layout.ALL.filter(
-    ({ language }) => language.id === layout.language.id,
-  ).map((item) => ({
-    value: item.id,
-    name: formatLayoutName(item),
-  }));
 }
 
 function useDepressedKeys(): readonly string[] {

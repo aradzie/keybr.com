@@ -47,6 +47,10 @@ export class Enum<T extends EnumItem> implements Iterable<T> {
     return this._items.indexOf(item);
   }
 
+  has(item: T): boolean {
+    return this._items.includes(item);
+  }
+
   get(id: string): T;
   get(id: string | null, defaultValue: T): T;
   get(id: string | null, defaultValue: T | null): T | null;
@@ -140,6 +144,10 @@ export class XEnum<T extends XEnumItem> implements Iterable<T> {
 
   indexOf(item: T): number {
     return this._items.indexOf(item);
+  }
+
+  has(item: T): boolean {
+    return this._items.includes(item);
   }
 
   get(id: string): T;

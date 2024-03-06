@@ -1,4 +1,8 @@
-import { KeyboardContext, keyboardProps, loadKeyboard } from "@keybr/keyboard";
+import {
+  KeyboardContext,
+  KeyboardOptions,
+  loadKeyboard,
+} from "@keybr/keyboard";
 import { Screen } from "@keybr/pages-shared";
 import { type Settings, SettingsContext, useSettings } from "@keybr/settings";
 import { TypingSettings } from "@keybr/textinput-ui";
@@ -28,9 +32,7 @@ export function SettingsScreen({
   const { settings } = useSettings();
   const [newSettings, setNewSettings] = useState(settings);
   const keyboard = useMemo(() => {
-    const layout = newSettings.get(keyboardProps.layout);
-    const geometry = newSettings.get(keyboardProps.geometry);
-    return loadKeyboard(layout, geometry);
+    return loadKeyboard(KeyboardOptions.from(newSettings));
   }, [newSettings]);
   return (
     <SettingsContext.Provider

@@ -54,6 +54,7 @@ import {
 import { Geometry } from "./geometry.ts";
 import { Keyboard } from "./keyboard.ts";
 import { Layout } from "./layout.ts";
+import { KeyboardOptions } from "./settings.ts";
 import { type CodePointDict, type GeometryDict } from "./types.ts";
 
 const layoutDict = new Map<Layout, CodePointDict>([
@@ -111,10 +112,31 @@ const geometryDict = new Map<Geometry, GeometryDict>([
   [Geometry.STANDARD_102_FULL, STANDARD_102_FULL],
 ]);
 
-export function loadKeyboard(
-  layout: Layout,
-  geometry: Geometry = Geometry.STANDARD_101,
-): Keyboard {
+export function loadKeyboard(options: KeyboardOptions): Keyboard;
+export function loadKeyboard(layout: Layout): Keyboard;
+export function loadKeyboard(layout: Layout, geometry: Geometry): Keyboard;
+export function loadKeyboard(...args: any[]): Keyboard {
+  const l = args.length;
+  let options: KeyboardOptions, layout: Layout, geometry: Geometry;
+  if (l === 1 && (options = args[0]) instanceof KeyboardOptions) {
+    const { layout, geometry } = options;
+    return loadImpl(layout, geometry);
+  }
+  if (l === 1 && (layout = args[0]) instanceof Layout) {
+    const [geometry] = layout.geometries;
+    return loadImpl(layout, geometry);
+  }
+  if (
+    l === 2 &&
+    (layout = args[0]) instanceof Layout &&
+    (geometry = args[1]) instanceof Geometry
+  ) {
+    return loadImpl(layout, geometry);
+  }
+  throw new TypeError();
+}
+
+function loadImpl(layout: Layout, geometry: Geometry): Keyboard {
   return new Keyboard(
     layout,
     layoutDict.get(layout)!,

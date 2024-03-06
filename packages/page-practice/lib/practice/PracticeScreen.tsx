@@ -1,4 +1,9 @@
-import { KeyboardContext, keyboardProps, loadKeyboard } from "@keybr/keyboard";
+import {
+  KeyboardContext,
+  KeyboardOptions,
+  keyboardProps,
+  loadKeyboard,
+} from "@keybr/keyboard";
 import { type Lesson } from "@keybr/lesson";
 import { LessonLoader } from "@keybr/lesson-loader";
 import { ResultGroups, useResults } from "@keybr/result";
@@ -19,9 +24,7 @@ export function PracticeScreen({
   readonly onConfigure: () => void;
 }): ReactNode {
   const { settings } = useSettings();
-  const layout = settings.get(keyboardProps.layout);
-  const geometry = settings.get(keyboardProps.geometry);
-  const keyboard = loadKeyboard(layout, geometry);
+  const keyboard = loadKeyboard(KeyboardOptions.from(settings));
   return (
     <KeyboardContext.Provider value={keyboard}>
       <LessonLoader>
