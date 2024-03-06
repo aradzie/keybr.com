@@ -4,6 +4,7 @@ import {
   type FingerId,
   type GeometryDict,
   type KeyId,
+  type LabelShape,
 } from "./types.ts";
 
 export class KeyShape {
@@ -23,6 +24,8 @@ export class KeyShape {
   readonly ry: number;
   /** Rotation angle. */
   readonly ra: number;
+  /** Key labels. */
+  readonly labels: readonly LabelShape[];
   /** Key shape SVG path. */
   readonly shape: string | null;
   /** The finger to type this key with. */
@@ -43,7 +46,8 @@ export class KeyShape {
     geometryConf: GeometryDict["keyId"],
     codePointConf: CodePointDict["keyId"] | null,
   ) {
-    const { x, y, w, h, rx, ry, ra, shape, finger, features } = geometryConf;
+    const { x, y, w, h, rx, ry, ra, labels, shape, finger, features } =
+      geometryConf;
     const [a, b, c, d] = codePointConf ?? [];
     this.id = id;
     this.x = x;
@@ -53,6 +57,7 @@ export class KeyShape {
     this.rx = rx ?? 0;
     this.ry = ry ?? 0;
     this.ra = ra ?? 0;
+    this.labels = labels ?? [];
     this.shape = shape ?? null;
     this.finger = finger ?? null;
     this.features = features ?? [];

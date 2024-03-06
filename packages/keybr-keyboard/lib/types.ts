@@ -38,8 +38,19 @@ export type GeometryDict = {
     readonly rx?: number;
     readonly ry?: number;
     readonly ra?: number;
+    readonly labels?: readonly LabelShape[];
     readonly shape?: string;
     readonly finger?: FingerId;
     readonly features?: readonly string[];
   };
+};
+
+/** A static text label on a key cap. */
+export type LabelShape = {
+  readonly text: string;
+  readonly pos?: readonly [x: number, y: number];
+  readonly align?: readonly [
+    h: /* start */ "s" | /* middle */ "m" | /* end */ "e",
+    v: /* bottom */ "b" | /* middle */ "m" | /* top */ "t",
+  ];
 };

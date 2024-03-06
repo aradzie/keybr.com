@@ -1,7 +1,7 @@
 import { KeyShape } from "@keybr/keyboard";
 import test from "ava";
 import TestRenderer from "react-test-renderer";
-import { keyTemplate, Symbol } from "./Key.tsx";
+import { keyTemplate, Label } from "./Key.tsx";
 
 test("render", (t) => {
   const shape = new KeyShape(
@@ -20,7 +20,10 @@ test("render", (t) => {
     [0x0061, 0x0062, 0x0063, 0x0064],
   );
 
-  const Key = keyTemplate(shape, <Symbol x={15} y={25} text="Label" />);
+  const Key = keyTemplate(
+    shape,
+    <Label label={{ text: "Label", pos: [20, 20], align: ["m", "m"] }} />,
+  );
 
   const testRenderer = TestRenderer.create(<Key />);
 

@@ -5,6 +5,11 @@ export const JAPANESE_106: GeometryDict = {
   IntlHanZen: {
     x: 0,
     y: 0,
+    labels: [
+      { text: "半角/", pos: [20, 0], align: ["m", "t"] },
+      { text: "全角/", pos: [20, 11], align: ["m", "t"] },
+      { text: "漢字", pos: [20, 22], align: ["m", "t"] },
+    ],
     finger: "pinky",
   },
   Digit1: {
@@ -75,6 +80,10 @@ export const JAPANESE_106: GeometryDict = {
   Backspace: {
     x: 14,
     y: 0,
+    labels: [
+      { text: "Back", pos: [5, 5], align: ["s", "t"] },
+      { text: "space", pos: [5, 18], align: ["s", "t"] },
+    ],
     finger: "pinky",
   },
   Tab: {
@@ -82,6 +91,7 @@ export const JAPANESE_106: GeometryDict = {
     y: 1,
     w: 1.5,
     h: 1,
+    labels: [{ text: "Tab" }],
     finger: "pinky",
   },
   KeyQ: {
@@ -149,6 +159,7 @@ export const JAPANESE_106: GeometryDict = {
     y: 2,
     w: 1.75,
     h: 1,
+    labels: [{ text: "Caps Lock" }],
     finger: "pinky",
   },
   KeyA: {
@@ -218,6 +229,7 @@ export const JAPANESE_106: GeometryDict = {
     y: 1,
     w: 1.5,
     h: 2,
+    labels: [{ text: "Enter" }],
     shape: "m 0,0 0,38 10,0 0,40 48,0 0,-80 z",
     finger: "pinky",
   },
@@ -226,6 +238,7 @@ export const JAPANESE_106: GeometryDict = {
     y: 3,
     w: 2.25,
     h: 1,
+    labels: [{ text: "Shift" }],
     finger: "pinky",
   },
   KeyZ: {
@@ -288,6 +301,7 @@ export const JAPANESE_106: GeometryDict = {
     y: 3,
     w: 1.75,
     h: 1,
+    labels: [{ text: "Shift" }],
     finger: "pinky",
   },
   ControlLeft: {
@@ -295,6 +309,7 @@ export const JAPANESE_106: GeometryDict = {
     y: 4,
     w: 1.5,
     h: 1,
+    labels: [{ text: "Ctrl" }],
     finger: "pinky",
   },
   AltLeft: {
@@ -302,6 +317,7 @@ export const JAPANESE_106: GeometryDict = {
     y: 4,
     w: 1.5,
     h: 1,
+    labels: [{ text: "Alt" }],
     finger: "pinky",
   },
   IntlMuhenkan: {
@@ -309,6 +325,7 @@ export const JAPANESE_106: GeometryDict = {
     y: 4,
     w: 1,
     h: 1,
+    labels: [{ text: "無変換", pos: [20, 20], align: ["m", "m"] }],
     finger: "thumb",
   },
   Space: {
@@ -322,12 +339,18 @@ export const JAPANESE_106: GeometryDict = {
     x: 10,
     y: 4,
     h: 1,
+    labels: [{ text: "変換", pos: [20, 20], align: ["m", "m"] }],
     finger: "thumb",
   },
   IntlHiraKata: {
     x: 11,
     y: 4,
     h: 1,
+    labels: [
+      { text: "カタカナ", pos: [20, 0], align: ["m", "t"] },
+      { text: "ひらがな", pos: [20, 11], align: ["m", "t"] },
+      { text: "ローマ字", pos: [20, 22], align: ["m", "t"] },
+    ],
     finger: "thumb",
   },
   AltRight: {
@@ -335,6 +358,7 @@ export const JAPANESE_106: GeometryDict = {
     y: 4,
     w: 1.5,
     h: 1,
+    labels: [{ text: "Alt" }],
     finger: "pinky",
   },
   ControlRight: {
@@ -342,6 +366,7 @@ export const JAPANESE_106: GeometryDict = {
     y: 4,
     w: 1.5,
     h: 1,
+    labels: [{ text: "Ctrl" }],
     finger: "pinky",
   },
 };

@@ -72,6 +72,7 @@ export const MATRIX: GeometryDict = {
     y: 1,
     w: 1.5,
     h: 1,
+    labels: [{ text: "Tab" }],
     finger: "pinky",
   },
   KeyQ: {
@@ -137,6 +138,7 @@ export const MATRIX: GeometryDict = {
     y: 2,
     w: 1.5,
     h: 1,
+    labels: [{ text: "Caps Lock" }],
     finger: "pinky",
   },
   KeyA: {
@@ -204,6 +206,7 @@ export const MATRIX: GeometryDict = {
     y: 3,
     w: 1.5,
     h: 1,
+    labels: [{ text: "Shift" }],
     finger: "pinky",
   },
   KeyZ: {
@@ -260,6 +263,7 @@ export const MATRIX: GeometryDict = {
     x: 12.5,
     y: 3,
     w: 1.5,
+    labels: [{ text: "Shift" }],
     finger: "pinky",
   },
 };

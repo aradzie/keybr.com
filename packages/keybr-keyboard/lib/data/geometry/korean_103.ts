@@ -70,11 +70,16 @@ export const KOREAN_103: GeometryDict = {
   IntlYen: {
     x: 13,
     y: 0,
+    labels: [{ text: "?" }],
     finger: "pinky",
   },
   Backspace: {
     x: 14,
     y: 0,
+    labels: [
+      { text: "Back", pos: [5, 5], align: ["s", "t"] },
+      { text: "space", pos: [5, 18], align: ["s", "t"] },
+    ],
     finger: "pinky",
   },
   Tab: {
@@ -82,6 +87,7 @@ export const KOREAN_103: GeometryDict = {
     y: 1,
     w: 1.5,
     h: 1,
+    labels: [{ text: "Tab" }],
     finger: "pinky",
   },
   KeyQ: {
@@ -149,6 +155,7 @@ export const KOREAN_103: GeometryDict = {
     y: 2,
     w: 1.75,
     h: 1,
+    labels: [{ text: "Caps Lock" }],
     finger: "pinky",
   },
   KeyA: {
@@ -213,6 +220,7 @@ export const KOREAN_103: GeometryDict = {
     y: 1,
     w: 2.25,
     h: 2,
+    labels: [{ text: "Enter", pos: [50, 40], align: ["m", "m"] }],
     shape: "m 30 0 l 0 40 l -30 0 l 0 40 l 88 0 l 0 -80 z",
     finger: "pinky",
   },
@@ -221,6 +229,7 @@ export const KOREAN_103: GeometryDict = {
     y: 3,
     w: 2.25,
     h: 1,
+    labels: [{ text: "Shift" }],
     finger: "pinky",
   },
   KeyZ: {
@@ -278,6 +287,7 @@ export const KOREAN_103: GeometryDict = {
     y: 3,
     w: 2.75,
     h: 1,
+    labels: [{ text: "Shift" }],
     finger: "pinky",
   },
   ControlLeft: {
@@ -285,6 +295,7 @@ export const KOREAN_103: GeometryDict = {
     y: 4,
     w: 1.5,
     h: 1,
+    labels: [{ text: "Ctrl" }],
     finger: "pinky",
   },
   AltLeft: {
@@ -292,6 +303,7 @@ export const KOREAN_103: GeometryDict = {
     y: 4,
     w: 1.5,
     h: 1,
+    labels: [{ text: "Alt" }],
     finger: "pinky",
   },
   Lang2: {
@@ -299,6 +311,7 @@ export const KOREAN_103: GeometryDict = {
     y: 4,
     w: 1.5,
     h: 1,
+    labels: [{ text: "한자" }],
     finger: "thumb",
   },
   Space: {
@@ -313,6 +326,7 @@ export const KOREAN_103: GeometryDict = {
     y: 4,
     w: 1.5,
     h: 1,
+    labels: [{ text: "한/영" }],
     finger: "thumb",
   },
   AltRight: {
@@ -320,6 +334,7 @@ export const KOREAN_103: GeometryDict = {
     y: 4,
     w: 1.5,
     h: 1,
+    labels: [{ text: "Alt" }],
     finger: "pinky",
   },
   ControlRight: {
@@ -327,6 +342,7 @@ export const KOREAN_103: GeometryDict = {
     y: 4,
     w: 1.5,
     h: 1,
+    labels: [{ text: "Ctrl" }],
     finger: "pinky",
   },
 };

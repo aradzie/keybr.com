@@ -72,6 +72,7 @@ export const STANDARD_101: GeometryDict = {
     y: 0,
     w: 2,
     h: 1,
+    labels: [{ text: "Backspace" }],
     finger: "pinky",
   },
   Tab: {
@@ -79,6 +80,7 @@ export const STANDARD_101: GeometryDict = {
     y: 1,
     w: 1.5,
     h: 1,
+    labels: [{ text: "Tab" }],
     finger: "pinky",
   },
   KeyQ: {
@@ -153,6 +155,7 @@ export const STANDARD_101: GeometryDict = {
     y: 2,
     w: 1.75,
     h: 1,
+    labels: [{ text: "Caps Lock" }],
     finger: "pinky",
   },
   KeyA: {
@@ -217,6 +220,7 @@ export const STANDARD_101: GeometryDict = {
     y: 2,
     w: 2.25,
     h: 1,
+    labels: [{ text: "Enter" }],
     finger: "pinky",
   },
   ShiftLeft: {
@@ -224,6 +228,7 @@ export const STANDARD_101: GeometryDict = {
     y: 3,
     w: 2.25,
     h: 1,
+    labels: [{ text: "Shift" }],
     finger: "pinky",
   },
   KeyZ: {
@@ -281,6 +286,7 @@ export const STANDARD_101: GeometryDict = {
     y: 3,
     w: 2.75,
     h: 1,
+    labels: [{ text: "Shift" }],
     finger: "pinky",
   },
   ControlLeft: {
@@ -288,6 +294,7 @@ export const STANDARD_101: GeometryDict = {
     y: 4,
     w: 1.5,
     h: 1,
+    labels: [{ text: "Ctrl" }],
     finger: "pinky",
   },
   AltLeft: {
@@ -295,6 +302,7 @@ export const STANDARD_101: GeometryDict = {
     y: 4,
     w: 1.5,
     h: 1,
+    labels: [{ text: "Alt" }],
     finger: "pinky",
   },
   Space: {
@@ -309,6 +317,7 @@ export const STANDARD_101: GeometryDict = {
     y: 4,
     w: 1.5,
     h: 1,
+    labels: [{ text: "Alt" }],
     finger: "pinky",
   },
   ControlRight: {
@@ -316,6 +325,7 @@ export const STANDARD_101: GeometryDict = {
     y: 4,
     w: 1.5,
     h: 1,
+    labels: [{ text: "Ctrl" }],
     finger: "pinky",
   },
 };

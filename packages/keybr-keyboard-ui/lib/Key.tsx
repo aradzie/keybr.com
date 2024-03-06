@@ -1,4 +1,9 @@
-import { type FingerId, isDiacritic, type KeyShape } from "@keybr/keyboard";
+import {
+  type FingerId,
+  isDiacritic,
+  type KeyShape,
+  type LabelShape,
+} from "@keybr/keyboard";
 import { clsx } from "clsx";
 import {
   type FunctionComponent,
@@ -62,28 +67,54 @@ export function keyTemplate(
       </svg>
     );
   }
-
   KeyComponent.displayName = `Key[${shape.id}]`;
-
   return memo(KeyComponent);
 }
 
-export const Symbol = memo(function Symbol({
+export const Label = memo(function Label({
   className,
-  x,
-  y,
-  text,
-  textAnchor,
+  label,
 }: {
   readonly className?: ClassName;
-  readonly x: number;
-  readonly y: number;
-  readonly text: string;
-  readonly textAnchor?: string;
+  readonly label: LabelShape;
 }): ReactNode {
   const cn = clsx(styles.symbol, className);
+  const { text, pos = [10, 20], align = ["s", "m"] } = label;
+  const [x, y] = pos;
+  const [ha, va] = align;
+  let textAnchor = undefined;
+  switch (ha) {
+    case "s":
+      textAnchor = "start";
+      break;
+    case "m":
+      textAnchor = "middle";
+      break;
+    case "e":
+      textAnchor = "end";
+      break;
+  }
+  let dominantBaseline = undefined;
+  switch (va) {
+    case "b":
+      dominantBaseline = "text-after-edge";
+      break;
+    case "m":
+      dominantBaseline = "middle";
+      break;
+    case "t":
+      dominantBaseline = "text-before-edge";
+      break;
+  }
   return (
-    <text className={cn} x={x} y={y} textAnchor={textAnchor} direction="ltr">
+    <text
+      className={cn}
+      x={x}
+      y={y}
+      textAnchor={textAnchor}
+      dominantBaseline={dominantBaseline}
+      direction="ltr"
+    >
       {text}
     </text>
   );
