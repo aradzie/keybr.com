@@ -160,7 +160,7 @@ export const MATRIX: GeometryDict = {
     x: 4.5,
     y: 2,
     finger: "indexLeft",
-    features: ["homing"],
+    homing: true,
   },
   KeyG: {
     x: 5.5,
@@ -176,7 +176,7 @@ export const MATRIX: GeometryDict = {
     x: 8.5,
     y: 2,
     finger: "indexRight",
-    features: ["homing"],
+    homing: true,
   },
   KeyK: {
     x: 9.5,

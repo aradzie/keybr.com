@@ -177,7 +177,7 @@ export const STANDARD_101: GeometryDict = {
     x: 4.75,
     y: 2,
     finger: "indexLeft",
-    features: ["homing"],
+    homing: true,
   },
   KeyG: {
     x: 5.75,
@@ -193,7 +193,7 @@ export const STANDARD_101: GeometryDict = {
     x: 7.75,
     y: 2,
     finger: "indexRight",
-    features: ["homing"],
+    homing: true,
   },
   KeyK: {
     x: 8.75,

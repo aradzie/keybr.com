@@ -37,7 +37,7 @@ export function makeKeyComponent(shape: KeyShape): FunctionComponent<KeyProps> {
   for (const label of shape.labels) {
     children.push(<Label label={label} />);
   }
-  if (shape.features.includes("homing")) {
+  if (shape.homing) {
     children.push(<circle className={styles.bump} cx={20} cy={33} r={3} />);
   }
   return keyTemplate(

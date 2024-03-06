@@ -30,8 +30,8 @@ export class KeyShape {
   readonly shape: string | null;
   /** The finger to type this key with. */
   readonly finger: FingerId | null;
-  /** Key features, such as homing, special, etc. */
-  readonly features: readonly string[];
+  /** Whether this is a homing key. */
+  readonly homing: boolean;
   /** The code point produced by this key. */
   readonly a: CodePoint;
   /** The code point produced by this key. */
@@ -46,7 +46,7 @@ export class KeyShape {
     geometryConf: GeometryDict["keyId"],
     codePointConf: CodePointDict["keyId"] | null,
   ) {
-    const { x, y, w, h, rx, ry, ra, labels, shape, finger, features } =
+    const { x, y, w, h, rx, ry, ra, labels, shape, finger, homing } =
       geometryConf;
     const [a, b, c, d] = codePointConf ?? [];
     this.id = id;
@@ -60,7 +60,7 @@ export class KeyShape {
     this.labels = labels ?? [];
     this.shape = shape ?? null;
     this.finger = finger ?? null;
-    this.features = features ?? [];
+    this.homing = homing ?? false;
     this.a = a ?? 0;
     this.b = b ?? 0;
     this.c = c ?? 0;

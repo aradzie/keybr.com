@@ -41,7 +41,7 @@ export type GeometryDict = {
     readonly labels?: readonly LabelShape[];
     readonly shape?: string;
     readonly finger?: FingerId;
-    readonly features?: readonly string[];
+    readonly homing?: boolean;
   };
 };
 
