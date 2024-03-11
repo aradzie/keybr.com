@@ -13,12 +13,12 @@ export function openSettingsStorage(
     return new (class implements SettingsStorage {
       async load(): Promise<Settings> {
         if (json != null) {
-          return Settings.fromJSON(json);
+          return new Settings(json as any);
         } else {
           const value = storage.get(STORAGE_KEY);
           if (value != null) {
             storage.set(STORAGE_KEY, null);
-            const settings = Settings.fromJSON(value);
+            const settings = new Settings(value as any);
             await this.send(settings);
             return settings;
           } else {
@@ -44,7 +44,7 @@ export function openSettingsStorage(
       async load(): Promise<Settings> {
         const value = storage.get(STORAGE_KEY);
         if (value != null) {
-          return Settings.fromJSON(value);
+          return new Settings(value as any);
         } else {
           const settings = new Settings(undefined, true);
           storage.set(STORAGE_KEY, settings.toJSON());

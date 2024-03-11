@@ -22,7 +22,7 @@ export class Settings {
     if (!isPlainObject(json)) {
       throw new TypeError();
     }
-    this._json = cloneJson(json);
+    this._json = migrate(cloneJson(json));
     this._isNew = isNew;
   }
 
@@ -49,10 +49,6 @@ export class Settings {
     }
     return Object.fromEntries(entries);
   }
-
-  static fromJSON(json: unknown): Settings {
-    return new Settings(isPlainObject(json) ? migrate(json) : undefined);
-  }
 }
 
 function createJson(): Json {
@@ -67,7 +63,7 @@ function mergeJson(a: Json, b: Json): Json {
   return Object.assign(createJson(), a, b);
 }
 
-function migrate(json: any): any {
+function migrate(json: Json): Json {
   let layoutId = json["keyboard.layout"];
   if (typeof layoutId === "string") {
     const remap = {
@@ -88,7 +84,7 @@ function migrate(json: any): any {
       "us-colemak-dh-matrix": "en-colemak-dh-matrix",
       "us-dvorak": "en-dvorak",
       "us-workman": "en-workman",
-    } as Record<string, string>;
+    } as Json;
     layoutId = remap[layoutId];
     if (typeof layoutId === "string") {
       json["keyboard.layout"] = layoutId;

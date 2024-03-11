@@ -24,7 +24,7 @@ export class Controller {
     @body.json(null, { maxLength: 65536 }) value: unknown,
   ) {
     const user = ctx.state.requireUser();
-    await this.database.set(user.id!, Settings.fromJSON(value));
+    await this.database.set(user.id!, new Settings(value as any));
     ctx.response.status = 204;
   }
 

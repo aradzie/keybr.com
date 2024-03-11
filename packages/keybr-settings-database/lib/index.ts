@@ -46,7 +46,7 @@ export class SettingsDatabase {
               throw err;
             }
           }
-          return Settings.fromJSON(json);
+          return new Settings(json as any);
         } finally {
           await lock.rollback();
         }
