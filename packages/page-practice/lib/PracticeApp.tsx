@@ -18,7 +18,7 @@ export function PracticeApp(): ReactNode {
   } else {
     return (
       <PracticeScreen
-        onConfigure={(): void => {
+        onConfigure={() => {
           setConfigure(true);
         }}
       />

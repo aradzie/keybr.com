@@ -77,99 +77,47 @@ test("change props", (t) => {
 });
 
 test("read boolean", (t) => {
-  const json = Object.create(null);
-  const settings = new Settings(json);
-
-  t.is(settings.get(props.boolean), false);
-
-  json[props.boolean.key] = null;
-  t.is(settings.get(props.boolean), false);
-
-  json[props.boolean.key] = "abc";
-  t.is(settings.get(props.boolean), false);
-
-  json[props.boolean.key] = true;
-  t.is(settings.get(props.boolean), true);
+  const p = props.boolean;
+  t.is(new Settings().get(p), false);
+  t.is(new Settings({ [p.key]: null }).get(p), false);
+  t.is(new Settings({ [p.key]: "abc" }).get(p), false);
+  t.is(new Settings({ [p.key]: true }).get(p), true);
 });
 
 test("read number", (t) => {
-  const json = Object.create(null);
-  const settings = new Settings(json);
-
-  t.is(settings.get(props.number), 0);
-
-  json[props.number.key] = null;
-  t.is(settings.get(props.number), 0);
-
-  json[props.number.key] = "abc";
-  t.is(settings.get(props.number), 0);
-
-  json[props.number.key] = 1000;
-  t.is(settings.get(props.number), 100);
-
-  json[props.number.key] = 99;
-  t.is(settings.get(props.number), 99);
+  const p = props.number;
+  t.is(new Settings().get(p), 0);
+  t.is(new Settings({ [p.key]: null }).get(p), 0);
+  t.is(new Settings({ [p.key]: "abc" }).get(p), 0);
+  t.is(new Settings({ [p.key]: 1000 }).get(p), 100);
+  t.is(new Settings({ [p.key]: 99 }).get(p), 99);
 });
 
 test("read string", (t) => {
-  const json = Object.create(null);
-  const settings = new Settings(json);
-
-  t.is(settings.get(props.string), "");
-
-  json[props.string.key] = null;
-  t.is(settings.get(props.string), "");
-
-  json[props.string.key] = 123;
-  t.is(settings.get(props.string), "");
-
-  json[props.string.key] = "abcxyz";
-  t.is(settings.get(props.string), "abc");
-
-  json[props.string.key] = "123";
-  t.is(settings.get(props.string), "123");
+  const p = props.string;
+  t.is(new Settings().get(p), "");
+  t.is(new Settings({ [p.key]: null }).get(p), "");
+  t.is(new Settings({ [p.key]: 123 }).get(p), "");
+  t.is(new Settings({ [p.key]: "abcxyz" }).get(p), "abc");
+  t.is(new Settings({ [p.key]: "123" }).get(p), "123");
 });
 
 test("read enum", (t) => {
-  const json = Object.create(null);
-  const settings = new Settings(json);
-
-  t.is(settings.get(props.enum), Letter.None);
-
-  json[props.enum.key] = null;
-  t.is(settings.get(props.enum), Letter.None);
-
-  json[props.enum.key] = 123;
-  t.is(settings.get(props.enum), Letter.None);
-
-  json[props.enum.key] = "abc";
-  t.is(settings.get(props.enum), Letter.None);
-
-  json[props.enum.key] = "a";
-  t.is(settings.get(props.enum), Letter.A);
-
-  json[props.enum.key] = "b";
-  t.is(settings.get(props.enum), Letter.B);
+  const p = props.enum;
+  t.is(new Settings().get(p), Letter.None);
+  t.is(new Settings({ [p.key]: null }).get(p), Letter.None);
+  t.is(new Settings({ [p.key]: 123 }).get(p), Letter.None);
+  t.is(new Settings({ [p.key]: "abc" }).get(p), Letter.None);
+  t.is(new Settings({ [p.key]: "a" }).get(props.enum), Letter.A);
+  t.is(new Settings({ [p.key]: "b" }).get(props.enum), Letter.B);
 });
 
 test("read item", (t) => {
-  const json = Object.create(null);
-  const settings = new Settings(json);
-
-  t.is(settings.get(props.item), Digit.NONE);
-
-  json[props.item.key] = null;
-  t.is(settings.get(props.item), Digit.NONE);
-
-  json[props.item.key] = 123;
-  t.is(settings.get(props.item), Digit.NONE);
-
-  json[props.item.key] = "abc";
-  t.is(settings.get(props.item), Digit.NONE);
-
-  json[props.item.key] = "one";
-  t.is(settings.get(props.item), Digit.ONE);
-
-  json[props.item.key] = "two";
-  t.is(settings.get(props.item), Digit.TWO);
+  const p = props.item;
+  t.is(new Settings().get(p), Digit.NONE);
+  t.is(new Settings({ [p.key]: null }).get(p), Digit.NONE);
+  t.is(new Settings({ [p.key]: 123 }).get(p), Digit.NONE);
+  t.is(new Settings({ [p.key]: "abc" }).get(p), Digit.NONE);
+  t.is(new Settings({ [p.key]: "one" }).get(p), Digit.ONE);
+  t.is(new Settings({ [p.key]: "two" }).get(p), Digit.TWO);
 });

@@ -1,4 +1,4 @@
-import { isPlainObject } from "lodash";
+import isPlainObject from "lodash/isPlainObject";
 import { type AnyProp } from "./props.ts";
 
 export type SettingsStorage = {
@@ -6,18 +6,23 @@ export type SettingsStorage = {
   store(settings: Settings): Promise<Settings>;
 };
 
+type Json = Record<string, unknown>;
+
+let defaultJson: Json = createJson();
+
 export class Settings {
-  private readonly _json: Record<string, unknown>;
+  static addDefaults(settings: Settings): void {
+    defaultJson = mergeJson(defaultJson, settings._json);
+  }
+
+  private readonly _json: Json;
   private readonly _isNew: boolean;
 
-  constructor(
-    json: Record<string, unknown> = Object.create(null),
-    isNew: boolean = false,
-  ) {
+  constructor(json: Json = createJson(), isNew: boolean = false) {
     if (!isPlainObject(json)) {
       throw new TypeError();
     }
-    this._json = json;
+    this._json = cloneJson(json);
     this._isNew = isNew;
   }
 
@@ -26,7 +31,7 @@ export class Settings {
   }
 
   get<T>(prop: AnyProp<T>): T {
-    return prop.fromJson(this._json[prop.key]);
+    return prop.fromJson(this._json[prop.key] ?? defaultJson[prop.key]);
   }
 
   set<T>(prop: AnyProp<T>, value: T): Settings {
@@ -37,7 +42,7 @@ export class Settings {
     return new Settings();
   }
 
-  toJSON(): Record<string, unknown> {
+  toJSON() {
     const entries = [];
     for (const key of Object.keys(this._json).sort()) {
       entries.push([key, this._json[key]]);
@@ -46,12 +51,20 @@ export class Settings {
   }
 
   static fromJSON(json: unknown): Settings {
-    return new Settings(
-      isPlainObject(json)
-        ? (migrate(json) as Record<string, unknown>)
-        : undefined,
-    );
+    return new Settings(isPlainObject(json) ? migrate(json) : undefined);
   }
+}
+
+function createJson(): Json {
+  return Object.create(null);
+}
+
+function cloneJson(o: Json): Json {
+  return Object.assign(createJson(), o);
+}
+
+function mergeJson(a: Json, b: Json): Json {
+  return Object.assign(createJson(), a, b);
 }
 
 function migrate(json: any): any {

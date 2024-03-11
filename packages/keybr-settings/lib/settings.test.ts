@@ -11,15 +11,47 @@ test("validate arguments", (t) => {
   t.throws(() => new Settings(new Map()));
 });
 
-test("to json sorts keys", (t) => {
+test("defaults", (t) => {
+  const a = stringProp("prop.a", "a");
+  const b = stringProp("prop.b", "b");
+  const c = stringProp("prop.c", "c");
+
+  t.is(new Settings().get(a), "a");
+  t.is(new Settings().get(b), "b");
+  t.is(new Settings().get(c), "c");
+
+  Settings.addDefaults(new Settings().set(a, "a0"));
+  Settings.addDefaults(new Settings().set(b, "b0"));
+  Settings.addDefaults(new Settings().set(a, "a1"));
+
+  t.is(new Settings().get(a), "a1");
+  t.is(new Settings().get(b), "b0");
+  t.is(new Settings().get(c), "c");
+
   t.deepEqual(
     Object.keys(
-      new Settings()
-        .set(stringProp("prop.c", "c"), "3")
-        .set(stringProp("prop.a", "a"), "1")
-        .set(stringProp("prop.b", "b"), "2")
+      new Settings() //
+        .set(b, "b0")
+        .set(c, "c")
         .toJSON(),
     ),
-    ["prop.a", "prop.b", "prop.c"],
+    ["prop.b", "prop.c"],
+  );
+});
+
+test("to json sorts keys", (t) => {
+  const x = stringProp("prop.x", "x");
+  const y = stringProp("prop.y", "y");
+  const z = stringProp("prop.z", "z");
+
+  t.deepEqual(
+    Object.keys(
+      new Settings() //
+        .set(z, "3")
+        .set(x, "1")
+        .set(y, "2")
+        .toJSON(),
+    ),
+    ["prop.x", "prop.y", "prop.z"],
   );
 });

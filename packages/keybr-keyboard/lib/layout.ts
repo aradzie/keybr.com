@@ -602,6 +602,33 @@ export class Layout implements XEnumItem {
     Layout.RU_RU,
   );
 
+  static findLayout(localeId: string): Layout | null {
+    const { language = null, region = null } = (() => {
+      try {
+        return new Intl.Locale(localeId);
+      } catch {
+        return {};
+      }
+    })();
+    if (language != null && region != null) {
+      const id = `${language}-${region}`.toLowerCase();
+      for (const layout of Layout.ALL) {
+        if (layout.id === id) {
+          return layout;
+        }
+      }
+    }
+    if (language != null) {
+      const id = `${language}-`.toLowerCase();
+      for (const layout of Layout.ALL) {
+        if (layout.id.startsWith(id)) {
+          return layout;
+        }
+      }
+    }
+    return null;
+  }
+
   private constructor(
     public readonly id: string,
     public readonly xid: number,
