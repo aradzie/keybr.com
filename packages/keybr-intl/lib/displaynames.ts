@@ -13,8 +13,12 @@ export const makeIntlDisplayNames = (intl: IntlShape): IntlDisplayNames => {
   if (r == null) {
     const { locale } = intl;
     const capitalize = (value: string, locale: string): string =>
-      value.substring(0, 1).toLocaleUpperCase(locale) +
-      value.substring(1).toLocaleLowerCase(locale);
+      value.replaceAll(
+        /\p{Letter}+/gu,
+        (item) =>
+          item.substring(0, 1).toLocaleUpperCase(locale) +
+          item.substring(1).toLocaleLowerCase(locale),
+      );
     (intl as any)[kIntlDisplayNames] = r = {
       formatRegionName(id: string): string {
         const dn = intl.formatters.getDisplayNames(locale, {
