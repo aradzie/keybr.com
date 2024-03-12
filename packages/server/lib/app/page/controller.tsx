@@ -5,7 +5,12 @@ import { CanonicalHandler } from "@fastr/middleware-canonical";
 import { type RouterState } from "@fastr/middleware-router";
 import { preloadLinks } from "@keybr/assets";
 import { HighScoresFactory } from "@keybr/highscores";
-import { defaultLocale, loadIntl, type LocaleId } from "@keybr/intl";
+import {
+  defaultLocale,
+  loadIntl,
+  type LocaleId,
+  PreferredLocaleContext,
+} from "@keybr/intl";
 import { ThemeContext, type ThemeControl, ThemePrefs } from "@keybr/lnf";
 import { AccountPage } from "@keybr/page-account";
 import { HelpPage } from "@keybr/page-help";
@@ -28,7 +33,7 @@ import { SettingsDatabase } from "@keybr/settings-database";
 import { type ReactElement } from "react";
 import { type IntlShape, RawIntlProvider } from "react-intl";
 import { type AuthState, pProfileOwner } from "../auth/index.ts";
-import { localePattern, pIntl } from "./intl.ts";
+import { localePattern, pIntl, preferredLocale } from "./intl.ts";
 
 @injectable()
 @controller()
@@ -275,13 +280,15 @@ export class Controller {
 
     return this.view.renderPage(
       <RawIntlProvider value={intl}>
-        <PageDataContext.Provider value={pageData}>
-          <ThemeContext.Provider
-            value={themeControl(new ThemePrefs(pageData.prefs))}
-          >
-            {element}
-          </ThemeContext.Provider>
-        </PageDataContext.Provider>
+        <PreferredLocaleContext.Provider value={preferredLocale(ctx)}>
+          <PageDataContext.Provider value={pageData}>
+            <ThemeContext.Provider
+              value={themeControl(new ThemePrefs(pageData.prefs))}
+            >
+              {element}
+            </ThemeContext.Provider>
+          </PageDataContext.Provider>
+        </PreferredLocaleContext.Provider>
       </RawIntlProvider>,
     );
   }

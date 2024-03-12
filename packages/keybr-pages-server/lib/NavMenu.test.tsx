@@ -1,4 +1,4 @@
-import { FakeIntlProvider } from "@keybr/intl";
+import { FakeIntlProvider, PreferredLocaleContext } from "@keybr/intl";
 import { PageDataContext, Sitemap } from "@keybr/pages-shared";
 import test from "ava";
 import TestRenderer from "react-test-renderer";
@@ -22,9 +22,11 @@ test("render", (t) => {
         extra: {},
       }}
     >
-      <FakeIntlProvider>
-        <NavMenu currentLink={Sitemap.practice.bind(null)} />
-      </FakeIntlProvider>
+      <PreferredLocaleContext.Provider value="pl">
+        <FakeIntlProvider>
+          <NavMenu currentLink={Sitemap.practice.bind(null)} />
+        </FakeIntlProvider>
+      </PreferredLocaleContext.Provider>
     </PageDataContext.Provider>,
   );
 

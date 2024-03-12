@@ -1,4 +1,9 @@
-import { allLocales, useIntlDisplayNames } from "@keybr/intl";
+import {
+  allLocales,
+  defaultLocale,
+  useIntlDisplayNames,
+  usePreferredLocale,
+} from "@keybr/intl";
 import {
   type BoundPageLink,
   isPremiumUser,
@@ -128,21 +133,47 @@ function LocaleSwitcher({
   readonly currentLink: BoundPageLink;
 }): ReactNode {
   const { formatLocalLanguageName } = useIntlDisplayNames();
-  const children = [];
-  for (const locale of allLocales) {
-    if (children.length > 0) {
-      children.push(" ");
-    }
-    children.push(
+  const preferredLocale = usePreferredLocale();
+  const primary = [];
+  primary.push(
+    <Link
+      className={styles.localeLink}
+      href={currentLink.formatPath(preferredLocale)}
+    >
+      {formatLocalLanguageName(preferredLocale)}
+    </Link>,
+  );
+  if (preferredLocale !== defaultLocale) {
+    primary.push(
       <Link
-        key={locale}
         className={styles.localeLink}
-        href={currentLink.formatPath(locale)}
-        title={formatLocalLanguageName(locale)}
+        href={currentLink.formatPath(defaultLocale)}
       >
-        {locale}
+        {formatLocalLanguageName(defaultLocale)}
       </Link>,
     );
   }
-  return <span className={styles.localeSwitcher}>{children}</span>;
+  const secondary = [];
+  for (const locale of allLocales) {
+    if (locale !== preferredLocale && locale !== defaultLocale) {
+      if (secondary.length > 0) {
+        secondary.push(" ");
+      }
+      secondary.push(
+        <Link
+          className={styles.localeLink}
+          href={currentLink.formatPath(locale)}
+          title={formatLocalLanguageName(locale)}
+        >
+          {locale}
+        </Link>,
+      );
+    }
+  }
+  return (
+    <>
+      {...primary}
+      <span className={styles.localeList}>{...secondary}</span>
+    </>
+  );
 }

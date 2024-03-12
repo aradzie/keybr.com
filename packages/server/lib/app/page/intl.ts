@@ -5,6 +5,7 @@ import {
   defaultLocale,
   loadIntl,
   type LocaleId,
+  selectLocale,
 } from "@keybr/intl";
 import { type IntlShape } from "react-intl";
 
@@ -12,13 +13,16 @@ export const localePattern = `(${allLocales
   .filter((locale) => locale !== defaultLocale)
   .join("|")})`;
 
-export const pIntl = async (
-  ctx: Context,
-  value: LocaleId,
-): Promise<IntlShape> => {
+export async function pIntl(ctx: Context, value: LocaleId): Promise<IntlShape> {
   if (allLocales.includes(value)) {
     return await loadIntl(value);
   } else {
     throw new NotFoundError();
   }
-};
+}
+
+export function preferredLocale(ctx: Context): LocaleId {
+  return selectLocale((...locales) =>
+    ctx.request.negotiateLanguage(...locales),
+  );
+}
