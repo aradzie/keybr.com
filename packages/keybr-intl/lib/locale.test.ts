@@ -1,15 +1,7 @@
 import test from "ava";
-import { allLocales, selectLocale } from "./locale.ts";
+import { selectLocale } from "./locale.ts";
 
-test("all locales", (t) => {
-  for (const id of allLocales) {
-    t.notThrows(() => {
-      new Intl.Locale(id);
-    });
-  }
-});
-
-test("select preferred locale", (t) => {
+test("select locale", (t) => {
   const filter =
     (...found: string[]) =>
     (...locales: string[]): string | null =>
@@ -19,7 +11,7 @@ test("select preferred locale", (t) => {
   t.is(selectLocale(filter("en")), "en");
   t.is(selectLocale(filter("en-US")), "en");
   t.is(selectLocale(filter("en-CA")), "en");
-  t.is(selectLocale(filter("pt")), "en");
+  t.is(selectLocale(filter("pt")), "pt-br");
   t.is(selectLocale(filter("pt-BR")), "pt-br");
   t.is(selectLocale(filter("pt-PT")), "en");
   t.is(selectLocale(filter("zh")), "zh-hans");

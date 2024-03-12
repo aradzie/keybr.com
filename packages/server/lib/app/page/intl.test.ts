@@ -13,12 +13,10 @@ test("negotiate the preferred language", async (t) => {
     }),
   );
 
-  const call = async (
-    language: AcceptLanguage | null,
-  ): Promise<string | null> => {
-    let builder = request.GET("/");
+  const call = async (language: AcceptLanguage | null): Promise<string> => {
+    const builder = request.GET("/");
     if (language != null) {
-      builder = builder.header("Accept-Language", language);
+      builder.header("Accept-Language", language);
     }
     return await (await builder.send()).body.text();
   };
@@ -33,7 +31,7 @@ test("negotiate the preferred language", async (t) => {
   t.is(await call(new AcceptLanguage("en-US")), "en");
   t.is(await call(new AcceptLanguage("en-CA")), "en");
 
-  t.is(await call(new AcceptLanguage("pt")), "en");
+  t.is(await call(new AcceptLanguage("pt")), "pt-br");
   t.is(await call(new AcceptLanguage("pt-BR")), "pt-br");
   t.is(await call(new AcceptLanguage("pt-PT")), "en");
 

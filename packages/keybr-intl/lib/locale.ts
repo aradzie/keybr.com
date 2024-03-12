@@ -1,5 +1,24 @@
 import { createContext, useContext } from "react";
 
+/*
+ * Locale identifier is a triple "language[-script][-region]".
+ *
+ * Examples are:
+ *
+ * - "en" -- English.
+ * - "en-US" -- English, United States.
+ * - "en-CA" -- English, Canada.
+ * - "zh-Hans" Chinese, Simplified Script.
+ * - "zh-Hant" Chinese, Traditional Script.
+ * - "zh-CN" Chinese, China.
+ * - "zh-TW" Chinese, Taiwan.
+ * - "zh-Hans-CN" Chinese, Simplified Script, China.
+ * - "zh-Hant-TW" Chinese, Traditional Script, Taiwan.
+ *
+ * @see https://www.w3.org/International/articles/bcp47/
+ * @see https://www.rfc-editor.org/rfc/rfc5646.txt
+ */
+
 export type LocaleId =
   | "cs"
   | "da"
@@ -47,7 +66,7 @@ export const allLocales: readonly LocaleId[] = [
   "zh-hans",
 ];
 
-export function getDir(locale: LocaleId): "rtl" | "ltr" {
+export function getDir(locale: LocaleId): "ltr" | "rtl" {
   return locale === "he" ? "rtl" : "ltr";
 }
 
@@ -58,25 +77,15 @@ export function usePreferredLocale(): LocaleId {
 }
 
 const map = (() => {
-  const map = new Map<string, LocaleId>();
-
-  // Append the default region to a language.
-  // This will add "en" as "en-US", "pt-BR" as "pt-BR",
-  // "zh-Hans" as "zh-CN", "zh-Hant" as "zh-TW", etc.
+  const tmp = new Map<string, LocaleId>();
   for (const id of allLocales) {
-    const locale = new Intl.Locale(id).maximize();
-    map.set(locale.language + "-" + locale.region, id);
-  }
-
-  // Append languages only.
-  for (const id of allLocales) {
-    const locale = new Intl.Locale(id);
-    if (locale.region == null) {
-      map.set(locale.language, id);
+    const { language, region } = new Intl.Locale(id).maximize();
+    tmp.set(language + "-" + region, id);
+    if (!tmp.has(language)) {
+      tmp.set(language, id);
     }
   }
-
-  return map;
+  return tmp;
 })();
 
 export function selectLocale(
