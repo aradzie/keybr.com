@@ -29,7 +29,7 @@ const allLocales = [
   "sv",
   "tr",
   "uk",
-  "zh-Hans",
+  "zh-hans",
 ];
 
 const defaultLocale = "en";

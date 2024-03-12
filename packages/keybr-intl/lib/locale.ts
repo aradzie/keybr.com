@@ -18,7 +18,7 @@ export type LocaleId =
   | "sv"
   | "tr"
   | "uk"
-  | "zh-Hans";
+  | "zh-hans";
 
 export const allLocales: readonly LocaleId[] = [
   "cs",
@@ -40,7 +40,7 @@ export const allLocales: readonly LocaleId[] = [
   "sv",
   "tr",
   "uk",
-  "zh-Hans",
+  "zh-hans",
 ];
 
 export const defaultLocale: LocaleId = "en";
