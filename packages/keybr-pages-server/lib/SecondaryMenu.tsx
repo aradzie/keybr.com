@@ -132,7 +132,7 @@ function LocaleSwitcher({
 }: {
   readonly currentLink: BoundPageLink;
 }): ReactNode {
-  const { formatLocalLanguageName } = useIntlDisplayNames();
+  const { formatLanguageName, formatLocalLanguageName } = useIntlDisplayNames();
   const preferredLocale = usePreferredLocale();
   const primary = [];
   primary.push(
@@ -163,7 +163,7 @@ function LocaleSwitcher({
         <Link
           className={styles.localeLink}
           href={currentLink.formatPath(locale)}
-          title={formatLocalLanguageName(locale)}
+          title={`${formatLocalLanguageName(locale)} / ${formatLanguageName(locale)}`}
         >
           {locale}
         </Link>,
