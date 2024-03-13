@@ -35,8 +35,10 @@ export function LessonLengthProp(): ReactNode {
         </Field>
       </FieldList>
       <Explainer>
-        Adjust the number of words in the lesson text. Making lessons longer can
-        improve your learning.
+        <FormattedMessage
+          id="settings.lessonLength.description"
+          defaultMessage="Adjust the number of words in the lesson text. Making lessons longer can improve your learning."
+        />
       </Explainer>
     </>
   );

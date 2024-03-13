@@ -2,6 +2,7 @@ import { type LessonKeys } from "@keybr/lesson";
 import { type ClassName } from "@keybr/widget";
 import { clsx } from "clsx";
 import { type ReactNode } from "react";
+import { FormattedMessage } from "react-intl";
 import * as styles from "./CurrentKey.module.less";
 import { Key } from "./Key.tsx";
 import { KeyDetails } from "./KeyDetails.tsx";
@@ -31,7 +32,12 @@ export const CurrentKey = ({
         id={id}
         className={clsx(styles.currentKey, styles.empty, className)}
       >
-        <span>No Key</span>
+        <span>
+          <FormattedMessage
+            id="lesson.allKeysUnlocked.message"
+            defaultMessage="All keys are unlocked."
+          />
+        </span>
       </span>
     );
   }

@@ -1,7 +1,7 @@
 import { type NumbersLesson } from "@keybr/lesson";
 import { Explainer, FieldSet } from "@keybr/widget";
 import { type ReactNode } from "react";
-import { useIntl } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { BenfordProp } from "./BenfordProp.tsx";
 
 export function NumbersLessonSettings({
@@ -12,7 +12,12 @@ export function NumbersLessonSettings({
   const { formatMessage } = useIntl();
   return (
     <>
-      <Explainer>Practice numbers only. No letters are used.</Explainer>
+      <Explainer>
+        <FormattedMessage
+          id="lessonType.numbers.description"
+          defaultMessage="Practice numbers only."
+        />
+      </Explainer>
       <FieldSet
         legend={formatMessage({
           id: "settings.lessonOptions.legend",

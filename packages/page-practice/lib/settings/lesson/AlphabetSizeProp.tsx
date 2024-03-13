@@ -39,10 +39,10 @@ export function AlphabetSizeProp(): ReactNode {
         </Field>
       </FieldList>
       <Explainer>
-        Manually unlock the remaining letters. Use this option, for example, if
-        you are stuck on a difficult letter and want to get past it. We
-        recommend using this option sparingly and stick to the algorithm to
-        unlock letters for you.
+        <FormattedMessage
+          id="settings.alphabetSize.description"
+          defaultMessage="Manually unlock the remaining letters. Use this option if want a greater variety of words. We recommend using this option sparingly and stick to the algorithm to unlock letters for you."
+        />
       </Explainer>
     </>
   );
