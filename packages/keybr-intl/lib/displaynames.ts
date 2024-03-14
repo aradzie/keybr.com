@@ -1,4 +1,5 @@
 import { type IntlShape, useIntl } from "react-intl";
+import { intlMemo } from "./memo.ts";
 
 export type IntlDisplayNames = {
   formatRegionName(id: string): string;
@@ -6,45 +7,45 @@ export type IntlDisplayNames = {
   formatLocalLanguageName(id: string): string;
 };
 
-const kIntlDisplayNames = Symbol("kIntlDisplayNames");
+const capitalize = (value: string, locale: string): string =>
+  value.replaceAll(
+    /\p{Letter}+/gu,
+    (word) =>
+      word.substring(0, 1).toLocaleUpperCase(locale) +
+      word.substring(1).toLocaleLowerCase(locale),
+  );
 
-export const makeIntlDisplayNames = (intl: IntlShape): IntlDisplayNames => {
-  let r = (intl as any)[kIntlDisplayNames] as IntlDisplayNames;
-  if (r == null) {
-    const { locale } = intl;
-    const capitalize = (value: string, locale: string): string =>
-      value.replaceAll(
-        /\p{Letter}+/gu,
-        (item) =>
-          item.substring(0, 1).toLocaleUpperCase(locale) +
-          item.substring(1).toLocaleLowerCase(locale),
-      );
-    (intl as any)[kIntlDisplayNames] = r = {
-      formatRegionName(id: string): string {
-        const dn = intl.formatters.getDisplayNames(locale, {
-          type: "region",
-          fallback: "none",
-        });
-        return capitalize(dn.of(id) || "", locale) || id;
-      },
-      formatLanguageName(id: string): string {
-        const dn = intl.formatters.getDisplayNames(locale, {
-          type: "language",
-          fallback: "none",
-        });
-        return capitalize(dn.of(id) || "", locale) || id;
-      },
-      formatLocalLanguageName(id: string): string {
-        const dn = intl.formatters.getDisplayNames(id, {
-          type: "language",
-          fallback: "none",
-        });
-        return capitalize(dn.of(id) || "", id) || id;
-      },
-    } satisfies IntlDisplayNames;
-  }
-  return r;
+const factory = (intl: IntlShape): IntlDisplayNames => {
+  const { locale } = intl;
+  const formatRegionName = (id: string): string => {
+    const dn = intl.formatters.getDisplayNames(locale, {
+      type: "region",
+      fallback: "none",
+    });
+    return capitalize(dn.of(id) || "", locale) || id;
+  };
+  const formatLanguageName = (id: string): string => {
+    const dn = intl.formatters.getDisplayNames(locale, {
+      type: "language",
+      fallback: "none",
+    });
+    return capitalize(dn.of(id) || "", locale) || id;
+  };
+  const formatLocalLanguageName = (id: string): string => {
+    const dn = intl.formatters.getDisplayNames(id, {
+      type: "language",
+      fallback: "none",
+    });
+    return capitalize(dn.of(id) || "", id) || id;
+  };
+  return {
+    formatRegionName,
+    formatLanguageName,
+    formatLocalLanguageName,
+  };
 };
+
+export const makeIntlDisplayNames = intlMemo(Symbol("displayNames"), factory);
 
 export const useIntlDisplayNames = (): IntlDisplayNames => {
   return makeIntlDisplayNames(useIntl());
