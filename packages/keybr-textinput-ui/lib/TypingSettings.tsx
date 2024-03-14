@@ -168,6 +168,7 @@ function SpaceSkipsWordsProp(): ReactNode {
 }
 
 function WhitespaceProp(): ReactNode {
+  const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
   return (
     <FieldList>
@@ -179,7 +180,10 @@ function WhitespaceProp(): ReactNode {
       </Field>
       <Field>
         <RadioBox
-          label="No whitespace"
+          label={formatMessage({
+            id: "settings.whitespace.noWhitespaceValue",
+            defaultMessage: "No whitespace",
+          })}
           name="whitespace-style"
           checked={
             settings.get(textDisplayProps.whitespaceStyle) ===
@@ -197,7 +201,10 @@ function WhitespaceProp(): ReactNode {
       </Field>
       <Field>
         <RadioBox
-          label="Bar whitespace"
+          label={formatMessage({
+            id: "settings.whitespace.barWhitespaceValue",
+            defaultMessage: "Bar whitespace",
+          })}
           name="whitespace-style"
           checked={
             settings.get(textDisplayProps.whitespaceStyle) ===
@@ -215,7 +222,10 @@ function WhitespaceProp(): ReactNode {
       </Field>
       <Field>
         <RadioBox
-          label="Bullet whitespace"
+          label={formatMessage({
+            id: "settings.whitespace.bulletWhitespaceValue",
+            defaultMessage: "Bullet whitespace",
+          })}
           name="whitespace-style"
           checked={
             settings.get(textDisplayProps.whitespaceStyle) ===
@@ -236,6 +246,7 @@ function WhitespaceProp(): ReactNode {
 }
 
 function CursorShapeProp(): ReactNode {
+  const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
   return (
     <FieldList>
@@ -247,7 +258,10 @@ function CursorShapeProp(): ReactNode {
       </Field>
       <Field>
         <RadioBox
-          label="Block cursor"
+          label={formatMessage({
+            id: "settings.cursorShape.blockCursorValue",
+            defaultMessage: "Block cursor",
+          })}
           name="cursor-shape-style"
           checked={
             settings.get(textDisplayProps.caretShapeStyle) ===
@@ -265,7 +279,10 @@ function CursorShapeProp(): ReactNode {
       </Field>
       <Field>
         <RadioBox
-          label="Box cursor"
+          label={formatMessage({
+            id: "settings.cursorShape.boxCursorValue",
+            defaultMessage: "Box cursor",
+          })}
           name="cursor-shape-style"
           checked={
             settings.get(textDisplayProps.caretShapeStyle) ===
@@ -283,7 +300,10 @@ function CursorShapeProp(): ReactNode {
       </Field>
       <Field>
         <RadioBox
-          label="Line cursor"
+          label={formatMessage({
+            id: "settings.cursorShape.lineCursorValue",
+            defaultMessage: "Line cursor",
+          })}
           name="cursor-shape-style"
           checked={
             settings.get(textDisplayProps.caretShapeStyle) ===
@@ -301,7 +321,10 @@ function CursorShapeProp(): ReactNode {
       </Field>
       <Field>
         <RadioBox
-          label="Underline cursor"
+          label={formatMessage({
+            id: "settings.cursorShape.underlineCursorValue",
+            defaultMessage: "Underline cursor",
+          })}
           name="cursor-shape-style"
           checked={
             settings.get(textDisplayProps.caretShapeStyle) ===
@@ -322,6 +345,7 @@ function CursorShapeProp(): ReactNode {
 }
 
 function CursorMovementProp(): ReactNode {
+  const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
   return (
     <FieldList>
@@ -333,7 +357,10 @@ function CursorMovementProp(): ReactNode {
       </Field>
       <Field>
         <RadioBox
-          label="Jumping cursor"
+          label={formatMessage({
+            id: "settings.cursorMovement.jumpingCursorValue",
+            defaultMessage: "Jumping cursor",
+          })}
           name="cursor-movement-style"
           checked={
             settings.get(textDisplayProps.caretMovementStyle) ===
@@ -351,7 +378,10 @@ function CursorMovementProp(): ReactNode {
       </Field>
       <Field>
         <RadioBox
-          label="Smooth cursor"
+          label={formatMessage({
+            id: "settings.cursorMovement.smoothCursorValue",
+            defaultMessage: "Smooth cursor",
+          })}
           name="cursor-movement-style"
           checked={
             settings.get(textDisplayProps.caretMovementStyle) ===
@@ -372,6 +402,7 @@ function CursorMovementProp(): ReactNode {
 }
 
 function SoundsProp(): ReactNode {
+  const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
   return (
     <FieldList>
@@ -383,7 +414,10 @@ function SoundsProp(): ReactNode {
       </Field>
       <Field>
         <RadioBox
-          label="No Sounds"
+          label={formatMessage({
+            id: "settings.sounds.noSoundsValue",
+            defaultMessage: "No Sounds",
+          })}
           name="play-sounds"
           checked={
             settings.get(textDisplayProps.playSounds) === PlaySounds.None
@@ -397,7 +431,10 @@ function SoundsProp(): ReactNode {
       </Field>
       <Field>
         <RadioBox
-          label="Error Sounds Only"
+          label={formatMessage({
+            id: "settings.sounds.errorSoundsOnlyValue",
+            defaultMessage: "Error Sounds Only",
+          })}
           name="play-sounds"
           checked={
             settings.get(textDisplayProps.playSounds) === PlaySounds.ErrorsOnly
@@ -411,7 +448,10 @@ function SoundsProp(): ReactNode {
       </Field>
       <Field>
         <RadioBox
-          label="All Sounds"
+          label={formatMessage({
+            id: "settings.sounds.allSoundsValue",
+            defaultMessage: "All Sounds",
+          })}
           name="play-sounds"
           checked={settings.get(textDisplayProps.playSounds) === PlaySounds.All}
           onChange={() => {
@@ -421,7 +461,12 @@ function SoundsProp(): ReactNode {
           }}
         />
       </Field>
-      <Field>Volume:</Field>
+      <Field>
+        <FormattedMessage
+          id="settings.soundVolume.label"
+          defaultMessage="Volume:"
+        />
+      </Field>
       <Field>
         <Range
           min={0}
