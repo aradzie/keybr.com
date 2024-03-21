@@ -14,6 +14,7 @@ import {
   toTextInputSettings,
 } from "@keybr/textinput";
 import { type TextInputEvent } from "@keybr/textinput-events";
+import { type CodePoint } from "@keybr/unicode";
 import { type Announcement } from "./Announcer.tsx";
 
 export type LastLesson = {
@@ -34,6 +35,7 @@ export class PracticeState {
 
   textInput!: TextInput; // Mutable.
   lines!: LineList; // Mutable.
+  suffix!: readonly CodePoint[]; // Mutable.
 
   constructor(
     readonly settings: Settings,
@@ -61,6 +63,7 @@ export class PracticeState {
   onTextInput(event: TextInputEvent): Feedback {
     const feedback = this.textInput.onTextInput(event);
     this.lines = this.textInput.getLines();
+    this.suffix = this.textInput.getSuffix();
     if (this.textInput.completed) {
       this.appendResult(
         Result.fromStats(
@@ -77,6 +80,7 @@ export class PracticeState {
   private _reset(fragment: string): void {
     this.textInput = new TextInput(fragment, this.textInputSettings);
     this.lines = this.textInput.getLines();
+    this.suffix = this.textInput.getSuffix();
   }
 
   private _computeAnnouncements(): void {

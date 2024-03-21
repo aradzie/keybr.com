@@ -13,6 +13,7 @@ export const keyboardProps = {
   geometry: itemProp("keyboard.geometry", Geometry.ALL, Geometry.STANDARD_101),
   emulate: booleanProp("keyboard.emulate", true),
   colors: booleanProp("keyboard.colors", true),
+  pointers: booleanProp("keyboard.pointers", true),
 } as const;
 
 export class KeyboardOptions {

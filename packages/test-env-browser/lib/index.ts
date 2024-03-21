@@ -50,6 +50,10 @@ function polyfill(jsdom: JSDOM): void {
   window.HTMLCanvasElement.prototype.getContext = function () {
     return new FakeCanvasRenderingContext2D(this);
   };
+  window.SVGElement.prototype.beginElement ??= function () {};
+  window.SVGElement.prototype.beginElementAt ??= function () {};
+  window.SVGElement.prototype.endElement ??= function () {};
+  window.SVGElement.prototype.endElementAt ??= function () {};
   window.ResizeObserver = FakeResizeObserver;
   polyfillAnimationFrames(window);
 }

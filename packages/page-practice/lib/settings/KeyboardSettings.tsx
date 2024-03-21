@@ -12,10 +12,12 @@ import {
   addKey,
   deleteKey,
   KeyLayer,
+  PointersLayer,
   VirtualKeyboard,
 } from "@keybr/keyboard-ui";
 import { useSettings } from "@keybr/settings";
 import { ModifierState } from "@keybr/textinput-events";
+import { type CodePoint } from "@keybr/unicode";
 import {
   CheckBox,
   Explainer,
@@ -25,7 +27,7 @@ import {
   OptionList,
   useWindowEvent,
 } from "@keybr/widget";
-import { type ReactNode, useState } from "react";
+import { type ReactNode, useEffect, useMemo, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
 export function KeyboardSettings(): ReactNode {
@@ -133,15 +135,43 @@ function KeyboardPreview(): ReactNode {
   const { settings } = useSettings();
   const keyboard = useKeyboard();
   const depressedKeys = useDepressedKeys();
+  const colors = settings.get(keyboardProps.colors);
+  const pointers = settings.get(keyboardProps.pointers);
   return (
     <VirtualKeyboard keyboard={keyboard} height="16rem">
       <KeyLayer
         depressedKeys={depressedKeys}
         toggledKeys={ModifierState.modifiers}
-        showColors={settings.get(keyboardProps.colors)}
+        showColors={colors}
       />
+      {pointers && <PointersPreview />}
     </VirtualKeyboard>
   );
+}
+
+function PointersPreview(): ReactNode {
+  const keyboard = useKeyboard();
+  const [index, setIndex] = useState(0);
+  const suffix = useMemo(() => {
+    setIndex(0);
+    const codePoints = keyboard.codePoints();
+    return getExampleText(keyboard.layout.language).filter((codePoint) =>
+      codePoints.has(codePoint),
+    );
+  }, [keyboard]);
+  useEffect(() => {
+    const id = setTimeout(() => {
+      let newIndex = index + 1;
+      if (newIndex >= suffix.length) {
+        newIndex = 0;
+      }
+      setIndex(newIndex);
+    }, 1000);
+    return () => {
+      clearTimeout(id);
+    };
+  }, [suffix, index]);
+  return <PointersLayer suffix={suffix.slice(index)} delay={10} />;
 }
 
 function GeometryProp(): ReactNode {
@@ -186,6 +216,32 @@ function GeometryProp(): ReactNode {
           />
         </Field>
       </FieldList>
+      <Explainer>
+        <FormattedMessage
+          id="settings.keyboardColors.description"
+          defaultMessage="Show color coding of the keyboard zones. Use this option to learn which finger to use to press a key."
+        />
+      </Explainer>
+      <FieldList>
+        <Field>
+          <CheckBox
+            label={formatMessage({
+              id: "settings.keyboardPointers.label",
+              defaultMessage: "Highlight keys",
+            })}
+            checked={settings.get(keyboardProps.pointers)}
+            onChange={(value) => {
+              updateSettings(settings.set(keyboardProps.pointers, value));
+            }}
+          />
+        </Field>
+      </FieldList>
+      <Explainer>
+        <FormattedMessage
+          id="settings.keyboardPointers.description"
+          defaultMessage="Highlight a key that must to be pressed next. Use this option to quickly find the position of a key if you don't know the keyboard layout well."
+        />
+      </Explainer>
     </>
   );
 }
@@ -199,4 +255,17 @@ function useDepressedKeys(): readonly string[] {
     setDepressedKeys(deleteKey(depressedKeys, ev.code));
   });
   return depressedKeys;
+}
+
+function getExampleText({ script }: Language): CodePoint[] {
+  switch (script) {
+    case "cyrillic":
+      return [0x0430, 0x0431, 0x0432, 0x0433, 0x0434, 0x0435];
+    case "greek":
+      return [0x03b1, 0x03b2, 0x03b3, 0x03b4, 0x03b5, 0x03b6];
+    case "hebrew":
+      return [0x05d0, 0x05d1, 0x05d2, 0x05d3, 0x05d4, 0x05d5];
+    case "latin":
+      return [0x0061, 0x0062, 0x0063, 0x0064, 0x0065, 0x0066];
+  }
 }

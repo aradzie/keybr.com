@@ -1,10 +1,13 @@
-import { useKeyboard } from "@keybr/keyboard";
+import { keyboardProps, useKeyboard } from "@keybr/keyboard";
 import {
   HeatmapLayer,
   KeyLayer,
+  PointersLayer,
   VirtualKeyboard,
   ZonesLayer,
 } from "@keybr/keyboard-ui";
+import { useSettings } from "@keybr/settings";
+import { type CodePoint } from "@keybr/unicode";
 import { withDeferred } from "@keybr/widget";
 import { memo, type ReactNode, useState, type WheelEvent } from "react";
 import { type LastLesson } from "./practicestate.ts";
@@ -13,24 +16,28 @@ export const KeyboardPresenter = memo(function KeyboardPresenter({
   focus,
   depressedKeys,
   toggledKeys,
+  suffix,
   lastLesson,
-  showColors,
 }: {
   readonly focus: boolean;
   readonly depressedKeys: readonly string[];
   readonly toggledKeys: readonly string[];
+  readonly suffix: readonly CodePoint[];
   readonly lastLesson: LastLesson | null;
-  readonly showColors?: boolean;
 }): ReactNode {
+  const { settings } = useSettings();
   const keyboard = useKeyboard();
   const zoom = useZoom();
+  const colors = settings.get(keyboardProps.colors);
+  const pointers = settings.get(keyboardProps.pointers);
   return (
     <VirtualKeyboard keyboard={keyboard} height="16rem" {...zoom}>
       <KeyLayer
         depressedKeys={depressedKeys}
         toggledKeys={toggledKeys}
-        showColors={showColors}
+        showColors={colors}
       />
+      {focus && pointers && <PointersLayer suffix={suffix} />}
       {focus && lastLesson && (
         <HeatmapLayer histogram={lastLesson.misses} modifier="m" />
       )}

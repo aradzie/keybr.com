@@ -211,6 +211,10 @@ export class TextInput {
     return { text, lines: [{ text, chars }] };
   }
 
+  getSuffix(): readonly CodePoint[] {
+    return this.codePoints.slice(this._steps.length);
+  }
+
   private _addStep(step: Step): void {
     this._steps.push(step);
     this.onStep(step);

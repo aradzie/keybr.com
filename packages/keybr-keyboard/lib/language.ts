@@ -45,12 +45,7 @@ export class Language implements EnumItem {
     /** ISO 639-1 language code, https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes */
     public readonly id: string,
     /** The writing system, such as Cyrillic, Georgian, Greek, Hebrew, Latin, etc. */
-    public readonly script:
-      | "arabic"
-      | "cyrillic"
-      | "greek"
-      | "hebrew"
-      | "latin",
+    public readonly script: "cyrillic" | "greek" | "hebrew" | "latin",
     /** The direction of the writing system, either "ltr" for left-to-right, or "rtl" for right-to-left. */
     public readonly direction: "ltr" | "rtl",
   ) {

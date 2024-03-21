@@ -30,6 +30,7 @@
     "@keybr/textinput-events": "*",
     "@keybr/textinput-sounds": "*",
     "@keybr/textinput-ui": "*",
+    "@keybr/unicode": "*",
     "@keybr/widget": "*"
   },
   "devDependencies": {},
