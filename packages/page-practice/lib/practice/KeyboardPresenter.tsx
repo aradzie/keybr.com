@@ -2,7 +2,6 @@ import { useKeyboard } from "@keybr/keyboard";
 import {
   HeatmapLayer,
   KeyLayer,
-  MarkerLayer,
   VirtualKeyboard,
   ZonesLayer,
 } from "@keybr/keyboard-ui";
@@ -32,7 +31,6 @@ export const KeyboardPresenter = memo(function KeyboardPresenter({
         toggledKeys={toggledKeys}
         showColors={showColors}
       />
-      {focus && <MarkerLayer />}
       {focus && lastLesson && (
         <HeatmapLayer histogram={lastLesson.misses} modifier="m" />
       )}

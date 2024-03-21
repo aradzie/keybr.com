@@ -1,10 +1,5 @@
 import { Layout, loadKeyboard } from "@keybr/keyboard";
-import {
-  KeyLayer,
-  MarkerLayer,
-  VirtualKeyboard,
-  ZonesLayer,
-} from "@keybr/keyboard-ui";
+import { KeyLayer, VirtualKeyboard, ZonesLayer } from "@keybr/keyboard-ui";
 import { KeyLegendList } from "@keybr/lesson-ui";
 import { singleLine } from "@keybr/textinput";
 import { StaticText } from "@keybr/textinput-ui";
@@ -222,7 +217,6 @@ export function HelpApp(): ReactNode {
         </Figure.Caption>
         <VirtualKeyboard keyboard={keyboard}>
           <KeyLayer showColors={true} />
-          <MarkerLayer />
           <ZonesLayer />
         </VirtualKeyboard>
       </Figure>
