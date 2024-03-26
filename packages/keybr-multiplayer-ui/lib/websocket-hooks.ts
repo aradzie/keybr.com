@@ -1,5 +1,4 @@
 import { PLAYER_KICKED } from "@keybr/multiplayer-shared";
-import { setTimeout, type Timeout } from "@keybr/timer";
 import { useEffect, useState } from "react";
 
 export function useWebSocket() {
@@ -15,7 +14,7 @@ export function useWebSocket() {
 
   useEffect(() => {
     let webSocket: WebSocket | null = null;
-    let timeout: Timeout | null = null;
+    let timeout: number | null = null;
 
     const connect = () => {
       const newWebSocket = (webSocket = useWebSocket.newWebSocket());
@@ -40,7 +39,7 @@ export function useWebSocket() {
           case 1006: // CLOSE_ABNORMAL
           case 1012: // Service Restart
           case 1013: // Try Again Later
-            timeout = setTimeout(() => {
+            timeout = window.setTimeout(() => {
               timeout = null;
               connect();
             }, 3000);
@@ -62,7 +61,7 @@ export function useWebSocket() {
         webSocket = null;
       }
       if (timeout != null) {
-        timeout.cancel();
+        window.clearTimeout(timeout);
         timeout = null;
       }
     };

@@ -1,5 +1,3 @@
-import { setInterval, setTimeout } from "./timeout.ts";
-
 export type Task = {
   cancel(): void;
   readonly fired: boolean;
@@ -38,12 +36,12 @@ export class Tasks {
       task.fire();
     };
 
-    const handle = setTimeout(execute, timeout);
+    const id = setTimeout(execute, timeout);
 
     const cancel = () => {
       this.tasks.delete(task);
       task.cancel();
-      handle.cancel();
+      clearTimeout(id);
     };
 
     return {
@@ -66,12 +64,12 @@ export class Tasks {
       task.fire();
     };
 
-    const handle = setInterval(execute, timeout);
+    const id = setInterval(execute, timeout);
 
     const cancel = () => {
       this.tasks.delete(task);
       task.cancel();
-      handle.cancel();
+      clearInterval(id);
     };
 
     return {

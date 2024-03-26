@@ -1,5 +1,4 @@
 import { injectable } from "@fastr/invert";
-import { setInterval } from "@keybr/timer";
 import { Player } from "./player.ts";
 import { Room } from "./room.ts";
 import {
