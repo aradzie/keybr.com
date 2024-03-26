@@ -1,6 +1,6 @@
 import { Layout } from "@keybr/keyboard";
+import { fake } from "@keybr/test-env-time";
 import test from "ava";
-import MockDate from "mockdate";
 import { HighScores, type HighScoresRow } from "./highscores.ts";
 
 const now = new Date("2001-02-03T04:05:06Z");
@@ -18,11 +18,11 @@ const template: HighScoresRow = {
 };
 
 test.beforeEach(() => {
-  MockDate.set(now);
+  fake.date.set(now);
 });
 
 test.afterEach(() => {
-  MockDate.reset();
+  fake.date.reset();
 });
 
 test("do not insert if result is old", (t) => {

@@ -12,12 +12,8 @@ import {
   type PlayerState,
 } from "@keybr/multiplayer-shared";
 import { type AnonymousUser } from "@keybr/pages-shared";
+import { fake } from "@keybr/test-env-time";
 import { Timer } from "@keybr/timer";
-import {
-  resetFakeTimers,
-  runTimers,
-  setFakeTimers,
-} from "@keybr/timer/lib/fake.ts";
 import test from "ava";
 import { Game } from "./game.ts";
 import { Player } from "./player.ts";
@@ -26,12 +22,12 @@ import { Services } from "./services.ts";
 import { FakeSession } from "./testing/fake-session.ts";
 
 test.beforeEach(() => {
-  setFakeTimers();
+  fake.timers.set();
   Timer.now = () => 0;
 });
 
 test.afterEach(() => {
-  resetFakeTimers();
+  fake.timers.reset();
   Timer.now = () => 0;
 });
 
@@ -48,13 +44,13 @@ test.serial("join and start", async (t) => {
 
   player0.join(room);
   player0.onMessage({ type: PLAYER_ANNOUNCE_ID, signature: 0xdeadbabe });
-  await runTimers();
+  await fake.timers.run();
   t.is(player0.room, room);
   t.is(player1.room, null);
 
   player1.join(room);
   player1.onMessage({ type: PLAYER_ANNOUNCE_ID, signature: 0xdeadbabe });
-  await runTimers();
+  await fake.timers.run();
   t.is(player0.room, room);
   t.is(player1.room, room);
 
@@ -301,31 +297,31 @@ test.serial("join and leave", async (t) => {
 
   // Player 0 joins room 0.
   player0.join(room0);
-  await runTimers();
+  await fake.timers.run();
   t.is(player0.room, room0);
   t.is(player1.room, null);
 
   // Repeat again.
   player0.join(room0);
-  await runTimers();
+  await fake.timers.run();
   t.is(player0.room, room0);
   t.is(player1.room, null);
 
   // Player 1 joins room 0.
   room0.join(player1);
-  await runTimers();
+  await fake.timers.run();
   t.is(player0.room, room0);
   t.is(player1.room, room0);
 
   // Repeat again.
   room0.join(player1);
-  await runTimers();
+  await fake.timers.run();
   t.is(player0.room, room0);
   t.is(player1.room, room0);
 
   // Joint another room.
   room1.join(player1);
-  await runTimers();
+  await fake.timers.run();
   t.is(player0.room, room0);
   t.is(player1.room, room1);
 

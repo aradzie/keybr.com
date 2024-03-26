@@ -12,7 +12,9 @@
     "@keybr/publicid": "*",
     "@keybr/rand": "*"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@keybr/test-env-time": "*"
+  },
   "scripts": {
     "clean": "rm -fr .types",
     "compile": "tsc",

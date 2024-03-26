@@ -107,7 +107,6 @@
     "less-loader": "^12.1.0",
     "lint-staged": "^15.2.0",
     "mini-css-extract-plugin": "^2.7.7",
-    "mockdate": "^3.0.5",
     "null-loader": "^4.0.1",
     "patch-package": "^8.0.0",
     "postcss": "^8.4.33",

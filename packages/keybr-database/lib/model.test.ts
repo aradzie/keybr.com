@@ -1,7 +1,7 @@
 import { newKnex } from "@keybr/config";
 import { PublicId } from "@keybr/publicid";
+import { fake } from "@keybr/test-env-time";
 import test from "ava";
-import MockDate from "mockdate";
 import { ValidationError } from "objection";
 import { User, UserExternalId, UserLoginRequest } from "./model.ts";
 import { createSchema } from "./schema.ts";
@@ -17,11 +17,11 @@ test.beforeEach(async () => {
 });
 
 test.beforeEach(() => {
-  MockDate.set(now);
+  fake.date.set(now);
 });
 
 test.afterEach(() => {
-  MockDate.reset();
+  fake.date.reset();
 });
 
 test("validate models", (t) => {

@@ -1,9 +1,9 @@
 import { DataDir } from "@keybr/config";
 import { Layout } from "@keybr/keyboard";
 import { ResultFaker } from "@keybr/result";
+import { fake } from "@keybr/test-env-time";
 import { removeDir } from "@sosimple/fsx";
 import test from "ava";
-import MockDate from "mockdate";
 import { HighScoresFactory } from "./factory.ts";
 import { type HighScoresRow } from "./highscores.ts";
 
@@ -16,11 +16,11 @@ test.beforeEach(async () => {
 });
 
 test.beforeEach(() => {
-  MockDate.set(now);
+  fake.date.set(now);
 });
 
 test.afterEach(() => {
-  MockDate.reset();
+  fake.date.reset();
 });
 
 test.afterEach(async () => {

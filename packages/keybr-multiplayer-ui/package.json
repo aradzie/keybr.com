@@ -13,7 +13,6 @@
     "@keybr/textinput": "*",
     "@keybr/textinput-events": "*",
     "@keybr/textinput-ui": "*",
-    "@keybr/timer": "*",
     "@keybr/widget": "*"
   },
   "devDependencies": {},

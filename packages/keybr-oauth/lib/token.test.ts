@@ -1,17 +1,13 @@
+import { fake } from "@keybr/test-env-time";
 import test from "ava";
-import MockDate from "mockdate";
 import { AccessToken } from "./token.ts";
 
-test.beforeEach(() => {
-  MockDate.reset();
-});
-
 test.afterEach(() => {
-  MockDate.reset();
+  fake.date.reset();
 });
 
 test("construct token from response", (t) => {
-  MockDate.set(new Date("2001-02-03T04:05:06Z"));
+  fake.date.set(new Date("2001-02-03T04:05:06Z"));
 
   const token = new AccessToken({
     access_token: "token",
@@ -31,7 +27,7 @@ test("construct token from response", (t) => {
 });
 
 test("check expired", (t) => {
-  MockDate.set(new Date("2001-01-01T00:00:00Z"));
+  fake.date.set(new Date("2001-01-01T00:00:00Z"));
 
   const token = new AccessToken({
     access_token: "token",
@@ -41,19 +37,19 @@ test("check expired", (t) => {
 
   t.false(token.expired());
 
-  MockDate.set(new Date("2001-01-01T00:58:59Z"));
+  fake.date.set(new Date("2001-01-01T00:58:59Z"));
 
   t.false(token.expired());
   t.false(token.expired(60));
   t.false(token.expired(0));
 
-  MockDate.set(new Date("2001-01-01T00:59:00Z"));
+  fake.date.set(new Date("2001-01-01T00:59:00Z"));
 
   t.true(token.expired());
   t.true(token.expired(60));
   t.false(token.expired(0));
 
-  MockDate.set(new Date("2001-01-01T01:00:00Z"));
+  fake.date.set(new Date("2001-01-01T01:00:00Z"));
 
   t.true(token.expired());
   t.true(token.expired(0));
