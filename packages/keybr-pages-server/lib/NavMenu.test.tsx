@@ -5,7 +5,7 @@ import TestRenderer from "react-test-renderer";
 import { NavMenu } from "./NavMenu.tsx";
 
 test("render", (t) => {
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <PageDataContext.Provider
       value={{
         base: "https://www.keybr.com/",
@@ -30,5 +30,5 @@ test("render", (t) => {
     </PageDataContext.Provider>,
   );
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });

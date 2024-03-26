@@ -6,11 +6,11 @@ import { ZonesLayer } from "./ZonesLayer.tsx";
 test("render", (t) => {
   const keyboard = loadKeyboard(Layout.EN_US);
 
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <KeyboardContext.Provider value={keyboard}>
       <ZonesLayer />
     </KeyboardContext.Provider>,
   );
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });

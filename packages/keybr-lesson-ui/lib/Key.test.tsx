@@ -16,7 +16,7 @@ test("render excluded", (t) => {
     bestConfidence: null,
   }).asExcluded();
 
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <FakeIntlProvider>
       <FakeSettingsContext>
         <Key className="custom" lessonKey={lessonKey} />
@@ -24,7 +24,7 @@ test("render excluded", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });
 
 test("render included", (t) => {
@@ -37,7 +37,7 @@ test("render included", (t) => {
     bestConfidence: null,
   }).asIncluded();
 
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <FakeIntlProvider>
       <FakeSettingsContext>
         <Key className="custom" lessonKey={lessonKey} />
@@ -45,7 +45,7 @@ test("render included", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });
 
 test("render focused", (t) => {
@@ -58,7 +58,7 @@ test("render focused", (t) => {
     bestConfidence: null,
   }).asFocused();
 
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <FakeIntlProvider>
       <FakeSettingsContext>
         <Key className="custom" lessonKey={lessonKey} />
@@ -66,5 +66,5 @@ test("render focused", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });

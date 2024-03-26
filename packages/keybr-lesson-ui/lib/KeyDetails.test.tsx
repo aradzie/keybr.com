@@ -16,7 +16,7 @@ test("render uncalibrated", (t) => {
     bestConfidence: null,
   });
 
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <FakeIntlProvider>
       <FakeSettingsContext>
         <KeyDetails className="custom" lessonKey={lessonKey} />
@@ -24,7 +24,7 @@ test("render uncalibrated", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });
 
 test("render calibrated", (t) => {
@@ -37,7 +37,7 @@ test("render calibrated", (t) => {
     bestConfidence: 1.0,
   });
 
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <FakeIntlProvider>
       <FakeSettingsContext>
         <KeyDetails className="custom" lessonKey={lessonKey} />
@@ -45,5 +45,5 @@ test("render calibrated", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });

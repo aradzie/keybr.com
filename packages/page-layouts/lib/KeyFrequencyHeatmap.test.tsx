@@ -7,7 +7,7 @@ import { KeyFrequencyHeatmap } from "./KeyFrequencyHeatmap.tsx";
 test("render", (t) => {
   const keyboard = loadKeyboard(Layout.EN_US);
 
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <FakeIntlProvider>
       <KeyboardContext.Provider value={keyboard}>
         <KeyFrequencyHeatmap keyboard={keyboard} />
@@ -15,5 +15,5 @@ test("render", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });

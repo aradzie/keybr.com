@@ -11,7 +11,7 @@ import TestRenderer from "react-test-renderer";
 import { TextLines } from "./TextLines.tsx";
 
 test("render", (t) => {
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <TextLines
       settings={textDisplaySettings}
       lines={{
@@ -35,5 +35,5 @@ test("render", (t) => {
     />,
   );
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });

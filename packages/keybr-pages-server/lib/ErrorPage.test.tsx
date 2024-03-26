@@ -5,7 +5,7 @@ import TestRenderer from "react-test-renderer";
 import { ErrorPage, inspectError } from "./ErrorPage.tsx";
 
 test("render", (t) => {
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <ManifestContext.Provider value={Manifest.fake}>
       <ErrorPage
         error={{
@@ -17,7 +17,7 @@ test("render", (t) => {
     </ManifestContext.Provider>,
   );
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });
 
 test("inspect error", (t) => {

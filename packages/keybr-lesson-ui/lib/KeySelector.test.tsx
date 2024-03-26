@@ -13,7 +13,7 @@ const { letters } = FakePhoneticModel;
 const keyStatsMap = newKeyStatsMap(letters, []);
 
 test.serial("render", (t) => {
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <FakeIntlProvider>
       <FakeSettingsContext>
         <KeySelector keyStatsMap={keyStatsMap} current={letters[0]} />
@@ -21,7 +21,7 @@ test.serial("render", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });
 
 test.serial("props", (t) => {

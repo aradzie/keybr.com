@@ -12,13 +12,13 @@ test("render anonymous user", (t) => {
     imageUrl: null,
   };
 
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <FakeIntlProvider>
       <UserName user={user} link={Sitemap.accountLink(user)} />
     </FakeIntlProvider>,
   );
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });
 
 test("render named user", (t) => {
@@ -29,11 +29,11 @@ test("render named user", (t) => {
     premium: false,
   };
 
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <FakeIntlProvider>
       <UserName user={user} link={Sitemap.accountLink(user)} />
     </FakeIntlProvider>,
   );
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });

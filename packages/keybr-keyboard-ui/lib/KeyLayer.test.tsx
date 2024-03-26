@@ -6,19 +6,19 @@ import { KeyLayer } from "./KeyLayer.tsx";
 test("render", (t) => {
   const keyboard = loadKeyboard(Layout.EN_US);
 
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <KeyboardContext.Provider value={keyboard}>
       <KeyLayer />
     </KeyboardContext.Provider>,
   );
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });
 
 test("update", (t) => {
   const keyboard = loadKeyboard(Layout.EN_US);
 
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <KeyboardContext.Provider value={keyboard}>
       <KeyLayer
         depressedKeys={["KeyA", "KeyB", "KeyC"]}
@@ -27,5 +27,5 @@ test("update", (t) => {
     </KeyboardContext.Provider>,
   );
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });

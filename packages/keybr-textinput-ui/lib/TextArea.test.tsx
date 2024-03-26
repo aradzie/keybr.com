@@ -5,7 +5,7 @@ import TestRenderer from "react-test-renderer";
 import { TextArea } from "./TextArea.tsx";
 
 test("empty", (t) => {
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <IntlProvider locale="en">
       <TextArea
         settings={textDisplaySettings}
@@ -14,11 +14,11 @@ test("empty", (t) => {
     </IntlProvider>,
   );
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });
 
 test("render items", (t) => {
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <IntlProvider locale="en">
       <TextArea
         settings={textDisplaySettings}
@@ -27,5 +27,5 @@ test("render items", (t) => {
     </IntlProvider>,
   );
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });

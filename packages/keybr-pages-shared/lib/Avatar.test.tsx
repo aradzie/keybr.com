@@ -5,13 +5,13 @@ import { Avatar } from "./Avatar.tsx";
 import { type AnonymousUser, type NamedUser } from "./types.ts";
 
 test("render anonymous user without image", (t) => {
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <FakeIntlProvider>
       <Avatar user={null} />
     </FakeIntlProvider>,
   );
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });
 
 test("render anonymous user with identicon", (t) => {
@@ -21,13 +21,13 @@ test("render anonymous user with identicon", (t) => {
     imageUrl: null,
   };
 
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <FakeIntlProvider>
       <Avatar user={user} />
     </FakeIntlProvider>,
   );
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });
 
 test("render named user with identicon", (t) => {
@@ -38,13 +38,13 @@ test("render named user with identicon", (t) => {
     premium: false,
   };
 
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <FakeIntlProvider>
       <Avatar user={user} />
     </FakeIntlProvider>,
   );
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });
 
 test("render named user with custom image", (t) => {
@@ -55,11 +55,11 @@ test("render named user with custom image", (t) => {
     premium: false,
   };
 
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <FakeIntlProvider>
       <Avatar user={user} />
     </FakeIntlProvider>,
   );
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });

@@ -4,7 +4,7 @@ import TestRenderer from "react-test-renderer";
 import { KeyLegend } from "./KeyLegend.tsx";
 
 test("render not included", (t) => {
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <FakeIntlProvider>
       <KeyLegend
         className="custom"
@@ -16,11 +16,11 @@ test("render not included", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });
 
 test("render included", (t) => {
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <FakeIntlProvider>
       <KeyLegend
         className="custom"
@@ -32,5 +32,5 @@ test("render included", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });

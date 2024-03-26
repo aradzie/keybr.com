@@ -23,7 +23,7 @@ test("render", (t) => {
 
   const Key = makeKeyComponent(shape);
 
-  const testRenderer = TestRenderer.create(<Key />);
+  const renderer = TestRenderer.create(<Key />);
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });

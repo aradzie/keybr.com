@@ -45,7 +45,7 @@ test("render", (t) => {
     extra: {},
   };
 
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <ManifestContext.Provider value={Manifest.fake}>
       <ThemeContext.Provider
         value={{
@@ -68,7 +68,7 @@ test("render", (t) => {
     </ManifestContext.Provider>,
   );
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });
 
 test("render alt", (t) => {
@@ -106,7 +106,7 @@ test("render alt", (t) => {
     extra: {},
   };
 
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <ManifestContext.Provider value={Manifest.fake}>
       <ThemeContext.Provider
         value={{
@@ -129,5 +129,5 @@ test("render alt", (t) => {
     </ManifestContext.Provider>,
   );
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });

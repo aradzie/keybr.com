@@ -6,19 +6,15 @@ import { VirtualKeyboard } from "./VirtualKeyboard.tsx";
 test("render standard 101", (t) => {
   const keyboard = loadKeyboard(Layout.EN_US, Geometry.STANDARD_101);
 
-  const testRenderer = TestRenderer.create(
-    <VirtualKeyboard keyboard={keyboard} />,
-  );
+  const renderer = TestRenderer.create(<VirtualKeyboard keyboard={keyboard} />);
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });
 
 test("render standard 101 full", (t) => {
   const keyboard = loadKeyboard(Layout.EN_US, Geometry.STANDARD_101_FULL);
 
-  const testRenderer = TestRenderer.create(
-    <VirtualKeyboard keyboard={keyboard} />,
-  );
+  const renderer = TestRenderer.create(<VirtualKeyboard keyboard={keyboard} />);
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });

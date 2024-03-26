@@ -12,7 +12,7 @@ test("no streaks", (t) => {
 
   // Act.
 
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <FakeIntlProvider>
       <FakeSettingsContext>
         <AccuracySection summary={summary} />
@@ -22,7 +22,7 @@ test("no streaks", (t) => {
 
   // Assert.
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });
 
 test("one streak", (t) => {
@@ -34,7 +34,7 @@ test("one streak", (t) => {
 
   // Act.
 
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <FakeIntlProvider>
       <FakeSettingsContext>
         <AccuracySection summary={summary} />
@@ -44,5 +44,5 @@ test("one streak", (t) => {
 
   // Assert.
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });

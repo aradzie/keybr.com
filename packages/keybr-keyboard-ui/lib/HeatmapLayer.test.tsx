@@ -6,19 +6,19 @@ import { HeatmapLayer } from "./HeatmapLayer.tsx";
 test("render empty", (t) => {
   const keyboard = loadKeyboard(Layout.EN_US);
 
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <KeyboardContext.Provider value={keyboard}>
       <HeatmapLayer histogram={[]} modifier="f" />
     </KeyboardContext.Provider>,
   );
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });
 
 test("render with equal counts", (t) => {
   const keyboard = loadKeyboard(Layout.EN_US);
 
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <KeyboardContext.Provider value={keyboard}>
       <HeatmapLayer
         histogram={[
@@ -31,13 +31,13 @@ test("render with equal counts", (t) => {
     </KeyboardContext.Provider>,
   );
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });
 
 test("render with different counts", (t) => {
   const keyboard = loadKeyboard(Layout.EN_US);
 
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <KeyboardContext.Provider value={keyboard}>
       <HeatmapLayer
         histogram={[
@@ -50,5 +50,5 @@ test("render with different counts", (t) => {
     </KeyboardContext.Provider>,
   );
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });

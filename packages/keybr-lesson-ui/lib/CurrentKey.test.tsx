@@ -20,7 +20,7 @@ test("render no key", (t) => {
     }).asIncluded(),
   ]);
 
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <FakeIntlProvider>
       <FakeSettingsContext>
         <CurrentKey className="custom" lessonKeys={lessonKeys} />
@@ -28,7 +28,7 @@ test("render no key", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });
 
 test("render key", (t) => {
@@ -43,7 +43,7 @@ test("render key", (t) => {
     }).asFocused(),
   ]);
 
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <FakeIntlProvider>
       <FakeSettingsContext>
         <CurrentKey className="custom" lessonKeys={lessonKeys} />
@@ -51,5 +51,5 @@ test("render key", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });

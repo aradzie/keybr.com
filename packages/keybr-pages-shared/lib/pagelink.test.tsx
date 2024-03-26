@@ -91,13 +91,13 @@ test("render with default template", (t) => {
     icon: AlertIcon,
   });
 
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <FakeIntlProvider>
       <PageLink link={template.bind(null)} className="link-class" />
     </FakeIntlProvider>,
   );
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });
 
 test("render with custom template", (t) => {
@@ -114,7 +114,7 @@ test("render with custom template", (t) => {
     icon: AlertIcon,
   });
 
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <FakeIntlProvider>
       <PageLink link={template.bind(null)} className="link-class">
         {({ path, name }) => (
@@ -126,5 +126,5 @@ test("render with custom template", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });

@@ -44,7 +44,7 @@ test("render", (t) => {
     }),
   ]);
 
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <FakeIntlProvider>
       <FakeSettingsContext>
         <KeySet className="custom" lessonKeys={lessonKeys} />
@@ -52,5 +52,5 @@ test("render", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });

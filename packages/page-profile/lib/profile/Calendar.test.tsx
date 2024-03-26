@@ -13,7 +13,7 @@ test("no results", (t) => {
 
   // Act.
 
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <FakeIntlProvider>
       <FakeSettingsContext>
         <Calendar summary={summary} />
@@ -23,7 +23,7 @@ test("no results", (t) => {
 
   // Assert.
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });
 
 test("no results today", (t) => {
@@ -37,7 +37,7 @@ test("no results today", (t) => {
 
   // Act.
 
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <FakeIntlProvider>
       <FakeSettingsContext>
         <Calendar summary={summary} />
@@ -47,7 +47,7 @@ test("no results today", (t) => {
 
   // Assert.
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });
 
 test("render", (t) => {
@@ -62,7 +62,7 @@ test("render", (t) => {
 
   // Act.
 
-  const testRenderer = TestRenderer.create(
+  const renderer = TestRenderer.create(
     <FakeIntlProvider>
       <FakeSettingsContext>
         <Calendar summary={summary} />
@@ -72,5 +72,5 @@ test("render", (t) => {
 
   // Assert.
 
-  t.snapshot(testRenderer.toJSON());
+  t.snapshot(renderer.toJSON());
 });
