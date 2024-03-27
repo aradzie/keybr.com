@@ -118,7 +118,7 @@ export class Controller {
         description:
           "The login link that you are currently using is either expired or invalid. " +
           "Please enter your e-mail address again to receive a new login link. " +
-          "Don't worry, your account is safe! " +
+          "Don’t worry, your account is safe! " +
           "You likely got here because you used an old link that does not work anymore.",
       });
     }

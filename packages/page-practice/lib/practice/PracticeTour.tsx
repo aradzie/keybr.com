@@ -117,7 +117,7 @@ export const PracticeTour = memo(function PracticeTour({
             "<dt>Best typing speed</dt>" +
             "<dd>Your best typing speed for this individual letter.</dd>" +
             "<dt>Confidence level</dt>" +
-            "<dd>A number in range from zero to one which is computed using your typing speed, and indicates your familiarity with this letter. A letter is considered fully learned when it's confidence level reaches one.</dd>" +
+            "<dd>A number in range from zero to one which is computed using your typing speed, and indicates your familiarity with this letter. A letter is considered fully learned when it’s confidence level reaches one.</dd>" +
             "<dt>Learning rate</dt>" +
             "<dd>How your typing speed is changing with each lesson.</dd>" +
             "</dl>"

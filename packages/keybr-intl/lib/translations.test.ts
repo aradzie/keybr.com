@@ -24,11 +24,10 @@ for (const locale of allLocales) {
 for (const locale of allLocales) {
   test(`typography [${locale}]`, (t) => {
     const messages = loadMessages(locale);
-    let text = "";
     for (const [id, message] of Object.entries(messages)) {
-      t.notRegex(message, /^\s+/, `Message ${id} starts with whitespace`);
-      t.notRegex(message, /\s+$/, `Message ${id} ends with whitespace`);
-      t.notRegex(message, /\s{2,}/, `Message ${id} has repeated whitespace`);
+      t.notRegex(message, /^\s/, `Message ${id} starts with whitespace`);
+      t.notRegex(message, /\s$/, `Message ${id} ends with whitespace`);
+      t.notRegex(message, /\s\s/, `Message ${id} has repeated whitespace`);
       t.notRegex(message, /\t/, `Message ${id} has tab whitespace`);
       t.notRegex(
         message,
@@ -38,15 +37,10 @@ for (const locale of allLocales) {
       t.notRegex(
         message,
         /\s[.,:;!?]/,
-        `Message ${id} has space before punctuation`,
+        `Message ${id} has whitespace before punctuation`,
       );
-      // - \u002D Hyphen-Minus
-      // ‐ \u2010 Hyphen
-      // ‑ \u2011 Non-Breaking Hyphen
-      // ‒ \u2012 Figure Dash
-      // – \u2013 En Dash
-      // — \u2014 Em Dash
-      // − \u2212 Minus Sign
+      t.notRegex(message, /'/, `Message ${id} has straight single quote`);
+      t.notRegex(message, /"/, `Message ${id} has straight double quote`);
       t.notRegex(
         message,
         /\s\u002D\s/,
@@ -62,16 +56,7 @@ for (const locale of allLocales) {
         /\s\u2011|\u2011\s/,
         `Message ${id} has space around Non-Breaking Hyphen`,
       );
-      text += message;
     }
-    // https://op.europa.eu/en/web/eu-vocabularies/formex/physical-specifications/character-encoding/use-of-quotation-marks-in-the-different-languages
-    const a = text.includes("«") || text.includes("»");
-    const b = text.includes("„") || text.includes("“") || text.includes("”");
-    const c = text.includes("‘") || text.includes("’");
-    t.false(
-      (a && b) || (b && c) || (a && c),
-      "Messages have mixed quote characters",
-    );
   });
 }
 

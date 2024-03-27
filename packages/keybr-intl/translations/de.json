@@ -181,7 +181,7 @@
   "multiplayer.state.kicked": "<h1>Aus dem Spiel geworfen</h1><p>Sie wurden aus dem Spiel herausgeworfen, weil Sie inaktiv waren.</p>",
   "multiplayer.state.offline": "<h1>Server ist offline</h1><p>Mit unserem Spielserver ist etwas nicht in Ordnung.</p><p>Bitte besuchen Sie diese Seite in ein paar Minuten erneut, während wir das Problem beheben.</p>",
   "multiplayer.ticker.countDown": "Beginn in {countDown}",
-  "multiplayer.ticker.finishedPosition": "Sie haben's geschafft {position}!",
+  "multiplayer.ticker.finishedPosition": "Sie haben’s geschafft {position}!",
   "multiplayer.ticker.initializing": "Initialisierung...",
   "multiplayer.ticker.raceFinished": "Rennen beendet!",
   "multiplayer.ticker.raceStarted": "Rennen gestartet!",

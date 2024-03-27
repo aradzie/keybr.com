@@ -239,7 +239,7 @@ function GeometryProp(): ReactNode {
       <Explainer>
         <FormattedMessage
           id="settings.keyboardPointers.description"
-          defaultMessage="Highlight a key that must to be pressed next. Use this option to quickly find the position of a key if you don't know the keyboard layout well."
+          defaultMessage="Highlight a key that must to be pressed next. Use this option to quickly find the position of a key if you don’t know the keyboard layout well."
         />
       </Explainer>
     </>

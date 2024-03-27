@@ -14,7 +14,7 @@ export function BenfordProp(): ReactNode {
           <CheckBox
             label={formatMessage({
               id: "settings.benfordsLaw.label",
-              defaultMessage: "Benford's law",
+              defaultMessage: "Benford’s law",
             })}
             checked={settings.get(lessonProps.numbers.benford)}
             onChange={(value) => {
@@ -26,7 +26,7 @@ export function BenfordProp(): ReactNode {
       <Explainer>
         <FormattedMessage
           id="settings.benfordsLaw.description"
-          defaultMessage="<a>Benford's law</a> is an observation that in many real-life numerical data sets, the leading digit is likely to be small."
+          defaultMessage="<a>Benford’s law</a> is an observation that in many real-life numerical data sets, the leading digit is likely to be small."
           values={{
             a: (chunks) => (
               <Link
