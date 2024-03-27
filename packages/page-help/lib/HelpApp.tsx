@@ -43,7 +43,7 @@ export function HelpApp(): ReactNode {
         id="help.section3"
         defaultMessage={
           "<h2>The word generating algorithm</h2>" +
-          "<p>This application generates random but readable and pronounceable words, using the phonetic rules of your native language. These words look almost natural, and often are. Typing sensible text is much easier than repeating random letters, and it helps you remember frequent key combinations. The latest point is crucial. For example, it’s almost impossible for the letter ‘<em>W</em>’ to follow the ‘<em>Z</em>’ in English, and you will never type such a combination in this application. Instead, you will type more common words, such as «<em>the</em>,» «<em>that</em>,» «<em>with</em>,» and so on. Soon you will learn how to type the «<em>th</em>» combo really fast.</p>" +
+          "<p>This application generates random but readable and pronounceable words, using the phonetic rules of your native language. These words look almost natural, and often are. Typing sensible text is much easier than repeating random letters, and it helps you remember frequent key combinations. The latest point is crucial. For example, it’s almost impossible for the letter ‘<em>W</em>’ to follow the ‘<em>Z</em>’ in English, and you will never type such a combination in this application. Instead, you will type more common words, such as ‘<em>the</em>’, ‘<em>that</em>’, ‘<em>with</em>’, and so on. Soon you will learn how to type the ‘<em>th</em>’ combo really fast.</p>" +
           "<p>The words are generated from the letters which are selected using the following rules.</p>"
         }
       />

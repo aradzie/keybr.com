@@ -24,6 +24,7 @@ for (const locale of allLocales) {
 for (const locale of allLocales) {
   test(`typography [${locale}]`, (t) => {
     const messages = loadMessages(locale);
+    let text = "";
     for (const [id, message] of Object.entries(messages)) {
       t.notRegex(message, /^\s+/, `Message ${id} starts with whitespace`);
       t.notRegex(message, /\s+$/, `Message ${id} ends with whitespace`);
@@ -34,13 +35,6 @@ for (const locale of allLocales) {
         /[\u2000-\u200B\u2028\u2029]/,
         `Message ${id} has irregular whitespace`,
       );
-      t.notRegex(message, /« /, `Message ${id} has whitespace after «`);
-      t.notRegex(message, / »/, `Message ${id} has whitespace before »`);
-      t.notRegex(message, /„ /, `Message ${id} has whitespace after „`);
-      t.notRegex(message, /“ /, `Message ${id} has whitespace after “`);
-      t.notRegex(message, / ”/, `Message ${id} has whitespace before ”`);
-      t.notRegex(message, /‘ /, `Message ${id} has whitespace after ‘`);
-      t.notRegex(message, / ’/, `Message ${id} has whitespace before ’`);
       // - \u002D Hyphen-Minus
       // ‐ \u2010 Hyphen
       // ‑ \u2011 Non-Breaking Hyphen
@@ -63,7 +57,16 @@ for (const locale of allLocales) {
         /\s\u2011|\u2011\s/,
         `Message ${id} has space around Non-Breaking Hyphen`,
       );
+      text += message;
     }
+    // https://op.europa.eu/en/web/eu-vocabularies/formex/physical-specifications/character-encoding/use-of-quotation-marks-in-the-different-languages
+    const a = text.includes("«") || text.includes("»");
+    const b = text.includes("„") || text.includes("“") || text.includes("”");
+    const c = text.includes("‘") || text.includes("’");
+    t.false(
+      (a && b) || (b && c) || (a && c),
+      "Messages have mixed quote characters",
+    );
   });
 }
 
