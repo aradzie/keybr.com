@@ -27,7 +27,7 @@ export function SignInSection({
         id="account.signInPage.description"
         defaultMessage={
           "<p>Create an account to store your typing data on our servers in the cloud. This allows you to access your profile from any computer or browser. If you don't have an account then your typing data is stored locally and is accessible only from your current computer.</p>" +
-          "<p>We don't store any passwords. Instead we use third-party services to authenticate our users. We offer several convenient ways to create an account and sign‑in.</p>" +
+          "<p>We don't store any passwords. Instead we use third-party services to authenticate our users. We offer several convenient ways to create an account and sign-in.</p>" +
           "<p>You can opt-out at any time. Deleting an account is as simple as creating one.</p>"
         }
       />
@@ -44,7 +44,7 @@ export function SignInSection({
       <Header level={2}>
         <FormattedMessage
           id="account.socialSignIn.header"
-          defaultMessage="Sign‑In with Social Networks"
+          defaultMessage="Sign-In with Social Networks"
         />
       </Header>
 
@@ -53,7 +53,7 @@ export function SignInSection({
       <Header level={2}>
         <FormattedMessage
           id="account.emailSignIn.header"
-          defaultMessage="Sign‑In with E‑mail"
+          defaultMessage="Sign-In with E-mail"
         />
       </Header>
 

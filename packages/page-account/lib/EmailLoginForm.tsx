@@ -54,7 +54,7 @@ export function EmailLoginForm({
           <Para>
             <FormattedMessage
               id="account.emailState.sendingText"
-              defaultMessage="Sending an e‑mail with the login link to <strong>{email}</strong>... Please wait a second."
+              defaultMessage="Sending an e-mail with the login link to <strong>{email}</strong>... Please wait a second."
               values={{ email }}
             />
           </Para>
@@ -67,7 +67,7 @@ export function EmailLoginForm({
           <Para>
             <FormattedMessage
               id="account.emailState.sentText"
-              defaultMessage="We have sent an e‑mail with the login link to <strong>{email}</strong>. It should arrive soon, please check your inbox in a minute or two."
+              defaultMessage="We have sent an e-mail with the login link to <strong>{email}</strong>. It should arrive soon, please check your inbox in a minute or two."
               values={{ email }}
             />
           </Para>
@@ -83,7 +83,7 @@ export function EmailLoginForm({
               })}
               title={formatMessage({
                 id: "account.widget.resend.description",
-                defaultMessage: "Send one more e‑mail.",
+                defaultMessage: "Send one more e-mail.",
               })}
             />
           </Para>
@@ -96,7 +96,7 @@ export function EmailLoginForm({
           <Para>
             <FormattedMessage
               id="account.emailState.errorText"
-              defaultMessage="Could not send e‑mail to <strong>{email}</strong>: {message}"
+              defaultMessage="Could not send e-mail to <strong>{email}</strong>: {message}"
               values={{ email, message }}
             />
           </Para>
@@ -112,7 +112,7 @@ export function EmailLoginForm({
               })}
               title={formatMessage({
                 id: "account.widget.retrySend.description",
-                defaultMessage: "Send another e‑mail.",
+                defaultMessage: "Send another e-mail.",
               })}
             />
           </Para>
@@ -130,12 +130,12 @@ export function EmailLoginForm({
                 type="email"
                 placeholder={formatMessage({
                   id: "account.widget.email.placeholder",
-                  defaultMessage: "Your e‑mail address...",
+                  defaultMessage: "Your e-mail address...",
                 })}
                 title={formatMessage({
                   id: "account.widget.email.description",
                   defaultMessage:
-                    "This is the e‑mail address we will send the sign‑in link to.",
+                    "This is the e-mail address we will send the sign-in link to.",
                 })}
                 value={email}
               />
@@ -147,7 +147,7 @@ export function EmailLoginForm({
                 icon={<Icon shape={mdiSend} />}
                 label={formatMessage({
                   id: "account.widget.send.label",
-                  defaultMessage: "Send Sign‑in Link",
+                  defaultMessage: "Send Sign-in Link",
                 })}
                 title={formatMessage({
                   id: "account.widget.send.description",
@@ -161,11 +161,11 @@ export function EmailLoginForm({
             <FormattedMessage
               id="account.emailForm.description"
               defaultMessage={
-                "Simple sign‑in that does not use passwords. " +
-                "Just enter your e‑mail address, and we will send you a login link. " +
-                "Go to your inbox, click the link to create a new account or to open an existing account for the e‑mail address given. " +
+                "Simple sign-in that does not use passwords. " +
+                "Just enter your e-mail address, and we will send you a login link. " +
+                "Go to your inbox, click the link to create a new account or to open an existing account for the e-mail address given. " +
                 "The link is temporary and expires in a few hours. " +
-                "To sign‑in again later, enter the same e‑mail address, and we will send a new link for the same account."
+                "To sign-in again later, enter the same e-mail address, and we will send a new link for the same account."
               }
             />
           </Para>

@@ -24,7 +24,7 @@ test.serial("success", async (t) => {
   });
   fireEvent.click(r.getByRole("button"));
 
-  await r.findByText("We have sent an e‑mail", { exact: false });
+  await r.findByText("We have sent an e-mail", { exact: false });
 
   t.not(r.queryByText("username@email.com", { exact: false }), null);
 
@@ -51,7 +51,7 @@ test.serial("failure", async (t) => {
   });
   fireEvent.click(r.getByRole("button"));
 
-  await r.findByText("Could not send e‑mail", { exact: false });
+  await r.findByText("Could not send e-mail", { exact: false });
 
   t.not(r.queryByText("What a terrible failure", { exact: false }), null);
 

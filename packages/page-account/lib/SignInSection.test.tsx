@@ -12,13 +12,13 @@ test.serial("render", (t) => {
   );
 
   t.not(
-    r.queryByText("Simple sign‑in that does not use passwords.", {
+    r.queryByText("Simple sign-in that does not use passwords.", {
       exact: false,
     }),
     null,
   );
   t.not(
-    r.queryByText("Sign‑in with your preferred social network.", {
+    r.queryByText("Sign-in with your preferred social network.", {
       exact: false,
     }),
     null,

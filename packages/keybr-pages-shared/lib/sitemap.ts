@@ -22,7 +22,7 @@ export class Sitemap {
     }),
     title: defineMessage({
       id: "page.account.anonymous.link.description",
-      defaultMessage: "Sign‑in for an online account.",
+      defaultMessage: "Sign-in for an online account.",
     }),
     icon: AccountIcon,
   });
