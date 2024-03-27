@@ -18,7 +18,8 @@ export const PracticeTour = memo(function PracticeTour({
           defaultMessage={
             "<h1>Learn to Type Faster</h1>" +
             "<p>This web application will help you to learn <em>touch typing</em> which means typing through muscle memory without using your eyesight to find the keys. It can improve your typing speed and accuracy dramatically. The opposite is <em>hunt and peck typing</em>, a method of typing in which you look at the keyboard instead of the screen, and use only the index fingers.</p>" +
-            "<p>This is a short tutorial that will explain how this application works.</p> <p>You can use the left and right arrow keys to navigate through these slides.</p>"
+            "<p>This is a short tutorial that will explain how this application works.</p>" +
+            "<p>You can use the left and right arrow keys to navigate through these slides.</p>"
           }
         />
       </Slide>
@@ -37,7 +38,8 @@ export const PracticeTour = memo(function PracticeTour({
           id="practice.tour.slide3"
           defaultMessage={
             "<p>Initially it starts generating words from a small subset of the most frequent letters in the alphabet.</p>" +
-            "<p>When you are typing these words, the application measures the time-to-type metric for every letter in that subset. This time is used to measure your learning progress. The more familiar you become with a letter, the less time it takes for you to type it.</p> <p>Once you familiarize yourself with the entire current subset of letters, the algorithm expands it by adding more and more letters to the subset.</p>"
+            "<p>When you are typing these words, the application measures the time-to-type metric for every letter in that subset. This time is used to measure your learning progress. The more familiar you become with a letter, the less time it takes for you to type it.</p>" +
+            "<p>Once you familiarize yourself with the entire current subset of letters, the algorithm expands it by adding more and more letters to the subset.</p>"
           }
         />
       </Slide>

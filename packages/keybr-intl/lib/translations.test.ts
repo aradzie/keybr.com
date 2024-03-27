@@ -4,7 +4,7 @@ import { allLocales, defaultLocale } from "./locale.ts";
 
 for (const locale of allLocales) {
   if (locale !== defaultLocale) {
-    test(`translations [${locale}]`, (t) => {
+    test(`placeholders [${locale}]`, (t) => {
       const messages0 = loadMessages(defaultLocale);
       const messages1 = loadMessages(locale);
       for (const [id, message0] of Object.entries(messages0)) {
@@ -13,12 +13,36 @@ for (const locale of allLocales) {
           t.deepEqual(
             findPlaceholders(message0),
             findPlaceholders(message1),
-            `Messages [${id}] do not match`,
+            `Message ${id} has invalid placeholders`,
           );
         }
       }
     });
   }
+}
+
+for (const locale of allLocales) {
+  test(`typography [${locale}]`, (t) => {
+    const messages = loadMessages(locale);
+    for (const [id, message] of Object.entries(messages)) {
+      t.notRegex(message, /^\s+/, `Message ${id} starts with whitespace`);
+      t.notRegex(message, /\s+$/, `Message ${id} ends with whitespace`);
+      t.notRegex(message, /\s{2,}/, `Message ${id} has repeated whitespace`);
+      t.notRegex(message, /\t/, `Message ${id} has tab whitespace`);
+      t.notRegex(
+        message,
+        /[\u2000-\u200B\u2028\u2029]/,
+        `Message ${id} has irregular whitespace`,
+      );
+      t.notRegex(message, /« /, `Message ${id} has whitespace after «`);
+      t.notRegex(message, / »/, `Message ${id} has whitespace before »`);
+      t.notRegex(message, /„ /, `Message ${id} has whitespace after „`);
+      t.notRegex(message, /“ /, `Message ${id} has whitespace after “`);
+      t.notRegex(message, / ”/, `Message ${id} has whitespace before ”`);
+      t.notRegex(message, /‘ /, `Message ${id} has whitespace after ‘`);
+      t.notRegex(message, / ’/, `Message ${id} has whitespace before ’`);
+    }
+  });
 }
 
 function loadMessages(locale: string): Record<string, string> {
