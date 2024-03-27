@@ -283,7 +283,7 @@
   "profile.chart.keyFrequencyHistogram.legend": "Stapelfärg: {label1} – träffar, {label2} – missar, {label3} – miss/träff förhållande (relativ missfrekvens).",
   "profile.chart.keySpeed.caption": "Hastighet för tangent",
   "profile.chart.keySpeed.description": "Detta diagram visar hastighet för individuella tangenter.",
-  "profile.chart.keySpeed.legend": "Horizontell axel: lektion nummer. Vertikal axel: {label1} – skrivhastighet för vald tangent, {label2} - målhastighet.",
+  "profile.chart.keySpeed.legend": "Horizontell axel: lektion nummer. Vertikal axel: {label1} – skrivhastighet för vald tangent, {label2} – målhastighet.",
   "profile.chart.keySpeedHistogram.caption": "Histogram över tangenthastighet",
   "profile.chart.keySpeedHistogram.description": "Denna tabell visar genomsnittshastigheten för individuella tangenter.",
   "profile.chart.progressOverview.caption": "Överblick över lärande",

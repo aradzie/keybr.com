@@ -284,7 +284,7 @@
   "profile.chart.keyFrequencyHistogram.legend": "Couleur de barres: {label1} – nombre de coups sûrs, {label2} – nombre de ratés, {label3} – ratio ratés/sûrs (fréquence d'échec relative).",
   "profile.chart.keySpeed.caption": "Vitesse de frappe des touches",
   "profile.chart.keySpeed.description": "Ce graphique montre le changement de vitesse de frappe pour chaque touche spécifique.",
-  "profile.chart.keySpeed.legend": "Axe horizontal: numéro de leçon. Axe vertical: {label1} – vitesse de frappe pour la touche sélectionnée actuellement, {label2} - vitesse de frappe cible.",
+  "profile.chart.keySpeed.legend": "Axe horizontal: numéro de leçon. Axe vertical: {label1} – vitesse de frappe pour la touche sélectionnée actuellement, {label2} – vitesse de frappe cible.",
   "profile.chart.keySpeedHistogram.caption": "Histogramme de la vitesse de frappe des touches",
   "profile.chart.keySpeedHistogram.description": "Ce graphique montre la vitesse de frappe moyenne pour chaque touche spécifique.",
   "profile.chart.progressOverview.caption": "Aperçu de la progression de l'apprentissage",

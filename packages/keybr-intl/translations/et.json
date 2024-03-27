@@ -295,7 +295,7 @@
   "profile.chart.progressOverview.legend": "Horisontaalne telg: harjutuse number. Vertikaalne telg: kirjutamiskiirus iga üksiku klahvi puhul, {label1} – aeglane, {label2} – kiire.",
   "profile.chart.speed.caption": "Tippimiskiirus",
   "profile.chart.speed.description": "See diagramm näitab, kuidas su üldine kirjutamiskiirus on aja jooksul muutunud.",
-  "profile.chart.speed.legend": "Horisontaalne telg: harjutuse number. Vertikaalne telg: {label1} - kirjutamiskiirus, {label2} – kirjutamise täpsus, {label3} – klahvide arv õppetundides.",
+  "profile.chart.speed.legend": "Horisontaalne telg: harjutuse number. Vertikaalne telg: {label1} – kirjutamiskiirus, {label2} – kirjutamise täpsus, {label3} – klahvide arv õppetundides.",
   "profile.chart.summary.statisticsAllTime.header": "Kogu aja statistika",
   "profile.chart.summary.statisticsToday.header": "Tänase statistika",
   "profile.emptyChart.description": "Harjuta veel mõned korrad, et saada piisavalt statistikat.",

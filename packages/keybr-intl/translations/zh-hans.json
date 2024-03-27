@@ -291,7 +291,7 @@
   "profile.chart.keyFrequencyHistogram.legend": "条形颜色: {label1} – 击键计数, {label2} – 漏键计数, {label3} – 失误/命中率（相对失误频率）。",
   "profile.chart.keySpeed.caption": "键位输入速度",
   "profile.chart.keySpeed.description": "该图表显示了每个键的打字速度变化。",
-  "profile.chart.keySpeed.legend": "横轴：课时编号。纵轴：{label1} – 当前选择的键位输入速度, {label2} - 目标输入速度。",
+  "profile.chart.keySpeed.legend": "横轴：课时编号。纵轴：{label1} – 当前选择的键位输入速度, {label2} – 目标输入速度。",
   "profile.chart.keySpeedHistogram.caption": "输入速度直方图",
   "profile.chart.keySpeedHistogram.description": "该图表显示了每个键的平均键入速度。",
   "profile.chart.progressOverview.caption": "学习进度概览",

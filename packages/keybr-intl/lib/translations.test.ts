@@ -41,6 +41,28 @@ for (const locale of allLocales) {
       t.notRegex(message, / ”/, `Message ${id} has whitespace before ”`);
       t.notRegex(message, /‘ /, `Message ${id} has whitespace after ‘`);
       t.notRegex(message, / ’/, `Message ${id} has whitespace before ’`);
+      // - \u002D Hyphen-Minus
+      // ‐ \u2010 Hyphen
+      // ‑ \u2011 Non-Breaking Hyphen
+      // ‒ \u2012 Figure Dash
+      // – \u2013 En Dash
+      // — \u2014 Em Dash
+      // − \u2212 Minus Sign
+      t.notRegex(
+        message,
+        /\s\u002D\s/,
+        `Message ${id} uses Hyphen-Minus as Dash`,
+      );
+      t.notRegex(
+        message,
+        /\s\u2010|\u2010\s/,
+        `Message ${id} has space around Hyphen`,
+      );
+      t.notRegex(
+        message,
+        /\s\u2011|\u2011\s/,
+        `Message ${id} has space around Non-Breaking Hyphen`,
+      );
     }
   });
 }
