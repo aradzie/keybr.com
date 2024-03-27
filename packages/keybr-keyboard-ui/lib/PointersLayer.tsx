@@ -54,14 +54,7 @@ function pointers(keyboard: Keyboard, combo: KeyCombo | null): ReactNode[] {
   while (combo != null) {
     const shape = keyboard.getShape(combo.id);
     if (shape != null) {
-      if (combo.modifier.alt) {
-        const l = keyboard.getShape("AltLeft");
-        const r = keyboard.getShape("AltRight");
-        children.unshift(
-          pointer(l, styles.modifierPointer),
-          pointer(r, styles.modifierPointer),
-        );
-      }
+      children.unshift(pointer(shape, styles.pointer));
       if (combo.modifier.shift) {
         const l = keyboard.getShape("ShiftLeft");
         const r = keyboard.getShape("ShiftRight");
@@ -70,7 +63,14 @@ function pointers(keyboard: Keyboard, combo: KeyCombo | null): ReactNode[] {
           pointer(r, styles.modifierPointer),
         );
       }
-      children.unshift(pointer(shape, styles.pointer));
+      if (combo.modifier.alt) {
+        const l = keyboard.getShape("AltLeft");
+        const r = keyboard.getShape("AltRight");
+        children.unshift(
+          pointer(l, styles.modifierPointer),
+          pointer(r, styles.modifierPointer),
+        );
+      }
     }
     combo = combo.prefix;
   }
