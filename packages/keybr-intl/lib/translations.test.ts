@@ -35,6 +35,11 @@ for (const locale of allLocales) {
         /[\u2000-\u200B\u2028\u2029]/,
         `Message ${id} has irregular whitespace`,
       );
+      t.notRegex(
+        message,
+        /\s[.,:;!?]/,
+        `Message ${id} has space before punctuation`,
+      );
       // - \u002D Hyphen-Minus
       // ‐ \u2010 Hyphen
       // ‑ \u2011 Non-Breaking Hyphen
