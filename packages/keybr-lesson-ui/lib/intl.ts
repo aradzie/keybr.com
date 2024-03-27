@@ -58,7 +58,7 @@ export const messages = defineMessages({
   },
   characterName: {
     id: "lesson.characterName",
-    defaultMessage: "Character ''{name}''",
+    defaultMessage: "Character “{name}”",
   },
   focusedKeyText: {
     id: "lesson.focusedKeyText",

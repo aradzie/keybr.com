@@ -230,7 +230,7 @@
   "page.profile.link.description": "आफ्नो सिकाइ प्रगति बारे विस्तृत तथ्याङ्कहरू हेर्नुहोस्।",
   "page.profile.link.name": "प्रोफाइल",
   "page.profile.title": "मेरो प्रोफाइल",
-  "page.publicProfile.description": "प्रयोगकर्ता ''{name}'' को सार्वजनिक प्रोफाइल।",
+  "page.publicProfile.description": "प्रयोगकर्ता “{name}” को सार्वजनिक प्रोफाइल।",
   "page.publicProfile.link.description": "प्रयोगकर्ता {name} को सार्वजनिक प्रोफाइल अवलोकन गर्नुहोस्।",
   "page.publicProfile.link.name": "{name} को सार्वजनिक प्रोफाइल",
   "page.publicProfile.title": "{name} | सार्वजनिक प्रोफाइल",

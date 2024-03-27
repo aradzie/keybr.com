@@ -233,7 +233,7 @@
   "page.profile.link.description": "Podívejte se na podrobné statistiky o svém pokroku v učení.",
   "page.profile.link.name": "Profil",
   "page.profile.title": "Můj profil",
-  "page.publicProfile.description": "Veřejný profil uživatele ''{name}''.",
+  "page.publicProfile.description": "Veřejný profil uživatele “{name}”.",
   "page.publicProfile.link.description": "Sledujte veřejný profil uživatele {name}.",
   "page.publicProfile.link.name": "Veřejný profil uživatele {name}",
   "page.publicProfile.title": "{name} | Veřejný profil",

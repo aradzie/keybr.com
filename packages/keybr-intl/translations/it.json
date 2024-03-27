@@ -92,7 +92,7 @@
   "learningRate.alreadyUnlocked": "Questa lettera è già sbloccata.",
   "learningRate.remainingLessons": "Rimangono circa {remainingLessons} lezioni per sbloccare questa lettera ({certainty} certezza).",
   "learningRate.unknown": "Sono necessari più dati per calcolare le lezioni rimanenti per sbloccare questa lettera.",
-  "lesson.characterName": "Carattere ''{name}''",
+  "lesson.characterName": "Carattere “{name}”",
   "lesson.currentKeyPanel.label": "Tasto attuale",
   "lesson.dailyGoalPanel.description": "I progressi rispetto al tuo obiettivo giornaliero.",
   "lesson.dailyGoalPanel.label": "Obiettivo giornaliero",
