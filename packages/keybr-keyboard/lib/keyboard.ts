@@ -11,12 +11,14 @@ import {
   type GeometryDict,
   type KeyId,
   type WeightedCodePointSet,
+  type ZoneId,
 } from "./types.ts";
 
 export class Keyboard {
   readonly characters: ReadonlyMap<KeyId, KeyCharacters>;
   readonly combos: ReadonlyMap<CodePoint, KeyCombo>;
   readonly shapes: ReadonlyMap<KeyId, KeyShape>;
+  readonly zones: ReadonlyMap<ZoneId, readonly KeyShape[]>;
 
   constructor(
     readonly layout: Layout,
@@ -26,6 +28,7 @@ export class Keyboard {
     const characters = new Map<KeyId, KeyCharacters>();
     const combos = new Map<CodePoint, KeyCombo>();
     const shapes = new Map<KeyId, KeyShape>();
+    const zones = new Map<ZoneId, KeyShape[]>();
 
     for (const [id, codePoints] of Object.entries(codePointDict)) {
       const [a = 0, b = 0, c = 0, d = 0] = codePoints;
@@ -47,12 +50,21 @@ export class Keyboard {
     }
 
     for (const [id, data] of Object.entries(geometryDict)) {
-      shapes.set(id, new KeyShape(id, data, codePointDict[id] ?? null));
+      const shape = new KeyShape(id, data, codePointDict[id] ?? null);
+      shapes.set(id, shape);
+      for (const zone of shape.zones) {
+        let list = zones.get(zone);
+        if (list == null) {
+          zones.set(zone, (list = []));
+        }
+        list.push(shape);
+      }
     }
 
     this.characters = characters;
     this.combos = combos;
     this.shapes = shapes;
+    this.zones = zones;
   }
 
   getCharacters(id: KeyId): KeyCharacters | null {
@@ -65,6 +77,10 @@ export class Keyboard {
 
   getShape(id: KeyId): KeyShape | null {
     return this.shapes.get(id) ?? null;
+  }
+
+  getShapesInZone(id: ZoneId): readonly KeyShape[] {
+    return this.zones.get(id) ?? [];
   }
 
   codePoints({

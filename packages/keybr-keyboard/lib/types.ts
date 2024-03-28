@@ -12,13 +12,22 @@ export type HasCodePoint = {
   readonly codePoint: CodePoint;
 };
 
-export type FingerId =
+export type ZoneId =
+  // Finger zones.
   | "pinky"
   | "ring"
   | "middle"
   | "indexLeft"
   | "indexRight"
-  | "thumb";
+  | "thumb"
+  // Hand zones.
+  | "left"
+  | "right"
+  // Row zones.
+  | "digit"
+  | "top"
+  | "home"
+  | "bottom";
 
 export type CodePointDict = {
   readonly [id: KeyId]: readonly [
@@ -35,12 +44,9 @@ export type GeometryDict = {
     readonly y: number;
     readonly w?: number;
     readonly h?: number;
-    readonly rx?: number;
-    readonly ry?: number;
-    readonly ra?: number;
     readonly labels?: readonly LabelShape[];
     readonly shape?: string;
-    readonly finger?: FingerId;
+    readonly zones?: readonly ZoneId[];
     readonly homing?: boolean;
   };
 };

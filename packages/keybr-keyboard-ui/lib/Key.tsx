@@ -1,8 +1,8 @@
 import {
-  type FingerId,
   isDiacritic,
   type KeyShape,
   type LabelShape,
+  type ZoneId,
 } from "@keybr/keyboard";
 import { clsx } from "clsx";
 import {
@@ -180,7 +180,7 @@ function deadKeySymbol(codePoint: number): string {
   return String.fromCodePoint(/* ◌ */ 0x25cc, codePoint);
 }
 
-function fingerStyleName(finger: FingerId | null): string | null {
+function fingerStyleName(finger: ZoneId | null): string | null {
   switch (finger) {
     case "pinky":
       return styles.fingerPinky;

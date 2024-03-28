@@ -6,12 +6,15 @@ import { KeyModifier } from "./keymodifier.ts";
 import { Layout } from "./layout.ts";
 import { type CodePointDict, type GeometryDict } from "./types.ts";
 
-test("keys", (t) => {
+test("data", (t) => {
   const codePointDict: CodePointDict = {
     KeyA: [/* a */ 0x0061, /* A */ 0x0041, /* b */ 0x0062, /* B */ 0x0042],
     Equal: [0x0301, 0x0300],
   };
-  const geometryDict: GeometryDict = {};
+  const geometryDict: GeometryDict = {
+    KeyA: { x: 0, y: 0, zones: ["indexLeft", "left"] },
+    Equal: { x: 0, y: 0, zones: ["indexRight", "right"] },
+  };
   const keyboard = new Keyboard(Layout.EN_US, codePointDict, geometryDict);
   const key1 = new KeyCharacters(
     "KeyA",
@@ -70,4 +73,18 @@ test("keys", (t) => {
   t.deepEqual(keyboard.getCombo(/* à */ 0x00e0), kc0x00e0);
   t.deepEqual(keyboard.getCombo(/* Á */ 0x00c1), kc0x00c1);
   t.deepEqual(keyboard.getCombo(/* á */ 0x00e1), kc0x00e1);
+
+  const shape0 = keyboard.getShape("KeyA")!;
+  const shape1 = keyboard.getShape("Equal")!;
+  t.is(shape0.finger, "indexLeft");
+  t.is(shape0.hand, "left");
+  t.is(shape0.row, null);
+  t.is(shape1.finger, "indexRight");
+  t.is(shape1.hand, "right");
+  t.is(shape1.row, null);
+  t.deepEqual(keyboard.getShapesInZone("left"), [shape0]);
+  t.deepEqual(keyboard.getShapesInZone("right"), [shape1]);
+  t.deepEqual(keyboard.getShapesInZone("indexLeft"), [shape0]);
+  t.deepEqual(keyboard.getShapesInZone("indexRight"), [shape1]);
+  t.deepEqual(keyboard.getShapesInZone("home"), []);
 });
