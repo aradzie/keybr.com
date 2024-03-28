@@ -1,18 +1,8 @@
 import { type CodePoint } from "@keybr/unicode";
 import { type Keyboard } from "./keyboard.ts";
 import { type KeyShape } from "./keyshape.ts";
+import { type Ngram1, type Ngram2 } from "./ngram.ts";
 import { type ZoneId } from "./types.ts";
-
-export type Letter = {
-  readonly codePoint: CodePoint;
-  readonly f: number;
-};
-
-export type Bigram = {
-  readonly codePoint0: CodePoint;
-  readonly codePoint1: CodePoint;
-  readonly f: number;
-};
 
 export type KeyboardStats = {
   readonly homeRow: number;
@@ -24,8 +14,8 @@ export type KeyboardStats = {
 
 export function computeStats(
   keyboard: Keyboard,
-  letters: readonly Letter[],
-  bigrams: readonly Bigram[],
+  ng1: Ngram1,
+  ng2: Ngram2,
 ): KeyboardStats {
   return {
     homeRow: keysInZone("home"),
@@ -38,8 +28,8 @@ export function computeStats(
   function keysInZone(zone: ZoneId): number {
     let a = 0;
     let b = 0;
-    for (const { codePoint, f } of letters) {
-      const key = getShape(codePoint);
+    for (const { a: x, f } of ng1) {
+      const key = getShape(x);
       if (key != null) {
         if (key.isZone(zone)) {
           a += f;
@@ -54,9 +44,9 @@ export function computeStats(
   function handSwitches(): number {
     let a = 0;
     let b = 0;
-    for (const { codePoint0, codePoint1, f } of bigrams) {
-      const shape0 = getShape(codePoint0);
-      const shape1 = getShape(codePoint1);
+    for (const { a: x, b: y, f } of ng2) {
+      const shape0 = getShape(x);
+      const shape1 = getShape(y);
       if (
         shape0 != null &&
         shape1 != null &&
@@ -76,9 +66,9 @@ export function computeStats(
   function fingerSwitches(): number {
     let a = 0;
     let b = 0;
-    for (const { codePoint0, codePoint1, f } of bigrams) {
-      const shape0 = getShape(codePoint0);
-      const shape1 = getShape(codePoint1);
+    for (const { a: x, b: y, f } of ng2) {
+      const shape0 = getShape(x);
+      const shape1 = getShape(y);
       if (
         shape0 != null &&
         shape1 != null &&

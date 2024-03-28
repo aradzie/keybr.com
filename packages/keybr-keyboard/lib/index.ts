@@ -12,6 +12,7 @@ export * from "./keyshape.ts";
 export * from "./language.ts";
 export * from "./layout.ts";
 export * from "./load.ts";
+export * from "./ngram.ts";
 export * from "./settings.ts";
 export * from "./stats.ts";
 export * from "./types.ts";

@@ -1,14 +1,21 @@
-import dataEnglishOrder1 from "./data/english.order1.json";
-import dataEnglishOrder2 from "./data/english.order2.json";
+import { Ngram1, Ngram2 } from "@keybr/keyboard";
+import englishOrder1 from "./data/english.order1.json";
+import englishOrder2 from "./data/english.order2.json";
 
-export const letters = Object.freeze(
-  dataEnglishOrder1.map(([codePoint, f]) => ({ codePoint, f })),
-);
+const alphabet = englishOrder1.map(([a]) => a);
 
-export const bigrams = Object.freeze(
-  dataEnglishOrder2.map(([codePoint0, codePoint1, f]) => ({
-    codePoint0,
-    codePoint1,
-    f,
-  })),
-);
+export const englishN1 = (() => {
+  const ngram = new Ngram1(alphabet);
+  for (const [a, f] of englishOrder1) {
+    ngram.set(a, f);
+  }
+  return ngram;
+})();
+
+export const englishN2 = (() => {
+  const ngram = new Ngram2(alphabet);
+  for (const [a, b, f] of englishOrder2) {
+    ngram.set(a, b, f);
+  }
+  return ngram;
+})();

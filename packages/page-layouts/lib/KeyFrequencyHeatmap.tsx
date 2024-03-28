@@ -12,7 +12,7 @@ import {
 import { Figure } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
-import { bigrams, letters } from "./english.ts";
+import { englishN1, englishN2 } from "./english.ts";
 
 export function KeyFrequencyHeatmap({
   keyboard,
@@ -37,12 +37,12 @@ export function KeyFrequencyHeatmap({
         />
       </Figure.Description>
 
-      <KeyboardStats stats={computeStats(keyboard, letters, bigrams)} />
+      <KeyboardStats stats={computeStats(keyboard, englishN1, englishN2)} />
 
       <VirtualKeyboard keyboard={keyboard}>
         <KeyLayer />
         <HeatmapLayer
-          histogram={letters.map((letter) => [letter, letter.f])}
+          histogram={[...englishN1].map(({ a, f }) => [{ codePoint: a }, f])}
           modifier="f"
         />
       </VirtualKeyboard>
