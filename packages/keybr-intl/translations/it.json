@@ -77,8 +77,6 @@
   "keyboard.language.label": "Lingua:",
   "layouts.heatmap.caption": "Mappa di calore della frequenza tasti per {name}",
   "layouts.heatmap.description": "Questo grafico mostra la frequenza relativa dei tasti come mappa di calore.",
-  "layouts.link.website.name": "Sito ufficiale",
-  "layouts.link.wikipedia.name": "Articolo wikipedia",
   "layouts.stats.bottomRowKeys.description": "Percentuale di tasti digitati sulla riga Maiusc, un nomero basso è meglio.",
   "layouts.stats.bottomRowKeys.name": "Tasti nella fila in basso:",
   "layouts.stats.homeRowKeys.description": "Percentuale di tasti digitati senza uscire dalla riga Caps Lock, un numero alto è meglio.",

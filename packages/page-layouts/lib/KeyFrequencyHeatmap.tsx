@@ -19,14 +19,14 @@ export function KeyFrequencyHeatmap({
 }: {
   readonly keyboard: Keyboard;
 }): ReactNode {
-  const { formatLayoutName } = useFormattedNames();
+  const { formatFullLayoutName } = useFormattedNames();
   return (
     <Figure>
       <Figure.Caption>
         <FormattedMessage
           id="layouts.heatmap.caption"
           defaultMessage="Key Frequency Heatmap for {name}"
-          values={{ name: formatLayoutName(keyboard.layout) }}
+          values={{ name: formatFullLayoutName(keyboard.layout) }}
         />
       </Figure.Caption>
 

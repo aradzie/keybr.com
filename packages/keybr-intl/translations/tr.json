@@ -67,8 +67,6 @@
   "highScores.column.user.label": "Kullanıcı",
   "keyboard.language.label": "Dil:",
   "keyboard.layout.label": "Düzen:",
-  "layouts.link.website.name": "Resmi site",
-  "layouts.link.wikipedia.name": "Vikipedi makalesi",
   "layouts.stats.bottomRowKeys.name": "Alt sıradaki karakterler:",
   "layouts.stats.sameFingerKeys.name": "Aynı parmakla yazılan karakterler:",
   "layouts.stats.sameHandKeys.description": "Aynı elle basılan tuşların oranı, ne kadar az o kadar iyi.",
