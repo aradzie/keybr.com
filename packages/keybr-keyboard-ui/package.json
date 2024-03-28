@@ -5,8 +5,10 @@
   "main": "lib/index.ts",
   "types": ".types/index.d.ts",
   "dependencies": {
+    "@keybr/intl": "*",
     "@keybr/keyboard": "*",
-    "@keybr/unicode": "*"
+    "@keybr/unicode": "*",
+    "@keybr/widget": "*"
   },
   "devDependencies": {
     "@keybr/test-env-time": "*"

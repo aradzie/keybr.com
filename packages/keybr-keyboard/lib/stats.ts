@@ -1,5 +1,7 @@
-import { type Keyboard, type KeyShape, type ZoneId } from "@keybr/keyboard";
 import { type CodePoint } from "@keybr/unicode";
+import { type Keyboard } from "./keyboard.ts";
+import { type KeyShape } from "./keyshape.ts";
+import { type ZoneId } from "./types.ts";
 
 export type Letter = {
   readonly codePoint: CodePoint;

@@ -1,11 +1,18 @@
-import { type Keyboard, useFormattedNames } from "@keybr/keyboard";
-import { HeatmapLayer, KeyLayer, VirtualKeyboard } from "@keybr/keyboard-ui";
+import {
+  computeStats,
+  type Keyboard,
+  useFormattedNames,
+} from "@keybr/keyboard";
+import {
+  HeatmapLayer,
+  KeyboardStats,
+  KeyLayer,
+  VirtualKeyboard,
+} from "@keybr/keyboard-ui";
 import { Figure } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
 import { bigrams, letters } from "./english.ts";
-import { KeyboardStats } from "./KeyboardStats.tsx";
-import { computeStats } from "./stats.ts";
 
 export function KeyFrequencyHeatmap({
   keyboard,

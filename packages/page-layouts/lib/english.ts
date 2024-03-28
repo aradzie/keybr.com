@@ -1,9 +1,8 @@
-import { Letter } from "@keybr/phonetic-model";
 import dataEnglishOrder1 from "./data/english.order1.json";
 import dataEnglishOrder2 from "./data/english.order2.json";
 
 export const letters = Object.freeze(
-  dataEnglishOrder1.map(([codePoint, f]) => new Letter(codePoint, f)),
+  dataEnglishOrder1.map(([codePoint, f]) => ({ codePoint, f })),
 );
 
 export const bigrams = Object.freeze(

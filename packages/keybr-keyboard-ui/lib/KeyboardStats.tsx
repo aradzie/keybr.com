@@ -1,8 +1,8 @@
 import { useIntlNumbers } from "@keybr/intl";
+import { type KeyboardStats } from "@keybr/keyboard";
 import { Value } from "@keybr/widget";
 import type { ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { type KeyboardStats } from "./stats.ts";
 
 export function KeyboardStats({
   stats: { homeRow, topRow, bottomRow, handSwitches, fingerSwitches },
