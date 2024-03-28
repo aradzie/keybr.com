@@ -75,7 +75,7 @@ test.serial("with modifiers", async (t) => {
   await TestRenderer.act(() => {});
   await fake.timers.run();
 
-  t.is(renderer.root.findAllByType("circle").length, 3);
+  t.is(renderer.root.findAllByType("circle").length, 2);
 
   t.snapshot(renderer.toJSON());
 });
