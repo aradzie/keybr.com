@@ -4,7 +4,6 @@ import { KeyCharacters } from "./keycharacters.ts";
 import { KeyCombo } from "./keycombo.ts";
 import { KeyModifier } from "./keymodifier.ts";
 import { KeyShape } from "./keyshape.ts";
-import { keyWeights } from "./keyweights.ts";
 import { type Layout } from "./layout.ts";
 import {
   type CodePointDict,
@@ -101,9 +100,16 @@ export class Keyboard {
         (!combo.alt || alt)
       ) {
         list.push(combo.codePoint);
-        const weight = keyWeights.get(combo.id);
-        if (weight != null) {
-          weights.set(combo.codePoint, weight);
+        const shape = this.shapes.get(combo.id);
+        if (shape != null) {
+          switch (shape.row) {
+            case "home":
+              weights.set(combo.codePoint, 1);
+              break;
+            case "top":
+              weights.set(combo.codePoint, 2);
+              break;
+          }
         }
       }
     }
