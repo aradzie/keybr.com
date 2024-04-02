@@ -60,6 +60,28 @@ test("data", (t) => {
     [...keyboard.getCodePoints({ dead: false, shift: false, alt: false })],
     [/* a */ 0x0061],
   );
+  t.deepEqual(
+    [
+      ...keyboard.getCodePoints({
+        dead: false,
+        shift: false,
+        alt: false,
+        zone: "left",
+      }),
+    ],
+    [/* a */ 0x0061],
+  );
+  t.deepEqual(
+    [
+      ...keyboard.getCodePoints({
+        dead: false,
+        shift: false,
+        alt: false,
+        zone: "right",
+      }),
+    ],
+    [],
+  );
 
   t.is(keyboard.getCharacters("unknown"), null);
   t.deepEqual(keyboard.getCharacters("KeyA"), key1);

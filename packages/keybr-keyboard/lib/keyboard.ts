@@ -82,30 +82,31 @@ export class Keyboard {
     dead = true,
     shift = true,
     alt = true,
+    zone = null,
   }: {
     readonly dead?: boolean;
     readonly shift?: boolean;
     readonly alt?: boolean;
+    readonly zone?: ZoneId | null;
   } = {}): WeightedCodePointSet {
     const list: CodePoint[] = [];
     const weights = new Map<CodePoint, number>();
     for (const combo of this.combos.values()) {
+      const shape = this.getShape(combo.id);
       if (
         (combo.prefix == null || dead) &&
         (!combo.shift || shift) &&
-        (!combo.alt || alt)
+        (!combo.alt || alt) &&
+        (zone == null || shape?.inZone(zone))
       ) {
         list.push(combo.codePoint);
-        const shape = this.shapes.get(combo.id);
-        if (shape != null) {
-          switch (shape.row) {
-            case "home":
-              weights.set(combo.codePoint, 1);
-              break;
-            case "top":
-              weights.set(combo.codePoint, 2);
-              break;
-          }
+        switch (shape?.row) {
+          case "home":
+            weights.set(combo.codePoint, 1);
+            break;
+          case "top":
+            weights.set(combo.codePoint, 2);
+            break;
         }
       }
     }
