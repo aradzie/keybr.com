@@ -1,3 +1,4 @@
+import { Ngram1, Ngram2 } from "@keybr/keyboard";
 import {
   FakeRNGStream,
   randomSample,
@@ -48,7 +49,29 @@ export class FakePhoneticModel extends PhoneticModel {
     this.rng = rng;
   }
 
-  nextWord(filter: Filter, random: RNG = this.rng): string {
+  override nextWord(filter: Filter, random: RNG = this.rng): string {
     return randomSample(this.words, random);
+  }
+
+  override ngram1(): Ngram1 {
+    const alphabet = this.letters.map(({ codePoint }) => codePoint);
+    const { length } = alphabet;
+    const ngram = new Ngram1(alphabet);
+    for (let i = 0; i < length; i++) {
+      ngram.set(alphabet[i], 1);
+    }
+    return ngram;
+  }
+
+  override ngram2(): Ngram2 {
+    const alphabet = this.letters.map(({ codePoint }) => codePoint);
+    const { length } = alphabet;
+    const ngram = new Ngram2(alphabet);
+    for (let i = 0; i < length; i++) {
+      for (let j = 0; j < length; j++) {
+        ngram.set(alphabet[i], alphabet[j], 1);
+      }
+    }
+    return ngram;
   }
 }

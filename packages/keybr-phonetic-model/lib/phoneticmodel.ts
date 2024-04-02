@@ -1,4 +1,4 @@
-import { type Language } from "@keybr/keyboard";
+import { type Language, type Ngram1, type Ngram2 } from "@keybr/keyboard";
 import { randomSample, type RNG, weightedRandomSample } from "@keybr/rand";
 import { type CodePoint, type CodePointSet } from "@keybr/unicode";
 import { type Filter } from "./filter.ts";
@@ -13,6 +13,10 @@ export abstract class PhoneticModel {
 
   abstract nextWord(filter: Filter, random?: RNG): string;
 
+  abstract ngram1(): Ngram1;
+
+  abstract ngram2(): Ngram2;
+
   static restrict(
     model: PhoneticModel,
     codePoints: CodePointSet,
@@ -24,6 +28,14 @@ export abstract class PhoneticModel {
 
       override nextWord(filter: Filter, random?: RNG): string {
         return model.nextWord(filter, random);
+      }
+
+      override ngram1(): Ngram1 {
+        return model.ngram1();
+      }
+
+      override ngram2(): Ngram2 {
+        return model.ngram2();
       }
     })();
   }
@@ -127,8 +139,16 @@ export function newPhoneticModel(
       super(letters);
     }
 
-    nextWord(filter: Filter, random: RNG = Math.random): string {
+    override nextWord(filter: Filter, random: RNG = Math.random): string {
       return String.fromCodePoint(...nextWord(filter, random));
+    }
+
+    override ngram1(): Ngram1 {
+      return table.toNgram1();
+    }
+
+    override ngram2(): Ngram2 {
+      return table.toNgram2();
     }
   })();
 }
