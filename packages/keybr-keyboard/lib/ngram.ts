@@ -5,6 +5,9 @@ type Entry1 = {
   readonly f: number;
 };
 
+/**
+ * The unigram frequency table.
+ */
 export class Ngram1 implements Iterable<Entry1> {
   private readonly alphabet: readonly CodePoint[];
   private readonly data: Float64Array;
@@ -45,6 +48,10 @@ export class Ngram1 implements Iterable<Entry1> {
     normalize(this.data);
   }
 
+  toJSON() {
+    return [...this].map(({ a, f }) => [a, f]);
+  }
+
   private indexOf(codePoint: CodePoint): number {
     const index = this.alphabet.indexOf(codePoint);
     if (index < 0) {
@@ -60,6 +67,9 @@ type Entry2 = {
   readonly f: number;
 };
 
+/**
+ * The bigram frequency table.
+ */
 export class Ngram2 implements Iterable<Entry2> {
   private readonly alphabet: readonly CodePoint[];
   private readonly data: Float64Array;
@@ -109,6 +119,10 @@ export class Ngram2 implements Iterable<Entry2> {
 
   normalize(): void {
     normalize(this.data);
+  }
+
+  toJSON() {
+    return [...this].map(({ a, b, f }) => [a, b, f]);
   }
 
   private indexOf(codePoint: CodePoint): number {

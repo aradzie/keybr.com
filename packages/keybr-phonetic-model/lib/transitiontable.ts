@@ -1,4 +1,5 @@
 import { DataError, Reader, Writer } from "@keybr/binary";
+import { Ngram1, Ngram2 } from "@keybr/keyboard";
 import { type CodePoint } from "@keybr/unicode";
 import { Letter } from "./letter.ts";
 
@@ -61,15 +62,33 @@ export class TransitionTable {
   }
 
   letters(): Letter[] {
-    const map = new Map<CodePoint, number>(
-      this.alphabet.map((codePoint) => [codePoint, 0]),
-    );
+    return [...this.toNgram1()].map(({ a, f }) => new Letter(a, f));
+  }
+
+  toNgram1(): Ngram1 {
+    const ngram = new Ngram1(this.alphabet);
     for (const segment of this.segments) {
       for (const { codePoint, frequency } of segment) {
-        map.set(codePoint, (map.get(codePoint) ?? 0) + frequency);
+        ngram.add(codePoint, frequency);
       }
     }
-    return [...map.entries()].map(([codePoint, f]) => new Letter(codePoint, f));
+    return ngram;
+  }
+
+  toNgram2(): Ngram2 {
+    const ngram = new Ngram2(this.alphabet);
+    let index = 0;
+    for (const segment of this.segments) {
+      const codePoint0 = this.chain.codePoint(index);
+      for (const { codePoint, frequency } of segment) {
+        ngram.add(codePoint0, codePoint, frequency);
+      }
+      index += 1;
+      if (index === this.chain.size) {
+        index = 0;
+      }
+    }
+    return ngram;
   }
 }
 
