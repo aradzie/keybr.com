@@ -154,7 +154,7 @@ function PointersPreview(): ReactNode {
   const [index, setIndex] = useState(0);
   const suffix = useMemo(() => {
     setIndex(0);
-    const codePoints = keyboard.codePoints();
+    const codePoints = keyboard.getCodePoints();
     return getExampleText(keyboard.layout.language).filter((codePoint) =>
       codePoints.has(codePoint),
     );

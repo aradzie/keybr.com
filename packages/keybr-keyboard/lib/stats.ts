@@ -31,7 +31,7 @@ export function computeStats(
     for (const { a: x, f } of ng1) {
       const key = getShape(x);
       if (key != null) {
-        if (key.isZone(zone)) {
+        if (key.inZone(zone)) {
           a += f;
         } else {
           b += f;

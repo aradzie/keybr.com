@@ -38,26 +38,26 @@ test("data", (t) => {
   const kc0x00e1 = new KeyCombo(/* á */ 0x00e1, "KeyA", None, kc0x0301);
 
   t.deepEqual(
-    [...keyboard.codePoints({ dead: true, shift: true, alt: true })],
+    [...keyboard.getCodePoints({ dead: true, shift: true, alt: true })],
     [
       /* A */ 0x0041, /* B */ 0x0042, /* a */ 0x0061, /* b */ 0x0062,
       /* À */ 0x00c0, /* Á */ 0x00c1, /* à */ 0x00e0, /* á */ 0x00e1,
     ],
   );
   t.deepEqual(
-    [...keyboard.codePoints({ dead: false, shift: true, alt: true })],
+    [...keyboard.getCodePoints({ dead: false, shift: true, alt: true })],
     [/* A */ 0x0041, /* B */ 0x0042, /* a */ 0x0061, /* b */ 0x0062],
   );
   t.deepEqual(
-    [...keyboard.codePoints({ dead: false, shift: true, alt: false })],
+    [...keyboard.getCodePoints({ dead: false, shift: true, alt: false })],
     [/* A */ 0x0041, /* a */ 0x0061],
   );
   t.deepEqual(
-    [...keyboard.codePoints({ dead: false, shift: false, alt: true })],
+    [...keyboard.getCodePoints({ dead: false, shift: false, alt: true })],
     [/* a */ 0x0061, /* b */ 0x0062],
   );
   t.deepEqual(
-    [...keyboard.codePoints({ dead: false, shift: false, alt: false })],
+    [...keyboard.getCodePoints({ dead: false, shift: false, alt: false })],
     [/* a */ 0x0061],
   );
 
@@ -82,9 +82,9 @@ test("data", (t) => {
   t.is(shape1.finger, "indexRight");
   t.is(shape1.hand, "right");
   t.is(shape1.row, null);
-  t.deepEqual(keyboard.getShapesInZone("left"), [shape0]);
-  t.deepEqual(keyboard.getShapesInZone("right"), [shape1]);
-  t.deepEqual(keyboard.getShapesInZone("indexLeft"), [shape0]);
-  t.deepEqual(keyboard.getShapesInZone("indexRight"), [shape1]);
-  t.deepEqual(keyboard.getShapesInZone("home"), []);
+  t.deepEqual(keyboard.zones.get("left"), [shape0]);
+  t.deepEqual(keyboard.zones.get("right"), [shape1]);
+  t.deepEqual(keyboard.zones.get("indexLeft"), [shape0]);
+  t.deepEqual(keyboard.zones.get("indexRight"), [shape1]);
+  t.is(keyboard.zones.get("home"), undefined);
 });

@@ -63,7 +63,7 @@ function useLoader(model: PhoneticModel): Lesson | null {
     let didCancel = false;
 
     const load = async (): Promise<void> => {
-      const codePoints = keyboard.codePoints();
+      const codePoints = keyboard.getCodePoints();
       const newModel = PhoneticModel.restrict(model, codePoints);
       const lessonType = settings.get(lessonProps.type);
       const layout = settings.get(keyboardProps.layout);

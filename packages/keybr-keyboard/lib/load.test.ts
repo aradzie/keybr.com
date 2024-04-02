@@ -76,7 +76,7 @@ for (const layout of Layout.ALL) {
   for (const geometry of layout.geometries) {
     test(`load layout ${layout.id}/${geometry.id}`, (t) => {
       const keyboard = loadKeyboard(layout, geometry);
-      const codePoints = keyboard.codePoints({
+      const codePoints = keyboard.getCodePoints({
         dead: true,
         shift: true,
         alt: true,

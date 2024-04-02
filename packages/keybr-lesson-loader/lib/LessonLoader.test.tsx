@@ -19,7 +19,7 @@ test.serial("load", async (t) => {
       <KeyboardContext.Provider
         value={
           {
-            codePoints() {
+            getCodePoints() {
               return codePointsFrom("abc");
             },
           } as Keyboard

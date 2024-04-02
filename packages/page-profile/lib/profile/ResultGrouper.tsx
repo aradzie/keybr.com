@@ -111,7 +111,7 @@ export function ResultGrouper({
               case "letters":
                 return children(
                   newKeyStatsMap(
-                    Letter.restrict(letters, keyboard.codePoints()),
+                    Letter.restrict(letters, keyboard.getCodePoints()),
                     group,
                   ),
                 );

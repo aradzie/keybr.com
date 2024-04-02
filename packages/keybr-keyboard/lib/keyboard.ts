@@ -78,11 +78,7 @@ export class Keyboard {
     return this.shapes.get(id) ?? null;
   }
 
-  getShapesInZone(id: ZoneId): readonly KeyShape[] {
-    return this.zones.get(id) ?? [];
-  }
-
-  codePoints({
+  getCodePoints({
     dead = true,
     shift = true,
     alt = true,

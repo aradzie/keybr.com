@@ -11,7 +11,7 @@ export class KeyCharacters {
     readonly d: CodePoint,
   ) {}
 
-  codePoint(modifier: KeyModifier): CodePoint {
+  getCodePoint(modifier: KeyModifier): CodePoint {
     const { a, b, c, d } = this;
     switch (modifier) {
       case KeyModifier.None:

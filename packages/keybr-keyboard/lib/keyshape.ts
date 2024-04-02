@@ -82,7 +82,7 @@ export class KeyShape {
     this.row = selectZone(KeyShape.rowZones, this.zones);
   }
 
-  isZone(id: ZoneId): boolean {
+  inZone(id: ZoneId): boolean {
     return this.zones.includes(id);
   }
 }
