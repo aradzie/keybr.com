@@ -85,8 +85,6 @@
   "keyboard.geometry.label": "Geometria:",
   "keyboard.language.label": "Nyelv:",
   "keyboard.layout.label": "Kiosztás:",
-  "layouts.heatmap.caption": "Billentyűk Gyakoriságának Hőtérképe {name} számára",
-  "layouts.heatmap.description": "Ez a diagram a relatív billentyűk gyakoriságát mutatja hőtérkép formájában.",
   "layouts.stats.bottomRowKeys.description": "A Shift-el egy sorban beírt billentyűk százalékos aránya, minél kevesebb, annál jobb.",
   "layouts.stats.bottomRowKeys.name": "Billentyűk az alsó sorban:",
   "layouts.stats.homeRowKeys.description": "A Caps Lock sor elhagyása nélkül beírt billentyűk százalékos aránya, minél nagyobb, annál jobb.",

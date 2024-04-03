@@ -85,8 +85,6 @@
   "keyboard.geometry.label": "Geometría:",
   "keyboard.language.label": "Idioma:",
   "keyboard.layout.label": "Disposición:",
-  "layouts.heatmap.caption": "Mapa de calor de frecuencia de teclas para {name}",
-  "layouts.heatmap.description": "Este gráfico muestra las frecuencias relativas de las teclas en forma de mapa de calor.",
   "layouts.stats.bottomRowKeys.description": "Porcentaje de teclas mecanografiadas en la fila de Mayúsculas, cuanto menos mejor.",
   "layouts.stats.bottomRowKeys.name": "Teclas en la fila inferior:",
   "layouts.stats.homeRowKeys.description": "Porcentaje de teclas mecanografiadas sin dejar la fila de Mayúsculas, cuanto más mejor.",

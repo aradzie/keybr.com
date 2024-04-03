@@ -17,7 +17,7 @@ export function KeyboardStats({
         title={formatMessage({
           id: "layouts.stats.homeRowKeys.description",
           defaultMessage:
-            "Percentage of keys typed without leaving the Caps Lock row, the more the better.",
+            "The percentage of keys typed without leaving the Caps Lock row, the more the better.",
         })}
       >
         <FormattedMessage
@@ -30,7 +30,7 @@ export function KeyboardStats({
         title={formatMessage({
           id: "layouts.stats.topRowKeys.description",
           defaultMessage:
-            "Percentage of keys typed on the Tab row, the less the better.",
+            "The percentage of keys typed on the Tab row, the less the better.",
         })}
       >
         <FormattedMessage
@@ -43,7 +43,7 @@ export function KeyboardStats({
         title={formatMessage({
           id: "layouts.stats.bottomRowKeys.description",
           defaultMessage:
-            "Percentage of keys typed on the Shift row, the less the better.",
+            "The percentage of keys typed on the Shift row, the less the better.",
         })}
       >
         <FormattedMessage
@@ -56,7 +56,7 @@ export function KeyboardStats({
         title={formatMessage({
           id: "layouts.stats.sameHandKeys.description",
           defaultMessage:
-            "Percentage of keys typed by the same hand, the less the better.",
+            "The percentage of keys typed by the same hand, the less the better.",
         })}
       >
         <FormattedMessage
@@ -69,7 +69,7 @@ export function KeyboardStats({
         title={formatMessage({
           id: "layouts.stats.sameFingerKeys.description",
           defaultMessage:
-            "Percentage of keys typed by the same finger, the less the better.",
+            "The percentage of keys typed by the same finger, the less the better.",
         })}
       >
         <FormattedMessage

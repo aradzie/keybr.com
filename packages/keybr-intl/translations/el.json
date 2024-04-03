@@ -85,8 +85,6 @@
   "keyboard.geometry.label": "Γεωμετρία:",
   "keyboard.language.label": "Γλώσσα:",
   "keyboard.layout.label": "Διάταξη:",
-  "layouts.heatmap.caption": "Χάρτης συχνότητας πλήκτρων για {name}",
-  "layouts.heatmap.description": "Αυτό το γράφημα δείχνει τις σχετικές συχνότητες των πλήκτρων.",
   "layouts.stats.bottomRowKeys.description": "Το ποσοστό των πλήκτρων που πληκτρολογήθηκαν στη σειρά Shift, όσο λιγότερα τόσο το καλύτερο.",
   "layouts.stats.bottomRowKeys.name": "Πλήκτρα στην κάτω σειρά:",
   "layouts.stats.homeRowKeys.description": "Ποσοστό πλήκτρων που πληκτρολογήθηκαν χωρίς έξοδο από τη σειρά Caps Lock, όσο περισσότερα τόσο το καλύτερο.",

@@ -85,8 +85,6 @@
   "keyboard.geometry.label": "גֵאוֹמֶטרִיָה:",
   "keyboard.language.label": "שפה:",
   "keyboard.layout.label": "מַעֲרָך:",
-  "layouts.heatmap.caption": "מפת חום של תדר מפתח עבור {name}",
-  "layouts.heatmap.description": "תרשים זה מציג תדרי מפתח יחסיים כמפת חום.",
   "layouts.stats.bottomRowKeys.description": "אחוז המקשים שהוקלדו בשורת Shift, כמה שפחות, יותר טוב.",
   "layouts.stats.bottomRowKeys.name": "מקשים בשורה התחתונה:",
   "layouts.stats.homeRowKeys.description": "אחוז המפתחות שהוקלדו מבלי לעזוב את שורת Caps Lock, כמה שיותר יותר טוב.",

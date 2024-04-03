@@ -83,8 +83,6 @@
   "keyboard.emulate.label": "Layout simulado",
   "keyboard.geometry.label": "Geometria:",
   "keyboard.language.label": "Linguagem:",
-  "layouts.heatmap.caption": "Mapa de calor para {name}",
-  "layouts.heatmap.description": "Este gráfico mostra as teclas relacionadas como um mapa de calor.",
   "layouts.stats.bottomRowKeys.description": "Porcentagem de teclas digitadas na linha do Shift. Quanto menos, melhor.",
   "layouts.stats.bottomRowKeys.name": "Teclas na linha de baixo:",
   "layouts.stats.homeRowKeys.description": "Porcentagem de teclas digitadas sem deixar a linha do Caps Lock. Quanto mais, melhor",

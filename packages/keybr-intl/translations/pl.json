@@ -86,8 +86,6 @@
   "keyboard.geometry.label": "Geometria:",
   "keyboard.language.label": "Język:",
   "keyboard.layout.label": "Układ:",
-  "layouts.heatmap.caption": "Mapa cieplna częstotliwości naciskania klawiszy dla {name}",
-  "layouts.heatmap.description": "Ten diagram pokazuje względne częstotliwości naciskania klawiszy w formie mapy cieplnej.",
   "layouts.stats.bottomRowKeys.description": "Procent klawiszy naciskanych w szeregu z klawiszem Shift – im mniej, tym lepiej.",
   "layouts.stats.bottomRowKeys.name": "Klawisze w dolnym szeregu:",
   "layouts.stats.homeRowKeys.description": "Procent klawiszy naciskanych bez opuszczania wiersza z klawiszem Caps Lock – im więcej, tym lepiej.",

@@ -86,8 +86,6 @@
   "keyboard.geometry.label": "Геометрия:",
   "keyboard.language.label": "Язык:",
   "keyboard.layout.label": "Раскладка:",
-  "layouts.heatmap.caption": "Тепловая карта частоты печати клавиш для {name}",
-  "layouts.heatmap.description": "Эта диаграмма показывает сравнительную частоту печати клавиш в виде тепловой карты.",
   "layouts.stats.bottomRowKeys.description": "Процент клавиш, нажимаемых в ряду Shift. Чем меньше, тем лучше.",
   "layouts.stats.bottomRowKeys.name": "Клавиши в нижнем ряду:",
   "layouts.stats.homeRowKeys.description": "Процент клавиш, нажимаемых не покидая ряд Caps Lock. Чем больше, тем лучше.",

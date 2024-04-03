@@ -7,45 +7,40 @@ import {
   HeatmapLayer,
   KeyboardStats,
   KeyLayer,
+  TransitionsLayer,
   VirtualKeyboard,
 } from "@keybr/keyboard-ui";
-import { Figure } from "@keybr/widget";
+import { type PhoneticModel } from "@keybr/phonetic-model";
+import { Header, Para } from "@keybr/widget";
 import { type ReactNode } from "react";
-import { FormattedMessage } from "react-intl";
-import { englishN1, englishN2 } from "./english.ts";
 
 export function KeyFrequencyHeatmap({
   keyboard,
+  model,
 }: {
   readonly keyboard: Keyboard;
+  readonly model: PhoneticModel;
 }): ReactNode {
-  const { formatFullLayoutName } = useFormattedNames();
+  const { formatLayoutName } = useFormattedNames();
+  const ngram1 = model.ngram1();
+  const ngram2 = model.ngram2();
+  const stats = computeStats(keyboard, ngram1, ngram2);
   return (
-    <Figure>
-      <Figure.Caption>
-        <FormattedMessage
-          id="layouts.heatmap.caption"
-          defaultMessage="Key Frequency Heatmap for {name}"
-          values={{ name: formatFullLayoutName(keyboard.layout) }}
-        />
-      </Figure.Caption>
+    <>
+      <Header level={2}>{formatLayoutName(keyboard.layout)}</Header>
 
-      <Figure.Description>
-        <FormattedMessage
-          id="layouts.heatmap.description"
-          defaultMessage="This chart shows relative key frequencies as a heatmap."
-        />
-      </Figure.Description>
+      <KeyboardStats stats={stats} />
 
-      <KeyboardStats stats={computeStats(keyboard, englishN1, englishN2)} />
-
-      <VirtualKeyboard keyboard={keyboard}>
-        <KeyLayer />
-        <HeatmapLayer
-          histogram={[...englishN1].map(({ a, f }) => [{ codePoint: a }, f])}
-          modifier="f"
-        />
-      </VirtualKeyboard>
-    </Figure>
+      <Para>
+        <VirtualKeyboard keyboard={keyboard}>
+          <KeyLayer />
+          <HeatmapLayer
+            histogram={[...ngram1].map(({ a, f }) => [{ codePoint: a }, f])}
+            modifier="f"
+          />
+          <TransitionsLayer ngram={ngram2} />
+        </VirtualKeyboard>
+      </Para>
+    </>
   );
 }

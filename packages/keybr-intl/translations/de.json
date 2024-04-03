@@ -84,8 +84,6 @@
   "keyboard.emulate.label": "Layout emulieren",
   "keyboard.geometry.label": "Geometrie:",
   "keyboard.language.label": "Sprache:",
-  "layouts.heatmap.caption": "Tastenfrequenz-Heatmap für {name}",
-  "layouts.heatmap.description": "Dieses Diagramm zeigt relative Tastenhäufigkeiten als Heatmap.",
   "layouts.stats.bottomRowKeys.description": "Prozentualer Anteil der in der Umschaltzeile getippten Tasten, je weniger, desto besser.",
   "layouts.stats.bottomRowKeys.name": "Tasten in der unteren Zeile:",
   "layouts.stats.homeRowKeys.description": "Prozentsatz der Tasten, die getippt wurden, ohne die Feststelltastenzeile zu verlassen, je mehr, desto besser.",

@@ -82,8 +82,6 @@
   "keyboard.emulate.label": "Efterligne layout",
   "keyboard.geometry.label": "Geometri:",
   "keyboard.language.label": "Sprog:",
-  "layouts.heatmap.caption": "Tastfrekvens varmekort for {name}",
-  "layouts.heatmap.description": "Dette diagram viser relative testefrekvenser som et varmekort.",
   "layouts.stats.bottomRowKeys.description": "Procentdel af taster, der er indtastet på Shift-rækken, jo færre jo bedre.",
   "layouts.stats.bottomRowKeys.name": "Taster på nederste række:",
   "layouts.stats.homeRowKeys.description": "Procentdel af taster, der indtastes uden at forlade Caps Lock-rækken, jo flere jo bedre.",

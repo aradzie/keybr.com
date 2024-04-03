@@ -83,8 +83,6 @@
   "keyboard.emulate.label": "Emulera layout",
   "keyboard.geometry.label": "Geometri:",
   "keyboard.language.label": "Språk:",
-  "layouts.heatmap.caption": "Värmekarta över tangentfrekvenser för {name}",
-  "layouts.heatmap.description": "Detta diagram visar relativa tangentfrekvenser som en värmekarta.",
   "layouts.stats.bottomRowKeys.description": "Procent av tangenter på Shiftraden, ju färre desto bättre.",
   "layouts.stats.bottomRowKeys.name": "Tangenter på nedersta raden:",
   "layouts.stats.homeRowKeys.description": "Procent av tangenter skrivna utan att lämna Caps Lock raden, ju fler desto bättre.",

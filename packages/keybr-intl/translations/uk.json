@@ -85,8 +85,6 @@
   "keyboard.geometry.label": "Геометрія:",
   "keyboard.language.label": "Мова:",
   "keyboard.layout.label": "Розкладка:",
-  "layouts.heatmap.caption": "Теплова карта частоти клавіш для {name}",
-  "layouts.heatmap.description": "Ця діаграма показує теплову карту відносних частот кнопок.",
   "layouts.stats.bottomRowKeys.description": "Відсоток клавіш, що натискаються в ряду Shift, чим менше, тим краще.",
   "layouts.stats.bottomRowKeys.name": "Кнопки в нижньому ряду:",
   "layouts.stats.homeRowKeys.description": "Відсоток клавіш, що натискаються, не залишаючи ряд Caps Lock, чим більше, тим краще.",

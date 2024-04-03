@@ -85,8 +85,6 @@
   "keyboard.geometry.label": "Geomeetria:",
   "keyboard.language.label": "Keel:",
   "keyboard.layout.label": "Paigutus:",
-  "layouts.heatmap.caption": "Klahvi {name} sageduse soojuskaart",
-  "layouts.heatmap.description": "Diagramm näitab klahvide suhteliste sagedusi soojuskaardina.",
   "layouts.stats.bottomRowKeys.description": "Shift-real trükitud klahvide protsent, mida vähem, seda parem.",
   "layouts.stats.bottomRowKeys.name": "Klahvid alumisel real:",
   "layouts.stats.homeRowKeys.description": "Protsent klahvidest, mis on sisestatud ilma Caps Lock realt lahkumata, mida rohkem, seda parem.",

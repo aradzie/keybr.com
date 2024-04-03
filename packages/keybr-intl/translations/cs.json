@@ -86,8 +86,6 @@
   "keyboard.geometry.label": "Geometrie:",
   "keyboard.language.label": "Jazyk:",
   "keyboard.layout.label": "Rozložení:",
-  "layouts.heatmap.caption": "Teplotní mapa četnosti pro {name}",
-  "layouts.heatmap.description": "Tento graf zobrazuje relativní četnosti kláves ve formě teplotní mapy.",
   "layouts.stats.bottomRowKeys.description": "Procento kláves psaných ve spodní řadě, čím méně, tím lépe.",
   "layouts.stats.bottomRowKeys.name": "Klávesy ve spodní řadě:",
   "layouts.stats.homeRowKeys.description": "Procento kláves psaných bez opuštění základní řady, čím více, tím lépe.",

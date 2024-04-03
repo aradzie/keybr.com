@@ -84,8 +84,6 @@
   "keyboard.geometry.label": "Géométrie:",
   "keyboard.language.label": "Langue:",
   "keyboard.layout.label": "Disposition:",
-  "layouts.heatmap.caption": "Carte de fréquences des touches pour {name}",
-  "layouts.heatmap.description": "Ce graphique montre les fréquences relatives des touches sous forme de heatmap.",
   "layouts.stats.bottomRowKeys.description": "Pourcentage de touches tapées dans la rangée avec la touche Maj, moins c’est mieux.",
   "layouts.stats.bottomRowKeys.name": "Touches de la rangée du bas:",
   "layouts.stats.homeRowKeys.description": "Pourcentage de touches frappées sans quitter la rangée de la touche de verrouillage des majuscules, plus c’est mieux.",

@@ -68,8 +68,6 @@
   "keyboard.geometry.label": "Geometrie:",
   "keyboard.language.label": "Taal:",
   "keyboard.layout.label": "Indeling:",
-  "layouts.heatmap.caption": "Toetsfrequentie Hittekaart voor {name}",
-  "layouts.heatmap.description": "Deze grafiek laat u relatieve toetsfrequenties als een hittekaart zien.",
   "layouts.stats.bottomRowKeys.description": "Percentage getypte toetsen op de Shift rij, hoe minder, hoe beter.",
   "layouts.stats.bottomRowKeys.name": "Toetsen op de onderste rij:",
   "layouts.stats.homeRowKeys.description": "Percentage getypte toetsen zonder de Caps Lock rij te verlaten, hoe meer, hoe beter.",

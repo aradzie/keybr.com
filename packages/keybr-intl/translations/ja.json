@@ -82,8 +82,6 @@
   "keyboard.geometry.label": "形状:",
   "keyboard.language.label": "言語:",
   "keyboard.layout.label": "配列:",
-  "layouts.heatmap.caption": "{name} のキー頻度ヒートマップ",
-  "layouts.heatmap.description": "このチャートは相対的なキー頻度をヒートマップとして表したものです。",
   "layouts.stats.bottomRowKeys.description": "Shiftキーのある行のキーをタイプする割合で、少ないほど良いです。",
   "layouts.stats.bottomRowKeys.name": "下段のキー:",
   "layouts.stats.homeRowKeys.description": "Caps Lockキーのある行のキーをタイプする割合で、多いほどよいです。",

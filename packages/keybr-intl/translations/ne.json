@@ -85,8 +85,6 @@
   "keyboard.geometry.label": "ज्यामिति:",
   "keyboard.language.label": "भाषा:",
   "keyboard.layout.label": "लेआउट:",
-  "layouts.heatmap.caption": "{name} को लागि कुञ्जी फ्रिक्वेन्सी हीटम्याप",
-  "layouts.heatmap.description": "यो चार्टले तातो नक्शाको रूपमा सापेक्ष कुञ्जी आवृत्तिहरू देखाउँछ।",
   "layouts.stats.bottomRowKeys.description": "Shift पङ्क्तिमा टाइप गरिएका कुञ्जीहरूको प्रतिशत, कम राम्रो।",
   "layouts.stats.bottomRowKeys.name": "तल पङ्क्तिमा कुञ्जीहरू:",
   "layouts.stats.homeRowKeys.description": "Caps Lock पङ्क्ति नछोडी टाइप गरिएका कुञ्जीहरूको प्रतिशत, जति धेरै राम्रो।",

@@ -85,8 +85,6 @@
   "keyboard.geometry.label": "样式:",
   "keyboard.language.label": "语言:",
   "keyboard.layout.label": "布局:",
-  "layouts.heatmap.caption": "{name} 的键位频率点位分布图",
-  "layouts.heatmap.description": "该图以点位分布图形式显示相对键位的频率。",
   "layouts.stats.bottomRowKeys.description": "键入在 Shift 行键入的按键百分比，越少越好。",
   "layouts.stats.bottomRowKeys.name": "下方行中的键位：",
   "layouts.stats.homeRowKeys.description": "不关闭大写锁定行键入的百分比，越多越好。",
