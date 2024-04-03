@@ -99,7 +99,7 @@
   "layouts.stats.topRowKeys.name": "Клавіші у верхньому ряду:",
   "learningRate.alreadyUnlocked": "Ця літера вже розблокована.",
   "learningRate.remainingLessons": "Приблизно {remainingLessons} уроків залишилось щоб розблокувати цю літеру ({certainty} впевненості).",
-  "learningRate.unknown": "Потрібно більше часу до compute remaining lessons до unlock цього листа.",
+  "learningRate.unknown": "Потрібно більше даних, щоб обчислити решту уроків, щоб розблокувати цю літеру.",
   "lesson.characterName": "Літера «{name}»",
   "lesson.currentKeyPanel.label": "Поточна літера",
   "lesson.dailyGoalPanel.description": "Прогрес на шляху до вашої повсякденної мети.",

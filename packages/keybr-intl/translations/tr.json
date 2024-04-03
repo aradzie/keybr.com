@@ -19,6 +19,7 @@
   "account.premiumAccount.header": "Premium Hesap",
   "account.premiumAccount.legend": "Premium Hesap",
   "account.premiumAccountOverview": "Premium hesap satın aldığınız için teşekkür ederiz! Şimdi ekstra özellikler ve reklamsız bir deneyimin tadını çıkartabilirsiniz.",
+  "account.signInPage.description": "<p>Yazım bilgilerinizi bulut sunucularımızda saklayabilmemiz için bir hesap oluşturun. Bu şekilde hesabınıza herhangi bir bilgisayardan veya tarayıcıdan erişim sağlayabilirsiniz. Eğer bir hesabınız yoksa yerel olarak saklanan yazım bilgisine sadece bu bilgisayardan erişim sağlanabilir.</p><p>Hiçbir şifreyi saklamıyoruz. Bunun yerine kullanıcılarımızın kimliğini doğrulamak için üçüncü taraf hizmetleri kullanıyoruz. Bir hesap oluşturmak ve oturum açmak için birkaç uygun yol sunuyoruz.</p><p>İstediğiniz zaman vazgeçebilirsiniz. Bir hesabı silmek, bir hesap oluşturmak kadar kolaydır.</p>",
   "account.socialForm.description": "Tercih ettiğiniz sosyal medya hesabınız ile giriş yapın. Gizliliğinize dikkat edeceğimize ve profilinize, arkadaşlarınıza veya e-posta hesabınıza spam yapmayacağımıza söz veriyoruz.",
   "account.socialSignIn.header": "Sosyal medya hesaplarıyla giriş yapın",
   "account.socialSignInButton.description": "Sosyal medya hesabıyla giriş yapın.",

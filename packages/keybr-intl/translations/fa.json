@@ -328,6 +328,8 @@
   "textStats.numAllWords": "تمام واژگان",
   "textStats.numChapters": "فصل‌ها",
   "textStats.numCharacters": "نویسه‌ها",
+  "textStats.numCharsExcludingWhitespace": "کاراکتر ها بدون فضای خالی",
+  "textStats.numCharsIncludingWhitespace": "کاراکتر ها شامل فضای خالی",
   "textStats.numParagraphs": "بندها",
   "textStats.numUniqueWords": "کلمات منحصر به فرد",
   "textStats.timeToType": "با میانگین سرعت {speed} واژه‌بر‌دقیقه {time} طول می‌کشد تا این متن را تایپ کنید.",
