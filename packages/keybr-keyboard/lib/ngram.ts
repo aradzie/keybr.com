@@ -1,9 +1,6 @@
 import { type CodePoint } from "@keybr/unicode";
 
-type Entry1 = {
-  readonly a: CodePoint;
-  readonly f: number;
-};
+type Entry1 = [codePoint: CodePoint, f: number];
 
 /**
  * The unigram frequency table.
@@ -25,10 +22,10 @@ export class Ngram1 implements Iterable<Entry1> {
     const { alphabet, data } = this;
     const size = alphabet.length;
     for (let i = 0; i < size; i++) {
-      yield {
-        a: alphabet[i],
-        f: data[i],
-      };
+      const f = data[i];
+      if (f > 0) {
+        yield [alphabet[i], f];
+      }
     }
   }
 
@@ -49,7 +46,7 @@ export class Ngram1 implements Iterable<Entry1> {
   }
 
   toJSON() {
-    return [...this].map(({ a, f }) => [a, f]);
+    return [...this];
   }
 
   private indexOf(codePoint: CodePoint): number {
@@ -61,11 +58,7 @@ export class Ngram1 implements Iterable<Entry1> {
   }
 }
 
-type Entry2 = {
-  readonly a: CodePoint;
-  readonly b: CodePoint;
-  readonly f: number;
-};
+type Entry2 = [codePoint0: CodePoint, codePoint1: CodePoint, f: number];
 
 /**
  * The bigram frequency table.
@@ -87,11 +80,10 @@ export class Ngram2 implements Iterable<Entry2> {
     const size = alphabet.length;
     for (let i = 0; i < size; i++) {
       for (let j = 0; j < size; j++) {
-        yield {
-          a: alphabet[i],
-          b: alphabet[j],
-          f: data[i * size + j],
-        };
+        const f = data[i * size + j];
+        if (f > 0) {
+          yield [alphabet[i], alphabet[j], f];
+        }
       }
     }
   }
@@ -122,7 +114,7 @@ export class Ngram2 implements Iterable<Entry2> {
   }
 
   toJSON() {
-    return [...this].map(({ a, b, f }) => [a, b, f]);
+    return [...this];
   }
 
   private indexOf(codePoint: CodePoint): number {

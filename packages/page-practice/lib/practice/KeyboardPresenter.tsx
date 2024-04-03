@@ -1,5 +1,6 @@
 import { keyboardProps, useKeyboard } from "@keybr/keyboard";
 import {
+  flatten,
   HeatmapLayer,
   KeyLayer,
   PointersLayer,
@@ -39,10 +40,10 @@ export const KeyboardPresenter = memo(function KeyboardPresenter({
       />
       {focus && pointers && <PointersLayer suffix={suffix} />}
       {focus && lastLesson && (
-        <HeatmapLayer histogram={lastLesson.misses} modifier="m" />
+        <HeatmapLayer histogram={flatten(lastLesson.misses)} modifier="m" />
       )}
       {focus && lastLesson && (
-        <HeatmapLayer histogram={lastLesson.hits} modifier="h" />
+        <HeatmapLayer histogram={flatten(lastLesson.hits)} modifier="h" />
       )}
       {focus || <ZonesLayer />}
     </VirtualKeyboard>

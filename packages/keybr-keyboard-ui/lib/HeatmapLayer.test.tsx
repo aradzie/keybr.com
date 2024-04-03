@@ -22,9 +22,9 @@ test("equal counts", (t) => {
     <KeyboardContext.Provider value={keyboard}>
       <HeatmapLayer
         histogram={[
-          [{ codePoint: /* a */ 0x0061 }, 1],
-          [{ codePoint: /* b */ 0x0062 }, 1],
-          [{ codePoint: /* c */ 0x0063 }, 1],
+          [/* a */ 0x0061, 1],
+          [/* b */ 0x0062, 1],
+          [/* c */ 0x0063, 1],
         ]}
         modifier="f"
       />
@@ -41,9 +41,9 @@ test("different counts", (t) => {
     <KeyboardContext.Provider value={keyboard}>
       <HeatmapLayer
         histogram={[
-          [{ codePoint: /* a */ 0x0061 }, 1],
-          [{ codePoint: /* b */ 0x0062 }, 2],
-          [{ codePoint: /* c */ 0x0063 }, 3],
+          [/* a */ 0x0061, 1],
+          [/* b */ 0x0062, 2],
+          [/* c */ 0x0063, 3],
         ]}
         modifier="f"
       />
@@ -60,9 +60,9 @@ test("combine counts for the same key", (t) => {
     <KeyboardContext.Provider value={keyboard}>
       <HeatmapLayer
         histogram={[
-          [{ codePoint: /* a */ 0x0061 }, 1],
-          [{ codePoint: /* A */ 0x0041 }, 1],
-          [{ codePoint: /* b */ 0x0062 }, 1],
+          [/* a */ 0x0061, 1],
+          [/* A */ 0x0041, 1],
+          [/* b */ 0x0062, 1],
         ]}
         modifier="f"
       />

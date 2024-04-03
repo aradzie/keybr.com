@@ -62,7 +62,15 @@ export class TransitionTable {
   }
 
   letters(): Letter[] {
-    return [...this.toNgram1()].map(({ a, f }) => new Letter(a, f));
+    const map = new Map<CodePoint, number>(
+      this.alphabet.map((codePoint) => [codePoint, 0]),
+    );
+    for (const segment of this.segments) {
+      for (const { codePoint, frequency } of segment) {
+        map.set(codePoint, (map.get(codePoint) ?? 0) + frequency);
+      }
+    }
+    return [...map.entries()].map(([codePoint, f]) => new Letter(codePoint, f));
   }
 
   toNgram1(): Ngram1 {

@@ -28,10 +28,10 @@ export function computeStats(
   function keysInZone(zone: ZoneId): number {
     let a = 0;
     let b = 0;
-    for (const { a: x, f } of ng1) {
-      const key = getShape(x);
-      if (key != null) {
-        if (key.inZone(zone)) {
+    for (const [codePoint, f] of ng1) {
+      const shape = getShape(codePoint);
+      if (shape != null) {
+        if (shape.inZone(zone)) {
           a += f;
         } else {
           b += f;
@@ -44,9 +44,9 @@ export function computeStats(
   function handSwitches(): number {
     let a = 0;
     let b = 0;
-    for (const { a: x, b: y, f } of ng2) {
-      const shape0 = getShape(x);
-      const shape1 = getShape(y);
+    for (const [codePoint0, codePoint1, f] of ng2) {
+      const shape0 = getShape(codePoint0);
+      const shape1 = getShape(codePoint1);
       if (
         shape0 != null &&
         shape1 != null &&
@@ -66,9 +66,9 @@ export function computeStats(
   function fingerSwitches(): number {
     let a = 0;
     let b = 0;
-    for (const { a: x, b: y, f } of ng2) {
-      const shape0 = getShape(x);
-      const shape1 = getShape(y);
+    for (const [codePoint0, codePoint1, f] of ng2) {
+      const shape0 = getShape(codePoint0);
+      const shape1 = getShape(codePoint1);
       if (
         shape0 != null &&
         shape1 != null &&
@@ -86,7 +86,15 @@ export function computeStats(
   }
 
   function getShape(codePoint: CodePoint): KeyShape | null {
-    const combo = keyboard.getCombo(codePoint);
-    return combo == null ? null : keyboard.getShape(combo.id);
+    if (codePoint !== 0x0020) {
+      const combo = keyboard.getCombo(codePoint);
+      if (combo != null) {
+        const shape = keyboard.getShape(combo.id);
+        if (shape != null) {
+          return shape;
+        }
+      }
+    }
+    return null;
   }
 }

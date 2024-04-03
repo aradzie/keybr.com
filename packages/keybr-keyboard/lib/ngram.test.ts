@@ -4,21 +4,20 @@ import { Ngram1, Ngram2 } from "./ngram.ts";
 test("ngram1", (t) => {
   const ngram = new Ngram1([0x0061, 0x0062]);
 
-  t.deepEqual(
-    [...ngram],
-    [
-      { a: 0x0061, f: 0 },
-      { a: 0x0062, f: 0 },
-    ],
-  );
+  t.deepEqual([...ngram], []);
 
   ngram.add(0x0061, 1);
 
+  t.deepEqual([...ngram], [[0x0061, 1]]);
+
+  ngram.add(0x0062, 1);
+  ngram.add(0x0062, 2);
+
   t.deepEqual(
     [...ngram],
     [
-      { a: 0x0061, f: 1 },
-      { a: 0x0062, f: 0 },
+      [0x0061, 1],
+      [0x0062, 3],
     ],
   );
 });
@@ -26,25 +25,20 @@ test("ngram1", (t) => {
 test("ngram2", (t) => {
   const ngram = new Ngram2([0x0061, 0x0062]);
 
-  t.deepEqual(
-    [...ngram],
-    [
-      { a: 0x0061, b: 0x0061, f: 0 },
-      { a: 0x0061, b: 0x0062, f: 0 },
-      { a: 0x0062, b: 0x0061, f: 0 },
-      { a: 0x0062, b: 0x0062, f: 0 },
-    ],
-  );
+  t.deepEqual([...ngram], []);
 
   ngram.add(0x0061, 0x0061, 1);
 
+  t.deepEqual([...ngram], [[0x0061, 0x0061, 1]]);
+
+  ngram.add(0x0061, 0x0062, 1);
+  ngram.add(0x0061, 0x0062, 2);
+
   t.deepEqual(
     [...ngram],
     [
-      { a: 0x0061, b: 0x0061, f: 1 },
-      { a: 0x0061, b: 0x0062, f: 0 },
-      { a: 0x0062, b: 0x0061, f: 0 },
-      { a: 0x0062, b: 0x0062, f: 0 },
+      [0x0061, 0x0061, 1],
+      [0x0061, 0x0062, 3],
     ],
   );
 });

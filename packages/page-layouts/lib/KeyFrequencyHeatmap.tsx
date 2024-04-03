@@ -34,11 +34,8 @@ export function KeyFrequencyHeatmap({
       <Para>
         <VirtualKeyboard keyboard={keyboard}>
           <KeyLayer />
-          <HeatmapLayer
-            histogram={[...ngram1].map(({ a, f }) => [{ codePoint: a }, f])}
-            modifier="f"
-          />
-          <TransitionsLayer ngram={ngram2} />
+          <HeatmapLayer histogram={ngram1} modifier="f" />
+          <TransitionsLayer histogram={ngram2} />
         </VirtualKeyboard>
       </Para>
     </>

@@ -1,5 +1,10 @@
 import { type Keyboard } from "@keybr/keyboard";
-import { HeatmapLayer, KeyLayer, VirtualKeyboard } from "@keybr/keyboard-ui";
+import {
+  flatten,
+  HeatmapLayer,
+  KeyLayer,
+  VirtualKeyboard,
+} from "@keybr/keyboard-ui";
 import { type KeyStatsMap } from "@keybr/result";
 import { type ReactNode } from "react";
 import { keyUsage } from "./keyusage.ts";
@@ -15,8 +20,8 @@ export function KeyFrequencyHeatmap({
   return (
     <VirtualKeyboard keyboard={keyboard}>
       <KeyLayer />
-      <HeatmapLayer histogram={miss} modifier="m" />
-      <HeatmapLayer histogram={hit} modifier="h" />
+      <HeatmapLayer histogram={flatten(miss)} modifier="m" />
+      <HeatmapLayer histogram={flatten(hit)} modifier="h" />
     </VirtualKeyboard>
   );
 }
