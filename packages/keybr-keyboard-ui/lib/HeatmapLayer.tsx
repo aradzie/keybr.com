@@ -26,29 +26,29 @@ export const HeatmapLayer = memo(function HeatmapLayer({
         switch (modifier) {
           case "h": {
             const r = frequency * 15 + 5;
-            // top left ellipse
+            // Top left ellipse.
             return (
               <path
                 key={id}
                 className={clsx(styles.spot, styles.spot_h)}
-                d={`M${cx - r},${cy + r} A${r},${r} 0 0 1 ${cx + r},${cy - r}`}
+                d={`M ${cx - r} ${cy + r} A${r} ${r} 0 0 1 ${cx + r} ${cy - r}`}
               />
             );
           }
           case "m": {
             const r = frequency * 15 + 5;
-            // bottom right ellipse
+            // Bottom right ellipse.
             return (
               <path
                 key={id}
                 className={clsx(styles.spot, styles.spot_m)}
-                d={`M${cx - r},${cy + r} A${r},${r} 0 0 0 ${cx + r},${cy - r}`}
+                d={`M ${cx - r} ${cy + r} A ${r} ${r} 0 0 0 ${cx + r} ${cy - r}`}
               />
             );
           }
           case "f": {
             const r = frequency * 20 + 5;
-            // just circle
+            // Just a circle.
             return (
               <circle
                 key={id}
@@ -72,12 +72,13 @@ function normalize(
   const map = new Map<KeyShape, number>();
   for (const [{ codePoint }, count] of histogram) {
     if (count > 0) {
-      const combo = keyboard.getCombo(codePoint);
-      if (combo != null && combo.prefix == null) {
+      let combo = keyboard.getCombo(codePoint);
+      while (combo != null) {
         const shape = keyboard.getShape(combo.id);
         if (shape != null) {
-          map.set(shape, count);
+          map.set(shape, (map.get(shape) ?? 0) + count);
         }
+        combo = combo.prefix;
       }
     }
   }
@@ -85,7 +86,7 @@ function normalize(
     const min = Math.min(...map.values());
     const max = Math.max(...map.values());
     return [...map]
-      .sort((a, b) => a[1] - b[1])
+      .sort(([, a], [, b]) => a - b)
       .map(([shape, count]) => [
         shape,
         max > min ? (count - min) / (max - min) : 0.5,

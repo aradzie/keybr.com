@@ -1,14 +1,15 @@
-import { KeyboardContext, Layout, loadKeyboard } from "@keybr/keyboard";
+import { KeyboardContext, Layout, loadKeyboard, Ngram2 } from "@keybr/keyboard";
 import test from "ava";
 import TestRenderer from "react-test-renderer";
-import { HeatmapLayer } from "./HeatmapLayer.tsx";
+import { TransitionsLayer } from "./TransitionsLayer.tsx";
 
 test("empty", (t) => {
   const keyboard = loadKeyboard(Layout.EN_US);
+  const ngram = new Ngram2([/* a */ 0x0061, /* b */ 0x0062, /* c */ 0x0063]);
 
   const renderer = TestRenderer.create(
     <KeyboardContext.Provider value={keyboard}>
-      <HeatmapLayer histogram={[]} modifier="f" />
+      <TransitionsLayer ngram={ngram} />
     </KeyboardContext.Provider>,
   );
 
@@ -17,17 +18,13 @@ test("empty", (t) => {
 
 test("equal counts", (t) => {
   const keyboard = loadKeyboard(Layout.EN_US);
+  const ngram = new Ngram2([/* a */ 0x0061, /* b */ 0x0062, /* c */ 0x0063]);
+  ngram.set(/* a */ 0x0061, /* b */ 0x0062, 1);
+  ngram.set(/* b */ 0x0062, /* c */ 0x0063, 1);
 
   const renderer = TestRenderer.create(
     <KeyboardContext.Provider value={keyboard}>
-      <HeatmapLayer
-        histogram={[
-          [{ codePoint: /* a */ 0x0061 }, 1],
-          [{ codePoint: /* b */ 0x0062 }, 1],
-          [{ codePoint: /* c */ 0x0063 }, 1],
-        ]}
-        modifier="f"
-      />
+      <TransitionsLayer ngram={ngram} />
     </KeyboardContext.Provider>,
   );
 
@@ -36,36 +33,27 @@ test("equal counts", (t) => {
 
 test("different counts", (t) => {
   const keyboard = loadKeyboard(Layout.EN_US);
+  const ngram = new Ngram2([/* a */ 0x0061, /* b */ 0x0062, /* c */ 0x0063]);
+  ngram.set(/* a */ 0x0061, /* b */ 0x0062, 1);
+  ngram.set(/* b */ 0x0062, /* c */ 0x0063, 2);
 
   const renderer = TestRenderer.create(
     <KeyboardContext.Provider value={keyboard}>
-      <HeatmapLayer
-        histogram={[
-          [{ codePoint: /* a */ 0x0061 }, 1],
-          [{ codePoint: /* b */ 0x0062 }, 2],
-          [{ codePoint: /* c */ 0x0063 }, 3],
-        ]}
-        modifier="f"
-      />
+      <TransitionsLayer ngram={ngram} />
     </KeyboardContext.Provider>,
   );
 
   t.snapshot(renderer.toJSON());
 });
 
-test("combine counts for the same key", (t) => {
+test("self arrow", (t) => {
   const keyboard = loadKeyboard(Layout.EN_US);
+  const ngram = new Ngram2([/* a */ 0x0061, /* b */ 0x0062, /* c */ 0x0063]);
+  ngram.set(/* a */ 0x0061, /* a */ 0x0061, 1);
 
   const renderer = TestRenderer.create(
     <KeyboardContext.Provider value={keyboard}>
-      <HeatmapLayer
-        histogram={[
-          [{ codePoint: /* a */ 0x0061 }, 1],
-          [{ codePoint: /* A */ 0x0041 }, 1],
-          [{ codePoint: /* b */ 0x0062 }, 1],
-        ]}
-        modifier="f"
-      />
+      <TransitionsLayer ngram={ngram} />
     </KeyboardContext.Provider>,
   );
 
