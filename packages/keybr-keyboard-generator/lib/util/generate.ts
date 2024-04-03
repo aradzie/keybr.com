@@ -10,8 +10,8 @@ export function writeGeneratedFile(keymap: KeyMap, filename: string): void {
     .toUpperCase()
     .replaceAll("-", "_")
     .replaceAll(".", "_");
-  const codePointDict = toCodePointDict(keymap);
-  const sourceFile = generateSourceFile(id, codePointDict);
+  const dict = toCodePointDict(keymap);
+  const sourceFile = generateSourceFile(id, dict);
   writeFileSync(filename, sourceFile);
 }
 

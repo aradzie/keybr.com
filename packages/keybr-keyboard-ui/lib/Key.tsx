@@ -4,6 +4,8 @@ import {
   type LabelShape,
   type ZoneId,
 } from "@keybr/keyboard";
+import { type CodePoint } from "@keybr/unicode";
+import { type ClassName } from "@keybr/widget";
 import { clsx } from "clsx";
 import {
   type FunctionComponent,
@@ -27,23 +29,29 @@ export type KeyProps = {
 };
 
 export function makeKeyComponent(shape: KeyShape): FunctionComponent<KeyProps> {
+  const { id, a, b, c, d, finger } = shape;
+  const x = shape.x * keySize;
+  const y = shape.y * keySize;
+  const w = shape.w * keySize - keyGap;
+  const h = shape.h * keySize - keyGap;
   const children: ReactNode[] = [];
   children.push(
     shape.shape ? (
       <path className={styles.button} d={shape.shape} />
     ) : (
-      <rect
-        className={styles.button}
-        x={0}
-        y={0}
-        width={shape.w * keySize - keyGap}
-        height={shape.h * keySize - keyGap}
-      />
+      <rect className={styles.button} x={0} y={0} width={w} height={h} />
     ),
   );
-  const { a, b, c, d } = shape;
-  const ab = a > 0 && b > 0 && keySymbol(a) === keySymbol(b);
-  const cd = c > 0 && d > 0 && keySymbol(c) === keySymbol(d);
+  if (shape.homing) {
+    children.push(
+      <circle className={styles.bump} cx={w / 2} cy={h - 5} r={3} />,
+    );
+  }
+  for (const label of shape.labels) {
+    children.push(makeLabel(label));
+  }
+  const ab = a > 0 && b > 0 && symbolText(a) === symbolText(b);
+  const cd = c > 0 && d > 0 && symbolText(c) === symbolText(d);
   if (a > 0 && !ab) {
     children.push(makeSymbolLabel(a, 10, 27, styles.secondarySymbol));
   }
@@ -62,18 +70,6 @@ export function makeKeyComponent(shape: KeyShape): FunctionComponent<KeyProps> {
   if (c > 0 && cd) {
     children.push(makeSymbolLabel(c, 25, 27, styles.primarySymbol));
   }
-  for (const label of shape.labels) {
-    children.push(makeLabel(label));
-  }
-  if (shape.homing) {
-    children.push(<circle className={styles.bump} cx={20} cy={33} r={3} />);
-  }
-  const id = shape.id;
-  const x = shape.x * keySize;
-  const y = shape.y * keySize;
-  const w = shape.w * keySize - keyGap;
-  const h = shape.h * keySize - keyGap;
-  const finger = shape.finger;
   function KeyComponent({
     depressed,
     toggled,
@@ -111,7 +107,7 @@ export function makeKeyComponent(shape: KeyShape): FunctionComponent<KeyProps> {
   return memo(KeyComponent);
 }
 
-function makeLabel(label: LabelShape, className: any = null): ReactNode {
+function makeLabel(label: LabelShape, className: ClassName = null): ReactNode {
   const { text, pos = [10, 20], align = ["s", "m"] } = label;
   const [x, y] = pos;
   const [ha, va] = align;
@@ -157,27 +153,26 @@ function makeSymbolLabel(
   codePoint: number,
   x: number,
   y: number,
-  className: any,
+  className: ClassName,
 ): ReactNode {
+  if (codePoint === 0x0020) {
+    return null;
+  }
   let text: string;
   if (isDiacritic(codePoint)) {
-    text = deadKeySymbol(codePoint);
-    className = clsx(styles.deadSymbol, className);
+    text = String.fromCodePoint(/* ◌ */ 0x25cc, codePoint);
+    className = clsx(className, styles.deadSymbol);
   } else {
-    text = keySymbol(codePoint);
+    text = symbolText(codePoint);
   }
   return makeLabel({ text, pos: [x, y], align: ["m", "m"] }, className);
 }
 
-function keySymbol(codePoint: number): string {
+function symbolText(codePoint: CodePoint): string {
   if (codePoint === /* ß */ 0x00df || codePoint === /* ẞ */ 0x1e9e) {
     return "ẞ";
   }
   return String.fromCodePoint(codePoint).toUpperCase();
-}
-
-function deadKeySymbol(codePoint: number): string {
-  return String.fromCodePoint(/* ◌ */ 0x25cc, codePoint);
 }
 
 function fingerStyleName(finger: ZoneId | null): string | null {

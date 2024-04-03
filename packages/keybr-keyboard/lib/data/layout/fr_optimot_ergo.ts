@@ -52,4 +52,5 @@ export const LAYOUT_FR_OPTIMOT_ERGO: CodePointDict = {
   Comma: [/* m */ 0x006d, /* M */ 0x004d, /* ♥ */ 0x2665],
   Period: [/* h */ 0x0068, /* H */ 0x0048, /* DEAD BREVE */ 0x0306, /* ♦ */ 0x2666],
   Slash: [/* v */ 0x0076, /* V */ 0x0056, /* DEAD CARON */ 0x030c, /* ♣ */ 0x2663],
+  Space: [/* SPACE */ 0x0020],
 };

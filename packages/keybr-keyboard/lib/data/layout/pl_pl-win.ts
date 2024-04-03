@@ -52,4 +52,5 @@ export const LAYOUT_PL_PL_WIN: CodePointDict = {
   Comma: [/* , */ 0x002c, /* < */ 0x003c],
   Period: [/* . */ 0x002e, /* > */ 0x003e],
   Slash: [/* / */ 0x002f, /* ? */ 0x003f],
+  Space: [/* SPACE */ 0x0020],
 };

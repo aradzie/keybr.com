@@ -52,4 +52,5 @@ export const LAYOUT_EN_DVORAK_WIN: CodePointDict = {
   Comma: [/* w */ 0x0077, /* W */ 0x0057],
   Period: [/* v */ 0x0076, /* V */ 0x0056],
   Slash: [/* z */ 0x007a, /* Z */ 0x005a],
+  Space: [/* SPACE */ 0x0020],
 };

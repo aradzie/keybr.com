@@ -71,7 +71,7 @@ export function toCodePointDict(keymap: KeyMap): CodePointDict {
   for (const keyId of characterKeys) {
     map.set(keyId, codePointsOf(keyId, keymap[keyId]));
   }
-  return Object.fromEntries(map) as any;
+  return { ...Object.fromEntries(map), Space: [0x0020] };
 }
 
 function codePointsOf(keyId: KeyId, list: CodePointList | null): CodePoint[] {

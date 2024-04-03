@@ -50,4 +50,5 @@ export const LAYOUT_DE_NEO_2: CodePointDict = {
   Comma: [/* , */ 0x002c, /* – */ 0x2013],
   Period: [/* . */ 0x002e, /* • */ 0x2022],
   Slash: [/* j */ 0x006a, /* J */ 0x004a],
+  Space: [/* SPACE */ 0x0020],
 };

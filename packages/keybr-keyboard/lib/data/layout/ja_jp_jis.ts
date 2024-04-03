@@ -53,4 +53,5 @@ export const LAYOUT_JA_JP_JIS: CodePointDict = {
   Period: [/* . */ 0x002e, /* > */ 0x003e, /* る */ 0x308b, /* ○ */ 0x25cb],
   Slash: [/* / */ 0x002f, /* ? */ 0x003f, /* め */ 0x3081, /* ● */ 0x25cf],
   IntlRo: [/* \ */ 0x005c, /* ろ */ 0x308d],
+  Space: [/* SPACE */ 0x0020],
 };

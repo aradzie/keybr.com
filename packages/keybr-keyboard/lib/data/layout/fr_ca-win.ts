@@ -52,4 +52,5 @@ export const LAYOUT_FR_CA_WIN: CodePointDict = {
   Comma: [/* , */ 0x002c, /* ' */ 0x0027, /* ¯ */ 0x00af],
   Period: [/* . */ 0x002e, /* . */ 0x002e, /* ­ */ 0x00ad],
   Slash: [/* é */ 0x00e9, /* É */ 0x00c9, /* DEAD ACUTE ACCENT */ 0x0301],
+  Space: [/* SPACE */ 0x0020],
 };

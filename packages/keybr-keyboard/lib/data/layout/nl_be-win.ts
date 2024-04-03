@@ -52,4 +52,5 @@ export const LAYOUT_NL_BE_WIN: CodePointDict = {
   Comma: [/* ; */ 0x003b, /* . */ 0x002e],
   Period: [/* : */ 0x003a, /* / */ 0x002f],
   Slash: [/* = */ 0x003d, /* + */ 0x002b, /* DEAD TILDE */ 0x0303, /* DEAD TILDE */ 0x0303],
+  Space: [/* SPACE */ 0x0020],
 };

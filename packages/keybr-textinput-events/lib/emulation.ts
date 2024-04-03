@@ -1,4 +1,5 @@
 import { type Keyboard, KeyModifier } from "@keybr/keyboard";
+import { type CodePoint } from "@keybr/unicode";
 import {
   type KeyEvent,
   type TextInputEvent,
@@ -25,13 +26,19 @@ export function newLayoutEmulator(
     onKeyDown: (event: KeyEvent): void => {
       const [codePoint, mapped] = remap(keyboard, event);
       target.onKeyDown(mapped);
-      if (codePoint > 0x0000) {
-        const { ctrlKey, altKey, metaKey, timeStamp } = mapped;
-        if (!(ctrlKey || altKey || metaKey)) {
+      const { key, ctrlKey, altKey, metaKey, timeStamp } = mapped;
+      if (!(ctrlKey || altKey || metaKey)) {
+        if (codePoint > 0x0000) {
           target.onTextInput({
             timeStamp,
             inputType: "appendChar",
             codePoint,
+          });
+        } else if (key === "Enter") {
+          target.onTextInput({
+            timeStamp,
+            inputType: "appendChar",
+            codePoint: 0x0020,
           });
         }
       }
@@ -42,11 +49,6 @@ export function newLayoutEmulator(
     },
     onTextInput: (event: TextInputEvent): void => {
       switch (event.inputType) {
-        case "appendChar":
-          if (event.codePoint === 0x0020) {
-            target.onTextInput(event);
-          }
-          break;
         case "clearChar":
         case "clearWord":
           target.onTextInput(event);
@@ -69,14 +71,15 @@ function remap(
     location,
     repeat,
   }: KeyEvent,
-): [number, KeyEvent] {
-  const characters = layout.getCharacters(code);
+): [CodePoint, KeyEvent] {
   let codePoint = 0x0000;
+  const characters = layout.getCharacters(code);
   if (characters != null) {
-    codePoint = characters.getCodePoint(KeyModifier.from({ shiftKey, altKey }));
-    if (codePoint > 0x0000) {
-      key = String.fromCodePoint(codePoint);
-    }
+    key = String.fromCodePoint(
+      (codePoint = characters.getCodePoint(
+        KeyModifier.from({ shiftKey, altKey }),
+      )),
+    );
   }
   return [
     codePoint,

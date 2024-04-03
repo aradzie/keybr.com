@@ -52,4 +52,5 @@ export const LAYOUT_EN_CANARY_MATRIX: CodePointDict = {
   Comma: [/* / */ 0x002f, /* ? */ 0x003f],
   Period: [/* , */ 0x002c, /* < */ 0x003c],
   Slash: [/* . */ 0x002e, /* > */ 0x003e],
+  Space: [/* SPACE */ 0x0020],
 };

@@ -52,4 +52,5 @@ export const LAYOUT_RU_RU_WIN: CodePointDict = {
   Comma: [/* б */ 0x0431, /* Б */ 0x0411],
   Period: [/* ю */ 0x044e, /* Ю */ 0x042e],
   Slash: [/* . */ 0x002e, /* , */ 0x002c],
+  Space: [/* SPACE */ 0x0020],
 };

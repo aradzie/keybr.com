@@ -52,4 +52,5 @@ export const LAYOUT_FR_BEPO: CodePointDict = {
   Comma: [/* g */ 0x0067, /* G */ 0x0047],
   Period: [/* h */ 0x0068, /* H */ 0x0048],
   Slash: [/* f */ 0x0066, /* F */ 0x0046],
+  Space: [/* SPACE */ 0x0020],
 };

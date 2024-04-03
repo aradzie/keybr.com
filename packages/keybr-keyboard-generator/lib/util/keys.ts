@@ -61,4 +61,6 @@ export const characterKeys: readonly KeyId[] = [
   "Period",
   "Slash",
   "IntlRo",
+  // ---
+  "Space",
 ];

@@ -53,4 +53,5 @@ export const LAYOUT_PT_BR_WIN: CodePointDict = {
   Period: [/* . */ 0x002e, /* > */ 0x003e],
   Slash: [/* ; */ 0x003b, /* : */ 0x003a],
   IntlRo: [/* / */ 0x002f, /* ? */ 0x003f, /* ° */ 0x00b0],
+  Space: [/* SPACE */ 0x0020],
 };

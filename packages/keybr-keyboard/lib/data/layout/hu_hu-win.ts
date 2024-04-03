@@ -52,4 +52,5 @@ export const LAYOUT_HU_HU_WIN: CodePointDict = {
   Comma: [/* , */ 0x002c, /* ? */ 0x003f, /* ; */ 0x003b],
   Period: [/* . */ 0x002e, /* : */ 0x003a, /* > */ 0x003e],
   Slash: [/* - */ 0x002d, /* _ */ 0x005f, /* * */ 0x002a],
+  Space: [/* SPACE */ 0x0020],
 };

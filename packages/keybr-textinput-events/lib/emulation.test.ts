@@ -59,7 +59,7 @@ test("translate a normal input", (t) => {
   listener.onTextInput({
     timeStamp: 2,
     inputType: "appendChar",
-    codePoint: 0x0053,
+    codePoint: /* S */ 0x0053,
   });
   listener.onKeyUp(
     newKeyEvent({
@@ -239,6 +239,67 @@ test("translate a clear word input", (t) => {
     "clearWord:\u0000,2",
     "keyup:Backspace,Backspace,3",
     "keyup:ControlLeft,Control,4",
+  ]);
+});
+
+test("translate the whitespace keys", (t) => {
+  // Arrange.
+
+  const trace: string[] = [];
+  const keyboard = loadKeyboard(Layout.EN_DVORAK);
+  const target = tracingListener(trace);
+  const listener = emulateLayout(keyboard, target, true);
+
+  // Act.
+
+  listener.onKeyDown(
+    newKeyEvent({
+      timeStamp: 1,
+      code: "Space",
+      key: "Space",
+    }),
+  );
+  listener.onTextInput({
+    timeStamp: 1,
+    inputType: "appendChar",
+    codePoint: 0x0020,
+  });
+  listener.onKeyUp(
+    newKeyEvent({
+      timeStamp: 2,
+      code: "Space",
+      key: "Space",
+    }),
+  );
+  listener.onKeyDown(
+    newKeyEvent({
+      timeStamp: 3,
+      code: "NumpadEnter",
+      key: "Enter",
+    }),
+  );
+  listener.onTextInput({
+    timeStamp: 3,
+    inputType: "appendChar",
+    codePoint: 0x0020,
+  });
+  listener.onKeyUp(
+    newKeyEvent({
+      timeStamp: 4,
+      code: "NumpadEnter",
+      key: "Enter",
+    }),
+  );
+
+  // Assert.
+
+  t.deepEqual(trace, [
+    "keydown:Space, ,1",
+    "appendChar: ,1",
+    "keyup:Space, ,2",
+    "keydown:NumpadEnter,Enter,3",
+    "appendChar: ,3",
+    "keyup:NumpadEnter,Enter,4",
   ]);
 });
 

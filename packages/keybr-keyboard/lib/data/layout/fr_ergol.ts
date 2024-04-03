@@ -52,4 +52,5 @@ export const LAYOUT_FR_ERGOL: CodePointDict = {
   Comma: [/* g */ 0x0067, /* G */ 0x0047, /* ; */ 0x003b, /* DEAD CEDILLA */ 0x0327],
   Period: [/* y */ 0x0079, /* Y */ 0x0059, /* : */ 0x003a],
   Slash: [/* k */ 0x006b, /* K */ 0x004b, /* ? */ 0x003f],
+  Space: [/* SPACE */ 0x0020],
 };
