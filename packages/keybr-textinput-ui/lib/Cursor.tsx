@@ -3,14 +3,13 @@ import {
   CaretShapeStyle,
   type TextDisplaySettings,
 } from "@keybr/textinput";
-import { clsx } from "clsx";
 import {
   Component,
   createRef,
   type CSSProperties,
   type ReactNode,
 } from "react";
-import { cn } from "./chars.tsx";
+import { findCursor } from "./chars.tsx";
 import * as styles from "./Cursor.module.less";
 
 type Props = {
@@ -43,7 +42,7 @@ export class Cursor extends Component<Props> {
     const container = this.containerRef.current;
     const cursor = this.cursorRef.current;
     if (container != null && cursor != null) {
-      const char = container.querySelector<HTMLElement>(cursorItemSelector);
+      const char = findCursor(container);
       if (char != null) {
         this.move(cursor, char);
       } else {
@@ -220,13 +219,6 @@ const cursorStyle: CSSProperties = {
   height: 0,
 };
 
-const cursorItemSelector = `.${cn.charsCursor}`;
-
-const cnBlock = clsx(cn.chars, styles.cursor_block);
-const cnBox = clsx(cn.chars, styles.cursor_box);
-const cnLine = clsx(cn.chars, styles.cursor_line);
-const cnUnderline = clsx(cn.chars, styles.cursor_underline);
-
 function cursorClassName({
   caretShapeStyle,
 }: {
@@ -234,13 +226,13 @@ function cursorClassName({
 }): string {
   switch (caretShapeStyle) {
     case CaretShapeStyle.Block:
-      return cnBlock;
+      return styles.block;
     case CaretShapeStyle.Box:
-      return cnBox;
+      return styles.box;
     case CaretShapeStyle.Line:
-      return cnLine;
+      return styles.line;
     case CaretShapeStyle.Underline:
-      return cnUnderline;
+      return styles.underline;
   }
 }
 

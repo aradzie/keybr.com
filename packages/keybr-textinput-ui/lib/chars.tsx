@@ -12,22 +12,6 @@ import { clsx } from "clsx";
 import { type ReactNode } from "react";
 import * as styles from "./chars.module.less";
 
-export const cn = {
-  chars: styles.chars,
-  charsNormal: styles.chars_normal,
-  charsSpecial: styles.chars_special,
-  charsHit: styles.chars_hit,
-  charsMiss: styles.chars_miss,
-  charsGarbage: styles.chars_garbage,
-  charsCursor: styles.chars_cursor,
-};
-
-const tabChar = "\u21B9";
-const newlineChar = "\u21B5";
-const spaceChar = "\u00A0";
-const spaceBarChar = "\u2423";
-const spaceBulletChar = "\u2E31";
-
 type Item = {
   readonly chars: readonly Char[];
 };
@@ -103,7 +87,7 @@ export function renderChars({
           pushSpan(br);
           nodes.push(
             <span key={nodes.length} className={specialClassName(attrs)}>
-              {tabChar}
+              {"\u21B9"}
             </span>,
           );
           break;
@@ -112,7 +96,7 @@ export function renderChars({
           pushSpan(br);
           nodes.push(
             <span key={nodes.length} className={specialClassName(attrs)}>
-              {newlineChar}
+              {"\u21B5"}
             </span>,
           );
           break;
@@ -147,11 +131,11 @@ export function renderChars({
 function whitespaceChar(whitespaceStyle: WhitespaceStyle): string {
   switch (whitespaceStyle) {
     case WhitespaceStyle.Space:
-      return spaceChar;
+      return "\u00A0";
     case WhitespaceStyle.Bar:
-      return spaceBarChar;
+      return "\u2423";
     case WhitespaceStyle.Bullet:
-      return spaceBulletChar;
+      return "\u2E31";
   }
 }
 
@@ -177,4 +161,10 @@ function normalClassName(attrs: number): string {
 
 function specialClassName(attrs: number): string {
   return cnSpecial[attrs] ?? "";
+}
+
+const cursorItemSelector = `.${styles.chars_cursor}`;
+
+export function findCursor(container: HTMLElement): HTMLElement | null {
+  return container.querySelector<HTMLElement>(cursorItemSelector) ?? null;
 }
