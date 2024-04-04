@@ -43,7 +43,7 @@ test("render chars", (t) => {
         c
       </span>,
       <span key={3} className="chars chars_hit">
-        {"\u2E31"}
+        {"\uE000"}
       </span>,
       <span key={4} className="chars chars_cursor">
         x

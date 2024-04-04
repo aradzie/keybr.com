@@ -76,7 +76,7 @@ export function renderChars({
   for (let i = 0; i < chars.length; i++) {
     const char = chars[i];
     const { codePoint, attrs } = char;
-    if (codePoint > 32) {
+    if (codePoint > 0x0020) {
       if (span.attrs !== attrs) {
         pushSpan({ chars: [], attrs });
       }
@@ -87,7 +87,7 @@ export function renderChars({
           pushSpan(br);
           nodes.push(
             <span key={nodes.length} className={specialClassName(attrs)}>
-              {"\u21B9"}
+              {"\uE002"}
             </span>,
           );
           break;
@@ -96,7 +96,7 @@ export function renderChars({
           pushSpan(br);
           nodes.push(
             <span key={nodes.length} className={specialClassName(attrs)}>
-              {"\u21B5"}
+              {"\uE003"}
             </span>,
           );
           break;
@@ -133,9 +133,9 @@ function whitespaceChar(whitespaceStyle: WhitespaceStyle): string {
     case WhitespaceStyle.Space:
       return "\u00A0";
     case WhitespaceStyle.Bar:
-      return "\u2423";
+      return "\uE001";
     case WhitespaceStyle.Bullet:
-      return "\u2E31";
+      return "\uE000";
   }
 }
 
