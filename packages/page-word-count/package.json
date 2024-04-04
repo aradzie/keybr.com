@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@keybr/page-text-tools",
+  "name": "@keybr/page-word-count",
   "version": "0.0.0",
   "main": "lib/index.ts",
   "types": ".types/index.d.ts",

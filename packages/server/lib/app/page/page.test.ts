@@ -18,7 +18,8 @@ for (const url of [
   "/profile/example3",
   "/profile/example4",
   "/profile/example5",
-  "/text-tools",
+  "/typing-test",
+  "/word-count",
   "/terms-of-service",
   "/privacy-policy",
 ]) {

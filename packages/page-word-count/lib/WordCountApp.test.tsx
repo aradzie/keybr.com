@@ -1,12 +1,12 @@
 import { FakeIntlProvider } from "@keybr/intl";
 import { fireEvent, render } from "@testing-library/react";
 import test from "ava";
-import { TextToolsApp } from "./TextToolsApp.tsx";
+import { WordCountApp } from "./WordCountApp.tsx";
 
 test.serial("render", async (t) => {
   const r = render(
     <FakeIntlProvider>
-      <TextToolsApp />
+      <WordCountApp />
     </FakeIntlProvider>,
   );
 

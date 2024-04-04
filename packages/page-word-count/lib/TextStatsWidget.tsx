@@ -20,7 +20,7 @@ export function TextStatsWidget({
       <div>
         <Para>
           <FormattedMessage
-            id="textTools.emptyTextMessage"
+            id="wordCount.emptyTextMessage"
             defaultMessage="Please provide some text in order to calculate the associated statistics."
           />
         </Para>

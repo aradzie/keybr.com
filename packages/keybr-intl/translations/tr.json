@@ -163,11 +163,11 @@
   "page.publicProfile.title": "{name} | Herkese Açık Profil",
   "page.termsOfService.link.description": "Kullanım şartları.",
   "page.termsOfService.link.name": "Kullanım Şartları",
-  "page.textTools.content": "<h1>Metin Araçları</h1><p>Metninizdeki karakterleri ve kelimeleri sayın. En sık kullanılan kelimelerin neler olduğunu öğrenin. Bu kelimeleri okumak ve yazmak için geçen süreyi ölçün.</p>",
-  "page.textTools.description": "Metininizdeki karakter ve kelimeleri sayın.",
-  "page.textTools.link.description": "Metininizdeki karakter ve kelimeleri sayın.",
   "page.typingTest.link.name": "Yazım Testi",
   "page.typingTest.title": "Hız Testi",
+  "page.wordCount.content": "<h1>Metin Araçları</h1><p>Metninizdeki karakterleri ve kelimeleri sayın. En sık kullanılan kelimelerin neler olduğunu öğrenin. Bu kelimeleri okumak ve yazmak için geçen süreyi ölçün.</p>",
+  "page.wordCount.description": "Metininizdeki karakter ve kelimeleri sayın.",
+  "page.wordCount.link.description": "Metininizdeki karakter ve kelimeleri sayın.",
   "practice.widget.settings.name": "Ayarlar...",
   "profile.accuracy.description": "Bu istatistikler uzun yazıları hangi doğruluk oranıyla yazdığınızı yazı hızınızı dikkate almadan gösterir.",
   "profile.accuracy.header": "Doğruluk Çizgileri",
@@ -258,11 +258,11 @@
   "textStats.numCharacters": "Karakterler",
   "textStats.numParagraphs": "Paragraflar",
   "textStats.numUniqueWords": "Farklı kelimeler",
-  "textTools.textInput.placeholder": "Yazınızı buraya yapıştırın",
   "theme.enterFullscreen.description": "Tam ekran moduna geçin.",
   "theme.exitFullscreen.description": "Tam ekran modundan çıkın.",
   "theme.fullscreenNotSupported.description": "Tam ekran modu desteklenmiyor.",
   "tour.close": "Kapat",
   "tour.next": "Sonraki",
-  "tour.previous": "Önceki"
+  "tour.previous": "Önceki",
+  "wordCount.textInput.placeholder": "Yazınızı buraya yapıştırın"
 }

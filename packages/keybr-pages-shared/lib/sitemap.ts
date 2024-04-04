@@ -7,8 +7,8 @@ import {
   MultiplayerIcon,
   PracticeIcon,
   ProfileIcon,
-  TextToolsIcon,
   TypingTestIcon,
+  WordCountIcon,
 } from "./icons.tsx";
 import { type BoundPageLink, PageLinkTemplate } from "./pagelink.tsx";
 import { type AnyUser, type NamedUser } from "./types.ts";
@@ -146,17 +146,17 @@ export class Sitemap {
     icon: LayoutsIcon,
   });
 
-  static readonly textTools = new PageLinkTemplate({
-    path: "/text-tools",
+  static readonly wordCount = new PageLinkTemplate({
+    path: "/word-count",
     name: defineMessage({
-      id: "page.textTools.link.name",
-      defaultMessage: "Text Tools",
+      id: "page.wordCount.link.name",
+      defaultMessage: "Word Count",
     }),
     title: defineMessage({
-      id: "page.textTools.link.description",
+      id: "page.wordCount.link.description",
       defaultMessage: "Count the characters and words in your text.",
     }),
-    icon: TextToolsIcon,
+    icon: WordCountIcon,
   });
 
   static readonly privacyPolicy = new PageLinkTemplate({
@@ -191,7 +191,7 @@ export class Sitemap {
     Sitemap.multiplayer,
     Sitemap.typingTest,
     Sitemap.layouts,
-    Sitemap.textTools,
+    Sitemap.wordCount,
   ];
 
   static readonly sitemapLinks: readonly PageLinkTemplate[] = [
@@ -202,7 +202,7 @@ export class Sitemap {
     Sitemap.multiplayer,
     Sitemap.typingTest,
     Sitemap.layouts,
-    Sitemap.textTools,
+    Sitemap.wordCount,
     Sitemap.signIn,
     Sitemap.privacyPolicy,
     Sitemap.termsOfService,

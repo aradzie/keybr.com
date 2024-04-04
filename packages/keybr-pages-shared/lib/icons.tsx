@@ -4,11 +4,11 @@ import {
   mdiAlert,
   mdiCarSide,
   mdiChartAreaspline,
-  mdiCompare,
-  mdiFormatSection,
   mdiHelpCircleOutline,
   mdiKeyboard,
+  mdiKeyboardOutline,
   mdiSpeedometer,
+  mdiTextBoxCheckOutline,
   mdiTrophyOutline,
 } from "@mdi/js";
 import { type ReactNode } from "react";
@@ -46,11 +46,11 @@ export function MultiplayerIcon({ className }: Props): ReactNode {
 }
 
 export function LayoutsIcon({ className }: Props): ReactNode {
-  return <Icon shape={mdiCompare} className={className} />;
+  return <Icon shape={mdiKeyboardOutline} className={className} />;
 }
 
-export function TextToolsIcon({ className }: Props): ReactNode {
-  return <Icon shape={mdiFormatSection} className={className} />;
+export function WordCountIcon({ className }: Props): ReactNode {
+  return <Icon shape={mdiTextBoxCheckOutline} className={className} />;
 }
 
 export function AlertIcon({ className }: Props): ReactNode {

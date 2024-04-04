@@ -1,6 +1,6 @@
 import { init, Slot } from "@keybr/pages-browser";
 import { type ReactNode } from "react";
-import { TextToolsApp } from "./TextToolsApp.tsx";
+import { WordCountApp } from "./WordCountApp.tsx";
 
 init(
   <Slot selector="#root">
@@ -9,5 +9,5 @@ init(
 );
 
 function Main(): ReactNode {
-  return <TextToolsApp />;
+  return <WordCountApp />;
 }

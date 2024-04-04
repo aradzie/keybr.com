@@ -20,8 +20,8 @@ import { MultiplayerPage } from "@keybr/page-multiplayer";
 import { PracticePage } from "@keybr/page-practice";
 import { ProfilePage, PublicProfilePage } from "@keybr/page-profile";
 import { PrivacyPolicyPage, TermsOfServicePage } from "@keybr/page-static";
-import { TextToolsPage } from "@keybr/page-text-tools";
 import { TypingTestPage } from "@keybr/page-typing-test";
+import { WordCountPage } from "@keybr/page-word-count";
 import { View } from "@keybr/pages-server";
 import {
   type NamedUser,
@@ -200,20 +200,20 @@ export class Controller {
     return this.renderPage(ctx, intl, pageData, <MultiplayerPage />);
   }
 
-  @http.GET("/text-tools")
-  async ["text-tools"](ctx: Context<RouterState & AuthState>) {
+  @http.GET("/word-count")
+  async ["word-count"](ctx: Context<RouterState & AuthState>) {
     const intl = await loadIntl(defaultLocale);
     const pageData = await this.pageData(ctx, intl);
-    return this.renderPage(ctx, intl, pageData, <TextToolsPage />);
+    return this.renderPage(ctx, intl, pageData, <WordCountPage />);
   }
 
-  @http.GET(`/{locale:${localePattern}}/text-tools`)
-  async ["text-tools-i18n"](
+  @http.GET(`/{locale:${localePattern}}/word-count`)
+  async ["word-count-i18n"](
     ctx: Context<RouterState & AuthState>,
     @pathParam("locale", pIntl) intl: IntlShape,
   ) {
     const pageData = await this.pageData(ctx, intl);
-    return this.renderPage(ctx, intl, pageData, <TextToolsPage />);
+    return this.renderPage(ctx, intl, pageData, <WordCountPage />);
   }
 
   @http.GET("/terms-of-service")

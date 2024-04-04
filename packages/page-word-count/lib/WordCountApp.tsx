@@ -4,20 +4,20 @@ import { type ReactNode, useEffect, useMemo, useState } from "react";
 import { useIntl } from "react-intl";
 import { EXAMPLE } from "./example.ts";
 import { TextStatsWidget } from "./TextStatsWidget.tsx";
-import * as styles from "./TextToolsApp.module.less";
+import * as styles from "./WordCountApp.module.less";
 
-export function TextToolsApp(): ReactNode {
+export function WordCountApp(): ReactNode {
   const { formatMessage } = useIntl();
   const initialText = useInitialText();
   const [text, setText] = useState(initialText);
   const textStats = useTextStats(text);
   return (
-    <div className={styles.textTools}>
+    <div>
       <TextField
         type="textarea"
         className={styles.textInput}
         placeholder={formatMessage({
-          id: "textTools.textInput.placeholder",
+          id: "wordCount.textInput.placeholder",
           defaultMessage: "Paste your text here",
         })}
         value={text}
@@ -40,7 +40,7 @@ function useInitialText(): string {
   return useMemo(
     () =>
       formatMessage({
-        id: "textTools.exampleText",
+        id: "wordCount.exampleText",
         defaultMessage: "(Example text, click here to clear it.)",
       }) +
       "\n\n" +
