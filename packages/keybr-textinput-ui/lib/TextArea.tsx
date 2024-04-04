@@ -65,12 +65,6 @@ export function TextArea({
   useEffect(() => {
     const element = ref.current;
     if (element != null) {
-      setElementSize(element);
-    }
-  }, [settings, lines.text, wrap, size]);
-  useEffect(() => {
-    const element = ref.current;
-    if (element != null) {
       setElementCursor(element, focus ? "none" : "default");
     }
   });
@@ -144,18 +138,6 @@ export function TextArea({
       )}
     </div>
   );
-}
-
-function setElementSize(element: HTMLDivElement): void {
-  const { style } = element;
-  style.contain = "none";
-  style.inlineSize = "auto";
-  style.blockSize = "auto";
-  const width = element.offsetWidth;
-  const height = element.offsetHeight;
-  style.contain = "strict";
-  style.inlineSize = `${width}px`;
-  style.blockSize = `${height}px`;
 }
 
 function setElementCursor(element: HTMLDivElement, cursor: string): void {
