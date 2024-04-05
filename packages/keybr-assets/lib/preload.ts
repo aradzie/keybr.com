@@ -12,8 +12,10 @@ export const preloadLinks: readonly PreloadLink[] = [
   ),
   // Preload fonts.
   ...[
-    "/assets/opensans-400.latin.woff2",
-    "/assets/ubuntu-mono-400.latin.woff2",
+    "/assets/open-sans-400.latin.woff2",
+    "/assets/open-sans-400italic.latin.woff2",
+    "/assets/open-sans-700.latin.woff2",
+    "/assets/open-sans-700italic.latin.woff2",
   ].map(
     (href) =>
       ({

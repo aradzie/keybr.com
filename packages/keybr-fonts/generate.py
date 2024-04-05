@@ -1,5 +1,7 @@
 #!/bin/env python3
 
+# https://markoskon.com/creating-font-subsets/
+
 from fontTools.ttLib import TTFont
 from fontTools.subset import parse_unicodes, Subsetter
 from fontTools.merge import Merger
@@ -26,16 +28,32 @@ class Font:
 
         self.font_family = font_family
         self.font_subfamily = font_subfamily
-        self.font_weight = (
-            "700"
-            if font_subfamily == "Bold" or font_subfamily == "Bold Italic"
-            else "400"
-        )
-        self.font_style = (
-            "italic"
-            if font_subfamily == "Italic" or font_subfamily == "Bold Italic"
-            else "normal"
-        )
+
+        if font_subfamily == "Light":
+            self.font_weight = 300
+            self.font_style = "normal"
+        if font_subfamily == "Light Italic":
+            self.font_weight = 300
+            self.font_style = "italic"
+        if font_subfamily == "Regular":
+            self.font_weight = 400
+            self.font_style = "normal"
+        if font_subfamily == "Italic":
+            self.font_weight = 400
+            self.font_style = "italic"
+        if font_subfamily == "Medium":
+            self.font_weight = 500
+            self.font_style = "normal"
+        if font_subfamily == "Medium Italic":
+            self.font_weight = 500
+            self.font_style = "italic"
+        if font_subfamily == "Bold":
+            self.font_weight = 700
+            self.font_style = "normal"
+        if font_subfamily == "Bold Italic":
+            self.font_weight = 700
+            self.font_style = "italic"
+
         self.font_name = (
             f"{font_name}-{self.font_weight}italic"
             if self.font_style == "italic"
@@ -93,39 +111,63 @@ def generate(font_file, font_name, merge_file=None):
 def main():
     generate(
         "fonts/OpenSans/static/OpenSans-Regular.ttf",
-        "opensans",
+        "open-sans",
+        merge_file="Whitespace-em2048.ttf",
     )
     generate(
         "fonts/OpenSans/static/OpenSans-Italic.ttf",
-        "opensans",
+        "open-sans",
+        merge_file="Whitespace-em2048.ttf",
     )
     generate(
         "fonts/OpenSans/static/OpenSans-Bold.ttf",
-        "opensans",
+        "open-sans",
+        merge_file="Whitespace-em2048.ttf",
     )
     generate(
         "fonts/OpenSans/static/OpenSans-BoldItalic.ttf",
-        "opensans",
+        "open-sans",
+        merge_file="Whitespace-em2048.ttf",
+    )
+    generate(
+        "fonts/RobotoMono/static/RobotoMono-Regular.ttf",
+        "roboto-mono",
+        merge_file="Whitespace-em2048.ttf",
+    )
+    generate(
+        "fonts/RobotoMono/static/RobotoMono-Italic.ttf",
+        "roboto-mono",
+        merge_file="Whitespace-em2048.ttf",
+    )
+    generate(
+        "fonts/RobotoMono/static/RobotoMono-Bold.ttf",
+        "roboto-mono",
+        merge_file="Whitespace-em2048.ttf",
+    )
+    generate(
+        "fonts/RobotoMono/static/RobotoMono-BoldItalic.ttf",
+        "roboto-mono",
+        merge_file="Whitespace-em2048.ttf",
     )
     generate(
         "fonts/Ubuntu/UbuntuMono-R.ttf",
         "ubuntu-mono",
-        merge_file="Whitespace.ttf",
+        merge_file="Whitespace-em1000.ttf",
     )
     generate(
         "fonts/Ubuntu/UbuntuMono-RI.ttf",
         "ubuntu-mono",
-        merge_file="Whitespace.ttf",
+        merge_file="Whitespace-em1000.ttf",
     )
     generate(
         "fonts/Ubuntu/UbuntuMono-B.ttf",
         "ubuntu-mono",
-        merge_file="Whitespace.ttf",
+        merge_file="Whitespace-em1000.ttf",
     )
     generate(
         "fonts/Ubuntu/UbuntuMono-BI.ttf",
         "ubuntu-mono",
-        merge_file="Whitespace.ttf",
+        merge_file="Whitespace-em1000.ttf",
     )
 
 

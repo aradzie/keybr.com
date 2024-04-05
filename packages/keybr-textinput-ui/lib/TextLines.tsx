@@ -7,7 +7,12 @@ import {
   textDisplaySettings,
 } from "@keybr/textinput";
 import { clsx } from "clsx";
-import { type ComponentType, memo, type ReactNode } from "react";
+import {
+  type ComponentType,
+  type CSSProperties,
+  memo,
+  type ReactNode,
+} from "react";
 import { renderChars, splitIntoItems } from "./chars.tsx";
 import { Cursor } from "./Cursor.tsx";
 import * as styles from "./TextLines.module.less";
@@ -37,7 +42,13 @@ export const TextLines = memo(function TextLines({
     focus ? styles.text_focus : styles.text_blur,
     sizeStyleName(size),
   );
-  const children = useTextLines(settings, lines, className, lineTemplate);
+  const children = useTextLines(
+    settings,
+    lines,
+    className,
+    settings.font.style,
+    lineTemplate,
+  );
   return cursor ? <Cursor settings={settings}>{children}</Cursor> : children;
 });
 
@@ -45,6 +56,7 @@ function useTextLines(
   settings: TextDisplaySettings,
   lines: LineList,
   className: string,
+  style: CSSProperties,
   LineTemplate?: ComponentType<any>,
 ): ReactNode {
   // TODO Use a memo to turn lines into nodes.
@@ -56,6 +68,7 @@ function useTextLines(
           settings={settings}
           chars={chars}
           className={className}
+          style={style}
         />
       </LineTemplate>
     ) : (
@@ -64,6 +77,7 @@ function useTextLines(
         settings={settings}
         chars={chars}
         className={className}
+        style={style}
       />
     );
   });
@@ -74,13 +88,19 @@ const TextLine = memo(
     settings,
     chars,
     className,
+    style,
   }: {
     readonly settings: TextDisplaySettings;
     readonly chars: readonly Char[];
     readonly className: string;
+    readonly style: CSSProperties;
   }): ReactNode {
     return (
-      <div className={className} dir={settings.language.direction}>
+      <div
+        className={className}
+        style={style}
+        dir={settings.language.direction}
+      >
         {splitIntoItems(chars).map(({ chars }, index) => (
           <TextItem key={index} settings={settings} chars={chars} />
         ))}

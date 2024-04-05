@@ -3,6 +3,7 @@ import { useSettings } from "@keybr/settings";
 import {
   CaretMovementStyle,
   CaretShapeStyle,
+  Font,
   PlaySounds,
   textDisplayProps,
   textInputProps,
@@ -15,6 +16,7 @@ import {
   Field,
   FieldList,
   FieldSet,
+  OptionList,
   RadioBox,
   Range,
   styleWidthNormal,
@@ -51,6 +53,7 @@ export function TypingSettings(): ReactNode {
         })}
       >
         <ExampleText />
+        <FontProp />
         <WhitespaceProp />
         <CursorShapeProp />
         <CursorMovementProp />
@@ -164,6 +167,31 @@ function SpaceSkipsWordsProp(): ReactNode {
         />
       </Explainer>
     </>
+  );
+}
+
+function FontProp(): ReactNode {
+  const { settings, updateSettings } = useSettings();
+  return (
+    <FieldList>
+      <Field className={styleWidthNormal}>
+        <FormattedMessage id="settings.font.label" defaultMessage="Font:" />
+      </Field>
+      <Field>
+        <OptionList
+          options={Font.ALL.map((item) => ({
+            value: item.id,
+            name: item.name,
+          }))}
+          value={settings.get(textDisplayProps.font).id}
+          onSelect={(id) => {
+            updateSettings(
+              settings.set(textDisplayProps.font, Font.ALL.get(id)),
+            );
+          }}
+        />
+      </Field>
+    </FieldList>
   );
 }
 

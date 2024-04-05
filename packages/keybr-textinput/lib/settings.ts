@@ -2,9 +2,11 @@ import { keyboardProps, Language } from "@keybr/keyboard";
 import {
   booleanProp,
   enumProp,
+  itemProp,
   numberProp,
   type Settings,
 } from "@keybr/settings";
+import { Font } from "./font.ts";
 
 /**
  * Text input settings.
@@ -50,6 +52,7 @@ export function toTextInputSettings(settings: Settings): TextInputSettings {
 }
 
 export type TextDisplaySettings = {
+  readonly font: Font;
   readonly caretShapeStyle: CaretShapeStyle;
   readonly caretMovementStyle: CaretMovementStyle;
   readonly whitespaceStyle: WhitespaceStyle;
@@ -83,6 +86,7 @@ export enum PlaySounds {
 }
 
 export const textDisplaySettings: TextDisplaySettings = {
+  font: Font.UBUNTU_MONO,
   caretShapeStyle: CaretShapeStyle.Underline,
   caretMovementStyle: CaretMovementStyle.Smooth,
   whitespaceStyle: WhitespaceStyle.Bullet,
@@ -92,6 +96,7 @@ export const textDisplaySettings: TextDisplaySettings = {
 };
 
 export const textDisplayProps = {
+  font: itemProp("textDisplay.font", Font.ALL, Font.UBUNTU_MONO),
   caretShapeStyle: enumProp(
     "textDisplay.caretShapeStyle",
     CaretShapeStyle,
@@ -113,6 +118,7 @@ export const textDisplayProps = {
 
 export function toTextDisplaySettings(settings: Settings): TextDisplaySettings {
   return {
+    font: settings.get(textDisplayProps.font),
     caretShapeStyle: settings.get(textDisplayProps.caretShapeStyle),
     caretMovementStyle: settings.get(textDisplayProps.caretMovementStyle),
     whitespaceStyle: settings.get(textDisplayProps.whitespaceStyle),

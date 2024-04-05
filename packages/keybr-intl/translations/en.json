@@ -343,6 +343,7 @@
   "settings.doubleWords.label": "Double each word",
   "settings.explain.hide": "Hide explanations",
   "settings.explain.show": "Explain settings",
+  "settings.font.label": "Font:",
   "settings.forgiveErrors.description": "If enabled, the text input field will forgive some kinds of errors by automatically fixing them. These are errors such as typing a wrong character or skipping a character.",
   "settings.forgiveErrors.label": "Forgive errors",
   "settings.interfaceOptions.legend": "Interface Options",

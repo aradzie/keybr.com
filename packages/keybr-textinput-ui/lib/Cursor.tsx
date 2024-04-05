@@ -60,16 +60,14 @@ export class Cursor extends Component<Props> {
 
     const { style } = cursor;
 
-    if (style.fontFamily === "") {
-      const from = window.getComputedStyle(char);
-      style.fontFamily = from.fontFamily;
-      style.fontSize = from.fontSize;
-      style.fontStyle = from.fontStyle;
-      style.fontWeight = from.fontWeight;
-      style.fontVariant = from.fontVariant;
-      style.fontKerning = from.fontKerning;
-      style.lineHeight = from.lineHeight;
-    }
+    const from = window.getComputedStyle(char);
+    style.fontFamily = from.fontFamily;
+    style.fontSize = from.fontSize;
+    style.fontStyle = from.fontStyle;
+    style.fontWeight = from.fontWeight;
+    style.fontVariant = from.fontVariant;
+    style.fontKerning = from.fontKerning;
+    style.lineHeight = from.lineHeight;
 
     const x = char.offsetLeft;
     const y = char.offsetTop;
