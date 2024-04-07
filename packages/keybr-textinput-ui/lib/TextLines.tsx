@@ -46,7 +46,7 @@ export const TextLines = memo(function TextLines({
     settings,
     lines,
     className,
-    settings.font.style,
+    settings.font.cssProperties,
     lineTemplate,
   );
   return cursor ? <Cursor settings={settings}>{children}</Cursor> : children;

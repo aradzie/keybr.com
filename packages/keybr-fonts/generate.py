@@ -29,6 +29,18 @@ class Font:
         self.font_family = font_family
         self.font_subfamily = font_subfamily
 
+        if font_subfamily == "Thin":
+            self.font_weight = 100
+            self.font_style = "normal"
+        if font_subfamily == "Thin Italic":
+            self.font_weight = 100
+            self.font_style = "italic"
+        if font_subfamily == "Extra Light":
+            self.font_weight = 200
+            self.font_style = "normal"
+        if font_subfamily == "Extra Light Italic":
+            self.font_weight = 200
+            self.font_style = "italic"
         if font_subfamily == "Light":
             self.font_weight = 300
             self.font_style = "normal"
@@ -52,6 +64,18 @@ class Font:
             self.font_style = "normal"
         if font_subfamily == "Bold Italic":
             self.font_weight = 700
+            self.font_style = "italic"
+        if font_subfamily == "Extra Bold":
+            self.font_weight = 800
+            self.font_style = "normal"
+        if font_subfamily == "Extra Bold Italic":
+            self.font_weight = 800
+            self.font_style = "italic"
+        if font_subfamily == "Black":
+            self.font_weight = 900
+            self.font_style = "normal"
+        if font_subfamily == "Black Italic":
+            self.font_weight = 900
             self.font_style = "italic"
 
         self.font_name = (

@@ -1,91 +1,65 @@
 import { Enum, type EnumItem } from "@keybr/lang";
 
+type FontWeight =
+  | "100"
+  | "200"
+  | "300"
+  | "400"
+  | "500"
+  | "600"
+  | "700"
+  | "800"
+  | "900";
+
+type FontStyle = "normal" | "italic";
+
 export class Font implements EnumItem {
-  static readonly OPEN_SANS = new Font(
-    "open-sans",
-    "Open Sans",
-    regular("Open Sans"),
-  );
-  static readonly OPEN_SANS_B = new Font(
-    "open-sans-b",
-    "Open Sans (Bold)",
-    bold("Open Sans"),
-  );
-  static readonly OPEN_SANS_I = new Font(
-    "open-sans-i",
-    "Open Sans (Italic)",
-    italic("Open Sans"),
-  );
-  static readonly OPEN_SANS_BI = new Font(
-    "open-sans-bi",
-    "Open Sans (Bold Bold)",
-    boldItalic("Open Sans"),
-  );
-  static readonly ROBOTO_MONO = new Font(
-    "roboto-mono",
-    "Roboto Mono",
-    regular("Roboto Mono"),
-  );
-  static readonly ROBOTO_MONO_B = new Font(
-    "roboto-mono-b",
-    "Roboto Mono (Bold)",
-    bold("Roboto Mono"),
-  );
-  static readonly ROBOTO_MONO_I = new Font(
-    "roboto-mono-i",
-    "Roboto Mono (Italic)",
-    italic("Roboto Mono"),
-  );
-  static readonly ROBOTO_MONO_BI = new Font(
-    "roboto-mono-bi",
-    "Roboto Mono (Bold Italic)",
-    boldItalic("Roboto Mono"),
-  );
-  static readonly UBUNTU_MONO = new Font(
-    "ubuntu-mono",
-    "Ubuntu Mono",
-    regular("Ubuntu Mono"),
-  );
-  static readonly UBUNTU_MONO_B = new Font(
-    "ubuntu-mono-b",
-    "Ubuntu Mono (Bold)",
-    bold("Ubuntu Mono"),
-  );
-  static readonly UBUNTU_MONO_I = new Font(
-    "ubuntu-mono-i",
-    "Ubuntu Mono (Italic)",
-    italic("Ubuntu Mono"),
-  );
-  static readonly UBUNTU_MONO_BI = new Font(
-    "ubuntu-mono-bi",
-    "Ubuntu Mono (Bold Italic)",
-    boldItalic("Ubuntu Mono"),
-  );
+  static readonly OPEN_SANS = new Font("Open Sans", "400", "normal");
+  static readonly OPEN_SANS_I = new Font("Open Sans", "400", "italic");
+  static readonly OPEN_SANS_B = new Font("Open Sans", "700", "normal");
+  static readonly OPEN_SANS_BI = new Font("Open Sans", "700", "italic");
+  static readonly ROBOTO_MONO = new Font("Roboto Mono", "400", "normal");
+  static readonly ROBOTO_MONO_I = new Font("Roboto Mono", "400", "italic");
+  static readonly ROBOTO_MONO_B = new Font("Roboto Mono", "700", "normal");
+  static readonly ROBOTO_MONO_BI = new Font("Roboto Mono", "700", "italic");
+  static readonly UBUNTU_MONO = new Font("Ubuntu Mono", "400", "normal");
+  static readonly UBUNTU_MONO_I = new Font("Ubuntu Mono", "400", "italic");
+  static readonly UBUNTU_MONO_B = new Font("Ubuntu Mono", "700", "normal");
+  static readonly UBUNTU_MONO_BI = new Font("Ubuntu Mono", "700", "italic");
 
   static readonly ALL = new Enum<Font>(
     Font.OPEN_SANS,
-    Font.OPEN_SANS_B,
     Font.OPEN_SANS_I,
+    Font.OPEN_SANS_B,
     Font.OPEN_SANS_BI,
     Font.ROBOTO_MONO,
-    Font.ROBOTO_MONO_B,
     Font.ROBOTO_MONO_I,
+    Font.ROBOTO_MONO_B,
     Font.ROBOTO_MONO_BI,
     Font.UBUNTU_MONO,
-    Font.UBUNTU_MONO_B,
     Font.UBUNTU_MONO_I,
+    Font.UBUNTU_MONO_B,
     Font.UBUNTU_MONO_BI,
   );
 
-  private constructor(
-    public readonly id: string,
-    public readonly name: string,
-    public readonly style: {
-      readonly fontFamily: string;
-      readonly fontWeight: string;
-      readonly fontStyle: string;
-    },
-  ) {
+  readonly id: string;
+  readonly family: string;
+  readonly weight: FontWeight;
+  readonly style: FontStyle;
+  readonly name: string;
+  readonly cssProperties: Record<string, any>;
+
+  private constructor(family: string, weight: FontWeight, style: FontStyle) {
+    this.id = `${family}-${weight}-${style}`;
+    this.family = family;
+    this.weight = weight;
+    this.style = style;
+    this.name = fontName(family, weight, style);
+    this.cssProperties = Object.freeze({
+      fontFamily: family,
+      fontWeight: weight,
+      fontStyle: style,
+    });
     Object.freeze(this);
   }
 
@@ -98,34 +72,58 @@ export class Font implements EnumItem {
   }
 }
 
-function regular(fontFamily: string) {
-  return {
-    fontFamily,
-    fontWeight: "400",
-    fontStyle: "normal",
-  };
-}
-
-function bold(fontFamily: string) {
-  return {
-    fontFamily,
-    fontWeight: "700",
-    fontStyle: "normal",
-  };
-}
-
-function italic(fontFamily: string) {
-  return {
-    fontFamily,
-    fontWeight: "400",
-    fontStyle: "italic",
-  };
-}
-
-function boldItalic(fontFamily: string) {
-  return {
-    fontFamily,
-    fontWeight: "700",
-    fontStyle: "italic",
-  };
+function fontName(
+  family: string,
+  weight: FontWeight,
+  style: FontStyle,
+): string {
+  let w = "Regular";
+  switch (weight) {
+    case "100":
+      w = "Thin";
+      break;
+    case "200":
+      w = "Extra Light";
+      break;
+    case "300":
+      w = "Light";
+      break;
+    case "400":
+      w = "Regular";
+      break;
+    case "500":
+      w = "Medium";
+      break;
+    case "600":
+      w = "Semi Bold";
+      break;
+    case "700":
+      w = "Bold";
+      break;
+    case "800":
+      w = "Extra Bold";
+      break;
+    case "900":
+      w = "Black";
+      break;
+  }
+  let s = "Regular";
+  switch (style) {
+    case "normal":
+      s = "Regular";
+      break;
+    case "italic":
+      s = "Italic";
+      break;
+  }
+  if (w === "Regular" && s === "Regular") {
+    return `${family}`;
+  }
+  if (w === "Regular") {
+    return `${family} (${s})`;
+  }
+  if (s === "Regular") {
+    return `${family} (${w})`;
+  }
+  return `${family} (${w} ${s})`;
 }
