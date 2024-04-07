@@ -1,17 +1,19 @@
 "use strict";
 
+/* eslint-disable n/no-extraneous-require */
+
 const { join } = require("node:path");
+const gitCommitInfo = require("git-commit-info");
 const { DefinePlugin } = require("webpack");
 const TerserPlugin = require("terser-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
-const ManifestPlugin = require("./webpack-manifest.js");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 const { transform } = require("@formatjs/ts-transformer");
-const { getHashDigest } = require("./scripts/lib/message-id.js");
-const gitCommitInfo = require("git-commit-info");
-const ENV = require("./packages/thirdparties/webpack-env.js");
+const ManifestPlugin = require("@keybr/scripts/lib/webpack-manifest.js");
+const { getHashDigest } = require("@keybr/scripts/lib/message-id.js");
+const ENV = require("@keybr/thirdparties/webpack-env.js");
 
 const mode = process.env.NODE_ENV || "production";
 

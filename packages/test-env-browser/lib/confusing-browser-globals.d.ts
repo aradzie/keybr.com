@@ -1,4 +1,4 @@
-declare module "eslint-restricted-globals" {
+declare module "confusing-browser-globals" {
   const keys: string[];
   export default keys;
 }

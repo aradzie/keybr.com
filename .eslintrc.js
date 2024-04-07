@@ -24,7 +24,7 @@ module.exports = {
     "eqeqeq": ["error", "always", { null: "never" }],
     "no-constant-condition": ["error", { checkLoops: false }],
     "no-implicit-coercion": "error",
-    "no-restricted-globals": ["error", ...require("eslint-restricted-globals")],
+    "no-restricted-globals": ["error", ...require("confusing-browser-globals")],
     "prefer-const": "off",
     // configure simple-import-sort
     "simple-import-sort/imports": [

@@ -1,4 +1,4 @@
-import restrictedGlobals from "eslint-restricted-globals";
+import restrictedGlobals from "confusing-browser-globals";
 import {
   IDBCursor,
   IDBCursorWithValue,
