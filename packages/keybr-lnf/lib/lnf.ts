@@ -1,10 +1,10 @@
-import { TEXT_SIZES, THEMES } from "./options.tsx";
+import { COLORS, FONTS } from "./options.tsx";
 import { type ThemePrefs } from "./prefs.ts";
 
-export function getTextDataValue(prefs: ThemePrefs): string {
-  return TEXT_SIZES.findOption(prefs.textSize).id;
+export function getColorDataValue(prefs: ThemePrefs): string {
+  return COLORS.findOption(prefs.color).id;
 }
 
-export function getThemeDataValue(prefs: ThemePrefs): string {
-  return THEMES.findOption(prefs.themeName).id;
+export function getFontDataValue(prefs: ThemePrefs): string {
+  return FONTS.findOption(prefs.font).id;
 }

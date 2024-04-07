@@ -39,8 +39,8 @@ test("render", (t) => {
     },
     settings: null,
     prefs: {
-      themeName: "light",
-      textSize: "normal",
+      color: "light",
+      font: "opensans",
     },
     extra: {},
   };
@@ -50,11 +50,11 @@ test("render", (t) => {
       <ThemeContext.Provider
         value={{
           fullscreenState: null,
-          themeName: "light",
-          textSize: "normal",
+          color: "light",
+          font: "opensans",
           toggleFullscreen: () => {},
-          switchTheme: () => {},
-          switchTextSize: () => {},
+          switchColor: () => {},
+          switchFont: () => {},
         }}
       >
         <PageDataContext.Provider value={pageData}>
@@ -100,8 +100,8 @@ test("render alt", (t) => {
     },
     settings: null,
     prefs: {
-      themeName: "light",
-      textSize: "normal",
+      color: "light",
+      font: "opensans",
     },
     extra: {},
   };
@@ -111,11 +111,11 @@ test("render alt", (t) => {
       <ThemeContext.Provider
         value={{
           fullscreenState: null,
-          themeName: "light",
-          textSize: "normal",
+          color: "light",
+          font: "opensans",
           toggleFullscreen: () => {},
-          switchTheme: () => {},
-          switchTextSize: () => {},
+          switchColor: () => {},
+          switchFont: () => {},
         }}
       >
         <PageDataContext.Provider value={pageData}>

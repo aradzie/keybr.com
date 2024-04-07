@@ -1,6 +1,6 @@
 import { FavIconAssets, ScriptAssets, StylesheetAssets } from "@keybr/assets";
 import { getDir } from "@keybr/intl";
-import { getTextDataValue, getThemeDataValue, useTheme } from "@keybr/lnf";
+import { getColorDataValue, getFontDataValue, useTheme } from "@keybr/lnf";
 import {
   AltLangLinks,
   isPremiumUser,
@@ -61,8 +61,8 @@ function Html({ children }: { readonly children?: ReactNode }): ReactNode {
       lang={locale}
       dir={getDir(locale)}
       prefix="og: http://ogp.me/ns#"
-      data-theme={getThemeDataValue(theme)}
-      data-text={getTextDataValue(theme)}
+      data-color={getColorDataValue(theme)}
+      data-font={getFontDataValue(theme)}
     >
       {children}
     </html>

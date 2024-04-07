@@ -6,16 +6,16 @@ import { type ReactNode } from "react";
 import { ThemeProvider } from "./provider.tsx";
 
 test.beforeEach(() => {
-  document.documentElement.dataset["theme"] = "dark";
-  document.documentElement.dataset["text"] = "huge";
+  document.documentElement.dataset["color"] = "dark";
+  document.documentElement.dataset["font"] = "spectral";
 
   document.cookie =
-    "prefs=%7B%22themeName%22%3A%22dark%22%2C%22textSize%22%3A%22huge%22%7D";
+    "prefs=%7B%22color%22%3A%22dark%22%2C%22font%22%3A%22spectral%22%7D";
 });
 
 test.afterEach(() => {
-  document.documentElement.dataset["theme"] = "";
-  document.documentElement.dataset["text"] = "";
+  document.documentElement.dataset["color"] = "";
+  document.documentElement.dataset["font"] = "";
 });
 
 test.serial("mount and switch styles", async (t) => {
@@ -32,34 +32,34 @@ test.serial("mount and switch styles", async (t) => {
   t.false(document.fullscreenEnabled);
   t.is(document.fullscreenElement, null);
 
-  t.is(document.documentElement.dataset["theme"], "dark");
-  t.is(document.documentElement.dataset["text"], "huge");
+  t.is(document.documentElement.dataset["color"], "dark");
+  t.is(document.documentElement.dataset["font"], "spectral");
 
   // Act.
 
-  await userEvent.click(r.getByText("light theme"));
+  await userEvent.click(r.getByText("light"));
 
   // Assert.
 
   t.is(
     document.cookie,
-    "prefs=%7B%22themeName%22%3A%22light%22%2C%22textSize%22%3A%22huge%22%7D",
+    "prefs=%7B%22color%22%3A%22light%22%2C%22font%22%3A%22spectral%22%7D",
   );
-  t.is(document.documentElement.dataset["theme"], "light");
-  t.is(document.documentElement.dataset["text"], "huge");
+  t.is(document.documentElement.dataset["color"], "light");
+  t.is(document.documentElement.dataset["font"], "spectral");
 
   // Act.
 
-  await userEvent.click(r.getByText("normal text size"));
+  await userEvent.click(r.getByText("opensans"));
 
   // Assert.
 
   t.is(
     document.cookie,
-    "prefs=%7B%22themeName%22%3A%22light%22%2C%22textSize%22%3A%22normal%22%7D",
+    "prefs=%7B%22color%22%3A%22light%22%2C%22font%22%3A%22opensans%22%7D",
   );
-  t.is(document.documentElement.dataset["theme"], "light");
-  t.is(document.documentElement.dataset["text"], "normal");
+  t.is(document.documentElement.dataset["color"], "light");
+  t.is(document.documentElement.dataset["font"], "opensans");
 
   // Cleanup.
 
@@ -94,38 +94,31 @@ function Switcher(): ReactNode {
     <div>
       <button
         onClick={() => {
-          ctl.switchTheme("light");
+          ctl.switchColor("light");
         }}
       >
-        light theme
+        light
       </button>
       <button
         onClick={() => {
-          ctl.switchTheme("dark");
+          ctl.switchColor("dark");
         }}
       >
-        dark theme
+        dark
       </button>
       <button
         onClick={() => {
-          ctl.switchTextSize("normal");
+          ctl.switchFont("opensans");
         }}
       >
-        normal text size
+        opensans
       </button>
       <button
         onClick={() => {
-          ctl.switchTextSize("large");
+          ctl.switchFont("spectral");
         }}
       >
-        large text size
-      </button>
-      <button
-        onClick={() => {
-          ctl.switchTextSize("huge");
-        }}
-      >
-        huge text size
+        spectral
       </button>
     </div>
   );

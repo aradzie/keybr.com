@@ -20,18 +20,6 @@ html {
   @media (min-width: @width), (min-device-width: @width) {
     html {
       font-size: @size;
-
-      &[data-text="normal"] {
-        font-size: @size;
-      }
-
-      &[data-text="large"] {
-        font-size: round((@size * 1.1), 1);
-      }
-
-      &[data-text="huge"] {
-        font-size: round((@size * 1.2), 1);
-      }
     }
   }
 }

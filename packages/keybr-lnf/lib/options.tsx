@@ -1,6 +1,6 @@
 import { Icon } from "@keybr/widget";
 import { mdiBrightness4, mdiBrightness5 } from "@mdi/js";
-import { type TextSizeOption, type ThemeOption } from "./types.ts";
+import { type ColorOption, type FontOption } from "./types.ts";
 
 export class OptionList<T extends { id: string }> {
   constructor(public readonly all: readonly T[]) {}
@@ -22,7 +22,7 @@ export class OptionList<T extends { id: string }> {
   }
 }
 
-export const THEMES = new OptionList<ThemeOption>([
+export const COLORS = new OptionList<ColorOption>([
   {
     id: "light",
     icon: <Icon shape={mdiBrightness5} />,
@@ -35,17 +35,13 @@ export const THEMES = new OptionList<ThemeOption>([
   },
 ]);
 
-export const TEXT_SIZES = new OptionList<TextSizeOption>([
+export const FONTS = new OptionList<FontOption>([
   {
-    id: "normal",
-    title: "Normal Text Size",
+    id: "opensans",
+    title: "Open Sans",
   },
   {
-    id: "large",
-    title: "Large Text Size",
-  },
-  {
-    id: "huge",
-    title: "Huge Text Size",
+    id: "spectral",
+    title: "Spectral",
   },
 ]);

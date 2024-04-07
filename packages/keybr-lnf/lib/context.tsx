@@ -3,11 +3,11 @@ import { type ThemeControl } from "./types.ts";
 
 export const ThemeContext = createContext<ThemeControl>({
   fullscreenState: null,
-  themeName: "light",
-  textSize: "normal",
+  color: "light",
+  font: "opensans",
   toggleFullscreen: (): void => {},
-  switchTheme: (): void => {},
-  switchTextSize: (): void => {},
+  switchColor: (): void => {},
+  switchFont: (): void => {},
 });
 
 export function useTheme(): ThemeControl {

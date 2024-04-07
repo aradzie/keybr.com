@@ -16,8 +16,8 @@ test.serial("render", (t) => {
     },
     settings: null,
     prefs: {
-      themeName: "light",
-      textSize: "normal",
+      color: "light",
+      font: "opensans",
     },
     extra: {},
   };

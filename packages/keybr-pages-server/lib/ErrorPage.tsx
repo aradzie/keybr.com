@@ -1,5 +1,5 @@
 import { StylesheetAssets } from "@keybr/assets";
-import { getTextDataValue, getThemeDataValue, useTheme } from "@keybr/lnf";
+import { getColorDataValue, getFontDataValue, useTheme } from "@keybr/lnf";
 import { Header, Link, Para } from "@keybr/widget";
 import { type ReactNode } from "react";
 import * as styles from "./ErrorPage.module.less";
@@ -39,8 +39,8 @@ export function ErrorPage({
   return (
     <html
       lang="en"
-      data-theme={getThemeDataValue(theme)}
-      data-text={getTextDataValue(theme)}
+      data-color={getColorDataValue(theme)}
+      data-font={getFontDataValue(theme)}
     >
       <head>
         <meta charSet="UTF-8" />

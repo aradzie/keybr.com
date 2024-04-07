@@ -306,13 +306,13 @@ function themePrefs(ctx: Context<RouterState & AuthState>): ThemePrefs {
   return ThemePrefs.deserialize(cookie);
 }
 
-function themeControl({ themeName, textSize }: ThemePrefs): ThemeControl {
+function themeControl({ color, font }: ThemePrefs): ThemeControl {
   return {
     fullscreenState: null,
-    themeName,
-    textSize,
+    color,
+    font,
     toggleFullscreen: (): void => {},
-    switchTheme: (): void => {},
-    switchTextSize: (): void => {},
+    switchColor: (): void => {},
+    switchFont: (): void => {},
   };
 }

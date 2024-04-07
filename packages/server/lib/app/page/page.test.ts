@@ -61,7 +61,7 @@ test(`load custom theme from cookie`, async (t) => {
     .header("X-Forwarded-Proto", "https")
     .header(
       "Cookie",
-      new Cookie([["prefs", '{"themeName":"dark","textSize":"huge"}']]),
+      new Cookie([["prefs", '{"color":"dark","font":"spectral"}']]),
     )
     .send();
 
@@ -72,8 +72,8 @@ test(`load custom theme from cookie`, async (t) => {
   t.deepEqual(response.headers.getAll("Set-Cookie"), []);
 
   const $ = cheerio.load(await response.body.text());
-  t.is($("html").attr("data-theme"), "dark");
-  t.is($("html").attr("data-text"), "huge");
+  t.is($("html").attr("data-color"), "dark");
+  t.is($("html").attr("data-font"), "spectral");
 });
 
 test(`ignore invalid theme cookie`, async (t) => {
@@ -97,6 +97,6 @@ test(`ignore invalid theme cookie`, async (t) => {
   t.deepEqual(response.headers.getAll("Set-Cookie"), []);
 
   const $ = cheerio.load(await response.body.text());
-  t.is($("html").attr("data-theme"), "light");
-  t.is($("html").attr("data-text"), "normal");
+  t.is($("html").attr("data-color"), "light");
+  t.is($("html").attr("data-font"), "opensans");
 });

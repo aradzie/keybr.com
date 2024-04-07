@@ -1,11 +1,11 @@
 import { Cookie, SetCookie } from "@fastr/headers";
 import {
-  TEXT_SIZES,
-  type TextSize,
+  type ColorName,
+  COLORS,
+  type FontName,
+  FONTS,
   ThemeContext,
-  type ThemeName,
   ThemePrefs,
-  THEMES,
 } from "@keybr/lnf";
 import { Component, type ReactNode } from "react";
 import { installPolyfills } from "./fullscreen-polyfill.ts";
@@ -19,15 +19,15 @@ type Props = {
 
 type State = {
   readonly fullscreenState: boolean | null;
-  readonly themeName: ThemeName;
-  readonly textSize: TextSize;
+  readonly color: ColorName;
+  readonly font: FontName;
 };
 
 export class ThemeProvider extends Component<Props, State> {
   override state: State = {
     fullscreenState: false,
-    themeName: "light",
-    textSize: "normal",
+    color: "light",
+    font: "opensans",
   };
 
   override componentDidMount(): void {
@@ -55,16 +55,16 @@ export class ThemeProvider extends Component<Props, State> {
   }
 
   override render(): ReactNode {
-    const { fullscreenState, themeName, textSize } = this.state;
+    const { fullscreenState, color, font } = this.state;
     return (
       <ThemeContext.Provider
         value={{
           fullscreenState,
-          themeName,
-          textSize,
+          color,
+          font,
           toggleFullscreen: this.toggleFullscreen,
-          switchTheme: this.switchTheme,
-          switchTextSize: this.switchTextSize,
+          switchColor: this.switchColor,
+          switchFont: this.switchFont,
         }}
       >
         {this.props.children}
@@ -92,20 +92,20 @@ export class ThemeProvider extends Component<Props, State> {
     }
   };
 
-  readonly switchTheme = (themeName: ThemeName): void => {
-    this.setState({ themeName }, () => {
+  readonly switchColor = (color: ColorName): void => {
+    this.setState({ color }, () => {
       const { state } = this;
-      const { id } = THEMES.findOption(state.themeName);
-      document.documentElement.setAttribute("data-theme", id);
+      const { id } = COLORS.findOption(state.color);
+      document.documentElement.setAttribute("data-color", id);
       storePrefs(new ThemePrefs(state));
     });
   };
 
-  readonly switchTextSize = (textSize: TextSize): void => {
-    this.setState({ textSize }, () => {
+  readonly switchFont = (font: FontName): void => {
+    this.setState({ font }, () => {
       const { state } = this;
-      const { id } = TEXT_SIZES.findOption(state.textSize);
-      document.documentElement.setAttribute("data-text", id);
+      const { id } = FONTS.findOption(state.font);
+      document.documentElement.setAttribute("data-font", id);
       storePrefs(new ThemePrefs(state));
     });
   };
@@ -117,12 +117,12 @@ function getInitialState(): State {
     if (document.fullscreenEnabled) {
       fullscreenState = document.fullscreenElement != null;
     }
-    const { themeName, textSize } = ThemePrefs.deserialize(
+    const { color, font } = ThemePrefs.deserialize(
       Cookie.parse(document.cookie).get(ThemePrefs.cookieKey),
     );
-    return { fullscreenState, themeName, textSize };
+    return { fullscreenState, color: color, font: font };
   } catch {
-    return { fullscreenState: null, themeName: "light", textSize: "normal" };
+    return { fullscreenState: null, color: "light", font: "opensans" };
   }
 }
 

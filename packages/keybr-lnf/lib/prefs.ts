@@ -1,4 +1,4 @@
-import { type TextSize, type ThemeName } from "./types.ts";
+import { type ColorName, type FontName } from "./types.ts";
 
 export class ThemePrefs {
   static cookieKey = "prefs";
@@ -19,28 +19,27 @@ export class ThemePrefs {
     return new ThemePrefs(o);
   }
 
-  readonly themeName: ThemeName;
-  readonly textSize: TextSize;
+  readonly color: ColorName;
+  readonly font: FontName;
 
   constructor(o: unknown) {
-    let { themeName, textSize }: ThemePrefs = Object(o);
-    switch (themeName) {
+    let { color, font }: ThemePrefs = Object(o);
+    switch (color) {
       case "light":
       case "dark":
         break;
       default:
-        themeName = "light";
+        color = "light";
         break;
     }
-    switch (textSize) {
-      case "normal":
-      case "large":
-      case "huge":
+    switch (font) {
+      case "opensans":
+      case "spectral":
         break;
       default:
-        textSize = "normal";
+        font = "opensans";
     }
-    this.themeName = themeName;
-    this.textSize = textSize;
+    this.color = color;
+    this.font = font;
   }
 }

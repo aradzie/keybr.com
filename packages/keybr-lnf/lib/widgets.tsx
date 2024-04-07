@@ -1,9 +1,9 @@
 import { Icon, IconButton } from "@keybr/widget";
-import { mdiArrowCollapseAll, mdiArrowExpandAll, mdiFormatSize } from "@mdi/js";
+import { mdiArrowCollapseAll, mdiArrowExpandAll, mdiFormatFont } from "@mdi/js";
 import { type ReactNode } from "react";
 import { defineMessage, useIntl } from "react-intl";
 import { useTheme } from "./context.tsx";
-import { TEXT_SIZES, THEMES } from "./options.tsx";
+import { COLORS, FONTS } from "./options.tsx";
 
 const enterFullscreenTitle = defineMessage({
   id: "theme.enterFullscreen.description",
@@ -56,11 +56,11 @@ export function FullscreenButton(): ReactNode {
   }
 }
 
-export function ThemeButton(): ReactNode {
+export function ColorButton(): ReactNode {
   const { formatMessage } = useIntl();
   const theme = useTheme();
-  const option = THEMES.findOption(theme.themeName);
-  const next = THEMES.findNext(option);
+  const option = COLORS.findOption(theme.color);
+  const next = COLORS.findNext(option);
   return (
     <IconButton
       icon={option.icon}
@@ -68,25 +68,25 @@ export function ThemeButton(): ReactNode {
         name: next.title,
       })}
       onClick={() => {
-        theme.switchTheme(next.id);
+        theme.switchColor(next.id);
       }}
     />
   );
 }
 
-export function TextSizeButton(): ReactNode {
+export function FontButton(): ReactNode {
   const { formatMessage } = useIntl();
   const theme = useTheme();
-  const option = TEXT_SIZES.findOption(theme.textSize);
-  const next = TEXT_SIZES.findNext(option);
+  const option = FONTS.findOption(theme.font);
+  const next = FONTS.findNext(option);
   return (
     <IconButton
-      icon={<Icon shape={mdiFormatSize} />}
+      icon={<Icon shape={mdiFormatFont} />}
       title={formatMessage(switchThemeTitle, {
         name: next.title,
       })}
       onClick={() => {
-        theme.switchTextSize(next.id);
+        theme.switchFont(next.id);
       }}
     />
   );
