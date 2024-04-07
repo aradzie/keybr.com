@@ -22,6 +22,10 @@ export class Font implements EnumItem {
   static readonly ROBOTO_MONO_I = new Font("Roboto Mono", "400", "italic");
   static readonly ROBOTO_MONO_B = new Font("Roboto Mono", "700", "normal");
   static readonly ROBOTO_MONO_BI = new Font("Roboto Mono", "700", "italic");
+  static readonly SPECTRAL = new Font("Spectral", "400", "normal");
+  static readonly SPECTRAL_I = new Font("Spectral", "400", "italic");
+  static readonly SPECTRAL_B = new Font("Spectral", "700", "normal");
+  static readonly SPECTRAL_BI = new Font("Spectral", "700", "italic");
   static readonly UBUNTU_MONO = new Font("Ubuntu Mono", "400", "normal");
   static readonly UBUNTU_MONO_I = new Font("Ubuntu Mono", "400", "italic");
   static readonly UBUNTU_MONO_B = new Font("Ubuntu Mono", "700", "normal");
@@ -36,6 +40,10 @@ export class Font implements EnumItem {
     Font.ROBOTO_MONO_I,
     Font.ROBOTO_MONO_B,
     Font.ROBOTO_MONO_BI,
+    Font.SPECTRAL,
+    Font.SPECTRAL_I,
+    Font.SPECTRAL_B,
+    Font.SPECTRAL_BI,
     Font.UBUNTU_MONO,
     Font.UBUNTU_MONO_I,
     Font.UBUNTU_MONO_B,

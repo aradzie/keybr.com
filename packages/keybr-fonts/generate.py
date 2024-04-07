@@ -174,6 +174,26 @@ def main():
         merge_file="Whitespace-em2048.ttf",
     )
     generate(
+        "fonts/Spectral/Spectral-Regular.ttf",
+        "spectral",
+        merge_file="Whitespace-em1000.ttf",
+    )
+    generate(
+        "fonts/Spectral/Spectral-Italic.ttf",
+        "spectral",
+        merge_file="Whitespace-em1000.ttf",
+    )
+    generate(
+        "fonts/Spectral/Spectral-Bold.ttf",
+        "spectral",
+        merge_file="Whitespace-em1000.ttf",
+    )
+    generate(
+        "fonts/Spectral/Spectral-BoldItalic.ttf",
+        "spectral",
+        merge_file="Whitespace-em1000.ttf",
+    )
+    generate(
         "fonts/Ubuntu/UbuntuMono-R.ttf",
         "ubuntu-mono",
         merge_file="Whitespace-em1000.ttf",
