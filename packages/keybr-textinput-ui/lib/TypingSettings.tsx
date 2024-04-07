@@ -181,7 +181,7 @@ function FontProp(): ReactNode {
         <OptionList
           options={Font.ALL.map((item) => ({
             value: item.id,
-            name: item.name,
+            name: <span style={item.cssProperties}>{item.name}</span>,
           }))}
           value={settings.get(textDisplayProps.font).id}
           onSelect={(id) => {

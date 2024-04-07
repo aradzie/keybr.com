@@ -225,9 +225,7 @@ export class OptionList
           className={styles.placeholder}
           onClick={this.handlePlaceholderClick}
         >
-          <span className={styles.placeholderName} title={selectedOption.name}>
-            {selectedOption.name}
-          </span>
+          <span className={styles.placeholderName}>{selectedOption.name}</span>
           <span className={styles.placeholderArrow}>
             {open ? "\u25BC" : "\u25BA"}
           </span>
@@ -244,7 +242,6 @@ export class OptionList
                   option === selectedOption && styles.item_selected,
                   index === highlightedIndex && styles.item_highlighted,
                 )}
-                title={option.name}
                 onMouseOver={this.handleItemMouseOver(option)}
                 onClick={this.handleItemClick(option)}
               >
