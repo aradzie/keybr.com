@@ -14,6 +14,10 @@ type FontWeight =
 type FontStyle = "normal" | "italic";
 
 export class Font implements EnumItem {
+  static readonly NUNITO = new Font("Nunito", "400", "normal");
+  static readonly NUNITO_I = new Font("Nunito", "400", "italic");
+  static readonly NUNITO_B = new Font("Nunito", "700", "normal");
+  static readonly NUNITO_BI = new Font("Nunito", "700", "italic");
   static readonly OPEN_SANS = new Font("Open Sans", "400", "normal");
   static readonly OPEN_SANS_I = new Font("Open Sans", "400", "italic");
   static readonly OPEN_SANS_B = new Font("Open Sans", "700", "normal");
@@ -32,6 +36,10 @@ export class Font implements EnumItem {
   static readonly UBUNTU_MONO_BI = new Font("Ubuntu Mono", "700", "italic");
 
   static readonly ALL = new Enum<Font>(
+    Font.NUNITO,
+    Font.NUNITO_I,
+    Font.NUNITO_B,
+    Font.NUNITO_BI,
     Font.OPEN_SANS,
     Font.OPEN_SANS_I,
     Font.OPEN_SANS_B,

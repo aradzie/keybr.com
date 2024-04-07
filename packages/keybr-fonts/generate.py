@@ -134,6 +134,26 @@ def generate(font_file, font_name, merge_file=None):
 
 def main():
     generate(
+        "fonts/Nunito/static/Nunito-Regular.ttf",
+        "nunito",
+        merge_file="Whitespace-em1000.ttf",
+    )
+    generate(
+        "fonts/Nunito/static/Nunito-Italic.ttf",
+        "nunito",
+        merge_file="Whitespace-em1000.ttf",
+    )
+    generate(
+        "fonts/Nunito/static/Nunito-Bold.ttf",
+        "nunito",
+        merge_file="Whitespace-em1000.ttf",
+    )
+    generate(
+        "fonts/Nunito/static/Nunito-BoldItalic.ttf",
+        "nunito",
+        merge_file="Whitespace-em1000.ttf",
+    )
+    generate(
         "fonts/OpenSans/static/OpenSans-Regular.ttf",
         "open-sans",
         merge_file="Whitespace-em2048.ttf",
