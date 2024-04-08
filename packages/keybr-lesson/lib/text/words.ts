@@ -1,3 +1,4 @@
+import { type Language } from "@keybr/keyboard";
 import {
   type Filter,
   type Letter,
@@ -72,6 +73,7 @@ export function uniqueWords(nextWord: WordGenerator): WordGenerator {
 
 export function mangledWords(
   nextWord: WordGenerator,
+  language: Language,
   punctuators: readonly Letter[],
   {
     withCapitals = 0,
@@ -88,7 +90,7 @@ export function mangledWords(
       return null;
     }
     if (withCapitals > 0 && withCapitals >= random()) {
-      word = word.substring(0, 1).toUpperCase() + word.substring(1);
+      word = language.capitalCase(word);
     }
     if (withPunctuators > 0 && withPunctuators >= random()) {
       const { codePoint } = weightedRandomSample(

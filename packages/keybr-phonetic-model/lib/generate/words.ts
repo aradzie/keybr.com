@@ -1,3 +1,5 @@
+import { type Language } from "@keybr/keyboard";
+
 export type Word = readonly [word: string, count: number];
 
 export function toCsv(dict: readonly Word[]): string {
@@ -20,20 +22,10 @@ export function fromCsv(text: string): Word[] {
   return words;
 }
 
-export function sortByWord(dict: readonly Word[]): Word[] {
-  return [...dict].sort((a, b) => compareStrings(a[0], b[0]));
+export function sortByWord(language: Language, dict: readonly Word[]): Word[] {
+  return [...dict].sort((a, b) => language.compare(a[0], b[0]));
 }
 
-export function sortByCount(dict: readonly Word[]): Word[] {
-  return [...dict].sort((a, b) => b[1] - a[1] || compareStrings(a[0], b[0]));
-}
-
-function compareStrings(a: string, b: string): number {
-  if (a > b) {
-    return +1;
-  }
-  if (a < b) {
-    return -1;
-  }
-  return 0;
+export function sortByCount(language: Language, dict: readonly Word[]): Word[] {
+  return [...dict].sort((a, b) => b[1] - a[1] || language.compare(a[0], b[0]));
 }

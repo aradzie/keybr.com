@@ -39,7 +39,7 @@ function generate(language: Language): void {
   if (dict != null) {
     generateModel(dict);
     generateWordList(
-      sortByCount(dict)
+      sortByCount(language, dict)
         .slice(0, 3000)
         .map(([word]) => word),
     );
@@ -78,7 +78,7 @@ function generate(language: Language): void {
         console.log(
           `[${id}] Added words:`,
           "\x1b[32m",
-          ...added.sort(),
+          ...added.sort(language.compare),
           "\x1b[0m",
         );
       }
@@ -86,7 +86,7 @@ function generate(language: Language): void {
         console.log(
           `[${id}] Deleted words:`,
           "\x1b[31m",
-          ...deleted.sort(),
+          ...deleted.sort(language.compare),
           "\x1b[0m",
         );
       }

@@ -111,6 +111,7 @@ export class GuidedLesson extends Lesson {
     );
     const words = mangledWords(
       uniqueWords(wordGenerator),
+      this.model.language,
       Letter.restrict(Letter.punctuators, this.codePoints),
       {
         withCapitals: this.settings.get(lessonProps.capitals),

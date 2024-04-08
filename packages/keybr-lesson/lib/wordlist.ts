@@ -40,6 +40,7 @@ export class WordListLesson extends Lesson {
     const wordGenerator = randomWords(this.wordList, this.rng);
     const words = mangledWords(
       uniqueWords(wordGenerator),
+      this.model.language,
       Letter.restrict(Letter.punctuators, this.codePoints),
       {
         withCapitals: this.settings.get(lessonProps.capitals),

@@ -1,4 +1,4 @@
-import { type WeightedCodePointSet } from "@keybr/keyboard";
+import { type Language, type WeightedCodePointSet } from "@keybr/keyboard";
 import { Letter, type PhoneticModel } from "@keybr/phonetic-model";
 import { type KeyStatsMap, newKeyStatsMap, type Result } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
@@ -27,7 +27,12 @@ export class CustomTextLesson extends Lesson {
     codePoints: WeightedCodePointSet,
   ) {
     super(settings, model, codePoints);
-    this.wordList = getWordList(settings, model.letters, codePoints);
+    this.wordList = getWordList(
+      settings,
+      model.language,
+      model.letters,
+      codePoints,
+    );
   }
 
   override analyze(results: readonly Result[]): KeyStatsMap {
@@ -56,6 +61,7 @@ export class CustomTextLesson extends Lesson {
 
 function getWordList(
   settings: Settings,
+  language: Language,
   letters: readonly Letter[],
   codePoints: CodePointSet,
 ): string[] {
@@ -64,11 +70,13 @@ function getWordList(
   const lowercase = settings.get(lessonProps.customText.lowercase);
   if (lettersOnly) {
     const s = String.fromCodePoint(...letters.map(Letter.codePointOf));
-    codePoints = new Set(toCodePoints(s.toLowerCase() + s.toUpperCase()));
+    codePoints = new Set(
+      toCodePoints(language.lowerCase(s) + language.upperCase(s)),
+    );
   }
   let text = sanitizeText(content, codePoints);
   if (lowercase) {
-    text = text.toLowerCase();
+    text = language.lowerCase(text);
   }
   return splitText(text);
 }
