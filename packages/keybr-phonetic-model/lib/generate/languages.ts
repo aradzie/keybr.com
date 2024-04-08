@@ -23,6 +23,6 @@ export const languages: readonly Language[] = [
   { id: "ru", alphabet: "абвгдежзийклмнопрстуфхцчшщъыьэюя" },
   { id: "sl", alphabet: "abcčdefghijklmnoprsštuvzž" },
   { id: "sv", alphabet: "abcdefghijklmnoprstuvwxyåäö" },
-  { id: "tr", alphabet: "abcçdefgğhıiklmnoöprsştuüvyz" },
+  { id: "tr", alphabet: "abcçdefgğhıijklmnoöprsştuüvyz" },
   { id: "uk", alphabet: "абвгґдеєжзиіїйклмнопрстуфхцчшщьюя" },
 ].map(({ id, alphabet }) => ({ id, alphabet: [...toCodePoints(alphabet)] }));
