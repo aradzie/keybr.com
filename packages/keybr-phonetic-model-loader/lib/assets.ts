@@ -16,6 +16,7 @@ import langPtData from "@keybr/phonetic-model/assets/lang-pt.data";
 import langRuData from "@keybr/phonetic-model/assets/lang-ru.data";
 import langSlData from "@keybr/phonetic-model/assets/lang-sl.data";
 import langSvData from "@keybr/phonetic-model/assets/lang-sv.data";
+import langTrData from "@keybr/phonetic-model/assets/lang-tr.data";
 import langUkData from "@keybr/phonetic-model/assets/lang-uk.data";
 
 export function modelAssetPath(language: Language): string {
@@ -40,6 +41,8 @@ export function modelAssetPath(language: Language): string {
       return langHuData;
     case Language.IT:
       return langItData;
+    case Language.NB:
+      return langNbData;
     case Language.NL:
       return langNlData;
     case Language.PL:
@@ -52,10 +55,10 @@ export function modelAssetPath(language: Language): string {
       return langSlData;
     case Language.SV:
       return langSvData;
+    case Language.TR:
+      return langTrData;
     case Language.UK:
       return langUkData;
-    case Language.NB:
-      return langNbData;
     default:
       throw new Error();
   }

@@ -69,6 +69,8 @@ for (const [output, keymap] of [
   ["ru_ru-win.ts", convertCldr("cldr-keyboards-43.0/keyboards/windows/ru-t-k0-windows.xml")],
   ["sl_si-win.ts", convertCldr("cldr-keyboards-43.0/keyboards/windows/sl-t-k0-windows.xml")],
   ["sv_se-win.ts", convertCldr("cldr-keyboards-43.0/keyboards/windows/sv-t-k0-windows.xml")],
+  ["tr_tr_f-win.ts", convertCldr("cldr-keyboards-43.0/keyboards/windows/tr-t-k0-windows-legacy.xml")],
+  ["tr_tr_q-win.ts", convertCldr("cldr-keyboards-43.0/keyboards/windows/tr-t-k0-windows.xml")],
   ["uk_ua-win.ts", convertCldr("cldr-keyboards-43.0/keyboards/windows/uk-t-k0-windows.xml")],
 ] as [string, KeyMap][]) {
   const filename = join(__dirname, "../../keybr-keyboard/lib/data/layout", output);

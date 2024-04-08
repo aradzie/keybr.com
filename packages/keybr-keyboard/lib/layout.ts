@@ -590,6 +590,36 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly TR_TR_Q = new Layout(
+    /* id= */ "tr-tr-q",
+    /* xid= */ 0x89,
+    /* name= */ "{TR} Q",
+    /* family= */ "qwerty",
+    /* language= */ Language.TR,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
+  static readonly TR_TR_F = new Layout(
+    /* id= */ "tr-tr-f",
+    /* xid= */ 0x8a,
+    /* name= */ "{TR} F",
+    /* family= */ "tr-tr-f",
+    /* language= */ Language.TR,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
 
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
@@ -632,6 +662,8 @@ export class Layout implements XEnumItem {
     Layout.SV_SE,
     Layout.UK_UA,
     Layout.RU_RU,
+    Layout.TR_TR_Q,
+    Layout.TR_TR_F,
   );
 
   static findLayout(localeId: string): Layout | null {

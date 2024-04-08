@@ -41,4 +41,6 @@ export { LAYOUT_PT_PT_WIN } from "./layout/pt_pt-win.ts";
 export { LAYOUT_RU_RU_WIN } from "./layout/ru_ru-win.ts";
 export { LAYOUT_SL_SI_WIN } from "./layout/sl_si-win.ts";
 export { LAYOUT_SV_SE_WIN } from "./layout/sv_se-win.ts";
+export { LAYOUT_TR_TR_F_WIN } from "./layout/tr_tr_f-win.ts";
+export { LAYOUT_TR_TR_Q_WIN } from "./layout/tr_tr_q-win.ts";
 export { LAYOUT_UK_UA_WIN } from "./layout/uk_ua-win.ts";

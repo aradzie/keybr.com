@@ -51,6 +51,8 @@ import {
   LAYOUT_RU_RU_WIN,
   LAYOUT_SL_SI_WIN,
   LAYOUT_SV_SE_WIN,
+  LAYOUT_TR_TR_F_WIN,
+  LAYOUT_TR_TR_Q_WIN,
   LAYOUT_UK_UA_WIN,
 } from "./data/layout.ts";
 import { Geometry } from "./geometry.ts";
@@ -99,6 +101,8 @@ const layoutDict = new Map<Layout, CodePointDict>([
   [Layout.RU_RU, LAYOUT_RU_RU_WIN],
   [Layout.SL_SI, LAYOUT_SL_SI_WIN],
   [Layout.SV_SE, LAYOUT_SV_SE_WIN],
+  [Layout.TR_TR_F, LAYOUT_TR_TR_F_WIN],
+  [Layout.TR_TR_Q, LAYOUT_TR_TR_Q_WIN],
   [Layout.UK_UA, LAYOUT_UK_UA_WIN],
 ]);
 
