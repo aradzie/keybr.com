@@ -5,10 +5,13 @@ export class FakeCanvasRenderingContext2D implements CanvasRenderingContext2D {
   filter = "";
   font = "";
   fontKerning = "auto" as const;
+  fontStretch = "normal" as const;
+  fontVariantCaps = "normal" as const;
   globalAlpha = 0;
   globalCompositeOperation = "source-over" as const;
   imageSmoothingEnabled = false;
   imageSmoothingQuality = "high" as const;
+  letterSpacing = "";
   lineCap = "butt" as const;
   lineDashOffset = 0;
   lineJoin = "round" as const;
@@ -21,6 +24,8 @@ export class FakeCanvasRenderingContext2D implements CanvasRenderingContext2D {
   strokeStyle = "";
   textAlign = "start" as const;
   textBaseline = "top" as const;
+  textRendering = "auto" as const;
+  wordSpacing = "";
 
   constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas;
@@ -159,7 +164,12 @@ export class FakeTextMetrics implements TextMetrics {
   readonly actualBoundingBoxDescent = 0;
   readonly actualBoundingBoxLeft = 0;
   readonly actualBoundingBoxRight = 0;
+  readonly alphabeticBaseline = 0;
+  readonly emHeightAscent = 0;
+  readonly emHeightDescent = 0;
   readonly fontBoundingBoxAscent = 0;
   readonly fontBoundingBoxDescent = 0;
+  readonly hangingBaseline = 0;
+  readonly ideographicBaseline = 0;
   readonly width = 0;
 }

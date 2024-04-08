@@ -1,7 +1,7 @@
 // https://levelup.gitconnected.com/how-to-add-hooks-to-node-js-require-function-dee7acd12698
 // https://github.com/nodejs/node/blob/main/lib/internal/modules/cjs/loader.js
 
-import { Module } from "module";
+import { Module } from "node:module";
 
 const stylesModule = new Proxy(
   {},

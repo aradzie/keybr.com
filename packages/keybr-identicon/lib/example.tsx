@@ -1,5 +1,5 @@
 import { type ReactNode } from "react";
-import { renderToStaticMarkup } from "react-dom/server"; // eslint-disable-line
+import { renderToStaticMarkup } from "react-dom/server";
 import { Identicon } from "./Identicon.tsx";
 
 const names = [

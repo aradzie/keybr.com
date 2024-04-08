@@ -5,7 +5,7 @@ import { ThemeProvider } from "@keybr/lnf-browser";
 import { getPageData, PageDataContext } from "@keybr/pages-shared";
 import { querySelector } from "@keybr/widget";
 import { type ReactElement } from "react";
-import { createRoot } from "react-dom/client"; // eslint-disable-line
+import { createRoot } from "react-dom/client";
 import { RawIntlProvider } from "react-intl";
 import { type SlotProps } from "./Slot.tsx";
 

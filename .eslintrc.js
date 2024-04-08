@@ -9,7 +9,7 @@ module.exports = {
     browser: true,
     node: true,
   },
-  plugins: ["formatjs", "simple-import-sort"],
+  plugins: ["@typescript-eslint", "formatjs", "simple-import-sort"],
   extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
@@ -63,15 +63,19 @@ module.exports = {
     "formatjs/no-multiple-whitespaces": "error",
     // configure node
     "n/file-extension-in-import": ["error", "always"],
+    "n/hashbang": "off",
     "n/no-process-exit": "off",
+    "n/no-unsupported-features/es-builtins": "off",
+    "n/no-unsupported-features/es-syntax": "off",
+    "n/no-unsupported-features/node-builtins": "off",
     "n/prefer-global/buffer": ["error", "always"],
     "n/prefer-global/console": ["error", "always"],
     "n/prefer-global/process": ["error", "always"],
     "n/prefer-global/url": ["error", "always"],
     "n/prefer-global/url-search-params": ["error", "always"],
+    "n/prefer-node-protocol": "error",
     "n/prefer-promises/dns": "error",
     "n/prefer-promises/fs": "error",
-    "n/shebang": "off",
   },
   overrides: [
     {
@@ -95,9 +99,14 @@ module.exports = {
         ...Object.keys(pkg.dependencies),
         ...Object.keys(pkg.devDependencies),
       ],
+      typescriptExtensionMap: [
+        [".ts", ".ts"],
+        [".tsx", ".tsx"],
+      ],
     },
   },
   parserOptions: {
     emitDecoratorMetadata: true,
+    experimentalDecorators: true,
   },
 };

@@ -1,7 +1,7 @@
 import { injectable } from "@fastr/invert";
 import { Manifest, ManifestContext, type PreloadLink } from "@keybr/assets";
 import { type ReactNode } from "react";
-import { renderToStaticMarkup } from "react-dom/server"; // eslint-disable-line
+import { renderToStaticMarkup } from "react-dom/server";
 
 @injectable()
 export class View {
