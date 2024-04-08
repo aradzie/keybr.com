@@ -10,9 +10,8 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
-const { transform } = require("@formatjs/ts-transformer");
 const ManifestPlugin = require("@keybr/scripts/lib/webpack-manifest.js");
-const { getHashDigest } = require("@keybr/scripts/lib/message-id.js");
+const { intlTransformer } = require("@keybr/scripts/lib/intl.js");
 const ENV = require("@keybr/thirdparties/webpack-env.js");
 
 const mode = process.env.NODE_ENV || "production";
@@ -57,12 +56,7 @@ const rule_ts = () => ({
           jsx: mode === "development" ? "react-jsxdev" : "react-jsx",
         },
         getCustomTransformers: () => ({
-          before: [
-            transform({
-              removeDefaultMessage: true,
-              overrideIdFn: (id) => getHashDigest(id),
-            }),
-          ],
+          before: [intlTransformer()],
         }),
       },
     },

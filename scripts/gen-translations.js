@@ -4,7 +4,7 @@ const { compile, extract } = require("@formatjs/cli-lib");
 const { globSync } = require("glob");
 const { join } = require("node:path");
 const { readJsonSync, writeJsonSync } = require("./lib/fs.js");
-const { getHashDigest } = require("./lib/message-id.js");
+const { getHashDigest } = require("./lib/intl.js");
 const { rootDir, findPackages } = require("./root.js");
 
 const packageDir = join(rootDir, "packages/keybr-intl");

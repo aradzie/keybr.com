@@ -1,6 +1,7 @@
 "use strict";
 
 const { createHash } = require("node:crypto");
+const { transform } = require("@formatjs/ts-transformer");
 
 function getHashDigest(
   content,
@@ -14,3 +15,12 @@ function getHashDigest(
 }
 
 module.exports.getHashDigest = getHashDigest;
+
+function intlTransformer() {
+  return transform({
+    removeDefaultMessage: true,
+    overrideIdFn: (id) => getHashDigest(id),
+  });
+}
+
+module.exports.intlTransformer = intlTransformer;
