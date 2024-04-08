@@ -87,6 +87,21 @@ export class Layout implements XEnumItem {
     /* emulate= */ true,
     /* geometries= */ new Enum(Geometry.MATRIX),
   );
+  static readonly EN_CANARY = new Layout(
+    /* id= */ "en-canary",
+    /* xid= */ 0x1e,
+    /* name= */ "Canary",
+    /* family= */ "canary",
+    /* language= */ Language.EN,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.MATRIX,
+    ),
+  );
   static readonly EN_CANARY_MATRIX = new Layout(
     /* id= */ "en-canary-matrix",
     /* xid= */ 0x1d,
@@ -157,7 +172,7 @@ export class Layout implements XEnumItem {
     /* id= */ "de-neo-2",
     /* xid= */ 0x22,
     /* name= */ "Neo 2",
-    /* family= */ "neo-2",
+    /* family= */ "de-neo-2",
     /* language= */ Language.DE,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -172,7 +187,7 @@ export class Layout implements XEnumItem {
     /* id= */ "de-bone",
     /* xid= */ 0x23,
     /* name= */ "Bone",
-    /* family= */ "bone",
+    /* family= */ "de-bone",
     /* language= */ Language.DE,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -187,7 +202,22 @@ export class Layout implements XEnumItem {
     /* id= */ "de-mine",
     /* xid= */ 0x24,
     /* name= */ "Mine",
-    /* family= */ "mine",
+    /* family= */ "de-mine",
+    /* language= */ Language.DE,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
+  static readonly DE_NOTED = new Layout(
+    /* id= */ "de-noted",
+    /* xid= */ 0x25,
+    /* name= */ "Noted",
+    /* family= */ "de-noted",
     /* language= */ Language.DE,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -247,7 +277,7 @@ export class Layout implements XEnumItem {
     /* id= */ "fr-bepo",
     /* xid= */ 0x33,
     /* name= */ "Bepo",
-    /* family= */ "bepo",
+    /* family= */ "fr-bepo",
     /* language= */ Language.FR,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -262,7 +292,7 @@ export class Layout implements XEnumItem {
     /* id= */ "fr-ergol",
     /* xid= */ 0x34,
     /* name= */ "Ergo-L",
-    /* family= */ "ergol",
+    /* family= */ "fr-ergol",
     /* language= */ Language.FR,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -277,7 +307,7 @@ export class Layout implements XEnumItem {
     /* id= */ "fr-optimot-ergo",
     /* xid= */ 0x35,
     /* name= */ "Optimot Ergo",
-    /* family= */ "optimot-ergo",
+    /* family= */ "fr-optimot-ergo",
     /* language= */ Language.FR,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -292,7 +322,7 @@ export class Layout implements XEnumItem {
     /* id= */ "fr-erglace",
     /* xid= */ 0x36,
     /* name= */ "Erglace",
-    /* family= */ "erglace",
+    /* family= */ "fr-erglace",
     /* language= */ Language.FR,
     /* emulate= */ false,
     /* geometries= */ new Enum(
@@ -567,6 +597,7 @@ export class Layout implements XEnumItem {
     Layout.EN_COLEMAK,
     Layout.EN_COLEMAK_DH,
     Layout.EN_COLEMAK_DH_MATRIX,
+    Layout.EN_CANARY,
     Layout.EN_CANARY_MATRIX,
     Layout.EN_WORKMAN,
     Layout.EN_UK,
@@ -578,6 +609,7 @@ export class Layout implements XEnumItem {
     Layout.DE_NEO_2,
     Layout.DE_BONE,
     Layout.DE_MINE,
+    Layout.DE_NOTED,
     Layout.FR_FR,
     Layout.FR_CA,
     Layout.FR_CH,
