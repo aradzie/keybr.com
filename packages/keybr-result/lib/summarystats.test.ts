@@ -47,7 +47,7 @@ test("counter", (t) => {
 });
 
 test("summary stats", (t) => {
-  const letter = new Letter(97, 1);
+  const letter = new Letter(0x0061, 1);
   const faker = new ResultFaker();
   const r1 = faker.nextResult({
     length: 50,
