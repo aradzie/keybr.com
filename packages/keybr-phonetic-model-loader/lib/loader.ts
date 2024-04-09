@@ -15,6 +15,6 @@ export const loaderImpl: PhoneticModel.Loader = async (
     .GET(modelAssetPath(language))
     .send();
   const body = await response.arrayBuffer();
-  const model = newPhoneticModel(new Uint8Array(body));
-  return censor(model, language);
+  const model = newPhoneticModel(language, new Uint8Array(body));
+  return censor(model);
 };

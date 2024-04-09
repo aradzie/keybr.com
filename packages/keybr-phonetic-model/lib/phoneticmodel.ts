@@ -9,7 +9,10 @@ const minLength = 3;
 const maxLength = 10;
 
 export abstract class PhoneticModel {
-  constructor(readonly letters: readonly Letter[]) {}
+  constructor(
+    readonly language: Language,
+    readonly letters: readonly Letter[],
+  ) {}
 
   abstract nextWord(filter: Filter, random?: RNG): string;
 
@@ -23,7 +26,7 @@ export abstract class PhoneticModel {
   ): PhoneticModel {
     return new (class extends PhoneticModel {
       constructor() {
-        super(Letter.restrict(model.letters, codePoints));
+        super(model.language, Letter.restrict(model.letters, codePoints));
       }
 
       override nextWord(filter: Filter, random?: RNG): string {
@@ -48,6 +51,7 @@ export namespace PhoneticModel {
 }
 
 export function newPhoneticModel(
+  language: Language,
   data: TransitionTable | Uint8Array,
 ): PhoneticModel {
   const table =
@@ -136,7 +140,7 @@ export function newPhoneticModel(
 
   return new (class extends PhoneticModel {
     constructor() {
-      super(letters);
+      super(language, letters);
     }
 
     override nextWord(filter: Filter, random: RNG = Math.random): string {

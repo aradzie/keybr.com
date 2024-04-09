@@ -16,7 +16,7 @@ export async function loadModel(language: Language): Promise<{
   const path = getPath(language);
   const data = await readFile(path);
   const table = TransitionTable.load(data);
-  const model = newPhoneticModel(table);
+  const model = newPhoneticModel(language, table);
   return { table, model };
 }
 
@@ -27,6 +27,6 @@ export function loadModelSync(language: Language): {
   const path = getPath(language);
   const data = readFileSync(path);
   const table = TransitionTable.load(data);
-  const model = newPhoneticModel(table);
+  const model = newPhoneticModel(language, table);
   return { table, model };
 }

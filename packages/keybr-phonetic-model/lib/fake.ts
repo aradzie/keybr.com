@@ -1,4 +1,4 @@
-import { Ngram1, Ngram2 } from "@keybr/keyboard";
+import { Language, Ngram1, Ngram2 } from "@keybr/keyboard";
 import {
   FakeRNGStream,
   randomSample,
@@ -44,7 +44,7 @@ export class FakePhoneticModel extends PhoneticModel {
     words: readonly string[] = ["abc", "def", "ghi"],
     rng: RNGStream = FakeRNGStream(words.length),
   ) {
-    super(FakePhoneticModel.letters);
+    super(Language.EN, FakePhoneticModel.letters);
     this.words = [...words];
     this.rng = rng;
   }
