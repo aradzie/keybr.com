@@ -14,6 +14,8 @@ import LAYOUT_DE_NOTED from "./layout/de_noted.ts";
 import LAYOUT_EN_CANARY from "./layout/en_canary.ts";
 import LAYOUT_EN_CANARY_MATRIX from "./layout/en_canary_matrix.ts";
 import LAYOUT_EN_DVORAK_PROG from "./layout/en_dvorak_prog.ts";
+import LAYOUT_EN_HALMAK from "./layout/en_halmak.ts";
+import LAYOUT_EN_NORMAN from "./layout/en_norman.ts";
 import LAYOUT_EN_WORKMAN from "./layout/en_workman.ts";
 import LAYOUT_EN_WORKMAN_PROG from "./layout/en_workman_prog.ts";
 import LAYOUT_FR_BEPO from "./layout/fr_bepo.json";
@@ -46,6 +48,8 @@ for (const [output, keymap] of [
   ["en_dvorak_prog.ts", LAYOUT_EN_DVORAK_PROG],
   ["en_dvorakl-win.ts", importCldr("cldr-keyboards-43.0/keyboards/windows/en-t-k0-windows-dvorakl.xml")],
   ["en_dvorakr-win.ts", importCldr("cldr-keyboards-43.0/keyboards/windows/en-t-k0-windows-dvorakr.xml")],
+  ["en_halmak.ts", LAYOUT_EN_HALMAK],
+  ["en_norman.ts", LAYOUT_EN_NORMAN],
   ["en_uk-win.ts", importCldr("cldr-keyboards-43.0/keyboards/windows/en-GB-t-k0-windows.xml")],
   ["en_us-win.ts", importCldr("cldr-keyboards-43.0/keyboards/windows/en-t-k0-windows.xml")],
   ["en_workman.ts", LAYOUT_EN_WORKMAN],

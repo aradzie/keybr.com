@@ -19,6 +19,8 @@ export { LAYOUT_EN_DVORAK_PROG } from "./layout/en_dvorak_prog.ts";
 export { LAYOUT_EN_DVORAK_WIN } from "./layout/en_dvorak-win.ts";
 export { LAYOUT_EN_DVORAKL_WIN } from "./layout/en_dvorakl-win.ts";
 export { LAYOUT_EN_DVORAKR_WIN } from "./layout/en_dvorakr-win.ts";
+export { LAYOUT_EN_HALMAK } from "./layout/en_halmak.ts";
+export { LAYOUT_EN_NORMAN } from "./layout/en_norman.ts";
 export { LAYOUT_EN_UK_WIN } from "./layout/en_uk-win.ts";
 export { LAYOUT_EN_US_WIN } from "./layout/en_us-win.ts";
 export { LAYOUT_EN_WORKMAN } from "./layout/en_workman.ts";

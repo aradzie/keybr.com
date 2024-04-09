@@ -661,6 +661,36 @@ export class Layout implements XEnumItem {
     /* emulate= */ true,
     /* geometries= */ new Enum(Geometry.MATRIX),
   );
+  static readonly EN_NORMAN = new Layout(
+    /* id= */ "en-norman",
+    /* xid= */ 0x8b,
+    /* name= */ "Norman",
+    /* family= */ "norman",
+    /* language= */ Language.EN,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.MATRIX,
+    ),
+  );
+  static readonly EN_HALMAK = new Layout(
+    /* id= */ "en-halmak",
+    /* xid= */ 0x8c,
+    /* name= */ "Halmak",
+    /* family= */ "halmak",
+    /* language= */ Language.EN,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.MATRIX,
+    ),
+  );
 
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
@@ -674,6 +704,8 @@ export class Layout implements XEnumItem {
     Layout.EN_WORKMAN,
     Layout.EN_CANARY,
     Layout.EN_CANARY_MATRIX,
+    Layout.EN_NORMAN,
+    Layout.EN_HALMAK,
     Layout.EN_UK,
     Layout.EN_JP,
     Layout.EL_GR,
