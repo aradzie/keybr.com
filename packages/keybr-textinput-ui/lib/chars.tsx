@@ -8,7 +8,6 @@ import {
   type TextDisplaySettings,
   WhitespaceStyle,
 } from "@keybr/textinput";
-import { clsx } from "clsx";
 import { type ReactNode } from "react";
 import * as styles from "./chars.module.less";
 
@@ -140,19 +139,19 @@ function whitespaceChar(whitespaceStyle: WhitespaceStyle): string {
 }
 
 const cnNormal = {
-  [attrNormal]: clsx([styles.chars, styles.chars_normal]),
-  [attrHit]: clsx([styles.chars, styles.chars_hit]),
-  [attrMiss]: clsx([styles.chars, styles.chars_miss]),
-  [attrGarbage]: clsx([styles.chars, styles.chars_garbage]),
-  [attrCursor]: clsx([styles.chars, styles.chars_cursor]),
+  [attrNormal]: styles.normal,
+  [attrHit]: styles.hit,
+  [attrMiss]: styles.miss,
+  [attrGarbage]: styles.garbage,
+  [attrCursor]: styles.cursor,
 };
 
 const cnSpecial = {
-  [attrNormal]: clsx([styles.chars, styles.chars_special]),
-  [attrHit]: clsx([styles.chars, styles.chars_hit]),
-  [attrMiss]: clsx([styles.chars, styles.chars_miss]),
-  [attrGarbage]: clsx([styles.chars, styles.chars_garbage]),
-  [attrCursor]: clsx([styles.chars, styles.chars_cursor]),
+  [attrNormal]: styles.special,
+  [attrHit]: styles.hit,
+  [attrMiss]: styles.miss,
+  [attrGarbage]: styles.garbage,
+  [attrCursor]: styles.cursor,
 };
 
 function normalClassName(attrs: number): string {
@@ -163,8 +162,8 @@ function specialClassName(attrs: number): string {
   return cnSpecial[attrs] ?? "";
 }
 
-const cursorItemSelector = `.${styles.chars_cursor}`;
+const cursorSelector = `.${styles.cursor}`;
 
 export function findCursor(container: HTMLElement): HTMLElement | null {
-  return container.querySelector<HTMLElement>(cursorItemSelector) ?? null;
+  return container.querySelector<HTMLElement>(cursorSelector) ?? null;
 }

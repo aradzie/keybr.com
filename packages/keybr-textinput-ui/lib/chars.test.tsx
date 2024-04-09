@@ -33,22 +33,22 @@ test("render chars", (t) => {
       ],
     }),
     [
-      <span key={0} className="chars chars_hit">
+      <span key={0} className="hit">
         a
       </span>,
-      <span key={1} className="chars chars_miss">
+      <span key={1} className="miss">
         b
       </span>,
-      <span key={2} className="chars chars_hit">
+      <span key={2} className="hit">
         c
       </span>,
-      <span key={3} className="chars chars_hit">
+      <span key={3} className="hit">
         {"\uE000"}
       </span>,
-      <span key={4} className="chars chars_cursor">
+      <span key={4} className="cursor">
         x
       </span>,
-      <span key={5} className="chars chars_normal">
+      <span key={5} className="normal">
         yz
       </span>,
     ],
@@ -64,13 +64,13 @@ test("render chars", (t) => {
       ],
     }),
     [
-      <span key={0} className="chars chars_normal">
+      <span key={0} className="normal">
         U+0000
       </span>,
-      <span key={1} className="chars chars_normal">
+      <span key={1} className="normal">
         U+0001
       </span>,
-      <span key={2} className="chars chars_normal">
+      <span key={2} className="normal">
         U+0002
       </span>,
     ],
