@@ -5,12 +5,16 @@ import { loadWordList } from "./load.ts";
 for (const language of Language.ALL) {
   test(`words:${language}`, async (t) => {
     const words = await loadWordList(language);
-    const sorted = [...words].sort();
-    t.true(sorted.length >= 1500);
-    for (let i = 0; i < sorted.length - 1; i++) {
-      if (sorted[i] === sorted[i + 1]) {
-        t.fail(`duplicate word "${sorted[i]}"`);
+    t.true(words.length >= 1500);
+    const unique = new Set();
+    for (const word of words) {
+      if (!language.test(word)) {
+        t.fail(`Extraneous word "${word}"`);
       }
+      if (unique.has(word)) {
+        t.fail(`Duplicate word "${word}"`);
+      }
+      unique.add(word);
     }
   });
 }

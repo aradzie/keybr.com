@@ -3,11 +3,11 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { gunzipSync } from "node:zlib";
+import { Language } from "@keybr/keyboard";
 import { TransitionTableBuilder } from "./builder.ts";
-import { type Language, languages } from "./languages.ts";
-import { checkWord, fromCsv, sortByCount, type Word } from "./words.ts";
+import { fromCsv, sortByCount, type Word } from "./words.ts";
 
-for (const language of languages) {
+for (const language of Language.ALL) {
   generate(language);
 }
 
@@ -50,7 +50,7 @@ function generate(language: Language): void {
     for (const [word, count] of dict) {
       if (word.length >= 3) {
         for (let i = 0; i < count; i++) {
-          builder.append(word.toLocaleLowerCase(id));
+          builder.append(language.lowerCase(word));
         }
       }
     }
@@ -101,7 +101,7 @@ function generate(language: Language): void {
       const unique = new Set();
       const dict = fromCsv(data)
         .filter(([word]) => {
-          if (checkWord(word.toLocaleLowerCase(id), alphabet)) {
+          if (language.test(word)) {
             return true;
           } else {
             console.warn(`[${id}] Extraneous word [${word}]`);
@@ -109,6 +109,7 @@ function generate(language: Language): void {
           }
         })
         .filter(([word]) => {
+          word = language.lowerCase(word);
           if (!unique.has(word)) {
             unique.add(word);
             return true;

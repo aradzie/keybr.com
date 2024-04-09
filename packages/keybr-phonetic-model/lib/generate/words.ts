@@ -1,5 +1,3 @@
-import { type CodePoint, toCodePoints } from "@keybr/unicode";
-
 export type Word = readonly [word: string, count: number];
 
 export function toCsv(dict: readonly Word[]): string {
@@ -38,16 +36,4 @@ function compareStrings(a: string, b: string): number {
     return -1;
   }
   return 0;
-}
-
-export function checkWord(
-  word: string,
-  alphabet: readonly CodePoint[],
-): boolean {
-  for (const codePoint of toCodePoints(word)) {
-    if (!alphabet.includes(codePoint)) {
-      return false;
-    }
-  }
-  return true;
 }

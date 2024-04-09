@@ -41,7 +41,7 @@ export function getBlacklist(language: Language): Blacklist {
   if (blacklist != null && blacklist.size > 0) {
     return new (class implements Blacklist {
       allow(word: string): boolean {
-        return !blacklist.has(word.toLowerCase());
+        return !blacklist.has(language.lowerCase(word));
       }
     })();
   } else {
