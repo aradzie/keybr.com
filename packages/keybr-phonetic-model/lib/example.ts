@@ -11,9 +11,7 @@ for (const language of Language.ALL) {
 async function example(language: Language): Promise<void> {
   const { model } = loadModelSync(language);
   const { letters } = model;
-  console.log(
-    language + " [" + letters.map(({ label }) => label).join(",") + "]",
-  );
+  console.log(`${language} [${letters.map(String).join(",")}]`);
   const words = [];
   for (let i = 0; i < 100; i++) {
     words.push(model.nextWord(Filter.empty));

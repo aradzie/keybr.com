@@ -21,8 +21,8 @@ function Content({ model }: { readonly model: PhoneticModel }): ReactNode {
   const { settings, updateSettings } = useSettings();
   const { formatMessage } = useIntl();
   const { formatLanguageName } = useIntlDisplayNames();
-  const alphabet: string[] = model.letters.map(({ label }) => label);
-  const words: string[] = [];
+  const alphabet = model.letters.map(({ label }) => label);
+  const words = [];
   for (let i = 0; i < 50; i++) {
     words.push(model.nextWord(Filter.empty));
   }

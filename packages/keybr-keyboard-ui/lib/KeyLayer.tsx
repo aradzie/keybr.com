@@ -50,7 +50,7 @@ export const KeyLayer = memo(function KeyLayer({
 
 function getKeyElements(keyboard: Keyboard): MemoizedKeyElements[] {
   return [...keyboard.shapes.values()].map(
-    (shape) => new MemoizedKeyElements(shape),
+    (shape) => new MemoizedKeyElements(keyboard, shape),
   );
 }
 
@@ -65,8 +65,11 @@ class MemoizedKeyElements {
   readonly state6: ReactElement<KeyProps>;
   readonly state7: ReactElement<KeyProps>;
 
-  constructor(readonly shape: KeyShape) {
-    const Component = makeKeyComponent(shape);
+  constructor(
+    readonly keyboard: Keyboard,
+    readonly shape: KeyShape,
+  ) {
+    const Component = makeKeyComponent(keyboard.layout.language, shape);
     this.component = Component;
     this.state0 = (
       <Component

@@ -1,3 +1,4 @@
+import { Language } from "@keybr/keyboard";
 import test from "ava";
 import { Letter } from "../letter.ts";
 import { TransitionTableBuilder } from "./builder.ts";
@@ -21,10 +22,10 @@ test("build table", (t) => {
   ]);
   t.deepEqual(table.segment([0x0061]), []);
   t.deepEqual(table.segment([0x0062]), [{ codePoint: 0x0062, frequency: 255 }]);
-  t.deepEqual(table.letters(), [
-    new Letter(0x0020, 0),
-    new Letter(0x0061, 127),
-    new Letter(0x0062, 383),
+  t.deepEqual(table.letters(Language.EN), [
+    new Letter(0x0020, 0, " "),
+    new Letter(0x0061, 127, "A"),
+    new Letter(0x0062, 383, "B"),
   ]);
 });
 

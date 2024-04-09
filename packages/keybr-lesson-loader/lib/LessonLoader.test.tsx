@@ -32,15 +32,11 @@ test.serial("load", async (t) => {
     </FakeSettingsContext>,
   );
 
-  t.is((await r.findByTitle("letters")).textContent, "a,b,c");
+  t.is((await r.findByTitle("letters")).textContent, "ABC");
 
   r.unmount();
 });
 
 function TestChild({ model }: { readonly model: PhoneticModel }): ReactNode {
-  return (
-    <span title="letters">
-      {model.letters.map(({ value }) => value).join(",")}
-    </span>
-  );
+  return <span title="letters">{model.letters.map(String).join("")}</span>;
 }

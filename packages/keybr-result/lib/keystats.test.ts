@@ -6,8 +6,8 @@ import { newKeyStatsMap } from "./keystats.ts";
 
 test("compute key stats", (t) => {
   const faker = new ResultFaker();
-  const l1 = new Letter(0x0061, 1);
-  const l2 = new Letter(0x0062, 1);
+  const l1 = new Letter(0x0061, 1, "A");
+  const l2 = new Letter(0x0062, 1, "B");
   const r1 = faker.nextResult({
     histogram: new Histogram([
       {

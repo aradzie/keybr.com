@@ -7,41 +7,21 @@ export type HasLetter = {
 export type LetterLike = Letter | HasLetter;
 
 export class Letter {
-  /** Letter string. */
-  public readonly value: string;
-  /** Letter display label. */
-  public readonly label: string;
-
-  /**
-   * @param codePoint Unicode character code point.
-   * @param f Relative frequency.
-   */
   constructor(
+    /** Unicode character code point. */
     readonly codePoint: CodePoint,
+    /** Relative frequency. */
     readonly f: number,
-  ) {
-    switch (this.codePoint) {
-      case /* ß */ 0x00df:
-        this.value = "ß";
-        this.label = "ẞ";
-        break;
-      default:
-        this.value = String.fromCodePoint(codePoint);
-        this.label = this.value.toUpperCase();
-        break;
-    }
-  }
+    /** Letter display label. */
+    readonly label: string = String.fromCodePoint(codePoint),
+  ) {}
 
-  toString(): string {
+  toString() {
     return this.label;
   }
 }
 
 export namespace Letter {
-  export const plus = new Letter(/* + */ 0x002b, 1.0);
-  export const comma = new Letter(/* , */ 0x002c, 1.0);
-  export const minus = new Letter(/* - */ 0x002d, 1.0);
-  export const dot = new Letter(/* . */ 0x002e, 1.0);
   export const digits: readonly Letter[] = [
     new Letter(/* 0 */ 0x0030, 0.0),
     new Letter(/* 1 */ 0x0031, 0.301),
@@ -135,7 +115,8 @@ export namespace Letter {
   export const normalize = (letters: readonly Letter[]): Letter[] => {
     const sum = letters.reduce((sum, { f }) => sum + f, 0);
     return letters.map(
-      ({ codePoint, f }) => new Letter(codePoint, sum > 0 ? f / sum : 0),
+      ({ codePoint, f, label }) =>
+        new Letter(codePoint, sum > 0 ? f / sum : 0, label),
     );
   };
 }

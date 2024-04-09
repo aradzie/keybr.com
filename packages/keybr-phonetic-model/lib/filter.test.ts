@@ -2,8 +2,8 @@ import test from "ava";
 import { Filter } from "./filter.ts";
 import { Letter } from "./letter.ts";
 
-const a = new Letter(0x0061, 0.1);
-const b = new Letter(0x0062, 0.2);
+const a = new Letter(0x0061, 0.1, "A");
+const b = new Letter(0x0062, 0.2, "B");
 
 test("validates arguments", (t) => {
   t.throws(() => new Filter([], null));

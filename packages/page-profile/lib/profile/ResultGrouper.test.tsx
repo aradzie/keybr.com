@@ -112,9 +112,7 @@ function TestChild({
   return (
     <div>
       <div title="layout">{layout.id}</div>
-      <div title="alphabet">
-        {keyStatsMap.letters.map(({ label }) => label).join("")}
-      </div>
+      <div title="alphabet">{keyStatsMap.letters.map(String).join("")}</div>
       <button
         title="clear"
         onClick={() => {

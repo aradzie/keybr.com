@@ -2,9 +2,9 @@ import {
   isDiacritic,
   type KeyShape,
   type LabelShape,
+  type Language,
   type ZoneId,
 } from "@keybr/keyboard";
-import { type CodePoint } from "@keybr/unicode";
 import { type ClassName } from "@keybr/widget";
 import { clsx } from "clsx";
 import {
@@ -28,7 +28,10 @@ export type KeyProps = {
   readonly showFingers?: boolean;
 };
 
-export function makeKeyComponent(shape: KeyShape): FunctionComponent<KeyProps> {
+export function makeKeyComponent(
+  { letterName }: Language,
+  shape: KeyShape,
+): FunctionComponent<KeyProps> {
   const { id, a, b, c, d, finger } = shape;
   const x = shape.x * keySize;
   const y = shape.y * keySize;
@@ -50,8 +53,8 @@ export function makeKeyComponent(shape: KeyShape): FunctionComponent<KeyProps> {
   for (const label of shape.labels) {
     children.push(makeLabel(label));
   }
-  const ab = a > 0 && b > 0 && symbolText(a) === symbolText(b);
-  const cd = c > 0 && d > 0 && symbolText(c) === symbolText(d);
+  const ab = a > 0 && b > 0 && letterName(a) === letterName(b);
+  const cd = c > 0 && d > 0 && letterName(c) === letterName(d);
   if (a > 0 && !ab) {
     children.push(makeSymbolLabel(a, 10, 27, styles.secondarySymbol));
   }
@@ -105,6 +108,25 @@ export function makeKeyComponent(shape: KeyShape): FunctionComponent<KeyProps> {
   }
   KeyComponent.displayName = `Key[${id}]`;
   return memo(KeyComponent);
+
+  function makeSymbolLabel(
+    codePoint: number,
+    x: number,
+    y: number,
+    className: ClassName,
+  ): ReactNode {
+    if (codePoint === 0x0020) {
+      return null;
+    } else
+      return makeLabel(
+        {
+          text: letterName(codePoint),
+          pos: [x, y],
+          align: ["m", "m"],
+        },
+        clsx(className, isDiacritic(codePoint) && styles.deadSymbol),
+      );
+  }
 }
 
 function makeLabel(label: LabelShape, className: ClassName = null): ReactNode {
@@ -147,32 +169,6 @@ function makeLabel(label: LabelShape, className: ClassName = null): ReactNode {
       {text}
     </text>
   );
-}
-
-function makeSymbolLabel(
-  codePoint: number,
-  x: number,
-  y: number,
-  className: ClassName,
-): ReactNode {
-  if (codePoint === 0x0020) {
-    return null;
-  }
-  let text: string;
-  if (isDiacritic(codePoint)) {
-    text = String.fromCodePoint(/* ◌ */ 0x25cc, codePoint);
-    className = clsx(className, styles.deadSymbol);
-  } else {
-    text = symbolText(codePoint);
-  }
-  return makeLabel({ text, pos: [x, y], align: ["m", "m"] }, className);
-}
-
-function symbolText(codePoint: CodePoint): string {
-  if (codePoint === /* ß */ 0x00df || codePoint === /* ẞ */ 0x1e9e) {
-    return "ẞ";
-  }
-  return String.fromCodePoint(codePoint).toUpperCase();
 }
 
 function fingerStyleName(finger: ZoneId | null): string | null {

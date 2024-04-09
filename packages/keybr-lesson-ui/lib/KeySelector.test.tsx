@@ -77,28 +77,28 @@ test.serial("controlled", async (t) => {
   await userEvent.click(r.getByText("A"));
   await userEvent.click(r.getByText("B"));
 
-  t.is(current?.value, "b");
+  t.is(current?.label, "B");
 
   await userEvent.click(r.getByText("B"));
   await userEvent.click(r.getByText("A"));
 
-  t.is(current?.value, "a");
+  t.is(current?.label, "A");
 
   fireEvent.keyDown(element, { code: "ArrowLeft" });
 
-  t.is(current?.value, "j");
+  t.is(current?.label, "J");
 
   fireEvent.keyDown(element, { code: "ArrowUp" });
 
-  t.is(current?.value, "i");
+  t.is(current?.label, "I");
 
   fireEvent.keyDown(element, { code: "ArrowRight" });
 
-  t.is(current?.value, "j");
+  t.is(current?.label, "J");
 
   fireEvent.keyDown(element, { code: "ArrowDown" });
 
-  t.is(current?.value, "a");
+  t.is(current?.label, "A");
 
   r.unmount();
 });

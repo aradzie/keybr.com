@@ -16,3 +16,11 @@ test("check words", (t) => {
   t.false(Language.EN.test("AaIıİi"));
   t.false(Language.EN.test("абвгде"));
 });
+
+test("letter name", (t) => {
+  t.is(Language.EN.letterName(0x0069), "I");
+  t.is(Language.TR.letterName(0x0069), "İ");
+  t.is(Language.EN.letterName(0x0300), "◌̀");
+  t.is(Language.EN.letterName(0x0301), "◌́");
+  t.is(Language.DE.letterName(0x00df), "ẞ");
+});

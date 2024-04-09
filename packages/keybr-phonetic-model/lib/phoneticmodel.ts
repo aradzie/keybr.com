@@ -57,7 +57,7 @@ export function newPhoneticModel(
   const table =
     data instanceof TransitionTable ? data : TransitionTable.load(data);
   const letters = Letter.normalize(
-    table.letters().filter(({ codePoint }) => codePoint !== 0x0020),
+    table.letters(language).filter(({ codePoint }) => codePoint !== 0x0020),
   );
   const prefixList = new PrefixList(table);
 

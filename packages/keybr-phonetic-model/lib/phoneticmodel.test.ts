@@ -16,10 +16,10 @@ test("generate text from an empty transition table", (t) => {
   const [a, b, c, d] = letters;
 
   t.deepEqual(letters, [
-    new Letter(0x0061, 0.0),
-    new Letter(0x0062, 0.0),
-    new Letter(0x0063, 0.0),
-    new Letter(0x0064, 0.0),
+    new Letter(0x0061, 0.0, "A"),
+    new Letter(0x0062, 0.0, "B"),
+    new Letter(0x0063, 0.0, "C"),
+    new Letter(0x0064, 0.0, "D"),
   ]);
 
   t.is(model.nextWord(new Filter(null, null)), "");
@@ -44,10 +44,10 @@ test("generate text from a partial transition table", (t) => {
   const [a, b, c, d] = letters;
 
   t.deepEqual(letters, [
-    new Letter(0x0061, 0.25),
-    new Letter(0x0062, 0.25),
-    new Letter(0x0063, 0.25),
-    new Letter(0x0064, 0.25),
+    new Letter(0x0061, 0.25, "A"),
+    new Letter(0x0062, 0.25, "B"),
+    new Letter(0x0063, 0.25, "C"),
+    new Letter(0x0064, 0.25, "D"),
   ]);
 
   t.regex(model.nextWord(new Filter(null, null)), /^[abcd]$/);
@@ -76,10 +76,10 @@ test("generate text from a full transition table", (t) => {
   const [a, b, c, d] = letters;
 
   t.deepEqual(letters, [
-    new Letter(0x0061, 0.25),
-    new Letter(0x0062, 0.25),
-    new Letter(0x0063, 0.25),
-    new Letter(0x0064, 0.25),
+    new Letter(0x0061, 0.25, "A"),
+    new Letter(0x0062, 0.25, "B"),
+    new Letter(0x0063, 0.25, "C"),
+    new Letter(0x0064, 0.25, "D"),
   ]);
 
   t.regex(model.nextWord(new Filter(null, null)), /^[abcd]{3,}$/);

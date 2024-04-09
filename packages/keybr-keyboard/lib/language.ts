@@ -1,5 +1,6 @@
 import { Enum, type EnumItem } from "@keybr/lang";
 import { type CodePoint, toCodePoints } from "@keybr/unicode";
+import { isDiacritic } from "./diacritics.ts";
 
 export class Language implements EnumItem {
   static readonly BE = new Language(
@@ -194,6 +195,16 @@ export class Language implements EnumItem {
       }
     }
     return true;
+  };
+
+  letterName = (codePoint: CodePoint): string => {
+    if (isDiacritic(codePoint)) {
+      return String.fromCodePoint(/* ◌ */ 0x25cc, codePoint);
+    }
+    if (codePoint === /* ß */ 0x00df) {
+      return "ẞ";
+    }
+    return this.upperCase(String.fromCodePoint(codePoint));
   };
 
   toString() {
