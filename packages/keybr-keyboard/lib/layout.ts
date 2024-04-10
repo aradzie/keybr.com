@@ -536,7 +536,7 @@ export class Layout implements XEnumItem {
     /* name= */ "{IL}",
     /* family= */ "hebrew",
     /* language= */ Language.HE,
-    /* emulate= */ false,
+    /* emulate= */ true,
     /* geometries= */ new Enum(
       Geometry.STANDARD_102,
       Geometry.STANDARD_102_FULL,
