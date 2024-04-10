@@ -143,7 +143,7 @@ export class Language implements EnumItem {
   /** ISO 639-1 language code, https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes */
   readonly id: string;
   /** The writing system, such as Cyrillic, Georgian, Greek, Hebrew, Latin, etc. */
-  readonly script: "cyrillic" | "greek" | "hebrew" | "latin";
+  readonly script: "arabic" | "cyrillic" | "greek" | "hebrew" | "latin";
   /** The direction of the writing system, either "ltr" for left-to-right, or "rtl" for right-to-left. */
   readonly direction: "ltr" | "rtl";
   /** The list of alphabet code points. */
@@ -163,7 +163,7 @@ export class Language implements EnumItem {
 
   private constructor(
     id: string,
-    script: "cyrillic" | "greek" | "hebrew" | "latin",
+    script: "arabic" | "cyrillic" | "greek" | "hebrew" | "latin",
     direction: "ltr" | "rtl",
     alphabet: string,
   ) {
@@ -198,12 +198,35 @@ export class Language implements EnumItem {
   };
 
   letterName = (codePoint: CodePoint): string => {
-    if (isDiacritic(codePoint)) {
-      return String.fromCodePoint(/* ◌ */ 0x25cc, codePoint);
-    }
     if (codePoint === /* ß */ 0x00df) {
+      // German uppercase letter Eszett.
       return "ẞ";
     }
+    if (codePoint >= 0x0590 && codePoint <= 0x05ff) {
+      // Hebrew unicode block.
+      // There are no lower or uppercase letters in the Hebrew script.
+      return String.fromCodePoint(codePoint);
+    }
+    if (codePoint >= 0x0600 && codePoint <= 0x06ff) {
+      // Arabic unicode block.
+      // There are no lower or uppercase letters in the Arabic script.
+      // Arabic script is cursive, which means that the letters
+      // change shape when joined together.
+      // Here we break letters apart by prepending them with
+      // the Zero Width Non-Joiner character.
+      return String.fromCodePoint(
+        /* Zero Width Non-Joiner */ 0x200c,
+        codePoint,
+      );
+    }
+    if (isDiacritic(codePoint)) {
+      // Render a combining diacritical mark as a printable character
+      // by combining it with a placeholder.
+      return String.fromCodePoint(/* ◌ */ 0x25cc, codePoint);
+    }
+    // Locale-specific uppercase variant of a letter.
+    // For example in Turkish there are dotted and dotless letter I,
+    // each with its own lower and uppercase variant.
     return this.upperCase(String.fromCodePoint(codePoint));
   };
 

@@ -23,4 +23,5 @@ test("letter name", (t) => {
   t.is(Language.EN.letterName(0x0300), "◌̀");
   t.is(Language.EN.letterName(0x0301), "◌́");
   t.is(Language.DE.letterName(0x00df), "ẞ");
+  t.is(Language.HE.letterName(0x05d0), "\u05D0");
 });

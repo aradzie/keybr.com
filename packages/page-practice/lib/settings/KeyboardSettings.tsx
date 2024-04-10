@@ -259,6 +259,8 @@ function useDepressedKeys(): readonly string[] {
 
 function getExampleText({ script }: Language): CodePoint[] {
   switch (script) {
+    case "arabic":
+      return [0x0627, 0x0628, 0x067e, 0x062a, 0x062b, 0x062c];
     case "cyrillic":
       return [0x0430, 0x0431, 0x0432, 0x0433, 0x0434, 0x0435];
     case "greek":
