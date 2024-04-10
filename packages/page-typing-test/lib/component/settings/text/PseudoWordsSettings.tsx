@@ -1,6 +1,6 @@
 import { useIntlDisplayNames } from "@keybr/intl";
 import { Language } from "@keybr/keyboard";
-import { Filter, type PhoneticModel } from "@keybr/phonetic-model";
+import { Alphabet, Filter, type PhoneticModel } from "@keybr/phonetic-model";
 import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
 import { useSettings } from "@keybr/settings";
 import { Field, FieldList, FieldSet, OptionList, Para } from "@keybr/widget";
@@ -21,7 +21,6 @@ function Content({ model }: { readonly model: PhoneticModel }): ReactNode {
   const { settings, updateSettings } = useSettings();
   const { formatMessage } = useIntl();
   const { formatLanguageName } = useIntlDisplayNames();
-  const alphabet = model.letters.map(({ label }) => label);
   const words = [];
   for (let i = 0; i < 50; i++) {
     words.push(model.nextWord(Filter.empty));
@@ -60,7 +59,7 @@ function Content({ model }: { readonly model: PhoneticModel }): ReactNode {
       <FieldList>
         <Field>Alphabet:</Field>
         <Field>
-          <em>{alphabet.join("")}</em>
+          <Alphabet model={model} />
         </Field>
       </FieldList>
 

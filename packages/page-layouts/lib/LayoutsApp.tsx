@@ -4,6 +4,7 @@ import {
   loadKeyboard,
   useFormattedNames,
 } from "@keybr/keyboard";
+import { Alphabet } from "@keybr/phonetic-model";
 import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
 import { Article, Field, FieldList, OptionList } from "@keybr/widget";
 import { type ReactNode, useState } from "react";
@@ -111,9 +112,6 @@ export function LayoutsApp(): ReactNode {
       </FieldList>
       <PhoneticModelLoader language={language}>
         {(model) => {
-          const alphabet = String.fromCodePoint(
-            ...model.letters.map(({ codePoint }) => codePoint),
-          ).toLocaleUpperCase(language.id);
           return (
             <>
               <FieldList>
@@ -124,7 +122,7 @@ export function LayoutsApp(): ReactNode {
                   />
                 </Field>
                 <Field>
-                  <strong>{alphabet}</strong>
+                  <Alphabet model={model} />
                 </Field>
               </FieldList>
               {keyboards.map((keyboard) => (

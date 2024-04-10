@@ -8,7 +8,8 @@
     "@keybr/binary": "*",
     "@keybr/keyboard": "*",
     "@keybr/rand": "*",
-    "@keybr/unicode": "*"
+    "@keybr/unicode": "*",
+    "@keybr/widget": "*"
   },
   "devDependencies": {},
   "scripts": {

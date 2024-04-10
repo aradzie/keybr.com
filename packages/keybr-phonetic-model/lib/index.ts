@@ -1,3 +1,4 @@
+export * from "./Alphabet.tsx";
 export * from "./censor.ts";
 export * from "./context.ts";
 export * from "./fake.ts";
