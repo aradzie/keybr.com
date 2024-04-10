@@ -11,6 +11,10 @@ export function formatCodePointName(codePoint: CodePoint): string {
         return "SPACE";
       case 0x00a0:
         return "NO-BREAK SPACE";
+      case 0x200c:
+        return "ZERO WIDTH NON-JOINER";
+      case 0x200d:
+        return "ZERO WIDTH JOINER";
       case 0x202f:
         return "NARROW NO-BREAK SPACE";
       default:

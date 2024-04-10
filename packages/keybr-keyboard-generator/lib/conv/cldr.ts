@@ -161,6 +161,7 @@ function* parseModifiers(attr: string): Iterable<number> {
     for (const item of attr.split(/\s+/g)) {
       switch (item) {
         case "shift":
+        case "shift+caps?":
           yield 1;
           break;
         case "altR":
