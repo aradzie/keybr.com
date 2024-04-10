@@ -17,7 +17,6 @@ import {
 } from "@keybr/keyboard-ui";
 import { useSettings } from "@keybr/settings";
 import { ModifierState } from "@keybr/textinput-events";
-import { type CodePoint } from "@keybr/unicode";
 import {
   CheckBox,
   Explainer,
@@ -154,10 +153,7 @@ function PointersPreview(): ReactNode {
   const [index, setIndex] = useState(0);
   const suffix = useMemo(() => {
     setIndex(0);
-    const codePoints = keyboard.getCodePoints();
-    return getExampleText(keyboard.layout.language).filter((codePoint) =>
-      codePoints.has(codePoint),
-    );
+    return keyboard.getExampleLetters();
   }, [keyboard]);
   useEffect(() => {
     const id = setTimeout(() => {
@@ -255,19 +251,4 @@ function useDepressedKeys(): readonly string[] {
     setDepressedKeys(deleteKey(depressedKeys, ev.code));
   });
   return depressedKeys;
-}
-
-function getExampleText({ script }: Language): CodePoint[] {
-  switch (script) {
-    case "arabic":
-      return [0x0627, 0x0628, 0x067e, 0x062a, 0x062b, 0x062c];
-    case "cyrillic":
-      return [0x0430, 0x0431, 0x0432, 0x0433, 0x0434, 0x0435];
-    case "greek":
-      return [0x03b1, 0x03b2, 0x03b3, 0x03b4, 0x03b5, 0x03b6];
-    case "hebrew":
-      return [0x05d0, 0x05d1, 0x05d2, 0x05d3, 0x05d4, 0x05d5];
-    case "latin":
-      return [0x0061, 0x0062, 0x0063, 0x0064, 0x0065, 0x0066];
-  }
 }

@@ -76,13 +76,22 @@ for (const layout of Layout.ALL) {
   for (const geometry of layout.geometries) {
     test(`load layout ${layout.id}/${geometry.id}`, (t) => {
       const keyboard = loadKeyboard(layout, geometry);
-      const codePoints = keyboard.getCodePoints({
-        dead: true,
-        shift: true,
-        alt: true,
-      });
-
-      t.true(codePoints.size > 0);
+      t.true(
+        keyboard.getCodePoints({
+          dead: false,
+          shift: false,
+          alt: false,
+        }).size > 0,
+      );
+      t.true(
+        keyboard.getCodePoints({
+          dead: true,
+          shift: true,
+          alt: true,
+        }).size > 0,
+      );
+      t.true(keyboard.getExampleText().length > 0);
+      t.true(keyboard.getExampleLetters().length > 0);
 
       for (const key of characterKeys) {
         const shape = keyboard.getShape(key);

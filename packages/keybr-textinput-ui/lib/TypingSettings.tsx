@@ -1,4 +1,4 @@
-import { Language } from "@keybr/keyboard";
+import { useKeyboard } from "@keybr/keyboard";
 import { useSettings } from "@keybr/settings";
 import {
   CaretMovementStyle,
@@ -63,19 +63,17 @@ export function TypingSettings(): ReactNode {
   );
 }
 
-function ExampleText({
-  text = "The quick brown fox jumps over the lazy dog.",
-  language = Language.EN,
-}: {
-  readonly text?: string;
-  readonly language?: Language;
-}): ReactNode {
+function ExampleText(): ReactNode {
   const { settings } = useSettings();
+  const keyboard = useKeyboard();
   return (
     <div className={styles.exampleText}>
       <AnimatedText
-        settings={{ ...toTextDisplaySettings(settings), language }}
-        text={text}
+        settings={{
+          ...toTextDisplaySettings(settings),
+          language: keyboard.layout.language,
+        }}
+        text={keyboard.getExampleText()}
       />
     </div>
   );

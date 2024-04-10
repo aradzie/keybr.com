@@ -4,6 +4,7 @@ import { KeyCharacters } from "./keycharacters.ts";
 import { KeyCombo } from "./keycombo.ts";
 import { KeyModifier } from "./keymodifier.ts";
 import { KeyShape } from "./keyshape.ts";
+import { getExampleLetters, getExampleText } from "./language.ts";
 import { type Layout } from "./layout.ts";
 import {
   type CodePointDict,
@@ -125,6 +126,15 @@ export class Keyboard {
         return weights.get(codePoint) ?? 1000;
       }
     })();
+  }
+
+  getExampleText(): string {
+    return getExampleText(this.layout.language);
+  }
+
+  getExampleLetters(): CodePoint[] {
+    const codePoints = this.getCodePoints();
+    return getExampleLetters(this.layout.language).filter(codePoints.has);
   }
 }
 
