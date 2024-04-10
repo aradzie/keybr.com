@@ -29,3 +29,11 @@ export function sortByWord(language: Language, dict: readonly Word[]): Word[] {
 export function sortByCount(language: Language, dict: readonly Word[]): Word[] {
   return [...dict].sort((a, b) => b[1] - a[1] || language.compare(a[0], b[0]));
 }
+
+export function normalizeCounts(dict: readonly Word[]): Word[] {
+  const [min, max] = dict.reduce(
+    ([min, max], [word, count]) => [Math.min(min, count), Math.max(max, count)],
+    [Infinity, -Infinity],
+  );
+  return dict.map(([word, count]) => [word, count / min]);
+}

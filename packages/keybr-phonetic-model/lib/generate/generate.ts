@@ -5,7 +5,7 @@ import { resolve } from "node:path";
 import { gunzipSync } from "node:zlib";
 import { Language } from "@keybr/keyboard";
 import { TransitionTableBuilder } from "./builder.ts";
-import { fromCsv, sortByCount, type Word } from "./words.ts";
+import { fromCsv, normalizeCounts, sortByCount, type Word } from "./words.ts";
 
 for (const language of Language.ALL) {
   generate(language);
@@ -37,6 +37,7 @@ function generate(language: Language): void {
 
   const dict = readDict();
   if (dict != null) {
+    console.log(`[${id}] ${dict.length} unique words`);
     generateModel(dict);
     generateWordList(
       sortByCount(language, dict)
@@ -118,8 +119,7 @@ function generate(language: Language): void {
             return false;
           }
         });
-      console.log(`[${id}] ${dict.length} unique words`);
-      return dict;
+      return normalizeCounts(dict);
     }
     return null;
   }
