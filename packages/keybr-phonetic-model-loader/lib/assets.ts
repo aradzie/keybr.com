@@ -1,64 +1,64 @@
 import { Language } from "@keybr/keyboard";
-import langBeData from "@keybr/phonetic-model/assets/lang-be.data";
-import langCsData from "@keybr/phonetic-model/assets/lang-cs.data";
-import langDeData from "@keybr/phonetic-model/assets/lang-de.data";
-import langElData from "@keybr/phonetic-model/assets/lang-el.data";
-import langEnData from "@keybr/phonetic-model/assets/lang-en.data";
-import langEsData from "@keybr/phonetic-model/assets/lang-es.data";
-import langFrData from "@keybr/phonetic-model/assets/lang-fr.data";
-import langHeData from "@keybr/phonetic-model/assets/lang-he.data";
-import langHuData from "@keybr/phonetic-model/assets/lang-hu.data";
-import langItData from "@keybr/phonetic-model/assets/lang-it.data";
-import langNbData from "@keybr/phonetic-model/assets/lang-nb.data";
-import langNlData from "@keybr/phonetic-model/assets/lang-nl.data";
-import langPlData from "@keybr/phonetic-model/assets/lang-pl.data";
-import langPtData from "@keybr/phonetic-model/assets/lang-pt.data";
-import langRuData from "@keybr/phonetic-model/assets/lang-ru.data";
-import langSlData from "@keybr/phonetic-model/assets/lang-sl.data";
-import langSvData from "@keybr/phonetic-model/assets/lang-sv.data";
-import langTrData from "@keybr/phonetic-model/assets/lang-tr.data";
-import langUkData from "@keybr/phonetic-model/assets/lang-uk.data";
+import BE from "@keybr/phonetic-model/assets/lang-be.data";
+import CS from "@keybr/phonetic-model/assets/lang-cs.data";
+import DE from "@keybr/phonetic-model/assets/lang-de.data";
+import EL from "@keybr/phonetic-model/assets/lang-el.data";
+import EN from "@keybr/phonetic-model/assets/lang-en.data";
+import ES from "@keybr/phonetic-model/assets/lang-es.data";
+import FR from "@keybr/phonetic-model/assets/lang-fr.data";
+import HE from "@keybr/phonetic-model/assets/lang-he.data";
+import HU from "@keybr/phonetic-model/assets/lang-hu.data";
+import IT from "@keybr/phonetic-model/assets/lang-it.data";
+import NB from "@keybr/phonetic-model/assets/lang-nb.data";
+import NL from "@keybr/phonetic-model/assets/lang-nl.data";
+import PL from "@keybr/phonetic-model/assets/lang-pl.data";
+import PT from "@keybr/phonetic-model/assets/lang-pt.data";
+import RU from "@keybr/phonetic-model/assets/lang-ru.data";
+import SL from "@keybr/phonetic-model/assets/lang-sl.data";
+import SV from "@keybr/phonetic-model/assets/lang-sv.data";
+import TR from "@keybr/phonetic-model/assets/lang-tr.data";
+import UK from "@keybr/phonetic-model/assets/lang-uk.data";
 
 export function modelAssetPath(language: Language): string {
   switch (language) {
     case Language.BE:
-      return langBeData;
+      return BE;
     case Language.CS:
-      return langCsData;
+      return CS;
     case Language.DE:
-      return langDeData;
+      return DE;
     case Language.EL:
-      return langElData;
+      return EL;
     case Language.EN:
-      return langEnData;
+      return EN;
     case Language.ES:
-      return langEsData;
+      return ES;
     case Language.FR:
-      return langFrData;
+      return FR;
     case Language.HE:
-      return langHeData;
+      return HE;
     case Language.HU:
-      return langHuData;
+      return HU;
     case Language.IT:
-      return langItData;
+      return IT;
     case Language.NB:
-      return langNbData;
+      return NB;
     case Language.NL:
-      return langNlData;
+      return NL;
     case Language.PL:
-      return langPlData;
+      return PL;
     case Language.PT:
-      return langPtData;
+      return PT;
     case Language.RU:
-      return langRuData;
+      return RU;
     case Language.SL:
-      return langSlData;
+      return SL;
     case Language.SV:
-      return langSvData;
+      return SV;
     case Language.TR:
-      return langTrData;
+      return TR;
     case Language.UK:
-      return langUkData;
+      return UK;
     default:
       throw new Error();
   }
