@@ -1,8 +1,4 @@
-import {
-  KeyboardContext,
-  KeyboardOptions,
-  loadKeyboard,
-} from "@keybr/keyboard";
+import { KeyboardProvider } from "@keybr/keyboard";
 import { Screen } from "@keybr/pages-shared";
 import { type Settings, SettingsContext, useSettings } from "@keybr/settings";
 import { TypingSettings } from "@keybr/textinput-ui";
@@ -16,7 +12,7 @@ import {
   styleWidthWide,
 } from "@keybr/widget";
 import { mdiCheckCircle, mdiDeleteForever } from "@mdi/js";
-import { type ReactNode, useMemo, useState } from "react";
+import { type ReactNode, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { ExplainSettings } from "./ExplainSettings.tsx";
 import { KeyboardSettings } from "./KeyboardSettings.tsx";
@@ -31,9 +27,6 @@ export function SettingsScreen({
 }): ReactNode {
   const { settings } = useSettings();
   const [newSettings, setNewSettings] = useState(settings);
-  const keyboard = useMemo(() => {
-    return loadKeyboard(KeyboardOptions.from(newSettings));
-  }, [newSettings]);
   return (
     <SettingsContext.Provider
       value={{
@@ -43,13 +36,13 @@ export function SettingsScreen({
         },
       }}
     >
-      <KeyboardContext.Provider value={keyboard}>
+      <KeyboardProvider>
         <Content
           onSubmit={() => {
             onSubmit(newSettings);
           }}
         />
-      </KeyboardContext.Provider>
+      </KeyboardProvider>
     </SettingsContext.Provider>
   );
 }

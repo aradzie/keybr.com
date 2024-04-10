@@ -1,3 +1,4 @@
+import { KeyboardProvider } from "@keybr/keyboard";
 import { Connector } from "@keybr/multiplayer-ui";
 import { init, Slot } from "@keybr/pages-browser";
 import { SettingsLoader } from "@keybr/settings-loader";
@@ -12,7 +13,9 @@ init(
 function Main(): ReactNode {
   return (
     <SettingsLoader>
-      <Connector />
+      <KeyboardProvider>
+        <Connector />
+      </KeyboardProvider>
     </SettingsLoader>
   );
 }

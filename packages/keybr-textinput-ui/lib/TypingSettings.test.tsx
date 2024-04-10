@@ -1,4 +1,5 @@
 import { FakeIntlProvider } from "@keybr/intl";
+import { KeyboardProvider } from "@keybr/keyboard";
 import { FakeSettingsContext } from "@keybr/settings";
 import { fireEvent, render } from "@testing-library/react";
 import test from "ava";
@@ -8,7 +9,9 @@ test("render", (t) => {
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
-        <TypingSettings />
+        <KeyboardProvider>
+          <TypingSettings />
+        </KeyboardProvider>
       </FakeSettingsContext>
     </FakeIntlProvider>,
   );

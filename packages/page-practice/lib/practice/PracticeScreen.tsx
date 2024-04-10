@@ -1,13 +1,8 @@
-import {
-  KeyboardContext,
-  KeyboardOptions,
-  keyboardProps,
-  loadKeyboard,
-} from "@keybr/keyboard";
+import { keyboardProps, KeyboardProvider } from "@keybr/keyboard";
 import { type Lesson } from "@keybr/lesson";
 import { LessonLoader } from "@keybr/lesson-loader";
 import { ResultGroups, useResults } from "@keybr/result";
-import { type Settings, useSettings } from "@keybr/settings";
+import { useSettings } from "@keybr/settings";
 import { loadSounds } from "@keybr/sound";
 import { textInputSounds } from "@keybr/textinput-sounds";
 import { type ReactNode, useEffect, useRef } from "react";
@@ -23,32 +18,25 @@ export function PracticeScreen({
 }: {
   readonly onConfigure: () => void;
 }): ReactNode {
-  const { settings } = useSettings();
-  const keyboard = loadKeyboard(KeyboardOptions.from(settings));
   return (
-    <KeyboardContext.Provider value={keyboard}>
+    <KeyboardProvider>
       <LessonLoader>
         {(lesson) => (
-          <ResultUpdater
-            settings={settings}
-            lesson={lesson}
-            onConfigure={onConfigure}
-          />
+          <ResultUpdater lesson={lesson} onConfigure={onConfigure} />
         )}
       </LessonLoader>
-    </KeyboardContext.Provider>
+    </KeyboardProvider>
   );
 }
 
 function ResultUpdater({
-  settings,
   lesson,
   onConfigure,
 }: {
-  readonly settings: Settings;
   readonly lesson: Lesson;
   readonly onConfigure: () => void;
 }): ReactNode {
+  const { settings } = useSettings();
   const { results, appendResults } = useResults();
   const lastLesson = useRef<LastLesson | null>(null);
   useEffect(() => {

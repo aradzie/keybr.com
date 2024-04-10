@@ -1,3 +1,4 @@
+import { KeyboardProvider } from "@keybr/keyboard";
 import { init, Slot } from "@keybr/pages-browser";
 import { SettingsLoader } from "@keybr/settings-loader";
 import { type ReactNode } from "react";
@@ -12,7 +13,9 @@ init(
 function Main(): ReactNode {
   return (
     <SettingsLoader>
-      <TypingTestApp />
+      <KeyboardProvider>
+        <TypingTestApp />
+      </KeyboardProvider>
     </SettingsLoader>
   );
 }
