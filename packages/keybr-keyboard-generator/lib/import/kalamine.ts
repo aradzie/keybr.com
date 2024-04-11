@@ -22,6 +22,6 @@ type KalamineJson = {
   readonly [_: string]: any;
 };
 
-export function convertKalamine({ keymap }: KalamineJson): KeyMap {
+export function importKalamine({ keymap }: KalamineJson): KeyMap {
   return keymap;
 }

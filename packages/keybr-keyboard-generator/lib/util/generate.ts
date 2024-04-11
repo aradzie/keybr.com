@@ -31,7 +31,7 @@ function generateSourceFile(id: string, dict: CodePointDict): string {
         const value = formatCodePointValue(codePoint);
         return `/* ${name} */ ${value}`;
       } else {
-        return null;
+        return formatCodePointValue(0x0000);
       }
     });
     if (fields.length > 0) {
