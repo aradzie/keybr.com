@@ -1,4 +1,5 @@
 import test from "ava";
+import { Geometry } from "./geometry.ts";
 import { Keyboard } from "./keyboard.ts";
 import { KeyCharacters } from "./keycharacters.ts";
 import { KeyCombo } from "./keycombo.ts";
@@ -15,7 +16,12 @@ test("data", (t) => {
     KeyA: { x: 0, y: 0, zones: ["indexLeft", "left"] },
     Equal: { x: 0, y: 0, zones: ["indexRight", "right"] },
   };
-  const keyboard = new Keyboard(Layout.EN_US, codePointDict, geometryDict);
+  const keyboard = new Keyboard(
+    Layout.EN_US,
+    Geometry.ANSI_101,
+    codePointDict,
+    geometryDict,
+  );
   const key1 = new KeyCharacters(
     "KeyA",
     /* a */ 0x0061,

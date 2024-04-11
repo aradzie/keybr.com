@@ -1,6 +1,7 @@
 import { Enum, XEnum, type XEnumItem } from "@keybr/lang";
 import { Geometry } from "./geometry.ts";
 import { Language } from "./language.ts";
+import { angleMod, angleWideMod, type Mod } from "./mod.ts";
 
 export class Layout implements XEnumItem {
   static readonly EN_US = new Layout(
@@ -58,10 +59,9 @@ export class Layout implements XEnumItem {
     /* geometries= */ new Enum(
       Geometry.ANSI_101,
       Geometry.ANSI_101_FULL,
-      Geometry.ISO_102,
-      Geometry.ISO_102_FULL,
       Geometry.MATRIX,
     ),
+    /* mod= */ angleMod,
   );
   static readonly EN_COLEMAK_DH_ANSI_WIDE = new Layout(
     /* id= */ "en-colemak-dh-wide",
@@ -73,10 +73,9 @@ export class Layout implements XEnumItem {
     /* geometries= */ new Enum(
       Geometry.ANSI_101,
       Geometry.ANSI_101_FULL,
-      Geometry.ISO_102,
-      Geometry.ISO_102_FULL,
       Geometry.MATRIX,
     ),
+    /* mod= */ angleWideMod,
   );
   static readonly EN_COLEMAK_DH_ISO = new Layout(
     /* id= */ "en-colemak-dh-iso",
@@ -90,6 +89,7 @@ export class Layout implements XEnumItem {
       Geometry.ISO_102_FULL,
       Geometry.MATRIX,
     ),
+    /* mod= */ angleMod,
   );
   static readonly EN_COLEMAK_DH_ISO_WIDE = new Layout(
     /* id= */ "en-colemak-dh-iso-wide",
@@ -103,6 +103,7 @@ export class Layout implements XEnumItem {
       Geometry.ISO_102_FULL,
       Geometry.MATRIX,
     ),
+    /* mod= */ angleWideMod,
   );
   static readonly EN_COLEMAK_DH_MATRIX = new Layout(
     /* id= */ "en-colemak-dh-matrix",
@@ -777,6 +778,7 @@ export class Layout implements XEnumItem {
     public readonly language: Language,
     public readonly emulate: boolean,
     public readonly geometries: Enum<Geometry>,
+    public readonly mod: Mod = (geometry, dict) => dict,
   ) {
     Object.freeze(this);
   }

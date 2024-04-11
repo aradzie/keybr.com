@@ -153,6 +153,7 @@ export function loadKeyboard(...args: any[]): Keyboard {
 function loadImpl(layout: Layout, geometry: Geometry): Keyboard {
   return new Keyboard(
     layout,
+    geometry,
     layoutDict.get(layout)!,
     geometryDict.get(geometry)!,
   );

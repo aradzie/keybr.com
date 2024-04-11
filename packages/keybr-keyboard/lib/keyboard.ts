@@ -1,5 +1,6 @@
 import { type CodePoint } from "@keybr/unicode";
 import { combineDiacritic, isDiacritic } from "./diacritics.ts";
+import { type Geometry } from "./geometry.ts";
 import { KeyCharacters } from "./keycharacters.ts";
 import { KeyCombo } from "./keycombo.ts";
 import { KeyModifier } from "./keymodifier.ts";
@@ -15,15 +16,18 @@ import {
 } from "./types.ts";
 
 export class Keyboard {
+  readonly layout: Layout;
+  readonly geometry: Geometry;
   readonly characters: ReadonlyMap<KeyId, KeyCharacters>;
   readonly combos: ReadonlyMap<CodePoint, KeyCombo>;
   readonly shapes: ReadonlyMap<KeyId, KeyShape>;
   readonly zones: ReadonlyMap<ZoneId, readonly KeyShape[]>;
 
   constructor(
-    readonly layout: Layout,
-    readonly codePointDict: CodePointDict,
-    readonly geometryDict: GeometryDict,
+    layout: Layout,
+    geometry: Geometry,
+    codePointDict: CodePointDict,
+    geometryDict: GeometryDict,
   ) {
     const characters = new Map<KeyId, KeyCharacters>();
     const combos = new Map<CodePoint, KeyCombo>();
@@ -49,7 +53,9 @@ export class Keyboard {
       addDeadCombo(combos, d, id, KeyModifier.ShiftAlt);
     }
 
-    for (const [id, data] of Object.entries(geometryDict)) {
+    for (const [id, data] of Object.entries(
+      layout.mod(geometry, geometryDict),
+    )) {
       const shape = new KeyShape(id, data, codePointDict[id] ?? null);
       shapes.set(id, shape);
       for (const zone of shape.zones) {
@@ -61,6 +67,8 @@ export class Keyboard {
       }
     }
 
+    this.layout = layout;
+    this.geometry = geometry;
     this.characters = characters;
     this.combos = combos;
     this.shapes = shapes;

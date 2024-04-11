@@ -3,7 +3,6 @@ import {
   type KeyShape,
   type LabelShape,
   type Language,
-  type ZoneId,
 } from "@keybr/keyboard";
 import { type ClassName } from "@keybr/widget";
 import { clsx } from "clsx";
@@ -32,7 +31,7 @@ export function makeKeyComponent(
   { letterName }: Language,
   shape: KeyShape,
 ): FunctionComponent<KeyProps> {
-  const { id, a, b, c, d, finger } = shape;
+  const { id, a, b, c, d } = shape;
   const x = shape.x * keySize;
   const y = shape.y * keySize;
   const w = shape.w * keySize - keyGap;
@@ -73,6 +72,7 @@ export function makeKeyComponent(
   if (c > 0 && cd) {
     children.push(makeSymbolLabel(c, 25, 27, styles.primarySymbol));
   }
+  const zoneClassName = zoneClassNameOf(shape);
   function KeyComponent({
     depressed,
     toggled,
@@ -89,7 +89,7 @@ export function makeKeyComponent(
           styles.key,
           depressed && styles.depressedKey,
           toggled && styles.toggledKey,
-          showColors && fingerStyleName(finger),
+          showColors && zoneClassName,
         )}
         x={x}
         y={y}
@@ -171,7 +171,21 @@ function makeLabel(label: LabelShape, className: ClassName = null): ReactNode {
   );
 }
 
-function fingerStyleName(finger: ZoneId | null): string | null {
+function zoneClassNameOf(shape: KeyShape): string | null {
+  return clsx(handClassNameOf(shape), fingerClassNameOf(shape));
+}
+
+function handClassNameOf({ hand }: KeyShape): string | null {
+  switch (hand) {
+    case "left":
+      return styles.handLeft;
+    case "right":
+      return styles.handRight;
+  }
+  return null;
+}
+
+function fingerClassNameOf({ finger }: KeyShape): string | null {
   switch (finger) {
     case "pinky":
       return styles.fingerPinky;
