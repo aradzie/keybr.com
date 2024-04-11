@@ -48,6 +48,8 @@ for (const [output, keymap] of [
   ["en_dvorak_prog.ts", LAYOUT_EN_DVORAK_PROG],
   ["en_dvorakl-win.ts", importCldr("cldr-keyboards-43.0/keyboards/windows/en-t-k0-windows-dvorakl.xml")],
   ["en_dvorakr-win.ts", importCldr("cldr-keyboards-43.0/keyboards/windows/en-t-k0-windows-dvorakr.xml")],
+  ["en_engram.ts", importKlc("lib/layout/engram.klc")],
+  ["en_engrammer.ts", importKlc("lib/layout/engrammer.klc")],
   ["en_halmak.ts", LAYOUT_EN_HALMAK],
   ["en_norman.ts", LAYOUT_EN_NORMAN],
   ["en_uk-win.ts", importCldr("cldr-keyboards-43.0/keyboards/windows/en-GB-t-k0-windows.xml")],

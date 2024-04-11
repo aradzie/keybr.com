@@ -15,8 +15,11 @@ export function importKlc(filename: string): KeyMap {
   parse(content, state);
   const keyMap = {} as { [key: KeyId]: CodePointList };
   for (const key of characterKeys) {
-    const codePoints = state.keyMap[key];
-    if (codePoints != null && codePoints.length > 0) {
+    const codePoints = state.keyMap[key] ?? [];
+    while (codePoints.length > 0 && codePoints.at(-1) === 0x0000) {
+      codePoints.pop();
+    }
+    if (codePoints.length > 0) {
       keyMap[key] = codePoints;
     }
   }
@@ -41,6 +44,8 @@ const enum Section {
   KEYNAME,
   KEYNAME_EXT,
   KEYNAME_DEAD,
+  DESCRIPTIONS,
+  LANGUAGENAMES,
   ENDKBD,
 }
 
@@ -49,152 +54,86 @@ function parse(content: string, state: ParserState): void {
   for (const line0 of content.split("\n")) {
     const line = stripComments(line0).trim();
     if (line) {
+      if (/^KBD/.test(line)) {
+        section = Section.KBD;
+        continue;
+      }
+      if (
+        /^COPYRIGHT\s+/.test(line) ||
+        /^COMPANY\s+/.test(line) ||
+        /^LOCALEID\s+/.test(line) ||
+        /^LOCALENAME\s+/.test(line) ||
+        /^VERSION\s+/.test(line)
+      ) {
+        continue;
+      }
+      if (/^ATTRIBUTES/.test(line)) {
+        section = Section.ATTRIBUTES;
+        continue;
+      }
+      if (/^SHIFTSTATE/.test(line)) {
+        section = Section.SHIFTSTATE;
+        continue;
+      }
+      if (/^LAYOUT/.test(line)) {
+        section = Section.LAYOUT;
+        continue;
+      }
+      if (/^DEADKEY/.test(line)) {
+        section = Section.DEADKEY;
+        continue;
+      }
+      if (/^KEYNAME/.test(line)) {
+        section = Section.KEYNAME;
+        continue;
+      }
+      if (/^KEYNAME_EXT/.test(line)) {
+        section = Section.KEYNAME_EXT;
+        continue;
+      }
+      if (/^KEYNAME_DEAD/.test(line)) {
+        section = Section.KEYNAME_DEAD;
+        continue;
+      }
+      if (/^DESCRIPTIONS/.test(line)) {
+        section = Section.DESCRIPTIONS;
+        continue;
+      }
+      if (/^LANGUAGENAMES/.test(line)) {
+        section = Section.LANGUAGENAMES;
+        continue;
+      }
+      if (/^ENDKBD/.test(line)) {
+        section = Section.ENDKBD;
+        continue;
+      }
       switch (section) {
-        case Section.INIT:
-          section = _INIT(state, line);
-          continue;
-        case Section.KBD:
-          section = _KBD(state, line);
-          continue;
         case Section.ATTRIBUTES:
-          section = _ATTRIBUTES(state, line);
+          ATTRIBUTES(state, line);
           break;
         case Section.SHIFTSTATE:
-          section = _SHIFTSTATE(state, line);
+          SHIFTSTATE(state, line);
           break;
         case Section.LAYOUT:
-          section = _LAYOUT(state, line);
+          LAYOUT(state, line);
           break;
-        case Section.DEADKEY:
-        case Section.KEYNAME:
-        case Section.KEYNAME_EXT:
-        case Section.KEYNAME_DEAD:
-          section = _rest(state, line, section);
-          break;
-        case Section.ENDKBD:
-          throw new Error(`Unexpected line ${line}`);
       }
     }
   }
 }
 
-function _INIT(state: ParserState, line: string): Section {
-  if (is_KBD(state, line)) {
-    return Section.KBD;
-  }
-  throw new Error(`Unexpected line ${line}`);
-}
-
-function _KBD(state: ParserState, line: string): Section {
-  if (
-    /^COPYRIGHT\s+/.test(line) ||
-    /^COMPANY\s+/.test(line) ||
-    /^LOCALEID\s+/.test(line) ||
-    /^LOCALENAME\s+/.test(line) ||
-    /^VERSION\s+/.test(line)
-  ) {
-    return Section.KBD;
-  }
-  if (is_ATTRIBUTES(state, line)) {
-    return Section.ATTRIBUTES;
-  }
-  if (is_SHIFTSTATE(state, line)) {
-    return Section.SHIFTSTATE;
-  }
-  throw new Error(`Unexpected line ${line}`);
-}
-
-function _ATTRIBUTES(state: ParserState, line: string): Section {
-  if (is_SHIFTSTATE(state, line)) {
-    return Section.SHIFTSTATE;
-  }
+function ATTRIBUTES(state: ParserState, line: string): void {
   if (line === "ALTGR") {
     state.altgr = true;
   }
-  return Section.ATTRIBUTES;
 }
 
-function _SHIFTSTATE(state: ParserState, line: string): Section {
-  if (is_LAYOUT(state, line)) {
-    return Section.LAYOUT;
-  }
+function SHIFTSTATE(state: ParserState, line: string): void {
   state.shiftstate.push(Number(line));
-  return Section.SHIFTSTATE;
 }
 
-function _LAYOUT(state: ParserState, line: string): Section {
-  if (is_DEADKEY(state, line)) {
-    return Section.DEADKEY;
-  }
-  if (is_KEYNAME(state, line)) {
-    return Section.KEYNAME;
-  }
-  if (is_KEYNAME_EXT(state, line)) {
-    return Section.KEYNAME_EXT;
-  }
-  if (is_KEYNAME_DEAD(state, line)) {
-    return Section.KEYNAME_DEAD;
-  }
-  if (is_ENDKBD(state, line)) {
-    return Section.ENDKBD;
-  }
+function LAYOUT(state: ParserState, line: string): void {
   parseLayout(state, line);
-  return Section.LAYOUT;
-}
-
-function _rest(state: ParserState, line: string, section: Section): Section {
-  if (is_DEADKEY(state, line)) {
-    return Section.DEADKEY;
-  }
-  if (is_KEYNAME(state, line)) {
-    return Section.KEYNAME;
-  }
-  if (is_KEYNAME_EXT(state, line)) {
-    return Section.KEYNAME_EXT;
-  }
-  if (is_KEYNAME_DEAD(state, line)) {
-    return Section.KEYNAME_DEAD;
-  }
-  if (is_ENDKBD(state, line)) {
-    return Section.ENDKBD;
-  }
-  return section;
-}
-
-function is_KBD(state: ParserState, line: string): boolean {
-  return /^KBD/.test(line);
-}
-
-function is_ATTRIBUTES(state: ParserState, line: string): boolean {
-  return /^ATTRIBUTES/.test(line);
-}
-
-function is_SHIFTSTATE(state: ParserState, line: string): boolean {
-  return /^SHIFTSTATE/.test(line);
-}
-
-function is_LAYOUT(state: ParserState, line: string): boolean {
-  return /^LAYOUT/.test(line);
-}
-
-function is_DEADKEY(state: ParserState, line: string): boolean {
-  return /^DEADKEY\s+/.test(line);
-}
-
-function is_KEYNAME(state: ParserState, line: string): boolean {
-  return /^KEYNAME\s+/.test(line);
-}
-
-function is_KEYNAME_EXT(state: ParserState, line: string): boolean {
-  return /^KEYNAME_EXT\s+/.test(line);
-}
-
-function is_KEYNAME_DEAD(state: ParserState, line: string): boolean {
-  return /^KEYNAME_DEAD\s+/.test(line);
-}
-
-function is_ENDKBD(state: ParserState, line: string): boolean {
-  return /^ENDKBD/.test(line);
 }
 
 function stripComments(line: string): string {
@@ -228,10 +167,10 @@ function stripComments(line: string): string {
 function parseLayout(state: ParserState, line: string): void {
   const [SC, VK, CAP, ...arg] = line.split(/\s+/);
   const keyId = scanCodeToKeyId[SC];
-  if (keyId != null && characterKeys.includes(keyId)) {
+  if (keyId != null) {
     const c = [...arg.map(parseCodePoint)];
     if (state.shiftstate.length !== c.length) {
-      throw new TypeError(`Code point list`);
+      throw new TypeError(`Invalid code point list`);
     }
     const codePoints = [0, 0, 0, 0];
     for (let i = 0; i < state.shiftstate.length; i++) {
@@ -249,6 +188,9 @@ function parseCodePoint(v: string): CodePoint {
   if (v === "-1") {
     return 0;
   }
+  if (v.length === 1) {
+    return v.codePointAt(0)!;
+  }
   let m;
   if ((m = /^([0-9a-f]{4})$/.exec(v)) != null) {
     return Number.parseInt(m[1], 16);
@@ -256,10 +198,7 @@ function parseCodePoint(v: string): CodePoint {
   if ((m = /^([0-9a-f]{4})@$/.exec(v)) != null) {
     return diacritics.get(Number.parseInt(m[1], 16)) ?? 0;
   }
-  if (v.length === 1) {
-    return v.codePointAt(0)!;
-  }
-  throw new TypeError(`Unrecognized code point: ${v}`);
+  throw new TypeError(`Invalid code point: ${v}`);
 }
 
 function modifiers(shiftState: number): number {
