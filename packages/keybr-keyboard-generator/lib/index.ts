@@ -78,7 +78,7 @@ for (const [output, keymap] of [
   ["tr_tr_q-win.ts", importCldr("cldr-keyboards-43.0/keyboards/windows/tr-t-k0-windows.xml")],
   ["uk_ua-win.ts", importCldr("cldr-keyboards-43.0/keyboards/windows/uk-t-k0-windows.xml")],
 ] as [string, KeyMap][]) {
-  const filename = join(__dirname, "../../keybr-keyboard/lib/data/layout", output);
+  const filename = join(__dirname, "../../keybr-keyboard/lib/layout", output);
   console.log(filename);
   writeGeneratedFile(keymap, filename);
 }

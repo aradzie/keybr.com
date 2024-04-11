@@ -19,7 +19,7 @@ function generateSourceFile(id: string, dict: CodePointDict): string {
   const lines: string[] = [];
   lines.push("// Generated file, do not edit.");
   lines.push("");
-  lines.push('import { type CodePointDict } from "../../types.ts";');
+  lines.push('import { type CodePointDict } from "../types.ts";');
   lines.push("");
   lines.push("// prettier-ignore");
   lines.push(`export const LAYOUT_${id}: CodePointDict = {`);
