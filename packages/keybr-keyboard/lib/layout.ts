@@ -11,10 +11,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.EN,
     /* emulate= */ false,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -26,10 +26,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.EN,
     /* emulate= */ true,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -41,10 +41,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.EN,
     /* emulate= */ true,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -56,10 +56,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.EN,
     /* emulate= */ true,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -71,10 +71,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.EN,
     /* emulate= */ true,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -86,8 +86,8 @@ export class Layout implements XEnumItem {
     /* language= */ Language.EN,
     /* emulate= */ true,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -99,8 +99,8 @@ export class Layout implements XEnumItem {
     /* language= */ Language.EN,
     /* emulate= */ true,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -121,10 +121,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.EN,
     /* emulate= */ true,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -136,10 +136,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.EN,
     /* emulate= */ false,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -163,10 +163,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.DE,
     /* emulate= */ false,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -178,10 +178,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.DE,
     /* emulate= */ false,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -193,10 +193,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.DE,
     /* emulate= */ false,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -208,10 +208,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.DE,
     /* emulate= */ false,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -223,10 +223,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.DE,
     /* emulate= */ false,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -238,10 +238,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.DE,
     /* emulate= */ false,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -253,10 +253,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.FR,
     /* emulate= */ false,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -268,10 +268,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.FR,
     /* emulate= */ false,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -283,10 +283,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.FR,
     /* emulate= */ false,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -298,10 +298,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.FR,
     /* emulate= */ false,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -313,10 +313,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.FR,
     /* emulate= */ false,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -328,10 +328,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.FR,
     /* emulate= */ false,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -343,10 +343,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.FR,
     /* emulate= */ false,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -358,10 +358,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.IT,
     /* emulate= */ false,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -373,10 +373,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.ES,
     /* emulate= */ false,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -388,10 +388,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.PL,
     /* emulate= */ false,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -405,10 +405,10 @@ export class Layout implements XEnumItem {
     /* geometries= */ new Enum(
       Geometry.BRAZILIAN_104,
       Geometry.BRAZILIAN_104_FULL,
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -420,10 +420,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.PT,
     /* emulate= */ false,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -435,10 +435,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.RU,
     /* emulate= */ true,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -450,10 +450,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.BE,
     /* emulate= */ true,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -465,10 +465,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.UK,
     /* emulate= */ true,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -480,10 +480,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.SV,
     /* emulate= */ false,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -495,10 +495,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.CS,
     /* emulate= */ false,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -510,10 +510,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.SL,
     /* emulate= */ false,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -525,10 +525,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.EL,
     /* emulate= */ false,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -540,10 +540,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.NB,
     /* emulate= */ false,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -555,10 +555,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.HE,
     /* emulate= */ true,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -570,10 +570,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.NL,
     /* emulate= */ false,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -585,10 +585,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.NL,
     /* emulate= */ false,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -600,10 +600,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.HU,
     /* emulate= */ false,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -615,10 +615,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.TR,
     /* emulate= */ false,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -630,10 +630,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.TR,
     /* emulate= */ false,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -645,10 +645,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.EN,
     /* emulate= */ true,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -669,10 +669,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.EN,
     /* emulate= */ true,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -684,10 +684,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.EN,
     /* emulate= */ true,
     /* geometries= */ new Enum(
-      Geometry.STANDARD_101,
-      Geometry.STANDARD_101_FULL,
-      Geometry.STANDARD_102,
-      Geometry.STANDARD_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
       Geometry.MATRIX,
     ),
   );

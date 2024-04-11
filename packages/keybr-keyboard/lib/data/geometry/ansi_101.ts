@@ -1,7 +1,7 @@
 import { type GeometryDict } from "../../types.ts";
 
-// See https://www.w3.org/TR/uievents-code/#keyboard-102
-export const STANDARD_102: GeometryDict = {
+// See https://www.w3.org/TR/uievents-code/#keyboard-101
+export const ANSI_101: GeometryDict = {
   Backquote: {
     x: 0,
     y: 0,
@@ -143,13 +143,11 @@ export const STANDARD_102: GeometryDict = {
     y: 1,
     zones: ["pinky", "right", "top"],
   },
-  Enter: {
+  Backslash: {
     x: 13.5,
     y: 1,
     w: 1.5,
-    h: 2,
-    labels: [{ text: "Enter" }],
-    shape: "m 0 0 l 0 38 l 10 0 l 0 40 l 48 0 l 0 -78 z",
+    h: 1,
     zones: ["pinky", "right", "top"],
   },
   CapsLock: {
@@ -217,22 +215,20 @@ export const STANDARD_102: GeometryDict = {
     y: 2,
     zones: ["pinky", "right", "home"],
   },
-  Backslash: {
+  Enter: {
     x: 12.75,
     y: 2,
+    w: 2.25,
+    h: 1,
+    labels: [{ text: "Enter" }],
     zones: ["pinky", "right", "home"],
   },
   ShiftLeft: {
     x: 0,
     y: 3,
-    w: 1.25,
+    w: 2.25,
     h: 1,
     labels: [{ text: "Shift" }],
-    zones: ["pinky", "left", "bottom"],
-  },
-  IntlBackslash: {
-    x: 1.25,
-    y: 3,
     zones: ["pinky", "left", "bottom"],
   },
   KeyZ: {

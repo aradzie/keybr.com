@@ -10,7 +10,7 @@ test("defaults", (t) => {
 
   t.is(options.language, Language.EN);
   t.is(options.layout, Layout.EN_US);
-  t.is(options.geometry, Geometry.STANDARD_101);
+  t.is(options.geometry, Geometry.ANSI_101);
 });
 
 test("from user settings", (t) => {
@@ -19,26 +19,26 @@ test("from user settings", (t) => {
 
     t.is(options.language, Language.EN);
     t.is(options.layout, Layout.EN_US);
-    t.is(options.geometry, Geometry.STANDARD_101);
+    t.is(options.geometry, Geometry.ANSI_101);
   }
 
   {
     const options = KeyboardOptions.from(
       new Settings()
         .set(keyboardProps.layout, Layout.EN_US)
-        .set(keyboardProps.geometry, Geometry.STANDARD_102),
+        .set(keyboardProps.geometry, Geometry.ISO_102),
     );
 
     t.is(options.language, Language.EN);
     t.is(options.layout, Layout.EN_US);
-    t.is(options.geometry, Geometry.STANDARD_102);
+    t.is(options.geometry, Geometry.ISO_102);
   }
 
   {
     const options = KeyboardOptions.from(
       new Settings()
         .set(keyboardProps.layout, Layout.EN_JP)
-        .set(keyboardProps.geometry, Geometry.STANDARD_101),
+        .set(keyboardProps.geometry, Geometry.ANSI_101),
     );
 
     t.is(options.language, Language.EN);
@@ -53,7 +53,7 @@ test("update properties", (t) => {
 
     t.is(options.language, Language.FR);
     t.is(options.layout, Layout.FR_FR);
-    t.is(options.geometry, Geometry.STANDARD_102);
+    t.is(options.geometry, Geometry.ISO_102);
   }
 
   {
@@ -63,17 +63,17 @@ test("update properties", (t) => {
 
     t.is(options.language, Language.FR);
     t.is(options.layout, Layout.FR_CA);
-    t.is(options.geometry, Geometry.STANDARD_102);
+    t.is(options.geometry, Geometry.ISO_102);
   }
 
   {
     const options = KeyboardOptions.default()
       .withLanguage(Language.FR)
       .withLayout(Layout.FR_CA)
-      .withGeometry(Geometry.STANDARD_101);
+      .withGeometry(Geometry.ANSI_101);
 
     t.is(options.language, Language.FR);
     t.is(options.layout, Layout.FR_CA);
-    t.is(options.geometry, Geometry.STANDARD_101);
+    t.is(options.geometry, Geometry.ANSI_101);
   }
 });

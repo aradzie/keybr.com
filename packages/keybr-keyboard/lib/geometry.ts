@@ -1,21 +1,21 @@
 import { Enum, type EnumItem } from "@keybr/lang";
 
 export class Geometry implements EnumItem {
-  static readonly STANDARD_101 = new Geometry(
-    "standard101", //
-    "Standard 101",
+  static readonly ANSI_101 = new Geometry(
+    "ansi101", //
+    "ANSI 101",
   );
-  static readonly STANDARD_101_FULL = new Geometry(
-    "standard101full", //
-    "Standard 101 (Full)",
+  static readonly ANSI_101_FULL = new Geometry(
+    "ansi101full", //
+    "ANSI 101 (Full)",
   );
-  static readonly STANDARD_102 = new Geometry(
-    "standard102", //
-    "Standard 102",
+  static readonly ISO_102 = new Geometry(
+    "iso102", //
+    "ISO 102",
   );
-  static readonly STANDARD_102_FULL = new Geometry(
-    "standard102full", //
-    "Standard 102 (Full)",
+  static readonly ISO_102_FULL = new Geometry(
+    "iso102full", //
+    "ISO 102 (Full)",
   );
   static readonly KOREAN_103 = new Geometry(
     "kr103", //
@@ -47,10 +47,10 @@ export class Geometry implements EnumItem {
   );
 
   static readonly ALL = new Enum<Geometry>(
-    Geometry.STANDARD_101,
-    Geometry.STANDARD_101_FULL,
-    Geometry.STANDARD_102,
-    Geometry.STANDARD_102_FULL,
+    Geometry.ANSI_101,
+    Geometry.ANSI_101_FULL,
+    Geometry.ISO_102,
+    Geometry.ISO_102_FULL,
     Geometry.KOREAN_103,
     Geometry.KOREAN_103_FULL,
     Geometry.BRAZILIAN_104,

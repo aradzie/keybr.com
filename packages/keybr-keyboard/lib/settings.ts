@@ -10,7 +10,7 @@ import { Layout } from "./layout.ts";
 
 export const keyboardProps = {
   layout: xitemProp("keyboard.layout", Layout.ALL, Layout.EN_US),
-  geometry: itemProp("keyboard.geometry", Geometry.ALL, Geometry.STANDARD_101),
+  geometry: itemProp("keyboard.geometry", Geometry.ALL, Geometry.ANSI_101),
   emulate: booleanProp("keyboard.emulate", true),
   colors: booleanProp("keyboard.colors", true),
   pointers: booleanProp("keyboard.pointers", true),
@@ -18,11 +18,7 @@ export const keyboardProps = {
 
 export class KeyboardOptions {
   static default(): KeyboardOptions {
-    return new KeyboardOptions(
-      Language.EN,
-      Layout.EN_US,
-      Geometry.STANDARD_101,
-    );
+    return new KeyboardOptions(Language.EN, Layout.EN_US, Geometry.ANSI_101);
   }
 
   static from(settings: Settings): KeyboardOptions {

@@ -1,14 +1,14 @@
+import { ANSI_101 } from "./data/geometry/ansi_101.ts";
+import { ANSI_101_FULL } from "./data/geometry/ansi_101_full.ts";
 import { BRAZILIAN_104 } from "./data/geometry/brazilian_104.ts";
 import { BRAZILIAN_104_FULL } from "./data/geometry/brazilian_104_full.ts";
+import { ISO_102 } from "./data/geometry/iso_102.ts";
+import { ISO_102_FULL } from "./data/geometry/iso_102_full.ts";
 import { JAPANESE_106 } from "./data/geometry/japanese_106.ts";
 import { JAPANESE_106_FULL } from "./data/geometry/japanese_106_full.ts";
 import { KOREAN_103 } from "./data/geometry/korean_103.ts";
 import { KOREAN_103_FULL } from "./data/geometry/korean_103_full.ts";
 import { MATRIX } from "./data/geometry/matrix.ts";
-import { STANDARD_101 } from "./data/geometry/standard_101.ts";
-import { STANDARD_101_FULL } from "./data/geometry/standard_101_full.ts";
-import { STANDARD_102 } from "./data/geometry/standard_102.ts";
-import { STANDARD_102_FULL } from "./data/geometry/standard_102_full.ts";
 import { LAYOUT_BE_BY_WIN } from "./data/layout/be_by-win.ts";
 import { LAYOUT_CS_CZ_WIN } from "./data/layout/cs_cz-win.ts";
 import { LAYOUT_DE_BONE } from "./data/layout/de_bone.ts";
@@ -113,17 +113,17 @@ const layoutDict = new Map<Layout, CodePointDict>([
 ]);
 
 const geometryDict = new Map<Geometry, GeometryDict>([
+  [Geometry.ANSI_101, ANSI_101],
+  [Geometry.ANSI_101_FULL, ANSI_101_FULL],
   [Geometry.BRAZILIAN_104, BRAZILIAN_104],
   [Geometry.BRAZILIAN_104_FULL, BRAZILIAN_104_FULL],
+  [Geometry.ISO_102, ISO_102],
+  [Geometry.ISO_102_FULL, ISO_102_FULL],
   [Geometry.JAPANESE_106, JAPANESE_106],
   [Geometry.JAPANESE_106_FULL, JAPANESE_106_FULL],
   [Geometry.KOREAN_103, KOREAN_103],
   [Geometry.KOREAN_103_FULL, KOREAN_103_FULL],
   [Geometry.MATRIX, MATRIX],
-  [Geometry.STANDARD_101, STANDARD_101],
-  [Geometry.STANDARD_101_FULL, STANDARD_101_FULL],
-  [Geometry.STANDARD_102, STANDARD_102],
-  [Geometry.STANDARD_102_FULL, STANDARD_102_FULL],
 ]);
 
 export function loadKeyboard(options: KeyboardOptions): Keyboard;
