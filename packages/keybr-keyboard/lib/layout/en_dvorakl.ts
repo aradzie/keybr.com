@@ -3,7 +3,7 @@
 import { type CodePointDict } from "../types.ts";
 
 // prettier-ignore
-export const LAYOUT_EN_DVORAKL_WIN: CodePointDict = {
+export const LAYOUT_EN_DVORAKL: CodePointDict = {
   Backquote: [/* ` */ 0x0060, /* ~ */ 0x007e],
   Digit1: [/* [ */ 0x005b, /* { */ 0x007b],
   Digit2: [/* ] */ 0x005d, /* } */ 0x007d],

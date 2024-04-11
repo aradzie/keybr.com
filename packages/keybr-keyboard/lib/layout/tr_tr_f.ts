@@ -3,7 +3,7 @@
 import { type CodePointDict } from "../types.ts";
 
 // prettier-ignore
-export const LAYOUT_TR_TR_F_WIN: CodePointDict = {
+export const LAYOUT_TR_TR_F: CodePointDict = {
   Backquote: [/* + */ 0x002b, /* * */ 0x002a, /* ¬ */ 0x00ac],
   Digit1: [/* 1 */ 0x0031, /* ! */ 0x0021, /* ¹ */ 0x00b9, /* ¡ */ 0x00a1],
   Digit2: [/* 2 */ 0x0032, /* " */ 0x0022, /* ² */ 0x00b2],

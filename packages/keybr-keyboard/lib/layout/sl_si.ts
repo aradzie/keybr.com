@@ -3,7 +3,7 @@
 import { type CodePointDict } from "../types.ts";
 
 // prettier-ignore
-export const LAYOUT_SL_SI_WIN: CodePointDict = {
+export const LAYOUT_SL_SI: CodePointDict = {
   Backquote: [/* DEAD CEDILLA */ 0x0327, /* DEAD DIAERESIS */ 0x0308],
   Digit1: [/* 1 */ 0x0031, /* ! */ 0x0021, /* ~ */ 0x007e],
   Digit2: [/* 2 */ 0x0032, /* " */ 0x0022, /* DEAD CARON */ 0x030c],

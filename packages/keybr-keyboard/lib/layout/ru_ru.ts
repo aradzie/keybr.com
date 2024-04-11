@@ -3,7 +3,7 @@
 import { type CodePointDict } from "../types.ts";
 
 // prettier-ignore
-export const LAYOUT_BE_BY_WIN: CodePointDict = {
+export const LAYOUT_RU_RU: CodePointDict = {
   Backquote: [/* ё */ 0x0451, /* Ё */ 0x0401],
   Digit1: [/* 1 */ 0x0031, /* ! */ 0x0021],
   Digit2: [/* 2 */ 0x0032, /* " */ 0x0022],
@@ -12,7 +12,7 @@ export const LAYOUT_BE_BY_WIN: CodePointDict = {
   Digit5: [/* 5 */ 0x0035, /* % */ 0x0025],
   Digit6: [/* 6 */ 0x0036, /* : */ 0x003a],
   Digit7: [/* 7 */ 0x0037, /* ? */ 0x003f],
-  Digit8: [/* 8 */ 0x0038, /* * */ 0x002a],
+  Digit8: [/* 8 */ 0x0038, /* * */ 0x002a, /* ₽ */ 0x20bd],
   Digit9: [/* 9 */ 0x0039, /* ( */ 0x0028],
   Digit0: [/* 0 */ 0x0030, /* ) */ 0x0029],
   Minus: [/* - */ 0x002d, /* _ */ 0x005f],
@@ -25,10 +25,10 @@ export const LAYOUT_BE_BY_WIN: CodePointDict = {
   KeyY: [/* н */ 0x043d, /* Н */ 0x041d],
   KeyU: [/* г */ 0x0433, /* Г */ 0x0413],
   KeyI: [/* ш */ 0x0448, /* Ш */ 0x0428],
-  KeyO: [/* ў */ 0x045e, /* Ў */ 0x040e],
+  KeyO: [/* щ */ 0x0449, /* Щ */ 0x0429],
   KeyP: [/* з */ 0x0437, /* З */ 0x0417],
   BracketLeft: [/* х */ 0x0445, /* Х */ 0x0425],
-  BracketRight: [/* ' */ 0x0027, /* ' */ 0x0027],
+  BracketRight: [/* ъ */ 0x044a, /* Ъ */ 0x042a],
   Backslash: [/* \ */ 0x005c, /* / */ 0x002f],
   KeyA: [/* ф */ 0x0444, /* Ф */ 0x0424],
   KeyS: [/* ы */ 0x044b, /* Ы */ 0x042b],
@@ -46,7 +46,7 @@ export const LAYOUT_BE_BY_WIN: CodePointDict = {
   KeyX: [/* ч */ 0x0447, /* Ч */ 0x0427],
   KeyC: [/* с */ 0x0441, /* С */ 0x0421],
   KeyV: [/* м */ 0x043c, /* М */ 0x041c],
-  KeyB: [/* і */ 0x0456, /* І */ 0x0406],
+  KeyB: [/* и */ 0x0438, /* И */ 0x0418],
   KeyN: [/* т */ 0x0442, /* Т */ 0x0422],
   KeyM: [/* ь */ 0x044c, /* Ь */ 0x042c],
   Comma: [/* б */ 0x0431, /* Б */ 0x0411],

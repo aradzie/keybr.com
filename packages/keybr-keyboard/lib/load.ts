@@ -12,15 +12,15 @@ import { KOREAN_103_FULL } from "./geometry/korean_103_full.ts";
 import { MATRIX } from "./geometry/matrix.ts";
 import { Keyboard } from "./keyboard.ts";
 import { Layout } from "./layout.ts";
-import { LAYOUT_BE_BY_WIN } from "./layout/be_by-win.ts";
-import { LAYOUT_CS_CZ_WIN } from "./layout/cs_cz-win.ts";
+import { LAYOUT_BE_BY } from "./layout/be_by.ts";
+import { LAYOUT_CS_CZ } from "./layout/cs_cz.ts";
 import { LAYOUT_DE_BONE } from "./layout/de_bone.ts";
-import { LAYOUT_DE_CH_WIN } from "./layout/de_ch-win.ts";
-import { LAYOUT_DE_DE_WIN } from "./layout/de_de-win.ts";
+import { LAYOUT_DE_CH } from "./layout/de_ch.ts";
+import { LAYOUT_DE_DE } from "./layout/de_de.ts";
 import { LAYOUT_DE_MINE } from "./layout/de_mine.ts";
 import { LAYOUT_DE_NEO_2 } from "./layout/de_neo_2.ts";
 import { LAYOUT_DE_NOTED } from "./layout/de_noted.ts";
-import { LAYOUT_EL_GR_WIN } from "./layout/el_gr-win.ts";
+import { LAYOUT_EL_GR } from "./layout/el_gr.ts";
 import { LAYOUT_EN_CANARY } from "./layout/en_canary.ts";
 import { LAYOUT_EN_CANARY_MATRIX } from "./layout/en_canary_matrix.ts";
 import { LAYOUT_EN_COLEMAK } from "./layout/en_colemak.ts";
@@ -29,49 +29,49 @@ import { LAYOUT_EN_COLEMAK_DH_ANSI_WIDE } from "./layout/en_colemak_dh_ansi_wide
 import { LAYOUT_EN_COLEMAK_DH_ISO } from "./layout/en_colemak_dh_iso.ts";
 import { LAYOUT_EN_COLEMAK_DH_ISO_WIDE } from "./layout/en_colemak_dh_iso_wide.ts";
 import { LAYOUT_EN_COLEMAK_DH_MATRIX } from "./layout/en_colemak_dh_matrix.ts";
-import { LAYOUT_EN_DVORAK_WIN } from "./layout/en_dvorak-win.ts";
+import { LAYOUT_EN_DVORAK } from "./layout/en_dvorak.ts";
 import { LAYOUT_EN_HALMAK } from "./layout/en_halmak.ts";
 import { LAYOUT_EN_NORMAN } from "./layout/en_norman.ts";
-import { LAYOUT_EN_UK_WIN } from "./layout/en_uk-win.ts";
-import { LAYOUT_EN_US_WIN } from "./layout/en_us-win.ts";
+import { LAYOUT_EN_UK } from "./layout/en_uk.ts";
+import { LAYOUT_EN_US } from "./layout/en_us.ts";
 import { LAYOUT_EN_WORKMAN } from "./layout/en_workman.ts";
-import { LAYOUT_ES_ES_WIN } from "./layout/es_es-win.ts";
+import { LAYOUT_ES_ES } from "./layout/es_es.ts";
 import { LAYOUT_FR_BEPO } from "./layout/fr_bepo.ts";
-import { LAYOUT_FR_CA_WIN } from "./layout/fr_ca-win.ts";
-import { LAYOUT_FR_CH_WIN } from "./layout/fr_ch-win.ts";
+import { LAYOUT_FR_CA } from "./layout/fr_ca.ts";
+import { LAYOUT_FR_CH } from "./layout/fr_ch.ts";
 import { LAYOUT_FR_ERGLACE } from "./layout/fr_erglace.ts";
 import { LAYOUT_FR_ERGO_L } from "./layout/fr_ergo_l.ts";
-import { LAYOUT_FR_FR_WIN } from "./layout/fr_fr-win.ts";
+import { LAYOUT_FR_FR } from "./layout/fr_fr.ts";
 import { LAYOUT_FR_OPTIMOT_ERGO } from "./layout/fr_optimot_ergo.ts";
-import { LAYOUT_HE_IL_WIN } from "./layout/he_il-win.ts";
-import { LAYOUT_HU_HU_WIN } from "./layout/hu_hu-win.ts";
-import { LAYOUT_IT_IT_WIN } from "./layout/it_it-win.ts";
+import { LAYOUT_HE_IL } from "./layout/he_il.ts";
+import { LAYOUT_HU_HU } from "./layout/hu_hu.ts";
+import { LAYOUT_IT_IT } from "./layout/it_it.ts";
 import { LAYOUT_JA_JP_JIS } from "./layout/ja_jp_jis.ts";
-import { LAYOUT_NB_NO_WIN } from "./layout/nb_no-win.ts";
-import { LAYOUT_NL_BE_WIN } from "./layout/nl_be-win.ts";
-import { LAYOUT_NL_NL_WIN } from "./layout/nl_nl-win.ts";
-import { LAYOUT_PL_PL_WIN } from "./layout/pl_pl-win.ts";
-import { LAYOUT_PT_BR_WIN } from "./layout/pt_br-win.ts";
-import { LAYOUT_PT_PT_WIN } from "./layout/pt_pt-win.ts";
-import { LAYOUT_RU_RU_WIN } from "./layout/ru_ru-win.ts";
-import { LAYOUT_SL_SI_WIN } from "./layout/sl_si-win.ts";
-import { LAYOUT_SV_SE_WIN } from "./layout/sv_se-win.ts";
-import { LAYOUT_TR_TR_F_WIN } from "./layout/tr_tr_f-win.ts";
-import { LAYOUT_TR_TR_Q_WIN } from "./layout/tr_tr_q-win.ts";
-import { LAYOUT_UK_UA_WIN } from "./layout/uk_ua-win.ts";
+import { LAYOUT_NB_NO } from "./layout/nb_no.ts";
+import { LAYOUT_NL_BE } from "./layout/nl_be.ts";
+import { LAYOUT_NL_NL } from "./layout/nl_nl.ts";
+import { LAYOUT_PL_PL } from "./layout/pl_pl.ts";
+import { LAYOUT_PT_BR } from "./layout/pt_br.ts";
+import { LAYOUT_PT_PT } from "./layout/pt_pt.ts";
+import { LAYOUT_RU_RU } from "./layout/ru_ru.ts";
+import { LAYOUT_SL_SI } from "./layout/sl_si.ts";
+import { LAYOUT_SV_SE } from "./layout/sv_se.ts";
+import { LAYOUT_TR_TR_F } from "./layout/tr_tr_f.ts";
+import { LAYOUT_TR_TR_Q } from "./layout/tr_tr_q.ts";
+import { LAYOUT_UK_UA } from "./layout/uk_ua.ts";
 import { KeyboardOptions } from "./settings.ts";
 import { type CodePointDict, type GeometryDict } from "./types.ts";
 
 const layoutDict = new Map<Layout, CodePointDict>([
-  [Layout.BE_BY, LAYOUT_BE_BY_WIN],
-  [Layout.CS_CZ, LAYOUT_CS_CZ_WIN],
+  [Layout.BE_BY, LAYOUT_BE_BY],
+  [Layout.CS_CZ, LAYOUT_CS_CZ],
   [Layout.DE_BONE, LAYOUT_DE_BONE],
-  [Layout.DE_CH, LAYOUT_DE_CH_WIN],
-  [Layout.DE_DE, LAYOUT_DE_DE_WIN],
+  [Layout.DE_CH, LAYOUT_DE_CH],
+  [Layout.DE_DE, LAYOUT_DE_DE],
   [Layout.DE_MINE, LAYOUT_DE_MINE],
   [Layout.DE_NEO_2, LAYOUT_DE_NEO_2],
   [Layout.DE_NOTED, LAYOUT_DE_NOTED],
-  [Layout.EL_GR, LAYOUT_EL_GR_WIN],
+  [Layout.EL_GR, LAYOUT_EL_GR],
   [Layout.EN_CANARY, LAYOUT_EN_CANARY],
   [Layout.EN_CANARY_MATRIX, LAYOUT_EN_CANARY_MATRIX],
   [Layout.EN_COLEMAK, LAYOUT_EN_COLEMAK],
@@ -80,36 +80,36 @@ const layoutDict = new Map<Layout, CodePointDict>([
   [Layout.EN_COLEMAK_DH_ISO, LAYOUT_EN_COLEMAK_DH_ISO],
   [Layout.EN_COLEMAK_DH_ISO_WIDE, LAYOUT_EN_COLEMAK_DH_ISO_WIDE],
   [Layout.EN_COLEMAK_DH_MATRIX, LAYOUT_EN_COLEMAK_DH_MATRIX],
-  [Layout.EN_DVORAK, LAYOUT_EN_DVORAK_WIN],
+  [Layout.EN_DVORAK, LAYOUT_EN_DVORAK],
   [Layout.EN_HALMAK, LAYOUT_EN_HALMAK],
   [Layout.EN_JP, LAYOUT_JA_JP_JIS],
   [Layout.EN_NORMAN, LAYOUT_EN_NORMAN],
-  [Layout.EN_UK, LAYOUT_EN_UK_WIN],
-  [Layout.EN_US, LAYOUT_EN_US_WIN],
+  [Layout.EN_UK, LAYOUT_EN_UK],
+  [Layout.EN_US, LAYOUT_EN_US],
   [Layout.EN_WORKMAN, LAYOUT_EN_WORKMAN],
-  [Layout.ES_ES, LAYOUT_ES_ES_WIN],
+  [Layout.ES_ES, LAYOUT_ES_ES],
   [Layout.FR_BEPO, LAYOUT_FR_BEPO],
-  [Layout.FR_CA, LAYOUT_FR_CA_WIN],
-  [Layout.FR_CH, LAYOUT_FR_CH_WIN],
+  [Layout.FR_CA, LAYOUT_FR_CA],
+  [Layout.FR_CH, LAYOUT_FR_CH],
   [Layout.FR_ERGLACE, LAYOUT_FR_ERGLACE],
   [Layout.FR_ERGO_L, LAYOUT_FR_ERGO_L],
-  [Layout.FR_FR, LAYOUT_FR_FR_WIN],
+  [Layout.FR_FR, LAYOUT_FR_FR],
   [Layout.FR_OPTIMOT_ERGO, LAYOUT_FR_OPTIMOT_ERGO],
-  [Layout.HE_IL, LAYOUT_HE_IL_WIN],
-  [Layout.HU_HU, LAYOUT_HU_HU_WIN],
-  [Layout.IT_IT, LAYOUT_IT_IT_WIN],
-  [Layout.NB_NO, LAYOUT_NB_NO_WIN],
-  [Layout.NL_BE, LAYOUT_NL_BE_WIN],
-  [Layout.NL_NL, LAYOUT_NL_NL_WIN],
-  [Layout.PL_PL, LAYOUT_PL_PL_WIN],
-  [Layout.PT_BR, LAYOUT_PT_BR_WIN],
-  [Layout.PT_PT, LAYOUT_PT_PT_WIN],
-  [Layout.RU_RU, LAYOUT_RU_RU_WIN],
-  [Layout.SL_SI, LAYOUT_SL_SI_WIN],
-  [Layout.SV_SE, LAYOUT_SV_SE_WIN],
-  [Layout.TR_TR_F, LAYOUT_TR_TR_F_WIN],
-  [Layout.TR_TR_Q, LAYOUT_TR_TR_Q_WIN],
-  [Layout.UK_UA, LAYOUT_UK_UA_WIN],
+  [Layout.HE_IL, LAYOUT_HE_IL],
+  [Layout.HU_HU, LAYOUT_HU_HU],
+  [Layout.IT_IT, LAYOUT_IT_IT],
+  [Layout.NB_NO, LAYOUT_NB_NO],
+  [Layout.NL_BE, LAYOUT_NL_BE],
+  [Layout.NL_NL, LAYOUT_NL_NL],
+  [Layout.PL_PL, LAYOUT_PL_PL],
+  [Layout.PT_BR, LAYOUT_PT_BR],
+  [Layout.PT_PT, LAYOUT_PT_PT],
+  [Layout.RU_RU, LAYOUT_RU_RU],
+  [Layout.SL_SI, LAYOUT_SL_SI],
+  [Layout.SV_SE, LAYOUT_SV_SE],
+  [Layout.TR_TR_F, LAYOUT_TR_TR_F],
+  [Layout.TR_TR_Q, LAYOUT_TR_TR_Q],
+  [Layout.UK_UA, LAYOUT_UK_UA],
 ]);
 
 const geometryDict = new Map<Geometry, GeometryDict>([
