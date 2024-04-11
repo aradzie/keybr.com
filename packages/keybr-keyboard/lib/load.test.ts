@@ -3,7 +3,7 @@ import { Layout } from "./layout.ts";
 import { loadKeyboard } from "./load.ts";
 import { type KeyId } from "./types.ts";
 
-const characterKeys: readonly KeyId[] = [
+const keys: readonly KeyId[] = [
   // ---
   "Backquote",
   "Digit1",
@@ -93,7 +93,7 @@ for (const layout of Layout.ALL) {
       t.true(keyboard.getExampleText().length > 0);
       t.true(keyboard.getExampleLetters().length > 0);
 
-      for (const key of characterKeys) {
+      for (const key of keys) {
         const shape = keyboard.getShape(key);
         if (shape != null) {
           if (shape.finger == null) {
