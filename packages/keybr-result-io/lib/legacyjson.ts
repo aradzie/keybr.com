@@ -169,7 +169,7 @@ function fixLegacyLayoutId(id: string): string {
     case "us-colemak":
       return Layout.EN_COLEMAK.id;
     case "us-colemak-dh":
-      return Layout.EN_COLEMAK_DH.id;
+      return Layout.EN_COLEMAK_DH_ANSI.id;
     case "us-colemak-dh-matrix":
       return Layout.EN_COLEMAK_DH_MATRIX.id;
     case "us-dvorak":

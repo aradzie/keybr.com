@@ -1,0 +1,638 @@
+KBD	cdh_uk	"Colemak-DH (UK)"
+
+COPYRIGHT	"Mod DH project, public domain"
+
+COMPANY	"https://colemakmods.github.io/mod-dh/"
+
+LOCALEID	"00000809"
+
+VERSION	1.0
+
+SHIFTSTATE
+
+0	//Column 4
+1	//Column 5 : Shft
+2	//Column 6 :       Ctrl
+6	//Column 7 :       Ctrl Alt
+7	//Column 8 : Shft  Ctrl Alt
+
+LAYOUT		;an extra '@' at the end is a dead key
+
+//SC	VK_		Cap	0	1	2	6	7
+//--	----		----	----	----	----	----	----
+
+02	1		0	1	0021	-1	00a1	00b9		// DIGIT ONE, EXCLAMATION MARK, <none>, INVERTED EXCLAMATION MARK, SUPERSCRIPT ONE
+03	2		0	2	0022	-1	00ba	00b2		// DIGIT TWO, QUOTATION MARK, <none>, MASCULINE ORDINAL INDICATOR, SUPERSCRIPT TWO
+04	3		0	3	00a3	-1	00aa	00b3		// DIGIT THREE, POUND SIGN, <none>, FEMININE ORDINAL INDICATOR, SUPERSCRIPT THREE
+05	4		0	4	0024	-1	00a2	00a3		// DIGIT FOUR, DOLLAR SIGN, <none>, CENT SIGN, POUND SIGN
+06	5		0	5	0025	-1	20ac	00a5		// DIGIT FIVE, PERCENT SIGN, <none>, EURO SIGN, YEN SIGN
+07	6		4	6	005e	-1	0127	0126		// DIGIT SIX, CIRCUMFLEX ACCENT, <none>, LATIN SMALL LETTER H WITH STROKE, LATIN CAPITAL LETTER H WITH STROKE
+08	7		4	7	0026	-1	00f0	00d0		// DIGIT SEVEN, AMPERSAND, <none>, LATIN SMALL LETTER ETH (Icelandic), LATIN CAPITAL LETTER ETH (Icelandic)
+09	8		4	8	002a	-1	00fe	00de		// DIGIT EIGHT, ASTERISK, <none>, LATIN SMALL LETTER THORN (Icelandic), LATIN CAPITAL LETTER THORN (Icelandic)
+0a	9		0	9	0028	-1	2018	201c		// DIGIT NINE, LEFT PARENTHESIS, <none>, LEFT SINGLE QUOTATION MARK, LEFT DOUBLE QUOTATION MARK
+0b	0		0	0	0029	-1	2019	201d		// DIGIT ZERO, RIGHT PARENTHESIS, <none>, RIGHT SINGLE QUOTATION MARK, RIGHT DOUBLE QUOTATION MARK
+0c	OEM_MINUS	0	002d	005f	-1	2013	2014		// HYPHEN-MINUS, LOW LINE, <none>, EN DASH, EM DASH
+0d	OEM_PLUS	0	003d	002b	-1	00d7	00f7		// EQUALS SIGN, PLUS SIGN, <none>, MULTIPLICATION SIGN, DIVISION SIGN
+10	Q		5	q	Q	-1	00e4	00c4		// LATIN SMALL LETTER Q, LATIN CAPITAL LETTER Q, <none>, LATIN SMALL LETTER A WITH DIAERESIS, LATIN CAPITAL LETTER A WITH DIAERESIS
+11	W		5	w	W	-1	00e5	00c5		// LATIN SMALL LETTER W, LATIN CAPITAL LETTER W, <none>, LATIN SMALL LETTER A WITH RING ABOVE, LATIN CAPITAL LETTER A WITH RING ABOVE
+12	F		5	f	F	-1	00e3	00c3		// LATIN SMALL LETTER F, LATIN CAPITAL LETTER F, <none>, LATIN SMALL LETTER A WITH TILDE, LATIN CAPITAL LETTER A WITH TILDE
+13	P		5	p	P	-1	00f8	00d8		// LATIN SMALL LETTER P, LATIN CAPITAL LETTER P, <none>, LATIN SMALL LETTER O WITH STROKE, LATIN CAPITAL LETTER O WITH STROKE
+14	B		1	b	B	-1	02d8@	007e		// LATIN SMALL LETTER B, LATIN CAPITAL LETTER B, <none>, BREVE, TILDE
+15	J		5	j	J	-1	0111	0110		// LATIN SMALL LETTER J, LATIN CAPITAL LETTER J, <none>, LATIN SMALL LETTER D WITH STROKE, LATIN CAPITAL LETTER D WITH STROKE
+16	L		5	l	L	-1	0142	0141		// LATIN SMALL LETTER L, LATIN CAPITAL LETTER L, <none>, LATIN SMALL LETTER L WITH STROKE, LATIN CAPITAL LETTER L WITH STROKE
+17	U		5	u	U	-1	00fa	00da		// LATIN SMALL LETTER U, LATIN CAPITAL LETTER U, <none>, LATIN SMALL LETTER U WITH ACUTE, LATIN CAPITAL LETTER U WITH ACUTE
+18	Y		5	y	Y	-1	00fc	00dc		// LATIN SMALL LETTER Y, LATIN CAPITAL LETTER Y, <none>, LATIN SMALL LETTER U WITH DIAERESIS, LATIN CAPITAL LETTER U WITH DIAERESIS
+19	OEM_1		4	003b	003a	-1	00f6	00d6		// SEMICOLON, COLON, <none>, LATIN SMALL LETTER O WITH DIAERESIS, LATIN CAPITAL LETTER O WITH DIAERESIS
+1a	OEM_4		0	005b	007b	-1	00ab	2039		// LEFT SQUARE BRACKET, LEFT CURLY BRACKET, <none>, LEFT-POINTING DOUBLE ANGLE QUOTATION MARK *, SINGLE LEFT-POINTING ANGLE QUOTATION MARK
+1b	OEM_6		0	005d	007d	-1	00bb	203a		// RIGHT SQUARE BRACKET, RIGHT CURLY BRACKET, <none>, RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK *, SINGLE RIGHT-POINTING ANGLE QUOTATION MARK
+1e	A		5	a	A	-1	00e1	00c1		// LATIN SMALL LETTER A, LATIN CAPITAL LETTER A, <none>, LATIN SMALL LETTER A WITH ACUTE, LATIN CAPITAL LETTER A WITH ACUTE
+1f	R		1	r	R	-1	0060@	007e		// LATIN SMALL LETTER R, LATIN CAPITAL LETTER R, <none>, GRAVE ACCENT, TILDE
+20	S		5	s	S	-1	00df	007e		// LATIN SMALL LETTER S, LATIN CAPITAL LETTER S, <none>, LATIN SMALL LETTER SHARP S (German), TILDE
+21	T		5	t	T	-1	00b4@	02dd@		// LATIN SMALL LETTER T, LATIN CAPITAL LETTER T, <none>, ACUTE ACCENT, DOUBLE ACUTE ACCENT
+22	G		1	g	G	-1	02db@	007e		// LATIN SMALL LETTER G, LATIN CAPITAL LETTER G, <none>, OGONEK, TILDE
+23	M		5	m	M	-1	00af@	007e		// LATIN SMALL LETTER M, LATIN CAPITAL LETTER M, <none>, MACRON, TILDE
+24	N		5	n	N	-1	00f1	00d1		// LATIN SMALL LETTER N, LATIN CAPITAL LETTER N, <none>, LATIN SMALL LETTER N WITH TILDE, LATIN CAPITAL LETTER N WITH TILDE
+25	E		5	e	E	-1	00e9	00c9		// LATIN SMALL LETTER E, LATIN CAPITAL LETTER E, <none>, LATIN SMALL LETTER E WITH ACUTE, LATIN CAPITAL LETTER E WITH ACUTE
+26	I		5	i	I	-1	00ed	00cd		// LATIN SMALL LETTER I, LATIN CAPITAL LETTER I, <none>, LATIN SMALL LETTER I WITH ACUTE, LATIN CAPITAL LETTER I WITH ACUTE
+27	O		5	o	O	-1	00f3	00d3		// LATIN SMALL LETTER O, LATIN CAPITAL LETTER O, <none>, LATIN SMALL LETTER O WITH ACUTE, LATIN CAPITAL LETTER O WITH ACUTE
+28	OEM_3		0	0027	0040	-1	-1	-1		// APOSTROPHE, COMMERCIAL AT, <none>, <none>, <none>
+29	OEM_8		0	0060	00ac	-1	00a6	-1		// GRAVE ACCENT, NOT SIGN, <none>, BROKEN BAR, <none>
+2b	OEM_7		0	0023	007e	001c	005c	007c		// NUMBER SIGN, TILDE, INFORMATION SEPARATOR FOUR, REVERSE SOLIDUS, VERTICAL LINE
+2c	X		1	x	X	-1	005e@	007e		// LATIN SMALL LETTER X, LATIN CAPITAL LETTER X, <none>, CIRCUMFLEX ACCENT, TILDE
+2d	C		5	c	C	-1	00e7	00c7		// LATIN SMALL LETTER C, LATIN CAPITAL LETTER C, <none>, LATIN SMALL LETTER C WITH CEDILLA, LATIN CAPITAL LETTER C WITH CEDILLA
+2e	D		1	d	D	-1	00a8@	007e		// LATIN SMALL LETTER D, LATIN CAPITAL LETTER D, <none>, DIAERESIS, TILDE
+2f	V		5	v	V	-1	0153	0152		// LATIN SMALL LETTER V, LATIN CAPITAL LETTER V, <none>, LATIN SMALL LIGATURE OE, LATIN CAPITAL LIGATURE OE
+30	OEM_5		0	005c	007c	-1	002a@	007e		// REVERSE SOLIDUS, VERTICAL LINE, <none>, SPECIAL, TILDE
+31	K		1	k	K	-1	02da@	007e		// LATIN SMALL LETTER K, LATIN CAPITAL LETTER K, <none>, RING ABOVE, TILDE
+32	H		1	h	H	-1	02c7@	007e		// LATIN SMALL LETTER H, LATIN CAPITAL LETTER H, <none>, CARON, TILDE
+33	OEM_COMMA	4	002c	003c	-1	00b8@	007e		// COMMA, LESS-THAN SIGN, <none>, CEDILLA, TILDE
+34	OEM_PERIOD	4	002e	003e	-1	02d9@	007e		// FULL STOP, GREATER-THAN SIGN, <none>, DOT ABOVE, TILDE
+35	OEM_2		0	002f	003f	-1	00bf	007e		// SOLIDUS, QUESTION MARK, <none>, INVERTED QUESTION MARK, TILDE
+39	SPACE		0	0020	0020	-1	0020	00a0		// SPACE, SPACE, <none>, SPACE, NO-BREAK SPACE
+56	Z		5	z	Z	-1	00e6	00c6		// LATIN SMALL LETTER Z, LATIN CAPITAL LETTER Z, <none>, LATIN SMALL LETTER AE (ash) *, LATIN CAPITAL LETTER AE (ash) *
+53	DECIMAL	0	002e	002e	-1	-1	-1		// FULL STOP, FULL STOP, , , 
+
+
+DEADKEY	02db
+
+0061	0105	// a -> ą
+0065	0119	// e -> ę
+0069	012f	// i -> į
+006f	01eb	// o -> ǫ
+0075	0173	// u -> ų
+014d	01ed	// ō -> ǭ
+0041	0104	// A -> Ą
+0045	0118	// E -> Ę
+0049	012e	// I -> Į
+004f	01ea	// O -> Ǫ
+0055	0172	// U -> Ų
+014c	01ec	// Ō -> Ǭ
+
+DEADKEY	0060
+
+0061	00e0	// a -> à
+0065	00e8	// e -> è
+0069	00ec	// i -> ì
+006e	01f9	// n -> ǹ
+006f	00f2	// o -> ò
+0075	00f9	// u -> ù
+0077	1e81	// w -> ẁ
+0079	1ef3	// y -> ỳ
+0103	1eb1	// ă -> ằ
+00e2	1ea7	// â -> ầ
+00ea	1ec1	// ê -> ề
+0113	1e15	// ē -> ḕ
+00f4	1ed3	// ô -> ồ
+014d	1e51	// ō -> ṑ
+00fc	01dc	// ü -> ǜ
+0041	00c0	// A -> À
+0045	00c8	// E -> È
+0049	00cc	// I -> Ì
+004e	01f8	// N -> Ǹ
+004f	00d2	// O -> Ò
+0055	00d9	// U -> Ù
+0057	1e80	// W -> Ẁ
+0059	1ef2	// Y -> Ỳ
+0102	1eb0	// Ă -> Ằ
+00c2	1ea6	// Â -> Ầ
+00ca	1ec0	// Ê -> Ề
+0112	1e14	// Ē -> Ḕ
+00d4	1ed2	// Ô -> Ồ
+014c	1e50	// Ō -> Ṑ
+00dc	01db	// Ü -> Ǜ
+
+DEADKEY	00b4
+
+0061	00e1	// a -> á
+00e6	01fd	// æ -> ǽ
+0063	0107	// c -> ć
+0065	00e9	// e -> é
+0067	01f5	// g -> ǵ
+0069	00ed	// i -> í
+006b	1e31	// k -> ḱ
+006c	013a	// l -> ĺ
+006d	1e3f	// m -> ḿ
+006e	0144	// n -> ń
+006f	00f3	// o -> ó
+0070	1e55	// p -> ṕ
+0072	0155	// r -> ŕ
+0073	015b	// s -> ś
+0075	00fa	// u -> ú
+0077	1e83	// w -> ẃ
+0079	00fd	// y -> ý
+007a	017a	// z -> ź
+0103	1eaf	// ă -> ắ
+00e2	1ea5	// â -> ấ
+00e5	01fb	// å -> ǻ
+00e7	1e09	// ç -> ḉ
+00ea	1ebf	// ê -> ế
+0113	1e17	// ē -> ḗ
+00ef	1e2f	// ï -> ḯ
+00f4	1ed1	// ô -> ố
+014d	1e53	// ō -> ṓ
+00f8	01ff	// ø -> ǿ
+00f5	1e4d	// õ -> ṍ
+00fc	01d8	// ü -> ǘ
+0169	1e79	// ũ -> ṹ
+1e61	1e65	// ṡ -> ṥ
+0041	00c1	// A -> Á
+00c6	01fc	// Æ -> Ǽ
+0043	0106	// C -> Ć
+0045	00c9	// E -> É
+0047	01f4	// G -> Ǵ
+0049	00cd	// I -> Í
+004b	1e30	// K -> Ḱ
+004c	0139	// L -> Ĺ
+004d	1e3e	// M -> Ḿ
+004e	0143	// N -> Ń
+004f	00d3	// O -> Ó
+0050	1e54	// P -> Ṕ
+0052	0154	// R -> Ŕ
+0053	015a	// S -> Ś
+0055	00da	// U -> Ú
+0057	1e82	// W -> Ẃ
+0059	00dd	// Y -> Ý
+005a	0179	// Z -> Ź
+0102	1eae	// Ă -> Ắ
+00c2	1ea4	// Â -> Ấ
+00c5	01fa	// Å -> Ǻ
+00c7	1e08	// Ç -> Ḉ
+00ca	1ebe	// Ê -> Ế
+0112	1e16	// Ē -> Ḗ
+00cf	1e2e	// Ï -> Ḯ
+00d4	1ed0	// Ô -> Ố
+014c	1e52	// Ō -> Ṓ
+00d8	01fe	// Ø -> Ǿ
+00d5	1e4c	// Õ -> Ṍ
+00dc	01d7	// Ü -> Ǘ
+0168	1e78	// Ũ -> Ṹ
+1e60	1e64	// Ṡ -> Ṥ
+
+DEADKEY	02dd
+
+006f	0151	// o -> ő
+0075	0171	// u -> ű
+004f	0150	// O -> Ő
+0055	0170	// U -> Ű
+
+DEADKEY	00a8
+
+0061	00e4	// a -> ä
+0065	00eb	// e -> ë
+0068	1e27	// h -> ḧ
+0069	00ef	// i -> ï
+006f	00f6	// o -> ö
+0074	1e97	// t -> ẗ
+0075	00fc	// u -> ü
+0077	1e85	// w -> ẅ
+0078	1e8d	// x -> ẍ
+0079	00ff	// y -> ÿ
+00ed	1e2f	// í -> ḯ
+00fa	01d8	// ú -> ǘ
+01d4	01da	// ǔ -> ǚ
+00f5	1e4f	// õ -> ṏ
+00f9	01dc	// ù -> ǜ
+0101	01df	// ā -> ǟ
+014d	022b	// ō -> ȫ
+016b	01d6	// ū -> ǖ
+0041	00c4	// A -> Ä
+0045	00cb	// E -> Ë
+0048	1e26	// H -> Ḧ
+0049	00cf	// I -> Ï
+004f	00d6	// O -> Ö
+0055	00dc	// U -> Ü
+0057	1e84	// W -> Ẅ
+0058	1e8c	// X -> Ẍ
+0059	0178	// Y -> Ÿ
+00cd	1e2e	// Í -> Ḯ
+00da	01d7	// Ú -> Ǘ
+01d3	01d9	// Ǔ -> Ǚ
+00d5	1e4e	// Õ -> Ṏ
+00d9	01db	// Ù -> Ǜ
+0100	01de	// Ā -> Ǟ
+014c	022a	// Ō -> Ȫ
+016a	01d5	// Ū -> Ǖ
+
+DEADKEY	02c7
+
+0061	01ce	// a -> ǎ
+0063	010d	// c -> č
+0064	010f	// d -> ď
+01f3	01c6	// ǳ -> ǆ
+0065	011b	// e -> ě
+0292	01ef	// ʒ -> ǯ
+0067	01e7	// g -> ǧ
+0068	021f	// h -> ȟ
+0069	01d0	// i -> ǐ
+006a	01f0	// j -> ǰ
+006b	01e9	// k -> ǩ
+006c	013e	// l -> ľ
+006e	0148	// n -> ň
+006f	01d2	// o -> ǒ
+0072	0159	// r -> ř
+0073	0161	// s -> š
+0074	0165	// t -> ť
+0075	01d4	// u -> ǔ
+007a	017e	// z -> ž
+00fc	01da	// ü -> ǚ
+1e61	1e67	// ṡ -> ṧ
+0041	01cd	// A -> Ǎ
+0043	010c	// C -> Č
+0044	010e	// D -> Ď
+01f2	01c5	// ǲ -> ǅ
+01f1	01c4	// Ǳ -> Ǆ
+0045	011a	// E -> Ě
+01b7	01ee	// Ʒ -> Ǯ
+0047	01e6	// G -> Ǧ
+0048	021e	// H -> Ȟ
+0049	01cf	// I -> Ǐ
+004b	01e8	// K -> Ǩ
+004c	013d	// L -> Ľ
+004e	0147	// N -> Ň
+004f	01d1	// O -> Ǒ
+0052	0158	// R -> Ř
+0053	0160	// S -> Š
+0054	0164	// T -> Ť
+0055	01d3	// U -> Ǔ
+005a	017d	// Z -> Ž
+00dc	01d9	// Ü -> Ǚ
+1e60	1e66	// Ṡ -> Ṧ
+
+DEADKEY	007e
+
+0061	00e3	// a -> ã
+0065	1ebd	// e -> ẽ
+0069	0129	// i -> ĩ
+006e	00f1	// n -> ñ
+006f	00f5	// o -> õ
+0075	0169	// u -> ũ
+0076	1e7d	// v -> ṽ
+0079	1ef9	// y -> ỹ
+00f3	1e4d	// ó -> ṍ
+00fa	1e79	// ú -> ṹ
+00f6	1e4f	// ö -> ṏ
+014d	022d	// ō -> ȭ
+0103	1eb5	// ă -> ẵ
+00e2	1eab	// â -> ẫ
+00ea	1ec5	// ê -> ễ
+00f4	1ed7	// ô -> ỗ
+0041	00c3	// A -> Ã
+0045	1ebc	// E -> Ẽ
+0049	0128	// I -> Ĩ
+004e	00d1	// N -> Ñ
+004f	00d5	// O -> Õ
+0055	0168	// U -> Ũ
+0056	1e7c	// V -> Ṽ
+0059	1ef8	// Y -> Ỹ
+00d3	1e4c	// Ó -> Ṍ
+00da	1e78	// Ú -> Ṹ
+00d6	1e4e	// Ö -> Ṏ
+014c	022c	// Ō -> Ȭ
+0102	1eb4	// Ă -> Ẵ
+00c2	1eaa	// Â -> Ẫ
+00ca	1ec4	// Ê -> Ễ
+00d4	1ed6	// Ô -> Ỗ
+
+DEADKEY	002a
+
+007e	2248	// ~ -> ≈
+0063	00a9	// c -> ©
+0072	00ae	// r -> ®
+006e	2116	// n -> №
+0064	00b0	// d -> °
+0074	2122	// t -> ™
+006d	00b5	// m -> µ
+0070	00b6	// p -> ¶
+002e	2026	// . -> …
+0025	2030	// % -> ‰
+002b	00b1	// + -> ±
+003c	2264	// < -> ≤
+003e	2265	// > -> ≥
+003d	2260	// = -> ≠
+007c	00a6	// | -> ¦
+0073	00a7	// s -> §
+
+DEADKEY	005e
+
+0061	00e2	// a -> â
+0063	0109	// c -> ĉ
+0065	00ea	// e -> ê
+0067	011d	// g -> ĝ
+0068	0125	// h -> ĥ
+0069	00ee	// i -> î
+006a	0135	// j -> ĵ
+006f	00f4	// o -> ô
+0073	015d	// s -> ŝ
+0075	00fb	// u -> û
+0077	0175	// w -> ŵ
+0079	0177	// y -> ŷ
+007a	1e91	// z -> ẑ
+00e1	1ea5	// á -> ấ
+00e9	1ebf	// é -> ế
+00f3	1ed1	// ó -> ố
+00e0	1ea7	// à -> ầ
+00e8	1ec1	// è -> ề
+00f2	1ed3	// ò -> ồ
+00e3	1eab	// ã -> ẫ
+1ebd	1ec5	// ẽ -> ễ
+00f5	1ed7	// õ -> ỗ
+0041	00c2	// A -> Â
+0043	0108	// C -> Ĉ
+0045	00ca	// E -> Ê
+0047	011c	// G -> Ĝ
+0048	0124	// H -> Ĥ
+0049	00ce	// I -> Î
+004a	0134	// J -> Ĵ
+004f	00d4	// O -> Ô
+0053	015c	// S -> Ŝ
+0055	00db	// U -> Û
+0057	0174	// W -> Ŵ
+0059	0176	// Y -> Ŷ
+005a	1e90	// Z -> Ẑ
+00c1	1ea4	// Á -> Ấ
+00c9	1ebe	// É -> Ế
+00d3	1ed0	// Ó -> Ố
+00c0	1ea6	// À -> Ầ
+00c8	1ec0	// È -> Ề
+00d2	1ed2	// Ò -> Ồ
+00c3	1eaa	// Ã -> Ẫ
+1ebc	1ec4	// Ẽ -> Ễ
+00d5	1ed6	// Õ -> Ỗ
+
+DEADKEY	02d8
+
+0061	0103	// a -> ă
+0065	0115	// e -> ĕ
+0067	011f	// g -> ğ
+0069	012d	// i -> ĭ
+006f	014f	// o -> ŏ
+0075	016d	// u -> ŭ
+00e1	1eaf	// á -> ắ
+0229	1e1d	// ȩ -> ḝ
+00e0	1eb1	// à -> ằ
+00e3	1eb5	// ã -> ẵ
+0041	0102	// A -> Ă
+0045	0114	// E -> Ĕ
+0047	011e	// G -> Ğ
+0049	012c	// I -> Ĭ
+004f	014e	// O -> Ŏ
+0055	016c	// U -> Ŭ
+00c1	1eae	// Á -> Ắ
+0228	1e1c	// Ȩ -> Ḝ
+00c0	1eb0	// À -> Ằ
+00c3	1eb4	// Ã -> Ẵ
+
+DEADKEY	02da
+
+0061	00e5	// a -> å
+0075	016f	// u -> ů
+0077	1e98	// w -> ẘ
+0079	1e99	// y -> ẙ
+00e1	01fb	// á -> ǻ
+0041	00c5	// A -> Å
+0055	016e	// U -> Ů
+00c1	01fa	// Á -> Ǻ
+
+DEADKEY	00af
+
+0061	0101	// a -> ā
+00e6	01e3	// æ -> ǣ
+0065	0113	// e -> ē
+0067	1e21	// g -> ḡ
+0069	012b	// i -> ī
+006f	014d	// o -> ō
+0075	016b	// u -> ū
+0079	0233	// y -> ȳ
+00e9	1e17	// é -> ḗ
+00f3	1e53	// ó -> ṓ
+00e8	1e15	// è -> ḕ
+00f2	1e51	// ò -> ṑ
+00e4	01df	// ä -> ǟ
+0227	01e1	// ȧ -> ǡ
+00f6	022b	// ö -> ȫ
+022f	0231	// ȯ -> ȱ
+01eb	01ed	// ǫ -> ǭ
+00f5	022d	// õ -> ȭ
+00fc	01d6	// ü -> ǖ
+0041	0100	// A -> Ā
+00c6	01e2	// Æ -> Ǣ
+0045	0112	// E -> Ē
+0047	1e20	// G -> Ḡ
+0049	012a	// I -> Ī
+004f	014c	// O -> Ō
+0055	016a	// U -> Ū
+0059	0232	// Y -> Ȳ
+00c9	1e16	// É -> Ḗ
+00d3	1e52	// Ó -> Ṓ
+00c8	1e14	// È -> Ḕ
+00d2	1e50	// Ò -> Ṑ
+00c4	01de	// Ä -> Ǟ
+0226	01e0	// Ȧ -> Ǡ
+00d6	022a	// Ö -> Ȫ
+022e	0230	// Ȯ -> Ȱ
+01ea	01ec	// Ǫ -> Ǭ
+00d5	022c	// Õ -> Ȭ
+00dc	01d5	// Ü -> Ǖ
+
+DEADKEY	00b8
+
+0063	00e7	// c -> ç
+0064	1e11	// d -> ḑ
+0065	0229	// e -> ȩ
+0067	0123	// g -> ģ
+0068	1e29	// h -> ḩ
+006b	0137	// k -> ķ
+006c	013c	// l -> ļ
+006e	0146	// n -> ņ
+0072	0157	// r -> ŗ
+0073	015f	// s -> ş
+0074	0163	// t -> ţ
+0107	1e09	// ć -> ḉ
+0115	1e1d	// ĕ -> ḝ
+0043	00c7	// C -> Ç
+0044	1e10	// D -> Ḑ
+0045	0228	// E -> Ȩ
+0047	0122	// G -> Ģ
+0048	1e28	// H -> Ḩ
+004b	0136	// K -> Ķ
+004c	013b	// L -> Ļ
+004e	0145	// N -> Ņ
+0052	0156	// R -> Ŗ
+0053	015e	// S -> Ş
+0054	0162	// T -> Ţ
+0106	1e08	// Ć -> Ḉ
+0114	1e1c	// Ĕ -> Ḝ
+
+DEADKEY	02d9
+
+0061	0227	// a -> ȧ
+0062	1e03	// b -> ḃ
+0063	010b	// c -> ċ
+0064	1e0b	// d -> ḋ
+0065	0117	// e -> ė
+0066	1e1f	// f -> ḟ
+0067	0121	// g -> ġ
+0068	1e23	// h -> ḣ
+017f	1e9b	// ſ -> ẛ
+006d	1e41	// m -> ṁ
+006e	1e45	// n -> ṅ
+006f	022f	// o -> ȯ
+0070	1e57	// p -> ṗ
+0072	1e59	// r -> ṙ
+0073	1e61	// s -> ṡ
+0074	1e6b	// t -> ṫ
+0077	1e87	// w -> ẇ
+0078	1e8b	// x -> ẋ
+0079	1e8f	// y -> ẏ
+007a	017c	// z -> ż
+015b	1e65	// ś -> ṥ
+0161	1e67	// š -> ṧ
+0101	01e1	// ā -> ǡ
+014d	0231	// ō -> ȱ
+0041	0226	// A -> Ȧ
+0042	1e02	// B -> Ḃ
+0043	010a	// C -> Ċ
+0044	1e0a	// D -> Ḋ
+0045	0116	// E -> Ė
+0046	1e1e	// F -> Ḟ
+0047	0120	// G -> Ġ
+0048	1e22	// H -> Ḣ
+0049	0130	// I -> İ
+004d	1e40	// M -> Ṁ
+004e	1e44	// N -> Ṅ
+004f	022e	// O -> Ȯ
+0050	1e56	// P -> Ṗ
+0052	1e58	// R -> Ṙ
+0053	1e60	// S -> Ṡ
+0054	1e6a	// T -> Ṫ
+0057	1e86	// W -> Ẇ
+0058	1e8a	// X -> Ẋ
+0059	1e8e	// Y -> Ẏ
+005a	017b	// Z -> Ż
+015a	1e64	// Ś -> Ṥ
+0160	1e66	// Š -> Ṧ
+0100	01e0	// Ā -> Ǡ
+014c	0230	// Ō -> Ȱ
+0069	0131	// i -> ı
+006c	0140	// l -> ŀ
+004c	013f	// L -> Ŀ
+
+
+KEYNAME
+
+01	Esc
+0e	Backspace
+0f	Tab
+1c	Enter
+1d	Ctrl
+2a	Shift
+36	"Right Shift"
+37	"Num *"
+38	Alt
+39	Space
+3a	"Caps Lock"
+3b	F1
+3c	F2
+3d	F3
+3e	F4
+3f	F5
+40	F6
+41	F7
+42	F8
+43	F9
+44	F10
+45	Pause
+46	"Scroll Lock"
+47	"Num 7"
+48	"Num 8"
+49	"Num 9"
+4a	"Num -"
+4b	"Num 4"
+4c	"Num 5"
+4d	"Num 6"
+4e	"Num +"
+4f	"Num 1"
+50	"Num 2"
+51	"Num 3"
+52	"Num 0"
+53	"Num Del"
+54	"Sys Req"
+57	F11
+58	F12
+7c	F13
+7d	F14
+7e	F15
+7f	F16
+80	F17
+81	F18
+82	F19
+83	F20
+84	F21
+85	F22
+86	F23
+87	F24
+
+KEYNAME_EXT
+
+1c	"Num Enter"
+1d	"Right Ctrl"
+35	"Num /"
+37	"Prnt Scrn"
+38	"Right Alt"
+45	"Num Lock"
+46	Break
+47	Home
+48	Up
+49	"Page Up"
+4b	Left
+4d	Right
+4f	End
+50	Down
+51	"Page Down"
+52	Insert
+53	Delete
+54	<00>
+56	Help
+5b	"Left Windows"
+5c	"Right Windows"
+5d	Application
+
+KEYNAME_DEAD
+
+02db	"OGONEK"
+0060	"GRAVE ACCENT"
+00b4	"ACUTE ACCENT"
+02dd	"DOUBLE ACUTE ACCENT"
+00a8	"DIAERESIS"
+02c7	"CARON"
+007e	"TILDE"
+002a	"SPECIAL"
+005e	"CIRCUMFLEX ACCENT"
+02d8	"BREVE"
+02da	"RING ABOVE"
+00af	"MACRON"
+00b8	"CEDILLA"
+02d9	"DOT ABOVE"
+
+
+ENDKBD

@@ -41,7 +41,7 @@ export const LAYOUT_EN_COLEMAK_DH_MATRIX: CodePointDict = {
   KeyL: [/* i */ 0x0069, /* I */ 0x0049],
   Semicolon: [/* o */ 0x006f, /* O */ 0x004f],
   Quote: [/* ' */ 0x0027, /* " */ 0x0022],
-  IntlBackslash: [/* \ */ 0x005c, /* | */ 0x007c],
+  IntlBackslash: [/* - */ 0x002d, /* _ */ 0x005f],
   KeyZ: [/* z */ 0x007a, /* Z */ 0x005a],
   KeyX: [/* x */ 0x0078, /* X */ 0x0058],
   KeyC: [/* c */ 0x0063, /* C */ 0x0043],

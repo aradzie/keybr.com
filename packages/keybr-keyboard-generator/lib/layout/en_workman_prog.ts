@@ -47,4 +47,5 @@ export default {
   Comma: ",<",
   Period: ".>",
   Slash: "/?",
+  Space: " ",
 };

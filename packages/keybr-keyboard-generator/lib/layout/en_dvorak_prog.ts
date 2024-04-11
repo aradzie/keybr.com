@@ -47,4 +47,5 @@ export default {
   Comma: "wW",
   Period: "vV",
   Slash: "zZ",
+  Space: " ",
 };

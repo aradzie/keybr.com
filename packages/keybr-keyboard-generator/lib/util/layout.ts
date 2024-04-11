@@ -64,6 +64,15 @@ export type KeyMap = {
 };
 
 /**
+ * Removes dead keys from the given keyboard layout.
+ */
+export function undead(keyMap: KeyMap): KeyMap {
+  return Object.fromEntries(
+    Object.entries(keyMap).map(([id, [a, b]]) => [id, [a, b]]),
+  );
+}
+
+/**
  * Converts a custom keyboard layout definition to an internal representation.
  */
 export function toCodePointDict(keymap: KeyMap): CodePointDict {

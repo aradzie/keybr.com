@@ -48,11 +48,11 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
-  static readonly EN_WORKMAN = new Layout(
-    /* id= */ "en-workman",
-    /* xid= */ 0x1a,
-    /* name= */ "Workman",
-    /* family= */ "workman",
+  static readonly EN_COLEMAK_DH_ANSI = new Layout(
+    /* id= */ "en-colemak-dh",
+    /* xid= */ 0x1b,
+    /* name= */ "Colemak-DH (ANSI)",
+    /* family= */ "colemak-dh",
     /* language= */ Language.EN,
     /* emulate= */ true,
     /* geometries= */ new Enum(
@@ -63,16 +63,42 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
-  static readonly EN_COLEMAK_DH = new Layout(
-    /* id= */ "en-colemak-dh",
-    /* xid= */ 0x1b,
-    /* name= */ "Colemak-DH",
-    /* family= */ "colemak-dh",
+  static readonly EN_COLEMAK_DH_ANSI_WIDE = new Layout(
+    /* id= */ "en-colemak-dh-wide",
+    /* xid= */ 0x1f,
+    /* name= */ "Colemak-DH Wide (ANSI)",
+    /* family= */ "colemak-dh-wide",
     /* language= */ Language.EN,
     /* emulate= */ true,
     /* geometries= */ new Enum(
       Geometry.STANDARD_101,
       Geometry.STANDARD_101_FULL,
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.MATRIX,
+    ),
+  );
+  static readonly EN_COLEMAK_DH_ISO = new Layout(
+    /* id= */ "en-colemak-dh-iso",
+    /* xid= */ 0x16,
+    /* name= */ "Colemak-DH (ISO)",
+    /* family= */ "colemak-dh-iso",
+    /* language= */ Language.EN,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.MATRIX,
+    ),
+  );
+  static readonly EN_COLEMAK_DH_ISO_WIDE = new Layout(
+    /* id= */ "en-colemak-dh-iso-wide",
+    /* xid= */ 0x17,
+    /* name= */ "Colemak-DH Wide (ISO)",
+    /* family= */ "colemak-dh-iso-wide",
+    /* language= */ Language.EN,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
       Geometry.STANDARD_102,
       Geometry.STANDARD_102_FULL,
       Geometry.MATRIX,
@@ -87,11 +113,11 @@ export class Layout implements XEnumItem {
     /* emulate= */ true,
     /* geometries= */ new Enum(Geometry.MATRIX),
   );
-  static readonly EN_CANARY = new Layout(
-    /* id= */ "en-canary",
-    /* xid= */ 0x1e,
-    /* name= */ "Canary",
-    /* family= */ "canary",
+  static readonly EN_WORKMAN = new Layout(
+    /* id= */ "en-workman",
+    /* xid= */ 0x1a,
+    /* name= */ "Workman",
+    /* family= */ "workman",
     /* language= */ Language.EN,
     /* emulate= */ true,
     /* geometries= */ new Enum(
@@ -101,15 +127,6 @@ export class Layout implements XEnumItem {
       Geometry.STANDARD_102_FULL,
       Geometry.MATRIX,
     ),
-  );
-  static readonly EN_CANARY_MATRIX = new Layout(
-    /* id= */ "en-canary-matrix",
-    /* xid= */ 0x1d,
-    /* name= */ "Canary (matrix)",
-    /* family= */ "canary-matrix",
-    /* language= */ Language.EN,
-    /* emulate= */ true,
-    /* geometries= */ new Enum(Geometry.MATRIX),
   );
   static readonly EN_UK = new Layout(
     /* id= */ "en-uk",
@@ -620,16 +637,43 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly EN_CANARY = new Layout(
+    /* id= */ "en-canary",
+    /* xid= */ 0x1e,
+    /* name= */ "Canary",
+    /* family= */ "canary",
+    /* language= */ Language.EN,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.STANDARD_101,
+      Geometry.STANDARD_101_FULL,
+      Geometry.STANDARD_102,
+      Geometry.STANDARD_102_FULL,
+      Geometry.MATRIX,
+    ),
+  );
+  static readonly EN_CANARY_MATRIX = new Layout(
+    /* id= */ "en-canary-matrix",
+    /* xid= */ 0x1d,
+    /* name= */ "Canary (matrix)",
+    /* family= */ "canary-matrix",
+    /* language= */ Language.EN,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(Geometry.MATRIX),
+  );
 
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
     Layout.EN_DVORAK,
     Layout.EN_COLEMAK,
-    Layout.EN_COLEMAK_DH,
+    Layout.EN_COLEMAK_DH_ANSI,
+    Layout.EN_COLEMAK_DH_ANSI_WIDE,
+    Layout.EN_COLEMAK_DH_ISO,
+    Layout.EN_COLEMAK_DH_ISO_WIDE,
     Layout.EN_COLEMAK_DH_MATRIX,
+    Layout.EN_WORKMAN,
     Layout.EN_CANARY,
     Layout.EN_CANARY_MATRIX,
-    Layout.EN_WORKMAN,
     Layout.EN_UK,
     Layout.EN_JP,
     Layout.EL_GR,

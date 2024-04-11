@@ -6,15 +6,13 @@
 import { join } from "node:path";
 import { importCldr } from "./import/cldr.ts";
 import { importKalamine } from "./import/kalamine.ts";
+import { importKlc } from "./import/klc.ts";
 import LAYOUT_DE_BONE from "./layout/de_bone.ts";
 import LAYOUT_DE_MINE from "./layout/de_mine.ts";
 import LAYOUT_DE_NEO_2 from "./layout/de_neo_2.ts";
 import LAYOUT_DE_NOTED from "./layout/de_noted.ts";
 import LAYOUT_EN_CANARY from "./layout/en_canary.ts";
 import LAYOUT_EN_CANARY_MATRIX from "./layout/en_canary_matrix.ts";
-import LAYOUT_EN_COLEMAK from "./layout/en_colemak.ts";
-import LAYOUT_EN_COLEMAK_DH from "./layout/en_colemak_dh.ts";
-import LAYOUT_EN_COLEMAK_DH_MATRIX from "./layout/en_colemak_dh_matrix.ts";
 import LAYOUT_EN_DVORAK_PROG from "./layout/en_dvorak_prog.ts";
 import LAYOUT_EN_WORKMAN from "./layout/en_workman.ts";
 import LAYOUT_EN_WORKMAN_PROG from "./layout/en_workman_prog.ts";
@@ -24,7 +22,7 @@ import LAYOUT_FR_ERGO_L from "./layout/fr_ergo_l.json";
 import LAYOUT_FR_OPTIMOT_ERGO from "./layout/fr_optimot_ergo.ts";
 import LAYOUT_JA_JP_JIS from "./layout/ja_jp_jis.ts";
 import { writeGeneratedFile } from "./util/generate.ts";
-import { type KeyMap } from "./util/layout.ts";
+import { type KeyMap, undead } from "./util/layout.ts";
 
 for (const [output, keymap] of [
   ["be_by-win.ts", importCldr("cldr-keyboards-43.0/keyboards/windows/be-t-k0-windows.xml")],
@@ -38,9 +36,12 @@ for (const [output, keymap] of [
   ["el_gr-win.ts", importCldr("cldr-keyboards-43.0/keyboards/windows/el-t-k0-windows.xml")],
   ["en_canary.ts", LAYOUT_EN_CANARY],
   ["en_canary_matrix.ts", LAYOUT_EN_CANARY_MATRIX],
-  ["en_colemak.ts", LAYOUT_EN_COLEMAK],
-  ["en_colemak_dh.ts", LAYOUT_EN_COLEMAK_DH],
-  ["en_colemak_dh_matrix.ts", LAYOUT_EN_COLEMAK_DH_MATRIX],
+  ["en_colemak.ts", undead(importKlc("lib/layout/colemak.klc"))],
+  ["en_colemak_dh_ansi.ts", undead(importKlc("lib/layout/colemak_dh_ansi_us.klc"))],
+  ["en_colemak_dh_ansi_wide.ts", undead(importKlc("lib/layout/colemak_dh_ansi_us_wide.klc"))],
+  ["en_colemak_dh_iso.ts", undead(importKlc("lib/layout/colemak_dh_iso_uk.klc"))],
+  ["en_colemak_dh_iso_wide.ts", undead(importKlc("lib/layout/colemak_dh_iso_uk_wide.klc"))],
+  ["en_colemak_dh_matrix.ts", undead(importKlc("lib/layout/colemak_dh_matrix_us.klc"))],
   ["en_dvorak-win.ts", importCldr("cldr-keyboards-43.0/keyboards/windows/en-t-k0-windows-dvorak.xml")],
   ["en_dvorak_prog.ts", LAYOUT_EN_DVORAK_PROG],
   ["en_dvorakl-win.ts", importCldr("cldr-keyboards-43.0/keyboards/windows/en-t-k0-windows-dvorakl.xml")],
