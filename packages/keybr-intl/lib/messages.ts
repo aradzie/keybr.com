@@ -5,6 +5,7 @@ export type Messages = Record<string, string | any>;
 export async function loadMessages(locale: LocaleId): Promise<Messages> {
   // prettier-ignore
   switch (locale) {
+    case "ar": return (await import(/* webpackChunkName: "messages-ar" */ "./messages/ar.json")).default;
     case "cs": return (await import(/* webpackChunkName: "messages-cs" */ "./messages/cs.json")).default;
     case "da": return (await import(/* webpackChunkName: "messages-da" */ "./messages/da.json")).default;
     case "de": return (await import(/* webpackChunkName: "messages-de" */ "./messages/de.json")).default;

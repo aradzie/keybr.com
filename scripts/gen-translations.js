@@ -10,6 +10,7 @@ const { rootDir, findPackages } = require("./root.js");
 const packageDir = join(rootDir, "packages/keybr-intl");
 
 const allLocales = [
+  "ar",
   "cs",
   "da",
   "de",

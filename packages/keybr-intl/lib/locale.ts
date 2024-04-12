@@ -20,6 +20,7 @@ import { createContext, useContext } from "react";
  */
 
 export type LocaleId =
+  | "ar"
   | "cs"
   | "da"
   | "de"
@@ -47,6 +48,7 @@ export const defaultLocale: LocaleId = "en";
 
 export const allLocales: readonly LocaleId[] = [
   defaultLocale,
+  "ar",
   "cs",
   "da",
   "de",
@@ -71,7 +73,7 @@ export const allLocales: readonly LocaleId[] = [
 ];
 
 export function getDir(locale: LocaleId): "ltr" | "rtl" {
-  return locale === "he" || locale === "fa" ? "rtl" : "ltr";
+  return locale === "ar" || locale === "fa" || locale === "he" ? "rtl" : "ltr";
 }
 
 export const PreferredLocaleContext = createContext<LocaleId>(defaultLocale);
