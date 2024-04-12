@@ -13,6 +13,8 @@ import { type KeyMap, undead } from "./layout/layout.ts";
 import { pathTo } from "./root.ts";
 
 for (const [id, keymap] of [
+  ["ar_sa", importCldr("cldr-keyboards-43.0/keyboards/windows/ar-t-k0-windows.xml")],
+  ["ar_sa_102", importCldr("cldr-keyboards-43.0/keyboards/windows/ar-t-k0-windows-102key.xml")],
   ["be_by", importCldr("cldr-keyboards-43.0/keyboards/windows/be-t-k0-windows.xml")],
   ["cs_cz", importCldr("cldr-keyboards-43.0/keyboards/windows/cs-t-k0-windows.xml")],
   ["de_bone", importKeymap("layout/de_bone.json")],
@@ -43,6 +45,7 @@ for (const [id, keymap] of [
   ["en_workman", importKeymap("layout/en_workman.json")],
   ["en_workman_prog", importKeymap("layout/en_workman_prog.json")],
   ["es_es", importCldr("cldr-keyboards-43.0/keyboards/windows/es-t-k0-windows.xml")],
+  ["fa-ir", importCldr("cldr-keyboards-43.0/keyboards/windows/fa-t-k0-windows.xml")],
   ["fr_bepo", importKeymap("layout/fr_bepo.json")],
   ["fr_ca", importCldr("cldr-keyboards-43.0/keyboards/windows/fr-CA-t-k0-windows-var.xml")],
   ["fr_ch", importCldr("cldr-keyboards-43.0/keyboards/windows/fr-CH-t-k0-windows.xml")],

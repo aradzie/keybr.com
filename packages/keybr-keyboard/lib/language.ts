@@ -3,6 +3,12 @@ import { type CodePoint, toCodePoints } from "@keybr/unicode";
 import { isDiacritic } from "./diacritics.ts";
 
 export class Language implements EnumItem {
+  static readonly AR = new Language(
+    /* id= */ "ar",
+    /* script= */ "arabic",
+    /* direction= */ "rtl",
+    /* alphabet= */ "ابجدهوزحطيكلمنسعفصقرشتثخذضظغ",
+  );
   static readonly BE = new Language(
     /* id= */ "be",
     /* script= */ "cyrillic",
@@ -38,6 +44,12 @@ export class Language implements EnumItem {
     /* script= */ "latin",
     /* direction= */ "ltr",
     /* alphabet= */ "aábcdeéfghiíjlmnñoópqrstuúüvxyz",
+  );
+  static readonly FA = new Language(
+    /* id= */ "fa",
+    /* script= */ "arabic",
+    /* direction= */ "rtl",
+    /* alphabet= */ "ابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی",
   );
   static readonly FR = new Language(
     /* id= */ "fr",
@@ -119,12 +131,14 @@ export class Language implements EnumItem {
   );
 
   static readonly ALL = new Enum<Language>(
+    Language.AR,
     Language.BE,
     Language.CS,
     Language.DE,
     Language.EL,
     Language.EN,
     Language.ES,
+    Language.FA,
     Language.FR,
     Language.HE,
     Language.HU,

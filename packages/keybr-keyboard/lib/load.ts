@@ -12,6 +12,8 @@ import { KOREAN_103_FULL } from "./geometry/korean_103_full.ts";
 import { MATRIX } from "./geometry/matrix.ts";
 import { Keyboard } from "./keyboard.ts";
 import { Layout } from "./layout.ts";
+import { LAYOUT_AR_SA } from "./layout/ar_sa.ts";
+import { LAYOUT_AR_SA_102 } from "./layout/ar_sa_102.ts";
 import { LAYOUT_BE_BY } from "./layout/be_by.ts";
 import { LAYOUT_CS_CZ } from "./layout/cs_cz.ts";
 import { LAYOUT_DE_BONE } from "./layout/de_bone.ts";
@@ -36,6 +38,7 @@ import { LAYOUT_EN_UK } from "./layout/en_uk.ts";
 import { LAYOUT_EN_US } from "./layout/en_us.ts";
 import { LAYOUT_EN_WORKMAN } from "./layout/en_workman.ts";
 import { LAYOUT_ES_ES } from "./layout/es_es.ts";
+import { LAYOUT_FA_IR } from "./layout/fa-ir.ts";
 import { LAYOUT_FR_BEPO } from "./layout/fr_bepo.ts";
 import { LAYOUT_FR_CA } from "./layout/fr_ca.ts";
 import { LAYOUT_FR_CH } from "./layout/fr_ch.ts";
@@ -63,6 +66,8 @@ import { KeyboardOptions } from "./settings.ts";
 import { type CodePointDict, type GeometryDict } from "./types.ts";
 
 const layoutDict = new Map<Layout, CodePointDict>([
+  [Layout.AR_SA, LAYOUT_AR_SA],
+  [Layout.AR_SA_102, LAYOUT_AR_SA_102],
   [Layout.BE_BY, LAYOUT_BE_BY],
   [Layout.CS_CZ, LAYOUT_CS_CZ],
   [Layout.DE_BONE, LAYOUT_DE_BONE],
@@ -88,6 +93,7 @@ const layoutDict = new Map<Layout, CodePointDict>([
   [Layout.EN_US, LAYOUT_EN_US],
   [Layout.EN_WORKMAN, LAYOUT_EN_WORKMAN],
   [Layout.ES_ES, LAYOUT_ES_ES],
+  [Layout.FA_IR, LAYOUT_FA_IR],
   [Layout.FR_BEPO, LAYOUT_FR_BEPO],
   [Layout.FR_CA, LAYOUT_FR_CA],
   [Layout.FR_CH, LAYOUT_FR_CH],

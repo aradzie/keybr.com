@@ -692,6 +692,51 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly AR_SA = new Layout(
+    /* id= */ "ar-sa",
+    /* xid= */ 0x8d,
+    /* name= */ "{SA} (101)",
+    /* family= */ "arabic",
+    /* language= */ Language.AR,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
+  static readonly AR_SA_102 = new Layout(
+    /* id= */ "ar-sa-102",
+    /* xid= */ 0x8e,
+    /* name= */ "{SA} (102)",
+    /* family= */ "arabic",
+    /* language= */ Language.AR,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
+  static readonly FA_IR = new Layout(
+    /* id= */ "fa",
+    /* xid= */ 0x8f,
+    /* name= */ "Persian",
+    /* family= */ "persian",
+    /* language= */ Language.FA,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
 
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
@@ -741,6 +786,9 @@ export class Layout implements XEnumItem {
     Layout.RU_RU,
     Layout.TR_TR_Q,
     Layout.TR_TR_F,
+    Layout.AR_SA,
+    Layout.AR_SA_102,
+    Layout.FA_IR,
   );
 
   static findLayout(localeId: string): Layout | null {

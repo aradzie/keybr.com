@@ -3,6 +3,10 @@ import { type WordList } from "./types.ts";
 
 export async function loadWordList(language: Language): Promise<WordList> {
   switch (language) {
+    case Language.AR:
+      return (
+        await import(/* webpackChunkName: "words-ar" */ "./data/words-ar.json")
+      ).default as WordList;
     case Language.BE:
       return (
         await import(/* webpackChunkName: "words-be" */ "./data/words-be.json")
@@ -26,6 +30,10 @@ export async function loadWordList(language: Language): Promise<WordList> {
     case Language.ES:
       return (
         await import(/* webpackChunkName: "words-es" */ "./data/words-es.json")
+      ).default as WordList;
+    case Language.FA:
+      return (
+        await import(/* webpackChunkName: "words-fa" */ "./data/words-fa.json")
       ).default as WordList;
     case Language.FR:
       return (
