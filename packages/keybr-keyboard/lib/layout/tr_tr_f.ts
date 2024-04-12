@@ -33,7 +33,7 @@ export const LAYOUT_TR_TR_F: CodePointDict = {
   KeyA: [/* u */ 0x0075, /* U */ 0x0055, /* æ */ 0x00e6, /* Æ */ 0x00c6],
   KeyS: [/* i */ 0x0069, /* İ */ 0x0130, /* ß */ 0x00df, /* § */ 0x00a7],
   KeyD: [/* e */ 0x0065, /* E */ 0x0045, /* € */ 0x20ac],
-  KeyF: [/* a */ 0x0061, /* A */ 0x0041, /* ª */ 0x00aa],
+  KeyF: [/* a */ 0x0061, /* A */ 0x0041, 0x0000, /* ª */ 0x00aa],
   KeyG: [/* ü */ 0x00fc, /* Ü */ 0x00dc],
   KeyH: [/* t */ 0x0074, /* T */ 0x0054, /* ₺ */ 0x20ba],
   KeyJ: [/* k */ 0x006b, /* K */ 0x004b],

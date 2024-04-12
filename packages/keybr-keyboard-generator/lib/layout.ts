@@ -78,49 +78,77 @@ export function undead(keyMap: KeyMap): KeyMap {
 export function toCodePointDict(keymap: KeyMap): CodePointDict {
   const map = new Map<KeyId, CodePoint[]>();
   for (const keyId of characterKeys) {
-    map.set(keyId, codePointsOf(keyId, keymap[keyId]));
+    const codePoints = keymap[keyId];
+    if (codePoints) {
+      map.set(keyId, parseCodePoints(keyId, codePoints));
+    }
   }
   return { ...Object.fromEntries(map), Space: [0x0020] };
 }
 
-function codePointsOf(keyId: KeyId, list: CodePointList | null): CodePoint[] {
-  const result: CodePoint[] = [];
-  if (list == null) {
-    // continue
-  } else if (typeof list === "string") {
-    result.push(...toCodePoints(list));
-  } else if (Array.isArray(list)) {
+export function parseCodePoints(
+  keyId: KeyId,
+  list: CodePointList,
+): CodePoint[] {
+  if (typeof list === "string") {
+    return [...toCodePoints(list)];
+  }
+
+  if (Array.isArray(list)) {
+    const codePoints: CodePoint[] = [];
+
     for (const item of list) {
       if (item == null) {
-        // continue
-      } else if (typeof item === "number") {
-        result.push(item);
-      } else if (typeof item === "string") {
+        codePoints.push(0x0000);
+        continue;
+      }
+
+      if (typeof item === "number") {
+        codePoints.push(item);
+        continue;
+      }
+
+      if (typeof item === "string") {
         const a = [...toCodePoints(item)];
+
         if (a.length === 0) {
-          // continue
-        } else if (a.length === 1) {
-          result.push(a[0]);
-        } else if (a.length === 2) {
+          codePoints.push(0x0000);
+          continue;
+        }
+
+        if (a.length === 1) {
+          codePoints.push(a[0]);
+          continue;
+        }
+
+        if (a.length === 2) {
           if (a[0] === /* * */ 0x002a) {
             const diacritic = diacritics.get(a[1]);
             if (diacritic) {
-              result.push(diacritic);
-            } else {
-              console.error(`[${keyId}] Invalid diacritical mark`, item);
+              codePoints.push(diacritic);
+              continue;
             }
-          } else {
-            console.error(`[${keyId}] Invalid code point`, item);
+
+            codePoints.push(0x0000);
+            console.error(`[${keyId}] Invalid diacritical mark`, item);
+            continue;
           }
-        } else {
+
+          codePoints.push(0x0000);
           console.error(`[${keyId}] Invalid code point`, item);
+          continue;
         }
-      } else {
-        console.error(`[${keyId}] Invalid code pont`, item);
+
+        codePoints.push(0x0000);
+        console.error(`[${keyId}] Invalid code point`, item);
+        continue;
       }
+
+      throw new TypeError(`Invalid code point list item [${item}]`);
     }
-  } else {
-    console.error(`[${keyId}] Invalid code point list`, list);
+
+    return codePoints;
   }
-  return result;
+
+  throw new TypeError(`Invalid code point list [${list}]`);
 }

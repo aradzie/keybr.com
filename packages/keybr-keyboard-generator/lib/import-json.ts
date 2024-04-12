@@ -1,6 +1,11 @@
+import { readFileSync } from "node:fs";
 import type { KeyId } from "@keybr/keyboard";
 import { characterKeys } from "./keys.ts";
 import { type CodePointList, type KeyMap } from "./layout.ts";
+
+export function importKeymap(filename: string): KeyMap {
+  return JSON.parse(readFileSync(filename, "utf-8"));
+}
 
 /**
  * Layout data as a two-dimensional array.
@@ -15,6 +20,59 @@ import { type CodePointList, type KeyMap } from "./layout.ts";
  * ```
  */
 export type KeyList = readonly (readonly CodePointList[])[];
+
+/**
+ * Parses the given layout data for the ANSI geometry.
+ */
+export function parseAnsiLayout(data: KeyList): KeyMap {
+  return parseLayout(ansiGeometry, data);
+}
+
+/**
+ * Parses the given layout data for the ISO geometry.
+ */
+export function parseIsoLayout(data: KeyList): KeyMap {
+  return parseLayout(isoGeometry, data);
+}
+
+export function parseLayout(
+  geometry: readonly (readonly KeyId[])[],
+  data: KeyList,
+): KeyMap {
+  const map = new Map<KeyId, CodePointList>();
+  if (geometry.length !== data.length) {
+    throw new TypeError(
+      `Wrong number of rows, ` +
+        `expected ${geometry.length}, ` +
+        `got ${data.length}`,
+    );
+  }
+  for (let i = 0; i < geometry.length; i++) {
+    const geometryRow = geometry[i];
+    const dataRow = data[i];
+    if (geometryRow.length !== dataRow.length) {
+      throw new TypeError(
+        `Wrong number of keys in row ${i}, ` +
+          `expected ${geometryRow.length}, ` +
+          `actual ${dataRow.length}`,
+      );
+    }
+    for (let j = 0; j < geometryRow.length; j++) {
+      map.set(geometryRow[j], dataRow[j]);
+    }
+  }
+  if (!map.has("IntlBackslash") && map.has("Backslash")) {
+    map.set("IntlBackslash", map.get("Backslash")!);
+  }
+  return {
+    ...Object.fromEntries(
+      [...map].sort(
+        (a, b) => characterKeys.indexOf(a[0]) - characterKeys.indexOf(b[0]),
+      ),
+    ),
+    Space: " ",
+  };
+}
 
 /**
  * Maps row and column indices to key identifiers of the ANSI geometry.
@@ -138,56 +196,3 @@ export const isoGeometry: readonly (readonly KeyId[])[] = [
     "Slash",
   ],
 ];
-
-/**
- * Imports the given layout data for the ANSI geometry.
- */
-export function importAnsiLayout(data: KeyList): KeyMap {
-  return importLayout(ansiGeometry, data);
-}
-
-/**
- * Imports the given layout data for the ISO geometry.
- */
-export function importIsoLayout(data: KeyList): KeyMap {
-  return importLayout(isoGeometry, data);
-}
-
-export function importLayout(
-  geometry: readonly (readonly KeyId[])[],
-  data: KeyList,
-): KeyMap {
-  const map = new Map<KeyId, CodePointList>();
-  if (geometry.length !== data.length) {
-    throw new TypeError(
-      `Wrong number of rows, ` +
-        `expected ${geometry.length}, ` +
-        `got ${data.length}`,
-    );
-  }
-  for (let i = 0; i < geometry.length; i++) {
-    const geometryRow = geometry[i];
-    const dataRow = data[i];
-    if (geometryRow.length !== dataRow.length) {
-      throw new TypeError(
-        `Wrong number of keys in row ${i}, ` +
-          `expected ${geometryRow.length}, ` +
-          `actual ${dataRow.length}`,
-      );
-    }
-    for (let j = 0; j < geometryRow.length; j++) {
-      map.set(geometryRow[j], dataRow[j]);
-    }
-  }
-  if (!map.has("IntlBackslash") && map.has("Backslash")) {
-    map.set("IntlBackslash", map.get("Backslash")!);
-  }
-  return {
-    ...Object.fromEntries(
-      [...map].sort(
-        (a, b) => characterKeys.indexOf(a[0]) - characterKeys.indexOf(b[0]),
-      ),
-    ),
-    Space: " ",
-  };
-}

@@ -15,7 +15,7 @@ export function writeGeneratedFile(keymap: KeyMap, filename: string): void {
   writeFileSync(filename, sourceFile);
 }
 
-function generateSourceFile(id: string, dict: CodePointDict): string {
+export function generateSourceFile(id: string, dict: CodePointDict): string {
   const lines: string[] = [];
   lines.push("// Generated file, do not edit.");
   lines.push("");
@@ -24,17 +24,20 @@ function generateSourceFile(id: string, dict: CodePointDict): string {
   lines.push("// prettier-ignore");
   lines.push(`export const LAYOUT_${id}: CodePointDict = {`);
   for (const keyId of characterKeys) {
-    const codePoints = dict[keyId];
-    const fields = codePoints.map((codePoint) => {
-      if (codePoint) {
-        const name = formatCodePointName(codePoint);
-        const value = formatCodePointValue(codePoint);
-        return `/* ${name} */ ${value}`;
-      } else {
-        return formatCodePointValue(0x0000);
-      }
-    });
-    if (fields.length > 0) {
+    const codePoints = [...(dict[keyId] ?? [])];
+    while (codePoints.length > 0 && codePoints.at(-1) === 0x0000) {
+      codePoints.pop();
+    }
+    if (codePoints.length > 0) {
+      const fields = codePoints.map((codePoint) => {
+        if (codePoint) {
+          const name = formatCodePointName(codePoint);
+          const value = formatCodePointValue(codePoint);
+          return `/* ${name} */ ${value}`;
+        } else {
+          return formatCodePointValue(0x0000);
+        }
+      });
       lines.push(`  ${keyId}: [${fields.join(", ")}],`);
     }
   }

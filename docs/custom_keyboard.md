@@ -3,7 +3,7 @@
 You can import keyboard layout definitions from different sources:
 
 - A large collection of keyboard layouts can be found in the [CLDR project](https://unicode.org/reports/tr35/tr35-keyboards.html), and we have tools to parse those.
-- You can also import keyboard layouts produced by the [Kalamine project](https://github.com/OneDeadKey/kalamine).
+- You can also import keyboard layouts produced by the [Keyboard Layout Creator](https://www.microsoft.com/en-us/download/details.aspx?id=102134).
 - If none of these are available, you can write your own layout definition files.
 
 Whatever path you choose, the entry point to adding new keyboard layouts is the <nobr>`keyboard-layout-generator`</nobr> package.
@@ -15,11 +15,11 @@ cd packages/keybr-keyboard-generator
 npm run generate
 ```
 
-The generator will write files to <nobr>`packages/keybr-keyboard/lib/data/layout`</nobr>. You should not modify the generated files, as your changes will be lost if the generator is run again.
+The generator will write files to <nobr>`packages/keybr-keyboard/lib/layout`</nobr>. You should not modify the generated files, as your changes will be lost if the generator is run again.
 
 ## Adding a custom keyboard layout
 
-Custom keyboard layout definition files are located in <nobr>`packages/keybr-keyboard-generator/lib/layout`</nobr>.
+Custom keyboard layout definition files are located in <nobr>`packages/keybr-keyboard-generator/layout`</nobr>.
 
 You can add your own keyboard layout by copying and modifying an existing one. The configuration format is straightforward, each physical key location (like `"KeyA"`, `"KeyB"`, etc.) is mapped to a list of up to four code points.
 The four code points are given for the following key modifiers:
