@@ -6,7 +6,7 @@ import { newPhoneticModel, type PhoneticModel } from "./index.ts";
 import { TransitionTable } from "./transitiontable.ts";
 
 export function getPath(language: Language): string {
-  return resolve(__dirname, `..`, `assets`, `lang-${language}.data`);
+  return resolve(__dirname, `..`, `assets`, `model-${language}.data`);
 }
 
 export async function loadModel(language: Language): Promise<{
