@@ -1,14 +1,16 @@
+#!/usr/bin/env -S node -r @keybr/tsl
+
 /**
  * This script takes keyboard layout definitions in various formats and generates
  * TypeScript files with the same layouts converted into our own internal representation.
  */
 
-import { join } from "node:path";
-import { writeGeneratedFile } from "./generate.ts";
-import { importCldr } from "./import-cldr.ts";
-import { importKeymap } from "./import-json.ts";
-import { importKlc } from "./import-klc.ts";
-import { type KeyMap, undead } from "./layout.ts";
+import { writeGeneratedFile } from "./layout/generate.ts";
+import { importCldr } from "./layout/import-cldr.ts";
+import { importKeymap } from "./layout/import-json.ts";
+import { importKlc } from "./layout/import-klc.ts";
+import { type KeyMap, undead } from "./layout/layout.ts";
+import { pathTo } from "./root.ts";
 
 for (const [id, keymap] of [
   ["be_by", importCldr("cldr-keyboards-43.0/keyboards/windows/be-t-k0-windows.xml")],
@@ -65,7 +67,7 @@ for (const [id, keymap] of [
   ["tr_tr_q", importCldr("cldr-keyboards-43.0/keyboards/windows/tr-t-k0-windows.xml")],
   ["uk_ua", importCldr("cldr-keyboards-43.0/keyboards/windows/uk-t-k0-windows.xml")],
 ] as [string, KeyMap][]) {
-  const filename = join(__dirname, `../../keybr-keyboard/lib/layout/${id}.ts`);
-  console.log(filename);
+  const filename = pathTo(`../keybr-keyboard/lib/layout/${id}.ts`);
+  console.log(id, filename);
   writeGeneratedFile(keymap, filename);
 }

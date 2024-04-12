@@ -1,8 +1,8 @@
 import { Language } from "@keybr/keyboard";
 import { toCodePoints } from "@keybr/unicode";
 import test from "ava";
+import { TransitionTableBuilder } from "./builder.ts";
 import { Filter } from "./filter.ts";
-import { TransitionTableBuilder } from "./generate/builder.ts";
 import { Letter } from "./letter.ts";
 import { newPhoneticModel } from "./phoneticmodel.ts";
 

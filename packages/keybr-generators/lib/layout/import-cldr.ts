@@ -9,12 +9,13 @@ import { readFileSync } from "node:fs";
 import { getDiacritic, type KeyId } from "@keybr/keyboard";
 import { type CodePoint, toCodePoints } from "@keybr/unicode";
 import { type Element, xml2js } from "xml-js";
+import { pathTo } from "../root.ts";
 import { formatCodePointValue } from "./codepoints.ts";
 import { diacritics } from "./diacritics.ts";
 import { type KeyMap } from "./layout.ts";
 
 export function importCldr(filename: string): KeyMap {
-  return parse(xml2js(readFileSync(filename, "utf-8")) as Element);
+  return parse(xml2js(readFileSync(pathTo(filename), "utf-8")) as Element);
 }
 
 function parse(root: Element): KeyMap {

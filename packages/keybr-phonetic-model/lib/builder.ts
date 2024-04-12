@@ -1,5 +1,5 @@
 import { type CodePoint, toCodePoints } from "@keybr/unicode";
-import { Chain, TransitionTable } from "../transitiontable.ts";
+import { Chain, TransitionTable } from "./transitiontable.ts";
 
 type Entry = { codePoint: CodePoint; frequency: number };
 

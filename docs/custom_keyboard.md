@@ -2,17 +2,17 @@
 
 You can import keyboard layout definitions from different sources:
 
-- A large collection of keyboard layouts can be found in the [CLDR project](https://unicode.org/reports/tr35/tr35-keyboards.html), and we have tools to parse those.
+- A large collection of keyboard layouts can be found in the [CLDR project](https://unicode.org/reports/tr35/tr35-keyboards.html), and we have tools to import these.
 - You can also import keyboard layouts produced by the [Keyboard Layout Creator](https://www.microsoft.com/en-us/download/details.aspx?id=102134).
 - If none of these are available, you can write your own layout definition files.
 
-Whatever path you choose, the entry point to adding new keyboard layouts is the <nobr>`keyboard-layout-generator`</nobr> package.
+Whatever path you choose, the entry point to adding new keyboard layouts is the <nobr>`keyboard-generators`</nobr> package.
 It contains the scripts which take keyboard layout definitions in various formats and generate TypeScript files with the same layouts converted into our own internal representation.
 To start the generator, run the following shell commands:
 
 ```sh
-cd packages/keybr-keyboard-generator
-npm run generate
+cd packages/keybr-generators
+npm run generate-layouts
 ```
 
 The generator will write files to <nobr>`packages/keybr-keyboard/lib/layout`</nobr>. You should not modify the generated files, as your changes will be lost if the generator is run again.

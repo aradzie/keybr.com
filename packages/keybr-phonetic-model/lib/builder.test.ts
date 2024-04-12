@@ -1,7 +1,7 @@
 import { Language } from "@keybr/keyboard";
 import test from "ava";
-import { Letter } from "../letter.ts";
 import { TransitionTableBuilder } from "./builder.ts";
+import { Letter } from "./letter.ts";
 
 test("build table", (t) => {
   const builder = new TransitionTableBuilder(2, [0x0020, 0x0061, 0x0062]);

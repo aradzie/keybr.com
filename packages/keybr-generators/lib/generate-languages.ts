@@ -1,11 +1,20 @@
 #!/usr/bin/env -S node -r @keybr/tsl
 
+/**
+ * This script takes word frequency dictionaries and generates phonetic models.
+ */
+
 import { readFileSync, writeFileSync } from "node:fs";
-import { resolve } from "node:path";
 import { gunzipSync } from "node:zlib";
 import { Language } from "@keybr/keyboard";
-import { TransitionTableBuilder } from "./builder.ts";
-import { fromCsv, normalizeCounts, sortByCount, type Word } from "./words.ts";
+import { TransitionTableBuilder } from "@keybr/phonetic-model";
+import {
+  fromCsv,
+  normalizeCounts,
+  sortByCount,
+  type Word,
+} from "./language/words.ts";
+import { pathTo } from "./root.ts";
 
 for (const language of Language.ALL) {
   generate(language);
@@ -14,26 +23,9 @@ for (const language of Language.ALL) {
 function generate(language: Language): void {
   const { id, alphabet } = language;
 
-  const dictPath = resolve(__dirname, "corpus", `words-${id}.csv`);
-  const modelPath = resolve(
-    __dirname,
-    "..",
-    "..",
-    "..",
-    "keybr-phonetic-model",
-    "assets",
-    `lang-${id}.data`,
-  );
-  const wordsListPath = resolve(
-    __dirname,
-    "..",
-    "..",
-    "..",
-    "keybr-content-words",
-    "lib",
-    "data",
-    `words-${id}.json`,
-  );
+  const dictPath = pathTo(`dictionary/dictionary-${id}.csv`);
+  const modelPath = pathTo(`../keybr-phonetic-model/assets/lang-${id}.data`);
+  const wordsPath = pathTo(`../keybr-content-words/lib/data/words-${id}.json`);
 
   const dict = readDict();
   if (dict != null) {
@@ -126,7 +118,7 @@ function generate(language: Language): void {
 
   function readWordsJson(): string[] {
     try {
-      return JSON.parse(readFileSync(wordsListPath).toString("utf-8"));
+      return JSON.parse(readFileSync(wordsPath).toString("utf-8"));
     } catch (err: any) {
       if (err.code !== "ENOENT") {
         throw err;
@@ -137,7 +129,7 @@ function generate(language: Language): void {
   }
 
   function writeWordsJson(words: string[]): void {
-    writeFileSync(wordsListPath, JSON.stringify(words, null, 2));
+    writeFileSync(wordsPath, JSON.stringify(words, null, 2));
   }
 
   function readCompressed(path: string): string | null {

@@ -1,21 +1,20 @@
 {
   "private": true,
-  "name": "@keybr/phonetic-model",
+  "name": "@keybr/keybr-generators",
   "version": "0.0.0",
   "main": "lib/index.ts",
-  "types": ".types/index.d.ts",
   "dependencies": {
-    "@keybr/binary": "*",
     "@keybr/keyboard": "*",
-    "@keybr/rand": "*",
-    "@keybr/unicode": "*",
-    "@keybr/widget": "*"
+    "@keybr/phonetic-model": "*",
+    "@keybr/unicode": "*"
   },
   "devDependencies": {},
   "scripts": {
     "clean": "rm -fr .types",
     "compile": "tsc",
-    "test": "ava"
+    "test": "ava",
+    "generate-languages": "node -r @keybr/tsl ./lib/generate-languages.ts",
+    "generate-layouts": "node -r @keybr/tsl ./lib/generate-layouts.ts"
   },
   "ava": {
     "extensions": [

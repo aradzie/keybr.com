@@ -1,10 +1,11 @@
 import { readFileSync } from "node:fs";
 import type { KeyId } from "@keybr/keyboard";
+import { pathTo } from "../root.ts";
 import { characterKeys } from "./keys.ts";
 import { type CodePointList, type KeyMap } from "./layout.ts";
 
 export function importKeymap(filename: string): KeyMap {
-  return JSON.parse(readFileSync(filename, "utf-8"));
+  return JSON.parse(readFileSync(pathTo(filename), "utf-8"));
 }
 
 /**

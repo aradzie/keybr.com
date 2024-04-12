@@ -5,11 +5,12 @@
 import { readFileSync } from "node:fs";
 import { type KeyId } from "@keybr/keyboard";
 import { type CodePoint } from "@keybr/unicode";
+import { pathTo } from "../root.ts";
 import { diacritics } from "./diacritics.ts";
 import { type KeyMap } from "./layout.ts";
 
 export function importKlc(filename: string): KeyMap {
-  const content = readFileSync(filename, "utf8");
+  const content = readFileSync(pathTo(filename), "utf8");
   const keyMap = {};
   parse(content, { shiftstate: [], altgr: false, keyMap });
   return keyMap;
