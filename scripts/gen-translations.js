@@ -6,6 +6,7 @@ const { join } = require("node:path");
 const { readJsonSync, writeJsonSync } = require("./lib/fs.js");
 const { getHashDigest } = require("./lib/intl.js");
 const { rootDir, findPackages } = require("./root.js");
+const { writeFileSync } = require("node:fs");
 
 const packageDir = join(rootDir, "packages/keybr-intl");
 
@@ -70,25 +71,35 @@ async function extractTranslations() {
   );
 }
 
-async function syncTranslations() {
+async function syncTranslations(report) {
   const defaultTranslationsFile = translationsPath(defaultLocale);
   const defaultTranslations = readJsonSync(defaultTranslationsFile);
   for (const locale of allLocales) {
     if (locale === defaultLocale) {
       continue;
     }
+    const localeReport = (report[locale] = {
+      translated: [],
+      untranslated: [],
+    });
     const translationsFile = translationsPath(locale);
     const translations = readJsonSync(translationsFile);
     writeJsonSync(
       translationsFile,
-      remap(defaultTranslations, ([id, message]) => [
-        id,
-        translations[id] !== "" &&
-        translations[id] !== id &&
-        translations[id] !== message
-          ? translations[id]
-          : undefined,
-      ]),
+      remap(defaultTranslations, ([id, message]) => {
+        const translatedMessage =
+          translations[id] !== "" &&
+          translations[id] !== id &&
+          translations[id] !== message
+            ? translations[id]
+            : undefined;
+        if (translatedMessage != null) {
+          localeReport.translated.push([id, message]);
+        } else {
+          localeReport.untranslated.push([id, message]);
+        }
+        return [id, translatedMessage];
+      }),
     );
   }
 }
@@ -128,10 +139,40 @@ async function compileMessages() {
   }
 }
 
+async function writeReport(report) {
+  const languageName = new Intl.DisplayNames("en", { type: "language" });
+  const countWords = (count, [id, message]) =>
+    count +
+    message
+      .replaceAll(/\{[a-zA-Z]}+/g, "")
+      .replaceAll(/<\/?[a-z]+>/g, "")
+      .match(/\p{L}+/gu).length;
+  const lines = [];
+  for (const [locale, { translated, untranslated }] of Object.entries(report)) {
+    lines.push(`# ${languageName.of(locale)}`);
+    lines.push(``);
+    lines.push(
+      `Translated: ` +
+        `${translated.length} messages, ` +
+        `${translated.reduce(countWords, 0)} words`,
+    );
+    lines.push(``);
+    lines.push(
+      `Untranslated: ` +
+        `${untranslated.length} messages, ` +
+        `${untranslated.reduce(countWords, 0)} words`,
+    );
+    lines.push(``);
+  }
+  writeFileSync(join(rootDir, "docs/translations_report.md"), lines.join("\n"));
+}
+
 async function run() {
+  const report = {};
   await extractTranslations();
-  await syncTranslations();
+  await syncTranslations(report);
   await compileMessages();
+  await writeReport(report);
 }
 
 function remap(entries, callback) {

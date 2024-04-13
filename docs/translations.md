@@ -18,4 +18,6 @@ When an original English string changes it becomes [fuzzy](https://poeditor.com/
 
 <img src="assets/pic2.png">
 
+The number of translated and untranslated messages and words can be seen in the [Translations Report](./translations_report.md)
+
 Thank you for your contributions!
