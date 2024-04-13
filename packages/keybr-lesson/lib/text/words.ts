@@ -92,7 +92,11 @@ export function mangledWords(
     if (withCapitals > 0 && withCapitals >= random()) {
       word = language.capitalCase(word);
     }
-    if (withPunctuators > 0 && withPunctuators >= random()) {
+    if (
+      punctuators.length !== 0 &&
+      withPunctuators > 0 &&
+      withPunctuators >= random()
+    ) {
       const { codePoint } = weightedRandomSample(
         punctuators,
         ({ f }) => f,
@@ -125,6 +129,50 @@ export function mangledWords(
           break;
         case 63:
           word = `${word}?`;
+          break;
+        // Programming specific symbols.
+        case 40:
+        case 41:
+          word = `(${word})`;
+          break;
+        case 123:
+        case 125:
+          word = `{${word}}`;
+          break;
+        case 61:
+          word = `${word}=${nextWord()}`;
+          break;
+        case 43:
+          word = `${word}+${nextWord()}`;
+          break;
+        case 42:
+          word = `*${word}`;
+          break;
+        case 47:
+          word = `${word}/${nextWord()}`;
+          break;
+        case 37:
+          word = `${word}%`;
+          break;
+        case 124:
+          word = `${word}|${nextWord()}`;
+          break;
+        case 38:
+          word = `${word}&${nextWord()}`;
+          break;
+        case 60:
+        case 62:
+          word = `<${word}>`;
+          break;
+        case 91:
+        case 93:
+          word = `[${word}]`;
+          break;
+        case 95:
+          word = `${word}_${nextWord()}`;
+          break;
+        default:
+          word = `${word}${String.fromCodePoint(codePoint)}`;
           break;
       }
     }

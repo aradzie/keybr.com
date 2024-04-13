@@ -363,6 +363,8 @@
   "settings.previewLesson.label": "Lesson Preview",
   "settings.punctuation.description": "Adjust the amount of basic punctuation characters added to the lesson text. Use this option to practice typing the punctuation characters. We recommend to increase this value only if you have all letters above the target speed.",
   "settings.punctuation.label": "Add punctuation characters:",
+  "settings.programming.label": "Add programming characters:",
+  "settings.programming.description": "Add programming characters to the lesson text. Use this option to practice typing the programming characters. We recommend to increase this value only if you have all letters above the target speed.",
   "settings.recoverKeys.description": "When you focus on a new key, it is very likely that the speed of previous keys will decrease. If this option is disabled, you unlock a new key by raising only the focused key above the target speed. If this option is enabled, you will have to raise the focused key and all the previous keys above the target speed. This will make unlocking new keys harder. However, this will also make forgetting old keys harder.",
   "settings.recoverKeys.label": "The previous keys are also above the target speed",
   "settings.recoverKeys.prefix": "Unlock a next key only when:",
