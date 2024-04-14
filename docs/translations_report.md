@@ -54,9 +54,9 @@ Untranslated: 42 messages, 753 words
 
 # Hebrew
 
-Translated: 397 messages, 4835 words
+Translated: 404 messages, 4848 words
 
-Untranslated: 28 messages, 355 words
+Untranslated: 21 messages, 342 words
 
 # Hungarian
 
