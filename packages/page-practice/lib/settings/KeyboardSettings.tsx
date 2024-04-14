@@ -81,7 +81,10 @@ function LayoutProp(): ReactNode {
             value={options.language.id}
             onSelect={(id) => {
               updateSettings(
-                options.withLanguage(Language.ALL.get(id)).save(settings),
+                options
+                  .withLanguage(Language.ALL.get(id))
+                  .withGeometry(options.geometry)
+                  .save(settings),
               );
             }}
           />
@@ -101,7 +104,10 @@ function LayoutProp(): ReactNode {
             value={options.layout.id}
             onSelect={(id) => {
               updateSettings(
-                options.withLayout(Layout.ALL.get(id)).save(settings),
+                options
+                  .withLayout(Layout.ALL.get(id))
+                  .withGeometry(options.geometry)
+                  .save(settings),
               );
             }}
           />
