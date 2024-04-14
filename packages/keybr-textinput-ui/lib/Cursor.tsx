@@ -70,9 +70,9 @@ export class Cursor extends Component<Props> {
     style.lineHeight = from.lineHeight;
 
     const x = char.offsetLeft;
-    const y = char.offsetTop;
+    const y = char.parentElement!.offsetTop;
     const w = char.offsetWidth;
-    const h = char.offsetHeight;
+    const h = char.parentElement!.offsetHeight;
 
     let left: number;
     let top: number;
