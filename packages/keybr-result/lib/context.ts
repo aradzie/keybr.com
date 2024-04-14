@@ -12,7 +12,11 @@ export const ResultContext = createContext<ResultContextProps>(null!);
 export function useResults(): ResultContextProps {
   const value = useContext(ResultContext);
   if (value == null) {
-    throw new Error();
+    throw new Error(
+      process.env.NODE_ENV !== "production"
+        ? "ResultContext is missing"
+        : undefined,
+    );
   }
   return value;
 }

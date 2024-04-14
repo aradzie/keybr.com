@@ -9,7 +9,11 @@ export const KeyboardContext = createContext<Keyboard>(null!);
 export function useKeyboard(): Keyboard {
   const value = useContext(KeyboardContext);
   if (value == null) {
-    throw new Error();
+    throw new Error(
+      process.env.NODE_ENV !== "production"
+        ? "KeyboardContext is missing"
+        : undefined,
+    );
   }
   return value;
 }

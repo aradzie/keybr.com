@@ -27,7 +27,11 @@ export const PageDataContext = createContext<PageData>(null!);
 export function usePageData(): PageData {
   const value = useContext(PageDataContext);
   if (value == null) {
-    throw new Error();
+    throw new Error(
+      process.env.NODE_ENV !== "production"
+        ? "PageDataContext is missing"
+        : undefined,
+    );
   }
   return value;
 }
