@@ -102,9 +102,9 @@ Untranslated: 34 messages, 394 words
 
 # Russian
 
-Translated: 420 messages, 5074 words
+Translated: 421 messages, 5075 words
 
-Untranslated: 7 messages, 150 words
+Untranslated: 6 messages, 149 words
 
 # Swedish
 
