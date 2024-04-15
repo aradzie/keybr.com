@@ -1,9 +1,8 @@
 import { keyboardProps, useKeyboard } from "@keybr/keyboard";
-import { addKey, deleteKey } from "@keybr/keyboard-ui";
 import { type Settings } from "@keybr/settings";
 import { playSound } from "@keybr/sound";
 import { Feedback, PlaySounds, textDisplayProps } from "@keybr/textinput";
-import { emulateLayout } from "@keybr/textinput-events";
+import { addKey, deleteKey, emulateLayout } from "@keybr/textinput-events";
 import { TextInputSound } from "@keybr/textinput-sounds";
 import {
   Ctrl,

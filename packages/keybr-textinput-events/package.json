@@ -6,7 +6,8 @@
   "types": ".types/index.d.ts",
   "dependencies": {
     "@keybr/keyboard": "*",
-    "@keybr/unicode": "*"
+    "@keybr/unicode": "*",
+    "@keybr/widget": "*"
   },
   "devDependencies": {},
   "scripts": {

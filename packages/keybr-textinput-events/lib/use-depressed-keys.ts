@@ -5,7 +5,7 @@ import { useState } from "react";
 export function addKey(keys: readonly KeyId[], key: KeyId): readonly KeyId[] {
   const set = new Set(keys);
   set.add(key);
-  return [...keys];
+  return [...set];
 }
 
 export function deleteKey(
@@ -14,7 +14,7 @@ export function deleteKey(
 ): readonly KeyId[] {
   const set = new Set(keys);
   set.delete(key);
-  return [...keys];
+  return [...set];
 }
 
 export function useDepressedKeys(): readonly KeyId[] {

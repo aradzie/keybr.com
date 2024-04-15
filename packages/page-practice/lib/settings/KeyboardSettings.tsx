@@ -8,14 +8,9 @@ import {
   useFormattedNames,
   useKeyboard,
 } from "@keybr/keyboard";
-import {
-  KeyLayer,
-  PointersLayer,
-  useDepressedKeys,
-  VirtualKeyboard,
-} from "@keybr/keyboard-ui";
+import { KeyLayer, PointersLayer, VirtualKeyboard } from "@keybr/keyboard-ui";
 import { useSettings } from "@keybr/settings";
-import { ModifierState } from "@keybr/textinput-events";
+import { ModifierState, useDepressedKeys } from "@keybr/textinput-events";
 import {
   CheckBox,
   Explainer,
