@@ -80,6 +80,42 @@ export namespace Letter {
     new Letter(/* ~ */ 0x007e, 1),
   ];
 
+  // For paired characters, the frequency is halved to account for the fact that they are used in pairs.
+  export const programming: readonly Letter[] = [
+    new Letter(/* ( */ 0x0028, 2.5),
+    new Letter(/* ) */ 0x0029, 2.4),
+    new Letter(/* { */ 0x007b, 1.8),
+    new Letter(/* } */ 0x007d, 1.7),
+    new Letter(/* " */ 0x0022, 1.7),
+    new Letter(/* ' */ 0x0027, 1.7),
+    new Letter(/* , */ 0x002c, 1.6),
+    new Letter(/* ; */ 0x003b, 1.5),
+    new Letter(/* [ */ 0x005b, 1.5),
+    new Letter(/* ] */ 0x005d, 1.5),
+    new Letter(/* : */ 0x003a, 1.4),
+    new Letter(/* . */ 0x002e, 1.3),
+    new Letter(/* = */ 0x003d, 1.2),
+    new Letter(/* + */ 0x002b, 1.1),
+    new Letter(/* - */ 0x002d, 1.0),
+    new Letter(/* * */ 0x002a, 0.9),
+    new Letter(/* / */ 0x002f, 0.8),
+    new Letter(/* % */ 0x0025, 0.7),
+    new Letter(/* | */ 0x007c, 0.6),
+    new Letter(/* & */ 0x0026, 0.5),
+    new Letter(/* ! */ 0x0021, 0.4),
+    new Letter(/* ? */ 0x003f, 0.3),
+    new Letter(/* < */ 0x003c, 0.2),
+    new Letter(/* > */ 0x003e, 0.1),
+    new Letter(/* _ */ 0x005f, 0.1),
+    new Letter(/* # */ 0x0023, 0.1),
+    new Letter(/* @ */ 0x0040, 0.1),
+    new Letter(/* $ */ 0x0024, 0.1),
+    new Letter(/* ^ */ 0x005e, 0.1),
+    new Letter(/* ~ */ 0x007e, 0.1),
+    new Letter(/* \ */ 0x005c, 0.1),
+    new Letter(/* ` */ 0x0060, 0.1),
+  ];
+
   export const codePointOf = ({ codePoint }: Letter): CodePoint => {
     return codePoint;
   };

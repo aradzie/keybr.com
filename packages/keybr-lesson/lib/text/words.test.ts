@@ -1,6 +1,13 @@
+import { Language } from "@keybr/keyboard";
+import { Letter } from "@keybr/phonetic-model";
 import { FakeRNGStream } from "@keybr/rand";
 import test from "ava";
-import { randomWords, uniqueWords, wordSequence } from "./words.ts";
+import {
+  mangledWords,
+  randomWords,
+  uniqueWords,
+  wordSequence,
+} from "./words.ts";
 
 test("random words", (t) => {
   const rng = FakeRNGStream(3);
@@ -43,4 +50,18 @@ test("unique words", (t) => {
   t.is(words(), "c");
   t.is(words(), "a");
   t.is(words(), "b");
+});
+
+test("mangle words for programming without special symbols", (t) => {
+  const rng = FakeRNGStream(3);
+  const wordList = mangledWords(
+    wordSequence(["a", "b", "c"], { wordIndex: 0 }),
+    Language.EN,
+    [],
+    { withCapitals: 0, withPunctuators: 1 },
+    rng,
+  );
+  t.is(wordList(), "a");
+  t.is(wordList(), "b");
+  t.is(wordList(), "c");
 });

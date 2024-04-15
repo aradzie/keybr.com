@@ -2,6 +2,7 @@ import { useIntlNumbers } from "@keybr/intl";
 import { lessonProps } from "@keybr/lesson";
 import { useSettings } from "@keybr/settings";
 import {
+  CheckBox,
   Explainer,
   Field,
   FieldList,
@@ -10,11 +11,12 @@ import {
   Value,
 } from "@keybr/widget";
 import { type ReactNode } from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 
 export function TextManglingProp(): ReactNode {
   const { formatPercents } = useIntlNumbers();
   const { settings, updateSettings } = useSettings();
+  const { formatMessage } = useIntl();
   return (
     <>
       <FieldList>
@@ -77,6 +79,26 @@ export function TextManglingProp(): ReactNode {
         <FormattedMessage
           id="settings.punctuation.description"
           defaultMessage="Adjust the amount of basic punctuation characters added to the lesson text. Use this option to practice typing the punctuation characters. We recommend to increase this value only if you have all letters above the target speed."
+        />
+      </Explainer>
+      <FieldList>
+        <Field>
+          <CheckBox
+            label={formatMessage({
+              id: "settings.programming.label",
+              defaultMessage: "Add programming characters",
+            })}
+            checked={settings.get(lessonProps.programming)}
+            onChange={(value) => {
+              updateSettings(settings.set(lessonProps.programming, value));
+            }}
+          />
+        </Field>
+      </FieldList>
+      <Explainer>
+        <FormattedMessage
+          id="settings.programming.description"
+          defaultMessage="Add programming characters to the lesson text. Use this option to practice typing the programming characters. Programming characters will be added only if you have all letters above the target speed."
         />
       </Explainer>
     </>
