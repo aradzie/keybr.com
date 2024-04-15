@@ -1,6 +1,8 @@
-import { type KeyId } from "@keybr/keyboard";
+import { type Keyboard, type KeyId } from "@keybr/keyboard";
+import { type Settings } from "@keybr/settings";
 import { useWindowEvent } from "@keybr/widget";
 import { useState } from "react";
+import { emulateLayout } from "./emulation.ts";
 
 export function addKey(keys: readonly KeyId[], key: KeyId): readonly KeyId[] {
   const set = new Set(keys);
@@ -17,13 +19,17 @@ export function deleteKey(
   return [...set];
 }
 
-export function useDepressedKeys(): readonly KeyId[] {
+export function useDepressedKeys(
+  settings: Settings,
+  keyboard: Keyboard,
+): readonly KeyId[] {
   const [depressedKeys, setDepressedKeys] = useState<readonly KeyId[]>([]);
-  useWindowEvent("keydown", (ev) => {
-    setDepressedKeys(addKey(depressedKeys, ev.code));
+  const listener = emulateLayout(settings, keyboard, {
+    onKeyDown: ({ code }) => setDepressedKeys(addKey(depressedKeys, code)),
+    onKeyUp: ({ code }) => setDepressedKeys(deleteKey(depressedKeys, code)),
+    onTextInput: () => {},
   });
-  useWindowEvent("keyup", (ev) => {
-    setDepressedKeys(deleteKey(depressedKeys, ev.code));
-  });
+  useWindowEvent("keydown", listener.onKeyDown);
+  useWindowEvent("keyup", listener.onKeyUp);
   return depressedKeys;
 }

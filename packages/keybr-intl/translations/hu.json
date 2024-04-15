@@ -81,7 +81,7 @@
   "highScores.column.score.label": "Eredmény",
   "highScores.column.speed.label": "Gépelési sebesség",
   "highScores.column.user.label": "Felhasználó",
-  "keyboard.emulate.label": "A kiosztás szimulálása",
+  "keyboard.emulation.forward.label": "A kiosztás szimulálása",
   "keyboard.geometry.label": "Geometria:",
   "keyboard.language.label": "Nyelv:",
   "keyboard.layout.label": "Kiosztás:",

@@ -80,7 +80,7 @@
   "highScores.column.score.label": "Note",
   "highScores.column.speed.label": "Vitesse",
   "highScores.column.user.label": "Utilisateur",
-  "keyboard.emulate.label": "Émuler la disposition",
+  "keyboard.emulation.forward.label": "Émuler la disposition",
   "keyboard.geometry.label": "Géométrie:",
   "keyboard.language.label": "Langue:",
   "keyboard.layout.label": "Disposition:",

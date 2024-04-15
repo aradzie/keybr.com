@@ -81,7 +81,7 @@
   "highScores.column.score.label": "स्कोर",
   "highScores.column.speed.label": "टाइपिङ गति",
   "highScores.column.user.label": "प्रयोगकर्ता",
-  "keyboard.emulate.label": "लेआउट अनुकरण गर्नुहोस्",
+  "keyboard.emulation.forward.label": "लेआउट अनुकरण गर्नुहोस्",
   "keyboard.geometry.label": "ज्यामिति:",
   "keyboard.language.label": "भाषा:",
   "keyboard.layout.label": "लेआउट:",

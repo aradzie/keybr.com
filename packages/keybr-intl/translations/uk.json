@@ -81,7 +81,7 @@
   "highScores.column.score.label": "Бали",
   "highScores.column.speed.label": "Швидкість",
   "highScores.column.user.label": "Користувач",
-  "keyboard.emulate.label": "Емулювати розкладку",
+  "keyboard.emulation.forward.label": "Емулювати розкладку",
   "keyboard.geometry.label": "Геометрія:",
   "keyboard.language.label": "Мова:",
   "keyboard.layout.label": "Розкладка:",

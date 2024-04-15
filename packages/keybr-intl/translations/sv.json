@@ -80,7 +80,7 @@
   "highScores.column.score.label": "Poäng",
   "highScores.column.speed.label": "Skrivhastighet",
   "highScores.column.user.label": "Användare",
-  "keyboard.emulate.label": "Emulera layout",
+  "keyboard.emulation.forward.label": "Emulera layout",
   "keyboard.geometry.label": "Geometri:",
   "keyboard.language.label": "Språk:",
   "layouts.stats.bottomRowKeys.description": "Procent av tangenter på Shiftraden, ju färre desto bättre.",

@@ -62,7 +62,7 @@
   "highScores.column.score.label": "امتیاز",
   "highScores.column.speed.label": "سرعت تایپ",
   "highScores.column.user.label": "کاربر",
-  "keyboard.emulate.label": "شبیه‌ساری چیدمان",
+  "keyboard.emulation.forward.label": "شبیه‌ساری چیدمان",
   "keyboard.geometry.label": "هندسه:",
   "keyboard.language.label": "زبان:",
   "keyboard.layout.label": "چیدمان:",

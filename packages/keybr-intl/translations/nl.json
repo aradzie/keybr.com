@@ -64,7 +64,7 @@
   "highScores.column.layout.label": "Indeling",
   "highScores.column.speed.label": "Typsnelheid",
   "highScores.column.user.label": "Gebruiker",
-  "keyboard.emulate.label": "Indeling emuleren",
+  "keyboard.emulation.forward.label": "Indeling emuleren",
   "keyboard.geometry.label": "Geometrie:",
   "keyboard.language.label": "Taal:",
   "keyboard.layout.label": "Indeling:",

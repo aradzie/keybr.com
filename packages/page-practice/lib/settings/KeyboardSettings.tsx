@@ -1,5 +1,6 @@
 import { useCollator } from "@keybr/intl";
 import {
+  Emulation,
   Geometry,
   KeyboardOptions,
   keyboardProps,
@@ -105,24 +106,61 @@ function LayoutProp(): ReactNode {
             }}
           />
         </Field>
+      </FieldList>
+      <FieldList>
         <Field>
           <CheckBox
-            checked={settings.get(keyboardProps.emulate)}
+            checked={
+              settings.get(keyboardProps.emulation) === Emulation.Forward
+            }
             disabled={!options.layout.emulate}
             label={formatMessage({
-              id: "keyboard.emulate.label",
+              id: "keyboard.emulation.forward.label",
               defaultMessage: "Emulate layout",
             })}
             onChange={(value) => {
-              updateSettings(settings.set(keyboardProps.emulate, value));
+              updateSettings(
+                settings.set(
+                  keyboardProps.emulation,
+                  value ? Emulation.Forward : Emulation.None,
+                ),
+              );
             }}
           />
         </Field>
       </FieldList>
       <Explainer>
         <FormattedMessage
-          id="keyboard.emulate.description"
+          id="keyboard.emulation.forward.description"
           defaultMessage="Keyboard emulation ignores the keyboard layout configured in your system and allows you to practice the selected keyboard regardless of how your system is configured. It is more convenient to keep the emulation option enabled."
+        />
+      </Explainer>
+      <FieldList>
+        <Field>
+          <CheckBox
+            checked={
+              settings.get(keyboardProps.emulation) === Emulation.Reverse
+            }
+            disabled={!options.layout.emulate}
+            label={formatMessage({
+              id: "keyboard.emulation.reverse.label",
+              defaultMessage: "Keyboard hardware emulates layout",
+            })}
+            onChange={(value) => {
+              updateSettings(
+                settings.set(
+                  keyboardProps.emulation,
+                  value ? Emulation.Reverse : Emulation.None,
+                ),
+              );
+            }}
+          />
+        </Field>
+      </FieldList>
+      <Explainer>
+        <FormattedMessage
+          id="keyboard.emulation.reverse.description"
+          defaultMessage="Use this option if you have a hardware layout switcher on your keyboard, and you see that incorect keys are highlighted on the virtual keyboard."
         />
       </Explainer>
     </>
@@ -204,7 +242,7 @@ function GeometryProp(): ReactNode {
 const KeyboardPreview = memo(function KeyboardPreview(): ReactNode {
   const { settings } = useSettings();
   const keyboard = useKeyboard();
-  const depressedKeys = useDepressedKeys();
+  const depressedKeys = useDepressedKeys(settings, keyboard);
   const colors = settings.get(keyboardProps.colors);
   const pointers = settings.get(keyboardProps.pointers);
   return (

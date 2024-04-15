@@ -81,7 +81,7 @@
   "highScores.column.score.label": "Σκορ",
   "highScores.column.speed.label": "Ταχύτητα πληκτρολόγησης",
   "highScores.column.user.label": "Χρήστης",
-  "keyboard.emulate.label": "Εξομοίωση διάταξης",
+  "keyboard.emulation.forward.label": "Εξομοίωση διάταξης",
   "keyboard.geometry.label": "Γεωμετρία:",
   "keyboard.language.label": "Γλώσσα:",
   "keyboard.layout.label": "Διάταξη:",

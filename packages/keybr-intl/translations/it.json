@@ -73,7 +73,7 @@
   "highScores.column.score.label": "Punteggio",
   "highScores.column.speed.label": "Velocità di battitura",
   "highScores.column.user.label": "Utente",
-  "keyboard.emulate.label": "Emula layout",
+  "keyboard.emulation.forward.label": "Emula layout",
   "keyboard.geometry.label": "Geometria:",
   "keyboard.language.label": "Lingua:",
   "layouts.stats.bottomRowKeys.description": "Percentuale di tasti digitati sulla riga Maiusc, un nomero basso è meglio.",

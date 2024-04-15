@@ -81,7 +81,7 @@
   "highScores.column.score.label": "Puntuación",
   "highScores.column.speed.label": "Velocidad",
   "highScores.column.user.label": "Usuario",
-  "keyboard.emulate.label": "Emular disposición",
+  "keyboard.emulation.forward.label": "Emular disposición",
   "keyboard.geometry.label": "Geometría:",
   "keyboard.language.label": "Idioma:",
   "keyboard.layout.label": "Disposición:",

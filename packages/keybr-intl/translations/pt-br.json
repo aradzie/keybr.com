@@ -80,7 +80,7 @@
   "highScores.column.score.label": "Pontuação",
   "highScores.column.speed.label": "Velocidade de Digitação",
   "highScores.column.user.label": "Usuário",
-  "keyboard.emulate.label": "Layout simulado",
+  "keyboard.emulation.forward.label": "Layout simulado",
   "keyboard.geometry.label": "Geometria:",
   "keyboard.language.label": "Linguagem:",
   "layouts.stats.bottomRowKeys.description": "Porcentagem de teclas digitadas na linha do Shift. Quanto menos, melhor.",

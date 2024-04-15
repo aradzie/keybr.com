@@ -81,7 +81,7 @@
   "highScores.column.score.label": "ציון",
   "highScores.column.speed.label": "מהירות הקלדה",
   "highScores.column.user.label": "מִשׁתַמֵשׁ",
-  "keyboard.emulate.label": "חיקוי פריסה",
+  "keyboard.emulation.forward.label": "חיקוי פריסה",
   "keyboard.geometry.label": "גֵאוֹמֶטרִיָה:",
   "keyboard.language.label": "שפה:",
   "keyboard.layout.label": "מַעֲרָך:",

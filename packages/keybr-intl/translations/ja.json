@@ -78,7 +78,7 @@
   "highScores.column.score.label": "スコア",
   "highScores.column.speed.label": "タイピング速度",
   "highScores.column.user.label": "ユーザー",
-  "keyboard.emulate.label": "配列をエミュレートする",
+  "keyboard.emulation.forward.label": "配列をエミュレートする",
   "keyboard.geometry.label": "形状:",
   "keyboard.language.label": "言語:",
   "keyboard.layout.label": "配列:",

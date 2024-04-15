@@ -1,5 +1,6 @@
 import {
   booleanProp,
+  enumProp,
   itemProp,
   type Settings,
   xitemProp,
@@ -8,10 +9,28 @@ import { Geometry } from "./geometry.ts";
 import { Language } from "./language.ts";
 import { Layout } from "./layout.ts";
 
+export enum Emulation {
+  /**
+   * No emulation.
+   */
+  None = 10,
+  /**
+   * Assumes that the physical key locations are correct,
+   * fixes the character codes.
+   */
+  Forward = 1,
+  /**
+   * Assumes that the character codes are correct,
+   * fixes the physical key locations.
+   * It reverses the effect of layout emulation in hardware.
+   */
+  Reverse = 2,
+}
+
 export const keyboardProps = {
   layout: xitemProp("keyboard.layout", Layout.ALL, Layout.EN_US),
   geometry: itemProp("keyboard.geometry", Geometry.ALL, Geometry.ANSI_101),
-  emulate: booleanProp("keyboard.emulate", true),
+  emulation: enumProp("keyboard.emulation", Emulation, Emulation.Forward),
   colors: booleanProp("keyboard.colors", true),
   pointers: booleanProp("keyboard.pointers", true),
 } as const;

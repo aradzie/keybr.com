@@ -79,7 +79,7 @@
   "help.section6": "<h2>Effektiviteten af denne applikation</h2><p>Vi valgte et par eksempelprofiler for at vise dig, hvordan folk gør fremskridt med at lære berøringstastning, når de bruger denne applikation. Det er ægte, anonymiserede brugerprofiler. Forhåbentlig vil de inspirere dig til at blive ved med at lære!</p>",
   "highScores.column.speed.label": "Skrivehastighed",
   "highScores.column.user.label": "Bruger",
-  "keyboard.emulate.label": "Efterligne layout",
+  "keyboard.emulation.forward.label": "Efterligne layout",
   "keyboard.geometry.label": "Geometri:",
   "keyboard.language.label": "Sprog:",
   "layouts.stats.bottomRowKeys.description": "Procentdel af taster, der er indtastet på Shift-rækken, jo færre jo bedre.",

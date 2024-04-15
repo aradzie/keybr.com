@@ -1,4 +1,9 @@
-import { keyboardProps, Layout, loadKeyboard } from "@keybr/keyboard";
+import {
+  Emulation,
+  keyboardProps,
+  Layout,
+  loadKeyboard,
+} from "@keybr/keyboard";
 import { Settings } from "@keybr/settings";
 import test from "ava";
 import { emulateLayout } from "./emulation.ts";
@@ -12,7 +17,7 @@ test("translate without emulation", (t) => {
   const keyboard = loadKeyboard(Layout.EN_DVORAK);
   const target = tracingListener(trace);
   const listener = emulateLayout(
-    new Settings().set(keyboardProps.emulate, false),
+    new Settings().set(keyboardProps.emulation, Emulation.None),
     keyboard,
     target,
   );
@@ -29,7 +34,7 @@ test("translate with emulation", (t) => {
   const keyboard = loadKeyboard(Layout.EN_DVORAK);
   const target = tracingListener(trace);
   const listener = emulateLayout(
-    new Settings().set(keyboardProps.emulate, true),
+    new Settings().set(keyboardProps.emulation, Emulation.Forward),
     keyboard,
     target,
   );
@@ -46,7 +51,7 @@ test("translate a normal input", (t) => {
   const keyboard = loadKeyboard(Layout.EN_DVORAK);
   const target = tracingListener(trace);
   const listener = emulateLayout(
-    new Settings().set(keyboardProps.emulate, true),
+    new Settings().set(keyboardProps.emulation, Emulation.Forward),
     keyboard,
     target,
   );
@@ -109,7 +114,7 @@ test("translate a control input", (t) => {
   const keyboard = loadKeyboard(Layout.EN_DVORAK);
   const target = tracingListener(trace);
   const listener = emulateLayout(
-    new Settings().set(keyboardProps.emulate, true),
+    new Settings().set(keyboardProps.emulation, Emulation.Forward),
     keyboard,
     target,
   );
@@ -166,7 +171,7 @@ test("translate a clear char input", (t) => {
   const keyboard = loadKeyboard(Layout.EN_DVORAK);
   const target = tracingListener(trace);
   const listener = emulateLayout(
-    new Settings().set(keyboardProps.emulate, true),
+    new Settings().set(keyboardProps.emulation, Emulation.Forward),
     keyboard,
     target,
   );
@@ -211,7 +216,7 @@ test("translate a clear word input", (t) => {
   const keyboard = loadKeyboard(Layout.EN_DVORAK);
   const target = tracingListener(trace);
   const listener = emulateLayout(
-    new Settings().set(keyboardProps.emulate, true),
+    new Settings().set(keyboardProps.emulation, Emulation.Forward),
     keyboard,
     target,
   );
@@ -274,7 +279,7 @@ test("translate the whitespace keys", (t) => {
   const keyboard = loadKeyboard(Layout.EN_DVORAK);
   const target = tracingListener(trace);
   const listener = emulateLayout(
-    new Settings().set(keyboardProps.emulate, true),
+    new Settings().set(keyboardProps.emulation, Emulation.Forward),
     keyboard,
     target,
   );
@@ -329,6 +334,69 @@ test("translate the whitespace keys", (t) => {
     "keydown:NumpadEnter,Enter,3",
     "appendChar: ,3",
     "keyup:NumpadEnter,Enter,4",
+  ]);
+});
+
+test("fix key locations", (t) => {
+  // Arrange.
+
+  const trace: string[] = [];
+  const keyboard = loadKeyboard(Layout.EN_DVORAK);
+  const target = tracingListener(trace);
+  const listener = emulateLayout(
+    new Settings().set(keyboardProps.emulation, Emulation.Reverse),
+    keyboard,
+    target,
+  );
+
+  // Act.
+
+  listener.onKeyDown(
+    newKeyEvent({
+      timeStamp: 1,
+      code: "ShiftLeft",
+      key: "Shift",
+      shiftKey: true,
+    }),
+  );
+  listener.onKeyDown(
+    newKeyEvent({
+      timeStamp: 2,
+      code: "KeyO",
+      key: "O",
+      shiftKey: true,
+    }),
+  );
+  listener.onTextInput({
+    timeStamp: 2,
+    inputType: "appendChar",
+    codePoint: /* O */ 0x004f,
+  });
+  listener.onKeyUp(
+    newKeyEvent({
+      timeStamp: 3,
+      code: "KeyO",
+      key: "O",
+      shiftKey: true,
+    }),
+  );
+  listener.onKeyUp(
+    newKeyEvent({
+      timeStamp: 4,
+      code: "ShiftLeft",
+      key: "Shift",
+      shiftKey: false,
+    }),
+  );
+
+  // Assert.
+
+  t.deepEqual(trace, [
+    "keydown:ShiftLeft,Shift,1",
+    "keydown:KeyS,O,2",
+    "appendChar:O,2",
+    "keyup:KeyS,O,3",
+    "keyup:ShiftLeft,Shift,4",
   ]);
 });
 
