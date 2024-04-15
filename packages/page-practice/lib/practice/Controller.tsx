@@ -1,4 +1,4 @@
-import { keyboardProps, useKeyboard } from "@keybr/keyboard";
+import { useKeyboard } from "@keybr/keyboard";
 import { type Settings } from "@keybr/settings";
 import { playSound } from "@keybr/sound";
 import { Feedback, PlaySounds, textDisplayProps } from "@keybr/textinput";
@@ -73,6 +73,7 @@ function usePracticeState(state: PracticeState) {
     };
     const playSounds = makeSoundPlayer(state.settings);
     const { onKeyDown, onKeyUp, onTextInput } = emulateLayout(
+      state.settings,
       keyboard,
       {
         onKeyDown: (event) => {
@@ -93,7 +94,6 @@ function usePracticeState(state: PracticeState) {
           timeout.schedule(handleResetLesson, 10000);
         },
       },
-      state.settings.get(keyboardProps.emulate),
     );
     return {
       handleResetLesson,

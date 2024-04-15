@@ -1,4 +1,5 @@
-import { Layout, loadKeyboard } from "@keybr/keyboard";
+import { keyboardProps, Layout, loadKeyboard } from "@keybr/keyboard";
+import { Settings } from "@keybr/settings";
 import test from "ava";
 import { emulateLayout } from "./emulation.ts";
 import { tracingListener } from "./testing/fakes.ts";
@@ -10,7 +11,11 @@ test("translate without emulation", (t) => {
   const trace: string[] = [];
   const keyboard = loadKeyboard(Layout.EN_DVORAK);
   const target = tracingListener(trace);
-  const listener = emulateLayout(keyboard, target, false);
+  const listener = emulateLayout(
+    new Settings().set(keyboardProps.emulate, false),
+    keyboard,
+    target,
+  );
 
   // Assert.
 
@@ -23,7 +28,11 @@ test("translate with emulation", (t) => {
   const trace: string[] = [];
   const keyboard = loadKeyboard(Layout.EN_DVORAK);
   const target = tracingListener(trace);
-  const listener = emulateLayout(keyboard, target, true);
+  const listener = emulateLayout(
+    new Settings().set(keyboardProps.emulate, true),
+    keyboard,
+    target,
+  );
 
   // Assert.
 
@@ -36,7 +45,11 @@ test("translate a normal input", (t) => {
   const trace: string[] = [];
   const keyboard = loadKeyboard(Layout.EN_DVORAK);
   const target = tracingListener(trace);
-  const listener = emulateLayout(keyboard, target, true);
+  const listener = emulateLayout(
+    new Settings().set(keyboardProps.emulate, true),
+    keyboard,
+    target,
+  );
 
   // Act.
 
@@ -95,7 +108,11 @@ test("translate a control input", (t) => {
   const trace: string[] = [];
   const keyboard = loadKeyboard(Layout.EN_DVORAK);
   const target = tracingListener(trace);
-  const listener = emulateLayout(keyboard, target, true);
+  const listener = emulateLayout(
+    new Settings().set(keyboardProps.emulate, true),
+    keyboard,
+    target,
+  );
 
   // Act.
 
@@ -148,7 +165,11 @@ test("translate a clear char input", (t) => {
   const trace: string[] = [];
   const keyboard = loadKeyboard(Layout.EN_DVORAK);
   const target = tracingListener(trace);
-  const listener = emulateLayout(keyboard, target, true);
+  const listener = emulateLayout(
+    new Settings().set(keyboardProps.emulate, true),
+    keyboard,
+    target,
+  );
 
   // Act.
 
@@ -189,7 +210,11 @@ test("translate a clear word input", (t) => {
   const trace: string[] = [];
   const keyboard = loadKeyboard(Layout.EN_DVORAK);
   const target = tracingListener(trace);
-  const listener = emulateLayout(keyboard, target, true);
+  const listener = emulateLayout(
+    new Settings().set(keyboardProps.emulate, true),
+    keyboard,
+    target,
+  );
 
   // Act.
 
@@ -248,7 +273,11 @@ test("translate the whitespace keys", (t) => {
   const trace: string[] = [];
   const keyboard = loadKeyboard(Layout.EN_DVORAK);
   const target = tracingListener(trace);
-  const listener = emulateLayout(keyboard, target, true);
+  const listener = emulateLayout(
+    new Settings().set(keyboardProps.emulate, true),
+    keyboard,
+    target,
+  );
 
   // Act.
 

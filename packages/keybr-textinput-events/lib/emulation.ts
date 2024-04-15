@@ -1,4 +1,5 @@
-import { type Keyboard, KeyModifier } from "@keybr/keyboard";
+import { type Keyboard, keyboardProps, KeyModifier } from "@keybr/keyboard";
+import { type Settings } from "@keybr/settings";
 import { type CodePoint } from "@keybr/unicode";
 import {
   type KeyEvent,
@@ -7,24 +8,25 @@ import {
 } from "./types.ts";
 
 export function emulateLayout(
+  settings: Settings,
   keyboard: Keyboard,
   target: TextInputListener,
-  emulate: boolean,
 ): TextInputListener {
-  if (keyboard.layout.emulate && emulate) {
-    return newLayoutEmulator(keyboard, target);
-  } else {
-    return target;
+  if (keyboard.layout.emulate) {
+    if (settings.get(keyboardProps.emulate)) {
+      return emulateForward(keyboard, target);
+    }
   }
+  return target;
 }
 
-export function newLayoutEmulator(
+function emulateForward(
   keyboard: Keyboard,
   target: TextInputListener,
 ): TextInputListener {
   return {
     onKeyDown: (event: KeyEvent): void => {
-      const [codePoint, mapped] = remap(keyboard, event);
+      const [codePoint, mapped] = fixKey(keyboard, event);
       target.onKeyDown(mapped);
       const { key, ctrlKey, altKey, metaKey, timeStamp } = mapped;
       if (!(ctrlKey || altKey || metaKey)) {
@@ -44,7 +46,7 @@ export function newLayoutEmulator(
       }
     },
     onKeyUp: (event: KeyEvent): void => {
-      const [codePoint, mapped] = remap(keyboard, event);
+      const [codePoint, mapped] = fixKey(keyboard, event);
       target.onKeyUp(mapped);
     },
     onTextInput: (event: TextInputEvent): void => {
@@ -58,8 +60,8 @@ export function newLayoutEmulator(
   };
 }
 
-function remap(
-  layout: Keyboard,
+function fixKey(
+  keyboard: Keyboard,
   {
     timeStamp,
     code,
@@ -73,7 +75,7 @@ function remap(
   }: KeyEvent,
 ): [CodePoint, KeyEvent] {
   let codePoint = 0x0000;
-  const characters = layout.getCharacters(code);
+  const characters = keyboard.getCharacters(code);
   if (characters != null) {
     key = String.fromCodePoint(
       (codePoint = characters.getCodePoint(
