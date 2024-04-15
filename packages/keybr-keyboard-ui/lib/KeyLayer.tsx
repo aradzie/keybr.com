@@ -1,4 +1,9 @@
-import { type Keyboard, type KeyShape, useKeyboard } from "@keybr/keyboard";
+import {
+  type Keyboard,
+  type KeyId,
+  type KeyShape,
+  useKeyboard,
+} from "@keybr/keyboard";
 import {
   type ComponentType,
   memo,
@@ -9,32 +14,13 @@ import {
 import { frameWidth } from "./constants.ts";
 import { type KeyProps, makeKeyComponent } from "./Key.tsx";
 
-type KeyId = string;
-type KeyIdList = readonly KeyId[];
-
-export function addKey(keys: KeyIdList, key: KeyId): KeyIdList {
-  const index = keys.indexOf(key);
-  if (index === -1) {
-    keys = [...keys, key];
-  }
-  return keys;
-}
-
-export function deleteKey(keys: KeyIdList, key: KeyId): KeyIdList {
-  const index = keys.indexOf(key);
-  if (index !== -1) {
-    keys = keys.filter((item) => item !== key);
-  }
-  return keys;
-}
-
 export const KeyLayer = memo(function KeyLayer({
   depressedKeys = [],
   toggledKeys = [],
   showColors = false,
 }: {
-  readonly depressedKeys?: KeyIdList;
-  readonly toggledKeys?: KeyIdList;
+  readonly depressedKeys?: readonly KeyId[];
+  readonly toggledKeys?: readonly KeyId[];
   readonly showColors?: boolean;
 }): ReactNode {
   const keyboard = useKeyboard();
@@ -138,8 +124,8 @@ class MemoizedKeyElements {
   }
 
   select(
-    depressedKeys: KeyIdList,
-    toggledKeys: KeyIdList,
+    depressedKeys: readonly KeyId[],
+    toggledKeys: readonly KeyId[],
     showColors: boolean,
   ): ReactElement<KeyProps> {
     const { shape } = this;

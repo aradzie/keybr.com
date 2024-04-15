@@ -9,10 +9,9 @@ import {
   useKeyboard,
 } from "@keybr/keyboard";
 import {
-  addKey,
-  deleteKey,
   KeyLayer,
   PointersLayer,
+  useDepressedKeys,
   VirtualKeyboard,
 } from "@keybr/keyboard-ui";
 import { useSettings } from "@keybr/settings";
@@ -24,7 +23,6 @@ import {
   FieldList,
   FieldSet,
   OptionList,
-  useWindowEvent,
 } from "@keybr/widget";
 import { type ReactNode, useEffect, useMemo, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -246,15 +244,4 @@ function GeometryProp(): ReactNode {
       </Explainer>
     </>
   );
-}
-
-function useDepressedKeys(): readonly string[] {
-  const [depressedKeys, setDepressedKeys] = useState<readonly string[]>([]);
-  useWindowEvent("keydown", (ev) => {
-    setDepressedKeys(addKey(depressedKeys, ev.code));
-  });
-  useWindowEvent("keyup", (ev) => {
-    setDepressedKeys(deleteKey(depressedKeys, ev.code));
-  });
-  return depressedKeys;
 }
