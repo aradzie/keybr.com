@@ -1,4 +1,4 @@
-import { addKey, deleteKey } from "@keybr/keyboard-ui";
+import { type KeyId } from "@keybr/keyboard";
 import { Screen } from "@keybr/pages-shared";
 import { enumProp } from "@keybr/settings";
 import { type LineList } from "@keybr/textinput";
@@ -22,6 +22,7 @@ import * as styles from "./Presenter.module.less";
 type Props = {
   readonly state: PracticeState;
   readonly lines: LineList;
+  readonly depressedKeys: readonly KeyId[];
   readonly onResetLesson: () => void;
   readonly onSkipLesson: () => void;
   readonly onKeyDown: (ev: KeyEvent) => void;
@@ -34,7 +35,6 @@ type State = {
   readonly view: View;
   readonly tour: boolean;
   readonly focus: boolean;
-  readonly depressedKeys: readonly string[];
 };
 
 enum View {
@@ -61,7 +61,6 @@ export class Presenter extends PureComponent<Props, State> {
     view: Prefs.get(propView),
     tour: false,
     focus: false,
-    depressedKeys: [],
   };
 
   override componentDidMount(): void {
@@ -75,8 +74,8 @@ export class Presenter extends PureComponent<Props, State> {
 
   override render(): ReactNode {
     const {
-      props: { state, lines, onConfigure },
-      state: { view, tour, focus, depressedKeys },
+      props: { state, lines, depressedKeys, onConfigure },
+      state: { view, tour, focus },
       handleResetLesson,
       handleSkipLesson,
       handleKeyDown,
@@ -191,18 +190,12 @@ export class Presenter extends PureComponent<Props, State> {
 
   private handleKeyDown = (ev: KeyEvent): void => {
     if (this.state.focus) {
-      this.setState(({ depressedKeys }) => ({
-        depressedKeys: addKey(depressedKeys, ev.code),
-      }));
       this.props.onKeyDown(ev);
     }
   };
 
   private handleKeyUp = (ev: KeyEvent): void => {
     if (this.state.focus) {
-      this.setState(({ depressedKeys }) => ({
-        depressedKeys: deleteKey(depressedKeys, ev.code),
-      }));
       this.props.onKeyUp(ev);
     }
   };
@@ -217,7 +210,6 @@ export class Presenter extends PureComponent<Props, State> {
     this.setState(
       {
         focus: true,
-        depressedKeys: [],
       },
       () => {
         this.props.onResetLesson();
@@ -229,7 +221,6 @@ export class Presenter extends PureComponent<Props, State> {
     this.setState(
       {
         focus: false,
-        depressedKeys: [],
       },
       () => {
         this.props.onResetLesson();

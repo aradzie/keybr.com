@@ -1,4 +1,5 @@
 import { keyboardProps, useKeyboard } from "@keybr/keyboard";
+import { addKey, deleteKey } from "@keybr/keyboard-ui";
 import { type Settings } from "@keybr/settings";
 import { playSound } from "@keybr/sound";
 import { Feedback, PlaySounds, textDisplayProps } from "@keybr/textinput";
@@ -38,6 +39,7 @@ export const Controller = memo(function Controller({
     <Presenter
       state={state}
       lines={state.lines}
+      depressedKeys={state.depressedKeys}
       onResetLesson={handleResetLesson}
       onSkipLesson={handleSkipLesson}
       onKeyDown={handleKeyDown}
@@ -51,27 +53,39 @@ export const Controller = memo(function Controller({
 function usePracticeState(state: PracticeState) {
   const keyboard = useKeyboard();
   const timeout = useTimeout();
-  const [lines, setLines] = useState(state.lines); // Forces ui update.
+  const [_0, setLines] = useState(state.lines); // Forces ui update.
+  const [_1, setDepressedKeys] = useState(state.depressedKeys); // Forces ui update.
 
   return useMemo(() => {
     // New lesson.
     setLines(state.lines);
+    setDepressedKeys(state.depressedKeys);
     const handleResetLesson = (): void => {
       state.resetLesson();
       setLines(state.lines);
+      setDepressedKeys((state.depressedKeys = []));
       timeout.cancel();
     };
     const handleSkipLesson = (): void => {
       state.skipLesson();
       setLines(state.lines);
+      setDepressedKeys((state.depressedKeys = []));
       timeout.cancel();
     };
     const playSounds = makeSoundPlayer(state.settings);
     const { onKeyDown, onKeyUp, onTextInput } = emulateLayout(
       keyboard,
       {
-        onKeyDown: () => {},
-        onKeyUp: () => {},
+        onKeyDown: (event) => {
+          setDepressedKeys(
+            (state.depressedKeys = addKey(state.depressedKeys, event.code)),
+          );
+        },
+        onKeyUp: (event) => {
+          setDepressedKeys(
+            (state.depressedKeys = deleteKey(state.depressedKeys, event.code)),
+          );
+        },
         onTextInput: (event) => {
           state.lastLesson = null;
           const feedback = state.onTextInput(event);

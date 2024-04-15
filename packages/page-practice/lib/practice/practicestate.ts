@@ -1,4 +1,4 @@
-import { type HasCodePoint, keyboardProps } from "@keybr/keyboard";
+import { type HasCodePoint, keyboardProps, type KeyId } from "@keybr/keyboard";
 import { type Lesson, type LessonKeys, lessonProps } from "@keybr/lesson";
 import { Histogram, KeySet } from "@keybr/math";
 import { type KeyStatsMap, Result } from "@keybr/result";
@@ -36,6 +36,7 @@ export class PracticeState {
   textInput!: TextInput; // Mutable.
   lines!: LineList; // Mutable.
   suffix!: readonly CodePoint[]; // Mutable.
+  depressedKeys: readonly KeyId[] = []; // Mutable.
 
   constructor(
     readonly settings: Settings,
