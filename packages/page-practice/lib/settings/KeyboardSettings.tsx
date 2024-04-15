@@ -19,7 +19,7 @@ import {
   FieldSet,
   OptionList,
 } from "@keybr/widget";
-import { type ReactNode, useEffect, useMemo, useState } from "react";
+import { memo, type ReactNode, useEffect, useMemo, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
 export function KeyboardSettings(): ReactNode {
@@ -129,46 +129,6 @@ function LayoutProp(): ReactNode {
   );
 }
 
-function KeyboardPreview(): ReactNode {
-  const { settings } = useSettings();
-  const keyboard = useKeyboard();
-  const depressedKeys = useDepressedKeys();
-  const colors = settings.get(keyboardProps.colors);
-  const pointers = settings.get(keyboardProps.pointers);
-  return (
-    <VirtualKeyboard keyboard={keyboard} height="16rem">
-      <KeyLayer
-        depressedKeys={depressedKeys}
-        toggledKeys={ModifierState.modifiers}
-        showColors={colors}
-      />
-      {pointers && <PointersPreview />}
-    </VirtualKeyboard>
-  );
-}
-
-function PointersPreview(): ReactNode {
-  const keyboard = useKeyboard();
-  const [index, setIndex] = useState(0);
-  const suffix = useMemo(() => {
-    setIndex(0);
-    return keyboard.getExampleLetters();
-  }, [keyboard]);
-  useEffect(() => {
-    const id = setTimeout(() => {
-      let newIndex = index + 1;
-      if (newIndex >= suffix.length) {
-        newIndex = 0;
-      }
-      setIndex(newIndex);
-    }, 1000);
-    return () => {
-      clearTimeout(id);
-    };
-  }, [suffix, index]);
-  return <PointersLayer suffix={suffix.slice(index)} delay={10} />;
-}
-
 function GeometryProp(): ReactNode {
   const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
@@ -240,3 +200,43 @@ function GeometryProp(): ReactNode {
     </>
   );
 }
+
+const KeyboardPreview = memo(function KeyboardPreview(): ReactNode {
+  const { settings } = useSettings();
+  const keyboard = useKeyboard();
+  const depressedKeys = useDepressedKeys();
+  const colors = settings.get(keyboardProps.colors);
+  const pointers = settings.get(keyboardProps.pointers);
+  return (
+    <VirtualKeyboard keyboard={keyboard} height="16rem">
+      <KeyLayer
+        depressedKeys={depressedKeys}
+        toggledKeys={ModifierState.modifiers}
+        showColors={colors}
+      />
+      {pointers && <PointersPreview />}
+    </VirtualKeyboard>
+  );
+});
+
+const PointersPreview = memo(function PointersPreview(): ReactNode {
+  const keyboard = useKeyboard();
+  const [index, setIndex] = useState(0);
+  const suffix = useMemo(() => {
+    setIndex(0);
+    return keyboard.getExampleLetters();
+  }, [keyboard]);
+  useEffect(() => {
+    const id = setTimeout(() => {
+      let newIndex = index + 1;
+      if (newIndex >= suffix.length) {
+        newIndex = 0;
+      }
+      setIndex(newIndex);
+    }, 1000);
+    return () => {
+      clearTimeout(id);
+    };
+  }, [suffix, index]);
+  return <PointersLayer suffix={suffix.slice(index)} delay={10} />;
+});
