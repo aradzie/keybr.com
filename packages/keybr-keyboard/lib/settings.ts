@@ -13,7 +13,7 @@ export enum Emulation {
   /**
    * No emulation.
    */
-  None = 10,
+  None = 0,
   /**
    * Assumes that the physical key locations are correct,
    * fixes the character codes.
