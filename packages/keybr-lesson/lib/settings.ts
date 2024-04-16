@@ -1,4 +1,5 @@
 import { booleanProp, itemProp, numberProp, stringProp } from "@keybr/settings";
+import { Syntax } from "./code/syntax.ts";
 import { LessonType } from "./lessontype.ts";
 
 export const lessonProps = {
@@ -32,6 +33,9 @@ export const lessonProps = {
   } as const,
   numbers: {
     benford: booleanProp("lesson.numbers.benford", true),
+  } as const,
+  code: {
+    syntax: itemProp("lesson.code.syntax", Syntax.ALL, Syntax.HTML),
   } as const,
   capitals: numberProp("lesson.capitals", 0, { min: 0, max: 1 }),
   punctuators: numberProp("lesson.punctuators", 0, { min: 0, max: 1 }),
