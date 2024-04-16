@@ -101,51 +101,51 @@ export class LessonKeys implements Iterable<LessonKey> {
     );
   }
 
-  private readonly _letters: readonly Letter[];
-  private readonly _keys: Map<CodePoint, LessonKey>;
+  readonly #letters: readonly Letter[];
+  readonly #keys: Map<CodePoint, LessonKey>;
 
   constructor(keys: readonly LessonKey[]) {
-    this._letters = [...keys.map(({ letter }) => letter)];
-    this._keys = new Map(keys.map((key) => [key.letter.codePoint, key]));
+    this.#letters = [...keys.map(({ letter }) => letter)];
+    this.#keys = new Map(keys.map((key) => [key.letter.codePoint, key]));
   }
 
   get letters(): readonly Letter[] {
-    return this._letters;
+    return this.#letters;
   }
 
   [Symbol.iterator](): IterableIterator<LessonKey> {
-    return this._keys.values();
+    return this.#keys.values();
   }
 
   findIncludedKeys(): LessonKey[] {
-    return [...this._keys.values()].filter((key) => key.isIncluded);
+    return [...this.#keys.values()].filter((key) => key.isIncluded);
   }
 
   findExcludedKeys(): LessonKey[] {
-    return [...this._keys.values()].filter((key) => !key.isIncluded);
+    return [...this.#keys.values()].filter((key) => !key.isIncluded);
   }
 
   findFocusedKey(): LessonKey | null {
-    return [...this._keys.values()].find((key) => key.isFocused) ?? null;
+    return [...this.#keys.values()].find((key) => key.isFocused) ?? null;
   }
 
   include({ codePoint }: Letter): void {
-    this._keys.set(codePoint, this._keys.get(codePoint)!.asIncluded());
+    this.#keys.set(codePoint, this.#keys.get(codePoint)!.asIncluded());
   }
 
   exclude({ codePoint }: Letter): void {
-    this._keys.set(codePoint, this._keys.get(codePoint)!.asExcluded());
+    this.#keys.set(codePoint, this.#keys.get(codePoint)!.asExcluded());
   }
 
   force({ codePoint }: Letter): void {
-    this._keys.set(codePoint, this._keys.get(codePoint)!.asForced());
+    this.#keys.set(codePoint, this.#keys.get(codePoint)!.asForced());
   }
 
   focus({ codePoint }: Letter): void {
-    this._keys.set(codePoint, this._keys.get(codePoint)!.asFocused());
+    this.#keys.set(codePoint, this.#keys.get(codePoint)!.asFocused());
   }
 
   find(codePoint: CodePoint): LessonKey | null {
-    return this._keys.get(codePoint) ?? null;
+    return this.#keys.get(codePoint) ?? null;
   }
 }

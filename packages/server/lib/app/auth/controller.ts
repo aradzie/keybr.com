@@ -46,8 +46,8 @@ const PPatchAccount = zod(TPatchAccount, () => {
 @controller()
 export class Controller {
   constructor(
-    @inject("canonicalUrl") private readonly canonicalUrl: string,
-    private readonly mailer: Mailer,
+    @inject("canonicalUrl") readonly canonicalUrl: string,
+    readonly mailer: Mailer,
   ) {}
 
   @http.GET({ name: "oauth-init", path: "/auth/oauth-init/{adapter}" })

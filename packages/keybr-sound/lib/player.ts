@@ -7,39 +7,39 @@ export class NullPlayer implements Player {
 }
 
 export class WebAudioPlayer implements Player {
-  private readonly _context: AudioContext;
-  private readonly _buffer: AudioBuffer;
-  private readonly _gain: GainNode;
-  private _source: AudioBufferSourceNode | null;
+  readonly #context: AudioContext;
+  readonly #buffer: AudioBuffer;
+  readonly #gain: GainNode;
+  #source: AudioBufferSourceNode | null;
 
   constructor(context: AudioContext, buffer: AudioBuffer) {
-    this._context = context;
-    this._buffer = buffer;
-    this._gain = this._context.createGain();
-    this._gain.connect(this._context.destination);
-    this._source = null;
+    this.#context = context;
+    this.#buffer = buffer;
+    this.#gain = this.#context.createGain();
+    this.#gain.connect(this.#context.destination);
+    this.#source = null;
   }
 
   play(offset?: number, duration?: number): void {
     this.stop();
-    const source = this._context.createBufferSource();
-    this._source = source;
+    const source = this.#context.createBufferSource();
+    this.#source = source;
     source.onended = () => {
-      this._source = null;
+      this.#source = null;
     };
-    source.buffer = this._buffer;
-    source.connect(this._gain);
+    source.buffer = this.#buffer;
+    source.connect(this.#gain);
     source.start(0, offset, duration);
   }
 
   stop(): void {
-    if (this._source != null) {
-      this._source.stop();
-      this._source = null;
+    if (this.#source != null) {
+      this.#source.stop();
+      this.#source = null;
     }
   }
 
   volume(volume: number): void {
-    this._gain.gain.value = volume;
+    this.#gain.gain.value = volume;
   }
 }

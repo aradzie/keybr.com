@@ -49,16 +49,16 @@ export class PracticeState {
     this.textDisplaySettings = toTextDisplaySettings(settings);
     this.keyStatsMap = this.lesson.analyze(this.results);
     this.lessonKeys = this.lesson.update(this.keyStatsMap);
-    this._reset(this.lesson.generate(this.lessonKeys));
-    this._computeAnnouncements();
+    this.#reset(this.lesson.generate(this.lessonKeys));
+    this.#computeAnnouncements();
   }
 
   resetLesson(): void {
-    this._reset(this.textInput.text);
+    this.#reset(this.textInput.text);
   }
 
   skipLesson(): void {
-    this._reset(this.lesson.generate(this.lessonKeys));
+    this.#reset(this.lesson.generate(this.lessonKeys));
   }
 
   onTextInput(event: TextInputEvent): Feedback {
@@ -78,13 +78,13 @@ export class PracticeState {
     return feedback;
   }
 
-  private _reset(fragment: string): void {
+  #reset(fragment: string): void {
     this.textInput = new TextInput(fragment, this.textInputSettings);
     this.lines = this.textInput.getLines();
     this.suffix = this.textInput.getSuffix();
   }
 
-  private _computeAnnouncements(): void {
+  #computeAnnouncements(): void {
     const { results, keyStatsMap, lessonKeys } = this;
     if (results.length > 0) {
       const focusedKey = lessonKeys.findFocusedKey();

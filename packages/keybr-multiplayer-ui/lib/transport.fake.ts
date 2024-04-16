@@ -9,7 +9,7 @@ export class FakeTransport<ServerMessage, ClientMessage>
   receivers: ((message: ServerMessage) => void)[] = [];
 
   transmit(message: ServerMessage): void {
-    this.checkClosed();
+    this.#checkClosed();
     this.incoming.push(message);
     for (const receiver of this.receivers) {
       receiver(message);
@@ -29,7 +29,7 @@ export class FakeTransport<ServerMessage, ClientMessage>
   }
 
   send(message: ClientMessage): void {
-    this.checkClosed();
+    this.#checkClosed();
     this.outgoing.push(message);
   }
 
@@ -37,7 +37,7 @@ export class FakeTransport<ServerMessage, ClientMessage>
     this.closed = true;
   }
 
-  private checkClosed(): void {
+  #checkClosed(): void {
     if (this.closed) {
       throw new Error("Closed");
     }

@@ -166,8 +166,8 @@ class Prefix {
 }
 
 class PrefixList {
-  private readonly table: TransitionTable;
-  private readonly map: Map<CodePoint, Prefix[]>;
+  readonly table: TransitionTable;
+  readonly map: Map<CodePoint, Prefix[]>;
 
   constructor(table: TransitionTable) {
     this.table = table;

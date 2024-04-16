@@ -80,35 +80,35 @@ export const Game = ({
 };
 
 class WorldStateWrapper {
-  private _emitter = mitt();
-  private _worldState: WorldState;
+  readonly #emitter = mitt();
+  #worldState: WorldState;
 
-  readonly on = this._emitter.on;
-  readonly off = this._emitter.off;
+  readonly on = this.#emitter.on;
+  readonly off = this.#emitter.off;
 
   constructor(
     readonly transport: Transport<ServerMessage, ClientMessage>,
     readonly intl: IntlShape,
   ) {
-    this._worldState = makeWorldState(this.intl);
+    this.#worldState = makeWorldState(this.intl);
   }
 
   get worldState(): WorldState {
-    return this._worldState;
+    return this.#worldState;
   }
 
   setWorldState(worldState: WorldState): void {
-    this._worldState = worldState;
-    this._emitter.emit(WORLD_CHANGE_EVENT, worldState);
+    this.#worldState = worldState;
+    this.#emitter.emit(WORLD_CHANGE_EVENT, worldState);
   }
 
   handleReceive = (message: ServerMessage): void => {
-    this.setWorldState(updateWorldState(this.intl, this._worldState, message));
+    this.setWorldState(updateWorldState(this.intl, this.#worldState, message));
   };
 
   handleTextInput = ({ inputType, codePoint }: TextInputEvent): void => {
     if (inputType === "appendChar") {
-      const result = handleTextInput(this._worldState, codePoint);
+      const result = handleTextInput(this.#worldState, codePoint);
       if (result != null) {
         const { worldState, elapsed } = result;
         this.setWorldState(worldState);

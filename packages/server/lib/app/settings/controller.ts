@@ -9,7 +9,7 @@ import { type AuthState } from "../auth/index.ts";
 @injectable()
 @controller()
 export class Controller {
-  constructor(private readonly database: SettingsDatabase) {}
+  constructor(readonly database: SettingsDatabase) {}
 
   @http.GET("/_/sync/settings")
   async getSettings(ctx: Context<RouterState & AuthState>) {

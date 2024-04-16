@@ -33,46 +33,46 @@ export class LocalDate {
   /**
    * Year number, like 2017 etc.
    */
-  public readonly year: number;
+  readonly year: number;
   /**
    * Month number, 1-12.
    */
-  public readonly month: Month;
+  readonly month: Month;
   /**
    * Day of month number, 1-31.
    */
-  public readonly dayOfMonth: number;
+  readonly dayOfMonth: number;
   /**
    * Day of week number, 1-7.
    */
-  public readonly dayOfWeek: DayOfWeek;
+  readonly dayOfWeek: DayOfWeek;
   /**
    * Midnight timestamp, in milliseconds.
    */
-  public readonly timeStamp: number;
+  readonly timeStamp: number;
   /**
    * String value in format YYYY-MM-DD.
    */
-  public readonly value: string;
+  readonly value: string;
 
   static now(): LocalDate {
     return new LocalDate(Date.now());
   }
 
   /**
-   * Create local date with the specified year, month number and day of month number.
+   * Create a local date with the specified year, month number and day of month number.
    * @param year Year, like 2015 etc.
    * @param month Month number, 1-12.
    * @param day Day of month number, 1-31.
    */
   constructor(year: number, month: number, day: number);
   /**
-   * Create local date from the specified timestamp, in milliseconds.
+   * Create a local date from the specified timestamp, in milliseconds.
    * @param timeStamp Timestamp, in milliseconds.
    */
   constructor(timeStamp: number);
   /**
-   * Create local date from the specified date instance.
+   * Create a local date from the specified date instance.
    * @param date Date instance.
    */
   constructor(date: Date);

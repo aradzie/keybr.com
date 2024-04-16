@@ -3,7 +3,7 @@ import { inject, injectable } from "@fastr/invert";
 
 @injectable()
 export class DataDir {
-  constructor(@inject("dataDir") private readonly dataDir: string) {}
+  constructor(@inject("dataDir") readonly dataDir: string) {}
 
   dataPath(...parts: readonly string[]): string {
     return join(this.dataDir, ...parts);

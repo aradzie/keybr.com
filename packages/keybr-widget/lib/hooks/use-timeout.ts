@@ -23,25 +23,25 @@ export const useTimeout = (): TimeoutScheduler => {
   const ref = useRef<TimeoutScheduler>(null!);
   if (ref.current == null) {
     ref.current = new (class implements TimeoutScheduler {
-      private _id: any = null;
+      #id: any = null;
 
       get pending(): boolean {
-        return this._id != null;
+        return this.#id != null;
       }
 
       cancel(): void {
-        if (this._id != null) {
-          clearTimeout(this._id);
-          this._id = null;
+        if (this.#id != null) {
+          clearTimeout(this.#id);
+          this.#id = null;
         }
       }
 
       schedule(callback: () => void, timeout: number): void {
-        if (this._id != null) {
-          clearTimeout(this._id);
+        if (this.#id != null) {
+          clearTimeout(this.#id);
         }
-        this._id = setTimeout(() => {
-          this._id = null;
+        this.#id = setTimeout(() => {
+          this.#id = null;
           callback();
         }, timeout);
       }

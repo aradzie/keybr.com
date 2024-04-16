@@ -12,30 +12,30 @@ let defaultJson: Json = createJson();
 
 export class Settings {
   static addDefaults(settings: Settings): void {
-    defaultJson = mergeJson(defaultJson, settings._json);
+    defaultJson = mergeJson(defaultJson, settings.#json);
   }
 
-  private readonly _json: Json;
-  private readonly _isNew: boolean;
+  readonly #json: Json;
+  readonly #isNew: boolean;
 
   constructor(json: Json = createJson(), isNew: boolean = false) {
     if (!isPlainObject(json)) {
       throw new TypeError();
     }
-    this._json = migrate(cloneJson(json));
-    this._isNew = isNew;
+    this.#json = migrate(cloneJson(json));
+    this.#isNew = isNew;
   }
 
   get isNew(): boolean {
-    return this._isNew;
+    return this.#isNew;
   }
 
   get<T>(prop: AnyProp<T>): T {
-    return prop.fromJson(this._json[prop.key] ?? defaultJson[prop.key]);
+    return prop.fromJson(this.#json[prop.key] ?? defaultJson[prop.key]);
   }
 
   set<T>(prop: AnyProp<T>, value: T): Settings {
-    return new Settings({ ...this._json, [prop.key]: prop.toJson(value) });
+    return new Settings({ ...this.#json, [prop.key]: prop.toJson(value) });
   }
 
   reset(): Settings {
@@ -44,8 +44,8 @@ export class Settings {
 
   toJSON() {
     const entries = [];
-    for (const key of Object.keys(this._json).sort()) {
-      entries.push([key, this._json[key]]);
+    for (const key of Object.keys(this.#json).sort()) {
+      entries.push([key, this.#json[key]]);
     }
     return Object.fromEntries(entries);
   }

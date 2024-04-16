@@ -15,10 +15,10 @@ type Mark = {
 };
 
 export class BookParagraphsGenerator implements TextGenerator<Mark> {
-  private readonly paragraphs: readonly string[];
-  private paragraphIndex: number;
-  private words: readonly string[] = [];
-  private wordIndex: number = 0;
+  readonly #paragraphs: readonly string[];
+  #paragraphIndex: number;
+  #words: readonly string[] = [];
+  #wordIndex: number = 0;
 
   constructor(settings: BookSettings, { content }: BookContent) {
     const paragraphs = flattenContent(content);
@@ -26,36 +26,36 @@ export class BookParagraphsGenerator implements TextGenerator<Mark> {
       0,
       Math.min(paragraphs.length - 1, settings.paragraphIndex),
     );
-    this.paragraphs = paragraphs;
-    this.paragraphIndex = paragraphIndex;
-    this.words = splitParagraph(paragraphs[paragraphIndex]);
-    this.wordIndex = 0;
+    this.#paragraphs = paragraphs;
+    this.#paragraphIndex = paragraphIndex;
+    this.#words = splitParagraph(paragraphs[paragraphIndex]);
+    this.#wordIndex = 0;
   }
 
   mark(): Mark {
     return {
-      paragraphIndex: this.paragraphIndex,
-      wordIndex: this.wordIndex,
+      paragraphIndex: this.#paragraphIndex,
+      wordIndex: this.#wordIndex,
     };
   }
 
   reset({ paragraphIndex, wordIndex }: Mark): void {
-    this.paragraphIndex = paragraphIndex;
-    this.words = splitParagraph(this.paragraphs[this.paragraphIndex]);
-    this.wordIndex = wordIndex;
+    this.#paragraphIndex = paragraphIndex;
+    this.#words = splitParagraph(this.#paragraphs[this.#paragraphIndex]);
+    this.#wordIndex = wordIndex;
   }
 
   nextWord(): string {
-    if (this.wordIndex >= this.words.length) {
-      this.paragraphIndex += 1;
-      if (this.paragraphIndex >= this.paragraphs.length) {
-        this.paragraphIndex = 0;
+    if (this.#wordIndex >= this.#words.length) {
+      this.#paragraphIndex += 1;
+      if (this.#paragraphIndex >= this.#paragraphs.length) {
+        this.#paragraphIndex = 0;
       }
-      this.words = splitParagraph(this.paragraphs[this.paragraphIndex]);
-      this.wordIndex = 0;
+      this.#words = splitParagraph(this.#paragraphs[this.#paragraphIndex]);
+      this.#wordIndex = 0;
     }
-    const word = this.words[this.wordIndex];
-    this.wordIndex += 1;
+    const word = this.#words[this.#wordIndex];
+    this.#wordIndex += 1;
     return word;
   }
 }

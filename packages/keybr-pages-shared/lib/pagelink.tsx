@@ -37,14 +37,16 @@ export class PageLinkTemplate<T = null> {
 }
 
 export class BoundPageLink<T = null> {
-  constructor(
-    private readonly link: PageLinkTemplate<T>,
-    private readonly params: T,
-  ) {}
+  readonly #link: PageLinkTemplate<T>;
+  readonly #params: T;
+  constructor(link: PageLinkTemplate<T>, params: T) {
+    this.#link = link;
+    this.#params = params;
+  }
 
   formatPath(locale: LocaleId): string {
-    const map = new Map(Object.entries(this.params ?? {}));
-    const path = this.link.path
+    const map = new Map(Object.entries(this.#params ?? {}));
+    const path = this.#link.path
       .split("/")
       .map((segment) => {
         if (segment.startsWith(":")) {
@@ -79,15 +81,11 @@ export class BoundPageLink<T = null> {
     readonly title: string;
     readonly icon?: ComponentType<IconProps>;
   } {
-    const {
-      link: { name, title, icon },
-      params,
-    } = this;
     return {
       path: this.formatPath(locale as LocaleId),
-      name: intl.formatMessage(name, params as any),
-      title: intl.formatMessage(title, params as any),
-      icon: icon,
+      name: intl.formatMessage(this.#link.name, this.#params as any),
+      title: intl.formatMessage(this.#link.title, this.#params as any),
+      icon: this.#link.icon,
     };
   }
 }

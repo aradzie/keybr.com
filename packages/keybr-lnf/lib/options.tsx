@@ -3,7 +3,7 @@ import { mdiBrightness4, mdiBrightness5 } from "@mdi/js";
 import { type ColorOption, type FontOption } from "./types.ts";
 
 export class OptionList<T extends { id: string }> {
-  constructor(public readonly all: readonly T[]) {}
+  constructor(readonly all: readonly T[]) {}
 
   findOption(id: string): T {
     let option = this.all.find((item) => item.id === id);

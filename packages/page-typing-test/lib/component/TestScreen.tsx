@@ -29,7 +29,7 @@ type State = {
 };
 
 export class TestScreen extends Component<Props, State> {
-  private readonly focusRef = createRef<Focusable>();
+  readonly focusRef = createRef<Focusable>();
 
   override state: State = nextTest(this.props, this.props.textGenerator.mark());
 
@@ -51,15 +51,15 @@ export class TestScreen extends Component<Props, State> {
     }
   }
 
-  private handleFocus = (): void => {
+  handleFocus = (): void => {
     this.setState(nextTest(this.props, this.state.mark));
   };
 
-  private handleBlur = (): void => {
+  handleBlur = (): void => {
     this.setState(nextTest(this.props, this.state.mark));
   };
 
-  private handleTextInput = (event: TextInputEvent): void => {
+  handleTextInput = (event: TextInputEvent): void => {
     const { session } = this.state;
     const [feedback, progress, completed] = session.handleTextInput(event);
     const lines = [...session.getLines()]; // Make a copy to force render.

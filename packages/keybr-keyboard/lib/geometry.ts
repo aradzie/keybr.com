@@ -72,9 +72,9 @@ export class Geometry implements EnumItem {
   );
 
   private constructor(
-    public readonly id: string,
-    public readonly name: string,
-    public readonly form: "staggered" | "matrix",
+    readonly id: string,
+    readonly name: string,
+    readonly form: "staggered" | "matrix",
   ) {}
 
   toString() {

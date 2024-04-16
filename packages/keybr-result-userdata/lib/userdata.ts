@@ -8,8 +8,8 @@ import { File } from "@sosimple/fsx-file";
 
 export class UserData {
   constructor(
-    private readonly id: PublicId,
-    private readonly file: File,
+    readonly id: PublicId,
+    readonly file: File,
   ) {}
 
   async serve(ctx: Context): Promise<void> {

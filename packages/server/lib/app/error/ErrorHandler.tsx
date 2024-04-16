@@ -16,7 +16,7 @@ import {
 
 @injectable()
 export class ErrorHandler implements HandlerObject {
-  constructor(private readonly view: View) {}
+  constructor(readonly view: View) {}
 
   async handle(ctx: Context, next: Next): Promise<void> {
     try {

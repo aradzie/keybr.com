@@ -11,7 +11,7 @@ export type ClientInfo = {
 
 @injectable({ singleton: true })
 export class SessionFactory {
-  constructor(private readonly game: Game) {}
+  constructor(readonly game: Game) {}
 
   connect(webSocket: WebSocket, { id, user }: ClientInfo): void {
     const onError = (error: Error): void => {

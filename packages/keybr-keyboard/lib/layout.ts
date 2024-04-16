@@ -819,14 +819,14 @@ export class Layout implements XEnumItem {
   }
 
   private constructor(
-    public readonly id: string,
-    public readonly xid: number,
-    public readonly name: string,
-    public readonly family: string,
-    public readonly language: Language,
-    public readonly emulate: boolean,
-    public readonly geometries: Enum<Geometry>,
-    public readonly mod: Mod = (geometry, dict) => dict,
+    readonly id: string,
+    readonly xid: number,
+    readonly name: string,
+    readonly family: string,
+    readonly language: Language,
+    readonly emulate: boolean,
+    readonly geometries: Enum<Geometry>,
+    readonly mod: Mod = (geometry, dict) => dict,
   ) {
     Object.freeze(this);
   }

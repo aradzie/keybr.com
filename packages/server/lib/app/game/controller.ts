@@ -11,8 +11,8 @@ import { SessionFactory } from "./session.ts";
 @controller()
 export class Controller {
   constructor(
-    private readonly server: WebSocketServer,
-    private readonly sessions: SessionFactory,
+    readonly server: WebSocketServer,
+    readonly sessions: SessionFactory,
   ) {}
 
   @http.GET("/_/game/server")

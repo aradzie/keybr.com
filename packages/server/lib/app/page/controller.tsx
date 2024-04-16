@@ -40,10 +40,10 @@ import { localePattern, pIntl, preferredLocale } from "./intl.ts";
 @use(CanonicalHandler)
 export class Controller {
   constructor(
-    @inject("canonicalUrl") private readonly canonicalUrl: string,
-    private readonly view: View,
-    private readonly highScores: HighScoresFactory,
-    private readonly database: SettingsDatabase,
+    @inject("canonicalUrl") readonly canonicalUrl: string,
+    readonly view: View,
+    readonly highScores: HighScoresFactory,
+    readonly database: SettingsDatabase,
   ) {}
 
   @http.GET("/")

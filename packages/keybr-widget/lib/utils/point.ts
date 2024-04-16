@@ -8,8 +8,8 @@ export type TPoint = {
 };
 
 export class Point implements Readonly<TPoint> {
-  public readonly x: number;
-  public readonly y: number;
+  readonly x: number;
+  readonly y: number;
 
   constructor(x: number, y: number);
   constructor(point: Readonly<TPoint>);

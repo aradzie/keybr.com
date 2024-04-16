@@ -1,14 +1,14 @@
 export class ObjectStorage implements Iterable<string> {
-  private readonly _storage: Storage;
+  readonly #storage: Storage;
 
   constructor(storage: Storage = localStorage) {
-    this._storage = storage;
+    this.#storage = storage;
   }
 
   *[Symbol.iterator](): IterableIterator<string> {
-    const { length } = this._storage;
+    const { length } = this.#storage;
     for (let i = 0; i < length; i++) {
-      const key = this._storage.key(i);
+      const key = this.#storage.key(i);
       if (key != null) {
         yield key;
       }
@@ -17,14 +17,14 @@ export class ObjectStorage implements Iterable<string> {
 
   set(name: string, value: unknown | null): void {
     if (value == null) {
-      this._storage.removeItem(name);
+      this.#storage.removeItem(name);
     } else {
-      this._storage.setItem(name, JSON.stringify(value));
+      this.#storage.setItem(name, JSON.stringify(value));
     }
   }
 
   get<T>(name: string): T | null {
-    const value = this._storage.getItem(name);
+    const value = this.#storage.getItem(name);
     if (value != null) {
       try {
         return JSON.parse(value) as T;

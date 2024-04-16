@@ -44,12 +44,12 @@ export class CustomTextLesson extends Lesson {
   }
 
   override generate(): string {
-    return generateFragment(this.settings, this.makeWordGenerator(), {
+    return generateFragment(this.settings, this.#makeWordGenerator(), {
       doubleWords: false,
     });
   }
 
-  private makeWordGenerator(): WordGenerator {
+  #makeWordGenerator(): WordGenerator {
     const randomize = this.settings.get(lessonProps.customText.randomize);
     if (randomize && this.wordList.length > 0) {
       return uniqueWords(randomWords(this.wordList, this.rng));

@@ -180,33 +180,33 @@ export class Presenter extends PureComponent<Props, State> {
     }
   }
 
-  private handleResetLesson = (): void => {
+  handleResetLesson = (): void => {
     this.props.onResetLesson();
   };
 
-  private handleSkipLesson = (): void => {
+  handleSkipLesson = (): void => {
     this.props.onSkipLesson();
   };
 
-  private handleKeyDown = (ev: KeyEvent): void => {
+  handleKeyDown = (ev: KeyEvent): void => {
     if (this.state.focus) {
       this.props.onKeyDown(ev);
     }
   };
 
-  private handleKeyUp = (ev: KeyEvent): void => {
+  handleKeyUp = (ev: KeyEvent): void => {
     if (this.state.focus) {
       this.props.onKeyUp(ev);
     }
   };
 
-  private handleTextInput = (ev: TextInputEvent): void => {
+  handleTextInput = (ev: TextInputEvent): void => {
     if (this.state.focus) {
       this.props.onTextInput(ev);
     }
   };
 
-  private handleFocus = (): void => {
+  handleFocus = (): void => {
     this.setState(
       {
         focus: true,
@@ -217,7 +217,7 @@ export class Presenter extends PureComponent<Props, State> {
     );
   };
 
-  private handleBlur = (): void => {
+  handleBlur = (): void => {
     this.setState(
       {
         focus: false,
@@ -228,7 +228,7 @@ export class Presenter extends PureComponent<Props, State> {
     );
   };
 
-  private handleChangeView = (): void => {
+  handleChangeView = (): void => {
     this.setState(
       ({ view }) => {
         const nextView = getNextView(view);
@@ -241,7 +241,7 @@ export class Presenter extends PureComponent<Props, State> {
     );
   };
 
-  private handleHelp = (): void => {
+  handleHelp = (): void => {
     this.setState(
       {
         view: View.Normal,
@@ -253,7 +253,7 @@ export class Presenter extends PureComponent<Props, State> {
     );
   };
 
-  private handleTourClose = (): void => {
+  handleTourClose = (): void => {
     this.setState(
       {
         view: View.Normal,

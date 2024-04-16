@@ -6,8 +6,8 @@ import { RevokeCommand } from "./revoke.ts";
 @injectable()
 export class PremiumCommand {
   constructor(
-    private readonly grant: GrantCommand,
-    private readonly revoke: RevokeCommand,
+    readonly grant: GrantCommand,
+    readonly revoke: RevokeCommand,
   ) {}
 
   command(): Command {

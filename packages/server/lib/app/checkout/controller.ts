@@ -30,7 +30,7 @@ import { type Metadata, PaddleConfig } from "./config.ts";
 @injectable()
 @controller()
 export class Controller {
-  constructor(private readonly config: PaddleConfig) {}
+  constructor(readonly config: PaddleConfig) {}
 
   /**
    * The fulfillment webhook is triggered when an order is processed for a

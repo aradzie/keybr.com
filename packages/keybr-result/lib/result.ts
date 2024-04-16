@@ -22,19 +22,19 @@ export class Result {
 
   static readonly isValid = (result: Result): boolean => result.validate();
 
-  public readonly complexity: number;
-  public readonly speed: number;
-  public readonly accuracy: number;
-  public readonly score: number;
+  readonly complexity: number;
+  readonly speed: number;
+  readonly accuracy: number;
+  readonly score: number;
 
   constructor(
-    public readonly layout: Layout,
-    public readonly textType: TextType,
-    public readonly timeStamp: number,
-    public readonly length: number,
-    public readonly time: number,
-    public readonly errors: number,
-    public readonly histogram: Histogram,
+    readonly layout: Layout,
+    readonly textType: TextType,
+    readonly timeStamp: number,
+    readonly length: number,
+    readonly time: number,
+    readonly errors: number,
+    readonly histogram: Histogram,
   ) {
     const { complexity } = histogram;
     let speed = 0;

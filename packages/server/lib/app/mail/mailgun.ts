@@ -20,7 +20,7 @@ export class MailgunConfig {
 
 @injectable()
 export class MailgunMailer extends Mailer {
-  constructor(private readonly config: MailgunConfig) {
+  constructor(readonly config: MailgunConfig) {
     super();
   }
 

@@ -33,7 +33,7 @@ export class ErrorHandler extends Component<Props, State> {
     silentCatchError(error);
   }
 
-  private setError = (report: string): void => {
+  setError = (report: string): void => {
     this.setState({ report });
   };
 

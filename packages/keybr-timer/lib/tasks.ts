@@ -24,22 +24,22 @@ class TaskWrapper {
 }
 
 export class Tasks {
-  private readonly tasks = new Set<TaskWrapper>();
+  readonly #tasks = new Set<TaskWrapper>();
 
   delayed(timeout: number, callback: () => void): Task {
     const task = new TaskWrapper(callback);
 
-    this.tasks.add(task);
+    this.#tasks.add(task);
 
     const execute = () => {
-      this.tasks.delete(task);
+      this.#tasks.delete(task);
       task.fire();
     };
 
     const id = setTimeout(execute, timeout);
 
     const cancel = () => {
-      this.tasks.delete(task);
+      this.#tasks.delete(task);
       task.cancel();
       clearTimeout(id);
     };
@@ -58,7 +58,7 @@ export class Tasks {
   repeated(timeout: number, callback: () => void): Task {
     const task = new TaskWrapper(callback);
 
-    this.tasks.add(task);
+    this.#tasks.add(task);
 
     const execute = () => {
       task.fire();
@@ -67,7 +67,7 @@ export class Tasks {
     const id = setInterval(execute, timeout);
 
     const cancel = () => {
-      this.tasks.delete(task);
+      this.#tasks.delete(task);
       task.cancel();
       clearInterval(id);
     };
@@ -84,9 +84,9 @@ export class Tasks {
   }
 
   cancelAll(): void {
-    for (const task of this.tasks) {
+    for (const task of this.#tasks) {
       task.cancel();
     }
-    this.tasks.clear();
+    this.#tasks.clear();
   }
 }

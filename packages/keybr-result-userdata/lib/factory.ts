@@ -6,7 +6,7 @@ import { UserData } from "./userdata.ts";
 
 @injectable({ singleton: true })
 export class UserDataFactory {
-  constructor(private readonly dataDir: DataDir) {}
+  constructor(readonly dataDir: DataDir) {}
 
   load(id: PublicId): UserData {
     return new UserData(id, this.getFile(id));

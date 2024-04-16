@@ -23,24 +23,24 @@ export const useInterval = (): IntervalScheduler => {
   const ref = useRef<IntervalScheduler>(null!);
   if (ref.current == null) {
     ref.current = new (class implements IntervalScheduler {
-      private _id: any = null;
+      #id: any = null;
 
       get pending(): boolean {
-        return this._id != null;
+        return this.#id != null;
       }
 
       cancel(): void {
-        if (this._id != null) {
-          clearInterval(this._id);
-          this._id = null;
+        if (this.#id != null) {
+          clearInterval(this.#id);
+          this.#id = null;
         }
       }
 
       schedule(callback: () => void, timeout: number): void {
-        if (this._id != null) {
-          clearInterval(this._id);
+        if (this.#id != null) {
+          clearInterval(this.#id);
         }
-        this._id = setInterval(() => {
+        this.#id = setInterval(() => {
           callback();
         }, timeout);
       }

@@ -8,15 +8,15 @@ import { js2xml } from "xml-js";
 @injectable()
 @controller()
 export class Controller {
-  private readonly body: string;
+  readonly #body: string;
 
   constructor(@inject("canonicalUrl") canonicalUrl: string) {
-    this.body = generateSitemapXml(canonicalUrl);
+    this.#body = generateSitemapXml(canonicalUrl);
   }
 
   @http.GET("/sitemap.xml")
   async get(ctx: Context) {
-    ctx.response.body = this.body;
+    ctx.response.body = this.#body;
     ctx.response.type = "application/xml";
   }
 }

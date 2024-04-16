@@ -4,23 +4,27 @@ import { type Transport } from "./transport.ts";
 export class WebSocketTransport<ServerMessage, ClientMessage>
   implements Transport<ServerMessage, ClientMessage>
 {
-  private readonly _listeners = new Set<{
+  readonly #listeners = new Set<{
     (event: MessageEvent): void;
     receiver: (...args: any) => void;
   }>();
+  readonly #webSocket: WebSocket;
+  readonly #codec: Codec<ServerMessage, ClientMessage>;
 
   constructor(
-    private readonly _webSocket: WebSocket,
-    private readonly _codec: Codec<ServerMessage, ClientMessage>,
+    webSocket: WebSocket,
+    codec: Codec<ServerMessage, ClientMessage>,
   ) {
-    this._webSocket.binaryType = "arraybuffer";
+    this.#webSocket = webSocket;
+    this.#codec = codec;
+    this.#webSocket.binaryType = "arraybuffer";
   }
 
   addReceiver(receiver: (message: ServerMessage) => void): void {
     const listener = (event: MessageEvent): void => {
       let message;
       try {
-        message = this._codec.decode(new Uint8Array(event.data));
+        message = this.#codec.decode(new Uint8Array(event.data));
       } catch (err: any) {
         this.close(4000, err.message);
         throw err;
@@ -28,15 +32,15 @@ export class WebSocketTransport<ServerMessage, ClientMessage>
       receiver(message);
     };
     listener.receiver = receiver;
-    this._webSocket.addEventListener("message", listener);
-    this._listeners.add(listener);
+    this.#webSocket.addEventListener("message", listener);
+    this.#listeners.add(listener);
   }
 
   removeReceiver(receiver: (message: ServerMessage) => void): void {
-    for (const listener of this._listeners) {
+    for (const listener of this.#listeners) {
       if (listener.receiver === receiver) {
-        this._webSocket.removeEventListener("message", listener);
-        this._listeners.delete(listener);
+        this.#webSocket.removeEventListener("message", listener);
+        this.#listeners.delete(listener);
       }
     }
   }
@@ -44,15 +48,15 @@ export class WebSocketTransport<ServerMessage, ClientMessage>
   send(message: ClientMessage): void {
     let data;
     try {
-      data = this._codec.encode(message);
+      data = this.#codec.encode(message);
     } catch (err: any) {
       this.close(4000, err.message);
       throw err;
     }
-    this._webSocket.send(data);
+    this.#webSocket.send(data);
   }
 
   close(code?: number, reason?: string): void {
-    this._webSocket.close(code, reason);
+    this.#webSocket.close(code, reason);
   }
 }

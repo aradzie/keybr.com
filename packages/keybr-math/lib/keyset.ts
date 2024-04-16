@@ -1,5 +1,5 @@
 export class KeySet<T> implements Iterable<T> {
-  private readonly _keys = new Set<T>();
+  readonly #keys = new Set<T>();
 
   constructor(keys: Iterable<T>) {
     for (const key of keys) {
@@ -8,12 +8,12 @@ export class KeySet<T> implements Iterable<T> {
   }
 
   *[Symbol.iterator](): IterableIterator<T> {
-    for (const key of this._keys) {
+    for (const key of this.#keys) {
       yield key;
     }
   }
 
   add(key: T): void {
-    this._keys.add(key);
+    this.#keys.add(key);
   }
 }

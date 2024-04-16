@@ -8,8 +8,8 @@ export type TSize = {
 };
 
 export class Size implements Readonly<TSize> {
-  public readonly width: number;
-  public readonly height: number;
+  readonly width: number;
+  readonly height: number;
 
   constructor(width: number, height: number);
   constructor(size: Readonly<TSize>);

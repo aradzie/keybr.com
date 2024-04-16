@@ -40,7 +40,7 @@ export class GuidedLesson extends Lesson {
     const alphabetSize = this.settings.get(lessonProps.guided.alphabetSize);
     const recoverKeys = this.settings.get(lessonProps.guided.recoverKeys);
 
-    const letters = this.getLetters();
+    const letters = this.#getLetters();
 
     const minSize = 6;
     const maxSize =
@@ -106,7 +106,7 @@ export class GuidedLesson extends Lesson {
   }
 
   override generate(lessonKeys: LessonKeys): string {
-    const wordGenerator = this.makeWordGenerator(
+    const wordGenerator = this.#makeWordGenerator(
       new Filter(lessonKeys.findIncludedKeys(), lessonKeys.findFocusedKey()),
     );
     const words = mangledWords(
@@ -124,7 +124,7 @@ export class GuidedLesson extends Lesson {
     });
   }
 
-  private getLetters(): Letter[] {
+  #getLetters(): Letter[] {
     const { letters } = this.model;
     const { codePoints } = this;
     if (this.settings.get(lessonProps.guided.keyboardOrder)) {
@@ -136,7 +136,7 @@ export class GuidedLesson extends Lesson {
     }
   }
 
-  private makeWordGenerator(filter: Filter): WordGenerator {
+  #makeWordGenerator(filter: Filter): WordGenerator {
     const pseudoWords = phoneticWords(this.model, filter, this.rng);
     if (this.settings.get(lessonProps.guided.naturalWords)) {
       const words = [...this.dictionary.find(filter)];

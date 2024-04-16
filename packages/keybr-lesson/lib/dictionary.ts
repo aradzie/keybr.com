@@ -7,17 +7,17 @@ import {
 } from "@keybr/unicode";
 
 export class Dictionary implements Iterable<string> {
-  private readonly words: Word[] = [];
-  private readonly dict = new Map<CodePoint, Word[]>();
+  readonly #words: Word[] = [];
+  readonly #dict = new Map<CodePoint, Word[]>();
 
   constructor(wordList: WordList) {
     for (const item of wordList) {
       const word = new Word(item);
-      this.words.push(word);
+      this.#words.push(word);
       for (const codePoint of word.codePoints) {
-        let list = this.dict.get(codePoint);
+        let list = this.#dict.get(codePoint);
         if (list == null) {
-          this.dict.set(codePoint, (list = []));
+          this.#dict.set(codePoint, (list = []));
         }
         if (!list.includes(word)) {
           list.push(word);
@@ -27,15 +27,15 @@ export class Dictionary implements Iterable<string> {
   }
 
   *[Symbol.iterator](): IterableIterator<string> {
-    for (const word of this.words) {
+    for (const word of this.#words) {
       yield word.value;
     }
   }
 
   find({ codePoints, focusedCodePoint }: Filter): WordList {
-    let words = this.words;
+    let words = this.#words;
     if (focusedCodePoint != null) {
-      words = this.dict.get(focusedCodePoint) ?? [];
+      words = this.#dict.get(focusedCodePoint) ?? [];
     }
     if (codePoints != null) {
       words = words.filter((word) => word.matches(codePoints));

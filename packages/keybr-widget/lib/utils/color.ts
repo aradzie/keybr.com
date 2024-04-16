@@ -190,10 +190,10 @@ export abstract class Color {
  * A color in the RGB model.
  */
 export class RgbColor extends Color implements TRgb {
-  public r: number;
-  public g: number;
-  public b: number;
-  public a: number;
+  r: number;
+  g: number;
+  b: number;
+  a: number;
 
   constructor(r: number, g: number, b: number, a?: number);
   constructor(value: Readonly<TRgb>);
@@ -311,10 +311,10 @@ export class RgbColor extends Color implements TRgb {
  * A color in the HSL model.
  */
 export class HslColor extends Color implements THsl {
-  public h: number;
-  public s: number;
-  public l: number;
-  public a: number;
+  h: number;
+  s: number;
+  l: number;
+  a: number;
 
   constructor(h: number, s: number, l: number, a?: number);
   constructor(value: Readonly<THsl>);

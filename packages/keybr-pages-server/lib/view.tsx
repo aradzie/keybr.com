@@ -5,7 +5,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 
 @injectable()
 export class View {
-  constructor(private readonly manifest: Manifest) {}
+  constructor(readonly manifest: Manifest) {}
 
   preloadHeader(link: PreloadLink): string {
     const fields = [`<${this.manifest.assetPath(link.href)}>`];

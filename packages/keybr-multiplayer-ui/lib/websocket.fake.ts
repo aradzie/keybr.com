@@ -16,7 +16,7 @@ export const CLOSE_CODES = {
 };
 
 export class FakeEventTarget implements EventTarget {
-  private listeners: {
+  readonly #listeners: {
     [name: string]: EventListenerOrEventListenerObject[];
   } = {};
 
@@ -25,9 +25,9 @@ export class FakeEventTarget implements EventTarget {
     listener: EventListenerOrEventListenerObject | null,
     capture?: boolean | AddEventListenerOptions,
   ): void {
-    let listeners = this.listeners[type];
+    let listeners = this.#listeners[type];
     if (listeners == null) {
-      listeners = this.listeners[type] = [];
+      listeners = this.#listeners[type] = [];
     }
     if (listener != null) {
       listeners.push(listener as EventListener);
@@ -40,7 +40,7 @@ export class FakeEventTarget implements EventTarget {
     capture?: boolean | AddEventListenerOptions,
   ): void {
     if (listener != null) {
-      const listeners = this.listeners[type];
+      const listeners = this.#listeners[type];
       if (listeners != null) {
         const index = listeners.indexOf(listener);
         if (index !== -1) {
@@ -51,7 +51,7 @@ export class FakeEventTarget implements EventTarget {
   }
 
   dispatchEvent(event: Event): boolean {
-    const listeners = this.listeners[event.type];
+    const listeners = this.#listeners[event.type];
     if (listeners != null) {
       for (const listener of listeners) {
         if (typeof listener === "function") {

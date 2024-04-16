@@ -15,35 +15,35 @@ export type Listeners = {
 };
 
 export class InputHandler implements Focusable {
-  private listeners: Listeners = {};
-  private input: HTMLTextAreaElement | null = null;
-  private compositing: boolean = false;
+  #listeners: Listeners = {};
+  #input: HTMLTextAreaElement | null = null;
+  #compositing: boolean = false;
 
   setListeners = (listeners: Listeners): void => {
-    this.listeners = listeners;
+    this.#listeners = listeners;
   };
 
   setInput = (input: HTMLTextAreaElement | null): void => {
     if (input != null) {
-      this.input = input;
-      this.attachInput();
+      this.#input = input;
+      this.#attachInput();
     } else {
-      this.detachInput();
-      this.input = null;
+      this.#detachInput();
+      this.#input = null;
     }
   };
 
   focus = (): void => {
-    this.input?.focus();
+    this.#input?.focus();
   };
 
   blur = (): void => {
-    this.input?.blur();
+    this.#input?.blur();
   };
 
-  private attachInput(): void {
+  #attachInput(): void {
     ModifierState.initialize();
-    const { input } = this;
+    const input = this.#input;
     if (input != null) {
       input.addEventListener("focus", this.handleFocus);
       input.addEventListener("blur", this.handleBlur);
@@ -55,11 +55,11 @@ export class InputHandler implements Focusable {
       input.addEventListener("compositionend", this.handleComposition);
     }
     this.focus();
-    this.clearInput();
+    this.#clearInput();
   }
 
-  private detachInput(): void {
-    const { input } = this;
+  #detachInput(): void {
+    const input = this.#input;
     if (input != null) {
       input.removeEventListener("focus", this.handleFocus);
       input.removeEventListener("blur", this.handleBlur);
@@ -72,8 +72,8 @@ export class InputHandler implements Focusable {
     }
   }
 
-  private clearInput(): void {
-    const { input } = this;
+  #clearInput(): void {
+    const input = this.#input;
     if (input != null) {
       // Keep the input value non-empty, otherwise Safari will not generate
       // events `deleteContentBackward` and `deleteWordBackward`.
@@ -81,22 +81,22 @@ export class InputHandler implements Focusable {
     }
   }
 
-  private handleFocus = (event: FocusEvent): void => {
-    this.listeners.onFocus?.();
+  handleFocus = (event: FocusEvent): void => {
+    this.#listeners.onFocus?.();
   };
 
-  private handleBlur = (event: FocusEvent): void => {
-    this.listeners.onBlur?.();
+  handleBlur = (event: FocusEvent): void => {
+    this.#listeners.onBlur?.();
   };
 
-  private handleKeyDown = (event: KeyboardEvent): void => {
+  handleKeyDown = (event: KeyboardEvent): void => {
     if (process.env.NODE_ENV === "production") {
       if (!(event instanceof KeyboardEvent && event.isTrusted)) {
         return;
       }
     }
     const timeStamp = timeStampOf(event);
-    this.listeners.onKeyDown?.(toKeyEvent(event, timeStamp));
+    this.#listeners.onKeyDown?.(toKeyEvent(event, timeStamp));
     const { ctrlKey, altKey, metaKey, key } = event;
     if (!(ctrlKey || altKey || metaKey)) {
       switch (key) {
@@ -107,17 +107,17 @@ export class InputHandler implements Focusable {
     }
   };
 
-  private handleKeyUp = (event: KeyboardEvent): void => {
+  handleKeyUp = (event: KeyboardEvent): void => {
     if (process.env.NODE_ENV === "production") {
       if (!(event instanceof KeyboardEvent && event.isTrusted)) {
         return;
       }
     }
     const timeStamp = timeStampOf(event);
-    this.listeners.onKeyUp?.(toKeyEvent(event, timeStamp));
+    this.#listeners.onKeyUp?.(toKeyEvent(event, timeStamp));
   };
 
-  private handleInput = (event: InputEvent): void => {
+  handleInput = (event: InputEvent): void => {
     if (process.env.NODE_ENV === "production") {
       if (!(event instanceof InputEvent && event.isTrusted)) {
         return;
@@ -126,59 +126,59 @@ export class InputHandler implements Focusable {
     const timeStamp = timeStampOf(event);
     switch (event.inputType) {
       case "insertText":
-        this.appendChar(event.data, timeStamp);
-        this.clearInput();
+        this.#appendChar(event.data, timeStamp);
+        this.#clearInput();
         break;
       case "insertLineBreak":
-        this.listeners.onTextInput?.({
+        this.#listeners.onTextInput?.({
           timeStamp,
           inputType: "appendLineBreak",
           codePoint: 0x0000,
         });
-        this.clearInput();
+        this.#clearInput();
         break;
       case "deleteContentBackward":
-        this.listeners.onTextInput?.({
+        this.#listeners.onTextInput?.({
           timeStamp,
           inputType: "clearChar",
           codePoint: 0x0000,
         });
-        this.clearInput();
+        this.#clearInput();
         break;
       case "deleteWordBackward":
-        this.listeners.onTextInput?.({
+        this.#listeners.onTextInput?.({
           timeStamp,
           inputType: "clearWord",
           codePoint: 0x0000,
         });
-        this.clearInput();
+        this.#clearInput();
         break;
       case "insertFromPaste":
-        this.clearInput();
+        this.#clearInput();
         break;
     }
   };
 
-  private handleComposition = (event: CompositionEvent): void => {
+  handleComposition = (event: CompositionEvent): void => {
     const timeStamp = timeStampOf(event);
     switch (event.type) {
       case "compositionstart":
       case "compositionupdate":
-        this.compositing = true;
+        this.#compositing = true;
         break;
       case "compositionend":
-        this.compositing = false;
-        this.appendChar(event.data, timeStamp);
-        this.clearInput();
+        this.#compositing = false;
+        this.#appendChar(event.data, timeStamp);
+        this.#clearInput();
         break;
     }
   };
 
-  private appendChar(data: string | null, timeStamp: number): void {
+  #appendChar(data: string | null, timeStamp: number): void {
     if (data != null && data.length > 0) {
       const codePoint = data.codePointAt(0) ?? 0x0000;
       if (codePoint > 0x0000) {
-        this.listeners.onTextInput?.({
+        this.#listeners.onTextInput?.({
           timeStamp,
           inputType: "appendChar",
           codePoint,

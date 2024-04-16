@@ -1,9 +1,9 @@
 import { type TokenResponse } from "./types.ts";
 
 export class AccessToken {
-  public readonly token: string;
-  public readonly type: string;
-  public readonly expiresAt: Date;
+  readonly token: string;
+  readonly type: string;
+  readonly expiresAt: Date;
 
   constructor({ access_token, token_type, expires_in }: TokenResponse) {
     this.token = access_token;

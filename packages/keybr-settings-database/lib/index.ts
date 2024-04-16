@@ -7,10 +7,10 @@ import { exponentialDelay } from "@sosimple/retry";
 
 @injectable()
 export class SettingsDatabase {
-  constructor(private readonly dataDir: DataDir) {}
+  constructor(readonly dataDir: DataDir) {}
 
   async set(userId: number, settings: Settings | null): Promise<void> {
-    const file = this.getFile(userId);
+    const file = this.#getFile(userId);
     await LockFile.withLock(
       file,
       { retryLimit: 5, delayer: exponentialDelay(10) },
@@ -27,7 +27,7 @@ export class SettingsDatabase {
   }
 
   async get(userId: number): Promise<Settings | null> {
-    const file = this.getFile(userId);
+    const file = this.#getFile(userId);
     return await LockFile.withLock(
       file,
       {
@@ -54,7 +54,7 @@ export class SettingsDatabase {
     );
   }
 
-  private getFile(userId: number) {
+  #getFile(userId: number) {
     return new File(this.dataDir.userSettingsFile(userId));
   }
 }

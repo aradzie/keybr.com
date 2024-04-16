@@ -10,7 +10,7 @@ import { type UserIdRange } from "./userid-range.ts";
 
 @injectable()
 export class StatsCommand {
-  constructor(private readonly userDataFactory: UserDataFactory) {}
+  constructor(readonly userDataFactory: UserDataFactory) {}
 
   command(): Command {
     return new Command("check-stats")

@@ -29,14 +29,14 @@ export class ResultSyncNamedUser implements RemoteResultSync {
 }
 
 export class ResultSyncPublicUser implements RemoteResultSync {
-  private readonly _userId: string;
+  readonly #userId: string;
 
   constructor(userId: string) {
-    this._userId = userId;
+    this.#userId = userId;
   }
 
   receive(progressListener: ProgressListener): Promise<Result[]> {
-    return receive(publicUserDataUrl(this._userId), progressListener);
+    return receive(publicUserDataUrl(this.#userId), progressListener);
   }
 
   async send(

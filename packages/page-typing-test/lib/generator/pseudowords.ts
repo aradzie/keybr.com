@@ -7,23 +7,23 @@ type Mark = {
 };
 
 export class PseudoWordsGenerator implements TextGenerator<Mark> {
-  private readonly model: PhoneticModel;
-  private readonly rng: RNGStream;
+  readonly #model: PhoneticModel;
+  readonly #rng: RNGStream;
 
   constructor(model: PhoneticModel, rng: RNGStream = LCG(1)) {
-    this.model = model;
-    this.rng = rng;
+    this.#model = model;
+    this.#rng = rng;
   }
 
   nextWord(): string {
-    return this.model.nextWord(Filter.empty, this.rng);
+    return this.#model.nextWord(Filter.empty, this.#rng);
   }
 
   mark(): Mark {
-    return { mark: this.rng.mark() };
+    return { mark: this.#rng.mark() };
   }
 
   reset({ mark }: Mark): void {
-    this.rng.reset(mark);
+    this.#rng.reset(mark);
   }
 }

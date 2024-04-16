@@ -15,8 +15,8 @@ import { type AuthState, pProfileOwner } from "../auth/index.ts";
 @controller()
 export class Controller {
   constructor(
-    private readonly highScores: HighScoresFactory,
-    private readonly userData: UserDataFactory,
+    readonly highScores: HighScoresFactory,
+    readonly userData: UserDataFactory,
   ) {}
 
   @http.GET("/_/sync/data/{publicId:[a-zA-Z0-9]+}")

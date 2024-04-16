@@ -18,40 +18,39 @@ type Props = {
 };
 
 export class Cursor extends Component<Props> {
-  private readonly containerRef = createRef<HTMLDivElement>();
-  private readonly cursorRef = createRef<HTMLSpanElement>();
-  private initial = true;
-  private animation: Animation | null = null;
+  readonly #containerRef = createRef<HTMLDivElement>();
+  readonly #cursorRef = createRef<HTMLSpanElement>();
+  #initial = true;
+  #animation: Animation | null = null;
 
   override componentDidMount(): void {
-    this.position();
+    this.#position();
   }
 
   override componentDidUpdate(): void {
-    this.position();
+    this.#position();
   }
 
   override componentWillUnmount(): void {
-    const { animation } = this;
-    if (animation != null) {
-      animation.cancel();
+    if (this.#animation != null) {
+      this.#animation.cancel();
     }
   }
 
-  position(): void {
-    const container = this.containerRef.current;
-    const cursor = this.cursorRef.current;
+  #position(): void {
+    const container = this.#containerRef.current;
+    const cursor = this.#cursorRef.current;
     if (container != null && cursor != null) {
       const char = findCursor(container);
       if (char != null) {
-        this.move(cursor, char);
+        this.#move(cursor, char);
       } else {
-        this.hide(cursor);
+        this.#hide(cursor);
       }
     }
   }
 
-  private move(cursor: HTMLElement, char: HTMLElement): void {
+  #move(cursor: HTMLElement, char: HTMLElement): void {
     const {
       caretShapeStyle,
       caretMovementStyle,
@@ -132,19 +131,17 @@ export class Cursor extends Component<Props> {
     style.left = `${left}px`;
     style.top = `${top}px`;
 
-    let { animation } = this;
-
-    if (this.initial || caretMovementStyle !== CaretMovementStyle.Smooth) {
-      if (animation != null) {
-        animation.cancel();
-        animation = null;
+    if (this.#initial || caretMovementStyle !== CaretMovementStyle.Smooth) {
+      if (this.#animation != null) {
+        this.#animation.cancel();
+        this.#animation = null;
       }
     } else {
-      if (animation != null) {
-        animation.cancel();
-        animation = null;
+      if (this.#animation != null) {
+        this.#animation.cancel();
+        this.#animation = null;
       } else {
-        animation = cursor.animate(
+        this.#animation = cursor.animate(
           [
             {
               left: `${fromLeft}px`,
@@ -162,20 +159,18 @@ export class Cursor extends Component<Props> {
           },
         );
         const clear = () => {
-          this.animation = null;
+          this.#animation = null;
         };
-        animation.onfinish = clear;
-        animation.oncancel = clear;
-        animation.onremove = clear;
+        this.#animation.onfinish = clear;
+        this.#animation.oncancel = clear;
+        this.#animation.onremove = clear;
       }
     }
 
-    this.animation = animation;
-
-    this.initial = false;
+    this.#initial = false;
   }
 
-  private hide(cursor: HTMLElement): void {
+  #hide(cursor: HTMLElement): void {
     const { style } = cursor;
 
     cursor.textContent = "";
@@ -186,14 +181,14 @@ export class Cursor extends Component<Props> {
     style.width = "";
     style.height = "";
 
-    this.initial = true;
+    this.#initial = true;
   }
 
   override render(): ReactNode {
     return (
-      <div ref={this.containerRef} style={containerStyle}>
+      <div ref={this.#containerRef} style={containerStyle}>
         <span
-          ref={this.cursorRef}
+          ref={this.#cursorRef}
           className={cursorClassName(this.props.settings)}
           style={cursorStyle}
         />

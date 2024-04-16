@@ -8,8 +8,8 @@ export class Range {
     return range;
   }
 
-  private _min: number = NaN;
-  private _max: number = NaN;
+  #min: number = NaN;
+  #max: number = NaN;
 
   constructor();
   constructor(that: Range);
@@ -21,8 +21,8 @@ export class Range {
       return;
     }
     if (l === 1 && (a0 = args[0]) instanceof Range) {
-      this._min = a0._min;
-      this._max = a0._max;
+      this.#min = a0.#min;
+      this.#max = a0.#max;
       return;
     }
     if (
@@ -30,31 +30,31 @@ export class Range {
       typeof (a0 = args[0]) === "number" &&
       typeof (a1 = args[1]) === "number"
     ) {
-      this._min = a0;
-      this._max = a1;
+      this.#min = a0;
+      this.#max = a1;
       return;
     }
     throw new TypeError();
   }
 
   get defined(): boolean {
-    return this._min === this._min && this._max === this._max;
+    return this.#min === this.#min && this.#max === this.#max;
   }
 
   get min(): number {
-    return this._min;
+    return this.#min;
   }
 
   set min(value: number) {
-    this._min = this._min === this._min ? Math.min(this._min, value) : value;
+    this.#min = this.#min === this.#min ? Math.min(this.#min, value) : value;
   }
 
   get max(): number {
-    return this._max;
+    return this.#max;
   }
 
   set max(value: number) {
-    this._max = this._max === this._max ? Math.max(this._max, value) : value;
+    this.#max = this.#max === this.#max ? Math.max(this.#max, value) : value;
   }
 
   adjust(values: Iterable<number>): this {
@@ -69,17 +69,17 @@ export class Range {
     if (!this.defined) {
       throw new RangeError();
     }
-    return this._max - this._min;
+    return this.#max - this.#min;
   }
 
   normalize(value: number): number {
     if (!this.defined) {
       throw new RangeError();
     }
-    if (this._max === this._min) {
-      return this._min;
+    if (this.#max === this.#min) {
+      return this.#min;
     } else {
-      return (value - this._min) / (this._max - this._min);
+      return (value - this.#min) / (this.#max - this.#min);
     }
   }
 
@@ -87,15 +87,15 @@ export class Range {
     if (!this.defined) {
       throw new RangeError();
     }
-    const t0 = this._max / step;
+    const t0 = this.#max / step;
     const r0 = Math.floor(t0);
     if (t0 !== r0) {
-      this._max = (r0 + 1) * step;
+      this.#max = (r0 + 1) * step;
     }
-    const t1 = this._min / step;
+    const t1 = this.#min / step;
     const r1 = Math.ceil(t1);
     if (t1 !== r1) {
-      this._min = (r1 - 1) * step;
+      this.#min = (r1 - 1) * step;
     }
     return this;
   }
