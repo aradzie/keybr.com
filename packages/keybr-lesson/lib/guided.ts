@@ -3,7 +3,6 @@ import { type WeightedCodePointSet } from "@keybr/keyboard";
 import { Filter, Letter, type PhoneticModel } from "@keybr/phonetic-model";
 import { type KeyStatsMap, newKeyStatsMap, type Result } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
-import { type CodePointSet } from "@keybr/unicode";
 import { Dictionary, filterWordList } from "./dictionary.ts";
 import { LessonKey, LessonKeys } from "./key.ts";
 import { Lesson } from "./lesson.ts";
@@ -20,8 +19,6 @@ import {
 
 export class GuidedLesson extends Lesson {
   readonly dictionary: Dictionary;
-  readonly programmingMode: boolean;
-  readonly programmingCodePoint: CodePointSet;
 
   constructor(
     settings: Settings,
@@ -33,19 +30,9 @@ export class GuidedLesson extends Lesson {
     this.dictionary = new Dictionary(
       filterWordList(wordList, codePoints).filter((word) => word.length > 2),
     );
-    this.programmingMode = settings.get(lessonProps.programming);
-    this.programmingCodePoint = new Set(
-      Letter.programming.map(Letter.codePointOf),
-    );
   }
 
   override analyze(results: readonly Result[]): KeyStatsMap {
-    if (this.programmingMode) {
-      return newKeyStatsMap(
-        this.model.letters.concat(Letter.programming),
-        results,
-      );
-    }
     return newKeyStatsMap(this.model.letters, results);
   }
 
@@ -53,10 +40,7 @@ export class GuidedLesson extends Lesson {
     const alphabetSize = this.settings.get(lessonProps.guided.alphabetSize);
     const recoverKeys = this.settings.get(lessonProps.guided.recoverKeys);
 
-    let letters = this.getLetters();
-    if (this.programmingMode) {
-      letters = letters.concat(Letter.programming);
-    }
+    const letters = this.getLetters();
 
     const minSize = 6;
     const maxSize =
@@ -122,31 +106,16 @@ export class GuidedLesson extends Lesson {
   }
 
   override generate(lessonKeys: LessonKeys): string {
-    const includedKeys = lessonKeys.findIncludedKeys();
-
-    const mainLessonKeys = includedKeys.filter(
-      ({ letter }) => !this.programmingCodePoint.has(letter.codePoint),
-    );
-
-    const lessonKey = lessonKeys.findFocusedKey();
-
     const wordGenerator = this.makeWordGenerator(
-      new Filter(
-        mainLessonKeys,
-        this.programmingCodePoint.has(lessonKey?.letter.codePoint ?? 0)
-          ? null
-          : lessonKey,
-      ),
+      new Filter(lessonKeys.findIncludedKeys(), lessonKeys.findFocusedKey()),
     );
     const words = mangledWords(
       uniqueWords(wordGenerator),
       this.model.language,
-      this.getSpecialLetters(includedKeys),
+      Letter.restrict(Letter.punctuators, this.codePoints),
       {
         withCapitals: this.settings.get(lessonProps.capitals),
-        withPunctuators: this.programmingMode
-          ? 1
-          : this.settings.get(lessonProps.punctuators),
+        withPunctuators: this.settings.get(lessonProps.punctuators),
       },
       this.rng,
     );
@@ -165,20 +134,6 @@ export class GuidedLesson extends Lesson {
     } else {
       return Letter.frequencyOrder(letters);
     }
-  }
-
-  private getSpecialLetters(includedKeys: LessonKey[]): Letter[] {
-    if (this.programmingMode) {
-      const includedProgrammigCodePoints = new Set(
-        includedKeys
-          .filter(({ letter }) =>
-            this.programmingCodePoint.has(letter.codePoint),
-          )
-          .map(({ letter }) => Letter.codePointOf(letter)),
-      );
-      return Letter.restrict(Letter.programming, includedProgrammigCodePoints);
-    }
-    return Letter.restrict(Letter.punctuators, this.codePoints);
   }
 
   private makeWordGenerator(filter: Filter): WordGenerator {
