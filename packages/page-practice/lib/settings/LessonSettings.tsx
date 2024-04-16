@@ -1,4 +1,5 @@
 import {
+  type CodeLesson,
   type CustomTextLesson,
   type GuidedLesson,
   lessonProps,
@@ -11,6 +12,7 @@ import { useSettings } from "@keybr/settings";
 import { Tab, TabList } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
+import { CodeLessonSettings } from "./lesson/CodeLessonSettings.tsx";
 import { CustomTextLessonSettings } from "./lesson/CustomTextLessonSettings.tsx";
 import { DailyGoalSettings } from "./lesson/DailyGoalSettings.tsx";
 import { GuidedLessonSettings } from "./lesson/GuidedLessonSettings.tsx";
@@ -23,62 +25,69 @@ export function LessonSettings(): ReactNode {
   const { settings, updateSettings } = useSettings();
   return (
     <LessonLoader>
-      {(lesson) => {
-        return (
-          <>
-            <TabList
-              selectedIndex={LessonType.ALL.indexOf(
-                settings.get(lessonProps.type),
-              )}
-              onSelect={(index) => {
-                updateSettings(
-                  settings.set(lessonProps.type, LessonType.ALL.at(index)),
-                );
-              }}
+      {(lesson) => (
+        <>
+          <TabList
+            selectedIndex={LessonType.ALL.indexOf(
+              settings.get(lessonProps.type),
+            )}
+            onSelect={(index) => {
+              updateSettings(
+                settings.set(lessonProps.type, LessonType.ALL.at(index)),
+              );
+            }}
+          >
+            <Tab
+              label={formatMessage({
+                id: "lessonType.guided.name",
+                defaultMessage: "Guided lessons",
+              })}
             >
-              <Tab
-                label={formatMessage({
-                  id: "lessonType.guided.name",
-                  defaultMessage: "Guided lessons",
-                })}
-              >
-                <GuidedLessonSettings lesson={lesson as GuidedLesson} />
-              </Tab>
+              <GuidedLessonSettings lesson={lesson as GuidedLesson} />
+            </Tab>
 
-              <Tab
-                label={formatMessage({
-                  id: "lessonType.wordlist.name",
-                  defaultMessage: "Common words",
-                })}
-              >
-                <WordListLessonSettings lesson={lesson as WordListLesson} />
-              </Tab>
+            <Tab
+              label={formatMessage({
+                id: "lessonType.wordlist.name",
+                defaultMessage: "Common words",
+              })}
+            >
+              <WordListLessonSettings lesson={lesson as WordListLesson} />
+            </Tab>
 
-              <Tab
-                label={formatMessage({
-                  id: "lessonType.customText.name",
-                  defaultMessage: "Custom text",
-                })}
-              >
-                <CustomTextLessonSettings lesson={lesson as CustomTextLesson} />
-              </Tab>
+            <Tab
+              label={formatMessage({
+                id: "lessonType.customText.name",
+                defaultMessage: "Custom text",
+              })}
+            >
+              <CustomTextLessonSettings lesson={lesson as CustomTextLesson} />
+            </Tab>
 
-              <Tab
-                label={formatMessage({
-                  id: "lessonType.numbers.name",
-                  defaultMessage: "Numbers",
-                })}
-              >
-                <NumbersLessonSettings lesson={lesson as NumbersLesson} />
-              </Tab>
-            </TabList>
+            <Tab
+              label={formatMessage({
+                id: "lessonType.numbers.name",
+                defaultMessage: "Numbers",
+              })}
+            >
+              <NumbersLessonSettings lesson={lesson as NumbersLesson} />
+            </Tab>
 
-            <LessonPreview lesson={lesson} />
+            <Tab
+              label={formatMessage({
+                id: "lessonType.code.name",
+                defaultMessage: "Code",
+              })}
+            >
+              <CodeLessonSettings lesson={lesson as CodeLesson} />
+            </Tab>
+          </TabList>
 
-            <DailyGoalSettings />
-          </>
-        );
-      }}
+          <LessonPreview lesson={lesson} />
+
+          <DailyGoalSettings />
+        </>
+      )}
     </LessonLoader>
   );
 }

@@ -2,6 +2,7 @@ import { loadWordList } from "@keybr/content-words";
 import { catchError } from "@keybr/debug";
 import { keyboardProps, useKeyboard } from "@keybr/keyboard";
 import {
+  CodeLesson,
   CustomTextLesson,
   GuidedLesson,
   type Lesson,
@@ -96,6 +97,12 @@ function useLoader(model: PhoneticModel): Lesson | null {
         case LessonType.NUMBERS: {
           if (!didCancel) {
             setResult(new NumbersLesson(settings, newModel, codePoints));
+          }
+          break;
+        }
+        case LessonType.CODE: {
+          if (!didCancel) {
+            setResult(new CodeLesson(settings, newModel, codePoints));
           }
           break;
         }
