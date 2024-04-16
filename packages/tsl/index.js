@@ -75,7 +75,7 @@ function transpileSync(jsContent, fileName, tsx) {
 function getTranspileOptions(fileName, tsx) {
   const compilerOptions = {
     strict: true,
-    target: ts.ScriptTarget.ES2020,
+    target: ts.ScriptTarget.ES2022,
     experimentalDecorators: true,
     emitDecoratorMetadata: true,
     module: ts.ModuleKind.CommonJS,
