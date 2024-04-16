@@ -132,8 +132,8 @@ export class InputHandler implements Focusable {
       case "insertLineBreak":
         this.listeners.onTextInput?.({
           timeStamp,
-          inputType: "appendChar",
-          codePoint: 0x0020,
+          inputType: "appendLineBreak",
+          codePoint: 0x0000,
         });
         this.clearInput();
         break;

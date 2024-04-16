@@ -62,12 +62,18 @@ export class TextInput {
     codePoint,
   }: {
     readonly timeStamp: number;
-    readonly inputType: "appendChar" | "clearChar" | "clearWord";
+    readonly inputType:
+      | "appendChar"
+      | "appendLineBreak"
+      | "clearChar"
+      | "clearWord";
     readonly codePoint: CodePoint;
   }): Feedback {
     switch (inputType) {
       case "appendChar":
         return this.appendChar(codePoint, timeStamp);
+      case "appendLineBreak":
+        return this.appendChar(0x0020, timeStamp);
       case "clearChar":
         return this.clearChar();
       case "clearWord":

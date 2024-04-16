@@ -297,7 +297,7 @@ test("handle the enter key", (t) => {
 
   t.deepEqual(trace, [
     "keydown:NumpadEnter,Enter,1",
-    "appendChar: ,1",
+    "appendLineBreak:\u0000,1",
     "keyup:NumpadEnter,Enter,2",
   ]);
 });

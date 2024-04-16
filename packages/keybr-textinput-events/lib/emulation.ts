@@ -45,19 +45,13 @@ function forwardEmulation(
     onKeyDown: (event: KeyEvent): void => {
       const [codePoint, mapped] = fixKey(keyboard, event);
       target.onKeyDown(mapped);
-      const { key, ctrlKey, altKey, metaKey, timeStamp } = mapped;
+      const { ctrlKey, altKey, metaKey, timeStamp } = mapped;
       if (!(ctrlKey || altKey || metaKey)) {
         if (codePoint > 0x0000) {
           target.onTextInput({
             timeStamp,
             inputType: "appendChar",
             codePoint,
-          });
-        } else if (key === "Enter") {
-          target.onTextInput({
-            timeStamp,
-            inputType: "appendChar",
-            codePoint: 0x0020,
           });
         }
       }
@@ -68,6 +62,7 @@ function forwardEmulation(
     },
     onTextInput: (event: TextInputEvent): void => {
       switch (event.inputType) {
+        case "appendLineBreak":
         case "clearChar":
         case "clearWord":
           target.onTextInput(event);

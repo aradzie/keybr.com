@@ -314,8 +314,8 @@ test("translate the whitespace keys", (t) => {
   );
   listener.onTextInput({
     timeStamp: 3,
-    inputType: "appendChar",
-    codePoint: 0x0020,
+    inputType: "appendLineBreak",
+    codePoint: 0x0000,
   });
   listener.onKeyUp(
     newKeyEvent({
@@ -332,7 +332,7 @@ test("translate the whitespace keys", (t) => {
     "appendChar: ,1",
     "keyup:Space, ,2",
     "keydown:NumpadEnter,Enter,3",
-    "appendChar: ,3",
+    "appendLineBreak:\u0000,3",
     "keyup:NumpadEnter,Enter,4",
   ]);
 });

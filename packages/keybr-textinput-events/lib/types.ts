@@ -20,7 +20,11 @@ export type KeyEvent = {
 
 export type TextInputEvent = {
   readonly timeStamp: number;
-  readonly inputType: "appendChar" | "clearChar" | "clearWord";
+  readonly inputType:
+    | "appendChar"
+    | "appendLineBreak"
+    | "clearChar"
+    | "clearWord";
   readonly codePoint: CodePoint;
 };
 
