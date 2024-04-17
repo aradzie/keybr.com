@@ -1,5 +1,9 @@
-import type { RuleMap } from "./ast.ts";
+// Generated file, do not edit.
 
-export const lang_noise: RuleMap = {
-  start: "!@#$%^&*(())_+-=",
-};
+import { type Grammar } from "./ast.ts";
+
+export default {
+  rule: {
+    start: "!@#$%^&*(())_+-=",
+  },
+} as Grammar;
