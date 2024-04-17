@@ -4,12 +4,10 @@ import { validate } from "./validate.ts";
 test("valid grammar", (t) => {
   t.notThrows(() => {
     validate({
-      rule: {
-        start: {
-          ref: "another",
-        },
-        another: "stop",
+      start: {
+        ref: "another",
       },
+      another: "stop",
     });
   });
 });
@@ -18,10 +16,8 @@ test("missing ref", (t) => {
   t.throws(
     () => {
       validate({
-        rule: {
-          start: {
-            ref: "invalidRef",
-          },
+        start: {
+          ref: "invalidRef",
         },
       });
     },
@@ -35,10 +31,8 @@ test("unreferenced rule", (t) => {
   t.throws(
     () => {
       validate({
-        rule: {
-          start: "start",
-          extra: "extra",
-        },
+        start: "start",
+        extra: "extra",
       });
     },
     {
@@ -51,9 +45,7 @@ test("empty seq", (t) => {
   t.throws(
     () => {
       validate({
-        rule: {
-          start: { seq: [] },
-        },
+        start: { seq: [] },
       });
     },
     {
@@ -66,9 +58,7 @@ test("empty alt", (t) => {
   t.throws(
     () => {
       validate({
-        rule: {
-          start: { alt: [] },
-        },
+        start: { alt: [] },
       });
     },
     {

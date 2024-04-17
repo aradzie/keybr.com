@@ -1,27 +1,23 @@
 import test from "ava";
 import { generate } from "./generate.ts";
 
-test("generate from deterministic grammar", (t) => {
+test("generate from a deterministic grammar", (t) => {
   t.is(
     generate({
-      rule: {
-        start: "only",
-      },
+      start: "only",
     }),
     "only",
   );
   t.is(
     generate({
-      rule: {
-        start: {
-          cls: "xyz",
-          span: {
-            seq: [{ ref: "a" }, { ref: "b" }],
-          },
+      start: {
+        cls: "xyz",
+        span: {
+          seq: [{ ref: "a" }, { ref: "b" }],
         },
-        a: "one",
-        b: "two",
       },
+      a: "one",
+      b: "two",
     }),
     "onetwo",
   );

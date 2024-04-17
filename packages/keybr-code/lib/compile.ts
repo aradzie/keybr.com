@@ -26,11 +26,9 @@ for (const item of readdirSync(pathTo("lib/syntax"))) {
     const lines = [];
     lines.push(`// Generated file, do not edit.`);
     lines.push(``);
-    lines.push(`import { type Grammar } from "../ast.ts";`);
+    lines.push(`import { type Rules } from "../ast.ts";`);
     lines.push(``);
-    lines.push(
-      `export default ${JSON.stringify(grammar, null, 2)} as Grammar;`,
-    );
+    lines.push(`export default ${JSON.stringify(grammar, null, 2)} as Rules;`);
     lines.push(``);
     writeFileSync(path_ts, lines.join("\n"));
   }

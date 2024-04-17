@@ -1,6 +1,5 @@
 import {
   type Alt,
-  type Grammar,
   isAlt,
   isLit,
   isOpt,
@@ -8,7 +7,7 @@ import {
   isSpan,
   type Opt,
   type Prod,
-  type RuleMap,
+  type Rules,
   type Seq,
   type Span,
 } from "./ast.ts";
@@ -23,12 +22,10 @@ import {
  * - Nested `alt`s are flattened.
  * - Deterministic `opt`s are removed.
  */
-export function optimize(grammar: Grammar): Grammar {
-  const { rule } = grammar;
-  const result: RuleMap = Object.fromEntries(
-    Object.entries(rule).map(([name, rule]) => [name, visit(rule)]),
+export function optimize(rules: Rules): Rules {
+  return Object.fromEntries(
+    Object.entries(rules).map(([name, rule]) => [name, visit(rule)]),
   );
-  return { rule: result };
 }
 
 function visit(p: Prod): Prod {

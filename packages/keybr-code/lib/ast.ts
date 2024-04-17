@@ -1,12 +1,6 @@
 import type { CodePoint } from "@keybr/unicode";
 
-export type Grammar = {
-  readonly rule: RuleMap;
-};
-
-export type RuleMap = {
-  readonly [name: string]: Prod;
-};
+export type Rules = Record<string, Prod>;
 
 export type BaseProd = {
   // Each rule can have a list of characters that it can generate.
@@ -67,13 +61,13 @@ export function hasCodePoints(v: unknown): v is BaseProd {
   return v != null && typeof v === "object" && "codePoints" in v;
 }
 
-export function withCodePoints(start: string, rule: RuleMap): RuleMap {
-  const rulesByName = new Map(Object.entries(rule));
+export function withCodePoints(start: string, rules: Rules): Rules {
+  const rulesByName = new Map(Object.entries(rules));
   let firstRule = getRule(start);
   if (!isLit(firstRule)) {
     firstRule.codePoints = visit(firstRule);
   }
-  return rule;
+  return rules;
 
   function visit(p: Prod): Set<CodePoint>[] {
     if (hasCodePoints(p) && p.codePoints != null) {

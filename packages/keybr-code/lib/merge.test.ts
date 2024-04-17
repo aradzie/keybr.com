@@ -1,26 +1,30 @@
 import test from "ava";
-import { type Grammar } from "./ast.ts";
+import { type Rules } from "./ast.ts";
 import { merge } from "./merge.ts";
 
 test("single grammar", (t) => {
-  const a: Grammar = { rule: { a: "a", x: "1" } };
+  const a = { a: "a", x: "1" } satisfies Rules;
   t.deepEqual(merge([a], "throw"), a);
 });
 
 test("on duplicate replace", (t) => {
-  const a: Grammar = { rule: { a: "a", x: "1" } };
-  const b: Grammar = { rule: { b: "b", x: "2" } };
+  const a = { a: "a", x: "1" } satisfies Rules;
+  const b = { b: "b", x: "2" } satisfies Rules;
   t.deepEqual(merge([a, b], "replace"), {
-    rule: { a: "a", b: "b", x: "2" },
+    a: "a",
+    b: "b",
+    x: "2",
   });
   t.deepEqual(merge([b, a], "replace"), {
-    rule: { a: "a", b: "b", x: "1" },
+    a: "a",
+    b: "b",
+    x: "1",
   });
 });
 
 test("on duplicate throws", (t) => {
-  const a: Grammar = { rule: { x: "1" } };
-  const b: Grammar = { rule: { x: "2" } };
+  const a = { x: "1" } satisfies Rules;
+  const b = { x: "2" } satisfies Rules;
   t.throws(
     () => {
       merge([a, a], "throw");
