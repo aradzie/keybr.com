@@ -1,4 +1,4 @@
-// npx peggy -m -o lib/code/parser.js --format commonjs lib/code/parser.peggy
+// npx peggy -m -o lib/parser.js --format commonjs lib/parser.peggy
 
 Start
   = rules:Rule* _ { return rules; }

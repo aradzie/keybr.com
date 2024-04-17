@@ -4,4 +4,4 @@ node_modules/
 root/
 build/
 tmp/
-packages/keybr-lesson/lib/code/parser.js
+packages/keybr-code/lib/parser.js

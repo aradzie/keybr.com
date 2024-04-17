@@ -1,4 +1,5 @@
-import { type CodeLesson, lessonProps, Syntax } from "@keybr/lesson";
+import { Syntax } from "@keybr/code";
+import { type CodeLesson, lessonProps } from "@keybr/lesson";
 import { useSettings } from "@keybr/settings";
 import {
   Explainer,
