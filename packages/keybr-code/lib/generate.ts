@@ -9,6 +9,7 @@ import {
   type Prod,
   type Rules,
 } from "./ast.ts";
+import { Output } from "./output.ts";
 
 const lcg = LCG(1);
 
@@ -18,12 +19,16 @@ const lcg = LCG(1);
 export function generate(
   rules: Rules,
   start: string = "start",
-  { rng = lcg }: { readonly rng?: RNG } = {},
+  {
+    output = new Output(),
+    rng = lcg,
+  }: {
+    readonly output?: Output;
+    readonly rng?: RNG;
+  } = {},
 ): string {
-  const rulesByName = new Map(Object.entries(rules));
-  const result: string[] = [];
   visit(getRule(start));
-  return result.join("");
+  return String(output);
 
   function visit(p: Prod): void {
     if (isSpan(p)) {
@@ -57,7 +62,7 @@ export function generate(
     }
 
     if (isLit(p)) {
-      result.push(p);
+      output.append(p);
       return;
     }
 
@@ -65,9 +70,13 @@ export function generate(
   }
 
   function getRule(name: string): Prod {
-    const rule = rulesByName.get(name);
+    const rule = rules[name];
     if (rule == null) {
-      throw new Error(`Unknown rule [${name}]`);
+      throw new Error(
+        process.env.NODE_ENV !== "production"
+          ? `Unknown rule [${name}]`
+          : undefined,
+      );
     }
     return rule;
   }
