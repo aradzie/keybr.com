@@ -275,7 +275,7 @@ export default {
       ")",
     ],
   },
-  css_url_value: "url(https://test/img.jpg)",
+  css_url_value: "url(logo.jpg)",
   css_var_id: {
     seq: [
       "--",

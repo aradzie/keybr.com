@@ -81,7 +81,7 @@ css_std_value ->
 
 css_var_value -> "var(" css_var_id [ ", " css_color_value ] ")" ;
 
-css_url_value -> "url(https://test/img.jpg)" ;
+css_url_value -> "url(logo.jpg)" ;
 
 css_var_id ->
     "--"
