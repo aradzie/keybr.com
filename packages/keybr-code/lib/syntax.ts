@@ -2,6 +2,7 @@ import { Enum, type EnumItem } from "@keybr/lang";
 import { type RNG } from "@keybr/rand";
 import { type Rules } from "./ast.ts";
 import { generate } from "./generate.ts";
+import { Output } from "./output.ts";
 import lang_c from "./syntax/lang_c.ts";
 import lang_html from "./syntax/lang_html.ts";
 import lang_noise from "./syntax/lang_noise.ts";
@@ -22,7 +23,15 @@ export class Syntax implements EnumItem {
   }
 
   generate(rng?: RNG): string {
-    return generate(this.rules, this.start, { rng });
+    const output = new Output(200);
+    try {
+      generate(this.rules, this.start, { output, rng });
+    } catch (err) {
+      if (err !== Output.Stop) {
+        throw err;
+      }
+    }
+    return String(output);
   }
 
   toString() {

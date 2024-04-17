@@ -62,7 +62,6 @@ export function hasCodePoints(v: unknown): v is BaseProd {
 }
 
 export function withCodePoints(start: string, rules: Rules): Rules {
-  const rulesByName = new Map(Object.entries(rules));
   let firstRule = getRule(start);
   if (!isLit(firstRule)) {
     firstRule.codePoints = visit(firstRule);
@@ -121,9 +120,13 @@ export function withCodePoints(start: string, rules: Rules): Rules {
   }
 
   function getRule(name: string): Prod {
-    const rule = rulesByName.get(name);
+    const rule = rules[name];
     if (rule == null) {
-      throw new Error(`Unknown rule [${name}]`);
+      throw new Error(
+        process.env.NODE_ENV !== "production"
+          ? `Unknown rule [${name}]`
+          : undefined,
+      );
     }
     return rule;
   }
