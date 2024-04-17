@@ -1,6 +1,6 @@
-import type { RuleMap } from "./ast.ts";
+import { type RuleMap, withCodePoints } from "./ast.ts";
 
-export const lang_c: RuleMap = {
+export const lang_c: RuleMap = withCodePoints("start", {
   start: { ref: "c_func" },
   c_func: {
     seq: [
@@ -127,4 +127,4 @@ export const lang_c: RuleMap = {
       { f: 0.5, opt: { seq: ["_", { alt: ["a", "b", "c", "d"] }] } },
     ],
   },
-};
+});
