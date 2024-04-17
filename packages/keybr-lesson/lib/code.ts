@@ -1,4 +1,3 @@
-import { generate } from "@keybr/code";
 import { type WeightedCodePointSet } from "@keybr/keyboard";
 import { Letter, type PhoneticModel } from "@keybr/phonetic-model";
 import { type KeyStatsMap, newKeyStatsMap, type Result } from "@keybr/result";
@@ -26,9 +25,6 @@ export class CodeLesson extends Lesson {
   }
 
   override generate(lessonKeys: LessonKeys): string {
-    const syntax = this.settings.get(lessonProps.code.syntax);
-    return generate(syntax.rules, {
-      random: this.rng,
-    });
+    return this.settings.get(lessonProps.code.syntax).generate(this.rng);
   }
 }
