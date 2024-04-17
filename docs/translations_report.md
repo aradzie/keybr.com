@@ -126,6 +126,6 @@ Untranslated: 34 messages, 407 words
 
 # Simplified Chinese
 
-Translated: 416 messages, 5016 words
+Translated: 425 messages, 5211 words
 
-Untranslated: 15 messages, 226 words
+Untranslated: 6 messages, 31 words
