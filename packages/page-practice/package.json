@@ -6,6 +6,7 @@
   "types": ".types/index.d.ts",
   "dependencies": {
     "@keybr/chart": "*",
+    "@keybr/code": "*",
     "@keybr/content-words": "*",
     "@keybr/intl": "*",
     "@keybr/keyboard": "*",

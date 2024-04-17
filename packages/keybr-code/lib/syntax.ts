@@ -1,8 +1,8 @@
 import { Enum, type EnumItem } from "@keybr/lang";
 import type { Grammar } from "./ast.ts";
-import lang_c from "./lang_c.ts";
-import lang_html from "./lang_html.ts";
-import lang_noise from "./lang_noise.ts";
+import lang_c from "./syntax/lang_c.ts";
+import lang_html from "./syntax/lang_html.ts";
+import lang_noise from "./syntax/lang_noise.ts";
 
 export class Syntax implements EnumItem {
   static readonly HTML = new Syntax("html", "HTML", lang_html);

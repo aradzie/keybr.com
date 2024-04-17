@@ -1,5 +1,5 @@
+import { Syntax } from "@keybr/code";
 import { booleanProp, itemProp, numberProp, stringProp } from "@keybr/settings";
-import { Syntax } from "./code/syntax.ts";
 import { LessonType } from "./lessontype.ts";
 
 export const lessonProps = {
