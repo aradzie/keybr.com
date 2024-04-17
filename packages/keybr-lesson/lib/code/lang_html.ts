@@ -1,6 +1,7 @@
 import type { RuleMap } from "./ast.ts";
+import { withCodePoints } from "./ast.ts";
 
-export const lang_html: RuleMap = {
+export const lang_html: RuleMap = withCodePoints("start", {
   start: { ref: "html" },
   html: {
     seq: [
@@ -67,4 +68,4 @@ export const lang_html: RuleMap = {
   html_ident_suffix: {
     alt: ["html", "body", "p", "div", "span", "em", "strong", "a"],
   },
-};
+});
