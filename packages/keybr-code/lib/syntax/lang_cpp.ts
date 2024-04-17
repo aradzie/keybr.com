@@ -4,9 +4,71 @@ import { type Rules } from "../ast.ts";
 
 export default {
   start: {
-    ref: "c_func",
+    seq: [
+      {
+        ref: "c_func",
+      },
+      " ",
+      {
+        ref: "c_func",
+      },
+      " ",
+      {
+        ref: "c_func",
+      },
+    ],
+  },
+  start_fproto: {
+    seq: [
+      {
+        ref: "c_func_proto",
+      },
+      "; ",
+      {
+        ref: "c_func_proto",
+      },
+      "; ",
+      {
+        ref: "c_func_proto",
+      },
+      "; ",
+      {
+        ref: "c_func_proto",
+      },
+      ";",
+    ],
+  },
+  start_stmt: {
+    seq: [
+      {
+        ref: "c_stmt",
+      },
+      " ",
+      {
+        ref: "c_stmt",
+      },
+      " ",
+      {
+        ref: "c_stmt",
+      },
+      " ",
+      {
+        ref: "c_stmt",
+      },
+    ],
   },
   c_func: {
+    seq: [
+      {
+        ref: "c_func_proto",
+      },
+      " ",
+      {
+        ref: "c_func_body",
+      },
+    ],
+  },
+  c_func_proto: {
     seq: [
       {
         ref: "c_type",
@@ -19,10 +81,7 @@ export default {
       {
         ref: "c_param_list",
       },
-      ") ",
-      {
-        ref: "c_func_body",
-      },
+      ")",
     ],
   },
   c_type: {
@@ -32,7 +91,15 @@ export default {
       },
       {
         f: 0.5,
-        opt: "*",
+        opt: {
+          seq: [
+            "*",
+            {
+              f: 0.5,
+              opt: "*",
+            },
+          ],
+        },
       },
     ],
   },
@@ -41,9 +108,27 @@ export default {
       {
         ref: "c_param",
       },
-      ", ",
       {
-        ref: "c_param",
+        f: 0.5,
+        opt: {
+          seq: [
+            ", ",
+            {
+              ref: "c_param",
+            },
+            {
+              f: 0.5,
+              opt: {
+                seq: [
+                  ", ",
+                  {
+                    ref: "c_param",
+                  },
+                ],
+              },
+            },
+          ],
+        },
       },
     ],
   },
@@ -71,9 +156,27 @@ export default {
       {
         ref: "c_arg",
       },
-      ", ",
       {
-        ref: "c_arg",
+        f: 0.5,
+        opt: {
+          seq: [
+            ", ",
+            {
+              ref: "c_arg",
+            },
+            {
+              f: 0.5,
+              opt: {
+                seq: [
+                  ", ",
+                  {
+                    ref: "c_arg",
+                  },
+                ],
+              },
+            },
+          ],
+        },
       },
     ],
   },
@@ -90,19 +193,33 @@ export default {
     ],
   },
   c_stmt: {
+    alt: [
+      {
+        ref: "c_var_stmt",
+      },
+      {
+        ref: "c_call_stmt",
+      },
+      {
+        ref: "c_if_stmt",
+      },
+      {
+        ref: "c_return_stmt",
+      },
+    ],
+  },
+  c_var_stmt: {
     seq: [
       {
-        alt: [
-          {
-            ref: "c_call_stmt",
-          },
-          {
-            ref: "c_if_stmt",
-          },
-          {
-            ref: "c_return_stmt",
-          },
-        ],
+        ref: "c_type",
+      },
+      " ",
+      {
+        ref: "c_var_id",
+      },
+      " = ",
+      {
+        ref: "c_expr",
       },
       ";",
     ],
@@ -116,7 +233,7 @@ export default {
       {
         ref: "c_arg_list",
       },
-      ")",
+      ");",
     ],
   },
   c_if_stmt: {
@@ -138,6 +255,7 @@ export default {
       {
         ref: "c_expr",
       },
+      ";",
     ],
   },
   c_expr: {

@@ -24,7 +24,7 @@ export function validate(rules: Rules): Rules {
     visit(item);
   }
   for (const item of Object.keys(rules)) {
-    if (!referenced.has(item)) {
+    if (!item.startsWith("start_") && !referenced.has(item)) {
       throw new Error(`Unreferenced rule <${item}>`);
     }
   }
