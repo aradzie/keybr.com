@@ -1,5 +1,7 @@
 import { Enum, type EnumItem } from "@keybr/lang";
-import type { Rules } from "./ast.ts";
+import { type RNG } from "@keybr/rand";
+import { type Rules } from "./ast.ts";
+import { generate } from "./generate.ts";
 import lang_c from "./syntax/lang_c.ts";
 import lang_html from "./syntax/lang_html.ts";
 import lang_noise from "./syntax/lang_noise.ts";
@@ -14,8 +16,13 @@ export class Syntax implements EnumItem {
     readonly id: string,
     readonly name: string,
     readonly rules: Rules,
+    readonly start: string = "start",
   ) {
     Object.freeze(this);
+  }
+
+  generate(rng?: RNG): string {
+    return generate(this.rules, this.start, { rng });
   }
 
   toString() {

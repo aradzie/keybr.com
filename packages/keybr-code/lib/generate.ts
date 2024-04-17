@@ -1,3 +1,4 @@
+import { LCG, type RNG } from "@keybr/rand";
 import {
   isAlt,
   isLit,
@@ -9,20 +10,16 @@ import {
   type Rules,
 } from "./ast.ts";
 
-export type Options = {
-  readonly start?: string;
-  readonly random?: () => number;
-};
+const lcg = LCG(1);
 
 /**
  * Generates text from the given context-free grammar.
  */
-export function generate(rules: Rules, options: Options = {}): string {
-  const {
-    start = "start", // The default start.
-    random = Math.random, // The default RNG.
-  } = options;
-
+export function generate(
+  rules: Rules,
+  start: string = "start",
+  { rng = lcg }: { readonly rng?: RNG } = {},
+): string {
   const rulesByName = new Map(Object.entries(rules));
   const result: string[] = [];
   visit(getRule(start));
@@ -36,7 +33,7 @@ export function generate(rules: Rules, options: Options = {}): string {
 
     if (isOpt(p)) {
       const { f = 1 } = p;
-      if (f === 1 || f > random()) {
+      if (f === 1 || f > rng()) {
         visit(p.opt);
       }
       return;
@@ -76,6 +73,6 @@ export function generate(rules: Rules, options: Options = {}): string {
   }
 
   function choose(a: readonly Prod[]): Prod {
-    return a[Math.floor(random() * a.length)];
+    return a[Math.floor(rng() * a.length)];
   }
 }
