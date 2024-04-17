@@ -1,5 +1,5 @@
 import { Enum, type EnumItem } from "@keybr/lang";
-import type { Grammar } from "./ast.ts";
+import type { Rules } from "./ast.ts";
 import lang_c from "./syntax/lang_c.ts";
 import lang_html from "./syntax/lang_html.ts";
 import lang_noise from "./syntax/lang_noise.ts";
@@ -13,7 +13,7 @@ export class Syntax implements EnumItem {
   private constructor(
     readonly id: string,
     readonly name: string,
-    readonly grammar: Grammar,
+    readonly rules: Rules,
   ) {
     Object.freeze(this);
   }

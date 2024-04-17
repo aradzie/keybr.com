@@ -1,5 +1,4 @@
 import {
-  type Grammar,
   isAlt,
   isLit,
   isOpt,
@@ -7,6 +6,7 @@ import {
   isSeq,
   isSpan,
   type Prod,
+  type Rules,
 } from "./ast.ts";
 
 export type Options = {
@@ -17,14 +17,13 @@ export type Options = {
 /**
  * Generates text from the given context-free grammar.
  */
-export function generate(grammar: Grammar, options: Options = {}): string {
+export function generate(rules: Rules, options: Options = {}): string {
   const {
     start = "start", // The default start.
     random = Math.random, // The default RNG.
   } = options;
 
-  const { rule } = grammar;
-  const rulesByName = new Map(Object.entries(rule));
+  const rulesByName = new Map(Object.entries(rules));
   const result: string[] = [];
   visit(getRule(start));
   return result.join("");

@@ -1,9 +1,7 @@
 // Generated file, do not edit.
 
-import { type Grammar } from "../ast.ts";
+import { type Rules } from "../ast.ts";
 
 export default {
-  rule: {
-    start: "!@#$%^&*(())_+-=",
-  },
-} as Grammar;
+  start: "!@#$%^&*(())_+-=",
+} as Rules;

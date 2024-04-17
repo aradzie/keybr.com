@@ -1,5 +1,4 @@
 import {
-  type Grammar,
   isAlt,
   isLit,
   isOpt,
@@ -7,6 +6,7 @@ import {
   isSeq,
   isSpan,
   type Prod,
+  type Rules,
 } from "./ast.ts";
 
 /**
@@ -17,19 +17,18 @@ import {
  * - Checks that all refs can be resolved.
  * - Checks that there are no unreferenced rules.
  */
-export function validate(grammar: Grammar): Grammar {
-  const { rule } = grammar;
+export function validate(rules: Rules): Rules {
   const referenced = new Set<string>();
   referenced.add("start");
-  for (const item of Object.values(rule)) {
+  for (const item of Object.values(rules)) {
     visit(item);
   }
-  for (const item of Object.keys(rule)) {
+  for (const item of Object.keys(rules)) {
     if (!referenced.has(item)) {
       throw new Error(`Unreferenced rule <${item}>`);
     }
   }
-  return grammar;
+  return rules;
 
   function visit(p: Prod): void {
     if (isSpan(p)) {
@@ -70,7 +69,7 @@ export function validate(grammar: Grammar): Grammar {
 
     if (isRef(p)) {
       const { ref } = p;
-      if (!(ref in rule)) {
+      if (!(ref in rules)) {
         throw new Error(`Invalid ref <${ref}>`);
       }
       referenced.add(ref);

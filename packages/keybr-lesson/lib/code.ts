@@ -26,7 +26,8 @@ export class CodeLesson extends Lesson {
   }
 
   override generate(lessonKeys: LessonKeys): string {
-    return generate(this.settings.get(lessonProps.code.syntax).grammar, {
+    const syntax = this.settings.get(lessonProps.code.syntax);
+    return generate(syntax.rules, {
       random: this.rng,
     });
   }
