@@ -3,5 +3,5 @@
 import { type Rules } from "../ast.ts";
 
 export default {
-  start: "!@#$%^&*(())_+-=",
+  start: "TODO Not implemented yet",
 } as Rules;
