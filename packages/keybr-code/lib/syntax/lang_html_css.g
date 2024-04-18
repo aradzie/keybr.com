@@ -51,18 +51,14 @@ css_property -> css_property_name ": " css_property_value ;
 css_property_name ->
     "color"
   | "box-sizing"
-  | "width"
-  | "min-width"
-  | "max-width"
-  | "inline-size"
-  | "min-inline-size"
-  | "max-inline-size"
-  | "height"
-  | "min-height"
-  | "max-height"
-  | "block-size"
-  | "min-block-size"
-  | "max-block-size"
+  | [ ( "min" | "max" ) "-" ] ( "width" | "height" )
+  | [ ( "min" | "max" ) "-" ] ( "inline" | "block" ) "-" "size"
+  | "left"
+  | "right"
+  | "top"
+  | "bottom"
+  | "inset" [ "-" ( "inline" | "block" ) [ "-" ( "start" | "end" ) ] ]
+  | "flex" [ "-" ( "direction" | "grow" | "shrink" | "basis" | "flow" | "wrap" ) ]
   ;
 
 css_property_value ->
@@ -107,4 +103,12 @@ css_class_id ->
   | "footer"
   | "aside"
   | "article"
+  | ( "row" | "col" ) "-" ( "sm" | "md" | "lg" )
+  | ( "bg" | "color" ) "-" css_named_color
+  ;
+
+css_named_color ->
+    "black"
+  | "gray"
+  | "white"
   ;

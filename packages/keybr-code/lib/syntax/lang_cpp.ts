@@ -364,6 +364,22 @@ export default {
           },
           {
             seq: [
+              " << ",
+              {
+                ref: "c_var_id",
+              },
+            ],
+          },
+          {
+            seq: [
+              " >> ",
+              {
+                ref: "c_var_id",
+              },
+            ],
+          },
+          {
+            seq: [
               " == ",
               {
                 ref: "c_var_id",

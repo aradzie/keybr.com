@@ -16,7 +16,7 @@ start_stmt ->
 
 c_func -> c_func_proto " " c_func_body ;
 
-c_func_proto -> c_type " " c_func_id "(" c_param_list ")";
+c_func_proto -> c_type " " c_func_id "(" c_param_list ")" ;
 
 c_type -> ( "char" | "int" | "long" | "short" | "void" ) [ "*" [ "*" ] ] ;
 
@@ -52,6 +52,8 @@ c_binary_exp -> "(" c_unary_exp ")"
   | " / " c_var_id
   | " | " c_var_id
   | " & " c_var_id
+  | " << " c_var_id
+  | " >> " c_var_id
   | " == " c_var_id
   | " != " c_var_id
   | " >= " c_var_id

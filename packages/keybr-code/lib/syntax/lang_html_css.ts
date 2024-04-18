@@ -222,18 +222,90 @@ export default {
     alt: [
       "color",
       "box-sizing",
-      "width",
-      "min-width",
-      "max-width",
-      "inline-size",
-      "min-inline-size",
-      "max-inline-size",
-      "height",
-      "min-height",
-      "max-height",
-      "block-size",
-      "min-block-size",
-      "max-block-size",
+      {
+        seq: [
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                {
+                  alt: ["min", "max"],
+                },
+                "-",
+              ],
+            },
+          },
+          {
+            alt: ["width", "height"],
+          },
+        ],
+      },
+      {
+        seq: [
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                {
+                  alt: ["min", "max"],
+                },
+                "-",
+              ],
+            },
+          },
+          {
+            alt: ["inline", "block"],
+          },
+          "-size",
+        ],
+      },
+      "left",
+      "right",
+      "top",
+      "bottom",
+      {
+        seq: [
+          "inset",
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                "-",
+                {
+                  alt: ["inline", "block"],
+                },
+                {
+                  f: 0.5,
+                  opt: {
+                    seq: [
+                      "-",
+                      {
+                        alt: ["start", "end"],
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        seq: [
+          "flex",
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                "-",
+                {
+                  alt: ["direction", "grow", "shrink", "basis", "flow", "wrap"],
+                },
+              ],
+            },
+          },
+        ],
+      },
     ],
   },
   css_property_value: {
@@ -288,6 +360,38 @@ export default {
     alt: ["#aaa", "#bbb", "#ccc", "#ddd", "#eee", "#fff"],
   },
   css_class_id: {
-    alt: ["main", "nav", "header", "footer", "aside", "article"],
+    alt: [
+      "main",
+      "nav",
+      "header",
+      "footer",
+      "aside",
+      "article",
+      {
+        seq: [
+          {
+            alt: ["row", "col"],
+          },
+          "-",
+          {
+            alt: ["sm", "md", "lg"],
+          },
+        ],
+      },
+      {
+        seq: [
+          {
+            alt: ["bg", "color"],
+          },
+          "-",
+          {
+            ref: "css_named_color",
+          },
+        ],
+      },
+    ],
+  },
+  css_named_color: {
+    alt: ["black", "gray", "white"],
   },
 } as Rules;
