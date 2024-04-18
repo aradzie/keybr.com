@@ -1,4 +1,4 @@
-import { type P } from "./ast.ts";
+import { type Prod } from "./ast.ts";
 
 declare class SyntaxError extends Error {
   readonly location: Location;
@@ -17,7 +17,7 @@ declare type Position = {
 
 declare type Rule = {
   readonly name: string;
-  readonly p: P;
+  readonly p: Prod;
 };
 
 declare function parse(

@@ -27,6 +27,7 @@ export function generate(
     readonly rng?: RNG;
   } = {},
 ): string {
+  const alts = new Map<readonly Prod[], Prod>();
   visit(getRule(start));
   return String(output);
 
@@ -82,6 +83,17 @@ export function generate(
   }
 
   function choose(a: readonly Prod[]): Prod {
-    return a[Math.floor(rng() * a.length)];
+    if (a.length > 1) {
+      const prev = alts.get(a);
+      while (true) {
+        const next = a[Math.floor(rng() * a.length)];
+        if (prev !== next) {
+          alts.set(a, next);
+          return next;
+        }
+      }
+    } else {
+      return a[0];
+    }
   }
 }

@@ -22,3 +22,15 @@ test("generate from a deterministic grammar", (t) => {
     "onetwo",
   );
 });
+
+test("alternate between branches", (t) => {
+  t.is(
+    generate({
+      start: {
+        seq: [{ ref: "alt" }, { ref: "alt" }, { ref: "alt" }, { ref: "alt" }],
+      },
+      alt: { alt: ["a", "b"] },
+    }),
+    "abab",
+  );
+});
