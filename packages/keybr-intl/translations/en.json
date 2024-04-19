@@ -117,7 +117,7 @@
   "lesson.indicator.notIncluded": "A key which was not yet included in the lessons.",
   "lesson.keySetPanel.label": "All keys",
   "lesson.notCalibrated.message": "Not calibrated, need more samples.",
-  "lessonType.code.description": "Practice puntctuation characters that are specific to a programming language syntax.",
+  "lessonType.code.description": "Practice punctuation characters that are specific to a programming language syntax.",
   "lessonType.code.name": "Source Code",
   "lessonType.customText.description": "Generate typing lessons from the words of your own custom text. All keys are included by default. This mode is for the pros.",
   "lessonType.customText.name": "Custom text",

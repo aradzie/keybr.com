@@ -22,7 +22,7 @@ export function CodeLessonSettings({
       <Explainer>
         <FormattedMessage
           id="lessonType.code.description"
-          defaultMessage="Practice puntctuation characters that are specific to a programming language syntax."
+          defaultMessage="Practice punctuation characters that are specific to a programming language syntax."
         />
       </Explainer>
       <FieldSet>
