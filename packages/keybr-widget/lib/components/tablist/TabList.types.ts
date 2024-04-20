@@ -9,10 +9,6 @@ export type TabListProps = {
   readonly onSelect?: (selectedIndex: number) => void;
 } & FocusProps;
 
-export type TabListState = {
-  readonly focused: boolean;
-};
-
 export type TabProps = {
   readonly children?: ReactNode;
   readonly label: ReactNode;
