@@ -29,9 +29,6 @@ test.serial("mount and switch styles", async (t) => {
 
   // Assert.
 
-  t.false(document.fullscreenEnabled);
-  t.is(document.fullscreenElement, null);
-
   t.is(document.documentElement.dataset["color"], "dark");
   t.is(document.documentElement.dataset["font"], "spectral");
 

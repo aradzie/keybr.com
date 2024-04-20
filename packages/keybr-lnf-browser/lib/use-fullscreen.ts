@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from "react";
-import { installPolyfills } from "./fullscreen-polyfill.ts";
 
 export function useFullscreen(): [boolean | null, () => void] {
   const [fullscreenState, setFullscreenState] = useState<boolean | null>(() => {
@@ -9,10 +8,6 @@ export function useFullscreen(): [boolean | null, () => void] {
       return null;
     }
   });
-
-  useEffect(() => {
-    installPolyfills();
-  }, []);
 
   useEffect(() => {
     const handleFullscreenChange = (): void => {
