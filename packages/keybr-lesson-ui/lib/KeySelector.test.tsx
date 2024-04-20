@@ -5,7 +5,7 @@ import { FakeSettingsContext } from "@keybr/settings";
 import { fireEvent, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import test from "ava";
-import { Component, type ReactNode } from "react";
+import { type ReactNode, useState } from "react";
 import TestRenderer from "react-test-renderer";
 import { KeySelector } from "./KeySelector.tsx";
 
@@ -103,33 +103,23 @@ test.serial("controlled", async (t) => {
   r.unmount();
 });
 
-class Controlled extends Component<
-  {
-    keyStatsMap: KeyStatsMap;
-    onChange: (value: Letter) => void;
-  },
-  {
-    value: Letter;
-  }
-> {
-  override state = {
-    value: this.props.keyStatsMap.letters[0],
-  };
-
-  override render(): ReactNode {
-    return (
-      <KeySelector
-        keyStatsMap={this.props.keyStatsMap}
-        current={this.state.value}
-        title="underTest"
-        onSelect={this.handleSelect}
-      />
-    );
-  }
-
-  private handleSelect = (value: Letter): void => {
-    this.setState({ value }, () => {
-      this.props.onChange(value);
-    });
-  };
+function Controlled({
+  keyStatsMap,
+  onChange,
+}: {
+  keyStatsMap: KeyStatsMap;
+  onChange: (value: Letter) => void;
+}): ReactNode {
+  const [value, setValue] = useState(keyStatsMap.letters[0]);
+  return (
+    <KeySelector
+      keyStatsMap={keyStatsMap}
+      current={value}
+      onSelect={(value) => {
+        setValue(value);
+        onChange(value);
+      }}
+      title="underTest"
+    />
+  );
 }
