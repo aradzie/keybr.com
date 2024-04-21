@@ -53,6 +53,7 @@ import { LAYOUT_JA_JP_JIS } from "./layout/ja_jp_jis.ts";
 import { LAYOUT_NB_NO } from "./layout/nb_no.ts";
 import { LAYOUT_NL_BE } from "./layout/nl_be.ts";
 import { LAYOUT_NL_NL } from "./layout/nl_nl.ts";
+import { LAYOUT_NL_US } from "./layout/nl_us.ts";
 import { LAYOUT_PL_PL } from "./layout/pl_pl.ts";
 import { LAYOUT_PT_BR } from "./layout/pt_br.ts";
 import { LAYOUT_PT_PT } from "./layout/pt_pt.ts";
@@ -107,6 +108,7 @@ const layoutDict = new Map<Layout, CodePointDict>([
   [Layout.NB_NO, LAYOUT_NB_NO],
   [Layout.NL_BE, LAYOUT_NL_BE],
   [Layout.NL_NL, LAYOUT_NL_NL],
+  [Layout.NL_US, LAYOUT_NL_US],
   [Layout.PL_PL, LAYOUT_PL_PL],
   [Layout.PT_BR, LAYOUT_PT_BR],
   [Layout.PT_PT, LAYOUT_PT_PT],
