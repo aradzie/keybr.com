@@ -1,6 +1,6 @@
 import { clsx } from "clsx";
 import { type ReactNode, useEffect, useState } from "react";
-import { handleHotkeys } from "../../utils/hotkeys.ts";
+import { useHotkeysHandler } from "../../hooks/use-hotkeys.ts";
 import * as iconStyles from "../icon/Icon.module.less";
 import * as styles from "./OptionList.module.less";
 import {
@@ -62,7 +62,7 @@ export function OptionList({
           }
         }
       }}
-      onKeyDown={handleHotkeys(
+      onKeyDown={useHotkeysHandler(
         ["Space", handleOpen],
         ["Enter", handleSubmit],
         ["Home", () => handleNavigate("first")],

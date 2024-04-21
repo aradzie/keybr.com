@@ -8,10 +8,9 @@ import {
   useState,
 } from "react";
 import { useIntl } from "react-intl";
+import { useHotkeys } from "../../hooks/use-hotkeys.ts";
 import { useScreenScroll } from "../../hooks/use-screen-scroll.ts";
 import { useScreenSize } from "../../hooks/use-screen-size.ts";
-import { useWindowEvent } from "../../hooks/use-window-event.ts";
-import { handleHotkeys } from "../../utils/hotkeys.ts";
 import { Icon } from "../icon/Icon.tsx";
 import { Popup } from "../popup/Popup.tsx";
 import { ScreenCover } from "../popup/ScreenCover.tsx";
@@ -60,19 +59,16 @@ export function Tour({ children, onClose }: TourProps): ReactNode {
     onClose?.();
   };
 
-  useWindowEvent(
-    "keydown",
-    handleHotkeys(
-      ["ArrowLeft", selectPrev],
-      ["ArrowUp", selectPrev],
-      ["PageUp", selectPrev],
-      ["Backspace", selectPrev],
-      ["ArrowRight", selectNext],
-      ["ArrowDown", selectNext],
-      ["PageDown", selectNext],
-      ["Space", selectNext],
-      ["Escape", close],
-    ),
+  useHotkeys(
+    ["ArrowLeft", selectPrev],
+    ["ArrowUp", selectPrev],
+    ["PageUp", selectPrev],
+    ["Backspace", selectPrev],
+    ["ArrowRight", selectNext],
+    ["ArrowDown", selectNext],
+    ["PageDown", selectNext],
+    ["Space", selectNext],
+    ["Escape", close],
   );
 
   const handleClickPrev = (event: MouseEvent): void => {

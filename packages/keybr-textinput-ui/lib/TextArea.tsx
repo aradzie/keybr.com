@@ -5,7 +5,7 @@ import {
   TextEvents,
   type TextInputEvent,
 } from "@keybr/textinput-events";
-import { useWindowEvent } from "@keybr/widget";
+import { useHotkeys, useWindowEvent } from "@keybr/widget";
 import {
   type BaseSyntheticEvent,
   type ComponentType,
@@ -74,11 +74,12 @@ export function TextArea({
       setElementCursor(element, "default");
     }
   });
-  useWindowEvent("keydown", (ev) => {
-    if (ev.key === "Enter") {
+  useHotkeys([
+    "Enter",
+    () => {
       innerRef.current?.focus();
-    }
-  });
+    },
+  ]);
   const handleFocus = useCallback(() => {
     setFocus(true);
     onFocus?.();

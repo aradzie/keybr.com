@@ -2,7 +2,11 @@ import { LessonKey, Target } from "@keybr/lesson";
 import { type Letter } from "@keybr/phonetic-model";
 import { type KeyStatsMap } from "@keybr/result";
 import { useSettings } from "@keybr/settings";
-import { type ClassName, type FocusProps, handleHotkeys } from "@keybr/widget";
+import {
+  type ClassName,
+  type FocusProps,
+  useHotkeysHandler,
+} from "@keybr/widget";
 import { clsx } from "clsx";
 import { type FocusEvent, type ReactNode } from "react";
 import { Key } from "./Key.tsx";
@@ -28,7 +32,6 @@ export const KeySelector = ({
   const { settings } = useSettings();
   const target = new Target(settings);
   const { letters } = keyStatsMap;
-
   const handleFocus = (ev: FocusEvent): void => {
     if (onFocus != null) {
       onFocus(ev);
@@ -70,11 +73,11 @@ export const KeySelector = ({
   return (
     <span
       className={clsx(styles.keySelector, className)}
-      tabIndex={disabled ? undefined : tabIndex || 0}
+      tabIndex={disabled ? undefined : tabIndex ?? 0}
       title={title}
       onFocus={handleFocus}
       onBlur={handleBlur}
-      onKeyDown={handleHotkeys(
+      onKeyDown={useHotkeysHandler(
         ["ArrowLeft", handlePrev],
         ["ArrowUp", handlePrev],
         ["ArrowRight", handleNext],

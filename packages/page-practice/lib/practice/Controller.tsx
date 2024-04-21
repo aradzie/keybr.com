@@ -5,9 +5,8 @@ import { Feedback, PlaySounds, textDisplayProps } from "@keybr/textinput";
 import { addKey, deleteKey, emulateLayout } from "@keybr/textinput-events";
 import { TextInputSound } from "@keybr/textinput-sounds";
 import {
-  Ctrl,
-  handleHotkeys,
   useDocumentEvent,
+  useHotkeys,
   useTimeout,
   useWindowEvent,
 } from "@keybr/widget";
@@ -28,9 +27,12 @@ export const Controller = memo(function Controller({
     handleKeyDown,
     handleKeyUp,
     handleTextInput,
-    hotkeys,
   } = usePracticeState(state);
-  useWindowEvent("keydown", hotkeys);
+  useHotkeys(
+    ["Ctrl+ArrowLeft", handleResetLesson],
+    ["Ctrl+ArrowRight", handleSkipLesson],
+    ["Escape", handleResetLesson],
+  );
   useWindowEvent("focus", handleResetLesson);
   useWindowEvent("blur", handleResetLesson);
   useDocumentEvent("visibilitychange", handleResetLesson);
@@ -101,11 +103,6 @@ function usePracticeState(state: PracticeState) {
       handleKeyDown: onKeyDown,
       handleKeyUp: onKeyUp,
       handleTextInput: onTextInput,
-      hotkeys: handleHotkeys(
-        ["ArrowLeft", Ctrl, handleResetLesson],
-        ["ArrowRight", Ctrl, handleSkipLesson],
-        ["Escape", handleResetLesson],
-      ),
     };
   }, [state, keyboard, timeout]);
 }

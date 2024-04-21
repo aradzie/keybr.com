@@ -1,6 +1,6 @@
 import { clsx } from "clsx";
 import { Children, type ReactElement, type ReactNode, useState } from "react";
-import { handleHotkeys } from "../../utils/hotkeys.ts";
+import { useHotkeysHandler } from "../../hooks/use-hotkeys.ts";
 import * as styles from "./TabList.module.less";
 import { type TabListProps, type TabProps } from "./TabList.types.ts";
 
@@ -26,6 +26,18 @@ export function TabList({
       onSelect(selectedIndex);
     }
   };
+  const selectPrev = () => {
+    select(selectedIndex - 1);
+  };
+  const selectNext = () => {
+    select(selectedIndex + 1);
+  };
+  const hotkeys = useHotkeysHandler(
+    ["ArrowLeft", selectPrev],
+    ["ArrowUp", selectPrev],
+    ["ArrowRight", selectNext],
+    ["ArrowDown", selectNext],
+  );
   const items: ReactNode[] = [];
   items.push(
     <span
@@ -35,12 +47,6 @@ export function TabList({
   );
   tabs.forEach((tab, index) => {
     const selected = tab === selectedTab;
-    const selectPrev = () => {
-      select(index - 1);
-    };
-    const selectNext = () => {
-      select(index + 1);
-    };
     if (index > 0) {
       items.push(
         <span
@@ -82,12 +88,7 @@ export function TabList({
           event.preventDefault();
           select(index);
         }}
-        onKeyDown={handleHotkeys(
-          ["ArrowLeft", selectPrev],
-          ["ArrowUp", selectPrev],
-          ["ArrowRight", selectNext],
-          ["ArrowDown", selectNext],
-        )}
+        onKeyDown={hotkeys}
       >
         {tab.props.label}
       </span>,
