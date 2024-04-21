@@ -1,256 +1,242 @@
 import { clsx } from "clsx";
-import {
-  Component,
-  createRef,
-  type FocusEvent,
-  type MouseEvent,
-  type MouseEventHandler,
-  type ReactNode,
-} from "react";
+import { type ReactNode, useEffect, useState } from "react";
 import { handleHotkeys } from "../../utils/hotkeys.ts";
 import * as iconStyles from "../icon/Icon.module.less";
-import { type Focusable } from "../types.ts";
 import * as styles from "./OptionList.module.less";
 import {
   type OptionListOption,
   type OptionListProps,
-  type OptionListState,
 } from "./OptionList.types.ts";
 
-export class OptionList
-  extends Component<OptionListProps, OptionListState>
-  implements Focusable
-{
-  private readonly element = createRef<HTMLElement>();
-
-  override state: OptionListState = {
-    focused: false,
-    open: false,
-    highlightedIndex: 0,
-  };
-
-  blur(): void {
-    this.element.current?.blur();
-  }
-
-  focus(): void {
-    this.element.current?.focus();
-  }
-
-  private handleFocus = (event: FocusEvent): void => {
-    if (!this.props.disabled) {
-      this.setState(
-        {
-          focused: true,
-        },
-        () => {
-          const { onFocus } = this.props;
-          if (onFocus != null) {
-            onFocus(event);
-          }
-        },
-      );
-    }
-  };
-
-  private handleBlur = (event: FocusEvent): void => {
-    if (!this.props.disabled) {
-      this.setState(
-        {
-          focused: false,
-          open: false,
-        },
-        () => {
-          const { onBlur } = this.props;
+export function OptionList({
+  className,
+  disabled,
+  options,
+  tabIndex,
+  title,
+  value,
+  onBlur,
+  onFocus,
+  onSelect,
+}: OptionListProps): ReactNode {
+  const [focused, setFocused] = useState(false);
+  const {
+    open,
+    setOpen,
+    option,
+    selectedOption,
+    handleOpen,
+    handleSelect,
+    handleNavigate,
+    handleSubmit,
+  } = useOptionList({
+    disabled,
+    options,
+    value,
+    onSelect,
+  });
+  return (
+    <span
+      className={clsx(
+        styles.optionList,
+        focused && styles.focused,
+        disabled && styles.disabled,
+        className,
+      )}
+      tabIndex={disabled ? undefined : tabIndex ?? 0}
+      title={title}
+      onBlur={(event) => {
+        if (!disabled) {
+          setFocused(false);
+          setOpen(false);
           if (onBlur != null) {
             onBlur(event);
           }
-        },
-      );
-    }
-  };
-
-  private handleOpen = (): void => {
-    if (!this.props.disabled) {
-      this.setState({
-        open: !this.state.open,
-      });
-    }
-  };
-
-  private handleSelect = (): void => {
-    if (!this.props.disabled) {
-      if (this.state.open) {
-        const { options } = this.props;
-        const highlightedIndex = Math.min(
-          this.state.highlightedIndex,
-          options.length - 1,
-        );
-        this.setState(
-          {
-            open: false,
-          },
-          () => {
-            const { onSelect } = this.props;
-            if (onSelect != null) {
-              onSelect(options[highlightedIndex].value);
-            }
-          },
-        );
-      }
-    }
-  };
-
-  private handlePrev = (): void => {
-    if (!this.props.disabled) {
-      const { options } = this.props;
-      let highlightedIndex = Math.min(
-        this.state.highlightedIndex,
-        options.length - 1,
-      );
-      highlightedIndex -= 1;
-      if (highlightedIndex < 0) {
-        highlightedIndex = options.length - 1;
-      }
-      this.setState(
-        {
-          highlightedIndex,
-        },
-        () => {
-          if (!this.state.open) {
-            const { onSelect } = this.props;
-            if (onSelect != null) {
-              onSelect(options[highlightedIndex].value);
-            }
+        }
+      }}
+      onFocus={(event) => {
+        if (!disabled) {
+          setFocused(true);
+          if (onFocus != null) {
+            onFocus(event);
           }
-        },
-      );
-    }
-  };
-
-  private handleNext = (): void => {
-    if (!this.props.disabled) {
-      const { options } = this.props;
-      let highlightedIndex = Math.min(
-        this.state.highlightedIndex,
-        options.length - 1,
-      );
-      highlightedIndex += 1;
-      if (highlightedIndex >= options.length) {
-        highlightedIndex = 0;
-      }
-      this.setState(
-        {
-          highlightedIndex,
-        },
-        () => {
-          if (!this.state.open) {
-            const { onSelect } = this.props;
-            if (onSelect != null) {
-              onSelect(options[highlightedIndex].value);
-            }
-          }
-        },
-      );
-    }
-  };
-
-  private handlePlaceholderClick = (event: MouseEvent): void => {
-    event.preventDefault();
-    if (!this.props.disabled) {
-      this.setState({
-        open: !this.state.open,
-      });
-    }
-  };
-
-  private handleItemClick = (option: OptionListOption): MouseEventHandler => {
-    return (event: MouseEvent): void => {
-      event.preventDefault();
-      if (!this.props.disabled) {
-        this.setState(
-          {
-            open: false,
-          },
-          () => {
-            const { onSelect } = this.props;
+        }
+      }}
+      onKeyDown={handleHotkeys(
+        ["Space", handleOpen],
+        ["Enter", handleSubmit],
+        ["Home", () => handleNavigate("first")],
+        ["ArrowUp", () => handleNavigate("prev")],
+        ["ArrowDown", () => handleNavigate("next")],
+        ["End", () => handleNavigate("last")],
+        ["ArrowLeft", () => {}],
+        ["ArrowRight", () => {}],
+        ["PageUp", () => {}],
+        ["PageDown", () => {}],
+      )}
+    >
+      <span
+        className={styles.placeholder}
+        onClick={(event) => {
+          event.preventDefault();
+          handleOpen();
+        }}
+      >
+        <span className={styles.placeholderName}>{option.name}</span>
+        <span className={styles.placeholderArrow}>
+          {open ? "\u25BC" : "\u25BA"}
+        </span>
+      </span>
+      {open && (
+        <Menu
+          options={options}
+          selectedOption={selectedOption}
+          onSelect={(option) => {
+            handleSelect(option);
+          }}
+          onSubmit={(option) => {
+            setOpen(false);
             if (onSelect != null) {
               onSelect(option.value);
             }
-          },
-        );
-      }
-    };
+          }}
+        />
+      )}
+    </span>
+  );
+}
+
+function useOptionList({
+  options,
+  disabled,
+  value,
+  onSelect,
+}: OptionListProps) {
+  const option = options.find((option) => option.value === value) ?? {
+    value: "",
+    name: "-",
   };
 
-  private handleItemMouseOver = (option: OptionListOption) => {
-    return (event: MouseEvent): void => {
-      event.preventDefault();
-      if (!this.props.disabled) {
-        this.setState({
-          highlightedIndex: this.props.options.indexOf(option),
-        });
-      }
-    };
+  const [open, setOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(option);
+
+  const handleOpen = (): void => {
+    if (disabled) {
+      return;
+    }
+    if (!open) {
+      setOpen(true);
+      setSelectedOption(option);
+    } else {
+      setOpen(false);
+    }
   };
 
-  override render(): ReactNode {
-    const { className, disabled, options, tabIndex, title, value } = this.props;
-    const { focused, open, highlightedIndex } = this.state;
-    const selectedOption = options.find((option) => option.value === value) ?? {
-      value: "",
-      name: "-",
-    };
-    return (
-      <span
-        ref={this.element}
-        className={clsx(
-          styles.optionList,
-          focused && styles.focused,
-          disabled && styles.disabled,
-          className,
-        )}
-        tabIndex={disabled ? undefined : tabIndex || 0}
-        title={title}
-        onBlur={this.handleBlur}
-        onFocus={this.handleFocus}
-        onKeyDown={handleHotkeys(
-          ["Space", this.handleOpen],
-          ["Enter", this.handleSelect],
-          ["ArrowUp", this.handlePrev],
-          ["ArrowDown", this.handleNext],
-        )}
-      >
+  const handleSelect = (option: OptionListOption): void => {
+    if (disabled) {
+      return;
+    }
+    setSelectedOption(option);
+  };
+
+  const handleNavigate = (dir: "first" | "prev" | "next" | "last"): void => {
+    if (disabled) {
+      return;
+    }
+    if (!open) {
+      setOpen(true);
+      setSelectedOption(option);
+    } else {
+      const { length } = options;
+      let index = options.indexOf(selectedOption);
+      if (index === -1) {
+        index = 0;
+      }
+      switch (dir) {
+        case "first":
+          index = 0;
+          break;
+        case "prev":
+          index -= 1;
+          if (index < 0) {
+            index = length - 1;
+          }
+          break;
+        case "next":
+          index += 1;
+          if (index >= length) {
+            index = 0;
+          }
+          break;
+        case "last":
+          index = length - 1;
+          break;
+      }
+      setSelectedOption(options[index]);
+    }
+  };
+
+  const handleSubmit = (): void => {
+    if (disabled) {
+      return;
+    }
+    if (open) {
+      setOpen(false);
+      if (onSelect != null) {
+        onSelect(selectedOption.value);
+      }
+    }
+  };
+
+  return {
+    open,
+    setOpen,
+    option,
+    selectedOption,
+    handleOpen,
+    handleSelect,
+    handleNavigate,
+    handleSubmit,
+  };
+}
+
+function Menu({
+  options,
+  selectedOption,
+  onSelect,
+  onSubmit,
+}: {
+  readonly options: readonly OptionListOption[];
+  readonly selectedOption: OptionListOption;
+  readonly onSelect: (value: OptionListOption) => void;
+  readonly onSubmit: (value: OptionListOption) => void;
+}): ReactNode {
+  useEffect(() => {
+    // Scroll the selected item.
+  }, []);
+  return (
+    <span role="menu" className={styles.list}>
+      {options.map((option, index) => (
         <span
-          className={styles.placeholder}
-          onClick={this.handlePlaceholderClick}
+          key={index}
+          role="menuitem"
+          className={clsx(
+            styles.item,
+            iconStyles.altIcon,
+            option === selectedOption && styles.item_selected,
+          )}
+          onClick={(event) => {
+            event.preventDefault();
+            onSubmit(option);
+          }}
+          onMouseOver={(event) => {
+            event.preventDefault();
+            onSelect(option);
+          }}
         >
-          <span className={styles.placeholderName}>{selectedOption.name}</span>
-          <span className={styles.placeholderArrow}>
-            {open ? "\u25BC" : "\u25BA"}
-          </span>
+          {option.name}
         </span>
-        {open && (
-          <span role="menu" className={styles.list}>
-            {options.map((option, index) => (
-              <span
-                key={index}
-                role="menuitem"
-                className={clsx(
-                  styles.item,
-                  iconStyles.altIcon,
-                  option === selectedOption && styles.item_selected,
-                  index === highlightedIndex && styles.item_highlighted,
-                )}
-                onMouseOver={this.handleItemMouseOver(option)}
-                onClick={this.handleItemClick(option)}
-              >
-                {option.name}
-              </span>
-            ))}
-          </span>
-        )}
-      </span>
-    );
-  }
+      ))}
+    </span>
+  );
 }

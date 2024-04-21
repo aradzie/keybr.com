@@ -6,5 +6,4 @@ export const placeholderArrow: string;
 export const list: string;
 export const item: string;
 export const item_selected: string;
-export const item_highlighted: string;
 export const disabled: string;

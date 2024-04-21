@@ -14,9 +14,3 @@ export type OptionListProps = {
   readonly value: string;
   readonly onSelect?: (value: string) => void;
 } & FocusProps;
-
-export type OptionListState = {
-  readonly focused: boolean;
-  readonly open: boolean;
-  readonly highlightedIndex: number;
-};
