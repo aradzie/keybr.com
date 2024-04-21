@@ -18,26 +18,33 @@ test.serial("props", (t) => {
 });
 
 test.serial("controlled", async (t) => {
+  let lastValue = false;
+
+  function Controlled(): ReactNode {
+    const [checked, setChecked] = useState(lastValue);
+    return (
+      <CheckBox
+        checked={checked}
+        onChange={(value) => {
+          setChecked((lastValue = value));
+        }}
+      />
+    );
+  }
+
   const r = render(<Controlled />);
   const element = r.getByRole("checkbox") as HTMLInputElement;
 
   t.is(element.checked, false);
+  t.is(lastValue, false);
 
   await userEvent.click(element);
-
   t.is(element.checked, true);
+  t.is(lastValue, true);
+
+  await userEvent.click(element);
+  t.is(element.checked, false);
+  t.is(lastValue, false);
 
   r.unmount();
 });
-
-function Controlled(): ReactNode {
-  const [checked, setChecked] = useState(false);
-  return (
-    <CheckBox
-      checked={checked}
-      onChange={(value) => {
-        setChecked(value);
-      }}
-    />
-  );
-}

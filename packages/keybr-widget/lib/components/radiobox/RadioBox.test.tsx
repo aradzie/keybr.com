@@ -18,62 +18,46 @@ test.serial("props", (t) => {
 });
 
 test.serial("controlled", async (t) => {
+  let lastValue = "1";
+
+  function Controlled(): ReactNode {
+    const [value, setValue] = useState(lastValue);
+    return (
+      <>
+        <RadioBox
+          value="1"
+          checked={value === "1"}
+          onSelect={(value) => {
+            setValue((lastValue = value || ""));
+          }}
+        />
+        <RadioBox
+          value="2"
+          checked={value === "2"}
+          onSelect={(value) => {
+            setValue((lastValue = value || ""));
+          }}
+        />
+      </>
+    );
+  }
+
   const r = render(<Controlled />);
-  const element = r.getByRole("radio") as HTMLInputElement;
+  const elements = r.getAllByRole("radio") as HTMLInputElement[];
 
-  t.is(element.checked, false);
+  t.is(elements[0].checked, true);
+  t.is(elements[1].checked, false);
+  t.is(lastValue, "1");
 
-  await userEvent.click(element);
-
-  t.is(element.checked, true);
-
-  r.unmount();
-});
-
-test.serial("controlled group", async (t) => {
-  let value: string | undefined;
-
-  const r = render(<ControlledGroup onChange={(v) => (value = v)} />);
-
-  t.is(value, undefined);
-
-  await userEvent.click(r.getAllByRole("radio")[1]);
-
-  t.is(value, "2");
+  await userEvent.click(elements[1]);
+  t.is(elements[0].checked, false);
+  t.is(elements[1].checked, true);
+  t.is(lastValue, "2");
 
   await userEvent.click(r.getAllByRole("radio")[0]);
-
-  t.is(value, "1");
+  t.is(elements[0].checked, true);
+  t.is(elements[1].checked, false);
+  t.is(lastValue, "1");
 
   r.unmount();
 });
-
-function Controlled(): ReactNode {
-  const [checked, setChecked] = useState(false);
-  return (
-    <RadioBox
-      checked={checked}
-      onChange={(value) => {
-        setChecked(value);
-      }}
-    />
-  );
-}
-
-function ControlledGroup({
-  onChange,
-}: {
-  readonly onChange: (value?: string) => void;
-}): ReactNode {
-  const [value, setValue] = useState("1");
-  const handleSelect = (value?: string): void => {
-    setValue(value || "empty");
-    onChange(value);
-  };
-  return (
-    <>
-      <RadioBox value="1" checked={value === "1"} onSelect={handleSelect} />
-      <RadioBox value="2" checked={value === "2"} onSelect={handleSelect} />
-    </>
-  );
-}

@@ -18,30 +18,35 @@ test.serial("props", (t) => {
 });
 
 test.serial("controlled", async (t) => {
+  let lastValue = "abc";
+
+  function Controlled(): ReactNode {
+    const [value, setValue] = useState(lastValue);
+    return (
+      <TextField
+        value={value}
+        onChange={(value) => {
+          setValue((lastValue = value));
+        }}
+      />
+    );
+  }
+
   const r = render(<Controlled />);
   const element = r.getByRole("textbox") as HTMLInputElement;
 
   t.is(element.value, "abc");
+  t.is(lastValue, "abc");
 
   await userEvent.clear(element);
 
   t.is(element.value, "");
+  t.is(lastValue, "");
 
   await userEvent.type(element, "xyz");
 
   t.is(element.value, "xyz");
+  t.is(lastValue, "xyz");
 
   r.unmount();
 });
-
-function Controlled(): ReactNode {
-  const [value, setValue] = useState("abc");
-  return (
-    <TextField
-      value={value}
-      onChange={(value) => {
-        setValue(value);
-      }}
-    />
-  );
-}

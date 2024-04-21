@@ -1,7 +1,7 @@
 import { fireEvent, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import test from "ava";
-import { type MutableRefObject, type ReactNode, useState } from "react";
+import { type ReactNode, useState } from "react";
 import { OptionList } from "./OptionList.tsx";
 import { type OptionListOption } from "./OptionList.types.ts";
 
@@ -51,58 +51,52 @@ test.serial("interactions", async (t) => {
 });
 
 test.serial("controlled", async (t) => {
-  const valueRef = { current: "" };
+  let lastValue = "1";
 
-  const r = render(<Controlled options={options} valueRef={valueRef} />);
+  function Controlled(): ReactNode {
+    const [value, setValue] = useState(lastValue);
+    return (
+      <OptionList
+        options={options}
+        value={value}
+        onSelect={(value) => {
+          setValue((lastValue = value));
+        }}
+        title="underTest"
+      />
+    );
+  }
+
+  const r = render(<Controlled />);
   const element = r.getByTitle("underTest");
 
   t.is(r.queryByRole("menu"), null);
   await userEvent.click(r.getByText("One"));
   t.not(r.queryByRole("menu"), null);
   await userEvent.click(r.getByText("Two"));
-  t.is(valueRef.current, "2");
+  t.is(lastValue, "2");
 
   t.is(r.queryByRole("menu"), null);
   await userEvent.click(r.getByText("Two"));
   t.not(r.queryByRole("menu"), null);
   await userEvent.click(r.getByText("One"));
-  t.is(valueRef.current, "1");
+  t.is(lastValue, "1");
 
   t.is(r.queryByRole("menu"), null);
   fireEvent.keyDown(element, { code: "ArrowUp" });
   t.not(r.queryByRole("menu"), null);
   await userEvent.click(r.getByText("Two"));
-  t.is(valueRef.current, "2");
+  t.is(lastValue, "2");
 
   fireEvent.keyDown(element, { code: "Space" });
   fireEvent.keyDown(element, { code: "Home" });
   fireEvent.keyDown(element, { code: "Enter" });
-  t.is(valueRef.current, "1");
+  t.is(lastValue, "1");
 
   fireEvent.keyDown(element, { code: "Space" });
   fireEvent.keyDown(element, { code: "End" });
   fireEvent.keyDown(element, { code: "Enter" });
-  t.is(valueRef.current, "2");
+  t.is(lastValue, "2");
 
   r.unmount();
 });
-
-function Controlled({
-  options,
-  valueRef,
-}: {
-  readonly options: readonly OptionListOption[];
-  readonly valueRef: MutableRefObject<string>;
-}): ReactNode {
-  const [value, setValue] = useState("1");
-  return (
-    <OptionList
-      options={options}
-      value={value}
-      onSelect={(value) => {
-        setValue((valueRef.current = value));
-      }}
-      title="underTest"
-    />
-  );
-}

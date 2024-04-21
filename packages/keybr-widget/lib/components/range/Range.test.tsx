@@ -20,29 +20,38 @@ test.serial("props", (t) => {
 });
 
 test.serial("controlled", (t) => {
+  let lastValue = 1;
+
+  function Controlled(): ReactNode {
+    const [value, setValue] = useState(lastValue);
+    return (
+      <Range
+        min={1}
+        max={100}
+        step={1}
+        value={value}
+        onChange={(value) => {
+          setValue((lastValue = value));
+        }}
+      />
+    );
+  }
+
   const r = render(<Controlled />);
   const element = r.getByRole("slider") as HTMLInputElement;
 
   t.is(element.value, "1");
+  t.is(lastValue, 1);
+
+  fireEvent.change(element, { target: { value: "10" } });
+
+  t.is(element.value, "10");
+  t.is(lastValue, 10);
 
   fireEvent.change(element, { target: { value: "100" } });
 
   t.is(element.value, "100");
+  t.is(lastValue, 100);
 
   r.unmount();
 });
-
-function Controlled(): ReactNode {
-  const [value, setValue] = useState(1);
-  return (
-    <Range
-      min={1}
-      max={100}
-      step={1}
-      value={value}
-      onChange={(value) => {
-        setValue(value);
-      }}
-    />
-  );
-}
