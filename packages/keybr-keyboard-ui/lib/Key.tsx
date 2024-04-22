@@ -115,17 +115,25 @@ export function makeKeyComponent(
     y: number,
     className: ClassName,
   ): ReactNode {
-    if (codePoint === 0x0020) {
-      return null;
-    } else
-      return makeLabel(
-        {
-          text: letterName(codePoint),
-          pos: [x, y],
-          align: ["m", "m"],
-        },
-        clsx(className, isDiacritic(codePoint) && styles.deadSymbol),
-      );
+    switch (codePoint) {
+      case /* Space */ 0x0020:
+      case /* No-Break Space */ 0x00a0:
+      case /* Narrow No-Break Space */ 0x202f:
+        return null;
+      case /* Zero Width Non-Joiner */ 0x200c:
+      case /* Zero Width Joiner */ 0x200d:
+      case /* Left-To-Right Mark */ 0x200e:
+      case /* Right-To-Left Mark */ 0x200f:
+        return null;
+    }
+    return makeLabel(
+      {
+        text: letterName(codePoint),
+        pos: [x, y],
+        align: ["m", "m"],
+      },
+      clsx(className, isDiacritic(codePoint) && styles.deadSymbol),
+    );
   }
 }
 

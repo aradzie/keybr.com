@@ -47,6 +47,7 @@ import { LAYOUT_FR_ERGO_L } from "./layout/fr_ergo_l.ts";
 import { LAYOUT_FR_FR } from "./layout/fr_fr.ts";
 import { LAYOUT_FR_OPTIMOT_ERGO } from "./layout/fr_optimot_ergo.ts";
 import { LAYOUT_HE_IL } from "./layout/he_il.ts";
+import { LAYOUT_HE_IL_ARKN } from "./layout/he_il_arkn.ts";
 import { LAYOUT_HU_HU } from "./layout/hu_hu.ts";
 import { LAYOUT_IT_IT } from "./layout/it_it.ts";
 import { LAYOUT_JA_JP_JIS } from "./layout/ja_jp_jis.ts";
@@ -102,6 +103,7 @@ const layoutDict = new Map<Layout, CodePointDict>([
   [Layout.FR_FR, LAYOUT_FR_FR],
   [Layout.FR_OPTIMOT_ERGO, LAYOUT_FR_OPTIMOT_ERGO],
   [Layout.HE_IL, LAYOUT_HE_IL],
+  [Layout.HE_IL_ARKN, LAYOUT_HE_IL_ARKN],
   [Layout.HU_HU, LAYOUT_HU_HU],
   [Layout.IT_IT, LAYOUT_IT_IT],
   [Layout.NB_NO, LAYOUT_NB_NO],

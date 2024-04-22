@@ -551,7 +551,7 @@ export class Layout implements XEnumItem {
   static readonly HE_IL = new Layout(
     /* id= */ "he-il",
     /* xid= */ 0x84,
-    /* name= */ "{IL}",
+    /* name= */ "{IL} (מסורתי)",
     /* family= */ "hebrew",
     /* language= */ Language.HE,
     /* emulate= */ true,
@@ -737,6 +737,21 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly HE_IL_ARKN = new Layout(
+    /* id= */ "he-il-arkn",
+    /* xid= */ 0x90,
+    /* name= */ "{IL} (ארקן)",
+    /* family= */ "hebrew-arkn",
+    /* language= */ Language.HE,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
 
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
@@ -770,6 +785,7 @@ export class Layout implements XEnumItem {
     Layout.FR_ERGLACE,
     Layout.FR_OPTIMOT_ERGO,
     Layout.HE_IL,
+    Layout.HE_IL_ARKN,
     Layout.HU_HU,
     Layout.IT_IT,
     Layout.NB_NO,

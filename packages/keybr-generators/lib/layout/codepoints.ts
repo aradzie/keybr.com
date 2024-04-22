@@ -15,6 +15,10 @@ export function formatCodePointName(codePoint: CodePoint): string {
         return "ZERO WIDTH NON-JOINER";
       case 0x200d:
         return "ZERO WIDTH JOINER";
+      case 0x200e:
+        return "LEFT-TO-RIGHT MARK";
+      case 0x200f:
+        return "RIGHT-TO-LEFT MARK";
       case 0x202f:
         return "NARROW NO-BREAK SPACE";
       default:

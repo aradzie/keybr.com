@@ -159,11 +159,8 @@ function parseLayout(state: ParserState, line: string): void {
   const keyId = scanCodeToKeyId[SC];
   if (keyId != null) {
     const c = [...arg.map(parseCodePoint)];
-    if (state.shiftstate.length !== c.length) {
-      throw new TypeError(`Invalid code point list`);
-    }
     const codePoints = [0, 0, 0, 0];
-    for (let i = 0; i < state.shiftstate.length; i++) {
+    for (let i = 0; i < c.length; i++) {
       const s = state.shiftstate[i];
       const m = modifiers(s);
       if (m !== -1) {
