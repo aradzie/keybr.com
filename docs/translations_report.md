@@ -100,6 +100,12 @@ Translated: 393 messages, 4830 words
 
 Untranslated: 38 messages, 412 words
 
+# European Portuguese
+
+Translated: 426 messages, 5237 words
+
+Untranslated: 5 messages, 5 words
+
 # Russian
 
 Translated: 421 messages, 5075 words

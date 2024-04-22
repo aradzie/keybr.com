@@ -29,6 +29,7 @@ const allLocales = [
   "nl",
   "pl",
   "pt-br",
+  "pt-pt",
   "ru",
   "sv",
   "tr",
