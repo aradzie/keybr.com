@@ -8,6 +8,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { gunzipSync } from "node:zlib";
 import { Language } from "@keybr/keyboard";
 import { TransitionTableBuilder } from "@keybr/phonetic-model";
+import chalk from "chalk";
 import {
   fromCsv,
   normalizeCounts,
@@ -47,7 +48,14 @@ function generate(language: Language): void {
         }
       }
     }
-    const data = builder.build().compress();
+    const table = builder.build();
+    const letters = table.letters(language);
+    for (const letter of letters) {
+      if (letter.f === 0) {
+        console.error(`[${id}] ${chalk.red(`No data for letter "${letter}"`)}`);
+      }
+    }
+    const data = table.compress();
     writeFileSync(modelPath, data);
     console.log(`[${id}] Generated model (${data.length} bytes)`);
   }
@@ -69,18 +77,12 @@ function generate(language: Language): void {
       }
       if (added.length > 0) {
         console.log(
-          `[${id}] Added words:`,
-          "\x1b[32m",
-          ...added.sort(language.compare),
-          "\x1b[0m",
+          `[${id}] Added words: ${chalk.green(added.sort(language.compare).join(", "))}`,
         );
       }
       if (deleted.length > 0) {
         console.log(
-          `[${id}] Deleted words:`,
-          "\x1b[31m",
-          ...deleted.sort(language.compare),
-          "\x1b[0m",
+          `[${id}] Deleted words: ${chalk.red(deleted.sort(language.compare).join(", "))}`,
         );
       }
     }

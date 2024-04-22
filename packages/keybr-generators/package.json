@@ -6,9 +6,9 @@
   "dependencies": {
     "@keybr/keyboard": "*",
     "@keybr/phonetic-model": "*",
-    "@keybr/unicode": "*"
+    "@keybr/unicode": "*",
+    "chalk": "^4.1.2"
   },
-  "devDependencies": {},
   "scripts": {
     "clean": "rm -fr .types",
     "compile": "tsc",
