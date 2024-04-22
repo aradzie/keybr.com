@@ -7,7 +7,7 @@ import {
   FieldList,
   FieldSet,
   Range,
-  styleWidthWide,
+  styleWidth16,
   Value,
 } from "@keybr/widget";
 import { type ReactNode } from "react";
@@ -28,7 +28,7 @@ export function DailyGoalSettings(): ReactNode {
         </Field>
         <Field>
           <Range
-            className={styleWidthWide}
+            className={styleWidth16}
             min={0}
             max={24}
             step={1}

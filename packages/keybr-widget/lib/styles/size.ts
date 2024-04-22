@@ -5,8 +5,8 @@ export const styleSizeFill = styles.sizeFill;
 export const styleSizeFillAlt = styles.sizeFillAlt;
 export const styleSizeFull = styles.sizeFull;
 
-export const styleWidthNormal = styles.widthNormal;
-export const styleWidthWide = styles.widthWide;
-export const styleWidthExtraWide = styles.widthExtraWide;
-export const styleWidthExtraExtraWide = styles.widthExtraExtraWide;
+export const styleWidth10 = styles.width10;
+export const styleWidth16 = styles.width16;
+export const styleWidth24 = styles.width24;
+export const styleWidth32 = styles.width32;
 export const styleWidthFull = styles.widthFull;

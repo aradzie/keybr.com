@@ -1,5 +1,5 @@
 import { useResults } from "@keybr/result";
-import { Button, Field, FieldList, Icon, styleWidthWide } from "@keybr/widget";
+import { Button, Field, FieldList, Icon, styleWidth16 } from "@keybr/widget";
 import { mdiDeleteForever, mdiDownload } from "@mdi/js";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
@@ -12,7 +12,7 @@ export function FooterSection(): ReactNode {
     <FieldList>
       <Field>
         <Button
-          className={styleWidthWide}
+          className={styleWidth16}
           icon={<Icon shape={mdiDownload} />}
           label={formatMessage({
             id: "profile.widget.downloadData.label",
@@ -30,7 +30,7 @@ export function FooterSection(): ReactNode {
       <Field.Filler />
       <Field>
         <Button
-          className={styleWidthWide}
+          className={styleWidth16}
           icon={<Icon shape={mdiDeleteForever} />}
           label={formatMessage({
             id: "profile.widget.resetData.label",

@@ -1,0 +1,56 @@
+/**
+ * Make an element shrink wrap its content.
+ */
+
+.sizeFit() {
+  flex-basis: auto;
+}
+
+/**
+ * Make an element fill the remaining space.
+ */
+
+.sizeFill() {
+  flex: 1 1 0;
+}
+
+/**
+ * An alternative method to make an element fill the remaining space.
+ * Distributes space based on the initial width and height of the element
+ *
+ * https://www.w3.org/TR/css-flexbox/images/rel-vs-abs-flex.svg
+ */
+
+.sizeFillAlt() {
+  flex: 1 1 auto;
+}
+
+/**
+ * Make an element the width of its parent.
+ */
+
+.sizeFull() {
+  display: block;
+  box-sizing: border-box;
+  inline-size: 100%;
+}
+
+.width10() {
+  min-inline-size: 10rem;
+}
+
+.width16() {
+  min-inline-size: 16rem;
+}
+
+.width24() {
+  min-inline-size: 24rem;
+}
+
+.width32() {
+  min-inline-size: 32rem;
+}
+
+.widthFull() {
+  inline-size: 100%;
+}

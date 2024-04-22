@@ -9,7 +9,7 @@ import {
   FieldList,
   Header,
   Icon,
-  styleWidthWide,
+  styleWidth16,
 } from "@keybr/widget";
 import { mdiCheckCircle, mdiDeleteForever } from "@mdi/js";
 import { type ReactNode, useState } from "react";
@@ -97,7 +97,7 @@ function Content({ onSubmit }: { readonly onSubmit: () => void }): ReactNode {
           <FieldList>
             <Field>
               <Button
-                className={styleWidthWide}
+                className={styleWidth16}
                 icon={<Icon shape={mdiDeleteForever} />}
                 label={formatMessage({
                   id: "settings.widget.reset.name",
@@ -115,7 +115,7 @@ function Content({ onSubmit }: { readonly onSubmit: () => void }): ReactNode {
             <Field.Filler />
             <Field>
               <Button
-                className={styleWidthWide}
+                className={styleWidth16}
                 icon={<Icon shape={mdiCheckCircle} />}
                 label={formatMessage({
                   id: "settings.widget.done.name",

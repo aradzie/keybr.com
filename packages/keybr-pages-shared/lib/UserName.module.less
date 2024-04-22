@@ -1,3 +1,5 @@
+@import "@keybr/widget/lib/index.less";
+
 .userName {
   display: flex;
   align-items: center;
@@ -7,9 +9,7 @@
 }
 
 .name {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  .textTruncate();
 }
 
 .anonymousName {

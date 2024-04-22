@@ -6,7 +6,7 @@ import {
   Field,
   FieldList,
   Range,
-  styleWidthWide,
+  styleWidth16,
   Value,
 } from "@keybr/widget";
 import { type ReactNode } from "react";
@@ -26,7 +26,7 @@ export function TextManglingProp(): ReactNode {
         </Field>
         <Field>
           <Range
-            className={styleWidthWide}
+            className={styleWidth16}
             min={0}
             max={100}
             step={1}
@@ -55,7 +55,7 @@ export function TextManglingProp(): ReactNode {
         </Field>
         <Field>
           <Range
-            className={styleWidthWide}
+            className={styleWidth16}
             min={0}
             max={100}
             step={1}

@@ -1,3 +1,5 @@
+@import "@keybr/widget/lib/index.less";
+
 .row {
   display: flex;
   align-items: center;
@@ -15,12 +17,10 @@
 }
 
 .name {
+  .textTruncate();
   inline-size: 10rem;
   padding-inline-end: 1rem;
-  overflow: hidden;
   text-align: end;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .value {

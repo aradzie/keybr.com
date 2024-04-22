@@ -1,6 +1,8 @@
-@import "../mixins";
+@import "../../styles/components.less";
+@import "../../styles/text.less";
 
 .button {
+  .textTruncate();
   display: inline-block;
   position: relative;
   vertical-align: middle;
@@ -12,7 +14,6 @@
   padding-block: 0;
   border: none;
   border-radius: 0.25rem;
-  overflow: hidden;
   color: var(--Button__color);
   background-color: var(--Button__background-color);
   font-family: var(--default-font-family);
@@ -22,8 +23,6 @@
   line-height: @field-height;
   text-align: center;
   text-transform: uppercase;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   cursor: pointer;
 }
 

@@ -1,5 +1,5 @@
 import { booleanProp } from "@keybr/settings";
-import { Button, Para, styleTextRight, useExplainerState } from "@keybr/widget";
+import { Button, Para, styleTextEnd, useExplainerState } from "@keybr/widget";
 import { type ReactNode, useLayoutEffect } from "react";
 import { useIntl } from "react-intl";
 import { Prefs } from "../prefs.ts";
@@ -13,7 +13,7 @@ export function ExplainSettings(): ReactNode {
     toggleExplainers(Prefs.get(propShowExplainers));
   });
   return (
-    <Para className={styleTextRight}>
+    <Para className={styleTextEnd}>
       <Button
         onClick={() => {
           toggleExplainers(!explainersVisible);

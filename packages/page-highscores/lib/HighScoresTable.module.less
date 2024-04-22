@@ -1,3 +1,5 @@
+@import "@keybr/widget/lib/index.less";
+
 .figure {
   padding-inline: 2rem;
   padding-block: 2rem;
@@ -13,13 +15,11 @@
 
   td,
   th {
+    .textTruncate();
     padding-inline: 0.75rem;
     padding-block: 0.25rem;
     border-block-end: var(--separator-border);
-    overflow: hidden;
     text-align: start;
-    text-overflow: ellipsis;
-    white-space: nowrap;
   }
 }
 

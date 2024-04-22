@@ -1,21 +1,22 @@
-@import "../mixins";
+@import "../../styles/components.less";
+@import "../../styles/text.less";
 
 .nameValue {
+  .textNoWrap();
   display: inline-block;
-  //.u-truncate();
 }
 
 .name {
+  .textNoWrap();
   display: inline-block;
   color: var(--Name-color);
-  //.u-truncate();
 }
 
 .value {
+  .textNoWrap();
   display: inline-block;
   color: var(--Value-color);
   font-family: var(--value-font-family);
-  //.u-truncate();
 }
 
 .value_more {

@@ -19,7 +19,7 @@ import {
   OptionList,
   RadioBox,
   Range,
-  styleWidthNormal,
+  styleWidth10,
 } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -172,7 +172,7 @@ function FontProp(): ReactNode {
   const { settings, updateSettings } = useSettings();
   return (
     <FieldList>
-      <Field className={styleWidthNormal}>
+      <Field className={styleWidth10}>
         <FormattedMessage id="settings.font.label" defaultMessage="Font:" />
       </Field>
       <Field>
@@ -198,7 +198,7 @@ function WhitespaceProp(): ReactNode {
   const { settings, updateSettings } = useSettings();
   return (
     <FieldList>
-      <Field className={styleWidthNormal}>
+      <Field className={styleWidth10}>
         <FormattedMessage
           id="settings.whitespace.label"
           defaultMessage="Whitespace:"
@@ -276,7 +276,7 @@ function CursorShapeProp(): ReactNode {
   const { settings, updateSettings } = useSettings();
   return (
     <FieldList>
-      <Field className={styleWidthNormal}>
+      <Field className={styleWidth10}>
         <FormattedMessage
           id="settings.cursorShape.label"
           defaultMessage="Cursor shape:"
@@ -375,7 +375,7 @@ function CursorMovementProp(): ReactNode {
   const { settings, updateSettings } = useSettings();
   return (
     <FieldList>
-      <Field className={styleWidthNormal}>
+      <Field className={styleWidth10}>
         <FormattedMessage
           id="settings.cursorMovement.label"
           defaultMessage="Cursor movement:"
@@ -432,7 +432,7 @@ function SoundsProp(): ReactNode {
   const { settings, updateSettings } = useSettings();
   return (
     <FieldList>
-      <Field className={styleWidthNormal}>
+      <Field className={styleWidth10}>
         <FormattedMessage
           id="settings.playSounds.label"
           defaultMessage="Play sounds:"

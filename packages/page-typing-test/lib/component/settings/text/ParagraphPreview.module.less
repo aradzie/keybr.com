@@ -1,3 +1,5 @@
+@import "@keybr/widget/lib/index.less";
+
 .paragraphPreview {
   inline-size: 50rem; /* TODO Fix this. */
 }
@@ -21,12 +23,9 @@
 }
 
 .content {
+  .textTruncate();
   display: inline-block;
-  max-inline-size: 100%;
-  overflow: hidden;
   font-style: italic;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .separator {

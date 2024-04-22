@@ -12,7 +12,7 @@ import {
   Para,
   Range,
   styleSizeFull,
-  styleWidthWide,
+  styleWidth16,
   TextField,
 } from "@keybr/widget";
 import { type ReactNode } from "react";
@@ -71,7 +71,7 @@ function WordListPreview({
         </Field>
         <Field>
           <Range
-            className={styleWidthWide}
+            className={styleWidth16}
             min={lessonProps.wordList.wordListSize.min}
             max={lessonProps.wordList.wordListSize.max}
             step={1}

@@ -1,4 +1,5 @@
-@import "../mixins";
+@import "../../styles/components.less";
+@import "../../styles/text.less";
 
 .optionList {
   display: inline-block;
@@ -16,7 +17,6 @@
   font-style: normal;
   text-align: start;
   text-transform: none;
-  white-space: nowrap;
   cursor: pointer;
 }
 
@@ -31,17 +31,14 @@
 }
 
 .placeholderName {
+  .textTruncate();
   flex: 1;
   vertical-align: middle;
-  max-inline-size: 100%;
   block-size: @field-height;
   margin: 0;
   padding-inline: 1.5rem;
   padding-block: 0;
-  overflow: hidden;
   line-height: @field-height;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .placeholderArrow {
@@ -71,17 +68,14 @@
 }
 
 .item {
+  .textTruncate();
   display: block;
-  max-inline-size: 100%;
   block-size: @field-height;
   padding-inline: 1.5rem;
   padding-block: 0;
-  overflow: hidden;
   color: var(--MenuItem__color);
   background-color: var(--MenuItem__background-color);
   line-height: @field-height;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .item:hover {
