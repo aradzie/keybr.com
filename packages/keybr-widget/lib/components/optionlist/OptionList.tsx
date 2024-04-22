@@ -1,5 +1,5 @@
 import { clsx } from "clsx";
-import { type ReactNode, useEffect, useState } from "react";
+import { type ReactNode, useEffect, useRef, useState } from "react";
 import { useHotkeysHandler } from "../../hooks/use-hotkeys.ts";
 import * as iconStyles from "../icon/Icon.module.less";
 import * as styles from "./OptionList.module.less";
@@ -26,9 +26,8 @@ export function OptionList({
     option,
     selectedOption,
     handleOpen,
-    handleSelect,
     handleNavigate,
-    handleSubmit,
+    handleSelect,
   } = useOptionList({
     disabled,
     options,
@@ -64,7 +63,7 @@ export function OptionList({
       }}
       onKeyDown={useHotkeysHandler(
         ["Space", handleOpen],
-        ["Enter", handleSubmit],
+        ["Enter", handleSelect],
         ["Home", () => handleNavigate("first")],
         ["ArrowUp", () => handleNavigate("prev")],
         ["ArrowDown", () => handleNavigate("next")],
@@ -92,9 +91,6 @@ export function OptionList({
           options={options}
           selectedOption={selectedOption}
           onSelect={(option) => {
-            handleSelect(option);
-          }}
-          onSubmit={(option) => {
             setOpen(false);
             if (onSelect != null) {
               onSelect(option.value);
@@ -130,13 +126,6 @@ function useOptionList({
     } else {
       setOpen(false);
     }
-  };
-
-  const handleSelect = (option: OptionListOption): void => {
-    if (disabled) {
-      return;
-    }
-    setSelectedOption(option);
   };
 
   const handleNavigate = (dir: "first" | "prev" | "next" | "last"): void => {
@@ -176,7 +165,7 @@ function useOptionList({
     }
   };
 
-  const handleSubmit = (): void => {
+  const handleSelect = (): void => {
     if (disabled) {
       return;
     }
@@ -194,9 +183,8 @@ function useOptionList({
     option,
     selectedOption,
     handleOpen,
-    handleSelect,
     handleNavigate,
-    handleSubmit,
+    handleSelect,
   };
 }
 
@@ -204,21 +192,22 @@ function Menu({
   options,
   selectedOption,
   onSelect,
-  onSubmit,
 }: {
   readonly options: readonly OptionListOption[];
   readonly selectedOption: OptionListOption;
   readonly onSelect: (value: OptionListOption) => void;
-  readonly onSubmit: (value: OptionListOption) => void;
 }): ReactNode {
+  const list = useRef(null);
+  const item = useRef(null);
   useEffect(() => {
-    // Scroll the selected item.
-  }, []);
+    ensureVisible(list.current, item.current);
+  });
   return (
-    <span role="menu" className={styles.list}>
+    <div ref={list} role="menu" className={styles.list}>
       {options.map((option, index) => (
-        <span
+        <div
           key={index}
+          ref={option === selectedOption ? item : null}
           role="menuitem"
           className={clsx(
             styles.item,
@@ -227,16 +216,29 @@ function Menu({
           )}
           onClick={(event) => {
             event.preventDefault();
-            onSubmit(option);
-          }}
-          onMouseOver={(event) => {
-            event.preventDefault();
             onSelect(option);
           }}
         >
           {option.name}
-        </span>
+        </div>
       ))}
-    </span>
+    </div>
   );
+}
+
+function ensureVisible(
+  list: HTMLElement | null,
+  item: HTMLElement | null,
+): void {
+  if (list == null || item == null) {
+    return;
+  }
+  if (item.offsetTop - list.scrollTop < 0) {
+    list.scrollTop = item.offsetTop;
+    return;
+  }
+  if (item.offsetTop + item.offsetHeight - list.scrollTop > list.offsetHeight) {
+    list.scrollTop = item.offsetTop + item.offsetHeight - list.offsetHeight;
+    return;
+  }
 }

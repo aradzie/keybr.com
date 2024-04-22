@@ -60,6 +60,14 @@
   inset-inline-end: 0;
   inset-block-start: 100%;
   z-index: 1;
+  max-block-size: 20rem;
+  overflow: auto;
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
+  scrollbar-color: var(--MenuItem--selected__background-color)
+    var(--MenuItem__background-color);
+  scrollbar-width: auto;
+  box-shadow: 0 0.5rem 3rem var(--Popup__shadow-color);
 }
 
 .item {
@@ -76,7 +84,17 @@
   white-space: nowrap;
 }
 
+.item:hover {
+  color: var(--MenuItem--hover__color);
+  background-color: var(--MenuItem--hover__background-color);
+}
+
 .item_selected {
+  color: var(--MenuItem--selected__color);
+  background-color: var(--MenuItem--selected__background-color);
+}
+
+.item_selected:hover {
   color: var(--MenuItem--selected__color);
   background-color: var(--MenuItem--selected__background-color);
 }
