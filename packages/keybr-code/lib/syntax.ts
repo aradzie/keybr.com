@@ -76,7 +76,7 @@ export class Syntax implements EnumItem {
     while (true) {
       try {
         if (output.length > 0) {
-          output.append(" ");
+          output.separate(" ");
         }
         generate(this.rules, this.start, { output, rng });
       } catch (err) {
