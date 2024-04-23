@@ -124,6 +124,7 @@ export function makeKeyComponent(
       case /* Zero Width Joiner */ 0x200d:
       case /* Left-To-Right Mark */ 0x200e:
       case /* Right-To-Left Mark */ 0x200f:
+      case /* Combining Grapheme Joiner */ 0x034f:
         return null;
     }
     return makeLabel(

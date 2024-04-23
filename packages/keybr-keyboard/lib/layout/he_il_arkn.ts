@@ -44,7 +44,7 @@ export const LAYOUT_HE_IL_ARKN: CodePointDict = {
   IntlBackslash: [/* \ */ 0x005c, /* | */ 0x007c],
   KeyZ: [/* ז */ 0x05d6, /* Z */ 0x005a],
   KeyX: [/* ס */ 0x05e1, /* X */ 0x0058, /* ֶ */ 0x05b6],
-  KeyC: [/* ב */ 0x05d1, /* C */ 0x0043, /* ֱ */ 0x05b1, /* ͏ */ 0x034f],
+  KeyC: [/* ב */ 0x05d1, /* C */ 0x0043, /* ֱ */ 0x05b1, /* COMBINING GRAPHEME JOINER */ 0x034f],
   KeyV: [/* ה */ 0x05d4, /* V */ 0x0056],
   KeyB: [/* נ */ 0x05e0, /* B */ 0x0042, 0x0000, /* ׆ */ 0x05c6],
   KeyN: [/* מ */ 0x05de, /* N */ 0x004e, 0x0000, /* ZERO WIDTH NON-JOINER */ 0x200c],

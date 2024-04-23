@@ -21,6 +21,8 @@ export function formatCodePointName(codePoint: CodePoint): string {
         return "RIGHT-TO-LEFT MARK";
       case 0x202f:
         return "NARROW NO-BREAK SPACE";
+      case 0x034f:
+        return "COMBINING GRAPHEME JOINER";
       default:
         return String.fromCodePoint(codePoint);
     }
