@@ -73,11 +73,18 @@ export class Syntax implements EnumItem {
 
   generate(rng?: RNG): string {
     const output = new Output(200);
-    try {
-      generate(this.rules, this.start, { output, rng });
-    } catch (err) {
-      if (err !== Output.Stop) {
-        throw err;
+    while (true) {
+      try {
+        if (output.length > 0) {
+          output.append(" ");
+        }
+        generate(this.rules, this.start, { output, rng });
+      } catch (err) {
+        if (err === Output.Stop) {
+          break;
+        } else {
+          throw err;
+        }
       }
     }
     return String(output).trim();

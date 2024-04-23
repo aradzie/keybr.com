@@ -1,10 +1,6 @@
 start -> html | css ;
 
-html ->
-    html_tag _ html_entity _
-    html_tag _ html_entity _
-    html_tag
-    ;
+html -> html_tag _ html_entity ;
 
 html_tag -> html_self_closing_tag ;
 
@@ -35,7 +31,7 @@ html_entity ->
   | "&apos;"
   ;
 
-css -> css_rule _ css_rule _ css_rule ;
+css -> css_rule ;
 
 css_rule -> css_selector " { " css_property_list " }" ;
 

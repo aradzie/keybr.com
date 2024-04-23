@@ -22,18 +22,6 @@ export default {
       {
         ref: "html_entity",
       },
-      " ",
-      {
-        ref: "html_tag",
-      },
-      " ",
-      {
-        ref: "html_entity",
-      },
-      " ",
-      {
-        ref: "html_tag",
-      },
     ],
   },
   html_tag: {
@@ -111,19 +99,7 @@ export default {
     alt: ["&nbsp;", "&lt;", "&gt;", "&amp;", "&apos;"],
   },
   css: {
-    seq: [
-      {
-        ref: "css_rule",
-      },
-      " ",
-      {
-        ref: "css_rule",
-      },
-      " ",
-      {
-        ref: "css_rule",
-      },
-    ],
+    ref: "css_rule",
   },
   css_rule: {
     seq: [

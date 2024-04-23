@@ -4,34 +4,10 @@ import { type Rules } from "../ast.ts";
 
 export default {
   start: {
-    seq: [
-      {
-        ref: "c_func",
-      },
-      " ",
-      {
-        ref: "c_func",
-      },
-      " ",
-      {
-        ref: "c_func",
-      },
-    ],
+    ref: "c_func",
   },
   start_fproto: {
     seq: [
-      {
-        ref: "c_func_proto",
-      },
-      "; ",
-      {
-        ref: "c_func_proto",
-      },
-      "; ",
-      {
-        ref: "c_func_proto",
-      },
-      "; ",
       {
         ref: "c_func_proto",
       },
@@ -39,23 +15,7 @@ export default {
     ],
   },
   start_stmt: {
-    seq: [
-      {
-        ref: "c_stmt",
-      },
-      " ",
-      {
-        ref: "c_stmt",
-      },
-      " ",
-      {
-        ref: "c_stmt",
-      },
-      " ",
-      {
-        ref: "c_stmt",
-      },
-    ],
+    ref: "c_stmt",
   },
   c_func: {
     seq: [

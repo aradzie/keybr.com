@@ -1,18 +1,8 @@
-start -> c_func _ c_func _ c_func ;
+start -> c_func ;
 
-start_fproto ->
-    c_func_proto ";"
-  _ c_func_proto ";"
-  _ c_func_proto ";"
-  _ c_func_proto ";"
-  ;
+start_fproto -> c_func_proto ";" ;
 
-start_stmt ->
-    c_stmt
-  _ c_stmt
-  _ c_stmt
-  _ c_stmt
-  ;
+start_stmt -> c_stmt ;
 
 c_func -> c_func_proto _ c_func_body ;
 
