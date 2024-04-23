@@ -154,6 +154,26 @@ def main():
         merge_file="Whitespace-em1000.ttf",
     )
     generate(
+        "fonts/OpenDyslexic/OpenDyslexic-Regular.ttf",
+        "open-dyslexic",
+        merge_file="Whitespace-em1000.ttf",
+    )
+    generate(
+        "fonts/OpenDyslexic/OpenDyslexic-Italic.ttf",
+        "open-dyslexic",
+        merge_file="Whitespace-em1000.ttf",
+    )
+    generate(
+        "fonts/OpenDyslexic/OpenDyslexic-Bold.ttf",
+        "open-dyslexic",
+        merge_file="Whitespace-em1000.ttf",
+    )
+    generate(
+        "fonts/OpenDyslexic/OpenDyslexic-BoldItalic.ttf",
+        "open-dyslexic",
+        merge_file="Whitespace-em1000.ttf",
+    )
+    generate(
         "fonts/OpenSans/static/OpenSans-Regular.ttf",
         "open-sans",
         merge_file="Whitespace-em2048.ttf",

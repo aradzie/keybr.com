@@ -1,0 +1,163 @@
+SplineFontDB: 3.2
+FontName: Whitespace
+FullName: Whitespace
+FamilyName: Whitespace
+Weight: Regular
+Copyright: Copyright (c) 2024, keybr.com
+UComments: "Created with FontForge (http://fontforge.org)"
+Version: 1.0
+ItalicAngle: 0
+UnderlinePosition: -266
+UnderlineWidth: 40
+Ascent: 1600
+Descent: 400
+InvalidEm: 0
+LayerCount: 2
+Layer: 0 0 "Back" 1
+Layer: 1 0 "Fore" 0
+XUID: [1021 148 372288191 4003857]
+FSType: 0
+OS2Version: 0
+OS2_WeightWidthSlopeOnly: 0
+OS2_UseTypoMetrics: 0
+CreationTime: 1712250907
+ModificationTime: 1713108542
+PfmFamily: 17
+TTFWeight: 400
+TTFWidth: 5
+LineGap: 0
+VLineGap: 0
+OS2TypoAscent: 1386
+OS2TypoAOffset: 0
+OS2TypoDescent: -330
+OS2TypoDOffset: 0
+OS2TypoLinegap: 98
+OS2WinAscent: 1660
+OS2WinAOffset: 0
+OS2WinDescent: 340
+OS2WinDOffset: 0
+HheadAscent: 1660
+HheadAOffset: 0
+HheadDescent: -340
+HheadDOffset: 0
+OS2CapHeight: 1386
+OS2XHeight: 1040
+OS2Vendor: 'PfEd'
+MarkAttachClasses: 1
+DEI: 91125
+LangName: 1033
+Encoding: UnicodeBmp
+UnicodeInterp: none
+NameList: AGL For New Fonts
+DisplaySize: -72
+AntiAlias: 1
+FitToEm: 0
+WinInfo: 120 12 5
+BeginPrivate: 0
+EndPrivate
+Grid
+0 700 m 25
+ 1000 700 l 1053
+0 600 m 25
+ 1000 600 l 1049
+0 500 m 25
+ 1000 500 l 1049
+0 100 m 25
+ 1000 100 l 1049
+0 200 m 25
+ 1000 200 l 1049
+0 300 m 25
+ 1000 300 l 1049
+0 400 m 25
+ 1000 400 l 1049
+0 1600 m 1
+ 1000 1600 l 1
+ 1000 0 l 1
+ 0 0 l 1
+ 0 1600 l 1
+EndSplineSet
+TeXData: 1 0 0 524288 262144 174762 0 1048576 174762 783286 444596 497025 792723 393216 433062 380633 303038 157286 324010 404750 52429 2506097 1059062 262144
+BeginChars: 65536 4
+
+StartChar: uniE000
+Encoding: 57344 57344 0
+Width: 1000
+Flags: HW
+LayerCount: 2
+Fore
+SplineSet
+648 520 m 0
+ 648 480 634 444 608 414 c 128
+ 582 384 546 368 502 368 c 0
+ 456 368 420 384 394 414 c 128
+ 368 444 354 480 354 520 c 0
+ 354 562 368 598 394 628 c 128
+ 420 658 456 674 502 674 c 0
+ 546 674 582 658 608 628 c 128
+ 634 598 648 562 648 520 c 0
+EndSplineSet
+EndChar
+
+StartChar: uniE001
+Encoding: 57345 57345 1
+Width: 1000
+Flags: HW
+LayerCount: 2
+Fore
+SplineSet
+160 0 m 1
+ 160 200 l 1
+ 280 200 l 1
+ 280 100 l 1
+ 720 100 l 1
+ 720 200 l 1
+ 840 200 l 1
+ 840 0 l 1
+ 160 0 l 1
+EndSplineSet
+EndChar
+
+StartChar: uniE002
+Encoding: 57346 57346 2
+Width: 1000
+Flags: HW
+LayerCount: 2
+Fore
+SplineSet
+100 438 m 1
+ 100 558 l 1
+ 580 558 l 1
+ 580 658 l 1
+ 740 500 l 1
+ 580 338 l 1
+ 580 438 l 1
+ 100 438 l 1
+800 658 m 1
+ 900 658 l 1
+ 900 338 l 1
+ 800 338 l 1
+ 800 658 l 1
+EndSplineSet
+EndChar
+
+StartChar: uniE003
+Encoding: 57347 57347 3
+Width: 1000
+Flags: HW
+LayerCount: 2
+Fore
+SplineSet
+800 568 m 1
+ 800 350 l 1
+ 320 350 l 1
+ 320 250 l 1
+ 160 400 l 1
+ 320 550 l 1
+ 320 450 l 1
+ 700 450 l 1
+ 700 568 l 1
+ 800 568 l 1
+EndSplineSet
+EndChar
+EndChars
+EndSplineFont
