@@ -1,8 +1,8 @@
 start -> html | css ;
 
 html ->
-    html_tag " " html_entity " "
-    html_tag " " html_entity " "
+    html_tag _ html_entity _
+    html_tag _ html_entity _
     html_tag
     ;
 
@@ -11,9 +11,9 @@ html_tag -> html_self_closing_tag ;
 html_self_closing_tag -> "<" html_ident html_attr_list "/>" ;
 
 html_attr_list ->
-    " " html_id_attr
-    " " html_class_attr
-    " " html_style_attr
+    _ html_id_attr
+    _ html_class_attr
+    _ html_style_attr
     ;
 
 html_id_attr -> "id" "=" "\"" css_class_id "\"" ;
@@ -35,7 +35,7 @@ html_entity ->
   | "&apos;"
   ;
 
-css -> css_rule " " css_rule " " css_rule ;
+css -> css_rule _ css_rule _ css_rule ;
 
 css_rule -> css_selector " { " css_property_list " }" ;
 
@@ -75,7 +75,7 @@ css_std_value ->
   | "unset"
   ;
 
-css_var_value -> "var(" css_var_id [ ", " css_color_value ] ")" ;
+css_var_value -> "var(" css_var_id [ "," _ css_color_value ] ")" ;
 
 css_url_value -> "url(logo.jpg)" ;
 

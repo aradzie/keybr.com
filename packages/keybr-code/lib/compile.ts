@@ -1,8 +1,7 @@
 #!/usr/bin/env -S node -r @keybr/tsl
 
-import { readdirSync, readFileSync } from "node:fs";
+import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { basename, join, resolve } from "node:path";
-import { writeFileSync } from "@sosimple/fsx";
 import { compiler } from "peggy";
 import { optimize } from "./optimize.ts";
 import { parse } from "./parse.ts";
