@@ -5,7 +5,9 @@
   "main": "lib/index.ts",
   "types": ".types/index.d.ts",
   "sideEffects": false,
-  "dependencies": {},
+  "dependencies": {
+    "@keybr/lang": "*"
+  },
   "devDependencies": {},
   "scripts": {
     "clean": "rm -fr .types",

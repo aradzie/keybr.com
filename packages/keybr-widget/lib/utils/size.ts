@@ -1,6 +1,4 @@
-import isNumber from "lodash/isNumber";
-import isObject from "lodash/isObject";
-import isObjectLike from "lodash/isObjectLike";
+import { isNumber, isObject, isObjectLike } from "@keybr/lang";
 
 export type TSize = {
   width: number;

@@ -198,23 +198,12 @@ module.exports = [
         },
       ],
     },
-    resolve: {
-      alias: {
-        lodash: "lodash-es",
-      },
-    },
     optimization: {
       minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
       splitChunks: {
         cacheGroups: {
           vendor: {
-            test: isVendor([
-              "tslib",
-              "lodash",
-              "lodash-es",
-              "@mdi",
-              "@unicode",
-            ]),
+            test: isVendor(["tslib", "@mdi", "@unicode"]),
             chunks: "all",
             name: "shared-vendor",
           },

@@ -1,5 +1,4 @@
-import isNumber from "lodash/isNumber";
-import isObject from "lodash/isObject";
+import { isNumber, isObject } from "@keybr/lang";
 
 export enum Month {
   January = 1,

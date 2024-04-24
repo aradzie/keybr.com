@@ -6,7 +6,6 @@ import {
   type ShapeList,
   Shapes,
 } from "@keybr/widget";
-import clamp from "lodash/clamp";
 import { vBoxes } from "./geometry.ts";
 
 export type Projection = {
@@ -50,7 +49,9 @@ export function paintScatterPlot(
 ): ShapeList {
   return (g: Graphics): void => {
     g.withStyle(style, () => {
-      const r = Math.round(clamp(proj.box.width / dx.length, 2, 6));
+      const r = Math.round(
+        Math.min(Math.max(proj.box.width / dx.length, 2), 6),
+      );
       for (let i = 0; i < dx.length; i++) {
         g.fillCircle(proj.x(dx.at(i)), proj.y(dy.at(i)), r);
       }

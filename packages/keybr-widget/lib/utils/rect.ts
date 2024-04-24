@@ -1,5 +1,4 @@
-import isNumber from "lodash/isNumber";
-import isObjectLike from "lodash/isObjectLike";
+import { isNumber, isObjectLike } from "@keybr/lang";
 import { Point, type TPoint } from "./point.ts";
 import { Size, type TSize } from "./size.ts";
 

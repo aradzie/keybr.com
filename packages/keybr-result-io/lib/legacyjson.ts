@@ -1,8 +1,7 @@
 import { Layout } from "@keybr/keyboard";
+import { isPlainObject, isString } from "@keybr/lang";
 import { Result, TextType } from "@keybr/result";
 import { Histogram } from "@keybr/textinput";
-import isPlainObject from "lodash/isPlainObject";
-import isString from "lodash/isString";
 
 export type ResultJson = {
   readonly l: string;

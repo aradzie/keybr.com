@@ -1,4 +1,4 @@
-import isPlainObject from "lodash/isPlainObject";
+import { isPlainObject } from "@keybr/lang";
 import { Manifest } from "./manifest.ts";
 import { type Entrypoint, type Script, type StylesheetLink } from "./types.ts";
 

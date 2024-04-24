@@ -1,4 +1,4 @@
-import isPlainObject from "lodash/isPlainObject";
+import { isPlainObject } from "@keybr/lang";
 import { type AnyProp } from "./props.ts";
 
 export type SettingsStorage = {
