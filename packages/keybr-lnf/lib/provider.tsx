@@ -18,7 +18,7 @@ export function ThemeProvider({
 
   const switchColor = (color: ColorName): void => {
     const { id } = COLORS.findOption(color);
-    document.documentElement.setAttribute("data-color", id);
+    document.documentElement.setAttribute(ThemePrefs.colorAttrName, id);
     const prefs = new ThemePrefs({ color, font });
     storePrefs(prefs);
     setPrefs(prefs);
@@ -26,7 +26,7 @@ export function ThemeProvider({
 
   const switchFont = (font: FontName): void => {
     const { id } = FONTS.findOption(font);
-    document.documentElement.setAttribute("data-font", id);
+    document.documentElement.setAttribute(ThemePrefs.fontAttrName, id);
     const prefs = new ThemePrefs({ color, font });
     storePrefs(prefs);
     setPrefs(prefs);
