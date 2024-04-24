@@ -6,9 +6,9 @@ Untranslated: 321 messages, 3953 words
 
 # Czech
 
-Translated: 416 messages, 5022 words
+Translated: 422 messages, 5077 words
 
-Untranslated: 15 messages, 220 words
+Untranslated: 9 messages, 165 words
 
 # Danish
 
