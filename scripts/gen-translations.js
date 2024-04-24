@@ -35,6 +35,7 @@ const allLocales = [
   "tr",
   "uk",
   "zh-hans",
+  "zh-hant",
 ];
 
 const defaultLocale = "en";

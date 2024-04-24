@@ -135,3 +135,9 @@ Untranslated: 34 messages, 407 words
 Translated: 425 messages, 5211 words
 
 Untranslated: 6 messages, 31 words
+
+# Traditional Chinese
+
+Translated: 430 messages, 5241 words
+
+Untranslated: 1 messages, 1 words

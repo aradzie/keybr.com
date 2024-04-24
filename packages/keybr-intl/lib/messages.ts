@@ -29,6 +29,7 @@ export async function loadMessages(locale: LocaleId): Promise<Messages> {
     case "tr": return (await import(/* webpackChunkName: "messages-tr" */ "./messages/tr.json")).default;
     case "uk": return (await import(/* webpackChunkName: "messages-uk" */ "./messages/uk.json")).default;
     case "zh-hans": return (await import(/* webpackChunkName: "messages-zh-hans" */ "./messages/zh-hans.json")).default;
+    case "zh-hant": return (await import(/* webpackChunkName: "messages-zh-hant" */ "./messages/zh-hant.json")).default;
     default:
       throw new Error();
   }

@@ -43,7 +43,8 @@ export type LocaleId =
   | "sv"
   | "tr"
   | "uk"
-  | "zh-hans";
+  | "zh-hans"
+  | "zh-hant";
 
 export const defaultLocale: LocaleId = "en";
 
@@ -72,10 +73,18 @@ export const allLocales: readonly LocaleId[] = [
   "tr",
   "uk",
   "zh-hans",
+  "zh-hant",
 ];
 
 export function getDir(locale: LocaleId): "ltr" | "rtl" {
-  return locale === "ar" || locale === "fa" || locale === "he" ? "rtl" : "ltr";
+  switch (locale) {
+    case "ar":
+    case "fa":
+    case "he":
+      return "rtl";
+    default:
+      return "ltr";
+  }
 }
 
 export const PreferredLocaleContext = createContext<LocaleId>(defaultLocale);
