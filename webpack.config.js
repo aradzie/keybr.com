@@ -212,15 +212,10 @@ module.exports = [
             chunks: "all",
             name: "shared-widget",
           },
-          layoutsData: {
-            test: /\/keybr-data-layouts\//,
+          keyboard: {
+            test: /\/keybr-keyboard\//,
             chunks: "all",
-            name: "shared-data-layouts",
-          },
-          statsData: {
-            test: /\/keybr-data-stats\//,
-            chunks: "all",
-            name: "shared-data-stats",
+            name: "shared-keyboard",
           },
           styles: {
             type: "css/mini-extract",
