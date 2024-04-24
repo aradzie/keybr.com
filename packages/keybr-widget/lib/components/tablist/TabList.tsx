@@ -5,7 +5,6 @@ import * as styles from "./TabList.module.less";
 import { type TabListProps, type TabProps } from "./TabList.types.ts";
 
 export function TabList({
-  className,
   disabled,
   children,
   selectedIndex = 0,
@@ -58,11 +57,9 @@ export function TabList({
     items.push(
       <span
         key={`item-${index}`}
-        ref={(element: HTMLElement | null): void => {
-          if (element != null) {
-            if (!disabled && focused && index === selectedIndex) {
-              element.focus();
-            }
+        ref={(element) => {
+          if (focused && selected) {
+            element?.focus();
           }
         }}
         className={clsx(
@@ -87,6 +84,7 @@ export function TabList({
         onClick={(event) => {
           event.preventDefault();
           select(index);
+          setFocused(true);
         }}
         onKeyDown={hotkeys}
       >
@@ -101,10 +99,10 @@ export function TabList({
     />,
   );
   return (
-    <div className={clsx(styles.tabList, className)}>
-      <div className={styles.menu}>{items}</div>
-      <div className={styles.body}>{selectedTab.props.children}</div>
-    </div>
+    <>
+      <div className={styles.tabList}>{items}</div>
+      {selectedTab.props.children}
+    </>
   );
 }
 

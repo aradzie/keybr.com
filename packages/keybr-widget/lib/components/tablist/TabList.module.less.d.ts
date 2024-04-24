@@ -1,6 +1,4 @@
 export const tabList: string;
-export const menu: string;
-export const body: string;
 export const item: string;
 export const item_active: string;
 export const item_inactive: string;
