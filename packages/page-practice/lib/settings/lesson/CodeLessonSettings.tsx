@@ -9,13 +9,14 @@ import {
   OptionList,
 } from "@keybr/widget";
 import { type ReactNode } from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 
 export function CodeLessonSettings({
   lesson,
 }: {
   readonly lesson: CodeLesson;
 }): ReactNode {
+  const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
   return (
     <>
@@ -25,7 +26,12 @@ export function CodeLessonSettings({
           defaultMessage="Practice punctuation characters that are specific to a programming language syntax."
         />
       </Explainer>
-      <FieldSet>
+      <FieldSet
+        legend={formatMessage({
+          id: "settings.lessonOptions.legend",
+          defaultMessage: "Lesson Options",
+        })}
+      >
         <FieldList>
           <Field>
             <FormattedMessage

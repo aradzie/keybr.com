@@ -90,9 +90,9 @@ Untranslated: 122 messages, 3382 words
 
 # Polish
 
-Translated: 418 messages, 4998 words
+Translated: 424 messages, 5006 words
 
-Untranslated: 13 messages, 244 words
+Untranslated: 7 messages, 236 words
 
 # Brazilian Portuguese
 
@@ -108,9 +108,9 @@ Untranslated: 5 messages, 5 words
 
 # Russian
 
-Translated: 421 messages, 5075 words
+Translated: 425 messages, 5080 words
 
-Untranslated: 10 messages, 167 words
+Untranslated: 6 messages, 162 words
 
 # Swedish
 
@@ -126,9 +126,9 @@ Untranslated: 165 messages, 3387 words
 
 # Ukrainian
 
-Translated: 397 messages, 4835 words
+Translated: 407 messages, 4853 words
 
-Untranslated: 34 messages, 407 words
+Untranslated: 24 messages, 389 words
 
 # Simplified Chinese
 

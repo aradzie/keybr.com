@@ -40,7 +40,7 @@ export function LessonSettings(): ReactNode {
             <Tab
               label={formatMessage({
                 id: "lessonType.guided.name",
-                defaultMessage: "Guided lessons",
+                defaultMessage: "Guided Lessons",
               })}
             >
               <GuidedLessonSettings lesson={lesson as GuidedLesson} />
@@ -49,7 +49,7 @@ export function LessonSettings(): ReactNode {
             <Tab
               label={formatMessage({
                 id: "lessonType.wordlist.name",
-                defaultMessage: "Common words",
+                defaultMessage: "Common Words",
               })}
             >
               <WordListLessonSettings lesson={lesson as WordListLesson} />
@@ -58,7 +58,7 @@ export function LessonSettings(): ReactNode {
             <Tab
               label={formatMessage({
                 id: "lessonType.customText.name",
-                defaultMessage: "Custom text",
+                defaultMessage: "Custom Text",
               })}
             >
               <CustomTextLessonSettings lesson={lesson as CustomTextLesson} />
