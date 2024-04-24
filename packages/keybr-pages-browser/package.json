@@ -8,7 +8,6 @@
     "@keybr/debug": "*",
     "@keybr/intl": "*",
     "@keybr/lnf": "*",
-    "@keybr/lnf-browser": "*",
     "@keybr/pages-shared": "*",
     "@keybr/widget": "*"
   },

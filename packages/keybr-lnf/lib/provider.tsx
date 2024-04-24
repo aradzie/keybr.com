@@ -1,21 +1,19 @@
 import { Cookie, SetCookie } from "@fastr/headers";
-import {
-  type ColorName,
-  COLORS,
-  type FontName,
-  FONTS,
-  ThemeContext,
-  ThemePrefs,
-} from "@keybr/lnf";
+import { useFullscreen } from "@keybr/widget";
 import { type ReactNode, useState } from "react";
-import { useFullscreen } from "./use-fullscreen.ts";
+import { ThemeContext } from "./context.tsx";
+import { COLORS, FONTS } from "./options.tsx";
+import { ThemePrefs } from "./prefs.ts";
+import { type ColorName, type FontName } from "./types.ts";
 
 export function ThemeProvider({
   children,
 }: {
   readonly children: ReactNode;
 }): ReactNode {
-  const [fullscreenState, toggleFullscreen] = useFullscreen();
+  const [fullscreenState, toggleFullscreen] = useFullscreen(
+    document.documentElement,
+  );
   const [{ color, font }, setPrefs] = useState(() => readPrefs());
 
   const switchColor = (color: ColorName): void => {

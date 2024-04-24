@@ -1,8 +1,8 @@
-import { useTheme } from "@keybr/lnf";
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import test from "ava";
 import { type ReactNode } from "react";
+import { useTheme } from "./context.tsx";
 import { ThemeProvider } from "./provider.tsx";
 
 test.beforeEach(() => {

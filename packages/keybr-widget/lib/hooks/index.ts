@@ -3,6 +3,7 @@ export * from "./use-debounced.ts";
 export * from "./use-deferred.tsx";
 export * from "./use-document-event.ts";
 export * from "./use-element-size.ts";
+export * from "./use-fullscreen.ts";
 export * from "./use-hotkeys.ts";
 export * from "./use-interval.ts";
 export * from "./use-mouse-hover.ts";

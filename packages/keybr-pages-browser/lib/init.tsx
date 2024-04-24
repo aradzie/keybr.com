@@ -1,7 +1,6 @@
 import { ErrorDetails, ErrorHandler } from "@keybr/debug";
 import { loadIntl } from "@keybr/intl";
-import { ThemeSwitcher } from "@keybr/lnf";
-import { ThemeProvider } from "@keybr/lnf-browser";
+import { ThemeProvider, ThemeSwitcher } from "@keybr/lnf";
 import { getPageData, PageDataContext } from "@keybr/pages-shared";
 import { querySelector } from "@keybr/widget";
 import { type ReactElement } from "react";
