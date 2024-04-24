@@ -11,9 +11,12 @@ export function ThemeProvider({
 }: {
   readonly children: ReactNode;
 }): ReactNode {
-  const [fullscreenState, toggleFullscreen] = useFullscreen(
-    document.documentElement,
-  );
+  const fullscreenTarget =
+    document.querySelector("[fullscreen-target]") ??
+    document.querySelector("main") ??
+    document.documentElement;
+
+  const [fullscreenState, toggleFullscreen] = useFullscreen(fullscreenTarget);
   const [{ color, font }, setPrefs] = useState(() => readPrefs());
 
   const switchColor = (color: ColorName): void => {
