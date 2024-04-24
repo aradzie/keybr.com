@@ -6,7 +6,7 @@ import * as styles from "./FieldList.module.less";
 import { type FieldListProps, type FieldProps } from "./FieldList.types.ts";
 
 export function FieldList(props: FieldListProps): ReactNode {
-  const { as: Component = "p", className, id, title, children } = props;
+  const { as: Component = "div", className, id, title, children } = props;
   return (
     <Component
       id={id} //
