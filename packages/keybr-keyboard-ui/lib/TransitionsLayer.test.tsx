@@ -8,7 +8,7 @@ test("empty", (t) => {
 
   const renderer = TestRenderer.create(
     <KeyboardContext.Provider value={keyboard}>
-      <TransitionsLayer histogram={[]} />
+      <TransitionsLayer histogram={[]} modifier="f" />
     </KeyboardContext.Provider>,
   );
 
@@ -25,6 +25,7 @@ test("equal counts", (t) => {
           [/* a */ 0x0061, /* b */ 0x0062, 1],
           [/* b */ 0x0062, /* c */ 0x0063, 1],
         ]}
+        modifier="f"
       />
     </KeyboardContext.Provider>,
   );
@@ -42,6 +43,7 @@ test("different counts", (t) => {
           [/* a */ 0x0061, /* b */ 0x0062, 1],
           [/* b */ 0x0062, /* c */ 0x0063, 2],
         ]}
+        modifier="f"
       />
     </KeyboardContext.Provider>,
   );
@@ -54,7 +56,10 @@ test("self arrow", (t) => {
 
   const renderer = TestRenderer.create(
     <KeyboardContext.Provider value={keyboard}>
-      <TransitionsLayer histogram={[[/* a */ 0x0061, /* a */ 0x0061, 1]]} />
+      <TransitionsLayer
+        histogram={[[/* a */ 0x0061, /* a */ 0x0061, 1]]}
+        modifier="f"
+      />
     </KeyboardContext.Provider>,
   );
 

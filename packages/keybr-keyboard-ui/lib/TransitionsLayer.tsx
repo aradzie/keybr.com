@@ -1,13 +1,16 @@
 import { type KeyShape, useKeyboard } from "@keybr/keyboard";
 import { type CodePoint } from "@keybr/unicode";
+import { clsx } from "clsx";
 import { memo, type ReactNode } from "react";
 import { frameWidth, keyGap, keySize } from "./constants.ts";
 import * as styles from "./TransitionsLayer.module.less";
 
 export const TransitionsLayer = memo(function TransitionsLayer({
   histogram,
+  modifier,
 }: {
   readonly histogram: Iterable<readonly [CodePoint, CodePoint, number]>;
+  readonly modifier: "h" | "m" | "f";
 }): ReactNode {
   type Item = [shape0: KeyShape, shape1: KeyShape, f: number];
   const keyboard = useKeyboard();
@@ -15,7 +18,7 @@ export const TransitionsLayer = memo(function TransitionsLayer({
     <svg x={frameWidth} y={frameWidth}>
       <defs>
         <marker
-          id={styles.marker}
+          id={styles.arrow}
           markerWidth="5"
           markerHeight="6"
           refX="5"
@@ -23,7 +26,12 @@ export const TransitionsLayer = memo(function TransitionsLayer({
           orient="auto"
           markerUnits="strokeWidth"
         >
-          <path className={styles.arrowMarker} d="M 0 0 L 0 6 L 5 3 z" />
+          <path
+            className={styles.arrow}
+            d="M 0 0 L 0 6 L 5 3 z"
+            fill="context-stroke"
+            stroke="none"
+          />
         </marker>
       </defs>
       {items().map(draw)}
@@ -94,11 +102,24 @@ export const TransitionsLayer = memo(function TransitionsLayer({
     return (
       <path
         key={index}
-        className={styles.arrowPath}
+        className={clsx(styles.arc, modifierStyle(modifier))}
         d={`M ${X1} ${Y1} Q ${mx} ${my} ${X2} ${Y2}`}
         opacity={f * 0.9 + 0.1}
-        markerEnd={`url(#${styles.marker})`}
+        markerEnd={`url(#${styles.arrow})`}
       />
     );
   }
 });
+
+function modifierStyle(m: "h" | "m" | "f") {
+  switch (m) {
+    case "h":
+      return styles.h;
+    case "m":
+      return styles.m;
+    case "f":
+      return styles.f;
+    default:
+      return null;
+  }
+}

@@ -1,4 +1,9 @@
-import { type HasCodePoint, keyboardProps, type KeyId } from "@keybr/keyboard";
+import {
+  type HasCodePoint,
+  keyboardProps,
+  type KeyId,
+  Ngram2,
+} from "@keybr/keyboard";
 import { type Lesson, type LessonKeys, lessonProps } from "@keybr/lesson";
 import { Histogram, KeySet } from "@keybr/math";
 import { type KeyStatsMap, Result } from "@keybr/result";
@@ -7,6 +12,7 @@ import {
   type Feedback,
   type LineList,
   newStats,
+  type Step,
   type TextDisplaySettings,
   TextInput,
   type TextInputSettings,
@@ -21,6 +27,8 @@ export type LastLesson = {
   readonly result: Result;
   readonly hits: Histogram<HasCodePoint>;
   readonly misses: Histogram<HasCodePoint>;
+  readonly hits2: Ngram2;
+  readonly misses2: Ngram2;
 };
 
 export class PracticeState {
@@ -98,7 +106,10 @@ export class PracticeState {
   }
 }
 
-export function makeLastLesson(result: Result): LastLesson {
+export function makeLastLesson(
+  result: Result,
+  steps: readonly Step[],
+): LastLesson {
   const keySet = new KeySet<HasCodePoint>([]);
   const hits = new Histogram(keySet);
   const misses = new Histogram(keySet);
@@ -106,5 +117,13 @@ export function makeLastLesson(result: Result): LastLesson {
     hits.set({ codePoint }, hitCount);
     misses.set({ codePoint }, missCount);
   }
-  return { result, hits, misses };
+  const alphabet = [...new Set(steps.map(({ codePoint }) => codePoint))].sort(
+    (a, b) => a - b,
+  );
+  const hits2 = new Ngram2(alphabet);
+  const misses2 = new Ngram2(alphabet);
+  for (let i = 0; i < steps.length - 1; i++) {
+    hits2.add(steps[i].codePoint, steps[i + 1].codePoint, 1);
+  }
+  return { result, hits, misses, hits2, misses2 };
 }

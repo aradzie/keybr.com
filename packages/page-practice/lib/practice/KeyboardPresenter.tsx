@@ -4,6 +4,7 @@ import {
   HeatmapLayer,
   KeyLayer,
   PointersLayer,
+  TransitionsLayer,
   VirtualKeyboard,
   ZonesLayer,
 } from "@keybr/keyboard-ui";
@@ -44,6 +45,12 @@ export const KeyboardPresenter = memo(function KeyboardPresenter({
       )}
       {focus && lastLesson && (
         <HeatmapLayer histogram={flatten(lastLesson.hits)} modifier="h" />
+      )}
+      {focus && lastLesson && (
+        <TransitionsLayer histogram={lastLesson.misses2} modifier="m" />
+      )}
+      {focus && lastLesson && (
+        <TransitionsLayer histogram={lastLesson.hits2} modifier="h" />
       )}
       {focus || <ZonesLayer />}
     </VirtualKeyboard>

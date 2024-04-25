@@ -35,7 +35,7 @@ export function KeyFrequencyHeatmap({
         <VirtualKeyboard keyboard={keyboard}>
           <KeyLayer />
           <HeatmapLayer histogram={ngram1} modifier="f" />
-          <TransitionsLayer histogram={ngram2} />
+          <TransitionsLayer histogram={ngram2} modifier="f" />
         </VirtualKeyboard>
       </Para>
     </>
