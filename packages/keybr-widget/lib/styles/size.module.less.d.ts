@@ -7,3 +7,4 @@ export const width16: string;
 export const width24: string;
 export const width32: string;
 export const widthFull: string;
+export const cover: string;

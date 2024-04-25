@@ -8,7 +8,9 @@
   "dependencies": {
     "@keybr/lang": "*"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@keybr/test-env-time": "*"
+  },
   "scripts": {
     "clean": "rm -fr .types",
     "compile": "tsc",

@@ -10,3 +10,5 @@ export const styleWidth16 = styles.width16;
 export const styleWidth24 = styles.width24;
 export const styleWidth32 = styles.width32;
 export const styleWidthFull = styles.widthFull;
+
+export const styleCover = styles.cover;

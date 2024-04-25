@@ -17,5 +17,6 @@ export * from "./range/index.ts";
 export * from "./tablist/index.ts";
 export * from "./text/index.ts";
 export * from "./textfield/index.ts";
+export * from "./toast/index.ts";
 export * from "./tour/index.ts";
 export * from "./types.ts";

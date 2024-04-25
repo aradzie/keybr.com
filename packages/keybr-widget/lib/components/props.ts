@@ -7,16 +7,18 @@ import {
 export type FocusProps = {
   readonly tabIndex?: number;
   readonly disabled?: boolean;
-  readonly onBlur?: FocusEventHandler;
   readonly onFocus?: FocusEventHandler;
+  readonly onBlur?: FocusEventHandler;
 };
 
 export type MouseProps = {
   readonly onClick?: MouseEventHandler;
   readonly onMouseDown?: MouseEventHandler;
+  readonly onMouseUp?: MouseEventHandler;
+  readonly onMouseOver?: MouseEventHandler;
+  readonly onMouseOut?: MouseEventHandler;
   readonly onMouseEnter?: MouseEventHandler;
   readonly onMouseLeave?: MouseEventHandler;
-  readonly onMouseUp?: MouseEventHandler;
 };
 
 export type KeyboardProps = {
