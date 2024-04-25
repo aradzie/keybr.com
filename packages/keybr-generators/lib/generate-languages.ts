@@ -34,7 +34,7 @@ function generate(language: Language): void {
     generateModel(dict);
     generateWordList(
       sortByCount(language, dict)
-        .slice(0, 3000)
+        .slice(0, language === Language.EN ? 10000 : 3000)
         .map(([word]) => word),
     );
   }
