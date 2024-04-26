@@ -139,7 +139,7 @@ export class GuidedLesson extends Lesson {
   #makeWordGenerator(filter: Filter): WordGenerator {
     const pseudoWords = phoneticWords(this.model, filter, this.rng);
     if (this.settings.get(lessonProps.guided.naturalWords)) {
-      const words = [...this.dictionary.cull(filter)];
+      const words = this.dictionary.find(filter).slice(0, 1000);
       while (words.length < 15) {
         const word = pseudoWords();
         if (word != null) {

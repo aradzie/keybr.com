@@ -42,12 +42,6 @@ export class Dictionary implements Iterable<string> {
     }
     return words.map(({ value }) => value);
   }
-
-  cull(filter: Filter): WordList {
-    return this.find(filter)
-      .filter(({ length }) => length <= 10)
-      .slice(0, 100);
-  }
 }
 
 class Word {
