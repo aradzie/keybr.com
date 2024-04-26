@@ -139,11 +139,17 @@ export class GuidedLesson extends Lesson {
   #makeWordGenerator(filter: Filter): WordGenerator {
     const pseudoWords = phoneticWords(this.model, filter, this.rng);
     if (this.settings.get(lessonProps.guided.naturalWords)) {
-      const words = [...this.dictionary.find(filter)]
-        .filter(({ length }) => length <= 10)
-        .slice(0, 100);
+      const words = [...this.dictionary.cull(filter)];
       while (words.length < 15) {
-        words.push(pseudoWords() ?? "?");
+        const word = pseudoWords();
+        if (word != null) {
+          words.push(word);
+        } else {
+          break;
+        }
+      }
+      if (words.length === 0) {
+        words.push("?");
       }
       return randomWords(words, this.rng);
     }
