@@ -64,31 +64,5 @@ function mergeJson(a: Json, b: Json): Json {
 }
 
 function migrate(json: Json): Json {
-  let layoutId = json["keyboard.layout"];
-  if (typeof layoutId === "string") {
-    const remap = {
-      "be": "be-by",
-      "cz": "cs-cz",
-      "de": "de-de",
-      "fr": "fr-fr",
-      "it": "it-it",
-      "pl": "pl-pl",
-      "ru": "ru-ru",
-      "se": "sv-se",
-      "ua": "uk-ua",
-      "uk": "en-uk",
-      "us": "en-us",
-      "us-canary-matrix": "en-canary-matrix",
-      "us-colemak": "en-colemak",
-      "us-colemak-dh": "en-colemak-dh",
-      "us-colemak-dh-matrix": "en-colemak-dh-matrix",
-      "us-dvorak": "en-dvorak",
-      "us-workman": "en-workman",
-    } as Json;
-    layoutId = remap[layoutId];
-    if (typeof layoutId === "string") {
-      json["keyboard.layout"] = layoutId;
-    }
-  }
   return json;
 }
