@@ -12,7 +12,6 @@
     "@keybr/lang": "*",
     "@keybr/math": "*",
     "@keybr/phonetic-model": "*",
-    "@keybr/plaintext": "*",
     "@keybr/rand": "*",
     "@keybr/result": "*",
     "@keybr/settings": "*",

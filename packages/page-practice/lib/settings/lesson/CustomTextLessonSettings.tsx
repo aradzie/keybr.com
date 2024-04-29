@@ -1,7 +1,7 @@
 import { useIntlNumbers } from "@keybr/intl";
 import { type CustomTextLesson, lessonProps } from "@keybr/lesson";
-import { textStatsOf } from "@keybr/plaintext";
 import { useSettings } from "@keybr/settings";
+import { textStatsOf } from "@keybr/unicode";
 import {
   CheckBox,
   Explainer,

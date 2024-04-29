@@ -20,7 +20,6 @@
     "@keybr/pages-shared": "*",
     "@keybr/phonetic-model": "*",
     "@keybr/phonetic-model-loader": "*",
-    "@keybr/plaintext": "*",
     "@keybr/rand": "*",
     "@keybr/result": "*",
     "@keybr/result-loader": "*",

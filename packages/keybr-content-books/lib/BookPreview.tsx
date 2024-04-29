@@ -1,5 +1,5 @@
 import { useIntlNumbers } from "@keybr/intl";
-import { textStatsOf } from "@keybr/plaintext";
+import { textStatsOf } from "@keybr/unicode";
 import { NameValue } from "@keybr/widget";
 import { memo, type ReactNode, useMemo } from "react";
 import { useIntl } from "react-intl";

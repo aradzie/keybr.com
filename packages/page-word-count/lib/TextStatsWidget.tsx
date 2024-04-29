@@ -1,5 +1,5 @@
 import { useIntlDurations, useIntlNumbers } from "@keybr/intl";
-import { type TextStats, type WordCount } from "@keybr/plaintext";
+import { type TextStats, type WordCount } from "@keybr/unicode";
 import { Name, NameValue, Para, Value } from "@keybr/widget";
 import { type CSSProperties, type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";

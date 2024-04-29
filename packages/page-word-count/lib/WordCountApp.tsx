@@ -1,4 +1,4 @@
-import { type TextStats, textStatsOf } from "@keybr/plaintext";
+import { type TextStats, textStatsOf } from "@keybr/unicode";
 import { TextField } from "@keybr/widget";
 import { type ReactNode, useEffect, useMemo, useState } from "react";
 import { useIntl } from "react-intl";

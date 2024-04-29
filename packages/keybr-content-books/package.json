@@ -9,7 +9,7 @@
     "@keybr/intl": "*",
     "@keybr/keyboard": "*",
     "@keybr/lang": "*",
-    "@keybr/plaintext": "*",
+    "@keybr/unicode": "*",
     "@keybr/widget": "*"
   },
   "devDependencies": {},

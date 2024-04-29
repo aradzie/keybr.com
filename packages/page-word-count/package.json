@@ -9,7 +9,7 @@
     "@keybr/pages-browser": "*",
     "@keybr/pages-server": "*",
     "@keybr/pages-shared": "*",
-    "@keybr/plaintext": "*",
+    "@keybr/unicode": "*",
     "@keybr/widget": "*"
   },
   "devDependencies": {},

@@ -1,4 +1,4 @@
-import { newTextScanner } from "@keybr/plaintext";
+import { newTextScanner } from "@keybr/unicode";
 
 export function splitText(text: string, maxWordLength: number = 30): string[] {
   const scanner = newTextScanner(text);

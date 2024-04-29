@@ -1,12 +1,12 @@
 import {
-  type CodePoint,
   isControl,
   isLetter,
   isLinebreak,
   isWhitespace,
   isWordJoiner,
-  newScanner,
-} from "@keybr/unicode";
+} from "./classify.ts";
+import { newScanner } from "./scanner.ts";
+import { type CodePoint } from "./types.ts";
 
 export type TextScanner = {
   readonly text: string;
