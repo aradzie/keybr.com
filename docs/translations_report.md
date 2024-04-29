@@ -1,8 +1,8 @@
 # Arabic
 
-Translated: 110 messages, 1289 words
+Translated: 430 messages, 5241 words
 
-Untranslated: 321 messages, 3953 words
+Untranslated: 1 messages, 1 words
 
 # Czech
 
@@ -42,9 +42,9 @@ Untranslated: 10 messages, 56 words
 
 # Persian
 
-Translated: 342 messages, 1828 words
+Translated: 350 messages, 1913 words
 
-Untranslated: 89 messages, 3414 words
+Untranslated: 81 messages, 3329 words
 
 # French
 
@@ -63,6 +63,12 @@ Untranslated: 27 messages, 394 words
 Translated: 372 messages, 4269 words
 
 Untranslated: 59 messages, 973 words
+
+# Indonesian
+
+Translated: 179 messages, 1380 words
+
+Untranslated: 252 messages, 3862 words
 
 # Italian
 
@@ -108,9 +114,9 @@ Untranslated: 5 messages, 5 words
 
 # Russian
 
-Translated: 425 messages, 5080 words
+Translated: 430 messages, 5241 words
 
-Untranslated: 6 messages, 162 words
+Untranslated: 1 messages, 1 words
 
 # Swedish
 
@@ -129,6 +135,12 @@ Untranslated: 165 messages, 3387 words
 Translated: 407 messages, 4853 words
 
 Untranslated: 24 messages, 389 words
+
+# Vietnamese
+
+Translated: 122 messages, 496 words
+
+Untranslated: 309 messages, 4746 words
 
 # Simplified Chinese
 

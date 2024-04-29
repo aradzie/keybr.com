@@ -23,6 +23,7 @@ const allLocales = [
   "fr",
   "he",
   "hu",
+  "id",
   "it",
   "ja",
   "ne",
@@ -34,6 +35,7 @@ const allLocales = [
   "sv",
   "tr",
   "uk",
+  "vi",
   "zh-hans",
   "zh-hant",
 ];

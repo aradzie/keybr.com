@@ -32,6 +32,7 @@ export type LocaleId =
   | "fr"
   | "he"
   | "hu"
+  | "id"
   | "it"
   | "ja"
   | "ne"
@@ -43,6 +44,7 @@ export type LocaleId =
   | "sv"
   | "tr"
   | "uk"
+  | "vi"
   | "zh-hans"
   | "zh-hant";
 
@@ -61,6 +63,7 @@ export const allLocales: readonly LocaleId[] = [
   "fr",
   "he",
   "hu",
+  "id",
   "it",
   "ja",
   "ne",
@@ -72,6 +75,7 @@ export const allLocales: readonly LocaleId[] = [
   "sv",
   "tr",
   "uk",
+  "vi",
   "zh-hans",
   "zh-hant",
 ];
