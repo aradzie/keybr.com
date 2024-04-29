@@ -132,9 +132,9 @@ Untranslated: 165 messages, 3387 words
 
 # Ukrainian
 
-Translated: 407 messages, 4853 words
+Translated: 420 messages, 4944 words
 
-Untranslated: 24 messages, 389 words
+Untranslated: 11 messages, 298 words
 
 # Vietnamese
 
