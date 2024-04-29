@@ -68,6 +68,7 @@
   "metric.summary.averageSpeedToday.label": "Tốc độ trung bình",
   "metric.summary.lessonCount.label": "Bài học",
   "metric.summary.lessonCountToday.label": "Bài học",
+  "metric.summary.startDate.label": "Ngày bắt đầu",
   "metric.summary.topAccuracy.description": "Độ chính xác gõ hàng đầu.",
   "metric.summary.topAccuracy.label": "Độ chính xác hàng đầu",
   "multiplayer.ticker.initializing": "Đang khởi tạo...",

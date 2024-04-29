@@ -106,6 +106,7 @@
   "metric.summary.lessonCount.label": "Dersler",
   "metric.summary.lessonCountToday.description": "Bugün tamamlanan ders sayısı.",
   "metric.summary.lessonCountToday.label": "Dersler",
+  "metric.summary.startDate.label": "Başlangıç tarihi",
   "metric.summary.topAccuracy.description": "En yüksek yazma doğruluğu.",
   "metric.summary.topAccuracy.label": "En Yüksek Doğruluk",
   "metric.summary.topAccuracyToday.description": "Bugünkü en yüksek yazma doğruluğu.",

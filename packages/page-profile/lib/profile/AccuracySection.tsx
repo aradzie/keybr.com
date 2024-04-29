@@ -114,7 +114,10 @@ function StreakDetails({
           value={formatSpeed(stats.speed.avg)}
         />
         <NameValue
-          name="Start date"
+          name={formatMessage({
+            id: "metric.summary.startDate.label",
+            defaultMessage: "Start Date",
+          })}
           value={formatDate(results[0].timeStamp, {
             dateStyle: "short",
             timeStyle: "short",

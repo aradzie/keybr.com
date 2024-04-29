@@ -153,6 +153,7 @@
   "metric.summary.lessonCount.label": "Total des leçons",
   "metric.summary.lessonCountToday.description": "Nombre de leçons terminées aujourd’hui.",
   "metric.summary.lessonCountToday.label": "Total des leçons",
+  "metric.summary.startDate.label": "Date de début",
   "metric.summary.topAccuracy.description": "Meilleure précision de frappe.",
   "metric.summary.topAccuracy.label": "Meilleure précision",
   "metric.summary.topAccuracyToday.description": "Meilleure précision de frappe aujourd’hui.",

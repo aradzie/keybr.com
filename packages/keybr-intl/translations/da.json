@@ -148,6 +148,7 @@
   "metric.summary.lessonCount.label": "Lektioner",
   "metric.summary.lessonCountToday.description": "Antallet af afsluttede lektioner i dag.",
   "metric.summary.lessonCountToday.label": "Lektioner",
+  "metric.summary.startDate.label": "Start dato",
   "metric.summary.topAccuracy.description": "Højeste skrive nøjagtighed.",
   "metric.summary.topAccuracy.label": "Højeste nøjagtighed",
   "metric.summary.topAccuracyToday.description": "Højeste skrivenøjagtighed i dag.",

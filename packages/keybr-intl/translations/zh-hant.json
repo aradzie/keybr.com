@@ -161,6 +161,7 @@
   "metric.summary.lessonCount.label": "課程",
   "metric.summary.lessonCountToday.description": "今日完成的課程數。",
   "metric.summary.lessonCountToday.label": "課程",
+  "metric.summary.startDate.label": "開始日期",
   "metric.summary.topAccuracy.description": "最佳打字正確率。",
   "metric.summary.topAccuracy.label": "最佳正確率",
   "metric.summary.topAccuracyToday.description": "今日最佳打字正確率。",

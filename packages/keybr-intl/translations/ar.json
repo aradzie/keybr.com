@@ -161,6 +161,7 @@
   "metric.summary.lessonCount.label": "الدروس",
   "metric.summary.lessonCountToday.description": "عدد الدروس المكتملة اليوم.",
   "metric.summary.lessonCountToday.label": "الدروس",
+  "metric.summary.startDate.label": "تاريخ البدء",
   "metric.summary.topAccuracy.description": "أعلى دقة كتابة.",
   "metric.summary.topAccuracy.label": "أعلى دقة",
   "metric.summary.topAccuracyToday.description": "أعلى دقة كتابة اليوم.",

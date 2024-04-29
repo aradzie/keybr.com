@@ -134,6 +134,7 @@
   "metric.summary.lessonCount.label": "درس‌ها",
   "metric.summary.lessonCountToday.description": "تعداد درس‌های انجام شده امروز.",
   "metric.summary.lessonCountToday.label": "درس‌ها",
+  "metric.summary.startDate.label": "تاریخ شروع",
   "metric.summary.topAccuracy.description": "بالاترین دقت تایپ.",
   "metric.summary.topAccuracy.label": "بالاترین دقت",
   "metric.summary.topAccuracyToday.description": "بالاترین دقت تایپ امروز.",

@@ -127,6 +127,7 @@
   "metric.summary.lessonCount.label": "Lessen",
   "metric.summary.lessonCountToday.description": "De hoeveelheid lessen afgerond vandaag.",
   "metric.summary.lessonCountToday.label": "Lessen",
+  "metric.summary.startDate.label": "Begin datum",
   "metric.summary.topAccuracy.description": "Top typeernauwkeurigheid.",
   "metric.summary.topAccuracy.label": "Top Nauwkeurigheid",
   "metric.summary.topAccuracyToday.description": "Top typeernauwkeurigheid vandaag.",

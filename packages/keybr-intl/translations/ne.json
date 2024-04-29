@@ -153,6 +153,7 @@
   "metric.summary.lessonCount.label": "पाठहरू",
   "metric.summary.lessonCountToday.description": "आज पूरा भएका पाठहरूको संख्या।",
   "metric.summary.lessonCountToday.label": "पाठहरू",
+  "metric.summary.startDate.label": "सुरू मिति",
   "metric.summary.topAccuracy.description": "शीर्ष टाइपिंग शुद्धता।",
   "metric.summary.topAccuracy.label": "शीर्ष शुद्धता",
   "metric.summary.topAccuracyToday.description": "शीर्ष टाइपिंग शुद्धता आज।",

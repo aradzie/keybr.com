@@ -161,6 +161,7 @@
   "metric.summary.lessonCount.label": "Уроки",
   "metric.summary.lessonCountToday.description": "Число законченных уроков за сегодня.",
   "metric.summary.lessonCountToday.label": "Уроки",
+  "metric.summary.startDate.label": "Дата начала",
   "metric.summary.topAccuracy.description": "Лучшая точность печати за все время.",
   "metric.summary.topAccuracy.label": "Лучшая точность",
   "metric.summary.topAccuracyToday.description": "Лучшая точность печати за сегодня.",

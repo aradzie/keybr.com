@@ -157,6 +157,7 @@
   "metric.summary.lessonCount.label": "课程",
   "metric.summary.lessonCountToday.description": "今天已完成的课程数量。",
   "metric.summary.lessonCountToday.label": "课程",
+  "metric.summary.startDate.label": "开始日期",
   "metric.summary.topAccuracy.description": "最高输入准确率。",
   "metric.summary.topAccuracy.label": "最高准确率",
   "metric.summary.topAccuracyToday.description": "今天的最高输入准确率。",

@@ -142,6 +142,7 @@
   "metric.summary.lessonCount.label": "Lezioni",
   "metric.summary.lessonCountToday.description": "Il numero di lezioni completate oggi.",
   "metric.summary.lessonCountToday.label": "Lezioni",
+  "metric.summary.startDate.label": "Data d’inizio",
   "metric.summary.topAccuracy.description": "Massima precisione di digitazione.",
   "metric.summary.topAccuracy.label": "Miglior precisione",
   "metric.summary.topAccuracyToday.description": "Massima precisione di digitazione oggi.",

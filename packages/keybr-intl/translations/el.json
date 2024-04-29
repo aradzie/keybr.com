@@ -153,6 +153,7 @@
   "metric.summary.lessonCount.label": "Μαθήματα",
   "metric.summary.lessonCountToday.description": "Ο αριθμός των μαθημάτων που ολοκληρώθηκαν σήμερα.",
   "metric.summary.lessonCountToday.label": "Μαθήματα",
+  "metric.summary.startDate.label": "Ημερομηνία έναρξης",
   "metric.summary.topAccuracy.description": "Κορυφαία ακρίβεια πληκτρολόγησης.",
   "metric.summary.topAccuracy.label": "Κορυφαία ακρίβεια",
   "metric.summary.topAccuracyToday.description": "Κορυφαία ακρίβεια πληκτρολόγησης σήμερα.",

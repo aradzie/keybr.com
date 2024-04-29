@@ -137,6 +137,7 @@
   "metric.summary.lessonCount.label": "練習",
   "metric.summary.lessonCountToday.description": "今日こなした練習の数。",
   "metric.summary.lessonCountToday.label": "練習",
+  "metric.summary.startDate.label": "開始日",
   "metric.summary.topAccuracy.description": "最高タイピング精度。",
   "metric.summary.topAccuracy.label": "最高精度",
   "metric.summary.topAccuracyToday.description": "今日の最高タイピング精度。",

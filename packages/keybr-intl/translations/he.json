@@ -154,6 +154,7 @@
   "metric.summary.lessonCount.label": "שיעורים",
   "metric.summary.lessonCountToday.description": "מספר השיעורים שהושלמו היום.",
   "metric.summary.lessonCountToday.label": "שיעורים",
+  "metric.summary.startDate.label": "תאריך התחלה",
   "metric.summary.topAccuracy.description": "דיוק הקלדה מעולה.",
   "metric.summary.topAccuracy.label": "דיוק עליון",
   "metric.summary.topAccuracyToday.description": "דיוק ההקלדה הגבוה ביותר כיום.",

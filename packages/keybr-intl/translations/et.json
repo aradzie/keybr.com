@@ -156,6 +156,7 @@
   "metric.summary.lessonCount.label": "Harutusi",
   "metric.summary.lessonCountToday.description": "Täna läbitud harjutuste arv.",
   "metric.summary.lessonCountToday.label": "Harjutusi",
+  "metric.summary.startDate.label": "Algus kuupäev",
   "metric.summary.topAccuracy.description": "Tippimise täpsus.",
   "metric.summary.topAccuracy.label": "Parim täpsus",
   "metric.summary.topAccuracyToday.description": "Parim tippimise täpsus täna.",

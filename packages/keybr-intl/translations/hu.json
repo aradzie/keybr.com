@@ -153,6 +153,7 @@
   "metric.summary.lessonCount.label": "leckék",
   "metric.summary.lessonCountToday.description": "A ma elvégzett leckék száma.",
   "metric.summary.lessonCountToday.label": "Leckék",
+  "metric.summary.startDate.label": "Kezdő dátum",
   "metric.summary.topAccuracy.description": "Legjobb gépelési pontosság.",
   "metric.summary.topAccuracy.label": "Legjobb pontosság",
   "metric.summary.topAccuracyToday.description": "Mai legjobb gépelési pontosság.",

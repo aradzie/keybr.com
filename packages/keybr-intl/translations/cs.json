@@ -157,6 +157,7 @@
   "metric.summary.lessonCount.label": "Lekce",
   "metric.summary.lessonCountToday.description": "Počet dnes dokončených lekcí.",
   "metric.summary.lessonCountToday.label": "Lekce",
+  "metric.summary.startDate.label": "Datum zahájení",
   "metric.summary.topAccuracy.description": "Nejlepší přesnost psaní.",
   "metric.summary.topAccuracy.label": "Nejlepší přesnost",
   "metric.summary.topAccuracyToday.description": "Nejlepší přesnost psaní dnes.",

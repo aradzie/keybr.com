@@ -151,6 +151,7 @@
   "metric.summary.lessonCount.label": "Lektioner",
   "metric.summary.lessonCountToday.description": "Lektioner genomförda idag.",
   "metric.summary.lessonCountToday.label": "Lektioner",
+  "metric.summary.startDate.label": "Start datum",
   "metric.summary.topAccuracy.description": "Bästa skrivträffsäkerhet.",
   "metric.summary.topAccuracy.label": "Bästa träffsäkerhet",
   "metric.summary.topAccuracyToday.description": "Dagens bästa skrivträffsäkerhet.",

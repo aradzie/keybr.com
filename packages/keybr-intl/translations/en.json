@@ -161,6 +161,7 @@
   "metric.summary.lessonCount.label": "Lessons",
   "metric.summary.lessonCountToday.description": "The number of lessons completed today.",
   "metric.summary.lessonCountToday.label": "Lessons",
+  "metric.summary.startDate.label": "Start Date",
   "metric.summary.topAccuracy.description": "Top typing accuracy.",
   "metric.summary.topAccuracy.label": "Top Accuracy",
   "metric.summary.topAccuracyToday.description": "Top typing accuracy today.",

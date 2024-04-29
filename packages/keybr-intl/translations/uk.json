@@ -156,6 +156,7 @@
   "metric.summary.lessonCount.label": "Число уроків",
   "metric.summary.lessonCountToday.description": "Число закінчених уроків за сьогодні.",
   "metric.summary.lessonCountToday.label": "Число уроків",
+  "metric.summary.startDate.label": "Дата початку",
   "metric.summary.topAccuracy.description": "Найкраща точність набору за весь час.",
   "metric.summary.topAccuracy.label": "Найкраща точність",
   "metric.summary.topAccuracyToday.description": "Найкраща точність набору сьогодні.",

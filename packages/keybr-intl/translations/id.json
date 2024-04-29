@@ -134,6 +134,7 @@
   "metric.summary.lessonCount.label": "Pelajaran",
   "metric.summary.lessonCountToday.description": "Jumlah pelajaran yang diselesaikan hari ini.",
   "metric.summary.lessonCountToday.label": "Pelajaran",
+  "metric.summary.startDate.label": "Mulai tanggal",
   "metric.summary.topAccuracyToday.description": "Akurasi ketikan terbaik hari ini.",
   "metric.summary.topAccuracyToday.label": "Akurasi Terbaik",
   "metric.summary.topSpeed.description": "Kecepatan ketikan terbaik.",
