@@ -1,19 +1,22 @@
 {
   "private": true,
-  "name": "@keybr/keybr-generators",
+  "name": "@keybr/generators",
   "version": "0.0.0",
   "main": "lib/index.ts",
   "dependencies": {
     "@keybr/keyboard": "*",
     "@keybr/phonetic-model": "*",
     "@keybr/unicode": "*",
-    "chalk": "^4.1.2"
+    "@types/commonmark": "^0.27.9",
+    "chalk": "^4.1.2",
+    "commonmark": "^0.31.0"
   },
   "devDependencies": {},
   "scripts": {
     "clean": "rm -fr .types",
     "compile": "tsc",
     "test": "ava",
+    "generate-books": "node -r @keybr/tsl ./lib/generate-books.ts",
     "generate-languages": "node -r @keybr/tsl ./lib/generate-languages.ts",
     "generate-layouts": "node -r @keybr/tsl ./lib/generate-layouts.ts"
   },

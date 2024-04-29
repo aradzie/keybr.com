@@ -1,25 +1,26 @@
 #!/usr/bin/env -S node -r @keybr/tsl
 
-"use strict";
+import { readFileSync, writeFileSync } from "node:fs";
+import { Parser } from "commonmark";
+import { pathTo } from "./root.ts";
 
-const { readFileSync, writeFileSync } = require("node:fs");
-const { join } = require("node:path");
-const { Parser } = require("commonmark");
-
-for (const name of ["alice", "jekyll", "wild"]) {
-  convert({
-    input: join(__dirname, "books", name + ".txt"),
-    output: join(__dirname, "lib", "data", name + ".json"),
-  });
+for (const name of [
+  "en-alice-wonderland", //
+  "en-call-wild",
+  "en-jekyll-hyde",
+]) {
+  generate(
+    pathTo(`books/${name}.txt`),
+    pathTo(`../keybr-content-books/lib/data/${name}.json`),
+  );
 }
 
-function convert({ input, output }) {
+function generate(input: string, output: string): void {
   let chapter = [];
   let para = [];
   let line = "";
 
-  const encoding = "utf8";
-  const content = readFileSync(input, encoding);
+  const content = readFileSync(input, "utf-8");
   const reader = new Parser({ smart: true });
   const document = reader.parse(content);
   const walker = document.walker();
@@ -74,9 +75,9 @@ function convert({ input, output }) {
     }
   }
 
-  writeFileSync(output, JSON.stringify(chapter, null, 2), encoding);
+  writeFileSync(output, JSON.stringify(chapter, null, 2), "utf-8");
 }
 
-function normalize(line) {
+function normalize(line: string): string {
   return line.replace(/\n+/g, "\n").replace(/\s+/g, " ").trim();
 }
