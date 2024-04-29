@@ -700,10 +700,10 @@ export class Layout implements XEnumItem {
     /* language= */ Language.AR,
     /* emulate= */ true,
     /* geometries= */ new Enum(
-      Geometry.ISO_102,
-      Geometry.ISO_102_FULL,
       Geometry.ANSI_101,
       Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -715,25 +715,25 @@ export class Layout implements XEnumItem {
     /* language= */ Language.AR,
     /* emulate= */ true,
     /* geometries= */ new Enum(
-      Geometry.ISO_102,
-      Geometry.ISO_102_FULL,
       Geometry.ANSI_101,
       Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
       Geometry.MATRIX,
     ),
   );
-  static readonly FA_IR = new Layout(
-    /* id= */ "fa",
+  static readonly FA_IR_LEGACY = new Layout(
+    /* id= */ "fa-ir-legacy",
     /* xid= */ 0x8f,
-    /* name= */ "Persian",
+    /* name= */ "Persian Legacy «پیش فرض فارسی»",
     /* family= */ "persian",
     /* language= */ Language.FA,
     /* emulate= */ true,
     /* geometries= */ new Enum(
-      Geometry.ISO_102,
-      Geometry.ISO_102_FULL,
       Geometry.ANSI_101,
       Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -749,6 +749,21 @@ export class Layout implements XEnumItem {
       Geometry.ISO_102_FULL,
       Geometry.ANSI_101,
       Geometry.ANSI_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
+  static readonly FA_IR = new Layout(
+    /* id= */ "fa-ir",
+    /* xid= */ 0x91,
+    /* name= */ "Persian Standard «استاندارد فارسی»",
+    /* family= */ "persian",
+    /* language= */ Language.FA,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
       Geometry.MATRIX,
     ),
   );
@@ -805,6 +820,7 @@ export class Layout implements XEnumItem {
     Layout.AR_SA,
     Layout.AR_SA_102,
     Layout.FA_IR,
+    Layout.FA_IR_LEGACY,
   );
 
   static findLayout(localeId: string): Layout | null {
