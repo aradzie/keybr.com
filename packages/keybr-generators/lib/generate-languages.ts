@@ -24,7 +24,7 @@ for (const language of Language.ALL) {
 function generate(language: Language): void {
   const { id, alphabet } = language;
 
-  const dictPath = pathTo(`dictionary/dictionary-${id}.csv`);
+  const dictPath = pathTo(`dictionaries/dictionary-${id}.csv`);
   const modelPath = pathTo(`../keybr-phonetic-model/assets/model-${id}.data`);
   const wordsPath = pathTo(`../keybr-content-words/lib/data/words-${id}.json`);
 
