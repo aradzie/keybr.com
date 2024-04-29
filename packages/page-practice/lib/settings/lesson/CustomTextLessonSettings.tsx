@@ -1,4 +1,5 @@
 import { useIntlNumbers } from "@keybr/intl";
+import { type Language } from "@keybr/keyboard";
 import { type CustomTextLesson, lessonProps } from "@keybr/lesson";
 import { useSettings } from "@keybr/settings";
 import { textStatsOf } from "@keybr/unicode";
@@ -25,6 +26,7 @@ export function CustomTextLessonSettings({
   readonly lesson: CustomTextLesson;
 }): ReactNode {
   const { formatMessage } = useIntl();
+  const { settings } = useSettings();
   return (
     <>
       <Explainer>
@@ -40,7 +42,10 @@ export function CustomTextLessonSettings({
         })}
       >
         <CustomTextInput />
-        <CustomTextStats />
+        <CustomTextStats
+          language={lesson.model.language}
+          customText={settings.get(lessonProps.customText.content)}
+        />
         <CustomTextProcessing />
         <TargetSpeedProp />
         <LessonLengthProp />
@@ -94,14 +99,18 @@ function CustomTextInput(): ReactNode {
   );
 }
 
-function CustomTextStats(): ReactNode {
+function CustomTextStats({
+  language,
+  customText,
+}: {
+  readonly language: Language;
+  readonly customText: string;
+}): ReactNode {
   const { formatMessage } = useIntl();
   const { formatNumber } = useIntlNumbers();
-  const { settings } = useSettings();
-  const customText = settings.get(lessonProps.customText.content);
   const { numWords, numUniqueWords, avgWordLength } = useMemo(
-    () => textStatsOf(customText),
-    [customText],
+    () => textStatsOf(language.locale, customText),
+    [language, customText],
   );
   return (
     <FieldList>

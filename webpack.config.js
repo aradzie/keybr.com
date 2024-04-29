@@ -203,7 +203,7 @@ module.exports = [
       splitChunks: {
         cacheGroups: {
           vendor: {
-            test: isVendor(["tslib", "@mdi", "@unicode"]),
+            test: isVendor(["tslib", "@mdi"]),
             chunks: "all",
             name: "shared-vendor",
           },

@@ -34,7 +34,7 @@ export class TextInput {
     { stopOnError, forgiveErrors, spaceSkipsWords }: TextInputSettings,
     onStep: StepListener = () => {},
   ) {
-    const codePoints = [...toCodePoints(text.normalize("NFC"))].map(
+    const codePoints = [...toCodePoints(text.normalize())].map(
       normalizeWhitespace,
     );
     this.text = String.fromCodePoint(...codePoints);

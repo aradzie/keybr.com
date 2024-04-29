@@ -1,8 +1,9 @@
-import { newTextScanner } from "./textscanner.ts";
+import { isWhitespace } from "./classify.ts";
+import { toCodePoints } from "./codepoints.ts";
 
 export type TextStats = {
-  readonly numCharacters: number;
   readonly numWhitespace: number;
+  readonly numCharacters: number;
   readonly numWords: number;
   readonly numUniqueWords: number;
   readonly avgWordLength: number;
@@ -14,40 +15,57 @@ export type WordCount = {
   readonly count: number;
 };
 
-export type TextStatsBuilder = {
-  append(text: string | readonly string[]): void;
-  build(): TextStats;
-};
-
-export const textStatsOf = (text: string | readonly string[]): TextStats => {
-  const collator = new Intl.Collator();
-  const words = new Map<string, number>();
-  let numCharacters = 0;
+export const textStatsOf = (
+  locale: string | Intl.Locale,
+  text: string | readonly string[],
+): TextStats => {
+  if (typeof locale === "string") {
+    locale = new Intl.Locale(locale);
+  }
+  const words = new Intl.Segmenter(locale, { granularity: "word" });
+  const graphemes = new Intl.Segmenter(locale, { granularity: "grapheme" });
+  const collator = new Intl.Collator(locale);
+  const counts = new Map<string, number>();
+  const lengths = new Map<string, number>();
   let numWhitespace = 0;
+  let numCharacters = 0;
   let numWords = 0;
   let lenWords = 0;
 
-  const addWord = (word: string, length: number): void => {
-    word = word.toLowerCase();
-    words.set(word, (words.get(word) ?? 0) + 1);
-    numWords += 1;
-    lenWords += length;
+  const wordLength = (word: string): number => {
+    let length = lengths.get(word);
+    if (length == null) {
+      length = 0;
+      for (const grapheme of graphemes.segment(word)) {
+        length += 1;
+      }
+      lengths.set(word, length);
+    }
+    return length;
   };
 
   const append = (text: string): void => {
-    const scanner = newTextScanner(text);
-    while (!scanner.end) {
-      if (scanner.scanWord()) {
-        addWord(scanner.scannedText, scanner.scannedLength);
-        numCharacters += scanner.scannedLength;
-        continue;
+    for (const { segment, isWordLike } of words.segment(text.normalize())) {
+      if (isWordLike) {
+        numWords += 1;
+        const word = segment.toLocaleLowerCase(locale);
+        counts.set(word, (counts.get(word) ?? 0) + 1);
+        const length = wordLength(word);
+        lenWords += length;
+        numCharacters += length;
+      } else {
+        if (segment === " ") {
+          numWhitespace += 1;
+        } else {
+          for (const codePoint of toCodePoints(segment)) {
+            if (isWhitespace(codePoint)) {
+              numWhitespace += 1;
+            } else {
+              numCharacters += 1;
+            }
+          }
+        }
       }
-      if (scanner.scanWhitespace()) {
-        numWhitespace += scanner.scannedLength;
-        continue;
-      }
-      scanner.next();
-      numCharacters += 1;
     }
   };
 
@@ -59,15 +77,15 @@ export const textStatsOf = (text: string | readonly string[]): TextStats => {
     append(text as string);
   }
 
-  const numUniqueWords = words.size;
+  const numUniqueWords = counts.size;
   const avgWordLength = numWords > 0 ? lenWords / numWords : 0;
-  const wordCount = Array.from(words.entries())
+  const wordCount = Array.from(counts.entries())
     .map(([word, count]) => ({ word, count }))
     .sort((a, b) => b.count - a.count || collator.compare(a.word, b.word));
 
   return {
-    numCharacters,
     numWhitespace,
+    numCharacters,
     numWords,
     numUniqueWords,
     avgWordLength,

@@ -7,10 +7,10 @@ import { TextStatsWidget } from "./TextStatsWidget.tsx";
 import * as styles from "./WordCountApp.module.less";
 
 export function WordCountApp(): ReactNode {
-  const { formatMessage } = useIntl();
+  const { locale, formatMessage } = useIntl();
   const initialText = useInitialText();
   const [text, setText] = useState(initialText);
-  const textStats = useTextStats(text);
+  const textStats = useTextStats(locale, text);
   return (
     <div>
       <TextField
@@ -49,18 +49,18 @@ function useInitialText(): string {
   );
 }
 
-function useTextStats(text: string): TextStats {
-  const [textStats, setTextStats] = useState(textStatsOf(text));
+function useTextStats(locale: string, text: string): TextStats {
+  const [textStats, setTextStats] = useState(textStatsOf(locale, text));
   useEffect(() => {
     if (text === "") {
-      setTextStats(textStatsOf(text));
+      setTextStats(textStatsOf(locale, text));
     }
     const id = setTimeout(() => {
-      setTextStats(textStatsOf(text));
+      setTextStats(textStatsOf(locale, text));
     }, 200);
     return () => {
       clearTimeout(id);
     };
-  }, [text]);
+  }, [locale, text]);
   return textStats;
 }

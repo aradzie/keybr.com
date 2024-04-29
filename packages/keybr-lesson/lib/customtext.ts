@@ -9,7 +9,6 @@ import { lessonProps } from "./settings.ts";
 import { Target } from "./target.ts";
 import { generateFragment } from "./text/fragment.ts";
 import { sanitizeText } from "./text/sanitizetext.ts";
-import { splitText } from "./text/splittext.ts";
 import {
   randomWords,
   uniqueWords,
@@ -78,5 +77,5 @@ function getWordList(
   if (lowercase) {
     text = language.lowerCase(text);
   }
-  return splitText(text);
+  return text.trim().split(/[\s\n]+/);
 }

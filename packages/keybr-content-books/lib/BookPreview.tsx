@@ -24,13 +24,13 @@ export const BookPreview = memo(function BookPreview({
     const paragraphs = flattenContent(content);
     const numChapters = content.length;
     const numParagraphs = paragraphs.length;
-    const textStats = textStatsOf(paragraphs);
+    const textStats = textStatsOf(book.language.locale, paragraphs);
     return {
       numChapters,
       numParagraphs,
       ...textStats,
     };
-  }, [content]);
+  }, [book, content]);
   return (
     <div className={styles.bookPreview}>
       <img

@@ -3,7 +3,7 @@ import {
   isControl,
   isLinebreak,
   isWhitespace,
-  newScanner,
+  toCodePoints,
 } from "@keybr/unicode";
 
 /**
@@ -18,11 +18,9 @@ export function sanitizeText(
   include?: CodePointSet | null,
   exclude?: CodePointSet | null,
 ): string {
-  const scanner = newScanner(text);
   let result = "";
   let next = "";
-  while (!scanner.end) {
-    let codePoint = scanner.next();
+  for (let codePoint of toCodePoints(text.normalize())) {
     if (isLinebreak(codePoint)) {
       if (result === "") {
         next = "";
