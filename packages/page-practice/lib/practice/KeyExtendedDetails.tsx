@@ -1,6 +1,5 @@
 import { KeyDetailsChart } from "@keybr/chart";
-import type { LessonKey } from "@keybr/lesson";
-import { LearningRate, Target } from "@keybr/lesson";
+import { LearningRate, type LessonKey, Target } from "@keybr/lesson";
 import { Key, KeyDetails } from "@keybr/lesson-ui";
 import { type KeyStats } from "@keybr/result";
 import { useSettings } from "@keybr/settings";

@@ -1,4 +1,4 @@
-import type { ClassName } from "@keybr/widget";
+import { type ClassName } from "@keybr/widget";
 import { type ElementType, type HTMLAttributes, type ReactNode } from "react";
 import { type PhoneticModel } from "./phoneticmodel.ts";
 

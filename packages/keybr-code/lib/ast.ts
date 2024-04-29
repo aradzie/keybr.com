@@ -1,4 +1,4 @@
-import type { CodePoint } from "@keybr/unicode";
+import { type CodePoint } from "@keybr/unicode";
 
 export type Rules = Record<string, Prod>;
 

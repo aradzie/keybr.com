@@ -1,4 +1,4 @@
-import type { Rules } from "./ast.ts";
+import { type Rules } from "./ast.ts";
 import { parse as peggyParse, SyntaxError } from "./parser.js";
 
 export { SyntaxError };

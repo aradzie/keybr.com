@@ -1,6 +1,6 @@
 import { type Geometry } from "./geometry.ts";
 import { ANGLE_MOD, ANGLE_WIDE_MOD, type ZoneMod } from "./geometry/mod.ts";
-import type { GeometryDict } from "./types.ts";
+import { type GeometryDict } from "./types.ts";
 
 export type Mod = (geometry: Geometry, dict: GeometryDict) => GeometryDict;
 

@@ -1,7 +1,7 @@
 import { useIntlNumbers } from "@keybr/intl";
 import { type KeyboardStats } from "@keybr/keyboard";
 import { Value } from "@keybr/widget";
-import type { ReactNode } from "react";
+import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
 export function KeyboardStats({

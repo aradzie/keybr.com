@@ -1,4 +1,4 @@
-import type { KeyId, ZoneId } from "../types.ts";
+import { type KeyId, type ZoneId } from "../types.ts";
 
 export type ZoneMod = Record<KeyId, readonly ZoneId[]>;
 

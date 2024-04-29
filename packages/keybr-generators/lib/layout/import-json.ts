@@ -1,5 +1,5 @@
 import { readFileSync } from "node:fs";
-import type { KeyId } from "@keybr/keyboard";
+import { type KeyId } from "@keybr/keyboard";
 import { pathTo } from "../root.ts";
 import { characterKeys } from "./keys.ts";
 import { type CodePointList, type KeyMap } from "./layout.ts";
