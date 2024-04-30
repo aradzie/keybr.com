@@ -19,7 +19,7 @@ export type TextStatsBuilder = {
   build(): TextStats;
 };
 
-export const newTextStatsBuilder = (): TextStatsBuilder => {
+export const textStatsOf = (text: string | readonly string[]): TextStats => {
   const collator = new Intl.Collator();
   const words = new Map<string, number>();
   let numCharacters = 0;
@@ -51,44 +51,26 @@ export const newTextStatsBuilder = (): TextStatsBuilder => {
     }
   };
 
-  return new (class implements TextStatsBuilder {
-    append(text: string | readonly string[]): void {
-      if (Array.isArray(text)) {
-        for (const item of text) {
-          if (typeof item !== "string") {
-            throw new TypeError();
-          }
-          append(item);
-        }
-      } else {
-        if (typeof text !== "string") {
-          throw new TypeError();
-        }
-        append(text);
-      }
+  if (Array.isArray(text)) {
+    for (const item of text) {
+      append(item as string);
     }
+  } else {
+    append(text as string);
+  }
 
-    build(): TextStats {
-      const numUniqueWords = words.size;
-      const avgWordLength = numWords > 0 ? lenWords / numWords : 0;
-      const wordCount = Array.from(words.entries())
-        .map(([word, count]) => ({ word, count }))
-        .sort((a, b) => b.count - a.count || collator.compare(a.word, b.word));
+  const numUniqueWords = words.size;
+  const avgWordLength = numWords > 0 ? lenWords / numWords : 0;
+  const wordCount = Array.from(words.entries())
+    .map(([word, count]) => ({ word, count }))
+    .sort((a, b) => b.count - a.count || collator.compare(a.word, b.word));
 
-      return {
-        numCharacters,
-        numWhitespace,
-        numWords,
-        numUniqueWords,
-        avgWordLength,
-        wordCount,
-      };
-    }
-  })();
-};
-
-export const textStatsOf = (text: string | readonly string[]): TextStats => {
-  const builder = newTextStatsBuilder();
-  builder.append(text);
-  return builder.build();
+  return {
+    numCharacters,
+    numWhitespace,
+    numWords,
+    numUniqueWords,
+    avgWordLength,
+    wordCount,
+  };
 };
