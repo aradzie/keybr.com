@@ -256,13 +256,13 @@ export class Language implements EnumItem {
 export function getExampleText({ script }: Language): string {
   switch (script) {
     case "arabic":
-      return "سیب و پرتقال بیشتری بخورید";
+      return "تناول المزيد من التفاح والبرتقال.";
     case "cyrillic":
       return "Яжте повече ябълки и портокали.";
     case "greek":
       return "Τρώτε περισσότερα μήλα και πορτοκάλια.";
     case "hebrew":
-      return "לאכול יותר תפוחים ותפוזים";
+      return "תאכל יותר תפוחים ותפוזים.";
     default:
       return "Eat more apples and oranges.";
   }
