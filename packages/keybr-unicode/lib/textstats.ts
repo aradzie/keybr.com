@@ -1,3 +1,4 @@
+import "./polyfill.ts";
 import { isWhitespace } from "./classify.ts";
 import { toCodePoints } from "./codepoints.ts";
 
