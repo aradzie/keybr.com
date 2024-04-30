@@ -8,10 +8,6 @@ export type WeightedCodePointSet = {
 
 export type KeyId = string;
 
-export type HasCodePoint = {
-  readonly codePoint: CodePoint;
-};
-
 export type ZoneId =
   // Finger zones.
   | "pinky"

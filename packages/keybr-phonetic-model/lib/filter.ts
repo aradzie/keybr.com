@@ -1,4 +1,8 @@
-import { type CodePoint, type CodePointSet } from "@keybr/unicode";
+import {
+  type CodePoint,
+  type CodePointSet,
+  type HasCodePoint,
+} from "@keybr/unicode";
 import { Letter, type LetterLike } from "./letter.ts";
 
 export class Filter {
@@ -25,8 +29,8 @@ export class Filter {
     if (letters != null && focused != null && !letters.includes(focused)) {
       throw new Error();
     }
-    this.codePoints = letters && new Set(letters.map(Letter.codePointOf));
-    this.focusedCodePoint = focused && Letter.codePointOf(focused);
+    this.codePoints = letters && new Set(letters.map(codePointOf));
+    this.focusedCodePoint = focused && codePointOf(focused);
   }
 
   /**
@@ -39,3 +43,7 @@ export class Filter {
     return this.codePoints == null || this.codePoints.has(codePoint);
   }
 }
+
+const codePointOf = ({ codePoint }: HasCodePoint): CodePoint => {
+  return codePoint;
+};

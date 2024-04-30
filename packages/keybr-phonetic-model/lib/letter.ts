@@ -116,10 +116,6 @@ export namespace Letter {
     new Letter(/* ` */ 0x0060, 0.1),
   ];
 
-  export const codePointOf = ({ codePoint }: Letter): CodePoint => {
-    return codePoint;
-  };
-
   export const toLetter = (letter: LetterLike): Letter => {
     return "letter" in letter ? letter.letter : letter;
   };

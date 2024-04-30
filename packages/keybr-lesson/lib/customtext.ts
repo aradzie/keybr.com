@@ -1,5 +1,5 @@
 import { type Language, type WeightedCodePointSet } from "@keybr/keyboard";
-import { Letter, type PhoneticModel } from "@keybr/phonetic-model";
+import { type Letter, type PhoneticModel } from "@keybr/phonetic-model";
 import { type KeyStatsMap, newKeyStatsMap, type Result } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
 import { type CodePointSet, toCodePoints } from "@keybr/unicode";
@@ -68,7 +68,9 @@ function getWordList(
   const lettersOnly = settings.get(lessonProps.customText.lettersOnly);
   const lowercase = settings.get(lessonProps.customText.lowercase);
   if (lettersOnly) {
-    const s = String.fromCodePoint(...letters.map(Letter.codePointOf));
+    const s = String.fromCodePoint(
+      ...letters.map(({ codePoint }) => codePoint),
+    );
     codePoints = new Set(
       toCodePoints(language.lowerCase(s) + language.upperCase(s)),
     );

@@ -1,9 +1,4 @@
-import {
-  type HasCodePoint,
-  keyboardProps,
-  type KeyId,
-  Ngram2,
-} from "@keybr/keyboard";
+import { keyboardProps, type KeyId, Ngram2 } from "@keybr/keyboard";
 import { type Lesson, type LessonKeys, lessonProps } from "@keybr/lesson";
 import { Histogram, KeySet } from "@keybr/math";
 import { type KeyStatsMap, Result } from "@keybr/result";
@@ -20,7 +15,7 @@ import {
   toTextInputSettings,
 } from "@keybr/textinput";
 import { type TextInputEvent } from "@keybr/textinput-events";
-import { type CodePoint } from "@keybr/unicode";
+import { type CodePoint, type HasCodePoint } from "@keybr/unicode";
 import { type Announcement } from "./Announcer.tsx";
 
 export type LastLesson = {

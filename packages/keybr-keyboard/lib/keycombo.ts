@@ -1,6 +1,6 @@
-import { type CodePoint } from "@keybr/unicode";
+import { type CodePoint, type HasCodePoint } from "@keybr/unicode";
 import { type KeyModifier } from "./keymodifier.ts";
-import { type HasCodePoint, type KeyId } from "./types.ts";
+import { type KeyId } from "./types.ts";
 
 export class KeyCombo implements HasCodePoint {
   readonly complexity: number;
