@@ -3,12 +3,6 @@ import { type CodePoint } from "./types.ts";
 export const isCodePoint = (value: number): boolean =>
   Number.isSafeInteger(value) && value >= 0 && value < 0x11_0000;
 
-export const isBmpCodePoint = (codePoint: CodePoint): boolean =>
-  codePoint < 0x01_0000;
-
-export const isSupplementaryCodePoint = (codePoint: CodePoint): boolean =>
-  codePoint >= 0x01_0000;
-
 export const charCount = (codePoint: CodePoint): number =>
   codePoint >= 0x01_0000 ? 2 : 1;
 
