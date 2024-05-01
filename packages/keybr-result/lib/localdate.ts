@@ -103,14 +103,14 @@ export class LocalDate {
     } else {
       throw new TypeError();
     }
-    date.setHours(0);
-    date.setMinutes(0);
-    date.setSeconds(0);
-    date.setMilliseconds(0);
-    this.year = date.getFullYear();
-    this.month = date.getMonth() + 1;
-    this.dayOfMonth = date.getDate();
-    let dayOfWeek = date.getDay();
+    date.setUTCHours(0);
+    date.setUTCMinutes(0);
+    date.setUTCSeconds(0);
+    date.setUTCMilliseconds(0);
+    this.year = date.getUTCFullYear();
+    this.month = date.getUTCMonth() + 1;
+    this.dayOfMonth = date.getUTCDate();
+    let dayOfWeek = date.getUTCDay();
     if (dayOfWeek === 0) {
       dayOfWeek = 7;
     }
