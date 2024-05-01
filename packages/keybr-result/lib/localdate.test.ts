@@ -21,6 +21,14 @@ test("create from timestamp", (t) => {
   t.is(String(new LocalDate(Date.parse("2001-02-03T04:05:06Z"))), "2001-02-03");
 });
 
+test("set hour to 00:00:00", (t) => {
+  let d1 = new LocalDate(Date.parse("1970-01-01T11:22:33Z"));
+  let d2 = new LocalDate(Date.parse("2001-02-03T04:05:06Z"));
+
+  t.is(d1.valueOf() % 86400000, 0);
+  t.is(d2.valueOf() % 86400000, 0);
+});
+
 test("create from date components", (t) => {
   t.is(String(new LocalDate(1970, 1, 1)), "1970-01-01");
   t.is(String(new LocalDate(2001, 2, 3)), "2001-02-03");
