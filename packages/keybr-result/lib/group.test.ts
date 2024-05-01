@@ -41,16 +41,16 @@ test("group results by date", (t) => {
 
   const faker = new ResultFaker();
   const r1 = faker.nextResult({
-    timeStamp: Date.parse("2001-01-01T00:00:00Z"),
+    timeStamp: new LocalDate(2001, 1, 1).timeStamp,
   });
   const r2 = faker.nextResult({
-    timeStamp: Date.parse("2001-01-01T01:02:03Z"),
+    timeStamp: new LocalDate(2001, 1, 1).timeStamp,
   });
   const r3 = faker.nextResult({
-    timeStamp: Date.parse("2001-01-02T01:02:03Z"),
+    timeStamp: new LocalDate(2001, 1, 2).timeStamp,
   });
   const r4 = faker.nextResult({
-    timeStamp: Date.parse("2001-01-03T11:22:33Z"),
+    timeStamp: new LocalDate(2001, 1, 3).timeStamp,
   });
 
   // Act.
@@ -59,15 +59,17 @@ test("group results by date", (t) => {
 
   // Assert.
 
-  const d0 = new LocalDate(2000, 1, 1);
-  const d1 = new LocalDate(2001, 1, 1);
-  const d2 = new LocalDate(2001, 1, 2);
-  const d3 = new LocalDate(2001, 1, 3);
+  t.deepEqual(
+    [...map.keys()],
+    [
+      new LocalDate(2001, 1, 1),
+      new LocalDate(2001, 1, 2),
+      new LocalDate(2001, 1, 3),
+    ],
+  );
 
-  t.deepEqual([...map.keys()], [d1, d2, d3]);
-
-  t.deepEqual(map.get(d0), []);
-  t.deepEqual(map.get(d1), [r1, r2]);
-  t.deepEqual(map.get(d2), [r3]);
-  t.deepEqual(map.get(d3), [r4]);
+  t.deepEqual(map.get(new LocalDate(2001, 1, 1)), [r1, r2]);
+  t.deepEqual(map.get(new LocalDate(2001, 1, 2)), [r3]);
+  t.deepEqual(map.get(new LocalDate(2001, 1, 3)), [r4]);
+  t.deepEqual(map.get(new LocalDate(2001, 1, 4)), []);
 });

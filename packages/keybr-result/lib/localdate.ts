@@ -26,32 +26,21 @@ export enum DayOfWeek {
 }
 
 /**
- * A tuple of year, month number and day of month number.
+ * A tuple consisting of a year, a month, and a day of the month,
+ * all in the local timezone.
  */
 export class LocalDate {
-  /**
-   * Year number, like 2017 etc.
-   */
+  /** The year number in a local timezone, four digits. */
   readonly year: number;
-  /**
-   * Month number, 1-12.
-   */
+  /** The month number in a local timezone, 1-12. */
   readonly month: Month;
-  /**
-   * Day of month number, 1-31.
-   */
+  /** The day of month number in a local timezone, 1-31. */
   readonly dayOfMonth: number;
-  /**
-   * Day of week number, 1-7.
-   */
+  /** The day of week number in a local timezone, 1-7. */
   readonly dayOfWeek: DayOfWeek;
-  /**
-   * Midnight timestamp, in milliseconds.
-   */
+  /** The timestamp of midnight in the UTC timezone, milliseconds. */
   readonly timeStamp: number;
-  /**
-   * String value in format YYYY-MM-DD.
-   */
+  /** The string value formatted as YYYY-MM-DD. */
   readonly value: string;
 
   static now(): LocalDate {
@@ -59,31 +48,31 @@ export class LocalDate {
   }
 
   /**
-   * Create a local date with the specified year, month number and day of month number.
-   * @param year Year, like 2015 etc.
-   * @param month Month number, 1-12.
-   * @param day Day of month number, 1-31.
+   * Creates a local date with the given year, month, and day.
+   * @param year A year number, four digits.
+   * @param month A month number, 1-12.
+   * @param day A day of the month number, 1-31.
    */
   constructor(year: number, month: number, day: number);
   /**
-   * Create a local date from the specified timestamp, in milliseconds.
-   * @param timeStamp Timestamp, in milliseconds.
+   * Creates a local date from the given timestamp in the UTC zone.
+   * @param timeStamp A timestamp in the UTC timezone, milliseconds.
    */
   constructor(timeStamp: number);
   /**
-   * Create a local date from the specified date instance.
-   * @param date Date instance.
+   * Creates a local date from the given date instance.
+   * @param date A date instance.
    */
   constructor(date: Date);
   constructor(...args: any[]) {
-    const l = args.length;
+    const { length } = args;
     let year: number;
     let month: number;
     let day: number;
     let timeStamp: number;
     let date: Date;
     if (
-      l === 3 &&
+      length === 3 &&
       isNumber((year = args[0])) &&
       isNumber((month = args[1])) &&
       isNumber((day = args[2]))
@@ -94,14 +83,22 @@ export class LocalDate {
         date.getMonth() !== month - 1 ||
         date.getDate() !== day
       ) {
-        throw new Error();
+        throw new Error(
+          process.env.NODE_ENV !== "production"
+            ? "Invalid local date arguments"
+            : undefined,
+        );
       }
-    } else if (l === 1 && isNumber((timeStamp = args[0]))) {
+    } else if (length === 1 && isNumber((timeStamp = args[0]))) {
       date = new Date(timeStamp);
-    } else if (l === 1 && isObject((date = args[0]))) {
+    } else if (length === 1 && isObject((date = args[0]))) {
       date = new Date(date.getTime());
     } else {
-      throw new TypeError();
+      throw new TypeError(
+        process.env.NODE_ENV !== "production"
+          ? "Invalid local date arguments"
+          : undefined,
+      );
     }
     date.setHours(0);
     date.setMinutes(0);
@@ -116,7 +113,12 @@ export class LocalDate {
     }
     this.dayOfWeek = dayOfWeek;
     this.timeStamp = date.getTime();
-    this.value = `${this.year}-${pad0(this.month)}-${pad0(this.dayOfMonth)}`;
+    this.value =
+      String(this.year) +
+      "-" +
+      String(this.month).padStart(2, "0") +
+      "-" +
+      String(this.dayOfMonth).padStart(2, "0");
     return Object.freeze(this);
   }
 
@@ -138,13 +140,5 @@ export class LocalDate {
 
   valueOf(): number {
     return this.timeStamp;
-  }
-}
-
-function pad0(v: number): string {
-  if (v < 10) {
-    return "0" + String(v);
-  } else {
-    return String(v);
   }
 }

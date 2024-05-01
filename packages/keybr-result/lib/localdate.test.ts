@@ -17,8 +17,8 @@ test("validate arguments", (t) => {
 });
 
 test("create from timestamp", (t) => {
-  t.is(String(new LocalDate(Date.parse("1970-01-01T11:22:33Z"))), "1970-01-01");
-  t.is(String(new LocalDate(Date.parse("2001-02-03T04:05:06Z"))), "2001-02-03");
+  t.is(String(new LocalDate(new Date(1970, 0, 1, 11, 22, 33))), "1970-01-01");
+  t.is(String(new LocalDate(new Date(2001, 1, 3, 4, 5, 6))), "2001-02-03");
 });
 
 test("create from date components", (t) => {
@@ -53,7 +53,7 @@ test("compute date plus and minus days", (t) => {
 });
 
 test("plusDays generates unique dates", (t) => {
-  const set = new Set<string>();
+  const set = new Set();
   let date = new LocalDate(2020, 1, 1);
   for (let i = 0; i <= 366; i++) {
     const value = String(date);
@@ -64,7 +64,7 @@ test("plusDays generates unique dates", (t) => {
 });
 
 test("minusDats generates unique dates", (t) => {
-  const set = new Set<string>();
+  const set = new Set();
   let date = new LocalDate(2021, 1, 1);
   for (let i = 0; i <= 366; i++) {
     const value = String(date);
