@@ -20,8 +20,6 @@ test("check words", (t) => {
 test("letter name", (t) => {
   t.is(Language.EN.letterName(0x0069), "I");
   t.is(Language.TR.letterName(0x0069), "İ");
-  t.is(Language.EN.letterName(0x0300), "◌̀");
-  t.is(Language.EN.letterName(0x0301), "◌́");
   t.is(Language.DE.letterName(0x00df), "ẞ");
   t.is(Language.HE.letterName(0x05d0), "\u05D0");
   t.is(Language.AR.letterName(0x0627), "\u200c\u0627");

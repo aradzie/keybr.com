@@ -8,7 +8,6 @@ import { KeyShape } from "./keyshape.ts";
 import { getExampleLetters, getExampleText } from "./language.ts";
 import { type Layout } from "./layout.ts";
 import {
-  type Character,
   type CharacterDict,
   type GeometryDict,
   type KeyId,
@@ -42,17 +41,33 @@ export class Keyboard {
     }
 
     for (const { id, a, b, c, d } of characters.values()) {
-      addCombo(combos, a, id, KeyModifier.None);
-      addCombo(combos, b, id, KeyModifier.Shift);
-      addCombo(combos, c, id, KeyModifier.Alt);
-      addCombo(combos, d, id, KeyModifier.ShiftAlt);
+      if (KeyCharacters.isCodePoint(a)) {
+        addCombo(combos, a, id, KeyModifier.None);
+      }
+      if (KeyCharacters.isCodePoint(b)) {
+        addCombo(combos, b, id, KeyModifier.Shift);
+      }
+      if (KeyCharacters.isCodePoint(c)) {
+        addCombo(combos, c, id, KeyModifier.Alt);
+      }
+      if (KeyCharacters.isCodePoint(d)) {
+        addCombo(combos, d, id, KeyModifier.ShiftAlt);
+      }
     }
 
     for (const { id, a, b, c, d } of characters.values()) {
-      addDeadCombo(combos, a, id, KeyModifier.None);
-      addDeadCombo(combos, b, id, KeyModifier.Shift);
-      addDeadCombo(combos, c, id, KeyModifier.Alt);
-      addDeadCombo(combos, d, id, KeyModifier.ShiftAlt);
+      if (KeyCharacters.isDead(a)) {
+        addDeadCombo(combos, a, id, KeyModifier.None);
+      }
+      if (KeyCharacters.isDead(b)) {
+        addDeadCombo(combos, b, id, KeyModifier.Shift);
+      }
+      if (KeyCharacters.isDead(c)) {
+        addDeadCombo(combos, c, id, KeyModifier.Alt);
+      }
+      if (KeyCharacters.isDead(d)) {
+        addDeadCombo(combos, d, id, KeyModifier.ShiftAlt);
+      }
     }
 
     for (const [id, data] of Object.entries(
@@ -157,26 +172,24 @@ function setCombo(map: Map<CodePoint, KeyCombo>, combo: KeyCombo): void {
 
 function addCombo(
   map: Map<CodePoint, KeyCombo>,
-  character: Character | null,
+  character: CodePoint,
   id: KeyId,
   modifier: KeyModifier,
 ): void {
-  if (KeyCharacters.isCodePoint(character) && !isDiacritic(character)) {
-    setCombo(map, new KeyCombo(character, id, modifier));
-  }
+  setCombo(map, new KeyCombo(character, id, modifier));
 }
 
 function addDeadCombo(
   map: Map<CodePoint, KeyCombo>,
-  character: Character | null,
+  { dead }: { readonly dead: CodePoint },
   id: KeyId,
   modifier: KeyModifier,
 ): void {
-  if (KeyCharacters.isCodePoint(character) && isDiacritic(character)) {
-    const prefix = new KeyCombo(character, id, modifier);
+  if (isDiacritic(dead)) {
+    const prefix = new KeyCombo(dead, id, modifier);
     for (const combo of map.values()) {
       if (combo.prefix == null) {
-        const combinedCodePoint = combineDiacritic(combo.codePoint, character);
+        const combinedCodePoint = combineDiacritic(combo.codePoint, dead);
         if (combinedCodePoint !== combo.codePoint) {
           setCombo(
             map,

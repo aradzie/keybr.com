@@ -4,13 +4,15 @@ import { type CodePoint } from "@keybr/unicode";
 export function formatCodePointName(codePoint: CodePoint): string {
   const diacritic = getDiacritic(codePoint);
   if (diacritic != null) {
-    return `DEAD ${diacritic.name}`;
+    return `COMBINING ${diacritic.name}`;
   } else {
     switch (codePoint) {
       case 0x0020:
         return "SPACE";
       case 0x00a0:
         return "NO-BREAK SPACE";
+      case 0x00ad:
+        return "SOFT HYPHEN";
       case 0x200c:
         return "ZERO WIDTH NON-JOINER";
       case 0x200d:

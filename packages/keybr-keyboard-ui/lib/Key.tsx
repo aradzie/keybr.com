@@ -33,7 +33,7 @@ export function makeKeyComponent(
   { letterName }: Language,
   shape: KeyShape,
 ): FunctionComponent<KeyProps> {
-  const { isCodePoint, isLigature } = KeyCharacters;
+  const { isCodePoint, isDead, isLigature } = KeyCharacters;
   const { id, a, b, c, d } = shape;
   const x = shape.x * keySize;
   const y = shape.y * keySize;
@@ -79,17 +79,29 @@ export function makeKeyComponent(
   if (tc && cd) {
     children.push(makeCodePointLabel(c, 25, 27, styles.primarySymbol));
   }
+  if (isDead(a)) {
+    children.push(makeDeadLabel(a, 10, 27, styles.secondarySymbol));
+  }
+  if (isDead(b)) {
+    children.push(makeDeadLabel(b, 10, 12, styles.secondarySymbol));
+  }
+  if (isDead(c)) {
+    children.push(makeDeadLabel(c, 25, 27, styles.secondarySymbol));
+  }
+  if (isDead(d)) {
+    children.push(makeDeadLabel(d, 25, 12, styles.secondarySymbol));
+  }
   if (isLigature(a)) {
-    children.push(makeLigatureLabel(a, 10, 27, styles.primarySymbol));
+    children.push(makeLigatureLabel(a, 10, 27, styles.secondarySymbol));
   }
   if (isLigature(b)) {
-    children.push(makeLigatureLabel(b, 10, 12, styles.primarySymbol));
+    children.push(makeLigatureLabel(b, 10, 12, styles.secondarySymbol));
   }
   if (isLigature(c)) {
-    children.push(makeLigatureLabel(c, 25, 27, styles.primarySymbol));
+    children.push(makeLigatureLabel(c, 25, 27, styles.secondarySymbol));
   }
   if (isLigature(d)) {
-    children.push(makeLigatureLabel(d, 25, 12, styles.primarySymbol));
+    children.push(makeLigatureLabel(d, 25, 12, styles.secondarySymbol));
   }
   const zoneClassName = zoneClassNameOf(shape);
   function KeyComponent({
@@ -146,7 +158,25 @@ export function makeKeyComponent(
         pos: [x, y],
         align: ["m", "m"],
       },
-      clsx(className, isDiacritic(codePoint) && styles.deadSymbol),
+      className,
+    );
+  }
+
+  function makeDeadLabel(
+    { dead }: { readonly dead: CodePoint },
+    x: number,
+    y: number,
+    className: ClassName,
+  ): ReactNode {
+    return makeLabel(
+      {
+        text: isDiacritic(dead)
+          ? String.fromCodePoint(/* ◌ */ 0x25cc, dead)
+          : String.fromCodePoint(dead),
+        pos: [x, y],
+        align: ["m", "m"],
+      },
+      clsx(className, styles.deadSymbol),
     );
   }
 

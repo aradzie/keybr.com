@@ -4,7 +4,7 @@ import { type CharacterDict } from "../types.ts";
 
 // prettier-ignore
 export const LAYOUT_DE_NOTED: CharacterDict = {
-  Backquote: [/* DEAD CIRCUMFLEX ACCENT */ 0x0302, /* DEAD CARON */ 0x030c],
+  Backquote: [{ dead: /* COMBINING CIRCUMFLEX ACCENT */ 0x0302 }, { dead: /* COMBINING CARON */ 0x030c }],
   Digit1: [/* 1 */ 0x0031, /* ° */ 0x00b0],
   Digit2: [/* 2 */ 0x0032, /* § */ 0x00a7],
   Digit3: [/* 3 */ 0x0033, /* ℓ */ 0x2113],
@@ -16,7 +16,7 @@ export const LAYOUT_DE_NOTED: CharacterDict = {
   Digit9: [/* 9 */ 0x0039, /* “ */ 0x201c],
   Digit0: [/* 0 */ 0x0030, /* ” */ 0x201d],
   Minus: [/* - */ 0x002d, /* — */ 0x2014],
-  Equal: [/* DEAD GRAVE ACCENT */ 0x0300, /* DEAD CEDILLA */ 0x0327, /* DEAD DIAERESIS */ 0x0308],
+  Equal: [{ dead: /* COMBINING GRAVE ACCENT */ 0x0300 }, { dead: /* COMBINING CEDILLA */ 0x0327 }, { dead: /* COMBINING DIAERESIS */ 0x0308 }],
   KeyQ: [/* z */ 0x007a, /* Z */ 0x005a],
   KeyW: [/* y */ 0x0079, /* Y */ 0x0059],
   KeyE: [/* u */ 0x0075, /* U */ 0x0055],
@@ -29,7 +29,7 @@ export const LAYOUT_DE_NOTED: CharacterDict = {
   KeyP: [/* f */ 0x0066, /* F */ 0x0046],
   BracketLeft: [/* j */ 0x006a, /* J */ 0x004a],
   BracketRight: [/* ß */ 0x00df, /* ẞ */ 0x1e9e],
-  Backslash: [/* DEAD ACUTE ACCENT */ 0x0301, /* DEAD TILDE */ 0x0303],
+  Backslash: [{ dead: /* COMBINING ACUTE ACCENT */ 0x0301 }, { dead: /* COMBINING TILDE */ 0x0303 }],
   KeyA: [/* c */ 0x0063, /* C */ 0x0043],
   KeyS: [/* s */ 0x0073, /* S */ 0x0053],
   KeyD: [/* i */ 0x0069, /* I */ 0x0049],

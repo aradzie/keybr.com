@@ -4,7 +4,7 @@ import { type CharacterDict } from "../types.ts";
 
 // prettier-ignore
 export const LAYOUT_DE_DE: CharacterDict = {
-  Backquote: [/* DEAD CIRCUMFLEX ACCENT */ 0x0302, /* ° */ 0x00b0],
+  Backquote: [{ dead: /* COMBINING CIRCUMFLEX ACCENT */ 0x0302 }, /* ° */ 0x00b0],
   Digit1: [/* 1 */ 0x0031, /* ! */ 0x0021],
   Digit2: [/* 2 */ 0x0032, /* " */ 0x0022, /* ² */ 0x00b2],
   Digit3: [/* 3 */ 0x0033, /* § */ 0x00a7, /* ³ */ 0x00b3],
@@ -16,7 +16,7 @@ export const LAYOUT_DE_DE: CharacterDict = {
   Digit9: [/* 9 */ 0x0039, /* ) */ 0x0029, /* ] */ 0x005d],
   Digit0: [/* 0 */ 0x0030, /* = */ 0x003d, /* } */ 0x007d],
   Minus: [/* ß */ 0x00df, /* ? */ 0x003f, /* \ */ 0x005c, /* ẞ */ 0x1e9e],
-  Equal: [/* DEAD ACUTE ACCENT */ 0x0301, /* DEAD GRAVE ACCENT */ 0x0300],
+  Equal: [{ dead: /* COMBINING ACUTE ACCENT */ 0x0301 }, { dead: /* COMBINING GRAVE ACCENT */ 0x0300 }],
   KeyQ: [/* q */ 0x0071, /* Q */ 0x0051, /* @ */ 0x0040],
   KeyW: [/* w */ 0x0077, /* W */ 0x0057],
   KeyE: [/* e */ 0x0065, /* E */ 0x0045, /* € */ 0x20ac],

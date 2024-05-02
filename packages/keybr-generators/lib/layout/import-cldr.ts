@@ -6,43 +6,47 @@
  */
 
 import { readFileSync } from "node:fs";
-import { type Character, getDiacritic, type KeyId } from "@keybr/keyboard";
+import {
+  type Character,
+  type CharacterDict,
+  type KeyId,
+} from "@keybr/keyboard";
 import { type CodePoint, toCodePoints } from "@keybr/unicode";
+import chalk from "chalk";
 import { type Element, xml2js } from "xml-js";
 import { pathTo } from "../root.ts";
-import { formatCodePointValue } from "./codepoints.ts";
-import { diacritics } from "./diacritics.ts";
-import { type KeyMap } from "./layout.ts";
+import { makeDeadCharacter } from "./diacritics.ts";
 
-export function importCldr(filename: string): KeyMap {
-  return parse(xml2js(readFileSync(pathTo(filename), "utf-8")) as Element);
+export function importCldr(filename: string): CharacterDict {
+  console.log(`Parsing CLDR file ${filename}`);
+  const text = readFileSync(pathTo(filename), "utf-8");
+  return parseCldr(xml2js(text) as Element);
 }
 
-function parse(root: Element): KeyMap {
+function parseCldr(root: Element): CharacterDict {
   unescape(root);
 
-  const keymap = new Map<KeyId, (Character | null)[]>();
+  const dict = new Map<KeyId, (Character | null)[]>();
 
   const combiners = new Set<CodePoint>();
 
-  const toCombining = (codePoint: CodePoint, keep: boolean): CodePoint => {
-    if (keep || !combiners.has(codePoint)) {
-      return codePoint;
-    } else {
-      const combining = diacritics.get(codePoint);
-      if (combining == null) {
-        throw new Error(
-          `Unknown combining code point ${formatCodePointValue(codePoint)}`,
-        );
-      }
-      const diacritic = getDiacritic(combining);
-      if (diacritic == null) {
-        throw new Error(
-          `Unknown diacritic code point ${formatCodePointValue(codePoint)}`,
-        );
-      }
-      return diacritic.codePoint;
+  const toCharacter = (
+    keyId: KeyId,
+    codePoint: CodePoint,
+    keep: boolean,
+  ): Character | null => {
+    switch (codePoint) {
+      case /* Zero Width Non-Joiner */ 0x200c:
+      case /* Zero Width Joiner */ 0x200d:
+      case /* Left-To-Right Mark */ 0x200e:
+      case /* Right-To-Left Mark */ 0x200f:
+      case /* Combining Grapheme Joiner */ 0x034f:
+        return { special: codePoint };
     }
+    if (!keep && combiners.has(codePoint)) {
+      return makeDeadCharacter(keyId, codePoint);
+    }
+    return codePoint;
   };
 
   const handleTransform = (stack: readonly Element[], path: string) => {
@@ -72,41 +76,27 @@ function parse(root: Element): KeyMap {
 
       const keyId = isoToKeyId[isoAttr];
       if (keyId == null) {
-        console.error(`Unknown iso [${isoAttr}]`);
+        console.error(chalk.red(`Unknown iso [${isoAttr}]`));
         return;
       }
 
-      const characters = keymap.get(keyId) ?? [null, null, null, null];
+      const characters = dict.get(keyId) ?? [null, null, null, null];
       const toCp = [...toCodePoints(toAttr)];
-      if (toCp.length === 1) {
-        const codePoint = toCombining(toCp[0], transformAttr === "no");
-        for (const modifier of parseModifiers(modifiersAttr)) {
-          switch (codePoint) {
-            case /* Zero Width Non-Joiner */ 0x200c:
-            case /* Zero Width Joiner */ 0x200d:
-            case /* Left-To-Right Mark */ 0x200e:
-            case /* Right-To-Left Mark */ 0x200f:
-            case /* Combining Grapheme Joiner */ 0x034f:
-              characters[modifier] = { special: codePoint };
-              break;
-            default:
-              characters[modifier] = codePoint;
-              break;
-          }
-        }
-      } else {
-        for (const modifier of parseModifiers(modifiersAttr)) {
-          characters[modifier] = { ligature: String.fromCodePoint(...toCp) };
-        }
+      const character =
+        toCp.length > 1
+          ? { ligature: String.fromCodePoint(...toCp) }
+          : toCharacter(keyId, toCp[0], transformAttr === "no");
+      for (const modifier of parseModifiers(modifiersAttr)) {
+        characters[modifier] = character;
       }
-      keymap.set(keyId, characters);
+      dict.set(keyId, characters);
     }
   };
 
   walkTree(root, handleTransform);
   walkTree(root, handleMap);
 
-  return Object.fromEntries(keymap);
+  return { ...Object.fromEntries(dict), Space: [0x0020] };
 }
 
 function* parseModifiers(attr: string): Iterable<number> {

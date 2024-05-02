@@ -59,9 +59,9 @@ test("dead labels", (t) => {
       h: 1,
     },
     [
-      /* COMBINING GRAVE ACCENT */ 0x0300,
+      { dead: /* COMBINING GRAVE ACCENT */ 0x0300 },
       null,
-      /* COMBINING ACUTE ACCENT */ 0x0301,
+      { dead: /* COMBINING ACUTE ACCENT */ 0x0301 },
       null,
     ],
   );

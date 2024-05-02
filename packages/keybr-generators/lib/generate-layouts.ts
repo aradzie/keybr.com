@@ -5,14 +5,14 @@
  * TypeScript files with the same layouts converted into our own internal representation.
  */
 
+import { type CharacterDict } from "@keybr/keyboard";
 import { writeGeneratedFile } from "./layout/generate.ts";
 import { importCldr } from "./layout/import-cldr.ts";
 import { importKeymap } from "./layout/import-json.ts";
 import { importKlc } from "./layout/import-klc.ts";
-import { type KeyMap, undead } from "./layout/layout.ts";
 import { pathTo } from "./root.ts";
 
-for (const [id, keymap] of [
+for (const [id, dict] of [
   ["ar_sa", importCldr("cldr-keyboards-43.0/keyboards/windows/ar-t-k0-windows.xml")],
   // ["ar_sa", importKlc("layouts/ar_sa.klc")],
   ["ar_sa_102", importCldr("cldr-keyboards-43.0/keyboards/windows/ar-t-k0-windows-102key.xml")],
@@ -73,8 +73,11 @@ for (const [id, keymap] of [
   ["tr_tr_f", importCldr("cldr-keyboards-43.0/keyboards/windows/tr-t-k0-windows-legacy.xml")],
   ["tr_tr_q", importCldr("cldr-keyboards-43.0/keyboards/windows/tr-t-k0-windows.xml")],
   ["uk_ua", importCldr("cldr-keyboards-43.0/keyboards/windows/uk-t-k0-windows.xml")],
-] as [string, KeyMap][]) {
-  const filename = pathTo(`../keybr-keyboard/lib/layout/${id}.ts`);
-  console.log(id, filename);
-  writeGeneratedFile(keymap, filename);
+] as [string, CharacterDict][]) {
+  writeGeneratedFile(dict, pathTo(`../keybr-keyboard/lib/layout/${id}.ts`));
+}
+
+/** Removes dead keys from the given keyboard layout. */
+function undead(dict: CharacterDict): CharacterDict {
+  return Object.fromEntries(Object.entries(dict).map(([id, [a, b]]) => [id, [a, b]]));
 }

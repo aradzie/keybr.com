@@ -3,22 +3,26 @@
  */
 
 import { readFileSync } from "node:fs";
-import { type Character, type KeyId } from "@keybr/keyboard";
+import {
+  type Character,
+  type CharacterDict,
+  type KeyId,
+} from "@keybr/keyboard";
 import { pathTo } from "../root.ts";
-import { diacritics } from "./diacritics.ts";
-import { type KeyMap } from "./layout.ts";
+import { makeDeadCharacter } from "./diacritics.ts";
 
-export function importKlc(filename: string): KeyMap {
-  const content = readFileSync(pathTo(filename), "utf-8");
-  const keyMap = {};
-  parse(content, {
+export function importKlc(filename: string): CharacterDict {
+  console.log(`Parsing KLC file ${filename}`);
+  const text = readFileSync(pathTo(filename), "utf-8");
+  const dict = {};
+  parseKlc(text, {
     shiftstate: [],
     altgr: false,
     SC_to_VK: {},
     VK_to_SC: {},
-    keyMap,
+    dict,
   });
-  return keyMap;
+  return { ...dict, Space: [0x0020] };
 }
 
 type ParserState = {
@@ -26,7 +30,7 @@ type ParserState = {
   altgr: boolean;
   SC_to_VK: Record<string, string>;
   VK_to_SC: Record<string, string>;
-  keyMap: {
+  dict: {
     [key: KeyId]: (Character | null)[];
   };
 };
@@ -47,9 +51,9 @@ const enum Section {
   ENDKBD,
 }
 
-function parse(content: string, state: ParserState): void {
+function parseKlc(text: string, state: ParserState): void {
   let section = Section.INIT;
-  for (const line0 of content.split("\n")) {
+  for (const line0 of text.split("\n")) {
     const line = stripComments(line0).trim();
     if (line) {
       if (/^KBD/.test(line)) {
@@ -141,7 +145,7 @@ function LAYOUT(state: ParserState, line: string): void {
   const [SC, VK, CAP, ...arg] = line.split(/\s+/);
   const keyId = scanCodeToKeyId[SC];
   if (keyId != null) {
-    const c = [...arg.map(parseCodePoint)];
+    const c = [...arg.map((v) => parseCodePoint(keyId, v))];
     const characters = [null, null, null, null] as (Character | null)[];
     for (let i = 0; i < c.length; i++) {
       const s = state.shiftstate[i];
@@ -150,12 +154,12 @@ function LAYOUT(state: ParserState, line: string): void {
         characters[m] = c[i];
       }
     }
-    state.keyMap[keyId] = characters;
+    state.dict[keyId] = characters;
     if (state.SC_to_VK[SC] != null) {
-      throw new Error(`Duplicate SC [${SC}]`);
+      console.error(`[${keyId}] Duplicate SC [${SC}]`);
     }
     if (state.VK_to_SC[VK] != null) {
-      throw new Error(`Duplicate VK [${VK}]`);
+      console.error(`[${keyId}] Duplicate VK [${VK}]`);
     }
     state.SC_to_VK[SC] = VK;
     state.VK_to_SC[VK] = SC;
@@ -165,15 +169,12 @@ function LAYOUT(state: ParserState, line: string): void {
 function LIGATURE(state: ParserState, line: string): void {
   const [VK, MOD, ...arg] = line.split(/\s+/);
   const SC = state.VK_to_SC[VK];
-  if (SC == null) {
-    throw new Error(`Invalid ligature VK [${VK}]`);
-  }
   const keyId = scanCodeToKeyId[SC];
   if (keyId != null) {
     const ligature = String.fromCodePoint(
       ...arg.map((v) => Number.parseInt(v, 16)),
     );
-    const characters = state.keyMap[keyId];
+    const characters = state.dict[keyId];
     const s = state.shiftstate[Number(MOD)];
     const m = modifiers(s);
     if (m !== -1) {
@@ -210,7 +211,7 @@ function stripComments(line: string): string {
   return line;
 }
 
-function parseCodePoint(v: string): Character | null {
+function parseCodePoint(keyId: string, v: string): Character | null {
   if (v === "-1" || v === "%%") {
     return null;
   }
@@ -222,9 +223,10 @@ function parseCodePoint(v: string): Character | null {
     return Number.parseInt(m[1], 16);
   }
   if ((m = /^([0-9a-f]{4})@$/.exec(v)) != null) {
-    return diacritics.get(Number.parseInt(m[1], 16)) ?? null;
+    return makeDeadCharacter(keyId, Number.parseInt(m[1], 16));
   }
-  throw new TypeError(`Invalid code point [${v}]`);
+  console.error(`[${keyId}] Invalid code point [${v}]`);
+  return null;
 }
 
 function modifiers(shiftState: number): number {

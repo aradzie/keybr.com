@@ -4,7 +4,7 @@ import { type CharacterDict } from "../types.ts";
 
 // prettier-ignore
 export const LAYOUT_PL_PL: CharacterDict = {
-  Backquote: [/* ` */ 0x0060, /* DEAD TILDE */ 0x0303],
+  Backquote: [/* ` */ 0x0060, { dead: /* COMBINING TILDE */ 0x0303 }],
   Digit1: [/* 1 */ 0x0031, /* ! */ 0x0021],
   Digit2: [/* 2 */ 0x0032, /* @ */ 0x0040],
   Digit3: [/* 3 */ 0x0033, /* # */ 0x0023],

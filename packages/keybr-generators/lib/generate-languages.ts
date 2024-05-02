@@ -99,7 +99,7 @@ function generate(language: Language): void {
           if (language.test(word)) {
             return true;
           } else {
-            console.warn(`[${id}] Extraneous word [${word}]`);
+            console.warn(`[${id}] ${chalk.red(`Extraneous word [${word}]`)}`);
             return false;
           }
         })
@@ -109,7 +109,7 @@ function generate(language: Language): void {
             unique.add(word);
             return true;
           } else {
-            console.warn(`[${id}] Duplicate word [${word}]`);
+            console.warn(`[${id}] ${chalk.red(`Duplicate word [${word}]`)}`);
             return false;
           }
         });

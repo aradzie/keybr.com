@@ -1,11 +1,99 @@
 import { readFileSync } from "node:fs";
-import { type KeyId } from "@keybr/keyboard";
+import {
+  type Character,
+  type CharacterDict,
+  KeyCharacters,
+  type KeyId,
+} from "@keybr/keyboard";
+import { toCodePoints } from "@keybr/unicode";
+import chalk from "chalk";
 import { pathTo } from "../root.ts";
+import { makeDeadCharacter } from "./diacritics.ts";
+import { type CharacterList, type KeyMap } from "./json.ts";
 import { characterKeys } from "./keys.ts";
-import { type CharacterList, type KeyMap } from "./layout.ts";
 
-export function importKeymap(filename: string): KeyMap {
-  return JSON.parse(readFileSync(pathTo(filename), "utf-8"));
+export function importKeymap(filename: string): CharacterDict {
+  console.log(`Parsing JSON file ${filename}`);
+  const text = readFileSync(pathTo(filename), "utf-8");
+  return parseKeymap(JSON.parse(text));
+}
+
+function parseKeymap(keymap: KeyMap): CharacterDict {
+  const dict = new Map<KeyId, (Character | null)[]>();
+  for (const keyId of characterKeys) {
+    const list = keymap[keyId];
+    if (list != null) {
+      dict.set(keyId, parseCharacterList(keyId, list));
+    }
+  }
+  return { ...Object.fromEntries(dict), Space: [0x0020] };
+}
+
+function parseCharacterList(
+  keyId: KeyId,
+  list: CharacterList,
+): (Character | null)[] {
+  if (typeof list === "string") {
+    return [...toCodePoints(list)];
+  }
+
+  if (Array.isArray(list)) {
+    const characters: (Character | null)[] = [];
+
+    for (const item of list) {
+      if (item == null || item === 0x0000) {
+        characters.push(null);
+        continue;
+      }
+
+      if (
+        KeyCharacters.isCodePoint(item) ||
+        KeyCharacters.isDead(item) ||
+        KeyCharacters.isSpecial(item) ||
+        KeyCharacters.isLigature(item)
+      ) {
+        characters.push(item);
+        continue;
+      }
+
+      if (typeof item === "string") {
+        const a = [...toCodePoints(item)];
+
+        if (a.length === 0) {
+          characters.push(null);
+          continue;
+        }
+
+        if (a.length === 1) {
+          characters.push(a[0]);
+          continue;
+        }
+
+        if (a.length === 2) {
+          if (a[0] === /* * */ 0x002a) {
+            characters.push(makeDeadCharacter(keyId, a[1]));
+            continue;
+          }
+
+          characters.push(null);
+          console.error(chalk.red(`[${keyId}] Invalid character`), item);
+          continue;
+        }
+
+        characters.push(null);
+        console.error(chalk.red(`[${keyId}] Invalid character`), item);
+        continue;
+      }
+
+      characters.push(null);
+      console.error(chalk.red(`[${keyId}] Invalid character`), item);
+    }
+
+    return characters;
+  }
+
+  console.error(chalk.red(`[${keyId}] Invalid character list`), list);
+  return [];
 }
 
 /**
@@ -25,21 +113,21 @@ export type KeyList = readonly (readonly CharacterList[])[];
 /**
  * Parses the given layout data for the ANSI geometry.
  */
-export function parseAnsiLayout(data: KeyList): KeyMap {
+export function parseAnsiLayout(data: KeyList): CharacterDict {
   return parseLayout(ansiGeometry, data);
 }
 
 /**
  * Parses the given layout data for the ISO geometry.
  */
-export function parseIsoLayout(data: KeyList): KeyMap {
+export function parseIsoLayout(data: KeyList): CharacterDict {
   return parseLayout(isoGeometry, data);
 }
 
 export function parseLayout(
   geometry: readonly (readonly KeyId[])[],
   data: KeyList,
-): KeyMap {
+): CharacterDict {
   const map = new Map<KeyId, CharacterList>();
   if (geometry.length !== data.length) {
     throw new TypeError(
@@ -65,14 +153,13 @@ export function parseLayout(
   if (!map.has("IntlBackslash") && map.has("Backslash")) {
     map.set("IntlBackslash", map.get("Backslash")!);
   }
-  return {
-    ...Object.fromEntries(
+  return parseKeymap(
+    Object.fromEntries(
       [...map].sort(
         (a, b) => characterKeys.indexOf(a[0]) - characterKeys.indexOf(b[0]),
       ),
     ),
-    Space: " ",
-  };
+  );
 }
 
 /**

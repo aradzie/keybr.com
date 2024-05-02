@@ -1,6 +1,5 @@
 import { Enum, type EnumItem } from "@keybr/lang";
 import { type CodePoint, toCodePoints } from "@keybr/unicode";
-import { isDiacritic } from "./diacritics.ts";
 
 export class Language implements EnumItem {
   static readonly AR = new Language(
@@ -232,11 +231,6 @@ export class Language implements EnumItem {
         /* Zero Width Non-Joiner */ 0x200c,
         codePoint,
       );
-    }
-    if (isDiacritic(codePoint)) {
-      // Render a combining diacritical mark as a printable character
-      // by combining it with a placeholder.
-      return String.fromCodePoint(/* ◌ */ 0x25cc, codePoint);
     }
     // Locale-specific uppercase variant of a letter.
     // For example in Turkish there are dotted and dotless letter I,

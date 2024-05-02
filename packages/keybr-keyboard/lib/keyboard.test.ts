@@ -22,8 +22,8 @@ test("data", (t) => {
       { ligature: "YY" },
     ],
     Equal: [
-      /* COMBINING ACUTE ACCENT */ 0x0301, //
-      /* COMBINING GRAVE ACCENT */ 0x0300,
+      { dead: /* COMBINING ACUTE ACCENT */ 0x0301 },
+      { dead: /* COMBINING GRAVE ACCENT */ 0x0300 },
     ],
   };
   const geometryDict: GeometryDict = {
@@ -120,8 +120,8 @@ test("data", (t) => {
     keyboard.getCharacters("Equal"),
     new KeyCharacters(
       "Equal",
-      /* COMBINING ACUTE ACCENT */ 0x0301,
-      /* COMBINING GRAVE ACCENT */ 0x0300,
+      { dead: /* COMBINING ACUTE ACCENT */ 0x0301 },
+      { dead: /* COMBINING GRAVE ACCENT */ 0x0300 },
       null,
       null,
     ),

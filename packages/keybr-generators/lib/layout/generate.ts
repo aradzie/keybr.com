@@ -3,14 +3,15 @@ import { basename } from "node:path";
 import { type CharacterDict, KeyCharacters } from "@keybr/keyboard";
 import { formatCodePointName, formatCodePointValue } from "./codepoints.ts";
 import { characterKeys } from "./keys.ts";
-import { type KeyMap, toCharacterDict } from "./layout.ts";
 
-export function writeGeneratedFile(keymap: KeyMap, filename: string): void {
+export function writeGeneratedFile(
+  dict: CharacterDict,
+  filename: string,
+): void {
   const id = basename(filename, ".ts")
     .toUpperCase()
     .replaceAll("-", "_")
     .replaceAll(".", "_");
-  const dict = toCharacterDict(keymap);
   const sourceFile = generateSourceFile(id, dict);
   writeFileSync(filename, sourceFile);
 }
