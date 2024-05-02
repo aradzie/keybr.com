@@ -6,7 +6,7 @@
  */
 
 import { readFileSync } from "node:fs";
-import { getDiacritic, type KeyId } from "@keybr/keyboard";
+import { type Character, getDiacritic, type KeyId } from "@keybr/keyboard";
 import { type CodePoint, toCodePoints } from "@keybr/unicode";
 import { type Element, xml2js } from "xml-js";
 import { pathTo } from "../root.ts";
@@ -21,7 +21,7 @@ export function importCldr(filename: string): KeyMap {
 function parse(root: Element): KeyMap {
   unescape(root);
 
-  const keymap = new Map<KeyId, CodePoint[]>();
+  const keymap = new Map<KeyId, (Character | null)[]>();
 
   const combiners = new Set<CodePoint>();
 
@@ -76,15 +76,15 @@ function parse(root: Element): KeyMap {
         return;
       }
 
-      const codePoints = keymap.get(keyId) ?? [];
+      const characters = keymap.get(keyId) ?? [null, null, null, null];
       const toCp = [...toCodePoints(toAttr)];
       if (toCp.length === 1) {
         const codePoint = toCombining(toCp[0], transformAttr === "no");
         for (const modifier of parseModifiers(modifiersAttr)) {
-          codePoints[modifier] = codePoint;
+          characters[modifier] = codePoint;
         }
       }
-      keymap.set(keyId, codePoints);
+      keymap.set(keyId, characters);
     }
   };
 

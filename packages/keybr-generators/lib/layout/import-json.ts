@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { type KeyId } from "@keybr/keyboard";
 import { pathTo } from "../root.ts";
 import { characterKeys } from "./keys.ts";
-import { type CodePointList, type KeyMap } from "./layout.ts";
+import { type CharacterList, type KeyMap } from "./layout.ts";
 
 export function importKeymap(filename: string): KeyMap {
   return JSON.parse(readFileSync(pathTo(filename), "utf-8"));
@@ -20,7 +20,7 @@ export function importKeymap(filename: string): KeyMap {
  * ]
  * ```
  */
-export type KeyList = readonly (readonly CodePointList[])[];
+export type KeyList = readonly (readonly CharacterList[])[];
 
 /**
  * Parses the given layout data for the ANSI geometry.
@@ -40,7 +40,7 @@ export function parseLayout(
   geometry: readonly (readonly KeyId[])[],
   data: KeyList,
 ): KeyMap {
-  const map = new Map<KeyId, CodePointList>();
+  const map = new Map<KeyId, CharacterList>();
   if (geometry.length !== data.length) {
     throw new TypeError(
       `Wrong number of rows, ` +

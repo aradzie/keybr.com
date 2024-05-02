@@ -3,8 +3,7 @@
  */
 
 import { readFileSync } from "node:fs";
-import { type KeyId } from "@keybr/keyboard";
-import { type CodePoint } from "@keybr/unicode";
+import { type Character, type KeyId } from "@keybr/keyboard";
 import { pathTo } from "../root.ts";
 import { diacritics } from "./diacritics.ts";
 import { type KeyMap } from "./layout.ts";
@@ -20,7 +19,7 @@ type ParserState = {
   shiftstate: number[];
   altgr: boolean;
   keyMap: {
-    [key: KeyId]: CodePoint[];
+    [key: KeyId]: (Character | null)[];
   };
 };
 
@@ -123,7 +122,20 @@ function SHIFTSTATE(state: ParserState, line: string): void {
 }
 
 function LAYOUT(state: ParserState, line: string): void {
-  parseLayout(state, line);
+  const [SC, VK, CAP, ...arg] = line.split(/\s+/);
+  const keyId = scanCodeToKeyId[SC];
+  if (keyId != null) {
+    const c = [...arg.map(parseCodePoint)];
+    const characters = [null, null, null, null] as (Character | null)[];
+    for (let i = 0; i < c.length; i++) {
+      const s = state.shiftstate[i];
+      const m = modifiers(s);
+      if (m !== -1) {
+        characters[m] = c[i];
+      }
+    }
+    state.keyMap[keyId] = characters;
+  }
 }
 
 function stripComments(line: string): string {
@@ -154,26 +166,9 @@ function stripComments(line: string): string {
   return line;
 }
 
-function parseLayout(state: ParserState, line: string): void {
-  const [SC, VK, CAP, ...arg] = line.split(/\s+/);
-  const keyId = scanCodeToKeyId[SC];
-  if (keyId != null) {
-    const c = [...arg.map(parseCodePoint)];
-    const codePoints = [0, 0, 0, 0];
-    for (let i = 0; i < c.length; i++) {
-      const s = state.shiftstate[i];
-      const m = modifiers(s);
-      if (m !== -1) {
-        codePoints[m] = c[i];
-      }
-    }
-    state.keyMap[keyId] = codePoints;
-  }
-}
-
-function parseCodePoint(v: string): CodePoint {
-  if (v === "-1") {
-    return 0;
+function parseCodePoint(v: string): Character | null {
+  if (v === "-1" || v === "%%") {
+    return null;
   }
   if (v.length === 1) {
     return v.codePointAt(0)!;
@@ -183,9 +178,9 @@ function parseCodePoint(v: string): CodePoint {
     return Number.parseInt(m[1], 16);
   }
   if ((m = /^([0-9a-f]{4})@$/.exec(v)) != null) {
-    return diacritics.get(Number.parseInt(m[1], 16)) ?? 0;
+    return diacritics.get(Number.parseInt(m[1], 16)) ?? null;
   }
-  throw new TypeError(`Invalid code point: ${v}`);
+  throw new TypeError(`Invalid code point [${v}]`);
 }
 
 function modifiers(shiftState: number): number {

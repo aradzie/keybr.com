@@ -1,12 +1,17 @@
-import { type CharacterDict, type KeyId } from "@keybr/keyboard";
-import { type CodePoint, toCodePoints } from "@keybr/unicode";
+import {
+  type Character,
+  type CharacterDict,
+  KeyCharacters,
+  type KeyId,
+} from "@keybr/keyboard";
+import { toCodePoints } from "@keybr/unicode";
 import { diacritics } from "./diacritics.ts";
 import { characterKeys } from "./keys.ts";
 
 /**
  * A list of up to four code points assigned to a physical key.
  */
-export type CodePointList = string | readonly (string | CodePoint)[];
+export type CharacterList = string | readonly (string | Character | null)[];
 
 /**
  * Maps a physical key location to a list of up to four code points.
@@ -60,7 +65,7 @@ export type CodePointList = string | readonly (string | CodePoint)[];
  * We do not support dead keys which switch between different alphabets, produce non-letter characters, etc.
  */
 export type KeyMap = {
-  readonly [key: KeyId]: CodePointList;
+  readonly [key: KeyId]: CharacterList;
 };
 
 /**
@@ -76,35 +81,35 @@ export function undead(keyMap: KeyMap): KeyMap {
  * Converts a custom keyboard layout definition to an internal representation.
  */
 export function toCharacterDict(keymap: KeyMap): CharacterDict {
-  const map = new Map<KeyId, CodePoint[]>();
+  const map = new Map<KeyId, (Character | null)[]>();
   for (const keyId of characterKeys) {
-    const codePoints = keymap[keyId];
-    if (codePoints) {
-      map.set(keyId, parseCodePoints(keyId, codePoints));
+    const characters = keymap[keyId];
+    if (characters != null) {
+      map.set(keyId, parseCharacters(keyId, characters));
     }
   }
   return { ...Object.fromEntries(map), Space: [0x0020] };
 }
 
-export function parseCodePoints(
+export function parseCharacters(
   keyId: KeyId,
-  list: CodePointList,
-): CodePoint[] {
+  list: CharacterList,
+): (Character | null)[] {
   if (typeof list === "string") {
     return [...toCodePoints(list)];
   }
 
   if (Array.isArray(list)) {
-    const codePoints: CodePoint[] = [];
+    const characters: (Character | null)[] = [];
 
     for (const item of list) {
-      if (item == null) {
-        codePoints.push(0x0000);
+      if (item == null || item === 0x0000) {
+        characters.push(null);
         continue;
       }
 
-      if (typeof item === "number") {
-        codePoints.push(item);
+      if (KeyCharacters.isCodePoint(item)) {
+        characters.push(item);
         continue;
       }
 
@@ -112,12 +117,12 @@ export function parseCodePoints(
         const a = [...toCodePoints(item)];
 
         if (a.length === 0) {
-          codePoints.push(0x0000);
+          characters.push(null);
           continue;
         }
 
         if (a.length === 1) {
-          codePoints.push(a[0]);
+          characters.push(a[0]);
           continue;
         }
 
@@ -125,30 +130,30 @@ export function parseCodePoints(
           if (a[0] === /* * */ 0x002a) {
             const diacritic = diacritics.get(a[1]);
             if (diacritic) {
-              codePoints.push(diacritic);
+              characters.push(diacritic);
               continue;
             }
 
-            codePoints.push(0x0000);
+            characters.push(null);
             console.error(`[${keyId}] Invalid diacritical mark`, item);
             continue;
           }
 
-          codePoints.push(0x0000);
-          console.error(`[${keyId}] Invalid code point`, item);
+          characters.push(null);
+          console.error(`[${keyId}] Invalid character`, item);
           continue;
         }
 
-        codePoints.push(0x0000);
-        console.error(`[${keyId}] Invalid code point`, item);
+        characters.push(null);
+        console.error(`[${keyId}] Invalid character`, item);
         continue;
       }
 
-      throw new TypeError(`Invalid code point list item [${item}]`);
+      throw new TypeError(`Invalid character list item [${item}]`);
     }
 
-    return codePoints;
+    return characters;
   }
 
-  throw new TypeError(`Invalid code point list [${list}]`);
+  throw new TypeError(`Invalid character list [${list}]`);
 }

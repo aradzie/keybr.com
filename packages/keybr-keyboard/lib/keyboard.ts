@@ -8,6 +8,7 @@ import { KeyShape } from "./keyshape.ts";
 import { getExampleLetters, getExampleText } from "./language.ts";
 import { type Layout } from "./layout.ts";
 import {
+  type Character,
   type CharacterDict,
   type GeometryDict,
   type KeyId,
@@ -34,8 +35,9 @@ export class Keyboard {
     const shapes = new Map<KeyId, KeyShape>();
     const zones = new Map<ZoneId, KeyShape[]>();
 
-    for (const [id, codePoints] of Object.entries(characterDict)) {
-      const [a = 0, b = 0, c = 0, d = 0] = codePoints;
+    for (const [id, [a = null, b = null, c = null, d = null]] of Object.entries(
+      characterDict,
+    )) {
       characters.set(id, new KeyCharacters(id, a, b, c, d));
     }
 
@@ -155,26 +157,26 @@ function setCombo(map: Map<CodePoint, KeyCombo>, combo: KeyCombo): void {
 
 function addCombo(
   map: Map<CodePoint, KeyCombo>,
-  codePoint: CodePoint,
+  character: Character | null,
   id: KeyId,
   modifier: KeyModifier,
 ): void {
-  if (codePoint > 0 && !isDiacritic(codePoint)) {
-    setCombo(map, new KeyCombo(codePoint, id, modifier));
+  if (KeyCharacters.isCodePoint(character) && !isDiacritic(character)) {
+    setCombo(map, new KeyCombo(character, id, modifier));
   }
 }
 
 function addDeadCombo(
   map: Map<CodePoint, KeyCombo>,
-  codePoint: CodePoint,
+  character: Character | null,
   id: KeyId,
   modifier: KeyModifier,
 ): void {
-  if (codePoint > 0 && isDiacritic(codePoint)) {
-    const prefix = new KeyCombo(codePoint, id, modifier);
+  if (KeyCharacters.isCodePoint(character) && isDiacritic(character)) {
+    const prefix = new KeyCombo(character, id, modifier);
     for (const combo of map.values()) {
       if (combo.prefix == null) {
-        const combinedCodePoint = combineDiacritic(combo.codePoint, codePoint);
+        const combinedCodePoint = combineDiacritic(combo.codePoint, character);
         if (combinedCodePoint !== combo.codePoint) {
           setCombo(
             map,

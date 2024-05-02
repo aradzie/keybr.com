@@ -25,7 +25,7 @@ export const LAYOUT_FR_ERGO_L: CharacterDict = {
   KeyY: [/* j */ 0x006a, /* J */ 0x004a, /* ^ */ 0x005e, /* DEAD CIRCUMFLEX ACCENT */ 0x0302],
   KeyU: [/* m */ 0x006d, /* M */ 0x004d, /* & */ 0x0026],
   KeyI: [/* d */ 0x0064, /* D */ 0x0044, /* * */ 0x002a, /* × */ 0x00d7],
-  KeyO: [0x0000, 0x0000, /* ' */ 0x0027, /* DEAD ACUTE ACCENT */ 0x0301],
+  KeyO: [null, null, /* ' */ 0x0027, /* DEAD ACUTE ACCENT */ 0x0301],
   KeyP: [/* f */ 0x0066, /* F */ 0x0046, /* ` */ 0x0060, /* DEAD GRAVE ACCENT */ 0x0300],
   BracketLeft: [/* [ */ 0x005b, /* { */ 0x007b],
   BracketRight: [/* ] */ 0x005d, /* } */ 0x007d],

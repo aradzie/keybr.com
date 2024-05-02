@@ -30,21 +30,6 @@ test("data", (t) => {
     characterDict,
     geometryDict,
   );
-  const key1 = new KeyCharacters(
-    "KeyA",
-    /* a */ 0x0061,
-    /* A */ 0x0041,
-    /* b */ 0x0062,
-    /* B */ 0x0042,
-  );
-  const deadKey1 = new KeyCharacters(
-    "Equal",
-    /* COMBINING ACUTE ACCENT */ 0x0301,
-    /* COMBINING GRAVE ACCENT */ 0x0300,
-    0x0000,
-    0x0000,
-  );
-
   const { None, Shift, Alt, ShiftAlt } = KeyModifier;
   const kc0x0300 = new KeyCombo(0x0300, "Equal", Shift);
   const kc0x0301 = new KeyCombo(0x0301, "Equal", None);
@@ -104,8 +89,26 @@ test("data", (t) => {
   );
 
   t.is(keyboard.getCharacters("Unknown"), null);
-  t.deepEqual(keyboard.getCharacters("KeyA"), key1);
-  t.deepEqual(keyboard.getCharacters("Equal"), deadKey1);
+  t.deepEqual(
+    keyboard.getCharacters("KeyA"),
+    new KeyCharacters(
+      "KeyA",
+      /* a */ 0x0061,
+      /* A */ 0x0041,
+      /* b */ 0x0062,
+      /* B */ 0x0042,
+    ),
+  );
+  t.deepEqual(
+    keyboard.getCharacters("Equal"),
+    new KeyCharacters(
+      "Equal",
+      /* COMBINING ACUTE ACCENT */ 0x0301,
+      /* COMBINING GRAVE ACCENT */ 0x0300,
+      null,
+      null,
+    ),
+  );
 
   t.deepEqual(keyboard.getCombo(/* A */ 0x0041), kc0x0041);
   t.deepEqual(keyboard.getCombo(/* a */ 0x0061), kc0x0061);

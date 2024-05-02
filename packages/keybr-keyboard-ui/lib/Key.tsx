@@ -1,9 +1,11 @@
 import {
   isDiacritic,
+  KeyCharacters,
   type KeyShape,
   type LabelShape,
   type Language,
 } from "@keybr/keyboard";
+import { type CodePoint } from "@keybr/unicode";
 import { type ClassName } from "@keybr/widget";
 import { clsx } from "clsx";
 import {
@@ -31,6 +33,7 @@ export function makeKeyComponent(
   { letterName }: Language,
   shape: KeyShape,
 ): FunctionComponent<KeyProps> {
+  const { isCodePoint } = KeyCharacters;
   const { id, a, b, c, d } = shape;
   const x = shape.x * keySize;
   const y = shape.y * keySize;
@@ -52,25 +55,29 @@ export function makeKeyComponent(
   for (const label of shape.labels) {
     children.push(makeLabel(label));
   }
-  const ab = a > 0 && b > 0 && letterName(a) === letterName(b);
-  const cd = c > 0 && d > 0 && letterName(c) === letterName(d);
-  if (a > 0 && !ab) {
-    children.push(makeSymbolLabel(a, 10, 27, styles.secondarySymbol));
+  const ta = isCodePoint(a);
+  const tb = isCodePoint(b);
+  const tc = isCodePoint(c);
+  const td = isCodePoint(d);
+  const ab = ta && tb && letterName(a) === letterName(b);
+  const cd = tc && td && letterName(c) === letterName(d);
+  if (ta && !ab) {
+    children.push(makeCodePointLabel(a, 10, 27, styles.secondarySymbol));
   }
-  if (b > 0 && !ab) {
-    children.push(makeSymbolLabel(b, 10, 12, styles.secondarySymbol));
+  if (tb && !ab) {
+    children.push(makeCodePointLabel(b, 10, 12, styles.secondarySymbol));
   }
-  if (c > 0 && !cd) {
-    children.push(makeSymbolLabel(c, 25, 27, styles.secondarySymbol));
+  if (tc && !cd) {
+    children.push(makeCodePointLabel(c, 25, 27, styles.secondarySymbol));
   }
-  if (d > 0 && !cd) {
-    children.push(makeSymbolLabel(d, 25, 12, styles.secondarySymbol));
+  if (td && !cd) {
+    children.push(makeCodePointLabel(d, 25, 12, styles.secondarySymbol));
   }
-  if (a > 0 && ab) {
-    children.push(makeSymbolLabel(a, 10, 12, styles.primarySymbol));
+  if (ta && ab) {
+    children.push(makeCodePointLabel(a, 10, 12, styles.primarySymbol));
   }
-  if (c > 0 && cd) {
-    children.push(makeSymbolLabel(c, 25, 27, styles.primarySymbol));
+  if (tc && cd) {
+    children.push(makeCodePointLabel(c, 25, 27, styles.primarySymbol));
   }
   const zoneClassName = zoneClassNameOf(shape);
   function KeyComponent({
@@ -109,8 +116,8 @@ export function makeKeyComponent(
   KeyComponent.displayName = `Key[${id}]`;
   return memo(KeyComponent);
 
-  function makeSymbolLabel(
-    codePoint: number,
+  function makeCodePointLabel(
+    codePoint: CodePoint,
     x: number,
     y: number,
     className: ClassName,

@@ -1,5 +1,5 @@
-import { type CodePoint } from "@keybr/unicode";
 import {
+  type Character,
   type CharacterDict,
   type GeometryDict,
   type KeyId,
@@ -43,13 +43,13 @@ export class KeyShape {
   /** Whether this is a homing key. */
   readonly homing: boolean;
   /** The code point produced by this key. */
-  readonly a: CodePoint;
+  readonly a: Character | null;
   /** The code point produced by this key. */
-  readonly b: CodePoint;
+  readonly b: Character | null;
   /** The code point produced by this key. */
-  readonly c: CodePoint;
+  readonly c: Character | null;
   /** The code point produced by this key. */
-  readonly d: CodePoint;
+  readonly d: Character | null;
   /** Finger zone, if any. */
   readonly finger: ZoneId | null;
   /** Hand zone, if any. */
@@ -60,10 +60,10 @@ export class KeyShape {
   constructor(
     id: KeyId,
     geometryConf: GeometryDict["keyId"],
-    codePointConf: CharacterDict["keyId"] | null,
+    characterConf: CharacterDict["keyId"] | null,
   ) {
     const { x, y, w, h, labels, shape, zones, homing } = geometryConf;
-    const [a, b, c, d] = codePointConf ?? [];
+    const [a, b, c, d] = characterConf ?? [];
     this.id = id;
     this.x = x;
     this.y = y;
@@ -73,10 +73,10 @@ export class KeyShape {
     this.shape = shape ?? null;
     this.zones = zones ?? [];
     this.homing = homing ?? false;
-    this.a = a ?? 0;
-    this.b = b ?? 0;
-    this.c = c ?? 0;
-    this.d = d ?? 0;
+    this.a = a ?? null;
+    this.b = b ?? null;
+    this.c = c ?? null;
+    this.d = d ?? null;
     this.finger = selectZone(KeyShape.fingerZones, this.zones);
     this.hand = selectZone(KeyShape.handZones, this.zones);
     this.row = selectZone(KeyShape.rowZones, this.zones);

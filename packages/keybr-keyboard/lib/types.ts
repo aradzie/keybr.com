@@ -25,13 +25,10 @@ export type ZoneId =
   | "home"
   | "bottom";
 
+export type Character = CodePoint;
+
 export type CharacterDict = {
-  readonly [id: KeyId]: readonly [
-    a?: CodePoint,
-    b?: CodePoint,
-    c?: CodePoint,
-    d?: CodePoint,
-  ];
+  readonly [id: KeyId]: readonly (Character | null)[];
 };
 
 export type GeometryDict = {

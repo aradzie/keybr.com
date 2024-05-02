@@ -1,6 +1,6 @@
 import { writeFileSync } from "node:fs";
 import { basename } from "node:path";
-import { type CharacterDict } from "@keybr/keyboard";
+import { type CharacterDict, KeyCharacters } from "@keybr/keyboard";
 import { formatCodePointName, formatCodePointValue } from "./codepoints.ts";
 import { characterKeys } from "./keys.ts";
 import { type KeyMap, toCharacterDict } from "./layout.ts";
@@ -24,19 +24,18 @@ export function generateSourceFile(id: string, dict: CharacterDict): string {
   lines.push("// prettier-ignore");
   lines.push(`export const LAYOUT_${id}: CharacterDict = {`);
   for (const keyId of characterKeys) {
-    const codePoints = [...(dict[keyId] ?? [])];
-    while (codePoints.length > 0 && codePoints.at(-1) === 0x0000) {
-      codePoints.pop();
+    const characters = [...(dict[keyId] ?? [])];
+    while (characters.length > 0 && characters.at(-1) == null) {
+      characters.pop();
     }
-    if (codePoints.length > 0) {
-      const fields = codePoints.map((codePoint) => {
-        if (codePoint) {
-          const name = formatCodePointName(codePoint);
-          const value = formatCodePointValue(codePoint);
+    if (characters.length > 0) {
+      const fields = characters.map((character) => {
+        if (KeyCharacters.isCodePoint(character)) {
+          const name = formatCodePointName(character);
+          const value = formatCodePointValue(character);
           return `/* ${name} */ ${value}`;
-        } else {
-          return formatCodePointValue(0x0000);
         }
+        return `null`;
       });
       lines.push(`  ${keyId}: [${fields.join(", ")}],`);
     }
