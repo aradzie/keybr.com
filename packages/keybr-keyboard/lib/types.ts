@@ -25,7 +25,7 @@ export type ZoneId =
   | "home"
   | "bottom";
 
-export type CodePointDict = {
+export type CharacterDict = {
   readonly [id: KeyId]: readonly [
     a?: CodePoint,
     b?: CodePoint,

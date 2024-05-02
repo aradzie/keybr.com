@@ -1,9 +1,9 @@
 // Generated file, do not edit.
 
-import { type CodePointDict } from "../types.ts";
+import { type CharacterDict } from "../types.ts";
 
 // prettier-ignore
-export const LAYOUT_FR_ERGO_L: CodePointDict = {
+export const LAYOUT_FR_ERGO_L: CharacterDict = {
   Backquote: [/* ` */ 0x0060, /* ~ */ 0x007e],
   Digit1: [/* 1 */ 0x0031, /* ! */ 0x0021, /* ₁ */ 0x2081, /* ¹ */ 0x00b9],
   Digit2: [/* 2 */ 0x0032, /* @ */ 0x0040, /* ₂ */ 0x2082, /* ² */ 0x00b2],

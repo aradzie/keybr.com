@@ -1,9 +1,9 @@
 // Generated file, do not edit.
 
-import { type CodePointDict } from "../types.ts";
+import { type CharacterDict } from "../types.ts";
 
 // prettier-ignore
-export const LAYOUT_JA_JP_JIS: CodePointDict = {
+export const LAYOUT_JA_JP_JIS: CharacterDict = {
   Digit1: [/* 1 */ 0x0031, /* ! */ 0x0021, /* ぬ */ 0x306c],
   Digit2: [/* 2 */ 0x0032, /* " */ 0x0022, /* ふ */ 0x3075],
   Digit3: [/* 3 */ 0x0033, /* # */ 0x0023, /* あ */ 0x3042, /* ぁ */ 0x3041],

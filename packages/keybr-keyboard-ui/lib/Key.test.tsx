@@ -25,7 +25,7 @@ test("render", (t) => {
   t.snapshot(renderer.toJSON());
 });
 
-test("proper letter labels", (t) => {
+test("letter labels", (t) => {
   const shape = new KeyShape(
     "my-key",
     {
@@ -49,7 +49,7 @@ test("proper letter labels", (t) => {
   t.snapshot(renderer.toJSON());
 });
 
-test("proper dead labels", (t) => {
+test("dead labels", (t) => {
   const shape = new KeyShape(
     "my-key",
     {
@@ -58,7 +58,10 @@ test("proper dead labels", (t) => {
       w: 1,
       h: 1,
     },
-    [/* GRAVE ACCENT */ 0x0300, 0, /* ACUTE ACCENT */ 0x0301, 0],
+    [
+      /* COMBINING GRAVE ACCENT */ 0x0300, 0x0000,
+      /* COMBINING ACUTE ACCENT */ 0x0301, 0x0000,
+    ],
   );
 
   const Key = makeKeyComponent(Language.DE, shape);

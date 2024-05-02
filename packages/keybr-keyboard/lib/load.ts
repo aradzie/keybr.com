@@ -65,9 +65,9 @@ import { LAYOUT_TR_TR_F } from "./layout/tr_tr_f.ts";
 import { LAYOUT_TR_TR_Q } from "./layout/tr_tr_q.ts";
 import { LAYOUT_UK_UA } from "./layout/uk_ua.ts";
 import { KeyboardOptions } from "./settings.ts";
-import { type CodePointDict, type GeometryDict } from "./types.ts";
+import { type CharacterDict, type GeometryDict } from "./types.ts";
 
-const layoutDict = new Map<Layout, CodePointDict>([
+const layoutDict = new Map<Layout, CharacterDict>([
   [Layout.AR_SA, LAYOUT_AR_SA],
   [Layout.AR_SA_102, LAYOUT_AR_SA_102],
   [Layout.BE_BY, LAYOUT_BE_BY],

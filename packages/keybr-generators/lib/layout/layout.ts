@@ -1,4 +1,4 @@
-import { type CodePointDict, type KeyId } from "@keybr/keyboard";
+import { type CharacterDict, type KeyId } from "@keybr/keyboard";
 import { type CodePoint, toCodePoints } from "@keybr/unicode";
 import { diacritics } from "./diacritics.ts";
 import { characterKeys } from "./keys.ts";
@@ -75,7 +75,7 @@ export function undead(keyMap: KeyMap): KeyMap {
 /**
  * Converts a custom keyboard layout definition to an internal representation.
  */
-export function toCodePointDict(keymap: KeyMap): CodePointDict {
+export function toCharacterDict(keymap: KeyMap): CharacterDict {
   const map = new Map<KeyId, CodePoint[]>();
   for (const keyId of characterKeys) {
     const codePoints = keymap[keyId];

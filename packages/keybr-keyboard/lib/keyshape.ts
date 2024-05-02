@@ -1,6 +1,6 @@
 import { type CodePoint } from "@keybr/unicode";
 import {
-  type CodePointDict,
+  type CharacterDict,
   type GeometryDict,
   type KeyId,
   type LabelShape,
@@ -60,7 +60,7 @@ export class KeyShape {
   constructor(
     id: KeyId,
     geometryConf: GeometryDict["keyId"],
-    codePointConf: CodePointDict["keyId"] | null,
+    codePointConf: CharacterDict["keyId"] | null,
   ) {
     const { x, y, w, h, labels, shape, zones, homing } = geometryConf;
     const [a, b, c, d] = codePointConf ?? [];

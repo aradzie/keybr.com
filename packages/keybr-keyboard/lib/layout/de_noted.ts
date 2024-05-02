@@ -1,9 +1,9 @@
 // Generated file, do not edit.
 
-import { type CodePointDict } from "../types.ts";
+import { type CharacterDict } from "../types.ts";
 
 // prettier-ignore
-export const LAYOUT_DE_NOTED: CodePointDict = {
+export const LAYOUT_DE_NOTED: CharacterDict = {
   Backquote: [/* DEAD CIRCUMFLEX ACCENT */ 0x0302, /* DEAD CARON */ 0x030c],
   Digit1: [/* 1 */ 0x0031, /* ° */ 0x00b0],
   Digit2: [/* 2 */ 0x0032, /* § */ 0x00a7],

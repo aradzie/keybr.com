@@ -8,7 +8,7 @@ import { KeyShape } from "./keyshape.ts";
 import { getExampleLetters, getExampleText } from "./language.ts";
 import { type Layout } from "./layout.ts";
 import {
-  type CodePointDict,
+  type CharacterDict,
   type GeometryDict,
   type KeyId,
   type WeightedCodePointSet,
@@ -26,7 +26,7 @@ export class Keyboard {
   constructor(
     layout: Layout,
     geometry: Geometry,
-    codePointDict: CodePointDict,
+    characterDict: CharacterDict,
     geometryDict: GeometryDict,
   ) {
     const characters = new Map<KeyId, KeyCharacters>();
@@ -34,7 +34,7 @@ export class Keyboard {
     const shapes = new Map<KeyId, KeyShape>();
     const zones = new Map<ZoneId, KeyShape[]>();
 
-    for (const [id, codePoints] of Object.entries(codePointDict)) {
+    for (const [id, codePoints] of Object.entries(characterDict)) {
       const [a = 0, b = 0, c = 0, d = 0] = codePoints;
       characters.set(id, new KeyCharacters(id, a, b, c, d));
     }
@@ -56,7 +56,7 @@ export class Keyboard {
     for (const [id, data] of Object.entries(
       layout.mod(geometry, geometryDict),
     )) {
-      const shape = new KeyShape(id, data, codePointDict[id] ?? null);
+      const shape = new KeyShape(id, data, characterDict[id] ?? null);
       shapes.set(id, shape);
       for (const zone of shape.zones) {
         let list = zones.get(zone);
