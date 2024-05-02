@@ -73,6 +73,25 @@ test("dead labels", (t) => {
   t.snapshot(renderer.toJSON());
 });
 
+test("ligature labels", (t) => {
+  const shape = new KeyShape(
+    "my-key",
+    {
+      x: 0,
+      y: 0,
+      w: 1,
+      h: 1,
+    },
+    [{ ligature: "FI" }, null, { ligature: "FL" }, null],
+  );
+
+  const Key = makeKeyComponent(Language.DE, shape);
+
+  const renderer = TestRenderer.create(<Key />);
+
+  t.snapshot(renderer.toJSON());
+});
+
 test("space", (t) => {
   const shape = new KeyShape(
     "my-key",

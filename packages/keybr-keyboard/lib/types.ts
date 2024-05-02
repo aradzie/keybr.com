@@ -25,7 +25,11 @@ export type ZoneId =
   | "home"
   | "bottom";
 
-export type Character = CodePoint;
+export type Character =
+  | CodePoint
+  | { readonly dead: CodePoint }
+  | { readonly special: CodePoint }
+  | { readonly ligature: string };
 
 export type CharacterDict = {
   readonly [id: KeyId]: readonly (Character | null)[];

@@ -14,7 +14,9 @@ import { pathTo } from "./root.ts";
 
 for (const [id, keymap] of [
   ["ar_sa", importCldr("cldr-keyboards-43.0/keyboards/windows/ar-t-k0-windows.xml")],
+  // ["ar_sa", importKlc("layouts/ar_sa.klc")],
   ["ar_sa_102", importCldr("cldr-keyboards-43.0/keyboards/windows/ar-t-k0-windows-102key.xml")],
+  // ["ar_sa_102", importKlc("layouts/ar_sa_102.klc")],
   ["be_by", importCldr("cldr-keyboards-43.0/keyboards/windows/be-t-k0-windows.xml")],
   ["cs_cz", importCldr("cldr-keyboards-43.0/keyboards/windows/cs-t-k0-windows.xml")],
   ["de_bone", importKeymap("layouts/de_bone.json")],

@@ -81,7 +81,22 @@ function parse(root: Element): KeyMap {
       if (toCp.length === 1) {
         const codePoint = toCombining(toCp[0], transformAttr === "no");
         for (const modifier of parseModifiers(modifiersAttr)) {
-          characters[modifier] = codePoint;
+          switch (codePoint) {
+            case /* Zero Width Non-Joiner */ 0x200c:
+            case /* Zero Width Joiner */ 0x200d:
+            case /* Left-To-Right Mark */ 0x200e:
+            case /* Right-To-Left Mark */ 0x200f:
+            case /* Combining Grapheme Joiner */ 0x034f:
+              characters[modifier] = { special: codePoint };
+              break;
+            default:
+              characters[modifier] = codePoint;
+              break;
+          }
+        }
+      } else {
+        for (const modifier of parseModifiers(modifiersAttr)) {
+          characters[modifier] = { ligature: String.fromCodePoint(...toCp) };
         }
       }
       keymap.set(keyId, characters);
@@ -106,6 +121,7 @@ function* parseModifiers(attr: string): Iterable<number> {
           break;
         case "altR":
         case "altR+caps?":
+        case "altR+caps?+shift?":
           yield 2;
           break;
         case "shift+altR":

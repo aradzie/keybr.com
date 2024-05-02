@@ -4,11 +4,11 @@ import { type CharacterDict } from "../types.ts";
 
 // prettier-ignore
 export const LAYOUT_FA_IR: CharacterDict = {
-  Backquote: [/* ZERO WIDTH JOINER */ 0x200d, /* ZERO WIDTH JOINER */ 0x200d],
+  Backquote: [{ special: /* ZERO WIDTH JOINER */ 0x200d }, { special: /* ZERO WIDTH JOINER */ 0x200d }],
   Digit1: [/* ۱ */ 0x06f1, /* ! */ 0x0021],
   Digit2: [/* ۲ */ 0x06f2, /* ٬ */ 0x066c],
   Digit3: [/* ۳ */ 0x06f3, /* ٫ */ 0x066b],
-  Digit4: [/* ۴ */ 0x06f4],
+  Digit4: [/* ۴ */ 0x06f4, { ligature: "ریال" }],
   Digit5: [/* ۵ */ 0x06f5, /* ٪ */ 0x066a],
   Digit6: [/* ۶ */ 0x06f6, /* × */ 0x00d7],
   Digit7: [/* ۷ */ 0x06f7, /* ، */ 0x060c],
@@ -46,7 +46,7 @@ export const LAYOUT_FA_IR: CharacterDict = {
   KeyX: [/* ط */ 0x0637, /* ط */ 0x0637],
   KeyC: [/* ز */ 0x0632, /* ژ */ 0x0698],
   KeyV: [/* ر */ 0x0631, /* ٰ */ 0x0670],
-  KeyB: [/* ذ */ 0x0630, /* ZERO WIDTH NON-JOINER */ 0x200c],
+  KeyB: [/* ذ */ 0x0630, { special: /* ZERO WIDTH NON-JOINER */ 0x200c }],
   KeyN: [/* د */ 0x062f, /* ٔ */ 0x0654],
   KeyM: [/* پ */ 0x067e, /* ء */ 0x0621],
   Comma: [/* و */ 0x0648, /* > */ 0x003e],

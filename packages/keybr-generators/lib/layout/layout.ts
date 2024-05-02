@@ -108,7 +108,12 @@ export function parseCharacters(
         continue;
       }
 
-      if (KeyCharacters.isCodePoint(item)) {
+      if (
+        KeyCharacters.isCodePoint(item) ||
+        KeyCharacters.isDead(item) ||
+        KeyCharacters.isSpecial(item) ||
+        KeyCharacters.isLigature(item)
+      ) {
         characters.push(item);
         continue;
       }

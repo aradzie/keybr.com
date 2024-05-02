@@ -11,13 +11,21 @@ import { type KeyMap } from "./layout.ts";
 export function importKlc(filename: string): KeyMap {
   const content = readFileSync(pathTo(filename), "utf-8");
   const keyMap = {};
-  parse(content, { shiftstate: [], altgr: false, keyMap });
+  parse(content, {
+    shiftstate: [],
+    altgr: false,
+    SC_to_VK: {},
+    VK_to_SC: {},
+    keyMap,
+  });
   return keyMap;
 }
 
 type ParserState = {
   shiftstate: number[];
   altgr: boolean;
+  SC_to_VK: Record<string, string>;
+  VK_to_SC: Record<string, string>;
   keyMap: {
     [key: KeyId]: (Character | null)[];
   };
@@ -29,6 +37,7 @@ const enum Section {
   ATTRIBUTES,
   SHIFTSTATE,
   LAYOUT,
+  LIGATURE,
   DEADKEY,
   KEYNAME,
   KEYNAME_EXT,
@@ -66,6 +75,10 @@ function parse(content: string, state: ParserState): void {
       }
       if (/^LAYOUT/.test(line)) {
         section = Section.LAYOUT;
+        continue;
+      }
+      if (/^LIGATURE/.test(line)) {
+        section = Section.LIGATURE;
         continue;
       }
       if (/^DEADKEY/.test(line)) {
@@ -106,6 +119,9 @@ function parse(content: string, state: ParserState): void {
         case Section.LAYOUT:
           LAYOUT(state, line);
           break;
+        case Section.LIGATURE:
+          LIGATURE(state, line);
+          break;
       }
     }
   }
@@ -135,6 +151,34 @@ function LAYOUT(state: ParserState, line: string): void {
       }
     }
     state.keyMap[keyId] = characters;
+    if (state.SC_to_VK[SC] != null) {
+      throw new Error(`Duplicate SC [${SC}]`);
+    }
+    if (state.VK_to_SC[VK] != null) {
+      throw new Error(`Duplicate VK [${VK}]`);
+    }
+    state.SC_to_VK[SC] = VK;
+    state.VK_to_SC[VK] = SC;
+  }
+}
+
+function LIGATURE(state: ParserState, line: string): void {
+  const [VK, MOD, ...arg] = line.split(/\s+/);
+  const SC = state.VK_to_SC[VK];
+  if (SC == null) {
+    throw new Error(`Invalid ligature VK [${VK}]`);
+  }
+  const keyId = scanCodeToKeyId[SC];
+  if (keyId != null) {
+    const ligature = String.fromCodePoint(
+      ...arg.map((v) => Number.parseInt(v, 16)),
+    );
+    const characters = state.keyMap[keyId];
+    const s = state.shiftstate[Number(MOD)];
+    const m = modifiers(s);
+    if (m !== -1) {
+      characters[m] = { ligature };
+    }
   }
 }
 

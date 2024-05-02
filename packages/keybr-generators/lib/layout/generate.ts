@@ -35,6 +35,19 @@ export function generateSourceFile(id: string, dict: CharacterDict): string {
           const value = formatCodePointValue(character);
           return `/* ${name} */ ${value}`;
         }
+        if (KeyCharacters.isDead(character)) {
+          const name = formatCodePointName(character.dead);
+          const value = formatCodePointValue(character.dead);
+          return `{ dead: /* ${name} */ ${value} }`;
+        }
+        if (KeyCharacters.isSpecial(character)) {
+          const name = formatCodePointName(character.special);
+          const value = formatCodePointValue(character.special);
+          return `{ special: /* ${name} */ ${value} }`;
+        }
+        if (KeyCharacters.isLigature(character)) {
+          return `{ ligature: "${character.ligature}" }`;
+        }
         return `null`;
       });
       lines.push(`  ${keyId}: [${fields.join(", ")}],`);

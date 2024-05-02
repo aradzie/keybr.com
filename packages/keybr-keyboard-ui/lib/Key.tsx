@@ -33,7 +33,7 @@ export function makeKeyComponent(
   { letterName }: Language,
   shape: KeyShape,
 ): FunctionComponent<KeyProps> {
-  const { isCodePoint } = KeyCharacters;
+  const { isCodePoint, isLigature } = KeyCharacters;
   const { id, a, b, c, d } = shape;
   const x = shape.x * keySize;
   const y = shape.y * keySize;
@@ -78,6 +78,18 @@ export function makeKeyComponent(
   }
   if (tc && cd) {
     children.push(makeCodePointLabel(c, 25, 27, styles.primarySymbol));
+  }
+  if (isLigature(a)) {
+    children.push(makeLigatureLabel(a, 10, 27, styles.primarySymbol));
+  }
+  if (isLigature(b)) {
+    children.push(makeLigatureLabel(b, 10, 12, styles.primarySymbol));
+  }
+  if (isLigature(c)) {
+    children.push(makeLigatureLabel(c, 25, 27, styles.primarySymbol));
+  }
+  if (isLigature(d)) {
+    children.push(makeLigatureLabel(d, 25, 12, styles.primarySymbol));
   }
   const zoneClassName = zoneClassNameOf(shape);
   function KeyComponent({
@@ -127,12 +139,6 @@ export function makeKeyComponent(
       case /* No-Break Space */ 0x00a0:
       case /* Narrow No-Break Space */ 0x202f:
         return null;
-      case /* Zero Width Non-Joiner */ 0x200c:
-      case /* Zero Width Joiner */ 0x200d:
-      case /* Left-To-Right Mark */ 0x200e:
-      case /* Right-To-Left Mark */ 0x200f:
-      case /* Combining Grapheme Joiner */ 0x034f:
-        return null;
     }
     return makeLabel(
       {
@@ -141,6 +147,22 @@ export function makeKeyComponent(
         align: ["m", "m"],
       },
       clsx(className, isDiacritic(codePoint) && styles.deadSymbol),
+    );
+  }
+
+  function makeLigatureLabel(
+    { ligature }: { readonly ligature: string },
+    x: number,
+    y: number,
+    className: ClassName,
+  ): ReactNode {
+    return makeLabel(
+      {
+        text: ligature,
+        pos: [x, y],
+        align: ["m", "m"],
+      },
+      clsx(className, styles.ligatureSymbol),
     );
   }
 }

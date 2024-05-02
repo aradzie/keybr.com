@@ -3,6 +3,7 @@ export const symbol: string;
 export const primarySymbol: string;
 export const secondarySymbol: string;
 export const deadSymbol: string;
+export const ligatureSymbol: string;
 export const bump: string;
 export const handLeft: string;
 export const handRight: string;

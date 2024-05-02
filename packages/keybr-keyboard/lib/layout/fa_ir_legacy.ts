@@ -20,7 +20,7 @@ export const LAYOUT_FA_IR_LEGACY: CharacterDict = {
   KeyQ: [/* ض */ 0x0636, /* ً */ 0x064b],
   KeyW: [/* ص */ 0x0635, /* ٌ */ 0x064c],
   KeyE: [/* ث */ 0x062b, /* ٍ */ 0x064d],
-  KeyR: [/* ق */ 0x0642],
+  KeyR: [/* ق */ 0x0642, { ligature: "ريال" }],
   KeyT: [/* ف */ 0x0641, /* ، */ 0x060c],
   KeyY: [/* غ */ 0x063a, /* ؛ */ 0x061b],
   KeyU: [/* ع */ 0x0639, /* , */ 0x002c],

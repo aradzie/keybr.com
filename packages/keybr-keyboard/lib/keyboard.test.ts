@@ -15,6 +15,12 @@ test("data", (t) => {
       /* b */ 0x0062,
       /* B */ 0x0042,
     ],
+    KeyB: [
+      { special: /* a */ 0x0061 },
+      { special: /* b */ 0x0062 },
+      { ligature: "XX" },
+      { ligature: "YY" },
+    ],
     Equal: [
       /* COMBINING ACUTE ACCENT */ 0x0301, //
       /* COMBINING GRAVE ACCENT */ 0x0300,
@@ -22,6 +28,7 @@ test("data", (t) => {
   };
   const geometryDict: GeometryDict = {
     KeyA: { x: 0, y: 0, zones: ["indexLeft", "left"] },
+    KeyB: { x: 0, y: 0, zones: ["indexLeft", "left"] },
     Equal: { x: 0, y: 0, zones: ["indexRight", "right"] },
   };
   const keyboard = new Keyboard(
@@ -100,6 +107,16 @@ test("data", (t) => {
     ),
   );
   t.deepEqual(
+    keyboard.getCharacters("KeyB"),
+    new KeyCharacters(
+      "KeyB",
+      { special: /* a */ 0x0061 },
+      { special: /* b */ 0x0062 },
+      { ligature: "XX" },
+      { ligature: "YY" },
+    ),
+  );
+  t.deepEqual(
     keyboard.getCharacters("Equal"),
     new KeyCharacters(
       "Equal",
@@ -120,6 +137,7 @@ test("data", (t) => {
   t.deepEqual(keyboard.getCombo(/* á */ 0x00e1), kc0x00e1);
 
   const shapeKeyA = keyboard.getShape("KeyA")!;
+  const shapeKeyB = keyboard.getShape("KeyB")!;
   const shapeEqual = keyboard.getShape("Equal")!;
   t.is(shapeKeyA.finger, "indexLeft");
   t.is(shapeKeyA.hand, "left");
@@ -127,9 +145,9 @@ test("data", (t) => {
   t.is(shapeEqual.finger, "indexRight");
   t.is(shapeEqual.hand, "right");
   t.is(shapeEqual.row, null);
-  t.deepEqual(keyboard.zones.get("left"), [shapeKeyA]);
+  t.deepEqual(keyboard.zones.get("left"), [shapeKeyA, shapeKeyB]);
   t.deepEqual(keyboard.zones.get("right"), [shapeEqual]);
-  t.deepEqual(keyboard.zones.get("indexLeft"), [shapeKeyA]);
+  t.deepEqual(keyboard.zones.get("indexLeft"), [shapeKeyA, shapeKeyB]);
   t.deepEqual(keyboard.zones.get("indexRight"), [shapeEqual]);
   t.is(keyboard.zones.get("home"), undefined);
 });
