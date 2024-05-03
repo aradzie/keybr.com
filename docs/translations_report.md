@@ -18,9 +18,9 @@ Untranslated: 43 messages, 416 words
 
 # German
 
-Translated: 414 messages, 5021 words
+Translated: 425 messages, 5237 words
 
-Untranslated: 18 messages, 223 words
+Untranslated: 7 messages, 7 words
 
 # Greek
 
@@ -72,9 +72,9 @@ Untranslated: 252 messages, 3862 words
 
 # Italian
 
-Translated: 370 messages, 2833 words
+Translated: 380 messages, 3202 words
 
-Untranslated: 62 messages, 2411 words
+Untranslated: 52 messages, 2042 words
 
 # Japanese
 
