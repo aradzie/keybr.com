@@ -46,13 +46,13 @@ export function LayoutsApp(): ReactNode {
             id="layouts.stats.topRowKeys.name"
             defaultMessage="Keys on the top row:"
           />
-          <dd>
-            <FormattedMessage
-              id="layouts.stats.topRowKeys.description"
-              defaultMessage="The percentage of keys typed on the Tab row, the less the better."
-            />
-          </dd>
         </dt>
+        <dd>
+          <FormattedMessage
+            id="layouts.stats.topRowKeys.description"
+            defaultMessage="The percentage of keys typed on the Tab row, the less the better."
+          />
+        </dd>
         <dt>
           <FormattedMessage
             id="layouts.stats.bottomRowKeys.name"
