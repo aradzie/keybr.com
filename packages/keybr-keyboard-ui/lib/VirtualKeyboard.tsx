@@ -6,8 +6,8 @@ import {
   type ReactNode,
   type WheelEventHandler,
 } from "react";
-import { frameWidth, keyGap, keySize } from "./constants.ts";
 import { Patterns } from "./Patterns.tsx";
+import { getFrameSize } from "./shapes.tsx";
 import * as styles from "./VirtualKeyboard.module.less";
 
 export const VirtualKeyboard = memo(function VirtualKeyboard({
@@ -35,16 +35,12 @@ export const VirtualKeyboard = memo(function VirtualKeyboard({
   readonly onMouseUp?: MouseEventHandler;
   readonly onWheel?: WheelEventHandler;
 }): ReactNode {
-  const { cols, rows } = dims(keyboard);
-  const viewBox = {
-    width: frameWidth * 2 + cols * keySize - keyGap,
-    height: frameWidth * 2 + rows * keySize - keyGap,
-  };
+  const size = getFrameSize(keyboard);
   return (
     <svg
       className={styles.keyboard}
-      viewBox={`0 0 ${viewBox.width} ${viewBox.height}`}
-      style={{ aspectRatio: `${viewBox.width}/${viewBox.height}`, ...style }}
+      viewBox={`0 0 ${size.width} ${size.height}`}
+      style={{ aspectRatio: `${size.width}/${size.height}`, ...style }}
       width={width}
       height={height}
       onClick={onClick}
@@ -61,8 +57,8 @@ export const VirtualKeyboard = memo(function VirtualKeyboard({
         className={styles.frame}
         x={0}
         y={0}
-        width={viewBox.width}
-        height={viewBox.height}
+        width={size.width}
+        height={size.height}
         rx={10}
         ry={10}
       />
@@ -72,13 +68,3 @@ export const VirtualKeyboard = memo(function VirtualKeyboard({
     </svg>
   );
 });
-
-function dims(keyboard: Keyboard) {
-  let cols = 0;
-  let rows = 0;
-  for (const shape of keyboard.shapes.values()) {
-    cols = Math.max(cols, shape.x + shape.w);
-    rows = Math.max(rows, shape.y + shape.h);
-  }
-  return { cols, rows };
-}

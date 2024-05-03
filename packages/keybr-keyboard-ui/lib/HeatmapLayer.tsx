@@ -2,8 +2,8 @@ import { type KeyShape, useKeyboard } from "@keybr/keyboard";
 import { type CodePoint } from "@keybr/unicode";
 import { clsx } from "clsx";
 import { memo, type ReactNode } from "react";
-import { frameWidth, keyGap, keySize } from "./constants.ts";
 import * as styles from "./HeatmapLayer.module.less";
+import { getKeyCenter, Surface } from "./shapes.tsx";
 
 export const HeatmapLayer = memo(function HeatmapLayer({
   histogram,
@@ -14,11 +14,7 @@ export const HeatmapLayer = memo(function HeatmapLayer({
 }): ReactNode {
   type Item = [shape: KeyShape, f: number];
   const keyboard = useKeyboard();
-  return (
-    <svg x={frameWidth} y={frameWidth}>
-      {items().map(draw)}
-    </svg>
-  );
+  return <Surface>{items().map(draw)}</Surface>;
 
   function items() {
     const map = new Map<KeyShape, number>();
@@ -58,8 +54,7 @@ export const HeatmapLayer = memo(function HeatmapLayer({
   }
 
   function draw([shape, f]: Item, index: number): ReactNode {
-    const cx = shape.x * keySize + (shape.w * (keySize - keyGap)) / 2;
-    const cy = shape.y * keySize + (shape.h * (keySize - keyGap)) / 2;
+    const { x, y } = getKeyCenter(shape);
     switch (modifier) {
       case "h": {
         // Top left semicircle.
@@ -68,7 +63,7 @@ export const HeatmapLayer = memo(function HeatmapLayer({
           <path
             key={index}
             className={clsx(styles.spot, styles.spot_h)}
-            d={`M ${cx - r} ${cy + r} A${r} ${r} 0 0 1 ${cx + r} ${cy - r}`}
+            d={`M ${x - r} ${y + r} A${r} ${r} 0 0 1 ${x + r} ${y - r}`}
           />
         );
       }
@@ -79,7 +74,7 @@ export const HeatmapLayer = memo(function HeatmapLayer({
           <path
             key={index}
             className={clsx(styles.spot, styles.spot_m)}
-            d={`M ${cx - r} ${cy + r} A ${r} ${r} 0 0 0 ${cx + r} ${cy - r}`}
+            d={`M ${x - r} ${y + r} A ${r} ${r} 0 0 0 ${x + r} ${y - r}`}
           />
         );
       }
@@ -90,8 +85,8 @@ export const HeatmapLayer = memo(function HeatmapLayer({
           <circle
             key={index}
             className={clsx(styles.spot, styles.spot_f)}
-            cx={cx}
-            cy={cy}
+            cx={x}
+            cy={y}
             r={r}
           />
         );

@@ -11,8 +11,8 @@ import {
   type ReactNode,
   useMemo,
 } from "react";
-import { frameWidth } from "./constants.ts";
 import { type KeyProps, makeKeyComponent } from "./Key.tsx";
+import { Surface } from "./shapes.tsx";
 
 export const KeyLayer = memo(function KeyLayer({
   depressedKeys = [],
@@ -26,11 +26,11 @@ export const KeyLayer = memo(function KeyLayer({
   const keyboard = useKeyboard();
   const children = useMemo(() => getKeyElements(keyboard), [keyboard]);
   return (
-    <svg x={frameWidth} y={frameWidth}>
+    <Surface>
       {children.map((child) =>
         child.select(depressedKeys, toggledKeys, showColors),
       )}
-    </svg>
+    </Surface>
   );
 });
 

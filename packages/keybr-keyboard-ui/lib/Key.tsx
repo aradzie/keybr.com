@@ -16,8 +16,8 @@ import {
   type MouseEventHandler,
   type ReactNode,
 } from "react";
-import { keyGap, keySize } from "./constants.ts";
 import * as styles from "./Key.module.less";
+import { keyGap, keySize } from "./shapes.tsx";
 
 export type KeyProps = {
   readonly depressed?: boolean;

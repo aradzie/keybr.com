@@ -6,8 +6,8 @@ import {
 } from "@keybr/keyboard";
 import { type CodePoint } from "@keybr/unicode";
 import { memo, type ReactNode, useEffect, useRef, useState } from "react";
-import { frameWidth, keySize, pointerSize } from "./constants.ts";
 import * as styles from "./PointersLayer.module.less";
+import { getKeyCenter, Surface } from "./shapes.tsx";
 
 export const PointersLayer = memo(function PointersLayer({
   suffix,
@@ -42,11 +42,7 @@ export const PointersLayer = memo(function PointersLayer({
       }
     }
   }, [combo]);
-  return (
-    <svg ref={svgRef} x={frameWidth} y={frameWidth}>
-      {...pointers(keyboard, combo)}
-    </svg>
-  );
+  return <Surface ref={svgRef}>{...pointers(keyboard, combo)}</Surface>;
 });
 
 function pointers(keyboard: Keyboard, combo: KeyCombo | null): ReactNode[] {
@@ -101,13 +97,10 @@ function pointer(shape: KeyShape | null, className: string): ReactNode {
   if (shape == null) {
     return null;
   }
+  const { x, y } = getKeyCenter(shape);
+  const pointerSize = 30;
   return (
-    <circle
-      className={className}
-      cx={shape.x * keySize + (shape.w * keySize) / 2}
-      cy={shape.y * keySize + (shape.h * keySize) / 2}
-      r={pointerSize}
-    >
+    <circle className={className} cx={x} cy={y} r={pointerSize}>
       <animate
         attributeName="opacity"
         from={0}

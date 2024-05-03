@@ -2,7 +2,7 @@ import { type KeyShape, useKeyboard } from "@keybr/keyboard";
 import { type CodePoint } from "@keybr/unicode";
 import { clsx } from "clsx";
 import { memo, type ReactNode } from "react";
-import { frameWidth, keyGap, keySize } from "./constants.ts";
+import { getKeyCenter, Surface } from "./shapes.tsx";
 import * as styles from "./TransitionsLayer.module.less";
 
 export const TransitionsLayer = memo(function TransitionsLayer({
@@ -15,7 +15,7 @@ export const TransitionsLayer = memo(function TransitionsLayer({
   type Item = [shape0: KeyShape, shape1: KeyShape, f: number];
   const keyboard = useKeyboard();
   return (
-    <svg x={frameWidth} y={frameWidth}>
+    <Surface>
       <defs>
         <marker
           id={styles.arrow}
@@ -35,7 +35,7 @@ export const TransitionsLayer = memo(function TransitionsLayer({
         </marker>
       </defs>
       {items().map(draw)}
-    </svg>
+    </Surface>
   );
 
   function items() {
@@ -82,23 +82,21 @@ export const TransitionsLayer = memo(function TransitionsLayer({
     if (shape0 === shape1) {
       return null;
     }
-    const x1 = shape0.x * keySize + (shape0.w * (keySize - keyGap)) / 2;
-    const y1 = shape0.y * keySize + (shape0.h * (keySize - keyGap)) / 2;
-    const x2 = shape1.x * keySize + (shape1.w * (keySize - keyGap)) / 2;
-    const y2 = shape1.y * keySize + (shape1.h * (keySize - keyGap)) / 2;
-    const dx = x2 - x1;
-    const dy = y2 - y1;
+    const { x: x0, y: y0 } = getKeyCenter(shape0);
+    const { x: x1, y: y1 } = getKeyCenter(shape1);
+    const dx = x1 - x0;
+    const dy = y1 - y0;
     const theta = Math.atan2(dy, dx);
     const l = Math.sqrt(dx * dx + dy * dy);
-    const ox = (y2 - y1) / l;
-    const oy = -(x2 - x1) / l;
-    const mx = x1 + (x2 - x1) / 2 + (ox * l) / 4;
-    const my = y1 + (y2 - y1) / 2 + (oy * l) / 4;
+    const ox = (y1 - y0) / l;
+    const oy = -(x1 - x0) / l;
+    const mx = x0 + (x1 - x0) / 2 + (ox * l) / 4;
+    const my = y0 + (y1 - y0) / 2 + (oy * l) / 4;
     const t = 3;
-    const X1 = x1 + Math.cos(theta) * t;
-    const Y1 = y1 + Math.sin(theta) * t;
-    const X2 = x2 - Math.cos(theta) * t;
-    const Y2 = y2 - Math.sin(theta) * t;
+    const X1 = x0 + Math.cos(theta) * t;
+    const Y1 = y0 + Math.sin(theta) * t;
+    const X2 = x1 - Math.cos(theta) * t;
+    const Y2 = y1 - Math.sin(theta) * t;
     return (
       <path
         key={index}
