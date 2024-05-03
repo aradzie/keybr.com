@@ -3,7 +3,7 @@ import test from "ava";
 import TestRenderer from "react-test-renderer";
 import { makeKeyComponent } from "./Key.tsx";
 
-test("render", (t) => {
+test("static labels", (t) => {
   const shape = new KeyShape(
     "my-key",
     {
@@ -12,10 +12,8 @@ test("render", (t) => {
       w: 1,
       h: 1,
       labels: [{ text: "XYZ", pos: [20, 20], align: ["m", "m"] }],
-      zones: ["pinky"],
-      homing: true,
     },
-    [0x0061, 0x0062, 0x0063, 0x0064],
+    null,
   );
 
   const Key = makeKeyComponent(Language.EN, shape);
@@ -35,10 +33,10 @@ test("letter labels", (t) => {
       h: 1,
     },
     [
-      /* Latin Small Letter Dotless I */ 0x0131, // Base
-      /* Latin Capital Letter I */ 0x0049, // Shift
-      /* Latin Small Letter I */ 0x0069, // Alt
-      /* Latin Capital Letter I with Dot Above */ 0x0130, // Shift+Alt
+      /* Latin Small Letter Dotless I */ 0x0131, //
+      /* Latin Capital Letter I */ 0x0049,
+      /* Latin Small Letter I */ 0x0069,
+      /* Latin Capital Letter I with Dot Above */ 0x0130,
     ],
   );
 
@@ -60,9 +58,9 @@ test("dead labels", (t) => {
     },
     [
       { dead: /* COMBINING GRAVE ACCENT */ 0x0300 },
-      null,
       { dead: /* COMBINING ACUTE ACCENT */ 0x0301 },
-      null,
+      { dead: /* * */ 0x002a },
+      { dead: /* * */ 0x002a },
     ],
   );
 
@@ -82,7 +80,36 @@ test("ligature labels", (t) => {
       w: 1,
       h: 1,
     },
-    [{ ligature: "FI" }, null, { ligature: "FL" }, null],
+    [
+      { ligature: "XX" },
+      { ligature: "YY" },
+      { ligature: "AA" },
+      { ligature: "BB" },
+    ],
+  );
+
+  const Key = makeKeyComponent(Language.DE, shape);
+
+  const renderer = TestRenderer.create(<Key />);
+
+  t.snapshot(renderer.toJSON());
+});
+
+test("mixed labels", (t) => {
+  const shape = new KeyShape(
+    "my-key",
+    {
+      x: 0,
+      y: 0,
+      w: 1,
+      h: 1,
+    },
+    [
+      /* a */ 0x0061,
+      { dead: /* COMBINING GRAVE ACCENT */ 0x0300 },
+      { special: /* ZERO WIDTH JOINER */ 0x200d },
+      { ligature: "XX" },
+    ],
   );
 
   const Key = makeKeyComponent(Language.DE, shape);
@@ -101,7 +128,11 @@ test("space", (t) => {
       w: 1,
       h: 1,
     },
-    [/* SPACE */ 0x0020],
+    [
+      /* SPACE */ 0x0020, //
+      /* NO-BREAK SPACE */ 0x00a0,
+      /* NARROW NO-BREAK SPACE */ 0x202f,
+    ],
   );
 
   const Key = makeKeyComponent(Language.EN, shape);

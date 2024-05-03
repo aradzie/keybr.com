@@ -24,6 +24,8 @@ test("data", (t) => {
     Equal: [
       { dead: /* COMBINING ACUTE ACCENT */ 0x0301 },
       { dead: /* COMBINING GRAVE ACCENT */ 0x0300 },
+      { dead: /* * */ 0x002a },
+      { dead: /* * */ 0x002a },
     ],
   };
   const geometryDict: GeometryDict = {
@@ -122,8 +124,8 @@ test("data", (t) => {
       "Equal",
       { dead: /* COMBINING ACUTE ACCENT */ 0x0301 },
       { dead: /* COMBINING GRAVE ACCENT */ 0x0300 },
-      null,
-      null,
+      { dead: /* * */ 0x002a },
+      { dead: /* * */ 0x002a },
     ),
   );
 

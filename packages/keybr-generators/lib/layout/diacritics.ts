@@ -33,12 +33,14 @@ export const makeDeadCharacter = (
   const dead = diacritics.get(codePoint);
   if (dead != null) {
     return dead;
-  } else {
-    console.error(
-      chalk.red(
-        `[${keyId}] Invalid dead character ${formatCodePointValue(codePoint)}`,
-      ),
-    );
-    return null;
   }
+  if (codePoint === /* * */ 0x002a) {
+    return { dead: codePoint };
+  }
+  console.error(
+    chalk.red(
+      `[${keyId}] Invalid dead character ${formatCodePointValue(codePoint)}`,
+    ),
+  );
+  return null;
 };

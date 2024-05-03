@@ -147,9 +147,9 @@ export function makeKeyComponent(
     className: ClassName,
   ): ReactNode {
     switch (codePoint) {
-      case /* Space */ 0x0020:
-      case /* No-Break Space */ 0x00a0:
-      case /* Narrow No-Break Space */ 0x202f:
+      case /* SPACE */ 0x0020:
+      case /* NO-BREAK SPACE */ 0x00a0:
+      case /* NARROW NO-BREAK SPACE */ 0x202f:
         return null;
     }
     return makeLabel(
