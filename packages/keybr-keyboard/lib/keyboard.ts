@@ -9,6 +9,7 @@ import { getExampleLetters, getExampleText } from "./language.ts";
 import { type Layout } from "./layout.ts";
 import {
   type CharacterDict,
+  type DeadCharacter,
   type GeometryDict,
   type KeyId,
   type WeightedCodePointSet,
@@ -181,7 +182,7 @@ function addCombo(
 
 function addDeadCombo(
   map: Map<CodePoint, KeyCombo>,
-  { dead }: { readonly dead: CodePoint },
+  { dead }: DeadCharacter,
   id: KeyId,
   modifier: KeyModifier,
 ): void {

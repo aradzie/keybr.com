@@ -1,51 +1,29 @@
 import { isNumber, isObject } from "@keybr/lang";
 import { type CodePoint } from "@keybr/unicode";
 import { KeyModifier } from "./keymodifier.ts";
-import { type Character, type KeyId } from "./types.ts";
-
-const toCodePoint = (character: Character | null): CodePoint | null => {
-  return KeyCharacters.isCodePoint(character) ? character : null;
-};
+import {
+  type Character,
+  type DeadCharacter,
+  type KeyId,
+  type LigatureCharacter,
+  type SpecialCharacter,
+} from "./types.ts";
 
 export class KeyCharacters {
-  static characterType = (character: Character | null) => {
-    if (KeyCharacters.isCodePoint(character)) {
-      return "codePoint";
-    }
-    if (KeyCharacters.isDead(character)) {
-      return "dead";
-    }
-    if (KeyCharacters.isSpecial(character)) {
-      return "special";
-    }
-    if (KeyCharacters.isLigature(character)) {
-      return "ligature";
-    }
-    return null;
+  static isCodePoint = (ch: Character | null): ch is CodePoint => {
+    return isNumber(ch) && ch > 0x0000;
   };
 
-  static isCodePoint = (
-    character: Character | null,
-  ): character is CodePoint => {
-    return isNumber(character) && character > 0x0000;
+  static isDead = (ch: Character | null): ch is DeadCharacter => {
+    return isObject(ch) && "dead" in ch;
   };
 
-  static isDead = (
-    character: Character | null,
-  ): character is { readonly dead: CodePoint } => {
-    return isObject(character) && "dead" in character;
+  static isSpecial = (ch: Character | null): ch is SpecialCharacter => {
+    return isObject(ch) && "special" in ch;
   };
 
-  static isSpecial = (
-    character: Character | null,
-  ): character is { readonly special: CodePoint } => {
-    return isObject(character) && "special" in character;
-  };
-
-  static isLigature = (
-    character: Character | null,
-  ): character is { readonly ligature: string } => {
-    return isObject(character) && "ligature" in character;
+  static isLigature = (ch: Character | null): ch is LigatureCharacter => {
+    return isObject(ch) && "ligature" in ch;
   };
 
   constructor(
@@ -57,10 +35,10 @@ export class KeyCharacters {
   ) {}
 
   getCodePoint(modifier: KeyModifier): CodePoint | 0x0000 {
-    const a = toCodePoint(this.a);
-    const b = toCodePoint(this.b);
-    const c = toCodePoint(this.c);
-    const d = toCodePoint(this.d);
+    const a = KeyCharacters.isCodePoint(this.a) ? this.a : null;
+    const b = KeyCharacters.isCodePoint(this.b) ? this.b : null;
+    const c = KeyCharacters.isCodePoint(this.c) ? this.c : null;
+    const d = KeyCharacters.isCodePoint(this.d) ? this.d : null;
     switch (modifier) {
       case KeyModifier.None:
         return a ?? 0x0000;

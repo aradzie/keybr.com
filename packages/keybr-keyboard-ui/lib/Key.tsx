@@ -1,9 +1,11 @@
 import {
+  type DeadCharacter,
   isDiacritic,
   KeyCharacters,
   type KeyShape,
   type LabelShape,
   type Language,
+  type LigatureCharacter,
 } from "@keybr/keyboard";
 import { type CodePoint } from "@keybr/unicode";
 import { type ClassName } from "@keybr/widget";
@@ -163,7 +165,7 @@ export function makeKeyComponent(
   }
 
   function makeDeadLabel(
-    { dead }: { readonly dead: CodePoint },
+    { dead }: DeadCharacter,
     x: number,
     y: number,
     className: ClassName,
@@ -181,7 +183,7 @@ export function makeKeyComponent(
   }
 
   function makeLigatureLabel(
-    { ligature }: { readonly ligature: string },
+    { ligature }: LigatureCharacter,
     x: number,
     y: number,
     className: ClassName,
