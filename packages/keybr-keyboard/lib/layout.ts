@@ -806,6 +806,21 @@ export class Layout implements XEnumItem {
     /* emulate= */ true,
     /* geometries= */ new Enum(Geometry.MATRIX),
   );
+  static readonly EN_HANDS_DOWN_NEU = new Layout(
+    /* id= */ "en-hands-down-neu",
+    /* xid= */ 0x95,
+    /* name= */ "Hands Down Neu",
+    /* family= */ "hands-down-neu",
+    /* language= */ Language.EN,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.MATRIX,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+    ),
+  );
 
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
@@ -821,6 +836,7 @@ export class Layout implements XEnumItem {
     Layout.EN_CANARY_MATRIX,
     Layout.EN_NERPS,
     Layout.EN_NERPS_MATRIX,
+    Layout.EN_HANDS_DOWN_NEU,
     Layout.EN_NORMAN,
     Layout.EN_HALMAK,
     Layout.EN_ENGRAM,

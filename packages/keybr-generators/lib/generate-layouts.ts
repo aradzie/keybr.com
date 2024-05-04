@@ -39,6 +39,7 @@ for (const [id, dict] of [
   ["en_engram", importKlc("layouts/engram.klc")],
   ["en_engrammer", importKlc("layouts/engrammer.klc")],
   ["en_halmak", importKeymap("layouts/en_halmak.json")],
+  ["en_hands_down_neu", importKeymap("layouts/en_hands_down_neu.json")],
   ["en_nerps", importKeymap("layouts/en_nerps.json")],
   ["en_nerps_matrix", importKeymap("layouts/en_nerps_matrix.json")],
   ["en_norman", importKeymap("layouts/en_norman.json")],
