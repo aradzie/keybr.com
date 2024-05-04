@@ -28,6 +28,8 @@ for (const [id, dict] of [
   ["el_gr", importCldr("cldr-keyboards-43.0/keyboards/windows/el-t-k0-windows.xml")],
   ["en_canary", importKeymap("layouts/en_canary.json")],
   ["en_canary_matrix", importKeymap("layouts/en_canary_matrix.json")],
+  ["en_nerps", importKeymap("layouts/en_nerps.json")],
+  ["en_nerps_matrix", importKeymap("layouts/en_nerps_matrix.json")],
   ["en_colemak", undead(importKlc("layouts/colemak.klc"))],
   ["en_colemak_dh_ansi", undead(importKlc("layouts/colemak_dh_ansi_us.klc"))],
   ["en_colemak_dh_ansi_wide", undead(importKlc("layouts/colemak_dh_ansi_us_wide.klc"))],

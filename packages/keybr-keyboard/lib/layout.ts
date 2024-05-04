@@ -662,6 +662,30 @@ export class Layout implements XEnumItem {
     /* emulate= */ true,
     /* geometries= */ new Enum(Geometry.MATRIX),
   );
+  static readonly EN_NERPS = new Layout(
+    /* id= */ "en-nerps",
+    /* xid= */ 0x2e,
+    /* name= */ "Nerps",
+    /* family= */ "nerps",
+    /* language= */ Language.EN,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.MATRIX,
+    ),
+  );
+  static readonly EN_NERPS_MATRIX = new Layout(
+    /* id= */ "en-nerps-matrix",
+    /* xid= */ 0x2d,
+    /* name= */ "Nerps (matrix)",
+    /* family= */ "nerps-matrix",
+    /* language= */ Language.EN,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(Geometry.MATRIX),
+  );
   static readonly EN_NORMAN = new Layout(
     /* id= */ "en-norman",
     /* xid= */ 0x8b,
@@ -780,6 +804,8 @@ export class Layout implements XEnumItem {
     Layout.EN_WORKMAN,
     Layout.EN_CANARY,
     Layout.EN_CANARY_MATRIX,
+    Layout.EN_NERPS,
+    Layout.EN_NERPS_MATRIX,
     Layout.EN_NORMAN,
     Layout.EN_HALMAK,
     Layout.EN_UK,
