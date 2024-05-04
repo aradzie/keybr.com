@@ -14,9 +14,7 @@ import { pathTo } from "./root.ts";
 
 for (const [id, dict] of [
   ["ar_sa", importCldr("cldr-keyboards-43.0/keyboards/windows/ar-t-k0-windows.xml")],
-  // ["ar_sa", importKlc("layouts/ar_sa.klc")],
   ["ar_sa_102", importCldr("cldr-keyboards-43.0/keyboards/windows/ar-t-k0-windows-102key.xml")],
-  // ["ar_sa_102", importKlc("layouts/ar_sa_102.klc")],
   ["be_by", importCldr("cldr-keyboards-43.0/keyboards/windows/be-t-k0-windows.xml")],
   ["cs_cz", importCldr("cldr-keyboards-43.0/keyboards/windows/cs-t-k0-windows.xml")],
   ["de_bone", importKeymap("layouts/de_bone.json")],
@@ -28,8 +26,6 @@ for (const [id, dict] of [
   ["el_gr", importCldr("cldr-keyboards-43.0/keyboards/windows/el-t-k0-windows.xml")],
   ["en_canary", importKeymap("layouts/en_canary.json")],
   ["en_canary_matrix", importKeymap("layouts/en_canary_matrix.json")],
-  ["en_nerps", importKeymap("layouts/en_nerps.json")],
-  ["en_nerps_matrix", importKeymap("layouts/en_nerps_matrix.json")],
   ["en_colemak", undead(importKlc("layouts/colemak.klc"))],
   ["en_colemak_dh_ansi", undead(importKlc("layouts/colemak_dh_ansi_us.klc"))],
   ["en_colemak_dh_ansi_wide", undead(importKlc("layouts/colemak_dh_ansi_us_wide.klc"))],
@@ -43,6 +39,8 @@ for (const [id, dict] of [
   ["en_engram", importKlc("layouts/engram.klc")],
   ["en_engrammer", importKlc("layouts/engrammer.klc")],
   ["en_halmak", importKeymap("layouts/en_halmak.json")],
+  ["en_nerps", importKeymap("layouts/en_nerps.json")],
+  ["en_nerps_matrix", importKeymap("layouts/en_nerps_matrix.json")],
   ["en_norman", importKeymap("layouts/en_norman.json")],
   ["en_uk", importCldr("cldr-keyboards-43.0/keyboards/windows/en-GB-t-k0-windows.xml")],
   ["en_us", importCldr("cldr-keyboards-43.0/keyboards/windows/en-t-k0-windows.xml")],
