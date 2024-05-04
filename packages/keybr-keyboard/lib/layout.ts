@@ -662,30 +662,6 @@ export class Layout implements XEnumItem {
     /* emulate= */ true,
     /* geometries= */ new Enum(Geometry.MATRIX),
   );
-  static readonly EN_NERPS = new Layout(
-    /* id= */ "en-nerps",
-    /* xid= */ 0x2e,
-    /* name= */ "Nerps",
-    /* family= */ "nerps",
-    /* language= */ Language.EN,
-    /* emulate= */ true,
-    /* geometries= */ new Enum(
-      Geometry.ANSI_101,
-      Geometry.ANSI_101_FULL,
-      Geometry.ISO_102,
-      Geometry.ISO_102_FULL,
-      Geometry.MATRIX,
-    ),
-  );
-  static readonly EN_NERPS_MATRIX = new Layout(
-    /* id= */ "en-nerps-matrix",
-    /* xid= */ 0x2d,
-    /* name= */ "Nerps (matrix)",
-    /* family= */ "nerps-matrix",
-    /* language= */ Language.EN,
-    /* emulate= */ true,
-    /* geometries= */ new Enum(Geometry.MATRIX),
-  );
   static readonly EN_NORMAN = new Layout(
     /* id= */ "en-norman",
     /* xid= */ 0x8b,
@@ -791,6 +767,45 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly EN_ENGRAM = new Layout(
+    /* id= */ "en-engram",
+    /* xid= */ 0x92,
+    /* name= */ "Engram",
+    /* family= */ "en-engram",
+    /* language= */ Language.EN,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.MATRIX,
+    ),
+  );
+  static readonly EN_NERPS = new Layout(
+    /* id= */ "en-nerps",
+    /* xid= */ 0x93,
+    /* name= */ "Nerps",
+    /* family= */ "nerps",
+    /* language= */ Language.EN,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.MATRIX,
+    ),
+  );
+  static readonly EN_NERPS_MATRIX = new Layout(
+    /* id= */ "en-nerps-matrix",
+    /* xid= */ 0x94,
+    /* name= */ "Nerps (matrix)",
+    /* family= */ "nerps-matrix",
+    /* language= */ Language.EN,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(Geometry.MATRIX),
+  );
 
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
@@ -808,6 +823,7 @@ export class Layout implements XEnumItem {
     Layout.EN_NERPS_MATRIX,
     Layout.EN_NORMAN,
     Layout.EN_HALMAK,
+    Layout.EN_ENGRAM,
     Layout.EN_UK,
     Layout.EN_JP,
     Layout.EL_GR,
