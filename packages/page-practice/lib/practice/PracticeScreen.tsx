@@ -7,6 +7,7 @@ import { loadSounds } from "@keybr/sound";
 import { textInputSounds } from "@keybr/textinput-sounds";
 import { type ReactNode, useEffect, useRef } from "react";
 import { Controller } from "./Controller.tsx";
+import { displayEvent, useEvents } from "./events/index.ts";
 import {
   type LastLesson,
   makeLastLesson,
@@ -38,6 +39,7 @@ function ResultUpdater({
 }): ReactNode {
   const { settings } = useSettings();
   const { results, appendResults } = useResults();
+  const events = useEvents(settings, lesson);
   const lastLesson = useRef<LastLesson | null>(null);
   useEffect(() => {
     loadSounds(textInputSounds);
@@ -45,10 +47,12 @@ function ResultUpdater({
   const group = ResultGroups.byLayoutFamily(results).get(
     settings.get(keyboardProps.layout).family,
   );
+  events.appendAll(group.slice(events.length));
   const state = new PracticeState(settings, lesson, group, (result) => {
     if (result.validate()) {
       lastLesson.current = makeLastLesson(result, state.textInput.getSteps());
       appendResults([result]);
+      events.append(result, displayEvent);
     } else {
       appendResults([]); // Forces ui update.
     }
