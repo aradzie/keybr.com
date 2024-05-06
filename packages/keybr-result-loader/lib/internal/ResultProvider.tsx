@@ -1,6 +1,6 @@
-import { catchError } from "@keybr/debug";
 import { type Result, ResultContext } from "@keybr/result";
 import { type ReactNode, useState } from "react";
+import { catchError } from "./debug.tsx";
 import { type ResultStorage } from "./types.ts";
 
 export function ResultProvider({
@@ -18,21 +18,11 @@ export function ResultProvider({
       value={{
         results: results,
         appendResults: (newResults) => {
-          storage
-            .append(newResults)
-            .catch((err) => {
-              console.error(err);
-            })
-            .catch(catchError);
+          storage.append(newResults).catch(catchError);
           setResults([...results, ...newResults]);
         },
         clearResults: () => {
-          storage
-            .clear()
-            .catch((err) => {
-              console.error(err);
-            })
-            .catch(catchError);
+          storage.clear().catch(catchError);
           setResults([]);
         },
       }}

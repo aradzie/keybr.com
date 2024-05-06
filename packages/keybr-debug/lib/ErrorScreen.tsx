@@ -1,8 +1,8 @@
 import { Article, Header, Para } from "@keybr/widget";
 import { type ReactNode } from "react";
-import * as styles from "./ErrorDetails.module.less";
+import { ErrorReport } from "./ErrorReport.tsx";
 
-export function ErrorDetails({
+export function ErrorScreen({
   report,
 }: {
   readonly report: string;
@@ -13,7 +13,7 @@ export function ErrorDetails({
 
       <Para>Oh no, something bad has happened!</Para>
 
-      <pre className={styles.report}>{report}</pre>
+      <ErrorReport report={report} />
     </Article>
   );
 }

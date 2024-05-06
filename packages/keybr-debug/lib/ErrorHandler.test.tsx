@@ -15,7 +15,7 @@ test.afterEach(() => {
 
 test.serial("success", (t) => {
   const r = render(
-    <ErrorHandler details={DetailsMessage}>
+    <ErrorHandler display={ErrorDisplay}>
       <Child />
     </ErrorHandler>,
   );
@@ -33,13 +33,13 @@ test.serial("mount failure", (t) => {
   };
 
   const r = render(
-    <ErrorHandler details={DetailsMessage}>
+    <ErrorHandler display={ErrorDisplay}>
       <Child fail={new Error("abc", { cause: new Error("xyz") })} />
     </ErrorHandler>,
   );
 
   t.is(r.container.textContent, "Error: abc\n\nCause: Error: xyz");
-  t.is(logged.length, 0); // We cancelled logging in tests.
+  t.is(logged.length, 0); // We canceled the logging in tests.
 
   console.error = saved;
   r.unmount();
@@ -53,7 +53,7 @@ test.serial("external failure", (t) => {
   };
 
   const r = render(
-    <ErrorHandler details={DetailsMessage}>
+    <ErrorHandler display={ErrorDisplay}>
       <Child />
     </ErrorHandler>,
   );
@@ -69,7 +69,7 @@ test.serial("external failure", (t) => {
   r.unmount();
 });
 
-function DetailsMessage({ report }: { readonly report: string }) {
+function ErrorDisplay({ report }: { readonly report: string }) {
   return <div>{report}</div>;
 }
 

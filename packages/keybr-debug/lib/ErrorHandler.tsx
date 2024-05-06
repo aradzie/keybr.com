@@ -4,12 +4,12 @@ import {
   type ErrorInfo,
   type ReactNode,
 } from "react";
-import { ErrorDetails } from "./ErrorDetails.tsx";
+import { ErrorScreen } from "./ErrorScreen.tsx";
 import { catchError, silentCatchError } from "./logger.ts";
 
 type Props = {
   readonly children?: ReactNode;
-  readonly details?: ComponentType<{ readonly report: string }>;
+  readonly display?: ComponentType<{ readonly report: string }>;
 };
 
 type State = {
@@ -39,11 +39,11 @@ export class ErrorHandler extends Component<Props, State> {
 
   override render(): ReactNode {
     const {
-      props: { children, details: Details = ErrorDetails },
+      props: { children, display: Display = ErrorScreen },
       state: { report },
     } = this;
     if (report != null) {
-      return <Details report={report} />;
+      return <Display report={report} />;
     } else {
       return children;
     }

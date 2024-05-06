@@ -1,4 +1,4 @@
-import { ErrorDetails, ErrorHandler } from "@keybr/debug";
+import { ErrorHandler } from "@keybr/debug";
 import { loadIntl } from "@keybr/intl";
 import { ThemeProvider, ThemeSwitcher } from "@keybr/lnf";
 import { getPageData, PageDataContext } from "@keybr/pages-shared";
@@ -18,7 +18,7 @@ export function init(slot: ReactElement<SlotProps> | null): void {
         to(selector).render(
           <RawIntlProvider value={intl}>
             <PageDataContext.Provider value={pageData}>
-              <ErrorHandler details={ErrorDetails}>{children}</ErrorHandler>
+              <ErrorHandler>{children}</ErrorHandler>
             </PageDataContext.Provider>
           </RawIntlProvider>,
         );
