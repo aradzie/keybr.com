@@ -1,3 +1,4 @@
+import { EventEmitter } from "@keybr/lang";
 import {
   type ClientMessage,
   GameState,
@@ -14,7 +15,6 @@ import { toTextDisplaySettings } from "@keybr/textinput";
 import { type TextInputEvent } from "@keybr/textinput-events";
 import { type Focusable, TextArea } from "@keybr/textinput-ui";
 import { useScreenSize } from "@keybr/widget";
-import mitt from "mitt";
 import { type ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import { type IntlShape, useIntl } from "react-intl";
 import * as styles from "./Game.module.less";
@@ -79,17 +79,14 @@ export const Game = ({
   );
 };
 
-class WorldStateWrapper {
-  readonly #emitter = mitt();
+class WorldStateWrapper extends EventEmitter {
   #worldState: WorldState;
-
-  readonly on = this.#emitter.on;
-  readonly off = this.#emitter.off;
 
   constructor(
     readonly transport: Transport<ServerMessage, ClientMessage>,
     readonly intl: IntlShape,
   ) {
+    super();
     this.#worldState = makeWorldState(this.intl);
   }
 
@@ -99,7 +96,7 @@ class WorldStateWrapper {
 
   setWorldState(worldState: WorldState): void {
     this.#worldState = worldState;
-    this.#emitter.emit(WORLD_CHANGE_EVENT, worldState);
+    this.emit(WORLD_CHANGE_EVENT, worldState);
   }
 
   handleReceive = (message: ServerMessage): void => {

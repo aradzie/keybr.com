@@ -6,6 +6,7 @@
   "types": ".types/index.d.ts",
   "dependencies": {
     "@keybr/intl": "*",
+    "@keybr/lang": "*",
     "@keybr/multiplayer-shared": "*",
     "@keybr/pages-shared": "*",
     "@keybr/rand": "*",
@@ -13,8 +14,7 @@
     "@keybr/textinput": "*",
     "@keybr/textinput-events": "*",
     "@keybr/textinput-ui": "*",
-    "@keybr/widget": "*",
-    "mitt": "^3.0.1"
+    "@keybr/widget": "*"
   },
   "devDependencies": {},
   "scripts": {
