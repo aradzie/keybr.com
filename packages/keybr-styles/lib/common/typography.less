@@ -91,56 +91,17 @@ figure > figcaption:last-child {
   margin-block-end: 0;
 }
 
-legend + h1,
-legend + h2,
-legend + h3,
-legend + p,
-legend + ol,
-legend + ul {
+legend + :where(h1, h2, h3, p, ol, ul) {
   margin-block-start: 0;
 }
 
-article > h1:first-child,
-article > h2:first-child,
-article > h3:first-child,
-article > p:first-child,
-article > ol:first-child,
-article > ul:first-child,
-article > figure:first-child,
-figure > h1:first-child,
-figure > h2:first-child,
-figure > h3:first-child,
-figure > p:first-child,
-figure > ol:first-child,
-figure > ul:first-child,
-fieldset > h1:first-child,
-fieldset > h2:first-child,
-fieldset > h3:first-child,
-fieldset > p:first-child,
-fieldset > ol:first-child,
-fieldset > ul:first-child {
+:where(article, figure, fieldset)
+  > :where(h1, h2, h3, p, ol, ul, figure):first-child {
   margin-block-start: 0;
 }
 
-article > h1:last-child,
-article > h2:last-child,
-article > h3:last-child,
-article > p:last-child,
-article > ol:last-child,
-article > ul:last-child,
-article > figure:last-child,
-figure > h1:last-child,
-figure > h2:last-child,
-figure > h3:last-child,
-figure > p:last-child,
-figure > ol:last-child,
-figure > ul:last-child,
-fieldset > h1:last-child,
-fieldset > h2:last-child,
-fieldset > h3:last-child,
-fieldset > p:last-child,
-fieldset > ol:last-child,
-fieldset > ul:last-child {
+:where(article, figure, fieldset)
+  > :where(h1, h2, h3, p, ol, ul, figure):last-child {
   margin-block-end: 0;
 }
 
