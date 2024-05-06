@@ -24,23 +24,17 @@ export function useLoader(storage: ResultStorage): LoaderState {
   useEffect(() => {
     let didCancel = false;
 
-    const load = async (): Promise<void> => {
+    const load = async () => {
       const results = await storage.load((total, current) => {
         if (!didCancel) {
-          setState({
-            type: "loading",
-            total,
-            current,
-          });
+          setState({ type: "loading", total, current });
         }
       });
       if (!didCancel) {
-        setState({
-          type: "ready",
-          results,
-        });
+        setState({ type: "ready", results });
       }
     };
+
     load().catch(catchError);
 
     return () => {

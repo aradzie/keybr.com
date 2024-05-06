@@ -16,11 +16,8 @@ export type ProgressListener = {
  * A composite result storage.
  */
 export type ResultStorage = {
-  load(progressListener?: ProgressListener): Promise<Result[]>;
-  append(
-    results: readonly Result[],
-    progressListener?: ProgressListener,
-  ): Promise<void>;
+  load(pl?: ProgressListener): Promise<Result[]>;
+  append(results: readonly Result[], pl?: ProgressListener): Promise<void>;
   clear(): Promise<void>;
 };
 
@@ -37,10 +34,7 @@ export type LocalResultStorage = {
  * A result storage which loads/sends results from/to the server.
  */
 export type RemoteResultSync = {
-  receive(progressListener: ProgressListener): Promise<Result[]>;
-  send(
-    results: readonly Result[],
-    progressListener: ProgressListener,
-  ): Promise<void>;
+  receive(pl: ProgressListener): Promise<Result[]>;
+  send(results: readonly Result[], pl: ProgressListener): Promise<void>;
   clear(): Promise<void>;
 };

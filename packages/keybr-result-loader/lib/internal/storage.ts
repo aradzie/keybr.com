@@ -59,9 +59,9 @@ function openRawResultStorage(
 
 function translateErrors(storage: ResultStorage): ResultStorage {
   return new (class ErrorTranslator implements ResultStorage {
-    async load(progressListener?: ProgressListener): Promise<Result[]> {
+    async load(pl?: ProgressListener): Promise<Result[]> {
       try {
-        return await storage.load(progressListener);
+        return await storage.load(pl);
       } catch (err: any) {
         throw new DatabaseError("Cannot read records from database", {
           cause: err,
@@ -71,10 +71,10 @@ function translateErrors(storage: ResultStorage): ResultStorage {
 
     async append(
       results: readonly Result[],
-      progressListener?: ProgressListener,
+      pl?: ProgressListener,
     ): Promise<void> {
       try {
-        await storage.append(results, progressListener);
+        await storage.append(results, pl);
       } catch (err: any) {
         throw new DatabaseError("Cannot add records to database", {
           cause: err,
@@ -96,17 +96,17 @@ function translateErrors(storage: ResultStorage): ResultStorage {
 
 function validateResults(storage: ResultStorage): ResultStorage {
   return new (class ErrorTranslator implements ResultStorage {
-    async load(progressListener?: ProgressListener): Promise<Result[]> {
-      return recoverResults(await storage.load(progressListener));
+    async load(pl?: ProgressListener): Promise<Result[]> {
+      return recoverResults(await storage.load(pl));
     }
 
     async append(
       results: readonly Result[],
-      progressListener?: ProgressListener,
+      pl?: ProgressListener,
     ): Promise<void> {
       results = results.filter(Result.isValid);
       if (results.length > 0) {
-        await storage.append(results, progressListener);
+        await storage.append(results, pl);
       }
     }
 
@@ -123,16 +123,11 @@ export class ResultStorageOfAnonymousUser implements ResultStorage {
     this.#local = local;
   }
 
-  async load(
-    progressListener = (total: number, current: number) => {},
-  ): Promise<Result[]> {
+  async load(pl = dummy): Promise<Result[]> {
     return await this.#local.load();
   }
 
-  async append(
-    results: readonly Result[],
-    progressListener = (total: number, current: number) => {},
-  ): Promise<void> {
+  async append(results: readonly Result[], pl = dummy): Promise<void> {
     await this.#local.append(results);
   }
 
@@ -150,16 +145,14 @@ export class ResultStorageOfNamedUser implements ResultStorage {
     this.#remote = remote;
   }
 
-  async load(
-    progressListener = (total: number, current: number) => {},
-  ): Promise<Result[]> {
-    const results = await this.#remote.receive(progressListener);
+  async load(pl = dummy): Promise<Result[]> {
+    const results = await this.#remote.receive(pl);
     if (results.length > 0) {
       return results;
     } else {
       const results = await this.#local.load();
       if (results.length > 0) {
-        await this.#remote.send(results, progressListener);
+        await this.#remote.send(results, pl);
         await this.#local.clear();
         return results;
       }
@@ -167,11 +160,8 @@ export class ResultStorageOfNamedUser implements ResultStorage {
     return [];
   }
 
-  async append(
-    results: readonly Result[],
-    progressListener = (total: number, current: number) => {},
-  ): Promise<void> {
-    await this.#remote.send(results, progressListener);
+  async append(results: readonly Result[], pl = dummy): Promise<void> {
+    await this.#remote.send(results, pl);
   }
 
   async clear(): Promise<void> {
@@ -186,16 +176,11 @@ export class ResultStorageOfPublicUser implements ResultStorage {
     this.#remote = remote;
   }
 
-  async load(
-    progressListener = (total: number, current: number) => {},
-  ): Promise<Result[]> {
-    return await this.#remote.receive(progressListener);
+  async load(pl = dummy): Promise<Result[]> {
+    return await this.#remote.receive(pl);
   }
 
-  async append(
-    results: readonly Result[],
-    progressListener = (total: number, current: number) => {},
-  ): Promise<void> {
+  async append(results: readonly Result[], pl = dummy): Promise<void> {
     throw new Error("Disabled");
   }
 
@@ -203,3 +188,5 @@ export class ResultStorageOfPublicUser implements ResultStorage {
     throw new Error("Disabled");
   }
 }
+
+function dummy(total: number, current: number): void {}

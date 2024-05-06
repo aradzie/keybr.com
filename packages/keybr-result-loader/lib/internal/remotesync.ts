@@ -12,15 +12,12 @@ import { type ProgressListener, type RemoteResultSync } from "./types.ts";
 const url = "/_/sync/data";
 
 export class ResultSyncNamedUser implements RemoteResultSync {
-  receive(progressListener: ProgressListener): Promise<Result[]> {
-    return receive(url, progressListener);
+  receive(pl: ProgressListener): Promise<Result[]> {
+    return receive(url, pl);
   }
 
-  send(
-    results: readonly Result[],
-    progressListener: ProgressListener,
-  ): Promise<void> {
-    return send(url, results, progressListener);
+  send(results: readonly Result[], pl: ProgressListener): Promise<void> {
+    return send(url, results, pl);
   }
 
   clear(): Promise<void> {
@@ -35,14 +32,11 @@ export class ResultSyncPublicUser implements RemoteResultSync {
     this.#userId = userId;
   }
 
-  receive(progressListener: ProgressListener): Promise<Result[]> {
-    return receive(publicUserDataUrl(this.#userId), progressListener);
+  receive(pl: ProgressListener): Promise<Result[]> {
+    return receive(publicUserDataUrl(this.#userId), pl);
   }
 
-  async send(
-    results: readonly Result[],
-    progressListener: ProgressListener,
-  ): Promise<void> {
+  async send(results: readonly Result[], pl: ProgressListener): Promise<void> {
     throw new Error("Disabled");
   }
 
@@ -52,14 +46,11 @@ export class ResultSyncPublicUser implements RemoteResultSync {
 }
 
 export class ResultSyncAnonymousUser implements RemoteResultSync {
-  async receive(progressListener: ProgressListener): Promise<Result[]> {
+  async receive(pl: ProgressListener): Promise<Result[]> {
     throw new Error("Disabled");
   }
 
-  async send(
-    results: readonly Result[],
-    progressListener: ProgressListener,
-  ): Promise<void> {
+  async send(results: readonly Result[], pl: ProgressListener): Promise<void> {
     throw new Error("Disabled");
   }
 
@@ -68,15 +59,12 @@ export class ResultSyncAnonymousUser implements RemoteResultSync {
   }
 }
 
-async function receive(
-  path: string,
-  progressListener: ProgressListener,
-): Promise<Result[]> {
+async function receive(path: string, pl: ProgressListener): Promise<Result[]> {
   const response = await request
     .use(expectType("application/octet-stream"))
     .GET(path)
     .on("download-progress", (ev) => {
-      progressListener(ev.total ?? 0, ev.loaded);
+      pl(ev.total ?? 0, ev.loaded);
     })
     .send();
   return [...parseFile(new Uint8Array(await response.arrayBuffer()))];
@@ -85,13 +73,13 @@ async function receive(
 async function send(
   path: string,
   results: readonly Result[],
-  progressListener: ProgressListener,
+  pl: ProgressListener,
 ): Promise<void> {
   const buffer = formatMessage(results);
   const response = await request
     .POST(path)
     .on("upload-progress", (ev) => {
-      progressListener(ev.total ?? 0, ev.loaded);
+      pl(ev.total ?? 0, ev.loaded);
     })
     .send(buffer, "application/octet-stream");
   await response.blob(); // Ignore.

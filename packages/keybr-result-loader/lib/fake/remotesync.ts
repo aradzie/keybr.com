@@ -1,8 +1,5 @@
 import { type Result } from "@keybr/result";
-import {
-  type ProgressListener,
-  type RemoteResultSync,
-} from "../internal/types.ts";
+import { type RemoteResultSync } from "../internal/types.ts";
 
 export class FakeRemoteResultSync implements RemoteResultSync {
   readonly #results: Result[];
@@ -11,14 +8,11 @@ export class FakeRemoteResultSync implements RemoteResultSync {
     this.#results = results;
   }
 
-  async send(
-    results: readonly Result[],
-    progressListener: ProgressListener,
-  ): Promise<void> {
+  async send(results: readonly Result[]): Promise<void> {
     this.#results.push(...results);
   }
 
-  async receive(progressListener: ProgressListener): Promise<Result[]> {
+  async receive(): Promise<Result[]> {
     return [...this.#results];
   }
 
