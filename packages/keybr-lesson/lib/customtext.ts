@@ -79,5 +79,5 @@ function getWordList(
   if (lowercase) {
     text = language.lowerCase(text);
   }
-  return text.trim().split(/[\s\n]+/);
+  return text.split(/\s+/);
 }

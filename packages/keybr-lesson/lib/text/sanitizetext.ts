@@ -1,79 +1,94 @@
 import {
+  type CodePoint,
   type CodePointSet,
   isControl,
+  isDiacritic,
   isLinebreak,
   isWhitespace,
+  stripDiacritic,
   toCodePoints,
 } from "@keybr/unicode";
 
 /**
- * Removes any illegal characters from the specified text.
+ * Removes any illegal characters from the specified text, collapses whitespace.
  * @param text A string to sanitize.
- * @param include A set of white-listed code points.
- * @param exclude A set of black-listed code points.
- * @return The sanitized string.
+ * @param include A set of whitelisted code points.
+ * @param exclude A set of blacklisted code points.
+ * @return A sanitized string.
  */
 export function sanitizeText(
   text: string,
-  include?: CodePointSet | null,
-  exclude?: CodePointSet | null,
+  include: CodePointSet | null = null,
+  exclude: CodePointSet | null = null,
 ): string {
   let result = "";
-  let next = "";
+  let ws = "";
+
+  const append = (
+    codePoint: CodePoint,
+    s = String.fromCodePoint(codePoint),
+  ) => {
+    if (exclude != null && exclude.has(codePoint)) {
+      return false;
+    }
+    if (include == null || include.has(codePoint)) {
+      if (ws !== "") {
+        result += ws;
+        ws = "";
+      }
+      result += s;
+      return true;
+    }
+    return false;
+  };
+
   for (let codePoint of toCodePoints(text.normalize())) {
     if (isLinebreak(codePoint)) {
-      if (result === "") {
-        next = "";
-      } else {
-        next = "\n";
+      if (result !== "") {
+        ws = "\n";
       }
       continue;
     }
-    if (isControl(codePoint) || isWhitespace(codePoint)) {
-      if (result === "") {
-        next = "";
-      } else if (next !== "\n") {
-        next = " ";
+    if (isWhitespace(codePoint)) {
+      if (result !== "" && ws !== "\n") {
+        ws = " ";
       }
       continue;
     }
-    result += next;
-    next = "";
-    let s = "";
+    if (isControl(codePoint)) {
+      continue;
+    }
+    if (isDiacritic(codePoint)) {
+      continue;
+    }
     switch (codePoint) {
       case 0x2012: // figure dash ‒
       case 0x2013: // en dash –
       case 0x2014: // em dash —
       case 0x2015: // horizontal bar ―
-        codePoint = 0x002d;
-        s = "-";
-        break;
+        append(/* - */ 0x002d);
+        continue;
       case 0x2018: // german right single quote ‘
       case 0x2019: // secondary level quotation ’
       case 0x201a: // german left single quote ‚
-        codePoint = 0x0027;
-        s = "'";
-        break;
+        append(/* ' */ 0x0027);
+        continue;
       case 0x201c: // german right double quote “
       case 0x201d: // primary level quotation ”
       case 0x201e: // german left double quote „
       case 0x00ab: // «
       case 0x00bb: // »
-        codePoint = 0x0022;
-        s = '"';
-        break;
+        append(/* " */ 0x0022);
+        continue;
       case 0x2026: // horizontal ellipsis …
-        codePoint = 0x002e;
-        s = "...";
-        break;
-      default:
-        s = String.fromCodePoint(codePoint);
+        append(/* . */ 0x002e, "...");
+        continue;
     }
-    if (exclude != null && exclude.has(codePoint)) {
-      continue;
-    }
-    if (include == null || include.has(codePoint)) {
-      result += s;
+    if (!append(codePoint)) {
+      const baseCodePoint = stripDiacritic(codePoint);
+      if (baseCodePoint !== codePoint) {
+        append(baseCodePoint);
+      }
     }
   }
   return result;
