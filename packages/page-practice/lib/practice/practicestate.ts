@@ -1,7 +1,16 @@
 import { keyboardProps, type KeyId, Ngram2 } from "@keybr/keyboard";
 import { type Lesson, type LessonKeys, lessonProps } from "@keybr/lesson";
 import { Histogram, KeySet } from "@keybr/math";
-import { type KeyStatsMap, Result } from "@keybr/result";
+import {
+  computeDailyGoal,
+  type DailyGoal,
+  type KeyStatsMap,
+  LocalDate,
+  newSummaryStats,
+  Result,
+  ResultGroups,
+  type SummaryStats,
+} from "@keybr/result";
 import { type Settings } from "@keybr/settings";
 import {
   type Feedback,
@@ -32,6 +41,8 @@ export class PracticeState {
   readonly textDisplaySettings: TextDisplaySettings;
   readonly keyStatsMap: KeyStatsMap;
   readonly lessonKeys: LessonKeys;
+  readonly stats: SummaryStats;
+  readonly dailyGoal: DailyGoal;
   readonly announcements: Announcement[] = [];
 
   lastLesson: LastLesson | null = null;
@@ -52,6 +63,11 @@ export class PracticeState {
     this.textDisplaySettings = toTextDisplaySettings(settings);
     this.keyStatsMap = this.lesson.analyze(this.results);
     this.lessonKeys = this.lesson.update(this.keyStatsMap);
+    this.stats = newSummaryStats(results);
+    this.dailyGoal = computeDailyGoal(
+      ResultGroups.byDate(results).get(LocalDate.now()),
+      settings.get(lessonProps.dailyGoal),
+    );
     this.#reset(this.lesson.generate(this.lessonKeys));
     this.#computeAnnouncements();
   }

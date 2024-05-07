@@ -1,4 +1,4 @@
-import { type LessonKey, lessonProps } from "@keybr/lesson";
+import { type LessonKey } from "@keybr/lesson";
 import {
   CurrentKeyRow,
   DailyGoalRow,
@@ -8,21 +8,13 @@ import {
   KeySetRow,
 } from "@keybr/lesson-ui";
 import {
-  computeDailyGoal,
-  type DailyGoal,
-  LocalDate,
-  newSummaryStats,
-  ResultGroups,
-  type SummaryStats,
-} from "@keybr/result";
-import {
   isPopupElement,
   Popup,
   Portal,
   useMouseHover,
   useTimeout,
 } from "@keybr/widget";
-import { memo, type ReactNode, useMemo, useState } from "react";
+import { memo, type ReactNode, useState } from "react";
 import * as styles from "./Indicators.module.less";
 import { KeyExtendedDetails } from "./KeyExtendedDetails.tsx";
 import * as names from "./names.module.less";
@@ -33,19 +25,16 @@ export const Indicators = memo(function Indicators({
 }: {
   readonly state: PracticeState;
 }): ReactNode {
-  const summaryStats = useSummaryStats(state);
-  const dailyGoal = useDailyGoal(state);
   const selectedKey = useKeySelector(state);
-
   return (
     <div id={names.indicators} className={styles.indicators}>
-      <GaugeRow summaryStats={summaryStats} names={names} />
+      <GaugeRow summaryStats={state.stats} names={names} />
       <KeySetRow lessonKeys={state.lessonKeys} names={names} />
       <CurrentKeyRow lessonKeys={state.lessonKeys} names={names} />
-      {dailyGoal.goal > 0 && (
+      {state.dailyGoal.goal > 0 && (
         <DailyGoalRow
-          value={dailyGoal.value}
-          goal={dailyGoal.goal}
+          value={state.dailyGoal.value}
+          goal={state.dailyGoal.goal}
           names={names}
         />
       )}
@@ -65,19 +54,6 @@ export const Indicators = memo(function Indicators({
     </div>
   );
 });
-
-function useSummaryStats(state: PracticeState): SummaryStats {
-  return useMemo(() => {
-    return newSummaryStats(state.results);
-  }, [state]);
-}
-
-function useDailyGoal(state: PracticeState): DailyGoal {
-  return useMemo(() => {
-    const today = ResultGroups.byDate(state.results).get(LocalDate.now());
-    return computeDailyGoal(today, state.settings.get(lessonProps.dailyGoal));
-  }, [state]);
-}
 
 function useKeySelector(state: PracticeState): LessonKey | null {
   const [selectedKey, setSelectedKey] = useState<LessonKey | null>(null);
