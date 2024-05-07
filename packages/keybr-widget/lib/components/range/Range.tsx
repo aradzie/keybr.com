@@ -10,10 +10,7 @@ import * as styles from "./Range.module.less";
 import { type RangeProps, type RangeRef } from "./Range.types.ts";
 
 export const Range = forwardRef(function Range(
-  props: RangeProps,
-  ref: ForwardedRef<RangeRef>,
-): ReactNode {
-  const {
+  {
     className,
     disabled,
     max,
@@ -24,8 +21,10 @@ export const Range = forwardRef(function Range(
     title,
     value,
     onChange,
-    ...rest
-  } = props;
+    ...props
+  }: RangeProps,
+  ref: ForwardedRef<RangeRef>,
+): ReactNode {
   const element = useRef<HTMLInputElement>(null);
   useImperativeHandle(ref, () => ({
     focus() {
@@ -37,6 +36,7 @@ export const Range = forwardRef(function Range(
   }));
   return (
     <input
+      {...props}
       ref={element}
       className={clsx(styles.range, disabled && styles.disabled, className)}
       disabled={disabled}
@@ -51,7 +51,6 @@ export const Range = forwardRef(function Range(
       onChange={(event) => {
         onChange?.(Number((event.target as HTMLInputElement).value));
       }}
-      {...rest}
     />
   );
 });

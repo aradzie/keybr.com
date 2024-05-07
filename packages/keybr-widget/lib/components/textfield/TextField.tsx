@@ -11,10 +11,7 @@ import * as styles from "./TextField.module.less";
 import { type TextFieldProps, type TextFieldRef } from "./TextField.types.ts";
 
 export const TextField = forwardRef(function TextField(
-  props: TextFieldProps,
-  ref: ForwardedRef<TextFieldRef>,
-): ReactNode {
-  const {
+  {
     className,
     disabled,
     maxLength,
@@ -25,8 +22,10 @@ export const TextField = forwardRef(function TextField(
     type = "text",
     value,
     onChange,
-    ...rest
-  } = props;
+    ...props
+  }: TextFieldProps,
+  ref: ForwardedRef<TextFieldRef>,
+): ReactNode {
   const element = useRef<HTMLTextAreaElement | HTMLInputElement>(null);
   useImperativeHandle(ref, () => ({
     focus() {
@@ -42,6 +41,7 @@ export const TextField = forwardRef(function TextField(
   if (type === "textarea") {
     return (
       <textarea
+        {...props}
         ref={element as RefObject<HTMLTextAreaElement>}
         className={clsx(
           styles.textField,
@@ -58,7 +58,6 @@ export const TextField = forwardRef(function TextField(
         onChange={(event) => {
           onChange?.((event.target as HTMLTextAreaElement).value);
         }}
-        {...rest}
       />
     );
   } else {
@@ -81,7 +80,7 @@ export const TextField = forwardRef(function TextField(
         onChange={(event) => {
           onChange?.((event.target as HTMLInputElement).value);
         }}
-        {...rest}
+        {...props}
       />
     );
   }

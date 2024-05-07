@@ -9,7 +9,7 @@ export function Alert({
   children,
   severity = null,
   closeButton = false,
-  ...rest
+  ...props
 }: {
   readonly children: ReactNode;
   readonly severity?: "info" | "success" | "error" | null;
@@ -17,7 +17,7 @@ export function Alert({
 } & MouseProps): ReactNode {
   const toast = useToast();
   return (
-    <div className={styles.alert} {...rest} {...toastProps(toast)}>
+    <div {...props} className={styles.alert} {...toastProps(toast)}>
       {severity && <SeverityIcon severity={severity} />}
       <div className={styles.message}>{children}</div>
       {closeButton && <CloseButton />}

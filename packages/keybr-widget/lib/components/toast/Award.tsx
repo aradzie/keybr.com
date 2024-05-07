@@ -6,14 +6,14 @@ import { toastProps, useToast } from "./context.tsx";
 export function Award({
   icon,
   children,
-  ...rest
+  ...props
 }: {
   readonly icon: ReactNode;
   readonly children: ReactNode;
 } & MouseProps): ReactNode {
   const toast = useToast();
   return (
-    <div className={styles.award} {...rest} {...toastProps(toast)}>
+    <div {...props} className={styles.award} {...toastProps(toast)}>
       <div className={styles.icon}>{icon}</div>
       <div className={styles.message}>{children}</div>
     </div>

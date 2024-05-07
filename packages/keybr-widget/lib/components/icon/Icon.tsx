@@ -3,10 +3,14 @@ import { memo, type ReactNode } from "react";
 import * as styles from "./Icon.module.less";
 import { type IconProps } from "./Icon.types.ts";
 
-export const Icon = memo(function Icon(props: IconProps): ReactNode {
-  const { shape, className, viewBox = "0 0 24 24", ...rest } = props;
+export const Icon = memo(function Icon({
+  shape,
+  className,
+  viewBox = "0 0 24 24",
+  ...props
+}: IconProps): ReactNode {
   return (
-    <svg className={clsx(styles.icon, className)} viewBox={viewBox} {...rest}>
+    <svg {...props} className={clsx(styles.icon, className)} viewBox={viewBox}>
       <path d={shape} />
     </svg>
   );

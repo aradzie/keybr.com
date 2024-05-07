@@ -38,7 +38,7 @@ export const useCanvas = (
 export const Canvas = memo(function Canvas({
   paint,
   title,
-  ...rest
+  ...props
 }: {
   readonly paint: PaintCallback;
   readonly title?: string;
@@ -46,9 +46,9 @@ export const Canvas = memo(function Canvas({
   const ref = useCanvas(paint);
   return (
     <canvas
+      {...props}
       ref={ref}
       title={title}
-      {...rest}
       style={{
         display: "block",
         position: "absolute",

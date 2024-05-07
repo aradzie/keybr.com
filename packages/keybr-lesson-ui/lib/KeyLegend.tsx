@@ -11,7 +11,7 @@ export const KeyLegend = ({
   isForced,
   size = "normal",
   title,
-  ...rest
+  ...props
 }: {
   readonly confidence: number | null;
   readonly isIncluded: boolean;
@@ -22,6 +22,7 @@ export const KeyLegend = ({
 } & MouseProps): ReactNode => {
   return (
     <span
+      {...props}
       className={clsx(
         styles.lessonKey,
         size === "normal" && styles.lessonKey_normal,
@@ -33,7 +34,6 @@ export const KeyLegend = ({
       )}
       style={keyStyle(isIncluded ?? false, confidence ?? null)}
       title={title}
-      {...rest}
     >
       ?
       {isIncluded || (

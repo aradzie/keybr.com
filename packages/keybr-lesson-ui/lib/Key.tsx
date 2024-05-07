@@ -12,7 +12,7 @@ export const Key = ({
   isCurrent = false,
   size = "normal",
   title,
-  ...rest
+  ...props
 }: {
   readonly lessonKey: LessonKey;
   readonly isSelectable?: boolean;
@@ -29,6 +29,7 @@ export const Key = ({
   } = lessonKey;
   return (
     <span
+      {...props}
       key={codePoint}
       className={clsx(
         styles.lessonKey,
@@ -44,7 +45,6 @@ export const Key = ({
       )}
       style={keyStyle(true, confidence)}
       title={title}
-      {...rest}
       data-code-point={codePoint}
     >
       {label}

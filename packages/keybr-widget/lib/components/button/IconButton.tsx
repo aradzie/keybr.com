@@ -14,10 +14,7 @@ import {
 } from "./IconButton.types.ts";
 
 export const IconButton = forwardRef(function IconButton(
-  props: IconButtonProps,
-  ref: ForwardedRef<IconButtonRef>,
-): ReactNode {
-  const {
+  {
     children,
     className,
     disabled,
@@ -27,8 +24,10 @@ export const IconButton = forwardRef(function IconButton(
     tabIndex,
     target,
     title,
-    ...rest
-  } = props;
+    ...props
+  }: IconButtonProps,
+  ref: ForwardedRef<IconButtonRef>,
+): ReactNode {
   const element = useRef<HTMLAnchorElement | HTMLButtonElement>(null);
   useImperativeHandle(ref, () => ({
     focus() {
@@ -47,6 +46,7 @@ export const IconButton = forwardRef(function IconButton(
     }
     return (
       <a
+        {...props}
         ref={element as RefObject<HTMLAnchorElement>}
         className={clsx(
           styles.iconButton,
@@ -57,7 +57,6 @@ export const IconButton = forwardRef(function IconButton(
         tabIndex={tabIndex}
         target={target}
         title={title}
-        {...rest}
       >
         {icon}
       </a>
@@ -65,6 +64,7 @@ export const IconButton = forwardRef(function IconButton(
   } else {
     return (
       <button
+        {...props}
         ref={element as RefObject<HTMLButtonElement>}
         className={clsx(
           styles.iconButton,
@@ -74,7 +74,6 @@ export const IconButton = forwardRef(function IconButton(
         disabled={disabled}
         tabIndex={tabIndex}
         title={title}
-        {...rest}
       >
         {icon}
       </button>

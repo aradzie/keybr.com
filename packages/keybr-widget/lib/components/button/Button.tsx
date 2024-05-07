@@ -12,10 +12,7 @@ import * as styles from "./Button.module.less";
 import { type ButtonProps, type ButtonRef } from "./Button.types.ts";
 
 export const Button = forwardRef(function Button(
-  props: ButtonProps,
-  ref: ForwardedRef<ButtonRef>,
-): ReactNode {
-  const {
+  {
     children,
     className,
     disabled,
@@ -25,8 +22,10 @@ export const Button = forwardRef(function Button(
     tabIndex,
     target,
     title,
-    ...rest
-  } = props;
+    ...props
+  }: ButtonProps,
+  ref: ForwardedRef<ButtonRef>,
+): ReactNode {
   const element = useRef<HTMLAnchorElement | HTMLButtonElement>(null);
   useImperativeHandle(ref, () => ({
     focus() {
@@ -42,6 +41,7 @@ export const Button = forwardRef(function Button(
     }
     return (
       <a
+        {...props}
         ref={element as RefObject<HTMLAnchorElement>}
         className={clsx(
           styles.button,
@@ -53,7 +53,6 @@ export const Button = forwardRef(function Button(
         tabIndex={tabIndex}
         target={target}
         title={title}
-        {...rest}
       >
         {icon} {label || children}
       </a>
@@ -61,6 +60,7 @@ export const Button = forwardRef(function Button(
   } else {
     return (
       <button
+        {...props}
         ref={element as RefObject<HTMLButtonElement>}
         className={clsx(
           styles.button,
@@ -71,7 +71,6 @@ export const Button = forwardRef(function Button(
         disabled={disabled}
         tabIndex={tabIndex}
         title={title}
-        {...rest}
       >
         {icon} {label || children}
       </button>

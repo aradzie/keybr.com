@@ -11,10 +11,7 @@ import * as styles from "./RadioBox.module.less";
 import { type RadioBoxProps, type RadioBoxRef } from "./RadioBox.types.ts";
 
 export const RadioBox = forwardRef(function RadioBox(
-  props: RadioBoxProps,
-  ref: ForwardedRef<RadioBoxRef>,
-): ReactNode {
-  const {
+  {
     checked,
     children,
     className,
@@ -28,8 +25,10 @@ export const RadioBox = forwardRef(function RadioBox(
     onChange,
     onFocus,
     onSelect,
-    ...rest
-  } = props;
+    ...props
+  }: RadioBoxProps,
+  ref: ForwardedRef<RadioBoxRef>,
+): ReactNode {
   const element = useRef<HTMLInputElement>(null);
   useImperativeHandle(ref, () => ({
     focus() {
@@ -41,9 +40,9 @@ export const RadioBox = forwardRef(function RadioBox(
   }));
   return (
     <label
+      {...props}
       className={clsx(styles.radioBox, disabled && styles.disabled, className)}
       title={title}
-      {...rest}
     >
       <input
         ref={element}

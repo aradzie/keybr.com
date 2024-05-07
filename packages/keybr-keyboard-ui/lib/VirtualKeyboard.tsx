@@ -11,7 +11,7 @@ export const VirtualKeyboard = memo(function VirtualKeyboard({
   width,
   height,
   style,
-  ...rest
+  ...props
 }: {
   readonly children?: ReactNode;
   readonly keyboard: Keyboard;
@@ -23,12 +23,12 @@ export const VirtualKeyboard = memo(function VirtualKeyboard({
   const size = getFrameSize(keyboard);
   return (
     <svg
+      {...props}
       className={styles.keyboard}
       viewBox={`0 0 ${size.width} ${size.height}`}
       style={{ aspectRatio: `${size.width}/${size.height}`, ...style }}
       width={width}
       height={height}
-      {...rest}
     >
       <defs>
         <Patterns />

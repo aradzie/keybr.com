@@ -10,7 +10,7 @@ import { initials } from "./util.ts";
 export function Identicon({
   className,
   name,
-  ...rest
+  ...props
 }: {
   readonly className?: ClassName;
   readonly name: string;
@@ -38,7 +38,7 @@ export function Identicon({
   };
 
   return (
-    <svg className={clsx(className)} viewBox={`0 0 ${size} ${size}`} {...rest}>
+    <svg {...props} className={clsx(className)} viewBox={`0 0 ${size} ${size}`}>
       <path
         fill={palette[0]}
         d={makePath(borderShapes, [

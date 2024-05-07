@@ -11,10 +11,7 @@ import * as styles from "./CheckBox.module.less";
 import { type CheckBoxProps, type CheckBoxRef } from "./CheckBox.types.ts";
 
 export const CheckBox = forwardRef(function CheckBox(
-  props: CheckBoxProps,
-  ref: ForwardedRef<CheckBoxRef>,
-): ReactNode {
-  const {
+  {
     checked,
     children,
     className,
@@ -27,8 +24,10 @@ export const CheckBox = forwardRef(function CheckBox(
     onBlur,
     onChange,
     onFocus,
-    ...rest
-  } = props;
+    ...props
+  }: CheckBoxProps,
+  ref: ForwardedRef<CheckBoxRef>,
+): ReactNode {
   const element = useRef<HTMLInputElement>(null);
   useImperativeHandle(ref, () => ({
     focus() {
@@ -40,9 +39,9 @@ export const CheckBox = forwardRef(function CheckBox(
   }));
   return (
     <label
+      {...props}
       className={clsx(styles.checkBox, disabled && styles.disabled, className)}
       title={title}
-      {...rest}
     >
       <input
         ref={element}

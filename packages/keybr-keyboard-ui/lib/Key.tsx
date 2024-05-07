@@ -98,10 +98,11 @@ export function makeKeyComponent(
     depressed,
     toggled,
     showColors,
-    ...rest
+    ...props
   }: KeyProps): ReactNode {
     return (
       <svg
+        {...props}
         className={clsx(
           styles.key,
           depressed && styles.depressedKey,
@@ -112,7 +113,6 @@ export function makeKeyComponent(
         y={y}
         width={w}
         height={h}
-        {...rest}
         {...{ "data-key": id }}
       >
         {...children}

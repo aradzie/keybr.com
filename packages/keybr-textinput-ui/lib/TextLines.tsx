@@ -60,9 +60,9 @@ function useTextLines(
   LineTemplate?: ComponentType<any>,
 ): ReactNode {
   // TODO Use a memo to turn lines into nodes.
-  return lines.lines.map(({ text, chars, ...rest }: Line): ReactNode => {
+  return lines.lines.map(({ text, chars, ...props }: Line): ReactNode => {
     return LineTemplate != null ? (
-      <LineTemplate key={text} {...rest}>
+      <LineTemplate key={text} {...props}>
         <TextLine
           key={text}
           settings={settings}
