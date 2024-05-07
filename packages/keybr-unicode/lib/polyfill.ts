@@ -3,7 +3,7 @@
 
 declare const window: any;
 
-if (typeof window === "object") {
+if (typeof window === "object" && !Intl.Segmenter) {
   import("@formatjs/intl-segmenter/polyfill").catch((err) => {
     console.error(err);
   });
