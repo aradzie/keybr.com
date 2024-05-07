@@ -1,6 +1,6 @@
 import "./polyfill.ts";
-import { isWhitespace } from "./classify.ts";
 import { toCodePoints } from "./codepoints.ts";
+import { isWhitespace } from "./whitespace.ts";
 
 export type TextStats = {
   readonly numWhitespace: number;

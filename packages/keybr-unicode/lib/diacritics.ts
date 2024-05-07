@@ -5,57 +5,99 @@
 
 import { type CodePoint } from "./types.ts";
 
-type Spec = readonly [
-  name: string,
-  codePoint: CodePoint,
-  baseSet: string,
-  precomposedSet: string,
-];
-
-// prettier-ignore
-const spec: readonly Spec[] = [
-  ["GRAVE ACCENT", 0x0300, "AEINOUWYaeinouwy", "ÀÈÌǸÒÙẀỲàèìǹòùẁỳ"],
-  ["ACUTE ACCENT", 0x0301, "ACEGIKLMNOPRSUWYZacegiklmnoprsuwyzΑΕΗΙΟΥΩαεηιουω", "ÁĆÉǴÍḰĹḾŃÓṔŔŚÚẂÝŹáćéǵíḱĺḿńóṕŕśúẃýźΆΈΉΊΌΎΏάέήίόύώ"],
-  ["CIRCUMFLEX ACCENT", 0x0302, "ACEGHIJOSUWYZaceghijosuwyz", "ÂĈÊĜĤÎĴÔŜÛŴŶẐâĉêĝĥîĵôŝûŵŷẑ"],
-  ["TILDE", 0x0303, "AEINOUVYaeinouvy", "ÃẼĨÑÕŨṼỸãẽĩñõũṽỹ"],
-  ["MACRON", 0x0304, "AEGIOUYaegiouy", "ĀĒḠĪŌŪȲāēḡīōūȳ"],
-  ["BREVE", 0x0306, "AEGIOUaegiou", "ĂĔĞĬŎŬăĕğĭŏŭ"],
-  ["DOT ABOVE", 0x0307, "ABCDEFGHIMNOPRSTWXYZabcdefghmnoprstwxyz", "ȦḂĊḊĖḞĠḢİṀṄȮṖṘṠṪẆẊẎŻȧḃċḋėḟġḣṁṅȯṗṙṡṫẇẋẏż"],
-  ["DIAERESIS", 0x0308, "AEHIOUWXYaehiotuwxyΙΥιυ", "ÄËḦÏÖÜẄẌŸäëḧïöẗüẅẍÿΪΫϊϋ"],
-  ["RING ABOVE", 0x030a, "AUauwy", "ÅŮåůẘẙ"],
-  ["DOUBLE ACUTE", 0x030b, "OUou", "ŐŰőű"],
-  ["CARON", 0x030c, "ACDEGHIKLNORSTUZacdeghijklnorstuz", "ǍČĎĚǦȞǏǨĽŇǑŘŠŤǓŽǎčďěǧȟǐǰǩľňǒřšťǔž"],
-  ["DOUBLE GRAVE ACCENT", 0x030f, "AEIORUaeioru", "ȀȄȈȌȐȔȁȅȉȍȑȕ"],
-  ["CEDILLA", 0x0327, "CDEGHKLNRSTcdeghklnrst", "ÇḐȨĢḨĶĻŅŖŞŢçḑȩģḩķļņŗşţ"],
-  ["OGONEK", 0x0328, "AEIOUaeiou", "ĄĘĮǪŲąęįǫų"],
-];
-
-export type Diacritic = {
-  readonly name: string;
-  readonly codePoint: CodePoint;
-  readonly baseSet: string;
-  readonly precomposedSet: string;
-};
-
-const diacriticMap = new Map<CodePoint, Diacritic>();
-const combinedMap = new Map<CodePoint, CodePoint>();
+const toCombined = new Map<number, CodePoint>();
+const toBase = new Map<CodePoint, CodePoint>();
 
 export const isDiacritic = (codePoint: CodePoint): boolean =>
-  diacriticMap.has(codePoint);
-
-export const getDiacritic = (codePoint: CodePoint): Diacritic | null =>
-  diacriticMap.get(codePoint) ?? null;
+  codePoint >= 0x0300 && codePoint <= 0x036f;
 
 export const combineDiacritic = (
   base: CodePoint,
   combining: CodePoint,
-): CodePoint => combinedMap.get((combining << 16) | base) ?? base;
+): CodePoint => {
+  return toCombined.get((combining << 16) | base) ?? base;
+};
 
-for (const [name, codePoint, baseSet, precomposedSet] of spec) {
-  diacriticMap.set(codePoint, { name, codePoint, baseSet, precomposedSet });
-  for (let i = 0; i < baseSet.length; i++) {
-    const base = baseSet.charCodeAt(i);
-    const precomposed = precomposedSet.charCodeAt(i);
-    combinedMap.set((codePoint << 16) | base, precomposed);
+export const stripDiacritic = (combined: CodePoint): CodePoint => {
+  return toBase.get(combined) ?? combined;
+};
+
+for (const [codePoint, baseList, combinedList] of [
+  [
+    /* COMBINING GRAVE ACCENT */ 0x0300, //
+    "AEINOUWYaeinouwy",
+    "ÀÈÌǸÒÙẀỲàèìǹòùẁỳ",
+  ],
+  [
+    /* COMBINING ACUTE ACCENT */ 0x0301, //
+    "ACEGIKLMNOPRSUWYZacegiklmnoprsuwyzΑΕΗΙΟΥΩαεηιουω",
+    "ÁĆÉǴÍḰĹḾŃÓṔŔŚÚẂÝŹáćéǵíḱĺḿńóṕŕśúẃýźΆΈΉΊΌΎΏάέήίόύώ",
+  ],
+  [
+    /* COMBINING CIRCUMFLEX ACCENT */ 0x0302, //
+    "ACEGHIJOSUWYZaceghijosuwyz",
+    "ÂĈÊĜĤÎĴÔŜÛŴŶẐâĉêĝĥîĵôŝûŵŷẑ",
+  ],
+  [
+    /* COMBINING TILDE */ 0x0303, //
+    "AEINOUVYaeinouvy",
+    "ÃẼĨÑÕŨṼỸãẽĩñõũṽỹ",
+  ],
+  [
+    /* COMBINING MACRON */ 0x0304, //
+    "AEGIOUYaegiouy",
+    "ĀĒḠĪŌŪȲāēḡīōūȳ",
+  ],
+  [
+    /* COMBINING BREVE */ 0x0306, //
+    "AEGIOUaegiou",
+    "ĂĔĞĬŎŬăĕğĭŏŭ",
+  ],
+  [
+    /* COMBINING DOT ABOVE */ 0x0307,
+    "ABCDEFGHIMNOPRSTWXYZabcdefghmnoprstwxyz",
+    "ȦḂĊḊĖḞĠḢİṀṄȮṖṘṠṪẆẊẎŻȧḃċḋėḟġḣṁṅȯṗṙṡṫẇẋẏż",
+  ],
+  [
+    /* COMBINING DIAERESIS */ 0x0308, //
+    "AEHIOUWXYaehiotuwxyΙΥιυ",
+    "ÄËḦÏÖÜẄẌŸäëḧïöẗüẅẍÿΪΫϊϋ",
+  ],
+  [
+    /* COMBINING RING ABOVE */ 0x030a, //
+    "AUauwy",
+    "ÅŮåůẘẙ",
+  ],
+  [
+    /* COMBINING DOUBLE ACUTE */ 0x030b, //
+    "OUou",
+    "ŐŰőű",
+  ],
+  [
+    /* COMBINING CARON */ 0x030c, //
+    "ACDEGHIKLNORSTUZacdeghijklnorstuz",
+    "ǍČĎĚǦȞǏǨĽŇǑŘŠŤǓŽǎčďěǧȟǐǰǩľňǒřšťǔž",
+  ],
+  [
+    /* COMBINING DOUBLE GRAVE ACCENT */ 0x030f, //
+    "AEIORUaeioru",
+    "ȀȄȈȌȐȔȁȅȉȍȑȕ",
+  ],
+  [
+    /* COMBINING CEDILLA */ 0x0327, //
+    "CDEGHKLNRSTcdeghklnrst",
+    "ÇḐȨĢḨĶĻŅŖŞŢçḑȩģḩķļņŗşţ",
+  ],
+  [
+    /* COMBINING OGONEK */ 0x0328, //
+    "AEIOUaeiou",
+    "ĄĘĮǪŲąęįǫų",
+  ],
+] as [CodePoint, string, string][]) {
+  for (let i = 0; i < baseList.length; i++) {
+    const base = baseList.codePointAt(i)!;
+    const combined = combinedList.codePointAt(i)!;
+    toCombined.set((codePoint << 16) | base, combined);
+    toBase.set(combined, base);
   }
 }
