@@ -1,7 +1,6 @@
 import { mdiRadioboxBlank, mdiRadioboxMarked } from "@mdi/js";
 import { clsx } from "clsx";
 import {
-  type FormEvent,
   type ForwardedRef,
   forwardRef,
   type ReactNode,
@@ -27,15 +26,9 @@ export const RadioBox = forwardRef(function RadioBox(
     value,
     onBlur,
     onChange,
-    onClick,
     onFocus,
-    onKeyDown,
-    onKeyUp,
-    onMouseDown,
-    onMouseEnter,
-    onMouseLeave,
-    onMouseUp,
     onSelect,
+    ...rest
   } = props;
   const element = useRef<HTMLInputElement>(null);
   useImperativeHandle(ref, () => ({
@@ -46,24 +39,11 @@ export const RadioBox = forwardRef(function RadioBox(
       element.current?.blur();
     },
   }));
-  const handleChange = (event: FormEvent): void => {
-    const { checked } = event.target as HTMLInputElement;
-    onChange?.(checked);
-    if (checked) {
-      onSelect?.(value);
-    }
-  };
   return (
     <label
       className={clsx(styles.radioBox, disabled && styles.disabled, className)}
       title={title}
-      onClick={onClick}
-      onKeyDown={onKeyDown}
-      onKeyUp={onKeyUp}
-      onMouseDown={onMouseDown}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      onMouseUp={onMouseUp}
+      {...rest}
     >
       <input
         ref={element}
@@ -74,7 +54,13 @@ export const RadioBox = forwardRef(function RadioBox(
         type="radio"
         value={value}
         onBlur={onBlur}
-        onChange={handleChange}
+        onChange={(event) => {
+          const { checked } = event.target as HTMLInputElement;
+          onChange?.(checked);
+          if (checked) {
+            onSelect?.(value);
+          }
+        }}
         onFocus={onFocus}
       />
       <svg className={styles.icon} viewBox="0 0 24 24">

@@ -1,7 +1,6 @@
 import { mdiCheckboxBlankOutline, mdiCheckboxMarkedOutline } from "@mdi/js";
 import { clsx } from "clsx";
 import {
-  type FormEvent,
   type ForwardedRef,
   forwardRef,
   type ReactNode,
@@ -27,14 +26,8 @@ export const CheckBox = forwardRef(function CheckBox(
     value,
     onBlur,
     onChange,
-    onClick,
     onFocus,
-    onKeyDown,
-    onKeyUp,
-    onMouseDown,
-    onMouseEnter,
-    onMouseLeave,
-    onMouseUp,
+    ...rest
   } = props;
   const element = useRef<HTMLInputElement>(null);
   useImperativeHandle(ref, () => ({
@@ -45,21 +38,11 @@ export const CheckBox = forwardRef(function CheckBox(
       element.current?.blur();
     },
   }));
-  const handleChange = (event: FormEvent): void => {
-    const { checked } = event.target as HTMLInputElement;
-    onChange?.(checked);
-  };
   return (
     <label
       className={clsx(styles.checkBox, disabled && styles.disabled, className)}
       title={title}
-      onClick={onClick}
-      onKeyDown={onKeyDown}
-      onKeyUp={onKeyUp}
-      onMouseDown={onMouseDown}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      onMouseUp={onMouseUp}
+      {...rest}
     >
       <input
         ref={element}
@@ -70,7 +53,10 @@ export const CheckBox = forwardRef(function CheckBox(
         type="checkbox"
         value={value}
         onBlur={onBlur}
-        onChange={handleChange}
+        onChange={(event) => {
+          const { checked } = event.target as HTMLInputElement;
+          onChange?.(checked);
+        }}
         onFocus={onFocus}
       />
       <svg className={styles.icon} viewBox="0 0 24 24">

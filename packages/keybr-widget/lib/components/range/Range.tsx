@@ -1,6 +1,5 @@
 import { clsx } from "clsx";
 import {
-  type FormEvent,
   type ForwardedRef,
   forwardRef,
   type ReactNode,
@@ -24,16 +23,8 @@ export const Range = forwardRef(function Range(
     tabIndex,
     title,
     value,
-    onBlur,
     onChange,
-    onClick,
-    onFocus,
-    onKeyDown,
-    onKeyUp,
-    onMouseDown,
-    onMouseEnter,
-    onMouseLeave,
-    onMouseUp,
+    ...rest
   } = props;
   const element = useRef<HTMLInputElement>(null);
   useImperativeHandle(ref, () => ({
@@ -44,9 +35,6 @@ export const Range = forwardRef(function Range(
       element.current?.blur();
     },
   }));
-  const handleChange = (event: FormEvent): void => {
-    onChange?.(Number((event.target as HTMLInputElement).value));
-  };
   return (
     <input
       ref={element}
@@ -60,16 +48,10 @@ export const Range = forwardRef(function Range(
       title={title}
       type="range"
       value={value}
-      onBlur={onFocus}
-      onChange={handleChange}
-      onClick={onClick}
-      onFocus={onBlur}
-      onKeyDown={onKeyDown}
-      onKeyUp={onKeyUp}
-      onMouseDown={onMouseDown}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      onMouseUp={onMouseUp}
+      onChange={(event) => {
+        onChange?.(Number((event.target as HTMLInputElement).value));
+      }}
+      {...rest}
     />
   );
 });

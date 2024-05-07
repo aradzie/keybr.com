@@ -14,11 +14,7 @@ export function Link(props: LinkProps): ReactNode {
     external,
     title,
     children,
-    onClick,
-    onMouseDown,
-    onMouseEnter,
-    onMouseLeave,
-    onMouseUp,
+    ...rest
   } = props;
   return (
     <Component
@@ -28,11 +24,7 @@ export function Link(props: LinkProps): ReactNode {
       target={target}
       download={download}
       title={title}
-      onClick={onClick}
-      onMouseDown={onMouseDown}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      onMouseUp={onMouseUp}
+      {...rest}
     >
       {children}
     </Component>

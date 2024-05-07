@@ -1,14 +1,7 @@
-import {
-  type FocusEventHandler,
-  memo,
-  type MouseEventHandler,
-  type ReactNode,
-  type RefObject,
-  useEffect,
-  useRef,
-} from "react";
+import { memo, type ReactNode, type RefObject, useEffect, useRef } from "react";
 import { useElementSize } from "../../hooks/use-element-size.ts";
 import { type Size } from "../../utils/size.ts";
+import { type MouseProps } from "../props.ts";
 import { Graphics, type ShapeList } from "./graphics.ts";
 
 export type PaintCallback = (size: Size) => ShapeList;
@@ -45,39 +38,17 @@ export const useCanvas = (
 export const Canvas = memo(function Canvas({
   paint,
   title,
-  tabIndex,
-  onBlur,
-  onFocus,
-  onClick,
-  onMouseDown,
-  onMouseEnter,
-  onMouseLeave,
-  onMouseUp,
+  ...rest
 }: {
   readonly paint: PaintCallback;
   readonly title?: string;
-  readonly tabIndex?: number;
-  readonly onBlur?: FocusEventHandler;
-  readonly onFocus?: FocusEventHandler;
-  readonly onClick?: MouseEventHandler;
-  readonly onMouseDown?: MouseEventHandler;
-  readonly onMouseEnter?: MouseEventHandler;
-  readonly onMouseLeave?: MouseEventHandler;
-  readonly onMouseUp?: MouseEventHandler;
-}): ReactNode {
+} & MouseProps): ReactNode {
   const ref = useCanvas(paint);
   return (
     <canvas
       ref={ref}
       title={title}
-      tabIndex={tabIndex}
-      onBlur={onBlur}
-      onFocus={onFocus}
-      onClick={onClick}
-      onMouseDown={onMouseDown}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      onMouseUp={onMouseUp}
+      {...rest}
       style={{
         display: "block",
         position: "absolute",

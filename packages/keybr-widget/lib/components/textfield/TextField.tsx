@@ -1,6 +1,5 @@
 import { clsx } from "clsx";
 import {
-  type FormEvent,
   type ForwardedRef,
   forwardRef,
   type ReactNode,
@@ -25,16 +24,8 @@ export const TextField = forwardRef(function TextField(
     title,
     type = "text",
     value,
-    onBlur,
     onChange,
-    onClick,
-    onFocus,
-    onKeyDown,
-    onKeyUp,
-    onMouseDown,
-    onMouseEnter,
-    onMouseLeave,
-    onMouseUp,
+    ...rest
   } = props;
   const element = useRef<HTMLTextAreaElement | HTMLInputElement>(null);
   useImperativeHandle(ref, () => ({
@@ -48,9 +39,6 @@ export const TextField = forwardRef(function TextField(
       element.current?.select();
     },
   }));
-  const handleChange = (event: FormEvent): void => {
-    onChange?.((event.target as HTMLInputElement).value);
-  };
   if (type === "textarea") {
     return (
       <textarea
@@ -67,16 +55,10 @@ export const TextField = forwardRef(function TextField(
         tabIndex={tabIndex}
         title={title}
         value={value}
-        onBlur={onBlur}
-        onChange={handleChange}
-        onClick={onClick}
-        onFocus={onFocus}
-        onKeyDown={onKeyDown}
-        onKeyUp={onKeyUp}
-        onMouseDown={onMouseDown}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-        onMouseUp={onMouseUp}
+        onChange={(event) => {
+          onChange?.((event.target as HTMLTextAreaElement).value);
+        }}
+        {...rest}
       />
     );
   } else {
@@ -96,16 +78,10 @@ export const TextField = forwardRef(function TextField(
         title={title}
         type={type}
         value={value}
-        onBlur={onBlur}
-        onChange={handleChange}
-        onClick={onClick}
-        onFocus={onFocus}
-        onKeyDown={onKeyDown}
-        onKeyUp={onKeyUp}
-        onMouseDown={onMouseDown}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-        onMouseUp={onMouseUp}
+        onChange={(event) => {
+          onChange?.((event.target as HTMLInputElement).value);
+        }}
+        {...rest}
       />
     );
   }

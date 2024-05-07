@@ -27,15 +27,7 @@ export const IconButton = forwardRef(function IconButton(
     tabIndex,
     target,
     title,
-    onBlur,
-    onClick,
-    onFocus,
-    onKeyDown,
-    onKeyUp,
-    onMouseDown,
-    onMouseEnter,
-    onMouseLeave,
-    onMouseUp,
+    ...rest
   } = props;
   const element = useRef<HTMLAnchorElement | HTMLButtonElement>(null);
   useImperativeHandle(ref, () => ({
@@ -65,15 +57,7 @@ export const IconButton = forwardRef(function IconButton(
         tabIndex={tabIndex}
         target={target}
         title={title}
-        onBlur={onBlur}
-        onClick={onClick}
-        onFocus={onFocus}
-        onKeyDown={onKeyDown}
-        onKeyUp={onKeyUp}
-        onMouseDown={onMouseDown}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-        onMouseUp={onMouseUp}
+        {...rest}
       >
         {icon}
       </a>
@@ -90,15 +74,7 @@ export const IconButton = forwardRef(function IconButton(
         disabled={disabled}
         tabIndex={tabIndex}
         title={title}
-        onBlur={onBlur}
-        onClick={onClick}
-        onFocus={onFocus}
-        onKeyDown={onKeyDown}
-        onKeyUp={onKeyUp}
-        onMouseDown={onMouseDown}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-        onMouseUp={onMouseUp}
+        {...rest}
       >
         {icon}
       </button>
