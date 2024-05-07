@@ -1,5 +1,4 @@
-import { type CodePoint } from "@keybr/unicode";
-import { combineDiacritic, isDiacritic } from "./diacritics.ts";
+import { type CodePoint, combineDiacritic, isDiacritic } from "@keybr/unicode";
 import { type Geometry } from "./geometry.ts";
 import { KeyCharacters } from "./keycharacters.ts";
 import { KeyCombo } from "./keycombo.ts";

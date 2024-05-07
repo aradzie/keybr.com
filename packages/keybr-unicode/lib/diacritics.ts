@@ -3,7 +3,7 @@
 // https://en.wikipedia.org/wiki/List_of_precomposed_Latin_characters_in_Unicode
 // https://bepo.fr/wiki/Touches_mortes
 
-import { type CodePoint } from "@keybr/unicode";
+import { type CodePoint } from "./types.ts";
 
 type Spec = readonly [
   name: string,

@@ -1,5 +1,4 @@
-import { getDiacritic } from "@keybr/keyboard";
-import { type CodePoint } from "@keybr/unicode";
+import { type CodePoint, getDiacritic } from "@keybr/unicode";
 
 export function formatCodePointName(codePoint: CodePoint): string {
   const diacritic = getDiacritic(codePoint);

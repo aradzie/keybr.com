@@ -1,5 +1,4 @@
 export * from "./context.tsx";
-export * from "./diacritics.ts";
 export * from "./fakes.ts";
 export * from "./geometry.ts";
 export * from "./keyboard.ts";

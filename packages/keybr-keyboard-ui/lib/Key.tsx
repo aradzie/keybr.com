@@ -1,13 +1,12 @@
 import {
   type DeadCharacter,
-  isDiacritic,
   KeyCharacters,
   type KeyShape,
   type LabelShape,
   type Language,
   type LigatureCharacter,
 } from "@keybr/keyboard";
-import { type CodePoint } from "@keybr/unicode";
+import { type CodePoint, isDiacritic } from "@keybr/unicode";
 import { type ClassName } from "@keybr/widget";
 import { clsx } from "clsx";
 import {
