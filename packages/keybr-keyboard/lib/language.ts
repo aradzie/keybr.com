@@ -238,6 +238,39 @@ export class Language implements EnumItem {
     return this.upperCase(String.fromCodePoint(codePoint));
   };
 
+  /**
+   * Returns a value indicating whether the given code point
+   * can be a letter of this language.
+   */
+  includes(codePoint: CodePoint): boolean {
+    // We consider these unicode ranges to contain letters only in a given script.
+    // The ranges were manually built from unicode tables and may not be accurate.
+    switch (this.script) {
+      case "arabic":
+        return codePoint >= 0x0600 && codePoint <= 0x06ff;
+      case "cyrillic":
+        return codePoint >= 0x0400 && codePoint <= 0x04ff;
+      case "greek":
+        return codePoint >= 0x0370 && codePoint <= 0x03ff;
+      case "hebrew":
+        return codePoint >= 0x0590 && codePoint <= 0x05ff;
+      case "latin":
+        // A few unicode blocks of the Latin script to include only
+        // a reasonable list of letter codepoints.
+        return (
+          (codePoint >= /* A */ 0x0041 && codePoint <= /* Z */ 0x005a) ||
+          (codePoint >= /* a */ 0x0061 && codePoint <= /* z */ 0x007a) ||
+          (codePoint >= /* À */ 0x00c0 && codePoint <= /* Ö */ 0x00d6) ||
+          (codePoint >= /* Ø */ 0x00d8 && codePoint <= /* ö */ 0x00f6) ||
+          (codePoint >= /* ø */ 0x00f8 && codePoint <= /* ÿ */ 0x00ff) ||
+          (codePoint >= /* Ā */ 0x0100 && codePoint <= /* ſ */ 0x017f) ||
+          (codePoint >= /* ƀ */ 0x0180 && codePoint <= /* ɏ */ 0x024f)
+        );
+      default:
+        return false;
+    }
+  }
+
   toString() {
     return this.id;
   }
