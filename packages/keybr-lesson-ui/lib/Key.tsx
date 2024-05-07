@@ -13,11 +13,7 @@ export const Key = ({
   isCurrent = false,
   size = "normal",
   title,
-  onClick,
-  onMouseDown,
-  onMouseEnter,
-  onMouseLeave,
-  onMouseUp,
+  ...rest
 }: {
   readonly className?: ClassName;
   readonly lessonKey: LessonKey;
@@ -51,11 +47,7 @@ export const Key = ({
       )}
       style={keyStyle(true, confidence)}
       title={title}
-      onClick={onClick}
-      onMouseDown={onMouseDown}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      onMouseUp={onMouseUp}
+      {...rest}
       data-code-point={codePoint}
     >
       {label}

@@ -12,11 +12,7 @@ export const KeyLegend = ({
   isForced,
   size = "normal",
   title,
-  onClick,
-  onMouseDown,
-  onMouseEnter,
-  onMouseLeave,
-  onMouseUp,
+  ...rest
 }: {
   readonly className?: ClassName;
   readonly confidence: number | null;
@@ -40,11 +36,7 @@ export const KeyLegend = ({
       )}
       style={keyStyle(isIncluded ?? false, confidence ?? null)}
       title={title}
-      onClick={onClick}
-      onMouseDown={onMouseDown}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      onMouseUp={onMouseUp}
+      {...rest}
     >
       ?
       {isIncluded || (

@@ -1,11 +1,6 @@
 import { type Keyboard, KeyboardContext } from "@keybr/keyboard";
-import {
-  type CSSProperties,
-  memo,
-  type MouseEventHandler,
-  type ReactNode,
-  type WheelEventHandler,
-} from "react";
+import { type MouseProps, type WheelProps } from "@keybr/widget";
+import { type CSSProperties, memo, type ReactNode } from "react";
 import { Patterns } from "./Patterns.tsx";
 import { getFrameSize } from "./shapes.tsx";
 import * as styles from "./VirtualKeyboard.module.less";
@@ -23,13 +18,8 @@ export const VirtualKeyboard = memo(function VirtualKeyboard({
   readonly width?: string;
   readonly height?: string;
   readonly style?: CSSProperties;
-  readonly onClick?: MouseEventHandler;
-  readonly onMouseDown?: MouseEventHandler;
-  readonly onMouseEnter?: MouseEventHandler;
-  readonly onMouseLeave?: MouseEventHandler;
-  readonly onMouseUp?: MouseEventHandler;
-  readonly onWheel?: WheelEventHandler;
-}): ReactNode {
+} & MouseProps &
+  WheelProps): ReactNode {
   const size = getFrameSize(keyboard);
   return (
     <svg

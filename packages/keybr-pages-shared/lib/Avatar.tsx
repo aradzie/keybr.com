@@ -9,11 +9,7 @@ export function Avatar({
   user,
   size = "normal",
   className,
-  onClick,
-  onMouseDown,
-  onMouseEnter,
-  onMouseLeave,
-  onMouseUp,
+  ...rest
 }: {
   readonly user: AnyUser | null;
   readonly size?: "normal" | "medium" | "large";
@@ -35,11 +31,7 @@ export function Avatar({
     return (
       <AnonymousImage
         className={clsx(styles.avatar, sizeStyle, className)}
-        onClick={onClick}
-        onMouseDown={onMouseDown}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-        onMouseUp={onMouseUp}
+        {...rest}
       />
     );
   } else {
@@ -50,11 +42,7 @@ export function Avatar({
           className={clsx(styles.avatar, sizeStyle, className)}
           src={imageUrl}
           alt="User image"
-          onClick={onClick}
-          onMouseDown={onMouseDown}
-          onMouseEnter={onMouseEnter}
-          onMouseLeave={onMouseLeave}
-          onMouseUp={onMouseUp}
+          {...rest}
         />
       );
     } else {
@@ -62,11 +50,7 @@ export function Avatar({
         <Identicon
           className={clsx(styles.avatar, sizeStyle, className)}
           name={name}
-          onClick={onClick}
-          onMouseDown={onMouseDown}
-          onMouseEnter={onMouseEnter}
-          onMouseLeave={onMouseLeave}
-          onMouseUp={onMouseUp}
+          {...rest}
         />
       );
     }
@@ -75,11 +59,7 @@ export function Avatar({
 
 function AnonymousImage({
   className,
-  onClick,
-  onMouseDown,
-  onMouseEnter,
-  onMouseLeave,
-  onMouseUp,
+  ...rest
 }: {
   readonly className?: ClassName;
 } & MouseProps): ReactNode {
@@ -87,11 +67,7 @@ function AnonymousImage({
     <svg
       className={clsx(className, styles.anonymousImage)}
       viewBox="0 0 24 24"
-      onClick={onClick}
-      onMouseDown={onMouseDown}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      onMouseUp={onMouseUp}
+      {...rest}
     >
       <path d="M12 0c-6.625 0-12 5.375-12 12s5.375 12 12 12 12-5.375 12-12-5.375-12-12-12zM19.96 14.82c-1.090 3.74-4.27 6.455-8.040 6.455-3.775 0-6.96-2.725-8.045-6.475-1.19-0.1-2.125-1.18-2.125-2.51 0-1.27 0.855-2.315 1.965-2.495v-0.005c2.090-1.465 3.805-3.49 4.095-5.050l0.005 0.005v-0.015c1.355 2.625 6.3 5.19 11.825 5.060 0.1-0.015 0.195-0.035 0.295-0.035 1.275 0 2.31 1.135 2.31 2.535 0.005 1.39-1.020 2.52-2.285 2.53z" />
       <path d="M9.5 12.5c0 0.552-0.448 1-1 1s-1-0.448-1-1c0-0.552 0.448-1 1-1s1 0.448 1 1z" />
@@ -105,11 +81,7 @@ function CustomImage({
   src,
   alt,
   className,
-  onClick,
-  onMouseDown,
-  onMouseEnter,
-  onMouseLeave,
-  onMouseUp,
+  ...rest
 }: {
   readonly src: string;
   readonly alt?: string;
@@ -120,11 +92,7 @@ function CustomImage({
       src={src}
       alt={alt}
       className={clsx(className, styles.customImage)}
-      onClick={onClick}
-      onMouseDown={onMouseDown}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      onMouseUp={onMouseUp}
+      {...rest}
     />
   );
 }

@@ -2,6 +2,7 @@ import {
   type FocusEventHandler,
   type KeyboardEventHandler,
   type MouseEventHandler,
+  type WheelEventHandler,
 } from "react";
 
 export type FocusProps = {
@@ -19,6 +20,10 @@ export type MouseProps = {
   readonly onMouseOut?: MouseEventHandler;
   readonly onMouseEnter?: MouseEventHandler;
   readonly onMouseLeave?: MouseEventHandler;
+};
+
+export type WheelProps = {
+  readonly onWheel?: WheelEventHandler;
 };
 
 export type KeyboardProps = {

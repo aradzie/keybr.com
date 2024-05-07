@@ -7,14 +7,9 @@ import {
   type LigatureCharacter,
 } from "@keybr/keyboard";
 import { type CodePoint, isDiacritic } from "@keybr/unicode";
-import { type ClassName } from "@keybr/widget";
+import { type ClassName, type MouseProps } from "@keybr/widget";
 import { clsx } from "clsx";
-import {
-  type FunctionComponent,
-  memo,
-  type MouseEventHandler,
-  type ReactNode,
-} from "react";
+import { type FunctionComponent, memo, type ReactNode } from "react";
 import * as styles from "./Key.module.less";
 import { keyGap, keySize } from "./shapes.tsx";
 
@@ -22,13 +17,7 @@ export type KeyProps = {
   readonly depressed?: boolean;
   readonly toggled?: boolean;
   readonly showColors?: boolean;
-  readonly onClick?: MouseEventHandler;
-  readonly onMouseDown?: MouseEventHandler;
-  readonly onMouseEnter?: MouseEventHandler;
-  readonly onMouseLeave?: MouseEventHandler;
-  readonly onMouseUp?: MouseEventHandler;
-  readonly showFingers?: boolean;
-};
+} & MouseProps;
 
 export function makeKeyComponent(
   { letterName }: Language,
