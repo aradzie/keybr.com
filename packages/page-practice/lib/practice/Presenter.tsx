@@ -11,7 +11,6 @@ import { TextArea } from "@keybr/textinput-ui";
 import { type Focusable } from "@keybr/widget";
 import { createRef, PureComponent, type ReactNode } from "react";
 import { Prefs } from "../prefs.ts";
-import { Announcer } from "./Announcer.tsx";
 import { Controls } from "./Controls.tsx";
 import { Indicators } from "./Indicators.tsx";
 import { DeferredKeyboardPresenter } from "./KeyboardPresenter.tsx";
@@ -313,7 +312,6 @@ function NormalLayout({
           lastLesson={state.lastLesson}
         />
       </div>
-      <Announcer state={state} />
       {tour}
     </Screen>
   );
@@ -337,7 +335,6 @@ function CompactLayout({
       <div id={names.textInput} className={styles.textInput_compact}>
         {textInput}
       </div>
-      <Announcer state={state} />
     </Screen>
   );
 }
@@ -359,7 +356,6 @@ function BareLayout({
       <div id={names.textInput} className={styles.textInput_bare}>
         {textInput}
       </div>
-      <Announcer state={state} />
     </Screen>
   );
 }

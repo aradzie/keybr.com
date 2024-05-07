@@ -25,7 +25,6 @@ import {
 } from "@keybr/textinput";
 import { type TextInputEvent } from "@keybr/textinput-events";
 import { type CodePoint, type HasCodePoint } from "@keybr/unicode";
-import { type Announcement } from "./Announcer.tsx";
 
 export type LastLesson = {
   readonly result: Result;
@@ -43,7 +42,6 @@ export class PracticeState {
   readonly lessonKeys: LessonKeys;
   readonly stats: SummaryStats;
   readonly dailyGoal: DailyGoal;
-  readonly announcements: Announcement[] = [];
 
   lastLesson: LastLesson | null = null;
 
@@ -69,7 +67,6 @@ export class PracticeState {
       settings.get(lessonProps.dailyGoal),
     );
     this.#reset(this.lesson.generate(this.lessonKeys));
-    this.#computeAnnouncements();
   }
 
   resetLesson(): void {
@@ -101,19 +98,6 @@ export class PracticeState {
     this.textInput = new TextInput(fragment, this.textInputSettings);
     this.lines = this.textInput.getLines();
     this.suffix = this.textInput.getSuffix();
-  }
-
-  #computeAnnouncements(): void {
-    const { results, keyStatsMap, lessonKeys } = this;
-    if (results.length > 0) {
-      const focusedKey = lessonKeys.findFocusedKey();
-      if (focusedKey != null) {
-        const keyStats = keyStatsMap.get(focusedKey.letter);
-        if (keyStats.samples.length === 0) {
-          this.announcements.push({ lessonKey: focusedKey });
-        }
-      }
-    }
   }
 }
 
