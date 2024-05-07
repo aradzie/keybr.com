@@ -1,11 +1,12 @@
 import { NotFoundError } from "@fastr/errors";
 import { Manifest, ManifestContext } from "@keybr/assets";
 import test from "ava";
-import TestRenderer from "react-test-renderer";
+import cheerio from "cheerio";
+import { renderToStaticMarkup } from "react-dom/server";
 import { ErrorPage, inspectError } from "./ErrorPage.tsx";
 
 test("render", (t) => {
-  const renderer = TestRenderer.create(
+  const html = renderToStaticMarkup(
     <ManifestContext.Provider value={Manifest.fake}>
       <ErrorPage
         error={{
@@ -17,7 +18,15 @@ test("render", (t) => {
     </ManifestContext.Provider>,
   );
 
-  t.snapshot(renderer.toJSON());
+  const $ = cheerio.load(html);
+
+  t.deepEqual($("html").attr(), {
+    "lang": "en",
+    "data-color": "light",
+    "data-font": "opensans",
+  });
+  t.is($("title").text(), "400 - Bad Request");
+  t.true($("body").text().includes("400 - Bad Request"));
 });
 
 test("inspect error", (t) => {

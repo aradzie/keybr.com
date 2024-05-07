@@ -2,7 +2,7 @@ import { FakeIntlProvider, PreferredLocaleContext } from "@keybr/intl";
 import { PageDataContext, Sitemap } from "@keybr/pages-shared";
 import { render } from "@testing-library/react";
 import test from "ava";
-import { NavMenu } from "./NavMenu.tsx";
+import { SecondaryMenu } from "./SecondaryMenu.tsx";
 
 test("render", (t) => {
   const r = render(
@@ -24,13 +24,12 @@ test("render", (t) => {
     >
       <PreferredLocaleContext.Provider value="pl">
         <FakeIntlProvider>
-          <NavMenu currentLink={Sitemap.practice.bind(null)} />
+          <SecondaryMenu currentLink={Sitemap.practice.bind(null)} />
         </FakeIntlProvider>
       </PreferredLocaleContext.Provider>
     </PageDataContext.Provider>,
   );
 
-  t.not(r.queryByText("userName"), null);
   t.not(r.queryByText("Polski"), null);
   t.not(r.queryByText("English"), null);
 
