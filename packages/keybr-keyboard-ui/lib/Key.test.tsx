@@ -1,9 +1,9 @@
 import { KeyShape, Language } from "@keybr/keyboard";
+import { render } from "@testing-library/react";
 import test from "ava";
-import TestRenderer from "react-test-renderer";
 import { makeKeyComponent } from "./Key.tsx";
 
-test("static labels", (t) => {
+test.serial("static labels", (t) => {
   const shape = new KeyShape(
     "my-key",
     {
@@ -18,12 +18,14 @@ test("static labels", (t) => {
 
   const Key = makeKeyComponent(Language.EN, shape);
 
-  const renderer = TestRenderer.create(<Key />);
+  const r = render(<Key />);
 
-  t.snapshot(renderer.toJSON());
+  t.is(r.container.textContent, "XYZ");
+
+  r.unmount();
 });
 
-test("letter labels", (t) => {
+test.serial("letter labels", (t) => {
   const shape = new KeyShape(
     "my-key",
     {
@@ -42,12 +44,14 @@ test("letter labels", (t) => {
 
   const Key = makeKeyComponent(Language.TR, shape);
 
-  const renderer = TestRenderer.create(<Key />);
+  const r = render(<Key />);
 
-  t.snapshot(renderer.toJSON());
+  t.is(r.container.textContent, "Iİ");
+
+  r.unmount();
 });
 
-test("dead labels", (t) => {
+test.serial("dead labels", (t) => {
   const shape = new KeyShape(
     "my-key",
     {
@@ -66,12 +70,14 @@ test("dead labels", (t) => {
 
   const Key = makeKeyComponent(Language.DE, shape);
 
-  const renderer = TestRenderer.create(<Key />);
+  const r = render(<Key />);
 
-  t.snapshot(renderer.toJSON());
+  t.is(r.container.textContent, "◌̀◌́**");
+
+  r.unmount();
 });
 
-test("ligature labels", (t) => {
+test.serial("ligature labels", (t) => {
   const shape = new KeyShape(
     "my-key",
     {
@@ -90,12 +96,14 @@ test("ligature labels", (t) => {
 
   const Key = makeKeyComponent(Language.DE, shape);
 
-  const renderer = TestRenderer.create(<Key />);
+  const r = render(<Key />);
 
-  t.snapshot(renderer.toJSON());
+  t.is(r.container.textContent, "XXYYAABB");
+
+  r.unmount();
 });
 
-test("mixed labels", (t) => {
+test.serial("mixed labels", (t) => {
   const shape = new KeyShape(
     "my-key",
     {
@@ -114,12 +122,14 @@ test("mixed labels", (t) => {
 
   const Key = makeKeyComponent(Language.DE, shape);
 
-  const renderer = TestRenderer.create(<Key />);
+  const r = render(<Key />);
 
-  t.snapshot(renderer.toJSON());
+  t.is(r.container.textContent, "A◌̀XX");
+
+  r.unmount();
 });
 
-test("space", (t) => {
+test.serial("space", (t) => {
   const shape = new KeyShape(
     "my-key",
     {
@@ -137,7 +147,9 @@ test("space", (t) => {
 
   const Key = makeKeyComponent(Language.EN, shape);
 
-  const renderer = TestRenderer.create(<Key />);
+  const r = render(<Key />);
 
-  t.snapshot(renderer.toJSON());
+  t.is(r.container.textContent, "");
+
+  r.unmount();
 });

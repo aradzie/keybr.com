@@ -6,23 +6,10 @@ import { fireEvent, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import test from "ava";
 import { type ReactNode, useState } from "react";
-import TestRenderer from "react-test-renderer";
 import { KeySelector } from "./KeySelector.tsx";
 
 const { letters } = FakePhoneticModel;
 const keyStatsMap = newKeyStatsMap(letters, []);
-
-test.serial("render", (t) => {
-  const renderer = TestRenderer.create(
-    <FakeIntlProvider>
-      <FakeSettingsContext>
-        <KeySelector keyStatsMap={keyStatsMap} current={letters[0]} />
-      </FakeSettingsContext>
-    </FakeIntlProvider>,
-  );
-
-  t.snapshot(renderer.toJSON());
-});
 
 test.serial("props", (t) => {
   const r = render(

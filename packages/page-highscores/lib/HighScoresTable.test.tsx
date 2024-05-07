@@ -1,12 +1,12 @@
 import { FakeIntlProvider } from "@keybr/intl";
 import { Layout } from "@keybr/keyboard";
 import { type AnonymousUser, type NamedUser } from "@keybr/pages-shared";
+import { render } from "@testing-library/react";
 import test from "ava";
-import TestRenderer from "react-test-renderer";
 import { HighScoresTable } from "./HighScoresTable.tsx";
 import { type HighScoresEntry } from "./model.ts";
 
-test("render", (t) => {
+test.serial("render", (t) => {
   const entries: HighScoresEntry[] = [
     {
       user: {
@@ -30,11 +30,13 @@ test("render", (t) => {
     },
   ];
 
-  const renderer = TestRenderer.create(
+  const r = render(
     <FakeIntlProvider>
       <HighScoresTable entries={entries} />
     </FakeIntlProvider>,
   );
 
-  t.snapshot(renderer.toJSON());
+  t.not(r.queryByText("user name"), null);
+
+  r.unmount();
 });

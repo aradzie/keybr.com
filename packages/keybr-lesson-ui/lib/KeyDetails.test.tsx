@@ -2,11 +2,11 @@ import { FakeIntlProvider } from "@keybr/intl";
 import { LessonKey } from "@keybr/lesson";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { FakeSettingsContext } from "@keybr/settings";
+import { render } from "@testing-library/react";
 import test from "ava";
-import TestRenderer from "react-test-renderer";
 import { KeyDetails } from "./KeyDetails.tsx";
 
-test("render uncalibrated", (t) => {
+test.serial("render uncalibrated", (t) => {
   const lessonKey = new LessonKey({
     letter: FakePhoneticModel.letter1,
     samples: [],
@@ -16,7 +16,7 @@ test("render uncalibrated", (t) => {
     bestConfidence: null,
   });
 
-  const renderer = TestRenderer.create(
+  const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
         <KeyDetails className="custom" lessonKey={lessonKey} />
@@ -24,10 +24,13 @@ test("render uncalibrated", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.snapshot(renderer.toJSON());
+  t.not(r.queryByText("Not calibrated, need more samples."), null);
+  t.is(r.queryByText("Learning rate:"), null);
+
+  r.unmount();
 });
 
-test("render calibrated", (t) => {
+test.serial("render calibrated", (t) => {
   const lessonKey = new LessonKey({
     letter: FakePhoneticModel.letter1,
     samples: [],
@@ -37,7 +40,7 @@ test("render calibrated", (t) => {
     bestConfidence: 1.0,
   });
 
-  const renderer = TestRenderer.create(
+  const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
         <KeyDetails className="custom" lessonKey={lessonKey} />
@@ -45,5 +48,8 @@ test("render calibrated", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.snapshot(renderer.toJSON());
+  t.is(r.queryByText("Not calibrated, need more samples."), null);
+  t.not(r.queryByText("Learning rate:"), null);
+
+  r.unmount();
 });

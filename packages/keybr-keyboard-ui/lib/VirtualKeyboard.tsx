@@ -16,12 +16,7 @@ export const VirtualKeyboard = memo(function VirtualKeyboard({
   width,
   height,
   style,
-  onClick,
-  onMouseDown,
-  onMouseEnter,
-  onMouseLeave,
-  onMouseUp,
-  onWheel,
+  ...rest
 }: {
   readonly children?: ReactNode;
   readonly keyboard: Keyboard;
@@ -43,12 +38,7 @@ export const VirtualKeyboard = memo(function VirtualKeyboard({
       style={{ aspectRatio: `${size.width}/${size.height}`, ...style }}
       width={width}
       height={height}
-      onClick={onClick}
-      onMouseDown={onMouseDown}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      onMouseUp={onMouseUp}
-      onWheel={onWheel}
+      {...rest}
     >
       <defs>
         <Patterns />

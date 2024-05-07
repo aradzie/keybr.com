@@ -1,11 +1,11 @@
 import { textDisplaySettings, toLine } from "@keybr/textinput";
+import { act, render } from "@testing-library/react";
 import test from "ava";
 import { IntlProvider } from "react-intl";
-import TestRenderer from "react-test-renderer";
 import { TextArea } from "./TextArea.tsx";
 
-test("empty", (t) => {
-  const renderer = TestRenderer.create(
+test.serial("empty", async (t) => {
+  const r = render(
     <IntlProvider locale="en">
       <TextArea
         settings={textDisplaySettings}
@@ -14,11 +14,15 @@ test("empty", (t) => {
     </IntlProvider>,
   );
 
-  t.snapshot(renderer.toJSON());
+  await act(async () => {});
+
+  t.is(r.container.textContent, "");
+
+  r.unmount();
 });
 
-test("render items", (t) => {
-  const renderer = TestRenderer.create(
+test.serial("render items", async (t) => {
+  const r = render(
     <IntlProvider locale="en">
       <TextArea
         settings={textDisplaySettings}
@@ -27,5 +31,9 @@ test("render items", (t) => {
     </IntlProvider>,
   );
 
-  t.snapshot(renderer.toJSON());
+  await act(async () => {});
+
+  t.is(r.container.textContent, "abcxyz");
+
+  r.unmount();
 });

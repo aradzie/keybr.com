@@ -1,9 +1,11 @@
+import { render } from "@testing-library/react";
 import test from "ava";
-import TestRenderer from "react-test-renderer";
 import { Identicon } from "./Identicon.tsx";
 
 test("render", (t) => {
-  const renderer = TestRenderer.create(<Identicon name="hello" />);
+  const r = render(<Identicon name="User Name" />);
 
-  t.snapshot(renderer.toJSON());
+  t.not(r.queryByText("UN"), null);
+
+  r.unmount();
 });

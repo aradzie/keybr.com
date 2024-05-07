@@ -5,7 +5,7 @@ import { fireEvent, render } from "@testing-library/react";
 import test from "ava";
 import { TypingSettings } from "./TypingSettings.tsx";
 
-test("render", (t) => {
+test.serial("render", (t) => {
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>

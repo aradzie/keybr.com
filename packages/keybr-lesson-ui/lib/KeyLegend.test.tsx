@@ -1,10 +1,10 @@
 import { FakeIntlProvider } from "@keybr/intl";
+import { render } from "@testing-library/react";
 import test from "ava";
-import TestRenderer from "react-test-renderer";
 import { KeyLegend } from "./KeyLegend.tsx";
 
-test("render not included", (t) => {
-  const renderer = TestRenderer.create(
+test.serial("render not included", (t) => {
+  const r = render(
     <FakeIntlProvider>
       <KeyLegend
         className="custom"
@@ -16,11 +16,13 @@ test("render not included", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.snapshot(renderer.toJSON());
+  t.not(r.container.querySelector(".lessonKey_excluded"), null);
+
+  r.unmount();
 });
 
-test("render included", (t) => {
-  const renderer = TestRenderer.create(
+test.serial("render included", (t) => {
+  const r = render(
     <FakeIntlProvider>
       <KeyLegend
         className="custom"
@@ -32,5 +34,7 @@ test("render included", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.snapshot(renderer.toJSON());
+  t.not(r.container.querySelector(".lessonKey_included"), null);
+
+  r.unmount();
 });

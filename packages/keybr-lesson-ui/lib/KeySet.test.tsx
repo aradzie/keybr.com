@@ -2,13 +2,13 @@ import { FakeIntlProvider } from "@keybr/intl";
 import { LessonKey, LessonKeys } from "@keybr/lesson";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { FakeSettingsContext } from "@keybr/settings";
+import { render } from "@testing-library/react";
 import test from "ava";
-import TestRenderer from "react-test-renderer";
 import { KeySet } from "./KeySet.tsx";
 
 const { letters } = FakePhoneticModel;
 
-test("render", (t) => {
+test.serial("render", (t) => {
   const lessonKeys = new LessonKeys([
     new LessonKey({
       letter: letters[0],
@@ -44,7 +44,7 @@ test("render", (t) => {
     }),
   ]);
 
-  const renderer = TestRenderer.create(
+  const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
         <KeySet className="custom" lessonKeys={lessonKeys} />
@@ -52,5 +52,9 @@ test("render", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.snapshot(renderer.toJSON());
+  t.not(r.queryByText("A"), null);
+  t.not(r.queryByText("B"), null);
+  t.not(r.queryByText("C"), null);
+
+  r.unmount();
 });

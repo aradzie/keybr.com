@@ -63,7 +63,6 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-intl": "^6.6.5",
-    "react-test-renderer": "^18.3.1",
     "tslib": "^2.6.2",
     "xml-js": "^1.6.11",
     "zod": "^3.23.6"
@@ -78,7 +77,6 @@
     "@types/node": "^20.12.8",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.0",
-    "@types/react-test-renderer": "^18.3.0",
     "ava": "^5.3.1",
     "cheerio": "^1.0.0-rc.12",
     "confusing-browser-globals": "^1.0.11",

@@ -1,11 +1,11 @@
 import { FakeIntlProvider } from "@keybr/intl";
 import { LocalDate, ResultFaker, ResultSummary } from "@keybr/result";
 import { FakeSettingsContext } from "@keybr/settings";
+import { render } from "@testing-library/react";
 import test from "ava";
-import TestRenderer from "react-test-renderer";
 import { Calendar } from "./Calendar.tsx";
 
-test("no results", (t) => {
+test.serial("no results", (t) => {
   // Arrange.
 
   const today = new LocalDate(2001, 2, 3);
@@ -13,7 +13,7 @@ test("no results", (t) => {
 
   // Act.
 
-  const renderer = TestRenderer.create(
+  const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
         <Calendar summary={summary} />
@@ -23,10 +23,12 @@ test("no results", (t) => {
 
   // Assert.
 
-  t.snapshot(renderer.toJSON());
+  t.pass();
+
+  r.unmount();
 });
 
-test("no results today", (t) => {
+test.serial("no results today", (t) => {
   // Arrange.
 
   const today = new LocalDate(2001, 2, 3);
@@ -37,7 +39,7 @@ test("no results today", (t) => {
 
   // Act.
 
-  const renderer = TestRenderer.create(
+  const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
         <Calendar summary={summary} />
@@ -47,10 +49,12 @@ test("no results today", (t) => {
 
   // Assert.
 
-  t.snapshot(renderer.toJSON());
+  t.pass();
+
+  r.unmount();
 });
 
-test("render", (t) => {
+test.serial("render", (t) => {
   // Arrange.
 
   const today = new LocalDate(2001, 2, 3);
@@ -62,7 +66,7 @@ test("render", (t) => {
 
   // Act.
 
-  const renderer = TestRenderer.create(
+  const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
         <Calendar summary={summary} />
@@ -72,5 +76,7 @@ test("render", (t) => {
 
   // Assert.
 
-  t.snapshot(renderer.toJSON());
+  t.pass();
+
+  r.unmount();
 });

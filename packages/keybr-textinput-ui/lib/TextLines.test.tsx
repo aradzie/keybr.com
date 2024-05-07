@@ -6,12 +6,12 @@ import {
   textDisplaySettings,
   toLine,
 } from "@keybr/textinput";
+import { render } from "@testing-library/react";
 import test from "ava";
-import TestRenderer from "react-test-renderer";
 import { TextLines } from "./TextLines.tsx";
 
-test("render", (t) => {
-  const renderer = TestRenderer.create(
+test.serial("render", (t) => {
+  const r = render(
     <TextLines
       settings={textDisplaySettings}
       lines={{
@@ -26,8 +26,8 @@ test("render", (t) => {
               { codePoint: /* d */ 0x0064, attrs: attrNormal },
             ],
           },
-          toLine("abc"),
           toLine("xyz"),
+          toLine("uvw"),
         ],
       }}
       cursor={false}
@@ -35,5 +35,7 @@ test("render", (t) => {
     />,
   );
 
-  t.snapshot(renderer.toJSON());
+  t.is(r.container.textContent, "abcdxyzuvw");
+
+  r.unmount();
 });

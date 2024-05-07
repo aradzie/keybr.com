@@ -1,24 +1,26 @@
 import { KeyboardContext, Layout, loadKeyboard } from "@keybr/keyboard";
+import { render } from "@testing-library/react";
 import test from "ava";
-import TestRenderer from "react-test-renderer";
 import { HeatmapLayer } from "./HeatmapLayer.tsx";
 
-test("empty", (t) => {
+test.serial("empty", (t) => {
   const keyboard = loadKeyboard(Layout.EN_US);
 
-  const renderer = TestRenderer.create(
+  const r = render(
     <KeyboardContext.Provider value={keyboard}>
       <HeatmapLayer histogram={[]} modifier="f" />
     </KeyboardContext.Provider>,
   );
 
-  t.snapshot(renderer.toJSON());
+  t.is(r.container.querySelectorAll(".spot_f").length, 0);
+
+  r.unmount();
 });
 
-test("equal counts", (t) => {
+test.serial("equal counts", (t) => {
   const keyboard = loadKeyboard(Layout.EN_US);
 
-  const renderer = TestRenderer.create(
+  const r = render(
     <KeyboardContext.Provider value={keyboard}>
       <HeatmapLayer
         histogram={[
@@ -31,13 +33,15 @@ test("equal counts", (t) => {
     </KeyboardContext.Provider>,
   );
 
-  t.snapshot(renderer.toJSON());
+  t.is(r.container.querySelectorAll(".spot_f").length, 3);
+
+  r.unmount();
 });
 
-test("different counts", (t) => {
+test.serial("different counts", (t) => {
   const keyboard = loadKeyboard(Layout.EN_US);
 
-  const renderer = TestRenderer.create(
+  const r = render(
     <KeyboardContext.Provider value={keyboard}>
       <HeatmapLayer
         histogram={[
@@ -50,13 +54,15 @@ test("different counts", (t) => {
     </KeyboardContext.Provider>,
   );
 
-  t.snapshot(renderer.toJSON());
+  t.is(r.container.querySelectorAll(".spot_f").length, 3);
+
+  r.unmount();
 });
 
-test("combine counts for the same key", (t) => {
+test.serial("combine counts for the same key", (t) => {
   const keyboard = loadKeyboard(Layout.EN_US);
 
-  const renderer = TestRenderer.create(
+  const r = render(
     <KeyboardContext.Provider value={keyboard}>
       <HeatmapLayer
         histogram={[
@@ -69,5 +75,7 @@ test("combine counts for the same key", (t) => {
     </KeyboardContext.Provider>,
   );
 
-  t.snapshot(renderer.toJSON());
+  t.is(r.container.querySelectorAll(".spot_f").length, 2);
+
+  r.unmount();
 });

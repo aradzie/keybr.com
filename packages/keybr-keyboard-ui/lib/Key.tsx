@@ -109,11 +109,7 @@ export function makeKeyComponent(
     depressed,
     toggled,
     showColors,
-    onClick,
-    onMouseDown,
-    onMouseEnter,
-    onMouseLeave,
-    onMouseUp,
+    ...rest
   }: KeyProps): ReactNode {
     return (
       <svg
@@ -127,11 +123,7 @@ export function makeKeyComponent(
         y={y}
         width={w}
         height={h}
-        onClick={onClick}
-        onMouseDown={onMouseDown}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-        onMouseUp={onMouseUp}
+        {...rest}
         {...{ "data-key": id }}
       >
         {...children}

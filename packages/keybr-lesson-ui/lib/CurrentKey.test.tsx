@@ -2,13 +2,13 @@ import { FakeIntlProvider } from "@keybr/intl";
 import { LessonKey, LessonKeys } from "@keybr/lesson";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { FakeSettingsContext } from "@keybr/settings";
+import { render } from "@testing-library/react";
 import test from "ava";
-import TestRenderer from "react-test-renderer";
 import { CurrentKey } from "./CurrentKey.tsx";
 
 const { letters } = FakePhoneticModel;
 
-test("render no key", (t) => {
+test.serial("render no key", (t) => {
   const lessonKeys = new LessonKeys([
     new LessonKey({
       letter: letters[0],
@@ -20,7 +20,7 @@ test("render no key", (t) => {
     }).asIncluded(),
   ]);
 
-  const renderer = TestRenderer.create(
+  const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
         <CurrentKey className="custom" lessonKeys={lessonKeys} />
@@ -28,10 +28,13 @@ test("render no key", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.snapshot(renderer.toJSON());
+  t.not(r.queryByText("All keys are unlocked."), null);
+  t.is(r.queryByText("Learning rate:"), null);
+
+  r.unmount();
 });
 
-test("render key", (t) => {
+test.serial("render key", (t) => {
   const lessonKeys = new LessonKeys([
     new LessonKey({
       letter: letters[0],
@@ -43,7 +46,7 @@ test("render key", (t) => {
     }).asFocused(),
   ]);
 
-  const renderer = TestRenderer.create(
+  const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
         <CurrentKey className="custom" lessonKeys={lessonKeys} />
@@ -51,5 +54,8 @@ test("render key", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.snapshot(renderer.toJSON());
+  t.is(r.queryByText("All keys are unlocked."), null);
+  t.not(r.queryByText("Learning rate:"), null);
+
+  r.unmount();
 });

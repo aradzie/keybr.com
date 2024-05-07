@@ -1,7 +1,7 @@
 import { FakeIntlProvider } from "@keybr/intl";
+import { render } from "@testing-library/react";
 import test from "ava";
 import { createIntl } from "react-intl";
-import TestRenderer from "react-test-renderer";
 import { AlertIcon } from "./icons.tsx";
 import { PageLink, PageLinkTemplate } from "./pagelink.tsx";
 
@@ -77,7 +77,7 @@ test("format complex", (t) => {
   });
 });
 
-test("render with default template", (t) => {
+test.serial("render with default template", (t) => {
   const template = new PageLinkTemplate<null>({
     path: "/path",
     name: {
@@ -91,16 +91,18 @@ test("render with default template", (t) => {
     icon: AlertIcon,
   });
 
-  const renderer = TestRenderer.create(
+  const r = render(
     <FakeIntlProvider>
       <PageLink link={template.bind(null)} className="link-class" />
     </FakeIntlProvider>,
   );
 
-  t.snapshot(renderer.toJSON());
+  t.is(r.container.textContent, "name");
+
+  r.unmount();
 });
 
-test("render with custom template", (t) => {
+test.serial("render with custom template", (t) => {
   const template = new PageLinkTemplate<null>({
     path: "/path",
     name: {
@@ -114,7 +116,7 @@ test("render with custom template", (t) => {
     icon: AlertIcon,
   });
 
-  const renderer = TestRenderer.create(
+  const r = render(
     <FakeIntlProvider>
       <PageLink link={template.bind(null)} className="link-class">
         {({ path, name }) => (
@@ -126,5 +128,7 @@ test("render with custom template", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.snapshot(renderer.toJSON());
+  t.is(r.container.textContent, "/path name");
+
+  r.unmount();
 });

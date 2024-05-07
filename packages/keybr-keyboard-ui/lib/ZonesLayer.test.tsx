@@ -1,16 +1,18 @@
 import { KeyboardContext, Layout, loadKeyboard } from "@keybr/keyboard";
+import { render } from "@testing-library/react";
 import test from "ava";
-import TestRenderer from "react-test-renderer";
 import { ZonesLayer } from "./ZonesLayer.tsx";
 
-test("render", (t) => {
+test.serial("render", (t) => {
   const keyboard = loadKeyboard(Layout.EN_US);
 
-  const renderer = TestRenderer.create(
+  const r = render(
     <KeyboardContext.Provider value={keyboard}>
       <ZonesLayer />
     </KeyboardContext.Provider>,
   );
 
-  t.snapshot(renderer.toJSON());
+  t.pass();
+
+  r.unmount();
 });

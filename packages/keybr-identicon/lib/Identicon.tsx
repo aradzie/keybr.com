@@ -10,11 +10,7 @@ import { initials } from "./util.ts";
 export function Identicon({
   className,
   name,
-  onClick,
-  onMouseDown,
-  onMouseEnter,
-  onMouseLeave,
-  onMouseUp,
+  ...rest
 }: {
   readonly className?: ClassName;
   readonly name: string;
@@ -42,15 +38,7 @@ export function Identicon({
   };
 
   return (
-    <svg
-      className={clsx(className)}
-      viewBox={`0 0 ${size} ${size}`}
-      onClick={onClick}
-      onMouseDown={onMouseDown}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      onMouseUp={onMouseUp}
-    >
+    <svg className={clsx(className)} viewBox={`0 0 ${size} ${size}`} {...rest}>
       <path
         fill={palette[0]}
         d={makePath(borderShapes, [

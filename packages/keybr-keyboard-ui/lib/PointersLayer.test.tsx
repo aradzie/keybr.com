@@ -1,7 +1,8 @@
 import { KeyboardContext, Layout, loadKeyboard } from "@keybr/keyboard";
 import { fake } from "@keybr/test-env-time";
+import { render } from "@testing-library/react";
 import test from "ava";
-import TestRenderer from "react-test-renderer";
+import { act } from "react";
 import { PointersLayer } from "./PointersLayer.tsx";
 
 test.beforeEach(() => {
@@ -15,67 +16,67 @@ test.afterEach(() => {
 test.serial("empty", async (t) => {
   const keyboard = loadKeyboard(Layout.EN_US);
 
-  const renderer = TestRenderer.create(
+  const r = render(
     <KeyboardContext.Provider value={keyboard}>
       <PointersLayer suffix={[]} />
     </KeyboardContext.Provider>,
   );
 
-  await TestRenderer.act(() => {});
+  await act(async () => {});
   await fake.timers.run();
 
-  t.is(renderer.root.findAllByType("circle").length, 0);
+  t.is(r.container.querySelectorAll("circle").length, 0);
 
-  t.snapshot(renderer.toJSON());
+  r.unmount();
 });
 
 test.serial("unknown", async (t) => {
   const keyboard = loadKeyboard(Layout.EN_US);
 
-  const renderer = TestRenderer.create(
+  const r = render(
     <KeyboardContext.Provider value={keyboard}>
       <PointersLayer suffix={[0x0000]} />
     </KeyboardContext.Provider>,
   );
 
-  await TestRenderer.act(() => {});
+  await act(async () => {});
   await fake.timers.run();
 
-  t.is(renderer.root.findAllByType("circle").length, 0);
+  t.is(r.container.querySelectorAll("circle").length, 0);
 
-  t.snapshot(renderer.toJSON());
+  r.unmount();
 });
 
 test.serial("without modifiers", async (t) => {
   const keyboard = loadKeyboard(Layout.EN_US);
 
-  const renderer = TestRenderer.create(
+  const r = render(
     <KeyboardContext.Provider value={keyboard}>
       <PointersLayer suffix={[/* "a" */ 0x0061]} />
     </KeyboardContext.Provider>,
   );
 
-  await TestRenderer.act(() => {});
   await fake.timers.run();
+  await act(async () => {});
 
-  t.is(renderer.root.findAllByType("circle").length, 1);
+  t.is(r.container.querySelectorAll("circle").length, 1);
 
-  t.snapshot(renderer.toJSON());
+  r.unmount();
 });
 
 test.serial("with modifiers", async (t) => {
   const keyboard = loadKeyboard(Layout.EN_US);
 
-  const renderer = TestRenderer.create(
+  const r = render(
     <KeyboardContext.Provider value={keyboard}>
       <PointersLayer suffix={[/* "A" */ 0x0041]} />
     </KeyboardContext.Provider>,
   );
 
-  await TestRenderer.act(() => {});
   await fake.timers.run();
+  await act(async () => {});
 
-  t.is(renderer.root.findAllByType("circle").length, 2);
+  t.is(r.container.querySelectorAll("circle").length, 2);
 
-  t.snapshot(renderer.toJSON());
+  r.unmount();
 });

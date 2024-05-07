@@ -1,24 +1,28 @@
 import { KeyboardContext, Layout, loadKeyboard } from "@keybr/keyboard";
+import { render } from "@testing-library/react";
 import test from "ava";
-import TestRenderer from "react-test-renderer";
 import { KeyLayer } from "./KeyLayer.tsx";
 
-test("render", (t) => {
+test.serial("render", (t) => {
   const keyboard = loadKeyboard(Layout.EN_US);
 
-  const renderer = TestRenderer.create(
+  const r = render(
     <KeyboardContext.Provider value={keyboard}>
       <KeyLayer />
     </KeyboardContext.Provider>,
   );
 
-  t.snapshot(renderer.toJSON());
+  t.is(r.container.querySelectorAll(".key").length, 58);
+  t.is(r.container.querySelectorAll(".depressedKey").length, 0);
+  t.is(r.container.querySelectorAll(".symbol").length, 78);
+
+  r.unmount();
 });
 
-test("update", (t) => {
+test.serial("update", (t) => {
   const keyboard = loadKeyboard(Layout.EN_US);
 
-  const renderer = TestRenderer.create(
+  const r = render(
     <KeyboardContext.Provider value={keyboard}>
       <KeyLayer
         depressedKeys={["KeyA", "KeyB", "KeyC"]}
@@ -27,5 +31,9 @@ test("update", (t) => {
     </KeyboardContext.Provider>,
   );
 
-  t.snapshot(renderer.toJSON());
+  t.is(r.container.querySelectorAll(".key").length, 58);
+  t.is(r.container.querySelectorAll(".depressedKey").length, 3);
+  t.is(r.container.querySelectorAll(".symbol").length, 78);
+
+  r.unmount();
 });

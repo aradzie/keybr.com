@@ -2,11 +2,11 @@ import { FakeIntlProvider } from "@keybr/intl";
 import { LessonKey } from "@keybr/lesson";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { FakeSettingsContext } from "@keybr/settings";
+import { render } from "@testing-library/react";
 import test from "ava";
-import TestRenderer from "react-test-renderer";
 import { Key } from "./Key.tsx";
 
-test("render excluded", (t) => {
+test.serial("render excluded", (t) => {
   const lessonKey = new LessonKey({
     letter: FakePhoneticModel.letter1,
     samples: [],
@@ -16,18 +16,20 @@ test("render excluded", (t) => {
     bestConfidence: null,
   }).asExcluded();
 
-  const renderer = TestRenderer.create(
+  const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
-        <Key className="custom" lessonKey={lessonKey} />
+        <Key lessonKey={lessonKey} />
       </FakeSettingsContext>
     </FakeIntlProvider>,
   );
 
-  t.snapshot(renderer.toJSON());
+  t.not(r.container.querySelector(".lessonKey_excluded"), null);
+
+  r.unmount();
 });
 
-test("render included", (t) => {
+test.serial("render included", (t) => {
   const lessonKey = new LessonKey({
     letter: FakePhoneticModel.letter1,
     samples: [],
@@ -37,18 +39,20 @@ test("render included", (t) => {
     bestConfidence: null,
   }).asIncluded();
 
-  const renderer = TestRenderer.create(
+  const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
-        <Key className="custom" lessonKey={lessonKey} />
+        <Key lessonKey={lessonKey} />
       </FakeSettingsContext>
     </FakeIntlProvider>,
   );
 
-  t.snapshot(renderer.toJSON());
+  t.not(r.container.querySelector(".lessonKey_included"), null);
+
+  r.unmount();
 });
 
-test("render focused", (t) => {
+test.serial("render focused", (t) => {
   const lessonKey = new LessonKey({
     letter: FakePhoneticModel.letter1,
     samples: [],
@@ -58,13 +62,15 @@ test("render focused", (t) => {
     bestConfidence: null,
   }).asFocused();
 
-  const renderer = TestRenderer.create(
+  const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
-        <Key className="custom" lessonKey={lessonKey} />
+        <Key lessonKey={lessonKey} />
       </FakeSettingsContext>
     </FakeIntlProvider>,
   );
 
-  t.snapshot(renderer.toJSON());
+  t.not(r.container.querySelector(".lessonKey_focused"), null);
+
+  r.unmount();
 });

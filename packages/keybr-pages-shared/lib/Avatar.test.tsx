@@ -1,65 +1,72 @@
 import { FakeIntlProvider } from "@keybr/intl";
+import { render } from "@testing-library/react";
 import test from "ava";
-import TestRenderer from "react-test-renderer";
 import { Avatar } from "./Avatar.tsx";
-import { type AnonymousUser, type NamedUser } from "./types.ts";
 
-test("render anonymous user without image", (t) => {
-  const renderer = TestRenderer.create(
+test.serial("render anonymous user without image", (t) => {
+  const r = render(
     <FakeIntlProvider>
       <Avatar user={null} />
     </FakeIntlProvider>,
   );
 
-  t.snapshot(renderer.toJSON());
+  t.not(r.container.querySelector(".avatar"), null);
+
+  r.unmount();
 });
 
-test("render anonymous user with identicon", (t) => {
-  const user: AnonymousUser = {
-    id: null,
-    name: "somebody",
-    imageUrl: null,
-  };
-
-  const renderer = TestRenderer.create(
+test.serial("render anonymous user with identicon", (t) => {
+  const r = render(
     <FakeIntlProvider>
-      <Avatar user={user} />
+      <Avatar
+        user={{
+          id: null,
+          name: "somebody",
+          imageUrl: null,
+        }}
+      />
     </FakeIntlProvider>,
   );
 
-  t.snapshot(renderer.toJSON());
+  t.not(r.container.querySelector(".avatar"), null);
+
+  r.unmount();
 });
 
-test("render named user with identicon", (t) => {
-  const user: NamedUser = {
-    id: "id",
-    name: "somebody",
-    imageUrl: null,
-    premium: false,
-  };
-
-  const renderer = TestRenderer.create(
+test.serial("render named user with identicon", (t) => {
+  const r = render(
     <FakeIntlProvider>
-      <Avatar user={user} />
+      <Avatar
+        user={{
+          id: "id",
+          name: "somebody",
+          imageUrl: null,
+          premium: false,
+        }}
+      />
     </FakeIntlProvider>,
   );
 
-  t.snapshot(renderer.toJSON());
+  t.not(r.container.querySelector(".avatar"), null);
+
+  r.unmount();
 });
 
-test("render named user with custom image", (t) => {
-  const user: NamedUser = {
-    id: "id",
-    name: "somebody",
-    imageUrl: "https://provider.com/image.png",
-    premium: false,
-  };
-
-  const renderer = TestRenderer.create(
+test.serial("render named user with custom image", (t) => {
+  const r = render(
     <FakeIntlProvider>
-      <Avatar user={user} />
+      <Avatar
+        user={{
+          id: "id",
+          name: "somebody",
+          imageUrl: "https://provider.com/image.png",
+          premium: false,
+        }}
+      />
     </FakeIntlProvider>,
   );
 
-  t.snapshot(renderer.toJSON());
+  t.not(r.container.querySelector(".avatar"), null);
+
+  r.unmount();
 });

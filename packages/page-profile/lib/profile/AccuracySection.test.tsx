@@ -1,18 +1,18 @@
 import { FakeIntlProvider } from "@keybr/intl";
 import { LocalDate, ResultFaker, ResultSummary } from "@keybr/result";
 import { FakeSettingsContext } from "@keybr/settings";
+import { render } from "@testing-library/react";
 import test from "ava";
-import TestRenderer from "react-test-renderer";
 import { AccuracySection } from "./AccuracySection.tsx";
 
-test("no streaks", (t) => {
+test.serial("no streaks", (t) => {
   // Arrange.
 
   const summary = new ResultSummary([], new LocalDate(0));
 
   // Act.
 
-  const renderer = TestRenderer.create(
+  const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
         <AccuracySection summary={summary} />
@@ -22,10 +22,12 @@ test("no streaks", (t) => {
 
   // Assert.
 
-  t.snapshot(renderer.toJSON());
+  t.is(r.queryByText("Accuracy Threshold", { exact: false }), null);
+
+  r.unmount();
 });
 
-test("one streak", (t) => {
+test.serial("one streak", (t) => {
   // Arrange.
 
   const faker = new ResultFaker();
@@ -34,7 +36,7 @@ test("one streak", (t) => {
 
   // Act.
 
-  const renderer = TestRenderer.create(
+  const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
         <AccuracySection summary={summary} />
@@ -44,5 +46,7 @@ test("one streak", (t) => {
 
   // Assert.
 
-  t.snapshot(renderer.toJSON());
+  t.not(r.queryByText("Accuracy Threshold", { exact: false }), null);
+
+  r.unmount();
 });
