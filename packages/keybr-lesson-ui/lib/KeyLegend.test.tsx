@@ -7,7 +7,6 @@ test.serial("render not included", (t) => {
   const r = render(
     <FakeIntlProvider>
       <KeyLegend
-        className="custom"
         isIncluded={false}
         confidence={null}
         isFocused={false}
@@ -25,7 +24,6 @@ test.serial("render included", (t) => {
   const r = render(
     <FakeIntlProvider>
       <KeyLegend
-        className="custom"
         isIncluded={true}
         confidence={0.8}
         isFocused={true}

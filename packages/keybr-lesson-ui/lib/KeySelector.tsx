@@ -2,18 +2,12 @@ import { LessonKey, Target } from "@keybr/lesson";
 import { type Letter } from "@keybr/phonetic-model";
 import { type KeyStatsMap } from "@keybr/result";
 import { useSettings } from "@keybr/settings";
-import {
-  type ClassName,
-  type FocusProps,
-  useHotkeysHandler,
-} from "@keybr/widget";
-import { clsx } from "clsx";
+import { type FocusProps, useHotkeysHandler } from "@keybr/widget";
 import { type FocusEvent, type ReactNode } from "react";
 import { Key } from "./Key.tsx";
 import * as styles from "./KeySelector.module.less";
 
 export const KeySelector = ({
-  className,
   current,
   disabled,
   keyStatsMap,
@@ -23,7 +17,6 @@ export const KeySelector = ({
   onFocus,
   onBlur,
 }: {
-  readonly className?: ClassName;
   readonly current: Letter;
   readonly keyStatsMap: KeyStatsMap;
   readonly title?: string;
@@ -72,7 +65,7 @@ export const KeySelector = ({
   };
   return (
     <span
-      className={clsx(styles.keySelector, className)}
+      className={styles.keySelector}
       tabIndex={disabled ? undefined : tabIndex ?? 0}
       title={title}
       onFocus={handleFocus}

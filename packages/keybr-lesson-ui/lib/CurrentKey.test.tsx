@@ -23,7 +23,7 @@ test.serial("render no key", (t) => {
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
-        <CurrentKey className="custom" lessonKeys={lessonKeys} />
+        <CurrentKey lessonKeys={lessonKeys} />
       </FakeSettingsContext>
     </FakeIntlProvider>,
   );
@@ -49,7 +49,7 @@ test.serial("render key", (t) => {
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
-        <CurrentKey className="custom" lessonKeys={lessonKeys} />
+        <CurrentKey lessonKeys={lessonKeys} />
       </FakeSettingsContext>
     </FakeIntlProvider>,
   );

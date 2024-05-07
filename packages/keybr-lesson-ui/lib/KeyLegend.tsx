@@ -1,11 +1,10 @@
-import { type ClassName, type MouseProps } from "@keybr/widget";
+import { type MouseProps } from "@keybr/widget";
 import { clsx } from "clsx";
 import { type ReactNode } from "react";
 import { keyStyle } from "./color.ts";
 import * as styles from "./styles.module.less";
 
 export const KeyLegend = ({
-  className,
   confidence,
   isIncluded,
   isFocused,
@@ -14,7 +13,6 @@ export const KeyLegend = ({
   title,
   ...rest
 }: {
-  readonly className?: ClassName;
   readonly confidence: number | null;
   readonly isIncluded: boolean;
   readonly isFocused: boolean;
@@ -32,7 +30,6 @@ export const KeyLegend = ({
         isIncluded && confidence == null && styles.lessonKey_uncalibrated,
         isIncluded && isFocused && styles.lessonKey_focused,
         isIncluded && isForced && styles.lessonKey_forced,
-        className,
       )}
       style={keyStyle(isIncluded ?? false, confidence ?? null)}
       title={title}

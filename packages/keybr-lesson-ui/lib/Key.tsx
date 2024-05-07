@@ -1,13 +1,12 @@
 import { type LessonKey } from "@keybr/lesson";
 import { type Letter } from "@keybr/phonetic-model";
-import { type ClassName, type MouseProps } from "@keybr/widget";
+import { type MouseProps } from "@keybr/widget";
 import { clsx } from "clsx";
 import { type ReactNode } from "react";
 import { keyStyle } from "./color.ts";
 import * as styles from "./styles.module.less";
 
 export const Key = ({
-  className,
   lessonKey,
   isSelectable = false,
   isCurrent = false,
@@ -15,7 +14,6 @@ export const Key = ({
   title,
   ...rest
 }: {
-  readonly className?: ClassName;
   readonly lessonKey: LessonKey;
   readonly isSelectable?: boolean;
   readonly isCurrent?: boolean;
@@ -43,7 +41,6 @@ export const Key = ({
         isIncluded && isForced && styles.lessonKey_forced,
         isSelectable && styles.lessonKey_selectable,
         isCurrent && styles.lessonKey_current,
-        className,
       )}
       style={keyStyle(true, confidence)}
       title={title}

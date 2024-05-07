@@ -1,7 +1,7 @@
 import { LearningRate, type LessonKey, Target } from "@keybr/lesson";
 import { timeToSpeed } from "@keybr/result";
 import { useSettings } from "@keybr/settings";
-import { type ClassName, Name, NameValue, Value } from "@keybr/widget";
+import { Name, NameValue, Value } from "@keybr/widget";
 import { clsx } from "clsx";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
@@ -10,10 +10,8 @@ import { messages } from "./intl.ts";
 import * as styles from "./styles.module.less";
 
 export const KeyDetails = ({
-  className,
   lessonKey,
 }: {
-  readonly className?: ClassName;
   readonly lessonKey: LessonKey;
 }): ReactNode => {
   const { formatMessage } = useIntl();
@@ -32,13 +30,7 @@ export const KeyDetails = ({
       new Target(settings),
     );
     return (
-      <span
-        className={clsx(
-          styles.keyDetails,
-          styles.keyDetails_calibrated,
-          className,
-        )}
-      >
+      <span className={clsx(styles.keyDetails, styles.keyDetails_calibrated)}>
         <NameValue
           name={<Name name={formatMessage(messages.lastSpeedName)} />}
           value={
@@ -72,13 +64,7 @@ export const KeyDetails = ({
     );
   } else {
     return (
-      <span
-        className={clsx(
-          styles.keyDetails,
-          styles.keyDetails_uncalibrated,
-          className,
-        )}
-      >
+      <span className={clsx(styles.keyDetails, styles.keyDetails_uncalibrated)}>
         {formatMessage(messages.notCalibratedText)}
       </span>
     );

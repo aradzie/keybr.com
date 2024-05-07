@@ -19,7 +19,7 @@ test.serial("render uncalibrated", (t) => {
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
-        <KeyDetails className="custom" lessonKey={lessonKey} />
+        <KeyDetails lessonKey={lessonKey} />
       </FakeSettingsContext>
     </FakeIntlProvider>,
   );
@@ -43,7 +43,7 @@ test.serial("render calibrated", (t) => {
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
-        <KeyDetails className="custom" lessonKey={lessonKey} />
+        <KeyDetails lessonKey={lessonKey} />
       </FakeSettingsContext>
     </FakeIntlProvider>,
   );
