@@ -1,4 +1,4 @@
-import { allLocales, defaultLocale, type LocaleId } from "@keybr/intl";
+import { allLocales, defaultLocale } from "@keybr/intl";
 import { type ClassName, Link } from "@keybr/widget";
 import { type ComponentType, type ElementType, type ReactNode } from "react";
 import { type IntlShape, type MessageDescriptor, useIntl } from "react-intl";
@@ -39,12 +39,13 @@ export class PageLinkTemplate<T = null> {
 export class BoundPageLink<T = null> {
   readonly #link: PageLinkTemplate<T>;
   readonly #params: T;
+
   constructor(link: PageLinkTemplate<T>, params: T) {
     this.#link = link;
     this.#params = params;
   }
 
-  formatPath(locale: LocaleId): string {
+  formatPath(locale: string) {
     const map = new Map(Object.entries(this.#params ?? {}));
     const path = this.#link.path
       .split("/")
@@ -72,17 +73,9 @@ export class BoundPageLink<T = null> {
     }
   }
 
-  format(
-    intl: IntlShape,
-    locale: string = intl.locale,
-  ): {
-    readonly path: string;
-    readonly name: string;
-    readonly title: string;
-    readonly icon?: ComponentType<IconProps>;
-  } {
+  format(intl: IntlShape) {
     return {
-      path: this.formatPath(locale as LocaleId),
+      path: this.formatPath(intl.locale),
       name: intl.formatMessage(this.#link.name, this.#params as any),
       title: intl.formatMessage(this.#link.title, this.#params as any),
       icon: this.#link.icon,
@@ -92,12 +85,16 @@ export class BoundPageLink<T = null> {
 
 export function PageLink({
   link,
+  name: altName,
+  title: altTitle,
   target,
   component: Component = Link,
   className,
   children,
 }: {
   readonly link: BoundPageLink<any>;
+  readonly name?: string;
+  readonly title?: string;
   readonly target?: string;
   readonly component?: ElementType<{
     readonly href: string;
@@ -117,10 +114,15 @@ export function PageLink({
   const intl = useIntl();
   const { path, name, title, icon } = link.format(intl);
   return (
-    <Component className={className} href={path} target={target} title={title}>
+    <Component
+      className={className}
+      href={path}
+      target={target}
+      title={altTitle || title}
+    >
       {typeof children === "function"
         ? children({ path, name, title, icon })
-        : name}
+        : altName || name}
     </Component>
   );
 }

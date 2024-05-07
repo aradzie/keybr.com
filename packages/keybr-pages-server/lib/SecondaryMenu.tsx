@@ -107,22 +107,17 @@ function RemoveAdsLink(): ReactNode {
   const { publicUser } = usePageData();
   return (
     isPremiumUser(publicUser) || (
-      <PageLink link={Sitemap.accountLink(publicUser)}>
-        {({ path }) => (
-          <Link
-            href={path}
-            title={formatMessage({
-              id: "footer.removeAds.description",
-              defaultMessage: "Purchase a premium account to remove ads.",
-            })}
-          >
-            {formatMessage({
-              id: "footer.removeAds.label",
-              defaultMessage: "Remove Ads",
-            })}
-          </Link>
-        )}
-      </PageLink>
+      <PageLink
+        link={Sitemap.accountLink(publicUser)}
+        name={formatMessage({
+          id: "footer.removeAds.label",
+          defaultMessage: "Remove Ads",
+        })}
+        title={formatMessage({
+          id: "footer.removeAds.description",
+          defaultMessage: "Purchase a premium account to remove ads.",
+        })}
+      />
     )
   );
 }
