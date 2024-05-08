@@ -1,63 +1,17 @@
 @import "../../styles/components.less";
 @import "../../styles/text.less";
 
-.optionList {
-  display: inline-block;
-  position: relative;
-  vertical-align: middle;
-  min-inline-size: 20rem;
-  margin: 0;
-  padding: 0;
-  border: none;
-  color: var(--Button__color);
-  background-color: var(--Button__background-color);
-  font-family: var(--default-font-family);
-  font-size: 0.85rem;
-  font-weight: normal;
-  font-style: normal;
-  text-align: start;
-  text-transform: none;
-  cursor: pointer;
-}
-
-.focused {
-  color: var(--Button--focused__color);
-  background-color: var(--Button--focused__background-color);
-  outline: none;
-}
-
-.placeholder {
-  display: flex;
-}
-
-.placeholderName {
-  .textTruncate();
-  flex: 1;
-  vertical-align: middle;
-  block-size: @field-height;
-  margin: 0;
-  padding-inline: 1.5rem;
-  padding-block: 0;
-  line-height: @field-height;
-}
-
-.placeholderArrow {
-  vertical-align: middle;
-  block-size: @field-height;
-  margin: 0;
-  padding-inline: 0 1.5rem;
-  padding-block: 0;
-  line-height: @field-height;
-}
-
-.list {
+.root {
   display: block;
   position: absolute;
   inset-inline-start: 0;
   inset-inline-end: 0;
   inset-block-start: 100%;
   z-index: 1;
+  list-style: none;
   max-block-size: 20rem;
+  margin: 0;
+  padding: 0;
   overflow: auto;
   scroll-behavior: smooth;
   overscroll-behavior: contain;
@@ -65,12 +19,15 @@
     var(--MenuItem__background-color);
   scrollbar-width: auto;
   box-shadow: 0 0.5rem 3rem var(--Popup__shadow-color);
+  cursor: pointer;
 }
 
 .item {
   .textTruncate();
   display: block;
   block-size: @field-height;
+  margin: 0;
+  padding: 0;
   padding-inline: 1.5rem;
   padding-block: 0;
   color: var(--MenuItem__color);
@@ -91,8 +48,4 @@
 .item_selected:hover {
   color: var(--MenuItem--selected__color);
   background-color: var(--MenuItem--selected__background-color);
-}
-
-.disabled {
-  .is-disabled();
 }

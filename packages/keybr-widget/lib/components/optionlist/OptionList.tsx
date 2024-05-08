@@ -1,12 +1,8 @@
-import { clsx } from "clsx";
-import { type ReactNode, useEffect, useRef, useState } from "react";
+import { type ReactNode, useState } from "react";
 import { useHotkeysHandler } from "../../hooks/use-hotkeys.ts";
-import * as iconStyles from "../icon/Icon.module.less";
-import * as styles from "./OptionList.module.less";
-import {
-  type OptionListOption,
-  type OptionListProps,
-} from "./OptionList.types.ts";
+import { type OptionListProps } from "./OptionList.types.ts";
+import { OptionListButton } from "./OptionListButton.tsx";
+import { OptionListMenu } from "./OptionListMenu.tsx";
 
 export function OptionList({
   className,
@@ -18,6 +14,7 @@ export function OptionList({
   onBlur,
   onFocus,
   onSelect,
+  ...props
 }: OptionListProps): ReactNode {
   const [focused, setFocused] = useState(false);
   const {
@@ -35,14 +32,13 @@ export function OptionList({
     onSelect,
   });
   return (
-    <span
-      className={clsx(
-        styles.optionList,
-        focused && styles.focused,
-        disabled && styles.disabled,
-        className,
-      )}
-      tabIndex={disabled ? undefined : tabIndex ?? 0}
+    <OptionListButton
+      {...props}
+      className={className}
+      focused={focused}
+      open={open}
+      option={option}
+      tabIndex={tabIndex}
       title={title}
       onBlur={(event) => {
         if (!disabled) {
@@ -68,26 +64,14 @@ export function OptionList({
         ["ArrowUp", () => handleNavigate("prev")],
         ["ArrowDown", () => handleNavigate("next")],
         ["End", () => handleNavigate("last")],
-        ["ArrowLeft", () => {}],
-        ["ArrowRight", () => {}],
-        ["PageUp", () => {}],
-        ["PageDown", () => {}],
       )}
+      onClick={(event) => {
+        event.preventDefault();
+        handleOpen();
+      }}
     >
-      <span
-        className={styles.placeholder}
-        onClick={(event) => {
-          event.preventDefault();
-          handleOpen();
-        }}
-      >
-        <span className={styles.placeholderName}>{option.name}</span>
-        <span className={styles.placeholderArrow}>
-          {open ? "\u25BC" : "\u25BA"}
-        </span>
-      </span>
       {open && (
-        <Menu
+        <OptionListMenu
           options={options}
           selectedOption={selectedOption}
           onSelect={(option) => {
@@ -98,7 +82,7 @@ export function OptionList({
           }}
         />
       )}
-    </span>
+    </OptionListButton>
   );
 }
 
@@ -186,59 +170,4 @@ function useOptionList({
     handleNavigate,
     handleSelect,
   };
-}
-
-function Menu({
-  options,
-  selectedOption,
-  onSelect,
-}: {
-  readonly options: readonly OptionListOption[];
-  readonly selectedOption: OptionListOption;
-  readonly onSelect: (value: OptionListOption) => void;
-}): ReactNode {
-  const list = useRef(null);
-  const item = useRef(null);
-  useEffect(() => {
-    ensureVisible(list.current, item.current);
-  });
-  return (
-    <div ref={list} role="menu" className={styles.list}>
-      {options.map((option, index) => (
-        <div
-          key={index}
-          ref={option === selectedOption ? item : null}
-          role="menuitem"
-          className={clsx(
-            styles.item,
-            iconStyles.altIcon,
-            option === selectedOption && styles.item_selected,
-          )}
-          onClick={(event) => {
-            event.preventDefault();
-            onSelect(option);
-          }}
-        >
-          {option.name}
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function ensureVisible(
-  list: HTMLElement | null,
-  item: HTMLElement | null,
-): void {
-  if (list == null || item == null) {
-    return;
-  }
-  if (item.offsetTop - list.scrollTop < 0) {
-    list.scrollTop = item.offsetTop;
-    return;
-  }
-  if (item.offsetTop + item.offsetHeight - list.scrollTop > list.offsetHeight) {
-    list.scrollTop = item.offsetTop + item.offsetHeight - list.offsetHeight;
-    return;
-  }
 }

@@ -1,0 +1,55 @@
+@import "../../styles/components.less";
+@import "../../styles/text.less";
+
+.root {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  min-inline-size: 20rem;
+  margin: 0;
+  padding: 0;
+  border: none;
+  color: var(--Button__color);
+  background-color: var(--Button__background-color);
+  font-family: var(--default-font-family);
+  font-size: 1rem;
+  font-weight: normal;
+  font-style: normal;
+  text-align: start;
+  text-transform: none;
+  cursor: pointer;
+}
+
+.focused {
+  color: var(--Button--focused__color);
+  background-color: var(--Button--focused__background-color);
+  outline: none;
+}
+
+.disabled {
+  .is-disabled();
+}
+
+.placeholder {
+  display: flex;
+}
+
+.placeholderName {
+  .textTruncate();
+  flex: 1;
+  vertical-align: middle;
+  block-size: @field-height;
+  margin: 0;
+  padding-inline: 1.5rem;
+  padding-block: 0;
+  line-height: @field-height;
+}
+
+.placeholderArrow {
+  vertical-align: middle;
+  block-size: @field-height;
+  margin: 0;
+  padding-inline: 0 1.5rem;
+  padding-block: 0;
+  line-height: @field-height;
+}
