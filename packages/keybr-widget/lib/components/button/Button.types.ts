@@ -8,6 +8,7 @@ import {
 import { type ClassName, type Focusable } from "../types.ts";
 
 export type ButtonProps = {
+  readonly autoFocus?: boolean;
   readonly children?: ReactNode;
   readonly className?: ClassName;
   readonly href?: string;

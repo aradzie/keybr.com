@@ -2,6 +2,7 @@ export * from "./box/index.ts";
 export * from "./button/index.ts";
 export * from "./canvas/index.ts";
 export * from "./checkbox/index.ts";
+export * from "./dialog/index.ts";
 export * from "./explainer/index.ts";
 export * from "./fieldlist/index.ts";
 export * from "./figure/index.ts";

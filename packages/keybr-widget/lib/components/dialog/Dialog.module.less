@@ -1,0 +1,26 @@
+.root {
+  padding-inline: 2rem;
+  padding-block: 2rem 1rem;
+  border: none;
+  color: var(--Popup__color);
+  background-color: var(--Popup__background-color);
+  box-shadow: 0 0.5rem 3rem var(--Popup__shadow-color);
+}
+
+.root::backdrop {
+  backdrop-filter: blur(5px);
+}
+
+.content {
+  min-inline-size: 20rem;
+  max-inline-size: 40rem;
+  margin-block-end: 2rem;
+}
+
+.content > :where(h1, h2, h3, p, ol, ul, figure):first-child {
+  margin-block-start: 0;
+}
+
+.content > :where(h1, h2, h3, p, ol, ul, figure):last-child {
+  margin-block-end: 0;
+}
