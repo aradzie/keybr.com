@@ -10,7 +10,7 @@ export function Portal({
   readonly children: ReactNode;
   readonly key?: null | string;
 }): ReactNode {
-  return createPortal(children, querySelector(`#${PortalContainer.id}`), key);
+  return createPortal(children, PortalContainer.query(), key);
 }
 
 export function PortalContainer(): ReactNode {
@@ -18,3 +18,5 @@ export function PortalContainer(): ReactNode {
 }
 
 PortalContainer.id = styles.portalContainer;
+
+PortalContainer.query = () => querySelector(`#${PortalContainer.id}`);

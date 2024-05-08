@@ -1,7 +1,14 @@
 import { fake } from "@keybr/test-env-time";
 import { act } from "@testing-library/react";
 import test from "ava";
+import { PortalContainer } from "../portal/index.ts";
 import { toast } from "./Toaster.tsx";
+
+test.before(() => {
+  const container = document.createElement("div");
+  container.id = PortalContainer.id;
+  document.body.appendChild(container);
+});
 
 test.beforeEach(() => {
   fake.timers.set();

@@ -6,14 +6,10 @@ import { PortalContainer } from "../portal/Portal.tsx";
 import { Slide } from "./Slide.tsx";
 import { Tour } from "./Tour.tsx";
 
-test.beforeEach((t) => {
+test.before(() => {
   const container = document.createElement("div");
   container.id = PortalContainer.id;
   document.body.appendChild(container);
-});
-
-test.afterEach((t) => {
-  document.body.textContent = "";
 });
 
 test.serial("empty tour", (t) => {

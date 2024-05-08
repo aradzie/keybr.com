@@ -6,6 +6,7 @@ import {
   useState,
 } from "react";
 import { createRoot, type Root } from "react-dom/client";
+import { PortalContainer } from "../portal/index.ts";
 import { toastProps, ToastProvider, useToast } from "./context.tsx";
 import { state, Toast } from "./state.ts";
 import * as styles from "./Toaster.module.less";
@@ -43,7 +44,7 @@ namespace Toaster {
       const el = document.createElement("div");
       el.className = styles.toaster;
       root = createRoot(el);
-      const parent = document.body;
+      const parent = PortalContainer.query();
       parent.appendChild(el);
       state.listen((toasts) => {
         if (toasts.length > 0) {
