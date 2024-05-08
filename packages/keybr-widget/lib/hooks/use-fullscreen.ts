@@ -3,10 +3,10 @@ import { querySelector } from "../utils/query.ts";
 import { useDocumentEvent } from "./use-document-event.ts";
 
 export function useFullscreen(
-  element: HTMLElement | string,
+  element: Element | string,
 ): [boolean | null, () => void] {
   if (typeof element === "string") {
-    element = querySelector<HTMLElement>(element);
+    element = querySelector(element);
   }
 
   const [fullscreenState, setFullscreenState] = useState<boolean | null>(null);
@@ -31,6 +31,11 @@ export function useFullscreen(
         ? document.fullscreenElement === element
         : null,
     );
+    if (document.fullscreenElement === element) {
+      element.setAttribute("data-fullscreen", "true");
+    } else {
+      element.removeAttribute("data-fullscreen");
+    }
   });
 
   useDocumentEvent("fullscreenerror", () => {
