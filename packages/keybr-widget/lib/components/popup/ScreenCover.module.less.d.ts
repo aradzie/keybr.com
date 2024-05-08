@@ -1,1 +1,0 @@
-export const screenCover: string;

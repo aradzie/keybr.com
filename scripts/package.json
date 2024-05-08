@@ -27,7 +27,6 @@
     "patch-package": "^8.0.0",
     "postcss": "^8.4.38",
     "postcss-less": "^6.0.0",
-    "postcss-modules": "^6.0.0",
     "prettier": "^3.2.5",
     "source-map-loader": "^5.0.0",
     "stylelint": "^16.5.0",

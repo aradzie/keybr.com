@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "postinstall": "husky install && patch-package",
-    "check": "node scripts/config-lint.js && node scripts/gen-translations.js && node scripts/gen-style-dts.js",
+    "check": "node scripts/config-lint.js && node scripts/gen-translations.js",
     "clean": "lage clean --no-cache",
     "compile": "lage compile --no-cache",
     "test": "lage test --no-cache",
