@@ -13,7 +13,6 @@ import {
   GoogleTagManager,
   SetupAds,
 } from "@keybr/thirdparties";
-import { PortalContainer } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { MetaList } from "./meta.tsx";
 import { NavMenu } from "./NavMenu.tsx";
@@ -110,7 +109,6 @@ function Body({
       <div className={styles.sidebar}>
         <AdBanner name="BANNER_160X600_1" />
       </div>
-      <PortalContainer />
       <EnvName />
     </body>
   );
@@ -129,7 +127,6 @@ function BodyAlt({
       <nav className={styles.navAlt}>
         <NavMenu currentLink={pageMeta.pageLink} />
       </nav>
-      <PortalContainer />
       <EnvName />
     </body>
   );

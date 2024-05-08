@@ -2,7 +2,7 @@ import { ErrorHandler } from "@keybr/debug";
 import { loadIntl } from "@keybr/intl";
 import { ThemeProvider, ThemeSwitcher } from "@keybr/lnf";
 import { getPageData, PageDataContext } from "@keybr/pages-shared";
-import { querySelector } from "@keybr/widget";
+import { PortalContainer, querySelector } from "@keybr/widget";
 import { type ReactElement } from "react";
 import { createRoot } from "react-dom/client";
 import { RawIntlProvider } from "react-intl";
@@ -18,7 +18,10 @@ export function init(slot: ReactElement<SlotProps> | null): void {
         to(selector).render(
           <RawIntlProvider value={intl}>
             <PageDataContext.Provider value={pageData}>
-              <ErrorHandler>{children}</ErrorHandler>
+              <ErrorHandler>
+                {children}
+                <PortalContainer />
+              </ErrorHandler>
             </PageDataContext.Provider>
           </RawIntlProvider>,
         );
