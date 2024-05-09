@@ -93,7 +93,7 @@ export function Tour({ children, onClose }: TourProps): ReactNode {
       <ScreenCover>
         <Spotlight anchor={anchor} />
 
-        <Popup anchor={anchor} position={position}>
+        <Popup anchor={anchor} position={position} offset={30}>
           <div className={styles.tour}>
             <a
               onClick={handleClickClose}

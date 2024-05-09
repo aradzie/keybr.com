@@ -35,7 +35,7 @@ test.serial("switch slides", async (t) => {
         <div className="anchor-1">anchor 1</div>
         <Tour>
           <Slide className="slide-a">One</Slide>
-          <Slide className="slide-b" anchor=".anchor-1" position="n">
+          <Slide className="slide-b" anchor=".anchor-1" position="block-start">
             Two
           </Slide>
         </Tour>

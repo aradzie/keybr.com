@@ -7,12 +7,14 @@ import {
   useImperativeHandle,
   useRef,
 } from "react";
+import { getBoundingBox } from "../../utils/index.ts";
 import * as iconStyles from "../icon/Icon.module.less";
 import * as styles from "./Button.module.less";
 import { type ButtonProps, type ButtonRef } from "./Button.types.ts";
 
 export const Button = forwardRef(function Button(
   {
+    anchor,
     children,
     className,
     disabled,
@@ -33,6 +35,11 @@ export const Button = forwardRef(function Button(
     },
     blur() {
       element.current?.blur();
+    },
+  }));
+  useImperativeHandle(anchor, () => ({
+    getBoundingBox(position) {
+      return getBoundingBox(element.current!, position);
     },
   }));
   if (href != null) {

@@ -34,10 +34,7 @@ export const Indicators = memo(function Indicators({
       )}
       {selectedKey && (
         <Portal>
-          <Popup
-            anchor={getKeyElementSelector(selectedKey.letter)}
-            position="s"
-          >
+          <Popup anchor={getKeyElementSelector(selectedKey.letter)}>
             <KeyExtendedDetails
               lessonKey={selectedKey}
               keyStats={state.keyStatsMap.get(selectedKey.letter)}

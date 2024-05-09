@@ -1,61 +1,41 @@
-import { clsx } from "clsx";
-import { type ReactNode, useLayoutEffect, useRef } from "react";
+import { type ReactNode, useEffect, useMemo, useRef } from "react";
+import { type FloatingPosition, place } from "../../floating/index.ts";
 import { useScreenSize } from "../../hooks/index.ts";
-import { getBoundingBox, getScreenSize } from "../../utils/geometry.ts";
-import { Point } from "../../utils/point.ts";
-import { querySelector } from "../../utils/query.ts";
-import { type Rect } from "../../utils/rect.ts";
-import { move } from "./move.ts";
+import { getBoundingBox, querySelector } from "../../utils/index.ts";
 import * as styles from "./Popup.module.less";
 
 export type PopupProps = {
   readonly anchor?: string;
   readonly children?: ReactNode;
-  readonly position?: "e" | "s" | "w" | "n";
+  readonly position?: FloatingPosition;
+  readonly offset?: number;
 };
 
-export function Popup({ children, anchor, position }: PopupProps): ReactNode {
-  const refs = {
-    popup: useRef<HTMLDivElement>(null),
-  };
-
-  useScreenSize();
-
-  useLayoutEffect(() => {
-    const popup = refs.popup.current;
-    if (popup != null) {
-      if (anchor == null || position == null) {
-        const popupRect = getBoundingBox(popup);
-        const { x, y } = centerPopup(popupRect);
-        move(popup, { left: x, top: y });
+export function Popup({
+  anchor,
+  children,
+  position,
+  offset = 20,
+}: PopupProps): ReactNode {
+  const rootRef = useRef<HTMLDivElement>(null);
+  const arrowRef = useRef<HTMLDivElement>(null);
+  const options = useMemo(() => ({ position, offset }), [position, offset]);
+  const screenSize = useScreenSize();
+  useEffect(() => {
+    if (rootRef.current != null)
+      if (anchor == null) {
+        place(rootRef.current!).centerToScreen(screenSize);
       } else {
-        const popupRect = getBoundingBox(popup);
-        const anchorRect = getBoundingBox(querySelector(anchor));
-        const { x, y } = align(popupRect, anchorRect, position);
-        move(popup, { left: x, top: y });
+        const anchorBox = getBoundingBox(querySelector(anchor), "absolute");
+        place(rootRef.current!, arrowRef.current!)
+          .withOptions(options)
+          .alignToAnchor(anchorBox, screenSize);
       }
-    }
-  });
-
-  let styleName;
-  switch (position) {
-    case "e":
-      styleName = styles.e;
-      break;
-    case "s":
-      styleName = styles.s;
-      break;
-    case "w":
-      styleName = styles.w;
-      break;
-    case "n":
-      styleName = styles.n;
-      break;
-  }
-
+  }, [anchor, options, screenSize]);
   return (
-    <div ref={refs.popup} className={clsx(styles.root, styleName)}>
+    <div ref={rootRef} className={styles.root}>
       {children}
+      {anchor && <div ref={arrowRef} className={styles.arrow} />}
     </div>
   );
 }
@@ -63,40 +43,3 @@ export function Popup({ children, anchor, position }: PopupProps): ReactNode {
 Popup.isPopupElement = (el: Element): boolean => {
   return el instanceof HTMLElement && el.className.includes(styles.root);
 };
-
-function centerPopup(popupRect: Rect): Point {
-  const size = getScreenSize();
-  const x = (size.width - popupRect.width) / 2;
-  const y = (size.height - popupRect.height) / 2;
-  return new Point(x, y);
-}
-
-function align(popupRect: Rect, anchorRect: Rect, position: string): Point {
-  const size = getScreenSize();
-  const offset = 18;
-  let x: number;
-  let y: number;
-  switch (position) {
-    case "e":
-      x = anchorRect.x + anchorRect.width + offset;
-      y = anchorRect.y - (popupRect.height - anchorRect.height) / 2;
-      break;
-    case "s":
-      x = anchorRect.x + (anchorRect.width - popupRect.width) / 2;
-      y = anchorRect.y + anchorRect.height + offset;
-      break;
-    case "w":
-      x = anchorRect.x - popupRect.width - offset;
-      y = anchorRect.y - (popupRect.height - anchorRect.height) / 2;
-      break;
-    case "n":
-      x = anchorRect.x + (anchorRect.width - popupRect.width) / 2;
-      y = anchorRect.y - popupRect.height - offset;
-      break;
-    default:
-      x = (size.width - popupRect.width) / 2;
-      y = (size.height - popupRect.height) / 2;
-      break;
-  }
-  return new Point(x, y);
-}

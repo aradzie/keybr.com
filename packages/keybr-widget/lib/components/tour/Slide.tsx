@@ -1,12 +1,13 @@
 import { clsx } from "clsx";
 import { type ReactNode } from "react";
+import { type FloatingPosition } from "../../floating/index.ts";
 import * as styles from "./Slide.module.less";
 
 export type SlideProps = {
   readonly anchor?: string;
   readonly children?: ReactNode;
   readonly className?: string;
-  readonly position?: "e" | "s" | "w" | "n";
+  readonly position?: FloatingPosition;
   readonly size?: "small" | "normal" | "large";
 };
 

@@ -1,6 +1,7 @@
 import { type ReactElement, type ReactNode } from "react";
 import { type IconProps } from "../icon/Icon.types.ts";
 import {
+  type AnchorProps,
   type ClassName,
   type Focusable,
   type FocusProps,
@@ -19,6 +20,7 @@ export type ButtonProps = {
   readonly title?: string;
 } & FocusProps &
   MouseProps &
-  KeyboardProps;
+  KeyboardProps &
+  AnchorProps;
 
 export type ButtonRef = Focusable;

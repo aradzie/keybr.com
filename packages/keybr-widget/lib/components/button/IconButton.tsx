@@ -7,6 +7,7 @@ import {
   useImperativeHandle,
   useRef,
 } from "react";
+import { getBoundingBox } from "../../utils/index.ts";
 import * as styles from "./IconButton.module.less";
 import {
   type IconButtonProps,
@@ -15,6 +16,7 @@ import {
 
 export const IconButton = forwardRef(function IconButton(
   {
+    anchor,
     children,
     className,
     disabled,
@@ -35,6 +37,11 @@ export const IconButton = forwardRef(function IconButton(
     },
     blur() {
       element.current?.blur();
+    },
+  }));
+  useImperativeHandle(anchor, () => ({
+    getBoundingBox(position) {
+      return getBoundingBox(element.current!, position);
     },
   }));
   if (children != null || label != null) {
