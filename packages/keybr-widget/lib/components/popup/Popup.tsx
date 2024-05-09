@@ -9,12 +9,12 @@ import { move } from "./move.ts";
 import * as styles from "./Popup.module.less";
 
 export type PopupProps = {
+  readonly anchor?: string;
   readonly children?: ReactNode;
-  readonly target?: string;
   readonly position?: "e" | "s" | "w" | "n";
 };
 
-export function Popup({ children, target, position }: PopupProps): ReactNode {
+export function Popup({ children, anchor, position }: PopupProps): ReactNode {
   const refs = {
     popup: useRef<HTMLDivElement>(null),
   };
@@ -24,14 +24,14 @@ export function Popup({ children, target, position }: PopupProps): ReactNode {
   useLayoutEffect(() => {
     const popup = refs.popup.current;
     if (popup != null) {
-      if (target == null || position == null) {
+      if (anchor == null || position == null) {
         const popupRect = boundingBox(popup);
         const { x, y } = centerPopup(popupRect);
         move(popup, { left: x, top: y });
       } else {
         const popupRect = boundingBox(popup);
-        const targetRect = boundingBox(querySelector(target));
-        const { x, y } = align(popupRect, targetRect, position);
+        const anchorRect = boundingBox(querySelector(anchor));
+        const { x, y } = align(popupRect, anchorRect, position);
         move(popup, { left: x, top: y });
       }
     }
@@ -71,27 +71,27 @@ function centerPopup(popupRect: Rect): Point {
   return new Point(x, y);
 }
 
-function align(popupRect: Rect, targetRect: Rect, position: string): Point {
+function align(popupRect: Rect, anchorRect: Rect, position: string): Point {
   const size = screenSize();
   const offset = 18;
   let x: number;
   let y: number;
   switch (position) {
     case "e":
-      x = targetRect.x + targetRect.width + offset;
-      y = targetRect.y - (popupRect.height - targetRect.height) / 2;
+      x = anchorRect.x + anchorRect.width + offset;
+      y = anchorRect.y - (popupRect.height - anchorRect.height) / 2;
       break;
     case "s":
-      x = targetRect.x + (targetRect.width - popupRect.width) / 2;
-      y = targetRect.y + targetRect.height + offset;
+      x = anchorRect.x + (anchorRect.width - popupRect.width) / 2;
+      y = anchorRect.y + anchorRect.height + offset;
       break;
     case "w":
-      x = targetRect.x - popupRect.width - offset;
-      y = targetRect.y - (popupRect.height - targetRect.height) / 2;
+      x = anchorRect.x - popupRect.width - offset;
+      y = anchorRect.y - (popupRect.height - anchorRect.height) / 2;
       break;
     case "n":
-      x = targetRect.x + (targetRect.width - popupRect.width) / 2;
-      y = targetRect.y - popupRect.height - offset;
+      x = anchorRect.x + (anchorRect.width - popupRect.width) / 2;
+      y = anchorRect.y - popupRect.height - offset;
       break;
     default:
       x = (size.width - popupRect.width) / 2;

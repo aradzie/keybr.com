@@ -3,11 +3,11 @@ import { type ReactNode } from "react";
 import * as styles from "./Slide.module.less";
 
 export type SlideProps = {
-  readonly className?: string;
+  readonly anchor?: string;
   readonly children?: ReactNode;
-  readonly size?: "small" | "normal" | "large";
-  readonly target?: string;
+  readonly className?: string;
   readonly position?: "e" | "s" | "w" | "n";
+  readonly size?: "small" | "normal" | "large";
 };
 
 export function Slide({ className, children, size }: SlideProps): ReactNode {

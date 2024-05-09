@@ -35,7 +35,7 @@ export const Indicators = memo(function Indicators({
       {selectedKey && (
         <Portal>
           <Popup
-            target={getKeyElementSelector(selectedKey.letter)}
+            anchor={getKeyElementSelector(selectedKey.letter)}
             position="s"
           >
             <KeyExtendedDetails

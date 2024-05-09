@@ -53,19 +53,19 @@ export const PracticeTour = memo(function PracticeTour({
           }
         />
       </Slide>
-      <Slide size="small" target={`#${names.textInput}`} position="s">
+      <Slide size="small" anchor={`#${names.textInput}`} position="s">
         <FormattedMessage
           id="practice.tour.slide5"
           defaultMessage="<p>This is the text board. It displays the text to type out. The text changes for each new lesson. The text is generated automatically from the current subset of letters. Most of the words are not real, but are generated using the phonetic rules of your language so they sound natural and should be easy to pronounce. Besides being funny, this gives us the flexibility to use more words than actually exist.</p>"
         />
       </Slide>
-      <Slide size="small" target={`#${names.keyboard}`} position="n">
+      <Slide size="small" anchor={`#${names.keyboard}`} position="n">
         <FormattedMessage
           id="practice.tour.slide6"
           defaultMessage="<p>This is the virtual keyboard. It helps you memorize key positions. Use it to find the keys and try not to look at your physical keyboard. There are small bumps on the <em>F</em> and <em>J</em> keys of your keyboard. Use these to correctly position your index fingers without having to look at the keys. Once your index fingers are in the right position you will be able to locate the remainder of the keys.</p>"
         />
       </Slide>
-      <Slide size="small" target={`#${names.speed}`} position="s">
+      <Slide size="small" anchor={`#${names.speed}`} position="s">
         <FormattedMessage
           id="practice.tour.slide7"
           defaultMessage={
@@ -75,7 +75,7 @@ export const PracticeTour = memo(function PracticeTour({
           }
         />
       </Slide>
-      <Slide size="small" target={`#${names.accuracy}`} position="s">
+      <Slide size="small" anchor={`#${names.accuracy}`} position="s">
         <FormattedMessage
           id="practice.tour.slide8"
           defaultMessage={
@@ -84,7 +84,7 @@ export const PracticeTour = memo(function PracticeTour({
           }
         />
       </Slide>
-      <Slide size="small" target={`#${names.score}`} position="s">
+      <Slide size="small" anchor={`#${names.score}`} position="s">
         <FormattedMessage
           id="practice.tour.slide9"
           defaultMessage={
@@ -94,21 +94,21 @@ export const PracticeTour = memo(function PracticeTour({
           }
         />
       </Slide>
-      <Slide size="small" target={`#${names.keySet}`} position="s">
+      <Slide size="small" anchor={`#${names.keySet}`} position="s">
         <FormattedMessage
           id="practice.tour.slide10"
           defaultMessage="<p>This indicator shows the current subset of letters used to generate the lessons, and your confidence level for every letter in the subset:</p>"
         />
         <KeyLegendList />
       </Slide>
-      <Slide size="small" target={`#${names.keySet}`} position="s">
+      <Slide size="small" anchor={`#${names.keySet}`} position="s">
         <FormattedMessage
           id="practice.tour.slide11"
           defaultMessage="<p>This indicator can also be used to predict the remaining number of lessons that are needed to fully unlock a letter, like in the example chart below. Visit it regularly to get more insight on how your learning is going, to see if you are making a progress.</p>"
         />
         <KeyDetailsChartDemo />
       </Slide>
-      <Slide size="small" target={`#${names.currentKey}`} position="s">
+      <Slide size="small" anchor={`#${names.currentKey}`} position="s">
         <FormattedMessage
           id="practice.tour.slide12"
           defaultMessage={

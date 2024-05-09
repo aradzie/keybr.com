@@ -5,11 +5,11 @@ import { move } from "./move.ts";
 import * as styles from "./Spotlight.module.less";
 
 export type SpotlightProps = {
-  readonly target?: string;
+  readonly anchor?: string;
   readonly margin?: number;
 };
 
-export function Spotlight({ target, margin = 15 }: SpotlightProps): ReactNode {
+export function Spotlight({ anchor, margin = 15 }: SpotlightProps): ReactNode {
   const refs = {
     c1: useRef<HTMLDivElement>(null),
     c2: useRef<HTMLDivElement>(null),
@@ -25,18 +25,18 @@ export function Spotlight({ target, margin = 15 }: SpotlightProps): ReactNode {
     const c4 = refs.c4.current;
     const marker = refs.marker.current;
     if (
-      target != null &&
+      anchor != null &&
       c1 != null &&
       c2 != null &&
       c3 != null &&
       c4 != null &&
       marker != null
     ) {
-      const targetRect = boundingBox(querySelector(target));
-      const x = targetRect.x - margin;
-      const y = targetRect.y - margin;
-      const w = targetRect.width + margin * 2;
-      const h = targetRect.height + margin * 2;
+      const anchorRect = boundingBox(querySelector(anchor));
+      const x = anchorRect.x - margin;
+      const y = anchorRect.y - margin;
+      const w = anchorRect.width + margin * 2;
+      const h = anchorRect.height + margin * 2;
       move(c1, { left: 0, top: 0, width: x + w, height: y });
       move(c2, { left: x + w, top: 0, right: 0, height: y + h });
       move(c3, { left: x, top: y + h, right: 0, bottom: 0 });
@@ -47,7 +47,7 @@ export function Spotlight({ target, margin = 15 }: SpotlightProps): ReactNode {
 
   return (
     <div className={styles.root}>
-      {target && (
+      {anchor && (
         <>
           <div ref={refs.c1} className={styles.c1} />
           <div ref={refs.c2} className={styles.c2} />

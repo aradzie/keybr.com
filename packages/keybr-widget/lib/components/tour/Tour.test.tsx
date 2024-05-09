@@ -32,10 +32,10 @@ test.serial("switch slides", async (t) => {
   const r = render(
     <IntlProvider locale="en">
       <div>
-        <div className="target-1">target 1</div>
+        <div className="anchor-1">anchor 1</div>
         <Tour>
           <Slide className="slide-a">One</Slide>
-          <Slide className="slide-b" target=".target-1" position="n">
+          <Slide className="slide-b" anchor=".anchor-1" position="n">
             Two
           </Slide>
         </Tour>

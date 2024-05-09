@@ -86,14 +86,14 @@ export function Tour({ children, onClose }: TourProps): ReactNode {
     close();
   };
 
-  const { target, position } = currentSlide.props;
+  const { anchor, position } = currentSlide.props;
 
   return (
     <Portal>
       <ScreenCover>
-        <Spotlight target={target} />
+        <Spotlight anchor={anchor} />
 
-        <Popup target={target} position={position}>
+        <Popup anchor={anchor} position={position}>
           <div className={styles.tour}>
             <a
               onClick={handleClickClose}
