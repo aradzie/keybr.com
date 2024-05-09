@@ -12,9 +12,9 @@ Untranslated: 9 messages, 165 words
 
 # Danish
 
-Translated: 389 messages, 4828 words
+Translated: 421 messages, 5232 words
 
-Untranslated: 43 messages, 416 words
+Untranslated: 11 messages, 12 words
 
 # German
 
