@@ -1,7 +1,7 @@
 import { clsx } from "clsx";
 import { type ReactNode, useLayoutEffect, useRef } from "react";
 import { useScreenSize } from "../../hooks/index.ts";
-import { boundingBox, screenSize } from "../../utils/geometry.ts";
+import { getBoundingBox, getScreenSize } from "../../utils/geometry.ts";
 import { Point } from "../../utils/point.ts";
 import { querySelector } from "../../utils/query.ts";
 import { type Rect } from "../../utils/rect.ts";
@@ -25,12 +25,12 @@ export function Popup({ children, anchor, position }: PopupProps): ReactNode {
     const popup = refs.popup.current;
     if (popup != null) {
       if (anchor == null || position == null) {
-        const popupRect = boundingBox(popup);
+        const popupRect = getBoundingBox(popup);
         const { x, y } = centerPopup(popupRect);
         move(popup, { left: x, top: y });
       } else {
-        const popupRect = boundingBox(popup);
-        const anchorRect = boundingBox(querySelector(anchor));
+        const popupRect = getBoundingBox(popup);
+        const anchorRect = getBoundingBox(querySelector(anchor));
         const { x, y } = align(popupRect, anchorRect, position);
         move(popup, { left: x, top: y });
       }
@@ -65,14 +65,14 @@ Popup.isPopupElement = (el: Element): boolean => {
 };
 
 function centerPopup(popupRect: Rect): Point {
-  const size = screenSize();
+  const size = getScreenSize();
   const x = (size.width - popupRect.width) / 2;
   const y = (size.height - popupRect.height) / 2;
   return new Point(x, y);
 }
 
 function align(popupRect: Rect, anchorRect: Rect, position: string): Point {
-  const size = screenSize();
+  const size = getScreenSize();
   const offset = 18;
   let x: number;
   let y: number;

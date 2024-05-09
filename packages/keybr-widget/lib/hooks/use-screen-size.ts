@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { screenSize } from "../utils/geometry.ts";
+import { getScreenSize } from "../utils/geometry.ts";
 import { type Size } from "../utils/size.ts";
 import { useWindowEvent } from "./use-window-event.ts";
 
 export const useScreenSize = (): Size => {
-  const [size, setSize] = useState(screenSize());
+  const [size, setSize] = useState(getScreenSize());
   useWindowEvent("resize", () => {
-    setSize(screenSize());
+    setSize(getScreenSize());
   });
   return size;
 };

@@ -1,5 +1,5 @@
 import { type ReactNode, useLayoutEffect, useRef } from "react";
-import { boundingBox } from "../../utils/geometry.ts";
+import { getBoundingBox } from "../../utils/geometry.ts";
 import { querySelector } from "../../utils/query.ts";
 import { move } from "./move.ts";
 import * as styles from "./Spotlight.module.less";
@@ -32,7 +32,7 @@ export function Spotlight({ anchor, margin = 15 }: SpotlightProps): ReactNode {
       c4 != null &&
       marker != null
     ) {
-      const anchorRect = boundingBox(querySelector(anchor));
+      const anchorRect = getBoundingBox(querySelector(anchor));
       const x = anchorRect.x - margin;
       const y = anchorRect.y - margin;
       const w = anchorRect.width + margin * 2;

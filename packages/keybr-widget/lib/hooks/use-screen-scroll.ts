@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { screenScrollOffset } from "../utils/geometry.ts";
+import { getScreenScrollOffset } from "../utils/geometry.ts";
 import { type Point } from "../utils/point.ts";
 import { useWindowEvent } from "./use-window-event.ts";
 
 export const useScreenScroll = (): Point => {
-  const [offset, setOffset] = useState(screenScrollOffset());
+  const [offset, setOffset] = useState(getScreenScrollOffset());
   useWindowEvent("scroll", () => {
-    setOffset(screenScrollOffset());
+    setOffset(getScreenScrollOffset());
   });
   return offset;
 };

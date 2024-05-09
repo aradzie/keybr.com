@@ -1,5 +1,5 @@
 import { type RefObject, useEffect, useState } from "react";
-import { elementSize } from "../utils/geometry.ts";
+import { getElementSize } from "../utils/geometry.ts";
 import { type Size } from "../utils/size.ts";
 
 export type ElementResizeCallback = (entry: ResizeObserverEntry) => void;
@@ -43,7 +43,7 @@ export const useElementSize = (ref: RefObject<Element | null>): Size | null => {
       return;
     }
     return onElementResize(element, () => {
-      const newSize = elementSize(element);
+      const newSize = getElementSize(element);
       if (size == null || !size.eq(newSize)) {
         setSize(newSize);
       }
