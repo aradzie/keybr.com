@@ -1,13 +1,14 @@
 /* stylelint-disable plugin/use-logical-properties-and-values */
 
-.popup {
-  position: fixed;
+.root {
+  position: absolute;
+  z-index: 1;
   color: var(--Popup__color);
   background-color: var(--Popup__background-color);
   box-shadow: 0 0.5rem 3rem var(--Popup__shadow-color);
 }
 
-.popupBefore() {
+.before() {
   content: " ";
   position: absolute;
   width: 0;
@@ -17,7 +18,7 @@
 
 .n::before,
 .s::before {
-  .popupBefore();
+  .before();
   left: 50%;
   margin-left: -10px;
   border-width: 10px;
@@ -25,7 +26,7 @@
 
 .e::before,
 .w::before {
-  .popupBefore();
+  .before();
   top: 50%;
   margin-top: -10px;
   border-width: 10px;

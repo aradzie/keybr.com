@@ -17,6 +17,6 @@ export function PortalContainer(): ReactNode {
   return <div id={PortalContainer.id} />;
 }
 
-PortalContainer.id = styles.portalContainer;
+PortalContainer.id = styles.root;
 
 PortalContainer.query = () => querySelector(`#${PortalContainer.id}`);

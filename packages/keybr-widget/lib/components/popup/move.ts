@@ -1,15 +1,4 @@
-export function hide(element: HTMLElement): void {
-  const { style } = element;
-  style.display = "none";
-  style.left = "";
-  style.top = "";
-  style.right = "";
-  style.bottom = "";
-  style.width = "";
-  style.height = "";
-}
-
-export function show(
+export function move(
   element: HTMLElement,
   {
     left,
@@ -28,7 +17,6 @@ export function show(
   },
 ): void {
   const { style } = element;
-  style.display = "";
   style.left = left != null ? `${left}px` : "";
   style.top = top != null ? `${top}px` : "";
   style.right = right != null ? `${right}px` : "";

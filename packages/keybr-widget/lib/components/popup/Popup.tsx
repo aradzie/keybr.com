@@ -1,11 +1,12 @@
 import { clsx } from "clsx";
-import { createRef, type ReactNode, useLayoutEffect } from "react";
+import { type ReactNode, useLayoutEffect, useRef } from "react";
+import { useScreenSize } from "../../hooks/index.ts";
 import { boundingBox, screenSize } from "../../utils/geometry.ts";
 import { Point } from "../../utils/point.ts";
 import { querySelector } from "../../utils/query.ts";
 import { type Rect } from "../../utils/rect.ts";
+import { move } from "./move.ts";
 import * as styles from "./Popup.module.less";
-import { show } from "./util.ts";
 
 export type PopupProps = {
   readonly children?: ReactNode;
@@ -14,23 +15,25 @@ export type PopupProps = {
 };
 
 export function Popup({ children, target, position }: PopupProps): ReactNode {
-  const popupRef = createRef<HTMLDivElement>();
+  const refs = {
+    popup: useRef<HTMLDivElement>(null),
+  };
+
+  useScreenSize();
 
   useLayoutEffect(() => {
-    const popup = popupRef.current;
-    if (popup == null) {
-      return;
-    }
-
-    if (target == null || position == null) {
-      const popupRect = boundingBox(popup);
-      const { x, y } = centerPopup(popupRect);
-      show(popup, { left: x, top: y });
-    } else {
-      const popupRect = boundingBox(popup);
-      const targetRect = boundingBox(querySelector(target));
-      const { x, y } = align(popupRect, targetRect, position);
-      show(popup, { left: x, top: y });
+    const popup = refs.popup.current;
+    if (popup != null) {
+      if (target == null || position == null) {
+        const popupRect = boundingBox(popup);
+        const { x, y } = centerPopup(popupRect);
+        move(popup, { left: x, top: y });
+      } else {
+        const popupRect = boundingBox(popup);
+        const targetRect = boundingBox(querySelector(target));
+        const { x, y } = align(popupRect, targetRect, position);
+        move(popup, { left: x, top: y });
+      }
     }
   });
 
@@ -51,15 +54,15 @@ export function Popup({ children, target, position }: PopupProps): ReactNode {
   }
 
   return (
-    <div ref={popupRef} className={clsx(styles.popup, styleName)}>
+    <div ref={refs.popup} className={clsx(styles.root, styleName)}>
       {children}
     </div>
   );
 }
 
-export function isPopupElement(el: Element): boolean {
-  return el instanceof HTMLElement && el.className.includes(styles.popup);
-}
+Popup.isPopupElement = (el: Element): boolean => {
+  return el instanceof HTMLElement && el.className.includes(styles.root);
+};
 
 function centerPopup(popupRect: Rect): Point {
   const size = screenSize();

@@ -1,8 +1,9 @@
 /* stylelint-disable plugin/use-logical-properties-and-values */
 
-.spotlight {
+.root {
   position: fixed;
   inset: 0;
+  z-index: 1;
 }
 
 .c0,
@@ -15,6 +16,14 @@
   cursor: default;
   pointer-events: none;
   user-select: none;
+}
+
+.c0,
+.c1,
+.c2,
+.c3,
+.c4 {
+  backdrop-filter: blur(5px);
 }
 
 .c0 {

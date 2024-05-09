@@ -7,13 +7,7 @@ import {
   isKeyElement,
   KeySetRow,
 } from "@keybr/lesson-ui";
-import {
-  isPopupElement,
-  Popup,
-  Portal,
-  useMouseHover,
-  useTimeout,
-} from "@keybr/widget";
+import { Popup, Portal, useMouseHover, useTimeout } from "@keybr/widget";
 import { memo, type ReactNode, useState } from "react";
 import * as styles from "./Indicators.module.less";
 import { KeyExtendedDetails } from "./KeyExtendedDetails.tsx";
@@ -66,7 +60,7 @@ function useKeySelector(state: PracticeState): LessonKey | null {
         setSelectedKey(state.lessonKeys.find(codePoint));
         return;
       }
-      if (isPopupElement(el)) {
+      if (Popup.isPopupElement(el)) {
         timeout.cancel();
         return;
       }

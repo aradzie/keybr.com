@@ -6,5 +6,5 @@ export function ScreenCover({
 }: {
   readonly children: ReactNode;
 }): ReactNode {
-  return <div className={styles.screenCover}>{children}</div>;
+  return <div className={styles.root}>{children}</div>;
 }
