@@ -7,8 +7,8 @@ import {
   ModifierState,
   type TextInputEvent,
 } from "@keybr/textinput-events";
-import { TextArea } from "@keybr/textinput-ui";
-import { PureComponent, type ReactNode } from "react";
+import { type Focusable, TextArea } from "@keybr/textinput-ui";
+import { createRef, PureComponent, type ReactNode } from "react";
 import { Prefs } from "../prefs.ts";
 import { Announcer } from "./Announcer.tsx";
 import { Controls } from "./Controls.tsx";
@@ -57,6 +57,8 @@ function getNextView(view: View): View {
 const propView = enumProp("prefs.practice.view", View, View.Normal);
 
 export class Presenter extends PureComponent<Props, State> {
+  readonly focusRef = createRef<Focusable>();
+
   override state: State = {
     view: Prefs.get(propView),
     tour: false,
@@ -92,7 +94,7 @@ export class Presenter extends PureComponent<Props, State> {
         return (
           <NormalLayout
             state={state}
-            focus={focus}
+            focus={tour || focus}
             depressedKeys={depressedKeys}
             toggledKeys={ModifierState.modifiers}
             controls={
@@ -106,9 +108,11 @@ export class Presenter extends PureComponent<Props, State> {
             }
             textInput={
               <TextArea
+                focusRef={this.focusRef}
                 settings={state.textDisplaySettings}
                 lines={lines}
                 size="X0"
+                demo={tour}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
                 onKeyDown={handleKeyDown}
@@ -123,7 +127,7 @@ export class Presenter extends PureComponent<Props, State> {
         return (
           <CompactLayout
             state={state}
-            focus={focus}
+            focus={tour || focus}
             depressedKeys={depressedKeys}
             controls={
               <Controls
@@ -136,9 +140,11 @@ export class Presenter extends PureComponent<Props, State> {
             }
             textInput={
               <TextArea
+                focusRef={this.focusRef}
                 settings={state.textDisplaySettings}
                 lines={lines}
                 size="X1"
+                demo={tour}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
                 onKeyDown={handleKeyDown}
@@ -152,7 +158,7 @@ export class Presenter extends PureComponent<Props, State> {
         return (
           <BareLayout
             state={state}
-            focus={focus}
+            focus={tour || focus}
             depressedKeys={depressedKeys}
             controls={
               <Controls
@@ -165,9 +171,11 @@ export class Presenter extends PureComponent<Props, State> {
             }
             textInput={
               <TextArea
+                focusRef={this.focusRef}
                 settings={state.textDisplaySettings}
                 lines={lines}
                 size="X2"
+                demo={tour}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
                 onKeyDown={handleKeyDown}
@@ -182,10 +190,12 @@ export class Presenter extends PureComponent<Props, State> {
 
   handleResetLesson = (): void => {
     this.props.onResetLesson();
+    this.focusRef.current?.focus();
   };
 
   handleSkipLesson = (): void => {
     this.props.onSkipLesson();
+    this.focusRef.current?.focus();
   };
 
   handleKeyDown = (ev: KeyEvent): void => {
@@ -237,6 +247,7 @@ export class Presenter extends PureComponent<Props, State> {
       },
       () => {
         this.props.onResetLesson();
+        this.focusRef.current?.focus();
       },
     );
   };
@@ -249,6 +260,7 @@ export class Presenter extends PureComponent<Props, State> {
       },
       () => {
         this.props.onResetLesson();
+        this.focusRef.current?.blur();
       },
     );
   };
@@ -261,6 +273,7 @@ export class Presenter extends PureComponent<Props, State> {
       },
       () => {
         this.props.onResetLesson();
+        this.focusRef.current?.focus();
       },
     );
   };

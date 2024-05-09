@@ -32,6 +32,7 @@ export function TextArea({
   wrap,
   size,
   lineTemplate,
+  demo,
   onFocus,
   onBlur,
   onKeyDown,
@@ -44,6 +45,7 @@ export function TextArea({
   readonly wrap?: boolean;
   readonly size?: TextLineSize;
   readonly lineTemplate?: ComponentType<any>;
+  readonly demo?: boolean;
   readonly onFocus?: () => void;
   readonly onBlur?: () => void;
   readonly onKeyDown?: (event: KeyEvent) => void;
@@ -114,10 +116,10 @@ export function TextArea({
         wrap={wrap}
         size={size}
         lineTemplate={lineTemplate}
-        cursor={focus}
-        focus={focus}
+        cursor={!demo && focus}
+        focus={demo || focus}
       />
-      {focus && ModifierState.capsLock && (
+      {!demo && focus && ModifierState.capsLock && (
         <div className={styles.messageArea}>
           <div className={styles.messageText}>
             <FormattedMessage
@@ -127,7 +129,7 @@ export function TextArea({
           </div>
         </div>
       )}
-      {focus || (
+      {demo || focus || (
         <div className={styles.messageArea}>
           <div className={styles.messageText}>
             <FormattedMessage
