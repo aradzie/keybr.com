@@ -9,6 +9,7 @@ export * from "./figure/index.ts";
 export * from "./form/index.ts";
 export * from "./icon/index.ts";
 export * from "./optionlist/index.ts";
+export * from "./popover/index.ts";
 export * from "./popup/index.ts";
 export * from "./portal/index.ts";
 export * from "./progressbar/index.ts";
