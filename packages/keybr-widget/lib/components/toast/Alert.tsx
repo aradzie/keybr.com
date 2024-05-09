@@ -1,5 +1,5 @@
 import { type ReactNode } from "react";
-import { type MouseProps } from "../props.ts";
+import { type MouseProps } from "../types.ts";
 import * as styles from "./Alert.module.less";
 import { CloseButton } from "./CloseButton.tsx";
 import { toastProps, useToast } from "./context.tsx";

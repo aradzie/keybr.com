@@ -12,7 +12,6 @@ export * from "./optionlist/index.ts";
 export * from "./popup/index.ts";
 export * from "./portal/index.ts";
 export * from "./progressbar/index.ts";
-export * from "./props.ts";
 export * from "./radiobox/index.ts";
 export * from "./range/index.ts";
 export * from "./tablist/index.ts";

@@ -1,9 +1,10 @@
 import {
+  type ClassName,
+  type Focusable,
   type FocusProps,
   type KeyboardProps,
   type MouseProps,
-} from "../props.ts";
-import { type ClassName, type Focusable } from "../types.ts";
+} from "../types.ts";
 
 export type RangeProps = {
   readonly className?: ClassName;

@@ -1,7 +1,7 @@
 import { memo, type ReactNode, type RefObject, useEffect, useRef } from "react";
 import { useElementSize } from "../../hooks/use-element-size.ts";
 import { type Size } from "../../utils/size.ts";
-import { type MouseProps } from "../props.ts";
+import { type MouseProps, type WheelProps } from "../types.ts";
 import { Graphics, type ShapeList } from "./graphics.ts";
 
 export type PaintCallback = (size: Size) => ShapeList;
@@ -42,7 +42,8 @@ export const Canvas = memo(function Canvas({
 }: {
   readonly paint: PaintCallback;
   readonly title?: string;
-} & MouseProps): ReactNode {
+} & MouseProps &
+  WheelProps): ReactNode {
   const ref = useCanvas(paint);
   return (
     <canvas

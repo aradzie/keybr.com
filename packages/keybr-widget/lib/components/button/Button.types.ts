@@ -1,11 +1,12 @@
 import { type ReactElement, type ReactNode } from "react";
 import { type IconProps } from "../icon/Icon.types.ts";
 import {
+  type ClassName,
+  type Focusable,
   type FocusProps,
   type KeyboardProps,
   type MouseProps,
-} from "../props.ts";
-import { type ClassName, type Focusable } from "../types.ts";
+} from "../types.ts";
 
 export type ButtonProps = {
   readonly autoFocus?: boolean;

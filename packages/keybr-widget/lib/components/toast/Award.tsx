@@ -1,5 +1,5 @@
 import { type ReactNode } from "react";
-import type { MouseProps } from "../props.ts";
+import { type MouseProps } from "../types.ts";
 import * as styles from "./Award.module.less";
 import { toastProps, useToast } from "./context.tsx";
 

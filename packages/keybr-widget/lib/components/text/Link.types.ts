@@ -1,6 +1,5 @@
 import { type ElementType, type HTMLAttributes, type ReactNode } from "react";
-import { type MouseProps } from "../props.ts";
-import { type ClassName } from "../types.ts";
+import { type ClassName, type MouseProps } from "../types.ts";
 
 export type LinkProps = {
   readonly as?: ElementType<HTMLAttributes<HTMLAnchorElement>>;

@@ -1,5 +1,5 @@
 import { type ReactElement, type ReactNode } from "react";
-import { type FocusProps } from "../props.ts";
+import { type FocusProps } from "../types.ts";
 
 export type TabListProps = {
   readonly children?: readonly ReactElement<TabProps>[];
