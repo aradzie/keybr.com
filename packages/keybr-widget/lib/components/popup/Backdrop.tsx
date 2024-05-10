@@ -1,7 +1,7 @@
 import { type ReactNode } from "react";
-import * as styles from "./ScreenCover.module.less";
+import * as styles from "./Backdrop.module.less";
 
-export function ScreenCover({
+export function Backdrop({
   children,
 }: {
   readonly children: ReactNode;

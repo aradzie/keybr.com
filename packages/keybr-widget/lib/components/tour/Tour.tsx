@@ -12,8 +12,8 @@ import { useHotkeys } from "../../hooks/use-hotkeys.ts";
 import { useScreenScroll } from "../../hooks/use-screen-scroll.ts";
 import { useScreenSize } from "../../hooks/use-screen-size.ts";
 import { Icon } from "../icon/Icon.tsx";
+import { Backdrop } from "../popup/Backdrop.tsx";
 import { Popup } from "../popup/Popup.tsx";
-import { ScreenCover } from "../popup/ScreenCover.tsx";
 import { Spotlight } from "../popup/Spotlight.tsx";
 import { Portal } from "../portal/Portal.tsx";
 import { Slide, type SlideProps } from "./Slide.tsx";
@@ -90,7 +90,7 @@ export function Tour({ children, onClose }: TourProps): ReactNode {
 
   return (
     <Portal>
-      <ScreenCover>
+      <Backdrop>
         <Spotlight anchor={anchor} />
 
         <Popup anchor={anchor} position={position} offset={30}>
@@ -155,7 +155,7 @@ export function Tour({ children, onClose }: TourProps): ReactNode {
             </div>
           </div>
         </Popup>
-      </ScreenCover>
+      </Backdrop>
     </Portal>
   );
 }
