@@ -52,7 +52,8 @@ export function Zoomer({
     const root = rootRef.current;
     if (root != null && !moving && contains(root, ev.target)) {
       setMoving(true);
-      globalMoving.current = rootRef.current;
+      setHover(false);
+      globalMoving.current = root;
       ev.preventDefault();
     }
   });
@@ -89,7 +90,7 @@ export function Zoomer({
     }
   }, [zoom, x, y]);
   useEffect(() => {
-    if (hover && !moving) {
+    if (hover) {
       const timeout = setTimeout(() => {
         setHover(false);
       }, 1000);
@@ -98,7 +99,7 @@ export function Zoomer({
       };
     }
     return;
-  }, [hover, moving]);
+  }, [hover]);
   return (
     <div
       ref={rootRef}
