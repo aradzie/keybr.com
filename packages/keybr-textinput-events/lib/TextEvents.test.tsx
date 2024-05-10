@@ -1,8 +1,8 @@
+import { type Focusable } from "@keybr/widget";
 import { fireEvent, render } from "@testing-library/react";
 import test from "ava";
 import { type ReactNode, useRef } from "react";
 import { TextEvents } from "./TextEvents.tsx";
-import { type Focusable } from "./types.ts";
 
 test.serial("focus and blur", (t) => {
   let focused = false;

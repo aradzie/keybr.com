@@ -1,5 +1,6 @@
+import { type Focusable } from "@keybr/widget";
 import { ModifierState } from "./modifiers.ts";
-import { type Focusable, type KeyEvent, type TextInputEvent } from "./types.ts";
+import { type KeyEvent, type TextInputEvent } from "./types.ts";
 
 // https://w3c.github.io/uievents/
 // https://www.w3.org/TR/input-events-1/

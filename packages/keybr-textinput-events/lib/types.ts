@@ -27,8 +27,3 @@ export type TextInputEvent = {
     | "clearWord";
   readonly codePoint: CodePoint;
 };
-
-export type Focusable = {
-  blur(): void;
-  focus(): void;
-};

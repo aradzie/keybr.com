@@ -5,7 +5,7 @@ import {
   TextEvents,
   type TextInputEvent,
 } from "@keybr/textinput-events";
-import { useHotkeys, useWindowEvent } from "@keybr/widget";
+import { type Focusable, useHotkeys, useWindowEvent } from "@keybr/widget";
 import {
   type BaseSyntheticEvent,
   type ComponentType,
@@ -20,11 +20,6 @@ import {
 import { FormattedMessage } from "react-intl";
 import * as styles from "./TextArea.module.less";
 import { TextLines, type TextLineSize } from "./TextLines.tsx";
-
-export type Focusable = {
-  blur(): void;
-  focus(): void;
-};
 
 export function TextArea({
   settings,

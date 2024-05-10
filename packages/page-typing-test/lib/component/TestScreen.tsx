@@ -1,7 +1,8 @@
 import { Screen } from "@keybr/pages-shared";
 import { type LineList, newStats, type Stats } from "@keybr/textinput";
 import { type TextInputEvent } from "@keybr/textinput-events";
-import { type Focusable, TextArea } from "@keybr/textinput-ui";
+import { TextArea } from "@keybr/textinput-ui";
+import { type Focusable } from "@keybr/widget";
 import { Component, createRef, type ReactNode } from "react";
 import { type Mark, type TextGenerator } from "../generator/index.ts";
 import { Session, type SessionSettings } from "../session/index.ts";

@@ -1,3 +1,4 @@
+import { type Focusable } from "@keybr/widget";
 import {
   type CSSProperties,
   memo,
@@ -7,7 +8,6 @@ import {
   useRef,
 } from "react";
 import { InputHandler, type Listeners } from "./inputhandler.ts";
-import { type Focusable } from "./types.ts";
 
 export const TextEvents = memo(function TextEvents({
   onFocus,

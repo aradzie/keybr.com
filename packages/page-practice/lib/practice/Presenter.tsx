@@ -7,7 +7,8 @@ import {
   ModifierState,
   type TextInputEvent,
 } from "@keybr/textinput-events";
-import { type Focusable, TextArea } from "@keybr/textinput-ui";
+import { TextArea } from "@keybr/textinput-ui";
+import { type Focusable } from "@keybr/widget";
 import { createRef, PureComponent, type ReactNode } from "react";
 import { Prefs } from "../prefs.ts";
 import { Announcer } from "./Announcer.tsx";

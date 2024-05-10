@@ -13,8 +13,8 @@ import {
 import { useSettings } from "@keybr/settings";
 import { toTextDisplaySettings } from "@keybr/textinput";
 import { type TextInputEvent } from "@keybr/textinput-events";
-import { type Focusable, TextArea } from "@keybr/textinput-ui";
-import { useScreenSize } from "@keybr/widget";
+import { TextArea } from "@keybr/textinput-ui";
+import { type Focusable, useScreenSize } from "@keybr/widget";
 import { type ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import { type IntlShape, useIntl } from "react-intl";
 import * as styles from "./Game.module.less";
