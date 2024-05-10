@@ -17,13 +17,7 @@ import {
 } from "./types.ts";
 
 export const place = (popup: HTMLElement, arrow: HTMLElement | null = null) => {
-  let options = {
-    position: "block-end",
-    flip: true,
-    shift: true,
-    offset: 0,
-    screenMargin: 20,
-  } as AlignOptions;
+  let options = {} as Partial<AlignOptions>;
 
   const withOptions = (newOptions: Partial<AlignOptions>) => {
     options = { ...options, ...newOptions };
