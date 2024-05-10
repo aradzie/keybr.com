@@ -16,6 +16,7 @@ export function Popup({
   children,
   position,
   offset = 20,
+  ...props
 }: PopupProps): ReactNode {
   const rootRef = useRef<HTMLDivElement>(null);
   const arrowRef = useRef<HTMLDivElement>(null);
@@ -33,7 +34,7 @@ export function Popup({
       }
   }, [anchor, options, screenSize]);
   return (
-    <div ref={rootRef} className={styles.root}>
+    <div {...props} ref={rootRef} className={styles.root}>
       {children}
       {anchor && <div ref={arrowRef} className={styles.arrow} />}
     </div>
