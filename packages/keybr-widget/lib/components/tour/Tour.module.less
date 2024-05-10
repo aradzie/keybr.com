@@ -1,11 +1,11 @@
-.tour {
+.root {
   display: flex;
   flex-direction: column;
   padding-inline: 3rem;
   padding-block: 3rem 2rem;
 }
 
-.closeButton {
+.close {
   position: absolute;
   inset-inline-end: 1rem;
   inset-block-start: 1rem;
@@ -17,27 +17,6 @@
   margin-block-start: 1rem;
 }
 
-.meter {
-  display: flex;
-  flex: 1 1 0;
-  align-items: center;
-}
-
-.meterItem {
-  inline-size: 0.8rem;
-  block-size: 0.8rem;
-  border-radius: 50%;
-  background-color: var(--separator-color);
-
-  & + & {
-    margin-inline-start: 0.2rem;
-  }
-
-  &_current {
-    background-color: var(--text-color);
-  }
-}
-
-.prevButton + .nextButton {
+.prev + .next {
   margin-inline-start: 1rem;
 }

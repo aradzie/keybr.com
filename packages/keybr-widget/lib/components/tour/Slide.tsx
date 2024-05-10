@@ -8,21 +8,28 @@ export type SlideProps = {
   readonly children?: ReactNode;
   readonly className?: string;
   readonly position?: FloatingPosition;
-  readonly size?: "small" | "normal" | "large";
+  readonly size?: "small" | "large";
 };
 
-export function Slide({ className, children, size }: SlideProps): ReactNode {
-  let styleName;
-  switch (size) {
-    case "small":
-      styleName = styles.slide_small;
-      break;
-    case "large":
-      styleName = styles.slide_large;
-      break;
-  }
-
+export function Slide({
+  anchor,
+  children,
+  className,
+  position,
+  size,
+  ...props
+}: SlideProps): ReactNode {
   return (
-    <div className={clsx(styles.slide, styleName, className)}>{children}</div>
+    <div
+      {...props}
+      className={clsx(
+        styles.root,
+        size === "small" && styles.small,
+        size === "large" && styles.large,
+        className,
+      )}
+    >
+      {children}
+    </div>
   );
 }

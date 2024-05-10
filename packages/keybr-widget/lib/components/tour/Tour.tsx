@@ -1,5 +1,4 @@
 import { mdiClose } from "@mdi/js";
-import { clsx } from "clsx";
 import {
   Children,
   type MouseEvent,
@@ -9,13 +8,12 @@ import {
 } from "react";
 import { useIntl } from "react-intl";
 import { useHotkeys } from "../../hooks/use-hotkeys.ts";
-import { useScreenScroll } from "../../hooks/use-screen-scroll.ts";
-import { useScreenSize } from "../../hooks/use-screen-size.ts";
 import { Icon } from "../icon/Icon.tsx";
 import { Backdrop } from "../popup/Backdrop.tsx";
 import { Popup } from "../popup/Popup.tsx";
 import { Spotlight } from "../popup/Spotlight.tsx";
 import { Portal } from "../portal/Portal.tsx";
+import { Meter } from "./Meter.tsx";
 import { Slide, type SlideProps } from "./Slide.tsx";
 import * as styles from "./Tour.module.less";
 
@@ -24,11 +22,8 @@ export type TourProps = {
   readonly onClose?: () => void;
 };
 
-export function Tour({ children, onClose }: TourProps): ReactNode {
+export function Tour({ children, onClose, ...props }: TourProps): ReactNode {
   const { formatMessage } = useIntl();
-
-  useScreenSize();
-  useScreenScroll();
 
   const [slideIndex, setSlideIndex] = useState(0);
 
@@ -93,59 +88,35 @@ export function Tour({ children, onClose }: TourProps): ReactNode {
       <Backdrop>
         <Spotlight anchor={anchor} />
 
-        <Popup anchor={anchor} position={position} offset={30}>
-          <div className={styles.tour}>
-            <a
-              onClick={handleClickClose}
-              href="#"
-              className={styles.closeButton}
-            >
+        <Popup {...props} anchor={anchor} position={position} offset={30}>
+          <div className={styles.root}>
+            {currentSlide}
+
+            <a className={styles.close} href="#" onClick={handleClickClose}>
               <Icon shape={mdiClose} />
             </a>
 
-            {currentSlide}
-
             <div className={styles.footer}>
-              <div className={styles.meter}>
-                {slides.map((slide, index) => (
-                  <span
-                    key={index}
-                    className={clsx(
-                      styles.meterItem,
-                      slideIndex === index && styles.meterItem_current,
-                    )}
-                  />
-                ))}
-              </div>
+              <Meter length={slides.length} slideIndex={slideIndex} />
+
               {slideIndex > 0 && (
-                <a
-                  onClick={handleClickPrev}
-                  href="#"
-                  className={styles.prevButton}
-                >
+                <a className={styles.prev} href="#" onClick={handleClickPrev}>
                   {formatMessage({
                     id: "tour.previous",
                     defaultMessage: "Previous",
                   })}
                 </a>
               )}
+
               {(slideIndex < slides.length - 1 && (
-                <a
-                  onClick={handleClickNext}
-                  href="#"
-                  className={styles.nextButton}
-                >
+                <a className={styles.next} href="#" onClick={handleClickNext}>
                   {formatMessage({
                     id: "tour.next",
                     defaultMessage: "Next",
                   })}
                 </a>
               )) || (
-                <a
-                  onClick={handleClickClose}
-                  href="#"
-                  className={styles.nextButton}
-                >
+                <a className={styles.next} href="#" onClick={handleClickClose}>
                   {formatMessage({
                     id: "tour.close",
                     defaultMessage: "Close",
