@@ -106,8 +106,8 @@ export function Zoomer({
       className={clsx(styles.root, (hover || moving) && styles.hover)}
       style={{
         position: "relative",
-        insetInlineStart: x,
-        insetBlockStart: y,
+        left: x,
+        top: y,
         transform: `scale(${zoom})`,
       }}
       onMouseEnter={() => {

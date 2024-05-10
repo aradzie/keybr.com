@@ -12,10 +12,10 @@ export function placeElement(
   { left, top, right, bottom, width, height }: Place,
 ): void {
   const { style } = element;
-  style.inlineSize = width != null ? `${width}px` : "";
-  style.blockSize = height != null ? `${height}px` : "";
-  style.insetBlockStart = top != null ? `${top}px` : "";
-  style.insetBlockEnd = bottom != null ? `${bottom}px` : "";
-  style.insetInlineStart = left != null ? `${left}px` : "";
-  style.insetInlineEnd = right != null ? `${right}px` : "";
+  style.width = width != null ? `${width}px` : "";
+  style.height = height != null ? `${height}px` : "";
+  style.left = left != null ? `${left}px` : "";
+  style.right = right != null ? `${right}px` : "";
+  style.top = top != null ? `${top}px` : "";
+  style.bottom = bottom != null ? `${bottom}px` : "";
 }
