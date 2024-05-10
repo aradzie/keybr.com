@@ -8,7 +8,7 @@ import {
   type TextInputEvent,
 } from "@keybr/textinput-events";
 import { TextArea } from "@keybr/textinput-ui";
-import { type Focusable } from "@keybr/widget";
+import { type Focusable, Zoomer } from "@keybr/widget";
 import { createRef, PureComponent, type ReactNode } from "react";
 import { Prefs } from "../prefs.ts";
 import { Controls } from "./Controls.tsx";
@@ -107,18 +107,20 @@ export class Presenter extends PureComponent<Props, State> {
               />
             }
             textInput={
-              <TextArea
-                focusRef={this.focusRef}
-                settings={state.textDisplaySettings}
-                lines={lines}
-                size="X0"
-                demo={tour}
-                onFocus={handleFocus}
-                onBlur={handleBlur}
-                onKeyDown={handleKeyDown}
-                onKeyUp={handleKeyUp}
-                onTextInput={handleTextInput}
-              />
+              <Zoomer>
+                <TextArea
+                  focusRef={this.focusRef}
+                  settings={state.textDisplaySettings}
+                  lines={lines}
+                  size="X0"
+                  demo={tour}
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
+                  onKeyDown={handleKeyDown}
+                  onKeyUp={handleKeyUp}
+                  onTextInput={handleTextInput}
+                />
+              </Zoomer>
             }
             tour={tour && <PracticeTour onClose={handleTourClose} />}
           />
@@ -139,18 +141,20 @@ export class Presenter extends PureComponent<Props, State> {
               />
             }
             textInput={
-              <TextArea
-                focusRef={this.focusRef}
-                settings={state.textDisplaySettings}
-                lines={lines}
-                size="X1"
-                demo={tour}
-                onFocus={handleFocus}
-                onBlur={handleBlur}
-                onKeyDown={handleKeyDown}
-                onKeyUp={handleKeyUp}
-                onTextInput={handleTextInput}
-              />
+              <Zoomer>
+                <TextArea
+                  focusRef={this.focusRef}
+                  settings={state.textDisplaySettings}
+                  lines={lines}
+                  size="X1"
+                  demo={tour}
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
+                  onKeyDown={handleKeyDown}
+                  onKeyUp={handleKeyUp}
+                  onTextInput={handleTextInput}
+                />
+              </Zoomer>
             }
           />
         );
@@ -170,18 +174,20 @@ export class Presenter extends PureComponent<Props, State> {
               />
             }
             textInput={
-              <TextArea
-                focusRef={this.focusRef}
-                settings={state.textDisplaySettings}
-                lines={lines}
-                size="X2"
-                demo={tour}
-                onFocus={handleFocus}
-                onBlur={handleBlur}
-                onKeyDown={handleKeyDown}
-                onKeyUp={handleKeyUp}
-                onTextInput={handleTextInput}
-              />
+              <Zoomer>
+                <TextArea
+                  focusRef={this.focusRef}
+                  settings={state.textDisplaySettings}
+                  lines={lines}
+                  size="X2"
+                  demo={tour}
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
+                  onKeyDown={handleKeyDown}
+                  onKeyUp={handleKeyUp}
+                  onTextInput={handleTextInput}
+                />
+              </Zoomer>
             }
           />
         );
@@ -298,7 +304,9 @@ function NormalLayout({
 }): ReactNode {
   return (
     <Screen>
-      <Indicators state={state} />
+      <Zoomer>
+        <Indicators state={state} />
+      </Zoomer>
       {controls}
       <div id={names.textInput} className={styles.textInput_normal}>
         {textInput}
@@ -330,7 +338,9 @@ function CompactLayout({
 }): ReactNode {
   return (
     <Screen>
-      <Indicators state={state} />
+      <Zoomer>
+        <Indicators state={state} />
+      </Zoomer>
       {controls}
       <div id={names.textInput} className={styles.textInput_compact}>
         {textInput}

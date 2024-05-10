@@ -7,7 +7,13 @@ import {
   isKeyElement,
   KeySetRow,
 } from "@keybr/lesson-ui";
-import { Popup, Portal, useMouseHover, useTimeout } from "@keybr/widget";
+import {
+  Popup,
+  Portal,
+  useMouseHover,
+  useTimeout,
+  type ZoomableProps,
+} from "@keybr/widget";
 import { memo, type ReactNode, useState } from "react";
 import * as styles from "./Indicators.module.less";
 import { KeyExtendedDetails } from "./KeyExtendedDetails.tsx";
@@ -16,9 +22,11 @@ import { type PracticeState } from "./practicestate.ts";
 
 export const Indicators = memo(function Indicators({
   state,
+  moving,
 }: {
   readonly state: PracticeState;
-}): ReactNode {
+  readonly moving?: boolean;
+} & ZoomableProps): ReactNode {
   const selectedKey = useKeySelector(state);
   return (
     <div id={names.indicators} className={styles.indicators}>
@@ -32,7 +40,7 @@ export const Indicators = memo(function Indicators({
           names={names}
         />
       )}
-      {selectedKey && (
+      {!moving && selectedKey && (
         <Portal>
           <Popup anchor={getKeyElementSelector(selectedKey.letter)}>
             <KeyExtendedDetails

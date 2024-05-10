@@ -5,7 +5,12 @@ import {
   TextEvents,
   type TextInputEvent,
 } from "@keybr/textinput-events";
-import { type Focusable, useHotkeys, useWindowEvent } from "@keybr/widget";
+import {
+  type Focusable,
+  useHotkeys,
+  useWindowEvent,
+  type ZoomableProps,
+} from "@keybr/widget";
 import {
   type BaseSyntheticEvent,
   type ComponentType,
@@ -28,12 +33,14 @@ export function TextArea({
   size,
   lineTemplate,
   demo,
+  moving,
+  focusRef,
   onFocus,
   onBlur,
   onKeyDown,
   onKeyUp,
   onTextInput,
-  focusRef,
+  ...props
 }: {
   readonly settings: TextDisplaySettings;
   readonly lines: LineList;
@@ -41,13 +48,14 @@ export function TextArea({
   readonly size?: TextLineSize;
   readonly lineTemplate?: ComponentType<any>;
   readonly demo?: boolean;
+  readonly moving?: boolean;
+  readonly focusRef?: RefObject<Focusable>;
   readonly onFocus?: () => void;
   readonly onBlur?: () => void;
   readonly onKeyDown?: (event: KeyEvent) => void;
   readonly onKeyUp?: (event: KeyEvent) => void;
   readonly onTextInput?: (event: TextInputEvent) => void;
-  readonly focusRef?: RefObject<Focusable>;
-}): ReactNode {
+} & ZoomableProps): ReactNode {
   const ref = useRef<HTMLDivElement>(null);
   const innerRef = useRef<Focusable>(null);
   useImperativeHandle(focusRef, () => ({
@@ -62,7 +70,7 @@ export function TextArea({
   useEffect(() => {
     const element = ref.current;
     if (element != null) {
-      setElementCursor(element, focus ? "none" : "default");
+      setElementCursor(element, !moving && focus ? "none" : "default");
     }
   });
   useWindowEvent("mousemove", () => {
@@ -88,15 +96,9 @@ export function TextArea({
   const handleClick = (event: BaseSyntheticEvent): void => {
     innerRef.current?.focus();
     event.preventDefault();
-    event.stopPropagation();
   };
   return (
-    <div
-      ref={ref}
-      className={styles.textArea}
-      onMouseDown={handleClick}
-      onMouseUp={handleClick}
-    >
+    <div {...props} ref={ref} className={styles.textArea} onClick={handleClick}>
       <TextEvents
         focusRef={innerRef}
         onFocus={handleFocus}

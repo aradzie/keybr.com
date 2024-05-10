@@ -1,6 +1,6 @@
 import { type Keyboard, KeyboardContext } from "@keybr/keyboard";
-import { type MouseProps, type WheelProps } from "@keybr/widget";
-import { type CSSProperties, memo, type ReactNode } from "react";
+import { type ZoomableProps } from "@keybr/widget";
+import { memo, type ReactNode } from "react";
 import { Patterns } from "./Patterns.tsx";
 import { getFrameSize } from "./shapes.tsx";
 import * as styles from "./VirtualKeyboard.module.less";
@@ -10,23 +10,22 @@ export const VirtualKeyboard = memo(function VirtualKeyboard({
   keyboard,
   width,
   height,
-  style,
+  moving,
   ...props
 }: {
   readonly children?: ReactNode;
   readonly keyboard: Keyboard;
   readonly width?: string;
   readonly height?: string;
-  readonly style?: CSSProperties;
-} & MouseProps &
-  WheelProps): ReactNode {
+  readonly moving?: boolean;
+} & ZoomableProps): ReactNode {
   const size = getFrameSize(keyboard);
   return (
     <svg
       {...props}
       className={styles.keyboard}
       viewBox={`0 0 ${size.width} ${size.height}`}
-      style={{ aspectRatio: `${size.width}/${size.height}`, ...style }}
+      style={{ aspectRatio: `${size.width}/${size.height}` }}
       width={width}
       height={height}
     >
