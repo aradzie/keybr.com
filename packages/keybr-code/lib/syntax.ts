@@ -40,9 +40,9 @@ export class Syntax implements EnumItem {
     lang_html_css,
     "css",
   );
-  static readonly JAVASCRIPT = new Syntax(
-    "javascript", //
-    "Java Script",
+  static readonly JAVASCRIPT_EXP = new Syntax(
+    "javascript_exp", //
+    "Java Script Expressions",
     lang_javascript,
   );
   static readonly RUST = new Syntax(
@@ -66,6 +66,7 @@ export class Syntax implements EnumItem {
     Syntax.CPP,
     Syntax.CPP_FPROTO,
     Syntax.CPP_STMT,
+    Syntax.JAVASCRIPT_EXP,
     Syntax.REGEX,
     Syntax.SHELL,
   );
