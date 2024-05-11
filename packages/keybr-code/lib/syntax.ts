@@ -6,6 +6,7 @@ import { Output } from "./output.ts";
 import lang_cpp from "./syntax/lang_cpp.ts";
 import lang_html_css from "./syntax/lang_html_css.ts";
 import lang_javascript from "./syntax/lang_javascript.ts";
+import lang_regex from "./syntax/lang_regex.ts";
 import lang_rust from "./syntax/lang_rust.ts";
 import lang_shell from "./syntax/lang_shell.ts";
 
@@ -49,6 +50,11 @@ export class Syntax implements EnumItem {
     "Rust",
     lang_rust,
   );
+  static readonly REGEX = new Syntax(
+    "regex", //
+    "Regex",
+    lang_regex,
+  );
   static readonly SHELL = new Syntax(
     "shell", //
     "Shell",
@@ -60,6 +66,7 @@ export class Syntax implements EnumItem {
     Syntax.CPP,
     Syntax.CPP_FPROTO,
     Syntax.CPP_STMT,
+    Syntax.REGEX,
     Syntax.SHELL,
   );
 
