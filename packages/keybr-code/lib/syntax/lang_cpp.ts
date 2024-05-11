@@ -427,71 +427,61 @@ export default {
     ],
   },
   c_var_id: {
+    seq: [
+      {
+        ref: "c_var_id_prefix",
+      },
+      {
+        ref: "c_simple_var_id",
+      },
+      {
+        f: 0.5,
+        opt: {
+          ref: "c_var_id_suffix",
+        },
+      },
+    ],
+  },
+  c_var_id_prefix: {
+    seq: [
+      {
+        alt: ["p", "ptr", "ref", "prev", "next", "first", "last"],
+      },
+      "_",
+    ],
+  },
+  c_var_id_suffix: {
+    seq: [
+      "_",
+      {
+        alt: ["index", "pos", "id", "size"],
+      },
+    ],
+  },
+  c_simple_var_id: {
     alt: [
-      {
-        seq: [
-          "a",
-          {
-            f: 0.5,
-            opt: {
-              seq: [
-                "_",
-                {
-                  alt: ["b", "c", "d"],
-                },
-              ],
-            },
-          },
-        ],
-      },
-      {
-        seq: [
-          "b",
-          {
-            f: 0.5,
-            opt: {
-              seq: [
-                "_",
-                {
-                  alt: ["a", "c", "d"],
-                },
-              ],
-            },
-          },
-        ],
-      },
-      {
-        seq: [
-          "c",
-          {
-            f: 0.5,
-            opt: {
-              seq: [
-                "_",
-                {
-                  alt: ["a", "b", "d"],
-                },
-              ],
-            },
-          },
-        ],
-      },
-      {
-        seq: [
-          "d",
-          {
-            f: 0.5,
-            opt: {
-              seq: [
-                "_",
-                {
-                  alt: ["a", "b", "c"],
-                },
-              ],
-            },
-          },
-        ],
-      },
+      "i",
+      "j",
+      "x",
+      "y",
+      "z",
+      "char",
+      "dir",
+      "end",
+      "entry",
+      "err",
+      "file",
+      "id",
+      "item",
+      "key",
+      "length",
+      "line",
+      "list",
+      "name",
+      "path",
+      "start",
+      "str",
+      "value",
     ],
   },
 } as Rules;
