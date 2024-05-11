@@ -118,22 +118,18 @@ export default {
       {
         alt: [
           {
-            seq: [
-              "#",
-              {
-                ref: "css_class_id",
-              },
-            ],
+            ref: "css_id_selector",
           },
           {
-            seq: [
-              ".",
-              {
-                ref: "css_class_id",
-              },
-            ],
+            ref: "css_class_selector",
           },
         ],
+      },
+      {
+        f: 0.5,
+        opt: {
+          ref: "css_pseudo_selector",
+        },
       },
       {
         f: 0.5,
@@ -145,27 +141,88 @@ export default {
             {
               alt: [
                 {
-                  seq: [
-                    "#",
-                    {
-                      ref: "css_class_id",
-                    },
-                  ],
+                  ref: "css_id_selector",
                 },
                 {
-                  seq: [
-                    ".",
-                    {
-                      ref: "css_class_id",
-                    },
-                  ],
+                  ref: "css_class_selector",
                 },
               ],
+            },
+            {
+              f: 0.5,
+              opt: {
+                ref: "css_pseudo_selector",
+              },
             },
           ],
         },
       },
     ],
+  },
+  css_id_selector: {
+    seq: [
+      "#",
+      {
+        ref: "css_class_id",
+      },
+    ],
+  },
+  css_class_selector: {
+    seq: [
+      ".",
+      {
+        ref: "css_class_id",
+      },
+    ],
+  },
+  css_pseudo_selector: {
+    alt: [
+      {
+        ref: "css_pseudo_class",
+      },
+      {
+        ref: "css_pseudo_element",
+      },
+    ],
+  },
+  css_pseudo_class: {
+    seq: [
+      ":",
+      {
+        ref: "css_pseudo_class_name",
+      },
+    ],
+  },
+  css_pseudo_class_name: {
+    alt: [
+      {
+        seq: [
+          "dir(",
+          {
+            alt: ["ltr", "rtl"],
+          },
+          ")",
+        ],
+      },
+      "hover",
+      "active",
+      "focus",
+      "valid",
+      "invalid",
+      "required",
+      "optional",
+    ],
+  },
+  css_pseudo_element: {
+    seq: [
+      "::",
+      {
+        ref: "css_pseudo_element_name",
+      },
+    ],
+  },
+  css_pseudo_element_name: {
+    alt: ["before", "after", "backdrop"],
   },
   css_property_list: {
     seq: [
@@ -323,7 +380,42 @@ export default {
       ")",
     ],
   },
-  css_url_value: "url(logo.jpg)",
+  css_url_value: {
+    seq: [
+      "url(",
+      {
+        alt: [
+          {
+            ref: "css_image_url",
+          },
+          {
+            ref: "css_font_url",
+          },
+        ],
+      },
+      ")",
+    ],
+  },
+  css_image_url: {
+    seq: [
+      {
+        alt: ["logo", "bg", "img", "hero", "footer"],
+      },
+      {
+        alt: [".jpg", ".png", ".svg"],
+      },
+    ],
+  },
+  css_font_url: {
+    seq: [
+      {
+        alt: ["mono", "serif", "sans-serif"],
+      },
+      {
+        alt: [".woff", ".ttf"],
+      },
+    ],
+  },
   css_var_id: {
     seq: [
       "--",
@@ -333,7 +425,17 @@ export default {
     ],
   },
   css_color_value: {
-    alt: ["#aaa", "#bbb", "#ccc", "#ddd", "#eee", "#fff"],
+    alt: [
+      "#aaa",
+      "#bbb",
+      "#ccc",
+      "#ddd",
+      "#eee",
+      "#fff",
+      {
+        ref: "css_named_color",
+      },
+    ],
   },
   css_class_id: {
     alt: [
@@ -368,6 +470,6 @@ export default {
     ],
   },
   css_named_color: {
-    alt: ["black", "gray", "white"],
+    alt: ["black", "silver", "gray", "white", "red", "green", "blue"],
   },
 } as Rules;

@@ -36,8 +36,36 @@ css -> css_rule ;
 css_rule -> css_selector " { " css_property_list " }" ;
 
 css_selector ->
-  ( "#" css_class_id | "." css_class_id )
-  [ ( " > " | " + " ) ( "#" css_class_id | "." css_class_id ) ]
+  ( css_id_selector | css_class_selector )
+  [ css_pseudo_selector ]
+  [ ( " > " | " + " ) ( css_id_selector | css_class_selector ) [ css_pseudo_selector ] ]
+  ;
+
+css_id_selector -> "#" css_class_id ;
+
+css_class_selector -> "." css_class_id ;
+
+css_pseudo_selector -> css_pseudo_class | css_pseudo_element ;
+
+css_pseudo_class -> ":" css_pseudo_class_name ;
+
+css_pseudo_class_name ->
+    "dir" "(" ( "ltr" | "rtl" ) ")"
+  | "hover"
+  | "active"
+  | "focus"
+  | "valid"
+  | "invalid"
+  | "required"
+  | "optional"
+  ;
+
+css_pseudo_element -> "::" css_pseudo_element_name ;
+
+css_pseudo_element_name ->
+    "before"
+  | "after"
+  | "backdrop"
   ;
 
 css_property_list -> css_property "; " css_property "; " css_property ";" ;
@@ -73,7 +101,11 @@ css_std_value ->
 
 css_var_value -> "var(" css_var_id [ "," _ css_color_value ] ")" ;
 
-css_url_value -> "url(logo.jpg)" ;
+css_url_value -> "url" "(" ( css_image_url | css_font_url ) ")" ;
+
+css_image_url -> ( "logo" | "bg" | "img" | "hero" | "footer" ) ( ".jpg" | ".png" | ".svg" ) ;
+
+css_font_url -> ( "mono" | "serif" | "sans-serif" ) ( ".woff" | ".ttf" ) ;
 
 css_var_id ->
     "--"
@@ -90,6 +122,7 @@ css_color_value ->
   | "#ddd"
   | "#eee"
   | "#fff"
+  | css_named_color
   ;
 
 css_class_id ->
@@ -105,6 +138,10 @@ css_class_id ->
 
 css_named_color ->
     "black"
+  | "silver"
   | "gray"
   | "white"
+  | "red"
+  | "green"
+  | "blue"
   ;
