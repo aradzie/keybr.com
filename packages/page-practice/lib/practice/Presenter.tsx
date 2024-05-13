@@ -312,13 +312,15 @@ function NormalLayout({
         {textInput}
       </div>
       <div id={names.keyboard}>
-        <DeferredKeyboardPresenter
-          focus={focus}
-          depressedKeys={depressedKeys}
-          toggledKeys={toggledKeys}
-          suffix={state.suffix}
-          lastLesson={state.lastLesson}
-        />
+        <Zoomer>
+          <DeferredKeyboardPresenter
+            focus={focus}
+            depressedKeys={depressedKeys}
+            toggledKeys={toggledKeys}
+            suffix={state.suffix}
+            lastLesson={state.lastLesson}
+          />
+        </Zoomer>
       </div>
       {tour}
     </Screen>
