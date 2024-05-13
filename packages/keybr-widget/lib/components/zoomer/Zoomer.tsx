@@ -15,7 +15,7 @@ import * as styles from "./Zoomer.module.less";
 
 const globalMoving = { current: null as HTMLElement | null };
 
-const screenMargin = 30;
+const screenMargin = 0;
 
 export type ZoomableProps = {
   readonly moving?: boolean;
@@ -37,7 +37,7 @@ export function Zoomer({
       // A non-passive event handler that actually can prevent default.
       // https://github.com/facebook/react/issues/14856
       const handler = (ev: WheelEvent) => {
-        setZoom(zoom - Math.sign(ev.deltaY) * 0.05);
+        setZoom(Math.max(0.5, zoom - Math.sign(ev.deltaY) * 0.05));
         setHover(true);
         ev.preventDefault();
       };
