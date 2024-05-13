@@ -12,15 +12,19 @@ import { Icon } from "../icon/index.ts";
 import { place } from "./place.ts";
 import { useMouseWheel } from "./use-mouse-wheel.ts";
 import * as styles from "./Zoomer.module.less";
-import { type ZoomerProps } from "./Zoomer.types.ts";
+import { type ZoomablePosition, type ZoomerProps } from "./Zoomer.types.ts";
 
 const globalMoving = { current: null as HTMLElement | null };
 
-export function Zoomer({ children }: ZoomerProps): ReactNode {
+const savedPositions = new Map<string, ZoomablePosition>();
+
+export function Zoomer({ children, id = null }: ZoomerProps): ReactNode {
   const rootRef = useRef<HTMLDivElement>(null);
   const [hover, setHover] = useState(false);
   const [moving, setMoving] = useState(false);
-  const [{ x, y, zoom }, setPosition] = useState({ x: 0, y: 0, zoom: 1 });
+  const [{ x, y, zoom }, setPosition] = useState(
+    (id && savedPositions.get(id)) || { x: 0, y: 0, zoom: 1 },
+  );
   useMouseWheel(rootRef.current, (ev) => {
     setPosition({ x, y, zoom: zoom - Math.sign(ev.deltaY) * 0.05 });
     setHover(true);
@@ -63,6 +67,11 @@ export function Zoomer({ children }: ZoomerProps): ReactNode {
       setPosition(place(root).fitToScreen({ x, y, zoom }));
     }
   }, [x, y, zoom]);
+  useEffect(() => {
+    if (id) {
+      savedPositions.set(id, { x, y, zoom });
+    }
+  }, [id, x, y, zoom]);
   useEffect(() => {
     if (hover) {
       const timeout = setTimeout(() => {

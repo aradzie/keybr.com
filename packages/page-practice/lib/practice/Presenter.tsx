@@ -107,7 +107,7 @@ export class Presenter extends PureComponent<Props, State> {
               />
             }
             textInput={
-              <Zoomer>
+              <Zoomer id="TextArea/Normal">
                 <TextArea
                   focusRef={this.focusRef}
                   settings={state.textDisplaySettings}
@@ -141,7 +141,7 @@ export class Presenter extends PureComponent<Props, State> {
               />
             }
             textInput={
-              <Zoomer>
+              <Zoomer id="TextArea/Compact">
                 <TextArea
                   focusRef={this.focusRef}
                   settings={state.textDisplaySettings}
@@ -174,7 +174,7 @@ export class Presenter extends PureComponent<Props, State> {
               />
             }
             textInput={
-              <Zoomer>
+              <Zoomer id="TextArea/Bare">
                 <TextArea
                   focusRef={this.focusRef}
                   settings={state.textDisplaySettings}
@@ -304,7 +304,7 @@ function NormalLayout({
 }): ReactNode {
   return (
     <Screen>
-      <Zoomer>
+      <Zoomer id="Indicators">
         <Indicators state={state} />
       </Zoomer>
       {controls}
@@ -312,7 +312,7 @@ function NormalLayout({
         {textInput}
       </div>
       <div id={names.keyboard}>
-        <Zoomer>
+        <Zoomer id="Keyboard">
           <DeferredKeyboardPresenter
             focus={focus}
             depressedKeys={depressedKeys}
@@ -340,7 +340,7 @@ function CompactLayout({
 }): ReactNode {
   return (
     <Screen>
-      <Zoomer>
+      <Zoomer id="Indicators">
         <Indicators state={state} />
       </Zoomer>
       {controls}
