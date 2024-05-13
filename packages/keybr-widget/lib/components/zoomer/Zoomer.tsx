@@ -8,15 +8,13 @@ import {
   useState,
 } from "react";
 import { useDocumentEvent, useWindowEvent } from "../../hooks/index.ts";
-import { getBoundingBox, getScreenSize, Rect } from "../../utils/index.ts";
 import { Icon } from "../icon/index.ts";
+import { place } from "./place.ts";
 import { useMouseWheel } from "./use-mouse-wheel.ts";
 import * as styles from "./Zoomer.module.less";
-import { type ZoomablePosition, type ZoomerProps } from "./Zoomer.types.ts";
+import { type ZoomerProps } from "./Zoomer.types.ts";
 
 const globalMoving = { current: null as HTMLElement | null };
-
-const screenMargin = 0;
 
 export function Zoomer({ children }: ZoomerProps): ReactNode {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -24,8 +22,7 @@ export function Zoomer({ children }: ZoomerProps): ReactNode {
   const [moving, setMoving] = useState(false);
   const [{ x, y, zoom }, setPosition] = useState({ x: 0, y: 0, zoom: 1 });
   useMouseWheel(rootRef.current, (ev) => {
-    const delta = Math.sign(ev.deltaY) * 0.05;
-    setPosition({ x, y, zoom: Math.max(0.5, zoom - delta) });
+    setPosition({ x, y, zoom: zoom - Math.sign(ev.deltaY) * 0.05 });
     setHover(true);
     ev.preventDefault();
   });
@@ -50,7 +47,7 @@ export function Zoomer({ children }: ZoomerProps): ReactNode {
   useDocumentEvent("mousemove", (ev) => {
     const root = rootRef.current;
     if (root != null && moving) {
-      setPosition(place(root).move({ x, y, zoom }, ev.movementX, ev.movementY));
+      setPosition({ x: x + ev.movementX, y: y + ev.movementY, zoom });
       ev.preventDefault();
     }
   });
@@ -107,72 +104,6 @@ export function Zoomer({ children }: ZoomerProps): ReactNode {
       )}
     </div>
   );
-}
-
-function place(root: HTMLElement) {
-  const rootBox = getBoundingBox(root, "fixed");
-  const screenSize = getScreenSize();
-  const screenBox = new Rect(
-    screenMargin,
-    screenMargin,
-    screenSize.width - screenMargin * 2,
-    screenSize.height - screenMargin * 2,
-  );
-  const areaBox = new Rect(
-    screenBox.x,
-    screenBox.y,
-    screenBox.width - rootBox.width,
-    screenBox.height - rootBox.height,
-  );
-
-  const move = ({ x, y, zoom }: ZoomablePosition, dx: number, dy: number) => {
-    if (
-      (dx < 0 && rootBox.left + dx >= areaBox.left) ||
-      (dx > 0 && rootBox.left + dx <= areaBox.right)
-    ) {
-      x += dx;
-    }
-    if (
-      (dy < 0 && rootBox.top + dy >= areaBox.top) ||
-      (dy > 0 && rootBox.top + dy <= areaBox.bottom)
-    ) {
-      y += dy;
-    }
-    return { x, y, zoom };
-  };
-
-  const fitToScreen = ({ x, y, zoom }: ZoomablePosition) => {
-    if (
-      zoom > 1 &&
-      (rootBox.width > screenBox.width || rootBox.height > screenBox.height)
-    ) {
-      zoom = Math.min(
-        (screenBox.width / rootBox.width) * zoom,
-        (screenBox.height / rootBox.height) * zoom,
-      );
-      return { x: Math.floor(x), y: Math.floor(y), zoom };
-    }
-    if (x !== 0) {
-      if (rootBox.left < areaBox.left) {
-        x += areaBox.left - rootBox.left;
-      } else if (rootBox.left > areaBox.right) {
-        x -= rootBox.left - areaBox.right;
-      }
-    }
-    if (y !== 0) {
-      if (rootBox.top < areaBox.top) {
-        y += areaBox.top - rootBox.top;
-      } else if (rootBox.top > areaBox.bottom) {
-        y -= rootBox.top - areaBox.bottom;
-      }
-    }
-    return { x: Math.floor(x), y: Math.floor(y), zoom };
-  };
-
-  return {
-    move,
-    fitToScreen,
-  };
 }
 
 function contains(root: Element, target: unknown): boolean {
