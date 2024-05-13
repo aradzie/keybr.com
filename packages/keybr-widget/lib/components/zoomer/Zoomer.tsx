@@ -2,7 +2,6 @@ import { mdiCursorMove } from "@mdi/js";
 import { clsx } from "clsx";
 import {
   cloneElement,
-  type ReactElement,
   type ReactNode,
   useEffect,
   useRef,
@@ -11,43 +10,25 @@ import {
 import { useDocumentEvent, useWindowEvent } from "../../hooks/index.ts";
 import { getBoundingBox, getScreenSize, Rect } from "../../utils/index.ts";
 import { Icon } from "../icon/index.ts";
+import { useMouseWheel } from "./use-mouse-wheel.ts";
 import * as styles from "./Zoomer.module.less";
+import { type ZoomerProps } from "./Zoomer.types.ts";
 
 const globalMoving = { current: null as HTMLElement | null };
 
 const screenMargin = 0;
 
-export type ZoomableProps = {
-  readonly moving?: boolean;
-};
-
-export function Zoomer({
-  children,
-}: {
-  readonly children: ReactElement<ZoomableProps>;
-}): ReactNode {
+export function Zoomer({ children }: ZoomerProps): ReactNode {
   const rootRef = useRef<HTMLDivElement>(null);
   const [hover, setHover] = useState(false);
   const [moving, setMoving] = useState(false);
   const [{ x, y }, setPosition] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
-  useEffect(() => {
-    const root = rootRef.current;
-    if (root != null) {
-      // A non-passive event handler that actually can prevent default.
-      // https://github.com/facebook/react/issues/14856
-      const handler = (ev: WheelEvent) => {
-        setZoom(Math.max(0.5, zoom - Math.sign(ev.deltaY) * 0.05));
-        setHover(true);
-        ev.preventDefault();
-      };
-      root.addEventListener("wheel", handler);
-      return () => {
-        root.removeEventListener("wheel", handler);
-      };
-    }
-    return;
-  }, [zoom]);
+  useMouseWheel(rootRef.current, (ev) => {
+    setZoom(Math.max(0.5, zoom - Math.sign(ev.deltaY) * 0.05));
+    setHover(true);
+    ev.preventDefault();
+  });
   useDocumentEvent("mousedown", (ev) => {
     const root = rootRef.current;
     if (root != null && !moving && contains(root, ev.target)) {
