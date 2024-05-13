@@ -12,7 +12,7 @@ import { getBoundingBox, getScreenSize, Rect } from "../../utils/index.ts";
 import { Icon } from "../icon/index.ts";
 import { useMouseWheel } from "./use-mouse-wheel.ts";
 import * as styles from "./Zoomer.module.less";
-import { type ZoomerProps } from "./Zoomer.types.ts";
+import { type ZoomablePosition, type ZoomerProps } from "./Zoomer.types.ts";
 
 const globalMoving = { current: null as HTMLElement | null };
 
@@ -22,10 +22,10 @@ export function Zoomer({ children }: ZoomerProps): ReactNode {
   const rootRef = useRef<HTMLDivElement>(null);
   const [hover, setHover] = useState(false);
   const [moving, setMoving] = useState(false);
-  const [{ x, y }, setPosition] = useState({ x: 0, y: 0 });
-  const [zoom, setZoom] = useState(1);
+  const [{ x, y, zoom }, setPosition] = useState({ x: 0, y: 0, zoom: 1 });
   useMouseWheel(rootRef.current, (ev) => {
-    setZoom(Math.max(0.5, zoom - Math.sign(ev.deltaY) * 0.05));
+    const delta = Math.sign(ev.deltaY) * 0.05;
+    setPosition({ x, y, zoom: Math.max(0.5, zoom - delta) });
     setHover(true);
     ev.preventDefault();
   });
@@ -50,26 +50,22 @@ export function Zoomer({ children }: ZoomerProps): ReactNode {
   useDocumentEvent("mousemove", (ev) => {
     const root = rootRef.current;
     if (root != null && moving) {
-      setPosition(place(root).move(x, y, ev.movementX, ev.movementY));
+      setPosition(place(root).move({ x, y, zoom }, ev.movementX, ev.movementY));
       ev.preventDefault();
     }
   });
   useWindowEvent("resize", () => {
     const root = rootRef.current;
     if (root != null) {
-      const [newZoom, newPosition] = place(root).fitToScreen(zoom, x, y);
-      setZoom(newZoom);
-      setPosition(newPosition);
+      setPosition(place(root).fitToScreen({ x, y, zoom }));
     }
   });
   useEffect(() => {
     const root = rootRef.current;
     if (root != null) {
-      const [newZoom, newPosition] = place(root).fitToScreen(zoom, x, y);
-      setZoom(newZoom);
-      setPosition(newPosition);
+      setPosition(place(root).fitToScreen({ x, y, zoom }));
     }
-  }, [zoom, x, y]);
+  }, [x, y, zoom]);
   useEffect(() => {
     if (hover) {
       const timeout = setTimeout(() => {
@@ -101,8 +97,7 @@ export function Zoomer({ children }: ZoomerProps): ReactNode {
         if (ev.altKey) {
           setHover(false);
           setMoving(false);
-          setPosition({ x: 0, y: 0 });
-          setZoom(1);
+          setPosition({ x: 0, y: 0, zoom: 1 });
         }
       }}
     >
@@ -130,7 +125,7 @@ function place(root: HTMLElement) {
     screenBox.height - rootBox.height,
   );
 
-  const move = (x: number, y: number, dx: number, dy: number) => {
+  const move = ({ x, y, zoom }: ZoomablePosition, dx: number, dy: number) => {
     if (
       (dx < 0 && rootBox.left + dx >= areaBox.left) ||
       (dx > 0 && rootBox.left + dx <= areaBox.right)
@@ -143,10 +138,10 @@ function place(root: HTMLElement) {
     ) {
       y += dy;
     }
-    return { x, y };
+    return { x, y, zoom };
   };
 
-  const fitToScreen = (zoom: number, x: number, y: number) => {
+  const fitToScreen = ({ x, y, zoom }: ZoomablePosition) => {
     if (
       zoom > 1 &&
       (rootBox.width > screenBox.width || rootBox.height > screenBox.height)
@@ -155,7 +150,7 @@ function place(root: HTMLElement) {
         (screenBox.width / rootBox.width) * zoom,
         (screenBox.height / rootBox.height) * zoom,
       );
-      return [zoom, { x: Math.floor(x), y: Math.floor(y) }] as const;
+      return { x: Math.floor(x), y: Math.floor(y), zoom };
     }
     if (x !== 0) {
       if (rootBox.left < areaBox.left) {
@@ -171,7 +166,7 @@ function place(root: HTMLElement) {
         y -= rootBox.top - areaBox.bottom;
       }
     }
-    return [zoom, { x: Math.floor(x), y: Math.floor(y) }] as const;
+    return { x: Math.floor(x), y: Math.floor(y), zoom };
   };
 
   return {

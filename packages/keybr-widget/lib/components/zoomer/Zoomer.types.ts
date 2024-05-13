@@ -7,3 +7,9 @@ export type ZoomerProps = {
 export type ZoomableProps = {
   readonly moving?: boolean;
 };
+
+export type ZoomablePosition = {
+  readonly x: number;
+  readonly y: number;
+  readonly zoom: number;
+};
