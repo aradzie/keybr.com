@@ -11,6 +11,8 @@ import { useMemo } from "react";
 import { EventAlert } from "./EventAlert.tsx";
 import { type Event, type EventListener } from "./types.ts";
 
+const enabled = false;
+
 export function makeEvents(settings: Settings, lesson: Lesson) {
   const results: Result[] = [];
 
@@ -33,12 +35,19 @@ export function makeEvents(settings: Settings, lesson: Lesson) {
     }
 
     appendAll(results: readonly Result[]): void {
+      if (!enabled) {
+        return;
+      }
       for (const result of results) {
         this.append(result);
       }
     }
 
     append(result: Result, listener: EventListener | null = null): void {
+      if (!enabled) {
+        return;
+      }
+
       results.push(result);
 
       const { speed } = result;
