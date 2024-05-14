@@ -304,15 +304,12 @@ function NormalLayout({
 }): ReactNode {
   return (
     <Screen>
-      <Zoomer id="Indicators">
-        <Indicators state={state} />
-      </Zoomer>
-      {controls}
+      <Indicators state={state} />
       <div id={names.textInput} className={styles.textInput_normal}>
         {textInput}
       </div>
-      <div id={names.keyboard}>
-        <Zoomer id="Keyboard">
+      <div id={names.keyboard} className={styles.keyboard}>
+        <Zoomer id="Keyboard/Normal">
           <DeferredKeyboardPresenter
             focus={focus}
             depressedKeys={depressedKeys}
@@ -322,6 +319,7 @@ function NormalLayout({
           />
         </Zoomer>
       </div>
+      {controls}
       {tour}
     </Screen>
   );
@@ -340,13 +338,11 @@ function CompactLayout({
 }): ReactNode {
   return (
     <Screen>
-      <Zoomer id="Indicators">
-        <Indicators state={state} />
-      </Zoomer>
-      {controls}
+      <Indicators state={state} />
       <div id={names.textInput} className={styles.textInput_compact}>
         {textInput}
       </div>
+      {controls}
     </Screen>
   );
 }
@@ -364,10 +360,11 @@ function BareLayout({
 }): ReactNode {
   return (
     <Screen>
-      {controls}
+      <div className={styles.spacer} />
       <div id={names.textInput} className={styles.textInput_bare}>
         {textInput}
       </div>
+      {controls}
     </Screen>
   );
 }
