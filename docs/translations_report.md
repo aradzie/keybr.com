@@ -90,15 +90,15 @@ Untranslated: 34 messages, 407 words
 
 # Dutch
 
-Translated: 310 messages, 1862 words
+Translated: 314 messages, 1985 words
 
-Untranslated: 122 messages, 3382 words
+Untranslated: 118 messages, 3259 words
 
 # Polish
 
-Translated: 425 messages, 5008 words
+Translated: 431 messages, 5243 words
 
-Untranslated: 7 messages, 236 words
+Untranslated: 1 messages, 1 words
 
 # Brazilian Portuguese
 
