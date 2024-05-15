@@ -19,12 +19,12 @@ test("group results by layout", (t) => {
   t.deepEqual([...map.keys()], [Layout.EN_US]);
   t.deepEqual([...map], [{ key: Layout.EN_US, results: [] }]);
 
-  map.add([r1]);
+  map.add(r1);
 
   t.deepEqual([...map.keys()], [Layout.EN_US]);
   t.deepEqual([...map], [{ key: Layout.EN_US, results: [r1] }]);
 
-  map.add([r2]);
+  map.add(r2);
 
   t.deepEqual([...map.keys()], [Layout.EN_US, Layout.DE_DE]);
   t.deepEqual(

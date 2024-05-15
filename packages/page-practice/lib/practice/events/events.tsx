@@ -11,19 +11,18 @@ import { useMemo } from "react";
 import { EventAlert } from "./EventAlert.tsx";
 import { type Event, type EventListener } from "./types.ts";
 
-const enabled = false;
-
 export function makeEvents(settings: Settings, lesson: Lesson) {
   const results: Result[] = [];
+  const resultsByDate = ResultGroups.byDate([]);
 
   let topSpeed = 0;
   let topScore = 0;
   let accuracyStreak = 0;
   let longestAccuracyStreak = 0;
-  let prevDailyGoal = 0;
+  let dailyGoal = 0;
 
   const getDailyGoal = () => {
-    const today = ResultGroups.byDate(results).get(LocalDate.now());
+    const today = resultsByDate.get(LocalDate.now());
     const dailyGoal = settings.get(lessonProps.dailyGoal);
     const { value } = computeDailyGoal(today, dailyGoal);
     return value;
@@ -34,21 +33,15 @@ export function makeEvents(settings: Settings, lesson: Lesson) {
       return results.length;
     }
 
-    appendAll(results: readonly Result[]): void {
-      if (!enabled) {
-        return;
-      }
+    init(results: readonly Result[]): void {
       for (const result of results) {
         this.append(result);
       }
     }
 
     append(result: Result, listener: EventListener | null = null): void {
-      if (!enabled) {
-        return;
-      }
-
       results.push(result);
+      resultsByDate.add(result);
 
       const { speed } = result;
       if (speed > topSpeed) {
@@ -103,15 +96,15 @@ export function makeEvents(settings: Settings, lesson: Lesson) {
         accuracyStreak = 0;
       }
 
-      const dailyGoal = getDailyGoal();
-      if (prevDailyGoal < 1 && dailyGoal >= 1) {
+      const newDailyGoal = getDailyGoal();
+      if (dailyGoal < 1 && newDailyGoal >= 1) {
         if (listener != null) {
           listener({
             type: "daily-goal",
           });
         }
       }
-      prevDailyGoal = dailyGoal;
+      dailyGoal = newDailyGoal;
     }
   })();
 }

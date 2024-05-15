@@ -47,7 +47,7 @@ function ResultUpdater({
   const group = ResultGroups.byLayoutFamily(results).get(
     settings.get(keyboardProps.layout).family,
   );
-  events.appendAll(group.slice(events.length));
+  events.init(group.slice(events.length));
   const state = new PracticeState(settings, lesson, group, (result) => {
     if (result.validate()) {
       lastLesson.current = makeLastLesson(result, state.textInput.getSteps());

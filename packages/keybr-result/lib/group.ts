@@ -31,14 +31,17 @@ const dateKey = (): KeyOf<LocalDate> => {
 };
 
 export class ResultGroups<T> implements Iterable<Group<T>> {
-  static readonly byLayout = (results: Iterable<Result>) =>
-    new ResultGroups(layoutKey()).add(results);
+  static readonly byLayout = (results: Iterable<Result>) => {
+    return new ResultGroups(layoutKey()).addAll(results);
+  };
 
-  static readonly byLayoutFamily = (results: Iterable<Result>) =>
-    new ResultGroups(layoutFamilyKey()).add(results);
+  static readonly byLayoutFamily = (results: Iterable<Result>) => {
+    return new ResultGroups(layoutFamilyKey()).addAll(results);
+  };
 
-  static readonly byDate = (results: Iterable<Result>) =>
-    new ResultGroups(dateKey()).add(results);
+  static readonly byDate = (results: Iterable<Result>) => {
+    return new ResultGroups(dateKey()).addAll(results);
+  };
 
   readonly #keyOf: KeyOf<T>;
   readonly #map: Map<string, { readonly key: T; readonly results: Result[] }>;
@@ -62,9 +65,14 @@ export class ResultGroups<T> implements Iterable<Group<T>> {
     return this.#getGroup(key).results;
   }
 
-  add(results: Iterable<Result>): this {
+  add(result: Result) {
+    this.#getGroup(this.#keyOf(result)).results.push(result);
+    return this;
+  }
+
+  addAll(results: Iterable<Result>) {
     for (const result of results) {
-      this.#getGroup(this.#keyOf(result)).results.push(result);
+      this.add(result);
     }
     return this;
   }
