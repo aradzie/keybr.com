@@ -1,18 +1,18 @@
 import { mkdirSync } from "node:fs";
 import { dirname } from "node:path";
-import Knex, { type Knex as KnexType } from "knex";
+import Knex from "knex";
 import { Model } from "objection";
 import { Env } from "./env.ts";
 import { connectMySql } from "./knex/conn-mysql.ts";
 import { connectSqlite } from "./knex/conn-sqlite.ts";
 
-export function newKnex(): KnexType {
+export function makeKnex() {
   const knex = Knex(connect());
   Model.knex(knex);
   return knex;
 }
 
-function connect(): KnexType.Config {
+function connect() {
   const client = Env.getString("DATABASE_CLIENT", "mysql");
   switch (client) {
     case "mysql": {

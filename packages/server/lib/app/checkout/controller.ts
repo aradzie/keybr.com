@@ -55,7 +55,7 @@ export class Controller {
     ctx: Context<RouterState & AuthState>,
     @body.form() value: unknown,
   ): Promise<void> {
-    const paddle = this.config.newPaddle();
+    const paddle = this.config.makePaddle();
 
     // Parse.
 

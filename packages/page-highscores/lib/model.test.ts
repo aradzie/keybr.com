@@ -1,4 +1,4 @@
-import { newKnex } from "@keybr/config";
+import { makeKnex } from "@keybr/config";
 import { createSchema } from "@keybr/database";
 import { clearTables, seedModels } from "@keybr/database/lib/testing/seeds.ts";
 import { Layout } from "@keybr/keyboard";
@@ -8,7 +8,7 @@ import { mapHighScoresEntries } from "./model.ts";
 const now = new Date("2001-02-03T04:05:06Z");
 
 test.beforeEach(async () => {
-  await createSchema(newKnex());
+  await createSchema(makeKnex());
   await clearTables();
   await seedModels();
 });

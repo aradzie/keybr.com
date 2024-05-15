@@ -1,7 +1,7 @@
 import test from "ava";
-import { newSpeedDistribution } from "./dist.ts";
+import { makeSpeedDistribution } from "./dist.ts";
 
 test("data", (t) => {
-  const { samples } = newSpeedDistribution();
+  const { samples } = makeSpeedDistribution();
   t.is(samples.length, 751);
 });

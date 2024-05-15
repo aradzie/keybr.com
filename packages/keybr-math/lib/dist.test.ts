@@ -1,8 +1,8 @@
 import test from "ava";
-import { newDistribution } from "./dist.ts";
+import { makeDistribution } from "./dist.ts";
 
 test("distribution", (t) => {
-  const dist = newDistribution([0, 10, 20, 30, 40]);
+  const dist = makeDistribution([0, 10, 20, 30, 40]);
 
   t.deepEqual(dist.samples, [0, 10, 20, 30, 40]);
 

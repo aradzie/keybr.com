@@ -59,7 +59,7 @@ test("translate a normal input", (t) => {
   // Act.
 
   listener.onKeyDown(
-    newKeyEvent({
+    makeKeyEvent({
       timeStamp: 1,
       code: "ShiftLeft",
       key: "Shift",
@@ -67,7 +67,7 @@ test("translate a normal input", (t) => {
     }),
   );
   listener.onKeyDown(
-    newKeyEvent({
+    makeKeyEvent({
       timeStamp: 2,
       code: "KeyS",
       key: "S",
@@ -80,7 +80,7 @@ test("translate a normal input", (t) => {
     codePoint: /* S */ 0x0053,
   });
   listener.onKeyUp(
-    newKeyEvent({
+    makeKeyEvent({
       timeStamp: 3,
       code: "KeyS",
       key: "S",
@@ -88,7 +88,7 @@ test("translate a normal input", (t) => {
     }),
   );
   listener.onKeyUp(
-    newKeyEvent({
+    makeKeyEvent({
       timeStamp: 4,
       code: "ShiftLeft",
       key: "Shift",
@@ -122,7 +122,7 @@ test("translate a control input", (t) => {
   // Act.
 
   listener.onKeyDown(
-    newKeyEvent({
+    makeKeyEvent({
       timeStamp: 1,
       code: "ControlLeft",
       key: "Control",
@@ -130,7 +130,7 @@ test("translate a control input", (t) => {
     }),
   );
   listener.onKeyDown(
-    newKeyEvent({
+    makeKeyEvent({
       timeStamp: 2,
       code: "KeyS",
       key: "s",
@@ -138,7 +138,7 @@ test("translate a control input", (t) => {
     }),
   );
   listener.onKeyUp(
-    newKeyEvent({
+    makeKeyEvent({
       timeStamp: 3,
       code: "KeyS",
       key: "s",
@@ -146,7 +146,7 @@ test("translate a control input", (t) => {
     }),
   );
   listener.onKeyUp(
-    newKeyEvent({
+    makeKeyEvent({
       timeStamp: 4,
       code: "ControlLeft",
       key: "Control",
@@ -179,7 +179,7 @@ test("translate a clear char input", (t) => {
   // Act.
 
   listener.onKeyDown(
-    newKeyEvent({
+    makeKeyEvent({
       timeStamp: 1,
       code: "Backspace",
       key: "Backspace",
@@ -192,7 +192,7 @@ test("translate a clear char input", (t) => {
     codePoint: 0x0000,
   });
   listener.onKeyUp(
-    newKeyEvent({
+    makeKeyEvent({
       timeStamp: 2,
       code: "Backspace",
       key: "Backspace",
@@ -224,7 +224,7 @@ test("translate a clear word input", (t) => {
   // Act.
 
   listener.onKeyDown(
-    newKeyEvent({
+    makeKeyEvent({
       timeStamp: 1,
       code: "ControlLeft",
       key: "Control",
@@ -232,7 +232,7 @@ test("translate a clear word input", (t) => {
     }),
   );
   listener.onKeyDown(
-    newKeyEvent({
+    makeKeyEvent({
       timeStamp: 2,
       code: "Backspace",
       key: "Backspace",
@@ -245,7 +245,7 @@ test("translate a clear word input", (t) => {
     codePoint: 0x0000,
   });
   listener.onKeyUp(
-    newKeyEvent({
+    makeKeyEvent({
       timeStamp: 3,
       code: "Backspace",
       key: "Backspace",
@@ -253,7 +253,7 @@ test("translate a clear word input", (t) => {
     }),
   );
   listener.onKeyUp(
-    newKeyEvent({
+    makeKeyEvent({
       timeStamp: 4,
       code: "ControlLeft",
       key: "Control",
@@ -287,7 +287,7 @@ test("translate the whitespace keys", (t) => {
   // Act.
 
   listener.onKeyDown(
-    newKeyEvent({
+    makeKeyEvent({
       timeStamp: 1,
       code: "Space",
       key: "Space",
@@ -299,14 +299,14 @@ test("translate the whitespace keys", (t) => {
     codePoint: 0x0020,
   });
   listener.onKeyUp(
-    newKeyEvent({
+    makeKeyEvent({
       timeStamp: 2,
       code: "Space",
       key: "Space",
     }),
   );
   listener.onKeyDown(
-    newKeyEvent({
+    makeKeyEvent({
       timeStamp: 3,
       code: "NumpadEnter",
       key: "Enter",
@@ -318,7 +318,7 @@ test("translate the whitespace keys", (t) => {
     codePoint: 0x0000,
   });
   listener.onKeyUp(
-    newKeyEvent({
+    makeKeyEvent({
       timeStamp: 4,
       code: "NumpadEnter",
       key: "Enter",
@@ -352,7 +352,7 @@ test("fix key locations", (t) => {
   // Act.
 
   listener.onKeyDown(
-    newKeyEvent({
+    makeKeyEvent({
       timeStamp: 1,
       code: "ShiftLeft",
       key: "Shift",
@@ -360,7 +360,7 @@ test("fix key locations", (t) => {
     }),
   );
   listener.onKeyDown(
-    newKeyEvent({
+    makeKeyEvent({
       timeStamp: 2,
       code: "KeyO",
       key: "O",
@@ -373,7 +373,7 @@ test("fix key locations", (t) => {
     codePoint: /* O */ 0x004f,
   });
   listener.onKeyUp(
-    newKeyEvent({
+    makeKeyEvent({
       timeStamp: 3,
       code: "KeyO",
       key: "O",
@@ -381,7 +381,7 @@ test("fix key locations", (t) => {
     }),
   );
   listener.onKeyUp(
-    newKeyEvent({
+    makeKeyEvent({
       timeStamp: 4,
       code: "ShiftLeft",
       key: "Shift",
@@ -400,7 +400,7 @@ test("fix key locations", (t) => {
   ]);
 });
 
-function newKeyEvent({
+function makeKeyEvent({
   timeStamp,
   code,
   key,

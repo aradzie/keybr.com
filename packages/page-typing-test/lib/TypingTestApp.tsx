@@ -1,5 +1,5 @@
 import { useSettings } from "@keybr/settings";
-import { newStats, type Stats } from "@keybr/textinput";
+import { makeStats, type Stats } from "@keybr/textinput";
 import { type ReactNode, useMemo, useState } from "react";
 import { Report } from "./component/Report.tsx";
 import { SettingsScreen } from "./component/SettingsScreen.tsx";
@@ -20,7 +20,7 @@ export function TypingTestApp(): ReactNode {
     [settings],
   );
   const [view, setView] = useState(View.Test);
-  const [stats, setStats] = useState<Stats>(newStats([]));
+  const [stats, setStats] = useState<Stats>(makeStats([]));
 
   switch (view) {
     case View.Test:

@@ -1,7 +1,7 @@
 import { useFormatter } from "@keybr/lesson-ui";
 import {
   LocalDate,
-  newSummaryStats,
+  makeSummaryStats,
   type Result,
   type ResultSummary,
 } from "@keybr/result";
@@ -89,7 +89,7 @@ function Cell({ cell }: { readonly cell: CellData | null }): ReactNode {
       </td>
     );
   }
-  const stats = newSummaryStats(results);
+  const stats = makeSummaryStats(results);
   const classList: string[] = [];
   if (stats.time > 30 * 60 * 1000) {
     classList.push(styles.cell_s3);
@@ -161,12 +161,12 @@ function blockList(summary: ResultSummary): BlockData[] {
     const key = `${year}:${month}`;
     let block = blockMap.get(key);
     if (block == null) {
-      blockMap.set(key, (block = newBlock({ year, month })));
+      blockMap.set(key, (block = makeBlock({ year, month })));
     }
     return block;
   }
 
-  function newBlock({
+  function makeBlock({
     year,
     month,
   }: {

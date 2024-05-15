@@ -10,7 +10,7 @@ export type Distribution = {
   cdf(value: number): number;
 };
 
-export function newDistribution(samples: readonly number[]): Distribution {
+export function makeDistribution(samples: readonly number[]): Distribution {
   const { length } = samples;
   let tmp = 0;
   const sum = samples.reduce((sum, value) => sum + value, 0);

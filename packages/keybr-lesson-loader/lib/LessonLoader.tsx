@@ -55,7 +55,7 @@ function Loader({
   }
 }
 
-function useLoader(model: PhoneticModel): Lesson | null {
+function useLoader(model0: PhoneticModel): Lesson | null {
   const { settings } = useSettings();
   const keyboard = useKeyboard();
   const [result, setResult] = useState<Lesson | null>(null);
@@ -65,7 +65,7 @@ function useLoader(model: PhoneticModel): Lesson | null {
 
     const load = async (): Promise<void> => {
       const codePoints = keyboard.getCodePoints();
-      const newModel = PhoneticModel.restrict(model, codePoints);
+      const model = PhoneticModel.restrict(model0, codePoints);
       const lessonType = settings.get(lessonProps.type);
       const layout = settings.get(keyboardProps.layout);
 
@@ -73,9 +73,7 @@ function useLoader(model: PhoneticModel): Lesson | null {
         case LessonType.GUIDED: {
           const wordList = await loadWordList(layout.language);
           if (!didCancel) {
-            setResult(
-              new GuidedLesson(settings, newModel, codePoints, wordList),
-            );
+            setResult(new GuidedLesson(settings, model, codePoints, wordList));
           }
           break;
         }
@@ -83,26 +81,26 @@ function useLoader(model: PhoneticModel): Lesson | null {
           const wordList = await loadWordList(layout.language);
           if (!didCancel) {
             setResult(
-              new WordListLesson(settings, newModel, codePoints, wordList),
+              new WordListLesson(settings, model, codePoints, wordList),
             );
           }
           break;
         }
         case LessonType.CUSTOM: {
           if (!didCancel) {
-            setResult(new CustomTextLesson(settings, newModel, codePoints));
+            setResult(new CustomTextLesson(settings, model, codePoints));
           }
           break;
         }
         case LessonType.NUMBERS: {
           if (!didCancel) {
-            setResult(new NumbersLesson(settings, newModel, codePoints));
+            setResult(new NumbersLesson(settings, model, codePoints));
           }
           break;
         }
         case LessonType.CODE: {
           if (!didCancel) {
-            setResult(new CodeLesson(settings, newModel, codePoints));
+            setResult(new CodeLesson(settings, model, codePoints));
           }
           break;
         }
@@ -116,7 +114,7 @@ function useLoader(model: PhoneticModel): Lesson | null {
     return () => {
       didCancel = true;
     };
-  }, [model, settings, keyboard]);
+  }, [model0, settings, keyboard]);
 
   return result;
 }

@@ -1,6 +1,6 @@
 import { useIntlNumbers } from "@keybr/intl";
 import { useFormatter } from "@keybr/lesson-ui";
-import { newSummaryStats, type ResultSummary } from "@keybr/result";
+import { makeSummaryStats, type ResultSummary } from "@keybr/result";
 import {
   Figure,
   Header,
@@ -71,7 +71,7 @@ function StreakDetails({
   const { formatNumber, formatPercents } = useIntlNumbers();
   const { formatSpeed } = useFormatter();
   const { results } = streak;
-  const stats = newSummaryStats(results);
+  const stats = makeSummaryStats(results);
 
   return (
     <>

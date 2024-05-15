@@ -1,7 +1,7 @@
 import { type WordList } from "@keybr/content-words";
 import { type WeightedCodePointSet } from "@keybr/keyboard";
 import { Letter, type PhoneticModel } from "@keybr/phonetic-model";
-import { type KeyStatsMap, newKeyStatsMap, type Result } from "@keybr/result";
+import { type KeyStatsMap, makeKeyStatsMap, type Result } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
 import { filterWordList } from "./dictionary.ts";
 import { LessonKeys } from "./key.ts";
@@ -29,7 +29,7 @@ export class WordListLesson extends Lesson {
   }
 
   override analyze(results: readonly Result[]): KeyStatsMap {
-    return newKeyStatsMap(this.model.letters, results);
+    return makeKeyStatsMap(this.model.letters, results);
   }
 
   override update(keyStatsMap: KeyStatsMap): LessonKeys {

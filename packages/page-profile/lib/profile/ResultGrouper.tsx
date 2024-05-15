@@ -10,7 +10,7 @@ import { Letter } from "@keybr/phonetic-model";
 import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
 import {
   type KeyStatsMap,
-  newKeyStatsMap,
+  makeKeyStatsMap,
   ResultGroups,
   useResults,
 } from "@keybr/result";
@@ -110,17 +110,17 @@ export function ResultGrouper({
             switch (characterClass) {
               case "letters":
                 return children(
-                  newKeyStatsMap(
+                  makeKeyStatsMap(
                     Letter.restrict(letters, keyboard.getCodePoints()),
                     group,
                   ),
                 );
               case "digits":
-                return children(newKeyStatsMap(Letter.digits, group));
+                return children(makeKeyStatsMap(Letter.digits, group));
               case "punctuators":
-                return children(newKeyStatsMap(Letter.punctuators, group));
+                return children(makeKeyStatsMap(Letter.punctuators, group));
               case "specials":
-                return children(newKeyStatsMap(Letter.specials, group));
+                return children(makeKeyStatsMap(Letter.specials, group));
               default:
                 throw new Error();
             }

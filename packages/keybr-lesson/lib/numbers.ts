@@ -1,7 +1,7 @@
 import { type WeightedCodePointSet } from "@keybr/keyboard";
 import { Letter, type PhoneticModel } from "@keybr/phonetic-model";
 import { randomSample, weightedRandomSample } from "@keybr/rand";
-import { type KeyStatsMap, newKeyStatsMap, type Result } from "@keybr/result";
+import { type KeyStatsMap, makeKeyStatsMap, type Result } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
 import { LessonKeys } from "./key.ts";
 import { Lesson } from "./lesson.ts";
@@ -18,7 +18,7 @@ export class NumbersLesson extends Lesson {
   }
 
   override analyze(results: readonly Result[]): KeyStatsMap {
-    return newKeyStatsMap(Letter.digits, results);
+    return makeKeyStatsMap(Letter.digits, results);
   }
 
   override update(keyStatsMap: KeyStatsMap): LessonKeys {

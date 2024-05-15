@@ -1,4 +1,4 @@
-import { newFilter } from "@keybr/math";
+import { makeFilter } from "@keybr/math";
 import { type Letter } from "@keybr/phonetic-model";
 import { type Result } from "./result.ts";
 
@@ -24,7 +24,7 @@ export type KeySample = {
   readonly filteredTimeToType: number;
 };
 
-export function newKeyStatsMap(
+export function makeKeyStatsMap(
   letters: readonly Letter[],
   results: readonly Result[],
 ): KeyStatsMap {
@@ -62,7 +62,7 @@ function makeKeySamples(
   letter: Letter,
 ): KeySample[] {
   const samples = new Array<KeySample>();
-  const filter = newFilter(0.1);
+  const filter = makeFilter(0.1);
   for (let index = 0; index < results.length; index++) {
     const { timeStamp, histogram } = results[index];
     const sample = histogram.get(letter.codePoint);

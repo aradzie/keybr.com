@@ -82,14 +82,14 @@ export class Room {
     player.state = ReadyState.ANNOUNCED;
     this.#onPlayerJoin(player);
     player.reset(this.#text);
-    this.#broadcast(this.#newPlayerJoinMessage(player));
+    this.#broadcast(this.#makePlayerJoinMessage(player));
     switch (this.#gameState) {
       case GameState.INITIALIZING:
         this.#gameState = GameState.WAITING;
-        player.send(this.#newGameReadyMessage());
+        player.send(this.#makeGameReadyMessage());
         break;
       case GameState.WAITING:
-        player.send(this.#newGameReadyMessage());
+        player.send(this.#makeGameReadyMessage());
         if (this.players.size > 1) {
           this.#scheduleNewGame();
         }
@@ -98,8 +98,8 @@ export class Room {
       case GameState.RUNNING:
       case GameState.FINISHED:
         player.spectator = true;
-        player.send(this.#newGameConfigMessage());
-        player.send(this.#newGameReadyMessage());
+        player.send(this.#makeGameConfigMessage());
+        player.send(this.#makeGameReadyMessage());
         break;
     }
   }
@@ -112,7 +112,7 @@ export class Room {
     player.join(null);
     this.#onPlayerLeave(player);
     player.reset(this.#text);
-    this.#broadcast(this.#newPlayerLeaveMessage(player));
+    this.#broadcast(this.#makePlayerLeaveMessage(player));
     if (this.players.size === 0) {
       this.destroy();
     } else if (this.players.size === 1) {
@@ -148,7 +148,7 @@ export class Room {
         }
       }
       if (changed) {
-        this.#broadcast(this.#newGameWorldMessage());
+        this.#broadcast(this.#makeGameWorldMessage());
         this.#maybeFinishGame();
       }
     }
@@ -189,7 +189,7 @@ export class Room {
           player.position = this.#finishOrder++;
         }
         this.#updatePlayerPositions();
-        this.#broadcast(this.#newGameWorldMessage());
+        this.#broadcast(this.#makeGameWorldMessage());
         this.#maybeFinishGame();
       }
     }
@@ -220,7 +220,7 @@ export class Room {
     for (const player of this.players.values()) {
       player.reset(this.#text);
     }
-    this.#broadcast(this.#newGameReadyMessage());
+    this.#broadcast(this.#makeGameReadyMessage());
   }
 
   #scheduleNewGame(): void {
@@ -238,7 +238,7 @@ export class Room {
           player.reset(this.#text);
         }
         this.#finishOrder = 1;
-        this.#broadcast(this.#newGameConfigMessage());
+        this.#broadcast(this.#makeGameConfigMessage());
         this.#startTask = this.#tasks.delayed(1000, () => {
           this.#startTask = null;
           this.#startStep();
@@ -256,11 +256,11 @@ export class Room {
           player.lastInput = now;
         }
         this.#gameState = GameState.RUNNING;
-        this.#broadcast(this.#newGameReadyMessage());
-        this.#broadcast(this.#newGameWorldMessage());
+        this.#broadcast(this.#makeGameReadyMessage());
+        this.#broadcast(this.#makeGameWorldMessage());
       } else {
         this.#gameState = GameState.STARTING;
-        this.#broadcast(this.#newGameReadyMessage());
+        this.#broadcast(this.#makeGameReadyMessage());
         this.#countDown -= 1;
         this.#startTask = this.#tasks.delayed(1000, () => {
           this.#startTask = null;
@@ -281,7 +281,7 @@ export class Room {
     assert(this.#gameState === GameState.RUNNING);
     this.#onFinishGame();
     this.#gameState = GameState.FINISHED;
-    this.#broadcast(this.#newGameReadyMessage());
+    this.#broadcast(this.#makeGameReadyMessage());
     this.#scheduleNewGame();
   }
 
@@ -347,7 +347,7 @@ export class Room {
     }
   }
 
-  #newPlayerJoinMessage(player: Player): PlayerJoinMessage {
+  #makePlayerJoinMessage(player: Player): PlayerJoinMessage {
     const players = [...this.players.values()].map(({ id, user }) => ({
       id,
       user,
@@ -359,7 +359,7 @@ export class Room {
     };
   }
 
-  #newPlayerLeaveMessage(player: Player): PlayerLeaveMessage {
+  #makePlayerLeaveMessage(player: Player): PlayerLeaveMessage {
     const players = [...this.players.values()].map(({ id, user }) => ({
       id,
       user,
@@ -371,14 +371,14 @@ export class Room {
     };
   }
 
-  #newGameConfigMessage(): GameConfigMessage {
+  #makeGameConfigMessage(): GameConfigMessage {
     return {
       type: GAME_CONFIG_ID,
       text: this.#text,
     };
   }
 
-  #newGameReadyMessage(): GameReadyMessage {
+  #makeGameReadyMessage(): GameReadyMessage {
     return {
       type: GAME_READY_ID,
       gameState: this.#gameState,
@@ -386,7 +386,7 @@ export class Room {
     };
   }
 
-  #newGameWorldMessage(): GameWorldMessage {
+  #makeGameWorldMessage(): GameWorldMessage {
     const elapsed = this.#elapsed();
     const playerState = new Map<number, PlayerState>();
     for (const player of this.players.values()) {

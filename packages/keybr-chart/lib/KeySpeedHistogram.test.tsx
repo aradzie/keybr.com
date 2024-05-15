@@ -1,6 +1,6 @@
 import { FakeIntlProvider } from "@keybr/intl";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
-import { newKeyStatsMap, ResultFaker } from "@keybr/result";
+import { makeKeyStatsMap, ResultFaker } from "@keybr/result";
 import { FakeSettingsContext } from "@keybr/settings";
 import { render } from "@testing-library/react";
 import test from "ava";
@@ -10,7 +10,7 @@ test("render empty", (t) => {
   const letters = FakePhoneticModel.letters;
   const faker = new ResultFaker({ letters });
   const results = faker.nextResultList(0);
-  const keyStatsMap = newKeyStatsMap(letters, results);
+  const keyStatsMap = makeKeyStatsMap(letters, results);
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
@@ -30,7 +30,7 @@ test("render non-empty", (t) => {
   const letters = FakePhoneticModel.letters;
   const faker = new ResultFaker({ letters });
   const results = faker.nextResultList(100);
-  const keyStatsMap = newKeyStatsMap(letters, results);
+  const keyStatsMap = makeKeyStatsMap(letters, results);
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>

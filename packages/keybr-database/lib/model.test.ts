@@ -1,4 +1,4 @@
-import { newKnex } from "@keybr/config";
+import { makeKnex } from "@keybr/config";
 import { PublicId } from "@keybr/publicid";
 import { fake } from "@keybr/test-env-time";
 import test from "ava";
@@ -11,7 +11,7 @@ import { Random } from "./util.ts";
 const now = new Date("2001-02-03T04:05:06Z");
 
 test.beforeEach(async () => {
-  await createSchema(newKnex());
+  await createSchema(makeKnex());
   await clearTables();
   await seedModels();
 });

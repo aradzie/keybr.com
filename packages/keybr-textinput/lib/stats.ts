@@ -11,7 +11,7 @@ export type Stats = {
   readonly histogram: Histogram;
 };
 
-export function newStats(
+export function makeStats(
   steps: readonly Step[],
   {
     startedAt = null,

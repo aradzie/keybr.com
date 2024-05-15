@@ -1,9 +1,9 @@
 import test from "ava";
 import { InputHandler } from "./inputhandler.ts";
 import {
-  newFakeCompositionEvent,
-  newFakeInputEvent,
-  newFakeKeyboardEvent,
+  makeFakeCompositionEvent,
+  makeFakeInputEvent,
+  makeFakeKeyboardEvent,
   tracingListener,
 } from "./testing/fakes.ts";
 
@@ -16,7 +16,7 @@ test("handle a normal input", (t) => {
   // Act.
 
   handler.handleKeyDown(
-    newFakeKeyboardEvent({
+    makeFakeKeyboardEvent({
       type: "keydown",
       timeStamp: 1.123,
       code: "KeyA",
@@ -24,7 +24,7 @@ test("handle a normal input", (t) => {
     }),
   );
   handler.handleInput(
-    newFakeInputEvent({
+    makeFakeInputEvent({
       type: "input",
       timeStamp: 1.123,
       inputType: "insertText",
@@ -32,7 +32,7 @@ test("handle a normal input", (t) => {
     }),
   );
   handler.handleKeyUp(
-    newFakeKeyboardEvent({
+    makeFakeKeyboardEvent({
       type: "keyup",
       timeStamp: 2.123,
       code: "KeyA",
@@ -54,7 +54,7 @@ test("handle a composite input", (t) => {
   // Act.
 
   handler.handleKeyDown(
-    newFakeKeyboardEvent({
+    makeFakeKeyboardEvent({
       type: "keydown",
       timeStamp: 1.123,
       code: "AltRight",
@@ -62,7 +62,7 @@ test("handle a composite input", (t) => {
     }),
   );
   handler.handleKeyDown(
-    newFakeKeyboardEvent({
+    makeFakeKeyboardEvent({
       type: "keydown",
       timeStamp: 2.123,
       code: "Semicolon",
@@ -70,14 +70,14 @@ test("handle a composite input", (t) => {
     }),
   );
   handler.handleComposition(
-    newFakeCompositionEvent({
+    makeFakeCompositionEvent({
       type: "compositionstart",
       timeStamp: 2.123,
       data: "",
     }),
   );
   handler.handleInput(
-    newFakeInputEvent({
+    makeFakeInputEvent({
       type: "input",
       timeStamp: 2.123,
       inputType: "insertCompositionText",
@@ -85,14 +85,14 @@ test("handle a composite input", (t) => {
     }),
   );
   handler.handleComposition(
-    newFakeCompositionEvent({
+    makeFakeCompositionEvent({
       type: "compositionupdate",
       timeStamp: 2.123,
       data: "´",
     }),
   );
   handler.handleInput(
-    newFakeInputEvent({
+    makeFakeInputEvent({
       type: "input",
       timeStamp: 2.123,
       inputType: "insertCompositionText",
@@ -100,7 +100,7 @@ test("handle a composite input", (t) => {
     }),
   );
   handler.handleKeyUp(
-    newFakeKeyboardEvent({
+    makeFakeKeyboardEvent({
       type: "keyup",
       timeStamp: 3.123,
       code: "Semicolon",
@@ -108,7 +108,7 @@ test("handle a composite input", (t) => {
     }),
   );
   handler.handleKeyUp(
-    newFakeKeyboardEvent({
+    makeFakeKeyboardEvent({
       type: "keyup",
       timeStamp: 4.123,
       code: "AltRight",
@@ -116,7 +116,7 @@ test("handle a composite input", (t) => {
     }),
   );
   handler.handleKeyDown(
-    newFakeKeyboardEvent({
+    makeFakeKeyboardEvent({
       type: "keydown",
       timeStamp: 5.123,
       code: "KeyA",
@@ -124,7 +124,7 @@ test("handle a composite input", (t) => {
     }),
   );
   handler.handleInput(
-    newFakeInputEvent({
+    makeFakeInputEvent({
       type: "input",
       timeStamp: 5.123,
       inputType: "insertCompositionText",
@@ -132,14 +132,14 @@ test("handle a composite input", (t) => {
     }),
   );
   handler.handleComposition(
-    newFakeCompositionEvent({
+    makeFakeCompositionEvent({
       type: "compositionupdate",
       timeStamp: 5.123,
       data: "á",
     }),
   );
   handler.handleInput(
-    newFakeInputEvent({
+    makeFakeInputEvent({
       type: "input",
       timeStamp: 5.123,
       inputType: "insertCompositionText",
@@ -147,14 +147,14 @@ test("handle a composite input", (t) => {
     }),
   );
   handler.handleComposition(
-    newFakeCompositionEvent({
+    makeFakeCompositionEvent({
       type: "compositionend",
       timeStamp: 5.123,
       data: "á",
     }),
   );
   handler.handleKeyDown(
-    newFakeKeyboardEvent({
+    makeFakeKeyboardEvent({
       type: "keyup",
       timeStamp: 6.123,
       code: "KeyA",
@@ -184,7 +184,7 @@ test("handle a clear char input", (t) => {
   // Act.
 
   handler.handleKeyDown(
-    newFakeKeyboardEvent({
+    makeFakeKeyboardEvent({
       type: "keydown",
       timeStamp: 1.123,
       code: "Backspace",
@@ -193,14 +193,14 @@ test("handle a clear char input", (t) => {
     }),
   );
   handler.handleInput(
-    newFakeInputEvent({
+    makeFakeInputEvent({
       type: "input",
       inputType: "deleteContentBackward",
       timeStamp: 1.123,
     }),
   );
   handler.handleKeyUp(
-    newFakeKeyboardEvent({
+    makeFakeKeyboardEvent({
       type: "keyup",
       timeStamp: 2.123,
       code: "Backspace",
@@ -227,7 +227,7 @@ test("handle a clear word input", (t) => {
   // Act.
 
   handler.handleKeyDown(
-    newFakeKeyboardEvent({
+    makeFakeKeyboardEvent({
       type: "keydown",
       timeStamp: 1.123,
       code: "Backspace",
@@ -236,14 +236,14 @@ test("handle a clear word input", (t) => {
     }),
   );
   handler.handleInput(
-    newFakeInputEvent({
+    makeFakeInputEvent({
       type: "input",
       inputType: "deleteWordBackward",
       timeStamp: 1.123,
     }),
   );
   handler.handleKeyUp(
-    newFakeKeyboardEvent({
+    makeFakeKeyboardEvent({
       type: "keyup",
       timeStamp: 2.123,
       code: "Backspace",
@@ -270,7 +270,7 @@ test("handle the enter key", (t) => {
   // Act.
 
   handler.handleKeyDown(
-    newFakeKeyboardEvent({
+    makeFakeKeyboardEvent({
       type: "keydown",
       timeStamp: 1.123,
       code: "NumpadEnter",
@@ -278,14 +278,14 @@ test("handle the enter key", (t) => {
     }),
   );
   handler.handleInput(
-    newFakeInputEvent({
+    makeFakeInputEvent({
       type: "input",
       inputType: "insertLineBreak",
       timeStamp: 1.123,
     }),
   );
   handler.handleKeyUp(
-    newFakeKeyboardEvent({
+    makeFakeKeyboardEvent({
       type: "keyup",
       timeStamp: 2.123,
       code: "NumpadEnter",
@@ -314,7 +314,7 @@ test("handle the tab", (t) => {
   // Act.
 
   handler.handleKeyDown(
-    (keyDown = newFakeKeyboardEvent({
+    (keyDown = makeFakeKeyboardEvent({
       type: "keydown",
       timeStamp: 1.123,
       code: "Tab",
@@ -322,7 +322,7 @@ test("handle the tab", (t) => {
     })),
   );
   handler.handleKeyUp(
-    (keyUp = newFakeKeyboardEvent({
+    (keyUp = makeFakeKeyboardEvent({
       type: "keyup",
       timeStamp: 2.123,
       code: "Tab",

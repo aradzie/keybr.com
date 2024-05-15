@@ -18,7 +18,7 @@ class FakeEvent {
   }
 }
 
-export function newFakeKeyboardEvent({
+export function makeFakeKeyboardEvent({
   type,
   timeStamp = 0,
   code,
@@ -63,7 +63,7 @@ export function newFakeKeyboardEvent({
   })();
 }
 
-export function newFakeInputEvent({
+export function makeFakeInputEvent({
   type,
   timeStamp = 0,
   inputType,
@@ -84,7 +84,7 @@ export function newFakeInputEvent({
   })();
 }
 
-export function newFakeCompositionEvent({
+export function makeFakeCompositionEvent({
   type,
   timeStamp = 0,
   data,

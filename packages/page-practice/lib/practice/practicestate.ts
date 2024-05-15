@@ -6,7 +6,7 @@ import {
   type DailyGoal,
   type KeyStatsMap,
   LocalDate,
-  newSummaryStats,
+  makeSummaryStats,
   Result,
   ResultGroups,
   type SummaryStats,
@@ -15,7 +15,7 @@ import { type Settings } from "@keybr/settings";
 import {
   type Feedback,
   type LineList,
-  newStats,
+  makeStats,
   type Step,
   type TextDisplaySettings,
   TextInput,
@@ -61,7 +61,7 @@ export class PracticeState {
     this.textDisplaySettings = toTextDisplaySettings(settings);
     this.keyStatsMap = this.lesson.analyze(this.results);
     this.lessonKeys = this.lesson.update(this.keyStatsMap);
-    this.stats = newSummaryStats(results);
+    this.stats = makeSummaryStats(results);
     this.dailyGoal = computeDailyGoal(
       ResultGroups.byDate(results).get(LocalDate.now()),
       settings.get(lessonProps.dailyGoal),
@@ -87,7 +87,7 @@ export class PracticeState {
           this.settings.get(keyboardProps.layout),
           this.settings.get(lessonProps.type).textType,
           Date.now(),
-          newStats(this.textInput.getSteps()),
+          makeStats(this.textInput.getSteps()),
         ),
       );
     }

@@ -1,4 +1,4 @@
-import { DistributionChart, newSpeedDistribution } from "@keybr/chart";
+import { DistributionChart, makeSpeedDistribution } from "@keybr/chart";
 import { useIntlNumbers } from "@keybr/intl";
 import { type Stats } from "@keybr/textinput";
 import {
@@ -24,7 +24,7 @@ export const Report = memo(function Report({
   readonly onNext: () => void;
 }): ReactNode {
   const { formatNumber, formatPercents } = useIntlNumbers();
-  const distribution = newSpeedDistribution();
+  const distribution = makeSpeedDistribution();
   const prob = distribution.cdf(speed);
 
   const handleClickNext = () => {

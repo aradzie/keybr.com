@@ -50,7 +50,7 @@ export namespace PhoneticModel {
   };
 }
 
-export function newPhoneticModel(
+export function makePhoneticModel(
   language: Language,
   data: TransitionTable | Uint8Array,
 ): PhoneticModel {

@@ -16,7 +16,7 @@ export const pAdapter = (
     adapter: value,
   });
   if (container.has(AdapterFactory, value)) {
-    return container.get(AdapterFactory, value).newAdapter(redirectUri);
+    return container.get(AdapterFactory, value).makeAdapter(redirectUri);
   }
   throw new NotFoundError();
 };

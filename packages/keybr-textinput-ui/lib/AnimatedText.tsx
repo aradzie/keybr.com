@@ -31,9 +31,9 @@ export function AnimatedText({
 }
 
 function useAnimatedTextState(text: string): readonly Char[] {
-  const [{ textInput, chars }, setState] = useState(() => newState(text));
+  const [{ textInput, chars }, setState] = useState(() => makeState(text));
   if (textInput.text !== text) {
-    setState(newState(text));
+    setState(makeState(text));
   }
   useEffect(() => {
     const id = setInterval(() => {
@@ -54,7 +54,7 @@ function useAnimatedTextState(text: string): readonly Char[] {
   return chars;
 }
 
-function newState(text: string) {
+function makeState(text: string) {
   const textInput = new TextInput(text, {
     stopOnError: false,
     forgiveErrors: false,

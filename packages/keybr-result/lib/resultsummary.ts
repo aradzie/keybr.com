@@ -1,7 +1,7 @@
 import { ResultGroups } from "./group.ts";
 import { LocalDate } from "./localdate.ts";
 import { type Result } from "./result.ts";
-import { newSummaryStats, type SummaryStats } from "./summarystats.ts";
+import { makeSummaryStats, type SummaryStats } from "./summarystats.ts";
 
 export type AllTimeStats = {
   readonly results: readonly Result[];
@@ -26,7 +26,7 @@ export class ResultSummary implements Iterable<DateStats> {
     for (const { key, results } of groups) {
       this.#map.set(String(key), makeStats(key, results));
     }
-    this.allTimeStats = { results, stats: newSummaryStats(results) };
+    this.allTimeStats = { results, stats: makeSummaryStats(results) };
     this.todayStats = this.#map.get(String(today)) ?? makeStats(today, []);
   }
 
@@ -48,5 +48,5 @@ export class ResultSummary implements Iterable<DateStats> {
 }
 
 function makeStats(date: LocalDate, results: readonly Result[]): DateStats {
-  return { date, results, stats: newSummaryStats(results) };
+  return { date, results, stats: makeSummaryStats(results) };
 }

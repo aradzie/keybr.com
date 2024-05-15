@@ -1,8 +1,8 @@
 import test from "ava";
-import { newFilter } from "./filter.ts";
+import { makeFilter } from "./filter.ts";
 
 test("filter", (t) => {
-  const filter = newFilter(0.5);
+  const filter = makeFilter(0.5);
 
   t.is(filter.n, 0);
 

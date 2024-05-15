@@ -1,6 +1,6 @@
 import test from "ava";
 import { Histogram } from "./histogram.ts";
-import { newStats } from "./stats.ts";
+import { makeStats } from "./stats.ts";
 
 const A = 0x0061;
 const B = 0x0062;
@@ -9,7 +9,7 @@ const X = 0x0078;
 const Space = 0x0020;
 
 test("compute stats", (t) => {
-  const stats = newStats([
+  const stats = makeStats([
     { codePoint: X, timeStamp: 100, typo: false }, // Trigger is ignored.
     { codePoint: A, timeStamp: 200, typo: false },
     { codePoint: B, timeStamp: 300, typo: false },
@@ -34,7 +34,7 @@ test("compute stats", (t) => {
 });
 
 test("compute with started at", (t) => {
-  const stats = newStats(
+  const stats = makeStats(
     [
       { codePoint: A, timeStamp: 200, typo: false },
       { codePoint: B, timeStamp: 300, typo: false },
@@ -63,7 +63,7 @@ test("compute with started at", (t) => {
 });
 
 test("compute with ended at", (t) => {
-  const stats = newStats(
+  const stats = makeStats(
     [
       { codePoint: X, timeStamp: 100, typo: false }, // Trigger is ignored.
       { codePoint: A, timeStamp: 200, typo: false },
@@ -93,7 +93,7 @@ test("compute with ended at", (t) => {
 });
 
 test("compute with started at and ended at", (t) => {
-  const stats = newStats(
+  const stats = makeStats(
     [
       { codePoint: A, timeStamp: 200, typo: false },
       { codePoint: B, timeStamp: 300, typo: false },
@@ -124,7 +124,7 @@ test("compute with started at and ended at", (t) => {
 
 test("compute accuracy", (t) => {
   t.is(
-    newStats([
+    makeStats([
       { codePoint: X, timeStamp: 100, typo: false }, // Trigger is ignored.
       { codePoint: A, timeStamp: 200, typo: true },
       { codePoint: B, timeStamp: 300, typo: true },
@@ -135,7 +135,7 @@ test("compute accuracy", (t) => {
   );
 
   t.is(
-    newStats([
+    makeStats([
       { codePoint: X, timeStamp: 100, typo: false }, // Trigger is ignored.
       { codePoint: A, timeStamp: 200, typo: false },
       { codePoint: B, timeStamp: 300, typo: false },
@@ -146,7 +146,7 @@ test("compute accuracy", (t) => {
   );
 
   t.is(
-    newStats([
+    makeStats([
       { codePoint: X, timeStamp: 100, typo: false }, // Trigger is ignored.
       { codePoint: A, timeStamp: 200, typo: false },
       { codePoint: B, timeStamp: 300, typo: false },
@@ -158,10 +158,10 @@ test("compute accuracy", (t) => {
 });
 
 test("compute alternations", (t) => {
-  t.is(newStats([]).alternations, 0);
+  t.is(makeStats([]).alternations, 0);
 
   t.is(
-    newStats([
+    makeStats([
       { codePoint: X, timeStamp: 100, typo: false }, // Trigger is ignored.
       { codePoint: X, timeStamp: 200, typo: false },
       { codePoint: X, timeStamp: 300, typo: false },
@@ -172,7 +172,7 @@ test("compute alternations", (t) => {
   );
 
   t.is(
-    newStats([
+    makeStats([
       { codePoint: X, timeStamp: 100, typo: false }, // Trigger is ignored.
       { codePoint: A, timeStamp: 200, typo: false },
       { codePoint: B, timeStamp: 300, typo: false },
@@ -183,7 +183,7 @@ test("compute alternations", (t) => {
   );
 
   t.is(
-    newStats([
+    makeStats([
       { codePoint: X, timeStamp: 100, typo: true }, // Trigger is ignored.
       { codePoint: A, timeStamp: 200, typo: true },
       { codePoint: B, timeStamp: 300, typo: true },

@@ -1,11 +1,11 @@
-import { newFilter } from "./filter.ts";
+import { makeFilter } from "./filter.ts";
 
 export const hasData = ({ length }: { readonly length: number }): boolean => {
   return length >= 5;
 };
 
 export const smooth = (smoothness: number) => {
-  const filter = newFilter(1 / Math.pow(10, smoothness * 3));
+  const filter = makeFilter(1 / Math.pow(10, smoothness * 3));
   return (value: number): number => filter.add(value);
 };
 

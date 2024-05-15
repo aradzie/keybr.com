@@ -15,7 +15,7 @@ export class PaddleConfig {
   readonly productId = Env.getNumber("PADDLE_PRODUCT_ID");
   readonly publicKey = Env.getString("PADDLE_PUBLIC_KEY");
 
-  newPaddle() {
+  makePaddle() {
     return new PaddleSdk({
       publicKey: this.publicKey,
       vendorId: this.vendorId,

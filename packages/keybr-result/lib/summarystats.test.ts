@@ -2,7 +2,7 @@ import { Letter } from "@keybr/phonetic-model";
 import { Histogram } from "@keybr/textinput";
 import test from "ava";
 import { ResultFaker } from "./fake.tsx";
-import { Counter, newSummaryStats } from "./summarystats.ts";
+import { Counter, makeSummaryStats } from "./summarystats.ts";
 
 test("counter", (t) => {
   const counter = new Counter();
@@ -76,7 +76,7 @@ test("summary stats", (t) => {
     ]),
   });
 
-  t.deepEqual(newSummaryStats([]), {
+  t.deepEqual(makeSummaryStats([]), {
     count: 0,
     time: 0,
     speed: { last: 0, delta: 0, max: 0, min: 0, avg: 0 },
@@ -84,7 +84,7 @@ test("summary stats", (t) => {
     score: { last: 0, delta: 0, max: 0, min: 0, avg: 0 },
   });
 
-  t.deepEqual(newSummaryStats([r1]), {
+  t.deepEqual(makeSummaryStats([r1]), {
     count: 1,
     time: 5000,
     speed: { last: 600, delta: 600, max: 600, min: 600, avg: 600 },
@@ -92,7 +92,7 @@ test("summary stats", (t) => {
     score: { last: 600, delta: 600, max: 600, min: 600, avg: 600 },
   });
 
-  t.deepEqual(newSummaryStats([r1, r2]), {
+  t.deepEqual(makeSummaryStats([r1, r2]), {
     count: 2,
     time: 15000,
     speed: { last: 300, delta: -300, max: 600, min: 300, avg: 450 },

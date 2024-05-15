@@ -1,6 +1,6 @@
 import { FakeIntlProvider } from "@keybr/intl";
 import { FakePhoneticModel, type Letter } from "@keybr/phonetic-model";
-import { type KeyStatsMap, newKeyStatsMap } from "@keybr/result";
+import { type KeyStatsMap, makeKeyStatsMap } from "@keybr/result";
 import { FakeSettingsContext } from "@keybr/settings";
 import { fireEvent, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -9,7 +9,7 @@ import { type ReactNode, useState } from "react";
 import { KeySelector } from "./KeySelector.tsx";
 
 const { letters } = FakePhoneticModel;
-const keyStatsMap = newKeyStatsMap(letters, []);
+const keyStatsMap = makeKeyStatsMap(letters, []);
 
 test.serial("props", (t) => {
   const r = render(

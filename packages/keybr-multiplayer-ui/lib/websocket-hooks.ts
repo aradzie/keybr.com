@@ -17,18 +17,18 @@ export function useWebSocket() {
     let timeout: number | null = null;
 
     const connect = () => {
-      const newWebSocket = (webSocket = useWebSocket.newWebSocket());
+      const makeWebSocket = (webSocket = useWebSocket.makeWebSocket());
 
-      newWebSocket.addEventListener("open", () => {
+      makeWebSocket.addEventListener("open", () => {
         console.log("WebSocket connected");
         setState({
-          webSocket: (webSocket = newWebSocket),
+          webSocket: (webSocket = makeWebSocket),
           readyState: WebSocket.OPEN,
           kicked: false,
         });
       });
 
-      newWebSocket.addEventListener("close", (ev) => {
+      makeWebSocket.addEventListener("close", (ev) => {
         console.log(`WebSocket closed; code=${ev.code}, reason='${ev.reason}'`);
         setState({
           webSocket: (webSocket = null),
@@ -47,9 +47,9 @@ export function useWebSocket() {
         }
       });
 
-      newWebSocket.addEventListener("error", () => {
+      makeWebSocket.addEventListener("error", () => {
         console.error("WebSocket error");
-        newWebSocket.close();
+        makeWebSocket.close();
       });
     };
 
@@ -70,11 +70,11 @@ export function useWebSocket() {
   return state;
 }
 
-useWebSocket.newWebSocket = (): WebSocket => {
+useWebSocket.makeWebSocket = () => {
   return new WebSocket(webSocketUrl());
 };
 
-function webSocketUrl(): string {
+function webSocketUrl() {
   const { protocol, host } = window.location;
   let scheme = "";
   switch (protocol) {

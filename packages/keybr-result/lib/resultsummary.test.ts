@@ -2,7 +2,7 @@ import test from "ava";
 import { ResultFaker } from "./fake.tsx";
 import { LocalDate } from "./localdate.ts";
 import { ResultSummary } from "./resultsummary.ts";
-import { newSummaryStats } from "./summarystats.ts";
+import { makeSummaryStats } from "./summarystats.ts";
 
 test("no results", (t) => {
   // Arrange.
@@ -20,7 +20,7 @@ test("no results", (t) => {
   t.deepEqual(summary.todayStats, {
     date: today,
     results: [],
-    stats: newSummaryStats([]),
+    stats: makeSummaryStats([]),
   });
   t.false(summary.has(today));
 });
@@ -45,12 +45,12 @@ test("no results today", (t) => {
   t.deepEqual(g0, {
     date: yesterday,
     results: [r1],
-    stats: newSummaryStats([r1]),
+    stats: makeSummaryStats([r1]),
   });
   t.deepEqual(summary.todayStats, {
     date: today,
     results: [],
-    stats: newSummaryStats([]),
+    stats: makeSummaryStats([]),
   });
   t.false(groups.includes(summary.todayStats));
   t.true(summary.has(yesterday));
@@ -78,17 +78,17 @@ test("group results group by date", (t) => {
   t.deepEqual(g0, {
     date: yesterday,
     results: [r1],
-    stats: newSummaryStats([r1]),
+    stats: makeSummaryStats([r1]),
   });
   t.deepEqual(g1, {
     date: today,
     results: [r2],
-    stats: newSummaryStats([r2]),
+    stats: makeSummaryStats([r2]),
   });
   t.deepEqual(summary.todayStats, {
     date: today,
     results: [r2],
-    stats: newSummaryStats([r2]),
+    stats: makeSummaryStats([r2]),
   });
   t.true(groups.includes(summary.todayStats));
   t.true(summary.has(yesterday));

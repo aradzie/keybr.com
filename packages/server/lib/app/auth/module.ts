@@ -8,7 +8,7 @@ import {
 } from "@keybr/oauth";
 
 export abstract class AdapterFactory {
-  abstract newAdapter(redirectUri: string): AbstractAdapter;
+  abstract makeAdapter(redirectUri: string): AbstractAdapter;
 }
 
 export class AuthModule implements Module {
@@ -22,7 +22,7 @@ export class AuthModule implements Module {
     const clientSecret = Env.getString("AUTH_GOOGLE_CLIENT_SECRET");
     const scope = ["email", "profile"].join(" ");
     return new (class GoogleAdapterFactory extends AdapterFactory {
-      newAdapter(redirectUri: string): AbstractAdapter {
+      makeAdapter(redirectUri: string): AbstractAdapter {
         return new GoogleAdapter({
           clientId,
           clientSecret,
@@ -41,7 +41,7 @@ export class AuthModule implements Module {
     const clientSecret = Env.getString("AUTH_MICROSOFT_CLIENT_SECRET");
     const scope = ["https://graph.microsoft.com/User.Read"].join(" ");
     return new (class MicrosoftAdapterFactory extends AdapterFactory {
-      newAdapter(redirectUri: string): AbstractAdapter {
+      makeAdapter(redirectUri: string): AbstractAdapter {
         return new MicrosoftAdapter({
           clientId,
           clientSecret,
@@ -60,7 +60,7 @@ export class AuthModule implements Module {
     const clientSecret = Env.getString("AUTH_FACEBOOK_CLIENT_SECRET");
     const scope = ["email", "public_profile"].join(",");
     return new (class FacebookAdapterFactory extends AdapterFactory {
-      newAdapter(redirectUri: string): AbstractAdapter {
+      makeAdapter(redirectUri: string): AbstractAdapter {
         return new FacebookAdapter({
           clientId,
           clientSecret,

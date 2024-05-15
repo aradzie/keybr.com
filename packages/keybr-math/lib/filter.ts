@@ -8,7 +8,7 @@ export type Filter = {
   add(v: number): number;
 };
 
-export const newFilter = (alpha: number): Filter => {
+export const makeFilter = (alpha: number): Filter => {
   let n = 0;
   let value = NaN;
 

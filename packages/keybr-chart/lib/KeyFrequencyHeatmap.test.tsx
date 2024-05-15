@@ -1,7 +1,7 @@
 import { FakeIntlProvider } from "@keybr/intl";
 import { Layout, loadKeyboard } from "@keybr/keyboard";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
-import { newKeyStatsMap, ResultFaker } from "@keybr/result";
+import { makeKeyStatsMap, ResultFaker } from "@keybr/result";
 import { FakeSettingsContext } from "@keybr/settings";
 import { render } from "@testing-library/react";
 import test from "ava";
@@ -15,7 +15,7 @@ test("render empty", (t) => {
     <FakeIntlProvider>
       <FakeSettingsContext>
         <KeyFrequencyHeatmap
-          keyStatsMap={newKeyStatsMap(letters, results)}
+          keyStatsMap={makeKeyStatsMap(letters, results)}
           keyboard={loadKeyboard(Layout.EN_US)}
         />
       </FakeSettingsContext>
@@ -33,7 +33,7 @@ test("render non-empty", (t) => {
     <FakeIntlProvider>
       <FakeSettingsContext>
         <KeyFrequencyHeatmap
-          keyStatsMap={newKeyStatsMap(letters, results)}
+          keyStatsMap={makeKeyStatsMap(letters, results)}
           keyboard={loadKeyboard(Layout.EN_US)}
         />
       </FakeSettingsContext>

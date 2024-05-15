@@ -1,5 +1,5 @@
 import { FakePhoneticModel } from "@keybr/phonetic-model";
-import { newKeyStatsMap, ResultFaker } from "@keybr/result";
+import { makeKeyStatsMap, ResultFaker } from "@keybr/result";
 import test from "ava";
 import { keyUsage } from "./keyusage.ts";
 
@@ -7,7 +7,7 @@ const faker = new ResultFaker();
 const { letters } = FakePhoneticModel;
 
 test("empty", (t) => {
-  const { keySet, hit, miss, ratio } = keyUsage(newKeyStatsMap(letters, []));
+  const { keySet, hit, miss, ratio } = keyUsage(makeKeyStatsMap(letters, []));
   t.deepEqual([...keySet], letters);
   t.deepEqual([...hit.values()], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
   t.deepEqual([...miss.values()], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
@@ -16,7 +16,7 @@ test("empty", (t) => {
 
 test("not empty", (t) => {
   const { keySet, hit, miss, ratio } = keyUsage(
-    newKeyStatsMap(letters, faker.nextResultList(3)),
+    makeKeyStatsMap(letters, faker.nextResultList(3)),
   );
   t.deepEqual([...keySet], letters);
   t.deepEqual([...hit.values()], [30, 30, 30, 30, 30, 30, 30, 30, 30, 30]);

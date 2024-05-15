@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { type Language } from "@keybr/keyboard";
-import { newPhoneticModel, type PhoneticModel } from "./index.ts";
+import { makePhoneticModel, type PhoneticModel } from "./index.ts";
 import { TransitionTable } from "./transitiontable.ts";
 
 export function getPath(language: Language): string {
@@ -16,7 +16,7 @@ export async function loadModel(language: Language): Promise<{
   const path = getPath(language);
   const data = await readFile(path);
   const table = TransitionTable.load(data);
-  const model = newPhoneticModel(language, table);
+  const model = makePhoneticModel(language, table);
   return { table, model };
 }
 
@@ -27,6 +27,6 @@ export function loadModelSync(language: Language): {
   const path = getPath(language);
   const data = readFileSync(path);
   const table = TransitionTable.load(data);
-  const model = newPhoneticModel(language, table);
+  const model = makePhoneticModel(language, table);
   return { table, model };
 }

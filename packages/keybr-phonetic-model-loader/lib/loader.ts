@@ -1,7 +1,7 @@
 import { type Language } from "@keybr/keyboard";
 import {
   censor,
-  newPhoneticModel,
+  makePhoneticModel,
   type PhoneticModel,
 } from "@keybr/phonetic-model";
 import { expectType, request } from "@keybr/request";
@@ -15,6 +15,6 @@ export const loaderImpl: PhoneticModel.Loader = async (
     .GET(modelAssetPath(language))
     .send();
   const body = await response.arrayBuffer();
-  const model = newPhoneticModel(language, new Uint8Array(body));
+  const model = makePhoneticModel(language, new Uint8Array(body));
   return censor(model);
 };

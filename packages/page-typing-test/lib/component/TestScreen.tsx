@@ -1,5 +1,5 @@
 import { Screen } from "@keybr/pages-shared";
-import { type LineList, newStats, type Stats } from "@keybr/textinput";
+import { type LineList, makeStats, type Stats } from "@keybr/textinput";
 import { type TextInputEvent } from "@keybr/textinput-events";
 import { TextArea } from "@keybr/textinput-ui";
 import { type Focusable } from "@keybr/widget";
@@ -68,7 +68,7 @@ export class TestScreen extends Component<Props, State> {
       lines: { text: "", lines },
     });
     if (completed) {
-      this.props.onComplete(newStats(session.getSteps()));
+      this.props.onComplete(makeStats(session.getSteps()));
     }
   };
 

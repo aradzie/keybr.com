@@ -1,4 +1,4 @@
-import { newSpeedDistribution } from "@keybr/chart";
+import { makeSpeedDistribution } from "@keybr/chart";
 import { type NamedUser, Screen, usePageData } from "@keybr/pages-shared";
 import { type KeyStatsMap, ResultSummary } from "@keybr/result";
 import { type ReactNode } from "react";
@@ -35,7 +35,7 @@ function Content({
   const { publicUser } = usePageData();
   const { results } = keyStatsMap;
   const summary = new ResultSummary(results);
-  const distribution = newSpeedDistribution();
+  const distribution = makeSpeedDistribution();
 
   return (
     <>

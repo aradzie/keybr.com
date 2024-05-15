@@ -26,7 +26,7 @@ export type Metric = {
   readonly avg: number;
 };
 
-export function newSummaryStats(results: readonly Result[]): SummaryStats {
+export function makeSummaryStats(results: readonly Result[]): SummaryStats {
   let count = 0;
   let time = 0;
   const speed = new Counter();

@@ -4,14 +4,14 @@ import test from "ava";
 import { TransitionTableBuilder } from "./builder.ts";
 import { Filter } from "./filter.ts";
 import { Letter } from "./letter.ts";
-import { newPhoneticModel } from "./phoneticmodel.ts";
+import { makePhoneticModel } from "./phoneticmodel.ts";
 
 test("generate text from an empty transition table", (t) => {
   const alphabet = [0x0020, 0x0061, 0x0062, 0x0063, 0x0064];
 
   const builder = new TransitionTableBuilder(4, alphabet);
 
-  const model = newPhoneticModel(Language.EN, builder.build());
+  const model = makePhoneticModel(Language.EN, builder.build());
   const { letters } = model;
   const [a, b, c, d] = letters;
 
@@ -39,7 +39,7 @@ test("generate text from a partial transition table", (t) => {
   builder.set([0x0020, 0x0020, 0x0020, 0x0063], 1);
   builder.set([0x0020, 0x0020, 0x0020, 0x0064], 1);
 
-  const model = newPhoneticModel(Language.EN, builder.build());
+  const model = makePhoneticModel(Language.EN, builder.build());
   const { letters } = model;
   const [a, b, c, d] = letters;
 
@@ -71,7 +71,7 @@ test("generate text from a full transition table", (t) => {
     }
   }
 
-  const model = newPhoneticModel(Language.EN, builder.build());
+  const model = makePhoneticModel(Language.EN, builder.build());
   const { letters } = model;
   const [a, b, c, d] = letters;
 
@@ -95,7 +95,7 @@ test("appended words", (t) => {
 
   builder.append("hello");
 
-  const model = newPhoneticModel(Language.EN, builder.build());
+  const model = makePhoneticModel(Language.EN, builder.build());
 
   t.is(model.nextWord(new Filter(null, null)), "hello");
   t.is(model.nextWord(new Filter(null, null)), "hello");

@@ -1,6 +1,6 @@
 import { FakeIntlProvider } from "@keybr/intl";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
-import { newKeyStatsMap, ResultFaker } from "@keybr/result";
+import { makeKeyStatsMap, ResultFaker } from "@keybr/result";
 import { FakeSettingsContext } from "@keybr/settings";
 import { render } from "@testing-library/react";
 import test from "ava";
@@ -14,7 +14,7 @@ test("render empty", (t) => {
     <FakeIntlProvider>
       <FakeSettingsContext>
         <KeyFrequencyHistogram
-          keyStatsMap={newKeyStatsMap(letters, results)}
+          keyStatsMap={makeKeyStatsMap(letters, results)}
           width="100px"
           height="100px"
         />
@@ -33,7 +33,7 @@ test("render non-empty", (t) => {
     <FakeIntlProvider>
       <FakeSettingsContext>
         <KeyFrequencyHistogram
-          keyStatsMap={newKeyStatsMap(letters, results)}
+          keyStatsMap={makeKeyStatsMap(letters, results)}
           width="100px"
           height="100px"
         />

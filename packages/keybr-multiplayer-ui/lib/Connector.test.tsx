@@ -10,7 +10,7 @@ import { useWebSocket } from "./websocket-hooks.ts";
 test.serial("handle websocket ready state changes", (t) => {
   const webSocket = new FakeWebSocket("wss://www.keybr.com/game");
 
-  useWebSocket.newWebSocket = () => webSocket;
+  useWebSocket.makeWebSocket = () => webSocket;
 
   const r = render(
     <FakeIntlProvider>
