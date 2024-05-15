@@ -1,13 +1,20 @@
-import type { ReactNode } from "react";
+import type { ReactElement } from "react";
 import { type ToastOptions } from "./types.ts";
 
+let nextKey = 0;
+
 export class Toast {
+  #key = (nextKey += 1);
   #timeout: any = null;
 
   constructor(
-    readonly message: ReactNode,
+    readonly message: ReactElement,
     readonly options: ToastOptions,
   ) {}
+
+  get key() {
+    return this.#key;
+  }
 
   delayed(cb: any, timeout: number) {
     this.clearDelayed();

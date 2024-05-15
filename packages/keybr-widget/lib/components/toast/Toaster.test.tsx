@@ -1,14 +1,7 @@
 import { fake } from "@keybr/test-env-time";
-import { act } from "@testing-library/react";
+import { act, render } from "@testing-library/react";
 import test from "ava";
-import { PortalContainer } from "../portal/index.ts";
-import { toast } from "./Toaster.tsx";
-
-test.before(() => {
-  const container = document.createElement("div");
-  container.id = PortalContainer.id;
-  document.body.appendChild(container);
-});
+import { toast, Toaster } from "./Toaster.tsx";
 
 test.beforeEach(() => {
   fake.timers.set();
@@ -21,6 +14,7 @@ test.afterEach(() => {
 test.serial("close on timeout", async (t) => {
   // Arrange.
 
+  const r = render(<Toaster />);
   toast(<div data-toast={1}>Message 1</div>, {
     autoClose: 1000,
     pauseOnHover: false,
@@ -35,7 +29,7 @@ test.serial("close on timeout", async (t) => {
 
   // Assert.
 
-  t.is(document.body.textContent, "Message 1Message 2");
+  t.is(r.container.textContent, "Message 2Message 1");
 
   // Act.
 
@@ -45,11 +39,16 @@ test.serial("close on timeout", async (t) => {
   // Assert.
 
   t.is(document.body.textContent, "");
+
+  // Cleanup.
+
+  r.unmount();
 });
 
 test.serial("close on click", async (t) => {
   // Arrange.
 
+  const r = render(<Toaster />);
   toast(<div data-toast={1}>Message 1</div>, {
     autoClose: false,
     pauseOnHover: false,
@@ -64,23 +63,27 @@ test.serial("close on click", async (t) => {
 
   // Assert.
 
-  t.is(document.body.textContent, "Message 1Message 2");
+  t.is(r.container.textContent, "Message 2Message 1");
 
   // Act.
 
-  document.querySelector<HTMLElement>("[data-toast='1']")!.click();
+  r.container.querySelector<HTMLElement>("[data-toast='1']")!.click();
   await act(async () => {});
 
   // Assert.
 
-  t.is(document.body.textContent, "Message 2");
+  t.is(r.container.textContent, "Message 2");
 
   // Act.
 
-  document.querySelector<HTMLElement>("[data-toast='2']")!.click();
+  r.container.querySelector<HTMLElement>("[data-toast='2']")!.click();
   await act(async () => {});
 
   // Assert.
 
-  t.is(document.body.textContent, "");
+  t.is(r.container.textContent, "");
+
+  // Cleanup.
+
+  r.unmount();
 });
