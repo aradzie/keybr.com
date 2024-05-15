@@ -1,9 +1,9 @@
 import { useKeyboard } from "@keybr/keyboard";
 import { type Settings } from "@keybr/settings";
-import { playSound } from "@keybr/sound";
+import { loadSounds, playSound } from "@keybr/sound";
 import { Feedback, PlaySounds, textDisplayProps } from "@keybr/textinput";
 import { addKey, deleteKey, emulateLayout } from "@keybr/textinput-events";
-import { TextInputSound } from "@keybr/textinput-sounds";
+import { TextInputSound, textInputSounds } from "@keybr/textinput-sounds";
 import {
   useDocumentEvent,
   useHotkeys,
@@ -111,6 +111,7 @@ function makeSoundPlayer(settings: Settings) {
   const playSounds = settings.get(textDisplayProps.playSounds);
   const soundVolume = settings.get(textDisplayProps.soundVolume);
   return (feedback: Feedback): void => {
+    loadSounds(textInputSounds);
     if (playSounds === PlaySounds.All) {
       switch (feedback) {
         case Feedback.Succeeded:
