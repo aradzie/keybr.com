@@ -1,6 +1,5 @@
-import { keyboardProps, type KeyId, Ngram2 } from "@keybr/keyboard";
+import { keyboardProps, type KeyId } from "@keybr/keyboard";
 import { type Lesson, type LessonKeys, lessonProps } from "@keybr/lesson";
-import { Histogram, KeySet } from "@keybr/math";
 import {
   computeDailyGoal,
   type DailyGoal,
@@ -16,7 +15,6 @@ import {
   type Feedback,
   type LineList,
   makeStats,
-  type Step,
   type TextDisplaySettings,
   TextInput,
   type TextInputSettings,
@@ -24,17 +22,10 @@ import {
   toTextInputSettings,
 } from "@keybr/textinput";
 import { type TextInputEvent } from "@keybr/textinput-events";
-import { type CodePoint, type HasCodePoint } from "@keybr/unicode";
+import { type CodePoint } from "@keybr/unicode";
+import { type LastLesson } from "./last-lesson.ts";
 
-export type LastLesson = {
-  readonly result: Result;
-  readonly hits: Histogram<HasCodePoint>;
-  readonly misses: Histogram<HasCodePoint>;
-  readonly hits2: Ngram2;
-  readonly misses2: Ngram2;
-};
-
-export class PracticeState {
+export class LessonState {
   readonly showTour: boolean;
   readonly textInputSettings: TextInputSettings;
   readonly textDisplaySettings: TextDisplaySettings;
@@ -69,11 +60,11 @@ export class PracticeState {
     this.#reset(this.lesson.generate(this.lessonKeys));
   }
 
-  resetLesson(): void {
+  resetLesson() {
     this.#reset(this.textInput.text);
   }
 
-  skipLesson(): void {
+  skipLesson() {
     this.#reset(this.lesson.generate(this.lessonKeys));
   }
 
@@ -94,31 +85,9 @@ export class PracticeState {
     return feedback;
   }
 
-  #reset(fragment: string): void {
+  #reset(fragment: string) {
     this.textInput = new TextInput(fragment, this.textInputSettings);
     this.lines = this.textInput.getLines();
     this.suffix = this.textInput.getSuffix();
   }
-}
-
-export function makeLastLesson(
-  result: Result,
-  steps: readonly Step[],
-): LastLesson {
-  const keySet = new KeySet<HasCodePoint>([]);
-  const hits = new Histogram(keySet);
-  const misses = new Histogram(keySet);
-  for (const { codePoint, hitCount, missCount } of result.histogram) {
-    hits.set({ codePoint }, hitCount);
-    misses.set({ codePoint }, missCount);
-  }
-  const alphabet = [...new Set(steps.map(({ codePoint }) => codePoint))].sort(
-    (a, b) => a - b,
-  );
-  const hits2 = new Ngram2(alphabet);
-  const misses2 = new Ngram2(alphabet);
-  for (let i = 0; i < steps.length - 1; i++) {
-    hits2.add(steps[i].codePoint, steps[i + 1].codePoint, 1);
-  }
-  return { result, hits, misses, hits2, misses2 };
 }

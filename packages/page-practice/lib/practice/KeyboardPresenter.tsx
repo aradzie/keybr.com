@@ -12,7 +12,7 @@ import { useSettings } from "@keybr/settings";
 import { type CodePoint } from "@keybr/unicode";
 import { withDeferred } from "@keybr/widget";
 import { memo, type ReactNode } from "react";
-import { type LastLesson } from "./practicestate.ts";
+import { type LastLesson } from "./state/index.ts";
 
 export const KeyboardPresenter = memo(function KeyboardPresenter({
   focus,

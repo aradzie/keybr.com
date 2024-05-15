@@ -12,12 +12,12 @@ import { memo, type ReactNode, useState } from "react";
 import * as styles from "./Indicators.module.less";
 import { KeyExtendedDetails } from "./KeyExtendedDetails.tsx";
 import * as names from "./names.module.less";
-import { type PracticeState } from "./practicestate.ts";
+import { type LessonState } from "./state/index.ts";
 
 export const Indicators = memo(function Indicators({
   state,
 }: {
-  readonly state: PracticeState;
+  readonly state: LessonState;
 }): ReactNode {
   const selectedKey = useKeySelector(state);
   return (
@@ -46,7 +46,7 @@ export const Indicators = memo(function Indicators({
   );
 });
 
-function useKeySelector(state: PracticeState): LessonKey | null {
+function useKeySelector(state: LessonState): LessonKey | null {
   const [selectedKey, setSelectedKey] = useState<LessonKey | null>(null);
   const timeout = useTimeout();
   useMouseHover((el) => {

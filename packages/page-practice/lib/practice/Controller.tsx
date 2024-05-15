@@ -11,14 +11,14 @@ import {
   useWindowEvent,
 } from "@keybr/widget";
 import { memo, type ReactNode, useMemo, useState } from "react";
-import { type PracticeState } from "./practicestate.ts";
 import { Presenter } from "./Presenter.tsx";
+import { type LessonState } from "./state/index.ts";
 
 export const Controller = memo(function Controller({
   state,
   onConfigure,
 }: {
-  readonly state: PracticeState;
+  readonly state: LessonState;
   readonly onConfigure: () => void;
 }): ReactNode {
   const {
@@ -27,7 +27,7 @@ export const Controller = memo(function Controller({
     handleKeyDown,
     handleKeyUp,
     handleTextInput,
-  } = usePracticeState(state);
+  } = useLessonState(state);
   useHotkeys(
     ["Ctrl+ArrowLeft", handleResetLesson],
     ["Ctrl+ArrowRight", handleSkipLesson],
@@ -51,7 +51,7 @@ export const Controller = memo(function Controller({
   );
 });
 
-function usePracticeState(state: PracticeState) {
+function useLessonState(state: LessonState) {
   const keyboard = useKeyboard();
   const timeout = useTimeout();
   const [_0, setLines] = useState(state.lines); // Forces ui update.

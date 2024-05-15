@@ -15,12 +15,12 @@ import { Controls } from "./Controls.tsx";
 import { Indicators } from "./Indicators.tsx";
 import { DeferredKeyboardPresenter } from "./KeyboardPresenter.tsx";
 import * as names from "./names.module.less";
-import { type PracticeState } from "./practicestate.ts";
 import { PracticeTour } from "./PracticeTour.tsx";
 import * as styles from "./Presenter.module.less";
+import { type LessonState } from "./state/index.ts";
 
 type Props = {
-  readonly state: PracticeState;
+  readonly state: LessonState;
   readonly lines: LineList;
   readonly depressedKeys: readonly KeyId[];
   readonly onResetLesson: () => void;
@@ -294,7 +294,7 @@ function NormalLayout({
   textInput,
   tour,
 }: {
-  readonly state: PracticeState;
+  readonly state: LessonState;
   readonly focus: boolean;
   readonly depressedKeys: readonly string[];
   readonly toggledKeys: readonly string[];
@@ -330,7 +330,7 @@ function CompactLayout({
   controls,
   textInput,
 }: {
-  readonly state: PracticeState;
+  readonly state: LessonState;
   readonly focus: boolean;
   readonly depressedKeys: readonly string[];
   readonly controls: ReactNode;
@@ -352,7 +352,7 @@ function BareLayout({
   controls,
   textInput,
 }: {
-  readonly state: PracticeState;
+  readonly state: LessonState;
   readonly focus: boolean;
   readonly depressedKeys: readonly string[];
   readonly controls: ReactNode;

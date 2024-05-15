@@ -6,11 +6,7 @@ import { useSettings } from "@keybr/settings";
 import { type ReactNode, useRef } from "react";
 import { Controller } from "./Controller.tsx";
 import { displayEvent, useEvents } from "./events/index.ts";
-import {
-  type LastLesson,
-  makeLastLesson,
-  PracticeState,
-} from "./practicestate.ts";
+import { type LastLesson, LessonState, makeLastLesson } from "./state/index.ts";
 
 export function PracticeScreen({
   onConfigure,
@@ -43,7 +39,7 @@ function ResultUpdater({
     settings.get(keyboardProps.layout).family,
   );
   events.init(group.slice(events.length));
-  const state = new PracticeState(settings, lesson, group, (result) => {
+  const state = new LessonState(settings, lesson, group, (result) => {
     if (result.validate()) {
       lastLesson.current = makeLastLesson(result, state.textInput.getSteps());
       appendResults([result]);
