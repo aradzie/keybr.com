@@ -3,10 +3,15 @@ import { type Lesson } from "@keybr/lesson";
 import { LessonLoader } from "@keybr/lesson-loader";
 import { useResults } from "@keybr/result";
 import { useSettings } from "@keybr/settings";
-import { type ReactNode, useRef } from "react";
+import { type ReactNode, useMemo, useRef } from "react";
 import { Controller } from "./Controller.tsx";
-import { displayEvent, useEvents } from "./events/index.ts";
-import { type LastLesson, LessonState, makeLastLesson } from "./state/index.ts";
+import {
+  displayEvent,
+  type LastLesson,
+  LessonState,
+  makeLastLesson,
+  Progress,
+} from "./state/index.ts";
 
 export function PracticeScreen({
   onConfigure,
@@ -33,15 +38,17 @@ function ResultUpdater({
 }): ReactNode {
   const { settings } = useSettings();
   const { results, appendResults } = useResults();
-  const events = useEvents(settings, lesson);
+  const progress = useMemo(
+    () => new Progress(settings, lesson),
+    [settings, lesson],
+  );
   const lastLesson = useRef<LastLesson | null>(null);
-  const group = lesson.filter(results);
-  events.init(group.slice(events.length));
-  const state = new LessonState(settings, lesson, group, (result) => {
+  progress.seed(lesson.filter(results));
+  const state = new LessonState(progress, (result) => {
     if (result.validate()) {
+      progress.append(result, displayEvent);
       lastLesson.current = makeLastLesson(result, state.textInput.getSteps());
       appendResults([result]);
-      events.append(result, displayEvent);
     } else {
       appendResults([]); // Forces ui update.
     }

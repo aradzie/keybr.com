@@ -2,17 +2,6 @@ import { type Result, Today } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
 import { lessonProps } from "./settings.ts";
 
-export function makeDailyGoal(
-  settings: Settings,
-  results: readonly Result[],
-): DailyGoal {
-  const goal = new MutableDailyGoal(settings);
-  for (const result of results) {
-    goal.append(result);
-  }
-  return goal.copy();
-}
-
 export type DailyGoal = {
   /** Daily goal in minutes. */
   readonly goal: number;

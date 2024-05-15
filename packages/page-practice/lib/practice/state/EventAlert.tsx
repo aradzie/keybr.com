@@ -1,12 +1,12 @@
 import { Key } from "@keybr/lesson-ui";
-import { Award } from "@keybr/widget";
+import { Award, toast } from "@keybr/widget";
 import { FormattedMessage } from "react-intl";
-import { DailyGoalIcon, TrophyIcon } from "./icons.tsx";
-import { type Event } from "./types.ts";
+import { DailyGoalIcon, TrophyIcon } from "./event-icons.tsx";
+import { type LessonEvent } from "./event-types.ts";
 
-export function EventAlert({ event }: { readonly event: Event }) {
+export function EventAlert({ event }: { readonly event: LessonEvent }) {
   switch (event.type) {
-    case "unlocked-letter":
+    case "new-letter":
       return (
         <Award icon={<Key lessonKey={event.lessonKey} size="announcement" />}>
           <FormattedMessage
@@ -37,4 +37,12 @@ export function EventAlert({ event }: { readonly event: Event }) {
         </Award>
       );
   }
+}
+
+export function displayEvent(event: LessonEvent): void {
+  toast(<EventAlert event={event} />, {
+    autoClose: 3000,
+    closeOnClick: true,
+    pauseOnHover: true,
+  });
 }

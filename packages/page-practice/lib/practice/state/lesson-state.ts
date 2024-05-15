@@ -4,13 +4,11 @@ import {
   type Lesson,
   type LessonKeys,
   lessonProps,
-  makeDailyGoal,
 } from "@keybr/lesson";
 import {
   type KeyStatsMap,
-  makeKeyStatsMap,
-  makeSummaryStats,
   Result,
+  type StreakList,
   type SummaryStats,
 } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
@@ -27,14 +25,19 @@ import {
 import { type TextInputEvent } from "@keybr/textinput-events";
 import { type CodePoint } from "@keybr/unicode";
 import { type LastLesson } from "./last-lesson.ts";
+import { type Progress } from "./progress.ts";
 
 export class LessonState {
+  readonly #onResult: (result: Result) => void;
+  readonly settings: Settings;
+  readonly lesson: Lesson;
   readonly textInputSettings: TextInputSettings;
   readonly textDisplaySettings: TextDisplaySettings;
   readonly keyStatsMap: KeyStatsMap;
-  readonly lessonKeys: LessonKeys;
   readonly summaryStats: SummaryStats;
+  readonly streakList: StreakList;
   readonly dailyGoal: DailyGoal;
+  readonly lessonKeys: LessonKeys;
 
   lastLesson: LastLesson | null = null;
 
@@ -43,18 +46,17 @@ export class LessonState {
   suffix!: readonly CodePoint[]; // Mutable.
   depressedKeys: readonly KeyId[] = []; // Mutable.
 
-  constructor(
-    readonly settings: Settings,
-    readonly lesson: Lesson,
-    readonly results: readonly Result[],
-    readonly appendResult: (result: Result) => void,
-  ) {
-    this.textInputSettings = toTextInputSettings(settings);
-    this.textDisplaySettings = toTextDisplaySettings(settings);
-    this.keyStatsMap = makeKeyStatsMap(this.lesson.letters, this.results);
+  constructor(progress: Progress, onResult: (result: Result) => void) {
+    this.#onResult = onResult;
+    this.settings = progress.settings;
+    this.lesson = progress.lesson;
+    this.textInputSettings = toTextInputSettings(this.settings);
+    this.textDisplaySettings = toTextDisplaySettings(this.settings);
+    this.keyStatsMap = progress.keyStatsMap.copy();
+    this.summaryStats = progress.summaryStats.copy();
+    this.streakList = progress.streakList.copy();
+    this.dailyGoal = progress.dailyGoal.copy();
     this.lessonKeys = this.lesson.update(this.keyStatsMap);
-    this.summaryStats = makeSummaryStats(results);
-    this.dailyGoal = makeDailyGoal(settings, results);
     this.#reset(this.lesson.generate(this.lessonKeys));
   }
 
@@ -71,7 +73,7 @@ export class LessonState {
     this.lines = this.textInput.getLines();
     this.suffix = this.textInput.getSuffix();
     if (this.textInput.completed) {
-      this.appendResult(this.#makeResult());
+      this.#onResult(this.#makeResult());
     }
     return feedback;
   }
