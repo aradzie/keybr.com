@@ -2,12 +2,12 @@ import { Letter } from "@keybr/phonetic-model";
 import { Histogram } from "@keybr/textinput";
 import test from "ava";
 import { ResultFaker } from "./fake.tsx";
-import { Counter, makeSummaryStats } from "./summarystats.ts";
+import { MutableMetric, MutableSummaryStats } from "./summarystats.ts";
 
-test("counter", (t) => {
-  const counter = new Counter();
+test("metric", (t) => {
+  const metric = new MutableMetric();
 
-  t.deepEqual(counter.toMetric(), {
+  t.deepEqual(metric.copy(), {
     last: 0,
     delta: 0,
     max: 0,
@@ -15,9 +15,9 @@ test("counter", (t) => {
     avg: 0,
   });
 
-  counter.append(10);
+  metric.append(10);
 
-  t.deepEqual(counter.toMetric(), {
+  t.deepEqual(metric.copy(), {
     last: 10,
     delta: 10,
     max: 10,
@@ -25,9 +25,9 @@ test("counter", (t) => {
     avg: 10,
   });
 
-  counter.append(20);
+  metric.append(20);
 
-  t.deepEqual(counter.toMetric(), {
+  t.deepEqual(metric.copy(), {
     last: 20,
     delta: 10,
     max: 20,
@@ -35,9 +35,9 @@ test("counter", (t) => {
     avg: 15,
   });
 
-  counter.append(15);
+  metric.append(15);
 
-  t.deepEqual(counter.toMetric(), {
+  t.deepEqual(metric.copy(), {
     last: 15,
     delta: 0,
     max: 20,
@@ -76,7 +76,9 @@ test("summary stats", (t) => {
     ]),
   });
 
-  t.deepEqual(makeSummaryStats([]), {
+  const stats = new MutableSummaryStats();
+
+  t.deepEqual(stats.copy(), {
     count: 0,
     time: 0,
     speed: { last: 0, delta: 0, max: 0, min: 0, avg: 0 },
@@ -84,7 +86,9 @@ test("summary stats", (t) => {
     score: { last: 0, delta: 0, max: 0, min: 0, avg: 0 },
   });
 
-  t.deepEqual(makeSummaryStats([r1]), {
+  stats.append(r1);
+
+  t.deepEqual(stats.copy(), {
     count: 1,
     time: 5000,
     speed: { last: 600, delta: 600, max: 600, min: 600, avg: 600 },
@@ -92,7 +96,9 @@ test("summary stats", (t) => {
     score: { last: 600, delta: 600, max: 600, min: 600, avg: 600 },
   });
 
-  t.deepEqual(makeSummaryStats([r1, r2]), {
+  stats.append(r2);
+
+  t.deepEqual(stats.copy(), {
     count: 2,
     time: 15000,
     speed: { last: 300, delta: -300, max: 600, min: 300, avg: 450 },
