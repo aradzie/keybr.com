@@ -1,7 +1,12 @@
-import { messages } from "@keybr/lesson-ui";
 import { SpeedUnit, uiProps } from "@keybr/result";
 import { useSettings } from "@keybr/settings";
-import { Explainer, Field, FieldList, FieldSet, RadioBox } from "@keybr/widget";
+import {
+  Explainer,
+  Field,
+  FieldList,
+  FieldSet,
+  OptionList,
+} from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
@@ -34,36 +39,17 @@ function SpeedUnitProp(): ReactNode {
           />
         </Field>
         <Field>
-          <RadioBox
-            checked={settings.get(uiProps.speedUnit) === SpeedUnit.WPM}
-            name="speed-unit"
-            label={formatMessage(messages.wpmName)}
-            title={formatMessage(messages.wpmDescription)}
-            onSelect={() =>
-              updateSettings(settings.set(uiProps.speedUnit, SpeedUnit.WPM))
-            }
-          />
-        </Field>
-        <Field>
-          <RadioBox
-            checked={settings.get(uiProps.speedUnit) === SpeedUnit.CPM}
-            name="speed-unit"
-            label={formatMessage(messages.cpmName)}
-            title={formatMessage(messages.cpmDescription)}
-            onSelect={() =>
-              updateSettings(settings.set(uiProps.speedUnit, SpeedUnit.CPM))
-            }
-          />
-        </Field>
-        <Field>
-          <RadioBox
-            checked={settings.get(uiProps.speedUnit) === SpeedUnit.CPS}
-            name="speed-unit"
-            label={formatMessage(messages.cpsName)}
-            title={formatMessage(messages.cpsDescription)}
-            onSelect={() =>
-              updateSettings(settings.set(uiProps.speedUnit, SpeedUnit.CPS))
-            }
+          <OptionList
+            options={SpeedUnit.ALL.map((item) => ({
+              value: item.id,
+              name: formatMessage(item.name),
+            }))}
+            value={settings.get(uiProps.speedUnit).id}
+            onSelect={(id) => {
+              updateSettings(
+                settings.set(uiProps.speedUnit, SpeedUnit.ALL.get(id)),
+              );
+            }}
           />
         </Field>
       </FieldList>

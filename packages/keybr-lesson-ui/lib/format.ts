@@ -27,20 +27,20 @@ export const useFormatter = (): Formatter => {
   const { settings } = useSettings();
   return useMemo(() => {
     const speedUnit = settings.get(uiProps.speedUnit);
+    const speedUnitName = formatMessage(speedUnit.name);
     let opts: FormatNumberOptions;
-    let speedUnitName: string;
     switch (speedUnit) {
       case SpeedUnit.WPM:
         opts = f1;
-        speedUnitName = formatMessage(messages.wpmName);
+        break;
+      case SpeedUnit.WPS:
+        opts = f2;
         break;
       case SpeedUnit.CPM:
         opts = f1;
-        speedUnitName = formatMessage(messages.cpmName);
         break;
       case SpeedUnit.CPS:
         opts = f2;
-        speedUnitName = formatMessage(messages.cpsName);
         break;
       default:
         throw new Error();

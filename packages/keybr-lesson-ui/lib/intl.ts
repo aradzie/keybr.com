@@ -68,28 +68,4 @@ export const messages = defineMessages({
     id: "lesson.forcedKeyText",
     defaultMessage: "A manually added key.",
   },
-  wpmName: {
-    id: "speedUnit.wpm.name",
-    defaultMessage: "Words per minute",
-  },
-  wpmDescription: {
-    id: "speedUnit.wpm.description",
-    defaultMessage: "Measure typing speed in words per minute.",
-  },
-  cpmName: {
-    id: "speedUnit.cpm.name",
-    defaultMessage: "Characters per minute",
-  },
-  cpmDescription: {
-    id: "speedUnit.cpm.description",
-    defaultMessage: "Measure typing speed in characters per minute.",
-  },
-  cpsName: {
-    id: "speedUnit.cps.name",
-    defaultMessage: "Characters per second",
-  },
-  cpsDescription: {
-    id: "speedUnit.cps.description",
-    defaultMessage: "Measure typing speed in characters per second.",
-  },
 });
