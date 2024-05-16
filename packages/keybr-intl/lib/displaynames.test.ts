@@ -42,8 +42,8 @@ test("format language name en-US", (t) => {
   t.is(formatLocalLanguageName("fr"), "Français");
   t.is(formatLanguageName("pt-BR"), "Brazilian Portuguese");
   t.is(formatLocalLanguageName("pt-BR"), "Português (Brasil)");
-  t.is(formatLanguageName("zh-Hans-CN"), "Simplified Chinese (China)");
-  t.is(formatLocalLanguageName("zh-Hans-CN"), "简体中文（中国）");
+  t.is(formatLanguageName("zh-Hans-CN"), "Chinese (Simplified, China)");
+  t.is(formatLocalLanguageName("zh-Hans-CN"), "中文（简体，中国）");
 });
 
 test("format language name pl-PL", (t) => {
@@ -59,8 +59,8 @@ test("format language name pl-PL", (t) => {
   t.is(formatLocalLanguageName("fr"), "Français");
   t.is(formatLanguageName("pt-BR"), "Brazylijski Portugalski");
   t.is(formatLocalLanguageName("pt-BR"), "Português (Brasil)");
-  t.is(formatLanguageName("zh-Hans-CN"), "Chiński Uproszczony (Chiny)");
-  t.is(formatLocalLanguageName("zh-Hans-CN"), "简体中文（中国）");
+  t.is(formatLanguageName("zh-Hans-CN"), "Chiński (Uproszczone, Chiny)");
+  t.is(formatLocalLanguageName("zh-Hans-CN"), "中文（简体，中国）");
 });
 
 test("format all language names in all locales", (t) => {
