@@ -1,8 +1,7 @@
-import { keyboardProps } from "@keybr/keyboard";
 import { type Lesson } from "@keybr/lesson";
 import { CurrentKeyRow, KeySetRow } from "@keybr/lesson-ui";
 import { LCG } from "@keybr/rand";
-import { ResultGroups, useResults } from "@keybr/result";
+import { useResults } from "@keybr/result";
 import { useSettings } from "@keybr/settings";
 import {
   TextInput,
@@ -23,12 +22,9 @@ export function LessonPreview({
   const { formatMessage } = useIntl();
   const { settings } = useSettings();
   const { results } = useResults();
-  const layout = settings.get(keyboardProps.layout);
   const keyStatsMap = useMemo(() => {
-    return lesson.analyze(
-      ResultGroups.byLayoutFamily(results).get(layout.family),
-    );
-  }, [lesson, results, layout]);
+    return lesson.analyze(lesson.filter(results));
+  }, [lesson, results]);
   const [lessonKeys, textInput] = useMemo(() => {
     lesson.rng = LCG(123);
     const lessonKeys = lesson.update(keyStatsMap);
