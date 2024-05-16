@@ -1,8 +1,12 @@
 import { keyboardProps, type KeyId } from "@keybr/keyboard";
-import { type Lesson, type LessonKeys, lessonProps } from "@keybr/lesson";
 import {
-  computeDailyGoal,
   type DailyGoal,
+  type Lesson,
+  type LessonKeys,
+  lessonProps,
+  makeDailyGoal,
+} from "@keybr/lesson";
+import {
   type KeyStatsMap,
   LocalDate,
   makeSummaryStats,
@@ -53,9 +57,9 @@ export class LessonState {
     this.keyStatsMap = this.lesson.analyze(this.results);
     this.lessonKeys = this.lesson.update(this.keyStatsMap);
     this.stats = makeSummaryStats(results);
-    this.dailyGoal = computeDailyGoal(
+    this.dailyGoal = makeDailyGoal(
+      settings,
       ResultGroups.byDate(results).get(LocalDate.now()),
-      settings.get(lessonProps.dailyGoal),
     );
     this.#reset(this.lesson.generate(this.lessonKeys));
   }

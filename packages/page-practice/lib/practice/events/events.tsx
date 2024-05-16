@@ -1,10 +1,5 @@
-import { type Lesson, lessonProps } from "@keybr/lesson";
-import {
-  computeDailyGoal,
-  LocalDate,
-  type Result,
-  ResultGroups,
-} from "@keybr/result";
+import { type DailyGoal, type Lesson, makeDailyGoal } from "@keybr/lesson";
+import { LocalDate, type Result, ResultGroups } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
 import { toast } from "@keybr/widget";
 import { useMemo } from "react";
@@ -19,14 +14,7 @@ export function makeEvents(settings: Settings, lesson: Lesson) {
   let topScore = 0;
   let accuracyStreak = 0;
   let longestAccuracyStreak = 0;
-  let dailyGoal = 0;
-
-  const getDailyGoal = () => {
-    const today = resultsByDate.get(LocalDate.now());
-    const dailyGoal = settings.get(lessonProps.dailyGoal);
-    const { value } = computeDailyGoal(today, dailyGoal);
-    return value;
-  };
+  let dailyGoal = { goal: 0, value: 0 } as DailyGoal;
 
   return new (class {
     get length(): number {
@@ -96,8 +84,11 @@ export function makeEvents(settings: Settings, lesson: Lesson) {
         accuracyStreak = 0;
       }
 
-      const newDailyGoal = getDailyGoal();
-      if (dailyGoal < 1 && newDailyGoal >= 1) {
+      const newDailyGoal = makeDailyGoal(
+        settings,
+        resultsByDate.get(LocalDate.now()),
+      );
+      if (dailyGoal.value < 1 && newDailyGoal.value >= 1) {
         if (listener != null) {
           listener({
             type: "daily-goal",

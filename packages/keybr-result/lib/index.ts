@@ -1,5 +1,4 @@
 export * from "./context.ts";
-export * from "./dailygoal.ts";
 export * from "./errors.ts";
 export * from "./fake.tsx";
 export * from "./group.ts";
