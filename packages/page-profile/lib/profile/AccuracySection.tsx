@@ -1,6 +1,11 @@
 import { useIntlNumbers } from "@keybr/intl";
 import { useFormatter } from "@keybr/lesson-ui";
-import { makeSummaryStats, type ResultSummary } from "@keybr/result";
+import {
+  makeSummaryStats,
+  MutableStreakList,
+  type ResultSummary,
+  type Streak,
+} from "@keybr/result";
 import {
   Figure,
   Header,
@@ -10,14 +15,13 @@ import {
 } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { type AccuracyStreak, accuracyStreaks } from "./accuracy.ts";
 
 export function AccuracySection({
   summary,
 }: {
   readonly summary: ResultSummary;
 }): ReactNode {
-  const streaks = accuracyStreaks(summary.allTimeStats.results);
+  const streaks = MutableStreakList.findLongest(summary.allTimeStats.results);
 
   return (
     <>
@@ -62,15 +66,12 @@ export function AccuracySection({
   );
 }
 
-function StreakDetails({
-  streak,
-}: {
-  readonly streak: AccuracyStreak;
-}): ReactNode {
+function StreakDetails({ streak }: { readonly streak: Streak }): ReactNode {
   const { formatMessage, formatDate } = useIntl();
   const { formatNumber, formatPercents } = useIntlNumbers();
   const { formatSpeed } = useFormatter();
-  const { results } = streak;
+  const { level, results } = streak;
+  const characterCount = results.reduce((x, { length }) => length + x, 0);
   const stats = makeSummaryStats(results);
 
   return (
@@ -81,7 +82,7 @@ function StreakDetails({
             id: "profile.chart.accuracy.accuracyThreshold.header",
             defaultMessage: "Accuracy Threshold",
           })}
-          value={formatPercents(streak.threshold)}
+          value={formatPercents(level)}
         />
       </dt>
       <dd>
@@ -97,7 +98,7 @@ function StreakDetails({
             id: "metric.summary.characterCount.label",
             defaultMessage: "Characters",
           })}
-          value={formatNumber(streak.length)}
+          value={formatNumber(characterCount)}
         />
         <NameValue
           name={formatMessage({
