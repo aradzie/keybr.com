@@ -3,8 +3,6 @@
   "name": "@keybr/scripts",
   "version": "0.0.0",
   "devDependencies": {
-    "@commitlint/cli": "^19.3.0",
-    "@commitlint/config-conventional": "^19.2.2",
     "compression-webpack-plugin": "^11.1.0",
     "css-loader": "^7.1.1",
     "css-minimizer-webpack-plugin": "^6.0.0",
