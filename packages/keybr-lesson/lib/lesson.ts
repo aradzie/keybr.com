@@ -1,5 +1,5 @@
 import { KeyboardOptions, type WeightedCodePointSet } from "@keybr/keyboard";
-import { type PhoneticModel } from "@keybr/phonetic-model";
+import { type Letter, type PhoneticModel } from "@keybr/phonetic-model";
 import { LCG, type RNGStream } from "@keybr/rand";
 import { type KeyStatsMap, type Result, ResultGroups } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
@@ -20,7 +20,7 @@ export abstract class Lesson {
     );
   }
 
-  abstract analyze(results: readonly Result[]): KeyStatsMap;
+  abstract get letters(): readonly Letter[];
 
   abstract update(keyStatsMap: KeyStatsMap): LessonKeys;
 

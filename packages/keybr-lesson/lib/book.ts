@@ -4,8 +4,8 @@ import {
   splitParagraph,
 } from "@keybr/content-books";
 import { type WeightedCodePointSet } from "@keybr/keyboard";
-import { type PhoneticModel } from "@keybr/phonetic-model";
-import { type KeyStatsMap, makeKeyStatsMap, type Result } from "@keybr/result";
+import { type Letter, type PhoneticModel } from "@keybr/phonetic-model";
+import { type KeyStatsMap } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
 import { LessonKeys } from "./key.ts";
 import { Lesson } from "./lesson.ts";
@@ -29,8 +29,8 @@ export class BookContentLesson extends Lesson {
       .flat();
   }
 
-  override analyze(results: readonly Result[]): KeyStatsMap {
-    return makeKeyStatsMap(this.model.letters, results);
+  override get letters(): readonly Letter[] {
+    return this.model.letters;
   }
 
   override update(keyStatsMap: KeyStatsMap): LessonKeys {

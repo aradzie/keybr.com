@@ -9,6 +9,7 @@ import {
 import {
   type KeyStatsMap,
   LocalDate,
+  makeKeyStatsMap,
   makeSummaryStats,
   Result,
   ResultGroups,
@@ -54,7 +55,7 @@ export class LessonState {
     this.showTour = settings.isNew;
     this.textInputSettings = toTextInputSettings(settings);
     this.textDisplaySettings = toTextDisplaySettings(settings);
-    this.keyStatsMap = this.lesson.analyze(this.results);
+    this.keyStatsMap = makeKeyStatsMap(this.lesson.letters, this.results);
     this.lessonKeys = this.lesson.update(this.keyStatsMap);
     this.stats = makeSummaryStats(results);
     this.dailyGoal = makeDailyGoal(

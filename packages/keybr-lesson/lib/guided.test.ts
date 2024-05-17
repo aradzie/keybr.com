@@ -1,5 +1,6 @@
 import { allCodePoints } from "@keybr/keyboard";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
+import { makeKeyStatsMap } from "@keybr/result";
 import { Settings } from "@keybr/settings";
 import test from "ava";
 import { GuidedLesson } from "./guided.ts";
@@ -10,7 +11,7 @@ test("provide key set", (t) => {
   const settings = new Settings();
   const model = new FakePhoneticModel(["uno", "due", "tre"]);
   const lesson = new GuidedLesson(settings, model, allCodePoints(), []);
-  const lessonKeys = lesson.update(lesson.analyze([]));
+  const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
 
   t.deepEqual(lessonKeys.findIncludedKeys(), [
     new LessonKey({
@@ -146,7 +147,7 @@ test("generate text from a broken phonetic model, empty words", (t) => {
   const settings = new Settings();
   const model = new FakePhoneticModel([""]);
   const lesson = new GuidedLesson(settings, model, allCodePoints(), []);
-  const lessonKeys = lesson.update(lesson.analyze([]));
+  const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
   lesson.rng = model.rng;
 
   t.is(
@@ -168,7 +169,7 @@ test("generate text from a broken phonetic model, repeating words", (t) => {
   const settings = new Settings();
   const model = new FakePhoneticModel(["x"]);
   const lesson = new GuidedLesson(settings, model, allCodePoints(), []);
-  const lessonKeys = lesson.update(lesson.analyze([]));
+  const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
   lesson.rng = model.rng;
 
   t.is(
@@ -190,7 +191,7 @@ test("generate text with pseudo words", (t) => {
   const settings = new Settings().set(lessonProps.guided.naturalWords, false);
   const model = new FakePhoneticModel(["uno", "due", "tre"]);
   const lesson = new GuidedLesson(settings, model, allCodePoints(), []);
-  const lessonKeys = lesson.update(lesson.analyze([]));
+  const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
   lesson.rng = model.rng;
 
   t.is(
@@ -230,7 +231,7 @@ test("generate text with natural words", (t) => {
     "efghijgf",
     "efghijgg",
   ]);
-  const lessonKeys = lesson.update(lesson.analyze([]));
+  const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
   lesson.rng = model.rng;
 
   t.is(
