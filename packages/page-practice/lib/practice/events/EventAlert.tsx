@@ -15,15 +15,6 @@ export function EventAlert({ event }: { readonly event: Event }) {
           />
         </Award>
       );
-    case "unlocked-all-letters":
-      return (
-        <Award icon={<TrophyIcon />}>
-          <FormattedMessage
-            id="event.unlockedAllLetters"
-            defaultMessage="All letters unlocked!"
-          />
-        </Award>
-      );
     case "top-speed":
       return (
         <Award icon={<TrophyIcon />}>
@@ -34,24 +25,6 @@ export function EventAlert({ event }: { readonly event: Event }) {
       return (
         <Award icon={<TrophyIcon />}>
           <FormattedMessage id="event.topScore" defaultMessage="Top score!" />
-        </Award>
-      );
-    case "accuracy-streak":
-      return (
-        <Award icon={<TrophyIcon />}>
-          <FormattedMessage
-            id="event.accuracyStreak"
-            defaultMessage="Accuracy streak!"
-          />
-        </Award>
-      );
-    case "longest-accuracy-streak":
-      return (
-        <Award icon={<TrophyIcon />}>
-          <FormattedMessage
-            id="event.longestAccuracyStreak"
-            defaultMessage="Longest accuracy streak!"
-          />
         </Award>
       );
     case "daily-goal":

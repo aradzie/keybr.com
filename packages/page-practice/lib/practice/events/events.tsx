@@ -12,8 +12,6 @@ export function makeEvents(settings: Settings, lesson: Lesson) {
 
   let topSpeed = 0;
   let topScore = 0;
-  let accuracyStreak = 0;
-  let longestAccuracyStreak = 0;
   let dailyGoal = { goal: 0, value: 0 } as DailyGoal;
 
   return new (class {
@@ -57,31 +55,6 @@ export function makeEvents(settings: Settings, lesson: Lesson) {
           }
         }
         topScore = score;
-      }
-
-      if (result.accuracy === 1) {
-        accuracyStreak += 1;
-      } else {
-        if (accuracyStreak >= 3) {
-          if (accuracyStreak > longestAccuracyStreak) {
-            if (listener != null) {
-              listener({
-                type: "longest-accuracy-streak",
-                length: accuracyStreak,
-                previous: longestAccuracyStreak,
-              });
-            }
-            longestAccuracyStreak = accuracyStreak;
-          } else {
-            if (listener != null) {
-              listener({
-                type: "accuracy-streak",
-                length: accuracyStreak,
-              });
-            }
-          }
-        }
-        accuracyStreak = 0;
       }
 
       const newDailyGoal = makeDailyGoal(
