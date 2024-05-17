@@ -31,12 +31,11 @@ import { type CodePoint } from "@keybr/unicode";
 import { type LastLesson } from "./last-lesson.ts";
 
 export class LessonState {
-  readonly showTour: boolean;
   readonly textInputSettings: TextInputSettings;
   readonly textDisplaySettings: TextDisplaySettings;
   readonly keyStatsMap: KeyStatsMap;
   readonly lessonKeys: LessonKeys;
-  readonly stats: SummaryStats;
+  readonly summaryStats: SummaryStats;
   readonly dailyGoal: DailyGoal;
 
   lastLesson: LastLesson | null = null;
@@ -52,12 +51,11 @@ export class LessonState {
     readonly results: readonly Result[],
     readonly appendResult: (result: Result) => void,
   ) {
-    this.showTour = settings.isNew;
     this.textInputSettings = toTextInputSettings(settings);
     this.textDisplaySettings = toTextDisplaySettings(settings);
     this.keyStatsMap = makeKeyStatsMap(this.lesson.letters, this.results);
     this.lessonKeys = this.lesson.update(this.keyStatsMap);
-    this.stats = makeSummaryStats(results);
+    this.summaryStats = makeSummaryStats(results);
     this.dailyGoal = makeDailyGoal(
       settings,
       ResultGroups.byDate(results).get(LocalDate.now()),
@@ -78,14 +76,7 @@ export class LessonState {
     this.lines = this.textInput.getLines();
     this.suffix = this.textInput.getSuffix();
     if (this.textInput.completed) {
-      this.appendResult(
-        Result.fromStats(
-          this.settings.get(keyboardProps.layout),
-          this.settings.get(lessonProps.type).textType,
-          Date.now(),
-          makeStats(this.textInput.getSteps()),
-        ),
-      );
+      this.appendResult(this.#makeResult());
     }
     return feedback;
   }
@@ -94,5 +85,14 @@ export class LessonState {
     this.textInput = new TextInput(fragment, this.textInputSettings);
     this.lines = this.textInput.getLines();
     this.suffix = this.textInput.getSuffix();
+  }
+
+  #makeResult(timeStamp = Date.now()) {
+    return Result.fromStats(
+      this.settings.get(keyboardProps.layout),
+      this.settings.get(lessonProps.type).textType,
+      timeStamp,
+      makeStats(this.textInput.getSteps()),
+    );
   }
 }

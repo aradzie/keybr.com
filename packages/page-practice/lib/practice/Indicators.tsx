@@ -22,7 +22,7 @@ export const Indicators = memo(function Indicators({
   const selectedKey = useKeySelector(state);
   return (
     <div id={names.indicators} className={styles.indicators}>
-      <GaugeRow summaryStats={state.stats} names={names} />
+      <GaugeRow summaryStats={state.summaryStats} names={names} />
       <KeySetRow lessonKeys={state.lessonKeys} names={names} />
       <CurrentKeyRow lessonKeys={state.lessonKeys} names={names} />
       {state.dailyGoal.goal > 0 && (

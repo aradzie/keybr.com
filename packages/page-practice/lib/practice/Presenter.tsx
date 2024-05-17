@@ -66,7 +66,7 @@ export class Presenter extends PureComponent<Props, State> {
   };
 
   override componentDidMount(): void {
-    if (this.props.state.showTour) {
+    if (this.props.state.settings.isNew) {
       this.setState({
         view: View.Normal,
         tour: true,
