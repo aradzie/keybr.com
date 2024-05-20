@@ -1,4 +1,5 @@
 import { useIntlDurations, useIntlNumbers } from "@keybr/intl";
+import { type DailyGoal as DailyGoalType } from "@keybr/lesson";
 import { type ClassName, Value } from "@keybr/widget";
 import { clsx } from "clsx";
 import { type ReactNode } from "react";
@@ -7,23 +8,21 @@ import * as styles from "./DailyGoal.module.less";
 export const DailyGoal = ({
   id,
   className,
-  value,
-  goal,
+  dailyGoal,
 }: {
   readonly id?: string;
   readonly className?: ClassName;
-  readonly value: number;
-  readonly goal: number;
+  readonly dailyGoal: DailyGoalType;
 }): ReactNode => {
   return (
     <span id={id} className={clsx(styles.dailyGoal, className)}>
-      <Label value={value} goal={goal} />
-      <Gauge value={value} />
+      <DailyGoalLabel value={dailyGoal.value} goal={dailyGoal.goal} />
+      <DailyGoalGauge value={dailyGoal.value} />
     </span>
   );
 };
 
-const Label = ({
+const DailyGoalLabel = ({
   value,
   goal,
 }: {
@@ -39,7 +38,7 @@ const Label = ({
   );
 };
 
-const Gauge = ({ value }: { readonly value: number }): ReactNode => {
+const DailyGoalGauge = ({ value }: { readonly value: number }): ReactNode => {
   value = Math.max(0, value);
   const barWidth = value > 1 ? 100 : Math.round(value * 100);
   const frameWidth = value > 1 ? Math.round((1 / value) * 100) : 100;

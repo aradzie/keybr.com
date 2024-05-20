@@ -1,5 +1,8 @@
 import { useIntlNumbers } from "@keybr/intl";
-import { type LessonKeys } from "@keybr/lesson";
+import {
+  type DailyGoal as DailyGoalType,
+  type LessonKeys,
+} from "@keybr/lesson";
 import { type SummaryStats } from "@keybr/result";
 import { type ClassName, Name, Value } from "@keybr/widget";
 import { clsx } from "clsx";
@@ -244,12 +247,10 @@ export const CurrentKeyRow = memo(function CurrentKeyRow({
 });
 
 export const DailyGoalRow = memo(function DailyGoalRow({
-  value,
-  goal,
+  dailyGoal,
   names,
 }: {
-  readonly value: number;
-  readonly goal: number;
+  readonly dailyGoal: DailyGoalType;
   readonly names?: Names;
 }): ReactNode {
   const { formatMessage } = useIntl();
@@ -271,8 +272,7 @@ export const DailyGoalRow = memo(function DailyGoalRow({
       <DailyGoal
         id={names?.dailyGoal}
         className={styles.value}
-        value={value}
-        goal={goal}
+        dailyGoal={dailyGoal}
       />
     </div>
   );

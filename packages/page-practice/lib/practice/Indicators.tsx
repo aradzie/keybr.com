@@ -26,11 +26,7 @@ export const Indicators = memo(function Indicators({
       <KeySetRow lessonKeys={state.lessonKeys} names={names} />
       <CurrentKeyRow lessonKeys={state.lessonKeys} names={names} />
       {state.dailyGoal.goal > 0 && (
-        <DailyGoalRow
-          value={state.dailyGoal.value}
-          goal={state.dailyGoal.goal}
-          names={names}
-        />
+        <DailyGoalRow dailyGoal={state.dailyGoal} names={names} />
       )}
       {selectedKey && (
         <Portal>
