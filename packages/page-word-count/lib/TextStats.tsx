@@ -1,14 +1,17 @@
 import { useIntlDurations, useIntlNumbers } from "@keybr/intl";
-import { type TextStats, type WordCount } from "@keybr/unicode";
+import {
+  type TextStats as TextStatsType,
+  type WordCount as WordCountType,
+} from "@keybr/unicode";
 import { Name, NameValue, Para, Value } from "@keybr/widget";
 import { type CSSProperties, type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import * as styles from "./TextStatsWidget.module.less";
+import * as styles from "./TextStats.module.less";
 
-export function TextStatsWidget({
+export function TextStats({
   textStats,
 }: {
-  readonly textStats: TextStats;
+  readonly textStats: TextStatsType;
 }): ReactNode {
   const { formatMessage } = useIntl();
   const { formatNumber } = useIntlNumbers();
@@ -99,7 +102,7 @@ export function TextStatsWidget({
             )}
           />
         </Para>
-        <WordCountWidget wordCount={wordCount} />
+        <WordCount wordCount={wordCount} />
         <Para>
           <Name>
             <FormattedMessage
@@ -129,10 +132,10 @@ export function TextStatsWidget({
   }
 }
 
-function WordCountWidget({
+function WordCount({
   wordCount,
 }: {
-  readonly wordCount: readonly WordCount[];
+  readonly wordCount: readonly WordCountType[];
 }) {
   const { formatNumber } = useIntlNumbers();
   const style = (count: number): CSSProperties => ({

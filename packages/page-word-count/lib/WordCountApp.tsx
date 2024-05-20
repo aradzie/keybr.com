@@ -1,9 +1,9 @@
-import { type TextStats, textStatsOf } from "@keybr/unicode";
+import { textStatsOf } from "@keybr/unicode";
 import { TextField } from "@keybr/widget";
 import { type ReactNode, useEffect, useMemo, useState } from "react";
 import { useIntl } from "react-intl";
 import { EXAMPLE } from "./example.ts";
-import { TextStatsWidget } from "./TextStatsWidget.tsx";
+import { TextStats } from "./TextStats.tsx";
 import * as styles from "./WordCountApp.module.less";
 
 export function WordCountApp(): ReactNode {
@@ -30,7 +30,7 @@ export function WordCountApp(): ReactNode {
           setText(value);
         }}
       />
-      <TextStatsWidget textStats={textStats} />
+      <TextStats textStats={textStats} />
     </div>
   );
 }
@@ -49,7 +49,7 @@ function useInitialText(): string {
   );
 }
 
-function useTextStats(locale: string, text: string): TextStats {
+function useTextStats(locale: string, text: string) {
   const [textStats, setTextStats] = useState(textStatsOf(locale, text));
   useEffect(() => {
     if (text === "") {
