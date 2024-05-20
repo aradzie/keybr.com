@@ -1,9 +1,7 @@
 import { type LessonKeys } from "@keybr/lesson";
 import { type ClassName } from "@keybr/widget";
-import { clsx } from "clsx";
 import { type ReactNode } from "react";
 import { Key } from "./Key.tsx";
-import * as styles from "./KeySet.module.less";
 
 export const KeySet = ({
   id,
@@ -15,7 +13,7 @@ export const KeySet = ({
   readonly lessonKeys: LessonKeys;
 }): ReactNode => {
   return (
-    <span id={id} className={clsx(styles.keySet, className)}>
+    <span id={id} className={className}>
       {[...lessonKeys].map((lessonKey) => (
         <Key key={lessonKey.letter.codePoint} lessonKey={lessonKey} />
       ))}

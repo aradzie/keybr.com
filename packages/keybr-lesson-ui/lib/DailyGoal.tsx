@@ -15,7 +15,7 @@ export const DailyGoal = ({
   readonly dailyGoal: DailyGoalType;
 }): ReactNode => {
   return (
-    <span id={id} className={clsx(styles.dailyGoal, className)}>
+    <span id={id} className={clsx(styles.root, className)}>
       <DailyGoalLabel value={dailyGoal.value} goal={dailyGoal.goal} />
       <DailyGoalGauge value={dailyGoal.value} />
     </span>
