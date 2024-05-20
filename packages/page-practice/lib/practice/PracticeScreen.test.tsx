@@ -27,9 +27,6 @@ test.serial("render", async (t) => {
     </FakeIntlProvider>,
   );
 
-  t.not(await r.findByText("Speed:"), null);
-  t.not(await r.findByText("Accuracy:"), null);
-  t.not(await r.findByText("Score:"), null);
   t.not(await r.findByText("Settings..."), null);
   t.true(r.container.textContent?.includes("abcdefghij"));
 

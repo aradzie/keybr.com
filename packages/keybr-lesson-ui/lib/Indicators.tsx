@@ -3,7 +3,10 @@ import {
   type DailyGoal as DailyGoalType,
   type LessonKeys,
 } from "@keybr/lesson";
-import { type SummaryStats } from "@keybr/result";
+import {
+  type StreakList as StreakListType,
+  type SummaryStats,
+} from "@keybr/result";
 import { type ClassName, Name, Value } from "@keybr/widget";
 import { clsx } from "clsx";
 import { memo, type ReactNode } from "react";
@@ -13,6 +16,7 @@ import { DailyGoal } from "./DailyGoal.tsx";
 import { useFormatter } from "./format.ts";
 import * as styles from "./Indicators.module.less";
 import { KeySet } from "./KeySet.tsx";
+import { StreakList } from "./StreakList.tsx";
 
 export type Names = {
   readonly speed?: string;
@@ -20,6 +24,7 @@ export type Names = {
   readonly score?: string;
   readonly keySet?: string;
   readonly currentKey?: string;
+  readonly streakList?: string;
   readonly dailyGoal?: string;
 };
 
@@ -241,6 +246,25 @@ export const CurrentKeyRow = memo(function CurrentKeyRow({
         id={names?.currentKey}
         className={styles.value}
         lessonKeys={lessonKeys}
+      />
+    </div>
+  );
+});
+
+export const StreakListRow = memo(function StreakListRow({
+  streakList,
+  names,
+}: {
+  readonly streakList: StreakListType;
+  readonly names?: Names;
+}): ReactNode {
+  return (
+    <div className={styles.row}>
+      <Name className={styles.name} name="Accuracy" />
+      <StreakList
+        id={names?.streakList}
+        className={styles.value}
+        streakList={streakList}
       />
     </div>
   );

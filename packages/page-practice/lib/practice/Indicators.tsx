@@ -6,6 +6,7 @@ import {
   getKeyElementSelector,
   isKeyElement,
   KeySetRow,
+  StreakListRow,
 } from "@keybr/lesson-ui";
 import { Popup, Portal, useMouseHover, useTimeout } from "@keybr/widget";
 import { memo, type ReactNode, useState } from "react";
@@ -25,6 +26,7 @@ export const Indicators = memo(function Indicators({
       <GaugeRow summaryStats={state.summaryStats} names={names} />
       <KeySetRow lessonKeys={state.lessonKeys} names={names} />
       <CurrentKeyRow lessonKeys={state.lessonKeys} names={names} />
+      <StreakListRow streakList={state.streakList} names={names} />
       {state.dailyGoal.goal > 0 && (
         <DailyGoalRow dailyGoal={state.dailyGoal} names={names} />
       )}
