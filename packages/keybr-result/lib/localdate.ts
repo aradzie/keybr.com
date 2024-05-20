@@ -134,11 +134,49 @@ export class LocalDate {
     return new LocalDate(date);
   }
 
-  toString(): string {
+  toString() {
     return this.value;
   }
 
-  valueOf(): number {
+  valueOf() {
     return this.timeStamp;
+  }
+}
+
+export class LocalDateRange {
+  readonly #from: LocalDate;
+  readonly #to: LocalDate;
+
+  constructor(from: LocalDate, to: LocalDate) {
+    this.#from = from;
+    this.#to = to;
+  }
+
+  get from(): LocalDate {
+    return this.#from;
+  }
+
+  get to(): LocalDate {
+    return this.#to;
+  }
+
+  includes(timeStamp: number): boolean {
+    return this.#from.timeStamp <= timeStamp && timeStamp < this.#to.timeStamp;
+  }
+
+  toString() {
+    return `${this.#from} - ${this.#to}`;
+  }
+}
+
+export class Yesterday extends LocalDateRange {
+  constructor(now = LocalDate.now()) {
+    super(now.minusDays(1), now);
+  }
+}
+
+export class Today extends LocalDateRange {
+  constructor(now = LocalDate.now()) {
+    super(now, now.plusDays(1));
   }
 }

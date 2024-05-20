@@ -1,5 +1,5 @@
 import { type DailyGoal, type Lesson, makeDailyGoal } from "@keybr/lesson";
-import { LocalDate, type Result, ResultGroups } from "@keybr/result";
+import { type Result } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
 import { toast } from "@keybr/widget";
 import { useMemo } from "react";
@@ -8,7 +8,6 @@ import { type Event, type EventListener } from "./types.ts";
 
 export function makeEvents(settings: Settings, lesson: Lesson) {
   const results: Result[] = [];
-  const resultsByDate = ResultGroups.byDate([]);
 
   let topSpeed = 0;
   let topScore = 0;
@@ -27,7 +26,6 @@ export function makeEvents(settings: Settings, lesson: Lesson) {
 
     append(result: Result, listener: EventListener | null = null): void {
       results.push(result);
-      resultsByDate.add(result);
 
       const { speed } = result;
       if (speed > topSpeed) {
@@ -57,10 +55,7 @@ export function makeEvents(settings: Settings, lesson: Lesson) {
         topScore = score;
       }
 
-      const newDailyGoal = makeDailyGoal(
-        settings,
-        resultsByDate.get(LocalDate.now()),
-      );
+      const newDailyGoal = makeDailyGoal(settings, results);
       if (dailyGoal.value < 1 && newDailyGoal.value >= 1) {
         if (listener != null) {
           listener({

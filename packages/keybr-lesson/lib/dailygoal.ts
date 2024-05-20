@@ -1,4 +1,4 @@
-import { type Result } from "@keybr/result";
+import { type Result, Today } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
 import { lessonProps } from "./settings.ts";
 
@@ -22,11 +22,13 @@ export type DailyGoal = {
 
 export class MutableDailyGoal implements DailyGoal {
   readonly #goal: number;
+  readonly #today: Today;
   #time: number;
   #value: number;
 
-  constructor(settings: Settings) {
+  constructor(settings: Settings, today: Today = new Today()) {
     this.#goal = settings.get(lessonProps.dailyGoal);
+    this.#today = today;
     this.#time = 0;
     this.#value = 0;
   }
@@ -40,8 +42,10 @@ export class MutableDailyGoal implements DailyGoal {
   }
 
   append(result: Result) {
-    this.#time += result.time;
-    this.#value = this.#goal > 0 ? this.#time / 1000 / 60 / this.#goal : 0;
+    if (this.#today.includes(result.timeStamp)) {
+      this.#time += result.time;
+      this.#value = this.#goal > 0 ? this.#time / 1000 / 60 / this.#goal : 0;
+    }
   }
 
   copy(): DailyGoal {

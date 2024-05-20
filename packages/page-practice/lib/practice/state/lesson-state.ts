@@ -8,11 +8,9 @@ import {
 } from "@keybr/lesson";
 import {
   type KeyStatsMap,
-  LocalDate,
   makeKeyStatsMap,
   makeSummaryStats,
   Result,
-  ResultGroups,
   type SummaryStats,
 } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
@@ -56,10 +54,7 @@ export class LessonState {
     this.keyStatsMap = makeKeyStatsMap(this.lesson.letters, this.results);
     this.lessonKeys = this.lesson.update(this.keyStatsMap);
     this.summaryStats = makeSummaryStats(results);
-    this.dailyGoal = makeDailyGoal(
-      settings,
-      ResultGroups.byDate(results).get(LocalDate.now()),
-    );
+    this.dailyGoal = makeDailyGoal(settings, results);
     this.#reset(this.lesson.generate(this.lessonKeys));
   }
 
