@@ -42,9 +42,9 @@ Untranslated: 14 messages, 66 words
 
 # Persian
 
-Translated: 351 messages, 1915 words
+Translated: 354 messages, 1958 words
 
-Untranslated: 85 messages, 3339 words
+Untranslated: 82 messages, 3296 words
 
 # French
 
@@ -72,9 +72,9 @@ Untranslated: 256 messages, 3872 words
 
 # Italian
 
-Translated: 380 messages, 3202 words
+Translated: 388 messages, 3851 words
 
-Untranslated: 56 messages, 2052 words
+Untranslated: 48 messages, 1403 words
 
 # Japanese
 
