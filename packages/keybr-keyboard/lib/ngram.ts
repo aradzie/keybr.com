@@ -18,7 +18,7 @@ export class Ngram1 implements Iterable<Entry1> {
     this.#data = new Float64Array(alphabet.length);
   }
 
-  *[Symbol.iterator](): Iterator<Entry1> {
+  *[Symbol.iterator](): IterableIterator<Entry1> {
     const size = this.#alphabet.length;
     for (let i = 0; i < size; i++) {
       const f = this.#data[i];

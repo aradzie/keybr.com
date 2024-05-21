@@ -7,18 +7,6 @@
   fill-opacity: 0.2;
 }
 
-.keyLabel {
-  fill: var(--text-color);
-  font-family: var(--monospace-font-family);
-  font-size: 1.1rem;
-}
-
-.valueLabel {
-  fill: var(--text-color);
-  font-family: var(--value-font-family);
-  font-size: 0.7rem;
-}
-
 .headerText {
   fill: var(--Chart-headerText__color);
   font-family: var(--header-font-family);
@@ -31,10 +19,20 @@
   font-size: 1rem;
 }
 
-.normalText {
-  fill: var(--text-color);
-  font-family: var(--default-font-family);
+.keyFont {
+  font-family: var(--monospace-font-family);
   font-size: 1rem;
+}
+
+.valueFont {
+  font-family: var(--value-font-family);
+  font-size: 0.7rem;
+}
+
+.value {
+  fill: var(--text-color);
+  stroke: var(--text-color);
+  stroke-linecap: square;
 }
 
 .speed {

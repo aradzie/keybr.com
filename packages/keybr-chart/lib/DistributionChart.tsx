@@ -1,3 +1,4 @@
+import { useIntlNumbers } from "@keybr/intl";
 import { useFormatter } from "@keybr/lesson-ui";
 import { type Distribution, Range, Vector } from "@keybr/math";
 import { Canvas, type Rect, type ShapeList, Shapes } from "@keybr/widget";
@@ -29,54 +30,81 @@ export function DistributionChart({
   );
 }
 
-function usePaint({ samples }: Distribution, thresholds: readonly Threshold[]) {
+function usePaint(dist: Distribution, thresholds: readonly Threshold[]) {
   const { formatMessage } = useIntl();
+  const { formatPercents } = useIntlNumbers();
   const { formatSpeed } = useFormatter();
 
   const vIndex = new Vector();
-  const vValue = new Vector();
-  for (let index = 0; index < samples.length; index++) {
+  const vPmf = new Vector();
+  const vCdf = new Vector();
+  for (let index = 0; index < dist.length; index++) {
     vIndex.add(index);
-    vValue.add(samples[index]);
+    vPmf.add(dist.pmf(index));
+    vCdf.add(dist.cdf(index));
   }
   const rIndex = Range.from(vIndex);
-  const rValue = Range.from(vValue);
+  const rPmf = Range.from(vPmf);
+  const rCdf = Range.from(vCdf);
 
   return (box: Rect): ShapeList => {
-    const sx = box.width / rIndex.span;
-    const sy = box.height / rValue.span;
-
     return [
       paintGrid(box, "vertical", { lines: 5 }),
       paintGrid(box, "horizontal", { lines: 5 }),
-      paintHistogram(),
+      paintPmfHistogram(),
+      paintCdfHistogram(),
       thresholds.length > 0
-        ? thresholds.map(paintThresholdLine)
+        ? [thresholds.map(paintPmfLine), thresholds.map(paintCdfLine)]
         : paintNoData(box, formatMessage),
       paintAxis(box, "bottom"),
       paintAxis(box, "left"),
-      paintTicks(box, rIndex, "bottom", { lines: 5, fmt: formatSpeed }),
+      paintTicks(box, rIndex, "bottom", {
+        lines: 5,
+        fmt: formatSpeed,
+        style: chartStyles.valueLabel,
+      }),
+      paintTicks(box, rCdf, "right", {
+        lines: 5,
+        fmt: formatPercents,
+        style: chartStyles.thresholdLabel,
+      }),
     ];
 
-    function paintHistogram(): ShapeList {
+    function paintPmfHistogram(): ShapeList {
       return Shapes.fill(
         chartStyles.speed,
-        samples.map((value, index) => {
-          const w = Math.ceil(sx);
-          const h = Math.round((value - rValue.min) * sy);
-          const x = Math.round((index - rIndex.min) * sx);
-          const y = box.height - h;
+        [...vIndex].map((index) => {
+          const w = Math.ceil(box.width / rIndex.span);
+          const x = Math.round(rIndex.normalize(index) * box.width);
+          const y = Math.round(rPmf.normalize(vPmf.at(index)) * box.height);
           return Shapes.rect({
             x: box.x + x,
-            y: box.y + y,
+            y: box.y + box.height - y,
             width: w,
-            height: h,
+            height: y,
           });
         }),
       );
     }
 
-    function paintThresholdLine({
+    function paintCdfHistogram(): ShapeList {
+      return Shapes.fill(
+        chartStyles.threshold,
+        [...vIndex].map((index) => {
+          const w = Math.ceil(box.width / rIndex.span);
+          const x = Math.round(rIndex.normalize(index) * box.width);
+          const y = Math.round(rCdf.normalize(vCdf.at(index)) * box.height);
+          return Shapes.rect({
+            x: box.x + x,
+            y: box.y + box.height - y - 1,
+            width: w,
+            height: 3,
+          });
+        }),
+      );
+    }
+
+    function paintPmfLine({
       label,
       value,
     }: {
@@ -86,9 +114,9 @@ function usePaint({ samples }: Distribution, thresholds: readonly Threshold[]) {
       if (value < rIndex.min || value > rIndex.max) {
         return [];
       }
-      const x = Math.round((value - rIndex.min) * sx);
+      const x = Math.round(rIndex.normalize(value) * box.width);
       return [
-        Shapes.fill(chartStyles.threshold, [
+        Shapes.fill(chartStyles.value, [
           Shapes.rect({
             x: box.x + x,
             y: box.y - 10,
@@ -97,13 +125,46 @@ function usePaint({ samples }: Distribution, thresholds: readonly Threshold[]) {
           }),
         ]),
         Shapes.fillText({
-          x: box.x + x + 2,
-          y: box.y + 1,
+          x: box.x + x + 5,
+          y: box.y + box.height - 5,
           value: formatSpeed(value),
           style: {
-            ...chartStyles.thresholdLabel,
+            ...chartStyles.valueLabel,
             textAlign: "left",
-            textBaseline: "top",
+            textBaseline: "bottom",
+          },
+        }),
+      ];
+    }
+
+    function paintCdfLine({
+      label,
+      value,
+    }: {
+      label: string;
+      value: number;
+    }): ShapeList {
+      if (value < rIndex.min || value > rIndex.max) {
+        return [];
+      }
+      const y = Math.round(rCdf.normalize(dist.cdf(value)) * box.height);
+      return [
+        Shapes.fill(chartStyles.threshold, [
+          Shapes.rect({
+            x: box.x - 10,
+            y: box.y + box.height - y,
+            width: box.width + 20,
+            height: 1,
+          }),
+        ]),
+        Shapes.fillText({
+          x: box.x + box.width - 5,
+          y: box.y + box.height - y - 5,
+          value: formatPercents(dist.cdf(value)),
+          style: {
+            ...chartStyles.thresholdLabel,
+            textAlign: "right",
+            textBaseline: "bottom",
           },
         }),
       ];

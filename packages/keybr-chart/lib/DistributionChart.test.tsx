@@ -1,12 +1,12 @@
 import { FakeIntlProvider } from "@keybr/intl";
-import { makeDistribution } from "@keybr/math";
+import { Distribution } from "@keybr/math";
 import { FakeSettingsContext } from "@keybr/settings";
 import { render } from "@testing-library/react";
 import test from "ava";
 import { DistributionChart } from "./DistributionChart.tsx";
 
 test("render empty", (t) => {
-  const distribution = makeDistribution([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  const distribution = new Distribution([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
@@ -24,7 +24,7 @@ test("render empty", (t) => {
 });
 
 test("render non-empty", (t) => {
-  const distribution = makeDistribution([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  const distribution = new Distribution([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
