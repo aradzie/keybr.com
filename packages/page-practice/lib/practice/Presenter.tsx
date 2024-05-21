@@ -1,4 +1,5 @@
 import { type KeyId } from "@keybr/keyboard";
+import { names } from "@keybr/lesson-ui";
 import { Screen } from "@keybr/pages-shared";
 import { enumProp } from "@keybr/settings";
 import { type LineList } from "@keybr/textinput";
@@ -14,7 +15,6 @@ import { Prefs } from "../prefs.ts";
 import { Controls } from "./Controls.tsx";
 import { Indicators } from "./Indicators.tsx";
 import { DeferredKeyboardPresenter } from "./KeyboardPresenter.tsx";
-import * as names from "./names.module.less";
 import { PracticeTour } from "./PracticeTour.tsx";
 import * as styles from "./Presenter.module.less";
 import { type LessonState } from "./state/index.ts";

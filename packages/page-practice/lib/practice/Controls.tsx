@@ -1,3 +1,4 @@
+import { names } from "@keybr/lesson-ui";
 import { Button, Icon, IconButton } from "@keybr/widget";
 import {
   mdiAspectRatio,
@@ -9,7 +10,6 @@ import {
 import { memo, type ReactNode } from "react";
 import { useIntl } from "react-intl";
 import * as styles from "./Controls.module.less";
-import * as names from "./names.module.less";
 
 export const Controls = memo(function Controls({
   onChangeView,

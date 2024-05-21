@@ -6,13 +6,13 @@ import {
   getKeyElementSelector,
   isKeyElement,
   KeySetRow,
+  names,
   StreakListRow,
 } from "@keybr/lesson-ui";
 import { Popup, Portal, useMouseHover, useTimeout } from "@keybr/widget";
 import { memo, type ReactNode, useState } from "react";
 import * as styles from "./Indicators.module.less";
 import { KeyExtendedDetails } from "./KeyExtendedDetails.tsx";
-import * as names from "./names.module.less";
 import { type LessonState } from "./state/index.ts";
 
 export const Indicators = memo(function Indicators({

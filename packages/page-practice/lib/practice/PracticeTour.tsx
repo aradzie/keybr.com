@@ -1,9 +1,8 @@
-import { KeyLegendList } from "@keybr/lesson-ui";
+import { KeyLegendList, names } from "@keybr/lesson-ui";
 import { Slide, Tour } from "@keybr/widget";
 import { memo } from "react";
 import { FormattedMessage } from "react-intl";
 import { KeyDetailsChartDemo } from "./KeyDetailsChartDemo.tsx";
-import * as names from "./names.module.less";
 
 export const PracticeTour = memo(function PracticeTour({
   onClose,
