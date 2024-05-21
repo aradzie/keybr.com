@@ -10,7 +10,7 @@ export const Icon = memo(function Icon({
   ...props
 }: IconProps): ReactNode {
   return (
-    <svg {...props} className={clsx(styles.icon, className)} viewBox={viewBox}>
+    <svg {...props} className={clsx(styles.root, className)} viewBox={viewBox}>
       <path d={shape} />
     </svg>
   );

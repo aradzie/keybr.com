@@ -55,11 +55,7 @@ export const IconButton = forwardRef(function IconButton(
       <a
         {...props}
         ref={element as RefObject<HTMLAnchorElement>}
-        className={clsx(
-          styles.iconButton,
-          disabled && styles.disabled,
-          className,
-        )}
+        className={clsx(styles.root, disabled && styles.disabled, className)}
         href={href}
         tabIndex={tabIndex}
         target={target}
@@ -73,11 +69,7 @@ export const IconButton = forwardRef(function IconButton(
       <button
         {...props}
         ref={element as RefObject<HTMLButtonElement>}
-        className={clsx(
-          styles.iconButton,
-          disabled && styles.disabled,
-          className,
-        )}
+        className={clsx(styles.root, disabled && styles.disabled, className)}
         disabled={disabled}
         tabIndex={tabIndex}
         title={title}

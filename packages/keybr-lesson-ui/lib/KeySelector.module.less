@@ -1,8 +1,10 @@
+@import "@keybr/widget/lib/index.less";
+
 .root {
-  outline: none;
+  .is-blurred();
 }
 
 .root:focus {
-  outline: 1px dotted var(--text-color);
+  .is-focused();
   outline-offset: 2px;
 }

@@ -43,11 +43,7 @@ export const TextField = forwardRef(function TextField(
       <textarea
         {...props}
         ref={element as RefObject<HTMLTextAreaElement>}
-        className={clsx(
-          styles.textField,
-          disabled && styles.disabled,
-          className,
-        )}
+        className={clsx(styles.root, disabled && styles.disabled, className)}
         disabled={disabled}
         maxLength={maxLength}
         name={name}
@@ -64,11 +60,7 @@ export const TextField = forwardRef(function TextField(
     return (
       <input
         ref={element as RefObject<HTMLInputElement>}
-        className={clsx(
-          styles.textField,
-          disabled && styles.disabled,
-          className,
-        )}
+        className={clsx(styles.root, disabled && styles.disabled, className)}
         disabled={disabled}
         maxLength={maxLength}
         name={name}

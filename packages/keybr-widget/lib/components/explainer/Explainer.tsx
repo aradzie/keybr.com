@@ -9,7 +9,5 @@ export function Explainer({
   readonly children?: ReactNode;
 }): ReactNode {
   const { explainersVisible } = useExplainerState();
-  return (
-    explainersVisible && <Para className={styles.explainer}>{children}</Para>
-  );
+  return explainersVisible && <Para className={styles.root}>{children}</Para>;
 }

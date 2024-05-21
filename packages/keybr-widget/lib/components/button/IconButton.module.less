@@ -1,6 +1,7 @@
 @import "../../styles/components.less";
 
-.iconButton {
+.root {
+  .is-blurred();
   display: inline-block;
   position: relative;
   vertical-align: middle;
@@ -15,8 +16,8 @@
   cursor: pointer;
 }
 
-.iconButton:focus {
-  outline: 1px dotted var(--text-color);
+.root:focus {
+  .is-focused();
 }
 
 .disabled {

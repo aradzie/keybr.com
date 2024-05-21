@@ -1,6 +1,6 @@
 @import "../../styles/components.less";
 
-.range {
+.root {
   display: inline-block;
   vertical-align: middle;
   block-size: @field-height;
@@ -19,6 +19,7 @@
 }
 
 .track {
+  .is-blurred();
   inline-size: 100%;
   block-size: 1px;
   border: none;
@@ -29,42 +30,42 @@
 }
 
 .track_focused {
-  outline: 1px dotted var(--text-color);
+  .is-focused();
   outline-offset: 2px;
 }
 
-input[type="range"].range {
+input[type="range"].root {
   background-color: transparent;
   -webkit-appearance: none;
 }
 
-input[type="range"].range:focus {
-  outline: none;
+input[type="range"].root:focus {
+  .is-blurred();
 }
 
-input[type="range"].range::-webkit-slider-thumb {
+input[type="range"].root::-webkit-slider-thumb {
   -webkit-appearance: none;
   .thumb();
 }
 
-input[type="range"].range::-webkit-slider-runnable-track {
+input[type="range"].root::-webkit-slider-runnable-track {
   .track();
 }
 
-input[type="range"].range:focus::-webkit-slider-runnable-track {
+input[type="range"].root:focus::-webkit-slider-runnable-track {
   .track();
   .track_focused();
 }
 
-input[type="range"].range::-moz-range-thumb {
+input[type="range"].root::-moz-range-thumb {
   .thumb();
 }
 
-input[type="range"].range::-moz-range-track {
+input[type="range"].root::-moz-range-track {
   .track();
 }
 
-input[type="range"].range:focus::-moz-range-track {
+input[type="range"].root:focus::-moz-range-track {
   .track();
   .track_focused();
 }

@@ -1,6 +1,7 @@
 @import "../../styles/components.less";
 
-.textField {
+.root {
+  .is-blurred();
   display: inline-block;
   min-block-size: @field-height;
   margin: 0;
@@ -18,14 +19,14 @@
   text-transform: none;
 }
 
-.textField:focus {
+.root:focus {
   border: 1px solid var(--TextField--focused__border-color);
   color: var(--TextField--focused__color);
   background-color: var(--TextField--focused__background-color);
   outline: none;
 }
 
-textarea.textField {
+textarea.root {
   min-block-size: 10em;
   padding-inline: 1rem;
   padding-block: 0.5rem;

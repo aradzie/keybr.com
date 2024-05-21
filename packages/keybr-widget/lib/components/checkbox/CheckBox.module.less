@@ -1,6 +1,7 @@
 @import "../../styles/components.less";
 
-.checkBox {
+.root {
+  .is-blurred();
   display: inline-flex;
   align-items: center;
   vertical-align: middle;
@@ -24,9 +25,9 @@
   fill: var(--Button__background-color);
 }
 
-.checkBox:focus-within {
+.root:focus-within {
   .icon {
-    outline: 1px dotted var(--text-color);
+    .is-focused();
     outline-offset: 2px;
   }
 }

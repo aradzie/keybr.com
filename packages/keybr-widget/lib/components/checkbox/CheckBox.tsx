@@ -40,7 +40,7 @@ export const CheckBox = forwardRef(function CheckBox(
   return (
     <label
       {...props}
-      className={clsx(styles.checkBox, disabled && styles.disabled, className)}
+      className={clsx(styles.root, disabled && styles.disabled, className)}
       title={title}
     >
       <input

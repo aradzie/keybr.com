@@ -100,7 +100,7 @@ export function TabList({
   );
   return (
     <>
-      <div className={styles.tabList}>{items}</div>
+      <div className={styles.root}>{items}</div>
       {selectedTab.props.children}
     </>
   );

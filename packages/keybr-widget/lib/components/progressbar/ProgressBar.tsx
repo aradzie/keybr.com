@@ -11,7 +11,7 @@ export function ProgressBar({
   if (Number.isFinite(total) && Number.isFinite(current) && total > 0) {
     const value = Math.round(Math.max(0, Math.min(1, current / total)) * 100);
     return (
-      <div className={clsx(styles.progressBar, className)}>
+      <div className={clsx(styles.root, className)}>
         <div
           className={clsx(styles.bar, styles.determined)}
           style={{ inlineSize: `${value}%` }}
@@ -20,7 +20,7 @@ export function ProgressBar({
     );
   } else {
     return (
-      <div className={clsx(styles.progressBar, className)}>
+      <div className={clsx(styles.root, className)}>
         <div
           className={clsx(styles.bar, styles.intermediate)}
           style={{ inlineSize: "100%" }}

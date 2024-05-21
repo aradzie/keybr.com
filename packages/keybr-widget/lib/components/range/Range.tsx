@@ -38,7 +38,7 @@ export const Range = forwardRef(function Range(
     <input
       {...props}
       ref={element}
-      className={clsx(styles.range, disabled && styles.disabled, className)}
+      className={clsx(styles.root, disabled && styles.disabled, className)}
       disabled={disabled}
       max={max}
       min={min}

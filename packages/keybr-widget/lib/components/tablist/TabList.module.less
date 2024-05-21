@@ -1,11 +1,12 @@
 @import "../../styles/components.less";
 
-.tabList {
+.root {
   display: flex;
   margin-block-end: 1rem;
 }
 
 .item {
+  .is-blurred();
   min-inline-size: 10rem;
   block-size: 3rem;
   padding-inline: 1rem;
@@ -18,7 +19,7 @@
 }
 
 .item:focus {
-  outline: 1px dotted var(--text-color);
+  .is-focused();
 }
 
 .item_active {

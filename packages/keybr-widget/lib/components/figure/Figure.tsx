@@ -22,7 +22,7 @@ export function Figure(props: FigureProps): ReactNode {
   return (
     <Component
       id={id} //
-      className={clsx(styles.figure, className)}
+      className={clsx(styles.root, className)}
       title={title}
     >
       {caption && <Figure.Caption>{caption}</Figure.Caption>}

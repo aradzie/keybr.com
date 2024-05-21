@@ -10,7 +10,7 @@ export function FieldList(props: FieldListProps): ReactNode {
   return (
     <Component
       id={id} //
-      className={clsx(styles.fieldList, className)}
+      className={clsx(styles.root, className)}
       title={title}
     >
       {children}
