@@ -1,23 +1,22 @@
-import { booleanProp } from "@keybr/settings";
+import { booleanProp, Preferences } from "@keybr/settings";
 import { Button, Para, styleTextEnd, useExplainerState } from "@keybr/widget";
 import { type ReactNode, useLayoutEffect } from "react";
 import { useIntl } from "react-intl";
-import { Prefs } from "../prefs.ts";
 
-const propShowExplainers = booleanProp("prefs.settings.showExplainers", true);
+const propExplainSettings = booleanProp("prefs.settings.explain", true);
 
 export function ExplainSettings(): ReactNode {
   const { formatMessage } = useIntl();
   const { explainersVisible, toggleExplainers } = useExplainerState();
   useLayoutEffect(() => {
-    toggleExplainers(Prefs.get(propShowExplainers));
+    toggleExplainers(Preferences.get(propExplainSettings));
   });
   return (
     <Para className={styleTextEnd}>
       <Button
         onClick={() => {
           toggleExplainers(!explainersVisible);
-          Prefs.set(propShowExplainers, !explainersVisible);
+          Preferences.set(propExplainSettings, !explainersVisible);
         }}
       >
         {explainersVisible

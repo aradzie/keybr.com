@@ -1,7 +1,7 @@
 import { type KeyId } from "@keybr/keyboard";
 import { names } from "@keybr/lesson-ui";
 import { Screen } from "@keybr/pages-shared";
-import { enumProp } from "@keybr/settings";
+import { enumProp, Preferences } from "@keybr/settings";
 import { type LineList } from "@keybr/textinput";
 import {
   type KeyEvent,
@@ -11,7 +11,6 @@ import {
 import { TextArea } from "@keybr/textinput-ui";
 import { type Focusable, Zoomer } from "@keybr/widget";
 import { createRef, PureComponent, type ReactNode } from "react";
-import { Prefs } from "../prefs.ts";
 import { Controls } from "./Controls.tsx";
 import { Indicators } from "./Indicators.tsx";
 import { DeferredKeyboardPresenter } from "./KeyboardPresenter.tsx";
@@ -60,7 +59,7 @@ export class Presenter extends PureComponent<Props, State> {
   readonly focusRef = createRef<Focusable>();
 
   override state: State = {
-    view: Prefs.get(propView),
+    view: Preferences.get(propView),
     tour: false,
     focus: false,
   };
@@ -248,7 +247,7 @@ export class Presenter extends PureComponent<Props, State> {
     this.setState(
       ({ view }) => {
         const nextView = getNextView(view);
-        Prefs.set(propView, nextView);
+        Preferences.set(propView, nextView);
         return { view: nextView };
       },
       () => {
