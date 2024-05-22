@@ -8,7 +8,7 @@ export function catchError(error: unknown) {
   console.error(error);
   ErrorAlert.toast(
     <>
-      <p>On ho! Database error!</p>
+      <p>Oh no! Database error!</p>
       <p>This is likely a temporary problem and will be resolved soon.</p>
     </>,
     error,
