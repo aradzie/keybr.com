@@ -1,7 +1,7 @@
 import { KeyFrequencyHeatmap, Marker } from "@keybr/chart";
 import { useKeyboard } from "@keybr/keyboard";
 import { type KeyStatsMap } from "@keybr/result";
-import { Figure } from "@keybr/widget";
+import { Explainer, Figure } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
 
@@ -20,12 +20,14 @@ export function KeyFrequencyHeatmapSection({
         />
       </Figure.Caption>
 
-      <Figure.Description>
-        <FormattedMessage
-          id="profile.chart.keyFrequencyHeatmap.description"
-          defaultMessage="This chart shows relative key frequencies as a heatmap."
-        />
-      </Figure.Description>
+      <Explainer>
+        <Figure.Description>
+          <FormattedMessage
+            id="profile.chart.keyFrequencyHeatmap.description"
+            defaultMessage="This chart shows relative key frequencies as a heatmap."
+          />
+        </Figure.Description>
+      </Explainer>
 
       <KeyFrequencyHeatmap keyStatsMap={keyStatsMap} keyboard={keyboard} />
 

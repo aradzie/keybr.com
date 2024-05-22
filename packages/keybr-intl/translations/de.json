@@ -262,7 +262,6 @@
   "practice.widget.showTour.description": "Eine Führung mit Hilfe-Folien.",
   "practice.widget.skipLesson.description": "Überspringen Sie die aktuelle Lektion (Strg + Pfeil rechts).",
   "practice.widget.switchView.description": "Wechseln Sie das aktuelle Oberflächenlayout.",
-  "profile.accuracy.description": "Diese Statistiken zeigen Ihre Fähigkeit, lange Textsequenzen mit hoher Genauigkeit zu tippen, unabhängig von der Tippgeschwindigkeit.",
   "profile.accuracy.header": "Genauigkeitsserien",
   "profile.accuracy.legend": "Oben sind die längsten durchgehenden Sequenzen von Lektionen mit einer Genauigkeit über einem bestimmten Schwellenwert aufgelistet, zusammen mit Statistiken über jede dieser Sequenzen. Je länger die Sequenz der Lektionen, desto besser.",
   "profile.accuracy.noData": "Sie haben keine Genauigkeitsserien. Erwägen Sie, eine Lektion mit höchstmöglicher Genauigkeit abzuschließen, unabhängig von der Tippgeschwindigkeit.",

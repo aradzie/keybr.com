@@ -1,5 +1,5 @@
 import { type ResultSummary } from "@keybr/result";
-import { Figure } from "@keybr/widget";
+import { Explainer, Figure } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
 import { Calendar } from "./Calendar.tsx";
@@ -18,12 +18,14 @@ export function CalendarSection({
         />
       </Figure.Caption>
 
-      <Figure.Description>
-        <FormattedMessage
-          id="profile.chart.calendar.description"
-          defaultMessage="This calendar shows the dates of active learning."
-        />
-      </Figure.Description>
+      <Explainer>
+        <Figure.Description>
+          <FormattedMessage
+            id="profile.chart.calendar.description"
+            defaultMessage="This calendar shows the dates of active learning."
+          />
+        </Figure.Description>
+      </Explainer>
 
       <Calendar summary={summary} />
     </Figure>

@@ -267,7 +267,6 @@
   "practice.widget.showTour.description": "使用用於幫助的幻燈片來展示引導步驟。",
   "practice.widget.skipLesson.description": "跳過當前課程(Ctrl + Right Arrow)。",
   "practice.widget.switchView.description": "切換當前介面佈局。",
-  "profile.accuracy.description": "無論打字速度如何，這些統計數據都顯示了您高精度鍵入長文字序列的能力。",
   "profile.accuracy.header": "精確度記錄",
   "profile.accuracy.legend": "下面列出了準確率超過給定臨界值的最長連續課程，以及每個此類序列的統計數據。課程序列越長越好。",
   "profile.accuracy.noData": "您沒有任何準確率記錄。考慮以盡可能高的準確率完成一堂課，而不考慮打字速度。",

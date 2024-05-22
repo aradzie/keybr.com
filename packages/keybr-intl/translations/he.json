@@ -260,7 +260,6 @@
   "practice.widget.showTour.description": "הצג סיור מודרך עם שקופיות עזרה.",
   "practice.widget.skipLesson.description": "דלג על השיעור הנוכחי (Ctrl + חץ ימינה).",
   "practice.widget.switchView.description": "החלף את פריסת הממשק הנוכחית.",
-  "profile.accuracy.description": "נתונים סטטיסטיים אלה מראים את היכולת שלך להקליד רצפים ארוכים של טקסט בדיוק גבוה, ללא קשר למהירות ההקלדה.",
   "profile.accuracy.header": "פסי דיוק",
   "profile.accuracy.legend": "למעלה מפורטים הרצפים הרצופים הארוכים ביותר של שיעורים עם דיוק מעל סף נתון, יחד עם סטטיסטיקה לגבי כל רצף כזה. ככל שרצף השיעורים ארוך יותר, כך ייטב.",
   "profile.accuracy.noData": "אין לך פסי דיוק. שקול להשלים שיעור בדיוק הכי גבוה שאפשר, ללא קשר למהירות ההקלדה.",

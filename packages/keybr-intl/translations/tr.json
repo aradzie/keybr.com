@@ -172,7 +172,6 @@
   "page.wordCount.description": "Metininizdeki karakter ve kelimeleri sayın.",
   "page.wordCount.link.description": "Metininizdeki karakter ve kelimeleri sayın.",
   "practice.widget.settings.name": "Ayarlar...",
-  "profile.accuracy.description": "Bu istatistikler uzun yazıları hangi doğruluk oranıyla yazdığınızı yazı hızınızı dikkate almadan gösterir.",
   "profile.accuracy.header": "Doğruluk Çizgileri",
   "profile.calendar.averageSpeed.description": "Ortalama hız: {value}",
   "profile.calendar.topSpeed.description": "Maksimum hız: {value}",

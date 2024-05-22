@@ -264,7 +264,6 @@
   "practice.widget.showTour.description": "Mostra una visita guidata con diapositive di aiuto.",
   "practice.widget.skipLesson.description": "Salta la lezione corrente (Ctrl + Freccia destra).",
   "practice.widget.switchView.description": "Cambia il layout dell’interfaccia corrente.",
-  "profile.accuracy.description": "Queste statistiche mostrano la tua capacità di digitare lunghe sequenze di testo con elevata precisione, indipendentemente dalla velocità di digitazione.",
   "profile.accuracy.header": "Serie di precisione",
   "profile.accuracy.legend": "Sopra sono elencate le sequenze continue più lunghe di lezioni con accuratezza superiore a una determinata soglia, insieme alle statistiche su ciascuna di queste sequenze. Più lunga è la sequenza di lezioni, meglio è.",
   "profile.accuracy.noData": "Non hai alcuna serie di precisione. Prendi in considerazione l’idea di completare una lezione con la massima precisione possibile, indipendentemente dalla velocità di digitazione.",

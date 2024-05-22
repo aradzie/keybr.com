@@ -222,7 +222,6 @@
   "practice.widget.settings.description": "تغییر تنظیمات درس، پیکربندی زبان، چیدمان صفحه‌کلید و...",
   "practice.widget.settings.name": "تنظیمات...",
   "practice.widget.skipLesson.description": "ردکردن درس فعلی (Ctrl + پیکان راست).",
-  "profile.accuracy.description": "این آمار توانایی شما در تایپ سری متن های طولانی با دقت بالا، فارغ از در نظر گرفتن سرعت تایپ را نشان می‌دهد.",
   "profile.calendar.averageSpeed.description": "سرعت میانگین: {value}",
   "profile.calendar.topSpeed.description": "بالاترین سرعت: {value}",
   "profile.calendar.totalLessons.description": "تعداد درس‌ها: {value}",

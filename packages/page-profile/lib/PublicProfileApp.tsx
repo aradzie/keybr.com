@@ -1,11 +1,12 @@
 import { makeSpeedDistribution } from "@keybr/chart";
 import { type NamedUser, Screen, UserName } from "@keybr/pages-shared";
 import { type KeyStatsMap, ResultSummary } from "@keybr/result";
-import { Header } from "@keybr/widget";
+import { ExplainerBoundary, Header } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { AccuracySection } from "./profile/AccuracySection.tsx";
 import { CalendarSection } from "./profile/CalendarSection.tsx";
 import { DistributionSection } from "./profile/DistributionSection.tsx";
+import { ExplainProfile } from "./profile/ExplainProfile.tsx";
 import { KeyFrequencyHeatmapSection } from "./profile/KeyFrequencyHeatmapSection.tsx";
 import { KeyFrequencyHistogramSection } from "./profile/KeyFrequencyHistogramSection.tsx";
 import { KeySpeedHistogramSection } from "./profile/KeySpeedHistogramSection.tsx";
@@ -22,12 +23,15 @@ export function PublicProfileApp({
 }): ReactNode {
   return (
     <Screen>
-      <Header level={1}>
-        <UserName user={profileOwner} />
-      </Header>
-      <ResultGrouper>
-        {(keyStatsMap) => <Content keyStatsMap={keyStatsMap} />}
-      </ResultGrouper>
+      <ExplainerBoundary>
+        <ExplainProfile />
+        <Header level={1}>
+          <UserName user={profileOwner} />
+        </Header>
+        <ResultGrouper>
+          {(keyStatsMap) => <Content keyStatsMap={keyStatsMap} />}
+        </ResultGrouper>
+      </ExplainerBoundary>
     </Screen>
   );
 }

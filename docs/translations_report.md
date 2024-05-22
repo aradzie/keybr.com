@@ -1,20 +1,24 @@
 # Arabic
 
-Translated: 431 messages, 5147 words
+Translated: 430 messages, 5129 words
 
-Untranslated: 2 messages, 22 words
+Untranslated: 4 messages, 26 words
 
 * *Books*
+* *Explain charts*
+* *Hide explanations*
 * *Generate typing lessons from the text of a book. All keys ar...*
 
 # Catalan
 
-Translated: 402 messages, 3691 words
+Translated: 401 messages, 3673 words
 
-Untranslated: 30 messages, 1469 words
+Untranslated: 32 messages, 1473 words
 
 * *Errors*
 * *Accuracy*
+* *Explain charts*
+* *Hide explanations*
 * *No accuracy streaks.*
 * *The previous keys are also above the target speed*
 * *Generate lessons that reseble the specified programming lang...*
@@ -31,20 +35,20 @@ Untranslated: 30 messages, 1469 words
 * *<p>This is the accuracy indicator and the difference from th...*
 * *<h1>High Scores</h1><p>The table of the fastest typists for ...*
 * *<p>This is the text board. It displays the text to type out....*
-* *<p>This is the virtual keyboard. It helps you memorize key p...*
-* *When you focus on a new key, it is very likely that the spee...*
 * ...
 
 # Czech
 
-Translated: 423 messages, 4983 words
+Translated: 422 messages, 4965 words
 
-Untranslated: 10 messages, 186 words
+Untranslated: 12 messages, 190 words
 
 * *Books*
 * *Font:*
 * *Reset*
 * *Syntax:*
+* *Explain charts*
+* *Hide explanations*
 * *Keyboard hardware emulates layout*
 * *Generate lessons that reseble the specified programming lang...*
 * *Practice punctuation characters that are specific to a progr...*
@@ -54,9 +58,9 @@ Untranslated: 10 messages, 186 words
 
 # Danish
 
-Translated: 421 messages, 5136 words
+Translated: 420 messages, 5118 words
 
-Untranslated: 12 messages, 33 words
+Untranslated: 14 messages, 37 words
 
 * *Score*
 * *Books*
@@ -68,14 +72,16 @@ Untranslated: 12 messages, 33 words
 * *Position*
 * *Multiplayer*
 * *Multiplayer*
+* *Explain charts*
 * *Bar whitespace*
+* *Hide explanations*
 * *Generate typing lessons from the text of a book. All keys ar...*
 
 # German
 
-Translated: 425 messages, 5141 words
+Translated: 424 messages, 5123 words
 
-Untranslated: 8 messages, 28 words
+Untranslated: 10 messages, 32 words
 
 * *Books*
 * *Layout*
@@ -84,13 +90,15 @@ Untranslated: 8 messages, 28 words
 * *Syntax:*
 * *Position*
 * *Alphabet:*
+* *Explain charts*
+* *Hide explanations*
 * *Generate typing lessons from the text of a book. All keys ar...*
 
 # Greek
 
-Translated: 396 messages, 4739 words
+Translated: 395 messages, 4721 words
 
-Untranslated: 37 messages, 430 words
+Untranslated: 39 messages, 434 words
 
 * *Books*
 * *Font:*
@@ -108,21 +116,23 @@ Untranslated: 37 messages, 430 words
 * *Block cursor*
 * *Smooth cursor*
 * *No whitespace*
+* *Explain charts*
 * *Jumping cursor*
 * *Highlight keys*
 * *Bar whitespace*
-* *Underline cursor*
 * ...
 
 # Spanish
 
-Translated: 418 messages, 4561 words
+Translated: 417 messages, 4543 words
 
-Untranslated: 15 messages, 608 words
+Untranslated: 17 messages, 612 words
 
 * *Accuracy*
+* *Explain charts*
 * *Jumping cursor*
 * *Bar whitespace*
+* *Hide explanations*
 * *Bullet whitespace*
 * *Adjust the number of words in the lesson text. Making lesson...*
 * *Show color coding of the keyboard zones. Use this option to ...*
@@ -138,9 +148,9 @@ Untranslated: 15 messages, 608 words
 
 # Estonian
 
-Translated: 422 messages, 5092 words
+Translated: 421 messages, 5074 words
 
-Untranslated: 11 messages, 77 words
+Untranslated: 13 messages, 81 words
 
 * *GO!*
 * *Books*
@@ -148,6 +158,8 @@ Untranslated: 11 messages, 77 words
 * *Syntax:*
 * *Progress*
 * *Source Code*
+* *Explain charts*
+* *Hide explanations*
 * *Keyboard hardware emulates layout*
 * *Generate lessons that reseble the specified programming lang...*
 * *Practice punctuation characters that are specific to a progr...*
@@ -156,13 +168,15 @@ Untranslated: 11 messages, 77 words
 
 # Persian
 
-Translated: 357 messages, 1949 words
+Translated: 356 messages, 1931 words
 
-Untranslated: 74 messages, 3194 words
+Untranslated: 76 messages, 3198 words
 
 * *Books*
 * *Syntax:*
+* *Explain charts*
 * *Accuracy Streaks*
+* *Hide explanations*
 * *Keyboard hardware emulates layout*
 * *Show a guided tour with help slides.*
 * *Switch the current interface layout.*
@@ -178,15 +192,13 @@ Untranslated: 74 messages, 3194 words
 * *Bar color: {label1} – hit count, {label2} – miss count, {lab...*
 * *Generate typing lessons from the text of a book. All keys ar...*
 * *Horizontal axis: lesson number. Vertical axis: typing speed ...*
-* *<a>Benford’s law</a> is an observation that in many real-lif...*
-* *A calibrated key with the lowest confidence level. The more ...*
 * ...
 
 # French
 
 Translated: 394 messages, 4484 words
 
-Untranslated: 38 messages, 676 words
+Untranslated: 39 messages, 662 words
 
 * *Not set*
 * *Options*
@@ -199,22 +211,22 @@ Untranslated: 38 messages, 676 words
 * *Line cursor*
 * *Block cursor*
 * *Smooth cursor*
+* *Explain charts*
 * *Jumping cursor*
 * *Bar whitespace*
 * *Accuracy Streaks*
 * *Underline cursor*
 * *Explain settings*
 * *Hide explanations*
+* *Hide explanations*
 * *Error Sounds Only*
-* *Bullet whitespace*
-* *No accuracy streaks.*
 * ...
 
 # Hebrew
 
-Translated: 409 messages, 4763 words
+Translated: 408 messages, 4745 words
 
-Untranslated: 24 messages, 406 words
+Untranslated: 26 messages, 410 words
 
 * *Accuracy*
 * *Alphabet:*
@@ -222,10 +234,12 @@ Untranslated: 24 messages, 406 words
 * *Line cursor*
 * *Block cursor*
 * *Smooth cursor*
+* *Explain charts*
 * *Jumping cursor*
 * *Highlight keys*
 * *Bar whitespace*
 * *Underline cursor*
+* *Hide explanations*
 * *Bullet whitespace*
 * *Keyboard hardware emulates layout*
 * *Generate lessons that reseble the specified programming lang...*
@@ -234,28 +248,28 @@ Untranslated: 24 messages, 406 words
 * *Show color coding of the keyboard zones. Use this option to ...*
 * *Generate typing lessons from the text of a book. All keys ar...*
 * *Highlight a key that must to be pressed next. Use this optio...*
-* *Use this option if you have a hardware layout switcher on yo...*
-* *Manually unlock the remaining letters. Use this option if wa...*
 * ...
 
 # Croatian
 
-Translated: 427 messages, 5143 words
+Translated: 426 messages, 5125 words
 
-Untranslated: 6 messages, 26 words
+Untranslated: 8 messages, 30 words
 
 * *Books*
 * *Font:*
 * *Reset*
 * *Multiplayer*
 * *Multiplayer*
+* *Explain charts*
+* *Hide explanations*
 * *Generate typing lessons from the text of a book. All keys ar...*
 
 # Hungarian
 
-Translated: 373 messages, 4175 words
+Translated: 372 messages, 4157 words
 
-Untranslated: 60 messages, 994 words
+Untranslated: 62 messages, 998 words
 
 * *Books*
 * *Font:*
@@ -272,18 +286,18 @@ Untranslated: 60 messages, 994 words
 * *Block cursor*
 * *Smooth cursor*
 * *No whitespace*
+* *Explain charts*
 * *Jumping cursor*
 * *Highlight keys*
 * *Bar whitespace*
 * *Accuracy Streaks*
-* *Key Typing Speed*
 * ...
 
 # Indonesian
 
 Translated: 184 messages, 1410 words
 
-Untranslated: 234 messages, 3660 words
+Untranslated: 235 messages, 3646 words
 
 * *GO!*
 * *Done*
@@ -309,9 +323,9 @@ Untranslated: 234 messages, 3660 words
 
 # Italian
 
-Translated: 424 messages, 5149 words
+Translated: 423 messages, 5131 words
 
-Untranslated: 7 messages, 9 words
+Untranslated: 9 messages, 13 words
 
 * *Font:*
 * *Layout*
@@ -319,13 +333,15 @@ Untranslated: 7 messages, 9 words
 * *Layouts*
 * *Volume:*
 * *Accuracy*
+* *Explain charts*
+* *Hide explanations*
 * *No accuracy streaks.*
 
 # Japanese
 
 Translated: 257 messages, 2253 words
 
-Untranslated: 162 messages, 2824 words
+Untranslated: 163 messages, 2810 words
 
 * *GO!*
 * *Books*
@@ -353,7 +369,7 @@ Untranslated: 162 messages, 2824 words
 
 Translated: 173 messages, 1200 words
 
-Untranslated: 252 messages, 3894 words
+Untranslated: 253 messages, 3880 words
 
 * *Copy*
 * *Done*
@@ -379,9 +395,9 @@ Untranslated: 252 messages, 3894 words
 
 # Nepali
 
-Translated: 398 messages, 4741 words
+Translated: 397 messages, 4723 words
 
-Untranslated: 35 messages, 428 words
+Untranslated: 37 messages, 432 words
 
 * *Books*
 * *Font:*
@@ -397,19 +413,19 @@ Untranslated: 35 messages, 428 words
 * *Block cursor*
 * *Smooth cursor*
 * *No whitespace*
+* *Explain charts*
 * *Jumping cursor*
 * *Highlight keys*
 * *Bar whitespace*
 * *Underline cursor*
-* *Error Sounds Only*
-* *Bullet whitespace*
+* *Hide explanations*
 * ...
 
 # Dutch
 
-Translated: 422 messages, 5154 words
+Translated: 421 messages, 5136 words
 
-Untranslated: 10 messages, 13 words
+Untranslated: 12 messages, 17 words
 
 * *Score*
 * *Score*
@@ -418,36 +434,42 @@ Untranslated: 10 messages, 13 words
 * *Accuracy*
 * *Multiplayer*
 * *Multiplayer*
+* *Explain charts*
 * *Premium Account*
 * *Premium Account*
 * *Premium Account*
+* *Hide explanations*
 
 # Polish
 
-Translated: 431 messages, 5147 words
+Translated: 430 messages, 5129 words
 
-Untranslated: 2 messages, 22 words
+Untranslated: 4 messages, 26 words
 
 * *Books*
+* *Explain charts*
+* *Hide explanations*
 * *Generate typing lessons from the text of a book. All keys ar...*
 
 # Brazilian Portuguese
 
-Translated: 427 messages, 5142 words
+Translated: 426 messages, 5124 words
 
-Untranslated: 5 messages, 25 words
+Untranslated: 7 messages, 29 words
 
 * *Books*
 * *Layout*
 * *Layout:*
 * *Layouts*
+* *Explain charts*
+* *Hide explanations*
 * *Generate typing lessons from the text of a book. All keys ar...*
 
 # European Portuguese
 
-Translated: 423 messages, 5133 words
+Translated: 422 messages, 5115 words
 
-Untranslated: 10 messages, 36 words
+Untranslated: 12 messages, 40 words
 
 * *Books*
 * *Layout*
@@ -456,24 +478,28 @@ Untranslated: 10 messages, 36 words
 * *Volume:*
 * *Top score!*
 * *Top speed!*
+* *Explain charts*
+* *Hide explanations*
 * *Daily goal reached!*
 * *New letter unlocked!*
 * *Generate typing lessons from the text of a book. All keys ar...*
 
 # Russian
 
-Translated: 431 messages, 5147 words
+Translated: 430 messages, 5129 words
 
-Untranslated: 2 messages, 22 words
+Untranslated: 4 messages, 26 words
 
 * *Books*
+* *Explain charts*
+* *Hide explanations*
 * *Generate typing lessons from the text of a book. All keys ar...*
 
 # Swedish
 
-Translated: 393 messages, 4736 words
+Translated: 392 messages, 4718 words
 
-Untranslated: 40 messages, 433 words
+Untranslated: 42 messages, 437 words
 
 * *Books*
 * *Font:*
@@ -494,14 +520,14 @@ Untranslated: 40 messages, 433 words
 * *Block cursor*
 * *Smooth cursor*
 * *No whitespace*
-* *Jumping cursor*
+* *Explain charts*
 * ...
 
 # Turkish
 
-Translated: 268 messages, 1773 words
+Translated: 267 messages, 1755 words
 
-Untranslated: 154 messages, 3309 words
+Untranslated: 156 messages, 3313 words
 
 * *Help*
 * *Help*
@@ -527,17 +553,19 @@ Untranslated: 154 messages, 3309 words
 
 # Ukrainian
 
-Translated: 432 messages, 5168 words
+Translated: 431 messages, 5150 words
 
-Untranslated: 1 messages, 1 words
+Untranslated: 3 messages, 5 words
 
 * *Accuracy*
+* *Explain charts*
+* *Hide explanations*
 
 # Vietnamese
 
 Translated: 124 messages, 499 words
 
-Untranslated: 289 messages, 4523 words
+Untranslated: 290 messages, 4509 words
 
 * *Time*
 * *Time*
@@ -563,23 +591,27 @@ Untranslated: 289 messages, 4523 words
 
 # Simplified Chinese
 
-Translated: 426 messages, 5117 words
+Translated: 425 messages, 5099 words
 
-Untranslated: 7 messages, 52 words
+Untranslated: 9 messages, 56 words
 
 * *Books*
 * *Syntax:*
 * *Source Code*
 * *M|T|W|T|F|S|S*
+* *Explain charts*
+* *Hide explanations*
 * *Generate lessons that reseble the specified programming lang...*
 * *Practice punctuation characters that are specific to a progr...*
 * *Generate typing lessons from the text of a book. All keys ar...*
 
 # Traditional Chinese
 
-Translated: 431 messages, 5147 words
+Translated: 430 messages, 5129 words
 
-Untranslated: 2 messages, 22 words
+Untranslated: 4 messages, 26 words
 
 * *Books*
+* *Explain charts*
+* *Hide explanations*
 * *Generate typing lessons from the text of a book. All keys ar...*

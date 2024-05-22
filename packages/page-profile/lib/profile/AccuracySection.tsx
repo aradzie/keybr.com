@@ -7,8 +7,8 @@ import {
   type Streak,
 } from "@keybr/result";
 import {
+  Explainer,
   Figure,
-  Header,
   NameValue,
   Para,
   styleTextCenter,
@@ -24,45 +24,38 @@ export function AccuracySection({
   const streaks = MutableStreakList.findLongest(summary.allTimeStats.results);
 
   return (
-    <>
-      <Header level={2}>
+    <Figure>
+      <Figure.Caption>
         <FormattedMessage
           id="profile.accuracy.header"
           defaultMessage="Accuracy Streaks"
         />
-      </Header>
+      </Figure.Caption>
 
-      <Figure>
-        <Figure.Description>
+      {streaks.length > 0 ? (
+        <dl>
+          {streaks.map((streak, index) => (
+            <StreakDetails key={index} streak={streak} />
+          ))}
+        </dl>
+      ) : (
+        <Para className={styleTextCenter}>
           <FormattedMessage
-            id="profile.accuracy.description"
-            defaultMessage="These stats show your ability to type long sequences of text with high accuracy, regardless of typing speed."
+            id="profile.accuracy.noData"
+            defaultMessage="You don’t have any accuracy streaks. Consider completing a lesson with a highest accuracy possible, regardless of typing speed."
           />
-        </Figure.Description>
+        </Para>
+      )}
 
-        {streaks.length > 0 ? (
-          <dl>
-            {streaks.map((streak, index) => (
-              <StreakDetails key={index} streak={streak} />
-            ))}
-          </dl>
-        ) : (
-          <Para className={styleTextCenter}>
-            <FormattedMessage
-              id="profile.accuracy.noData"
-              defaultMessage="You don’t have any accuracy streaks. Consider completing a lesson with a highest accuracy possible, regardless of typing speed."
-            />
-          </Para>
-        )}
-
-        <Figure.Legend>
+      <Explainer>
+        <Figure.Description>
           <FormattedMessage
             id="profile.accuracy.legend"
             defaultMessage="Above are listed the longest continuous sequences of lessons with accuracy above a given threshold, along with statistics about every such sequence. The longer the sequence of lessons, the better."
           />
-        </Figure.Legend>
-      </Figure>
-    </>
+        </Figure.Description>
+      </Explainer>
+    </Figure>
   );
 }
 

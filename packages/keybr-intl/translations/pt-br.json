@@ -263,7 +263,6 @@
   "practice.widget.showTour.description": "Mostre um tour guiado com slides de ajuda.",
   "practice.widget.skipLesson.description": "Pule a lição atual (Ctrl + Seta para a direita).",
   "practice.widget.switchView.description": "Mude o layout da interface atual.",
-  "profile.accuracy.description": "Essas estatísticas mostram sua capacidade de digitar longas sequências de texto com alta precisão, independentemente da velocidade de digitação.",
   "profile.accuracy.header": "Faixas de precisão",
   "profile.accuracy.legend": "Acima estão listadas as sequências contínuas mais longas de aulas com precisão acima de um determinado limite, juntamente com estatísticas sobre cada uma dessas sequências. Quanto maior a sequência de aulas, melhor.",
   "profile.accuracy.noData": "Você não tem nenhuma faixa de precisão. Considere concluir uma lição com a maior precisão possível, independentemente da velocidade de digitação.",

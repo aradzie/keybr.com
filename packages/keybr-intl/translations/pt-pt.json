@@ -260,7 +260,6 @@
   "practice.widget.showTour.description": "Faça uma visita guidada com slides de ajuda.",
   "practice.widget.skipLesson.description": "Salte a próxima lição (Ctrl + Seta Direita).",
   "practice.widget.switchView.description": "Mude o layout do interface currente.",
-  "profile.accuracy.description": "Estas estatísticas mostram a sua habilidade em escrever longas sequências de texto com alta exatidão, independemente da sua velocidade.",
   "profile.accuracy.header": "Sequências de Precisão",
   "profile.accuracy.legend": "Acima estão listadas as sequências de lições mais longas com exatidão acima de um determinado limiar, junto com estatísticas sobre cada sequência. Quanto mais longa a sequência de lições, melhor.",
   "profile.accuracy.noData": "Você não tem nenhuma sequência de precisão. Considere completar uma lição com a maior exatidão possível, independentemente da velocidade.",

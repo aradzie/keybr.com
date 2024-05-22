@@ -265,7 +265,6 @@
   "practice.widget.showTour.description": "Pokažite vođeni obilazak sa slajdovima pomoći.",
   "practice.widget.skipLesson.description": "Preskočite trenutnu lekciju (Ctrl + strelica desno).",
   "practice.widget.switchView.description": "Promijenite trenutni izgled sučelja.",
-  "profile.accuracy.description": "Ove statistike pokazuju vašu sposobnost upisivanja dugih nizova teksta s velikom točnošću, bez obzira na brzinu tipkanja.",
   "profile.accuracy.header": "Nizovi točnosti",
   "profile.accuracy.legend": "Iznad su navedeni najduži kontinuirani nizovi lekcija s točnošću iznad zadanog praga, zajedno sa statistikama o svakom takvom slijedu. Što je duži slijed lekcija, to bolje.",
   "profile.accuracy.noData": "Nemate nikakvih tragova točnosti. Razmislite o završetku lekcije s najvećom mogućom točnošću, bez obzira na brzinu tipkanja.",

@@ -262,7 +262,6 @@
   "practice.widget.showTour.description": "Zobrazit prohlídku s nápovědou.",
   "practice.widget.skipLesson.description": "Přeskočit aktuální lekci (Ctrl + šipka doprava).",
   "practice.widget.switchView.description": "Přepnout aktuální rozložení rozhraní.",
-  "profile.accuracy.description": "Tyto statistiky ukazují vaši schopnost psát dlouhé sekvence textu s vysokou přesností, bez ohledu na rychlost psaní.",
   "profile.accuracy.header": "Série přesných lekcí",
   "profile.accuracy.legend": "Výše jsou uvedeny nejdelší souvislé sekvence lekcí s přesností nad danou prahovou hodnotu, spolu se statistikami o každé takové sekvenci. Čím delší je série lekcí, tím lépe.",
   "profile.accuracy.noData": "Nemáte žádné série přesných lekcí. Zvažte dokončení lekce s nejvyšší možnou přesností, bez ohledu na rychlost psaní.",

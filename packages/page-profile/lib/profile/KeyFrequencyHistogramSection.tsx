@@ -1,6 +1,6 @@
 import { KeyFrequencyHistogram, Marker } from "@keybr/chart";
 import { type KeyStatsMap } from "@keybr/result";
-import { Figure } from "@keybr/widget";
+import { Explainer, Figure } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
 import { ChartWrapper } from "./widgets.tsx";
@@ -19,12 +19,14 @@ export function KeyFrequencyHistogramSection({
         />
       </Figure.Caption>
 
-      <Figure.Description>
-        <FormattedMessage
-          id="profile.chart.keyFrequencyHistogram.description"
-          defaultMessage="This chart shows relative key frequencies."
-        />
-      </Figure.Description>
+      <Explainer>
+        <Figure.Description>
+          <FormattedMessage
+            id="profile.chart.keyFrequencyHistogram.description"
+            defaultMessage="This chart shows relative key frequencies."
+          />
+        </Figure.Description>
+      </Explainer>
 
       <ChartWrapper>
         <KeyFrequencyHistogram

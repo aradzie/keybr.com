@@ -255,7 +255,6 @@
   "practice.widget.showTour.description": "Vezetett túra indítása a segítő diákkal.",
   "practice.widget.skipLesson.description": "A lecke átugrása (Ctrl + Jobb nyíl).",
   "practice.widget.switchView.description": "Az aktuális felhasználói felület elrendezésének változtatása.",
-  "profile.accuracy.description": "Ezek a statisztikák azt mutatják, hogyan képes hosszú szövegsorozatokat nagy pontossággal begépelni, függetlenül a gépelési sebességtől.",
   "profile.calendar.averageSpeed.description": "Átlagos sebesség: {value}",
   "profile.calendar.topSpeed.description": "Leggyorsabb: {value}",
   "profile.calendar.totalLessons.description": "Leckék száma: {value}",

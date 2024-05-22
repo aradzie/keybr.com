@@ -1,7 +1,7 @@
 import { Marker, SpeedChart } from "@keybr/chart";
 import { hasData } from "@keybr/math";
 import { type Result } from "@keybr/result";
-import { Figure } from "@keybr/widget";
+import { Explainer, Figure } from "@keybr/widget";
 import { type ReactNode, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { SmoothnessRange } from "./SmoothnessRange.tsx";
@@ -23,12 +23,14 @@ export function TypingSpeedSection({
         />
       </Figure.Caption>
 
-      <Figure.Description>
-        <FormattedMessage
-          id="profile.chart.speed.description"
-          defaultMessage="This chart shows how overall typing speed changes over time."
-        />
-      </Figure.Description>
+      <Explainer>
+        <Figure.Description>
+          <FormattedMessage
+            id="profile.chart.speed.description"
+            defaultMessage="This chart shows how overall typing speed changes over time."
+          />
+        </Figure.Description>
+      </Explainer>
 
       <ChartWrapper>
         <SpeedChart

@@ -259,7 +259,6 @@
   "practice.widget.showTour.description": "Toon een rondleiding met helpslides.",
   "practice.widget.skipLesson.description": "Sla de huidige les over (Ctrl + Rechter pijl).",
   "practice.widget.switchView.description": "Wijzig de huidige interface-indeling.",
-  "profile.accuracy.description": "Deze statistieken laten zien hoe vaardig je bent in het typen van lange reeksen tekst met hoge nauwkeurigheid, ongeacht de typsnelheid.",
   "profile.accuracy.header": "Nauwkeurigheidsreeksen",
   "profile.accuracy.legend": "Hierboven staan de langste opeenvolgende reeksen lessen met een nauwkeurigheid boven een bepaalde drempel, samen met statistieken over elke reeks. Hoe langer de reeks lessen, hoe beter.",
   "profile.accuracy.noData": "Je hebt geen nauwkeurigheidsreeksen. Overweeg een les te voltooien met de hoogst mogelijke nauwkeurigheid, ongeacht de typesnelheid.",

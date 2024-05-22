@@ -249,7 +249,6 @@
   "practice.widget.showTour.description": "Mostra un tour guiat amb diapositives d’ajuda.",
   "practice.widget.skipLesson.description": "Salta la lliçó actual (Ctrl + Fletxa dreta).",
   "practice.widget.switchView.description": "Canvia la disposició actual de la interfície.",
-  "profile.accuracy.description": "Aquestes estadístiques mostren la teva capacitat per escriure seqüències llargues de text amb gran precisió, independentment de la velocitat d’escriptura.",
   "profile.accuracy.header": "Ratxa de precisió",
   "profile.accuracy.legend": "A sobre apareixen llistades les seqüències contínues més llargues amb una precisió per sobre d’un llindar donat, juntament amb estadístiques sobre cada seqüència. Com més llarga la seqüència de lliçons, millor.",
   "profile.accuracy.noData": "No tens ratxa de precisió. Completa una lliçó amb la màxima precisió que puguis, sense tenir en compte la velocitat.",

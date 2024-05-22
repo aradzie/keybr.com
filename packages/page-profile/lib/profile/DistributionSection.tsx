@@ -3,6 +3,7 @@ import { useIntlNumbers } from "@keybr/intl";
 import { type Distribution } from "@keybr/math";
 import { type ResultSummary } from "@keybr/result";
 import {
+  Explainer,
   Field,
   FieldList,
   Figure,
@@ -41,12 +42,14 @@ export function DistributionSection({
         />
       </Figure.Caption>
 
-      <Figure.Description>
-        <FormattedMessage
-          id="profile.chart.histogram.description"
-          defaultMessage="This is a histogram of the typing speeds of all users, and your position in relation to them."
-        />
-      </Figure.Description>
+      <Explainer>
+        <Figure.Description>
+          <FormattedMessage
+            id="profile.chart.histogram.description"
+            defaultMessage="This is a histogram of the typing speeds of all users, and your position in relation to them."
+          />
+        </Figure.Description>
+      </Explainer>
 
       <Para className={styleTextCenter}>
         {period === "average" ? (
@@ -120,12 +123,14 @@ export function DistributionSection({
         <Field.Filler />
       </FieldList>
 
-      <Figure.Legend>
-        <FormattedMessage
-          id="profile.chart.histogram.legend"
-          defaultMessage="See how fast you type relative to other users. The higher the bar is, the more people type at that speed. Your position is marked with the colored vertical lines."
-        />
-      </Figure.Legend>
+      <Explainer>
+        <Figure.Legend>
+          <FormattedMessage
+            id="profile.chart.histogram.legend"
+            defaultMessage="See how fast you type relative to other users. The higher the bar is, the more people type at that speed. Your position is marked with the colored vertical lines."
+          />
+        </Figure.Legend>
+      </Explainer>
     </Figure>
   );
 }

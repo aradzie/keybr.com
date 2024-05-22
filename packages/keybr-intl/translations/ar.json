@@ -267,7 +267,6 @@
   "practice.widget.showTour.description": "عرض جولة إرشادية مع شرائح المساعدة.",
   "practice.widget.skipLesson.description": "تخطي الدرس الحالي (Ctrl + السهم الأيمن).",
   "practice.widget.switchView.description": "تبديل تخطيط الواجهة الحالي.",
-  "profile.accuracy.description": "تُظهر هذه الإحصائيات قدرتك على كتابة تسلسلات طويلة من النص بدقة عالية، بغض النظر عن سرعة الكتابة.",
   "profile.accuracy.header": "سلاسل الدقة",
   "profile.accuracy.legend": "فيما يلي أطول تسلسل مستمر للدروس بدقة أعلى من عتبة معينة، إلى جانب إحصاءات حول كل تسلسل من هذا القبيل. كلما طالت سلسلة الدروس، كان ذلك أفضل.",
   "profile.accuracy.noData": "ليس لديك أي سلاس دقة. ضع في اعتبارك إكمال درس بأعلى دقة ممكنة، بغض النظر عن سرعة الكتابة.",

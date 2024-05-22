@@ -264,7 +264,6 @@
   "practice.widget.showTour.description": "Mostrar una visita guiada con diapositivas de ayuda.",
   "practice.widget.skipLesson.description": "Saltar la lección actual (Ctrl + Flecha Derecha).",
   "practice.widget.switchView.description": "Cambiar la disposición de la interfaz actual.",
-  "profile.accuracy.description": "Estas estadísticas muestran tu habilidad de escribir largas secuencias de texto con alta precisión, sin tener en cuenta la velocidad de escritura.",
   "profile.accuracy.header": "Rachas de precisión",
   "profile.accuracy.legend": "Encima están listadas las frases continuas de lecciones con una precisión superior a un cierto umbral, junto con estadísticas sobre tal secuencia. Cuanto más larga sea la secuencia de lecciones, mejor.",
   "profile.accuracy.noData": "No tienes rachas de precisión. Considera completar una lección con la mayor precisión posible, sin tener en cuenta la velocidad de escritura.",

@@ -1,6 +1,6 @@
 import { Marker, ProgressOverviewChart } from "@keybr/chart";
 import { type KeyStatsMap } from "@keybr/result";
-import { Figure } from "@keybr/widget";
+import { Explainer, Figure } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
 import { ChartWrapper } from "./widgets.tsx";
@@ -19,12 +19,14 @@ export function ProgressOverviewSection({
         />
       </Figure.Caption>
 
-      <Figure.Description>
-        <FormattedMessage
-          id="profile.chart.progressOverview.description"
-          defaultMessage="This chart shows the learning progress overview for all keys."
-        />
-      </Figure.Description>
+      <Explainer>
+        <Figure.Description>
+          <FormattedMessage
+            id="profile.chart.progressOverview.description"
+            defaultMessage="This chart shows the learning progress overview for all keys."
+          />
+        </Figure.Description>
+      </Explainer>
 
       <ChartWrapper>
         <ProgressOverviewChart

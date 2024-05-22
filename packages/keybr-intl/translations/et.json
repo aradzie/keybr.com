@@ -260,7 +260,6 @@
   "practice.widget.showTour.description": "Näita rakenduse giiditud ekskursiooni ja abi.",
   "practice.widget.skipLesson.description": "Jäta praegune harjutus vahele (Ctrl + parem nool).",
   "practice.widget.switchView.description": "Vaheta kasutajaliidese paigutust.",
-  "profile.accuracy.description": "Need statistikad näitavad teie võimet kirjutada pikki tekstiseeriaid suure täpsusega, sõltumata trükikiirusest.",
   "profile.accuracy.header": "Täpsusjadad",
   "profile.accuracy.legend": "Eespool on loetletud pikimad pidevad harjutuste jadad, mille täpsus ületab teatud künnise, koos iga sellise jada statistikaga. Mida pikem on harjutuste jada, seda parem.",
   "profile.accuracy.noData": "Sinul ei ole veel täpsusjadasid. Proovi sooritada harjutus võimalikult suure täpsusega, olenemata kirjutamiskiirusest.",

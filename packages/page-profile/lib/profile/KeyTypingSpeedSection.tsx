@@ -4,7 +4,7 @@ import { KeyDetails, KeySelector } from "@keybr/lesson-ui";
 import { hasData } from "@keybr/math";
 import { type KeyStatsMap } from "@keybr/result";
 import { useSettings } from "@keybr/settings";
-import { Figure, Para, styleTextCenter } from "@keybr/widget";
+import { Explainer, Figure, Para, styleTextCenter } from "@keybr/widget";
 import { type ReactNode, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { SmoothnessRange } from "./SmoothnessRange.tsx";
@@ -38,12 +38,14 @@ export function KeyTypingSpeedSection({
         />
       </Figure.Caption>
 
-      <Figure.Description>
-        <FormattedMessage
-          id="profile.chart.keySpeed.description"
-          defaultMessage="This chart shows the typing speed change for each individual key."
-        />
-      </Figure.Description>
+      <Explainer>
+        <Figure.Description>
+          <FormattedMessage
+            id="profile.chart.keySpeed.description"
+            defaultMessage="This chart shows the typing speed change for each individual key."
+          />
+        </Figure.Description>
+      </Explainer>
 
       <Para className={styleTextCenter}>
         <KeySelector

@@ -267,7 +267,6 @@
   "practice.widget.showTour.description": "Wyświetl samouczek ze slajdami pomocy.",
   "practice.widget.skipLesson.description": "Pomiń bieżącą lekcję (Ctrl + strzałka w prawo).",
   "practice.widget.switchView.description": "Przełącz bieżący układ interfejsu.",
-  "profile.accuracy.description": "Te statystyki pokazują Twoją zdolność do wpisywania długich sekwencji tekstu z dużą dokładnością, niezależnie od szybkości pisania.",
   "profile.accuracy.header": "Smugi dokładności",
   "profile.accuracy.legend": "Powyżej wymienione są najdłuższe ciągłe sekwencje lekcji z dokładnością powyżej zadanego progu, wraz ze statystykami dotyczącymi każdej takiej sekwencji. Im dłuższa sekwencja zajęć, tym lepiej.",
   "profile.accuracy.noData": "Nie masz żadnych pasm dokładności. Rozważ ukończenie lekcji z najwyższą możliwą dokładnością, niezależnie od szybkości pisania.",

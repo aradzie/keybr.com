@@ -251,7 +251,6 @@
   "practice.widget.showTour.description": "Visa guidad tur med hjälpslides.",
   "practice.widget.skipLesson.description": "Skippa denna lektion (Ctrl + Höger Piltangent).",
   "practice.widget.switchView.description": "Byt gränssnitt för layout.",
-  "profile.accuracy.description": "Denna statistik visar din förmåga att skriva långa texter med hög träffsäkerhet, oavsett hastighet.",
   "profile.accuracy.header": "Träffsäkerhetsstreaks",
   "profile.accuracy.legend": "Ovan finns de längsta sekvenserna av lektioner med träffsäkerhet över en given gräns, samt statistik om sekvenserna. Ju längre sekvens av lektioner, desto bättre.",
   "profile.accuracy.noData": "Du har inga träffsäkerhetstreaks. Försök att klara en lektion med högsta träffsäkerheten, oavsett skrivhastighet.",
