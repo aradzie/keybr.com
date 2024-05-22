@@ -1,2 +1,3 @@
 User-agent: *
-Allow: /
+Disallow: /assets/*.js
+Disallow: /assets/*.css
