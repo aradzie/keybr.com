@@ -19,7 +19,7 @@ export function checkStatus(): Middleware {
   ): Promise<HttpResponse> => {
     const response = await adapter(request);
     if (
-      ContentType.get(response.headers)?.type.essence ===
+      ContentType.tryGet(response.headers)?.type.essence ===
       ApplicationError.MIME_TYPE
     ) {
       const body = await response.json();
