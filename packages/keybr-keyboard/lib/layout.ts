@@ -821,6 +821,15 @@ export class Layout implements XEnumItem {
       Geometry.ISO_102_FULL,
     ),
   );
+  static readonly EN_STURDY = new Layout(
+    /* id= */ "en-sturdy",
+    /* xid= */ 0x96,
+    /* name= */ "Sturdy",
+    /* family= */ "sturdy",
+    /* language= */ Language.EN,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(Geometry.MATRIX),
+  );
 
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
@@ -837,6 +846,7 @@ export class Layout implements XEnumItem {
     Layout.EN_NERPS,
     Layout.EN_NERPS_MATRIX,
     Layout.EN_HANDS_DOWN_NEU,
+    Layout.EN_STURDY,
     Layout.EN_NORMAN,
     Layout.EN_HALMAK,
     Layout.EN_ENGRAM,
