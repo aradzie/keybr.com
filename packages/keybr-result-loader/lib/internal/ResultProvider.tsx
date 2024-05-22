@@ -16,14 +16,14 @@ export function ResultProvider({
   return (
     <ResultContext.Provider
       value={{
-        results: results,
+        results,
         appendResults: (newResults) => {
-          storage.append(newResults).catch(catchError);
           setResults([...results, ...newResults]);
+          storage.append(newResults).catch(catchError);
         },
         clearResults: () => {
-          storage.clear().catch(catchError);
           setResults([]);
+          storage.clear().catch(catchError);
         },
       }}
     >
