@@ -6,11 +6,13 @@ import { ErrorAlert } from "@keybr/debug";
  */
 export function catchError(error: unknown) {
   console.error(error);
-  ErrorAlert.toast(
-    <>
-      <p>Oh no! Database error!</p>
-      <p>This is likely a temporary problem and will be resolved soon.</p>
-    </>,
-    error,
-  );
+  if (process.env.REPORT_ERRORS === "true") {
+    ErrorAlert.toast(
+      <>
+        <p>Oh no! Database error!</p>
+        <p>This is likely a temporary problem and will be resolved soon.</p>
+      </>,
+      error,
+    );
+  }
 }
