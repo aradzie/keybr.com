@@ -12,10 +12,10 @@ export type SlotProps = {
 };
 
 /**
- * Slot is a virtual container which specifies where on the page its single
+ * Slot is a virtual container that specifies where on the page its single
  * child should be rendered.
  *
- * It is a placeholder component which is only used for its props and must not
+ * It is a placeholder component that is only used for its props and must not
  * be rendered.
  */
 export function Slot(props: SlotProps): ReactNode {
