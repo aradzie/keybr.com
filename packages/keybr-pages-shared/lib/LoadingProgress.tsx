@@ -10,7 +10,7 @@ export function LoadingProgress({
   readonly current: number;
 }): ReactNode {
   return (
-    <div className={styles.loadingProgress}>
+    <div className={styles.root}>
       <ProgressBar total={total} current={current} />
     </div>
   );

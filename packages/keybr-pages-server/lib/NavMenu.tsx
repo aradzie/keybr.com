@@ -20,7 +20,7 @@ export function NavMenu({
   const { publicUser } = usePageData();
 
   return (
-    <div className={styles.navMenu}>
+    <div className={styles.root}>
       <MenuItem>
         <AccountLink user={publicUser} />
       </MenuItem>
@@ -43,7 +43,7 @@ export function NavMenu({
 }
 
 function MenuItem({ children }: { readonly children: ReactNode }): ReactNode {
-  return <div className={styles.navMenuItem}>{children}</div>;
+  return <div className={styles.item}>{children}</div>;
 }
 
 function AccountLink({ user }: { readonly user: AnyUser }): ReactNode {
@@ -65,11 +65,11 @@ function MenuItemLink({
   readonly link: BoundPageLink<any>;
 }): ReactNode {
   return (
-    <PageLink link={link} className={styles.navLink}>
+    <PageLink link={link} className={styles.link}>
       {({ name, icon: Icon = AlertIcon }) => (
         <>
-          <Icon className={styles.navLinkIcon} />
-          <span className={styles.navLinkLabel}>{name}</span>
+          <Icon className={styles.icon} />
+          <span className={styles.label}>{name}</span>
         </>
       )}
     </PageLink>

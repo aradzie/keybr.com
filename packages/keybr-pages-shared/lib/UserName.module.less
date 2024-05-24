@@ -1,6 +1,6 @@
 @import "@keybr/widget/lib/index.less";
 
-.userName {
+.root {
   display: flex;
   align-items: center;
   max-inline-size: 100%;
@@ -8,12 +8,12 @@
   padding: 0;
 }
 
-.name {
-  .text-truncate();
+.anonymous {
+  font-style: italic;
 }
 
-.anonymousName {
-  font-style: italic;
+.name {
+  .text-truncate();
 }
 
 .avatar + .name {

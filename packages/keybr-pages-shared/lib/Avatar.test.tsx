@@ -10,7 +10,7 @@ test.serial("render anonymous user without image", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.not(r.container.querySelector(".avatar"), null);
+  t.not(r.container.querySelector(".root"), null);
 
   r.unmount();
 });
@@ -28,7 +28,7 @@ test.serial("render anonymous user with identicon", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.not(r.container.querySelector(".avatar"), null);
+  t.not(r.container.querySelector(".root"), null);
 
   r.unmount();
 });
@@ -47,7 +47,7 @@ test.serial("render named user with identicon", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.not(r.container.querySelector(".avatar"), null);
+  t.not(r.container.querySelector(".root"), null);
 
   r.unmount();
 });
@@ -66,7 +66,7 @@ test.serial("render named user with custom image", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.not(r.container.querySelector(".avatar"), null);
+  t.not(r.container.querySelector(".root"), null);
 
   r.unmount();
 });

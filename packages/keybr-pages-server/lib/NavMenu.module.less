@@ -1,6 +1,6 @@
 @import "@keybr/widget/lib/index.less";
 
-.navMenu {
+.root {
   position: sticky;
   inset-block-start: 0;
   max-inline-size: 12rem;
@@ -8,11 +8,11 @@
   padding: 0;
 }
 
-.navMenuItem {
+.item {
   border-block-end: var(--separator-border);
 }
 
-.navLink {
+.link {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -35,11 +35,11 @@
   }
 }
 
-.navLinkIcon {
+.icon {
   display: inline-block;
 }
 
-.navLinkLabel {
+.label {
   .text-truncate();
   display: inline-block;
   margin-inline-start: 0.5rem;

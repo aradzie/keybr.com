@@ -17,7 +17,7 @@ export function UserName({
   const { id, name } = user;
   return (
     <span
-      className={clsx(styles.userName, id == null && styles.anonymousName)}
+      className={styles.root}
       title={
         id != null
           ? name
@@ -31,12 +31,12 @@ export function UserName({
       {link != null ? (
         <PageLink
           link={link}
-          className={clsx(styles.name, id == null && styles.anonymousName)}
+          className={clsx(styles.name, id == null && styles.anonymous)}
         >
           {() => name}
         </PageLink>
       ) : (
-        <span className={clsx(styles.name, id == null && styles.anonymousName)}>
+        <span className={clsx(styles.name, id == null && styles.anonymous)}>
           {name}
         </span>
       )}

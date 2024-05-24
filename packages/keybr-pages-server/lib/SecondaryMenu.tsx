@@ -22,7 +22,7 @@ export function SecondaryMenu({
   readonly currentLink: BoundPageLink;
 }): ReactNode {
   return (
-    <div className={styles.secondaryMenu}>
+    <div className={styles.root}>
       <MailLink />
       <DiscordLink />
       <GithubLink />
