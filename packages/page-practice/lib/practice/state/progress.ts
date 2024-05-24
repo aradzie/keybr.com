@@ -10,7 +10,11 @@ import { DailyGoalEvents } from "./event-source-daily-goal.ts";
 import { LetterEvents } from "./event-source-letter.ts";
 import { TopScoreEvents } from "./event-source-top-score.ts";
 import { TopSpeedEvents } from "./event-source-top-speed.ts";
-import type { LessonEventListener, LessonEventSource } from "./event-types.ts";
+import {
+  type LessonEventListener,
+  type LessonEventSource,
+} from "./event-types.ts";
+import { type LoadingListener } from "./loading.ts";
 
 export class Progress {
   readonly #settings: Settings;
@@ -45,11 +49,40 @@ export class Progress {
     })();
   }
 
+  async *seedAsync(
+    results: readonly Result[],
+    listener: LoadingListener | null = null,
+  ) {
+    // We assume that the given array of results is append-only,
+    // so finding new results is a matter of comparing the array lengths.
+    // This function appends all the remaining results in chunks.
+    // The returned async iterator must be called repeatedly
+    // to complete the seeding.
+    while (true) {
+      const { length } = this.#results;
+      if (length < results.length) {
+        if (listener != null) {
+          listener({ total: results.length, current: length });
+        }
+        for (const result of results.slice(length, length + 100)) {
+          this.append(result);
+        }
+        yield null;
+      } else {
+        break;
+      }
+    }
+  }
+
   seed(results: readonly Result[]) {
     // We assume that the given array of results is append-only,
     // so finding new results is a matter of comparing the array lengths.
-    for (const result of results.slice(this.#results.length)) {
-      this.append(result);
+    // This function appends all the remaining results.
+    const { length } = this.#results;
+    if (length < results.length) {
+      for (const result of results.slice(length)) {
+        this.append(result);
+      }
     }
   }
 
