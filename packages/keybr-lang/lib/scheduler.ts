@@ -33,3 +33,12 @@ export const schedule = (
 export const defaultDelayer = (callback: () => void): void => {
   setTimeout(callback, 0); // Give the browser event loop a chance to run.
 };
+
+/**
+ * Gives the browser event loop a chance to run.
+ */
+export const yieldToBrowser = async (): Promise<void> => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, 0);
+  });
+};

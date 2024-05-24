@@ -6,7 +6,7 @@ import { LessonLoader } from "@keybr/lesson-loader";
 import { LoadingProgress } from "@keybr/pages-shared";
 import { type Result, useResults } from "@keybr/result";
 import { type Settings, useSettings } from "@keybr/settings";
-import { type ReactNode, useMemo, useRef, useState } from "react";
+import { type ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import { Controller } from "./Controller.tsx";
 import {
   displayEvent,
@@ -66,21 +66,22 @@ function useProgress(
 ) {
   const [done, setDone] = useState(false);
   const [loading, setLoading] = useState({ total: 0, current: 0 });
-  // Create the progress object.
   const progress = useMemo(
     () => new Progress(settings, lesson),
     [settings, lesson],
   );
-  // Only reschedule the seeding if we have new results.
-  const lastResults = useRef([] as readonly Result[]);
-  if (lastResults.current !== results) {
-    lastResults.current = results;
+  useEffect(() => {
     // Populating the progress object can take a long time, so we do this
     // asynchronously, interleaved with the browser event loop to avoid
     // freezing of the UI.
-    schedule(progress.seedAsync(lesson.filter(results), setLoading))
+    const controller = new AbortController();
+    const { signal } = controller;
+    schedule(progress.seedAsync(lesson.filter(results), setLoading), { signal })
       .then(() => setDone(true))
       .catch(catchError);
-  }
+    return () => {
+      controller.abort();
+    };
+  }, [progress, lesson, results]);
   return [done ? progress : null, loading] as const;
 }
