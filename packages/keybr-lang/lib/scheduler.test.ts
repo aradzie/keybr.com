@@ -26,13 +26,31 @@ test("schedule with a custom delay", async (t) => {
     done = true;
   };
 
-  const delay = (cb: () => void) => {
+  const delayer = (cb: () => void) => {
     process.nextTick(cb);
   };
 
-  t.is(await schedule(generate(), delay), undefined);
+  t.is(await schedule(generate(), { delayer }), undefined);
 
   t.true(done);
+});
+
+test("abort", async (t) => {
+  let done = false;
+
+  const controller = new AbortController();
+  const { signal } = controller;
+
+  const generate = async function* () {
+    yield null;
+    controller.abort();
+    yield null;
+    done = true;
+  };
+
+  t.is(await schedule(generate(), { signal }), undefined);
+
+  t.false(done);
 });
 
 test("fail", async (t) => {

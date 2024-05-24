@@ -71,14 +71,16 @@ function useProgress(
     () => new Progress(settings, lesson),
     [settings, lesson],
   );
-  // Incrementally update the existing progress object with new results.
-  useMemo(() => {
+  // Only reschedule the seeding if we have new results.
+  const lastResults = useRef([] as readonly Result[]);
+  if (lastResults.current !== results) {
+    lastResults.current = results;
     // Populating the progress object can take a long time, so we do this
     // asynchronously, interleaved with the browser event loop to avoid
     // freezing of the UI.
     schedule(progress.seedAsync(lesson.filter(results), setLoading))
       .then(() => setDone(true))
       .catch(catchError);
-  }, [lesson, results, progress]);
+  }
   return [done ? progress : null, loading] as const;
 }
