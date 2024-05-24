@@ -1,7 +1,7 @@
 import { textStatsOf } from "@keybr/unicode";
-import { TextField } from "@keybr/widget";
+import { Article, TextField } from "@keybr/widget";
 import { type ReactNode, useEffect, useMemo, useState } from "react";
-import { useIntl } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { EXAMPLE } from "./example.ts";
 import { TextStats } from "./TextStats.tsx";
 import * as styles from "./WordCountApp.module.less";
@@ -12,7 +12,14 @@ export function WordCountApp(): ReactNode {
   const [text, setText] = useState(initialText);
   const textStats = useTextStats(locale, text);
   return (
-    <div>
+    <Article>
+      <FormattedMessage
+        id="page.wordCount.content"
+        defaultMessage={
+          "<h1>Word Count</h1>" +
+          "<p>Count the characters and words in your text. Find out what the most common words are. Measure the time taken to type read these words.</p>"
+        }
+      />
       <TextField
         type="textarea"
         className={styles.textInput}
@@ -31,7 +38,7 @@ export function WordCountApp(): ReactNode {
         }}
       />
       <TextStats textStats={textStats} />
-    </div>
+    </Article>
   );
 }
 

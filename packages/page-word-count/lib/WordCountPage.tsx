@@ -1,8 +1,7 @@
 import { StandardLayout } from "@keybr/pages-server";
-import { Sitemap } from "@keybr/pages-shared";
-import { Article } from "@keybr/widget";
+import { LoadingProgress, Sitemap } from "@keybr/pages-shared";
 import { type ReactNode } from "react";
-import { FormattedMessage, useIntl } from "react-intl";
+import { useIntl } from "react-intl";
 
 export function WordCountPage(): ReactNode {
   const { formatMessage } = useIntl();
@@ -22,16 +21,7 @@ export function WordCountPage(): ReactNode {
         entrypoint: "page-word-count",
       }}
     >
-      <Article>
-        <FormattedMessage
-          id="page.wordCount.content"
-          defaultMessage={
-            "<h1>Word Count</h1>" +
-            "<p>Count the characters and words in your text. Find out what the most common words are. Measure the time taken to type read these words.</p>"
-          }
-        />
-        <div id="root" />
-      </Article>
+      <LoadingProgress current={0} total={0} />
     </StandardLayout>
   );
 }
