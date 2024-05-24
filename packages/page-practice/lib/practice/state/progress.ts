@@ -67,7 +67,7 @@ export class Progress {
         if (listener != null) {
           listener({ total: results.length, current: length });
         }
-        yield null;
+        yield null; // Yield to the browser event loop, unfreeze the UI.
       } else {
         break;
       }

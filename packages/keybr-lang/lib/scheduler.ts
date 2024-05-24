@@ -1,6 +1,6 @@
 /**
  * Executes a long-running task in smaller chunks interleaved
- * with the browser event loop to avoid freeing of the UI.
+ * with the browser event loop to avoid freezing of the UI.
  */
 export const schedule = (
   work: AsyncIterable<any>,
