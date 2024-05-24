@@ -58,6 +58,12 @@ Translated: 399 messages, 4733 words
 
 Untranslated: 31 messages, 404 words
 
+# Croatian
+
+Translated: 425 messages, 5132 words
+
+Untranslated: 5 messages, 5 words
+
 # Hungarian
 
 Translated: 367 messages, 4154 words

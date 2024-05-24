@@ -22,6 +22,7 @@ const allLocales = [
   "fa",
   "fr",
   "he",
+  "hr",
   "hu",
   "id",
   "it",
