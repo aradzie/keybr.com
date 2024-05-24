@@ -66,15 +66,19 @@ function useProgress(
 ) {
   const [done, setDone] = useState(false);
   const [loading, setLoading] = useState({ total: 0, current: 0 });
+  // Create the progress object.
   const progress = useMemo(
     () => new Progress(settings, lesson),
     [settings, lesson],
   );
-  // Populating the progress object can take a long time, so we do this
-  // asynchronously, interleaved with the browser event loop to avoid
-  // freezing of the UI.
-  schedule(progress.seedAsync(lesson.filter(results), setLoading))
-    .then(() => setDone(true))
-    .catch(catchError);
+  // Incrementally update the existing progress object with new results.
+  useMemo(() => {
+    // Populating the progress object can take a long time, so we do this
+    // asynchronously, interleaved with the browser event loop to avoid
+    // freezing of the UI.
+    schedule(progress.seedAsync(lesson.filter(results), setLoading))
+      .then(() => setDone(true))
+      .catch(catchError);
+  }, [lesson, results, progress]);
   return [done ? progress : null, loading] as const;
 }
