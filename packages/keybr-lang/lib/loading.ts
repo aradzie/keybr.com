@@ -3,4 +3,4 @@ export type LoadingEvent = {
   readonly current: number;
 };
 
-export type LoadingListener = (event: LoadingEvent) => void;
+export type LoadingEventListener = (event: LoadingEvent) => void;

@@ -1,3 +1,4 @@
+import { type LoadingEventListener } from "@keybr/lang";
 import { type Lesson, MutableDailyGoal } from "@keybr/lesson";
 import {
   MutableKeyStatsMap,
@@ -14,7 +15,6 @@ import {
   type LessonEventListener,
   type LessonEventSource,
 } from "./event-types.ts";
-import { type LoadingListener } from "./loading.ts";
 
 export class Progress {
   readonly #settings: Settings;
@@ -51,7 +51,7 @@ export class Progress {
 
   async *seedAsync(
     results: readonly Result[],
-    listener: LoadingListener | null = null,
+    listener: LoadingEventListener | null = null,
   ) {
     // We assume that the given array of results is append-only,
     // so finding new results is a matter of comparing the array lengths.
@@ -61,11 +61,11 @@ export class Progress {
     while (true) {
       const { length } = this.#results;
       if (length < results.length) {
-        if (listener != null) {
-          listener({ total: results.length, current: length });
-        }
         for (const result of results.slice(length, length + 100)) {
           this.append(result);
+        }
+        if (listener != null) {
+          listener({ total: results.length, current: length });
         }
         yield null;
       } else {

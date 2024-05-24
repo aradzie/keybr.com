@@ -54,8 +54,8 @@ export const Controller = memo(function Controller({
 function useLessonState(state: LessonState) {
   const keyboard = useKeyboard();
   const timeout = useTimeout();
-  const [_0, setLines] = useState(state.lines); // Forces ui update.
-  const [_1, setDepressedKeys] = useState(state.depressedKeys); // Forces ui update.
+  const [_0, setLines] = useState(state.lines); // Forces UI update.
+  const [_1, setDepressedKeys] = useState(state.depressedKeys); // Forces UI update.
 
   return useMemo(() => {
     // New lesson.

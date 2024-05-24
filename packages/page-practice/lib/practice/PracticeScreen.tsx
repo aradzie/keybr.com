@@ -52,7 +52,7 @@ function ResultUpdater({
       lastLesson.current = makeLastLesson(result, state.textInput.getSteps());
       appendResults([result]);
     } else {
-      appendResults([]); // Forces ui update.
+      appendResults([]); // Forces UI update.
     }
   });
   state.lastLesson = lastLesson.current;
