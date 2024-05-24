@@ -90,16 +90,25 @@ export class GuidedLesson extends Lesson {
       }
     }
 
-    // Find the least confident of all included keys and focus on it.
     const confidenceOf = (key: LessonKey): number => {
       return recoverKeys ? key.confidence ?? 0 : key.bestConfidence ?? 0;
     };
-    const weakestKeys = lessonKeys
-      .findIncludedKeys()
-      .filter((key) => confidenceOf(key) < 1)
-      .sort((a, b) => confidenceOf(a) - confidenceOf(b));
-    if (weakestKeys.length > 0) {
-      lessonKeys.focus(weakestKeys[0].letter);
+
+    const includedKeys = lessonKeys.findIncludedKeys();
+
+    // If a new key was recently unlocked, and has not reached the confidence
+    // level, continue focusing on this key.
+    const lastUnlockedKey = includedKeys[includedKeys.length - 1];
+    if (confidenceOf(lastUnlockedKey) < 1) {
+      lessonKeys.focus(lastUnlockedKey.letter);
+    } else {
+      // Else find the least confident of all included keys and focus on it.
+      const weakestKeys = includedKeys
+        .filter((key) => confidenceOf(key) < 1)
+        .sort((a, b) => confidenceOf(a) - confidenceOf(b));
+      if (weakestKeys.length > 0) {
+        lessonKeys.focus(weakestKeys[0].letter);
+      }
     }
 
     return lessonKeys;
