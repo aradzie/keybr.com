@@ -28,7 +28,7 @@ import { type LastLesson } from "./last-lesson.ts";
 import { type Progress } from "./progress.ts";
 
 export class LessonState {
-  readonly #onResult: (result: Result) => void;
+  readonly #onResult: (result: Result, textInput: TextInput) => void;
   readonly settings: Settings;
   readonly lesson: Lesson;
   readonly textInputSettings: TextInputSettings;
@@ -46,7 +46,10 @@ export class LessonState {
   suffix!: readonly CodePoint[]; // Mutable.
   depressedKeys: readonly KeyId[] = []; // Mutable.
 
-  constructor(progress: Progress, onResult: (result: Result) => void) {
+  constructor(
+    progress: Progress,
+    onResult: (result: Result, textInput: TextInput) => void,
+  ) {
     this.#onResult = onResult;
     this.settings = progress.settings;
     this.lesson = progress.lesson;
@@ -73,7 +76,7 @@ export class LessonState {
     this.lines = this.textInput.getLines();
     this.suffix = this.textInput.getSuffix();
     if (this.textInput.completed) {
-      this.#onResult(this.#makeResult());
+      this.#onResult(this.#makeResult(), this.textInput);
     }
     return feedback;
   }

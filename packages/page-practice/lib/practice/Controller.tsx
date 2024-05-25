@@ -1,7 +1,13 @@
-import { useKeyboard } from "@keybr/keyboard";
+import { type KeyId, useKeyboard } from "@keybr/keyboard";
+import { type Result } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
 import { loadSounds, playSound } from "@keybr/sound";
-import { Feedback, PlaySounds, textDisplayProps } from "@keybr/textinput";
+import {
+  Feedback,
+  type LineList,
+  PlaySounds,
+  textDisplayProps,
+} from "@keybr/textinput";
 import { addKey, deleteKey, emulateLayout } from "@keybr/textinput-events";
 import { TextInputSound, textInputSounds } from "@keybr/textinput-sounds";
 import {
@@ -10,24 +16,32 @@ import {
   useTimeout,
   useWindowEvent,
 } from "@keybr/widget";
-import { memo, type ReactNode, useMemo, useState } from "react";
+import { memo, type ReactNode, useMemo, useRef, useState } from "react";
 import { Presenter } from "./Presenter.tsx";
-import { type LessonState } from "./state/index.ts";
+import {
+  type LastLesson,
+  LessonState,
+  makeLastLesson,
+  type Progress,
+} from "./state/index.ts";
 
 export const Controller = memo(function Controller({
-  state,
+  progress,
+  onResult,
   onConfigure,
 }: {
-  readonly state: LessonState;
+  readonly progress: Progress;
+  readonly onResult: (result: Result) => void;
   readonly onConfigure: () => void;
 }): ReactNode {
   const {
+    state,
     handleResetLesson,
     handleSkipLesson,
     handleKeyDown,
     handleKeyUp,
     handleTextInput,
-  } = useLessonState(state);
+  } = useLessonState(progress, onResult);
   useHotkeys(
     ["Ctrl+ArrowLeft", handleResetLesson],
     ["Ctrl+ArrowRight", handleSkipLesson],
@@ -51,23 +65,37 @@ export const Controller = memo(function Controller({
   );
 });
 
-function useLessonState(state: LessonState) {
+function useLessonState(
+  progress: Progress,
+  onResult: (result: Result) => void,
+) {
   const keyboard = useKeyboard();
   const timeout = useTimeout();
-  const [_0, setLines] = useState(state.lines); // Forces UI update.
-  const [_1, setDepressedKeys] = useState(state.depressedKeys); // Forces UI update.
+  const [key, setKey] = useState(0); // Creates new LessonState instances.
+  const [, setLines] = useState<LineList>({ text: "", lines: [] }); // Forces UI update.
+  const [, setDepressedKeys] = useState<readonly KeyId[]>([]); // Forces UI update.
+  const lastLessonRef = useRef<LastLesson | null>(null);
+
+  const onResultRef = useRef(onResult);
+  onResultRef.current = onResult;
 
   return useMemo(() => {
     // New lesson.
+    const state = new LessonState(progress, (result, textInput) => {
+      setKey(key + 1);
+      lastLessonRef.current = makeLastLesson(result, textInput.getSteps());
+      onResultRef.current(result);
+    });
+    state.lastLesson = lastLessonRef.current;
     setLines(state.lines);
     setDepressedKeys(state.depressedKeys);
-    const handleResetLesson = (): void => {
+    const handleResetLesson = () => {
       state.resetLesson();
       setLines(state.lines);
       setDepressedKeys((state.depressedKeys = []));
       timeout.cancel();
     };
-    const handleSkipLesson = (): void => {
+    const handleSkipLesson = () => {
       state.skipLesson();
       setLines(state.lines);
       setDepressedKeys((state.depressedKeys = []));
@@ -98,13 +126,14 @@ function useLessonState(state: LessonState) {
       },
     );
     return {
+      state,
       handleResetLesson,
       handleSkipLesson,
       handleKeyDown: onKeyDown,
       handleKeyUp: onKeyUp,
       handleTextInput: onTextInput,
     };
-  }, [state, keyboard, timeout]);
+  }, [progress, keyboard, timeout, key]);
 }
 
 function makeSoundPlayer(settings: Settings) {
