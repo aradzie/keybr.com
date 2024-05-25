@@ -1,7 +1,9 @@
+import { loadContent } from "@keybr/content-books";
 import { loadWordList } from "@keybr/content-words";
 import { catchError } from "@keybr/debug";
 import { keyboardProps, useKeyboard } from "@keybr/keyboard";
 import {
+  BooksLesson,
   CodeLesson,
   CustomTextLesson,
   GuidedLesson,
@@ -93,6 +95,21 @@ function useLoader(model0: PhoneticModel): Lesson | null {
                 model,
                 codePoints,
                 wordList,
+              ),
+            );
+          }
+          break;
+        }
+        case LessonType.BOOKS: {
+          const book = settings.get(lessonProps.books.book);
+          const content = await loadContent(book);
+          if (!didCancel) {
+            setResult(
+              new BooksLesson(
+                settings, //
+                model,
+                codePoints,
+                { book, content },
               ),
             );
           }

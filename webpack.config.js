@@ -123,6 +123,10 @@ module.exports = [
         rule_js(),
         rule_less(false),
         {
+          test: /\.(png|jpg)$/,
+          use: "null-loader",
+        },
+        {
           test: /\/react-dom\//,
           exclude: /server/,
           use: "null-loader",

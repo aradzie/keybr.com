@@ -1,4 +1,5 @@
 import { Syntax } from "@keybr/code";
+import { Book } from "@keybr/content";
 import { booleanProp, itemProp, numberProp, stringProp } from "@keybr/settings";
 import { LessonType } from "./lessontype.ts";
 
@@ -21,6 +22,15 @@ export const lessonProps = {
     }),
     longWordsOnly: booleanProp("lesson.wordList.longWordsOnly", false),
   } as const,
+  books: {
+    book: itemProp("lesson.books.book", Book.ALL, Book.EN_ALICE_WONDERLAND),
+    paragraphIndex: numberProp("lesson.books.paragraphIndex", 0, {
+      min: 0,
+      max: 1000,
+    }),
+    lettersOnly: booleanProp("lesson.books.lettersOnly", true),
+    lowercase: booleanProp("lesson.books.lowercase", true),
+  },
   customText: {
     content: stringProp(
       "lesson.customText.content",

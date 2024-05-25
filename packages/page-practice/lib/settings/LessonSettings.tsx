@@ -1,4 +1,5 @@
 import {
+  type BooksLesson,
   type CodeLesson,
   type CustomTextLesson,
   type GuidedLesson,
@@ -13,6 +14,7 @@ import { type Settings, useSettings } from "@keybr/settings";
 import { Tab, TabList } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
+import { BooksLessonSettings } from "./lesson/BooksLessonSettings.tsx";
 import { CodeLessonSettings } from "./lesson/CodeLessonSettings.tsx";
 import { CustomTextLessonSettings } from "./lesson/CustomTextLessonSettings.tsx";
 import { DailyGoalSettings } from "./lesson/DailyGoalSettings.tsx";
@@ -44,6 +46,12 @@ export function LessonSettings(): ReactNode {
           label={formatMessage({
             id: "lessonType.wordlist.name",
             defaultMessage: "Common Words",
+          })}
+        />
+        <Tab
+          label={formatMessage({
+            id: "lessonType.books.name",
+            defaultMessage: "Books",
           })}
         />
         <Tab
@@ -84,6 +92,8 @@ function tabBody(settings: Settings, lesson: Lesson): ReactNode {
       return <GuidedLessonSettings lesson={lesson as GuidedLesson} />;
     case LessonType.WORDLIST:
       return <WordListLessonSettings lesson={lesson as WordListLesson} />;
+    case LessonType.BOOKS:
+      return <BooksLessonSettings lesson={lesson as BooksLesson} />;
     case LessonType.CUSTOM:
       return <CustomTextLessonSettings lesson={lesson as CustomTextLesson} />;
     case LessonType.NUMBERS:

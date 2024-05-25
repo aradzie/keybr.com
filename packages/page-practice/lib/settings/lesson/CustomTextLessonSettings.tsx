@@ -14,7 +14,7 @@ import {
   styleSizeFull,
   TextField,
 } from "@keybr/widget";
-import React, { type ReactNode, useMemo } from "react";
+import { type ReactNode, useMemo } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { exampleTexts } from "./example-texts.ts";
 import { LessonLengthProp } from "./LessonLengthProp.tsx";

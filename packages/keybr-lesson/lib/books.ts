@@ -1,15 +1,27 @@
-import { type Content, flattenContent, splitParagraph } from "@keybr/content";
+import {
+  type Book,
+  type BookContent,
+  type Content,
+  flattenContent,
+  splitParagraph,
+} from "@keybr/content";
 import { type WeightedCodePointSet } from "@keybr/keyboard";
+import { clamp } from "@keybr/lang";
 import { type Letter, type PhoneticModel } from "@keybr/phonetic-model";
 import { type KeyStatsMap } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
 import { LessonKeys } from "./key.ts";
 import { Lesson } from "./lesson.ts";
+import { lessonProps } from "./settings.ts";
 import { Target } from "./target.ts";
 import { generateFragment } from "./text/fragment.ts";
 import { wordSequence } from "./text/words.ts";
 
-export class BookContentLesson extends Lesson {
+export class BooksLesson extends Lesson {
+  readonly book: Book;
+  readonly content: Content;
+  readonly paragraphs: readonly string[];
+  readonly paragraphIndex: number;
   readonly wordList: readonly string[];
   wordIndex = 0;
 
@@ -17,11 +29,22 @@ export class BookContentLesson extends Lesson {
     settings: Settings,
     model: PhoneticModel,
     codePoints: WeightedCodePointSet,
-    content: Content,
+    { book, content }: BookContent,
   ) {
     super(settings, model, codePoints);
-    this.wordList = flattenContent(content)
-      .map((para) => splitParagraph(para))
+    this.book = book;
+    this.content = content;
+    this.paragraphs = flattenContent(content);
+    this.paragraphIndex = clamp(
+      settings.get(lessonProps.books.paragraphIndex),
+      0,
+      this.paragraphs.length,
+    );
+    this.wordList = [
+      ...this.paragraphs.slice(this.paragraphIndex),
+      ...this.paragraphs.slice(0, this.paragraphIndex),
+    ]
+      .map(splitParagraph)
       .flat();
   }
 

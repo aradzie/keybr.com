@@ -58,7 +58,7 @@ export const typingTestProps = {
   book: itemProp("typingTest.book", Book.ALL, Book.EN_ALICE_WONDERLAND),
   bookParagraphIndex: numberProp("typingTest.book.paragraphIndex", 0, {
     min: 0,
-    max: 1000000,
+    max: 1000,
   }),
   duration: {
     type: enumProp("typingTest.duration.type", DurationType, DurationType.Time),

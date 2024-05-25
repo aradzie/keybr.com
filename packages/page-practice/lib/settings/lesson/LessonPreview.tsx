@@ -40,7 +40,7 @@ export function LessonPreview({
         defaultMessage: "Lesson Preview",
       })}
     >
-      <div className={styles.preview}>
+      <div className={styles.root}>
         <KeySetRow lessonKeys={lessonKeys} />
         <CurrentKeyRow lessonKeys={lessonKeys} />
         <StaticText
