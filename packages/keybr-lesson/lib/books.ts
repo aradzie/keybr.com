@@ -15,6 +15,7 @@ import { Lesson } from "./lesson.ts";
 import { lessonProps } from "./settings.ts";
 import { Target } from "./target.ts";
 import { generateFragment } from "./text/fragment.ts";
+import { sanitizeText } from "./text/sanitizetext.ts";
 import { wordSequence } from "./text/words.ts";
 
 export class BooksLesson extends Lesson {
@@ -32,14 +33,11 @@ export class BooksLesson extends Lesson {
     { book, content }: BookContent,
   ) {
     super(settings, model, codePoints);
+    const paragraphIndex = this.settings.get(lessonProps.books.paragraphIndex);
     this.book = book;
     this.content = content;
-    this.paragraphs = flattenContent(content);
-    this.paragraphIndex = clamp(
-      settings.get(lessonProps.books.paragraphIndex),
-      0,
-      this.paragraphs.length,
-    );
+    this.paragraphs = this.#flattenContent(content);
+    this.paragraphIndex = clamp(paragraphIndex, 0, this.paragraphs.length);
     this.wordList = [
       ...this.paragraphs.slice(this.paragraphIndex),
       ...this.paragraphs.slice(0, this.paragraphIndex),
@@ -59,6 +57,26 @@ export class BooksLesson extends Lesson {
   override generate(): string {
     return generateFragment(this.settings, wordSequence(this.wordList, this), {
       doubleWords: false,
+    });
+  }
+
+  #flattenContent(content: Content) {
+    const lettersOnly = this.settings.get(lessonProps.books.lettersOnly);
+    const lowercase = this.settings.get(lessonProps.books.lowercase);
+    const codePoints = new Set(this.codePoints);
+    if (lettersOnly) {
+      for (const codePoint of codePoints) {
+        if (!this.model.language.includes(codePoint)) {
+          codePoints.delete(codePoint);
+        }
+      }
+    }
+    return flattenContent(content).map((para) => {
+      let text = sanitizeText(para, codePoints);
+      if (lowercase) {
+        text = this.model.language.lowerCase(text);
+      }
+      return text;
     });
   }
 }

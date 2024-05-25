@@ -28,8 +28,8 @@ export const lessonProps = {
       min: 0,
       max: 1000,
     }),
-    lettersOnly: booleanProp("lesson.books.lettersOnly", true),
-    lowercase: booleanProp("lesson.books.lowercase", true),
+    lettersOnly: booleanProp("lesson.books.lettersOnly", false),
+    lowercase: booleanProp("lesson.books.lowercase", false),
   },
   customText: {
     content: stringProp(
