@@ -1,12 +1,15 @@
 @import "@keybr/widget/lib/index.less";
 
-.root {
-  inline-size: 50rem; /* TODO Fix this. */
+.root:not(:first-child) {
+  margin-block-start: 1rem;
+}
+
+.root:not(:last-child) {
+  margin-block-end: 1rem;
 }
 
 .item {
   display: flex;
-  max-inline-size: 100%;
 }
 
 .item_active {
