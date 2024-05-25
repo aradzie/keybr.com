@@ -11,6 +11,7 @@
     "@keybr/content-words": "*",
     "@keybr/intl": "*",
     "@keybr/keyboard": "*",
+    "@keybr/lang": "*",
     "@keybr/pages-browser": "*",
     "@keybr/pages-server": "*",
     "@keybr/pages-shared": "*",

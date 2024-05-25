@@ -1,4 +1,4 @@
-import { isNumber, isObjectLike } from "@keybr/lang";
+import { clamp, isNumber, isObjectLike } from "@keybr/lang";
 
 /** A color with Red, Green, Blue and Alpha components. */
 export type TRgb = {
@@ -449,8 +449,4 @@ function pad0(v: number): string {
   } else {
     return r;
   }
-}
-
-function clamp(v: number, min: number, max: number): number {
-  return Math.max(Math.min(v, max), min);
 }

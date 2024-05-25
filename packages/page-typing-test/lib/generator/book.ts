@@ -3,6 +3,7 @@ import {
   flattenContent,
   splitParagraph,
 } from "@keybr/content";
+import { clamp } from "@keybr/lang";
 import { type TextGenerator } from "./types.ts";
 
 type BookSettings = {
@@ -22,10 +23,7 @@ export class BookParagraphsGenerator implements TextGenerator<Mark> {
 
   constructor(settings: BookSettings, { content }: BookContent) {
     const paragraphs = flattenContent(content);
-    const paragraphIndex = Math.max(
-      0,
-      Math.min(paragraphs.length - 1, settings.paragraphIndex),
-    );
+    const paragraphIndex = clamp(settings.paragraphIndex, 0, paragraphs.length);
     this.#paragraphs = paragraphs;
     this.#paragraphIndex = paragraphIndex;
     this.#words = splitParagraph(paragraphs[paragraphIndex]);
