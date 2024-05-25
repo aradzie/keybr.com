@@ -62,14 +62,14 @@ export function LessonSettings(): ReactNode {
         />
         <Tab
           label={formatMessage({
-            id: "lessonType.numbers.name",
-            defaultMessage: "Numbers",
+            id: "lessonType.code.name",
+            defaultMessage: "Source Code",
           })}
         />
         <Tab
           label={formatMessage({
-            id: "lessonType.code.name",
-            defaultMessage: "Source Code",
+            id: "lessonType.numbers.name",
+            defaultMessage: "Numbers",
           })}
         />
       </TabList>
@@ -96,10 +96,10 @@ function tabBody(settings: Settings, lesson: Lesson): ReactNode {
       return <BooksLessonSettings lesson={lesson as BooksLesson} />;
     case LessonType.CUSTOM:
       return <CustomTextLessonSettings lesson={lesson as CustomTextLesson} />;
-    case LessonType.NUMBERS:
-      return <NumbersLessonSettings lesson={lesson as NumbersLesson} />;
     case LessonType.CODE:
       return <CodeLessonSettings lesson={lesson as CodeLesson} />;
+    case LessonType.NUMBERS:
+      return <NumbersLessonSettings lesson={lesson as NumbersLesson} />;
     default:
       throw new Error();
   }

@@ -121,15 +121,15 @@ function useLoader(model0: PhoneticModel): Lesson | null {
           }
           break;
         }
-        case LessonType.NUMBERS: {
-          if (!didCancel) {
-            setResult(new NumbersLesson(settings, model, codePoints));
-          }
-          break;
-        }
         case LessonType.CODE: {
           if (!didCancel) {
             setResult(new CodeLesson(settings, model, codePoints));
+          }
+          break;
+        }
+        case LessonType.NUMBERS: {
+          if (!didCancel) {
+            setResult(new NumbersLesson(settings, model, codePoints));
           }
           break;
         }
