@@ -5,16 +5,20 @@ import {
   Explainer,
   Field,
   FieldList,
+  Icon,
+  IconButton,
   Range,
   styleWidth16,
   Value,
 } from "@keybr/widget";
+import { mdiSkipNext, mdiSkipPrevious } from "@mdi/js";
 import { type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
 
 export function TargetSpeedProp(): ReactNode {
   const { formatSpeed } = useFormatter();
   const { settings, updateSettings } = useSettings();
+  const targetSpeed = settings.get(lessonProps.targetSpeed);
   return (
     <>
       <FieldList>
@@ -30,18 +34,40 @@ export function TargetSpeedProp(): ReactNode {
             min={lessonProps.targetSpeed.min}
             max={lessonProps.targetSpeed.max}
             step={1}
-            value={settings.get(lessonProps.targetSpeed)}
+            value={targetSpeed}
             onChange={(value) => {
               updateSettings(settings.set(lessonProps.targetSpeed, value));
             }}
           />
         </Field>
         <Field>
-          <Value
-            value={formatSpeed(settings.get(lessonProps.targetSpeed), {
-              unit: true,
-            })}
+          <IconButton
+            icon={<Icon shape={mdiSkipPrevious} />}
+            disabled={targetSpeed === lessonProps.targetSpeed.min}
+            onClick={() => {
+              updateSettings(
+                settings.set(
+                  lessonProps.targetSpeed,
+                  Math.ceil(targetSpeed / 5) * 5 - 5,
+                ),
+              );
+            }}
           />
+          <IconButton
+            icon={<Icon shape={mdiSkipNext} />}
+            disabled={targetSpeed === lessonProps.targetSpeed.max}
+            onClick={() => {
+              updateSettings(
+                settings.set(
+                  lessonProps.targetSpeed,
+                  Math.floor(targetSpeed / 5) * 5 + 5,
+                ),
+              );
+            }}
+          />
+        </Field>
+        <Field>
+          <Value value={formatSpeed(targetSpeed, { unit: true })} />
         </Field>
       </FieldList>
       <Explainer>

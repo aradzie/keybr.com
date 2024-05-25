@@ -38,6 +38,7 @@ export function ParagraphSelector({
       <Field>
         <IconButton
           icon={<Icon shape={mdiSkipPrevious} />}
+          disabled={paragraphIndex === 0}
           onClick={() => {
             if (paragraphIndex > 0) {
               onChange(paragraphIndex - 1);
@@ -46,6 +47,7 @@ export function ParagraphSelector({
         />
         <IconButton
           icon={<Icon shape={mdiSkipNext} />}
+          disabled={paragraphIndex === paragraphs.length - 1}
           onClick={() => {
             if (paragraphIndex < paragraphs.length - 1) {
               onChange(paragraphIndex + 1);
