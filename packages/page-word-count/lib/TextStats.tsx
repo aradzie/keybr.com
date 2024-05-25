@@ -20,14 +20,14 @@ export function TextStats({
   const wordCount = textStats.wordCount.slice(0, 15);
   if (wordCount.length === 0) {
     return (
-      <div>
+      <>
         <Para>
           <FormattedMessage
             id="wordCount.emptyTextMessage"
             defaultMessage="Please provide some text in order to calculate the associated statistics."
           />
         </Para>
-      </div>
+      </>
     );
   } else {
     const avgTypingWpm = 40;
@@ -45,7 +45,7 @@ export function TextStats({
       ((numCharacters + numWhitespace) / (avgReadingWpm * 5)) * 60;
 
     return (
-      <div>
+      <>
         <Para>
           <NameValue
             name={formatMessage({
@@ -127,7 +127,7 @@ export function TextStats({
             />
           </Name>
         </Para>
-      </div>
+      </>
     );
   }
 }
@@ -146,10 +146,7 @@ function WordCount({
       {wordCount.map(({ word, count }) => (
         <li key={word} className={styles.wordCountItem}>
           <div>
-            <Value
-              value={`${word}: ${formatNumber(count)}`}
-              title={`Word '${word}' occurs ${formatNumber(count)} time(s).`}
-            />
+            <Value value={`${word}: ${formatNumber(count)}`} />
           </div>
           <div className={styles.wordCountItemBar} style={style(count)} />
         </li>

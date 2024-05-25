@@ -6,12 +6,21 @@
   align-items: center;
   min-block-size: @field-height;
   margin-inline: 0;
-  margin-block: 1rem;
-  padding: 0;
+  margin-block: 0;
+  padding-inline: 0;
+  padding-block: 0;
+}
+
+.root:not(:first-child) {
+  margin-block-start: 1rem;
+}
+
+.root:not(:last-child) {
+  margin-block-end: 1rem;
 }
 
 .field {
-  /* empty */
+  /* Empty. */
 }
 
 .flexGrow1 {
