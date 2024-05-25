@@ -1,4 +1,4 @@
-import { wordListStats } from "@keybr/content-words";
+import { wordListStats } from "@keybr/content";
 import { useIntlNumbers } from "@keybr/intl";
 import { lessonProps, type WordListLesson } from "@keybr/lesson";
 import { useSettings } from "@keybr/settings";

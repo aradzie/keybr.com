@@ -1,4 +1,4 @@
-import { type WordList } from "@keybr/content-words";
+import { type WordList } from "@keybr/content";
 import { type WeightedCodePointSet } from "@keybr/keyboard";
 import { Filter, Letter, type PhoneticModel } from "@keybr/phonetic-model";
 import { type KeyStatsMap } from "@keybr/result";

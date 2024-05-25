@@ -66,22 +66,34 @@ function useLoader(model0: PhoneticModel): Lesson | null {
     const load = async (): Promise<void> => {
       const codePoints = keyboard.getCodePoints();
       const model = PhoneticModel.restrict(model0, codePoints);
-      const lessonType = settings.get(lessonProps.type);
-      const layout = settings.get(keyboardProps.layout);
 
-      switch (lessonType) {
+      switch (settings.get(lessonProps.type)) {
         case LessonType.GUIDED: {
-          const wordList = await loadWordList(layout.language);
+          const { language } = settings.get(keyboardProps.layout);
+          const wordList = await loadWordList(language);
           if (!didCancel) {
-            setResult(new GuidedLesson(settings, model, codePoints, wordList));
+            setResult(
+              new GuidedLesson(
+                settings, //
+                model,
+                codePoints,
+                wordList,
+              ),
+            );
           }
           break;
         }
         case LessonType.WORDLIST: {
-          const wordList = await loadWordList(layout.language);
+          const { language } = settings.get(keyboardProps.layout);
+          const wordList = await loadWordList(language);
           if (!didCancel) {
             setResult(
-              new WordListLesson(settings, model, codePoints, wordList),
+              new WordListLesson(
+                settings, //
+                model,
+                codePoints,
+                wordList,
+              ),
             );
           }
           break;

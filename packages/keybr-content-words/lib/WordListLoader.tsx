@@ -1,8 +1,8 @@
+import { type WordList } from "@keybr/content";
 import { catchError } from "@keybr/debug";
 import { type Language } from "@keybr/keyboard";
 import { type ReactNode, useEffect, useState } from "react";
 import { loadWordList } from "./load.ts";
-import { type WordList } from "./types.ts";
 
 export function WordListLoader({
   language,

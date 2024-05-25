@@ -1,8 +1,4 @@
-import {
-  type Content,
-  flattenContent,
-  splitParagraph,
-} from "@keybr/content-books";
+import { type Content, flattenContent, splitParagraph } from "@keybr/content";
 import { type WeightedCodePointSet } from "@keybr/keyboard";
 import { type Letter, type PhoneticModel } from "@keybr/phonetic-model";
 import { type KeyStatsMap } from "@keybr/result";

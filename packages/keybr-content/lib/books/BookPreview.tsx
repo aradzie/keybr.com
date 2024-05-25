@@ -32,7 +32,7 @@ export const BookPreview = memo(function BookPreview({
     };
   }, [book, content]);
   return (
-    <div className={styles.bookPreview}>
+    <div className={styles.root}>
       <img
         className={styles.coverImage}
         src={book.coverImage}

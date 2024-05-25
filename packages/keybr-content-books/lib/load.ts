@@ -1,5 +1,4 @@
-import { Book } from "./book.ts";
-import { type Content } from "./types.ts";
+import { Book, type Content } from "@keybr/content";
 
 export async function loadContent(book: Book): Promise<Content> {
   switch (book) {

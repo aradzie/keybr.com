@@ -1,8 +1,8 @@
 import { type WordList } from "./types.ts";
 
 export function wordListStats(wordList: WordList): {
-  wordCount: number;
-  avgWordLength: number;
+  readonly wordCount: number;
+  readonly avgWordLength: number;
 } {
   let wordLength = 0;
   let wordCount = 0;

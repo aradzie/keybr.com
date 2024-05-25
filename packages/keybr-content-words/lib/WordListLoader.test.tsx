@@ -1,7 +1,7 @@
+import { type WordList } from "@keybr/content";
 import { Language } from "@keybr/keyboard";
 import { render } from "@testing-library/react";
 import test from "ava";
-import { type WordList } from "./types.ts";
 import { WordListLoader } from "./WordListLoader.tsx";
 
 test.serial("load word list", async (t) => {

@@ -7,7 +7,7 @@
   "dependencies": {
     "@keybr/chart": "*",
     "@keybr/code": "*",
-    "@keybr/content-words": "*",
+    "@keybr/content": "*",
     "@keybr/debug": "*",
     "@keybr/intl": "*",
     "@keybr/keyboard": "*",

@@ -1,4 +1,4 @@
-import { Book } from "@keybr/content-books";
+import { Book } from "@keybr/content";
 import { Language } from "@keybr/keyboard";
 import { enumProp, itemProp, numberProp, type Settings } from "@keybr/settings";
 import {

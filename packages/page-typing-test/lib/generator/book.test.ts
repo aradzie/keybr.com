@@ -1,4 +1,4 @@
-import { Book } from "@keybr/content-books";
+import { Book } from "@keybr/content";
 import test from "ava";
 import { BookParagraphsGenerator } from "./book.ts";
 

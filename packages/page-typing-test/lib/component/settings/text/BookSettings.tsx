@@ -1,10 +1,12 @@
 import {
   Book,
   type BookContent,
-  BookContentLoader,
   BookPreview,
   flattenContent,
-} from "@keybr/content-books";
+  ParagraphIndex,
+  ParagraphPreview,
+} from "@keybr/content";
+import { BookContentLoader } from "@keybr/content-books";
 import { useSettings } from "@keybr/settings";
 import {
   Field,
@@ -21,7 +23,6 @@ import {
 import { mdiSkipNext, mdiSkipPrevious } from "@mdi/js";
 import { type ReactNode, useMemo } from "react";
 import { typingTestProps } from "../../../settings.ts";
-import { ParagraphIndex, ParagraphPreview } from "./ParagraphPreview.tsx";
 
 export function BookSettings(): ReactNode {
   const { settings } = useSettings();

@@ -1,4 +1,4 @@
-import { type WordList } from "@keybr/content-words";
+import { type WordList } from "@keybr/content";
 import { FakeRNGStream } from "@keybr/rand";
 import { textDisplaySettings, textInputSettings } from "@keybr/textinput";
 import test from "ava";

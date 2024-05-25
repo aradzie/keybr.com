@@ -1,8 +1,7 @@
+import { type Book, type BookContent } from "@keybr/content";
 import { catchError } from "@keybr/debug";
 import { type ReactNode, useEffect, useState } from "react";
-import { type Book } from "./book.ts";
 import { loadContent } from "./load.ts";
-import { type BookContent } from "./types.ts";
 
 export function BookContentLoader({
   book,

@@ -5,6 +5,7 @@
   "main": "lib/index.ts",
   "types": ".types/index.d.ts",
   "dependencies": {
+    "@keybr/content": "*",
     "@keybr/debug": "*",
     "@keybr/keyboard": "*"
   },

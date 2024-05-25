@@ -1,4 +1,4 @@
-import { type WordList } from "@keybr/content-words";
+import { type WordList } from "@keybr/content";
 import { LCG, randomSample, type RNGStream } from "@keybr/rand";
 import { type TextGenerator } from "./types.ts";
 

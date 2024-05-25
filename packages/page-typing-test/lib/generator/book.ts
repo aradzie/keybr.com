@@ -2,7 +2,7 @@ import {
   type BookContent,
   flattenContent,
   splitParagraph,
-} from "@keybr/content-books";
+} from "@keybr/content";
 import { type TextGenerator } from "./types.ts";
 
 type BookSettings = {

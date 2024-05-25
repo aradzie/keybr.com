@@ -1,8 +1,7 @@
+import { Book, type BookContent } from "@keybr/content";
 import { render } from "@testing-library/react";
 import test from "ava";
-import { Book } from "./book.ts";
 import { BookContentLoader } from "./BookContentLoader.tsx";
-import { type BookContent } from "./types.ts";
 
 test.serial("load book", async (t) => {
   let ref = null as BookContent | null;

@@ -1,11 +1,12 @@
 @import "@keybr/widget/lib/index.less";
 
-.paragraphPreview {
+.root {
   inline-size: 50rem; /* TODO Fix this. */
 }
 
 .item {
   display: flex;
+  max-inline-size: 100%;
 }
 
 .item_active {
@@ -17,19 +18,16 @@
 }
 
 .index {
-  display: inline-block;
   min-inline-size: 4rem;
   text-align: end;
 }
 
 .content {
   .text-truncate();
-  display: inline-block;
   font-style: italic;
 }
 
 .separator {
-  display: inline-block;
   min-inline-size: 1rem;
   text-align: center;
 }

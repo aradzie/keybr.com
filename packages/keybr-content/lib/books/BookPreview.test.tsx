@@ -14,8 +14,6 @@ test.serial("render", (t) => {
     </FakeIntlProvider>,
   );
 
-  console.log(r.container.textContent);
-
   t.true(r.container.textContent?.includes("Chapters:1"));
   t.true(r.container.textContent?.includes("Paragraphs:3"));
   t.true(r.container.textContent?.includes("All words:3"));

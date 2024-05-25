@@ -1,8 +1,5 @@
-import {
-  type WordList,
-  WordListLoader,
-  wordListStats,
-} from "@keybr/content-words";
+import { type WordList, wordListStats } from "@keybr/content";
+import { WordListLoader } from "@keybr/content-words";
 import { useIntlDisplayNames, useIntlNumbers } from "@keybr/intl";
 import { Language } from "@keybr/keyboard";
 import { useSettings } from "@keybr/settings";

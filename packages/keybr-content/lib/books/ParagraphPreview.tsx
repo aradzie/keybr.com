@@ -18,7 +18,7 @@ export const ParagraphPreview = memo(function ParagraphPreview({
     .slice(begin, end + 1)
     .map((paragraph, index) => [begin + index, paragraph] as [number, string]);
   return (
-    <div className={styles.paragraphPreview}>
+    <div className={styles.root}>
       {items.map(([index, paragraph]) => (
         <div
           key={index}

@@ -1,4 +1,4 @@
-import { type WordList } from "@keybr/content-words";
+import { type WordList } from "@keybr/content";
 import { type Filter } from "@keybr/phonetic-model";
 import {
   type CodePoint,

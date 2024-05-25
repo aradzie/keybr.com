@@ -1,12 +1,15 @@
 {
   "private": true,
-  "name": "@keybr/content-books",
+  "name": "@keybr/content",
   "version": "0.0.0",
   "main": "lib/index.ts",
   "types": ".types/index.d.ts",
   "dependencies": {
-    "@keybr/content": "*",
-    "@keybr/debug": "*"
+    "@keybr/intl": "*",
+    "@keybr/keyboard": "*",
+    "@keybr/lang": "*",
+    "@keybr/unicode": "*",
+    "@keybr/widget": "*"
   },
   "devDependencies": {},
   "scripts": {
