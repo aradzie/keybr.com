@@ -1,3 +1,4 @@
+import { Dir } from "@keybr/intl";
 import { names } from "@keybr/lesson-ui";
 import { Button, Icon, IconButton } from "@keybr/widget";
 import {
@@ -35,22 +36,24 @@ export const Controls = memo(function Controls({
         })}
         onClick={onHelp}
       />
-      <IconButton
-        icon={<Icon shape={mdiUndo} />}
-        title={formatMessage({
-          id: "practice.widget.resetLesson.description",
-          defaultMessage: "Reset the current lesson (Ctrl + Left Arrow).",
-        })}
-        onClick={onResetLesson}
-      />
-      <IconButton
-        icon={<Icon shape={mdiRedo} />}
-        title={formatMessage({
-          id: "practice.widget.skipLesson.description",
-          defaultMessage: "Skip the current lesson (Ctrl + Right Arrow).",
-        })}
-        onClick={onSkipLesson}
-      />
+      <Dir swap="icon">
+        <IconButton
+          icon={<Icon shape={mdiUndo} />}
+          title={formatMessage({
+            id: "practice.widget.resetLesson.description",
+            defaultMessage: "Reset the current lesson (Ctrl + Left Arrow).",
+          })}
+          onClick={onResetLesson}
+        />
+        <IconButton
+          icon={<Icon shape={mdiRedo} />}
+          title={formatMessage({
+            id: "practice.widget.skipLesson.description",
+            defaultMessage: "Skip the current lesson (Ctrl + Right Arrow).",
+          })}
+          onClick={onSkipLesson}
+        />
+      </Dir>
       <IconButton
         icon={<Icon shape={mdiAspectRatio} />}
         title={formatMessage({

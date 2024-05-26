@@ -1,3 +1,4 @@
+import { Dir } from "@keybr/intl";
 import { lessonProps } from "@keybr/lesson";
 import { useFormatter } from "@keybr/lesson-ui";
 import { useSettings } from "@keybr/settings";
@@ -41,30 +42,32 @@ export function TargetSpeedProp(): ReactNode {
           />
         </Field>
         <Field>
-          <IconButton
-            icon={<Icon shape={mdiSkipPrevious} />}
-            disabled={targetSpeed === lessonProps.targetSpeed.min}
-            onClick={() => {
-              updateSettings(
-                settings.set(
-                  lessonProps.targetSpeed,
-                  Math.ceil(targetSpeed / 5) * 5 - 5,
-                ),
-              );
-            }}
-          />
-          <IconButton
-            icon={<Icon shape={mdiSkipNext} />}
-            disabled={targetSpeed === lessonProps.targetSpeed.max}
-            onClick={() => {
-              updateSettings(
-                settings.set(
-                  lessonProps.targetSpeed,
-                  Math.floor(targetSpeed / 5) * 5 + 5,
-                ),
-              );
-            }}
-          />
+          <Dir swap="icon">
+            <IconButton
+              icon={<Icon shape={mdiSkipPrevious} />}
+              disabled={targetSpeed === lessonProps.targetSpeed.min}
+              onClick={() => {
+                updateSettings(
+                  settings.set(
+                    lessonProps.targetSpeed,
+                    Math.ceil(targetSpeed / 5) * 5 - 5,
+                  ),
+                );
+              }}
+            />
+            <IconButton
+              icon={<Icon shape={mdiSkipNext} />}
+              disabled={targetSpeed === lessonProps.targetSpeed.max}
+              onClick={() => {
+                updateSettings(
+                  settings.set(
+                    lessonProps.targetSpeed,
+                    Math.floor(targetSpeed / 5) * 5 + 5,
+                  ),
+                );
+              }}
+            />
+          </Dir>
         </Field>
         <Field>
           <Value value={formatSpeed(targetSpeed, { unit: true })} />
