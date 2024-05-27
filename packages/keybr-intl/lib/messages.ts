@@ -18,7 +18,7 @@ export async function loadMessages(locale: LocaleId): Promise<Messages> {
     case "he": return (await import(/* webpackChunkName: "messages-he" */ "./messages/he.json")).default;
     case "hr": return (await import(/* webpackChunkName: "messages-hr" */ "./messages/hr.json")).default;
     case "hu": return (await import(/* webpackChunkName: "messages-hu" */ "./messages/hu.json")).default;
-    case "id": return (await import(/* webpackChunkName: "messages-hu" */ "./messages/id.json")).default;
+    case "id": return (await import(/* webpackChunkName: "messages-id" */ "./messages/id.json")).default;
     case "it": return (await import(/* webpackChunkName: "messages-it" */ "./messages/it.json")).default;
     case "ja": return (await import(/* webpackChunkName: "messages-ja" */ "./messages/ja.json")).default;
     case "ne": return (await import(/* webpackChunkName: "messages-ne" */ "./messages/ne.json")).default;
