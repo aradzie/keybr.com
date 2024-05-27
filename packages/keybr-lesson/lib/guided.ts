@@ -61,7 +61,7 @@ export class GuidedLesson extends Lesson {
         continue;
       }
 
-      if (includedKeys.length >= minSize && includedKeys.length < maxSize) {
+      if (includedKeys.length < maxSize) {
         // Meet the maximal required alphabet size.
         lessonKeys.force(lessonKey.letter);
         continue;
@@ -78,16 +78,17 @@ export class GuidedLesson extends Lesson {
           // Include a new key only when all the previous keys
           // are now above the target speed.
           lessonKeys.include(lessonKey.letter);
-          continue;
         }
       } else {
         if (includedKeys.every((key) => (key.bestConfidence ?? 0) >= 1)) {
           // Include a new key only when all the previous keys
           // were once above the target speed.
           lessonKeys.include(lessonKey.letter);
-          continue;
         }
       }
+
+      // No more keys to include.
+      break;
     }
 
     const confidenceOf = (key: LessonKey): number => {
@@ -99,7 +100,7 @@ export class GuidedLesson extends Lesson {
     // If a new key was recently unlocked, and has not reached the confidence
     // level, continue focusing on this key.
     const lastUnlockedKey = includedKeys[includedKeys.length - 1];
-    if (confidenceOf(lastUnlockedKey) < 1) {
+    if (includedKeys.length > maxSize && confidenceOf(lastUnlockedKey) < 1) {
       lessonKeys.focus(lastUnlockedKey.letter);
     } else {
       // Else find the least confident of all included keys and focus on it.

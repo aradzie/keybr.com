@@ -16,8 +16,8 @@ export function makeKeyStatsMap(
 export type KeyStatsMap<T extends KeyStats = KeyStats> = {
   readonly letters: readonly Letter[];
   readonly results: readonly Result[];
-  get(letter: Letter): KeyStats;
-} & Iterable<KeyStats>;
+  get(letter: Letter): T;
+} & Iterable<T>;
 
 export type KeyStats = {
   readonly letter: Letter;
