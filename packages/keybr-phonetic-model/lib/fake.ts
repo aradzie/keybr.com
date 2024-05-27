@@ -13,16 +13,16 @@ export class FakePhoneticModel extends PhoneticModel {
   static readonly loader: PhoneticModel.Loader = async () =>
     new FakePhoneticModel();
 
-  static readonly letter1 = new Letter(/* a */ 0x0061, 0.01, "A");
-  static readonly letter2 = new Letter(/* b */ 0x0062, 0.02, "B");
-  static readonly letter3 = new Letter(/* c */ 0x0063, 0.03, "C");
-  static readonly letter4 = new Letter(/* d */ 0x0064, 0.04, "D");
-  static readonly letter5 = new Letter(/* e */ 0x0065, 0.05, "E");
-  static readonly letter6 = new Letter(/* f */ 0x0066, 0.06, "F");
-  static readonly letter7 = new Letter(/* g */ 0x0067, 0.07, "G");
-  static readonly letter8 = new Letter(/* h */ 0x0068, 0.08, "H");
-  static readonly letter9 = new Letter(/* i */ 0x0069, 0.09, "I");
-  static readonly letter10 = new Letter(/* j */ 0x006a, 0.1, "J");
+  static readonly letter1 = new Letter(/* a */ 0x0061, 0.1, "A");
+  static readonly letter2 = new Letter(/* b */ 0x0062, 0.09, "B");
+  static readonly letter3 = new Letter(/* c */ 0x0063, 0.08, "C");
+  static readonly letter4 = new Letter(/* d */ 0x0064, 0.07, "D");
+  static readonly letter5 = new Letter(/* e */ 0x0065, 0.06, "E");
+  static readonly letter6 = new Letter(/* f */ 0x0066, 0.05, "F");
+  static readonly letter7 = new Letter(/* g */ 0x0067, 0.04, "G");
+  static readonly letter8 = new Letter(/* h */ 0x0068, 0.03, "H");
+  static readonly letter9 = new Letter(/* i */ 0x0069, 0.02, "I");
+  static readonly letter10 = new Letter(/* j */ 0x006a, 0.01, "J");
 
   static readonly letters: readonly Letter[] = [
     FakePhoneticModel.letter1,

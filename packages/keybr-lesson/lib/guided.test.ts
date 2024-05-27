@@ -15,7 +15,7 @@ test("provide key set", (t) => {
 
   t.deepEqual(lessonKeys.findIncludedKeys(), [
     new LessonKey({
-      letter: FakePhoneticModel.letter10,
+      letter: FakePhoneticModel.letter1,
       samples: [],
       timeToType: null,
       bestTimeToType: null,
@@ -26,7 +26,7 @@ test("provide key set", (t) => {
       isForced: false,
     }),
     new LessonKey({
-      letter: FakePhoneticModel.letter9,
+      letter: FakePhoneticModel.letter2,
       samples: [],
       timeToType: null,
       bestTimeToType: null,
@@ -37,7 +37,7 @@ test("provide key set", (t) => {
       isForced: false,
     }),
     new LessonKey({
-      letter: FakePhoneticModel.letter8,
+      letter: FakePhoneticModel.letter3,
       samples: [],
       timeToType: null,
       bestTimeToType: null,
@@ -48,18 +48,7 @@ test("provide key set", (t) => {
       isForced: false,
     }),
     new LessonKey({
-      letter: FakePhoneticModel.letter7,
-      samples: [],
-      timeToType: null,
-      bestTimeToType: null,
-      confidence: null,
-      bestConfidence: null,
-      isIncluded: true,
-      isFocused: false,
-      isForced: false,
-    }),
-    new LessonKey({
-      letter: FakePhoneticModel.letter6,
+      letter: FakePhoneticModel.letter4,
       samples: [],
       timeToType: null,
       bestTimeToType: null,
@@ -80,10 +69,21 @@ test("provide key set", (t) => {
       isFocused: false,
       isForced: false,
     }),
+    new LessonKey({
+      letter: FakePhoneticModel.letter6,
+      samples: [],
+      timeToType: null,
+      bestTimeToType: null,
+      confidence: null,
+      bestConfidence: null,
+      isIncluded: true,
+      isFocused: false,
+      isForced: false,
+    }),
   ]);
   t.deepEqual(lessonKeys.findExcludedKeys(), [
     new LessonKey({
-      letter: FakePhoneticModel.letter4,
+      letter: FakePhoneticModel.letter7,
       samples: [],
       timeToType: null,
       bestTimeToType: null,
@@ -94,7 +94,7 @@ test("provide key set", (t) => {
       isForced: false,
     }),
     new LessonKey({
-      letter: FakePhoneticModel.letter3,
+      letter: FakePhoneticModel.letter8,
       samples: [],
       timeToType: null,
       bestTimeToType: null,
@@ -105,7 +105,7 @@ test("provide key set", (t) => {
       isForced: false,
     }),
     new LessonKey({
-      letter: FakePhoneticModel.letter2,
+      letter: FakePhoneticModel.letter9,
       samples: [],
       timeToType: null,
       bestTimeToType: null,
@@ -116,7 +116,7 @@ test("provide key set", (t) => {
       isForced: false,
     }),
     new LessonKey({
-      letter: FakePhoneticModel.letter1,
+      letter: FakePhoneticModel.letter10,
       samples: [],
       timeToType: null,
       bestTimeToType: null,
@@ -130,7 +130,7 @@ test("provide key set", (t) => {
   t.deepEqual(
     lessonKeys.findFocusedKey(),
     new LessonKey({
-      letter: FakePhoneticModel.letter10,
+      letter: FakePhoneticModel.letter1,
       samples: [],
       timeToType: null,
       bestTimeToType: null,
@@ -215,28 +215,28 @@ test("generate text with natural words", (t) => {
   const settings = new Settings().set(lessonProps.guided.naturalWords, true);
   const model = new FakePhoneticModel(["uno", "due", "tre"]);
   const lesson = new GuidedLesson(settings, model, allCodePoints(), [
-    "efghijee",
-    "efghijef",
-    "efghijeg",
-    "efghijeh",
-    "efghijei",
-    "efghijej",
-    "efghijfe",
-    "efghijff",
-    "efghijfg",
-    "efghijfh",
-    "efghijfi",
-    "efghijfj",
-    "efghijge",
-    "efghijgf",
-    "efghijgg",
+    "abcaa",
+    "abcab",
+    "abcac",
+    "abcad",
+    "abcae",
+    "abcaf",
+    "abcag",
+    "abcah",
+    "abcai",
+    "abcaj",
+    "abcba",
+    "abcbb",
+    "abcbc",
+    "abcbd",
+    "abcbe",
   ]);
   const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
   lesson.rng = model.rng;
 
   t.is(
     lesson.generate(lessonKeys),
-    "efghijee efghijej efghijfi efghijee efghijej efghijfi efghijee " +
-      "efghijej efghijfi efghijee efghijej efghijfi efghijee",
+    "abcaf abcbe abcaa abcaf abcbe abcaa abcaf abcbe abcaa abcaf abcbe abcaa " +
+      "abcaf abcbe abcaa abcaf abcbe abcaa abcaf abcbe",
   );
 });
