@@ -3,6 +3,7 @@ import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { makeKeyStatsMap } from "@keybr/result";
 import { Settings } from "@keybr/settings";
 import test from "ava";
+import { fakeKeyStatsMap, printLessonKeys } from "./fakes.ts";
 import { GuidedLesson } from "./guided.ts";
 import { LessonKey } from "./key.ts";
 import { lessonProps } from "./settings.ts";
@@ -239,4 +240,500 @@ test("generate text with natural words", (t) => {
     "abcaf abcbe abcaa abcaf abcbe abcaa abcaf abcbe abcaa abcaf abcbe abcaa " +
       "abcaf abcbe abcaa abcaf abcbe abcaa abcaf abcbe",
   );
+});
+
+test("unlock keys", (t) => {
+  const letter1 = FakePhoneticModel.letter1;
+  const letter2 = FakePhoneticModel.letter2;
+  const letter3 = FakePhoneticModel.letter3;
+  const letter4 = FakePhoneticModel.letter4;
+  const letter5 = FakePhoneticModel.letter5;
+  const letter6 = FakePhoneticModel.letter6;
+  const letter7 = FakePhoneticModel.letter7;
+  const letter8 = FakePhoneticModel.letter8;
+  const letter9 = FakePhoneticModel.letter9;
+  const letter10 = FakePhoneticModel.letter10;
+
+  const model = new FakePhoneticModel();
+
+  function recoverOff(settings = new Settings()) {
+    settings = settings.set(lessonProps.guided.recoverKeys, false);
+
+    const lesson = new GuidedLesson(settings, model, allCodePoints(), []);
+    return { settings, lesson };
+  }
+
+  function recoverOn(settings = new Settings()) {
+    settings = settings.set(lessonProps.guided.recoverKeys, true);
+    const lesson = new GuidedLesson(settings, model, allCodePoints(), []);
+    return { settings, lesson };
+  }
+
+  {
+    // Initial state.
+
+    {
+      // Recover off.
+
+      const { settings, lesson } = recoverOff();
+
+      t.is(
+        printLessonKeys(
+          lesson.update(
+            fakeKeyStatsMap(settings, [
+              [letter1, null, null], // A
+              [letter2, null, null], // B
+              [letter3, null, null], // C
+              [letter4, null, null], // D
+              [letter5, null, null], // E
+              [letter6, null, null], // F
+              [letter7, null, null], // G
+              [letter8, null, null], // H
+              [letter9, null, null], // I
+              [letter10, null, null], // J
+            ]),
+          ),
+        ),
+        "[A]BCDEF",
+      );
+    }
+
+    {
+      // Recover on.
+
+      const { settings, lesson } = recoverOn();
+
+      t.is(
+        printLessonKeys(
+          lesson.update(
+            fakeKeyStatsMap(settings, [
+              [letter1, null, null], // A
+              [letter2, null, null], // B
+              [letter3, null, null], // C
+              [letter4, null, null], // D
+              [letter5, null, null], // E
+              [letter6, null, null], // F
+              [letter7, null, null], // G
+              [letter8, null, null], // H
+              [letter9, null, null], // I
+              [letter10, null, null], // J
+            ]),
+          ),
+        ),
+        "[A]BCDEF",
+      );
+    }
+  }
+
+  {
+    // The unlocked key has no confidence level.
+
+    {
+      // All previous keys are now above the target speed.
+
+      {
+        // Recover off.
+
+        const { settings, lesson } = recoverOff();
+
+        t.is(
+          printLessonKeys(
+            lesson.update(
+              fakeKeyStatsMap(settings, [
+                [letter1, 1, 1], // A
+                [letter2, 1, 1], // B
+                [letter3, 1, 1], // C
+                [letter4, 1, 1], // D
+                [letter5, 1, 1], // E
+                [letter6, 1, 1], // F
+                [letter7, null, null], // G
+                [letter8, null, null], // H
+                [letter9, null, null], // I
+                [letter10, 1, 1], // J
+              ]),
+            ),
+          ),
+          "ABCDEF[G]",
+        );
+      }
+
+      {
+        // Recover on.
+
+        const { settings, lesson } = recoverOn();
+
+        t.is(
+          printLessonKeys(
+            lesson.update(
+              fakeKeyStatsMap(settings, [
+                [letter1, 1, 1], // A
+                [letter2, 1, 1], // B
+                [letter3, 1, 1], // C
+                [letter4, 1, 1], // D
+                [letter5, 1, 1], // E
+                [letter6, 1, 1], // F
+                [letter7, null, null], // G
+                [letter8, null, null], // H
+                [letter9, null, null], // I
+                [letter10, 1, 1], // J
+              ]),
+            ),
+          ),
+          "ABCDEF[G]",
+        );
+      }
+    }
+
+    {
+      // All previous keys were once above the target speed.
+
+      {
+        // Recover off.
+
+        const { settings, lesson } = recoverOff();
+
+        t.is(
+          printLessonKeys(
+            lesson.update(
+              fakeKeyStatsMap(settings, [
+                [letter1, 0.9, 1], // A
+                [letter2, 0.9, 1], // B
+                [letter3, 0.9, 1], // C
+                [letter4, 0.9, 1], // D
+                [letter5, 0.9, 1], // E
+                [letter6, 0.9, 1], // F
+                [letter7, null, null], // G
+                [letter8, null, null], // H
+                [letter9, null, null], // I
+                [letter10, 1, 1], // J
+              ]),
+            ),
+          ),
+          "ABCDEF[G]",
+        );
+      }
+
+      {
+        // Recover on.
+
+        const { settings, lesson } = recoverOn();
+
+        t.is(
+          printLessonKeys(
+            lesson.update(
+              fakeKeyStatsMap(settings, [
+                [letter1, 0.9, 1], // A
+                [letter2, 0.9, 1], // B
+                [letter3, 0.9, 1], // C
+                [letter4, 0.9, 1], // D
+                [letter5, 0.9, 1], // E
+                [letter6, 0.9, 1], // F
+                [letter7, null, null], // G
+                [letter8, null, null], // H
+                [letter9, null, null], // I
+                [letter10, 1, 1], // J
+              ]),
+            ),
+          ),
+          "[A]BCDEF",
+        );
+      }
+    }
+  }
+
+  {
+    // The unlocked key has a low confidence level.
+
+    {
+      // All previous keys are now above the target speed.
+
+      {
+        // Recover off.
+
+        const { settings, lesson } = recoverOff();
+
+        t.is(
+          printLessonKeys(
+            lesson.update(
+              fakeKeyStatsMap(settings, [
+                [letter1, 1, 1], // A
+                [letter2, 1, 1], // B
+                [letter3, 1, 1], // C
+                [letter4, 1, 1], // D
+                [letter5, 1, 1], // E
+                [letter6, 1, 1], // F
+                [letter7, 0.5, 0.5], // G
+                [letter8, 0.5, 0.5], // H
+                [letter9, null, null], // I
+                [letter10, 1, 1], // J
+              ]),
+            ),
+          ),
+          "ABCDEF[G]",
+        );
+      }
+
+      {
+        // Recover on.
+
+        const { settings, lesson } = recoverOn();
+
+        t.is(
+          printLessonKeys(
+            lesson.update(
+              fakeKeyStatsMap(settings, [
+                [letter1, 1, 1], // A
+                [letter2, 1, 1], // B
+                [letter3, 1, 1], // C
+                [letter4, 1, 1], // D
+                [letter5, 1, 1], // E
+                [letter6, 1, 1], // F
+                [letter7, 0.5, 0.5], // G
+                [letter8, 0.5, 0.5], // H
+                [letter9, null, null], // I
+                [letter10, 1, 1], // J
+              ]),
+            ),
+          ),
+          "ABCDEF[G]",
+        );
+      }
+    }
+
+    {
+      // All previous keys were once above the target speed.
+
+      {
+        // Recover off.
+
+        const { settings, lesson } = recoverOff();
+
+        t.is(
+          printLessonKeys(
+            lesson.update(
+              fakeKeyStatsMap(settings, [
+                [letter1, 0.9, 1], // A
+                [letter2, 0.9, 1], // B
+                [letter3, 0.9, 1], // C
+                [letter4, 0.9, 1], // D
+                [letter5, 0.9, 1], // E
+                [letter6, 0.9, 1], // F
+                [letter7, 0.5, 0.5], // G
+                [letter8, 0.5, 0.5], // H
+                [letter9, null, null], // I
+                [letter10, 1, 1], // J
+              ]),
+            ),
+          ),
+          "ABCDEF[G]",
+        );
+      }
+
+      {
+        // Recover on.
+
+        const { settings, lesson } = recoverOn();
+
+        t.is(
+          printLessonKeys(
+            lesson.update(
+              fakeKeyStatsMap(settings, [
+                [letter1, 0.9, 1], // A
+                [letter2, 0.9, 1], // B
+                [letter3, 0.9, 1], // C
+                [letter4, 0.9, 1], // D
+                [letter5, 0.9, 1], // E
+                [letter6, 0.9, 1], // F
+                [letter7, 0.5, 0.5], // G
+                [letter8, 0.5, 0.5], // H
+                [letter9, null, null], // I
+                [letter10, 1, 1], // J
+              ]),
+            ),
+          ),
+          "ABCDEF[G]",
+        );
+      }
+    }
+  }
+
+  {
+    // All keys are unlocked.
+
+    {
+      // Some keys are below the target speed.
+
+      {
+        // Recover off.
+
+        const { settings, lesson } = recoverOff();
+
+        t.is(
+          printLessonKeys(
+            lesson.update(
+              fakeKeyStatsMap(settings, [
+                [letter1, 1, 1], // A
+                [letter2, 1, 1], // B
+                [letter3, 1, 1], // C
+                [letter4, 1, 1], // D
+                [letter5, 1, 1], // E
+                [letter6, 1, 1], // F
+                [letter7, 1, 1], // G
+                [letter8, 1, 1], // H
+                [letter9, 1, 1], // I
+                [letter10, 0.9, 1], // J
+              ]),
+            ),
+          ),
+          "ABCDEFGHI[J]",
+        );
+      }
+
+      {
+        // Recover on.
+
+        const { settings, lesson } = recoverOn();
+
+        t.is(
+          printLessonKeys(
+            lesson.update(
+              fakeKeyStatsMap(settings, [
+                [letter1, 1, 1], // A
+                [letter2, 1, 1], // B
+                [letter3, 1, 1], // C
+                [letter4, 1, 1], // D
+                [letter5, 1, 1], // E
+                [letter6, 1, 1], // F
+                [letter7, 1, 1], // G
+                [letter8, 1, 1], // H
+                [letter9, 1, 1], // I
+                [letter10, 0.9, 1], // J
+              ]),
+            ),
+          ),
+          "ABCDEFGHI[J]",
+        );
+      }
+    }
+
+    {
+      // All keys are above the target speed.
+
+      {
+        // Recover off.
+
+        const { settings, lesson } = recoverOff();
+
+        t.is(
+          printLessonKeys(
+            lesson.update(
+              fakeKeyStatsMap(settings, [
+                [letter1, 1, 1], // A
+                [letter2, 1, 1], // B
+                [letter3, 1, 1], // C
+                [letter4, 1, 1], // D
+                [letter5, 1, 1], // E
+                [letter6, 1, 1], // F
+                [letter7, 1, 1], // G
+                [letter8, 1, 1], // H
+                [letter9, 1, 1], // I
+                [letter10, 1, 1], // J
+              ]),
+            ),
+          ),
+          "ABCDEFGHIJ",
+        );
+      }
+
+      {
+        // Recover on.
+
+        const { settings, lesson } = recoverOn();
+
+        t.is(
+          printLessonKeys(
+            lesson.update(
+              fakeKeyStatsMap(settings, [
+                [letter1, 1, 1], // A
+                [letter2, 1, 1], // B
+                [letter3, 1, 1], // C
+                [letter4, 1, 1], // D
+                [letter5, 1, 1], // E
+                [letter6, 1, 1], // F
+                [letter7, 1, 1], // G
+                [letter8, 1, 1], // H
+                [letter9, 1, 1], // I
+                [letter10, 1, 1], // J
+              ]),
+            ),
+          ),
+          "ABCDEFGHIJ",
+        );
+      }
+    }
+  }
+
+  {
+    // Manually unlock keys.
+
+    {
+      // Initial state.
+
+      {
+        // Recover off.
+
+        const { settings, lesson } = recoverOff(
+          new Settings().set(lessonProps.guided.alphabetSize, 1),
+        );
+
+        t.is(
+          printLessonKeys(
+            lesson.update(
+              fakeKeyStatsMap(settings, [
+                [letter1, null, null], // A
+                [letter2, null, null], // B
+                [letter3, null, null], // C
+                [letter4, null, null], // D
+                [letter5, null, null], // E
+                [letter6, null, null], // F
+                [letter7, null, null], // G
+                [letter8, null, null], // H
+                [letter9, null, null], // I
+                [letter10, null, null], // J
+              ]),
+            ),
+          ),
+          "[A]BCDEF!G!H!I!J",
+        );
+      }
+
+      {
+        // Recover on.
+
+        const { settings, lesson } = recoverOn(
+          new Settings().set(lessonProps.guided.alphabetSize, 1),
+        );
+
+        t.is(
+          printLessonKeys(
+            lesson.update(
+              fakeKeyStatsMap(settings, [
+                [letter1, null, null], // A
+                [letter2, null, null], // B
+                [letter3, null, null], // C
+                [letter4, null, null], // D
+                [letter5, null, null], // E
+                [letter6, null, null], // F
+                [letter7, null, null], // G
+                [letter8, null, null], // H
+                [letter9, null, null], // I
+                [letter10, null, null], // J
+              ]),
+            ),
+          ),
+          "[A]BCDEF!G!H!I!J",
+        );
+      }
+    }
+  }
 });

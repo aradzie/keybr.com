@@ -74,16 +74,21 @@ export class GuidedLesson extends Lesson {
       }
 
       if (recoverKeys) {
-        if (includedKeys.every((key) => (key.confidence ?? 0) >= 1)) {
+        if (
+          includedKeys.every((key) => (key.confidence ?? 0) >= 1) ||
+          (lessonKey.confidence ?? 0 > 0)
+        ) {
           // Include a new key only when all the previous keys
           // are now above the target speed.
-          lessonKeys.include(lessonKey.letter);
+          lessonKeys.focus(lessonKey.letter);
+          return lessonKeys;
         }
       } else {
         if (includedKeys.every((key) => (key.bestConfidence ?? 0) >= 1)) {
           // Include a new key only when all the previous keys
           // were once above the target speed.
-          lessonKeys.include(lessonKey.letter);
+          lessonKeys.focus(lessonKey.letter);
+          return lessonKeys;
         }
       }
 
@@ -91,25 +96,12 @@ export class GuidedLesson extends Lesson {
       break;
     }
 
-    const confidenceOf = (key: LessonKey): number => {
-      return recoverKeys ? key.confidence ?? 0 : key.bestConfidence ?? 0;
-    };
-
-    const includedKeys = lessonKeys.findIncludedKeys();
-
-    // If a new key was recently unlocked, and has not reached the confidence
-    // level, continue focusing on this key.
-    const lastUnlockedKey = includedKeys[includedKeys.length - 1];
-    if (includedKeys.length > maxSize && confidenceOf(lastUnlockedKey) < 1) {
-      lessonKeys.focus(lastUnlockedKey.letter);
-    } else {
-      // Else find the least confident of all included keys and focus on it.
-      const weakestKeys = includedKeys
-        .filter((key) => confidenceOf(key) < 1)
-        .sort((a, b) => confidenceOf(a) - confidenceOf(b));
-      if (weakestKeys.length > 0) {
-        lessonKeys.focus(weakestKeys[0].letter);
-      }
+    const weakestKeys = lessonKeys
+      .findIncludedKeys()
+      .filter((key) => (key.confidence ?? 0) < 1)
+      .sort((a, b) => (a.confidence ?? 0) - (b.confidence ?? 0));
+    if (weakestKeys.length > 0) {
+      lessonKeys.focus(weakestKeys[0].letter);
     }
 
     return lessonKeys;
