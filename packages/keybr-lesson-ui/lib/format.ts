@@ -23,7 +23,7 @@ export type Formatter = {
 
 export const useFormatter = (): Formatter => {
   const { formatMessage } = useIntl();
-  const { formatNumber } = useIntlNumbers();
+  const { formatNumber, formatPercents } = useIntlNumbers();
   const { settings } = useSettings();
   return useMemo(() => {
     const speedUnit = settings.get(uiProps.speedUnit);
@@ -58,7 +58,7 @@ export const useFormatter = (): Formatter => {
     };
     const formatConfidence = (confidence: number | null): string => {
       if (confidence != null) {
-        return formatNumber(confidence, f2);
+        return formatPercents(confidence);
       } else {
         return formatMessage(messages.uncertainValue);
       }
@@ -82,7 +82,7 @@ export const useFormatter = (): Formatter => {
       formatConfidence,
       formatLearningRate,
     };
-  }, [formatMessage, formatNumber, settings]);
+  }, [formatMessage, formatNumber, formatPercents, settings]);
 };
 
 function signed(value: any, learningRate: number): string {
