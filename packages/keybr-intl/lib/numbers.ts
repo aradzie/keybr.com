@@ -45,7 +45,21 @@ const factory = (intl: IntlShape): IntlNumbers => {
         maximumFractionDigits: opts,
       };
     }
-    return intl.formatNumber(value, opts);
+    // Do not round up to 100% if the value is less than one.
+    // Add decimal digits instead.
+    let s = intl.formatNumber(value, opts);
+    for (let i = opts.maximumFractionDigits ?? 0; i <= 5; i++) {
+      if (value < 1.0 && s === intl.formatNumber(1.0, opts)) {
+        opts = {
+          ...opts,
+          maximumFractionDigits: i + 1,
+        };
+        s = intl.formatNumber(value, opts);
+      } else {
+        break;
+      }
+    }
+    return s;
   };
   return {
     formatInteger,

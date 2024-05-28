@@ -33,4 +33,17 @@ test("format percents", (t) => {
   t.is(formatPercents(0.99123456, 1), "99.1%");
   t.is(formatPercents(0.99123456, 2), "99.12%");
   t.is(formatPercents(0.99123456, 3), "99.123%");
+  t.is(formatPercents(0.999, 0), "99.9%");
+  t.is(formatPercents(0.9999, 0), "99.99%");
+  t.is(formatPercents(0.99999, 0), "99.999%");
+  t.is(formatPercents(0.999999, 0), "99.9999%");
+  t.is(formatPercents(0.9999999, 0), "99.99999%");
+  t.is(formatPercents(0.99999999, 0), "99.999999%");
+  t.is(formatPercents(0.999999999, 0), "100%");
+  t.is(formatPercents(1.0), "100%");
+  t.is(formatPercents(1.0, 0), "100%");
+  t.is(formatPercents(1.0, 1), "100%");
+  t.is(formatPercents(2.0), "200%");
+  t.is(formatPercents(2.0, 0), "200%");
+  t.is(formatPercents(2.0, 1), "200%");
 });
