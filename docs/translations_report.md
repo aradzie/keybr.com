@@ -1,8 +1,8 @@
 # Arabic
 
-Translated: 425 messages, 5126 words
+Translated: 426 messages, 5129 words
 
-Untranslated: 7 messages, 33 words
+Untranslated: 6 messages, 30 words
 
 # Czech
 
