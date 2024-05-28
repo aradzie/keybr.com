@@ -74,32 +74,30 @@ export class GuidedLesson extends Lesson {
       }
 
       if (recoverKeys) {
-        if (
-          includedKeys.every((key) => (key.confidence ?? 0) >= 1) ||
-          (lessonKey.confidence ?? 0 > 0)
-        ) {
+        if (includedKeys.every((key) => (key.confidence ?? 0) >= 1)) {
           // Include a new key only when all the previous keys
           // are now above the target speed.
-          lessonKeys.focus(lessonKey.letter);
-          return lessonKeys;
+          lessonKeys.include(lessonKey.letter);
+          continue;
         }
       } else {
         if (includedKeys.every((key) => (key.bestConfidence ?? 0) >= 1)) {
           // Include a new key only when all the previous keys
           // were once above the target speed.
-          lessonKeys.focus(lessonKey.letter);
-          return lessonKeys;
+          lessonKeys.include(lessonKey.letter);
+          continue;
         }
       }
-
-      // No more keys to include.
-      break;
     }
 
+    // Find the least confident of all included keys and focus on it.
+    const confidenceOf = (key: LessonKey): number => {
+      return recoverKeys ? key.confidence ?? 0 : key.bestConfidence ?? 0;
+    };
     const weakestKeys = lessonKeys
       .findIncludedKeys()
-      .filter((key) => (key.confidence ?? 0) < 1)
-      .sort((a, b) => (a.confidence ?? 0) - (b.confidence ?? 0));
+      .filter((key) => confidenceOf(key) < 1)
+      .sort((a, b) => confidenceOf(a) - confidenceOf(b));
     if (weakestKeys.length > 0) {
       lessonKeys.focus(weakestKeys[0].letter);
     }

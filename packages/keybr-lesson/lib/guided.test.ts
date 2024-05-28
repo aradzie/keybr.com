@@ -353,7 +353,7 @@ test("unlock keys", (t) => {
               ]),
             ),
           ),
-          "ABCDEF[G]",
+          "ABCDEF[G]J",
         );
       }
 
@@ -379,7 +379,7 @@ test("unlock keys", (t) => {
               ]),
             ),
           ),
-          "ABCDEF[G]",
+          "ABCDEF[G]J",
         );
       }
     }
@@ -409,7 +409,7 @@ test("unlock keys", (t) => {
               ]),
             ),
           ),
-          "ABCDEF[G]",
+          "ABCDEF[G]J",
         );
       }
 
@@ -435,7 +435,7 @@ test("unlock keys", (t) => {
               ]),
             ),
           ),
-          "[A]BCDEF",
+          "[A]BCDEFJ",
         );
       }
     }
@@ -469,7 +469,7 @@ test("unlock keys", (t) => {
               ]),
             ),
           ),
-          "ABCDEF[G]",
+          "ABCDEF[G]J",
         );
       }
 
@@ -495,7 +495,7 @@ test("unlock keys", (t) => {
               ]),
             ),
           ),
-          "ABCDEF[G]",
+          "ABCDEF[G]J",
         );
       }
     }
@@ -525,7 +525,7 @@ test("unlock keys", (t) => {
               ]),
             ),
           ),
-          "ABCDEF[G]",
+          "ABCDEF[G]J",
         );
       }
 
@@ -551,7 +551,7 @@ test("unlock keys", (t) => {
               ]),
             ),
           ),
-          "ABCDEF[G]",
+          "[A]BCDEFJ",
         );
       }
     }
@@ -585,7 +585,7 @@ test("unlock keys", (t) => {
               ]),
             ),
           ),
-          "ABCDEFGHI[J]",
+          "ABCDEFGHIJ",
         );
       }
 
