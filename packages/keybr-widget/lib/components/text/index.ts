@@ -8,3 +8,5 @@ export * from "./NameValue.tsx";
 export * from "./NameValue.types.ts";
 export * from "./Para.tsx";
 export * from "./Para.types.ts";
+export * from "./Spacer.tsx";
+export * from "./Spacer.types.ts";

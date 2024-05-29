@@ -9,6 +9,7 @@ import {
   FieldList,
   Header,
   Icon,
+  Spacer,
   styleWidth16,
 } from "@keybr/widget";
 import { mdiCheckCircle, mdiDeleteForever } from "@mdi/js";
@@ -63,7 +64,7 @@ function Content({ onSubmit }: { readonly onSubmit: () => void }): ReactNode {
         </Header>
         <LessonSettings />
 
-        <div className={styles.spacer} />
+        <Spacer size={5} />
 
         <Header level={1}>
           <FormattedMessage
@@ -73,7 +74,7 @@ function Content({ onSubmit }: { readonly onSubmit: () => void }): ReactNode {
         </Header>
         <TypingSettings />
 
-        <div className={styles.spacer} />
+        <Spacer size={5} />
 
         <Header level={1}>
           <FormattedMessage
@@ -83,7 +84,7 @@ function Content({ onSubmit }: { readonly onSubmit: () => void }): ReactNode {
         </Header>
         <KeyboardSettings />
 
-        <div className={styles.spacer} />
+        <Spacer size={5} />
 
         <Header level={1}>
           <FormattedMessage
