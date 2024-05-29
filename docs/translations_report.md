@@ -108,9 +108,9 @@ Untranslated: 3 messages, 23 words
 
 # Brazilian Portuguese
 
-Translated: 388 messages, 4715 words
+Translated: 425 messages, 5131 words
 
-Untranslated: 44 messages, 444 words
+Untranslated: 7 messages, 28 words
 
 # European Portuguese
 
