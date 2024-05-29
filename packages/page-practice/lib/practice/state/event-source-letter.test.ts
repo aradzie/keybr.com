@@ -3,7 +3,7 @@ import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { ResultFaker } from "@keybr/result";
 import test from "ava";
 import { LetterEvents } from "./event-source-letter.ts";
-import type { LessonEvent } from "./event-types.ts";
+import { type LessonEvent } from "./event-types.ts";
 
 const keyArgs = {
   samples: [],

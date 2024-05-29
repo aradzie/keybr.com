@@ -1,12 +1,12 @@
 import { clsx } from "clsx";
 import { type ReactNode, useRef } from "react";
-import type {
-  ClassName,
-  FocusProps,
-  KeyboardProps,
-  MouseProps,
+import {
+  type ClassName,
+  type FocusProps,
+  type KeyboardProps,
+  type MouseProps,
 } from "../types.ts";
-import type { OptionListOption } from "./OptionList.types.ts";
+import { type OptionListOption } from "./OptionList.types.ts";
 import * as styles from "./OptionListButton.module.less";
 
 export function OptionListButton({

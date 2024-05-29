@@ -1,4 +1,4 @@
-import type { ReactElement, ReactNode } from "react";
+import { type ReactElement, type ReactNode } from "react";
 import {
   type AlignOptions,
   type FloatingHeight,

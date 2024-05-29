@@ -1,7 +1,7 @@
 import { type Letter } from "@keybr/phonetic-model";
 import { type KeyStats, type KeyStatsMap, speedToTime } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
-import type { LessonKeys } from "./key.ts";
+import { type LessonKeys } from "./key.ts";
 import { Target } from "./target.ts";
 
 export function fakeKeyStatsMap(

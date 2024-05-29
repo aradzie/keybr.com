@@ -1,9 +1,9 @@
-import type {
-  FocusEventHandler,
-  KeyboardEventHandler,
-  MouseEventHandler,
-  RefObject,
-  WheelEventHandler,
+import {
+  type FocusEventHandler,
+  type KeyboardEventHandler,
+  type MouseEventHandler,
+  type RefObject,
+  type WheelEventHandler,
 } from "react";
 import { type Anchor } from "../floating/index.ts";
 

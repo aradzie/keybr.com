@@ -1,7 +1,7 @@
-import type {
-  FloatingPlacement,
-  FloatingPosition,
-  FloatingSide,
+import {
+  type FloatingPlacement,
+  type FloatingPosition,
+  type FloatingSide,
 } from "./types.ts";
 
 export function splitPosition(

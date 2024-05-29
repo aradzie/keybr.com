@@ -1,5 +1,5 @@
 import { getBoundingBox, getScreenSize, Rect } from "../../utils/index.ts";
-import type { ZoomablePosition } from "./Zoomer.types.ts";
+import { type ZoomablePosition } from "./Zoomer.types.ts";
 
 const screenMargin = 0;
 

@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import { type CSSProperties } from "react";
 import { type Rect } from "../utils/index.ts";
 
 export type FloatingSide =

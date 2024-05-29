@@ -1,5 +1,5 @@
 import { useIntlNumbers } from "@keybr/intl";
-import type { SummaryStats } from "@keybr/result";
+import { type SummaryStats } from "@keybr/result";
 import { type ClassName, Name, Value } from "@keybr/widget";
 import { clsx } from "clsx";
 import { memo, type ReactNode } from "react";

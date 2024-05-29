@@ -1,4 +1,4 @@
-import type { ReactElement } from "react";
+import { type ReactElement } from "react";
 import { type ToastOptions } from "./types.ts";
 
 let nextKey = 0;

@@ -1,6 +1,6 @@
-import type { ReactElement, ReactNode } from "react";
-import type { IconProps } from "../icon/index.ts";
-import type { ClassName } from "../types.ts";
+import { type ReactElement, type ReactNode } from "react";
+import { type IconProps } from "../icon/index.ts";
+import { type ClassName } from "../types.ts";
 
 export type Action = {
   readonly action: () => void;
