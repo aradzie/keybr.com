@@ -583,7 +583,7 @@ test("normalize characters", (t) => {
 });
 
 test("handle whitespace", (t) => {
-  const textInput = new TextInput("a\n\t", {
+  const textInput = new TextInput("a  ", {
     stopOnError: true,
     forgiveErrors: false,
     spaceSkipsWords: false,

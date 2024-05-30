@@ -34,11 +34,8 @@ export class TextInput {
     { stopOnError, forgiveErrors, spaceSkipsWords }: TextInputSettings,
     onStep: StepListener = () => {},
   ) {
-    const codePoints = [...toCodePoints(text.normalize())].map(
-      filterText.normalizeWhitespace,
-    );
-    this.text = String.fromCodePoint(...codePoints);
-    this.codePoints = codePoints;
+    this.text = text;
+    this.codePoints = [...toCodePoints(text)];
     this.stopOnError = stopOnError;
     this.forgiveErrors = forgiveErrors;
     this.spaceSkipsWords = spaceSkipsWords;

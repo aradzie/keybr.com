@@ -562,14 +562,12 @@ const basicPunctuationData = [
   [
     0x0021, // Exclamation Mark
     [
-      0x0021, // Exclamation Mark
       0x00a1, // Inverted Exclamation Mark
     ],
   ],
   [
     0x0022, // Quotation Mark
     [
-      0x0022, // Quotation Mark
       0x00ab, // Left-Pointing Double Angle Quotation Mark
       0x00bb, // Right-Pointing Double Angle Quotation Mark
       0x201c, // Left Double Quotation Mark
@@ -583,7 +581,6 @@ const basicPunctuationData = [
   [
     0x0027, // Apostrophe
     [
-      0x0027, // Apostrophe
       0x2018, // Left Single Quotation Mark
       0x2019, // Right Single Quotation Mark
     ],
@@ -591,7 +588,6 @@ const basicPunctuationData = [
   [
     0x002d, // Hyphen-Minus
     [
-      0x002d, // Hyphen-Minus
       0x2010, // Hyphen
       0x2011, // Non-Breaking Hyphen
       0x2012, // Figure Dash
@@ -602,7 +598,6 @@ const basicPunctuationData = [
   [
     0x003f, // Question Mark
     [
-      0x003f, // Question Mark
       0x00bf, // Inverted Question Mark
     ],
   ],
@@ -677,17 +672,17 @@ export function filterText(text: string, set: CodePointSet): string {
         }
         continue;
     }
-    const basic = basicPunctuation.get(codePoint);
-    if (basic != null) {
-      if (!append(basic, String.fromCodePoint(codePoint))) {
-        space(" ");
-      }
-      continue;
-    }
     if (!append(codePoint)) {
-      const basic = basicLetters.get(codePoint);
-      if (basic != null) {
-        for (const letter of basic) {
+      const a = basicPunctuation.get(codePoint);
+      if (a != null) {
+        if (!append(a, String.fromCodePoint(codePoint))) {
+          space(" ");
+        }
+        continue;
+      }
+      const b = basicLetters.get(codePoint);
+      if (b != null) {
+        for (const letter of b) {
           append(letter);
         }
         continue;
@@ -699,18 +694,7 @@ export function filterText(text: string, set: CodePointSet): string {
 }
 
 filterText.normalize = normalize;
-filterText.normalizeWhitespace = normalizeWhitespace;
 
 function normalize(codePoint: CodePoint): CodePoint {
-  if (isWhitespace(codePoint)) {
-    return 0x0020; // Space
-  }
   return basicPunctuation.get(codePoint) ?? codePoint;
-}
-
-function normalizeWhitespace(codePoint: CodePoint): CodePoint {
-  if (isWhitespace(codePoint)) {
-    return 0x0020; // Space
-  }
-  return codePoint;
 }
