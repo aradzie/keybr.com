@@ -20,8 +20,8 @@ test("filter", (t) => {
   t.is(filterText("a\u0301", allCodePoints()), "á");
   t.is(filterText("a\u0301\u0302\u0303", allCodePoints()), "á");
   t.is(filterText("a\u0301", codePointsFrom("a")), "a");
-  t.is(filterText("ae", codePointsFrom("ae")), "ꜳ");
-  t.is(filterText("abc", codePointsFrom("abc")), "ⓐⓑⓒ");
+  t.is(filterText("ꜳ", codePointsFrom("a")), "aa");
+  t.is(filterText("ⓐⓑⓒ", codePointsFrom("abc")), "abc");
   t.is(filterText("abc こんにちは", allCodePoints()), "abc こんにちは");
   t.is(filterText("abc こんにちは", codePointsFrom("abc")), "abc");
   t.is(filterText("תפוח, תפוז", allCodePoints()), "תפוח, תפוז");
