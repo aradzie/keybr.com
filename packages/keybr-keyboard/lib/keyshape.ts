@@ -85,6 +85,14 @@ export class KeyShape {
   inZone(id: ZoneId): boolean {
     return this.zones.includes(id);
   }
+
+  inAnyZone(ids: readonly ZoneId[]): boolean {
+    return ids.some((id) => this.zones.includes(id));
+  }
+
+  inAllZones(ids: readonly ZoneId[]): boolean {
+    return ids.every((id) => this.zones.includes(id));
+  }
 }
 
 function selectZone(

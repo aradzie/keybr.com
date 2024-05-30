@@ -63,3 +63,10 @@ export type LabelShape = {
     v: /* bottom */ "b" | /* middle */ "m" | /* top */ "t",
   ];
 };
+
+export type ZoneFilter = {
+  readonly zones: readonly ZoneId[];
+  readonly dead: boolean;
+  readonly shift: boolean;
+  readonly alt: boolean;
+};

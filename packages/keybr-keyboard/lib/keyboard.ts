@@ -12,6 +12,7 @@ import {
   type GeometryDict,
   type KeyId,
   type WeightedCodePointSet,
+  type ZoneFilter,
   type ZoneId,
 } from "./types.ts";
 
@@ -105,16 +106,11 @@ export class Keyboard {
   }
 
   getCodePoints({
+    zones,
     dead = true,
     shift = true,
     alt = true,
-    zone = null,
-  }: {
-    readonly dead?: boolean;
-    readonly shift?: boolean;
-    readonly alt?: boolean;
-    readonly zone?: ZoneId | null;
-  } = {}): WeightedCodePointSet {
+  }: Partial<ZoneFilter> = {}): WeightedCodePointSet {
     const list: CodePoint[] = [];
     const weights = new Map<CodePoint, number>();
     for (const combo of this.combos.values()) {
@@ -123,7 +119,7 @@ export class Keyboard {
         (combo.prefix == null || dead) &&
         (!combo.shift || shift) &&
         (!combo.alt || alt) &&
-        (zone == null || shape?.inZone(zone))
+        (zones == null || shape?.inAnyZone(zones))
       ) {
         list.push(combo.codePoint);
         switch (shape?.row) {
