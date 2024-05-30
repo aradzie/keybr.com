@@ -5,7 +5,7 @@ import {
   flattenContent,
   splitParagraph,
 } from "@keybr/content";
-import { type WeightedCodePointSet } from "@keybr/keyboard";
+import { filterText, type WeightedCodePointSet } from "@keybr/keyboard";
 import { clamp } from "@keybr/lang";
 import { type Letter, type PhoneticModel } from "@keybr/phonetic-model";
 import { type KeyStatsMap } from "@keybr/result";
@@ -15,7 +15,6 @@ import { Lesson } from "./lesson.ts";
 import { lessonProps } from "./settings.ts";
 import { Target } from "./target.ts";
 import { generateFragment } from "./text/fragment.ts";
-import { sanitizeText } from "./text/sanitizetext.ts";
 import { wordSequence } from "./text/words.ts";
 
 export class BooksLesson extends Lesson {
@@ -71,8 +70,8 @@ export class BooksLesson extends Lesson {
         }
       }
     }
-    return flattenContent(content).map((para) => {
-      let text = sanitizeText(para, codePoints);
+    return flattenContent(content).map((paragraph) => {
+      let text = filterText(paragraph, codePoints);
       if (lowercase) {
         text = this.model.language.lowerCase(text);
       }

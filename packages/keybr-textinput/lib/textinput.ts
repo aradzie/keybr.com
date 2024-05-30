@@ -1,5 +1,5 @@
+import { filterText } from "@keybr/keyboard";
 import { type CodePoint, toCodePoints } from "@keybr/unicode";
-import { normalize, normalizeWhitespace } from "./normalize.ts";
 import { type TextInputSettings } from "./settings.ts";
 import {
   attrCursor,
@@ -35,7 +35,7 @@ export class TextInput {
     onStep: StepListener = () => {},
   ) {
     const codePoints = [...toCodePoints(text.normalize())].map(
-      normalizeWhitespace,
+      filterText.normalizeWhitespace,
     );
     this.text = String.fromCodePoint(...codePoints);
     this.codePoints = codePoints;
@@ -144,7 +144,7 @@ export class TextInput {
 
     // Handle correct input.
     if (
-      normalize(this.codePoints[this.#steps.length]) === codePoint &&
+      filterText.normalize(this.codePoints[this.#steps.length]) === codePoint &&
       (this.forgiveErrors || this.#garbage.length === 0)
     ) {
       const typo = this.#typo;

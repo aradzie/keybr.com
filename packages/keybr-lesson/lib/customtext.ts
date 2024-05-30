@@ -1,4 +1,4 @@
-import { type WeightedCodePointSet } from "@keybr/keyboard";
+import { filterText, type WeightedCodePointSet } from "@keybr/keyboard";
 import { type Letter, type PhoneticModel } from "@keybr/phonetic-model";
 import { type KeyStatsMap } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
@@ -7,7 +7,6 @@ import { Lesson } from "./lesson.ts";
 import { lessonProps } from "./settings.ts";
 import { Target } from "./target.ts";
 import { generateFragment } from "./text/fragment.ts";
-import { sanitizeText } from "./text/sanitizetext.ts";
 import {
   randomWords,
   uniqueWords,
@@ -63,7 +62,7 @@ export class CustomTextLesson extends Lesson {
         }
       }
     }
-    let text = sanitizeText(content, codePoints);
+    let text = filterText(content, codePoints);
     if (lowercase) {
       text = this.model.language.lowerCase(text);
     }
