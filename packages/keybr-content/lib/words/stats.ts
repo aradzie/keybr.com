@@ -12,6 +12,6 @@ export function wordListStats(wordList: WordList): {
   }
   return {
     wordCount,
-    avgWordLength: wordLength / wordCount,
+    avgWordLength: wordCount > 0 ? wordLength / wordCount : 0,
   };
 }
