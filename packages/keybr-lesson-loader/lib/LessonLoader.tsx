@@ -14,7 +14,7 @@ import {
   WordListLesson,
 } from "@keybr/lesson";
 import { LoadingProgress } from "@keybr/pages-shared";
-import { PhoneticModel } from "@keybr/phonetic-model";
+import { type PhoneticModel } from "@keybr/phonetic-model";
 import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
 import { useSettings } from "@keybr/settings";
 import { type ReactNode, useEffect, useState } from "react";
@@ -57,7 +57,7 @@ function Loader({
   }
 }
 
-function useLoader(model0: PhoneticModel): Lesson | null {
+function useLoader(model: PhoneticModel): Lesson | null {
   const { settings } = useSettings();
   const keyboard = useKeyboard();
   const [result, setResult] = useState<Lesson | null>(null);
@@ -66,22 +66,12 @@ function useLoader(model0: PhoneticModel): Lesson | null {
     let didCancel = false;
 
     const load = async (): Promise<void> => {
-      const codePoints = keyboard.getCodePoints();
-      const model = PhoneticModel.restrict(model0, codePoints);
-
       switch (settings.get(lessonProps.type)) {
         case LessonType.GUIDED: {
           const { language } = settings.get(keyboardProps.layout);
           const wordList = await loadWordList(language);
           if (!didCancel) {
-            setResult(
-              new GuidedLesson(
-                settings, //
-                model,
-                codePoints,
-                wordList,
-              ),
-            );
+            setResult(new GuidedLesson(settings, keyboard, model, wordList));
           }
           break;
         }
@@ -89,14 +79,7 @@ function useLoader(model0: PhoneticModel): Lesson | null {
           const { language } = settings.get(keyboardProps.layout);
           const wordList = await loadWordList(language);
           if (!didCancel) {
-            setResult(
-              new WordListLesson(
-                settings, //
-                model,
-                codePoints,
-                wordList,
-              ),
-            );
+            setResult(new WordListLesson(settings, keyboard, model, wordList));
           }
           break;
         }
@@ -105,31 +88,26 @@ function useLoader(model0: PhoneticModel): Lesson | null {
           const content = await loadContent(book);
           if (!didCancel) {
             setResult(
-              new BooksLesson(
-                settings, //
-                model,
-                codePoints,
-                { book, content },
-              ),
+              new BooksLesson(settings, keyboard, model, { book, content }),
             );
           }
           break;
         }
         case LessonType.CUSTOM: {
           if (!didCancel) {
-            setResult(new CustomTextLesson(settings, model, codePoints));
+            setResult(new CustomTextLesson(settings, keyboard, model));
           }
           break;
         }
         case LessonType.CODE: {
           if (!didCancel) {
-            setResult(new CodeLesson(settings, model, codePoints));
+            setResult(new CodeLesson(settings, keyboard, model));
           }
           break;
         }
         case LessonType.NUMBERS: {
           if (!didCancel) {
-            setResult(new NumbersLesson(settings, model, codePoints));
+            setResult(new NumbersLesson(settings, keyboard, model));
           }
           break;
         }
@@ -143,7 +121,7 @@ function useLoader(model0: PhoneticModel): Lesson | null {
     return () => {
       didCancel = true;
     };
-  }, [model0, settings, keyboard]);
+  }, [settings, keyboard, model]);
 
   return result;
 }

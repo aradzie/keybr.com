@@ -1,4 +1,4 @@
-import { filterText, type WeightedCodePointSet } from "@keybr/keyboard";
+import { filterText, type Keyboard } from "@keybr/keyboard";
 import { type Letter, type PhoneticModel } from "@keybr/phonetic-model";
 import { type KeyStatsMap } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
@@ -18,12 +18,8 @@ export class CustomTextLesson extends Lesson {
   readonly wordList: readonly string[];
   wordIndex = 0;
 
-  constructor(
-    settings: Settings,
-    model: PhoneticModel,
-    codePoints: WeightedCodePointSet,
-  ) {
-    super(settings, model, codePoints);
+  constructor(settings: Settings, keyboard: Keyboard, model: PhoneticModel) {
+    super(settings, keyboard, model);
     this.wordList = this.#getWordList();
   }
 

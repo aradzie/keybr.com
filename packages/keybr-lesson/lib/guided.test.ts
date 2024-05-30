@@ -1,4 +1,4 @@
-import { allCodePoints } from "@keybr/keyboard";
+import { Layout, loadKeyboard } from "@keybr/keyboard";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { makeKeyStatsMap } from "@keybr/result";
 import { Settings } from "@keybr/settings";
@@ -10,8 +10,9 @@ import { lessonProps } from "./settings.ts";
 
 test("provide key set", (t) => {
   const settings = new Settings();
+  const keyboard = loadKeyboard(Layout.EN_US);
   const model = new FakePhoneticModel(["uno", "due", "tre"]);
-  const lesson = new GuidedLesson(settings, model, allCodePoints(), []);
+  const lesson = new GuidedLesson(settings, keyboard, model, []);
   const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
 
   t.deepEqual(lessonKeys.findIncludedKeys(), [
@@ -146,8 +147,9 @@ test("provide key set", (t) => {
 
 test("generate text from a broken phonetic model, empty words", (t) => {
   const settings = new Settings();
+  const keyboard = loadKeyboard(Layout.EN_US);
   const model = new FakePhoneticModel([""]);
-  const lesson = new GuidedLesson(settings, model, allCodePoints(), []);
+  const lesson = new GuidedLesson(settings, keyboard, model, []);
   const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
   lesson.rng = model.rng;
 
@@ -168,8 +170,9 @@ test("generate text from a broken phonetic model, empty words", (t) => {
 
 test("generate text from a broken phonetic model, repeating words", (t) => {
   const settings = new Settings();
+  const keyboard = loadKeyboard(Layout.EN_US);
   const model = new FakePhoneticModel(["x"]);
-  const lesson = new GuidedLesson(settings, model, allCodePoints(), []);
+  const lesson = new GuidedLesson(settings, keyboard, model, []);
   const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
   lesson.rng = model.rng;
 
@@ -190,8 +193,9 @@ test("generate text from a broken phonetic model, repeating words", (t) => {
 
 test("generate text with pseudo words", (t) => {
   const settings = new Settings().set(lessonProps.guided.naturalWords, false);
+  const keyboard = loadKeyboard(Layout.EN_US);
   const model = new FakePhoneticModel(["uno", "due", "tre"]);
-  const lesson = new GuidedLesson(settings, model, allCodePoints(), []);
+  const lesson = new GuidedLesson(settings, keyboard, model, []);
   const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
   lesson.rng = model.rng;
 
@@ -214,8 +218,9 @@ test("generate text with pseudo words", (t) => {
 
 test("generate text with natural words", (t) => {
   const settings = new Settings().set(lessonProps.guided.naturalWords, true);
+  const keyboard = loadKeyboard(Layout.EN_US);
   const model = new FakePhoneticModel(["uno", "due", "tre"]);
-  const lesson = new GuidedLesson(settings, model, allCodePoints(), [
+  const lesson = new GuidedLesson(settings, keyboard, model, [
     "abcaa",
     "abcab",
     "abcac",
@@ -254,18 +259,19 @@ test("unlock keys", (t) => {
   const letter9 = FakePhoneticModel.letter9;
   const letter10 = FakePhoneticModel.letter10;
 
+  const keyboard = loadKeyboard(Layout.EN_US);
   const model = new FakePhoneticModel();
 
   function recoverOff(settings = new Settings()) {
     settings = settings.set(lessonProps.guided.recoverKeys, false);
 
-    const lesson = new GuidedLesson(settings, model, allCodePoints(), []);
+    const lesson = new GuidedLesson(settings, keyboard, model, []);
     return { settings, lesson };
   }
 
   function recoverOn(settings = new Settings()) {
     settings = settings.set(lessonProps.guided.recoverKeys, true);
-    const lesson = new GuidedLesson(settings, model, allCodePoints(), []);
+    const lesson = new GuidedLesson(settings, keyboard, model, []);
     return { settings, lesson };
   }
 

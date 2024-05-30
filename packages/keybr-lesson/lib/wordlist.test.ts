@@ -1,4 +1,4 @@
-import { allCodePoints, codePointsFrom } from "@keybr/keyboard";
+import { Layout, loadKeyboard } from "@keybr/keyboard";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { makeKeyStatsMap } from "@keybr/result";
 import { Settings } from "@keybr/settings";
@@ -9,9 +9,10 @@ import { WordListLesson } from "./wordlist.ts";
 
 test("provide key set", (t) => {
   const settings = new Settings();
+  const keyboard = loadKeyboard(Layout.EN_US);
   const model = new FakePhoneticModel();
   const wordList = ["abc", "def", "ghi"];
-  const lesson = new WordListLesson(settings, model, allCodePoints(), wordList);
+  const lesson = new WordListLesson(settings, keyboard, model, wordList);
   const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
 
   t.deepEqual(lessonKeys.findIncludedKeys(), [
@@ -132,10 +133,10 @@ test("provide key set", (t) => {
 
 test("filter words", (t) => {
   const settings = new Settings();
+  const keyboard = loadKeyboard(Layout.EN_US);
   const model = new FakePhoneticModel();
-  const codePoints = codePointsFrom("abcdefABCDEF123!?");
-  const wordList = ["abc", "def", "xyz", "abz", "xbc"];
-  const lesson = new WordListLesson(settings, model, codePoints, wordList);
+  const wordList = ["abc", "def", "こんにちは"];
+  const lesson = new WordListLesson(settings, keyboard, model, wordList);
 
   t.deepEqual(lesson.wordList, ["abc", "def"]);
 });
@@ -145,14 +146,10 @@ test("generate text using settings", (t) => {
     const settings = new Settings()
       .set(lessonProps.capitals, 0)
       .set(lessonProps.punctuators, 0);
+    const keyboard = loadKeyboard(Layout.EN_US);
     const model = new FakePhoneticModel();
     const wordList = ["abc", "def", "ghi"];
-    const lesson = new WordListLesson(
-      settings,
-      model,
-      allCodePoints(),
-      wordList,
-    );
+    const lesson = new WordListLesson(settings, keyboard, model, wordList);
     lesson.rng = model.rng;
 
     t.is(
@@ -166,14 +163,10 @@ test("generate text using settings", (t) => {
     const settings = new Settings()
       .set(lessonProps.capitals, 1)
       .set(lessonProps.punctuators, 1);
+    const keyboard = loadKeyboard(Layout.EN_US);
     const model = new FakePhoneticModel();
     const wordList = ["abc", "def", "ghi"];
-    const lesson = new WordListLesson(
-      settings,
-      model,
-      allCodePoints(),
-      wordList,
-    );
+    const lesson = new WordListLesson(settings, keyboard, model, wordList);
     lesson.rng = model.rng;
 
     t.is(

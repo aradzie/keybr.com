@@ -1,5 +1,5 @@
 import { type WordList } from "@keybr/content";
-import { type WeightedCodePointSet } from "@keybr/keyboard";
+import { type Keyboard } from "@keybr/keyboard";
 import { Letter, type PhoneticModel } from "@keybr/phonetic-model";
 import { type KeyStatsMap } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
@@ -16,14 +16,14 @@ export class WordListLesson extends Lesson {
 
   constructor(
     settings: Settings,
+    keyboard: Keyboard,
     model: PhoneticModel,
-    codePoints: WeightedCodePointSet,
     wordList: WordList,
   ) {
-    super(settings, model, codePoints);
+    super(settings, keyboard, model);
     const wordListSize = settings.get(lessonProps.wordList.wordListSize);
     const longWordsOnly = settings.get(lessonProps.wordList.longWordsOnly);
-    this.wordList = filterWordList(wordList, codePoints)
+    this.wordList = filterWordList(wordList, this.codePoints)
       .filter((word) => !longWordsOnly || word.length > 3)
       .slice(0, wordListSize);
   }

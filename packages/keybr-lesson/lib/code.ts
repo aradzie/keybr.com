@@ -1,4 +1,4 @@
-import { type WeightedCodePointSet } from "@keybr/keyboard";
+import { type Keyboard } from "@keybr/keyboard";
 import { Letter, type PhoneticModel } from "@keybr/phonetic-model";
 import { type KeyStatsMap } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
@@ -8,12 +8,8 @@ import { lessonProps } from "./settings.ts";
 import { Target } from "./target.ts";
 
 export class CodeLesson extends Lesson {
-  constructor(
-    settings: Settings,
-    model: PhoneticModel,
-    codePoints: WeightedCodePointSet,
-  ) {
-    super(settings, model, codePoints);
+  constructor(settings: Settings, keyboard: Keyboard, model: PhoneticModel) {
+    super(settings, keyboard, model);
   }
 
   override get letters(): readonly Letter[] {

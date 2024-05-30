@@ -5,7 +5,7 @@ import {
   flattenContent,
   splitParagraph,
 } from "@keybr/content";
-import { filterText, type WeightedCodePointSet } from "@keybr/keyboard";
+import { filterText, type Keyboard } from "@keybr/keyboard";
 import { clamp } from "@keybr/lang";
 import { type Letter, type PhoneticModel } from "@keybr/phonetic-model";
 import { type KeyStatsMap } from "@keybr/result";
@@ -27,11 +27,11 @@ export class BooksLesson extends Lesson {
 
   constructor(
     settings: Settings,
+    keyboard: Keyboard,
     model: PhoneticModel,
-    codePoints: WeightedCodePointSet,
     { book, content }: BookContent,
   ) {
-    super(settings, model, codePoints);
+    super(settings, keyboard, model);
     const paragraphIndex = this.settings.get(lessonProps.books.paragraphIndex);
     this.book = book;
     this.content = content;
@@ -62,7 +62,7 @@ export class BooksLesson extends Lesson {
   #flattenContent(content: Content) {
     const lettersOnly = this.settings.get(lessonProps.books.lettersOnly);
     const lowercase = this.settings.get(lessonProps.books.lowercase);
-    const codePoints = new Set(this.codePoints);
+    const codePoints = new Set(this.keyboard.getCodePoints());
     if (lettersOnly) {
       for (const codePoint of codePoints) {
         if (!this.model.language.includes(codePoint)) {

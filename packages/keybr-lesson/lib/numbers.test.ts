@@ -1,4 +1,4 @@
-import { allCodePoints } from "@keybr/keyboard";
+import { Layout, loadKeyboard } from "@keybr/keyboard";
 import { FakePhoneticModel, Letter } from "@keybr/phonetic-model";
 import { makeKeyStatsMap } from "@keybr/result";
 import { Settings } from "@keybr/settings";
@@ -9,8 +9,9 @@ import { lessonProps } from "./settings.ts";
 
 test("provide key set", (t) => {
   const settings = new Settings();
+  const keyboard = loadKeyboard(Layout.EN_US);
   const model = new FakePhoneticModel();
-  const lesson = new NumbersLesson(settings, model, allCodePoints());
+  const lesson = new NumbersLesson(settings, keyboard, model);
   const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
 
   t.deepEqual(lessonKeys.findIncludedKeys(), [
@@ -132,8 +133,9 @@ test("provide key set", (t) => {
 test("generate text using settings", (t) => {
   {
     const settings = new Settings().set(lessonProps.numbers.benford, true);
+    const keyboard = loadKeyboard(Layout.EN_US);
     const model = new FakePhoneticModel();
-    const lesson = new NumbersLesson(settings, model, allCodePoints());
+    const lesson = new NumbersLesson(settings, keyboard, model);
     lesson.rng = model.rng;
 
     t.is(
@@ -144,8 +146,9 @@ test("generate text using settings", (t) => {
 
   {
     const settings = new Settings().set(lessonProps.numbers.benford, false);
+    const keyboard = loadKeyboard(Layout.EN_US);
     const model = new FakePhoneticModel();
-    const lesson = new NumbersLesson(settings, model, allCodePoints());
+    const lesson = new NumbersLesson(settings, keyboard, model);
     lesson.rng = model.rng;
 
     t.is(

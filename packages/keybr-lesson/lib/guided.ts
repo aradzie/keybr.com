@@ -1,5 +1,5 @@
 import { type WordList } from "@keybr/content";
-import { type WeightedCodePointSet } from "@keybr/keyboard";
+import { type Keyboard } from "@keybr/keyboard";
 import { Filter, Letter, type PhoneticModel } from "@keybr/phonetic-model";
 import { type KeyStatsMap } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
@@ -22,13 +22,15 @@ export class GuidedLesson extends Lesson {
 
   constructor(
     settings: Settings,
+    keyboard: Keyboard,
     model: PhoneticModel,
-    codePoints: WeightedCodePointSet,
     wordList: WordList,
   ) {
-    super(settings, model, codePoints);
+    super(settings, keyboard, model);
     this.dictionary = new Dictionary(
-      filterWordList(wordList, codePoints).filter((word) => word.length > 2),
+      filterWordList(wordList, this.codePoints).filter(
+        (word) => word.length > 2,
+      ),
     );
   }
 
