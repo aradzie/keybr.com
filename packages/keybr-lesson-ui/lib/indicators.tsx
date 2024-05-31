@@ -98,9 +98,16 @@ export const StreakListRow = memo(function StreakListRow({
   readonly streakList: StreakListType;
   readonly names?: Names;
 }): ReactNode {
+  const { formatMessage } = useIntl();
   return (
     <div className={styles.row}>
-      <Name className={styles.name} name="Accuracy" />
+      <Name
+        className={styles.name}
+        name={formatMessage({
+          id: "lesson.streakListPanel.label",
+          defaultMessage: "Accuracy",
+        })}
+      />
       <StreakList
         id={names?.streakList}
         className={styles.value}

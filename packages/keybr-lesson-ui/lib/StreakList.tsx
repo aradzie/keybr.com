@@ -2,6 +2,7 @@ import { useIntlNumbers } from "@keybr/intl";
 import { type StreakList as StreakListType } from "@keybr/result";
 import { type ClassName, styleTextTruncate, Value } from "@keybr/widget";
 import { type ReactNode } from "react";
+import { FormattedMessage } from "react-intl";
 
 export const StreakList = ({
   id,
@@ -21,15 +22,26 @@ export const StreakList = ({
       }
       children.push(
         <span>
-          {results.length} lessons at <Value value={formatPercents(level)} />{" "}
-          accuracy
+          <FormattedMessage
+            id="streakList.streakLength"
+            defaultMessage="{length, plural, =1 {One lesson} other {# lessons}} with {accuracy} accuracy."
+            values={{
+              length: results.length,
+              accuracy: <Value value={formatPercents(level)} />,
+            }}
+          />
         </span>,
       );
     }
   }
   if (children.length === 0) {
     children.push(
-      <span className={styleTextTruncate}>No accuracy streaks.</span>,
+      <span className={styleTextTruncate}>
+        <FormattedMessage
+          id="streakList.noStreaks"
+          defaultMessage="No accuracy streaks."
+        />
+      </span>,
     );
   }
   return (

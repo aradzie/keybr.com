@@ -95,6 +95,7 @@
   "lesson.indicator.notIncluded": "Tombol yang tidak termasuk dalam pelajaran ini.",
   "lesson.keySetPanel.label": "Semua tombol",
   "lesson.notCalibrated.message": "Belum terkalibrasi, butuh sampel tambahan.",
+  "lesson.streakListPanel.label": "Akurasi",
   "lessonType.customText.description": "Hasilkan pelajaran dari kata-kata pada teks anda. Semua tombol termasuk secara default. Mode ini untuk profesional.",
   "lessonType.customText.name": "Teks kustom",
   "lessonType.guided.description": "Hasilkan pelajaran dengan kata-kata acak menggunakan aturan fonetik bahasa anda. Variasi tombol diperluas berdasarkan kinerja anda. Mode ini untuk pemula.",
@@ -178,5 +179,7 @@
   "settings.customTextExamples.label": "Contoh:",
   "settings.customTextLettersOnly.label": "Hapus tanda baca",
   "settings.customTextRandomize.label": "Acak kata",
-  "settings.dailyGoal.label": "Target harian:"
+  "settings.dailyGoal.label": "Target harian:",
+  "streakList.noStreaks": "Tidak ada garis akurasi.",
+  "streakList.streakLength": "{length, plural, =1 {Satu pelajaran} other {# pelajaran}} dengan akurasi {accuracy}."
 }

@@ -68,13 +68,13 @@ function loadMessages(locale: string): Record<string, string> {
 
 function findPlaceholders(value: string): unknown {
   const placeholders = new Set();
-  const regexp = /\{(\p{L})+\}/gu;
+  const regexp = /\{([a-z]+)[,}]/gu;
   while (true) {
     const match = regexp.exec(value);
     if (match == null) {
       break;
     }
-    placeholders.add(match[0]);
+    placeholders.add(match[1]);
   }
   return [...placeholders].sort();
 }

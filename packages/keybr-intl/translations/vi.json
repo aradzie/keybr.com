@@ -52,6 +52,7 @@
   "keyboard.language.label": "Ngôn ngữ:",
   "lesson.allKeysUnlocked.message": "Tất cả các phím đều được mở khóa.",
   "lesson.dailyGoalPanel.label": "Mục tiêu hàng ngày",
+  "lesson.streakListPanel.label": "Sự chính xác",
   "lessonType.code.name": "Mã nguồn",
   "lessonType.customText.name": "Văn bản tùy chỉnh",
   "lessonType.numbers.description": "Chỉ thực hành số.",

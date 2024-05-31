@@ -100,7 +100,7 @@ async function syncTranslations(report) {
             : undefined;
         if (translatedMessage != null) {
           localeReport.translated.push([id, message]);
-        } else {
+        } else if (!/\{[a-z]+\}/.test(message)) {
           localeReport.untranslated.push([id, message]);
         }
         return [id, translatedMessage];
@@ -167,6 +167,22 @@ async function writeReport(report) {
         `${untranslated.length} messages, ` +
         `${untranslated.reduce(countWords, 0)} words`,
     );
+    if (untranslated.length > 0) {
+      untranslated.sort((a, b) => a[1].length - b[1].length);
+      const head = untranslated.slice(0, 20);
+      lines.push(``);
+      for (const [id, message] of head) {
+        const prefix = message.substring(0, 60);
+        if (message.length > prefix.length) {
+          lines.push(`* *${prefix}...*`);
+        } else {
+          lines.push(`* *${prefix}*`);
+        }
+      }
+      if (untranslated.length > head.length) {
+        lines.push(`* ...`);
+      }
+    }
     lines.push(``);
   }
   writeFileSync(join(rootDir, "docs/translations_report.md"), lines.join("\n"));
