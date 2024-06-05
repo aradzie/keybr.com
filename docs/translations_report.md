@@ -162,30 +162,30 @@ Untranslated: 74 messages, 3194 words
 
 # French
 
-Translated: 385 messages, 4345 words
+Translated: 395 messages, 4486 words
 
-Untranslated: 49 messages, 826 words
+Untranslated: 38 messages, 676 words
 
-* *Books*
-* *Font:*
 * *Not set*
 * *Options*
 * *Volume:*
-* *Syntax:*
+* *Accuracy*
 * *Position*
 * *Translate*
 * *Alphabet:*
-* *Language:*
 * *Box cursor*
-* *All Sounds*
-* *Source Code*
 * *Line cursor*
 * *Block cursor*
 * *Smooth cursor*
 * *Jumping cursor*
-* *Highlight keys*
 * *Bar whitespace*
 * *Accuracy Streaks*
+* *Underline cursor*
+* *Explain settings*
+* *Hide explanations*
+* *Error Sounds Only*
+* *Bullet whitespace*
+* *No accuracy streaks.*
 * ...
 
 # Hebrew
@@ -287,31 +287,17 @@ Untranslated: 236 messages, 3677 words
 
 # Italian
 
-Translated: 389 messages, 3757 words
+Translated: 425 messages, 5151 words
 
-Untranslated: 44 messages, 1412 words
+Untranslated: 7 messages, 9 words
 
-* *Books*
 * *Font:*
 * *Layout*
 * *Layout:*
 * *Layouts*
 * *Volume:*
-* *Syntax:*
-* *Alphabet:*
-* *Language:*
-* *Source Code*
-* *Smoothness:*
-* *Accuracy Streaks*
-* *All keys are unlocked.*
-* *Practice numbers only.*
-* *Keyboard hardware emulates layout*
-* *Generate lessons that reseble the specified programming lang...*
-* *Practice punctuation characters that are specific to a progr...*
-* *Adjust the number of words in the lesson text. Making lesson...*
-* *Generate typing lessons from the text of a book. All keys ar...*
-* *<a>Benford’s law</a> is an observation that in many real-lif...*
-* ...
+* *Accuracy*
+* *No accuracy streaks.*
 
 # Japanese
 
