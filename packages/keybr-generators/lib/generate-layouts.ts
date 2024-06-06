@@ -49,6 +49,7 @@ for (const [id, dict] of [
   ["en_workman", importKeymap("layouts/en_workman.json")],
   ["en_workman_prog", importKeymap("layouts/en_workman_prog.json")],
   ["es_es", importCldr("cldr-keyboards-43.0/keyboards/windows/es-t-k0-windows.xml")],
+  ["es_mx", importCldr("cldr-keyboards-43.0/keyboards/windows/es-419-t-k0-windows.xml")],
   ["fa_ir", importCldr("cldr-keyboards-43.0/keyboards/windows/fa-t-k0-windows-extended.xml")],
   ["fa_ir_legacy", importCldr("cldr-keyboards-43.0/keyboards/windows/fa-t-k0-windows.xml")],
   ["fr_bepo", importKeymap("layouts/fr_bepo.json")],
