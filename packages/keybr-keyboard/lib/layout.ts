@@ -830,6 +830,21 @@ export class Layout implements XEnumItem {
     /* emulate= */ true,
     /* geometries= */ new Enum(Geometry.MATRIX),
   );
+  static readonly ES_MX = new Layout(
+    /* id= */ "es-mx",
+    /* xid= */ 0x97,
+    /* name= */ "{MX}",
+    /* family= */ "qwerty",
+    /* language= */ Language.ES,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
 
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
@@ -875,6 +890,7 @@ export class Layout implements XEnumItem {
     Layout.NL_NL,
     Layout.NL_BE,
     Layout.ES_ES,
+    Layout.ES_MX,
     Layout.PL_PL,
     Layout.PT_BR,
     Layout.PT_PT,
