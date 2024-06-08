@@ -1,8 +1,17 @@
 import { DistributionChart } from "@keybr/chart";
+import { useIntlNumbers } from "@keybr/intl";
 import { type Distribution } from "@keybr/math";
 import { type ResultSummary } from "@keybr/result";
-import { Figure } from "@keybr/widget";
-import { type ReactNode } from "react";
+import {
+  Field,
+  FieldList,
+  Figure,
+  Para,
+  RadioBox,
+  styleTextCenter,
+  Value,
+} from "@keybr/widget";
+import React, { type ReactNode, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { ChartWrapper } from "./widgets.tsx";
 
@@ -14,8 +23,14 @@ export function DistributionSection({
   readonly distribution: Distribution;
 }): ReactNode {
   const { formatMessage } = useIntl();
+  const { formatPercents } = useIntlNumbers();
+  const [period, setPeriod] = useState("top");
 
-  const { speed } = summary.allTimeStats.stats;
+  const value =
+    period === "top"
+      ? summary.allTimeStats.stats.speed.max
+      : summary.allTimeStats.stats.speed.avg;
+  const cdf = distribution.cdf(value);
 
   return (
     <Figure>
@@ -33,29 +48,77 @@ export function DistributionSection({
         />
       </Figure.Description>
 
+      <Para className={styleTextCenter}>
+        {period === "average" ? (
+          <FormattedMessage
+            id="profile.chart.compareAverageSpeed.description"
+            defaultMessage="Your all time average speed beats {value} of all other people."
+            values={{
+              value: <Value value={value > 0 ? formatPercents(cdf) : "N/A"} />,
+            }}
+          />
+        ) : (
+          <FormattedMessage
+            id="profile.chart.compareTopSpeed.description"
+            defaultMessage="Your all time top speed beats {value} of all other people."
+            values={{
+              value: <Value value={value > 0 ? formatPercents(cdf) : "N/A"} />,
+            }}
+          />
+        )}
+      </Para>
+
       <ChartWrapper>
         <DistributionChart
           distribution={distribution}
           thresholds={[
-            {
-              label: formatMessage({
-                id: "metric.averageSpeed.name",
-                defaultMessage: "Average speed",
-              }),
-              value: speed.avg,
-            },
-            {
-              label: formatMessage({
-                id: "metric.bestSpeed.name",
-                defaultMessage: "Best speed",
-              }),
-              value: speed.max,
-            },
+            period === "average"
+              ? {
+                  label: formatMessage({
+                    id: "metric.averageSpeed.name",
+                    defaultMessage: "Average speed",
+                  }),
+                  value,
+                }
+              : {
+                  label: formatMessage({
+                    id: "metric.bestSpeed.name",
+                    defaultMessage: "Best speed",
+                  }),
+                  value,
+                },
           ]}
           width="100%"
           height="25rem"
         />
       </ChartWrapper>
+
+      <FieldList>
+        <Field.Filler />
+        <Field>
+          <RadioBox
+            name="period"
+            value="top"
+            checked={period === "top"}
+            label="Top Speed"
+            onSelect={() => {
+              setPeriod("top");
+            }}
+          />
+        </Field>
+        <Field>
+          <RadioBox
+            name="period"
+            value="average"
+            checked={period === "average"}
+            label="Average Speed"
+            onSelect={() => {
+              setPeriod("average");
+            }}
+          />
+        </Field>
+        <Field.Filler />
+      </FieldList>
 
       <Figure.Legend>
         <FormattedMessage

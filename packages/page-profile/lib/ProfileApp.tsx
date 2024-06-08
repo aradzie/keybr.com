@@ -4,7 +4,6 @@ import { type KeyStatsMap, ResultSummary } from "@keybr/result";
 import { type ReactNode } from "react";
 import { AccuracySection } from "./profile/AccuracySection.tsx";
 import { CalendarSection } from "./profile/CalendarSection.tsx";
-import { ComparisonSection } from "./profile/ComparisonSection.tsx";
 import { DistributionSection } from "./profile/DistributionSection.tsx";
 import { FooterSection } from "./profile/FooterSection.tsx";
 import { KeyFrequencyHeatmapSection } from "./profile/KeyFrequencyHeatmapSection.tsx";
@@ -44,8 +43,6 @@ function Content({
       <TodaySummary summary={summary} />
 
       <AccuracySection summary={summary} />
-
-      <ComparisonSection summary={summary} distribution={distribution} />
 
       <DistributionSection summary={summary} distribution={distribution} />
 
