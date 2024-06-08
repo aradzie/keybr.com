@@ -7,6 +7,34 @@ Untranslated: 2 messages, 22 words
 * *Books*
 * *Generate typing lessons from the text of a book. All keys ar...*
 
+# Catalan
+
+Translated: 326 messages, 3024 words
+
+Untranslated: 101 messages, 2075 words
+
+* *Font:*
+* *Errors*
+* *Typing*
+* *Accuracy*
+* *Box cursor*
+* *Smoothness:*
+* *Line cursor*
+* *Typing Speed*
+* *Block cursor*
+* *Smooth cursor*
+* *Cursor shape:*
+* *Miscellaneous*
+* *Jumping cursor*
+* *Highlight keys*
+* *Lesson Options*
+* *Lesson Preview*
+* *Bar whitespace*
+* *Not enough data*
+* *Text Appearance*
+* *Accuracy Streaks*
+* ...
+
 # Czech
 
 Translated: 424 messages, 4985 words
