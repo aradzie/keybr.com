@@ -160,7 +160,7 @@ index bf4c57f..52285a1 100644
 -}
 +module.exports = require('./node.js');
 diff --git a/node_modules/debug/src/node.js b/node_modules/debug/src/node.js
-index 79bc085..880bdcc 100644
+index 715560a..f341902 100644
 --- a/node_modules/debug/src/node.js
 +++ b/node_modules/debug/src/node.js
 @@ -15,10 +15,7 @@ exports.formatArgs = formatArgs;

@@ -12,7 +12,7 @@
     "@keybr/result": "*",
     "@keybr/result-io": "*",
     "@keybr/result-userdata": "*",
-    "commander": "^12.0.0",
+    "commander": "^12.1.0",
     "date-fns": "^3.6.0"
   },
   "devDependencies": {},

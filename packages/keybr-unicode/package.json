@@ -5,7 +5,7 @@
   "main": "lib/index.ts",
   "types": ".types/index.d.ts",
   "dependencies": {
-    "@formatjs/intl-segmenter": "^11.5.5"
+    "@formatjs/intl-segmenter": "^11.5.7"
   },
   "devDependencies": {},
   "scripts": {
