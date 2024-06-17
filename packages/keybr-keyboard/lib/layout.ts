@@ -875,6 +875,21 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly EN_GRAPHITE = new Layout(
+    /* id= */ "en-graphite",
+    /* xid= */ 0x99,
+    /* name= */ "Graphite",
+    /* family= */ "en-graphite",
+    /* language= */ Language.EN,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.MATRIX,
+    ),
+  );
 
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
@@ -896,6 +911,7 @@ export class Layout implements XEnumItem {
     Layout.EN_NORMAN,
     Layout.EN_HALMAK,
     Layout.EN_ENGRAM,
+    Layout.EN_GRAPHITE,
     Layout.EN_UK,
     Layout.EN_JP,
     Layout.EL_GR,
