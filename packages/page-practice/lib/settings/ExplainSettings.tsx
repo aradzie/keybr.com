@@ -1,5 +1,11 @@
 import { booleanProp, Preferences } from "@keybr/settings";
-import { Button, Para, styleTextEnd, useExplainerState } from "@keybr/widget";
+import {
+  Button,
+  Field,
+  FieldList,
+  styleTextEnd,
+  useExplainerState,
+} from "@keybr/widget";
 import { type ReactNode, useLayoutEffect } from "react";
 import { useIntl } from "react-intl";
 
@@ -12,23 +18,26 @@ export function ExplainSettings(): ReactNode {
     toggleExplainers(Preferences.get(propExplainSettings));
   });
   return (
-    <Para className={styleTextEnd}>
-      <Button
-        onClick={() => {
-          toggleExplainers(!explainersVisible);
-          Preferences.set(propExplainSettings, !explainersVisible);
-        }}
-      >
-        {explainersVisible
-          ? `\u25BC ${formatMessage({
-              id: "settings.explain.hide",
-              defaultMessage: "Hide explanations",
-            })}`
-          : `\u25BA ${formatMessage({
-              id: "settings.explain.show",
-              defaultMessage: "Explain settings",
-            })}`}
-      </Button>
-    </Para>
+    <FieldList className={styleTextEnd}>
+      <Field.Filler />
+      <Field>
+        <Button
+          onClick={() => {
+            toggleExplainers(!explainersVisible);
+            Preferences.set(propExplainSettings, !explainersVisible);
+          }}
+        >
+          {explainersVisible
+            ? `\u25BC ${formatMessage({
+                id: "settings.explain.hide",
+                defaultMessage: "Hide explanations",
+              })}`
+            : `\u25BA ${formatMessage({
+                id: "settings.explain.show",
+                defaultMessage: "Explain settings",
+              })}`}
+        </Button>
+      </Field>
+    </FieldList>
   );
 }

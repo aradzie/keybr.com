@@ -8,6 +8,7 @@ import { type BooksLesson, lessonProps } from "@keybr/lesson";
 import { useSettings } from "@keybr/settings";
 import {
   CheckBox,
+  Description,
   Explainer,
   Field,
   FieldList,
@@ -30,10 +31,12 @@ export function BooksLessonSettings({
   return (
     <>
       <Explainer>
-        <FormattedMessage
-          id="lessonType.books.description"
-          defaultMessage="Generate typing lessons from the text of a book. All keys are included by default. This mode is for the pros."
-        />
+        <Description>
+          <FormattedMessage
+            id="lessonType.books.description"
+            defaultMessage="Generate typing lessons from the text of a book. All keys are included by default. This mode is for the pros."
+          />
+        </Description>
       </Explainer>
       <FieldSet
         legend={formatMessage({

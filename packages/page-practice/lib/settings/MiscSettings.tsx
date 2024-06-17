@@ -1,6 +1,7 @@
 import { SpeedUnit, uiProps } from "@keybr/result";
 import { useSettings } from "@keybr/settings";
 import {
+  Description,
   Explainer,
   Field,
   FieldList,
@@ -54,10 +55,12 @@ function SpeedUnitProp(): ReactNode {
         </Field>
       </FieldList>
       <Explainer>
-        <FormattedMessage
-          id="settings.typingSpeedUnit.description"
-          defaultMessage="For the purpose of typing measurement, each word is standardized to be five characters or keystrokes in English, including spaces and punctuation."
-        />
+        <Description>
+          <FormattedMessage
+            id="settings.typingSpeedUnit.description"
+            defaultMessage="For the purpose of typing measurement, each word is standardized to be five characters or keystrokes in English, including spaces and punctuation."
+          />
+        </Description>
       </Explainer>
     </>
   );

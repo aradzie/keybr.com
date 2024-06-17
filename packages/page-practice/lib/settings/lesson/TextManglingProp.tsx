@@ -2,6 +2,7 @@ import { useIntlNumbers } from "@keybr/intl";
 import { lessonProps } from "@keybr/lesson";
 import { useSettings } from "@keybr/settings";
 import {
+  Description,
   Explainer,
   Field,
   FieldList,
@@ -41,10 +42,12 @@ export function TextManglingProp(): ReactNode {
         </Field>
       </FieldList>
       <Explainer>
-        <FormattedMessage
-          id="settings.capitalLetters.description"
-          defaultMessage="Adjust the amount of capital letters added to the lesson text. Use this option to practice typing the capital letters. We recommend to increase this value only if you have all letters above the target speed."
-        />
+        <Description>
+          <FormattedMessage
+            id="settings.capitalLetters.description"
+            defaultMessage="Adjust the amount of capital letters added to the lesson text. Use this option to practice typing the capital letters. We recommend to increase this value only if you have all letters above the target speed."
+          />
+        </Description>
       </Explainer>
       <FieldList>
         <Field>
@@ -74,10 +77,12 @@ export function TextManglingProp(): ReactNode {
         </Field>
       </FieldList>
       <Explainer>
-        <FormattedMessage
-          id="settings.punctuation.description"
-          defaultMessage="Adjust the amount of basic punctuation characters added to the lesson text. Use this option to practice typing the punctuation characters. We recommend to increase this value only if you have all letters above the target speed."
-        />
+        <Description>
+          <FormattedMessage
+            id="settings.punctuation.description"
+            defaultMessage="Adjust the amount of basic punctuation characters added to the lesson text. Use this option to practice typing the punctuation characters. We recommend to increase this value only if you have all letters above the target speed."
+          />
+        </Description>
       </Explainer>
     </>
   );

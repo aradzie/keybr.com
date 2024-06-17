@@ -12,6 +12,7 @@ import {
 } from "@keybr/textinput";
 import {
   CheckBox,
+  Description,
   Explainer,
   Field,
   FieldList,
@@ -37,10 +38,12 @@ export function TypingSettings(): ReactNode {
         })}
       >
         <Explainer>
-          <FormattedMessage
-            id="settings.typingAssists.description"
-            defaultMessage="These are the typing assists which help your preserve your concentration and keep the flow by automatically correcting your errors."
-          />
+          <Description>
+            <FormattedMessage
+              id="settings.typingAssists.description"
+              defaultMessage="These are the typing assists which help your preserve your concentration and keep the flow by automatically correcting your errors."
+            />
+          </Description>
         </Explainer>
         <StopOnErrorProp />
         <ForgiveErrorsProp />
@@ -99,10 +102,12 @@ function StopOnErrorProp(): ReactNode {
         </Field>
       </FieldList>
       <Explainer>
-        <FormattedMessage
-          id="settings.stopCursorOnError.description"
-          defaultMessage="If enabled, the text cursor stops advancing until the right key is pressed at the current position. If disabled, all errors will be accumulated in the text input field and must be cleared with the delete key."
-        />
+        <Description>
+          <FormattedMessage
+            id="settings.stopCursorOnError.description"
+            defaultMessage="If enabled, the text cursor stops advancing until the right key is pressed at the current position. If disabled, all errors will be accumulated in the text input field and must be cleared with the delete key."
+          />
+        </Description>
       </Explainer>
     </>
   );
@@ -128,10 +133,12 @@ function ForgiveErrorsProp(): ReactNode {
         </Field>
       </FieldList>
       <Explainer>
-        <FormattedMessage
-          id="settings.forgiveErrors.description"
-          defaultMessage="If enabled, the text input field will forgive some kinds of errors by automatically fixing them. These are errors such as typing a wrong character or skipping a character."
-        />
+        <Description>
+          <FormattedMessage
+            id="settings.forgiveErrors.description"
+            defaultMessage="If enabled, the text input field will forgive some kinds of errors by automatically fixing them. These are errors such as typing a wrong character or skipping a character."
+          />
+        </Description>
       </Explainer>
     </>
   );
@@ -159,10 +166,12 @@ function SpaceSkipsWordsProp(): ReactNode {
         </Field>
       </FieldList>
       <Explainer>
-        <FormattedMessage
-          id="settings.spaceSkipsWords.description"
-          defaultMessage="If enabled, pressing the space key in the middle of a word will skip the remaining characters of the word and position cursor at the beginning of the next word."
-        />
+        <Description>
+          <FormattedMessage
+            id="settings.spaceSkipsWords.description"
+            defaultMessage="If enabled, pressing the space key in the middle of a word will skip the remaining characters of the word and position cursor at the beginning of the next word."
+          />
+        </Description>
       </Explainer>
     </>
   );

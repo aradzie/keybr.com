@@ -2,6 +2,7 @@ import { Syntax } from "@keybr/code";
 import { type CodeLesson, lessonProps } from "@keybr/lesson";
 import { useSettings } from "@keybr/settings";
 import {
+  Description,
   Explainer,
   Field,
   FieldList,
@@ -21,10 +22,12 @@ export function CodeLessonSettings({
   return (
     <>
       <Explainer>
-        <FormattedMessage
-          id="lessonType.code.description"
-          defaultMessage="Practice punctuation characters that are specific to a programming language syntax."
-        />
+        <Description>
+          <FormattedMessage
+            id="lessonType.code.description"
+            defaultMessage="Practice punctuation characters that are specific to a programming language syntax."
+          />
+        </Description>
       </Explainer>
       <FieldSet
         legend={formatMessage({
@@ -55,10 +58,12 @@ export function CodeLessonSettings({
           </Field>
         </FieldList>
         <Explainer>
-          <FormattedMessage
-            id="lessonType.syntax.description"
-            defaultMessage="Generate lessons that reseble the specified programming language syntax."
-          />
+          <Description>
+            <FormattedMessage
+              id="lessonType.syntax.description"
+              defaultMessage="Generate lessons that reseble the specified programming language syntax."
+            />
+          </Description>
         </Explainer>
       </FieldSet>
     </>

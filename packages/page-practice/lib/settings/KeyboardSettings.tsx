@@ -14,6 +14,7 @@ import { useSettings } from "@keybr/settings";
 import { ModifierState, useDepressedKeys } from "@keybr/textinput-events";
 import {
   CheckBox,
+  Description,
   Explainer,
   Field,
   FieldList,
@@ -130,10 +131,12 @@ function LayoutProp(): ReactNode {
         </Field>
       </FieldList>
       <Explainer>
-        <FormattedMessage
-          id="keyboard.emulation.forward.description"
-          defaultMessage="Keyboard emulation ignores the keyboard layout configured in your system and allows you to practice the selected keyboard regardless of how your system is configured. It is more convenient to keep the emulation option enabled."
-        />
+        <Description>
+          <FormattedMessage
+            id="keyboard.emulation.forward.description"
+            defaultMessage="Keyboard emulation ignores the keyboard layout configured in your system and allows you to practice the selected keyboard regardless of how your system is configured. It is more convenient to keep the emulation option enabled."
+          />
+        </Description>
       </Explainer>
       <FieldList>
         <Field>
@@ -158,10 +161,12 @@ function LayoutProp(): ReactNode {
         </Field>
       </FieldList>
       <Explainer>
-        <FormattedMessage
-          id="keyboard.emulation.reverse.description"
-          defaultMessage="Use this option if you have a hardware layout switcher on your keyboard, and you see that incorect keys are highlighted on the virtual keyboard."
-        />
+        <Description>
+          <FormattedMessage
+            id="keyboard.emulation.reverse.description"
+            defaultMessage="Use this option if you have a hardware layout switcher on your keyboard, and you see that incorect keys are highlighted on the virtual keyboard."
+          />
+        </Description>
       </Explainer>
     </>
   );
@@ -210,10 +215,12 @@ function GeometryProp(): ReactNode {
         </Field>
       </FieldList>
       <Explainer>
-        <FormattedMessage
-          id="settings.keyboardColors.description"
-          defaultMessage="Show color coding of the keyboard zones. Use this option to learn which finger to use to press a key."
-        />
+        <Description>
+          <FormattedMessage
+            id="settings.keyboardColors.description"
+            defaultMessage="Show color coding of the keyboard zones. Use this option to learn which finger to use to press a key."
+          />
+        </Description>
       </Explainer>
       <FieldList>
         <Field>
@@ -230,10 +237,12 @@ function GeometryProp(): ReactNode {
         </Field>
       </FieldList>
       <Explainer>
-        <FormattedMessage
-          id="settings.keyboardPointers.description"
-          defaultMessage="Highlight a key that must to be pressed next. Use this option to quickly find the position of a key if you don’t know the keyboard layout well."
-        />
+        <Description>
+          <FormattedMessage
+            id="settings.keyboardPointers.description"
+            defaultMessage="Highlight a key that must to be pressed next. Use this option to quickly find the position of a key if you don’t know the keyboard layout well."
+          />
+        </Description>
       </Explainer>
     </>
   );

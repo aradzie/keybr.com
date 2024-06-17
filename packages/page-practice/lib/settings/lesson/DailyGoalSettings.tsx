@@ -2,6 +2,7 @@ import { useIntlDurations } from "@keybr/intl";
 import { lessonProps } from "@keybr/lesson";
 import { useSettings } from "@keybr/settings";
 import {
+  Description,
   Explainer,
   Field,
   FieldList,
@@ -54,10 +55,12 @@ export function DailyGoalSettings(): ReactNode {
         </Field>
       </FieldList>
       <Explainer>
-        <FormattedMessage
-          id="settings.dailyGoal.description"
-          defaultMessage="Set the time you want to spend on the exercises daily. It is a simple reminder which does not limit you in any way. You can stop practicing whenever you want."
-        />
+        <Description>
+          <FormattedMessage
+            id="settings.dailyGoal.description"
+            defaultMessage="Set the time you want to spend on the exercises daily. It is a simple reminder which does not limit you in any way. You can stop practicing whenever you want."
+          />
+        </Description>
       </Explainer>
     </FieldSet>
   );

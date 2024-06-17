@@ -5,6 +5,7 @@ import { useSettings } from "@keybr/settings";
 import { textStatsOf } from "@keybr/unicode";
 import {
   CheckBox,
+  Description,
   Explainer,
   Field,
   FieldList,
@@ -30,11 +31,14 @@ export function CustomTextLessonSettings({
   return (
     <>
       <Explainer>
-        <FormattedMessage
-          id="lessonType.customText.description"
-          defaultMessage="Generate typing lessons from the words of your own custom text. All keys are included by default. This mode is for the pros."
-        />
+        <Description>
+          <FormattedMessage
+            id="lessonType.customText.description"
+            defaultMessage="Generate typing lessons from the words of your own custom text. All keys are included by default. This mode is for the pros."
+          />
+        </Description>
       </Explainer>
+
       <FieldSet
         legend={formatMessage({
           id: "settings.lessonOptions.legend",

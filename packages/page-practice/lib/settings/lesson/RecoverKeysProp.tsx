@@ -1,6 +1,12 @@
 import { lessonProps } from "@keybr/lesson";
 import { useSettings } from "@keybr/settings";
-import { CheckBox, Explainer, Field, FieldList } from "@keybr/widget";
+import {
+  CheckBox,
+  Description,
+  Explainer,
+  Field,
+  FieldList,
+} from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
@@ -33,10 +39,12 @@ export function RecoverKeysProp(): ReactNode {
         </Field>
       </FieldList>
       <Explainer>
-        <FormattedMessage
-          id="settings.recoverKeys.description"
-          defaultMessage="When you focus on a new key, it is very likely that the speed of previous keys will decrease. If this option is disabled, you unlock a new key by raising only the focused key above the target speed. If this option is enabled, you will have to raise the focused key and all the previous keys above the target speed. This will make unlocking new keys harder. However, this will also make forgetting old keys harder."
-        />
+        <Description>
+          <FormattedMessage
+            id="settings.recoverKeys.description"
+            defaultMessage="When you focus on a new key, it is very likely that the speed of previous keys will decrease. If this option is disabled, you unlock a new key by raising only the focused key above the target speed. If this option is enabled, you will have to raise the focused key and all the previous keys above the target speed. This will make unlocking new keys harder. However, this will also make forgetting old keys harder."
+          />
+        </Description>
       </Explainer>
     </>
   );

@@ -4,6 +4,7 @@ import { lessonProps, type WordListLesson } from "@keybr/lesson";
 import { useSettings } from "@keybr/settings";
 import {
   CheckBox,
+  Description,
   Explainer,
   Field,
   FieldList,
@@ -31,10 +32,12 @@ export function WordListLessonSettings({
   return (
     <>
       <Explainer>
-        <FormattedMessage
-          id="lessonType.wordList.description"
-          defaultMessage="Generate typing lessons from the list of the most common words of your language. All keys are included by default. This mode is for the pros."
-        />
+        <Description>
+          <FormattedMessage
+            id="lessonType.wordList.description"
+            defaultMessage="Generate typing lessons from the list of the most common words of your language. All keys are included by default. This mode is for the pros."
+          />
+        </Description>
       </Explainer>
       <FieldSet
         legend={formatMessage({

@@ -1,6 +1,7 @@
 import { lessonProps } from "@keybr/lesson";
 import { useSettings } from "@keybr/settings";
 import {
+  Description,
   Explainer,
   Field,
   FieldList,
@@ -39,10 +40,12 @@ export function AlphabetSizeProp(): ReactNode {
         </Field>
       </FieldList>
       <Explainer>
-        <FormattedMessage
-          id="settings.alphabetSize.description"
-          defaultMessage="Manually unlock the remaining letters. Use this option if want a greater variety of words. We recommend using this option sparingly and stick to the algorithm to unlock letters for you."
-        />
+        <Description>
+          <FormattedMessage
+            id="settings.alphabetSize.description"
+            defaultMessage="Manually unlock the remaining letters. Use this option if want a greater variety of words. We recommend using this option sparingly and stick to the algorithm to unlock letters for you."
+          />
+        </Description>
       </Explainer>
     </>
   );

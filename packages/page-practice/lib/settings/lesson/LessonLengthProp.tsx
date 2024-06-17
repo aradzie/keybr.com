@@ -1,6 +1,7 @@
 import { lessonProps } from "@keybr/lesson";
 import { useSettings } from "@keybr/settings";
 import {
+  Description,
   Explainer,
   Field,
   FieldList,
@@ -35,10 +36,12 @@ export function LessonLengthProp(): ReactNode {
         </Field>
       </FieldList>
       <Explainer>
-        <FormattedMessage
-          id="settings.lessonLength.description"
-          defaultMessage="Adjust the number of words in the lesson text. Making lessons longer can improve your learning."
-        />
+        <Description>
+          <FormattedMessage
+            id="settings.lessonLength.description"
+            defaultMessage="Adjust the number of words in the lesson text. Making lessons longer can improve your learning."
+          />
+        </Description>
       </Explainer>
     </>
   );
