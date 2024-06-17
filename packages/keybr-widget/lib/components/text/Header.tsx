@@ -27,7 +27,7 @@ export function Header(props: HeaderProps): ReactNode {
       break;
   }
   return (
-    <Component id={id} className={clsx(styles.header, className)} title={title}>
+    <Component id={id} className={clsx(styles.root, className)} title={title}>
       {children}
     </Component>
   );

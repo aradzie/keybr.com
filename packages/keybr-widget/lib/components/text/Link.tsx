@@ -19,7 +19,7 @@ export function Link({
     <Component
       {...props}
       id={id}
-      className={clsx(styles.link, external && styles.externalLink, className)}
+      className={clsx(styles.root, external && styles.external, className)}
       href={href}
       target={target}
       download={download}
