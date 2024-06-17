@@ -349,6 +349,34 @@ Untranslated: 162 messages, 2824 words
 * *All Sounds*
 * ...
 
+# Korean
+
+Translated: 173 messages, 1200 words
+
+Untranslated: 252 messages, 3894 words
+
+* *Copy*
+* *Done*
+* *Next*
+* *Books*
+* *Visit*
+* *Font:*
+* *Reset*
+* *Close*
+* *Typing*
+* *Not set*
+* *Options*
+* *Preview*
+* *Volume:*
+* *Syntax:*
+* *Lessons*
+* *All keys*
+* *Accuracy*
+* *Keyboard*
+* *Chapters*
+* *Previous*
+* ...
+
 # Nepali
 
 Translated: 398 messages, 4741 words

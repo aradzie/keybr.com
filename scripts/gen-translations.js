@@ -28,6 +28,7 @@ const allLocales = [
   "id",
   "it",
   "ja",
+  "ko",
   "ne",
   "nl",
   "pl",
