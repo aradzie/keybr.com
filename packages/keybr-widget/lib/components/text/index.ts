@@ -1,5 +1,7 @@
 export * from "./Article.tsx";
 export * from "./Article.types.ts";
+export * from "./Description.tsx";
+export * from "./Description.types.ts";
 export * from "./Header.tsx";
 export * from "./Header.types.ts";
 export * from "./Link.tsx";
