@@ -32,6 +32,7 @@ import { LAYOUT_EN_COLEMAK_DH_ISO } from "./layout/en_colemak_dh_iso.ts";
 import { LAYOUT_EN_COLEMAK_DH_ISO_WIDE } from "./layout/en_colemak_dh_iso_wide.ts";
 import { LAYOUT_EN_COLEMAK_DH_MATRIX } from "./layout/en_colemak_dh_matrix.ts";
 import { LAYOUT_EN_DVORAK } from "./layout/en_dvorak.ts";
+import { LAYOUT_EN_DVORAK_PROG } from "./layout/en_dvorak_prog.ts";
 import { LAYOUT_EN_ENGRAM } from "./layout/en_engram.ts";
 import { LAYOUT_EN_HALMAK } from "./layout/en_halmak.ts";
 import { LAYOUT_EN_HANDS_DOWN_NEU } from "./layout/en_hands_down_neu.ts";
@@ -94,14 +95,15 @@ const layoutDict = new Map<Layout, CharacterDict>([
   [Layout.EN_COLEMAK_DH_ISO_WIDE, LAYOUT_EN_COLEMAK_DH_ISO_WIDE],
   [Layout.EN_COLEMAK_DH_MATRIX, LAYOUT_EN_COLEMAK_DH_MATRIX],
   [Layout.EN_DVORAK, LAYOUT_EN_DVORAK],
+  [Layout.EN_DVORAK_PROG, LAYOUT_EN_DVORAK_PROG],
   [Layout.EN_ENGRAM, LAYOUT_EN_ENGRAM],
   [Layout.EN_HALMAK, LAYOUT_EN_HALMAK],
   [Layout.EN_HANDS_DOWN_NEU, LAYOUT_EN_HANDS_DOWN_NEU],
-  [Layout.EN_STURDY, LAYOUT_EN_STURDY],
   [Layout.EN_JP, LAYOUT_JA_JP_JIS],
   [Layout.EN_NERPS, LAYOUT_EN_NERPS],
   [Layout.EN_NERPS_MATRIX, LAYOUT_EN_NERPS_MATRIX],
   [Layout.EN_NORMAN, LAYOUT_EN_NORMAN],
+  [Layout.EN_STURDY, LAYOUT_EN_STURDY],
   [Layout.EN_UK, LAYOUT_EN_UK],
   [Layout.EN_US, LAYOUT_EN_US],
   [Layout.EN_WORKMAN, LAYOUT_EN_WORKMAN],

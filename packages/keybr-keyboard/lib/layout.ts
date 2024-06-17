@@ -34,6 +34,21 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly EN_DVORAK_PROG = new Layout(
+    /* id= */ "en-dvorak-prog",
+    /* xid= */ 0x15,
+    /* name= */ "Dvorak (Programmers)",
+    /* family= */ "dvorak",
+    /* language= */ Language.EN,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.MATRIX,
+    ),
+  );
   static readonly EN_COLEMAK = new Layout(
     /* id= */ "en-colemak",
     /* xid= */ 0x19,
@@ -849,6 +864,7 @@ export class Layout implements XEnumItem {
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
     Layout.EN_DVORAK,
+    Layout.EN_DVORAK_PROG,
     Layout.EN_COLEMAK,
     Layout.EN_COLEMAK_DH_ANSI,
     Layout.EN_COLEMAK_DH_ANSI_WIDE,
