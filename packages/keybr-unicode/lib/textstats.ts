@@ -1,4 +1,3 @@
-import "./polyfill.ts";
 import { toCodePoints } from "./codepoints.ts";
 import { isWhitespace } from "./whitespace.ts";
 

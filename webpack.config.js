@@ -212,7 +212,7 @@ module.exports = [
             name: "polyfills",
           },
           vendor: {
-            test: isVendor(["tslib", "@mdi", "@formatjs/intl-segmenter"]),
+            test: isVendor(["tslib", "@mdi"]),
             chunks: "all",
             name: "shared-vendor",
           },
