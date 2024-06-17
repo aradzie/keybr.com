@@ -5,12 +5,7 @@ import { CanonicalHandler } from "@fastr/middleware-canonical";
 import { type RouterState } from "@fastr/middleware-router";
 import { preloadLinks } from "@keybr/assets";
 import { HighScoresFactory } from "@keybr/highscores";
-import {
-  defaultLocale,
-  loadIntl,
-  type LocaleId,
-  PreferredLocaleContext,
-} from "@keybr/intl";
+import { defaultLocale, loadIntl, PreferredLocaleContext } from "@keybr/intl";
 import { ThemeContext, type ThemeControl, ThemePrefs } from "@keybr/lnf";
 import { AccountPage } from "@keybr/page-account";
 import { HelpPage } from "@keybr/page-help";
@@ -257,7 +252,7 @@ export class Controller {
     const settings = user != null ? await this.database.get(user.id!) : null;
     return {
       base: this.canonicalUrl,
-      locale: locale as LocaleId,
+      locale,
       user: user?.toDetails() ?? null,
       publicUser,
       settings: settings?.toJSON() ?? null,

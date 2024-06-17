@@ -1,6 +1,6 @@
 import { cloneElement, type ReactElement, type ReactNode } from "react";
 import { useIntl } from "react-intl";
-import { getDir, type LocaleId } from "./locale.ts";
+import { getDir } from "./locale.ts";
 
 /**
  * Expects exactly two child components and swaps their properties depending
@@ -31,7 +31,7 @@ export function Dir({
         : undefined,
     );
   }
-  if (getDir(locale as LocaleId) === "rtl") {
+  if (getDir(locale) === "rtl") {
     return (
       <>
         {cloneElement(a, { ...ap, [swap]: bp[swap] })}

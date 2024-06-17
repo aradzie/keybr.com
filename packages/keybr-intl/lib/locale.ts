@@ -19,37 +19,7 @@ import { createContext, useContext } from "react";
  * @see https://www.rfc-editor.org/rfc/rfc5646.txt
  */
 
-export type LocaleId =
-  | "ar"
-  | "ca"
-  | "cs"
-  | "da"
-  | "de"
-  | "el"
-  | "en"
-  | "es"
-  | "et"
-  | "fa"
-  | "fr"
-  | "he"
-  | "hr"
-  | "hu"
-  | "id"
-  | "it"
-  | "ja"
-  | "ko"
-  | "ne"
-  | "nl"
-  | "pl"
-  | "pt-br"
-  | "pt-pt"
-  | "ru"
-  | "sv"
-  | "tr"
-  | "uk"
-  | "vi"
-  | "zh-hans"
-  | "zh-hant";
+export type LocaleId = string;
 
 export const defaultLocale: LocaleId = "en";
 

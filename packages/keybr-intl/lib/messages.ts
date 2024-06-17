@@ -36,6 +36,10 @@ export async function loadMessages(locale: LocaleId): Promise<Messages> {
     case "zh-hans": return (await import(/* webpackChunkName: "messages-zh-hans" */ "./messages/zh-hans.json")).default;
     case "zh-hant": return (await import(/* webpackChunkName: "messages-zh-hant" */ "./messages/zh-hant.json")).default;
     default:
-      throw new Error();
+      throw new Error(
+        process.env.NODE_ENV !== "production"
+          ? `Unknown locale [${locale}]`
+          : undefined,
+      );
   }
 }
