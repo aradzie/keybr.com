@@ -278,7 +278,6 @@
   "profile.chart.accuracy.accuracyThreshold.header": "عتبة الدقة",
   "profile.chart.calendar.caption": "تقويم التمرن",
   "profile.chart.calendar.description": "يعرض هذا التقويم تواريخ التعلم النشط.",
-  "profile.chart.compare.description": "قارن نفسك",
   "profile.chart.compareAverageSpeed.description": "يتفوق أفضل متوسط لسرعتك على {value} من جميع الأشخاص الآخرين.",
   "profile.chart.compareTopSpeed.description": "تتفوق أفضل سرعة قصوى لديك على {value} من جميع الأشخاص الآخرين.",
   "profile.chart.histogram.caption": "سرعة الكتابة النسبية",

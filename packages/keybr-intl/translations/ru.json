@@ -278,7 +278,6 @@
   "profile.chart.accuracy.accuracyThreshold.header": "Порог точности",
   "profile.chart.calendar.caption": "Календарь занятий",
   "profile.chart.calendar.description": "Этот календарь показывает даты активного обучения.",
-  "profile.chart.compare.description": "Сравните себя",
   "profile.chart.compareAverageSpeed.description": "Ваша средняя скорость за все время больше, чем у {value} других людей.",
   "profile.chart.compareTopSpeed.description": "Ваша лучшая скорость за все время больше, чем у {value} других людей.",
   "profile.chart.histogram.caption": "Относительная скорость печати",

@@ -273,7 +273,6 @@
   "profile.chart.accuracy.accuracyThreshold.header": "Práh přesnosti",
   "profile.chart.calendar.caption": "Kalendář cvičení",
   "profile.chart.calendar.description": "Tento kalendář zobrazuje data aktivního učení.",
-  "profile.chart.compare.description": "Porovnejte se",
   "profile.chart.compareAverageSpeed.description": "Vaše průměrná rychlost za celou dobu překonává {value} všech ostatních lidí.",
   "profile.chart.compareTopSpeed.description": "Vaše nejvyšší rychlost za celou dobu překonává {value} všech ostatních lidí.",
   "profile.chart.histogram.caption": "Relativní rychlost psaní",

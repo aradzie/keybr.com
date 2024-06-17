@@ -278,7 +278,6 @@
   "profile.chart.accuracy.accuracyThreshold.header": "準確度閾值",
   "profile.chart.calendar.caption": "練習日曆",
   "profile.chart.calendar.description": "本日曆顯示了積極學習的日期。",
-  "profile.chart.compare.description": "與自己比較",
   "profile.chart.compareAverageSpeed.description": "您的總平均速度超過了其他人的{value}。",
   "profile.chart.compareTopSpeed.description": "你的總最高速率超過了其他人的{value}。",
   "profile.chart.histogram.caption": "相對打字速度",

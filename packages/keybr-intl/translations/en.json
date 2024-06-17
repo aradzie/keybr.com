@@ -281,7 +281,6 @@
   "profile.chart.accuracy.accuracyThreshold.header": "Accuracy Threshold",
   "profile.chart.calendar.caption": "Practice Calendar",
   "profile.chart.calendar.description": "This calendar shows the dates of active learning.",
-  "profile.chart.compare.description": "Compare Yourself",
   "profile.chart.compareAverageSpeed.description": "Your all time average speed beats {value} of all other people.",
   "profile.chart.compareTopSpeed.description": "Your all time top speed beats {value} of all other people.",
   "profile.chart.histogram.caption": "Relative Typing Speed",

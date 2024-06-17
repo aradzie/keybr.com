@@ -230,7 +230,6 @@
   "profile.chart.accuracy.accuracyThreshold.header": "آستانه دقت",
   "profile.chart.calendar.caption": "تقویم تمرین",
   "profile.chart.calendar.description": "این تقویم تاریخ‌های یادگیری فعال را نشان می‌دهد.",
-  "profile.chart.compare.description": "خودت را مقایسه کن",
   "profile.chart.compareAverageSpeed.description": "میانگین سرعت کلتان از {value} افراد دیگر برتر است.",
   "profile.chart.compareTopSpeed.description": "بیشترین سرعت کلتان از {value} افراد دیگر برتر است.",
   "profile.chart.histogram.caption": "سرعت تایپ نسبی",

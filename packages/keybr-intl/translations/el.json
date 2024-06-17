@@ -265,7 +265,6 @@
   "profile.chart.accuracy.accuracyThreshold.header": "Κατώφλι Ακρίβειας",
   "profile.chart.calendar.caption": "Ημερολόγιο Εξάσκησης",
   "profile.chart.calendar.description": "Αυτό το ημερολόγιο δείχνει τις ημερομηνίες ενεργού μάθησης.",
-  "profile.chart.compare.description": "Συγκρίνετε τον εαυτό σας",
   "profile.chart.compareAverageSpeed.description": "Η μέση ταχύτητα όλων των εποχών ξεπερνά το {value} όλων των άλλων ατόμων.",
   "profile.chart.compareTopSpeed.description": "Η τελική ταχύτητα όλων των εποχών ξεπερνά το {value} όλων των άλλων ατόμων.",
   "profile.chart.histogram.caption": "Σχετική ταχύτητα πληκτρολόγησης",

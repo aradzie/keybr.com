@@ -278,7 +278,6 @@
   "profile.chart.accuracy.accuracyThreshold.header": "Próg dokładności",
   "profile.chart.calendar.caption": "Kalendarz ćwiczeń",
   "profile.chart.calendar.description": "Ten kalendarz pokazuje daty aktywnej nauki.",
-  "profile.chart.compare.description": "Porównaj się",
   "profile.chart.compareAverageSpeed.description": "Twoje najlepsze średnie tempo jest lepsze niż {value} innych ludzi.",
   "profile.chart.compareTopSpeed.description": "Twoje najlepsze najwyższe tempo jest lepsze niż {value} innych ludzi.",
   "profile.chart.histogram.caption": "Względne tempo pisania na klawiaturze",

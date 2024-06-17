@@ -275,7 +275,6 @@
   "profile.chart.accuracy.accuracyThreshold.header": "Soglia di precisione",
   "profile.chart.calendar.caption": "Calendario degli esercizi",
   "profile.chart.calendar.description": "Questo calendario mostra le date dell’apprendimento attivo.",
-  "profile.chart.compare.description": "Confronta te stesso",
   "profile.chart.compareAverageSpeed.description": "La tua velocità media di sempre supera il {value} di tutte le altre persone.",
   "profile.chart.compareTopSpeed.description": "La tua velocità massima dis empre batte il {value} di tutte le altre persone.",
   "profile.chart.histogram.caption": "Velocità di digitazione relativa",

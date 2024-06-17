@@ -271,7 +271,6 @@
   "profile.chart.accuracy.accuracyThreshold.header": "Limiar de Exatidão",
   "profile.chart.calendar.caption": "Calendário Aprendizagem",
   "profile.chart.calendar.description": "Este calendário mostra as datas de aprendizagem activa.",
-  "profile.chart.compare.description": "Compare-se",
   "profile.chart.compareAverageSpeed.description": "A sua média de escrita de todos os tempos bate {value} de todas as outras pessoas.",
   "profile.chart.compareTopSpeed.description": "O seu valor de topo de todos os tempos bate {value} de todas as outras pessoas.",
   "profile.chart.histogram.caption": "Velocidade de escrita relativa",

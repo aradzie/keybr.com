@@ -274,7 +274,6 @@
   "profile.chart.accuracy.accuracyThreshold.header": "准确度阈值",
   "profile.chart.calendar.caption": "练习日历",
   "profile.chart.calendar.description": "本日历显示了积极学习的日期。",
-  "profile.chart.compare.description": "对比自己",
   "profile.chart.compareAverageSpeed.description": "您的总平均速度超过了其他人的{value}。",
   "profile.chart.compareTopSpeed.description": "你的总最高速度超过了其他人的{value}。",
   "profile.chart.histogram.caption": "相对打字速度",

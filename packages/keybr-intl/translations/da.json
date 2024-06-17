@@ -269,7 +269,6 @@
   "profile.chart.accuracy.accuracyThreshold.header": "Nøjagtighedstærskel",
   "profile.chart.calendar.caption": "Øvelseskalender",
   "profile.chart.calendar.description": "Denne kalender viser datoerne for aktiv læring.",
-  "profile.chart.compare.description": "Sammenlign dig selv",
   "profile.chart.compareAverageSpeed.description": "Din gennemsnitlige hastighed gennem tiden slår {value} af alle andre mennesker.",
   "profile.chart.compareTopSpeed.description": "Din hurtigste hastighed slår {value} af alle andre mennesker.",
   "profile.chart.histogram.caption": "Relativ skrivehastighed",

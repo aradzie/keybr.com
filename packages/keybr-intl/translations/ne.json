@@ -267,7 +267,6 @@
   "profile.chart.accuracy.accuracyThreshold.header": "शुद्धता थ्रेसहोल्ड",
   "profile.chart.calendar.caption": "क्यालेन्डर अभ्यास गर्नुहोस्",
   "profile.chart.calendar.description": "यो पात्रोले सक्रिय शिक्षाको मितिहरू देखाउँछ।",
-  "profile.chart.compare.description": "आफैलाई तुलना गर्नुहोस्",
   "profile.chart.compareAverageSpeed.description": "तपाईंको सबै समयको औसत गतिले अन्य सबै मानिसहरूको {value} लाई हराउँछ।",
   "profile.chart.compareTopSpeed.description": "तपाईंको सबै समयको उच्च गतिले अन्य सबै मानिसहरूको {value} लाई हराउँछ।",
   "profile.chart.histogram.caption": "सापेक्ष टाइपिंग गति",

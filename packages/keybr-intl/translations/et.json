@@ -271,7 +271,6 @@
   "profile.chart.accuracy.accuracyThreshold.header": "Täpsuse künnis",
   "profile.chart.calendar.caption": "Harjutamise kalender",
   "profile.chart.calendar.description": "See kalender näitab su harjutamise kuupäevi.",
-  "profile.chart.compare.description": "Võrdle ennast",
   "profile.chart.compareAverageSpeed.description": "Sinu kõigi aegade keskmine kiirus ületab {value} teistest inimestest.",
   "profile.chart.compareTopSpeed.description": "Sinu kõigi aegade tippkiirus ületab {value} teistest inimestest.",
   "profile.chart.histogram.caption": "Suhteline trükikiirus",

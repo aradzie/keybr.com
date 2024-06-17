@@ -273,7 +273,6 @@
   "profile.chart.accuracy.accuracyThreshold.header": "Genauigkeitsschwelle",
   "profile.chart.calendar.caption": "Übungskalender",
   "profile.chart.calendar.description": "Dieser Kalender zeigt die Daten des aktiven Lernens an.",
-  "profile.chart.compare.description": "Vergleichen Sie selbst",
   "profile.chart.compareAverageSpeed.description": "Ihre Durchschnittsgeschwindigkeit über alle Zeiten übertrifft {value} aller anderen Personen.",
   "profile.chart.compareTopSpeed.description": "Ihre Höchstgeschwindigkeit übertrifft {value} aller anderen Personen.",
   "profile.chart.histogram.caption": "Relative Tippgeschwindigkeit",

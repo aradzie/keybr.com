@@ -262,7 +262,6 @@
   "profile.chart.accuracy.accuracyThreshold.header": "Noggranhetsgräns",
   "profile.chart.calendar.caption": "Träningskalender",
   "profile.chart.calendar.description": "Denna kalender visar datum med aktiv träning.",
-  "profile.chart.compare.description": "Jämför med andra",
   "profile.chart.compareAverageSpeed.description": "Din snabbaste genomsnittshastighet slår {value} av alla andra.",
   "profile.chart.compareTopSpeed.description": "Din högsta hastighet någonsin slår {value} av alla andra.",
   "profile.chart.histogram.caption": "Relativ skrivhastighet",

@@ -274,7 +274,6 @@
   "profile.chart.accuracy.accuracyThreshold.header": "Limite de precisão",
   "profile.chart.calendar.caption": "Calendário de prática",
   "profile.chart.calendar.description": "Este calendário mostra as datas de aprendizagem ativa.",
-  "profile.chart.compare.description": "Compare-se",
   "profile.chart.compareAverageSpeed.description": "Sua velocidade média histórica supera {value} a de todas as outras pessoas.",
   "profile.chart.compareTopSpeed.description": "Sua velocidade máxima histórica supera {value} a de todas as outras pessoas.",
   "profile.chart.histogram.caption": "Velocidade relativa de digitação",

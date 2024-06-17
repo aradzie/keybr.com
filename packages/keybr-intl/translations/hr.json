@@ -276,7 +276,6 @@
   "profile.chart.accuracy.accuracyThreshold.header": "Prag točnosti",
   "profile.chart.calendar.caption": "Kalendar vježbe",
   "profile.chart.calendar.description": "Ovaj kalendar prikazuje datume aktivnog učenja.",
-  "profile.chart.compare.description": "Usporedite se",
   "profile.chart.compareAverageSpeed.description": "Prosječna brzina svih vremena pobjeđuje {value} svih ostalih ljudi.",
   "profile.chart.compareTopSpeed.description": "Vaša najveća brzina svih vremena pobjeđuje {value} svih ostalih ljudi.",
   "profile.chart.histogram.caption": "Relativna brzina tipkanja",

@@ -265,7 +265,6 @@
   "profile.chart.accuracy.accuracyThreshold.header": "Seuil de précision",
   "profile.chart.calendar.caption": "Calendrier des entraînements",
   "profile.chart.calendar.description": "Ce calendrier indique les dates d’apprentissage actif.",
-  "profile.chart.compare.description": "Comparez-vous",
   "profile.chart.compareAverageSpeed.description": "Votre vitesse moyenne de tous les temps est supérieure à {value} de toutes les autres personnes.",
   "profile.chart.compareTopSpeed.description": "Votre vitesse de pointe de tous les temps est supérieure à {value} de toutes les autres personnes.",
   "profile.chart.histogram.caption": "Vitesse de frappe relative",

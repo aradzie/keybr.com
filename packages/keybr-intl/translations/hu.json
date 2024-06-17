@@ -263,7 +263,6 @@
   "profile.chart.accuracy.accuracyThreshold.header": "Pontossági küszöb",
   "profile.chart.calendar.caption": "Gyakorlási naptár",
   "profile.chart.calendar.description": "A naptár az aktív tanulás dátumait mutatja.",
-  "profile.chart.compare.description": "Összehasonlítás másokkal.",
   "profile.chart.compareAverageSpeed.description": "A legjobb átlagos sebessége veri a többi ember {value}-át.",
   "profile.chart.compareTopSpeed.description": "Minden idők átlagos sebessége veri a többi ember {value}-át.",
   "profile.chart.histogram.caption": "Relatív gépelési sebesség",
