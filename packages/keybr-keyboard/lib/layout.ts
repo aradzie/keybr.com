@@ -860,6 +860,21 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly PL_FWYR = new Layout(
+    /* id= */ "pl-fwyr",
+    /* xid= */ 0x98,
+    /* name= */ "FWYR",
+    /* family= */ "fwyr",
+    /* language= */ Language.PL,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
 
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
@@ -908,6 +923,7 @@ export class Layout implements XEnumItem {
     Layout.ES_ES,
     Layout.ES_MX,
     Layout.PL_PL,
+    Layout.PL_FWYR,
     Layout.PT_BR,
     Layout.PT_PT,
     Layout.BE_BY,

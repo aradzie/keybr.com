@@ -1,0 +1,165 @@
+KBD	FWYR	"FWYR v4 best polish optimized layout"
+
+COPYRIGHT	"© 2021 AKmatiAK and Arno Klein"
+
+COMPANY	"none"
+
+LOCALENAME	"pl-PL"
+
+LOCALEID	"00000415"
+
+VERSION	1.0
+
+SHIFTSTATE
+
+0	//Column 4
+1	//Column 5 : Shft
+2	//Column 6 :       Ctrl
+6	//Column 7 :       Ctrl Alt
+7	//Column 8 : Shft  Ctrl Alt
+
+LAYOUT		;an extra '@' at the end is a dead key
+
+//SC	VK_		Cap	0	1	2	6	7
+//--	----		----	----	----	----	----	----
+
+02	1		0	1	0026	-1	-1	-1		// DIGIT ONE, AMPERSAND, <none>, <none>, <none>
+03	2		0	2	0040	-1	-1	-1		// DIGIT TWO, COMMERCIAL AT, <none>, <none>, <none>
+04	3		0	3	0023	-1	-1	-1		// DIGIT THREE, NUMBER SIGN, <none>, <none>, <none>
+05	4		0	4	0024	-1	-1	-1		// DIGIT FOUR, DOLLAR SIGN, <none>, <none>, <none>
+06	5		0	5	0025	-1	-1	-1		// DIGIT FIVE, PERCENT SIGN, <none>, <none>, <none>
+07	6		0	6	005e	-1	-1	-1		// DIGIT SIX, CIRCUMFLEX ACCENT, <none>, <none>, <none>
+08	7		0	7	007c	-1	-1	-1		// DIGIT SEVEN, VERTICAL LINE, <none>, <none>, <none>
+09	8		0	8	002f	-1	-1	-1		// DIGIT EIGHT, SOLIDUS, <none>, <none>, <none>
+0a	9		0	9	0028	-1	-1	-1		// DIGIT NINE, LEFT PARENTHESIS, <none>, <none>, <none>
+0b	0		0	0	0029	-1	-1	-1		// DIGIT ZERO, RIGHT PARENTHESIS, <none>, <none>, <none>
+0c	OEM_MINUS	0	005b	007b	-1	-1	-1		// LEFT SQUARE BRACKET, LEFT CURLY BRACKET, <none>, <none>, <none>
+0d	OEM_PLUS	0	005d	007d	-1	-1	-1		// RIGHT SQUARE BRACKET, RIGHT CURLY BRACKET, <none>, <none>, <none>
+10	F		1	f	F	-1	-1	-1		// LATIN SMALL LETTER F, LATIN CAPITAL LETTER F, <none>, <none>, <none>
+11	B		1	b	B	-1	-1	-1		// LATIN SMALL LETTER B, LATIN CAPITAL LETTER B, <none>, <none>, <none>
+12	D		1	d	D	-1	-1	-1		// LATIN SMALL LETTER D, LATIN CAPITAL LETTER D, <none>, <none>, <none>
+13	O		5	o	O	-1	00f3	00d3		// LATIN SMALL LETTER O, LATIN CAPITAL LETTER O, <none>, LATIN SMALL LETTER O WITH ACUTE, LATIN CAPITAL LETTER O WITH ACUTE
+14	P		1	p	P	-1	-1	-1		// LATIN SMALL LETTER P, LATIN CAPITAL LETTER P, <none>, <none>, <none>
+15	OEM_7		0	002d	003d	-1	002b	-1		// HYPHEN-MINUS, EQUALS SIGN, <none>, PLUS SIGN, <none>
+16	OEM_4		0	002a	0023	-1	00b7	-1		// ASTERISK, NUMBER SIGN, <none>, MIDDLE DOT, <none>
+17	G		1	g	G	-1	-1	-1		// LATIN SMALL LETTER G, LATIN CAPITAL LETTER G, <none>, <none>, <none>
+18	W		1	w	W	-1	-1	-1		// LATIN SMALL LETTER W, LATIN CAPITAL LETTER W, <none>, <none>, <none>
+19	Y		1	y	Y	-1	-1	-1		// LATIN SMALL LETTER Y, LATIN CAPITAL LETTER Y, <none>, <none>, <none>
+1a	H		1	h	H	-1	-1	-1		// LATIN SMALL LETTER H, LATIN CAPITAL LETTER H, <none>, <none>, <none>
+1b	Q		1	q	Q	-1	-1	-1		// LATIN SMALL LETTER Q, LATIN CAPITAL LETTER Q, <none>, <none>, <none>
+1e	J		1	j	J	-1	-1	-1		// LATIN SMALL LETTER J, LATIN CAPITAL LETTER J, <none>, <none>, <none>
+1f	C		5	c	C	-1	0107	0106		// LATIN SMALL LETTER C, LATIN CAPITAL LETTER C, <none>, LATIN SMALL LETTER C WITH ACUTE, LATIN CAPITAL LETTER C WITH ACUTE
+20	I		5	i	I	-1	0142	0141		// LATIN SMALL LETTER I, LATIN CAPITAL LETTER I, <none>, LATIN SMALL LETTER L WITH STROKE, LATIN CAPITAL LETTER L WITH STROKE
+21	E		5	e	E	-1	0119	0118		// LATIN SMALL LETTER E, LATIN CAPITAL LETTER E, <none>, LATIN SMALL LETTER E WITH OGONEK, LATIN CAPITAL LETTER E WITH OGONEK
+22	N		5	n	N	-1	0144	0143		// LATIN SMALL LETTER N, LATIN CAPITAL LETTER N, <none>, LATIN SMALL LETTER N WITH ACUTE, LATIN CAPITAL LETTER N WITH ACUTE
+23	OEM_1		0	002e	003a	-1	0021	-1		// FULL STOP, COLON, <none>, EXCLAMATION MARK, <none>
+24	OEM_5		0	002c	003b	-1	003f	-1		// COMMA, SEMICOLON, <none>, QUESTION MARK, <none>
+25	T		1	t	T	-1	-1	-1		// LATIN SMALL LETTER T, LATIN CAPITAL LETTER T, <none>, <none>, <none>
+26	R		5	r	R	-1	017a	0179		// LATIN SMALL LETTER R, LATIN CAPITAL LETTER R, <none>, LATIN SMALL LETTER Z WITH ACUTE, LATIN CAPITAL LETTER Z WITH ACUTE
+27	A		5	a	A	-1	0105	0104		// LATIN SMALL LETTER A, LATIN CAPITAL LETTER A, <none>, LATIN SMALL LETTER A WITH OGONEK, LATIN CAPITAL LETTER A WITH OGONEK
+28	Z		5	z	Z	-1	017c	017b		// LATIN SMALL LETTER Z, LATIN CAPITAL LETTER Z, <none>, LATIN SMALL LETTER Z WITH DOT ABOVE, LATIN CAPITAL LETTER Z WITH DOT ABOVE
+29	OEM_3		0	0060	007e	-1	-1	-1		// GRAVE ACCENT, TILDE, <none>, <none>, <none>
+2b	S		5	s	S	001c	015b	015a		// LATIN SMALL LETTER S, LATIN CAPITAL LETTER S, INFORMATION SEPARATOR FOUR, LATIN SMALL LETTER S WITH ACUTE, LATIN CAPITAL LETTER S WITH ACUTE
+2c	X		1	x	X	-1	-1	-1		// LATIN SMALL LETTER X, LATIN CAPITAL LETTER X, <none>, <none>, <none>
+2d	V		1	v	V	-1	003c	-1		// LATIN SMALL LETTER V, LATIN CAPITAL LETTER V, <none>, LESS-THAN SIGN, <none>
+2e	U		1	u	U	-1	003e	-1		// LATIN SMALL LETTER U, LATIN CAPITAL LETTER U, <none>, GREATER-THAN SIGN, <none>
+2f	M		1	m	M	-1	-1	-1		// LATIN SMALL LETTER M, LATIN CAPITAL LETTER M, <none>, <none>, <none>
+30	OEM_COMMA	0	002f	003c	-1	-1	-1		// SOLIDUS, LESS-THAN SIGN, <none>, <none>, <none>
+31	OEM_PERIOD	0	0027	0022	-1	005f	-1		// APOSTROPHE, QUOTATION MARK, <none>, LOW LINE, <none>
+32	OEM_2		0	005c	003e	-1	-1	-1		// REVERSE SOLIDUS, GREATER-THAN SIGN, <none>, <none>, <none>
+33	L		1	l	L	-1	-1	-1		// LATIN SMALL LETTER L, LATIN CAPITAL LETTER L, <none>, <none>, <none>
+34	K		1	k	K	-1	-1	-1		// LATIN SMALL LETTER K, LATIN CAPITAL LETTER K, <none>, <none>, <none>
+35	OEM_6		0	002e	002e	-1	-1	-1		// FULL STOP, FULL STOP, <none>, <none>, <none>
+39	SPACE		0	0020	0020	0020	-1	-1		// SPACE, SPACE, SPACE, <none>, <none>
+56	OEM_102	0	005c	007c	001c	-1	-1		// REVERSE SOLIDUS, VERTICAL LINE, INFORMATION SEPARATOR FOUR, <none>, <none>
+53	DECIMAL	0	002e	002e	-1	-1	-1		// FULL STOP, FULL STOP, , , 
+
+
+KEYNAME
+
+01	Esc
+0e	Backspace
+0f	Tab
+1c	Enter
+1d	Ctrl
+2a	Shift
+36	"Right Shift"
+37	"Num *"
+38	Alt
+39	Space
+3a	"Caps Lock"
+3b	F1
+3c	F2
+3d	F3
+3e	F4
+3f	F5
+40	F6
+41	F7
+42	F8
+43	F9
+44	F10
+45	Pause
+46	"Scroll Lock"
+47	"Num 7"
+48	"Num 8"
+49	"Num 9"
+4a	"Num -"
+4b	"Num 4"
+4c	"Num 5"
+4d	"Num 6"
+4e	"Num +"
+4f	"Num 1"
+50	"Num 2"
+51	"Num 3"
+52	"Num 0"
+53	"Num Del"
+54	"Sys Req"
+57	F11
+58	F12
+7c	F13
+7d	F14
+7e	F15
+7f	F16
+80	F17
+81	F18
+82	F19
+83	F20
+84	F21
+85	F22
+86	F23
+87	F24
+
+KEYNAME_EXT
+
+1c	"Num Enter"
+1d	"Right Ctrl"
+35	"Num /"
+37	"Prnt Scrn"
+38	"Right Alt"
+45	"Num Lock"
+46	Break
+47	Home
+48	Up
+49	"Page Up"
+4b	Left
+4d	Right
+4f	End
+50	Down
+51	"Page Down"
+52	Insert
+53	Delete
+54	<00>
+56	Help
+5b	"Left Windows"
+5c	"Right Windows"
+5d	Application
+
+DESCRIPTIONS
+
+0415	FWYR_v4
+
+LANGUAGENAMES
+
+0415	Polski (custom)
+
+ENDKBD
