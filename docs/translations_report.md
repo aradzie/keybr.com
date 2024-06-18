@@ -122,6 +122,34 @@ Untranslated: 39 messages, 434 words
 * *Bar whitespace*
 * ...
 
+# Esperanto
+
+Translated: 84 messages, 885 words
+
+Untranslated: 333 messages, 4160 words
+
+* *GO!*
+* *Time*
+* *Time*
+* *Help*
+* *Help*
+* *Copy*
+* *Done*
+* *Next*
+* *Books*
+* *Score*
+* *Speed*
+* *Speed*
+* *Visit*
+* *Font:*
+* *Reset*
+* *Close*
+* *Errors*
+* *Typing*
+* *Numbers*
+* *Lessons*
+* ...
+
 # Spanish
 
 Translated: 417 messages, 4543 words
