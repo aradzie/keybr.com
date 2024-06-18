@@ -1,7 +1,10 @@
-import { ResultGroups } from "./group.ts";
-import { LocalDate } from "./localdate.ts";
-import { type Result } from "./result.ts";
-import { makeSummaryStats, type SummaryStats } from "./summarystats.ts";
+import {
+  LocalDate,
+  makeSummaryStats,
+  type Result,
+  ResultGroups,
+  type SummaryStats,
+} from "@keybr/result";
 
 export type AllTimeStats = {
   readonly results: readonly Result[];

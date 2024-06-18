@@ -1,8 +1,6 @@
+import { LocalDate, makeSummaryStats, ResultFaker } from "@keybr/result";
 import test from "ava";
-import { ResultFaker } from "./fake.tsx";
-import { LocalDate } from "./localdate.ts";
 import { ResultSummary } from "./resultsummary.ts";
-import { makeSummaryStats } from "./summarystats.ts";
 
 test("no results", (t) => {
   // Arrange.

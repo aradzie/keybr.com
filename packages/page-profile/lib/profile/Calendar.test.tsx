@@ -1,9 +1,10 @@
 import { FakeIntlProvider } from "@keybr/intl";
-import { LocalDate, ResultFaker, ResultSummary } from "@keybr/result";
+import { LocalDate, ResultFaker } from "@keybr/result";
 import { FakeSettingsContext } from "@keybr/settings";
 import { render } from "@testing-library/react";
 import test from "ava";
 import { Calendar } from "./Calendar.tsx";
+import { ResultSummary } from "./resultsummary.ts";
 
 test.serial("no results", (t) => {
   // Arrange.

@@ -3,7 +3,6 @@ import { useFormatter } from "@keybr/lesson-ui";
 import {
   makeSummaryStats,
   MutableStreakList,
-  type ResultSummary,
   type Streak,
 } from "@keybr/result";
 import {
@@ -15,6 +14,7 @@ import {
 } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
+import { type ResultSummary } from "./resultsummary.ts";
 
 export function AccuracySection({
   summary,

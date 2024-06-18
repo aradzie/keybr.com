@@ -1,9 +1,9 @@
 import { useIntlNumbers } from "@keybr/intl";
 import { useFormatter } from "@keybr/lesson-ui";
-import { type ResultSummary } from "@keybr/result";
 import { formatDuration, Header, Para } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
+import { type ResultSummary } from "./resultsummary.ts";
 import * as styles from "./Summary.module.less";
 
 export function AllTimeSummary({

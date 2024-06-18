@@ -1,7 +1,6 @@
 import { DistributionChart } from "@keybr/chart";
 import { useIntlNumbers } from "@keybr/intl";
 import { type Distribution } from "@keybr/math";
-import { type ResultSummary } from "@keybr/result";
 import {
   Explainer,
   Field,
@@ -14,6 +13,7 @@ import {
 } from "@keybr/widget";
 import React, { type ReactNode, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
+import { type ResultSummary } from "./resultsummary.ts";
 import { ChartWrapper } from "./widgets.tsx";
 
 export function DistributionSection({

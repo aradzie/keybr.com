@@ -1,15 +1,11 @@
 import { useFormatter } from "@keybr/lesson-ui";
-import {
-  LocalDate,
-  makeSummaryStats,
-  type Result,
-  type ResultSummary,
-} from "@keybr/result";
+import { LocalDate, makeSummaryStats, type Result } from "@keybr/result";
 import { formatDuration } from "@keybr/widget";
 import { clsx } from "clsx";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
 import * as styles from "./Calendar.module.less";
+import { type ResultSummary } from "./resultsummary.ts";
 
 export function Calendar({
   summary,

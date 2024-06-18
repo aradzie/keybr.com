@@ -1,6 +1,6 @@
 import { makeSpeedDistribution } from "@keybr/chart";
 import { type NamedUser, Screen, UserName } from "@keybr/pages-shared";
-import { type KeyStatsMap, ResultSummary } from "@keybr/result";
+import { type KeyStatsMap } from "@keybr/result";
 import { ExplainerBoundary, Header } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { AccuracySection } from "./profile/AccuracySection.tsx";
@@ -13,6 +13,7 @@ import { KeySpeedHistogramSection } from "./profile/KeySpeedHistogramSection.tsx
 import { KeyTypingSpeedSection } from "./profile/KeyTypingSpeedSection.tsx";
 import { ProgressOverviewSection } from "./profile/ProgressOverviewSection.tsx";
 import { ResultGrouper } from "./profile/ResultGrouper.tsx";
+import { ResultSummary } from "./profile/resultsummary.ts";
 import { AllTimeSummary } from "./profile/Summary.tsx";
 import { TypingSpeedSection } from "./profile/TypingSpeedSection.tsx";
 
