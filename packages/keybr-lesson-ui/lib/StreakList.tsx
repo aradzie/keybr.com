@@ -18,30 +18,26 @@ export const StreakList = ({
   for (const { level, results } of streakList) {
     if (results.length > 0) {
       if (children.length > 0) {
-        children.push(", ");
+        children.push(" ");
       }
       children.push(
-        <span>
-          <FormattedMessage
-            id="streakList.streakLength"
-            defaultMessage="{length, plural, =1 {One lesson} other {# lessons}} with {accuracy} accuracy."
-            values={{
-              length: results.length,
-              accuracy: <Value value={formatPercents(level)} />,
-            }}
-          />
-        </span>,
+        <FormattedMessage
+          id="streakList.streakLength"
+          defaultMessage="{length, plural, =1 {One lesson} other {# lessons}} with {accuracy} accuracy."
+          values={{
+            length: results.length,
+            accuracy: <Value value={formatPercents(level)} />,
+          }}
+        />,
       );
     }
   }
   if (children.length === 0) {
     children.push(
-      <span className={styleTextTruncate}>
-        <FormattedMessage
-          id="streakList.noStreaks"
-          defaultMessage="No accuracy streaks."
-        />
-      </span>,
+      <FormattedMessage
+        id="streakList.noStreaks"
+        defaultMessage="No accuracy streaks."
+      />,
     );
   }
   return (

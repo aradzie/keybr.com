@@ -11,15 +11,14 @@ Untranslated: 4 messages, 26 words
 
 # Catalan
 
-Translated: 401 messages, 3673 words
+Translated: 403 messages, 3685 words
 
-Untranslated: 32 messages, 1473 words
+Untranslated: 31 messages, 1470 words
 
 * *Errors*
 * *Accuracy*
 * *Explain charts*
 * *Hide explanations*
-* *No accuracy streaks.*
 * *The previous keys are also above the target speed*
 * *Generate lessons that reseble the specified programming lang...*
 * *Please provide some text in order to calculate the associate...*
@@ -35,6 +34,7 @@ Untranslated: 32 messages, 1473 words
 * *<p>This is the accuracy indicator and the difference from th...*
 * *<h1>High Scores</h1><p>The table of the fastest typists for ...*
 * *<p>This is the text board. It displays the text to type out....*
+* *<p>This is the virtual keyboard. It helps you memorize key p...*
 * ...
 
 # Czech
@@ -196,9 +196,9 @@ Untranslated: 76 messages, 3198 words
 
 # French
 
-Translated: 394 messages, 4484 words
+Translated: 396 messages, 4496 words
 
-Untranslated: 39 messages, 662 words
+Untranslated: 38 messages, 659 words
 
 * *Not set*
 * *Options*
@@ -323,9 +323,9 @@ Untranslated: 235 messages, 3646 words
 
 # Italian
 
-Translated: 423 messages, 5131 words
+Translated: 425 messages, 5143 words
 
-Untranslated: 9 messages, 13 words
+Untranslated: 8 messages, 10 words
 
 * *Font:*
 * *Layout*
@@ -335,7 +335,6 @@ Untranslated: 9 messages, 13 words
 * *Accuracy*
 * *Explain charts*
 * *Hide explanations*
-* *No accuracy streaks.*
 
 # Japanese
 
@@ -367,9 +366,9 @@ Untranslated: 163 messages, 2810 words
 
 # Korean
 
-Translated: 173 messages, 1200 words
+Translated: 175 messages, 1212 words
 
-Untranslated: 253 messages, 3880 words
+Untranslated: 252 messages, 3877 words
 
 * *Copy*
 * *Done*

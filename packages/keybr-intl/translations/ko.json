@@ -171,5 +171,7 @@
   "profile.calendar.totalLessons.description": "연습 횟수: {value}",
   "profile.calendar.totalTime.description": "연습 시간: {value}",
   "profile.chart.calendar.caption": "연습 캘린더",
-  "speedUnit.wps.name": "단어/분"
+  "speedUnit.wps.name": "단어/분",
+  "streakList.noStreaks": "정확도 줄무늬가 없습니다.",
+  "streakList.streakLength": "{accuracy} 정확도의 {length, plural, =1 {한 가지 교훈} other {# 개 레슨}}"
 }

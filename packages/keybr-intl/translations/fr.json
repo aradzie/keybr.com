@@ -370,6 +370,8 @@
   "speedUnit.cps.name": "Caractères par seconde",
   "speedUnit.wpm.name": "Mots par minute",
   "speedUnit.wps.name": "Mots par seconde",
+  "streakList.noStreaks": "Aucune trace de précision.",
+  "streakList.streakLength": "{length, plural, =1 {Une leçon} other {# leçons}} avec une précision de {accuracy}.",
   "textArea.capsLock.message": "Le verrouillage des majuscules est activé",
   "textArea.focus.message": "Cliquez ou appuyez sur Entrée pour activer...",
   "textStats.averageWordLength": "Longueur moyenne des mots",

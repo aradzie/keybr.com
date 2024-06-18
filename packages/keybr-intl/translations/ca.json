@@ -378,6 +378,8 @@
   "speedUnit.cps.name": "Caràcters per segon",
   "speedUnit.wpm.name": "Paraules per minut",
   "speedUnit.wps.name": "Paraules per segon",
+  "streakList.noStreaks": "Sense ratlles de precisió.",
+  "streakList.streakLength": "{length, plural, =1 {Una lliçó} other {# lliçons}} amb una precisió del {accuracy}.",
   "textArea.capsLock.message": "Bloc majúscules està activat",
   "textArea.focus.message": "Clicka or pressiona Intro per activar...",
   "textStats.averageWordLength": "Llargada mitjana per paraula",
