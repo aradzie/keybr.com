@@ -45,8 +45,6 @@
   "characterClass.letters": "字母",
   "characterClass.punctuationCharacters": "標點符號",
   "characterClass.specialCharacters": "特殊符號",
-  "common.javaScriptDisabled.message": "此應用程式無法運行的原因是您的瀏覽器禁用了JavaScript！",
-  "common.loading.message": "應用程式正在載入中，請稍待片刻...",
   "event.dailyGoal": "每日目標達成！",
   "event.topScore": "最高分！",
   "event.topSpeed": "最高速度！",

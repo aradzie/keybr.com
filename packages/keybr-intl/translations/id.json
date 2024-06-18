@@ -45,8 +45,6 @@
   "characterClass.letters": "Huruf",
   "characterClass.punctuationCharacters": "Tanda baca",
   "characterClass.specialCharacters": "Karakter spesial",
-  "common.javaScriptDisabled.message": "Aplikasi ini tidak akan bekerja karena JavaScript dinonaktifkan pada browser!",
-  "common.loading.message": "Aplikasi sedang dimuat, harap tunggu sesaat...",
   "footer.discordLink.description": "Diskusikan di server Discord kami.",
   "footer.emailLink.description": "Kirim komentar dan saran Anda ke info@keybr.com",
   "footer.githubLink.description": "Source code keybr.com tersedia di Github.",

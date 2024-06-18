@@ -45,8 +45,6 @@
   "characterClass.letters": "Bokstäver",
   "characterClass.punctuationCharacters": "Skiljetecken",
   "characterClass.specialCharacters": "Specialtecken",
-  "common.javaScriptDisabled.message": "Denna applikation kommer inte att fungera eftersom att JavaScript är avstängt i din webbläsare!",
-  "common.loading.message": "Applikationen laddar, vänligen vänta ett par sekunder...",
   "event.dailyGoal": "Dagens mål nått!",
   "event.topScore": "Högsta poäng!",
   "event.topSpeed": "Toppfart!",

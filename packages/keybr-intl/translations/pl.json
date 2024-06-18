@@ -45,8 +45,6 @@
   "characterClass.letters": "Litery",
   "characterClass.punctuationCharacters": "Znaki interpunkcyjne",
   "characterClass.specialCharacters": "Znaki specjalne",
-  "common.javaScriptDisabled.message": "Aplikacja nie działa, ponieważ twoja przeglądarka internetowa nie obsługuje języka JavaScript!",
-  "common.loading.message": "Aplikacja ładuje się, zaczekaj chwilę...",
   "event.dailyGoal": "Dzienny cel osiągnięty!",
   "event.topScore": "Najwyższy wynik!",
   "event.topSpeed": "Najwyższa prędkość!",

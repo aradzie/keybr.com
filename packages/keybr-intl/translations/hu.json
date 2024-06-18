@@ -45,8 +45,6 @@
   "characterClass.letters": "Betűk",
   "characterClass.punctuationCharacters": "Szótagolási karakterek",
   "characterClass.specialCharacters": "Különleges karakterek",
-  "common.javaScriptDisabled.message": "Ez az alkalmazás nem fog működni, mert a JavaScript ki van kapcsolva az ön böngészőjében!",
-  "common.loading.message": "Az weboldal töltődik, kérjük, várjon...",
   "event.dailyGoal": "A napi cél elérve!",
   "event.topScore": "Legjobb pontszám!",
   "event.topSpeed": "Csúcssebesség!",

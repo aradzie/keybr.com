@@ -45,8 +45,6 @@
   "characterClass.letters": "Γράμματα",
   "characterClass.punctuationCharacters": "Χαρακτήρες στίξης",
   "characterClass.specialCharacters": "Ειδικοί χαρακτήρες",
-  "common.javaScriptDisabled.message": "Αυτή η εφαρμογή δεν θα λειτουργήσει επειδή η JavaScript είναι απενεργοποιημένη στο πρόγραμμα περιήγησής σας!",
-  "common.loading.message": "Η εφαρμογή φορτώνεται, περιμένετε ένα δευτερόλεπτο...",
   "event.dailyGoal": "Ο ημερήσιος στόχος επιτεύχθηκε!",
   "event.topScore": "Κορυφαίο σκορ!",
   "event.topSpeed": "Μέγιστη ταχύτητα!",

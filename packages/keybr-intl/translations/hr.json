@@ -45,8 +45,6 @@
   "characterClass.letters": "Slova",
   "characterClass.punctuationCharacters": "Interpunkcijski znakovi",
   "characterClass.specialCharacters": "Posebni znakovi",
-  "common.javaScriptDisabled.message": "Ova aplikacija neće raditi jer je JavaScript onemogućen u vašem pregledniku!",
-  "common.loading.message": "Aplikacija se učitava, pričekajte sekundu...",
   "event.dailyGoal": "Postignut dnevni cilj!",
   "event.topScore": "Najbolji rezultat!",
   "event.topSpeed": "Najveća brzina!",

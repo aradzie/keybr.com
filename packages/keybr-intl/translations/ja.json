@@ -45,8 +45,6 @@
   "characterClass.letters": "レター",
   "characterClass.punctuationCharacters": "句読点",
   "characterClass.specialCharacters": "特殊文字",
-  "common.javaScriptDisabled.message": "このブラウザではJavaScriptが無効となっているので、アプリケーションは動きません！",
-  "common.loading.message": "アプリケーションを読み込み中です、しばらくお待ちください...",
   "footer.discordLink.description": "Discordで議論する。",
   "footer.emailLink.description": "コメントや提案があればinfo@keybr.comまでお送りください",
   "footer.githubLink.description": "keybr.com のソースコードは Githubにて入手可能です。",

@@ -44,8 +44,6 @@
   "characterClass.letters": "字母",
   "characterClass.punctuationCharacters": "标点符号",
   "characterClass.specialCharacters": "特殊字符",
-  "common.javaScriptDisabled.message": "此应用程序将无法运行，因为您的浏览器禁用了 JavaScript！",
-  "common.loading.message": "应用正在加载，请稍等。。。",
   "event.dailyGoal": "每日目标已达成！",
   "event.topScore": "最高得分！",
   "event.topSpeed": "最快速度！",

@@ -45,8 +45,6 @@
   "characterClass.letters": "Letras",
   "characterClass.punctuationCharacters": "Caracteres de pontuação",
   "characterClass.specialCharacters": "Caracteres especiais",
-  "common.javaScriptDisabled.message": "Essa aplicação não funcionará pois o JavaScript está desabilitado no seu navegador!",
-  "common.loading.message": "Essa aplicação está carregando, por favor aguarde...",
   "event.dailyGoal": "Meta diária atingida!",
   "event.topScore": "Melhor pontuação!",
   "event.topSpeed": "Maior velocidade!",

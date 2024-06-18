@@ -45,8 +45,6 @@
   "characterClass.letters": "पत्रहरू",
   "characterClass.punctuationCharacters": "विराम चिन्ह वर्णहरू",
   "characterClass.specialCharacters": "विशेष पात्रहरू",
-  "common.javaScriptDisabled.message": "यो अनुप्रयोगले काम गर्दैन किनभने जाभास्क्रिप्ट तपाईंको ब्राउजरमा असक्षम गरिएको छ!",
-  "common.loading.message": "अनुप्रयोग लोड हुँदैछ, कृपया एक सेकेन्ड पर्खनुहोस्...",
   "event.dailyGoal": "दैनिक लक्ष्य पुग्यो!",
   "event.topScore": "शीर्ष स्कोर!",
   "event.topSpeed": "उच्च गति!",

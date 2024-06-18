@@ -43,8 +43,6 @@
   "characterClass.letters": "حروف",
   "characterClass.punctuationCharacters": "نشانه‌های نگارشی",
   "characterClass.specialCharacters": "کاراکترهای ویژه",
-  "common.javaScriptDisabled.message": "برای اجرای این برنامه JavaScript را در مرورگر خود فعال کنید!",
-  "common.loading.message": "برنامه در حال بارگیری است، لطفا چند ثانیه منتظر بمانید...",
   "event.dailyGoal": "به هدف روزانه رسید!",
   "event.topScore": "بالاترین امتیاز!",
   "event.topSpeed": "حداکثر سرعت!",

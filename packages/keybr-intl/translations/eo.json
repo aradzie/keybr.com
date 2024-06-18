@@ -41,8 +41,6 @@
   "characterClass.letters": "Literoj",
   "characterClass.punctuationCharacters": "Interpunkciaj signoj",
   "characterClass.specialCharacters": "Specialaj Signoj",
-  "common.javaScriptDisabled.message": "Ĉi tio aplikaĵo ne funkcios ĉar javaskripto estas malfunkciigita en vian retumilon!",
-  "common.loading.message": "Ĉi tio aplikaĵo ŝarĝas, bonvolu atendi...",
   "footer.discordLink.description": "Diskuti sur nia diskordo-servilo.",
   "footer.emailLink.description": "Sendu viajn komentojn kaj sugestojn al info@keybr.com",
   "footer.githubLink.description": "La fontkodo de keybr.com videblas (kaj uzeblas) sur tisnabo (Github).",

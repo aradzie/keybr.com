@@ -40,8 +40,6 @@
   "characterClass.digits": "Cijfers",
   "characterClass.punctuationCharacters": "Leestekens",
   "characterClass.specialCharacters": "Speciale karakters",
-  "common.javaScriptDisabled.message": "Deze applicatie zal niet werken, omdat JavaScript is uitgeschakeld in uw browser!",
-  "common.loading.message": "De applicatie is aan het laden, even geduld alstublieft...",
   "event.dailyGoal": "Dagelijks doel bereikt!",
   "event.topScore": "Topscore!",
   "event.topSpeed": "Top snelheid!",

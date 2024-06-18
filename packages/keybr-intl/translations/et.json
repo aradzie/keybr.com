@@ -45,8 +45,6 @@
   "characterClass.letters": "Tähed",
   "characterClass.punctuationCharacters": "Kirjavahemärgid",
   "characterClass.specialCharacters": "Erimärgid",
-  "common.javaScriptDisabled.message": "See rakendus ei tööta, sest su brauser keelab JavaScripti kasutamist!",
-  "common.loading.message": "Rakendus laadib, palun oota hetk...",
   "event.dailyGoal": "Päevane eesmärk saavutatud!",
   "event.topScore": "Parim tulemus!",
   "event.topSpeed": "Tippkiirus!",

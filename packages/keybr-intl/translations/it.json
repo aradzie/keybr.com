@@ -44,8 +44,6 @@
   "characterClass.letters": "Lettere",
   "characterClass.punctuationCharacters": "Caratteri di puntualizzazione",
   "characterClass.specialCharacters": "Caratteri speciali",
-  "common.javaScriptDisabled.message": "Questa applicazione non può funzionare perché JavaScript è disabilitato nel tuo browser!",
-  "common.loading.message": "L’applicazione sta caricando, per favore attendi un secondo...",
   "event.dailyGoal": "Obiettivo giornaliero raggiunto!",
   "event.topScore": "Miglior punteggio!",
   "event.topSpeed": "Massima velocità!",

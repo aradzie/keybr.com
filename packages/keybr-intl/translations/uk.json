@@ -45,8 +45,6 @@
   "characterClass.letters": "Букви",
   "characterClass.punctuationCharacters": "Розділові знаки",
   "characterClass.specialCharacters": "Спеціальні символи",
-  "common.javaScriptDisabled.message": "Додаток не буде працювати, тому що у вас в браузері відключений JavaScript!",
-  "common.loading.message": "Додаток завантажується, зачекайте...",
   "event.dailyGoal": "Щоденна мета досягнута!",
   "event.topScore": "Найвищий бал!",
   "event.topSpeed": "Найвища швидкість!",

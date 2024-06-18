@@ -45,8 +45,6 @@
   "characterClass.letters": "Letters",
   "characterClass.punctuationCharacters": "Punctuation characters",
   "characterClass.specialCharacters": "Special characters",
-  "common.javaScriptDisabled.message": "This application will not work because JavaScript is disabled in your browser!",
-  "common.loading.message": "The application is loading, please wait a second...",
   "event.dailyGoal": "Daily goal reached!",
   "event.topScore": "Top score!",
   "event.topSpeed": "Top speed!",

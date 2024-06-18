@@ -45,8 +45,6 @@
   "characterClass.letters": "Буквы",
   "characterClass.punctuationCharacters": "Знаки пунктуации",
   "characterClass.specialCharacters": "Специальные символы",
-  "common.javaScriptDisabled.message": "Приложение не будет работать, потому что у вас в браузере отключен JavaScript!",
-  "common.loading.message": "Приложение загружается, подождите немного...",
   "event.dailyGoal": "Ежедневная цель достигнута!",
   "event.topScore": "Наивысший балл!",
   "event.topSpeed": "Наивысшая скорость!",

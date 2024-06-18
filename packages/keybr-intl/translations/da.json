@@ -45,8 +45,6 @@
   "characterClass.letters": "Bogstaver",
   "characterClass.punctuationCharacters": "Tegnsætningstegn",
   "characterClass.specialCharacters": "Specialtegn",
-  "common.javaScriptDisabled.message": "Denne applikation virker ikke, fordi JavaScript er deaktiveret i din browser!",
-  "common.loading.message": "Applikationen indlæses, vent venligst et øjeblik...",
   "event.dailyGoal": "Dagligt mål nået!",
   "event.topScore": "Topscore!",
   "event.topSpeed": "Tophastighed!",

@@ -45,8 +45,6 @@
   "characterClass.letters": "Lettres",
   "characterClass.punctuationCharacters": "Caractères de ponctuation",
   "characterClass.specialCharacters": "Caractères spéciaux",
-  "common.javaScriptDisabled.message": "Cette application ne fonctionnera pas car JavaScript est désactivé dans votre navigateur!",
-  "common.loading.message": "L’application est en cours de chargement, veuillez patienter un moment...",
   "event.dailyGoal": "Objectif quotidien atteint!",
   "event.topScore": "Meilleur score!",
   "event.topSpeed": "Vitesse de pointe!",

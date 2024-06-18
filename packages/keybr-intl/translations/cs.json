@@ -45,8 +45,6 @@
   "characterClass.letters": "Písmena",
   "characterClass.punctuationCharacters": "Interpunkce",
   "characterClass.specialCharacters": "Speciální znaky",
-  "common.javaScriptDisabled.message": "Tato aplikace nebude fungovat, protože ve vašem prohlížeči je zakázán JavaScript!",
-  "common.loading.message": "Aplikace se načítá, počkejte prosím chvíli...",
   "event.dailyGoal": "Denní cíl dosažen!",
   "event.topScore": "Nejvyšší skóre!",
   "event.topSpeed": "Nejvyšší rychlost!",

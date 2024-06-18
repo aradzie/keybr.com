@@ -45,8 +45,6 @@
   "characterClass.letters": "Buchstaben",
   "characterClass.punctuationCharacters": "Satzzeichen",
   "characterClass.specialCharacters": "Sonderzeichen",
-  "common.javaScriptDisabled.message": "Diese App wird nicht funktionieren, weil JavaScript in Ihrem Browser deaktiviert ist!",
-  "common.loading.message": "Die App wird geladen, bitte warten Sie einen Moment...",
   "event.dailyGoal": "Tagesziel erreicht!",
   "event.topScore": "Bestpunktzahl!",
   "event.topSpeed": "Bestgeschwindigkeit!",

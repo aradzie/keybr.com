@@ -45,8 +45,6 @@
   "characterClass.letters": "אותיות",
   "characterClass.punctuationCharacters": "סימני פיסוק",
   "characterClass.specialCharacters": "תווים מיוחדים",
-  "common.javaScriptDisabled.message": "יישום זה לא יעבוד כי JavaScript מושבת בדפדפן שלך!",
-  "common.loading.message": "האפליקציה נטענת, אנא המתן שנייה...",
   "event.dailyGoal": "היעד היומי הושג!",
   "event.topScore": "ציון גבוה!",
   "event.topSpeed": "מהירות מרבית!",

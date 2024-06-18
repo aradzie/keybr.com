@@ -45,8 +45,6 @@
   "characterClass.letters": "Harfler",
   "characterClass.punctuationCharacters": "Noktalama işaretleri",
   "characterClass.specialCharacters": "Özel karakterler",
-  "common.javaScriptDisabled.message": "Tarayıcınızda JavaScript devre dışı bırakıldığı için uygulama çalışamaz.",
-  "common.loading.message": "Uygulama yükleniyor, lütfen bekleyin...",
   "event.dailyGoal": "Günlük hedefe ulaşıldı!",
   "event.topScore": "En yüksek puan!",
   "event.topSpeed": "En yüksek hız!",

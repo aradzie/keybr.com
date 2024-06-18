@@ -44,8 +44,6 @@
   "characterClass.letters": "글자들",
   "characterClass.punctuationCharacters": "문장부호들",
   "characterClass.specialCharacters": "특수문자들",
-  "common.javaScriptDisabled.message": "JavaScript가 허용되어있지 않아서 앱이 작동하지 않아요!",
-  "common.loading.message": "앱이 로딩 중이에요, 잠시만 기다려 주세요...",
   "event.dailyGoal": "일일 목표 달성!",
   "event.topScore": "최고 점수!",
   "event.topSpeed": "최고 속도!",

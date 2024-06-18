@@ -45,8 +45,6 @@
   "characterClass.letters": "Letras",
   "characterClass.punctuationCharacters": "Caracteres de Pontuação",
   "characterClass.specialCharacters": "Caracteres Especiais",
-  "common.javaScriptDisabled.message": "Esta aplicação não funcionará porque JavaScript está desabilitado no seu browser!",
-  "common.loading.message": "A aplicação está a carregar, aguarde um segundo...",
   "footer.discordLink.description": "Dialogar no nosso servidor Discord.",
   "footer.emailLink.description": "Envie os seus comentários e sugestões para info@keybr.com",
   "footer.githubLink.description": "O código fonte de keybr.com está disponível no GitHub.",

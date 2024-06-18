@@ -45,8 +45,6 @@
   "characterClass.letters": "حروف",
   "characterClass.punctuationCharacters": "علامات الترقيم",
   "characterClass.specialCharacters": "رموز خاصة",
-  "common.javaScriptDisabled.message": "لن يعمل هذا التطبيق بسبب إلغاء تفعيل JavaScrip في متصفحك!",
-  "common.loading.message": "جار تحميل التطبيق، يرجى الانتظار...",
   "event.dailyGoal": "أنجزت الهدف اليومي!",
   "event.topScore": "أعلى نتيجة!",
   "event.topSpeed": "السرعة القصوى!",
