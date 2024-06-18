@@ -881,7 +881,7 @@ export class Layout implements XEnumItem {
     /* name= */ "Graphite",
     /* family= */ "en-graphite",
     /* language= */ Language.EN,
-    /* emulate= */ false,
+    /* emulate= */ true,
     /* geometries= */ new Enum(
       Geometry.ANSI_101,
       Geometry.ANSI_101_FULL,
