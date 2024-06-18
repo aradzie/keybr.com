@@ -10,14 +10,14 @@ export const messages = defineMessages({
     defaultMessage:
       "Average typing speed in all lessons ({speedUnitName}). The more, the better.",
   },
-  bestSpeedName: {
-    id: "metric.bestSpeed.name",
-    defaultMessage: "Best speed",
+  topSpeedName: {
+    id: "metric.topSpeed.name",
+    defaultMessage: "Top speed",
   },
-  bestSpeedDescription: {
-    id: "metric.bestSpeed.description",
+  topSpeedDescription: {
+    id: "metric.topSpeed.description",
     defaultMessage:
-      "Best typing speed in all lessons ({speedUnitName}). The more, the better.",
+      "Top typing speed in all lessons ({speedUnitName}). The more, the better.",
   },
   lastSpeedName: {
     id: "metric.lastSpeed.name",

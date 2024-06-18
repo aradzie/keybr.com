@@ -85,8 +85,8 @@ export function DistributionSection({
                 }
               : {
                   label: formatMessage({
-                    id: "metric.bestSpeed.name",
-                    defaultMessage: "Best speed",
+                    id: "metric.topSpeed.name",
+                    defaultMessage: "Top speed",
                   }),
                   value,
                 },

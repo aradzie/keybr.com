@@ -30,7 +30,7 @@ export const GaugeRow = memo(function GaugeRow({
       <Name
         className={styles.name}
         name={formatMessage({
-          id: "lesson.gaugesPanel.label",
+          id: "lesson.panel.gauges.label",
           defaultMessage: "Metrics",
         })}
       />
@@ -52,7 +52,7 @@ export const KeySetRow = memo(function KeySetRow({
       <Name
         className={styles.name}
         name={formatMessage({
-          id: "lesson.keySetPanel.label",
+          id: "lesson.panel.keySet.label",
           defaultMessage: "All keys",
         })}
       />
@@ -78,7 +78,7 @@ export const CurrentKeyRow = memo(function CurrentKeyRow({
       <Name
         className={styles.name}
         name={formatMessage({
-          id: "lesson.currentKeyPanel.label",
+          id: "lesson.panel.currentKey.label",
           defaultMessage: "Current key",
         })}
       />
@@ -104,7 +104,7 @@ export const StreakListRow = memo(function StreakListRow({
       <Name
         className={styles.name}
         name={formatMessage({
-          id: "lesson.streakListPanel.label",
+          id: "lesson.panel.streakList.label",
           defaultMessage: "Accuracy",
         })}
       />
@@ -126,17 +126,11 @@ export const DailyGoalRow = memo(function DailyGoalRow({
 }): ReactNode {
   const { formatMessage } = useIntl();
   return (
-    <div
-      className={styles.row}
-      title={formatMessage({
-        id: "lesson.dailyGoalPanel.description",
-        defaultMessage: "The progress to your daily goal.",
-      })}
-    >
+    <div className={styles.row}>
       <Name
         className={styles.name}
         name={formatMessage({
-          id: "lesson.dailyGoalPanel.label",
+          id: "lesson.panel.dailyGoal.label",
           defaultMessage: "Daily goal",
         })}
       />

@@ -44,14 +44,14 @@ export const KeyDetails = ({
           })}
         />
         <NameValue
-          name={<Name name={formatMessage(messages.bestSpeedName)} />}
+          name={<Name name={formatMessage(messages.topSpeedName)} />}
           value={
             <Value>
               {`${formatSpeed(timeToSpeed(bestTimeToType))}`}
               {` (${formatConfidence(bestConfidence)})`}
             </Value>
           }
-          title={formatMessage(messages.bestSpeedDescription, {
+          title={formatMessage(messages.topSpeedDescription, {
             speedUnitName,
           })}
         />
