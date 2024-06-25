@@ -164,7 +164,7 @@ function LayoutProp(): ReactNode {
         <Description>
           <FormattedMessage
             id="keyboard.emulation.reverse.description"
-            defaultMessage="Use this option if you have a hardware layout switcher on your keyboard, and you see that incorect keys are highlighted on the virtual keyboard."
+            defaultMessage="Use this option if you have a hardware layout switcher on your keyboard, and you see that incorrect keys are highlighted on the virtual keyboard."
           />
         </Description>
       </Explainer>

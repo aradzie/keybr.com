@@ -85,7 +85,7 @@
   "highScores.column.user.label": "User",
   "keyboard.emulation.forward.description": "Keyboard emulation ignores the keyboard layout configured in your system and allows you to practice the selected keyboard regardless of how your system is configured. It is more convenient to keep the emulation option enabled.",
   "keyboard.emulation.forward.label": "Emulate layout",
-  "keyboard.emulation.reverse.description": "Use this option if you have a hardware layout switcher on your keyboard, and you see that incorect keys are highlighted on the virtual keyboard.",
+  "keyboard.emulation.reverse.description": "Use this option if you have a hardware layout switcher on your keyboard, and you see that incorrect keys are highlighted on the virtual keyboard.",
   "keyboard.emulation.reverse.label": "Keyboard hardware emulates layout",
   "keyboard.geometry.label": "Geometry:",
   "keyboard.language.label": "Language:",
