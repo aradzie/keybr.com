@@ -58,12 +58,11 @@ Untranslated: 12 messages, 190 words
 
 # Danish
 
-Translated: 417 messages, 5092 words
+Translated: 421 messages, 5118 words
 
-Untranslated: 14 messages, 37 words
+Untranslated: 10 messages, 11 words
 
 * *Score*
-* *Books*
 * *Score*
 * *Layout*
 * *Layout:*
@@ -72,10 +71,7 @@ Untranslated: 14 messages, 37 words
 * *Position*
 * *Multiplayer*
 * *Multiplayer*
-* *Explain charts*
 * *Bar whitespace*
-* *Hide explanations*
-* *Generate typing lessons from the text of a book. All keys ar...*
 
 # German
 
@@ -195,9 +191,9 @@ Untranslated: 13 messages, 81 words
 
 # Persian
 
-Translated: 353 messages, 1905 words
+Translated: 372 messages, 2998 words
 
-Untranslated: 76 messages, 3198 words
+Untranslated: 57 messages, 2105 words
 
 * *Books*
 * *Syntax:*
@@ -212,13 +208,13 @@ Untranslated: 76 messages, 3198 words
 * *Circle color: {label1} – hit count, {label2} – miss count.*
 * *Generate lessons that reseble the specified programming lang...*
 * *Practice punctuation characters that are specific to a progr...*
-* *<p>The precise meaning of each indicator color is given in t...*
 * *This is a histogram of the typing speeds of all users, and y...*
 * *Show color coding of the keyboard zones. Use this option to ...*
-* *<a>Example 2</a>, from 35 to 70 WPM after 2 hours and 20 min...*
 * *Bar color: {label1} – hit count, {label2} – miss count, {lab...*
 * *Generate typing lessons from the text of a book. All keys ar...*
 * *Horizontal axis: lesson number. Vertical axis: typing speed ...*
+* *<a>Benford’s law</a> is an observation that in many real-lif...*
+* *You don’t have any accuracy streaks. Consider completing a l...*
 * ...
 
 # French
@@ -586,30 +582,30 @@ Untranslated: 2 messages, 4 words
 
 # Vietnamese
 
-Translated: 123 messages, 491 words
+Translated: 237 messages, 1415 words
 
-Untranslated: 288 messages, 4491 words
+Untranslated: 177 messages, 3598 words
 
-* *Time*
-* *Time*
 * *Help*
 * *Help*
-* *Copy*
-* *Books*
 * *Score*
 * *Visit*
 * *Typing*
-* *Layout:*
 * *Metrics*
-* *Numbers*
 * *Sign-In*
 * *Layouts*
 * *Profile*
 * *Not set*
-* *Options*
-* *Preview*
-* *Volume:*
-* *Lessons*
+* *Progress*
+* *Practice*
+* *Start Date*
+* *My Profile*
+* *Speed Test*
+* *Box cursor*
+* *High Scores*
+* *Multiplayer*
+* *Multiplayer*
+* *Typing Test*
 * ...
 
 # Simplified Chinese
