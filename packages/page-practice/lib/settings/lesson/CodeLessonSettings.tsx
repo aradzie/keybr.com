@@ -61,7 +61,7 @@ export function CodeLessonSettings({
           <Description>
             <FormattedMessage
               id="lessonType.syntax.description"
-              defaultMessage="Generate lessons that reseble the specified programming language syntax."
+              defaultMessage="Generate lessons that resemble the specified programming language syntax."
             />
           </Description>
         </Explainer>

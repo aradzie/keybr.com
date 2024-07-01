@@ -19,7 +19,7 @@ Untranslated: 30 messages, 1469 words
 * *Explain charts*
 * *Hide explanations*
 * *The previous keys are also above the target speed*
-* *Generate lessons that reseble the specified programming lang...*
+* *Generate lessons that resemble the specified programming lan...*
 * *Please provide some text in order to calculate the associate...*
 * *Practice punctuation characters that are specific to a progr...*
 * *Show color coding of the keyboard zones. Use this option to ...*
@@ -50,7 +50,7 @@ Untranslated: 12 messages, 190 words
 * *Explain charts*
 * *Hide explanations*
 * *Keyboard hardware emulates layout*
-* *Generate lessons that reseble the specified programming lang...*
+* *Generate lessons that resemble the specified programming lan...*
 * *Practice punctuation characters that are specific to a progr...*
 * *Generate typing lessons from the text of a book. All keys ar...*
 * *Use this option if you have a hardware layout switcher on yo...*
@@ -184,7 +184,7 @@ Untranslated: 13 messages, 81 words
 * *Explain charts*
 * *Hide explanations*
 * *Keyboard hardware emulates layout*
-* *Generate lessons that reseble the specified programming lang...*
+* *Generate lessons that resemble the specified programming lan...*
 * *Practice punctuation characters that are specific to a progr...*
 * *Generate typing lessons from the text of a book. All keys ar...*
 * *Use this option if you have a hardware layout switcher on yo...*
@@ -206,7 +206,7 @@ Untranslated: 57 messages, 2105 words
 * *Eliminate noise to see the long-term trend.*
 * *This chart shows relative key frequencies as a heatmap.*
 * *Circle color: {label1} – hit count, {label2} – miss count.*
-* *Generate lessons that reseble the specified programming lang...*
+* *Generate lessons that resemble the specified programming lan...*
 * *Practice punctuation characters that are specific to a progr...*
 * *This is a histogram of the typing speeds of all users, and y...*
 * *Show color coding of the keyboard zones. Use this option to ...*
@@ -264,7 +264,7 @@ Untranslated: 25 messages, 409 words
 * *Hide explanations*
 * *Bullet whitespace*
 * *Keyboard hardware emulates layout*
-* *Generate lessons that reseble the specified programming lang...*
+* *Generate lessons that resemble the specified programming lan...*
 * *Practice punctuation characters that are specific to a progr...*
 * *Adjust the number of words in the lesson text. Making lesson...*
 * *Show color coding of the keyboard zones. Use this option to ...*
@@ -620,7 +620,7 @@ Untranslated: 9 messages, 56 words
 * *M|T|W|T|F|S|S*
 * *Explain charts*
 * *Hide explanations*
-* *Generate lessons that reseble the specified programming lang...*
+* *Generate lessons that resemble the specified programming lan...*
 * *Practice punctuation characters that are specific to a progr...*
 * *Generate typing lessons from the text of a book. All keys ar...*
 
