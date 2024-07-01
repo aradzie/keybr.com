@@ -129,7 +129,7 @@
   "lessonType.guided.name": "Guided Lessons",
   "lessonType.numbers.description": "Practice numbers only.",
   "lessonType.numbers.name": "Numbers",
-  "lessonType.syntax.description": "Generate lessons that reseble the specified programming language syntax.",
+  "lessonType.syntax.description": "Generate lessons that resemble the specified programming language syntax.",
   "lessonType.wordList.description": "Generate typing lessons from the list of the most common words of your language. All keys are included by default. This mode is for the pros.",
   "lessonType.wordlist.name": "Common Words",
   "metric.accuracy.description": "The percentage of characters typed without errors in the last lesson.",
