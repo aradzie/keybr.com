@@ -10,7 +10,7 @@ js_primary_exp ->
   | js_call_exp
   ;
 
-js_array_literal -> "[" js_primary_exp [ "," _ js_primary_exp ] "]";
+js_array_literal -> "[" js_primary_exp [ "," _ js_primary_exp ] "]" ;
 
 js_object_literal -> "{" _ js_property_name ":" _ js_property_value _ "}" ;
 
