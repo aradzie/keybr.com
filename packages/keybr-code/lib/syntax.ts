@@ -6,6 +6,7 @@ import { Output } from "./output.ts";
 import lang_cpp from "./syntax/lang_cpp.ts";
 import lang_html_css from "./syntax/lang_html_css.ts";
 import lang_javascript from "./syntax/lang_javascript.ts";
+import lang_python from "./syntax/lang_python.ts";
 import lang_regex from "./syntax/lang_regex.ts";
 import lang_rust from "./syntax/lang_rust.ts";
 import lang_shell from "./syntax/lang_shell.ts";
@@ -60,6 +61,11 @@ export class Syntax implements EnumItem {
     "Shell",
     lang_shell,
   );
+  static readonly PYTHON = new Syntax(
+    "python", //
+    "Python",
+    lang_python,
+  );
   static readonly ALL = new Enum<Syntax>(
     Syntax.HTML,
     Syntax.CSS,
@@ -69,6 +75,7 @@ export class Syntax implements EnumItem {
     Syntax.JAVASCRIPT_EXP,
     Syntax.REGEX,
     Syntax.SHELL,
+    Syntax.PYTHON,
   );
 
   private constructor(
