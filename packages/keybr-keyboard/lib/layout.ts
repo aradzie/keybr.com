@@ -890,6 +890,21 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly RO_RO = new Layout(
+    /* id= */ "ro-ro",
+    /* xid= */ 0xa0,
+    /* name= */ "{RO}",
+    /* family= */ "qwerty",
+    /* language= */ Language.RO,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
 
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
@@ -953,6 +968,7 @@ export class Layout implements XEnumItem {
     Layout.AR_SA_102,
     Layout.FA_IR,
     Layout.FA_IR_LEGACY,
+    Layout.RO_RO,
   );
 
   static findLayout(localeId: string): Layout | null {
