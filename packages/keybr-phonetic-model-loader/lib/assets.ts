@@ -18,6 +18,7 @@ import PT from "@keybr/phonetic-model/assets/model-pt.data";
 import RU from "@keybr/phonetic-model/assets/model-ru.data";
 import SL from "@keybr/phonetic-model/assets/model-sl.data";
 import SV from "@keybr/phonetic-model/assets/model-sv.data";
+import TH from "@keybr/phonetic-model/assets/model-th.data";
 import TR from "@keybr/phonetic-model/assets/model-tr.data";
 import UK from "@keybr/phonetic-model/assets/model-uk.data";
 
@@ -61,6 +62,8 @@ export function modelAssetPath(language: Language): string {
       return SL;
     case Language.SV:
       return SV;
+    case Language.TH:
+      return TH;
     case Language.TR:
       return TR;
     case Language.UK:

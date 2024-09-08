@@ -890,7 +890,51 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
-
+  static readonly TH_TH = new Layout(
+    /* id= */ "th-th",
+    /* xid= */ 0x9a,
+    /* name= */ "Thai Kedmanee",
+    /* family= */ "qwerty",
+    /* language= */ Language.TH,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.MATRIX,
+    ),
+  );
+  static readonly TH_TH_PAT = new Layout(
+    /* id= */ "th-th-pat",
+    /* xid= */ 0x9b,
+    /* name= */ "Thai Pattachote",
+    /* family= */ "qwerty",
+    /* language= */ Language.TH,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.MATRIX,
+    ),
+  );
+  static readonly TH_TH_MAN = new Layout(
+    /* id= */ "th-th-man",
+    /* xid= */ 0x9c,
+    /* name= */ "Thai Manoonchai V1",
+    /* family= */ "qwerty",
+    /* language= */ Language.TH,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.MATRIX,
+    ),
+  );
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
     Layout.EN_DVORAK,
@@ -953,6 +997,9 @@ export class Layout implements XEnumItem {
     Layout.AR_SA_102,
     Layout.FA_IR,
     Layout.FA_IR_LEGACY,
+    Layout.TH_TH,
+    Layout.TH_TH_PAT,
+    Layout.TH_TH_MAN,
   );
 
   static findLayout(localeId: string): Layout | null {

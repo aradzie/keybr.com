@@ -116,6 +116,13 @@ export class Language implements EnumItem {
     /* direction= */ "ltr",
     /* alphabet= */ "abcdefghijklmnoprstuvwxyåäö",
   );
+  static readonly TH = new Language(
+    /* id= */ "th",
+    /* script= */ "thai",
+    /* direction= */ "ltr",
+    /* alphabet= */ "กขคฆงจฉชซฌญฎฏฐฑฒณดตถทธนบปผฝพฟภมยรฤลวศษสหฬอฮฯะัาำิีึืุูเแโใไๅ็่้๊๋์",
+    // /* alphabet= */ "กขคฆงจฉชซญฎฏฐฑฒณดตถทธนบปผฝพฟภมยรฤลวศษสหฬอฮฯะัาำิีึืุูเแโใไ็่้๊๋์",
+  );
   static readonly TR = new Language(
     /* id= */ "tr",
     /* script= */ "latin",
@@ -149,14 +156,21 @@ export class Language implements EnumItem {
     Language.RU,
     Language.SL,
     Language.SV,
+    Language.TH,
     Language.TR,
     Language.UK,
   );
 
   /** ISO 639-1 language code, https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes */
   readonly id: string;
-  /** The writing system, such as Cyrillic, Georgian, Greek, Hebrew, Latin, etc. */
-  readonly script: "arabic" | "cyrillic" | "greek" | "hebrew" | "latin";
+  /** The writing system, such as Cyrillic, Georgian, Greek, Hebrew, Latin, Thai, etc. */
+  readonly script:
+    | "arabic"
+    | "cyrillic"
+    | "greek"
+    | "hebrew"
+    | "latin"
+    | "thai";
   /** The direction of the writing system, either "ltr" for left-to-right, or "rtl" for right-to-left. */
   readonly direction: "ltr" | "rtl";
   /** The list of alphabet code points. */
@@ -176,7 +190,7 @@ export class Language implements EnumItem {
 
   private constructor(
     id: string,
-    script: "arabic" | "cyrillic" | "greek" | "hebrew" | "latin",
+    script: "arabic" | "cyrillic" | "greek" | "hebrew" | "latin" | "thai",
     direction: "ltr" | "rtl",
     alphabet: string,
   ) {
@@ -266,6 +280,8 @@ export class Language implements EnumItem {
           (codePoint >= /* Ā */ 0x0100 && codePoint <= /* ſ */ 0x017f) ||
           (codePoint >= /* ƀ */ 0x0180 && codePoint <= /* ɏ */ 0x024f)
         );
+      case "thai":
+        return codePoint >= /* ก */ 0x0e01 && codePoint <= /* ๙ */ 0x0e59;
       default:
         return false;
     }
@@ -290,6 +306,8 @@ export function getExampleText({ script }: Language): string {
       return "Τρώτε περισσότερα μήλα και πορτοκάλια.";
     case "hebrew":
       return "תאכל יותר תפוחים ותפוזים.";
+    case "thai":
+      return "กินส้มกับแอปเปิลเยอะ ๆ";
     default:
       return "Eat more apples and oranges.";
   }
@@ -307,5 +325,7 @@ export function getExampleLetters({ script }: Language): CodePoint[] {
       return [0x05d0, 0x05d1, 0x05d2, 0x05d3, 0x05d4, 0x05d5];
     case "latin":
       return [0x0061, 0x0062, 0x0063, 0x0064, 0x0065, 0x0066];
+    case "thai":
+      return [0x0e01, 0x0e02, 0x0e04, 0x0e06, 0x0e07, 0x0e08];
   }
 }
