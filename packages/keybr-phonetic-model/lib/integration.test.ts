@@ -1,4 +1,4 @@
-import { getExampleText,Language } from "@keybr/keyboard";
+import { Language } from "@keybr/keyboard";
 import test from "ava";
 import { Filter } from "./filter.ts";
 import { loadModelSync } from "./fs-load.ts";
