@@ -39,6 +39,7 @@ const allLocales = [
   "ro",
   "ru",
   "sv",
+  "th",
   "tr",
   "uk",
   "vi",

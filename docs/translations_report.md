@@ -544,6 +544,12 @@ Untranslated: 7 messages, 7 words
 * *Multiplayer*
 * *Multiplayer*
 
+# Thai
+
+Translated: 431 messages, 5129 words
+
+Untranslated: 0 messages, 0 words
+
 # Turkish
 
 Translated: 267 messages, 1805 words

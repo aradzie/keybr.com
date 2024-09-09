@@ -52,6 +52,7 @@ export const allLocales: readonly LocaleId[] = [
   "ro",
   "ru",
   "sv",
+  "th",
   "tr",
   "uk",
   "vi",

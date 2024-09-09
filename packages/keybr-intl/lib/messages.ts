@@ -33,6 +33,7 @@ export async function loadMessages(locale: LocaleId): Promise<Messages> {
     case "ro": return (await import(/* webpackChunkName: "messages-ro" */ "./messages/ro.json")).default;
     case "ru": return (await import(/* webpackChunkName: "messages-ru" */ "./messages/ru.json")).default;
     case "sv": return (await import(/* webpackChunkName: "messages-sv" */ "./messages/sv.json")).default;
+    case "th": return (await import(/* webpackChunkName: "messages-th" */ "./messages/th.json")).default;
     case "tr": return (await import(/* webpackChunkName: "messages-tr" */ "./messages/tr.json")).default;
     case "uk": return (await import(/* webpackChunkName: "messages-uk" */ "./messages/uk.json")).default;
     case "vi": return (await import(/* webpackChunkName: "messages-vi" */ "./messages/vi.json")).default;
