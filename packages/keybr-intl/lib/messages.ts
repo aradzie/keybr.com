@@ -6,6 +6,7 @@ export async function loadMessages(locale: LocaleId): Promise<Messages> {
   // prettier-ignore
   switch (locale) {
     case "ar": return (await import(/* webpackChunkName: "messages-ar" */ "./messages/ar.json")).default;
+    case "bg": return (await import(/* webpackChunkName: "messages-bg" */ "./messages/bg.json")).default;
     case "ca": return (await import(/* webpackChunkName: "messages-ca" */ "./messages/ca.json")).default;
     case "cs": return (await import(/* webpackChunkName: "messages-cs" */ "./messages/cs.json")).default;
     case "da": return (await import(/* webpackChunkName: "messages-da" */ "./messages/da.json")).default;

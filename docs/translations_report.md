@@ -9,6 +9,12 @@ Untranslated: 4 messages, 26 words
 * *Hide explanations*
 * *Generate typing lessons from the text of a book. All keys ar...*
 
+# Bulgarian
+
+Translated: 431 messages, 5129 words
+
+Untranslated: 0 messages, 0 words
+
 # Catalan
 
 Translated: 401 messages, 3660 words
