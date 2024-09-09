@@ -491,6 +491,34 @@ Untranslated: 12 messages, 40 words
 * *New letter unlocked!*
 * *Generate typing lessons from the text of a book. All keys ar...*
 
+# Romanian
+
+Translated: 384 messages, 3816 words
+
+Untranslated: 36 messages, 1235 words
+
+* *Font:*
+* *Layout*
+* *Layout:*
+* *Layouts*
+* *Translate*
+* *Multiplayer*
+* *Multiplayer*
+* *Forgive errors*
+* *Start in {countDown}*
+* *Learn to type faster.*
+* *Enter full-screen mode.*
+* *Typing speed in the last lesson ({speedUnitName}). The more,...*
+* *Average typing speed in all lessons ({speedUnitName}). The m...*
+* *<h1>Connecting to Server...</h1><p>Establishing connection t...*
+* *<p>The precise meaning of each indicator color is given in t...*
+* *<h1>Kicked out of the Game</h1><p>You were kicked out of the...*
+* *<a>Example 1</a>, from 30 to 70 WPM after 4 hours 20 minutes...*
+* *<a>Example 2</a>, from 35 to 70 WPM after 2 hours and 20 min...*
+* *<p>Thank you for purchasing a premium account! Now you can e...*
+* *<a>Example 3</a>, a decent jump from less than 20 to 40 WPM ...*
+* ...
+
 # Russian
 
 Translated: 427 messages, 5103 words
