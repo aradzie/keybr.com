@@ -1,5 +1,5 @@
 import { Application } from "@fastr/core";
-import cheerio from "cheerio";
+import { load } from "cheerio";
 import { type ElementCompact, xml2js } from "xml-js";
 import { kMain } from "../module.ts";
 import { test } from "../test/context.ts";
@@ -56,7 +56,7 @@ test("load sitemap.xml", async (t) => {
     t.is(response.status, 200);
     t.is(response.headers.get("Content-Type"), "text/html; charset=UTF-8");
 
-    const $ = cheerio.load(await response.body.text());
+    const $ = load(await response.body.text());
     t.is($("script#page-data").length, 1);
     t.is($("main").length, 1);
     t.is($("nav").length, 1);

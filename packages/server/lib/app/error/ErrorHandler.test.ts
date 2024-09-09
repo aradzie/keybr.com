@@ -6,7 +6,7 @@ import { Container } from "@fastr/invert";
 import { Manifest } from "@keybr/assets";
 import { Level, Logger, type Message, type Transport } from "@keybr/logger";
 import test from "ava";
-import cheerio from "cheerio";
+import { load } from "cheerio";
 import { ErrorHandler } from "./index.ts";
 
 test("throw http error", async (t) => {
@@ -29,7 +29,7 @@ test("throw http error", async (t) => {
 
   t.is(status, 403);
   t.is(headers.get("Content-Type"), "text/html; charset=UTF-8");
-  const $ = cheerio.load(await body.text());
+  const $ = load(await body.text());
   t.is($("title").text(), "403 - My message");
   t.is($("h1").text(), "403 - My message");
   t.is($("p").text(), "You cannot access this page.Start over");
@@ -56,7 +56,7 @@ test("set status code", async (t) => {
 
   t.is(status, 400);
   t.is(headers.get("Content-Type"), "text/html; charset=UTF-8");
-  const $ = cheerio.load(await body.text());
+  const $ = load(await body.text());
   t.is($("title").text(), "400 - Bad Request");
   t.is($("h1").text(), "400 - Bad Request");
   t.is(
@@ -139,7 +139,7 @@ test("throw runtime error", async (t) => {
 
   t.is(status, 500);
   t.is(headers.get("Content-Type"), "text/html; charset=UTF-8");
-  const $ = cheerio.load(await body.text());
+  const $ = load(await body.text());
   t.is($("title").text(), "500 - Internal Server Error");
   t.is($("h1").text(), "500 - Internal Server Error");
   t.is(
@@ -170,7 +170,7 @@ test("handle invalid client request", async (t) => {
 
   t.is(status, 500);
   t.is(headers.get("Content-Type"), "text/html; charset=UTF-8");
-  const $ = cheerio.load(await body.text());
+  const $ = load(await body.text());
   t.is($("title").text(), "500 - Internal Server Error");
   t.is($("h1").text(), "500 - Internal Server Error");
   t.is(

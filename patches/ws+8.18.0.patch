@@ -26,10 +26,10 @@ index f7536e2..63bee17 100644
 -  }
 -}
 diff --git a/node_modules/ws/lib/validation.js b/node_modules/ws/lib/validation.js
-index c352e6e..b44c4f7 100644
+index 4a2e68d..276a2f1 100644
 --- a/node_modules/ws/lib/validation.js
 +++ b/node_modules/ws/lib/validation.js
-@@ -117,14 +117,4 @@ if (isUtf8) {
+@@ -139,14 +139,4 @@ if (isUtf8) {
    module.exports.isValidUTF8 = function (buf) {
      return buf.length < 24 ? _isValidUTF8(buf) : isUtf8(buf);
    };

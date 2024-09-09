@@ -2,7 +2,7 @@ import { Manifest, ManifestContext } from "@keybr/assets";
 import { FakeIntlProvider } from "@keybr/intl";
 import { PageDataContext, PageLinkTemplate } from "@keybr/pages-shared";
 import test from "ava";
-import cheerio from "cheerio";
+import { load } from "cheerio";
 import { renderToStaticMarkup } from "react-dom/server";
 import { StandardLayout } from "./StandardLayout.tsx";
 
@@ -53,7 +53,7 @@ test("render", (t) => {
     </ManifestContext.Provider>,
   );
 
-  const $ = cheerio.load(html);
+  const $ = load(html);
 
   t.deepEqual($("html").attr(), {
     "prefix": "og: http://ogp.me/ns#",
@@ -114,7 +114,7 @@ test("render alt", (t) => {
     </ManifestContext.Provider>,
   );
 
-  const $ = cheerio.load(html);
+  const $ = load(html);
 
   t.deepEqual($("html").attr(), {
     "prefix": "og: http://ogp.me/ns#",

@@ -1,6 +1,6 @@
 import { Application } from "@fastr/core";
 import { Cookie } from "@fastr/headers";
-import cheerio from "cheerio";
+import { load } from "cheerio";
 import { kMain } from "../module.ts";
 import { test } from "../test/context.ts";
 import { startApp } from "../test/request.ts";
@@ -41,7 +41,7 @@ for (const url of [
     t.is(response.status, 200);
     t.is(response.headers.get("Content-Type"), "text/html; charset=UTF-8");
 
-    const $ = cheerio.load(await response.body.text());
+    const $ = load(await response.body.text());
     t.is($("script#page-data").length, 1);
     t.is($("main").length, 1);
     t.is($("nav").length, 1);
@@ -71,7 +71,7 @@ test(`load custom theme from cookie`, async (t) => {
   t.is(response.headers.get("Content-Type"), "text/html; charset=UTF-8");
   t.deepEqual(response.headers.getAll("Set-Cookie"), []);
 
-  const $ = cheerio.load(await response.body.text());
+  const $ = load(await response.body.text());
   t.is($("html").attr("data-color"), "dark");
   t.is($("html").attr("data-font"), "spectral");
 });
@@ -96,7 +96,7 @@ test(`ignore invalid theme cookie`, async (t) => {
   t.is(response.headers.get("Content-Type"), "text/html; charset=UTF-8");
   t.deepEqual(response.headers.getAll("Set-Cookie"), []);
 
-  const $ = cheerio.load(await response.body.text());
+  const $ = load(await response.body.text());
   t.is($("html").attr("data-color"), "light");
   t.is($("html").attr("data-font"), "opensans");
 });

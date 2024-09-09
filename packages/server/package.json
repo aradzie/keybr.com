@@ -34,8 +34,8 @@
     "@keybr/result-userdata": "*",
     "@keybr/settings": "*",
     "@keybr/settings-database": "*",
-    "@types/ws": "^8.5.10",
-    "ws": "^8.17.0"
+    "@types/ws": "^8.5.12",
+    "ws": "^8.18.0"
   },
   "devDependencies": {},
   "scripts": {
