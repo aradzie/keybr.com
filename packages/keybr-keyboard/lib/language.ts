@@ -252,6 +252,17 @@ export class Language implements EnumItem {
         codePoint,
       );
     }
+    if (codePoint >= 0x0e00 && codePoint <= 0x0e7f) {
+      // Thai Unicode block.
+      if (
+        codePoint === 0x0e31 ||
+        (codePoint >= 0x0e34 && codePoint <= 0x0e3a) ||
+        (codePoint >= 0x0e47 && codePoint <= 0x0e4e)
+      ) {
+        // Thai combining marks.
+        return String.fromCodePoint(/* ◌ */ 0x25cc, codePoint);
+      }
+    }
     // Locale-specific uppercase variant of a letter.
     // For example in Turkish there are dotted and dotless letter I,
     // each with its own lower and uppercase variant.
@@ -287,7 +298,7 @@ export class Language implements EnumItem {
           (codePoint >= /* ƀ */ 0x0180 && codePoint <= /* ɏ */ 0x024f)
         );
       case "thai":
-        return codePoint >= /* ก */ 0x0e01 && codePoint <= /* ๙ */ 0x0e59;
+        return codePoint >= 0x0e00 && codePoint <= 0x0e7f;
       default:
         return false;
     }
