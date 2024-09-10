@@ -890,6 +890,51 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly TH_TH = new Layout(
+    /* id= */ "th-th",
+    /* xid= */ 0x9a,
+    /* name= */ "Thai Kedmanee",
+    /* family= */ "th-th",
+    /* language= */ Language.TH,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.MATRIX,
+    ),
+  );
+  static readonly TH_PAT = new Layout(
+    /* id= */ "th-th-pat",
+    /* xid= */ 0x9b,
+    /* name= */ "Thai Pattachote",
+    /* family= */ "th-th-pat",
+    /* language= */ Language.TH,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.MATRIX,
+    ),
+  );
+  static readonly TH_MAN = new Layout(
+    /* id= */ "th-th-man",
+    /* xid= */ 0x9c,
+    /* name= */ "Thai Manoonchai V1",
+    /* family= */ "th-th-man",
+    /* language= */ Language.TH,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.MATRIX,
+    ),
+  );
   static readonly RO_RO = new Layout(
     /* id= */ "ro-ro",
     /* xid= */ 0xa0,
@@ -968,6 +1013,9 @@ export class Layout implements XEnumItem {
     Layout.AR_SA_102,
     Layout.FA_IR,
     Layout.FA_IR_LEGACY,
+    Layout.TH_TH,
+    Layout.TH_PAT,
+    Layout.TH_MAN,
     Layout.RO_RO,
   );
 

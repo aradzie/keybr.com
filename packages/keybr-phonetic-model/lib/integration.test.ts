@@ -4,14 +4,22 @@ import { Filter } from "./filter.ts";
 import { loadModelSync } from "./fs-load.ts";
 import { Letter } from "./letter.ts";
 
-const alphabet = /^\u{0020}\p{Letter}+$/u;
-const word = /^\p{Letter}+$/u;
-
 for (const language of Language.ALL) {
   test(`${language.id}`, (t) => {
     const { table, model } = loadModelSync(language);
     const letters = Letter.frequencyOrder(model.letters);
     const { chain } = table;
+
+    let alphabet: RegExp;
+    let word: RegExp;
+    if (language.script === "thai") {
+      // Some Thai vowels are recognize as Mark not Letter.
+      alphabet = /^\u{0020}[\p{Letter}\p{Mark}]+$/u;
+      word = /^[\p{Letter}\p{Mark}]+$/u;
+    } else {
+      alphabet = /^\u{0020}\p{Letter}+$/u;
+      word = /^\p{Letter}+$/u;
+    }
 
     // Check model settings.
     t.regex(String.fromCodePoint(...table.alphabet), alphabet);

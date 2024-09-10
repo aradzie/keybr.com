@@ -13,6 +13,7 @@ unicode_ranges = [
     ("hebrew", "U+0590-05FF"),
     ("latin", "U+0000-00FF, U+2000-206F, U+2200-22FF, U+E000-E003"),
     ("latin-ext", "U+0100-017F, U+0180-024F, U+0300-036F, U+20A0-20CF"),
+    ("thai", "U+0E01-U+0E5B"),
 ]
 
 
