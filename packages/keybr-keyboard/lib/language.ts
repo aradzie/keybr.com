@@ -236,12 +236,12 @@ export class Language implements EnumItem {
       return "ẞ";
     }
     if (codePoint >= 0x0590 && codePoint <= 0x05ff) {
-      // Hebrew unicode block.
+      // Hebrew Unicode block.
       // There are no lower or uppercase letters in the Hebrew script.
       return String.fromCodePoint(codePoint);
     }
     if (codePoint >= 0x0600 && codePoint <= 0x06ff) {
-      // Arabic unicode block.
+      // Arabic Unicode block.
       // There are no lower or uppercase letters in the Arabic script.
       // Arabic script is cursive, which means that the letters
       // change shape when joined together.
@@ -263,8 +263,8 @@ export class Language implements EnumItem {
    * can be a letter of this language.
    */
   includes(codePoint: CodePoint): boolean {
-    // We consider these unicode ranges to contain letters only in a given script.
-    // The ranges were manually built from unicode tables and may not be accurate.
+    // We consider these Unicode ranges to contain letters only in a given script.
+    // The ranges were manually built from Unicode tables and may not be accurate.
     switch (this.script) {
       case "arabic":
         return codePoint >= 0x0600 && codePoint <= 0x06ff;
@@ -275,7 +275,7 @@ export class Language implements EnumItem {
       case "hebrew":
         return codePoint >= 0x0590 && codePoint <= 0x05ff;
       case "latin":
-        // A few unicode blocks of the Latin script to include only
+        // A few Unicode blocks of the Latin script to include only
         // a reasonable list of letter codepoints.
         return (
           (codePoint >= /* A */ 0x0041 && codePoint <= /* Z */ 0x005a) ||
