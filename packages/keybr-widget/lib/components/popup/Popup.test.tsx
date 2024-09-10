@@ -29,7 +29,7 @@ test.serial("anchored", async (t) => {
   const r = render(
     <>
       <Button data-id="button" label="button" />
-      <Popup anchor={"[data-id='button']"}>text</Popup>
+      <Popup anchor="[data-id='button']">text</Popup>
     </>,
   );
 

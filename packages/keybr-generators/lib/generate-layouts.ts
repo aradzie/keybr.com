@@ -72,6 +72,7 @@ for (const [id, dict] of [
   ["pl_pl", importCldr("cldr-keyboards-43.0/keyboards/windows/pl-t-k0-windows-extended.xml")],
   ["pt_br", importCldr("cldr-keyboards-43.0/keyboards/windows/pt-t-k0-windows-var.xml")],
   ["pt_pt", importCldr("cldr-keyboards-43.0/keyboards/windows/pt-PT-t-k0-windows.xml")],
+  ["ro_ro", importCldr("cldr-keyboards-43.0/keyboards/windows/ro-t-k0-windows.xml")],
   ["ru_ru", importCldr("cldr-keyboards-43.0/keyboards/windows/ru-t-k0-windows.xml")],
   ["sl_si", importCldr("cldr-keyboards-43.0/keyboards/windows/sl-t-k0-windows.xml")],
   ["sv_se", importCldr("cldr-keyboards-43.0/keyboards/windows/sv-t-k0-windows.xml")],

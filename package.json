@@ -14,7 +14,7 @@
     "scripts"
   ],
   "scripts": {
-    "postinstall": "husky install && patch-package",
+    "postinstall": "husky && patch-package",
     "check": "node scripts/config-lint.js && node scripts/gen-translations.js",
     "clean": "lage clean --no-cache",
     "compile": "lage compile --no-cache",
@@ -63,23 +63,22 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-intl": "^6.6.8",
-    "tslib": "^2.6.3",
+    "tslib": "^2.7.0",
     "xml-js": "^1.6.11",
     "zod": "^3.23.8"
   },
   "devDependencies": {
     "@formatjs/cli-lib": "^6.4.2",
     "@formatjs/ts-transformer": "^3.13.14",
-    "@testing-library/dom": "^10.1.0",
-    "@testing-library/react": "^16.0.0",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/react": "^16.0.1",
     "@testing-library/user-event": "^14.5.2",
-    "@types/cheerio": "^0.22.35",
-    "@types/node": "^20.14.2",
-    "@types/react": "^18.3.3",
+    "@types/node": "^20.16.5",
+    "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "ava": "^5.3.1",
-    "cheerio": "^1.0.0-rc.12",
+    "cheerio": "^1.0.0",
     "confusing-browser-globals": "^1.0.11",
-    "typescript": "^5.4.5"
+    "typescript": "=5.4.5"
   }
 }

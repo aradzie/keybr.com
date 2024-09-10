@@ -67,6 +67,7 @@ import { LAYOUT_PL_FWYR } from "./layout/pl_fwyr.ts";
 import { LAYOUT_PL_PL } from "./layout/pl_pl.ts";
 import { LAYOUT_PT_BR } from "./layout/pt_br.ts";
 import { LAYOUT_PT_PT } from "./layout/pt_pt.ts";
+import { LAYOUT_RO_RO } from "./layout/ro_ro.ts";
 import { LAYOUT_RU_RU } from "./layout/ru_ru.ts";
 import { LAYOUT_SL_SI } from "./layout/sl_si.ts";
 import { LAYOUT_SV_SE } from "./layout/sv_se.ts";
@@ -135,6 +136,7 @@ const layoutDict = new Map<Layout, CharacterDict>([
   [Layout.PL_PL, LAYOUT_PL_PL],
   [Layout.PT_BR, LAYOUT_PT_BR],
   [Layout.PT_PT, LAYOUT_PT_PT],
+  [Layout.RO_RO, LAYOUT_RO_RO],
   [Layout.RU_RU, LAYOUT_RU_RU],
   [Layout.TH_TH, LAYOUT_TH_TH],
   [Layout.TH_PAT, LAYOUT_TH_TH_PAT],

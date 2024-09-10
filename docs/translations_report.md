@@ -9,6 +9,12 @@ Untranslated: 4 messages, 26 words
 * *Hide explanations*
 * *Generate typing lessons from the text of a book. All keys ar...*
 
+# Bulgarian
+
+Translated: 431 messages, 5129 words
+
+Untranslated: 0 messages, 0 words
+
 # Catalan
 
 Translated: 401 messages, 3660 words
@@ -148,24 +154,10 @@ Untranslated: 333 messages, 4160 words
 
 # Spanish
 
-Translated: 415 messages, 4518 words
+Translated: 429 messages, 4943 words
 
-Untranslated: 16 messages, 611 words
+Untranslated: 2 messages, 186 words
 
-* *Explain charts*
-* *Jumping cursor*
-* *Bar whitespace*
-* *Hide explanations*
-* *Bullet whitespace*
-* *Adjust the number of words in the lesson text. Making lesson...*
-* *Show color coding of the keyboard zones. Use this option to ...*
-* *Use this option if you have a hardware layout switcher on yo...*
-* *Adjust the amount of capital letters added to the lesson tex...*
-* *Keyboard emulation ignores the keyboard layout configured in...*
-* *Adjust the amount of basic punctuation characters added to t...*
-* *When you focus on a new key, it is very likely that the spee...*
-* *Use the dictionary words as much as possible, and if not man...*
-* *The target speed is used to measure the confidence level and...*
 * *<p>This indicator shows details about the letter with increa...*
 * *<h1>Keyboard Layouts</h1><p>These charts visualize the effic...*
 
@@ -219,9 +211,9 @@ Untranslated: 57 messages, 2105 words
 
 # French
 
-Translated: 394 messages, 4471 words
+Translated: 413 messages, 4740 words
 
-Untranslated: 37 messages, 658 words
+Untranslated: 18 messages, 389 words
 
 * *Not set*
 * *Options*
@@ -229,48 +221,45 @@ Untranslated: 37 messages, 658 words
 * *Position*
 * *Translate*
 * *Alphabet:*
-* *Box cursor*
-* *Line cursor*
-* *Block cursor*
-* *Smooth cursor*
-* *Explain charts*
-* *Jumping cursor*
-* *Bar whitespace*
 * *Accuracy Streaks*
-* *Underline cursor*
 * *Explain settings*
 * *Hide explanations*
-* *Hide explanations*
-* *Error Sounds Only*
-* *Bullet whitespace*
-* ...
+* *Unlock a next key only when:*
+* *Sort letters in the order of keyboard keys*
+* *The previous keys are also above the target speed*
+* *You don’t have any accuracy streaks. Consider completing a l...*
+* *Repeat each word two times. Type a word for the first time t...*
+* *Above are listed the longest continuous sequences of lessons...*
+* *When you focus on a new key, it is very likely that the spee...*
+* *The target speed is used to measure the confidence level and...*
+* *Sort letters in such a way that the letters from the home ro...*
 
 # Hebrew
 
-Translated: 406 messages, 4720 words
+Translated: 410 messages, 4756 words
 
-Untranslated: 25 messages, 409 words
+Untranslated: 21 messages, 373 words
 
 * *Alphabet:*
 * *Box cursor*
 * *Line cursor*
 * *Block cursor*
 * *Smooth cursor*
-* *Explain charts*
 * *Jumping cursor*
 * *Highlight keys*
 * *Bar whitespace*
 * *Underline cursor*
-* *Hide explanations*
 * *Bullet whitespace*
 * *Keyboard hardware emulates layout*
 * *Generate lessons that resemble the specified programming lan...*
-* *Practice punctuation characters that are specific to a progr...*
 * *Adjust the number of words in the lesson text. Making lesson...*
 * *Show color coding of the keyboard zones. Use this option to ...*
-* *Generate typing lessons from the text of a book. All keys ar...*
 * *Highlight a key that must to be pressed next. Use this optio...*
 * *Use this option if you have a hardware layout switcher on yo...*
+* *Manually unlock the remaining letters. Use this option if wa...*
+* *Adjust the amount of capital letters added to the lesson tex...*
+* *Keyboard emulation ignores the keyboard layout configured in...*
+* *Adjust the amount of basic punctuation characters added to t...*
 * ...
 
 # Croatian
@@ -318,45 +307,43 @@ Untranslated: 62 messages, 998 words
 
 # Indonesian
 
-Translated: 181 messages, 1384 words
+Translated: 268 messages, 1978 words
 
-Untranslated: 235 messages, 3646 words
+Untranslated: 154 messages, 3069 words
 
 * *GO!*
-* *Done*
-* *Next*
-* *Books*
 * *Font:*
 * *Reset*
-* *Close*
-* *Errors*
 * *Typing*
-* *Not set*
-* *Options*
+* *Metrics*
 * *Preview*
 * *Volume:*
 * *Syntax:*
-* *Lessons*
 * *Keyboard*
 * *Chapters*
-* *Previous*
 * *Translate*
+* *Top speed*
 * *Alphabet:*
+* *No Sounds*
+* *Top speed!*
+* *Box cursor*
+* *All Sounds*
+* *Characters*
+* *Source Code*
+* *Multiplayer*
 * ...
 
 # Italian
 
-Translated: 423 messages, 5118 words
+Translated: 425 messages, 5122 words
 
-Untranslated: 7 messages, 9 words
+Untranslated: 5 messages, 5 words
 
 * *Font:*
 * *Layout*
 * *Layout:*
 * *Layouts*
 * *Volume:*
-* *Explain charts*
-* *Hide explanations*
 
 # Japanese
 
@@ -504,6 +491,34 @@ Untranslated: 12 messages, 40 words
 * *New letter unlocked!*
 * *Generate typing lessons from the text of a book. All keys ar...*
 
+# Romanian
+
+Translated: 384 messages, 3816 words
+
+Untranslated: 36 messages, 1235 words
+
+* *Font:*
+* *Layout*
+* *Layout:*
+* *Layouts*
+* *Translate*
+* *Multiplayer*
+* *Multiplayer*
+* *Forgive errors*
+* *Start in {countDown}*
+* *Learn to type faster.*
+* *Enter full-screen mode.*
+* *Typing speed in the last lesson ({speedUnitName}). The more,...*
+* *Average typing speed in all lessons ({speedUnitName}). The m...*
+* *<h1>Connecting to Server...</h1><p>Establishing connection t...*
+* *<p>The precise meaning of each indicator color is given in t...*
+* *<h1>Kicked out of the Game</h1><p>You were kicked out of the...*
+* *<a>Example 1</a>, from 30 to 70 WPM after 4 hours 20 minutes...*
+* *<a>Example 2</a>, from 35 to 70 WPM after 2 hours and 20 min...*
+* *<p>Thank you for purchasing a premium account! Now you can e...*
+* *<a>Example 3</a>, a decent jump from less than 20 to 40 WPM ...*
+* ...
+
 # Russian
 
 Translated: 427 messages, 5103 words
@@ -517,37 +532,29 @@ Untranslated: 4 messages, 26 words
 
 # Swedish
 
-Translated: 389 messages, 4692 words
+Translated: 424 messages, 5122 words
 
-Untranslated: 42 messages, 437 words
+Untranslated: 7 messages, 7 words
 
-* *Books*
 * *Font:*
 * *Layout*
 * *Layout:*
 * *Layouts*
-* *Volume:*
 * *Syntax:*
-* *Alphabet:*
-* *Language:*
-* *No Sounds*
-* *Box cursor*
-* *All Sounds*
-* *Source Code*
 * *Multiplayer*
 * *Multiplayer*
-* *Line cursor*
-* *Block cursor*
-* *Smooth cursor*
-* *No whitespace*
-* *Explain charts*
-* ...
+
+# Thai
+
+Translated: 431 messages, 5129 words
+
+Untranslated: 0 messages, 0 words
 
 # Turkish
 
-Translated: 264 messages, 1729 words
+Translated: 267 messages, 1805 words
 
-Untranslated: 156 messages, 3313 words
+Untranslated: 153 messages, 3237 words
 
 * *Help*
 * *Help*
@@ -582,30 +589,30 @@ Untranslated: 2 messages, 4 words
 
 # Vietnamese
 
-Translated: 237 messages, 1415 words
+Translated: 344 messages, 2215 words
 
-Untranslated: 177 messages, 3598 words
+Untranslated: 82 messages, 2858 words
 
-* *Help*
-* *Help*
-* *Score*
 * *Visit*
 * *Typing*
-* *Metrics*
-* *Sign-In*
-* *Layouts*
-* *Profile*
-* *Not set*
-* *Progress*
-* *Practice*
-* *Start Date*
-* *My Profile*
-* *Speed Test*
 * *Box cursor*
-* *High Scores*
-* *Multiplayer*
-* *Multiplayer*
-* *Typing Test*
+* *Line cursor*
+* *Block cursor*
+* *Unique words*
+* *M|T|W|T|F|S|S*
+* *Smooth cursor*
+* *Jumping cursor*
+* *Underline cursor*
+* *Relative Typing Speed*
+* *Key Frequency Heatmap*
+* *Key Frequency Histogram*
+* *Key Typing Speed Histogram*
+* *Keyboard hardware emulates layout*
+* *Show a guided tour with help slides.*
+* *Switch the current interface layout.*
+* *How close you are to unlocking this key.*
+* *This chart shows relative key frequencies.*
+* *Sort letters in the order of keyboard keys*
 * ...
 
 # Simplified Chinese

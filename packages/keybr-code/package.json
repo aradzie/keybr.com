@@ -10,7 +10,7 @@
     "@keybr/unicode": "*"
   },
   "devDependencies": {
-    "peggy": "^4.0.2"
+    "peggy": "^4.0.3"
   },
   "scripts": {
     "clean": "rm -fr .types",

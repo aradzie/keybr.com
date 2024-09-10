@@ -1,6 +1,6 @@
 import { Application } from "@fastr/core";
 import { User, UserLoginRequest } from "@keybr/database";
-import cheerio from "cheerio";
+import { load } from "cheerio";
 import { kMain } from "../module.ts";
 import { test } from "../test/context.ts";
 import { startApp } from "../test/request.ts";
@@ -220,7 +220,7 @@ test.serial("ignore invalid access token", async (t) => {
 
   t.is(response.status, 403);
 
-  const $ = cheerio.load(await response.body.text());
+  const $ = load(await response.body.text());
   t.true($("body").text().includes("Invalid login link"));
 
   t.is(await request.who(), null);
