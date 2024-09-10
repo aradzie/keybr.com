@@ -1,54 +1,96 @@
-import { test } from "node:test";
+import { describe, it, test } from "node:test";
 import { Layout } from "@keybr/keyboard";
 import { Histogram } from "@keybr/textinput";
 import { assert } from "chai";
 import { Result, speedToTime, timeToSpeed } from "./result.ts";
 import { TextType } from "./texttype.ts";
 
-test("validate", () => {
-  assert.isFalse(
-    new Result(
-      /* layout= */ Layout.EN_US,
-      /* textType= */ TextType.GENERATED,
-      /* timeStamp= */ Date.parse("2001-02-03T03:05:06Z"),
-      /* length= */ 9,
-      /* time= */ 999,
-      /* errors= */ 0,
-      /* histogram= */ new Histogram([]),
-    ).validate(),
+describe("validate", () => {
+  const result = new Result(
+    /* layout= */ Layout.EN_US,
+    /* textType= */ TextType.GENERATED,
+    /* timeStamp= */ Date.parse("2001-02-03T03:05:06Z"),
+    /* length= */ 10,
+    /* time= */ 1000,
+    /* errors= */ 0,
+    /* histogram= */ new Histogram([
+      { codePoint: 0x0061, hitCount: 11, missCount: 1, timeToType: 111 },
+      { codePoint: 0x0062, hitCount: 22, missCount: 2, timeToType: 222 },
+      { codePoint: 0x0063, hitCount: 33, missCount: 3, timeToType: 333 },
+    ]),
   );
 
-  assert.isFalse(
-    new Result(
-      /* layout= */ Layout.EN_US,
-      /* textType= */ TextType.GENERATED,
-      /* timeStamp= */ Date.parse("2001-02-03T03:05:06Z"),
-      /* length= */ 9,
-      /* time= */ 999,
-      /* errors= */ 0,
-      /* histogram= */ new Histogram([
-        { codePoint: 0x0061, hitCount: 11, missCount: 1, timeToType: 111 },
-        { codePoint: 0x0062, hitCount: 22, missCount: 2, timeToType: 222 },
-        { codePoint: 0x0063, hitCount: 33, missCount: 3, timeToType: 333 },
-      ]),
-    ).validate(),
-  );
+  describe("using the default filter", () => {
+    it("should accept a valid result", () => {
+      assert.isTrue(result.validate());
+      assert.isTrue(result.validate({}));
+      assert.isTrue(result.validate(Result.filter));
+    });
 
-  assert.isTrue(
-    new Result(
-      /* layout= */ Layout.EN_US,
-      /* textType= */ TextType.GENERATED,
-      /* timeStamp= */ Date.parse("2001-02-03T03:05:06Z"),
-      /* length= */ 10,
-      /* time= */ 1000,
-      /* errors= */ 0,
-      /* histogram= */ new Histogram([
-        { codePoint: 0x0061, hitCount: 11, missCount: 1, timeToType: 111 },
-        { codePoint: 0x0062, hitCount: 22, missCount: 2, timeToType: 222 },
-        { codePoint: 0x0063, hitCount: 33, missCount: 3, timeToType: 333 },
-      ]),
-    ).validate(),
-  );
+    it("should reject if the length is too short", () => {
+      assert.isFalse(
+        new Result(
+          /* layout= */ result.layout,
+          /* textType= */ result.textType,
+          /* timeStamp= */ result.timeStamp,
+          /* length= */ 9,
+          /* time= */ result.time,
+          /* errors= */ result.errors,
+          /* histogram= */ result.histogram,
+        ).validate(),
+      );
+    });
+
+    it("should reject if the time is too short", () => {
+      assert.isFalse(
+        new Result(
+          /* layout= */ result.layout,
+          /* textType= */ result.textType,
+          /* timeStamp= */ result.timeStamp,
+          /* length= */ result.length,
+          /* time= */ 999,
+          /* errors= */ result.errors,
+          /* histogram= */ result.histogram,
+        ).validate(),
+      );
+    });
+
+    it("should reject if the complexity is too small", () => {
+      assert.isFalse(
+        new Result(
+          /* layout= */ result.layout,
+          /* textType= */ result.textType,
+          /* timeStamp= */ result.timeStamp,
+          /* length= */ result.length,
+          /* time= */ result.time,
+          /* errors= */ result.errors,
+          /* histogram= */ new Histogram([]),
+        ).validate(),
+      );
+    });
+  });
+
+  describe("using a custom filter", () => {
+    it("should reject if the length is too short", () => {
+      assert.isFalse(result.validate({ minLength: 100 }));
+    });
+
+    it("should reject if the time is too short", () => {
+      assert.isFalse(result.validate({ minTime: 60000 }));
+    });
+
+    it("should reject if the complexity is too small", () => {
+      assert.isFalse(result.validate({ minComplexity: 10 }));
+    });
+
+    it("should reject if the speed is too slow", () => {
+      assert.isFalse(result.validate({ minSpeed: 1000 }));
+    });
+
+    it("should reject if the speed is too fast", () => {
+      assert.isFalse(result.validate({ maxSpeed: 1 }));
+    });
+  });
 });
 
 test("serialize as JSON", () => {

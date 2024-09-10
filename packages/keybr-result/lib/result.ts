@@ -2,7 +2,23 @@ import { type Layout } from "@keybr/keyboard";
 import { type Histogram, type Stats } from "@keybr/textinput";
 import { type TextType } from "./texttype.ts";
 
+export type Filter = {
+  readonly minLength: number;
+  readonly minTime: number;
+  readonly minComplexity: number;
+  readonly minSpeed: number;
+  readonly maxSpeed: number;
+};
+
 export class Result {
+  static readonly filter = {
+    minLength: 10,
+    minTime: 1000,
+    minComplexity: 1,
+    minSpeed: 1,
+    maxSpeed: Infinity,
+  } as const satisfies Filter;
+
   static fromStats(
     layout: Layout,
     textType: TextType,
@@ -51,8 +67,21 @@ export class Result {
     this.score = score;
   }
 
-  validate(): boolean {
-    return this.length >= 10 && this.time >= 1000 && this.histogram.validate();
+  validate({
+    minLength = Result.filter.minLength,
+    minTime = Result.filter.minTime,
+    minComplexity = Result.filter.minComplexity,
+    minSpeed = Result.filter.minSpeed,
+    maxSpeed = Result.filter.maxSpeed,
+  }: Partial<Filter> = {}): boolean {
+    return (
+      this.length >= minLength &&
+      this.time >= minTime &&
+      this.complexity >= minComplexity &&
+      this.speed >= minSpeed &&
+      this.speed <= maxSpeed &&
+      this.histogram.validate()
+    );
   }
 
   toJSON() {

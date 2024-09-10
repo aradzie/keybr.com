@@ -1,8 +1,9 @@
 import { injectable } from "@fastr/invert";
 import { PublicId } from "@keybr/publicid";
+import { Result } from "@keybr/result";
 import { UserDataFactory } from "@keybr/result-userdata";
 import { Argument, Command, Option } from "commander";
-import { parseTimestamp, parseUserIdRange } from "./argument.ts";
+import { parseSpeed, parseTimestamp, parseUserIdRange } from "./argument.ts";
 import { checkFile } from "./check-file.ts";
 import { fixFile } from "./fix-file.ts";
 import { fstat } from "./fstat.ts";
@@ -15,13 +16,25 @@ export class StatsCommand {
   command() {
     return new Command("check-stats")
       .description("Check and fix user stats.")
-      .addOption(new Option("--fix", "Fix damaged user stats."))
+      .addOption(
+        new Option(
+          "--min-speed <speed>",
+          "Minimal allowed result speed, inclusive.",
+        ).argParser(parseSpeed),
+      )
+      .addOption(
+        new Option(
+          "--max-speed <speed>",
+          "Maximal allowed result speed, inclusive.",
+        ).argParser(parseSpeed),
+      )
       .addOption(
         new Option(
           "--since <timestamp>",
           "Check only files modified since the given timestamp.",
         ).argParser(parseTimestamp),
       )
+      .addOption(new Option("--fix", "Fix damaged user stats."))
       .addOption(new Option("--verbose", "Show more diagnostic messages."))
       .addArgument(
         new Argument(
@@ -35,12 +48,16 @@ export class StatsCommand {
   async action(
     range: UserIdRange,
     {
-      fix = false,
+      minSpeed = Result.filter.minSpeed,
+      maxSpeed = Result.filter.maxSpeed,
       since = new Date(0),
+      fix = false,
       verbose = false,
     }: {
-      readonly fix?: boolean;
+      readonly minSpeed?: number;
+      readonly maxSpeed?: number;
       readonly since?: Date;
+      readonly fix?: boolean;
       readonly verbose?: boolean;
     },
   ) {
@@ -70,7 +87,7 @@ export class StatsCommand {
         continue;
       }
 
-      const status = checkFile(await file.read());
+      const status = checkFile(await file.read(), { minSpeed, maxSpeed });
       switch (status.type) {
         case "good": {
           const { results } = status;

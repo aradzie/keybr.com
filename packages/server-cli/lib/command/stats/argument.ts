@@ -1,10 +1,11 @@
+import { SpeedUnit } from "@keybr/result";
 import { InvalidArgumentError } from "commander";
 import { parseISO, parseJSON } from "date-fns";
 import { UserIdRange, type UserIdRangeItem } from "./userid-range.ts";
 
-export function parseUserIdRange(value: string): UserIdRange {
+export function parseUserIdRange(arg: string): UserIdRange {
   const items: UserIdRangeItem[] = [];
-  for (const item of value.split(/,/)) {
+  for (const item of arg.split(/,/)) {
     const parts = item.split(/-/, 2);
     if (parts.length === 1) {
       const n = parseUserId(parts[0]);
@@ -21,23 +22,33 @@ export function parseUserIdRange(value: string): UserIdRange {
   return new UserIdRange(items);
 }
 
-function parseUserId(s: string): number {
-  const n = Number.parseInt(s, 10);
+function parseUserId(arg: string): number {
+  const n = Number.parseInt(arg, 10);
   if (!Number.isInteger(n) || n <= 0 || n >= 0xffffffff) {
     throw new InvalidArgumentError(`Invalid user id.`);
   }
   return n;
 }
 
-export function parseTimestamp(value: string): Date {
+export function parseTimestamp(arg: string): Date {
   let date;
-  date = parseJSON(value);
-  if (Number.isFinite(date.getTime())) {
+  if (Number.isFinite((date = parseJSON(arg)).getTime())) {
     return date;
   }
-  date = parseISO(value);
-  if (Number.isFinite(date.getTime())) {
+  if (Number.isFinite((date = parseISO(arg)).getTime())) {
     return date;
   }
   throw new InvalidArgumentError(`Invalid timestamp.`);
+}
+
+export function parseSpeed(arg: string): number {
+  const m = /^(?<value>[0-9]+)(?<unit>wpm|cpm)?$/.exec(arg);
+  if (m) {
+    const { value, unit } = m.groups!;
+    const { factor } = (
+      { wpm: SpeedUnit.WPM, cpm: SpeedUnit.CPM } as Record<string, SpeedUnit>
+    )[unit || "wpm"];
+    return Number.parseInt(value, 10) / factor;
+  }
+  throw new InvalidArgumentError(`Invalid speed.`);
 }

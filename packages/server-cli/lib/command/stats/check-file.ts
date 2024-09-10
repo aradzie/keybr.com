@@ -1,5 +1,5 @@
 import { Reader } from "@keybr/binary";
-import { type Result } from "@keybr/result";
+import { type Filter, type Result } from "@keybr/result";
 import { readResult, validateHeader } from "@keybr/result-io";
 
 export type FileStatus =
@@ -16,11 +16,11 @@ export type FileStatus =
       readonly results: readonly Result[];
     };
 
-export function checkFile(buffer: Uint8Array): FileStatus {
-  return checkFile0(new Reader(buffer));
-}
-
-function checkFile0(reader: Reader): FileStatus {
+export function checkFile(
+  buffer: Uint8Array,
+  filter: Partial<Filter> = {},
+): FileStatus {
+  const reader = new Reader(buffer);
   const results: Result[] = [];
   const invalid: Result[] = [];
   if (!validateHeader(reader)) {
@@ -33,14 +33,13 @@ function checkFile0(reader: Reader): FileStatus {
     } catch {
       return { type: "bad", results, invalid };
     }
-    if (result.validate()) {
+    if (result.validate(filter)) {
       results.push(result);
     } else {
       invalid.push(result);
     }
   }
-  if (results.length === 0 || invalid.length > 0) {
-    return { type: "bad", results, invalid };
-  }
-  return { type: "good", results };
+  return results.length === 0 || invalid.length > 0
+    ? { type: "bad", results, invalid }
+    : { type: "good", results };
 }
