@@ -894,7 +894,7 @@ export class Layout implements XEnumItem {
     /* id= */ "th-th",
     /* xid= */ 0x9a,
     /* name= */ "Thai Kedmanee",
-    /* family= */ "qwerty",
+    /* family= */ "th-th",
     /* language= */ Language.TH,
     /* emulate= */ true,
     /* geometries= */ new Enum(
@@ -906,10 +906,10 @@ export class Layout implements XEnumItem {
     ),
   );
   static readonly TH_PAT = new Layout(
-    /* id= */ "th-pat",
+    /* id= */ "th-th-pat",
     /* xid= */ 0x9b,
     /* name= */ "Thai Pattachote",
-    /* family= */ "qwerty",
+    /* family= */ "th-th-pat",
     /* language= */ Language.TH,
     /* emulate= */ true,
     /* geometries= */ new Enum(
@@ -921,10 +921,10 @@ export class Layout implements XEnumItem {
     ),
   );
   static readonly TH_MAN = new Layout(
-    /* id= */ "th-man",
+    /* id= */ "th-th-man",
     /* xid= */ 0x9c,
     /* name= */ "Thai Manoonchai V1",
-    /* family= */ "qwerty",
+    /* family= */ "th-th-man",
     /* language= */ Language.TH,
     /* emulate= */ true,
     /* geometries= */ new Enum(
@@ -937,7 +937,7 @@ export class Layout implements XEnumItem {
   );
   static readonly RO_RO = new Layout(
     /* id= */ "ro-ro",
-    /* xid= */ 0x9d,
+    /* xid= */ 0xa0,
     /* name= */ "{RO}",
     /* family= */ "qwerty",
     /* language= */ Language.RO,
