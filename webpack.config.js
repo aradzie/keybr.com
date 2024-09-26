@@ -206,11 +206,6 @@ module.exports = [
       minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
       splitChunks: {
         cacheGroups: {
-          polyfills: {
-            test: /\/@formatjs\/intl-segmenter\//,
-            chunks: "all",
-            name: "polyfills",
-          },
           vendor: {
             test: isVendor(["tslib", "@mdi"]),
             chunks: "all",
