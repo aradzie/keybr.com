@@ -1,8 +1,8 @@
 import { FakeIntlProvider } from "@keybr/intl";
 import { fireEvent, render } from "@testing-library/react";
 import test from "ava";
+import { type SignInActions } from "./actions.ts";
 import { EmailLoginForm } from "./EmailLoginForm.tsx";
-import { type SignInActions } from "./types.ts";
 
 test.serial("success", async (t) => {
   const r = render(

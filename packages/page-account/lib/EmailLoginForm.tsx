@@ -11,7 +11,7 @@ import {
 import { mdiRepeat, mdiSend } from "@mdi/js";
 import { type ReactNode, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { type SignInActions } from "./types.ts";
+import { type SignInActions } from "./actions.ts";
 
 export function EmailLoginForm({
   actions,

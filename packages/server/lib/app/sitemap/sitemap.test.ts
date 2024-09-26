@@ -58,7 +58,6 @@ test("load sitemap.xml", async (t) => {
 
     const $ = load(await response.body.text());
     t.is($("script#page-data").length, 1);
-    t.is($("main").length, 1);
-    t.is($("nav").length, 1);
+    t.is($("#root").length, 1);
   }
 });

@@ -3,12 +3,22 @@ import { PublicId } from "@keybr/publicid";
 import { ResultFaker } from "@keybr/result";
 import { formatMessage } from "@keybr/result-io";
 import { UserDataFactory } from "@keybr/result-userdata";
+import { fake } from "@keybr/test-env-time";
 import { kMain } from "../module.ts";
 import { test } from "../test/context.ts";
 import { startApp } from "../test/request.ts";
 import { findUser } from "../test/sql.ts";
 
-const faker = new ResultFaker();
+const now = new Date("2001-02-03T04:05:06Z");
+
+test.beforeEach(() => {
+  fake.date.set(now);
+});
+test.afterEach(() => {
+  fake.date.reset();
+});
+
+const faker = new ResultFaker({ timeStamp: now.getTime() });
 const invalidBody = formatMessage([faker.nextResult({ length: 0, time: 0 })]);
 const validBody = formatMessage([faker.nextResult()]);
 const garbageBody = Buffer.from("garbage");

@@ -1,5 +1,6 @@
-import { PageLink, Sitemap } from "@keybr/pages-shared";
+import { Pages } from "@keybr/pages-shared";
 import { type ReactNode } from "react";
+import { Link } from "react-router-dom";
 
 export function ExampleLink({
   index,
@@ -9,16 +10,11 @@ export function ExampleLink({
   readonly children: ReactNode;
 }): ReactNode {
   return (
-    <PageLink
-      link={Sitemap.publicProfile.bind({
-        id: `example${index}`,
-        name: `Example User ${index}`,
-        imageUrl: null,
-        premium: false,
-      })}
-      target={`profile/example${index}`}
+    <Link
+      to={Pages.profileOf(`example${index}`)}
+      target={`example-profile-${index}`}
     >
-      {() => children}
-    </PageLink>
+      {children}
+    </Link>
   );
 }

@@ -2,15 +2,15 @@ import { Article, Header } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { AccountName } from "./AccountName.tsx";
+import { type SignInActions } from "./actions.ts";
 import { EmailLoginForm } from "./EmailLoginForm.tsx";
 import { FreeAccountOverview } from "./FreeAccountOverview.tsx";
 import { OAuthLoginForm } from "./OAuthLoginForm.tsx";
-import { type SignInActions } from "./types.ts";
 
 export function SignInSection({
-  actions = {} as SignInActions,
+  actions,
 }: {
-  readonly actions?: SignInActions;
+  readonly actions: SignInActions;
 }): ReactNode {
   const { formatMessage } = useIntl();
 

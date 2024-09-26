@@ -1,17 +1,17 @@
 import { clsx } from "clsx";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
+import { Link } from "react-router-dom";
 import { Avatar } from "./Avatar.tsx";
-import { type BoundPageLink, PageLink } from "./pagelink.tsx";
 import { type AnyUser } from "./types.ts";
 import * as styles from "./UserName.module.less";
 
 export function UserName({
   user,
-  link,
+  path,
 }: {
   readonly user: AnyUser;
-  readonly link?: BoundPageLink<any> | null;
+  readonly path?: string | null;
 }): ReactNode {
   const { formatMessage } = useIntl();
   const { id, name } = user;
@@ -28,13 +28,13 @@ export function UserName({
       }
     >
       <Avatar user={user} size="medium" className={styles.avatar} />
-      {link != null ? (
-        <PageLink
-          link={link}
+      {path != null ? (
+        <Link
+          to={path}
           className={clsx(styles.name, id == null && styles.anonymous)}
         >
-          {() => name}
-        </PageLink>
+          {name}
+        </Link>
       ) : (
         <span className={clsx(styles.name, id == null && styles.anonymous)}>
           {name}

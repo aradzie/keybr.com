@@ -2,10 +2,10 @@
   "private": true,
   "name": "@keybr/styles",
   "version": "0.0.0",
+  "main": "lib/index.ts",
+  "types": ".types/index.d.ts",
   "dependencies": {
-    "@keybr/fonts": "*",
-    "@keybr/pages-server": "*",
-    "@keybr/pages-shared": "*"
+    "@keybr/fonts": "*"
   },
   "devDependencies": {},
   "scripts": {

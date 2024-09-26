@@ -2,18 +2,47 @@
   "private": true,
   "name": "@keybr/pages-browser",
   "version": "0.0.0",
-  "main": "lib/index.ts",
-  "types": ".types/index.d.ts",
   "dependencies": {
     "@keybr/debug": "*",
     "@keybr/intl": "*",
+    "@keybr/keyboard": "*",
     "@keybr/lnf": "*",
+    "@keybr/page-account": "*",
+    "@keybr/page-help": "*",
+    "@keybr/page-highscores": "*",
+    "@keybr/page-layouts": "*",
+    "@keybr/page-multiplayer": "*",
+    "@keybr/page-practice": "*",
+    "@keybr/page-profile": "*",
+    "@keybr/page-static": "*",
+    "@keybr/page-typing-test": "*",
+    "@keybr/page-word-count": "*",
     "@keybr/pages-shared": "*",
+    "@keybr/request": "*",
+    "@keybr/result-loader": "*",
+    "@keybr/settings-loader": "*",
+    "@keybr/styles": "*",
+    "@keybr/thirdparties": "*",
     "@keybr/widget": "*"
   },
   "devDependencies": {},
   "scripts": {
     "clean": "rm -fr .types",
-    "compile": "tsc"
+    "compile": "tsc",
+    "test": "ava"
+  },
+  "ava": {
+    "extensions": [
+      "ts",
+      "tsx"
+    ],
+    "files": [
+      "lib/**/*.test.*"
+    ],
+    "require": [
+      "@keybr/tsl",
+      "@keybr/test-env-browser",
+      "@keybr/test-env-bundler"
+    ]
   }
 }

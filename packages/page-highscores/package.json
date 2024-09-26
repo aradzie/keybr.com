@@ -5,13 +5,8 @@
   "main": "lib/index.ts",
   "types": ".types/index.d.ts",
   "dependencies": {
-    "@keybr/config": "*",
-    "@keybr/database": "*",
-    "@keybr/highscores": "*",
     "@keybr/intl": "*",
     "@keybr/keyboard": "*",
-    "@keybr/pages-browser": "*",
-    "@keybr/pages-server": "*",
     "@keybr/pages-shared": "*",
     "@keybr/result": "*",
     "@keybr/widget": "*"
@@ -32,7 +27,6 @@
     ],
     "require": [
       "@keybr/tsl",
-      "@keybr/test-env-server",
       "@keybr/test-env-browser",
       "@keybr/test-env-bundler"
     ]

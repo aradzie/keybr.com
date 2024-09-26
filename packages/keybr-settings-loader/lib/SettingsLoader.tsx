@@ -7,13 +7,15 @@ import { openSettingsStorage } from "./internal/storage.ts";
 
 export function SettingsLoader({
   children,
+  fallback = <LoadingProgress />,
 }: {
   readonly children: ReactNode;
+  readonly fallback?: ReactNode;
 }): ReactNode {
   const storage = useSettingsStorage();
   const settings = useLoader(storage);
   if (settings == null) {
-    return <LoadingProgress total={0} current={0} />;
+    return fallback;
   } else {
     return (
       <SettingsProvider storage={storage} initialSettings={settings}>

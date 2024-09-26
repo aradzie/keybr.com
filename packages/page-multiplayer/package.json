@@ -5,12 +5,7 @@
   "main": "lib/index.ts",
   "types": ".types/index.d.ts",
   "dependencies": {
-    "@keybr/keyboard": "*",
-    "@keybr/multiplayer-ui": "*",
-    "@keybr/pages-browser": "*",
-    "@keybr/pages-server": "*",
-    "@keybr/pages-shared": "*",
-    "@keybr/settings-loader": "*"
+    "@keybr/multiplayer-ui": "*"
   },
   "devDependencies": {},
   "scripts": {

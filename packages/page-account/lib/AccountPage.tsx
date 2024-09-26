@@ -1,30 +1,33 @@
-import { StandardLayout } from "@keybr/pages-server";
-import { Sitemap, usePageData } from "@keybr/pages-shared";
+import {
+  type AnyUser,
+  usePageData,
+  type UserDetails,
+} from "@keybr/pages-shared";
 import { type ReactNode } from "react";
-import { useIntl } from "react-intl";
 import { AccountSection } from "./AccountSection.tsx";
+import { useAccountActions, useSignInActions } from "./actions.ts";
 import { SignInSection } from "./SignInSection.tsx";
 
 export function AccountPage(): ReactNode {
-  const intl = useIntl();
   const { user, publicUser } = usePageData();
-  const pageLink = Sitemap.accountLink(publicUser);
-  const { name, title } = pageLink.format(intl);
+  if (user != null) {
+    return <AccountSectionWithActions user={user} publicUser={publicUser} />;
+  } else {
+    return <SignInSectionWithActions />;
+  }
+}
 
+function AccountSectionWithActions(props: {
+  readonly user: UserDetails;
+  readonly publicUser: AnyUser;
+}): ReactNode {
+  const { user, publicUser, actions } = useAccountActions(props);
   return (
-    <StandardLayout
-      pageMeta={{
-        pageLink: pageLink,
-        title: name,
-        description: title,
-        entrypoint: "page-account",
-      }}
-    >
-      {user != null ? (
-        <AccountSection user={user} publicUser={publicUser} />
-      ) : (
-        <SignInSection />
-      )}
-    </StandardLayout>
+    <AccountSection user={user} publicUser={publicUser} actions={actions} />
   );
+}
+
+function SignInSectionWithActions(): ReactNode {
+  const { actions } = useSignInActions();
+  return <SignInSection actions={actions} />;
 }

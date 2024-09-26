@@ -1,20 +1,22 @@
 import { FakeIntlProvider } from "@keybr/intl";
 import { render } from "@testing-library/react";
 import test from "ava";
-import { Sitemap } from "./sitemap.ts";
-import { type AnonymousUser, type NamedUser } from "./types.ts";
+import { MemoryRouter } from "react-router";
 import { UserName } from "./UserName.tsx";
 
 test.serial("render anonymous user", (t) => {
-  const user: AnonymousUser = {
-    id: null,
-    name: "somebody",
-    imageUrl: null,
-  };
-
   const r = render(
     <FakeIntlProvider>
-      <UserName user={user} link={Sitemap.accountLink(user)} />
+      <MemoryRouter>
+        <UserName
+          user={{
+            id: null,
+            name: "somebody",
+            imageUrl: null,
+          }}
+          path="/account"
+        />
+      </MemoryRouter>
     </FakeIntlProvider>,
   );
 
@@ -24,16 +26,19 @@ test.serial("render anonymous user", (t) => {
 });
 
 test.serial("render named user", (t) => {
-  const user: NamedUser = {
-    id: "abc",
-    name: "somebody",
-    imageUrl: null,
-    premium: false,
-  };
-
   const r = render(
     <FakeIntlProvider>
-      <UserName user={user} link={Sitemap.accountLink(user)} />
+      <MemoryRouter>
+        <UserName
+          user={{
+            id: "abc",
+            name: "somebody",
+            imageUrl: null,
+            premium: false,
+          }}
+          path="/account"
+        />
+      </MemoryRouter>
     </FakeIntlProvider>,
   );
 

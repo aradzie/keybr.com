@@ -1,17 +1,13 @@
 import { useIntlNumbers } from "@keybr/intl";
 import { useFormattedNames } from "@keybr/keyboard";
-import { Sitemap, UserName } from "@keybr/pages-shared";
+import { Pages, UserName } from "@keybr/pages-shared";
 import { SpeedUnit } from "@keybr/result";
 import { type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
 import * as styles from "./HighScoresTable.module.less";
-import { type HighScoresEntry } from "./model.ts";
+import { type EntriesProps } from "./types.ts";
 
-export function HighScoresTable({
-  entries,
-}: {
-  readonly entries: readonly HighScoresEntry[];
-}): ReactNode {
+export function HighScoresTable({ entries }: EntriesProps): ReactNode {
   const { formatNumber } = useIntlNumbers();
   const { formatFullLayoutName } = useFormattedNames();
   const { WPM, CPM } = SpeedUnit;
@@ -48,10 +44,6 @@ export function HighScoresTable({
       </thead>
       <tbody>
         {entries.map(({ user, layout, speed, score }, index) => {
-          let link = null;
-          if (user.id != null) {
-            link = Sitemap.publicProfile.bind(user);
-          }
           const wpm = formatNumber(WPM.measure(speed), 0);
           const cpm = formatNumber(CPM.measure(speed), 0);
           const speedCol = `${wpm}${WPM.id} / ${cpm}${CPM.id}`;
@@ -60,7 +52,7 @@ export function HighScoresTable({
             <tr key={index}>
               <td className={styles.positionColumn}>{index + 1}</td>
               <td className={styles.userColumn}>
-                <UserName user={user} link={link} />
+                <UserName user={user} path={Pages.profileOf(user)} />
               </td>
               <td className={styles.layoutColumn}>
                 {formatFullLayoutName(layout)}

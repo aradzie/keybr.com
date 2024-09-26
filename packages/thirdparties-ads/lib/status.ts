@@ -4,17 +4,15 @@ export function showAdBlockerStatus(enabled: boolean): void {
   const placeholders = findElements(`.${placeholder}`);
   if (enabled) {
     for (const elem of placeholders) {
-      elem.style.visibility = "hidden";
+      elem.hidden = true;
       elem.innerHTML = "";
     }
   } else {
     for (const elem of placeholders) {
-      elem.style.visibility = "visible";
+      elem.hidden = false;
       elem.innerHTML =
-        "<div>" +
         "Please disable your ad-blocker or purchase " +
-        "a <a href='/account'>premium account</a> to remove ads!" +
-        "</div>";
+        "a <a href='/account'>premium account</a> to remove ads!";
     }
   }
 }

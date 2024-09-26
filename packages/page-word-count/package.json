@@ -6,9 +6,6 @@
   "types": ".types/index.d.ts",
   "dependencies": {
     "@keybr/intl": "*",
-    "@keybr/pages-browser": "*",
-    "@keybr/pages-server": "*",
-    "@keybr/pages-shared": "*",
     "@keybr/unicode": "*",
     "@keybr/widget": "*"
   },

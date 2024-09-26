@@ -2,7 +2,7 @@ import { controller, http } from "@fastr/controller";
 import { Context } from "@fastr/core";
 import { inject, injectable } from "@fastr/invert";
 import { allLocales, defaultLocale } from "@keybr/intl";
-import { Sitemap } from "@keybr/pages-shared";
+import { Pages } from "@keybr/pages-shared";
 import { js2xml } from "xml-js";
 
 @injectable()
@@ -27,7 +27,15 @@ export function generateSitemapXml(canonicalUrl: string): any {
   };
   const sortedLocales = [...new Set([defaultLocale, ...allLocales])];
   const url: unknown[] = [];
-  for (const link of Sitemap.sitemapLinks) {
+  for (const page of [
+    Pages.practice,
+    Pages.help,
+    Pages.highScores,
+    Pages.layouts,
+    Pages.multiplayer,
+    Pages.typingTest,
+    Pages.wordCount,
+  ]) {
     for (const locale of sortedLocales) {
       const alternate: any[] = [];
       for (const alternateLocale of sortedLocales) {
@@ -35,12 +43,12 @@ export function generateSitemapXml(canonicalUrl: string): any {
           _attributes: {
             rel: "alternate",
             hreflang: alternateLocale,
-            href: makeUrl(link.bind(null).formatPath(alternateLocale)),
+            href: makeUrl(Pages.intlPath(page.path, alternateLocale)),
           },
         });
       }
       url.push({
-        "loc": { _text: makeUrl(link.bind(null).formatPath(locale)) },
+        "loc": { _text: makeUrl(Pages.intlPath(page.path, locale)) },
         "xhtml:link": alternate,
       });
     }

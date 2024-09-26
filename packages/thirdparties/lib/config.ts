@@ -1,5 +1,5 @@
 /*
- * These constants are filled in at build time by the bundler
+ * The bundler fills in these constants at build time
  * with the values taken from an `env` file.
  */
 

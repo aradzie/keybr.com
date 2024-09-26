@@ -1,0 +1,67 @@
+.body {
+  display: grid;
+  grid-template-areas:
+    "topbar topbar topbar"
+    "sidebar main nav";
+  grid-template-rows: auto 1fr;
+  grid-template-columns: auto 1fr auto;
+  min-block-size: 100vb;
+}
+
+.bodyAlt {
+  display: grid;
+  grid-template-areas: ". main nav";
+  grid-template-rows: 1fr;
+  grid-template-columns: 12rem 1fr auto;
+  min-block-size: 100vb;
+}
+
+.main {
+  z-index: 1;
+  grid-area: main;
+}
+
+.mainAlt {
+  z-index: 1;
+  grid-area: main;
+}
+
+.nav {
+  grid-area: nav;
+  margin: 0;
+  padding-inline: 1rem;
+  padding-block: 1rem;
+}
+
+.navAlt {
+  grid-area: nav;
+  margin: 0;
+  padding-inline: 1rem;
+  padding-block: 1rem;
+}
+
+.topbar {
+  display: flex;
+  grid-area: topbar;
+  align-items: start;
+  justify-content: center;
+  box-sizing: content-box;
+  block-size: 90px;
+  margin: 0;
+  padding-inline: 1rem;
+  padding-block: 1rem;
+  contain: strict;
+}
+
+.sidebar {
+  display: flex;
+  grid-area: sidebar;
+  align-items: start;
+  justify-content: center;
+  box-sizing: content-box;
+  inline-size: 160px;
+  margin: 0;
+  padding-inline: 1rem;
+  padding-block: 1rem;
+  contain: strict;
+}

@@ -3,31 +3,18 @@ import { Context } from "@fastr/core";
 import { inject, injectable } from "@fastr/invert";
 import { CanonicalHandler } from "@fastr/middleware-canonical";
 import { type RouterState } from "@fastr/middleware-router";
-import { preloadLinks } from "@keybr/assets";
-import { HighScoresFactory } from "@keybr/highscores";
 import { defaultLocale, loadIntl, PreferredLocaleContext } from "@keybr/intl";
 import { ThemeContext, type ThemeControl, ThemePrefs } from "@keybr/lnf";
-import { AccountPage } from "@keybr/page-account";
-import { HelpPage } from "@keybr/page-help";
-import { HighScoresPage, mapHighScoresEntries } from "@keybr/page-highscores";
-import { LayoutsPage } from "@keybr/page-layouts";
-import { MultiplayerPage } from "@keybr/page-multiplayer";
-import { PracticePage } from "@keybr/page-practice";
-import { ProfilePage, PublicProfilePage } from "@keybr/page-profile";
-import { PrivacyPolicyPage, TermsOfServicePage } from "@keybr/page-static";
-import { TypingTestPage } from "@keybr/page-typing-test";
-import { WordCountPage } from "@keybr/page-word-count";
-import { View } from "@keybr/pages-server";
+import { Shell, View } from "@keybr/pages-server";
 import {
-  type NamedUser,
+  LoadingProgress,
   type PageData,
   PageDataContext,
-  type PageDataExtra,
+  Pages,
 } from "@keybr/pages-shared";
 import { SettingsDatabase } from "@keybr/settings-database";
-import { type ReactElement } from "react";
 import { type IntlShape, RawIntlProvider } from "react-intl";
-import { type AuthState, pProfileOwner } from "../auth/index.ts";
+import { type AuthState } from "../auth/index.ts";
 import { localePattern, pIntl, preferredLocale } from "./intl.ts";
 
 @injectable()
@@ -37,216 +24,168 @@ export class Controller {
   constructor(
     @inject("canonicalUrl") readonly canonicalUrl: string,
     readonly view: View,
-    readonly highScores: HighScoresFactory,
     readonly database: SettingsDatabase,
   ) {}
 
   @http.GET("/")
   async ["index"](ctx: Context<RouterState & AuthState>) {
-    const intl = await loadIntl(defaultLocale);
-    const pageData = await this.pageData(ctx, intl);
-    return this.renderPage(ctx, intl, pageData, <PracticePage />);
+    return this.renderPage(ctx, Pages.practice);
   }
 
-  @http.GET(`/{locale:${localePattern}}/index`)
+  @http.GET(`/{locale:${localePattern}}`)
   async ["index-i18n"](
     ctx: Context<RouterState & AuthState>,
     @pathParam("locale", pIntl) intl: IntlShape,
   ) {
-    const pageData = await this.pageData(ctx, intl);
-    return this.renderPage(ctx, intl, pageData, <PracticePage />);
+    return this.renderPage(ctx, Pages.practice, intl);
   }
 
-  @http.GET("/account")
+  @http.GET(`${Pages.account.path}`)
   async ["account"](ctx: Context<RouterState & AuthState>) {
-    const intl = await loadIntl(defaultLocale);
-    const pageData = await this.pageData(ctx, intl);
-    return this.renderPage(ctx, intl, pageData, <AccountPage />);
+    return this.renderPage(ctx, Pages.account);
   }
 
-  @http.GET(`/{locale:${localePattern}}/account`)
+  @http.GET(`/{locale:${localePattern}}${Pages.account.path}`)
   async ["account-i18n"](
     ctx: Context<RouterState & AuthState>,
     @pathParam("locale", pIntl) intl: IntlShape,
   ) {
-    const pageData = await this.pageData(ctx, intl);
-    return this.renderPage(ctx, intl, pageData, <AccountPage />);
+    return this.renderPage(ctx, Pages.account, intl);
   }
 
-  @http.GET("/profile")
+  @http.GET(`${Pages.profile.path}`)
   async ["profile"](ctx: Context<RouterState & AuthState>) {
-    const intl = await loadIntl(defaultLocale);
-    const pageData = await this.pageData(ctx, intl);
-    return this.renderPage(ctx, intl, pageData, <ProfilePage />);
+    return this.renderPage(ctx, Pages.profile);
   }
 
-  @http.GET(`/{locale:${localePattern}}/profile`)
+  @http.GET(`/{locale:${localePattern}}${Pages.profile.path}`)
   async ["profile-i18n"](
     ctx: Context<RouterState & AuthState>,
     @pathParam("locale", pIntl) intl: IntlShape,
   ) {
-    const pageData = await this.pageData(ctx, intl);
-    return this.renderPage(ctx, intl, pageData, <ProfilePage />);
+    return this.renderPage(ctx, Pages.profile, intl);
   }
 
-  @http.GET("/profile/{publicId:[a-zA-Z0-9]+}")
-  async ["public-profile"](
-    ctx: Context<RouterState & AuthState>,
-    @pathParam("publicId", pProfileOwner) profileOwner: NamedUser,
-  ) {
-    const intl = await loadIntl(defaultLocale);
-    const pageData = await this.pageData(ctx, intl, { profileOwner });
-    return this.renderPage(ctx, intl, pageData, <PublicProfilePage />);
+  @http.GET(`${Pages.profile.path}/{id:[a-zA-Z0-9]+}`)
+  async ["public-profile"](ctx: Context<RouterState & AuthState>) {
+    return this.renderPage(ctx, Pages.profile);
   }
 
-  @http.GET(`/{locale:${localePattern}}/profile/{publicId:[a-zA-Z0-9]+}`)
+  @http.GET(`/{locale:${localePattern}}${Pages.profile.path}/{id:[a-zA-Z0-9]+}`)
   async ["public-profile-i18n"](
     ctx: Context<RouterState & AuthState>,
-    @pathParam("publicId", pProfileOwner) profileOwner: NamedUser,
     @pathParam("locale", pIntl) intl: IntlShape,
   ) {
-    const pageData = await this.pageData(ctx, intl, { profileOwner });
-    return this.renderPage(ctx, intl, pageData, <PublicProfilePage />);
+    return this.renderPage(ctx, Pages.profile, intl);
   }
 
-  @http.GET("/help")
+  @http.GET(`${Pages.help.path}`)
   async ["help"](ctx: Context<RouterState & AuthState>) {
-    const intl = await loadIntl(defaultLocale);
-    const pageData = await this.pageData(ctx, intl);
-    return this.renderPage(ctx, intl, pageData, <HelpPage />);
+    return this.renderPage(ctx, Pages.help);
   }
 
-  @http.GET(`/{locale:${localePattern}}/help`)
+  @http.GET(`/{locale:${localePattern}}${Pages.help.path}`)
   async ["help-i18n"](
     ctx: Context<RouterState & AuthState>,
     @pathParam("locale", pIntl) intl: IntlShape,
   ) {
-    const pageData = await this.pageData(ctx, intl);
-    return this.renderPage(ctx, intl, pageData, <HelpPage />);
+    return this.renderPage(ctx, Pages.help, intl);
   }
 
-  @http.GET("/high-scores")
+  @http.GET(`${Pages.highScores.path}`)
   async ["high-scores"](ctx: Context<RouterState & AuthState>) {
-    const intl = await loadIntl(defaultLocale);
-    const pageData = await this.pageData(ctx, intl);
-    const highScores = await this.highScores.load();
-    const entries = await mapHighScoresEntries([...highScores]);
-    const element = <HighScoresPage entries={entries} />;
-    return this.renderPage(ctx, intl, pageData, element);
+    return this.renderPage(ctx, Pages.highScores);
   }
 
-  @http.GET(`/{locale:${localePattern}}/high-scores`)
+  @http.GET(`/{locale:${localePattern}}${Pages.highScores.path}`)
   async ["high-scores-18n"](
     ctx: Context<RouterState & AuthState>,
     @pathParam("locale", pIntl) intl: IntlShape,
   ) {
-    const pageData = await this.pageData(ctx, intl);
-    const highScores = await this.highScores.load();
-    const entries = await mapHighScoresEntries([...highScores]);
-    const element = <HighScoresPage entries={entries} />;
-    return this.renderPage(ctx, intl, pageData, element);
+    return this.renderPage(ctx, Pages.highScores, intl);
   }
 
-  @http.GET("/layouts")
+  @http.GET(`${Pages.layouts.path}`)
   async ["layouts"](ctx: Context<RouterState & AuthState>) {
-    const intl = await loadIntl(defaultLocale);
-    const pageData = await this.pageData(ctx, intl);
-    return this.renderPage(ctx, intl, pageData, <LayoutsPage />);
+    return this.renderPage(ctx, Pages.layouts);
   }
 
-  @http.GET(`/{locale:${localePattern}}/layouts`)
+  @http.GET(`/{locale:${localePattern}}${Pages.layouts.path}`)
   async ["layouts-i18n"](
     ctx: Context<RouterState & AuthState>,
     @pathParam("locale", pIntl) intl: IntlShape,
   ) {
-    const pageData = await this.pageData(ctx, intl);
-    return this.renderPage(ctx, intl, pageData, <LayoutsPage />);
+    return this.renderPage(ctx, Pages.layouts, intl);
   }
 
-  @http.GET("/typing-test")
+  @http.GET(`${Pages.typingTest.path}`)
   async ["typing-test"](ctx: Context<RouterState & AuthState>) {
-    const intl = await loadIntl(defaultLocale);
-    const pageData = await this.pageData(ctx, intl);
-    return this.renderPage(ctx, intl, pageData, <TypingTestPage />);
+    return this.renderPage(ctx, Pages.typingTest);
   }
 
-  @http.GET(`/{locale:${localePattern}}/typing-test`)
+  @http.GET(`/{locale:${localePattern}}${Pages.typingTest.path}`)
   async ["typing-test-i18n"](
     ctx: Context<RouterState & AuthState>,
     @pathParam("locale", pIntl) intl: IntlShape,
   ) {
-    const pageData = await this.pageData(ctx, intl);
-    return this.renderPage(ctx, intl, pageData, <TypingTestPage />);
+    return this.renderPage(ctx, Pages.typingTest, intl);
   }
 
-  @http.GET("/multiplayer")
+  @http.GET(`${Pages.multiplayer.path}`)
   async ["multiplayer"](ctx: Context<RouterState & AuthState>) {
-    const intl = await loadIntl(defaultLocale);
-    const pageData = await this.pageData(ctx, intl);
-    return this.renderPage(ctx, intl, pageData, <MultiplayerPage />);
+    return this.renderPage(ctx, Pages.multiplayer);
   }
 
-  @http.GET(`/{locale:${localePattern}}/multiplayer`)
+  @http.GET(`/{locale:${localePattern}}${Pages.multiplayer.path}`)
   async ["multiplayer-i18n"](
     ctx: Context<RouterState & AuthState>,
     @pathParam("locale", pIntl) intl: IntlShape,
   ) {
-    const pageData = await this.pageData(ctx, intl);
-    return this.renderPage(ctx, intl, pageData, <MultiplayerPage />);
+    return this.renderPage(ctx, Pages.multiplayer, intl);
   }
 
-  @http.GET("/word-count")
+  @http.GET(`${Pages.wordCount.path}`)
   async ["word-count"](ctx: Context<RouterState & AuthState>) {
-    const intl = await loadIntl(defaultLocale);
-    const pageData = await this.pageData(ctx, intl);
-    return this.renderPage(ctx, intl, pageData, <WordCountPage />);
+    return this.renderPage(ctx, Pages.wordCount);
   }
 
-  @http.GET(`/{locale:${localePattern}}/word-count`)
+  @http.GET(`/{locale:${localePattern}}${Pages.wordCount.path}`)
   async ["word-count-i18n"](
     ctx: Context<RouterState & AuthState>,
     @pathParam("locale", pIntl) intl: IntlShape,
   ) {
-    const pageData = await this.pageData(ctx, intl);
-    return this.renderPage(ctx, intl, pageData, <WordCountPage />);
+    return this.renderPage(ctx, Pages.wordCount, intl);
   }
 
-  @http.GET("/terms-of-service")
+  @http.GET(`${Pages.termsOfService.path}`)
   async ["terms-of-service"](ctx: Context<RouterState & AuthState>) {
-    const intl = await loadIntl(defaultLocale);
-    const pageData = await this.pageData(ctx, intl);
-    return this.renderPage(ctx, intl, pageData, <TermsOfServicePage />);
+    return this.renderPage(ctx, Pages.termsOfService);
   }
 
-  @http.GET(`/{locale:${localePattern}}/terms-of-service`)
+  @http.GET(`/{locale:${localePattern}}${Pages.termsOfService.path}`)
   async ["terms-of-service-i18n"](
     ctx: Context<RouterState & AuthState>,
     @pathParam("locale", pIntl) intl: IntlShape,
   ) {
-    const pageData = await this.pageData(ctx, intl);
-    return this.renderPage(ctx, intl, pageData, <TermsOfServicePage />);
+    return this.renderPage(ctx, Pages.termsOfService, intl);
   }
 
-  @http.GET("/privacy-policy")
+  @http.GET(`${Pages.privacyPolicy.path}`)
   async ["privacy-policy"](ctx: Context<RouterState & AuthState>) {
-    const intl = await loadIntl(defaultLocale);
-    const pageData = await this.pageData(ctx, intl);
-    return this.renderPage(ctx, intl, pageData, <PrivacyPolicyPage />);
+    return this.renderPage(ctx, Pages.privacyPolicy);
   }
 
-  @http.GET(`/{locale:${localePattern}}/privacy-policy`)
+  @http.GET(`/{locale:${localePattern}}${Pages.privacyPolicy.path}`)
   async ["privacy-policy-i18n"](
     ctx: Context<RouterState & AuthState>,
     @pathParam("locale", pIntl) intl: IntlShape,
   ) {
-    const pageData = await this.pageData(ctx, intl);
-    return this.renderPage(ctx, intl, pageData, <PrivacyPolicyPage />);
+    return this.renderPage(ctx, Pages.privacyPolicy, intl);
   }
 
   async pageData(
     ctx: Context<RouterState & AuthState>,
     { locale }: IntlShape,
-    extra: PageDataExtra = {},
   ): Promise<PageData> {
     const { user, publicUser } = ctx.state;
     const settings = user != null ? await this.database.get(user.id!) : null;
@@ -257,21 +196,23 @@ export class Controller {
       publicUser,
       settings: settings?.toJSON() ?? null,
       prefs: themePrefs(ctx),
-      extra,
     };
   }
 
   async renderPage(
     ctx: Context<RouterState & AuthState>,
-    intl: IntlShape,
-    pageData: PageData,
-    element: ReactElement,
+    meta: Pages.Meta,
+    intl: IntlShape | null = null,
   ): Promise<string> {
+    if (intl == null) {
+      intl = await loadIntl(defaultLocale);
+    }
+
+    const pageData = await this.pageData(ctx, intl);
+
     ctx.response.type = "text/html";
 
-    for (const preloadLink of preloadLinks) {
-      ctx.response.headers.append("Link", this.view.preloadHeader(preloadLink));
-    }
+    ctx.response.headers.append("Link", this.view.preloadHeaders());
 
     return this.view.renderPage(
       <RawIntlProvider value={intl}>
@@ -280,7 +221,9 @@ export class Controller {
             <ThemeContext.Provider
               value={themeControl(new ThemePrefs(pageData.prefs))}
             >
-              {element}
+              <Shell meta={meta}>
+                <LoadingProgress />
+              </Shell>
             </ThemeContext.Provider>
           </PageDataContext.Provider>
         </PreferredLocaleContext.Provider>

@@ -1,4 +1,4 @@
-import { type ReactNode } from "react";
+import { memo, type ReactNode } from "react";
 import * as styles from "./styles.ts";
 
 export const slot1 = "keybr_728x90_970x90_ATF";
@@ -37,7 +37,7 @@ export function SetupAds({
   );
 }
 
-export function AdBanner({
+export const AdBanner = memo(function AdBanner({
   name,
 }: {
   readonly name: "BANNER_160X600_1" | "BANNER_970X90_1";
@@ -47,10 +47,8 @@ export function AdBanner({
     return (
       <div
         style={{
-          position: "relative",
           width: `${width}px`,
           height: `${height}px`,
-          contain: "strict",
           background: "#999",
         }}
       />
@@ -59,17 +57,17 @@ export function AdBanner({
   const html = `freestar.queue.push(function(){googletag.display("${id}");});`;
   return (
     <div
+      key={name}
       style={{
-        position: "relative",
-        width: `${width}px`,
-        height: `${height}px`,
-        contain: "strict",
+        maxWidth: `${width}px`,
+        maxHeight: `${height}px`,
+        overflow: "hidden",
       }}
     >
-      <div className={styles.placeholder} />
+      <div className={styles.placeholder} hidden={true} />
       <div id={id}>
         <script dangerouslySetInnerHTML={{ __html: html }} />
       </div>
     </div>
   );
-}
+});

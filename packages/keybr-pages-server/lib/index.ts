@@ -1,4 +1,3 @@
 export * from "./ErrorPage.tsx";
-export * from "./StandardLayout.tsx";
-export * from "./types.ts";
+export * from "./Shell.tsx";
 export * from "./view.tsx";

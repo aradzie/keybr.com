@@ -1,5 +1,4 @@
 import { fakeAdapter, Recorder } from "@fastr/fetch";
-import { type PageData, PageDataContext } from "@keybr/pages-shared";
 import { ResultFaker, useResults } from "@keybr/result";
 import { formatFile } from "@keybr/result-io";
 import { render, waitFor } from "@testing-library/react";
@@ -33,10 +32,16 @@ test.serial("load results", async (t) => {
   // Act.
 
   const r = render(
-    <PublicResultLoader>
+    <PublicResultLoader
+      user={{
+        id: "abc",
+        name: "somebody",
+        imageUrl: null,
+        premium: false,
+      }}
+    >
       <TestClient />
     </PublicResultLoader>,
-    { wrapper: ProfileOwner },
   );
 
   await waitFor(() => r.getByTitle("count"));
@@ -50,20 +55,6 @@ test.serial("load results", async (t) => {
 
   r.unmount();
 });
-
-function ProfileOwner({
-  children,
-}: {
-  readonly children: ReactNode;
-}): ReactNode {
-  return (
-    <PageDataContext.Provider
-      value={{ extra: { profileOwner: { id: "abc" } } } as PageData}
-    >
-      {children}
-    </PageDataContext.Provider>
-  );
-}
 
 function TestClient(): ReactNode {
   const { results, appendResults, clearResults } = useResults();

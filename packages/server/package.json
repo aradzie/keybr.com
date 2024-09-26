@@ -2,8 +2,6 @@
   "private": true,
   "name": "@keybr/server",
   "version": "0.0.0",
-  "main": "lib/index.ts",
-  "types": ".types/index.d.ts",
   "dependencies": {
     "@devoxa/paddle-sdk": "^0.4.2",
     "@keybr/assets": "*",
@@ -16,16 +14,6 @@
     "@keybr/multiplayer-server": "*",
     "@keybr/multiplayer-shared": "*",
     "@keybr/oauth": "*",
-    "@keybr/page-account": "*",
-    "@keybr/page-help": "*",
-    "@keybr/page-highscores": "*",
-    "@keybr/page-layouts": "*",
-    "@keybr/page-multiplayer": "*",
-    "@keybr/page-practice": "*",
-    "@keybr/page-profile": "*",
-    "@keybr/page-static": "*",
-    "@keybr/page-typing-test": "*",
-    "@keybr/page-word-count": "*",
     "@keybr/pages-server": "*",
     "@keybr/pages-shared": "*",
     "@keybr/publicid": "*",
@@ -37,7 +25,9 @@
     "@types/ws": "^8.5.12",
     "ws": "^8.18.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@keybr/test-env-time": "*"
+  },
   "scripts": {
     "clean": "rm -fr .types",
     "compile": "tsc",

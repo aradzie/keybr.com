@@ -9,18 +9,18 @@ import { mdiCreditCard, mdiDeleteForever, mdiExitToApp } from "@mdi/js";
 import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { AccountName } from "./AccountName.tsx";
+import { type AccountActions } from "./actions.ts";
 import { FreeAccountOverview } from "./FreeAccountOverview.tsx";
 import { PremiumAccountOverview } from "./PremiumAccountOverview.tsx";
-import { type AccountActions } from "./types.ts";
 
 export function AccountSection({
   user,
   publicUser,
-  actions = {} as AccountActions,
+  actions,
 }: {
   readonly user: UserDetails;
   readonly publicUser: AnyUser;
-  readonly actions?: AccountActions;
+  readonly actions: AccountActions;
 }): ReactNode {
   const { formatMessage } = useIntl();
 

@@ -1,28 +1,42 @@
-import { StandardLayout } from "@keybr/pages-server";
-import { LoadingProgress, Sitemap } from "@keybr/pages-shared";
-import { type ReactNode } from "react";
-import { useIntl } from "react-intl";
+import { KeyboardOptions, Layout } from "@keybr/keyboard";
+import { Settings, useSettings } from "@keybr/settings";
+import { type ReactNode, useState } from "react";
+import { PracticeScreen } from "./practice/PracticeScreen.tsx";
+import { SettingsScreen } from "./settings/SettingsScreen.tsx";
+
+setDefaultLayout(window.navigator.language);
+
+function setDefaultLayout(localeId: string): void {
+  const layout = Layout.findLayout(localeId);
+  if (layout != null) {
+    Settings.addDefaults(
+      KeyboardOptions.default()
+        .withLanguage(layout.language)
+        .withLayout(layout)
+        .save(new Settings()),
+    );
+  }
+}
 
 export function PracticePage(): ReactNode {
-  const { formatMessage } = useIntl();
-
-  return (
-    <StandardLayout
-      pageMeta={{
-        pageLink: Sitemap.practice.bind(null),
-        title: formatMessage({
-          id: "page.practice.title",
-          defaultMessage: "Typing Practice",
-        }),
-        description: formatMessage({
-          id: "page.practice.description",
-          defaultMessage:
-            "Take a typing test, practice typing lessons, learn to type faster.",
-        }),
-        entrypoint: "page-practice",
-      }}
-    >
-      <LoadingProgress current={0} total={0} />
-    </StandardLayout>
-  );
+  const { updateSettings } = useSettings();
+  const [configure, setConfigure] = useState(false);
+  if (configure) {
+    return (
+      <SettingsScreen
+        onSubmit={(newSettings) => {
+          updateSettings(newSettings);
+          setConfigure(false);
+        }}
+      />
+    );
+  } else {
+    return (
+      <PracticeScreen
+        onConfigure={() => {
+          setConfigure(true);
+        }}
+      />
+    );
+  }
 }

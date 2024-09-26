@@ -34,7 +34,7 @@ export class ApplicationModule implements Module {
     @inject("publicDir") publicDir: string,
   ): Application {
     return new Application(container, { behindProxy: true })
-      .use(ErrorHandler) //
+      .use(ErrorHandler)
       .use(conditional())
       .use(compress())
       .use(staticFiles(publicDir, { cacheControl }))
@@ -46,7 +46,7 @@ export class ApplicationModule implements Module {
   @provides({ id: Application, name: kGame, singleton: true })
   provideGame(container: Container): Application {
     return new Application(container, { behindProxy: true })
-      .use(ErrorHandler) //
+      .use(ErrorHandler)
       .use(SessionHandler)
       .use(loadUser())
       .use(gameRoutes());

@@ -1,6 +1,6 @@
 import { type ReactNode } from "react";
 import { useManifest } from "./context.ts";
-import { type FavIconLink, type Link } from "./types.ts";
+import { type FavIconLink } from "./types.ts";
 
 export function StylesheetAssets({
   entrypoint,
@@ -22,34 +22,16 @@ export function ScriptAssets({
   return scripts.map((script) => <script key={script.src} {...script} />);
 }
 
-const favIconLinks: readonly FavIconLink[] = [
-  {
-    href: "/assets/favicon-16x16.png",
-    rel: "icon",
-    type: "image/png",
-    sizes: "16x16",
-  },
-  {
-    href: "/assets/favicon-32x32.png",
-    rel: "icon",
-    type: "image/png",
-    sizes: "32x32",
-  },
-  {
-    href: "/assets/favicon-96x96.png",
-    rel: "icon",
-    type: "image/png",
-    sizes: "96x96",
-  },
-];
-
-export function FavIconAssets(): ReactNode {
+export function FavIconAssets({
+  links,
+}: {
+  readonly links: readonly FavIconLink[];
+}): ReactNode {
   const manifest = useManifest();
-  const links = favIconLinks.map(
-    ({ href, ...rest }: Link): Link => ({
+  return links
+    .map(({ href, ...rest }) => ({
       href: manifest.assetPath(href),
       ...rest,
-    }),
-  );
-  return links.map((link) => <link key={link.href} {...link} />);
+    }))
+    .map((link) => <link key={link.href} {...link} />);
 }

@@ -21,7 +21,7 @@ import { type ReactNode, useEffect, useState } from "react";
 
 export function LessonLoader({
   children,
-  fallback = <LoadingProgress total={0} current={0} />,
+  fallback = <LoadingProgress />,
 }: {
   readonly children: (result: Lesson) => ReactNode;
   readonly fallback?: ReactNode;

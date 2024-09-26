@@ -107,8 +107,8 @@ module.exports = [
     mode,
     context: __dirname,
     entry: {
-      index: "./packages/server/lib/index.ts",
-      keybr: "./packages/server-cli/lib/index.ts",
+      index: "./packages/server/lib/main.ts",
+      keybr: "./packages/server-cli/lib/main.ts",
     },
     output: {
       path: join(__dirname, "root", "lib"),
@@ -169,19 +169,9 @@ module.exports = [
     mode,
     context: __dirname,
     entry: {
-      "styles-bundle": "./packages/keybr-styles/lib/index.ts",
-      "page-account": "./packages/page-account/lib/entry.tsx",
-      "page-help": "./packages/page-help/lib/entry.tsx",
-      "page-highscores": "./packages/page-highscores/lib/entry.tsx",
-      "page-layouts": "./packages/page-layouts/lib/entry.tsx",
-      "page-multiplayer": "./packages/page-multiplayer/lib/entry.tsx",
-      "page-practice": "./packages/page-practice/lib/entry.tsx",
-      "page-profile": "./packages/page-profile/lib/entry.tsx",
-      "page-static": "./packages/page-static/lib/entry.tsx",
-      "page-typing-test": "./packages/page-typing-test/lib/entry.tsx",
-      "page-word-count": "./packages/page-word-count/lib/entry.tsx",
-      "assets": "./packages/keybr-assets/lib/entry.ts",
-      "ads": "./packages/thirdparties-ads/lib/entry.ts",
+      browser: "./packages/keybr-pages-browser/lib/entry.ts",
+      server: "./packages/keybr-pages-server/lib/entry.ts",
+      ads: "./packages/thirdparties-ads/lib/entry.ts",
     },
     output: {
       path: join(__dirname, "root/public/assets"),

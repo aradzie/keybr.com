@@ -11,7 +11,7 @@ import { loaderImpl } from "./loader.ts";
 export function PhoneticModelLoader({
   language,
   children,
-  fallback = <LoadingProgress total={0} current={0} />,
+  fallback = <LoadingProgress />,
 }: {
   readonly language: Language;
   readonly children: (result: PhoneticModel) => ReactNode;

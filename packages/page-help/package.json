@@ -10,8 +10,6 @@
     "@keybr/keyboard-ui": "*",
     "@keybr/lesson": "*",
     "@keybr/lesson-ui": "*",
-    "@keybr/pages-browser": "*",
-    "@keybr/pages-server": "*",
     "@keybr/pages-shared": "*",
     "@keybr/phonetic-model": "*",
     "@keybr/textinput": "*",

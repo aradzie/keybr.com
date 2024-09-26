@@ -19,10 +19,10 @@ export class Controller {
     readonly userData: UserDataFactory,
   ) {}
 
-  @http.GET("/_/sync/data/{publicId:[a-zA-Z0-9]+}")
+  @http.GET("/_/sync/data/{id:[a-zA-Z0-9]+}")
   async getPublicData(
     ctx: Context<RouterState & AuthState>,
-    @pathParam("publicId", pProfileOwner) profileOwner: NamedUser,
+    @pathParam("id", pProfileOwner) profileOwner: NamedUser,
   ) {
     const { id } = profileOwner;
     await this.userData.load(PublicId.of(id)).serve(ctx);

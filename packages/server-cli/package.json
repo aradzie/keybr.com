@@ -2,8 +2,6 @@
   "private": true,
   "name": "@keybr/server-cli",
   "version": "0.0.0",
-  "main": "lib/index.ts",
-  "types": ".types/index.d.ts",
   "dependencies": {
     "@keybr/binary": "*",
     "@keybr/config": "*",

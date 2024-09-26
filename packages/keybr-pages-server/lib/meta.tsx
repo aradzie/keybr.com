@@ -1,3 +1,6 @@
+import type { FavIconLink } from "@keybr/assets";
+import { allLocales } from "@keybr/intl";
+import { Pages, usePageData } from "@keybr/pages-shared";
 import { type ReactNode } from "react";
 
 export type SiteMeta = {
@@ -60,3 +63,35 @@ export function MetaList({
     </>
   );
 }
+
+export function AltLangLinks({ path }: { readonly path: string }): ReactNode {
+  const { base } = usePageData();
+  return allLocales
+    .map((locale) => ({
+      href: String(new URL(Pages.intlPath(path, locale), base)),
+      rel: "alternate",
+      hrefLang: locale,
+    }))
+    .map((link) => <link key={link.href} {...link} />);
+}
+
+export const favIcons: readonly FavIconLink[] = [
+  {
+    href: "/assets/favicon-16x16.png",
+    rel: "icon",
+    type: "image/png",
+    sizes: "16x16",
+  },
+  {
+    href: "/assets/favicon-32x32.png",
+    rel: "icon",
+    type: "image/png",
+    sizes: "32x32",
+  },
+  {
+    href: "/assets/favicon-96x96.png",
+    rel: "icon",
+    type: "image/png",
+    sizes: "96x96",
+  },
+];

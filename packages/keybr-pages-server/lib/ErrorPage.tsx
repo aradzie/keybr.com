@@ -41,7 +41,7 @@ export function ErrorPage({
       <head>
         <meta charSet="UTF-8" />
         <title>{`${error.status} - ${error.message}`}</title>
-        <StylesheetAssets entrypoint="page-static" />
+        <StylesheetAssets entrypoint="browser" />
       </head>
       <body className={styles.body}>
         <div className={styles.center}>

@@ -16,8 +16,6 @@ export function ThemeSwitcher(): ReactNode {
   );
 }
 
-ThemeSwitcher.selector = `.${styles.themeSwitcher}`;
-
 function FullscreenButton(): ReactNode {
   const { formatMessage } = useIntl();
   const theme = useTheme();

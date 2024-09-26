@@ -1,39 +1,72 @@
-import { StandardLayout } from "@keybr/pages-server";
-import { LoadingProgress, Sitemap, usePageData } from "@keybr/pages-shared";
+import { makeSpeedDistribution } from "@keybr/chart";
+import { type NamedUser, Screen, UserName } from "@keybr/pages-shared";
+import { type KeyStatsMap } from "@keybr/result";
+import { ExplainerBoundary, Header } from "@keybr/widget";
 import { type ReactNode } from "react";
-import { useIntl } from "react-intl";
+import { AccuracySection } from "./profile/AccuracySection.tsx";
+import { CalendarSection } from "./profile/CalendarSection.tsx";
+import { DistributionSection } from "./profile/DistributionSection.tsx";
+import { ExplainProfile } from "./profile/ExplainProfile.tsx";
+import { KeyFrequencyHeatmapSection } from "./profile/KeyFrequencyHeatmapSection.tsx";
+import { KeyFrequencyHistogramSection } from "./profile/KeyFrequencyHistogramSection.tsx";
+import { KeySpeedHistogramSection } from "./profile/KeySpeedHistogramSection.tsx";
+import { KeyTypingSpeedSection } from "./profile/KeyTypingSpeedSection.tsx";
+import { ProgressOverviewSection } from "./profile/ProgressOverviewSection.tsx";
+import { ResultGrouper } from "./profile/ResultGrouper.tsx";
+import { ResultSummary } from "./profile/resultsummary.ts";
+import { AllTimeSummary } from "./profile/Summary.tsx";
+import { TypingSpeedSection } from "./profile/TypingSpeedSection.tsx";
 
-export function PublicProfilePage(): ReactNode {
-  const { formatMessage } = useIntl();
-  const {
-    extra: { profileOwner },
-  } = usePageData();
-  if (profileOwner == null || profileOwner.id == null) {
-    throw new Error();
-  }
+export function PublicProfilePage({
+  user,
+}: {
+  readonly user: NamedUser;
+}): ReactNode {
+  return (
+    <Screen>
+      <ExplainerBoundary>
+        <ExplainProfile />
+        <Header level={1}>
+          <UserName user={user} />
+        </Header>
+        <ResultGrouper>
+          {(keyStatsMap) => <Content keyStatsMap={keyStatsMap} />}
+        </ResultGrouper>
+      </ExplainerBoundary>
+    </Screen>
+  );
+}
+
+function Content({
+  keyStatsMap,
+}: {
+  readonly keyStatsMap: KeyStatsMap;
+}): ReactNode {
+  const { results } = keyStatsMap;
+  const summary = new ResultSummary(results);
+  const distribution = makeSpeedDistribution();
 
   return (
-    <StandardLayout
-      pageMeta={{
-        pageLink: Sitemap.publicProfile.bind(profileOwner),
-        title: formatMessage(
-          {
-            id: "page.publicProfile.title",
-            defaultMessage: "{name} | Public Profile",
-          },
-          { name: profileOwner.name },
-        ),
-        description: formatMessage(
-          {
-            id: "page.publicProfile.description",
-            defaultMessage: "Public profile of user ‘{name}’.",
-          },
-          { name: profileOwner.name },
-        ),
-        entrypoint: "page-profile",
-      }}
-    >
-      <LoadingProgress total={0} current={0} />
-    </StandardLayout>
+    <>
+      <AllTimeSummary summary={summary} />
+
+      <AccuracySection summary={summary} />
+
+      <DistributionSection summary={summary} distribution={distribution} />
+
+      <ProgressOverviewSection keyStatsMap={keyStatsMap} />
+
+      <TypingSpeedSection results={results} />
+
+      <KeyTypingSpeedSection keyStatsMap={keyStatsMap} />
+
+      <KeySpeedHistogramSection keyStatsMap={keyStatsMap} />
+
+      <KeyFrequencyHistogramSection keyStatsMap={keyStatsMap} />
+
+      <KeyFrequencyHeatmapSection keyStatsMap={keyStatsMap} />
+
+      <CalendarSection summary={summary} />
+    </>
   );
 }

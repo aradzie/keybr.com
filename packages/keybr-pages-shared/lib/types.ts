@@ -36,18 +36,6 @@ export type PageData = {
    * Serialized user preferences.
    */
   readonly prefs: unknown | null;
-  /**
-   * Extra attributes which are page-specific.
-   */
-  readonly extra: PageDataExtra;
-};
-
-export type PageDataExtra = {
-  /**
-   * The user whose profile to display, which may be the current user, or
-   * someone else.
-   */
-  profileOwner?: NamedUser;
 };
 
 export type UserDetails = {
