@@ -617,19 +617,11 @@ Untranslated: 82 messages, 2858 words
 
 # Simplified Chinese
 
-Translated: 418 messages, 5054 words
+Translated: 426 messages, 5103 words
 
-Untranslated: 9 messages, 56 words
+Untranslated: 1 messages, 7 words
 
-* *Books*
-* *Syntax:*
-* *Source Code*
 * *M|T|W|T|F|S|S*
-* *Explain charts*
-* *Hide explanations*
-* *Generate lessons that resemble the specified programming lan...*
-* *Practice punctuation characters that are specific to a progr...*
-* *Generate typing lessons from the text of a book. All keys ar...*
 
 # Traditional Chinese
 
