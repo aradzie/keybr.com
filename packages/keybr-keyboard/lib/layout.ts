@@ -1024,7 +1024,7 @@ export class Layout implements XEnumItem {
       try {
         return new Intl.Locale(localeId);
       } catch {
-        return {};
+        return {} as Intl.Locale;
       }
     })();
     if (language != null && region != null) {
