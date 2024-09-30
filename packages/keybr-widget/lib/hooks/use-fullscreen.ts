@@ -31,11 +31,6 @@ export function useFullscreen(
         ? document.fullscreenElement === element
         : null,
     );
-    if (document.fullscreenElement === element) {
-      element.setAttribute("data-fullscreen", "true");
-    } else {
-      element.removeAttribute("data-fullscreen");
-    }
   });
 
   useDocumentEvent("fullscreenerror", () => {
