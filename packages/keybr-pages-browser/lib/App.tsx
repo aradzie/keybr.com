@@ -7,7 +7,7 @@ import {
   Pages,
   Root,
 } from "@keybr/pages-shared";
-import { PortalContainer, querySelector, Toaster } from "@keybr/widget";
+import { querySelector } from "@keybr/widget";
 import { lazy, type ReactNode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import { useIntl } from "react-intl";
@@ -39,8 +39,6 @@ export function App(): ReactNode {
         <IntlLoader>
           <ThemeProvider>
             <PageRoutes />
-            <PortalContainer />
-            <Toaster />
           </ThemeProvider>
         </IntlLoader>
       </ErrorHandler>
