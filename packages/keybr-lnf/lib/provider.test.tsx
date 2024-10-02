@@ -1,8 +1,7 @@
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import test from "ava";
-import { type ReactNode } from "react";
-import { useTheme } from "./context.tsx";
+import { useTheme } from "./context.ts";
 import { ThemeProvider } from "./provider.tsx";
 
 test.beforeEach(() => {
@@ -85,7 +84,7 @@ test.serial("ignore invalid cookie value", (t) => {
   r.unmount();
 });
 
-function Switcher(): ReactNode {
+function Switcher() {
   const ctl = useTheme();
   return (
     <div>

@@ -1,5 +1,4 @@
-import { COLORS, FONTS } from "./options.tsx";
-import { type ColorName, type FontName } from "./types.ts";
+import { COLORS, FONTS } from "./themes.ts";
 
 export class ThemePrefs {
   static colorAttrName = "data-color";
@@ -8,8 +7,8 @@ export class ThemePrefs {
 
   static dataAttributes({ color, font }: ThemePrefs) {
     return {
-      [ThemePrefs.colorAttrName]: COLORS.findOption(color).id,
-      [ThemePrefs.fontAttrName]: FONTS.findOption(font).id,
+      [ThemePrefs.colorAttrName]: COLORS.find(color).id,
+      [ThemePrefs.fontAttrName]: FONTS.find(font).id,
     };
   }
 
@@ -29,27 +28,12 @@ export class ThemePrefs {
     return new ThemePrefs(o);
   }
 
-  readonly color: ColorName;
-  readonly font: FontName;
+  readonly color: string;
+  readonly font: string;
 
   constructor(o: unknown) {
-    let { color, font }: ThemePrefs = Object(o);
-    switch (color) {
-      case "light":
-      case "dark":
-        break;
-      default:
-        color = "light";
-        break;
-    }
-    switch (font) {
-      case "opensans":
-      case "spectral":
-        break;
-      default:
-        font = "opensans";
-    }
-    this.color = color;
-    this.font = font;
+    const { color, font }: ThemePrefs = Object(o);
+    this.color = COLORS.find(color).id;
+    this.font = FONTS.find(font).id;
   }
 }

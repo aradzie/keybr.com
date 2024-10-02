@@ -1,16 +1,11 @@
 import { Cookie, SetCookie } from "@fastr/headers";
 import { useFullscreen } from "@keybr/widget";
 import { type ReactNode, useState } from "react";
-import { ThemeContext } from "./context.tsx";
-import { COLORS, FONTS } from "./options.tsx";
+import { ThemeContext } from "./context.ts";
 import { ThemePrefs } from "./prefs.ts";
-import { type ColorName, type FontName } from "./types.ts";
+import { COLORS, FONTS } from "./themes.ts";
 
-export function ThemeProvider({
-  children,
-}: {
-  readonly children: ReactNode;
-}): ReactNode {
+export function ThemeProvider({ children }: { readonly children: ReactNode }) {
   const fullscreenTarget =
     document.querySelector("[fullscreen-target]") ??
     document.querySelector("main") ??
@@ -19,16 +14,16 @@ export function ThemeProvider({
   const [fullscreenState, toggleFullscreen] = useFullscreen(fullscreenTarget);
   const [{ color, font }, setPrefs] = useState(() => readPrefs());
 
-  const switchColor = (color: ColorName): void => {
-    const { id } = COLORS.findOption(color);
+  const switchColor = (color: string): void => {
+    const { id } = COLORS.find(color);
     document.documentElement.setAttribute(ThemePrefs.colorAttrName, id);
     const prefs = new ThemePrefs({ color, font });
     storePrefs(prefs);
     setPrefs(prefs);
   };
 
-  const switchFont = (font: FontName): void => {
-    const { id } = FONTS.findOption(font);
+  const switchFont = (font: string): void => {
+    const { id } = FONTS.find(font);
     document.documentElement.setAttribute(ThemePrefs.fontAttrName, id);
     const prefs = new ThemePrefs({ color, font });
     storePrefs(prefs);
