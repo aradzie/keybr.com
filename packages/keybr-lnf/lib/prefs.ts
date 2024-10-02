@@ -32,7 +32,7 @@ export class ThemePrefs {
   readonly font: string;
 
   constructor(o: unknown) {
-    const { color, font }: ThemePrefs = Object(o);
+    const { color, font } = Object(o) as ThemePrefs;
     this.color = COLORS.find(color).id;
     this.font = FONTS.find(font).id;
   }

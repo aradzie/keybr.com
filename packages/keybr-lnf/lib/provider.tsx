@@ -15,19 +15,19 @@ export function ThemeProvider({ children }: { readonly children: ReactNode }) {
   const [{ color, font }, setPrefs] = useState(() => readPrefs());
 
   const switchColor = (color: string): void => {
-    const { id } = COLORS.find(color);
-    document.documentElement.setAttribute(ThemePrefs.colorAttrName, id);
-    const prefs = new ThemePrefs({ color, font });
-    storePrefs(prefs);
+    const theme = COLORS.find(color);
+    document.documentElement.setAttribute(ThemePrefs.colorAttrName, theme.id);
+    const prefs = new ThemePrefs({ color: theme.id, font });
     setPrefs(prefs);
+    storePrefs(prefs);
   };
 
   const switchFont = (font: string): void => {
-    const { id } = FONTS.find(font);
-    document.documentElement.setAttribute(ThemePrefs.fontAttrName, id);
-    const prefs = new ThemePrefs({ color, font });
-    storePrefs(prefs);
+    const theme = FONTS.find(font);
+    document.documentElement.setAttribute(ThemePrefs.fontAttrName, theme.id);
+    const prefs = new ThemePrefs({ color, font: theme.id });
     setPrefs(prefs);
+    storePrefs(prefs);
   };
 
   return (

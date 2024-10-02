@@ -85,33 +85,33 @@ test.serial("ignore invalid cookie value", (t) => {
 });
 
 function Switcher() {
-  const ctl = useTheme();
+  const { switchColor, switchFont } = useTheme();
   return (
     <div>
       <button
         onClick={() => {
-          ctl.switchColor("light");
+          switchColor("light");
         }}
       >
         light
       </button>
       <button
         onClick={() => {
-          ctl.switchColor("dark");
+          switchColor("dark");
         }}
       >
         dark
       </button>
       <button
         onClick={() => {
-          ctl.switchFont("opensans");
+          switchFont("opensans");
         }}
       >
         opensans
       </button>
       <button
         onClick={() => {
-          ctl.switchFont("spectral");
+          switchFont("spectral");
         }}
       >
         spectral

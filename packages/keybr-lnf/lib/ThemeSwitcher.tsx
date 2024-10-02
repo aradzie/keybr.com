@@ -22,9 +22,9 @@ export function ThemeSwitcher() {
 
 function ColorButton() {
   const { formatMessage } = useIntl();
-  const theme = useTheme();
-  const option = COLORS.find(theme.color);
-  const next = COLORS.findNext(option);
+  const { color, switchColor } = useTheme();
+  const theme = COLORS.find(color);
+  const next = COLORS.findNext(theme);
   return (
     <IconButton
       icon={<Icon shape={mdiThemeLightDark} />}
@@ -33,12 +33,10 @@ function ColorButton() {
           id: "theme.switchTheme.description",
           defaultMessage: "Switch to theme {name}.",
         }),
-        {
-          name: next.name,
-        },
+        { name: next.name },
       )}
       onClick={() => {
-        theme.switchColor(next.id);
+        switchColor(next.id);
       }}
     />
   );
@@ -46,9 +44,9 @@ function ColorButton() {
 
 function FontButton() {
   const { formatMessage } = useIntl();
-  const theme = useTheme();
-  const option = FONTS.find(theme.font);
-  const next = FONTS.findNext(option);
+  const { font, switchFont } = useTheme();
+  const theme = FONTS.find(font);
+  const next = FONTS.findNext(theme);
   return (
     <IconButton
       icon={<Icon shape={mdiFormatFont} />}
@@ -57,12 +55,10 @@ function FontButton() {
           id: "theme.switchTheme.description",
           defaultMessage: "Switch to theme {name}.",
         }),
-        {
-          name: next.name,
-        },
+        { name: next.name },
       )}
       onClick={() => {
-        theme.switchFont(next.id);
+        switchFont(next.id);
       }}
     />
   );
