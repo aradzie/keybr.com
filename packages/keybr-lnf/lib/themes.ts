@@ -44,6 +44,10 @@ export const COLORS = new ThemeList([
     id: "gray",
     name: "Gray",
   },
+  {
+    id: "yellow",
+    name: "Yellow",
+  },
 ]);
 
 export const FONTS = new ThemeList([

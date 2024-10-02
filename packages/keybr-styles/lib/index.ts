@@ -7,3 +7,4 @@ import "./common/typography.less";
 import "./theme/theme-light.less";
 import "./theme/theme-dark.less";
 import "./theme/theme-gray.less";
+import "./theme/theme-yellow.less";
