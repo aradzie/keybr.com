@@ -1,8 +1,8 @@
 import { type MouseProps } from "@keybr/widget";
 import { clsx } from "clsx";
 import { type ReactNode } from "react";
-import { keyStyle } from "./color.ts";
 import * as styles from "./styles.module.less";
+import { useKeyStyles } from "./styles.ts";
 
 export const KeyLegend = ({
   confidence,
@@ -20,6 +20,7 @@ export const KeyLegend = ({
   readonly size?: "normal" | "large";
   readonly title?: string;
 } & MouseProps): ReactNode => {
+  const { keyStyles } = useKeyStyles();
   return (
     <span
       {...props}
@@ -32,7 +33,7 @@ export const KeyLegend = ({
         isIncluded && isFocused && styles.lessonKey_focused,
         isIncluded && isForced && styles.lessonKey_forced,
       )}
-      style={keyStyle(isIncluded ?? false, confidence ?? null)}
+      style={keyStyles(isIncluded ?? false, confidence ?? null)}
       title={title}
     >
       ?

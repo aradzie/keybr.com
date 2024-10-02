@@ -1,6 +1,6 @@
 import { useIntlNumbers } from "@keybr/intl";
 import { Target } from "@keybr/lesson";
-import { confidenceColor } from "@keybr/lesson-ui";
+import { useKeyStyles } from "@keybr/lesson-ui";
 import { hasData, Range, resample, Vector } from "@keybr/math";
 import { type KeyStats, type KeyStatsMap } from "@keybr/result";
 import { useSettings } from "@keybr/settings";
@@ -38,6 +38,7 @@ function usePaint(styles: Styles, keyStatsMap: KeyStatsMap) {
   const { formatMessage } = useIntl();
   const { formatInteger } = useIntlNumbers();
   const { settings } = useSettings();
+  const { confidenceColor } = useKeyStyles();
   const target = new Target(settings);
   const g = withStyles(styles);
   const { letters, results } = keyStatsMap;

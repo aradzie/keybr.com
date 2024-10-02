@@ -1,4 +1,3 @@
-export * from "./color.ts";
 export * from "./CurrentKey.tsx";
 export * from "./DailyGoal.tsx";
 export * from "./format.ts";
@@ -12,3 +11,4 @@ export * from "./KeyLegendList.tsx";
 export * from "./KeySelector.tsx";
 export * from "./KeySet.tsx";
 export * from "./names.ts";
+export * from "./styles.ts";

@@ -3,8 +3,8 @@ import { type Letter } from "@keybr/phonetic-model";
 import { type MouseProps } from "@keybr/widget";
 import { clsx } from "clsx";
 import { type ReactNode } from "react";
-import { keyStyle } from "./color.ts";
 import * as styles from "./styles.module.less";
+import { useKeyStyles } from "./styles.ts";
 
 export const Key = ({
   lessonKey,
@@ -20,6 +20,7 @@ export const Key = ({
   readonly size?: "normal" | "large" | "announcement";
   readonly title?: string;
 } & MouseProps): ReactNode => {
+  const { keyStyles } = useKeyStyles();
   const {
     letter: { codePoint, label },
     confidence,
@@ -43,7 +44,7 @@ export const Key = ({
         isSelectable && styles.lessonKey_selectable,
         isCurrent && styles.lessonKey_current,
       )}
-      style={keyStyle(true, confidence)}
+      style={keyStyles(true, confidence)}
       title={title}
       data-code-point={codePoint}
     >
