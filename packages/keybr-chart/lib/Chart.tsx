@@ -1,6 +1,6 @@
 import { Rect, type ShapeList, Shapes, type Size } from "@keybr/widget";
 import { type ReactNode } from "react";
-import { chartStyles } from "./styles.ts";
+import { type Styles } from "./styles.ts";
 
 export type SizeProps = {
   readonly width: string;
@@ -33,10 +33,10 @@ export function Chart({
   );
 }
 
-export function chartArea(cb: (d: Rect) => ShapeList) {
+export function chartArea(styles: Styles, cb: (d: Rect) => ShapeList) {
   return ({ width, height }: Size) => {
-    const h = chartStyles.lineHeight * 5;
-    const v = chartStyles.lineHeight * 2;
+    const h = styles.lineHeight * 5;
+    const v = styles.lineHeight * 2;
     const area = new Rect(h, v, width - h * 2, height - v * 2).round();
     return [Shapes.clear(), cb(area)];
   };

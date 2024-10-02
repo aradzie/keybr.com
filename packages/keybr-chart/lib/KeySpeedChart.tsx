@@ -15,9 +15,9 @@ import { Canvas, type Rect, type ShapeList } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
 import { Chart, chartArea, type SizeProps } from "./Chart.tsx";
-import { paintAxis, paintGrid, paintNoData, paintTicks } from "./decoration.ts";
+import { withStyles } from "./decoration.ts";
 import { paintCurve, paintScatterPlot, projection } from "./graph.ts";
-import { chartStyles } from "./styles.ts";
+import { type Styles, useStyles } from "./styles.ts";
 
 export function KeySpeedChart({
   samples,
@@ -28,29 +28,35 @@ export function KeySpeedChart({
   readonly samples: readonly KeySample[];
   readonly smoothness: number;
 } & SizeProps): ReactNode {
-  const paint = usePaint(samples, smoothness);
+  const styles = useStyles();
+  const paint = usePaint(styles, samples, smoothness);
   return (
     <Chart width={width} height={height}>
-      <Canvas paint={chartArea(paint)} />
+      <Canvas paint={chartArea(styles, paint)} />
     </Chart>
   );
 }
 
-function usePaint(samples: readonly KeySample[], smoothness: number) {
+function usePaint(
+  styles: Styles,
+  samples: readonly KeySample[],
+  smoothness: number,
+) {
   const { formatMessage } = useIntl();
   const { formatInteger } = useIntlNumbers();
   const { formatSpeed } = useFormatter();
   const { settings } = useSettings();
   const target = new Target(settings);
+  const g = withStyles(styles);
 
   if (!hasData(samples)) {
     return (box: Rect): ShapeList => {
       return [
-        paintGrid(box, "vertical", { lines: 5 }),
-        paintGrid(box, "horizontal", { lines: 5 }),
-        paintAxis(box, "left"),
-        paintAxis(box, "bottom"),
-        paintNoData(box, formatMessage),
+        g.paintGrid(box, "vertical", { lines: 5 }),
+        g.paintGrid(box, "horizontal", { lines: 5 }),
+        g.paintAxis(box, "left"),
+        g.paintAxis(box, "bottom"),
+        g.paintNoData(box, formatMessage),
       ];
     };
   }
@@ -74,27 +80,27 @@ function usePaint(samples: readonly KeySample[], smoothness: number) {
   return (box: Rect): ShapeList => {
     const proj = projection(box, rIndex, rSpeed);
     return [
-      paintGrid(box, "vertical", { lines: 5 }),
-      paintGrid(box, "horizontal", { lines: 5 }),
+      g.paintGrid(box, "vertical", { lines: 5 }),
+      g.paintGrid(box, "horizontal", { lines: 5 }),
       paintScatterPlot(proj, vIndex, vSpeed, {
-        style: chartStyles.speed,
+        style: styles.speed,
       }),
       paintCurve(proj, mSpeed, {
         style: {
-          ...chartStyles.speed,
+          ...styles.speed,
           lineWidth: 2,
         },
       }),
       paintCurve(proj, constModel(target.targetSpeed), {
         style: {
-          ...chartStyles.threshold,
+          ...styles.threshold,
           lineWidth: 2,
         },
       }),
-      paintAxis(box, "left"),
-      paintAxis(box, "bottom"),
-      paintTicks(box, rSpeed, "left", { fmt: formatSpeed }),
-      paintTicks(box, rIndex, "bottom", { lines: 5, fmt: formatInteger }),
+      g.paintAxis(box, "left"),
+      g.paintAxis(box, "bottom"),
+      g.paintTicks(box, rSpeed, "left", { fmt: formatSpeed }),
+      g.paintTicks(box, rIndex, "bottom", { lines: 5, fmt: formatInteger }),
     ];
   };
 }

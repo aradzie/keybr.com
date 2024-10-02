@@ -14,15 +14,9 @@ import {
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
 import { Chart, chartArea, type SizeProps } from "./Chart.tsx";
-import {
-  paintFrame,
-  paintGrid,
-  paintKeyTicks,
-  paintNoData,
-  paintTicks,
-} from "./decoration.ts";
+import { withStyles } from "./decoration.ts";
 import { hBoxes } from "./geometry.ts";
-import { chartStyles } from "./styles.ts";
+import { type Styles, useStyles } from "./styles.ts";
 
 export function ProgressOverviewChart({
   keyStatsMap,
@@ -31,19 +25,21 @@ export function ProgressOverviewChart({
 }: {
   readonly keyStatsMap: KeyStatsMap;
 } & SizeProps): ReactNode {
-  const paint = usePaint(keyStatsMap);
+  const styles = useStyles();
+  const paint = usePaint(styles, keyStatsMap);
   return (
     <Chart width={width} height={height}>
-      <Canvas paint={chartArea(paint)} />
+      <Canvas paint={chartArea(styles, paint)} />
     </Chart>
   );
 }
 
-function usePaint(keyStatsMap: KeyStatsMap) {
+function usePaint(styles: Styles, keyStatsMap: KeyStatsMap) {
   const { formatMessage } = useIntl();
   const { formatInteger } = useIntlNumbers();
   const { settings } = useSettings();
   const target = new Target(settings);
+  const g = withStyles(styles);
   const { letters, results } = keyStatsMap;
 
   const vIndex = new Vector();
@@ -58,17 +54,20 @@ function usePaint(keyStatsMap: KeyStatsMap) {
       paintGrid1(),
       hasData(results)
         ? [
-            paintGrid(box, "vertical", { lines: 5 }),
-            paintTicks(box, rIndex, "bottom", { lines: 5, fmt: formatInteger }),
+            g.paintGrid(box, "vertical", { lines: 5 }),
+            g.paintTicks(box, rIndex, "bottom", {
+              lines: 5,
+              fmt: formatInteger,
+            }),
             paintGraph,
           ]
-        : paintNoData(box, formatMessage),
-      paintFrame(box),
-      paintKeyTicks(box, letters, "left", { margin: 4 }),
+        : g.paintNoData(box, formatMessage),
+      g.paintFrame(box),
+      g.paintKeyTicks(box, letters, "left", { margin: 4 }),
     ];
 
     function paintGrid1(): ShapeList {
-      return Shapes.fill(chartStyles.lighterFrame, [
+      return Shapes.fill(styles.lighterFrame, [
         boxes.map(({ rect }) =>
           Shapes.rect({
             x: rect.x,

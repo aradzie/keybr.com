@@ -7,9 +7,9 @@ import { Canvas, type Rect, type ShapeList, Shapes } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
 import { Chart, chartArea, type SizeProps } from "./Chart.tsx";
-import { paintAxis, paintGrid, paintNoData, paintTicks } from "./decoration.ts";
+import { withStyles } from "./decoration.ts";
 import { paintCurve, paintScatterPlot, projection } from "./graph.ts";
-import { chartStyles } from "./styles.ts";
+import { type Styles, useStyles } from "./styles.ts";
 
 export function KeyDetailsChart({
   lessonKey,
@@ -20,29 +20,35 @@ export function KeyDetailsChart({
   readonly lessonKey: LessonKey;
   readonly learningRate: LearningRate | null;
 } & SizeProps): ReactNode {
-  const paint = usePaint(lessonKey, learningRate);
+  const styles = useStyles();
+  const paint = usePaint(styles, lessonKey, learningRate);
   return (
     <Chart width={width} height={height}>
-      <Canvas paint={chartArea(paint)} />
+      <Canvas paint={chartArea(styles, paint)} />
     </Chart>
   );
 }
 
-function usePaint(lessonKey: LessonKey, learningRate: LearningRate | null) {
+function usePaint(
+  styles: Styles,
+  lessonKey: LessonKey,
+  learningRate: LearningRate | null,
+) {
   const { formatMessage } = useIntl();
   const { formatInteger } = useIntlNumbers();
   const { formatSpeed } = useFormatter();
   const { settings } = useSettings();
   const target = new Target(settings);
+  const g = withStyles(styles);
 
   if (learningRate == null) {
     return (box: Rect): ShapeList => {
       return [
-        paintGrid(box, "vertical", { lines: 5 }),
-        paintGrid(box, "horizontal", { lines: 5 }),
-        paintAxis(box, "left"),
-        paintAxis(box, "bottom"),
-        paintNoData(box, formatMessage),
+        g.paintGrid(box, "vertical", { lines: 5 }),
+        g.paintGrid(box, "horizontal", { lines: 5 }),
+        g.paintAxis(box, "left"),
+        g.paintAxis(box, "bottom"),
+        g.paintNoData(box, formatMessage),
       ];
     };
   }
@@ -64,28 +70,28 @@ function usePaint(lessonKey: LessonKey, learningRate: LearningRate | null) {
   return (box: Rect): ShapeList => {
     const proj = projection(box, rIndex, rSpeed);
     return [
-      paintGrid(box, "vertical", { lines: 5 }),
-      paintGrid(box, "horizontal", { lines: 5 }),
+      g.paintGrid(box, "vertical", { lines: 5 }),
+      g.paintGrid(box, "horizontal", { lines: 5 }),
       now > 0 && paintThresholdLine({ label: "Now", value: now }),
       paintScatterPlot(proj, vIndex, vSpeed, {
-        style: chartStyles.speed,
+        style: styles.speed,
       }),
       paintCurve(proj, mSpeed, {
         style: {
-          ...chartStyles.speed,
+          ...styles.speed,
           lineWidth: 2,
         },
       }),
       paintCurve(proj, constModel(target.targetSpeed), {
         style: {
-          ...chartStyles.threshold,
+          ...styles.threshold,
           lineWidth: 2,
         },
       }),
-      paintAxis(box, "left"),
-      paintAxis(box, "bottom"),
-      paintTicks(box, rSpeed, "left", { fmt: formatSpeed }),
-      paintTicks(box, rIndex, "bottom", { lines: 5, fmt: formatInteger }),
+      g.paintAxis(box, "left"),
+      g.paintAxis(box, "bottom"),
+      g.paintTicks(box, rSpeed, "left", { fmt: formatSpeed }),
+      g.paintTicks(box, rIndex, "bottom", { lines: 5, fmt: formatInteger }),
     ];
 
     function paintThresholdLine({
@@ -97,7 +103,7 @@ function usePaint(lessonKey: LessonKey, learningRate: LearningRate | null) {
     }): ShapeList {
       const x = proj.x(value);
       return [
-        Shapes.fill(chartStyles.threshold, [
+        Shapes.fill(styles.threshold, [
           Shapes.rect({
             x: Math.round(x),
             y: box.y - 10,
@@ -110,7 +116,7 @@ function usePaint(lessonKey: LessonKey, learningRate: LearningRate | null) {
           y: box.y - 1,
           value: label,
           style: {
-            ...chartStyles.thresholdLabel,
+            ...styles.thresholdLabel,
             textAlign: "left",
             textBaseline: "bottom",
           },

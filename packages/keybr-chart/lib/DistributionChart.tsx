@@ -5,8 +5,8 @@ import { Canvas, type Rect, type ShapeList, Shapes } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
 import { Chart, chartArea, type SizeProps } from "./Chart.tsx";
-import { paintAxis, paintGrid, paintNoData, paintTicks } from "./decoration.ts";
-import { chartStyles } from "./styles.ts";
+import { withStyles } from "./decoration.ts";
+import { type Styles, useStyles } from "./styles.ts";
 
 export type Threshold = {
   readonly label: string;
@@ -22,18 +22,24 @@ export function DistributionChart({
   readonly distribution: Distribution;
   readonly thresholds: readonly Threshold[];
 } & SizeProps): ReactNode {
-  const paint = usePaint(distribution, thresholds);
+  const styles = useStyles();
+  const paint = usePaint(styles, distribution, thresholds);
   return (
     <Chart width={width} height={height}>
-      <Canvas paint={chartArea(paint)} />
+      <Canvas paint={chartArea(styles, paint)} />
     </Chart>
   );
 }
 
-function usePaint(dist: Distribution, thresholds: readonly Threshold[]) {
+function usePaint(
+  styles: Styles,
+  dist: Distribution,
+  thresholds: readonly Threshold[],
+) {
   const { formatMessage } = useIntl();
   const { formatPercents } = useIntlNumbers();
   const { formatSpeed } = useFormatter();
+  const g = withStyles(styles);
 
   const vIndex = new Vector();
   const vPmf = new Vector();
@@ -49,30 +55,30 @@ function usePaint(dist: Distribution, thresholds: readonly Threshold[]) {
 
   return (box: Rect): ShapeList => {
     return [
-      paintGrid(box, "vertical", { lines: 5 }),
-      paintGrid(box, "horizontal", { lines: 5 }),
+      g.paintGrid(box, "vertical", { lines: 5 }),
+      g.paintGrid(box, "horizontal", { lines: 5 }),
       paintPmfHistogram(),
       paintCdfHistogram(),
       thresholds.length > 0
         ? [thresholds.map(paintPmfLine), thresholds.map(paintCdfLine)]
-        : paintNoData(box, formatMessage),
-      paintAxis(box, "bottom"),
-      paintAxis(box, "left"),
-      paintTicks(box, rIndex, "bottom", {
+        : g.paintNoData(box, formatMessage),
+      g.paintAxis(box, "bottom"),
+      g.paintAxis(box, "left"),
+      g.paintTicks(box, rIndex, "bottom", {
         lines: 5,
         fmt: formatSpeed,
-        style: chartStyles.valueLabel,
+        style: styles.valueLabel,
       }),
-      paintTicks(box, rCdf, "right", {
+      g.paintTicks(box, rCdf, "right", {
         lines: 5,
         fmt: formatPercents,
-        style: chartStyles.thresholdLabel,
+        style: styles.thresholdLabel,
       }),
     ];
 
     function paintPmfHistogram(): ShapeList {
       return Shapes.fill(
-        chartStyles.speed,
+        styles.speed,
         [...vIndex].map((index) => {
           const w = Math.ceil(box.width / rIndex.span);
           const x = Math.round(rIndex.normalize(index) * box.width);
@@ -89,7 +95,7 @@ function usePaint(dist: Distribution, thresholds: readonly Threshold[]) {
 
     function paintCdfHistogram(): ShapeList {
       return Shapes.fill(
-        chartStyles.threshold,
+        styles.threshold,
         [...vIndex].map((index) => {
           const w = Math.ceil(box.width / rIndex.span);
           const x = Math.round(rIndex.normalize(index) * box.width);
@@ -116,7 +122,7 @@ function usePaint(dist: Distribution, thresholds: readonly Threshold[]) {
       }
       const x = Math.round(rIndex.normalize(value) * box.width);
       return [
-        Shapes.fill(chartStyles.value, [
+        Shapes.fill(styles.value, [
           Shapes.rect({
             x: box.x + x,
             y: box.y - 10,
@@ -129,7 +135,7 @@ function usePaint(dist: Distribution, thresholds: readonly Threshold[]) {
           y: box.y + box.height - 5,
           value: formatSpeed(value),
           style: {
-            ...chartStyles.valueLabel,
+            ...styles.valueLabel,
             textAlign: "left",
             textBaseline: "bottom",
           },
@@ -149,7 +155,7 @@ function usePaint(dist: Distribution, thresholds: readonly Threshold[]) {
       }
       const y = Math.round(rCdf.normalize(dist.cdf(value)) * box.height);
       return [
-        Shapes.fill(chartStyles.threshold, [
+        Shapes.fill(styles.threshold, [
           Shapes.rect({
             x: box.x - 10,
             y: box.y + box.height - y,
@@ -162,7 +168,7 @@ function usePaint(dist: Distribution, thresholds: readonly Threshold[]) {
           y: box.y + box.height - y - 5,
           value: formatPercents(dist.cdf(value)),
           style: {
-            ...chartStyles.thresholdLabel,
+            ...styles.thresholdLabel,
             textAlign: "right",
             textBaseline: "bottom",
           },

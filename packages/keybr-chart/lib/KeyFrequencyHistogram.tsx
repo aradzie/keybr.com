@@ -4,10 +4,10 @@ import { Canvas, Rect, type ShapeList } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
 import { Chart, chartArea, type SizeProps } from "./Chart.tsx";
-import { paintFrame, paintKeyTicks, paintNoData } from "./decoration.ts";
+import { withStyles } from "./decoration.ts";
 import { paintHistogram } from "./graph.ts";
 import { keyUsage } from "./keyusage.ts";
-import { chartStyles } from "./styles.ts";
+import { type Styles, useStyles } from "./styles.ts";
 
 export function KeyFrequencyHistogram({
   keyStatsMap,
@@ -16,28 +16,29 @@ export function KeyFrequencyHistogram({
 }: {
   readonly keyStatsMap: KeyStatsMap;
 } & SizeProps): ReactNode {
-  const paint = usePaint(keyStatsMap);
+  const styles = useStyles();
+  const paint = usePaint(styles, keyStatsMap);
   return (
     <Chart width={width} height={height}>
-      <Canvas paint={chartArea(paint)} />
+      <Canvas paint={chartArea(styles, paint)} />
     </Chart>
   );
 }
 
-function usePaint(keyStatsMap: KeyStatsMap) {
+function usePaint(styles: Styles, keyStatsMap: KeyStatsMap) {
   const { formatMessage } = useIntl();
-
+  const g = withStyles(styles);
   const { letters, results } = keyStatsMap;
 
   if (!hasData(results)) {
     return (box: Rect): ShapeList => {
       const [boxHit, boxMiss, boxRatio] = boxes(box);
       return [
-        paintFrame(boxHit),
-        paintFrame(boxMiss),
-        paintFrame(boxRatio),
-        paintKeyTicks(box, letters, "bottom"),
-        paintNoData(boxHit, formatMessage),
+        g.paintFrame(boxHit),
+        g.paintFrame(boxMiss),
+        g.paintFrame(boxRatio),
+        g.paintKeyTicks(box, letters, "bottom"),
+        g.paintNoData(boxHit, formatMessage),
       ];
     };
   }
@@ -53,18 +54,18 @@ function usePaint(keyStatsMap: KeyStatsMap) {
     const [boxHit, boxMiss, boxRatio] = boxes(box);
     return [
       paintHistogram(boxHit, vHit, rHit, {
-        style: chartStyles.histHit,
+        style: styles.histHit,
       }),
       paintHistogram(boxMiss, vMiss, rMiss, {
-        style: chartStyles.histMiss,
+        style: styles.histMiss,
       }),
       paintHistogram(boxRatio, vRatio, rRatio, {
-        style: chartStyles.histRatio,
+        style: styles.histRatio,
       }),
-      paintFrame(boxHit),
-      paintFrame(boxMiss),
-      paintFrame(boxRatio),
-      paintKeyTicks(box, letters, "bottom"),
+      g.paintFrame(boxHit),
+      g.paintFrame(boxMiss),
+      g.paintFrame(boxRatio),
+      g.paintKeyTicks(box, letters, "bottom"),
     ];
   };
 }

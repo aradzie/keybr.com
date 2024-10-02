@@ -6,9 +6,9 @@ import { Canvas, type Rect, type ShapeList } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
 import { Chart, chartArea, type SizeProps } from "./Chart.tsx";
-import { paintAxis, paintGrid, paintNoData, paintTicks } from "./decoration.ts";
+import { withStyles } from "./decoration.ts";
 import { paintCurve, paintScatterPlot, projection } from "./graph.ts";
-import { chartStyles } from "./styles.ts";
+import { type Styles, useStyles } from "./styles.ts";
 
 export function SpeedChart({
   results,
@@ -19,27 +19,33 @@ export function SpeedChart({
   readonly results: readonly Result[];
   readonly smoothness: number;
 } & SizeProps): ReactNode {
-  const paint = usePaint(results, smoothness);
+  const styles = useStyles();
+  const paint = usePaint(styles, results, smoothness);
   return (
     <Chart width={width} height={height}>
-      <Canvas paint={chartArea(paint)} />
+      <Canvas paint={chartArea(styles, paint)} />
     </Chart>
   );
 }
 
-function usePaint(results: readonly Result[], smoothness: number) {
+function usePaint(
+  styles: Styles,
+  results: readonly Result[],
+  smoothness: number,
+) {
   const { formatMessage } = useIntl();
   const { formatInteger, formatPercents } = useIntlNumbers();
   const { formatSpeed } = useFormatter();
+  const g = withStyles(styles);
 
   if (!hasData(results)) {
     return (box: Rect): ShapeList => {
       return [
-        paintGrid(box, "vertical", { lines: 5 }),
-        paintGrid(box, "horizontal", { lines: 5 }),
-        paintAxis(box, "left"),
-        paintAxis(box, "bottom"),
-        paintNoData(box, formatMessage),
+        g.paintGrid(box, "vertical", { lines: 5 }),
+        g.paintGrid(box, "horizontal", { lines: 5 }),
+        g.paintAxis(box, "left"),
+        g.paintAxis(box, "bottom"),
+        g.paintNoData(box, formatMessage),
       ];
     };
   }
@@ -71,28 +77,28 @@ function usePaint(results: readonly Result[], smoothness: number) {
     const projAccuracy = projection(box, rIndex, rAccuracy);
     const projSpeed = projection(box, rIndex, rSpeed);
     return [
-      paintGrid(box, "vertical", { lines: 5 }),
-      paintGrid(box, "horizontal", { lines: 5 }),
+      g.paintGrid(box, "vertical", { lines: 5 }),
+      g.paintGrid(box, "horizontal", { lines: 5 }),
       paintScatterPlot(projComplexity, vIndex, vComplexity, {
-        style: chartStyles.complexity,
+        style: styles.complexity,
       }),
       paintScatterPlot(projAccuracy, vIndex, vAccuracy, {
-        style: chartStyles.accuracy,
+        style: styles.accuracy,
       }),
       paintScatterPlot(projSpeed, vIndex, vSpeed, {
-        style: chartStyles.speed,
+        style: styles.speed,
       }),
       paintCurve(projSpeed, mSpeed, {
         style: {
-          ...chartStyles.speed,
+          ...styles.speed,
           lineWidth: 2,
         },
       }),
-      paintAxis(box, "left"),
-      paintAxis(box, "bottom"),
-      paintTicks(box, rIndex, "bottom", { lines: 5, fmt: formatInteger }),
-      paintTicks(box, rSpeed, "left", { fmt: formatSpeed }),
-      paintTicks(box, rAccuracy, "right", { fmt: formatPercents }),
+      g.paintAxis(box, "left"),
+      g.paintAxis(box, "bottom"),
+      g.paintTicks(box, rIndex, "bottom", { lines: 5, fmt: formatInteger }),
+      g.paintTicks(box, rSpeed, "left", { fmt: formatSpeed }),
+      g.paintTicks(box, rAccuracy, "right", { fmt: formatPercents }),
     ];
   };
 }

@@ -5,15 +5,9 @@ import { Canvas, type Rect, type ShapeList } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
 import { Chart, chartArea, type SizeProps } from "./Chart.tsx";
-import {
-  paintFrame,
-  paintGrid,
-  paintKeyTicks,
-  paintNoData,
-  paintTicks,
-} from "./decoration.ts";
+import { withStyles } from "./decoration.ts";
 import { paintHistogram } from "./graph.ts";
-import { chartStyles } from "./styles.ts";
+import { type Styles, useStyles } from "./styles.ts";
 
 export function KeySpeedHistogram({
   keyStatsMap,
@@ -22,26 +16,27 @@ export function KeySpeedHistogram({
 }: {
   readonly keyStatsMap: KeyStatsMap;
 } & SizeProps): ReactNode {
-  const paint = usePaint(keyStatsMap);
+  const styles = useStyles();
+  const paint = usePaint(styles, keyStatsMap);
   return (
     <Chart width={width} height={height}>
-      <Canvas paint={chartArea(paint)} />
+      <Canvas paint={chartArea(styles, paint)} />
     </Chart>
   );
 }
 
-function usePaint(keyStatsMap: KeyStatsMap) {
+function usePaint(styles: Styles, keyStatsMap: KeyStatsMap) {
   const { formatMessage } = useIntl();
   const { formatSpeed } = useFormatter();
-
+  const g = withStyles(styles);
   const { letters, results } = keyStatsMap;
 
   if (!hasData(results)) {
     return (box: Rect): ShapeList => {
       return [
-        paintFrame(box),
-        paintKeyTicks(box, letters, "bottom"),
-        paintNoData(box, formatMessage),
+        g.paintFrame(box),
+        g.paintKeyTicks(box, letters, "bottom"),
+        g.paintNoData(box, formatMessage),
       ];
     };
   }
@@ -60,11 +55,11 @@ function usePaint(keyStatsMap: KeyStatsMap) {
   rSpeed.min = 0;
   return (box: Rect): ShapeList => {
     return [
-      paintGrid(box, "horizontal"),
-      paintHistogram(box, vSpeed, rSpeed, { style: chartStyles.speed }),
-      paintFrame(box),
-      paintTicks(box, rSpeed, "left", { fmt: formatSpeed }),
-      paintKeyTicks(box, letters, "bottom"),
+      g.paintGrid(box, "horizontal"),
+      paintHistogram(box, vSpeed, rSpeed, { style: styles.speed }),
+      g.paintFrame(box),
+      g.paintTicks(box, rSpeed, "left", { fmt: formatSpeed }),
+      g.paintKeyTicks(box, letters, "bottom"),
     ];
   };
 }
