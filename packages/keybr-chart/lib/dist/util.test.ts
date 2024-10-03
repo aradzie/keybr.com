@@ -4,9 +4,9 @@ import { bucketize, smooth } from "./util.ts";
 test("smooth", (t) => {
   t.deepEqual(smooth([], 1), []);
   t.deepEqual(smooth([1], 1), [1]);
-  t.deepEqual(smooth([1, 2, 3], 1), [1, 2, 3]);
-  t.deepEqual(smooth([1, 4, 1, 4, 1], 1), [1, 2, 3, 2, 1]);
-  t.deepEqual(smooth([1, 4, 1, 4, 1], 2), [1, 4, 2.2, 4, 1]);
+  t.deepEqual(smooth([1, 2, 3], 1), [1.5, 2, 2.5]);
+  t.deepEqual(smooth([1, 4, 1, 4, 1], 1), [2.5, 2, 3, 2, 2.5]);
+  t.deepEqual(smooth([1, 4, 1, 4, 1], 2), [2, 2.5, 2.2, 2.5, 2]);
 });
 
 test("bucketize", (t) => {

@@ -1,4 +1,4 @@
-export class Range {
+export class Range implements Iterable<number> {
   static from(values: Iterable<number>, ...rest: Iterable<number>[]): Range {
     const range = new Range();
     range.adjust(values);
@@ -35,6 +35,15 @@ export class Range {
       return;
     }
     throw new TypeError();
+  }
+
+  *[Symbol.iterator](): IterableIterator<number> {
+    if (!this.defined) {
+      throw new RangeError();
+    }
+    for (let index = this.#min; index <= this.#max; index++) {
+      yield index;
+    }
   }
 
   get defined(): boolean {

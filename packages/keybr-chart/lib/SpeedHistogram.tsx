@@ -13,7 +13,7 @@ export type Threshold = {
   readonly value: number;
 };
 
-export function DistributionChart({
+export function SpeedHistogram({
   distribution,
   thresholds,
   width,

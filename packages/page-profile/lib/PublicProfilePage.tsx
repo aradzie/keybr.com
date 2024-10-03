@@ -1,12 +1,11 @@
-import { makeSpeedDistribution } from "@keybr/chart";
 import { type NamedUser, Screen, UserName } from "@keybr/pages-shared";
 import { type KeyStatsMap } from "@keybr/result";
 import { ExplainerBoundary, Header } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { AccuracySection } from "./profile/AccuracySection.tsx";
 import { CalendarSection } from "./profile/CalendarSection.tsx";
-import { DistributionSection } from "./profile/DistributionSection.tsx";
 import { ExplainProfile } from "./profile/ExplainProfile.tsx";
+import { HistogramSection } from "./profile/HistogramSection.tsx";
 import { KeyFrequencyHeatmapSection } from "./profile/KeyFrequencyHeatmapSection.tsx";
 import { KeyFrequencyHistogramSection } from "./profile/KeyFrequencyHistogramSection.tsx";
 import { KeySpeedHistogramSection } from "./profile/KeySpeedHistogramSection.tsx";
@@ -44,7 +43,6 @@ function Content({
 }): ReactNode {
   const { results } = keyStatsMap;
   const summary = new ResultSummary(results);
-  const distribution = makeSpeedDistribution();
 
   return (
     <>
@@ -52,7 +50,7 @@ function Content({
 
       <AccuracySection summary={summary} />
 
-      <DistributionSection summary={summary} distribution={distribution} />
+      <HistogramSection summary={summary} />
 
       <ProgressOverviewSection keyStatsMap={keyStatsMap} />
 

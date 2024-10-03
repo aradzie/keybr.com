@@ -1,9 +1,14 @@
 import { Distribution } from "@keybr/math";
-import data from "./dist.json";
+import accuracy from "./dist_accuracy.json";
+import speed from "./dist_speed.json";
 import { bucketize, smooth } from "./util.ts";
 
 export function makeSpeedDistribution(): Distribution {
   return new Distribution(
-    bucketize(smooth(smooth(smooth(data, 3), 3), 3), 150),
+    bucketize(smooth(smooth(smooth(speed, 5), 5), 5), 150),
   );
+}
+
+export function makeAccuracyDistribution(): Distribution {
+  return new Distribution(smooth(smooth(smooth(accuracy, 5), 5), 5));
 }

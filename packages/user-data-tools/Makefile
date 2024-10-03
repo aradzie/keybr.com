@@ -1,5 +1,5 @@
 COMPILER=g++
-CFLAGS=-std=c++20 -Wall -Wextra -fwrapv -O2
+CFLAGS=-std=c++20 -Wall -Wextra -fwrapv -O2 -lm
 
 all:
 	$(COMPILER) $(CFLAGS) -o keybr-check-stats \

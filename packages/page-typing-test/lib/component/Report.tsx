@@ -1,4 +1,4 @@
-import { DistributionChart, makeSpeedDistribution } from "@keybr/chart";
+import { makeSpeedDistribution, SpeedHistogram } from "@keybr/chart";
 import { useIntlNumbers } from "@keybr/intl";
 import { type Stats } from "@keybr/textinput";
 import {
@@ -74,7 +74,7 @@ export const Report = memo(function Report({
         </div>
 
         <div className={styles.secondaryLine}>
-          <DistributionChart
+          <SpeedHistogram
             distribution={distribution}
             thresholds={[{ label: "Speed", value: speed }]}
             width="100%"

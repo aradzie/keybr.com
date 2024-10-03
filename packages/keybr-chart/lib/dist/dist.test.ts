@@ -1,6 +1,7 @@
 import test from "ava";
-import { makeSpeedDistribution } from "./dist.ts";
+import { makeAccuracyDistribution, makeSpeedDistribution } from "./dist.ts";
 
-test("data", (t) => {
+test("data size", (t) => {
   t.is(makeSpeedDistribution().length, 751);
+  t.is(makeAccuracyDistribution().length, 1001);
 });
