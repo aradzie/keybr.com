@@ -3,29 +3,16 @@ body {
   overflow-block: scroll;
   color: var(--text-color);
   background-color: var(--background-color);
-
-  /*
-   * Instead of using "background-attachment: fixed", promote background image
-   * to its own layer with GPU composition so that page scrolling will be
-   * smoother in Chrome.
-   */
-  &::before {
-    content: " ";
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    background-image: var(--Body__background-image);
-    background-size: cover;
-    background-repeat: no-repeat;
-    will-change: transform;
-  }
+  background-image: var(--background-image, none);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 :fullscreen {
   overflow: auto !important;
   color: var(--text-color);
   background-color: var(--background-color);
-  background-image: var(--Body__background-image);
+  background-image: var(--background-image, none);
   background-size: cover;
   background-repeat: no-repeat;
 }
