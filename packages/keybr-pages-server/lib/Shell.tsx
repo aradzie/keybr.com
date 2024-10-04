@@ -1,10 +1,13 @@
+import { type IncomingHeaders } from "@fastr/headers";
 import { FavIconAssets, ScriptAssets, StylesheetAssets } from "@keybr/assets";
 import { getDir } from "@keybr/intl";
 import { ThemePrefs, useTheme } from "@keybr/lnf";
 import {
   isPremiumUser,
+  LoadingProgress,
   PageDataScript,
   type PageInfo,
+  Pages,
   Root,
   usePageData,
 } from "@keybr/pages-shared";
@@ -15,15 +18,16 @@ import {
 } from "@keybr/thirdparties";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
+import { isBot } from "./bot.ts";
 import { AltLangLinks, favIcons, Metas } from "./meta.tsx";
 
 export function Shell({
   page,
-  children,
+  headers,
 }: {
   readonly page: PageInfo;
-  readonly children?: ReactNode;
-}): ReactNode {
+  readonly headers: IncomingHeaders;
+}) {
   const { publicUser } = usePageData();
   return (
     <Html>
@@ -38,12 +42,14 @@ export function Shell({
           </>
         )}
       </Head>
-      <Body>{children}</Body>
+      <Body>
+        {isBot(headers) ? <Content page={page} /> : <LoadingProgress />}
+      </Body>
     </Html>
   );
 }
 
-function Html({ children }: { readonly children?: ReactNode }): ReactNode {
+function Html({ children }: { readonly children?: ReactNode }) {
   const { locale } = usePageData();
   const theme = useTheme();
   return (
@@ -64,7 +70,7 @@ function Head({
 }: {
   readonly page: PageInfo;
   readonly children?: ReactNode;
-}): ReactNode {
+}) {
   const { formatMessage } = useIntl();
   return (
     <head>
@@ -82,10 +88,42 @@ function Head({
   );
 }
 
-function Body({ children }: { readonly children?: ReactNode }): ReactNode {
+function Body({ children }: { readonly children?: ReactNode }) {
   return (
     <body>
       <Root>{children}</Root>
     </body>
+  );
+}
+
+function Content({ page }: { readonly page: PageInfo }) {
+  const { formatMessage, locale } = useIntl();
+  return (
+    <>
+      <h1>{formatMessage(page.link.label)}</h1>
+      {page.link.title && <p>{formatMessage(page.link.title)}</p>}
+      <nav>
+        <ul>
+          {[
+            Pages.practice,
+            Pages.profile,
+            Pages.typingTest,
+            Pages.multiplayer,
+            Pages.wordCount,
+            Pages.layouts,
+            Pages.help,
+          ].map(({ path, link }, index) => (
+            <li key={index}>
+              <a
+                href={Pages.intlPath(path, locale)}
+                title={link.title && formatMessage(link.title)}
+              >
+                {formatMessage(link.label)}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </>
   );
 }

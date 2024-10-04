@@ -1,7 +1,7 @@
-import type { FavIconLink } from "@keybr/assets";
+import { type FavIconLink } from "@keybr/assets";
 import { allLocales } from "@keybr/intl";
 import { type PageInfo, Pages, usePageData } from "@keybr/pages-shared";
-import type { ReactNode } from "react";
+import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
 
 export function Metas({ page }: { readonly page: PageInfo }): ReactNode {

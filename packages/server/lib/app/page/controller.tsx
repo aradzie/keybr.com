@@ -7,7 +7,6 @@ import { defaultLocale, loadIntl, PreferredLocaleContext } from "@keybr/intl";
 import { ThemeContext, type ThemeControl, ThemePrefs } from "@keybr/lnf";
 import { Shell, View } from "@keybr/pages-server";
 import {
-  LoadingProgress,
   type PageData,
   PageDataContext,
   PageInfo,
@@ -235,9 +234,7 @@ export class Controller {
             <ThemeContext.Provider
               value={themeControl(new ThemePrefs(pageData.prefs))}
             >
-              <Shell page={page}>
-                <LoadingProgress />
-              </Shell>
+              <Shell page={page} headers={ctx.request.headers} />
             </ThemeContext.Provider>
           </PageDataContext.Provider>
         </PreferredLocaleContext.Provider>
