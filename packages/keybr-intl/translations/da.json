@@ -114,6 +114,7 @@
   "lesson.notCalibrated.message": "Ikke kalibreret, har brug for flere prøver.",
   "lesson.panel.currentKey.label": "Nuværende tast",
   "lesson.panel.dailyGoal.label": "Daglige mål",
+  "lesson.panel.gauges.label": "Målinger",
   "lesson.panel.keySet.label": "Alle taster",
   "lesson.panel.streakList.label": "Nøjagtighed",
   "lessonType.books.description": "Generer skrive lektioner fra tekster fra bøger. All knapper er inkluderet som standard. Denne tilstand er for de dygtige.",

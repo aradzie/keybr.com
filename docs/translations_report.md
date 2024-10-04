@@ -64,15 +64,14 @@ Untranslated: 12 messages, 190 words
 
 # Danish
 
-Translated: 415 messages, 5098 words
+Translated: 416 messages, 5099 words
 
-Untranslated: 10 messages, 11 words
+Untranslated: 9 messages, 10 words
 
 * *Score*
 * *Score*
 * *Layout*
 * *Layout:*
-* *Metrics*
 * *Layouts*
 * *Position*
 * *Multiplayer*
@@ -81,20 +80,16 @@ Untranslated: 10 messages, 11 words
 
 # German
 
-Translated: 415 messages, 5077 words
+Translated: 419 messages, 5103 words
 
-Untranslated: 10 messages, 32 words
+Untranslated: 6 messages, 6 words
 
-* *Books*
 * *Layout*
 * *Layout:*
 * *Layouts*
 * *Syntax:*
 * *Position*
 * *Alphabet:*
-* *Explain charts*
-* *Hide explanations*
-* *Generate typing lessons from the text of a book. All keys ar...*
 
 # Greek
 
@@ -154,11 +149,10 @@ Untranslated: 330 messages, 4158 words
 
 # Spanish
 
-Translated: 423 messages, 4923 words
+Translated: 424 messages, 4997 words
 
-Untranslated: 2 messages, 186 words
+Untranslated: 1 messages, 112 words
 
-* *<p>This indicator shows details about the letter with increa...*
 * *<h1>Keyboard Layouts</h1><p>These charts visualize the effic...*
 
 # Estonian
