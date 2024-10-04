@@ -9,11 +9,12 @@ import {
 } from "@keybr/intl";
 import { type IntlShape } from "react-intl";
 
-export const localePattern = `(${allLocales
+export const localePattern = `(${[...allLocales, "zh-Hans", "zh-Hant"]
   .filter((locale) => locale !== defaultLocale)
   .join("|")})`;
 
 export async function pIntl(ctx: Context, value: LocaleId): Promise<IntlShape> {
+  value = value.toLowerCase();
   if (allLocales.includes(value)) {
     return await loadIntl(value);
   } else {
