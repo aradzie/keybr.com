@@ -4,7 +4,7 @@ import { ThemePrefs, useTheme } from "@keybr/lnf";
 import {
   isPremiumUser,
   PageDataScript,
-  type Pages,
+  type PageInfo,
   Root,
   usePageData,
 } from "@keybr/pages-shared";
@@ -15,19 +15,19 @@ import {
 } from "@keybr/thirdparties";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
-import { AltLangLinks, favIcons, MetaList } from "./meta.tsx";
+import { AltLangLinks, favIcons, Metas } from "./meta.tsx";
 
 export function Shell({
-  meta,
+  page,
   children,
 }: {
-  readonly meta: Pages.Meta;
+  readonly page: PageInfo;
   readonly children?: ReactNode;
 }): ReactNode {
   const { publicUser } = usePageData();
   return (
     <Html>
-      <Head meta={meta}>
+      <Head page={page}>
         {isPremiumUser(publicUser) || (
           <>
             <CloudflareAnalytics />
@@ -59,30 +59,21 @@ function Html({ children }: { readonly children?: ReactNode }): ReactNode {
 }
 
 function Head({
-  meta: {
-    path,
-    meta: { title, description },
-  },
+  page,
   children,
 }: {
-  readonly meta: Pages.Meta;
+  readonly page: PageInfo;
   readonly children?: ReactNode;
 }): ReactNode {
   const { formatMessage } = useIntl();
   return (
     <head>
       <meta charSet="UTF-8" />
-      <title>{typeof title === "string" ? title : formatMessage(title)}</title>
+      <title>{formatMessage(page.title)}</title>
       <StylesheetAssets entrypoint="browser" />
       <FavIconAssets links={favIcons} />
-      <AltLangLinks path={path} />
-      <MetaList
-        description={
-          typeof description === "string"
-            ? description
-            : formatMessage(description)
-        }
-      />
+      <AltLangLinks page={page} />
+      <Metas page={page} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <PageDataScript />
       <ScriptAssets entrypoint="browser" />

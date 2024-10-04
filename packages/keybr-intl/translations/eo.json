@@ -79,5 +79,6 @@
   "lesson.indicator.focused": "Klavo kun pliiĝita ofteco. Vi bezonas la plej grandan tempon por trovi ĉi tiun klavon, do la algoritmo inkluzivatigis en ĉiu produktitajn vortojn.",
   "lesson.panel.currentKey.label": "Nuna klavo",
   "lesson.panel.dailyGoal.label": "Ĉiutaga celo",
-  "lesson.panel.gauges.label": "Metrikaĵoj"
+  "lesson.panel.gauges.label": "Metrikaĵoj",
+  "page.account.title": "Konta"
 }

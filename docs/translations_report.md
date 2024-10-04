@@ -1,6 +1,6 @@
 # Arabic
 
-Translated: 423 messages, 5084 words
+Translated: 421 messages, 5083 words
 
 Untranslated: 4 messages, 26 words
 
@@ -11,13 +11,13 @@ Untranslated: 4 messages, 26 words
 
 # Bulgarian
 
-Translated: 427 messages, 5110 words
+Translated: 425 messages, 5109 words
 
 Untranslated: 0 messages, 0 words
 
 # Catalan
 
-Translated: 397 messages, 3641 words
+Translated: 395 messages, 3640 words
 
 Untranslated: 30 messages, 1469 words
 
@@ -45,7 +45,7 @@ Untranslated: 30 messages, 1469 words
 
 # Czech
 
-Translated: 415 messages, 4920 words
+Translated: 413 messages, 4919 words
 
 Untranslated: 12 messages, 190 words
 
@@ -64,7 +64,7 @@ Untranslated: 12 messages, 190 words
 
 # Danish
 
-Translated: 417 messages, 5099 words
+Translated: 415 messages, 5098 words
 
 Untranslated: 10 messages, 11 words
 
@@ -81,7 +81,7 @@ Untranslated: 10 messages, 11 words
 
 # German
 
-Translated: 417 messages, 5078 words
+Translated: 415 messages, 5077 words
 
 Untranslated: 10 messages, 32 words
 
@@ -98,7 +98,7 @@ Untranslated: 10 messages, 32 words
 
 # Greek
 
-Translated: 388 messages, 4676 words
+Translated: 386 messages, 4675 words
 
 Untranslated: 39 messages, 434 words
 
@@ -126,9 +126,9 @@ Untranslated: 39 messages, 434 words
 
 # Esperanto
 
-Translated: 81 messages, 859 words
+Translated: 82 messages, 860 words
 
-Untranslated: 333 messages, 4160 words
+Untranslated: 330 messages, 4158 words
 
 * *GO!*
 * *Time*
@@ -148,13 +148,13 @@ Untranslated: 333 messages, 4160 words
 * *Close*
 * *Errors*
 * *Typing*
+* *Sign-In*
 * *Numbers*
-* *Lessons*
 * ...
 
 # Spanish
 
-Translated: 425 messages, 4924 words
+Translated: 423 messages, 4923 words
 
 Untranslated: 2 messages, 186 words
 
@@ -163,7 +163,7 @@ Untranslated: 2 messages, 186 words
 
 # Estonian
 
-Translated: 414 messages, 5029 words
+Translated: 412 messages, 5028 words
 
 Untranslated: 13 messages, 81 words
 
@@ -183,7 +183,7 @@ Untranslated: 13 messages, 81 words
 
 # Persian
 
-Translated: 368 messages, 2979 words
+Translated: 366 messages, 2978 words
 
 Untranslated: 57 messages, 2105 words
 
@@ -211,7 +211,7 @@ Untranslated: 57 messages, 2105 words
 
 # French
 
-Translated: 409 messages, 4721 words
+Translated: 407 messages, 4720 words
 
 Untranslated: 18 messages, 389 words
 
@@ -236,7 +236,7 @@ Untranslated: 18 messages, 389 words
 
 # Hebrew
 
-Translated: 406 messages, 4737 words
+Translated: 404 messages, 4736 words
 
 Untranslated: 21 messages, 373 words
 
@@ -264,7 +264,7 @@ Untranslated: 21 messages, 373 words
 
 # Croatian
 
-Translated: 419 messages, 5080 words
+Translated: 417 messages, 5079 words
 
 Untranslated: 8 messages, 30 words
 
@@ -279,7 +279,7 @@ Untranslated: 8 messages, 30 words
 
 # Hungarian
 
-Translated: 365 messages, 4112 words
+Translated: 363 messages, 4111 words
 
 Untranslated: 62 messages, 998 words
 
@@ -307,9 +307,9 @@ Untranslated: 62 messages, 998 words
 
 # Indonesian
 
-Translated: 266 messages, 1969 words
+Translated: 266 messages, 1970 words
 
-Untranslated: 154 messages, 3069 words
+Untranslated: 152 messages, 3067 words
 
 * *GO!*
 * *Font:*
@@ -335,21 +335,22 @@ Untranslated: 154 messages, 3069 words
 
 # Italian
 
-Translated: 421 messages, 5103 words
+Translated: 418 messages, 5101 words
 
-Untranslated: 5 messages, 5 words
+Untranslated: 6 messages, 6 words
 
 * *Font:*
 * *Layout*
 * *Layout:*
+* *Account*
 * *Layouts*
 * *Volume:*
 
 # Japanese
 
-Translated: 254 messages, 2227 words
+Translated: 256 messages, 2234 words
 
-Untranslated: 163 messages, 2810 words
+Untranslated: 159 messages, 2802 words
 
 * *GO!*
 * *Books*
@@ -368,16 +369,16 @@ Untranslated: 163 messages, 2810 words
 * *Top score!*
 * *Top speed!*
 * *Last speed*
-* *My Profile*
 * *Box cursor*
 * *All Sounds*
+* *Source Code*
 * ...
 
 # Korean
 
-Translated: 170 messages, 1171 words
+Translated: 168 messages, 1168 words
 
-Untranslated: 251 messages, 3876 words
+Untranslated: 251 messages, 3878 words
 
 * *Copy*
 * *Done*
@@ -403,7 +404,7 @@ Untranslated: 251 messages, 3876 words
 
 # Nepali
 
-Translated: 390 messages, 4678 words
+Translated: 388 messages, 4677 words
 
 Untranslated: 37 messages, 432 words
 
@@ -431,13 +432,14 @@ Untranslated: 37 messages, 432 words
 
 # Dutch
 
-Translated: 415 messages, 5092 words
+Translated: 412 messages, 5090 words
 
-Untranslated: 11 messages, 16 words
+Untranslated: 12 messages, 17 words
 
 * *Score*
 * *Score*
 * *Letters*
+* *Account*
 * *Volume:*
 * *Multiplayer*
 * *Multiplayer*
@@ -449,7 +451,7 @@ Untranslated: 11 messages, 16 words
 
 # Polish
 
-Translated: 423 messages, 5084 words
+Translated: 421 messages, 5083 words
 
 Untranslated: 4 messages, 26 words
 
@@ -460,7 +462,7 @@ Untranslated: 4 messages, 26 words
 
 # Brazilian Portuguese
 
-Translated: 419 messages, 5079 words
+Translated: 417 messages, 5078 words
 
 Untranslated: 7 messages, 29 words
 
@@ -474,7 +476,7 @@ Untranslated: 7 messages, 29 words
 
 # European Portuguese
 
-Translated: 415 messages, 5070 words
+Translated: 413 messages, 5069 words
 
 Untranslated: 12 messages, 40 words
 
@@ -493,13 +495,14 @@ Untranslated: 12 messages, 40 words
 
 # Romanian
 
-Translated: 380 messages, 3797 words
+Translated: 377 messages, 3795 words
 
-Untranslated: 36 messages, 1235 words
+Untranslated: 37 messages, 1236 words
 
 * *Font:*
 * *Layout*
 * *Layout:*
+* *Account*
 * *Layouts*
 * *Translate*
 * *Multiplayer*
@@ -516,12 +519,11 @@ Untranslated: 36 messages, 1235 words
 * *<a>Example 1</a>, from 30 to 70 WPM after 4 hours 20 minutes...*
 * *<a>Example 2</a>, from 35 to 70 WPM after 2 hours and 20 min...*
 * *<p>Thank you for purchasing a premium account! Now you can e...*
-* *<a>Example 3</a>, a decent jump from less than 20 to 40 WPM ...*
 * ...
 
 # Russian
 
-Translated: 423 messages, 5084 words
+Translated: 421 messages, 5083 words
 
 Untranslated: 4 messages, 26 words
 
@@ -532,7 +534,7 @@ Untranslated: 4 messages, 26 words
 
 # Swedish
 
-Translated: 420 messages, 5103 words
+Translated: 418 messages, 5102 words
 
 Untranslated: 7 messages, 7 words
 
@@ -546,22 +548,22 @@ Untranslated: 7 messages, 7 words
 
 # Thai
 
-Translated: 427 messages, 5110 words
+Translated: 425 messages, 5109 words
 
 Untranslated: 0 messages, 0 words
 
 # Turkish
 
-Translated: 265 messages, 1798 words
+Translated: 263 messages, 1795 words
 
-Untranslated: 153 messages, 3237 words
+Untranslated: 153 messages, 3239 words
 
 * *Help*
 * *Help*
 * *Books*
 * *Font:*
-* *Metrics*
 * *Sign-In*
+* *Metrics*
 * *Preview*
 * *Volume:*
 * *Syntax:*
@@ -580,7 +582,7 @@ Untranslated: 153 messages, 3237 words
 
 # Ukrainian
 
-Translated: 425 messages, 5106 words
+Translated: 423 messages, 5105 words
 
 Untranslated: 2 messages, 4 words
 
@@ -589,7 +591,7 @@ Untranslated: 2 messages, 4 words
 
 # Vietnamese
 
-Translated: 340 messages, 2196 words
+Translated: 338 messages, 2195 words
 
 Untranslated: 82 messages, 2858 words
 
@@ -617,7 +619,7 @@ Untranslated: 82 messages, 2858 words
 
 # Simplified Chinese
 
-Translated: 426 messages, 5103 words
+Translated: 424 messages, 5102 words
 
 Untranslated: 1 messages, 7 words
 
@@ -625,7 +627,7 @@ Untranslated: 1 messages, 7 words
 
 # Traditional Chinese
 
-Translated: 423 messages, 5084 words
+Translated: 421 messages, 5083 words
 
 Untranslated: 4 messages, 26 words
 

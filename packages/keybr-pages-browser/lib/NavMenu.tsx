@@ -1,5 +1,11 @@
 import { ThemeSwitcher } from "@keybr/lnf";
-import { type AnyUser, Avatar, Pages, usePageData } from "@keybr/pages-shared";
+import {
+  type AnyUser,
+  Avatar,
+  type PageInfo,
+  Pages,
+  usePageData,
+} from "@keybr/pages-shared";
 import { Icon } from "@keybr/widget";
 import { clsx } from "clsx";
 import { type ReactNode } from "react";
@@ -25,35 +31,35 @@ export function NavMenu({
       </MenuItem>
 
       <MenuItem>
-        <MenuItemLink meta={Pages.practice} />
+        <MenuItemLink page={Pages.practice} />
       </MenuItem>
 
       <MenuItem>
-        <MenuItemLink meta={Pages.profile} />
+        <MenuItemLink page={Pages.profile} />
       </MenuItem>
 
       <MenuItem>
-        <MenuItemLink meta={Pages.help} />
+        <MenuItemLink page={Pages.help} />
       </MenuItem>
 
       <MenuItem>
-        <MenuItemLink meta={Pages.highScores} />
+        <MenuItemLink page={Pages.highScores} />
       </MenuItem>
 
       <MenuItem>
-        <MenuItemLink meta={Pages.multiplayer} />
+        <MenuItemLink page={Pages.multiplayer} />
       </MenuItem>
 
       <MenuItem>
-        <MenuItemLink meta={Pages.typingTest} />
+        <MenuItemLink page={Pages.typingTest} />
       </MenuItem>
 
       <MenuItem>
-        <MenuItemLink meta={Pages.layouts} />
+        <MenuItemLink page={Pages.layouts} />
       </MenuItem>
 
       <MenuItem>
-        <MenuItemLink meta={Pages.wordCount} />
+        <MenuItemLink page={Pages.wordCount} />
       </MenuItem>
 
       <MenuItem>
@@ -78,11 +84,11 @@ function AccountLink({ user }: { readonly user: AnyUser }): ReactNode {
       title={
         user.id != null
           ? formatMessage({
-              id: "page.account.named.link.description",
+              id: "page.account.link.named.description",
               defaultMessage: "Manage your online account.",
             })
           : formatMessage({
-              id: "page.account.anonymous.link.description",
+              id: "page.account.link.anonymous.description",
               defaultMessage: "Sign-in for an online account.",
             })
       }
@@ -92,7 +98,7 @@ function AccountLink({ user }: { readonly user: AnyUser }): ReactNode {
         {user.id != null
           ? user.name
           : formatMessage({
-              id: "page.account.anonymous.link.name",
+              id: "account.widget.signIn.label",
               defaultMessage: "Sign-In",
             })}
       </span>
@@ -101,13 +107,12 @@ function AccountLink({ user }: { readonly user: AnyUser }): ReactNode {
 }
 
 function MenuItemLink({
-  meta: {
+  page: {
     path,
-    link: { label, title },
-    icon,
+    link: { label, title, icon },
   },
 }: {
-  readonly meta: Pages.Meta;
+  readonly page: PageInfo;
 }): ReactNode {
   const { formatMessage } = useIntl();
   return (
@@ -116,12 +121,10 @@ function MenuItemLink({
         clsx(styles.link, isActive && styles.isActive)
       }
       to={path}
-      title={typeof title === "string" ? title : formatMessage(title)}
+      title={title && formatMessage(title)}
     >
-      <Icon shape={icon} />
-      <span className={styles.label}>
-        {typeof label === "string" ? label : formatMessage(label)}
-      </span>
+      <Icon shape={icon ?? ""} />
+      <span className={styles.label}>{formatMessage(label)}</span>
     </NavLink>
   );
 }

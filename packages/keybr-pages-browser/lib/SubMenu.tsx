@@ -22,16 +22,10 @@ export function SubMenu({
       <MailLink />
       <DiscordLink />
       <GithubLink />
-      <RouterLink
-        to={Pages.termsOfService.path}
-        title={formatMessage(Pages.termsOfService.link.title)}
-      >
+      <RouterLink to={Pages.termsOfService.path}>
         {formatMessage(Pages.termsOfService.link.label)}
       </RouterLink>
-      <RouterLink
-        to={Pages.privacyPolicy.path}
-        title={formatMessage(Pages.privacyPolicy.link.title)}
-      >
+      <RouterLink to={Pages.privacyPolicy.path}>
         {formatMessage(Pages.privacyPolicy.link.label)}
       </RouterLink>
       <LocaleSwitcher currentPath={currentPath} />

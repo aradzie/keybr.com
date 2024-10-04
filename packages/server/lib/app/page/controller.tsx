@@ -10,6 +10,7 @@ import {
   LoadingProgress,
   type PageData,
   PageDataContext,
+  PageInfo,
   Pages,
 } from "@keybr/pages-shared";
 import { SettingsDatabase } from "@keybr/settings-database";
@@ -214,7 +215,7 @@ export class Controller {
 
   async renderPage(
     ctx: Context<RouterState & AuthState>,
-    meta: Pages.Meta,
+    page: PageInfo,
     intl: IntlShape | null = null,
   ): Promise<string> {
     if (intl == null) {
@@ -234,7 +235,7 @@ export class Controller {
             <ThemeContext.Provider
               value={themeControl(new ThemePrefs(pageData.prefs))}
             >
-              <Shell meta={meta}>
+              <Shell page={page}>
                 <LoadingProgress />
               </Shell>
             </ThemeContext.Provider>

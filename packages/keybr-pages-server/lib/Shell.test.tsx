@@ -1,9 +1,10 @@
 import { Manifest, ManifestContext } from "@keybr/assets";
 import { FakeIntlProvider } from "@keybr/intl";
-import { PageDataContext, type Pages } from "@keybr/pages-shared";
+import { PageDataContext, type PageInfo } from "@keybr/pages-shared";
 import test from "ava";
 import { load } from "cheerio";
 import { renderToStaticMarkup } from "react-dom/server";
+import { defineMessage } from "react-intl";
 import { Shell } from "./Shell.tsx";
 
 test("render", (t) => {
@@ -28,14 +29,24 @@ test("render", (t) => {
       >
         <FakeIntlProvider>
           <Shell
-            meta={
+            page={
               {
                 path: "/",
-                meta: {
-                  title: "example title",
-                  description: "example description",
-                },
-              } as Pages.Meta
+                title: defineMessage({
+                  id: "page.practice.title",
+                  defaultMessage: "Typing Practice",
+                }),
+                meta: [
+                  {
+                    name: "description",
+                    content: defineMessage({
+                      id: "page.practice.link.description",
+                      defaultMessage:
+                        "Practice typing lessons to improve your typing speed.",
+                    }),
+                  },
+                ],
+              } as PageInfo
             }
           >
             <div>body</div>
@@ -81,14 +92,24 @@ test("render alt", (t) => {
       >
         <FakeIntlProvider>
           <Shell
-            meta={
+            page={
               {
                 path: "/",
-                meta: {
-                  title: "example title",
-                  description: "example description",
-                },
-              } as Pages.Meta
+                title: defineMessage({
+                  id: "page.practice.title",
+                  defaultMessage: "Typing Practice",
+                }),
+                meta: [
+                  {
+                    name: "description",
+                    content: defineMessage({
+                      id: "page.practice.link.description",
+                      defaultMessage:
+                        "Practice typing lessons to improve your typing speed.",
+                    }),
+                  },
+                ],
+              } as PageInfo
             }
           >
             <div>body</div>

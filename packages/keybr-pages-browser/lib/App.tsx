@@ -13,8 +13,8 @@ import { createRoot } from "react-dom/client";
 import { useIntl } from "react-intl";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { IntlLoader } from "./loader/IntlLoader.tsx";
-import { Meta } from "./Meta.tsx";
 import { Template } from "./Template.tsx";
+import { Title } from "./Title.tsx";
 
 export function main() {
   createRoot(querySelector(Root.selector)).render(<App />);
@@ -56,7 +56,7 @@ function PageRoutes(): ReactNode {
           path={Pages.practice.path}
           element={
             <Template path={Pages.practice.path}>
-              <Meta page={Pages.practice} />
+              <Title page={Pages.practice} />
               <Suspense fallback={<LoadingProgress />}>
                 <PracticePage />
               </Suspense>
@@ -67,7 +67,7 @@ function PageRoutes(): ReactNode {
           path={Pages.account.path}
           element={
             <Template path={Pages.account.path}>
-              <Meta page={Pages.account} />
+              <Title page={Pages.account} />
               <Suspense fallback={<LoadingProgress />}>
                 <AccountPage />
               </Suspense>
@@ -78,7 +78,7 @@ function PageRoutes(): ReactNode {
           path={Pages.help.path}
           element={
             <Template path={Pages.help.path}>
-              <Meta page={Pages.help} />
+              <Title page={Pages.help} />
               <Suspense fallback={<LoadingProgress />}>
                 <HelpPage />
               </Suspense>
@@ -89,7 +89,7 @@ function PageRoutes(): ReactNode {
           path={Pages.highScores.path}
           element={
             <Template path={Pages.highScores.path}>
-              <Meta page={Pages.highScores} />
+              <Title page={Pages.highScores} />
               <Suspense fallback={<LoadingProgress />}>
                 <HighScorePage />
               </Suspense>
@@ -100,7 +100,7 @@ function PageRoutes(): ReactNode {
           path={Pages.layouts.path}
           element={
             <Template path={Pages.layouts.path}>
-              <Meta page={Pages.layouts} />
+              <Title page={Pages.layouts} />
               <Suspense fallback={<LoadingProgress />}>
                 <LayoutsPage />
               </Suspense>
@@ -111,7 +111,7 @@ function PageRoutes(): ReactNode {
           path={Pages.multiplayer.path}
           element={
             <Template path={Pages.multiplayer.path}>
-              <Meta page={Pages.multiplayer} />
+              <Title page={Pages.multiplayer} />
               <Suspense fallback={<LoadingProgress />}>
                 <MultiplayerPage />
               </Suspense>
@@ -122,7 +122,7 @@ function PageRoutes(): ReactNode {
           path={`${Pages.profile.path}`}
           element={
             <Template path={Pages.profile.path}>
-              <Meta page={Pages.profile} />
+              <Title page={Pages.profile} />
               <Suspense fallback={<LoadingProgress />}>
                 <ProfilePage />
               </Suspense>
@@ -133,7 +133,7 @@ function PageRoutes(): ReactNode {
           path={`${Pages.profile.path}/:userId`}
           element={
             <Template path={Pages.profile.path}>
-              <Meta page={Pages.profile} />
+              <Title page={Pages.profile} />
               <Suspense fallback={<LoadingProgress />}>
                 <ProfilePage />
               </Suspense>
@@ -144,7 +144,7 @@ function PageRoutes(): ReactNode {
           path={Pages.typingTest.path}
           element={
             <Template path={Pages.typingTest.path}>
-              <Meta page={Pages.typingTest} />
+              <Title page={Pages.typingTest} />
               <Suspense fallback={<LoadingProgress />}>
                 <TypingTestPage />
               </Suspense>
@@ -155,7 +155,7 @@ function PageRoutes(): ReactNode {
           path={Pages.wordCount.path}
           element={
             <Template path={Pages.wordCount.path}>
-              <Meta page={Pages.wordCount} />
+              <Title page={Pages.wordCount} />
               <Suspense fallback={<LoadingProgress />}>
                 <WordCountPage />
               </Suspense>
@@ -166,7 +166,7 @@ function PageRoutes(): ReactNode {
           path={Pages.termsOfService.path}
           element={
             <Template path={Pages.termsOfService.path}>
-              <Meta page={Pages.termsOfService} />
+              <Title page={Pages.termsOfService} />
               <Suspense fallback={<LoadingProgress />}>
                 <TermsOfServicePage />
               </Suspense>
@@ -177,7 +177,7 @@ function PageRoutes(): ReactNode {
           path={Pages.privacyPolicy.path}
           element={
             <Template path={Pages.privacyPolicy.path}>
-              <Meta page={Pages.privacyPolicy} />
+              <Title page={Pages.privacyPolicy} />
               <Suspense fallback={<LoadingProgress />}>
                 <PrivacyPolicyPage />
               </Suspense>
@@ -188,7 +188,7 @@ function PageRoutes(): ReactNode {
           path="*"
           element={
             <Template path={Pages.practice.path}>
-              <Meta page={Pages.practice} />
+              <Title page={Pages.practice} />
               <Suspense fallback={<LoadingProgress />}>
                 <PracticePage />
               </Suspense>
