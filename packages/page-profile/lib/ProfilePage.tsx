@@ -2,21 +2,21 @@ import { type NamedUser, Screen, usePageData } from "@keybr/pages-shared";
 import { type KeyStatsMap } from "@keybr/result";
 import { ExplainerBoundary } from "@keybr/widget";
 import { type ReactNode } from "react";
-import { AccuracySection } from "./profile/AccuracySection.tsx";
+import { AccuracyStreaksSection } from "./profile/AccuracyStreaksSection.tsx";
 import { CalendarSection } from "./profile/CalendarSection.tsx";
 import { ExplainProfile } from "./profile/ExplainProfile.tsx";
 import { FooterSection } from "./profile/FooterSection.tsx";
-import { HistogramSection } from "./profile/HistogramSection.tsx";
+import { HistogramsSection } from "./profile/HistogramsSection.tsx";
 import { KeyFrequencyHeatmapSection } from "./profile/KeyFrequencyHeatmapSection.tsx";
 import { KeyFrequencyHistogramSection } from "./profile/KeyFrequencyHistogramSection.tsx";
+import { KeySpeedChartSection } from "./profile/KeySpeedChartSection.tsx";
 import { KeySpeedHistogramSection } from "./profile/KeySpeedHistogramSection.tsx";
-import { KeyTypingSpeedSection } from "./profile/KeyTypingSpeedSection.tsx";
 import { ProgressOverviewSection } from "./profile/ProgressOverviewSection.tsx";
 import { ResultGrouper } from "./profile/ResultGrouper.tsx";
 import { ResultSummary } from "./profile/resultsummary.ts";
 import { ShareProfileLink } from "./profile/ShareProfileLink.tsx";
+import { SpeedChartSection } from "./profile/SpeedChartSection.tsx";
 import { AllTimeSummary, TodaySummary } from "./profile/Summary.tsx";
-import { TypingSpeedSection } from "./profile/TypingSpeedSection.tsx";
 
 export function ProfilePage(): ReactNode {
   return (
@@ -46,15 +46,15 @@ function Content({
 
       <TodaySummary summary={summary} />
 
-      <AccuracySection summary={summary} />
+      <AccuracyStreaksSection summary={summary} />
 
-      <HistogramSection summary={summary} />
+      <HistogramsSection summary={summary} />
 
       <ProgressOverviewSection keyStatsMap={keyStatsMap} />
 
-      <TypingSpeedSection results={results} />
+      <SpeedChartSection results={results} />
 
-      <KeyTypingSpeedSection keyStatsMap={keyStatsMap} />
+      <KeySpeedChartSection keyStatsMap={keyStatsMap} />
 
       <KeySpeedHistogramSection keyStatsMap={keyStatsMap} />
 

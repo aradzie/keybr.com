@@ -16,7 +16,7 @@ import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { type ResultSummary } from "./resultsummary.ts";
 
-export function AccuracySection({
+export function AccuracyStreaksSection({
   summary,
 }: {
   readonly summary: ResultSummary;

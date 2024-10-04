@@ -7,7 +7,7 @@ import { FormattedMessage } from "react-intl";
 import { SmoothnessRange } from "./SmoothnessRange.tsx";
 import { ChartControls, ChartWrapper } from "./widgets.tsx";
 
-export function TypingSpeedSection({
+export function SpeedChartSection({
   results,
 }: {
   readonly results: readonly Result[];

@@ -5,7 +5,7 @@ import { AccuracyHistogramSection } from "./AccuracyHistogramSection.tsx";
 import { type ResultSummary } from "./resultsummary.ts";
 import { SpeedHistogramSection } from "./SpeedHistogramSection.tsx";
 
-export function HistogramSection({
+export function HistogramsSection({
   summary,
 }: {
   readonly summary: ResultSummary;

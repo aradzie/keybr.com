@@ -3,7 +3,7 @@ import { LocalDate, ResultFaker } from "@keybr/result";
 import { FakeSettingsContext } from "@keybr/settings";
 import { render } from "@testing-library/react";
 import test from "ava";
-import { AccuracySection } from "./AccuracySection.tsx";
+import { AccuracyStreaksSection } from "./AccuracyStreaksSection.tsx";
 import { ResultSummary } from "./resultsummary.ts";
 
 test.serial("no streaks", (t) => {
@@ -16,7 +16,7 @@ test.serial("no streaks", (t) => {
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
-        <AccuracySection summary={summary} />
+        <AccuracyStreaksSection summary={summary} />
       </FakeSettingsContext>
     </FakeIntlProvider>,
   );
@@ -40,7 +40,7 @@ test.serial("one streak", (t) => {
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
-        <AccuracySection summary={summary} />
+        <AccuracyStreaksSection summary={summary} />
       </FakeSettingsContext>
     </FakeIntlProvider>,
   );

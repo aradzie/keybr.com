@@ -10,7 +10,7 @@ import { FormattedMessage } from "react-intl";
 import { SmoothnessRange } from "./SmoothnessRange.tsx";
 import { ChartControls, ChartWrapper } from "./widgets.tsx";
 
-export function KeyTypingSpeedSection({
+export function KeySpeedChartSection({
   keyStatsMap,
 }: {
   readonly keyStatsMap: KeyStatsMap;
