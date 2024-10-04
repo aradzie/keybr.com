@@ -1,3 +1,6 @@
 User-agent: *
+Disallow: /auth/*
+Disallow: /login/*
+Disallow: /_/*
 Disallow: /assets/*.js
 Disallow: /assets/*.css
