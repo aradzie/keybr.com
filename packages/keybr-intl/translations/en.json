@@ -102,7 +102,7 @@
   "layouts.stats.topRowKeys.description": "The percentage of keys typed on the Tab row, the less the better.",
   "layouts.stats.topRowKeys.name": "Keys on the top row:",
   "learningRate.alreadyUnlocked": "This letter is already unlocked.",
-  "learningRate.remainingLessons": "Approximately {remainingLessons} lessons remaining to unlock this letter ({certainty} certainty).",
+  "learningRate.remainingLessons": "Approximately {remainingLessons} lessons remaining to unlock the next letter ({certainty} certainty).",
   "learningRate.unknown": "Need more data to compute the remaining lessons to unlock this letter.",
   "lesson.allKeysUnlocked.message": "All keys are unlocked.",
   "lesson.characterName": "Character ‘{name}’",
