@@ -36,7 +36,7 @@ export function LearningRateDescription({
             id="learningRate.remainingLessons"
             defaultMessage={
               "Approximately {remainingLessons} lessons remaining to " +
-              "unlock this letter ({certainty} certainty)."
+              "unlock the next letter ({certainty} certainty)."
             }
             values={{
               remainingLessons: (
