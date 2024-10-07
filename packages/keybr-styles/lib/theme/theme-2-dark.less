@@ -1,0 +1,32 @@
+@import "colors.less";
+
+html[data-color="dark"] {
+  @primary: #272525;
+  @secondary: #9a9998;
+  @accent: #696363;
+  @error: #8a0f0f;
+
+  --primary-l2: darken(@primary, 10);
+  --primary-l1: darken(@primary, 5);
+  --primary: @primary;
+  --primary-d1: lighten(@primary, 5);
+  --primary-d2: lighten(@primary, 10);
+  --secondary-d1: lighten(@secondary, 10);
+  --secondary: @secondary;
+  --secondary-l1: darken(@secondary, 10);
+  --secondary-l2: darken(@secondary, 20);
+  --secondary-x1: mix(@primary, @secondary, 20);
+  --secondary-x2: mix(@primary, @secondary, 40);
+  --accent-d2: darken(@accent, 10);
+  --accent-d1: darken(@accent, 5);
+  --accent: @accent;
+  --accent-l1: lighten(@accent, 5);
+  --accent-l2: lighten(@accent, 10);
+  --error: @error;
+  --shadow-color: #00000088;
+  --LessonKey--slow__color: #8c1818;
+  --LessonKey--fast__color: #448154;
+  .use-chart-colors(@primary, 50);
+  .use-keyboard-colors(@primary, 50);
+  .use-calendar-colors(@primary, #2d4a86);
+}

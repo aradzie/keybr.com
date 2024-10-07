@@ -17,7 +17,7 @@ export function withStyles(styles: Styles) {
     direction: "vertical" | "horizontal",
     {
       lines = 3,
-      style = styles.lighterFrame,
+      style = styles.frame,
     }: {
       readonly lines?: number;
       readonly style?: GraphicsStyle;

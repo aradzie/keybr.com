@@ -26,6 +26,22 @@ module.exports = {
         ],
       },
     ],
+    "function-no-unknown": [
+      true,
+      {
+        ignoreFunctions: [
+          // Less Preprocessor functions
+          "saturate",
+          "desaturate",
+          "lighten",
+          "darken",
+          "mix",
+          "tint",
+          "shade",
+          "contrast",
+        ],
+      },
+    ],
     "no-invalid-position-at-import-rule": null,
     "plugin/use-logical-properties-and-values": [true, { severity: "warning" }],
     "plugin/use-logical-units": [true, { severity: "warning" }],

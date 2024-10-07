@@ -11,7 +11,6 @@ export function useStyles() {
     use(color, font);
     return {
       frame: calcStyle([styles.frame]),
-      lighterFrame: calcStyle([styles.frame, styles.lighterFrame]),
       headerText: calcStyle([styles.headerText]),
       subheaderText: calcStyle([styles.subheaderText]),
       keyLabel: calcStyle([styles.value, styles.keyFont]),

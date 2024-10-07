@@ -2,7 +2,6 @@
   display: inline-block;
   position: relative;
   vertical-align: middle;
-  color: var(--LessonKey__color);
   outline: 1px solid transparent;
   font-family: var(--monospace-font-family);
   text-align: center;
@@ -34,16 +33,19 @@
 }
 
 .lessonKey_included {
+  color: var(--LessonKey--included__color);
   background-color: var(--LessonKey--included__background-color);
   outline: 1px solid var(--LessonKey--included__outline-color);
 }
 
 .lessonKey_excluded {
+  color: var(--LessonKey--excluded__color);
   background-color: var(--LessonKey--excluded__background-color);
   outline: 1px solid var(--LessonKey--excluded__outline-color);
 }
 
 .lessonKey_uncalibrated {
+  color: var(--LessonKey--uncalibrated__color);
   background-color: var(--LessonKey--uncalibrated__background-color);
   outline: 1px solid var(--LessonKey--uncalibrated__outline-color);
 }
@@ -85,6 +87,6 @@
 .cross {
   position: absolute;
   inset: 0;
-  stroke: var(--LessonKey__color);
+  stroke: var(--LessonKey--excluded__color);
   stroke-width: 2px;
 }
