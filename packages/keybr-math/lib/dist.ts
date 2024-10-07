@@ -35,24 +35,52 @@ export class Distribution implements Iterable<Sample> {
   }
 
   pmf(index: number): number {
+    const { length } = this.#samples;
     index = Math.round(index);
     if (index < 0) {
       return 0;
     }
-    if (index >= this.#samples.length) {
+    if (index > length - 1) {
       return 0;
     }
     return this.#pmf[index];
   }
 
   cdf(index: number): number {
+    const { length } = this.#samples;
     index = Math.round(index);
     if (index < 0) {
       return 0;
     }
-    if (index >= this.#samples.length) {
+    if (index > length - 1) {
       return 1;
     }
     return this.#cdf[index];
+  }
+
+  /** Scales a value in range [0, 1] to a histogram index. */
+  scale(index: number): number {
+    const { length } = this.#samples;
+    index = Math.round(index * (length - 1));
+    if (index < 0) {
+      return 0;
+    }
+    if (index > length - 1) {
+      return length - 1;
+    }
+    return index;
+  }
+
+  /** Scales a histogram index to a value in range [0, 1]. */
+  unscale(index: number): number {
+    const { length } = this.#samples;
+    index = Math.round(index);
+    if (index < 0) {
+      return 0;
+    }
+    if (index > length - 1) {
+      return 1;
+    }
+    return index / (length - 1);
   }
 }

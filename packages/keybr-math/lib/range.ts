@@ -1,4 +1,4 @@
-export class Range implements Iterable<number> {
+export class Range {
   static from(values: Iterable<number>, ...rest: Iterable<number>[]): Range {
     const range = new Range();
     range.adjust(values);
@@ -37,15 +37,6 @@ export class Range implements Iterable<number> {
     throw new TypeError();
   }
 
-  *[Symbol.iterator](): IterableIterator<number> {
-    if (!this.defined) {
-      throw new RangeError();
-    }
-    for (let index = this.#min; index <= this.#max; index++) {
-      yield index;
-    }
-  }
-
   get defined(): boolean {
     return this.#min === this.#min && this.#max === this.#max;
   }
@@ -81,14 +72,14 @@ export class Range implements Iterable<number> {
     return this.#max - this.#min;
   }
 
-  normalize(value: number): number {
+  normalize(value: number, width: number = 0): number {
     if (!this.defined) {
       throw new RangeError();
     }
     if (this.#max === this.#min) {
       return this.#min;
     } else {
-      return (value - this.#min) / (this.#max - this.#min);
+      return (value - this.#min) / (this.#max - this.#min + width);
     }
   }
 
@@ -107,5 +98,14 @@ export class Range implements Iterable<number> {
       this.#min = (r1 - 1) * step;
     }
     return this;
+  }
+
+  *steps(): IterableIterator<number> {
+    if (!this.defined) {
+      throw new RangeError();
+    }
+    for (let index = this.#min; index <= this.#max; index++) {
+      yield index;
+    }
   }
 }

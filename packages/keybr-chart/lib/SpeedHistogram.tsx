@@ -7,11 +7,7 @@ import { useIntl } from "react-intl";
 import { Chart, chartArea, type SizeProps } from "./Chart.tsx";
 import { withStyles } from "./decoration.ts";
 import { type Styles, useStyles } from "./styles.ts";
-
-export type Threshold = {
-  readonly label: string;
-  readonly value: number;
-};
+import { type Threshold } from "./types.ts";
 
 export function SpeedHistogram({
   distribution,
@@ -44,10 +40,10 @@ function usePaint(
   const vIndex = new Vector();
   const vPmf = new Vector();
   const vCdf = new Vector();
-  for (let index = 0; index < dist.length; index++) {
+  for (const { index, pmf, cdf } of dist) {
     vIndex.add(index);
-    vPmf.add(dist.pmf(index));
-    vCdf.add(dist.cdf(index));
+    vPmf.add(pmf);
+    vCdf.add(cdf);
   }
   const rIndex = Range.from(vIndex);
   const rPmf = Range.from(vPmf);
@@ -79,9 +75,9 @@ function usePaint(
     function paintPmfHistogram(): ShapeList {
       return Shapes.fill(
         styles.speed,
-        [...vIndex].map((index) => {
+        [...rIndex.steps()].map((index) => {
           const w = Math.ceil(box.width / rIndex.span);
-          const x = Math.round(rIndex.normalize(index) * box.width);
+          const x = Math.round(rIndex.normalize(index, 1) * box.width);
           const y = Math.round(rPmf.normalize(vPmf.at(index)) * box.height);
           return Shapes.rect({
             x: box.x + x,
@@ -96,9 +92,9 @@ function usePaint(
     function paintCdfHistogram(): ShapeList {
       return Shapes.fill(
         styles.threshold,
-        [...vIndex].map((index) => {
+        [...rIndex.steps()].map((index) => {
           const w = Math.ceil(box.width / rIndex.span);
-          const x = Math.round(rIndex.normalize(index) * box.width);
+          const x = Math.round(rIndex.normalize(index, 1) * box.width);
           const y = Math.round(rCdf.normalize(vCdf.at(index)) * box.height);
           return Shapes.rect({
             x: box.x + x,

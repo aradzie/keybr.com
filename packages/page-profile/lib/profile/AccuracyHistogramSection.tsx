@@ -25,13 +25,11 @@ export function AccuracyHistogramSection({
   const { formatPercents } = useIntlNumbers();
   const [period, setPeriod] = useState("average");
 
-  const scale = distribution.length - 1;
-
   const value =
     period === "top"
       ? summary.allTimeStats.stats.accuracy.max
       : summary.allTimeStats.stats.accuracy.avg;
-  const cdf = distribution.cdf(Math.floor(value * scale));
+  const cdf = distribution.cdf(distribution.scale(value));
 
   return (
     <Figure>

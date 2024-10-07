@@ -23,4 +23,16 @@ test("distribution", (t) => {
   t.is(dist.cdf(5), 1.0);
   t.is(dist.cdf(1.1), 0.1);
   t.is(dist.cdf(1.9), 0.30000000000000004);
+
+  t.is(dist.scale(-1.0), 0);
+  t.is(dist.scale(0.0), 0);
+  t.is(dist.scale(0.5), 2);
+  t.is(dist.scale(1.0), 4);
+  t.is(dist.scale(2.0), 4);
+
+  t.is(dist.unscale(-1), 0.0);
+  t.is(dist.unscale(0), 0.0);
+  t.is(dist.unscale(2), 0.5);
+  t.is(dist.unscale(4), 1.0);
+  t.is(dist.unscale(5), 1.0);
 });

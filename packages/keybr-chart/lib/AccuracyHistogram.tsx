@@ -5,8 +5,8 @@ import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
 import { Chart, chartArea, type SizeProps } from "./Chart.tsx";
 import { withStyles } from "./decoration.ts";
-import { type Threshold } from "./SpeedHistogram.tsx";
 import { type Styles, useStyles } from "./styles.ts";
+import { type Threshold } from "./types.ts";
 
 export function AccuracyHistogram({
   distribution,
@@ -35,17 +35,15 @@ function usePaint(
   const { formatPercents } = useIntlNumbers();
   const g = withStyles(styles);
 
-  const scale = dist.length - 1;
-
   const vIndex = new Vector();
   const vPmf = new Vector();
   const vCdf = new Vector();
-  for (let index = 0; index < dist.length; index++) {
+  for (const { index, pmf, cdf } of dist) {
     vIndex.add(index);
-    vPmf.add(dist.pmf(index));
-    vCdf.add(dist.cdf(index));
+    vPmf.add(pmf);
+    vCdf.add(cdf);
   }
-  const rIndex = new Range(Math.floor(0.8 * scale), scale);
+  const rIndex = new Range(dist.scale(0.8), dist.scale(1.0));
   const rPmf = Range.from(vPmf);
   const rCdf = Range.from(vCdf);
 
@@ -62,7 +60,7 @@ function usePaint(
       g.paintAxis(box, "left"),
       g.paintTicks(box, rIndex, "bottom", {
         lines: 5,
-        fmt: (v) => formatPercents(v / scale),
+        fmt: (value) => formatPercents(dist.unscale(value)),
         style: styles.valueLabel,
       }),
       g.paintTicks(box, rCdf, "right", {
@@ -75,9 +73,9 @@ function usePaint(
     function paintPmfHistogram(): ShapeList {
       return Shapes.fill(
         styles.speed,
-        [...rIndex].map((index) => {
+        [...rIndex.steps()].map((index) => {
           const w = Math.ceil(box.width / rIndex.span);
-          const x = Math.round(rIndex.normalize(index) * box.width);
+          const x = Math.round(rIndex.normalize(index, 1) * box.width);
           const y = Math.round(rPmf.normalize(vPmf.at(index)) * box.height);
           return Shapes.rect({
             x: box.x + x,
@@ -92,9 +90,9 @@ function usePaint(
     function paintCdfHistogram(): ShapeList {
       return Shapes.fill(
         styles.threshold,
-        [...rIndex].map((index) => {
+        [...rIndex.steps()].map((index) => {
           const w = Math.ceil(box.width / rIndex.span);
-          const x = Math.round(rIndex.normalize(index) * box.width);
+          const x = Math.round(rIndex.normalize(index, 1) * box.width);
           const y = Math.round(rCdf.normalize(vCdf.at(index)) * box.height);
           return Shapes.rect({
             x: box.x + x,
@@ -113,10 +111,11 @@ function usePaint(
       label: string;
       value: number;
     }): ShapeList {
-      if (value * scale < rIndex.min || value > rIndex.max * scale) {
+      const index = dist.scale(value);
+      if (index < rIndex.min || index > rIndex.max) {
         return [];
       }
-      const x = Math.round(rIndex.normalize(value * scale) * box.width);
+      const x = Math.round(rIndex.normalize(index) * box.width);
       return [
         Shapes.fill(styles.value, [
           Shapes.rect({
@@ -146,12 +145,11 @@ function usePaint(
       label: string;
       value: number;
     }): ShapeList {
-      if (value * scale < rIndex.min || value * scale > rIndex.max) {
+      const index = dist.scale(value);
+      if (index < rIndex.min || index > rIndex.max) {
         return [];
       }
-      const y = Math.round(
-        rCdf.normalize(dist.cdf(value * scale)) * box.height,
-      );
+      const y = Math.round(rCdf.normalize(dist.cdf(index)) * box.height);
       return [
         Shapes.fill(styles.threshold, [
           Shapes.rect({
@@ -164,7 +162,7 @@ function usePaint(
         Shapes.fillText({
           x: box.x + box.width - 5,
           y: box.y + box.height - y - 5,
-          value: formatPercents(dist.cdf(value * scale)),
+          value: formatPercents(dist.cdf(index)),
           style: {
             ...styles.thresholdLabel,
             textAlign: "right",
