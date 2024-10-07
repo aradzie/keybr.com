@@ -1,4 +1,9 @@
-import { makeSpeedDistribution, SpeedHistogram } from "@keybr/chart";
+import {
+  AccuracyHistogram,
+  makeAccuracyDistribution,
+  makeSpeedDistribution,
+  SpeedHistogram,
+} from "@keybr/chart";
 import { useIntlNumbers } from "@keybr/intl";
 import { type Stats } from "@keybr/textinput";
 import {
@@ -24,8 +29,10 @@ export const Report = memo(function Report({
   readonly onNext: () => void;
 }): ReactNode {
   const { formatNumber, formatPercents } = useIntlNumbers();
-  const distribution = makeSpeedDistribution();
-  const prob = distribution.cdf(speed);
+  const dSpeed = makeSpeedDistribution();
+  const dAccuracy = makeAccuracyDistribution();
+  const pSpeed = dSpeed.cdf(speed);
+  const pAccuracy = dAccuracy.cdf(dAccuracy.scale(accuracy));
 
   const handleClickNext = () => {
     onNext();
@@ -75,7 +82,7 @@ export const Report = memo(function Report({
 
         <div className={styles.secondaryLine}>
           <SpeedHistogram
-            distribution={distribution}
+            distribution={dSpeed}
             thresholds={[{ label: "Speed", value: speed }]}
             width="100%"
             height="15rem"
@@ -84,11 +91,30 @@ export const Report = memo(function Report({
 
         <div className={styles.secondaryLine}>
           <Name>
-            Faster than <Value value={formatPercents(prob)} /> of all other
+            Faster than <Value value={formatPercents(pSpeed)} /> of all other
             people.
           </Name>{" "}
           <Name>
-            You are in the top <Value value={formatPercents(1 - prob)} />.
+            You are in the top <Value value={formatPercents(top(pSpeed))} />.
+          </Name>
+        </div>
+
+        <div className={styles.secondaryLine}>
+          <AccuracyHistogram
+            distribution={dAccuracy}
+            thresholds={[{ label: "Accuracy", value: accuracy }]}
+            width="100%"
+            height="15rem"
+          />
+        </div>
+
+        <div className={styles.secondaryLine}>
+          <Name>
+            More accurate than <Value value={formatPercents(pAccuracy)} /> of
+            all other people.
+          </Name>{" "}
+          <Name>
+            You are in the top <Value value={formatPercents(top(pAccuracy))} />.
           </Name>
         </div>
       </div>
@@ -155,4 +181,8 @@ function Metric({
 
 function Separator(): ReactNode {
   return <div className={styles.separator} />;
+}
+
+function top(value: number): number {
+  return Math.max(0, 1 - value); // Takes care of negative zero.
 }
