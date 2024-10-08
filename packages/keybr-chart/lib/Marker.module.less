@@ -1,46 +1,52 @@
-.legend {
-  .color-coding(@color) {
-    display: inline-block;
-    vertical-align: middle;
-    inline-size: 1rem;
-    block-size: 1rem;
-    background-color: @color;
-    line-height: 1rem;
-  }
+.root {
+  display: inline-block;
+  vertical-align: middle;
+  inline-size: 1rem;
+  block-size: 1rem;
+  line-height: 1rem;
+}
 
-  &_slow {
-    .color-coding(var(--LessonKey--slow__color));
-  }
+.slow {
+  composes: root;
+  background-color: var(--LessonKey--slow__color);
+}
 
-  &_fast {
-    .color-coding(var(--LessonKey--fast__color));
-  }
+.fast {
+  composes: root;
+  background-color: var(--LessonKey--fast__color);
+}
 
-  &_speed {
-    .color-coding(var(--Chart-speed__color));
-  }
+.speed {
+  composes: root;
+  background-color: var(--Chart-speed__color);
+}
 
-  &_accuracy {
-    .color-coding(var(--Chart-accuracy__color));
-  }
+.accuracy {
+  composes: root;
+  background-color: var(--Chart-accuracy__color);
+}
 
-  &_complexity {
-    .color-coding(var(--Chart-complexity__color));
-  }
+.complexity {
+  composes: root;
+  background-color: var(--Chart-complexity__color);
+}
 
-  &_threshold {
-    .color-coding(var(--Chart-threshold__color));
-  }
+.threshold {
+  composes: root;
+  background-color: var(--Chart-threshold__color);
+}
 
-  &_histogram_h {
-    .color-coding(var(--Chart-hist-h__color));
-  }
+.histogram_h {
+  composes: root;
+  background-color: var(--Chart-hist-h__color);
+}
 
-  &_histogram_m {
-    .color-coding(var(--Chart-hist-m__color));
-  }
+.histogram_m {
+  composes: root;
+  background-color: var(--Chart-hist-m__color);
+}
 
-  &_histogram_r {
-    .color-coding(var(--Chart-hist-r__color));
-  }
+.histogram_r {
+  composes: root;
+  background-color: var(--Chart-hist-r__color);
 }

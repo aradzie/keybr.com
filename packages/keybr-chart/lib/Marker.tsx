@@ -18,31 +18,31 @@ export function Marker({ type }: Props): ReactNode {
   let cn;
   switch (type) {
     case "slow":
-      cn = styles.legend_slow;
+      cn = styles.slow;
       break;
     case "fast":
-      cn = styles.legend_fast;
+      cn = styles.fast;
       break;
     case "speed":
-      cn = styles.legend_speed;
+      cn = styles.speed;
       break;
     case "accuracy":
-      cn = styles.legend_accuracy;
+      cn = styles.accuracy;
       break;
     case "complexity":
-      cn = styles.legend_complexity;
+      cn = styles.complexity;
       break;
     case "threshold":
-      cn = styles.legend_threshold;
+      cn = styles.threshold;
       break;
     case "histogram-h":
-      cn = styles.legend_histogram_h;
+      cn = styles.histogram_h;
       break;
     case "histogram-m":
-      cn = styles.legend_histogram_m;
+      cn = styles.histogram_m;
       break;
     case "histogram-r":
-      cn = styles.legend_histogram_r;
+      cn = styles.histogram_r;
       break;
   }
   return <span className={cn}>{"\u00A0"}</span>;
