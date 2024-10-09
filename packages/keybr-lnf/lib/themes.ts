@@ -52,6 +52,10 @@ export const COLORS = new ThemeList([
     id: "yellow",
     name: "Yellow",
   },
+  {
+    id: "green",
+    name: "Green",
+  },
 ]);
 
 export const FONTS = new ThemeList([

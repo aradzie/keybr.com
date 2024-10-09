@@ -6,6 +6,8 @@
   max-inline-size: 12rem;
   margin: 0;
   padding: 0;
+  box-shadow: var(--Surface__box-shadow);
+  backdrop-filter: var(--Surface__backdrop-filter);
 }
 
 .item + .item {
@@ -20,18 +22,16 @@
   margin: 0;
   padding-inline: 1rem;
   padding-block: 0;
-  color: var(--NavLink__color);
-  background-color: var(--NavLink__background-color);
   line-height: 3rem;
 
   &:hover {
-    color: var(--NavLink--current__color);
-    background-color: var(--NavLink--current__background-color);
+    color: var(--text-color);
+    background-color: var(--background-color);
   }
 
   &.isActive {
-    color: var(--NavLink--current__color);
-    background-color: var(--NavLink--current__background-color);
+    color: var(--text-color);
+    background-color: var(--background-color);
   }
 }
 
@@ -52,17 +52,15 @@
   justify-content: center;
   padding-inline: 0;
   padding-block: 1rem;
-  color: var(--NavLink__color);
-  background-color: var(--NavLink__background-color);
 
   &:hover {
-    color: var(--NavLink--current__color);
-    background-color: var(--NavLink--current__background-color);
+    color: var(--text-color);
+    background-color: var(--background-color);
   }
 
   &.isActive {
-    color: var(--NavLink--current__color);
-    background-color: var(--NavLink--current__background-color);
+    color: var(--text-color);
+    background-color: var(--background-color);
   }
 }
 

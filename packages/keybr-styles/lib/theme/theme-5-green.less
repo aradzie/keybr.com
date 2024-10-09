@@ -1,0 +1,35 @@
+@import "colors.less";
+
+html[data-color="green"] {
+  @primary: #cee0a4;
+  @secondary: #334532;
+  @accent: #45633f;
+  @error: #e49874;
+
+  --primary-l2: lighten(@primary, 5);
+  --primary-l1: lighten(@primary, 3);
+  --primary: @primary;
+  --primary-d1: darken(@primary, 5);
+  --primary-d2: darken(@primary, 10);
+  --secondary-d1: darken(@secondary, 10);
+  --secondary: @secondary;
+  --secondary-l1: lighten(@secondary, 10);
+  --secondary-l2: lighten(@secondary, 20);
+  --secondary-f1: mix(@primary, @secondary, 20);
+  --secondary-f2: mix(@primary, @secondary, 40);
+  --accent-d2: darken(@accent, 20);
+  --accent-d1: darken(@accent, 10);
+  --accent: @accent;
+  --accent-l1: lighten(@accent, 10);
+  --accent-l2: lighten(@accent, 20);
+  --error: @error;
+  --shadow-color: #00000044;
+  --LessonKey--slow__color: #cc0000;
+  --LessonKey--fast__color: #60d788;
+  .use-chart-colors(@primary, 0);
+  .use-keyboard-colors(@primary, 0);
+  .use-calendar-colors(@primary, #6699ff);
+  --background-image: url(../../assets/green.svg);
+  --Surface__box-shadow: 0 0.5rem 1rem var(--shadow-color);
+  --Surface__backdrop-filter: blur(10px);
+}

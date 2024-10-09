@@ -7,6 +7,7 @@ import "./theme/theme-1-light.less";
 import "./theme/theme-2-dark.less";
 import "./theme/theme-3-gray.less";
 import "./theme/theme-4-yellow.less";
+import "./theme/theme-5-green.less";
 import "./common/fonts.less";
 import "./common/reset.less";
 import "./common/typography.less";
