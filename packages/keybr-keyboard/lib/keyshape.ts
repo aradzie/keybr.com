@@ -12,8 +12,8 @@ export class KeyShape {
     "pinky",
     "ring",
     "middle",
-    "indexLeft",
-    "indexRight",
+    "leftIndex",
+    "rightIndex",
     "thumb",
   ];
   static readonly handZones: readonly ZoneId[] = ["left", "right"];

@@ -29,9 +29,9 @@ test("data", (t) => {
     ],
   };
   const geometryDict: GeometryDict = {
-    KeyA: { x: 0, y: 0, zones: ["indexLeft", "left"] },
-    KeyB: { x: 0, y: 0, zones: ["indexLeft", "left"] },
-    Equal: { x: 0, y: 0, zones: ["indexRight", "right"] },
+    KeyA: { x: 0, y: 0, zones: ["leftIndex", "left"] },
+    KeyB: { x: 0, y: 0, zones: ["leftIndex", "left"] },
+    Equal: { x: 0, y: 0, zones: ["rightIndex", "right"] },
   };
   const keyboard = new Keyboard(
     Layout.EN_US,
@@ -141,15 +141,15 @@ test("data", (t) => {
   const shapeKeyA = keyboard.getShape("KeyA")!;
   const shapeKeyB = keyboard.getShape("KeyB")!;
   const shapeEqual = keyboard.getShape("Equal")!;
-  t.is(shapeKeyA.finger, "indexLeft");
+  t.is(shapeKeyA.finger, "leftIndex");
   t.is(shapeKeyA.hand, "left");
   t.is(shapeKeyA.row, null);
-  t.is(shapeEqual.finger, "indexRight");
+  t.is(shapeEqual.finger, "rightIndex");
   t.is(shapeEqual.hand, "right");
   t.is(shapeEqual.row, null);
   t.deepEqual(keyboard.zones.get("left"), [shapeKeyA, shapeKeyB]);
   t.deepEqual(keyboard.zones.get("right"), [shapeEqual]);
-  t.deepEqual(keyboard.zones.get("indexLeft"), [shapeKeyA, shapeKeyB]);
-  t.deepEqual(keyboard.zones.get("indexRight"), [shapeEqual]);
+  t.deepEqual(keyboard.zones.get("leftIndex"), [shapeKeyA, shapeKeyB]);
+  t.deepEqual(keyboard.zones.get("rightIndex"), [shapeEqual]);
   t.is(keyboard.zones.get("home"), undefined);
 });

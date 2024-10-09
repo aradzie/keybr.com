@@ -27,22 +27,22 @@ export const MATRIX: GeometryDict = {
   Digit4: {
     x: 4.5,
     y: 0,
-    zones: ["indexLeft", "left", "digit"],
+    zones: ["leftIndex", "left", "digit"],
   },
   Digit5: {
     x: 5.5,
     y: 0,
-    zones: ["indexLeft", "left", "digit"],
+    zones: ["leftIndex", "left", "digit"],
   },
   Digit6: {
     x: 7.5,
     y: 0,
-    zones: ["indexRight", "right", "digit"],
+    zones: ["rightIndex", "right", "digit"],
   },
   Digit7: {
     x: 8.5,
     y: 0,
-    zones: ["indexRight", "right", "digit"],
+    zones: ["rightIndex", "right", "digit"],
   },
   Digit8: {
     x: 9.5,
@@ -93,22 +93,22 @@ export const MATRIX: GeometryDict = {
   KeyR: {
     x: 4.5,
     y: 1,
-    zones: ["indexLeft", "left", "top"],
+    zones: ["leftIndex", "left", "top"],
   },
   KeyT: {
     x: 5.5,
     y: 1,
-    zones: ["indexLeft", "left", "top"],
+    zones: ["leftIndex", "left", "top"],
   },
   KeyY: {
     x: 7.5,
     y: 1,
-    zones: ["indexRight", "right", "top"],
+    zones: ["rightIndex", "right", "top"],
   },
   KeyU: {
     x: 8.5,
     y: 1,
-    zones: ["indexRight", "right", "top"],
+    zones: ["rightIndex", "right", "top"],
   },
   KeyI: {
     x: 9.5,
@@ -159,23 +159,23 @@ export const MATRIX: GeometryDict = {
   KeyF: {
     x: 4.5,
     y: 2,
-    zones: ["indexLeft", "left", "home"],
+    zones: ["leftIndex", "left", "home"],
     homing: true,
   },
   KeyG: {
     x: 5.5,
     y: 2,
-    zones: ["indexLeft", "left", "home"],
+    zones: ["leftIndex", "left", "home"],
   },
   KeyH: {
     x: 7.5,
     y: 2,
-    zones: ["indexRight", "right", "home"],
+    zones: ["rightIndex", "right", "home"],
   },
   KeyJ: {
     x: 8.5,
     y: 2,
-    zones: ["indexRight", "right", "home"],
+    zones: ["rightIndex", "right", "home"],
     homing: true,
   },
   KeyK: {
@@ -227,22 +227,22 @@ export const MATRIX: GeometryDict = {
   KeyV: {
     x: 4.5,
     y: 3,
-    zones: ["indexLeft", "left", "bottom"],
+    zones: ["leftIndex", "left", "bottom"],
   },
   KeyB: {
     x: 5.5,
     y: 3,
-    zones: ["indexLeft", "left", "bottom"],
+    zones: ["leftIndex", "left", "bottom"],
   },
   KeyN: {
     x: 7.5,
     y: 3,
-    zones: ["indexRight", "right", "bottom"],
+    zones: ["rightIndex", "right", "bottom"],
   },
   KeyM: {
     x: 8.5,
     y: 3,
-    zones: ["indexRight", "right", "bottom"],
+    zones: ["rightIndex", "right", "bottom"],
   },
   Comma: {
     x: 9.5,

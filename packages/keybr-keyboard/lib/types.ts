@@ -13,8 +13,8 @@ export type ZoneId =
   | "pinky"
   | "ring"
   | "middle"
-  | "indexLeft"
-  | "indexRight"
+  | "leftIndex"
+  | "rightIndex"
   | "thumb"
   // Hand zones.
   | "left"

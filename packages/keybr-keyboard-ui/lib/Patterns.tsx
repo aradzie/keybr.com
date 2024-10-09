@@ -32,20 +32,20 @@ export const Patterns = memo(function Patterns(): ReactNode {
         <path className={styles.patternMiddle} d={x} />
       </pattern>
       <pattern
-        id="finger-indexLeft"
+        id="finger-leftIndex"
         patternUnits="userSpaceOnUse"
         width="10"
         height="10"
       >
-        <path className={styles.patternIndexLeft} d={x} />
+        <path className={styles.patternLeftIndex} d={x} />
       </pattern>
       <pattern
-        id="finger-indexRight"
+        id="finger-rightIndex"
         patternUnits="userSpaceOnUse"
         width="10"
         height="10"
       >
-        <path className={styles.patternIndexRight} d={x} />
+        <path className={styles.patternRightIndex} d={x} />
       </pattern>
       <pattern
         id="finger-thumb"

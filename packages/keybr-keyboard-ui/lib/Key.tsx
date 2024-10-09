@@ -243,10 +243,10 @@ function fingerClassNameOf({ finger }: KeyShape): string | null {
       return styles.fingerRing;
     case "middle":
       return styles.fingerMiddle;
-    case "indexLeft":
-      return styles.fingerIndexLeft;
-    case "indexRight":
-      return styles.fingerIndexRight;
+    case "leftIndex":
+      return styles.fingerLeftIndex;
+    case "rightIndex":
+      return styles.fingerRightIndex;
     case "thumb":
       return styles.fingerThumb;
     default:
