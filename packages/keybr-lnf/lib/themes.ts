@@ -59,4 +59,8 @@ export const FONTS = new ThemeList([
     id: "spectral",
     name: "Spectral",
   },
+  {
+    id: "nunito",
+    name: "Nunito",
+  },
 ]);
