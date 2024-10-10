@@ -5,9 +5,9 @@ import { OptionListButton } from "./OptionListButton.tsx";
 import { OptionListMenu } from "./OptionListMenu.tsx";
 
 export function OptionList({
-  className,
   disabled,
   options,
+  size,
   tabIndex,
   title,
   value,
@@ -34,10 +34,10 @@ export function OptionList({
   return (
     <OptionListButton
       {...props}
-      className={className}
       focused={focused}
       open={open}
       option={option}
+      size={size}
       tabIndex={tabIndex}
       title={title}
       onBlur={(event) => {

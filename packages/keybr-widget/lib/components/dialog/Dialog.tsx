@@ -1,4 +1,3 @@
-import { clsx } from "clsx";
 import { type ReactNode, useEffect, useRef } from "react";
 import { Button } from "../button/index.ts";
 import { Field, FieldList } from "../fieldlist/index.ts";
@@ -7,7 +6,6 @@ import * as styles from "./Dialog.module.less";
 import { type DialogProps } from "./Dialog.types.ts";
 
 export function Dialog({
-  className,
   children,
   actions = [{ label: "Close", action: () => {} }],
   ...props
@@ -20,7 +18,7 @@ export function Dialog({
   }, []);
   return (
     <Portal>
-      <dialog {...props} ref={ref} className={clsx(styles.root, className)}>
+      <dialog {...props} ref={ref} className={styles.root}>
         <div className={styles.content}>{children}</div>
         <FieldList>
           <Field.Filler />

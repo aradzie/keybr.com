@@ -6,16 +6,17 @@ import {
   useImperativeHandle,
   useRef,
 } from "react";
+import { sizeClassName } from "../../styles/index.ts";
 import * as styles from "./Range.module.less";
 import { type RangeProps, type RangeRef } from "./Range.types.ts";
 
 export const Range = forwardRef(function Range(
   {
-    className,
     disabled,
     max,
     min,
     name,
+    size,
     step,
     tabIndex,
     title,
@@ -38,7 +39,11 @@ export const Range = forwardRef(function Range(
     <input
       {...props}
       ref={element}
-      className={clsx(styles.root, disabled && styles.disabled, className)}
+      className={clsx(
+        styles.root,
+        disabled && styles.disabled,
+        sizeClassName(size),
+      )}
       disabled={disabled}
       max={max}
       min={min}

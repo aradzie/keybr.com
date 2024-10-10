@@ -10,7 +10,6 @@ import {
   Icon,
   IconButton,
   Range,
-  styleWidth16,
   Value,
 } from "@keybr/widget";
 import { mdiSkipNext, mdiSkipPrevious } from "@mdi/js";
@@ -32,7 +31,7 @@ export function TargetSpeedProp(): ReactNode {
         </Field>
         <Field>
           <Range
-            className={styleWidth16}
+            size={16}
             min={lessonProps.targetSpeed.min}
             max={lessonProps.targetSpeed.max}
             step={1}

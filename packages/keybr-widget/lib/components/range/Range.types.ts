@@ -1,5 +1,5 @@
+import type { SizeName } from "../../styles/index.ts";
 import {
-  type ClassName,
   type Focusable,
   type FocusProps,
   type KeyboardProps,
@@ -7,10 +7,10 @@ import {
 } from "../types.ts";
 
 export type RangeProps = {
-  readonly className?: ClassName;
   readonly max: number;
   readonly min: number;
   readonly name?: string;
+  readonly size?: SizeName;
   readonly step: number;
   readonly title?: string;
   readonly value: number;

@@ -7,6 +7,7 @@ import {
   useImperativeHandle,
   useRef,
 } from "react";
+import { sizeClassName } from "../../styles/index.ts";
 import { getBoundingBox } from "../../utils/index.ts";
 import * as iconStyles from "../icon/Icon.module.less";
 import * as styles from "./Button.module.less";
@@ -16,11 +17,11 @@ export const Button = forwardRef(function Button(
   {
     anchor,
     children,
-    className,
     disabled,
     href,
     icon,
     label,
+    size,
     tabIndex,
     target,
     title,
@@ -54,7 +55,7 @@ export const Button = forwardRef(function Button(
           styles.button,
           iconStyles.altIcon,
           disabled && styles.disabled,
-          className,
+          sizeClassName(size),
         )}
         href={href}
         tabIndex={tabIndex}
@@ -73,7 +74,7 @@ export const Button = forwardRef(function Button(
           styles.button,
           iconStyles.altIcon,
           disabled && styles.disabled,
-          className,
+          sizeClassName(size),
         )}
         disabled={disabled}
         tabIndex={tabIndex}

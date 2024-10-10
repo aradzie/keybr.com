@@ -62,7 +62,7 @@ export const calcStyle = (
     if (font.length > 0) {
       result.font = font;
     } else {
-      // fix for Firefox in which the font property is empty string
+      // A fix for Firefox in which the font property is an empty string.
       result.font = `${fontStyle} ${fontVariant} ${fontWeight} ${fontSize} / ${lineHeight} ${fontFamily}`;
     }
   }

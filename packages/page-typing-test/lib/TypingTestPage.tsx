@@ -35,7 +35,6 @@ export function TypingTestPage(): ReactNode {
                   setView(View.Report);
                   setStats(stats);
                 }}
-                onHelp={() => {}}
                 onConfigure={() => {
                   setView(View.Settings);
                 }}

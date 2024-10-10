@@ -12,8 +12,6 @@ import {
   NameValue,
   Para,
   Range,
-  styleSizeFull,
-  styleWidth16,
   TextField,
 } from "@keybr/widget";
 import { type ReactNode } from "react";
@@ -74,7 +72,7 @@ function WordListPreview({
         </Field>
         <Field>
           <Range
-            className={styleWidth16}
+            size={16}
             min={lessonProps.wordList.wordListSize.min}
             max={lessonProps.wordList.wordListSize.max}
             step={1}
@@ -103,7 +101,7 @@ function WordListPreview({
       </FieldList>
       <Para>
         <TextField
-          className={styleSizeFull}
+          size="full"
           type="textarea"
           value={[...lesson.wordList].join(", ")}
           disabled={true}

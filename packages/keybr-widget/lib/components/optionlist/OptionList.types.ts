@@ -1,5 +1,6 @@
 import { type ReactNode } from "react";
-import { type ClassName, type FocusProps } from "../types.ts";
+import { type SizeName } from "../../styles/index.ts";
+import { type FocusProps } from "../types.ts";
 
 export type OptionListOption = {
   readonly value: string;
@@ -7,8 +8,8 @@ export type OptionListOption = {
 };
 
 export type OptionListProps = {
-  readonly className?: ClassName;
   readonly options: readonly OptionListOption[];
+  readonly size?: SizeName;
   readonly title?: string;
   readonly value: string;
   readonly onSelect?: (value: string) => void;

@@ -1,11 +1,4 @@
-import {
-  Button,
-  Field,
-  FieldList,
-  Icon,
-  Para,
-  styleWidth16,
-} from "@keybr/widget";
+import { Button, Field, FieldList, Icon, Para } from "@keybr/widget";
 import { mdiFacebook, mdiGoogle, mdiMicrosoft } from "@mdi/js";
 import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -41,7 +34,7 @@ export function OAuthLoginForm(): ReactNode {
         {providers.map(({ id, name, icon }) => (
           <Field key={id}>
             <Button
-              className={styleWidth16}
+              size={16}
               href={`/auth/oauth-init/${id}`}
               icon={<Icon shape={icon} />}
               label={formatMessage(

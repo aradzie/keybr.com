@@ -1,12 +1,5 @@
 import { Dir } from "@keybr/intl";
-import {
-  Field,
-  FieldList,
-  Icon,
-  IconButton,
-  Range,
-  styleWidth32,
-} from "@keybr/widget";
+import { Field, FieldList, Icon, IconButton, Range } from "@keybr/widget";
 import { mdiSkipNext, mdiSkipPrevious } from "@mdi/js";
 import { type ReactNode } from "react";
 import { ParagraphIndex } from "./ParagraphPreview.tsx";
@@ -28,7 +21,7 @@ export function ParagraphSelector({
       </Field>
       <Field>
         <Range
-          className={styleWidth32}
+          size={32}
           min={0}
           max={paragraphs.length - 1}
           step={1}

@@ -1,8 +1,8 @@
 import { type ReactElement, type ReactNode } from "react";
+import { type SizeName } from "../../styles/index.ts";
 import { type IconProps } from "../icon/Icon.types.ts";
 import {
   type AnchorProps,
-  type ClassName,
   type Focusable,
   type FocusProps,
   type KeyboardProps,
@@ -12,10 +12,10 @@ import {
 export type ButtonProps = {
   readonly autoFocus?: boolean;
   readonly children?: ReactNode;
-  readonly className?: ClassName;
   readonly href?: string;
   readonly icon?: ReactElement<IconProps>;
   readonly label?: ReactNode;
+  readonly size?: SizeName;
   readonly target?: string;
   readonly title?: string;
 } & FocusProps &

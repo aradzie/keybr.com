@@ -11,8 +11,6 @@ import {
   OptionList,
   Para,
   Range,
-  styleSizeFull,
-  styleWidth16,
   TextField,
 } from "@keybr/widget";
 import { type ReactNode } from "react";
@@ -78,7 +76,7 @@ function Content({ wordList }: { readonly wordList: WordList }): ReactNode {
         </Field>
         <Field>
           <Range
-            className={styleWidth16}
+            size={16}
             min={typingTestProps.wordList.wordListSize.min}
             max={typingTestProps.wordList.wordListSize.max}
             step={1}
@@ -98,7 +96,7 @@ function Content({ wordList }: { readonly wordList: WordList }): ReactNode {
 
       <Para>
         <TextField
-          className={styleSizeFull}
+          size="full"
           type="textarea"
           value={wordList.join(", ")}
           disabled={true}

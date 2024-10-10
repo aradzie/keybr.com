@@ -12,7 +12,6 @@ import {
   FieldSet,
   NameValue,
   Para,
-  styleSizeFull,
   TextField,
 } from "@keybr/widget";
 import { type ReactNode, useMemo } from "react";
@@ -87,13 +86,13 @@ function CustomTextInput(): ReactNode {
       </Para>
       <Para>
         <TextField
-          className={styleSizeFull}
-          value={settings.get(lessonProps.customText.content)}
+          size="full"
           type="textarea"
           placeholder={formatMessage({
             id: "settings.customTextInput.placeholder",
             defaultMessage: "Custom text...",
           })}
+          value={settings.get(lessonProps.customText.content)}
           onChange={(value) => {
             updateSettings(settings.set(lessonProps.customText.content, value));
           }}

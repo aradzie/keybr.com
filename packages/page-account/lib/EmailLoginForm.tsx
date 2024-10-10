@@ -1,13 +1,4 @@
-import {
-  Button,
-  Field,
-  FieldList,
-  Icon,
-  Para,
-  styleWidth16,
-  styleWidth24,
-  TextField,
-} from "@keybr/widget";
+import { Button, Field, FieldList, Icon, Para, TextField } from "@keybr/widget";
 import { mdiRepeat, mdiSend } from "@mdi/js";
 import { type ReactNode, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -74,8 +65,7 @@ export function EmailLoginForm({
 
           <Para>
             <Button
-              onClick={handleClickRetry}
-              className={styleWidth16}
+              size={16}
               icon={<Icon shape={mdiRepeat} />}
               label={formatMessage({
                 id: "account.widget.resend.label",
@@ -85,6 +75,7 @@ export function EmailLoginForm({
                 id: "account.widget.resend.description",
                 defaultMessage: "Send one more e-mail.",
               })}
+              onClick={handleClickRetry}
             />
           </Para>
         </>
@@ -103,8 +94,7 @@ export function EmailLoginForm({
 
           <Para>
             <Button
-              onClick={handleClickRetry}
-              className={styleWidth16}
+              size={16}
               icon={<Icon shape={mdiRepeat} />}
               label={formatMessage({
                 id: "account.widget.retrySend.label",
@@ -114,6 +104,7 @@ export function EmailLoginForm({
                 id: "account.widget.retrySend.description",
                 defaultMessage: "Send another e-mail.",
               })}
+              onClick={handleClickRetry}
             />
           </Para>
         </>
@@ -125,8 +116,7 @@ export function EmailLoginForm({
           <FieldList>
             <Field>
               <TextField
-                onChange={handleChangeEmail}
-                className={styleWidth24}
+                size={24}
                 type="email"
                 placeholder={formatMessage({
                   id: "account.widget.email.placeholder",
@@ -138,12 +128,12 @@ export function EmailLoginForm({
                     "This is the e-mail address we will send the sign-in link to.",
                 })}
                 value={email}
+                onChange={handleChangeEmail}
               />
             </Field>
             <Field>
               <Button
-                onClick={handleClickLogin}
-                className={styleWidth16}
+                size={16}
                 icon={<Icon shape={mdiSend} />}
                 label={formatMessage({
                   id: "account.widget.send.label",
@@ -153,6 +143,7 @@ export function EmailLoginForm({
                   id: "account.widget.send.description",
                   defaultMessage: "Sign-in with e-mail.",
                 })}
+                onClick={handleClickLogin}
               />
             </Field>
           </FieldList>

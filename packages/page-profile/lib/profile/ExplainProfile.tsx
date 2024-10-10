@@ -1,11 +1,5 @@
 import { booleanProp, Preferences } from "@keybr/settings";
-import {
-  Button,
-  Field,
-  FieldList,
-  styleTextEnd,
-  useExplainerState,
-} from "@keybr/widget";
+import { Button, Field, FieldList, useExplainerState } from "@keybr/widget";
 import { type ReactNode, useLayoutEffect } from "react";
 import { useIntl } from "react-intl";
 
@@ -18,7 +12,7 @@ export function ExplainProfile(): ReactNode {
     toggleExplainers(Preferences.get(propExplainSettings));
   });
   return (
-    <FieldList className={styleTextEnd}>
+    <FieldList>
       <Field.Filler />
       <Field>
         <Button

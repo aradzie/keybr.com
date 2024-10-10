@@ -7,8 +7,8 @@ import { useSettings } from "@keybr/settings";
 import { Explainer, Figure, Para, styleTextCenter } from "@keybr/widget";
 import { type ReactNode, useState } from "react";
 import { FormattedMessage } from "react-intl";
+import { ChartWrapper } from "./ChartWrapper.tsx";
 import { SmoothnessRange } from "./SmoothnessRange.tsx";
-import { ChartControls, ChartWrapper } from "./widgets.tsx";
 
 export function KeySpeedChartSection({
   keyStatsMap,
@@ -70,15 +70,13 @@ export function KeySpeedChartSection({
         />
       </ChartWrapper>
 
-      <ChartControls>
-        <SmoothnessRange
-          disabled={!hasData(samples)}
-          value={smoothness}
-          onChangeValue={(value) => {
-            setSmoothness(value);
-          }}
-        />
-      </ChartControls>
+      <SmoothnessRange
+        disabled={!hasData(samples)}
+        value={smoothness}
+        onChangeValue={(value) => {
+          setSmoothness(value);
+        }}
+      />
 
       <Figure.Legend>
         <FormattedMessage

@@ -7,16 +7,17 @@ import {
   useImperativeHandle,
   useRef,
 } from "react";
+import { sizeClassName } from "../../styles/index.ts";
 import * as styles from "./TextField.module.less";
 import { type TextFieldProps, type TextFieldRef } from "./TextField.types.ts";
 
 export const TextField = forwardRef(function TextField(
   {
-    className,
     disabled,
     maxLength,
     name,
     placeholder,
+    size,
     tabIndex,
     title,
     type = "text",
@@ -43,7 +44,11 @@ export const TextField = forwardRef(function TextField(
       <textarea
         {...props}
         ref={element as RefObject<HTMLTextAreaElement>}
-        className={clsx(styles.root, disabled && styles.disabled, className)}
+        className={clsx(
+          styles.root,
+          disabled && styles.disabled,
+          sizeClassName(size),
+        )}
         disabled={disabled}
         maxLength={maxLength}
         name={name}
@@ -60,7 +65,11 @@ export const TextField = forwardRef(function TextField(
     return (
       <input
         ref={element as RefObject<HTMLInputElement>}
-        className={clsx(styles.root, disabled && styles.disabled, className)}
+        className={clsx(
+          styles.root,
+          disabled && styles.disabled,
+          sizeClassName(size),
+        )}
         disabled={disabled}
         maxLength={maxLength}
         name={name}

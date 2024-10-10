@@ -1,4 +1,4 @@
-import { Field, FieldList, OptionList, styleWidth24 } from "@keybr/widget";
+import { Field, FieldList, OptionList } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { Book } from "./book.ts";
 
@@ -14,7 +14,7 @@ export function BookSelector({
       <Field>Book:</Field>
       <Field>
         <OptionList
-          className={styleWidth24}
+          size={24}
           options={Book.ALL.map(({ id, title }) => ({
             value: id,
             name: title,

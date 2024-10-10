@@ -14,7 +14,6 @@ type Props = {
   readonly settings: CompositeSettings;
   readonly textGenerator: TextGenerator;
   readonly onComplete: (stats: Stats) => void;
-  readonly onHelp: () => void;
   readonly onConfigure: () => void;
 };
 
@@ -75,10 +74,7 @@ export class TestScreen extends Component<Props, State> {
   override render(): ReactNode {
     return (
       <Screen>
-        <Toolbar
-          onHelp={this.props.onHelp}
-          onConfigure={this.props.onConfigure}
-        />
+        <Toolbar onConfigure={this.props.onConfigure} />
         <TextArea
           focusRef={this.focusRef}
           settings={this.props.settings.textDisplay}

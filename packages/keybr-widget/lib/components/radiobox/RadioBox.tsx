@@ -14,7 +14,6 @@ export const RadioBox = forwardRef(function RadioBox(
   {
     checked,
     children,
-    className,
     disabled,
     label,
     name,
@@ -41,7 +40,7 @@ export const RadioBox = forwardRef(function RadioBox(
   return (
     <label
       {...props}
-      className={clsx(styles.root, disabled && styles.disabled, className)}
+      className={clsx(styles.root, disabled && styles.disabled)}
       title={title}
     >
       <input

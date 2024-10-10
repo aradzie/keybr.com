@@ -1,5 +1,5 @@
+import { type SizeName } from "../../styles/index.ts";
 import {
-  type ClassName,
   type Focusable,
   type FocusProps,
   type KeyboardProps,
@@ -10,10 +10,10 @@ import {
 export type TextFieldType = "text" | "textarea" | "email" | "url" | "password";
 
 export type TextFieldProps = {
-  readonly className?: ClassName;
   readonly maxLength?: number;
   readonly name?: string;
   readonly placeholder?: string;
+  readonly size?: SizeName;
   readonly title?: string;
   readonly type?: TextFieldType;
   readonly value?: string;

@@ -3,7 +3,7 @@ import { type KeyStatsMap } from "@keybr/result";
 import { Explainer, Figure } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
-import { ChartWrapper } from "./widgets.tsx";
+import { ChartWrapper } from "./ChartWrapper.tsx";
 
 export function KeyFrequencyHistogramSection({
   keyStatsMap,

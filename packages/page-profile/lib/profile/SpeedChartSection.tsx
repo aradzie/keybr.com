@@ -4,8 +4,8 @@ import { type Result } from "@keybr/result";
 import { Explainer, Figure } from "@keybr/widget";
 import { type ReactNode, useState } from "react";
 import { FormattedMessage } from "react-intl";
+import { ChartWrapper } from "./ChartWrapper.tsx";
 import { SmoothnessRange } from "./SmoothnessRange.tsx";
-import { ChartControls, ChartWrapper } from "./widgets.tsx";
 
 export function SpeedChartSection({
   results,
@@ -41,15 +41,13 @@ export function SpeedChartSection({
         />
       </ChartWrapper>
 
-      <ChartControls>
-        <SmoothnessRange
-          disabled={!hasData(results)}
-          value={smoothness}
-          onChangeValue={(value) => {
-            setSmoothness(value);
-          }}
-        />
-      </ChartControls>
+      <SmoothnessRange
+        disabled={!hasData(results)}
+        value={smoothness}
+        onChangeValue={(value) => {
+          setSmoothness(value);
+        }}
+      />
 
       <Figure.Legend>
         <FormattedMessage

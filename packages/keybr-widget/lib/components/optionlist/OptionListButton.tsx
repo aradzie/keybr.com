@@ -1,7 +1,7 @@
 import { clsx } from "clsx";
 import { type ReactNode, useRef } from "react";
+import { sizeClassName, type SizeName } from "../../styles/index.ts";
 import {
-  type ClassName,
   type FocusProps,
   type KeyboardProps,
   type MouseProps,
@@ -11,7 +11,7 @@ import * as styles from "./OptionListButton.module.less";
 
 export function OptionListButton({
   children,
-  className,
+  size,
   disabled,
   focused,
   open,
@@ -22,7 +22,7 @@ export function OptionListButton({
   ...props
 }: {
   readonly children: ReactNode;
-  readonly className?: ClassName;
+  readonly size?: SizeName;
   readonly focused: boolean;
   readonly open: boolean;
   readonly option: OptionListOption;
@@ -39,9 +39,9 @@ export function OptionListButton({
         styles.root,
         focused && styles.focused,
         disabled && styles.disabled,
-        className,
+        sizeClassName(size),
       )}
-      tabIndex={disabled ? undefined : tabIndex ?? 0}
+      tabIndex={disabled ? undefined : (tabIndex ?? 0)}
       title={title}
     >
       <span className={styles.placeholder} onClick={onClick}>

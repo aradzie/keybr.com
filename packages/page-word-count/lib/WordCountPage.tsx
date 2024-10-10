@@ -4,7 +4,6 @@ import { type ReactNode, useEffect, useMemo, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { EXAMPLE } from "./example.ts";
 import { TextStats } from "./TextStats.tsx";
-import * as styles from "./WordCountPage.module.less";
 
 export function WordCountPage(): ReactNode {
   const { locale, formatMessage } = useIntl();
@@ -21,8 +20,8 @@ export function WordCountPage(): ReactNode {
         }
       />
       <TextField
+        size="full"
         type="textarea"
-        className={styles.textInput}
         placeholder={formatMessage({
           id: "wordCount.textInput.placeholder",
           defaultMessage: "Paste your text here",

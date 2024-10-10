@@ -1,6 +1,5 @@
 import { type ReactNode } from "react";
 import {
-  type ClassName,
   type Focusable,
   type FocusProps,
   type KeyboardProps,
@@ -10,7 +9,6 @@ import {
 export type RadioBoxProps = {
   readonly checked?: boolean;
   readonly children?: ReactNode;
-  readonly className?: ClassName;
   readonly label?: ReactNode;
   readonly name?: string;
   readonly title?: string;
