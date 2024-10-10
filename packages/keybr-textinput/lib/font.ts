@@ -38,6 +38,10 @@ export class Font implements EnumItem {
   static readonly SPECTRAL_I = new Font("Spectral", "400", "italic");
   static readonly SPECTRAL_B = new Font("Spectral", "700", "normal");
   static readonly SPECTRAL_BI = new Font("Spectral", "700", "italic");
+  static readonly UBUNTU = new Font("Ubuntu", "400", "normal");
+  static readonly UBUNTU_I = new Font("Ubuntu", "400", "italic");
+  static readonly UBUNTU_B = new Font("Ubuntu", "700", "normal");
+  static readonly UBUNTU_BI = new Font("Ubuntu", "700", "italic");
   static readonly UBUNTU_MONO = new Font("Ubuntu Mono", "400", "normal");
   static readonly UBUNTU_MONO_I = new Font("Ubuntu Mono", "400", "italic");
   static readonly UBUNTU_MONO_B = new Font("Ubuntu Mono", "700", "normal");
@@ -68,6 +72,10 @@ export class Font implements EnumItem {
     Font.SPECTRAL_I,
     Font.SPECTRAL_B,
     Font.SPECTRAL_BI,
+    Font.UBUNTU,
+    Font.UBUNTU_I,
+    Font.UBUNTU_B,
+    Font.UBUNTU_BI,
     Font.UBUNTU_MONO,
     Font.UBUNTU_MONO_I,
     Font.UBUNTU_MONO_B,

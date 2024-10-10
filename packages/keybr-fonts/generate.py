@@ -255,6 +255,26 @@ def main():
         merge_file="Whitespace-em1000.ttf",
     )
     generate(
+        "fonts/Ubuntu/Ubuntu-R.ttf",
+        "ubuntu",
+        merge_file="Whitespace-em1000.ttf",
+    )
+    generate(
+        "fonts/Ubuntu/Ubuntu-RI.ttf",
+        "ubuntu",
+        merge_file="Whitespace-em1000.ttf",
+    )
+    generate(
+        "fonts/Ubuntu/Ubuntu-B.ttf",
+        "ubuntu",
+        merge_file="Whitespace-em1000.ttf",
+    )
+    generate(
+        "fonts/Ubuntu/Ubuntu-BI.ttf",
+        "ubuntu",
+        merge_file="Whitespace-em1000.ttf",
+    )
+    generate(
         "fonts/Ubuntu/UbuntuMono-R.ttf",
         "ubuntu-mono",
         merge_file="Whitespace-em1000.ttf",

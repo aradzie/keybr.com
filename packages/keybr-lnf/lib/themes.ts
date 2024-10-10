@@ -71,4 +71,8 @@ export const FONTS = new ThemeList([
     id: "nunito",
     name: "Nunito",
   },
+  {
+    id: "ubuntu",
+    name: "Ubuntu",
+  },
 ]);
