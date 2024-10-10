@@ -1,6 +1,6 @@
 @import "colors.less";
 
-html[data-color="dark"] {
+.dark-theme-props() {
   @primary: #222222;
   @secondary: #9f9999;
   @accent: #6c6666;
@@ -31,4 +31,8 @@ html[data-color="dark"] {
   .use-chart-colors(@primary, 50);
   .use-keyboard-colors(@primary, 50);
   .use-calendar-colors(@primary, #2d4a86);
+}
+
+html[data-color="dark"] {
+  .dark-theme-props();
 }

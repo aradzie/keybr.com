@@ -22,7 +22,7 @@ test("render", (t) => {
 
   t.deepEqual($("html").attr(), {
     "lang": "en",
-    "data-color": "light",
+    "data-color": "system",
     "data-font": "opensans",
   });
   t.is($("title").text(), "400 - Bad Request");

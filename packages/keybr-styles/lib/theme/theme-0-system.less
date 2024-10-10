@@ -1,11 +1,14 @@
+@import (reference) "theme-1-light.less";
+@import (reference) "theme-2-dark.less";
+
 @media (prefers-color-scheme: light) {
   html[data-color="system"] {
-    --theme: light;
+    .light-theme-props();
   }
 }
 
 @media (prefers-color-scheme: dark) {
   html[data-color="system"] {
-    --theme: dark;
+    .dark-theme-props();
   }
 }

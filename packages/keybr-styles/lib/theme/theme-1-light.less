@@ -1,6 +1,6 @@
 @import "colors.less";
 
-html[data-color="light"] {
+.light-theme-props() {
   @primary: #f4f0f0;
   @secondary: #282640;
   @accent: #3d475c;
@@ -31,4 +31,8 @@ html[data-color="light"] {
   .use-chart-colors(@primary, 0);
   .use-keyboard-colors(@primary, 0);
   .use-calendar-colors(@primary, #6699ff);
+}
+
+html[data-color="light"] {
+  .light-theme-props();
 }

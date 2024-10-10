@@ -96,6 +96,6 @@ test(`ignore invalid theme cookie`, async (t) => {
   t.deepEqual(response.headers.getAll("Set-Cookie"), []);
 
   const $ = load(await response.body.text());
-  t.is($("html").attr("data-color"), "light");
+  t.is($("html").attr("data-color"), "system");
   t.is($("html").attr("data-font"), "opensans");
 });

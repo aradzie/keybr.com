@@ -33,6 +33,10 @@ export class ThemeList implements Iterable<Theme> {
 
 export const COLORS = new ThemeList([
   {
+    id: "system",
+    name: "System",
+  },
+  {
     id: "light",
     name: "Light",
   },
