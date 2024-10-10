@@ -26,6 +26,10 @@ export class Font implements EnumItem {
   static readonly OPEN_SANS_I = new Font("Open Sans", "400", "italic");
   static readonly OPEN_SANS_B = new Font("Open Sans", "700", "normal");
   static readonly OPEN_SANS_BI = new Font("Open Sans", "700", "italic");
+  static readonly ROBOTO = new Font("Roboto", "400", "normal");
+  static readonly ROBOTO_I = new Font("Roboto", "400", "italic");
+  static readonly ROBOTO_B = new Font("Roboto", "700", "normal");
+  static readonly ROBOTO_BI = new Font("Roboto", "700", "italic");
   static readonly ROBOTO_MONO = new Font("Roboto Mono", "400", "normal");
   static readonly ROBOTO_MONO_I = new Font("Roboto Mono", "400", "italic");
   static readonly ROBOTO_MONO_B = new Font("Roboto Mono", "700", "normal");
@@ -52,6 +56,10 @@ export class Font implements EnumItem {
     Font.OPEN_SANS_I,
     Font.OPEN_SANS_B,
     Font.OPEN_SANS_BI,
+    Font.ROBOTO,
+    Font.ROBOTO_I,
+    Font.ROBOTO_B,
+    Font.ROBOTO_BI,
     Font.ROBOTO_MONO,
     Font.ROBOTO_MONO_I,
     Font.ROBOTO_MONO_B,

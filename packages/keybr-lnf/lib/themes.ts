@@ -60,6 +60,10 @@ export const FONTS = new ThemeList([
     name: "Open Sans",
   },
   {
+    id: "roboto",
+    name: "Roboto",
+  },
+  {
     id: "spectral",
     name: "Spectral",
   },
