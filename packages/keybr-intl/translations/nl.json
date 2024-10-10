@@ -403,8 +403,6 @@
   "textStats.timeToType": "Bij de gemiddelde typtempo van {speed} WPM, zou het {time} duren om dit tekst te lezen.",
   "theme.enterFullscreen.description": "Ga naar full-screen mode.",
   "theme.exitFullscreen.description": "Verlaat full-screen mode.",
-  "theme.fullscreenNotSupported.description": "Full-screen mode niet ondersteund.",
-  "theme.switchTheme.description": "Overschakelen naar thema {name}.",
   "tour.close": "Sluit",
   "tour.next": "Volgende",
   "tour.previous": "Vorige",

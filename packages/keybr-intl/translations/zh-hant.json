@@ -412,8 +412,6 @@
   "textStats.timeToType": "以平均輸入速度{speed}WPM，輸入此文字將要花費{time}。",
   "theme.enterFullscreen.description": "進入全螢幕模式.",
   "theme.exitFullscreen.description": "退出全螢幕模式.",
-  "theme.fullscreenNotSupported.description": "不支援全螢幕模式.",
-  "theme.switchTheme.description": "切換到主題 {name}.",
   "tour.close": "關閉",
   "tour.next": "下一個",
   "tour.previous": "上一頁",

@@ -357,8 +357,6 @@
   "textStats.timeToType": "با میانگین سرعت {speed} واژه‌بر‌دقیقه {time} طول می‌کشد تا این متن را تایپ کنید.",
   "theme.enterFullscreen.description": "ورود به حالت تمام‌صفحه.",
   "theme.exitFullscreen.description": "خروج از حالت تمام‌صفحه.",
-  "theme.fullscreenNotSupported.description": "حالت تمام‌صفحه پشتیبانی نمی‌شود.",
-  "theme.switchTheme.description": "عوض‌کردن تم به {name}.",
   "tour.close": "بستن",
   "tour.next": "بعدی",
   "tour.previous": "قبلی",

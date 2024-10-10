@@ -408,8 +408,6 @@
   "textStats.timeToType": "Pri prosječnoj brzini upisivanja od {speed} WPM, potrebno je {time} za upis ovog teksta.",
   "theme.enterFullscreen.description": "Uđite u način prikaza preko cijelog zaslona.",
   "theme.exitFullscreen.description": "Izađite iz prikaza preko cijelog zaslona.",
-  "theme.fullscreenNotSupported.description": "Način prikaza preko cijelog zaslona nije podržan.",
-  "theme.switchTheme.description": "Prijeđite na temu {name}.",
   "tour.close": "Zatvori",
   "tour.next": "Sljedeće",
   "tour.previous": "Prethodno",

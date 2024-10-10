@@ -409,8 +409,6 @@
   "textStats.timeToType": "Med den genomsnittliga skrivhastigheten {speed} OPM, skulle det ta {time} att skriva texten.",
   "theme.enterFullscreen.description": "Använd fullskärmsläge.",
   "theme.exitFullscreen.description": "Lämna fullskärmsläge.",
-  "theme.fullscreenNotSupported.description": "Fullskärmsläge saknar stöd.",
-  "theme.switchTheme.description": "Byt till tema {name}.",
   "tour.close": "Stäng",
   "tour.next": "Nästa",
   "tour.previous": "Föregående",

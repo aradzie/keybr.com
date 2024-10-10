@@ -377,8 +377,6 @@
   "textStats.timeToType": "Με τη μέση ταχύτητα πληκτρολόγησης {speed} WPM, θα χρειαζόταν {time} για να πληκτρολογήσετε αυτό το κείμενο.",
   "theme.enterFullscreen.description": "Μπείτε σε λειτουργία πλήρους οθόνης.",
   "theme.exitFullscreen.description": "Έξοδος από τη λειτουργία πλήρους οθόνης.",
-  "theme.fullscreenNotSupported.description": "Η λειτουργία πλήρους οθόνης δεν υποστηρίζεται.",
-  "theme.switchTheme.description": "Μετάβαση στο θέμα {name}.",
   "tour.close": "Κλείσε",
   "tour.next": "Επόμενο",
   "tour.previous": "Προηγούμενος",

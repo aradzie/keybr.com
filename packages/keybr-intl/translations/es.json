@@ -415,8 +415,6 @@
   "textStats.timeToType": "A una velocidad media de mecanografía de {speed} PPM, llevaría {time} para leer este texto.",
   "theme.enterFullscreen.description": "Entrar en modo pantalla completa.",
   "theme.exitFullscreen.description": "Salir del modo pantalla completa.",
-  "theme.fullscreenNotSupported.description": "Modo pantalla completa no soportado.",
-  "theme.switchTheme.description": "Cambiar al tema {name}.",
   "tour.close": "Cerrar",
   "tour.next": "Siguiente",
   "tour.previous": "Anterior",

@@ -415,8 +415,6 @@
   "textStats.timeToType": "以平均输入速度{speed}WPM，输入此文本将要花费{time}。",
   "theme.enterFullscreen.description": "进入全屏模式.",
   "theme.exitFullscreen.description": "退出全屏模式.",
-  "theme.fullscreenNotSupported.description": "不支持全屏模式.",
-  "theme.switchTheme.description": "切换到主题 {name}.",
   "tour.close": "关闭",
   "tour.next": "下一个",
   "tour.previous": "上一页",

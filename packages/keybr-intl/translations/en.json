@@ -423,8 +423,6 @@
   "textStats.timeToType": "At the average typing speed of {speed} WPM, it would take {time} to type this text.",
   "theme.enterFullscreen.description": "Enter full-screen mode.",
   "theme.exitFullscreen.description": "Exit full-screen mode.",
-  "theme.fullscreenNotSupported.description": "Full-screen mode not supported.",
-  "theme.switchTheme.description": "Switch to theme {name}.",
   "tour.close": "Close",
   "tour.next": "Next",
   "tour.previous": "Previous",

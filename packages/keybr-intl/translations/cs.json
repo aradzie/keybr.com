@@ -404,8 +404,6 @@
   "textStats.timeToType": "Při průměrné rychlosti psaní {speed} slov za minutu by napsání tohoto textu trvalo {time}.",
   "theme.enterFullscreen.description": "Vstup do režimu celé obrazovky.",
   "theme.exitFullscreen.description": "Ukončit režim celé obrazovky.",
-  "theme.fullscreenNotSupported.description": "Režim celé obrazovky není podporován.",
-  "theme.switchTheme.description": "Přepnout na téma {name}.",
   "tour.close": "Zavřít",
   "tour.next": "Další",
   "tour.previous": "Předchozí",

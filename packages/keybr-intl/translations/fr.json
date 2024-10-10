@@ -398,8 +398,6 @@
   "textStats.timeToType": "À la vitesse de frappe moyenne de {speed} MPM, il faudrait {time} pour saisir ce texte.",
   "theme.enterFullscreen.description": "Passer en mode plein écran.",
   "theme.exitFullscreen.description": "Quittez le mode plein écran.",
-  "theme.fullscreenNotSupported.description": "Le mode plein écran n’est pas pris en charge.",
-  "theme.switchTheme.description": "Basculer au thème {name}.",
   "tour.close": "Fermer",
   "tour.next": "Suivant",
   "tour.previous": "Précédent",

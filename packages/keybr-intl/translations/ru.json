@@ -412,8 +412,6 @@
   "textStats.timeToType": "При средней скорости набора {speed} WPM потребуется {time} для того, чтобы напечатать этот текст.",
   "theme.enterFullscreen.description": "Войти в полноэкранный режим.",
   "theme.exitFullscreen.description": "Выйти из полноэкранного режима.",
-  "theme.fullscreenNotSupported.description": "Полноэкранный режим не поддерживается.",
-  "theme.switchTheme.description": "Переключиться на тему {name}.",
   "tour.close": "Закрыть",
   "tour.next": "Следующий",
   "tour.previous": "Предыдущий",

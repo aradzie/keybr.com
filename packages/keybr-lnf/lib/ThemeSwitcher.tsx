@@ -1,66 +1,62 @@
-import { Icon, IconButton } from "@keybr/widget";
+import {
+  ensureVisible,
+  Icon,
+  IconButton,
+  type OptionListOption,
+  Popup,
+  Portal,
+} from "@keybr/widget";
 import {
   mdiArrowCollapseAll,
   mdiArrowExpandAll,
   mdiFormatFont,
   mdiThemeLightDark,
 } from "@mdi/js";
+import { clsx } from "clsx";
+import { type ReactNode, useEffect, useRef, useState } from "react";
 import { defineMessage, useIntl } from "react-intl";
 import { useTheme } from "./context.ts";
 import { COLORS, FONTS } from "./themes.ts";
 import * as styles from "./ThemeSwitcher.module.less";
 
 export function ThemeSwitcher() {
+  const [open, setOpen] = useState(null as "color" | "font" | null);
   return (
     <div className={styles.root}>
-      <ColorButton />
-      <FontButton />
+      {open && (
+        <Portal>
+          <Popup anchor={`.${styles.root}`} arrow={false} position="block-end">
+            {open === "color" && (
+              <ColorMenu
+                onClose={() => {
+                  setOpen(null);
+                }}
+              />
+            )}
+            {open === "font" && (
+              <FontMenu
+                onClose={() => {
+                  setOpen(null);
+                }}
+              />
+            )}
+          </Popup>
+        </Portal>
+      )}
+      <IconButton
+        icon={<Icon shape={mdiThemeLightDark} />}
+        onClick={() => {
+          setOpen("color");
+        }}
+      />
+      <IconButton
+        icon={<Icon shape={mdiFormatFont} />}
+        onClick={() => {
+          setOpen("font");
+        }}
+      />
       <FullscreenButton />
     </div>
-  );
-}
-
-function ColorButton() {
-  const { formatMessage } = useIntl();
-  const { color, switchColor } = useTheme();
-  const theme = COLORS.find(color);
-  const next = COLORS.findNext(theme);
-  return (
-    <IconButton
-      icon={<Icon shape={mdiThemeLightDark} />}
-      title={formatMessage(
-        defineMessage({
-          id: "theme.switchTheme.description",
-          defaultMessage: "Switch to theme {name}.",
-        }),
-        { name: next.name },
-      )}
-      onClick={() => {
-        switchColor(next.id);
-      }}
-    />
-  );
-}
-
-function FontButton() {
-  const { formatMessage } = useIntl();
-  const { font, switchFont } = useTheme();
-  const theme = FONTS.find(font);
-  const next = FONTS.findNext(theme);
-  return (
-    <IconButton
-      icon={<Icon shape={mdiFormatFont} />}
-      title={formatMessage(
-        defineMessage({
-          id: "theme.switchTheme.description",
-          defaultMessage: "Switch to theme {name}.",
-        }),
-        { name: next.name },
-      )}
-      onClick={() => {
-        switchFont(next.id);
-      }}
-    />
   );
 }
 
@@ -99,16 +95,77 @@ function FullscreenButton() {
         />
       );
     default:
-      return (
-        <IconButton
-          icon={<Icon shape={mdiArrowExpandAll} />}
-          title={formatMessage(
-            defineMessage({
-              id: "theme.fullscreenNotSupported.description",
-              defaultMessage: "Full-screen mode not supported.",
-            }),
-          )}
-        />
-      );
+      return <IconButton icon={<Icon shape={mdiArrowExpandAll} />} />;
   }
+}
+
+function ColorMenu({ onClose }: { readonly onClose: () => void }) {
+  const theme = useTheme();
+  const options = [...COLORS].map(({ id, name }) => ({ value: id, name }));
+  const selected =
+    options.find(({ value }) => value === theme.color) ?? options[0];
+  return (
+    <Menu
+      options={options}
+      selectedOption={selected}
+      onSelect={({ value }) => {
+        theme.switchColor(value);
+        onClose();
+      }}
+    />
+  );
+}
+
+function FontMenu({ onClose }: { readonly onClose: () => void }) {
+  const theme = useTheme();
+  const options = [...FONTS].map(({ id, name }) => ({ value: id, name }));
+  const selected =
+    options.find(({ value }) => value === theme.font) ?? options[0];
+  return (
+    <Menu
+      options={options}
+      selectedOption={selected}
+      onSelect={({ value }) => {
+        theme.switchFont(value);
+        onClose();
+      }}
+    />
+  );
+}
+
+function Menu({
+  options,
+  selectedOption,
+  onSelect,
+}: {
+  readonly options: readonly OptionListOption[];
+  readonly selectedOption: OptionListOption;
+  readonly onSelect: (value: OptionListOption) => void;
+}): ReactNode {
+  const list = useRef(null);
+  const item = useRef(null);
+  useEffect(() => {
+    ensureVisible(list.current, item.current);
+  });
+  return (
+    <ul ref={list} role="menu" className={styles.menu}>
+      {options.map((option, index) => (
+        <li
+          key={index}
+          ref={option === selectedOption ? item : null}
+          role="menuitem"
+          className={clsx(
+            styles.item,
+            option === selectedOption && styles.item_selected,
+          )}
+          onClick={(event) => {
+            event.preventDefault();
+            onSelect(option);
+          }}
+        >
+          {option.name}
+        </li>
+      ))}
+    </ul>
+  );
 }

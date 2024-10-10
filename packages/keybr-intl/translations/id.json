@@ -258,8 +258,6 @@
   "textStats.numUniqueWords": "Kata-kata unik",
   "theme.enterFullscreen.description": "Masuk mode layar penuh.",
   "theme.exitFullscreen.description": "Keluar mode layar penuh.",
-  "theme.fullscreenNotSupported.description": "Mode layar penuh tidak didukung.",
-  "theme.switchTheme.description": "Ganti ke tema {name}.",
   "tour.close": "Tutup",
   "tour.next": "Selanjutnya",
   "tour.previous": "Sebelumnya",

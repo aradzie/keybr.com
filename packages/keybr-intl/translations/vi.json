@@ -329,8 +329,6 @@
   "textStats.numParagraphs": "Đoạn văn",
   "theme.enterFullscreen.description": "Vào chế độ toàn màn hình.",
   "theme.exitFullscreen.description": "Thoát khỏi chế độ toàn màn hình.",
-  "theme.fullscreenNotSupported.description": "Chế độ toàn màn hình không được hỗ trợ.",
-  "theme.switchTheme.description": "Chuyển sang chế độ nền {name}.",
   "tour.close": "Đóng",
   "tour.next": "Tiếp theo",
   "tour.previous": "Trước đó",

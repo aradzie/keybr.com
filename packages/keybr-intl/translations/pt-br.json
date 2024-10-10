@@ -408,8 +408,6 @@
   "textStats.timeToType": "Na velocidade média de digitação de {speed} WPM, levaria {time} para digitar este texto.",
   "theme.enterFullscreen.description": "Entre no modo de tela inteira.",
   "theme.exitFullscreen.description": "Saia do modo de tela cheia.",
-  "theme.fullscreenNotSupported.description": "Modo de tela cheia não suportado.",
-  "theme.switchTheme.description": "Mude para o tema {name}.",
   "tour.close": "Fechar",
   "tour.next": "Próximo",
   "tour.previous": "Anterior",

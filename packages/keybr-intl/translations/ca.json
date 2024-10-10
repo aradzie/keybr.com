@@ -387,8 +387,6 @@
   "textStats.timeToType": "Per una velocitat mitjana d’escriptura de {speed} PPM, costaria {time} escriure aquest text.",
   "theme.enterFullscreen.description": "Entra al mode de pantalla completa.",
   "theme.exitFullscreen.description": "Surt del mode de pantalla completa.",
-  "theme.fullscreenNotSupported.description": "Mode de pantalla completa no suportat.",
-  "theme.switchTheme.description": "Canvia al tema {name}.",
   "tour.close": "Tancar",
   "tour.next": "Següent",
   "tour.previous": "Anterior",

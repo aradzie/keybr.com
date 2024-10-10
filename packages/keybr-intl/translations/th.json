@@ -416,8 +416,6 @@
   "textStats.timeToType": "ที่ความเร็วในการพิมพ์เฉลี่ย {speed} คำต่อนาที จะใช้เวลา {time} ในการพิมพ์ข้อความนี้",
   "theme.enterFullscreen.description": "เข้าสู่โหมดเต็มจอ",
   "theme.exitFullscreen.description": "ออกจากโหมดเต็มจอ",
-  "theme.fullscreenNotSupported.description": "ไม่รองรับโหมดเต็มจอ",
-  "theme.switchTheme.description": "สลับไปเป็นธีม {name}",
   "tour.close": "ปิด",
   "tour.next": "ถัดไป",
   "tour.previous": "ก่อนหน้า",

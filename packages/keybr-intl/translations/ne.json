@@ -379,8 +379,6 @@
   "textStats.timeToType": "{speed} WPM को औसत टाइपिङ गतिमा, यो पाठ टाइप गर्न {time} लाग्छ।",
   "theme.enterFullscreen.description": "पूर्ण-स्क्रिन मोड प्रविष्ट गर्नुहोस्।",
   "theme.exitFullscreen.description": "पूर्ण-स्क्रिन मोडबाट बाहिर निस्कनुहोस्।",
-  "theme.fullscreenNotSupported.description": "पूर्ण-स्क्रिन मोड समर्थित छैन।",
-  "theme.switchTheme.description": "विषयवस्तु {name} मा स्विच गर्नुहोस्।",
   "tour.close": "बन्द गर्नुहोस्",
   "tour.next": "अर्को",
   "tour.previous": "अघिल्लो",

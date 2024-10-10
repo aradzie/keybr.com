@@ -368,8 +368,6 @@
   "textStats.timeToRead": "La o viteza medie de citire de {speed} CPM, ar dura {time} sa cititi acest text.",
   "textStats.timeToType": "La viteza medie de tastare de {speed} WPM, ar dura {time} pentru a tasta acest text.",
   "theme.exitFullscreen.description": "Ieșiți din modul ecran complet.",
-  "theme.fullscreenNotSupported.description": "Modul full-screen nu este acceptat.",
-  "theme.switchTheme.description": "Treceți la tema {name}.",
   "tour.close": "Închidere",
   "tour.next": "Urmatorul",
   "tour.previous": "Articolul precedent",

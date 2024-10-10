@@ -412,8 +412,6 @@
   "textStats.timeToType": "Przy średnim tempie pisania na klawiaturze {speed} słów na minutę wpisanie tego tekstu zajmie {time}.",
   "theme.enterFullscreen.description": "Przejdź do trybu pełnoekranowego.",
   "theme.exitFullscreen.description": "Wyjdź z trybu pełnoekranowego.",
-  "theme.fullscreenNotSupported.description": "Tryb pełnoekranowy nie jest obsługiwany.",
-  "theme.switchTheme.description": "Przełącz na motyw {name}.",
   "tour.close": "Zamknąć",
   "tour.next": "Następny",
   "tour.previous": "Poprzedni",

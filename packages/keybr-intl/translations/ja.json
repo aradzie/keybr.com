@@ -249,8 +249,6 @@
   "textStats.numUniqueWords": "ユニークな単語数",
   "theme.enterFullscreen.description": "フルスクリーンモード。",
   "theme.exitFullscreen.description": "フルスクリーンモードを終了。",
-  "theme.fullscreenNotSupported.description": "フルスクリーンモードに対応していません。",
-  "theme.switchTheme.description": "{name}テーマに変更する。",
   "tour.close": "閉じる",
   "tour.next": "次",
   "tour.previous": "前",

@@ -412,8 +412,6 @@
   "textStats.timeToType": "بمتوسط سرعة الكتابة {speed} WPM، سيستغرق الأمر {time} لكتابة هذا النص.",
   "theme.enterFullscreen.description": "دخول وضع ملء الشاشة",
   "theme.exitFullscreen.description": "الخروج من وضع ملء الشاشة",
-  "theme.fullscreenNotSupported.description": "وضع ملء الشاشة غير مدعوم.",
-  "theme.switchTheme.description": "التبديل إلى السمة {name}.",
   "tour.close": "إغلاق",
   "tour.next": "التالي",
   "tour.previous": "السابق",

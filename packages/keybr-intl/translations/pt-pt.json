@@ -404,8 +404,6 @@
   "textStats.timeToType": "À velocidade média de escrita de {speed}PPM, demoraria {time} para escrever este texto.",
   "theme.enterFullscreen.description": "Entrar em modo ecrã-inteiro.",
   "theme.exitFullscreen.description": "Sair de modo ecrã-inteiro.",
-  "theme.fullscreenNotSupported.description": "Modo ecrã-inteiro não suportado.",
-  "theme.switchTheme.description": "Mudar para tema {name}.",
   "tour.close": "Fechar",
   "tour.next": "Próximo",
   "tour.previous": "Anterior",

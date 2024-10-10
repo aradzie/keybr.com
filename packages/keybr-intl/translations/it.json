@@ -409,8 +409,6 @@
   "textStats.timeToType": "Alla velocità di digitazione media di {speed} PPM, occorrerebbe {time} per digitare questo testo.",
   "theme.enterFullscreen.description": "Attiva la modalità a schermo intero.",
   "theme.exitFullscreen.description": "Disattiva la modalità a schermo intero.",
-  "theme.fullscreenNotSupported.description": "La modalità a schermo intero non è supportata.",
-  "theme.switchTheme.description": "Passa a tema {name}.",
   "tour.close": "Chiudi",
   "tour.next": "Prossimo",
   "tour.previous": "Precedente",

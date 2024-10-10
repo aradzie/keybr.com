@@ -407,8 +407,6 @@
   "textStats.timeToType": "Ved den gennemsnitlige skrivehastighed på {speed} WPM ville det tage {time} at skrive denne tekst.",
   "theme.enterFullscreen.description": "Gå ind i fuldskærmstilstand.",
   "theme.exitFullscreen.description": "Afslut fuldskærmstilstand.",
-  "theme.fullscreenNotSupported.description": "Fuldskærmstilstand understøttes ikke.",
-  "theme.switchTheme.description": "Skift til temaet {name}.",
   "tour.close": "Luk",
   "tour.next": "Næste",
   "tour.previous": "Forrige",

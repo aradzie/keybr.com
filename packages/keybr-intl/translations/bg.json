@@ -416,8 +416,6 @@
   "textStats.timeToType": "При средна скорост на писане от {speed} WPM, въвеждането на този текст ще отнеме {time}.",
   "theme.enterFullscreen.description": "Влез в режим на цял екран.",
   "theme.exitFullscreen.description": "Излез от режим на цял екран.",
-  "theme.fullscreenNotSupported.description": "Режимът на цял екран не се поддържа.",
-  "theme.switchTheme.description": "Превключете към тема {name}.",
   "tour.close": "Затвори",
   "tour.next": "Следващ",
   "tour.previous": "Предишен",

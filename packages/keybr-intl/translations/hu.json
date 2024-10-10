@@ -354,8 +354,6 @@
   "textStats.timeToType": "Az átlagos gépelési sebességével {speed} WPM, ennyi időbe telne {time} hogy a megadott szöveget legépelje.",
   "theme.enterFullscreen.description": "Belépés a teljes képernyős módba.",
   "theme.exitFullscreen.description": "Kilépés a teljes képernyős módból.",
-  "theme.fullscreenNotSupported.description": "A teljes képernyős mód nem támogatott.",
-  "theme.switchTheme.description": "A témára váltás {name}.",
   "tour.close": "Bezár",
   "tour.next": "következő",
   "tour.previous": "Előző",

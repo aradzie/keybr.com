@@ -1,6 +1,6 @@
 # Arabic
 
-Translated: 421 messages, 5084 words
+Translated: 419 messages, 5075 words
 
 Untranslated: 9 messages, 79 words
 
@@ -16,7 +16,7 @@ Untranslated: 9 messages, 79 words
 
 # Bulgarian
 
-Translated: 425 messages, 5110 words
+Translated: 423 messages, 5101 words
 
 Untranslated: 5 messages, 53 words
 
@@ -28,7 +28,7 @@ Untranslated: 5 messages, 53 words
 
 # Catalan
 
-Translated: 395 messages, 3641 words
+Translated: 393 messages, 3632 words
 
 Untranslated: 35 messages, 1522 words
 
@@ -56,7 +56,7 @@ Untranslated: 35 messages, 1522 words
 
 # Czech
 
-Translated: 413 messages, 4920 words
+Translated: 411 messages, 4911 words
 
 Untranslated: 17 messages, 243 words
 
@@ -80,7 +80,7 @@ Untranslated: 17 messages, 243 words
 
 # Danish
 
-Translated: 416 messages, 5100 words
+Translated: 414 messages, 5091 words
 
 Untranslated: 14 messages, 63 words
 
@@ -101,7 +101,7 @@ Untranslated: 14 messages, 63 words
 
 # German
 
-Translated: 419 messages, 5104 words
+Translated: 417 messages, 5095 words
 
 Untranslated: 11 messages, 59 words
 
@@ -119,7 +119,7 @@ Untranslated: 11 messages, 59 words
 
 # Greek
 
-Translated: 386 messages, 4676 words
+Translated: 384 messages, 4667 words
 
 Untranslated: 44 messages, 487 words
 
@@ -149,7 +149,7 @@ Untranslated: 44 messages, 487 words
 
 Translated: 82 messages, 861 words
 
-Untranslated: 335 messages, 4211 words
+Untranslated: 334 messages, 4206 words
 
 * *GO!*
 * *Time*
@@ -175,7 +175,7 @@ Untranslated: 335 messages, 4211 words
 
 # Spanish
 
-Translated: 424 messages, 4998 words
+Translated: 422 messages, 4989 words
 
 Untranslated: 6 messages, 165 words
 
@@ -188,7 +188,7 @@ Untranslated: 6 messages, 165 words
 
 # Estonian
 
-Translated: 412 messages, 5029 words
+Translated: 410 messages, 5020 words
 
 Untranslated: 18 messages, 134 words
 
@@ -213,7 +213,7 @@ Untranslated: 18 messages, 134 words
 
 # Persian
 
-Translated: 366 messages, 2978 words
+Translated: 364 messages, 2969 words
 
 Untranslated: 62 messages, 2158 words
 
@@ -241,7 +241,7 @@ Untranslated: 62 messages, 2158 words
 
 # French
 
-Translated: 407 messages, 4721 words
+Translated: 405 messages, 4712 words
 
 Untranslated: 23 messages, 442 words
 
@@ -269,7 +269,7 @@ Untranslated: 23 messages, 442 words
 
 # Hebrew
 
-Translated: 404 messages, 4737 words
+Translated: 402 messages, 4728 words
 
 Untranslated: 26 messages, 426 words
 
@@ -297,7 +297,7 @@ Untranslated: 26 messages, 426 words
 
 # Croatian
 
-Translated: 417 messages, 5080 words
+Translated: 415 messages, 5071 words
 
 Untranslated: 13 messages, 83 words
 
@@ -317,7 +317,7 @@ Untranslated: 13 messages, 83 words
 
 # Hungarian
 
-Translated: 363 messages, 4112 words
+Translated: 361 messages, 4103 words
 
 Untranslated: 67 messages, 1051 words
 
@@ -345,7 +345,7 @@ Untranslated: 67 messages, 1051 words
 
 # Indonesian
 
-Translated: 266 messages, 1971 words
+Translated: 264 messages, 1962 words
 
 Untranslated: 157 messages, 3120 words
 
@@ -373,7 +373,7 @@ Untranslated: 157 messages, 3120 words
 
 # Italian
 
-Translated: 418 messages, 5102 words
+Translated: 416 messages, 5093 words
 
 Untranslated: 11 messages, 59 words
 
@@ -391,7 +391,7 @@ Untranslated: 11 messages, 59 words
 
 # Japanese
 
-Translated: 256 messages, 2235 words
+Translated: 254 messages, 2226 words
 
 Untranslated: 164 messages, 2855 words
 
@@ -421,7 +421,7 @@ Untranslated: 164 messages, 2855 words
 
 Translated: 168 messages, 1169 words
 
-Untranslated: 256 messages, 3931 words
+Untranslated: 255 messages, 3926 words
 
 * *Copy*
 * *Done*
@@ -447,7 +447,7 @@ Untranslated: 256 messages, 3931 words
 
 # Nepali
 
-Translated: 388 messages, 4678 words
+Translated: 386 messages, 4669 words
 
 Untranslated: 42 messages, 485 words
 
@@ -475,7 +475,7 @@ Untranslated: 42 messages, 485 words
 
 # Dutch
 
-Translated: 412 messages, 5091 words
+Translated: 410 messages, 5082 words
 
 Untranslated: 17 messages, 70 words
 
@@ -499,7 +499,7 @@ Untranslated: 17 messages, 70 words
 
 # Polish
 
-Translated: 421 messages, 5084 words
+Translated: 419 messages, 5075 words
 
 Untranslated: 9 messages, 79 words
 
@@ -515,7 +515,7 @@ Untranslated: 9 messages, 79 words
 
 # Brazilian Portuguese
 
-Translated: 417 messages, 5079 words
+Translated: 415 messages, 5070 words
 
 Untranslated: 12 messages, 82 words
 
@@ -534,7 +534,7 @@ Untranslated: 12 messages, 82 words
 
 # European Portuguese
 
-Translated: 413 messages, 5070 words
+Translated: 411 messages, 5061 words
 
 Untranslated: 17 messages, 93 words
 
@@ -558,7 +558,7 @@ Untranslated: 17 messages, 93 words
 
 # Romanian
 
-Translated: 377 messages, 3795 words
+Translated: 375 messages, 3786 words
 
 Untranslated: 42 messages, 1289 words
 
@@ -586,7 +586,7 @@ Untranslated: 42 messages, 1289 words
 
 # Russian
 
-Translated: 421 messages, 5084 words
+Translated: 419 messages, 5075 words
 
 Untranslated: 9 messages, 79 words
 
@@ -602,7 +602,7 @@ Untranslated: 9 messages, 79 words
 
 # Swedish
 
-Translated: 418 messages, 5103 words
+Translated: 416 messages, 5094 words
 
 Untranslated: 12 messages, 60 words
 
@@ -621,7 +621,7 @@ Untranslated: 12 messages, 60 words
 
 # Thai
 
-Translated: 425 messages, 5110 words
+Translated: 423 messages, 5101 words
 
 Untranslated: 5 messages, 53 words
 
@@ -633,7 +633,7 @@ Untranslated: 5 messages, 53 words
 
 # Turkish
 
-Translated: 263 messages, 1795 words
+Translated: 262 messages, 1790 words
 
 Untranslated: 158 messages, 3292 words
 
@@ -661,7 +661,7 @@ Untranslated: 158 messages, 3292 words
 
 # Ukrainian
 
-Translated: 423 messages, 5106 words
+Translated: 421 messages, 5097 words
 
 Untranslated: 7 messages, 57 words
 
@@ -675,7 +675,7 @@ Untranslated: 7 messages, 57 words
 
 # Vietnamese
 
-Translated: 338 messages, 2195 words
+Translated: 336 messages, 2186 words
 
 Untranslated: 87 messages, 2911 words
 
@@ -703,7 +703,7 @@ Untranslated: 87 messages, 2911 words
 
 # Simplified Chinese
 
-Translated: 424 messages, 5103 words
+Translated: 422 messages, 5094 words
 
 Untranslated: 6 messages, 60 words
 
@@ -716,7 +716,7 @@ Untranslated: 6 messages, 60 words
 
 # Traditional Chinese
 
-Translated: 421 messages, 5084 words
+Translated: 419 messages, 5075 words
 
 Untranslated: 9 messages, 79 words
 

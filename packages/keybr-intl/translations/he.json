@@ -395,8 +395,6 @@
   "textStats.timeToType": "במהירות ההקלדה הממוצעת של {speed} WPM, ייקח {time} להקליד את הטקסט הזה.",
   "theme.enterFullscreen.description": "היכנס למצב מסך מלא.",
   "theme.exitFullscreen.description": "צא ממצב מסך מלא.",
-  "theme.fullscreenNotSupported.description": "מצב מסך מלא אינו נתמך.",
-  "theme.switchTheme.description": "עבור לנושא {name}.",
   "tour.close": "סגור",
   "tour.next": "הַבָּא",
   "tour.previous": "קודם",

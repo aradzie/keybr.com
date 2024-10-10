@@ -403,8 +403,6 @@
   "textStats.timeToType": "Keskmise kirjutamiskiirusega {speed} WPM, kuluks selle teksti kirjutamiseks {time}.",
   "theme.enterFullscreen.description": "Lülita sisse täisekraani režiim.",
   "theme.exitFullscreen.description": "Väljum täisekraani režiimist.",
-  "theme.fullscreenNotSupported.description": "Täisekraani režiim ei ole toetatud.",
-  "theme.switchTheme.description": "Vali teemaks {name}.",
   "tour.close": "Sulge",
   "tour.next": "Järgmine",
   "tour.previous": "Eelmine",
