@@ -9,7 +9,6 @@
     "@keybr/database": "*",
     "@keybr/highscores": "*",
     "@keybr/intl": "*",
-    "@keybr/lnf": "*",
     "@keybr/logger": "*",
     "@keybr/multiplayer-server": "*",
     "@keybr/multiplayer-shared": "*",
@@ -22,6 +21,7 @@
     "@keybr/result-userdata": "*",
     "@keybr/settings": "*",
     "@keybr/settings-database": "*",
+    "@keybr/styles": "*",
     "@types/ws": "^8.5.12",
     "ws": "^8.18.0"
   },

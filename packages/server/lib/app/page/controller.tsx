@@ -4,7 +4,6 @@ import { inject, injectable } from "@fastr/invert";
 import { CanonicalHandler } from "@fastr/middleware-canonical";
 import { type RouterState } from "@fastr/middleware-router";
 import { defaultLocale, loadIntl, PreferredLocaleContext } from "@keybr/intl";
-import { ThemeContext, type ThemeControl, ThemePrefs } from "@keybr/lnf";
 import { Shell, View } from "@keybr/pages-server";
 import {
   type PageData,
@@ -13,6 +12,7 @@ import {
   Pages,
 } from "@keybr/pages-shared";
 import { SettingsDatabase } from "@keybr/settings-database";
+import { ThemeContext, type ThemeControl, ThemePrefs } from "@keybr/styles";
 import { type IntlShape, RawIntlProvider } from "react-intl";
 import { type AuthState } from "../auth/index.ts";
 import { localePattern, pIntl, preferredLocale } from "./intl.ts";

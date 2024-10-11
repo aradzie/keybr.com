@@ -10,11 +10,11 @@
     "@keybr/keyboard-ui": "*",
     "@keybr/lesson": "*",
     "@keybr/lesson-ui": "*",
-    "@keybr/lnf": "*",
     "@keybr/math": "*",
     "@keybr/phonetic-model": "*",
     "@keybr/result": "*",
     "@keybr/settings": "*",
+    "@keybr/styles": "*",
     "@keybr/widget": "*"
   },
   "devDependencies": {},

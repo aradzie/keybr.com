@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useTheme } from "./context.ts";
+import { useTheme } from "../context/context.ts";
 
 export function useCustomProperties() {
   const { color, font } = useTheme();

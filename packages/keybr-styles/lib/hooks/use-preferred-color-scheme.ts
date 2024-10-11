@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
-export function useSystemTheme() {
+export function usePreferredColorScheme() {
   const query = "(prefers-color-scheme: dark)";
   const media = useMemo(() => window.matchMedia(query), [query]);
   const [dark, setDark] = useState(media.matches);

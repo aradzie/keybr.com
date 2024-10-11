@@ -7,8 +7,8 @@
   "dependencies": {
     "@keybr/assets": "*",
     "@keybr/intl": "*",
-    "@keybr/lnf": "*",
     "@keybr/pages-shared": "*",
+    "@keybr/styles": "*",
     "@keybr/thirdparties": "*",
     "@keybr/widget": "*"
   },

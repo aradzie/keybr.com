@@ -1,7 +1,7 @@
+import { useTheme } from "@keybr/styles";
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import test from "ava";
-import { useTheme } from "./context.ts";
 import { ThemeProvider } from "./provider.tsx";
 
 test.beforeEach(() => {

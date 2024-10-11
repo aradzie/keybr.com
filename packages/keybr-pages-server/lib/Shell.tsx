@@ -1,7 +1,6 @@
 import { type IncomingHeaders } from "@fastr/headers";
 import { FavIconAssets, ScriptAssets, StylesheetAssets } from "@keybr/assets";
 import { getDir } from "@keybr/intl";
-import { ThemePrefs, useTheme } from "@keybr/lnf";
 import {
   isPremiumUser,
   LoadingProgress,
@@ -11,6 +10,7 @@ import {
   Root,
   usePageData,
 } from "@keybr/pages-shared";
+import { ThemePrefs, useTheme } from "@keybr/styles";
 import {
   CloudflareAnalytics,
   GoogleTagManager,

@@ -1,3 +1,4 @@
+import { COLORS, FONTS, useTheme } from "@keybr/styles";
 import {
   ensureVisible,
   Icon,
@@ -15,8 +16,6 @@ import {
 import { clsx } from "clsx";
 import { type ReactNode, useEffect, useRef, useState } from "react";
 import { defineMessage, useIntl } from "react-intl";
-import { useTheme } from "./context.ts";
-import { COLORS, FONTS } from "./themes.ts";
 import * as styles from "./ThemeSwitcher.module.less";
 
 export function ThemeSwitcher() {

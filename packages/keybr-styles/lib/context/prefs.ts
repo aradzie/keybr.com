@@ -32,8 +32,8 @@ export class ThemePrefs {
   readonly font: string;
 
   constructor(o: unknown) {
-    const { color, font } = Object(o) as ThemePrefs;
-    this.color = COLORS.find(color).id;
-    this.font = FONTS.find(font).id;
+    const { color, font } = Object(o);
+    this.color = COLORS.find(String(color)).id;
+    this.font = FONTS.find(String(font)).id;
   }
 }
