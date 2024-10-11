@@ -21,7 +21,6 @@ export function Popover({
   screenMargin,
   shift,
   width = null,
-  ...props
 }: PopoverProps): ReactNode {
   const anchorRef = useRef<Anchor>(null);
   const popoverRef = useRef<HTMLDivElement>(null);
@@ -32,7 +31,7 @@ export function Popover({
   const screenSize = useScreenSize();
   useEffect(() => {
     if (popoverRef.current != null) {
-      const anchorBox = anchorRef.current!.getBoundingBox("absolute");
+      const anchorBox = anchorRef.current!.getBoundingBox("fixed");
       place(popoverRef.current!)
         .withOptions(options)
         .resize(anchorBox, width, height)
@@ -46,7 +45,7 @@ export function Popover({
       {clone}
       {open && !disabled && (
         <Portal>
-          <div {...props} ref={popoverRef} style={{ position: "absolute" }}>
+          <div ref={popoverRef} style={{ position: "fixed" }}>
             {children}
           </div>
         </Portal>

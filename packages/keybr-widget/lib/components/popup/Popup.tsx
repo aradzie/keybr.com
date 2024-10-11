@@ -6,6 +6,7 @@ import * as styles from "./Popup.module.less";
 
 export type PopupProps = {
   readonly anchor?: string;
+  readonly arrow?: boolean;
   readonly children?: ReactNode;
   readonly position?: FloatingPosition;
   readonly offset?: number;
@@ -13,10 +14,10 @@ export type PopupProps = {
 
 export function Popup({
   anchor,
+  arrow = true,
   children,
   position,
   offset = 20,
-  ...props
 }: PopupProps): ReactNode {
   const rootRef = useRef<HTMLDivElement>(null);
   const arrowRef = useRef<HTMLDivElement>(null);
@@ -27,16 +28,22 @@ export function Popup({
       if (anchor == null) {
         place(rootRef.current!).centerToScreen(screenSize);
       } else {
-        const anchorBox = getBoundingBox(querySelector(anchor), "absolute");
+        const anchorBox = getBoundingBox(querySelector(anchor), "fixed");
         place(rootRef.current!, arrowRef.current!)
           .withOptions(options)
           .alignToAnchor(anchorBox, screenSize);
       }
   }, [anchor, options, screenSize]);
   return (
-    <div {...props} ref={rootRef} className={styles.root}>
+    <div ref={rootRef} className={styles.root} style={{ position: "fixed" }}>
+      {anchor && arrow && (
+        <div
+          ref={arrowRef}
+          className={styles.arrow}
+          style={{ position: "absolute" }}
+        />
+      )}
       {children}
-      {anchor && <div ref={arrowRef} className={styles.arrow} />}
     </div>
   );
 }

@@ -3,12 +3,9 @@ import { type Place } from "./place.ts";
 import { type AlignOptions, type FloatingPosition } from "./types.ts";
 import { splitPosition } from "./util.ts";
 
-export function centerToScreen(
-  { width, height }: Size,
-  screenSize: Size,
-): Place {
-  const left = (screenSize.width - width) / 2;
-  const top = (screenSize.height - height) / 2;
+export function centerToScreen(size: Size, screenSize: Size): Place {
+  const left = (screenSize.width - size.width) / 2;
+  const top = (screenSize.height - size.height) / 2;
   return { left, top };
 }
 
@@ -158,7 +155,7 @@ export function alignToAnchor(
 }
 
 export function autoPosition(
-  { width, height }: Size,
+  size: Size,
   anchor: Rect,
   screenSize: Size,
 ): FloatingPosition {
@@ -167,10 +164,10 @@ export function autoPosition(
   const leftSpace = anchor.left;
   const rightSpace = screenSize.width - anchor.right;
 
-  const topExcess = topSpace - height;
-  const bottomExcess = bottomSpace - height;
-  const leftExcess = leftSpace - width;
-  const rightExcess = rightSpace - width;
+  const topExcess = topSpace - size.height;
+  const bottomExcess = bottomSpace - size.height;
+  const leftExcess = leftSpace - size.width;
+  const rightExcess = rightSpace - size.width;
 
   if (topExcess > 0 || bottomExcess > 0) {
     return topExcess > bottomExcess ? "block-start" : "block-end";

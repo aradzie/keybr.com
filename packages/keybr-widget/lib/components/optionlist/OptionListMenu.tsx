@@ -1,9 +1,9 @@
 import { clsx } from "clsx";
 import { type ReactNode, useEffect, useRef } from "react";
+import { ensureVisible } from "../../utils/index.ts";
 import * as iconStyles from "../icon/Icon.module.less";
 import { type OptionListOption } from "./OptionList.types.ts";
 import * as styles from "./OptionListMenu.module.less";
-import { ensureVisible } from "./scroll.ts";
 
 export function OptionListMenu({
   options,

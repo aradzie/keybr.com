@@ -42,7 +42,7 @@ export const place = (popup: HTMLElement, arrow: HTMLElement | null = null) => {
   };
 
   const centerToScreen = (screenSize: Size = getScreenSize()) => {
-    const popupBox = getBoundingBox(popup, "absolute");
+    const popupBox = getBoundingBox(popup, "fixed");
     const popupPlace = centerToScreen0(popupBox, screenSize);
     placeElement(popup, popupPlace);
   };
@@ -51,7 +51,7 @@ export const place = (popup: HTMLElement, arrow: HTMLElement | null = null) => {
     anchorBox: Rect,
     screenSize: Size = getScreenSize(),
   ) => {
-    const popupBox = getBoundingBox(popup, "absolute");
+    const popupBox = getBoundingBox(popup, "fixed");
     const [popupPlace, arrowPlace] = alignToAnchor0(
       popupBox,
       anchorBox,
