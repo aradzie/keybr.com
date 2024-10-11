@@ -45,7 +45,7 @@ export function Popover({
       {clone}
       {open && !disabled && (
         <Portal>
-          <div ref={popoverRef} style={{ position: "fixed" }}>
+          <div ref={popoverRef} style={{ position: "fixed", zIndex: 1 }}>
             {children}
           </div>
         </Portal>

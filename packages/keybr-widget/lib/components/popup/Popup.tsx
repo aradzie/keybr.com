@@ -35,7 +35,11 @@ export function Popup({
       }
   }, [anchor, options, screenSize]);
   return (
-    <div ref={rootRef} className={styles.root} style={{ position: "fixed" }}>
+    <div
+      ref={rootRef}
+      className={styles.root}
+      style={{ position: "fixed", zIndex: 1 }}
+    >
       {anchor && arrow && (
         <div
           ref={arrowRef}
