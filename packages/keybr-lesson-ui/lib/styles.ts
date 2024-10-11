@@ -4,8 +4,8 @@ import { type CSSProperties, useMemo } from "react";
 
 export function useKeyStyles() {
   const getValue = useCustomProperties();
-  const slow = getValue("--LessonKey--slow__color") || "#cc0000";
-  const fast = getValue("--LessonKey--fast__color") || "#60d788";
+  const slow = getValue("--slow-key-color") || "#cc0000";
+  const fast = getValue("--fast-key-color") || "#60d788";
 
   return useMemo(() => {
     const min = Color.parse(slow).toRgb();
