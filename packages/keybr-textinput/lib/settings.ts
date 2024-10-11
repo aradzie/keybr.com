@@ -86,7 +86,7 @@ export enum PlaySounds {
 }
 
 export const textDisplaySettings: TextDisplaySettings = {
-  font: Font.UBUNTU_MONO,
+  font: Font.default,
   caretShapeStyle: CaretShapeStyle.Underline,
   caretMovementStyle: CaretMovementStyle.Smooth,
   whitespaceStyle: WhitespaceStyle.Bullet,
@@ -96,7 +96,7 @@ export const textDisplaySettings: TextDisplaySettings = {
 };
 
 export const textDisplayProps = {
-  font: itemProp("textDisplay.font", Font.ALL, Font.UBUNTU_MONO),
+  font: itemProp("textDisplay.font", Font.ALL, Font.default),
   caretShapeStyle: enumProp(
     "textDisplay.caretShapeStyle",
     CaretShapeStyle,

@@ -7,6 +7,7 @@
   "dependencies": {
     "@keybr/keyboard": "*",
     "@keybr/lang": "*",
+    "@keybr/styles": "*",
     "@keybr/settings": "*",
     "@keybr/unicode": "*"
   },
