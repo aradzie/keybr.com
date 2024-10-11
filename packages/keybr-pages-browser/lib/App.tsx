@@ -1,5 +1,4 @@
 import { ErrorHandler } from "@keybr/debug";
-import { ThemeProvider } from "@keybr/lnf";
 import {
   getPageData,
   LoadingProgress,
@@ -14,6 +13,7 @@ import { useIntl } from "react-intl";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { IntlLoader } from "./loader/IntlLoader.tsx";
 import { Template } from "./Template.tsx";
+import { ThemeProvider } from "./themes/ThemeProvider.tsx";
 import { Title } from "./Title.tsx";
 
 export function main() {

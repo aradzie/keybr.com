@@ -6,7 +6,6 @@
     "@keybr/debug": "*",
     "@keybr/intl": "*",
     "@keybr/keyboard": "*",
-    "@keybr/lnf": "*",
     "@keybr/page-account": "*",
     "@keybr/page-help": "*",
     "@keybr/page-highscores": "*",

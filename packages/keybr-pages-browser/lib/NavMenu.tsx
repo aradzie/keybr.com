@@ -1,4 +1,3 @@
-import { ThemeSwitcher } from "@keybr/lnf";
 import {
   type AnyUser,
   Avatar,
@@ -13,6 +12,7 @@ import { useIntl } from "react-intl";
 import { NavLink } from "react-router-dom";
 import * as styles from "./NavMenu.module.less";
 import { SubMenu } from "./SubMenu.tsx";
+import { ThemeSwitcher } from "./themes/ThemeSwitcher.tsx";
 
 export function NavMenu({
   currentPath,
