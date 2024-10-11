@@ -1,0 +1,100 @@
+@import "nunito-400.css";
+@import "nunito-400italic.css";
+@import "nunito-700.css";
+@import "nunito-700italic.css";
+
+@import "open-dyslexic-400.css";
+@import "open-dyslexic-400italic.css";
+@import "open-dyslexic-700.css";
+@import "open-dyslexic-700italic.css";
+
+@import "open-sans-400.css";
+@import "open-sans-400italic.css";
+@import "open-sans-700.css";
+@import "open-sans-700italic.css";
+
+@import "roboto-400.css";
+@import "roboto-400italic.css";
+@import "roboto-700.css";
+@import "roboto-700italic.css";
+
+@import "roboto-mono-400.css";
+@import "roboto-mono-400italic.css";
+@import "roboto-mono-700.css";
+@import "roboto-mono-700italic.css";
+
+@import "spectral-400.css";
+@import "spectral-400italic.css";
+@import "spectral-700.css";
+@import "spectral-700italic.css";
+
+@import "ubuntu-400.css";
+@import "ubuntu-400italic.css";
+@import "ubuntu-700.css";
+@import "ubuntu-700italic.css";
+
+@import "ubuntu-mono-400.css";
+@import "ubuntu-mono-400italic.css";
+@import "ubuntu-mono-700.css";
+@import "ubuntu-mono-700italic.css";
+
+:where(html) {
+  --default-font-family: "Open Sans", sans-serif;
+  --header-font-family: "Open Sans", sans-serif;
+  --value-font-family: "Ubuntu Mono", monospace;
+  --monospace-font-family: "Ubuntu Mono", monospace;
+}
+
+html[data-font="nunito"] {
+  --default-font-family: "Nunito", sans-serif;
+  --header-font-family: "Nunito", sans-serif;
+  --value-font-family: "Nunito", sans-serif;
+}
+
+html[data-font="opensans"] {
+  --default-font-family: "Open Sans", sans-serif;
+  --header-font-family: "Open Sans", sans-serif;
+  --value-font-family: "Ubuntu Mono", monospace;
+}
+
+html[data-font="roboto"] {
+  --default-font-family: "Roboto", serif;
+  --header-font-family: "Roboto", serif;
+  --value-font-family: "Roboto", serif;
+}
+
+html[data-font="spectral"] {
+  --default-font-family: "Spectral", serif;
+  --header-font-family: "Spectral", serif;
+  --value-font-family: "Spectral", serif;
+}
+
+html[data-font="ubuntu"] {
+  --default-font-family: "Ubuntu", serif;
+  --header-font-family: "Ubuntu", serif;
+  --value-font-family: "Ubuntu Mono", serif;
+}
+
+html {
+  font-family: var(--default-font-family);
+  font-size: 8px;
+  line-height: 1.5;
+}
+
+.font-size(1280px, 10px); // ratio=128
+.font-size(1440px, 11px); // ratio=131
+.font-size(1600px, 12px); // ratio=133
+.font-size(1920px, 15px); // ratio=128
+.font-size(2560px, 18px); // ratio=142
+.font-size(3840px, 24px); // ratio=160
+
+.font-size(@width, @size) {
+  // Please note that the "device-width" query is deprecated, however the
+  // "width" query reports browser window size, not screen size.
+  // stylelint-disable-next-line media-query-no-invalid
+  @media (min-width: @width), (min-device-width: @width) {
+    html {
+      font-size: @size;
+    }
+  }
+}
