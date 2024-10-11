@@ -12,7 +12,7 @@ import {
   Pages,
 } from "@keybr/pages-shared";
 import { SettingsDatabase } from "@keybr/settings-database";
-import { ThemeContext, type ThemeControl, ThemePrefs } from "@keybr/styles";
+import { staticTheme, ThemeContext, ThemePrefs } from "@keybr/styles";
 import { type IntlShape, RawIntlProvider } from "react-intl";
 import { type AuthState } from "../auth/index.ts";
 import { localePattern, pIntl, preferredLocale } from "./intl.ts";
@@ -232,7 +232,7 @@ export class Controller {
         <PreferredLocaleContext.Provider value={preferredLocale(ctx)}>
           <PageDataContext.Provider value={pageData}>
             <ThemeContext.Provider
-              value={themeControl(new ThemePrefs(pageData.prefs))}
+              value={staticTheme(new ThemePrefs(pageData.prefs))}
             >
               <Shell page={page} headers={ctx.request.headers} />
             </ThemeContext.Provider>
@@ -253,15 +253,4 @@ function themePrefs(ctx: Context<RouterState & AuthState>): ThemePrefs {
     }
   }
   return ThemePrefs.deserialize(cookie);
-}
-
-function themeControl({ color, font }: ThemePrefs): ThemeControl {
-  return {
-    fullscreenState: null,
-    color,
-    font,
-    toggleFullscreen: (): void => {},
-    switchColor: (): void => {},
-    switchFont: (): void => {},
-  };
 }

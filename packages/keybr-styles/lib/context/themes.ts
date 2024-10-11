@@ -21,14 +21,6 @@ export class ThemeList implements Iterable<Theme> {
   find(id: string): Theme {
     return this.#themes.find((item) => item.id === id) ?? this.#themes[0];
   }
-
-  findNext(theme: Theme): Theme {
-    let index = this.#themes.findIndex((item) => item === theme) + 1;
-    if (index === this.#themes.length) {
-      index = 0;
-    }
-    return this.#themes[index];
-  }
 }
 
 export const COLORS = new ThemeList([

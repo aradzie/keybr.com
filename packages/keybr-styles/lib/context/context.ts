@@ -1,7 +1,8 @@
 import { createContext, useContext } from "react";
+import { type ThemePrefs } from "./prefs.ts";
 import { COLORS, FONTS } from "./themes.ts";
 
-export type ThemeControl = {
+export type ThemeValue = {
   readonly fullscreenState: boolean | null;
   readonly color: string;
   readonly font: string;
@@ -10,7 +11,7 @@ export type ThemeControl = {
   readonly switchFont: (font: string) => void;
 };
 
-export const ThemeContext = createContext<ThemeControl>({
+export const ThemeContext = createContext<ThemeValue>({
   fullscreenState: null,
   color: COLORS.default.id,
   font: FONTS.default.id,
@@ -19,6 +20,17 @@ export const ThemeContext = createContext<ThemeControl>({
   switchFont: () => {},
 });
 
-export function useTheme(): ThemeControl {
+export function useTheme(): ThemeValue {
   return useContext(ThemeContext);
+}
+
+export function staticTheme({ color, font }: ThemePrefs): ThemeValue {
+  return {
+    fullscreenState: null,
+    color,
+    font,
+    toggleFullscreen: () => {},
+    switchColor: () => {},
+    switchFont: () => {},
+  };
 }
