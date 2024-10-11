@@ -3,6 +3,7 @@ import { useFullscreen } from "@keybr/widget";
 import { type ReactNode, useState } from "react";
 import { ThemeContext } from "./context.ts";
 import { ThemePrefs } from "./prefs.ts";
+import { useSystemTheme } from "./system.ts";
 import { COLORS, FONTS } from "./themes.ts";
 
 export function ThemeProvider({ children }: { readonly children: ReactNode }) {
@@ -13,22 +14,7 @@ export function ThemeProvider({ children }: { readonly children: ReactNode }) {
 
   const [fullscreenState, toggleFullscreen] = useFullscreen(fullscreenTarget);
   const [{ color, font }, setPrefs] = useState(() => readPrefs());
-
-  const switchColor = (color: string): void => {
-    const theme = COLORS.find(color);
-    document.documentElement.setAttribute(ThemePrefs.colorAttrName, theme.id);
-    const prefs = new ThemePrefs({ color: theme.id, font });
-    setPrefs(prefs);
-    storePrefs(prefs);
-  };
-
-  const switchFont = (font: string): void => {
-    const theme = FONTS.find(font);
-    document.documentElement.setAttribute(ThemePrefs.fontAttrName, theme.id);
-    const prefs = new ThemePrefs({ color, font: theme.id });
-    setPrefs(prefs);
-    storePrefs(prefs);
-  };
+  useSystemTheme();
 
   return (
     <ThemeContext.Provider
@@ -37,8 +23,26 @@ export function ThemeProvider({ children }: { readonly children: ReactNode }) {
         color,
         font,
         toggleFullscreen,
-        switchColor,
-        switchFont,
+        switchColor: (color) => {
+          const theme = COLORS.find(color);
+          document.documentElement.setAttribute(
+            ThemePrefs.colorAttrName,
+            theme.id,
+          );
+          const prefs = new ThemePrefs({ color: theme.id, font });
+          setPrefs(prefs);
+          storePrefs(prefs);
+        },
+        switchFont: (font) => {
+          const theme = FONTS.find(font);
+          document.documentElement.setAttribute(
+            ThemePrefs.fontAttrName,
+            theme.id,
+          );
+          const prefs = new ThemePrefs({ color, font: theme.id });
+          setPrefs(prefs);
+          storePrefs(prefs);
+        },
       }}
     >
       {children}

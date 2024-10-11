@@ -5,6 +5,15 @@ import { useTheme } from "./context.ts";
 import { ThemeProvider } from "./provider.tsx";
 
 test.beforeEach(() => {
+  window.matchMedia = (query) => {
+    return new (class extends EventTarget {
+      matches = false;
+      media = query;
+    })() as MediaQueryList;
+  };
+});
+
+test.beforeEach(() => {
   document.documentElement.dataset["color"] = "dark";
   document.documentElement.dataset["font"] = "spectral";
 
