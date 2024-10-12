@@ -1,13 +1,13 @@
 @import "palettes.less";
 
-html[data-color="green"] {
-  @primary: #cee0a4;
-  @secondary: #334532;
-  @accent: #45633f;
-  @error: #e49874;
+html[data-color="coffee-light"] {
+  @primary: #faecd7;
+  @secondary: #262626;
+  @accent: #4d4d4d;
+  @error: #a34729;
 
-  --primary-l2: lighten(@primary, 5);
-  --primary-l1: lighten(@primary, 3);
+  --primary-l2: lighten(@primary, 10);
+  --primary-l1: lighten(@primary, 5);
   --primary: @primary;
   --primary-d1: darken(@primary, 5);
   --primary-d2: darken(@primary, 10);
@@ -22,14 +22,16 @@ html[data-color="green"] {
   --accent: @accent;
   --accent-l1: lighten(@accent, 10);
   --accent-l2: lighten(@accent, 20);
+  --error-d1: darken(@error, 10);
   --error: @error;
+  --error-l1: lighten(@error, 10);
   --shadow-color: #00000044;
-  --slow-key-color: #cc0000;
-  --fast-key-color: #60d788;
-  .use-chart-colors(@primary, 0);
-  .use-keyboard-colors(@primary, 0);
-  .use-calendar-colors(@primary, #6699ff);
-  --background-image: url(../../assets/bg-green.svg);
+  --slow-key-color: #cf5f5f;
+  --fast-key-color: #6fa882;
+  .use-chart-colors(@primary, 20);
+  .use-keyboard-colors(@primary, 20);
+  .use-calendar-colors(@primary, #759ef0);
+  --background-image: url(../../assets/bg-coffee-light.svg);
   --Surface__box-shadow: 0 0.5rem 1rem var(--shadow-color);
   --Surface__backdrop-filter: blur(10px);
 }
