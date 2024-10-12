@@ -1,6 +1,6 @@
 import { useMemo } from "react";
-import { useTheme } from "../context/context.ts";
-import { type ThemeProperty } from "../themes/index.ts";
+import { useTheme } from "./context.ts";
+import { type ThemeProperty } from "./properties.ts";
 
 export function useCustomProperties() {
   const { color, font } = useTheme();
