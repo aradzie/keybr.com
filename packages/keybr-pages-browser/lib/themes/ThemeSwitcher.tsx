@@ -4,8 +4,7 @@ import {
   Icon,
   IconButton,
   type OptionListOption,
-  Popup,
-  Portal,
+  Popover,
 } from "@keybr/widget";
 import {
   mdiArrowCollapseAll,
@@ -22,38 +21,42 @@ export function ThemeSwitcher() {
   const [open, setOpen] = useState(null as "color" | "font" | null);
   return (
     <div className={styles.root}>
-      {open && (
-        <Portal>
-          <Popup anchor={`.${styles.root}`} arrow={false} position="block-end">
-            {open === "color" && (
-              <ColorMenu
-                onClose={() => {
-                  setOpen(null);
-                }}
-              />
-            )}
-            {open === "font" && (
-              <FontMenu
-                onClose={() => {
-                  setOpen(null);
-                }}
-              />
-            )}
-          </Popup>
-        </Portal>
-      )}
-      <IconButton
-        icon={<Icon shape={mdiThemeLightDark} />}
-        onClick={() => {
-          setOpen("color");
-        }}
-      />
-      <IconButton
-        icon={<Icon shape={mdiFormatFont} />}
-        onClick={() => {
-          setOpen("font");
-        }}
-      />
+      <Popover
+        open={open === "color"}
+        anchor={
+          <IconButton
+            icon={<Icon shape={mdiThemeLightDark} />}
+            onClick={() => {
+              setOpen(open === "color" ? null : "color");
+            }}
+          />
+        }
+        offset={10}
+      >
+        <ColorMenu
+          onClose={() => {
+            setOpen(null);
+          }}
+        />
+      </Popover>
+      <Popover
+        open={open === "font"}
+        anchor={
+          <IconButton
+            icon={<Icon shape={mdiFormatFont} />}
+            onClick={() => {
+              setOpen(open === "font" ? null : "font");
+            }}
+          />
+        }
+        offset={10}
+      >
+        <FontMenu
+          onClose={() => {
+            setOpen(null);
+          }}
+        />
+      </Popover>
       <FullscreenButton />
     </div>
   );
