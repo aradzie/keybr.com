@@ -56,6 +56,10 @@ export const COLORS = new ThemeList([
     id: "coffee-dark",
     name: "Coffee (Dark)",
   },
+  {
+    id: "custom",
+    name: "Custom",
+  },
 ]);
 
 export const FONTS = new ThemeList([

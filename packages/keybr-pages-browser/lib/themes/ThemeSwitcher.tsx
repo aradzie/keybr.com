@@ -1,5 +1,6 @@
 import { COLORS, FONTS, useTheme } from "@keybr/themes";
 import {
+  Dialog,
   ensureVisible,
   Icon,
   IconButton,
@@ -13,14 +14,37 @@ import {
   mdiThemeLightDark,
 } from "@mdi/js";
 import { clsx } from "clsx";
-import { type ReactNode, useEffect, useRef, useState } from "react";
+import {
+  lazy,
+  type ReactNode,
+  Suspense,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { defineMessage, useIntl } from "react-intl";
 import * as styles from "./ThemeSwitcher.module.less";
 
+const LazyThemeDesigner = lazy(() => import("./LazyThemeDesigner.tsx"));
+
 export function ThemeSwitcher() {
+  const { color, font, switchColor, switchFont } = useTheme();
   const [open, setOpen] = useState(null as "color" | "font" | null);
+  const [design, setDesign] = useState(false);
   return (
     <div className={styles.root}>
+      {design && (
+        <Dialog
+          backdrop={true}
+          onClose={() => {
+            setDesign(false);
+          }}
+        >
+          <Suspense>
+            <LazyThemeDesigner />
+          </Suspense>
+        </Dialog>
+      )}
       <Popover
         open={open === "color"}
         anchor={
@@ -34,8 +58,13 @@ export function ThemeSwitcher() {
         offset={10}
       >
         <ColorMenu
-          onClose={() => {
+          selectedId={color}
+          onSelect={(id) => {
             setOpen(null);
+            switchColor(id);
+            if (id === "custom") {
+              setDesign(true);
+            }
           }}
         />
       </Popover>
@@ -52,8 +81,10 @@ export function ThemeSwitcher() {
         offset={10}
       >
         <FontMenu
-          onClose={() => {
+          selectedId={font}
+          onSelect={(id) => {
             setOpen(null);
+            switchFont(id);
           }}
         />
       </Popover>
@@ -101,35 +132,41 @@ function FullscreenButton() {
   }
 }
 
-function ColorMenu({ onClose }: { readonly onClose: () => void }) {
-  const theme = useTheme();
+function ColorMenu({
+  selectedId,
+  onSelect,
+}: {
+  readonly selectedId: string;
+  readonly onSelect: (id: string) => void;
+}) {
   const options = [...COLORS].map(({ id, name }) => ({ value: id, name }));
-  const selected =
-    options.find(({ value }) => value === theme.color) ?? options[0];
+  const selected = options.find(({ value }) => value === selectedId);
   return (
     <Menu
       options={options}
-      selectedOption={selected}
+      selectedOption={selected ?? options[0]}
       onSelect={({ value }) => {
-        theme.switchColor(value);
-        onClose();
+        onSelect(value);
       }}
     />
   );
 }
 
-function FontMenu({ onClose }: { readonly onClose: () => void }) {
-  const theme = useTheme();
+function FontMenu({
+  selectedId,
+  onSelect,
+}: {
+  readonly selectedId: string;
+  readonly onSelect: (id: string) => void;
+}) {
   const options = [...FONTS].map(({ id, name }) => ({ value: id, name }));
-  const selected =
-    options.find(({ value }) => value === theme.font) ?? options[0];
+  const selected = options.find(({ value }) => value === selectedId);
   return (
     <Menu
       options={options}
-      selectedOption={selected}
+      selectedOption={selected ?? options[0]}
       onSelect={({ value }) => {
-        theme.switchFont(value);
-        onClose();
+        onSelect(value);
       }}
     />
   );

@@ -1,11 +1,14 @@
 import { Cookie, SetCookie } from "@fastr/headers";
 import {
+  applyTheme,
+  clearTheme,
+  readTheme,
   ThemeContext,
   ThemePrefs,
   usePreferredColorScheme,
 } from "@keybr/themes";
 import { useFullscreen } from "@keybr/widget";
-import { type ReactNode, useState } from "react";
+import { type ReactNode, useEffect, useState } from "react";
 
 export function ThemeProvider({ children }: { readonly children: ReactNode }) {
   const fullscreenTarget =
@@ -16,6 +19,20 @@ export function ThemeProvider({ children }: { readonly children: ReactNode }) {
   const [fullscreenState, toggleFullscreen] = useFullscreen(fullscreenTarget);
   const [{ color, font }, setPrefs] = useState(() => readPrefs());
   usePreferredColorScheme();
+
+  useEffect(() => {
+    if (color === "custom") {
+      readTheme()
+        .then(({ theme }) => {
+          applyTheme(theme);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    } else {
+      clearTheme();
+    }
+  }, [color]);
 
   return (
     <ThemeContext.Provider

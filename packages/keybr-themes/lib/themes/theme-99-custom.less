@@ -1,0 +1,34 @@
+@import "palettes.less";
+
+html[data-color="custom"] {
+  @primary: #b3b3b3;
+  @secondary: #262626;
+  @accent: #4d4d4d;
+  @error: #a34729;
+
+  --primary-l2: lighten(@primary, 10);
+  --primary-l1: lighten(@primary, 5);
+  --primary: @primary;
+  --primary-d1: darken(@primary, 5);
+  --primary-d2: darken(@primary, 10);
+  --secondary-d1: darken(@secondary, 10);
+  --secondary: @secondary;
+  --secondary-l1: lighten(@secondary, 10);
+  --secondary-l2: lighten(@secondary, 20);
+  --secondary-f1: mix(@primary, @secondary, 20);
+  --secondary-f2: mix(@primary, @secondary, 40);
+  --accent-d2: darken(@accent, 20);
+  --accent-d1: darken(@accent, 10);
+  --accent: @accent;
+  --accent-l1: lighten(@accent, 10);
+  --accent-l2: lighten(@accent, 20);
+  --error-d1: darken(@error, 10);
+  --error: @error;
+  --error-l1: lighten(@error, 10);
+  --shadow-color: #00000044;
+  --slow-key-color: #cc0000;
+  --fast-key-color: #60d788;
+  .use-chart-colors(@primary, 0);
+  .use-keyboard-colors(@primary, 0);
+  .use-effort-colors(@primary, #6699ff);
+}

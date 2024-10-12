@@ -1,0 +1,31 @@
+.root {
+  position: relative;
+  inline-size: 20rem;
+  border: var(--separator-border);
+  aspect-ratio: 16/9;
+}
+
+.preview {
+  position: relative;
+  inset: 0;
+}
+
+#inputId {
+  /* This selector is only used for its unique name. */
+}
+
+.input {
+  position: absolute;
+  inline-size: 0;
+  block-size: 0;
+  overflow: hidden;
+}
+
+.label {
+  display: flex;
+  position: absolute;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}

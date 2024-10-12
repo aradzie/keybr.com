@@ -1,13 +1,13 @@
 import { useMemo } from "react";
 import { useTheme } from "./context.ts";
-import { type ThemeProperty } from "./properties.ts";
+import { type PropName } from "./theme-props.ts";
 
 export function useCustomProperties() {
   const { color, font } = useTheme();
   return useMemo(() => {
     use(color, font);
     const style = getComputedStyle(document.documentElement);
-    return (name: ThemeProperty): string => style.getPropertyValue(name);
+    return (name: PropName): string => style.getPropertyValue(name);
   }, [color, font]);
 }
 
