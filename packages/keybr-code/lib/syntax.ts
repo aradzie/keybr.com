@@ -76,6 +76,7 @@ export class Syntax implements EnumItem {
     Syntax.REGEX,
     Syntax.SHELL,
     Syntax.PYTHON,
+    Syntax.RUST,
   );
 
   private constructor(
