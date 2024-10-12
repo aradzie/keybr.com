@@ -7,8 +7,8 @@ export type ThemeValue = {
   readonly color: string;
   readonly font: string;
   readonly toggleFullscreen: () => void;
-  readonly switchColor: (color: string) => void;
-  readonly switchFont: (font: string) => void;
+  readonly switchColor: (id: string) => void;
+  readonly switchFont: (id: string) => void;
 };
 
 export const ThemeContext = createContext<ThemeValue>({

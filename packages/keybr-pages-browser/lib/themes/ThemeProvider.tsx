@@ -1,7 +1,5 @@
 import { Cookie, SetCookie } from "@fastr/headers";
 import {
-  COLORS,
-  FONTS,
   ThemeContext,
   ThemePrefs,
   usePreferredColorScheme,
@@ -26,23 +24,15 @@ export function ThemeProvider({ children }: { readonly children: ReactNode }) {
         color,
         font,
         toggleFullscreen,
-        switchColor: (color) => {
-          const theme = COLORS.find(color);
-          document.documentElement.setAttribute(
-            ThemePrefs.colorAttrName,
-            theme.id,
-          );
-          const prefs = new ThemePrefs({ color: theme.id, font });
+        switchColor: (id) => {
+          const prefs = new ThemePrefs({ color: id, font });
+          switchTheme(prefs);
           setPrefs(prefs);
           storePrefs(prefs);
         },
-        switchFont: (font) => {
-          const theme = FONTS.find(font);
-          document.documentElement.setAttribute(
-            ThemePrefs.fontAttrName,
-            theme.id,
-          );
-          const prefs = new ThemePrefs({ color, font: theme.id });
+        switchFont: (id) => {
+          const prefs = new ThemePrefs({ color, font: id });
+          switchTheme(prefs);
           setPrefs(prefs);
           storePrefs(prefs);
         },
@@ -53,13 +43,20 @@ export function ThemeProvider({ children }: { readonly children: ReactNode }) {
   );
 }
 
-function readPrefs(): ThemePrefs {
+function switchTheme(prefs: ThemePrefs) {
+  ((elem) => {
+    elem.setAttribute(ThemePrefs.colorAttrName, prefs.color);
+    elem.setAttribute(ThemePrefs.fontAttrName, prefs.font);
+  })(document.documentElement);
+}
+
+function readPrefs() {
   return ThemePrefs.deserialize(
     Cookie.parse(document.cookie).get(ThemePrefs.cookieKey),
   );
 }
 
-function storePrefs(prefs: ThemePrefs): void {
+function storePrefs(prefs: ThemePrefs) {
   document.cookie = String(
     new SetCookie(ThemePrefs.cookieKey, ThemePrefs.serialize(prefs), {
       maxAge: 100 * 24 * 60 * 60,
