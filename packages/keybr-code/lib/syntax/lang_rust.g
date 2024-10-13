@@ -251,7 +251,7 @@ rust_number_literal ->
   | "0.5"
   | "1.5"
   | "2.5_f64"
-  | "3.14i32"
+  | "3.14f32"
   | "42"
   | "255"
   | "256"
@@ -265,11 +265,11 @@ rust_comment ->
   | ( "////" [ _ ] rust_comment_text )
   | ( "//!" [ _ ] rust_comment_text )
   | ( "//!!" [ _ ] rust_comment_text )
-  | ( "/*" _ rust_comment_text _ "*\\" )
-  | ( "/**" _ rust_comment_text _ "*\\" )
-  | ( "/***" _ rust_comment_text _ "*\\" )
-  | ( "/*!" _ rust_comment_text _ "*\\" )
-  | ( "/*!!" _ rust_comment_text _ "*\\" )
+  | ( "/*" _ rust_comment_text _ "*/" )
+  | ( "/**" _ rust_comment_text _ "*/" )
+  | ( "/***" _ rust_comment_text _ "*/" )
+  | ( "/*!" _ rust_comment_text _ "*/" )
+  | ( "/*!!" _ rust_comment_text _ "*/" )
 ;
 
 rust_comment_text ->
