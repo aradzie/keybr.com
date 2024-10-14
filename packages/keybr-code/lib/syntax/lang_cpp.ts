@@ -6,6 +6,15 @@ export default {
   start: {
     ref: "c_func",
   },
+  start_capitalization: {
+    ref: "c_func",
+  },
+  start_numbers: {
+    ref: "c_func",
+  },
+  start_capitalization_and_numbers: {
+    ref: "c_func",
+  },
   start_fproto: {
     seq: [
       {
@@ -14,7 +23,40 @@ export default {
       ";",
     ],
   },
+  start_fproto_capitalization: {
+    seq: [
+      {
+        ref: "c_func_proto",
+      },
+      ";",
+    ],
+  },
+  start_fproto_numbers: {
+    seq: [
+      {
+        ref: "c_func_proto",
+      },
+      ";",
+    ],
+  },
+  start_fproto_capitalization_and_numbers: {
+    seq: [
+      {
+        ref: "c_func_proto",
+      },
+      ";",
+    ],
+  },
   start_stmt: {
+    ref: "c_stmt",
+  },
+  start_stmt_capitalization: {
+    ref: "c_stmt",
+  },
+  start_stmt_numbers: {
+    ref: "c_stmt",
+  },
+  start_stmt_capitalization_and_numbers: {
     ref: "c_stmt",
   },
   c_func: {

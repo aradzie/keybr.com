@@ -1,4 +1,7 @@
 start -> "/" [ "^" ] item [ "$" ] "/" [ "i" ] [ "g" ] ;
+start_capitalization -> "/" [ "^" ] item [ "$" ] "/" [ "i" ] [ "g" ] ;
+start_numbers -> "/" [ "^" ] item [ "$" ] "/" [ "i" ] [ "g" ] ;
+start_capitalization_and_numbers -> "/" [ "^" ] item [ "$" ] "/" [ "i" ] [ "g" ] ;
 
 item -> ( group | union ) quantifier ;
 

@@ -1,4 +1,7 @@
 start -> js_variable_statement ;
+start_capitalization -> js_variable_statement ;
+start_numbers -> js_variable_statement ;
+start_capitalization_and_numbers -> js_variable_statement ;
 
 js_variable_statement -> ( "let" | "const" ) _ js_var_id _ "=" _ js_primary_exp ";" ;
 

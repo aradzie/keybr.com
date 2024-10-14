@@ -21,6 +21,11 @@ export class CodeLesson extends Lesson {
   }
 
   override generate(lessonKeys: LessonKeys): string {
-    return this.settings.get(lessonProps.code.syntax).generate(this.rng);
+    let syntax = this.settings.get(lessonProps.code.syntax);
+    let includeCapitalization = this.settings.get(
+      lessonProps.code.includeCapitalization,
+    );
+    let includeNumbers = this.settings.get(lessonProps.code.includeNumbers);
+    return syntax.generate(this.rng, includeCapitalization, includeNumbers);
   }
 }

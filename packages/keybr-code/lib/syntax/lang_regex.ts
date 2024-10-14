@@ -28,6 +28,81 @@ export default {
       },
     ],
   },
+  start_capitalization: {
+    seq: [
+      "/",
+      {
+        f: 0.5,
+        opt: "^",
+      },
+      {
+        ref: "item",
+      },
+      {
+        f: 0.5,
+        opt: "$",
+      },
+      "/",
+      {
+        f: 0.5,
+        opt: "i",
+      },
+      {
+        f: 0.5,
+        opt: "g",
+      },
+    ],
+  },
+  start_numbers: {
+    seq: [
+      "/",
+      {
+        f: 0.5,
+        opt: "^",
+      },
+      {
+        ref: "item",
+      },
+      {
+        f: 0.5,
+        opt: "$",
+      },
+      "/",
+      {
+        f: 0.5,
+        opt: "i",
+      },
+      {
+        f: 0.5,
+        opt: "g",
+      },
+    ],
+  },
+  start_capitalization_and_numbers: {
+    seq: [
+      "/",
+      {
+        f: 0.5,
+        opt: "^",
+      },
+      {
+        ref: "item",
+      },
+      {
+        f: 0.5,
+        opt: "$",
+      },
+      "/",
+      {
+        f: 0.5,
+        opt: "i",
+      },
+      {
+        f: 0.5,
+        opt: "g",
+      },
+    ],
+  },
   item: {
     seq: [
       {

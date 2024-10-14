@@ -6,6 +6,15 @@ export default {
   start: {
     ref: "js_variable_statement",
   },
+  start_capitalization: {
+    ref: "js_variable_statement",
+  },
+  start_numbers: {
+    ref: "js_variable_statement",
+  },
+  start_capitalization_and_numbers: {
+    ref: "js_variable_statement",
+  },
   js_variable_statement: {
     seq: [
       {

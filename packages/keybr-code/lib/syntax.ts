@@ -4,6 +4,7 @@ import { type Rules } from "./ast.ts";
 import { generate } from "./generate.ts";
 import { Output } from "./output.ts";
 import lang_cpp from "./syntax/lang_cpp.ts";
+import lang_go from "./syntax/lang_go.ts";
 import lang_html_css from "./syntax/lang_html_css.ts";
 import lang_javascript from "./syntax/lang_javascript.ts";
 import lang_python from "./syntax/lang_python.ts";
@@ -66,6 +67,11 @@ export class Syntax implements EnumItem {
     "Python",
     lang_python,
   );
+  static readonly GO = new Syntax(
+    "go", //
+    "Go",
+    lang_go,
+  );
   static readonly ALL = new Enum<Syntax>(
     Syntax.HTML,
     Syntax.CSS,
@@ -88,14 +94,26 @@ export class Syntax implements EnumItem {
     Object.freeze(this);
   }
 
-  generate(rng?: RNG): string {
+  generate(
+    rng?: RNG,
+    includeCapitalization: boolean = false,
+    includeNumbers: boolean = false,
+  ): string {
     const output = new Output(200);
     while (true) {
       try {
         if (output.length > 0) {
           output.separate(" ");
         }
-        generate(this.rules, this.start, { output, rng });
+        let startRule = this.start;
+        if (includeCapitalization && includeNumbers) {
+          startRule += "_capitalization_and_numbers";
+        } else if (includeCapitalization) {
+          startRule += "_capitalization";
+        } else if (includeNumbers) {
+          startRule += "_numbers";
+        }
+        generate(this.rules, startRule, { output, rng });
       } catch (err) {
         if (err === Output.Stop) {
           break;

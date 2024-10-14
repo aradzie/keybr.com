@@ -13,7 +13,70 @@ export default {
       },
     ],
   },
+  start_capitalization: {
+    alt: [
+      {
+        ref: "html_capitalization",
+      },
+      {
+        ref: "css_capitalization",
+      },
+    ],
+  },
+  start_numbers: {
+    alt: [
+      {
+        ref: "html_numbers",
+      },
+      {
+        ref: "css_numbers",
+      },
+    ],
+  },
+  start_capitalization_and_numbers: {
+    alt: [
+      {
+        ref: "html_capitalization_and_numbers",
+      },
+      {
+        ref: "css_capitalization_and_numbers",
+      },
+    ],
+  },
   html: {
+    seq: [
+      {
+        ref: "html_tag",
+      },
+      " ",
+      {
+        ref: "html_entity",
+      },
+    ],
+  },
+  html_capitalization: {
+    seq: [
+      {
+        ref: "html_tag",
+      },
+      " ",
+      {
+        ref: "html_entity",
+      },
+    ],
+  },
+  html_numbers: {
+    seq: [
+      {
+        ref: "html_tag",
+      },
+      " ",
+      {
+        ref: "html_entity",
+      },
+    ],
+  },
+  html_capitalization_and_numbers: {
     seq: [
       {
         ref: "html_tag",
@@ -99,6 +162,15 @@ export default {
     alt: ["&nbsp;", "&lt;", "&gt;", "&amp;", "&apos;"],
   },
   css: {
+    ref: "css_rule",
+  },
+  css_capitalization: {
+    ref: "css_rule",
+  },
+  css_numbers: {
+    ref: "css_rule",
+  },
+  css_capitalization_and_numbers: {
     ref: "css_rule",
   },
   css_rule: {

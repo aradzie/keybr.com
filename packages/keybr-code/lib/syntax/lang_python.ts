@@ -6,6 +6,15 @@ export default {
   start: {
     ref: "python_statement",
   },
+  start_capitalization: {
+    ref: "python_statement",
+  },
+  start_numbers: {
+    ref: "python_statement",
+  },
+  start_capitalization_and_numbers: {
+    ref: "python_statement",
+  },
   python_statement: {
     alt: [
       {

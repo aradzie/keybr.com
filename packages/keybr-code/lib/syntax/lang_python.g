@@ -1,4 +1,7 @@
 start -> python_statement ;
+start_capitalization -> python_statement ;
+start_numbers -> python_statement ;
+start_capitalization_and_numbers -> python_statement ;
 
 python_statement ->
     python_function_definition
