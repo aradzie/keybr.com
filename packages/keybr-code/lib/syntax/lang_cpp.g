@@ -1,8 +1,17 @@
 start -> c_func ;
+start_capitalization -> c_func ;
+start_numbers -> c_func ;
+start_capitalization_and_numbers -> c_func ;
 
 start_fproto -> c_func_proto ";" ;
+start_fproto_capitalization -> c_func_proto ";" ;
+start_fproto_numbers -> c_func_proto ";" ;
+start_fproto_capitalization_and_numbers -> c_func_proto ";" ;
 
 start_stmt -> c_stmt ;
+start_stmt_capitalization -> c_stmt ;
+start_stmt_numbers -> c_stmt ;
+start_stmt_capitalization_and_numbers -> c_stmt ;
 
 c_func -> c_func_proto _ c_func_body ;
 

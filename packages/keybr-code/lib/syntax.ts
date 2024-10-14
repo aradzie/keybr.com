@@ -94,14 +94,26 @@ export class Syntax implements EnumItem {
     Object.freeze(this);
   }
 
-  generate(rng?: RNG): string {
+  generate(
+    rng?: RNG,
+    includeCapitalization: boolean = false,
+    includeNumbers: boolean = false,
+  ): string {
     const output = new Output(200);
     while (true) {
       try {
         if (output.length > 0) {
           output.separate(" ");
         }
-        generate(this.rules, this.start, { output, rng });
+        let startRule = this.start;
+        if (includeCapitalization && includeNumbers) {
+          startRule += "_capitalization_and_numbers";
+        } else if (includeCapitalization) {
+          startRule += "_capitalization";
+        } else if (includeNumbers) {
+          startRule += "_numbers";
+        }
+        generate(this.rules, startRule, { output, rng });
       } catch (err) {
         if (err === Output.Stop) {
           break;

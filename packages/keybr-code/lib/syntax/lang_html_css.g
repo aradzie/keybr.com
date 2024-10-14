@@ -1,6 +1,12 @@
 start -> html | css ;
+start_capitalization -> html_capitalization | css_capitalization ;
+start_numbers -> html_numbers | css_numbers ;
+start_capitalization_and_numbers -> html_capitalization_and_numbers | css_capitalization_and_numbers;
 
 html -> html_tag _ html_entity ;
+html_capitalization -> html_tag _ html_entity ;
+html_numbers -> html_tag _ html_entity ;
+html_capitalization_and_numbers -> html_tag _ html_entity ;
 
 html_tag -> html_self_closing_tag ;
 
@@ -32,6 +38,9 @@ html_entity ->
   ;
 
 css -> css_rule ;
+css_capitalization -> css_rule ;
+css_numbers -> css_rule ;
+css_capitalization_and_numbers -> css_rule ;
 
 css_rule -> css_selector " { " css_property_list " }" ;
 

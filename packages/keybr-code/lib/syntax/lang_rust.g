@@ -1,58 +1,229 @@
-start -> rust_statement ;
-
-rust_statement ->
-    rust_function_definition
-  | rust_struct_definition
-  | rust_assign
-  | rust_return
-  | rust_comment
+start ->
+    rust_function_definition_no_caps_no_numbers
+  | rust_assign_no_caps_no_numbers
+  | rust_return_no_caps_no_numbers
+  | rust_comment_no_caps_no_numbers
   ;
 
-rust_function_definition -> "fn" _ rust_function_name "(" rust_arguments ")" [ "->" _ rust_type ] "{" ;
-
-rust_struct_definition -> [ "pub" _ ] "struct" _ rust_struct_name "{" ;
-
-rust_assign -> "let" _ rust_variable_name [ ":" _ rust_type ] _ "=" _ rust_expression ";" ;
-
-rust_return -> "return" _ rust_expression ";" ;
-
-rust_arguments -> rust_argument [ "," _ rust_argument ] ;
-
-rust_argument -> rust_variable_name _ ":" _ rust_type ;
-
-rust_expression ->
-    rust_literal
-  | rust_unary_operation
-  | rust_binary_operation
-  | "(" rust_expression ")"
-  | rust_array_definition
-  | rust_struct_instantiation
-  | rust_function_call
+start_capitalization ->
+    rust_function_definition_caps_no_numbers
+  | rust_struct_definition_caps_no_numbers
+  | rust_assign_caps_no_numbers
+  | rust_return_caps_no_numbers
+  | rust_comment_caps_no_numbers
   ;
 
-rust_unary_operation ->
-    "!" _ rust_expression
-  | "-" _ rust_expression
-  | "*" _ rust_expression
-  | "&" _ rust_expression
+start_numbers ->
+    rust_function_definition_no_caps_numbers
+  | rust_assign_no_caps_numbers
+  | rust_return_no_caps_numbers
+  | rust_comment_no_caps_no_numbers
   ;
 
-rust_binary_operation -> rust_expression _ rust_binary_operator _ rust_expression ;
-
-rust_function_call -> rust_function_name "(" [ rust_function_args ] ")" ;
-
-rust_function_args -> rust_expression [ "," _ rust_expression ] ;
-
-rust_type ->
-    rust_primitive_type
-  | "&" [ "mut" _ ] rust_type
-  | rust_type _ "<" rust_type [ "," _ rust_type ] ">"
-  | "[" rust_type ";" _ rust_number_literal "]"
-  | "(" rust_type [ "," _ rust_type ] ")"
+start_capitalization_and_numbers ->
+    rust_function_definition_caps_numbers
+  | rust_struct_definition_caps_no_numbers
+  | rust_assign_caps_numbers
+  | rust_return_caps_numbers
+  | rust_comment_caps_no_numbers
   ;
 
-rust_primitive_type ->
-    rust_struct_name
+rust_function_definition_no_caps_no_numbers -> "fn" _ rust_function_name_no_caps_no_numbers "(" rust_arguments_no_caps_no_numbers ")" [ "->" _ rust_type_no_caps_no_numbers ] "{" ;
+
+rust_function_definition_caps_no_numbers -> "fn" _ rust_function_name_no_caps_no_numbers "(" rust_arguments_caps_no_numbers ")" [ "->" _ rust_type_no_caps_no_numbers ] "{" ;
+
+rust_function_definition_no_caps_numbers -> "fn" _ rust_function_name_no_caps_no_numbers "(" rust_arguments_no_caps_numbers ")" [ "->" _ rust_type_no_caps_no_numbers ] "{" ;
+
+rust_function_definition_caps_numbers -> "fn" _ rust_function_name_no_caps_no_numbers "(" rust_arguments_caps_numbers ")" [ "->" _ rust_type_no_caps_no_numbers ] "{" ;
+
+rust_struct_definition_caps_no_numbers -> [ "pub" _ ] "struct" _ rust_struct_name_caps_no_numbers "{" ;
+
+rust_assign_no_caps_no_numbers -> "let" _ rust_variable_name_no_caps_no_numbers [ ":" _ rust_type_no_caps_no_numbers ] _ "=" _ rust_expression_no_caps_no_numbers ";" ;
+
+rust_assign_caps_no_numbers -> "let" _ rust_variable_name_no_caps_no_numbers [ ":" _ rust_type_caps_no_numbers ] _ "=" _ rust_expression_caps_no_numbers ";" ;
+
+rust_assign_no_caps_numbers -> "let" _ rust_variable_name_no_caps_no_numbers [ ":" _ rust_type_no_caps_numbers ] _ "=" _ rust_expression_no_caps_numbers ";" ;
+
+rust_assign_caps_numbers -> "let" _ rust_variable_name_no_caps_no_numbers [ ":" _ rust_type_caps_numbers ] _ "=" _ rust_expression_caps_numbers ";" ;
+
+rust_return_no_caps_no_numbers -> "return" _ rust_expression_no_caps_no_numbers ";" ;
+
+rust_return_caps_no_numbers -> "return" _ rust_expression_caps_no_numbers ";" ;
+
+rust_return_no_caps_numbers -> "return" _ rust_expression_no_caps_numbers ";" ;
+
+rust_return_caps_numbers -> "return" _ rust_expression_caps_numbers ";" ;
+
+rust_arguments_no_caps_no_numbers -> rust_argument_no_caps_no_numbers [ "," _ rust_argument_no_caps_no_numbers ] ;
+
+rust_arguments_caps_no_numbers -> rust_argument_caps_no_numbers [ "," _ rust_argument_caps_no_numbers ] ;
+
+rust_arguments_no_caps_numbers -> rust_argument_no_caps_numbers [ "," _ rust_argument_no_caps_numbers ] ;
+
+rust_arguments_caps_numbers -> rust_argument_caps_numbers [ "," _ rust_argument_caps_numbers ] ;
+
+rust_argument_no_caps_no_numbers -> rust_variable_name_no_caps_no_numbers _ ":" _ rust_type_no_caps_no_numbers ;
+
+rust_argument_caps_no_numbers -> rust_variable_name_no_caps_no_numbers _ ":" _ rust_type_caps_no_numbers ;
+
+rust_argument_no_caps_numbers -> rust_variable_name_no_caps_no_numbers _ ":" _ rust_type_no_caps_numbers ;
+
+rust_argument_caps_numbers -> rust_variable_name_no_caps_no_numbers _ ":" _ rust_type_caps_numbers ;
+
+rust_expression_no_caps_no_numbers ->
+    rust_literal_no_caps_no_numbers
+  | rust_unary_operation_no_caps_no_numbers
+  | rust_binary_operation_no_caps_no_numbers
+  | "(" rust_expression_no_caps_no_numbers ")"
+  | rust_array_definition_no_caps_no_numbers
+  | rust_function_call_no_caps_no_numbers
+  ;
+
+rust_expression_caps_no_numbers ->
+    rust_literal_caps_no_numbers
+  | rust_unary_operation_caps_no_numbers
+  | rust_binary_operation_caps_no_numbers
+  | "(" rust_expression_caps_no_numbers ")"
+  | rust_array_definition_caps_no_numbers
+  | rust_struct_instantiation_caps_no_numbers
+  | rust_function_call_caps_no_numbers
+  ;
+
+rust_expression_no_caps_numbers ->
+    rust_literal_no_caps_numbers
+  | rust_unary_operation_no_caps_numbers
+  | rust_binary_operation_no_caps_numbers
+  | "(" rust_expression_no_caps_numbers ")"
+  | rust_array_definition_no_caps_numbers
+  | rust_function_call_no_caps_numbers
+  ;
+
+rust_expression_caps_numbers ->
+    rust_literal_caps_numbers
+  | rust_unary_operation_caps_numbers
+  | rust_binary_operation_caps_numbers
+  | "(" rust_expression_caps_numbers ")"
+  | rust_array_definition_caps_numbers
+  | rust_struct_instantiation_caps_numbers
+  | rust_function_call_caps_numbers
+  ;
+
+rust_unary_operation_no_caps_no_numbers ->
+    "!" _ rust_expression_no_caps_no_numbers
+  | "-" _ rust_expression_no_caps_no_numbers
+  | "*" _ rust_expression_no_caps_no_numbers
+  | "&" _ rust_expression_no_caps_no_numbers
+  ;
+
+rust_unary_operation_caps_no_numbers ->
+    "!" _ rust_expression_caps_no_numbers
+  | "-" _ rust_expression_caps_no_numbers
+  | "*" _ rust_expression_caps_no_numbers
+  | "&" _ rust_expression_caps_no_numbers
+  ;
+
+rust_unary_operation_no_caps_numbers ->
+    "!" _ rust_expression_no_caps_numbers
+  | "-" _ rust_expression_no_caps_numbers
+  | "*" _ rust_expression_no_caps_numbers
+  | "&" _ rust_expression_no_caps_numbers
+  ;
+
+rust_unary_operation_caps_numbers ->
+    "!" _ rust_expression_caps_numbers
+  | "-" _ rust_expression_caps_numbers
+  | "*" _ rust_expression_caps_numbers
+  | "&" _ rust_expression_caps_numbers
+  ;
+
+rust_binary_operation_no_caps_no_numbers -> rust_expression_no_caps_no_numbers _ rust_binary_operator _ rust_expression_no_caps_no_numbers ;
+
+rust_binary_operation_caps_no_numbers -> rust_expression_caps_no_numbers _ rust_binary_operator _ rust_expression_caps_no_numbers ;
+
+rust_binary_operation_no_caps_numbers -> rust_expression_no_caps_numbers _ rust_binary_operator _ rust_expression_no_caps_numbers ;
+
+rust_binary_operation_caps_numbers -> rust_expression_caps_numbers _ rust_binary_operator _ rust_expression_caps_numbers ;
+
+rust_function_call_no_caps_no_numbers -> rust_function_name_no_caps_no_numbers "(" [ rust_function_args_no_caps_no_numbers ] ")" ;
+
+rust_function_call_caps_no_numbers -> rust_function_name_no_caps_no_numbers "(" [ rust_function_args_caps_no_numbers ] ")" ;
+
+rust_function_call_no_caps_numbers -> rust_function_name_no_caps_no_numbers "(" [ rust_function_args_no_caps_numbers ] ")" ;
+
+rust_function_call_caps_numbers -> rust_function_name_no_caps_no_numbers "(" [ rust_function_args_caps_numbers ] ")" ;
+
+rust_function_args_no_caps_no_numbers -> rust_expression_no_caps_no_numbers [ "," _ rust_expression_no_caps_no_numbers ] ;
+
+rust_function_args_caps_no_numbers -> rust_expression_caps_no_numbers [ "," _ rust_expression_caps_no_numbers ] ;
+
+rust_function_args_no_caps_numbers -> rust_expression_no_caps_numbers [ "," _ rust_expression_no_caps_numbers ] ;
+
+rust_function_args_caps_numbers -> rust_expression_caps_numbers [ "," _ rust_expression_caps_numbers ] ;
+
+rust_type_no_caps_no_numbers ->
+    rust_primitive_type_no_caps_no_numbers
+  | "&" [ "mut" _ ] rust_type_no_caps_no_numbers
+  | rust_type_no_caps_no_numbers _ "<" rust_type_no_caps_no_numbers [ "," _ rust_type_no_caps_no_numbers ] ">"
+  | "(" rust_type_no_caps_no_numbers [ "," _ rust_type_no_caps_no_numbers ] ")"
+  ;
+
+rust_type_caps_no_numbers ->
+    rust_primitive_type_caps_no_numbers
+  | "&" [ "mut" _ ] rust_type_caps_no_numbers
+  | rust_type_caps_no_numbers _ "<" rust_type_caps_no_numbers [ "," _ rust_type_caps_no_numbers ] ">"
+  | "(" rust_type_caps_no_numbers [ "," _ rust_type_caps_no_numbers ] ")"
+  ;
+
+rust_type_no_caps_numbers ->
+    rust_primitive_type_no_caps_numbers
+  | "&" [ "mut" _ ] rust_type_no_caps_numbers
+  | rust_type_no_caps_numbers _ "<" rust_type_no_caps_numbers [ "," _ rust_type_no_caps_numbers ] ">"
+  | "[" rust_type_no_caps_numbers ";" _ rust_number_literal "]"
+  | "(" rust_type_no_caps_numbers [ "," _ rust_type_no_caps_numbers ] ")"
+  ;
+
+rust_type_caps_numbers ->
+    rust_primitive_type_caps_numbers
+  | "&" [ "mut" _ ] rust_type_caps_numbers
+  | rust_type_caps_numbers _ "<" rust_type_caps_numbers [ "," _ rust_type_caps_numbers ] ">"
+  | "[" rust_type_caps_numbers ";" _ rust_number_literal "]"
+  | "(" rust_type_caps_numbers [ "," _ rust_type_caps_numbers ] ")"
+  ;
+
+rust_primitive_type_no_caps_no_numbers ->
+    "bool"
+  | "char"
+  | "str"
+  | "usize"
+  | "isize"
+  ;
+
+rust_primitive_type_caps_no_numbers ->
+    rust_struct_name_caps_no_numbers
+  | "bool"
+  | "char"
+  | "str"
+  | "String"
+  | "usize"
+  | "isize"
+  ;
+
+rust_primitive_type_no_caps_numbers ->
+    "i32"
+  | "u32"
+  | "f32"
+  | "bool"
+  | "char"
+  | "str"
+  | "usize"
+  | "isize"
+  | "i64"
+  | "u64"
+  | "f64"
+  ;
+
+rust_primitive_type_caps_numbers ->
+    rust_struct_name_caps_no_numbers
   | "i32"
   | "u32"
   | "f32"
@@ -88,34 +259,79 @@ rust_binary_operator ->
   | "^"
   ;
 
-rust_array_definition ->
-    "[" rust_expression [ "," _ rust_expression ] "]"
-  | "[" rust_expression ";" _ rust_number_literal "]"
+rust_array_definition_no_caps_no_numbers ->
+    "[" rust_expression_no_caps_no_numbers [ "," _ rust_expression_no_caps_no_numbers ] "]"
   ;
 
-rust_struct_instantiation ->
-    rust_struct_name "{" rust_struct_fields "}" ;
+rust_array_definition_caps_no_numbers ->
+    "[" rust_expression_caps_no_numbers [ "," _ rust_expression_caps_no_numbers ] "]"
+  ;
 
-rust_struct_fields ->
-    rust_field_assignment [ "," _ rust_field_assignment ] ;
+rust_array_definition_no_caps_numbers ->
+    "[" rust_expression_no_caps_numbers [ "," _ rust_expression_no_caps_numbers ] "]"
+  | "[" rust_expression_no_caps_numbers ";" _ rust_number_literal "]"
+  ;
 
-rust_field_assignment ->
-    rust_variable_name ":" _ rust_expression ;
+rust_array_definition_caps_numbers ->
+    "[" rust_expression_caps_numbers [ "," _ rust_expression_caps_numbers ] "]"
+  | "[" rust_expression_caps_numbers ";" _ rust_number_literal "]"
+  ;
 
-rust_literal ->
-    rust_string_literal
+rust_struct_instantiation_caps_no_numbers ->
+    rust_struct_name_caps_no_numbers "{" rust_struct_fields_caps_no_numbers "}" ;
+
+rust_struct_instantiation_caps_numbers ->
+    rust_struct_name_caps_no_numbers "{" rust_struct_fields_caps_numbers "}" ;
+
+rust_struct_fields_caps_no_numbers ->
+    rust_field_assignment_caps_no_numbers [ "," _ rust_field_assignment_caps_no_numbers ] ;
+
+rust_struct_fields_caps_numbers ->
+    rust_field_assignment_caps_numbers [ "," _ rust_field_assignment_caps_numbers ] ;
+
+rust_field_assignment_caps_no_numbers ->
+    rust_variable_name_no_caps_no_numbers ":" _ rust_expression_caps_no_numbers ;
+
+rust_field_assignment_caps_numbers ->
+    rust_variable_name_no_caps_no_numbers ":" _ rust_expression_caps_numbers ;
+
+rust_literal_no_caps_no_numbers ->
+    rust_string_literal_no_caps_no_numbers
+  | rust_boolean_literal
+  | rust_char_literal_no_caps_no_numbers
+  ;
+
+rust_literal_caps_no_numbers ->
+    rust_string_literal_caps_no_numbers
+  | rust_boolean_literal
+  | rust_char_literal_no_caps_no_numbers
+  ;
+
+rust_literal_no_caps_numbers ->
+    rust_string_literal_no_caps_no_numbers
   | rust_number_literal
   | rust_boolean_literal
-  | rust_char_literal
+  | rust_char_literal_no_caps_numbers
   ;
 
-rust_string_literal -> "\"" rust_string_value "\"" ;
+rust_literal_caps_numbers ->
+    rust_string_literal_caps_no_numbers
+  | rust_number_literal
+  | rust_boolean_literal
+  | rust_char_literal_no_caps_numbers
+  ;
 
-rust_char_literal -> "'" rust_char_value "'" ;
+rust_string_literal_no_caps_no_numbers -> "\"" rust_string_value_no_caps_no_numbers "\"" ;
+
+rust_string_literal_caps_no_numbers -> "\"" rust_string_value_caps_no_numbers "\"" ;
+
+rust_char_literal_no_caps_no_numbers -> "'" rust_char_value_no_caps_no_numbers "'" ;
+
+rust_char_literal_no_caps_numbers -> "'" rust_char_value_no_caps_numbers "'" ;
 
 rust_boolean_literal -> "true" | "false" ;
 
-rust_variable_name ->
+rust_variable_name_no_caps_no_numbers ->
     "x"
   | "y"
   | "z"
@@ -147,7 +363,7 @@ rust_variable_name ->
   | "len"
   ;
 
-rust_function_name ->
+rust_function_name_no_caps_no_numbers ->
     "main"
   | "new"
   | "len"
@@ -176,7 +392,7 @@ rust_function_name ->
   | "println"
   ;
 
-rust_struct_name ->
+rust_struct_name_caps_no_numbers ->
     "Config"
   | "Client"
   | "Server"
@@ -199,7 +415,7 @@ rust_struct_name ->
   | "Manager"
   ;
 
-rust_string_value ->
+rust_string_value_caps_no_numbers ->
     ""
   | "Hello, world!"
   | "Error"
@@ -222,7 +438,42 @@ rust_string_value ->
   | "Sample"
   ;
 
-rust_char_value ->
+rust_string_value_no_caps_no_numbers ->
+    ""
+  | "hello, world!"
+  | "error"
+  | "ok"
+  | "test"
+  | "name"
+  | "value"
+  | "message"
+  | "key"
+  | "input"
+  | "output"
+  | "data"
+  | "result"
+  | "success"
+  | "failure"
+  | "warning"
+  | "info"
+  | "debug"
+  | "rust"
+  | "sample"
+  ;
+
+rust_char_value_no_caps_no_numbers ->
+    "a"
+  | "b"
+  | "c"
+  | "x"
+  | "y"
+  | "z"
+  | "\\n"
+  | "\\t"
+  | "\\r"
+  ;
+
+rust_char_value_no_caps_numbers ->
     "a"
   | "b"
   | "c"
@@ -259,20 +510,33 @@ rust_number_literal ->
   | "1_000_000"
   ;
 
-rust_comment ->
-    ( "//" [ _ ] rust_comment_text )
-  | ( "///" [ _ ] rust_comment_text )
-  | ( "////" [ _ ] rust_comment_text )
-  | ( "//!" [ _ ] rust_comment_text )
-  | ( "//!!" [ _ ] rust_comment_text )
-  | ( "/*" _ rust_comment_text _ "*/" )
-  | ( "/**" _ rust_comment_text _ "*/" )
-  | ( "/***" _ rust_comment_text _ "*/" )
-  | ( "/*!" _ rust_comment_text _ "*/" )
-  | ( "/*!!" _ rust_comment_text _ "*/" )
+rust_comment_no_caps_no_numbers ->
+    ( "//" [ _ ] rust_comment_text_no_caps_no_numbers )
+  | ( "///" [ _ ] rust_comment_text_no_caps_no_numbers )
+  | ( "////" [ _ ] rust_comment_text_no_caps_no_numbers )
+  | ( "//!" [ _ ] rust_comment_text_no_caps_no_numbers )
+  | ( "//!!" [ _ ] rust_comment_text_no_caps_no_numbers )
+  | ( "/*" _ rust_comment_text_no_caps_no_numbers _ "*/" )
+  | ( "/**" _ rust_comment_text_no_caps_no_numbers _ "*/" )
+  | ( "/***" _ rust_comment_text_no_caps_no_numbers _ "*/" )
+  | ( "/*!" _ rust_comment_text_no_caps_no_numbers _ "*/" )
+  | ( "/*!!" _ rust_comment_text_no_caps_no_numbers _ "*/" )
 ;
 
-rust_comment_text ->
+rust_comment_caps_no_numbers ->
+    ( "//" [ _ ] rust_comment_text_caps_no_numbers )
+  | ( "///" [ _ ] rust_comment_text_caps_no_numbers )
+  | ( "////" [ _ ] rust_comment_text_caps_no_numbers )
+  | ( "//!" [ _ ] rust_comment_text_caps_no_numbers )
+  | ( "//!!" [ _ ] rust_comment_text_caps_no_numbers )
+  | ( "/*" _ rust_comment_text_caps_no_numbers _ "*/" )
+  | ( "/**" _ rust_comment_text_caps_no_numbers _ "*/" )
+  | ( "/***" _ rust_comment_text_caps_no_numbers _ "*/" )
+  | ( "/*!" _ rust_comment_text_caps_no_numbers _ "*/" )
+  | ( "/*!!" _ rust_comment_text_caps_no_numbers _ "*/" )
+;
+
+rust_comment_text_caps_no_numbers ->
   "TODO: Implement error handling"
 | "FIXME: Potential race condition"
 | "Unsafe: Raw pointer manipulation"
@@ -286,4 +550,20 @@ rust_comment_text ->
 | "Benchmark performance"
 | "Async/await transformation"
 | "Check for integer overflow"
+;
+
+rust_comment_text_no_caps_no_numbers ->
+  "todo: implement error handling"
+| "fixme: potential race condition"
+| "Unsafe: raw pointer manipulation"
+| "optimize memory allocation"
+| "ensure thread safety"
+| "zero-copy deserialization"
+| "handle lifetime issues"
+| "implement drop trait"
+| "lock-free data structure"
+| "ffi: c interop"
+| "benchmark performance"
+| "async/await transformation"
+| "check for integer overflow"
 ;

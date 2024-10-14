@@ -1,5 +1,11 @@
 start -> go_statement ;
 
+start_capitalization -> go_statement ;
+
+start_numbers -> go_statement ;
+
+start_capitalization_and_numbers -> go_statement ;
+
 go_statement ->
     go_function_definition
   | go_struct_definition

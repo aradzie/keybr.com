@@ -1,4 +1,7 @@
 start -> shell_command ";" ;
+start_capitalization -> shell_command ";" ;
+start_numbers -> shell_command ";" ;
+start_capitalization_and_numbers -> shell_command ";" ;
 
 shell_command -> command_name _ arg_list [ _ ( redirect_suffix | pipe_suffix ) ] ;
 

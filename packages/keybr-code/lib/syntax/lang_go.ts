@@ -6,6 +6,15 @@ export default {
   start: {
     ref: "go_statement",
   },
+  start_capitalization: {
+    ref: "go_statement",
+  },
+  start_numbers: {
+    ref: "go_statement",
+  },
+  start_capitalization_and_numbers: {
+    ref: "go_statement",
+  },
   go_statement: {
     alt: [
       {

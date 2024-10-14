@@ -11,6 +11,30 @@ export default {
       ";",
     ],
   },
+  start_capitalization: {
+    seq: [
+      {
+        ref: "shell_command",
+      },
+      ";",
+    ],
+  },
+  start_numbers: {
+    seq: [
+      {
+        ref: "shell_command",
+      },
+      ";",
+    ],
+  },
+  start_capitalization_and_numbers: {
+    seq: [
+      {
+        ref: "shell_command",
+      },
+      ";",
+    ],
+  },
   shell_command: {
     seq: [
       {
