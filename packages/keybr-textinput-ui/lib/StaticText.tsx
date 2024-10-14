@@ -1,6 +1,5 @@
 import { type LineList, type TextDisplaySettings } from "@keybr/textinput";
 import { type ReactNode } from "react";
-import * as styles from "./StaticText.module.less";
 import { TextLines, type TextLineSize } from "./TextLines.tsx";
 
 export function StaticText({
@@ -19,15 +18,13 @@ export function StaticText({
   readonly focus?: boolean;
 }): ReactNode {
   return (
-    <div className={styles.staticText}>
-      <TextLines
-        settings={settings}
-        lines={lines}
-        wrap={wrap}
-        size={size}
-        cursor={cursor}
-        focus={focus}
-      />
-    </div>
+    <TextLines
+      settings={settings}
+      lines={lines}
+      wrap={wrap}
+      size={size}
+      cursor={cursor}
+      focus={focus}
+    />
   );
 }

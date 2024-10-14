@@ -43,10 +43,12 @@ export function LessonPreview({
       <div className={styles.root}>
         <KeySetRow lessonKeys={lessonKeys} />
         <CurrentKeyRow lessonKeys={lessonKeys} />
-        <StaticText
-          settings={toTextDisplaySettings(settings)}
-          lines={textInput.getLines()}
-        />
+        <div className={styles.text}>
+          <StaticText
+            settings={toTextDisplaySettings(settings)}
+            lines={textInput.getLines()}
+          />
+        </div>
       </div>
     </FieldSet>
   );

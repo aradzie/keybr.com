@@ -40,7 +40,6 @@ export function TextArea({
   onKeyDown,
   onKeyUp,
   onTextInput,
-  ...props
 }: {
   readonly settings: TextDisplaySettings;
   readonly lines: LineList;
@@ -98,7 +97,7 @@ export function TextArea({
     event.preventDefault();
   };
   return (
-    <div {...props} ref={ref} className={styles.textArea} onClick={handleClick}>
+    <div ref={ref} className={styles.root} onClick={handleClick}>
       <TextEvents
         focusRef={innerRef}
         onFocus={handleFocus}
