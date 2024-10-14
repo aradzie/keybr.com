@@ -1,18 +1,11 @@
 .root {
-  padding-inline: 2rem;
-  padding-block: 2rem 1rem;
+  padding: 2rem;
   border: none;
   color: var(--Popup__color);
   background-color: var(--Popup__background-color);
   box-shadow: var(--Popup__box-shadow);
 }
 
-.root::backdrop {
+.backdrop::backdrop {
   backdrop-filter: blur(5px);
-}
-
-.content {
-  min-inline-size: 20rem;
-  max-inline-size: 40rem;
-  margin-block-end: 2rem;
 }

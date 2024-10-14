@@ -1,44 +1,35 @@
+import { clsx } from "clsx";
 import { type ReactNode, useEffect, useRef } from "react";
-import { Button } from "../button/index.ts";
-import { Field, FieldList } from "../fieldlist/index.ts";
 import { Portal } from "../portal/index.ts";
+import { DialogContext } from "./context.ts";
 import * as styles from "./Dialog.module.less";
 import { type DialogProps } from "./Dialog.types.ts";
 
 export function Dialog({
+  backdrop,
   children,
-  actions = [{ label: "Close", action: () => {} }],
-  ...props
+  onClose,
 }: DialogProps): ReactNode {
   const ref = useRef<HTMLDialogElement>(null);
   useEffect(() => {
-    if (ref.current != null) {
-      ref.current.showModal();
-    }
+    ref.current?.showModal();
   }, []);
   return (
     <Portal>
-      <dialog {...props} ref={ref} className={styles.root}>
-        <div className={styles.content}>{children}</div>
-        <FieldList>
-          <Field.Filler />
-          {actions.map(({ label, action, ...buttonProps }, index) => (
-            <Field key={index}>
-              <Button
-                {...buttonProps}
-                onClick={() => {
-                  if (ref.current != null) {
-                    ref.current.close();
-                  }
-                  action();
-                }}
-              >
-                {label}
-              </Button>
-            </Field>
-          ))}
-          <Field.Filler />
-        </FieldList>
+      <dialog
+        ref={ref}
+        className={clsx(styles.root, backdrop && styles.backdrop)}
+      >
+        <DialogContext.Provider
+          value={{
+            closeDialog: () => {
+              ref.current?.close();
+              onClose?.();
+            },
+          }}
+        >
+          {children}
+        </DialogContext.Provider>
       </dialog>
     </Portal>
   );

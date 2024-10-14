@@ -84,10 +84,7 @@ export function getBoxClassNames({
   alignItems,
   alignContent,
 }: BoxProps): string[] {
-  const classNames: string[] = [];
-  if (direction != null) {
-    classNames.push(directionMapping[direction]);
-  }
+  const classNames: string[] = [directionMapping[direction ?? "row"]];
   if (wrap != null) {
     classNames.push(wrapMapping[wrap]);
   }

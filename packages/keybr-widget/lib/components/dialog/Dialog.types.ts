@@ -1,17 +1,7 @@
-import { type ReactElement, type ReactNode } from "react";
-import { type IconProps } from "../icon/index.ts";
-
-export type Action = {
-  readonly action: () => void;
-  readonly autoFocus?: boolean;
-  readonly icon?: ReactElement<IconProps>;
-  readonly label: ReactNode;
-  readonly title?: string;
-};
+import { type ReactNode } from "react";
 
 export type DialogProps = {
-  readonly actions?: Action[];
+  readonly backdrop?: boolean;
   readonly children: ReactNode;
-  readonly onCancel?: () => void;
   readonly onClose?: () => void;
 };
