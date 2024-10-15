@@ -1,5 +1,5 @@
 import { Enum, type EnumItem } from "@keybr/lang";
-import { type FontFace, FONTS_FACES, UBUNTU_MONO } from "@keybr/styles";
+import { type FontFace, FONTS_FACES, UBUNTU_MONO } from "@keybr/themes";
 import { type CSSProperties } from "react";
 
 export class Font implements EnumItem {

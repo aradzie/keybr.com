@@ -10,7 +10,7 @@ import {
   Root,
   usePageData,
 } from "@keybr/pages-shared";
-import { ThemePrefs, useTheme } from "@keybr/styles";
+import { ThemePrefs, useTheme } from "@keybr/themes";
 import {
   CloudflareAnalytics,
   GoogleTagManager,

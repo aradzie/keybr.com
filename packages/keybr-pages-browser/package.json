@@ -20,7 +20,7 @@
     "@keybr/request": "*",
     "@keybr/result-loader": "*",
     "@keybr/settings-loader": "*",
-    "@keybr/styles": "*",
+    "@keybr/themes": "*",
     "@keybr/thirdparties": "*",
     "@keybr/widget": "*"
   },

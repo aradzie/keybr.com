@@ -8,7 +8,7 @@
     "@keybr/assets": "*",
     "@keybr/intl": "*",
     "@keybr/pages-shared": "*",
-    "@keybr/styles": "*",
+    "@keybr/themes": "*",
     "@keybr/thirdparties": "*",
     "@keybr/widget": "*"
   },

@@ -21,7 +21,7 @@
     "@keybr/result-userdata": "*",
     "@keybr/settings": "*",
     "@keybr/settings-database": "*",
-    "@keybr/styles": "*",
+    "@keybr/themes": "*",
     "@types/ws": "^8.5.12",
     "ws": "^8.18.0"
   },

@@ -12,7 +12,7 @@ import {
   Pages,
 } from "@keybr/pages-shared";
 import { SettingsDatabase } from "@keybr/settings-database";
-import { staticTheme, ThemeContext, ThemePrefs } from "@keybr/styles";
+import { staticTheme, ThemeContext, ThemePrefs } from "@keybr/themes";
 import { type IntlShape, RawIntlProvider } from "react-intl";
 import { type AuthState } from "../auth/index.ts";
 import { localePattern, pIntl, preferredLocale } from "./intl.ts";

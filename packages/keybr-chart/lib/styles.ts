@@ -1,4 +1,4 @@
-import { useTheme } from "@keybr/styles";
+import { useTheme } from "@keybr/themes";
 import { calcLineHeight, calcStyle } from "@keybr/widget";
 import { useMemo } from "react";
 import * as styles from "./styles.module.less";

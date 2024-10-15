@@ -8,7 +8,7 @@
     "@keybr/keyboard": "*",
     "@keybr/lang": "*",
     "@keybr/settings": "*",
-    "@keybr/styles": "*",
+    "@keybr/themes": "*",
     "@keybr/unicode": "*"
   },
   "devDependencies": {},

@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@keybr/styles",
+  "name": "@keybr/themes",
   "version": "0.0.0",
   "main": "lib/index.ts",
   "types": ".types/index.d.ts",

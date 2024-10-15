@@ -10,7 +10,7 @@
     "@keybr/phonetic-model": "*",
     "@keybr/result": "*",
     "@keybr/settings": "*",
-    "@keybr/styles": "*",
+    "@keybr/themes": "*",
     "@keybr/widget": "*"
   },
   "devDependencies": {},

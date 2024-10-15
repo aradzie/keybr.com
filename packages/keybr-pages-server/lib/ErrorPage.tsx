@@ -1,5 +1,5 @@
 import { StylesheetAssets } from "@keybr/assets";
-import { ThemePrefs, useTheme } from "@keybr/styles";
+import { ThemePrefs, useTheme } from "@keybr/themes";
 import { Header, Link, Para } from "@keybr/widget";
 import { type ReactNode } from "react";
 import * as styles from "./ErrorPage.module.less";

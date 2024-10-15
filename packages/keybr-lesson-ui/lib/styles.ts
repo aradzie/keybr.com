@@ -1,4 +1,4 @@
-import { useCustomProperties } from "@keybr/styles";
+import { useCustomProperties } from "@keybr/themes";
 import { Color, RgbColor } from "@keybr/widget";
 import { type CSSProperties, useMemo } from "react";
 

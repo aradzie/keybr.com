@@ -1,4 +1,4 @@
-import { COLORS, FONTS, useTheme } from "@keybr/styles";
+import { COLORS, FONTS, useTheme } from "@keybr/themes";
 import {
   ensureVisible,
   Icon,

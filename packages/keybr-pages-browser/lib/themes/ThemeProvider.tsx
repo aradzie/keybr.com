@@ -3,7 +3,7 @@ import {
   ThemeContext,
   ThemePrefs,
   usePreferredColorScheme,
-} from "@keybr/styles";
+} from "@keybr/themes";
 import { useFullscreen } from "@keybr/widget";
 import { type ReactNode, useState } from "react";
 
