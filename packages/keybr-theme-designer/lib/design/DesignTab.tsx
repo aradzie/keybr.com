@@ -3,6 +3,7 @@ import {
   darkTheme,
   defaultCustomTheme,
   lightTheme,
+  useTheme,
 } from "@keybr/themes";
 import { Box, Button, Field, FieldList, useDialog } from "@keybr/widget";
 import { useCustomTheme } from "../context/context.ts";
@@ -14,6 +15,7 @@ import { PageColors } from "./PageColors.tsx";
 
 export function DesignTab() {
   const { closeDialog } = useDialog();
+  const { refresh } = useTheme();
   const { theme, setTheme } = useCustomTheme();
   return (
     <Box className={styles.root} direction="column">
@@ -27,6 +29,7 @@ export function DesignTab() {
               onClick={() => {
                 setTheme(defaultCustomTheme);
                 applyTheme(defaultCustomTheme);
+                refresh();
               }}
             />
           </Field>
@@ -37,6 +40,7 @@ export function DesignTab() {
               onClick={() => {
                 setTheme(lightTheme);
                 applyTheme(lightTheme);
+                refresh();
               }}
             />
           </Field>
@@ -47,6 +51,7 @@ export function DesignTab() {
               onClick={() => {
                 setTheme(darkTheme);
                 applyTheme(darkTheme);
+                refresh();
               }}
             />
           </Field>
@@ -64,6 +69,7 @@ export function DesignTab() {
             size={6}
             onClick={() => {
               applyTheme(theme);
+              refresh();
             }}
           />
         </Field>
@@ -80,6 +86,7 @@ export function DesignTab() {
             size={6}
             onClick={() => {
               applyTheme(theme);
+              refresh();
               closeDialog();
             }}
           />

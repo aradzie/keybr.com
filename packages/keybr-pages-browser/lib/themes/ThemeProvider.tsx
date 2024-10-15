@@ -53,6 +53,12 @@ export function ThemeProvider({ children }: { readonly children: ReactNode }) {
           setPrefs(prefs);
           storePrefs(prefs);
         },
+        refresh: () => {
+          const prefs = new ThemePrefs({ color, font });
+          switchTheme(prefs);
+          setPrefs(prefs);
+          storePrefs(prefs);
+        },
       }}
     >
       {children}
