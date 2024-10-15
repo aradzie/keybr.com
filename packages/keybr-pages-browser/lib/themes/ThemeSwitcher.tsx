@@ -35,7 +35,6 @@ export function ThemeSwitcher() {
     <div className={styles.root}>
       {design && (
         <Dialog
-          backdrop={true}
           onClose={() => {
             setDesign(false);
           }}
