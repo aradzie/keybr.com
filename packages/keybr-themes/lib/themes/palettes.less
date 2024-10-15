@@ -6,7 +6,6 @@
 @chart-hist-m: #b43f3e;
 @chart-hist-r: #b140b4;
 
-@zone-pointer: #4ba0f2;
 @zone-pinky: #8ec07c;
 @zone-ring: #b8bb26;
 @zone-middle: #fabd2f;
@@ -25,18 +24,18 @@
 }
 
 .use-keyboard-colors(@primary, @mix) {
-  --KeyboardKey-pointer__color: @zone-pointer;
-  --KeyboardKey-pinky__color: mix(@primary, @zone-pinky, @mix);
-  --KeyboardKey-ring__color: mix(@primary, @zone-ring, @mix);
-  --KeyboardKey-middle__color: mix(@primary, @zone-middle, @mix);
-  --KeyboardKey-leftIndex__color: mix(@primary, @zone-leftIndex, @mix);
-  --KeyboardKey-rightIndex__color: mix(@primary, @zone-rightIndex, @mix);
-  --KeyboardKey-thumb__color: mix(@primary, @zone-thumb, @mix);
+  --KeyboardKey-pointer__color: #4ba0f2;
+  --pinky-zone-color: mix(@primary, @zone-pinky, @mix);
+  --ring-zone-color: mix(@primary, @zone-ring, @mix);
+  --middle-zone-color: mix(@primary, @zone-middle, @mix);
+  --left-index-zone-color: mix(@primary, @zone-leftIndex, @mix);
+  --right-index-zone-color: mix(@primary, @zone-rightIndex, @mix);
+  --thumb-zone-color: mix(@primary, @zone-thumb, @mix);
 }
 
-.use-calendar-colors(@primary, @effort) {
-  --Calendar-cell--s0__background-color: mix(@primary, @effort, 75);
-  --Calendar-cell--s1__background-color: mix(@primary, @effort, 50);
-  --Calendar-cell--s2__background-color: mix(@primary, @effort, 25);
-  --Calendar-cell--s3__background-color: mix(@primary, @effort, 0);
+.use-effort-colors(@primary, @effort) {
+  --effort-0-color: mix(@primary, @effort, 75);
+  --effort-1-color: mix(@primary, @effort, 50);
+  --effort-2-color: mix(@primary, @effort, 25);
+  --effort-3-color: mix(@primary, @effort, 0);
 }
