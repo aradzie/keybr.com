@@ -49,6 +49,14 @@ export class CustomTheme implements Iterable<[PropName, PropValue]> {
     props.delete(prop);
     return new CustomTheme(props);
   }
+
+  merge(that: CustomTheme): CustomTheme {
+    const props = new Map(this.#props);
+    for (const [prop, value] of that) {
+      props.set(prop, value);
+    }
+    return new CustomTheme(props);
+  }
 }
 
 export function applyTheme(

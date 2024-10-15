@@ -37,7 +37,7 @@ function usePersistentCustomTheme() {
   useEffect(() => {
     readTheme()
       .then(({ theme, error }) => {
-        setTheme(theme);
+        setTheme(defaultCustomTheme.merge(theme));
         setError(error);
       })
       .catch(setError);
