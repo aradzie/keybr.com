@@ -57,6 +57,10 @@ export const COLORS = new ThemeList([
     name: "Coffee (Dark)",
   },
   {
+    id: "honey",
+    name: "Honey",
+  },
+  {
     id: "custom",
     name: "Custom",
   },

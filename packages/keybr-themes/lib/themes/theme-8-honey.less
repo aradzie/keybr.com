@@ -1,0 +1,37 @@
+@import "palettes.less";
+
+html[data-color="honey"] {
+  @primary: #ffbf00;
+  @secondary: #402609;
+  @accent: #754c22;
+  @error: #b83d14;
+
+  --primary-d2: darken(@primary, 5);
+  --primary-d1: darken(@primary, 3);
+  --primary: @primary;
+  --primary-l1: lighten(@primary, 5);
+  --primary-l2: lighten(@primary, 10);
+  --secondary-d1: darken(@secondary, 10);
+  --secondary: @secondary;
+  --secondary-l1: lighten(@secondary, 10);
+  --secondary-l2: lighten(@secondary, 20);
+  --secondary-f1: mix(@primary, @secondary, 20);
+  --secondary-f2: mix(@primary, @secondary, 40);
+  --accent-d2: darken(@accent, 20);
+  --accent-d1: darken(@accent, 10);
+  --accent: @accent;
+  --accent-l1: lighten(@accent, 10);
+  --accent-l2: lighten(@accent, 20);
+  --error-d1: darken(@error, 10);
+  --error: @error;
+  --error-l1: lighten(@error, 10);
+  --shadow-color: #00000044;
+  --slow-key-color: #cc8b00;
+  --fast-key-color: #8cc64e;
+  .use-chart-colors(@primary, 30);
+  .use-keyboard-colors(@primary, 30);
+  .use-effort-colors(@primary, #956eff);
+  --background-image: url(../../assets/bg-honey.svg);
+  --Surface__box-shadow: none;
+  --Surface__backdrop-filter: blur(10px);
+}
