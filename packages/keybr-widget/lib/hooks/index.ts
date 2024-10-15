@@ -7,6 +7,7 @@ export * from "./use-fullscreen.ts";
 export * from "./use-hotkeys.ts";
 export * from "./use-interval.ts";
 export * from "./use-mouse-hover.ts";
+export * from "./use-on-click-outside.ts";
 export * from "./use-screen-scroll.ts";
 export * from "./use-screen-size.ts";
 export * from "./use-timeout.ts";

@@ -15,7 +15,8 @@
     "@keybr/textinput": "*",
     "@keybr/textinput-ui": "*",
     "@keybr/themes": "*",
-    "@keybr/widget": "*"
+    "@keybr/widget": "*",
+    "react-colorful": "^5.6.1"
   },
   "devDependencies": {},
   "scripts": {
