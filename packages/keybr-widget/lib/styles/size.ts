@@ -6,6 +6,7 @@ export const styleSizeFill = styles.sizeFill;
 export const styleSizeFillAlt = styles.sizeFillAlt;
 export const styleSizeFull = styles.sizeFull;
 
+export const styleWidth6 = styles.width6;
 export const styleWidth10 = styles.width10;
 export const styleWidth16 = styles.width16;
 export const styleWidth24 = styles.width24;
@@ -16,6 +17,7 @@ export type SizeName =
   | "fill"
   | "fillAlt"
   | "full"
+  | 6
   | 10
   | 16
   | 24
@@ -29,6 +31,8 @@ export const sizeClassName = (size?: SizeName | null): ClassName => {
       return styleSizeFillAlt;
     case "full":
       return styleSizeFull;
+    case 6:
+      return styleWidth6;
     case 10:
       return styleWidth10;
     case 16:
