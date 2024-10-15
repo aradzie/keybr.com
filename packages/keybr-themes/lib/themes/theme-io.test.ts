@@ -9,7 +9,9 @@ global.Blob = window.Blob;
 test("store", async (t) => {
   // Arrange.
 
-  const storage = new FakeStorage();
+  const storage = new FakeStorage([
+    ["keybr.theme[--accent]", "rgb(255,255,255)"],
+  ]);
 
   const theme = new CustomTheme()
     .set("--primary", Color.parse("#ffffff"))

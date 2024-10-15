@@ -13,9 +13,9 @@ export async function storeTheme(
 ): Promise<{ theme: CustomTheme; error: AggregateError | null }> {
   let errors = [];
   for (const prop of themeProps) {
+    const key = storedPropName(prop);
     const value = theme.get(prop);
     if (value != null) {
-      const key = storedPropName(prop);
       try {
         let storedValue: string;
         switch (themePropsMap[prop].type) {
@@ -35,6 +35,12 @@ export async function storeTheme(
         } catch {
           /* Ignore. */
         }
+      }
+    } else {
+      try {
+        storage.removeItem(key);
+      } catch (err) {
+        errors.push(err);
       }
     }
   }
