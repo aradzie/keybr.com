@@ -43,7 +43,13 @@ module.exports = {
       },
     ],
     "no-invalid-position-at-import-rule": null,
-    "plugin/use-logical-properties-and-values": [true, { severity: "warning" }],
+    "plugin/use-logical-properties-and-values": [
+      true,
+      {
+        severity: "warning",
+        ignore: ["overflow-y", "overflow-x"],
+      },
+    ],
     "plugin/use-logical-units": [true, { severity: "warning" }],
     "order/order": [
       [
@@ -237,8 +243,8 @@ module.exports = {
         "overflow",
         "overflow-anchor",
         "overflow-x",
-        "overflow-y",
         "overflow-inline",
+        "overflow-y",
         "overflow-block",
         "overflow-clip-margin",
         "scroll-behavior",
