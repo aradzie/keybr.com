@@ -3,16 +3,15 @@ import {
   CheckBox,
   Field,
   FieldList,
-  Figure,
   OptionList,
   RadioBox,
   Range,
   TextField,
 } from "@keybr/widget";
 
-export function PreviewWidgets() {
+export function WidgetsPreview() {
   return (
-    <Figure>
+    <>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
         sagittis vestibulum commodo. Integer et scelerisque massa. Quisque
@@ -59,6 +58,6 @@ export function PreviewWidgets() {
           <TextField value="Example" />
         </Field>
       </FieldList>
-    </Figure>
+    </>
   );
 }

@@ -1,5 +1,8 @@
-import { Field, FieldList, FieldSet } from "@keybr/widget";
-import { ColorInput, makeAccessor } from "./ColorInput.tsx";
+import { Field, FieldList } from "@keybr/widget";
+import { Group } from "./Group.tsx";
+import { ColorInput, makeAccessor } from "./input/ColorInput.tsx";
+import { KeyboardPreview } from "./KeyboardPreview.tsx";
+import { PreviewPane } from "./PreviewPane.tsx";
 
 const pinky = makeAccessor("--pinky-zone-color");
 const ring = makeAccessor("--ring-zone-color");
@@ -8,9 +11,9 @@ const leftIndex = makeAccessor("--left-index-zone-color");
 const rightIndex = makeAccessor("--right-index-zone-color");
 const thumb = makeAccessor("--thumb-zone-color");
 
-export function KeyboardZoneColors() {
+export function KeyboardDesign() {
   return (
-    <FieldSet legend="Keyboard Zone Colors">
+    <Group title="Keyboard Zone Colors">
       <FieldList>
         <Field>
           <ColorInput accessor={pinky} />
@@ -39,6 +42,9 @@ export function KeyboardZoneColors() {
         </Field>
         <Field size={6}>Thumb</Field>
       </FieldList>
-    </FieldSet>
+      <PreviewPane>
+        <KeyboardPreview />
+      </PreviewPane>
+    </Group>
   );
 }

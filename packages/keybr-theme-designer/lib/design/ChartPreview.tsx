@@ -5,7 +5,7 @@ import { Settings } from "@keybr/settings";
 import { Box, Figure } from "@keybr/widget";
 import { useMemo } from "react";
 
-export function PreviewChart() {
+export function ChartPreview() {
   const [lessonKey, learningRate] = useMemo(() => {
     const target = new Target(
       new Settings().set(lessonProps.targetSpeed, /* 35WPM */ 175),

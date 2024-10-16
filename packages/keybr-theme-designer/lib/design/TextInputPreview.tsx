@@ -6,10 +6,10 @@ import {
   type LineList,
 } from "@keybr/textinput";
 import { StaticText } from "@keybr/textinput-ui";
-import { Box, Figure } from "@keybr/widget";
+import { Box } from "@keybr/widget";
 import { useMemo } from "react";
 
-export function PreviewText() {
+export function TextInputPreview() {
   const lines = useMemo(() => {
     return {
       text: "abracadabra",
@@ -34,10 +34,8 @@ export function PreviewText() {
     } as LineList;
   }, []);
   return (
-    <Figure>
-      <Box alignItems="center" justifyContent="center">
-        <StaticText lines={lines} cursor={true} />
-      </Box>
-    </Figure>
+    <Box alignItems="center" justifyContent="center">
+      <StaticText lines={lines} cursor={true} />
+    </Box>
   );
 }

@@ -9,7 +9,7 @@ export const imageExt = {
   ".png": "image/png",
   ".jpg": "image/jpeg",
   ".jpeg": "image/jpeg",
-};
+} as const;
 
 export const acceptImageTypes = Object.keys(imageTypes).join(",");
 

@@ -62,7 +62,7 @@ export const COLORS = new ThemeList([
   },
   {
     id: "custom",
-    name: "Custom",
+    name: "Custom...",
   },
 ]);
 

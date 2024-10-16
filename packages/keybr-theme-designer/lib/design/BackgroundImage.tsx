@@ -1,11 +1,12 @@
-import { Box, FieldSet } from "@keybr/widget";
-import { useCustomTheme } from "../context/context.ts";
-import { ImageInput } from "./ImageInput.tsx";
+import { Box } from "@keybr/widget";
+import { useCustomTheme } from "./context.ts";
+import { Group } from "./Group.tsx";
+import { ImageInput } from "./input/ImageInput.tsx";
 
 export function BackgroundImage() {
   const { theme, setTheme } = useCustomTheme();
   return (
-    <FieldSet legend="Background Image">
+    <Group title="Background Image">
       <Box alignItems="center" justifyContent="center">
         <ImageInput
           blob={theme.getImage("--background-image")}
@@ -14,6 +15,6 @@ export function BackgroundImage() {
           }}
         />
       </Box>
-    </FieldSet>
+    </Group>
   );
 }

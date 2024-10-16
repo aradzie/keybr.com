@@ -7,16 +7,16 @@ import {
 } from "@keybr/themes";
 import { Box, Button, Field, FieldList, useDialog } from "@keybr/widget";
 import { useRef } from "react";
-import { useCustomTheme } from "../context/context.ts";
 import { themeExt, themeFileName } from "../io/constants.ts";
 import { exportTheme, importTheme } from "../io/io.ts";
 import { BackgroundImage } from "./BackgroundImage.tsx";
-import * as styles from "./DesignTab.module.less";
-import { KeyboardZoneColors } from "./KeyboardZoneColors.tsx";
-import { KeySpeedColors } from "./KeySpeedColors.tsx";
-import { PageColors } from "./PageColors.tsx";
+import { useCustomTheme } from "./context.ts";
+import * as styles from "./DesignPane.module.less";
+import { KeyboardDesign } from "./KeyboardDesign.tsx";
+import { LessonKeysDesign } from "./LessonKeysDesign.tsx";
+import { WidgetsDesign } from "./WidgetsDesign.tsx";
 
-export function DesignTab() {
+export function DesignPane() {
   const { closeDialog } = useDialog();
   const { refresh } = useTheme();
   const { theme, setTheme } = useCustomTheme();
@@ -44,14 +44,14 @@ export function DesignTab() {
             importTheme(files[0])
               .then(({ theme, errors }) => {
                 for (const err of errors) {
-                  console.error("Theme import error", err);
+                  console.error("Import theme error", err);
                 }
                 setTheme(theme);
                 applyTheme(theme);
                 refresh();
               })
               .catch((err) => {
-                console.error("Theme import error", err);
+                console.error("Import theme error", err);
               })
               .finally(() => {
                 el.value = "";
@@ -97,10 +97,10 @@ export function DesignTab() {
           </Field>
           <Field.Filler />
         </FieldList>
-        <PageColors />
+        <WidgetsDesign />
         <BackgroundImage />
-        <KeySpeedColors />
-        <KeyboardZoneColors />
+        <LessonKeysDesign />
+        <KeyboardDesign />
       </div>
       <FieldList>
         <Field>
@@ -135,7 +135,7 @@ export function DesignTab() {
                   el.click();
                 })
                 .catch((err) => {
-                  console.error("Theme export error", err);
+                  console.error("Export theme error", err);
                 });
             }}
           />

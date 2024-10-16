@@ -1,7 +1,7 @@
 import { getBlobUrl } from "@keybr/themes";
 import { useDocumentEvent } from "@keybr/widget";
 import { useRef } from "react";
-import { acceptImageTypes, acceptsImageType } from "../io/images.ts";
+import { acceptImageTypes, acceptsImageType } from "../../io/images.ts";
 import * as styles from "./ImageInput.module.less";
 
 export function ImageInput({

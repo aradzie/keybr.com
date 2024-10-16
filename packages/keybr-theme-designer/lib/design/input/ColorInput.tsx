@@ -21,7 +21,7 @@ import {
   useState,
 } from "react";
 import { HexColorPicker } from "react-colorful";
-import { useCustomTheme } from "../context/context.ts";
+import { useCustomTheme } from "../context.ts";
 import * as styles from "./ColorImport.module.less";
 
 export const black = Color.parse("#000000");

@@ -4,63 +4,62 @@ import {
   readTheme,
   storeTheme,
 } from "@keybr/themes";
-import { Tab, TabList } from "@keybr/widget";
+import { Alert, toast } from "@keybr/widget";
 import { useEffect, useState } from "react";
-import { CustomThemeContext } from "./context/context.ts";
-import { DesignTab } from "./design/DesignTab.tsx";
-import { PreviewTab } from "./preview/PreviewTab.tsx";
-import * as styles from "./ThemeDesigner.module.less";
+import { CustomThemeContext } from "./design/context.ts";
+import { DesignPane } from "./design/DesignPane.tsx";
 
 export function ThemeDesigner() {
-  const [theme, setTheme, error] = usePersistentCustomTheme();
-  const [index, setIndex] = useState(0);
+  const [theme, setTheme] = usePersistentCustomTheme();
   return (
     <CustomThemeContext.Provider value={{ theme, setTheme }}>
-      <section className={styles.root}>
-        {error && <p>{String(error)}</p>}
-        <TabList selectedIndex={index} onSelect={setIndex}>
-          <Tab label="Design">
-            <DesignTab />
-          </Tab>
-          <Tab label="Preview">
-            <PreviewTab />
-          </Tab>
-        </TabList>
-      </section>
+      <DesignPane />
     </CustomThemeContext.Provider>
   );
 }
 
 function usePersistentCustomTheme() {
   const [theme, setTheme] = useState<CustomTheme>(defaultCustomTheme);
-  const [error, setError] = useState<Error | null>(null);
   useEffect(() => {
     readTheme()
       .then(({ theme, error }) => {
         setTheme(defaultCustomTheme.merge(theme));
-        setError(error);
+        if (error) {
+          toast(<ErrorAlert error={error} />);
+        }
       })
-      .catch(setError);
+      .catch((err) => {
+        console.error("Read theme error", err);
+      });
   }, []);
   useEffect(() => {
     const id = setTimeout(() => {
       storeTheme(theme)
         .then(({ theme, error }) => {
           setTheme(theme);
-          setError(error);
+          if (error) {
+            toast(<ErrorAlert error={error} />);
+          }
         })
-        .catch(setError);
+        .catch((err) => {
+          console.error("Store theme error", err);
+        });
     }, 200);
     return () => {
       clearTimeout(id);
     };
   }, [theme]);
-  return [
-    theme,
-    (value: CustomTheme) => {
-      setTheme(value);
-      setError(null);
-    },
-    error,
-  ] as const;
+  return [theme, setTheme] as const;
+}
+
+function ErrorAlert({ error }: { readonly error: unknown }) {
+  return (
+    <Alert severity="error">
+      {error instanceof AggregateError ? (
+        error.errors.map((child, index) => <p key={index}>{String(child)}</p>)
+      ) : (
+        <p>{String(error)}</p>
+      )}
+    </Alert>
+  );
 }

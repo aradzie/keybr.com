@@ -1,5 +1,14 @@
-import { Field, FieldList, FieldSet } from "@keybr/widget";
-import { type Accessor, black, ColorInput, white } from "./ColorInput.tsx";
+import { Field, FieldList } from "@keybr/widget";
+import { Group } from "./Group.tsx";
+import {
+  type Accessor,
+  black,
+  ColorInput,
+  white,
+} from "./input/ColorInput.tsx";
+import { PreviewPane } from "./PreviewPane.tsx";
+import { TextInputPreview } from "./TextInputPreview.tsx";
+import { WidgetsPreview } from "./WidgetsPreview.tsx";
 
 const primary: Accessor = {
   getColor: (theme) => theme.getColor("--primary") ?? black,
@@ -38,9 +47,9 @@ const accent: Accessor = {
   },
 };
 
-export function PageColors() {
+export function WidgetsDesign() {
   return (
-    <FieldSet legend="Page Colors">
+    <Group title="Page Colors">
       <FieldList>
         <Field>
           <ColorInput accessor={primary} />
@@ -59,6 +68,10 @@ export function PageColors() {
         </Field>
         <Field>Button</Field>
       </FieldList>
-    </FieldSet>
+      <PreviewPane>
+        <WidgetsPreview />
+        <TextInputPreview />
+      </PreviewPane>
+    </Group>
   );
 }
