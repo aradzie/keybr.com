@@ -16,11 +16,27 @@
     "@keybr/textinput-ui": "*",
     "@keybr/themes": "*",
     "@keybr/widget": "*",
+    "@zip.js/zip.js": "^2.7.52",
     "react-colorful": "^5.6.1"
   },
   "devDependencies": {},
   "scripts": {
     "clean": "rm -fr .types",
-    "compile": "tsc"
+    "compile": "tsc",
+    "test": "ava"
+  },
+  "ava": {
+    "extensions": [
+      "ts",
+      "tsx"
+    ],
+    "files": [
+      "lib/**/*.test.*"
+    ],
+    "require": [
+      "@keybr/tsl",
+      "@keybr/test-env-browser",
+      "@keybr/test-env-bundler"
+    ]
   }
 }

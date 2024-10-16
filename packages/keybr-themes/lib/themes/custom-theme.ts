@@ -3,7 +3,7 @@ import {
   type PropName,
   type PropValue,
   themeProps,
-  toCss,
+  themePropsMap,
 } from "./theme-props.ts";
 
 export class CustomTheme implements Iterable<[PropName, PropValue]> {
@@ -64,9 +64,10 @@ export function applyTheme(
   style: CSSStyleDeclaration = document.documentElement.style,
 ) {
   for (const prop of themeProps) {
+    const type = themePropsMap[prop];
     const value = theme.get(prop);
     if (value != null) {
-      style.setProperty(prop, toCss(prop, value));
+      style.setProperty(prop, type.toCss(value));
     } else {
       style.removeProperty(prop);
     }

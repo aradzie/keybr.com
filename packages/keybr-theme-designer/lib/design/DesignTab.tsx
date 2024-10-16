@@ -6,7 +6,10 @@ import {
   useTheme,
 } from "@keybr/themes";
 import { Box, Button, Field, FieldList, useDialog } from "@keybr/widget";
+import { useRef } from "react";
 import { useCustomTheme } from "../context/context.ts";
+import { themeExt, themeFileName } from "../io/constants.ts";
+import { exportTheme, importTheme } from "../io/io.ts";
 import { BackgroundImage } from "./BackgroundImage.tsx";
 import * as styles from "./DesignTab.module.less";
 import { KeyboardZoneColors } from "./KeyboardZoneColors.tsx";
@@ -17,8 +20,45 @@ export function DesignTab() {
   const { closeDialog } = useDialog();
   const { refresh } = useTheme();
   const { theme, setTheme } = useCustomTheme();
+  const exportRef = useRef<HTMLAnchorElement>(null);
+  const importRef = useRef<HTMLInputElement>(null);
   return (
     <Box className={styles.root} direction="column">
+      <a
+        ref={exportRef}
+        href="#"
+        download={themeFileName}
+        hidden={true}
+        style={{ inlineSize: 0, blockSize: 0, overflow: "hidden" }}
+      />
+      <input
+        ref={importRef}
+        type="file"
+        accept={themeExt}
+        hidden={true}
+        style={{ inlineSize: 0, blockSize: 0, overflow: "hidden" }}
+        onChange={() => {
+          const el = importRef.current!;
+          const files = el.files;
+          if (files != null && files.length > 0) {
+            importTheme(files[0])
+              .then(({ theme, errors }) => {
+                for (const err of errors) {
+                  console.error("Theme import error", err);
+                }
+                setTheme(theme);
+                applyTheme(theme);
+                refresh();
+              })
+              .catch((err) => {
+                console.error("Theme import error", err);
+              })
+              .finally(() => {
+                el.value = "";
+              });
+          }
+        }}
+      />
       <div className={styles.scroll}>
         <FieldList>
           <Field.Filler />
@@ -74,10 +114,31 @@ export function DesignTab() {
           />
         </Field>
         <Field>
-          <Button label="Import" size={6} disabled={true} />
+          <Button
+            label="Import"
+            size={6}
+            onClick={() => {
+              const el = importRef.current!;
+              el.click();
+            }}
+          />
         </Field>
         <Field>
-          <Button label="Export" size={6} disabled={true} />
+          <Button
+            label="Export"
+            size={6}
+            onClick={() => {
+              exportTheme(theme)
+                .then((blob) => {
+                  const el = exportRef.current!;
+                  el.setAttribute("href", URL.createObjectURL(blob));
+                  el.click();
+                })
+                .catch((err) => {
+                  console.error("Theme export error", err);
+                });
+            }}
+          />
         </Field>
         <Field.Filler />
         <Field>

@@ -1,9 +1,15 @@
-import { getBlobUrl } from "./blob-cache.ts";
+import { blobToDataUrl, dataUrlToBlob, getBlobUrl } from "./blobs.ts";
 import { Color } from "./color.ts";
 
-export type ColorType = { readonly type: "color" };
+export type GenericType<T extends PropValue> = {
+  readonly toCss: (value: PropValue) => string;
+  readonly format: (value: PropValue) => Promise<string>;
+  readonly parse: (value: string) => Promise<PropValue>;
+};
 
-export type ImageType = { readonly type: "image" };
+export type ColorType = { readonly type: "color" } & GenericType<Color>;
+
+export type ImageType = { readonly type: "image" } & GenericType<Blob>;
 
 export type PropsMap = typeof themePropsMap;
 
@@ -11,9 +17,49 @@ export type PropName = keyof PropsMap;
 
 export type PropValue = Color | Blob;
 
-export const colorType = { type: "color" } as ColorType;
+export const colorType = {
+  type: "color",
+  toCss: (value) => {
+    if (!(value instanceof Color)) {
+      throw new TypeError();
+    }
+    return String(value);
+  },
+  format: async (value) => {
+    if (!(value instanceof Color)) {
+      throw new TypeError();
+    }
+    return String(value);
+  },
+  parse: async (value) => {
+    if (typeof value !== "string") {
+      throw new TypeError();
+    }
+    return Color.parse(value);
+  },
+} satisfies ColorType;
 
-export const imageType = { type: "image" } as ImageType;
+export const imageType = {
+  type: "image",
+  toCss: (value) => {
+    if (!(value instanceof Blob)) {
+      throw new TypeError();
+    }
+    return `url(${getBlobUrl(value)})`;
+  },
+  format: async (value) => {
+    if (!(value instanceof Blob)) {
+      throw new TypeError();
+    }
+    return await blobToDataUrl(value);
+  },
+  parse: async (value) => {
+    if (typeof value !== "string") {
+      throw new TypeError();
+    }
+    return await dataUrlToBlob(value);
+  },
+} satisfies ImageType;
 
 export const themePropsMap = {
   "--primary-d2": colorType,
@@ -51,18 +97,3 @@ export const themePropsMap = {
 } as const;
 
 export const themeProps = Object.keys(themePropsMap) as (keyof PropsMap)[];
-
-export const toCss = (name: PropName, value: PropValue): string => {
-  switch (themePropsMap[name].type) {
-    case "color":
-      if (!(value instanceof Color)) {
-        throw new TypeError();
-      }
-      return String(value);
-    case "image":
-      if (!(value instanceof Blob)) {
-        throw new TypeError();
-      }
-      return `url(${getBlobUrl(value)})`;
-  }
-};

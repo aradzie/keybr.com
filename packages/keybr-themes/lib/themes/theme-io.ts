@@ -1,11 +1,5 @@
-import { Color } from "./color.ts";
 import { CustomTheme } from "./custom-theme.ts";
-import {
-  type PropName,
-  type PropValue,
-  themeProps,
-  themePropsMap,
-} from "./theme-props.ts";
+import { type PropName, themeProps, themePropsMap } from "./theme-props.ts";
 
 export async function storeTheme(
   theme: CustomTheme,
@@ -13,20 +7,12 @@ export async function storeTheme(
 ): Promise<{ theme: CustomTheme; error: AggregateError | null }> {
   let errors = [];
   for (const prop of themeProps) {
+    const type = themePropsMap[prop];
     const key = storedPropName(prop);
     const value = theme.get(prop);
     if (value != null) {
       try {
-        let storedValue: string;
-        switch (themePropsMap[prop].type) {
-          case "color":
-            storedValue = String(value);
-            break;
-          case "image":
-            storedValue = await blobToDataUrl(value as Blob);
-            break;
-        }
-        storage.setItem(key, storedValue);
+        storage.setItem(key, await type.format(value));
       } catch (err) {
         theme = theme.delete(prop);
         errors.push(err);
@@ -53,20 +39,12 @@ export async function readTheme(
   let theme = new CustomTheme();
   let errors = [];
   for (const prop of themeProps) {
+    const type = themePropsMap[prop];
     const key = storedPropName(prop);
-    const storedValue = storage.getItem(key);
-    if (storedValue != null) {
+    const value = storage.getItem(key);
+    if (value != null) {
       try {
-        let value: PropValue;
-        switch (themePropsMap[prop].type) {
-          case "color":
-            value = Color.parse(storedValue);
-            break;
-          case "image":
-            value = await dataUrlToBlob(storedValue);
-            break;
-        }
-        theme = theme.set(prop, value);
+        theme = theme.set(prop, await type.parse(value));
       } catch (err) {
         errors.push(err);
         try {
@@ -90,21 +68,4 @@ function collectErrors(errors: any[]) {
   } else {
     return null;
   }
-}
-
-function blobToDataUrl(blob: Blob): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.addEventListener("load", (ev) => {
-      resolve(String(reader.result));
-    });
-    reader.addEventListener("error", (ev) => {
-      reject(new Error());
-    });
-    reader.readAsDataURL(blob);
-  });
-}
-
-function dataUrlToBlob(url: string): Promise<Blob> {
-  return fetch(url).then((r) => r.blob());
 }

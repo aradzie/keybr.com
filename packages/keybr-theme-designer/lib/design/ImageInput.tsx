@@ -1,8 +1,8 @@
 import { getBlobUrl } from "@keybr/themes";
 import { useDocumentEvent } from "@keybr/widget";
 import { useRef } from "react";
+import { acceptImageTypes, acceptsImageType } from "../io/images.ts";
 import * as styles from "./ImageInput.module.less";
-import { acceptFileTypes, acceptsFileType } from "./images.ts";
 
 export function ImageInput({
   blob,
@@ -14,7 +14,7 @@ export function ImageInput({
   const inputRef = useRef<HTMLInputElement>(null);
 
   const changeFile = (blob: Blob) => {
-    if (blob.size > 0 && acceptsFileType(blob.type)) {
+    if (blob.size > 0 && acceptsImageType(blob.type)) {
       onChange(blob);
     }
   };
@@ -49,9 +49,10 @@ export function ImageInput({
         id={styles.inputId}
         className={styles.input}
         type="file"
-        accept={acceptFileTypes}
+        accept={acceptImageTypes}
         onChange={() => {
-          const files = inputRef.current?.files;
+          const el = inputRef.current!;
+          const files = el.files;
           if (files != null && files.length > 0) {
             changeFile(files[0]);
           }

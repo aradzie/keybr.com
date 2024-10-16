@@ -1,4 +1,4 @@
-export * from "./blob-cache.ts";
+export * from "./blobs.ts";
 export * from "./context.ts";
 export * from "./custom-theme.ts";
 export * from "./prefs.ts";
