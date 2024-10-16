@@ -49,12 +49,12 @@ export const COLORS = new ThemeList([
     name: "Garden",
   },
   {
-    id: "coffee-light",
-    name: "Coffee (Light)",
+    id: "coffee",
+    name: "Coffee",
   },
   {
-    id: "coffee-dark",
-    name: "Coffee (Dark)",
+    id: "chocolate",
+    name: "Chocolate",
   },
   {
     id: "honey",
