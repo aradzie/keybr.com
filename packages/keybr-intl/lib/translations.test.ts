@@ -62,7 +62,10 @@ for (const locale of allLocales) {
 
 function loadMessages(locale: string): Record<string, string> {
   return JSON.parse(
-    readFileSync(`${__dirname}/../translations/${locale}.json`, "utf-8"),
+    readFileSync(
+      `${import.meta.dirname}/../translations/${locale}.json`,
+      "utf-8",
+    ),
   );
 }
 

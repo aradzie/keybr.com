@@ -2,6 +2,7 @@
   "private": true,
   "name": "@keybr/server-cli",
   "version": "0.0.0",
+  "type": "module",
   "dependencies": {
     "@keybr/binary": "*",
     "@keybr/config": "*",
@@ -20,16 +21,16 @@
     "test": "ava"
   },
   "ava": {
-    "extensions": [
-      "ts",
-      "tsx"
-    ],
     "files": [
       "lib/**/*.test.*"
     ],
-    "require": [
-      "@keybr/tsl",
-      "@keybr/test-env-server"
+    "extensions": {
+      "ts": "module",
+      "tsx": "module"
+    },
+    "nodeArguments": [
+      "--import=@keybr/tsl",
+      "--import=@keybr/test-env-server"
     ],
     "serial": true
   }

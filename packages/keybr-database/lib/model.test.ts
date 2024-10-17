@@ -1,12 +1,16 @@
 import { makeKnex } from "@keybr/config";
 import { PublicId } from "@keybr/publicid";
 import { fake } from "@keybr/test-env-time";
-import test from "ava";
+import test, { registerCompletionHandler } from "ava";
 import { ValidationError } from "objection";
 import { User, UserExternalId, UserLoginRequest } from "./model.ts";
 import { createSchema } from "./schema.ts";
 import { clearTables, seedModels } from "./testing/seeds.ts";
 import { Random } from "./util.ts";
+
+registerCompletionHandler(() => {
+  process.exit();
+});
 
 const now = new Date("2001-02-03T04:05:06Z");
 

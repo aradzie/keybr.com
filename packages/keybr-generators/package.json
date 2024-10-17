@@ -2,6 +2,7 @@
   "private": true,
   "name": "@keybr/generators",
   "version": "0.0.0",
+  "type": "module",
   "main": "lib/index.ts",
   "dependencies": {
     "@keybr/keyboard": "*",
@@ -21,15 +22,15 @@
     "generate-layouts": "node -r @keybr/tsl ./lib/generate-layouts.ts"
   },
   "ava": {
-    "extensions": [
-      "ts",
-      "tsx"
-    ],
     "files": [
       "lib/**/*.test.*"
     ],
-    "require": [
-      "@keybr/tsl"
+    "extensions": {
+      "ts": "module",
+      "tsx": "module"
+    },
+    "nodeArguments": [
+      "--import=@keybr/tsl"
     ]
   }
 }

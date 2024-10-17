@@ -1,10 +1,10 @@
-"use strict";
+import { join } from "node:path";
+import { config } from "dotenv";
 
-const { join } = require("node:path");
-const { config } = require("dotenv");
+config({ path: join(import.meta.dirname, "lib", "config-env") });
+config({ path: join(import.meta.dirname, "lib", "config-env.example") });
 
-config({ path: join(__dirname, "lib", "config-env") });
-config({ path: join(__dirname, "lib", "config-env.example") });
+const ENV = {};
 
 for (const key of [
   "GOOGLE_TAG_MANAGER_ID",
@@ -13,5 +13,7 @@ for (const key of [
   "PADDLE_VENDOR_ID",
   "PADDLE_PRODUCT_ID",
 ]) {
-  module.exports[`process.env.${key}`] = JSON.stringify(process.env[key]);
+  ENV[`process.env.${key}`] = JSON.stringify(process.env[key]);
 }
+
+export { ENV };

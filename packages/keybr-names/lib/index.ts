@@ -1,7 +1,7 @@
 import { randomSample, XorShift128Plus } from "@keybr/rand";
-import adjectives from "./data/adjectives.json";
-import animals from "./data/animals.json";
-import colors from "./data/colors.json";
+import adjectives from "./data/adjectives.json" with { type: "json" };
+import animals from "./data/animals.json" with { type: "json" };
+import colors from "./data/colors.json" with { type: "json" };
 
 export type Options = {
   readonly separator?: string;

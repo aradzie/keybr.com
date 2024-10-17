@@ -1,6 +1,6 @@
 import { Distribution } from "@keybr/math";
-import accuracy from "./dist_accuracy.json";
-import speed from "./dist_speed.json";
+import accuracy from "./dist_accuracy.json" with { type: "json" };
+import speed from "./dist_speed.json" with { type: "json" };
 import { bucketize, smooth } from "./util.ts";
 
 export function makeSpeedDistribution(): Distribution {

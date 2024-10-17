@@ -1,12 +1,12 @@
-"use strict";
+import { basename, extname, join } from "node:path";
+import webpack from "webpack";
 
-const path = require("node:path");
 const {
   Compilation,
   sources: { RawSource },
-} = require("webpack");
+} = webpack;
 
-class ManifestPlugin {
+export class ManifestPlugin {
   static serialize({ entrypoints, assets }) {
     return JSON.stringify({ entrypoints, assets }, null, 2);
   }
@@ -75,7 +75,7 @@ function computeEntrypoints({ entrypoints }, { publicPath, namedChunkGroups }) {
     const files = entrypoint.getFiles();
     result[name] = {
       assets: groupBy(
-        files.map((file) => path.join(publicPath, file)),
+        files.map((file) => join(publicPath, file)),
         extKey,
       ),
     };
@@ -83,7 +83,7 @@ function computeEntrypoints({ entrypoints }, { publicPath, namedChunkGroups }) {
     const { childAssets } = namedChunkGroups[name];
     for (const [property, assets] of Object.entries(childAssets)) {
       result[name][property] = groupBy(
-        assets.map((file) => path.join(publicPath, file)),
+        assets.map((file) => join(publicPath, file)),
         extKey,
       );
     }
@@ -98,8 +98,8 @@ function computeAssets({ publicPath, assets, assetsByChunkName }) {
   for (const [name, files] of Object.entries(assetsByChunkName)) {
     for (const file of files) {
       result.push({
-        name: path.join(publicPath, name + path.extname(file)),
-        file: path.join(publicPath, file),
+        name: join(publicPath, name + extname(file)),
+        file: join(publicPath, file),
       });
     }
   }
@@ -107,8 +107,8 @@ function computeAssets({ publicPath, assets, assetsByChunkName }) {
   for (const { name, info: { sourceFilename: file = null } = null } of assets) {
     if (file != null) {
       result.push({
-        name: path.join(publicPath, path.basename(file)),
-        file: path.join(publicPath, name),
+        name: join(publicPath, basename(file)),
+        file: join(publicPath, name),
       });
     }
   }
@@ -129,7 +129,7 @@ function computeAssets({ publicPath, assets, assetsByChunkName }) {
 }
 
 function extKey(file) {
-  return path.extname(file).substring(1);
+  return extname(file).substring(1);
 }
 
 function groupBy(list, keyOf) {
@@ -139,5 +139,3 @@ function groupBy(list, keyOf) {
   }
   return groups;
 }
-
-module.exports = ManifestPlugin;

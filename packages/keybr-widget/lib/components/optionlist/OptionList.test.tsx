@@ -1,5 +1,5 @@
 import { fireEvent, render } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { userEvent } from "@testing-library/user-event";
 import test from "ava";
 import { type ReactNode, useState } from "react";
 import { OptionList } from "./OptionList.tsx";

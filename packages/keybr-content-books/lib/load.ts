@@ -6,21 +6,24 @@ export async function loadContent(book: Book): Promise<Content> {
       return (
         await import(
           /* webpackChunkName: "book-en-alice-wonderland" */
-          "./data/en-alice-wonderland.json"
+          "./data/en-alice-wonderland.json",
+          { with: { type: "json" } }
         )
       ).default as unknown as Content;
     case Book.EN_JEKYLL_HYDE:
       return (
         await import(
           /* webpackChunkName: "book-en-jekyll-hyde" */
-          "./data/en-jekyll-hyde.json"
+          "./data/en-jekyll-hyde.json",
+          { with: { type: "json" } }
         )
       ).default as unknown as Content;
     case Book.EN_CALL_WILD:
       return (
         await import(
           /* webpackChunkName: "book-en-call-wild" */
-          "./data/en-call-wild.json"
+          "./data/en-call-wild.json",
+          { with: { type: "json" } }
         )
       ).default as unknown as Content;
     default:

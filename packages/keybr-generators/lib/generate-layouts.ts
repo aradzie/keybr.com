@@ -1,4 +1,4 @@
-#!/usr/bin/env -S node -r @keybr/tsl
+#!/usr/bin/env -S node --import @keybr/tsl
 
 /**
  * This script takes keyboard layout definitions in various formats and generates

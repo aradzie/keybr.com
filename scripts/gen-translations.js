@@ -1,12 +1,10 @@
-"use strict";
-
-const { compile, extract } = require("@formatjs/cli-lib");
-const { globSync } = require("glob");
-const { join } = require("node:path");
-const { readJsonSync, writeJsonSync } = require("./lib/fs.js");
-const { getHashDigest } = require("./lib/intl.js");
-const { rootDir, findPackages } = require("./root.js");
-const { writeFileSync } = require("node:fs");
+import { writeFileSync } from "node:fs";
+import { join } from "node:path";
+import { compile, extract } from "@formatjs/cli-lib";
+import { globSync } from "glob";
+import { readJsonSync, writeJsonSync } from "./lib/fs.js";
+import { getHashDigest } from "./lib/intl.js";
+import { findPackages, rootDir } from "./root.js";
 
 const packageDir = join(rootDir, "packages/keybr-intl");
 

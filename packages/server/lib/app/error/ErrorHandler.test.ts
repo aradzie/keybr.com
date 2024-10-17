@@ -5,9 +5,13 @@ import { ApplicationError, ForbiddenError } from "@fastr/errors";
 import { Container } from "@fastr/invert";
 import { Manifest } from "@keybr/assets";
 import { Level, Logger, type Message, type Transport } from "@keybr/logger";
-import test from "ava";
+import test, { registerCompletionHandler } from "ava";
 import { load } from "cheerio";
 import { ErrorHandler } from "./index.ts";
+
+registerCompletionHandler(() => {
+  process.exit();
+});
 
 test("throw http error", async (t) => {
   // Arrange.

@@ -77,18 +77,6 @@ module.exports = {
     "n/prefer-promises/dns": "error",
     "n/prefer-promises/fs": "error",
   },
-  overrides: [
-    {
-      files: ["*.js"],
-      parserOptions: {
-        sourceType: "script",
-      },
-      rules: {
-        "strict": ["error", "global"],
-        "@typescript-eslint/no-var-requires": "off",
-      },
-    },
-  ],
   settings: {
     react: {
       version: "detect",

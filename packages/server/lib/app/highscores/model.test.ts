@@ -1,8 +1,12 @@
 import { makeKnex } from "@keybr/config";
 import { createSchema } from "@keybr/database";
 import { clearTables, seedModels } from "@keybr/database/lib/testing/seeds.ts";
-import test from "ava";
+import test, { registerCompletionHandler } from "ava";
 import { mapEntries } from "./model.ts";
+
+registerCompletionHandler(() => {
+  process.exit();
+});
 
 const now = new Date("2001-02-03T04:05:06Z");
 

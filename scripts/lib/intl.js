@@ -1,9 +1,7 @@
-"use strict";
+import { createHash } from "node:crypto";
+import { transform } from "@formatjs/ts-transformer";
 
-const { createHash } = require("node:crypto");
-const { transform } = require("@formatjs/ts-transformer");
-
-function getHashDigest(
+export function getHashDigest(
   content,
   hashType = "sha512",
   digestType = "base64",
@@ -14,13 +12,9 @@ function getHashDigest(
   return hash.digest(digestType).substring(0, length);
 }
 
-module.exports.getHashDigest = getHashDigest;
-
-function intlTransformer() {
+export function intlTransformer() {
   return transform({
     removeDefaultMessage: true,
     overrideIdFn: (id) => getHashDigest(id),
   });
 }
-
-module.exports.intlTransformer = intlTransformer;

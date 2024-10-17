@@ -6,7 +6,7 @@ function getDataDir() {
 }
 
 function getPublicDir() {
-  return resolve(__dirname, "..", "..", "..", "root", "public");
+  return resolve(import.meta.dirname, "..", "..", "..", "root", "public");
 }
 
 process.env.DATA_DIR ??= getDataDir();

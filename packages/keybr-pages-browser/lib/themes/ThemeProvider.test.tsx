@@ -1,6 +1,6 @@
 import { useTheme } from "@keybr/themes";
 import { render } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { userEvent } from "@testing-library/user-event";
 import test from "ava";
 import { ThemeProvider } from "./ThemeProvider.tsx";
 

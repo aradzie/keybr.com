@@ -2,6 +2,8 @@
   "private": true,
   "name": "@keybr/tsl",
   "version": "0.0.0",
+  "type": "module",
+  "main": "index.js",
   "dependencies": {},
   "devDependencies": {},
   "scripts": {}

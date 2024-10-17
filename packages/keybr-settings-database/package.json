@@ -2,6 +2,7 @@
   "private": true,
   "name": "@keybr/settings-database",
   "version": "0.0.0",
+  "type": "module",
   "main": "lib/index.ts",
   "types": ".types/index.d.ts",
   "dependencies": {
@@ -15,16 +16,16 @@
     "test": "ava"
   },
   "ava": {
-    "extensions": [
-      "ts",
-      "tsx"
-    ],
     "files": [
       "lib/**/*.test.*"
     ],
-    "require": [
-      "@keybr/tsl",
-      "@keybr/test-env-server"
+    "extensions": {
+      "ts": "module",
+      "tsx": "module"
+    },
+    "nodeArguments": [
+      "--import=@keybr/tsl",
+      "--import=@keybr/test-env-server"
     ]
   }
 }

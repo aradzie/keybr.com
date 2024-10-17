@@ -3,12 +3,16 @@ import { ConfigModule } from "@keybr/config";
 import { createSchema } from "@keybr/database";
 import { clearTables, seedModels } from "@keybr/database/lib/testing/seeds.ts";
 import { removeDir } from "@sosimple/fsx";
-import baseTest, { type TestFn } from "ava"; // eslint-disable-line
+import baseTest, { registerCompletionHandler, type TestFn } from "ava"; // eslint-disable-line
 import Knex from "knex";
 import { ServerModule } from "../../server/module.ts";
 import { Mailer } from "../mail/index.ts";
 import { ApplicationModule } from "../module.ts";
 import { FakeMailer } from "./mail.ts";
+
+registerCompletionHandler(() => {
+  process.exit();
+});
 
 export const test = baseTest as TestFn<Context>;
 
