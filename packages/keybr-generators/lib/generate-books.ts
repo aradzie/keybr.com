@@ -1,4 +1,4 @@
-#!/usr/bin/env -S node -r @keybr/tsl
+#!/usr/bin/env -S node --import @keybr/tsl
 
 import { readFileSync, writeFileSync } from "node:fs";
 import { Parser } from "commonmark";

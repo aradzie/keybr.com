@@ -5,8 +5,12 @@ import { DataDir } from "@keybr/config";
 import { PublicId } from "@keybr/publicid";
 import { type Result, ResultFaker } from "@keybr/result";
 import { exists, removeDir, touch } from "@sosimple/fsx";
-import test from "ava";
+import test, { registerCompletionHandler } from "ava";
 import { type UserData, UserDataFactory } from "./index.ts";
+
+registerCompletionHandler(() => {
+  process.exit();
+});
 
 const testDataDir = process.env.DATA_DIR ?? "/tmp/keybr";
 

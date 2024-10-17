@@ -1,23 +1,21 @@
-"use strict";
+/* eslint-disable n/no-extraneous-import */
 
-/* eslint-disable n/no-extraneous-require */
-
-const { join } = require("node:path");
-const gitCommitInfo = require("git-commit-info");
-const { DefinePlugin } = require("webpack");
-const TerserPlugin = require("terser-webpack-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CompressionPlugin = require("compression-webpack-plugin");
-const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
-const ManifestPlugin = require("@keybr/scripts/lib/webpack-manifest.js");
-const { intlTransformer } = require("@keybr/scripts/lib/intl.js");
-const ENV = require("@keybr/thirdparties/webpack-env.js");
+import { join } from "node:path";
+import { intlTransformer } from "@keybr/scripts/lib/intl.js";
+import { ManifestPlugin } from "@keybr/scripts/lib/webpack-manifest.js";
+import { ENV } from "@keybr/thirdparties/webpack-env.js";
+import CompressionPlugin from "compression-webpack-plugin";
+import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
+import gitCommitInfo from "git-commit-info";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import TerserPlugin from "terser-webpack-plugin";
+import webpack from "webpack";
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 
 const mode = process.env.NODE_ENV || "production";
 
 const isVendor = (excludedVendors) => {
-  const vendorsDir = join(__dirname, "node_modules");
+  const vendorsDir = join(import.meta.dirname, "node_modules");
   return ({ resource }) => {
     // A vendor package is anything in the root /node_modules/ dir
     // except for some explicitly excluded packages.
@@ -40,7 +38,7 @@ const localIdentName = dev
   ? "[name]__[local]__[hash:base64:10]"
   : "[hash:base64:10]";
 
-const commitInfo = gitCommitInfo({ cwd: __dirname });
+const commitInfo = gitCommitInfo({ cwd: import.meta.dirname });
 
 const rule_ts = () => ({
   test: /\.(ts|tsx)$/,
@@ -53,6 +51,7 @@ const rule_ts = () => ({
         compilerOptions: {
           target: "es2022",
           module: "es2022",
+          moduleResolution: "bundler",
           jsx: mode === "development" ? "react-jsxdev" : "react-jsx",
         },
         getCustomTransformers: () => ({
@@ -100,18 +99,18 @@ const rule_less = (emit) => ({
   ],
 });
 
-module.exports = [
+export default [
   {
     name: "server",
     target: "node",
     mode,
-    context: __dirname,
+    context: import.meta.dirname,
     entry: {
       index: "./packages/server/lib/main.ts",
       keybr: "./packages/server-cli/lib/main.ts",
     },
     output: {
-      path: join(__dirname, "root", "lib"),
+      path: join(import.meta.dirname, "root", "lib"),
       clean: false,
       filename: "[name].js",
       chunkFilename: "[name].js",
@@ -155,7 +154,7 @@ module.exports = [
     },
     devtool: "source-map",
     plugins: [
-      new DefinePlugin({
+      new webpack.DefinePlugin({
         ...ENV,
         "COMMIT_ID": JSON.stringify(commitInfo.hash),
         "typeof window": JSON.stringify("undefined"),
@@ -167,14 +166,14 @@ module.exports = [
     name: "browser",
     target: "web",
     mode,
-    context: __dirname,
+    context: import.meta.dirname,
     entry: {
       browser: "./packages/keybr-pages-browser/lib/entry.ts",
       server: "./packages/keybr-pages-server/lib/entry.ts",
       ads: "./packages/thirdparties-ads/lib/entry.ts",
     },
     output: {
-      path: join(__dirname, "root/public/assets"),
+      path: join(import.meta.dirname, "root", "public", "assets"),
       clean: true,
       publicPath: "/assets/",
       filename: `${filename}.js`,
@@ -221,7 +220,7 @@ module.exports = [
     },
     devtool: "source-map",
     plugins: [
-      new DefinePlugin({
+      new webpack.DefinePlugin({
         ...ENV,
         "COMMIT_ID": JSON.stringify(commitInfo.hash),
         "typeof window": JSON.stringify("object"),
@@ -235,17 +234,17 @@ module.exports = [
       ...(dev
         ? []
         : [
-            new CompressionPlugin({
-              test: /\.(js|css|svg|data)$/,
-              filename: "[file].gz",
-              algorithm: "gzip",
-            }),
-            new CompressionPlugin({
-              test: /\.(js|css|svg|data)$/,
-              filename: "[file].br",
-              algorithm: "brotliCompress",
-            }),
-          ]),
+          new CompressionPlugin({
+            test: /\.(js|css|svg|data)$/,
+            filename: "[file].gz",
+            algorithm: "gzip",
+          }),
+          new CompressionPlugin({
+            test: /\.(js|css|svg|data)$/,
+            filename: "[file].br",
+            algorithm: "brotliCompress",
+          }),
+        ]),
       new BundleAnalyzerPlugin({
         analyzerMode: "disabled",
       }),

@@ -1,6 +1,4 @@
-"use strict";
-
-function sortJson(json, order) {
+export function sortJson(json, order) {
   if (json === undefined) {
     return undefined;
   }
@@ -12,8 +10,6 @@ function sortJson(json, order) {
   }
   throw new TypeError(`Not a sortable json`);
 }
-
-module.exports.sortJson = sortJson;
 
 function sortJsonArray(json, order) {
   if (order === undefined) {

@@ -15,10 +15,9 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
 
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
     "resolveJsonModule": true,
-    "esModuleInterop": true,
     "importHelpers": true,
 
     "allowArbitraryExtensions": true,

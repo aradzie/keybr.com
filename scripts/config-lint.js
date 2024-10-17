@@ -1,13 +1,11 @@
-"use strict";
-
-const { globSync } = require("glob");
-const { existsSync } = require("node:fs");
-const { join } = require("node:path");
-const { readJsonSync, writeJsonSync } = require("./lib/fs.js");
-const { packageJsonKeys, tsconfigJsonKeys } = require("./lib/key-order.js");
-const { findDeps, printUnusedDeps } = require("./lib/lang.js");
-const { sortJson } = require("./lib/sort-json.js");
-const { findPackages } = require("./root.js");
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+import { globSync } from "glob";
+import { readJsonSync, writeJsonSync } from "./lib/fs.js";
+import { packageJsonKeys, tsconfigJsonKeys } from "./lib/key-order.js";
+import { findDeps, printUnusedDeps } from "./lib/lang.js";
+import { sortJson } from "./lib/sort-json.js";
+import { findPackages } from "./root.js";
 
 for (const packageDirectory of findPackages()) {
   processPackage(packageDirectory);
@@ -58,6 +56,7 @@ function processPackageJson(packageJsonFile, typescriptFiles, lessFiles) {
   const {
     name,
     version,
+    type,
     main,
     types,
     module,
@@ -90,20 +89,14 @@ function processPackageJson(packageJsonFile, typescriptFiles, lessFiles) {
       Object.assign(opt.scripts, {
         test: "ava",
       });
-      const {
-        extensions = [],
-        files = [],
-        require = [],
-        environmentVariables,
-        nodeArguments,
-        serial,
-      } = ava;
+      const { nodeArguments, serial } = ava;
       Object.assign(opt, {
         ava: {
-          extensions: [...new Set(["ts", "tsx", ...extensions])],
-          files: [...new Set(["lib/**/*.test.*", ...files])],
-          require: [...new Set(["@keybr/tsl", ...require])],
-          environmentVariables,
+          files: ["lib/**/*.test.*"],
+          extensions: {
+            ts: "module",
+            tsx: "module",
+          },
           nodeArguments,
           serial,
         },
@@ -116,6 +109,7 @@ function processPackageJson(packageJsonFile, typescriptFiles, lessFiles) {
     private: true,
     name,
     version,
+    type,
     main,
     types,
     module,

@@ -1,20 +1,20 @@
 import { Language } from "@keybr/keyboard";
-import AR from "./blacklist-ar.json";
-import BE from "./blacklist-be.json";
-import DE from "./blacklist-de.json";
-import EN from "./blacklist-en.json";
-import ES from "./blacklist-es.json";
-import FA from "./blacklist-fa.json";
-import FR from "./blacklist-fr.json";
-import HE from "./blacklist-he.json";
-import IT from "./blacklist-it.json";
-import NL from "./blacklist-nl.json";
-import PL from "./blacklist-pl.json";
-import PT from "./blacklist-pt.json";
-import RU from "./blacklist-ru.json";
-import SV from "./blacklist-sv.json";
-import TR from "./blacklist-tr.json";
-import UK from "./blacklist-uk.json";
+import AR from "./blacklist-ar.json" with { type: "json" };
+import BE from "./blacklist-be.json" with { type: "json" };
+import DE from "./blacklist-de.json" with { type: "json" };
+import EN from "./blacklist-en.json" with { type: "json" };
+import ES from "./blacklist-es.json" with { type: "json" };
+import FA from "./blacklist-fa.json" with { type: "json" };
+import FR from "./blacklist-fr.json" with { type: "json" };
+import HE from "./blacklist-he.json" with { type: "json" };
+import IT from "./blacklist-it.json" with { type: "json" };
+import NL from "./blacklist-nl.json" with { type: "json" };
+import PL from "./blacklist-pl.json" with { type: "json" };
+import PT from "./blacklist-pt.json" with { type: "json" };
+import RU from "./blacklist-ru.json" with { type: "json" };
+import SV from "./blacklist-sv.json" with { type: "json" };
+import TR from "./blacklist-tr.json" with { type: "json" };
+import UK from "./blacklist-uk.json" with { type: "json" };
 import { unscrambleWord } from "./scramble.ts";
 
 const blacklistByLanguage = ((items: [Language, string[]][]) =>

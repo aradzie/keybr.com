@@ -1,4 +1,4 @@
-#!/usr/bin/env -S node -r @keybr/tsl
+#!/usr/bin/env -S node --import @keybr/tsl
 
 /**
  * This script takes word frequency dictionaries and generates phonetic models.

@@ -1,8 +1,6 @@
-"use strict";
+import { moduleName } from "./util.js";
 
-const { moduleName } = require("./util.js");
-
-function findLessDeps(fileName, source) {
+export function findLessDeps(fileName, source) {
   const modules = new Set();
   for (const line of source.split("\n")) {
     const match = /@import "([^"]*)"/.exec(line);
@@ -15,5 +13,3 @@ function findLessDeps(fileName, source) {
   }
   return modules;
 }
-
-module.exports.findLessDeps = findLessDeps;

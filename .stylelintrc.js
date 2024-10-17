@@ -1,6 +1,4 @@
-"use strict";
-
-module.exports = {
+export default {
   customSyntax: "postcss-less",
   extends: ["stylelint-config-recommended"],
   plugins: ["stylelint-plugin-logical-css", "stylelint-order"],

@@ -2,6 +2,7 @@
   "private": true,
   "name": "@keybr/server",
   "version": "0.0.0",
+  "type": "module",
   "dependencies": {
     "@devoxa/paddle-sdk": "^0.4.2",
     "@keybr/assets": "*",
@@ -34,17 +35,17 @@
     "test": "ava"
   },
   "ava": {
-    "extensions": [
-      "ts",
-      "tsx"
-    ],
     "files": [
       "lib/**/*.test.*"
     ],
-    "require": [
-      "@keybr/tsl",
-      "@keybr/test-env-server",
-      "@keybr/test-env-bundler"
+    "extensions": {
+      "ts": "module",
+      "tsx": "module"
+    },
+    "nodeArguments": [
+      "--import=@keybr/tsl",
+      "--import=@keybr/test-env-server",
+      "--import=@keybr/test-env-bundler"
     ],
     "serial": true
   }

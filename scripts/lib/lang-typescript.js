@@ -1,9 +1,7 @@
-"use strict";
+import ts from "typescript";
+import { moduleName } from "./util.js";
 
-const ts = require("typescript");
-const { moduleName } = require("./util.js");
-
-function findTypescriptDeps(fileName, source) {
+export function findTypescriptDeps(fileName, source) {
   const modules = new Set();
   walkNode(
     ts.createSourceFile(
@@ -62,5 +60,3 @@ function findTypescriptDeps(fileName, source) {
     ts.forEachChild(node, walkNode);
   }
 }
-
-module.exports.findTypescriptDeps = findTypescriptDeps;

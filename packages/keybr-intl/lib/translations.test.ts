@@ -5,8 +5,8 @@ import { allLocales, defaultLocale } from "./locale.ts";
 for (const locale of allLocales) {
   if (locale !== defaultLocale) {
     test(`placeholders [${locale}]`, (t) => {
-      const messages0 = loadMessages(defaultLocale);
-      const messages1 = loadMessages(locale);
+      const messages0 = loadTranslations(defaultLocale);
+      const messages1 = loadTranslations(locale);
       for (const [id, message0] of Object.entries(messages0)) {
         const message1 = messages1[id];
         if (message1) {
@@ -23,7 +23,7 @@ for (const locale of allLocales) {
 
 for (const locale of allLocales) {
   test(`typography [${locale}]`, (t) => {
-    const messages = loadMessages(locale);
+    const messages = loadTranslations(locale);
     for (const [id, message] of Object.entries(messages)) {
       t.notRegex(message, /^\s/, `Message ${id} starts with whitespace`);
       t.notRegex(message, /\s$/, `Message ${id} ends with whitespace`);
@@ -60,9 +60,12 @@ for (const locale of allLocales) {
   });
 }
 
-function loadMessages(locale: string): Record<string, string> {
+function loadTranslations(locale: string): Record<string, string> {
   return JSON.parse(
-    readFileSync(`${__dirname}/../translations/${locale}.json`, "utf-8"),
+    readFileSync(
+      `${import.meta.dirname}/../translations/${locale}.json`,
+      "utf-8",
+    ),
   );
 }
 

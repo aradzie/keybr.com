@@ -1,6 +1,4 @@
-"use strict";
-
-function moduleName(path) {
+export function moduleName(path) {
   let i = path.indexOf("/");
   if (i !== -1 && path.startsWith("@")) {
     i = path.indexOf("/", i + 1);
@@ -10,5 +8,3 @@ function moduleName(path) {
   }
   return path;
 }
-
-module.exports.moduleName = moduleName;

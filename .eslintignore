@@ -5,3 +5,4 @@ root/
 build/
 tmp/
 packages/keybr-code/lib/parser.js
+*.cjs

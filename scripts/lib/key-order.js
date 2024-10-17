@@ -1,10 +1,9 @@
-"use strict";
-
-module.exports.packageJsonKeys = [
+export const packageJsonKeys = [
   "private",
   "template",
   "name",
   "version",
+  "type",
   "main",
   "types",
   "module",
@@ -17,21 +16,10 @@ module.exports.packageJsonKeys = [
   ["peerDependencies", "alpha"],
   ["optionalDependencies", "alpha"],
   ["scripts", ["clean", "compile", "test"]],
-  [
-    "ava",
-    [
-      ["typescript", ["extensions", "rewritePaths"]],
-      ["extensions", "alpha"],
-      ["files", "alpha"],
-      "require",
-      "environmentVariables",
-      "nodeArguments",
-      "serial",
-    ],
-  ],
+  ["ava", [["files", "alpha"], "extensions", "nodeArguments", "serial"]],
 ];
 
-module.exports.tsconfigJsonKeys = [
+export const tsconfigJsonKeys = [
   "extends",
   [
     "compilerOptions",

@@ -1,4 +1,4 @@
-#!/usr/bin/env -S node -r @keybr/tsl
+#!/usr/bin/env -S node --import @keybr/tsl
 
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { basename, join, resolve } from "node:path";
@@ -11,7 +11,7 @@ if (compiler == null) {
   /* Suppress the unused dependency warning. */
 }
 
-export const rootDir = resolve(__dirname, "..");
+export const rootDir = resolve(import.meta.dirname, "..");
 
 for (const item of readdirSync(pathTo("lib/syntax"))) {
   if (item.endsWith(".g")) {

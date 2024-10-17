@@ -1,11 +1,9 @@
-"use strict";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+import { findLessDeps } from "./lang-less.js";
+import { findTypescriptDeps } from "./lang-typescript.js";
 
-const { readFileSync } = require("node:fs");
-const { join } = require("node:path");
-const { findLessDeps } = require("./lang-less.js");
-const { findTypescriptDeps } = require("./lang-typescript.js");
-
-function findDeps(packageDirectory, typescriptFiles, lessFiles) {
+export function findDeps(packageDirectory, typescriptFiles, lessFiles) {
   const modules = new Set();
   for (const fileName of typescriptFiles) {
     const s = join(packageDirectory, fileName);
@@ -24,9 +22,7 @@ function findDeps(packageDirectory, typescriptFiles, lessFiles) {
   return modules;
 }
 
-module.exports.findDeps = findDeps;
-
-function printUnusedDeps(fileName, dependencies, modules) {
+export function printUnusedDeps(fileName, dependencies, modules) {
   const types = "@types/";
   for (const dependency of Object.keys(dependencies)) {
     let updated = dependency;
@@ -38,5 +34,3 @@ function printUnusedDeps(fileName, dependencies, modules) {
     }
   }
 }
-
-module.exports.printUnusedDeps = printUnusedDeps;

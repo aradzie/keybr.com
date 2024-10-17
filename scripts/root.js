@@ -1,16 +1,11 @@
-"use strict";
+import { resolve } from "node:path";
+import { globSync } from "glob";
 
-const { resolve } = require("node:path");
-const { globSync } = require("glob");
+export const rootDir = resolve(import.meta.dirname, "..");
 
-const rootDir = resolve(__dirname, "..");
-
-function findPackages() {
+export function findPackages() {
   return globSync("packages/*", {
     cwd: rootDir,
     absolute: true,
   });
 }
-
-module.exports.rootDir = rootDir;
-module.exports.findPackages = findPackages;
