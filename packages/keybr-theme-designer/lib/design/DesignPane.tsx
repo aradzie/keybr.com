@@ -8,6 +8,7 @@ import {
 import { Box, Button, Field, FieldList, useDialog } from "@keybr/widget";
 import { useRef } from "react";
 import { themeExt, themeFileName } from "../io/constants.ts";
+import { reportError } from "../io/ErrorAlert.tsx";
 import { exportTheme, importTheme } from "../io/io.ts";
 import { BackgroundImage } from "./BackgroundImage.tsx";
 import { useCustomTheme } from "./context.ts";
@@ -43,15 +44,15 @@ export function DesignPane() {
           if (files != null && files.length > 0) {
             importTheme(files[0])
               .then(({ theme, errors }) => {
-                for (const err of errors) {
-                  console.error("Import theme error", err);
+                if (errors.length > 0) {
+                  reportError(new AggregateError(errors));
                 }
                 setTheme(theme);
                 applyTheme(theme);
                 refresh();
               })
               .catch((err) => {
-                console.error("Import theme error", err);
+                console.error(err);
               })
               .finally(() => {
                 el.value = "";
@@ -135,7 +136,7 @@ export function DesignPane() {
                   el.click();
                 })
                 .catch((err) => {
-                  console.error("Export theme error", err);
+                  console.error(err);
                 });
             }}
           />

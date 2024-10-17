@@ -4,10 +4,10 @@ import {
   readTheme,
   storeTheme,
 } from "@keybr/themes";
-import { Alert, toast } from "@keybr/widget";
 import { useEffect, useState } from "react";
 import { CustomThemeContext } from "./design/context.ts";
 import { DesignPane } from "./design/DesignPane.tsx";
+import { reportError } from "./io/ErrorAlert.tsx";
 
 export function ThemeDesigner() {
   const [theme, setTheme] = usePersistentCustomTheme();
@@ -24,12 +24,10 @@ function usePersistentCustomTheme() {
     readTheme()
       .then(({ theme, error }) => {
         setTheme(defaultCustomTheme.merge(theme));
-        if (error) {
-          toast(<ErrorAlert error={error} />);
-        }
+        reportError(error);
       })
       .catch((err) => {
-        console.error("Read theme error", err);
+        console.error(err);
       });
   }, []);
   useEffect(() => {
@@ -38,11 +36,11 @@ function usePersistentCustomTheme() {
         .then(({ theme, error }) => {
           setTheme(theme);
           if (error) {
-            toast(<ErrorAlert error={error} />);
+            reportError(error);
           }
         })
         .catch((err) => {
-          console.error("Store theme error", err);
+          console.error(err);
         });
     }, 200);
     return () => {
@@ -50,16 +48,4 @@ function usePersistentCustomTheme() {
     };
   }, [theme]);
   return [theme, setTheme] as const;
-}
-
-function ErrorAlert({ error }: { readonly error: unknown }) {
-  return (
-    <Alert severity="error">
-      {error instanceof AggregateError ? (
-        error.errors.map((child, index) => <p key={index}>{String(child)}</p>)
-      ) : (
-        <p>{String(error)}</p>
-      )}
-    </Alert>
-  );
 }
