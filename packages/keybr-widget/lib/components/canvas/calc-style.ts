@@ -2,24 +2,6 @@ import { type ClassValue, clsx } from "clsx";
 import { Color } from "../../utils/color.ts";
 import { type GraphicsStyle } from "./style.ts";
 
-const createElement = (tagName: string, className: ClassValue): HTMLElement => {
-  const element = document.createElement(tagName);
-  element.textContent = "?";
-  element.className = clsx(className);
-  element.style.position = "fixed";
-  element.style.insetInlineStart = "0px";
-  element.style.insetBlockStart = "0px";
-  return element;
-};
-
-const isPx = (value: string): boolean => {
-  return value.endsWith("px");
-};
-
-const parsePx = (value: string): number => {
-  return Number(value.substring(0, value.length - 2));
-};
-
 export const calcStyle = (
   className: ClassValue,
   parentElement: Element = document.body,
@@ -164,4 +146,22 @@ export const calcLineHeight = (
   const value = element.clientHeight;
   parentElement.removeChild(element);
   return value;
+};
+
+const createElement = (tagName: string, className: ClassValue): HTMLElement => {
+  const element = document.createElement(tagName);
+  element.textContent = "?";
+  element.className = clsx(className);
+  element.style.position = "fixed";
+  element.style.insetInlineStart = "0px";
+  element.style.insetBlockStart = "0px";
+  return element;
+};
+
+const isPx = (value: string): boolean => {
+  return value.endsWith("px");
+};
+
+const parsePx = (value: string): number => {
+  return Number(value.substring(0, value.length - 2));
 };
