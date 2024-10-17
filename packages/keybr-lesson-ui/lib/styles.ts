@@ -1,11 +1,11 @@
-import { useCustomProperties } from "@keybr/themes";
+import { useComputedStyles } from "@keybr/themes";
 import { Color, RgbColor } from "@keybr/widget";
 import { type CSSProperties, useMemo } from "react";
 
 export function useKeyStyles() {
-  const getValue = useCustomProperties();
-  const slow = getValue("--slow-key-color") || "#cc0000";
-  const fast = getValue("--fast-key-color") || "#60d788";
+  const { getPropertyValue } = useComputedStyles();
+  const slow = getPropertyValue("--slow-key-color") || "#cc0000";
+  const fast = getPropertyValue("--fast-key-color") || "#60d788";
 
   return useMemo(() => {
     const min = Color.parse(slow).toRgb();

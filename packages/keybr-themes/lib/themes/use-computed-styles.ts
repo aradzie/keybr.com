@@ -4,6 +4,7 @@ import { useMemo } from "react";
 import { Color } from "./color.ts";
 import { useTheme } from "./context.ts";
 import { useDynamicStyles } from "./dynamic-styles-context.tsx";
+import type { PropName } from "./theme-props.ts";
 
 export const useComputedStyles = () => {
   const { color, font } = useTheme();
@@ -11,6 +12,12 @@ export const useComputedStyles = () => {
   const element = getStyledElement();
   return useMemo(() => {
     use(color, font);
+
+    const style = getComputedStyle(element);
+
+    const getPropertyValue = (name: PropName): string => {
+      return style.getPropertyValue(name);
+    };
 
     const computeStyle = (...className: ClassValue[]): GraphicsStyle => {
       // https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle
@@ -152,7 +159,7 @@ export const useComputedStyles = () => {
       return value;
     };
 
-    return { computeStyle, computeLineHeight };
+    return { getPropertyValue, computeStyle, computeLineHeight };
   }, [color, font, element]);
 };
 

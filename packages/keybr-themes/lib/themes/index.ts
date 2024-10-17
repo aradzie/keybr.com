@@ -7,5 +7,4 @@ export * from "./theme-io.ts";
 export * from "./theme-props.ts";
 export * from "./themes.ts";
 export * from "./use-computed-styles.ts";
-export * from "./use-custom-properties.ts";
 export * from "./use-preferred-color-scheme.ts";
