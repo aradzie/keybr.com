@@ -1,7 +1,6 @@
 import { type Keyboard, KeyboardContext } from "@keybr/keyboard";
 import { type ZoomableProps } from "@keybr/widget";
 import { memo, type ReactNode } from "react";
-import { Patterns } from "./Patterns.tsx";
 import { getFrameSize } from "./shapes.tsx";
 import * as styles from "./VirtualKeyboard.module.less";
 
@@ -29,9 +28,6 @@ export const VirtualKeyboard = memo(function VirtualKeyboard({
       width={width}
       height={height}
     >
-      <defs>
-        <Patterns />
-      </defs>
       <rect
         className={styles.frame}
         x={0}
