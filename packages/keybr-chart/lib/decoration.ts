@@ -7,11 +7,11 @@ import {
 } from "@keybr/widget";
 import { type MessageDescriptor } from "react-intl";
 import { hBoxes, hTicks, vBoxes, vTicks } from "./geometry.ts";
-import { type Styles } from "./styles.ts";
+import { type ChartStyles } from "./use-chart-styles.ts";
 
 export type Edge = "left" | "right" | "top" | "bottom";
 
-export function withStyles(styles: Styles) {
+export function withStyles(styles: ChartStyles) {
   function paintGrid(
     box: Rect,
     direction: "vertical" | "horizontal",

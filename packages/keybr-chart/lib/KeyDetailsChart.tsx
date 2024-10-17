@@ -9,7 +9,7 @@ import { useIntl } from "react-intl";
 import { Chart, chartArea, type SizeProps } from "./Chart.tsx";
 import { withStyles } from "./decoration.ts";
 import { paintCurve, paintScatterPlot, projection } from "./graph.ts";
-import { type Styles, useStyles } from "./styles.ts";
+import { type ChartStyles, useChartStyles } from "./use-chart-styles.ts";
 
 export function KeyDetailsChart({
   lessonKey,
@@ -20,7 +20,7 @@ export function KeyDetailsChart({
   readonly lessonKey: LessonKey;
   readonly learningRate: LearningRate | null;
 } & SizeProps): ReactNode {
-  const styles = useStyles();
+  const styles = useChartStyles();
   const paint = usePaint(styles, lessonKey, learningRate);
   return (
     <Chart width={width} height={height}>
@@ -30,7 +30,7 @@ export function KeyDetailsChart({
 }
 
 function usePaint(
-  styles: Styles,
+  styles: ChartStyles,
   lessonKey: LessonKey,
   learningRate: LearningRate | null,
 ) {

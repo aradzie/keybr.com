@@ -17,7 +17,7 @@ import { useIntl } from "react-intl";
 import { Chart, chartArea, type SizeProps } from "./Chart.tsx";
 import { withStyles } from "./decoration.ts";
 import { paintCurve, paintScatterPlot, projection } from "./graph.ts";
-import { type Styles, useStyles } from "./styles.ts";
+import { type ChartStyles, useChartStyles } from "./use-chart-styles.ts";
 
 export function KeySpeedChart({
   samples,
@@ -28,7 +28,7 @@ export function KeySpeedChart({
   readonly samples: readonly KeySample[];
   readonly smoothness: number;
 } & SizeProps): ReactNode {
-  const styles = useStyles();
+  const styles = useChartStyles();
   const paint = usePaint(styles, samples, smoothness);
   return (
     <Chart width={width} height={height}>
@@ -38,7 +38,7 @@ export function KeySpeedChart({
 }
 
 function usePaint(
-  styles: Styles,
+  styles: ChartStyles,
   samples: readonly KeySample[],
   smoothness: number,
 ) {

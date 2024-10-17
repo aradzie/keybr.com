@@ -6,8 +6,8 @@ import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
 import { Chart, chartArea, type SizeProps } from "./Chart.tsx";
 import { withStyles } from "./decoration.ts";
-import { type Styles, useStyles } from "./styles.ts";
 import { type Threshold } from "./types.ts";
+import { type ChartStyles, useChartStyles } from "./use-chart-styles.ts";
 
 export function SpeedHistogram({
   distribution,
@@ -18,7 +18,7 @@ export function SpeedHistogram({
   readonly distribution: Distribution;
   readonly thresholds: readonly Threshold[];
 } & SizeProps): ReactNode {
-  const styles = useStyles();
+  const styles = useChartStyles();
   const paint = usePaint(styles, distribution, thresholds);
   return (
     <Chart width={width} height={height}>
@@ -28,7 +28,7 @@ export function SpeedHistogram({
 }
 
 function usePaint(
-  styles: Styles,
+  styles: ChartStyles,
   dist: Distribution,
   thresholds: readonly Threshold[],
 ) {

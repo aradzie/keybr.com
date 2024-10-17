@@ -1,7 +1,11 @@
 import { KeyboardProvider } from "@keybr/keyboard";
 import { Settings, SettingsContext } from "@keybr/settings";
-import { applyTheme, staticTheme, ThemeContext } from "@keybr/themes";
-import { DynamicStylesProvider } from "@keybr/widget";
+import {
+  applyTheme,
+  DynamicStylesProvider,
+  staticTheme,
+  ThemeContext,
+} from "@keybr/themes";
 import { type ReactNode, useEffect, useMemo, useRef } from "react";
 import { useCustomTheme } from "./context.ts";
 import * as styles from "./PreviewPane.module.less";

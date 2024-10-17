@@ -16,7 +16,7 @@ import { useIntl } from "react-intl";
 import { Chart, chartArea, type SizeProps } from "./Chart.tsx";
 import { withStyles } from "./decoration.ts";
 import { hBoxes } from "./geometry.ts";
-import { type Styles, useStyles } from "./styles.ts";
+import { type ChartStyles, useChartStyles } from "./use-chart-styles.ts";
 
 export function ProgressOverviewChart({
   keyStatsMap,
@@ -25,7 +25,7 @@ export function ProgressOverviewChart({
 }: {
   readonly keyStatsMap: KeyStatsMap;
 } & SizeProps): ReactNode {
-  const styles = useStyles();
+  const styles = useChartStyles();
   const paint = usePaint(styles, keyStatsMap);
   return (
     <Chart width={width} height={height}>
@@ -34,7 +34,7 @@ export function ProgressOverviewChart({
   );
 }
 
-function usePaint(styles: Styles, keyStatsMap: KeyStatsMap) {
+function usePaint(styles: ChartStyles, keyStatsMap: KeyStatsMap) {
   const { formatMessage } = useIntl();
   const { formatInteger } = useIntlNumbers();
   const { settings } = useSettings();

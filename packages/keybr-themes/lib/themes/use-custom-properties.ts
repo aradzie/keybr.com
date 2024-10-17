@@ -1,6 +1,6 @@
-import { useDynamicStyles } from "@keybr/widget";
 import { useMemo } from "react";
 import { useTheme } from "./context.ts";
+import { useDynamicStyles } from "./dynamic-styles-context.tsx";
 import { type PropName } from "./theme-props.ts";
 
 export function useCustomProperties() {

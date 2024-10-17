@@ -7,7 +7,7 @@ import { Chart, chartArea, type SizeProps } from "./Chart.tsx";
 import { withStyles } from "./decoration.ts";
 import { paintHistogram } from "./graph.ts";
 import { keyUsage } from "./keyusage.ts";
-import { type Styles, useStyles } from "./styles.ts";
+import { type ChartStyles, useChartStyles } from "./use-chart-styles.ts";
 
 export function KeyFrequencyHistogram({
   keyStatsMap,
@@ -16,7 +16,7 @@ export function KeyFrequencyHistogram({
 }: {
   readonly keyStatsMap: KeyStatsMap;
 } & SizeProps): ReactNode {
-  const styles = useStyles();
+  const styles = useChartStyles();
   const paint = usePaint(styles, keyStatsMap);
   return (
     <Chart width={width} height={height}>
@@ -25,7 +25,7 @@ export function KeyFrequencyHistogram({
   );
 }
 
-function usePaint(styles: Styles, keyStatsMap: KeyStatsMap) {
+function usePaint(styles: ChartStyles, keyStatsMap: KeyStatsMap) {
   const { formatMessage } = useIntl();
   const g = withStyles(styles);
   const { letters, results } = keyStatsMap;
