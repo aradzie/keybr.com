@@ -1,10 +1,8 @@
 import test from "ava";
+import { UrlAsset } from "./asset.ts";
 import { Color } from "./color.ts";
 import { CustomTheme } from "./custom-theme.ts";
 import { readTheme, storeTheme } from "./theme-io.ts";
-
-global.FileReader = window.FileReader;
-global.Blob = window.Blob;
 
 test("store", async (t) => {
   // Arrange.
@@ -16,12 +14,7 @@ test("store", async (t) => {
   const theme = new CustomTheme()
     .set("--primary", Color.parse("#ffffff"))
     .set("--secondary", Color.parse("#000000"))
-    .set(
-      "--background-image",
-      new Blob(['<svg xmlns="http://www.w3.org/2000/svg"/>'], {
-        type: "image/svg+xml",
-      }),
-    );
+    .set("--background-image", new UrlAsset("/assets/image.svg"));
 
   // Act.
 
@@ -35,10 +28,7 @@ test("store", async (t) => {
     [
       ["keybr.theme[--primary]", "rgb(255,255,255)"],
       ["keybr.theme[--secondary]", "rgb(0,0,0)"],
-      [
-        "keybr.theme[--background-image]",
-        "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciLz4=",
-      ],
+      ["keybr.theme[--background-image]", "/assets/image.svg"],
     ],
   );
 });
@@ -49,10 +39,7 @@ test("read", async (t) => {
   const storage = new FakeStorage([
     ["keybr.theme[--primary]", "rgb(255,255,255)"],
     ["keybr.theme[--secondary]", "rgb(0,0,0)"],
-    [
-      "keybr.theme[--background-image]",
-      "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciLz4=",
-    ],
+    ["keybr.theme[--background-image]", "/assets/image.svg"],
   ]);
 
   // Act.
@@ -64,9 +51,10 @@ test("read", async (t) => {
   t.is(error, null);
   t.deepEqual(theme.get("--primary"), Color.parse("#ffffff"));
   t.deepEqual(theme.get("--secondary"), Color.parse("#000000"));
-  const blob = theme.get("--background-image") as Blob;
-  t.is(blob.type, "image/svg+xml");
-  t.is(await blob.text(), '<svg xmlns="http://www.w3.org/2000/svg"/>');
+  t.deepEqual(
+    theme.get("--background-image"),
+    new UrlAsset("/assets/image.svg"),
+  );
 });
 
 test("read and ignore invalid data", async (t) => {
@@ -75,7 +63,7 @@ test("read and ignore invalid data", async (t) => {
   const storage = new FakeStorage([
     ["keybr.theme[--primary]", "omg"],
     ["keybr.theme[--secondary]", "omg"],
-    ["keybr.theme[--background-image]", "omg"],
+    ["keybr.theme[--background-image]", "data:omg"],
   ]);
 
   // Act.

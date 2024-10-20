@@ -1,4 +1,4 @@
-import { blobToDataUrl, dataUrlToBlob, getBlobUrl } from "./blobs.ts";
+import { Asset } from "./asset.ts";
 import { Color } from "./color.ts";
 
 export type GenericType<T extends PropValue> = {
@@ -9,13 +9,13 @@ export type GenericType<T extends PropValue> = {
 
 export type ColorType = { readonly type: "color" } & GenericType<Color>;
 
-export type ImageType = { readonly type: "image" } & GenericType<Blob>;
+export type ImageType = { readonly type: "image" } & GenericType<Asset>;
 
 export type PropsMap = typeof themePropsMap;
 
 export type PropName = keyof PropsMap;
 
-export type PropValue = Color | Blob;
+export type PropValue = Color | Asset;
 
 export const colorType = {
   type: "color",
@@ -42,22 +42,22 @@ export const colorType = {
 export const imageType = {
   type: "image",
   toCss: (value) => {
-    if (!(value instanceof Blob)) {
+    if (!(value instanceof Asset)) {
       throw new TypeError();
     }
-    return `url(${getBlobUrl(value)})`;
+    return `url(${value.url})`;
   },
   format: async (value) => {
-    if (!(value instanceof Blob)) {
+    if (!(value instanceof Asset)) {
       throw new TypeError();
     }
-    return await blobToDataUrl(value);
+    return value.format();
   },
   parse: async (value) => {
     if (typeof value !== "string") {
       throw new TypeError();
     }
-    return await dataUrlToBlob(value);
+    return await Asset.parse(value);
   },
 } satisfies ImageType;
 

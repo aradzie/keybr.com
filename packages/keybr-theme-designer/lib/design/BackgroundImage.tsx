@@ -9,9 +9,9 @@ export function BackgroundImage() {
     <Group title="Background Image">
       <Box alignItems="center" justifyContent="center">
         <ImageInput
-          blob={theme.getImage("--background-image")}
-          onChange={(blob) => {
-            setTheme(theme.set("--background-image", blob));
+          asset={theme.getImage("--background-image")}
+          onChange={(asset) => {
+            setTheme(theme.set("--background-image", asset));
           }}
         />
       </Box>

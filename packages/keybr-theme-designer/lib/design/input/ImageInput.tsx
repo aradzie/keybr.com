@@ -1,21 +1,21 @@
-import { getBlobUrl } from "@keybr/themes";
+import { type Asset, DataUrlAsset } from "@keybr/themes";
 import { useDocumentEvent } from "@keybr/widget";
 import { useRef } from "react";
 import { acceptImageTypes, acceptsImageType } from "../../io/images.ts";
 import * as styles from "./ImageInput.module.less";
 
 export function ImageInput({
-  blob,
+  asset,
   onChange,
 }: {
-  readonly blob: Blob | null;
-  readonly onChange: (blob: Blob) => void;
+  readonly asset: Asset | null;
+  readonly onChange: (asset: Asset) => void;
 }) {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const changeFile = (blob: Blob) => {
     if (blob.size > 0 && acceptsImageType(blob.type)) {
-      onChange(blob);
+      onChange(new DataUrlAsset(blob));
     }
   };
 
@@ -41,8 +41,8 @@ export function ImageInput({
         }
       }}
     >
-      {blob && (
-        <img className={styles.preview} src={getBlobUrl(blob)} alt="Preview" />
+      {asset && (
+        <img className={styles.preview} src={asset.url} alt="Preview" />
       )}
       <input
         ref={inputRef}
