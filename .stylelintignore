@@ -1,4 +1,4 @@
-node_modules/
+**/build/
+**/sandbox/
+**/tmp/
 root/
-build/
-tmp/

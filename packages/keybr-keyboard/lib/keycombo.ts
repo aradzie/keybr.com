@@ -16,7 +16,7 @@ export class KeyCombo implements HasCodePoint {
     let complexity = 0;
     let shift = false;
     let alt = false;
-    let combo: KeyCombo | null = this; // eslint-disable-line
+    let combo: KeyCombo | null = this; // eslint-disable-line @typescript-eslint/no-this-alias
     while (combo != null) {
       const { modifier } = combo;
       complexity += 1 + modifier.complexity;

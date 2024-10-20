@@ -19,7 +19,7 @@ import { localePattern, pIntl, preferredLocale } from "./intl.ts";
 
 @injectable()
 @controller()
-@use(CanonicalHandler)
+@use(CanonicalHandler) // eslint-disable-line react-hooks/rules-of-hooks
 export class Controller {
   constructor(
     @inject("canonicalUrl") readonly canonicalUrl: string,

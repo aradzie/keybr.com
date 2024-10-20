@@ -11,7 +11,7 @@ export type Closer = (force: boolean, cb?: (err?: Error) => void) => void;
 const kIdle = Symbol();
 
 declare module "net" {
-  // eslint-disable-next-line
+  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
   interface Socket {
     [kIdle]?: boolean;
   }

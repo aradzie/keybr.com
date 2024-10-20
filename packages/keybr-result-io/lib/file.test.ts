@@ -25,15 +25,10 @@ test("deserialize should ignore empty data", (t) => {
 
 test("deserialize should validate file header", (t) => {
   const iter = parseFile(new Uint8Array(256));
-  const err = t.throws(
-    () => {
-      [...iter];
-    },
-    {
-      instanceOf: InvalidFormatError,
-      message: "Invalid header",
-    },
-  ) as { cause?: Error };
+  const err = t.throws(() => [...iter], {
+    instanceOf: InvalidFormatError,
+    message: "Invalid header",
+  }) as { cause?: Error };
   t.is(err.cause?.message, undefined);
 });
 
@@ -44,15 +39,10 @@ test("deserialize should validate file data", (t) => {
   writer.putUint8(2);
   writer.putUint8(3);
   const iter = parseFile(writer.buffer());
-  const err = t.throws(
-    () => {
-      [...iter];
-    },
-    {
-      instanceOf: InvalidFormatError,
-      message: "Invalid data format",
-    },
-  ) as { cause?: Error };
+  const err = t.throws(() => [...iter], {
+    instanceOf: InvalidFormatError,
+    message: "Invalid data format",
+  }) as { cause?: Error };
   t.is(err.cause?.message, "Premature end of data");
 });
 

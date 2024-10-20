@@ -49,7 +49,6 @@ export const useTimeout = (): TimeoutScheduler => {
   }
   useEffect(() => {
     return () => {
-      // eslint-disable-next-line react-hooks/exhaustive-deps
       ref.current.cancel();
     };
   }, []);

@@ -1,7 +1,7 @@
 declare global {
   const Paddle: Paddle;
 
-  // eslint-disable-next-line
+  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
   interface Window {
     readonly Paddle: Paddle;
   }

@@ -405,6 +405,10 @@ export class Room {
       playerState,
     };
   }
+
+  toString() {
+    return this.#id;
+  }
 }
 
 function updatePlayer(player: Player, started: number): void {

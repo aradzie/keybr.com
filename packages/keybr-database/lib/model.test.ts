@@ -571,7 +571,6 @@ test("merge multiple resource owners", async (t) => {
   );
 });
 
-// eslint-disable-next-line ava/no-skip-test
 test.skip("handle email change", async (t) => {
   t.deepEqual(
     (

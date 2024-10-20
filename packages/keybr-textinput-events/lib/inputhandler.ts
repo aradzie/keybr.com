@@ -18,7 +18,6 @@ export type Listeners = {
 export class InputHandler implements Focusable {
   #listeners: Listeners = {};
   #input: HTMLTextAreaElement | null = null;
-  #compositing: boolean = false;
 
   setListeners = (listeners: Listeners): void => {
     this.#listeners = listeners;
@@ -165,10 +164,8 @@ export class InputHandler implements Focusable {
     switch (event.type) {
       case "compositionstart":
       case "compositionupdate":
-        this.#compositing = true;
         break;
       case "compositionend":
-        this.#compositing = false;
         this.#appendChar(event.data, timeStamp);
         this.#clearInput();
         break;

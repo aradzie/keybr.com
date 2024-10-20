@@ -1,12 +1,10 @@
 import { useSettings } from "@keybr/settings";
-import { toTextDisplaySettings } from "@keybr/textinput";
 import { Field, FieldList, FieldSet, Para, RadioBox } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { TextSourceType, typingTestProps } from "../../settings.ts";
 import { BookSettings } from "./text/BookSettings.tsx";
 import { CommonWordsSettings } from "./text/CommonWordsSettings.tsx";
 import { PseudoWordsSettings } from "./text/PseudoWordsSettings.tsx";
-import { TextPreview } from "./text/TextPreview.tsx";
 
 export function TextGeneratorSettings(): ReactNode {
   const { settings, updateSettings } = useSettings();
@@ -80,15 +78,6 @@ export function TextGeneratorSettings(): ReactNode {
       )}
       {settings.get(typingTestProps.type) === TextSourceType.Book && (
         <BookSettings />
-      )}
-
-      {false && (
-        <FieldSet legend="Preview">
-          <TextPreview
-            settings={toTextDisplaySettings(settings)}
-            textGenerator={null!}
-          />
-        </FieldSet>
       )}
     </>
   );

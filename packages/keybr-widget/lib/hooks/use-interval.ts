@@ -48,7 +48,6 @@ export const useInterval = (): IntervalScheduler => {
   }
   useEffect(() => {
     return () => {
-      // eslint-disable-next-line react-hooks/exhaustive-deps
       ref.current.cancel();
     };
   }, []);
