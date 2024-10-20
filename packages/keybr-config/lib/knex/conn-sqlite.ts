@@ -1,6 +1,6 @@
 import type Database from "better-sqlite3";
 import { type Knex as KnexType } from "knex";
-import sqlite from "knex/lib/dialects/better-sqlite3";
+import sqlite from "knex/lib/dialects/better-sqlite3/index.js";
 import { knexSnakeCaseMappers } from "objection";
 import { fixTimestamps } from "./util.ts";
 

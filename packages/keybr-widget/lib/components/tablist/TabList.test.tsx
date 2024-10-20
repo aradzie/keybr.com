@@ -1,7 +1,7 @@
 import { fireEvent, render } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { userEvent } from "@testing-library/user-event";
 import test from "ava";
-import { type ReactNode, useState } from "react";
+import { useState } from "react";
 import { Tab, TabList } from "./TabList.tsx";
 
 test.serial("props", (t) => {
@@ -47,7 +47,7 @@ test.serial("props", (t) => {
 test.serial("controlled", async (t) => {
   let lastValue = 0;
 
-  function Controlled(): ReactNode {
+  function Controlled() {
     const [selectedIndex, setSelectedIndex] = useState(lastValue);
     return (
       <TabList

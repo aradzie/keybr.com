@@ -3,7 +3,7 @@ import { FakePhoneticModel, type Letter } from "@keybr/phonetic-model";
 import { type KeyStatsMap, makeKeyStatsMap } from "@keybr/result";
 import { FakeSettingsContext } from "@keybr/settings";
 import { fireEvent, render } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { userEvent } from "@testing-library/user-event";
 import test from "ava";
 import { type ReactNode, useState } from "react";
 import { KeySelector } from "./KeySelector.tsx";

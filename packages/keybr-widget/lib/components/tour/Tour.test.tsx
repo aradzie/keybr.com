@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { userEvent } from "@testing-library/user-event";
 import test from "ava";
 import { IntlProvider } from "react-intl";
 import { PortalContainer } from "../portal/Portal.tsx";

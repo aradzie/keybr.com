@@ -1,6 +1,6 @@
 import { fireEvent, render } from "@testing-library/react";
 import test from "ava";
-import { type ReactNode, useState } from "react";
+import { useState } from "react";
 import { Range } from "./Range.tsx";
 
 test.serial("props", (t) => {
@@ -22,7 +22,7 @@ test.serial("props", (t) => {
 test.serial("controlled", (t) => {
   let lastValue = 1;
 
-  function Controlled(): ReactNode {
+  function Controlled() {
     const [value, setValue] = useState(lastValue);
     return (
       <Range

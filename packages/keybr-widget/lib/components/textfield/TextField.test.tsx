@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { userEvent } from "@testing-library/user-event";
 import test from "ava";
-import { type ReactNode, useState } from "react";
+import { useState } from "react";
 import { TextField } from "./TextField.tsx";
 
 test.serial("props", (t) => {
@@ -20,7 +20,7 @@ test.serial("props", (t) => {
 test.serial("controlled", async (t) => {
   let lastValue = "abc";
 
-  function Controlled(): ReactNode {
+  function Controlled() {
     const [value, setValue] = useState(lastValue);
     return (
       <TextField

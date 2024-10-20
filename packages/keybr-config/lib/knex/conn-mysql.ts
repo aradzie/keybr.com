@@ -1,5 +1,5 @@
 import { type Knex as KnexType } from "knex";
-import mysql from "knex/lib/dialects/mysql";
+import mysql from "knex/lib/dialects/mysql/index.js";
 import { createConnection } from "mysql";
 import { knexSnakeCaseMappers } from "objection";
 
