@@ -94,7 +94,7 @@ export class GuidedLesson extends Lesson {
 
     // Find the least confident of all included keys and focus on it.
     const confidenceOf = (key: LessonKey): number => {
-      return recoverKeys ? key.confidence ?? 0 : key.bestConfidence ?? 0;
+      return recoverKeys ? (key.confidence ?? 0) : (key.bestConfidence ?? 0);
     };
     const weakestKeys = lessonKeys
       .findIncludedKeys()

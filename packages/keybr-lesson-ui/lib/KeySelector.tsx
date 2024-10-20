@@ -66,7 +66,7 @@ export const KeySelector = ({
   return (
     <span
       className={styles.root}
-      tabIndex={disabled ? undefined : tabIndex ?? 0}
+      tabIndex={disabled ? undefined : (tabIndex ?? 0)}
       title={title}
       onFocus={handleFocus}
       onBlur={handleBlur}

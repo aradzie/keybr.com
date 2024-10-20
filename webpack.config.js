@@ -234,17 +234,17 @@ export default [
       ...(dev
         ? []
         : [
-          new CompressionPlugin({
-            test: /\.(js|css|svg|data)$/,
-            filename: "[file].gz",
-            algorithm: "gzip",
-          }),
-          new CompressionPlugin({
-            test: /\.(js|css|svg|data)$/,
-            filename: "[file].br",
-            algorithm: "brotliCompress",
-          }),
-        ]),
+            new CompressionPlugin({
+              test: /\.(js|css|svg|data)$/,
+              filename: "[file].gz",
+              algorithm: "gzip",
+            }),
+            new CompressionPlugin({
+              test: /\.(js|css|svg|data)$/,
+              filename: "[file].br",
+              algorithm: "brotliCompress",
+            }),
+          ]),
       new BundleAnalyzerPlugin({
         analyzerMode: "disabled",
       }),

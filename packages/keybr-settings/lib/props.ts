@@ -129,7 +129,7 @@ export function enumProp(
     },
     fromJson(value: unknown): number {
       return typeof value === "string"
-        ? map.get(value) ?? defaultValue
+        ? (map.get(value) ?? defaultValue)
         : defaultValue;
     },
   };

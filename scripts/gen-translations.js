@@ -98,8 +98,8 @@ async function syncTranslations(report) {
       remap(defaultTranslations, ([id, message]) => {
         const translatedMessage =
           translations[id] !== "" &&
-            translations[id] !== id &&
-            translations[id] !== message
+          translations[id] !== id &&
+          translations[id] !== message
             ? translations[id]
             : undefined;
         if (translatedMessage != null) {
@@ -162,14 +162,14 @@ async function writeReport(report) {
     lines.push(``);
     lines.push(
       `Translated: ` +
-      `${translated.length} messages, ` +
-      `${translated.reduce(countWords, 0)} words`,
+        `${translated.length} messages, ` +
+        `${translated.reduce(countWords, 0)} words`,
     );
     lines.push(``);
     lines.push(
       `Untranslated: ` +
-      `${untranslated.length} messages, ` +
-      `${untranslated.reduce(countWords, 0)} words`,
+        `${untranslated.length} messages, ` +
+        `${untranslated.reduce(countWords, 0)} words`,
     );
     if (untranslated.length > 0) {
       untranslated.sort((a, b) => a[1].length - b[1].length);
