@@ -1,5 +1,4 @@
 import { KeyboardProvider } from "@keybr/keyboard";
-import { Settings, SettingsContext } from "@keybr/settings";
 import {
   applyTheme,
   DynamicStylesProvider,
@@ -19,29 +18,22 @@ export function PreviewPane({ children }: { readonly children: ReactNode }) {
   const backgroundImage = useBackgroundImage();
   return (
     <ThemeContext.Provider value={staticTheme({ color: "*", font: "*" })}>
-      <SettingsContext.Provider
-        value={{
-          settings: new Settings(),
-          updateSettings: () => {},
-        }}
-      >
-        <KeyboardProvider>
-          <div
-            ref={ref}
-            className={styles.root}
-            style={{
-              color: `var(--text-color)`,
-              backgroundColor: `var(--background-color)`,
-              backgroundImage,
-            }}
-            data-preview-theme={true}
-          >
-            <DynamicStylesProvider elementRef={ref}>
-              {children}
-            </DynamicStylesProvider>
-          </div>
-        </KeyboardProvider>
-      </SettingsContext.Provider>
+      <KeyboardProvider>
+        <div
+          ref={ref}
+          className={styles.root}
+          style={{
+            color: `var(--text-color)`,
+            backgroundColor: `var(--background-color)`,
+            backgroundImage,
+          }}
+          data-preview-theme={true}
+        >
+          <DynamicStylesProvider elementRef={ref}>
+            {children}
+          </DynamicStylesProvider>
+        </div>
+      </KeyboardProvider>
     </ThemeContext.Provider>
   );
 }

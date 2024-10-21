@@ -6,6 +6,7 @@ import {
   Pages,
   Root,
 } from "@keybr/pages-shared";
+import { SettingsLoader } from "@keybr/settings-loader";
 import { querySelector } from "@keybr/widget";
 import { lazy, type ReactNode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
@@ -37,9 +38,11 @@ export function App(): ReactNode {
     <PageDataContext.Provider value={getPageData()}>
       <ErrorHandler>
         <IntlLoader>
-          <ThemeProvider>
-            <PageRoutes />
-          </ThemeProvider>
+          <SettingsLoader>
+            <ThemeProvider>
+              <PageRoutes />
+            </ThemeProvider>
+          </SettingsLoader>
         </IntlLoader>
       </ErrorHandler>
     </PageDataContext.Provider>
