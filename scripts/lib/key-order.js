@@ -26,8 +26,6 @@ export const tsconfigJsonKeys = [
     [
       "rootDir",
       "outDir",
-      "target",
-      "module",
       "lib",
       "declaration",
       "declarationMap",

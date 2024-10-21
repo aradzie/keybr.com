@@ -1,5 +1,5 @@
 import ts from "typescript";
-import { moduleName } from "./util.js";
+import { moduleName } from "./lang-util.js";
 
 export function findTypescriptDeps(fileName, source) {
   const modules = new Set();

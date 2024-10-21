@@ -6,9 +6,12 @@ import { readJsonSync, writeJsonSync } from "./lib/fs.js";
 import { getHashDigest } from "./lib/intl.js";
 import { findPackages, rootDir } from "./root.js";
 
-const packageDir = join(rootDir, "packages/keybr-intl");
+const outputDir = join(rootDir, "packages", "keybr-intl");
+
+const defaultLocale = "en";
 
 const allLocales = [
+  defaultLocale,
   "ar",
   "bg",
   "ca",
@@ -16,7 +19,6 @@ const allLocales = [
   "da",
   "de",
   "el",
-  "en",
   "eo",
   "es",
   "et",
@@ -44,8 +46,6 @@ const allLocales = [
   "zh-hans",
   "zh-hant",
 ];
-
-const defaultLocale = "en";
 
 function findSourceFiles() {
   const files = [];
@@ -189,7 +189,10 @@ async function writeReport(report) {
     }
     lines.push(``);
   }
-  writeFileSync(join(rootDir, "docs/translations_report.md"), lines.join("\n"));
+  writeFileSync(
+    join(rootDir, "docs", "translations_report.md"),
+    lines.join("\n"),
+  );
 }
 
 async function run() {
@@ -205,15 +208,15 @@ function remap(entries, callback) {
 }
 
 function translationsPath(locale) {
-  return join(packageDir, `translations`, `${locale}.json`);
+  return join(outputDir, `translations`, `${locale}.json`);
 }
 
 function mergedTranslationsPath(locale) {
-  return join(packageDir, `translations`, `${locale}-merged.json`);
+  return join(outputDir, `translations`, `${locale}-merged.json`);
 }
 
 function messagesPath(locale) {
-  return join(packageDir, `lib`, `messages`, `${locale}.json`);
+  return join(outputDir, `lib`, `messages`, `${locale}.json`);
 }
 
 run().catch((err) => {

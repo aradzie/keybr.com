@@ -1,4 +1,4 @@
-import { moduleName } from "./util.js";
+import { moduleName } from "./lang-util.js";
 
 export function findLessDeps(fileName, source) {
   const modules = new Set();

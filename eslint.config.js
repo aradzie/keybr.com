@@ -13,7 +13,7 @@ import ts from "typescript-eslint";
 import pkg from "./package.json" with { type: "json" };
 
 export default [
-  { files: ["**/*.{js,mjs,cjs,jsx,ts,tsx}"] },
+  { files: ["**/*.{js,ts,tsx}"] },
   js.configs.recommended,
   ...ts.configs.recommended,
   react.configs.flat.recommended,
@@ -125,7 +125,6 @@ export default [
       "**/tmp/",
       "root/",
       "packages/keybr-code/lib/parser.js",
-      "*.cjs",
     ],
   },
 ];
