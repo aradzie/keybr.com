@@ -696,5 +696,6 @@ export function filterText(text: string, set: CodePointSet): string {
 filterText.normalize = normalize;
 
 function normalize(codePoint: CodePoint): CodePoint {
+  return codePoint;
   return basicPunctuation.get(codePoint) ?? codePoint;
 }
