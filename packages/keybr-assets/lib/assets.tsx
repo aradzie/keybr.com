@@ -1,6 +1,6 @@
 import { type ReactNode } from "react";
 import { useManifest } from "./context.ts";
-import { type FavIconLink } from "./types.ts";
+import { type FavIconLink, type PreloadLink } from "./types.ts";
 
 export function StylesheetAssets({
   entrypoint,
@@ -27,6 +27,20 @@ export function FavIconAssets({
 }: {
   readonly links: readonly FavIconLink[];
 }): ReactNode {
+  const manifest = useManifest();
+  return links
+    .map(({ href, ...rest }) => ({
+      href: manifest.assetPath(href),
+      ...rest,
+    }))
+    .map((link) => <link key={link.href} {...link} />);
+}
+
+export function PreloadAssets({
+  links,
+}: {
+  readonly links: readonly PreloadLink[];
+}) {
   const manifest = useManifest();
   return links
     .map(({ href, ...rest }) => ({

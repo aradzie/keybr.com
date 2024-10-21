@@ -224,7 +224,7 @@ export class Controller {
 
     ctx.response.type = "text/html";
 
-    ctx.response.headers.append("Link", this.view.preloadHeaders());
+    ctx.response.headers.append("Link", this.view.preloadHeaders);
 
     return this.view.renderPage(
       <RawIntlProvider value={intl}>

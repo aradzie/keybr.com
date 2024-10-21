@@ -1,1 +1,1 @@
-export * from "./ErrorHandler.tsx";
+export * from "./error-handler.tsx";

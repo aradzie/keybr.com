@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import { Color } from "./color.ts";
 import { useTheme } from "./context.ts";
 import { useDynamicStyles } from "./dynamic-styles-context.tsx";
-import type { PropName } from "./theme-props.ts";
+import { type PropName } from "./theme-props.ts";
 
 export const useComputedStyles = () => {
   const { color, font } = useTheme();
