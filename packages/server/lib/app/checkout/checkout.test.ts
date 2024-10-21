@@ -5,7 +5,7 @@ import { kMain } from "../module.ts";
 import { test } from "../test/context.ts";
 import { startApp } from "../test/request.ts";
 
-test.serial("ignore invalid http method", async (t) => {
+test("ignore invalid http method", async (t) => {
   // Arrange.
 
   const request = startApp(t.context.get(Application, kMain));
@@ -17,7 +17,7 @@ test.serial("ignore invalid http method", async (t) => {
   t.is((await request.DELETE("/_/checkout/paddle-alert").send({})).status, 405);
 });
 
-test.serial("ignore wrong signature", async (t) => {
+test("ignore wrong signature", async (t) => {
   // Arrange.
 
   const request = startApp(t.context.get(Application, kMain));
@@ -75,7 +75,7 @@ test.serial("ignore wrong signature", async (t) => {
   t.false(isPremiumUser(User.toPublicUser(await User.findById(1), "")));
 });
 
-test.serial("ignore invalid user id", async (t) => {
+test("ignore invalid user id", async (t) => {
   // Arrange.
 
   const request = startApp(t.context.get(Application, kMain));
@@ -131,7 +131,7 @@ test.serial("ignore invalid user id", async (t) => {
   t.is(await response.body.text(), "Error: Unknown user id");
 });
 
-test.serial("create order", async (t) => {
+test("create order", async (t) => {
   // Arrange.
 
   const request = startApp(t.context.get(Application, kMain));
@@ -189,7 +189,7 @@ test.serial("create order", async (t) => {
   t.true(isPremiumUser(User.toPublicUser(await User.findById(1), "")));
 });
 
-test.serial("re-create order", async (t) => {
+test("re-create order", async (t) => {
   // Arrange.
 
   await (await User.findById(1))!.$relatedQuery("order").insert({

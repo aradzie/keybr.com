@@ -24,7 +24,7 @@ const validBody = formatMessage([faker.nextResult()]);
 const garbageBody = Buffer.from("garbage");
 const result = faker.nextResult();
 
-test.serial("handle unauthenticated user", async (t) => {
+test("handle unauthenticated user", async (t) => {
   // Arrange.
 
   const request = startApp(t.context.get(Application, kMain));
@@ -36,7 +36,7 @@ test.serial("handle unauthenticated user", async (t) => {
   t.is((await request.DELETE("/_/sync/data").send()).status, 403);
 });
 
-test.serial("get public user data", async (t) => {
+test("get public user data", async (t) => {
   // Arrange.
 
   const factory = t.context.get(UserDataFactory);
@@ -62,7 +62,7 @@ test.serial("get public user data", async (t) => {
   t.true((await response.body.buffer()).length > 0);
 });
 
-test.serial("get empty user data", async (t) => {
+test("get empty user data", async (t) => {
   // Arrange.
 
   const factory = t.context.get(UserDataFactory);
@@ -89,7 +89,7 @@ test.serial("get empty user data", async (t) => {
   t.is((await response.body.buffer()).length, 0);
 });
 
-test.serial("get existing user data", async (t) => {
+test("get existing user data", async (t) => {
   // Arrange.
 
   const factory = t.context.get(UserDataFactory);
@@ -116,7 +116,7 @@ test.serial("get existing user data", async (t) => {
   t.is((await response.body.buffer()).length, 70);
 });
 
-test.serial("validate content type on post", async (t) => {
+test("validate content type on post", async (t) => {
   // Arrange.
 
   const request = startApp(t.context.get(Application, kMain));
@@ -135,7 +135,7 @@ test.serial("validate content type on post", async (t) => {
   t.is(response.status, 415);
 });
 
-test.serial("validate format on post", async (t) => {
+test("validate format on post", async (t) => {
   // Arrange.
 
   const request = startApp(t.context.get(Application, kMain));
@@ -151,7 +151,7 @@ test.serial("validate format on post", async (t) => {
   t.is(response.status, 400);
 });
 
-test.serial("validate data on post", async (t) => {
+test("validate data on post", async (t) => {
   // Arrange.
 
   const factory = t.context.get(UserDataFactory);
@@ -174,7 +174,7 @@ test.serial("validate data on post", async (t) => {
   t.false(await userData.exists());
 });
 
-test.serial("post to user data", async (t) => {
+test("post to user data", async (t) => {
   // Arrange.
 
   const factory = t.context.get(UserDataFactory);
@@ -197,7 +197,7 @@ test.serial("post to user data", async (t) => {
   t.true(await userData.exists());
 });
 
-test.serial("delete empty user data", async (t) => {
+test("delete empty user data", async (t) => {
   // Arrange.
 
   const factory = t.context.get(UserDataFactory);
@@ -225,7 +225,7 @@ test.serial("delete empty user data", async (t) => {
   t.false(await userData.exists());
 });
 
-test.serial("delete existing user data", async (t) => {
+test("delete existing user data", async (t) => {
   // Arrange.
 
   const factory = t.context.get(UserDataFactory);

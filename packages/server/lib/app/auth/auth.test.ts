@@ -8,7 +8,7 @@ import { test } from "../test/context.ts";
 import { startApp } from "../test/request.ts";
 import { findUser } from "../test/sql.ts";
 
-test.serial("logout", async (t) => {
+test("logout", async (t) => {
   // Arrange.
 
   const user = await findUser("user1@keybr.com");
@@ -28,7 +28,7 @@ test.serial("logout", async (t) => {
   t.is(await request.who(), null);
 });
 
-test.serial("patch account", async (t) => {
+test("patch account", async (t) => {
   // Arrange.
 
   const user = await findUser("user1@keybr.com");
@@ -90,7 +90,7 @@ test.serial("patch account", async (t) => {
   }
 });
 
-test.serial("delete account", async (t) => {
+test("delete account", async (t) => {
   // Arrange.
 
   const factory = t.context.get(UserDataFactory);

@@ -17,7 +17,7 @@ test.afterEach(() => {
 
 const faker = new ResultFaker({ timeStamp: now.getTime() });
 
-test.serial("get empty high scores entries", async (t) => {
+test("get empty high scores entries", async (t) => {
   // Arrange.
 
   const request = startApp(t.context.get(Application, kMain));
@@ -32,7 +32,7 @@ test.serial("get empty high scores entries", async (t) => {
   t.deepEqual(await response.body.json(), []);
 });
 
-test.serial("get populated high scores entries", async (t) => {
+test("get populated high scores entries", async (t) => {
   // Arrange.
 
   await t.context.get(HighScoresFactory).append(1, [faker.nextResult()]);

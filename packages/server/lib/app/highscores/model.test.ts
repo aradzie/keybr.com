@@ -16,7 +16,7 @@ test.beforeEach(async () => {
   await seedModels();
 });
 
-test.serial("map entries", async (t) => {
+test("map entries", async (t) => {
   t.deepEqual(await mapEntries([]), []);
 
   t.deepEqual(

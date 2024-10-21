@@ -6,7 +6,7 @@ import { test } from "../test/context.ts";
 import { startApp } from "../test/request.ts";
 import { findUser } from "../test/sql.ts";
 
-test.serial("handle unauthenticated user", async (t) => {
+test("handle unauthenticated user", async (t) => {
   // Arrange.
 
   const request = startApp(t.context.get(Application, kMain));
@@ -18,7 +18,7 @@ test.serial("handle unauthenticated user", async (t) => {
   t.is((await request.DELETE("/_/sync/settings").send({})).status, 403);
 });
 
-test.serial("get empty settings", async (t) => {
+test("get empty settings", async (t) => {
   // Arrange.
 
   const user = await findUser("user1@keybr.com");
@@ -37,7 +37,7 @@ test.serial("get empty settings", async (t) => {
   t.deepEqual(await response.body.json(), {});
 });
 
-test.serial("get existing settings", async (t) => {
+test("get existing settings", async (t) => {
   // Arrange.
 
   const user = await findUser("user1@keybr.com");
@@ -64,7 +64,7 @@ test.serial("get existing settings", async (t) => {
   });
 });
 
-test.serial("validate content type on put settings", async (t) => {
+test("validate content type on put settings", async (t) => {
   // Arrange.
 
   const request = startApp(t.context.get(Application, kMain));
@@ -82,7 +82,7 @@ test.serial("validate content type on put settings", async (t) => {
   t.is(response.status, 415);
 });
 
-test.serial("validate format on put settings", async (t) => {
+test("validate format on put settings", async (t) => {
   // Arrange.
 
   const request = startApp(t.context.get(Application, kMain));
@@ -100,7 +100,7 @@ test.serial("validate format on put settings", async (t) => {
   t.is(response.status, 400);
 });
 
-test.serial("put settings", async (t) => {
+test("put settings", async (t) => {
   // Arrange.
 
   const user = await findUser("user1@keybr.com");
@@ -122,7 +122,7 @@ test.serial("put settings", async (t) => {
   t.like((await database.get(user.id!))?.toJSON(), { prop: "abc" });
 });
 
-test.serial("delete settings", async (t) => {
+test("delete settings", async (t) => {
   // Arrange.
 
   const user = await findUser("user1@keybr.com");

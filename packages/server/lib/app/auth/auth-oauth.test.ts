@@ -74,7 +74,7 @@ test.beforeEach(async (t) => {
   } satisfies ResourceOwner);
 });
 
-test.serial("handle unknown provider", async (t) => {
+test("handle unknown provider", async (t) => {
   // Arrange.
 
   const request = startApp(t.context.get(Application, kMain));
@@ -104,7 +104,7 @@ test.serial("handle unknown provider", async (t) => {
   );
 });
 
-test.serial("redirect to provider", async (t) => {
+test("redirect to provider", async (t) => {
   // Arrange.
 
   const request = startApp(t.context.get(Application, kMain));
@@ -131,7 +131,7 @@ test.serial("redirect to provider", async (t) => {
   );
 });
 
-test.serial("validate state", async (t) => {
+test("validate state", async (t) => {
   // Arrange.
 
   const request = startApp(t.context.get(Application, kMain));
@@ -170,7 +170,7 @@ test.serial("validate state", async (t) => {
   t.is(await request.who(), null);
 });
 
-test.serial("require email", async (t) => {
+test("require email", async (t) => {
   // Arrange.
 
   t.context.bind(kResourceOwner).toValue({
@@ -222,7 +222,7 @@ test.serial("require email", async (t) => {
   t.is(await request.who(), null);
 });
 
-test.serial("login a new user", async (t) => {
+test("login a new user", async (t) => {
   // Arrange.
 
   const request = startApp(t.context.get(Application, kMain));
@@ -264,7 +264,7 @@ test.serial("login a new user", async (t) => {
   t.is(await request.who(), "fake@keybr.com");
 });
 
-test.serial("login an existing user", async (t) => {
+test("login an existing user", async (t) => {
   // Arrange.
 
   await User.query().insertGraph({

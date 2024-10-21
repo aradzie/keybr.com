@@ -5,7 +5,7 @@ import { kMain } from "../module.ts";
 import { test } from "../test/context.ts";
 import { startApp } from "../test/request.ts";
 
-test.serial("fail if email is invalid", async (t) => {
+test("fail if email is invalid", async (t) => {
   // Arrange.
 
   const request = startApp(t.context.get(Application, kMain));
@@ -34,7 +34,7 @@ test.serial("fail if email is invalid", async (t) => {
   t.deepEqual(t.context.mailer.dump(), []);
 });
 
-test.serial("fail on email sending error", async (t) => {
+test("fail on email sending error", async (t) => {
   // Arrange.
 
   t.context.mailer.sendMail = () => {
@@ -65,7 +65,7 @@ test.serial("fail on email sending error", async (t) => {
   });
 });
 
-test.serial("send a new access token", async (t) => {
+test("send a new access token", async (t) => {
   // Arrange.
 
   const request = startApp(t.context.get(Application, kMain));
@@ -99,7 +99,7 @@ test.serial("send a new access token", async (t) => {
   t.true(message.text!.includes(userLoginRequest!.accessToken!));
 });
 
-test.serial("send an existing access token", async (t) => {
+test("send an existing access token", async (t) => {
   // Arrange.
 
   await UserLoginRequest.query().insertGraph({
@@ -139,7 +139,7 @@ test.serial("send an existing access token", async (t) => {
   t.true(message.text!.includes(userLoginRequest!.accessToken!));
 });
 
-test.serial("login with access token / new user", async (t) => {
+test("login with access token / new user", async (t) => {
   // Arrange.
 
   await UserLoginRequest.query().insertGraph({
@@ -170,7 +170,7 @@ test.serial("login with access token / new user", async (t) => {
   t.deepEqual(t.context.mailer.dump(), []);
 });
 
-test.serial("login with access token / existing user", async (t) => {
+test("login with access token / existing user", async (t) => {
   // Arrange.
 
   await User.query().insertGraph({
@@ -207,7 +207,7 @@ test.serial("login with access token / existing user", async (t) => {
   t.deepEqual(t.context.mailer.dump(), []);
 });
 
-test.serial("ignore invalid access token", async (t) => {
+test("ignore invalid access token", async (t) => {
   // Arrange.
 
   const request = startApp(t.context.get(Application, kMain));

@@ -3,7 +3,7 @@ import { kMain } from "../module.ts";
 import { test } from "../test/context.ts";
 import { startApp } from "../test/request.ts";
 
-test.serial("get profile", async (t) => {
+test("get profile", async (t) => {
   // Arrange.
 
   const request = startApp(t.context.get(Application, kMain));
