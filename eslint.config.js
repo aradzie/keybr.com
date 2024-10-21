@@ -13,21 +13,36 @@ import ts from "typescript-eslint";
 import pkg from "./package.json" with { type: "json" };
 
 export default [
-  { files: ["**/*.{js,ts,tsx}"] },
-  js.configs.recommended,
-  ...ts.configs.recommended,
-  react.configs.flat.recommended,
+  {
+    files: ["**/*.{js,ts,tsx}"],
+  },
+  {
+    ignores: [
+      "**/.types/",
+      "**/build/",
+      "**/sandbox/",
+      "**/tmp/",
+      "root/",
+      "packages/keybr-code/lib/parser.js",
+    ],
+  },
+  js.configs["recommended"],
+  ...ts.configs["recommended"],
+  react.configs.flat["recommended"],
   react.configs.flat["jsx-runtime"],
   node.configs["flat/recommended-module"],
   ava.configs["flat/recommended"],
   {
+    ignores: ["packages/server/**", "packages/server-cli/**"],
+    plugins: { "react-hooks": reactHooks },
+    rules: reactHooks.configs.recommended.rules,
+  },
+  {
     plugins: {
       "simple-import-sort": simpleImportSort,
-      "react-hooks": reactHooks,
       "formatjs": formatjs,
     },
     rules: {
-      ...reactHooks.configs.recommended.rules,
       // configure simple-import-sort
       "simple-import-sort/imports": [
         "error",
@@ -88,8 +103,6 @@ export default [
       "n/prefer-promises/dns": "error",
       "n/prefer-promises/fs": "error",
     },
-  },
-  {
     languageOptions: {
       globals: {
         ...globals.browser,
@@ -116,15 +129,5 @@ export default [
         ],
       },
     },
-  },
-  {
-    ignores: [
-      "**/.types/",
-      "**/build/",
-      "**/sandbox/",
-      "**/tmp/",
-      "root/",
-      "packages/keybr-code/lib/parser.js",
-    ],
   },
 ];
