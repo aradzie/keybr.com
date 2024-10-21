@@ -4,6 +4,7 @@ import js from "@eslint/js";
 import keybr from "@keybr/scripts/eslint-plugin-keybr.js";
 import confusingBrowserGlobals from "confusing-browser-globals";
 import ava from "eslint-plugin-ava";
+import chaiExpect from "eslint-plugin-chai-expect";
 import formatjs from "eslint-plugin-formatjs";
 import node from "eslint-plugin-n";
 import react from "eslint-plugin-react";
@@ -33,6 +34,7 @@ export default [
   react.configs.flat["jsx-runtime"],
   node.configs["flat/recommended-module"],
   ava.configs["flat/recommended"],
+  chaiExpect.configs["recommended-flat"],
   keybr.configs["recommended"],
   {
     ignores: ["packages/server/**", "packages/server-cli/**"],
@@ -101,6 +103,11 @@ export default [
       "n/prefer-node-protocol": "error",
       "n/prefer-promises/dns": "error",
       "n/prefer-promises/fs": "error",
+      // configure chai-expect
+      "chai-expect/no-inner-compare": "error",
+      "chai-expect/no-inner-literal": "error",
+      "chai-expect/missing-assertion": "error",
+      "chai-expect/terminating-properties": "error",
     },
     languageOptions: {
       globals: {

@@ -1,13 +1,14 @@
+import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { LearningRate, LessonKey, lessonProps, Target } from "@keybr/lesson";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { generateKeySamples } from "@keybr/result";
 import { FakeSettingsContext, Settings } from "@keybr/settings";
 import { render } from "@testing-library/react";
-import test from "ava";
+import { assert } from "chai";
 import { KeyDetailsChart } from "./KeyDetailsChart.tsx";
 
-test("render empty", (t) => {
+test("render empty", () => {
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
@@ -29,15 +30,14 @@ test("render empty", (t) => {
       </FakeSettingsContext>
     </FakeIntlProvider>,
   );
-  t.pass();
   r.unmount();
 });
 
-test("render non-empty", (t) => {
+test("render non-empty", () => {
   const settings = new Settings().set(lessonProps.targetSpeed, /* 35WPM */ 175);
   const target = new Target(settings);
   const learningRate = LearningRate.from(generateKeySamples(10), target);
-  t.not(learningRate, null);
+  assert.isNotNull(learningRate);
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
@@ -59,6 +59,5 @@ test("render non-empty", (t) => {
       </FakeSettingsContext>
     </FakeIntlProvider>,
   );
-  t.pass();
   r.unmount();
 });

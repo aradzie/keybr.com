@@ -1,11 +1,11 @@
+import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { Distribution } from "@keybr/math";
 import { FakeSettingsContext } from "@keybr/settings";
 import { render } from "@testing-library/react";
-import test from "ava";
 import { AccuracyHistogram } from "./AccuracyHistogram.tsx";
 
-test("render empty", (t) => {
+test("render empty", () => {
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
@@ -18,11 +18,10 @@ test("render empty", (t) => {
       </FakeSettingsContext>
     </FakeIntlProvider>,
   );
-  t.pass();
   r.unmount();
 });
 
-test("render non-empty", (t) => {
+test("render non-empty", () => {
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
@@ -35,7 +34,6 @@ test("render non-empty", (t) => {
       </FakeSettingsContext>
     </FakeIntlProvider>,
   );
-  t.pass();
   r.unmount();
 });
 

@@ -1,165 +1,94 @@
-import test from "ava";
+import { describe, it, test } from "node:test";
+import { assert } from "chai";
 import { crc32 } from "./crc32.ts";
 import { DataError } from "./errors.ts";
 import { Reader, Writer } from "./io.ts";
 
-test("validate arguments", (t) => {
+test("validate arguments", () => {
   const writer = new Writer();
 
-  t.throws(
-    () => {
-      writer.putInt8(Math.PI);
-    },
-    { instanceOf: TypeError },
-  );
-  t.throws(
-    () => {
-      writer.putInt8(-0x80 - 1);
-    },
-    { instanceOf: TypeError },
-  );
-  t.throws(
-    () => {
-      writer.putInt8(0xf0 + 1);
-    },
-    { instanceOf: TypeError },
-  );
-  t.throws(
-    () => {
-      writer.putUint8(Math.PI);
-    },
-    { instanceOf: TypeError },
-  );
-  t.throws(
-    () => {
-      writer.putUint8(-1);
-    },
-    { instanceOf: TypeError },
-  );
-  t.throws(
-    () => {
-      writer.putUint8(0xff + 1);
-    },
-    { instanceOf: TypeError },
-  );
-  t.throws(
-    () => {
-      writer.putInt16(Math.PI);
-    },
-    { instanceOf: TypeError },
-  );
-  t.throws(
-    () => {
-      writer.putInt16(-0x8000 - 1);
-    },
-    { instanceOf: TypeError },
-  );
-  t.throws(
-    () => {
-      writer.putInt16(0xf000 + 1);
-    },
-    { instanceOf: TypeError },
-  );
-  t.throws(
-    () => {
-      writer.putUint16(Math.PI);
-    },
-    { instanceOf: TypeError },
-  );
-  t.throws(
-    () => {
-      writer.putUint16(-1);
-    },
-    { instanceOf: TypeError },
-  );
-  t.throws(
-    () => {
-      writer.putUint16(0xffff + 1);
-    },
-    { instanceOf: TypeError },
-  );
-  t.throws(
-    () => {
-      writer.putInt32(Math.PI);
-    },
-    { instanceOf: TypeError },
-  );
-  t.throws(
-    () => {
-      writer.putInt32(-0x80000000 - 1);
-    },
-    { instanceOf: TypeError },
-  );
-  t.throws(
-    () => {
-      writer.putInt32(0xf0000000 + 1);
-    },
-    { instanceOf: TypeError },
-  );
-  t.throws(
-    () => {
-      writer.putUint32(Math.PI);
-    },
-    { instanceOf: TypeError },
-  );
-  t.throws(
-    () => {
-      writer.putUint32(-1);
-    },
-    { instanceOf: TypeError },
-  );
-  t.throws(
-    () => {
-      writer.putUint32(0xffffffff + 1);
-    },
-    { instanceOf: TypeError },
-  );
-  t.throws(
-    () => {
-      writer.putIntVlq(Math.PI);
-    },
-    { instanceOf: TypeError },
-  );
-  t.throws(
-    () => {
-      writer.putIntVlq(-0x80000000 - 1);
-    },
-    { instanceOf: TypeError },
-  );
-  t.throws(
-    () => {
-      writer.putIntVlq(0xf0000000 + 1);
-    },
-    { instanceOf: TypeError },
-  );
-  t.throws(
-    () => {
-      writer.putUintVlq(Math.PI);
-    },
-    { instanceOf: TypeError },
-  );
-  t.throws(
-    () => {
-      writer.putUintVlq(-1);
-    },
-    { instanceOf: TypeError },
-  );
-  t.throws(
-    () => {
-      writer.putUintVlq(0xffffffff + 1);
-    },
-    { instanceOf: TypeError },
-  );
+  assert.throws(() => {
+    writer.putInt8(Math.PI);
+  }, TypeError);
+  assert.throws(() => {
+    writer.putInt8(-0x80 - 1);
+  }, TypeError);
+  assert.throws(() => {
+    writer.putInt8(0xf0 + 1);
+  }, TypeError);
+  assert.throws(() => {
+    writer.putUint8(Math.PI);
+  }, TypeError);
+  assert.throws(() => {
+    writer.putUint8(-1);
+  }, TypeError);
+  assert.throws(() => {
+    writer.putUint8(0xff + 1);
+  }, TypeError);
+  assert.throws(() => {
+    writer.putInt16(Math.PI);
+  }, TypeError);
+  assert.throws(() => {
+    writer.putInt16(-0x8000 - 1);
+  }, TypeError);
+  assert.throws(() => {
+    writer.putInt16(0xf000 + 1);
+  }, TypeError);
+  assert.throws(() => {
+    writer.putUint16(Math.PI);
+  }, TypeError);
+  assert.throws(() => {
+    writer.putUint16(-1);
+  }, TypeError);
+  assert.throws(() => {
+    writer.putUint16(0xffff + 1);
+  }, TypeError);
+  assert.throws(() => {
+    writer.putInt32(Math.PI);
+  }, TypeError);
+  assert.throws(() => {
+    writer.putInt32(-0x80000000 - 1);
+  }, TypeError);
+  assert.throws(() => {
+    writer.putInt32(0xf0000000 + 1);
+  }, TypeError);
+  assert.throws(() => {
+    writer.putUint32(Math.PI);
+  }, TypeError);
+  assert.throws(() => {
+    writer.putUint32(-1);
+  }, TypeError);
+  assert.throws(() => {
+    writer.putUint32(0xffffffff + 1);
+  }, TypeError);
+  assert.throws(() => {
+    writer.putIntVlq(Math.PI);
+  }, TypeError);
+  assert.throws(() => {
+    writer.putIntVlq(-0x80000000 - 1);
+  }, TypeError);
+  assert.throws(() => {
+    writer.putIntVlq(0xf0000000 + 1);
+  }, TypeError);
+  assert.throws(() => {
+    writer.putUintVlq(Math.PI);
+  }, TypeError);
+  assert.throws(() => {
+    writer.putUintVlq(-1);
+  }, TypeError);
+  assert.throws(() => {
+    writer.putUintVlq(0xffffffff + 1);
+  }, TypeError);
 
-  t.is(crc32(writer.buffer()), 0);
+  assert.strictEqual(crc32(writer.buffer()), 0);
 
-  t.is(writer.buffer().byteLength, 0);
+  assert.strictEqual(writer.buffer().byteLength, 0);
 });
 
-test("write and read all types", (t) => {
+test("write and read all data types", () => {
   const writer = new Writer(4);
 
-  t.is(crc32(writer.buffer()), 0);
+  assert.strictEqual(crc32(writer.buffer()), 0);
 
   writer.putInt8(-1);
   writer.putUint8(2);
@@ -175,37 +104,58 @@ test("write and read all types", (t) => {
   writer.putString("world");
   writer.putBuffer(new Uint8Array([0, 1, 2, 3]));
 
-  t.is(crc32(writer.buffer()), 0x8d315f3f);
+  assert.strictEqual(crc32(writer.buffer()), 0x8d315f3f);
 
   const reader = new Reader(writer.buffer());
 
-  t.is(reader.position(), 0);
-  t.is(reader.remaining(), 44);
-  t.is(reader.getInt8(), -1);
-  t.is(reader.getUint8(), 2);
-  t.is(reader.getInt16(), -3);
-  t.is(reader.getUint16(), 4);
-  t.is(reader.getInt32(), -5);
-  t.is(reader.getUint32(), 6);
-  t.is(reader.getFloat32(), 7.699999809265137);
-  t.is(reader.getFloat64(), 8.888888888888888);
-  t.is(reader.getIntVlq(), -9);
-  t.is(reader.getUintVlq(), 10);
-  t.is(reader.getString(), "hello");
-  t.is(reader.getString(), "world");
-  t.deepEqual(reader.getBuffer(4), new Uint8Array([0, 1, 2, 3]));
-  t.is(reader.position(), 44);
-  t.is(reader.remaining(), 0);
+  assert.strictEqual(reader.position(), 0);
+  assert.strictEqual(reader.remaining(), 44);
+  assert.strictEqual(reader.getInt8(), -1);
+  assert.strictEqual(reader.getUint8(), 2);
+  assert.strictEqual(reader.getInt16(), -3);
+  assert.strictEqual(reader.getUint16(), 4);
+  assert.strictEqual(reader.getInt32(), -5);
+  assert.strictEqual(reader.getUint32(), 6);
+  assert.strictEqual(reader.getFloat32(), 7.699999809265137);
+  assert.strictEqual(reader.getFloat64(), 8.888888888888888);
+  assert.strictEqual(reader.getIntVlq(), -9);
+  assert.strictEqual(reader.getUintVlq(), 10);
+  assert.strictEqual(reader.getString(), "hello");
+  assert.strictEqual(reader.getString(), "world");
+  assert.deepStrictEqual(reader.getBuffer(4), new Uint8Array([0, 1, 2, 3]));
+  assert.strictEqual(reader.position(), 44);
+  assert.strictEqual(reader.remaining(), 0);
 });
 
-test("write and read IntVlq", (t) => {
-  t.is(new Writer().putIntVlq(0x00000000 >> 0).buffer().byteLength, 1);
-  t.is(new Writer().putIntVlq(0x00000001 >> 0).buffer().byteLength, 1);
-  t.is(new Writer().putIntVlq(0xffffffff >> 0).buffer().byteLength, 1);
-  t.is(new Writer().putIntVlq(0x00000002 >> 0).buffer().byteLength, 1);
-  t.is(new Writer().putIntVlq(0xfffffffe >> 0).buffer().byteLength, 1);
-  t.is(new Writer().putIntVlq(0x7fffffff >> 0).buffer().byteLength, 5);
-  t.is(new Writer().putIntVlq(0x80000000 >> 0).buffer().byteLength, 5);
+test("write and read IntVlq", () => {
+  assert.strictEqual(
+    new Writer().putIntVlq(0x00000000 >> 0).buffer().byteLength,
+    1,
+  );
+  assert.strictEqual(
+    new Writer().putIntVlq(0x00000001 >> 0).buffer().byteLength,
+    1,
+  );
+  assert.strictEqual(
+    new Writer().putIntVlq(0xffffffff >> 0).buffer().byteLength,
+    1,
+  );
+  assert.strictEqual(
+    new Writer().putIntVlq(0x00000002 >> 0).buffer().byteLength,
+    1,
+  );
+  assert.strictEqual(
+    new Writer().putIntVlq(0xfffffffe >> 0).buffer().byteLength,
+    1,
+  );
+  assert.strictEqual(
+    new Writer().putIntVlq(0x7fffffff >> 0).buffer().byteLength,
+    5,
+  );
+  assert.strictEqual(
+    new Writer().putIntVlq(0x80000000 >> 0).buffer().byteLength,
+    5,
+  );
 
   const writer = new Writer();
 
@@ -223,32 +173,65 @@ test("write and read IntVlq", (t) => {
 
   const reader = new Reader(writer.buffer());
 
-  t.is(reader.getIntVlq(), -2147483648);
-  t.is(reader.getIntVlq(), -255);
-  t.is(reader.getIntVlq(), -3);
-  t.is(reader.getIntVlq(), -2);
-  t.is(reader.getIntVlq(), -1);
-  t.is(reader.getIntVlq(), 0);
-  t.is(reader.getIntVlq(), 1);
-  t.is(reader.getIntVlq(), 2);
-  t.is(reader.getIntVlq(), 3);
-  t.is(reader.getIntVlq(), 255);
-  t.is(reader.getIntVlq(), 2147483647);
-  t.is(reader.remaining(), 0);
+  assert.strictEqual(reader.getIntVlq(), -2147483648);
+  assert.strictEqual(reader.getIntVlq(), -255);
+  assert.strictEqual(reader.getIntVlq(), -3);
+  assert.strictEqual(reader.getIntVlq(), -2);
+  assert.strictEqual(reader.getIntVlq(), -1);
+  assert.strictEqual(reader.getIntVlq(), 0);
+  assert.strictEqual(reader.getIntVlq(), 1);
+  assert.strictEqual(reader.getIntVlq(), 2);
+  assert.strictEqual(reader.getIntVlq(), 3);
+  assert.strictEqual(reader.getIntVlq(), 255);
+  assert.strictEqual(reader.getIntVlq(), 2147483647);
+  assert.strictEqual(reader.remaining(), 0);
 });
 
-test("write and read UintVlq", (t) => {
-  t.is(new Writer().putUintVlq(0x00000000).buffer().byteLength, 1);
-  t.is(new Writer().putUintVlq(0x00000001).buffer().byteLength, 1);
-  t.is(new Writer().putUintVlq(0x0000007f).buffer().byteLength, 1);
-  t.is(new Writer().putUintVlq(0x00000080).buffer().byteLength, 2);
-  t.is(new Writer().putUintVlq(0x00003f80).buffer().byteLength, 2);
-  t.is(new Writer().putUintVlq(0x00003f81).buffer().byteLength, 3);
-  t.is(new Writer().putUintVlq(0x001fc000).buffer().byteLength, 3);
-  t.is(new Writer().putUintVlq(0x001fc001).buffer().byteLength, 4);
-  t.is(new Writer().putUintVlq(0x0fe00000).buffer().byteLength, 4);
-  t.is(new Writer().putUintVlq(0x0fe00001).buffer().byteLength, 5);
-  t.is(new Writer().putUintVlq(0xffffffff).buffer().byteLength, 5);
+test("write and read UintVlq", () => {
+  assert.strictEqual(
+    new Writer().putUintVlq(0x00000000).buffer().byteLength,
+    1,
+  );
+  assert.strictEqual(
+    new Writer().putUintVlq(0x00000001).buffer().byteLength,
+    1,
+  );
+  assert.strictEqual(
+    new Writer().putUintVlq(0x0000007f).buffer().byteLength,
+    1,
+  );
+  assert.strictEqual(
+    new Writer().putUintVlq(0x00000080).buffer().byteLength,
+    2,
+  );
+  assert.strictEqual(
+    new Writer().putUintVlq(0x00003f80).buffer().byteLength,
+    2,
+  );
+  assert.strictEqual(
+    new Writer().putUintVlq(0x00003f81).buffer().byteLength,
+    3,
+  );
+  assert.strictEqual(
+    new Writer().putUintVlq(0x001fc000).buffer().byteLength,
+    3,
+  );
+  assert.strictEqual(
+    new Writer().putUintVlq(0x001fc001).buffer().byteLength,
+    4,
+  );
+  assert.strictEqual(
+    new Writer().putUintVlq(0x0fe00000).buffer().byteLength,
+    4,
+  );
+  assert.strictEqual(
+    new Writer().putUintVlq(0x0fe00001).buffer().byteLength,
+    5,
+  );
+  assert.strictEqual(
+    new Writer().putUintVlq(0xffffffff).buffer().byteLength,
+    5,
+  );
 
   const writer = new Writer();
 
@@ -264,20 +247,20 @@ test("write and read UintVlq", (t) => {
 
   const reader = new Reader(writer.buffer());
 
-  t.is(reader.getUintVlq(), 0x00000000);
-  t.is(reader.getUintVlq(), 0x00000001);
-  t.is(reader.getUintVlq(), 0x0000007f);
-  t.is(reader.getUintVlq(), 0x00000080);
-  t.is(reader.getUintVlq(), 0x000000ff);
-  t.is(reader.getUintVlq(), 0x00000100);
-  t.is(reader.getUintVlq(), 0x0000ffff);
-  t.is(reader.getUintVlq(), 0x00010000);
-  t.is(reader.getUintVlq(), 0xffffffff);
-  t.is(reader.remaining(), 0);
+  assert.strictEqual(reader.getUintVlq(), 0x00000000);
+  assert.strictEqual(reader.getUintVlq(), 0x00000001);
+  assert.strictEqual(reader.getUintVlq(), 0x0000007f);
+  assert.strictEqual(reader.getUintVlq(), 0x00000080);
+  assert.strictEqual(reader.getUintVlq(), 0x000000ff);
+  assert.strictEqual(reader.getUintVlq(), 0x00000100);
+  assert.strictEqual(reader.getUintVlq(), 0x0000ffff);
+  assert.strictEqual(reader.getUintVlq(), 0x00010000);
+  assert.strictEqual(reader.getUintVlq(), 0xffffffff);
+  assert.strictEqual(reader.remaining(), 0);
 });
 
-test("read UintVlq from given examples", (t) => {
-  {
+describe("read UintVlq from the given examples", () => {
+  it("should read 0x00000000", () => {
     const writer = new Writer();
 
     writer.putUint8(0x80);
@@ -286,10 +269,10 @@ test("read UintVlq from given examples", (t) => {
     writer.putUint8(0x80);
     writer.putUint8(0x00);
 
-    t.is(new Reader(writer.buffer()).getUintVlq(), 0x00000000);
-  }
+    assert.strictEqual(new Reader(writer.buffer()).getUintVlq(), 0x00000000);
+  });
 
-  {
+  it("should read 0xffffffff", () => {
     const writer = new Writer();
 
     writer.putUint8(0x8f);
@@ -298,23 +281,26 @@ test("read UintVlq from given examples", (t) => {
     writer.putUint8(0xff);
     writer.putUint8(0x7f);
 
-    t.is(new Reader(writer.buffer()).getUintVlq(), 0xffffffff);
-  }
+    assert.strictEqual(new Reader(writer.buffer()).getUintVlq(), 0xffffffff);
+  });
+});
 
-  {
+describe("handle UintVlq read errors", () => {
+  it("should throw an error if the input data is too short", () => {
     const writer = new Writer();
 
     writer.putUint8(0xff);
 
-    t.throws(
+    assert.throws(
       () => {
         new Reader(writer.buffer()).getUintVlq();
       },
-      { instanceOf: DataError },
+      DataError,
+      "Premature end of data",
     );
-  }
+  });
 
-  {
+  it("should throw an error if too many leading bits", () => {
     const writer = new Writer();
 
     writer.putUint8(0x90);
@@ -323,15 +309,16 @@ test("read UintVlq from given examples", (t) => {
     writer.putUint8(0xff);
     writer.putUint8(0x7f);
 
-    t.throws(
+    assert.throws(
       () => {
         new Reader(writer.buffer()).getUintVlq();
       },
-      { instanceOf: DataError },
+      DataError,
+      "Too many leading bits",
     );
-  }
+  });
 
-  {
+  it("should throw an error if too many trailing bits", () => {
     const writer = new Writer();
 
     writer.putUint8(0x8f);
@@ -340,16 +327,17 @@ test("read UintVlq from given examples", (t) => {
     writer.putUint8(0xff);
     writer.putUint8(0xff);
 
-    t.throws(
+    assert.throws(
       () => {
         new Reader(writer.buffer()).getUintVlq();
       },
-      { instanceOf: DataError },
+      DataError,
+      "Too many trailing bits",
     );
-  }
+  });
 });
 
-test("write and read UTF-8", (t) => {
+test("write and read a string", () => {
   const writer = new Writer(4);
 
   writer.putString("");
@@ -358,13 +346,13 @@ test("write and read UTF-8", (t) => {
 
   const reader = new Reader(writer.buffer());
 
-  t.is(reader.getString(), "");
-  t.is(reader.getString(), "hello");
-  t.is(reader.getString(), "🍬🍭");
-  t.is(reader.remaining(), 0);
+  assert.strictEqual(reader.getString(), "");
+  assert.strictEqual(reader.getString(), "hello");
+  assert.strictEqual(reader.getString(), "🍬🍭");
+  assert.strictEqual(reader.remaining(), 0);
 });
 
-test("write and read buffer", (t) => {
+test("write and read a buffer", () => {
   const writer = new Writer(4);
 
   writer.putBuffer(new Uint8Array([0, 1, 2, 3]).buffer);
@@ -372,40 +360,35 @@ test("write and read buffer", (t) => {
 
   const reader = new Reader(writer.buffer());
 
-  t.deepEqual(reader.getBuffer(4), new Uint8Array([0, 1, 2, 3]));
-  t.deepEqual(reader.getBuffer(4), new Uint8Array([4, 5, 6, 7]));
-  t.is(reader.remaining(), 0);
+  assert.deepStrictEqual(reader.getBuffer(4), new Uint8Array([0, 1, 2, 3]));
+  assert.deepStrictEqual(reader.getBuffer(4), new Uint8Array([4, 5, 6, 7]));
+  assert.strictEqual(reader.remaining(), 0);
 });
 
-test("position and remaining", (t) => {
-  {
-    const reader = new Reader(new Uint8Array(new ArrayBuffer(100), 0, 0));
+test("read to the end of input", () => {
+  const reader = new Reader(new Uint8Array(new ArrayBuffer(100)));
 
-    t.is(reader.position(), 0);
-    t.is(reader.remaining(), 0);
+  assert.strictEqual(reader.position(), 0);
+  assert.strictEqual(reader.remaining(), 100);
 
-    t.throws(
-      () => {
-        reader.getBuffer(1);
-      },
-      { instanceOf: DataError },
-    );
-  }
+  reader.getBuffer(50);
 
-  {
-    const reader = new Reader(new Uint8Array(new ArrayBuffer(100)));
+  assert.strictEqual(reader.position(), 50);
+  assert.strictEqual(reader.remaining(), 50);
 
-    t.is(reader.position(), 0);
-    t.is(reader.remaining(), 100);
+  reader.getBuffer(50);
 
-    reader.getBuffer(50);
+  assert.strictEqual(reader.position(), 100);
+  assert.strictEqual(reader.remaining(), 0);
+});
 
-    t.is(reader.position(), 50);
-    t.is(reader.remaining(), 50);
+test("throw an error if reading past the end of input", () => {
+  const reader = new Reader(new Uint8Array(new ArrayBuffer(100), 0, 0));
 
-    reader.getBuffer(50);
+  assert.strictEqual(reader.position(), 0);
+  assert.strictEqual(reader.remaining(), 0);
 
-    t.is(reader.position(), 100);
-    t.is(reader.remaining(), 0);
-  }
+  assert.throws(() => {
+    reader.getBuffer(1);
+  }, DataError);
 });

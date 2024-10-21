@@ -1,7 +1,8 @@
-import test from "ava";
+import { test } from "node:test";
+import { assert } from "chai";
 import { makeAccuracyDistribution, makeSpeedDistribution } from "./dist.ts";
 
-test("data size", (t) => {
-  t.is(makeSpeedDistribution().length, 751);
-  t.is(makeAccuracyDistribution().length, 1001);
+test("data size", () => {
+  assert.strictEqual(makeSpeedDistribution().length, 751);
+  assert.strictEqual(makeAccuracyDistribution().length, 1001);
 });

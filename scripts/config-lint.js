@@ -68,7 +68,7 @@ function processPackageJson(packageJsonFile, typescriptFiles, lessFiles) {
     devDependencies = {},
     peerDependencies,
     optionalDependencies,
-    scripts: { clean, compile, ...scripts } = {},
+    scripts: { clean, compile, test, ...scripts } = {},
     ava = {},
   } = readJsonSync(packageJsonFile);
 
@@ -77,16 +77,16 @@ function processPackageJson(packageJsonFile, typescriptFiles, lessFiles) {
     (item) => item.endsWith(".test.ts") || item.endsWith(".test.tsx"),
   );
 
-  const opt = {
-    scripts: {},
-  };
+  const opt = {};
+
   if (hasTs) {
-    Object.assign(opt.scripts, {
+    Object.assign(scripts, {
       clean: "rm -fr .types",
       compile: "tsc",
+      test,
     });
-    if (hasTsTests) {
-      Object.assign(opt.scripts, {
+    if (hasTsTests && !test?.includes("--test")) {
+      Object.assign(scripts, {
         test: "ava",
       });
       const { nodeArguments, serial } = ava;
@@ -103,7 +103,6 @@ function processPackageJson(packageJsonFile, typescriptFiles, lessFiles) {
       });
     }
   }
-  Object.assign(opt.scripts, scripts);
 
   const result = {
     private: true,
@@ -121,6 +120,7 @@ function processPackageJson(packageJsonFile, typescriptFiles, lessFiles) {
     devDependencies,
     peerDependencies,
     optionalDependencies,
+    scripts,
     ...opt,
   };
 

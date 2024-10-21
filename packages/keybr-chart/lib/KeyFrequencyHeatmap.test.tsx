@@ -1,13 +1,13 @@
+import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { Layout, loadKeyboard } from "@keybr/keyboard";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { makeKeyStatsMap, ResultFaker } from "@keybr/result";
 import { FakeSettingsContext } from "@keybr/settings";
 import { render } from "@testing-library/react";
-import test from "ava";
 import { KeyFrequencyHeatmap } from "./KeyFrequencyHeatmap.tsx";
 
-test("render empty", (t) => {
+test("render empty", () => {
   const letters = FakePhoneticModel.letters;
   const faker = new ResultFaker({ letters });
   const results = faker.nextResultList(0);
@@ -21,11 +21,10 @@ test("render empty", (t) => {
       </FakeSettingsContext>
     </FakeIntlProvider>,
   );
-  t.pass();
   r.unmount();
 });
 
-test("render non-empty", (t) => {
+test("render non-empty", () => {
   const letters = FakePhoneticModel.letters;
   const faker = new ResultFaker({ letters });
   const results = faker.nextResultList(100);
@@ -39,6 +38,5 @@ test("render non-empty", (t) => {
       </FakeSettingsContext>
     </FakeIntlProvider>,
   );
-  t.pass();
   r.unmount();
 });
