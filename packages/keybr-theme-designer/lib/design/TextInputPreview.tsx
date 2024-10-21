@@ -35,7 +35,7 @@ export function TextInputPreview() {
   }, []);
   return (
     <Box alignItems="center" justifyContent="center">
-      <StaticText lines={lines} cursor={true} />
+      <StaticText lines={lines} cursor={true} size="X1" />
     </Box>
   );
 }
