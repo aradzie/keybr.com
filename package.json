@@ -77,7 +77,7 @@
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.0.1",
     "@testing-library/user-event": "^14.5.2",
-    "@types/node": "^20.16.13",
+    "@types/node": "^22.7.7",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.1",
     "ava": "^6.1.3",
