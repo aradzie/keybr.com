@@ -18,7 +18,6 @@ test.serial("render sign-in fragment", (t) => {
           premium: false,
         },
         settings: null,
-        prefs: null,
       }}
     >
       <FakeIntlProvider>
@@ -64,7 +63,6 @@ test.serial("render account fragment", (t) => {
           premium: false,
         },
         settings: null,
-        prefs: null,
       }}
     >
       <FakeIntlProvider>

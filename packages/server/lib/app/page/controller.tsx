@@ -208,7 +208,6 @@ export class Controller {
       user: user?.toDetails() ?? null,
       publicUser,
       settings: settings?.toJSON() ?? null,
-      prefs: themePrefs(ctx),
     };
   }
 
@@ -231,9 +230,7 @@ export class Controller {
       <RawIntlProvider value={intl}>
         <PreferredLocaleContext.Provider value={preferredLocale(ctx)}>
           <PageDataContext.Provider value={pageData}>
-            <ThemeContext.Provider
-              value={staticTheme(new ThemePrefs(pageData.prefs))}
-            >
+            <ThemeContext.Provider value={staticTheme(themePrefs(ctx))}>
               <Shell page={page} headers={ctx.request.headers} />
             </ThemeContext.Provider>
           </PageDataContext.Provider>

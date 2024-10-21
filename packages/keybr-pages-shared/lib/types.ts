@@ -32,10 +32,6 @@ export type PageData = {
    * Serialized user settings.
    */
   readonly settings: unknown | null;
-  /**
-   * Serialized user preferences.
-   */
-  readonly prefs: unknown | null;
 };
 
 export type UserDetails = {

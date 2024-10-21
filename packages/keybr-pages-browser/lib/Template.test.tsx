@@ -18,10 +18,6 @@ test("render", (t) => {
           imageUrl: null,
         },
         settings: null,
-        prefs: {
-          color: "light",
-          font: "opensans",
-        },
       }}
     >
       <FakeIntlProvider>
@@ -53,10 +49,6 @@ test("render alt", (t) => {
           premium: true,
         },
         settings: null,
-        prefs: {
-          color: "light",
-          font: "opensans",
-        },
       }}
     >
       <FakeIntlProvider>
