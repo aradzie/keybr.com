@@ -41,8 +41,9 @@ export default {
       },
       ")",
       {
-        f: 0.5,
-        opt: {
+        flag: "types",
+        inv: false,
+        cond: {
           seq: [
             " -> ",
             {
@@ -130,8 +131,9 @@ export default {
         ref: "python_variable_name",
       },
       {
-        f: 0.5,
-        opt: {
+        flag: "types",
+        inv: false,
+        cond: {
           seq: [
             ": ",
             {
@@ -389,12 +391,27 @@ export default {
     ],
   },
   python_literal: {
-    alt: [
+    seq: [
       {
-        ref: "python_string_literal",
+        flag: "numbers",
+        inv: false,
+        cond: {
+          alt: [
+            {
+              ref: "python_string_literal",
+            },
+            {
+              ref: "python_number_literal",
+            },
+          ],
+        },
       },
       {
-        ref: "python_number_literal",
+        flag: "numbers",
+        inv: true,
+        cond: {
+          ref: "python_string_literal",
+        },
       },
     ],
   },
@@ -440,231 +457,770 @@ export default {
   },
   python_variable_name: {
     alt: [
-      "i",
-      "x",
       "_",
-      "y",
-      "v",
-      "result",
-      "out",
-      "config",
-      "inputs",
-      "k",
-      "output",
-      "batch_size",
-      "__all__",
-      "value",
-      "n",
-      "j",
-      "expected",
-      "data",
-      "outputs",
-      "dtype",
-      "s",
-      "b",
       "a",
-      "key",
-      "res",
-      "name",
-      "op",
-      "width",
-      "img",
-      "mask",
-      "height",
-      "B",
-      "shape",
-      "f",
-      "c",
-      "df",
-      "h",
-      "m",
-      "w",
-      "t",
-      "index",
-      "values",
-      "d",
-      "H",
-      "input_shape",
-      "root",
-      "count",
       "actual",
-      "W",
-      "C",
+      "b",
+      "c",
+      {
+        seq: [
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                {
+                  alt: ["initial", "new", "bad", "good"],
+                },
+                "_",
+              ],
+            },
+          },
+          "config",
+        ],
+      },
+      "count",
+      "d",
+      {
+        seq: [
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                {
+                  alt: ["initial", "new", "bad", "good", "user"],
+                },
+                "_",
+              ],
+            },
+          },
+          "data",
+        ],
+      },
+      "df",
+      "dtype",
+      "expected",
+      "f",
+      {
+        seq: [
+          {
+            f: 0.5,
+            opt: "my_",
+          },
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                {
+                  alt: ["data", "config", "image"],
+                },
+                "_",
+              ],
+            },
+          },
+          "file",
+        ],
+      },
+      "h",
+      {
+        seq: [
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                {
+                  alt: ["min", "max"],
+                },
+                "_",
+              ],
+            },
+          },
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                {
+                  alt: ["inner", "outer"],
+                },
+                "_",
+              ],
+            },
+          },
+          "height",
+        ],
+      },
+      "i",
+      "img",
+      {
+        seq: [
+          {
+            alt: ["first", "last", "prev", "next", "min", "max"],
+          },
+          "_index",
+        ],
+      },
+      "input",
+      {
+        seq: [
+          {
+            alt: ["input", "output"],
+          },
+          "_shape",
+        ],
+      },
+      "j",
+      "k",
+      {
+        seq: [
+          {
+            alt: ["first", "last", "prev", "next"],
+          },
+          "_key",
+        ],
+      },
+      {
+        seq: [
+          {
+            alt: ["first", "last", "prev", "next", "min", "max"],
+          },
+          "_layer",
+        ],
+      },
+      "m",
+      "mask",
+      "n",
+      {
+        seq: [
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                {
+                  alt: ["file", "dir", "entry"],
+                },
+                "_",
+              ],
+            },
+          },
+          "name",
+        ],
+      },
+      {
+        seq: [
+          {
+            alt: ["first", "last", "prev", "next"],
+          },
+          "_node",
+        ],
+      },
+      "op",
+      {
+        seq: [
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                {
+                  alt: ["last", "saved"],
+                },
+                "_",
+              ],
+            },
+          },
+          {
+            alt: ["out", "output"],
+          },
+        ],
+      },
+      "res",
+      {
+        seq: [
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                {
+                  alt: ["min", "max", "last"],
+                },
+                "_",
+              ],
+            },
+          },
+          "result",
+        ],
+      },
+      "root",
+      "s",
+      {
+        seq: [
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                {
+                  alt: ["data", "layer", "image"],
+                },
+                "_",
+              ],
+            },
+          },
+          "shape",
+        ],
+      },
+      {
+        seq: [
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                {
+                  alt: ["min", "max"],
+                },
+                "_",
+              ],
+            },
+          },
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                {
+                  alt: ["inner", "outer"],
+                },
+                "_",
+              ],
+            },
+          },
+          "size",
+        ],
+      },
+      "t",
+      "u",
+      "v",
+      {
+        seq: [
+          {
+            alt: ["first", "last", "prev", "next", "min", "max"],
+          },
+          "_value",
+        ],
+      },
+      "w",
+      {
+        seq: [
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                {
+                  alt: ["min", "max"],
+                },
+                "_",
+              ],
+            },
+          },
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                {
+                  alt: ["inner", "outer"],
+                },
+                "_",
+              ],
+            },
+          },
+          "width",
+        ],
+      },
+      "x",
+      "y",
+      "z",
     ],
   },
   python_function_name: {
     alt: [
-      "__init__",
-      "call",
-      "get_config",
-      "__repr__",
-      "main",
-      "build",
       "__call__",
-      "from_config",
-      "__getitem__",
-      "__len__",
-      "get",
-      "__iter__",
-      "dfs",
-      "run",
-      "__str__",
-      "__eq__",
-      "add",
-      "test_correctness",
-      "update",
-      "create",
-      "append",
       "__enter__",
+      "__eq__",
       "__exit__",
-      "load",
       "__getattr__",
-      "pop",
-      "constants",
-      "wrapper",
-      "__setitem__",
-      "insert",
-      "reverse",
-      "preprocess_input",
+      "__getitem__",
+      "__init__",
+      "__iter__",
+      "__len__",
       "__ne__",
       "__new__",
-      "shape",
-      "remove",
-      "find",
-      "identity",
-      "serialize",
-      "size",
-      "copy",
-      "floor",
-      "reset_state",
-      "func",
-      "inverse_transform",
+      "__repr__",
+      "__setitem__",
+      "__str__",
+      "add",
+      "append",
+      "build",
+      "call",
       "configure",
-      "save",
-      "update_state",
+      "constants",
+      {
+        seq: [
+          "copy",
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                "_",
+                {
+                  alt: ["item", "node", "entry", "layer", "file", "config"],
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        seq: [
+          "create",
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                "_",
+                {
+                  alt: ["item", "node", "entry", "layer", "file", "config"],
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "dfs",
       "dtype",
+      "exec",
+      {
+        seq: [
+          "find",
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                "_",
+                {
+                  alt: ["item", "node", "entry", "layer", "file", "config"],
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "floor",
+      "from_config",
+      {
+        seq: [
+          "get",
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                "_",
+                {
+                  alt: [
+                    "state",
+                    "item",
+                    "node",
+                    "entry",
+                    "layer",
+                    "file",
+                    "config",
+                  ],
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "identity",
+      {
+        seq: [
+          "init",
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                "_",
+                {
+                  alt: [
+                    "state",
+                    "item",
+                    "node",
+                    "entry",
+                    "layer",
+                    "file",
+                    "config",
+                  ],
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        seq: [
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                {
+                  f: 0.5,
+                  opt: "pre",
+                },
+                "process_",
+              ],
+            },
+          },
+          {
+            f: 0.5,
+            opt: "_user",
+          },
+          "input",
+        ],
+      },
+      {
+        seq: [
+          "insert",
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                "_",
+                {
+                  alt: ["item", "node", "entry", "layer"],
+                },
+              ],
+            },
+          },
+        ],
+      },
       "inverse",
+      "inverse_transform",
+      {
+        seq: [
+          "load",
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                "_",
+                {
+                  alt: [
+                    "state",
+                    "item",
+                    "node",
+                    "entry",
+                    "layer",
+                    "file",
+                    "config",
+                  ],
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "main",
+      {
+        seq: [
+          "pop",
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                "_",
+                {
+                  alt: ["item", "node", "entry", "layer"],
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        seq: [
+          "read",
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                "_",
+                {
+                  alt: [
+                    "state",
+                    "item",
+                    "node",
+                    "entry",
+                    "layer",
+                    "file",
+                    "config",
+                  ],
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        seq: [
+          "remove",
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                "_",
+                {
+                  alt: [
+                    "state",
+                    "item",
+                    "node",
+                    "entry",
+                    "layer",
+                    "file",
+                    "config",
+                  ],
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "reset_state",
+      "reverse",
+      "run",
+      {
+        seq: [
+          "save",
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                "_",
+                {
+                  alt: [
+                    "state",
+                    "item",
+                    "node",
+                    "entry",
+                    "layer",
+                    "file",
+                    "config",
+                  ],
+                },
+              ],
+            },
+          },
+        ],
+      },
+      "serialize",
+      "shape",
+      {
+        seq: [
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                {
+                  alt: ["file", "data", "image", "layer"],
+                },
+                "_",
+              ],
+            },
+          },
+          "size",
+        ],
+      },
+      {
+        seq: [
+          "store",
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                "_",
+                {
+                  alt: [
+                    "state",
+                    "item",
+                    "node",
+                    "entry",
+                    "layer",
+                    "file",
+                    "config",
+                  ],
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        seq: [
+          "update",
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                "_",
+                {
+                  alt: [
+                    "state",
+                    "item",
+                    "node",
+                    "entry",
+                    "layer",
+                    "file",
+                    "config",
+                  ],
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        seq: [
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                {
+                  alt: ["function", "class"],
+                },
+                "_",
+              ],
+            },
+          },
+          "wrapper",
+        ],
+      },
     ],
   },
   python_class_name: {
     alt: [
-      "Node",
-      "Graph",
-      "TestSuite",
-      "MyModel",
-      "Create",
-      "Cols",
-      "Rows",
-      "MyDense",
-      "Attention",
-      "Load",
-      "Save",
-      "TreeNode",
-      "Dog",
-      "Cat",
-      "JDBC",
-      "Constants",
-      "Model",
-      "Variable",
-      "CustomModel",
       "ActivityRegularizationLayer",
+      "Attention",
+      "Cat",
+      "Cols",
+      "Command",
+      "Constants",
+      "Controller",
+      "Dir",
+      "Dog",
+      "Entry",
+      "File",
+      "Graph",
+      "Handle",
+      "Item",
+      "Layer",
+      "List",
+      "Load",
+      {
+        seq: [
+          {
+            f: 0.5,
+            opt: {
+              alt: ["Custom", "Example"],
+            },
+          },
+          "Model",
+        ],
+      },
+      {
+        seq: [
+          {
+            f: 0.5,
+            opt: {
+              alt: ["Tree", "Graph", "List"],
+            },
+          },
+          "Node",
+        ],
+      },
+      "Rows",
+      "Table",
+      "TestSuite",
+      "Tree",
+      "Variable",
     ],
   },
   python_string_value: {
     alt: [
-      "",
       ".",
-      "__main__",
-      "float32",
-      ")",
-      "channels_last",
-      "*",
-      "int32",
-      "tensorflow",
-      ", ",
-      "1",
-      "name",
-      "B",
-      "int",
-      "torch",
-      "a",
-      "valid",
-      "zeros",
-      "dtype",
+      "abc",
       "channels_first",
-      "2",
-      "x",
-      "/",
-      "same",
+      "channels_last",
       "constant",
-      "int64",
-      "_",
+      "dtype",
+      "int",
       "jax",
+      "name",
+      "same",
       "shape",
-      "0",
-      "^[a-z][a-z0-9_]*$",
-      "^[0-9]+$",
-      "^[A-Z]+$",
-      "^([0-9a-f]+) (.*)$",
-      ";",
-      "\\n",
-      "\\t",
-      "\\r\\n",
-      "C:\\\\",
+      "tensorflow",
+      "torch",
+      "uvw",
+      "valid",
+      "x",
+      "xyz",
+      "zeros",
     ],
   },
   python_number_literal: {
     alt: [
       "1",
-      "2",
-      "3",
-      "4",
-      "5",
-      "10",
-      "6",
-      "8",
-      "0.5",
-      "7",
-      "9",
-      "100",
-      "32",
-      "16",
-      "20",
-      "0.1",
-      "12",
       "0.001",
-      "0.2",
-      "15",
-      "11",
-      "64",
-      "0.0001",
       "0.01",
-      "128",
-      "256",
-      "1000",
-      "0.3",
-      "24",
-      "30",
-      "13",
-      "0.9",
-      "50.0",
-      "0.8",
-      "255",
-      "14",
+      "0.1",
+      "0.2",
       "0.25",
-      "1e-06",
+      "0.3",
       "0.4",
-      "512",
-      "1024",
-      "40",
-      "1.5",
-      "17",
-      "25",
+      "0.5",
+      "0.6",
       "0.7",
-      "200",
-      "10000",
-      "60",
+      "0.8",
+      "0.9",
+      "1.5",
+      "10",
+      "100",
+      "1000",
+      "1024",
+      "11",
+      "12",
+      "128",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
       "1e-05",
+      "1e-06",
+      "2",
+      "20",
+      "200",
+      "24",
+      "25",
+      "255",
+      "256",
+      "3",
+      "30",
+      "32",
+      "4",
+      "40",
+      "5",
+      "50.0",
+      "512",
+      "6",
+      "60",
+      "64",
+      "7",
+      "8",
+      "9",
     ],
   },
   python_comment: {
