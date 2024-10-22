@@ -44,6 +44,13 @@ export type XItemProp<T extends XEnumItem> = {
   readonly all: XEnum<T>;
 } & AnyProp<T>;
 
+export type FlagsProp = {
+  readonly type: "flags";
+  readonly all: Flags;
+} & AnyProp<Flags>;
+
+export type Flags = readonly string[];
+
 export function booleanProp(key: string, defaultValue: boolean): BooleanProp {
   return {
     type: "boolean",
@@ -172,6 +179,27 @@ export function xitemProp<T extends XEnumItem>(
     fromJson(value: unknown): T {
       return typeof value === "string"
         ? all.get(value, defaultValue)
+        : defaultValue;
+    },
+  };
+}
+
+export function flagsProp(
+  key: string,
+  all: Flags,
+  defaultValue: Flags = all,
+): FlagsProp {
+  return {
+    type: "flags",
+    key,
+    defaultValue: all,
+    all,
+    toJson(value: Flags): unknown {
+      return value.filter((v) => all.includes(v)).join(",");
+    },
+    fromJson(value: unknown): Flags {
+      return typeof value === "string"
+        ? value.split(",").filter((v) => all.includes(v))
         : defaultValue;
     },
   };

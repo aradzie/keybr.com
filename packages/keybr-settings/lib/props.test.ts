@@ -3,6 +3,7 @@ import test from "ava";
 import {
   booleanProp,
   enumProp,
+  flagsProp,
   itemProp,
   numberProp,
   stringProp,
@@ -41,6 +42,7 @@ const props = {
   string: stringProp("prop.string", "", { maxLength: 3 }),
   enum: enumProp("prop.enum", Letter, Letter.None),
   item: itemProp("prop.item", Digit.ALL, Digit.NONE),
+  flags: flagsProp("prop.flags", ["a", "b", "c"]),
 } as const;
 
 test("change props", (t) => {
@@ -51,6 +53,7 @@ test("change props", (t) => {
   t.is(settings.get(props.string), "");
   t.is(settings.get(props.enum), Letter.None);
   t.is(settings.get(props.item), Digit.NONE);
+  t.deepEqual(settings.get(props.flags), ["a", "b", "c"]);
 
   t.deepEqual(settings.toJSON(), {});
 
@@ -59,13 +62,15 @@ test("change props", (t) => {
     .set(props.number, 1000)
     .set(props.string, "abcxyz")
     .set(props.enum, Letter.A)
-    .set(props.item, Digit.ONE);
+    .set(props.item, Digit.ONE)
+    .set(props.flags, ["a", "x"]);
 
   t.is(settings.get(props.boolean), true);
   t.is(settings.get(props.number), 100);
   t.is(settings.get(props.string), "abc");
   t.is(settings.get(props.enum), Letter.A);
   t.is(settings.get(props.item), Digit.ONE);
+  t.deepEqual(settings.get(props.flags), ["a"]);
 
   t.deepEqual(settings.toJSON(), {
     "prop.boolean": true,
@@ -73,6 +78,7 @@ test("change props", (t) => {
     "prop.string": "abc",
     "prop.enum": "a",
     "prop.item": "one",
+    "prop.flags": "a",
   });
 });
 
@@ -120,4 +126,14 @@ test("read item", (t) => {
   t.is(new Settings({ [p.key]: "abc" }).get(p), Digit.NONE);
   t.is(new Settings({ [p.key]: "one" }).get(p), Digit.ONE);
   t.is(new Settings({ [p.key]: "two" }).get(p), Digit.TWO);
+});
+
+test("read flags", (t) => {
+  const p = props.flags;
+  t.deepEqual(new Settings().get(p), ["a", "b", "c"]);
+  t.deepEqual(new Settings({ [p.key]: null }).get(p), ["a", "b", "c"]);
+  t.deepEqual(new Settings({ [p.key]: 123 }).get(p), ["a", "b", "c"]);
+  t.deepEqual(new Settings({ [p.key]: "a" }).get(p), ["a"]);
+  t.deepEqual(new Settings({ [p.key]: "b" }).get(p), ["b"]);
+  t.deepEqual(new Settings({ [p.key]: "a,b,c,x" }).get(p), ["a", "b", "c"]);
 });

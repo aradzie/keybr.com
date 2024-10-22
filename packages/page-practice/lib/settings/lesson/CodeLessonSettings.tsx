@@ -2,6 +2,7 @@ import { Syntax } from "@keybr/code";
 import { type CodeLesson, lessonProps } from "@keybr/lesson";
 import { useSettings } from "@keybr/settings";
 import {
+  CheckBox,
   Description,
   Explainer,
   Field,
@@ -19,6 +20,8 @@ export function CodeLessonSettings({
 }): ReactNode {
   const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
+  const syntax = settings.get(lessonProps.code.syntax);
+  const flags = settings.get(lessonProps.code.flags);
   return (
     <>
       <Explainer>
@@ -48,7 +51,7 @@ export function CodeLessonSettings({
                 value: item.id,
                 name: item.name,
               }))}
-              value={settings.get(lessonProps.code.syntax).id}
+              value={syntax.id}
               onSelect={(id) => {
                 updateSettings(
                   settings.set(lessonProps.code.syntax, Syntax.ALL.get(id)),
@@ -56,6 +59,27 @@ export function CodeLessonSettings({
               }}
             />
           </Field>
+          {[...syntax.flags].map((flag) => {
+            return (
+              <Field key={flag}>
+                <CheckBox
+                  label={flag}
+                  checked={flags.includes(flag)}
+                  onChange={(checked) => {
+                    const set = new Set(flags);
+                    if (checked) {
+                      set.add(flag);
+                    } else {
+                      set.delete(flag);
+                    }
+                    updateSettings(
+                      settings.set(lessonProps.code.flags, [...set]),
+                    );
+                  }}
+                />
+              </Field>
+            );
+          })}
         </FieldList>
         <Explainer>
           <Description>

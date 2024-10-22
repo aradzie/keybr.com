@@ -1,6 +1,12 @@
 import { Syntax } from "@keybr/code";
 import { Book } from "@keybr/content";
-import { booleanProp, itemProp, numberProp, stringProp } from "@keybr/settings";
+import {
+  booleanProp,
+  flagsProp,
+  itemProp,
+  numberProp,
+  stringProp,
+} from "@keybr/settings";
 import { LessonType } from "./lessontype.ts";
 
 export const lessonProps = {
@@ -46,6 +52,12 @@ export const lessonProps = {
   } as const,
   code: {
     syntax: itemProp("lesson.code.syntax", Syntax.ALL, Syntax.HTML),
+    flags: flagsProp("lesson.code.flags", [
+      "capitals",
+      "numbers",
+      "types",
+      "comments",
+    ]),
   } as const,
   capitals: numberProp("lesson.capitals", 0, { min: 0, max: 1 }),
   punctuators: numberProp("lesson.punctuators", 0, { min: 0, max: 1 }),
