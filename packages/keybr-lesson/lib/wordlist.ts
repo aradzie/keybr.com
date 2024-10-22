@@ -28,15 +28,15 @@ export class WordListLesson extends Lesson {
       .slice(0, wordListSize);
   }
 
-  override get letters(): readonly Letter[] {
+  override get letters() {
     return this.model.letters;
   }
 
-  override update(keyStatsMap: KeyStatsMap): LessonKeys {
+  override update(keyStatsMap: KeyStatsMap) {
     return LessonKeys.includeAll(keyStatsMap, new Target(this.settings));
   }
 
-  override generate(): string {
+  override generate() {
     const wordGenerator = randomWords(this.wordList, this.rng);
     const words = mangledWords(
       uniqueWords(wordGenerator),

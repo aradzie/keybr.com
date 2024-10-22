@@ -16,11 +16,11 @@ export class CodeLesson extends Lesson {
     return Letter.programming;
   }
 
-  override update(keyStatsMap: KeyStatsMap): LessonKeys {
+  override update(keyStatsMap: KeyStatsMap) {
     return LessonKeys.includeAll(keyStatsMap, new Target(this.settings));
   }
 
-  override generate(lessonKeys: LessonKeys): string {
+  override generate(lessonKeys: LessonKeys) {
     const syntax = this.settings.get(lessonProps.code.syntax);
     const flags = this.settings.get(lessonProps.code.flags);
     return syntax.generate(new Set(flags), this.rng);

@@ -7,7 +7,7 @@ import {
 } from "@keybr/content";
 import { filterText, type Keyboard } from "@keybr/keyboard";
 import { clamp } from "@keybr/lang";
-import { type Letter, type PhoneticModel } from "@keybr/phonetic-model";
+import { type PhoneticModel } from "@keybr/phonetic-model";
 import { type KeyStatsMap } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
 import { LessonKeys } from "./key.ts";
@@ -45,15 +45,15 @@ export class BooksLesson extends Lesson {
       .flat();
   }
 
-  override get letters(): readonly Letter[] {
+  override get letters() {
     return this.model.letters;
   }
 
-  override update(keyStatsMap: KeyStatsMap): LessonKeys {
+  override update(keyStatsMap: KeyStatsMap) {
     return LessonKeys.includeAll(keyStatsMap, new Target(this.settings));
   }
 
-  override generate(): string {
+  override generate() {
     return generateFragment(this.settings, wordSequence(this.wordList, this), {
       repeatWords: 0,
     });

@@ -34,11 +34,11 @@ export class GuidedLesson extends Lesson {
     );
   }
 
-  override get letters(): readonly Letter[] {
+  override get letters() {
     return this.model.letters;
   }
 
-  override update(keyStatsMap: KeyStatsMap): LessonKeys {
+  override update(keyStatsMap: KeyStatsMap) {
     const alphabetSize = this.settings.get(lessonProps.guided.alphabetSize);
     const recoverKeys = this.settings.get(lessonProps.guided.recoverKeys);
 
@@ -107,7 +107,7 @@ export class GuidedLesson extends Lesson {
     return lessonKeys;
   }
 
-  override generate(lessonKeys: LessonKeys): string {
+  override generate(lessonKeys: LessonKeys) {
     const wordGenerator = this.#makeWordGenerator(
       new Filter(lessonKeys.findIncludedKeys(), lessonKeys.findFocusedKey()),
     );

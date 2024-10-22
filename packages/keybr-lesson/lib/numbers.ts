@@ -13,15 +13,15 @@ export class NumbersLesson extends Lesson {
     super(settings, keyboard, model);
   }
 
-  override get letters(): readonly Letter[] {
+  override get letters() {
     return Letter.digits;
   }
 
-  override update(keyStatsMap: KeyStatsMap): LessonKeys {
+  override update(keyStatsMap: KeyStatsMap) {
     return LessonKeys.includeAll(keyStatsMap, new Target(this.settings));
   }
 
-  override generate(): string {
+  override generate() {
     const words = [];
     let wordsLength = 0;
     while (true) {

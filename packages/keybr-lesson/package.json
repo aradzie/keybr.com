@@ -15,6 +15,7 @@
     "@keybr/rand": "*",
     "@keybr/result": "*",
     "@keybr/settings": "*",
+    "@keybr/textinput": "*",
     "@keybr/unicode": "*"
   },
   "devDependencies": {},

@@ -1,5 +1,6 @@
 import { Enum, type EnumItem } from "@keybr/lang";
 import { type RNG } from "@keybr/rand";
+import { type StyledText } from "@keybr/textinput";
 import { type Grammar } from "./ast.ts";
 import { findFlags } from "./find-flags.ts";
 import { type Flags } from "./flags.ts";
@@ -75,7 +76,7 @@ export class Syntax implements EnumItem {
     Object.freeze(this);
   }
 
-  generate(flags: Flags, rng?: RNG): string {
+  generate(flags: Flags, rng?: RNG): StyledText {
     const output = new Output(200);
     while (true) {
       try {

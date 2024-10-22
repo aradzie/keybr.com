@@ -1,5 +1,5 @@
 import { filterText, type Keyboard } from "@keybr/keyboard";
-import { type Letter, type PhoneticModel } from "@keybr/phonetic-model";
+import { type PhoneticModel } from "@keybr/phonetic-model";
 import { type KeyStatsMap } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
 import { LessonKeys } from "./key.ts";
@@ -23,15 +23,15 @@ export class CustomTextLesson extends Lesson {
     this.wordList = this.#getWordList();
   }
 
-  override get letters(): readonly Letter[] {
+  override get letters() {
     return this.model.letters;
   }
 
-  override update(keyStatsMap: KeyStatsMap): LessonKeys {
+  override update(keyStatsMap: KeyStatsMap) {
     return LessonKeys.includeAll(keyStatsMap, new Target(this.settings));
   }
 
-  override generate(): string {
+  override generate() {
     return generateFragment(this.settings, this.#makeWordGenerator(), {
       repeatWords: 0,
     });
