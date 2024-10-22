@@ -2,14 +2,14 @@ import test from "ava";
 import { generate } from "./generate.ts";
 
 test("generate from a deterministic grammar", (t) => {
-  t.is(
+  t.deepEqual(
     generate({
       rules: { start: "only" },
       composes: [],
     }),
-    "only",
+    ["only"],
   );
-  t.is(
+  t.deepEqual(
     generate({
       rules: {
         start: {
@@ -22,19 +22,22 @@ test("generate from a deterministic grammar", (t) => {
       composes: [
         {
           rules: {
-            a: "one",
-            b: "two",
+            a: { cls: "abc", span: "one" },
+            b: { cls: "xyz", span: "two" },
           },
           composes: [],
         },
       ],
     }),
-    "onetwo",
+    [
+      { cls: "abc", text: "one" },
+      { cls: "xyz", text: "two" },
+    ],
   );
 });
 
 test("alternate between branches", (t) => {
-  t.is(
+  t.deepEqual(
     generate({
       rules: {
         start: {
@@ -44,6 +47,6 @@ test("alternate between branches", (t) => {
       },
       composes: [],
     }),
-    "abab",
+    ["a", "b", "a", "b"],
   );
 });

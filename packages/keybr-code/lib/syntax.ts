@@ -92,7 +92,7 @@ export class Syntax implements EnumItem {
         }
       }
     }
-    return String(output).trim();
+    return output.text;
   }
 
   toString() {

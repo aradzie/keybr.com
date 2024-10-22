@@ -1,4 +1,5 @@
 import { LCG, type RNG } from "@keybr/rand";
+import { type StyledText } from "@keybr/textinput";
 import {
   findRule,
   type Grammar,
@@ -32,10 +33,11 @@ export function generate(
     readonly output?: Output;
     readonly rng?: RNG;
   } = {},
-): string {
+): StyledText {
+  const cls = new Array<string>();
   const alts = new Map<readonly Prod[], Prod>();
   visit(getRule(start));
-  return String(output);
+  return output.text;
 
   function visit(p: Prod): void {
     if (isCond(p)) {
@@ -46,7 +48,9 @@ export function generate(
     }
 
     if (isSpan(p)) {
+      cls.push(p.cls);
       visit(p.span);
+      cls.pop();
       return;
     }
 
@@ -76,7 +80,7 @@ export function generate(
     }
 
     if (isLit(p)) {
-      output.append(p);
+      output.append(p, cls.length > 0 ? cls.at(-1) : null);
       return;
     }
 
