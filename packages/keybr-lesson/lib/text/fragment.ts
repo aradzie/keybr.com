@@ -10,17 +10,18 @@ export function generateFragment(
   const length = 100 + Math.round(settings.get(lessonProps.length) * 100);
   const words: string[] = [];
   let wordsLength = 0;
+  const occurences = repeatWords + 1;
+
   while (true) {
     const word = nextWord() || "?";
-    words.push(word);
-    wordsLength += word.length;
-    for (let i = 0; i < repeatWords; i++) {
+
+    for (let i = 0; i < occurences; i++) {
       words.push(word);
       wordsLength += word.length;
-    }
-    if (wordsLength >= length) {
-      break;
+
+      if (wordsLength >= length) {
+        return words.join(" ");
+      }
     }
   }
-  return words.join(" ");
 }
