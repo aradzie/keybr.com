@@ -7,7 +7,10 @@ test("parse empty", (t) => {
 });
 
 test("parse literal", (t) => {
-  t.deepEqual(parse(`start -> "literal";`), { start: "literal" });
+  t.deepEqual(parse(`start -> "";`), { start: "" });
+  t.deepEqual(parse(`start -> "abc";`), { start: "abc" });
+  t.deepEqual(parse(`start -> "\\"abc\\"";`), { start: '"abc"' });
+  t.deepEqual(parse(`start -> "\\u0061\\u0062\\u0063";`), { start: "abc" });
 });
 
 test("parse ref", (t) => {

@@ -49,8 +49,8 @@ string "string"
   = '"' chars:char* '"' { return chars.join(""); }
 
 char
-  = unescaped
-  / escape
+  = [^\0-\x1F\x22\x5C]
+  / "\\"
     sequence:(
         '"'
       / "\\"
@@ -60,16 +60,11 @@ char
       / "n" { return "\n"; }
       / "r" { return "\r"; }
       / "t" { return "\t"; }
-      / "u" digits:$(HEXDIG HEXDIG HEXDIG HEXDIG) {
+      / "u" digits:$([0-9a-fA-F]|4|) {
           return String.fromCharCode(Number.parseInt(digits, 16));
         }
     )
     { return sequence; }
-
-unescaped      = [^\0-\x1F\x22\x5C]
-escape         = "\\"
-
-HEXDIG = [0-9a-fA-F]
 
 _ "whitespace"
   = [ \t\n\r]*
