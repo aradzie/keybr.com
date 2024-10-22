@@ -20,12 +20,12 @@ import {
 export function validate(rules: Rules): Rules {
   const referenced = new Set<string>();
   referenced.add("start");
-  for (const item of Object.values(rules)) {
-    visit(item);
+  for (const rule of Object.values(rules)) {
+    visit(rule);
   }
-  for (const item of Object.keys(rules)) {
-    if (!item.startsWith("start_") && !referenced.has(item)) {
-      throw new Error(`Unreferenced rule <${item}>`);
+  for (const name of Object.keys(rules)) {
+    if (!name.startsWith("start_") && !referenced.has(name)) {
+      throw new Error(`Unreferenced rule <${name}>`);
     }
   }
   return rules;

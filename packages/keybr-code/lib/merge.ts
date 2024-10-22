@@ -1,7 +1,8 @@
 import { type Prod, type Rules } from "./ast.ts";
 
 /**
- * Merges multiple grammar into one, from left to right, the later rules overwrite the former.
+ * Merges multiple grammar into one, from left to right;
+ * the later rules overwrite the former.
  */
 export function merge(
   rulesList: readonly Rules[],
