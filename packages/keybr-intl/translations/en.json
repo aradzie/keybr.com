@@ -372,6 +372,7 @@
   "settings.recoverKeys.description": "When you focus on a new key, it is very likely that the speed of previous keys will decrease. If this option is disabled, you unlock a new key by raising only the focused key above the target speed. If this option is enabled, you will have to raise the focused key and all the previous keys above the target speed. This will make unlocking new keys harder. However, this will also make forgetting old keys harder.",
   "settings.recoverKeys.label": "The previous keys are also above the target speed",
   "settings.recoverKeys.prefix": "Unlock a next key only when:",
+  "settings.repeatWords.label": "Add repeating words:",
   "settings.soundVolume.label": "Volume:",
   "settings.sounds.allSoundsValue": "All Sounds",
   "settings.sounds.errorSoundsOnlyValue": "Error Sounds Only",
