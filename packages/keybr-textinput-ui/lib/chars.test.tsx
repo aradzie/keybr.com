@@ -17,32 +17,40 @@ test("render chars", (t) => {
     renderChars({
       settings: textDisplaySettings,
       chars: [
-        { codePoint: text.codePointAt(0)!, attrs: Attr.Hit },
-        { codePoint: text.codePointAt(1)!, attrs: Attr.Miss },
-        { codePoint: text.codePointAt(2)!, attrs: Attr.Hit },
-        { codePoint: text.codePointAt(3)!, attrs: Attr.Hit },
-        { codePoint: text.codePointAt(4)!, attrs: Attr.Cursor },
-        { codePoint: text.codePointAt(5)!, attrs: Attr.Normal },
-        { codePoint: text.codePointAt(6)!, attrs: Attr.Normal },
+        { codePoint: text.codePointAt(0)!, attrs: Attr.Hit, cls: "keyword" },
+        { codePoint: text.codePointAt(1)!, attrs: Attr.Miss, cls: "keyword" },
+        { codePoint: text.codePointAt(2)!, attrs: Attr.Hit, cls: "keyword" },
+        { codePoint: text.codePointAt(3)!, attrs: Attr.Hit, cls: "keyword" },
+        { codePoint: text.codePointAt(4)!, attrs: Attr.Cursor, cls: "keyword" },
+        { codePoint: text.codePointAt(5)!, attrs: Attr.Normal, cls: "keyword" },
+        { codePoint: text.codePointAt(6)!, attrs: Attr.Normal, cls: "keyword" },
       ],
     }),
     [
-      <span key={0} className="hit">
+      <span key={0} className="hit" style={undefined}>
         a
       </span>,
-      <span key={1} className="miss">
+      <span key={1} className="miss" style={undefined}>
         b
       </span>,
-      <span key={2} className="hit">
+      <span key={2} className="hit" style={undefined}>
         c
       </span>,
       <span key={3} className="hit">
         {"\uE000"}
       </span>,
-      <span key={4} className="cursor">
+      <span
+        key={4}
+        className="cursor"
+        style={{ color: "var(--syntax-keyword)" }}
+      >
         x
       </span>,
-      <span key={5} className="normal">
+      <span
+        key={5}
+        className="normal"
+        style={{ color: "var(--syntax-keyword)" }}
+      >
         yz
       </span>,
     ],

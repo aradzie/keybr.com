@@ -94,6 +94,10 @@ export const themePropsMap = {
   "--effort-1-color": colorType,
   "--effort-2-color": colorType,
   "--effort-3-color": colorType,
+  "--syntax-keyword": colorType,
+  "--syntax-string": colorType,
+  "--syntax-number": colorType,
+  "--syntax-comment": colorType,
 } as const;
 
 export const themeProps = Object.keys(themePropsMap) as (keyof PropsMap)[];

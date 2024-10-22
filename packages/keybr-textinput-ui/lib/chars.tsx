@@ -6,6 +6,7 @@ import {
 } from "@keybr/textinput";
 import { type ReactNode } from "react";
 import * as styles from "./chars.module.less";
+import { getSyntaxStyle } from "./syntax.ts";
 
 type Item = {
   readonly chars: readonly Char[];
@@ -41,9 +42,10 @@ export function splitIntoItems(chars: readonly Char[]): readonly Item[] {
 type Span = {
   readonly chars: number[];
   readonly attrs: number;
+  readonly cls: string | null;
 };
 
-const br: Span = { chars: [], attrs: -1 };
+const br: Span = { chars: [], attrs: -1, cls: null };
 
 export function renderChars({
   settings,
@@ -59,7 +61,11 @@ export function renderChars({
   const pushSpan = (nextSpan: Span): void => {
     if (span.chars.length > 0) {
       nodes.push(
-        <span key={nodes.length} className={normalClassName(span.attrs)}>
+        <span
+          key={nodes.length}
+          className={normalClassName(span.attrs)}
+          style={getSyntaxStyle(span)}
+        >
           {String.fromCodePoint(...span.chars)}
         </span>,
       );
@@ -70,10 +76,10 @@ export function renderChars({
 
   for (let i = 0; i < chars.length; i++) {
     const char = chars[i];
-    const { codePoint, attrs } = char;
+    const { codePoint, attrs, cls = null } = char;
     if (codePoint > 0x0020) {
-      if (span.attrs !== attrs) {
-        pushSpan({ chars: [], attrs });
+      if (span.attrs !== attrs || span.cls !== cls) {
+        pushSpan({ chars: [], attrs, cls });
       }
       span.chars.push(codePoint);
     } else {

@@ -21,10 +21,7 @@ export function TextInputPreview() {
                   { codePoint: /* r */ 0x0072, attrs: Attr.Hit },
                   { codePoint: /* a */ 0x0061, attrs: Attr.Hit },
                   { codePoint: /* c */ 0x0063, attrs: Attr.Miss },
-                  {
-                    codePoint: /* a */ 0x0061,
-                    attrs: Attr.Normal | Attr.Cursor,
-                  },
+                  { codePoint: /* a */ 0x0061, attrs: Attr.Cursor },
                   { codePoint: /* d */ 0x0072, attrs: Attr.Normal },
                   { codePoint: /* a */ 0x0061, attrs: Attr.Normal },
                   { codePoint: /* b */ 0x0062, attrs: Attr.Normal },
