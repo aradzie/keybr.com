@@ -5,7 +5,7 @@ import { type WordGenerator } from "./words.ts";
 export function generateFragment(
   settings: Settings,
   nextWord: WordGenerator,
-  { doubleWords }: { readonly doubleWords: boolean },
+  { repeatWords }: { readonly repeatWords: number },
 ): string {
   const length = 100 + Math.round(settings.get(lessonProps.length) * 100);
   const words: string[] = [];
@@ -14,7 +14,7 @@ export function generateFragment(
     const word = nextWord() || "?";
     words.push(word);
     wordsLength += word.length;
-    if (doubleWords) {
+    for (let i = 0; i < repeatWords; i++) {
       words.push(word);
       wordsLength += word.length;
     }

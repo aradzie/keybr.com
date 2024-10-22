@@ -49,7 +49,7 @@ export class WordListLesson extends Lesson {
       this.rng,
     );
     return generateFragment(this.settings, words, {
-      doubleWords: this.settings.get(lessonProps.doubleWords),
+      repeatWords: this.settings.get(lessonProps.repeatWords),
     });
   }
 }

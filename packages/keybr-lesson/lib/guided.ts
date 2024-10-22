@@ -122,7 +122,7 @@ export class GuidedLesson extends Lesson {
       this.rng,
     );
     return generateFragment(this.settings, words, {
-      doubleWords: this.settings.get(lessonProps.doubleWords),
+      repeatWords: this.settings.get(lessonProps.repeatWords),
     });
   }
 

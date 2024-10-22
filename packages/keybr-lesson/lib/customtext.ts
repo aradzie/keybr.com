@@ -33,7 +33,7 @@ export class CustomTextLesson extends Lesson {
 
   override generate(): string {
     return generateFragment(this.settings, this.#makeWordGenerator(), {
-      doubleWords: false,
+      repeatWords: 0,
     });
   }
 
