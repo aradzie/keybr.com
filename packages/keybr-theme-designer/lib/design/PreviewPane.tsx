@@ -18,22 +18,20 @@ export function PreviewPane({ children }: { readonly children: ReactNode }) {
   const backgroundImage = useBackgroundImage();
   return (
     <ThemeContext.Provider value={staticTheme({ color: "*", font: "*" })}>
-      <KeyboardProvider>
-        <div
-          ref={ref}
-          className={styles.root}
-          style={{
-            color: `var(--text-color)`,
-            backgroundColor: `var(--background-color)`,
-            backgroundImage,
-          }}
-          data-preview-theme={true}
-        >
-          <DynamicStylesProvider elementRef={ref}>
-            {children}
-          </DynamicStylesProvider>
-        </div>
-      </KeyboardProvider>
+      <div
+        ref={ref}
+        className={styles.root}
+        style={{
+          color: `var(--text-color)`,
+          backgroundColor: `var(--background-color)`,
+          backgroundImage,
+        }}
+        data-preview-theme={true}
+      >
+        <DynamicStylesProvider elementRef={ref}>
+          <KeyboardProvider>{children}</KeyboardProvider>
+        </DynamicStylesProvider>
+      </div>
     </ThemeContext.Provider>
   );
 }
