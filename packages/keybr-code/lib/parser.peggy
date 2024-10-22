@@ -31,10 +31,24 @@ Seq
 
 Factor
   = "(" _ p:Alt _ ")" { return p; }
-  / "[" _ p:Alt _ "]" { return { f: 0.5, opt: p }; }
+  / cond:Cond { return cond; }
+  / span:Span { return span; }
+  / opt:Opt { return opt; }
   / ref:Ref { return ref; }
   / lit:Lit { return lit; }
   / sep:Sep { return sep; }
+
+Cond
+  = "{" _ ":if" _ "(" inv:( _ @"!" )? _ flag:Name _ ")" _ cond:Alt _ "}"
+  { return { flag, inv: (inv === "!"), cond }; }
+
+Span
+  = "{" _ ":class" _ "(" _ cls:Name _ ")" _ span:Alt _ "}"
+  { return { cls, span }; }
+
+Opt
+  = "[" _ p:Alt _ "]"
+  { return { f: 0.5, opt: p }; }
 
 Ref "ref"
   = ref:Name { return { ref }; }

@@ -2,14 +2,12 @@
 
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { basename, join, resolve } from "node:path";
-import { compiler } from "peggy";
+import peggy from "peggy";
 import { optimize } from "./optimize.ts";
 import { parse } from "./parse.ts";
 import { validate } from "./validate.ts";
 
-if (compiler == null) {
-  /* Suppress the unused dependency warning. */
-}
+console.log(`Peggy version: ${peggy.VERSION}`);
 
 export const rootDir = resolve(import.meta.dirname, "..");
 

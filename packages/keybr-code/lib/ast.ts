@@ -7,7 +7,13 @@ export type HasCodePoints = {
   codePoints?: ReadonlySet<number>;
 };
 
-export type Prod = Span | Opt | Seq | Alt | Ref | string;
+export type Prod = Cond | Span | Opt | Seq | Alt | Ref | string;
+
+export type Cond = HasCodePoints & {
+  readonly flag: string;
+  readonly inv: boolean;
+  readonly cond: Prod;
+};
 
 export type Span = HasCodePoints & {
   readonly cls: string;
@@ -30,6 +36,10 @@ export type Alt = HasCodePoints & {
 export type Ref = HasCodePoints & {
   readonly ref: string;
 };
+
+export function isCond(v: Prod): v is Cond {
+  return typeof v === "object" && "cond" in v;
+}
 
 export function isSpan(v: Prod): v is Span {
   return typeof v === "object" && "span" in v;

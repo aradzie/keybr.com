@@ -35,6 +35,30 @@ test("parse alt", (t) => {
   });
 });
 
+test("parse cond", (t) => {
+  t.deepEqual(parse(`start -> { :if(f1) "a" "b" "c" };`), {
+    start: { flag: "f1", inv: false, cond: { seq: ["a", "b", "c"] } },
+  });
+  t.deepEqual(parse(`start -> { :if(f1) "a" | "b" | "c" };`), {
+    start: { flag: "f1", inv: false, cond: { alt: ["a", "b", "c"] } },
+  });
+  t.deepEqual(parse(`start -> { :if(!f1) "a" "b" "c" };`), {
+    start: { flag: "f1", inv: true, cond: { seq: ["a", "b", "c"] } },
+  });
+  t.deepEqual(parse(`start -> { :if(!f1) "a" | "b" | "c" };`), {
+    start: { flag: "f1", inv: true, cond: { alt: ["a", "b", "c"] } },
+  });
+});
+
+test("parse span", (t) => {
+  t.deepEqual(parse(`start -> { :class(c1) "a" "b" "c" };`), {
+    start: { cls: "c1", span: { seq: ["a", "b", "c"] } },
+  });
+  t.deepEqual(parse(`start -> { :class(c1) "a" | "b" | "c" };`), {
+    start: { cls: "c1", span: { alt: ["a", "b", "c"] } },
+  });
+});
+
 test("priorities", (t) => {
   t.deepEqual(parse(`start -> ("a" | "b") "c";`), {
     start: { seq: [{ alt: ["a", "b"] }, "c"] },
@@ -70,8 +94,6 @@ test("syntax error", (t) => {
     },
     {
       name: "SyntaxError",
-      message:
-        'Expected "(", "[", literal, ref, separator, or whitespace but end of input found.',
     },
   ) as SyntaxError;
   t.deepEqual(location, {

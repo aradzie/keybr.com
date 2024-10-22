@@ -1,6 +1,8 @@
 import { Enum, type EnumItem } from "@keybr/lang";
 import { type RNG } from "@keybr/rand";
 import { type Rules } from "./ast.ts";
+import { findFlags } from "./find-flags.ts";
+import { type Flags } from "./flags.ts";
 import { generate } from "./generate.ts";
 import { Output } from "./output.ts";
 import lang_cpp from "./syntax/lang_cpp.ts";
@@ -79,23 +81,34 @@ export class Syntax implements EnumItem {
     Syntax.RUST,
   );
 
+  readonly id: string;
+  readonly name: string;
+  readonly rules: Rules;
+  readonly start: string;
+  readonly flags: ReadonlySet<string>;
+
   private constructor(
-    readonly id: string,
-    readonly name: string,
-    readonly rules: Rules,
-    readonly start: string = "start",
+    id: string,
+    name: string,
+    rules: Rules,
+    start: string = "start",
   ) {
+    this.id = id;
+    this.name = name;
+    this.rules = rules;
+    this.start = start;
+    this.flags = findFlags(rules);
     Object.freeze(this);
   }
 
-  generate(rng?: RNG): string {
+  generate(flags: Flags, rng?: RNG): string {
     const output = new Output(200);
     while (true) {
       try {
         if (output.length > 0) {
           output.separate(" ");
         }
-        generate(this.rules, this.start, { output, rng });
+        generate(this.rules, { start: this.start, flags, output, rng });
       } catch (err) {
         if (err === Output.Stop) {
           break;

@@ -5,12 +5,12 @@ rust_statement ->
   | rust_struct_definition
   | rust_assign
   | rust_return
-  | rust_comment
+  | { :if(comments) rust_comment }
   ;
 
-rust_function_definition -> "fn" _ rust_function_name "(" rust_arguments ")" [ "->" _ rust_type ] "{" ;
+rust_function_definition -> "fn" _ rust_function_name "(" rust_arguments ")" [ _ "->" _ rust_type ] "{" ;
 
-rust_struct_definition -> [ "pub" _ ] "struct" _ rust_struct_name "{" ;
+rust_struct_definition -> [ "pub" _ ] "struct" _ rust_struct_name _ "{" ;
 
 rust_assign -> "let" _ rust_variable_name [ ":" _ rust_type ] _ "=" _ rust_expression ";" ;
 
@@ -18,7 +18,7 @@ rust_return -> "return" _ rust_expression ";" ;
 
 rust_arguments -> rust_argument [ "," _ rust_argument ] ;
 
-rust_argument -> rust_variable_name _ ":" _ rust_type ;
+rust_argument -> rust_variable_name ":" _ rust_type ;
 
 rust_expression ->
     rust_literal
@@ -31,10 +31,10 @@ rust_expression ->
   ;
 
 rust_unary_operation ->
-    "!" _ rust_expression
-  | "-" _ rust_expression
-  | "*" _ rust_expression
-  | "&" _ rust_expression
+    "!" rust_expression
+  | "-" rust_expression
+  | "*" rust_expression
+  | "&" rust_expression
   ;
 
 rust_binary_operation -> rust_expression _ rust_binary_operator _ rust_expression ;
@@ -53,18 +53,18 @@ rust_type ->
 
 rust_primitive_type ->
     rust_struct_name
-  | "i32"
   | "u32"
+  | "u64"
+  | "i32"
+  | "i64"
   | "f32"
+  | "f64"
+  | "usize"
+  | "isize"
   | "bool"
   | "char"
   | "str"
   | "String"
-  | "usize"
-  | "isize"
-  | "i64"
-  | "u64"
-  | "f64"
   ;
 
 rust_binary_operator ->
@@ -94,7 +94,7 @@ rust_array_definition ->
   ;
 
 rust_struct_instantiation ->
-    rust_struct_name "{" rust_struct_fields "}" ;
+    rust_struct_name _ "{" _ rust_struct_fields _ "}" ;
 
 rust_struct_fields ->
     rust_field_assignment [ "," _ rust_field_assignment ] ;
@@ -260,16 +260,12 @@ rust_number_literal ->
   ;
 
 rust_comment ->
-    ( "//" [ _ ] rust_comment_text )
-  | ( "///" [ _ ] rust_comment_text )
-  | ( "////" [ _ ] rust_comment_text )
-  | ( "//!" [ _ ] rust_comment_text )
-  | ( "//!!" [ _ ] rust_comment_text )
+  { :class(comment)
+    ( "//" _ rust_comment_text )
+  | ( "//!" _ rust_comment_text )
   | ( "/*" _ rust_comment_text _ "*/" )
-  | ( "/**" _ rust_comment_text _ "*/" )
-  | ( "/***" _ rust_comment_text _ "*/" )
   | ( "/*!" _ rust_comment_text _ "*/" )
-  | ( "/*!!" _ rust_comment_text _ "*/" )
+  }
 ;
 
 rust_comment_text ->

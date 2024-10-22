@@ -21,7 +21,11 @@ export default {
         ref: "python_return",
       },
       {
-        ref: "python_comment",
+        flag: "comments",
+        inv: false,
+        cond: {
+          ref: "python_comment",
+        },
       },
     ],
   },
@@ -664,19 +668,14 @@ export default {
     ],
   },
   python_comment: {
-    alt: [
-      "# type: ignore",
-      "# TODO: fix!",
-      "# TODO: fix?",
-      "# ?",
-      "# !",
-      "#!/usr/bin/env python",
-      "# noqa",
-      "# -*- coding: utf-8 -*-",
-      "# TODO: implement",
-      "# ``H x W``",
-      "# `1 x 1`",
-      "# ;",
-    ],
+    cls: "comment",
+    span: {
+      alt: [
+        "# type: ignore",
+        "# TODO: fix",
+        "# TODO: implement",
+        "#!/usr/bin/env python",
+      ],
+    },
   },
 } as Rules;

@@ -1,5 +1,6 @@
 import {
   isAlt,
+  isCond,
   isLit,
   isOpt,
   isRef,
@@ -31,6 +32,11 @@ export function validate(rules: Rules): Rules {
   return rules;
 
   function visit(p: Prod): void {
+    if (isCond(p)) {
+      visit(p.cond);
+      return;
+    }
+
     if (isSpan(p)) {
       visit(p.span);
       return;

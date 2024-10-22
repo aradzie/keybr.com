@@ -5,7 +5,7 @@ python_statement ->
   | python_class_definition
   | python_assign
   | python_return
-  | python_comment
+  | { :if(comments) python_comment }
   ;
 
 python_function_definition -> "def" _ python_function_name "(" python_arguments ")" [ _ "->" _ python_type ] ":";
@@ -320,17 +320,10 @@ python_number_literal ->
   ;
 
 python_comment ->
+  { :class(comment)
     "# type: ignore"
-  | "# TODO: fix!"
-  | "# TODO: fix?"
-  | "# ?"
-  | "# !"
-  | "#!/usr/bin/env python"
-  | "# noqa"
-  | "# -*- coding: utf-8 -*-"
+  | "# TODO: fix"
   | "# TODO: implement"
-  | "# ``H x W``"
-  | "# `1 x 1`"
-  | "# ;"
+  | "#!/usr/bin/env python"
+  }
   ;
-

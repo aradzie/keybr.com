@@ -1,3 +1,4 @@
+import { flagSet } from "@keybr/code";
 import { type Keyboard } from "@keybr/keyboard";
 import { Letter, type PhoneticModel } from "@keybr/phonetic-model";
 import { type KeyStatsMap } from "@keybr/result";
@@ -21,6 +22,8 @@ export class CodeLesson extends Lesson {
   }
 
   override generate(lessonKeys: LessonKeys): string {
-    return this.settings.get(lessonProps.code.syntax).generate(this.rng);
+    return this.settings
+      .get(lessonProps.code.syntax)
+      .generate(flagSet(["*"]), this.rng);
   }
 }

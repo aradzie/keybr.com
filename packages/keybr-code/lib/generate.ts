@@ -1,6 +1,7 @@
 import { LCG, type RNG } from "@keybr/rand";
 import {
   isAlt,
+  isCond,
   isLit,
   isOpt,
   isRef,
@@ -9,6 +10,7 @@ import {
   type Prod,
   type Rules,
 } from "./ast.ts";
+import { type Flags, flagSet } from "./flags.ts";
 import { Output } from "./output.ts";
 
 const lcg = LCG(1);
@@ -18,11 +20,14 @@ const lcg = LCG(1);
  */
 export function generate(
   rules: Rules,
-  start: string = "start",
   {
+    start = "start",
+    flags = flagSet(["*"]),
     output = new Output(),
     rng = lcg,
   }: {
+    readonly start?: string;
+    readonly flags?: Flags;
     readonly output?: Output;
     readonly rng?: RNG;
   } = {},
@@ -32,6 +37,13 @@ export function generate(
   return String(output);
 
   function visit(p: Prod): void {
+    if (isCond(p)) {
+      if (flags.has(p.flag) !== p.inv) {
+        visit(p.cond);
+      }
+      return;
+    }
+
     if (isSpan(p)) {
       visit(p.span);
       return;

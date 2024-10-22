@@ -21,7 +21,11 @@ export default {
         ref: "rust_return",
       },
       {
-        ref: "rust_comment",
+        flag: "comments",
+        inv: false,
+        cond: {
+          ref: "rust_comment",
+        },
       },
     ],
   },
@@ -40,7 +44,7 @@ export default {
         f: 0.5,
         opt: {
           seq: [
-            "-> ",
+            " -> ",
             {
               ref: "rust_type",
             },
@@ -60,7 +64,7 @@ export default {
       {
         ref: "rust_struct_name",
       },
-      "{",
+      " {",
     ],
   },
   rust_assign: {
@@ -119,7 +123,7 @@ export default {
       {
         ref: "rust_variable_name",
       },
-      " : ",
+      ": ",
       {
         ref: "rust_type",
       },
@@ -160,7 +164,7 @@ export default {
     alt: [
       {
         seq: [
-          "! ",
+          "!",
           {
             ref: "rust_expression",
           },
@@ -168,7 +172,7 @@ export default {
       },
       {
         seq: [
-          "- ",
+          "-",
           {
             ref: "rust_expression",
           },
@@ -176,7 +180,7 @@ export default {
       },
       {
         seq: [
-          "* ",
+          "*",
           {
             ref: "rust_expression",
           },
@@ -184,7 +188,7 @@ export default {
       },
       {
         seq: [
-          "& ",
+          "&",
           {
             ref: "rust_expression",
           },
@@ -320,18 +324,18 @@ export default {
       {
         ref: "rust_struct_name",
       },
-      "i32",
       "u32",
+      "u64",
+      "i32",
+      "i64",
       "f32",
+      "f64",
+      "usize",
+      "isize",
       "bool",
       "char",
       "str",
       "String",
-      "usize",
-      "isize",
-      "i64",
-      "u64",
-      "f64",
     ],
   },
   rust_binary_operator: {
@@ -398,11 +402,11 @@ export default {
       {
         ref: "rust_struct_name",
       },
-      "{",
+      " { ",
       {
         ref: "rust_struct_fields",
       },
-      "}",
+      " }",
     ],
   },
   rust_struct_fields: {
@@ -609,113 +613,45 @@ export default {
     ],
   },
   rust_comment: {
-    alt: [
-      {
-        seq: [
-          "//",
-          {
-            f: 0.5,
-            opt: " ",
-          },
-          {
-            ref: "rust_comment_text",
-          },
-        ],
-      },
-      {
-        seq: [
-          "///",
-          {
-            f: 0.5,
-            opt: " ",
-          },
-          {
-            ref: "rust_comment_text",
-          },
-        ],
-      },
-      {
-        seq: [
-          "////",
-          {
-            f: 0.5,
-            opt: " ",
-          },
-          {
-            ref: "rust_comment_text",
-          },
-        ],
-      },
-      {
-        seq: [
-          "//!",
-          {
-            f: 0.5,
-            opt: " ",
-          },
-          {
-            ref: "rust_comment_text",
-          },
-        ],
-      },
-      {
-        seq: [
-          "//!!",
-          {
-            f: 0.5,
-            opt: " ",
-          },
-          {
-            ref: "rust_comment_text",
-          },
-        ],
-      },
-      {
-        seq: [
-          "/* ",
-          {
-            ref: "rust_comment_text",
-          },
-          " */",
-        ],
-      },
-      {
-        seq: [
-          "/** ",
-          {
-            ref: "rust_comment_text",
-          },
-          " */",
-        ],
-      },
-      {
-        seq: [
-          "/*** ",
-          {
-            ref: "rust_comment_text",
-          },
-          " */",
-        ],
-      },
-      {
-        seq: [
-          "/*! ",
-          {
-            ref: "rust_comment_text",
-          },
-          " */",
-        ],
-      },
-      {
-        seq: [
-          "/*!! ",
-          {
-            ref: "rust_comment_text",
-          },
-          " */",
-        ],
-      },
-    ],
+    cls: "comment",
+    span: {
+      alt: [
+        {
+          seq: [
+            "// ",
+            {
+              ref: "rust_comment_text",
+            },
+          ],
+        },
+        {
+          seq: [
+            "//! ",
+            {
+              ref: "rust_comment_text",
+            },
+          ],
+        },
+        {
+          seq: [
+            "/* ",
+            {
+              ref: "rust_comment_text",
+            },
+            " */",
+          ],
+        },
+        {
+          seq: [
+            "/*! ",
+            {
+              ref: "rust_comment_text",
+            },
+            " */",
+          ],
+        },
+      ],
+    },
   },
   rust_comment_text: {
     alt: [

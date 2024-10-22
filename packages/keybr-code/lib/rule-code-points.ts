@@ -1,6 +1,7 @@
 import { type CodePoint, toCodePoints } from "@keybr/unicode";
 import {
   isAlt,
+  isCond,
   isLit,
   isOpt,
   isRef,
@@ -18,6 +19,13 @@ export function collectCodePoints(rules: Rules): void {
   function visit(p: Prod | null): ReadonlySet<CodePoint> {
     if (p == null) {
       return new Set();
+    }
+
+    if (isCond(p)) {
+      if (p.codePoints != null) {
+        return p.codePoints;
+      }
+      return (p.codePoints = visit(p.cond));
     }
 
     if (isSpan(p)) {

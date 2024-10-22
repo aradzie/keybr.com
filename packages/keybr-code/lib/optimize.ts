@@ -1,6 +1,8 @@
 import {
   type Alt,
+  type Cond,
   isAlt,
+  isCond,
   isLit,
   isOpt,
   isSeq,
@@ -29,6 +31,10 @@ export function optimize(rules: Rules): Rules {
 }
 
 function visit(p: Prod): Prod {
+  if (isCond(p)) {
+    return visitCond(p);
+  }
+
   if (isSpan(p)) {
     return visitSpan(p);
   }
@@ -48,13 +54,15 @@ function visit(p: Prod): Prod {
   return p;
 }
 
-function visitSpan(v: Span): Prod {
-  const { cls, span } = v;
+function visitCond({ cond, flag, inv }: Cond): Prod {
+  return { flag, inv, cond: visit(cond) };
+}
+
+function visitSpan({ span, cls }: Span): Prod {
   return { cls, span: visit(span) };
 }
 
-function visitOpt(v: Opt): Prod {
-  const { f, opt } = v;
+function visitOpt({ f, opt }: Opt): Prod {
   if (f === 1) {
     return visit(opt);
   } else {
