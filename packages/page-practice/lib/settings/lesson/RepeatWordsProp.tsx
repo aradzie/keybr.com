@@ -36,9 +36,7 @@ export function RepeatWordsProp(): ReactNode {
           />
         </Field>
         <Field>
-          <Value
-            value={formatPercents(settings.get(lessonProps.repeatWords))}
-          />
+          <Value value={settings.get(lessonProps.repeatWords)} />
         </Field>
       </FieldList>
       <Explainer>
