@@ -1,10 +1,12 @@
 import { type CodePoint } from "@keybr/unicode";
 
-export const attrNormal = 0 as number;
-export const attrHit = 1 as number;
-export const attrMiss = 2 as number;
-export const attrGarbage = 4 as number;
-export const attrCursor = 8 as number;
+export const enum Attr {
+  Normal = 0,
+  Hit = 1,
+  Miss = 2,
+  Garbage = 4,
+  Cursor = 8,
+}
 
 export type Step = {
   readonly codePoint: CodePoint;

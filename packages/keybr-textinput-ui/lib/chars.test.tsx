@@ -1,10 +1,4 @@
-import {
-  attrCursor,
-  attrHit,
-  attrMiss,
-  attrNormal,
-  textDisplaySettings,
-} from "@keybr/textinput";
+import { Attr, textDisplaySettings } from "@keybr/textinput";
 import test from "ava";
 import { renderChars } from "./chars.tsx";
 
@@ -23,13 +17,13 @@ test("render chars", (t) => {
     renderChars({
       settings: textDisplaySettings,
       chars: [
-        { codePoint: text.codePointAt(0)!, attrs: attrHit },
-        { codePoint: text.codePointAt(1)!, attrs: attrMiss },
-        { codePoint: text.codePointAt(2)!, attrs: attrHit },
-        { codePoint: text.codePointAt(3)!, attrs: attrHit },
-        { codePoint: text.codePointAt(4)!, attrs: attrCursor },
-        { codePoint: text.codePointAt(5)!, attrs: attrNormal },
-        { codePoint: text.codePointAt(6)!, attrs: attrNormal },
+        { codePoint: text.codePointAt(0)!, attrs: Attr.Hit },
+        { codePoint: text.codePointAt(1)!, attrs: Attr.Miss },
+        { codePoint: text.codePointAt(2)!, attrs: Attr.Hit },
+        { codePoint: text.codePointAt(3)!, attrs: Attr.Hit },
+        { codePoint: text.codePointAt(4)!, attrs: Attr.Cursor },
+        { codePoint: text.codePointAt(5)!, attrs: Attr.Normal },
+        { codePoint: text.codePointAt(6)!, attrs: Attr.Normal },
       ],
     }),
     [
@@ -58,9 +52,9 @@ test("render chars", (t) => {
     renderChars({
       settings: textDisplaySettings,
       chars: [
-        { codePoint: 0x0000, attrs: attrNormal },
-        { codePoint: 0x0001, attrs: attrNormal },
-        { codePoint: 0x0002, attrs: attrNormal },
+        { codePoint: 0x0000, attrs: Attr.Normal },
+        { codePoint: 0x0001, attrs: Attr.Normal },
+        { codePoint: 0x0002, attrs: Attr.Normal },
       ],
     }),
     [

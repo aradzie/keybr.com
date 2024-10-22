@@ -1,5 +1,5 @@
 import { toCodePoints } from "@keybr/unicode";
-import { attrNormal, type Char, type Line, type LineList } from "./types.ts";
+import { Attr, type Char, type Line, type LineList } from "./types.ts";
 
 export const charsAreEqual = (
   a: readonly Char[],
@@ -26,7 +26,7 @@ export const charsAreEqual = (
 export const toChars = (text: string): Char[] => {
   return [...toCodePoints(text)].map((codePoint) => ({
     codePoint,
-    attrs: attrNormal,
+    attrs: Attr.Normal,
   }));
 };
 

@@ -1,13 +1,6 @@
 import test from "ava";
 import { TextInput } from "./textinput.ts";
-import {
-  attrCursor,
-  attrGarbage,
-  attrMiss,
-  type Char,
-  Feedback,
-  type Step,
-} from "./types.ts";
+import { Attr, type Char, Feedback, type Step } from "./types.ts";
 
 const A = 0x0061;
 const B = 0x0062;
@@ -611,13 +604,13 @@ function charsString(chars: readonly Char[]): string {
   return chars
     .map(({ codePoint, attrs }) => {
       let s = String.fromCodePoint(codePoint);
-      if (attrs & attrMiss) {
+      if (attrs & Attr.Miss) {
         s = `!${s}`;
       }
-      if (attrs & attrGarbage) {
+      if (attrs & Attr.Garbage) {
         s = `*${s}`;
       }
-      if (attrs & attrCursor) {
+      if (attrs & Attr.Cursor) {
         s = `[${s}]`;
       }
       return s;

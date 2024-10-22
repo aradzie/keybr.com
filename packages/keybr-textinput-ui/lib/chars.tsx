@@ -1,9 +1,5 @@
 import {
-  attrCursor,
-  attrGarbage,
-  attrHit,
-  attrMiss,
-  attrNormal,
+  Attr,
   type Char,
   type TextDisplaySettings,
   WhitespaceStyle,
@@ -139,26 +135,26 @@ function whitespaceChar(whitespaceStyle: WhitespaceStyle): string {
 }
 
 const cnNormal = {
-  [attrNormal]: styles.normal,
-  [attrHit]: styles.hit,
-  [attrMiss]: styles.miss,
-  [attrGarbage]: styles.garbage,
-  [attrCursor]: styles.cursor,
-};
+  [Attr.Normal]: styles.normal,
+  [Attr.Hit]: styles.hit,
+  [Attr.Miss]: styles.miss,
+  [Attr.Garbage]: styles.garbage,
+  [Attr.Cursor]: styles.cursor,
+} as const;
 
 const cnSpecial = {
-  [attrNormal]: styles.special,
-  [attrHit]: styles.hit,
-  [attrMiss]: styles.miss,
-  [attrGarbage]: styles.garbage,
-  [attrCursor]: styles.cursor,
-};
+  [Attr.Normal]: styles.special,
+  [Attr.Hit]: styles.hit,
+  [Attr.Miss]: styles.miss,
+  [Attr.Garbage]: styles.garbage,
+  [Attr.Cursor]: styles.cursor,
+} as const;
 
-function normalClassName(attrs: number): string {
+function normalClassName(attrs: Attr): string {
   return cnNormal[attrs] ?? "";
 }
 
-function specialClassName(attrs: number): string {
+function specialClassName(attrs: Attr): string {
   return cnSpecial[attrs] ?? "";
 }
 

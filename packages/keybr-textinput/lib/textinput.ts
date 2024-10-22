@@ -2,11 +2,7 @@ import { filterText } from "@keybr/keyboard";
 import { type CodePoint, toCodePoints } from "@keybr/unicode";
 import { type TextInputSettings } from "./settings.ts";
 import {
-  attrCursor,
-  attrGarbage,
-  attrHit,
-  attrMiss,
-  attrNormal,
+  Attr,
   type Char,
   Feedback,
   type LineList,
@@ -190,19 +186,19 @@ export class TextInput {
       if (i < this.#steps.length) {
         // Append characters before cursor.
         const step = this.#steps[i];
-        chars.push(toChar(codePoint, step.typo ? attrMiss : attrHit));
+        chars.push(toChar(codePoint, step.typo ? Attr.Miss : Attr.Hit));
       } else if (i === this.#steps.length) {
         if (!this.stopOnError) {
           // Append buffered garbage.
           for (const { codePoint } of this.#garbage) {
-            chars.push(toChar(codePoint, attrGarbage));
+            chars.push(toChar(codePoint, Attr.Garbage));
           }
         }
         // Append character at cursor.
-        chars.push(toChar(codePoint, attrCursor));
+        chars.push(toChar(codePoint, Attr.Cursor));
       } else {
         // Append characters after cursor.
-        chars.push(toChar(codePoint, attrNormal));
+        chars.push(toChar(codePoint, Attr.Normal));
       }
     }
     return chars;
