@@ -12,7 +12,7 @@ export function RepeatWordsProp(): ReactNode {
         <Field>
           <Range
             min={0}
-            max={1_000}
+            max={30}
             step={1}
             value={settings.get(lessonProps.repeatWords)}
             onChange={(value) => {
