@@ -8,6 +8,15 @@ export const enum Attr {
   Cursor = 8,
 }
 
+export type StyledText = string | StyledTextSpan | readonly StyledText[];
+
+export type StyledTextSpan = { readonly text: string; readonly cls: string };
+
+export type StyledTextItem = {
+  readonly codePoint: CodePoint;
+  readonly cls: string | null;
+};
+
 export type Step = {
   readonly codePoint: CodePoint;
   readonly timeStamp: number;
@@ -17,6 +26,7 @@ export type Step = {
 export type Char = {
   readonly codePoint: CodePoint;
   readonly attrs: number;
+  readonly cls?: string | null;
 };
 
 export type Line = {

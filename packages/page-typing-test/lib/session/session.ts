@@ -92,7 +92,7 @@ export class Session {
 
   #updateActiveLine(progress: Progress | null = null): void {
     const { mark, index, text } = this.#lines[this.#activeLine];
-    const chars = this.#textInput.getChars();
+    const { chars } = this.#textInput;
     this.#lines[this.#activeLine] = {
       mark,
       index,

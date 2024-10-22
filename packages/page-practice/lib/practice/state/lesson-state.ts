@@ -16,6 +16,7 @@ import {
   type Feedback,
   type LineList,
   makeStats,
+  type StyledText,
   type TextDisplaySettings,
   TextInput,
   type TextInputSettings,
@@ -73,18 +74,18 @@ export class LessonState {
 
   onTextInput(event: TextInputEvent): Feedback {
     const feedback = this.textInput.onTextInput(event);
-    this.lines = this.textInput.getLines();
-    this.suffix = this.textInput.getSuffix();
+    this.lines = this.textInput.lines;
+    this.suffix = this.textInput.suffix;
     if (this.textInput.completed) {
       this.#onResult(this.#makeResult(), this.textInput);
     }
     return feedback;
   }
 
-  #reset(fragment: string) {
+  #reset(fragment: StyledText) {
     this.textInput = new TextInput(fragment, this.textInputSettings);
-    this.lines = this.textInput.getLines();
-    this.suffix = this.textInput.getSuffix();
+    this.lines = this.textInput.lines;
+    this.suffix = this.textInput.suffix;
   }
 
   #makeResult(timeStamp = Date.now()) {
@@ -92,7 +93,7 @@ export class LessonState {
       this.settings.get(keyboardProps.layout),
       this.settings.get(lessonProps.type).textType,
       timeStamp,
-      makeStats(this.textInput.getSteps()),
+      makeStats(this.textInput.steps),
     );
   }
 }

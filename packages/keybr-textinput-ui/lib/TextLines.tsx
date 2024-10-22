@@ -1,6 +1,6 @@
 import {
   type Char,
-  charsAreEqual,
+  charArraysAreEqual,
   type Line,
   type LineList,
   type TextDisplaySettings,
@@ -110,7 +110,7 @@ const TextLine = memo(
   (prevProps, nextProps) => {
     return (
       prevProps.settings === nextProps.settings &&
-      charsAreEqual(prevProps.chars, nextProps.chars) && // deep equality
+      charArraysAreEqual(prevProps.chars, nextProps.chars) && // deep equality
       prevProps.className === nextProps.className
     );
   },
@@ -136,7 +136,7 @@ const TextItem = memo(
   (prevProps, nextProps) => {
     return (
       prevProps.settings === nextProps.settings &&
-      charsAreEqual(prevProps.chars, nextProps.chars) // deep equality
+      charArraysAreEqual(prevProps.chars, nextProps.chars) // deep equality
     );
   },
 );

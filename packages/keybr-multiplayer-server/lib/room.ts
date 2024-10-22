@@ -412,7 +412,7 @@ export class Room {
 }
 
 function updatePlayer(player: Player, started: number): void {
-  const steps = player.textInput.getSteps();
+  const { steps } = player.textInput;
   const { length } = steps;
   player.offset = length;
   if (length < 1) {

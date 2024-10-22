@@ -46,7 +46,7 @@ export function LessonPreview({
         <div className={styles.text}>
           <StaticText
             settings={toTextDisplaySettings(settings)}
-            lines={textInput.getLines()}
+            lines={textInput.lines}
           />
         </div>
       </div>

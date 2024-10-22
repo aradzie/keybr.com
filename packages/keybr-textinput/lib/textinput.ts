@@ -1,5 +1,6 @@
 import { filterText } from "@keybr/keyboard";
-import { type CodePoint, toCodePoints } from "@keybr/unicode";
+import { type CodePoint } from "@keybr/unicode";
+import { flattenStyledText, splitStyledText, toChar } from "./chars.ts";
 import { type TextInputSettings } from "./settings.ts";
 import {
   Attr,
@@ -7,6 +8,8 @@ import {
   Feedback,
   type LineList,
   type Step,
+  type StyledText,
+  type StyledTextItem,
 } from "./types.ts";
 
 export type StepListener = (step: Step) => void;
@@ -15,23 +18,25 @@ const recoverBufferLength = 3;
 const garbageBufferLength = 10;
 
 export class TextInput {
-  readonly text: string;
-  readonly codePoints: readonly CodePoint[];
+  readonly text: StyledText;
+  readonly textItems: readonly StyledTextItem[];
   readonly stopOnError: boolean;
   readonly forgiveErrors: boolean;
   readonly spaceSkipsWords: boolean;
   readonly onStep: StepListener;
   #steps: Step[] = [];
   #garbage: Step[] = [];
-  #typo: boolean = false;
+  #typo!: boolean;
+  #chars!: Char[];
+  #lines!: LineList;
 
   constructor(
-    text: string,
+    text: StyledText,
     { stopOnError, forgiveErrors, spaceSkipsWords }: TextInputSettings,
     onStep: StepListener = () => {},
   ) {
     this.text = text;
-    this.codePoints = [...toCodePoints(text)];
+    this.textItems = splitStyledText(text);
     this.stopOnError = stopOnError;
     this.forgiveErrors = forgiveErrors;
     this.spaceSkipsWords = spaceSkipsWords;
@@ -43,10 +48,29 @@ export class TextInput {
     this.#steps = [];
     this.#garbage = [];
     this.#typo = false;
+    this.#update();
   }
 
   get completed(): boolean {
-    return this.#steps.length === this.codePoints.length;
+    return this.#steps.length === this.textItems.length;
+  }
+
+  get steps(): readonly Step[] {
+    return this.#steps;
+  }
+
+  get chars(): readonly Char[] {
+    return this.#chars;
+  }
+
+  get lines(): LineList {
+    return this.#lines;
+  }
+
+  get suffix(): readonly CodePoint[] {
+    return this.textItems
+      .slice(this.#steps.length)
+      .map(({ codePoint }) => codePoint);
   }
 
   onTextInput({
@@ -75,6 +99,12 @@ export class TextInput {
   }
 
   clearChar(): Feedback {
+    const feedback = this.#clearChar();
+    this.#update();
+    return feedback;
+  }
+
+  #clearChar(): Feedback {
     if (this.#garbage.length > 0) {
       this.#garbage.pop();
     }
@@ -83,11 +113,17 @@ export class TextInput {
   }
 
   clearWord(): Feedback {
+    const feedback = this.#clearWord();
+    this.#update();
+    return feedback;
+  }
+
+  #clearWord(): Feedback {
     if (this.#garbage.length > 0) {
       this.#garbage = [];
     }
     while (this.#steps.length > 0) {
-      if (this.codePoints[this.#steps.length - 1] !== 0x0020) {
+      if (this.textItems[this.#steps.length - 1].codePoint !== 0x0020) {
         this.#steps.pop();
       } else {
         break;
@@ -98,6 +134,12 @@ export class TextInput {
   }
 
   appendChar(codePoint: CodePoint, timeStamp: number): Feedback {
+    const feedback = this.#appendChar(codePoint, timeStamp);
+    this.#update();
+    return feedback;
+  }
+
+  #appendChar(codePoint: CodePoint, timeStamp: number): Feedback {
     if (this.completed) {
       // Cannot enter any more characters if already completed.
       throw new Error();
@@ -115,13 +157,13 @@ export class TextInput {
 
     // Handle the space key.
     if (
-      codePoint === 0x0020 &&
-      this.codePoints[this.#steps.length] !== 0x0020
+      this.textItems[this.#steps.length].codePoint !== 0x0020 &&
+      codePoint === 0x0020
     ) {
       if (
         this.#garbage.length === 0 &&
         (this.#steps.length === 0 ||
-          this.codePoints[this.#steps.length - 1] === 0x0020)
+          this.textItems[this.#steps.length - 1].codePoint === 0x0020)
       ) {
         // At the beginning of a word.
         this.#typo = true;
@@ -137,7 +179,8 @@ export class TextInput {
 
     // Handle correct input.
     if (
-      filterText.normalize(this.codePoints[this.#steps.length]) === codePoint &&
+      filterText.normalize(this.textItems[this.#steps.length].codePoint) ===
+        codePoint &&
       (this.forgiveErrors || this.#garbage.length === 0)
     ) {
       const typo = this.#typo;
@@ -175,43 +218,39 @@ export class TextInput {
     return Feedback.Failed;
   }
 
-  getSteps(): readonly Step[] {
-    return this.#steps;
+  #update() {
+    this.#chars = this.#getChars();
+    this.#lines = this.#getLines();
   }
 
-  getChars(): readonly Char[] {
+  #getChars(): Char[] {
     const chars: Char[] = [];
-    for (let i = 0; i < this.codePoints.length; i++) {
-      const codePoint = this.codePoints[i];
+    for (let i = 0; i < this.textItems.length; i++) {
+      const item = this.textItems[i];
       if (i < this.#steps.length) {
         // Append characters before cursor.
         const step = this.#steps[i];
-        chars.push(toChar(codePoint, step.typo ? Attr.Miss : Attr.Hit));
+        chars.push(toChar(item, step.typo ? Attr.Miss : Attr.Hit));
       } else if (i === this.#steps.length) {
         if (!this.stopOnError) {
           // Append buffered garbage.
           for (const { codePoint } of this.#garbage) {
-            chars.push(toChar(codePoint, Attr.Garbage));
+            chars.push(toChar({ codePoint, cls: null }, Attr.Garbage));
           }
         }
         // Append character at cursor.
-        chars.push(toChar(codePoint, Attr.Cursor));
+        chars.push(toChar(item, Attr.Cursor));
       } else {
         // Append characters after cursor.
-        chars.push(toChar(codePoint, Attr.Normal));
+        chars.push(toChar(item, Attr.Normal));
       }
     }
     return chars;
   }
 
-  getLines(): LineList {
-    const { text } = this;
-    const chars = this.getChars();
-    return { text, lines: [{ text, chars }] };
-  }
-
-  getSuffix(): readonly CodePoint[] {
-    return this.codePoints.slice(this.#steps.length);
+  #getLines(): LineList {
+    const text = flattenStyledText(this.text);
+    return { text, lines: [{ text, chars: this.chars }] };
   }
 
   #addStep(step: Step): void {
@@ -221,28 +260,28 @@ export class TextInput {
 
   #skipWord(timeStamp: number): void {
     this.#addStep({
-      codePoint: this.codePoints[this.#steps.length],
+      codePoint: this.textItems[this.#steps.length].codePoint,
       timeStamp,
       typo: true,
     });
     // Skip the remaining non-space characters inside the word.
     while (
-      this.#steps.length < this.codePoints.length &&
-      this.codePoints[this.#steps.length] !== 0x0020
+      this.#steps.length < this.textItems.length &&
+      this.textItems[this.#steps.length].codePoint !== 0x0020
     ) {
       this.#addStep({
-        codePoint: this.codePoints[this.#steps.length],
+        codePoint: this.textItems[this.#steps.length].codePoint,
         timeStamp,
         typo: true,
       });
     }
-    // Skip the space character to position at the beginning of next word.
+    // Skip the space character to position at the beginning of the next word.
     if (
-      this.#steps.length < this.codePoints.length &&
-      this.codePoints[this.#steps.length] === 0x0020
+      this.#steps.length < this.textItems.length &&
+      this.textItems[this.#steps.length].codePoint === 0x0020
     ) {
       this.#addStep({
-        codePoint: this.codePoints[this.#steps.length],
+        codePoint: this.textItems[this.#steps.length].codePoint,
         timeStamp,
         typo: false,
       });
@@ -259,14 +298,14 @@ export class TextInput {
     // Check if the buffer size is right.
     if (
       this.#garbage.length < recoverBufferLength + 1 ||
-      this.#steps.length + recoverBufferLength + 1 > this.codePoints.length
+      this.#steps.length + recoverBufferLength + 1 > this.textItems.length
     ) {
       return false;
     }
 
     // Check if can recover.
     for (let i = 0; i < recoverBufferLength; i++) {
-      const codePoint = this.codePoints[this.#steps.length + i + 1];
+      const codePoint = this.textItems[this.#steps.length + i + 1].codePoint;
       if (codePoint !== this.#garbage[i + 1].codePoint) {
         return false;
       }
@@ -274,7 +313,7 @@ export class TextInput {
 
     // Append a step with an error.
     this.#addStep({
-      codePoint: this.codePoints[this.#steps.length],
+      codePoint: this.textItems[this.#steps.length].codePoint,
       timeStamp: this.#garbage[0].timeStamp,
       typo: true,
     });
@@ -302,14 +341,14 @@ export class TextInput {
     // Check if the buffer size is right.
     if (
       this.#garbage.length < recoverBufferLength ||
-      this.#steps.length + recoverBufferLength + 1 > this.codePoints.length
+      this.#steps.length + recoverBufferLength + 1 > this.textItems.length
     ) {
       return false;
     }
 
     // Check if can recover.
     for (let i = 0; i < recoverBufferLength; i++) {
-      const codePoint = this.codePoints[this.#steps.length + i + 1];
+      const codePoint = this.textItems[this.#steps.length + i + 1].codePoint;
       if (codePoint !== this.#garbage[i].codePoint) {
         return false;
       }
@@ -317,7 +356,7 @@ export class TextInput {
 
     // Append a step with an error.
     this.#addStep({
-      codePoint: this.codePoints[this.#steps.length],
+      codePoint: this.textItems[this.#steps.length].codePoint,
       timeStamp: this.#garbage[0].timeStamp,
       typo: true,
     });
@@ -336,15 +375,4 @@ export class TextInput {
     this.#typo = false;
     return true;
   }
-}
-
-const charCache = new Map<number, Char>();
-
-function toChar(codePoint: CodePoint, attrs: number): Char {
-  const key = (codePoint & 0x00ff_ffff) | ((attrs & 0x0000_00ff) << 24);
-  let char = charCache.get(key);
-  if (char == null) {
-    charCache.set(key, (char = { codePoint, attrs }));
-  }
-  return char;
 }

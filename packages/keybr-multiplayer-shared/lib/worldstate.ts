@@ -50,7 +50,7 @@ export function makeTextInput(text: string): TextInput {
 
 export function makeWorldState(intl: IntlShape): WorldState {
   const textInput = makeTextInput("");
-  const lines = textInput.getLines();
+  const { lines } = textInput;
   return {
     gameState: GameState.INITIALIZING,
     players: {
@@ -78,7 +78,7 @@ export function handleTextInput(
   if (!players.me.spectator && gameState === GameState.RUNNING) {
     const elapsed = timer.elapsed();
     textInput.appendChar(codePoint, elapsed);
-    const lines = textInput.getLines();
+    const { lines } = textInput;
     return { worldState: { ...worldState, lines }, elapsed };
   } else {
     return null;
@@ -139,7 +139,7 @@ function handleGameConfigMessage(
   { text }: GameConfigMessage,
 ): WorldState {
   const textInput = makeTextInput(text);
-  const lines = textInput.getLines();
+  const { lines } = textInput;
   return { ...worldState, textInput, lines };
 }
 
@@ -267,7 +267,7 @@ function updatePlayerStates(
   for (const [id, newPlayerState] of playerState.entries()) {
     const player = players.get(id);
     if (player != null) {
-      const newProgress = player.offset / worldState.textInput.text.length;
+      const newProgress = player.offset / worldState.textInput.textItems.length;
       if (
         player.spectator !== newPlayerState.spectator ||
         player.finished !== newPlayerState.finished ||

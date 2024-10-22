@@ -37,14 +37,13 @@ function useAnimatedTextState(text: string): readonly Char[] {
   }
   useEffect(() => {
     const id = setInterval(() => {
-      const { codePoints } = textInput;
-      const steps = textInput.getSteps();
-      if (codePoints.length === steps.length) {
+      const { textItems, steps } = textInput;
+      if (textItems.length === steps.length) {
         textInput.reset();
       } else {
-        textInput.appendChar(codePoints[steps.length], 0);
+        textInput.appendChar(textItems[steps.length].codePoint, 0);
       }
-      const chars = textInput.getChars();
+      const { chars } = textInput;
       setState({ textInput, chars });
     }, 500);
     return () => {
@@ -60,6 +59,6 @@ function makeState(text: string) {
     forgiveErrors: false,
     spaceSkipsWords: false,
   });
-  const chars = textInput.getChars();
+  const { chars } = textInput;
   return { textInput, chars };
 }

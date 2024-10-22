@@ -83,7 +83,7 @@ function useLessonState(
     // New lesson.
     const state = new LessonState(progress, (result, textInput) => {
       setKey(key + 1);
-      lastLessonRef.current = makeLastLesson(result, textInput.getSteps());
+      lastLessonRef.current = makeLastLesson(result, textInput.steps);
       onResultRef.current(result);
     });
     state.lastLesson = lastLessonRef.current;
