@@ -412,13 +412,20 @@ export default {
     ],
   },
   c_func_id: {
-    seq: [
+    alt: [
       {
-        f: 0.5,
-        opt: "std::",
+        seq: [
+          {
+            f: 0.5,
+            opt: "std::",
+          },
+          {
+            ref: "c_func_id_suffix",
+          },
+        ],
       },
       {
-        ref: "c_func_id_suffix",
+        ref: "generic_function_name",
       },
     ],
   },
@@ -451,59 +458,22 @@ export default {
   c_var_id: {
     seq: [
       {
-        ref: "c_var_id_prefix",
-      },
-      {
-        ref: "c_simple_var_id",
-      },
-      {
         f: 0.5,
         opt: {
-          ref: "c_var_id_suffix",
+          f: 0.5,
+          opt: {
+            seq: [
+              {
+                alt: ["p", "ptr"],
+              },
+              "_",
+            ],
+          },
         },
       },
-    ],
-  },
-  c_var_id_prefix: {
-    seq: [
       {
-        alt: ["p", "ptr", "ref", "prev", "next", "first", "last"],
+        ref: "generic_variable_name",
       },
-      "_",
-    ],
-  },
-  c_var_id_suffix: {
-    seq: [
-      "_",
-      {
-        alt: ["index", "pos", "id", "size"],
-      },
-    ],
-  },
-  c_simple_var_id: {
-    alt: [
-      "i",
-      "j",
-      "x",
-      "y",
-      "z",
-      "char",
-      "dir",
-      "end",
-      "entry",
-      "err",
-      "file",
-      "id",
-      "item",
-      "key",
-      "length",
-      "line",
-      "list",
-      "name",
-      "path",
-      "start",
-      "str",
-      "value",
     ],
   },
 } as Rules;

@@ -97,55 +97,7 @@ python_string_literal ->
   | { :class(string) ("'''" python_string_value "'''" ) }
   ;
 
-python_variable_name ->
-    "_"
-  | "a"
-  | "actual"
-  | "b"
-  | "c"
-  | [ ( "initial" | "new" | "bad" | "good" ) "_" ] "config"
-  | "count"
-  | "d"
-  | [ ( "initial" | "new" | "bad" | "good"| "user" ) "_" ] "data"
-  | "df"
-  | "dtype"
-  | "expected"
-  | "f"
-  | [ "my" "_" ] [ ( "data" | "config" | "image" ) "_" ] "file"
-  | "h"
-  | [ ( "min" | "max" ) "_" ] [ ( "inner" | "outer" ) "_" ] "height"
-  | "i"
-  | "img"
-  | ( "first" | "last" | "prev" | "next" | "min" | "max" ) "_" "index"
-  | "input"
-  | ( "input" | "output" ) "_" "shape"
-  | "j"
-  | "k"
-  | ( "first" | "last" | "prev" | "next" ) "_" "key"
-  | ( "first" | "last" | "prev" | "next" | "min" | "max" ) "_" "layer"
-  | "m"
-  | "mask"
-  | "n"
-  | [ ( "file" | "dir" | "entry" ) "_" ] "name"
-  | ( "first" | "last" | "prev" | "next" ) "_" "node"
-  | "op"
-  | [ ( "last" | "saved" ) "_" ] ( "out" | "output" )
-  | "res"
-  | [ ( "min" | "max" | "last" ) "_" ] "result"
-  | "root"
-  | "s"
-  | [ ( "data" | "layer" | "image" ) "_" ] "shape"
-  | [ ( "min" | "max" ) "_" ] [ ( "inner" | "outer" ) "_" ] "size"
-  | "t"
-  | "u"
-  | "v"
-  | ( "first" | "last" | "prev" | "next" | "min" | "max" ) "_" "value"
-  | "w"
-  | [ ( "min" | "max" ) "_" ] [ ( "inner" | "outer" ) "_" ] "width"
-  | "x"
-  | "y"
-  | "z"
-  ;
+python_variable_name -> generic_variable_name ;
 
 python_function_name ->
     "__call__"
@@ -160,72 +112,13 @@ python_function_name ->
   | "__ne__"
   | "__new__"
   | "__repr__"
+  | "__setattr__"
   | "__setitem__"
   | "__str__"
-  | "add"
-  | "append"
-  | "build"
-  | "call"
-  | "configure"
-  | "constants"
-  | "copy" [ "_" ( "item" | "node" | "entry" | "layer" | "file" | "config" ) ]
-  | "create" [ "_" ( "item" | "node" | "entry" | "layer" | "file" | "config" ) ]
-  | "dfs"
-  | "dtype"
-  | "exec"
-  | "find" [ "_" ( "item" | "node" | "entry" | "layer" | "file" | "config" ) ]
-  | "floor"
-  | "from_config"
-  | "get" [ "_" ( "state" | "item" | "node" | "entry" | "layer" | "file" | "config" ) ]
-  | "identity"
-  | "init" [ "_" ( "state" | "item" | "node" | "entry" | "layer" | "file" | "config" ) ]
-  | [ [ "pre" ] "process" "_" ] [ "_" "user" ] "input"
-  | "insert" [ "_" ( "item" | "node" | "entry" | "layer" ) ]
-  | "inverse"
-  | "inverse_transform"
-  | "load" [ "_" ( "state" | "item" | "node" | "entry" | "layer" | "file" | "config" ) ]
-  | "main"
-  | "pop" [ "_" ( "item" | "node" | "entry" | "layer" ) ]
-  | "read" [ "_" ( "state" | "item" | "node" | "entry" | "layer" | "file" | "config" ) ]
-  | "remove" [ "_" ( "state" | "item" | "node" | "entry" | "layer" | "file" | "config" ) ]
-  | "reset_state"
-  | "reverse"
-  | "run"
-  | "save" [ "_" ( "state" | "item" | "node" | "entry" | "layer" | "file" | "config" ) ]
-  | "serialize"
-  | "shape"
-  | [ ( "file" | "data" | "image" | "layer" ) "_" ] "size"
-  | "store" [ "_" ( "state" | "item" | "node" | "entry" | "layer" | "file" | "config" ) ]
-  | "update" [ "_" ( "state" | "item" | "node" | "entry" | "layer" | "file" | "config" ) ]
-  | [ ( "function" | "class" ) "_" ] "wrapper"
+  | generic_function_name
   ;
 
-python_class_name ->
-    "ActivityRegularizationLayer"
-  | "Attention"
-  | "Cat"
-  | "Cols"
-  | "Command"
-  | "Constants"
-  | "Controller"
-  | "Dir"
-  | "Dog"
-  | "Entry"
-  | "File"
-  | "Graph"
-  | "Handle"
-  | "Item"
-  | "Layer"
-  | "List"
-  | "Load"
-  | [ "Custom" | "Example" ] "Model"
-  | [ "Tree" | "Graph" | "List" ] "Node"
-  | "Rows"
-  | "Table"
-  | "TestSuite"
-  | "Tree"
-  | "Variable"
-  ;
+python_class_name -> generic_class_name ;
 
 python_string_value ->
     "."

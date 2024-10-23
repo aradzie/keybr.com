@@ -53,7 +53,7 @@ c_binary_exp -> "(" c_unary_exp ")"
 
 c_ternary_exp -> c_unary_exp _ "?" _ c_unary_exp _ ":" _ c_unary_exp ;
 
-c_func_id -> [ "std::" ] c_func_id_suffix ;
+c_func_id -> ( [ "std::" ] c_func_id_suffix ) | generic_function_name ;
 
 c_func_id_suffix ->
     "abort"
@@ -80,33 +80,4 @@ c_func_id_suffix ->
   | "strlen"
   ;
 
-c_var_id -> c_var_id_prefix c_simple_var_id [ c_var_id_suffix ] ;
-
-c_var_id_prefix -> ( "p" | "ptr" | "ref" | "prev" | "next" | "first" | "last" ) "_" ;
-
-c_var_id_suffix -> "_" ( "index" | "pos" | "id" | "size" ) ;
-
-c_simple_var_id ->
-    "i"
-  | "j"
-  | "x"
-  | "y"
-  | "z"
-  | "char"
-  | "dir"
-  | "end"
-  | "entry"
-  | "err"
-  | "file"
-  | "id"
-  | "item"
-  | "key"
-  | "length"
-  | "line"
-  | "list"
-  | "name"
-  | "path"
-  | "start"
-  | "str"
-  | "value"
-  ;
+c_var_id -> [ [ ( "p" | "ptr" ) "_"  ] ] generic_variable_name ;

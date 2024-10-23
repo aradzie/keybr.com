@@ -4,6 +4,7 @@ import { type Grammar } from "./ast.ts";
 import { findFlags } from "./find-flags.ts";
 import { type Flags } from "./flags.ts";
 import { generate } from "./generate.ts";
+import { Output } from "./output.ts";
 import {
   grammar_cpp,
   grammar_html_css,
@@ -12,8 +13,7 @@ import {
   grammar_regex,
   grammar_rust,
   grammar_shell,
-} from "./grammars.ts";
-import { Output } from "./output.ts";
+} from "./syntax/grammars.ts";
 import { validate } from "./validate.ts";
 
 export class Syntax implements EnumItem {
