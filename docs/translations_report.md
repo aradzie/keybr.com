@@ -10,7 +10,7 @@ Untranslated: 11 messages, 109 words
 * *Average accuracy*
 * *Relative Accuracy*
 * *Hide explanations*
-* *Add repeating words:*
+* *Repeat each word:*
 * *This is a histogram of the accuracies of all users, and your...*
 * *Generate typing lessons from the text of a book. All keys ar...*
 * *Repeat each word a number of times. Type a word for the firs...*
@@ -25,7 +25,7 @@ Untranslated: 7 messages, 83 words
 * *Top accuracy*
 * *Average accuracy*
 * *Relative Accuracy*
-* *Add repeating words:*
+* *Repeat each word:*
 * *This is a histogram of the accuracies of all users, and your...*
 * *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
@@ -42,7 +42,7 @@ Untranslated: 37 messages, 1552 words
 * *Average accuracy*
 * *Relative Accuracy*
 * *Hide explanations*
-* *Add repeating words:*
+* *Repeat each word:*
 * *The previous keys are also above the target speed*
 * *Generate lessons that resemble the specified programming lan...*
 * *Please provide some text in order to calculate the associate...*
@@ -73,7 +73,7 @@ Untranslated: 19 messages, 273 words
 * *Average accuracy*
 * *Relative Accuracy*
 * *Hide explanations*
-* *Add repeating words:*
+* *Repeat each word:*
 * *Keyboard hardware emulates layout*
 * *Generate lessons that resemble the specified programming lan...*
 * *Practice punctuation characters that are specific to a progr...*
@@ -102,7 +102,7 @@ Untranslated: 16 messages, 93 words
 * *Bar whitespace*
 * *Average accuracy*
 * *Relative Accuracy*
-* *Add repeating words:*
+* *Repeat each word:*
 * *This is a histogram of the accuracies of all users, and your...*
 * *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
@@ -122,7 +122,7 @@ Untranslated: 13 messages, 89 words
 * *Top accuracy*
 * *Average accuracy*
 * *Relative Accuracy*
-* *Add repeating words:*
+* *Repeat each word:*
 * *This is a histogram of the accuracies of all users, and your...*
 * *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
@@ -192,7 +192,7 @@ Untranslated: 8 messages, 195 words
 * *Top accuracy*
 * *Average accuracy*
 * *Relative Accuracy*
-* *Add repeating words:*
+* *Repeat each word:*
 * *This is a histogram of the accuracies of all users, and your...*
 * *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
@@ -215,7 +215,7 @@ Untranslated: 20 messages, 164 words
 * *Average accuracy*
 * *Relative Accuracy*
 * *Hide explanations*
-* *Add repeating words:*
+* *Repeat each word:*
 * *Keyboard hardware emulates layout*
 * *Generate lessons that resemble the specified programming lan...*
 * *Practice punctuation characters that are specific to a progr...*
@@ -239,7 +239,7 @@ Untranslated: 63 messages, 2160 words
 * *Accuracy Streaks*
 * *Relative Accuracy*
 * *Hide explanations*
-* *Add repeating words:*
+* *Repeat each word:*
 * *Keyboard hardware emulates layout*
 * *Show a guided tour with help slides.*
 * *Switch the current interface layout.*
@@ -271,7 +271,7 @@ Untranslated: 24 messages, 444 words
 * *Explain settings*
 * *Relative Accuracy*
 * *Hide explanations*
-* *Add repeating words:*
+* *Repeat each word:*
 * *Unlock a next key only when:*
 * *Sort letters in the order of keyboard keys*
 * *The previous keys are also above the target speed*
@@ -299,8 +299,8 @@ Untranslated: 28 messages, 456 words
 * *Average accuracy*
 * *Underline cursor*
 * *Relative Accuracy*
+* *Repeat each word:*
 * *Bullet whitespace*
-* *Add repeating words:*
 * *Keyboard hardware emulates layout*
 * *Generate lessons that resemble the specified programming lan...*
 * *This is a histogram of the accuracies of all users, and your...*
@@ -325,7 +325,7 @@ Untranslated: 15 messages, 113 words
 * *Average accuracy*
 * *Relative Accuracy*
 * *Hide explanations*
-* *Add repeating words:*
+* *Repeat each word:*
 * *This is a histogram of the accuracies of all users, and your...*
 * *Generate typing lessons from the text of a book. All keys ar...*
 * *Repeat each word a number of times. Type a word for the firs...*
@@ -402,7 +402,7 @@ Untranslated: 13 messages, 89 words
 * *Top accuracy*
 * *Average accuracy*
 * *Relative Accuracy*
-* *Add repeating words:*
+* *Repeat each word:*
 * *This is a histogram of the accuracies of all users, and your...*
 * *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
@@ -512,7 +512,7 @@ Untranslated: 19 messages, 100 words
 * *Average accuracy*
 * *Relative Accuracy*
 * *Hide explanations*
-* *Add repeating words:*
+* *Repeat each word:*
 * *This is a histogram of the accuracies of all users, and your...*
 * *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
@@ -529,7 +529,7 @@ Untranslated: 11 messages, 109 words
 * *Average accuracy*
 * *Relative Accuracy*
 * *Hide explanations*
-* *Add repeating words:*
+* *Repeat each word:*
 * *This is a histogram of the accuracies of all users, and your...*
 * *Generate typing lessons from the text of a book. All keys ar...*
 * *Repeat each word a number of times. Type a word for the firs...*
@@ -550,7 +550,7 @@ Untranslated: 14 messages, 112 words
 * *Average accuracy*
 * *Relative Accuracy*
 * *Hide explanations*
-* *Add repeating words:*
+* *Repeat each word:*
 * *This is a histogram of the accuracies of all users, and your...*
 * *Generate typing lessons from the text of a book. All keys ar...*
 * *Repeat each word a number of times. Type a word for the firs...*
@@ -574,9 +574,9 @@ Untranslated: 19 messages, 123 words
 * *Average accuracy*
 * *Relative Accuracy*
 * *Hide explanations*
+* *Repeat each word:*
 * *Daily goal reached!*
 * *New letter unlocked!*
-* *Add repeating words:*
 * *This is a histogram of the accuracies of all users, and your...*
 * *Generate typing lessons from the text of a book. All keys ar...*
 * *Repeat each word a number of times. Type a word for the firs...*
@@ -600,8 +600,8 @@ Untranslated: 44 messages, 1319 words
 * *Forgive errors*
 * *Average accuracy*
 * *Relative Accuracy*
+* *Repeat each word:*
 * *Start in {countDown}*
-* *Add repeating words:*
 * *Learn to type faster.*
 * *Enter full-screen mode.*
 * *Typing speed in the last lesson ({speedUnitName}). The more,...*
@@ -622,7 +622,7 @@ Untranslated: 11 messages, 109 words
 * *Average accuracy*
 * *Relative Accuracy*
 * *Hide explanations*
-* *Add repeating words:*
+* *Repeat each word:*
 * *This is a histogram of the accuracies of all users, and your...*
 * *Generate typing lessons from the text of a book. All keys ar...*
 * *Repeat each word a number of times. Type a word for the firs...*
@@ -644,7 +644,7 @@ Untranslated: 14 messages, 90 words
 * *Top accuracy*
 * *Average accuracy*
 * *Relative Accuracy*
-* *Add repeating words:*
+* *Repeat each word:*
 * *This is a histogram of the accuracies of all users, and your...*
 * *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
@@ -658,7 +658,7 @@ Untranslated: 7 messages, 83 words
 * *Top accuracy*
 * *Average accuracy*
 * *Relative Accuracy*
-* *Add repeating words:*
+* *Repeat each word:*
 * *This is a histogram of the accuracies of all users, and your...*
 * *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
@@ -702,7 +702,7 @@ Untranslated: 9 messages, 87 words
 * *Average accuracy*
 * *Relative Accuracy*
 * *Hide explanations*
-* *Add repeating words:*
+* *Repeat each word:*
 * *This is a histogram of the accuracies of all users, and your...*
 * *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
@@ -726,7 +726,7 @@ Untranslated: 88 messages, 2913 words
 * *Average accuracy*
 * *Underline cursor*
 * *Relative Accuracy*
-* *Add repeating words:*
+* *Repeat each word:*
 * *Relative Typing Speed*
 * *Key Frequency Heatmap*
 * *Key Frequency Histogram*
@@ -745,7 +745,7 @@ Untranslated: 8 messages, 90 words
 * *M|T|W|T|F|S|S*
 * *Average accuracy*
 * *Relative Accuracy*
-* *Add repeating words:*
+* *Repeat each word:*
 * *This is a histogram of the accuracies of all users, and your...*
 * *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
@@ -762,7 +762,7 @@ Untranslated: 11 messages, 109 words
 * *Average accuracy*
 * *Relative Accuracy*
 * *Hide explanations*
-* *Add repeating words:*
+* *Repeat each word:*
 * *This is a histogram of the accuracies of all users, and your...*
 * *Generate typing lessons from the text of a book. All keys ar...*
 * *Repeat each word a number of times. Type a word for the firs...*

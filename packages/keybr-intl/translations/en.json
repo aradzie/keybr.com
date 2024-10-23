@@ -371,7 +371,7 @@
   "settings.recoverKeys.label": "The previous keys are also above the target speed",
   "settings.recoverKeys.prefix": "Unlock a next key only when:",
   "settings.repeatWords.description": "Repeat each word a number of times. Type a word for the first time to develop your muscle memory. Typing the same word consecutively should be easier.",
-  "settings.repeatWords.label": "Add repeating words:",
+  "settings.repeatWords.label": "Repeat each word:",
   "settings.soundVolume.label": "Volume:",
   "settings.sounds.allSoundsValue": "All Sounds",
   "settings.sounds.errorSoundsOnlyValue": "Error Sounds Only",

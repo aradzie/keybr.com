@@ -21,13 +21,13 @@ export function RepeatWordsProp(): ReactNode {
         <Field>
           <FormattedMessage
             id="settings.repeatWords.label"
-            defaultMessage="Add repeating words:"
+            defaultMessage="Repeat each word:"
           />
         </Field>
         <Field>
           <Range
-            min={0}
-            max={30}
+            min={lessonProps.repeatWords.min}
+            max={lessonProps.repeatWords.max}
             step={1}
             value={settings.get(lessonProps.repeatWords)}
             onChange={(value) => {
