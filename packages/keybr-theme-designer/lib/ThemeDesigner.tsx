@@ -1,6 +1,6 @@
 import {
   type CustomTheme,
-  defaultCustomTheme,
+  customTheme,
   readTheme,
   storeTheme,
 } from "@keybr/themes";
@@ -19,11 +19,11 @@ export function ThemeDesigner() {
 }
 
 function usePersistentCustomTheme() {
-  const [theme, setTheme] = useState<CustomTheme>(defaultCustomTheme);
+  const [theme, setTheme] = useState<CustomTheme>(customTheme);
   useEffect(() => {
     readTheme()
       .then(({ theme, error }) => {
-        setTheme(defaultCustomTheme.merge(theme));
+        setTheme(customTheme.merge(theme));
         reportError(error);
       })
       .catch((err) => {

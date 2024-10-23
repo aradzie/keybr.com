@@ -1,7 +1,7 @@
 import {
   applyTheme,
+  customTheme,
   darkTheme,
-  defaultCustomTheme,
   lightTheme,
   useTheme,
 } from "@keybr/themes";
@@ -69,8 +69,8 @@ export function DesignPane() {
               label="Reset"
               size={6}
               onClick={() => {
-                setTheme(defaultCustomTheme);
-                applyTheme(defaultCustomTheme);
+                setTheme(customTheme);
+                applyTheme(customTheme);
                 refresh();
               }}
             />

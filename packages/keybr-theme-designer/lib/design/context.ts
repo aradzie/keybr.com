@@ -1,4 +1,4 @@
-import { type CustomTheme, defaultCustomTheme } from "@keybr/themes";
+import { type CustomTheme, customTheme } from "@keybr/themes";
 import { createContext, useContext } from "react";
 
 export type CustomThemeValue = {
@@ -7,7 +7,7 @@ export type CustomThemeValue = {
 };
 
 export const CustomThemeContext = createContext<CustomThemeValue>({
-  theme: defaultCustomTheme,
+  theme: customTheme,
   setTheme: () => {},
 });
 
