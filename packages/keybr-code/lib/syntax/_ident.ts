@@ -52,7 +52,9 @@ export default {
         seq: [
           {
             f: 0.5,
-            opt: "my_",
+            opt: {
+              seq: ["my", "_"],
+            },
           },
           {
             f: 0.5,
@@ -137,7 +139,8 @@ export default {
           {
             alt: ["first", "last", "prev", "next"],
           },
-          "_item",
+          "_",
+          "item",
         ],
       },
       "iter",
@@ -146,7 +149,8 @@ export default {
           {
             alt: ["input", "output"],
           },
-          "_shape",
+          "_",
+          "shape",
         ],
       },
       "j",
@@ -156,7 +160,8 @@ export default {
           {
             alt: ["first", "last", "prev", "next"],
           },
-          "_key",
+          "_",
+          "key",
         ],
       },
       {
@@ -164,7 +169,8 @@ export default {
           {
             alt: ["first", "last", "prev", "next", "min", "max"],
           },
-          "_layer",
+          "_",
+          "layer",
         ],
       },
       {
@@ -208,7 +214,8 @@ export default {
           {
             alt: ["first", "last", "prev", "next"],
           },
-          "_node",
+          "_",
+          "node",
         ],
       },
       "op",
@@ -301,7 +308,8 @@ export default {
           {
             alt: ["first", "last", "prev", "next", "min", "max"],
           },
-          "_value",
+          "_",
+          "value",
         ],
       },
       "w",
@@ -483,13 +491,16 @@ export default {
                   f: 0.5,
                   opt: "pre",
                 },
-                "process_",
+                "process",
+                "_",
               ],
             },
           },
           {
             f: 0.5,
-            opt: "_user",
+            opt: {
+              seq: ["_", "user"],
+            },
           },
           "input",
         ],

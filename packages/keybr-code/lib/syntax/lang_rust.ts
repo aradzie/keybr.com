@@ -47,7 +47,9 @@ export default {
         f: 0.5,
         opt: {
           seq: [
-            " -> ",
+            " ",
+            "->",
+            " ",
             {
               ref: "rust_type",
             },
@@ -77,7 +79,8 @@ export default {
       {
         ref: "rust_struct_name",
       },
-      " {",
+      " ",
+      "{",
     ],
   },
   rust_assign: {
@@ -93,14 +96,17 @@ export default {
         f: 0.5,
         opt: {
           seq: [
-            ": ",
+            ":",
+            " ",
             {
               ref: "rust_type",
             },
           ],
         },
       },
-      " = ",
+      " ",
+      "=",
+      " ",
       {
         ref: "rust_expression",
       },
@@ -128,7 +134,8 @@ export default {
         f: 0.5,
         opt: {
           seq: [
-            ", ",
+            ",",
+            " ",
             {
               ref: "rust_argument",
             },
@@ -142,7 +149,8 @@ export default {
       {
         ref: "rust_variable_name",
       },
-      ": ",
+      ":",
+      " ",
       {
         ref: "rust_type",
       },
@@ -254,7 +262,8 @@ export default {
         f: 0.5,
         opt: {
           seq: [
-            ", ",
+            ",",
+            " ",
             {
               ref: "rust_expression",
             },
@@ -292,7 +301,8 @@ export default {
           {
             ref: "rust_type",
           },
-          " <",
+          " ",
+          "<",
           {
             ref: "rust_type",
           },
@@ -300,7 +310,8 @@ export default {
             f: 0.5,
             opt: {
               seq: [
-                ", ",
+                ",",
+                " ",
                 {
                   ref: "rust_type",
                 },
@@ -316,7 +327,8 @@ export default {
           {
             ref: "rust_type",
           },
-          "; ",
+          ";",
+          " ",
           {
             ref: "rust_number_literal",
           },
@@ -333,7 +345,8 @@ export default {
             f: 0.5,
             opt: {
               seq: [
-                ", ",
+                ",",
+                " ",
                 {
                   ref: "rust_type",
                 },
@@ -420,7 +433,8 @@ export default {
             f: 0.5,
             opt: {
               seq: [
-                ", ",
+                ",",
+                " ",
                 {
                   ref: "rust_expression",
                 },
@@ -436,7 +450,8 @@ export default {
           {
             ref: "rust_expression",
           },
-          "; ",
+          ";",
+          " ",
           {
             ref: "rust_number_literal",
           },
@@ -450,11 +465,14 @@ export default {
       {
         ref: "rust_struct_name",
       },
-      " { ",
+      " ",
+      "{",
+      " ",
       {
         ref: "rust_struct_fields",
       },
-      " }",
+      " ",
+      "}",
     ],
   },
   rust_struct_fields: {
@@ -466,7 +484,8 @@ export default {
         f: 0.5,
         opt: {
           seq: [
-            ", ",
+            ",",
+            " ",
             {
               ref: "rust_field_assignment",
             },
@@ -480,7 +499,8 @@ export default {
       {
         ref: "rust_variable_name",
       },
-      ": ",
+      ":",
+      " ",
       {
         ref: "rust_expression",
       },
@@ -604,7 +624,8 @@ export default {
       alt: [
         {
           seq: [
-            "// ",
+            "//",
+            " ",
             {
               ref: "rust_comment_text",
             },
@@ -612,7 +633,8 @@ export default {
         },
         {
           seq: [
-            "//! ",
+            "//!",
+            " ",
             {
               ref: "rust_comment_text",
             },
@@ -620,20 +642,24 @@ export default {
         },
         {
           seq: [
-            "/* ",
+            "/*",
+            " ",
             {
               ref: "rust_comment_text",
             },
-            " */",
+            " ",
+            "*/",
           ],
         },
         {
           seq: [
-            "/*! ",
+            "/*!",
+            " ",
             {
               ref: "rust_comment_text",
             },
-            " */",
+            " ",
+            "*/",
           ],
         },
       ],

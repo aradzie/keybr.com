@@ -22,7 +22,9 @@ export default {
       {
         ref: "js_var_id",
       },
-      " = ",
+      " ",
+      "=",
+      " ",
       {
         ref: "js_primary_exp",
       },
@@ -58,7 +60,8 @@ export default {
         f: 0.5,
         opt: {
           seq: [
-            ", ",
+            ",",
+            " ",
             {
               ref: "js_primary_exp",
             },
@@ -70,15 +73,18 @@ export default {
   },
   js_object_literal: {
     seq: [
-      "{ ",
+      "{",
+      " ",
       {
         ref: "js_property_name",
       },
-      ": ",
+      ":",
+      " ",
       {
         ref: "js_property_value",
       },
-      " }",
+      " ",
+      "}",
     ],
   },
   js_property_name: {
@@ -105,7 +111,9 @@ export default {
       {
         ref: "js_function_args",
       },
-      " => ",
+      " ",
+      "=>",
+      " ",
       {
         ref: "js_primary_exp",
       },
@@ -130,7 +138,8 @@ export default {
       {
         ref: "js_arg",
       },
-      ", ",
+      ",",
+      " ",
       {
         ref: "js_arg",
       },
@@ -138,7 +147,8 @@ export default {
         f: 0.5,
         opt: {
           seq: [
-            ", ",
+            ",",
+            " ",
             {
               ref: "js_tail_arg",
             },
@@ -157,7 +167,9 @@ export default {
         f: 0.5,
         opt: {
           seq: [
-            " = ",
+            " ",
+            "=",
+            " ",
             {
               ref: "js_primary_exp",
             },
@@ -187,7 +199,8 @@ export default {
         f: 0.5,
         opt: {
           seq: [
-            ", ",
+            ",",
+            " ",
             {
               ref: "js_primary_exp",
             },

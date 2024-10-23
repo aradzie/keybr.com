@@ -57,7 +57,9 @@ export default {
   },
   html_id_attr: {
     seq: [
-      'id="',
+      "id",
+      "=",
+      '"',
       {
         ref: "css_class_id",
       },
@@ -66,7 +68,9 @@ export default {
   },
   html_class_attr: {
     seq: [
-      'class="',
+      "class",
+      "=",
+      '"',
       {
         ref: "css_class_id",
       },
@@ -75,7 +79,9 @@ export default {
   },
   html_style_attr: {
     seq: [
-      'style="',
+      "style",
+      "=",
+      '"',
       {
         ref: "css_property",
       },
@@ -106,11 +112,14 @@ export default {
       {
         ref: "css_selector",
       },
-      " { ",
+      " ",
+      "{",
+      " ",
       {
         ref: "css_property_list",
       },
-      " }",
+      " ",
+      "}",
     ],
   },
   css_selector: {
@@ -197,7 +206,8 @@ export default {
     alt: [
       {
         seq: [
-          "dir(",
+          "dir",
+          "(",
           {
             alt: ["ltr", "rtl"],
           },
@@ -289,7 +299,8 @@ export default {
           {
             alt: ["inline", "block"],
           },
-          "-size",
+          "-",
+          "size",
         ],
       },
       "left",
@@ -370,7 +381,8 @@ export default {
         f: 0.5,
         opt: {
           seq: [
-            ", ",
+            ",",
+            " ",
             {
               ref: "css_color_value",
             },
@@ -382,7 +394,8 @@ export default {
   },
   css_url_value: {
     seq: [
-      "url(",
+      "url",
+      "(",
       {
         alt: [
           {

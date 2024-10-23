@@ -71,6 +71,10 @@ export default {
     cls: "keyword",
     span: "bool",
   },
+  kw_boolean: {
+    cls: "keyword",
+    span: "boolean",
+  },
   kw_box: {
     cls: "keyword",
     span: "box",
@@ -78,6 +82,10 @@ export default {
   kw_break: {
     cls: "keyword",
     span: "break",
+  },
+  kw_byte: {
+    cls: "keyword",
+    span: "byte",
   },
   kw_case: {
     cls: "keyword",
@@ -367,6 +375,10 @@ export default {
     cls: "keyword",
     span: "namespace",
   },
+  kw_native: {
+    cls: "keyword",
+    span: "native",
+  },
   kw_new: {
     cls: "keyword",
     span: "new",
@@ -487,6 +499,10 @@ export default {
     cls: "keyword",
     span: "str",
   },
+  kw_strictfp: {
+    cls: "keyword",
+    span: "strictfp",
+  },
   kw_struct: {
     cls: "keyword",
     span: "struct",
@@ -498,6 +514,10 @@ export default {
   kw_switch: {
     cls: "keyword",
     span: "switch",
+  },
+  kw_synchronized: {
+    cls: "keyword",
+    span: "synchronized",
   },
   kw_template: {
     cls: "keyword",
@@ -515,9 +535,17 @@ export default {
     cls: "keyword",
     span: "throw",
   },
+  kw_throws: {
+    cls: "keyword",
+    span: "throws",
+  },
   kw_trait: {
     cls: "keyword",
     span: "trait",
+  },
+  kw_transient: {
+    cls: "keyword",
+    span: "transient",
   },
   kw_true: {
     cls: "keyword",

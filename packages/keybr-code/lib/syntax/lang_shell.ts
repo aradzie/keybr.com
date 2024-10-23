@@ -53,7 +53,8 @@ export default {
   },
   pipe_suffix: {
     seq: [
-      "| ",
+      "|",
+      " ",
       {
         ref: "command_name",
       },
@@ -139,7 +140,8 @@ export default {
       "--color",
       {
         seq: [
-          "--conf=",
+          "--conf",
+          "=",
           {
             ref: "file_name",
           },
@@ -147,7 +149,8 @@ export default {
       },
       {
         seq: [
-          "--dir=",
+          "--dir",
+          "=",
           {
             ref: "file_name",
           },
@@ -155,7 +158,8 @@ export default {
       },
       {
         seq: [
-          "--dump=",
+          "--dump",
+          "=",
           {
             ref: "file_name",
           },
@@ -163,7 +167,8 @@ export default {
       },
       {
         seq: [
-          "--file=",
+          "--file",
+          "=",
           {
             ref: "file_name",
           },
@@ -172,7 +177,8 @@ export default {
       "--help",
       {
         seq: [
-          "--home=",
+          "--home",
+          "=",
           {
             ref: "file_name",
           },
@@ -180,7 +186,8 @@ export default {
       },
       {
         seq: [
-          "--in=",
+          "--in",
+          "=",
           {
             ref: "file_name",
           },
@@ -188,7 +195,8 @@ export default {
       },
       {
         seq: [
-          "--list=",
+          "--list",
+          "=",
           {
             ref: "file_name",
           },
@@ -196,7 +204,8 @@ export default {
       },
       {
         seq: [
-          "--log=",
+          "--log",
+          "=",
           {
             ref: "file_name",
           },
@@ -205,7 +214,8 @@ export default {
       "--null",
       {
         seq: [
-          "--out=",
+          "--out",
+          "=",
           {
             ref: "file_name",
           },
@@ -220,7 +230,8 @@ export default {
   },
   wildcard_arg: {
     seq: [
-      "*.",
+      "*",
+      ".",
       {
         alt: [
           {
@@ -247,7 +258,8 @@ export default {
     alt: [
       {
         seq: [
-          "${",
+          "$",
+          "{",
           {
             ref: "var_name",
           },
@@ -256,7 +268,8 @@ export default {
       },
       {
         seq: [
-          "$(",
+          "$",
+          "(",
           {
             ref: "command_name",
           },
@@ -267,16 +280,21 @@ export default {
           ")",
         ],
       },
-      "$(pwd)",
+      {
+        seq: ["$", "(", "pwd", ")"],
+      },
     ],
   },
   string_arg: {
     seq: [
-      '"${',
+      '"',
+      "$",
+      "{",
       {
         ref: "var_name",
       },
-      '}"',
+      "}",
+      '"',
     ],
   },
   dir_name: {
@@ -308,21 +326,29 @@ export default {
     alt: [
       "/dev/null",
       {
-        seq: [
+        alt: [
           {
-            ref: "dir_name",
+            seq: [
+              {
+                ref: "dir_name",
+              },
+              "/",
+              {
+                seq: [
+                  {
+                    ref: "file_base_name",
+                  },
+                  ".",
+                  {
+                    ref: "file_ext_name",
+                  },
+                ],
+              },
+            ],
           },
-          "/",
-          {
-            ref: "file_base_name",
-          },
-          ".",
-          {
-            ref: "file_ext_name",
-          },
+          ".env",
         ],
       },
-      ".env",
     ],
   },
   var_name: {

@@ -3,7 +3,6 @@
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { basename, join, resolve } from "node:path";
 import peggy from "peggy";
-import { optimize } from "./optimize.ts";
 import { parse } from "./parse.ts";
 
 console.log(`Peggy version: ${peggy.VERSION}`);
@@ -15,10 +14,9 @@ for (const item of readdirSync(pathTo("lib/syntax"))) {
     const path_g = pathTo("lib/syntax", item);
     const path_ts = pathTo("lib/syntax", basename(item, ".g") + ".ts");
     console.log(path_g, "->", path_ts);
-    let grammar = parse(readFileSync(path_g, "utf-8"), {
+    const grammar = parse(readFileSync(path_g, "utf-8"), {
       grammarSource: path_g,
     });
-    grammar = optimize(grammar);
     const lines = [];
     lines.push(`// Generated file, do not edit.`);
     lines.push(``);

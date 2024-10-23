@@ -88,7 +88,8 @@ export default {
         f: 0.5,
         opt: {
           seq: [
-            ", ",
+            ",",
+            " ",
             {
               ref: "c_param",
             },
@@ -96,7 +97,8 @@ export default {
               f: 0.5,
               opt: {
                 seq: [
-                  ", ",
+                  ",",
+                  " ",
                   {
                     ref: "c_param",
                   },
@@ -136,7 +138,8 @@ export default {
         f: 0.5,
         opt: {
           seq: [
-            ", ",
+            ",",
+            " ",
             {
               ref: "c_arg",
             },
@@ -144,7 +147,8 @@ export default {
               f: 0.5,
               opt: {
                 seq: [
-                  ", ",
+                  ",",
+                  " ",
                   {
                     ref: "c_arg",
                   },
@@ -161,11 +165,13 @@ export default {
   },
   c_func_body: {
     seq: [
-      "{ ",
+      "{",
+      " ",
       {
         ref: "c_stmt",
       },
-      " }",
+      " ",
+      "}",
     ],
   },
   c_stmt: {
@@ -193,7 +199,9 @@ export default {
       {
         ref: "c_var_id",
       },
-      " = ",
+      " ",
+      "=",
+      " ",
       {
         ref: "c_expr",
       },
@@ -209,7 +217,8 @@ export default {
       {
         ref: "c_arg_list",
       },
-      ");",
+      ")",
+      ";",
     ],
   },
   c_if_stmt: {
@@ -217,15 +226,20 @@ export default {
       {
         ref: "kw_if",
       },
-      " (",
+      " ",
+      "(",
       {
         ref: "c_expr",
       },
-      ") { ",
+      ")",
+      " ",
+      "{",
+      " ",
       {
         ref: "c_call_stmt",
       },
-      " }",
+      " ",
+      "}",
     ],
   },
   c_return_stmt: {
@@ -298,7 +312,9 @@ export default {
         alt: [
           {
             seq: [
-              " + ",
+              " ",
+              "+",
+              " ",
               {
                 ref: "c_var_id",
               },
@@ -306,7 +322,9 @@ export default {
           },
           {
             seq: [
-              " - ",
+              " ",
+              "-",
+              " ",
               {
                 ref: "c_var_id",
               },
@@ -314,7 +332,9 @@ export default {
           },
           {
             seq: [
-              " * ",
+              " ",
+              "*",
+              " ",
               {
                 ref: "c_var_id",
               },
@@ -322,7 +342,9 @@ export default {
           },
           {
             seq: [
-              " / ",
+              " ",
+              "/",
+              " ",
               {
                 ref: "c_var_id",
               },
@@ -330,7 +352,9 @@ export default {
           },
           {
             seq: [
-              " | ",
+              " ",
+              "|",
+              " ",
               {
                 ref: "c_var_id",
               },
@@ -338,7 +362,9 @@ export default {
           },
           {
             seq: [
-              " & ",
+              " ",
+              "&",
+              " ",
               {
                 ref: "c_var_id",
               },
@@ -346,7 +372,9 @@ export default {
           },
           {
             seq: [
-              " << ",
+              " ",
+              "<<",
+              " ",
               {
                 ref: "c_var_id",
               },
@@ -354,7 +382,9 @@ export default {
           },
           {
             seq: [
-              " >> ",
+              " ",
+              ">>",
+              " ",
               {
                 ref: "c_var_id",
               },
@@ -362,7 +392,9 @@ export default {
           },
           {
             seq: [
-              " == ",
+              " ",
+              "==",
+              " ",
               {
                 ref: "c_var_id",
               },
@@ -370,7 +402,9 @@ export default {
           },
           {
             seq: [
-              " != ",
+              " ",
+              "!=",
+              " ",
               {
                 ref: "c_var_id",
               },
@@ -378,7 +412,9 @@ export default {
           },
           {
             seq: [
-              " >= ",
+              " ",
+              ">=",
+              " ",
               {
                 ref: "c_var_id",
               },
@@ -386,7 +422,9 @@ export default {
           },
           {
             seq: [
-              " <= ",
+              " ",
+              "<=",
+              " ",
               {
                 ref: "c_var_id",
               },
@@ -401,11 +439,15 @@ export default {
       {
         ref: "c_unary_exp",
       },
-      " ? ",
+      " ",
+      "?",
+      " ",
       {
         ref: "c_unary_exp",
       },
-      " : ",
+      " ",
+      ":",
+      " ",
       {
         ref: "c_unary_exp",
       },

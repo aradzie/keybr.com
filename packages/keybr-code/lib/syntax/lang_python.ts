@@ -48,7 +48,9 @@ export default {
         inv: false,
         cond: {
           seq: [
-            " -> ",
+            " ",
+            "->",
+            " ",
             {
               ref: "python_type",
             },
@@ -99,7 +101,9 @@ export default {
           ],
         },
       },
-      " = ",
+      " ",
+      "=",
+      " ",
       {
         ref: "python_expression",
       },
@@ -107,7 +111,8 @@ export default {
   },
   python_return: {
     seq: [
-      "return ",
+      "return",
+      " ",
       {
         ref: "python_expression",
       },
@@ -122,7 +127,8 @@ export default {
         f: 0.5,
         opt: {
           seq: [
-            ", ",
+            ",",
+            " ",
             {
               ref: "python_argument",
             },
@@ -141,7 +147,8 @@ export default {
         inv: false,
         cond: {
           seq: [
-            ": ",
+            ":",
+            " ",
             {
               ref: "python_type",
             },
@@ -258,7 +265,8 @@ export default {
         f: 0.5,
         opt: {
           seq: [
-            ", ",
+            ",",
+            " ",
             {
               ref: "python_function_arg",
             },
@@ -298,7 +306,8 @@ export default {
           {
             ref: "python_primitive_type",
           },
-          ", ",
+          ",",
+          " ",
           {
             ref: "python_primitive_type",
           },
@@ -311,7 +320,9 @@ export default {
           {
             ref: "python_primitive_type",
           },
-          ", ...]",
+          ",",
+          " ",
+          "...]",
         ],
       },
       {
@@ -319,7 +330,9 @@ export default {
           {
             ref: "python_primitive_type",
           },
-          " | ",
+          " ",
+          "|",
+          " ",
           {
             ref: "python_primitive_type",
           },
@@ -397,7 +410,8 @@ export default {
         f: 0.5,
         opt: {
           seq: [
-            ", ",
+            ",",
+            " ",
             {
               ref: "python_expression",
             },
@@ -417,7 +431,8 @@ export default {
         f: 0.5,
         opt: {
           seq: [
-            ", ",
+            ",",
+            " ",
             {
               ref: "python_dict_key_value_pair",
             },
@@ -432,7 +447,8 @@ export default {
       {
         ref: "python_literal",
       },
-      ": ",
+      ":",
+      " ",
       {
         ref: "python_expression",
       },
