@@ -15,6 +15,7 @@ import { useCustomTheme } from "./context.ts";
 import * as styles from "./DesignPane.module.less";
 import { KeyboardDesign } from "./KeyboardDesign.tsx";
 import { LessonKeysDesign } from "./LessonKeysDesign.tsx";
+import { SyntaxDesign } from "./SyntaxDesign.tsx";
 import { WidgetsDesign } from "./WidgetsDesign.tsx";
 
 export function DesignPane() {
@@ -102,6 +103,7 @@ export function DesignPane() {
         <BackgroundImage />
         <LessonKeysDesign />
         <KeyboardDesign />
+        <SyntaxDesign />
       </div>
       <FieldList>
         <Field>

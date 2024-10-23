@@ -4,19 +4,21 @@ import { ColorInput, makeAccessor } from "./input/ColorInput.tsx";
 import { LessonKeysPreview } from "./LessonKeysPreview.tsx";
 import { PreviewPane } from "./PreviewPane.tsx";
 
-const slowKey = makeAccessor("--slow-key-color");
-const fastKey = makeAccessor("--fast-key-color");
+const prop = {
+  ["slow"]: makeAccessor("--slow-key-color"),
+  ["fast"]: makeAccessor("--fast-key-color"),
+} as const;
 
 export function LessonKeysDesign() {
   return (
     <Group title="Lesson Key Colors">
       <FieldList>
         <Field>
-          <ColorInput accessor={slowKey} />
+          <ColorInput accessor={prop["slow"]} />
         </Field>
         <Field size={6}>Slow key</Field>
         <Field>
-          <ColorInput accessor={fastKey} />
+          <ColorInput accessor={prop["fast"]} />
         </Field>
         <Field size={6}>Fast key</Field>
       </FieldList>
