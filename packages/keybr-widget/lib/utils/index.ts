@@ -1,4 +1,3 @@
-export * from "./color.ts";
 export * from "./format-duration.ts";
 export * from "./geometry.ts";
 export * from "./point.ts";

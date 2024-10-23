@@ -1,7 +1,7 @@
+import { Color } from "@keybr/color";
 import { type CustomTheme, type PropName } from "@keybr/themes";
 import {
   type AnchorProps,
-  Color,
   type Focusable,
   getBoundingBox,
   Icon,

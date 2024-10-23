@@ -7,6 +7,7 @@
   "types": ".types/index.d.ts",
   "dependencies": {
     "@keybr/chart": "*",
+    "@keybr/color": "*",
     "@keybr/keyboard": "*",
     "@keybr/keyboard-ui": "*",
     "@keybr/lesson": "*",

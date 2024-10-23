@@ -1,5 +1,5 @@
+import { type Color } from "@keybr/color";
 import { type Asset } from "./asset.ts";
-import { type Color } from "./color.ts";
 import {
   type PropName,
   type PropValue,

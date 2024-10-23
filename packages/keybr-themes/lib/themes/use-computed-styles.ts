@@ -1,7 +1,7 @@
+import { Color } from "@keybr/color";
 import { type GraphicsStyle } from "@keybr/widget";
 import { type ClassValue, clsx } from "clsx";
 import { useMemo } from "react";
-import { Color } from "./color.ts";
 import { useTheme } from "./context.ts";
 import { useDynamicStyles } from "./dynamic-styles-context.tsx";
 import { type PropName } from "./theme-props.ts";

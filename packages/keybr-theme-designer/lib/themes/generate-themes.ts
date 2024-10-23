@@ -2,9 +2,9 @@
 
 import { readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
+import { Color } from "@keybr/color";
 import { rootDir } from "@keybr/scripts/root.js";
 import { CustomTheme, themeProps, themePropsMap } from "@keybr/themes";
-import { Color } from "@keybr/widget/lib/utils/color.ts";
 import { parse, walk } from "css-tree";
 
 const inputFile = join(rootDir, "root", "public", "assets", "styles.css");
@@ -85,8 +85,8 @@ function formatSourceCode(themes: Map<string, CustomTheme>): string {
   const lines = new Array<string>();
   lines.push(`// Generated file, do not edit.`);
   lines.push(``);
+  lines.push(`import { Color } from "@keybr/color";`);
   lines.push(`import { CustomTheme } from "@keybr/themes";`);
-  lines.push(`import { Color } from "@keybr/widget";`);
   for (const [name, theme] of themes.entries()) {
     lines.push(``);
     lines.push(`export const ${name} = new CustomTheme()`);

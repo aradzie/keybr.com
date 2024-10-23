@@ -1,6 +1,6 @@
+import { Color } from "@keybr/color";
 import test from "ava";
 import { UrlAsset } from "./asset.ts";
-import { Color } from "./color.ts";
 import { CustomTheme } from "./custom-theme.ts";
 import { readTheme, storeTheme } from "./theme-io.ts";
 

@@ -1,18 +1,14 @@
 {
   "private": true,
-  "name": "@keybr/widget",
+  "name": "@keybr/color",
   "version": "0.0.0",
   "type": "module",
   "main": "lib/index.ts",
   "types": ".types/index.d.ts",
-  "sideEffects": false,
   "dependencies": {
-    "@keybr/color": "*",
     "@keybr/lang": "*"
   },
-  "devDependencies": {
-    "@keybr/test-env-time": "*"
-  },
+  "devDependencies": {},
   "scripts": {
     "clean": "rm -fr .types",
     "compile": "tsc",
@@ -27,9 +23,7 @@
       "tsx": "module"
     },
     "nodeArguments": [
-      "--import=@keybr/tsl",
-      "--import=@keybr/test-env-browser",
-      "--import=@keybr/test-env-bundler"
+      "--import=@keybr/tsl"
     ]
   }
 }

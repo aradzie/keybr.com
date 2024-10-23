@@ -1,5 +1,5 @@
+import { Color } from "@keybr/color";
 import { Asset } from "./asset.ts";
-import { Color } from "./color.ts";
 
 export type GenericType<T extends PropValue> = {
   readonly toCss: (value: PropValue) => string;

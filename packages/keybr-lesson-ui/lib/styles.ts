@@ -1,5 +1,5 @@
+import { Color, RgbColor } from "@keybr/color";
 import { useComputedStyles } from "@keybr/themes";
-import { Color, RgbColor } from "@keybr/widget";
 import { type CSSProperties, useMemo } from "react";
 
 export function useKeyStyles() {

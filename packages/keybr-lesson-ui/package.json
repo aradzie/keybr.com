@@ -6,6 +6,7 @@
   "main": "lib/index.ts",
   "types": ".types/index.d.ts",
   "dependencies": {
+    "@keybr/color": "*",
     "@keybr/intl": "*",
     "@keybr/lesson": "*",
     "@keybr/phonetic-model": "*",
