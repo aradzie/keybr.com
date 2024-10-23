@@ -64,10 +64,11 @@ function isThemeRule(node: any) {
     return false;
   }
   const [type, attr] = selector.children;
-  if (type.type !== "TypeSelector" || type.name !== "html") {
-    return false;
-  }
-  if (attr.type !== "AttributeSelector") {
+  if (
+    type.type !== "TypeSelector" ||
+    type.name !== "html" ||
+    attr.type !== "AttributeSelector"
+  ) {
     return false;
   }
   const { name, value } = attr;
