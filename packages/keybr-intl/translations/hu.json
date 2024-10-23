@@ -298,7 +298,6 @@
   "settings.customTextRandomize.label": "Szavak összekeverése",
   "settings.dailyGoal.description": "Állítsa be, hogy mennyi időt szeretne naponta gyakorlással tölteni. Ez egy egyszerű emlékeztető, amely semmilyen módon nem korlátozza önt. Bármikor abbahagyhatja a gyakorlást, amikor csak akarja.",
   "settings.dailyGoal.label": "A napi cél:",
-  "settings.doubleWords.label": "Szavak duplásása",
   "settings.forgiveErrors.description": "Ha engedélyezve van, a szövegdobozban automatikusan javít bizonyos hibákat. Ezek olyan hibák, mint a rossz betű beírása vagy egy karakter kihagyása.",
   "settings.forgiveErrors.label": "Hibák engedélyezése",
   "settings.interfaceOptions.legend": "Felhasználói felületi beállítása",

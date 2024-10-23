@@ -337,8 +337,6 @@
   "settings.dailyGoal.description": "设定每天练习的时间。这是一个简单的提醒，不会以任何方式限制你。您可以随时停止练习。",
   "settings.dailyGoal.label": "每日目标：",
   "settings.dailyGoal.notSet": "未设定",
-  "settings.doubleWords.description": "每个单词重复两次。第一次输入一个单词是为了形成肌肉记忆。第二次输入同一个单词应该会更容易。",
-  "settings.doubleWords.label": "每个字加倍",
   "settings.explain.hide": "隐藏释义",
   "settings.explain.show": "设置说明",
   "settings.font.label": "字体：",

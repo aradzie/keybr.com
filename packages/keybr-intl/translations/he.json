@@ -324,8 +324,6 @@
   "settings.dailyGoal.description": "הגדר את הזמן שאתה רוצה להקדיש לתרגילים מדי יום. זוהי תזכורת פשוטה שאינה מגבילה אותך בשום צורה. אתה יכול להפסיק להתאמן מתי שאתה רוצה.",
   "settings.dailyGoal.label": "יעד יומי:",
   "settings.dailyGoal.notSet": "לא מוכן",
-  "settings.doubleWords.description": "חזור על כל מילה פעמיים. הקלד מילה בפעם הראשונה כדי לפתח את זיכרון השרירים שלך. הקלדת אותה מילה בפעם השנייה אמורה להיות קלה יותר.",
-  "settings.doubleWords.label": "הכפילו כל מילה",
   "settings.explain.hide": "הסתר הסברים",
   "settings.explain.show": "הסבר הגדרות",
   "settings.font.label": "פונט:",

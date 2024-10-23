@@ -333,8 +333,6 @@
   "settings.dailyGoal.description": "Sätt tiden du vill lägga dagligen på övningar. Detta är endast en påminnelse som inte påverkar någon på sidan. Du kan sluta träna när du vill.",
   "settings.dailyGoal.label": "Dagens mål:",
   "settings.dailyGoal.notSet": "Inte satt",
-  "settings.doubleWords.description": "Upprepa varje ord två gånger. Skriv ordet en gång för att utveckla muskelminnet. Andra gången borde det vara lättare att skriva ordet.",
-  "settings.doubleWords.label": "Dubbla varje ord",
   "settings.explain.hide": "Göm förklaringar",
   "settings.explain.show": "Förklara inställnignar",
   "settings.forgiveErrors.description": "Om aktiverat så kommer skrivfältet förlåta vissa fel genom att automatiskt fixa dem. Dessa fel kan vara att skriva en bokstav fel eller missa ett tecken.",

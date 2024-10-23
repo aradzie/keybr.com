@@ -316,8 +316,6 @@
   "settings.dailyGoal.description": "Estableix el temps que vols invertir en els exercicis diàriament. És un recordatori simple que no et limita de cap manera. Ports deixar de practicar quan vulguis.",
   "settings.dailyGoal.label": "Objectiu diari:",
   "settings.dailyGoal.notSet": "No establert",
-  "settings.doubleWords.description": "Repeteix cada paraula dos cops. Escriu una paraula el primer cop per desenvolupar la teva memòria muscular. El segon cop hauria de ser més fàcil.",
-  "settings.doubleWords.label": "Duplica cada paraula",
   "settings.explain.hide": "Amaga les explicacions",
   "settings.explain.show": "Explica les opcions",
   "settings.font.label": "Tipografia:",

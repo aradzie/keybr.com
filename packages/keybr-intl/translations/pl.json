@@ -334,8 +334,6 @@
   "settings.dailyGoal.description": "Ustaw czas, jaki chcesz codziennie poświęcać na ćwiczenia. Jest to proste przypomnienie, które w żaden sposób Cię nie ogranicza. Możesz przestać ćwiczyć, kiedy tylko chcesz.",
   "settings.dailyGoal.label": "Dzienny cel:",
   "settings.dailyGoal.notSet": "Nie ustawiony",
-  "settings.doubleWords.description": "Powtórz każde słowo dwa razy. Wpisz słowo po raz pierwszy, aby rozwinąć pamięć mięśniową. Wpisanie tego samego słowa po raz drugi powinno być łatwiejsze.",
-  "settings.doubleWords.label": "Podwoić każde słowo",
   "settings.explain.hide": "Ukryć wyjaśnienia",
   "settings.explain.show": "Wyjaśnić ustawienia",
   "settings.font.label": "Czcionka:",

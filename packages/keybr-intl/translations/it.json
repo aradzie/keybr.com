@@ -333,8 +333,6 @@
   "settings.dailyGoal.description": "Imposta il tempo che vuoi dedicare agli esercizi ogni giorno. È un semplice promemoria che non ti limita in alcun modo. Puoi smettere di esercitarti quando vuoi.",
   "settings.dailyGoal.label": "Obiettivo giornaliero:",
   "settings.dailyGoal.notSet": "Non impostato",
-  "settings.doubleWords.description": "Ripeti ogni parola due volte. Digita una parola per la prima volta per sviluppare la tua memoria muscolare. Digitare la stessa parola una seconda volta dovrebbe essere più semplice.",
-  "settings.doubleWords.label": "Raddoppia ogni parola",
   "settings.explain.hide": "Nascondi spiegazioni",
   "settings.explain.show": "Spiega impostazioni",
   "settings.forgiveErrors.description": "Se abilitato, il campo di immissione del testo perdonerà alcuni tipi di errori correggendoli automaticamente. Si tratta di errori come la digitazione di un carattere sbagliato o il salto di un carattere.",

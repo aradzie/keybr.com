@@ -336,8 +336,6 @@
   "settings.dailyGoal.description": "Встановіть час, який ви бажаєте витрачати на вправи щодня. Це просте нагадування, яке жодним чином не обмежує вас. Ви можете припинити тренування, коли захочете.",
   "settings.dailyGoal.label": "Щоденна мета:",
   "settings.dailyGoal.notSet": "Не задано",
-  "settings.doubleWords.description": "Повторити кожне слово двічі. Введіть слово вперше, щоб розвинути м’язову пам’ять. Введення того самого слова вдруге має бути легшим.",
-  "settings.doubleWords.label": "Подвоїти кожне слово",
   "settings.explain.hide": "Приховати пояснення",
   "settings.explain.show": "Налаштування пояснень",
   "settings.font.label": "Шрифт:",

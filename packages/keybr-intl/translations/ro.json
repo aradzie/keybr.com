@@ -294,8 +294,6 @@
   "settings.dailyGoal.description": "Setează timpul pe care vrei să-l petreci zilnic pentru exerciții. Este un simplu memento care nu te limitează în niciun fel. Poți înceta practica oricând dorești.",
   "settings.dailyGoal.label": "Obiectiv zilnic:",
   "settings.dailyGoal.notSet": "Nu este setat",
-  "settings.doubleWords.description": "Repetă fiecare cuvânt de două ori. Tastează un cuvânt pentru prima dată pentru a-ți dezvolta memoria musculară. Tastarea aceluiași cuvânt pentru a doua oară ar trebui să fie mai ușoară.",
-  "settings.doubleWords.label": "Dublează fiecare cuvânt",
   "settings.explain.hide": "Ascunde explicații",
   "settings.explain.show": "Explicarea setărilor",
   "settings.forgiveErrors.description": "Dacă este activată, câmpul de introducere a textului va ierta anumite tipuri de erori prin corectarea lor automată. Acestea sunt erori precum tastarea unui caracter greșit sau omiterea unui caracter.",

@@ -206,8 +206,6 @@
   "settings.customTextRandomize.label": "Kelimeleri karıştır",
   "settings.dailyGoal.label": "Günlük hedef:",
   "settings.dailyGoal.notSet": "Ayarlanmadı",
-  "settings.doubleWords.description": "Her kelimeyi iki kez tekrarla. Kelimenin iki kere yazılması kas hafızasının gelişmesine yardımcı olur ve ikinci defa yazmak daha kolay hale gelir.",
-  "settings.doubleWords.label": "Kelimeleri tekrarla",
   "settings.explain.hide": "Açıklamaları gizle",
   "settings.explain.show": "Ayarları açıkla",
   "settings.forgiveErrors.label": "Hatayı affet",

@@ -326,8 +326,6 @@
   "settings.dailyGoal.description": "Zet de tijd die je dagelijks wilt besteden aan de oefeningen. Het is een simpel herinnering die je niet limiteert hoe dan ook. Je kunt stoppen met oefenen wanneer je wilt.",
   "settings.dailyGoal.label": "Dagelijkse doel:",
   "settings.dailyGoal.notSet": "Niet ingesteld",
-  "settings.doubleWords.description": "Herhaal elk woord twee keer. Typ een woord voor de eerste keer om je spiergeheugen te ontwikkelen. Hetzelfde woord voor de tweede keer typen moet makkelijker zijn.",
-  "settings.doubleWords.label": "Verdubbel elke woord",
   "settings.explain.hide": "Verberg uitleg",
   "settings.explain.show": "Instellingen toelichten",
   "settings.font.label": "Lettertype:",

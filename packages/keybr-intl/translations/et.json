@@ -327,8 +327,6 @@
   "settings.dailyGoal.description": "Määra aeg, mida soovid igapäevaselt harjutada. See on vaid lihtne meeldetuletus, mis ei piira sind kuidagi. Sa võid lõpetada millal iganes soovid.",
   "settings.dailyGoal.label": "Igapäevane eesmärk:",
   "settings.dailyGoal.notSet": "Ei ole määratud",
-  "settings.doubleWords.description": "Korda igat sõna kaks korda. Sõna esimesel kirjutamisel arendad oma lihasmälu. Sama sõna kirjutamine teist korda peaks olema lihtsam.",
-  "settings.doubleWords.label": "Sõna kahekordistamine",
   "settings.explain.hide": "Peida selgitused",
   "settings.explain.show": "Selgita seadistust",
   "settings.forgiveErrors.description": "Kui see on sisselülitatud, andestab tekstisisestusväli teatud tüüpi vigu neid automaatselt parandades. Need on sellised vead nagu ühe vale tähemärgi sisestamine või tähemärgi vahelejätmine.",

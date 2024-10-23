@@ -338,8 +338,6 @@
   "settings.dailyGoal.description": "ตั้งเวลาที่คุณต้องการใช้ในการฝึกซ้อมในแต่ละวัน นี่เป็นเพียงการเตือนความจำไม่ใช่ขอบังคับ คุณสามารถหยุดการฝึกซ้อมเมื่อไหร่ก็ได้ตามต้องการ",
   "settings.dailyGoal.label": "เป้าหมายวันนี้:",
   "settings.dailyGoal.notSet": "ไม่ได้ตั้งค่า",
-  "settings.doubleWords.description": "พิมพ์แต่ละคำสองครั้ง พิมพ์คำครั้งแรกเพื่อพัฒนาความจำของกล้ามเนื้อ การพิมพ์คำเดียวกันเป็นครั้งที่สองควรจะง่ายขึ้น",
-  "settings.doubleWords.label": "พิมพ์คำละสองครั้ง",
   "settings.explain.hide": "ซ่อนคำอธิบาย",
   "settings.explain.show": "แสดงคำอธิบาย",
   "settings.font.label": "ฟอนต์:",

@@ -330,8 +330,6 @@
   "settings.dailyGoal.description": "Indstil den tid, du vil bruge på øvelserne dagligt. Det er en simpel påmindelse, som ikke begrænser dig på nogen måde. Du kan stoppe med at øve, når du vil.",
   "settings.dailyGoal.label": "Dagligt mål:",
   "settings.dailyGoal.notSet": "Ikke indstillet",
-  "settings.doubleWords.description": "Gentag hvert ord to gange. Indtast et ord for første gang for at udvikle din muskelhukommelse. Det burde være lettere at skrive det samme ord anden gang.",
-  "settings.doubleWords.label": "Fordoble hvert ord",
   "settings.explain.hide": "Skjul forklaringer",
   "settings.explain.show": "Forklar indstillinger",
   "settings.font.label": "Skrifttype:",

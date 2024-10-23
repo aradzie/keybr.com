@@ -332,8 +332,6 @@
   "settings.dailyGoal.description": "Svakodnevno postavite vrijeme koje želite potrošiti na vježbe. To je jednostavan podsjetnik koji vas ni na koji način ne ograničava. Možeš prestati vježbati kad god poželiš.",
   "settings.dailyGoal.label": "Dnevni cilj:",
   "settings.dailyGoal.notSet": "Nije postavljeno",
-  "settings.doubleWords.description": "Ponovite svaku riječ dva puta. Prvi put upišite riječ da biste razvili mišićnu memoriju. Upisivanje iste riječi po drugi put trebalo bi biti lakše.",
-  "settings.doubleWords.label": "Udvostruči svaku riječ",
   "settings.explain.hide": "Sakrij objašnjenja",
   "settings.explain.show": "Objasni postavke",
   "settings.forgiveErrors.description": "Ako je omogućeno, polje za unos teksta oprostit će neke vrste pogrešaka automatskim ispravljanjem. To su pogreške poput upisivanja pogrešnog znaka ili preskakanja znaka.",

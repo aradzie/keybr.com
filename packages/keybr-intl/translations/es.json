@@ -337,8 +337,6 @@
   "settings.dailyGoal.description": "Establezca el tiempo que desea dedicar a los ejercicios diariamente. Es un simple recordatorio que no te limita de ninguna manera. Puedes dejar de practicar cuando quieras.",
   "settings.dailyGoal.label": "Meta diaria:",
   "settings.dailyGoal.notSet": "No configurado",
-  "settings.doubleWords.description": "Repite cada palabra dos veces. Teclea una palabra la primera vez para desarrollar tu memoria muscular. Teclear la misma palabra una segunda vez debería ser más fácil.",
-  "settings.doubleWords.label": "Duplica cada palabra",
   "settings.explain.hide": "Ocultar explicaciones",
   "settings.explain.show": "Explica las configuraciones",
   "settings.font.label": "Fuente:",

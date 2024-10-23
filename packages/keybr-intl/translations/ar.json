@@ -334,8 +334,6 @@
   "settings.dailyGoal.description": "تحديد الوقت الذي تريد إمضاءه على التمارين يوميًا. إنه تذكير بسيط لا يحدك بأي شكل من الأشكال. يمكنك التوقف عن ممارسة الرياضة وقتما تشاء.",
   "settings.dailyGoal.label": "الهدف اليومي:",
   "settings.dailyGoal.notSet": "لم يتم التعيين",
-  "settings.doubleWords.description": "تكرار كل كلمة مرتين. اكتب الكلمة لأول مرة لتطوير ذاكرة عضلاتك. يجب أن تكون كتابة نفس الكلمة للمرة الثانية أسهل.",
-  "settings.doubleWords.label": "مضاعفة كل كلمة",
   "settings.explain.hide": "إخفاء التفسيرات",
   "settings.explain.show": "شرح الإعدادات",
   "settings.font.label": "الخط:",

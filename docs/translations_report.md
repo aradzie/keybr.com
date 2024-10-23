@@ -1,8 +1,8 @@
 # Arabic
 
-Translated: 419 messages, 5075 words
+Translated: 417 messages, 5044 words
 
-Untranslated: 9 messages, 79 words
+Untranslated: 11 messages, 109 words
 
 * *Books*
 * *Top accuracy*
@@ -10,27 +10,31 @@ Untranslated: 9 messages, 79 words
 * *Average accuracy*
 * *Relative Accuracy*
 * *Hide explanations*
+* *Add repeating words:*
 * *This is a histogram of the accuracies of all users, and your...*
 * *Generate typing lessons from the text of a book. All keys ar...*
+* *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
 
 # Bulgarian
 
-Translated: 423 messages, 5101 words
+Translated: 421 messages, 5070 words
 
-Untranslated: 5 messages, 53 words
+Untranslated: 7 messages, 83 words
 
 * *Top accuracy*
 * *Average accuracy*
 * *Relative Accuracy*
+* *Add repeating words:*
 * *This is a histogram of the accuracies of all users, and your...*
+* *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
 
 # Catalan
 
-Translated: 393 messages, 3632 words
+Translated: 391 messages, 3601 words
 
-Untranslated: 35 messages, 1522 words
+Untranslated: 37 messages, 1552 words
 
 * *Errors*
 * *Top accuracy*
@@ -38,6 +42,7 @@ Untranslated: 35 messages, 1522 words
 * *Average accuracy*
 * *Relative Accuracy*
 * *Hide explanations*
+* *Add repeating words:*
 * *The previous keys are also above the target speed*
 * *Generate lessons that resemble the specified programming lan...*
 * *Please provide some text in order to calculate the associate...*
@@ -48,17 +53,16 @@ Untranslated: 35 messages, 1522 words
 * *<a>Benford’s law</a> is an observation that in many real-lif...*
 * *Highlight a key that must to be pressed next. Use this optio...*
 * *<p>This indicator shows the current subset of letters used t...*
+* *Repeat each word a number of times. Type a word for the firs...*
 * *<h1>Word Count</h1><p>Count the characters and words in your...*
 * *See how accurate you type relative to other users. The highe...*
-* *Adjust the amount of basic punctuation characters added to t...*
-* *<p>This indicator can also be used to predict the remaining ...*
 * ...
 
 # Czech
 
-Translated: 411 messages, 4911 words
+Translated: 409 messages, 4880 words
 
-Untranslated: 17 messages, 243 words
+Untranslated: 19 messages, 273 words
 
 * *Books*
 * *Font:*
@@ -69,20 +73,22 @@ Untranslated: 17 messages, 243 words
 * *Average accuracy*
 * *Relative Accuracy*
 * *Hide explanations*
+* *Add repeating words:*
 * *Keyboard hardware emulates layout*
 * *Generate lessons that resemble the specified programming lan...*
 * *Practice punctuation characters that are specific to a progr...*
 * *This is a histogram of the accuracies of all users, and your...*
 * *Generate typing lessons from the text of a book. All keys ar...*
 * *Use this option if you have a hardware layout switcher on yo...*
+* *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
 * *<h1>Keyboard Layouts</h1><p>These charts visualize the effic...*
 
 # Danish
 
-Translated: 414 messages, 5091 words
+Translated: 412 messages, 5060 words
 
-Untranslated: 14 messages, 63 words
+Untranslated: 16 messages, 93 words
 
 * *Score*
 * *Score*
@@ -96,14 +102,16 @@ Untranslated: 14 messages, 63 words
 * *Bar whitespace*
 * *Average accuracy*
 * *Relative Accuracy*
+* *Add repeating words:*
 * *This is a histogram of the accuracies of all users, and your...*
+* *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
 
 # German
 
-Translated: 417 messages, 5095 words
+Translated: 415 messages, 5064 words
 
-Untranslated: 11 messages, 59 words
+Untranslated: 13 messages, 89 words
 
 * *Layout*
 * *Layout:*
@@ -114,14 +122,16 @@ Untranslated: 11 messages, 59 words
 * *Top accuracy*
 * *Average accuracy*
 * *Relative Accuracy*
+* *Add repeating words:*
 * *This is a histogram of the accuracies of all users, and your...*
+* *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
 
 # Greek
 
-Translated: 384 messages, 4667 words
+Translated: 382 messages, 4636 words
 
-Untranslated: 44 messages, 487 words
+Untranslated: 46 messages, 517 words
 
 * *Books*
 * *Font:*
@@ -149,7 +159,7 @@ Untranslated: 44 messages, 487 words
 
 Translated: 82 messages, 861 words
 
-Untranslated: 334 messages, 4206 words
+Untranslated: 334 messages, 4205 words
 
 * *GO!*
 * *Time*
@@ -175,22 +185,24 @@ Untranslated: 334 messages, 4206 words
 
 # Spanish
 
-Translated: 422 messages, 4989 words
+Translated: 420 messages, 4958 words
 
-Untranslated: 6 messages, 165 words
+Untranslated: 8 messages, 195 words
 
 * *Top accuracy*
 * *Average accuracy*
 * *Relative Accuracy*
+* *Add repeating words:*
 * *This is a histogram of the accuracies of all users, and your...*
+* *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
 * *<h1>Keyboard Layouts</h1><p>These charts visualize the effic...*
 
 # Estonian
 
-Translated: 410 messages, 5020 words
+Translated: 408 messages, 4989 words
 
-Untranslated: 18 messages, 134 words
+Untranslated: 20 messages, 164 words
 
 * *GO!*
 * *Books*
@@ -203,19 +215,21 @@ Untranslated: 18 messages, 134 words
 * *Average accuracy*
 * *Relative Accuracy*
 * *Hide explanations*
+* *Add repeating words:*
 * *Keyboard hardware emulates layout*
 * *Generate lessons that resemble the specified programming lan...*
 * *Practice punctuation characters that are specific to a progr...*
 * *This is a histogram of the accuracies of all users, and your...*
 * *Generate typing lessons from the text of a book. All keys ar...*
 * *Use this option if you have a hardware layout switcher on yo...*
+* *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
 
 # Persian
 
-Translated: 364 messages, 2969 words
+Translated: 363 messages, 2966 words
 
-Untranslated: 62 messages, 2158 words
+Untranslated: 63 messages, 2160 words
 
 * *Books*
 * *Syntax:*
@@ -225,6 +239,7 @@ Untranslated: 62 messages, 2158 words
 * *Accuracy Streaks*
 * *Relative Accuracy*
 * *Hide explanations*
+* *Add repeating words:*
 * *Keyboard hardware emulates layout*
 * *Show a guided tour with help slides.*
 * *Switch the current interface layout.*
@@ -236,14 +251,13 @@ Untranslated: 62 messages, 2158 words
 * *This is a histogram of the accuracies of all users, and your...*
 * *This is a histogram of the typing speeds of all users, and y...*
 * *Show color coding of the keyboard zones. Use this option to ...*
-* *Bar color: {label1} – hit count, {label2} – miss count, {lab...*
 * ...
 
 # French
 
-Translated: 405 messages, 4712 words
+Translated: 404 messages, 4709 words
 
-Untranslated: 23 messages, 442 words
+Untranslated: 24 messages, 444 words
 
 * *Not set*
 * *Options*
@@ -257,21 +271,21 @@ Untranslated: 23 messages, 442 words
 * *Explain settings*
 * *Relative Accuracy*
 * *Hide explanations*
+* *Add repeating words:*
 * *Unlock a next key only when:*
 * *Sort letters in the order of keyboard keys*
 * *The previous keys are also above the target speed*
 * *This is a histogram of the accuracies of all users, and your...*
 * *You don’t have any accuracy streaks. Consider completing a l...*
-* *Repeat each word two times. Type a word for the first time t...*
+* *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
-* *Above are listed the longest continuous sequences of lessons...*
 * ...
 
 # Hebrew
 
-Translated: 402 messages, 4728 words
+Translated: 400 messages, 4697 words
 
-Untranslated: 26 messages, 426 words
+Untranslated: 28 messages, 456 words
 
 * *Alphabet:*
 * *Box cursor*
@@ -286,20 +300,20 @@ Untranslated: 26 messages, 426 words
 * *Underline cursor*
 * *Relative Accuracy*
 * *Bullet whitespace*
+* *Add repeating words:*
 * *Keyboard hardware emulates layout*
 * *Generate lessons that resemble the specified programming lan...*
 * *This is a histogram of the accuracies of all users, and your...*
 * *Adjust the number of words in the lesson text. Making lesson...*
 * *Show color coding of the keyboard zones. Use this option to ...*
 * *Highlight a key that must to be pressed next. Use this optio...*
-* *Use this option if you have a hardware layout switcher on yo...*
 * ...
 
 # Croatian
 
-Translated: 415 messages, 5071 words
+Translated: 413 messages, 5040 words
 
-Untranslated: 13 messages, 83 words
+Untranslated: 15 messages, 113 words
 
 * *Books*
 * *Font:*
@@ -311,15 +325,17 @@ Untranslated: 13 messages, 83 words
 * *Average accuracy*
 * *Relative Accuracy*
 * *Hide explanations*
+* *Add repeating words:*
 * *This is a histogram of the accuracies of all users, and your...*
 * *Generate typing lessons from the text of a book. All keys ar...*
+* *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
 
 # Hungarian
 
-Translated: 361 messages, 4103 words
+Translated: 360 messages, 4100 words
 
-Untranslated: 67 messages, 1051 words
+Untranslated: 68 messages, 1053 words
 
 * *Books*
 * *Font:*
@@ -345,9 +361,9 @@ Untranslated: 67 messages, 1051 words
 
 # Indonesian
 
-Translated: 264 messages, 1962 words
+Translated: 263 messages, 1959 words
 
-Untranslated: 157 messages, 3120 words
+Untranslated: 158 messages, 3122 words
 
 * *GO!*
 * *Font:*
@@ -373,9 +389,9 @@ Untranslated: 157 messages, 3120 words
 
 # Italian
 
-Translated: 416 messages, 5093 words
+Translated: 414 messages, 5062 words
 
-Untranslated: 11 messages, 59 words
+Untranslated: 13 messages, 89 words
 
 * *Font:*
 * *Layout*
@@ -386,14 +402,16 @@ Untranslated: 11 messages, 59 words
 * *Top accuracy*
 * *Average accuracy*
 * *Relative Accuracy*
+* *Add repeating words:*
 * *This is a histogram of the accuracies of all users, and your...*
+* *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
 
 # Japanese
 
-Translated: 254 messages, 2226 words
+Translated: 253 messages, 2223 words
 
-Untranslated: 164 messages, 2855 words
+Untranslated: 165 messages, 2857 words
 
 * *GO!*
 * *Books*
@@ -421,7 +439,7 @@ Untranslated: 164 messages, 2855 words
 
 Translated: 168 messages, 1169 words
 
-Untranslated: 255 messages, 3926 words
+Untranslated: 255 messages, 3925 words
 
 * *Copy*
 * *Done*
@@ -447,9 +465,9 @@ Untranslated: 255 messages, 3926 words
 
 # Nepali
 
-Translated: 386 messages, 4669 words
+Translated: 384 messages, 4638 words
 
-Untranslated: 42 messages, 485 words
+Untranslated: 44 messages, 515 words
 
 * *Books*
 * *Font:*
@@ -475,9 +493,9 @@ Untranslated: 42 messages, 485 words
 
 # Dutch
 
-Translated: 410 messages, 5082 words
+Translated: 408 messages, 5051 words
 
-Untranslated: 17 messages, 70 words
+Untranslated: 19 messages, 100 words
 
 * *Score*
 * *Score*
@@ -494,14 +512,16 @@ Untranslated: 17 messages, 70 words
 * *Average accuracy*
 * *Relative Accuracy*
 * *Hide explanations*
+* *Add repeating words:*
 * *This is a histogram of the accuracies of all users, and your...*
+* *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
 
 # Polish
 
-Translated: 419 messages, 5075 words
+Translated: 417 messages, 5044 words
 
-Untranslated: 9 messages, 79 words
+Untranslated: 11 messages, 109 words
 
 * *Books*
 * *Top accuracy*
@@ -509,15 +529,17 @@ Untranslated: 9 messages, 79 words
 * *Average accuracy*
 * *Relative Accuracy*
 * *Hide explanations*
+* *Add repeating words:*
 * *This is a histogram of the accuracies of all users, and your...*
 * *Generate typing lessons from the text of a book. All keys ar...*
+* *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
 
 # Brazilian Portuguese
 
-Translated: 415 messages, 5070 words
+Translated: 413 messages, 5039 words
 
-Untranslated: 12 messages, 82 words
+Untranslated: 14 messages, 112 words
 
 * *Books*
 * *Layout*
@@ -528,15 +550,17 @@ Untranslated: 12 messages, 82 words
 * *Average accuracy*
 * *Relative Accuracy*
 * *Hide explanations*
+* *Add repeating words:*
 * *This is a histogram of the accuracies of all users, and your...*
 * *Generate typing lessons from the text of a book. All keys ar...*
+* *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
 
 # European Portuguese
 
-Translated: 411 messages, 5061 words
+Translated: 409 messages, 5030 words
 
-Untranslated: 17 messages, 93 words
+Untranslated: 19 messages, 123 words
 
 * *Books*
 * *Layout*
@@ -552,15 +576,17 @@ Untranslated: 17 messages, 93 words
 * *Hide explanations*
 * *Daily goal reached!*
 * *New letter unlocked!*
+* *Add repeating words:*
 * *This is a histogram of the accuracies of all users, and your...*
 * *Generate typing lessons from the text of a book. All keys ar...*
+* *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
 
 # Romanian
 
-Translated: 375 messages, 3786 words
+Translated: 373 messages, 3755 words
 
-Untranslated: 42 messages, 1289 words
+Untranslated: 44 messages, 1319 words
 
 * *Font:*
 * *Layout*
@@ -575,20 +601,20 @@ Untranslated: 42 messages, 1289 words
 * *Average accuracy*
 * *Relative Accuracy*
 * *Start in {countDown}*
+* *Add repeating words:*
 * *Learn to type faster.*
 * *Enter full-screen mode.*
 * *Typing speed in the last lesson ({speedUnitName}). The more,...*
 * *Average typing speed in all lessons ({speedUnitName}). The m...*
 * *<h1>Connecting to Server...</h1><p>Establishing connection t...*
 * *<p>The precise meaning of each indicator color is given in t...*
-* *<h1>Kicked out of the Game</h1><p>You were kicked out of the...*
 * ...
 
 # Russian
 
-Translated: 419 messages, 5075 words
+Translated: 417 messages, 5044 words
 
-Untranslated: 9 messages, 79 words
+Untranslated: 11 messages, 109 words
 
 * *Books*
 * *Top accuracy*
@@ -596,15 +622,17 @@ Untranslated: 9 messages, 79 words
 * *Average accuracy*
 * *Relative Accuracy*
 * *Hide explanations*
+* *Add repeating words:*
 * *This is a histogram of the accuracies of all users, and your...*
 * *Generate typing lessons from the text of a book. All keys ar...*
+* *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
 
 # Swedish
 
-Translated: 416 messages, 5094 words
+Translated: 414 messages, 5063 words
 
-Untranslated: 12 messages, 60 words
+Untranslated: 14 messages, 90 words
 
 * *Font:*
 * *Layout*
@@ -616,26 +644,30 @@ Untranslated: 12 messages, 60 words
 * *Top accuracy*
 * *Average accuracy*
 * *Relative Accuracy*
+* *Add repeating words:*
 * *This is a histogram of the accuracies of all users, and your...*
+* *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
 
 # Thai
 
-Translated: 423 messages, 5101 words
+Translated: 421 messages, 5070 words
 
-Untranslated: 5 messages, 53 words
+Untranslated: 7 messages, 83 words
 
 * *Top accuracy*
 * *Average accuracy*
 * *Relative Accuracy*
+* *Add repeating words:*
 * *This is a histogram of the accuracies of all users, and your...*
+* *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
 
 # Turkish
 
-Translated: 262 messages, 1790 words
+Translated: 260 messages, 1759 words
 
-Untranslated: 158 messages, 3292 words
+Untranslated: 160 messages, 3322 words
 
 * *Help*
 * *Help*
@@ -661,23 +693,25 @@ Untranslated: 158 messages, 3292 words
 
 # Ukrainian
 
-Translated: 421 messages, 5097 words
+Translated: 419 messages, 5066 words
 
-Untranslated: 7 messages, 57 words
+Untranslated: 9 messages, 87 words
 
 * *Top accuracy*
 * *Explain charts*
 * *Average accuracy*
 * *Relative Accuracy*
 * *Hide explanations*
+* *Add repeating words:*
 * *This is a histogram of the accuracies of all users, and your...*
+* *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
 
 # Vietnamese
 
-Translated: 336 messages, 2186 words
+Translated: 335 messages, 2183 words
 
-Untranslated: 87 messages, 2911 words
+Untranslated: 88 messages, 2913 words
 
 * *Visit*
 * *Typing*
@@ -692,33 +726,35 @@ Untranslated: 87 messages, 2911 words
 * *Average accuracy*
 * *Underline cursor*
 * *Relative Accuracy*
+* *Add repeating words:*
 * *Relative Typing Speed*
 * *Key Frequency Heatmap*
 * *Key Frequency Histogram*
 * *Key Typing Speed Histogram*
 * *Keyboard hardware emulates layout*
 * *Show a guided tour with help slides.*
-* *Switch the current interface layout.*
 * ...
 
 # Simplified Chinese
 
-Translated: 422 messages, 5094 words
+Translated: 420 messages, 5063 words
 
-Untranslated: 6 messages, 60 words
+Untranslated: 8 messages, 90 words
 
 * *Top accuracy*
 * *M|T|W|T|F|S|S*
 * *Average accuracy*
 * *Relative Accuracy*
+* *Add repeating words:*
 * *This is a histogram of the accuracies of all users, and your...*
+* *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
 
 # Traditional Chinese
 
-Translated: 419 messages, 5075 words
+Translated: 417 messages, 5044 words
 
-Untranslated: 9 messages, 79 words
+Untranslated: 11 messages, 109 words
 
 * *Books*
 * *Top accuracy*
@@ -726,6 +762,8 @@ Untranslated: 9 messages, 79 words
 * *Average accuracy*
 * *Relative Accuracy*
 * *Hide explanations*
+* *Add repeating words:*
 * *This is a histogram of the accuracies of all users, and your...*
 * *Generate typing lessons from the text of a book. All keys ar...*
+* *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*

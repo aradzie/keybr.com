@@ -333,8 +333,6 @@
   "settings.dailyGoal.description": "Legen Sie die Zeit fest, die Sie täglich für die Übungen aufwenden möchten. Es ist eine einfache Erinnerung, die Sie in keiner Weise einschränkt. Sie können jederzeit mit dem Üben aufhören.",
   "settings.dailyGoal.label": "Tägliches Ziel:",
   "settings.dailyGoal.notSet": "Nicht festgelegt",
-  "settings.doubleWords.description": "Wiederholen Sie jedes Wort zwei Mal. Tippen Sie ein Wort zum ersten Mal, um Ihr Muskelgedächtnis zu entwickeln. Das erneute Tippen desselben Wortes sollte beim zweiten Mal einfacher sein.",
-  "settings.doubleWords.label": "Verdopple jedes Wort",
   "settings.explain.hide": "Erläuterungen verbergen",
   "settings.explain.show": "Einstellungen erläutern",
   "settings.font.label": "Schriftart:",

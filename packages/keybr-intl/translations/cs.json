@@ -329,8 +329,6 @@
   "settings.dailyGoal.description": "Nastavte čas, který chcete denně věnovat cvičení. Jedná se o jednoduchou připomínku, která vás nijak neomezuje. Cvičení můžete ukončit, kdykoli budete chtít.",
   "settings.dailyGoal.label": "Denní cíl:",
   "settings.dailyGoal.notSet": "Nenastaveno",
-  "settings.doubleWords.description": "Každé slovo se opakuje dvakrát. Zadejte slovo poprvé, abyste rozvinuli svou svalovou paměť. Psaní stejného slova podruhé by mělo být jednodušší.",
-  "settings.doubleWords.label": "Zopakovat každé slovo dvakrát",
   "settings.explain.hide": "Skrýt vysvětlení",
   "settings.explain.show": "Vysvětlit nastavení",
   "settings.forgiveErrors.description": "Pokud je povoleno, pole pro zadávání textu odpustí některé druhy chyb tím, že je automaticky opraví. Jedná se o chyby, jako je zadání nesprávného znaku nebo přeskočení znaku.",
