@@ -55,7 +55,7 @@ export class BooksLesson extends Lesson {
 
   override generate(): string {
     return generateFragment(this.settings, wordSequence(this.wordList, this), {
-      doubleWords: false,
+      repeatWords: 0,
     });
   }
 
