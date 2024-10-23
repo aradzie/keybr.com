@@ -12,23 +12,27 @@ html_attr_list ->
     _ html_style_attr
     ;
 
-html_id_attr -> "id" "=" "\"" css_class_id "\"" ;
+html_id_attr -> { :class(keyword) "id" } "=" "\"" css_class_id "\"" ;
 
-html_class_attr -> "class" "=" "\"" css_class_id "\"" ;
+html_class_attr -> { :class(keyword) "class" } "=" "\"" css_class_id "\"" ;
 
-html_style_attr -> "style" "=" "\"" css_property "\"" ;
+html_style_attr -> { :class(keyword) "style" } "=" "\"" css_property "\"" ;
 
 html_ident ->
+  { :class(keyword)
   [ "ns:" | "my-" ]
   ( "p" | "div" | "span" | "em" | "strong" )
+  }
   ;
 
 html_entity ->
+  { :class(comment)
     "&nbsp;"
   | "&lt;"
   | "&gt;"
   | "&amp;"
   | "&apos;"
+  }
   ;
 
 css -> css_rule ;
@@ -101,11 +105,11 @@ css_std_value ->
 
 css_var_value -> "var(" css_var_id [ "," _ css_color_value ] ")" ;
 
-css_url_value -> "url" "(" ( css_image_url | css_font_url ) ")" ;
+css_url_value -> { :class(string) "url" "(" ( css_image_url | css_font_url ) ")" } ;
 
-css_image_url -> ( "logo" | "bg" | "img" | "hero" | "footer" ) ( ".jpg" | ".png" | ".svg" ) ;
+css_image_url -> { :class(string) ( "logo" | "bg" | "img" | "hero" | "footer" ) ( ".jpg" | ".png" | ".svg" ) } ;
 
-css_font_url -> ( "mono" | "serif" | "sans-serif" ) ( ".woff" | ".ttf" ) ;
+css_font_url -> { :class(string) ( "mono" | "serif" | "sans-serif" ) ( ".woff" | ".ttf" ) } ;
 
 css_var_id ->
     "--"

@@ -57,7 +57,10 @@ export default {
   },
   html_id_attr: {
     seq: [
-      "id",
+      {
+        cls: "keyword",
+        span: "id",
+      },
       "=",
       '"',
       {
@@ -68,7 +71,10 @@ export default {
   },
   html_class_attr: {
     seq: [
-      "class",
+      {
+        cls: "keyword",
+        span: "class",
+      },
       "=",
       '"',
       {
@@ -79,7 +85,10 @@ export default {
   },
   html_style_attr: {
     seq: [
-      "style",
+      {
+        cls: "keyword",
+        span: "style",
+      },
       "=",
       '"',
       {
@@ -89,20 +98,26 @@ export default {
     ],
   },
   html_ident: {
-    seq: [
-      {
-        f: 0.5,
-        opt: {
-          alt: ["ns:", "my-"],
+    cls: "keyword",
+    span: {
+      seq: [
+        {
+          f: 0.5,
+          opt: {
+            alt: ["ns:", "my-"],
+          },
         },
-      },
-      {
-        alt: ["p", "div", "span", "em", "strong"],
-      },
-    ],
+        {
+          alt: ["p", "div", "span", "em", "strong"],
+        },
+      ],
+    },
   },
   html_entity: {
-    alt: ["&nbsp;", "&lt;", "&gt;", "&amp;", "&apos;"],
+    cls: "comment",
+    span: {
+      alt: ["&nbsp;", "&lt;", "&gt;", "&amp;", "&apos;"],
+    },
   },
   css: {
     ref: "css_rule",
@@ -393,41 +408,50 @@ export default {
     ],
   },
   css_url_value: {
-    seq: [
-      "url",
-      "(",
-      {
-        alt: [
-          {
-            ref: "css_image_url",
-          },
-          {
-            ref: "css_font_url",
-          },
-        ],
-      },
-      ")",
-    ],
+    cls: "string",
+    span: {
+      seq: [
+        "url",
+        "(",
+        {
+          alt: [
+            {
+              ref: "css_image_url",
+            },
+            {
+              ref: "css_font_url",
+            },
+          ],
+        },
+        ")",
+      ],
+    },
   },
   css_image_url: {
-    seq: [
-      {
-        alt: ["logo", "bg", "img", "hero", "footer"],
-      },
-      {
-        alt: [".jpg", ".png", ".svg"],
-      },
-    ],
+    cls: "string",
+    span: {
+      seq: [
+        {
+          alt: ["logo", "bg", "img", "hero", "footer"],
+        },
+        {
+          alt: [".jpg", ".png", ".svg"],
+        },
+      ],
+    },
   },
   css_font_url: {
-    seq: [
-      {
-        alt: ["mono", "serif", "sans-serif"],
-      },
-      {
-        alt: [".woff", ".ttf"],
-      },
-    ],
+    cls: "string",
+    span: {
+      seq: [
+        {
+          alt: ["mono", "serif", "sans-serif"],
+        },
+        {
+          alt: [".woff", ".ttf"],
+        },
+      ],
+    },
   },
   css_var_id: {
     seq: [
