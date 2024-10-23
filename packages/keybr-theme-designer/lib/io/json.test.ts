@@ -1,5 +1,5 @@
-import { lightTheme } from "@keybr/themes";
 import test from "ava";
+import { lightTheme } from "../themes/themes.ts";
 import { ImportState } from "./import-state.ts";
 import { jsonToTheme, themeToJson } from "./json.ts";
 

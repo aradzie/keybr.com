@@ -1,6 +1,6 @@
-import { lightTheme } from "@keybr/themes";
 import { BlobWriter, TextReader, ZipWriter } from "@zip.js/zip.js";
 import test from "ava";
+import { lightTheme } from "../themes/themes.ts";
 import { ImportState } from "./import-state.ts";
 import { exportTheme, importTheme0 } from "./io.ts";
 

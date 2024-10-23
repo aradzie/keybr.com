@@ -1,5 +1,6 @@
-import { type CustomTheme, customTheme } from "@keybr/themes";
+import { type CustomTheme } from "@keybr/themes";
 import { createContext, useContext } from "react";
+import { customTheme } from "../themes/themes.ts";
 
 export type CustomThemeValue = {
   readonly theme: CustomTheme;

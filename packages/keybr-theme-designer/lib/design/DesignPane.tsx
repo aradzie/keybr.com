@@ -1,15 +1,10 @@
-import {
-  applyTheme,
-  customTheme,
-  darkTheme,
-  lightTheme,
-  useTheme,
-} from "@keybr/themes";
+import { applyTheme, useTheme } from "@keybr/themes";
 import { Box, Button, Field, FieldList, useDialog } from "@keybr/widget";
 import { useRef } from "react";
 import { themeExt, themeFileName } from "../io/constants.ts";
 import { reportError } from "../io/ErrorAlert.tsx";
 import { exportTheme, importTheme } from "../io/io.ts";
+import { customTheme, darkTheme, lightTheme } from "../themes/themes.ts";
 import { BackgroundImage } from "./BackgroundImage.tsx";
 import { useCustomTheme } from "./context.ts";
 import * as styles from "./DesignPane.module.less";

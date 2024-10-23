@@ -1,7 +1,7 @@
 // Generated file, do not edit.
 
-import { Color } from "./color.ts";
-import { CustomTheme } from "./custom-theme.ts";
+import { CustomTheme } from "@keybr/themes";
+import { Color } from "@keybr/widget";
 
 export const lightTheme = new CustomTheme()
   .set("--primary-d2", Color.parse("#DED3D3"))

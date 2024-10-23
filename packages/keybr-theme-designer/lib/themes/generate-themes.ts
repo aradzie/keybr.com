@@ -3,13 +3,12 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { rootDir } from "@keybr/scripts/root.js";
+import { CustomTheme, themeProps, themePropsMap } from "@keybr/themes";
+import { Color } from "@keybr/widget/lib/utils/color.ts";
 import { parse, walk } from "css-tree";
-import { Color } from "./color.ts";
-import { CustomTheme } from "./custom-theme.ts";
-import { themeProps, themePropsMap } from "./theme-props.ts";
 
 const inputFile = join(rootDir, "root", "public", "assets", "styles.css");
-const outputFile = join(import.meta.dirname, "predefined-themes.ts");
+const outputFile = join(import.meta.dirname, "themes.ts");
 
 async function generate() {
   await writeFile(
@@ -86,8 +85,8 @@ function formatSourceCode(themes: Map<string, CustomTheme>): string {
   const lines = new Array<string>();
   lines.push(`// Generated file, do not edit.`);
   lines.push(``);
-  lines.push(`import { Color } from "./color.ts";`);
-  lines.push(`import { CustomTheme } from "./custom-theme.ts";`);
+  lines.push(`import { CustomTheme } from "@keybr/themes";`);
+  lines.push(`import { Color } from "@keybr/widget";`);
   for (const [name, theme] of themes.entries()) {
     lines.push(``);
     lines.push(`export const ${name} = new CustomTheme()`);

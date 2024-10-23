@@ -3,8 +3,7 @@
   "compilerOptions": {
     "rootDir": "lib",
     "outDir": ".types",
-    "emitDeclarationOnly": true,
-    "allowJs": true
+    "emitDeclarationOnly": true
   },
   "include": [
     "lib/**/*"

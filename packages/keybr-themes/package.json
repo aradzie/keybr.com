@@ -8,10 +8,7 @@
   "dependencies": {
     "@keybr/widget": "*"
   },
-  "devDependencies": {
-    "@keybr/scripts": "*",
-    "css-tree": "^3.0.0"
-  },
+  "devDependencies": {},
   "scripts": {
     "clean": "rm -fr .types",
     "compile": "tsc",

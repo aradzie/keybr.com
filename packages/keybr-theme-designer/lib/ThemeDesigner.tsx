@@ -1,13 +1,9 @@
-import {
-  type CustomTheme,
-  customTheme,
-  readTheme,
-  storeTheme,
-} from "@keybr/themes";
+import { type CustomTheme, readTheme, storeTheme } from "@keybr/themes";
 import { useEffect, useState } from "react";
 import { CustomThemeContext } from "./design/context.ts";
 import { DesignPane } from "./design/DesignPane.tsx";
 import { reportError } from "./io/ErrorAlert.tsx";
+import { customTheme } from "./themes/themes.ts";
 
 export function ThemeDesigner() {
   const [theme, setTheme] = usePersistentCustomTheme();
