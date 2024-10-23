@@ -113,7 +113,7 @@ rust_string_literal -> { :class(string) "\"" rust_string_value "\"" } ;
 
 rust_char_literal -> { :class(string) "'" rust_char_value "'" } ;
 
-rust_boolean_literal -> { :class(keyword) "true" | "false" } ;
+rust_boolean_literal -> kw_true | kw_false ;
 
 rust_variable_name -> generic_variable_name ;
 

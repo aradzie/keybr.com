@@ -527,10 +527,14 @@ export default {
     },
   },
   rust_boolean_literal: {
-    cls: "keyword",
-    span: {
-      alt: ["true", "false"],
-    },
+    alt: [
+      {
+        ref: "kw_true",
+      },
+      {
+        ref: "kw_false",
+      },
+    ],
   },
   rust_variable_name: {
     ref: "generic_variable_name",
