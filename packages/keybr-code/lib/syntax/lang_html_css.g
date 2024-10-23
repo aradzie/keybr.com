@@ -33,7 +33,7 @@ html_entity ->
 
 css -> css_rule ;
 
-css_rule -> css_selector " { " css_property_list " }" ;
+css_rule -> css_selector _ "{" _ css_property_list _ "}" ;
 
 css_selector ->
   ( css_id_selector | css_class_selector )
