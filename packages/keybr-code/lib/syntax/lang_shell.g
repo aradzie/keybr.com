@@ -47,7 +47,7 @@ var_arg ->
   | ( "$" "(" "pwd" ")" )
 ;
 
-string_arg -> "\"" "$" "{" var_name "}" "\"" ;
+string_arg -> { :class(string) "\"" "$" "{" var_name "}" "\"" } ;
 
 dir_name ->
     "~"
@@ -157,7 +157,9 @@ file_ext_name ->
   ;
 
 command_name ->
-    "cat"
+  { :class(keyword)
+    "cargo"
+  | "cat"
   | "cd"
   | "chmod"
   | "chown"
@@ -177,21 +179,31 @@ command_name ->
   | "less"
   | "ls"
   | "make"
+  | "man"
+  | "mkdir"
+  | "mv"
+  | "nmap"
   | "node"
   | "npm"
   | "ping"
-  | "podman"
   | "ps"
+  | "pwd"
   | "rm"
+  | "rmdir"
+  | "scp"
   | "sed"
   | "sort"
   | "ssh"
   | "tail"
   | "tar"
+  | "time"
   | "top"
+  | "uname"
   | "uniq"
   | "unzip"
+  | "uptime"
   | "vi"
   | "wc"
   | "zip"
+  }
   ;
