@@ -1,39 +1,32 @@
 export type Rules = Record<string, Prod>;
 
-export type HasCodePoints = {
-  // Each rule can have a list of characters that it can generate.
-  // We need to know this to be able to generate sentences with already opened
-  // characters.
-  codePoints?: ReadonlySet<number>;
-};
-
 export type Prod = Cond | Span | Opt | Seq | Alt | Ref | string;
 
-export type Cond = HasCodePoints & {
+export type Cond = {
   readonly flag: string;
   readonly inv: boolean;
   readonly cond: Prod;
 };
 
-export type Span = HasCodePoints & {
+export type Span = {
   readonly cls: string;
   readonly span: Prod;
 };
 
-export type Opt = HasCodePoints & {
+export type Opt = {
   readonly f: number;
   readonly opt: Prod;
 };
 
-export type Seq = HasCodePoints & {
+export type Seq = {
   readonly seq: readonly Prod[];
 };
 
-export type Alt = HasCodePoints & {
+export type Alt = {
   readonly alt: readonly Prod[];
 };
 
-export type Ref = HasCodePoints & {
+export type Ref = {
   readonly ref: string;
 };
 
