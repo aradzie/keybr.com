@@ -9,7 +9,14 @@ export default {
   js_variable_statement: {
     seq: [
       {
-        alt: ["let", "const"],
+        alt: [
+          {
+            ref: "kw_let",
+          },
+          {
+            ref: "kw_const",
+          },
+        ],
       },
       " ",
       {
@@ -240,9 +247,15 @@ export default {
   },
   js_literal: {
     alt: [
-      "null",
-      "true",
-      "false",
+      {
+        ref: "kw_null",
+      },
+      {
+        ref: "kw_true",
+      },
+      {
+        ref: "kw_false",
+      },
       {
         ref: "js_string_literal",
       },
@@ -252,15 +265,21 @@ export default {
     ],
   },
   js_string_literal: {
-    alt: ['"a"', '"b"', '"c"'],
+    cls: "string",
+    span: {
+      alt: ['"a"', '"b"', '"c"'],
+    },
   },
   js_template_literal: {
-    seq: [
-      "`abc=${",
-      {
-        ref: "js_id",
-      },
-      "}`",
-    ],
+    cls: "string",
+    span: {
+      seq: [
+        "`abc=${",
+        {
+          ref: "js_id",
+        },
+        "}`",
+      ],
+    },
   },
 } as Rules;

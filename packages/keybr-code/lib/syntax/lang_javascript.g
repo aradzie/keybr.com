@@ -1,6 +1,6 @@
 start -> js_variable_statement ;
 
-js_variable_statement -> ( "let" | "const" ) _ js_var_id _ "=" _ js_primary_exp ";" ;
+js_variable_statement -> ( kw_let | kw_const ) _ js_var_id _ "=" _ js_primary_exp ";" ;
 
 js_primary_exp ->
     js_literal
@@ -77,8 +77,8 @@ js_id ->
   | "value"
   ;
 
-js_literal -> "null" | "true" | "false" | js_string_literal | js_template_literal ;
+js_literal -> kw_null | kw_true | kw_false | js_string_literal | js_template_literal ;
 
-js_string_literal -> "\"a\"" | "\"b\"" | "\"c\"" ;
+js_string_literal -> { :class(string) "\"a\"" | "\"b\"" | "\"c\"" } ;
 
-js_template_literal -> "`abc=${" js_id "}`" ;
+js_template_literal -> { :class(string) "`abc=${" js_id "}`" } ;

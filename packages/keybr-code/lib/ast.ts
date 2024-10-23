@@ -1,3 +1,8 @@
+export type Grammar = {
+  readonly rules: Rules;
+  readonly composes: readonly Grammar[];
+};
+
 export type Rules = Record<string, Prod>;
 
 export type Prod = Cond | Span | Opt | Seq | Alt | Ref | string;
@@ -56,4 +61,22 @@ export function isRef(v: Prod): v is Ref {
 
 export function isLit(v: Prod): v is string {
   return typeof v === "string";
+}
+
+export function compose(rules: Rules, ...rest: Rules[]): Grammar {
+  return { rules, composes: rest.map((rules) => ({ rules, composes: [] })) };
+}
+
+export function findRule(grammar: Grammar, name: string): Prod | null {
+  const rule = grammar.rules[name];
+  if (rule != null) {
+    return rule;
+  }
+  for (const composed of grammar.composes) {
+    const rule = findRule(composed, name);
+    if (rule != null) {
+      return rule;
+    }
+  }
+  return null;
 }

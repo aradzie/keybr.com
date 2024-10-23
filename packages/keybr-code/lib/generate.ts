@@ -1,5 +1,7 @@
 import { LCG, type RNG } from "@keybr/rand";
 import {
+  findRule,
+  type Grammar,
   isAlt,
   isCond,
   isLit,
@@ -8,7 +10,6 @@ import {
   isSeq,
   isSpan,
   type Prod,
-  type Rules,
 } from "./ast.ts";
 import { type Flags, flagSet } from "./flags.ts";
 import { Output } from "./output.ts";
@@ -19,7 +20,7 @@ const lcg = LCG(1);
  * Generates text from the given context-free grammar.
  */
 export function generate(
-  rules: Rules,
+  grammar: Grammar,
   {
     start = "start",
     flags = flagSet(["*"]),
@@ -83,7 +84,7 @@ export function generate(
   }
 
   function getRule(name: string): Prod {
-    const rule = rules[name];
+    const rule = findRule(grammar, name);
     if (rule == null) {
       throw new Error(
         process.env.NODE_ENV !== "production"

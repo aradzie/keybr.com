@@ -8,9 +8,9 @@ python_statement ->
   | { :if(comments) python_comment }
   ;
 
-python_function_definition -> "def" _ python_function_name "(" python_arguments ")" { :if(types) _ "->" _ python_type } ":";
+python_function_definition -> kw_def _ python_function_name "(" python_arguments ")" { :if(types) _ "->" _ python_type } ":";
 
-python_class_definition -> "class" _ python_class_name [ "(" python_class_name ")" ] ":" ;
+python_class_definition -> kw_class _ python_class_name [ "(" python_class_name ")" ] ":" ;
 
 python_assign -> python_variable_name [ "[" python_literal "]" ] _ "=" _ python_expression ;
 
@@ -31,8 +31,8 @@ python_expression ->
   ;
 
 python_unary_operation ->
-    ( python_expression _ "is" _ [ "not" _ ] "None" )
-  | ( "not" _ python_expression )
+    ( python_expression _ kw_is _ [ kw_not _ ] kw_None )
+  | ( kw_not _ python_expression )
   | ( "~" python_expression )
   ;
 
@@ -52,11 +52,11 @@ python_type ->
 
 python_primitive_type ->
     python_class_name
-  | "int"
-  | "str"
-  | "bool"
-  | "float"
-  | "None"
+  | kw_int
+  | kw_str
+  | kw_bool
+  | kw_float
+  | kw_None
   ;
 
 python_binary_operator ->
@@ -75,8 +75,7 @@ python_binary_operator ->
   | ">="
   | "<="
   | "=="
-  | "in"
-  | ("not" _ "in")
+  | [ kw_not _ ] kw_in
   | "^"
   ;
 
@@ -92,10 +91,10 @@ python_literal ->
   ;
 
 python_string_literal ->
-    ("\"" python_string_value "\"")
-  | ("'" python_string_value "'" )
-  | ("\"\"\"" python_string_value "\"\"\"")
-  | ("'''" python_string_value "'''" )
+    { :class(string) ("\"" python_string_value "\"") }
+  | { :class(string) ("'" python_string_value "'" ) }
+  | { :class(string) ("\"\"\"" python_string_value "\"\"\"") }
+  | { :class(string) ("'''" python_string_value "'''" ) }
   ;
 
 python_variable_name ->

@@ -8,7 +8,7 @@ c_func -> c_func_proto _ c_func_body ;
 
 c_func_proto -> c_type _ c_func_id "(" c_param_list ")" ;
 
-c_type -> ( "char" | "int" | "long" | "short" | "void" ) [ "*" [ "*" ] ] ;
+c_type -> ( kw_char | kw_int | kw_long | kw_short | kw_void ) [ "*" [ "*" ] ] ;
 
 c_param_list -> c_param [ "," _ c_param [ "," _ c_param ] ] ;
 
@@ -26,9 +26,9 @@ c_var_stmt -> c_type _ c_var_id _ "=" _ c_expr ";" ;
 
 c_call_stmt -> c_func_id "(" c_arg_list ")" ";" ;
 
-c_if_stmt -> "if" _ "(" c_expr ")" _ "{" _ c_call_stmt _ "}" ;
+c_if_stmt -> kw_if _ "(" c_expr ")" _ "{" _ c_call_stmt _ "}" ;
 
-c_return_stmt -> "return " c_expr ";" ;
+c_return_stmt -> kw_return _ c_expr ";" ;
 
 c_expr -> c_unary_exp | c_binary_exp | c_ternary_exp ;
 

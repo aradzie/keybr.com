@@ -1,13 +1,22 @@
 import test from "ava";
 import { validate } from "./validate.ts";
 
-test("valid grammar", (t) => {
+test("valid composed grammar", (t) => {
   t.notThrows(() => {
     validate({
-      start: {
-        ref: "another",
+      rules: {
+        start: {
+          ref: "another",
+        },
       },
-      another: "stop",
+      composes: [
+        {
+          rules: {
+            another: "stop",
+          },
+          composes: [],
+        },
+      ],
     });
   });
 });
@@ -16,9 +25,12 @@ test("missing ref", (t) => {
   t.throws(
     () => {
       validate({
-        start: {
-          ref: "invalidRef",
+        rules: {
+          start: {
+            ref: "invalidRef",
+          },
         },
+        composes: [],
       });
     },
     {
@@ -31,8 +43,11 @@ test("unreferenced rule", (t) => {
   t.throws(
     () => {
       validate({
-        start: "start",
-        extra: "extra",
+        rules: {
+          start: "start",
+          extra: "extra",
+        },
+        composes: [],
       });
     },
     {
@@ -45,7 +60,10 @@ test("empty seq", (t) => {
   t.throws(
     () => {
       validate({
-        start: { seq: [] },
+        rules: {
+          start: { seq: [] },
+        },
+        composes: [],
       });
     },
     {
@@ -58,7 +76,10 @@ test("empty alt", (t) => {
   t.throws(
     () => {
       validate({
-        start: { alt: [] },
+        rules: {
+          start: { alt: [] },
+        },
+        composes: [],
       });
     },
     {

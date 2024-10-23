@@ -8,13 +8,13 @@ rust_statement ->
   | { :if(comments) rust_comment }
   ;
 
-rust_function_definition -> "fn" _ rust_function_name "(" rust_arguments ")" [ _ "->" _ rust_type ] "{" ;
+rust_function_definition -> kw_fn _ rust_function_name "(" rust_arguments ")" [ _ "->" _ rust_type ] "{" ;
 
-rust_struct_definition -> [ "pub" _ ] "struct" _ rust_struct_name _ "{" ;
+rust_struct_definition -> [ kw_pub _ ] kw_struct _ rust_struct_name _ "{" ;
 
-rust_assign -> "let" _ rust_variable_name [ ":" _ rust_type ] _ "=" _ rust_expression ";" ;
+rust_assign -> kw_let _ rust_variable_name [ ":" _ rust_type ] _ "=" _ rust_expression ";" ;
 
-rust_return -> "return" _ rust_expression ";" ;
+rust_return -> kw_return _ rust_expression ";" ;
 
 rust_arguments -> rust_argument [ "," _ rust_argument ] ;
 
@@ -45,7 +45,7 @@ rust_function_args -> rust_expression [ "," _ rust_expression ] ;
 
 rust_type ->
     rust_primitive_type
-  | "&" [ "mut" _ ] rust_type
+  | "&" [ kw_mut _ ] rust_type
   | rust_type _ "<" rust_type [ "," _ rust_type ] ">"
   | "[" rust_type ";" _ rust_number_literal "]"
   | "(" rust_type [ "," _ rust_type ] ")"
@@ -53,17 +53,17 @@ rust_type ->
 
 rust_primitive_type ->
     rust_struct_name
-  | "u32"
-  | "u64"
-  | "i32"
-  | "i64"
-  | "f32"
-  | "f64"
-  | "usize"
-  | "isize"
-  | "bool"
-  | "char"
-  | "str"
+  | kw_u32
+  | kw_u64
+  | kw_i32
+  | kw_i64
+  | kw_f32
+  | kw_f64
+  | kw_usize
+  | kw_isize
+  | kw_bool
+  | kw_char
+  | kw_str
   | "String"
   ;
 
@@ -109,11 +109,11 @@ rust_literal ->
   | rust_char_literal
   ;
 
-rust_string_literal -> "\"" rust_string_value "\"" ;
+rust_string_literal -> { :class(string) "\"" rust_string_value "\"" } ;
 
-rust_char_literal -> "'" rust_char_value "'" ;
+rust_char_literal -> { :class(string) "'" rust_char_value "'" } ;
 
-rust_boolean_literal -> "true" | "false" ;
+rust_boolean_literal -> { :class(keyword) "true" | "false" } ;
 
 rust_variable_name ->
     "x"
@@ -238,6 +238,7 @@ rust_char_value ->
   ;
 
 rust_number_literal ->
+  { :class(number)
     "0"
   | "1"
   | "2"
@@ -257,6 +258,7 @@ rust_number_literal ->
   | "256"
   | "1024"
   | "1_000_000"
+  }
   ;
 
 rust_comment ->

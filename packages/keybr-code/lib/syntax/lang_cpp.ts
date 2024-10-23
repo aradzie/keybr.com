@@ -47,7 +47,23 @@ export default {
   c_type: {
     seq: [
       {
-        alt: ["char", "int", "long", "short", "void"],
+        alt: [
+          {
+            ref: "kw_char",
+          },
+          {
+            ref: "kw_int",
+          },
+          {
+            ref: "kw_long",
+          },
+          {
+            ref: "kw_short",
+          },
+          {
+            ref: "kw_void",
+          },
+        ],
       },
       {
         f: 0.5,
@@ -198,7 +214,10 @@ export default {
   },
   c_if_stmt: {
     seq: [
-      "if (",
+      {
+        ref: "kw_if",
+      },
+      " (",
       {
         ref: "c_expr",
       },
@@ -211,7 +230,10 @@ export default {
   },
   c_return_stmt: {
     seq: [
-      "return ",
+      {
+        ref: "kw_return",
+      },
+      " ",
       {
         ref: "c_expr",
       },

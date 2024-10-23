@@ -31,7 +31,10 @@ export default {
   },
   python_function_definition: {
     seq: [
-      "def ",
+      {
+        ref: "kw_def",
+      },
+      " ",
       {
         ref: "python_function_name",
       },
@@ -57,7 +60,10 @@ export default {
   },
   python_class_definition: {
     seq: [
-      "class ",
+      {
+        ref: "kw_class",
+      },
+      " ",
       {
         ref: "python_class_name",
       },
@@ -182,17 +188,33 @@ export default {
           {
             ref: "python_expression",
           },
-          " is ",
+          " ",
+          {
+            ref: "kw_is",
+          },
+          " ",
           {
             f: 0.5,
-            opt: "not ",
+            opt: {
+              seq: [
+                {
+                  ref: "kw_not",
+                },
+                " ",
+              ],
+            },
           },
-          "None",
+          {
+            ref: "kw_None",
+          },
         ],
       },
       {
         seq: [
-          "not ",
+          {
+            ref: "kw_not",
+          },
+          " ",
           {
             ref: "python_expression",
           },
@@ -310,11 +332,21 @@ export default {
       {
         ref: "python_class_name",
       },
-      "int",
-      "str",
-      "bool",
-      "float",
-      "None",
+      {
+        ref: "kw_int",
+      },
+      {
+        ref: "kw_str",
+      },
+      {
+        ref: "kw_bool",
+      },
+      {
+        ref: "kw_float",
+      },
+      {
+        ref: "kw_None",
+      },
     ],
   },
   python_binary_operator: {
@@ -334,8 +366,24 @@ export default {
       ">=",
       "<=",
       "==",
-      "in",
-      "not in",
+      {
+        seq: [
+          {
+            f: 0.5,
+            opt: {
+              seq: [
+                {
+                  ref: "kw_not",
+                },
+                " ",
+              ],
+            },
+          },
+          {
+            ref: "kw_in",
+          },
+        ],
+      },
       "^",
     ],
   },
@@ -418,40 +466,52 @@ export default {
   python_string_literal: {
     alt: [
       {
-        seq: [
-          '"',
-          {
-            ref: "python_string_value",
-          },
-          '"',
-        ],
+        cls: "string",
+        span: {
+          seq: [
+            '"',
+            {
+              ref: "python_string_value",
+            },
+            '"',
+          ],
+        },
       },
       {
-        seq: [
-          "'",
-          {
-            ref: "python_string_value",
-          },
-          "'",
-        ],
+        cls: "string",
+        span: {
+          seq: [
+            "'",
+            {
+              ref: "python_string_value",
+            },
+            "'",
+          ],
+        },
       },
       {
-        seq: [
-          '"""',
-          {
-            ref: "python_string_value",
-          },
-          '"""',
-        ],
+        cls: "string",
+        span: {
+          seq: [
+            '"""',
+            {
+              ref: "python_string_value",
+            },
+            '"""',
+          ],
+        },
       },
       {
-        seq: [
-          "'''",
-          {
-            ref: "python_string_value",
-          },
-          "'''",
-        ],
+        cls: "string",
+        span: {
+          seq: [
+            "'''",
+            {
+              ref: "python_string_value",
+            },
+            "'''",
+          ],
+        },
       },
     ],
   },

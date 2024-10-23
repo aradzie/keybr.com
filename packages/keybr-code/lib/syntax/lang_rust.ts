@@ -31,7 +31,10 @@ export default {
   },
   rust_function_definition: {
     seq: [
-      "fn ",
+      {
+        ref: "kw_fn",
+      },
+      " ",
       {
         ref: "rust_function_name",
       },
@@ -58,9 +61,19 @@ export default {
     seq: [
       {
         f: 0.5,
-        opt: "pub ",
+        opt: {
+          seq: [
+            {
+              ref: "kw_pub",
+            },
+            " ",
+          ],
+        },
       },
-      "struct ",
+      {
+        ref: "kw_struct",
+      },
+      " ",
       {
         ref: "rust_struct_name",
       },
@@ -69,7 +82,10 @@ export default {
   },
   rust_assign: {
     seq: [
-      "let ",
+      {
+        ref: "kw_let",
+      },
+      " ",
       {
         ref: "rust_variable_name",
       },
@@ -93,7 +109,10 @@ export default {
   },
   rust_return: {
     seq: [
-      "return ",
+      {
+        ref: "kw_return",
+      },
+      " ",
       {
         ref: "rust_expression",
       },
@@ -254,7 +273,14 @@ export default {
           "&",
           {
             f: 0.5,
-            opt: "mut ",
+            opt: {
+              seq: [
+                {
+                  ref: "kw_mut",
+                },
+                " ",
+              ],
+            },
           },
           {
             ref: "rust_type",
@@ -324,17 +350,39 @@ export default {
       {
         ref: "rust_struct_name",
       },
-      "u32",
-      "u64",
-      "i32",
-      "i64",
-      "f32",
-      "f64",
-      "usize",
-      "isize",
-      "bool",
-      "char",
-      "str",
+      {
+        ref: "kw_u32",
+      },
+      {
+        ref: "kw_u64",
+      },
+      {
+        ref: "kw_i32",
+      },
+      {
+        ref: "kw_i64",
+      },
+      {
+        ref: "kw_f32",
+      },
+      {
+        ref: "kw_f64",
+      },
+      {
+        ref: "kw_usize",
+      },
+      {
+        ref: "kw_isize",
+      },
+      {
+        ref: "kw_bool",
+      },
+      {
+        ref: "kw_char",
+      },
+      {
+        ref: "kw_str",
+      },
       "String",
     ],
   },
@@ -455,25 +503,34 @@ export default {
     ],
   },
   rust_string_literal: {
-    seq: [
-      '"',
-      {
-        ref: "rust_string_value",
-      },
-      '"',
-    ],
+    cls: "string",
+    span: {
+      seq: [
+        '"',
+        {
+          ref: "rust_string_value",
+        },
+        '"',
+      ],
+    },
   },
   rust_char_literal: {
-    seq: [
-      "'",
-      {
-        ref: "rust_char_value",
-      },
-      "'",
-    ],
+    cls: "string",
+    span: {
+      seq: [
+        "'",
+        {
+          ref: "rust_char_value",
+        },
+        "'",
+      ],
+    },
   },
   rust_boolean_literal: {
-    alt: ["true", "false"],
+    cls: "keyword",
+    span: {
+      alt: ["true", "false"],
+    },
   },
   rust_variable_name: {
     alt: [
@@ -590,27 +647,30 @@ export default {
     alt: ["a", "b", "c", "x", "y", "z", "0", "1", "2", "\\n", "\\t", "\\r"],
   },
   rust_number_literal: {
-    alt: [
-      "0",
-      "1",
-      "2",
-      "3",
-      "4",
-      "5",
-      "10",
-      "100",
-      "123i32",
-      "0.0",
-      "0.5",
-      "1.5",
-      "2.5_f64",
-      "3.14f32",
-      "42",
-      "255",
-      "256",
-      "1024",
-      "1_000_000",
-    ],
+    cls: "number",
+    span: {
+      alt: [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "10",
+        "100",
+        "123i32",
+        "0.0",
+        "0.5",
+        "1.5",
+        "2.5_f64",
+        "3.14f32",
+        "42",
+        "255",
+        "256",
+        "1024",
+        "1_000_000",
+      ],
+    },
   },
   rust_comment: {
     cls: "comment",

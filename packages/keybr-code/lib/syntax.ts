@@ -1,73 +1,47 @@
 import { Enum, type EnumItem } from "@keybr/lang";
 import { type RNG } from "@keybr/rand";
-import { type Rules } from "./ast.ts";
+import { type Grammar } from "./ast.ts";
 import { findFlags } from "./find-flags.ts";
 import { type Flags } from "./flags.ts";
 import { generate } from "./generate.ts";
+import {
+  grammar_cpp,
+  grammar_html_css,
+  grammar_javascript,
+  grammar_python,
+  grammar_regex,
+  grammar_rust,
+  grammar_shell,
+} from "./grammars.ts";
 import { Output } from "./output.ts";
-import lang_cpp from "./syntax/lang_cpp.ts";
-import lang_html_css from "./syntax/lang_html_css.ts";
-import lang_javascript from "./syntax/lang_javascript.ts";
-import lang_python from "./syntax/lang_python.ts";
-import lang_regex from "./syntax/lang_regex.ts";
-import lang_rust from "./syntax/lang_rust.ts";
-import lang_shell from "./syntax/lang_shell.ts";
+import { validate } from "./validate.ts";
 
 export class Syntax implements EnumItem {
-  static readonly CPP = new Syntax(
-    "cpp", //
-    "C/C++",
-    lang_cpp,
-  );
+  static readonly HTML = new Syntax("html", "HTML", grammar_html_css, "html");
+  static readonly CSS = new Syntax("css", "CSS", grammar_html_css, "css");
+  static readonly CPP = new Syntax("cpp", "C/C++", grammar_cpp);
   static readonly CPP_FPROTO = new Syntax(
-    "cpp_fproto", //
+    "cpp_fproto",
     "C/C++ Function Prototypes",
-    lang_cpp,
+    grammar_cpp,
     "start_fproto",
   );
   static readonly CPP_STMT = new Syntax(
-    "cpp_stmt", //
+    "cpp_stmt",
     "C/C++ Statements",
-    lang_cpp,
+    grammar_cpp,
     "start_stmt",
   );
-  static readonly HTML = new Syntax(
-    "html", //
-    "HTML",
-    lang_html_css,
-    "html",
-  );
-  static readonly CSS = new Syntax(
-    "css", //
-    "CSS",
-    lang_html_css,
-    "css",
-  );
   static readonly JAVASCRIPT_EXP = new Syntax(
-    "javascript_exp", //
+    "javascript_exp",
     "Java Script Expressions",
-    lang_javascript,
+    grammar_javascript,
   );
-  static readonly RUST = new Syntax(
-    "rust", //
-    "Rust",
-    lang_rust,
-  );
-  static readonly REGEX = new Syntax(
-    "regex", //
-    "Regex",
-    lang_regex,
-  );
-  static readonly SHELL = new Syntax(
-    "shell", //
-    "Shell",
-    lang_shell,
-  );
-  static readonly PYTHON = new Syntax(
-    "python", //
-    "Python",
-    lang_python,
-  );
+  static readonly PYTHON = new Syntax("python", "Python", grammar_python);
+  static readonly RUST = new Syntax("rust", "Rust", grammar_rust);
+  static readonly SHELL = new Syntax("shell", "Shell", grammar_shell);
+  static readonly REGEX = new Syntax("regex", "Regex", grammar_regex);
+
   static readonly ALL = new Enum<Syntax>(
     Syntax.HTML,
     Syntax.CSS,
@@ -75,29 +49,29 @@ export class Syntax implements EnumItem {
     Syntax.CPP_FPROTO,
     Syntax.CPP_STMT,
     Syntax.JAVASCRIPT_EXP,
-    Syntax.REGEX,
-    Syntax.SHELL,
     Syntax.PYTHON,
     Syntax.RUST,
+    Syntax.SHELL,
+    Syntax.REGEX,
   );
 
   readonly id: string;
   readonly name: string;
-  readonly rules: Rules;
+  readonly grammar: Grammar;
   readonly start: string;
   readonly flags: ReadonlySet<string>;
 
   private constructor(
     id: string,
     name: string,
-    rules: Rules,
+    grammar: Grammar,
     start: string = "start",
   ) {
     this.id = id;
     this.name = name;
-    this.rules = rules;
+    this.grammar = validate(grammar);
     this.start = start;
-    this.flags = findFlags(rules);
+    this.flags = findFlags(grammar.rules);
     Object.freeze(this);
   }
 
@@ -108,7 +82,7 @@ export class Syntax implements EnumItem {
         if (output.length > 0) {
           output.separate(" ");
         }
-        generate(this.rules, { start: this.start, flags, output, rng });
+        generate(this.grammar, { start: this.start, flags, output, rng });
       } catch (err) {
         if (err === Output.Stop) {
           break;

@@ -1,4 +1,6 @@
 import {
+  findRule,
+  type Grammar,
   isAlt,
   isCond,
   isLit,
@@ -7,7 +9,6 @@ import {
   isSeq,
   isSpan,
   type Prod,
-  type Rules,
 } from "./ast.ts";
 
 /**
@@ -18,18 +19,18 @@ import {
  * - Checks that all refs can be resolved.
  * - Checks that there are no unreferenced rules.
  */
-export function validate(rules: Rules): Rules {
+export function validate(grammar: Grammar): Grammar {
   const referenced = new Set<string>();
   referenced.add("start");
-  for (const rule of Object.values(rules)) {
+  for (const rule of Object.values(grammar.rules)) {
     visit(rule);
   }
-  for (const name of Object.keys(rules)) {
+  for (const name of Object.keys(grammar.rules)) {
     if (!name.startsWith("start_") && !referenced.has(name)) {
       throw new Error(`Unreferenced rule <${name}>`);
     }
   }
-  return rules;
+  return grammar;
 
   function visit(p: Prod): void {
     if (isCond(p)) {
@@ -75,7 +76,7 @@ export function validate(rules: Rules): Rules {
 
     if (isRef(p)) {
       const { ref } = p;
-      if (!(ref in rules)) {
+      if (findRule(grammar, ref) == null) {
         throw new Error(`Invalid ref <${ref}>`);
       }
       referenced.add(ref);
