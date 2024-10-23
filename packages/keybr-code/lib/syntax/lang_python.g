@@ -14,7 +14,7 @@ python_class_definition -> kw_class _ python_class_name [ "(" python_class_name 
 
 python_assign -> python_variable_name [ "[" python_literal "]" ] _ "=" _ python_expression ;
 
-python_return -> "return" _ python_expression ;
+python_return -> kw_return _ python_expression ;
 
 python_arguments -> python_argument [ "," _ python_argument ] ;
 
@@ -142,6 +142,7 @@ python_string_value ->
   ;
 
 python_number_literal ->
+  { :class(number)
     "1"
   | "0.001"
   | "0.01"
@@ -191,6 +192,7 @@ python_number_literal ->
   | "7"
   | "8"
   | "9"
+  }
   ;
 
 python_comment ->

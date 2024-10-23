@@ -7,8 +7,7 @@
   "types": ".types/index.d.ts",
   "dependencies": {
     "@keybr/lang": "*",
-    "@keybr/rand": "*",
-    "@keybr/unicode": "*"
+    "@keybr/rand": "*"
   },
   "devDependencies": {
     "peggy": "^4.1.1"
