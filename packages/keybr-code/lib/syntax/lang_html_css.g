@@ -120,13 +120,17 @@ css_var_id ->
   ;
 
 css_color_value ->
-    "#aaa"
-  | "#bbb"
-  | "#ccc"
-  | "#ddd"
-  | "#eee"
-  | "#fff"
+    "#" css_hex_digit css_hex_digit css_hex_digit
   | css_named_color
+  ;
+
+css_hex_digit ->
+    "a"
+  | "b"
+  | "c"
+  | "d"
+  | "e"
+  | "f"
   ;
 
 css_class_id ->

@@ -463,16 +463,27 @@ export default {
   },
   css_color_value: {
     alt: [
-      "#aaa",
-      "#bbb",
-      "#ccc",
-      "#ddd",
-      "#eee",
-      "#fff",
+      {
+        seq: [
+          "#",
+          {
+            ref: "css_hex_digit",
+          },
+          {
+            ref: "css_hex_digit",
+          },
+          {
+            ref: "css_hex_digit",
+          },
+        ],
+      },
       {
         ref: "css_named_color",
       },
     ],
+  },
+  css_hex_digit: {
+    alt: ["a", "b", "c", "d", "e", "f"],
   },
   css_class_id: {
     alt: [
