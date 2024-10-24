@@ -10,34 +10,32 @@ import {
   type ReactNode,
 } from "react";
 import { findCursor } from "./chars.tsx";
-import * as styles from "./Cursor.module.less";
+import { getCursorStyle } from "./styles.ts";
 
-type Props = {
+export class Cursor extends Component<{
   readonly settings: TextDisplaySettings;
   readonly children: ReactNode;
-};
-
-export class Cursor extends Component<Props> {
+}> {
   readonly #containerRef = createRef<HTMLDivElement>();
   readonly #cursorRef = createRef<HTMLSpanElement>();
   #initial = true;
   #animation: Animation | null = null;
 
-  override componentDidMount(): void {
+  override componentDidMount() {
     this.#position();
   }
 
-  override componentDidUpdate(): void {
+  override componentDidUpdate() {
     this.#position();
   }
 
-  override componentWillUnmount(): void {
+  override componentWillUnmount() {
     if (this.#animation != null) {
       this.#animation.cancel();
     }
   }
 
-  #position(): void {
+  #position() {
     const container = this.#containerRef.current;
     const cursor = this.#cursorRef.current;
     if (container != null && cursor != null) {
@@ -50,7 +48,7 @@ export class Cursor extends Component<Props> {
     }
   }
 
-  #move(cursor: HTMLElement, char: HTMLElement): void {
+  #move(cursor: HTMLElement, char: HTMLElement) {
     const {
       caretShapeStyle,
       caretMovementStyle,
@@ -170,7 +168,7 @@ export class Cursor extends Component<Props> {
     this.#initial = false;
   }
 
-  #hide(cursor: HTMLElement): void {
+  #hide(cursor: HTMLElement) {
     const { style } = cursor;
 
     cursor.textContent = "";
@@ -189,8 +187,10 @@ export class Cursor extends Component<Props> {
       <div ref={this.#containerRef} style={containerStyle}>
         <span
           ref={this.#cursorRef}
-          className={cursorClassName(this.props.settings)}
-          style={cursorStyle}
+          style={{
+            ...cursorStyle,
+            ...getCursorStyle(this.props.settings.caretShapeStyle),
+          }}
         />
         {this.props.children}
       </div>
@@ -198,36 +198,19 @@ export class Cursor extends Component<Props> {
   }
 }
 
-const containerStyle: CSSProperties = {
+const containerStyle = {
   display: "block",
   position: "relative",
-};
+} satisfies CSSProperties;
 
-const cursorStyle: CSSProperties = {
+const cursorStyle = {
   display: "block",
   position: "absolute",
   left: 0,
   top: 0,
   width: 0,
   height: 0,
-};
-
-function cursorClassName({
-  caretShapeStyle,
-}: {
-  readonly caretShapeStyle: CaretShapeStyle;
-}): string {
-  switch (caretShapeStyle) {
-    case CaretShapeStyle.Block:
-      return styles.block;
-    case CaretShapeStyle.Box:
-      return styles.box;
-    case CaretShapeStyle.Line:
-      return styles.line;
-    case CaretShapeStyle.Underline:
-      return styles.underline;
-  }
-}
+} satisfies CSSProperties;
 
 function wpmToDuration(wpm: number): number {
   return Math.round(1000 / ((wpm * 5) / 60));

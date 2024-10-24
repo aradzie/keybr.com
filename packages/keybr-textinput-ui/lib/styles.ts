@@ -1,5 +1,22 @@
-import { Attr } from "@keybr/textinput";
+import { Attr, CaretShapeStyle } from "@keybr/textinput";
 import { type CSSProperties } from "react";
+
+const cursorStyles = {
+  block: {
+    color: "var(--textinput-cursor__color)",
+    backgroundColor: "var(--textinput-cursor__background-color)",
+  } satisfies CSSProperties,
+  box: {
+    borderStyle: "solid",
+    borderColor: "var(--textinput-cursor__background-color)",
+  } satisfies CSSProperties,
+  line: {
+    backgroundColor: "var(--textinput-cursor__background-color)",
+  } satisfies CSSProperties,
+  underline: {
+    backgroundColor: "var(--textinput-cursor__background-color)",
+  } satisfies CSSProperties,
+} as const;
 
 export const textItemStyle = {
   display: "inline-block",
@@ -31,6 +48,21 @@ const syntaxStyles = {
   number: { color: "var(--syntax-number)" },
   comment: { color: "var(--syntax-comment)" },
 } as Record<string, CSSProperties>;
+
+export function getCursorStyle(
+  caretShapeStyle: CaretShapeStyle,
+): CSSProperties {
+  switch (caretShapeStyle) {
+    case CaretShapeStyle.Block:
+      return cursorStyles.block;
+    case CaretShapeStyle.Box:
+      return cursorStyles.box;
+    case CaretShapeStyle.Line:
+      return cursorStyles.line;
+    case CaretShapeStyle.Underline:
+      return cursorStyles.underline;
+  }
+}
 
 export function getTextStyle(
   {
