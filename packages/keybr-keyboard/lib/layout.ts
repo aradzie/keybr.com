@@ -563,6 +563,36 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly NB_NO_KVIKK = new Layout(
+    /* id= */ "nb-no-kvikk",
+    /* xid= */ 0xa1,
+    /* name= */ "Kvikk",
+    /* family= */ "kvikk",
+    /* language= */ Language.NB,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
+  static readonly NB_NO_SKARP = new Layout(
+    /* id= */ "nb-no-skarp",
+    /* xid= */ 0xa2,
+    /* name= */ "Skarp",
+    /* family= */ "skarp",
+    /* language= */ Language.NB,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
   static readonly HE_IL = new Layout(
     /* id= */ "he-il",
     /* xid= */ 0x84,
@@ -994,6 +1024,8 @@ export class Layout implements XEnumItem {
     Layout.HU_HU,
     Layout.IT_IT,
     Layout.NB_NO,
+    Layout.NB_NO_KVIKK,
+    Layout.NB_NO_SKARP,
     Layout.NL_NL,
     Layout.NL_BE,
     Layout.ES_ES,
