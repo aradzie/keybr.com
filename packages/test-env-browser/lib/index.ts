@@ -62,16 +62,16 @@ function install(jsdom: JSDOM, scope: any): () => void {
   const { window } = jsdom;
   const scopeKeys = Object.getOwnPropertyNames(scope);
   const windowKeys = Object.getOwnPropertyNames(window);
-  const keys = ["window", "document", "navigator"];
+  const keys = new Set(["window", "document"]);
   for (const key of windowKeys) {
     if (
       !/^_/.test(key) && // Private fields.
       !/^on/.test(key) && // Event handlers.
-      !keys.includes(key) &&
+      !keys.has(key) &&
       !scopeKeys.includes(key) &&
       !restrictedGlobals.includes(key)
     ) {
-      keys.push(key);
+      keys.add(key);
     }
   }
   for (const key of keys) {
