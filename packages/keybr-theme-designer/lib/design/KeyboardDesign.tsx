@@ -1,46 +1,38 @@
 import { Field, FieldList } from "@keybr/widget";
+import { prop } from "./accessors.ts";
 import { Group } from "./Group.tsx";
-import { ColorInput, makeAccessor } from "./input/ColorInput.tsx";
+import { ColorInput } from "./input/ColorInput.tsx";
 import { KeyboardPreview } from "./KeyboardPreview.tsx";
 import { PreviewPane } from "./PreviewPane.tsx";
-
-const prop = {
-  ["pinky"]: makeAccessor("--pinky-zone-color"),
-  ["ring"]: makeAccessor("--ring-zone-color"),
-  ["middle"]: makeAccessor("--middle-zone-color"),
-  ["leftIndex"]: makeAccessor("--left-index-zone-color"),
-  ["rightIndex"]: makeAccessor("--right-index-zone-color"),
-  ["thumb"]: makeAccessor("--thumb-zone-color"),
-} as const;
 
 export function KeyboardDesign() {
   return (
     <Group title="Keyboard Zone Colors">
       <FieldList>
         <Field>
-          <ColorInput accessor={prop["pinky"]} />
+          <ColorInput accessor={prop["--pinky-zone-color"]} />
         </Field>
         <Field size={6}>Pinky</Field>
         <Field>
-          <ColorInput accessor={prop["ring"]} />
+          <ColorInput accessor={prop["--ring-zone-color"]} />
         </Field>
         <Field size={6}>Ring</Field>
         <Field>
-          <ColorInput accessor={prop["middle"]} />
+          <ColorInput accessor={prop["--middle-zone-color"]} />
         </Field>
         <Field size={6}>Middle</Field>
       </FieldList>
       <FieldList>
         <Field>
-          <ColorInput accessor={prop["leftIndex"]} />
+          <ColorInput accessor={prop["--left-index-zone-color"]} />
         </Field>
         <Field size={6}>Left index</Field>
         <Field>
-          <ColorInput accessor={prop["rightIndex"]} />
+          <ColorInput accessor={prop["--right-index-zone-color"]} />
         </Field>
         <Field size={6}>Right index</Field>
         <Field>
-          <ColorInput accessor={prop["thumb"]} />
+          <ColorInput accessor={prop["--thumb-zone-color"]} />
         </Field>
         <Field size={6}>Thumb</Field>
       </FieldList>

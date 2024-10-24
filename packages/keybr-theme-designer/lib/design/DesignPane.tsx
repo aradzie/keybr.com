@@ -11,6 +11,7 @@ import * as styles from "./DesignPane.module.less";
 import { KeyboardDesign } from "./KeyboardDesign.tsx";
 import { LessonKeysDesign } from "./LessonKeysDesign.tsx";
 import { SyntaxDesign } from "./SyntaxDesign.tsx";
+import { TextInputDesign } from "./TextInputDesign.tsx";
 import { WidgetsDesign } from "./WidgetsDesign.tsx";
 
 export function DesignPane() {
@@ -96,6 +97,7 @@ export function DesignPane() {
         </FieldList>
         <WidgetsDesign />
         <BackgroundImage />
+        <TextInputDesign />
         <LessonKeysDesign />
         <KeyboardDesign />
         <SyntaxDesign />

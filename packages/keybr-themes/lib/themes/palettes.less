@@ -13,6 +13,13 @@
 @zone-rightIndex: #d3869b;
 @zone-thumb: #d66354;
 
+.use-textinput-colors(@primary, @secondary, @error) {
+  --textinput__color: @secondary;
+  --textinput--special__color: mix(@primary, @secondary, 50);
+  --textinput--hit__color: mix(@primary, @secondary, 40);
+  --textinput--miss__color: @error;
+}
+
 .use-chart-colors(@primary, @mix) {
   --Chart-speed__color: mix(@primary, @chart-speed, @mix);
   --Chart-accuracy__color: mix(@primary, @chart-accuracy, @mix);

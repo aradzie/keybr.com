@@ -1,5 +1,5 @@
 import { useSettings } from "@keybr/settings";
-import { singleLine, toTextDisplaySettings } from "@keybr/textinput";
+import { toChars, toTextDisplaySettings } from "@keybr/textinput";
 import { StaticText } from "@keybr/textinput-ui";
 import { Box } from "@keybr/widget";
 
@@ -9,28 +9,32 @@ export function SyntaxPreview() {
     <Box alignItems="center" justifyContent="center">
       <StaticText
         settings={toTextDisplaySettings(settings)}
-        lines={singleLine([
-          { text: "/** Comment */", cls: "comment" },
-          " ",
-          { text: "void", cls: "keyword" },
-          " ",
-          "hello()",
-          " ",
-          "{",
-          " ",
-          { text: "return", cls: "keyword" },
-          " ",
-          "println",
-          "(",
-          { text: `"Hello world!"`, cls: "string" },
-          ",",
-          " ",
-          { text: `3.14159`, cls: "number" },
-          ")",
-          ";",
-          " ",
-          "}",
-        ])}
+        lines={{
+          text: "abc",
+          lines: [
+            {
+              text: "a",
+              chars: toChars([{ text: `/** Comment */`, cls: "comment" }]),
+            },
+            {
+              text: "b",
+              chars: toChars([
+                "println(",
+                { text: `"String"`, cls: "string" },
+                ");",
+              ]),
+            },
+            {
+              text: "c",
+              chars: toChars([
+                { text: `return`, cls: "keyword" },
+                " ",
+                { text: `3.14159`, cls: "number" },
+                ";",
+              ]),
+            },
+          ],
+        }}
         cursor={true}
         size="X0"
       />

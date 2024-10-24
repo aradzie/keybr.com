@@ -7,7 +7,6 @@ import {
   white,
 } from "./input/ColorInput.tsx";
 import { PreviewPane } from "./PreviewPane.tsx";
-import { TextInputPreview } from "./TextInputPreview.tsx";
 import { WidgetsPreview } from "./WidgetsPreview.tsx";
 
 const primary: Accessor = {
@@ -70,7 +69,6 @@ export function WidgetsDesign() {
       </FieldList>
       <PreviewPane>
         <WidgetsPreview />
-        <TextInputPreview />
       </PreviewPane>
     </Group>
   );

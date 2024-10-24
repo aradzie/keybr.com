@@ -55,10 +55,7 @@ export function isStyledTextSpan(v: unknown): v is StyledTextSpan {
   return v != null && typeof v === "object" && "text" in v;
 }
 
-export function toChar(
-  { codePoint, cls }: StyledTextItem,
-  attrs: number,
-): Char {
+export function toChar({ codePoint, cls }: StyledTextItem, attrs: Attr): Char {
   return { codePoint, attrs, cls };
 }
 
@@ -97,8 +94,8 @@ export function charArraysAreEqual(
   return true;
 }
 
-export function toChars(text: StyledText): readonly Char[] {
-  return splitStyledText(text).map((item) => toChar(item, Attr.Normal));
+export function toChars(text: StyledText, attr: Attr = Attr.Normal): Char[] {
+  return splitStyledText(text).map((item) => toChar(item, attr));
 }
 
 export function toLine(styledText: StyledText): Line {

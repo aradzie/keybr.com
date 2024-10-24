@@ -1,5 +1,10 @@
 import { useSettings } from "@keybr/settings";
-import { Attr, type LineList, toTextDisplaySettings } from "@keybr/textinput";
+import {
+  Attr,
+  type LineList,
+  toChars,
+  toTextDisplaySettings,
+} from "@keybr/textinput";
 import { StaticText } from "@keybr/textinput-ui";
 import { Box } from "@keybr/widget";
 
@@ -11,22 +16,20 @@ export function TextInputPreview() {
         settings={toTextDisplaySettings(settings)}
         lines={
           {
-            text: "abracadabra",
+            text: "abc",
             lines: [
               {
-                text: "abracadabra",
+                text: "abc",
                 chars: [
-                  { codePoint: /* a */ 0x0061, attrs: Attr.Hit },
-                  { codePoint: /* b */ 0x0062, attrs: Attr.Hit },
-                  { codePoint: /* r */ 0x0072, attrs: Attr.Hit },
-                  { codePoint: /* a */ 0x0061, attrs: Attr.Hit },
-                  { codePoint: /* c */ 0x0063, attrs: Attr.Miss },
-                  { codePoint: /* a */ 0x0061, attrs: Attr.Cursor },
-                  { codePoint: /* d */ 0x0072, attrs: Attr.Normal },
-                  { codePoint: /* a */ 0x0061, attrs: Attr.Normal },
-                  { codePoint: /* b */ 0x0062, attrs: Attr.Normal },
-                  { codePoint: /* r */ 0x0072, attrs: Attr.Normal },
-                  { codePoint: /* a */ 0x0061, attrs: Attr.Normal },
+                  ...toChars("one", Attr.Hit),
+                  ...toChars(" ", Attr.Hit),
+                  ...toChars("two", Attr.Miss),
+                  ...toChars(" ", Attr.Hit),
+                  ...toChars("three", Attr.Garbage),
+                  ...toChars(" ", Attr.Hit),
+                  ...toChars("f", Attr.Normal),
+                  ...toChars("o", Attr.Normal),
+                  ...toChars("ur", Attr.Normal),
                 ],
               },
             ],

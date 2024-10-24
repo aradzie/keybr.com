@@ -28,8 +28,9 @@ html[data-color="gray"] {
   --shadow-color: #00000044;
   --slow-key-color: #cf5f5f;
   --fast-key-color: #6fa882;
-  .use-chart-colors(@primary, 20);
+  .use-textinput-colors(@primary, @secondary, @error);
   .use-keyboard-colors(@primary, 20);
+  .use-chart-colors(@primary, 20);
   .use-effort-colors(@primary, #759ef0);
   .use-syntax-colors();
 }
