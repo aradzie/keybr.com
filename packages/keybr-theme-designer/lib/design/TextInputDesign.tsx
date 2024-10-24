@@ -12,11 +12,11 @@ export function TextInputDesign() {
         <Field>
           <ColorInput accessor={prop["--textinput__color"]} />
         </Field>
-        <Field size={6}>Normal Text</Field>
+        <Field size={6}>Text</Field>
         <Field>
           <ColorInput accessor={prop["--textinput--special__color"]} />
         </Field>
-        <Field size={6}>Special Text</Field>
+        <Field size={6}>Whitespace</Field>
       </FieldList>
       <FieldList>
         <Field>
