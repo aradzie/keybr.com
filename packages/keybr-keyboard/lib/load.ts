@@ -60,7 +60,9 @@ import { LAYOUT_HE_IL_ARKN } from "./layout/he_il_arkn.ts";
 import { LAYOUT_HU_HU } from "./layout/hu_hu.ts";
 import { LAYOUT_IT_IT } from "./layout/it_it.ts";
 import { LAYOUT_JA_JP_JIS } from "./layout/ja_jp_jis.ts";
+import { LAYOUT_NB_KVIKK } from "./layout/nb_kvikk.ts";
 import { LAYOUT_NB_NO } from "./layout/nb_no.ts";
+import { LAYOUT_NB_SKARP } from "./layout/nb_skarp.ts";
 import { LAYOUT_NL_BE } from "./layout/nl_be.ts";
 import { LAYOUT_NL_NL } from "./layout/nl_nl.ts";
 import { LAYOUT_PL_FWYR } from "./layout/pl_fwyr.ts";
@@ -129,7 +131,9 @@ const layoutDict = new Map<Layout, CharacterDict>([
   [Layout.HE_IL_ARKN, LAYOUT_HE_IL_ARKN],
   [Layout.HU_HU, LAYOUT_HU_HU],
   [Layout.IT_IT, LAYOUT_IT_IT],
+  [Layout.NB_KVIKK, LAYOUT_NB_KVIKK],
   [Layout.NB_NO, LAYOUT_NB_NO],
+  [Layout.NB_SKARP, LAYOUT_NB_SKARP],
   [Layout.NL_BE, LAYOUT_NL_BE],
   [Layout.NL_NL, LAYOUT_NL_NL],
   [Layout.PL_FWYR, LAYOUT_PL_FWYR],
@@ -138,11 +142,11 @@ const layoutDict = new Map<Layout, CharacterDict>([
   [Layout.PT_PT, LAYOUT_PT_PT],
   [Layout.RO_RO, LAYOUT_RO_RO],
   [Layout.RU_RU, LAYOUT_RU_RU],
-  [Layout.TH_TH, LAYOUT_TH_TH],
-  [Layout.TH_PAT, LAYOUT_TH_TH_PAT],
-  [Layout.TH_MAN, LAYOUT_TH_TH_MAN],
   [Layout.SL_SI, LAYOUT_SL_SI],
   [Layout.SV_SE, LAYOUT_SV_SE],
+  [Layout.TH_MAN, LAYOUT_TH_TH_MAN],
+  [Layout.TH_PAT, LAYOUT_TH_TH_PAT],
+  [Layout.TH_TH, LAYOUT_TH_TH],
   [Layout.TR_TR_F, LAYOUT_TR_TR_F],
   [Layout.TR_TR_Q, LAYOUT_TR_TR_Q],
   [Layout.UK_UA, LAYOUT_UK_UA],
