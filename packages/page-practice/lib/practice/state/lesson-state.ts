@@ -75,7 +75,7 @@ export class LessonState {
   onTextInput(event: TextInputEvent): Feedback {
     const feedback = this.textInput.onTextInput(event);
     this.lines = this.textInput.lines;
-    this.suffix = this.textInput.suffix;
+    this.suffix = this.textInput.remaining.map(({ codePoint }) => codePoint);
     if (this.textInput.completed) {
       this.#onResult(this.#makeResult(), this.textInput);
     }
@@ -85,7 +85,7 @@ export class LessonState {
   #reset(fragment: StyledText) {
     this.textInput = new TextInput(fragment, this.textInputSettings);
     this.lines = this.textInput.lines;
-    this.suffix = this.textInput.suffix;
+    this.suffix = this.textInput.remaining.map(({ codePoint }) => codePoint);
   }
 
   #makeResult(timeStamp = Date.now()) {
