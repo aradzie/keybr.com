@@ -13,8 +13,9 @@ import {
   memo,
   type ReactNode,
 } from "react";
-import { renderChars, splitIntoItems } from "./chars.tsx";
+import { renderChars } from "./chars.tsx";
 import { Cursor } from "./Cursor.tsx";
+import { textItemStyle } from "./styles.ts";
 import * as styles from "./TextLines.module.less";
 
 export type TextLineSize = "X0" | "X1" | "X2" | "X3";
@@ -24,7 +25,7 @@ export const TextLines = memo(function TextLines({
   lines,
   wrap = true,
   size = "X0",
-  lineTemplate,
+  lineTemplate: LineTemplate,
   cursor,
   focus,
 }: {
@@ -40,35 +41,20 @@ export const TextLines = memo(function TextLines({
     styles.line,
     wrap ? styles.line_wrap : styles.line_nowrap,
     focus ? styles.text_focus : styles.text_blur,
-    sizeStyleName(size),
+    size === "X0" && styles.size_X0,
+    size === "X1" && styles.size_X1,
+    size === "X2" && styles.size_X2,
+    size === "X3" && styles.size_X3,
   );
-  const children = useTextLines(
-    settings,
-    lines,
-    className,
-    settings.font.cssProperties,
-    lineTemplate,
-  );
-  return cursor ? <Cursor settings={settings}>{children}</Cursor> : children;
-});
-
-function useTextLines(
-  settings: TextDisplaySettings,
-  lines: LineList,
-  className: string,
-  style: CSSProperties,
-  LineTemplate?: ComponentType<any>,
-): ReactNode {
-  // TODO Use a memo to turn lines into nodes.
-  return lines.lines.map(({ text, chars, ...props }: Line): ReactNode => {
-    return LineTemplate != null ? (
+  const children = lines.lines.map(({ text, chars, ...props }: Line) =>
+    LineTemplate != null ? (
       <LineTemplate key={text} {...props}>
         <TextLine
           key={text}
           settings={settings}
           chars={chars}
           className={className}
-          style={style}
+          style={settings.font.cssProperties}
         />
       </LineTemplate>
     ) : (
@@ -77,11 +63,12 @@ function useTextLines(
         settings={settings}
         chars={chars}
         className={className}
-        style={style}
+        style={settings.font.cssProperties}
       />
-    );
-  });
-}
+    ),
+  );
+  return cursor ? <Cursor settings={settings}>{children}</Cursor> : children;
+});
 
 const TextLine = memo(
   function TextLine({
@@ -95,25 +82,49 @@ const TextLine = memo(
     readonly className: string;
     readonly style: CSSProperties;
   }): ReactNode {
+    const items: Char[][] = [];
+    let itemChars: Char[] = [];
+    let ws = false;
+    for (let i = 0; i < chars.length; i++) {
+      const char = chars[i];
+      switch (char.codePoint) {
+        case 0x0009:
+        case 0x000a:
+        case 0x0020:
+          ws = true;
+          break;
+        default:
+          if (ws) {
+            if (itemChars.length > 0) {
+              items.push(itemChars);
+              itemChars = [];
+            }
+            ws = false;
+          }
+          break;
+      }
+      itemChars.push(char);
+    }
+    if (itemChars.length > 0) {
+      items.push(itemChars);
+      itemChars = [];
+    }
     return (
       <div
         className={className}
         style={style}
         dir={settings.language.direction}
       >
-        {splitIntoItems(chars).map(({ chars }, index) => (
+        {items.map((chars, index) => (
           <TextItem key={index} settings={settings} chars={chars} />
         ))}
       </div>
     );
   },
-  (prevProps, nextProps) => {
-    return (
-      prevProps.settings === nextProps.settings &&
-      charArraysAreEqual(prevProps.chars, nextProps.chars) && // deep equality
-      prevProps.className === nextProps.className
-    );
-  },
+  (prevProps, nextProps) =>
+    prevProps.settings === nextProps.settings &&
+    charArraysAreEqual(prevProps.chars, nextProps.chars) && // deep equality
+    prevProps.className === nextProps.className,
 );
 
 const TextItem = memo(
@@ -124,32 +135,9 @@ const TextItem = memo(
     readonly settings: TextDisplaySettings;
     readonly chars: readonly Char[];
   }): ReactNode {
-    return (
-      <span className={styles.item}>
-        {renderChars({
-          settings,
-          chars,
-        })}
-      </span>
-    );
+    return <span style={textItemStyle}>{renderChars(settings, chars)}</span>;
   },
-  (prevProps, nextProps) => {
-    return (
-      prevProps.settings === nextProps.settings &&
-      charArraysAreEqual(prevProps.chars, nextProps.chars) // deep equality
-    );
-  },
+  (prevProps, nextProps) =>
+    prevProps.settings === nextProps.settings &&
+    charArraysAreEqual(prevProps.chars, nextProps.chars), // deep equality
 );
-
-function sizeStyleName(size: TextLineSize): string {
-  switch (size) {
-    case "X0":
-      return styles.size_X0;
-    case "X1":
-      return styles.size_X1;
-    case "X2":
-      return styles.size_X2;
-    case "X3":
-      return styles.size_X3;
-  }
-}

@@ -4,7 +4,7 @@ import test from "ava";
 import { IntlProvider } from "react-intl";
 import { TextArea } from "./TextArea.tsx";
 
-test.serial("empty", async (t) => {
+test.serial("render empty text", async (t) => {
   const r = render(
     <IntlProvider locale="en">
       <TextArea
@@ -21,12 +21,12 @@ test.serial("empty", async (t) => {
   r.unmount();
 });
 
-test.serial("render items", async (t) => {
+test.serial("render simple text", async (t) => {
   const r = render(
     <IntlProvider locale="en">
       <TextArea
         settings={textDisplaySettings}
-        lines={{ text: "abc xyz", lines: [toLine("abc"), toLine("xyz")] }}
+        lines={{ text: "abcxyz", lines: [toLine("abc"), toLine("xyz")] }}
       />
     </IntlProvider>,
   );
@@ -34,6 +34,47 @@ test.serial("render items", async (t) => {
   await act(async () => {});
 
   t.is(r.container.textContent, "abcxyz");
+
+  r.unmount();
+});
+
+test.serial("render styled text", async (t) => {
+  const r = render(
+    <IntlProvider locale="en">
+      <TextArea
+        settings={textDisplaySettings}
+        lines={{
+          text: "abcxyz",
+          lines: [
+            toLine({ text: "abc", cls: "keyword" }),
+            toLine({ text: "xyz", cls: "comment" }),
+          ],
+        }}
+      />
+    </IntlProvider>,
+  );
+
+  await act(async () => {});
+
+  t.is(r.container.textContent, "abcxyz");
+
+  r.unmount();
+});
+
+test.serial("render text with line template", async (t) => {
+  const r = render(
+    <IntlProvider locale="en">
+      <TextArea
+        settings={textDisplaySettings}
+        lines={{ text: "abcxyz", lines: [toLine("abc"), toLine("xyz")] }}
+        lineTemplate={({ children }) => <div>[{children}]</div>}
+      />
+    </IntlProvider>,
+  );
+
+  await act(async () => {});
+
+  t.is(r.container.textContent, "[abc][xyz]");
 
   r.unmount();
 });

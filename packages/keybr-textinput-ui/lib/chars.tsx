@@ -4,164 +4,78 @@ import {
   type TextDisplaySettings,
   WhitespaceStyle,
 } from "@keybr/textinput";
+import { type CodePoint } from "@keybr/unicode";
 import { type ReactNode } from "react";
 import * as styles from "./chars.module.less";
-import { getSyntaxStyle } from "./syntax.ts";
+import { getTextStyle } from "./styles.ts";
 
-type Item = {
-  readonly chars: readonly Char[];
-};
-
-export function splitIntoItems(chars: readonly Char[]): readonly Item[] {
-  const { length } = chars;
-  const items: Item[] = [];
-  let itemChars: Char[] = [];
-  for (let i = 0; i < length; i++) {
-    const char = chars[i];
-    itemChars.push(char);
-    switch (char.codePoint) {
-      case 0x0009:
-      case 0x000a:
-      case 0x0020:
-        if (itemChars.length > 0) {
-          items.push({ chars: itemChars });
-          itemChars = [];
-        }
-        break;
-      default:
-        break;
-    }
-  }
-  if (itemChars.length > 0) {
-    items.push({ chars: itemChars });
-    itemChars = [];
-  }
-  return items;
-}
-
-type Span = {
-  readonly chars: number[];
-  readonly attrs: number;
-  readonly cls: string | null;
-};
-
-const br: Span = { chars: [], attrs: -1, cls: null };
-
-export function renderChars({
-  settings,
-  chars,
-}: {
-  readonly settings: TextDisplaySettings;
-  readonly chars: readonly Char[];
-}): readonly ReactNode[] {
+export function renderChars(
+  settings: TextDisplaySettings,
+  chars: readonly Char[],
+): ReactNode[] {
   const nodes: ReactNode[] = [];
-
-  let span: Span = br;
-
-  const pushSpan = (nextSpan: Span): void => {
+  type Span = { chars: CodePoint[]; attrs: number; cls: string | null };
+  let span: Span = { chars: [], attrs: 0, cls: null };
+  const pushSpan = (nextSpan: Span) => {
     if (span.chars.length > 0) {
       nodes.push(
         <span
           key={nodes.length}
-          className={normalClassName(span.attrs)}
-          style={getSyntaxStyle(span)}
+          className={getClassName(span)}
+          style={getTextStyle(span, /* special= */ false)}
         >
           {String.fromCodePoint(...span.chars)}
         </span>,
       );
     }
-
     span = nextSpan;
   };
-
   for (let i = 0; i < chars.length; i++) {
-    const char = chars[i];
-    const { codePoint, attrs, cls = null } = char;
+    const { codePoint, attrs, cls = null } = chars[i];
     if (codePoint > 0x0020) {
       if (span.attrs !== attrs || span.cls !== cls) {
         pushSpan({ chars: [], attrs, cls });
       }
       span.chars.push(codePoint);
     } else {
-      switch (codePoint) {
-        case 0x0009: {
-          pushSpan(br);
-          nodes.push(
-            <span key={nodes.length} className={specialClassName(attrs)}>
-              {"\uE002"}
-            </span>,
-          );
-          break;
-        }
-        case 0x000a: {
-          pushSpan(br);
-          nodes.push(
-            <span key={nodes.length} className={specialClassName(attrs)}>
-              {"\uE003"}
-            </span>,
-          );
-          break;
-        }
-        case 0x0020: {
-          pushSpan(br);
-          nodes.push(
-            <span key={nodes.length} className={specialClassName(attrs)}>
-              {whitespaceChar(settings.whitespaceStyle)}
-            </span>,
-          );
-          break;
-        }
-        default: {
-          pushSpan(br);
-          nodes.push(
-            <span key={nodes.length} className={normalClassName(attrs)}>
-              {`U+${codePoint.toString(16).padStart(4, "0")}`}
-            </span>,
-          );
-          break;
-        }
-      }
+      pushSpan({ chars: [], attrs, cls });
+      nodes.push(
+        <span
+          key={nodes.length}
+          className={getClassName(span)}
+          style={getTextStyle(span, /* special= */ true)}
+        >
+          {specialChar(settings.whitespaceStyle, codePoint)}
+        </span>,
+      );
     }
   }
-
-  pushSpan(br);
-
+  pushSpan({ chars: [], attrs: 0, cls: null });
   return nodes;
 }
 
-function whitespaceChar(whitespaceStyle: WhitespaceStyle): string {
-  switch (whitespaceStyle) {
-    case WhitespaceStyle.Space:
-      return "\u00A0";
-    case WhitespaceStyle.Bar:
-      return "\uE001";
-    case WhitespaceStyle.Bullet:
-      return "\uE000";
+function specialChar(whitespaceStyle: WhitespaceStyle, codePoint: CodePoint) {
+  switch (codePoint) {
+    case 0x0009:
+      return "\uE002";
+    case 0x000a:
+      return "\uE003";
+    case 0x0020:
+      switch (whitespaceStyle) {
+        case WhitespaceStyle.Bar:
+          return "\uE001";
+        case WhitespaceStyle.Bullet:
+          return "\uE000";
+        default:
+          return "\u00A0";
+      }
+    default:
+      return `U+${codePoint.toString(16).padStart(4, "0")}`;
   }
 }
 
-const cnNormal = {
-  [Attr.Normal]: styles.normal,
-  [Attr.Hit]: styles.hit,
-  [Attr.Miss]: styles.miss,
-  [Attr.Garbage]: styles.garbage,
-  [Attr.Cursor]: styles.cursor,
-} as const;
-
-const cnSpecial = {
-  [Attr.Normal]: styles.special,
-  [Attr.Hit]: styles.hit,
-  [Attr.Miss]: styles.miss,
-  [Attr.Garbage]: styles.garbage,
-  [Attr.Cursor]: styles.cursor,
-} as const;
-
-function normalClassName(attrs: Attr): string {
-  return cnNormal[attrs] ?? "";
-}
-
-function specialClassName(attrs: Attr): string {
-  return cnSpecial[attrs] ?? "";
+function getClassName({ attrs }: { readonly attrs: Attr }) {
+  return attrs === Attr.Cursor ? styles.cursor : undefined;
 }
 
 const cursorSelector = `.${styles.cursor}`;
