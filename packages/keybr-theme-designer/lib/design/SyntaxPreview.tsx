@@ -1,5 +1,5 @@
 import { useSettings } from "@keybr/settings";
-import { toChars, toTextDisplaySettings } from "@keybr/textinput";
+import { splitStyledText, toTextDisplaySettings } from "@keybr/textinput";
 import { StaticText } from "@keybr/textinput-ui";
 import { Box } from "@keybr/widget";
 
@@ -14,11 +14,13 @@ export function SyntaxPreview() {
           lines: [
             {
               text: "a",
-              chars: toChars([{ text: `/** Comment */`, cls: "comment" }]),
+              chars: splitStyledText([
+                { text: `/** Comment */`, cls: "comment" },
+              ]),
             },
             {
               text: "b",
-              chars: toChars([
+              chars: splitStyledText([
                 "println(",
                 { text: `"String"`, cls: "string" },
                 ");",
@@ -26,7 +28,7 @@ export function SyntaxPreview() {
             },
             {
               text: "c",
-              chars: toChars([
+              chars: splitStyledText([
                 { text: `return`, cls: "keyword" },
                 " ",
                 { text: `3.14159`, cls: "number" },

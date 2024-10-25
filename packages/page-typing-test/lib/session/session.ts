@@ -1,4 +1,9 @@
-import { type Feedback, type Step, TextInput, toChars } from "@keybr/textinput";
+import {
+  type Feedback,
+  splitStyledText,
+  type Step,
+  TextInput,
+} from "@keybr/textinput";
 import { type TextInputEvent } from "@keybr/textinput-events";
 import { type TextGenerator } from "../generator/index.ts";
 import { computeProgress } from "./duration.ts";
@@ -67,7 +72,7 @@ export class Session {
   #appendLine(): void {
     const mark = this.generator.mark();
     const text = this.#generateLine();
-    const chars = toChars(text);
+    const chars = splitStyledText(text);
     const index = (this.#index += 1);
     this.#lines.push({
       mark,

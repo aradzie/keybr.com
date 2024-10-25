@@ -5,7 +5,6 @@ import {
   type Line,
   type LineList,
   type StyledText,
-  type StyledTextItem,
   type StyledTextSpan,
 } from "./types.ts";
 
@@ -25,8 +24,11 @@ export function flattenStyledText(text: StyledText): string {
   return list.join("");
 }
 
-export function splitStyledText(text: StyledText): StyledTextItem[] {
-  const list: Array<StyledTextItem> = [];
+export function splitStyledText(
+  text: StyledText,
+  attrs: Attr = Attr.Normal,
+): Char[] {
+  const list: Array<Char> = [];
   if (Array.isArray(text)) {
     for (const item of text) {
       list.push(...splitStyledText(item));
@@ -36,6 +38,7 @@ export function splitStyledText(text: StyledText): StyledTextItem[] {
       ...[...toCodePoints(text)].map((codePoint) => ({
         codePoint,
         cls: null,
+        attrs,
       })),
     );
   } else if (isStyledTextSpan(text)) {
@@ -43,6 +46,7 @@ export function splitStyledText(text: StyledText): StyledTextItem[] {
       ...[...toCodePoints(text.text)].map((codePoint) => ({
         codePoint,
         cls: text.cls,
+        attrs,
       })),
     );
   } else {
@@ -53,10 +57,6 @@ export function splitStyledText(text: StyledText): StyledTextItem[] {
 
 export function isStyledTextSpan(v: unknown): v is StyledTextSpan {
   return v != null && typeof v === "object" && "text" in v;
-}
-
-export function toChar({ codePoint, cls }: StyledTextItem, attrs: Attr): Char {
-  return { codePoint, attrs, cls };
 }
 
 export function charsAreEqual(a: Char, b: Char): boolean {
@@ -94,16 +94,14 @@ export function charArraysAreEqual(
   return true;
 }
 
-export function toChars(text: StyledText, attr: Attr = Attr.Normal): Char[] {
-  return splitStyledText(text).map((item) => toChar(item, attr));
-}
-
 export function toLine(styledText: StyledText): Line {
   const text = flattenStyledText(styledText);
-  return { text, chars: toChars(styledText) };
+  const chars = splitStyledText(styledText);
+  return { text, chars };
 }
 
 export function singleLine(styledText: StyledText): LineList {
   const text = flattenStyledText(styledText);
-  return { text, lines: [{ text, chars: toChars(styledText) }] };
+  const chars = splitStyledText(styledText);
+  return { text, lines: [{ text, chars }] };
 }

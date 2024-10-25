@@ -12,11 +12,6 @@ export type StyledText = string | StyledTextSpan | readonly StyledText[];
 
 export type StyledTextSpan = { readonly text: string; readonly cls: string };
 
-export type StyledTextItem = {
-  readonly codePoint: CodePoint;
-  readonly cls: string | null;
-};
-
 export type Step = {
   readonly codePoint: CodePoint;
   readonly timeStamp: number;

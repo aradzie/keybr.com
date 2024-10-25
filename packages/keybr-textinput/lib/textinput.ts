@@ -1,6 +1,6 @@
 import { filterText } from "@keybr/keyboard";
 import { type CodePoint } from "@keybr/unicode";
-import { flattenStyledText, splitStyledText, toChar } from "./chars.ts";
+import { flattenStyledText, splitStyledText } from "./chars.ts";
 import { type TextInputSettings } from "./settings.ts";
 import {
   Attr,
@@ -9,7 +9,6 @@ import {
   type LineList,
   type Step,
   type StyledText,
-  type StyledTextItem,
 } from "./types.ts";
 
 export type StepListener = (step: Step) => void;
@@ -19,7 +18,7 @@ const garbageBufferLength = 10;
 
 export class TextInput {
   readonly text: StyledText;
-  private readonly textItems: readonly StyledTextItem[];
+  private readonly textItems: readonly Char[];
   readonly stopOnError: boolean;
   readonly forgiveErrors: boolean;
   readonly spaceSkipsWords: boolean;
@@ -242,19 +241,19 @@ export class TextInput {
       if (i < this.#steps.length) {
         // Append characters before cursor.
         const step = this.#steps[i];
-        chars.push(toChar(item, step.typo ? Attr.Miss : Attr.Hit));
+        chars.push({ ...item, attrs: step.typo ? Attr.Miss : Attr.Hit });
       } else if (i === this.#steps.length) {
         if (!this.stopOnError) {
           // Append buffered garbage.
           for (const { codePoint } of this.#garbage) {
-            chars.push(toChar({ codePoint, cls: null }, Attr.Garbage));
+            chars.push({ codePoint, attrs: Attr.Garbage, cls: null });
           }
         }
         // Append character at cursor.
-        chars.push(toChar(item, Attr.Cursor));
+        chars.push({ ...item, attrs: Attr.Cursor });
       } else {
         // Append characters after cursor.
-        chars.push(toChar(item, Attr.Normal));
+        chars.push({ ...item, attrs: Attr.Normal });
       }
     }
     return chars;

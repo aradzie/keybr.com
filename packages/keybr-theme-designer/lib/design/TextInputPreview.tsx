@@ -2,7 +2,7 @@ import { useSettings } from "@keybr/settings";
 import {
   Attr,
   type LineList,
-  toChars,
+  splitStyledText,
   toTextDisplaySettings,
 } from "@keybr/textinput";
 import { StaticText } from "@keybr/textinput-ui";
@@ -21,17 +21,13 @@ export function TextInputPreview() {
               {
                 text: "abc",
                 chars: [
-                  ...toChars("one", Attr.Hit),
-                  ...toChars(" ", Attr.Hit),
-                  ...toChars("two", Attr.Miss),
-                  ...toChars(" ", Attr.Hit),
-                  ...toChars("three", Attr.Garbage),
-                  ...toChars(" ", Attr.Normal),
-                  ...toChars(" ", Attr.Normal),
-                  ...toChars(" ", Attr.Normal),
-                  ...toChars("f", Attr.Normal),
-                  ...toChars("o", Attr.Normal),
-                  ...toChars("ur", Attr.Normal),
+                  ...splitStyledText("one", Attr.Hit),
+                  ...splitStyledText(" ", Attr.Hit),
+                  ...splitStyledText("two", Attr.Miss),
+                  ...splitStyledText(" ", Attr.Hit),
+                  ...splitStyledText("three", Attr.Garbage),
+                  ...splitStyledText("   ", Attr.Normal),
+                  ...splitStyledText("four", Attr.Normal),
                 ],
               },
             ],
