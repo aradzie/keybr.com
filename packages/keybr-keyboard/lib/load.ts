@@ -18,6 +18,7 @@ import { LAYOUT_BE_BY } from "./layout/be_by.ts";
 import { LAYOUT_CS_CZ } from "./layout/cs_cz.ts";
 import { LAYOUT_DE_BONE } from "./layout/de_bone.ts";
 import { LAYOUT_DE_CH } from "./layout/de_ch.ts";
+import { LAYOUT_DE_CMOS } from "./layout/de_cmos.ts";
 import { LAYOUT_DE_DE } from "./layout/de_de.ts";
 import { LAYOUT_DE_MINE } from "./layout/de_mine.ts";
 import { LAYOUT_DE_NEO_2 } from "./layout/de_neo_2.ts";
@@ -89,6 +90,7 @@ const layoutDict = new Map<Layout, CharacterDict>([
   [Layout.CS_CZ, LAYOUT_CS_CZ],
   [Layout.DE_BONE, LAYOUT_DE_BONE],
   [Layout.DE_CH, LAYOUT_DE_CH],
+  [Layout.DE_CMOS, LAYOUT_DE_CMOS],
   [Layout.DE_DE, LAYOUT_DE_DE],
   [Layout.DE_MINE, LAYOUT_DE_MINE],
   [Layout.DE_NEO_2, LAYOUT_DE_NEO_2],

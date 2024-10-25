@@ -19,6 +19,7 @@ for (const [id, dict] of [
   ["cs_cz", importCldr("cldr-keyboards-43.0/keyboards/windows/cs-t-k0-windows.xml")],
   ["de_bone", importKeymap("layouts/de_bone.json")],
   ["de_ch", importCldr("cldr-keyboards-43.0/keyboards/windows/de-CH-t-k0-windows.xml")],
+  ["de_cmos", importKeymap("layouts/de_cmos.json")],
   ["de_de", importCldr("cldr-keyboards-43.0/keyboards/windows/de-t-k0-windows.xml")],
   ["de_mine", importKeymap("layouts/de_mine.json")],
   ["de_neo_2", importKeymap("layouts/de_neo_2.json")],

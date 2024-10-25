@@ -261,6 +261,21 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly DE_CMOS = new Layout(
+    /* id= */ "de-cmos",
+    /* xid= */ 0x26,
+    /* name= */ "CMOS",
+    /* family= */ "de-cmos",
+    /* language= */ Language.DE,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
   static readonly FR_FR = new Layout(
     /* id= */ "fr-fr",
     /* xid= */ 0x30,
@@ -1012,6 +1027,7 @@ export class Layout implements XEnumItem {
     Layout.DE_BONE,
     Layout.DE_MINE,
     Layout.DE_NOTED,
+    Layout.DE_CMOS,
     Layout.FR_FR,
     Layout.FR_CA,
     Layout.FR_CH,
