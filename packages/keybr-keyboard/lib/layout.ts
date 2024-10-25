@@ -4,6 +4,18 @@ import { Language } from "./language.ts";
 import { angleMod, angleWideMod, type Mod, nullMod } from "./mod.ts";
 
 export class Layout implements XEnumItem {
+  static custom(language: Language) {
+    return new Layout(
+      /* id= */ "custom",
+      /* xid= */ 0xff,
+      /* name= */ "Custom",
+      /* family= */ "custom",
+      /* language= */ language,
+      /* emulate= */ true,
+      /* geometries= */ Geometry.ALL,
+    );
+  }
+
   static readonly EN_US = new Layout(
     /* id= */ "en-us",
     /* xid= */ 0x10,

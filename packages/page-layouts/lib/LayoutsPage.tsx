@@ -9,6 +9,7 @@ import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
 import { Article, Field, FieldList, OptionList } from "@keybr/widget";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
+import { CustomLayoutDesignerToggler } from "./custom/CustomLayoutDesignerToggler.tsx";
 import { KeyFrequencyHeatmap } from "./KeyFrequencyHeatmap.tsx";
 
 export function LayoutsPage() {
@@ -19,6 +20,7 @@ export function LayoutsPage() {
   ).map((layout) => loadKeyboard(layout));
   return (
     <Article>
+      <CustomLayoutDesignerToggler />
       <FormattedMessage
         id="page.layouts.content"
         defaultMessage={

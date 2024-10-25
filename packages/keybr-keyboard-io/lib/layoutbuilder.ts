@@ -5,6 +5,7 @@ import {
   type KeyId,
   KeyModifier,
 } from "@keybr/keyboard";
+import { isDiacritic } from "@keybr/unicode";
 import { type CharacterList, type KeyMap } from "./json.ts";
 import { characterKeys } from "./keys.ts";
 
@@ -120,13 +121,18 @@ export class LayoutBuilder implements Iterable<KeyCharacters> {
 }
 
 function fix(character: Character | null): Character | null {
-  switch (character) {
-    case /* ZERO WIDTH NON-JOINER */ 0x200c:
-    case /* ZERO WIDTH JOINER */ 0x200d:
-    case /* LEFT-TO-RIGHT MARK */ 0x200e:
-    case /* RIGHT-TO-LEFT MARK */ 0x200f:
-    case /* COMBINING GRAPHEME JOINER */ 0x034f:
-      return { special: character };
+  if (KeyCharacters.isCodePoint(character)) {
+    if (isDiacritic(character)) {
+      return { dead: character };
+    }
+    switch (character) {
+      case /* ZERO WIDTH NON-JOINER */ 0x200c:
+      case /* ZERO WIDTH JOINER */ 0x200d:
+      case /* LEFT-TO-RIGHT MARK */ 0x200e:
+      case /* RIGHT-TO-LEFT MARK */ 0x200f:
+      case /* COMBINING GRAPHEME JOINER */ 0x034f:
+        return { special: character };
+    }
   }
   return character;
 }

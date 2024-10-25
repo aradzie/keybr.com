@@ -9,6 +9,7 @@ export const packageJsonKeys = [
   "module",
   "exports",
   "imports",
+  "browser",
   "sideEffects",
   "bin",
   ["dependencies", "alpha"],
