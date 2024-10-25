@@ -267,7 +267,7 @@ function updatePlayerStates(
   for (const [id, newPlayerState] of playerState.entries()) {
     const player = players.get(id);
     if (player != null) {
-      const newProgress = player.offset / worldState.textInput.textItems.length;
+      const newProgress = player.offset / worldState.textInput.length;
       if (
         player.spectator !== newPlayerState.spectator ||
         player.finished !== newPlayerState.finished ||

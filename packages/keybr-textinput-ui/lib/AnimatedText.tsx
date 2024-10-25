@@ -37,11 +37,10 @@ function useAnimatedTextState(text: string): readonly Char[] {
   }
   useEffect(() => {
     const id = setInterval(() => {
-      const { textItems, steps } = textInput;
-      if (textItems.length === steps.length) {
+      if (textInput.completed) {
         textInput.reset();
       } else {
-        textInput.appendChar(textItems[steps.length].codePoint, 0);
+        textInput.appendChar(textInput.at(textInput.pos).codePoint, 0);
       }
       const { chars } = textInput;
       setState({ textInput, chars });

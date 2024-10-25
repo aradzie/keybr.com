@@ -19,7 +19,7 @@ const garbageBufferLength = 10;
 
 export class TextInput {
   readonly text: StyledText;
-  readonly textItems: readonly StyledTextItem[];
+  private readonly textItems: readonly StyledTextItem[];
   readonly stopOnError: boolean;
   readonly forgiveErrors: boolean;
   readonly spaceSkipsWords: boolean;
@@ -51,8 +51,20 @@ export class TextInput {
     this.#update();
   }
 
+  get length(): number {
+    return this.textItems.length;
+  }
+
+  at(index: number) {
+    return this.textItems[index];
+  }
+
+  get pos(): number {
+    return this.#steps.length;
+  }
+
   get completed(): boolean {
-    return this.#steps.length === this.textItems.length;
+    return this.pos === this.length;
   }
 
   get steps(): readonly Step[] {

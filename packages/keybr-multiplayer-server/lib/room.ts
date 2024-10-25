@@ -412,15 +412,11 @@ export class Room {
 }
 
 function updatePlayer(player: Player, started: number): void {
-  const { steps } = player.textInput;
-  const { length } = steps;
-  player.offset = length;
-  if (length < 1) {
-    player.speed = 0;
-    player.errors = 0;
-  } else {
-    const time = steps[length - 1].timeStamp - started;
-    const speed = Math.round(computeSpeed(length, time));
+  const { pos, steps } = player.textInput;
+  player.offset = pos;
+  if (pos > 0) {
+    const time = steps[pos - 1].timeStamp - started;
+    const speed = Math.round(computeSpeed(pos, time));
     let errors = 0;
     for (const step of steps) {
       if (step.typo) {
@@ -429,5 +425,8 @@ function updatePlayer(player: Player, started: number): void {
     }
     player.speed = speed;
     player.errors = errors;
+  } else {
+    player.speed = 0;
+    player.errors = 0;
   }
 }
