@@ -152,7 +152,9 @@ export class TextInput {
       throw new Error();
     }
 
-    if (this.at(this.pos).codePoint !== 0x0020 && codePoint === 0x0020) {
+    const { codePoint: expected } = this.at(this.pos);
+
+    if (expected !== 0x0020 && codePoint === 0x0020) {
       if (
         this.spaceSkipsWords &&
         ((this.pos > 0 && this.at(this.pos - 1).codePoint !== 0x0020) ||
@@ -167,7 +169,8 @@ export class TextInput {
     }
 
     if (
-      filterText.normalize(this.at(this.pos).codePoint) === codePoint &&
+      (expected === codePoint ||
+        filterText.normalize(expected) === codePoint) &&
       (this.forgiveErrors || this.#garbage.length === 0)
     ) {
       const typo = this.#typo;

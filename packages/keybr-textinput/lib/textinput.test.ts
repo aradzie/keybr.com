@@ -1,3 +1,4 @@
+import { toCodePoints } from "@keybr/unicode";
 import test from "ava";
 import { TextInput } from "./textinput.ts";
 import { Attr, type Char, Feedback, type Step } from "./types.ts";
@@ -638,20 +639,30 @@ test("space skips words in the middle of a word, remove garbage", (t) => {
 });
 
 test("normalize characters", (t) => {
-  const textInput = new TextInput("«a»", {
-    stopOnError: true,
-    forgiveErrors: false,
-    spaceSkipsWords: false,
-  });
+  const check = (text: string, input: string) => {
+    const textInput = new TextInput(text, {
+      stopOnError: true,
+      forgiveErrors: false,
+      spaceSkipsWords: false,
+    });
+    t.is(textInput.text, text);
+    let timeStamp = 0;
+    for (const codePoint of toCodePoints(input)) {
+      t.is(
+        textInput.appendChar(codePoint, (timeStamp += 100)),
+        Feedback.Succeeded,
+      );
+    }
+  };
 
-  t.is(textInput.appendChar(/* " */ 0x0022, 100), Feedback.Succeeded);
-  t.is(textInput.appendChar(A, 200), Feedback.Succeeded);
-  t.is(textInput.appendChar(/* " */ 0x0022, 300), Feedback.Succeeded);
-  t.is(stepsString(textInput.steps), '",100|a,200|",300');
-  t.is(charsString(textInput.chars), "«|a|»");
-  t.is(textInput.length, 3);
-  t.is(textInput.pos, 3);
-  t.true(textInput.completed);
+  check(`‘’`, `''`);
+  check(`‘’`, `‘’`);
+  check(`“”`, `""`);
+  check(`“”`, `“”`);
+  check(`«»`, `""`);
+  check(`«»`, `«»`);
+  check(`¿?¡!`, `??!!`);
+  check(`¿?¡!`, `¿?¡!`);
 });
 
 test("whitespace", (t) => {
