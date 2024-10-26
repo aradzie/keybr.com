@@ -149,38 +149,23 @@ export class TextInput {
 
   #appendChar(codePoint: CodePoint, timeStamp: number): Feedback {
     if (this.completed) {
-      // Cannot enter any more characters if already completed.
       throw new Error();
     }
 
-    // Handle whitespace at the beginning of text.
-    if (
-      this.pos === 0 &&
-      this.#garbage.length === 0 &&
-      !this.#typo &&
-      codePoint === 0x0020
-    ) {
-      return Feedback.Succeeded;
-    }
-
-    // Handle the space key.
     if (this.at(this.pos).codePoint !== 0x0020 && codePoint === 0x0020) {
       if (
-        this.#garbage.length === 0 &&
-        (this.pos === 0 || this.at(this.pos - 1).codePoint === 0x0020)
+        this.spaceSkipsWords &&
+        ((this.pos > 0 && this.at(this.pos - 1).codePoint !== 0x0020) ||
+          this.#typo)
       ) {
-        // At the beginning of a word.
-        this.#typo = true;
-        return Feedback.Failed;
-      }
-      if (this.spaceSkipsWords) {
-        // Inside a word.
         this.#skipWord(timeStamp);
         return Feedback.Recovered;
       }
+      if (this.#garbage.length === 0 && !this.#typo) {
+        return Feedback.Succeeded;
+      }
     }
 
-    // Handle correct input.
     if (
       filterText.normalize(this.at(this.pos).codePoint) === codePoint &&
       (this.forgiveErrors || this.#garbage.length === 0)
@@ -196,7 +181,6 @@ export class TextInput {
       }
     }
 
-    // Handle incorrect input.
     this.#typo = true;
     if (!this.stopOnError || this.forgiveErrors) {
       if (this.#garbage.length < garbageBufferLength) {

@@ -26,6 +26,10 @@ test("allow empty text", (t) => {
   t.throws(() => {
     textInput.appendChar(A, 100);
   });
+
+  t.throws(() => {
+    textInput.appendChar(Space, 100);
+  });
 });
 
 test("advance to completion", (t) => {
@@ -177,35 +181,25 @@ test("accumulate and delete garbage", (t) => {
   t.false(textInput.completed);
 });
 
-test("emoji", (t) => {
-  const textInput = new TextInput("🍬🍭", {
-    stopOnError: true,
-    forgiveErrors: true,
+test("limit garbage length", (t) => {
+  const textInput = new TextInput("abc", {
+    stopOnError: false,
+    forgiveErrors: false,
     spaceSkipsWords: true,
   });
 
+  for (let i = 1; i <= 100; i++) {
+    t.is(textInput.appendChar(X, i * 100), Feedback.Failed);
+  }
+
   t.is(stepsString(textInput.steps), "");
-  t.is(charsString(textInput.chars), "[🍬]|🍭");
-  t.is(textInput.length, 2);
+  t.is(charsString(textInput.chars), "*x|*x|*x|*x|*x|*x|*x|*x|*x|*x|[a]|b|c");
+  t.is(textInput.length, 3);
   t.is(textInput.pos, 0);
   t.false(textInput.completed);
-
-  t.is(textInput.appendChar(0x1f36c, 100), Feedback.Succeeded);
-  t.is(stepsString(textInput.steps), "🍬,100");
-  t.is(charsString(textInput.chars), "🍬|[🍭]");
-  t.is(textInput.length, 2);
-  t.is(textInput.pos, 1);
-  t.false(textInput.completed);
-
-  t.is(textInput.appendChar(0x1f36d, 200), Feedback.Succeeded);
-  t.is(stepsString(textInput.steps), "🍬,100|🍭,200");
-  t.is(charsString(textInput.chars), "🍬|🍭");
-  t.is(textInput.length, 2);
-  t.is(textInput.pos, 2);
-  t.true(textInput.completed);
 });
 
-test("handle backspace at the start of text", (t) => {
+test("handle backspace at the start of a word", (t) => {
   const textInput = new TextInput("abc", {
     stopOnError: false,
     forgiveErrors: false,
@@ -249,7 +243,7 @@ test("handle backspace at the start of text", (t) => {
   t.false(textInput.completed);
 });
 
-test("handle backspace in the middle of text", (t) => {
+test("handle backspace in the middle of a word", (t) => {
   const textInput = new TextInput("abc", {
     stopOnError: false,
     forgiveErrors: false,
@@ -299,24 +293,6 @@ test("handle backspace in the middle of text", (t) => {
   t.is(charsString(textInput.chars), "a|!b|[c]");
   t.is(textInput.length, 3);
   t.is(textInput.pos, 2);
-  t.false(textInput.completed);
-});
-
-test("limit garbage length", (t) => {
-  const textInput = new TextInput("abc", {
-    stopOnError: false,
-    forgiveErrors: false,
-    spaceSkipsWords: true,
-  });
-
-  for (let i = 1; i <= 100; i++) {
-    t.is(textInput.appendChar(X, i * 100), Feedback.Failed);
-  }
-
-  t.is(stepsString(textInput.steps), "");
-  t.is(charsString(textInput.chars), "*x|*x|*x|*x|*x|*x|*x|*x|*x|*x|[a]|b|c");
-  t.is(textInput.length, 3);
-  t.is(textInput.pos, 0);
   t.false(textInput.completed);
 });
 
@@ -465,16 +441,39 @@ test("recover from a forgiven error", (t) => {
   t.true(textInput.completed);
 });
 
-test("ignore whitespace keys at the start of text", (t) => {
+test("ignore the whitespace key", (t) => {
   const textInput = new TextInput("text", {
     stopOnError: true,
-    forgiveErrors: false,
-    spaceSkipsWords: true,
+    forgiveErrors: true,
+    spaceSkipsWords: false,
   });
 
   t.is(textInput.appendChar(Space, 100), Feedback.Succeeded);
   t.is(stepsString(textInput.steps), "");
   t.is(charsString(textInput.chars), "[t]|e|x|t");
+  t.is(textInput.length, 4);
+  t.is(textInput.pos, 0);
+  t.false(textInput.completed);
+
+  t.is(textInput.appendChar(T, 200), Feedback.Succeeded);
+  t.is(stepsString(textInput.steps), "t,200");
+  t.is(charsString(textInput.chars), "t|[e]|x|t");
+  t.is(textInput.length, 4);
+  t.is(textInput.pos, 1);
+  t.false(textInput.completed);
+
+  t.is(textInput.appendChar(Space, 300), Feedback.Succeeded);
+  t.is(stepsString(textInput.steps), "t,200");
+  t.is(charsString(textInput.chars), "t|[e]|x|t");
+  t.is(textInput.length, 4);
+  t.is(textInput.pos, 1);
+  t.false(textInput.completed);
+
+  t.is(textInput.appendChar(E, 400), Feedback.Succeeded);
+  t.is(stepsString(textInput.steps), "t,200|e,400");
+  t.is(charsString(textInput.chars), "t|e|[x]|t");
+  t.is(textInput.length, 4);
+  t.is(textInput.pos, 2);
   t.false(textInput.completed);
 });
 
@@ -485,26 +484,33 @@ test("space in garbage", (t) => {
     spaceSkipsWords: false,
   });
 
-  t.is(textInput.appendChar(A, 100), Feedback.Succeeded);
+  t.is(textInput.appendChar(X, 100), Feedback.Failed);
   t.is(textInput.appendChar(Space, 200), Feedback.Failed);
-  t.is(stepsString(textInput.steps), "a,100");
-  t.is(charsString(textInput.chars), "a|* |[b]|c");
+  t.is(stepsString(textInput.steps), "");
+  t.is(charsString(textInput.chars), "*x|* |[a]|b|c");
   t.is(textInput.length, 3);
-  t.is(textInput.pos, 1);
+  t.is(textInput.pos, 0);
   t.false(textInput.completed);
 
   t.is(textInput.clearChar(), Feedback.Succeeded);
-  t.is(stepsString(textInput.steps), "a,100");
-  t.is(charsString(textInput.chars), "a|[b]|c");
+  t.is(stepsString(textInput.steps), "");
+  t.is(charsString(textInput.chars), "*x|[a]|b|c");
   t.is(textInput.length, 3);
-  t.is(textInput.pos, 1);
+  t.is(textInput.pos, 0);
   t.false(textInput.completed);
 
-  t.is(textInput.appendChar(B, 400), Feedback.Recovered);
-  t.is(stepsString(textInput.steps), "a,100|!b,400");
-  t.is(charsString(textInput.chars), "a|!b|[c]");
+  t.is(textInput.clearChar(), Feedback.Succeeded);
+  t.is(stepsString(textInput.steps), "");
+  t.is(charsString(textInput.chars), "[a]|b|c");
   t.is(textInput.length, 3);
-  t.is(textInput.pos, 2);
+  t.is(textInput.pos, 0);
+  t.false(textInput.completed);
+
+  t.is(textInput.appendChar(A, 500), Feedback.Recovered);
+  t.is(stepsString(textInput.steps), "!a,500");
+  t.is(charsString(textInput.chars), "!a|[b]|c");
+  t.is(textInput.length, 3);
+  t.is(textInput.pos, 1);
   t.false(textInput.completed);
 });
 
@@ -534,7 +540,7 @@ test("space skips words at the beginning of a word, ignore space", (t) => {
   t.is(charsString(textInput.chars), "x| |[a]|b|c");
   t.false(textInput.completed);
 
-  t.is(textInput.appendChar(Space, 300), Feedback.Failed);
+  t.is(textInput.appendChar(Space, 300), Feedback.Succeeded);
   t.is(stepsString(textInput.steps), "x,100| ,200");
   t.is(charsString(textInput.chars), "x| |[a]|b|c");
   t.false(textInput.completed);
@@ -648,7 +654,7 @@ test("normalize characters", (t) => {
   t.true(textInput.completed);
 });
 
-test("handle whitespace", (t) => {
+test("whitespace", (t) => {
   const textInput = new TextInput("a  ", {
     stopOnError: true,
     forgiveErrors: false,
@@ -660,6 +666,34 @@ test("handle whitespace", (t) => {
   t.is(textInput.appendChar(Space, 300), Feedback.Succeeded);
   t.is(textInput.length, 3);
   t.is(textInput.pos, 3);
+  t.true(textInput.completed);
+});
+
+test("emoji", (t) => {
+  const textInput = new TextInput("🍬🍭", {
+    stopOnError: true,
+    forgiveErrors: true,
+    spaceSkipsWords: true,
+  });
+
+  t.is(stepsString(textInput.steps), "");
+  t.is(charsString(textInput.chars), "[🍬]|🍭");
+  t.is(textInput.length, 2);
+  t.is(textInput.pos, 0);
+  t.false(textInput.completed);
+
+  t.is(textInput.appendChar(0x1f36c, 100), Feedback.Succeeded);
+  t.is(stepsString(textInput.steps), "🍬,100");
+  t.is(charsString(textInput.chars), "🍬|[🍭]");
+  t.is(textInput.length, 2);
+  t.is(textInput.pos, 1);
+  t.false(textInput.completed);
+
+  t.is(textInput.appendChar(0x1f36d, 200), Feedback.Succeeded);
+  t.is(stepsString(textInput.steps), "🍬,100|🍭,200");
+  t.is(charsString(textInput.chars), "🍬|🍭");
+  t.is(textInput.length, 2);
+  t.is(textInput.pos, 2);
   t.true(textInput.completed);
 });
 
