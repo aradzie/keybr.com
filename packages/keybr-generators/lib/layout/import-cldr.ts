@@ -36,11 +36,11 @@ function parseCldr(root: Element): CharacterDict {
     keep: boolean,
   ): Character | null => {
     switch (codePoint) {
-      case /* Zero Width Non-Joiner */ 0x200c:
-      case /* Zero Width Joiner */ 0x200d:
-      case /* Left-To-Right Mark */ 0x200e:
-      case /* Right-To-Left Mark */ 0x200f:
-      case /* Combining Grapheme Joiner */ 0x034f:
+      case /* ZERO WIDTH NON-JOINER */ 0x200c:
+      case /* ZERO WIDTH JOINER */ 0x200d:
+      case /* LEFT-TO-RIGHT MARK */ 0x200e:
+      case /* RIGHT-TO-LEFT MARK */ 0x200f:
+      case /* COMBINING GRAPHEME JOINER */ 0x034f:
         return { special: codePoint };
     }
     if (!keep && combiners.has(codePoint)) {

@@ -9,13 +9,13 @@ test("render empty chars", (t) => {
 test("render simple chars", (t) => {
   t.deepEqual(
     renderChars(textDisplaySettings, [
-      { codePoint: /* a */ 0x0061, attrs: Attr.Hit },
-      { codePoint: /* b */ 0x0062, attrs: Attr.Miss },
-      { codePoint: /* c */ 0x0063, attrs: Attr.Hit },
-      { codePoint: /* _ */ 0x0020, attrs: Attr.Hit },
-      { codePoint: /* x */ 0x0078, attrs: Attr.Cursor },
-      { codePoint: /* y */ 0x0079, attrs: Attr.Normal },
-      { codePoint: /* z */ 0x007a, attrs: Attr.Normal },
+      { codePoint: /* "a" */ 0x0061, attrs: Attr.Hit },
+      { codePoint: /* "b" */ 0x0062, attrs: Attr.Miss },
+      { codePoint: /* "c" */ 0x0063, attrs: Attr.Hit },
+      { codePoint: /* " " */ 0x0020, attrs: Attr.Hit },
+      { codePoint: /* "x" */ 0x0078, attrs: Attr.Cursor },
+      { codePoint: /* "y" */ 0x0079, attrs: Attr.Normal },
+      { codePoint: /* "z" */ 0x007a, attrs: Attr.Normal },
     ]),
     [
       <span
@@ -67,13 +67,13 @@ test("render simple chars", (t) => {
 test("render styled chars", (t) => {
   t.deepEqual(
     renderChars(textDisplaySettings, [
-      { codePoint: /* a */ 0x0061, attrs: Attr.Hit, cls: "keyword" },
-      { codePoint: /* b */ 0x0062, attrs: Attr.Miss, cls: "keyword" },
-      { codePoint: /* c */ 0x0063, attrs: Attr.Hit, cls: "keyword" },
-      { codePoint: /* _ */ 0x0020, attrs: Attr.Hit, cls: "keyword" },
-      { codePoint: /* x */ 0x0078, attrs: Attr.Cursor, cls: "keyword" },
-      { codePoint: /* y */ 0x0079, attrs: Attr.Normal, cls: "keyword" },
-      { codePoint: /* z */ 0x007a, attrs: Attr.Normal, cls: "keyword" },
+      { codePoint: /* "a" */ 0x0061, attrs: Attr.Hit, cls: "keyword" },
+      { codePoint: /* "b" */ 0x0062, attrs: Attr.Miss, cls: "keyword" },
+      { codePoint: /* "c" */ 0x0063, attrs: Attr.Hit, cls: "keyword" },
+      { codePoint: /* " " */ 0x0020, attrs: Attr.Hit, cls: "keyword" },
+      { codePoint: /* "x" */ 0x0078, attrs: Attr.Cursor, cls: "keyword" },
+      { codePoint: /* "y" */ 0x0079, attrs: Attr.Normal, cls: "keyword" },
+      { codePoint: /* "z" */ 0x007a, attrs: Attr.Normal, cls: "keyword" },
     ]),
     [
       <span

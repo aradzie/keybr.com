@@ -14,7 +14,7 @@ export function ChartPreview() {
         <KeyDetailsChart
           lessonKey={
             new LessonKey({
-              letter: new Letter(/* a */ 0x0061, 1, "A"),
+              letter: new Letter(/* "a" */ 0x0061, 1, "A"),
               samples: [],
               timeToType: 380,
               bestTimeToType: 380,

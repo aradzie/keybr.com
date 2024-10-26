@@ -13,10 +13,10 @@ test.serial("render chars", (t) => {
           {
             text: "abcd",
             chars: [
-              { codePoint: /* a */ 0x0061, attrs: Attr.Miss },
-              { codePoint: /* b */ 0x0062, attrs: Attr.Hit },
-              { codePoint: /* c */ 0x0063, attrs: Attr.Cursor },
-              { codePoint: /* d */ 0x0064, attrs: Attr.Normal },
+              { codePoint: /* "a" */ 0x0061, attrs: Attr.Miss },
+              { codePoint: /* "b" */ 0x0062, attrs: Attr.Hit },
+              { codePoint: /* "c" */ 0x0063, attrs: Attr.Cursor },
+              { codePoint: /* "d" */ 0x0064, attrs: Attr.Normal },
             ],
           },
         ],
@@ -41,10 +41,10 @@ test.serial("render chars with line template", (t) => {
           {
             text: "abcd",
             chars: [
-              { codePoint: /* a */ 0x0061, attrs: Attr.Miss },
-              { codePoint: /* b */ 0x0062, attrs: Attr.Hit },
-              { codePoint: /* c */ 0x0063, attrs: Attr.Cursor },
-              { codePoint: /* d */ 0x0064, attrs: Attr.Normal },
+              { codePoint: /* "a" */ 0x0061, attrs: Attr.Miss },
+              { codePoint: /* "b" */ 0x0062, attrs: Attr.Hit },
+              { codePoint: /* "c" */ 0x0063, attrs: Attr.Cursor },
+              { codePoint: /* "d" */ 0x0064, attrs: Attr.Normal },
             ],
           },
         ],

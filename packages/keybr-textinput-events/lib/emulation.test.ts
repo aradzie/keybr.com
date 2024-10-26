@@ -77,7 +77,7 @@ test("translate a normal input", (t) => {
   listener.onTextInput({
     timeStamp: 2,
     inputType: "appendChar",
-    codePoint: /* S */ 0x0053,
+    codePoint: /* "S" */ 0x0053,
   });
   listener.onKeyUp(
     makeKeyEvent({
@@ -370,7 +370,7 @@ test("fix key locations", (t) => {
   listener.onTextInput({
     timeStamp: 2,
     inputType: "appendChar",
-    codePoint: /* O */ 0x004f,
+    codePoint: /* "O" */ 0x004f,
   });
   listener.onKeyUp(
     makeKeyEvent({

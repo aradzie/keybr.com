@@ -231,7 +231,7 @@ export class Language implements EnumItem {
   };
 
   letterName = (codePoint: CodePoint): string => {
-    if (codePoint === /* ß */ 0x00df) {
+    if (codePoint === /* "ß" */ 0x00df) {
       // German uppercase letter Eszett.
       return "ẞ";
     }
@@ -248,7 +248,7 @@ export class Language implements EnumItem {
       // Here we break letters apart by prepending them with
       // the Zero Width Non-Joiner character.
       return String.fromCodePoint(
-        /* Zero Width Non-Joiner */ 0x200c,
+        /* ZERO WIDTH NON-JOINER */ 0x200c,
         codePoint,
       );
     }
@@ -260,7 +260,7 @@ export class Language implements EnumItem {
         (codePoint >= 0x0e47 && codePoint <= 0x0e4e)
       ) {
         // Thai combining marks.
-        return String.fromCodePoint(/* ◌ */ 0x25cc, codePoint);
+        return String.fromCodePoint(/* DOTTED CIRCLE */ 0x25cc, codePoint);
       }
     }
     // Locale-specific uppercase variant of a letter.
@@ -289,13 +289,13 @@ export class Language implements EnumItem {
         // A few Unicode blocks of the Latin script to include only
         // a reasonable list of letter codepoints.
         return (
-          (codePoint >= /* A */ 0x0041 && codePoint <= /* Z */ 0x005a) ||
-          (codePoint >= /* a */ 0x0061 && codePoint <= /* z */ 0x007a) ||
-          (codePoint >= /* À */ 0x00c0 && codePoint <= /* Ö */ 0x00d6) ||
-          (codePoint >= /* Ø */ 0x00d8 && codePoint <= /* ö */ 0x00f6) ||
-          (codePoint >= /* ø */ 0x00f8 && codePoint <= /* ÿ */ 0x00ff) ||
-          (codePoint >= /* Ā */ 0x0100 && codePoint <= /* ſ */ 0x017f) ||
-          (codePoint >= /* ƀ */ 0x0180 && codePoint <= /* ɏ */ 0x024f)
+          (codePoint >= /* "A" */ 0x0041 && codePoint <= /* "Z" */ 0x005a) ||
+          (codePoint >= /* "a" */ 0x0061 && codePoint <= /* "z" */ 0x007a) ||
+          (codePoint >= /* "À" */ 0x00c0 && codePoint <= /* "Ö" */ 0x00d6) ||
+          (codePoint >= /* "Ø" */ 0x00d8 && codePoint <= /* "ö" */ 0x00f6) ||
+          (codePoint >= /* "ø" */ 0x00f8 && codePoint <= /* "ÿ" */ 0x00ff) ||
+          (codePoint >= /* "Ā" */ 0x0100 && codePoint <= /* "ſ" */ 0x017f) ||
+          (codePoint >= /* "ƀ" */ 0x0180 && codePoint <= /* "ɏ" */ 0x024f)
         );
       case "thai":
         return codePoint >= 0x0e00 && codePoint <= 0x0e7f;

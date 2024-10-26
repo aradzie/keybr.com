@@ -153,7 +153,7 @@ export function makeKeyComponent(
     return makeLabel(
       {
         text: isDiacritic(dead)
-          ? String.fromCodePoint(/* ◌ */ 0x25cc, dead)
+          ? String.fromCodePoint(/* DOTTED CIRCLE */ 0x25cc, dead)
           : String.fromCodePoint(dead),
         pos: [x, y],
         align: ["m", "m"],

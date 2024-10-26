@@ -35,10 +35,10 @@ test.serial("letter labels", (t) => {
       h: 1,
     },
     [
-      /* Latin Small Letter Dotless I */ 0x0131, //
-      /* Latin Capital Letter I */ 0x0049,
-      /* Latin Small Letter I */ 0x0069,
-      /* Latin Capital Letter I with Dot Above */ 0x0130,
+      /* LATIN SMALL LETTER DOTLESS I */ 0x0131, //
+      /* LATIN CAPITAL LETTER I */ 0x0049,
+      /* LATIN SMALL LETTER I */ 0x0069,
+      /* LATIN CAPITAL LETTER I WITH DOT ABOVE */ 0x0130,
     ],
   );
 
@@ -113,7 +113,7 @@ test.serial("mixed labels", (t) => {
       h: 1,
     },
     [
-      /* a */ 0x0061,
+      /* "a" */ 0x0061,
       { dead: /* COMBINING GRAVE ACCENT */ 0x0300 },
       { special: /* ZERO WIDTH JOINER */ 0x200d },
       { ligature: "XX" },

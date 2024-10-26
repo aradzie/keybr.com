@@ -69,7 +69,7 @@ for (const [codePoint, baseList, combinedList] of [
     "ÅŮåůẘẙ",
   ],
   [
-    /* COMBINING DOUBLE ACUTE */ 0x030b, //
+    /* COMBINING DOUBLE ACUTE ACCENT */ 0x030b, //
     "OUou",
     "ŐŰőű",
   ],

@@ -24,9 +24,9 @@ test.serial("equal counts", (t) => {
     <KeyboardContext.Provider value={keyboard}>
       <HeatmapLayer
         histogram={[
-          [/* a */ 0x0061, 1],
-          [/* b */ 0x0062, 1],
-          [/* c */ 0x0063, 1],
+          [/* "a" */ 0x0061, 1],
+          [/* "b" */ 0x0062, 1],
+          [/* "c" */ 0x0063, 1],
         ]}
         modifier="f"
       />
@@ -45,9 +45,9 @@ test.serial("different counts", (t) => {
     <KeyboardContext.Provider value={keyboard}>
       <HeatmapLayer
         histogram={[
-          [/* a */ 0x0061, 1],
-          [/* b */ 0x0062, 2],
-          [/* c */ 0x0063, 3],
+          [/* "a" */ 0x0061, 1],
+          [/* "b" */ 0x0062, 2],
+          [/* "c" */ 0x0063, 3],
         ]}
         modifier="f"
       />
@@ -66,9 +66,9 @@ test.serial("combine counts for the same key", (t) => {
     <KeyboardContext.Provider value={keyboard}>
       <HeatmapLayer
         histogram={[
-          [/* a */ 0x0061, 1],
-          [/* A */ 0x0041, 1],
-          [/* b */ 0x0062, 1],
+          [/* "a" */ 0x0061, 1],
+          [/* "A" */ 0x0041, 1],
+          [/* "b" */ 0x0062, 1],
         ]}
         modifier="f"
       />

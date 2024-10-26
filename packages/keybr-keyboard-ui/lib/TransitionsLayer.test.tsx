@@ -24,8 +24,8 @@ test.serial("equal counts", (t) => {
     <KeyboardContext.Provider value={keyboard}>
       <TransitionsLayer
         histogram={[
-          [/* a */ 0x0061, /* b */ 0x0062, 1],
-          [/* b */ 0x0062, /* c */ 0x0063, 1],
+          [/* "a" */ 0x0061, /* "b" */ 0x0062, 1],
+          [/* "b" */ 0x0062, /* "c" */ 0x0063, 1],
         ]}
         modifier="f"
       />
@@ -44,8 +44,8 @@ test.serial("different counts", (t) => {
     <KeyboardContext.Provider value={keyboard}>
       <TransitionsLayer
         histogram={[
-          [/* a */ 0x0061, /* b */ 0x0062, 1],
-          [/* b */ 0x0062, /* c */ 0x0063, 2],
+          [/* "a" */ 0x0061, /* "b" */ 0x0062, 1],
+          [/* "b" */ 0x0062, /* "c" */ 0x0063, 2],
         ]}
         modifier="f"
       />
@@ -63,7 +63,7 @@ test.serial("self arrow", (t) => {
   const r = render(
     <KeyboardContext.Provider value={keyboard}>
       <TransitionsLayer
-        histogram={[[/* a */ 0x0061, /* a */ 0x0061, 1]]}
+        histogram={[[/* "a" */ 0x0061, /* "a" */ 0x0061, 1]]}
         modifier="f"
       />
     </KeyboardContext.Provider>,

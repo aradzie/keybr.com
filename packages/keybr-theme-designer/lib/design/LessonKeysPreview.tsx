@@ -14,7 +14,7 @@ export function LessonKeysPreview() {
           key={index}
           lessonKey={
             new LessonKey({
-              letter: new Letter(/* a */ 0x0061 + index, 1),
+              letter: new Letter(/* "a" */ 0x0061 + index, 1),
               samples: [],
               timeToType: 380,
               bestTimeToType: 380,
