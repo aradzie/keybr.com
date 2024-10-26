@@ -3,33 +3,33 @@ import { type CodePoint } from "./types.ts";
 export const isControl = (codePoint: CodePoint): boolean => codePoint < 0x0020;
 
 export const isLinebreak = (codePoint: CodePoint): boolean =>
-  codePoint === 0x000a || // line feed
-  codePoint === 0x000b || // line tabulation
-  codePoint === 0x000c || // form feed
-  codePoint === 0x000d || // carriage return
-  codePoint === 0x0085 || // next line
-  codePoint === 0x2028 || // line separator
-  codePoint === 0x2029; // paragraph separator
+  codePoint === /* Line Feed */ 0x000a ||
+  codePoint === /* Line Tabulation */ 0x000b ||
+  codePoint === /* Form Feed */ 0x000c ||
+  codePoint === /* Carriage Return */ 0x000d ||
+  codePoint === /* Next Line */ 0x0085 ||
+  codePoint === /* Line Separator */ 0x2028 ||
+  codePoint === /* Paragraph Separator */ 0x2029;
 
 export const isWhitespace = (codePoint: CodePoint): boolean =>
-  codePoint === 0x0009 || // character tabulation
-  codePoint === 0x000a || // line feed
-  codePoint === 0x000b || // line tabulation
-  codePoint === 0x000c || // form feed
-  codePoint === 0x000d || // carriage return
-  codePoint === 0x0020 || // space
-  codePoint === 0x0085 || // next line
-  codePoint === 0x00a0 || // no-break space
-  codePoint === 0x2000 || // en quad
-  codePoint === 0x2001 || // em quad
-  codePoint === 0x2002 || // en space
-  codePoint === 0x2003 || // em space
-  codePoint === 0x2004 || // three-per-em space
-  codePoint === 0x2005 || // four-per-em space
-  codePoint === 0x2006 || // six-per-em space
-  codePoint === 0x2007 || // figure space
-  codePoint === 0x2008 || // punctuation space
-  codePoint === 0x2009 || // thin space
-  codePoint === 0x200a || // hair space
-  codePoint === 0x2028 || // line separator
-  codePoint === 0x2029; // paragraph separator
+  codePoint === /* Character Tabulation */ 0x0009 ||
+  codePoint === /* Line Feed */ 0x000a ||
+  codePoint === /* Line Tabulation */ 0x000b ||
+  codePoint === /* Form Feed */ 0x000c ||
+  codePoint === /* Carriage Return */ 0x000d ||
+  codePoint === /* Space */ 0x0020 ||
+  codePoint === /* Next Line */ 0x0085 ||
+  codePoint === /* No-break Space */ 0x00a0 ||
+  codePoint === /* En Quad */ 0x2000 ||
+  codePoint === /* Em Quad */ 0x2001 ||
+  codePoint === /* En Space */ 0x2002 ||
+  codePoint === /* Em Space */ 0x2003 ||
+  codePoint === /* Three-per-em Space */ 0x2004 ||
+  codePoint === /* Four-per-em Space */ 0x2005 ||
+  codePoint === /* Six-per-em Space */ 0x2006 ||
+  codePoint === /* Figure Space */ 0x2007 ||
+  codePoint === /* Punctuation Space */ 0x2008 ||
+  codePoint === /* Thin Space */ 0x2009 ||
+  codePoint === /* Hair Space */ 0x200a ||
+  codePoint === /* Line Separator */ 0x2028 ||
+  codePoint === /* Paragraph Separator */ 0x2029;
