@@ -83,22 +83,6 @@ export class TextInput {
     return this.#output.remaining;
   }
 
-  #update() {
-    const text = this.#text;
-    const remaining = this.#chars.slice(this.pos);
-    const chars = [];
-    chars.push(...this.#steps.map(({ char }) => char));
-    if (!this.stopOnError) {
-      chars.push(...this.#garbage.map(({ char }) => char));
-    }
-    if (remaining.length > 0) {
-      const [head, ...tail] = remaining;
-      chars.push({ ...head, attrs: Attr.Cursor }, ...tail);
-    }
-    const lines = { text, lines: [{ text, chars }] };
-    this.#output = { chars, lines, remaining };
-  }
-
   onTextInput({
     timeStamp,
     inputType,
@@ -127,8 +111,7 @@ export class TextInput {
   clearChar(): Feedback {
     this.#garbage.pop();
     this.#typo = true;
-    this.#update();
-    return Feedback.Succeeded;
+    return this.#return(Feedback.Succeeded);
   }
 
   clearWord(): Feedback {
@@ -137,17 +120,10 @@ export class TextInput {
       this.#steps.pop();
     }
     this.#typo = true;
-    this.#update();
-    return Feedback.Succeeded;
+    return this.#return(Feedback.Succeeded);
   }
 
   appendChar(codePoint: CodePoint, timeStamp: number): Feedback {
-    const feedback = this.#appendChar(codePoint, timeStamp);
-    this.#update();
-    return feedback;
-  }
-
-  #appendChar(codePoint: CodePoint, timeStamp: number): Feedback {
     if (this.completed) {
       throw new Error();
     }
@@ -161,10 +137,10 @@ export class TextInput {
           this.#typo)
       ) {
         this.#skipWord(timeStamp);
-        return Feedback.Recovered;
+        return this.#return(Feedback.Recovered);
       }
       if (this.#garbage.length === 0 && !this.#typo) {
-        return Feedback.Succeeded;
+        return this.#return(Feedback.Succeeded);
       }
     }
 
@@ -178,9 +154,9 @@ export class TextInput {
       this.#garbage = [];
       this.#typo = false;
       if (typo) {
-        return Feedback.Recovered;
+        return this.#return(Feedback.Recovered);
       } else {
-        return Feedback.Succeeded;
+        return this.#return(Feedback.Succeeded);
       }
     }
 
@@ -203,10 +179,31 @@ export class TextInput {
       this.forgiveErrors &&
       (this.#handleReplacedCharacter() || this.#handleSkippedCharacter())
     ) {
-      return Feedback.Recovered;
+      return this.#return(Feedback.Recovered);
     } else {
-      return Feedback.Failed;
+      return this.#return(Feedback.Failed);
     }
+  }
+
+  #return(feedback: Feedback): Feedback {
+    this.#update();
+    return feedback;
+  }
+
+  #update(): void {
+    const text = this.#text;
+    const remaining = this.#chars.slice(this.pos);
+    const chars = [];
+    chars.push(...this.#steps.map(({ char }) => char));
+    if (!this.stopOnError) {
+      chars.push(...this.#garbage.map(({ char }) => char));
+    }
+    if (remaining.length > 0) {
+      const [head, ...tail] = remaining;
+      chars.push({ ...head, attrs: Attr.Cursor }, ...tail);
+    }
+    const lines = { text, lines: [{ text, chars }] };
+    this.#output = { chars, lines, remaining };
   }
 
   #addStep(step: Step, char: Char): void {
