@@ -1,7 +1,7 @@
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 import { globSync } from "glob";
-import { readJsonSync, writeJsonSync } from "./lib/fs.js";
+import { readJsonSync, writeJsonSync } from "./lib/fs-json.js";
 import { packageJsonKeys, tsconfigJsonKeys } from "./lib/key-order.js";
 import { findDeps, printUnusedDeps } from "./lib/lang.js";
 import { sortJson } from "./lib/sort-json.js";

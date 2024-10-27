@@ -7,7 +7,6 @@ export const isLinebreak = (codePoint: CodePoint): boolean =>
   codePoint === /* LINE TABULATION */ 0x000b ||
   codePoint === /* FORM FEED */ 0x000c ||
   codePoint === /* CARRIAGE RETURN */ 0x000d ||
-  codePoint === /* NEXT LINE */ 0x0085 ||
   codePoint === /* LINE SEPARATOR */ 0x2028 ||
   codePoint === /* PARAGRAPH SEPARATOR */ 0x2029;
 
@@ -18,7 +17,6 @@ export const isWhitespace = (codePoint: CodePoint): boolean =>
   codePoint === /* FORM FEED */ 0x000c ||
   codePoint === /* CARRIAGE RETURN */ 0x000d ||
   codePoint === /* SPACE */ 0x0020 ||
-  codePoint === /* NEXT LINE */ 0x0085 ||
   codePoint === /* NO-BREAK SPACE */ 0x00a0 ||
   codePoint === /* EN QUAD */ 0x2000 ||
   codePoint === /* EM QUAD */ 0x2001 ||

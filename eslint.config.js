@@ -1,6 +1,7 @@
 /* eslint-disable n/no-extraneous-import */
 
 import js from "@eslint/js";
+import keybr from "@keybr/scripts/lib/eslint-plugin-keybr.js";
 import confusingBrowserGlobals from "confusing-browser-globals";
 import ava from "eslint-plugin-ava";
 import formatjs from "eslint-plugin-formatjs";
@@ -32,6 +33,7 @@ export default [
   react.configs.flat["jsx-runtime"],
   node.configs["flat/recommended-module"],
   ava.configs["flat/recommended"],
+  keybr.configs["recommended"],
   {
     ignores: ["packages/server/**", "packages/server-cli/**"],
     plugins: { "react-hooks": reactHooks },
@@ -87,10 +89,7 @@ export default [
       // configure node
       "n/file-extension-in-import": ["error", "always"],
       "n/hashbang": "off",
-      "n/no-path-concat": "off",
       "n/no-process-exit": "off",
-      "n/no-unsupported-features/es-builtins": "off",
-      "n/no-unsupported-features/es-syntax": "off",
       "n/no-unsupported-features/node-builtins": "off",
       "n/prefer-global/buffer": ["error", "always"],
       "n/prefer-global/console": ["error", "always"],

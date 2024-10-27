@@ -70,7 +70,7 @@ function parseCharacterList(
         }
 
         if (a.length === 2) {
-          if (a[0] === /* * */ 0x002a) {
+          if (a[0] === /* "*" */ 0x002a) {
             characters.push(makeDeadCharacter(keyId, a[1]));
             continue;
           }

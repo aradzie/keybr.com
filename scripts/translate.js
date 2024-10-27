@@ -2,7 +2,7 @@ import { writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { compile, extract } from "@formatjs/cli-lib";
 import { globSync } from "glob";
-import { readJsonSync, writeJsonSync } from "./lib/fs.js";
+import { readJsonSync, writeJsonSync } from "./lib/fs-json.js";
 import { getHashDigest } from "./lib/intl.js";
 import { findPackages, rootDir } from "./root.js";
 

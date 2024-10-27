@@ -19,8 +19,8 @@ test("codepoint characters", (t) => {
 test("dead characters", (t) => {
   const characters = new KeyCharacters(
     "KeyA",
-    { dead: /* * */ 0x002a },
-    { dead: /* * */ 0x002a },
+    { dead: /* "*" */ 0x002a },
+    { dead: /* "*" */ 0x002a },
     null,
     null,
   );

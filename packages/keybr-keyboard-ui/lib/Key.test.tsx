@@ -63,8 +63,8 @@ test.serial("dead labels", (t) => {
     [
       { dead: /* COMBINING GRAVE ACCENT */ 0x0300 },
       { dead: /* COMBINING ACUTE ACCENT */ 0x0301 },
-      { dead: /* * */ 0x002a },
-      { dead: /* * */ 0x002a },
+      { dead: /* "*" */ 0x002a },
+      { dead: /* "*" */ 0x002a },
     ],
   );
 

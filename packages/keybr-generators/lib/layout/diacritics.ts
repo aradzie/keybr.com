@@ -46,7 +46,7 @@ export const makeDeadCharacter = (
   if (dead != null) {
     return dead;
   }
-  if (codePoint === /* * */ 0x002a) {
+  if (codePoint === /* "*" */ 0x002a) {
     return { dead: codePoint };
   }
   console.error(
