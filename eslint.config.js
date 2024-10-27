@@ -1,7 +1,7 @@
 /* eslint-disable n/no-extraneous-import */
 
 import js from "@eslint/js";
-import keybr from "@keybr/scripts/lib/eslint-plugin-keybr.js";
+import keybr from "@keybr/scripts/eslint-plugin-keybr.js";
 import confusingBrowserGlobals from "confusing-browser-globals";
 import ava from "eslint-plugin-ava";
 import formatjs from "eslint-plugin-formatjs";

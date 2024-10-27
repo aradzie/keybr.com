@@ -1,8 +1,8 @@
 /* eslint-disable n/no-extraneous-import */
 
 import { join } from "node:path";
-import { intlTransformer } from "@keybr/scripts/lib/intl.js";
-import { ManifestPlugin } from "@keybr/scripts/lib/webpack-manifest.js";
+import { intlTransformer } from "@keybr/scripts/intl-transformer.js";
+import { ManifestPlugin } from "@keybr/scripts/webpack-manifest.js";
 import { ENV } from "@keybr/thirdparties/webpack-env.js";
 import CompressionPlugin from "compression-webpack-plugin";
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin";

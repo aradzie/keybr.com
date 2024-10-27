@@ -1,7 +1,6 @@
 import { createHash } from "node:crypto";
-import { transform } from "@formatjs/ts-transformer";
 
-export function getHashDigest(
+export function messageIdHash(
   content,
   hashType = "sha512",
   digestType = "base64",
@@ -10,11 +9,4 @@ export function getHashDigest(
   const hash = createHash(hashType);
   hash.update(content);
   return hash.digest(digestType).substring(0, length);
-}
-
-export function intlTransformer() {
-  return transform({
-    removeDefaultMessage: true,
-    overrideIdFn: (id) => getHashDigest(id),
-  });
 }

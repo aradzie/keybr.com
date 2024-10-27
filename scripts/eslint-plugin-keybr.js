@@ -1,4 +1,4 @@
-import { getCodePointName } from "./codepoints.js";
+import { getCodePointName } from "./lib/codepoints.js";
 
 const rule = {
   meta: {

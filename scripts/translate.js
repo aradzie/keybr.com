@@ -3,7 +3,7 @@ import { join } from "node:path";
 import { compile, extract } from "@formatjs/cli-lib";
 import { globSync } from "glob";
 import { readJsonSync, writeJsonSync } from "./lib/fs-json.js";
-import { getHashDigest } from "./lib/intl.js";
+import { messageIdHash } from "./lib/intl.js";
 import { findPackages, rootDir } from "./root.js";
 
 const outputDir = join(rootDir, "packages", "keybr-intl");
@@ -120,7 +120,7 @@ async function compileMessages() {
   const format = {
     compile: (translations) => {
       return remap(translations, ([id, message]) => [
-        getHashDigest(id),
+        messageIdHash(id),
         message,
       ]);
     },
