@@ -1,4 +1,4 @@
-import { readFileSync } from "@sosimple/fsx";
+import { readFileSync } from "node:fs";
 import test from "ava";
 import { allLocales, defaultLocale } from "./locale.ts";
 

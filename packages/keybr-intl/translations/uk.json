@@ -296,6 +296,8 @@
   "profile.chart.summary.statisticsToday.header": "Статистика за сьогодні",
   "profile.emptyChart.description": "Закінчіть ще кілька уроків, щоб отримати більше даних.",
   "profile.emptyChart.header": "Недостатньо данних",
+  "profile.explain.hide": "Сховати пояснення",
+  "profile.explain.show": "Пояснити графіки",
   "profile.smoothness.description": "Усуньте шум, щоб побачити довгостроковий тренд.",
   "profile.smoothness.label": "Згладжування:",
   "profile.widget.downloadData.description": "Завантажте всі ваші дані у форматі JSON.",

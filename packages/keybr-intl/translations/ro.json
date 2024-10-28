@@ -220,6 +220,7 @@
   "profile.accuracy.header": "Traiectorii de acuratețe",
   "profile.accuracy.legend": "Mai sus sunt enumerate cele mai lungi secvențe continue de lecții cu acuratețe peste un anumit prag, împreună cu statistici despre fiecare astfel de secvență. Cu cât secvența de lecții este mai lungă, cu atât mai bine.",
   "profile.accuracy.noData": "Nu ai nicio serie de acuratețe. Consideră să completezi o lecție cu cea mai mare acuratețe posibilă, indiferent de viteza de tastare.",
+  "profile.calendar.averageSpeed.description": "Viteza medie: {value}",
   "profile.calendar.topSpeed.description": "Viteza maximă: {value}",
   "profile.calendar.totalLessons.description": "Numărul de lecții: {value}",
   "profile.calendar.totalTime.description": "Ora lecțiilor: {value}",

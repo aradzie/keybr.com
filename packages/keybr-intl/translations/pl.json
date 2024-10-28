@@ -120,6 +120,7 @@
   "lesson.panel.gauges.label": "Metryki",
   "lesson.panel.keySet.label": "Wszystkie klawisze",
   "lesson.panel.streakList.label": "Dokładność",
+  "lessonType.books.name": "Książki",
   "lessonType.code.description": "Ćwicz znaki interpunkcyjne, które są specyficzne dla składni języka programowania.",
   "lessonType.code.name": "Kod Źródłowy",
   "lessonType.customText.description": "Wygeneruj lekcje pisania na podstawie słów własnego, niestandardowego tekstu podanego tutaj. Wszystkie klawisze są domyślnie włączone. Ten tryb jest dla profesjonalistów.",

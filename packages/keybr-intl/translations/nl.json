@@ -286,6 +286,8 @@
   "profile.chart.summary.statisticsToday.header": "Statistieken voor Vandaag",
   "profile.emptyChart.description": "Rond nog enkele lessen af om meer datapunten te verkrijgen.",
   "profile.emptyChart.header": "Niet genoeg data",
+  "profile.explain.hide": "Verberg uitleg",
+  "profile.explain.show": "Leg grafieken uit",
   "profile.smoothness.description": "Ruis elimineren om de langetermijntrend te zien.",
   "profile.smoothness.label": "Zachtheid:",
   "profile.widget.downloadData.description": "Download al uw typgegevens in JSON formaat.",

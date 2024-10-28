@@ -1,18 +1,14 @@
 # Arabic
 
-Translated: 417 messages, 5044 words
+Translated: 421 messages, 5070 words
 
-Untranslated: 11 messages, 109 words
+Untranslated: 7 messages, 83 words
 
-* *Books*
 * *Top accuracy*
-* *Explain charts*
 * *Average accuracy*
 * *Relative Accuracy*
-* *Hide explanations*
 * *Repeat each word:*
 * *This is a histogram of the accuracies of all users, and your...*
-* *Generate typing lessons from the text of a book. All keys ar...*
 * *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
 
@@ -157,9 +153,9 @@ Untranslated: 46 messages, 517 words
 
 # Esperanto
 
-Translated: 82 messages, 861 words
+Translated: 92 messages, 1203 words
 
-Untranslated: 334 messages, 4205 words
+Untranslated: 324 messages, 3863 words
 
 * *GO!*
 * *Time*
@@ -361,30 +357,30 @@ Untranslated: 68 messages, 1053 words
 
 # Indonesian
 
-Translated: 263 messages, 1959 words
+Translated: 344 messages, 3643 words
 
-Untranslated: 158 messages, 3122 words
+Untranslated: 80 messages, 1464 words
 
 * *GO!*
 * *Font:*
-* *Reset*
 * *Typing*
-* *Metrics*
 * *Preview*
-* *Volume:*
-* *Syntax:*
 * *Keyboard*
-* *Chapters*
-* *Translate*
-* *Top speed*
-* *Alphabet:*
 * *No Sounds*
-* *Top speed!*
-* *Box cursor*
 * *All Sounds*
-* *Characters*
-* *Source Code*
-* *Multiplayer*
+* *Smoothness:*
+* *Whitespace:*
+* *Top accuracy*
+* *Colored keys*
+* *Play sounds:*
+* *Benford’s law*
+* *Cursor shape:*
+* *Privacy Policy*
+* *Custom text...*
+* *Highlight keys*
+* *Typing Options*
+* *Average accuracy*
+* *Terms of Service*
 * ...
 
 # Italian
@@ -409,9 +405,9 @@ Untranslated: 13 messages, 89 words
 
 # Japanese
 
-Translated: 253 messages, 2223 words
+Translated: 255 messages, 2266 words
 
-Untranslated: 165 messages, 2857 words
+Untranslated: 164 messages, 2816 words
 
 * *GO!*
 * *Books*
@@ -493,9 +489,9 @@ Untranslated: 44 messages, 515 words
 
 # Dutch
 
-Translated: 408 messages, 5051 words
+Translated: 410 messages, 5055 words
 
-Untranslated: 19 messages, 100 words
+Untranslated: 17 messages, 96 words
 
 * *Score*
 * *Score*
@@ -505,13 +501,11 @@ Untranslated: 19 messages, 100 words
 * *Multiplayer*
 * *Multiplayer*
 * *Top accuracy*
-* *Explain charts*
 * *Premium Account*
 * *Premium Account*
 * *Premium Account*
 * *Average accuracy*
 * *Relative Accuracy*
-* *Hide explanations*
 * *Repeat each word:*
 * *This is a histogram of the accuracies of all users, and your...*
 * *Repeat each word a number of times. Type a word for the firs...*
@@ -519,11 +513,10 @@ Untranslated: 19 messages, 100 words
 
 # Polish
 
-Translated: 417 messages, 5044 words
+Translated: 418 messages, 5045 words
 
-Untranslated: 11 messages, 109 words
+Untranslated: 10 messages, 108 words
 
-* *Books*
 * *Top accuracy*
 * *Explain charts*
 * *Average accuracy*
@@ -584,7 +577,7 @@ Untranslated: 19 messages, 123 words
 
 # Romanian
 
-Translated: 373 messages, 3755 words
+Translated: 374 messages, 3758 words
 
 Untranslated: 44 messages, 1319 words
 
@@ -693,15 +686,13 @@ Untranslated: 160 messages, 3322 words
 
 # Ukrainian
 
-Translated: 419 messages, 5066 words
+Translated: 421 messages, 5070 words
 
-Untranslated: 9 messages, 87 words
+Untranslated: 7 messages, 83 words
 
 * *Top accuracy*
-* *Explain charts*
 * *Average accuracy*
 * *Relative Accuracy*
-* *Hide explanations*
 * *Repeat each word:*
 * *This is a histogram of the accuracies of all users, and your...*
 * *Repeat each word a number of times. Type a word for the firs...*
