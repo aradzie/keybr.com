@@ -1,81 +1,33 @@
 import test from "ava";
 import { Histogram } from "./histogram.ts";
 
-const A = 0x0061;
-const B = 0x0062;
-const C = 0x0063;
-const X = 0x0078;
+const A = /* "a" */ 0x0061;
+const B = /* "b" */ 0x0062;
+const C = /* "c" */ 0x0063;
+const X = /* "x" */ 0x0078;
 
-test("build empty histogram", (t) => {
+test("empty histogram", (t) => {
   const histogram = Histogram.from([]);
 
   t.is(histogram.complexity, 0);
   t.deepEqual([...histogram], []);
 });
 
-test("build histogram from single step", (t) => {
+test("histogram", (t) => {
   const histogram = Histogram.from([
-    { codePoint: A, timeStamp: 200, typo: false },
-  ]);
-
-  t.is(histogram.complexity, 1);
-  t.deepEqual(
-    [...histogram],
-    [{ codePoint: A, hitCount: 1, missCount: 0, timeToType: 0 }],
-  );
-});
-
-test("build histogram from single step with started at", (t) => {
-  const histogram = Histogram.from(
-    [
-      { codePoint: A, timeStamp: 200, typo: false },
-      { codePoint: X, timeStamp: 201, typo: false }, // Invalid step.
-    ],
-    { startedAt: 100 },
-  );
-
-  t.is(histogram.complexity, 1);
-  t.deepEqual(
-    [...histogram],
-    [{ codePoint: A, hitCount: 1, missCount: 0, timeToType: 100 }],
-  );
-});
-
-test("build histogram from many steps", (t) => {
-  const histogram = Histogram.from([
-    { codePoint: A, timeStamp: 200, typo: false },
-    { codePoint: B, timeStamp: 300, typo: false },
-    { codePoint: C, timeStamp: 400, typo: false },
-    { codePoint: X, timeStamp: 401, typo: false }, // Invalid step.
+    { timeStamp: 100, codePoint: A, timeToType: 100.1, typo: false },
+    { timeStamp: 200, codePoint: B, timeToType: 100.1, typo: false },
+    { timeStamp: 300, codePoint: C, timeToType: 100.1, typo: false },
+    { timeStamp: 600, codePoint: A, timeToType: 300.1, typo: false },
+    { timeStamp: 700, codePoint: A, timeToType: 100.1, typo: true },
+    { timeStamp: 801, codePoint: X, timeToType: 1, typo: false }, // Invalid step.
   ]);
 
   t.is(histogram.complexity, 3);
   t.deepEqual(
     [...histogram],
     [
-      { codePoint: A, hitCount: 1, missCount: 0, timeToType: 0 },
-      { codePoint: B, hitCount: 1, missCount: 0, timeToType: 100 },
-      { codePoint: C, hitCount: 1, missCount: 0, timeToType: 100 },
-    ],
-  );
-});
-
-test("build histogram from many steps with started at", (t) => {
-  const histogram = Histogram.from(
-    [
-      { codePoint: A, timeStamp: 200, typo: false },
-      { codePoint: B, timeStamp: 300, typo: false },
-      { codePoint: C, timeStamp: 400, typo: false },
-      { codePoint: X, timeStamp: 401, typo: false }, // Invalid step.
-    ],
-    { startedAt: 100 },
-  );
-
-  t.is(histogram.complexity, 3);
-  t.deepEqual(
-    [...histogram],
-    [
-      { codePoint: A, hitCount: 1, missCount: 0, timeToType: 100 },
+      { codePoint: A, hitCount: 3, missCount: 1, timeToType: 200 },
       { codePoint: B, hitCount: 1, missCount: 0, timeToType: 100 },
       { codePoint: C, hitCount: 1, missCount: 0, timeToType: 100 },
     ],
@@ -83,15 +35,12 @@ test("build histogram from many steps with started at", (t) => {
 });
 
 test("ignore typos", (t) => {
-  const histogram = Histogram.from(
-    [
-      { codePoint: A, timeStamp: 100, typo: true },
-      { codePoint: B, timeStamp: 200, typo: true },
-      { codePoint: C, timeStamp: 300, typo: true },
-      { codePoint: X, timeStamp: 301, typo: false }, // Invalid step.
-    ],
-    { startedAt: 0 },
-  );
+  const histogram = Histogram.from([
+    { timeStamp: 100, codePoint: A, timeToType: 100.1, typo: true },
+    { timeStamp: 200, codePoint: B, timeToType: 100.1, typo: true },
+    { timeStamp: 300, codePoint: C, timeToType: 100.1, typo: true },
+    { timeStamp: 301, codePoint: X, timeToType: 1, typo: false }, // Invalid step.
+  ]);
 
   t.is(histogram.complexity, 3);
   t.deepEqual(
@@ -100,29 +49,6 @@ test("ignore typos", (t) => {
       { codePoint: A, hitCount: 1, missCount: 1, timeToType: 0 },
       { codePoint: B, hitCount: 1, missCount: 1, timeToType: 0 },
       { codePoint: C, hitCount: 1, missCount: 1, timeToType: 0 },
-    ],
-  );
-});
-
-test("compute time to type", (t) => {
-  const histogram = Histogram.from(
-    [
-      { codePoint: A, timeStamp: 100, typo: false },
-      { codePoint: B, timeStamp: 200, typo: false },
-      { codePoint: A, timeStamp: 300, typo: false },
-      { codePoint: C, timeStamp: 500, typo: false },
-      { codePoint: X, timeStamp: 501, typo: false }, // Invalid step.
-    ],
-    { startedAt: 0 },
-  );
-
-  t.is(histogram.complexity, 3);
-  t.deepEqual(
-    [...histogram],
-    [
-      { codePoint: A, hitCount: 2, missCount: 0, timeToType: 100 },
-      { codePoint: B, hitCount: 1, missCount: 0, timeToType: 100 },
-      { codePoint: C, hitCount: 1, missCount: 0, timeToType: 200 },
     ],
   );
 });

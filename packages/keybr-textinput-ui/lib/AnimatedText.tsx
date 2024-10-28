@@ -40,7 +40,7 @@ function useAnimatedTextState(text: string): readonly Char[] {
       if (textInput.completed) {
         textInput.reset();
       } else {
-        textInput.appendChar(textInput.at(textInput.pos).codePoint, 0);
+        textInput.appendChar(0, textInput.at(textInput.pos).codePoint, 0);
       }
       const { chars } = textInput;
       setState({ textInput, chars });

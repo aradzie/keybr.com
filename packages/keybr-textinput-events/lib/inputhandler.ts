@@ -1,6 +1,7 @@
 import { type Focusable } from "@keybr/widget";
 import { toKeyEvent } from "./events.ts";
 import { getModifiers, isTextInput, ModifierState } from "./modifiers.ts";
+import { TimeToType } from "./timetotype.ts";
 import { type KeyEvent, type TextInputEvent } from "./types.ts";
 
 // https://w3c.github.io/uievents/
@@ -17,11 +18,12 @@ export type Listeners = {
 };
 
 export class InputHandler implements Focusable {
+  readonly #timeToType = new TimeToType();
   #listeners: Listeners = {};
   #input: HTMLTextAreaElement | null = null;
 
   setListeners = (listeners: Listeners): void => {
-    this.#listeners = listeners;
+    this.#listeners = { ...listeners };
   };
 
   setInput = (input: HTMLTextAreaElement | null): void => {
@@ -82,11 +84,11 @@ export class InputHandler implements Focusable {
     }
   }
 
-  handleFocus = (event: FocusEvent): void => {
+  handleFocus = (): void => {
     this.#listeners.onFocus?.();
   };
 
-  handleBlur = (event: FocusEvent): void => {
+  handleBlur = (): void => {
     this.#listeners.onBlur?.();
   };
 
@@ -100,9 +102,12 @@ export class InputHandler implements Focusable {
       event.preventDefault();
       return;
     }
-    this.#listeners.onKeyDown?.(toKeyEvent(event));
     if (isTextInput(getModifiers(event)) && event.key === "Tab") {
       event.preventDefault();
+    }
+    if (event.code) {
+      this.#timeToType.add(event);
+      this.#listeners.onKeyDown?.(toKeyEvent(event));
     }
   };
 
@@ -116,7 +121,10 @@ export class InputHandler implements Focusable {
       event.preventDefault();
       return;
     }
-    this.#listeners.onKeyUp?.(toKeyEvent(event));
+    if (event.code) {
+      this.#timeToType.add(event);
+      this.#listeners.onKeyUp?.(toKeyEvent(event));
+    }
   };
 
   handleInput = (event: InputEvent): void => {
@@ -127,7 +135,7 @@ export class InputHandler implements Focusable {
     }
     switch (event.inputType) {
       case "insertText":
-        this.#appendChar(event.data, event.timeStamp);
+        this.#appendChar(event);
         this.#clearInput();
         break;
       case "insertLineBreak":
@@ -135,6 +143,7 @@ export class InputHandler implements Focusable {
           timeStamp: event.timeStamp,
           inputType: "appendLineBreak",
           codePoint: 0x0000,
+          timeToType: this.#timeToType.measure(event),
         });
         this.#clearInput();
         break;
@@ -143,6 +152,7 @@ export class InputHandler implements Focusable {
           timeStamp: event.timeStamp,
           inputType: "clearChar",
           codePoint: 0x0000,
+          timeToType: this.#timeToType.measure(event),
         });
         this.#clearInput();
         break;
@@ -151,6 +161,7 @@ export class InputHandler implements Focusable {
           timeStamp: event.timeStamp,
           inputType: "clearWord",
           codePoint: 0x0000,
+          timeToType: this.#timeToType.measure(event),
         });
         this.#clearInput();
         break;
@@ -166,13 +177,14 @@ export class InputHandler implements Focusable {
       case "compositionupdate":
         break;
       case "compositionend":
-        this.#appendChar(event.data, event.timeStamp);
+        this.#appendChar(event);
         this.#clearInput();
         break;
     }
   };
 
-  #appendChar(data: string | null, timeStamp: number): void {
+  #appendChar(event: InputEvent | CompositionEvent): void {
+    const { timeStamp, data } = event;
     if (data != null && data.length > 0) {
       const codePoint = data.codePointAt(0) ?? 0x0000;
       if (codePoint > 0x0000) {
@@ -180,6 +192,7 @@ export class InputHandler implements Focusable {
           timeStamp,
           inputType: "appendChar",
           codePoint,
+          timeToType: this.#timeToType.measure(event),
         });
       }
     }

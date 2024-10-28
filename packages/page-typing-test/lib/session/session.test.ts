@@ -41,24 +41,28 @@ test("lines", (t) => {
   }
 
   session.handleTextInput({
+    timeStamp: 100,
     inputType: "appendChar",
     codePoint: "one ".codePointAt(0)!,
-    timeStamp: 0,
+    timeToType: 100,
   });
   session.handleTextInput({
+    timeStamp: 200,
     inputType: "appendChar",
     codePoint: "one ".codePointAt(1)!,
-    timeStamp: 0,
+    timeToType: 100,
   });
   session.handleTextInput({
+    timeStamp: 300,
     inputType: "appendChar",
     codePoint: "one ".codePointAt(2)!,
-    timeStamp: 0,
+    timeToType: 100,
   });
   session.handleTextInput({
+    timeStamp: 400,
     inputType: "appendChar",
     codePoint: "one ".codePointAt(3)!,
-    timeStamp: 0,
+    timeToType: 100,
   });
 
   {

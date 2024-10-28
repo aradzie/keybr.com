@@ -14,12 +14,12 @@ class FakeEvent {
     readonly timeStamp: number,
   ) {}
 
-  preventDefault(): void {
+  preventDefault() {
     this.defaultPrevented = true;
   }
 }
 
-export function makeFakeKeyboardEvent({
+export function fakeKeyboardEvent({
   type,
   timeStamp = 0,
   code,
@@ -61,10 +61,10 @@ export function makeFakeKeyboardEvent({
     constructor() {
       super(type, timeStamp);
     }
-  })();
+  })() as KeyboardEvent & FakeEvent;
 }
 
-export function makeFakeInputEvent({
+export function fakeInputEvent({
   type,
   timeStamp = 0,
   inputType,
@@ -82,10 +82,10 @@ export function makeFakeInputEvent({
     constructor() {
       super(type, timeStamp);
     }
-  })();
+  })() as InputEvent & FakeEvent;
 }
 
-export function makeFakeCompositionEvent({
+export function fakeCompositionEvent({
   type,
   timeStamp = 0,
   data,
@@ -100,24 +100,31 @@ export function makeFakeCompositionEvent({
     constructor() {
       super(type, timeStamp);
     }
-  })();
+  })() as CompositionEvent & FakeEvent;
 }
 
-export function tracingListener(trace: string[]): TextInputListener {
+export function tracingListener() {
   return new (class implements TextInputListener {
-    onKeyDown = ({ code, key, timeStamp }: KeyEvent): void => {
-      trace.push(`keydown:${code},${key},${timeStamp}`);
+    readonly trace: string[] = [];
+    onKeyDown = ({ timeStamp, code, key }: KeyEvent) => {
+      this.trace.push([timeStamp, "keydown", code, key].join(","));
     };
-    onKeyUp = ({ code, key, timeStamp }: KeyEvent): void => {
-      trace.push(`keyup:${code},${key},${timeStamp}`);
+    onKeyUp = ({ timeStamp, code, key }: KeyEvent) => {
+      this.trace.push([timeStamp, "keyup", code, key].join(","));
     };
     onTextInput = ({
+      timeStamp,
       inputType,
       codePoint,
-      timeStamp,
-    }: TextInputEvent): void => {
-      trace.push(
-        `${inputType}:${String.fromCodePoint(codePoint)},${timeStamp}`,
+      timeToType,
+    }: TextInputEvent) => {
+      this.trace.push(
+        [
+          timeStamp,
+          inputType,
+          String.fromCodePoint(codePoint),
+          timeToType,
+        ].join(","),
       );
     };
   })();

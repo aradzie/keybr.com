@@ -2,117 +2,27 @@ import test from "ava";
 import { Histogram } from "./histogram.ts";
 import { makeStats } from "./stats.ts";
 
-const A = 0x0061;
-const B = 0x0062;
-const C = 0x0063;
-const X = 0x0078;
-const Space = 0x0020;
+const A = /* "a" */ 0x0061;
+const B = /* "b" */ 0x0062;
+const C = /* "c" */ 0x0063;
+const X = /* "x" */ 0x0078;
+const Space = /* SPACE */ 0x0020;
 
 test("compute stats", (t) => {
   const stats = makeStats([
-    { codePoint: X, timeStamp: 100.1, typo: false }, // Trigger is ignored.
-    { codePoint: A, timeStamp: 200.1, typo: false },
-    { codePoint: B, timeStamp: 300.1, typo: false },
-    { codePoint: C, timeStamp: 400.1, typo: false },
-    { codePoint: Space, timeStamp: 500.2, typo: true },
+    { timeStamp: 100.1, codePoint: X, timeToType: 900.1, typo: false }, // Trigger is ignored.
+    { timeStamp: 200.1, codePoint: A, timeToType: 100.1, typo: false },
+    { timeStamp: 300.1, codePoint: B, timeToType: 100.1, typo: false },
+    { timeStamp: 400.1, codePoint: C, timeToType: 100.1, typo: false },
+    { timeStamp: 500.2, codePoint: Space, timeToType: 100.1, typo: true },
   ]);
 
   t.deepEqual(stats, {
     time: 400,
-    speed: 600,
-    length: 4,
+    speed: 750,
+    length: 5,
     errors: 1,
-    accuracy: 0.75,
-    alternations: 1,
-    histogram: new Histogram([
-      { codePoint: Space, hitCount: 1, missCount: 1, timeToType: 0 },
-      { codePoint: A, hitCount: 1, missCount: 0, timeToType: 100 },
-      { codePoint: B, hitCount: 1, missCount: 0, timeToType: 100 },
-      { codePoint: C, hitCount: 1, missCount: 0, timeToType: 100 },
-    ]),
-  });
-});
-
-test("compute with started at", (t) => {
-  const stats = makeStats(
-    [
-      { codePoint: A, timeStamp: 200.1, typo: false },
-      { codePoint: B, timeStamp: 300.1, typo: false },
-      { codePoint: C, timeStamp: 400.1, typo: false },
-      { codePoint: Space, timeStamp: 500.2, typo: true },
-    ],
-    {
-      startedAt: 100.1,
-    },
-  );
-
-  t.deepEqual(stats, {
-    time: 400,
-    speed: 600,
-    length: 4,
-    errors: 1,
-    accuracy: 0.75,
-    alternations: 1,
-    histogram: new Histogram([
-      { codePoint: Space, hitCount: 1, missCount: 1, timeToType: 0 },
-      { codePoint: A, hitCount: 1, missCount: 0, timeToType: 100 },
-      { codePoint: B, hitCount: 1, missCount: 0, timeToType: 100 },
-      { codePoint: C, hitCount: 1, missCount: 0, timeToType: 100 },
-    ]),
-  });
-});
-
-test("compute with ended at", (t) => {
-  const stats = makeStats(
-    [
-      { codePoint: X, timeStamp: 100.1, typo: false }, // Trigger is ignored.
-      { codePoint: A, timeStamp: 200.1, typo: false },
-      { codePoint: B, timeStamp: 300.1, typo: false },
-      { codePoint: C, timeStamp: 400.1, typo: false },
-      { codePoint: Space, timeStamp: 500.1, typo: true },
-    ],
-    {
-      endedAt: 600.2,
-    },
-  );
-
-  t.deepEqual(stats, {
-    time: 500,
-    speed: 480,
-    length: 4,
-    errors: 1,
-    accuracy: 0.75,
-    alternations: 1,
-    histogram: new Histogram([
-      { codePoint: Space, hitCount: 1, missCount: 1, timeToType: 0 },
-      { codePoint: A, hitCount: 1, missCount: 0, timeToType: 100 },
-      { codePoint: B, hitCount: 1, missCount: 0, timeToType: 100 },
-      { codePoint: C, hitCount: 1, missCount: 0, timeToType: 100 },
-    ]),
-  });
-});
-
-test("compute with started at and ended at", (t) => {
-  const stats = makeStats(
-    [
-      { codePoint: A, timeStamp: 200.1, typo: false },
-      { codePoint: B, timeStamp: 300.1, typo: false },
-      { codePoint: C, timeStamp: 400.1, typo: false },
-      { codePoint: Space, timeStamp: 500.1, typo: true },
-    ],
-    {
-      startedAt: 100.1,
-      endedAt: 600.2,
-    },
-  );
-
-  t.deepEqual(stats, {
-    time: 500,
-    speed: 480,
-    length: 4,
-    errors: 1,
-    accuracy: 0.75,
-    alternations: 1,
+    accuracy: 0.8,
     histogram: new Histogram([
       { codePoint: Space, hitCount: 1, missCount: 1, timeToType: 0 },
       { codePoint: A, hitCount: 1, missCount: 0, timeToType: 100 },
@@ -123,73 +33,35 @@ test("compute with started at and ended at", (t) => {
 });
 
 test("compute accuracy", (t) => {
+  t.is(makeStats([]).accuracy, 0);
+
   t.is(
     makeStats([
-      { codePoint: X, timeStamp: 100, typo: false }, // Trigger is ignored.
-      { codePoint: A, timeStamp: 200, typo: true },
-      { codePoint: B, timeStamp: 300, typo: true },
-      { codePoint: C, timeStamp: 400, typo: true },
-      { codePoint: Space, timeStamp: 500, typo: true },
+      { timeStamp: 100, codePoint: X, timeToType: 900, typo: true }, // Trigger is ignored.
+      { timeStamp: 200, codePoint: A, timeToType: 100, typo: true },
+      { timeStamp: 300, codePoint: B, timeToType: 100, typo: true },
+      { timeStamp: 400, codePoint: C, timeToType: 100, typo: true },
     ]).accuracy,
     0,
   );
 
   t.is(
     makeStats([
-      { codePoint: X, timeStamp: 100, typo: false }, // Trigger is ignored.
-      { codePoint: A, timeStamp: 200, typo: false },
-      { codePoint: B, timeStamp: 300, typo: false },
-      { codePoint: C, timeStamp: 400, typo: true },
-      { codePoint: Space, timeStamp: 500, typo: true },
+      { timeStamp: 100, codePoint: X, timeToType: 900, typo: false }, // Trigger is ignored.
+      { timeStamp: 200, codePoint: A, timeToType: 100, typo: false },
+      { timeStamp: 300, codePoint: B, timeToType: 100, typo: true },
+      { timeStamp: 400, codePoint: C, timeToType: 100, typo: true },
     ]).accuracy,
     0.5,
   );
 
   t.is(
     makeStats([
-      { codePoint: X, timeStamp: 100, typo: false }, // Trigger is ignored.
-      { codePoint: A, timeStamp: 200, typo: false },
-      { codePoint: B, timeStamp: 300, typo: false },
-      { codePoint: C, timeStamp: 400, typo: false },
-      { codePoint: Space, timeStamp: 500, typo: false },
+      { timeStamp: 100, codePoint: X, timeToType: 900, typo: false }, // Trigger is ignored.
+      { timeStamp: 200, codePoint: A, timeToType: 100, typo: false },
+      { timeStamp: 300, codePoint: B, timeToType: 100, typo: false },
+      { timeStamp: 400, codePoint: C, timeToType: 100, typo: false },
     ]).accuracy,
-    1,
-  );
-});
-
-test("compute alternations", (t) => {
-  t.is(makeStats([]).alternations, 0);
-
-  t.is(
-    makeStats([
-      { codePoint: X, timeStamp: 100, typo: false }, // Trigger is ignored.
-      { codePoint: X, timeStamp: 200, typo: false },
-      { codePoint: X, timeStamp: 300, typo: false },
-      { codePoint: X, timeStamp: 400, typo: false },
-      { codePoint: Space, timeStamp: 500, typo: false },
-    ]).alternations,
-    0.3333333333333333,
-  );
-
-  t.is(
-    makeStats([
-      { codePoint: X, timeStamp: 100, typo: false }, // Trigger is ignored.
-      { codePoint: A, timeStamp: 200, typo: false },
-      { codePoint: B, timeStamp: 300, typo: false },
-      { codePoint: C, timeStamp: 400, typo: false },
-      { codePoint: Space, timeStamp: 500, typo: false },
-    ]).alternations,
-    1,
-  );
-
-  t.is(
-    makeStats([
-      { codePoint: X, timeStamp: 100, typo: true }, // Trigger is ignored.
-      { codePoint: A, timeStamp: 200, typo: true },
-      { codePoint: B, timeStamp: 300, typo: true },
-      { codePoint: C, timeStamp: 400, typo: true },
-      { codePoint: Space, timeStamp: 500, typo: true },
-    ]).alternations,
     1,
   );
 });

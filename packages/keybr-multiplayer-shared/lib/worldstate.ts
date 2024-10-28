@@ -24,13 +24,13 @@ import {
 } from "./types.ts";
 import { positionName } from "./util.ts";
 
-export const NOBODY = Object.freeze<Player>({
+export const NOBODY = Object.freeze({
   id: 0,
-  user: Object.freeze<AnyUser>({
+  user: Object.freeze({
     id: null,
     name: "nobody",
     imageUrl: null,
-  }),
+  } satisfies AnyUser),
   spectator: false,
   finished: false,
   position: 0,
@@ -38,7 +38,7 @@ export const NOBODY = Object.freeze<Player>({
   speed: 0,
   errors: 0,
   progress: 0,
-});
+} satisfies Player);
 
 export function makeTextInput(text: string): TextInput {
   return new TextInput(text, {
@@ -77,7 +77,7 @@ export function handleTextInput(
   const { gameState, players, textInput, timer } = worldState;
   if (!players.me.spectator && gameState === GameState.RUNNING) {
     const elapsed = timer.elapsed();
-    textInput.appendChar(codePoint, elapsed);
+    textInput.appendChar(elapsed, codePoint, 0);
     const { lines } = textInput;
     return { worldState: { ...worldState, lines }, elapsed };
   } else {

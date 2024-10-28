@@ -1,6 +1,10 @@
 import test from "ava";
-import { charsAreEqual, flattenStyledText, splitStyledText } from "./chars.ts";
-import { Attr } from "./types.ts";
+import {
+  Attr,
+  charsAreEqual,
+  flattenStyledText,
+  splitStyledText,
+} from "./chars.ts";
 
 test("flatten styled text", (t) => {
   t.is(flattenStyledText("abc"), "abc");

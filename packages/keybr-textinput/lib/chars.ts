@@ -1,12 +1,32 @@
-import { toCodePoints } from "@keybr/unicode";
-import {
-  Attr,
-  type Char,
-  type Line,
-  type LineList,
-  type StyledText,
-  type StyledTextSpan,
-} from "./types.ts";
+import { type CodePoint, toCodePoints } from "@keybr/unicode";
+
+export type StyledText = string | StyledTextSpan | readonly StyledText[];
+
+export type StyledTextSpan = { readonly text: string; readonly cls: string };
+
+export const enum Attr {
+  Normal = 0,
+  Hit = 1,
+  Miss = 2,
+  Garbage = 4,
+  Cursor = 8,
+}
+
+export type Char = {
+  readonly codePoint: CodePoint;
+  readonly attrs: number;
+  readonly cls?: string | null;
+};
+
+export type Line = {
+  readonly text: string;
+  readonly chars: readonly Char[];
+};
+
+export type LineList = {
+  readonly text: string;
+  readonly lines: readonly Line[];
+};
 
 export function flattenStyledText(text: StyledText): string {
   const list: Array<string> = [];

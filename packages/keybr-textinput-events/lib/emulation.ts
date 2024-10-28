@@ -7,6 +7,7 @@ import {
 import { type Settings } from "@keybr/settings";
 import { type CodePoint } from "@keybr/unicode";
 import { isTextInput } from "./modifiers.ts";
+import { TimeToType } from "./timetotype.ts";
 import {
   type KeyEvent,
   type ModifierId,
@@ -43,8 +44,10 @@ function forwardEmulation(
   keyboard: Keyboard,
   target: TextInputListener,
 ): TextInputListener {
+  const timeToType = new TimeToType();
   return {
     onKeyDown: (event: KeyEvent): void => {
+      timeToType.keyDown(event);
       const [mapped, codePoint] = fixKey(keyboard, event);
       target.onKeyDown(mapped);
       if (isTextInput(event.modifiers) && codePoint > 0x0000) {
@@ -52,10 +55,12 @@ function forwardEmulation(
           timeStamp: mapped.timeStamp,
           inputType: "appendChar",
           codePoint,
+          timeToType: timeToType.measure(event),
         });
       }
     },
     onKeyUp: (event: KeyEvent): void => {
+      timeToType.keyUp(event);
       const [mapped, codePoint] = fixKey(keyboard, event);
       target.onKeyUp(mapped);
     },

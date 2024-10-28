@@ -1,5 +1,12 @@
 import { type CodePoint } from "@keybr/unicode";
-import { type Sample, type Step } from "./types.ts";
+import { type Step } from "./textinput.ts";
+
+export type Sample = {
+  readonly codePoint: CodePoint;
+  readonly hitCount: number;
+  readonly missCount: number;
+  readonly timeToType: number;
+};
 
 export class Histogram implements Iterable<Sample> {
   static readonly empty = Histogram.from([]);
@@ -42,45 +49,44 @@ export class Histogram implements Iterable<Sample> {
     return true;
   }
 
-  static from(
-    steps: readonly Step[],
-    {
-      startedAt = null,
-    }: {
-      readonly startedAt?: number | null;
-    } = {},
-  ): Histogram {
+  static from(steps: readonly Step[]): Histogram {
     const samples = new Map<
       CodePoint,
-      { hitCount: number; missCount: number; timeToType: number }
+      {
+        hitCount: number;
+        missCount: number;
+        time: number;
+        count: number;
+      }
     >();
-    let last: Step | null =
-      startedAt != null
-        ? { codePoint: 0, timeStamp: startedAt, typo: false }
-        : null;
-    for (const step of steps) {
-      let sample = samples.get(step.codePoint);
+    for (const { codePoint, timeToType, typo } of steps) {
+      let sample = samples.get(codePoint);
       if (sample == null) {
         samples.set(
-          step.codePoint,
-          (sample = { hitCount: 0, missCount: 0, timeToType: 0 }),
+          codePoint,
+          (sample = {
+            hitCount: 0,
+            missCount: 0,
+            time: 0,
+            count: 0,
+          }),
         );
       }
       sample.hitCount += 1;
-      if (step.typo) {
+      if (typo) {
         sample.missCount += 1;
-      } else if (last != null) {
-        sample.timeToType += step.timeStamp - last.timeStamp;
+      } else if (timeToType > 0) {
+        sample.time += timeToType;
+        sample.count += 1;
       }
-      last = step;
     }
     return new Histogram(
       [...samples.entries()]
-        .map(([codePoint, { hitCount, missCount, timeToType }]) => ({
+        .map(([codePoint, { hitCount, missCount, time, count }]) => ({
           codePoint,
           hitCount,
           missCount,
-          timeToType: Math.round(timeToType / hitCount),
+          timeToType: time > 0 && count > 0 ? Math.round(time / count) : 0,
         }))
         .filter(validateSample),
     );

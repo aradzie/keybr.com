@@ -20,7 +20,7 @@ import {
   type PlayerState,
   type ServerMessage,
 } from "@keybr/multiplayer-shared";
-import { computeSpeed } from "@keybr/textinput";
+import { computeSpeed, countErrors } from "@keybr/textinput";
 import { type Task, Tasks, Timer } from "@keybr/timer";
 import { type Game } from "./game.ts";
 import { type Player, ReadyState } from "./player.ts";
@@ -182,9 +182,9 @@ export class Room {
     if (this.#gameState === GameState.RUNNING) {
       if (!player.spectator && !player.finished) {
         player.lastInput = now;
-        player.textInput.appendChar(message.codePoint, now);
+        player.textInput.appendChar(now, message.codePoint, 0);
         updatePlayer(player, this.#started);
-        if (player.offset === this.#text.length) {
+        if (player.textInput.completed) {
           player.finished = true;
           player.position = this.#finishOrder++;
         }
@@ -416,15 +416,8 @@ function updatePlayer(player: Player, started: number): void {
   player.offset = pos;
   if (pos > 0) {
     const time = steps[pos - 1].timeStamp - started;
-    const speed = Math.round(computeSpeed(pos, time));
-    let errors = 0;
-    for (const step of steps) {
-      if (step.typo) {
-        errors += 1;
-      }
-    }
-    player.speed = speed;
-    player.errors = errors;
+    player.speed = Math.round(computeSpeed(pos, time));
+    player.errors = countErrors(steps);
   } else {
     player.speed = 0;
     player.errors = 0;

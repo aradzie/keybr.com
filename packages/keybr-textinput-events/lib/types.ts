@@ -30,4 +30,5 @@ export type TextInputEvent = {
     | "clearChar"
     | "clearWord";
   readonly codePoint: CodePoint;
+  readonly timeToType: number;
 };

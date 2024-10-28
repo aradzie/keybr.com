@@ -1,15 +1,27 @@
 import { filterText } from "@keybr/keyboard";
 import { type CodePoint } from "@keybr/unicode";
-import { flattenStyledText, splitStyledText } from "./chars.ts";
-import { type TextInputSettings } from "./settings.ts";
 import {
   Attr,
   type Char,
-  Feedback,
+  flattenStyledText,
   type LineList,
-  type Step,
+  splitStyledText,
   type StyledText,
-} from "./types.ts";
+} from "./chars.ts";
+import { type TextInputSettings } from "./settings.ts";
+
+export enum Feedback {
+  Succeeded,
+  Recovered,
+  Failed,
+}
+
+export type Step = {
+  readonly timeStamp: number;
+  readonly codePoint: CodePoint;
+  readonly timeToType: number;
+  readonly typo: boolean;
+};
 
 export type StepListener = (step: Step) => void;
 
@@ -87,6 +99,7 @@ export class TextInput {
     timeStamp,
     inputType,
     codePoint,
+    timeToType,
   }: {
     readonly timeStamp: number;
     readonly inputType:
@@ -95,12 +108,13 @@ export class TextInput {
       | "clearChar"
       | "clearWord";
     readonly codePoint: CodePoint;
+    readonly timeToType: number;
   }): Feedback {
     switch (inputType) {
       case "appendChar":
-        return this.appendChar(codePoint, timeStamp);
+        return this.appendChar(timeStamp, codePoint, timeToType);
       case "appendLineBreak":
-        return this.appendChar(0x0020, timeStamp);
+        return this.appendChar(timeStamp, 0x0020, timeToType);
       case "clearChar":
         return this.clearChar();
       case "clearWord":
@@ -123,7 +137,11 @@ export class TextInput {
     return this.#return(Feedback.Succeeded);
   }
 
-  appendChar(codePoint: CodePoint, timeStamp: number): Feedback {
+  appendChar(
+    timeStamp: number,
+    codePoint: CodePoint,
+    timeToType: number,
+  ): Feedback {
     if (this.completed) {
       throw new Error();
     }
@@ -150,7 +168,15 @@ export class TextInput {
       (this.forgiveErrors || this.#garbage.length === 0)
     ) {
       const typo = this.#typo;
-      this.#addStep({ codePoint, timeStamp, typo }, this.at(this.pos));
+      this.#addStep(
+        {
+          timeStamp,
+          codePoint,
+          timeToType,
+          typo,
+        },
+        this.at(this.pos),
+      );
       this.#garbage = [];
       this.#typo = false;
       if (typo) {
@@ -169,8 +195,9 @@ export class TextInput {
             attrs: Attr.Garbage,
             cls: null,
           },
-          codePoint,
           timeStamp,
+          codePoint,
+          timeToType,
           typo: false,
         });
       }
@@ -213,20 +240,13 @@ export class TextInput {
   }
 
   #skipWord(timeStamp: number): void {
-    this.#addStep(
-      {
-        codePoint: this.at(this.pos).codePoint,
-        timeStamp,
-        typo: true,
-      },
-      this.at(this.pos),
-    );
     // Skip the remaining non-space characters inside the word.
     while (this.pos < this.length && this.at(this.pos).codePoint !== 0x0020) {
       this.#addStep(
         {
-          codePoint: this.at(this.pos).codePoint,
           timeStamp,
+          codePoint: this.at(this.pos).codePoint,
+          timeToType: 0,
           typo: true,
         },
         this.at(this.pos),
@@ -236,8 +256,9 @@ export class TextInput {
     if (this.pos < this.length && this.at(this.pos).codePoint === 0x0020) {
       this.#addStep(
         {
-          codePoint: this.at(this.pos).codePoint,
           timeStamp,
+          codePoint: this.at(this.pos).codePoint,
+          timeToType: 0,
           typo: false,
         },
         this.at(this.pos),
@@ -271,8 +292,9 @@ export class TextInput {
     // Append a step with an error.
     this.#addStep(
       {
-        codePoint: this.at(this.pos).codePoint,
         timeStamp: this.#garbage[0].timeStamp,
+        codePoint: this.at(this.pos).codePoint,
+        timeToType: 0,
         typo: true,
       },
       this.at(this.pos),
@@ -312,8 +334,9 @@ export class TextInput {
     // Append a step with an error.
     this.#addStep(
       {
-        codePoint: this.at(this.pos).codePoint,
         timeStamp: this.#garbage[0].timeStamp,
+        codePoint: this.at(this.pos).codePoint,
+        timeToType: 0,
         typo: true,
       },
       this.at(this.pos),

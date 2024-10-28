@@ -1,6 +1,6 @@
 import { type ModifierId } from "./types.ts";
 
-const modifierIds = [
+const all = [
   "CapsLock",
   "NumLock",
   "Control",
@@ -45,7 +45,7 @@ export class ModifierState {
 }
 
 export function getModifiers(event: KeyboardEvent): ModifierId[] {
-  return modifierIds.filter((id) => event.getModifierState(id));
+  return all.filter((id) => event.getModifierState(id));
 }
 
 export function isTextInput(modifiers: readonly ModifierId[]): boolean {
