@@ -44,16 +44,16 @@ function useInputHandler(): InputHandler {
   return handler;
 }
 
-const divStyle: CSSProperties = {
+const divStyle = {
   position: "absolute",
   insetInlineStart: "0px",
   insetBlockStart: "0px",
   inlineSize: "0px",
   blockSize: "0px",
   overflow: "hidden",
-};
+} satisfies CSSProperties;
 
-const inputStyle: CSSProperties = {
+const inputStyle = {
   display: "block",
   margin: "0px",
   padding: "0px",
@@ -61,4 +61,4 @@ const inputStyle: CSSProperties = {
   blockSize: "1em",
   border: "none",
   outline: "none",
-};
+} satisfies CSSProperties;

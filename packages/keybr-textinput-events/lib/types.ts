@@ -10,13 +10,17 @@ export type KeyEvent = {
   readonly timeStamp: number;
   readonly code: string;
   readonly key: string;
-  readonly shiftKey: boolean;
-  readonly altKey: boolean;
-  readonly ctrlKey: boolean;
-  readonly metaKey: boolean;
-  readonly location: number;
-  readonly repeat: boolean;
+  readonly modifiers: readonly ModifierId[];
 };
+
+export type ModifierId =
+  | "CapsLock"
+  | "NumLock"
+  | "Control"
+  | "Shift"
+  | "Alt"
+  | "AltGraph"
+  | "Meta";
 
 export type TextInputEvent = {
   readonly timeStamp: number;

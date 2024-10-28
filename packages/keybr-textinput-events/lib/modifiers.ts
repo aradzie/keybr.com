@@ -1,26 +1,33 @@
-import { type KeyId } from "@keybr/keyboard";
+import { type ModifierId } from "./types.ts";
 
-const capsLock = "CapsLock" as const;
-const numLock = "NumLock" as const;
+const modifierIds = [
+  "CapsLock",
+  "NumLock",
+  "Control",
+  "Shift",
+  "Alt",
+  "AltGraph",
+  "Meta",
+] satisfies ModifierId[];
 
 let initialized = false;
-let modifiers: readonly KeyId[] = [];
+let modifiers: readonly ModifierId[] = [];
 
 /**
  * A static global object which tracks the state of the modifier keys,
  * such as `CapsLock`, `NumLock`, etc.
  */
 export class ModifierState {
-  static get modifiers(): readonly KeyId[] {
+  static get modifiers(): readonly ModifierId[] {
     return modifiers;
   }
 
   static get capsLock(): boolean {
-    return modifiers.includes(capsLock);
+    return modifiers.includes("CapsLock");
   }
 
   static get numLock(): boolean {
-    return modifiers.includes(numLock);
+    return modifiers.includes("NumLock");
   }
 
   static initialize() {
@@ -37,6 +44,14 @@ export class ModifierState {
   }
 }
 
-function getModifiers(event: KeyboardEvent): KeyId[] {
-  return [capsLock, numLock].filter((m) => event.getModifierState(m));
+export function getModifiers(event: KeyboardEvent): ModifierId[] {
+  return modifierIds.filter((id) => event.getModifierState(id));
+}
+
+export function isTextInput(modifiers: readonly ModifierId[]): boolean {
+  return !(
+    modifiers.includes("Control") ||
+    modifiers.includes("Alt") ||
+    modifiers.includes("Meta")
+  );
 }

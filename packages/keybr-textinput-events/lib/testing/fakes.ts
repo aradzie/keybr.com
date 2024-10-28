@@ -1,5 +1,6 @@
 import {
   type KeyEvent,
+  type ModifierId,
   type TextInputEvent,
   type TextInputListener,
 } from "../types.ts";
@@ -41,7 +42,7 @@ export function makeFakeKeyboardEvent({
   metaKey?: boolean;
   location?: number;
   repeat?: boolean;
-  modifiers?: readonly string[];
+  modifiers?: readonly ModifierId[];
 }) {
   return new (class FakeKeyboardEvent extends FakeEvent {
     readonly code = code;
@@ -54,7 +55,7 @@ export function makeFakeKeyboardEvent({
     readonly repeat = repeat;
 
     getModifierState(modifier: string): boolean {
-      return modifiers.includes(modifier);
+      return modifiers.includes(modifier as ModifierId);
     }
 
     constructor() {

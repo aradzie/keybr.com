@@ -8,7 +8,7 @@ import { Settings } from "@keybr/settings";
 import test from "ava";
 import { emulateLayout } from "./emulation.ts";
 import { tracingListener } from "./testing/fakes.ts";
-import { type KeyEvent } from "./types.ts";
+import { type KeyEvent, type ModifierId } from "./types.ts";
 
 test("translate without emulation", (t) => {
   // Arrange.
@@ -63,7 +63,6 @@ test("translate a normal input", (t) => {
       timeStamp: 1,
       code: "ShiftLeft",
       key: "Shift",
-      shiftKey: true,
     }),
   );
   listener.onKeyDown(
@@ -71,7 +70,7 @@ test("translate a normal input", (t) => {
       timeStamp: 2,
       code: "KeyS",
       key: "S",
-      shiftKey: true,
+      modifiers: ["Shift"],
     }),
   );
   listener.onTextInput({
@@ -84,7 +83,7 @@ test("translate a normal input", (t) => {
       timeStamp: 3,
       code: "KeyS",
       key: "S",
-      shiftKey: true,
+      modifiers: ["Shift"],
     }),
   );
   listener.onKeyUp(
@@ -92,7 +91,6 @@ test("translate a normal input", (t) => {
       timeStamp: 4,
       code: "ShiftLeft",
       key: "Shift",
-      shiftKey: false,
     }),
   );
 
@@ -126,7 +124,6 @@ test("translate a control input", (t) => {
       timeStamp: 1,
       code: "ControlLeft",
       key: "Control",
-      ctrlKey: true,
     }),
   );
   listener.onKeyDown(
@@ -134,7 +131,7 @@ test("translate a control input", (t) => {
       timeStamp: 2,
       code: "KeyS",
       key: "s",
-      ctrlKey: true,
+      modifiers: ["Control"],
     }),
   );
   listener.onKeyUp(
@@ -142,7 +139,7 @@ test("translate a control input", (t) => {
       timeStamp: 3,
       code: "KeyS",
       key: "s",
-      ctrlKey: true,
+      modifiers: ["Control"],
     }),
   );
   listener.onKeyUp(
@@ -150,7 +147,6 @@ test("translate a control input", (t) => {
       timeStamp: 4,
       code: "ControlLeft",
       key: "Control",
-      ctrlKey: false,
     }),
   );
 
@@ -183,7 +179,6 @@ test("translate a clear char input", (t) => {
       timeStamp: 1,
       code: "Backspace",
       key: "Backspace",
-      ctrlKey: false,
     }),
   );
   listener.onTextInput({
@@ -196,7 +191,6 @@ test("translate a clear char input", (t) => {
       timeStamp: 2,
       code: "Backspace",
       key: "Backspace",
-      ctrlKey: false,
     }),
   );
 
@@ -228,7 +222,6 @@ test("translate a clear word input", (t) => {
       timeStamp: 1,
       code: "ControlLeft",
       key: "Control",
-      ctrlKey: true,
     }),
   );
   listener.onKeyDown(
@@ -236,7 +229,7 @@ test("translate a clear word input", (t) => {
       timeStamp: 2,
       code: "Backspace",
       key: "Backspace",
-      ctrlKey: true,
+      modifiers: ["Control"],
     }),
   );
   listener.onTextInput({
@@ -249,7 +242,7 @@ test("translate a clear word input", (t) => {
       timeStamp: 3,
       code: "Backspace",
       key: "Backspace",
-      ctrlKey: true,
+      modifiers: ["Control"],
     }),
   );
   listener.onKeyUp(
@@ -257,7 +250,6 @@ test("translate a clear word input", (t) => {
       timeStamp: 4,
       code: "ControlLeft",
       key: "Control",
-      ctrlKey: false,
     }),
   );
 
@@ -356,7 +348,6 @@ test("fix key locations", (t) => {
       timeStamp: 1,
       code: "ShiftLeft",
       key: "Shift",
-      shiftKey: true,
     }),
   );
   listener.onKeyDown(
@@ -364,7 +355,7 @@ test("fix key locations", (t) => {
       timeStamp: 2,
       code: "KeyO",
       key: "O",
-      shiftKey: true,
+      modifiers: ["Shift"],
     }),
   );
   listener.onTextInput({
@@ -377,7 +368,7 @@ test("fix key locations", (t) => {
       timeStamp: 3,
       code: "KeyO",
       key: "O",
-      shiftKey: true,
+      modifiers: ["Shift"],
     }),
   );
   listener.onKeyUp(
@@ -385,7 +376,6 @@ test("fix key locations", (t) => {
       timeStamp: 4,
       code: "ShiftLeft",
       key: "Shift",
-      shiftKey: false,
     }),
   );
 
@@ -404,32 +394,18 @@ function makeKeyEvent({
   timeStamp,
   code,
   key,
-  shiftKey = false,
-  altKey = false,
-  ctrlKey = false,
-  metaKey = false,
-  location = 0,
-  repeat = false,
+  modifiers = [],
 }: {
   timeStamp: number;
   code: string;
   key: string;
-  shiftKey?: boolean;
-  altKey?: boolean;
-  ctrlKey?: boolean;
-  metaKey?: boolean;
-  location?: number;
   repeat?: boolean;
+  modifiers?: readonly ModifierId[];
 }): KeyEvent {
   return {
     timeStamp,
     code,
     key,
-    shiftKey,
-    altKey,
-    ctrlKey,
-    metaKey,
-    location,
-    repeat,
+    modifiers,
   };
 }

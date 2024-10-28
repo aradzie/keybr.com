@@ -6,8 +6,10 @@ import {
 } from "@keybr/keyboard";
 import { type Settings } from "@keybr/settings";
 import { type CodePoint } from "@keybr/unicode";
+import { isTextInput } from "./modifiers.ts";
 import {
   type KeyEvent,
+  type ModifierId,
   type TextInputEvent,
   type TextInputListener,
 } from "./types.ts";
@@ -43,21 +45,18 @@ function forwardEmulation(
 ): TextInputListener {
   return {
     onKeyDown: (event: KeyEvent): void => {
-      const [codePoint, mapped] = fixKey(keyboard, event);
+      const [mapped, codePoint] = fixKey(keyboard, event);
       target.onKeyDown(mapped);
-      const { ctrlKey, altKey, metaKey, timeStamp } = mapped;
-      if (!(ctrlKey || altKey || metaKey)) {
-        if (codePoint > 0x0000) {
-          target.onTextInput({
-            timeStamp,
-            inputType: "appendChar",
-            codePoint,
-          });
-        }
+      if (isTextInput(event.modifiers) && codePoint > 0x0000) {
+        target.onTextInput({
+          timeStamp: mapped.timeStamp,
+          inputType: "appendChar",
+          codePoint,
+        });
       }
     },
     onKeyUp: (event: KeyEvent): void => {
-      const [codePoint, mapped] = fixKey(keyboard, event);
+      const [mapped, codePoint] = fixKey(keyboard, event);
       target.onKeyUp(mapped);
     },
     onTextInput: (event: TextInputEvent): void => {
@@ -105,40 +104,23 @@ function reverseEmulation(
  */
 function fixKey(
   keyboard: Keyboard,
-  {
-    timeStamp,
-    code,
-    key,
-    shiftKey,
-    altKey,
-    ctrlKey,
-    metaKey,
-    location,
-    repeat,
-  }: KeyEvent,
-): [CodePoint, KeyEvent] {
+  { timeStamp, code, key, modifiers }: KeyEvent,
+): [KeyEvent, CodePoint] {
   let codePoint = 0x0000;
   const characters = keyboard.getCharacters(code);
   if (characters != null) {
     key = String.fromCodePoint(
-      (codePoint = characters.getCodePoint(
-        KeyModifier.from({ shiftKey, altKey }),
-      )),
+      (codePoint = characters.getCodePoint(toKeyModifier(modifiers))),
     );
   }
   return [
-    codePoint,
     {
       timeStamp,
       code,
       key,
-      shiftKey,
-      altKey,
-      ctrlKey,
-      metaKey,
-      location,
-      repeat,
+      modifiers,
     },
+    codePoint,
   ];
 }
 
@@ -147,17 +129,7 @@ function fixKey(
  */
 function fixCode(
   keyboard: Keyboard,
-  {
-    timeStamp,
-    code,
-    key,
-    shiftKey,
-    altKey,
-    ctrlKey,
-    metaKey,
-    location,
-    repeat,
-  }: KeyEvent,
+  { timeStamp, code, key, modifiers }: KeyEvent,
 ): KeyEvent {
   if (key.length === 1) {
     const combo = keyboard.getCombo(key.codePointAt(0) ?? 0x0000);
@@ -169,11 +141,19 @@ function fixCode(
     timeStamp,
     code,
     key,
-    shiftKey,
-    altKey,
-    ctrlKey,
-    metaKey,
-    location,
-    repeat,
+    modifiers,
   };
+}
+
+function toKeyModifier(modifiers: readonly ModifierId[]): KeyModifier {
+  if (modifiers.includes("Shift") && modifiers.includes("AltGraph")) {
+    return KeyModifier.ShiftAlt;
+  }
+  if (modifiers.includes("Shift")) {
+    return KeyModifier.Shift;
+  }
+  if (modifiers.includes("AltGraph")) {
+    return KeyModifier.Alt;
+  }
+  return KeyModifier.None;
 }

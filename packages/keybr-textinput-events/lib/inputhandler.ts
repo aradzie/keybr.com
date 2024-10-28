@@ -1,5 +1,6 @@
 import { type Focusable } from "@keybr/widget";
-import { ModifierState } from "./modifiers.ts";
+import { toKeyEvent } from "./events.ts";
+import { getModifiers, isTextInput, ModifierState } from "./modifiers.ts";
 import { type KeyEvent, type TextInputEvent } from "./types.ts";
 
 // https://w3c.github.io/uievents/
@@ -95,15 +96,13 @@ export class InputHandler implements Focusable {
         return;
       }
     }
-    const timeStamp = timeStampOf(event);
-    this.#listeners.onKeyDown?.(toKeyEvent(event, timeStamp));
-    const { ctrlKey, altKey, metaKey, key } = event;
-    if (!(ctrlKey || altKey || metaKey)) {
-      switch (key) {
-        case "Tab":
-          event.preventDefault();
-          break;
-      }
+    if (event.repeat) {
+      event.preventDefault();
+      return;
+    }
+    this.#listeners.onKeyDown?.(toKeyEvent(event));
+    if (isTextInput(getModifiers(event)) && event.key === "Tab") {
+      event.preventDefault();
     }
   };
 
@@ -113,8 +112,11 @@ export class InputHandler implements Focusable {
         return;
       }
     }
-    const timeStamp = timeStampOf(event);
-    this.#listeners.onKeyUp?.(toKeyEvent(event, timeStamp));
+    if (event.repeat) {
+      event.preventDefault();
+      return;
+    }
+    this.#listeners.onKeyUp?.(toKeyEvent(event));
   };
 
   handleInput = (event: InputEvent): void => {
@@ -123,15 +125,14 @@ export class InputHandler implements Focusable {
         return;
       }
     }
-    const timeStamp = timeStampOf(event);
     switch (event.inputType) {
       case "insertText":
-        this.#appendChar(event.data, timeStamp);
+        this.#appendChar(event.data, event.timeStamp);
         this.#clearInput();
         break;
       case "insertLineBreak":
         this.#listeners.onTextInput?.({
-          timeStamp,
+          timeStamp: event.timeStamp,
           inputType: "appendLineBreak",
           codePoint: 0x0000,
         });
@@ -139,7 +140,7 @@ export class InputHandler implements Focusable {
         break;
       case "deleteContentBackward":
         this.#listeners.onTextInput?.({
-          timeStamp,
+          timeStamp: event.timeStamp,
           inputType: "clearChar",
           codePoint: 0x0000,
         });
@@ -147,7 +148,7 @@ export class InputHandler implements Focusable {
         break;
       case "deleteWordBackward":
         this.#listeners.onTextInput?.({
-          timeStamp,
+          timeStamp: event.timeStamp,
           inputType: "clearWord",
           codePoint: 0x0000,
         });
@@ -160,13 +161,12 @@ export class InputHandler implements Focusable {
   };
 
   handleComposition = (event: CompositionEvent): void => {
-    const timeStamp = timeStampOf(event);
     switch (event.type) {
       case "compositionstart":
       case "compositionupdate":
         break;
       case "compositionend":
-        this.#appendChar(event.data, timeStamp);
+        this.#appendChar(event.data, event.timeStamp);
         this.#clearInput();
         break;
     }
@@ -184,35 +184,4 @@ export class InputHandler implements Focusable {
       }
     }
   }
-}
-
-function toKeyEvent(
-  {
-    code,
-    key,
-    shiftKey,
-    altKey,
-    ctrlKey,
-    metaKey,
-    location,
-    repeat,
-  }: KeyboardEvent,
-  timeStamp: number,
-): KeyEvent {
-  return {
-    timeStamp,
-    code,
-    key,
-    shiftKey,
-    altKey,
-    ctrlKey,
-    metaKey,
-    location,
-    repeat,
-  };
-}
-
-function timeStampOf({ timeStamp }: { timeStamp: number }): number {
-  // Mobile Safari reports zero time stamps, so here's a workaround.
-  return Math.round(timeStamp || performance.now());
 }

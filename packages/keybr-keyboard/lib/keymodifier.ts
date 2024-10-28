@@ -16,28 +16,6 @@ export class KeyModifier {
     this.alt = alt;
     this.complexity = complexityOf(shift, alt);
   }
-
-  static readonly from = ({
-    shiftKey,
-    altKey,
-  }: {
-    readonly shiftKey: boolean;
-    readonly altKey: boolean;
-  }): KeyModifier => {
-    if (shiftKey) {
-      if (altKey) {
-        return KeyModifier.ShiftAlt;
-      } else {
-        return KeyModifier.Shift;
-      }
-    } else {
-      if (altKey) {
-        return KeyModifier.Alt;
-      } else {
-        return KeyModifier.None;
-      }
-    }
-  };
 }
 
 function complexityOf(shift: boolean, alt: boolean): number {
