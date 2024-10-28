@@ -52,7 +52,7 @@ function compute(
   endedAt: number,
 ): Stats {
   const { length } = steps;
-  const time = endedAt - startedAt;
+  const time = Math.round(endedAt - startedAt);
   const speed = computeSpeed(length, time);
   const errors = countErrors(steps);
   const accuracy = (length - errors) / length;

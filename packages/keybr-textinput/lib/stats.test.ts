@@ -10,11 +10,11 @@ const Space = 0x0020;
 
 test("compute stats", (t) => {
   const stats = makeStats([
-    { codePoint: X, timeStamp: 100, typo: false }, // Trigger is ignored.
-    { codePoint: A, timeStamp: 200, typo: false },
-    { codePoint: B, timeStamp: 300, typo: false },
-    { codePoint: C, timeStamp: 400, typo: false },
-    { codePoint: Space, timeStamp: 500, typo: true },
+    { codePoint: X, timeStamp: 100.1, typo: false }, // Trigger is ignored.
+    { codePoint: A, timeStamp: 200.1, typo: false },
+    { codePoint: B, timeStamp: 300.1, typo: false },
+    { codePoint: C, timeStamp: 400.1, typo: false },
+    { codePoint: Space, timeStamp: 500.2, typo: true },
   ]);
 
   t.deepEqual(stats, {
@@ -36,13 +36,13 @@ test("compute stats", (t) => {
 test("compute with started at", (t) => {
   const stats = makeStats(
     [
-      { codePoint: A, timeStamp: 200, typo: false },
-      { codePoint: B, timeStamp: 300, typo: false },
-      { codePoint: C, timeStamp: 400, typo: false },
-      { codePoint: Space, timeStamp: 500, typo: true },
+      { codePoint: A, timeStamp: 200.1, typo: false },
+      { codePoint: B, timeStamp: 300.1, typo: false },
+      { codePoint: C, timeStamp: 400.1, typo: false },
+      { codePoint: Space, timeStamp: 500.2, typo: true },
     ],
     {
-      startedAt: 100,
+      startedAt: 100.1,
     },
   );
 
@@ -65,14 +65,14 @@ test("compute with started at", (t) => {
 test("compute with ended at", (t) => {
   const stats = makeStats(
     [
-      { codePoint: X, timeStamp: 100, typo: false }, // Trigger is ignored.
-      { codePoint: A, timeStamp: 200, typo: false },
-      { codePoint: B, timeStamp: 300, typo: false },
-      { codePoint: C, timeStamp: 400, typo: false },
-      { codePoint: Space, timeStamp: 500, typo: true },
+      { codePoint: X, timeStamp: 100.1, typo: false }, // Trigger is ignored.
+      { codePoint: A, timeStamp: 200.1, typo: false },
+      { codePoint: B, timeStamp: 300.1, typo: false },
+      { codePoint: C, timeStamp: 400.1, typo: false },
+      { codePoint: Space, timeStamp: 500.1, typo: true },
     ],
     {
-      endedAt: 600,
+      endedAt: 600.2,
     },
   );
 
@@ -95,14 +95,14 @@ test("compute with ended at", (t) => {
 test("compute with started at and ended at", (t) => {
   const stats = makeStats(
     [
-      { codePoint: A, timeStamp: 200, typo: false },
-      { codePoint: B, timeStamp: 300, typo: false },
-      { codePoint: C, timeStamp: 400, typo: false },
-      { codePoint: Space, timeStamp: 500, typo: true },
+      { codePoint: A, timeStamp: 200.1, typo: false },
+      { codePoint: B, timeStamp: 300.1, typo: false },
+      { codePoint: C, timeStamp: 400.1, typo: false },
+      { codePoint: Space, timeStamp: 500.1, typo: true },
     ],
     {
-      startedAt: 100,
-      endedAt: 600,
+      startedAt: 100.1,
+      endedAt: 600.2,
     },
   );
 
