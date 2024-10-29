@@ -85,7 +85,7 @@ test("forward emulation, translate a character input", (t) => {
     "400,keyup,ControlLeft,Control",
     "500,keydown,ShiftLeft,Shift",
     "600,keydown,KeyS,O",
-    "600,appendChar,O,200",
+    "600,appendChar,O,300",
     "700,keyup,KeyS,O",
     "800,keyup,ShiftLeft,Shift",
   ]);

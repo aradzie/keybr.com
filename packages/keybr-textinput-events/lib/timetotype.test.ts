@@ -86,6 +86,27 @@ test("Shift down,Alt down,character (MacOS)", (t) => {
   );
 });
 
+test("Dead down,character", (t) => {
+  t.is(
+    new Tester()
+      .add(1100, "keydown", "Equal", "Dead")
+      .add(1200, "keydown", "KeyA", "a")
+      .measure(1200),
+    100,
+  );
+});
+
+test("Shift down,Dead down,character", (t) => {
+  t.is(
+    new Tester()
+      .add(1100, "keydown", "ShiftLeft", "Shift")
+      .add(1200, "keydown", "Equal", "Dead")
+      .add(1300, "keydown", "KeyA", "a")
+      .measure(1300),
+    100,
+  );
+});
+
 test("Dead down,Dead up,character", (t) => {
   t.is(
     new Tester()
@@ -132,7 +153,7 @@ test("Shift down,Shift up,Alt down,Alt up,character", (t) => {
       .add(1400, "keyup", "AltLeft", "Alt")
       .add(1500, "keydown", "KeyA", "a")
       .measure(1500),
-    200,
+    500,
   );
 });
 
@@ -145,7 +166,7 @@ test("Shift down,Alt down,Alt up,Shift up,character", (t) => {
       .add(1400, "keyup", "ShiftLeft", "Shift")
       .add(1500, "keydown", "KeyA", "a")
       .measure(1500),
-    300,
+    500,
   );
 });
 
@@ -158,7 +179,30 @@ test("Shift down,Alt down,Shift up,Alt up,character", (t) => {
       .add(1400, "keyup", "AltLeft", "Alt")
       .add(1500, "keydown", "KeyA", "a")
       .measure(1500),
+    500,
+  );
+});
+
+test("Insert down,Insert up,character", (t) => {
+  t.is(
+    new Tester()
+      .add(1100, "keydown", "Insert", "Insert")
+      .add(1200, "keyup", "Insert", "Insert")
+      .add(1300, "keydown", "KeyA", "a")
+      .measure(1300),
     300,
+  );
+});
+
+test("Insert down,Insert up,Shift down,character", (t) => {
+  t.is(
+    new Tester()
+      .add(1100, "keydown", "Insert", "Insert")
+      .add(1200, "keyup", "Insert", "Insert")
+      .add(1300, "keydown", "ShiftLeft", "Shift")
+      .add(1400, "keydown", "KeyA", "a")
+      .measure(1400),
+    200,
   );
 });
 

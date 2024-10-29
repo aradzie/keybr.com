@@ -54,8 +54,8 @@ type SimpleEvent = {
  * ```
  */
 export class TimeToType {
-  #events: SimpleEvent[] = [];
-  #timeStamp: number = 0;
+  #down = new Map<string, SimpleEvent>();
+  #timeStamp = 0;
 
   keyDown(event: Omit<SimpleEvent, "type">): void {
     this.add({ ...event, type: "keydown" });
@@ -65,39 +65,34 @@ export class TimeToType {
     this.add({ ...event, type: "keyup" });
   }
 
-  add({ timeStamp, type, code, key }: SimpleEvent): void {
-    if (type === "keydown" && code) {
-      // When the AltGraph key is pressed in Windows,
-      // it generates a pair of events, Control then AltGraph.
-      // We are only interested in the AltGraph event.
-      const last = this.#events.at(-1);
-      if (last?.key === "Control" && key === "AltGraph") {
-        this.#events.pop();
-      }
-      this.#events.push({ timeStamp, type, code, key });
-    }
-
-    if (type === "keyup" && code) {
-      let index = 0;
-      while (index < this.#events.length) {
-        const event = this.#events[index];
-        if (event.code === code) {
-          this.#events.splice(index, 1);
-          if (event.timeStamp > this.#timeStamp) {
-            this.#timeStamp = event.timeStamp;
-          }
-        } else {
-          index += 1;
+  add(event: SimpleEvent): void {
+    const { type, code, key } = event;
+    if (code && key) {
+      if (type === "keydown") {
+        if (
+          key === "Shift" ||
+          key === "Alt" ||
+          key === "AltGraph" ||
+          key === "Dead"
+        ) {
+          this.#down.set(code, event);
         }
+      }
+      if (type === "keyup") {
+        const down = this.#down.get(code);
+        if (down != null && down.key === "Dead") {
+          this.#timeStamp = down.timeStamp;
+        }
+        this.#down.delete(code);
       }
     }
   }
 
   measure({ timeStamp }: Pick<SimpleEvent, "timeStamp">): number {
-    const count = Math.max(1, this.#events.length);
-    this.#events.length = 0;
-    const timeToType = timeStamp - this.#timeStamp;
+    const size = this.#down.size;
+    this.#down.clear();
+    const duration = timeStamp - this.#timeStamp;
     this.#timeStamp = timeStamp;
-    return timeToType / count;
+    return duration / (size + 1);
   }
 }

@@ -121,7 +121,7 @@ test("handle a clear word input", (t) => {
   t.deepEqual(target.trace, [
     "100,keydown,ControlLeft,Control",
     "200,keydown,Backspace,Backspace",
-    "200,clearWord,\u0000,100",
+    "200,clearWord,\u0000,200", // We don't count the Control key as a modifier.
     "300,keyup,Backspace,Backspace",
     "400,keyup,ControlLeft,Control",
   ]);
