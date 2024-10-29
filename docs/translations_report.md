@@ -105,9 +105,9 @@ Untranslated: 16 messages, 93 words
 
 # German
 
-Translated: 415 messages, 5064 words
+Translated: 424 messages, 5169 words
 
-Untranslated: 13 messages, 89 words
+Untranslated: 6 messages, 6 words
 
 * *Layout*
 * *Layout:*
@@ -115,13 +115,6 @@ Untranslated: 13 messages, 89 words
 * *Syntax:*
 * *Position*
 * *Alphabet:*
-* *Top accuracy*
-* *Average accuracy*
-* *Relative Accuracy*
-* *Repeat each word:*
-* *This is a histogram of the accuracies of all users, and your...*
-* *Repeat each word a number of times. Type a word for the firs...*
-* *See how accurate you type relative to other users. The highe...*
 
 # Greek
 
