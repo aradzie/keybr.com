@@ -5,6 +5,7 @@ import { BRAZILIAN_104 } from "./geometry/brazilian_104.ts";
 import { BRAZILIAN_104_FULL } from "./geometry/brazilian_104_full.ts";
 import { ISO_102 } from "./geometry/iso_102.ts";
 import { ISO_102_FULL } from "./geometry/iso_102_full.ts";
+import { ISO_102_SYMMETRIC } from "./geometry/iso_102_symmetric.ts";
 import { JAPANESE_106 } from "./geometry/japanese_106.ts";
 import { JAPANESE_106_FULL } from "./geometry/japanese_106_full.ts";
 import { KOREAN_103 } from "./geometry/korean_103.ts";
@@ -161,6 +162,7 @@ const geometryDict = new Map<Geometry, GeometryDict>([
   [Geometry.BRAZILIAN_104_FULL, BRAZILIAN_104_FULL],
   [Geometry.ISO_102, ISO_102],
   [Geometry.ISO_102_FULL, ISO_102_FULL],
+  [Geometry.ISO_102_SYMMETRIC, ISO_102_SYMMETRIC],
   [Geometry.JAPANESE_106, JAPANESE_106],
   [Geometry.JAPANESE_106_FULL, JAPANESE_106_FULL],
   [Geometry.KOREAN_103, KOREAN_103],

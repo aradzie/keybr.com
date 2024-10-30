@@ -16,6 +16,7 @@ export class Layout implements XEnumItem {
       Geometry.ANSI_101_FULL,
       Geometry.ISO_102,
       Geometry.ISO_102_FULL,
+      Geometry.ISO_102_SYMMETRIC,
       Geometry.MATRIX,
     ),
   );
