@@ -17,7 +17,7 @@
   "KeyE": "dD",
   "KeyR": "wW",
   "KeyT": "zZ",
-  "KeyY": ",-",
+  "KeyY": "'_",
   "KeyU": "fF",
   "KeyI": "oO",
   "KeyO": "uU",
@@ -44,8 +44,8 @@
   "KeyB": "vV",
   "KeyN": "kK",
   "KeyM": "pP",
-  "Comma": ",>",
-  "Period": "_\"",
+  "Comma": ".>",
+  "Period": "-\"",
   "Slash": "/<",
   "Space": " "
 }
