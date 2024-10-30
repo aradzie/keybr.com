@@ -1,12 +1,13 @@
 import { type CodePoint } from "@keybr/unicode";
 
-export type TextInputListener = {
-  readonly onKeyDown: (event: KeyEvent) => void;
-  readonly onKeyUp: (event: KeyEvent) => void;
-  readonly onTextInput: (event: TextInputEvent) => void;
+export type InputListener = {
+  readonly onKeyDown: (event: IKeyboardEvent) => void;
+  readonly onKeyUp: (event: IKeyboardEvent) => void;
+  readonly onInput: (event: IInputEvent) => void;
 };
 
-export type KeyEvent = {
+export type IKeyboardEvent = {
+  readonly type: "keydown" | "keyup";
   readonly timeStamp: number;
   readonly code: string;
   readonly key: string;
@@ -22,7 +23,8 @@ export type ModifierId =
   | "AltGraph"
   | "Meta";
 
-export type TextInputEvent = {
+export type IInputEvent = {
+  readonly type: "input";
   readonly timeStamp: number;
   readonly inputType:
     | "appendChar"

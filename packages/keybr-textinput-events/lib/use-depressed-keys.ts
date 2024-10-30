@@ -3,7 +3,7 @@ import { type Settings } from "@keybr/settings";
 import { useWindowEvent } from "@keybr/widget";
 import { useState } from "react";
 import { emulateLayout } from "./emulation.ts";
-import { toKeyEvent } from "./events.ts";
+import { mapEvent } from "./events.ts";
 
 export function addKey(keys: readonly KeyId[], key: KeyId): readonly KeyId[] {
   const set = new Set(keys);
@@ -28,13 +28,13 @@ export function useDepressedKeys(
   const listener = emulateLayout(settings, keyboard, {
     onKeyDown: ({ code }) => setDepressedKeys(addKey(depressedKeys, code)),
     onKeyUp: ({ code }) => setDepressedKeys(deleteKey(depressedKeys, code)),
-    onTextInput: () => {},
+    onInput: () => {},
   });
   useWindowEvent("keydown", (event) => {
-    listener.onKeyDown(toKeyEvent(event));
+    listener.onKeyDown(mapEvent(event));
   });
   useWindowEvent("keyup", (event) => {
-    listener.onKeyUp(toKeyEvent(event));
+    listener.onKeyUp(mapEvent(event));
   });
   return depressedKeys;
 }

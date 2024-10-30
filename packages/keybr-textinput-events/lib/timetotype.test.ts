@@ -214,12 +214,12 @@ class Tester {
     this.ttt.measure({ timeStamp: this.timeStamp });
   }
 
-  add(timeStamp: number, type: string, code: string, key: string) {
+  add(timeStamp: number, type: "keydown" | "keyup", code: string, key: string) {
     if (this.timeStamp > timeStamp) {
       throw new Error();
     }
     this.timeStamp = timeStamp;
-    this.ttt.add({ timeStamp, type, code, key });
+    this.ttt.add({ timeStamp, type, code, key, modifiers: [] });
     return this;
   }
 

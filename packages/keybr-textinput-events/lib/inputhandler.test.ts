@@ -1,17 +1,13 @@
 import test from "ava";
 import { InputHandler } from "./inputhandler.ts";
-import {
-  fakeEvent,
-  type FakeEventInit,
-  tracingListener,
-} from "./testing/fakes.ts";
+import { fakeEvent, type FakeEventInit, tracingListener } from "./testing/fakes.ts";
 
 test("handle a normal input", (t) => {
   // Arrange.
 
   const target = tracingListener();
   const handler = new InputHandler();
-  handler.setListeners(target);
+  handler.setCallbacks(target);
 
   // Act.
 
@@ -25,7 +21,7 @@ test("handle a normal input", (t) => {
   // Assert.
 
   t.deepEqual(target.trace, [
-    "100,keydown,KeyA,a",
+    "100,keydown,KeyA,a", //
     "100,appendChar,a,100",
     "200,keyup,KeyA,a",
   ]);
@@ -36,11 +32,10 @@ test("handle a composite input", (t) => {
 
   const target = tracingListener();
   const handler = new InputHandler();
-  handler.setListeners(target);
+  handler.setCallbacks(target);
 
   // Act.
 
-  // prettier-ignore
   replay(
     handler,
     { timeStamp: 100, type: "keydown", code: "AltRight", key: "AltGraph" },
@@ -77,7 +72,7 @@ test("handle a clear char input", (t) => {
 
   const target = tracingListener();
   const handler = new InputHandler();
-  handler.setListeners(target);
+  handler.setCallbacks(target);
 
   // Act.
 
@@ -102,11 +97,10 @@ test("handle a clear word input", (t) => {
 
   const target = tracingListener();
   const handler = new InputHandler();
-  handler.setListeners(target);
+  handler.setCallbacks(target);
 
   // Act.
 
-  // prettier-ignore
   replay(
     handler,
     { timeStamp: 100, type: "keydown", code: "ControlLeft", key: "Control" },
@@ -132,7 +126,7 @@ test("handle the enter key", (t) => {
 
   const target = tracingListener();
   const handler = new InputHandler();
-  handler.setListeners(target);
+  handler.setCallbacks(target);
 
   // Act.
 
@@ -157,7 +151,7 @@ test("handle the tab", (t) => {
 
   const target = tracingListener();
   const handler = new InputHandler();
-  handler.setListeners(target);
+  handler.setCallbacks(target);
 
   const keyDown = fakeEvent({
     timeStamp: 100,
@@ -174,13 +168,13 @@ test("handle the tab", (t) => {
 
   // Act.
 
-  handler.handleKeyDown(keyDown);
-  handler.handleKeyUp(keyUp);
+  handler.handleKeyboard(keyDown);
+  handler.handleKeyboard(keyUp);
 
   // Assert.
 
   t.true(keyDown.defaultPrevented);
-  t.false(keyUp.defaultPrevented);
+  t.true(keyUp.defaultPrevented);
 
   t.deepEqual(target.trace, [
     "100,keydown,Tab,Tab", //
@@ -193,7 +187,7 @@ test("incomplete events", (t) => {
 
   const target = tracingListener();
   const handler = new InputHandler();
-  handler.setListeners(target);
+  handler.setCallbacks(target);
 
   // Act.
 
@@ -215,10 +209,8 @@ function replay(handler: InputHandler, ...events: FakeEventInit[]) {
   for (const event of events) {
     switch (event.type) {
       case "keydown":
-        handler.handleKeyDown(fakeEvent(event));
-        break;
       case "keyup":
-        handler.handleKeyUp(fakeEvent(event));
+        handler.handleKeyboard(fakeEvent(event));
         break;
       case "input":
         handler.handleInput(fakeEvent(event));

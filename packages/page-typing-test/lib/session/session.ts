@@ -4,7 +4,7 @@ import {
   type Step,
   TextInput,
 } from "@keybr/textinput";
-import { type TextInputEvent } from "@keybr/textinput-events";
+import { type IInputEvent } from "@keybr/textinput-events";
 import { type TextGenerator } from "../generator/index.ts";
 import { computeProgress } from "./duration.ts";
 import {
@@ -46,12 +46,12 @@ export class Session {
     return this.#steps;
   }
 
-  handleTextInput(event: TextInputEvent): [
+  handleInput(event: IInputEvent): [
     feedback: Feedback, //
     progress: Progress,
     completed: boolean,
   ] {
-    const feedback = this.#textInput.onTextInput(event);
+    const feedback = this.#textInput.onInput(event);
     const [progress, completed] = computeProgress(
       this.#steps,
       this.settings.duration,

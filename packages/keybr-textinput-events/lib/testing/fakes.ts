@@ -1,8 +1,8 @@
 import {
-  type KeyEvent,
+  type IInputEvent,
+  type IKeyboardEvent,
+  type InputListener,
   type ModifierId,
-  type TextInputEvent,
-  type TextInputListener,
 } from "../types.ts";
 
 export class FakeEvent {
@@ -139,20 +139,20 @@ export function fakeEvent(init: FakeEventInit) {
 }
 
 export function tracingListener() {
-  return new (class implements TextInputListener {
+  return new (class implements InputListener {
     readonly trace: string[] = [];
-    onKeyDown = ({ timeStamp, code, key }: KeyEvent) => {
-      this.trace.push([timeStamp, "keydown", code, key].join(","));
+    onKeyDown = ({ timeStamp, type, code, key }: IKeyboardEvent) => {
+      this.trace.push([timeStamp, type, code, key].join(","));
     };
-    onKeyUp = ({ timeStamp, code, key }: KeyEvent) => {
-      this.trace.push([timeStamp, "keyup", code, key].join(","));
+    onKeyUp = ({ timeStamp, type, code, key }: IKeyboardEvent) => {
+      this.trace.push([timeStamp, type, code, key].join(","));
     };
-    onTextInput = ({
+    onInput = ({
       timeStamp,
       inputType,
       codePoint,
       timeToType,
-    }: TextInputEvent) => {
+    }: IInputEvent) => {
       this.trace.push(
         [
           timeStamp,

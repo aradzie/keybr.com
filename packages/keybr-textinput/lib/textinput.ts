@@ -95,7 +95,7 @@ export class TextInput {
     return this.#output.remaining;
   }
 
-  onTextInput({
+  onInput({
     timeStamp,
     inputType,
     codePoint,

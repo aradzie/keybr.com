@@ -40,25 +40,29 @@ test("lines", (t) => {
     t.is(lines[2].text, "three ");
   }
 
-  session.handleTextInput({
+  session.handleInput({
+    type: "input",
     timeStamp: 100,
     inputType: "appendChar",
     codePoint: "one ".codePointAt(0)!,
     timeToType: 100,
   });
-  session.handleTextInput({
+  session.handleInput({
+    type: "input",
     timeStamp: 200,
     inputType: "appendChar",
     codePoint: "one ".codePointAt(1)!,
     timeToType: 100,
   });
-  session.handleTextInput({
+  session.handleInput({
+    type: "input",
     timeStamp: 300,
     inputType: "appendChar",
     codePoint: "one ".codePointAt(2)!,
     timeToType: 100,
   });
-  session.handleTextInput({
+  session.handleInput({
+    type: "input",
     timeStamp: 400,
     inputType: "appendChar",
     codePoint: "one ".codePointAt(3)!,

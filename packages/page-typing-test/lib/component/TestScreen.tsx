@@ -1,6 +1,6 @@
 import { Screen } from "@keybr/pages-shared";
 import { type LineList, makeStats, type Stats } from "@keybr/textinput";
-import { type TextInputEvent } from "@keybr/textinput-events";
+import { type IInputEvent } from "@keybr/textinput-events";
 import { TextArea } from "@keybr/textinput-ui";
 import { type Focusable } from "@keybr/widget";
 import { Component, createRef, type ReactNode } from "react";
@@ -59,9 +59,9 @@ export class TestScreen extends Component<Props, State> {
     this.setState(nextTest(this.props, this.state.mark));
   };
 
-  handleTextInput = (event: TextInputEvent): void => {
+  handleInput = (event: IInputEvent): void => {
     const { session } = this.state;
-    const [feedback, progress, completed] = session.handleTextInput(event);
+    const [feedback, progress, completed] = session.handleInput(event);
     const lines = [...session.getLines()]; // Make a copy to force render.
     this.setState({
       lines: { text: "", lines },
@@ -82,7 +82,7 @@ export class TestScreen extends Component<Props, State> {
           wrap={false}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
-          onTextInput={this.handleTextInput}
+          onInput={this.handleInput}
           lineTemplate={LineTemplate}
         />
       </Screen>

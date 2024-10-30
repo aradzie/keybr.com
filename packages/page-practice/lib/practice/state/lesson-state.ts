@@ -23,7 +23,7 @@ import {
   toTextDisplaySettings,
   toTextInputSettings,
 } from "@keybr/textinput";
-import { type TextInputEvent } from "@keybr/textinput-events";
+import { type IInputEvent } from "@keybr/textinput-events";
 import { type CodePoint } from "@keybr/unicode";
 import { type LastLesson } from "./last-lesson.ts";
 import { type Progress } from "./progress.ts";
@@ -72,8 +72,8 @@ export class LessonState {
     this.#reset(this.lesson.generate(this.lessonKeys));
   }
 
-  onTextInput(event: TextInputEvent): Feedback {
-    const feedback = this.textInput.onTextInput(event);
+  onInput(event: IInputEvent): Feedback {
+    const feedback = this.textInput.onInput(event);
     this.lines = this.textInput.lines;
     this.suffix = this.textInput.remaining.map(({ codePoint }) => codePoint);
     if (this.textInput.completed) {

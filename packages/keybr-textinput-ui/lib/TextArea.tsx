@@ -1,9 +1,9 @@
 import { type LineList, type TextDisplaySettings } from "@keybr/textinput";
 import {
-  type KeyEvent,
+  type IInputEvent,
+  type IKeyboardEvent,
   ModifierState,
   TextEvents,
-  type TextInputEvent,
 } from "@keybr/textinput-events";
 import {
   type Focusable,
@@ -39,7 +39,7 @@ export function TextArea({
   onBlur,
   onKeyDown,
   onKeyUp,
-  onTextInput,
+  onInput,
 }: {
   readonly settings: TextDisplaySettings;
   readonly lines: LineList;
@@ -51,9 +51,9 @@ export function TextArea({
   readonly focusRef?: RefObject<Focusable>;
   readonly onFocus?: () => void;
   readonly onBlur?: () => void;
-  readonly onKeyDown?: (event: KeyEvent) => void;
-  readonly onKeyUp?: (event: KeyEvent) => void;
-  readonly onTextInput?: (event: TextInputEvent) => void;
+  readonly onKeyDown?: (event: IKeyboardEvent) => void;
+  readonly onKeyUp?: (event: IKeyboardEvent) => void;
+  readonly onInput?: (event: IInputEvent) => void;
 } & ZoomableProps): ReactNode {
   const ref = useRef<HTMLDivElement>(null);
   const innerRef = useRef<Focusable>(null);
@@ -104,7 +104,7 @@ export function TextArea({
         onBlur={handleBlur}
         onKeyDown={onKeyDown}
         onKeyUp={onKeyUp}
-        onTextInput={onTextInput}
+        onInput={onInput}
       />
       <TextLines
         settings={settings}

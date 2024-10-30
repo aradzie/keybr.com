@@ -1,13 +1,9 @@
-import {
-  Emulation,
-  keyboardProps,
-  Layout,
-  loadKeyboard,
-} from "@keybr/keyboard";
+import { Emulation, keyboardProps, Layout, loadKeyboard } from "@keybr/keyboard";
 import { Settings } from "@keybr/settings";
 import test from "ava";
 import { emulateLayout } from "./emulation.ts";
 import { tracingListener } from "./testing/fakes.ts";
+import { type IInputEvent, type IKeyboardEvent, type InputListener } from "./types.ts";
 
 test("forward emulation, translate a character input", (t) => {
   // Arrange.
@@ -21,60 +17,18 @@ test("forward emulation, translate a character input", (t) => {
 
   // Act.
 
-  listener.onKeyDown({
-    timeStamp: 100,
-    code: "ControlLeft",
-    key: "Control",
-    modifiers: [],
-  });
-  listener.onKeyDown({
-    timeStamp: 200,
-    code: "KeyS",
-    key: "s",
-    modifiers: ["Control"],
-  });
-  listener.onKeyUp({
-    timeStamp: 300,
-    code: "KeyS",
-    key: "s",
-    modifiers: ["Control"],
-  });
-  listener.onKeyUp({
-    timeStamp: 400,
-    code: "ControlLeft",
-    key: "Control",
-    modifiers: [],
-  });
-  listener.onKeyDown({
-    timeStamp: 500,
-    code: "ShiftLeft",
-    key: "Shift",
-    modifiers: [],
-  });
-  listener.onKeyDown({
-    timeStamp: 600,
-    code: "KeyS",
-    key: "S",
-    modifiers: ["Shift"],
-  });
-  listener.onTextInput({
-    timeStamp: 600,
-    inputType: "appendChar",
-    codePoint: /* "S" */ 0x0053,
-    timeToType: 999,
-  });
-  listener.onKeyUp({
-    timeStamp: 700,
-    code: "KeyS",
-    key: "S",
-    modifiers: ["Shift"],
-  });
-  listener.onKeyUp({
-    timeStamp: 800,
-    code: "ShiftLeft",
-    key: "Shift",
-    modifiers: [],
-  });
+  replay(
+    listener,
+    { timeStamp: 100, type: "keydown", code: "ControlLeft", key: "Control", modifiers: [] },
+    { timeStamp: 200, type: "keydown", code: "KeyS", key: "s", modifiers: ["Control"] },
+    { timeStamp: 300, type: "keyup", code: "KeyS", key: "s", modifiers: ["Control"] },
+    { timeStamp: 400, type: "keyup", code: "ControlLeft", key: "Control", modifiers: [] },
+    { timeStamp: 500, type: "keydown", code: "ShiftLeft", key: "Shift", modifiers: [] },
+    { timeStamp: 600, type: "keydown", code: "KeyS", key: "S", modifiers: ["Shift"] },
+    { timeStamp: 600, type: "input", inputType: "appendChar", codePoint: /* "S" */ 0x0053, timeToType: 999 },
+    { timeStamp: 700, type: "keyup", code: "KeyS", key: "S", modifiers: ["Shift"] },
+    { timeStamp: 800, type: "keyup", code: "ShiftLeft", key: "Shift", modifiers: [] },
+  );
 
   // Assert.
 
@@ -103,24 +57,12 @@ test("forward emulation, translate a clear char input", (t) => {
 
   // Act.
 
-  listener.onKeyDown({
-    timeStamp: 100,
-    code: "Backspace",
-    key: "Backspace",
-    modifiers: [],
-  });
-  listener.onTextInput({
-    timeStamp: 100,
-    inputType: "clearChar",
-    codePoint: 0x0000,
-    timeToType: 111,
-  });
-  listener.onKeyUp({
-    timeStamp: 200,
-    code: "Backspace",
-    key: "Backspace",
-    modifiers: [],
-  });
+  replay(
+    listener,
+    { timeStamp: 100, type: "keydown", code: "Backspace", key: "Backspace", modifiers: [] },
+    { timeStamp: 100, type: "input", inputType: "clearChar", codePoint: 0x0000, timeToType: 111 },
+    { timeStamp: 200, type: "keyup", code: "Backspace", key: "Backspace", modifiers: [] },
+  );
 
   // Assert.
 
@@ -143,36 +85,14 @@ test("forward emulation, translate a clear word input", (t) => {
 
   // Act.
 
-  listener.onKeyDown({
-    timeStamp: 100,
-    code: "ControlLeft",
-    key: "Control",
-    modifiers: [],
-  });
-  listener.onKeyDown({
-    timeStamp: 200,
-    code: "Backspace",
-    key: "Backspace",
-    modifiers: ["Control"],
-  });
-  listener.onTextInput({
-    timeStamp: 200,
-    inputType: "clearWord",
-    codePoint: 0x0000,
-    timeToType: 111,
-  });
-  listener.onKeyUp({
-    timeStamp: 300,
-    code: "Backspace",
-    key: "Backspace",
-    modifiers: ["Control"],
-  });
-  listener.onKeyUp({
-    timeStamp: 400,
-    code: "ControlLeft",
-    key: "Control",
-    modifiers: [],
-  });
+  replay(
+    listener,
+    { timeStamp: 100, type: "keydown", code: "ControlLeft", key: "Control", modifiers: [] },
+    { timeStamp: 200, type: "keydown", code: "Backspace", key: "Backspace", modifiers: ["Control"] },
+    { timeStamp: 200, type: "input", inputType: "clearWord", codePoint: 0x0000, timeToType: 111 },
+    { timeStamp: 300, type: "keyup", code: "Backspace", key: "Backspace", modifiers: ["Control"] },
+    { timeStamp: 400, type: "keyup", code: "ControlLeft", key: "Control", modifiers: [] },
+  );
 
   // Assert.
 
@@ -197,42 +117,15 @@ test("forward emulation, translate the whitespace keys", (t) => {
 
   // Act.
 
-  listener.onKeyDown({
-    timeStamp: 100,
-    code: "Space",
-    key: "Space",
-    modifiers: [],
-  });
-  listener.onTextInput({
-    timeStamp: 100,
-    inputType: "appendChar",
-    codePoint: 0x0020,
-    timeToType: 999,
-  });
-  listener.onKeyUp({
-    timeStamp: 200,
-    code: "Space",
-    key: "Space",
-    modifiers: [],
-  });
-  listener.onKeyDown({
-    timeStamp: 300,
-    code: "NumpadEnter",
-    key: "Enter",
-    modifiers: [],
-  });
-  listener.onTextInput({
-    timeStamp: 300,
-    inputType: "appendLineBreak",
-    codePoint: 0x0000,
-    timeToType: 111,
-  });
-  listener.onKeyUp({
-    timeStamp: 400,
-    code: "NumpadEnter",
-    key: "Enter",
-    modifiers: [],
-  });
+  replay(
+    listener,
+    { timeStamp: 100, type: "keydown", code: "Space", key: "Space", modifiers: [] },
+    { timeStamp: 100, type: "input", inputType: "appendChar", codePoint: 0x0020, timeToType: 999 },
+    { timeStamp: 200, type: "keyup", code: "Space", key: "Space", modifiers: [] },
+    { timeStamp: 300, type: "keydown", code: "NumpadEnter", key: "Enter", modifiers: [] },
+    { timeStamp: 300, type: "input", inputType: "appendLineBreak", codePoint: 0x0000, timeToType: 111 },
+    { timeStamp: 400, type: "keyup", code: "NumpadEnter", key: "Enter", modifiers: [] },
+  );
 
   // Assert.
 
@@ -258,24 +151,12 @@ test("forward emulation, incomplete events", (t) => {
 
   // Act.
 
-  listener.onKeyDown({
-    timeStamp: 100,
-    code: "",
-    key: "Undefined",
-    modifiers: [],
-  });
-  listener.onTextInput({
-    timeStamp: 100,
-    inputType: "appendChar",
-    codePoint: /* "S" */ 0x0053,
-    timeToType: 111,
-  });
-  listener.onKeyUp({
-    timeStamp: 200,
-    code: "",
-    key: "Undefined",
-    modifiers: [],
-  });
+  replay(
+    listener,
+    { timeStamp: 100, type: "keydown", code: "", key: "Undefined", modifiers: [] },
+    { timeStamp: 100, type: "input", inputType: "appendChar", codePoint: /* "S" */ 0x0053, timeToType: 111 },
+    { timeStamp: 200, type: "keyup", code: "", key: "Undefined", modifiers: [] },
+  );
 
   // Assert.
 
@@ -297,36 +178,14 @@ test("reverse emulation, translate character codes", (t) => {
 
   // Act.
 
-  listener.onKeyDown({
-    timeStamp: 100,
-    code: "ShiftLeft",
-    key: "Shift",
-    modifiers: [],
-  });
-  listener.onKeyDown({
-    timeStamp: 200,
-    code: "KeyO",
-    key: "O",
-    modifiers: ["Shift"],
-  });
-  listener.onTextInput({
-    timeStamp: 200,
-    inputType: "appendChar",
-    codePoint: /* "O" */ 0x004f,
-    timeToType: 111,
-  });
-  listener.onKeyUp({
-    timeStamp: 300,
-    code: "KeyO",
-    key: "O",
-    modifiers: ["Shift"],
-  });
-  listener.onKeyUp({
-    timeStamp: 400,
-    code: "ShiftLeft",
-    key: "Shift",
-    modifiers: [],
-  });
+  replay(
+    listener,
+    { timeStamp: 100, type: "keydown", code: "ShiftLeft", key: "Shift", modifiers: [] },
+    { timeStamp: 200, type: "keydown", code: "KeyO", key: "O", modifiers: ["Shift"] },
+    { timeStamp: 200, type: "input", inputType: "appendChar", codePoint: /* "O" */ 0x004f, timeToType: 111 },
+    { timeStamp: 300, type: "keyup", code: "KeyO", key: "O", modifiers: ["Shift"] },
+    { timeStamp: 400, type: "keyup", code: "ShiftLeft", key: "Shift", modifiers: [] },
+  );
 
   // Assert.
 
@@ -351,30 +210,34 @@ test("reverse emulation, incomplete events", (t) => {
 
   // Act.
 
-  listener.onKeyDown({
-    timeStamp: 100,
-    code: "",
-    key: "Undefined",
-    modifiers: [],
-  });
-  listener.onTextInput({
-    timeStamp: 100,
-    inputType: "appendChar",
-    codePoint: /* "S" */ 0x0053,
-    timeToType: 111,
-  });
-  listener.onKeyUp({
-    timeStamp: 200,
-    code: "",
-    key: "Undefined",
-    modifiers: [],
-  });
+  replay(
+    listener,
+    { timeStamp: 100, type: "keydown", code: "", key: "Undefined", modifiers: [] },
+    { timeStamp: 100, type: "input", inputType: "appendChar", codePoint: /* "S" */ 0x0053, timeToType: 111 },
+    { timeStamp: 200, type: "keyup", code: "", key: "Undefined", modifiers: [] },
+  );
 
   // Assert.
 
   t.deepEqual(target.trace, [
-    "100,keydown,,Undefined",
+    "100,keydown,,Undefined", //
     "100,appendChar,S,111",
     "200,keyup,,Undefined",
   ]);
 });
+
+function replay(target: InputListener, ...events: (IKeyboardEvent | IInputEvent)[]) {
+  for (const event of events) {
+    switch (event.type) {
+      case "keydown":
+        target.onKeyDown(event);
+        break;
+      case "keyup":
+        target.onKeyUp(event);
+        break;
+      case "input":
+        target.onInput(event);
+        break;
+    }
+  }
+}

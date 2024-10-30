@@ -1,32 +1,29 @@
 import { type Focusable } from "@keybr/widget";
-import { toKeyEvent } from "./events.ts";
-import { getModifiers, isTextInput, ModifierState } from "./modifiers.ts";
+import { mapEvent } from "./events.ts";
+import { isTextInput, ModifierState } from "./modifiers.ts";
 import { TimeToType } from "./timetotype.ts";
-import { type KeyEvent, type TextInputEvent } from "./types.ts";
+import { type InputListener } from "./types.ts";
 
 // https://w3c.github.io/uievents/
 // https://www.w3.org/TR/input-events-1/
 // https://www.w3.org/TR/input-events-2/
 // https://domeventviewer.com/key-event-viewer.html
 
-export type Listeners = {
+export type Callbacks = {
   readonly onFocus?: () => void;
   readonly onBlur?: () => void;
-  readonly onKeyDown?: (event: KeyEvent) => void;
-  readonly onKeyUp?: (event: KeyEvent) => void;
-  readonly onTextInput?: (event: TextInputEvent) => void;
-};
+} & Partial<InputListener>;
 
 export class InputHandler implements Focusable {
   readonly #timeToType = new TimeToType();
-  #listeners: Listeners = {};
+  #callbacks: Callbacks = {};
   #input: HTMLTextAreaElement | null = null;
 
-  setListeners = (listeners: Listeners): void => {
-    this.#listeners = { ...listeners };
-  };
+  setCallbacks(callbacks: Callbacks) {
+    this.#callbacks = callbacks;
+  }
 
-  setInput = (input: HTMLTextAreaElement | null): void => {
+  setInput(input: HTMLTextAreaElement | null) {
     if (input != null) {
       this.#input = input;
       this.#attachInput();
@@ -34,24 +31,24 @@ export class InputHandler implements Focusable {
       this.#detachInput();
       this.#input = null;
     }
-  };
+  }
 
-  focus = (): void => {
+  focus() {
     this.#input?.focus();
-  };
+  }
 
-  blur = (): void => {
+  blur() {
     this.#input?.blur();
-  };
+  }
 
-  #attachInput(): void {
+  #attachInput() {
     ModifierState.initialize();
     const input = this.#input;
     if (input != null) {
       input.addEventListener("focus", this.handleFocus);
       input.addEventListener("blur", this.handleBlur);
-      input.addEventListener("keydown", this.handleKeyDown);
-      input.addEventListener("keyup", this.handleKeyUp);
+      input.addEventListener("keydown", this.handleKeyboard);
+      input.addEventListener("keyup", this.handleKeyboard);
       input.addEventListener("input", this.handleInput as any);
       input.addEventListener("compositionstart", this.handleComposition);
       input.addEventListener("compositionupdate", this.handleComposition);
@@ -61,13 +58,13 @@ export class InputHandler implements Focusable {
     this.#clearInput();
   }
 
-  #detachInput(): void {
+  #detachInput() {
     const input = this.#input;
     if (input != null) {
       input.removeEventListener("focus", this.handleFocus);
       input.removeEventListener("blur", this.handleBlur);
-      input.removeEventListener("keydown", this.handleKeyDown);
-      input.removeEventListener("keyup", this.handleKeyUp);
+      input.removeEventListener("keydown", this.handleKeyboard);
+      input.removeEventListener("keyup", this.handleKeyboard);
       input.removeEventListener("input", this.handleInput as any);
       input.removeEventListener("compositionstart", this.handleComposition);
       input.removeEventListener("compositionupdate", this.handleComposition);
@@ -75,7 +72,7 @@ export class InputHandler implements Focusable {
     }
   }
 
-  #clearInput(): void {
+  #clearInput() {
     const input = this.#input;
     if (input != null) {
       // Keep the input value non-empty, otherwise Safari will not generate
@@ -84,15 +81,15 @@ export class InputHandler implements Focusable {
     }
   }
 
-  handleFocus = (): void => {
-    this.#listeners.onFocus?.();
+  handleFocus = () => {
+    this.#callbacks.onFocus?.();
   };
 
-  handleBlur = (): void => {
-    this.#listeners.onBlur?.();
+  handleBlur = () => {
+    this.#callbacks.onBlur?.();
   };
 
-  handleKeyDown = (event: KeyboardEvent): void => {
+  handleKeyboard = (event: KeyboardEvent) => {
     if (process.env.NODE_ENV === "production") {
       if (!(event instanceof KeyboardEvent && event.isTrusted)) {
         return;
@@ -102,32 +99,24 @@ export class InputHandler implements Focusable {
       event.preventDefault();
       return;
     }
-    if (isTextInput(getModifiers(event)) && event.key === "Tab") {
+    const mapped = mapEvent(event);
+    if (isTextInput(mapped.modifiers) && event.key === "Tab") {
       event.preventDefault();
     }
     if (event.code) {
-      this.#timeToType.add(event);
-      this.#listeners.onKeyDown?.(toKeyEvent(event));
-    }
-  };
-
-  handleKeyUp = (event: KeyboardEvent): void => {
-    if (process.env.NODE_ENV === "production") {
-      if (!(event instanceof KeyboardEvent && event.isTrusted)) {
-        return;
+      this.#timeToType.add(mapped);
+      switch (mapped.type) {
+        case "keydown":
+          this.#callbacks.onKeyDown?.(mapped);
+          break;
+        case "keyup":
+          this.#callbacks.onKeyUp?.(mapped);
+          break;
       }
     }
-    if (event.repeat) {
-      event.preventDefault();
-      return;
-    }
-    if (event.code) {
-      this.#timeToType.add(event);
-      this.#listeners.onKeyUp?.(toKeyEvent(event));
-    }
   };
 
-  handleInput = (event: InputEvent): void => {
+  handleInput = (event: InputEvent) => {
     if (process.env.NODE_ENV === "production") {
       if (!(event instanceof InputEvent && event.isTrusted)) {
         return;
@@ -139,7 +128,8 @@ export class InputHandler implements Focusable {
         this.#clearInput();
         break;
       case "insertLineBreak":
-        this.#listeners.onTextInput?.({
+        this.#callbacks.onInput?.({
+          type: "input",
           timeStamp: event.timeStamp,
           inputType: "appendLineBreak",
           codePoint: 0x0000,
@@ -148,7 +138,8 @@ export class InputHandler implements Focusable {
         this.#clearInput();
         break;
       case "deleteContentBackward":
-        this.#listeners.onTextInput?.({
+        this.#callbacks.onInput?.({
+          type: "input",
           timeStamp: event.timeStamp,
           inputType: "clearChar",
           codePoint: 0x0000,
@@ -157,7 +148,8 @@ export class InputHandler implements Focusable {
         this.#clearInput();
         break;
       case "deleteWordBackward":
-        this.#listeners.onTextInput?.({
+        this.#callbacks.onInput?.({
+          type: "input",
           timeStamp: event.timeStamp,
           inputType: "clearWord",
           codePoint: 0x0000,
@@ -171,7 +163,7 @@ export class InputHandler implements Focusable {
     }
   };
 
-  handleComposition = (event: CompositionEvent): void => {
+  handleComposition = (event: CompositionEvent) => {
     switch (event.type) {
       case "compositionstart":
       case "compositionupdate":
@@ -183,12 +175,13 @@ export class InputHandler implements Focusable {
     }
   };
 
-  #appendChar(event: InputEvent | CompositionEvent): void {
+  #appendChar(event: InputEvent | CompositionEvent) {
     const { timeStamp, data } = event;
     if (data != null && data.length > 0) {
       const codePoint = data.codePointAt(0) ?? 0x0000;
       if (codePoint > 0x0000) {
-        this.#listeners.onTextInput?.({
+        this.#callbacks.onInput?.({
+          type: "input",
           timeStamp,
           inputType: "appendChar",
           codePoint,

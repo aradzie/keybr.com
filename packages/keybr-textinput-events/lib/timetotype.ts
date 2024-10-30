@@ -1,9 +1,4 @@
-type SimpleEvent = {
-  timeStamp: number;
-  type: string;
-  code?: string;
-  key?: string;
-};
+import { type IInputEvent, type IKeyboardEvent } from "./types.ts";
 
 /**
  * Measures the time taken to type a character.
@@ -54,18 +49,10 @@ type SimpleEvent = {
  * ```
  */
 export class TimeToType {
-  #down = new Map<string, SimpleEvent>();
+  #down = new Map<string, IKeyboardEvent>();
   #timeStamp = 0;
 
-  keyDown(event: Omit<SimpleEvent, "type">): void {
-    this.add({ ...event, type: "keydown" });
-  }
-
-  keyUp(event: Omit<SimpleEvent, "type">): void {
-    this.add({ ...event, type: "keyup" });
-  }
-
-  add(event: SimpleEvent): void {
+  add(event: IKeyboardEvent): void {
     const { type, code, key } = event;
     if (code && key) {
       if (type === "keydown") {
@@ -88,7 +75,7 @@ export class TimeToType {
     }
   }
 
-  measure({ timeStamp }: Pick<SimpleEvent, "timeStamp">): number {
+  measure({ timeStamp }: Pick<IInputEvent, "timeStamp">): number {
     const size = this.#down.size;
     this.#down.clear();
     const duration = timeStamp - this.#timeStamp;

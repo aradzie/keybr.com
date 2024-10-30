@@ -4,9 +4,9 @@ import { Screen } from "@keybr/pages-shared";
 import { enumProp, Preferences } from "@keybr/settings";
 import { type LineList } from "@keybr/textinput";
 import {
-  type KeyEvent,
+  type IInputEvent,
+  type IKeyboardEvent,
   ModifierState,
-  type TextInputEvent,
 } from "@keybr/textinput-events";
 import { TextArea } from "@keybr/textinput-ui";
 import { type Focusable, Zoomer } from "@keybr/widget";
@@ -24,9 +24,9 @@ type Props = {
   readonly depressedKeys: readonly KeyId[];
   readonly onResetLesson: () => void;
   readonly onSkipLesson: () => void;
-  readonly onKeyDown: (ev: KeyEvent) => void;
-  readonly onKeyUp: (ev: KeyEvent) => void;
-  readonly onTextInput: (ev: TextInputEvent) => void;
+  readonly onKeyDown: (ev: IKeyboardEvent) => void;
+  readonly onKeyUp: (ev: IKeyboardEvent) => void;
+  readonly onInput: (ev: IInputEvent) => void;
   readonly onConfigure: () => void;
 };
 
@@ -81,7 +81,7 @@ export class Presenter extends PureComponent<Props, State> {
       handleSkipLesson,
       handleKeyDown,
       handleKeyUp,
-      handleTextInput,
+      handleInput,
       handleFocus,
       handleBlur,
       handleChangeView,
@@ -117,7 +117,7 @@ export class Presenter extends PureComponent<Props, State> {
                   onBlur={handleBlur}
                   onKeyDown={handleKeyDown}
                   onKeyUp={handleKeyUp}
-                  onTextInput={handleTextInput}
+                  onInput={handleInput}
                 />
               </Zoomer>
             }
@@ -151,7 +151,7 @@ export class Presenter extends PureComponent<Props, State> {
                   onBlur={handleBlur}
                   onKeyDown={handleKeyDown}
                   onKeyUp={handleKeyUp}
-                  onTextInput={handleTextInput}
+                  onInput={handleInput}
                 />
               </Zoomer>
             }
@@ -184,7 +184,7 @@ export class Presenter extends PureComponent<Props, State> {
                   onBlur={handleBlur}
                   onKeyDown={handleKeyDown}
                   onKeyUp={handleKeyUp}
-                  onTextInput={handleTextInput}
+                  onInput={handleInput}
                 />
               </Zoomer>
             }
@@ -203,21 +203,21 @@ export class Presenter extends PureComponent<Props, State> {
     this.focusRef.current?.focus();
   };
 
-  handleKeyDown = (ev: KeyEvent): void => {
+  handleKeyDown = (ev: IKeyboardEvent): void => {
     if (this.state.focus) {
       this.props.onKeyDown(ev);
     }
   };
 
-  handleKeyUp = (ev: KeyEvent): void => {
+  handleKeyUp = (ev: IKeyboardEvent): void => {
     if (this.state.focus) {
       this.props.onKeyUp(ev);
     }
   };
 
-  handleTextInput = (ev: TextInputEvent): void => {
+  handleInput = (ev: IInputEvent): void => {
     if (this.state.focus) {
-      this.props.onTextInput(ev);
+      this.props.onInput(ev);
     }
   };
 

@@ -40,7 +40,7 @@ export const Controller = memo(function Controller({
     handleSkipLesson,
     handleKeyDown,
     handleKeyUp,
-    handleTextInput,
+    handleInput,
   } = useLessonState(progress, onResult);
   useHotkeys(
     ["Ctrl+ArrowLeft", handleResetLesson],
@@ -59,7 +59,7 @@ export const Controller = memo(function Controller({
       onSkipLesson={handleSkipLesson}
       onKeyDown={handleKeyDown}
       onKeyUp={handleKeyUp}
-      onTextInput={handleTextInput}
+      onInput={handleInput}
       onConfigure={onConfigure}
     />
   );
@@ -102,7 +102,7 @@ function useLessonState(
       timeout.cancel();
     };
     const playSounds = makeSoundPlayer(state.settings);
-    const { onKeyDown, onKeyUp, onTextInput } = emulateLayout(
+    const { onKeyDown, onKeyUp, onInput } = emulateLayout(
       state.settings,
       keyboard,
       {
@@ -116,9 +116,9 @@ function useLessonState(
             (state.depressedKeys = deleteKey(state.depressedKeys, event.code)),
           );
         },
-        onTextInput: (event) => {
+        onInput: (event) => {
           state.lastLesson = null;
-          const feedback = state.onTextInput(event);
+          const feedback = state.onInput(event);
           setLines(state.lines);
           playSounds(feedback);
           timeout.schedule(handleResetLesson, 10000);
@@ -131,7 +131,7 @@ function useLessonState(
       handleSkipLesson,
       handleKeyDown: onKeyDown,
       handleKeyUp: onKeyUp,
-      handleTextInput: onTextInput,
+      handleInput: onInput,
     };
   }, [progress, keyboard, timeout, key]);
 }

@@ -12,7 +12,7 @@ import {
 } from "@keybr/multiplayer-shared";
 import { useSettings } from "@keybr/settings";
 import { toTextDisplaySettings } from "@keybr/textinput";
-import { type TextInputEvent } from "@keybr/textinput-events";
+import { type IInputEvent } from "@keybr/textinput-events";
 import { TextArea } from "@keybr/textinput-ui";
 import { type Focusable, useScreenSize } from "@keybr/widget";
 import { type ReactNode, useEffect, useMemo, useRef, useState } from "react";
@@ -72,7 +72,7 @@ export const Game = ({
           lines={lines}
           onFocus={handleFocus}
           onBlur={handleBlur}
-          onTextInput={wrapper.handleTextInput}
+          onInput={wrapper.handleInput}
         />
       </div>
     </div>
@@ -103,7 +103,7 @@ class WorldStateWrapper extends EventEmitter {
     this.setWorldState(updateWorldState(this.intl, this.#worldState, message));
   };
 
-  handleTextInput = ({ inputType, codePoint }: TextInputEvent): void => {
+  handleInput = ({ inputType, codePoint }: IInputEvent): void => {
     if (inputType === "appendChar") {
       const result = handleTextInput(this.#worldState, codePoint);
       if (result != null) {

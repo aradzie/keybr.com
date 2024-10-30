@@ -1,11 +1,16 @@
 import { getModifiers } from "./modifiers.ts";
-import { type KeyEvent } from "./types.ts";
+import { type IKeyboardEvent } from "./types.ts";
 
-export function toKeyEvent(event: KeyboardEvent): KeyEvent {
-  return {
-    timeStamp: event.timeStamp,
-    code: event.code,
-    key: event.key,
-    modifiers: getModifiers(event),
-  };
+export function mapEvent(event: KeyboardEvent): IKeyboardEvent {
+  if (event.type === "keydown" || event.type === "keyup") {
+    return {
+      type: event.type,
+      timeStamp: event.timeStamp,
+      code: event.code,
+      key: event.key,
+      modifiers: getModifiers(event),
+    };
+  } else {
+    throw new TypeError();
+  }
 }

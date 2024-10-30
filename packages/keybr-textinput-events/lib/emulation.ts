@@ -9,17 +9,16 @@ import { type CodePoint } from "@keybr/unicode";
 import { isTextInput } from "./modifiers.ts";
 import { TimeToType } from "./timetotype.ts";
 import {
-  type KeyEvent,
+  type IKeyboardEvent,
+  type InputListener,
   type ModifierId,
-  type TextInputEvent,
-  type TextInputListener,
 } from "./types.ts";
 
 export function emulateLayout(
   settings: Settings,
   keyboard: Keyboard,
-  target: TextInputListener,
-): TextInputListener {
+  target: InputListener,
+): InputListener {
   if (keyboard.layout.emulate) {
     switch (settings.get(keyboardProps.emulation)) {
       case Emulation.Forward:
@@ -42,16 +41,17 @@ export function emulateLayout(
  */
 function forwardEmulation(
   keyboard: Keyboard,
-  target: TextInputListener,
-): TextInputListener {
+  target: InputListener,
+): InputListener {
   const timeToType = new TimeToType();
   return {
-    onKeyDown: (event: KeyEvent): void => {
-      timeToType.keyDown(event);
+    onKeyDown: (event) => {
+      timeToType.add(event);
       const [mapped, codePoint] = fixKey(keyboard, event);
       target.onKeyDown(mapped);
       if (isTextInput(event.modifiers) && codePoint > 0x0000) {
-        target.onTextInput({
+        target.onInput({
+          type: "input",
           timeStamp: mapped.timeStamp,
           inputType: "appendChar",
           codePoint,
@@ -59,17 +59,17 @@ function forwardEmulation(
         });
       }
     },
-    onKeyUp: (event: KeyEvent): void => {
-      timeToType.keyUp(event);
+    onKeyUp: (event) => {
+      timeToType.add(event);
       const [mapped, codePoint] = fixKey(keyboard, event);
       target.onKeyUp(mapped);
     },
-    onTextInput: (event: TextInputEvent): void => {
+    onInput: (event) => {
       switch (event.inputType) {
         case "appendLineBreak":
         case "clearChar":
         case "clearWord":
-          target.onTextInput(event);
+          target.onInput(event);
           break;
       }
     },
@@ -89,17 +89,17 @@ function forwardEmulation(
  */
 function reverseEmulation(
   keyboard: Keyboard,
-  target: TextInputListener,
-): TextInputListener {
+  target: InputListener,
+): InputListener {
   return {
-    onKeyDown: (event: KeyEvent): void => {
+    onKeyDown: (event) => {
       target.onKeyDown(fixCode(keyboard, event));
     },
-    onKeyUp: (event: KeyEvent): void => {
+    onKeyUp: (event) => {
       target.onKeyUp(fixCode(keyboard, event));
     },
-    onTextInput: (event: TextInputEvent): void => {
-      target.onTextInput(event);
+    onInput: (event) => {
+      target.onInput(event);
     },
   };
 }
@@ -109,8 +109,8 @@ function reverseEmulation(
  */
 function fixKey(
   keyboard: Keyboard,
-  { timeStamp, code, key, modifiers }: KeyEvent,
-): [KeyEvent, CodePoint] {
+  { type, timeStamp, code, key, modifiers }: IKeyboardEvent,
+): [IKeyboardEvent, CodePoint] {
   let codePoint = 0x0000;
   const characters = keyboard.getCharacters(code);
   if (characters != null) {
@@ -118,15 +118,7 @@ function fixKey(
       (codePoint = characters.getCodePoint(toKeyModifier(modifiers))),
     );
   }
-  return [
-    {
-      timeStamp,
-      code,
-      key,
-      modifiers,
-    },
-    codePoint,
-  ];
+  return [{ type, timeStamp, code, key, modifiers }, codePoint];
 }
 
 /**
@@ -134,20 +126,15 @@ function fixKey(
  */
 function fixCode(
   keyboard: Keyboard,
-  { timeStamp, code, key, modifiers }: KeyEvent,
-): KeyEvent {
+  { type, timeStamp, code, key, modifiers }: IKeyboardEvent,
+): IKeyboardEvent {
   if (key.length === 1) {
     const combo = keyboard.getCombo(key.codePointAt(0) ?? 0x0000);
     if (combo != null) {
       code = combo.id;
     }
   }
-  return {
-    timeStamp,
-    code,
-    key,
-    modifiers,
-  };
+  return { type, timeStamp, code, key, modifiers };
 }
 
 function toKeyModifier(modifiers: readonly ModifierId[]): KeyModifier {
