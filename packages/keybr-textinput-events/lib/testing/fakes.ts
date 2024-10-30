@@ -5,7 +5,7 @@ import {
   type TextInputListener,
 } from "../types.ts";
 
-class FakeEvent {
+export class FakeEvent {
   readonly isTrusted: boolean = true;
   defaultPrevented: boolean = false;
 
@@ -19,6 +19,20 @@ class FakeEvent {
   }
 }
 
+export type FakeKeyboardEventInit = Readonly<{
+  type: "keydown" | "keyup";
+  timeStamp?: number;
+  code: string;
+  key: string;
+  shiftKey?: boolean;
+  altKey?: boolean;
+  ctrlKey?: boolean;
+  metaKey?: boolean;
+  location?: number;
+  repeat?: boolean;
+  modifiers?: readonly ModifierId[];
+}>;
+
 export function fakeKeyboardEvent({
   type,
   timeStamp = 0,
@@ -31,19 +45,7 @@ export function fakeKeyboardEvent({
   location = 0,
   repeat = false,
   modifiers = [],
-}: {
-  type: "keydown" | "keyup";
-  timeStamp?: number;
-  code: string;
-  key: string;
-  shiftKey?: boolean;
-  altKey?: boolean;
-  ctrlKey?: boolean;
-  metaKey?: boolean;
-  location?: number;
-  repeat?: boolean;
-  modifiers?: readonly ModifierId[];
-}) {
+}: FakeKeyboardEventInit) {
   return new (class FakeKeyboardEvent extends FakeEvent {
     readonly code = code;
     readonly key = key;
@@ -64,17 +66,19 @@ export function fakeKeyboardEvent({
   })() as KeyboardEvent & FakeEvent;
 }
 
+export type FakeInputEventInit = Readonly<{
+  type: "beforeinput" | "input";
+  timeStamp?: number;
+  inputType: string;
+  data?: string | null;
+}>;
+
 export function fakeInputEvent({
   type,
   timeStamp = 0,
   inputType,
   data = null,
-}: {
-  type: "beforeinput" | "input";
-  timeStamp?: number;
-  inputType: string;
-  data?: string | null;
-}) {
+}: FakeInputEventInit) {
   return new (class FakeInputEvent extends FakeEvent {
     readonly inputType = inputType;
     readonly data = data;
@@ -85,15 +89,17 @@ export function fakeInputEvent({
   })() as InputEvent & FakeEvent;
 }
 
+export type FakeCompositionEventInit = Readonly<{
+  type: "compositionstart" | "compositionupdate" | "compositionend";
+  timeStamp?: number;
+  data: string;
+}>;
+
 export function fakeCompositionEvent({
   type,
   timeStamp = 0,
   data,
-}: {
-  type: "compositionstart" | "compositionupdate" | "compositionend";
-  timeStamp?: number;
-  data: string;
-}) {
+}: FakeCompositionEventInit) {
   return new (class FakeInputEvent extends FakeEvent {
     readonly data = data;
 
@@ -101,6 +107,35 @@ export function fakeCompositionEvent({
       super(type, timeStamp);
     }
   })() as CompositionEvent & FakeEvent;
+}
+
+export type FakeEventInit =
+  | FakeKeyboardEventInit
+  | FakeInputEventInit
+  | FakeCompositionEventInit;
+
+export function fakeEvent(
+  init: FakeKeyboardEventInit,
+): ReturnType<typeof fakeKeyboardEvent>;
+export function fakeEvent(
+  init: FakeInputEventInit,
+): ReturnType<typeof fakeInputEvent>;
+export function fakeEvent(
+  init: FakeCompositionEventInit,
+): ReturnType<typeof fakeCompositionEvent>;
+export function fakeEvent(init: FakeEventInit) {
+  switch (init.type) {
+    case "keydown":
+    case "keyup":
+      return fakeKeyboardEvent(init);
+    case "beforeinput":
+    case "input":
+      return fakeInputEvent(init);
+    case "compositionstart":
+    case "compositionupdate":
+    case "compositionend":
+      return fakeCompositionEvent(init);
+  }
 }
 
 export function tracingListener() {

@@ -1,17 +1,17 @@
 import test from "ava";
 import { TimeToType } from "./timetotype.ts";
 
-test("no keydown or keyup events", (t) => {
+test("no events", (t) => {
   t.is(new Tester().measure(1100), 100);
 });
 
-test("character", (t) => {
+test("character,character", (t) => {
   const tester = new Tester();
-  t.is(tester.add(1100, "keydown", "KeyA", "a").measure(1150), 150);
-  t.is(tester.add(1250, "keydown", "KeyB", "b").measure(1350), 200);
+  t.is(tester.measure(1150), 150);
+  t.is(tester.measure(1350), 200);
 });
 
-test("Shift down+character", (t) => {
+test("Shift down,character", (t) => {
   t.is(
     new Tester()
       .add(1100, "keydown", "ShiftLeft", "Shift")
@@ -21,7 +21,7 @@ test("Shift down+character", (t) => {
   );
 });
 
-test("AltGraph down+character (Windows)", (t) => {
+test("AltGraph down,character (Windows)", (t) => {
   t.is(
     new Tester()
       .add(1100, "keydown", "ControlLeft", "Control")
@@ -32,7 +32,7 @@ test("AltGraph down+character (Windows)", (t) => {
   );
 });
 
-test("AltGraph down+character (Linux)", (t) => {
+test("AltGraph down,character (Linux)", (t) => {
   t.is(
     new Tester()
       .add(1100, "keydown", "AltRight", "AltGraph")
@@ -42,7 +42,7 @@ test("AltGraph down+character (Linux)", (t) => {
   );
 });
 
-test("Alt down+character (MacOS)", (t) => {
+test("Alt down,character (MacOS)", (t) => {
   t.is(
     new Tester()
       .add(1100, "keydown", "AltLeft", "Alt")
@@ -52,7 +52,7 @@ test("Alt down+character (MacOS)", (t) => {
   );
 });
 
-test("Shift down+AltGraph down+character (Windows)", (t) => {
+test("Shift down,AltGraph down,character (Windows)", (t) => {
   t.is(
     new Tester()
       .add(1100, "keydown", "ShiftLeft", "Shift")
@@ -64,7 +64,7 @@ test("Shift down+AltGraph down+character (Windows)", (t) => {
   );
 });
 
-test("Shift down+AltGraph down+character (Linux)", (t) => {
+test("Shift down,AltGraph down,character (Linux)", (t) => {
   t.is(
     new Tester()
       .add(1100, "keydown", "ShiftLeft", "Shift")
@@ -75,7 +75,7 @@ test("Shift down+AltGraph down+character (Linux)", (t) => {
   );
 });
 
-test("Shift down+Alt down+character (MacOS)", (t) => {
+test("Shift down,Alt down,character (MacOS)", (t) => {
   t.is(
     new Tester()
       .add(1100, "keydown", "ShiftLeft", "Shift")

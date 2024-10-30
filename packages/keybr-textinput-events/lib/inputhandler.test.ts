@@ -1,9 +1,8 @@
 import test from "ava";
 import { InputHandler } from "./inputhandler.ts";
 import {
-  fakeCompositionEvent,
-  fakeInputEvent,
-  fakeKeyboardEvent,
+  fakeEvent,
+  type FakeEventInit,
   tracingListener,
 } from "./testing/fakes.ts";
 
@@ -16,29 +15,11 @@ test("handle a normal input", (t) => {
 
   // Act.
 
-  handler.handleKeyDown(
-    fakeKeyboardEvent({
-      timeStamp: 100,
-      type: "keydown",
-      code: "KeyA",
-      key: "a",
-    }),
-  );
-  handler.handleInput(
-    fakeInputEvent({
-      timeStamp: 100,
-      type: "input",
-      inputType: "insertText",
-      data: "a",
-    }),
-  );
-  handler.handleKeyUp(
-    fakeKeyboardEvent({
-      timeStamp: 200,
-      type: "keyup",
-      code: "KeyA",
-      key: "a",
-    }),
+  replay(
+    handler,
+    { timeStamp: 100, type: "keydown", code: "KeyA", key: "a" },
+    { timeStamp: 100, type: "input", inputType: "insertText", data: "a" },
+    { timeStamp: 200, type: "keyup", code: "KeyA", key: "a" },
   );
 
   // Assert.
@@ -59,113 +40,23 @@ test("handle a composite input", (t) => {
 
   // Act.
 
-  handler.handleKeyDown(
-    fakeKeyboardEvent({
-      timeStamp: 100,
-      type: "keydown",
-      code: "AltRight",
-      key: "AltGraph",
-    }),
-  );
-  handler.handleKeyDown(
-    fakeKeyboardEvent({
-      timeStamp: 200,
-      type: "keydown",
-      code: "Semicolon",
-      key: "Dead",
-    }),
-  );
-  handler.handleComposition(
-    fakeCompositionEvent({
-      timeStamp: 200,
-      type: "compositionstart",
-      data: "",
-    }),
-  );
-  handler.handleInput(
-    fakeInputEvent({
-      timeStamp: 200,
-      type: "input",
-      inputType: "insertCompositionText",
-      data: "´",
-    }),
-  );
-  handler.handleComposition(
-    fakeCompositionEvent({
-      timeStamp: 200,
-      type: "compositionupdate",
-      data: "´",
-    }),
-  );
-  handler.handleInput(
-    fakeInputEvent({
-      timeStamp: 200,
-      type: "input",
-      inputType: "insertCompositionText",
-      data: "´",
-    }),
-  );
-  handler.handleKeyUp(
-    fakeKeyboardEvent({
-      timeStamp: 300,
-      type: "keyup",
-      code: "Semicolon",
-      key: "Dead",
-    }),
-  );
-  handler.handleKeyUp(
-    fakeKeyboardEvent({
-      timeStamp: 400,
-      type: "keyup",
-      code: "AltRight",
-      key: "AltGraph",
-    }),
-  );
-  handler.handleKeyDown(
-    fakeKeyboardEvent({
-      timeStamp: 500,
-      type: "keydown",
-      code: "KeyA",
-      key: "a",
-    }),
-  );
-  handler.handleInput(
-    fakeInputEvent({
-      timeStamp: 500,
-      type: "input",
-      inputType: "insertCompositionText",
-      data: "á",
-    }),
-  );
-  handler.handleComposition(
-    fakeCompositionEvent({
-      timeStamp: 500,
-      type: "compositionupdate",
-      data: "á",
-    }),
-  );
-  handler.handleInput(
-    fakeInputEvent({
-      timeStamp: 500,
-      type: "input",
-      inputType: "insertCompositionText",
-      data: "á",
-    }),
-  );
-  handler.handleComposition(
-    fakeCompositionEvent({
-      timeStamp: 500,
-      type: "compositionend",
-      data: "á",
-    }),
-  );
-  handler.handleKeyUp(
-    fakeKeyboardEvent({
-      timeStamp: 600,
-      type: "keyup",
-      code: "KeyA",
-      key: "a",
-    }),
+  // prettier-ignore
+  replay(
+    handler,
+    { timeStamp: 100, type: "keydown", code: "AltRight", key: "AltGraph" },
+    { timeStamp: 200, type: "keydown", code: "Semicolon", key: "Dead" },
+    { timeStamp: 200, type: "compositionstart", data: "" },
+    { timeStamp: 200, type: "input", inputType: "insertCompositionText", data: "´" },
+    { timeStamp: 200, type: "compositionupdate", data: "´" },
+    { timeStamp: 200, type: "input", inputType: "insertCompositionText", data: "´" },
+    { timeStamp: 300, type: "keyup", code: "Semicolon", key: "Dead" },
+    { timeStamp: 400, type: "keyup", code: "AltRight", key: "AltGraph" },
+    { timeStamp: 500, type: "keydown", code: "KeyA", key: "a" },
+    { timeStamp: 500, type: "input", inputType: "insertCompositionText", data: "á" },
+    { timeStamp: 500, type: "compositionupdate", data: "á" },
+    { timeStamp: 500, type: "input", inputType: "insertCompositionText", data: "á" },
+    { timeStamp: 500, type: "compositionend", data: "á" },
+    { timeStamp: 600, type: "keyup", code: "KeyA", key: "a" },
   );
 
   // Assert.
@@ -190,28 +81,11 @@ test("handle a clear char input", (t) => {
 
   // Act.
 
-  handler.handleKeyDown(
-    fakeKeyboardEvent({
-      timeStamp: 100,
-      type: "keydown",
-      code: "Backspace",
-      key: "Backspace",
-    }),
-  );
-  handler.handleInput(
-    fakeInputEvent({
-      timeStamp: 100,
-      type: "input",
-      inputType: "deleteContentBackward",
-    }),
-  );
-  handler.handleKeyUp(
-    fakeKeyboardEvent({
-      timeStamp: 200,
-      type: "keyup",
-      code: "Backspace",
-      key: "Backspace",
-    }),
+  replay(
+    handler,
+    { timeStamp: 100, type: "keydown", code: "Backspace", key: "Backspace" },
+    { timeStamp: 100, type: "input", inputType: "deleteContentBackward" },
+    { timeStamp: 200, type: "keyup", code: "Backspace", key: "Backspace" },
   );
 
   // Assert.
@@ -232,38 +106,24 @@ test("handle a clear word input", (t) => {
 
   // Act.
 
-  handler.handleKeyDown(
-    fakeKeyboardEvent({
-      timeStamp: 100,
-      type: "keydown",
-      code: "Backspace",
-      key: "Backspace",
-      modifiers: ["Control"],
-    }),
-  );
-  handler.handleInput(
-    fakeInputEvent({
-      timeStamp: 100,
-      type: "input",
-      inputType: "deleteWordBackward",
-    }),
-  );
-  handler.handleKeyUp(
-    fakeKeyboardEvent({
-      timeStamp: 200,
-      type: "keyup",
-      code: "Backspace",
-      key: "Backspace",
-      modifiers: ["Control"],
-    }),
+  // prettier-ignore
+  replay(
+    handler,
+    { timeStamp: 100, type: "keydown", code: "ControlLeft", key: "Control" },
+    { timeStamp: 200, type: "keydown", code: "Backspace", key: "Backspace", modifiers: ["Control"] },
+    { timeStamp: 200, type: "input", inputType: "deleteWordBackward" },
+    { timeStamp: 300, type: "keyup", code: "Backspace", key: "Backspace", modifiers: ["Control"] },
+    { timeStamp: 400, type: "keyup", code: "ControlLeft", key: "Control" },
   );
 
   // Assert.
 
   t.deepEqual(target.trace, [
-    "100,keydown,Backspace,Backspace",
-    "100,clearWord,\u0000,100",
-    "200,keyup,Backspace,Backspace",
+    "100,keydown,ControlLeft,Control",
+    "200,keydown,Backspace,Backspace",
+    "200,clearWord,\u0000,100",
+    "300,keyup,Backspace,Backspace",
+    "400,keyup,ControlLeft,Control",
   ]);
 });
 
@@ -276,28 +136,11 @@ test("handle the enter key", (t) => {
 
   // Act.
 
-  handler.handleKeyDown(
-    fakeKeyboardEvent({
-      timeStamp: 100,
-      type: "keydown",
-      code: "NumpadEnter",
-      key: "Enter",
-    }),
-  );
-  handler.handleInput(
-    fakeInputEvent({
-      timeStamp: 100,
-      type: "input",
-      inputType: "insertLineBreak",
-    }),
-  );
-  handler.handleKeyUp(
-    fakeKeyboardEvent({
-      timeStamp: 200,
-      type: "keyup",
-      code: "NumpadEnter",
-      key: "Enter",
-    }),
+  replay(
+    handler,
+    { timeStamp: 100, type: "keydown", code: "NumpadEnter", key: "Enter" },
+    { timeStamp: 100, type: "input", inputType: "insertLineBreak" },
+    { timeStamp: 200, type: "keyup", code: "NumpadEnter", key: "Enter" },
   );
 
   // Assert.
@@ -316,13 +159,13 @@ test("handle the tab", (t) => {
   const handler = new InputHandler();
   handler.setListeners(target);
 
-  const keyDown = fakeKeyboardEvent({
+  const keyDown = fakeEvent({
     timeStamp: 100,
     type: "keydown",
     code: "Tab",
     key: "Tab",
   });
-  const keyUp = fakeKeyboardEvent({
+  const keyUp = fakeEvent({
     timeStamp: 200,
     type: "keyup",
     code: "Tab",
@@ -339,7 +182,10 @@ test("handle the tab", (t) => {
   t.true(keyDown.defaultPrevented);
   t.false(keyUp.defaultPrevented);
 
-  t.deepEqual(target.trace, ["100,keydown,Tab,Tab", "200,keyup,Tab,Tab"]);
+  t.deepEqual(target.trace, [
+    "100,keydown,Tab,Tab", //
+    "200,keyup,Tab,Tab",
+  ]);
 });
 
 test("incomplete events", (t) => {
@@ -351,32 +197,36 @@ test("incomplete events", (t) => {
 
   // Act.
 
-  handler.handleKeyDown(
-    fakeKeyboardEvent({
-      timeStamp: 100,
-      type: "keydown",
-      code: "",
-      key: "Undefined",
-    }),
-  );
-  handler.handleInput(
-    fakeInputEvent({
-      timeStamp: 100,
-      type: "input",
-      inputType: "insertText",
-      data: "a",
-    }),
-  );
-  handler.handleKeyUp(
-    fakeKeyboardEvent({
-      timeStamp: 200,
-      type: "keyup",
-      code: "",
-      key: "Undefined",
-    }),
+  replay(
+    handler,
+    { timeStamp: 100, type: "keydown", code: "", key: "Undefined" },
+    { timeStamp: 100, type: "input", inputType: "insertText", data: "a" },
+    { timeStamp: 200, type: "keyup", code: "", key: "Undefined" },
   );
 
   // Assert.
 
-  t.deepEqual(target.trace, ["100,appendChar,a,100"]);
+  t.deepEqual(target.trace, [
+    "100,appendChar,a,100", //
+  ]);
 });
+
+function replay(handler: InputHandler, ...events: FakeEventInit[]) {
+  for (const event of events) {
+    switch (event.type) {
+      case "keydown":
+        handler.handleKeyDown(fakeEvent(event));
+        break;
+      case "keyup":
+        handler.handleKeyUp(fakeEvent(event));
+        break;
+      case "input":
+        handler.handleInput(fakeEvent(event));
+        break;
+      case "compositionstart":
+      case "compositionupdate":
+      case "compositionend":
+        handler.handleComposition(fakeEvent(event));
+    }
+  }
+}
