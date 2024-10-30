@@ -21,16 +21,16 @@ Event history recorded on MacOS 12.7.6
 ### Dead down, character, Dead up
 
 ```
-7639       | compositionstart     | -              | -              |
-7645       | compositionupdate    | -              | -              | '
-7647       | input                | -              | -              | '
-7687       | keydown              | Equal          | Dead           | -
-7824       | input                | -              | -              | -
-7829       | input                | -              | -              | á
-7831       | compositionend       | -              | -              | á
-7871       | keydown              | KeyA           | á              | -
-7967       | keyup                | KeyA           | a              | -
-8063       | keyup                | Equal          | Dead           | -
+7639    | compositionstart     | -              | -              |
+7645    | compositionupdate    | -              | -              | '
+7647    | input                | -              | -              | '
+7687    | keydown              | Equal          | Dead           | -
+7824    | input                | -              | -              | -
+7829    | input                | -              | -              | á
+7831    | compositionend       | -              | -              | á
+7871    | keydown              | KeyA           | á              | -
+7967    | keyup                | KeyA           | a              | -
+8063    | keyup                | Equal          | Dead           | -
 ```
 
 ## Chrome 130
