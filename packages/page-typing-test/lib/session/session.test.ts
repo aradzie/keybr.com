@@ -1,12 +1,13 @@
+import { test } from "node:test";
 import { type WordList } from "@keybr/content";
 import { FakeRNGStream } from "@keybr/rand";
 import { textDisplaySettings, textInputSettings } from "@keybr/textinput";
-import test from "ava";
+import { assert } from "chai";
 import { CommonWordsGenerator } from "../generators/index.ts";
 import { Session } from "./session.ts";
 import { DurationType } from "./types.ts";
 
-test("lines", (t) => {
+test("lines", () => {
   const wordList: WordList = ["one", "two", "three", "four", "five"];
   const session = new Session(
     {
@@ -28,16 +29,16 @@ test("lines", (t) => {
 
   {
     const lines = session.getLines();
-    t.is(lines.length, 3);
+    assert.strictEqual(lines.length, 3);
 
-    t.deepEqual(lines[0].mark, { mark: 0 });
-    t.is(lines[0].text, "one ");
+    assert.deepStrictEqual(lines[0].mark, { mark: 0 });
+    assert.strictEqual(lines[0].text, "one ");
 
-    t.deepEqual(lines[1].mark, { mark: 1 });
-    t.is(lines[1].text, "two ");
+    assert.deepStrictEqual(lines[1].mark, { mark: 1 });
+    assert.strictEqual(lines[1].text, "two ");
 
-    t.deepEqual(lines[2].mark, { mark: 2 });
-    t.is(lines[2].text, "three ");
+    assert.deepStrictEqual(lines[2].mark, { mark: 2 });
+    assert.strictEqual(lines[2].text, "three ");
   }
 
   session.handleInput({
@@ -71,15 +72,15 @@ test("lines", (t) => {
 
   {
     const lines = session.getLines();
-    t.is(lines.length, 3);
+    assert.strictEqual(lines.length, 3);
 
-    t.deepEqual(lines[0].mark, { mark: 1 });
-    t.is(lines[0].text, "two ");
+    assert.deepStrictEqual(lines[0].mark, { mark: 1 });
+    assert.strictEqual(lines[0].text, "two ");
 
-    t.deepEqual(lines[1].mark, { mark: 2 });
-    t.is(lines[1].text, "three ");
+    assert.deepStrictEqual(lines[1].mark, { mark: 2 });
+    assert.strictEqual(lines[1].text, "three ");
 
-    t.deepEqual(lines[2].mark, { mark: 3 });
-    t.is(lines[2].text, "four ");
+    assert.deepStrictEqual(lines[2].mark, { mark: 3 });
+    assert.strictEqual(lines[2].text, "four ");
   }
 });

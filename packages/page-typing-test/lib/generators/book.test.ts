@@ -1,8 +1,9 @@
+import { test } from "node:test";
 import { Book } from "@keybr/content";
-import test from "ava";
+import { assert } from "chai";
 import { BookParagraphsGenerator } from "./book.ts";
 
-test("generate words", (t) => {
+test("generate words", () => {
   const generator = new BookParagraphsGenerator(
     {
       paragraphIndex: 0,
@@ -18,25 +19,25 @@ test("generate words", (t) => {
 
   const mark0 = generator.mark();
 
-  t.is(generator.nextWord(), "one");
-  t.is(generator.nextWord(), "two");
-  t.is(generator.nextWord(), "three");
+  assert.strictEqual(generator.nextWord(), "one");
+  assert.strictEqual(generator.nextWord(), "two");
+  assert.strictEqual(generator.nextWord(), "three");
 
   const mark1 = generator.mark();
 
-  t.is(generator.nextWord(), "four");
-  t.is(generator.nextWord(), "five");
-  t.is(generator.nextWord(), "six");
-  t.is(generator.nextWord(), "one");
-  t.is(generator.nextWord(), "two");
+  assert.strictEqual(generator.nextWord(), "four");
+  assert.strictEqual(generator.nextWord(), "five");
+  assert.strictEqual(generator.nextWord(), "six");
+  assert.strictEqual(generator.nextWord(), "one");
+  assert.strictEqual(generator.nextWord(), "two");
 
   generator.reset(mark1);
 
-  t.is(generator.nextWord(), "four");
-  t.is(generator.nextWord(), "five");
+  assert.strictEqual(generator.nextWord(), "four");
+  assert.strictEqual(generator.nextWord(), "five");
 
   generator.reset(mark0);
 
-  t.is(generator.nextWord(), "one");
-  t.is(generator.nextWord(), "two");
+  assert.strictEqual(generator.nextWord(), "one");
+  assert.strictEqual(generator.nextWord(), "two");
 });

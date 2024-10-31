@@ -1,9 +1,10 @@
+import { test } from "node:test";
 import { type WordList } from "@keybr/content";
 import { FakeRNGStream } from "@keybr/rand";
-import test from "ava";
+import { assert } from "chai";
 import { CommonWordsGenerator } from "./commonwords.ts";
 
-test("generate words", (t) => {
+test("generate words", () => {
   const wordList: WordList = [
     "one",
     "two",
@@ -25,25 +26,25 @@ test("generate words", (t) => {
 
   const mark0 = generator.mark();
 
-  t.is(generator.nextWord(), "one");
-  t.is(generator.nextWord(), "two");
-  t.is(generator.nextWord(), "three");
+  assert.strictEqual(generator.nextWord(), "one");
+  assert.strictEqual(generator.nextWord(), "two");
+  assert.strictEqual(generator.nextWord(), "three");
 
   const mark1 = generator.mark();
 
-  t.is(generator.nextWord(), "four");
-  t.is(generator.nextWord(), "five");
-  t.is(generator.nextWord(), "six");
+  assert.strictEqual(generator.nextWord(), "four");
+  assert.strictEqual(generator.nextWord(), "five");
+  assert.strictEqual(generator.nextWord(), "six");
 
   generator.reset(mark1);
 
-  t.is(generator.nextWord(), "four");
-  t.is(generator.nextWord(), "five");
-  t.is(generator.nextWord(), "six");
+  assert.strictEqual(generator.nextWord(), "four");
+  assert.strictEqual(generator.nextWord(), "five");
+  assert.strictEqual(generator.nextWord(), "six");
 
   generator.reset(mark0);
 
-  t.is(generator.nextWord(), "one");
-  t.is(generator.nextWord(), "two");
-  t.is(generator.nextWord(), "three");
+  assert.strictEqual(generator.nextWord(), "one");
+  assert.strictEqual(generator.nextWord(), "two");
+  assert.strictEqual(generator.nextWord(), "three");
 });
