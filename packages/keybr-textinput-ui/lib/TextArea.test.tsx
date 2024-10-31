@@ -1,10 +1,11 @@
+import { test } from "node:test";
 import { textDisplaySettings, toLine } from "@keybr/textinput";
 import { act, render } from "@testing-library/react";
-import test from "ava";
+import { assert } from "chai";
 import { IntlProvider } from "react-intl";
 import { TextArea } from "./TextArea.tsx";
 
-test.serial("render empty text", async (t) => {
+test("render empty text", async () => {
   const r = render(
     <IntlProvider locale="en">
       <TextArea
@@ -16,12 +17,12 @@ test.serial("render empty text", async (t) => {
 
   await act(async () => {});
 
-  t.is(r.container.textContent, "");
+  assert.strictEqual(r.container.textContent, "");
 
   r.unmount();
 });
 
-test.serial("render simple text", async (t) => {
+test("render simple text", async () => {
   const r = render(
     <IntlProvider locale="en">
       <TextArea
@@ -33,12 +34,12 @@ test.serial("render simple text", async (t) => {
 
   await act(async () => {});
 
-  t.is(r.container.textContent, "abcxyz");
+  assert.strictEqual(r.container.textContent, "abcxyz");
 
   r.unmount();
 });
 
-test.serial("render styled text", async (t) => {
+test("render styled text", async () => {
   const r = render(
     <IntlProvider locale="en">
       <TextArea
@@ -56,12 +57,12 @@ test.serial("render styled text", async (t) => {
 
   await act(async () => {});
 
-  t.is(r.container.textContent, "abcxyz");
+  assert.strictEqual(r.container.textContent, "abcxyz");
 
   r.unmount();
 });
 
-test.serial("render text with line template", async (t) => {
+test("render text with line template", async () => {
   const r = render(
     <IntlProvider locale="en">
       <TextArea
@@ -74,7 +75,7 @@ test.serial("render text with line template", async (t) => {
 
   await act(async () => {});
 
-  t.is(r.container.textContent, "[abc][xyz]");
+  assert.strictEqual(r.container.textContent, "[abc][xyz]");
 
   r.unmount();
 });

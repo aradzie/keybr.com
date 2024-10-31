@@ -1,11 +1,12 @@
+import { test } from "node:test";
 import { Emulation, keyboardProps, Layout, loadKeyboard } from "@keybr/keyboard";
 import { Settings } from "@keybr/settings";
-import test from "ava";
+import { assert } from "chai";
 import { emulateLayout } from "./emulation.ts";
 import { tracingListener } from "./testing/fakes.ts";
 import { type IInputEvent, type IKeyboardEvent, type InputListener } from "./types.ts";
 
-test("forward emulation, translate a character input", (t) => {
+test("forward emulation, translate a character input", () => {
   // Arrange.
 
   const target = tracingListener();
@@ -32,7 +33,7 @@ test("forward emulation, translate a character input", (t) => {
 
   // Assert.
 
-  t.deepEqual(target.trace, [
+  assert.deepStrictEqual(target.trace, [
     "100,keydown,ControlLeft,Control",
     "200,keydown,KeyS,o",
     "300,keyup,KeyS,o",
@@ -45,7 +46,7 @@ test("forward emulation, translate a character input", (t) => {
   ]);
 });
 
-test("forward emulation, translate a clear char input", (t) => {
+test("forward emulation, translate a clear char input", () => {
   // Arrange.
 
   const target = tracingListener();
@@ -66,14 +67,14 @@ test("forward emulation, translate a clear char input", (t) => {
 
   // Assert.
 
-  t.deepEqual(target.trace, [
+  assert.deepStrictEqual(target.trace, [
     "100,keydown,Backspace,Backspace",
     "100,clearChar,\u0000,111",
     "200,keyup,Backspace,Backspace",
   ]);
 });
 
-test("forward emulation, translate a clear word input", (t) => {
+test("forward emulation, translate a clear word input", () => {
   // Arrange.
 
   const target = tracingListener();
@@ -96,7 +97,7 @@ test("forward emulation, translate a clear word input", (t) => {
 
   // Assert.
 
-  t.deepEqual(target.trace, [
+  assert.deepStrictEqual(target.trace, [
     "100,keydown,ControlLeft,Control",
     "200,keydown,Backspace,Backspace",
     "200,clearWord,\u0000,111",
@@ -105,7 +106,7 @@ test("forward emulation, translate a clear word input", (t) => {
   ]);
 });
 
-test("forward emulation, translate the whitespace keys", (t) => {
+test("forward emulation, translate the whitespace keys", () => {
   // Arrange.
 
   const target = tracingListener();
@@ -129,7 +130,7 @@ test("forward emulation, translate the whitespace keys", (t) => {
 
   // Assert.
 
-  t.deepEqual(target.trace, [
+  assert.deepStrictEqual(target.trace, [
     "100,keydown,Space, ",
     "100,appendChar, ,100",
     "200,keyup,Space, ",
@@ -139,7 +140,7 @@ test("forward emulation, translate the whitespace keys", (t) => {
   ]);
 });
 
-test("forward emulation, incomplete events", (t) => {
+test("forward emulation, incomplete events", () => {
   // Arrange.
 
   const target = tracingListener();
@@ -160,13 +161,13 @@ test("forward emulation, incomplete events", (t) => {
 
   // Assert.
 
-  t.deepEqual(target.trace, [
+  assert.deepStrictEqual(target.trace, [
     "100,keydown,,Undefined", //
     "200,keyup,,Undefined",
   ]);
 });
 
-test("reverse emulation, translate character codes", (t) => {
+test("reverse emulation, translate character codes", () => {
   // Arrange.
 
   const target = tracingListener();
@@ -189,7 +190,7 @@ test("reverse emulation, translate character codes", (t) => {
 
   // Assert.
 
-  t.deepEqual(target.trace, [
+  assert.deepStrictEqual(target.trace, [
     "100,keydown,ShiftLeft,Shift",
     "200,keydown,KeyS,O",
     "200,appendChar,O,111",
@@ -198,7 +199,7 @@ test("reverse emulation, translate character codes", (t) => {
   ]);
 });
 
-test("reverse emulation, incomplete events", (t) => {
+test("reverse emulation, incomplete events", () => {
   // Arrange.
 
   const target = tracingListener();
@@ -219,7 +220,7 @@ test("reverse emulation, incomplete events", (t) => {
 
   // Assert.
 
-  t.deepEqual(target.trace, [
+  assert.deepStrictEqual(target.trace, [
     "100,keydown,,Undefined", //
     "100,appendChar,S,111",
     "200,keyup,,Undefined",

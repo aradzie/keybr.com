@@ -1,10 +1,11 @@
+import { test } from "node:test";
 import { type Focusable } from "@keybr/widget";
 import { fireEvent, render } from "@testing-library/react";
-import test from "ava";
-import { type ReactNode, useRef } from "react";
+import { assert } from "chai";
+import { useRef } from "react";
 import { TextEvents } from "./TextEvents.tsx";
 
-test.serial("focus and blur", (t) => {
+test("focus and blur", () => {
   let focused = false;
 
   const r = render(
@@ -19,36 +20,36 @@ test.serial("focus and blur", (t) => {
   );
 
   const input = r.container.querySelector("textarea") as HTMLTextAreaElement;
-  t.true(input instanceof HTMLTextAreaElement);
+  assert.isTrue(input instanceof HTMLTextAreaElement);
 
-  t.is(document.activeElement, input);
-  t.true(focused);
+  assert.strictEqual(document.activeElement, input);
+  assert.isTrue(focused);
 
   fireEvent.click(r.getByText("blur"));
 
-  t.is(document.activeElement, document.body);
-  t.false(focused);
+  assert.strictEqual(document.activeElement, document.body);
+  assert.isFalse(focused);
 
   fireEvent.click(r.getByText("focus"));
 
-  t.is(document.activeElement, input);
-  t.true(focused);
+  assert.strictEqual(document.activeElement, input);
+  assert.isTrue(focused);
 
   fireEvent.click(r.getByText("blur"));
 
-  t.is(document.activeElement, document.body);
-  t.false(focused);
+  assert.strictEqual(document.activeElement, document.body);
+  assert.isFalse(focused);
 
   r.unmount();
 });
 
 function TestContainer({
-  onFocus,
+  onFocus, //
   onBlur,
 }: {
   readonly onFocus: () => void;
   readonly onBlur: () => void;
-}): ReactNode {
+}) {
   const ref = useRef<Focusable>(null);
   return (
     <div>

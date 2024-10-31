@@ -1,9 +1,10 @@
+import { test } from "node:test";
 import { Attr, textDisplaySettings } from "@keybr/textinput";
 import { render } from "@testing-library/react";
-import test from "ava";
+import { assert } from "chai";
 import { TextLines } from "./TextLines.tsx";
 
-test.serial("render chars", (t) => {
+test("render chars", () => {
   const r = render(
     <TextLines
       settings={textDisplaySettings}
@@ -26,12 +27,12 @@ test.serial("render chars", (t) => {
     />,
   );
 
-  t.is(r.container.textContent, "abcd");
+  assert.strictEqual(r.container.textContent, "abcd");
 
   r.unmount();
 });
 
-test.serial("render chars with line template", (t) => {
+test("render chars with line template", () => {
   const r = render(
     <TextLines
       settings={textDisplaySettings}
@@ -55,7 +56,7 @@ test.serial("render chars with line template", (t) => {
     />,
   );
 
-  t.is(r.container.textContent, "[abcd]");
+  assert.strictEqual(r.container.textContent, "[abcd]");
 
   r.unmount();
 });

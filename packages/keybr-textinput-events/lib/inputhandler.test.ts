@@ -1,8 +1,9 @@
-import test from "ava";
+import { test } from "node:test";
+import { assert } from "chai";
 import { InputHandler } from "./inputhandler.ts";
 import { fakeEvent, type FakeEventInit, tracingListener } from "./testing/fakes.ts";
 
-test("handle a normal input", (t) => {
+test("handle a normal input", () => {
   // Arrange.
 
   const target = tracingListener();
@@ -20,14 +21,14 @@ test("handle a normal input", (t) => {
 
   // Assert.
 
-  t.deepEqual(target.trace, [
+  assert.deepStrictEqual(target.trace, [
     "100,keydown,KeyA,a", //
     "100,appendChar,a,100",
     "200,keyup,KeyA,a",
   ]);
 });
 
-test("handle a composite input", (t) => {
+test("handle a composite input", () => {
   // Arrange.
 
   const target = tracingListener();
@@ -56,7 +57,7 @@ test("handle a composite input", (t) => {
 
   // Assert.
 
-  t.deepEqual(target.trace, [
+  assert.deepStrictEqual(target.trace, [
     "100,keydown,AltRight,AltGraph",
     "200,keydown,Semicolon,Dead",
     "300,keyup,Semicolon,Dead",
@@ -67,7 +68,7 @@ test("handle a composite input", (t) => {
   ]);
 });
 
-test("handle a clear char input", (t) => {
+test("handle a clear char input", () => {
   // Arrange.
 
   const target = tracingListener();
@@ -85,14 +86,14 @@ test("handle a clear char input", (t) => {
 
   // Assert.
 
-  t.deepEqual(target.trace, [
+  assert.deepStrictEqual(target.trace, [
     "100,keydown,Backspace,Backspace",
     "100,clearChar,\u0000,100",
     "200,keyup,Backspace,Backspace",
   ]);
 });
 
-test("handle a clear word input", (t) => {
+test("handle a clear word input", () => {
   // Arrange.
 
   const target = tracingListener();
@@ -112,7 +113,7 @@ test("handle a clear word input", (t) => {
 
   // Assert.
 
-  t.deepEqual(target.trace, [
+  assert.deepStrictEqual(target.trace, [
     "100,keydown,ControlLeft,Control",
     "200,keydown,Backspace,Backspace",
     "200,clearWord,\u0000,200", // We don't count the Control key as a modifier.
@@ -121,7 +122,7 @@ test("handle a clear word input", (t) => {
   ]);
 });
 
-test("handle the enter key", (t) => {
+test("handle the enter key", () => {
   // Arrange.
 
   const target = tracingListener();
@@ -139,14 +140,14 @@ test("handle the enter key", (t) => {
 
   // Assert.
 
-  t.deepEqual(target.trace, [
+  assert.deepStrictEqual(target.trace, [
     "100,keydown,NumpadEnter,Enter",
     "100,appendLineBreak,\u0000,100",
     "200,keyup,NumpadEnter,Enter",
   ]);
 });
 
-test("handle the tab", (t) => {
+test("handle the tab", () => {
   // Arrange.
 
   const target = tracingListener();
@@ -173,16 +174,16 @@ test("handle the tab", (t) => {
 
   // Assert.
 
-  t.true(keyDown.defaultPrevented);
-  t.true(keyUp.defaultPrevented);
+  assert.isTrue(keyDown.defaultPrevented);
+  assert.isTrue(keyUp.defaultPrevented);
 
-  t.deepEqual(target.trace, [
+  assert.deepStrictEqual(target.trace, [
     "100,keydown,Tab,Tab", //
     "200,keyup,Tab,Tab",
   ]);
 });
 
-test("incomplete events", (t) => {
+test("incomplete events", () => {
   // Arrange.
 
   const target = tracingListener();
@@ -200,7 +201,7 @@ test("incomplete events", (t) => {
 
   // Assert.
 
-  t.deepEqual(target.trace, [
+  assert.deepStrictEqual(target.trace, [
     "100,appendChar,a,100", //
   ]);
 });

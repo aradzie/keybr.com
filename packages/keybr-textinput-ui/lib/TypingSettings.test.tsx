@@ -1,11 +1,11 @@
+import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { KeyboardProvider } from "@keybr/keyboard";
 import { FakeSettingsContext } from "@keybr/settings";
 import { fireEvent, render } from "@testing-library/react";
-import test from "ava";
 import { TypingSettings } from "./TypingSettings.tsx";
 
-test.serial("render", (t) => {
+test("render", () => {
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
@@ -30,8 +30,6 @@ test.serial("render", (t) => {
 
   fireEvent.click(r.getByText("Jumping cursor"));
   fireEvent.click(r.getByText("Smooth cursor"));
-
-  t.pass();
 
   r.unmount();
 });
