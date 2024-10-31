@@ -1,3 +1,4 @@
+import { test } from "node:test";
 import { request } from "@fastr/client";
 import { start } from "@fastr/client-testlib";
 import { Application } from "@fastr/core";
@@ -5,12 +6,8 @@ import { DataDir } from "@keybr/config";
 import { PublicId } from "@keybr/publicid";
 import { type Result, ResultFaker } from "@keybr/result";
 import { exists, removeDir, touch } from "@sosimple/fsx";
-import test, { registerCompletionHandler } from "ava";
+import { assert } from "chai";
 import { type UserData, UserDataFactory } from "./index.ts";
-
-registerCompletionHandler(() => {
-  process.exit();
-});
 
 const testDataDir = process.env.DATA_DIR ?? "/tmp/keybr";
 
@@ -22,7 +19,11 @@ test.afterEach(async () => {
   await removeDir(testDataDir);
 });
 
-test.serial("handle missing data file", async (t) => {
+test.after(() => {
+  process.exit();
+});
+
+test("handle missing data file", async () => {
   // Arrange.
 
   const id = new PublicId(1);
@@ -31,11 +32,11 @@ test.serial("handle missing data file", async (t) => {
 
   // Assert.
 
-  t.false(await userData.exists());
-  t.deepEqual(await readAll(userData), []);
+  assert.isFalse(await userData.exists());
+  assert.deepStrictEqual(await readAll(userData), []);
 });
 
-test.serial("append new results", async (t) => {
+test("append new results", async () => {
   // Arrange.
 
   const id = new PublicId(1);
@@ -50,8 +51,8 @@ test.serial("append new results", async (t) => {
 
   // Assert.
 
-  t.false(await userData.exists());
-  t.deepEqual(await readAll(userData), []);
+  assert.isFalse(await userData.exists());
+  assert.deepStrictEqual(await readAll(userData), []);
 
   // Act.
 
@@ -59,11 +60,11 @@ test.serial("append new results", async (t) => {
 
   // Assert.
 
-  t.true(await userData.exists());
-  t.deepEqual(await readAll(userData), results);
+  assert.isTrue(await userData.exists());
+  assert.deepStrictEqual(await readAll(userData), results);
 });
 
-test.serial("delete missing file", async (t) => {
+test("delete missing file", async () => {
   // Arrange.
 
   const id = new PublicId(1);
@@ -73,9 +74,9 @@ test.serial("delete missing file", async (t) => {
 
   // Assert.
 
-  t.false(await userData.exists());
-  t.deepEqual(await readAll(userData), []);
-  t.false(await exists(name + "~1"));
+  assert.isFalse(await userData.exists());
+  assert.deepStrictEqual(await readAll(userData), []);
+  assert.isFalse(await exists(name + "~1"));
 
   // Act.
 
@@ -83,12 +84,12 @@ test.serial("delete missing file", async (t) => {
 
   // Assert.
 
-  t.false(await userData.exists());
-  t.deepEqual(await readAll(userData), []);
-  t.false(await exists(name + "~1"));
+  assert.isFalse(await userData.exists());
+  assert.deepStrictEqual(await readAll(userData), []);
+  assert.isFalse(await exists(name + "~1"));
 });
 
-test.serial("delete existing file", async (t) => {
+test("delete existing file", async () => {
   // Arrange.
 
   const id = new PublicId(1);
@@ -104,9 +105,9 @@ test.serial("delete existing file", async (t) => {
 
   // Assert.
 
-  t.true(await userData.exists());
-  t.deepEqual(await readAll(userData), results);
-  t.false(await exists(name + "~1"));
+  assert.isTrue(await userData.exists());
+  assert.deepStrictEqual(await readAll(userData), results);
+  assert.isFalse(await exists(name + "~1"));
 
   // Act.
 
@@ -114,12 +115,12 @@ test.serial("delete existing file", async (t) => {
 
   // Assert.
 
-  t.false(await userData.exists());
-  t.deepEqual(await readAll(userData), []);
-  t.true(await exists(name + "~1"));
+  assert.isFalse(await userData.exists());
+  assert.deepStrictEqual(await readAll(userData), []);
+  assert.isTrue(await exists(name + "~1"));
 });
 
-test.serial("delete existing file second time", async (t) => {
+test("delete existing file second time", async () => {
   // Arrange.
 
   const id = new PublicId(1);
@@ -137,9 +138,9 @@ test.serial("delete existing file second time", async (t) => {
 
   // Assert.
 
-  t.true(await userData.exists());
-  t.deepEqual(await readAll(userData), results);
-  t.false(await exists(name + "~3"));
+  assert.isTrue(await userData.exists());
+  assert.deepStrictEqual(await readAll(userData), results);
+  assert.isFalse(await exists(name + "~3"));
 
   // Act.
 
@@ -147,12 +148,12 @@ test.serial("delete existing file second time", async (t) => {
 
   // Assert.
 
-  t.false(await userData.exists());
-  t.deepEqual(await readAll(userData), []);
-  t.true(await exists(name + "~3"));
+  assert.isFalse(await userData.exists());
+  assert.deepStrictEqual(await readAll(userData), []);
+  assert.isTrue(await exists(name + "~3"));
 });
 
-test.serial("serve", async (t) => {
+test("serve", async () => {
   // Arrange.
 
   const id = new PublicId(1);
@@ -175,19 +176,19 @@ test.serial("serve", async (t) => {
 
     // Assert.
 
-    t.is(status, 200);
-    t.is(headers.get("Content-Type"), "application/octet-stream");
-    t.is(headers.get("Content-Length"), "0");
-    t.is(headers.get("Content-Encoding"), null);
-    t.is(
+    assert.strictEqual(status, 200);
+    assert.strictEqual(headers.get("Content-Type"), "application/octet-stream");
+    assert.strictEqual(headers.get("Content-Length"), "0");
+    assert.strictEqual(headers.get("Content-Encoding"), null);
+    assert.strictEqual(
       headers.get("Content-Disposition"),
       'attachment; filename="stats.data"',
     );
-    t.is(headers.get("Cache-Control"), "private, no-cache");
-    t.is(headers.get("Last-Modified"), null);
+    assert.strictEqual(headers.get("Cache-Control"), "private, no-cache");
+    assert.strictEqual(headers.get("Last-Modified"), null);
     etag1 = headers.get("ETag")!;
-    t.regex(etag1, /"[a-zA-Z0-9]+"/);
-    t.is((await body.buffer()).length, 0);
+    assert.match(etag1, /"[a-zA-Z0-9]+"/);
+    assert.strictEqual((await body.buffer()).length, 0);
   }
 
   {
@@ -199,22 +200,22 @@ test.serial("serve", async (t) => {
 
     const { status, headers, body } = await req.GET("/").send();
 
-    t.is(status, 200);
-    t.is(headers.get("Content-Type"), "application/octet-stream");
-    t.is(headers.get("Content-Length"), "70");
-    t.is(headers.get("Content-Encoding"), null);
-    t.is(
+    assert.strictEqual(status, 200);
+    assert.strictEqual(headers.get("Content-Type"), "application/octet-stream");
+    assert.strictEqual(headers.get("Content-Length"), "70");
+    assert.strictEqual(headers.get("Content-Encoding"), null);
+    assert.strictEqual(
       headers.get("Content-Disposition"),
       'attachment; filename="stats.data"',
     );
-    t.is(headers.get("Cache-Control"), "private, no-cache");
-    t.is(headers.get("Last-Modified"), null);
+    assert.strictEqual(headers.get("Cache-Control"), "private, no-cache");
+    assert.strictEqual(headers.get("Last-Modified"), null);
     etag2 = headers.get("ETag")!;
-    t.regex(etag2, /"[a-zA-Z0-9]+"/);
-    t.is((await body.buffer()).length, 70);
+    assert.match(etag2, /"[a-zA-Z0-9]+"/);
+    assert.strictEqual((await body.buffer()).length, 70);
   }
 
-  t.not(etag1, etag2);
+  assert.notStrictEqual(etag1, etag2);
 });
 
 async function readAll(userData: UserData): Promise<readonly Result[]> {
