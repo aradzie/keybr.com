@@ -1,8 +1,9 @@
-import test from "ava";
+import { test } from "node:test";
+import { assert } from "chai";
 import { convertCheckout } from "./utils.ts";
 
-test("convert", (t) => {
-  t.deepEqual(
+test("convert", () => {
+  assert.deepStrictEqual(
     convertCheckout({
       checkout: {
         id: "76923558-chre93b18616ac3-735f3d3b81",

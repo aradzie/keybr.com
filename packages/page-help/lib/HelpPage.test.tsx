@@ -1,10 +1,11 @@
+import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { render } from "@testing-library/react";
-import test from "ava";
+import { assert } from "chai";
 import { MemoryRouter } from "react-router";
 import { HelpPage } from "./HelpPage.tsx";
 
-test.serial("render", (t) => {
+test("render", () => {
   const r = render(
     <FakeIntlProvider>
       <MemoryRouter>
@@ -13,7 +14,7 @@ test.serial("render", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.not(r.queryByText("Learn to type faster"), null);
+  assert.isNotNull(r.queryByText("Learn to type faster"));
 
   r.unmount();
 });

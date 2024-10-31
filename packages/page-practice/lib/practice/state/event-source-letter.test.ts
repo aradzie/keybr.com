@@ -1,7 +1,8 @@
+import { test } from "node:test";
 import { LessonKey, LessonKeys } from "@keybr/lesson";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { ResultFaker } from "@keybr/result";
-import test from "ava";
+import { assert } from "chai";
 import { LetterEvents } from "./event-source-letter.ts";
 import { type LessonEvent } from "./event-types.ts";
 
@@ -18,7 +19,7 @@ const key2 = new LessonKey({ ...keyArgs, letter: letter2 });
 const key3 = new LessonKey({ ...keyArgs, letter: letter3 });
 const key4 = new LessonKey({ ...keyArgs, letter: letter4 });
 
-test("generate events", (t) => {
+test("generate events", () => {
   // Arrange.
 
   const lesson = {
@@ -45,7 +46,7 @@ test("generate events", (t) => {
 
   // Assert.
 
-  t.deepEqual([...events], []);
+  assert.deepStrictEqual([...events], []);
   events.clear();
 
   // Act.
@@ -60,7 +61,7 @@ test("generate events", (t) => {
 
   // Assert.
 
-  t.deepEqual(
+  assert.deepStrictEqual(
     [...events],
     [{ type: "new-letter", lessonKey: key3.asIncluded() }],
   );
@@ -72,7 +73,7 @@ test("generate events", (t) => {
 
   // Assert.
 
-  t.deepEqual([...events], []);
+  assert.deepStrictEqual([...events], []);
   events.clear();
 
   // Act.
@@ -87,7 +88,7 @@ test("generate events", (t) => {
 
   // Assert.
 
-  t.deepEqual(
+  assert.deepStrictEqual(
     [...events],
     [{ type: "new-letter", lessonKey: key4.asIncluded() }],
   );

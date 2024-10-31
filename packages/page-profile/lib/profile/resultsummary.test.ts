@@ -1,8 +1,9 @@
+import { test } from "node:test";
 import { LocalDate, makeSummaryStats, ResultFaker } from "@keybr/result";
-import test from "ava";
+import { assert } from "chai";
 import { ResultSummary } from "./resultsummary.ts";
 
-test("no results", (t) => {
+test("no results", () => {
   // Arrange.
 
   const today = new LocalDate(2001, 2, 3);
@@ -14,16 +15,16 @@ test("no results", (t) => {
 
   // Assert.
 
-  t.is(groups.length, 0);
-  t.deepEqual(summary.todayStats, {
+  assert.strictEqual(groups.length, 0);
+  assert.deepStrictEqual(summary.todayStats, {
     date: today,
     results: [],
     stats: makeSummaryStats([]),
   });
-  t.false(summary.has(today));
+  assert.isFalse(summary.has(today));
 });
 
-test("no results today", (t) => {
+test("no results today", () => {
   // Arrange.
 
   const today = new LocalDate(2001, 2, 3);
@@ -38,24 +39,24 @@ test("no results today", (t) => {
 
   // Assert.
 
-  t.is(groups.length, 1);
+  assert.strictEqual(groups.length, 1);
   const [g0] = groups;
-  t.deepEqual(g0, {
+  assert.deepStrictEqual(g0, {
     date: yesterday,
     results: [r1],
     stats: makeSummaryStats([r1]),
   });
-  t.deepEqual(summary.todayStats, {
+  assert.deepStrictEqual(summary.todayStats, {
     date: today,
     results: [],
     stats: makeSummaryStats([]),
   });
-  t.false(groups.includes(summary.todayStats));
-  t.true(summary.has(yesterday));
-  t.false(summary.has(today));
+  assert.isFalse(groups.includes(summary.todayStats));
+  assert.isTrue(summary.has(yesterday));
+  assert.isFalse(summary.has(today));
 });
 
-test("group results group by date", (t) => {
+test("group results group by date", () => {
   // Arrange.
 
   const today = new LocalDate(2001, 2, 3);
@@ -71,24 +72,24 @@ test("group results group by date", (t) => {
 
   // Assert.
 
-  t.is(groups.length, 2);
+  assert.strictEqual(groups.length, 2);
   const [g0, g1] = groups;
-  t.deepEqual(g0, {
+  assert.deepStrictEqual(g0, {
     date: yesterday,
     results: [r1],
     stats: makeSummaryStats([r1]),
   });
-  t.deepEqual(g1, {
+  assert.deepStrictEqual(g1, {
     date: today,
     results: [r2],
     stats: makeSummaryStats([r2]),
   });
-  t.deepEqual(summary.todayStats, {
+  assert.deepStrictEqual(summary.todayStats, {
     date: today,
     results: [r2],
     stats: makeSummaryStats([r2]),
   });
-  t.true(groups.includes(summary.todayStats));
-  t.true(summary.has(yesterday));
-  t.true(summary.has(today));
+  assert.isTrue(groups.includes(summary.todayStats));
+  assert.isTrue(summary.has(yesterday));
+  assert.isTrue(summary.has(today));
 });

@@ -1,10 +1,11 @@
+import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { fireEvent, render } from "@testing-library/react";
-import test from "ava";
+import { assert } from "chai";
 import { type SignInActions } from "./actions.ts";
 import { EmailLoginForm } from "./EmailLoginForm.tsx";
 
-test.serial("success", async (t) => {
+test("success", async () => {
   const r = render(
     <FakeIntlProvider>
       <EmailLoginForm
@@ -26,12 +27,12 @@ test.serial("success", async (t) => {
 
   await r.findByText("We have sent an e-mail", { exact: false });
 
-  t.not(r.queryByText("username@email.com", { exact: false }), null);
+  assert.isNotNull(r.queryByText("username@email.com", { exact: false }));
 
   r.unmount();
 });
 
-test.serial("failure", async (t) => {
+test("failure", async () => {
   const r = render(
     <FakeIntlProvider>
       <EmailLoginForm
@@ -53,7 +54,7 @@ test.serial("failure", async (t) => {
 
   await r.findByText("Could not send e-mail", { exact: false });
 
-  t.not(r.queryByText("What a terrible failure", { exact: false }), null);
+  assert.isNotNull(r.queryByText("What a terrible failure", { exact: false }));
 
   r.unmount();
 });

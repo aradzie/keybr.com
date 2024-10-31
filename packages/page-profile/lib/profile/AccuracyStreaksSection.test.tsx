@@ -1,12 +1,13 @@
+import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { LocalDate, ResultFaker } from "@keybr/result";
 import { FakeSettingsContext } from "@keybr/settings";
 import { render } from "@testing-library/react";
-import test from "ava";
+import { assert } from "chai";
 import { AccuracyStreaksSection } from "./AccuracyStreaksSection.tsx";
 import { ResultSummary } from "./resultsummary.ts";
 
-test.serial("no streaks", (t) => {
+test("no streaks", () => {
   // Arrange.
 
   const summary = new ResultSummary([], new LocalDate(0));
@@ -23,12 +24,12 @@ test.serial("no streaks", (t) => {
 
   // Assert.
 
-  t.is(r.queryByText("Accuracy Threshold", { exact: false }), null);
+  assert.isNull(r.queryByText("Accuracy Threshold", { exact: false }));
 
   r.unmount();
 });
 
-test.serial("one streak", (t) => {
+test("one streak", () => {
   // Arrange.
 
   const faker = new ResultFaker();
@@ -47,7 +48,7 @@ test.serial("one streak", (t) => {
 
   // Assert.
 
-  t.not(r.queryByText("Accuracy Threshold", { exact: false }), null);
+  assert.isNotNull(r.queryByText("Accuracy Threshold", { exact: false }));
 
   r.unmount();
 });

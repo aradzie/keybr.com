@@ -1,11 +1,12 @@
+import { test } from "node:test";
 import { lessonProps, MutableDailyGoal } from "@keybr/lesson";
 import { LocalDate, ResultFaker, Today } from "@keybr/result";
 import { Settings } from "@keybr/settings";
-import test from "ava";
+import { assert } from "chai";
 import { DailyGoalEvents } from "./event-source-daily-goal.ts";
 import { type LessonEvent } from "./event-types.ts";
 
-test("generate events", (t) => {
+test("generate events", () => {
   // Arrange.
 
   const today = new LocalDate(2001, 2, 3);
@@ -26,7 +27,7 @@ test("generate events", (t) => {
 
   // Assert.
 
-  t.deepEqual([...events], []);
+  assert.deepStrictEqual([...events], []);
   events.clear();
 
   // Act.
@@ -37,7 +38,7 @@ test("generate events", (t) => {
 
   // Assert.
 
-  t.deepEqual([...events], [{ type: "daily-goal" }]);
+  assert.deepStrictEqual([...events], [{ type: "daily-goal" }]);
   events.clear();
 
   // Act.
@@ -48,6 +49,6 @@ test("generate events", (t) => {
 
   // Assert.
 
-  t.deepEqual([...events], []);
+  assert.deepStrictEqual([...events], []);
   events.clear();
 });

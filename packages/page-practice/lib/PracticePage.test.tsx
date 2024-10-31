@@ -1,3 +1,4 @@
+import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { type PageData, PageDataContext } from "@keybr/pages-shared";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
@@ -5,13 +6,11 @@ import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
 import { FakeResultContext, ResultFaker } from "@keybr/result";
 import { FakeSettingsContext } from "@keybr/settings";
 import { fireEvent, render } from "@testing-library/react";
-import test from "ava";
-import React from "react";
 import { PracticePage } from "./PracticePage.tsx";
 
 const faker = new ResultFaker();
 
-test.serial("render", async (t) => {
+test("render", async () => {
   PhoneticModelLoader.loader = FakePhoneticModel.loader;
 
   const r = render(
@@ -30,8 +29,6 @@ test.serial("render", async (t) => {
 
   fireEvent.click(await r.findByText("Settings..."));
   fireEvent.click(await r.findByText("Done"));
-
-  t.pass();
 
   r.unmount();
 });

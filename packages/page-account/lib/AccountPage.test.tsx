@@ -1,10 +1,11 @@
+import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { PageDataContext } from "@keybr/pages-shared";
 import { render } from "@testing-library/react";
-import test from "ava";
+import { assert } from "chai";
 import { AccountPage } from "./AccountPage.tsx";
 
-test.serial("render sign-in fragment", (t) => {
+test("render sign-in fragment", () => {
   const r = render(
     <PageDataContext.Provider
       value={{
@@ -26,13 +27,13 @@ test.serial("render sign-in fragment", (t) => {
     </PageDataContext.Provider>,
   );
 
-  t.not(r.queryByText("Anonymous User", { exact: false }), null);
-  t.is(r.queryByText("You are using an account", { exact: false }), null);
+  assert.isNotNull(r.queryByText("Anonymous User", { exact: false }));
+  assert.isNull(r.queryByText("You are using an account", { exact: false }));
 
   r.unmount();
 });
 
-test.serial("render account fragment", (t) => {
+test("render account fragment", () => {
   const r = render(
     <PageDataContext.Provider
       value={{
@@ -71,8 +72,8 @@ test.serial("render account fragment", (t) => {
     </PageDataContext.Provider>,
   );
 
-  t.is(r.queryByText("Anonymous User", { exact: false }), null);
-  t.not(r.queryByText("You are using an account", { exact: false }), null);
+  assert.isNull(r.queryByText("Anonymous User", { exact: false }));
+  assert.isNotNull(r.queryByText("You are using an account", { exact: false }));
 
   r.unmount();
 });

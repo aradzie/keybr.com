@@ -1,10 +1,11 @@
+import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { render } from "@testing-library/react";
-import test from "ava";
+import { assert } from "chai";
 import { AccountSection } from "./AccountSection.tsx";
 import { type AccountActions } from "./actions.ts";
 
-test.serial("render", (t) => {
+test("render", () => {
   const r = render(
     <FakeIntlProvider>
       <AccountSection
@@ -37,7 +38,7 @@ test.serial("render", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.not(r.queryByText("unique user name"), null);
+  assert.isNotNull(r.queryByText("unique user name"));
 
   r.unmount();
 });

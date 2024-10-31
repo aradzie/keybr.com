@@ -1,12 +1,12 @@
+import { test } from "node:test";
 import { KeyboardProvider } from "@keybr/keyboard";
 import { FakeSettingsContext } from "@keybr/settings";
 import { act, render } from "@testing-library/react";
-import test from "ava";
 import { DeferredKeyboardPresenter } from "./KeyboardPresenter.tsx";
 
 declare function flushAnimationFrames(): Promise<void>;
 
-test.serial("deferred render", async (t) => {
+test("deferred render", async () => {
   const r = render(
     <FakeSettingsContext>
       <KeyboardProvider>
@@ -38,8 +38,6 @@ test.serial("deferred render", async (t) => {
   await act(async () => {
     await flushAnimationFrames();
   });
-
-  t.pass();
 
   r.unmount();
 });

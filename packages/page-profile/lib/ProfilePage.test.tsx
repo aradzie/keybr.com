@@ -1,3 +1,4 @@
+import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { type PageData, PageDataContext } from "@keybr/pages-shared";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
@@ -5,12 +6,12 @@ import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
 import { FakeResultContext, ResultFaker } from "@keybr/result";
 import { FakeSettingsContext } from "@keybr/settings";
 import { render } from "@testing-library/react";
-import test from "ava";
+import { assert } from "chai";
 import { ProfilePage } from "./ProfilePage.tsx";
 
 const faker = new ResultFaker();
 
-test.serial("render", async (t) => {
+test("render", async () => {
   PhoneticModelLoader.loader = FakePhoneticModel.loader;
 
   const r = render(
@@ -27,8 +28,8 @@ test.serial("render", async (t) => {
     </FakeIntlProvider>,
   );
 
-  t.not(await r.findByText("Typing Speed"), null);
-  t.not(await r.findByText("Key Typing Speed"), null);
+  assert.isNotNull(await r.findByText("Typing Speed"));
+  assert.isNotNull(await r.findByText("Key Typing Speed"));
 
   r.unmount();
 });

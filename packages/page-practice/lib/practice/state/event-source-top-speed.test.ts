@@ -1,9 +1,10 @@
+import { test } from "node:test";
 import { ResultFaker } from "@keybr/result";
-import test from "ava";
+import { assert } from "chai";
 import { TopSpeedEvents } from "./event-source-top-speed.ts";
 import { type LessonEvent } from "./event-types.ts";
 
-test("generate events", (t) => {
+test("generate events", () => {
   // Arrange.
 
   const faker = new ResultFaker();
@@ -19,7 +20,7 @@ test("generate events", (t) => {
 
   // Assert.
 
-  t.deepEqual([...events], []);
+  assert.deepStrictEqual([...events], []);
   events.clear();
 
   // Act.
@@ -28,7 +29,10 @@ test("generate events", (t) => {
 
   // Assert.
 
-  t.deepEqual([...events], [{ type: "top-speed", speed: 150, previous: 120 }]);
+  assert.deepStrictEqual(
+    [...events],
+    [{ type: "top-speed", speed: 150, previous: 120 }],
+  );
   events.clear();
 
   // Act.
@@ -38,7 +42,7 @@ test("generate events", (t) => {
 
   // Assert.
 
-  t.deepEqual([...events], []);
+  assert.deepStrictEqual([...events], []);
 
   // Act.
 
@@ -46,6 +50,9 @@ test("generate events", (t) => {
 
   // Assert.
 
-  t.deepEqual([...events], [{ type: "top-speed", speed: 200, previous: 150 }]);
+  assert.deepStrictEqual(
+    [...events],
+    [{ type: "top-speed", speed: 200, previous: 150 }],
+  );
   events.clear();
 });

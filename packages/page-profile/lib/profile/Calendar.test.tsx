@@ -1,12 +1,12 @@
+import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { LocalDate, ResultFaker } from "@keybr/result";
 import { FakeSettingsContext } from "@keybr/settings";
 import { render } from "@testing-library/react";
-import test from "ava";
 import { Calendar } from "./Calendar.tsx";
 import { ResultSummary } from "./resultsummary.ts";
 
-test.serial("no results", (t) => {
+test("no results", () => {
   // Arrange.
 
   const today = new LocalDate(2001, 2, 3);
@@ -24,12 +24,10 @@ test.serial("no results", (t) => {
 
   // Assert.
 
-  t.pass();
-
   r.unmount();
 });
 
-test.serial("no results today", (t) => {
+test("no results today", () => {
   // Arrange.
 
   const today = new LocalDate(2001, 2, 3);
@@ -50,12 +48,10 @@ test.serial("no results today", (t) => {
 
   // Assert.
 
-  t.pass();
-
   r.unmount();
 });
 
-test.serial("render", (t) => {
+test("render", () => {
   // Arrange.
 
   const today = new LocalDate(2001, 2, 3);
@@ -76,8 +72,6 @@ test.serial("render", (t) => {
   );
 
   // Assert.
-
-  t.pass();
 
   r.unmount();
 });

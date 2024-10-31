@@ -1,3 +1,4 @@
+import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { keyboardProps, Layout, useKeyboard } from "@keybr/keyboard";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
@@ -10,13 +11,13 @@ import {
 } from "@keybr/result";
 import { FakeSettingsContext, Settings } from "@keybr/settings";
 import { fireEvent, render } from "@testing-library/react";
-import test from "ava";
+import { assert } from "chai";
 import { type ReactNode } from "react";
 import { ResultGrouper } from "./ResultGrouper.tsx";
 
 const faker = new ResultFaker();
 
-test.serial("empty database", async (t) => {
+test("empty database", async () => {
   PhoneticModelLoader.loader = FakePhoneticModel.loader;
 
   const r = render(
@@ -36,12 +37,12 @@ test.serial("empty database", async (t) => {
     </FakeIntlProvider>,
   );
 
-  t.is((await r.findByTitle("layout")).textContent, "en-dvorak");
+  assert.strictEqual((await r.findByTitle("layout")).textContent, "en-dvorak");
 
   r.unmount();
 });
 
-test.serial("select default layout", async (t) => {
+test("select default layout", async () => {
   PhoneticModelLoader.loader = FakePhoneticModel.loader;
 
   const r = render(
@@ -63,16 +64,16 @@ test.serial("select default layout", async (t) => {
     </FakeIntlProvider>,
   );
 
-  t.is((await r.findByTitle("layout")).textContent, "en-colemak");
+  assert.strictEqual((await r.findByTitle("layout")).textContent, "en-colemak");
 
   fireEvent.click(await r.findByTitle("clear"));
 
-  t.is((await r.findByTitle("layout")).textContent, "en-dvorak");
+  assert.strictEqual((await r.findByTitle("layout")).textContent, "en-dvorak");
 
   r.unmount();
 });
 
-test.serial("select text type", async (t) => {
+test("select text type", async () => {
   PhoneticModelLoader.loader = FakePhoneticModel.loader;
 
   const r = render(
@@ -93,11 +94,17 @@ test.serial("select text type", async (t) => {
 
   fireEvent.click(await r.findByText("Letters"));
 
-  t.is((await r.findByTitle("alphabet")).textContent, "ABCDEFGHIJ");
+  assert.strictEqual(
+    (await r.findByTitle("alphabet")).textContent,
+    "ABCDEFGHIJ",
+  );
 
   fireEvent.click(await r.findByText("Digits"));
 
-  t.is((await r.findByTitle("alphabet")).textContent, "0123456789");
+  assert.strictEqual(
+    (await r.findByTitle("alphabet")).textContent,
+    "0123456789",
+  );
 
   r.unmount();
 });

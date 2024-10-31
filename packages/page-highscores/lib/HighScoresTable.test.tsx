@@ -1,12 +1,13 @@
+import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { Layout } from "@keybr/keyboard";
 import { render } from "@testing-library/react";
-import test from "ava";
+import { assert } from "chai";
 import { MemoryRouter } from "react-router";
 import { HighScoresTable } from "./HighScoresTable.tsx";
 import { type Entry } from "./types.ts";
 
-test.serial("render", (t) => {
+test("render", () => {
   const r = render(
     <FakeIntlProvider>
       <MemoryRouter>
@@ -38,8 +39,8 @@ test.serial("render", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.not(r.queryByText("Deleted User"), null);
-  t.not(r.queryByText("Named User"), null);
+  assert.isNotNull(r.queryByText("Deleted User"));
+  assert.isNotNull(r.queryByText("Named User"));
 
   r.unmount();
 });
