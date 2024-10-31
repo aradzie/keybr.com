@@ -1,5 +1,5 @@
 import { useSettings } from "@keybr/settings";
-import { makeStats, type Stats } from "@keybr/textinput";
+import { makeStats } from "@keybr/textinput";
 import { type ReactNode, useMemo, useState } from "react";
 import { Report } from "./components/Report.tsx";
 import { SettingsScreen } from "./components/SettingsScreen.tsx";
@@ -20,17 +20,17 @@ export function TypingTestPage(): ReactNode {
     [settings],
   );
   const [view, setView] = useState(View.Test);
-  const [stats, setStats] = useState<Stats>(makeStats([]));
+  const [stats, setStats] = useState(makeStats([]));
 
   switch (view) {
     case View.Test:
       return (
         <TextGeneratorLoader textSource={compositeSettings.textSource}>
-          {(textGenerator) => {
+          {(generator) => {
             return (
               <TestScreen
                 settings={compositeSettings}
-                textGenerator={textGenerator}
+                generator={generator}
                 onComplete={(stats) => {
                   setView(View.Report);
                   setStats(stats);
@@ -46,7 +46,7 @@ export function TypingTestPage(): ReactNode {
     case View.Report:
       return (
         <Report
-          stats={stats!}
+          stats={stats}
           onNext={() => {
             setView(View.Test);
           }}

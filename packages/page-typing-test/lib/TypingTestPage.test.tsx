@@ -17,8 +17,8 @@ test("render", async () => {
     </FakeIntlProvider>,
   );
 
-  fireEvent.click(await r.findByText("Settings..."));
-  fireEvent.click(await r.findByText("Done"));
+  fireEvent.click(await r.findByTitle("Settings", { exact: false }));
+  fireEvent.click(await r.findByTitle("Save settings", { exact: false }));
 
   r.unmount();
 });

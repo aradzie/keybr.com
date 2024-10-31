@@ -14,10 +14,10 @@ import {
   Icon,
   Name,
   NameValue,
+  useHotkeys,
   Value,
 } from "@keybr/widget";
-import { mdiFileImage, mdiSkipNext } from "@mdi/js";
-import { captureElementToImage } from "@sosimple/dom-to-image";
+import { mdiSkipNext } from "@mdi/js";
 import { memo, type ReactNode } from "react";
 import * as styles from "./Report.module.less";
 
@@ -29,26 +29,13 @@ export const Report = memo(function Report({
   readonly onNext: () => void;
 }): ReactNode {
   const { formatNumber, formatPercents } = useIntlNumbers();
+
+  useHotkeys(["Enter", onNext]);
+
   const dSpeed = makeSpeedDistribution();
   const dAccuracy = makeAccuracyDistribution();
   const pSpeed = dSpeed.cdf(speed);
   const pAccuracy = dAccuracy.cdf(dAccuracy.scale(accuracy));
-
-  const handleClickNext = () => {
-    onNext();
-  };
-
-  const handleClickScreenshot = () => {
-    const selector = `.${styles.printable}`;
-    const { backgroundColor } = getComputedStyle(document.body);
-    captureElementToImage(selector, { backgroundColor })
-      .then((blob) => {
-        window.open(URL.createObjectURL(blob), "_blank");
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
 
   return (
     <div className={styles.report}>
@@ -121,23 +108,20 @@ export const Report = memo(function Report({
 
       <div className={styles.controlsLine}>
         <FieldList>
+          <Field.Filler />
           <Field>
             <Button
               label="Next test"
               icon={<Icon shape={mdiSkipNext} />}
               title="Try another test."
-              onClick={handleClickNext}
+              onClick={onNext}
             />
           </Field>
-          <Field>
-            <Button
-              label="Screenshot"
-              icon={<Icon shape={mdiFileImage} />}
-              title="Take a screenshot."
-              onClick={handleClickScreenshot}
-            />
-          </Field>
+          <Field.Filler />
         </FieldList>
+        <p>
+          Press the <kbd>Enter</kbd> key to start a new test.
+        </p>
       </div>
     </div>
   );

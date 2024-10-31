@@ -1,5 +1,5 @@
 import { useSettings } from "@keybr/settings";
-import { Button, Field, FieldList, Icon, Link } from "@keybr/widget";
+import { Field, FieldList, Icon, IconButton, Link } from "@keybr/widget";
 import { mdiCog } from "@mdi/js";
 import { clsx } from "clsx";
 import { memo, type ReactNode } from "react";
@@ -8,21 +8,22 @@ import { toCompositeSettings, typingTestProps } from "../settings.ts";
 import * as styles from "./Toolbar.module.less";
 
 export const Toolbar = memo(function Toolbar({
+  onChange,
   onConfigure,
 }: {
+  readonly onChange: () => void;
   readonly onConfigure: () => void;
 }): ReactNode {
   return (
     <FieldList>
       <Field>
-        <DurationSwitcher />
+        <DurationSwitcher onChange={onChange} />
       </Field>
       <Field.Filler />
       <Field>
-        <Button
+        <IconButton
           icon={<Icon shape={mdiCog} />}
-          label="Settings..."
-          title="Change test settings."
+          title="Settings..."
           onClick={onConfigure}
         />
       </Field>
@@ -30,7 +31,11 @@ export const Toolbar = memo(function Toolbar({
   );
 });
 
-export const DurationSwitcher = memo(function DurationSwitcher(): ReactNode {
+export const DurationSwitcher = memo(function DurationSwitcher({
+  onChange,
+}: {
+  readonly onChange: () => void;
+}): ReactNode {
   const { settings, updateSettings } = useSettings();
   const compositeSettings = toCompositeSettings(settings);
   const children: ReactNode[] = [];
@@ -55,6 +60,7 @@ export const DurationSwitcher = memo(function DurationSwitcher(): ReactNode {
               .set(typingTestProps.duration.type, duration.type)
               .set(typingTestProps.duration.value, duration.value),
           );
+          onChange();
         }}
       >
         {label}

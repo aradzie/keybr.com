@@ -12,6 +12,7 @@ export function Spacer({ size }: SpacerProps): ReactNode {
         [styles.size3]: size === 3,
         [styles.size4]: size === 4,
         [styles.size5]: size === 5,
+        [styles.size10]: size === 10,
       })}
     />
   );

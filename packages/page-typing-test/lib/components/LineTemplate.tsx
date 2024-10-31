@@ -25,7 +25,7 @@ function Stats({ length, time, progress }: Progress): ReactNode {
         title="Time passed."
       />
       {" / "}
-      <Value value={`${length}`} title="Chars inputted." />
+      <Value value={`${length}`} title="Characters inputted." />
       {" / "}
       <Value value={`${Math.floor(progress * 100)}%`} title="Progress made." />
     </>

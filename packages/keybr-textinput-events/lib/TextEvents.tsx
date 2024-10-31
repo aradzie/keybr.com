@@ -4,6 +4,7 @@ import {
   memo,
   type ReactNode,
   type RefObject,
+  useEffect,
   useImperativeHandle,
   useRef,
 } from "react";
@@ -19,13 +20,20 @@ export const TextEvents = memo(function TextEvents({
 }: Callbacks & {
   readonly focusRef?: RefObject<Focusable>;
 }): ReactNode {
+  const inputRef = useRef<HTMLTextAreaElement>(null);
   const handler = useInputHandler();
   useImperativeHandle(focusRef, () => handler);
+  useEffect(() => {
+    handler.setInput(inputRef.current);
+    return () => {
+      handler.setInput(null);
+    };
+  }, [handler]);
   handler.setCallbacks({ onFocus, onBlur, onKeyDown, onKeyUp, onInput });
   return (
     <div style={divStyle}>
       <textarea
-        ref={handler.setInput.bind(handler)}
+        ref={inputRef}
         autoCapitalize="off"
         autoCorrect="off"
         spellCheck="false"
@@ -35,7 +43,7 @@ export const TextEvents = memo(function TextEvents({
   );
 });
 
-function useInputHandler(): InputHandler {
+function useInputHandler() {
   const handlerRef = useRef<InputHandler | null>(null);
   let handler = handlerRef.current;
   if (handler == null) {

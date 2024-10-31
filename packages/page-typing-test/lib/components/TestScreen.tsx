@@ -1,120 +1,63 @@
 import { Screen } from "@keybr/pages-shared";
 import { type LineList, makeStats, type Stats } from "@keybr/textinput";
-import { type IInputEvent } from "@keybr/textinput-events";
 import { TextArea } from "@keybr/textinput-ui";
-import { type Focusable } from "@keybr/widget";
-import { Component, createRef, type ReactNode } from "react";
-import { type Mark, type TextGenerator } from "../generators/index.ts";
-import { Session, type SessionSettings } from "../session/index.ts";
+import { type Focusable, Spacer } from "@keybr/widget";
+import { memo, useRef, useState } from "react";
+import { type TextGenerator } from "../generators/index.ts";
+import { Session } from "../session/index.ts";
 import { type CompositeSettings } from "../settings.ts";
 import { LineTemplate } from "./LineTemplate.tsx";
 import { Toolbar } from "./Toolbar.tsx";
 
-type Props = {
+export const TestScreen = memo(function TestScreen({
+  settings,
+  generator,
+  onComplete,
+  onConfigure,
+}: {
   readonly settings: CompositeSettings;
-  readonly textGenerator: TextGenerator;
+  readonly generator: TextGenerator;
   readonly onComplete: (stats: Stats) => void;
   readonly onConfigure: () => void;
-};
+}) {
+  const focusRef = useRef<Focusable>(null);
+  const [mark, setMark] = useState(() => generator.mark());
+  const [session, setSession] = useState(() => nextTest(settings, generator));
+  const [lines, setLines] = useState<LineList>(() => ({ text: "", lines: [] }));
+  return (
+    <Screen>
+      <Toolbar
+        onConfigure={onConfigure}
+        onChange={() => {
+          focusRef.current?.focus();
+        }}
+      />
+      <Spacer size={10} />
+      <TextArea
+        focusRef={focusRef}
+        settings={settings.textDisplay}
+        lines={lines}
+        wrap={false}
+        onFocus={() => {
+          generator.reset(mark);
+          const session = nextTest(settings, generator);
+          setSession(session);
+          setLines({ text: "", lines: session.getLines() });
+        }}
+        onInput={(event) => {
+          const [feedback, progress, completed] = session.handleInput(event);
+          setLines({ text: "", lines: session.getLines() });
+          if (completed) {
+            setMark(generator.mark());
+            onComplete(makeStats(session.getSteps()));
+          }
+        }}
+        lineTemplate={LineTemplate}
+      />
+    </Screen>
+  );
+});
 
-type State = {
-  /** Previous settings for change detection. */
-  readonly settings: CompositeSettings;
-  /** A mark within the stream of words from the text generator. */
-  readonly mark: Mark;
-  /** A mutable fixed part of state. */
-  readonly session: Session;
-  /** An immutable changing part of state. */
-  readonly lines: LineList;
-};
-
-export class TestScreen extends Component<Props, State> {
-  readonly focusRef = createRef<Focusable>();
-
-  override state: State = nextTest(this.props, this.props.textGenerator.mark());
-
-  static getDerivedStateFromProps(
-    nextProps: Props,
-    prevState: State,
-  ): Partial<State> | null {
-    // An uncontrolled component which needs to be updated accordingly.
-    if (nextProps.settings !== prevState.settings) {
-      if (nextProps.settings.textSource === prevState.settings.textSource) {
-        // The generator must stay the same, can reuse the previous mark.
-        return nextTest(nextProps, prevState.mark);
-      } else {
-        // The generator must be changed, make a new mark.
-        return nextTest(nextProps, nextProps.textGenerator.mark());
-      }
-    } else {
-      return null;
-    }
-  }
-
-  handleFocus = (): void => {
-    this.setState(nextTest(this.props, this.state.mark));
-  };
-
-  handleBlur = (): void => {
-    this.setState(nextTest(this.props, this.state.mark));
-  };
-
-  handleInput = (event: IInputEvent): void => {
-    const { session } = this.state;
-    const [feedback, progress, completed] = session.handleInput(event);
-    const lines = [...session.getLines()]; // Make a copy to force render.
-    this.setState({
-      lines: { text: "", lines },
-    });
-    if (completed) {
-      this.props.onComplete(makeStats(session.getSteps()));
-    }
-  };
-
-  override render(): ReactNode {
-    return (
-      <Screen>
-        <Toolbar onConfigure={this.props.onConfigure} />
-        <TextArea
-          focusRef={this.focusRef}
-          settings={this.props.settings.textDisplay}
-          lines={this.state.lines}
-          wrap={false}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-          onInput={this.handleInput}
-          lineTemplate={LineTemplate}
-        />
-      </Screen>
-    );
-  }
-}
-
-function nextTest(props: Props, mark: Mark): State {
-  const { settings, textGenerator } = props;
-  textGenerator.reset(mark);
-  const session = new Session(getSessionSettings(props), textGenerator);
-  const lines = [...session.getLines()]; // Make a copy to force render.
-  return {
-    settings,
-    mark,
-    session,
-    lines: { text: "", lines },
-  };
-}
-
-const numLines = 7;
-const numCols = 55;
-
-function getSessionSettings(props: Props): SessionSettings {
-  const {
-    settings: { duration, textInput, textDisplay },
-  } = props;
-  return {
-    duration,
-    textInput,
-    textDisplay,
-    numLines,
-    numCols,
-  };
+function nextTest(settings: CompositeSettings, generator: TextGenerator) {
+  return new Session({ ...settings, numLines: 7, numCols: 55 }, generator);
 }
