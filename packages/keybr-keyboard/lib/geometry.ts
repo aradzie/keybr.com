@@ -21,6 +21,11 @@ export class Geometry implements EnumItem {
     "ISO 102 (Full)",
     "staggered",
   );
+  static readonly ISO_102_SYMMETRIC = new Geometry(
+    "iso102symmetric", //
+    "ISO 102 (Symmetric)",
+    "staggered",
+  );
   static readonly KOREAN_103 = new Geometry(
     "kr103", //
     "Korean 103",
@@ -62,6 +67,7 @@ export class Geometry implements EnumItem {
     Geometry.ANSI_101_FULL,
     Geometry.ISO_102,
     Geometry.ISO_102_FULL,
+    Geometry.ISO_102_SYMMETRIC,
     Geometry.KOREAN_103,
     Geometry.KOREAN_103_FULL,
     Geometry.BRAZILIAN_104,
