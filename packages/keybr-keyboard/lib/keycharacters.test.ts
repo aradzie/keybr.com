@@ -1,8 +1,9 @@
-import test from "ava";
+import { test } from "node:test";
+import { assert } from "chai";
 import { KeyCharacters } from "./keycharacters.ts";
 import { KeyModifier } from "./keymodifier.ts";
 
-test("codepoint characters", (t) => {
+test("codepoint characters", () => {
   const characters = new KeyCharacters(
     "KeyA",
     /* "a" */ 0x0061,
@@ -10,13 +11,25 @@ test("codepoint characters", (t) => {
     /* "b" */ 0x0062,
     null,
   );
-  t.is(characters.getCodePoint(KeyModifier.None), /* "a" */ 0x0061);
-  t.is(characters.getCodePoint(KeyModifier.Shift), /* "a" */ 0x0061);
-  t.is(characters.getCodePoint(KeyModifier.Alt), /* "b" */ 0x0062);
-  t.is(characters.getCodePoint(KeyModifier.ShiftAlt), /* "b" */ 0x0062);
+  assert.strictEqual(
+    characters.getCodePoint(KeyModifier.None),
+    /* "a" */ 0x0061,
+  );
+  assert.strictEqual(
+    characters.getCodePoint(KeyModifier.Shift),
+    /* "a" */ 0x0061,
+  );
+  assert.strictEqual(
+    characters.getCodePoint(KeyModifier.Alt),
+    /* "b" */ 0x0062,
+  );
+  assert.strictEqual(
+    characters.getCodePoint(KeyModifier.ShiftAlt),
+    /* "b" */ 0x0062,
+  );
 });
 
-test("dead characters", (t) => {
+test("dead characters", () => {
   const characters = new KeyCharacters(
     "KeyA",
     { dead: /* "*" */ 0x002a },
@@ -24,13 +37,13 @@ test("dead characters", (t) => {
     null,
     null,
   );
-  t.is(characters.getCodePoint(KeyModifier.None), 0x0000);
-  t.is(characters.getCodePoint(KeyModifier.Shift), 0x0000);
-  t.is(characters.getCodePoint(KeyModifier.Alt), 0x0000);
-  t.is(characters.getCodePoint(KeyModifier.ShiftAlt), 0x0000);
+  assert.strictEqual(characters.getCodePoint(KeyModifier.None), 0x0000);
+  assert.strictEqual(characters.getCodePoint(KeyModifier.Shift), 0x0000);
+  assert.strictEqual(characters.getCodePoint(KeyModifier.Alt), 0x0000);
+  assert.strictEqual(characters.getCodePoint(KeyModifier.ShiftAlt), 0x0000);
 });
 
-test("special characters", (t) => {
+test("special characters", () => {
   const characters = new KeyCharacters(
     "KeyA",
     { special: /* "a" */ 0x0061 },
@@ -38,13 +51,13 @@ test("special characters", (t) => {
     null,
     null,
   );
-  t.is(characters.getCodePoint(KeyModifier.None), 0x0000);
-  t.is(characters.getCodePoint(KeyModifier.Shift), 0x0000);
-  t.is(characters.getCodePoint(KeyModifier.Alt), 0x0000);
-  t.is(characters.getCodePoint(KeyModifier.ShiftAlt), 0x0000);
+  assert.strictEqual(characters.getCodePoint(KeyModifier.None), 0x0000);
+  assert.strictEqual(characters.getCodePoint(KeyModifier.Shift), 0x0000);
+  assert.strictEqual(characters.getCodePoint(KeyModifier.Alt), 0x0000);
+  assert.strictEqual(characters.getCodePoint(KeyModifier.ShiftAlt), 0x0000);
 });
 
-test("ligature characters", (t) => {
+test("ligature characters", () => {
   const characters = new KeyCharacters(
     "KeyA",
     { ligature: "XX" },
@@ -52,8 +65,8 @@ test("ligature characters", (t) => {
     null,
     null,
   );
-  t.is(characters.getCodePoint(KeyModifier.None), 0x0000);
-  t.is(characters.getCodePoint(KeyModifier.Shift), 0x0000);
-  t.is(characters.getCodePoint(KeyModifier.Alt), 0x0000);
-  t.is(characters.getCodePoint(KeyModifier.ShiftAlt), 0x0000);
+  assert.strictEqual(characters.getCodePoint(KeyModifier.None), 0x0000);
+  assert.strictEqual(characters.getCodePoint(KeyModifier.Shift), 0x0000);
+  assert.strictEqual(characters.getCodePoint(KeyModifier.Alt), 0x0000);
+  assert.strictEqual(characters.getCodePoint(KeyModifier.ShiftAlt), 0x0000);
 });

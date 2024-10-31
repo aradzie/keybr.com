@@ -1,10 +1,11 @@
+import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { render } from "@testing-library/react";
-import test from "ava";
+import { assert } from "chai";
 import { Book } from "./book.ts";
 import { BookPreview } from "./BookPreview.tsx";
 
-test.serial("render", (t) => {
+test("render", () => {
   const r = render(
     <FakeIntlProvider>
       <BookPreview
@@ -14,11 +15,11 @@ test.serial("render", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.true(r.container.textContent?.includes("Chapters:1"));
-  t.true(r.container.textContent?.includes("Paragraphs:3"));
-  t.true(r.container.textContent?.includes("All words:3"));
-  t.true(r.container.textContent?.includes("Unique words:3"));
-  t.true(r.container.textContent?.includes("Characters:11"));
+  assert.include(r.container.textContent, "Chapters:1");
+  assert.include(r.container.textContent, "Paragraphs:3");
+  assert.include(r.container.textContent, "All words:3");
+  assert.include(r.container.textContent, "Unique words:3");
+  assert.include(r.container.textContent, "Characters:11");
 
   r.unmount();
 });

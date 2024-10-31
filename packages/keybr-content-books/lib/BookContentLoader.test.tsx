@@ -1,9 +1,10 @@
+import { test } from "node:test";
 import { Book, type BookContent } from "@keybr/content";
 import { render } from "@testing-library/react";
-import test from "ava";
+import { assert } from "chai";
 import { BookContentLoader } from "./BookContentLoader.tsx";
 
-test.serial("load book", async (t) => {
+test("load book", async () => {
   let ref = null as BookContent | null;
 
   const r = render(
@@ -17,7 +18,7 @@ test.serial("load book", async (t) => {
 
   await r.findByText("alice");
 
-  t.is(ref?.book, Book.EN_ALICE_WONDERLAND);
+  assert.strictEqual(ref?.book, Book.EN_ALICE_WONDERLAND);
 
   r.rerender(
     <BookContentLoader book={Book.EN_JEKYLL_HYDE} fallback="fallback">
@@ -30,7 +31,7 @@ test.serial("load book", async (t) => {
 
   await r.findByText("jekyll");
 
-  t.is(ref?.book, Book.EN_JEKYLL_HYDE);
+  assert.strictEqual(ref?.book, Book.EN_JEKYLL_HYDE);
 
   r.unmount();
 });

@@ -1,9 +1,10 @@
+import { test } from "node:test";
 import { fakeAdapter, Recorder } from "@fastr/fetch";
 import { type PageData, PageDataContext } from "@keybr/pages-shared";
 import { ResultFaker, useResults } from "@keybr/result";
 import { formatFile } from "@keybr/result-io";
 import { act, render, waitFor } from "@testing-library/react";
-import test from "ava";
+import { assert } from "chai";
 import { type ReactNode } from "react";
 import { ResultLoader } from "./ResultLoader.tsx";
 
@@ -17,7 +18,7 @@ test.afterEach(() => {
   fakeAdapter.reset();
 });
 
-test.serial("load results", async (t) => {
+test("load results", async () => {
   // Arrange.
 
   const recorder = new Recorder();
@@ -43,8 +44,8 @@ test.serial("load results", async (t) => {
 
   // Assert.
 
-  t.is(recorder.requestCount, 0);
-  t.is(r.getByTitle("count").textContent, "0");
+  assert.strictEqual(recorder.requestCount, 0);
+  assert.strictEqual(r.getByTitle("count").textContent, "0");
 
   // Act.
 
@@ -55,8 +56,8 @@ test.serial("load results", async (t) => {
 
   // Assert.
 
-  t.is(recorder.requestCount, 0);
-  t.is(r.getByTitle("count").textContent, "1");
+  assert.strictEqual(recorder.requestCount, 0);
+  assert.strictEqual(r.getByTitle("count").textContent, "1");
 
   // Act.
 
@@ -67,19 +68,15 @@ test.serial("load results", async (t) => {
 
   // Assert.
 
-  t.is(recorder.requestCount, 0);
-  t.is(r.getByTitle("count").textContent, "0");
+  assert.strictEqual(recorder.requestCount, 0);
+  assert.strictEqual(r.getByTitle("count").textContent, "0");
 
   // Cleanup.
 
   r.unmount();
 });
 
-function AnonymousUser({
-  children,
-}: {
-  readonly children: ReactNode;
-}): ReactNode {
+function AnonymousUser({ children }: { readonly children: ReactNode }) {
   return (
     <PageDataContext.Provider value={{ publicUser: { id: null } } as PageData}>
       {children}
@@ -87,7 +84,7 @@ function AnonymousUser({
   );
 }
 
-function NamedUser({ children }: { readonly children: ReactNode }): ReactNode {
+function NamedUser({ children }: { readonly children: ReactNode }) {
   return (
     <PageDataContext.Provider value={{ publicUser: { id: "abc" } } as PageData}>
       {children}
@@ -95,7 +92,7 @@ function NamedUser({ children }: { readonly children: ReactNode }): ReactNode {
   );
 }
 
-function TestClient(): ReactNode {
+function TestClient() {
   const { results, appendResults, clearResults } = useResults();
   return (
     <div>

@@ -1,12 +1,16 @@
+import { test } from "node:test";
 import { fakeAdapter, Recorder } from "@fastr/fetch";
 import { ResultFaker } from "@keybr/result";
 import { formatFile } from "@keybr/result-io";
-import test from "ava";
+import { assert, use } from "chai";
+import chaiAsPromised from "chai-as-promised";
 import {
   ResultSyncAnonymousUser,
   ResultSyncNamedUser,
   ResultSyncPublicUser,
 } from "./remotesync.ts";
+
+use(chaiAsPromised);
 
 const faker = new ResultFaker();
 
@@ -18,7 +22,7 @@ test.afterEach(() => {
   fakeAdapter.reset();
 });
 
-test.serial("named user - receive data", async (t) => {
+test("named user - receive data", async () => {
   // Arrange.
 
   const sync = new ResultSyncNamedUser();
@@ -38,12 +42,12 @@ test.serial("named user - receive data", async (t) => {
 
   // Assert.
 
-  t.is(result.length, 3);
-  t.is(recorder.requestCount, 1);
-  t.is(recorder.state, "ended");
+  assert.strictEqual(result.length, 3);
+  assert.strictEqual(recorder.requestCount, 1);
+  assert.strictEqual(recorder.state, "ended");
 });
 
-test.serial("named user - send data", async (t) => {
+test("named user - send data", async () => {
   // Arrange.
 
   const sync = new ResultSyncNamedUser();
@@ -63,11 +67,11 @@ test.serial("named user - send data", async (t) => {
 
   // Assert.
 
-  t.is(recorder.requestCount, 1);
-  t.is(recorder.state, "ended");
+  assert.strictEqual(recorder.requestCount, 1);
+  assert.strictEqual(recorder.state, "ended");
 });
 
-test.serial("named user - clear data", async (t) => {
+test("named user - clear data", async () => {
   // Arrange.
 
   const sync = new ResultSyncNamedUser();
@@ -87,11 +91,11 @@ test.serial("named user - clear data", async (t) => {
 
   // Assert.
 
-  t.is(recorder.requestCount, 1);
-  t.is(recorder.state, "ended");
+  assert.strictEqual(recorder.requestCount, 1);
+  assert.strictEqual(recorder.state, "ended");
 });
 
-test.serial("public user - receive data", async (t) => {
+test("public user - receive data", async () => {
   // Arrange.
 
   const sync = new ResultSyncPublicUser("abc");
@@ -111,12 +115,12 @@ test.serial("public user - receive data", async (t) => {
 
   // Assert.
 
-  t.is(result.length, 3);
-  t.is(recorder.requestCount, 1);
-  t.is(recorder.state, "ended");
+  assert.strictEqual(result.length, 3);
+  assert.strictEqual(recorder.requestCount, 1);
+  assert.strictEqual(recorder.state, "ended");
 });
 
-test.serial("public user - send data", async (t) => {
+test("public user - send data", async () => {
   // Arrange.
 
   const sync = new ResultSyncPublicUser("abc");
@@ -132,19 +136,14 @@ test.serial("public user - send data", async (t) => {
 
   // Assert.
 
-  await t.throwsAsync(
-    async () => {
-      await sync.send(faker.nextResultList(1), () => {});
-    },
-    {
-      name: "Error",
-      message: "Disabled",
-    },
+  await assert.isRejected(
+    sync.send(faker.nextResultList(1), () => {}),
+    "Disabled",
   );
-  t.is(recorder.requestCount, 0);
+  assert.strictEqual(recorder.requestCount, 0);
 });
 
-test.serial("public user - clear data", async (t) => {
+test("public user - clear data", async () => {
   // Arrange.
 
   const sync = new ResultSyncPublicUser("abc");
@@ -160,19 +159,11 @@ test.serial("public user - clear data", async (t) => {
 
   // Assert.
 
-  await t.throwsAsync(
-    async () => {
-      await sync.clear();
-    },
-    {
-      name: "Error",
-      message: "Disabled",
-    },
-  );
-  t.is(recorder.requestCount, 0);
+  await assert.isRejected(sync.clear(), "Disabled");
+  assert.strictEqual(recorder.requestCount, 0);
 });
 
-test.serial("anonymous user - receive data", async (t) => {
+test("anonymous user - receive data", async () => {
   // Arrange.
 
   const sync = new ResultSyncAnonymousUser();
@@ -188,19 +179,14 @@ test.serial("anonymous user - receive data", async (t) => {
 
   // Assert.
 
-  await t.throwsAsync(
-    async () => {
-      await sync.receive(() => {});
-    },
-    {
-      name: "Error",
-      message: "Disabled",
-    },
+  await assert.isRejected(
+    sync.receive(() => {}),
+    "Disabled",
   );
-  t.is(recorder.requestCount, 0);
+  assert.strictEqual(recorder.requestCount, 0);
 });
 
-test.serial("anonymous user - send data", async (t) => {
+test("anonymous user - send data", async () => {
   // Arrange.
 
   const sync = new ResultSyncAnonymousUser();
@@ -216,19 +202,14 @@ test.serial("anonymous user - send data", async (t) => {
 
   // Assert.
 
-  await t.throwsAsync(
-    async () => {
-      await sync.send(faker.nextResultList(1), () => {});
-    },
-    {
-      name: "Error",
-      message: "Disabled",
-    },
+  await assert.isRejected(
+    sync.send(faker.nextResultList(1), () => {}),
+    "Disabled",
   );
-  t.is(recorder.requestCount, 0);
+  assert.strictEqual(recorder.requestCount, 0);
 });
 
-test.serial("anonymous user - clear data", async (t) => {
+test("anonymous user - clear data", async () => {
   // Arrange.
 
   const sync = new ResultSyncAnonymousUser();
@@ -244,19 +225,11 @@ test.serial("anonymous user - clear data", async (t) => {
 
   // Assert.
 
-  await t.throwsAsync(
-    async () => {
-      await sync.clear();
-    },
-    {
-      name: "Error",
-      message: "Disabled",
-    },
-  );
-  t.is(recorder.requestCount, 0);
+  await assert.isRejected(sync.clear(), "Disabled");
+  assert.strictEqual(recorder.requestCount, 0);
 });
 
-test.serial("named user - receive data - http status error", async (t) => {
+test("named user - receive data - http status error", async () => {
   // Arrange.
 
   const sync = new ResultSyncNamedUser();
@@ -272,20 +245,15 @@ test.serial("named user - receive data - http status error", async (t) => {
 
   // Assert.
 
-  await t.throwsAsync(
-    async () => {
-      await sync.receive(() => {});
-    },
-    {
-      name: "HttpError [500]",
-      message: "Internal Server Error",
-    },
+  await assert.isRejected(
+    sync.receive(() => {}),
+    "Internal Server Error",
   );
-  t.is(recorder.requestCount, 1);
-  t.is(recorder.state, "ended");
+  assert.strictEqual(recorder.requestCount, 1);
+  assert.strictEqual(recorder.state, "ended");
 });
 
-test.serial("named user - receive data - invalid content type", async (t) => {
+test("named user - receive data - invalid content type", async () => {
   // Arrange.
 
   const sync = new ResultSyncNamedUser();
@@ -301,20 +269,15 @@ test.serial("named user - receive data - invalid content type", async (t) => {
 
   // Assert.
 
-  await t.throwsAsync(
-    async () => {
-      await sync.receive(() => {});
-    },
-    {
-      name: "HttpError [415]",
-      message: "Unsupported Media Type",
-    },
+  await assert.isRejected(
+    sync.receive(() => {}),
+    "Unsupported Media Type",
   );
-  t.is(recorder.requestCount, 1);
-  t.is(recorder.state, "ended");
+  assert.strictEqual(recorder.requestCount, 1);
+  assert.strictEqual(recorder.state, "ended");
 });
 
-test.serial("named user - receive data - parse error", async (t) => {
+test("named user - receive data - parse error", async () => {
   // Arrange.
 
   const sync = new ResultSyncNamedUser();
@@ -330,20 +293,15 @@ test.serial("named user - receive data - parse error", async (t) => {
 
   // Assert.
 
-  await t.throwsAsync(
-    async () => {
-      await sync.receive(() => {});
-    },
-    {
-      name: "InvalidFormatError",
-      message: "Invalid header",
-    },
+  await assert.isRejected(
+    sync.receive(() => {}),
+    "Invalid header",
   );
-  t.is(recorder.requestCount, 1);
-  t.is(recorder.state, "ended");
+  assert.strictEqual(recorder.requestCount, 1);
+  assert.strictEqual(recorder.state, "ended");
 });
 
-test.serial("named user - receive data - generic error", async (t) => {
+test("named user - receive data - generic error", async () => {
   // Arrange.
 
   const sync = new ResultSyncNamedUser();
@@ -354,20 +312,15 @@ test.serial("named user - receive data - generic error", async (t) => {
 
   // Assert.
 
-  await t.throwsAsync(
-    async () => {
-      await sync.receive(() => {});
-    },
-    {
-      name: "Error",
-      message: "What a terrible failure",
-    },
+  await assert.isRejected(
+    sync.receive(() => {}),
+    "What a terrible failure",
   );
-  t.is(recorder.requestCount, 1);
-  t.is(recorder.state, "failed");
+  assert.strictEqual(recorder.requestCount, 1);
+  assert.strictEqual(recorder.state, "failed");
 });
 
-test.serial("named user - send data - http status error", async (t) => {
+test("named user - send data - http status error", async () => {
   // Arrange.
 
   const sync = new ResultSyncNamedUser();
@@ -383,20 +336,15 @@ test.serial("named user - send data - http status error", async (t) => {
 
   // Assert.
 
-  await t.throwsAsync(
-    async () => {
-      await sync.send([], () => {});
-    },
-    {
-      name: "HttpError [500]",
-      message: "Internal Server Error",
-    },
+  await assert.isRejected(
+    sync.send([], () => {}),
+    "Internal Server Error",
   );
-  t.is(recorder.requestCount, 1);
-  t.is(recorder.state, "ended");
+  assert.strictEqual(recorder.requestCount, 1);
+  assert.strictEqual(recorder.state, "ended");
 });
 
-test.serial("named user - send data - generic error", async (t) => {
+test("named user - send data - generic error", async () => {
   // Arrange.
 
   const sync = new ResultSyncNamedUser();
@@ -407,20 +355,15 @@ test.serial("named user - send data - generic error", async (t) => {
 
   // Assert.
 
-  await t.throwsAsync(
-    async () => {
-      await sync.send([], () => {});
-    },
-    {
-      name: "Error",
-      message: "What a terrible failure",
-    },
+  await assert.isRejected(
+    sync.send([], () => {}),
+    "What a terrible failure",
   );
-  t.is(recorder.requestCount, 1);
-  t.is(recorder.state, "failed");
+  assert.strictEqual(recorder.requestCount, 1);
+  assert.strictEqual(recorder.state, "failed");
 });
 
-test.serial("named user - clear data - http status error", async (t) => {
+test("named user - clear data - http status error", async () => {
   // Arrange.
 
   const sync = new ResultSyncNamedUser();
@@ -436,20 +379,12 @@ test.serial("named user - clear data - http status error", async (t) => {
 
   // Assert.
 
-  await t.throwsAsync(
-    async () => {
-      await sync.clear();
-    },
-    {
-      name: "HttpError [500]",
-      message: "Internal Server Error",
-    },
-  );
-  t.is(recorder.requestCount, 1);
-  t.is(recorder.state, "ended");
+  await assert.isRejected(sync.clear(), "Internal Server Error");
+  assert.strictEqual(recorder.requestCount, 1);
+  assert.strictEqual(recorder.state, "ended");
 });
 
-test.serial("named user - clear data - generic error", async (t) => {
+test("named user - clear data - generic error", async () => {
   // Arrange.
 
   const sync = new ResultSyncNamedUser();
@@ -460,15 +395,7 @@ test.serial("named user - clear data - generic error", async (t) => {
 
   // Assert.
 
-  await t.throwsAsync(
-    async () => {
-      await sync.clear();
-    },
-    {
-      name: "Error",
-      message: "What a terrible failure",
-    },
-  );
-  t.is(recorder.requestCount, 1);
-  t.is(recorder.state, "failed");
+  await assert.isRejected(sync.clear(), "What a terrible failure");
+  assert.strictEqual(recorder.requestCount, 1);
+  assert.strictEqual(recorder.state, "failed");
 });

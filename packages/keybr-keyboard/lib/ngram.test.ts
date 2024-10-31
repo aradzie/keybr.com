@@ -1,19 +1,20 @@
-import test from "ava";
+import { test } from "node:test";
+import { assert } from "chai";
 import { Ngram1, Ngram2 } from "./ngram.ts";
 
-test("ngram1", (t) => {
+test("ngram1", () => {
   const ngram = new Ngram1([0x0061, 0x0062]);
 
-  t.deepEqual([...ngram], []);
+  assert.deepStrictEqual([...ngram], []);
 
   ngram.add(0x0061, 1);
 
-  t.deepEqual([...ngram], [[0x0061, 1]]);
+  assert.deepStrictEqual([...ngram], [[0x0061, 1]]);
 
   ngram.add(0x0062, 1);
   ngram.add(0x0062, 2);
 
-  t.deepEqual(
+  assert.deepStrictEqual(
     [...ngram],
     [
       [0x0061, 1],
@@ -22,19 +23,19 @@ test("ngram1", (t) => {
   );
 });
 
-test("ngram2", (t) => {
+test("ngram2", () => {
   const ngram = new Ngram2([0x0061, 0x0062]);
 
-  t.deepEqual([...ngram], []);
+  assert.deepStrictEqual([...ngram], []);
 
   ngram.add(0x0061, 0x0061, 1);
 
-  t.deepEqual([...ngram], [[0x0061, 0x0061, 1]]);
+  assert.deepStrictEqual([...ngram], [[0x0061, 0x0061, 1]]);
 
   ngram.add(0x0061, 0x0062, 1);
   ngram.add(0x0061, 0x0062, 2);
 
-  t.deepEqual(
+  assert.deepStrictEqual(
     [...ngram],
     [
       [0x0061, 0x0061, 1],

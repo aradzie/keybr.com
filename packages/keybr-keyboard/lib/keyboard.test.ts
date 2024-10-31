@@ -1,4 +1,5 @@
-import test from "ava";
+import { test } from "node:test";
+import { assert } from "chai";
 import { Geometry } from "./geometry.ts";
 import { Keyboard } from "./keyboard.ts";
 import { KeyCharacters } from "./keycharacters.ts";
@@ -7,7 +8,7 @@ import { KeyModifier } from "./keymodifier.ts";
 import { Layout } from "./layout.ts";
 import { type CharacterDict, type GeometryDict } from "./types.ts";
 
-test("data", (t) => {
+test("data", () => {
   const characterDict: CharacterDict = {
     KeyA: [
       /* "a" */ 0x0061, //
@@ -51,30 +52,30 @@ test("data", (t) => {
   const kc0x00c1 = new KeyCombo(/* "Á" */ 0x00c1, "KeyA", Shift, kc0x0301);
   const kc0x00e1 = new KeyCombo(/* "á" */ 0x00e1, "KeyA", None, kc0x0301);
 
-  t.deepEqual(
+  assert.deepStrictEqual(
     [...keyboard.getCodePoints({ dead: true, shift: true, alt: true })],
     [
       /* "A" */ 0x0041, /* "B" */ 0x0042, /* "a" */ 0x0061, /* "b" */ 0x0062,
       /* "À" */ 0x00c0, /* "Á" */ 0x00c1, /* "à" */ 0x00e0, /* "á" */ 0x00e1,
     ],
   );
-  t.deepEqual(
+  assert.deepStrictEqual(
     [...keyboard.getCodePoints({ dead: false, shift: true, alt: true })],
     [/* "A" */ 0x0041, /* "B" */ 0x0042, /* "a" */ 0x0061, /* "b" */ 0x0062],
   );
-  t.deepEqual(
+  assert.deepStrictEqual(
     [...keyboard.getCodePoints({ dead: false, shift: true, alt: false })],
     [/* "A" */ 0x0041, /* "a" */ 0x0061],
   );
-  t.deepEqual(
+  assert.deepStrictEqual(
     [...keyboard.getCodePoints({ dead: false, shift: false, alt: true })],
     [/* "a" */ 0x0061, /* "b" */ 0x0062],
   );
-  t.deepEqual(
+  assert.deepStrictEqual(
     [...keyboard.getCodePoints({ dead: false, shift: false, alt: false })],
     [/* "a" */ 0x0061],
   );
-  t.deepEqual(
+  assert.deepStrictEqual(
     [
       ...keyboard.getCodePoints({
         dead: false,
@@ -85,7 +86,7 @@ test("data", (t) => {
     ],
     [/* "a" */ 0x0061],
   );
-  t.deepEqual(
+  assert.deepStrictEqual(
     [
       ...keyboard.getCodePoints({
         dead: false,
@@ -97,8 +98,8 @@ test("data", (t) => {
     [],
   );
 
-  t.is(keyboard.getCharacters("Unknown"), null);
-  t.deepEqual(
+  assert.strictEqual(keyboard.getCharacters("Unknown"), null);
+  assert.deepStrictEqual(
     keyboard.getCharacters("KeyA"),
     new KeyCharacters(
       "KeyA",
@@ -108,7 +109,7 @@ test("data", (t) => {
       /* "B" */ 0x0042,
     ),
   );
-  t.deepEqual(
+  assert.deepStrictEqual(
     keyboard.getCharacters("KeyB"),
     new KeyCharacters(
       "KeyB",
@@ -118,7 +119,7 @@ test("data", (t) => {
       { ligature: "YY" },
     ),
   );
-  t.deepEqual(
+  assert.deepStrictEqual(
     keyboard.getCharacters("Equal"),
     new KeyCharacters(
       "Equal",
@@ -129,27 +130,30 @@ test("data", (t) => {
     ),
   );
 
-  t.deepEqual(keyboard.getCombo(/* "A" */ 0x0041), kc0x0041);
-  t.deepEqual(keyboard.getCombo(/* "a" */ 0x0061), kc0x0061);
-  t.deepEqual(keyboard.getCombo(/* "B" */ 0x0042), kc0x0042);
-  t.deepEqual(keyboard.getCombo(/* "b" */ 0x0062), kc0x0062);
-  t.deepEqual(keyboard.getCombo(/* "À" */ 0x00c0), kc0x00c0);
-  t.deepEqual(keyboard.getCombo(/* "à" */ 0x00e0), kc0x00e0);
-  t.deepEqual(keyboard.getCombo(/* "Á" */ 0x00c1), kc0x00c1);
-  t.deepEqual(keyboard.getCombo(/* "á" */ 0x00e1), kc0x00e1);
+  assert.deepStrictEqual(keyboard.getCombo(/* "A" */ 0x0041), kc0x0041);
+  assert.deepStrictEqual(keyboard.getCombo(/* "a" */ 0x0061), kc0x0061);
+  assert.deepStrictEqual(keyboard.getCombo(/* "B" */ 0x0042), kc0x0042);
+  assert.deepStrictEqual(keyboard.getCombo(/* "b" */ 0x0062), kc0x0062);
+  assert.deepStrictEqual(keyboard.getCombo(/* "À" */ 0x00c0), kc0x00c0);
+  assert.deepStrictEqual(keyboard.getCombo(/* "à" */ 0x00e0), kc0x00e0);
+  assert.deepStrictEqual(keyboard.getCombo(/* "Á" */ 0x00c1), kc0x00c1);
+  assert.deepStrictEqual(keyboard.getCombo(/* "á" */ 0x00e1), kc0x00e1);
 
   const shapeKeyA = keyboard.getShape("KeyA")!;
   const shapeKeyB = keyboard.getShape("KeyB")!;
   const shapeEqual = keyboard.getShape("Equal")!;
-  t.is(shapeKeyA.finger, "leftIndex");
-  t.is(shapeKeyA.hand, "left");
-  t.is(shapeKeyA.row, null);
-  t.is(shapeEqual.finger, "rightIndex");
-  t.is(shapeEqual.hand, "right");
-  t.is(shapeEqual.row, null);
-  t.deepEqual(keyboard.zones.get("left"), [shapeKeyA, shapeKeyB]);
-  t.deepEqual(keyboard.zones.get("right"), [shapeEqual]);
-  t.deepEqual(keyboard.zones.get("leftIndex"), [shapeKeyA, shapeKeyB]);
-  t.deepEqual(keyboard.zones.get("rightIndex"), [shapeEqual]);
-  t.is(keyboard.zones.get("home"), undefined);
+  assert.strictEqual(shapeKeyA.finger, "leftIndex");
+  assert.strictEqual(shapeKeyA.hand, "left");
+  assert.strictEqual(shapeKeyA.row, null);
+  assert.strictEqual(shapeEqual.finger, "rightIndex");
+  assert.strictEqual(shapeEqual.hand, "right");
+  assert.strictEqual(shapeEqual.row, null);
+  assert.deepStrictEqual(keyboard.zones.get("left"), [shapeKeyA, shapeKeyB]);
+  assert.deepStrictEqual(keyboard.zones.get("right"), [shapeEqual]);
+  assert.deepStrictEqual(keyboard.zones.get("leftIndex"), [
+    shapeKeyA,
+    shapeKeyB,
+  ]);
+  assert.deepStrictEqual(keyboard.zones.get("rightIndex"), [shapeEqual]);
+  assert.strictEqual(keyboard.zones.get("home"), undefined);
 });

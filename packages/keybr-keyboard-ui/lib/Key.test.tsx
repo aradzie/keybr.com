@@ -1,9 +1,10 @@
+import { test } from "node:test";
 import { KeyShape, Language } from "@keybr/keyboard";
 import { render } from "@testing-library/react";
-import test from "ava";
+import { assert } from "chai";
 import { makeKeyComponent } from "./Key.tsx";
 
-test.serial("static labels", (t) => {
+test("static labels", () => {
   const shape = new KeyShape(
     "my-key",
     {
@@ -20,12 +21,12 @@ test.serial("static labels", (t) => {
 
   const r = render(<Key />);
 
-  t.is(r.container.textContent, "XYZ");
+  assert.strictEqual(r.container.textContent, "XYZ");
 
   r.unmount();
 });
 
-test.serial("letter labels", (t) => {
+test("letter labels", () => {
   const shape = new KeyShape(
     "my-key",
     {
@@ -46,12 +47,12 @@ test.serial("letter labels", (t) => {
 
   const r = render(<Key />);
 
-  t.is(r.container.textContent, "Iİ");
+  assert.strictEqual(r.container.textContent, "Iİ");
 
   r.unmount();
 });
 
-test.serial("dead labels", (t) => {
+test("dead labels", () => {
   const shape = new KeyShape(
     "my-key",
     {
@@ -72,12 +73,12 @@ test.serial("dead labels", (t) => {
 
   const r = render(<Key />);
 
-  t.is(r.container.textContent, "◌̀◌́**");
+  assert.strictEqual(r.container.textContent, "◌̀◌́**");
 
   r.unmount();
 });
 
-test.serial("ligature labels", (t) => {
+test("ligature labels", () => {
   const shape = new KeyShape(
     "my-key",
     {
@@ -98,12 +99,12 @@ test.serial("ligature labels", (t) => {
 
   const r = render(<Key />);
 
-  t.is(r.container.textContent, "XXYYAABB");
+  assert.strictEqual(r.container.textContent, "XXYYAABB");
 
   r.unmount();
 });
 
-test.serial("mixed labels", (t) => {
+test("mixed labels", () => {
   const shape = new KeyShape(
     "my-key",
     {
@@ -124,12 +125,12 @@ test.serial("mixed labels", (t) => {
 
   const r = render(<Key />);
 
-  t.is(r.container.textContent, "A◌̀XX");
+  assert.strictEqual(r.container.textContent, "A◌̀XX");
 
   r.unmount();
 });
 
-test.serial("space", (t) => {
+test("space", () => {
   const shape = new KeyShape(
     "my-key",
     {
@@ -149,7 +150,7 @@ test.serial("space", (t) => {
 
   const r = render(<Key />);
 
-  t.is(r.container.textContent, "");
+  assert.strictEqual(r.container.textContent, "");
 
   r.unmount();
 });

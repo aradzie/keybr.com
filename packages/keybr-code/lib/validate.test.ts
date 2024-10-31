@@ -1,8 +1,9 @@
-import test from "ava";
+import { test } from "node:test";
+import { assert } from "chai";
 import { validate } from "./validate.ts";
 
-test("valid composed grammar", (t) => {
-  t.notThrows(() => {
+test("valid composed grammar", () => {
+  assert.doesNotThrow(() => {
     validate({
       rules: {
         start: {
@@ -21,69 +22,49 @@ test("valid composed grammar", (t) => {
   });
 });
 
-test("missing ref", (t) => {
-  t.throws(
-    () => {
-      validate({
-        rules: {
-          start: {
-            ref: "invalidRef",
-          },
+test("missing ref", () => {
+  assert.throws(() => {
+    validate({
+      rules: {
+        start: {
+          ref: "invalidRef",
         },
-        composes: [],
-      });
-    },
-    {
-      message: "Invalid ref <invalidRef>",
-    },
-  );
+      },
+      composes: [],
+    });
+  }, "Invalid ref <invalidRef>");
 });
 
-test("unreferenced rule", (t) => {
-  t.throws(
-    () => {
-      validate({
-        rules: {
-          start: "start",
-          extra: "extra",
-        },
-        composes: [],
-      });
-    },
-    {
-      message: "Unreferenced rule <extra>",
-    },
-  );
+test("unreferenced rule", () => {
+  assert.throws(() => {
+    validate({
+      rules: {
+        start: "start",
+        extra: "extra",
+      },
+      composes: [],
+    });
+  }, "Unreferenced rule <extra>");
 });
 
-test("empty seq", (t) => {
-  t.throws(
-    () => {
-      validate({
-        rules: {
-          start: { seq: [] },
-        },
-        composes: [],
-      });
-    },
-    {
-      message: "Empty seq",
-    },
-  );
+test("empty seq", () => {
+  assert.throws(() => {
+    validate({
+      rules: {
+        start: { seq: [] },
+      },
+      composes: [],
+    });
+  }, "Empty seq");
 });
 
-test("empty alt", (t) => {
-  t.throws(
-    () => {
-      validate({
-        rules: {
-          start: { alt: [] },
-        },
-        composes: [],
-      });
-    },
-    {
-      message: "Empty alt",
-    },
-  );
+test("empty alt", () => {
+  assert.throws(() => {
+    validate({
+      rules: {
+        start: { alt: [] },
+      },
+      composes: [],
+    });
+  }, "Empty alt");
 });

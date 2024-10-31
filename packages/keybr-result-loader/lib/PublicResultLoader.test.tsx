@@ -1,9 +1,9 @@
+import { test } from "node:test";
 import { fakeAdapter, Recorder } from "@fastr/fetch";
 import { ResultFaker, useResults } from "@keybr/result";
 import { formatFile } from "@keybr/result-io";
 import { render, waitFor } from "@testing-library/react";
-import test from "ava";
-import { type ReactNode } from "react";
+import { assert } from "chai";
 import { PublicResultLoader } from "./PublicResultLoader.tsx";
 
 const faker = new ResultFaker();
@@ -16,7 +16,7 @@ test.afterEach(() => {
   fakeAdapter.reset();
 });
 
-test.serial("load results", async (t) => {
+test("load results", async () => {
   // Arrange.
 
   const recorder = new Recorder();
@@ -48,15 +48,15 @@ test.serial("load results", async (t) => {
 
   // Assert.
 
-  t.is(recorder.requestCount, 1);
-  t.is(r.getByTitle("count").textContent, "3");
+  assert.strictEqual(recorder.requestCount, 1);
+  assert.strictEqual(r.getByTitle("count").textContent, "3");
 
   // Cleanup.
 
   r.unmount();
 });
 
-function TestClient(): ReactNode {
+function TestClient() {
   const { results, appendResults, clearResults } = useResults();
   return (
     <div>

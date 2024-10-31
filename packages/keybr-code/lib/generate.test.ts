@@ -1,15 +1,16 @@
-import test from "ava";
+import { test } from "node:test";
+import { assert } from "chai";
 import { generate } from "./generate.ts";
 
-test("generate from a deterministic grammar", (t) => {
-  t.deepEqual(
+test("generate from a deterministic grammar", () => {
+  assert.deepStrictEqual(
     generate({
       rules: { start: "only" },
       composes: [],
     }),
     ["only"],
   );
-  t.deepEqual(
+  assert.deepStrictEqual(
     generate({
       rules: {
         start: {
@@ -36,8 +37,8 @@ test("generate from a deterministic grammar", (t) => {
   );
 });
 
-test("alternate between branches", (t) => {
-  t.deepEqual(
+test("alternate between branches", () => {
+  assert.deepStrictEqual(
     generate({
       rules: {
         start: {

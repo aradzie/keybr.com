@@ -1,9 +1,10 @@
+import { test } from "node:test";
 import { KeyboardContext, Layout, loadKeyboard } from "@keybr/keyboard";
 import { render } from "@testing-library/react";
-import test from "ava";
+import { assert } from "chai";
 import { HeatmapLayer } from "./HeatmapLayer.tsx";
 
-test.serial("empty", (t) => {
+test("empty", () => {
   const keyboard = loadKeyboard(Layout.EN_US);
 
   const r = render(
@@ -12,12 +13,12 @@ test.serial("empty", (t) => {
     </KeyboardContext.Provider>,
   );
 
-  t.is(r.container.querySelectorAll(".spot_f").length, 0);
+  assert.strictEqual(r.container.querySelectorAll(".spot_f").length, 0);
 
   r.unmount();
 });
 
-test.serial("equal counts", (t) => {
+test("equal counts", () => {
   const keyboard = loadKeyboard(Layout.EN_US);
 
   const r = render(
@@ -33,12 +34,12 @@ test.serial("equal counts", (t) => {
     </KeyboardContext.Provider>,
   );
 
-  t.is(r.container.querySelectorAll(".spot_f").length, 3);
+  assert.strictEqual(r.container.querySelectorAll(".spot_f").length, 3);
 
   r.unmount();
 });
 
-test.serial("different counts", (t) => {
+test("different counts", () => {
   const keyboard = loadKeyboard(Layout.EN_US);
 
   const r = render(
@@ -54,12 +55,12 @@ test.serial("different counts", (t) => {
     </KeyboardContext.Provider>,
   );
 
-  t.is(r.container.querySelectorAll(".spot_f").length, 3);
+  assert.strictEqual(r.container.querySelectorAll(".spot_f").length, 3);
 
   r.unmount();
 });
 
-test.serial("combine counts for the same key", (t) => {
+test("combine counts for the same key", () => {
   const keyboard = loadKeyboard(Layout.EN_US);
 
   const r = render(
@@ -75,7 +76,7 @@ test.serial("combine counts for the same key", (t) => {
     </KeyboardContext.Provider>,
   );
 
-  t.is(r.container.querySelectorAll(".spot_f").length, 2);
+  assert.strictEqual(r.container.querySelectorAll(".spot_f").length, 2);
 
   r.unmount();
 });

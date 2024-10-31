@@ -1,4 +1,5 @@
-import test from "ava";
+import { test } from "node:test";
+import { assert } from "chai";
 import { ObjectStorage } from "./objectstore.ts";
 
 test.beforeEach(() => {
@@ -9,38 +10,38 @@ test.afterEach(() => {
   localStorage.clear();
 });
 
-test.serial("set to local storage", (t) => {
+test("set to local storage", () => {
   const storage = new ObjectStorage();
 
   // Initial value.
-  t.is(storage.get("key"), null);
-  t.deepEqual([...storage], []);
+  assert.strictEqual(storage.get("key"), null);
+  assert.deepStrictEqual([...storage], []);
 
   // Put garbage.
   localStorage.setItem("key", "garbage");
-  t.is(storage.get("key"), null);
-  t.deepEqual([...storage], ["key"]);
+  assert.strictEqual(storage.get("key"), null);
+  assert.deepStrictEqual([...storage], ["key"]);
 
   // Put valid JSON.
   localStorage.setItem("key", '"value"');
-  t.is(storage.get("key"), "value");
-  t.deepEqual([...storage], ["key"]);
+  assert.strictEqual(storage.get("key"), "value");
+  assert.deepStrictEqual([...storage], ["key"]);
 });
 
-test.serial("set to object storage", (t) => {
+test("set to object storage", () => {
   const storage = new ObjectStorage();
 
   // Initial value.
-  t.is(localStorage.getItem("key"), null);
-  t.is(localStorage.length, 0);
+  assert.strictEqual(localStorage.getItem("key"), null);
+  assert.strictEqual(localStorage.length, 0);
 
   // Put something.
   storage.set("key", "value");
-  t.is(localStorage.getItem("key"), '"value"');
-  t.is(localStorage.length, 1);
+  assert.strictEqual(localStorage.getItem("key"), '"value"');
+  assert.strictEqual(localStorage.length, 1);
 
   // Put null.
   storage.set("key", null);
-  t.is(localStorage.getItem("key"), null);
-  t.is(localStorage.length, 0);
+  assert.strictEqual(localStorage.getItem("key"), null);
+  assert.strictEqual(localStorage.length, 0);
 });

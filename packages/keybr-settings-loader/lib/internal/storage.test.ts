@@ -1,6 +1,7 @@
+import { test } from "node:test";
 import { fakeAdapter, Recorder } from "@fastr/fetch";
 import { Settings, stringProp } from "@keybr/settings";
-import test from "ava";
+import { assert } from "chai";
 import { openSettingsStorage, STORAGE_KEY } from "./storage.ts";
 
 test.beforeEach(() => {
@@ -13,27 +14,33 @@ test.afterEach(() => {
   fakeAdapter.reset();
 });
 
-test.serial("anonymous user - store and load settings", async (t) => {
+test("anonymous user - store and load settings", async () => {
   // Arrange.
 
   const settings = new Settings().set(stringProp("prop", "abc"), "xyz");
 
   // Store settings.
 
-  t.deepEqual(await openSettingsStorage(null, null).store(settings), settings);
-  t.not(localStorage.getItem(STORAGE_KEY), null);
+  assert.deepStrictEqual(
+    await openSettingsStorage(null, null).store(settings),
+    settings,
+  );
+  assert.isNotNull(localStorage.getItem(STORAGE_KEY));
 
   // Load settings.
 
-  t.deepEqual(await openSettingsStorage(null, null).load(), settings);
-  t.not(localStorage.getItem(STORAGE_KEY), null);
+  assert.deepStrictEqual(
+    await openSettingsStorage(null, null).load(),
+    settings,
+  );
+  assert.isNotNull(localStorage.getItem(STORAGE_KEY));
 });
 
-test.serial("anonymous user - validate stored settings", async (t) => {
+test("anonymous user - validate stored settings", async () => {
   // Load from garbage data.
 
   localStorage.setItem(STORAGE_KEY, "garbage");
-  t.deepEqual(
+  assert.deepStrictEqual(
     await openSettingsStorage(null, null).load(),
     new Settings(undefined, true),
   );
@@ -41,25 +48,25 @@ test.serial("anonymous user - validate stored settings", async (t) => {
   // Load from valid data.
 
   localStorage.setItem(STORAGE_KEY, "{}");
-  t.deepEqual(
+  assert.deepStrictEqual(
     await openSettingsStorage(null, null).load(),
     new Settings(undefined, false),
   );
 });
 
-test.serial("anonymous user - detect new settings", async (t) => {
+test("anonymous user - detect new settings", async () => {
   // Load for the first time.
 
-  t.true((await openSettingsStorage(null, null).load()).isNew);
-  t.not(localStorage.getItem(STORAGE_KEY), null);
+  assert.isTrue((await openSettingsStorage(null, null).load()).isNew);
+  assert.isNotNull(localStorage.getItem(STORAGE_KEY));
 
   // Load for the second time.
 
-  t.false((await openSettingsStorage(null, null).load()).isNew);
-  t.not(localStorage.getItem(STORAGE_KEY), null);
+  assert.isFalse((await openSettingsStorage(null, null).load()).isNew);
+  assert.isNotNull(localStorage.getItem(STORAGE_KEY));
 });
 
-test.serial("named user - save to remote settings", async (t) => {
+test("named user - save to remote settings", async () => {
   // Arrange.
 
   const recorder = new Recorder();
@@ -75,14 +82,14 @@ test.serial("named user - save to remote settings", async (t) => {
 
   // Assert.
 
-  t.deepEqual(stored, settings);
-  t.is(localStorage.getItem(STORAGE_KEY), null);
-  t.is(recorder.requestCount, 1);
-  t.is(recorder.state, "ended");
-  t.is(recorder.request?.body, JSON.stringify(settings.toJSON()));
+  assert.deepStrictEqual(stored, settings);
+  assert.strictEqual(localStorage.getItem(STORAGE_KEY), null);
+  assert.strictEqual(recorder.requestCount, 1);
+  assert.strictEqual(recorder.state, "ended");
+  assert.strictEqual(recorder.request?.body, JSON.stringify(settings.toJSON()));
 });
 
-test.serial("named user - load from remote settings", async (t) => {
+test("named user - load from remote settings", async () => {
   // Arrange.
 
   const recorder = new Recorder();
@@ -98,13 +105,13 @@ test.serial("named user - load from remote settings", async (t) => {
 
   // Assert.
 
-  t.deepEqual(loaded, settings);
-  t.is(localStorage.getItem(STORAGE_KEY), null);
-  t.is(recorder.requestCount, 0);
-  t.is(recorder.state, "not called");
+  assert.deepStrictEqual(loaded, settings);
+  assert.strictEqual(localStorage.getItem(STORAGE_KEY), null);
+  assert.strictEqual(recorder.requestCount, 0);
+  assert.strictEqual(recorder.state, "not called");
 });
 
-test.serial("named user - load from local settings", async (t) => {
+test("named user - load from local settings", async () => {
   // Arrange.
 
   const recorder = new Recorder();
@@ -120,14 +127,14 @@ test.serial("named user - load from local settings", async (t) => {
 
   // Assert.
 
-  t.deepEqual(loaded, settings);
-  t.is(localStorage.getItem(STORAGE_KEY), null);
-  t.is(recorder.requestCount, 1);
-  t.is(recorder.state, "ended");
-  t.is(recorder.request?.body, JSON.stringify(settings.toJSON()));
+  assert.deepStrictEqual(loaded, settings);
+  assert.strictEqual(localStorage.getItem(STORAGE_KEY), null);
+  assert.strictEqual(recorder.requestCount, 1);
+  assert.strictEqual(recorder.state, "ended");
+  assert.strictEqual(recorder.request?.body, JSON.stringify(settings.toJSON()));
 });
 
-test.serial("named user - load default settings", async (t) => {
+test("named user - load default settings", async () => {
   // Arrange.
 
   const recorder = new Recorder();
@@ -143,8 +150,8 @@ test.serial("named user - load default settings", async (t) => {
 
   // Assert.
 
-  t.deepEqual(loaded, settings);
-  t.is(localStorage.getItem(STORAGE_KEY), null);
-  t.is(recorder.requestCount, 0);
-  t.is(recorder.state, "not called");
+  assert.deepStrictEqual(loaded, settings);
+  assert.strictEqual(localStorage.getItem(STORAGE_KEY), null);
+  assert.strictEqual(recorder.requestCount, 0);
+  assert.strictEqual(recorder.state, "not called");
 });

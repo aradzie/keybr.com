@@ -1,9 +1,10 @@
+import { test } from "node:test";
 import { KeyboardContext, Layout, loadKeyboard } from "@keybr/keyboard";
 import { render } from "@testing-library/react";
-import test from "ava";
+import { assert } from "chai";
 import { KeyLayer } from "./KeyLayer.tsx";
 
-test.serial("render", (t) => {
+test("render", () => {
   const keyboard = loadKeyboard(Layout.EN_US);
 
   const r = render(
@@ -12,14 +13,14 @@ test.serial("render", (t) => {
     </KeyboardContext.Provider>,
   );
 
-  t.is(r.container.querySelectorAll(".key").length, 58);
-  t.is(r.container.querySelectorAll(".depressedKey").length, 0);
-  t.is(r.container.querySelectorAll(".symbol").length, 78);
+  assert.strictEqual(r.container.querySelectorAll(".key").length, 58);
+  assert.strictEqual(r.container.querySelectorAll(".depressedKey").length, 0);
+  assert.strictEqual(r.container.querySelectorAll(".symbol").length, 78);
 
   r.unmount();
 });
 
-test.serial("update", (t) => {
+test("update", () => {
   const keyboard = loadKeyboard(Layout.EN_US);
 
   const r = render(
@@ -31,9 +32,9 @@ test.serial("update", (t) => {
     </KeyboardContext.Provider>,
   );
 
-  t.is(r.container.querySelectorAll(".key").length, 58);
-  t.is(r.container.querySelectorAll(".depressedKey").length, 3);
-  t.is(r.container.querySelectorAll(".symbol").length, 78);
+  assert.strictEqual(r.container.querySelectorAll(".key").length, 58);
+  assert.strictEqual(r.container.querySelectorAll(".depressedKey").length, 3);
+  assert.strictEqual(r.container.querySelectorAll(".symbol").length, 78);
 
   r.unmount();
 });

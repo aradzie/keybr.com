@@ -1,7 +1,8 @@
+import { test } from "node:test";
 import { KeyboardContext, Layout, loadKeyboard } from "@keybr/keyboard";
 import { fake } from "@keybr/test-env-time";
 import { render } from "@testing-library/react";
-import test from "ava";
+import { assert } from "chai";
 import { act } from "react";
 import { PointersLayer } from "./PointersLayer.tsx";
 
@@ -13,7 +14,7 @@ test.afterEach(() => {
   fake.timers.reset();
 });
 
-test.serial("empty", async (t) => {
+test("empty", async () => {
   const keyboard = loadKeyboard(Layout.EN_US);
 
   const r = render(
@@ -25,12 +26,12 @@ test.serial("empty", async (t) => {
   await act(async () => {});
   await fake.timers.run();
 
-  t.is(r.container.querySelectorAll("circle").length, 0);
+  assert.strictEqual(r.container.querySelectorAll("circle").length, 0);
 
   r.unmount();
 });
 
-test.serial("unknown", async (t) => {
+test("unknown", async () => {
   const keyboard = loadKeyboard(Layout.EN_US);
 
   const r = render(
@@ -42,12 +43,12 @@ test.serial("unknown", async (t) => {
   await act(async () => {});
   await fake.timers.run();
 
-  t.is(r.container.querySelectorAll("circle").length, 0);
+  assert.strictEqual(r.container.querySelectorAll("circle").length, 0);
 
   r.unmount();
 });
 
-test.serial("without modifiers", async (t) => {
+test("without modifiers", async () => {
   const keyboard = loadKeyboard(Layout.EN_US);
 
   const r = render(
@@ -59,12 +60,12 @@ test.serial("without modifiers", async (t) => {
   await fake.timers.run();
   await act(async () => {});
 
-  t.is(r.container.querySelectorAll("circle").length, 1);
+  assert.strictEqual(r.container.querySelectorAll("circle").length, 1);
 
   r.unmount();
 });
 
-test.serial("with modifiers", async (t) => {
+test("with modifiers", async () => {
   const keyboard = loadKeyboard(Layout.EN_US);
 
   const r = render(
@@ -76,7 +77,7 @@ test.serial("with modifiers", async (t) => {
   await fake.timers.run();
   await act(async () => {});
 
-  t.is(r.container.querySelectorAll("circle").length, 2);
+  assert.strictEqual(r.container.querySelectorAll("circle").length, 2);
 
   r.unmount();
 });
