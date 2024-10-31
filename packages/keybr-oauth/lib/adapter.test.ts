@@ -1,5 +1,6 @@
+import { test } from "node:test";
 import { FakeResponse, useAdapter } from "@fastr/client";
-import test from "ava";
+import { assert } from "chai";
 import { AbstractAdapter } from "./adapter.ts";
 import { OAuthError } from "./errors.ts";
 import { type ResourceOwner } from "./resource-owner.ts";
@@ -44,7 +45,7 @@ test("generate authorization url", (t) => {
 
   // Assert.
 
-  t.is(
+  assert.strictEqual(
     authorizationUrl,
     "https://test/authorization/" +
       "?response_type=code" +
@@ -60,7 +61,7 @@ test("fetch access token", async (t) => {
 
   useAdapter(
     FakeResponse.of({
-      access_token: "access_token0",
+      access_token: "abc",
       token_type: "bearer",
       expires_in: 3600,
     } satisfies TokenResponse),
@@ -68,11 +69,12 @@ test("fetch access token", async (t) => {
 
   // Act.
 
-  const token = await underTest.getAccessToken({ code: "code" });
+  const { token, type } = await underTest.getAccessToken({ code: "code" });
 
   // Assert.
 
-  t.like(token, { token: "access_token0", type: "bearer" });
+  assert.strictEqual(token, "abc");
+  assert.strictEqual(type, "bearer");
 });
 
 test("handle errors", async (t) => {
@@ -93,16 +95,16 @@ test("handle errors", async (t) => {
 
   // Act.
 
-  const err = (await t.throwsAsync(async () => {
-    await underTest.getProfile(accessToken);
-  })) as OAuthError;
+  const err = (await underTest
+    .getProfile(accessToken)
+    .catch((err) => err)) as OAuthError;
 
   // Assert.
 
-  t.true(err instanceof OAuthError);
-  t.is(err.message, "omg");
-  t.is(err.code, "invalid_request");
-  t.deepEqual(err.raw, {
+  assert.instanceOf(err, OAuthError);
+  assert.strictEqual(err.message, "omg");
+  assert.strictEqual(err.code, "invalid_request");
+  assert.deepStrictEqual(err.raw, {
     error: "invalid_request",
     error_description: "omg",
     error_uri: "http://localhost/omg",

@@ -13,7 +13,7 @@ export class FakeSession implements Session {
     return operations;
   }
 
-  ping(data?: any, mask?: boolean): void {
+  ping(data?: any, mask?: boolean) {
     this.operations.push({
       op: "ping",
       data,
@@ -21,7 +21,7 @@ export class FakeSession implements Session {
     });
   }
 
-  pong(data?: any, mask?: boolean): void {
+  pong(data?: any, mask?: boolean) {
     this.operations.push({
       op: "pong",
       data,
@@ -29,14 +29,14 @@ export class FakeSession implements Session {
     });
   }
 
-  send(message: ServerMessage): void {
+  send(message: ServerMessage) {
     this.operations.push({
       op: "send",
       message,
     });
   }
 
-  close(code?: number, data?: string): void {
+  close(code?: number, data?: string) {
     this.operations.push({
       op: "close",
       code,
@@ -44,7 +44,7 @@ export class FakeSession implements Session {
     });
   }
 
-  terminate(): void {
+  terminate() {
     this.operations.push({
       op: "terminate",
     });

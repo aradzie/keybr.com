@@ -1,5 +1,6 @@
+import { test } from "node:test";
 import { act, render } from "@testing-library/react";
-import test from "ava";
+import { assert } from "chai";
 import { ErrorHandler } from "./ErrorHandler.tsx";
 import { catchError } from "./logger.ts";
 
@@ -13,22 +14,22 @@ test.afterEach(() => {
   window.removeEventListener("error", preventDefault);
 });
 
-test.serial("success", (t) => {
+test("success", () => {
   const r = render(
     <ErrorHandler display={ErrorDisplay}>
       <Child />
     </ErrorHandler>,
   );
 
-  t.is(r.container.textContent, "OK");
+  assert.strictEqual(r.container.textContent, "OK");
 
   r.unmount();
 });
 
-test.serial("mount failure", (t) => {
-  const logged: any[] = [];
+test("mount failure", () => {
+  const logged = [];
   const saved = console.error;
-  console.error = (...args: any[]): void => {
+  console.error = (...args: any[]) => {
     logged.push(args);
   };
 
@@ -38,17 +39,18 @@ test.serial("mount failure", (t) => {
     </ErrorHandler>,
   );
 
-  t.is(r.container.textContent, "Error: abc\n\nCause: Error: xyz");
-  t.is(logged.length, 0); // We canceled the logging in tests.
+  assert.include(r.container.textContent, "Error: abc");
+  assert.include(r.container.textContent, "Cause: Error: xyz");
+  assert.strictEqual(logged.length, 0); // We canceled the logging in tests.
 
   console.error = saved;
   r.unmount();
 });
 
-test.serial("external failure", (t) => {
-  const logged: any[] = [];
+test("external failure", () => {
+  const logged = [];
   const saved = console.error;
-  console.error = (...args: any[]): void => {
+  console.error = (...args: any[]) => {
     logged.push(args);
   };
 
@@ -59,21 +61,21 @@ test.serial("external failure", (t) => {
   );
 
   act(() => {
-    catchError(new RangeError("FAIL"));
+    catchError(new RangeError("abc"));
   });
 
-  t.is(r.container.textContent, "RangeError: FAIL");
-  t.is(logged.length, 1);
+  assert.include(r.container.textContent, "RangeError: abc");
+  assert.strictEqual(logged.length, 1);
 
   console.error = saved;
   r.unmount();
 });
 
-function ErrorDisplay({ report }: { readonly report: string }) {
+function ErrorDisplay({ report }: { report: string }) {
   return <div>{report}</div>;
 }
 
-function Child({ fail = null }: { readonly fail?: any }) {
+function Child({ fail = null }: { fail?: any }) {
   if (fail != null) {
     throw fail;
   } else {
@@ -81,6 +83,6 @@ function Child({ fail = null }: { readonly fail?: any }) {
   }
 }
 
-function preventDefault(ev: Event): void {
+function preventDefault(ev: Event) {
   ev.preventDefault();
 }

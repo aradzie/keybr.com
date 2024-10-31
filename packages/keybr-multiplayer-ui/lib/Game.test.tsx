@@ -1,3 +1,4 @@
+import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import {
   type ClientMessage,
@@ -16,13 +17,13 @@ import {
 } from "@keybr/multiplayer-shared/lib/testing/data.ts";
 import { FakeSettingsContext } from "@keybr/settings";
 import { act, render } from "@testing-library/react";
-import test from "ava";
+import { assert } from "chai";
 import { Game } from "./Game.tsx";
 import { FakeTransport } from "./transport.fake.ts";
 
 declare function flushAnimationFrames(): Promise<void>;
 
-test.serial("initial state", async (t) => {
+test("initial state", async () => {
   const transport = new FakeTransport<ServerMessage, ClientMessage>();
 
   const r = render(
@@ -37,12 +38,12 @@ test.serial("initial state", async (t) => {
     await flushAnimationFrames();
   });
 
-  t.not(r.queryByText("Initializing..."), null);
+  assert.include(r.container.textContent, "Initializing...");
 
   r.unmount();
 });
 
-test.serial("game config", async (t) => {
+test("game config", async () => {
   const transport = new FakeTransport<ServerMessage, ClientMessage>();
 
   const r = render(
@@ -57,7 +58,7 @@ test.serial("game config", async (t) => {
     await flushAnimationFrames();
   });
 
-  t.false(r.container.textContent?.includes("abracadabra"));
+  assert.notInclude(r.container.textContent, "abracadabra");
 
   act(() => {
     transport.transmit({
@@ -70,12 +71,12 @@ test.serial("game config", async (t) => {
     await flushAnimationFrames();
   });
 
-  t.true(r.container.textContent?.includes("abracadabra"));
+  assert.include(r.container.textContent, "abracadabra");
 
   r.unmount();
 });
 
-test.serial("players join and leave", async (t) => {
+test("players join and leave", async () => {
   const transport = new FakeTransport<ServerMessage, ClientMessage>();
 
   const r = render(
@@ -86,9 +87,9 @@ test.serial("players join and leave", async (t) => {
     </FakeIntlProvider>,
   );
 
-  t.true(r.queryByText(player1.user.name) == null);
-  t.true(r.queryByText(player2.user.name) == null);
-  t.true(r.queryByText(player3.user.name) == null);
+  assert.isNull(r.queryByText(player1.user.name));
+  assert.isNull(r.queryByText(player2.user.name));
+  assert.isNull(r.queryByText(player3.user.name));
 
   act(() => {
     transport.transmit({
@@ -102,9 +103,9 @@ test.serial("players join and leave", async (t) => {
     await flushAnimationFrames();
   });
 
-  t.true(r.queryByText(player1.user.name) != null);
-  t.true(r.queryByText(player2.user.name) != null);
-  t.true(r.queryByText(player3.user.name) != null);
+  assert.isNotNull(r.queryByText(player1.user.name));
+  assert.isNotNull(r.queryByText(player2.user.name));
+  assert.isNotNull(r.queryByText(player3.user.name));
 
   act(() => {
     transport.transmit({
@@ -118,14 +119,14 @@ test.serial("players join and leave", async (t) => {
     await flushAnimationFrames();
   });
 
-  t.true(r.queryByText(player1.user.name) != null);
-  t.true(r.queryByText(player2.user.name) != null);
-  t.true(r.queryByText(player3.user.name) == null);
+  assert.isNotNull(r.queryByText(player1.user.name));
+  assert.isNotNull(r.queryByText(player2.user.name));
+  assert.isNull(r.queryByText(player3.user.name));
 
   r.unmount();
 });
 
-test.serial("all together", async (t) => {
+test("all together", async () => {
   const transport = new FakeTransport<ServerMessage, ClientMessage>();
 
   const r = render(
@@ -159,7 +160,7 @@ test.serial("all together", async (t) => {
     await flushAnimationFrames();
   });
 
-  t.true(r.queryByText("Initializing...") != null);
+  assert.include(r.container.textContent, "Initializing...");
 
   act(() => {
     transport.transmit({
@@ -173,7 +174,7 @@ test.serial("all together", async (t) => {
     await flushAnimationFrames();
   });
 
-  t.true(r.queryByText("Start in 2") != null);
+  assert.include(r.container.textContent, "Start in 2");
 
   act(() => {
     transport.transmit({
@@ -187,7 +188,7 @@ test.serial("all together", async (t) => {
     await flushAnimationFrames();
   });
 
-  t.true(r.queryByText("Start in 1") != null);
+  assert.include(r.container.textContent, "Start in 1");
 
   act(() => {
     transport.transmit({
@@ -201,7 +202,7 @@ test.serial("all together", async (t) => {
     await flushAnimationFrames();
   });
 
-  t.true(r.queryByText("Race started!") != null);
+  assert.include(r.container.textContent, "Race started!");
 
   act(() => {
     transport.transmit({
@@ -227,7 +228,7 @@ test.serial("all together", async (t) => {
     await flushAnimationFrames();
   });
 
-  t.true(r.queryByText("Zzz... Wait for the next race") != null);
+  assert.include(r.container.textContent, "Zzz... Wait for the next race");
 
   act(() => {
     transport.transmit({
@@ -253,7 +254,7 @@ test.serial("all together", async (t) => {
     await flushAnimationFrames();
   });
 
-  t.true(r.queryByText("You finished 3rd!") != null);
+  assert.include(r.container.textContent, "You finished 3rd!");
 
   act(() => {
     transport.transmit({
@@ -279,7 +280,7 @@ test.serial("all together", async (t) => {
     await flushAnimationFrames();
   });
 
-  t.true(r.queryByText("You finished 2nd!") != null);
+  assert.include(r.container.textContent, "You finished 2nd!");
 
   act(() => {
     transport.transmit({
@@ -305,7 +306,7 @@ test.serial("all together", async (t) => {
     await flushAnimationFrames();
   });
 
-  t.true(r.queryByText("You won the race!") != null);
+  assert.include(r.container.textContent, "You won the race!");
 
   act(() => {
     transport.transmit({
@@ -331,7 +332,7 @@ test.serial("all together", async (t) => {
     await flushAnimationFrames();
   });
 
-  t.true(r.queryByText("GO!") != null);
+  assert.include(r.container.textContent, "GO!");
 
   act(() => {
     transport.transmit({
@@ -345,7 +346,7 @@ test.serial("all together", async (t) => {
     await flushAnimationFrames();
   });
 
-  t.true(r.queryByText("Race finished!") != null);
+  assert.include(r.container.textContent, "Race finished!");
 
   r.unmount();
 });

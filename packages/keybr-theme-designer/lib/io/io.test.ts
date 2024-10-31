@@ -1,10 +1,11 @@
+import { test } from "node:test";
 import { BlobWriter, TextReader, ZipWriter } from "@zip.js/zip.js";
-import test from "ava";
+import { assert } from "chai";
 import { lightTheme } from "../themes/themes.ts";
 import { ImportState } from "./import-state.ts";
 import { exportTheme, importTheme0 } from "./io.ts";
 
-test("export and import theme", async (t) => {
+test("export and import theme", async () => {
   // Arrange.
 
   const state = new ImportState();
@@ -15,11 +16,11 @@ test("export and import theme", async (t) => {
 
   // Assert.
 
-  t.deepEqual(state.theme, lightTheme);
-  t.deepEqual(state.errors, []);
+  assert.deepStrictEqual(state.theme, lightTheme);
+  assert.deepStrictEqual(state.errors, []);
 });
 
-test("import corrupted file", async (t) => {
+test("import corrupted file", async () => {
   // Arrange.
 
   const state = new ImportState();
@@ -30,10 +31,10 @@ test("import corrupted file", async (t) => {
 
   // Assert.
 
-  t.deepEqual(state.errors, [new TypeError("Corrupted theme file")]);
+  assert.deepStrictEqual(state.errors, [new TypeError("Corrupted theme file")]);
 });
 
-test("import empty file", async (t) => {
+test("import empty file", async () => {
   // Arrange.
 
   const state = new ImportState();
@@ -44,10 +45,10 @@ test("import empty file", async (t) => {
 
   // Assert.
 
-  t.deepEqual(state.errors, [new TypeError("Theme data not found")]);
+  assert.deepStrictEqual(state.errors, [new TypeError("Theme data not found")]);
 });
 
-async function makeZip(entries: [string, string][]): Promise<Blob> {
+async function makeZip(entries: [string, string][]) {
   const blob = new BlobWriter("application/zip");
   const zip = new ZipWriter(blob);
   for (const [name, value] of entries) {

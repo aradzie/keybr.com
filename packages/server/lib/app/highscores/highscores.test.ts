@@ -1,19 +1,14 @@
+import { mock } from "node:test";
 import { Application } from "@fastr/core";
 import { HighScoresFactory } from "@keybr/highscores";
 import { ResultFaker } from "@keybr/result";
-import { fake } from "@keybr/test-env-time";
 import { kMain } from "../module.ts";
 import { test } from "../test/context.ts";
 import { startApp } from "../test/request.ts";
 
 const now = new Date("2001-02-03T04:05:06Z");
 
-test.beforeEach(() => {
-  fake.date.set(now);
-});
-test.afterEach(() => {
-  fake.date.reset();
-});
+mock.timers.enable({ apis: ["Date"], now });
 
 const faker = new ResultFaker({ timeStamp: now.getTime() });
 

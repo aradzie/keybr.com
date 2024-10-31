@@ -1,20 +1,13 @@
 import { test } from "node:test";
 import { KeyboardContext, Layout, loadKeyboard } from "@keybr/keyboard";
-import { fake } from "@keybr/test-env-time";
 import { render } from "@testing-library/react";
 import { assert } from "chai";
 import { act } from "react";
 import { PointersLayer } from "./PointersLayer.tsx";
 
-test.beforeEach(() => {
-  fake.timers.set();
-});
+test("empty", async (ctx) => {
+  ctx.mock.timers.enable({ apis: ["setTimeout"] });
 
-test.afterEach(() => {
-  fake.timers.reset();
-});
-
-test("empty", async () => {
   const keyboard = loadKeyboard(Layout.EN_US);
 
   const r = render(
@@ -23,15 +16,17 @@ test("empty", async () => {
     </KeyboardContext.Provider>,
   );
 
+  ctx.mock.timers.runAll();
   await act(async () => {});
-  await fake.timers.run();
 
   assert.strictEqual(r.container.querySelectorAll("circle").length, 0);
 
   r.unmount();
 });
 
-test("unknown", async () => {
+test("unknown", async (ctx) => {
+  ctx.mock.timers.enable({ apis: ["setTimeout"] });
+
   const keyboard = loadKeyboard(Layout.EN_US);
 
   const r = render(
@@ -40,15 +35,17 @@ test("unknown", async () => {
     </KeyboardContext.Provider>,
   );
 
+  ctx.mock.timers.runAll();
   await act(async () => {});
-  await fake.timers.run();
 
   assert.strictEqual(r.container.querySelectorAll("circle").length, 0);
 
   r.unmount();
 });
 
-test("without modifiers", async () => {
+test("without modifiers", async (ctx) => {
+  ctx.mock.timers.enable({ apis: ["setTimeout"] });
+
   const keyboard = loadKeyboard(Layout.EN_US);
 
   const r = render(
@@ -57,7 +54,7 @@ test("without modifiers", async () => {
     </KeyboardContext.Provider>,
   );
 
-  await fake.timers.run();
+  ctx.mock.timers.runAll();
   await act(async () => {});
 
   assert.strictEqual(r.container.querySelectorAll("circle").length, 1);
@@ -65,7 +62,9 @@ test("without modifiers", async () => {
   r.unmount();
 });
 
-test("with modifiers", async () => {
+test("with modifiers", async (ctx) => {
+  ctx.mock.timers.enable({ apis: ["setTimeout"] });
+
   const keyboard = loadKeyboard(Layout.EN_US);
 
   const r = render(
@@ -74,7 +73,7 @@ test("with modifiers", async () => {
     </KeyboardContext.Provider>,
   );
 
-  await fake.timers.run();
+  ctx.mock.timers.runAll();
   await act(async () => {});
 
   assert.strictEqual(r.container.querySelectorAll("circle").length, 2);

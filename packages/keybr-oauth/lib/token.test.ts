@@ -1,13 +1,11 @@
-import { fake } from "@keybr/test-env-time";
-import test from "ava";
+import { test } from "node:test";
+import { assert } from "chai";
 import { AccessToken } from "./token.ts";
 
-test.afterEach(() => {
-  fake.date.reset();
-});
+test("construct token from response", (ctx) => {
+  ctx.mock.timers.enable({ apis: ["Date"] });
 
-test("construct token from response", (t) => {
-  fake.date.set(new Date("2001-02-03T04:05:06Z"));
+  ctx.mock.timers.setTime(Number(new Date("2001-02-03T04:05:06Z")));
 
   const token = new AccessToken({
     access_token: "token",
@@ -15,7 +13,7 @@ test("construct token from response", (t) => {
     expires_in: 3600,
   });
 
-  t.deepEqual(
+  assert.deepStrictEqual(
     { ...token },
     {
       token: "token",
@@ -23,11 +21,13 @@ test("construct token from response", (t) => {
       expiresAt: new Date("2001-02-03T05:05:06Z"),
     },
   );
-  t.false(token.expired());
+  assert.isFalse(token.expired());
 });
 
-test("check expired", (t) => {
-  fake.date.set(new Date("2001-01-01T00:00:00Z"));
+test("check expired", (ctx) => {
+  ctx.mock.timers.enable({ apis: ["Date"] });
+
+  ctx.mock.timers.setTime(Number(new Date("2001-01-01T00:00:00Z")));
 
   const token = new AccessToken({
     access_token: "token",
@@ -35,22 +35,22 @@ test("check expired", (t) => {
     expires_in: 3600,
   });
 
-  t.false(token.expired());
+  assert.isFalse(token.expired());
 
-  fake.date.set(new Date("2001-01-01T00:58:59Z"));
+  ctx.mock.timers.setTime(Number(new Date("2001-01-01T00:58:59Z")));
 
-  t.false(token.expired());
-  t.false(token.expired(60));
-  t.false(token.expired(0));
+  assert.isFalse(token.expired());
+  assert.isFalse(token.expired(60));
+  assert.isFalse(token.expired(0));
 
-  fake.date.set(new Date("2001-01-01T00:59:00Z"));
+  ctx.mock.timers.setTime(Number(new Date("2001-01-01T00:59:00Z")));
 
-  t.true(token.expired());
-  t.true(token.expired(60));
-  t.false(token.expired(0));
+  assert.isTrue(token.expired());
+  assert.isTrue(token.expired(60));
+  assert.isFalse(token.expired(0));
 
-  fake.date.set(new Date("2001-01-01T01:00:00Z"));
+  ctx.mock.timers.setTime(Number(new Date("2001-01-01T01:00:00Z")));
 
-  t.true(token.expired());
-  t.true(token.expired(0));
+  assert.isTrue(token.expired());
+  assert.isTrue(token.expired(0));
 });

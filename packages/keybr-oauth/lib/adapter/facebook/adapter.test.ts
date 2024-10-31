@@ -1,5 +1,6 @@
+import { test } from "node:test";
 import { FakeResponse, useAdapter } from "@fastr/client";
-import test from "ava";
+import { assert } from "chai";
 import { OAuthError } from "../../errors.ts";
 import { type ResourceOwner } from "../../resource-owner.ts";
 import { AccessToken } from "../../token.ts";
@@ -49,7 +50,7 @@ test("load user profile", async (t) => {
 
   // Assert.
 
-  t.deepEqual(profile, {
+  assert.deepStrictEqual(profile, {
     raw,
     provider: "facebook",
     id: "id0",
@@ -75,7 +76,7 @@ test("load minimal user profile", async (t) => {
 
   // Assert.
 
-  t.deepEqual(profile, {
+  assert.deepStrictEqual(profile, {
     raw,
     provider: "facebook",
     id: "id0",
@@ -107,16 +108,16 @@ test("handle errors", async (t) => {
 
   // Act.
 
-  const err = (await t.throwsAsync(async () => {
-    await underTest.getProfile(accessToken);
-  })) as OAuthError;
+  const err = (await underTest
+    .getProfile(accessToken)
+    .catch((err) => err)) as OAuthError;
 
   // Assert.
 
-  t.true(err instanceof OAuthError);
-  t.is(err.message, "omg");
-  t.is(err.code, "invalid_request");
-  t.deepEqual(err.raw, {
+  assert.instanceOf(err, OAuthError);
+  assert.strictEqual(err.message, "omg");
+  assert.strictEqual(err.code, "invalid_request");
+  assert.deepStrictEqual(err.raw, {
     error: {
       message: "omg",
       type: "OAuthException",

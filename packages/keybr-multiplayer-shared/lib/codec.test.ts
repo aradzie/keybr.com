@@ -1,4 +1,5 @@
-import test from "ava";
+import { test } from "node:test";
+import { assert } from "chai";
 import { ClientCodec } from "./codec.client.ts";
 import { ServerCodec } from "./codec.server.ts";
 import {
@@ -33,26 +34,26 @@ import { type PlayerState } from "./types.ts";
 const clientCodec = new ClientCodec();
 const serverCodec = new ServerCodec();
 
-const playerJoinMessage: PlayerJoinMessage = {
+const playerJoinMessage = {
   type: PLAYER_JOIN_ID,
   joinedId: 999,
   players: [basicPlayer1, basicPlayer2, basicPlayer3],
-};
-const playerLeaveMessage: PlayerLeaveMessage = {
+} satisfies PlayerJoinMessage;
+const playerLeaveMessage = {
   type: PLAYER_LEAVE_ID,
   leftId: 999,
   players: [basicPlayer1, basicPlayer2, basicPlayer3],
-};
-const gameConfigMessage: GameConfigMessage = {
+} satisfies PlayerLeaveMessage;
+const gameConfigMessage = {
   type: GAME_CONFIG_ID,
   text: "some text",
-};
-const gameReadyMessage: GameReadyMessage = {
+} satisfies GameConfigMessage;
+const gameReadyMessage = {
   type: GAME_READY_ID,
   gameState: GameState.STARTING,
   countDown: 3,
-};
-const gameWorldMessage: GameWorldMessage = {
+} satisfies GameReadyMessage;
+const gameWorldMessage = {
   type: GAME_WORLD_ID,
   elapsed: 12345,
   playerState: new Map<number, PlayerState>([
@@ -60,40 +61,40 @@ const gameWorldMessage: GameWorldMessage = {
     [basicPlayer2.id, playerState2],
     [basicPlayer3.id, playerState3],
   ]),
-};
-const serverMessages: readonly ServerMessage[] = [
+} satisfies GameWorldMessage;
+const serverMessages = [
   playerJoinMessage,
   playerLeaveMessage,
   gameConfigMessage,
   gameReadyMessage,
   gameWorldMessage,
-];
-const playerAnnounceMessage: PlayerAnnounceMessage = {
+] satisfies readonly ServerMessage[];
+const playerAnnounceMessage = {
   type: PLAYER_ANNOUNCE_ID,
   signature: 0xdeadbabe,
-};
-const playerProgressMessage: PlayerProgressMessage = {
+} satisfies PlayerAnnounceMessage;
+const playerProgressMessage = {
   type: PLAYER_PROGRESS_ID,
   elapsed: 1234,
   codePoint: 32,
-};
-const clientMessages: readonly ClientMessage[] = [
+} satisfies PlayerProgressMessage;
+const clientMessages = [
   playerAnnounceMessage,
   playerProgressMessage,
-];
+] satisfies readonly ClientMessage[];
 
 for (const original of serverMessages) {
-  test(`encode and decode server message id ${original.type}`, (t) => {
+  test(`encode and decode server message id ${original.type}`, () => {
     const buffer = serverCodec.encode(original);
     const decoded = clientCodec.decode(buffer);
-    t.deepEqual(original, decoded);
+    assert.deepStrictEqual(original, decoded);
   });
 }
 
 for (const original of clientMessages) {
-  test(`encode and decode client message id ${original.type}`, (t) => {
+  test(`encode and decode client message id ${original.type}`, () => {
     const buffer = clientCodec.encode(original);
     const decoded = serverCodec.decode(buffer);
-    t.deepEqual(original, decoded);
+    assert.deepStrictEqual(original, decoded);
   });
 }

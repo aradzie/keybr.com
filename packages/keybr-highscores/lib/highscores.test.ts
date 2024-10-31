@@ -1,10 +1,11 @@
-import { test } from "node:test";
+import { mock, test } from "node:test";
 import { Layout } from "@keybr/keyboard";
-import { fake } from "@keybr/test-env-time";
 import { assert } from "chai";
 import { HighScores, type HighScoresRow } from "./highscores.ts";
 
 const now = new Date("2001-02-03T04:05:06Z");
+
+mock.timers.enable({ apis: ["Date"], now });
 
 const template = {
   user: 0,
@@ -17,14 +18,6 @@ const template = {
   speed: 0,
   score: 0,
 } satisfies HighScoresRow;
-
-test.beforeEach(() => {
-  fake.date.set(now);
-});
-
-test.afterEach(() => {
-  fake.date.reset();
-});
 
 test("do not insert if result is old", () => {
   // Arrange.

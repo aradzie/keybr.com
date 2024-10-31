@@ -1,10 +1,11 @@
+import { test } from "node:test";
 import { Color } from "@keybr/color";
-import test from "ava";
+import { assert } from "chai";
 import { UrlAsset } from "./asset.ts";
 import { CustomTheme } from "./custom-theme.ts";
 import { readTheme, storeTheme } from "./theme-io.ts";
 
-test("store", async (t) => {
+test("store", async () => {
   // Arrange.
 
   const storage = new FakeStorage([
@@ -22,8 +23,8 @@ test("store", async (t) => {
 
   // Assert.
 
-  t.is(error, null);
-  t.deepEqual(
+  assert.strictEqual(error, null);
+  assert.deepStrictEqual(
     [...storage],
     [
       ["keybr.theme[--primary]", "rgb(255,255,255)"],
@@ -33,7 +34,7 @@ test("store", async (t) => {
   );
 });
 
-test("read", async (t) => {
+test("read", async () => {
   // Arrange.
 
   const storage = new FakeStorage([
@@ -48,16 +49,16 @@ test("read", async (t) => {
 
   // Assert.
 
-  t.is(error, null);
-  t.deepEqual(theme.get("--primary"), Color.parse("#ffffff"));
-  t.deepEqual(theme.get("--secondary"), Color.parse("#000000"));
-  t.deepEqual(
+  assert.strictEqual(error, null);
+  assert.deepStrictEqual(theme.get("--primary"), Color.parse("#ffffff"));
+  assert.deepStrictEqual(theme.get("--secondary"), Color.parse("#000000"));
+  assert.deepStrictEqual(
     theme.get("--background-image"),
     new UrlAsset("/assets/image.svg"),
   );
 });
 
-test("read and ignore invalid data", async (t) => {
+test("read and ignore invalid data", async () => {
   // Arrange.
 
   const storage = new FakeStorage([
@@ -72,9 +73,9 @@ test("read and ignore invalid data", async (t) => {
 
   // Assert.
 
-  t.deepEqual([...storage], []);
-  t.deepEqual([...theme], []);
-  t.is(error?.errors.length, 3);
+  assert.deepStrictEqual([...storage], []);
+  assert.deepStrictEqual([...theme], []);
+  assert.strictEqual(error?.errors.length, 3);
 });
 
 class FakeStorage implements Storage, Iterable<[string, string]> {

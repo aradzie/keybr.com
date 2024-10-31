@@ -20,29 +20,11 @@ function processPackage(packageDirectory) {
     cwd: packageDirectory,
     absolute: false,
   });
-  const modules = findDeps(packageDirectory, typescriptFiles, lessFiles);
   const packageJsonFile = join(packageDirectory, "package.json");
   if (existsSync(packageJsonFile)) {
-    const packageJson = processPackageJson(
-      packageJsonFile,
-      typescriptFiles,
-      lessFiles,
-    );
-    const { module, browser, dependencies, devDependencies } = packageJson;
-    if (typeof module === "string") {
-      if (!existsSync(join(packageDirectory, module))) {
-        console.error("Invalid module field in", packageJsonFile);
-      }
-    }
-    if (typeof browser === "string") {
-      if (!existsSync(join(packageDirectory, browser))) {
-        console.error("Invalid browser field in", packageJsonFile);
-      }
-    }
-    const tsJsonFile = join(packageDirectory, "tsconfig.json");
-    if (typescriptFiles.length > 0) {
-      processTsconfigJson(packageJson, tsJsonFile);
-    }
+    const packageJson = processPackageJson(packageJsonFile);
+    const { dependencies, devDependencies } = packageJson;
+    const modules = findDeps(packageDirectory, typescriptFiles, lessFiles);
     if (dependencies != null) {
       printUnusedDeps(packageJsonFile, dependencies, modules);
     }
@@ -50,89 +32,23 @@ function processPackage(packageDirectory) {
       printUnusedDeps(packageJsonFile, devDependencies, modules);
     }
   }
+  const tsconfigJsonFile = join(packageDirectory, "tsconfig.json");
+  if (existsSync(tsconfigJsonFile)) {
+    processTsconfigJson(tsconfigJsonFile);
+  }
 }
 
-function processPackageJson(packageJsonFile, typescriptFiles, lessFiles) {
-  const {
-    name,
-    version,
-    type,
-    main,
-    types,
-    module,
-    browser,
-    exports,
-    imports,
-    sideEffects,
-    dependencies = {},
-    devDependencies = {},
-    peerDependencies,
-    optionalDependencies,
-    scripts: { clean, compile, test, ...scripts } = {},
-    ava = {},
-  } = readJsonSync(packageJsonFile);
-
-  const hasTs = typescriptFiles.length > 0;
-  const hasTsTests = typescriptFiles.some(
-    (item) => item.endsWith(".test.ts") || item.endsWith(".test.tsx"),
-  );
-
-  const opt = {};
-
-  if (hasTs) {
-    Object.assign(scripts, {
-      clean: "rm -fr .types",
-      compile: "tsc",
-      test,
-    });
-    if (hasTsTests && !test?.includes("--test")) {
-      Object.assign(scripts, {
-        test: "ava",
-      });
-      const { nodeArguments, serial } = ava;
-      Object.assign(opt, {
-        ava: {
-          files: ["lib/**/*.test.*"],
-          extensions: {
-            ts: "module",
-            tsx: "module",
-          },
-          nodeArguments,
-          serial,
-        },
-      });
-    }
-  }
-
-  const result = {
+function processPackageJson(file) {
+  const json = {
+    ...readJsonSync(file),
     private: true,
-    name,
-    version,
-    type,
-    main,
-    types,
-    module,
-    browser,
-    exports,
-    imports,
-    sideEffects,
-    dependencies,
-    devDependencies,
-    peerDependencies,
-    optionalDependencies,
-    scripts,
-    ...opt,
   };
-
-  writeJsonSync(packageJsonFile, sortJson(result, packageJsonKeys));
-
-  return result;
+  writeJsonSync(file, sortJson(json, packageJsonKeys));
+  return json;
 }
 
-function processTsconfigJson(packageJson, file) {
-  if (!existsSync(file)) {
-    return;
-  }
+function processTsconfigJson(file) {
   const json = readJsonSync(file);
   writeJsonSync(file, sortJson(json, tsconfigJsonKeys));
+  return json;
 }

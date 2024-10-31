@@ -26,9 +26,7 @@
     "@types/ws": "^8.5.12",
     "ws": "^8.18.0"
   },
-  "devDependencies": {
-    "@keybr/test-env-time": "*"
-  },
+  "devDependencies": {},
   "scripts": {
     "clean": "rm -fr .types",
     "compile": "tsc",

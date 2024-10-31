@@ -10,9 +10,7 @@
     "@keybr/color": "*",
     "@keybr/lang": "*"
   },
-  "devDependencies": {
-    "@keybr/test-env-time": "*"
-  },
+  "devDependencies": {},
   "scripts": {
     "clean": "rm -fr .types",
     "compile": "tsc",

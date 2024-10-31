@@ -11,9 +11,7 @@
     "@keybr/unicode": "*",
     "@keybr/widget": "*"
   },
-  "devDependencies": {
-    "@keybr/test-env-time": "*"
-  },
+  "devDependencies": {},
   "scripts": {
     "clean": "rm -fr .types",
     "compile": "tsc",

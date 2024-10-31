@@ -1,17 +1,18 @@
-import test from "ava";
+import { test } from "node:test";
+import { assert } from "chai";
 import { createIntl } from "react-intl";
 import { PLAYER_JOIN_ID, PLAYER_LEAVE_ID } from "./messages.ts";
 import { player1, player2, player3 } from "./testing/data.ts";
 import { makeWorldState, NOBODY, updateWorldState } from "./worldstate.ts";
 
-test("join and leave players", (t) => {
+test("join and leave players", () => {
   const intl = createIntl({ locale: "en" });
 
   const state0 = makeWorldState(intl);
 
   // Initial state.
 
-  t.deepEqual(state0.players, { all: [], me: NOBODY });
+  assert.deepStrictEqual(state0.players, { all: [], me: NOBODY });
 
   // Few players join.
 
@@ -21,8 +22,11 @@ test("join and leave players", (t) => {
     players: [player1, player2],
   });
 
-  t.not(state0, state1);
-  t.deepEqual(state1.players, { all: [player1, player2], me: player1 });
+  assert.notEqual(state0, state1);
+  assert.deepStrictEqual(state1.players, {
+    all: [player1, player2],
+    me: player1,
+  });
 
   // Few more players join.
 
@@ -32,8 +36,8 @@ test("join and leave players", (t) => {
     players: [player1, player2, player3],
   });
 
-  t.not(state1, state2);
-  t.deepEqual(state2.players, {
+  assert.notEqual(state1, state2);
+  assert.deepStrictEqual(state2.players, {
     all: [player1, player2, player3],
     me: player1,
   });
@@ -46,8 +50,11 @@ test("join and leave players", (t) => {
     players: [player1, player3],
   });
 
-  t.not(state2, state3);
-  t.deepEqual(state3.players, { all: [player1, player3], me: player1 });
+  assert.notEqual(state2, state3);
+  assert.deepStrictEqual(state3.players, {
+    all: [player1, player3],
+    me: player1,
+  });
 
   // Few more leave.
 
@@ -57,8 +64,8 @@ test("join and leave players", (t) => {
     players: [player1],
   });
 
-  t.not(state3, state4);
-  t.deepEqual(state4.players, { all: [player1], me: player1 });
+  assert.notEqual(state3, state4);
+  assert.deepStrictEqual(state4.players, { all: [player1], me: player1 });
 
   // Me leaves.
 
@@ -70,6 +77,6 @@ test("join and leave players", (t) => {
 
   // Final state.
 
-  t.not(state4, state5);
-  t.deepEqual(state5.players, { all: [], me: NOBODY });
+  assert.notEqual(state4, state5);
+  assert.deepStrictEqual(state5.players, { all: [], me: NOBODY });
 });

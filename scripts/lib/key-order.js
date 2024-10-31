@@ -16,7 +16,6 @@ export const packageJsonKeys = [
   ["peerDependencies", "alpha"],
   ["optionalDependencies", "alpha"],
   ["scripts", ["clean", "compile", "test"]],
-  ["ava", [["files", "alpha"], "extensions", "nodeArguments", "serial"]],
 ];
 
 export const tsconfigJsonKeys = [

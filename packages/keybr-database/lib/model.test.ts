@@ -1,6 +1,6 @@
+import { mock } from "node:test";
 import { makeKnex } from "@keybr/config";
 import { PublicId } from "@keybr/publicid";
-import { fake } from "@keybr/test-env-time";
 import test, { registerCompletionHandler } from "ava";
 import { ValidationError } from "objection";
 import { User, UserExternalId, UserLoginRequest } from "./model.ts";
@@ -12,21 +12,15 @@ registerCompletionHandler(() => {
   process.exit();
 });
 
-const now = new Date("2001-02-03T04:05:06Z");
-
 test.beforeEach(async () => {
   await createSchema(makeKnex());
   await clearTables();
   await seedModels();
 });
 
-test.beforeEach(() => {
-  fake.date.set(now);
-});
+const now = new Date("2001-02-03T04:05:06Z");
 
-test.afterEach(() => {
-  fake.date.reset();
-});
+mock.timers.enable({ apis: ["Date"], now });
 
 test("validate models", (t) => {
   t.deepEqual(

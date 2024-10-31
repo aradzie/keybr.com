@@ -1,15 +1,9 @@
-import { fake } from "@keybr/test-env-time";
+import { mock } from "node:test";
 import { act, render } from "@testing-library/react";
 import test from "ava";
 import { toast, Toaster } from "./Toaster.tsx";
 
-test.beforeEach(() => {
-  fake.timers.set();
-});
-
-test.afterEach(() => {
-  fake.timers.reset();
-});
+mock.timers.enable({ apis: ["setTimeout"] });
 
 test.serial("close on timeout", async (t) => {
   // Arrange.
@@ -33,7 +27,7 @@ test.serial("close on timeout", async (t) => {
 
   // Act.
 
-  await fake.timers.run();
+  mock.timers.runAll();
   await act(async () => {});
 
   // Assert.

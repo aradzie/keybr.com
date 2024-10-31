@@ -1,40 +1,48 @@
-import test from "ava";
+import { describe, it, test } from "node:test";
+import { assert } from "chai";
 import { lightTheme } from "../themes/themes.ts";
 import { ImportState } from "./import-state.ts";
 import { jsonToTheme, themeToJson } from "./json.ts";
 
-test("format and parse json", async (t) => {
+test("format and parse json", async () => {
   const state = new ImportState();
 
   await jsonToTheme(state, await themeToJson(lightTheme));
 
-  t.deepEqual(state.theme, lightTheme);
-  t.deepEqual(state.errors, []);
+  assert.deepStrictEqual(state.theme, lightTheme);
+  assert.deepStrictEqual(state.errors, []);
 });
 
-test("parse json with errors", async (t) => {
-  {
+describe("parse json with errors", () => {
+  it("should report invalid json syntax", async () => {
     const state = new ImportState();
     await jsonToTheme(state, "{?}");
-    t.deepEqual(state.errors, [new TypeError("Invalid theme JSON text")]);
-  }
-  {
+    assert.deepStrictEqual(state.errors, [
+      new TypeError("Invalid theme JSON text"),
+    ]);
+  });
+
+  it("should report invalid json data", async () => {
     const state = new ImportState();
     await jsonToTheme(state, "null");
-    t.deepEqual(state.errors, [new TypeError("Invalid theme JSON data")]);
-  }
-  {
+    assert.deepStrictEqual(state.errors, [
+      new TypeError("Invalid theme JSON data"),
+    ]);
+  });
+
+  it("should report invalid property types", async () => {
     const state = new ImportState();
     await jsonToTheme(state, '{"--primary":[]}');
-    t.deepEqual(state.errors, [
+    assert.deepStrictEqual(state.errors, [
       new TypeError("Invalid theme JSON property value [--primary]"),
     ]);
-  }
-  {
+  });
+
+  it("should report invalid property values", async () => {
     const state = new ImportState();
     await jsonToTheme(state, '{"--primary":"rgb()"}');
-    t.deepEqual(state.errors, [
+    assert.deepStrictEqual(state.errors, [
       new TypeError("Invalid theme JSON property value [--primary]"),
     ]);
-  }
+  });
 });

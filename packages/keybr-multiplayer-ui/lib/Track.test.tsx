@@ -1,3 +1,4 @@
+import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { NOBODY } from "@keybr/multiplayer-shared";
 import {
@@ -6,12 +7,12 @@ import {
   player3,
 } from "@keybr/multiplayer-shared/lib/testing/data.ts";
 import { act, render } from "@testing-library/react";
-import test from "ava";
+import { assert } from "chai";
 import { DeferredTrack, Track } from "./Track.tsx";
 
 declare function flushAnimationFrames(): Promise<void>;
 
-test.serial("render", (t) => {
+test("render", () => {
   const r = render(
     <FakeIntlProvider>
       <Track
@@ -24,9 +25,9 @@ test.serial("render", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.not(r.queryByText("abc"), null);
-  t.is(r.queryByText("name1"), null);
-  t.is(r.queryByText("name2"), null);
+  assert.isNotNull(r.queryByText("abc"));
+  assert.isNull(r.queryByText("name1"));
+  assert.isNull(r.queryByText("name2"));
 
   r.rerender(
     <FakeIntlProvider>
@@ -40,14 +41,14 @@ test.serial("render", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.not(r.queryByText("xyz"), null);
-  t.not(r.queryByText("name1"), null);
-  t.not(r.queryByText("name2"), null);
+  assert.isNotNull(r.queryByText("xyz"));
+  assert.isNotNull(r.queryByText("name1"));
+  assert.isNotNull(r.queryByText("name2"));
 
   r.unmount();
 });
 
-test.serial("deferred render", async (t) => {
+test("deferred render", async () => {
   const r = render(
     <FakeIntlProvider>
       <DeferredTrack
@@ -60,9 +61,9 @@ test.serial("deferred render", async (t) => {
     </FakeIntlProvider>,
   );
 
-  t.not(r.queryByText("abc"), null);
-  t.is(r.queryByText("name1"), null);
-  t.is(r.queryByText("name2"), null);
+  assert.isNotNull(r.queryByText("abc"));
+  assert.isNull(r.queryByText("name1"));
+  assert.isNull(r.queryByText("name2"));
 
   r.rerender(
     <FakeIntlProvider>
@@ -76,17 +77,17 @@ test.serial("deferred render", async (t) => {
     </FakeIntlProvider>,
   );
 
-  t.not(r.queryByText("abc"), null);
-  t.is(r.queryByText("name1"), null);
-  t.is(r.queryByText("name2"), null);
+  assert.isNotNull(r.queryByText("abc"));
+  assert.isNull(r.queryByText("name1"));
+  assert.isNull(r.queryByText("name2"));
 
   await act(async () => {
     await flushAnimationFrames();
   });
 
-  t.not(r.queryByText("xyz"), null);
-  t.not(r.queryByText("name1"), null);
-  t.not(r.queryByText("name2"), null);
+  assert.isNotNull(r.queryByText("xyz"));
+  assert.isNotNull(r.queryByText("name1"));
+  assert.isNotNull(r.queryByText("name2"));
 
   r.unmount();
 });
