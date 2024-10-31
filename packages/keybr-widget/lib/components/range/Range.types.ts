@@ -1,4 +1,4 @@
-import type { SizeName } from "../../styles/index.ts";
+import { type SizeName } from "../../styles/index.ts";
 import {
   type Focusable,
   type FocusProps,

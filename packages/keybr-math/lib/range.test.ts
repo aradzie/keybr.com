@@ -1,61 +1,62 @@
-import test from "ava";
+import { test } from "node:test";
+import { assert } from "chai";
 import { Range } from "./range.ts";
 
-test("construct", (t) => {
-  t.is(new Range().min, NaN);
-  t.is(new Range().max, NaN);
+test("construct", () => {
+  assert.isNaN(new Range().min);
+  assert.isNaN(new Range().max);
 
-  t.is(new Range(-1, +1).min, -1);
-  t.is(new Range(-1, +1).max, +1);
+  assert.strictEqual(new Range(-1, +1).min, -1);
+  assert.strictEqual(new Range(-1, +1).max, +1);
 
-  t.is(new Range(new Range(-1, +1)).min, -1);
-  t.is(new Range(new Range(-1, +1)).max, +1);
+  assert.strictEqual(new Range(new Range(-1, +1)).min, -1);
+  assert.strictEqual(new Range(new Range(-1, +1)).max, +1);
 });
 
-test("defined", (t) => {
+test("defined", () => {
   const range = new Range();
 
-  t.false(range.defined);
-  t.throws(() => range.span, { instanceOf: RangeError });
-  t.throws(() => range.round(1), { instanceOf: RangeError });
+  assert.isFalse(range.defined);
+  assert.throws(() => range.span, RangeError);
+  assert.throws(() => range.round(1), RangeError);
 
   range.min = 0;
 
-  t.false(range.defined);
-  t.throws(() => range.span, { instanceOf: RangeError });
-  t.throws(() => range.round(1), { instanceOf: RangeError });
+  assert.isFalse(range.defined);
+  assert.throws(() => range.span, RangeError);
+  assert.throws(() => range.round(1), RangeError);
 
   range.max = 0;
 
-  t.true(range.defined);
-  t.notThrows(() => range.span);
-  t.notThrows(() => range.round(1));
+  assert.isTrue(range.defined);
+  assert.doesNotThrow(() => range.span);
+  assert.doesNotThrow(() => range.round(1));
 });
 
-test("adjust", (t) => {
+test("adjust", () => {
   const range = new Range();
 
   range.min = 0;
   range.max = 0;
 
-  t.is(range.min, 0);
-  t.is(range.max, 0);
+  assert.strictEqual(range.min, 0);
+  assert.strictEqual(range.max, 0);
 
   range.min = -1;
   range.max = +1;
   range.min = 0;
   range.max = 0;
 
-  t.is(range.min, -1);
-  t.is(range.max, +1);
+  assert.strictEqual(range.min, -1);
+  assert.strictEqual(range.max, +1);
 
   range.adjust([-1, +2, -2, +1]);
 
-  t.is(range.min, -2);
-  t.is(range.max, +2);
+  assert.strictEqual(range.min, -2);
+  assert.strictEqual(range.max, +2);
 });
 
-test("round", (t) => {
+test("round", () => {
   const range = new Range();
 
   range.max = 3;
@@ -63,11 +64,11 @@ test("round", (t) => {
 
   range.round(1);
 
-  t.is(range.max, 3);
-  t.is(range.min, 3);
+  assert.strictEqual(range.max, 3);
+  assert.strictEqual(range.min, 3);
 
   range.round(5);
 
-  t.is(range.max, 5);
-  t.is(range.min, 0);
+  assert.strictEqual(range.max, 5);
+  assert.strictEqual(range.min, 0);
 });

@@ -1,28 +1,29 @@
-import test from "ava";
+import { test } from "node:test";
+import { assert } from "chai";
 import { Vector } from "./vector.ts";
 
-test("validate arguments", (t) => {
-  t.throws(() => new Vector([NaN]));
-  t.throws(() => new Vector().add(NaN));
+test("validate arguments", () => {
+  assert.throws(() => new Vector([NaN]));
+  assert.throws(() => new Vector().add(NaN));
 
   const vector = new Vector([0]);
-  t.throws(() => vector.at(NaN));
-  t.throws(() => vector.at(-1));
-  t.throws(() => vector.at(1));
-  t.throws(() => vector.at(1.1));
+  assert.throws(() => vector.at(NaN));
+  assert.throws(() => vector.at(-1));
+  assert.throws(() => vector.at(1));
+  assert.throws(() => vector.at(1.1));
 });
 
-test("mutate vector", (t) => {
+test("mutate vector", () => {
   const vector = new Vector();
 
-  t.is(vector.length, 0);
-  t.deepEqual([...vector], []);
+  assert.strictEqual(vector.length, 0);
+  assert.deepStrictEqual([...vector], []);
 
   vector.add(0);
-  t.is(vector.length, 1);
-  t.deepEqual([...vector], [0]);
+  assert.strictEqual(vector.length, 1);
+  assert.deepStrictEqual([...vector], [0]);
 
   vector.add(1);
-  t.is(vector.length, 2);
-  t.deepEqual([...vector], [0, 1]);
+  assert.strictEqual(vector.length, 2);
+  assert.deepStrictEqual([...vector], [0, 1]);
 });

@@ -1,17 +1,18 @@
-import test from "ava";
+import { test } from "node:test";
+import { assert } from "chai";
 import { fromCsv, normalizeCounts, toCsv, type Word } from "./words.ts";
 
-test("csv", (t) => {
+test("csv", () => {
   const words: Word[] = [
     ["one", 3],
     ["two", 5],
   ];
 
-  t.deepEqual(fromCsv(toCsv(words)), words);
+  assert.deepStrictEqual(fromCsv(toCsv(words)), words);
 });
 
-test("normalize", (t) => {
-  t.deepEqual(
+test("normalize", () => {
+  assert.deepStrictEqual(
     normalizeCounts([
       ["a", 123],
       ["b", 10],

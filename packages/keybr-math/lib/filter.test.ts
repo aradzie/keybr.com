@@ -1,26 +1,27 @@
-import test from "ava";
+import { test } from "node:test";
+import { assert } from "chai";
 import { makeFilter } from "./filter.ts";
 
-test("filter", (t) => {
+test("filter", () => {
   const filter = makeFilter(0.5);
 
-  t.is(filter.n, 0);
+  assert.strictEqual(filter.n, 0);
 
-  t.is(filter.add(1), 1);
-  t.is(filter.n, 1);
+  assert.strictEqual(filter.add(1), 1);
+  assert.strictEqual(filter.n, 1);
 
-  t.is(filter.add(1), 1);
-  t.is(filter.n, 2);
+  assert.strictEqual(filter.add(1), 1);
+  assert.strictEqual(filter.n, 2);
 
-  t.is(filter.add(1), 1);
-  t.is(filter.n, 3);
+  assert.strictEqual(filter.add(1), 1);
+  assert.strictEqual(filter.n, 3);
 
-  t.is(filter.add(5), 3);
-  t.is(filter.n, 4);
+  assert.strictEqual(filter.add(5), 3);
+  assert.strictEqual(filter.n, 4);
 
-  t.is(filter.add(5), 4);
-  t.is(filter.n, 5);
+  assert.strictEqual(filter.add(5), 4);
+  assert.strictEqual(filter.n, 5);
 
-  t.is(filter.add(5), 4.5);
-  t.is(filter.n, 6);
+  assert.strictEqual(filter.add(5), 4.5);
+  assert.strictEqual(filter.n, 6);
 });

@@ -1,4 +1,5 @@
-import test from "ava";
+import { test } from "node:test";
+import { assert } from "chai";
 import { borderShapes, centerShapes } from "./shapes.ts";
 import { Graphics, Path, Transform } from "./svg.ts";
 
@@ -24,38 +25,38 @@ const centerResults: readonly string[] = [
   "M 0 0 L 25 0 L 25 25 L 0 25 Z M 6.3 15.6 L 15.6 25 L 25 15.6 L 15.6 6.3 Z",
 ];
 
-test(`has ${borderResults.length} border shapes`, (t) => {
+test(`has ${borderResults.length} border shapes`, () => {
   const path0 = new Path();
   const path1 = new Path();
   const transform = new Transform(0, 0, 100, 0);
   borderShapes(new Graphics(path0, transform), 0);
   borderShapes(new Graphics(path1, transform), 4);
-  t.is(String(path0), String(path1));
+  assert.strictEqual(String(path0), String(path1));
 });
 
 for (let i = 0; i < borderResults.length; i++) {
-  test(`render border shapes #${i}`, (t) => {
+  test(`render border shapes #${i}`, () => {
     const path = new Path();
     const transform = new Transform(0, 0, 100, 0);
     borderShapes(new Graphics(path, transform), i);
-    t.is(String(path), borderResults[i]);
+    assert.strictEqual(String(path), borderResults[i]);
   });
 }
 
-test(`has ${centerResults.length} center shapes`, (t) => {
+test(`has ${centerResults.length} center shapes`, () => {
   const path0 = new Path();
   const path1 = new Path();
   const transform = new Transform(0, 0, 100, 0);
   centerShapes(new Graphics(path0, transform), 0);
   centerShapes(new Graphics(path1, transform), 12);
-  t.is(String(path0), String(path1));
+  assert.strictEqual(String(path0), String(path1));
 });
 
 for (let i = 0; i < centerResults.length; i++) {
-  test(`render center shapes #${i}`, (t) => {
+  test(`render center shapes #${i}`, () => {
     const path = new Path();
     const transform = new Transform(0, 0, 100, 0);
     centerShapes(new Graphics(path, transform), i);
-    t.is(String(path), centerResults[i]);
+    assert.strictEqual(String(path), centerResults[i]);
   });
 }

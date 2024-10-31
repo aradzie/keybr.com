@@ -1,11 +1,12 @@
+import { test } from "node:test";
 import { Layout } from "@keybr/keyboard";
 import { fake } from "@keybr/test-env-time";
-import test from "ava";
+import { assert } from "chai";
 import { HighScores, type HighScoresRow } from "./highscores.ts";
 
 const now = new Date("2001-02-03T04:05:06Z");
 
-const template: HighScoresRow = {
+const template = {
   user: 0,
   layout: Layout.EN_US,
   timeStamp: now,
@@ -15,7 +16,7 @@ const template: HighScoresRow = {
   complexity: 0,
   speed: 0,
   score: 0,
-};
+} satisfies HighScoresRow;
 
 test.beforeEach(() => {
   fake.date.set(now);
@@ -25,7 +26,7 @@ test.afterEach(() => {
   fake.date.reset();
 });
 
-test("do not insert if result is old", (t) => {
+test("do not insert if result is old", () => {
   // Arrange.
 
   const timeStamp = new Date(Number(now) - 1001);
@@ -45,32 +46,32 @@ test("do not insert if result is old", (t) => {
 
   // Assert.
 
-  t.deepEqual([...table], []);
-  t.is(table.dirty, false);
-  t.is(position, null);
+  assert.deepStrictEqual([...table], []);
+  assert.strictEqual(table.dirty, false);
+  assert.strictEqual(position, null);
 });
 
-test("do not insert if result is low", (t) => {
+test("do not insert if result is low", () => {
   // Arrange.
 
-  const r0: HighScoresRow = {
+  const r0 = {
     ...template,
     user: 1,
     speed: 300,
     score: 300,
-  };
-  const r1: HighScoresRow = {
+  } satisfies HighScoresRow;
+  const r1 = {
     ...template,
     user: 2,
     speed: 200,
     score: 200,
-  };
-  const r2: HighScoresRow = {
+  } satisfies HighScoresRow;
+  const r2 = {
     ...template,
     user: 3,
     speed: 100,
     score: 100,
-  };
+  } satisfies HighScoresRow;
   const candidate = {
     ...template,
     user: 9,
@@ -86,32 +87,32 @@ test("do not insert if result is low", (t) => {
 
   // Assert.
 
-  t.deepEqual([...table], [r0, r1, r2]);
-  t.is(table.dirty, false);
-  t.is(position, null);
+  assert.deepStrictEqual([...table], [r0, r1, r2]);
+  assert.strictEqual(table.dirty, false);
+  assert.strictEqual(position, null);
 });
 
-test("do not insert if higher result exists ", (t) => {
+test("do not insert if higher result exists ", () => {
   // Arrange.
 
-  const r0: HighScoresRow = {
+  const r0 = {
     ...template,
     user: 1,
     speed: 300,
     score: 300,
-  };
-  const r1: HighScoresRow = {
+  } satisfies HighScoresRow;
+  const r1 = {
     ...template,
     user: 2,
     speed: 200,
     score: 200,
-  };
-  const r2: HighScoresRow = {
+  } satisfies HighScoresRow;
+  const r2 = {
     ...template,
     user: 3,
     speed: 100,
     score: 100,
-  };
+  } satisfies HighScoresRow;
   const candidate = {
     ...template,
     user: 1,
@@ -127,37 +128,37 @@ test("do not insert if higher result exists ", (t) => {
 
   // Assert.
 
-  t.deepEqual([...table], [r0, r1, r2]);
-  t.is(table.dirty, false);
-  t.is(position, null);
+  assert.deepStrictEqual([...table], [r0, r1, r2]);
+  assert.strictEqual(table.dirty, false);
+  assert.strictEqual(position, null);
 });
 
-test("remove old results", (t) => {
+test("remove old results", () => {
   // Arrange.
 
   const timeStamp = new Date(Number(now) - 1001);
 
-  const r0: HighScoresRow = {
+  const r0 = {
     ...template,
     timeStamp,
     user: 1,
     speed: 300,
     score: 300,
-  };
-  const r1: HighScoresRow = {
+  } satisfies HighScoresRow;
+  const r1 = {
     ...template,
     timeStamp,
     user: 2,
     speed: 200,
     score: 200,
-  };
-  const r2: HighScoresRow = {
+  } satisfies HighScoresRow;
+  const r2 = {
     ...template,
     timeStamp,
     user: 3,
     speed: 100,
     score: 100,
-  };
+  } satisfies HighScoresRow;
   const candidate = {
     ...template,
     user: 9,
@@ -173,32 +174,32 @@ test("remove old results", (t) => {
 
   // Assert.
 
-  t.deepEqual([...table], [candidate]);
-  t.is(table.dirty, true);
-  t.is(position, 0);
+  assert.deepStrictEqual([...table], [candidate]);
+  assert.strictEqual(table.dirty, true);
+  assert.strictEqual(position, 0);
 });
 
-test("remove lower results", (t) => {
+test("remove lower results", () => {
   // Arrange.
 
-  const r0: HighScoresRow = {
+  const r0 = {
     ...template,
     user: 1,
     speed: 300,
     score: 300,
-  };
-  const r1: HighScoresRow = {
+  } satisfies HighScoresRow;
+  const r1 = {
     ...template,
     user: 1,
     speed: 200,
     score: 200,
-  };
-  const r2: HighScoresRow = {
+  } satisfies HighScoresRow;
+  const r2 = {
     ...template,
     user: 1,
     speed: 100,
     score: 100,
-  };
+  } satisfies HighScoresRow;
   const candidate = {
     ...template,
     user: 1,
@@ -214,32 +215,32 @@ test("remove lower results", (t) => {
 
   // Assert.
 
-  t.deepEqual([...table], [candidate]);
-  t.is(table.dirty, true);
-  t.is(position, 0);
+  assert.deepStrictEqual([...table], [candidate]);
+  assert.strictEqual(table.dirty, true);
+  assert.strictEqual(position, 0);
 });
 
-test("insert if result is high", (t) => {
+test("insert if result is high", () => {
   // Arrange.
 
-  const r0: HighScoresRow = {
+  const r0 = {
     ...template,
     user: 1,
     speed: 300,
     score: 300,
-  };
-  const r1: HighScoresRow = {
+  } satisfies HighScoresRow;
+  const r1 = {
     ...template,
     user: 2,
     speed: 200,
     score: 200,
-  };
-  const r2: HighScoresRow = {
+  } satisfies HighScoresRow;
+  const r2 = {
     ...template,
     user: 3,
     speed: 100,
     score: 100,
-  };
+  } satisfies HighScoresRow;
   const candidate = {
     ...template,
     user: 9,
@@ -255,32 +256,32 @@ test("insert if result is high", (t) => {
 
   // Assert.
 
-  t.deepEqual([...table], [candidate, r0, r1, r2]);
-  t.is(table.dirty, true);
-  t.is(position, 0);
+  assert.deepStrictEqual([...table], [candidate, r0, r1, r2]);
+  assert.strictEqual(table.dirty, true);
+  assert.strictEqual(position, 0);
 });
 
-test("insert if table is not full", (t) => {
+test("insert if table is not full", () => {
   // Arrange.
 
-  const r0: HighScoresRow = {
+  const r0 = {
     ...template,
     user: 1,
     speed: 300,
     score: 300,
-  };
-  const r1: HighScoresRow = {
+  } satisfies HighScoresRow;
+  const r1 = {
     ...template,
     user: 2,
     speed: 200,
     score: 200,
-  };
-  const r2: HighScoresRow = {
+  } satisfies HighScoresRow;
+  const r2 = {
     ...template,
     user: 3,
     speed: 100,
     score: 100,
-  };
+  } satisfies HighScoresRow;
   const candidate = {
     ...template,
     user: 9,
@@ -296,32 +297,32 @@ test("insert if table is not full", (t) => {
 
   // Assert.
 
-  t.deepEqual([...table], [r0, r1, r2, candidate]);
-  t.is(table.dirty, true);
-  t.is(position, 3);
+  assert.deepStrictEqual([...table], [r0, r1, r2, candidate]);
+  assert.strictEqual(table.dirty, true);
+  assert.strictEqual(position, 3);
 });
 
-test("truncate to limit", (t) => {
+test("truncate to limit", () => {
   // Arrange.
 
-  const r0: HighScoresRow = {
+  const r0 = {
     ...template,
     user: 1,
     speed: 300,
     score: 300,
-  };
-  const r1: HighScoresRow = {
+  } satisfies HighScoresRow;
+  const r1 = {
     ...template,
     user: 2,
     speed: 200,
     score: 200,
-  };
-  const r2: HighScoresRow = {
+  } satisfies HighScoresRow;
+  const r2 = {
     ...template,
     user: 3,
     speed: 100,
     score: 100,
-  };
+  } satisfies HighScoresRow;
   const candidate = {
     ...template,
     user: 9,
@@ -337,7 +338,7 @@ test("truncate to limit", (t) => {
 
   // Assert.
 
-  t.deepEqual([...table], [candidate]);
-  t.is(table.dirty, true);
-  t.is(position, 0);
+  assert.deepStrictEqual([...table], [candidate]);
+  assert.strictEqual(table.dirty, true);
+  assert.strictEqual(position, 0);
 });

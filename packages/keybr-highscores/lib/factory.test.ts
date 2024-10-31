@@ -1,9 +1,10 @@
+import { test } from "node:test";
 import { DataDir } from "@keybr/config";
 import { Layout } from "@keybr/keyboard";
 import { ResultFaker } from "@keybr/result";
 import { fake } from "@keybr/test-env-time";
 import { removeDir } from "@sosimple/fsx";
-import test from "ava";
+import { assert } from "chai";
 import { HighScoresFactory } from "./factory.ts";
 import { type HighScoresRow } from "./highscores.ts";
 
@@ -27,7 +28,7 @@ test.afterEach(async () => {
   await removeDir(testDataDir);
 });
 
-test.serial("append table", async (t) => {
+test("append table", async () => {
   const faker = new ResultFaker();
   const timeStamp = now.getTime();
   const result1 = faker.nextResult({ layout: Layout.EN_US, timeStamp });
@@ -59,15 +60,15 @@ test.serial("append table", async (t) => {
 
   // Initial state.
 
-  t.deepEqual([...(await factory.load())], []);
+  assert.deepStrictEqual([...(await factory.load())], []);
 
-  // Add result by user 1.
+  // Add a result of user 1.
 
   await factory.append(1, [result1]);
-  t.deepEqual([...(await factory.load())], [row1]);
+  assert.deepStrictEqual([...(await factory.load())], [row1]);
 
-  // Add result by user 2.
+  // Add a result of user 2.
 
   await factory.append(2, [result2]);
-  t.deepEqual([...(await factory.load())], [row2, row1]);
+  assert.deepStrictEqual([...(await factory.load())], [row2, row1]);
 });

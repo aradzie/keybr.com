@@ -1,7 +1,8 @@
-import test from "ava";
+import { test } from "node:test";
+import { assert } from "chai";
 import { Sle } from "./sle.ts";
 
-test("solve", (t) => {
+test("solve", () => {
   const sle = new Sle(3);
 
   sle.A[0][0] = 1;
@@ -11,5 +12,5 @@ test("solve", (t) => {
   sle.y[1] = 2;
   sle.y[2] = 3;
 
-  t.deepEqual(sle.solve(), [1, 1, 1]);
+  assert.deepStrictEqual(sle.solve(), [1, 1, 1]);
 });

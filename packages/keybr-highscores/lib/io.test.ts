@@ -1,9 +1,10 @@
+import { test } from "node:test";
 import { Layout } from "@keybr/keyboard";
-import test from "ava";
+import { assert } from "chai";
 import { HighScores, type HighScoresRow } from "./highscores.ts";
 import { reviver } from "./io.ts";
 
-test("stringify and parse", (t) => {
+test("stringify and parse", () => {
   const row: HighScoresRow = {
     user: 123,
     layout: Layout.EN_US,
@@ -17,6 +18,6 @@ test("stringify and parse", (t) => {
   };
   const a = new HighScores([row]);
   const b = new HighScores(JSON.parse(JSON.stringify(a), reviver));
-  t.deepEqual([...a], [row]);
-  t.deepEqual([...b], [row]);
+  assert.deepStrictEqual([...a], [row]);
+  assert.deepStrictEqual([...b], [row]);
 });
