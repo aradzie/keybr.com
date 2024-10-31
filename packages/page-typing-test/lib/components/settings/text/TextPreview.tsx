@@ -4,7 +4,7 @@ import { memo, type ReactNode, useMemo } from "react";
 import {
   generateExample,
   type TextGenerator,
-} from "../../../generator/index.ts";
+} from "../../../generators/index.ts";
 
 export const TextPreview = memo(function TextPreview({
   settings,

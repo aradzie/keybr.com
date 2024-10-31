@@ -2,7 +2,7 @@ import { type WordList } from "@keybr/content";
 import { FakeRNGStream } from "@keybr/rand";
 import { textDisplaySettings, textInputSettings } from "@keybr/textinput";
 import test from "ava";
-import { CommonWordsGenerator } from "../generator/index.ts";
+import { CommonWordsGenerator } from "../generators/index.ts";
 import { Session } from "./session.ts";
 import { DurationType } from "./types.ts";
 

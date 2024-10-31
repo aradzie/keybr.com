@@ -1,10 +1,10 @@
 import { useSettings } from "@keybr/settings";
 import { makeStats, type Stats } from "@keybr/textinput";
 import { type ReactNode, useMemo, useState } from "react";
-import { Report } from "./component/Report.tsx";
-import { SettingsScreen } from "./component/SettingsScreen.tsx";
-import { TestScreen } from "./component/TestScreen.tsx";
-import { TextGeneratorLoader } from "./generator/index.ts";
+import { Report } from "./components/Report.tsx";
+import { SettingsScreen } from "./components/SettingsScreen.tsx";
+import { TestScreen } from "./components/TestScreen.tsx";
+import { TextGeneratorLoader } from "./generators/index.ts";
 import { toCompositeSettings } from "./settings.ts";
 
 export function TypingTestPage(): ReactNode {

@@ -4,7 +4,7 @@ import { type IInputEvent } from "@keybr/textinput-events";
 import { TextArea } from "@keybr/textinput-ui";
 import { type Focusable } from "@keybr/widget";
 import { Component, createRef, type ReactNode } from "react";
-import { type Mark, type TextGenerator } from "../generator/index.ts";
+import { type Mark, type TextGenerator } from "../generators/index.ts";
 import { Session, type SessionSettings } from "../session/index.ts";
 import { type CompositeSettings } from "../settings.ts";
 import { LineTemplate } from "./LineTemplate.tsx";

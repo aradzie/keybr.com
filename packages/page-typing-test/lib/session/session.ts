@@ -5,7 +5,7 @@ import {
   TextInput,
 } from "@keybr/textinput";
 import { type IInputEvent } from "@keybr/textinput-events";
-import { type TextGenerator } from "../generator/index.ts";
+import { type TextGenerator } from "../generators/index.ts";
 import { computeProgress } from "./duration.ts";
 import {
   type Progress,
