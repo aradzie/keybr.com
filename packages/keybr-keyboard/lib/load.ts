@@ -5,12 +5,12 @@ import { BRAZILIAN_104 } from "./geometry/brazilian_104.ts";
 import { BRAZILIAN_104_FULL } from "./geometry/brazilian_104_full.ts";
 import { ISO_102 } from "./geometry/iso_102.ts";
 import { ISO_102_FULL } from "./geometry/iso_102_full.ts";
-import { ISO_102_SYMMETRIC } from "./geometry/iso_102_symmetric.ts";
 import { JAPANESE_106 } from "./geometry/japanese_106.ts";
 import { JAPANESE_106_FULL } from "./geometry/japanese_106_full.ts";
 import { KOREAN_103 } from "./geometry/korean_103.ts";
 import { KOREAN_103_FULL } from "./geometry/korean_103_full.ts";
 import { MATRIX } from "./geometry/matrix.ts";
+import { SYMMETRIC_MOD } from "./geometry/mod.ts";
 import { Keyboard } from "./keyboard.ts";
 import { Layout } from "./layout.ts";
 import { LAYOUT_AR_SA } from "./layout/ar_sa.ts";
@@ -81,6 +81,7 @@ import { LAYOUT_TH_TH_PAT } from "./layout/th_th_pat.ts";
 import { LAYOUT_TR_TR_F } from "./layout/tr_tr_f.ts";
 import { LAYOUT_TR_TR_Q } from "./layout/tr_tr_q.ts";
 import { LAYOUT_UK_UA } from "./layout/uk_ua.ts";
+import { remapZones } from "./mod.ts";
 import { KeyboardOptions } from "./settings.ts";
 import { type CharacterDict, type GeometryDict } from "./types.ts";
 
@@ -162,7 +163,8 @@ const geometryDict = new Map<Geometry, GeometryDict>([
   [Geometry.BRAZILIAN_104_FULL, BRAZILIAN_104_FULL],
   [Geometry.ISO_102, ISO_102],
   [Geometry.ISO_102_FULL, ISO_102_FULL],
-  [Geometry.ISO_102_SYMMETRIC, ISO_102_SYMMETRIC],
+  [Geometry.ISO_102_SYMMETRIC, remapZones(ISO_102, SYMMETRIC_MOD)],
+  [Geometry.ISO_102_FULL_SYMMETRIC, remapZones(ISO_102_FULL, SYMMETRIC_MOD)],
   [Geometry.JAPANESE_106, JAPANESE_106],
   [Geometry.JAPANESE_106_FULL, JAPANESE_106_FULL],
   [Geometry.KOREAN_103, KOREAN_103],

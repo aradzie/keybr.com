@@ -20,7 +20,7 @@ export const angleWideMod: Mod = ({ form }, dict) => {
   }
 };
 
-function remapZones(dict: GeometryDict, mod: ZoneMod): GeometryDict {
+export function remapZones(dict: GeometryDict, mod: ZoneMod): GeometryDict {
   return Object.fromEntries(
     Object.entries(dict).map(
       ([id, { x, y, w, h, labels, shape, zones, homing }]) => [
