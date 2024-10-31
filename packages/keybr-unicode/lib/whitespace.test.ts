@@ -1,15 +1,16 @@
-import test from "ava";
+import { test } from "node:test";
+import { assert } from "chai";
 import { toCodePoints } from "./codepoints.ts";
 import { isControl, isLinebreak, isWhitespace } from "./whitespace.ts";
 
-test("classify", (t) => {
+test("classify", () => {
   for (const codePoint of toCodePoints("\n\r\t")) {
-    t.true(isControl(codePoint));
+    assert.isTrue(isControl(codePoint));
   }
   for (const codePoint of toCodePoints("\n\r\u2028\u2029")) {
-    t.true(isLinebreak(codePoint));
+    assert.isTrue(isLinebreak(codePoint));
   }
   for (const codePoint of toCodePoints(" \n\r\t\u2028\u2029")) {
-    t.true(isWhitespace(codePoint));
+    assert.isTrue(isWhitespace(codePoint));
   }
 });

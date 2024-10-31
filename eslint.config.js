@@ -37,7 +37,12 @@ export default [
   chaiExpect.configs["recommended-flat"],
   keybr.configs["recommended"],
   {
-    ignores: ["packages/server/**", "packages/server-cli/**"],
+    ignores: [
+      "packages/server/**",
+      "packages/server-cli/**",
+      "**/*.test.ts",
+      "**/*.test.tsx",
+    ],
     plugins: { "react-hooks": reactHooks },
     rules: reactHooks.configs.recommended.rules,
   },

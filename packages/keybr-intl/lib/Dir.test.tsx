@@ -1,9 +1,10 @@
+import { test } from "node:test";
 import { render } from "@testing-library/react";
-import test from "ava";
+import { assert } from "chai";
 import { IntlProvider } from "react-intl";
 import { Dir } from "./Dir.tsx";
 
-test.serial("left-to-right", async (t) => {
+test("left-to-right", async () => {
   const r = render(
     <IntlProvider locale="en">
       <Dir swap="title">
@@ -13,13 +14,13 @@ test.serial("left-to-right", async (t) => {
     </IntlProvider>,
   );
 
-  t.is((await r.getByTitle("left")).textContent, "a");
-  t.is((await r.getByTitle("right")).textContent, "b");
+  assert.strictEqual((await r.getByTitle("left")).textContent, "a");
+  assert.strictEqual((await r.getByTitle("right")).textContent, "b");
 
   r.unmount();
 });
 
-test.serial("right-to-left", async (t) => {
+test("right-to-left", async () => {
   const r = render(
     <IntlProvider locale="he">
       <Dir swap="title">
@@ -29,8 +30,8 @@ test.serial("right-to-left", async (t) => {
     </IntlProvider>,
   );
 
-  t.is((await r.getByTitle("left")).textContent, "b");
-  t.is((await r.getByTitle("right")).textContent, "a");
+  assert.strictEqual((await r.getByTitle("left")).textContent, "b");
+  assert.strictEqual((await r.getByTitle("right")).textContent, "a");
 
   r.unmount();
 });

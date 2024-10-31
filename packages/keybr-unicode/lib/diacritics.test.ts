@@ -1,42 +1,43 @@
-import test from "ava";
+import { test } from "node:test";
+import { assert } from "chai";
 import { combineDiacritic, isDiacritic, stripDiacritic } from "./diacritics.ts";
 
-test("classify", (t) => {
-  t.false(isDiacritic(/* "a" */ 0x0061));
-  t.false(isDiacritic(/* ACUTE ACCENT */ 0x00b4));
-  t.true(isDiacritic(/* COMBINING ACUTE ACCENT */ 0x0301));
+test("classify", () => {
+  assert.isFalse(isDiacritic(/* "a" */ 0x0061));
+  assert.isFalse(isDiacritic(/* ACUTE ACCENT */ 0x00b4));
+  assert.isTrue(isDiacritic(/* COMBINING ACUTE ACCENT */ 0x0301));
 });
 
-test("combine diacritic", (t) => {
-  t.is(
+test("combine diacritic", () => {
+  assert.strictEqual(
     combineDiacritic(/* "A" */ 0x0041, /* ACUTE ACCENT */ 0x00b4),
     /* "A" */ 0x0041,
   );
-  t.is(
+  assert.strictEqual(
     combineDiacritic(/* "a" */ 0x0061, /* ACUTE ACCENT */ 0x00b4),
     /* "a" */ 0x0061,
   );
-  t.is(
+  assert.strictEqual(
     combineDiacritic(/* "B" */ 0x0042, /* COMBINING ACUTE ACCENT */ 0x0301),
     /* "B" */ 0x0042,
   );
-  t.is(
+  assert.strictEqual(
     combineDiacritic(/* "b" */ 0x0062, /* COMBINING ACUTE ACCENT */ 0x0301),
     /* "b" */ 0x0062,
   );
-  t.is(
+  assert.strictEqual(
     combineDiacritic(/* "A" */ 0x0041, /* COMBINING ACUTE ACCENT */ 0x0301),
     /* "Á" */ 0x00c1,
   );
-  t.is(
+  assert.strictEqual(
     combineDiacritic(/* "a" */ 0x0061, /* COMBINING ACUTE ACCENT */ 0x0301),
     /* "á" */ 0x00e1,
   );
 });
 
-test("strip diacritic", (t) => {
-  t.is(stripDiacritic(/* "A" */ 0x0041), /* "A" */ 0x0041);
-  t.is(stripDiacritic(/* "a" */ 0x0061), /* "a" */ 0x0061);
-  t.is(stripDiacritic(/* "Á" */ 0x00c1), /* "A" */ 0x0041);
-  t.is(stripDiacritic(/* "á" */ 0x00e1), /* "a" */ 0x0061);
+test("strip diacritic", () => {
+  assert.strictEqual(stripDiacritic(/* "A" */ 0x0041), /* "A" */ 0x0041);
+  assert.strictEqual(stripDiacritic(/* "a" */ 0x0061), /* "a" */ 0x0061);
+  assert.strictEqual(stripDiacritic(/* "Á" */ 0x00c1), /* "A" */ 0x0041);
+  assert.strictEqual(stripDiacritic(/* "á" */ 0x00e1), /* "a" */ 0x0061);
 });

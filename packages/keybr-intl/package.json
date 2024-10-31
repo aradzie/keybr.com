@@ -10,20 +10,6 @@
   "scripts": {
     "clean": "rm -fr .types",
     "compile": "tsc",
-    "test": "ava"
-  },
-  "ava": {
-    "files": [
-      "lib/**/*.test.*"
-    ],
-    "extensions": {
-      "ts": "module",
-      "tsx": "module"
-    },
-    "nodeArguments": [
-      "--import=@keybr/tsl",
-      "--import=@keybr/test-env-browser",
-      "--import=@keybr/test-env-bundler"
-    ]
+    "test": "node --import @keybr/tsl --import=@keybr/test-env-browser --import=@keybr/test-env-bundler --test 'lib/**/*.test.{ts,tsx}'"
   }
 }

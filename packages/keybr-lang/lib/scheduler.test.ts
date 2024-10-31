@@ -1,7 +1,11 @@
-import test from "ava";
+import { test } from "node:test";
+import { assert, use } from "chai";
+import chaiAsPromised from "chai-as-promised";
 import { schedule } from "./scheduler.ts";
 
-test("schedule", async (t) => {
+use(chaiAsPromised);
+
+test("schedule", async () => {
   let done = false;
 
   const generate = async function* () {
@@ -11,12 +15,12 @@ test("schedule", async (t) => {
     done = true;
   };
 
-  t.is(await schedule(generate()), undefined);
+  assert.strictEqual(await schedule(generate()), undefined);
 
-  t.true(done);
+  assert.isTrue(done);
 });
 
-test("schedule with a custom delay", async (t) => {
+test("schedule with a custom delay", async () => {
   let done = false;
 
   const generate = async function* () {
@@ -30,12 +34,12 @@ test("schedule with a custom delay", async (t) => {
     process.nextTick(cb);
   };
 
-  t.is(await schedule(generate(), { delayer }), undefined);
+  assert.strictEqual(await schedule(generate(), { delayer }), undefined);
 
-  t.true(done);
+  assert.isTrue(done);
 });
 
-test("abort", async (t) => {
+test("abort", async () => {
   let done = false;
 
   const controller = new AbortController();
@@ -48,12 +52,12 @@ test("abort", async (t) => {
     done = true;
   };
 
-  t.is(await schedule(generate(), { signal }), undefined);
+  assert.strictEqual(await schedule(generate(), { signal }), undefined);
 
-  t.false(done);
+  assert.isFalse(done);
 });
 
-test("fail", async (t) => {
+test("fail", async () => {
   const error = new Error("fail");
 
   const fail = async function* () {
@@ -63,10 +67,5 @@ test("fail", async (t) => {
     throw error;
   };
 
-  await t.throwsAsync(
-    async () => {
-      await schedule(fail());
-    },
-    { is: error },
-  );
+  await assert.isRejected(schedule(fail()), error);
 });

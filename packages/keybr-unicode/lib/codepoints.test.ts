@@ -1,28 +1,29 @@
-import test from "ava";
+import { describe, it } from "node:test";
+import { assert } from "chai";
 import { codePointLength, toCodePoints } from "./codepoints.ts";
 
-test("code points", (t) => {
-  {
+describe("to code points", () => {
+  it("should convert an empty string", () => {
     const s = "";
-    t.is(s.length, 0);
-    t.is(codePointLength(s), 0);
-    t.is(String.fromCodePoint(...toCodePoints(s)), s);
-    t.deepEqual([...toCodePoints(s)], []);
-  }
+    assert.strictEqual(s.length, 0);
+    assert.strictEqual(codePointLength(s), 0);
+    assert.strictEqual(String.fromCodePoint(...toCodePoints(s)), s);
+    assert.deepStrictEqual([...toCodePoints(s)], []);
+  });
 
-  {
+  it("should convert plain text", () => {
     const s = "abc";
-    t.is(s.length, 3);
-    t.is(codePointLength(s), 3);
-    t.is(String.fromCodePoint(...toCodePoints(s)), s);
-    t.deepEqual([...toCodePoints(s)], [0x0061, 0x0062, 0x0063]);
-  }
+    assert.strictEqual(s.length, 3);
+    assert.strictEqual(codePointLength(s), 3);
+    assert.strictEqual(String.fromCodePoint(...toCodePoints(s)), s);
+    assert.deepStrictEqual([...toCodePoints(s)], [0x0061, 0x0062, 0x0063]);
+  });
 
-  {
+  it("should convert emoji", () => {
     const s = "🍬🍭";
-    t.is(s.length, 4);
-    t.is(codePointLength(s), 2);
-    t.is(String.fromCodePoint(...toCodePoints(s)), s);
-    t.deepEqual([...toCodePoints(s)], [0x01_f36c, 0x01_f36d]);
-  }
+    assert.strictEqual(s.length, 4);
+    assert.strictEqual(codePointLength(s), 2);
+    assert.strictEqual(String.fromCodePoint(...toCodePoints(s)), s);
+    assert.deepStrictEqual([...toCodePoints(s)], [0x01_f36c, 0x01_f36d]);
+  });
 });

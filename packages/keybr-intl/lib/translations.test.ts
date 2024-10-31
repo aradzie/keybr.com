@@ -1,16 +1,17 @@
 import { readFileSync } from "node:fs";
-import test from "ava";
+import { test } from "node:test";
+import { assert } from "chai";
 import { allLocales, defaultLocale } from "./locale.ts";
 
 for (const locale of allLocales) {
   if (locale !== defaultLocale) {
-    test(`placeholders [${locale}]`, (t) => {
+    test(`placeholders [${locale}]`, () => {
       const messages0 = loadTranslations(defaultLocale);
       const messages1 = loadTranslations(locale);
       for (const [id, message0] of Object.entries(messages0)) {
         const message1 = messages1[id];
         if (message1) {
-          t.deepEqual(
+          assert.deepStrictEqual(
             findPlaceholders(message0),
             findPlaceholders(message1),
             `Message ${id} has invalid placeholders`,
@@ -22,36 +23,36 @@ for (const locale of allLocales) {
 }
 
 for (const locale of allLocales) {
-  test(`typography [${locale}]`, (t) => {
+  test(`typography [${locale}]`, () => {
     const messages = loadTranslations(locale);
     for (const [id, message] of Object.entries(messages)) {
-      t.notRegex(message, /^\s/, `Message ${id} starts with whitespace`);
-      t.notRegex(message, /\s$/, `Message ${id} ends with whitespace`);
-      t.notRegex(message, /\s\s/, `Message ${id} has repeated whitespace`);
-      t.notRegex(message, /\t/, `Message ${id} has tab whitespace`);
-      t.notRegex(
+      assert.notMatch(message, /^\s/, `Message ${id} starts with whitespace`);
+      assert.notMatch(message, /\s$/, `Message ${id} ends with whitespace`);
+      assert.notMatch(message, /\s\s/, `Message ${id} has repeated whitespace`);
+      assert.notMatch(message, /\t/, `Message ${id} has tab whitespace`);
+      assert.notMatch(
         message,
         /[\u2000-\u200B\u2028\u2029]/,
         `Message ${id} has irregular whitespace`,
       );
-      t.notRegex(
+      assert.notMatch(
         message,
         /\s[.,:;!?]/,
         `Message ${id} has whitespace before punctuation`,
       );
-      t.notRegex(message, /'/, `Message ${id} has straight single quote`);
-      t.notRegex(message, /"/, `Message ${id} has straight double quote`);
-      t.notRegex(
+      assert.notMatch(message, /'/, `Message ${id} has straight single quote`);
+      assert.notMatch(message, /"/, `Message ${id} has straight double quote`);
+      assert.notMatch(
         message,
         /\s\u002D\s/,
         `Message ${id} uses Hyphen-Minus as Dash`,
       );
-      t.notRegex(
+      assert.notMatch(
         message,
         /\s\u2010|\u2010\s/,
         `Message ${id} has space around Hyphen`,
       );
-      t.notRegex(
+      assert.notMatch(
         message,
         /\s\u2011|\u2011\s/,
         `Message ${id} has space around Non-Breaking Hyphen`,
