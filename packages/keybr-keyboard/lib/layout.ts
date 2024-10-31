@@ -1,7 +1,7 @@
 import { Enum, XEnum, type XEnumItem } from "@keybr/lang";
 import { Geometry } from "./geometry.ts";
 import { Language } from "./language.ts";
-import { angleMod, angleWideMod, type Mod } from "./mod.ts";
+import { angleMod, angleWideMod, type Mod, nullMod } from "./mod.ts";
 
 export class Layout implements XEnumItem {
   static readonly EN_US = new Layout(
@@ -1112,7 +1112,7 @@ export class Layout implements XEnumItem {
     readonly language: Language,
     readonly emulate: boolean,
     readonly geometries: Enum<Geometry>,
-    readonly mod: Mod = (geometry, dict) => dict,
+    readonly mod: Mod = nullMod,
   ) {
     Object.freeze(this);
   }

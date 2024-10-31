@@ -85,7 +85,7 @@ import { remapZones } from "./mod.ts";
 import { KeyboardOptions } from "./settings.ts";
 import { type CharacterDict, type GeometryDict } from "./types.ts";
 
-const layoutDict = new Map<Layout, CharacterDict>([
+const layouts = new Map<Layout, CharacterDict>([
   [Layout.AR_SA, LAYOUT_AR_SA],
   [Layout.AR_SA_102, LAYOUT_AR_SA_102],
   [Layout.BE_BY, LAYOUT_BE_BY],
@@ -156,7 +156,7 @@ const layoutDict = new Map<Layout, CharacterDict>([
   [Layout.UK_UA, LAYOUT_UK_UA],
 ]);
 
-const geometryDict = new Map<Geometry, GeometryDict>([
+const geometries = new Map<Geometry, GeometryDict>([
   [Geometry.ANSI_101, ANSI_101],
   [Geometry.ANSI_101_FULL, ANSI_101_FULL],
   [Geometry.BRAZILIAN_104, BRAZILIAN_104],
@@ -176,18 +176,18 @@ export function loadKeyboard(options: KeyboardOptions): Keyboard;
 export function loadKeyboard(layout: Layout): Keyboard;
 export function loadKeyboard(layout: Layout, geometry: Geometry): Keyboard;
 export function loadKeyboard(...args: any[]): Keyboard {
-  const l = args.length;
-  let options: KeyboardOptions, layout: Layout, geometry: Geometry;
-  if (l === 1 && (options = args[0]) instanceof KeyboardOptions) {
-    const { layout, geometry } = options;
-    return loadImpl(layout, geometry);
+  const { length } = args;
+  let options: KeyboardOptions;
+  if (length === 1 && (options = args[0]) instanceof KeyboardOptions) {
+    return loadImpl(options.layout, options.geometry);
   }
-  if (l === 1 && (layout = args[0]) instanceof Layout) {
-    const [geometry] = layout.geometries;
-    return loadImpl(layout, geometry);
+  let layout: Layout;
+  if (length === 1 && (layout = args[0]) instanceof Layout) {
+    return loadImpl(layout);
   }
+  let geometry: Geometry;
   if (
-    l === 2 &&
+    length === 2 &&
     (layout = args[0]) instanceof Layout &&
     (geometry = args[1]) instanceof Geometry
   ) {
@@ -196,11 +196,11 @@ export function loadKeyboard(...args: any[]): Keyboard {
   throw new TypeError();
 }
 
-function loadImpl(layout: Layout, geometry: Geometry): Keyboard {
-  return new Keyboard(
-    layout,
-    geometry,
-    layoutDict.get(layout)!,
-    geometryDict.get(geometry)!,
-  );
+function loadImpl(
+  layout: Layout,
+  geometry: Geometry = Geometry.first(layout.geometries),
+): Keyboard {
+  let characterDict = layouts.get(layout)!;
+  let geometryDict = geometries.get(geometry)!;
+  return new Keyboard(layout, geometry, characterDict, geometryDict);
 }

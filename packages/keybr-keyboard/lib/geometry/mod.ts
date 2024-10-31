@@ -1,8 +1,10 @@
 import { type KeyId, type ZoneId } from "../types.ts";
 
-export type ZoneMod = Record<KeyId, readonly ZoneId[]>;
+export type ZoneModDict = Record<KeyId, readonly ZoneId[]>;
 
-export const ANGLE_MOD: ZoneMod = {
+export const STANDARD_MOD: ZoneModDict = {};
+
+export const ANGLE_MOD: ZoneModDict = {
   Backquote: ["pinky", "left", "digit"],
   Digit1: ["pinky", "left", "digit"],
   Digit2: ["ring", "left", "digit"],
@@ -63,7 +65,7 @@ export const ANGLE_MOD: ZoneMod = {
   ControlRight: ["pinky", "right", "bottom"],
 };
 
-export const ANGLE_WIDE_MOD: ZoneMod = {
+export const ANGLE_WIDE_MOD: ZoneModDict = {
   Backquote: ["pinky", "left", "digit"],
   Digit1: ["pinky", "left", "digit"],
   Digit2: ["ring", "left", "digit"],
@@ -124,7 +126,7 @@ export const ANGLE_WIDE_MOD: ZoneMod = {
   ControlRight: ["pinky", "right", "bottom"],
 };
 
-export const SYMMETRIC_MOD: ZoneMod = {
+export const SYMMETRIC_MOD: ZoneModDict = {
   Backquote: ["pinky", "left", "digit"],
   Digit1: ["pinky", "left", "digit"],
   Digit2: ["ring", "left", "digit"],

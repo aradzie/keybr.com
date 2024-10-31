@@ -83,6 +83,10 @@ export class Geometry implements EnumItem {
     Geometry.MATRIX,
   );
 
+  static first(items: Iterable<Geometry>): Geometry {
+    return items[Symbol.iterator]().next().value ?? Geometry.ANSI_101;
+  }
+
   private constructor(
     readonly id: string,
     readonly name: string,

@@ -37,7 +37,11 @@ export const keyboardProps = {
 
 export class KeyboardOptions {
   static default(): KeyboardOptions {
-    return new KeyboardOptions(Language.EN, Layout.EN_US, Geometry.ANSI_101);
+    return new KeyboardOptions(
+      Language.EN, //
+      Layout.EN_US,
+      Geometry.ANSI_101,
+    );
   }
 
   static from(settings: Settings): KeyboardOptions {
@@ -53,7 +57,11 @@ export class KeyboardOptions {
   readonly #layout: Layout;
   readonly #geometry: Geometry;
 
-  private constructor(language: Language, layout: Layout, geometry: Geometry) {
+  private constructor(
+    language: Language, //
+    layout: Layout,
+    geometry: Geometry,
+  ) {
     this.#language = language;
     this.#layout = layout;
     this.#geometry = geometry;
@@ -89,14 +97,22 @@ export class KeyboardOptions {
     const [layout] = Layout.ALL.filter(
       (layout) => layout.language.id === language.id,
     );
-    const [geometry] = layout.geometries;
-    return new KeyboardOptions(language, layout, geometry);
+    const geometry = Geometry.first(layout.geometries);
+    return new KeyboardOptions(
+      language, //
+      layout,
+      geometry,
+    );
   }
 
   withLayout(layout: Layout): KeyboardOptions {
     if (this.#language === layout.language) {
-      const [geometry] = layout.geometries;
-      return new KeyboardOptions(this.#language, layout, geometry);
+      const geometry = Geometry.first(layout.geometries);
+      return new KeyboardOptions(
+        this.#language, //
+        layout,
+        geometry,
+      );
     } else {
       return this;
     }
@@ -104,7 +120,11 @@ export class KeyboardOptions {
 
   withGeometry(geometry: Geometry): KeyboardOptions {
     if (this.#layout.geometries.has(geometry)) {
-      return new KeyboardOptions(this.#language, this.#layout, geometry);
+      return new KeyboardOptions(
+        this.#language, //
+        this.#layout,
+        geometry,
+      );
     } else {
       return this;
     }
