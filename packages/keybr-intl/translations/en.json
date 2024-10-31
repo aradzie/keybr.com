@@ -91,6 +91,7 @@
   "keyboard.geometry.label": "Geometry:",
   "keyboard.language.label": "Language:",
   "keyboard.layout.label": "Layout:",
+  "keyboard.zones.label": "Zones:",
   "layouts.stats.bottomRowKeys.description": "The percentage of keys typed on the Shift row, the less the better.",
   "layouts.stats.bottomRowKeys.name": "Keys on the bottom row:",
   "layouts.stats.homeRowKeys.description": "The percentage of keys typed without leaving the Caps Lock row, the more the better.",

@@ -1,4 +1,4 @@
-import { Geometry } from "./geometry.ts";
+import { Geometry, ZoneMod } from "./geometry.ts";
 import { ANSI_101 } from "./geometry/ansi_101.ts";
 import { ANSI_101_FULL } from "./geometry/ansi_101_full.ts";
 import { BRAZILIAN_104 } from "./geometry/brazilian_104.ts";
@@ -10,7 +10,6 @@ import { JAPANESE_106_FULL } from "./geometry/japanese_106_full.ts";
 import { KOREAN_103 } from "./geometry/korean_103.ts";
 import { KOREAN_103_FULL } from "./geometry/korean_103_full.ts";
 import { MATRIX } from "./geometry/matrix.ts";
-import { SYMMETRIC_MOD } from "./geometry/mod.ts";
 import { Keyboard } from "./keyboard.ts";
 import { Layout } from "./layout.ts";
 import { LAYOUT_AR_SA } from "./layout/ar_sa.ts";
@@ -81,7 +80,7 @@ import { LAYOUT_TH_TH_PAT } from "./layout/th_th_pat.ts";
 import { LAYOUT_TR_TR_F } from "./layout/tr_tr_f.ts";
 import { LAYOUT_TR_TR_Q } from "./layout/tr_tr_q.ts";
 import { LAYOUT_UK_UA } from "./layout/uk_ua.ts";
-import { remapZones } from "./mod.ts";
+import { nullMod, remapZones } from "./mod.ts";
 import { KeyboardOptions } from "./settings.ts";
 import { type CharacterDict, type GeometryDict } from "./types.ts";
 
@@ -163,8 +162,6 @@ const geometries = new Map<Geometry, GeometryDict>([
   [Geometry.BRAZILIAN_104_FULL, BRAZILIAN_104_FULL],
   [Geometry.ISO_102, ISO_102],
   [Geometry.ISO_102_FULL, ISO_102_FULL],
-  [Geometry.ISO_102_SYMMETRIC, remapZones(ISO_102, SYMMETRIC_MOD)],
-  [Geometry.ISO_102_FULL_SYMMETRIC, remapZones(ISO_102_FULL, SYMMETRIC_MOD)],
   [Geometry.JAPANESE_106, JAPANESE_106],
   [Geometry.JAPANESE_106_FULL, JAPANESE_106_FULL],
   [Geometry.KOREAN_103, KOREAN_103],
@@ -179,7 +176,7 @@ export function loadKeyboard(...args: any[]): Keyboard {
   const { length } = args;
   let options: KeyboardOptions;
   if (length === 1 && (options = args[0]) instanceof KeyboardOptions) {
-    return loadImpl(options.layout, options.geometry);
+    return loadImpl(options.layout, options.geometry, options.zones);
   }
   let layout: Layout;
   if (length === 1 && (layout = args[0]) instanceof Layout) {
@@ -199,8 +196,12 @@ export function loadKeyboard(...args: any[]): Keyboard {
 function loadImpl(
   layout: Layout,
   geometry: Geometry = Geometry.first(layout.geometries),
+  zones: ZoneMod = ZoneMod.first(geometry.zones),
 ): Keyboard {
   let characterDict = layouts.get(layout)!;
   let geometryDict = geometries.get(geometry)!;
+  if (layout.mod === nullMod && zones !== ZoneMod.STANDARD) {
+    geometryDict = remapZones(geometryDict, zones.mod);
+  }
   return new Keyboard(layout, geometry, characterDict, geometryDict);
 }

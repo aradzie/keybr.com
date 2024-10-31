@@ -8,6 +8,7 @@ import {
   Layout,
   useFormattedNames,
   useKeyboard,
+  ZoneMod,
 } from "@keybr/keyboard";
 import { KeyLayer, PointersLayer, VirtualKeyboard } from "@keybr/keyboard-ui";
 import { useSettings } from "@keybr/settings";
@@ -79,6 +80,7 @@ function LayoutProp(): ReactNode {
                 options
                   .withLanguage(Language.ALL.get(id))
                   .withGeometry(options.geometry)
+                  .withZones(options.zones)
                   .save(settings),
               );
             }}
@@ -102,6 +104,7 @@ function LayoutProp(): ReactNode {
                 options
                   .withLayout(Layout.ALL.get(id))
                   .withGeometry(options.geometry)
+                  .withZones(options.zones)
                   .save(settings),
               );
             }}
@@ -194,7 +197,27 @@ function GeometryProp(): ReactNode {
             value={options.geometry.id}
             onSelect={(id) => {
               updateSettings(
-                options.withGeometry(Geometry.ALL.get(id)).save(settings),
+                options
+                  .withGeometry(Geometry.ALL.get(id))
+                  .withZones(options.zones)
+                  .save(settings),
+              );
+            }}
+          />
+        </Field>
+        <Field>
+          <FormattedMessage id="keyboard.zones.label" defaultMessage="Zones:" />
+        </Field>
+        <Field>
+          <OptionList
+            options={options.selectableZones().map((item) => ({
+              value: item.id,
+              name: item.name,
+            }))}
+            value={options.zones.id}
+            onSelect={(id) => {
+              updateSettings(
+                options.withZones(ZoneMod.ALL.get(id)).save(settings),
               );
             }}
           />
