@@ -1,5 +1,5 @@
 import { Screen } from "@keybr/pages-shared";
-import { type LineList, makeStats, type Stats } from "@keybr/textinput";
+import { type LineList } from "@keybr/textinput";
 import { TextArea } from "@keybr/textinput-ui";
 import { type Focusable, Spacer } from "@keybr/widget";
 import { memo, useEffect, useRef, useState } from "react";
@@ -20,11 +20,13 @@ export const TestScreen = memo(function TestScreen({
   readonly settings: CompositeSettings;
   readonly generator: TextGenerator;
   readonly mark: unknown;
-  readonly onComplete: (stats: Stats) => void;
+  readonly onComplete: (session: Session) => void;
   readonly onConfigure: () => void;
 }) {
   const focusRef = useRef<Focusable>(null);
-  const [session, setSession] = useState<Session>(null!);
+  const [session, setSession] = useState<Session>(() =>
+    nextTest(settings, generator),
+  );
   const [lines, setLines] = useState<LineList>(Session.emptyLines);
   useEffect(() => {
     generator.reset(mark);
@@ -53,11 +55,13 @@ export const TestScreen = memo(function TestScreen({
             setSession(session);
             setLines(session.getLines());
           }}
+          onKeyDown={session.handleKeyDown}
+          onKeyUp={session.handleKeyUp}
           onInput={(event) => {
             const { completed } = session.handleInput(event);
             setLines(session.getLines());
             if (completed) {
-              onComplete(makeStats(session.getSteps()));
+              onComplete(session);
             }
           }}
           lineTemplate={LineTemplate}

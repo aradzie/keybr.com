@@ -6,7 +6,6 @@ import {
 } from "@keybr/chart";
 import { useIntlNumbers } from "@keybr/intl";
 import { Screen } from "@keybr/pages-shared";
-import { type Stats } from "@keybr/textinput";
 import {
   Box,
   Button,
@@ -25,18 +24,21 @@ import {
 } from "@keybr/widget";
 import { mdiSkipNext } from "@mdi/js";
 import { memo, type ReactNode } from "react";
+import { type TestResult } from "../session/index.ts";
 import * as styles from "./Report.module.less";
 
 export const Report = memo(function Report({
-  stats: { time, speed, length, errors, accuracy },
+  result,
   onNext,
 }: {
-  readonly stats: Stats;
+  readonly result: TestResult;
   readonly onNext: () => void;
 }) {
   const { formatNumber, formatPercents } = useIntlNumbers();
 
   useHotkeys(["Enter", onNext]);
+
+  const { time, speed, length, errors, accuracy } = result.stats;
 
   const dSpeed = makeSpeedDistribution();
   const dAccuracy = makeAccuracyDistribution();

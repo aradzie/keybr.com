@@ -1,9 +1,11 @@
 import {
   type Line,
   type LineList,
+  type Stats,
   type TextDisplaySettings,
   type TextInputSettings,
 } from "@keybr/textinput";
+import { type AnyEvent } from "@keybr/textinput-events";
 
 export enum DurationType {
   Time = 1,
@@ -40,3 +42,8 @@ export type SessionLine = Line & {
 };
 
 export type SessionLines = LineList<SessionLine>;
+
+export type TestResult = {
+  readonly stats: Stats;
+  readonly events: readonly AnyEvent[];
+};

@@ -5,6 +5,7 @@ import { Report } from "./components/Report.tsx";
 import { SettingsScreen } from "./components/SettingsScreen.tsx";
 import { TestScreen } from "./components/TestScreen.tsx";
 import { TextGeneratorLoader } from "./generators/index.ts";
+import { type Session, type TestResult } from "./session/index.ts";
 import { toCompositeSettings } from "./settings.ts";
 
 export function TypingTestPage(): ReactNode {
@@ -13,15 +14,13 @@ export function TypingTestPage(): ReactNode {
     Report,
     Settings,
   }
-
   const { settings } = useSettings();
   const compositeSettings = useMemo(
     () => toCompositeSettings(settings),
     [settings],
   );
   const [view, setView] = useState(View.Test);
-  const [stats, setStats] = useState(makeStats([]));
-
+  const [result, setResult] = useState(emptyResult());
   switch (view) {
     case View.Test:
       return (
@@ -32,9 +31,9 @@ export function TypingTestPage(): ReactNode {
                 settings={compositeSettings}
                 generator={generator}
                 mark={generator.mark()}
-                onComplete={(stats) => {
+                onComplete={(session) => {
                   setView(View.Report);
-                  setStats(stats);
+                  setResult(makeResult(session));
                 }}
                 onConfigure={() => {
                   setView(View.Settings);
@@ -47,7 +46,7 @@ export function TypingTestPage(): ReactNode {
     case View.Report:
       return (
         <Report
-          stats={stats}
+          result={result}
           onNext={() => {
             setView(View.Test);
           }}
@@ -62,4 +61,18 @@ export function TypingTestPage(): ReactNode {
         />
       );
   }
+}
+
+function emptyResult(): TestResult {
+  return {
+    stats: makeStats([]),
+    events: [],
+  };
+}
+
+function makeResult(session: Session): TestResult {
+  return {
+    stats: makeStats(session.getSteps()),
+    events: session.getEvents(),
+  };
 }

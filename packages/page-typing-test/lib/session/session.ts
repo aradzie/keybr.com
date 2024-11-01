@@ -4,7 +4,11 @@ import {
   type Step,
   TextInput,
 } from "@keybr/textinput";
-import { type IInputEvent } from "@keybr/textinput-events";
+import {
+  type AnyEvent,
+  type IInputEvent,
+  type IKeyboardEvent,
+} from "@keybr/textinput-events";
 import { type TextGenerator } from "../generators/index.ts";
 import { computeProgress } from "./duration.ts";
 import {
@@ -16,6 +20,10 @@ import {
 
 export class Session {
   static readonly emptyLines = { text: "", lines: [] } satisfies SessionLines;
+  /** Timestamp of the first event. */
+  #started: number = 0;
+  /** A list of events to replay. */
+  #events: AnyEvent[] = [];
   /** The currently visible lines. */
   #lines!: SessionLine[];
   /** The index of the edited line. */
@@ -40,6 +48,10 @@ export class Session {
     this.#setActiveLine();
   }
 
+  getEvents(): readonly AnyEvent[] {
+    return this.#events;
+  }
+
   getLines(): SessionLines {
     return { text: "", lines: this.#lines };
   }
@@ -48,6 +60,14 @@ export class Session {
     return this.#steps;
   }
 
+  handleKeyDown = (event: IKeyboardEvent) => {
+    this.#addEvent(event);
+  };
+
+  handleKeyUp = (event: IKeyboardEvent) => {
+    this.#addEvent(event);
+  };
+
   handleInput = (
     event: IInputEvent,
   ): {
@@ -55,6 +75,7 @@ export class Session {
     progress: Progress;
     completed: boolean;
   } => {
+    this.#addEvent(event);
     const feedback = this.#textInput.onInput(event);
     const { progress, completed } = computeProgress(
       this.#steps,
@@ -72,6 +93,14 @@ export class Session {
     }
     return { feedback, progress, completed };
   };
+
+  #addEvent(event: AnyEvent) {
+    const { timeStamp } = event;
+    if (this.#events.length === 0) {
+      this.#started = timeStamp;
+    }
+    this.#events.push({ ...event, timeStamp: timeStamp - this.#started });
+  }
 
   #appendLine() {
     const mark = this.generator.mark();
