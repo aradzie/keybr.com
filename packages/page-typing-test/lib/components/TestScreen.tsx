@@ -2,7 +2,7 @@ import { Screen } from "@keybr/pages-shared";
 import { type LineList, makeStats, type Stats } from "@keybr/textinput";
 import { TextArea } from "@keybr/textinput-ui";
 import { type Focusable, Spacer } from "@keybr/widget";
-import { memo, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import { type TextGenerator } from "../generators/index.ts";
 import { Session } from "../session/index.ts";
 import { type CompositeSettings } from "../settings.ts";
@@ -12,18 +12,25 @@ import { Toolbar } from "./Toolbar.tsx";
 export const TestScreen = memo(function TestScreen({
   settings,
   generator,
+  mark,
   onComplete,
   onConfigure,
 }: {
   readonly settings: CompositeSettings;
   readonly generator: TextGenerator;
+  readonly mark: unknown;
   readonly onComplete: (stats: Stats) => void;
   readonly onConfigure: () => void;
 }) {
   const focusRef = useRef<Focusable>(null);
-  const [mark, setMark] = useState(() => generator.mark());
-  const [session, setSession] = useState(() => nextTest(settings, generator));
-  const [lines, setLines] = useState<LineList>(() => ({ text: "", lines: [] }));
+  const [session, setSession] = useState<Session>(null!);
+  const [lines, setLines] = useState<LineList>({ text: "", lines: [] });
+  useEffect(() => {
+    generator.reset(mark);
+    const session = nextTest(settings, generator);
+    setSession(session);
+    setLines({ text: "", lines: session.getLines() });
+  }, [settings, generator, mark]);
   return (
     <Screen>
       <Toolbar
@@ -48,7 +55,6 @@ export const TestScreen = memo(function TestScreen({
           const [feedback, progress, completed] = session.handleInput(event);
           setLines({ text: "", lines: session.getLines() });
           if (completed) {
-            setMark(generator.mark());
             onComplete(makeStats(session.getSteps()));
           }
         }}

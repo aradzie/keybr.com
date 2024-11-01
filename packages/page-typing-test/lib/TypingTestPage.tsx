@@ -31,6 +31,7 @@ export function TypingTestPage(): ReactNode {
               <TestScreen
                 settings={compositeSettings}
                 generator={generator}
+                mark={generator.mark()}
                 onComplete={(stats) => {
                   setView(View.Report);
                   setStats(stats);
