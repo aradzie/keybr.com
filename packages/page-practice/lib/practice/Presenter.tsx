@@ -9,7 +9,7 @@ import {
   ModifierState,
 } from "@keybr/textinput-events";
 import { TextArea } from "@keybr/textinput-ui";
-import { type Focusable, Zoomer } from "@keybr/widget";
+import { type Focusable, Spacer, Zoomer } from "@keybr/widget";
 import { createRef, PureComponent, type ReactNode } from "react";
 import { Controls } from "./Controls.tsx";
 import { Indicators } from "./Indicators.tsx";
@@ -359,7 +359,7 @@ function BareLayout({
 }): ReactNode {
   return (
     <Screen>
-      <div className={styles.spacer} />
+      <Spacer size={10} />
       <div id={names.textInput} className={styles.textInput_bare}>
         {textInput}
       </div>
