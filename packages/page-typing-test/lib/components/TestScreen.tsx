@@ -25,12 +25,12 @@ export const TestScreen = memo(function TestScreen({
 }) {
   const focusRef = useRef<Focusable>(null);
   const [session, setSession] = useState<Session>(null!);
-  const [lines, setLines] = useState<LineList>({ text: "", lines: [] });
+  const [lines, setLines] = useState<LineList>(Session.emptyLines);
   useEffect(() => {
     generator.reset(mark);
     const session = nextTest(settings, generator);
     setSession(session);
-    setLines({ text: "", lines: session.getLines() });
+    setLines(session.getLines());
   }, [settings, generator, mark]);
   return (
     <Screen>
@@ -51,11 +51,11 @@ export const TestScreen = memo(function TestScreen({
             generator.reset(mark);
             const session = nextTest(settings, generator);
             setSession(session);
-            setLines({ text: "", lines: session.getLines() });
+            setLines(session.getLines());
           }}
           onInput={(event) => {
             const [feedback, progress, completed] = session.handleInput(event);
-            setLines({ text: "", lines: session.getLines() });
+            setLines(session.getLines());
             if (completed) {
               onComplete(makeStats(session.getSteps()));
             }

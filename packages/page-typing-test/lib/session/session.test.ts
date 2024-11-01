@@ -1,5 +1,4 @@
-import { test } from "node:test";
-import { type WordList } from "@keybr/content";
+import { describe, it } from "node:test";
 import { FakeRNGStream } from "@keybr/rand";
 import { textDisplaySettings, textInputSettings } from "@keybr/textinput";
 import { assert } from "chai";
@@ -7,8 +6,8 @@ import { CommonWordsGenerator } from "../generators/index.ts";
 import { Session } from "./session.ts";
 import { DurationType } from "./types.ts";
 
-test("lines", () => {
-  const wordList: WordList = ["one", "two", "three", "four", "five"];
+describe("session", () => {
+  const wordList = ["one", "two", "three", "four", "five"];
   const session = new Session(
     {
       duration: {
@@ -27,8 +26,8 @@ test("lines", () => {
     ),
   );
 
-  {
-    const lines = session.getLines();
+  it("should have initial state", () => {
+    const { lines } = session.getLines();
     assert.strictEqual(lines.length, 3);
 
     assert.deepStrictEqual(lines[0].mark, { mark: 0 });
@@ -39,39 +38,39 @@ test("lines", () => {
 
     assert.deepStrictEqual(lines[2].mark, { mark: 2 });
     assert.strictEqual(lines[2].text, "three ");
-  }
-
-  session.handleInput({
-    type: "input",
-    timeStamp: 100,
-    inputType: "appendChar",
-    codePoint: "one ".codePointAt(0)!,
-    timeToType: 100,
-  });
-  session.handleInput({
-    type: "input",
-    timeStamp: 200,
-    inputType: "appendChar",
-    codePoint: "one ".codePointAt(1)!,
-    timeToType: 100,
-  });
-  session.handleInput({
-    type: "input",
-    timeStamp: 300,
-    inputType: "appendChar",
-    codePoint: "one ".codePointAt(2)!,
-    timeToType: 100,
-  });
-  session.handleInput({
-    type: "input",
-    timeStamp: 400,
-    inputType: "appendChar",
-    codePoint: "one ".codePointAt(3)!,
-    timeToType: 100,
   });
 
-  {
-    const lines = session.getLines();
+  it("should update state on input", () => {
+    session.handleInput({
+      type: "input",
+      timeStamp: 100,
+      inputType: "appendChar",
+      codePoint: /* "o" */ 0x006f,
+      timeToType: 100,
+    });
+    session.handleInput({
+      type: "input",
+      timeStamp: 200,
+      inputType: "appendChar",
+      codePoint: /* "n" */ 0x006e,
+      timeToType: 100,
+    });
+    session.handleInput({
+      type: "input",
+      timeStamp: 300,
+      inputType: "appendChar",
+      codePoint: /* "e" */ 0x0065,
+      timeToType: 100,
+    });
+    session.handleInput({
+      type: "input",
+      timeStamp: 400,
+      inputType: "appendChar",
+      codePoint: /* SPACE */ 0x0020,
+      timeToType: 100,
+    });
+
+    const { lines } = session.getLines();
     assert.strictEqual(lines.length, 3);
 
     assert.deepStrictEqual(lines[0].mark, { mark: 1 });
@@ -82,5 +81,5 @@ test("lines", () => {
 
     assert.deepStrictEqual(lines[2].mark, { mark: 3 });
     assert.strictEqual(lines[2].text, "four ");
-  }
+  });
 });

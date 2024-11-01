@@ -9,20 +9,22 @@ import { type TextGenerator } from "../generators/index.ts";
 import { computeProgress } from "./duration.ts";
 import {
   type Progress,
-  type SessionLineData,
+  type SessionLine,
+  type SessionLines,
   type SessionSettings,
 } from "./types.ts";
 
 export class Session {
-  /** Currently visible lines. */
-  #lines!: SessionLineData[];
-  /** Index of the edited line. */
+  static readonly emptyLines = { text: "", lines: [] } satisfies SessionLines;
+  /** The currently visible lines. */
+  #lines!: SessionLine[];
+  /** The index of the edited line. */
   #activeLine!: number;
-  /** Text input for the edited line. */
+  /** The text input for the edited line. */
   #textInput!: TextInput;
-  /** Steps accumulated from all lines. */
+  /** The steps accumulated from all lines. */
   #steps!: Step[];
-  /** Generates unique element keys. */
+  /** Generates unique React element keys. */
   #index = 0;
 
   constructor(
@@ -38,8 +40,8 @@ export class Session {
     this.#setActiveLine();
   }
 
-  getLines(): readonly SessionLineData[] {
-    return this.#lines;
+  getLines(): SessionLines {
+    return { text: "", lines: this.#lines };
   }
 
   getSteps(): readonly Step[] {

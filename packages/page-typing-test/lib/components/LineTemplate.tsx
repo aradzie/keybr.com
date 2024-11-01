@@ -1,6 +1,6 @@
 import { formatDuration, Value } from "@keybr/widget";
 import { memo, type ReactNode } from "react";
-import { type Progress, type SessionLineData } from "../session/index.ts";
+import { type Progress, type SessionLine } from "../session/index.ts";
 import * as styles from "./LineTemplate.module.less";
 
 export const LineTemplate = memo(function LineTemplate({
@@ -8,7 +8,7 @@ export const LineTemplate = memo(function LineTemplate({
   progress,
 }: {
   readonly children: ReactNode;
-} & SessionLineData): ReactNode {
+} & SessionLine): ReactNode {
   return (
     <div className={styles.line}>
       <div className={styles.text}>{children}</div>

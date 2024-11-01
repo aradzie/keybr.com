@@ -23,9 +23,9 @@ export type Line = {
   readonly chars: readonly Char[];
 };
 
-export type LineList = {
+export type LineList<T extends Line = Line> = {
   readonly text: string;
-  readonly lines: readonly Line[];
+  readonly lines: readonly T[];
 };
 
 export function flattenStyledText(text: StyledText): string {

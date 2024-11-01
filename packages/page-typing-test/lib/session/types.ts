@@ -1,5 +1,6 @@
 import {
   type Line,
+  type LineList,
   type TextDisplaySettings,
   type TextInputSettings,
 } from "@keybr/textinput";
@@ -31,9 +32,11 @@ export type SessionSettings = {
   readonly numCols: number;
 };
 
-export type SessionLineData = Line & {
+export type SessionLine = Line & {
   readonly index: number;
   readonly mark: unknown;
   readonly text: string;
   readonly progress: Progress | null;
 };
+
+export type SessionLines = LineList<SessionLine>;
