@@ -7,6 +7,7 @@ import { type TextGenerator } from "../generators/index.ts";
 import { Session } from "../session/index.ts";
 import { type CompositeSettings } from "../settings.ts";
 import { LineTemplate } from "./LineTemplate.tsx";
+import * as styles from "./TestScreen.module.less";
 import { Toolbar } from "./Toolbar.tsx";
 
 export const TestScreen = memo(function TestScreen({
@@ -40,26 +41,28 @@ export const TestScreen = memo(function TestScreen({
         }}
       />
       <Spacer size={10} />
-      <TextArea
-        focusRef={focusRef}
-        settings={settings.textDisplay}
-        lines={lines}
-        wrap={false}
-        onFocus={() => {
-          generator.reset(mark);
-          const session = nextTest(settings, generator);
-          setSession(session);
-          setLines({ text: "", lines: session.getLines() });
-        }}
-        onInput={(event) => {
-          const [feedback, progress, completed] = session.handleInput(event);
-          setLines({ text: "", lines: session.getLines() });
-          if (completed) {
-            onComplete(makeStats(session.getSteps()));
-          }
-        }}
-        lineTemplate={LineTemplate}
-      />
+      <div className={styles.text}>
+        <TextArea
+          focusRef={focusRef}
+          settings={settings.textDisplay}
+          lines={lines}
+          wrap={false}
+          onFocus={() => {
+            generator.reset(mark);
+            const session = nextTest(settings, generator);
+            setSession(session);
+            setLines({ text: "", lines: session.getLines() });
+          }}
+          onInput={(event) => {
+            const [feedback, progress, completed] = session.handleInput(event);
+            setLines({ text: "", lines: session.getLines() });
+            if (completed) {
+              onComplete(makeStats(session.getSteps()));
+            }
+          }}
+          lineTemplate={LineTemplate}
+        />
+      </div>
     </Screen>
   );
 });
