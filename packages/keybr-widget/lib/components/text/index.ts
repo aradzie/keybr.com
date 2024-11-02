@@ -4,6 +4,8 @@ export * from "./Description.tsx";
 export * from "./Description.types.ts";
 export * from "./Header.tsx";
 export * from "./Header.types.ts";
+export * from "./Kbd.tsx";
+export * from "./Kbd.types.ts";
 export * from "./Link.tsx";
 export * from "./Link.types.ts";
 export * from "./NameValue.tsx";
