@@ -1,5 +1,6 @@
 import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
+import { KeyboardProvider } from "@keybr/keyboard";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
 import { FakeSettingsContext } from "@keybr/settings";
@@ -12,7 +13,9 @@ test("render", async () => {
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
-        <SettingsScreen onSubmit={() => {}} />
+        <KeyboardProvider>
+          <SettingsScreen onSubmit={() => {}} />
+        </KeyboardProvider>
       </FakeSettingsContext>
     </FakeIntlProvider>,
   );

@@ -54,7 +54,7 @@ export const TestScreen = memo(function TestScreen({
             setLines(session.getLines());
           }}
           onInput={(event) => {
-            const [feedback, progress, completed] = session.handleInput(event);
+            const { completed } = session.handleInput(event);
             setLines(session.getLines());
             if (completed) {
               onComplete(makeStats(session.getSteps()));

@@ -33,7 +33,7 @@ export const durations: readonly NamedDuration[] = [
 export function computeProgress(
   steps: readonly Step[],
   duration: Duration,
-): [progress: Progress, completed: boolean] {
+): { progress: Progress; completed: boolean } {
   const { length } = steps;
   let time = 0;
   let progress = 0;
@@ -55,5 +55,5 @@ export function computeProgress(
       }
     }
   }
-  return [{ time, length, progress }, completed];
+  return { progress: { time, length, progress }, completed };
 }

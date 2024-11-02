@@ -48,13 +48,15 @@ export class Session {
     return this.#steps;
   }
 
-  handleInput(event: IInputEvent): [
-    feedback: Feedback, //
-    progress: Progress,
-    completed: boolean,
-  ] {
+  handleInput = (
+    event: IInputEvent,
+  ): {
+    feedback: Feedback;
+    progress: Progress;
+    completed: boolean;
+  } => {
     const feedback = this.#textInput.onInput(event);
-    const [progress, completed] = computeProgress(
+    const { progress, completed } = computeProgress(
       this.#steps,
       this.settings.duration,
     );
@@ -68,10 +70,10 @@ export class Session {
       }
       this.#setActiveLine();
     }
-    return [feedback, progress, completed];
-  }
+    return { feedback, progress, completed };
+  };
 
-  #appendLine(): void {
+  #appendLine() {
     const mark = this.generator.mark();
     const text = this.#generateLine();
     const chars = splitStyledText(text);
@@ -85,7 +87,7 @@ export class Session {
     });
   }
 
-  #setActiveLine(): void {
+  #setActiveLine() {
     const { text } = this.#lines[this.#activeLine];
     this.#textInput = new TextInput(
       text,
@@ -97,7 +99,7 @@ export class Session {
     this.#updateActiveLine();
   }
 
-  #updateActiveLine(progress: Progress | null = null): void {
+  #updateActiveLine(progress: Progress | null = null) {
     const { mark, index, text } = this.#lines[this.#activeLine];
     const { chars } = this.#textInput;
     this.#lines[this.#activeLine] = {
@@ -109,7 +111,7 @@ export class Session {
     };
   }
 
-  #generateLine(): string {
+  #generateLine() {
     const {
       settings: { numCols },
       generator,

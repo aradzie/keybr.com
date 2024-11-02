@@ -1,3 +1,4 @@
+import { type KeyId } from "@keybr/keyboard";
 import { type CodePoint } from "@keybr/unicode";
 
 export type InputListener = {
@@ -9,10 +10,12 @@ export type InputListener = {
 export type IKeyboardEvent = {
   readonly type: "keydown" | "keyup";
   readonly timeStamp: number;
-  readonly code: string;
+  readonly code: KeyId;
   readonly key: string;
   readonly modifiers: readonly ModifierId[];
 };
+
+export type AnyEvent = IKeyboardEvent | IInputEvent;
 
 export type ModifierId =
   | "CapsLock"
