@@ -12,6 +12,7 @@
     "@keybr/content-words": "*",
     "@keybr/intl": "*",
     "@keybr/keyboard": "*",
+    "@keybr/keyboard-ui": "*",
     "@keybr/lang": "*",
     "@keybr/pages-shared": "*",
     "@keybr/phonetic-model": "*",

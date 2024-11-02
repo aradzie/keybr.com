@@ -25,6 +25,7 @@ import {
 import { mdiSkipNext } from "@mdi/js";
 import { memo, type ReactNode } from "react";
 import { type TestResult } from "../session/index.ts";
+import { Replay } from "./Replay.tsx";
 import * as styles from "./Report.module.less";
 
 export const Report = memo(function Report({
@@ -109,6 +110,8 @@ export const Report = memo(function Report({
           You are in the top <Value value={formatPercents(top(pAccuracy))} />.
         </Name>
       </Para>
+
+      <Replay events={result.events} />
 
       <Spacer size={3} />
 

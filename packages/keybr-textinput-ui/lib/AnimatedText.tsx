@@ -3,7 +3,7 @@ import {
   type TextDisplaySettings,
   TextInput,
 } from "@keybr/textinput";
-import { type ReactNode, useEffect, useState } from "react";
+import { type ReactNode, useEffect, useMemo, useState } from "react";
 import { StaticText } from "./StaticText.tsx";
 import { type TextLineSize } from "./TextLines.tsx";
 
@@ -31,33 +31,29 @@ export function AnimatedText({
 }
 
 function useAnimatedTextState(text: string): readonly Char[] {
-  const [{ textInput, chars }, setState] = useState(() => makeState(text));
-  if (textInput.text !== text) {
-    setState(makeState(text));
-  }
+  const textInput = useMemo(
+    () =>
+      new TextInput(text, {
+        stopOnError: false,
+        forgiveErrors: false,
+        spaceSkipsWords: false,
+      }),
+    [text],
+  );
+  const [chars, setChars] = useState<readonly Char[]>([]);
   useEffect(() => {
-    const id = setInterval(() => {
+    setChars(textInput.chars);
+    const id = window.setInterval(() => {
       if (textInput.completed) {
         textInput.reset();
       } else {
         textInput.appendChar(0, textInput.at(textInput.pos).codePoint, 0);
       }
-      const { chars } = textInput;
-      setState({ textInput, chars });
+      setChars(textInput.chars);
     }, 500);
     return () => {
-      clearInterval(id);
+      window.clearInterval(id);
     };
   }, [textInput]);
   return chars;
-}
-
-function makeState(text: string) {
-  const textInput = new TextInput(text, {
-    stopOnError: false,
-    forgiveErrors: false,
-    spaceSkipsWords: false,
-  });
-  const { chars } = textInput;
-  return { textInput, chars };
 }
