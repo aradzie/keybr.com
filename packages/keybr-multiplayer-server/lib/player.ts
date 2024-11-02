@@ -1,3 +1,4 @@
+import { Timer } from "@keybr/lang";
 import {
   type BasicPlayer,
   type ClientMessage,
@@ -7,7 +8,6 @@ import {
 } from "@keybr/multiplayer-shared";
 import { type AnyUser } from "@keybr/pages-shared";
 import { type TextInput } from "@keybr/textinput";
-import { Timer } from "@keybr/timer";
 import { type Room } from "./room.ts";
 import { type Client, type Session } from "./types.ts";
 

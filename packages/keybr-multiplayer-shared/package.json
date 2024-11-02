@@ -7,9 +7,9 @@
   "types": ".types/index.d.ts",
   "dependencies": {
     "@keybr/binary": "*",
+    "@keybr/lang": "*",
     "@keybr/pages-shared": "*",
-    "@keybr/textinput": "*",
-    "@keybr/timer": "*"
+    "@keybr/textinput": "*"
   },
   "devDependencies": {},
   "scripts": {

@@ -1,6 +1,6 @@
+import { type Timer } from "@keybr/lang";
 import { type AnyUser } from "@keybr/pages-shared";
 import { type LineList, type TextInput } from "@keybr/textinput";
-import { type Timer } from "@keybr/timer";
 import { type GameState } from "./messages.ts";
 
 export type WorldState = {

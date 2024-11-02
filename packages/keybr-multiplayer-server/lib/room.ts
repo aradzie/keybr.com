@@ -1,4 +1,6 @@
 import assert from "node:assert";
+import { nextQuote } from "@keybr/content-quotes";
+import { type Task, Tasks, Timer } from "@keybr/lang";
 import {
   type ClientMessage,
   GAME_CONFIG_ID,
@@ -21,12 +23,12 @@ import {
   type ServerMessage,
 } from "@keybr/multiplayer-shared";
 import { computeSpeed, countErrors } from "@keybr/textinput";
-import { type Task, Tasks, Timer } from "@keybr/timer";
 import { type Game } from "./game.ts";
 import { type Player, ReadyState } from "./player.ts";
-import { Services } from "./services.ts";
 
 export class Room {
+  static nextQuote = nextQuote;
+
   readonly #game: Game;
   readonly #id: number;
   readonly #roomSize: number = 5;
@@ -233,7 +235,7 @@ export class Room {
       if (this.players.size > 1) {
         this.#gameState = GameState.STARTING;
         this.#countDown = 3;
-        this.#text = Services.nextQuote();
+        this.#text = Room.nextQuote();
         for (const player of this.players.values()) {
           player.reset(this.#text);
         }
@@ -301,7 +303,7 @@ export class Room {
 
   #elapsed(): number {
     assert(this.#gameState === GameState.RUNNING);
-    return Timer.now() - this.#started;
+    return Math.trunc(Timer.now() - this.#started);
   }
 
   #kick(player: Player, code?: number, data?: string): void {

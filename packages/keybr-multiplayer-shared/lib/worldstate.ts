@@ -1,6 +1,6 @@
+import { Timer } from "@keybr/lang";
 import { type AnyUser } from "@keybr/pages-shared";
 import { TextInput } from "@keybr/textinput";
-import { Timer } from "@keybr/timer";
 import { type IntlShape } from "react-intl";
 import {
   GAME_CONFIG_ID,
@@ -76,7 +76,7 @@ export function handleTextInput(
 } | null {
   const { gameState, players, textInput, timer } = worldState;
   if (!players.me.spectator && gameState === GameState.RUNNING) {
-    const elapsed = timer.elapsed();
+    const elapsed = Math.trunc(timer.elapsed);
     textInput.appendChar(elapsed, codePoint, 0);
     const { lines } = textInput;
     return { worldState: { ...worldState, lines }, elapsed };

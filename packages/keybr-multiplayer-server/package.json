@@ -7,10 +7,10 @@
   "types": ".types/index.d.ts",
   "dependencies": {
     "@keybr/content-quotes": "*",
+    "@keybr/lang": "*",
     "@keybr/multiplayer-shared": "*",
     "@keybr/pages-shared": "*",
-    "@keybr/textinput": "*",
-    "@keybr/timer": "*"
+    "@keybr/textinput": "*"
   },
   "devDependencies": {},
   "scripts": {

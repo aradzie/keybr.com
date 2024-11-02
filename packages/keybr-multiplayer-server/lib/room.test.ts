@@ -1,5 +1,6 @@
 import assert from "node:assert";
 import { test } from "node:test";
+import { Timer } from "@keybr/lang";
 import {
   GAME_CONFIG_ID,
   GAME_READY_ID,
@@ -14,18 +15,17 @@ import {
   type PlayerState,
 } from "@keybr/multiplayer-shared";
 import { type AnonymousUser } from "@keybr/pages-shared";
-import { Timer } from "@keybr/timer";
 import { Game } from "./game.ts";
 import { Player } from "./player.ts";
 import { Room } from "./room.ts";
-import { Services } from "./services.ts";
 import { FakeSession } from "./testing/fake-session.ts";
 
-Services.nextQuote = () => "text fragment";
-Timer.now = () => 0;
+Room.nextQuote = () => "abc";
 
 test("join and start", (ctx) => {
   ctx.mock.timers.enable({ apis: ["setTimeout", "setInterval"] });
+
+  Timer.now = () => 0;
 
   const game = new Game();
   const room = new Room(game, 1);
@@ -99,92 +99,10 @@ test("join and start", (ctx) => {
       op: "send",
       message: {
         type: GAME_CONFIG_ID,
-        text: "text fragment",
+        text: "abc",
       } satisfies GameConfigMessage,
     },
   ]);
-
-  ctx.mock.timers.runAll();
-  assert.deepStrictEqual(session0.take(), [
-    {
-      op: "send",
-      message: {
-        type: GAME_READY_ID,
-        gameState: GameState.STARTING,
-        countDown: 3,
-      } satisfies GameReadyMessage,
-    },
-  ]);
-
-  ctx.mock.timers.runAll();
-  assert.deepStrictEqual(session0.take(), [
-    {
-      op: "send",
-      message: {
-        type: GAME_READY_ID,
-        gameState: GameState.STARTING,
-        countDown: 2,
-      } satisfies GameReadyMessage,
-    },
-  ]);
-
-  ctx.mock.timers.runAll();
-  assert.deepStrictEqual(session0.take(), [
-    {
-      op: "send",
-      message: {
-        type: GAME_READY_ID,
-        gameState: GameState.STARTING,
-        countDown: 1,
-      } satisfies GameReadyMessage,
-    },
-  ]);
-
-  ctx.mock.timers.runAll();
-  assert.deepStrictEqual(session0.take(), [
-    {
-      op: "send",
-      message: {
-        type: GAME_READY_ID,
-        gameState: GameState.RUNNING,
-        countDown: 0,
-      } satisfies GameReadyMessage,
-    },
-    {
-      op: "send",
-      message: {
-        type: GAME_WORLD_ID,
-        elapsed: 0,
-        playerState: new Map([
-          [
-            1,
-            {
-              spectator: false,
-              finished: false,
-              position: 0,
-              offset: 0,
-              speed: 0,
-              errors: 0,
-            } satisfies PlayerState,
-          ],
-          [
-            2,
-            {
-              spectator: false,
-              finished: false,
-              position: 0,
-              offset: 0,
-              speed: 0,
-              errors: 0,
-            } satisfies PlayerState,
-          ],
-        ]),
-      } satisfies GameWorldMessage,
-    },
-  ]);
-  assert.strictEqual(player0.room, room);
-  assert.strictEqual(player1.room, room);
-
   assert.deepStrictEqual(session1.take(), [
     {
       op: "send",
@@ -223,9 +141,13 @@ test("join and start", (ctx) => {
       op: "send",
       message: {
         type: GAME_CONFIG_ID,
-        text: "text fragment",
+        text: "abc",
       } satisfies GameConfigMessage,
     },
+  ]);
+
+  ctx.mock.timers.runAll();
+  assert.deepStrictEqual(session0.take(), [
     {
       op: "send",
       message: {
@@ -234,6 +156,20 @@ test("join and start", (ctx) => {
         countDown: 3,
       } satisfies GameReadyMessage,
     },
+  ]);
+  assert.deepStrictEqual(session1.take(), [
+    {
+      op: "send",
+      message: {
+        type: GAME_READY_ID,
+        gameState: GameState.STARTING,
+        countDown: 3,
+      } satisfies GameReadyMessage,
+    },
+  ]);
+
+  ctx.mock.timers.runAll();
+  assert.deepStrictEqual(session0.take(), [
     {
       op: "send",
       message: {
@@ -242,6 +178,20 @@ test("join and start", (ctx) => {
         countDown: 2,
       } satisfies GameReadyMessage,
     },
+  ]);
+  assert.deepStrictEqual(session1.take(), [
+    {
+      op: "send",
+      message: {
+        type: GAME_READY_ID,
+        gameState: GameState.STARTING,
+        countDown: 2,
+      } satisfies GameReadyMessage,
+    },
+  ]);
+
+  ctx.mock.timers.runAll();
+  assert.deepStrictEqual(session0.take(), [
     {
       op: "send",
       message: {
@@ -250,6 +200,20 @@ test("join and start", (ctx) => {
         countDown: 1,
       } satisfies GameReadyMessage,
     },
+  ]);
+  assert.deepStrictEqual(session1.take(), [
+    {
+      op: "send",
+      message: {
+        type: GAME_READY_ID,
+        gameState: GameState.STARTING,
+        countDown: 1,
+      } satisfies GameReadyMessage,
+    },
+  ]);
+
+  ctx.mock.timers.runAll();
+  assert.deepStrictEqual(session0.take(), [
     {
       op: "send",
       message: {
@@ -290,10 +254,56 @@ test("join and start", (ctx) => {
       } satisfies GameWorldMessage,
     },
   ]);
+  assert.deepStrictEqual(session1.take(), [
+    {
+      op: "send",
+      message: {
+        type: GAME_READY_ID,
+        gameState: GameState.RUNNING,
+        countDown: 0,
+      } satisfies GameReadyMessage,
+    },
+    {
+      op: "send",
+      message: {
+        type: GAME_WORLD_ID,
+        elapsed: 0,
+        playerState: new Map([
+          [
+            1,
+            {
+              spectator: false,
+              finished: false,
+              position: 0,
+              offset: 0,
+              speed: 0,
+              errors: 0,
+            } satisfies PlayerState,
+          ],
+          [
+            2,
+            {
+              spectator: false,
+              finished: false,
+              position: 0,
+              offset: 0,
+              speed: 0,
+              errors: 0,
+            } satisfies PlayerState,
+          ],
+        ]),
+      } satisfies GameWorldMessage,
+    },
+  ]);
+
+  assert.strictEqual(player0.room, room);
+  assert.strictEqual(player1.room, room);
 });
 
 test("join and leave", (ctx) => {
   ctx.mock.timers.enable({ apis: ["setTimeout", "setInterval"] });
+
+  Timer.now = () => 0;
 
   const game = new Game();
   const room0 = new Room(game, 1);
