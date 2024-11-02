@@ -2,6 +2,7 @@ import {
   type Line,
   type LineList,
   type Stats,
+  type Step,
   type TextDisplaySettings,
   type TextInputSettings,
 } from "@keybr/textinput";
@@ -45,5 +46,6 @@ export type SessionLines = LineList<SessionLine>;
 
 export type TestResult = {
   readonly stats: Stats;
+  readonly steps: readonly Step[];
   readonly events: readonly AnyEvent[];
 };

@@ -1,7 +1,7 @@
 import { BookContentLoader } from "@keybr/content-books";
 import { WordListLoader } from "@keybr/content-words";
 import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
-import { LCG, type RNGStream } from "@keybr/rand";
+import { LCG } from "@keybr/rand";
 import { type ReactNode } from "react";
 import { type TextSource, TextSourceType } from "../settings.ts";
 import { BookParagraphsGenerator } from "./book.ts";
@@ -14,7 +14,7 @@ export function TextGeneratorLoader({
   children,
 }: {
   readonly textSource: TextSource;
-  readonly children: (textGenerator: TextGenerator) => ReactNode;
+  readonly children: (generator: TextGenerator) => ReactNode;
 }): ReactNode {
   switch (textSource.type) {
     case TextSourceType.CommonWords:
@@ -42,6 +42,6 @@ export function TextGeneratorLoader({
   }
 }
 
-function rng(): RNGStream {
+function rng() {
   return LCG(Date.now());
 }

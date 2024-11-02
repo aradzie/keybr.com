@@ -20,8 +20,6 @@ import {
 
 export class Session {
   static readonly emptyLines = { text: "", lines: [] } satisfies SessionLines;
-  /** Timestamp of the first event. */
-  #started: number = 0;
   /** A list of events to replay. */
   #events: AnyEvent[] = [];
   /** The currently visible lines. */
@@ -95,11 +93,7 @@ export class Session {
   };
 
   #addEvent(event: AnyEvent) {
-    const { timeStamp } = event;
-    if (this.#events.length === 0) {
-      this.#started = timeStamp;
-    }
-    this.#events.push({ ...event, timeStamp: timeStamp - this.#started });
+    this.#events.push(event);
   }
 
   #appendLine() {
@@ -118,13 +112,9 @@ export class Session {
 
   #setActiveLine() {
     const { text } = this.#lines[this.#activeLine];
-    this.#textInput = new TextInput(
-      text,
-      this.settings.textInput,
-      (step: Step) => {
-        this.#steps.push(step);
-      },
-    );
+    this.#textInput = new TextInput(text, this.settings.textInput, (step) => {
+      this.#steps.push(step);
+    });
     this.#updateActiveLine();
   }
 

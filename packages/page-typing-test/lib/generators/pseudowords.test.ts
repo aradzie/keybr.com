@@ -5,18 +5,7 @@ import { assert } from "chai";
 import { PseudoWordsGenerator } from "./pseudowords.ts";
 
 test("generate words", () => {
-  const words = [
-    "one",
-    "two",
-    "three",
-    "four",
-    "five",
-    "six",
-    "seven",
-    "eight",
-    "nine",
-    "ten",
-  ];
+  const words = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
   const random = FakeRNGStream(words.length);
   const model = new FakePhoneticModel(words, LCG(1));
   const generator = new PseudoWordsGenerator(model, random);

@@ -24,13 +24,16 @@ import {
 import { mdiSkipNext } from "@mdi/js";
 import { memo, type ReactNode } from "react";
 import { type TestResult } from "../session/index.ts";
+import { type CompositeSettings } from "../settings.ts";
 import { Replay } from "./Replay.tsx";
 import * as styles from "./Report.module.less";
 
 export const Report = memo(function Report({
+  settings,
   result,
   onNext,
 }: {
+  readonly settings: CompositeSettings;
   readonly result: TestResult;
   readonly onNext: () => void;
 }) {
@@ -110,7 +113,9 @@ export const Report = memo(function Report({
         </Name>
       </Para>
 
-      <Replay events={result.events} />
+      <Spacer size={3} />
+
+      <Replay settings={settings} result={result} />
 
       <Spacer size={3} />
 

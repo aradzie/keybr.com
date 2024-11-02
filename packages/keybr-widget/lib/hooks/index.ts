@@ -1,3 +1,4 @@
+export * from "./use-animation-frames.ts";
 export * from "./use-clipboard.ts";
 export * from "./use-debounced.ts";
 export * from "./use-deferred.tsx";

@@ -1,6 +1,6 @@
 import { useSettings } from "@keybr/settings";
 import { makeStats } from "@keybr/textinput";
-import { type ReactNode, useMemo, useState } from "react";
+import { type ReactNode, useState } from "react";
 import { Report } from "./components/Report.tsx";
 import { SettingsScreen } from "./components/SettingsScreen.tsx";
 import { TestScreen } from "./components/TestScreen.tsx";
@@ -15,10 +15,7 @@ export function TypingTestPage(): ReactNode {
     Settings,
   }
   const { settings } = useSettings();
-  const compositeSettings = useMemo(
-    () => toCompositeSettings(settings),
-    [settings],
-  );
+  const compositeSettings = toCompositeSettings(settings);
   const [view, setView] = useState(View.Test);
   const [result, setResult] = useState(emptyResult());
   switch (view) {
@@ -46,6 +43,7 @@ export function TypingTestPage(): ReactNode {
     case View.Report:
       return (
         <Report
+          settings={compositeSettings}
           result={result}
           onNext={() => {
             setView(View.Test);
@@ -66,13 +64,17 @@ export function TypingTestPage(): ReactNode {
 function emptyResult(): TestResult {
   return {
     stats: makeStats([]),
+    steps: [],
     events: [],
   };
 }
 
 function makeResult(session: Session): TestResult {
+  const steps = session.getSteps();
+  const events = session.getEvents();
   return {
-    stats: makeStats(session.getSteps()),
-    events: session.getEvents(),
+    stats: makeStats(steps),
+    steps,
+    events,
   };
 }

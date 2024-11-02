@@ -1,38 +1,75 @@
 import { type KeyId, useKeyboard } from "@keybr/keyboard";
 import { KeyLayer, VirtualKeyboard } from "@keybr/keyboard-ui";
+import { Tasks } from "@keybr/lang";
+import {
+  type LineList,
+  type Step,
+  type TextInputSettings,
+} from "@keybr/textinput";
 import { type AnyEvent } from "@keybr/textinput-events";
+import { StaticText } from "@keybr/textinput-ui";
+import { Box, useDocumentVisibility } from "@keybr/widget";
 import { type ReactNode, useEffect, useMemo, useState } from "react";
-import { ReplayState } from "../session/index.ts";
+import { ReplayState, Session, type TestResult } from "../session/index.ts";
+import { type CompositeSettings } from "../settings.ts";
+import { Progress } from "./Progress.tsx";
+import * as styles from "./Replay.module.less";
 
 export function Replay({
-  events,
+  settings: { textInput, textDisplay },
+  result: { steps, events },
 }: {
-  readonly events: readonly AnyEvent[];
+  readonly settings: CompositeSettings;
+  readonly result: TestResult;
 }): ReactNode {
   const keyboard = useKeyboard();
-  const depressedKeys = useReplayState(events);
+  const { stepper, lines, depressedKeys } = useReplayState(
+    textInput,
+    steps,
+    events,
+  );
   return (
-    <VirtualKeyboard keyboard={keyboard} height="16rem">
-      <KeyLayer depressedKeys={depressedKeys} />
-    </VirtualKeyboard>
+    <div className={styles.root}>
+      <Progress stepper={stepper} />
+      <Box className={styles.text} alignItems="center" justifyContent="center">
+        <StaticText settings={textDisplay} lines={lines} cursor={true} />
+      </Box>
+      <VirtualKeyboard keyboard={keyboard} height="16rem">
+        <KeyLayer depressedKeys={depressedKeys} />
+      </VirtualKeyboard>
+    </div>
   );
 }
 
-function useReplayState(events: readonly AnyEvent[]) {
-  const stepper = useMemo(() => new ReplayState(events), [events]);
+function useReplayState(
+  settings: TextInputSettings,
+  steps: readonly Step[],
+  events: readonly AnyEvent[],
+) {
+  const stepper = useMemo(
+    () => new ReplayState(settings, steps, events),
+    [settings, steps, events],
+  );
+  const visible = useDocumentVisibility();
+  const [lines, setLines] = useState<LineList>(Session.emptyLines);
   const [depressedKeys, setDepressedKeys] = useState<KeyId[]>([]);
   useEffect(() => {
-    let id = 0;
+    const tasks = new Tasks();
     const step = () => {
       stepper.step();
+      setLines(stepper.lines);
       setDepressedKeys(stepper.depressedKeys);
-      id = window.setTimeout(step, stepper.delay);
+      tasks.delayed(stepper.delay, step);
     };
-    setDepressedKeys(stepper.depressedKeys);
-    id = window.setTimeout(step, stepper.delay);
+    if (visible) {
+      stepper.reset();
+      setLines(stepper.lines);
+      setDepressedKeys(stepper.depressedKeys);
+      tasks.delayed(stepper.delay, step);
+    }
     return () => {
-      window.clearTimeout(id);
+      tasks.cancelAll();
     };
-  }, [stepper]);
-  return depressedKeys;
+  }, [stepper, visible]);
+  return { stepper, lines, depressedKeys };
 }

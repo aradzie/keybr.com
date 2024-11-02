@@ -1,3 +1,4 @@
+export * from "./animationframes.ts";
 export * from "./format-duration.ts";
 export * from "./geometry.ts";
 export * from "./point.ts";
