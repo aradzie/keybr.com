@@ -1,21 +1,22 @@
+import { describe, it, test } from "node:test";
 import { Layout, loadKeyboard } from "@keybr/keyboard";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { makeKeyStatsMap } from "@keybr/result";
 import { Settings } from "@keybr/settings";
-import test from "ava";
+import { assert } from "chai";
 import { fakeKeyStatsMap, printLessonKeys } from "./fakes.ts";
 import { GuidedLesson } from "./guided.ts";
 import { LessonKey } from "./key.ts";
 import { lessonProps } from "./settings.ts";
 
-test("provide key set", (t) => {
+test("provide key set", () => {
   const settings = new Settings();
   const keyboard = loadKeyboard(Layout.EN_US);
   const model = new FakePhoneticModel(["uno", "due", "tre"]);
   const lesson = new GuidedLesson(settings, keyboard, model, []);
   const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
 
-  t.deepEqual(lessonKeys.findIncludedKeys(), [
+  assert.deepStrictEqual(lessonKeys.findIncludedKeys(), [
     new LessonKey({
       letter: FakePhoneticModel.letter1,
       samples: [],
@@ -83,7 +84,7 @@ test("provide key set", (t) => {
       isForced: false,
     }),
   ]);
-  t.deepEqual(lessonKeys.findExcludedKeys(), [
+  assert.deepStrictEqual(lessonKeys.findExcludedKeys(), [
     new LessonKey({
       letter: FakePhoneticModel.letter7,
       samples: [],
@@ -129,7 +130,7 @@ test("provide key set", (t) => {
       isForced: false,
     }),
   ]);
-  t.deepEqual(
+  assert.deepStrictEqual(
     lessonKeys.findFocusedKey(),
     new LessonKey({
       letter: FakePhoneticModel.letter1,
@@ -145,53 +146,54 @@ test("provide key set", (t) => {
   );
 });
 
-test("generate text from a broken phonetic model, empty words", (t) => {
+describe("generate text from a broken phonetic model", () => {
   const settings = new Settings();
   const keyboard = loadKeyboard(Layout.EN_US);
-  const model = new FakePhoneticModel([""]);
-  const lesson = new GuidedLesson(settings, keyboard, model, []);
-  const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
-  lesson.rng = model.rng;
 
-  t.is(
-    lesson.generate(lessonKeys),
-    "? ? ? ? ? ? ? ? ? ? " +
+  it("should generate from empty words", () => {
+    const model = new FakePhoneticModel([""]);
+    const lesson = new GuidedLesson(settings, keyboard, model, []);
+    const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
+    lesson.rng = model.rng;
+
+    assert.strictEqual(
+      lesson.generate(lessonKeys),
       "? ? ? ? ? ? ? ? ? ? " +
-      "? ? ? ? ? ? ? ? ? ? " +
-      "? ? ? ? ? ? ? ? ? ? " +
-      "? ? ? ? ? ? ? ? ? ? " +
-      "? ? ? ? ? ? ? ? ? ? " +
-      "? ? ? ? ? ? ? ? ? ? " +
-      "? ? ? ? ? ? ? ? ? ? " +
-      "? ? ? ? ? ? ? ? ? ? " +
-      "? ? ? ? ? ? ? ? ? ?",
-  );
+        "? ? ? ? ? ? ? ? ? ? " +
+        "? ? ? ? ? ? ? ? ? ? " +
+        "? ? ? ? ? ? ? ? ? ? " +
+        "? ? ? ? ? ? ? ? ? ? " +
+        "? ? ? ? ? ? ? ? ? ? " +
+        "? ? ? ? ? ? ? ? ? ? " +
+        "? ? ? ? ? ? ? ? ? ? " +
+        "? ? ? ? ? ? ? ? ? ? " +
+        "? ? ? ? ? ? ? ? ? ?",
+    );
+  });
+
+  it("should generate from repeating words", () => {
+    const model = new FakePhoneticModel(["x"]);
+    const lesson = new GuidedLesson(settings, keyboard, model, []);
+    const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
+    lesson.rng = model.rng;
+
+    assert.strictEqual(
+      lesson.generate(lessonKeys),
+      "x x x x x x x x x x " +
+        "x x x x x x x x x x " +
+        "x x x x x x x x x x " +
+        "x x x x x x x x x x " +
+        "x x x x x x x x x x " +
+        "x x x x x x x x x x " +
+        "x x x x x x x x x x " +
+        "x x x x x x x x x x " +
+        "x x x x x x x x x x " +
+        "x x x x x x x x x x",
+    );
+  });
 });
 
-test("generate text from a broken phonetic model, repeating words", (t) => {
-  const settings = new Settings();
-  const keyboard = loadKeyboard(Layout.EN_US);
-  const model = new FakePhoneticModel(["x"]);
-  const lesson = new GuidedLesson(settings, keyboard, model, []);
-  const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
-  lesson.rng = model.rng;
-
-  t.is(
-    lesson.generate(lessonKeys),
-    "x x x x x x x x x x " +
-      "x x x x x x x x x x " +
-      "x x x x x x x x x x " +
-      "x x x x x x x x x x " +
-      "x x x x x x x x x x " +
-      "x x x x x x x x x x " +
-      "x x x x x x x x x x " +
-      "x x x x x x x x x x " +
-      "x x x x x x x x x x " +
-      "x x x x x x x x x x",
-  );
-});
-
-test("generate text with pseudo words", (t) => {
+test("generate text with pseudo words", () => {
   const settings = new Settings().set(lessonProps.guided.naturalWords, false);
   const keyboard = loadKeyboard(Layout.EN_US);
   const model = new FakePhoneticModel(["uno", "due", "tre"]);
@@ -199,7 +201,7 @@ test("generate text with pseudo words", (t) => {
   const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
   lesson.rng = model.rng;
 
-  t.is(
+  assert.strictEqual(
     lesson.generate(lessonKeys),
     "uno due tre " +
       "uno due tre " +
@@ -216,7 +218,7 @@ test("generate text with pseudo words", (t) => {
   );
 });
 
-test("generate text with natural words", (t) => {
+test("generate text with natural words", () => {
   const settings = new Settings().set(lessonProps.guided.naturalWords, true);
   const keyboard = loadKeyboard(Layout.EN_US);
   const model = new FakePhoneticModel(["uno", "due", "tre"]);
@@ -240,14 +242,14 @@ test("generate text with natural words", (t) => {
   const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
   lesson.rng = model.rng;
 
-  t.is(
+  assert.strictEqual(
     lesson.generate(lessonKeys),
     "abcaf abcbe abcaa abcaf abcbe abcaa abcaf abcbe abcaa abcaf abcbe abcaa " +
       "abcaf abcbe abcaa abcaf abcbe abcaa abcaf abcbe",
   );
 });
 
-test("unlock keys", (t) => {
+describe("unlock keys", () => {
   const letter1 = FakePhoneticModel.letter1;
   const letter2 = FakePhoneticModel.letter2;
   const letter3 = FakePhoneticModel.letter3;
@@ -275,15 +277,11 @@ test("unlock keys", (t) => {
     return { settings, lesson };
   }
 
-  {
-    // Initial state.
-
-    {
-      // Recover off.
-
+  describe("initial state", () => {
+    it("recover off", () => {
       const { settings, lesson } = recoverOff();
 
-      t.is(
+      assert.strictEqual(
         printLessonKeys(
           lesson.update(
             fakeKeyStatsMap(settings, [
@@ -302,14 +300,12 @@ test("unlock keys", (t) => {
         ),
         "[A]BCDEF",
       );
-    }
+    });
 
-    {
-      // Recover on.
-
+    it("recover on", () => {
       const { settings, lesson } = recoverOn();
 
-      t.is(
+      assert.strictEqual(
         printLessonKeys(
           lesson.update(
             fakeKeyStatsMap(settings, [
@@ -328,21 +324,15 @@ test("unlock keys", (t) => {
         ),
         "[A]BCDEF",
       );
-    }
-  }
+    });
+  });
 
-  {
-    // The unlocked key has no confidence level.
-
-    {
-      // All previous keys are now above the target speed.
-
-      {
-        // Recover off.
-
+  describe("the unlocked key has no confidence level", () => {
+    describe("all previous keys are now above the target speed", () => {
+      it("recover off", () => {
         const { settings, lesson } = recoverOff();
 
-        t.is(
+        assert.strictEqual(
           printLessonKeys(
             lesson.update(
               fakeKeyStatsMap(settings, [
@@ -361,14 +351,12 @@ test("unlock keys", (t) => {
           ),
           "ABCDEF[G]J",
         );
-      }
+      });
 
-      {
-        // Recover on.
-
+      it("recover on", () => {
         const { settings, lesson } = recoverOn();
 
-        t.is(
+        assert.strictEqual(
           printLessonKeys(
             lesson.update(
               fakeKeyStatsMap(settings, [
@@ -387,18 +375,14 @@ test("unlock keys", (t) => {
           ),
           "ABCDEF[G]J",
         );
-      }
-    }
+      });
+    });
 
-    {
-      // All previous keys were once above the target speed.
-
-      {
-        // Recover off.
-
+    describe("all previous keys were once above the target speed", () => {
+      it("recover off", () => {
         const { settings, lesson } = recoverOff();
 
-        t.is(
+        assert.strictEqual(
           printLessonKeys(
             lesson.update(
               fakeKeyStatsMap(settings, [
@@ -417,14 +401,12 @@ test("unlock keys", (t) => {
           ),
           "ABCDEF[G]J",
         );
-      }
+      });
 
-      {
-        // Recover on.
-
+      it("recover on", () => {
         const { settings, lesson } = recoverOn();
 
-        t.is(
+        assert.strictEqual(
           printLessonKeys(
             lesson.update(
               fakeKeyStatsMap(settings, [
@@ -443,22 +425,16 @@ test("unlock keys", (t) => {
           ),
           "[A]BCDEFJ",
         );
-      }
-    }
-  }
+      });
+    });
+  });
 
-  {
-    // The unlocked key has a low confidence level.
-
-    {
-      // All previous keys are now above the target speed.
-
-      {
-        // Recover off.
-
+  describe("the unlocked key has a low confidence level", () => {
+    describe("all previous keys are now above the target speed", () => {
+      it("recover off", () => {
         const { settings, lesson } = recoverOff();
 
-        t.is(
+        assert.strictEqual(
           printLessonKeys(
             lesson.update(
               fakeKeyStatsMap(settings, [
@@ -477,14 +453,12 @@ test("unlock keys", (t) => {
           ),
           "ABCDEF[G]J",
         );
-      }
+      });
 
-      {
-        // Recover on.
-
+      it("recover on", () => {
         const { settings, lesson } = recoverOn();
 
-        t.is(
+        assert.strictEqual(
           printLessonKeys(
             lesson.update(
               fakeKeyStatsMap(settings, [
@@ -503,18 +477,14 @@ test("unlock keys", (t) => {
           ),
           "ABCDEF[G]J",
         );
-      }
-    }
+      });
+    });
 
-    {
-      // All previous keys were once above the target speed.
-
-      {
-        // Recover off.
-
+    describe("all previous keys were once above the target speed", () => {
+      it("recover off", () => {
         const { settings, lesson } = recoverOff();
 
-        t.is(
+        assert.strictEqual(
           printLessonKeys(
             lesson.update(
               fakeKeyStatsMap(settings, [
@@ -533,14 +503,12 @@ test("unlock keys", (t) => {
           ),
           "ABCDEF[G]J",
         );
-      }
+      });
 
-      {
-        // Recover on.
-
+      it("recover on", () => {
         const { settings, lesson } = recoverOn();
 
-        t.is(
+        assert.strictEqual(
           printLessonKeys(
             lesson.update(
               fakeKeyStatsMap(settings, [
@@ -559,22 +527,16 @@ test("unlock keys", (t) => {
           ),
           "[A]BCDEFJ",
         );
-      }
-    }
-  }
+      });
+    });
+  });
 
-  {
-    // All keys are unlocked.
-
-    {
-      // Some keys are below the target speed.
-
-      {
-        // Recover off.
-
+  describe("all keys are unlocked", () => {
+    describe("some keys are below the target speed", () => {
+      it("recover off", () => {
         const { settings, lesson } = recoverOff();
 
-        t.is(
+        assert.strictEqual(
           printLessonKeys(
             lesson.update(
               fakeKeyStatsMap(settings, [
@@ -593,14 +555,12 @@ test("unlock keys", (t) => {
           ),
           "ABCDEFGHIJ",
         );
-      }
+      });
 
-      {
-        // Recover on.
-
+      it("recover on", () => {
         const { settings, lesson } = recoverOn();
 
-        t.is(
+        assert.strictEqual(
           printLessonKeys(
             lesson.update(
               fakeKeyStatsMap(settings, [
@@ -619,18 +579,14 @@ test("unlock keys", (t) => {
           ),
           "ABCDEFGHI[J]",
         );
-      }
-    }
+      });
+    });
 
-    {
-      // All keys are above the target speed.
-
-      {
-        // Recover off.
-
+    describe("all keys are above the target speed", () => {
+      it("recover off", () => {
         const { settings, lesson } = recoverOff();
 
-        t.is(
+        assert.strictEqual(
           printLessonKeys(
             lesson.update(
               fakeKeyStatsMap(settings, [
@@ -649,14 +605,12 @@ test("unlock keys", (t) => {
           ),
           "ABCDEFGHIJ",
         );
-      }
+      });
 
-      {
-        // Recover on.
-
+      it("recover on", () => {
         const { settings, lesson } = recoverOn();
 
-        t.is(
+        assert.strictEqual(
           printLessonKeys(
             lesson.update(
               fakeKeyStatsMap(settings, [
@@ -675,24 +629,18 @@ test("unlock keys", (t) => {
           ),
           "ABCDEFGHIJ",
         );
-      }
-    }
-  }
+      });
+    });
+  });
 
-  {
-    // Manually unlock keys.
-
-    {
-      // Initial state.
-
-      {
-        // Recover off.
-
+  describe("manually unlock keys", () => {
+    describe("initial state", () => {
+      it("recover off", () => {
         const { settings, lesson } = recoverOff(
           new Settings().set(lessonProps.guided.alphabetSize, 1),
         );
 
-        t.is(
+        assert.strictEqual(
           printLessonKeys(
             lesson.update(
               fakeKeyStatsMap(settings, [
@@ -711,16 +659,14 @@ test("unlock keys", (t) => {
           ),
           "[A]BCDEF!G!H!I!J",
         );
-      }
+      });
 
-      {
-        // Recover on.
-
+      it("recover on", () => {
         const { settings, lesson } = recoverOn(
           new Settings().set(lessonProps.guided.alphabetSize, 1),
         );
 
-        t.is(
+        assert.strictEqual(
           printLessonKeys(
             lesson.update(
               fakeKeyStatsMap(settings, [
@@ -739,7 +685,7 @@ test("unlock keys", (t) => {
           ),
           "[A]BCDEF!G!H!I!J",
         );
-      }
-    }
-  }
+      });
+    });
+  });
 });

@@ -1,11 +1,12 @@
+import { test } from "node:test";
 import { Layout } from "@keybr/keyboard";
 import { Histogram } from "@keybr/textinput";
-import test from "ava";
+import { assert } from "chai";
 import { Result, speedToTime, timeToSpeed } from "./result.ts";
 import { TextType } from "./texttype.ts";
 
-test("validate", (t) => {
-  t.false(
+test("validate", () => {
+  assert.isFalse(
     new Result(
       /* layout= */ Layout.EN_US,
       /* textType= */ TextType.GENERATED,
@@ -17,7 +18,7 @@ test("validate", (t) => {
     ).validate(),
   );
 
-  t.false(
+  assert.isFalse(
     new Result(
       /* layout= */ Layout.EN_US,
       /* textType= */ TextType.GENERATED,
@@ -33,7 +34,7 @@ test("validate", (t) => {
     ).validate(),
   );
 
-  t.true(
+  assert.isTrue(
     new Result(
       /* layout= */ Layout.EN_US,
       /* textType= */ TextType.GENERATED,
@@ -50,7 +51,7 @@ test("validate", (t) => {
   );
 });
 
-test("serialize as JSON", (t) => {
+test("serialize as JSON", () => {
   const result = new Result(
     /* layout= */ Layout.EN_US,
     /* textType= */ TextType.GENERATED,
@@ -65,7 +66,7 @@ test("serialize as JSON", (t) => {
     ]),
   );
 
-  t.deepEqual(JSON.parse(JSON.stringify(result)), {
+  assert.deepStrictEqual(JSON.parse(JSON.stringify(result)), {
     layout: "en-us",
     textType: "generated",
     timeStamp: "2001-02-03T03:05:06.000Z",
@@ -81,15 +82,15 @@ test("serialize as JSON", (t) => {
   });
 });
 
-test("convert units", (t) => {
-  t.throws(() => timeToSpeed(Infinity));
-  t.throws(() => timeToSpeed(NaN));
-  t.throws(() => timeToSpeed(0));
-  t.throws(() => speedToTime(Infinity));
-  t.throws(() => speedToTime(NaN));
-  t.throws(() => speedToTime(0));
-  t.is(timeToSpeed(250), 240);
-  t.is(timeToSpeed(100), 600);
-  t.is(speedToTime(240), 250);
-  t.is(speedToTime(600), 100);
+test("convert units", () => {
+  assert.throws(() => timeToSpeed(Infinity));
+  assert.throws(() => timeToSpeed(NaN));
+  assert.throws(() => timeToSpeed(0));
+  assert.throws(() => speedToTime(Infinity));
+  assert.throws(() => speedToTime(NaN));
+  assert.throws(() => speedToTime(0));
+  assert.strictEqual(timeToSpeed(250), 240);
+  assert.strictEqual(timeToSpeed(100), 600);
+  assert.strictEqual(speedToTime(240), 250);
+  assert.strictEqual(speedToTime(600), 100);
 });

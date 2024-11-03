@@ -1,16 +1,15 @@
-import { mock } from "node:test";
+import { test } from "node:test";
 import { makeKnex } from "@keybr/config";
 import { PublicId } from "@keybr/publicid";
-import test, { registerCompletionHandler } from "ava";
+import { assert, expect, use } from "chai";
+import chaiLike from "chai-like";
 import { ValidationError } from "objection";
 import { User, UserExternalId, UserLoginRequest } from "./model.ts";
 import { createSchema } from "./schema.ts";
 import { clearTables, seedModels } from "./testing/seeds.ts";
 import { Random } from "./util.ts";
 
-registerCompletionHandler(() => {
-  process.exit();
-});
+use(chaiLike);
 
 test.beforeEach(async () => {
   await createSchema(makeKnex());
@@ -18,83 +17,84 @@ test.beforeEach(async () => {
   await seedModels();
 });
 
+test.after(() => {
+  process.exit();
+});
+
 const now = new Date("2001-02-03T04:05:06Z");
 
-mock.timers.enable({ apis: ["Date"], now });
+test("validate models", (ctx) => {
+  ctx.mock.timers.enable({ apis: ["Date"], now });
 
-test("validate models", (t) => {
-  t.deepEqual(
-    Object.keys(
-      t.throws(
-        () => {
-          User.fromJson({});
-        },
-        { instanceOf: ValidationError },
-      )!.data,
-    ),
-    ["email", "name"],
-  );
-  t.throws(
-    () => {
-      User.fromJson({
-        name: null,
-        email: null,
-      });
-    },
-    { instanceOf: ValidationError },
-  );
-  t.throws(
-    () => {
-      User.fromJson({
-        name: "",
-        email: "",
-      });
-    },
-    { instanceOf: ValidationError },
-  );
-  t.notThrows(() => {
+  expect(() => {
+    User.fromJson({});
+  })
+    .to.throw(ValidationError)
+    .to.have.property("data")
+    .deep.equal(["email", "name"]);
+
+  expect(() => {
+    User.fromJson({
+      name: null,
+      email: null,
+    });
+  })
+    .to.throw(ValidationError)
+    .to.have.property("data")
+    .deep.equal(["email", "name"]);
+
+  expect(() => {
+    User.fromJson({
+      name: "",
+      email: "",
+    });
+  })
+    .to.throw(ValidationError)
+    .to.have.property("data")
+    .deep.equal(["email", "name"]);
+
+  expect(() => {
     User.fromJson({
       name: "name",
       email: "email",
     });
-  });
+  }).to.not.throw();
 
-  t.deepEqual(
-    Object.keys(
-      t.throws(
-        () => {
-          UserExternalId.fromJson({});
-        },
-        { instanceOf: ValidationError },
-      )!.data,
-    ),
-    ["provider", "externalId"],
-  );
-  t.throws(
-    () => {
-      UserExternalId.fromJson({
-        provider: null,
-        externalId: null,
-      });
-    },
-    { instanceOf: ValidationError },
-  );
-  t.throws(
-    () => {
-      UserExternalId.fromJson({
-        provider: "",
-        externalId: "",
-      });
-    },
-    { instanceOf: ValidationError },
-  );
-  t.notThrows(() => {
+  expect(() => {
+    UserExternalId.fromJson({});
+  })
+    .to.throw(ValidationError)
+    .to.have.property("data")
+    .deep.equal(["provider", "externalId"]);
+
+  expect(() => {
+    UserExternalId.fromJson({
+      provider: null,
+      externalId: null,
+    });
+  })
+    .to.throw(ValidationError)
+    .to.have.property("data")
+    .deep.equal(["provider", "externalId"]);
+
+  expect(() => {
+    UserExternalId.fromJson({
+      provider: "",
+      externalId: "",
+    });
+  })
+    .to.throw(ValidationError)
+    .to.have.property("data")
+    .deep.equal(["provider", "externalId"]);
+
+  expect(() => {
     UserExternalId.fromJson({
       provider: "provider",
       externalId: "externalId",
     });
-  });
-  t.notThrows(() => {
+  }).to.not.throw();
+
+  expect(() => {
     UserExternalId.fromJson({
       provider: "provider",
       externalId: "externalId",
@@ -102,8 +102,9 @@ test("validate models", (t) => {
       url: null,
       imageUrl: null,
     });
-  });
-  t.notThrows(() => {
+  }).to.not.throw();
+
+  expect(() => {
     UserExternalId.fromJson({
       provider: "provider",
       externalId: "externalId",
@@ -111,10 +112,12 @@ test("validate models", (t) => {
       url: "url",
       imageUrl: "imageUrl",
     });
-  });
+  }).to.not.throw();
 });
 
-test("automatically populate createdAt", async (t) => {
+test("automatically populate createdAt", async (ctx) => {
+  ctx.mock.timers.enable({ apis: ["Date"], now });
+
   const user = await User.query().insertGraph({
     email: "user0@keybr.com",
     name: "user0",
@@ -129,11 +132,13 @@ test("automatically populate createdAt", async (t) => {
     ],
   });
 
-  t.deepEqual(user.createdAt, now);
-  t.deepEqual(user.externalIds![0].createdAt, now);
+  assert.deepStrictEqual(user.createdAt, now);
+  assert.deepStrictEqual(user.externalIds![0].createdAt, now);
 });
 
-test("generate unique user name", async (t) => {
+test("generate unique user name", async (ctx) => {
+  ctx.mock.timers.enable({ apis: ["Date"], now });
+
   await User.query().insertGraph({
     email: `test@keybr.com`,
     name: `test`,
@@ -152,30 +157,53 @@ test("generate unique user name", async (t) => {
     createdAt: now,
   });
 
-  t.is(await User.findUniqueName(null, "x".repeat(100)), "x".repeat(32));
-  t.is(
+  assert.strictEqual(
+    await User.findUniqueName(null, "x".repeat(100)),
+    "x".repeat(32),
+  );
+  assert.strictEqual(
     await User.findUniqueName(null, "x".repeat(100) + "@keybr.com"),
     "x".repeat(32),
   );
-  t.is(await User.findUniqueName(null, "unique"), "unique");
-  t.is(await User.findUniqueName(null, "unique@keybr.com"), "unique");
-  t.is(await User.findUniqueName(null, "test"), "test10");
-  t.is(await User.findUniqueName(null, "test@keybr.com"), "test10");
-  t.is(await User.findUniqueName("test@keybr.com", "test"), "test");
-  t.is(await User.findUniqueName("test@keybr.com", "test@keybr.com"), "test");
-  t.is(await User.findUniqueName(null, "test10"), "test10");
-  t.is(await User.findUniqueName(null, "test10@keybr.com"), "test10");
-  t.is(await User.findUniqueName("test@keybr.com", "example"), "example1");
-  t.is(
+  assert.strictEqual(await User.findUniqueName(null, "unique"), "unique");
+  assert.strictEqual(
+    await User.findUniqueName(null, "unique@keybr.com"),
+    "unique",
+  );
+  assert.strictEqual(await User.findUniqueName(null, "test"), "test10");
+  assert.strictEqual(
+    await User.findUniqueName(null, "test@keybr.com"),
+    "test10",
+  );
+  assert.strictEqual(
+    await User.findUniqueName("test@keybr.com", "test"),
+    "test",
+  );
+  assert.strictEqual(
+    await User.findUniqueName("test@keybr.com", "test@keybr.com"),
+    "test",
+  );
+  assert.strictEqual(await User.findUniqueName(null, "test10"), "test10");
+  assert.strictEqual(
+    await User.findUniqueName(null, "test10@keybr.com"),
+    "test10",
+  );
+  assert.strictEqual(
+    await User.findUniqueName("test@keybr.com", "example"),
+    "example1",
+  );
+  assert.strictEqual(
     await User.findUniqueName("test@keybr.com", "example@keybr.com"),
     "example1",
   );
 });
 
-test("create user from resource owner with null values", async (t) => {
+test("create user from resource owner with null values", async (ctx) => {
+  ctx.mock.timers.enable({ apis: ["Date"], now });
+
   const email = "example1@keybr.com";
 
-  t.deepEqual(
+  assert.deepStrictEqual(
     (
       await User.ensure({
         raw: {},
@@ -205,14 +233,16 @@ test("create user from resource owner with null values", async (t) => {
           imageUrl: null,
         },
       ],
-    },
+    } as unknown,
   );
 });
 
-test("create user from resource owner with non-null values", async (t) => {
+test("create user from resource owner with non-null values", async (ctx) => {
+  ctx.mock.timers.enable({ apis: ["Date"], now });
+
   const email = "example1@keybr.com";
 
-  t.deepEqual(
+  assert.deepStrictEqual(
     (
       await User.ensure({
         raw: {},
@@ -242,14 +272,16 @@ test("create user from resource owner with non-null values", async (t) => {
           imageUrl: "imageUrl1",
         },
       ],
-    },
+    } as unknown,
   );
 });
 
-test("create user from resource owner with invalid values", async (t) => {
+test("create user from resource owner with invalid values", async (ctx) => {
+  ctx.mock.timers.enable({ apis: ["Date"], now });
+
   const email = "example1@keybr.com";
 
-  t.deepEqual(
+  assert.deepStrictEqual(
     (
       await User.ensure({
         raw: {},
@@ -279,11 +311,13 @@ test("create user from resource owner with invalid values", async (t) => {
           imageUrl: null,
         },
       ],
-    },
+    } as unknown,
   );
 });
 
-test("update user from resource owner with null values", async (t) => {
+test("update user from resource owner with null values", async (ctx) => {
+  ctx.mock.timers.enable({ apis: ["Date"], now });
+
   const email = "example1@keybr.com";
 
   await User.query().insertGraph({
@@ -292,7 +326,7 @@ test("update user from resource owner with null values", async (t) => {
     createdAt: now,
   });
 
-  t.deepEqual(
+  assert.deepStrictEqual(
     (
       await User.ensure({
         raw: {},
@@ -323,11 +357,13 @@ test("update user from resource owner with null values", async (t) => {
         },
       ],
       order: null,
-    },
+    } as unknown,
   );
 });
 
-test("update user from resource owner with non-null values", async (t) => {
+test("update user from resource owner with non-null values", async (ctx) => {
+  ctx.mock.timers.enable({ apis: ["Date"], now });
+
   const email = "example1@keybr.com";
 
   await User.query().insertGraph({
@@ -336,7 +372,7 @@ test("update user from resource owner with non-null values", async (t) => {
     createdAt: now,
   });
 
-  t.deepEqual(
+  assert.deepStrictEqual(
     (
       await User.ensure({
         raw: {},
@@ -367,10 +403,10 @@ test("update user from resource owner with non-null values", async (t) => {
         },
       ],
       order: null,
-    },
+    } as unknown,
   );
 
-  t.deepEqual(
+  assert.deepStrictEqual(
     (
       await User.ensure({
         raw: {},
@@ -401,11 +437,13 @@ test("update user from resource owner with non-null values", async (t) => {
         },
       ],
       order: null,
-    },
+    } as unknown,
   );
 });
 
-test("update user from resource owner with invalid values", async (t) => {
+test("update user from resource owner with invalid values", async (ctx) => {
+  ctx.mock.timers.enable({ apis: ["Date"], now });
+
   const email = "example1@keybr.com";
 
   await User.query().insertGraph({
@@ -414,7 +452,7 @@ test("update user from resource owner with invalid values", async (t) => {
     createdAt: now,
   });
 
-  t.deepEqual(
+  assert.deepStrictEqual(
     (
       await User.ensure({
         raw: {},
@@ -445,10 +483,10 @@ test("update user from resource owner with invalid values", async (t) => {
         },
       ],
       order: null,
-    },
+    } as unknown,
   );
 
-  t.deepEqual(
+  assert.deepStrictEqual(
     (
       await User.ensure({
         raw: {},
@@ -479,14 +517,16 @@ test("update user from resource owner with invalid values", async (t) => {
         },
       ],
       order: null,
-    },
+    } as unknown,
   );
 });
 
-test("merge multiple resource owners", async (t) => {
+test("merge multiple resource owners", async (ctx) => {
+  ctx.mock.timers.enable({ apis: ["Date"], now });
+
   const email = "example1@keybr.com";
 
-  t.deepEqual(
+  assert.deepStrictEqual(
     (
       await User.ensure({
         raw: {},
@@ -517,10 +557,10 @@ test("merge multiple resource owners", async (t) => {
         },
       ],
       // order: null,
-    },
+    } as unknown,
   );
 
-  t.deepEqual(
+  assert.deepStrictEqual(
     (
       await User.ensure({
         raw: {},
@@ -561,12 +601,14 @@ test("merge multiple resource owners", async (t) => {
         },
       ],
       order: null,
-    },
+    } as unknown,
   );
 });
 
-test.skip("handle email change", async (t) => {
-  t.deepEqual(
+test.skip("handle email change", async (ctx) => {
+  ctx.mock.timers.enable({ apis: ["Date"], now });
+
+  assert.deepStrictEqual(
     (
       await User.ensure({
         raw: {},
@@ -596,10 +638,10 @@ test.skip("handle email change", async (t) => {
         },
       ],
       order: null,
-    },
+    } as unknown,
   );
 
-  t.deepEqual(
+  assert.deepStrictEqual(
     (
       await User.ensure({
         raw: {},
@@ -629,18 +671,20 @@ test.skip("handle email change", async (t) => {
         },
       ],
       order: null,
-    },
+    } as unknown,
   );
 });
 
-test("generates unique name for resource owner", async (t) => {
+test("generates unique name for resource owner", async (ctx) => {
+  ctx.mock.timers.enable({ apis: ["Date"], now });
+
   await User.query().insertGraph({
     email: "example1@keybr.com",
     name: "name",
     createdAt: now,
   });
 
-  t.deepEqual(
+  assert.deepStrictEqual(
     (
       await User.ensure({
         raw: {},
@@ -671,18 +715,20 @@ test("generates unique name for resource owner", async (t) => {
         },
       ],
       // order: null,
-    },
+    } as unknown,
   );
 });
 
-test("make premium user", async (t) => {
+test("make premium user", async (ctx) => {
+  ctx.mock.timers.enable({ apis: ["Date"], now });
+
   const user = await User.query().insertGraph({
     email: "user0@keybr.com",
     name: "user0",
     externalIds: [],
   });
 
-  t.like(User.toPublicUser(await User.findById(user.id!), ""), {
+  expect(User.toPublicUser(await User.findById(user.id!), "")).to.be.like({
     premium: false,
   });
 
@@ -694,18 +740,23 @@ test("make premium user", async (t) => {
     email: null,
   });
 
-  t.like(User.toPublicUser(await User.findById(user.id!), ""), {
+  expect(User.toPublicUser(await User.findById(user.id!), "")).to.be.like({
     premium: true,
   });
 });
 
-test("create access token", async (t) => {
+test("create access token", async (ctx) => {
+  ctx.mock.timers.enable({ apis: ["Date"], now });
+
   // Should create a new access token.
 
   Random.string = () => "token1";
-  t.is(await UserLoginRequest.init("example1@keybr.com"), "token1");
-  t.is(await User.findByEmail("example1@keybr.com"), null);
-  t.deepEqual(
+  assert.strictEqual(
+    await UserLoginRequest.init("example1@keybr.com"),
+    "token1",
+  );
+  assert.isNull(await User.findByEmail("example1@keybr.com"));
+  assert.deepStrictEqual(
     (await UserLoginRequest.findByEmail("example1@keybr.com"))!.toJSON(),
     {
       id: 1,
@@ -718,9 +769,12 @@ test("create access token", async (t) => {
   // Should reuse an existing access token.
 
   Random.string = () => "tokenX";
-  t.is(await UserLoginRequest.init("example1@keybr.com"), "token1");
-  t.is(await User.findByEmail("example1@keybr.com"), null);
-  t.deepEqual(
+  assert.strictEqual(
+    await UserLoginRequest.init("example1@keybr.com"),
+    "token1",
+  );
+  assert.strictEqual(await User.findByEmail("example1@keybr.com"), null);
+  assert.deepStrictEqual(
     (await UserLoginRequest.findByEmail("example1@keybr.com"))!.toJSON(),
     {
       id: 1,
@@ -731,36 +785,46 @@ test("create access token", async (t) => {
   );
 });
 
-test("delete expired access token", async (t) => {
-  Random.string = () => "token1";
-  t.is(await UserLoginRequest.init("example1@keybr.com"), "token1");
+test("delete expired access token", async (ctx) => {
+  ctx.mock.timers.enable({ apis: ["Date"], now });
 
-  t.not(await UserLoginRequest.findByEmail("example1@keybr.com"), null);
-  t.not(await UserLoginRequest.findByAccessToken("token1"), null);
+  Random.string = () => "token1";
+  assert.strictEqual(
+    await UserLoginRequest.init("example1@keybr.com"),
+    "token1",
+  );
+
+  assert.isNotNull(await UserLoginRequest.findByEmail("example1@keybr.com"));
+  assert.isNotNull(await UserLoginRequest.findByAccessToken("token1"));
 
   await UserLoginRequest.deleteExpired(
     now.getTime() + UserLoginRequest.expireTime + 1000,
   );
 
-  t.is(await UserLoginRequest.findByEmail("example1@keybr.com"), null);
-  t.is(await UserLoginRequest.findByAccessToken("token1"), null);
+  assert.isNull(await UserLoginRequest.findByEmail("example1@keybr.com"));
+  assert.isNull(await UserLoginRequest.findByAccessToken("token1"));
 });
 
-test("login with a valid access token", async (t) => {
+test("login with a valid access token", async (ctx) => {
+  ctx.mock.timers.enable({ apis: ["Date"], now });
+
   Random.string = () => "token1";
 
   // Should create a new access token.
 
-  t.is(await UserLoginRequest.init("example1@keybr.com"), "token1");
+  assert.strictEqual(
+    await UserLoginRequest.init("example1@keybr.com"),
+    "token1",
+  );
 
-  // Before first login.
+  // Before the first login.
 
-  t.is(await User.findByEmail("example1@keybr.com"), null);
-  t.not(await UserLoginRequest.findByEmail("example1@keybr.com"), null);
+  assert.isNull(await User.findByEmail("example1@keybr.com"));
+  assert.isNotNull(await UserLoginRequest.findByEmail("example1@keybr.com"));
 
   // First login.
 
-  t.deepEqual((await UserLoginRequest.login("token1"))!.toJSON(), {
+  assert.deepStrictEqual((await UserLoginRequest.login("token1"))!.toJSON(), {
     id: 4,
     createdAt: now,
     email: "example1@keybr.com",
@@ -768,16 +832,16 @@ test("login with a valid access token", async (t) => {
     anonymized: 0,
     externalIds: [],
     order: null,
-  });
+  } as unknown);
 
   // Should create a new user after login.
 
-  t.not(await User.findByEmail("example1@keybr.com"), null);
-  t.not(await UserLoginRequest.findByEmail("example1@keybr.com"), null);
+  assert.isNotNull(await User.findByEmail("example1@keybr.com"));
+  assert.isNotNull(await UserLoginRequest.findByEmail("example1@keybr.com"));
 
   // Second login.
 
-  t.deepEqual((await UserLoginRequest.login("token1"))!.toJSON(), {
+  assert.deepStrictEqual((await UserLoginRequest.login("token1"))!.toJSON(), {
     id: 4,
     createdAt: now,
     email: "example1@keybr.com",
@@ -785,42 +849,48 @@ test("login with a valid access token", async (t) => {
     anonymized: 0,
     externalIds: [],
     order: null,
-  });
+  } as unknown);
 
   // Should load an existing user after login.
 
-  t.not(await User.findByEmail("example1@keybr.com"), null);
-  t.not(await UserLoginRequest.findByEmail("example1@keybr.com"), null);
+  assert.isNotNull(await User.findByEmail("example1@keybr.com"));
+  assert.isNotNull(await UserLoginRequest.findByEmail("example1@keybr.com"));
 });
 
-test("ignore invalid access token", async (t) => {
+test("ignore invalid access token", async (ctx) => {
+  ctx.mock.timers.enable({ apis: ["Date"], now });
+
   Random.string = () => "token1";
 
-  t.is(await UserLoginRequest.login("token1"), null);
-  t.is(await UserLoginRequest.login("abc"), null);
-  t.is(await UserLoginRequest.login("xyz"), null);
+  assert.isNull(await UserLoginRequest.login("token1"));
+  assert.isNull(await UserLoginRequest.login("abc"));
+  assert.isNull(await UserLoginRequest.login("xyz"));
 });
 
-test("access token should be case-sensitive", async (t) => {
+test("access token should be case-sensitive", async (ctx) => {
+  ctx.mock.timers.enable({ apis: ["Date"], now });
+
   await UserLoginRequest.query().insertGraph({
     email: "test@keybr.com",
     accessToken: "token",
     createdAt: now,
   });
 
-  t.not(await UserLoginRequest.findByAccessToken("token"), null);
-  t.is(await UserLoginRequest.findByAccessToken("TOKEN"), null);
+  assert.isNotNull(await UserLoginRequest.findByAccessToken("token"));
+  assert.isNull(await UserLoginRequest.findByAccessToken("TOKEN"));
 });
 
-test("load profile owner", async (t) => {
-  t.is(await User.loadProfileOwner(new PublicId(999)), null);
-  t.deepEqual(await User.loadProfileOwner(PublicId.of("example1")), {
+test("load profile owner", async (ctx) => {
+  ctx.mock.timers.enable({ apis: ["Date"], now });
+
+  assert.isNull(await User.loadProfileOwner(new PublicId(999)));
+  assert.deepStrictEqual(await User.loadProfileOwner(PublicId.of("example1")), {
     id: "example1",
     name: "Example User 1",
     imageUrl: null,
     premium: false,
   });
-  t.deepEqual(await User.loadProfileOwner(new PublicId(1)), {
+  assert.deepStrictEqual(await User.loadProfileOwner(new PublicId(1)), {
     id: "55vdtk1",
     name: "externalName1",
     imageUrl: "imageUrl1",
@@ -828,42 +898,51 @@ test("load profile owner", async (t) => {
   });
 });
 
-test("convert to user details", async (t) => {
-  t.deepEqual((await User.findByEmail("user1@keybr.com"))?.toDetails(), {
-    id: "55vdtk1",
-    email: "user1@keybr.com",
-    name: "user1",
-    anonymized: false,
-    externalId: [
-      {
-        provider: "provider1",
-        id: "externalId1",
-        name: "externalName1",
-        url: "url1",
-        imageUrl: "imageUrl1",
-        createdAt: new Date("2001-02-03T04:05:06Z"),
-      },
-    ],
-    order: null,
-    createdAt: now,
-  });
+test("convert to user details", async (ctx) => {
+  ctx.mock.timers.enable({ apis: ["Date"], now });
+
+  assert.deepStrictEqual(
+    (await User.findByEmail("user1@keybr.com"))?.toDetails(),
+    {
+      id: "55vdtk1",
+      email: "user1@keybr.com",
+      name: "user1",
+      anonymized: false,
+      externalId: [
+        {
+          provider: "provider1",
+          id: "externalId1",
+          name: "externalName1",
+          url: "url1",
+          imageUrl: "imageUrl1",
+          createdAt: new Date("2001-02-03T04:05:06Z"),
+        },
+      ],
+      order: null,
+      createdAt: now,
+    },
+  );
 });
 
-test("make public user for anonymous", (t) => {
-  t.deepEqual(User.toPublicUser(null, "hint1"), {
+test("make public user for anonymous", (ctx) => {
+  ctx.mock.timers.enable({ apis: ["Date"], now });
+
+  assert.deepStrictEqual(User.toPublicUser(null, "hint1"), {
     id: null,
     name: "Suspicious Silverfish",
     imageUrl: null,
   });
-  t.deepEqual(User.toPublicUser(null, "hint2"), {
+  assert.deepStrictEqual(User.toPublicUser(null, "hint2"), {
     id: null,
     name: "Suspicious Skink",
     imageUrl: null,
   });
 });
 
-test("make public user from user name", (t) => {
-  t.deepEqual(
+test("make public user from user name", (ctx) => {
+  ctx.mock.timers.enable({ apis: ["Date"], now });
+
+  assert.deepStrictEqual(
     User.toPublicUser(
       User.fromJson({
         id: 1,
@@ -884,8 +963,10 @@ test("make public user from user name", (t) => {
   );
 });
 
-test("make public user from external user id", (t) => {
-  t.deepEqual(
+test("make public user from external user id", (ctx) => {
+  ctx.mock.timers.enable({ apis: ["Date"], now });
+
+  assert.deepStrictEqual(
     User.toPublicUser(
       User.fromJson({
         id: 1,
@@ -914,7 +995,7 @@ test("make public user from external user id", (t) => {
       premium: false,
     },
   );
-  t.deepEqual(
+  assert.deepStrictEqual(
     User.toPublicUser(
       User.fromJson({
         id: 1,
@@ -945,8 +1026,10 @@ test("make public user from external user id", (t) => {
   );
 });
 
-test("make public user with anonymous name", (t) => {
-  t.deepEqual(
+test("make public user with anonymous name", (ctx) => {
+  ctx.mock.timers.enable({ apis: ["Date"], now });
+
+  assert.deepStrictEqual(
     User.toPublicUser(
       User.fromJson({
         id: 1,
@@ -965,7 +1048,7 @@ test("make public user with anonymous name", (t) => {
       premium: false,
     },
   );
-  t.deepEqual(
+  assert.deepStrictEqual(
     User.toPublicUser(
       User.fromJson({
         id: 1,
@@ -986,8 +1069,10 @@ test("make public user with anonymous name", (t) => {
   );
 });
 
-test("parse resource owner", (t) => {
-  t.deepEqual(
+test("parse resource owner", (ctx) => {
+  ctx.mock.timers.enable({ apis: ["Date"], now });
+
+  assert.deepStrictEqual(
     User.parseResourceOwner({
       raw: { x: 1 },
       provider: "provider1",
@@ -1007,7 +1092,7 @@ test("parse resource owner", (t) => {
       imageUrl: "imageUrl",
     },
   );
-  t.deepEqual(
+  assert.deepStrictEqual(
     User.parseResourceOwner({
       raw: { x: 1 },
       provider: "provider1",
@@ -1027,7 +1112,7 @@ test("parse resource owner", (t) => {
       imageUrl: null,
     },
   );
-  t.deepEqual(
+  assert.deepStrictEqual(
     User.parseResourceOwner({
       raw: { x: 1 },
       provider: "provider1",

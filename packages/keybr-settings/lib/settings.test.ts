@@ -1,34 +1,35 @@
-import test from "ava";
+import { test } from "node:test";
+import { assert } from "chai";
 import { stringProp } from "./props.ts";
 import { Settings } from "./settings.ts";
 
-test("validate arguments", (t) => {
+test("validate arguments", () => {
   // @ts-expect-error Test invalid arguments.
-  t.throws(() => new Settings(null));
+  assert.throws(() => new Settings(null));
   // @ts-expect-error Test invalid arguments.
-  t.throws(() => new Settings([]));
+  assert.throws(() => new Settings([]));
   // @ts-expect-error Test invalid arguments.
-  t.throws(() => new Settings(new Map()));
+  assert.throws(() => new Settings(new Map()));
 });
 
-test("defaults", (t) => {
+test("defaults", () => {
   const a = stringProp("prop.a", "a");
   const b = stringProp("prop.b", "b");
   const c = stringProp("prop.c", "c");
 
-  t.is(new Settings().get(a), "a");
-  t.is(new Settings().get(b), "b");
-  t.is(new Settings().get(c), "c");
+  assert.strictEqual(new Settings().get(a), "a");
+  assert.strictEqual(new Settings().get(b), "b");
+  assert.strictEqual(new Settings().get(c), "c");
 
   Settings.addDefaults(new Settings().set(a, "a0"));
   Settings.addDefaults(new Settings().set(b, "b0"));
   Settings.addDefaults(new Settings().set(a, "a1"));
 
-  t.is(new Settings().get(a), "a1");
-  t.is(new Settings().get(b), "b0");
-  t.is(new Settings().get(c), "c");
+  assert.strictEqual(new Settings().get(a), "a1");
+  assert.strictEqual(new Settings().get(b), "b0");
+  assert.strictEqual(new Settings().get(c), "c");
 
-  t.deepEqual(
+  assert.deepStrictEqual(
     Object.keys(
       new Settings() //
         .set(b, "b0")
@@ -39,12 +40,12 @@ test("defaults", (t) => {
   );
 });
 
-test("to json sorts keys", (t) => {
+test("to json sorts keys", () => {
   const x = stringProp("prop.x", "x");
   const y = stringProp("prop.y", "y");
   const z = stringProp("prop.z", "z");
 
-  t.deepEqual(
+  assert.deepStrictEqual(
     Object.keys(
       new Settings() //
         .set(z, "3")

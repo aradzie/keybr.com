@@ -4,7 +4,6 @@ import { AccessToken } from "./token.ts";
 
 test("construct token from response", (ctx) => {
   ctx.mock.timers.enable({ apis: ["Date"] });
-
   ctx.mock.timers.setTime(Number(new Date("2001-02-03T04:05:06Z")));
 
   const token = new AccessToken({
@@ -26,7 +25,6 @@ test("construct token from response", (ctx) => {
 
 test("check expired", (ctx) => {
   ctx.mock.timers.enable({ apis: ["Date"] });
-
   ctx.mock.timers.setTime(Number(new Date("2001-01-01T00:00:00Z")));
 
   const token = new AccessToken({

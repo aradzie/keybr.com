@@ -1,33 +1,34 @@
+import { test } from "node:test";
 import { Layout } from "@keybr/keyboard";
-import test from "ava";
+import { assert } from "chai";
 import { ResultFaker } from "./fake.tsx";
 import { ResultGroups } from "./group.ts";
 import { LocalDate } from "./localdate.ts";
 
-test("group results by layout", (t) => {
+test("group results by layout", () => {
   const faker = new ResultFaker();
   const r1 = faker.nextResult({ layout: Layout.EN_US });
   const r2 = faker.nextResult({ layout: Layout.DE_DE });
 
   const map = new ResultGroups(({ layout }) => layout);
 
-  t.deepEqual([...map.keys()], []);
-  t.deepEqual([...map], []);
+  assert.deepStrictEqual([...map.keys()], []);
+  assert.deepStrictEqual([...map], []);
 
   map.get(Layout.EN_US);
 
-  t.deepEqual([...map.keys()], [Layout.EN_US]);
-  t.deepEqual([...map], [{ key: Layout.EN_US, results: [] }]);
+  assert.deepStrictEqual([...map.keys()], [Layout.EN_US]);
+  assert.deepStrictEqual([...map], [{ key: Layout.EN_US, results: [] }]);
 
   map.add(r1);
 
-  t.deepEqual([...map.keys()], [Layout.EN_US]);
-  t.deepEqual([...map], [{ key: Layout.EN_US, results: [r1] }]);
+  assert.deepStrictEqual([...map.keys()], [Layout.EN_US]);
+  assert.deepStrictEqual([...map], [{ key: Layout.EN_US, results: [r1] }]);
 
   map.add(r2);
 
-  t.deepEqual([...map.keys()], [Layout.EN_US, Layout.DE_DE]);
-  t.deepEqual(
+  assert.deepStrictEqual([...map.keys()], [Layout.EN_US, Layout.DE_DE]);
+  assert.deepStrictEqual(
     [...map],
     [
       { key: Layout.EN_US, results: [r1] },
@@ -36,7 +37,7 @@ test("group results by layout", (t) => {
   );
 });
 
-test("group results by date", (t) => {
+test("group results by date", () => {
   // Arrange.
 
   const faker = new ResultFaker();
@@ -59,7 +60,7 @@ test("group results by date", (t) => {
 
   // Assert.
 
-  t.deepEqual(
+  assert.deepStrictEqual(
     [...map.keys()],
     [
       new LocalDate(2001, 1, 1),
@@ -68,8 +69,8 @@ test("group results by date", (t) => {
     ],
   );
 
-  t.deepEqual(map.get(new LocalDate(2001, 1, 1)), [r1, r2]);
-  t.deepEqual(map.get(new LocalDate(2001, 1, 2)), [r3]);
-  t.deepEqual(map.get(new LocalDate(2001, 1, 3)), [r4]);
-  t.deepEqual(map.get(new LocalDate(2001, 1, 4)), []);
+  assert.deepStrictEqual(map.get(new LocalDate(2001, 1, 1)), [r1, r2]);
+  assert.deepStrictEqual(map.get(new LocalDate(2001, 1, 2)), [r3]);
+  assert.deepStrictEqual(map.get(new LocalDate(2001, 1, 3)), [r4]);
+  assert.deepStrictEqual(map.get(new LocalDate(2001, 1, 4)), []);
 });

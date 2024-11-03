@@ -1,20 +1,21 @@
+import { describe, it, test } from "node:test";
 import { Layout, loadKeyboard } from "@keybr/keyboard";
 import { FakePhoneticModel, Letter } from "@keybr/phonetic-model";
 import { makeKeyStatsMap } from "@keybr/result";
 import { Settings } from "@keybr/settings";
-import test from "ava";
+import { assert } from "chai";
 import { LessonKey } from "./key.ts";
 import { NumbersLesson } from "./numbers.ts";
 import { lessonProps } from "./settings.ts";
 
-test("provide key set", (t) => {
+test("provide key set", () => {
   const settings = new Settings();
   const keyboard = loadKeyboard(Layout.EN_US);
   const model = new FakePhoneticModel();
   const lesson = new NumbersLesson(settings, keyboard, model);
   const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
 
-  t.deepEqual(lessonKeys.findIncludedKeys(), [
+  assert.deepStrictEqual(lessonKeys.findIncludedKeys(), [
     new LessonKey({
       letter: Letter.digits[0],
       samples: [],
@@ -126,34 +127,34 @@ test("provide key set", (t) => {
       isForced: false,
     }),
   ]);
-  t.deepEqual(lessonKeys.findExcludedKeys(), []);
-  t.is(lessonKeys.findFocusedKey(), null);
+  assert.deepStrictEqual(lessonKeys.findExcludedKeys(), []);
+  assert.isNull(lessonKeys.findFocusedKey());
 });
 
-test("generate text using settings", (t) => {
-  {
+describe("generate text using settings", () => {
+  const keyboard = loadKeyboard(Layout.EN_US);
+
+  it("should generate using the Benford's law", () => {
     const settings = new Settings().set(lessonProps.numbers.benford, true);
-    const keyboard = loadKeyboard(Layout.EN_US);
     const model = new FakePhoneticModel();
     const lesson = new NumbersLesson(settings, keyboard, model);
     lesson.rng = model.rng;
 
-    t.is(
+    assert.strictEqual(
       lesson.generate(),
       "260 4036 260 4036 260 4036 260 4036 260 4036 260 4036 260 4036 260",
     );
-  }
+  });
 
-  {
+  it("should generate not using the Benford's law", () => {
     const settings = new Settings().set(lessonProps.numbers.benford, false);
-    const keyboard = loadKeyboard(Layout.EN_US);
     const model = new FakePhoneticModel();
     const lesson = new NumbersLesson(settings, keyboard, model);
     lesson.rng = model.rng;
 
-    t.is(
+    assert.strictEqual(
       lesson.generate(),
       "460 7036 460 7036 460 7036 460 7036 460 7036 460 7036 460 7036 460",
     );
-  }
+  });
 });

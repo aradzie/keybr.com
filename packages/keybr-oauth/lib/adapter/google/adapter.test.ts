@@ -21,7 +21,7 @@ const accessToken = new AccessToken({
   expires_in: 1000,
 });
 
-test("load user profile", async (t) => {
+test("load user profile", async () => {
   // Arrange.
 
   const raw: GoogleProfileResponse = {
@@ -54,7 +54,7 @@ test("load user profile", async (t) => {
   } satisfies ResourceOwner<GoogleProfileResponse>);
 });
 
-test("load minimal user profile", async (t) => {
+test("load minimal user profile", async () => {
   // Arrange.
 
   const raw: GoogleProfileResponse = {
@@ -80,7 +80,7 @@ test("load minimal user profile", async (t) => {
   } satisfies ResourceOwner<GoogleProfileResponse>);
 });
 
-test("handle errors", async (t) => {
+test("handle errors", async () => {
   // Arrange.
 
   useAdapter(

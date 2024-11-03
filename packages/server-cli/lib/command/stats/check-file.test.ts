@@ -1,7 +1,8 @@
+import { test } from "node:test";
 import { Writer } from "@keybr/binary";
 import { ResultFaker } from "@keybr/result";
 import { HEADER, writeResult } from "@keybr/result-io";
-import test from "ava";
+import { assert } from "chai";
 import { checkFile, type FileStatus } from "./check-file.ts";
 
 const faker = new ResultFaker();
@@ -10,7 +11,7 @@ const r1 = faker.nextResult();
 const r2 = faker.nextResult();
 const rx = faker.nextResult({ length: 0, time: 0 });
 
-test("check empty file", (t) => {
+test("check empty file", () => {
   // Arrange.
 
   const writer = new Writer();
@@ -22,14 +23,14 @@ test("check empty file", (t) => {
 
   // Assert.
 
-  t.deepEqual(status, {
+  assert.deepStrictEqual(status, {
     type: "bad",
     results: [],
     invalid: [],
   } satisfies FileStatus);
 });
 
-test("check invalid header", (t) => {
+test("check invalid header", () => {
   // Arrange.
 
   const writer = new Writer();
@@ -45,14 +46,14 @@ test("check invalid header", (t) => {
 
   // Assert.
 
-  t.deepEqual(status, {
+  assert.deepStrictEqual(status, {
     type: "bad",
     results: [],
     invalid: [],
   } satisfies FileStatus);
 });
 
-test("check empty data", (t) => {
+test("check empty data", () => {
   // Arrange.
 
   const writer = new Writer();
@@ -65,14 +66,14 @@ test("check empty data", (t) => {
 
   // Assert.
 
-  t.deepEqual(status, {
+  assert.deepStrictEqual(status, {
     type: "bad",
     results: [],
     invalid: [],
   } satisfies FileStatus);
 });
 
-test("check invalid data", (t) => {
+test("check invalid data", () => {
   // Arrange.
 
   const writer = new Writer();
@@ -89,14 +90,14 @@ test("check invalid data", (t) => {
 
   // Assert.
 
-  t.deepEqual(status, {
+  assert.deepStrictEqual(status, {
     type: "bad",
     results: [r0, r1, r2],
     invalid: [],
   } satisfies FileStatus);
 });
 
-test("check invalid results", (t) => {
+test("check invalid results", () => {
   // Arrange.
 
   const writer = new Writer();
@@ -113,14 +114,14 @@ test("check invalid results", (t) => {
 
   // Assert.
 
-  t.deepEqual(status, {
+  assert.deepStrictEqual(status, {
     type: "bad",
     results: [r0, r1, r2],
     invalid: [rx],
   } satisfies FileStatus);
 });
 
-test("check valid non-empty data", (t) => {
+test("check valid non-empty data", () => {
   // Arrange.
 
   const writer = new Writer();
@@ -136,7 +137,7 @@ test("check valid non-empty data", (t) => {
 
   // Assert.
 
-  t.deepEqual(status, {
+  assert.deepStrictEqual(status, {
     type: "good",
     results: [r0, r1, r2],
   } satisfies FileStatus);

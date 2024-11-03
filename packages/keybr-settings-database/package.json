@@ -13,19 +13,6 @@
   "scripts": {
     "clean": "rm -fr .types",
     "compile": "tsc",
-    "test": "ava"
-  },
-  "ava": {
-    "files": [
-      "lib/**/*.test.*"
-    ],
-    "extensions": {
-      "ts": "module",
-      "tsx": "module"
-    },
-    "nodeArguments": [
-      "--import=@keybr/tsl",
-      "--import=@keybr/test-env-server"
-    ]
+    "test": "node --import @keybr/tsl --import=@keybr/test-env-server --test 'lib/**/*.test.{ts,tsx}'"
   }
 }

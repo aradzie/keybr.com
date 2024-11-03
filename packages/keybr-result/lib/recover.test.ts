@@ -1,10 +1,11 @@
+import { test } from "node:test";
 import { Histogram } from "@keybr/textinput";
-import test from "ava";
+import { assert } from "chai";
 import { ResultFaker } from "./fake.tsx";
 import { recoverResults } from "./recover.ts";
 import { Result } from "./result.ts";
 
-test("recover results", (t) => {
+test("recover results", () => {
   const faker = new ResultFaker();
 
   const r1 = faker.nextResult({
@@ -30,29 +31,29 @@ test("recover results", (t) => {
   );
   const r2 = faker.nextResult();
 
-  t.false(r1.validate());
-  t.true(r1x.validate());
-  t.true(r2.validate());
+  assert.isFalse(r1.validate());
+  assert.isTrue(r1x.validate());
+  assert.isTrue(r2.validate());
 
-  t.deepEqual(recoverResults([]), []);
-  t.deepEqual(recoverResults([r1]), [r1x]);
-  t.deepEqual(recoverResults([r2]), [r2]);
-  t.deepEqual(recoverResults([r1, r2]), [r1x, r2]);
+  assert.deepStrictEqual(recoverResults([]), []);
+  assert.deepStrictEqual(recoverResults([r1]), [r1x]);
+  assert.deepStrictEqual(recoverResults([r2]), [r2]);
+  assert.deepStrictEqual(recoverResults([r1, r2]), [r1x, r2]);
 });
 
-test("fail to recover results", (t) => {
+test("fail to recover results", () => {
   const faker = new ResultFaker();
 
   const r1 = faker.nextResult({ histogram: new Histogram([]) });
   const r2 = faker.nextResult({ length: 0, time: 0 });
   const r3 = faker.nextResult();
 
-  t.false(r1.validate());
-  t.false(r2.validate());
-  t.true(r3.validate());
+  assert.isFalse(r1.validate());
+  assert.isFalse(r2.validate());
+  assert.isTrue(r3.validate());
 
-  t.deepEqual(recoverResults([]), []);
-  t.deepEqual(recoverResults([r1]), []);
-  t.deepEqual(recoverResults([r2]), []);
-  t.deepEqual(recoverResults([r1, r2, r3]), [r3]);
+  assert.deepStrictEqual(recoverResults([]), []);
+  assert.deepStrictEqual(recoverResults([r1]), []);
+  assert.deepStrictEqual(recoverResults([r2]), []);
+  assert.deepStrictEqual(recoverResults([r1, r2, r3]), [r3]);
 });

@@ -1,21 +1,22 @@
+import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { render } from "@testing-library/react";
-import test from "ava";
+import { assert } from "chai";
 import { Avatar } from "./Avatar.tsx";
 
-test.serial("render anonymous user without image", (t) => {
+test("render anonymous user without image", () => {
   const r = render(
     <FakeIntlProvider>
       <Avatar user={null} />
     </FakeIntlProvider>,
   );
 
-  t.not(r.container.querySelector(".root"), null);
+  assert.isNotNull(r.container.querySelector(".root"));
 
   r.unmount();
 });
 
-test.serial("render anonymous user with identicon", (t) => {
+test("render anonymous user with identicon", () => {
   const r = render(
     <FakeIntlProvider>
       <Avatar
@@ -28,12 +29,12 @@ test.serial("render anonymous user with identicon", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.not(r.container.querySelector(".root"), null);
+  assert.isNotNull(r.container.querySelector(".root"));
 
   r.unmount();
 });
 
-test.serial("render named user with identicon", (t) => {
+test("render named user with identicon", () => {
   const r = render(
     <FakeIntlProvider>
       <Avatar
@@ -47,12 +48,12 @@ test.serial("render named user with identicon", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.not(r.container.querySelector(".root"), null);
+  assert.isNotNull(r.container.querySelector(".root"));
 
   r.unmount();
 });
 
-test.serial("render named user with custom image", (t) => {
+test("render named user with custom image", () => {
   const r = render(
     <FakeIntlProvider>
       <Avatar
@@ -66,7 +67,7 @@ test.serial("render named user with custom image", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.not(r.container.querySelector(".root"), null);
+  assert.isNotNull(r.container.querySelector(".root"));
 
   r.unmount();
 });

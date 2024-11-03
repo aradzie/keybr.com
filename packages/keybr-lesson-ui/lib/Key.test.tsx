@@ -1,76 +1,77 @@
+import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { LessonKey } from "@keybr/lesson";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { FakeSettingsContext } from "@keybr/settings";
 import { render } from "@testing-library/react";
-import test from "ava";
+import { assert } from "chai";
 import { Key } from "./Key.tsx";
 
-test.serial("render excluded", (t) => {
-  const lessonKey = new LessonKey({
-    letter: FakePhoneticModel.letter1,
-    samples: [],
-    timeToType: null,
-    bestTimeToType: null,
-    confidence: null,
-    bestConfidence: null,
-  }).asExcluded();
-
+test("render excluded", () => {
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
-        <Key lessonKey={lessonKey} />
+        <Key
+          lessonKey={new LessonKey({
+            letter: FakePhoneticModel.letter1,
+            samples: [],
+            timeToType: null,
+            bestTimeToType: null,
+            confidence: null,
+            bestConfidence: null,
+          }).asExcluded()}
+        />
       </FakeSettingsContext>
     </FakeIntlProvider>,
   );
 
-  t.not(r.container.querySelector(".lessonKey_excluded"), null);
+  assert.isNotNull(r.container.querySelector(".lessonKey_excluded"));
 
   r.unmount();
 });
 
-test.serial("render included", (t) => {
-  const lessonKey = new LessonKey({
-    letter: FakePhoneticModel.letter1,
-    samples: [],
-    timeToType: null,
-    bestTimeToType: null,
-    confidence: null,
-    bestConfidence: null,
-  }).asIncluded();
-
+test("render included", () => {
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
-        <Key lessonKey={lessonKey} />
+        <Key
+          lessonKey={new LessonKey({
+            letter: FakePhoneticModel.letter1,
+            samples: [],
+            timeToType: null,
+            bestTimeToType: null,
+            confidence: null,
+            bestConfidence: null,
+          }).asIncluded()}
+        />
       </FakeSettingsContext>
     </FakeIntlProvider>,
   );
 
-  t.not(r.container.querySelector(".lessonKey_included"), null);
+  assert.isNotNull(r.container.querySelector(".lessonKey_included"));
 
   r.unmount();
 });
 
-test.serial("render focused", (t) => {
-  const lessonKey = new LessonKey({
-    letter: FakePhoneticModel.letter1,
-    samples: [],
-    timeToType: null,
-    bestTimeToType: null,
-    confidence: null,
-    bestConfidence: null,
-  }).asFocused();
-
+test("render focused", () => {
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
-        <Key lessonKey={lessonKey} />
+        <Key
+          lessonKey={new LessonKey({
+            letter: FakePhoneticModel.letter1,
+            samples: [],
+            timeToType: null,
+            bestTimeToType: null,
+            confidence: null,
+            bestConfidence: null,
+          }).asFocused()}
+        />
       </FakeSettingsContext>
     </FakeIntlProvider>,
   );
 
-  t.not(r.container.querySelector(".lessonKey_focused"), null);
+  assert.isNotNull(r.container.querySelector(".lessonKey_focused"));
 
   r.unmount();
 });

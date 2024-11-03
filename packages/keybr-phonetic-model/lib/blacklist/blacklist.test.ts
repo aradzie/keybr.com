@@ -1,18 +1,19 @@
+import { test } from "node:test";
 import { Language } from "@keybr/keyboard";
-import test from "ava";
+import { assert } from "chai";
 import { getBlacklist } from "./blacklist.ts";
 
-test("forbid blacklisted words", (t) => {
+test("forbid blacklisted words", () => {
   const en = getBlacklist(Language.EN);
   const be = getBlacklist(Language.BE);
 
-  t.true(en.allow("LOVE"));
-  t.true(en.allow("love"));
-  t.false(en.allow("FUCK"));
-  t.false(en.allow("fuck"));
+  assert.isTrue(en.allow("LOVE"));
+  assert.isTrue(en.allow("love"));
+  assert.isFalse(en.allow("FUCK"));
+  assert.isFalse(en.allow("fuck"));
 
-  t.true(be.allow("LOVE"));
-  t.true(be.allow("love"));
-  t.true(be.allow("FUCK"));
-  t.true(be.allow("fuck"));
+  assert.isTrue(be.allow("LOVE"));
+  assert.isTrue(be.allow("love"));
+  assert.isTrue(be.allow("FUCK"));
+  assert.isTrue(be.allow("fuck"));
 });

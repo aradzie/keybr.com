@@ -1,11 +1,12 @@
+import { test } from "node:test";
 import { act, render } from "@testing-library/react";
-import test from "ava";
+import { assert } from "chai";
 import { memo, type ReactNode } from "react";
 import { withDeferred } from "./use-deferred.tsx";
 
 declare function flushAnimationFrames(): Promise<void>;
 
-test("render", async (t) => {
+test("render", async () => {
   let renderCount = 0;
 
   function TestChild({ a, b }: { a: string; b: string }): ReactNode {
@@ -26,21 +27,21 @@ test("render", async (t) => {
     await flushAnimationFrames();
   });
 
-  t.is(renderCount, 1);
-  t.is(r.getByTitle("1").textContent, "a1");
-  t.is(r.getByTitle("2").textContent, "b1");
+  assert.strictEqual(renderCount, 1);
+  assert.strictEqual(r.getByTitle("1").textContent, "a1");
+  assert.strictEqual(r.getByTitle("2").textContent, "b1");
 
   r.rerender(<DeferredTestChild a="a2" b="b2" />);
 
-  t.is(renderCount, 1);
-  t.is(r.getByTitle("1").textContent, "a1");
-  t.is(r.getByTitle("2").textContent, "b1");
+  assert.strictEqual(renderCount, 1);
+  assert.strictEqual(r.getByTitle("1").textContent, "a1");
+  assert.strictEqual(r.getByTitle("2").textContent, "b1");
 
   await act(async () => {
     await flushAnimationFrames();
   });
 
-  t.is(renderCount, 2);
-  t.is(r.getByTitle("1").textContent, "a2");
-  t.is(r.getByTitle("2").textContent, "b2");
+  assert.strictEqual(renderCount, 2);
+  assert.strictEqual(r.getByTitle("1").textContent, "a2");
+  assert.strictEqual(r.getByTitle("2").textContent, "b2");
 });

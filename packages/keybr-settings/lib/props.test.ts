@@ -1,5 +1,6 @@
+import { test } from "node:test";
 import { Enum, type EnumItem } from "@keybr/lang";
-import test from "ava";
+import { assert } from "chai";
 import {
   booleanProp,
   enumProp,
@@ -45,17 +46,17 @@ const props = {
   flags: flagsProp("prop.flags", ["a", "b", "c"]),
 } as const;
 
-test("change props", (t) => {
+test("change props", () => {
   let settings = new Settings();
 
-  t.is(settings.get(props.boolean), false);
-  t.is(settings.get(props.number), 0);
-  t.is(settings.get(props.string), "");
-  t.is(settings.get(props.enum), Letter.None);
-  t.is(settings.get(props.item), Digit.NONE);
-  t.deepEqual(settings.get(props.flags), ["a", "b", "c"]);
+  assert.strictEqual(settings.get(props.boolean), false);
+  assert.strictEqual(settings.get(props.number), 0);
+  assert.strictEqual(settings.get(props.string), "");
+  assert.strictEqual(settings.get(props.enum), Letter.None);
+  assert.strictEqual(settings.get(props.item), Digit.NONE);
+  assert.deepStrictEqual(settings.get(props.flags), ["a", "b", "c"]);
 
-  t.deepEqual(settings.toJSON(), {});
+  assert.deepStrictEqual(settings.toJSON(), {});
 
   settings = settings
     .set(props.boolean, true)
@@ -65,14 +66,14 @@ test("change props", (t) => {
     .set(props.item, Digit.ONE)
     .set(props.flags, ["a", "x"]);
 
-  t.is(settings.get(props.boolean), true);
-  t.is(settings.get(props.number), 100);
-  t.is(settings.get(props.string), "abc");
-  t.is(settings.get(props.enum), Letter.A);
-  t.is(settings.get(props.item), Digit.ONE);
-  t.deepEqual(settings.get(props.flags), ["a"]);
+  assert.strictEqual(settings.get(props.boolean), true);
+  assert.strictEqual(settings.get(props.number), 100);
+  assert.strictEqual(settings.get(props.string), "abc");
+  assert.strictEqual(settings.get(props.enum), Letter.A);
+  assert.strictEqual(settings.get(props.item), Digit.ONE);
+  assert.deepStrictEqual(settings.get(props.flags), ["a"]);
 
-  t.deepEqual(settings.toJSON(), {
+  assert.deepStrictEqual(settings.toJSON(), {
     "prop.boolean": true,
     "prop.number": 100,
     "prop.string": "abc",
@@ -82,58 +83,76 @@ test("change props", (t) => {
   });
 });
 
-test("read boolean", (t) => {
+test("read boolean", () => {
   const p = props.boolean;
-  t.is(new Settings().get(p), false);
-  t.is(new Settings({ [p.key]: null }).get(p), false);
-  t.is(new Settings({ [p.key]: "abc" }).get(p), false);
-  t.is(new Settings({ [p.key]: true }).get(p), true);
+  assert.strictEqual(new Settings().get(p), false);
+  assert.strictEqual(new Settings({ [p.key]: null }).get(p), false);
+  assert.strictEqual(new Settings({ [p.key]: "abc" }).get(p), false);
+  assert.strictEqual(new Settings({ [p.key]: true }).get(p), true);
 });
 
-test("read number", (t) => {
+test("read number", () => {
   const p = props.number;
-  t.is(new Settings().get(p), 0);
-  t.is(new Settings({ [p.key]: null }).get(p), 0);
-  t.is(new Settings({ [p.key]: "abc" }).get(p), 0);
-  t.is(new Settings({ [p.key]: 1000 }).get(p), 100);
-  t.is(new Settings({ [p.key]: 99 }).get(p), 99);
+  assert.strictEqual(new Settings().get(p), 0);
+  assert.strictEqual(new Settings({ [p.key]: null }).get(p), 0);
+  assert.strictEqual(new Settings({ [p.key]: "abc" }).get(p), 0);
+  assert.strictEqual(new Settings({ [p.key]: 1000 }).get(p), 100);
+  assert.strictEqual(new Settings({ [p.key]: 99 }).get(p), 99);
 });
 
-test("read string", (t) => {
+test("read string", () => {
   const p = props.string;
-  t.is(new Settings().get(p), "");
-  t.is(new Settings({ [p.key]: null }).get(p), "");
-  t.is(new Settings({ [p.key]: 123 }).get(p), "");
-  t.is(new Settings({ [p.key]: "abcxyz" }).get(p), "abc");
-  t.is(new Settings({ [p.key]: "123" }).get(p), "123");
+  assert.strictEqual(new Settings().get(p), "");
+  assert.strictEqual(new Settings({ [p.key]: null }).get(p), "");
+  assert.strictEqual(new Settings({ [p.key]: 123 }).get(p), "");
+  assert.strictEqual(new Settings({ [p.key]: "abcxyz" }).get(p), "abc");
+  assert.strictEqual(new Settings({ [p.key]: "123" }).get(p), "123");
 });
 
-test("read enum", (t) => {
+test("read enum", () => {
   const p = props.enum;
-  t.is(new Settings().get(p), Letter.None);
-  t.is(new Settings({ [p.key]: null }).get(p), Letter.None);
-  t.is(new Settings({ [p.key]: 123 }).get(p), Letter.None);
-  t.is(new Settings({ [p.key]: "abc" }).get(p), Letter.None);
-  t.is(new Settings({ [p.key]: "a" }).get(props.enum), Letter.A);
-  t.is(new Settings({ [p.key]: "b" }).get(props.enum), Letter.B);
+  assert.strictEqual(new Settings().get(p), Letter.None);
+  assert.strictEqual(new Settings({ [p.key]: null }).get(p), Letter.None);
+  assert.strictEqual(new Settings({ [p.key]: 123 }).get(p), Letter.None);
+  assert.strictEqual(new Settings({ [p.key]: "abc" }).get(p), Letter.None);
+  assert.strictEqual(new Settings({ [p.key]: "a" }).get(props.enum), Letter.A);
+  assert.strictEqual(new Settings({ [p.key]: "b" }).get(props.enum), Letter.B);
 });
 
-test("read item", (t) => {
+test("read item", () => {
   const p = props.item;
-  t.is(new Settings().get(p), Digit.NONE);
-  t.is(new Settings({ [p.key]: null }).get(p), Digit.NONE);
-  t.is(new Settings({ [p.key]: 123 }).get(p), Digit.NONE);
-  t.is(new Settings({ [p.key]: "abc" }).get(p), Digit.NONE);
-  t.is(new Settings({ [p.key]: "one" }).get(p), Digit.ONE);
-  t.is(new Settings({ [p.key]: "two" }).get(p), Digit.TWO);
+  assert.strictEqual(new Settings().get(p), Digit.NONE);
+  assert.strictEqual(new Settings({ [p.key]: null }).get(p), Digit.NONE);
+  assert.strictEqual(new Settings({ [p.key]: 123 }).get(p), Digit.NONE);
+  assert.strictEqual(new Settings({ [p.key]: "abc" }).get(p), Digit.NONE);
+  assert.strictEqual(new Settings({ [p.key]: "one" }).get(p), Digit.ONE);
+  assert.strictEqual(new Settings({ [p.key]: "two" }).get(p), Digit.TWO);
 });
 
-test("read flags", (t) => {
+test("read flags", () => {
   const p = props.flags;
-  t.deepEqual(new Settings().get(p), ["a", "b", "c"]);
-  t.deepEqual(new Settings({ [p.key]: null }).get(p), ["a", "b", "c"]);
-  t.deepEqual(new Settings({ [p.key]: 123 }).get(p), ["a", "b", "c"]);
-  t.deepEqual(new Settings({ [p.key]: "a" }).get(p), ["a"]);
-  t.deepEqual(new Settings({ [p.key]: "b" }).get(p), ["b"]);
-  t.deepEqual(new Settings({ [p.key]: "a,b,c,x" }).get(p), ["a", "b", "c"]);
+  assert.deepStrictEqual(
+    new Settings().get(p), //
+    ["a", "b", "c"],
+  );
+  assert.deepStrictEqual(
+    new Settings({ [p.key]: null }).get(p), //
+    ["a", "b", "c"],
+  );
+  assert.deepStrictEqual(
+    new Settings({ [p.key]: 123 }).get(p), //
+    ["a", "b", "c"],
+  );
+  assert.deepStrictEqual(
+    new Settings({ [p.key]: "a" }).get(p), //
+    ["a"],
+  );
+  assert.deepStrictEqual(
+    new Settings({ [p.key]: "b" }).get(p), //
+    ["b"],
+  );
+  assert.deepStrictEqual(
+    new Settings({ [p.key]: "a,b,c,x" }).get(p), //
+    ["a", "b", "c"],
+  );
 });

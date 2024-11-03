@@ -1,12 +1,13 @@
+import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { LessonKey } from "@keybr/lesson";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { FakeSettingsContext } from "@keybr/settings";
 import { render } from "@testing-library/react";
-import test from "ava";
+import { assert } from "chai";
 import { KeyDetails } from "./KeyDetails.tsx";
 
-test.serial("render uncalibrated", (t) => {
+test("render uncalibrated", () => {
   const lessonKey = new LessonKey({
     letter: FakePhoneticModel.letter1,
     samples: [],
@@ -24,13 +25,13 @@ test.serial("render uncalibrated", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.not(r.queryByText("Not calibrated, need more samples."), null);
-  t.is(r.queryByText("Learning rate:"), null);
+  assert.isNotNull(r.queryByText("Not calibrated, need more samples."));
+  assert.isNull(r.queryByText("Learning rate:"));
 
   r.unmount();
 });
 
-test.serial("render calibrated", (t) => {
+test("render calibrated", () => {
   const lessonKey = new LessonKey({
     letter: FakePhoneticModel.letter1,
     samples: [],
@@ -48,8 +49,8 @@ test.serial("render calibrated", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.is(r.queryByText("Not calibrated, need more samples."), null);
-  t.not(r.queryByText("Learning rate:"), null);
+  assert.isNull(r.queryByText("Not calibrated, need more samples."));
+  assert.isNotNull(r.queryByText("Learning rate:"));
 
   r.unmount();
 });

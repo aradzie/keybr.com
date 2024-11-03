@@ -1,13 +1,14 @@
+import { test } from "node:test";
 import { Letter } from "@keybr/phonetic-model";
 import { Histogram } from "@keybr/textinput";
-import test from "ava";
+import { assert } from "chai";
 import { ResultFaker } from "./fake.tsx";
 import { MutableMetric, MutableSummaryStats } from "./summarystats.ts";
 
-test("metric", (t) => {
+test("metric", () => {
   const metric = new MutableMetric();
 
-  t.deepEqual(metric.copy(), {
+  assert.deepStrictEqual(metric.copy(), {
     last: 0,
     delta: 0,
     max: 0,
@@ -17,7 +18,7 @@ test("metric", (t) => {
 
   metric.append(10);
 
-  t.deepEqual(metric.copy(), {
+  assert.deepStrictEqual(metric.copy(), {
     last: 10,
     delta: 10,
     max: 10,
@@ -27,7 +28,7 @@ test("metric", (t) => {
 
   metric.append(20);
 
-  t.deepEqual(metric.copy(), {
+  assert.deepStrictEqual(metric.copy(), {
     last: 20,
     delta: 10,
     max: 20,
@@ -37,7 +38,7 @@ test("metric", (t) => {
 
   metric.append(15);
 
-  t.deepEqual(metric.copy(), {
+  assert.deepStrictEqual(metric.copy(), {
     last: 15,
     delta: 0,
     max: 20,
@@ -46,7 +47,7 @@ test("metric", (t) => {
   });
 });
 
-test("summary stats", (t) => {
+test("summary stats", () => {
   const letter = new Letter(0x0061, 1, "A");
   const faker = new ResultFaker();
   const r1 = faker.nextResult({
@@ -78,7 +79,7 @@ test("summary stats", (t) => {
 
   const stats = new MutableSummaryStats();
 
-  t.deepEqual(stats.copy(), {
+  assert.deepStrictEqual(stats.copy(), {
     count: 0,
     time: 0,
     speed: { last: 0, delta: 0, max: 0, min: 0, avg: 0 },
@@ -88,7 +89,7 @@ test("summary stats", (t) => {
 
   stats.append(r1);
 
-  t.deepEqual(stats.copy(), {
+  assert.deepStrictEqual(stats.copy(), {
     count: 1,
     time: 5000,
     speed: { last: 600, delta: 600, max: 600, min: 600, avg: 600 },
@@ -98,7 +99,7 @@ test("summary stats", (t) => {
 
   stats.append(r2);
 
-  t.deepEqual(stats.copy(), {
+  assert.deepStrictEqual(stats.copy(), {
     count: 2,
     time: 15000,
     speed: { last: 300, delta: -300, max: 600, min: 300, avg: 450 },

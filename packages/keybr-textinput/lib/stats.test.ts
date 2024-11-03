@@ -1,4 +1,5 @@
-import test from "ava";
+import { test } from "node:test";
+import { assert } from "chai";
 import { Histogram } from "./histogram.ts";
 import { makeStats } from "./stats.ts";
 
@@ -8,7 +9,7 @@ const C = /* "c" */ 0x0063;
 const X = /* "x" */ 0x0078;
 const Space = /* SPACE */ 0x0020;
 
-test("compute stats", (t) => {
+test("compute stats", () => {
   const stats = makeStats([
     { timeStamp: 100.1, codePoint: X, timeToType: 900.1, typo: false }, // Trigger is ignored.
     { timeStamp: 200.1, codePoint: A, timeToType: 100.1, typo: false },
@@ -17,7 +18,7 @@ test("compute stats", (t) => {
     { timeStamp: 500.2, codePoint: Space, timeToType: 100.1, typo: true },
   ]);
 
-  t.deepEqual(stats, {
+  assert.deepStrictEqual(stats, {
     time: 400,
     speed: 750,
     length: 5,
@@ -32,10 +33,10 @@ test("compute stats", (t) => {
   });
 });
 
-test("compute accuracy", (t) => {
-  t.is(makeStats([]).accuracy, 0);
+test("compute accuracy", () => {
+  assert.strictEqual(makeStats([]).accuracy, 0);
 
-  t.is(
+  assert.strictEqual(
     makeStats([
       { timeStamp: 100, codePoint: X, timeToType: 900, typo: true }, // Trigger is ignored.
       { timeStamp: 200, codePoint: A, timeToType: 100, typo: true },
@@ -45,7 +46,7 @@ test("compute accuracy", (t) => {
     0,
   );
 
-  t.is(
+  assert.strictEqual(
     makeStats([
       { timeStamp: 100, codePoint: X, timeToType: 900, typo: false }, // Trigger is ignored.
       { timeStamp: 200, codePoint: A, timeToType: 100, typo: false },
@@ -55,7 +56,7 @@ test("compute accuracy", (t) => {
     0.5,
   );
 
-  t.is(
+  assert.strictEqual(
     makeStats([
       { timeStamp: 100, codePoint: X, timeToType: 900, typo: false }, // Trigger is ignored.
       { timeStamp: 200, codePoint: A, timeToType: 100, typo: false },

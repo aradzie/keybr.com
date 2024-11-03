@@ -1,6 +1,7 @@
+import { test } from "node:test";
 import { render } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import test from "ava";
+import { assert } from "chai";
 import { IntlProvider } from "react-intl";
 import { PortalContainer } from "../portal/Portal.tsx";
 import { Slide } from "./Slide.tsx";
@@ -12,7 +13,7 @@ test.before(() => {
   document.body.appendChild(container);
 });
 
-test.serial("empty tour", (t) => {
+test("empty tour", () => {
   const r = render(
     <IntlProvider locale="en">
       <div>
@@ -21,14 +22,14 @@ test.serial("empty tour", (t) => {
     </IntlProvider>,
   );
 
-  t.is(r.queryByText("Previous"), null);
-  t.is(r.queryByText("Next"), null);
-  t.not(r.queryByText("Close"), null);
+  assert.isNull(r.queryByText("Previous"));
+  assert.isNull(r.queryByText("Next"));
+  assert.isNotNull(r.queryByText("Close"));
 
   r.unmount();
 });
 
-test.serial("switch slides", async (t) => {
+test("switch slides", async () => {
   const r = render(
     <IntlProvider locale="en">
       <div>
@@ -45,11 +46,11 @@ test.serial("switch slides", async (t) => {
 
   // First slide.
 
-  t.is(r.queryByText("Previous"), null);
-  t.not(r.queryByText("Next"), null);
-  t.is(r.queryByText("Close"), null);
-  t.not(r.queryByText("One"), null);
-  t.is(r.queryByText("Two"), null);
+  assert.isNull(r.queryByText("Previous"));
+  assert.isNotNull(r.queryByText("Next"));
+  assert.isNull(r.queryByText("Close"));
+  assert.isNotNull(r.queryByText("One"));
+  assert.isNull(r.queryByText("Two"));
 
   // Click next.
 
@@ -57,11 +58,11 @@ test.serial("switch slides", async (t) => {
 
   // Second slide.
 
-  t.not(r.queryByText("Previous"), null);
-  t.is(r.queryByText("Next"), null);
-  t.not(r.queryByText("Close"), null);
-  t.is(r.queryByText("One"), null);
-  t.not(r.queryByText("Two"), null);
+  assert.isNotNull(r.queryByText("Previous"));
+  assert.isNull(r.queryByText("Next"));
+  assert.isNotNull(r.queryByText("Close"));
+  assert.isNull(r.queryByText("One"));
+  assert.isNotNull(r.queryByText("Two"));
 
   // Click prev.
 
@@ -69,11 +70,11 @@ test.serial("switch slides", async (t) => {
 
   // First slide.
 
-  t.is(r.queryByText("Previous"), null);
-  t.not(r.queryByText("Next"), null);
-  t.is(r.queryByText("Close"), null);
-  t.not(r.queryByText("One"), null);
-  t.is(r.queryByText("Two"), null);
+  assert.isNull(r.queryByText("Previous"));
+  assert.isNotNull(r.queryByText("Next"));
+  assert.isNull(r.queryByText("Close"));
+  assert.isNotNull(r.queryByText("One"));
+  assert.isNull(r.queryByText("Two"));
 
   r.unmount();
 });

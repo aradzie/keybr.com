@@ -1,4 +1,5 @@
-import test from "ava";
+import { test } from "node:test";
+import { assert } from "chai";
 import { Histogram } from "./histogram.ts";
 
 const A = /* "a" */ 0x0061;
@@ -6,14 +7,14 @@ const B = /* "b" */ 0x0062;
 const C = /* "c" */ 0x0063;
 const X = /* "x" */ 0x0078;
 
-test("empty histogram", (t) => {
+test("empty histogram", () => {
   const histogram = Histogram.from([]);
 
-  t.is(histogram.complexity, 0);
-  t.deepEqual([...histogram], []);
+  assert.strictEqual(histogram.complexity, 0);
+  assert.deepStrictEqual([...histogram], []);
 });
 
-test("histogram", (t) => {
+test("histogram", () => {
   const histogram = Histogram.from([
     { timeStamp: 100, codePoint: A, timeToType: 100.1, typo: false },
     { timeStamp: 200, codePoint: B, timeToType: 100.1, typo: false },
@@ -23,8 +24,8 @@ test("histogram", (t) => {
     { timeStamp: 801, codePoint: X, timeToType: 1, typo: false }, // Invalid step.
   ]);
 
-  t.is(histogram.complexity, 3);
-  t.deepEqual(
+  assert.strictEqual(histogram.complexity, 3);
+  assert.deepStrictEqual(
     [...histogram],
     [
       { codePoint: A, hitCount: 3, missCount: 1, timeToType: 200 },
@@ -34,7 +35,7 @@ test("histogram", (t) => {
   );
 });
 
-test("ignore typos", (t) => {
+test("ignore typos", () => {
   const histogram = Histogram.from([
     { timeStamp: 100, codePoint: A, timeToType: 100.1, typo: true },
     { timeStamp: 200, codePoint: B, timeToType: 100.1, typo: true },
@@ -42,8 +43,8 @@ test("ignore typos", (t) => {
     { timeStamp: 301, codePoint: X, timeToType: 1, typo: false }, // Invalid step.
   ]);
 
-  t.is(histogram.complexity, 3);
-  t.deepEqual(
+  assert.strictEqual(histogram.complexity, 3);
+  assert.deepStrictEqual(
     [...histogram],
     [
       { codePoint: A, hitCount: 1, missCount: 1, timeToType: 0 },
@@ -53,12 +54,12 @@ test("ignore typos", (t) => {
   );
 });
 
-test("validate histogram", (t) => {
+test("validate histogram", () => {
   // Too few characters.
 
-  t.false(new Histogram([]).validate());
+  assert.isFalse(new Histogram([]).validate());
 
-  t.false(
+  assert.isFalse(
     new Histogram([
       { codePoint: A, hitCount: 10, missCount: 0, timeToType: 100 },
       { codePoint: B, hitCount: 10, missCount: 0, timeToType: 100 },
@@ -67,7 +68,7 @@ test("validate histogram", (t) => {
 
   // Too slow.
 
-  t.false(
+  assert.isFalse(
     new Histogram([
       { codePoint: A, hitCount: 10, missCount: 0, timeToType: 100 },
       { codePoint: B, hitCount: 10, missCount: 0, timeToType: 100 },
@@ -77,7 +78,7 @@ test("validate histogram", (t) => {
 
   // Too fast.
 
-  t.false(
+  assert.isFalse(
     new Histogram([
       { codePoint: A, hitCount: 10, missCount: 0, timeToType: 100 },
       { codePoint: B, hitCount: 10, missCount: 0, timeToType: 100 },
@@ -87,7 +88,7 @@ test("validate histogram", (t) => {
 
   // Valid.
 
-  t.true(
+  assert.isTrue(
     new Histogram([
       { codePoint: A, hitCount: 10, missCount: 0, timeToType: 100 },
       { codePoint: B, hitCount: 10, missCount: 0, timeToType: 100 },
@@ -95,7 +96,7 @@ test("validate histogram", (t) => {
     ]).validate(),
   );
 
-  t.true(
+  assert.isTrue(
     new Histogram([
       { codePoint: A, hitCount: 10, missCount: 0, timeToType: 100 },
       { codePoint: B, hitCount: 10, missCount: 0, timeToType: 100 },
@@ -103,7 +104,7 @@ test("validate histogram", (t) => {
     ]).validate(),
   );
 
-  t.true(
+  assert.isTrue(
     new Histogram([
       { codePoint: A, hitCount: 10, missCount: 10, timeToType: 0 },
       { codePoint: B, hitCount: 10, missCount: 10, timeToType: 0 },

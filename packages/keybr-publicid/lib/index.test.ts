@@ -1,15 +1,16 @@
-import test from "ava";
+import { test } from "node:test";
+import { assert } from "chai";
 import { MAX_ID, MIN_ID, PublicId } from "./index.ts";
 
-test("format with toString", (t) => {
-  t.is(String(PublicId.of("55VDTK1")), "55vdtk1");
-  t.is(String(PublicId.of("Z1QFG4B")), "z1qfg4b");
-  t.is(String(PublicId.of("example1")), "example1");
-  t.is(String(PublicId.of("example9")), "example9");
+test("format with toString", () => {
+  assert.strictEqual(String(PublicId.of("55VDTK1")), "55vdtk1");
+  assert.strictEqual(String(PublicId.of("Z1QFG4B")), "z1qfg4b");
+  assert.strictEqual(String(PublicId.of("example1")), "example1");
+  assert.strictEqual(String(PublicId.of("example9")), "example9");
 });
 
-test("parse and format valid values", (t) => {
-  t.deepEqual(
+test("parse and format valid values", () => {
+  assert.deepStrictEqual(
     { ...new PublicId(0x00000001) },
     {
       id: 0x00000001,
@@ -17,7 +18,7 @@ test("parse and format valid values", (t) => {
       example: false,
     },
   );
-  t.deepEqual(
+  assert.deepStrictEqual(
     { ...PublicId.of("55VDTK1") },
     {
       id: 0x00000001,
@@ -25,7 +26,7 @@ test("parse and format valid values", (t) => {
       example: false,
     },
   );
-  t.deepEqual(
+  assert.deepStrictEqual(
     { ...new PublicId(0x00000002) },
     {
       id: 0x00000002,
@@ -33,7 +34,7 @@ test("parse and format valid values", (t) => {
       example: false,
     },
   );
-  t.deepEqual(
+  assert.deepStrictEqual(
     { ...PublicId.of("D1M45TE") },
     {
       id: 0x00000002,
@@ -41,7 +42,7 @@ test("parse and format valid values", (t) => {
       example: false,
     },
   );
-  t.deepEqual(
+  assert.deepStrictEqual(
     { ...new PublicId(0x0fffffff) },
     {
       id: 0x0fffffff,
@@ -49,7 +50,7 @@ test("parse and format valid values", (t) => {
       example: false,
     },
   );
-  t.deepEqual(
+  assert.deepStrictEqual(
     { ...PublicId.of("Z1QFG4B") },
     {
       id: 0x0fffffff,
@@ -59,8 +60,8 @@ test("parse and format valid values", (t) => {
   );
 });
 
-test("parse and format valid example values", (t) => {
-  t.deepEqual(
+test("parse and format valid example values", () => {
+  assert.deepStrictEqual(
     { ...new PublicId(-1) },
     {
       id: 1,
@@ -68,7 +69,7 @@ test("parse and format valid example values", (t) => {
       example: true,
     },
   );
-  t.deepEqual(
+  assert.deepStrictEqual(
     { ...PublicId.of("example1") },
     {
       id: 1,
@@ -76,7 +77,7 @@ test("parse and format valid example values", (t) => {
       example: true,
     },
   );
-  t.deepEqual(
+  assert.deepStrictEqual(
     { ...new PublicId(-9) },
     {
       id: 9,
@@ -84,7 +85,7 @@ test("parse and format valid example values", (t) => {
       example: true,
     },
   );
-  t.deepEqual(
+  assert.deepStrictEqual(
     { ...PublicId.of("example9") },
     {
       id: 9,
@@ -94,53 +95,53 @@ test("parse and format valid example values", (t) => {
   );
 });
 
-test("report invalid values", (t) => {
-  t.throws(() => {
+test("report invalid values", () => {
+  assert.throws(() => {
     PublicId.of("");
   });
-  t.throws(() => {
+  assert.throws(() => {
     PublicId.of("???");
   });
-  t.throws(() => {
+  assert.throws(() => {
     PublicId.of("0");
   });
-  t.throws(() => {
+  assert.throws(() => {
     PublicId.of("-1");
   });
-  t.throws(() => {
+  assert.throws(() => {
     PublicId.of("x5vdtk1");
   });
-  t.throws(() => {
+  assert.throws(() => {
     PublicId.of("example0");
   });
-  t.throws(() => {
+  assert.throws(() => {
     PublicId.of("EXAMPLE1");
   });
-  t.throws(() => {
+  assert.throws(() => {
     PublicId.of("example999");
   });
-  t.throws(() => {
+  assert.throws(() => {
     new PublicId(Math.PI);
   });
-  t.throws(() => {
+  assert.throws(() => {
     new PublicId(0x00000000);
   });
-  t.throws(() => {
+  assert.throws(() => {
     new PublicId(0xffffffff);
   });
-  t.throws(() => {
+  assert.throws(() => {
     new PublicId(MIN_ID - 1);
   });
-  t.throws(() => {
+  assert.throws(() => {
     new PublicId(MAX_ID + 1);
   });
 });
 
-test("convert to user", (t) => {
-  t.throws(() => {
+test("convert to user", () => {
+  assert.throws(() => {
     new PublicId(1).toUser();
   });
-  t.deepEqual(PublicId.of("example1").toUser(), {
+  assert.deepStrictEqual(PublicId.of("example1").toUser(), {
     id: "example1",
     name: "Example User 1",
     imageUrl: null,

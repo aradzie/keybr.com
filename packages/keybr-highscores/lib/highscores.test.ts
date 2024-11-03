@@ -1,11 +1,9 @@
-import { mock, test } from "node:test";
+import { test } from "node:test";
 import { Layout } from "@keybr/keyboard";
 import { assert } from "chai";
 import { HighScores, type HighScoresRow } from "./highscores.ts";
 
 const now = new Date("2001-02-03T04:05:06Z");
-
-mock.timers.enable({ apis: ["Date"], now });
 
 const template = {
   user: 0,
@@ -19,8 +17,10 @@ const template = {
   score: 0,
 } satisfies HighScoresRow;
 
-test("do not insert if result is old", () => {
+test("do not insert if result is old", (ctx) => {
   // Arrange.
+
+  ctx.mock.timers.enable({ apis: ["Date"], now });
 
   const timeStamp = new Date(Number(now) - 1001);
   const candidate = {
@@ -44,8 +44,10 @@ test("do not insert if result is old", () => {
   assert.strictEqual(position, null);
 });
 
-test("do not insert if result is low", () => {
+test("do not insert if result is low", (ctx) => {
   // Arrange.
+
+  ctx.mock.timers.enable({ apis: ["Date"], now });
 
   const r0 = {
     ...template,
@@ -85,8 +87,10 @@ test("do not insert if result is low", () => {
   assert.strictEqual(position, null);
 });
 
-test("do not insert if higher result exists ", () => {
+test("do not insert if higher result exists ", (ctx) => {
   // Arrange.
+
+  ctx.mock.timers.enable({ apis: ["Date"], now });
 
   const r0 = {
     ...template,
@@ -126,8 +130,10 @@ test("do not insert if higher result exists ", () => {
   assert.strictEqual(position, null);
 });
 
-test("remove old results", () => {
+test("remove old results", (ctx) => {
   // Arrange.
+
+  ctx.mock.timers.enable({ apis: ["Date"], now });
 
   const timeStamp = new Date(Number(now) - 1001);
 
@@ -172,8 +178,10 @@ test("remove old results", () => {
   assert.strictEqual(position, 0);
 });
 
-test("remove lower results", () => {
+test("remove lower results", (ctx) => {
   // Arrange.
+
+  ctx.mock.timers.enable({ apis: ["Date"], now });
 
   const r0 = {
     ...template,
@@ -213,8 +221,10 @@ test("remove lower results", () => {
   assert.strictEqual(position, 0);
 });
 
-test("insert if result is high", () => {
+test("insert if result is high", (ctx) => {
   // Arrange.
+
+  ctx.mock.timers.enable({ apis: ["Date"], now });
 
   const r0 = {
     ...template,
@@ -254,8 +264,10 @@ test("insert if result is high", () => {
   assert.strictEqual(position, 0);
 });
 
-test("insert if table is not full", () => {
+test("insert if table is not full", (ctx) => {
   // Arrange.
+
+  ctx.mock.timers.enable({ apis: ["Date"], now });
 
   const r0 = {
     ...template,
@@ -295,8 +307,10 @@ test("insert if table is not full", () => {
   assert.strictEqual(position, 3);
 });
 
-test("truncate to limit", () => {
+test("truncate to limit", (ctx) => {
   // Arrange.
+
+  ctx.mock.timers.enable({ apis: ["Date"], now });
 
   const r0 = {
     ...template,

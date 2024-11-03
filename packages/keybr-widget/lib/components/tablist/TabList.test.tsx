@@ -1,10 +1,11 @@
+import { test } from "node:test";
 import { fireEvent, render } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import test from "ava";
+import { assert } from "chai";
 import { useState } from "react";
 import { Tab, TabList } from "./TabList.tsx";
 
-test.serial("props", (t) => {
+test("props", () => {
   const r = render(
     <TabList selectedIndex={1}>
       <Tab label="Tab1">
@@ -19,9 +20,9 @@ test.serial("props", (t) => {
     </TabList>,
   );
 
-  t.is(r.queryByText("aaa"), null);
-  t.not(r.queryByText("bbb"), null);
-  t.is(r.queryByText("ccc"), null);
+  assert.isNull(r.queryByText("aaa"));
+  assert.isNotNull(r.queryByText("bbb"));
+  assert.isNull(r.queryByText("ccc"));
 
   r.rerender(
     <TabList selectedIndex={0}>
@@ -37,14 +38,14 @@ test.serial("props", (t) => {
     </TabList>,
   );
 
-  t.not(r.queryByText("aaa"), null);
-  t.is(r.queryByText("bbb"), null);
-  t.is(r.queryByText("ccc"), null);
+  assert.isNotNull(r.queryByText("aaa"));
+  assert.isNull(r.queryByText("bbb"));
+  assert.isNull(r.queryByText("ccc"));
 
   r.unmount();
 });
 
-test.serial("controlled", async (t) => {
+test("controlled", async () => {
   let lastValue = 0;
 
   function Controlled() {
@@ -71,31 +72,31 @@ test.serial("controlled", async (t) => {
 
   const r = render(<Controlled />);
 
-  t.not(r.queryByText("aaa"), null);
-  t.is(r.queryByText("bbb"), null);
-  t.is(r.queryByText("ccc"), null);
-  t.is(lastValue, 0);
+  assert.isNotNull(r.queryByText("aaa"));
+  assert.isNull(r.queryByText("bbb"));
+  assert.isNull(r.queryByText("ccc"));
+  assert.strictEqual(lastValue, 0);
 
   await userEvent.click(r.getByText("Tab2"));
 
-  t.is(r.queryByText("aaa"), null);
-  t.not(r.queryByText("bbb"), null);
-  t.is(r.queryByText("ccc"), null);
-  t.is(lastValue, 1);
+  assert.isNull(r.queryByText("aaa"));
+  assert.isNotNull(r.queryByText("bbb"));
+  assert.isNull(r.queryByText("ccc"));
+  assert.strictEqual(lastValue, 1);
 
   fireEvent.keyDown(r.getByText("Tab2"), { code: "ArrowRight" });
 
-  t.is(r.queryByText("aaa"), null);
-  t.is(r.queryByText("bbb"), null);
-  t.not(r.queryByText("ccc"), null);
-  t.is(lastValue, 2);
+  assert.isNull(r.queryByText("aaa"));
+  assert.isNull(r.queryByText("bbb"));
+  assert.isNotNull(r.queryByText("ccc"));
+  assert.strictEqual(lastValue, 2);
 
   fireEvent.keyDown(r.getByText("Tab3"), { code: "ArrowRight" });
 
-  t.not(r.queryByText("aaa"), null);
-  t.is(r.queryByText("bbb"), null);
-  t.is(r.queryByText("ccc"), null);
-  t.is(lastValue, 0);
+  assert.isNotNull(r.queryByText("aaa"));
+  assert.isNull(r.queryByText("bbb"));
+  assert.isNull(r.queryByText("ccc"));
+  assert.strictEqual(lastValue, 0);
 
   r.unmount();
 });

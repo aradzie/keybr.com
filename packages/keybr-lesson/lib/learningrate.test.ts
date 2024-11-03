@@ -1,23 +1,24 @@
+import { test } from "node:test";
 import { generateKeySamples } from "@keybr/result";
 import { Settings } from "@keybr/settings";
-import test from "ava";
+import { assert } from "chai";
 import { LearningRate } from "./learningrate.ts";
 import { lessonProps } from "./settings.ts";
 import { Target } from "./target.ts";
 
-test("too few samples", (t) => {
+test("too few samples", () => {
   const settings = new Settings().set(lessonProps.targetSpeed, /* 35WPM */ 175);
   const target = new Target(settings);
-  t.is(LearningRate.from([], target), null);
-  t.is(LearningRate.from(generateKeySamples(0), target), null);
-  t.is(LearningRate.from(generateKeySamples(1), target), null);
-  t.is(LearningRate.from(generateKeySamples(2), target), null);
-  t.is(LearningRate.from(generateKeySamples(3), target), null);
-  t.is(LearningRate.from(generateKeySamples(4), target), null);
-  t.not(LearningRate.from(generateKeySamples(5), target), null);
+  assert.isNull(LearningRate.from([], target));
+  assert.isNull(LearningRate.from(generateKeySamples(0), target));
+  assert.isNull(LearningRate.from(generateKeySamples(1), target));
+  assert.isNull(LearningRate.from(generateKeySamples(2), target));
+  assert.isNull(LearningRate.from(generateKeySamples(3), target));
+  assert.isNull(LearningRate.from(generateKeySamples(4), target));
+  assert.isNotNull(LearningRate.from(generateKeySamples(5), target));
 });
 
-test("decreasing time", (t) => {
+test("decreasing time", () => {
   const settings = new Settings().set(lessonProps.targetSpeed, /* 35WPM */ 175);
   const target = new Target(settings);
   const learningRate = LearningRate.from(
@@ -27,12 +28,12 @@ test("decreasing time", (t) => {
     }),
     target,
   ) as LearningRate;
-  t.is(learningRate.certainty, 0.9990293383742471);
-  t.is(learningRate.learningRate, 4.164934164934164);
-  t.is(learningRate.remainingLessons, 3);
+  assert.strictEqual(learningRate.certainty, 0.9990293383742471);
+  assert.strictEqual(learningRate.learningRate, 4.164934164934164);
+  assert.strictEqual(learningRate.remainingLessons, 3);
 });
 
-test("increasing time", (t) => {
+test("increasing time", () => {
   const settings = new Settings().set(lessonProps.targetSpeed, /* 35WPM */ 175);
   const target = new Target(settings);
   const learningRate = LearningRate.from(
@@ -42,16 +43,16 @@ test("increasing time", (t) => {
     }),
     target,
   ) as LearningRate;
-  t.is(learningRate.certainty, 0.9992055903829036);
-  t.is(learningRate.learningRate, -3.4079306966431178);
-  t.is(learningRate.remainingLessons, NaN);
+  assert.strictEqual(learningRate.certainty, 0.9992055903829036);
+  assert.strictEqual(learningRate.learningRate, -3.4079306966431178);
+  assert.isNaN(learningRate.remainingLessons);
 });
 
-test("learning rate of the example data", (t) => {
+test("learning rate of the example data", () => {
   const settings = new Settings().set(lessonProps.targetSpeed, /* 35WPM */ 175);
   const target = new Target(settings);
   const learningRate = LearningRate.example(target);
-  t.is(learningRate.certainty, 0.9999559701751027);
-  t.is(learningRate.learningRate, 4.1890206530121485);
-  t.is(learningRate.remainingLessons, 3);
+  assert.strictEqual(learningRate.certainty, 0.9999559701751027);
+  assert.strictEqual(learningRate.learningRate, 4.1890206530121485);
+  assert.strictEqual(learningRate.remainingLessons, 3);
 });

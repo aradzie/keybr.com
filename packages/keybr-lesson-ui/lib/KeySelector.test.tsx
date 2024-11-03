@@ -1,17 +1,18 @@
+import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { FakePhoneticModel, type Letter } from "@keybr/phonetic-model";
 import { type KeyStatsMap, makeKeyStatsMap } from "@keybr/result";
 import { FakeSettingsContext } from "@keybr/settings";
 import { fireEvent, render } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import test from "ava";
+import { assert } from "chai";
 import { type ReactNode, useState } from "react";
 import { KeySelector } from "./KeySelector.tsx";
 
 const { letters } = FakePhoneticModel;
 const keyStatsMap = makeKeyStatsMap(letters, []);
 
-test.serial("props", (t) => {
+test("props", () => {
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
@@ -25,7 +26,7 @@ test.serial("props", (t) => {
   );
   const element = r.getByTitle("underTest");
 
-  t.is(element.textContent, "ABCDEFGHIJ");
+  assert.strictEqual(element.textContent, "ABCDEFGHIJ");
 
   r.rerender(
     <FakeIntlProvider>
@@ -39,12 +40,12 @@ test.serial("props", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.is(element.textContent, "ABCDEFGHIJ");
+  assert.strictEqual(element.textContent, "ABCDEFGHIJ");
 
   r.unmount();
 });
 
-test.serial("controlled", async (t) => {
+test("controlled", async () => {
   let current: Letter | undefined;
 
   const r = render(
@@ -64,28 +65,28 @@ test.serial("controlled", async (t) => {
   await userEvent.click(r.getByText("A"));
   await userEvent.click(r.getByText("B"));
 
-  t.is(current?.label, "B");
+  assert.strictEqual(current?.label, "B");
 
   await userEvent.click(r.getByText("B"));
   await userEvent.click(r.getByText("A"));
 
-  t.is(current?.label, "A");
+  assert.strictEqual(current?.label, "A");
 
   fireEvent.keyDown(element, { code: "ArrowLeft" });
 
-  t.is(current?.label, "J");
+  assert.strictEqual(current?.label, "J");
 
   fireEvent.keyDown(element, { code: "ArrowUp" });
 
-  t.is(current?.label, "I");
+  assert.strictEqual(current?.label, "I");
 
   fireEvent.keyDown(element, { code: "ArrowRight" });
 
-  t.is(current?.label, "J");
+  assert.strictEqual(current?.label, "J");
 
   fireEvent.keyDown(element, { code: "ArrowDown" });
 
-  t.is(current?.label, "A");
+  assert.strictEqual(current?.label, "A");
 
   r.unmount();
 });

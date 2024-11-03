@@ -1,11 +1,12 @@
+import { test } from "node:test";
 import { Language } from "@keybr/keyboard";
-import test from "ava";
+import { assert } from "chai";
 import { Filter } from "./filter.ts";
 import { loadModelSync } from "./fs-load.ts";
 import { Letter } from "./letter.ts";
 
 for (const language of Language.ALL) {
-  test(`${language.id}`, (t) => {
+  test(`${language.id}`, () => {
     const { table, model } = loadModelSync(language);
     const letters = Letter.frequencyOrder(model.letters);
     const { chain } = table;
@@ -13,7 +14,7 @@ for (const language of Language.ALL) {
     let alphabet: RegExp;
     let word: RegExp;
     if (language.script === "thai") {
-      // Some Thai vowels are recognize as Mark not Letter.
+      // Some Thai vowels are recognized as Mark not Letter.
       alphabet = /^\u{0020}[\p{Letter}\p{Mark}]+$/u;
       word = /^[\p{Letter}\p{Mark}]+$/u;
     } else {
@@ -22,12 +23,12 @@ for (const language of Language.ALL) {
     }
 
     // Check model settings.
-    t.regex(String.fromCodePoint(...table.alphabet), alphabet);
-    t.is(table.size, table.alphabet.length);
-    t.is(table.order, 4);
+    assert.match(String.fromCodePoint(...table.alphabet), alphabet);
+    assert.strictEqual(table.size, table.alphabet.length);
+    assert.strictEqual(table.order, 4);
 
     // Check letters.
-    t.true(letters.every(({ f }) => f > 0));
+    assert.isTrue(letters.every(({ f }) => f > 0));
 
     // Check transition table.
     for (const suffixes of table.segments) {
@@ -36,31 +37,31 @@ for (const language of Language.ALL) {
         let last = null;
         for (const suffix of suffixes) {
           if (last != null) {
-            t.true(
+            assert.isTrue(
               chain.index(last.codePoint) < chain.index(suffix.codePoint),
               "Must be sorted by index in increasing order",
             );
           }
-          t.true(suffix.frequency > 0, "Must have positive frequencies");
+          assert.isTrue(suffix.frequency > 0, "Must have positive frequencies");
           sum += suffix.frequency;
           last = suffix;
         }
-        t.is(sum, 255, "Frequencies must add up exactly to 255");
+        assert.strictEqual(sum, 255, "Frequencies must add up exactly to 255");
       }
     }
 
-    // Generate words without filter.
-    t.regex(model.nextWord(new Filter(null, null)), word);
+    // Generate words without a filter.
+    assert.match(model.nextWord(new Filter(null, null)), word);
     for (const letter of letters) {
-      t.regex(model.nextWord(new Filter(null, letter)), word);
+      assert.match(model.nextWord(new Filter(null, letter)), word);
     }
 
-    // Generate words with filter.
+    // Generate words with a filter.
     for (let i = 6; i <= letters.length; i++) {
       const subset = letters.slice(0, i);
-      t.regex(model.nextWord(new Filter(subset, null)), word);
+      assert.match(model.nextWord(new Filter(subset, null)), word);
       for (const letter of subset) {
-        t.regex(model.nextWord(new Filter(subset, letter)), word);
+        assert.match(model.nextWord(new Filter(subset, letter)), word);
       }
     }
   });

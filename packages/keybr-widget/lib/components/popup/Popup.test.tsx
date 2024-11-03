@@ -1,5 +1,6 @@
+import { test } from "node:test";
 import { render } from "@testing-library/react";
-import test from "ava";
+import { assert } from "chai";
 import { act } from "react";
 import { Button } from "../button/index.ts";
 import { PortalContainer } from "../portal/index.ts";
@@ -11,7 +12,7 @@ test.before(() => {
   document.body.appendChild(container);
 });
 
-test.serial("un-anchored", async (t) => {
+test("un-anchored", async () => {
   const r = render(
     <>
       <Popup>text</Popup>
@@ -20,12 +21,12 @@ test.serial("un-anchored", async (t) => {
 
   await act(async () => {});
 
-  t.not(r.queryByText("text"), null);
+  assert.isNotNull(r.queryByText("text"));
 
   r.unmount();
 });
 
-test.serial("anchored", async (t) => {
+test("anchored", async () => {
   const r = render(
     <>
       <Button data-id="button" label="button" />
@@ -35,7 +36,7 @@ test.serial("anchored", async (t) => {
 
   await act(async () => {});
 
-  t.not(r.queryByText("text"), null);
+  assert.isNotNull(r.queryByText("text"));
 
   r.unmount();
 });

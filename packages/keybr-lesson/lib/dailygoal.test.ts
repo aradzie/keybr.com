@@ -1,10 +1,11 @@
+import { test } from "node:test";
 import { LocalDate, ResultFaker, Today } from "@keybr/result";
 import { Settings } from "@keybr/settings";
-import test from "ava";
+import { assert } from "chai";
 import { MutableDailyGoal } from "./dailygoal.ts";
 import { lessonProps } from "./settings.ts";
 
-test("daily goal is not set", (t) => {
+test("daily goal is not set", () => {
   // Arrange.
 
   const today = new LocalDate(2001, 2, 3);
@@ -16,7 +17,7 @@ test("daily goal is not set", (t) => {
 
   // Assert.
 
-  t.deepEqual(dailyGoal.copy(), { goal: 0, value: 0 });
+  assert.deepStrictEqual(dailyGoal.copy(), { goal: 0, value: 0 });
 
   // Act.
 
@@ -25,10 +26,10 @@ test("daily goal is not set", (t) => {
 
   // Assert.
 
-  t.deepEqual(dailyGoal.copy(), { goal: 0, value: 0 });
+  assert.deepStrictEqual(dailyGoal.copy(), { goal: 0, value: 0 });
 });
 
-test("daily goal is set", (t) => {
+test("daily goal is set", () => {
   // Arrange.
 
   const today = new LocalDate(2001, 2, 3);
@@ -41,17 +42,17 @@ test("daily goal is set", (t) => {
   // Act, Assert.
 
   dailyGoal.append(faker.nextResult({ time: 60000, timeStamp: 0 }));
-  t.deepEqual(dailyGoal.copy(), { goal: 10, value: 0 });
+  assert.deepStrictEqual(dailyGoal.copy(), { goal: 10, value: 0 });
 
   // Act, Assert.
 
   dailyGoal.append(faker.nextResult({ time: 60000 }));
-  t.deepEqual(dailyGoal.copy(), { goal: 10, value: 0.1 });
+  assert.deepStrictEqual(dailyGoal.copy(), { goal: 10, value: 0.1 });
 
   // Act, Assert.
 
   dailyGoal.append(faker.nextResult({ time: 60000 }));
-  t.deepEqual(dailyGoal.copy(), { goal: 10, value: 0.2 });
+  assert.deepStrictEqual(dailyGoal.copy(), { goal: 10, value: 0.2 });
 
   // Act, Assert.
 
@@ -61,5 +62,5 @@ test("daily goal is set", (t) => {
       timeStamp: today.plusDays(1).timeStamp,
     }),
   );
-  t.deepEqual(dailyGoal.copy(), { goal: 10, value: 0.2 });
+  assert.deepStrictEqual(dailyGoal.copy(), { goal: 10, value: 0.2 });
 });

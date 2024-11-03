@@ -1,18 +1,19 @@
 import { join } from "node:path";
+import { test } from "node:test";
 import { ResultFaker } from "@keybr/result";
 import { exists, removeDir } from "@sosimple/fsx";
 import { File } from "@sosimple/fsx-file";
-import test from "ava";
+import { assert } from "chai";
 import { fixFile } from "./fix-file.ts";
 
-const testDataDir = process.env.DATA_DIR ?? "/tmp/keybr";
+const tmp = process.env.DATA_DIR ?? "/tmp/keybr";
 
 test.beforeEach(async () => {
-  await removeDir(testDataDir);
+  await removeDir(tmp);
 });
 
 test.afterEach(async () => {
-  await removeDir(testDataDir);
+  await removeDir(tmp);
 });
 
 const faker = new ResultFaker();
@@ -20,10 +21,10 @@ const r0 = faker.nextResult();
 const r1 = faker.nextResult();
 const r2 = faker.nextResult();
 
-test.serial("fix empty file", async (t) => {
+test("fix empty file", async () => {
   // Arrange.
 
-  const name = join(testDataDir, "000");
+  const name = join(tmp, "000");
   const file = new File(name);
   await file.write(Buffer.from("dummy"));
 
@@ -33,14 +34,14 @@ test.serial("fix empty file", async (t) => {
 
   // Assert.
 
-  t.true(await exists(name + "~corrupted"));
-  t.false(await exists(name));
+  assert.isTrue(await exists(name + "~corrupted"));
+  assert.isFalse(await exists(name));
 });
 
-test.serial("fix non-empty file", async (t) => {
+test("fix non-empty file", async () => {
   // Arrange.
 
-  const name = join(testDataDir, "000");
+  const name = join(tmp, "000");
   const file = new File(name);
   await file.write(Buffer.from("dummy"));
 
@@ -50,6 +51,6 @@ test.serial("fix non-empty file", async (t) => {
 
   // Assert.
 
-  t.true(await exists(name + "~corrupted"));
-  t.true(await exists(name));
+  assert.isTrue(await exists(name + "~corrupted"));
+  assert.isTrue(await exists(name));
 });

@@ -1,21 +1,22 @@
-import test from "ava";
+import { test } from "node:test";
+import { assert } from "chai";
 import { parseUserIdRange } from "./argument.ts";
 
-test("parse user id range", (t) => {
-  t.deepEqual([...parseUserIdRange("1")], [1]);
-  t.deepEqual([...parseUserIdRange("1-3")], [1, 2, 3]);
-  t.deepEqual([...parseUserIdRange("1,2,3")], [1, 2, 3]);
-  t.deepEqual([...parseUserIdRange("1-2,2-3")], [1, 2, 3]);
-  t.throws(() => {
+test("parse user id range", () => {
+  assert.deepStrictEqual([...parseUserIdRange("1")], [1]);
+  assert.deepStrictEqual([...parseUserIdRange("1-3")], [1, 2, 3]);
+  assert.deepStrictEqual([...parseUserIdRange("1,2,3")], [1, 2, 3]);
+  assert.deepStrictEqual([...parseUserIdRange("1-2,2-3")], [1, 2, 3]);
+  assert.throws(() => {
     parseUserIdRange("-1");
   });
-  t.throws(() => {
+  assert.throws(() => {
     parseUserIdRange("a");
   });
-  t.throws(() => {
+  assert.throws(() => {
     parseUserIdRange(String(0xffffffff + 1));
   });
-  t.throws(() => {
+  assert.throws(() => {
     parseUserIdRange("2-1");
   });
 });

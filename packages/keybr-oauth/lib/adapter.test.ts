@@ -38,7 +38,7 @@ const accessToken = new AccessToken({
   expires_in: 1000,
 });
 
-test("generate authorization url", (t) => {
+test("generate authorization url", () => {
   // Act.
 
   const authorizationUrl = underTest.getAuthorizationUrl({ state: "state1" });
@@ -56,7 +56,7 @@ test("generate authorization url", (t) => {
   );
 });
 
-test("fetch access token", async (t) => {
+test("fetch access token", async () => {
   // Arrange.
 
   useAdapter(
@@ -77,7 +77,7 @@ test("fetch access token", async (t) => {
   assert.strictEqual(type, "bearer");
 });
 
-test("handle errors", async (t) => {
+test("handle errors", async () => {
   // Arrange.
 
   useAdapter(

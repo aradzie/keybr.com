@@ -1,14 +1,15 @@
+import { test } from "node:test";
 import { Syntax } from "@keybr/code";
 import { Layout, loadKeyboard } from "@keybr/keyboard";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { makeKeyStatsMap } from "@keybr/result";
 import { Settings } from "@keybr/settings";
 import { flattenStyledText } from "@keybr/textinput";
-import test from "ava";
+import { assert } from "chai";
 import { CodeLesson } from "./code.ts";
 import { lessonProps } from "./settings.ts";
 
-test("generate code fragment", (t) => {
+test("generate code fragment", () => {
   const settings = new Settings().set(lessonProps.code.syntax, Syntax.HTML);
   const keyboard = loadKeyboard(Layout.EN_US);
   const model = new FakePhoneticModel();
@@ -17,5 +18,5 @@ test("generate code fragment", (t) => {
   lesson.rng = model.rng;
 
   const text = lesson.generate(lessonKeys);
-  t.true(flattenStyledText(text).length > 0);
+  assert.isTrue(flattenStyledText(text).length > 0);
 });

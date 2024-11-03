@@ -1,13 +1,14 @@
-import test from "ava";
+import { test } from "node:test";
+import { assert } from "chai";
 import { Letter } from "./letter.ts";
 
-test("toString", (t) => {
-  t.is(String(new Letter(0x0061, 10)), "a");
-  t.is(String(new Letter(0x0061, 10, "A")), "A");
+test("toString", () => {
+  assert.strictEqual(String(new Letter(0x0061, 10)), "a");
+  assert.strictEqual(String(new Letter(0x0061, 10, "A")), "A");
 });
 
-test("normalize", (t) => {
-  t.deepEqual(
+test("normalize", () => {
+  assert.deepStrictEqual(
     Letter.normalize([
       new Letter(0x0063, 20, "C"),
       new Letter(0x0062, 30, "B"),

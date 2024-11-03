@@ -1,12 +1,12 @@
-import { mock } from "node:test";
+import { test } from "node:test";
 import { act, render } from "@testing-library/react";
-import test from "ava";
+import { assert } from "chai";
 import { toast, Toaster } from "./Toaster.tsx";
 
-mock.timers.enable({ apis: ["setTimeout"] });
-
-test.serial("close on timeout", async (t) => {
+test("close on timeout", async (ctx) => {
   // Arrange.
+
+  ctx.mock.timers.enable({ apis: ["setTimeout"] });
 
   const r = render(<Toaster />);
   toast(<div data-toast={1}>Message 1</div>, {
@@ -23,24 +23,26 @@ test.serial("close on timeout", async (t) => {
 
   // Assert.
 
-  t.is(r.container.textContent, "Message 2Message 1");
+  assert.strictEqual(r.container.textContent, "Message 2Message 1");
 
   // Act.
 
-  mock.timers.runAll();
+  ctx.mock.timers.runAll();
   await act(async () => {});
 
   // Assert.
 
-  t.is(document.body.textContent, "");
+  assert.strictEqual(document.body.textContent, "");
 
   // Cleanup.
 
   r.unmount();
 });
 
-test.serial("close on click", async (t) => {
+test("close on click", async (ctx) => {
   // Arrange.
+
+  ctx.mock.timers.enable({ apis: ["setTimeout"] });
 
   const r = render(<Toaster />);
   toast(<div data-toast={1}>Message 1</div>, {
@@ -57,7 +59,7 @@ test.serial("close on click", async (t) => {
 
   // Assert.
 
-  t.is(r.container.textContent, "Message 2Message 1");
+  assert.strictEqual(r.container.textContent, "Message 2Message 1");
 
   // Act.
 
@@ -66,7 +68,7 @@ test.serial("close on click", async (t) => {
 
   // Assert.
 
-  t.is(r.container.textContent, "Message 2");
+  assert.strictEqual(r.container.textContent, "Message 2");
 
   // Act.
 
@@ -75,7 +77,7 @@ test.serial("close on click", async (t) => {
 
   // Assert.
 
-  t.is(r.container.textContent, "");
+  assert.strictEqual(r.container.textContent, "");
 
   // Cleanup.
 

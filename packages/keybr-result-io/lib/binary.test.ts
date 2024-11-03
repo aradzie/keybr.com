@@ -1,11 +1,12 @@
+import { test } from "node:test";
 import { Reader, Writer } from "@keybr/binary";
 import { Layout } from "@keybr/keyboard";
 import { Result, TextType } from "@keybr/result";
 import { Histogram } from "@keybr/textinput";
-import test from "ava";
+import { assert } from "chai";
 import { readResult, writeResult } from "./binary.ts";
 
-test("write and read", (t) => {
+test("write and read", () => {
   // Arrange.
 
   const histogram = new Histogram([
@@ -44,17 +45,17 @@ test("write and read", (t) => {
 
   const buffer = writer.buffer();
 
-  t.is(buffer.byteLength, 75);
+  assert.strictEqual(buffer.byteLength, 75);
 
   // Read.
 
   const reader = new Reader(buffer);
 
-  t.is(reader.remaining(), 75);
-  t.deepEqual(readResult(reader), expected);
-  t.is(reader.remaining(), 50);
-  t.deepEqual(readResult(reader), expected);
-  t.is(reader.remaining(), 25);
-  t.deepEqual(readResult(reader), expected);
-  t.is(reader.remaining(), 0);
+  assert.strictEqual(reader.remaining(), 75);
+  assert.deepStrictEqual(readResult(reader), expected);
+  assert.strictEqual(reader.remaining(), 50);
+  assert.deepStrictEqual(readResult(reader), expected);
+  assert.strictEqual(reader.remaining(), 25);
+  assert.deepStrictEqual(readResult(reader), expected);
+  assert.strictEqual(reader.remaining(), 0);
 });

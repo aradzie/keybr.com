@@ -1,6 +1,7 @@
+import { test } from "node:test";
 import { render } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import test from "ava";
+import { assert } from "chai";
 import { type ReactNode, useState } from "react";
 import { Button } from "../button/index.ts";
 import { PortalContainer } from "../portal/index.ts";
@@ -12,7 +13,7 @@ test.before(() => {
   document.body.appendChild(container);
 });
 
-test.serial("test", async (t) => {
+test("test", async () => {
   function UnderTest(): ReactNode {
     const [open, setOpen] = useState(false);
     return (
@@ -34,11 +35,11 @@ test.serial("test", async (t) => {
 
   const r = render(<UnderTest />);
 
-  t.is(r.queryByText("menu"), null);
+  assert.isNull(r.queryByText("menu"));
   await userEvent.click(r.getByText("anchor"));
-  t.not(r.queryByText("menu"), null);
+  assert.isNotNull(r.queryByText("menu"));
   await userEvent.click(r.getByText("anchor"));
-  t.is(r.queryByText("menu"), null);
+  assert.isNull(r.queryByText("menu"));
 
   r.unmount();
 });

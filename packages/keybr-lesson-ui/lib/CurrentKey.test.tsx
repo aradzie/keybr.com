@@ -1,14 +1,15 @@
+import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { LessonKey, LessonKeys } from "@keybr/lesson";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { FakeSettingsContext } from "@keybr/settings";
 import { render } from "@testing-library/react";
-import test from "ava";
+import { assert } from "chai";
 import { CurrentKey } from "./CurrentKey.tsx";
 
 const { letters } = FakePhoneticModel;
 
-test.serial("render no key", (t) => {
+test("render no key", () => {
   const lessonKeys = new LessonKeys([
     new LessonKey({
       letter: letters[0],
@@ -28,13 +29,13 @@ test.serial("render no key", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.not(r.queryByText("All keys are unlocked."), null);
-  t.is(r.queryByText("Learning rate:"), null);
+  assert.isNotNull(r.queryByText("All keys are unlocked."));
+  assert.isNull(r.queryByText("Learning rate:"));
 
   r.unmount();
 });
 
-test.serial("render key", (t) => {
+test("render key", () => {
   const lessonKeys = new LessonKeys([
     new LessonKey({
       letter: letters[0],
@@ -54,8 +55,8 @@ test.serial("render key", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.is(r.queryByText("All keys are unlocked."), null);
-  t.not(r.queryByText("Learning rate:"), null);
+  assert.isNull(r.queryByText("All keys are unlocked."));
+  assert.isNotNull(r.queryByText("Learning rate:"));
 
   r.unmount();
 });

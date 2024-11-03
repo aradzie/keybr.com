@@ -1,4 +1,4 @@
-import { mock, test } from "node:test";
+import { test } from "node:test";
 import { DataDir } from "@keybr/config";
 import { Layout } from "@keybr/keyboard";
 import { ResultFaker } from "@keybr/result";
@@ -7,21 +7,19 @@ import { assert } from "chai";
 import { HighScoresFactory } from "./factory.ts";
 import { type HighScoresRow } from "./highscores.ts";
 
-const dataDir = process.env.DATA_DIR ?? "/tmp/keybr";
+const tmp = process.env.DATA_DIR ?? "/tmp/keybr";
 
 test.beforeEach(async () => {
-  await removeDir(dataDir);
+  await removeDir(tmp);
 });
 
 test.afterEach(async () => {
-  await removeDir(dataDir);
+  await removeDir(tmp);
 });
 
-const now = new Date("2001-02-03T04:05:06Z");
-
-mock.timers.enable({ apis: ["Date"], now });
-
-test("append table", async () => {
+test("append table", async (ctx) => {
+  const now = new Date("2001-02-03T04:05:06Z");
+  ctx.mock.timers.enable({ apis: ["Date"], now });
   const faker = new ResultFaker();
   const timeStamp = now.getTime();
   const result1 = faker.nextResult({ layout: Layout.EN_US, timeStamp });
@@ -49,7 +47,7 @@ test("append table", async () => {
     score: result2.score,
   } satisfies HighScoresRow;
 
-  const factory = new HighScoresFactory(new DataDir(dataDir));
+  const factory = new HighScoresFactory(new DataDir(tmp));
 
   // Initial state.
 

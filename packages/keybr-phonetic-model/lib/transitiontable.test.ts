@@ -1,8 +1,9 @@
+import { test } from "node:test";
 import { DataError } from "@keybr/binary";
-import test from "ava";
+import { assert } from "chai";
 import { TransitionTable } from "./transitiontable.ts";
 
-test("parse binary data", (t) => {
+test("parse binary data", () => {
   const data = new Uint8Array([
     // Signature.
     0x6b, 0x65, 0x79, 0x62, 0x72, 0x2e, 0x63, 0x6f, 0x6d,
@@ -22,36 +23,27 @@ test("parse binary data", (t) => {
 
   const table = TransitionTable.load(data);
 
-  t.deepEqual(table.compress(), data);
+  assert.deepStrictEqual(table.compress(), data);
 
-  t.is(table.order, 2);
-  t.is(String.fromCodePoint(...table.alphabet), " ab");
-  t.is(table.size, 3);
-  t.deepEqual(table.segment([0]), [
+  assert.strictEqual(table.order, 2);
+  assert.strictEqual(String.fromCodePoint(...table.alphabet), " ab");
+  assert.strictEqual(table.size, 3);
+  assert.deepStrictEqual(table.segment([0]), [
     { codePoint: 0x0061, frequency: 127 },
     { codePoint: 0x0062, frequency: 128 },
   ]);
-  t.deepEqual(table.segment([0x0061]), []);
-  t.deepEqual(table.segment([0x0062]), []);
+  assert.deepStrictEqual(table.segment([0x0061]), []);
+  assert.deepStrictEqual(table.segment([0x0062]), []);
 });
 
-test("validate binary data", (t) => {
-  t.throws(
-    () => {
-      TransitionTable.load(new Uint8Array(0));
-    },
-    { instanceOf: DataError },
-  );
-  t.throws(
-    () => {
-      TransitionTable.load(new Uint8Array(100));
-    },
-    { instanceOf: DataError },
-  );
-  t.throws(
-    () => {
-      TransitionTable.load(new Uint8Array([1, 2, 3]));
-    },
-    { instanceOf: DataError },
-  );
+test("validate binary data", () => {
+  assert.throws(() => {
+    TransitionTable.load(new Uint8Array(0));
+  }, DataError);
+  assert.throws(() => {
+    TransitionTable.load(new Uint8Array(100));
+  }, DataError);
+  assert.throws(() => {
+    TransitionTable.load(new Uint8Array([1, 2, 3]));
+  }, DataError);
 });

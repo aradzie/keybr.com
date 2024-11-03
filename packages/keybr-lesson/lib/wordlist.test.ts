@@ -1,13 +1,14 @@
+import { describe, it, test } from "node:test";
 import { Layout, loadKeyboard } from "@keybr/keyboard";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { makeKeyStatsMap } from "@keybr/result";
 import { Settings } from "@keybr/settings";
-import test from "ava";
+import { assert } from "chai";
 import { LessonKey } from "./key.ts";
 import { lessonProps } from "./settings.ts";
 import { WordListLesson } from "./wordlist.ts";
 
-test("provide key set", (t) => {
+test("provide key set", () => {
   const settings = new Settings();
   const keyboard = loadKeyboard(Layout.EN_US);
   const model = new FakePhoneticModel();
@@ -15,7 +16,7 @@ test("provide key set", (t) => {
   const lesson = new WordListLesson(settings, keyboard, model, wordList);
   const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
 
-  t.deepEqual(lessonKeys.findIncludedKeys(), [
+  assert.deepStrictEqual(lessonKeys.findIncludedKeys(), [
     new LessonKey({
       letter: FakePhoneticModel.letter1,
       samples: [],
@@ -127,52 +128,52 @@ test("provide key set", (t) => {
       isForced: false,
     }),
   ]);
-  t.deepEqual(lessonKeys.findExcludedKeys(), []);
-  t.is(lessonKeys.findFocusedKey(), null);
+  assert.deepStrictEqual(lessonKeys.findExcludedKeys(), []);
+  assert.isNull(lessonKeys.findFocusedKey());
 });
 
-test("filter words", (t) => {
+test("filter words", () => {
   const settings = new Settings();
   const keyboard = loadKeyboard(Layout.EN_US);
   const model = new FakePhoneticModel();
   const wordList = ["abc", "def", "こんにちは"];
   const lesson = new WordListLesson(settings, keyboard, model, wordList);
 
-  t.deepEqual(lesson.wordList, ["abc", "def"]);
+  assert.deepStrictEqual(lesson.wordList, ["abc", "def"]);
 });
 
-test("generate text using settings", (t) => {
-  {
+describe("generate randomized text using settings", () => {
+  const keyboard = loadKeyboard(Layout.EN_US);
+
+  it("should transform to lower case", () => {
     const settings = new Settings()
       .set(lessonProps.capitals, 0)
       .set(lessonProps.punctuators, 0);
-    const keyboard = loadKeyboard(Layout.EN_US);
     const model = new FakePhoneticModel();
     const wordList = ["abc", "def", "ghi"];
     const lesson = new WordListLesson(settings, keyboard, model, wordList);
     lesson.rng = model.rng;
 
-    t.is(
+    assert.strictEqual(
       lesson.generate(),
       "abc def ghi abc def ghi abc def ghi abc def ghi abc def ghi abc def " +
         "ghi abc def ghi abc def ghi abc def ghi abc def ghi abc def ghi abc",
     );
-  }
+  });
 
-  {
+  it("should preserve case", () => {
     const settings = new Settings()
       .set(lessonProps.capitals, 1)
       .set(lessonProps.punctuators, 1);
-    const keyboard = loadKeyboard(Layout.EN_US);
     const model = new FakePhoneticModel();
     const wordList = ["abc", "def", "ghi"];
     const lesson = new WordListLesson(settings, keyboard, model, wordList);
     lesson.rng = model.rng;
 
-    t.is(
+    assert.strictEqual(
       lesson.generate(),
       "Abc, Def, Ghi! Abc, Def, Ghi! Abc, Def, Ghi! Abc, Def, Ghi! Abc, Def, " +
         "Ghi! Abc, Def, Ghi! Abc, Def, Ghi! Abc, Def, Ghi! Abc,",
     );
-  }
+  });
 });

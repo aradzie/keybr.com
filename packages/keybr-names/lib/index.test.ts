@@ -19,7 +19,7 @@ test("generate names", () => {
   }
 });
 
-test("generate names from seed", (t) => {
+test("generate names from seed", () => {
   strictEqual(generateName({ seed: 123 }), generateName({ seed: 123 }));
   notStrictEqual(generateName({ seed: 123 }), generateName({ seed: 456 }));
 });

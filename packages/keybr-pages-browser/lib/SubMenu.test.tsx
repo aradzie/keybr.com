@@ -1,11 +1,12 @@
+import { test } from "node:test";
 import { FakeIntlProvider, PreferredLocaleContext } from "@keybr/intl";
 import { PageDataContext } from "@keybr/pages-shared";
 import { render } from "@testing-library/react";
-import test from "ava";
+import { assert } from "chai";
 import { MemoryRouter } from "react-router";
 import { SubMenu } from "./SubMenu.tsx";
 
-test("render", (t) => {
+test("render", () => {
   const r = render(
     <PageDataContext.Provider
       value={{
@@ -31,8 +32,8 @@ test("render", (t) => {
     </PageDataContext.Provider>,
   );
 
-  t.not(r.queryByText("Polski"), null);
-  t.not(r.queryByText("English"), null);
+  assert.isNotNull(r.queryByText("Polski"));
+  assert.isNotNull(r.queryByText("English"));
 
   r.unmount();
 });

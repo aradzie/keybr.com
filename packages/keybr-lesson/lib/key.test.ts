@@ -1,10 +1,11 @@
+import { test } from "node:test";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
-import test from "ava";
+import { assert } from "chai";
 import { LessonKey, LessonKeys } from "./key.ts";
 
 const { letter1, letter2, letter3 } = FakePhoneticModel;
 
-test("mutate lesson keys", (t) => {
+test("mutate lesson keys", () => {
   // Arrange.
 
   const keys = new LessonKeys([
@@ -40,8 +41,8 @@ test("mutate lesson keys", (t) => {
 
   // Assert.
 
-  t.deepEqual(keys.letters, [letter1, letter2, letter3]);
-  t.deepEqual(
+  assert.deepStrictEqual(keys.letters, [letter1, letter2, letter3]);
+  assert.deepStrictEqual(
     [...keys],
     [
       new LessonKey({
@@ -79,7 +80,7 @@ test("mutate lesson keys", (t) => {
       }),
     ],
   );
-  t.deepEqual(keys.findIncludedKeys(), [
+  assert.deepStrictEqual(keys.findIncludedKeys(), [
     new LessonKey({
       letter: letter1,
       samples: [],
@@ -92,7 +93,7 @@ test("mutate lesson keys", (t) => {
       isFocused: true,
     }),
   ]);
-  t.deepEqual(keys.findExcludedKeys(), [
+  assert.deepStrictEqual(keys.findExcludedKeys(), [
     new LessonKey({
       letter: letter2,
       samples: [],
@@ -116,7 +117,7 @@ test("mutate lesson keys", (t) => {
       isFocused: false,
     }),
   ]);
-  t.deepEqual(
+  assert.deepStrictEqual(
     keys.findFocusedKey(),
     new LessonKey({
       letter: letter1,

@@ -1,14 +1,15 @@
+import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { LessonKey, LessonKeys } from "@keybr/lesson";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { FakeSettingsContext } from "@keybr/settings";
 import { render } from "@testing-library/react";
-import test from "ava";
+import { assert } from "chai";
 import { KeySet } from "./KeySet.tsx";
 
-const { letters } = FakePhoneticModel;
+test("render", () => {
+  const { letters } = FakePhoneticModel;
 
-test.serial("render", (t) => {
   const lessonKeys = new LessonKeys([
     new LessonKey({
       letter: letters[0],
@@ -52,9 +53,9 @@ test.serial("render", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.not(r.queryByText("A"), null);
-  t.not(r.queryByText("B"), null);
-  t.not(r.queryByText("C"), null);
+  assert.isNotNull(r.queryByText("A"));
+  assert.isNotNull(r.queryByText("B"));
+  assert.isNotNull(r.queryByText("C"));
 
   r.unmount();
 });

@@ -1,11 +1,12 @@
+import { test } from "node:test";
 import { NotFoundError } from "@fastr/errors";
 import { Manifest, ManifestContext } from "@keybr/assets";
-import test from "ava";
+import { assert } from "chai";
 import { load } from "cheerio";
 import { renderToStaticMarkup } from "react-dom/server";
 import { ErrorPage, inspectError } from "./ErrorPage.tsx";
 
-test("render", (t) => {
+test("render", () => {
   const html = renderToStaticMarkup(
     <ManifestContext.Provider value={Manifest.fake}>
       <ErrorPage
@@ -20,40 +21,40 @@ test("render", (t) => {
 
   const $ = load(html);
 
-  t.deepEqual($("html").attr(), {
+  assert.deepStrictEqual($("html").attr(), {
     "lang": "en",
     "data-color": "system",
     "data-font": "opensans",
   });
-  t.is($("title").text(), "400 - Bad Request");
-  t.true($("body").text().includes("400 - Bad Request"));
+  assert.strictEqual($("title").text(), "400 - Bad Request");
+  assert.isTrue($("body").text().includes("400 - Bad Request"));
 });
 
-test("inspect error", (t) => {
+test("inspect error", () => {
   // @ts-expect-error Test invalid arguments.
-  t.is(inspectError(undefined), null);
+  assert.isNull(inspectError(undefined));
   // @ts-expect-error Test invalid arguments.
-  t.is(inspectError(null), null);
+  assert.isNull(inspectError(null));
   // @ts-expect-error Test invalid arguments.
-  t.is(inspectError(""), null);
+  assert.isNull(inspectError(""));
   // @ts-expect-error Test invalid arguments.
-  t.is(inspectError([]), null);
+  assert.isNull(inspectError([]));
   // @ts-expect-error Test invalid arguments.
-  t.is(inspectError({}), null);
+  assert.isNull(inspectError({}));
   // @ts-expect-error Test invalid arguments.
-  t.deepEqual(inspectError({ message: "omg" }), {
+  assert.deepStrictEqual(inspectError({ message: "omg" }), {
     message: "omg",
     status: 500,
     expose: false,
     description: null,
   });
-  t.deepEqual(inspectError(new NotFoundError()), {
+  assert.deepStrictEqual(inspectError(new NotFoundError()), {
     message: "Not Found",
     status: 404,
     expose: true,
     description: null,
   });
-  t.deepEqual(
+  assert.deepStrictEqual(
     inspectError(
       new NotFoundError("OMG", {
         expose: false,

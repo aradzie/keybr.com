@@ -1,10 +1,11 @@
+import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { render } from "@testing-library/react";
-import test from "ava";
+import { assert } from "chai";
 import { MemoryRouter } from "react-router";
 import { UserName } from "./UserName.tsx";
 
-test.serial("render anonymous user", (t) => {
+test("render anonymous user", () => {
   const r = render(
     <FakeIntlProvider>
       <MemoryRouter>
@@ -20,12 +21,12 @@ test.serial("render anonymous user", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.not(r.queryByTitle("Anonymous User"), null);
+  assert.isNotNull(r.queryByTitle("Anonymous User"));
 
   r.unmount();
 });
 
-test.serial("render named user", (t) => {
+test("render named user", () => {
   const r = render(
     <FakeIntlProvider>
       <MemoryRouter>
@@ -42,7 +43,7 @@ test.serial("render named user", (t) => {
     </FakeIntlProvider>,
   );
 
-  t.not(r.queryByTitle("somebody"), null);
+  assert.isNotNull(r.queryByTitle("somebody"));
 
   r.unmount();
 });

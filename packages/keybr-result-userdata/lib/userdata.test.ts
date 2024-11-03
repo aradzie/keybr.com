@@ -9,14 +9,14 @@ import { exists, removeDir, touch } from "@sosimple/fsx";
 import { assert } from "chai";
 import { type UserData, UserDataFactory } from "./index.ts";
 
-const testDataDir = process.env.DATA_DIR ?? "/tmp/keybr";
+const tmp = process.env.DATA_DIR ?? "/tmp/keybr";
 
 test.beforeEach(async () => {
-  await removeDir(testDataDir);
+  await removeDir(tmp);
 });
 
 test.afterEach(async () => {
-  await removeDir(testDataDir);
+  await removeDir(tmp);
 });
 
 test.after(() => {
@@ -27,7 +27,7 @@ test("handle missing data file", async () => {
   // Arrange.
 
   const id = new PublicId(1);
-  const factory = new UserDataFactory(new DataDir(testDataDir));
+  const factory = new UserDataFactory(new DataDir(tmp));
   const userData = factory.load(id);
 
   // Assert.
@@ -40,7 +40,7 @@ test("append new results", async () => {
   // Arrange.
 
   const id = new PublicId(1);
-  const factory = new UserDataFactory(new DataDir(testDataDir));
+  const factory = new UserDataFactory(new DataDir(tmp));
   const userData = factory.load(id);
   const faker = new ResultFaker();
   const results = [faker.nextResult(), faker.nextResult(), faker.nextResult()];
@@ -68,7 +68,7 @@ test("delete missing file", async () => {
   // Arrange.
 
   const id = new PublicId(1);
-  const factory = new UserDataFactory(new DataDir(testDataDir));
+  const factory = new UserDataFactory(new DataDir(tmp));
   const name = factory.getFile(id).name;
   const userData = factory.load(id);
 
@@ -93,7 +93,7 @@ test("delete existing file", async () => {
   // Arrange.
 
   const id = new PublicId(1);
-  const factory = new UserDataFactory(new DataDir(testDataDir));
+  const factory = new UserDataFactory(new DataDir(tmp));
   const name = factory.getFile(id).name;
   const userData = factory.load(id);
   const faker = new ResultFaker();
@@ -124,7 +124,7 @@ test("delete existing file second time", async () => {
   // Arrange.
 
   const id = new PublicId(1);
-  const factory = new UserDataFactory(new DataDir(testDataDir));
+  const factory = new UserDataFactory(new DataDir(tmp));
   const name = factory.getFile(id).name;
   const userData = factory.load(id);
   const faker = new ResultFaker();
@@ -157,7 +157,7 @@ test("serve", async () => {
   // Arrange.
 
   const id = new PublicId(1);
-  const factory = new UserDataFactory(new DataDir(testDataDir));
+  const factory = new UserDataFactory(new DataDir(tmp));
   const userData = factory.load(id);
   const app = new Application();
   app.use(async (ctx) => {

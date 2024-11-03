@@ -1,7 +1,8 @@
+import { test } from "node:test";
 import { useTheme } from "@keybr/themes";
 import { render } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import test from "ava";
+import { assert } from "chai";
 import { ThemeProvider } from "./ThemeProvider.tsx";
 
 test.beforeEach(() => {
@@ -26,7 +27,7 @@ test.afterEach(() => {
   document.documentElement.dataset["font"] = "";
 });
 
-test.serial("mount and switch styles", async (t) => {
+test("mount and switch styles", async () => {
   // Act.
 
   const r = render(
@@ -37,8 +38,8 @@ test.serial("mount and switch styles", async (t) => {
 
   // Assert.
 
-  t.is(document.documentElement.dataset["color"], "dark");
-  t.is(document.documentElement.dataset["font"], "spectral");
+  assert.strictEqual(document.documentElement.dataset["color"], "dark");
+  assert.strictEqual(document.documentElement.dataset["font"], "spectral");
 
   // Act.
 
@@ -46,12 +47,12 @@ test.serial("mount and switch styles", async (t) => {
 
   // Assert.
 
-  t.is(
+  assert.strictEqual(
     document.cookie,
     "prefs=%7B%22color%22%3A%22light%22%2C%22font%22%3A%22spectral%22%7D",
   );
-  t.is(document.documentElement.dataset["color"], "light");
-  t.is(document.documentElement.dataset["font"], "spectral");
+  assert.strictEqual(document.documentElement.dataset["color"], "light");
+  assert.strictEqual(document.documentElement.dataset["font"], "spectral");
 
   // Act.
 
@@ -59,19 +60,19 @@ test.serial("mount and switch styles", async (t) => {
 
   // Assert.
 
-  t.is(
+  assert.strictEqual(
     document.cookie,
     "prefs=%7B%22color%22%3A%22light%22%2C%22font%22%3A%22opensans%22%7D",
   );
-  t.is(document.documentElement.dataset["color"], "light");
-  t.is(document.documentElement.dataset["font"], "opensans");
+  assert.strictEqual(document.documentElement.dataset["color"], "light");
+  assert.strictEqual(document.documentElement.dataset["font"], "opensans");
 
   // Cleanup.
 
   r.unmount();
 });
 
-test.serial("ignore invalid cookie value", (t) => {
+test("ignore invalid cookie value", () => {
   // Arrange.
 
   document.cookie = "prefs=%%%garbage%%%";
@@ -86,7 +87,7 @@ test.serial("ignore invalid cookie value", (t) => {
 
   // Assert.
 
-  t.is(document.cookie, "prefs=%%%garbage%%%");
+  assert.strictEqual(document.cookie, "prefs=%%%garbage%%%");
 
   // Cleanup.
 

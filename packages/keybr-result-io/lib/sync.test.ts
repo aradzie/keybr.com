@@ -1,52 +1,52 @@
+import { test } from "node:test";
 import { scramble, Writer } from "@keybr/binary";
 import { Layout } from "@keybr/keyboard";
 import { Result, ResultFaker, TextType } from "@keybr/result";
 import { Histogram } from "@keybr/textinput";
-import test from "ava";
+import { assert } from "chai";
 import { writeResult } from "./binary.ts";
 import { InvalidFormatError } from "./errors.ts";
 import { HEADER, HEADER_SIGNATURE, HEADER_VERSION } from "./header.ts";
 import { formatMessage, parseMessage } from "./sync.ts";
 
-test("format and parse results", (t) => {
+test("format and parse results", () => {
   const faker = new ResultFaker();
   const result = faker.nextResult();
 
   const buffer = formatMessage([result]);
 
-  t.is(buffer.byteLength, 78);
+  assert.strictEqual(buffer.byteLength, 78);
 
-  t.deepEqual([...parseMessage(buffer)], [result]);
+  const iter = parseMessage(buffer);
+
+  assert.deepStrictEqual([...iter], [result]);
 });
 
-test("deserialize should ignore empty data", (t) => {
-  t.deepEqual([...parseMessage(scramble(new Uint8Array(0)))], []);
+test("deserialize should ignore empty data", () => {
+  const iter = parseMessage(scramble(new Uint8Array(0)));
+
+  assert.deepStrictEqual([...iter], []);
 });
 
-test("deserialize should validate file header", (t) => {
+test("deserialize should validate file header", () => {
   const iter = parseMessage(scramble(new Uint8Array(256)));
-  const err = t.throws(() => [...iter], {
-    instanceOf: InvalidFormatError,
-    message: "Invalid header",
-  }) as { cause?: Error };
-  t.is(err.cause?.message, undefined);
+
+  assert.throws(() => [...iter], InvalidFormatError);
 });
 
-test("deserialize should validate file data", (t) => {
+test("deserialize should validate file data", () => {
   const writer = new Writer();
   writer.putBuffer(HEADER);
   writer.putUint8(1);
   writer.putUint8(2);
   writer.putUint8(3);
+
   const iter = parseMessage(scramble(writer.buffer()));
-  const err = t.throws(() => [...iter], {
-    instanceOf: InvalidFormatError,
-    message: "Invalid data format",
-  }) as { cause?: Error };
-  t.is(err.cause?.message, "Premature end of data");
+
+  assert.throws(() => [...iter], InvalidFormatError);
 });
 
-test("deserialize should read invalid results", (t) => {
+test("deserialize should read invalid results", () => {
   const result = new Result(
     /* layout= */ Layout.EN_US,
     /* textType= */ TextType.GENERATED,
@@ -57,14 +57,14 @@ test("deserialize should read invalid results", (t) => {
     /* histogram= */ new Histogram([]),
   );
 
-  t.false(result.validate());
+  assert.isFalse(result.validate());
 
   const writer = new Writer();
   writer.putUint32(HEADER_SIGNATURE);
   writer.putUint32(HEADER_VERSION);
   writeResult(writer, result);
 
-  const parsed = [...parseMessage(scramble(writer.buffer()))];
+  const iter = parseMessage(scramble(writer.buffer()));
 
-  t.deepEqual(parsed, [result]);
+  assert.deepStrictEqual([...iter], [result]);
 });

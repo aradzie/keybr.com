@@ -1,11 +1,12 @@
+import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { PageDataContext } from "@keybr/pages-shared";
 import { render } from "@testing-library/react";
-import test from "ava";
+import { assert } from "chai";
 import { MemoryRouter } from "react-router";
 import { Template } from "./Template.tsx";
 
-test("render", (t) => {
+test("render", () => {
   const r = render(
     <PageDataContext.Provider
       value={{
@@ -30,12 +31,12 @@ test("render", (t) => {
     </PageDataContext.Provider>,
   );
 
-  t.not(r.queryByText("hello"), null);
+  assert.isNotNull(r.queryByText("hello"));
 
   r.unmount();
 });
 
-test("render alt", (t) => {
+test("render alt", () => {
   const r = render(
     <PageDataContext.Provider
       value={{
@@ -61,7 +62,7 @@ test("render alt", (t) => {
     </PageDataContext.Provider>,
   );
 
-  t.not(r.queryByText("hello"), null);
+  assert.isNotNull(r.queryByText("hello"));
 
   r.unmount();
 });

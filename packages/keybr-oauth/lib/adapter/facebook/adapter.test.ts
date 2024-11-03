@@ -23,7 +23,7 @@ const accessToken = new AccessToken({
   expires_in: 1000,
 });
 
-test("load user profile", async (t) => {
+test("load user profile", async () => {
   // Arrange.
 
   const raw: FacebookProfileResponse = {
@@ -61,7 +61,7 @@ test("load user profile", async (t) => {
   } satisfies ResourceOwner<FacebookProfileResponse>);
 });
 
-test("load minimal user profile", async (t) => {
+test("load minimal user profile", async () => {
   // Arrange.
 
   const raw: FacebookProfileResponse = {
@@ -87,7 +87,7 @@ test("load minimal user profile", async (t) => {
   } satisfies ResourceOwner<FacebookProfileResponse>);
 });
 
-test("handle errors", async (t) => {
+test("handle errors", async () => {
   // Arrange.
 
   useAdapter(

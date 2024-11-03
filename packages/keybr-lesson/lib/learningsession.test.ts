@@ -1,12 +1,13 @@
+import { test } from "node:test";
 import { generateKeySamples, type KeySample } from "@keybr/result";
-import test from "ava";
+import { assert } from "chai";
 import { findSession } from "./learningsession.ts";
 
-test("find session, no samples", (t) => {
-  t.deepEqual(findSession([]), []);
+test("find session, no samples", () => {
+  assert.deepStrictEqual(findSession([]), []);
 });
 
-test("find session, one sample", (t) => {
+test("find session, one sample", () => {
   const samples: KeySample[] = [
     {
       index: 100,
@@ -17,10 +18,10 @@ test("find session, one sample", (t) => {
       filteredTimeToType: 500,
     },
   ];
-  t.deepEqual(findSession(samples), samples);
+  assert.deepStrictEqual(findSession(samples), samples);
 });
 
-test("find session, after a break", (t) => {
+test("find session, after a break", () => {
   const samples: KeySample[] = [
     {
       index: 100,
@@ -39,10 +40,10 @@ test("find session, after a break", (t) => {
       filteredTimeToType: 500,
     },
   ];
-  t.deepEqual(findSession(samples), samples.slice(-1));
+  assert.deepStrictEqual(findSession(samples), samples.slice(-1));
 });
 
-test("find session, increasing speed streak", (t) => {
+test("find session, increasing speed streak", () => {
   const samples = [
     {
       index: 100,
@@ -59,5 +60,5 @@ test("find session, increasing speed streak", (t) => {
       timeToTypeStep: +10,
     }),
   ];
-  t.deepEqual(findSession(samples), samples.slice(1));
+  assert.deepStrictEqual(findSession(samples), samples.slice(1));
 });

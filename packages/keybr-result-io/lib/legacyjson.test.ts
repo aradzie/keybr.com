@@ -1,12 +1,13 @@
+import { test } from "node:test";
 import { ResultFaker } from "@keybr/result";
-import test from "ava";
+import { assert } from "chai";
 import {
   histogramFromJson,
   resultFromJson,
   resultToJson,
 } from "./legacyjson.ts";
 
-test("deserialize valid JSON", (t) => {
+test("deserialize valid JSON", () => {
   const faker = new ResultFaker();
   const result = faker.nextResult();
 
@@ -14,81 +15,72 @@ test("deserialize valid JSON", (t) => {
 
   const copy = resultFromJson(json);
 
-  t.deepEqual(copy, result);
+  assert.deepStrictEqual(copy, result);
 });
 
-test("ignore invalid result JSON", (t) => {
+test("ignore invalid result JSON", () => {
   const faker = new ResultFaker();
   const json = resultToJson(faker.nextResult());
 
-  t.is(
+  assert.isNull(
     // @ts-expect-error Test invalid arguments.
     resultFromJson(undefined),
-    null,
   );
-  t.is(
+  assert.isNull(
     // @ts-expect-error Test invalid arguments.
     resultFromJson(null),
-    null,
   );
-  t.is(
+  assert.isNull(
     // @ts-expect-error Test invalid arguments.
     resultFromJson(""),
-    null,
   );
-  t.is(
+  assert.isNull(
     // @ts-expect-error Test invalid arguments.
     resultFromJson(0),
-    null,
   );
-  t.is(
+  assert.isNull(
     // @ts-expect-error Test invalid arguments.
     resultFromJson([]),
-    null,
   );
-  t.is(
+  assert.isNull(
     // @ts-expect-error Test invalid arguments.
     resultFromJson({}),
-    null,
   );
-  t.is(resultFromJson({ ...json, l: "x" }), null);
-  t.is(resultFromJson({ ...json, m: "x" }), null);
-  t.is(resultFromJson({ ...json, ts: 0.1 }), null);
-  t.is(resultFromJson({ ...json, n: 0.1 }), null);
-  t.is(resultFromJson({ ...json, t: 0.1 }), null);
-  t.is(resultFromJson({ ...json, e: 0.1 }), null);
-  t.is(
+  assert.isNull(resultFromJson({ ...json, l: "x" }));
+  assert.isNull(resultFromJson({ ...json, m: "x" }));
+  assert.isNull(resultFromJson({ ...json, ts: 0.1 }));
+  assert.isNull(resultFromJson({ ...json, n: 0.1 }));
+  assert.isNull(resultFromJson({ ...json, t: 0.1 }));
+  assert.isNull(resultFromJson({ ...json, e: 0.1 }));
+  assert.isNull(
     // @ts-expect-error Test invalid arguments.
     resultFromJson({ ...json, h: null }),
-    null,
   );
 });
 
-test("ignore invalid histogram JSON", (t) => {
+test("ignore invalid histogram JSON", () => {
   const faker = new ResultFaker();
   const json = resultToJson(faker.nextResult());
 
-  t.is(
+  assert.isNull(
     // @ts-expect-error Test invalid arguments.
     histogramFromJson(undefined),
-    null,
   );
-  t.is(
+  assert.isNull(
     // @ts-expect-error Test invalid arguments.
     histogramFromJson(null),
-    null,
   );
-  t.is(
+  assert.isNull(
     // @ts-expect-error Test invalid arguments.
     histogramFromJson(""),
-    null,
   );
-  t.is(
+  assert.isNull(
     // @ts-expect-error Test invalid arguments.
     histogramFromJson(0),
-    null,
   );
-  t.is(histogramFromJson([]), null);
-  t.is(histogramFromJson({ ...json.h, 0: { h: 1, m: 1, t: 100 } }), null);
-  t.is(histogramFromJson({ ...json.h, 97: { h: 0.1, m: 0.1, t: 100 } }), null);
+  assert.isNull(histogramFromJson([]));
+  assert.isNull(histogramFromJson({ ...json.h, 0: { h: 1, m: 1, t: 100 } }));
+  assert.isNull(
+    histogramFromJson({ ...json.h, 97: { h: 0.1, m: 0.1, t: 100 } }),
+  );
 });

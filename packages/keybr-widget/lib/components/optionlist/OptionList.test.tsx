@@ -1,6 +1,7 @@
+import { test } from "node:test";
 import { fireEvent, render } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import test from "ava";
+import { assert } from "chai";
 import { useState } from "react";
 import { OptionList } from "./OptionList.tsx";
 import { type OptionListOption } from "./OptionList.types.ts";
@@ -16,41 +17,41 @@ const options: readonly OptionListOption[] = [
   },
 ];
 
-test.serial("props", (t) => {
+test("props", () => {
   const r = render(
     <OptionList options={options} value="1" title="underTest" />,
   );
   const element = r.getByTitle("underTest");
 
-  t.is(element.textContent, "One►");
+  assert.strictEqual(element.textContent, "One►");
   r.rerender(<OptionList options={options} value="2" />);
-  t.is(element.textContent, "Two►");
+  assert.strictEqual(element.textContent, "Two►");
   r.rerender(<OptionList options={options} value="X" />);
-  t.is(element.textContent, "-►");
+  assert.strictEqual(element.textContent, "-►");
 
   r.unmount();
 });
 
-test.serial("interactions", async (t) => {
+test("interactions", async () => {
   const r = render(
     <OptionList options={options} value="1" title="underTest" />,
   );
   const element = r.getByTitle("underTest");
 
-  t.is(r.queryByRole("menu"), null);
+  assert.isNull(r.queryByRole("menu"));
   await userEvent.click(r.getByText("One"));
-  t.not(r.queryByRole("menu"), null);
+  assert.isNotNull(r.queryByRole("menu"));
   await userEvent.click(r.getByText("Two"));
-  t.is(r.queryByRole("menu"), null);
+  assert.isNull(r.queryByRole("menu"));
   fireEvent.keyDown(element, { code: "Space" });
-  t.not(r.queryByRole("menu"), null);
+  assert.isNotNull(r.queryByRole("menu"));
   fireEvent.keyDown(element, { code: "Space" });
-  t.is(r.queryByRole("menu"), null);
+  assert.isNull(r.queryByRole("menu"));
 
   r.unmount();
 });
 
-test.serial("controlled", async (t) => {
+test("controlled", async () => {
   let lastValue = "1";
 
   function Controlled() {
@@ -70,33 +71,33 @@ test.serial("controlled", async (t) => {
   const r = render(<Controlled />);
   const element = r.getByTitle("underTest");
 
-  t.is(r.queryByRole("menu"), null);
+  assert.isNull(r.queryByRole("menu"));
   await userEvent.click(r.getByText("One"));
-  t.not(r.queryByRole("menu"), null);
+  assert.isNotNull(r.queryByRole("menu"));
   await userEvent.click(r.getByText("Two"));
-  t.is(lastValue, "2");
+  assert.strictEqual(lastValue, "2");
 
-  t.is(r.queryByRole("menu"), null);
+  assert.isNull(r.queryByRole("menu"));
   await userEvent.click(r.getByText("Two"));
-  t.not(r.queryByRole("menu"), null);
+  assert.isNotNull(r.queryByRole("menu"));
   await userEvent.click(r.getByText("One"));
-  t.is(lastValue, "1");
+  assert.strictEqual(lastValue, "1");
 
-  t.is(r.queryByRole("menu"), null);
+  assert.isNull(r.queryByRole("menu"));
   fireEvent.keyDown(element, { code: "ArrowUp" });
-  t.not(r.queryByRole("menu"), null);
+  assert.isNotNull(r.queryByRole("menu"));
   await userEvent.click(r.getByText("Two"));
-  t.is(lastValue, "2");
+  assert.strictEqual(lastValue, "2");
 
   fireEvent.keyDown(element, { code: "Space" });
   fireEvent.keyDown(element, { code: "Home" });
   fireEvent.keyDown(element, { code: "Enter" });
-  t.is(lastValue, "1");
+  assert.strictEqual(lastValue, "1");
 
   fireEvent.keyDown(element, { code: "Space" });
   fireEvent.keyDown(element, { code: "End" });
   fireEvent.keyDown(element, { code: "Enter" });
-  t.is(lastValue, "2");
+  assert.strictEqual(lastValue, "2");
 
   r.unmount();
 });

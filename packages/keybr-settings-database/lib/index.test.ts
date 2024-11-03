@@ -1,24 +1,25 @@
+import { test } from "node:test";
 import { DataDir } from "@keybr/config";
 import { Settings, stringProp } from "@keybr/settings";
 import { removeDir } from "@sosimple/fsx";
 import { File } from "@sosimple/fsx-file";
-import test from "ava";
+import { assert } from "chai";
 import { SettingsDatabase } from "./index.ts";
 
-const testDataDir = process.env.DATA_DIR ?? "/tmp/keybr";
+const tmp = process.env.DATA_DIR ?? "/tmp/keybr";
 
 test.beforeEach(async () => {
-  await removeDir(testDataDir);
+  await removeDir(tmp);
 });
 
 test.afterEach(async () => {
-  await removeDir(testDataDir);
+  await removeDir(tmp);
 });
 
-test.serial("delete settings", async (t) => {
+test("delete settings", async () => {
   // Arrange.
 
-  const dataDir = new DataDir(testDataDir);
+  const dataDir = new DataDir(tmp);
   const database = new SettingsDatabase(dataDir);
   const file = new File(dataDir.userSettingsFile(123));
   await file.write("something");
@@ -29,13 +30,13 @@ test.serial("delete settings", async (t) => {
 
   // Assert.
 
-  t.false(await file.exists());
+  assert.isFalse(await file.exists());
 });
 
-test.serial("save new settings", async (t) => {
+test("save new settings", async () => {
   // Arrange.
 
-  const dataDir = new DataDir(testDataDir);
+  const dataDir = new DataDir(tmp);
   const database = new SettingsDatabase(dataDir);
   const file = new File(dataDir.userSettingsFile(123));
   await file.delete();
@@ -45,13 +46,13 @@ test.serial("save new settings", async (t) => {
 
   // Assert.
 
-  t.like(await file.readJson(), { prop: "xyz" });
+  assert.deepStrictEqual(await file.readJson(), { prop: "xyz" });
 });
 
-test.serial("update existing settings", async (t) => {
+test("update existing settings", async () => {
   // Arrange.
 
-  const dataDir = new DataDir(testDataDir);
+  const dataDir = new DataDir(tmp);
   const database = new SettingsDatabase(dataDir);
   const file = new File(dataDir.userSettingsFile(123));
   await file.write("something");
@@ -61,13 +62,13 @@ test.serial("update existing settings", async (t) => {
 
   // Assert.
 
-  t.like(await file.readJson(), { prop: "xyz" });
+  assert.deepStrictEqual(await file.readJson(), { prop: "xyz" });
 });
 
-test.serial("read missing settings", async (t) => {
+test("read missing settings", async () => {
   // Arrange.
 
-  const dataDir = new DataDir(testDataDir);
+  const dataDir = new DataDir(tmp);
   const database = new SettingsDatabase(dataDir);
   const file = new File(dataDir.userSettingsFile(123));
   await file.delete();
@@ -78,13 +79,13 @@ test.serial("read missing settings", async (t) => {
 
   // Assert.
 
-  t.is(settings, null);
+  assert.isNull(settings);
 });
 
-test.serial("read existing settings", async (t) => {
+test("read existing settings", async () => {
   // Arrange.
 
-  const dataDir = new DataDir(testDataDir);
+  const dataDir = new DataDir(tmp);
   const database = new SettingsDatabase(dataDir);
   const file = new File(dataDir.userSettingsFile(123));
   await file.writeJson(
@@ -97,5 +98,5 @@ test.serial("read existing settings", async (t) => {
 
   // Assert.
 
-  t.like(settings?.toJSON(), { prop: "xyz" });
+  assert.deepStrictEqual(settings?.toJSON(), { prop: "xyz" });
 });
