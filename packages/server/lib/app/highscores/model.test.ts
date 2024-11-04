@@ -1,5 +1,5 @@
 import { test } from "node:test";
-import { useDatabase } from "@keybr/database/lib/testing/index.ts";
+import { useDatabase } from "@keybr/database/lib/testing.ts";
 import { assert } from "chai";
 import { mapEntries } from "./model.ts";
 

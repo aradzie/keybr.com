@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import { assert } from "chai";
 import { InputHandler } from "./inputhandler.ts";
-import { fakeEvent, type FakeEventInit, tracingListener } from "./testing/fakes.ts";
+import { fakeEvent, type FakeEventInit, tracingListener } from "./testing.ts";
 
 test("handle a normal input", () => {
   // Arrange.

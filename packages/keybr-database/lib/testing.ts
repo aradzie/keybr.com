@@ -1,8 +1,8 @@
 import { after, before, beforeEach } from "node:test";
 import { makeKnex } from "@keybr/config";
 import { Model } from "objection";
-import { Order, User, UserExternalId, UserLoginRequest } from "../model.ts";
-import { createSchema } from "../schema.ts";
+import { Order, User, UserExternalId, UserLoginRequest } from "./model.ts";
+import { createSchema } from "./schema.ts";
 
 export function useDatabase() {
   const knex = makeKnex();

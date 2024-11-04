@@ -1,7 +1,7 @@
 import { afterEach, beforeEach } from "node:test";
 import { Container } from "@fastr/invert";
 import { ConfigModule } from "@keybr/config";
-import { useDatabase } from "@keybr/database/lib/testing/index.ts";
+import { useDatabase } from "@keybr/database/lib/testing.ts";
 import { removeDir } from "@sosimple/fsx";
 import { ServerModule } from "../../server/module.ts";
 import { Mailer } from "../mail/index.ts";

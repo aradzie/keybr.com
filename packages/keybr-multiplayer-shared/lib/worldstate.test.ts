@@ -9,7 +9,7 @@ import {
   PLAYER_JOIN_ID,
   PLAYER_LEAVE_ID,
 } from "./messages.ts";
-import { player1, player2, player3 } from "./testing/data.ts";
+import { player1, player2, player3 } from "./testing.ts";
 import {
   handleTextInput,
   makeWorldState,

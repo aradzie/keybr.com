@@ -5,7 +5,7 @@ import {
   player1,
   player2,
   player3,
-} from "@keybr/multiplayer-shared/lib/testing/data.ts";
+} from "@keybr/multiplayer-shared/lib/testing.ts";
 import { act, render } from "@testing-library/react";
 import { assert } from "chai";
 import { DeferredTrack, Track } from "./Track.tsx";

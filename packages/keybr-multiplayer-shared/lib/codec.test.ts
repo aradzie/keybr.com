@@ -28,7 +28,7 @@ import {
   playerState1,
   playerState2,
   playerState3,
-} from "./testing/data.ts";
+} from "./testing.ts";
 import { type PlayerState } from "./types.ts";
 
 const clientCodec = new ClientCodec();

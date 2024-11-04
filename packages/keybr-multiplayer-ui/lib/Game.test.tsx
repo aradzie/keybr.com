@@ -14,7 +14,7 @@ import {
   player1,
   player2,
   player3,
-} from "@keybr/multiplayer-shared/lib/testing/data.ts";
+} from "@keybr/multiplayer-shared/lib/testing.ts";
 import { FakeSettingsContext } from "@keybr/settings";
 import { act, render } from "@testing-library/react";
 import { assert } from "chai";

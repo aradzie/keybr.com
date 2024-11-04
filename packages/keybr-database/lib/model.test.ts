@@ -4,7 +4,7 @@ import { assert, expect, use } from "chai";
 import chaiLike from "chai-like";
 import { ValidationError } from "objection";
 import { User, UserExternalId, UserLoginRequest } from "./model.ts";
-import { useDatabase } from "./testing/index.ts";
+import { useDatabase } from "./testing.ts";
 import { Random } from "./util.ts";
 
 use(chaiLike);

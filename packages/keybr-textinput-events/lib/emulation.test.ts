@@ -3,7 +3,7 @@ import { Emulation, keyboardProps, Layout, loadKeyboard } from "@keybr/keyboard"
 import { Settings } from "@keybr/settings";
 import { assert } from "chai";
 import { emulateLayout } from "./emulation.ts";
-import { tracingListener } from "./testing/fakes.ts";
+import { tracingListener } from "./testing.ts";
 import { type IInputEvent, type IKeyboardEvent, type InputListener } from "./types.ts";
 
 test("forward emulation, translate a character input", () => {

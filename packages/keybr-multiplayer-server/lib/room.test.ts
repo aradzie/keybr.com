@@ -18,7 +18,7 @@ import { type AnonymousUser } from "@keybr/pages-shared";
 import { Game } from "./game.ts";
 import { Player } from "./player.ts";
 import { Room } from "./room.ts";
-import { FakeSession } from "./testing/fake-session.ts";
+import { FakeSession } from "./testing.ts";
 
 Room.nextQuote = () => "abc";
 

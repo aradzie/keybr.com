@@ -3,7 +3,7 @@ import {
   type IKeyboardEvent,
   type InputListener,
   type ModifierId,
-} from "../types.ts";
+} from "./types.ts";
 
 export class FakeEvent {
   readonly isTrusted: boolean = true;

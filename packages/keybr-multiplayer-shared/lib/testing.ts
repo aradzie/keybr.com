@@ -1,5 +1,5 @@
 import { type AnonymousUser, type NamedUser } from "@keybr/pages-shared";
-import { type BasicPlayer, type Player, type PlayerState } from "../types.ts";
+import { type BasicPlayer, type Player, type PlayerState } from "./types.ts";
 
 export const user1 = Object.freeze<NamedUser>({
   id: "id1",

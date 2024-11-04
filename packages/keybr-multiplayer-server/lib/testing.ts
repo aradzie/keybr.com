@@ -1,6 +1,6 @@
 import { type ServerMessage } from "@keybr/multiplayer-shared";
 import { type AnyUser } from "@keybr/pages-shared";
-import { type Session } from "../types.ts";
+import { type Session } from "./types.ts";
 
 export class FakeSession implements Session {
   readonly id: string = "id";
