@@ -3,8 +3,6 @@
   "account.anonymize.description": "Anonimizarea inlocuieste imaginea și numele dvs. reale de utilizator cu cele pe care vi le oferim. Puteti comuta între numele dvs. real și cel anonim de oricate ori doriti",
   "account.anonymousUserName": "Utilizator anonim",
   "account.avatar.description": "Imaginea și numele dvs. de utilizator, așa cum sunt vizibile pentru public în profilul dvs., tabelul cu scoruri mari și jocul multiplayer.",
-  "account.checkout.description": "Achiziționați un cont premium pentru a debloca funcții suplimentare și pentru a vă bucura de o experiență fără reclame.",
-  "account.checkout.title": "Cont Premium",
   "account.deleteAccount.description": "Aceasta va șterge toate informațiile dvs. de identificare personală, cum ar fi numele și adresa dvs. de e-mail din baza noastră de date. Această operațiune nu poate fi anulată! Dacă doriți doar să ștergeți statisticile de tastare și să o luați de la capăt, puteți face acest lucru pe pagina de profil.",
   "account.deleteAccount.legend": "Sterge cont",
   "account.deleteAccount.message": "Esti sigur ca vrei sa iti stergi contul? Aceasta operatiune este permanenta si nu poate fi anulata! Cu toate acestea, puteți crea un cont nou în orice moment",

@@ -5,8 +5,6 @@
   "account.anonymize.description": "Anonymizace nahradí váš avatar a jméno tím, které vám dáme. Mezi svým skutečným a anonymním jménem můžete přepínat kolikrát chcete.",
   "account.anonymousUserName": "Anonymní uživatel",
   "account.avatar.description": "Váš avatar a jméno, jak jsou viditelné pro všechny na vašem profilu, v tabulce nejlepších výsledků a ve hře pro více hráčů.",
-  "account.checkout.description": "Zakoupením prémiového účtu odemknete další funkce a užijete si zážitek bez reklam.",
-  "account.checkout.title": "Prémiový účet",
   "account.deleteAccount.description": "Touto volbou se z naší databáze odstraní všechny vaše osobní údaje, jako je vaše jméno a e-mailová adresa. Tuto operaci nelze vzít zpět! Pokud chcete pouze vymazat statistiky psaní a začít znovu, můžete to provést na stránce profilu.",
   "account.deleteAccount.legend": "Smazat účet",
   "account.deleteAccount.message": "Určitě chcete svůj účet smazat? Tato operace je trvalá a nelze ji vzít zpět! Můžete si však kdykoli vytvořit nový účet.",

@@ -5,8 +5,6 @@
   "account.anonymize.description": "匿名化会将您的真实用户头像和姓名替换为我们为您提供的图像和名称。您可以在真实姓名和匿名姓名之间任意切换。",
   "account.anonymousUserName": "匿名用户",
   "account.avatar.description": "您的头像和昵称将在排行榜和多人游戏中对他人公开可见。",
-  "account.checkout.description": "购买高级帐户以解锁附加功能并享受无广告体验。",
-  "account.checkout.title": "高级账户",
   "account.deleteAccount.description": "这将从我们的数据库中删除您的所有个人身份信息，例如您的姓名和电子邮件地址。此操作无法撤消！如果您只想清除打字统计数据并重新开始，您可以在个人资料页面上执行该操作。",
   "account.deleteAccount.legend": "删除账户",
   "account.deleteAccount.message": "您确定要删除您的帐户吗？此操作是永久性的，无法撤消！但您可以随时创建一个新帐户。",

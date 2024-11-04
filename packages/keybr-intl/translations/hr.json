@@ -5,8 +5,6 @@
   "account.anonymize.description": "Anonimizacija zamjenjuje vaše pravo korisničko ime sa imenom koje vam mi dodijelimo. Možete se prebacivati između svog pravog i anonimnog imena koliko god puta želite.",
   "account.anonymousUserName": "Anonimni korisnik",
   "account.avatar.description": "Vaša korisnička slika i ime su vidljivi javnosti u vašem profilu, tablici s najboljim rezultatima i multiplayer igri.",
-  "account.checkout.description": "Kupite premium račun da biste otključali dodatne značajke i uživali u doživljaju bez oglasa.",
-  "account.checkout.title": "Premium račun",
   "account.deleteAccount.description": "Ovo će izbrisati sve vaše osobne podatke, kao što su vaše ime i adresa e-pošte iz naše baze podataka. Ovu operaciju nije moguće poništiti! Ako želite samo očistiti statistiku tipkanja i početi ispočetka, to možete učiniti na stranici profila.",
   "account.deleteAccount.legend": "Obriši račun",
   "account.deleteAccount.message": "Jeste li sigurni da želite izbrisati svoj račun? Ova operacija je trajna i ne može se poništiti! Međutim, novi račun možete stvoriti u bilo kojem trenutku.",

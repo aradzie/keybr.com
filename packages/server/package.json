@@ -4,7 +4,6 @@
   "version": "0.0.0",
   "type": "module",
   "dependencies": {
-    "@devoxa/paddle-sdk": "0.4.2",
     "@keybr/assets": "*",
     "@keybr/config": "*",
     "@keybr/database": "*",
@@ -23,6 +22,7 @@
     "@keybr/settings": "*",
     "@keybr/settings-database": "*",
     "@keybr/themes": "*",
+    "@paddle/paddle-node-sdk": "^2.1.2",
     "@types/ws": "^8.5.13",
     "ws": "^8.18.0"
   },

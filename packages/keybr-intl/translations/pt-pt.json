@@ -5,8 +5,6 @@
   "account.anonymize.description": "Anonimização substitui o seu avatar e nome por um fornecido por nós. Pode alterar entre o nome real e o anónimo quando quiser.",
   "account.anonymousUserName": "Utilizador Anónimo",
   "account.avatar.description": "O seu avatar e nome tal como são visíveis ao público no seu perfil, a tabela de pontuações, e o jogo multi-jogador.",
-  "account.checkout.description": "Compre uma conta premium para desbloquear funções adicionais e gozar duma experiência livre de publicidade.",
-  "account.checkout.title": "Conta Premium",
   "account.deleteAccount.description": "Isto irá apagar toda a informação pessoalmente identificável, tal como o seu nome e email da nossa base de dados. Esta operação não pode ser revertida! Se apenas quer limpar as suas estatisticas para um novo início, pode fazê-lo na página de perfil.",
   "account.deleteAccount.legend": "Apagar Conta",
   "account.deleteAccount.message": "Tem a certeza que quer apagar a sua conta? Esta operação é permanente e não pode ser revertida! Poderá criar uma nova conta quando quiser.",

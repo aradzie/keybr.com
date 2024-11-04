@@ -11,7 +11,8 @@
     "@keybr/pages-shared": "*",
     "@keybr/request": "*",
     "@keybr/thirdparties": "*",
-    "@keybr/widget": "*"
+    "@keybr/widget": "*",
+    "@paddle/paddle-js": "^1.3.1"
   },
   "devDependencies": {},
   "scripts": {

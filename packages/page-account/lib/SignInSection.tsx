@@ -1,22 +1,15 @@
 import { Article, Header } from "@keybr/widget";
-import { FormattedMessage, useIntl } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import { AccountName } from "./AccountName.tsx";
+import { AccountPricePreview } from "./AccountPricePreview.tsx";
 import { type SignInActions } from "./actions.ts";
 import { EmailLoginForm } from "./EmailLoginForm.tsx";
-import { FreeAccountOverview } from "./FreeAccountOverview.tsx";
 import { OAuthLoginForm } from "./OAuthLoginForm.tsx";
 
 export function SignInSection({ actions }: { actions: SignInActions }) {
-  const { formatMessage } = useIntl();
-
   return (
     <Article>
-      <AccountName
-        name={formatMessage({
-          id: "account.anonymousUserName",
-          defaultMessage: "Anonymous User",
-        })}
-      />
+      <AccountName user={null} />
 
       <FormattedMessage
         id="account.signInPage.description"
@@ -34,7 +27,20 @@ export function SignInSection({ actions }: { actions: SignInActions }) {
         />
       </Header>
 
-      <FreeAccountOverview />
+      <FormattedMessage
+        id="account.freeAccountOverview"
+        defaultMessage={
+          "<p>Buy a <strong>premium account</strong> to unlock additional features and enjoy an ad-free experience. Here is the list of premium account benefits:</p>" +
+          "<ul>" +
+          "<li><strong>No ads.</strong> Ads may be distracting and impede your learning progress. This is a good way to get rid of them.</li>" +
+          "<li><strong>No trackers.</strong> Trackers inevitably come with ads. Remove all trackers for complete online privacy.</li>" +
+          "<li><strong>Ultra-fast responsiveness.</strong> Ads take quite some time to load. Getting rid of them means faster loading times for all pages.</li>" +
+          "</ul>" +
+          "<p>It is a single time payment that provides lifetime access. It is NOT a recurring subscription.</p>"
+        }
+      />
+
+      <AccountPricePreview />
 
       <Header level={2}>
         <FormattedMessage

@@ -5,8 +5,6 @@
   "account.anonymize.description": "Anonimiĝi anstataŭigas vian realan uzantbildon kaj nomon per oni, ke vi donas al vin. Vi povas ŝangi inter vian realan kaj anoniman nomon iom ajn fojojn.",
   "account.anonymousUserName": "Anonima Uzanto",
   "account.avatar.description": "Via uzantbildo kaj nomo, kiel ili videblas al la publiko en via profilo, la altpoentaro-tablo, kaj la plurludanta ludo.",
-  "account.checkout.description": "Aĉetu premia konto pro malŝlosi kromajn funkciojn kaj ĝui sperton sen reklamoj.",
-  "account.checkout.title": "Premia Konto",
   "account.deleteAccount.description": "Ĉi tio forigas tute de viajn personajn informojn, kiel vian nomon kaj retadreson de nia datumarkonservilo. Ĉi tio agaĵo ne estas malfarebla! Se vi volas nur forigi viajn tajpstatistikaĵojn kaj rekomenci, vi eblas fari ĉi tion sur la profila paĝo.",
   "account.deleteAccount.legend": "Forigi Konton",
   "account.deleteAccount.message": "Ĉu vi certas, ke vi volas forigi vian konton? Ĉi tio agaĵo estas konstanta kaj ne malfareblas! Tamen, vi ĉiam povas kreigi novan konton.",

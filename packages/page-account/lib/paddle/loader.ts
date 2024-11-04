@@ -1,12 +1,20 @@
-let promise: Promise<void> | null = null;
+import { paddleToken } from "@keybr/thirdparties";
+import { getPaddleInstance, type Paddle } from "@paddle/paddle-js";
 
-export function loadPaddle(): Promise<void> {
+let promise: Promise<Paddle> | null = null;
+
+export function loadPaddle() {
   if (promise == null) {
-    promise = new Promise<void>((resolve, reject) => {
+    promise = new Promise<Paddle>((resolve, reject) => {
       const script = document.createElement("script");
       script.onload = () => {
-        if (typeof Paddle === "object" && Paddle != null) {
-          resolve();
+        const paddle = getPaddleInstance("v1");
+        if (paddle != null && typeof paddle === "object") {
+          paddle.Environment.set("production");
+          paddle.Initialize({
+            token: paddleToken,
+          });
+          resolve(paddle);
         } else {
           reject(new Error("Cannot initialize Paddle"));
         }
@@ -14,7 +22,7 @@ export function loadPaddle(): Promise<void> {
       script.onerror = () => {
         reject(new Error("Cannot load Paddle"));
       };
-      script.src = "https://cdn.paddle.com/paddle/paddle.js";
+      script.src = "https://cdn.paddle.com/paddle/v2/paddle.js";
       document.head.appendChild(script);
     });
   }

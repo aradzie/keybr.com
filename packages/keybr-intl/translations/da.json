@@ -5,8 +5,6 @@
   "account.anonymize.description": "Anonymisering erstatter dit rigtige brugerbillede og navn med det, vi giver dig. Du kan skifte mellem dit rigtige og anonyme navn et vilkårligt antal gange.",
   "account.anonymousUserName": "Anonym bruger",
   "account.avatar.description": "Dit billede og brugernavn som de ser ud offentlig i din profil, højscore tabeller og multiplayer spil.",
-  "account.checkout.description": "Køb en premium-konto for at låse op for flere funktioner og nyd en reklamefri oplevelse.",
-  "account.checkout.title": "Premium-konto",
   "account.deleteAccount.description": "Dette vil slette alle dine personligt identificerbare oplysninger, såsom dit navn og din e-mailadresse fra vores database. Denne handling kan ikke fortrydes! Hvis du kun vil rydde din taste-statistik og starte forfra, kan du gøre dette på profilsiden.",
   "account.deleteAccount.legend": "Slet konto",
   "account.deleteAccount.message": "Er du sikker på, at du vil slette din konto? Denne handling er permanent og kan ikke fortrydes! Du kan dog til enhver tid oprette en ny konto.",

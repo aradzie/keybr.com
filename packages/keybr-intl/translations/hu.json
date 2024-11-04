@@ -5,8 +5,6 @@
   "account.anonymize.description": "A inkognitó mód elrejti a valódi felhasználói fiókjának képét és nevét, és egy általunk megadott titkosítottal helyettesítjük. A rendes és az inkognitó mód között bármikor válthat.",
   "account.anonymousUserName": "Inkognitó mód",
   "account.avatar.description": "A felhasználói képe és neve, a többi felhasználó számára elérhető a fiókjában, a ranglistán és a többjátékos módban.",
-  "account.checkout.description": "Vásároljon prémium fiókot a további funkciók feloldásához és a hirdetésmentes élményhez.",
-  "account.checkout.title": "Prémium fiók",
   "account.deleteAccount.description": "Ez a művelet törli az összes személyazonosításra alkalmas adatot, (pl. az nevét és e-email címét) az adatbázisunkból. Ezt a műveletet nem lehet visszavonni! Ha csak a gépelési statisztikáit szeretné törölni és elölről szeretné kezdeni, azt az ön fiókjában teheti meg.",
   "account.deleteAccount.legend": "Fiók törlése",
   "account.deleteAccount.message": "Biztos, hogy törölni szeretné a fiókját? Ez a művelet végleges, és nem lehet visszavonni! Azonban bármikor létrehozhat egy új fiókot.",

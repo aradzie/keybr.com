@@ -5,8 +5,6 @@
   "account.anonymize.description": "Bei der Anonymisierung werden Ihr echtes Benutzerbild und Ihr Name durch den Namen ersetzt, den wir Ihnen vergeben. Sie können beliebig oft zwischen Ihrem echten und Ihrem anonymen Namen wechseln.",
   "account.anonymousUserName": "Anonymer Nutzer",
   "account.avatar.description": "Ihr Benutzerbild und Ihr Name, wie sie für die Öffentlichkeit in Ihrem Profil, in der Highscore-Tabelle und im Multiplayer-Spiel sichtbar sind.",
-  "account.checkout.description": "Kaufen Sie ein Premium-Konto, um zusätzliche Funktionen freizuschalten und ein werbefreies Erlebnis zu genießen.",
-  "account.checkout.title": "Premium-Konto",
   "account.deleteAccount.description": "Dadurch werden alle Ihre persönlich identifizierbaren Angaben, wie Ihr Name und Ihre E-Mail-Adresse, aus unserer Datenbank gelöscht. Dieser Vorgang kann nicht rückgängig gemacht werden! Wenn Sie nur Ihre Tippstatistiken löschen und neu beginnen möchten, können Sie dies auf der Profilseite tun.",
   "account.deleteAccount.legend": "Konto löschen",
   "account.deleteAccount.message": "Sind Sie sicher, dass Sie Ihr Konto löschen wollen? Dieser Vorgang ist dauerhaft und kann nicht rückgängig gemacht werden! Sie können jedoch jederzeit ein neues Konto erstellen.",

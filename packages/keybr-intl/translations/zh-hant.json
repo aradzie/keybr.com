@@ -5,8 +5,6 @@
   "account.anonymize.description": "匿名化是用我們提供您的圖片和名稱取代您真實的頭像和姓名。您隨時都可以在您的本名和匿名之間切換。",
   "account.anonymousUserName": "匿名用戶",
   "account.avatar.description": "您的頭像和暱稱會被公開在你的個人簡介、排行榜和多人遊戲。",
-  "account.checkout.description": "購買豪華帳號可以解鎖額外的功能和無廣告的體驗。",
-  "account.checkout.title": "豪華帳號",
   "account.deleteAccount.description": "這會從我們的伺服器刪除您的所有個人資訊，像是您的姓名、電子郵件地址。此行為無法挽回！如果您只是想要清除您的打字數據並且重來，您可以在個人簡介的地方執行。",
   "account.deleteAccount.legend": "刪除帳號",
   "account.deleteAccount.message": "您確定您要刪除您的帳號？此行為無法挽回！不過，您隨時都可以創建一個新帳號。",

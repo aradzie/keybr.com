@@ -5,8 +5,6 @@
   "account.anonymize.description": "L’anonimització substitueix la vostra imatge i nom d’usuari reals pels que us donem. Podeu canviar entre el vostre nom real i anònim tantes vegades com desitgeu.",
   "account.anonymousUserName": "Usuari Anònim",
   "account.avatar.description": "El teu avatar i nom, tal com son visibles públicament al teu perfil, la taula de millors puntuacions, i el joc multijugador.",
-  "account.checkout.description": "Compra un compte prèmium per desbloquejar funcions addicionals i gaudir d’una experiència sense anuncis.",
-  "account.checkout.title": "Compte Prèmium",
   "account.deleteAccount.description": "Això suprimirà tota la vostra informació d’identificació personal, com ara el vostre nom i adreça de correu electrònic de la nostra base de dades. Aquesta operació no és reversible! Si només voleu esborrar les vostres estadístiques d’escriptura i començar de nou, podeu fer-ho a la pàgina de perfil.",
   "account.deleteAccount.legend": "Eliminar Compte",
   "account.deleteAccount.message": "Esteu segurs que voleu suprimir el vostre compte? Aquesta operació és permanent i no és reversible! Tanmateix, podeu crear un compte nou en qualsevol moment.",

@@ -8,9 +8,8 @@ import { Article, Button, CheckBox, FieldSet, Icon, Para } from "@keybr/widget";
 import { mdiCreditCard, mdiDeleteForever, mdiExitToApp } from "@mdi/js";
 import { FormattedMessage, useIntl } from "react-intl";
 import { AccountName } from "./AccountName.tsx";
+import { AccountPricePreview } from "./AccountPricePreview.tsx";
 import { type AccountActions } from "./actions.ts";
-import { FreeAccountOverview } from "./FreeAccountOverview.tsx";
-import { PremiumAccountOverview } from "./PremiumAccountOverview.tsx";
 
 export function AccountSection({
   user,
@@ -25,7 +24,7 @@ export function AccountSection({
 
   return (
     <Article>
-      <AccountName name={user.email} />
+      <AccountName user={user} />
 
       <FormattedMessage
         id="account.accountPage.description"
@@ -90,12 +89,26 @@ export function AccountSection({
         })}
       >
         {isPremiumUser(publicUser) ? (
-          <>
-            <PremiumAccountOverview />
-          </>
+          <FormattedMessage
+            id="account.premiumAccountOverview"
+            defaultMessage="<p>Thank you for purchasing a premium account! Now you can enjoy additional features and an ad-free experience.</p>"
+          />
         ) : (
           <>
-            <FreeAccountOverview />
+            <FormattedMessage
+              id="account.freeAccountOverview"
+              defaultMessage={
+                "<p>Buy a <strong>premium account</strong> to unlock additional features and enjoy an ad-free experience. Here is the list of premium account benefits:</p>" +
+                "<ul>" +
+                "<li><strong>No ads.</strong> Ads may be distracting and impede your learning progress. This is a good way to get rid of them.</li>" +
+                "<li><strong>No trackers.</strong> Trackers inevitably come with ads. Remove all trackers for complete online privacy.</li>" +
+                "<li><strong>Ultra-fast responsiveness.</strong> Ads take quite some time to load. Getting rid of them means faster loading times for all pages.</li>" +
+                "</ul>" +
+                "<p>It is a single time payment that provides lifetime access. It is NOT a recurring subscription.</p>"
+              }
+            />
+
+            <AccountPricePreview />
 
             <Para>
               <Button

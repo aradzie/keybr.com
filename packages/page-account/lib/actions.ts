@@ -1,9 +1,8 @@
 import { catchError } from "@keybr/debug";
 import { type AnyUser, type UserDetails } from "@keybr/pages-shared";
-import { paddleProductId, paddleVendorId } from "@keybr/thirdparties";
 import { useState } from "react";
 import { useIntl } from "react-intl";
-import { checkoutProduct, type Metadata } from "./paddle/index.ts";
+import { checkoutProduct } from "./checkout.ts";
 import { AccountService, type PatchAccountRequest } from "./service.ts";
 
 export type AccountActions = {
@@ -18,8 +17,8 @@ export type SignInActions = {
 };
 
 export function useAccountActions(props: {
-  readonly user: UserDetails;
-  readonly publicUser: AnyUser;
+  user: UserDetails;
+  publicUser: AnyUser;
 }) {
   const { formatMessage } = useIntl();
   const [{ user, publicUser }, setState] = useState(props);
@@ -54,33 +53,7 @@ export function useAccountActions(props: {
   };
 
   const checkout = () => {
-    checkoutProduct({
-      email: user.email,
-      vendorId: paddleVendorId,
-      productId: paddleProductId,
-      title: formatMessage({
-        id: "account.checkout.title",
-        defaultMessage: "Premium Account",
-      }),
-      message: formatMessage({
-        id: "account.checkout.description",
-        defaultMessage:
-          "Purchase a premium account to unlock additional features " +
-          "and enjoy an ad-free experience.",
-      }),
-      allowQuantity: false,
-      quantity: 1,
-      passthrough: { id: user.id } as Metadata,
-    })
-      .then((result) => {
-        if (result != null) {
-          // Give webhook a change to process the transaction.
-          setTimeout(() => {
-            reload("/"); // Checkout succeeded, reload page.
-          }, 3000);
-        }
-      })
-      .catch(catchError);
+    checkoutProduct(user).catch(catchError);
   };
 
   return {
@@ -96,7 +69,7 @@ export function useAccountActions(props: {
 }
 
 export function useSignInActions() {
-  const registerEmail = (email: string): Promise<unknown> => {
+  const registerEmail = (email: string) => {
     return AccountService.registerEmail(email);
   };
   return {

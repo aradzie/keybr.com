@@ -5,8 +5,6 @@
   "account.anonymize.description": "익명화는 실제 프로필 사진과 이름을 저희가 제공하는 프로필로 교체해요. 자유롭게 실명 프로필과 익명 프로필 간 전환이 가능해요.",
   "account.anonymousUserName": "익명 사용자",
   "account.avatar.description": "현재 프로필 사진과 이름이 실명으로 표시돼요. 다른 사람이 내 실명 프로필을 프로필 링크, 리더보드, 멀티플레이에서 볼 수 있어요.",
-  "account.checkout.description": "프리미엄 계정을 구매해 광고를 제거하고 추가 기능들을 사용해 보세요.",
-  "account.checkout.title": "프리미엄 계정",
   "account.deleteAccount.description": "계속하면 이름, 이메일 주소 등의 개인 식별 정보를 데이터베이스에서 모두 삭제해요. 이 작업은 되돌릴 수 없어요! 프로필 통계 초기화는 프로필 설정에서 할 수 있어요.",
   "account.deleteAccount.legend": "계정 삭제",
   "account.deleteAccount.message": "계정 삭제를 정말 진행할까요? 계정 삭제는 되돌릴 수 없어요! 새로운 계정을 언제든지 다시 만들 수 있어요.",

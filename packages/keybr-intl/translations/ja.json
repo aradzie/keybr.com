@@ -5,8 +5,6 @@
   "account.anonymize.description": "アイコン画像や名前を匿名化します。実際のプロフィールと匿名化されたプロフィールは何回でも入れ替えることができます。",
   "account.anonymousUserName": "匿名化されたユーザー",
   "account.avatar.description": "あなたのユーザーアイコンと名前はプロフィール欄、ハイスコア表、マルチプレイヤーのゲーム上で公開されます。",
-  "account.checkout.description": "プレミアムアカウントを購入することで、特別な機能がアンロックされ、広告なしで楽しめます。",
-  "account.checkout.title": "プレミアムアカウント",
   "account.deleteAccount.description": "名前、メールアドレスなどの個人情報をデータベースから削除します。この操作はもとには戻せません！タイピング統計を削除して最初からやり直したい場合、プロフィールのページから行えます。",
   "account.deleteAccount.legend": "アカウントの削除",
   "account.deleteAccount.message": "本当にアカウントを削除しますか？この操作は永久的なものであり、元に戻すことはできません！いつでも新しいアカウントを作ることができます。",

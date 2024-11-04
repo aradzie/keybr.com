@@ -5,8 +5,6 @@
   "account.anonymize.description": "Anonimizacja powoduje zastąpienie rzeczywistego zdjęcia oraz nazwy użytkownika naszymi danymi. Można dowolnie przełączać pomiędzy rzeczywistą i zanonimizowaną nazwą użytkownika.",
   "account.anonymousUserName": "Użytkownik anonimowy",
   "account.avatar.description": "Twoje zdjęcie i nazwa użytkownika widoczne publicznie w twoim profilu, tabeli najlepszych wyników oraz w grze wieloosobowej.",
-  "account.checkout.description": "Wykup konto premium, aby odblokować dodatkowe funkcje i pozbyć się reklam.",
-  "account.checkout.title": "Konto premium",
   "account.deleteAccount.description": "Spowoduje to usunięcie z naszej bazy danych wszystkich informacji umożliwiających identyfikację twojej tożsamości, takie jak imię i nazwisko oraz adres e-mail. Tej operacji nie można cofnąć! Jeśli chcesz tylko wyczyścić swoje statystyki pisania na klawiaturze i rozpocząć od nowa, możesz to zrobić na stronie profilu.",
   "account.deleteAccount.legend": "Usuń konto",
   "account.deleteAccount.message": "Czy na pewno chcesz usunąć swoje konto? Ta operacja ma charakter trwały i nie można jej cofnąć! Jednak w każdej chwili można utworzyć nowe konto.",

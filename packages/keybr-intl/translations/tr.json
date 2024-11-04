@@ -5,8 +5,6 @@
   "account.anonymize.description": "Anonimleştirme işlemi gerçek resminizi ve adınızı bizim tanımladığımız bir taneyle değiştirir. Gerçek ve anonim isminiz arasında istediğiniz zaman geçiş yapabilirsiniz.",
   "account.anonymousUserName": "Anonim Kullanıcı",
   "account.avatar.description": "Kullanıcı adınız ve profil resminiz profilinizde, puan tablosunda ve çok oyunculu oyunlarda görünür.",
-  "account.checkout.description": "Ekstra özellikler ve reklamsız bir deneyim için premium hesap edinin.",
-  "account.checkout.title": "Premium Hesap",
   "account.deleteAccount.description": "Bu işlem adınız ve e-posta adresiniz gibi bütün kişisel bilgilerinizi silecektir. Bu işlem geri alınamaz. Eğer sadece istatistiklerinizi sıfırlamak isterseniz bunu hesabım sayfasından gerçekleştirebilirsiniz.",
   "account.deleteAccount.legend": "Hesabı Sil",
   "account.deleteAccount.message": "Hesabınızı silmek istediğinize emin misiniz? Bu işlem kalıcıdır ve geri alınamaz. Ancak istediğiniz zaman yeni bir hesap oluşturabilirsiniz.",

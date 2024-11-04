@@ -4,7 +4,6 @@
   "account.anonymize.description": "Anonimisering vervangt uw echte gebruikersafbeelding en naam door degene die wij u geven. U kunt wisselen tussen uw echte en anonieme naam een onbeperkt aantal keren.",
   "account.anonymousUserName": "Anonieme Gebruiker",
   "account.avatar.description": "Uw gebruikersafbeelding en naam zoals ze zichtbaar zijn voor het publiek in uw profiel, de ranglijst met hoge scores en het multiplayerspel.",
-  "account.checkout.description": "Koop een premium account om aanvullende functies te ontgrendelen en geniet van een advertentievrije ervaring.",
   "account.deleteAccount.description": "Dit zal al uw persoonlijk identificeerbare informatie verwijderen, zoals uw naam en e-mailadres, uit onze database. Deze handeling kan niet ongedaan worden gemaakt! Als u alleen uw typestatistieken wilt wissen en opnieuw wilt beginnen, kunt u dit doen op de profielpagina.",
   "account.deleteAccount.legend": "Verwijder Account",
   "account.deleteAccount.message": "Bent u zeker dat u uw account wilt verwijderen? Deze handeling is permanent en kan niet ongedaan worden gemaakt! Hoewel, u kunt op elk moment een nieuw account aanmaken.",

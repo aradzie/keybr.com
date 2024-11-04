@@ -4,8 +4,6 @@
   "account.anonymize.description": "L’anonimizzazione sostituisce la tua immagine e il tuo nome utente reali con quelli che ti forniamo. Puoi passare dal tuo nome reale a quello anonimo un numero qualsiasi di volte.",
   "account.anonymousUserName": "Utente Anonimo",
   "account.avatar.description": "La tua immagine utente e il tuo nome così come sono visibili al pubblico nel tuo profilo, nella tabella dei punteggi più alti e nel gioco multiplayer.",
-  "account.checkout.description": "Acquista un account premium per sbloccare funzionalità aggiuntive e goderti un’esperienza senza pubblicità.",
-  "account.checkout.title": "Account Premium",
   "account.deleteAccount.description": "Ciò eliminerà tutte le tue informazioni di identificazione personale, come il tuo nome e indirizzo e-mail dal nostro database. Questa operazione non può essere annullata! Se desideri solo cancellare le statistiche di digitazione e ricominciare da capo, puoi farlo nella pagina del profilo.",
   "account.deleteAccount.legend": "Eliminare l’Account",
   "account.deleteAccount.message": "Sei sicuro di voler eliminare il tuo account? Questa operazione è permanente è irreversibile! In ogni caso puoi creare un nuovo account quando vuoi.",

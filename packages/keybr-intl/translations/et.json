@@ -5,8 +5,6 @@
   "account.anonymize.description": "Anonümiseerimine asendab sinu tegeliku kasutajapildi ja nime sellisega, mille me teile anname. Saad vahetada oma tegeliku ja anonüümse nime vahel mitu korda.",
   "account.anonymousUserName": "Anonüümne kasutaja",
   "account.avatar.description": "Su kasutajapilt ja nimi on nähtavad proofilis, punktitabelis ning multiplayer mängus.",
-  "account.checkout.description": "Hankides preemiumkonto saad veel rohkem funktsioone ja naudid reklaamivaba kogemust.",
-  "account.checkout.title": "Preemiumkonto",
   "account.deleteAccount.description": "Sellega kustutatakse meie andmebaasist kõik sinu isikuandmed, sealhulgas nimi ja e-posti aadress. Seda toimingut ei saa tühistada! Kui soovid ainult oma tippimisstatistikat kustutada ja õppimist uuesti alustada, saate seda teha profiili lehel.",
   "account.deleteAccount.legend": "Kustuta konto",
   "account.deleteAccount.message": "Kas oled kindel, et soovid oma konto kustutada? See toiming on püsiv ja seda ei saa tagasi võtta! Muidugi saad igal ajal uue konto luua.",

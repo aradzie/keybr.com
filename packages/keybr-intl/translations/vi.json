@@ -5,8 +5,6 @@
   "account.anonymize.description": "Việc ẩn danh sẽ thay thế tên và ảnh của bạn bằng một tên và ảnh ngẫu nhiên mà chúng tôi tạo ra. Bạn có thể chuyển đổi giữa tên thật và ẩn danh bất kì lúc nào.",
   "account.anonymousUserName": "Người dùng ẩn danh",
   "account.avatar.description": "Hình ảnh và tên của bạn hiển thị công khai trong hồ sơ, bảng xếp hạng và trò chơi nhiều người chơi.",
-  "account.checkout.description": "Mua gói premium để mở khóa những tính năng thú vị khác và trải nghiệm dịch vụ không quảng cáo.",
-  "account.checkout.title": "Tài khoản trả phí",
   "account.deleteAccount.description": "Thông tin cá nhân, chẳng hạn như tên và địa chỉ email, sẽ bị xóa khỏi cơ sở dữ liệu của chúng tôi. Thao tác này sau đó sẽ không thể thu hồi! Nếu chỉ muốn xóa dữ liệu đánh máy và bắt đầu lại, bạn có thể thực hiện tại trang hồ sơ cá nhân.",
   "account.deleteAccount.legend": "Xóa tài khoản",
   "account.deleteAccount.message": "Bạn có chắc muốn xóa tài khoản của mình? Thao tác này là vĩnh viễn và không thể hoàn tác! Tuy nhiên, bạn có thể tạo một tài khoản mới bất cứ lúc nào.",

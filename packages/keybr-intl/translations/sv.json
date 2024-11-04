@@ -5,8 +5,6 @@
   "account.anonymize.description": "Anonymisering ersätter din riktiga bild och användarnamn med nya vi ger dig. Du kan byta fram och tillbaka mellan ditt riktiga och anonyma namn.",
   "account.anonymousUserName": "Anonym Användare",
   "account.avatar.description": "Din bild och ditt namn är synliga för andra i din profil, topplistor och i spel mot andra spelare.",
-  "account.checkout.description": "Köp ett premiumkonto för att låsa upp mer funktionalitet och för att slippa annonser.",
-  "account.checkout.title": "Premiumkonto",
   "account.deleteAccount.description": "Detta kommer att ta bort all information som kan identifiera dig, så som ditt namn och din e-mail från vår databas. Detta går inte att ångra! Om du bara vill ta bort statistik om ditt skrivande kan du göra detta på sidan för din profil.",
   "account.deleteAccount.legend": "Ta bort konto",
   "account.deleteAccount.message": "Är du säker på att du vill ta bort ditt konto? Denna handling går inte att ångra! Du kan skapa ett nytt konto när som helst.",

@@ -5,8 +5,6 @@
   "account.anonymize.description": "Anonimisasi menggantikan gambar dan nama pengguna asli Anda dengan gambar dan nama yang kami berikan kepada Anda. Anda dapat berganti antara nama asli dan nama anonim Anda kapanpun.",
   "account.anonymousUserName": "Pengguna Anonim",
   "account.avatar.description": "Gambar dan nama pengguna Anda dapat dilihat oleh publik di profil Anda, tabel skor tertinggi, dan permainan multiplayer.",
-  "account.checkout.description": "Beli akun premium untuk membuka fitur tambahan dan menikmati pengalaman bebas iklan.",
-  "account.checkout.title": "Akun Premium",
   "account.deleteAccount.description": "Ini akan menghapus semua informasi pengenal pribadi Anda, seperti nama dan alamat email Anda dari basis data kami. Operasi ini tidak dapat dibatalkan! Jika Anda hanya ingin menghapus statistik pengetikan Anda dan memulai dari awal, Anda dapat melakukannya di halaman profil.",
   "account.deleteAccount.legend": "Hapus Akun",
   "account.deleteAccount.message": "Apakah Anda yakin ingin menghapus akun Anda? Tindakan ini bersifat permanen dan tidak dapat dibatalkan! Namun, Anda dapat membuat akun baru kapan saja.",
