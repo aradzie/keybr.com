@@ -1,3 +1,5 @@
+import { createServer } from "node:http";
+import { after } from "node:test";
 import { type BuildableRequest, request } from "@fastr/client";
 import { cookies, start } from "@fastr/client-testlib";
 import { type Application, type Context, type Middleware } from "@fastr/core";
@@ -5,7 +7,6 @@ import { expectJson, type JsonBodyState } from "@fastr/middleware-body";
 import { Router } from "@fastr/middleware-router";
 import { type SessionState } from "@fastr/middleware-session";
 import { User } from "@keybr/database";
-import { type AuthState } from "../auth/index.ts";
 import { findUser } from "./sql.ts";
 
 export type TestRequest = {
@@ -24,46 +25,40 @@ export type TestRequest = {
 } & BuildableRequest;
 
 export function startApp(app: Application): TestRequest {
-  // Augment application with extra debugging routes.
-
-  // Helper route.
-  const becomeRoute: Middleware<any> = (
-    ctx: Context<JsonBodyState & SessionState & AuthState>, //
-  ): void => {
-    const { id = null } = ctx.state.body;
-    if (id != null) {
-      ctx.state.session.start();
-      ctx.state.session.set("userId", id);
-    } else {
-      ctx.state.session.destroy();
-    }
-    ctx.response.body = {};
-  };
-
-  // Helper route.
-  const whoRoute: Middleware<any> = (
-    ctx: Context<SessionState & AuthState>, //
-  ): void => {
-    ctx.response.body = {
-      id: ctx.state.session.get("userId"),
-    };
-  };
+  const kBecomePath = "/__tests_only_become__";
+  const kWhoPath = "/__tests_only_who__";
 
   app.use(
     new Router()
-      .POST("/__tests_only_become__", expectJson() as any, becomeRoute)
-      .GET("/__tests_only_who__", whoRoute)
+      .POST(
+        kBecomePath,
+        expectJson() as Middleware<any>,
+        ((ctx: Context<JsonBodyState & SessionState>) => {
+          const { id = null } = ctx.state.body;
+          if (id != null) {
+            ctx.state.session.start();
+            ctx.state.session.set("userId", id);
+          } else {
+            ctx.state.session.destroy();
+          }
+          ctx.response.body = {};
+        }) as Middleware<any>,
+      )
+      .GET(kWhoPath, ((ctx: Context<SessionState>) => {
+        ctx.response.body = {
+          id: ctx.state.session.get("userId"),
+        };
+      }) as Middleware<any>)
       .middleware(),
   );
 
-  // Augment request with extra debug methods.
+  const req = request
+    .use(start(createTestServer(app.callback())))
+    .use(cookies()) as TestRequest;
 
-  const req = request.use(start(app.callback())).use(cookies()) as TestRequest;
-
-  // Helper function.
-  const become = async (id: number | string | null): Promise<void> => {
+  req.become = async (id) => {
     const user = id ? await findUser(id) : null;
-    const { status } = await req.POST("/__tests_only_become__").send({
+    const { status } = await req.POST(kBecomePath).send({
       id: user?.id ?? null,
     });
     if (status !== 200) {
@@ -71,9 +66,8 @@ export function startApp(app: Application): TestRequest {
     }
   };
 
-  // Helper function.
-  const who = async (): Promise<string | null> => {
-    const { status, body } = await req.GET("/__tests_only_who__").send();
+  req.who = async () => {
+    const { status, body } = await req.GET(kWhoPath).send();
     if (status !== 200) {
       throw new Error();
     }
@@ -87,8 +81,13 @@ export function startApp(app: Application): TestRequest {
     return null;
   };
 
-  req.become = become;
-  req.who = who;
-
   return req;
+}
+
+export function createTestServer(callback: any) {
+  const server = createServer(callback);
+  after(() => {
+    server.close();
+  });
+  return server;
 }

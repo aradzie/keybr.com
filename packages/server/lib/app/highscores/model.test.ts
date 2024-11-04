@@ -1,25 +1,16 @@
-import { makeKnex } from "@keybr/config";
-import { createSchema } from "@keybr/database";
-import { clearTables, seedModels } from "@keybr/database/lib/testing/seeds.ts";
-import test, { registerCompletionHandler } from "ava";
+import { test } from "node:test";
+import { useDatabase } from "@keybr/database/lib/testing/index.ts";
+import { assert } from "chai";
 import { mapEntries } from "./model.ts";
 
-registerCompletionHandler(() => {
-  process.exit();
-});
+useDatabase();
 
-const now = new Date("2001-02-03T04:05:06Z");
+test("map entries", async () => {
+  const now = new Date("2001-02-03T04:05:06Z");
 
-test.beforeEach(async () => {
-  await createSchema(makeKnex());
-  await clearTables();
-  await seedModels();
-});
+  assert.deepStrictEqual(await mapEntries([]), []);
 
-test("map entries", async (t) => {
-  t.deepEqual(await mapEntries([]), []);
-
-  t.deepEqual(
+  assert.deepStrictEqual(
     await mapEntries([
       {
         user: 1,

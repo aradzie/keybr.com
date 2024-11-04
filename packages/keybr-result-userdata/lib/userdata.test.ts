@@ -1,10 +1,11 @@
-import { test } from "node:test";
+import { createServer } from "node:http";
+import { after, test } from "node:test";
 import { request } from "@fastr/client";
 import { start } from "@fastr/client-testlib";
 import { Application } from "@fastr/core";
 import { DataDir } from "@keybr/config";
 import { PublicId } from "@keybr/publicid";
-import { type Result, ResultFaker } from "@keybr/result";
+import { ResultFaker } from "@keybr/result";
 import { exists, removeDir, touch } from "@sosimple/fsx";
 import { assert } from "chai";
 import { type UserData, UserDataFactory } from "./index.ts";
@@ -17,10 +18,6 @@ test.beforeEach(async () => {
 
 test.afterEach(async () => {
   await removeDir(tmp);
-});
-
-test.after(() => {
-  process.exit();
 });
 
 test("handle missing data file", async () => {
@@ -163,11 +160,11 @@ test("serve", async () => {
   app.use(async (ctx) => {
     await userData.serve(ctx);
   });
-  const req = request.use(start(app.callback()));
+  const req = request.use(start(createTestServer(app.callback())));
   const faker = new ResultFaker();
 
-  let etag1: string;
-  let etag2: string;
+  let etag1;
+  let etag2;
 
   {
     // Act.
@@ -186,9 +183,8 @@ test("serve", async () => {
     );
     assert.strictEqual(headers.get("Cache-Control"), "private, no-cache");
     assert.strictEqual(headers.get("Last-Modified"), null);
-    etag1 = headers.get("ETag")!;
-    assert.match(etag1, /"[a-zA-Z0-9]+"/);
     assert.strictEqual((await body.buffer()).length, 0);
+    etag1 = headers.get("ETag")!;
   }
 
   {
@@ -196,9 +192,9 @@ test("serve", async () => {
 
     await userData.append([faker.nextResult()]);
 
-    // Assert.
-
     const { status, headers, body } = await req.GET("/").send();
+
+    // Assert.
 
     assert.strictEqual(status, 200);
     assert.strictEqual(headers.get("Content-Type"), "application/octet-stream");
@@ -210,18 +206,27 @@ test("serve", async () => {
     );
     assert.strictEqual(headers.get("Cache-Control"), "private, no-cache");
     assert.strictEqual(headers.get("Last-Modified"), null);
-    etag2 = headers.get("ETag")!;
-    assert.match(etag2, /"[a-zA-Z0-9]+"/);
     assert.strictEqual((await body.buffer()).length, 70);
+    etag2 = headers.get("ETag")!;
   }
 
+  assert.match(etag1, /"[a-zA-Z0-9]+"/);
+  assert.match(etag2, /"[a-zA-Z0-9]+"/);
   assert.notStrictEqual(etag1, etag2);
 });
 
-async function readAll(userData: UserData): Promise<readonly Result[]> {
+async function readAll(userData: UserData) {
   const results = [];
   for await (const result of userData.read()) {
     results.push(result);
   }
   return results;
+}
+
+function createTestServer(callback: any) {
+  const server = createServer(callback);
+  after(() => {
+    server.close();
+  });
+  return server;
 }

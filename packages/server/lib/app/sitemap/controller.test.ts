@@ -1,14 +1,18 @@
+import { test } from "node:test";
 import { Application } from "@fastr/core";
+import { assert } from "chai";
 import { load } from "cheerio";
 import { type ElementCompact, xml2js } from "xml-js";
 import { kMain } from "../module.ts";
-import { test } from "../test/context.ts";
+import { TestContext } from "../test/context.ts";
 import { startApp } from "../test/request.ts";
 
-test("load sitemap.xml", async (t) => {
+const context = new TestContext();
+
+test("load sitemap.xml", async () => {
   // Arrange.
 
-  const request = startApp(t.context.get(Application, kMain));
+  const request = startApp(context.get(Application, kMain));
 
   // Act.
 
@@ -21,8 +25,11 @@ test("load sitemap.xml", async (t) => {
 
   // Assert.
 
-  t.is(response.status, 200);
-  t.is(response.headers.get("Content-Type"), "application/xml; charset=UTF-8");
+  assert.strictEqual(response.status, 200);
+  assert.strictEqual(
+    response.headers.get("Content-Type"),
+    "application/xml; charset=UTF-8",
+  );
 
   // Arrange.
 
@@ -30,13 +37,13 @@ test("load sitemap.xml", async (t) => {
 
   const sitemap = xml2js(body, { compact: true }) as ElementCompact;
   const primaries = sitemap["urlset"]["url"];
-  t.true(Array.isArray(primaries));
-  t.true(primaries.length > 0);
+  assert.isTrue(Array.isArray(primaries));
+  assert.isTrue(primaries.length > 0);
   for (const primary of primaries) {
     urls.add(primary["loc"]._text);
     const alternates = primary["xhtml:link"];
-    t.true(Array.isArray(alternates));
-    t.true(alternates.length > 0);
+    assert.isTrue(Array.isArray(alternates));
+    assert.isTrue(alternates.length > 0);
     for (const alternate of alternates) {
       urls.add(alternate._attributes["href"]);
     }
@@ -53,11 +60,14 @@ test("load sitemap.xml", async (t) => {
 
     // Assert.
 
-    t.is(response.status, 200);
-    t.is(response.headers.get("Content-Type"), "text/html; charset=UTF-8");
+    assert.strictEqual(response.status, 200);
+    assert.strictEqual(
+      response.headers.get("Content-Type"),
+      "text/html; charset=UTF-8",
+    );
 
     const $ = load(await response.body.text());
-    t.is($("script#page-data").length, 1);
-    t.is($("#root").length, 1);
+    assert.strictEqual($("script#page-data").length, 1);
+    assert.strictEqual($("#root").length, 1);
   }
 });

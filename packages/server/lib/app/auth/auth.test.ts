@@ -1,19 +1,26 @@
+import { test } from "node:test";
 import { Application } from "@fastr/core";
 import { User } from "@keybr/database";
 import { PublicId } from "@keybr/publicid";
 import { ResultFaker } from "@keybr/result";
 import { UserDataFactory } from "@keybr/result-userdata";
+import { assert, expect, use } from "chai";
+import chaiLike from "chai-like";
 import { kMain } from "../module.ts";
-import { test } from "../test/context.ts";
+import { TestContext } from "../test/context.ts";
 import { startApp } from "../test/request.ts";
 import { findUser } from "../test/sql.ts";
 
-test("logout", async (t) => {
+use(chaiLike);
+
+const context = new TestContext();
+
+test("logout", async () => {
   // Arrange.
 
   const user = await findUser("user1@keybr.com");
 
-  const request = startApp(t.context.get(Application, kMain));
+  const request = startApp(context.get(Application, kMain));
 
   await request.become(user.id!);
 
@@ -23,17 +30,17 @@ test("logout", async (t) => {
 
   // Assert.
 
-  t.is(response.status, 302);
-  t.is(response.headers.get("Location"), "/account");
-  t.is(await request.who(), null);
+  assert.strictEqual(response.status, 302);
+  assert.strictEqual(response.headers.get("Location"), "/account");
+  assert.isNull(await request.who());
 });
 
-test("patch account", async (t) => {
+test("patch account", async () => {
   // Arrange.
 
   const user = await findUser("user1@keybr.com");
 
-  const request = startApp(t.context.get(Application, kMain));
+  const request = startApp(context.get(Application, kMain));
 
   await request.become(user.id!);
 
@@ -46,8 +53,8 @@ test("patch account", async (t) => {
 
     // Assert.
 
-    t.is(response.status, 200);
-    t.like(await response.body.json(), {
+    assert.strictEqual(response.status, 200);
+    expect(await response.body.json()).to.be.like({
       user: {
         id: "55vdtk1",
         anonymized: true,
@@ -58,7 +65,7 @@ test("patch account", async (t) => {
         imageUrl: null,
       },
     });
-    t.like((await User.findById(user.id!))!.toJSON(), {
+    expect((await User.findById(user.id!))!.toJSON()).to.be.like({
       anonymized: 1,
     });
   }
@@ -72,8 +79,8 @@ test("patch account", async (t) => {
 
     // Assert.
 
-    t.is(response.status, 200);
-    t.like(await response.body.json(), {
+    assert.strictEqual(response.status, 200);
+    expect(await response.body.json()).to.be.like({
       user: {
         id: "55vdtk1",
         anonymized: false,
@@ -84,22 +91,22 @@ test("patch account", async (t) => {
         imageUrl: "imageUrl1",
       },
     });
-    t.like((await User.findById(user.id!))!.toJSON(), {
+    expect((await User.findById(user.id!))!.toJSON()).to.be.like({
       anonymized: 0,
     });
   }
 });
 
-test("delete account", async (t) => {
+test("delete account", async () => {
   // Arrange.
 
-  const factory = t.context.get(UserDataFactory);
+  const factory = context.get(UserDataFactory);
   const user = await findUser("user1@keybr.com");
   const userData = factory.load(new PublicId(user.id!));
   const faker = new ResultFaker();
   await userData.append([faker.nextResult()]);
 
-  const request = startApp(t.context.get(Application, kMain));
+  const request = startApp(context.get(Application, kMain));
 
   await request.become(user.id!);
 
@@ -109,8 +116,8 @@ test("delete account", async (t) => {
 
   // Assert.
 
-  t.is(response.status, 204);
-  t.is(await request.who(), null);
-  t.is(await User.findById(user.id!), null);
-  t.true(await userData.exists());
+  assert.strictEqual(response.status, 204);
+  assert.isNull(await request.who());
+  assert.isNull(await User.findById(user.id!));
+  assert.isTrue(await userData.exists());
 });

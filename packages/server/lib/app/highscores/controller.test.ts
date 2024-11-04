@@ -1,21 +1,24 @@
-import { mock } from "node:test";
+import { test } from "node:test";
 import { Application } from "@fastr/core";
 import { HighScoresFactory } from "@keybr/highscores";
 import { ResultFaker } from "@keybr/result";
+import { assert } from "chai";
 import { kMain } from "../module.ts";
-import { test } from "../test/context.ts";
+import { TestContext } from "../test/context.ts";
 import { startApp } from "../test/request.ts";
 
 const now = new Date("2001-02-03T04:05:06Z");
 
-mock.timers.enable({ apis: ["Date"], now });
+const context = new TestContext();
 
 const faker = new ResultFaker({ timeStamp: now.getTime() });
 
-test("get empty high scores entries", async (t) => {
+test("get empty high scores entries", async (ctx) => {
   // Arrange.
 
-  const request = startApp(t.context.get(Application, kMain));
+  ctx.mock.timers.enable({ apis: ["Date"], now });
+
+  const request = startApp(context.get(Application, kMain));
 
   // Act.
 
@@ -23,17 +26,19 @@ test("get empty high scores entries", async (t) => {
 
   // Assert.
 
-  t.is(response.status, 200);
-  t.deepEqual(await response.body.json(), []);
+  assert.strictEqual(response.status, 200);
+  assert.deepStrictEqual(await response.body.json(), []);
 });
 
-test("get populated high scores entries", async (t) => {
+test("get populated high scores entries", async (ctx) => {
   // Arrange.
 
-  await t.context.get(HighScoresFactory).append(1, [faker.nextResult()]);
-  await t.context.get(HighScoresFactory).append(999, [faker.nextResult()]);
+  ctx.mock.timers.enable({ apis: ["Date"], now });
 
-  const request = startApp(t.context.get(Application, kMain));
+  await context.get(HighScoresFactory).append(1, [faker.nextResult()]);
+  await context.get(HighScoresFactory).append(999, [faker.nextResult()]);
+
+  const request = startApp(context.get(Application, kMain));
 
   // Act.
 
@@ -41,8 +46,8 @@ test("get populated high scores entries", async (t) => {
 
   // Assert.
 
-  t.is(response.status, 200);
-  t.deepEqual(await response.body.json(), [
+  assert.strictEqual(response.status, 200);
+  assert.deepStrictEqual(await response.body.json(), [
     {
       layout: "en-us",
       score: 2400,

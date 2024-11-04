@@ -9,7 +9,6 @@
     "css-loader": "^7.1.2",
     "css-minimizer-webpack-plugin": "^7.0.0",
     "eslint": "^9.13.0",
-    "eslint-plugin-ava": "^15.0.1",
     "eslint-plugin-chai-expect": "^3.1.0",
     "eslint-plugin-formatjs": "^5.1.5",
     "eslint-plugin-n": "^17.12.0",

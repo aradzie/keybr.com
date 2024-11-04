@@ -1,3 +1,4 @@
+import { test } from "node:test";
 import { Application } from "@fastr/core";
 import { type Binder, inject, type Module, provides } from "@fastr/invert";
 import { User, type UserExternalId } from "@keybr/database";
@@ -8,15 +9,18 @@ import {
   type ResourceOwner,
   type TokenResponse,
 } from "@keybr/oauth";
+import { assert } from "chai";
 import { kMain } from "../module.ts";
-import { test } from "../test/context.ts";
+import { TestContext } from "../test/context.ts";
 import { startApp } from "../test/request.ts";
 import { AdapterFactory } from "./module.ts";
+
+const context = new TestContext();
 
 const kTokenResponse = Symbol();
 const kResourceOwner = Symbol();
 
-test.beforeEach(async (t) => {
+test.beforeEach(async () => {
   class FakeAuthModule implements Module {
     configure({ bind }: Binder): void {}
 
@@ -45,11 +49,11 @@ test.beforeEach(async (t) => {
     }
 
     override async getAccessToken(): Promise<AccessToken> {
-      return new AccessToken({ ...t.context.get(kTokenResponse) });
+      return new AccessToken({ ...context.get(kTokenResponse) });
     }
 
     override async getProfile(): Promise<ResourceOwner> {
-      return { ...t.context.get(kResourceOwner) };
+      return { ...context.get(kResourceOwner) };
     }
 
     protected override parseProfileResponse(): ResourceOwner {
@@ -57,13 +61,13 @@ test.beforeEach(async (t) => {
     }
   }
 
-  t.context.load(new FakeAuthModule());
-  t.context.bind(kTokenResponse).toValue({
+  context.load(new FakeAuthModule());
+  context.bind(kTokenResponse).toValue({
     token_type: "Bearer",
     access_token: "xyz",
     expires_in: 3600,
   } satisfies TokenResponse);
-  t.context.bind(kResourceOwner).toValue({
+  context.bind(kResourceOwner).toValue({
     raw: {},
     provider: "fake",
     id: "123",
@@ -74,10 +78,10 @@ test.beforeEach(async (t) => {
   } satisfies ResourceOwner);
 });
 
-test("handle unknown provider", async (t) => {
+test("handle unknown provider", async () => {
   // Arrange.
 
-  const request = startApp(t.context.get(Application, kMain));
+  const request = startApp(context.get(Application, kMain));
 
   const params = new URLSearchParams([
     ["code", "code"],
@@ -86,7 +90,7 @@ test("handle unknown provider", async (t) => {
 
   // Act, Assert.
 
-  t.is(
+  assert.strictEqual(
     (
       await request //
         .GET("/auth/oauth-init/wtf")
@@ -94,7 +98,7 @@ test("handle unknown provider", async (t) => {
     ).status,
     404,
   );
-  t.is(
+  assert.strictEqual(
     (
       await request //
         .GET("/auth/oauth-callback/wtf?" + params)
@@ -104,10 +108,10 @@ test("handle unknown provider", async (t) => {
   );
 });
 
-test("redirect to provider", async (t) => {
+test("redirect to provider", async () => {
   // Arrange.
 
-  const request = startApp(t.context.get(Application, kMain));
+  const request = startApp(context.get(Application, kMain));
 
   // Act.
 
@@ -117,24 +121,24 @@ test("redirect to provider", async (t) => {
 
   // Assert.
 
-  t.is(response.status, 302);
+  assert.strictEqual(response.status, 302);
 
   const url = new URL(response.headers.get("Location")!);
 
-  t.regex(url.searchParams.get("client_id")!, /\S+/);
-  t.regex(url.searchParams.get("scope")!, /\S+/);
-  t.regex(url.searchParams.get("state")!, /\S+/);
-  t.is(url.searchParams.get("response_type")!, "code");
-  t.is(
+  assert.match(url.searchParams.get("client_id")!, /\S+/);
+  assert.match(url.searchParams.get("scope")!, /\S+/);
+  assert.match(url.searchParams.get("state")!, /\S+/);
+  assert.strictEqual(url.searchParams.get("response_type")!, "code");
+  assert.strictEqual(
     url.searchParams.get("redirect_uri")!,
     "https://www.keybr.com/auth/oauth-callback/fake",
   );
 });
 
-test("validate state", async (t) => {
+test("validate state", async () => {
   // Arrange.
 
-  const request = startApp(t.context.get(Application, kMain));
+  const request = startApp(context.get(Application, kMain));
 
   const params = new URLSearchParams([
     ["code", "xyz"],
@@ -147,13 +151,13 @@ test("validate state", async (t) => {
     const response = await request //
       .GET("/auth/oauth-init/fake")
       .send();
-    t.is(response.status, 302);
+    assert.strictEqual(response.status, 302);
   }
 
   // Assert.
 
-  t.is(await User.findByEmail("fake@keybr.com"), null);
-  t.is(await request.who(), null);
+  assert.isNull(await User.findByEmail("fake@keybr.com"));
+  assert.isNull(await request.who());
 
   // Act. Step 2: redirect from provider to keybr.
 
@@ -161,19 +165,19 @@ test("validate state", async (t) => {
     const response = await request //
       .GET("/auth/oauth-callback/fake?" + params)
       .send();
-    t.is(response.status, 400);
+    assert.strictEqual(response.status, 400);
   }
 
   // Assert.
 
-  t.is(await User.findByEmail("fake@keybr.com"), null);
-  t.is(await request.who(), null);
+  assert.isNull(await User.findByEmail("fake@keybr.com"));
+  assert.isNull(await request.who());
 });
 
-test("require email", async (t) => {
+test("require email", async () => {
   // Arrange.
 
-  t.context.bind(kResourceOwner).toValue({
+  context.bind(kResourceOwner).toValue({
     raw: {},
     provider: "fake",
     id: "123",
@@ -183,7 +187,7 @@ test("require email", async (t) => {
     imageUrl: "imageUrl",
   } as ResourceOwner);
 
-  const request = startApp(t.context.get(Application, kMain));
+  const request = startApp(context.get(Application, kMain));
 
   const params = new URLSearchParams([
     ["code", "xyz"],
@@ -196,15 +200,15 @@ test("require email", async (t) => {
     const response = await request //
       .GET("/auth/oauth-init/fake")
       .send();
-    t.is(response.status, 302);
+    assert.strictEqual(response.status, 302);
     const url = new URL(response.headers.get("Location")!);
     params.set("state", url.searchParams.get("state")!);
   }
 
   // Assert.
 
-  t.is(await User.findByEmail("fake@keybr.com"), null);
-  t.is(await request.who(), null);
+  assert.isNull(await User.findByEmail("fake@keybr.com"));
+  assert.isNull(await request.who());
 
   // Act. Step 2: redirect from provider to keybr.
 
@@ -212,20 +216,20 @@ test("require email", async (t) => {
     const response = await request //
       .GET("/auth/oauth-callback/fake?" + params)
       .send();
-    t.is(response.status, 302);
-    t.is(response.headers.get("Location"), "/account");
+    assert.strictEqual(response.status, 302);
+    assert.strictEqual(response.headers.get("Location"), "/account");
   }
 
   // Assert.
 
-  t.is(await User.findByEmail("fake@keybr.com"), null);
-  t.is(await request.who(), null);
+  assert.isNull(await User.findByEmail("fake@keybr.com"));
+  assert.isNull(await request.who());
 });
 
-test("login a new user", async (t) => {
+test("login a new user", async () => {
   // Arrange.
 
-  const request = startApp(t.context.get(Application, kMain));
+  const request = startApp(context.get(Application, kMain));
 
   const params = new URLSearchParams([
     ["code", "xyz"],
@@ -238,15 +242,15 @@ test("login a new user", async (t) => {
     const response = await request //
       .GET("/auth/oauth-init/fake")
       .send();
-    t.is(response.status, 302);
+    assert.strictEqual(response.status, 302);
     const url = new URL(response.headers.get("Location")!);
     params.set("state", url.searchParams.get("state")!);
   }
 
   // Assert.
 
-  t.is(await User.findByEmail("fake@keybr.com"), null);
-  t.is(await request.who(), null);
+  assert.isNull(await User.findByEmail("fake@keybr.com"));
+  assert.isNull(await request.who());
 
   // Act. Step 2: redirect from provider to keybr.
 
@@ -254,17 +258,17 @@ test("login a new user", async (t) => {
     const response = await request //
       .GET("/auth/oauth-callback/fake?" + params)
       .send();
-    t.is(response.status, 302);
-    t.is(response.headers.get("Location"), "/account");
+    assert.strictEqual(response.status, 302);
+    assert.strictEqual(response.headers.get("Location"), "/account");
   }
 
   // Assert.
 
-  t.not(await User.findByEmail("fake@keybr.com"), null);
-  t.is(await request.who(), "fake@keybr.com");
+  assert.isNotNull(await User.findByEmail("fake@keybr.com"));
+  assert.strictEqual(await request.who(), "fake@keybr.com");
 });
 
-test("login an existing user", async (t) => {
+test("login an existing user", async () => {
   // Arrange.
 
   await User.query().insertGraph({
@@ -281,7 +285,7 @@ test("login an existing user", async (t) => {
     ],
   } as User);
 
-  const request = startApp(t.context.get(Application, kMain));
+  const request = startApp(context.get(Application, kMain));
 
   const params = new URLSearchParams([
     ["code", "xyz"],
@@ -294,14 +298,14 @@ test("login an existing user", async (t) => {
     const response = await request //
       .GET("/auth/oauth-init/fake")
       .send();
-    t.is(response.status, 302);
+    assert.strictEqual(response.status, 302);
     const url = new URL(response.headers.get("Location")!);
     params.set("state", url.searchParams.get("state")!);
   }
 
   // Assert.
 
-  t.is(await request.who(), null);
+  assert.isNull(await request.who());
 
   // Act. Step 2: redirect from provider to keybr.
 
@@ -309,11 +313,11 @@ test("login an existing user", async (t) => {
     const response = await request //
       .GET("/auth/oauth-callback/fake?" + params)
       .send();
-    t.is(response.status, 302);
-    t.is(response.headers.get("Location"), "/account");
+    assert.strictEqual(response.status, 302);
+    assert.strictEqual(response.headers.get("Location"), "/account");
   }
 
   // Assert.
 
-  t.is(await request.who(), "fake@keybr.com");
+  assert.strictEqual(await request.who(), "fake@keybr.com");
 });

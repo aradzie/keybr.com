@@ -1,6 +1,6 @@
 import { User } from "@keybr/database";
 
-export async function findUser(id: number | string): Promise<User> {
+export async function findUser(id: number | string) {
   let user = null;
   switch (typeof id) {
     case "number":

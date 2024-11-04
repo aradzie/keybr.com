@@ -1,7 +1,27 @@
+import { after, before, beforeEach } from "node:test";
+import { makeKnex } from "@keybr/config";
 import { Model } from "objection";
 import { Order, User, UserExternalId, UserLoginRequest } from "../model.ts";
+import { createSchema } from "../schema.ts";
 
-export async function seedModels(): Promise<void> {
+export function useDatabase() {
+  const knex = makeKnex();
+
+  before(async () => {
+    await createSchema(knex);
+  });
+
+  beforeEach(async () => {
+    await clearTables();
+    await seedModels();
+  });
+
+  after(async () => {
+    await knex.destroy();
+  });
+}
+
+export async function seedModels() {
   await User.query().delete();
   await User.query().insertGraph([
     {
@@ -52,14 +72,14 @@ export async function seedModels(): Promise<void> {
   ]);
 }
 
-export async function clearTables(): Promise<void> {
+export async function clearTables() {
   await clearTable(UserLoginRequest.tableName);
   await clearTable(Order.tableName);
   await clearTable(UserExternalId.tableName);
   await clearTable(User.tableName);
 }
 
-export async function clearTable(name: string): Promise<void> {
+export async function clearTable(name: string) {
   const knex = Model.knex();
   const tpl = (sql: string) => {
     return sql.replaceAll("{name}", name);

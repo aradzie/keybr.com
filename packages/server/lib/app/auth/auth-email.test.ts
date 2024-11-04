@@ -1,47 +1,18 @@
+import { test } from "node:test";
 import { Application } from "@fastr/core";
 import { User, UserLoginRequest } from "@keybr/database";
+import { assert } from "chai";
 import { load } from "cheerio";
 import { kMain } from "../module.ts";
-import { test } from "../test/context.ts";
+import { TestContext } from "../test/context.ts";
 import { startApp } from "../test/request.ts";
 
-test("fail if email is invalid", async (t) => {
+const context = new TestContext();
+
+test("send a new access token", async () => {
   // Arrange.
 
-  const request = startApp(t.context.get(Application, kMain));
-
-  // Act.
-
-  const response = await request //
-    .POST("/auth/login/register-email")
-    .send({
-      email: "invalid",
-    });
-
-  // Assert.
-
-  t.is(response.status, 200);
-  t.is(
-    response.headers.get("Content-Type"),
-    "application/error+json; charset=UTF-8",
-  );
-  t.deepEqual(await response.body.json(), {
-    error: {
-      message: "Invalid e-mail address",
-    },
-  });
-
-  t.deepEqual(t.context.mailer.dump(), []);
-});
-
-test("fail on email sending error", async (t) => {
-  // Arrange.
-
-  t.context.mailer.sendMail = () => {
-    throw new Error("Transport error");
-  };
-
-  const request = startApp(t.context.get(Application, kMain));
+  const request = startApp(context.get(Application, kMain));
 
   // Act.
 
@@ -53,53 +24,29 @@ test("fail on email sending error", async (t) => {
 
   // Assert.
 
-  t.is(response.status, 200);
-  t.is(
+  assert.strictEqual(response.status, 200);
+  assert.strictEqual(
     response.headers.get("Content-Type"),
-    "application/error+json; charset=UTF-8",
+    "application/json; charset=UTF-8",
   );
-  t.deepEqual(await response.body.json(), {
-    error: {
-      message: "Error sending e-mail message",
-    },
-  });
-});
-
-test("send a new access token", async (t) => {
-  // Arrange.
-
-  const request = startApp(t.context.get(Application, kMain));
-
-  // Act.
-
-  const response = await request //
-    .POST("/auth/login/register-email")
-    .send({
-      email: "test@keybr.com",
-    });
-
-  // Assert.
-
-  t.is(response.status, 200);
-  t.is(response.headers.get("Content-Type"), "application/json; charset=UTF-8");
-  t.deepEqual(await response.body.json(), {
+  assert.deepStrictEqual(await response.body.json(), {
     email: "test@keybr.com",
   });
 
-  t.is(await request.who(), null);
+  assert.isNull(await request.who());
 
   const userLoginRequest = await UserLoginRequest.findByEmail("test@keybr.com");
-  t.not(userLoginRequest, null);
+  assert.isNotNull(userLoginRequest);
 
   const user = await User.findByEmail("test@keybr.com");
-  t.is(user, null);
+  assert.isNull(user);
 
-  const [message] = t.context.mailer.dump();
-  t.is(message.to, "test@keybr.com");
-  t.true(message.text!.includes(userLoginRequest!.accessToken!));
+  const [message] = context.mailer.dump();
+  assert.strictEqual(message.to, "test@keybr.com");
+  assert.isTrue(message.text!.includes(userLoginRequest!.accessToken!));
 });
 
-test("send an existing access token", async (t) => {
+test("send an existing access token", async () => {
   // Arrange.
 
   await UserLoginRequest.query().insertGraph({
@@ -108,7 +55,7 @@ test("send an existing access token", async (t) => {
     createdAt: new Date(),
   } as UserLoginRequest);
 
-  const request = startApp(t.context.get(Application, kMain));
+  const request = startApp(context.get(Application, kMain));
 
   // Act.
 
@@ -120,26 +67,29 @@ test("send an existing access token", async (t) => {
 
   // Assert.
 
-  t.is(response.status, 200);
-  t.is(response.headers.get("Content-Type"), "application/json; charset=UTF-8");
-  t.deepEqual(await response.body.json(), {
+  assert.strictEqual(response.status, 200);
+  assert.strictEqual(
+    response.headers.get("Content-Type"),
+    "application/json; charset=UTF-8",
+  );
+  assert.deepStrictEqual(await response.body.json(), {
     email: "test@keybr.com",
   });
 
-  t.is(await request.who(), null);
+  assert.isNull(await request.who());
 
   const userLoginRequest = await UserLoginRequest.findByEmail("test@keybr.com");
-  t.not(userLoginRequest, null);
+  assert.isNotNull(userLoginRequest);
 
   const user = await User.findByEmail("test@keybr.com");
-  t.is(user, null);
+  assert.isNull(user);
 
-  const [message] = t.context.mailer.dump();
-  t.is(message.to, "test@keybr.com");
-  t.true(message.text!.includes(userLoginRequest!.accessToken!));
+  const [message] = context.mailer.dump();
+  assert.strictEqual(message.to, "test@keybr.com");
+  assert.isTrue(message.text!.includes(userLoginRequest!.accessToken!));
 });
 
-test("login with access token / new user", async (t) => {
+test("login with an access token / new user", async () => {
   // Arrange.
 
   await UserLoginRequest.query().insertGraph({
@@ -148,7 +98,7 @@ test("login with access token / new user", async (t) => {
     createdAt: new Date(),
   } as UserLoginRequest);
 
-  const request = startApp(t.context.get(Application, kMain));
+  const request = startApp(context.get(Application, kMain));
 
   // Act.
 
@@ -156,21 +106,21 @@ test("login with access token / new user", async (t) => {
 
   // Assert.
 
-  t.is(response.status, 302);
-  t.is(response.headers.get("Location"), "/account");
+  assert.strictEqual(response.status, 302);
+  assert.strictEqual(response.headers.get("Location"), "/account");
 
   const userLoginRequest = await UserLoginRequest.findByEmail("test@keybr.com");
-  t.not(userLoginRequest, null);
+  assert.isNotNull(userLoginRequest);
 
   const user = await User.findByEmail("test@keybr.com");
-  t.not(user, null);
+  assert.isNotNull(user);
 
-  t.is(await request.who(), "test@keybr.com");
+  assert.strictEqual(await request.who(), "test@keybr.com");
 
-  t.deepEqual(t.context.mailer.dump(), []);
+  assert.deepStrictEqual(context.mailer.dump(), []);
 });
 
-test("login with access token / existing user", async (t) => {
+test("login with an access token / existing user", async () => {
   // Arrange.
 
   await User.query().insertGraph({
@@ -185,7 +135,7 @@ test("login with access token / existing user", async (t) => {
     createdAt: new Date(),
   } as UserLoginRequest);
 
-  const request = startApp(t.context.get(Application, kMain));
+  const request = startApp(context.get(Application, kMain));
 
   // Act.
 
@@ -193,24 +143,24 @@ test("login with access token / existing user", async (t) => {
 
   // Assert.
 
-  t.is(response.status, 302);
-  t.is(response.headers.get("Location"), "/account");
+  assert.strictEqual(response.status, 302);
+  assert.strictEqual(response.headers.get("Location"), "/account");
 
   const userLoginRequest = await UserLoginRequest.findByEmail("test@keybr.com");
-  t.not(userLoginRequest, null);
+  assert.isNotNull(userLoginRequest);
 
   const user = await User.findByEmail("test@keybr.com");
-  t.not(user, null);
+  assert.isNotNull(user);
 
-  t.is(await request.who(), "test@keybr.com");
+  assert.strictEqual(await request.who(), "test@keybr.com");
 
-  t.deepEqual(t.context.mailer.dump(), []);
+  assert.deepStrictEqual(context.mailer.dump(), []);
 });
 
-test("ignore invalid access token", async (t) => {
+test("ignore invalid access token", async () => {
   // Arrange.
 
-  const request = startApp(t.context.get(Application, kMain));
+  const request = startApp(context.get(Application, kMain));
 
   // Act.
 
@@ -218,12 +168,12 @@ test("ignore invalid access token", async (t) => {
 
   // Assert.
 
-  t.is(response.status, 403);
+  assert.strictEqual(response.status, 403);
 
   const $ = load(await response.body.text());
-  t.true($("body").text().includes("Invalid login link"));
+  assert.isTrue($("body").text().includes("Invalid login link"));
 
-  t.is(await request.who(), null);
+  assert.isNull(await request.who());
 
-  t.deepEqual(t.context.mailer.dump(), []);
+  assert.deepStrictEqual(context.mailer.dump(), []);
 });

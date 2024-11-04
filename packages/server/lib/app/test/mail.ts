@@ -5,11 +5,11 @@ import { Mailer } from "../mail/index.ts";
 export class FakeMailer extends Mailer {
   readonly #sent: Mailer.Message[] = [];
 
-  async sendMail(message: Mailer.Message): Promise<void> {
+  async sendMail(message: Mailer.Message) {
     this.#sent.push({ ...message });
   }
 
-  dump(): Mailer.Message[] {
+  dump() {
     const result = [...this.#sent];
     this.#sent.length = 0;
     return result;

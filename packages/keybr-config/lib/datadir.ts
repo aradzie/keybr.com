@@ -10,7 +10,7 @@ export class DataDir {
   }
 
   /**
-   * Returns full path to a user settings file for the given user id.
+   * Returns the full path to a user settings file for the given user id.
    */
   userSettingsFile(userId: number): string {
     const s = String(userId).padStart(9, "0");
@@ -23,7 +23,7 @@ export class DataDir {
   }
 
   /**
-   * Returns full path to a user stats file for the given user id.
+   * Returns the full path to a user stats file for the given user id.
    */
   userStatsFile(userId: number): string {
     const s = String(userId).padStart(9, "0");

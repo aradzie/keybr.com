@@ -84,7 +84,6 @@
     "@types/node": "^22.8.5",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
-    "ava": "^6.2.0",
     "chai": "^5.1.1",
     "chai-as-promised": "^8.0.0",
     "chai-like": "^1.1.3",

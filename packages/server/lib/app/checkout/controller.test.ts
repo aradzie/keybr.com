@@ -1,26 +1,42 @@
+import { test } from "node:test";
 import { Application } from "@fastr/core";
 import { User } from "@keybr/database";
 import { isPremiumUser } from "@keybr/pages-shared";
+import { assert, expect, use } from "chai";
+import chaiLike from "chai-like";
 import { kMain } from "../module.ts";
-import { test } from "../test/context.ts";
+import { TestContext } from "../test/context.ts";
 import { startApp } from "../test/request.ts";
 
-test("ignore invalid http method", async (t) => {
+use(chaiLike);
+
+const context = new TestContext();
+
+test("ignore invalid http method", async () => {
   // Arrange.
 
-  const request = startApp(t.context.get(Application, kMain));
+  const request = startApp(context.get(Application, kMain));
 
   // Assert.
 
-  t.is((await request.GET("/_/checkout/paddle-alert").send()).status, 405);
-  t.is((await request.PUT("/_/checkout/paddle-alert").send({})).status, 405);
-  t.is((await request.DELETE("/_/checkout/paddle-alert").send({})).status, 405);
+  assert.strictEqual(
+    (await request.GET("/_/checkout/paddle-alert").send()).status,
+    405,
+  );
+  assert.strictEqual(
+    (await request.PUT("/_/checkout/paddle-alert").send({})).status,
+    405,
+  );
+  assert.strictEqual(
+    (await request.DELETE("/_/checkout/paddle-alert").send({})).status,
+    405,
+  );
 });
 
-test("ignore wrong signature", async (t) => {
+test("ignore wrong signature", async () => {
   // Arrange.
 
-  const request = startApp(t.context.get(Application, kMain));
+  const request = startApp(context.get(Application, kMain));
 
   // Act.
 
@@ -65,20 +81,23 @@ test("ignore wrong signature", async (t) => {
 
   // Assert.
 
-  t.is(response.status, 403);
-  t.is(response.headers.get("Content-Type"), "text/plain; charset=UTF-8");
-  t.is(
+  assert.strictEqual(response.status, 403);
+  assert.strictEqual(
+    response.headers.get("Content-Type"),
+    "text/plain; charset=UTF-8",
+  );
+  assert.strictEqual(
     await response.body.text(),
     "Error: Failed validating webhook event body",
   );
 
-  t.false(isPremiumUser(User.toPublicUser(await User.findById(1), "")));
+  assert.isFalse(isPremiumUser(User.toPublicUser(await User.findById(1), "")));
 });
 
-test("ignore invalid user id", async (t) => {
+test("ignore invalid user id", async () => {
   // Arrange.
 
-  const request = startApp(t.context.get(Application, kMain));
+  const request = startApp(context.get(Application, kMain));
 
   // Act.
 
@@ -126,15 +145,18 @@ test("ignore invalid user id", async (t) => {
 
   // Assert.
 
-  t.is(response.status, 500);
-  t.is(response.headers.get("Content-Type"), "text/plain; charset=UTF-8");
-  t.is(await response.body.text(), "Error: Unknown user id");
+  assert.strictEqual(response.status, 500);
+  assert.strictEqual(
+    response.headers.get("Content-Type"),
+    "text/plain; charset=UTF-8",
+  );
+  assert.strictEqual(await response.body.text(), "Error: Unknown user id");
 });
 
-test("create order", async (t) => {
+test("create order", async () => {
   // Arrange.
 
-  const request = startApp(t.context.get(Application, kMain));
+  const request = startApp(context.get(Application, kMain));
 
   // Act.
 
@@ -182,14 +204,17 @@ test("create order", async (t) => {
 
   // Assert.
 
-  t.is(response.status, 200);
-  t.is(response.headers.get("Content-Type"), "text/plain; charset=UTF-8");
-  t.is(await response.body.text(), "OK");
+  assert.strictEqual(response.status, 200);
+  assert.strictEqual(
+    response.headers.get("Content-Type"),
+    "text/plain; charset=UTF-8",
+  );
+  assert.strictEqual(await response.body.text(), "OK");
 
-  t.true(isPremiumUser(User.toPublicUser(await User.findById(1), "")));
+  assert.isTrue(isPremiumUser(User.toPublicUser(await User.findById(1), "")));
 });
 
-test("re-create order", async (t) => {
+test("re-create order", async () => {
   // Arrange.
 
   await (await User.findById(1))!.$relatedQuery("order").insert({
@@ -207,7 +232,7 @@ test("re-create order", async (t) => {
     email: null,
   });
 
-  const request = startApp(t.context.get(Application, kMain));
+  const request = startApp(context.get(Application, kMain));
 
   // Act.
 
@@ -255,17 +280,20 @@ test("re-create order", async (t) => {
 
   // Assert.
 
-  t.is(response.status, 200);
-  t.is(response.headers.get("Content-Type"), "text/plain; charset=UTF-8");
-  t.is(await response.body.text(), "OK");
+  assert.strictEqual(response.status, 200);
+  assert.strictEqual(
+    response.headers.get("Content-Type"),
+    "text/plain; charset=UTF-8",
+  );
+  assert.strictEqual(await response.body.text(), "OK");
 
   const user1 = (await User.findById(1))!;
   const user2 = (await User.findById(2))!;
 
-  t.true(isPremiumUser(User.toPublicUser(user1, "")));
-  t.true(isPremiumUser(User.toPublicUser(user2, "")));
+  assert.isTrue(isPremiumUser(User.toPublicUser(user1, "")));
+  assert.isTrue(isPremiumUser(User.toPublicUser(user2, "")));
 
-  t.like(user1.toJSON(), {
+  expect(user1.toJSON()).to.be.like({
     id: 1,
     order: {
       provider: "paddle",
@@ -275,7 +303,7 @@ test("re-create order", async (t) => {
       userId: 1,
     },
   });
-  t.like(user2.toJSON(), {
+  expect(user2.toJSON()).to.be.like({
     id: 2,
     order: {
       provider: "paddle",
