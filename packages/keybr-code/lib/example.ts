@@ -1,4 +1,4 @@
-#!/usr/bin/env -S node --import @keybr/tsl
+#!/usr/bin/env -S npx tsnode
 
 import { LCG } from "@keybr/rand";
 import { flattenStyledText } from "@keybr/textinput";

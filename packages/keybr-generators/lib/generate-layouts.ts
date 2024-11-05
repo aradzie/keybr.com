@@ -1,4 +1,4 @@
-#!/usr/bin/env -S node --import @keybr/tsl
+#!/usr/bin/env -S npx tsnode
 
 /**
  * This script takes keyboard layout definitions in various formats and generates

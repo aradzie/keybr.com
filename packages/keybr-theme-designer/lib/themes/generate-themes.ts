@@ -1,4 +1,4 @@
-#!/usr/bin/env -S node --import @keybr/tsl
+#!/usr/bin/env -S npx tsnode
 
 import { readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";

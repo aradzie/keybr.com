@@ -1,4 +1,4 @@
-#!/usr/bin/env -S node --import @keybr/tsl
+#!/usr/bin/env -S npx tsnode
 
 import { Container } from "@fastr/invert";
 import { ConfigModule, Env } from "@keybr/config";
