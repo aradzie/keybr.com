@@ -1,4 +1,5 @@
 import { type ElementType, type HTMLAttributes, type ReactNode } from "react";
+import { type AlignName } from "../../styles/index.ts";
 import { type ClassName } from "../types.ts";
 
 export type ParaProps = {
@@ -7,4 +8,5 @@ export type ParaProps = {
   readonly id?: string;
   readonly title?: string;
   readonly children?: ReactNode;
+  readonly align?: AlignName;
 };

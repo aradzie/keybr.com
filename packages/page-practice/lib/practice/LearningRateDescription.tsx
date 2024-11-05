@@ -1,6 +1,6 @@
 import { useIntlNumbers } from "@keybr/intl";
 import { type LearningRate, type LessonKey } from "@keybr/lesson";
-import { Name, Para, styleTextCenter, Value } from "@keybr/widget";
+import { Name, Para, Value } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
 
@@ -14,7 +14,7 @@ export function LearningRateDescription({
   const { formatNumber, formatPercents } = useIntlNumbers();
   if ((lessonKey.bestConfidence ?? 0) >= 1) {
     return (
-      <Para className={styleTextCenter}>
+      <Para align="center">
         <Name>
           <FormattedMessage
             id="learningRate.alreadyUnlocked"
@@ -30,7 +30,7 @@ export function LearningRateDescription({
     learningRate.certainty > 0
   ) {
     return (
-      <Para className={styleTextCenter}>
+      <Para align="center">
         <Name>
           <FormattedMessage
             id="learningRate.remainingLessons"
@@ -52,7 +52,7 @@ export function LearningRateDescription({
     );
   }
   return (
-    <Para className={styleTextCenter}>
+    <Para align="center">
       <Name>
         <FormattedMessage
           id="learningRate.unknown"

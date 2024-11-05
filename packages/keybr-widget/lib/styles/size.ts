@@ -23,8 +23,8 @@ export type SizeName =
   | 24
   | 32;
 
-export const sizeClassName = (size?: SizeName | null): ClassName => {
-  switch (size) {
+export const sizeClassName = (value?: SizeName | null): ClassName => {
+  switch (value) {
     case "fill":
       return styleSizeFill;
     case "fillAlt":

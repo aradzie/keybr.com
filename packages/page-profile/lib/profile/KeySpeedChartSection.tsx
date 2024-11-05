@@ -4,7 +4,7 @@ import { KeyDetails, KeySelector } from "@keybr/lesson-ui";
 import { hasData } from "@keybr/math";
 import { type KeyStatsMap } from "@keybr/result";
 import { useSettings } from "@keybr/settings";
-import { Explainer, Figure, Para, styleTextCenter } from "@keybr/widget";
+import { Explainer, Figure, Para } from "@keybr/widget";
 import { type ReactNode, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { ChartWrapper } from "./ChartWrapper.tsx";
@@ -47,7 +47,7 @@ export function KeySpeedChartSection({
         </Figure.Description>
       </Explainer>
 
-      <Para className={styleTextCenter}>
+      <Para align="center">
         <KeySelector
           keyStatsMap={keyStatsMap}
           current={current}
@@ -57,7 +57,7 @@ export function KeySpeedChartSection({
         />
       </Para>
 
-      <Para className={styleTextCenter}>
+      <Para align="center">
         <KeyDetails lessonKey={LessonKey.from(keyStats, target)} />
       </Para>
 

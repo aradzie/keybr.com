@@ -5,13 +5,7 @@ import {
   MutableStreakList,
   type Streak,
 } from "@keybr/result";
-import {
-  Explainer,
-  Figure,
-  NameValue,
-  Para,
-  styleTextCenter,
-} from "@keybr/widget";
+import { Explainer, Figure, NameValue, Para } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { type ResultSummary } from "./resultsummary.ts";
@@ -39,7 +33,7 @@ export function AccuracyStreaksSection({
           ))}
         </dl>
       ) : (
-        <Para className={styleTextCenter}>
+        <Para align="center">
           <FormattedMessage
             id="profile.accuracy.noData"
             defaultMessage="You don’t have any accuracy streaks. Consider completing a lesson with a highest accuracy possible, regardless of typing speed."

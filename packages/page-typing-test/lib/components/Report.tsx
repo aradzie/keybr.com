@@ -18,7 +18,6 @@ import {
   NameValue,
   Para,
   Spacer,
-  styleTextCenter,
   useHotkeys,
   Value,
 } from "@keybr/widget";
@@ -64,7 +63,7 @@ export const Report = memo(function Report({
         />
       </Box>
 
-      <Para className={styleTextCenter}>
+      <Para align="center">
         <NameValue name="Characters" value={formatNumber(length)} />
         <NameValue name="Errors" value={formatNumber(errors)} />
         <NameValue
@@ -82,7 +81,7 @@ export const Report = memo(function Report({
         />
       </Box>
 
-      <Para className={styleTextCenter}>
+      <Para align="center">
         <Name>
           Faster than <Value value={formatPercents(pSpeed)} /> of all other
           people.
@@ -101,7 +100,7 @@ export const Report = memo(function Report({
         />
       </Box>
 
-      <Para className={styleTextCenter}>
+      <Para align="center">
         <Name>
           More accurate than <Value value={formatPercents(pAccuracy)} /> of all
           other people.
@@ -128,7 +127,7 @@ export const Report = memo(function Report({
         <Field.Filler />
       </FieldList>
 
-      <Para className={styleTextCenter}>
+      <Para align="center">
         Press <Kbd>Enter</Kbd> to start a new test.
       </Para>
     </Screen>

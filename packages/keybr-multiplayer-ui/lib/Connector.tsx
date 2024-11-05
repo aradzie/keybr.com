@@ -1,5 +1,5 @@
 import { ClientCodec } from "@keybr/multiplayer-shared";
-import { Article, Para, styleTextCenter } from "@keybr/widget";
+import { Article, Para } from "@keybr/widget";
 import { type ReactNode, useMemo } from "react";
 import { FormattedMessage } from "react-intl";
 import { Game } from "./Game.tsx";
@@ -39,7 +39,7 @@ function useTransport() {
 
 function Banner(): ReactNode {
   return (
-    <Para className={styleTextCenter}>
+    <Para align="center">
       <FormattedMessage
         id="multiplayer.intro.description"
         defaultMessage="Compete against other players in this online multiplayer game. The faster you type, the faster your car goes. Type as fast as you can to win the race!"

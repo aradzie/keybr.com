@@ -7,7 +7,6 @@ import {
   Figure,
   Para,
   RadioBox,
-  styleTextCenter,
   Value,
 } from "@keybr/widget";
 import React, { type ReactNode, useMemo, useState } from "react";
@@ -49,7 +48,7 @@ export function AccuracyHistogramSection({
         </Figure.Description>
       </Explainer>
 
-      <Para className={styleTextCenter}>
+      <Para align="center">
         {period === "average" ? (
           <FormattedMessage
             id="profile.chart.compareAverageAccuracy.description"
