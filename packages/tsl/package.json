@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "main": "index.js",
-  "dependencies": {},
-  "devDependencies": {},
-  "scripts": {}
+  "bin": {
+    "tsnode": "tsnode",
+    "tstest": "tstest"
+  }
 }

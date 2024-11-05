@@ -16,9 +16,9 @@
   "scripts": {
     "clean": "rm -fr .types",
     "compile": "tsc",
-    "test": "node --import @keybr/tsl --test 'lib/**/*.test.{ts,tsx}'",
-    "generate-books": "node --import @keybr/tsl ./lib/generate-books.ts",
-    "generate-languages": "node --import @keybr/tsl ./lib/generate-languages.ts",
-    "generate-layouts": "node --import @keybr/tsl ./lib/generate-layouts.ts"
+    "test": "tstest --test 'lib/**/*.test.{ts,tsx}'",
+    "generate-books": "tsnode ./lib/generate-books.ts",
+    "generate-languages": "tsnode ./lib/generate-languages.ts",
+    "generate-layouts": "tsnode ./lib/generate-layouts.ts"
   }
 }

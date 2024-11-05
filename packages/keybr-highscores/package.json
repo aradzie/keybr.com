@@ -14,6 +14,6 @@
   "scripts": {
     "clean": "rm -fr .types",
     "compile": "tsc",
-    "test": "node --import @keybr/tsl --test 'lib/**/*.test.{ts,tsx}'"
+    "test": "tstest --test 'lib/**/*.test.{ts,tsx}'"
   }
 }

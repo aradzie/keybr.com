@@ -17,6 +17,7 @@
   "scripts": {
     "clean": "rm -fr .types",
     "compile": "tsc",
-    "test": "node --import @keybr/tsl --import=@keybr/test-env-server --test 'lib/**/*.test.{ts,tsx}'"
+    "test": "tstest --import=@keybr/test-env-server --test --test-concurrency=1 'lib/**/*.test.{ts,tsx}'",
+    "fast-test": "env DATABASE_CLIENT=sqlite tstest --import=@keybr/test-env-server --test 'lib/**/*.test.{ts,tsx}'"
   }
 }

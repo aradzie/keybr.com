@@ -14,7 +14,7 @@ const container = new Container();
 container.load(new ConfigModule());
 const knex = container.get(Knex);
 
-async function exec(): Promise<void> {
+async function exec() {
   try {
     await createSchema(knex);
     Logger.info(`Database schema was created.`);
@@ -32,5 +32,5 @@ async function exec(): Promise<void> {
 }
 
 exec().catch((err) => {
-  throw err;
+  console.error(err);
 });
