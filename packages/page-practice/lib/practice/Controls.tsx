@@ -1,6 +1,6 @@
 import { Dir } from "@keybr/intl";
 import { names } from "@keybr/lesson-ui";
-import { Button, Icon, IconButton } from "@keybr/widget";
+import { Button, Icon, IconButton, useView } from "@keybr/widget";
 import {
   mdiAspectRatio,
   mdiCog,
@@ -10,6 +10,7 @@ import {
 } from "@mdi/js";
 import { memo, type ReactNode } from "react";
 import { useIntl } from "react-intl";
+import { views } from "../views.tsx";
 import * as styles from "./Controls.module.less";
 
 export const Controls = memo(function Controls({
@@ -17,15 +18,14 @@ export const Controls = memo(function Controls({
   onResetLesson,
   onSkipLesson,
   onHelp,
-  onConfigure,
 }: {
   readonly onChangeView: () => void;
   readonly onResetLesson: () => void;
   readonly onSkipLesson: () => void;
   readonly onHelp: () => void;
-  readonly onConfigure: () => void;
 }): ReactNode {
   const { formatMessage } = useIntl();
+  const { setView } = useView(views);
   return (
     <div id={names.controls} className={styles.controls}>
       <IconButton
@@ -73,7 +73,9 @@ export const Controls = memo(function Controls({
           defaultMessage:
             "Change lesson settings, configure language, keyboard layout, etc.",
         })}
-        onClick={onConfigure}
+        onClick={() => {
+          setView("settings");
+        }}
       />
     </div>
   );

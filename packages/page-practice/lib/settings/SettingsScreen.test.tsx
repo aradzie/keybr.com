@@ -17,7 +17,7 @@ test("render", async () => {
     <FakeIntlProvider>
       <FakeSettingsContext>
         <FakeResultContext initialResults={faker.nextResultList(100)}>
-          <SettingsScreen onSubmit={() => {}} />
+          <SettingsScreen />
         </FakeResultContext>
       </FakeSettingsContext>
     </FakeIntlProvider>,

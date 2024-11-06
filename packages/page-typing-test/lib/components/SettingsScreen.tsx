@@ -8,16 +8,15 @@ import {
   Icon,
   Tab,
   TabList,
+  useView,
 } from "@keybr/widget";
 import { mdiCheckCircle } from "@mdi/js";
-import { type ReactNode, useState } from "react";
+import { useState } from "react";
+import { views } from "../views.tsx";
 import { TextGeneratorSettings } from "./settings/TextGeneratorSettings.tsx";
 
-export function SettingsScreen({
-  onSubmit,
-}: {
-  readonly onSubmit: () => void;
-}): ReactNode {
+export function SettingsScreen() {
+  const { setView } = useView(views);
   const [tabIndex, setTabIndex] = useState(0);
 
   return (
@@ -46,7 +45,7 @@ export function SettingsScreen({
               label="Done"
               title="Save settings and return to the test."
               onClick={() => {
-                onSubmit();
+                setView("test");
               }}
             />
           </Field>

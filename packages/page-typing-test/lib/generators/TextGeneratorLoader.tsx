@@ -3,19 +3,18 @@ import { WordListLoader } from "@keybr/content-words";
 import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
 import { LCG } from "@keybr/rand";
 import { type ReactNode } from "react";
-import { type TextSource, TextSourceType } from "../settings.ts";
+import { TextSourceType, useCompositeSettings } from "../settings.ts";
 import { BookParagraphsGenerator } from "./book.ts";
 import { CommonWordsGenerator } from "./commonwords.ts";
 import { PseudoWordsGenerator } from "./pseudowords.ts";
 import { type TextGenerator } from "./types.ts";
 
 export function TextGeneratorLoader({
-  textSource,
   children,
 }: {
-  readonly textSource: TextSource;
   readonly children: (generator: TextGenerator) => ReactNode;
 }): ReactNode {
+  const { textSource } = useCompositeSettings();
   switch (textSource.type) {
     case TextSourceType.CommonWords:
       return (

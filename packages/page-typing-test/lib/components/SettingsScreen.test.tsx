@@ -14,7 +14,7 @@ test("render", async () => {
     <FakeIntlProvider>
       <FakeSettingsContext>
         <KeyboardProvider>
-          <SettingsScreen onSubmit={() => {}} />
+          <SettingsScreen />
         </KeyboardProvider>
       </FakeSettingsContext>
     </FakeIntlProvider>,

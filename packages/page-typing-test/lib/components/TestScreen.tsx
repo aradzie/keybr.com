@@ -1,28 +1,38 @@
 import { Screen } from "@keybr/pages-shared";
-import { type LineList } from "@keybr/textinput";
+import { type LineList, makeStats } from "@keybr/textinput";
 import { TextArea } from "@keybr/textinput-ui";
-import { type Focusable, Spacer } from "@keybr/widget";
-import { memo, useEffect, useRef, useState } from "react";
-import { type TextGenerator } from "../generators/index.ts";
-import { Session } from "../session/index.ts";
-import { type CompositeSettings } from "../settings.ts";
+import { type Focusable, Spacer, useView } from "@keybr/widget";
+import { useEffect, useRef, useState } from "react";
+import {
+  type TextGenerator,
+  TextGeneratorLoader,
+} from "../generators/index.ts";
+import { Session, type TestResult } from "../session/index.ts";
+import { type CompositeSettings, useCompositeSettings } from "../settings.ts";
+import { views } from "../views.tsx";
 import { LineTemplate } from "./LineTemplate.tsx";
 import * as styles from "./TestScreen.module.less";
 import { Toolbar } from "./Toolbar.tsx";
 
-export const TestScreen = memo(function TestScreen({
-  settings,
+export function TestScreen() {
+  return (
+    <TextGeneratorLoader>
+      {(generator) => (
+        <Controller generator={generator} mark={generator.mark()} />
+      )}
+    </TextGeneratorLoader>
+  );
+}
+
+function Controller({
   generator,
   mark,
-  onComplete,
-  onConfigure,
 }: {
-  readonly settings: CompositeSettings;
   readonly generator: TextGenerator;
   readonly mark: unknown;
-  readonly onComplete: (session: Session) => void;
-  readonly onConfigure: () => void;
 }) {
+  const { setView } = useView(views);
+  const settings = useCompositeSettings();
   const focusRef = useRef<Focusable>(null);
   const [session, setSession] = useState<Session>(() =>
     nextTest(settings, generator),
@@ -37,7 +47,9 @@ export const TestScreen = memo(function TestScreen({
   return (
     <Screen>
       <Toolbar
-        onConfigure={onConfigure}
+        onConfigure={() => {
+          setView("settings");
+        }}
         onChange={() => {
           focusRef.current?.focus();
         }}
@@ -61,7 +73,7 @@ export const TestScreen = memo(function TestScreen({
             const { completed } = session.handleInput(event);
             setLines(session.getLines());
             if (completed) {
-              onComplete(session);
+              setView("report", { result: makeResult(session) });
             }
           }}
           lineTemplate={LineTemplate}
@@ -69,8 +81,18 @@ export const TestScreen = memo(function TestScreen({
       </div>
     </Screen>
   );
-});
+}
 
 function nextTest(settings: CompositeSettings, generator: TextGenerator) {
   return new Session({ ...settings, numLines: 7, numCols: 55 }, generator);
+}
+
+function makeResult(session: Session): TestResult {
+  const steps = session.getSteps();
+  const events = session.getEvents();
+  return {
+    stats: makeStats(steps),
+    steps,
+    events,
+  };
 }

@@ -11,18 +11,17 @@ import { StaticText } from "@keybr/textinput-ui";
 import { Box, useDocumentVisibility } from "@keybr/widget";
 import { type ReactNode, useEffect, useMemo, useState } from "react";
 import { ReplayState, Session, type TestResult } from "../session/index.ts";
-import { type CompositeSettings } from "../settings.ts";
+import { useCompositeSettings } from "../settings.ts";
 import { Progress } from "./Progress.tsx";
 import * as styles from "./Replay.module.less";
 
 export function Replay({
-  settings: { textInput, textDisplay },
   result: { steps, events },
 }: {
-  readonly settings: CompositeSettings;
   readonly result: TestResult;
 }): ReactNode {
   const keyboard = useKeyboard();
+  const { textInput, textDisplay } = useCompositeSettings();
   const { stepper, lines, depressedKeys } = useReplayState(
     textInput,
     steps,

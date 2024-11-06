@@ -21,28 +21,24 @@ import {
   Para,
   Spacer,
   useHotkeys,
+  useView,
   Value,
 } from "@keybr/widget";
 import { mdiSkipNext } from "@mdi/js";
-import { memo, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { type TestResult } from "../session/index.ts";
-import { type CompositeSettings } from "../settings.ts";
+import { views } from "../views.tsx";
 import { Replay } from "./Replay.tsx";
-import * as styles from "./Report.module.less";
+import * as styles from "./ReportScreen.module.less";
 
-export const Report = memo(function Report({
-  settings,
-  result,
-  onNext,
-}: {
-  readonly settings: CompositeSettings;
-  readonly result: TestResult;
-  readonly onNext: () => void;
-}) {
+export function ReportScreen({ result }: { readonly result: TestResult }) {
+  const { setView } = useView(views);
   const { formatNumber, formatPercents } = useIntlNumbers();
   const { speedUnit, formatSpeed } = useFormatter();
 
-  useHotkeys(["Enter", onNext]);
+  const handleNext = () => setView("test");
+
+  useHotkeys(["Enter", handleNext]);
 
   const { time, speed, length, errors, accuracy } = result.stats;
 
@@ -131,7 +127,7 @@ export const Report = memo(function Report({
 
       <Spacer size={3} />
 
-      <Replay settings={settings} result={result} />
+      <Replay result={result} />
 
       <Spacer size={3} />
 
@@ -142,7 +138,7 @@ export const Report = memo(function Report({
             label="Next test"
             icon={<Icon shape={mdiSkipNext} />}
             title="Try another test."
-            onClick={onNext}
+            onClick={handleNext}
           />
         </Field>
         <Field.Filler />
@@ -153,7 +149,7 @@ export const Report = memo(function Report({
       </Para>
     </Screen>
   );
-});
+}
 
 function Indicator({
   name,

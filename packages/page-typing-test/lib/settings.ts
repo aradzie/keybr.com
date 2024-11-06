@@ -1,12 +1,19 @@
 import { Book } from "@keybr/content";
 import { Language } from "@keybr/keyboard";
-import { enumProp, itemProp, numberProp, type Settings } from "@keybr/settings";
+import {
+  enumProp,
+  itemProp,
+  numberProp,
+  type Settings,
+  useSettings,
+} from "@keybr/settings";
 import {
   type TextDisplaySettings,
   type TextInputSettings,
   toTextDisplaySettings,
   toTextInputSettings,
 } from "@keybr/textinput";
+import { useMemo } from "react";
 import {
   type Duration,
   duration_15_seconds,
@@ -121,6 +128,11 @@ export function toCompositeSettings(settings: Settings): CompositeSettings {
     textInput,
     textDisplay,
   };
+}
+
+export function useCompositeSettings(): CompositeSettings {
+  const { settings } = useSettings();
+  return useMemo(() => toCompositeSettings(settings), [settings]);
 }
 
 function languageOf(textSource: TextSource): Language {

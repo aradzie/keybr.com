@@ -21,4 +21,5 @@ export * from "./textfield/index.ts";
 export * from "./toast/index.ts";
 export * from "./tour/index.ts";
 export * from "./types.ts";
+export * from "./view/index.ts";
 export * from "./zoomer/index.ts";

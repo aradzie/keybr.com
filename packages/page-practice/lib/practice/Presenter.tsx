@@ -27,7 +27,6 @@ type Props = {
   readonly onKeyDown: (ev: IKeyboardEvent) => void;
   readonly onKeyUp: (ev: IKeyboardEvent) => void;
   readonly onInput: (ev: IInputEvent) => void;
-  readonly onConfigure: () => void;
 };
 
 type State = {
@@ -75,7 +74,7 @@ export class Presenter extends PureComponent<Props, State> {
 
   override render(): ReactNode {
     const {
-      props: { state, lines, depressedKeys, onConfigure },
+      props: { state, lines, depressedKeys },
       state: { view, tour, focus },
       handleResetLesson,
       handleSkipLesson,
@@ -102,7 +101,6 @@ export class Presenter extends PureComponent<Props, State> {
                 onResetLesson={handleResetLesson}
                 onSkipLesson={handleSkipLesson}
                 onHelp={handleHelp}
-                onConfigure={onConfigure}
               />
             }
             textInput={
@@ -136,7 +134,6 @@ export class Presenter extends PureComponent<Props, State> {
                 onResetLesson={handleResetLesson}
                 onSkipLesson={handleSkipLesson}
                 onHelp={handleHelp}
-                onConfigure={onConfigure}
               />
             }
             textInput={
@@ -169,7 +166,6 @@ export class Presenter extends PureComponent<Props, State> {
                 onResetLesson={handleResetLesson}
                 onSkipLesson={handleSkipLesson}
                 onHelp={handleHelp}
-                onConfigure={onConfigure}
               />
             }
             textInput={

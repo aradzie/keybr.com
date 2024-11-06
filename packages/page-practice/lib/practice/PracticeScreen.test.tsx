@@ -22,7 +22,7 @@ test("render", async () => {
           .set(lessonProps.customText.content, "abcdefghij")}
       >
         <FakeResultContext initialResults={faker.nextResultList(100)}>
-          <PracticeScreen onConfigure={() => {}} />
+          <PracticeScreen />
         </FakeResultContext>
       </FakeSettingsContext>
     </FakeIntlProvider>,

@@ -1,12 +1,11 @@
 import { KeyboardOptions, Layout } from "@keybr/keyboard";
-import { Settings, useSettings } from "@keybr/settings";
-import { type ReactNode, useState } from "react";
-import { PracticeScreen } from "./practice/PracticeScreen.tsx";
-import { SettingsScreen } from "./settings/SettingsScreen.tsx";
+import { Settings } from "@keybr/settings";
+import { ViewSwitch } from "@keybr/widget";
+import { views } from "./views.tsx";
 
 setDefaultLayout(window.navigator.language);
 
-function setDefaultLayout(localeId: string): void {
+function setDefaultLayout(localeId: string) {
   const layout = Layout.findLayout(localeId);
   if (layout != null) {
     Settings.addDefaults(
@@ -18,25 +17,6 @@ function setDefaultLayout(localeId: string): void {
   }
 }
 
-export function PracticePage(): ReactNode {
-  const { updateSettings } = useSettings();
-  const [configure, setConfigure] = useState(false);
-  if (configure) {
-    return (
-      <SettingsScreen
-        onSubmit={(newSettings) => {
-          updateSettings(newSettings);
-          setConfigure(false);
-        }}
-      />
-    );
-  } else {
-    return (
-      <PracticeScreen
-        onConfigure={() => {
-          setConfigure(true);
-        }}
-      />
-    );
-  }
+export function PracticePage() {
+  return <ViewSwitch views={views} />;
 }

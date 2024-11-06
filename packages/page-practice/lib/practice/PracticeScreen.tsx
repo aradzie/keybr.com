@@ -6,33 +6,21 @@ import { LessonLoader } from "@keybr/lesson-loader";
 import { LoadingProgress } from "@keybr/pages-shared";
 import { type Result, useResults } from "@keybr/result";
 import { useSettings } from "@keybr/settings";
-import { type ReactNode, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Controller } from "./Controller.tsx";
 import { displayEvent, Progress } from "./state/index.ts";
 
-export function PracticeScreen({
-  onConfigure,
-}: {
-  readonly onConfigure: () => void;
-}): ReactNode {
+export function PracticeScreen() {
   return (
     <KeyboardProvider>
       <LessonLoader>
-        {(lesson) => (
-          <ProgressUpdater lesson={lesson} onConfigure={onConfigure} />
-        )}
+        {(lesson) => <ProgressUpdater lesson={lesson} />}
       </LessonLoader>
     </KeyboardProvider>
   );
 }
 
-function ProgressUpdater({
-  lesson,
-  onConfigure,
-}: {
-  readonly lesson: Lesson;
-  readonly onConfigure: () => void;
-}): ReactNode {
+function ProgressUpdater({ lesson }: { readonly lesson: Lesson }) {
   const { results, appendResults } = useResults();
   const [progress, { total, current }] = useProgress(lesson, results);
   if (progress == null) {
@@ -47,7 +35,6 @@ function ProgressUpdater({
             appendResults([result]);
           }
         }}
-        onConfigure={onConfigure}
       />
     );
   }

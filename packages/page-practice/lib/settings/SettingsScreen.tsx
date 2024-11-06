@@ -1,6 +1,6 @@
 import { KeyboardProvider } from "@keybr/keyboard";
 import { Screen } from "@keybr/pages-shared";
-import { type Settings, SettingsContext, useSettings } from "@keybr/settings";
+import { SettingsContext, useSettings } from "@keybr/settings";
 import { TypingSettings } from "@keybr/textinput-ui";
 import {
   Button,
@@ -10,36 +10,34 @@ import {
   Header,
   Icon,
   Spacer,
+  useView,
 } from "@keybr/widget";
 import { mdiCheckCircle, mdiDeleteForever } from "@mdi/js";
-import { type ReactNode, useState } from "react";
+import { useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
+import { views } from "../views.tsx";
 import { ExplainSettings } from "./ExplainSettings.tsx";
 import { KeyboardSettings } from "./KeyboardSettings.tsx";
 import { LessonSettings } from "./LessonSettings.tsx";
 import { MiscSettings } from "./MiscSettings.tsx";
 import * as styles from "./SettingsScreen.module.less";
 
-export function SettingsScreen({
-  onSubmit,
-}: {
-  readonly onSubmit: (newSettings: Settings) => void;
-}): ReactNode {
-  const { settings } = useSettings();
-  const [newSettings, setNewSettings] = useState(settings);
+export function SettingsScreen() {
+  const { settings, updateSettings } = useSettings();
+  const { setView } = useView(views);
+  const [newSettings, updateNewSettings] = useState(settings);
   return (
     <SettingsContext.Provider
       value={{
         settings: newSettings,
-        updateSettings: (newSettings) => {
-          setNewSettings(newSettings);
-        },
+        updateSettings: updateNewSettings,
       }}
     >
       <KeyboardProvider>
         <Content
           onSubmit={() => {
-            onSubmit(newSettings);
+            updateSettings(newSettings);
+            setView("practice");
           }}
         />
       </KeyboardProvider>
@@ -47,7 +45,7 @@ export function SettingsScreen({
   );
 }
 
-function Content({ onSubmit }: { readonly onSubmit: () => void }): ReactNode {
+function Content({ onSubmit }: { readonly onSubmit: () => void }) {
   const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
   return (

@@ -28,11 +28,9 @@ import {
 export const Controller = memo(function Controller({
   progress,
   onResult,
-  onConfigure,
 }: {
   readonly progress: Progress;
   readonly onResult: (result: Result) => void;
-  readonly onConfigure: () => void;
 }): ReactNode {
   const {
     state,
@@ -60,7 +58,6 @@ export const Controller = memo(function Controller({
       onKeyDown={handleKeyDown}
       onKeyUp={handleKeyUp}
       onInput={handleInput}
-      onConfigure={onConfigure}
     />
   );
 });
