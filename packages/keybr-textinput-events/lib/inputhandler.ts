@@ -1,5 +1,5 @@
 import { type Focusable } from "@keybr/widget";
-import { mapEvent } from "./events.ts";
+import { mapEvent, timeStampOf } from "./events.ts";
 import { isTextInput, ModifierState } from "./modifiers.ts";
 import { TimeToType } from "./timetotype.ts";
 import { type InputListener } from "./types.ts";
@@ -130,7 +130,7 @@ export class InputHandler implements Focusable {
       case "insertLineBreak":
         this.#callbacks.onInput?.({
           type: "input",
-          timeStamp: event.timeStamp,
+          timeStamp: timeStampOf(event),
           inputType: "appendLineBreak",
           codePoint: 0x0000,
           timeToType: this.#timeToType.measure(event),
@@ -140,7 +140,7 @@ export class InputHandler implements Focusable {
       case "deleteContentBackward":
         this.#callbacks.onInput?.({
           type: "input",
-          timeStamp: event.timeStamp,
+          timeStamp: timeStampOf(event),
           inputType: "clearChar",
           codePoint: 0x0000,
           timeToType: this.#timeToType.measure(event),
@@ -150,7 +150,7 @@ export class InputHandler implements Focusable {
       case "deleteWordBackward":
         this.#callbacks.onInput?.({
           type: "input",
-          timeStamp: event.timeStamp,
+          timeStamp: timeStampOf(event),
           inputType: "clearWord",
           codePoint: 0x0000,
           timeToType: this.#timeToType.measure(event),
@@ -176,13 +176,13 @@ export class InputHandler implements Focusable {
   };
 
   #appendChar(event: InputEvent | CompositionEvent) {
-    const { timeStamp, data } = event;
+    const { data } = event;
     if (data != null && data.length > 0) {
       const codePoint = data.codePointAt(0) ?? 0x0000;
       if (codePoint > 0x0000) {
         this.#callbacks.onInput?.({
           type: "input",
-          timeStamp,
+          timeStamp: timeStampOf(event),
           inputType: "appendChar",
           codePoint,
           timeToType: this.#timeToType.measure(event),
