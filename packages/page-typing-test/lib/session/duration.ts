@@ -1,4 +1,4 @@
-import { type Step } from "@keybr/textinput";
+import { computeSpeed, type Step } from "@keybr/textinput";
 import { type Duration, DurationType, type Progress } from "./types.ts";
 
 export function timeDuration(time: number): Duration {
@@ -31,17 +31,19 @@ export const durations: readonly NamedDuration[] = [
 ];
 
 export function computeProgress(
-  steps: readonly Step[],
   duration: Duration,
+  steps: readonly Step[],
 ): { progress: Progress; completed: boolean } {
   const { length } = steps;
   let time = 0;
   let progress = 0;
+  let speed = 0;
   let completed = false;
   if (length > 0) {
-    const first = steps[0];
-    const last = steps[length - 1];
-    time = last.timeStamp - first.timeStamp;
+    const head = steps[0];
+    const curr = steps[length - 1];
+    time = curr.timeStamp - head.timeStamp;
+    speed = computeSpeed(length, time);
     switch (duration.type) {
       case DurationType.Time: {
         progress = time / duration.value;
@@ -55,5 +57,13 @@ export function computeProgress(
       }
     }
   }
-  return { progress: { time, length, progress }, completed };
+  return {
+    progress: {
+      time,
+      length,
+      progress,
+      speed,
+    },
+    completed,
+  };
 }

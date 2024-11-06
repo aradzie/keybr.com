@@ -25,6 +25,8 @@ export type Progress = {
   readonly length: number;
   /** Progress made, [0, 1]. */
   readonly progress: number;
+  /** Typing speed so far. */
+  readonly speed: number;
 };
 
 export type SessionSettings = {

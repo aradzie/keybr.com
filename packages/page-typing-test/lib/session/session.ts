@@ -76,8 +76,8 @@ export class Session {
     this.#addEvent(event);
     const feedback = this.#textInput.onInput(event);
     const { progress, completed } = computeProgress(
-      this.#steps,
       this.settings.duration,
+      this.#steps,
     );
     this.#updateActiveLine(progress);
     if (this.#textInput.completed) {
