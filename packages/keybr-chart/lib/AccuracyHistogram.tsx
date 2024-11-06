@@ -98,7 +98,7 @@ function usePaint(
             x: box.x + x,
             y: box.y + box.height - y - 1,
             width: w,
-            height: 3,
+            height: 1,
           });
         }),
       );
