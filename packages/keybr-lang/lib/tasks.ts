@@ -4,89 +4,92 @@ export type Task = {
   readonly cancelled: boolean;
 };
 
-class TaskWrapper {
-  cancelled: boolean = false;
-  fired: boolean = false;
-
-  constructor(readonly callback: () => void) {}
-
-  cancel(): void {
-    this.cancelled = true;
-  }
-
-  fire(): void {
-    if (this.cancelled) {
-      return;
-    }
-    this.fired = true;
-    this.callback();
-  }
-}
-
 export class Tasks {
-  readonly #tasks = new Set<TaskWrapper>();
+  readonly #tasks = new Set<Task>();
+
+  get pending(): number {
+    return this.#tasks.size;
+  }
 
   delayed(timeout: number, callback: () => void): Task {
-    const task = new TaskWrapper(callback);
-
-    this.#tasks.add(task);
-
-    const execute = () => {
-      this.#tasks.delete(task);
-      task.fire();
-    };
-
-    const id = setTimeout(execute, timeout);
-
+    let fired = false;
+    let cancelled = false;
     const cancel = () => {
+      if (cancelled) {
+        return;
+      }
+      cancelled = true;
       this.#tasks.delete(task);
-      task.cancel();
       clearTimeout(id);
     };
 
-    return {
-      cancel,
-      get fired(): boolean {
-        return task.fired;
-      },
-      get cancelled(): boolean {
-        return task.cancelled;
-      },
-    };
-  }
-
-  repeated(timeout: number, callback: () => void): Task {
-    const task = new TaskWrapper(callback);
+    const task = new (class implements Task {
+      cancel() {
+        cancel();
+      }
+      get fired() {
+        return fired;
+      }
+      get cancelled() {
+        return cancelled;
+      }
+    })();
 
     this.#tasks.add(task);
 
-    const execute = () => {
-      task.fire();
-    };
-
-    const id = setInterval(execute, timeout);
-
-    const cancel = () => {
+    const id = setTimeout(() => {
+      if (cancelled) {
+        return;
+      }
       this.#tasks.delete(task);
-      task.cancel();
+      fired = true;
+      callback();
+    }, timeout);
+
+    return task;
+  }
+
+  repeated(timeout: number, callback: () => void): Task {
+    let fired = false;
+    let cancelled = false;
+    const cancel = () => {
+      if (cancelled) {
+        return;
+      }
+      cancelled = true;
+      this.#tasks.delete(task);
       clearInterval(id);
     };
 
-    return {
-      cancel,
-      get fired(): boolean {
-        return task.fired;
-      },
-      get cancelled(): boolean {
-        return task.cancelled;
-      },
-    };
+    const task = new (class implements Task {
+      cancel() {
+        cancel();
+      }
+      get fired() {
+        return fired;
+      }
+      get cancelled() {
+        return cancelled;
+      }
+    })();
+
+    this.#tasks.add(task);
+
+    const id = setInterval(() => {
+      if (cancelled) {
+        return;
+      }
+      fired = true;
+      callback();
+    }, timeout);
+
+    return task;
   }
 
-  cancelAll(): void {
+  cancelAll() {
     for (const task of this.#tasks) {
       task.cancel();
     }
-    this.#tasks.clear();
+    return this;
   }
 }

@@ -1,17 +1,6 @@
-import { useEffect, useRef } from "react";
-
-export const useInterval0 = (callback: () => void, time: number): void => {
-  const callbackRef = useRef(callback);
-  callbackRef.current = callback;
-  useEffect(() => {
-    const id = setInterval(() => {
-      callbackRef.current();
-    }, time);
-    return () => {
-      clearInterval(id);
-    };
-  }, [time]);
-};
+import { type Task } from "@keybr/lang";
+import { useRef } from "react";
+import { useTasks } from "./use-tasks.ts";
 
 export type IntervalScheduler = {
   get pending(): boolean;
@@ -19,37 +8,29 @@ export type IntervalScheduler = {
   schedule(callback: () => void, timeout: number): void;
 };
 
-export const useInterval = (): IntervalScheduler => {
+export const useInterval = () => {
+  const tasks = useTasks();
   const ref = useRef<IntervalScheduler>(null!);
   if (ref.current == null) {
     ref.current = new (class implements IntervalScheduler {
-      #id: any = null;
+      #task: Task | null = null;
 
-      get pending(): boolean {
-        return this.#id != null;
+      get pending() {
+        return this.#task != null;
       }
 
-      cancel(): void {
-        if (this.#id != null) {
-          clearInterval(this.#id);
-          this.#id = null;
+      cancel() {
+        if (this.#task != null) {
+          this.#task.cancel();
+          this.#task = null;
         }
       }
 
-      schedule(callback: () => void, timeout: number): void {
-        if (this.#id != null) {
-          clearInterval(this.#id);
-        }
-        this.#id = setInterval(() => {
-          callback();
-        }, timeout);
+      schedule(callback: () => void, timeout: number) {
+        this.cancel();
+        this.#task = tasks.repeated(timeout, callback);
       }
     })();
   }
-  useEffect(() => {
-    return () => {
-      ref.current.cancel();
-    };
-  }, []);
   return ref.current;
 };

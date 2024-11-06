@@ -1,17 +1,6 @@
-import { useEffect, useRef } from "react";
-
-export const useTimeout0 = (callback: () => void, time: number): void => {
-  const callbackRef = useRef(callback);
-  callbackRef.current = callback;
-  useEffect(() => {
-    const id = setTimeout(() => {
-      callbackRef.current();
-    }, time);
-    return () => {
-      clearTimeout(id);
-    };
-  }, [time]);
-};
+import { type Task } from "@keybr/lang";
+import { useRef } from "react";
+import { useTasks } from "./use-tasks.ts";
 
 export type TimeoutScheduler = {
   get pending(): boolean;
@@ -19,38 +8,29 @@ export type TimeoutScheduler = {
   schedule(callback: () => void, timeout: number): void;
 };
 
-export const useTimeout = (): TimeoutScheduler => {
+export const useTimeout = () => {
+  const tasks = useTasks();
   const ref = useRef<TimeoutScheduler>(null!);
   if (ref.current == null) {
     ref.current = new (class implements TimeoutScheduler {
-      #id: any = null;
+      #task: Task | null = null;
 
-      get pending(): boolean {
-        return this.#id != null;
+      get pending() {
+        return this.#task != null;
       }
 
-      cancel(): void {
-        if (this.#id != null) {
-          clearTimeout(this.#id);
-          this.#id = null;
+      cancel() {
+        if (this.#task != null) {
+          this.#task.cancel();
+          this.#task = null;
         }
       }
 
-      schedule(callback: () => void, timeout: number): void {
-        if (this.#id != null) {
-          clearTimeout(this.#id);
-        }
-        this.#id = setTimeout(() => {
-          this.#id = null;
-          callback();
-        }, timeout);
+      schedule(callback: () => void, timeout: number) {
+        this.cancel();
+        this.#task = tasks.delayed(timeout, callback);
       }
     })();
   }
-  useEffect(() => {
-    return () => {
-      ref.current.cancel();
-    };
-  }, []);
   return ref.current;
 };

@@ -10,5 +10,6 @@ export * from "./use-mouse-hover.ts";
 export * from "./use-on-click-outside.ts";
 export * from "./use-screen-scroll.ts";
 export * from "./use-screen-size.ts";
+export * from "./use-tasks.ts";
 export * from "./use-timeout.ts";
 export * from "./use-window-event.ts";
