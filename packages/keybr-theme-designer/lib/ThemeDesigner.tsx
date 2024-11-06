@@ -1,4 +1,5 @@
-import { type CustomTheme, readTheme, storeTheme } from "@keybr/themes";
+import { readTheme, storeTheme } from "@keybr/themes";
+import { useDebounced } from "@keybr/widget";
 import { useEffect, useState } from "react";
 import { CustomThemeContext } from "./design/context.ts";
 import { DesignPane } from "./design/DesignPane.tsx";
@@ -6,16 +7,16 @@ import { reportError } from "./io/ErrorAlert.tsx";
 import { customTheme } from "./themes/themes.ts";
 
 export function ThemeDesigner() {
-  const [theme, setTheme] = usePersistentCustomTheme();
   return (
-    <CustomThemeContext.Provider value={{ theme, setTheme }}>
+    <CustomThemeContext.Provider value={usePersistentCustomTheme()}>
       <DesignPane />
     </CustomThemeContext.Provider>
   );
 }
 
-function usePersistentCustomTheme() {
-  const [theme, setTheme] = useState<CustomTheme>(customTheme);
+export function usePersistentCustomTheme() {
+  const [theme, setTheme] = useState(customTheme);
+  const debouncedTheme = useDebounced(theme, 300);
   useEffect(() => {
     readTheme()
       .then(({ theme, error }) => {
@@ -27,21 +28,16 @@ function usePersistentCustomTheme() {
       });
   }, []);
   useEffect(() => {
-    const id = setTimeout(() => {
-      storeTheme(theme)
-        .then(({ theme, error }) => {
-          setTheme(theme);
-          if (error) {
-            reportError(error);
-          }
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    }, 200);
-    return () => {
-      clearTimeout(id);
-    };
-  }, [theme]);
-  return [theme, setTheme] as const;
+    storeTheme(debouncedTheme)
+      .then(({ theme, error }) => {
+        setTheme(theme);
+        if (error) {
+          reportError(error);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [debouncedTheme]);
+  return { theme, setTheme };
 }

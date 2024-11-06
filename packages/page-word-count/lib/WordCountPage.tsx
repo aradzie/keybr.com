@@ -1,5 +1,5 @@
 import { textStatsOf } from "@keybr/unicode";
-import { Article, TextField } from "@keybr/widget";
+import { Article, TextField, useDebounced } from "@keybr/widget";
 import { type ReactNode, useEffect, useMemo, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { EXAMPLE } from "./example.ts";
@@ -57,16 +57,9 @@ function useInitialText(): string {
 
 function useTextStats(locale: string, text: string) {
   const [textStats, setTextStats] = useState(textStatsOf(locale, text));
+  const debouncedText = useDebounced(text);
   useEffect(() => {
-    if (text === "") {
-      setTextStats(textStatsOf(locale, text));
-    }
-    const id = setTimeout(() => {
-      setTextStats(textStatsOf(locale, text));
-    }, 200);
-    return () => {
-      clearTimeout(id);
-    };
-  }, [locale, text]);
+    setTextStats(textStatsOf(locale, debouncedText));
+  }, [locale, debouncedText]);
   return textStats;
 }
