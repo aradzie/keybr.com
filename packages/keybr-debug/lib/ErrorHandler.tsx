@@ -21,27 +21,25 @@ export class ErrorHandler extends Component<Props, State> {
     report: null,
   };
 
-  override componentDidMount(): void {
+  override componentDidMount() {
     catchError.addHandler(this.setError);
   }
 
-  override componentWillUnmount(): void {
+  override componentWillUnmount() {
     catchError.deleteHandler(this.setError);
   }
 
-  override componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
+  override componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     silentCatchError(error);
   }
 
-  setError = (report: string): void => {
+  setError = (report: string) => {
     this.setState({ report });
   };
 
-  override render(): ReactNode {
-    const {
-      props: { children, display: Display = ErrorScreen },
-      state: { report },
-    } = this;
+  override render() {
+    const { children, display: Display = ErrorScreen } = this.props;
+    const { report } = this.state;
     if (report != null) {
       return <Display report={report} />;
     } else {

@@ -1,10 +1,5 @@
-import { type ReactNode } from "react";
 import * as styles from "./ErrorReport.module.less";
 
-export function ErrorReport({
-  report,
-}: {
-  readonly report: string;
-}): ReactNode {
+export function ErrorReport({ report }: { readonly report: string }) {
   return <pre className={styles.report}>{report}</pre>;
 }

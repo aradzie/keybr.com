@@ -1,12 +1,7 @@
 import { Article, Header, Para } from "@keybr/widget";
-import { type ReactNode } from "react";
 import { ErrorReport } from "./ErrorReport.tsx";
 
-export function ErrorScreen({
-  report,
-}: {
-  readonly report: string;
-}): ReactNode {
+export function ErrorScreen({ report }: { readonly report: string }) {
   return (
     <Article>
       <Header level={1}>Error</Header>

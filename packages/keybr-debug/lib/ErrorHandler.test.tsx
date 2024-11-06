@@ -29,7 +29,7 @@ test("success", () => {
 test("mount failure", () => {
   const logged = [];
   const saved = console.error;
-  console.error = (...args: any[]) => {
+  console.error = (...args) => {
     logged.push(args);
   };
 
@@ -50,7 +50,7 @@ test("mount failure", () => {
 test("external failure", () => {
   const logged = [];
   const saved = console.error;
-  console.error = (...args: any[]) => {
+  console.error = (...args) => {
     logged.push(args);
   };
 

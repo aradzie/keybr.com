@@ -4,12 +4,12 @@ type Handler = (report: string) => void;
 
 const handlers = new Set<Handler>();
 
-export function catchError(error: any): void {
+export function catchError(error: any) {
   console.error(error);
   silentCatchError(error);
 }
 
-export function silentCatchError(error: any): void {
+export function silentCatchError(error: any) {
   const report = formatReport(inspectError(error));
   for (const handler of handlers) {
     try {
@@ -20,10 +20,10 @@ export function silentCatchError(error: any): void {
   }
 }
 
-catchError.addHandler = (handler: Handler): void => {
+catchError.addHandler = (handler: Handler) => {
   handlers.add(handler);
 };
 
-catchError.deleteHandler = (handler: Handler): void => {
+catchError.deleteHandler = (handler: Handler) => {
   handlers.delete(handler);
 };
