@@ -1,11 +1,10 @@
 import { test } from "node:test";
 import { KeyboardContext, Layout, loadKeyboard } from "@keybr/keyboard";
-import { render } from "@testing-library/react";
+import { act, render } from "@testing-library/react";
 import { assert } from "chai";
-import { act } from "react";
 import { PointersLayer } from "./PointersLayer.tsx";
 
-test("empty", async (ctx) => {
+test("empty", (ctx) => {
   ctx.mock.timers.enable({ apis: ["setTimeout"] });
 
   const keyboard = loadKeyboard(Layout.EN_US);
@@ -16,15 +15,16 @@ test("empty", async (ctx) => {
     </KeyboardContext.Provider>,
   );
 
-  ctx.mock.timers.runAll();
-  await act(async () => {});
+  act(() => {
+    ctx.mock.timers.runAll();
+  });
 
   assert.strictEqual(r.container.querySelectorAll("circle").length, 0);
 
   r.unmount();
 });
 
-test("unknown", async (ctx) => {
+test("unknown", (ctx) => {
   ctx.mock.timers.enable({ apis: ["setTimeout"] });
 
   const keyboard = loadKeyboard(Layout.EN_US);
@@ -35,15 +35,16 @@ test("unknown", async (ctx) => {
     </KeyboardContext.Provider>,
   );
 
-  ctx.mock.timers.runAll();
-  await act(async () => {});
+  act(() => {
+    ctx.mock.timers.runAll();
+  });
 
   assert.strictEqual(r.container.querySelectorAll("circle").length, 0);
 
   r.unmount();
 });
 
-test("without modifiers", async (ctx) => {
+test("without modifiers", (ctx) => {
   ctx.mock.timers.enable({ apis: ["setTimeout"] });
 
   const keyboard = loadKeyboard(Layout.EN_US);
@@ -54,15 +55,16 @@ test("without modifiers", async (ctx) => {
     </KeyboardContext.Provider>,
   );
 
-  ctx.mock.timers.runAll();
-  await act(async () => {});
+  act(() => {
+    ctx.mock.timers.runAll();
+  });
 
   assert.strictEqual(r.container.querySelectorAll("circle").length, 1);
 
   r.unmount();
 });
 
-test("with modifiers", async (ctx) => {
+test("with modifiers", (ctx) => {
   ctx.mock.timers.enable({ apis: ["setTimeout"] });
 
   const keyboard = loadKeyboard(Layout.EN_US);
@@ -73,8 +75,9 @@ test("with modifiers", async (ctx) => {
     </KeyboardContext.Provider>,
   );
 
-  ctx.mock.timers.runAll();
-  await act(async () => {});
+  act(() => {
+    ctx.mock.timers.runAll();
+  });
 
   assert.strictEqual(r.container.querySelectorAll("circle").length, 2);
 

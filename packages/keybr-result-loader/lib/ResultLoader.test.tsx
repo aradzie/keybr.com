@@ -5,7 +5,6 @@ import { ResultFaker, useResults } from "@keybr/result";
 import { formatFile } from "@keybr/result-io";
 import { act, render, waitFor } from "@testing-library/react";
 import { assert } from "chai";
-import { type ReactNode } from "react";
 import { ResultLoader } from "./ResultLoader.tsx";
 
 const faker = new ResultFaker();
@@ -76,7 +75,7 @@ test("load results", async () => {
   r.unmount();
 });
 
-function AnonymousUser({ children }: { readonly children: ReactNode }) {
+function AnonymousUser({ children }: { readonly children: any }) {
   return (
     <PageDataContext.Provider value={{ publicUser: { id: null } } as PageData}>
       {children}
@@ -84,7 +83,7 @@ function AnonymousUser({ children }: { readonly children: ReactNode }) {
   );
 }
 
-function NamedUser({ children }: { readonly children: ReactNode }) {
+function NamedUser({ children }: { readonly children: any }) {
   return (
     <PageDataContext.Provider value={{ publicUser: { id: "abc" } } as PageData}>
       {children}

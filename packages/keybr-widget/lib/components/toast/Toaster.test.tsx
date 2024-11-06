@@ -27,7 +27,9 @@ test("close on timeout", async (ctx) => {
 
   // Act.
 
-  ctx.mock.timers.runAll();
+  act(() => {
+    ctx.mock.timers.runAll();
+  });
   await act(async () => {});
 
   // Assert.

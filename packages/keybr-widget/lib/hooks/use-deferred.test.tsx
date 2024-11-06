@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import { act, render } from "@testing-library/react";
 import { assert } from "chai";
-import { memo, type ReactNode } from "react";
+import { memo } from "react";
 import { withDeferred } from "./use-deferred.tsx";
 
 declare function flushAnimationFrames(): Promise<void>;
@@ -9,7 +9,7 @@ declare function flushAnimationFrames(): Promise<void>;
 test("render", async () => {
   let renderCount = 0;
 
-  function TestChild({ a, b }: { a: string; b: string }): ReactNode {
+  function TestChild({ a, b }: { a: string; b: string }) {
     renderCount += 1;
     return (
       <div>

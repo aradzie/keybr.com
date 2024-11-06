@@ -1,11 +1,11 @@
 import { test } from "node:test";
 import { textDisplaySettings, toLine } from "@keybr/textinput";
-import { act, render } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { assert } from "chai";
 import { IntlProvider } from "react-intl";
 import { TextArea } from "./TextArea.tsx";
 
-test("render empty text", async () => {
+test("render empty text", () => {
   const r = render(
     <IntlProvider locale="en">
       <TextArea
@@ -15,14 +15,12 @@ test("render empty text", async () => {
     </IntlProvider>,
   );
 
-  await act(async () => {});
-
   assert.strictEqual(r.container.textContent, "");
 
   r.unmount();
 });
 
-test("render simple text", async () => {
+test("render simple text", () => {
   const r = render(
     <IntlProvider locale="en">
       <TextArea
@@ -32,14 +30,12 @@ test("render simple text", async () => {
     </IntlProvider>,
   );
 
-  await act(async () => {});
-
   assert.strictEqual(r.container.textContent, "abcxyz");
 
   r.unmount();
 });
 
-test("render styled text", async () => {
+test("render styled text", () => {
   const r = render(
     <IntlProvider locale="en">
       <TextArea
@@ -55,14 +51,12 @@ test("render styled text", async () => {
     </IntlProvider>,
   );
 
-  await act(async () => {});
-
   assert.strictEqual(r.container.textContent, "abcxyz");
 
   r.unmount();
 });
 
-test("render text with line template", async () => {
+test("render text with line template", () => {
   const r = render(
     <IntlProvider locale="en">
       <TextArea
@@ -72,8 +66,6 @@ test("render text with line template", async () => {
       />
     </IntlProvider>,
   );
-
-  await act(async () => {});
 
   assert.strictEqual(r.container.textContent, "[abc][xyz]");
 
