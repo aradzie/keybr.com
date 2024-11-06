@@ -3,6 +3,7 @@ import {
   makeAccuracyDistribution,
   makeSpeedDistribution,
   SpeedHistogram,
+  TimeToTypeHistogram,
 } from "@keybr/chart";
 import { useIntlNumbers } from "@keybr/intl";
 import { useFormatter } from "@keybr/lesson-ui";
@@ -117,6 +118,16 @@ export const Report = memo(function Report({
           You are in the top <Value value={formatPercents(top(pAccuracy))} />.
         </Name>
       </Para>
+
+      <Box alignItems="center" justifyContent="center">
+        <TimeToTypeHistogram
+          steps={result.steps}
+          width="45rem"
+          height="15rem"
+        />
+      </Box>
+
+      <Para align="center">Time to type a character histogram.</Para>
 
       <Spacer size={3} />
 
