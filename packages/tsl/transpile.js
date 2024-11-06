@@ -31,6 +31,7 @@ export async function transpile(source, fileName) {
     .update(fileName)
     .update(source)
     .update(JSON.stringify(options))
+    .update(ts.version)
     .digest("hex");
   const cachedFilename = `/tmp/tsl/${slug}_${hash}.js`;
   try {
