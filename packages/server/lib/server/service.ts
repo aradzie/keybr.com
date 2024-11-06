@@ -1,5 +1,4 @@
-import { type IncomingMessage, Server, ServerResponse } from "node:http";
-import { type Socket } from "node:net";
+import { Server, ServerResponse } from "node:http";
 import { userInfo } from "node:os";
 import { type Application } from "@fastr/core";
 import { injectable } from "@fastr/invert";
@@ -22,21 +21,18 @@ export class Service {
     this.#closer = createCloser(this.#server, this.#webSocketServer);
   }
 
-  start({ app, port }: { app: Application; port: number }): void {
+  start({ app, port }: { app: Application; port: number }) {
     const callback = app.callback();
     this.#server.on("request", callback);
-    this.#server.on(
-      "upgrade",
-      (req: IncomingMessage, socket: Socket, head: Buffer) => {
-        if (head.length > 0) {
-          // Unread head back to the request stream.
-          socket.unshift(head);
-        }
-        const res = new ServerResponse(req);
-        res.shouldKeepAlive = false;
-        callback(req, res);
-      },
-    );
+    this.#server.on("upgrade", (req, socket, head) => {
+      if (head.length > 0) {
+        // Unread head back to the request stream.
+        socket.unshift(head);
+      }
+      const res = new ServerResponse(req);
+      res.shouldKeepAlive = false;
+      callback(req, res);
+    });
     this.#server.listen(port);
     process.on("SIGINT", () => {
       this.stop();
@@ -47,13 +43,13 @@ export class Service {
     Logger.info("Server started", { pid, port, username });
   }
 
-  stop(): void {
-    const graceful = (): void => {
+  stop() {
+    const graceful = () => {
       Logger.info("Server stopped gracefully", { pid });
       process.exit(0);
     };
 
-    const forceful = (): void => {
+    const forceful = () => {
       Logger.info("Server stopped forcefully", { pid });
       process.exit(0);
     };

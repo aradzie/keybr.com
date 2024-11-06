@@ -24,21 +24,21 @@ export function createCloser(
   const sockets = new Set<Socket>();
   let isShuttingDown = false;
 
-  const destroy = (socket: Socket, force: boolean = false): void => {
+  const destroy = (socket: Socket, force: boolean = false) => {
     if (force || (socket[kIdle] && isShuttingDown)) {
       socket.destroy();
       sockets.delete(socket);
     }
   };
 
-  const closeWebSocketServer = (cb?: (err?: Error) => void): void => {
+  const closeWebSocketServer = (cb?: (err?: Error) => void) => {
     for (const client of webSocketServer.clients) {
       client.close(1012);
     }
     webSocketServer.close(cb);
   };
 
-  const onConnection = (socket: Socket): void => {
+  const onConnection = (socket: Socket) => {
     socket[kIdle] = true;
     sockets.add(socket);
     socket.on("close", () => {
@@ -46,7 +46,7 @@ export function createCloser(
     });
   };
 
-  const onRequest = (req: IncomingMessage, res: OutgoingMessage): void => {
+  const onRequest = (req: IncomingMessage, res: OutgoingMessage) => {
     const { socket } = req;
     socket[kIdle] = false;
     res.on("finish", () => {
@@ -55,7 +55,7 @@ export function createCloser(
     });
   };
 
-  const onUpgrade = (req: IncomingMessage, socket: Socket): void => {
+  const onUpgrade = (req: IncomingMessage, socket: Socket) => {
     socket[kIdle] = false;
   };
 
@@ -64,7 +64,7 @@ export function createCloser(
   server.on("request", onRequest);
   server.on("upgrade", onUpgrade);
 
-  return (force: boolean, cb?: (err?: Error) => void): void => {
+  return (force: boolean, cb?: (err?: Error) => void) => {
     isShuttingDown = true;
     server.close((err) => {
       if (err) {
