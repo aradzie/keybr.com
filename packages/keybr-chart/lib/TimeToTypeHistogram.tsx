@@ -83,5 +83,5 @@ function buildHistogram(steps: readonly TimeToType[]) {
       }
     }
   }
-  return bucketize(histogram, 30);
+  return bucketize(histogram, 15);
 }
