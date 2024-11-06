@@ -1,3 +1,4 @@
+import { Tasks } from "@keybr/lang";
 import { PLAYER_KICKED } from "@keybr/multiplayer-shared";
 import { useEffect, useState } from "react";
 
@@ -13,8 +14,8 @@ export function useWebSocket() {
   });
 
   useEffect(() => {
+    const tasks = new Tasks();
     let webSocket: WebSocket | null = null;
-    let timeout: number | null = null;
 
     const connect = () => {
       const makeWebSocket = (webSocket = useWebSocket.makeWebSocket());
@@ -39,10 +40,9 @@ export function useWebSocket() {
           case 1006: // CLOSE_ABNORMAL
           case 1012: // Service Restart
           case 1013: // Try Again Later
-            timeout = window.setTimeout(() => {
-              timeout = null;
+            tasks.delayed(3000, () => {
               connect();
-            }, 3000);
+            });
             break;
         }
       });
@@ -60,10 +60,7 @@ export function useWebSocket() {
         webSocket.close();
         webSocket = null;
       }
-      if (timeout != null) {
-        window.clearTimeout(timeout);
-        timeout = null;
-      }
+      tasks.cancelAll();
     };
   }, []);
 

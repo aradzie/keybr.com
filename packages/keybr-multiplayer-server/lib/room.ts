@@ -29,11 +29,11 @@ import { type Player, ReadyState } from "./player.ts";
 export class Room {
   static nextQuote = nextQuote;
 
+  readonly #tasks = new Tasks();
   readonly #game: Game;
   readonly #id: number;
   readonly #roomSize: number = 5;
-  readonly #tasks = new Tasks();
-  readonly players = new Map<number, Player>(); // TODO Make private?
+  readonly players = new Map<number, Player>();
   #gameState = GameState.INITIALIZING;
   #startTask: Task | null = null;
   #countDown: number = 0;
@@ -50,7 +50,7 @@ export class Room {
     this.#onCreateRoom();
   }
 
-  destroy(): void {
+  destroy() {
     this.#onDestroyRoom();
     this.#game.rooms.delete(this);
     if (this.#startTask != null) {
@@ -64,11 +64,11 @@ export class Room {
     this.#gameState = GameState.INITIALIZING;
   }
 
-  canJoin(): boolean {
+  canJoin() {
     return this.players.size < this.#roomSize;
   }
 
-  join(player: Player): void {
+  join(player: Player) {
     if (this.players.has(player.id)) {
       return;
     }
@@ -76,7 +76,7 @@ export class Room {
     player.join(this);
   }
 
-  #completeJoin(player: Player, message: PlayerAnnounceMessage): void {
+  #completeJoin(player: Player, message: PlayerAnnounceMessage) {
     if (message.signature !== 0xdeadbabe) {
       this.#kick(player);
       return;
@@ -106,7 +106,7 @@ export class Room {
     }
   }
 
-  leave(player: Player): void {
+  leave(player: Player) {
     if (!this.players.has(player.id)) {
       return;
     }
@@ -130,7 +130,7 @@ export class Room {
     }
   }
 
-  kickIdlePlayers(): void {
+  kickIdlePlayers() {
     const now = Timer.now();
     if (this.#gameState !== GameState.WAITING) {
       for (const player of this.players.values()) {
@@ -156,7 +156,7 @@ export class Room {
     }
   }
 
-  onPlayerMessage(player: Player, message: ClientMessage): void {
+  onPlayerMessage(player: Player, message: ClientMessage) {
     switch (message.type) {
       case PLAYER_ANNOUNCE_ID:
         if (player.state === ReadyState.CONNECTED) {
@@ -178,7 +178,7 @@ export class Room {
     }
   }
 
-  #onPlayerProgress(player: Player, message: PlayerProgressMessage): void {
+  #onPlayerProgress(player: Player, message: PlayerProgressMessage) {
     const now = Timer.now();
     player.lastActivity = now;
     if (this.#gameState === GameState.RUNNING) {
@@ -197,7 +197,7 @@ export class Room {
     }
   }
 
-  #updatePlayerPositions(): void {
+  #updatePlayerPositions() {
     const players = [];
     for (const player of this.players.values()) {
       if (player.spectator) {
@@ -213,7 +213,7 @@ export class Room {
     }
   }
 
-  #waitForPlayers(): void {
+  #waitForPlayers() {
     if (this.#startTask != null) {
       this.#startTask.cancel();
       this.#startTask = null;
@@ -225,7 +225,7 @@ export class Room {
     this.#broadcast(this.#makeGameReadyMessage());
   }
 
-  #scheduleNewGame(): void {
+  #scheduleNewGame() {
     if (this.#startTask != null) {
       this.#startTask.cancel();
       this.#startTask = null;
@@ -249,7 +249,7 @@ export class Room {
     });
   }
 
-  #startStep(): void {
+  #startStep() {
     if (this.players.size > 1) {
       if (this.#countDown === 0) {
         const now = Timer.now();
@@ -272,14 +272,14 @@ export class Room {
     }
   }
 
-  #maybeFinishGame(): void {
+  #maybeFinishGame() {
     assert(this.#gameState === GameState.RUNNING);
     if (this.#isFinished()) {
       this.#finishGame();
     }
   }
 
-  #finishGame(): void {
+  #finishGame() {
     assert(this.#gameState === GameState.RUNNING);
     this.#onFinishGame();
     this.#gameState = GameState.FINISHED;
@@ -301,26 +301,26 @@ export class Room {
     return true;
   }
 
-  #elapsed(): number {
+  #elapsed() {
     assert(this.#gameState === GameState.RUNNING);
     return Math.trunc(Timer.now() - this.#started);
   }
 
-  #kick(player: Player, code?: number, data?: string): void {
+  #kick(player: Player, code?: number, data?: string) {
     player.state = ReadyState.KICKED;
     this.leave(player);
     player.close(code, data);
   }
 
-  #onCreateRoom(): void {
+  #onCreateRoom() {
     this.#game.stats.roomsCreated++;
   }
 
-  #onDestroyRoom(): void {
+  #onDestroyRoom() {
     this.#game.stats.roomsDestroyed++;
   }
 
-  #onPlayerJoin(player: Player): void {
+  #onPlayerJoin(player: Player) {
     this.#game.stats.playersJoined++;
     this.playersJoined++;
   }
@@ -330,7 +330,7 @@ export class Room {
     this.playersLeft++;
   }
 
-  #onFinishGame(): void {
+  #onFinishGame() {
     this.#game.stats.gamesCompleted++;
     this.gamesCompleted++;
     for (const player of this.players.values()) {
@@ -343,7 +343,7 @@ export class Room {
     }
   }
 
-  #broadcast(message: ServerMessage): void {
+  #broadcast(message: ServerMessage) {
     for (const player of this.players.values()) {
       player.send(message);
     }
@@ -413,7 +413,7 @@ export class Room {
   }
 }
 
-function updatePlayer(player: Player, started: number): void {
+function updatePlayer(player: Player, started: number) {
   const { pos, steps } = player.textInput;
   player.offset = pos;
   if (pos > 0) {

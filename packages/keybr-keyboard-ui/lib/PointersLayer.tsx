@@ -4,6 +4,7 @@ import {
   type KeyShape,
   useKeyboard,
 } from "@keybr/keyboard";
+import { Tasks } from "@keybr/lang";
 import { type CodePoint } from "@keybr/unicode";
 import { memo, type ReactNode, useEffect, useRef, useState } from "react";
 import * as styles from "./PointersLayer.module.less";
@@ -20,19 +21,19 @@ export const PointersLayer = memo(function PointersLayer({
   const svgRef = useRef<SVGSVGElement>(null);
   const [combo, setCombo] = useState<KeyCombo | null>(null);
   useEffect(() => {
+    const tasks = new Tasks();
     setCombo(null);
     if (suffix.length > 0) {
       const combo = keyboard.getCombo(suffix[0]);
       if (combo != null) {
-        const id = setTimeout(() => {
+        tasks.delayed(delay, () => {
           setCombo(combo);
-        }, delay);
-        return () => {
-          clearTimeout(id);
-        };
+        });
       }
     }
-    return () => {};
+    return () => {
+      tasks.cancelAll();
+    };
   }, [keyboard, suffix, delay]);
   useEffect(() => {
     const svg = svgRef.current;

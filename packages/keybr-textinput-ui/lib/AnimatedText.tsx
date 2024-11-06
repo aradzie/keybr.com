@@ -1,3 +1,4 @@
+import { Tasks } from "@keybr/lang";
 import {
   type Char,
   type TextDisplaySettings,
@@ -43,16 +44,17 @@ function useAnimatedTextState(text: string): readonly Char[] {
   const [chars, setChars] = useState<readonly Char[]>([]);
   useEffect(() => {
     setChars(textInput.chars);
-    const id = window.setInterval(() => {
+    const tasks = new Tasks();
+    tasks.repeated(500, () => {
       if (textInput.completed) {
         textInput.reset();
       } else {
         textInput.appendChar(0, textInput.at(textInput.pos).codePoint, 0);
       }
       setChars(textInput.chars);
-    }, 500);
+    });
     return () => {
-      window.clearInterval(id);
+      tasks.cancelAll();
     };
   }, [textInput]);
   return chars;

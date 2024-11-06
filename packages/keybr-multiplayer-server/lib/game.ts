@@ -1,4 +1,5 @@
 import { injectable } from "@fastr/invert";
+import { Tasks } from "@keybr/lang";
 import { Player } from "./player.ts";
 import { Room } from "./room.ts";
 import {
@@ -11,6 +12,10 @@ import {
 
 @injectable({ singleton: true })
 export class Game {
+  readonly #tasks = new Tasks();
+
+  readonly rooms = new Set<Room>();
+
   readonly stats = {
     roomsCreated: 0,
     roomsDestroyed: 0,
@@ -19,12 +24,10 @@ export class Game {
     playersLeft: 0,
   };
 
-  readonly rooms = new Set<Room>(); // TODO Make private?
-
   constructor() {}
 
-  start(): void {
-    setInterval(() => this.#kickIdlePlayers(), 1000);
+  start() {
+    this.#tasks.repeated(1000, () => this.#kickIdlePlayers());
   }
 
   joinPlayer(session: Session): Client {
@@ -33,7 +36,7 @@ export class Game {
     return player;
   }
 
-  #joinPlayer(player: Player): Room {
+  #joinPlayer(player: Player) {
     for (const room of this.rooms) {
       if (room.canJoin()) {
         room.join(player);
@@ -70,7 +73,7 @@ export class Game {
     };
   }
 
-  #kickIdlePlayers(): void {
+  #kickIdlePlayers() {
     for (const room of this.rooms) {
       room.kickIdlePlayers();
     }
@@ -78,13 +81,13 @@ export class Game {
 
   #roomId = 1;
 
-  #nextRoomId(): number {
+  #nextRoomId() {
     return this.#roomId++;
   }
 
   #playerId = 1;
 
-  #nextPlayerId(): number {
+  #nextPlayerId() {
     return this.#playerId++;
   }
 }

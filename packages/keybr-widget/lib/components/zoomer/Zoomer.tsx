@@ -1,3 +1,4 @@
+import { Tasks } from "@keybr/lang";
 import { mdiCursorMove } from "@mdi/js";
 import { clsx } from "clsx";
 import {
@@ -73,15 +74,15 @@ export function Zoomer({ children, id = null }: ZoomerProps): ReactNode {
     }
   }, [id, x, y, zoom]);
   useEffect(() => {
+    const tasks = new Tasks();
     if (hover) {
-      const timeout = setTimeout(() => {
+      tasks.delayed(1000, () => {
         setHover(false);
-      }, 1000);
-      return () => {
-        clearTimeout(timeout);
-      };
+      });
     }
-    return;
+    return () => {
+      tasks.cancelAll();
+    };
   }, [hover]);
   return (
     <div

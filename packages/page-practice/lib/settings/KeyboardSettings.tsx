@@ -11,6 +11,7 @@ import {
   ZoneMod,
 } from "@keybr/keyboard";
 import { KeyLayer, PointersLayer, VirtualKeyboard } from "@keybr/keyboard-ui";
+import { Tasks } from "@keybr/lang";
 import { useSettings } from "@keybr/settings";
 import { ModifierState, useDepressedKeys } from "@keybr/textinput-events";
 import {
@@ -297,15 +298,16 @@ const PointersPreview = memo(function PointersPreview(): ReactNode {
     return keyboard.getExampleLetters();
   }, [keyboard]);
   useEffect(() => {
-    const id = setTimeout(() => {
+    const tasks = new Tasks();
+    tasks.delayed(1000, () => {
       let newIndex = index + 1;
       if (newIndex >= suffix.length) {
         newIndex = 0;
       }
       setIndex(newIndex);
-    }, 1000);
+    });
     return () => {
-      clearTimeout(id);
+      tasks.cancelAll();
     };
   }, [suffix, index]);
   return <PointersLayer suffix={suffix.slice(index)} delay={10} />;

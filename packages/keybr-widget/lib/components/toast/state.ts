@@ -1,11 +1,14 @@
+import { type Task, Tasks } from "@keybr/lang";
 import { type ReactElement } from "react";
 import { type ToastOptions } from "./types.ts";
+
+const tasks = new Tasks();
 
 let nextKey = 0;
 
 export class Toast {
-  #key = (nextKey += 1);
-  #timeout: any = null;
+  readonly #key = (nextKey += 1);
+  #delayed: Task | null = null;
 
   constructor(
     readonly message: ReactElement,
@@ -16,15 +19,15 @@ export class Toast {
     return this.#key;
   }
 
-  delayed(cb: any, timeout: number) {
+  delayed(cb: () => void, timeout: number) {
     this.clearDelayed();
-    this.#timeout = setTimeout(cb, timeout);
+    this.#delayed = tasks.delayed(timeout, cb);
   }
 
   clearDelayed() {
-    if (this.#timeout != null) {
-      clearTimeout(this.#timeout);
-      this.#timeout = null;
+    if (this.#delayed != null) {
+      this.#delayed.cancel();
+      this.#delayed = null;
     }
   }
 }
