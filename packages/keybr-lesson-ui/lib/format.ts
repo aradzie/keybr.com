@@ -3,11 +3,8 @@ import { type LearningRate } from "@keybr/lesson";
 import { SpeedUnit, uiProps } from "@keybr/result";
 import { useSettings } from "@keybr/settings";
 import { useMemo } from "react";
-import { type FormatNumberOptions, useIntl } from "react-intl";
+import { useIntl } from "react-intl";
 import { messages } from "./intl.ts";
-
-const f1 = { minimumFractionDigits: 1, maximumFractionDigits: 1 };
-const f2 = { minimumFractionDigits: 2, maximumFractionDigits: 2 };
 
 export type FormatterOptions = {
   readonly unit?: boolean;
@@ -28,27 +25,27 @@ export const useFormatter = (): Formatter => {
   return useMemo(() => {
     const speedUnit = settings.get(uiProps.speedUnit);
     const speedUnitName = formatMessage(speedUnit.name);
-    let opts: FormatNumberOptions;
-    switch (speedUnit) {
-      case SpeedUnit.WPM:
-        opts = f1;
-        break;
-      case SpeedUnit.WPS:
-        opts = f2;
-        break;
-      case SpeedUnit.CPM:
-        opts = f1;
-        break;
-      case SpeedUnit.CPS:
-        opts = f2;
-        break;
-      default:
-        throw new Error();
-    }
+    const f1 = { minimumFractionDigits: 1, maximumFractionDigits: 1 };
+    const f2 = { minimumFractionDigits: 2, maximumFractionDigits: 2 };
     const formatSpeed = (
       value: number,
       { unit = true }: FormatterOptions = {},
     ): string => {
+      let opts;
+      switch (speedUnit) {
+        case SpeedUnit.WPM:
+          opts = f1;
+          break;
+        case SpeedUnit.WPS:
+          opts = f2;
+          break;
+        case SpeedUnit.CPM:
+          opts = f1;
+          break;
+        case SpeedUnit.CPS:
+          opts = f2;
+          break;
+      }
       const s = formatNumber(speedUnit.measure(value), opts);
       if (unit) {
         return s + speedUnit.id;

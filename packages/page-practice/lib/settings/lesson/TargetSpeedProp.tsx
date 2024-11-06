@@ -70,7 +70,7 @@ export function TargetSpeedProp(): ReactNode {
           </Dir>
         </Field>
         <Field>
-          <Value value={formatSpeed(targetSpeed, { unit: true })} />
+          <Value value={formatSpeed(targetSpeed)} />
         </Field>
       </FieldList>
       <Explainer>

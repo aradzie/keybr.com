@@ -5,6 +5,7 @@ import {
   SpeedHistogram,
 } from "@keybr/chart";
 import { useIntlNumbers } from "@keybr/intl";
+import { useFormatter } from "@keybr/lesson-ui";
 import { Screen } from "@keybr/pages-shared";
 import {
   Box,
@@ -38,6 +39,7 @@ export const Report = memo(function Report({
   readonly onNext: () => void;
 }) {
   const { formatNumber, formatPercents } = useIntlNumbers();
+  const { speedUnit, formatSpeed } = useFormatter();
 
   useHotkeys(["Enter", onNext]);
 
@@ -53,8 +55,12 @@ export const Report = memo(function Report({
       <Box alignItems="center" justifyContent="center">
         <Indicator
           name="Speed"
-          value={<Metric value={`${formatNumber(speed / 5, 2)}`} unit="WPM" />}
-          title="The typing speed in words per minute."
+          value={
+            <Metric
+              value={formatSpeed(speed, { unit: false })}
+              unit={speedUnit.id}
+            />
+          }
         />
         <Separator />
         <Indicator
@@ -62,7 +68,6 @@ export const Report = memo(function Report({
           value={
             <Metric value={`${formatNumber(accuracy * 100, 2)}`} unit="%" />
           }
-          title="The percentage of characters typed without errors."
         />
       </Box>
 
@@ -146,7 +151,7 @@ function Indicator({
 }: {
   readonly name: ReactNode;
   readonly value: ReactNode;
-  readonly title: string;
+  readonly title?: string;
 }) {
   return (
     <div className={styles.indicator} title={title}>
