@@ -22,3 +22,4 @@ jobs:
           npm run test
         env:
           DATABASE_CLIENT: sqlite
+          NODE_COMPILE_CACHE: /tmp/node-compile-cache
