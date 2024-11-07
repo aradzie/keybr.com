@@ -16,7 +16,7 @@ export const TestProgress0 = memo(function TestProgress({
     <Para className={styles.root}>
       <div
         className={styles.bar}
-        style={{ inlineSize: `${Math.floor(progress * 100)}%` }}
+        style={{ inlineSize: `${progress * 100}%` }}
       />
       <div className={styles.info}>
         <Value value={formatDuration(time, { showMillis: true })} />
