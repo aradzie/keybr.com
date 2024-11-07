@@ -12,8 +12,8 @@ import { Box, useDocumentVisibility } from "@keybr/widget";
 import { type ReactNode, useEffect, useMemo, useState } from "react";
 import { ReplayState, Session, type TestResult } from "../session/index.ts";
 import { useCompositeSettings } from "../settings.ts";
-import { Progress } from "./Progress.tsx";
 import * as styles from "./Replay.module.less";
+import { ReplayProgress } from "./ReplayProgress.tsx";
 
 export function Replay({
   result: { steps, events },
@@ -29,7 +29,7 @@ export function Replay({
   );
   return (
     <div className={styles.root}>
-      <Progress stepper={stepper} />
+      <ReplayProgress stepper={stepper} />
       <Box className={styles.text} alignItems="center" justifyContent="center">
         <StaticText settings={textDisplay} lines={lines} cursor={true} />
       </Box>

@@ -137,7 +137,6 @@ export function ReportScreen({ result }: { readonly result: TestResult }) {
           <Button
             label="Next test"
             icon={<Icon shape={mdiSkipNext} />}
-            title="Try another test."
             onClick={handleNext}
           />
         </Field>
@@ -154,14 +153,12 @@ export function ReportScreen({ result }: { readonly result: TestResult }) {
 function Indicator({
   name,
   value,
-  title,
 }: {
   readonly name: ReactNode;
   readonly value: ReactNode;
-  readonly title?: string;
 }) {
   return (
-    <div className={styles.indicator} title={title}>
+    <div className={styles.indicator}>
       <div className={styles.indicatorValue}>
         <Value>{value}</Value>
       </div>

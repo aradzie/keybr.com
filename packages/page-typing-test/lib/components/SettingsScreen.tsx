@@ -43,7 +43,6 @@ export function SettingsScreen() {
             <Button
               icon={<Icon shape={mdiCheckCircle} />}
               label="Done"
-              title="Save settings and return to the test."
               onClick={() => {
                 setView("test");
               }}

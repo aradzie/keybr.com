@@ -19,7 +19,17 @@ import {
 } from "./types.ts";
 
 export class Session {
-  static readonly emptyLines = { text: "", lines: [] } satisfies SessionLines;
+  static readonly emptyLines = {
+    text: "",
+    lines: [],
+  } satisfies SessionLines;
+  static readonly emptyProgress = {
+    time: 0,
+    length: 0,
+    progress: 0,
+    speed: 0,
+  } satisfies Progress;
+
   /** A list of events to replay. */
   #events: AnyEvent[] = [];
   /** The currently visible lines. */

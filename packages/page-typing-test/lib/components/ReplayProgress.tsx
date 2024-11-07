@@ -8,9 +8,9 @@ import {
 import { useEffect, useState } from "react";
 import { type ReplayState } from "../session/index.ts";
 
-export function Progress({ stepper }: { readonly stepper: ReplayState }) {
+export function ReplayProgress({ stepper }: { readonly stepper: ReplayState }) {
   const { formatSpeed } = useFormatter();
-  const { progress, time } = useProgress(stepper);
+  const { progress, time } = useReplayProgress(stepper);
   return (
     <Para align="center">
       <NameValue
@@ -26,7 +26,7 @@ export function Progress({ stepper }: { readonly stepper: ReplayState }) {
   );
 }
 
-function useProgress(stepper: ReplayState) {
+function useReplayProgress(stepper: ReplayState) {
   const { state, progress } = stepper;
   const [time, setTime] = useState(0);
   useEffect(() => {

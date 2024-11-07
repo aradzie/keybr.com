@@ -16,17 +16,14 @@ export const Toolbar = memo(function Toolbar({
 }): ReactNode {
   return (
     <FieldList>
+      <Field.Filler />
       <Field>
         <DurationSwitcher onChange={onChange} />
       </Field>
-      <Field.Filler />
       <Field>
-        <IconButton
-          icon={<Icon shape={mdiCog} />}
-          title="Settings..."
-          onClick={onConfigure}
-        />
+        <IconButton icon={<Icon shape={mdiCog} />} onClick={onConfigure} />
       </Field>
+      <Field.Filler />
     </FieldList>
   );
 });
@@ -35,11 +32,12 @@ export const DurationSwitcher = memo(function DurationSwitcher({
   onChange,
 }: {
   readonly onChange: () => void;
-}): ReactNode {
+}) {
   const { settings, updateSettings } = useSettings();
   const compositeSettings = toCompositeSettings(settings);
   const children: ReactNode[] = [];
-  durations.forEach(({ duration, label }, index) => {
+  for (let index = 0; index < durations.length; index++) {
+    const { duration, label } = durations[index];
     if (index > 0) {
       children.push(<span key={children.length}>{" | "}</span>);
     }
@@ -66,10 +64,6 @@ export const DurationSwitcher = memo(function DurationSwitcher({
         {label}
       </Link>,
     );
-  });
-  return (
-    <>
-      <span>Test duration:</span> {children}
-    </>
-  );
+  }
+  return <>{children}</>;
 });

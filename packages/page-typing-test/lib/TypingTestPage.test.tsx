@@ -4,10 +4,10 @@ import { KeyboardProvider } from "@keybr/keyboard";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
 import { FakeSettingsContext } from "@keybr/settings";
-import { fireEvent, render } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { TypingTestPage } from "./TypingTestPage.tsx";
 
-test("render", async () => {
+test("render", () => {
   PhoneticModelLoader.loader = FakePhoneticModel.loader;
 
   const r = render(
@@ -19,9 +19,6 @@ test("render", async () => {
       </FakeSettingsContext>
     </FakeIntlProvider>,
   );
-
-  fireEvent.click(await r.findByTitle("Settings", { exact: false }));
-  fireEvent.click(await r.findByTitle("Save settings", { exact: false }));
 
   r.unmount();
 });

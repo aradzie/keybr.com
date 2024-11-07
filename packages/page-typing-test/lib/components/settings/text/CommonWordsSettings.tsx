@@ -81,10 +81,6 @@ function Content({ wordList }: { readonly wordList: WordList }): ReactNode {
             max={typingTestProps.wordList.wordListSize.max}
             step={1}
             value={settings.get(typingTestProps.wordList.wordListSize)}
-            title={formatMessage({
-              id: "settings.wordListSize.description",
-              defaultMessage: "Chose how many common words to use.",
-            })}
             onChange={(value) => {
               updateSettings(
                 settings.set(typingTestProps.wordList.wordListSize, value),
