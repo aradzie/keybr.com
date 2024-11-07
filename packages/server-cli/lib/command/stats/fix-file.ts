@@ -4,17 +4,14 @@ import { HEADER, writeResult } from "@keybr/result-io";
 import { rename } from "@sosimple/fsx";
 import { type File } from "@sosimple/fsx-file";
 
-export async function fixFile(
-  file: File,
-  results: readonly Result[],
-): Promise<void> {
+export async function fixFile(file: File, results: readonly Result[]) {
   await renameOldFile(file);
   if (results.length > 0) {
     await writeNewFile(file, results);
   }
 }
 
-async function renameOldFile(file: File): Promise<void> {
+async function renameOldFile(file: File) {
   const { name } = file;
   try {
     await rename(name, name + "~corrupted");
@@ -25,10 +22,7 @@ async function renameOldFile(file: File): Promise<void> {
   }
 }
 
-async function writeNewFile(
-  file: File,
-  results: readonly Result[],
-): Promise<void> {
+async function writeNewFile(file: File, results: readonly Result[]) {
   const writer = new Writer();
   writer.putBuffer(HEADER);
   for (const result of results) {

@@ -4,14 +4,14 @@ import { Argument, Command, InvalidArgumentError } from "commander";
 
 @injectable()
 export class GrantCommand {
-  command(): Command {
+  command() {
     return new Command("grant")
       .description("Grant premium account to a user.")
       .addArgument(new Argument("<user-email>", "User email."))
       .action(this.action.bind(this));
   }
 
-  async action(email: string): Promise<void> {
+  async action(email: string) {
     const user = await User.findByEmail(email);
     if (user == null) {
       throw new InvalidArgumentError(`User [${email}] not found.`);

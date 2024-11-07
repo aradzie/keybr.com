@@ -11,7 +11,7 @@ export function ProfileLoader({
   readonly userId: string;
   readonly children: (user: NamedUser) => ReactNode;
   readonly fallback?: ReactNode;
-}): ReactNode {
+}) {
   const result = useProfileLoader(userId);
   if (result == null) {
     return fallback;

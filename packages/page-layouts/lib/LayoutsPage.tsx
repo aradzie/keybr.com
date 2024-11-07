@@ -7,11 +7,11 @@ import {
 import { Alphabet } from "@keybr/phonetic-model";
 import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
 import { Article, Field, FieldList, OptionList } from "@keybr/widget";
-import { type ReactNode, useState } from "react";
+import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { KeyFrequencyHeatmap } from "./KeyFrequencyHeatmap.tsx";
 
-export function LayoutsPage(): ReactNode {
+export function LayoutsPage() {
   const { formatLanguageName } = useFormattedNames();
   const [language, setLanguage] = useState(Language.EN);
   const keyboards = Layout.ALL.filter(

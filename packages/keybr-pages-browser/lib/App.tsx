@@ -8,7 +8,7 @@ import {
 } from "@keybr/pages-shared";
 import { SettingsLoader } from "@keybr/settings-loader";
 import { querySelector } from "@keybr/widget";
-import { lazy, type ReactNode, Suspense } from "react";
+import { lazy, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import { useIntl } from "react-intl";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -33,7 +33,7 @@ const WordCountPage = lazy(() => import("./pages/word-count.tsx"));
 const TermsOfServicePage = lazy(() => import("./pages/terms-of-service.tsx"));
 const PrivacyPolicyPage = lazy(() => import("./pages/privacy-policy.tsx"));
 
-export function App(): ReactNode {
+export function App() {
   return (
     <PageDataContext.Provider value={getPageData()}>
       <ErrorHandler>
@@ -49,7 +49,7 @@ export function App(): ReactNode {
   );
 }
 
-function PageRoutes(): ReactNode {
+function PageRoutes() {
   const { locale } = useIntl();
   return (
     <BrowserRouter basename={Pages.intlBase(locale)}>

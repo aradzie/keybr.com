@@ -1,11 +1,11 @@
 import { textStatsOf } from "@keybr/unicode";
 import { Article, TextField, useDebounced } from "@keybr/widget";
-import { type ReactNode, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { EXAMPLE } from "./example.ts";
 import { TextStats } from "./TextStats.tsx";
 
-export function WordCountPage(): ReactNode {
+export function WordCountPage() {
   const { locale, formatMessage } = useIntl();
   const initialText = useInitialText();
   const [text, setText] = useState(initialText);
@@ -41,7 +41,7 @@ export function WordCountPage(): ReactNode {
   );
 }
 
-function useInitialText(): string {
+function useInitialText() {
   const { formatMessage } = useIntl();
   return useMemo(
     () =>

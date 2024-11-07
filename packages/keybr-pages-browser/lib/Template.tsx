@@ -11,7 +11,7 @@ export function Template({
 }: {
   readonly path: string;
   readonly children: ReactNode;
-}): ReactNode {
+}) {
   const { publicUser } = usePageData();
   return isPremiumUser(publicUser) ? (
     <div className={styles.bodyAlt}>
@@ -46,7 +46,7 @@ export function Template({
   );
 }
 
-function EnvName(): ReactNode {
+function EnvName() {
   return process.env.NODE_ENV === "production" ? null : (
     <div
       style={{

@@ -10,7 +10,7 @@ export function IntlLoader({
 }: {
   readonly children: ReactNode;
   readonly fallback?: ReactNode;
-}): ReactNode {
+}) {
   const result = useIntlLoader();
   if (result == null) {
     return fallback;

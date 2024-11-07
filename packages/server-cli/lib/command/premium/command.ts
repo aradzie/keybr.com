@@ -10,7 +10,7 @@ export class PremiumCommand {
     readonly revoke: RevokeCommand,
   ) {}
 
-  command(): Command {
+  command() {
     return new Command("premium")
       .description("Manipulate premium accounts.")
       .addCommand(this.grant.command())

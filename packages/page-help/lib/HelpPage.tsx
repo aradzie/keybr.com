@@ -4,14 +4,13 @@ import { KeyLegendList } from "@keybr/lesson-ui";
 import { singleLine } from "@keybr/textinput";
 import { StaticText } from "@keybr/textinput-ui";
 import { Article, Figure } from "@keybr/widget";
-import { type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
 import { alphabet } from "./english.ts";
 import { ExampleLink } from "./ExampleLink.tsx";
 import { KeySetIllustration } from "./figures.tsx";
 import * as styles from "./HelpApp.module.less";
 
-export function HelpPage(): ReactNode {
+export function HelpPage() {
   const keyboard = loadKeyboard(Layout.EN_US);
 
   return (

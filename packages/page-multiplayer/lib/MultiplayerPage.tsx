@@ -1,6 +1,5 @@
 import { Connector } from "@keybr/multiplayer-ui";
-import { type ReactNode } from "react";
 
-export function MultiplayerPage(): ReactNode {
+export function MultiplayerPage() {
   return <Connector />;
 }

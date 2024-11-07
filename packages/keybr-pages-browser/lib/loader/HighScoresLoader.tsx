@@ -9,7 +9,7 @@ export function HighScoresLoader({
   children,
 }: {
   readonly children: (entries: readonly Entry[]) => ReactNode;
-}): ReactNode {
+}) {
   return children(useHighScoresLoader());
 }
 

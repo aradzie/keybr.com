@@ -14,11 +14,7 @@ import * as styles from "./NavMenu.module.less";
 import { SubMenu } from "./SubMenu.tsx";
 import { ThemeSwitcher } from "./themes/ThemeSwitcher.tsx";
 
-export function NavMenu({
-  currentPath,
-}: {
-  readonly currentPath: string;
-}): ReactNode {
+export function NavMenu({ currentPath }: { readonly currentPath: string }) {
   const { publicUser } = usePageData();
   return (
     <div className={styles.root}>
@@ -69,11 +65,11 @@ export function NavMenu({
   );
 }
 
-function MenuItem({ children }: { readonly children: ReactNode }): ReactNode {
+function MenuItem({ children }: { readonly children: ReactNode }) {
   return <div className={styles.item}>{children}</div>;
 }
 
-function AccountLink({ user }: { readonly user: AnyUser }): ReactNode {
+function AccountLink({ user }: { readonly user: AnyUser }) {
   const { formatMessage } = useIntl();
   return (
     <NavLink
@@ -113,7 +109,7 @@ function MenuItemLink({
   },
 }: {
   readonly page: PageInfo;
-}): ReactNode {
+}) {
   const { formatMessage } = useIntl();
   return (
     <NavLink

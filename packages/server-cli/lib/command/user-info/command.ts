@@ -5,7 +5,7 @@ import { userToInfo } from "./info.ts";
 
 @injectable()
 export class UserInfoCommand {
-  command(): Command {
+  command() {
     return new Command("user-info")
       .description("Display user info.")
       .addArgument(new Argument("<user-id-or-email>", "User id or email."))
@@ -21,7 +21,7 @@ export class UserInfoCommand {
   async action(
     idOrEmail: string,
     { setEmail = null }: { readonly setEmail?: string | null },
-  ): Promise<void> {
+  ) {
     let user = await findUser(idOrEmail);
     if (user == null) {
       throw new InvalidArgumentError(`User [${idOrEmail}] not found.`);

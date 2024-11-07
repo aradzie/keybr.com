@@ -1,4 +1,3 @@
-import { type ReactNode } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { Identicon } from "./Identicon.tsx";
 
@@ -19,7 +18,7 @@ const names = [
   "eve",
 ];
 
-function Page(): ReactNode {
+function Page() {
   return (
     <html>
       <head>

@@ -1,7 +1,6 @@
 import { type NamedUser, Screen, UserName } from "@keybr/pages-shared";
 import { type KeyStatsMap } from "@keybr/result";
 import { ExplainerBoundary, Header } from "@keybr/widget";
-import { type ReactNode } from "react";
 import { AccuracyStreaksSection } from "./profile/AccuracyStreaksSection.tsx";
 import { CalendarSection } from "./profile/CalendarSection.tsx";
 import { ExplainProfile } from "./profile/ExplainProfile.tsx";
@@ -16,11 +15,7 @@ import { ResultSummary } from "./profile/resultsummary.ts";
 import { SpeedChartSection } from "./profile/SpeedChartSection.tsx";
 import { AllTimeSummary } from "./profile/Summary.tsx";
 
-export function PublicProfilePage({
-  user,
-}: {
-  readonly user: NamedUser;
-}): ReactNode {
+export function PublicProfilePage({ user }: { readonly user: NamedUser }) {
   return (
     <Screen>
       <ExplainerBoundary>
@@ -36,11 +31,7 @@ export function PublicProfilePage({
   );
 }
 
-function Content({
-  keyStatsMap,
-}: {
-  readonly keyStatsMap: KeyStatsMap;
-}): ReactNode {
+function Content({ keyStatsMap }: { readonly keyStatsMap: KeyStatsMap }) {
   const { results } = keyStatsMap;
   const summary = new ResultSummary(results);
 

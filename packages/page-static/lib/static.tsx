@@ -1,10 +1,9 @@
 import { CookieDeclaration } from "@keybr/thirdparties";
 import { Article } from "@keybr/widget";
-import { type ReactNode } from "react";
 import privacyPolicyHtml from "./privacy-policy.html.ts";
 import termsOfServiceHtml from "./terms-of-service.html.ts";
 
-export function PrivacyPolicyPage(): ReactNode {
+export function PrivacyPolicyPage() {
   return (
     <Article>
       <div
@@ -18,7 +17,7 @@ export function PrivacyPolicyPage(): ReactNode {
   );
 }
 
-export function TermsOfServicePage(): ReactNode {
+export function TermsOfServicePage() {
   return (
     <Article>
       <div

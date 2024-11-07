@@ -14,14 +14,7 @@ import {
   mdiThemeLightDark,
 } from "@mdi/js";
 import { clsx } from "clsx";
-import {
-  lazy,
-  type ReactNode,
-  Suspense,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { defineMessage, useIntl } from "react-intl";
 import * as styles from "./ThemeSwitcher.module.less";
 
@@ -179,7 +172,7 @@ function Menu({
   readonly options: readonly OptionListOption[];
   readonly selectedOption: OptionListOption;
   readonly onSelect: (value: OptionListOption) => void;
-}): ReactNode {
+}) {
   const list = useRef(null);
   const item = useRef(null);
   useEffect(() => {

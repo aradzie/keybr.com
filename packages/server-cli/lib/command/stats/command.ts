@@ -12,7 +12,7 @@ import { type UserIdRange } from "./userid-range.ts";
 export class StatsCommand {
   constructor(readonly userDataFactory: UserDataFactory) {}
 
-  command(): Command {
+  command() {
     return new Command("check-stats")
       .description("Check and fix user stats.")
       .addOption(new Option("--fix", "Fix damaged user stats."))
@@ -43,7 +43,7 @@ export class StatsCommand {
       readonly since?: Date;
       readonly verbose?: boolean;
     },
-  ): Promise<void> {
+  ) {
     if (since.getTime() > 0) {
       if (verbose) {
         console.log(`Checking stats modified since ${since.toISOString()}.`);

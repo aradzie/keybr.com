@@ -6,16 +6,11 @@ import {
 } from "@keybr/intl";
 import { isPremiumUser, Pages, usePageData } from "@keybr/pages-shared";
 import { Link as StaticLink } from "@keybr/widget";
-import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Link as RouterLink } from "react-router-dom";
 import * as styles from "./SubMenu.module.less";
 
-export function SubMenu({
-  currentPath,
-}: {
-  readonly currentPath: string;
-}): ReactNode {
+export function SubMenu({ currentPath }: { readonly currentPath: string }) {
   const { formatMessage } = useIntl();
   return (
     <div className={styles.root}>
@@ -35,7 +30,7 @@ export function SubMenu({
   );
 }
 
-function MailLink(): ReactNode {
+function MailLink() {
   const { formatMessage } = useIntl();
   return (
     <StaticLink
@@ -51,7 +46,7 @@ function MailLink(): ReactNode {
   );
 }
 
-function DiscordLink(): ReactNode {
+function DiscordLink() {
   const { formatMessage } = useIntl();
   return (
     <StaticLink
@@ -67,7 +62,7 @@ function DiscordLink(): ReactNode {
   );
 }
 
-function GithubLink(): ReactNode {
+function GithubLink() {
   const { formatMessage } = useIntl();
   return (
     <StaticLink
@@ -83,7 +78,7 @@ function GithubLink(): ReactNode {
   );
 }
 
-function TranslateLink(): ReactNode {
+function TranslateLink() {
   const { formatMessage } = useIntl();
   return (
     <StaticLink
@@ -102,7 +97,7 @@ function TranslateLink(): ReactNode {
   );
 }
 
-function RemoveAdsLink(): ReactNode {
+function RemoveAdsLink() {
   const { formatMessage } = useIntl();
   const { publicUser } = usePageData();
   return (
@@ -123,11 +118,7 @@ function RemoveAdsLink(): ReactNode {
   );
 }
 
-function LocaleSwitcher({
-  currentPath,
-}: {
-  readonly currentPath: string;
-}): ReactNode {
+function LocaleSwitcher({ currentPath }: { readonly currentPath: string }) {
   const { formatLanguageName, formatLocalLanguageName } = useIntlDisplayNames();
   const preferredLocale = usePreferredLocale();
   const primary = [];
