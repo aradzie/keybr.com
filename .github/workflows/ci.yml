@@ -19,6 +19,6 @@ jobs:
           npm run lint
           npm run stylelint
           npm run build -- --no-stats
-          npm run test -- --concurrency=1 -- --timeout=60s
+          npm run test
         env:
           DATABASE_CLIENT: sqlite
