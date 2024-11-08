@@ -136,7 +136,7 @@ function useLessonState(
 function makeSoundPlayer(settings: Settings) {
   const playSounds = settings.get(textDisplayProps.playSounds);
   const soundVolume = settings.get(textDisplayProps.soundVolume);
-  return (feedback: Feedback): void => {
+  return (feedback: Feedback) => {
     loadSounds(textInputSounds);
     if (playSounds === PlaySounds.All) {
       switch (feedback) {
