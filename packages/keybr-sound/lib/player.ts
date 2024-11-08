@@ -1,10 +1,10 @@
 import { type Player } from "./types.ts";
 
-export class NullPlayer implements Player {
-  play(offset?: number, duration?: number): void {}
-  stop(): void {}
-  volume(volume: number): void {}
-}
+export const nullPlayer = new (class NullPlayer implements Player {
+  play(offset?: number, duration?: number) {}
+  stop() {}
+  volume(volume: number) {}
+})();
 
 export class WebAudioPlayer implements Player {
   readonly #context: AudioContext;
@@ -20,7 +20,7 @@ export class WebAudioPlayer implements Player {
     this.#source = null;
   }
 
-  play(offset?: number, duration?: number): void {
+  play(offset?: number, duration?: number) {
     this.stop();
     const source = this.#context.createBufferSource();
     this.#source = source;
@@ -32,14 +32,14 @@ export class WebAudioPlayer implements Player {
     source.start(0, offset, duration);
   }
 
-  stop(): void {
+  stop() {
     if (this.#source != null) {
       this.#source.stop();
       this.#source = null;
     }
   }
 
-  volume(volume: number): void {
+  volume(volume: number) {
     this.#gain.gain.value = volume;
   }
 }

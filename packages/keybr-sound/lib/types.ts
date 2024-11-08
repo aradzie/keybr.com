@@ -1,4 +1,4 @@
-export type SoundName = string | number;
+export type SoundName = symbol | string | number;
 
 export type SoundAssets = {
   readonly [name: SoundName]: PlayerConfig;
