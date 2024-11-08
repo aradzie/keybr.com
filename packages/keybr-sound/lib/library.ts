@@ -5,8 +5,8 @@ import { nullPlayer, WebAudioPlayer } from "./player.ts";
 import {
   type Player,
   type PlayerConfig,
+  type PlayerId,
   type SoundAssets,
-  type SoundName,
 } from "./types.ts";
 
 class PlayerLoader {
@@ -65,23 +65,23 @@ class PlayerLoader {
   }
 }
 
-const loaders = new Map<SoundName, PlayerLoader>();
+const loaders = new Map<PlayerId, PlayerLoader>();
 
 export function loadSounds(assets: SoundAssets) {
-  for (const [name, config] of Object.entries(assets)) {
-    let loader = loaders.get(name);
+  for (const [id, config] of Object.entries(assets)) {
+    let loader = loaders.get(id);
     if (loader == null || loader.config !== config) {
       loader = new PlayerLoader(config);
-      loaders.set(name, loader);
+      loaders.set(id, loader);
       loader.load().catch(catchError);
     }
   }
 }
 
-export function playSound(name: SoundName, volume: number = 1) {
-  const loader = loaders.get(name);
+export function playSound(id: PlayerId, volume: number = 1) {
+  const loader = loaders.get(id);
   if (loader == null) {
-    throw new Error(String(name));
+    throw new Error(String(id));
   }
   loader
     .init()

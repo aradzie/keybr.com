@@ -12,6 +12,7 @@
     "@keybr/settings": "*",
     "@keybr/textinput": "*",
     "@keybr/textinput-events": "*",
+    "@keybr/textinput-sounds": "*",
     "@keybr/unicode": "*",
     "@keybr/widget": "*"
   },

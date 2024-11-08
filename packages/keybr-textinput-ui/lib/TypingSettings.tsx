@@ -4,12 +4,12 @@ import {
   CaretMovementStyle,
   CaretShapeStyle,
   Font,
-  PlaySounds,
   textDisplayProps,
   textInputProps,
   toTextDisplaySettings,
   WhitespaceStyle,
 } from "@keybr/textinput";
+import { PlaySounds, soundProps, SoundTheme } from "@keybr/textinput-sounds";
 import {
   CheckBox,
   Description,
@@ -21,12 +21,11 @@ import {
   RadioBox,
   Range,
 } from "@keybr/widget";
-import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { AnimatedText } from "./AnimatedText.tsx";
 import * as styles from "./TypingSettings.module.less";
 
-export function TypingSettings(): ReactNode {
+export function TypingSettings() {
   const { formatMessage } = useIntl();
   return (
     <>
@@ -60,12 +59,13 @@ export function TypingSettings(): ReactNode {
         <CursorShapeProp />
         <CursorMovementProp />
         <SoundsProp />
+        <SoundsThemeProp />
       </FieldSet>
     </>
   );
 }
 
-function ExampleText(): ReactNode {
+function ExampleText() {
   const { settings } = useSettings();
   const keyboard = useKeyboard();
   return (
@@ -81,7 +81,7 @@ function ExampleText(): ReactNode {
   );
 }
 
-function StopOnErrorProp(): ReactNode {
+function StopOnErrorProp() {
   const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
   return (
@@ -112,7 +112,7 @@ function StopOnErrorProp(): ReactNode {
   );
 }
 
-function ForgiveErrorsProp(): ReactNode {
+function ForgiveErrorsProp() {
   const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
   return (
@@ -143,7 +143,7 @@ function ForgiveErrorsProp(): ReactNode {
   );
 }
 
-function SpaceSkipsWordsProp(): ReactNode {
+function SpaceSkipsWordsProp() {
   const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
   return (
@@ -176,7 +176,7 @@ function SpaceSkipsWordsProp(): ReactNode {
   );
 }
 
-function FontProp(): ReactNode {
+function FontProp() {
   const { settings, updateSettings } = useSettings();
   return (
     <FieldList>
@@ -201,7 +201,7 @@ function FontProp(): ReactNode {
   );
 }
 
-function WhitespaceProp(): ReactNode {
+function WhitespaceProp() {
   const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
   return (
@@ -279,7 +279,7 @@ function WhitespaceProp(): ReactNode {
   );
 }
 
-function CursorShapeProp(): ReactNode {
+function CursorShapeProp() {
   const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
   return (
@@ -378,7 +378,7 @@ function CursorShapeProp(): ReactNode {
   );
 }
 
-function CursorMovementProp(): ReactNode {
+function CursorMovementProp() {
   const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
   return (
@@ -435,7 +435,7 @@ function CursorMovementProp(): ReactNode {
   );
 }
 
-function SoundsProp(): ReactNode {
+function SoundsProp() {
   const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
   return (
@@ -453,12 +453,10 @@ function SoundsProp(): ReactNode {
             defaultMessage: "No Sounds",
           })}
           name="play-sounds"
-          checked={
-            settings.get(textDisplayProps.playSounds) === PlaySounds.None
-          }
+          checked={settings.get(soundProps.playSounds) === PlaySounds.None}
           onSelect={() => {
             updateSettings(
-              settings.set(textDisplayProps.playSounds, PlaySounds.None),
+              settings.set(soundProps.playSounds, PlaySounds.None),
             );
           }}
         />
@@ -471,11 +469,11 @@ function SoundsProp(): ReactNode {
           })}
           name="play-sounds"
           checked={
-            settings.get(textDisplayProps.playSounds) === PlaySounds.ErrorsOnly
+            settings.get(soundProps.playSounds) === PlaySounds.ErrorsOnly
           }
           onChange={() => {
             updateSettings(
-              settings.set(textDisplayProps.playSounds, PlaySounds.ErrorsOnly),
+              settings.set(soundProps.playSounds, PlaySounds.ErrorsOnly),
             );
           }}
         />
@@ -487,11 +485,9 @@ function SoundsProp(): ReactNode {
             defaultMessage: "All Sounds",
           })}
           name="play-sounds"
-          checked={settings.get(textDisplayProps.playSounds) === PlaySounds.All}
+          checked={settings.get(soundProps.playSounds) === PlaySounds.All}
           onChange={() => {
-            updateSettings(
-              settings.set(textDisplayProps.playSounds, PlaySounds.All),
-            );
+            updateSettings(settings.set(soundProps.playSounds, PlaySounds.All));
           }}
         />
       </Field>
@@ -506,10 +502,36 @@ function SoundsProp(): ReactNode {
           min={0}
           max={100}
           step={1}
-          value={Math.round(settings.get(textDisplayProps.soundVolume) * 100)}
+          value={Math.round(settings.get(soundProps.soundVolume) * 100)}
           onChange={(value) => {
+            updateSettings(settings.set(soundProps.soundVolume, value / 100));
+          }}
+        />
+      </Field>
+    </FieldList>
+  );
+}
+
+function SoundsThemeProp() {
+  const { settings, updateSettings } = useSettings();
+  return (
+    <FieldList>
+      <Field size={10}>
+        <FormattedMessage
+          id="settings.soundTheme.label"
+          defaultMessage="Sound Theme:"
+        />
+      </Field>
+      <Field>
+        <OptionList
+          options={SoundTheme.ALL.map((item) => ({
+            value: item.id,
+            name: item.name,
+          }))}
+          value={settings.get(soundProps.soundTheme).id}
+          onSelect={(id) => {
             updateSettings(
-              settings.set(textDisplayProps.soundVolume, value / 100),
+              settings.set(soundProps.soundTheme, SoundTheme.ALL.get(id)),
             );
           }}
         />

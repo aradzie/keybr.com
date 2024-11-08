@@ -6,6 +6,8 @@
   "main": "lib/index.ts",
   "types": ".types/index.d.ts",
   "dependencies": {
+    "@keybr/lang": "*",
+    "@keybr/rand": "*",
     "@keybr/settings": "*",
     "@keybr/sound": "*",
     "@keybr/textinput": "*"

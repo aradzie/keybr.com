@@ -3,7 +3,6 @@ import {
   booleanProp,
   enumProp,
   itemProp,
-  numberProp,
   type Settings,
 } from "@keybr/settings";
 import { Font } from "./font.ts";
@@ -56,8 +55,6 @@ export type TextDisplaySettings = {
   readonly caretShapeStyle: CaretShapeStyle;
   readonly caretMovementStyle: CaretMovementStyle;
   readonly whitespaceStyle: WhitespaceStyle;
-  readonly playSounds: PlaySounds;
-  readonly soundVolume: number;
   readonly language: Language;
 };
 
@@ -79,19 +76,11 @@ export enum WhitespaceStyle {
   Bullet = 3,
 }
 
-export enum PlaySounds {
-  None = 1,
-  ErrorsOnly = 2,
-  All = 3,
-}
-
 export const textDisplaySettings: TextDisplaySettings = {
   font: Font.default,
   caretShapeStyle: CaretShapeStyle.Underline,
   caretMovementStyle: CaretMovementStyle.Smooth,
   whitespaceStyle: WhitespaceStyle.Bullet,
-  playSounds: PlaySounds.None,
-  soundVolume: 0.5,
   language: Language.EN,
 };
 
@@ -112,8 +101,6 @@ export const textDisplayProps = {
     WhitespaceStyle,
     WhitespaceStyle.Bullet,
   ),
-  playSounds: enumProp("textDisplay.playSounds", PlaySounds, PlaySounds.None),
-  soundVolume: numberProp("textDisplay.soundVolume", 0.5, { min: 0, max: 1 }),
 } as const;
 
 export function toTextDisplaySettings(settings: Settings): TextDisplaySettings {
@@ -122,8 +109,6 @@ export function toTextDisplaySettings(settings: Settings): TextDisplaySettings {
     caretShapeStyle: settings.get(textDisplayProps.caretShapeStyle),
     caretMovementStyle: settings.get(textDisplayProps.caretMovementStyle),
     whitespaceStyle: settings.get(textDisplayProps.whitespaceStyle),
-    playSounds: settings.get(textDisplayProps.playSounds),
-    soundVolume: settings.get(textDisplayProps.soundVolume),
     language: settings.get(keyboardProps.layout).language,
   };
 }

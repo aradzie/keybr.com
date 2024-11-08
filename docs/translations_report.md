@@ -2,10 +2,11 @@
 
 Translated: 420 messages, 5063 words
 
-Untranslated: 8 messages, 84 words
+Untranslated: 9 messages, 86 words
 
 * *Zones:*
 * *Top accuracy*
+* *Sound Theme:*
 * *Average accuracy*
 * *Relative Accuracy*
 * *Repeat each word:*
@@ -17,10 +18,11 @@ Untranslated: 8 messages, 84 words
 
 Translated: 420 messages, 5063 words
 
-Untranslated: 8 messages, 84 words
+Untranslated: 9 messages, 86 words
 
 * *Zones:*
 * *Top accuracy*
+* *Sound Theme:*
 * *Average accuracy*
 * *Relative Accuracy*
 * *Repeat each word:*
@@ -32,11 +34,12 @@ Untranslated: 8 messages, 84 words
 
 Translated: 390 messages, 3594 words
 
-Untranslated: 38 messages, 1553 words
+Untranslated: 39 messages, 1555 words
 
 * *Zones:*
 * *Errors*
 * *Top accuracy*
+* *Sound Theme:*
 * *Explain charts*
 * *Average accuracy*
 * *Relative Accuracy*
@@ -53,14 +56,13 @@ Untranslated: 38 messages, 1553 words
 * *Highlight a key that must to be pressed next. Use this optio...*
 * *<p>This indicator shows the current subset of letters used t...*
 * *Repeat each word a number of times. Type a word for the firs...*
-* *<h1>Word Count</h1><p>Count the characters and words in your...*
 * ...
 
 # Czech
 
 Translated: 408 messages, 4873 words
 
-Untranslated: 20 messages, 274 words
+Untranslated: 21 messages, 276 words
 
 * *Books*
 * *Font:*
@@ -68,6 +70,7 @@ Untranslated: 20 messages, 274 words
 * *Zones:*
 * *Syntax:*
 * *Top accuracy*
+* *Sound Theme:*
 * *Explain charts*
 * *Average accuracy*
 * *Relative Accuracy*
@@ -81,13 +84,13 @@ Untranslated: 20 messages, 274 words
 * *Use this option if you have a hardware layout switcher on yo...*
 * *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
-* *<h1>Keyboard Layouts</h1><p>These charts visualize the effic...*
+* ...
 
 # Danish
 
 Translated: 411 messages, 5053 words
 
-Untranslated: 17 messages, 94 words
+Untranslated: 18 messages, 96 words
 
 * *Score*
 * *Score*
@@ -99,6 +102,7 @@ Untranslated: 17 messages, 94 words
 * *Multiplayer*
 * *Multiplayer*
 * *Top accuracy*
+* *Sound Theme:*
 * *Bar whitespace*
 * *Average accuracy*
 * *Relative Accuracy*
@@ -111,7 +115,7 @@ Untranslated: 17 messages, 94 words
 
 Translated: 423 messages, 5162 words
 
-Untranslated: 7 messages, 7 words
+Untranslated: 8 messages, 9 words
 
 * *Layout*
 * *Zones:*
@@ -120,12 +124,13 @@ Untranslated: 7 messages, 7 words
 * *Syntax:*
 * *Position*
 * *Alphabet:*
+* *Sound Theme:*
 
 # Greek
 
 Translated: 381 messages, 4629 words
 
-Untranslated: 47 messages, 518 words
+Untranslated: 48 messages, 520 words
 
 * *Books*
 * *Font:*
@@ -143,17 +148,17 @@ Untranslated: 47 messages, 518 words
 * *Line cursor*
 * *Top accuracy*
 * *Block cursor*
+* *Sound Theme:*
 * *Smooth cursor*
 * *No whitespace*
 * *Explain charts*
-* *Jumping cursor*
 * ...
 
 # Esperanto
 
 Translated: 92 messages, 1203 words
 
-Untranslated: 324 messages, 3857 words
+Untranslated: 325 messages, 3859 words
 
 * *GO!*
 * *Time*
@@ -181,10 +186,11 @@ Untranslated: 324 messages, 3857 words
 
 Translated: 419 messages, 4951 words
 
-Untranslated: 9 messages, 196 words
+Untranslated: 10 messages, 198 words
 
 * *Zones:*
 * *Top accuracy*
+* *Sound Theme:*
 * *Average accuracy*
 * *Relative Accuracy*
 * *Repeat each word:*
@@ -197,7 +203,7 @@ Untranslated: 9 messages, 196 words
 
 Translated: 407 messages, 4982 words
 
-Untranslated: 21 messages, 165 words
+Untranslated: 22 messages, 167 words
 
 * *GO!*
 * *Books*
@@ -207,6 +213,7 @@ Untranslated: 21 messages, 165 words
 * *Progress*
 * *Source Code*
 * *Top accuracy*
+* *Sound Theme:*
 * *Explain charts*
 * *Average accuracy*
 * *Relative Accuracy*
@@ -218,19 +225,19 @@ Untranslated: 21 messages, 165 words
 * *This is a histogram of the accuracies of all users, and your...*
 * *Generate typing lessons from the text of a book. All keys ar...*
 * *Use this option if you have a hardware layout switcher on yo...*
-* *Repeat each word a number of times. Type a word for the firs...*
 * ...
 
 # Persian
 
 Translated: 362 messages, 2959 words
 
-Untranslated: 64 messages, 2161 words
+Untranslated: 65 messages, 2163 words
 
 * *Books*
 * *Zones:*
 * *Syntax:*
 * *Top accuracy*
+* *Sound Theme:*
 * *Explain charts*
 * *Average accuracy*
 * *Accuracy Streaks*
@@ -246,14 +253,13 @@ Untranslated: 64 messages, 2161 words
 * *Generate lessons that resemble the specified programming lan...*
 * *Practice punctuation characters that are specific to a progr...*
 * *This is a histogram of the accuracies of all users, and your...*
-* *This is a histogram of the typing speeds of all users, and y...*
 * ...
 
 # French
 
 Translated: 403 messages, 4702 words
 
-Untranslated: 25 messages, 445 words
+Untranslated: 26 messages, 447 words
 
 * *Zones:*
 * *Not set*
@@ -263,6 +269,7 @@ Untranslated: 25 messages, 445 words
 * *Translate*
 * *Alphabet:*
 * *Top accuracy*
+* *Sound Theme:*
 * *Average accuracy*
 * *Accuracy Streaks*
 * *Explain settings*
@@ -274,14 +281,13 @@ Untranslated: 25 messages, 445 words
 * *The previous keys are also above the target speed*
 * *This is a histogram of the accuracies of all users, and your...*
 * *You don’t have any accuracy streaks. Consider completing a l...*
-* *Repeat each word a number of times. Type a word for the firs...*
 * ...
 
 # Hebrew
 
 Translated: 399 messages, 4690 words
 
-Untranslated: 29 messages, 457 words
+Untranslated: 30 messages, 459 words
 
 * *Zones:*
 * *Alphabet:*
@@ -289,6 +295,7 @@ Untranslated: 29 messages, 457 words
 * *Line cursor*
 * *Top accuracy*
 * *Block cursor*
+* *Sound Theme:*
 * *Smooth cursor*
 * *Jumping cursor*
 * *Highlight keys*
@@ -302,14 +309,13 @@ Untranslated: 29 messages, 457 words
 * *Generate lessons that resemble the specified programming lan...*
 * *This is a histogram of the accuracies of all users, and your...*
 * *Adjust the number of words in the lesson text. Making lesson...*
-* *Show color coding of the keyboard zones. Use this option to ...*
 * ...
 
 # Croatian
 
 Translated: 412 messages, 5033 words
 
-Untranslated: 16 messages, 114 words
+Untranslated: 17 messages, 116 words
 
 * *Books*
 * *Font:*
@@ -318,6 +324,7 @@ Untranslated: 16 messages, 114 words
 * *Multiplayer*
 * *Multiplayer*
 * *Top accuracy*
+* *Sound Theme:*
 * *Explain charts*
 * *Average accuracy*
 * *Relative Accuracy*
@@ -332,7 +339,7 @@ Untranslated: 16 messages, 114 words
 
 Translated: 359 messages, 4093 words
 
-Untranslated: 69 messages, 1054 words
+Untranslated: 70 messages, 1056 words
 
 * *Books*
 * *Font:*
@@ -349,18 +356,18 @@ Untranslated: 69 messages, 1054 words
 * *Line cursor*
 * *Top accuracy*
 * *Block cursor*
+* *Sound Theme:*
 * *Smooth cursor*
 * *No whitespace*
 * *Explain charts*
 * *Jumping cursor*
-* *Highlight keys*
 * ...
 
 # Indonesian
 
 Translated: 344 messages, 3643 words
 
-Untranslated: 80 messages, 1458 words
+Untranslated: 81 messages, 1460 words
 
 * *GO!*
 * *Font:*
@@ -375,20 +382,20 @@ Untranslated: 80 messages, 1458 words
 * *Top accuracy*
 * *Colored keys*
 * *Play sounds:*
+* *Sound Theme:*
 * *Benford’s law*
 * *Cursor shape:*
 * *Privacy Policy*
 * *Custom text...*
 * *Highlight keys*
 * *Typing Options*
-* *Average accuracy*
 * ...
 
 # Italian
 
 Translated: 413 messages, 5055 words
 
-Untranslated: 14 messages, 90 words
+Untranslated: 15 messages, 92 words
 
 * *Font:*
 * *Layout*
@@ -398,6 +405,7 @@ Untranslated: 14 messages, 90 words
 * *Layouts*
 * *Volume:*
 * *Top accuracy*
+* *Sound Theme:*
 * *Average accuracy*
 * *Relative Accuracy*
 * *Repeat each word:*
@@ -409,7 +417,7 @@ Untranslated: 14 messages, 90 words
 
 Translated: 254 messages, 2259 words
 
-Untranslated: 165 messages, 2817 words
+Untranslated: 166 messages, 2819 words
 
 * *GO!*
 * *Books*
@@ -437,7 +445,7 @@ Untranslated: 165 messages, 2817 words
 
 Translated: 168 messages, 1169 words
 
-Untranslated: 255 messages, 3919 words
+Untranslated: 256 messages, 3921 words
 
 * *Copy*
 * *Done*
@@ -465,7 +473,7 @@ Untranslated: 255 messages, 3919 words
 
 Translated: 383 messages, 4631 words
 
-Untranslated: 45 messages, 516 words
+Untranslated: 46 messages, 518 words
 
 * *Books*
 * *Font:*
@@ -481,19 +489,19 @@ Untranslated: 45 messages, 516 words
 * *Line cursor*
 * *Top accuracy*
 * *Block cursor*
+* *Sound Theme:*
 * *Smooth cursor*
 * *No whitespace*
 * *Explain charts*
 * *Jumping cursor*
 * *Highlight keys*
-* *Bar whitespace*
 * ...
 
 # Dutch
 
 Translated: 409 messages, 5048 words
 
-Untranslated: 18 messages, 97 words
+Untranslated: 19 messages, 99 words
 
 * *Score*
 * *Score*
@@ -504,6 +512,7 @@ Untranslated: 18 messages, 97 words
 * *Multiplayer*
 * *Multiplayer*
 * *Top accuracy*
+* *Sound Theme:*
 * *Premium Account*
 * *Premium Account*
 * *Premium Account*
@@ -518,10 +527,11 @@ Untranslated: 18 messages, 97 words
 
 Translated: 417 messages, 5038 words
 
-Untranslated: 11 messages, 109 words
+Untranslated: 12 messages, 111 words
 
 * *Zones:*
 * *Top accuracy*
+* *Sound Theme:*
 * *Explain charts*
 * *Average accuracy*
 * *Relative Accuracy*
@@ -536,7 +546,7 @@ Untranslated: 11 messages, 109 words
 
 Translated: 412 messages, 5032 words
 
-Untranslated: 15 messages, 113 words
+Untranslated: 16 messages, 115 words
 
 * *Books*
 * *Layout*
@@ -544,6 +554,7 @@ Untranslated: 15 messages, 113 words
 * *Layout:*
 * *Layouts*
 * *Top accuracy*
+* *Sound Theme:*
 * *Explain charts*
 * *Average accuracy*
 * *Relative Accuracy*
@@ -558,7 +569,7 @@ Untranslated: 15 messages, 113 words
 
 Translated: 408 messages, 5023 words
 
-Untranslated: 20 messages, 124 words
+Untranslated: 21 messages, 126 words
 
 * *Books*
 * *Layout*
@@ -569,6 +580,7 @@ Untranslated: 20 messages, 124 words
 * *Top score!*
 * *Top speed!*
 * *Top accuracy*
+* *Sound Theme:*
 * *Explain charts*
 * *Average accuracy*
 * *Relative Accuracy*
@@ -579,13 +591,13 @@ Untranslated: 20 messages, 124 words
 * *This is a histogram of the accuracies of all users, and your...*
 * *Generate typing lessons from the text of a book. All keys ar...*
 * *Repeat each word a number of times. Type a word for the firs...*
-* *See how accurate you type relative to other users. The highe...*
+* ...
 
 # Romanian
 
 Translated: 373 messages, 3751 words
 
-Untranslated: 45 messages, 1320 words
+Untranslated: 46 messages, 1322 words
 
 * *Font:*
 * *Layout*
@@ -597,6 +609,7 @@ Untranslated: 45 messages, 1320 words
 * *Multiplayer*
 * *Multiplayer*
 * *Top accuracy*
+* *Sound Theme:*
 * *Forgive errors*
 * *Average accuracy*
 * *Relative Accuracy*
@@ -606,18 +619,18 @@ Untranslated: 45 messages, 1320 words
 * *Enter full-screen mode.*
 * *Typing speed in the last lesson ({speedUnitName}). The more,...*
 * *Average typing speed in all lessons ({speedUnitName}). The m...*
-* *<h1>Connecting to Server...</h1><p>Establishing connection t...*
 * ...
 
 # Russian
 
 Translated: 416 messages, 5037 words
 
-Untranslated: 12 messages, 110 words
+Untranslated: 13 messages, 112 words
 
 * *Books*
 * *Zones:*
 * *Top accuracy*
+* *Sound Theme:*
 * *Explain charts*
 * *Average accuracy*
 * *Relative Accuracy*
@@ -632,7 +645,7 @@ Untranslated: 12 messages, 110 words
 
 Translated: 413 messages, 5056 words
 
-Untranslated: 15 messages, 91 words
+Untranslated: 16 messages, 93 words
 
 * *Font:*
 * *Layout*
@@ -643,6 +656,7 @@ Untranslated: 15 messages, 91 words
 * *Multiplayer*
 * *Multiplayer*
 * *Top accuracy*
+* *Sound Theme:*
 * *Average accuracy*
 * *Relative Accuracy*
 * *Repeat each word:*
@@ -654,10 +668,11 @@ Untranslated: 15 messages, 91 words
 
 Translated: 420 messages, 5063 words
 
-Untranslated: 8 messages, 84 words
+Untranslated: 9 messages, 86 words
 
 * *Zones:*
 * *Top accuracy*
+* *Sound Theme:*
 * *Average accuracy*
 * *Relative Accuracy*
 * *Repeat each word:*
@@ -669,7 +684,7 @@ Untranslated: 8 messages, 84 words
 
 Translated: 259 messages, 1752 words
 
-Untranslated: 161 messages, 3323 words
+Untranslated: 162 messages, 3325 words
 
 * *Help*
 * *Help*
@@ -697,10 +712,11 @@ Untranslated: 161 messages, 3323 words
 
 Translated: 420 messages, 5063 words
 
-Untranslated: 8 messages, 84 words
+Untranslated: 9 messages, 86 words
 
 * *Zones:*
 * *Top accuracy*
+* *Sound Theme:*
 * *Average accuracy*
 * *Relative Accuracy*
 * *Repeat each word:*
@@ -712,7 +728,7 @@ Untranslated: 8 messages, 84 words
 
 Translated: 334 messages, 2176 words
 
-Untranslated: 89 messages, 2914 words
+Untranslated: 90 messages, 2916 words
 
 * *Visit*
 * *Zones:*
@@ -721,6 +737,7 @@ Untranslated: 89 messages, 2914 words
 * *Line cursor*
 * *Top accuracy*
 * *Block cursor*
+* *Sound Theme:*
 * *Unique words*
 * *M|T|W|T|F|S|S*
 * *Smooth cursor*
@@ -733,17 +750,17 @@ Untranslated: 89 messages, 2914 words
 * *Key Frequency Heatmap*
 * *Key Frequency Histogram*
 * *Key Typing Speed Histogram*
-* *Keyboard hardware emulates layout*
 * ...
 
 # Simplified Chinese
 
 Translated: 419 messages, 5056 words
 
-Untranslated: 9 messages, 91 words
+Untranslated: 10 messages, 93 words
 
 * *Zones:*
 * *Top accuracy*
+* *Sound Theme:*
 * *M|T|W|T|F|S|S*
 * *Average accuracy*
 * *Relative Accuracy*
@@ -756,11 +773,12 @@ Untranslated: 9 messages, 91 words
 
 Translated: 416 messages, 5037 words
 
-Untranslated: 12 messages, 110 words
+Untranslated: 13 messages, 112 words
 
 * *Books*
 * *Zones:*
 * *Top accuracy*
+* *Sound Theme:*
 * *Explain charts*
 * *Average accuracy*
 * *Relative Accuracy*
