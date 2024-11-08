@@ -1,15 +1,8 @@
 import { type KeyId, useKeyboard } from "@keybr/keyboard";
 import { type Result } from "@keybr/result";
-import { type Settings } from "@keybr/settings";
-import { loadSounds, playSound } from "@keybr/sound";
-import {
-  Feedback,
-  type LineList,
-  PlaySounds,
-  textDisplayProps,
-} from "@keybr/textinput";
+import { type LineList } from "@keybr/textinput";
 import { addKey, deleteKey, emulateLayout } from "@keybr/textinput-events";
-import { TextInputSound, textInputSounds } from "@keybr/textinput-sounds";
+import { makeSoundPlayer } from "@keybr/textinput-sounds";
 import {
   useDocumentEvent,
   useHotkeys,
@@ -131,30 +124,4 @@ function useLessonState(
       handleInput: onInput,
     };
   }, [progress, keyboard, timeout, key]);
-}
-
-function makeSoundPlayer(settings: Settings) {
-  const playSounds = settings.get(textDisplayProps.playSounds);
-  const soundVolume = settings.get(textDisplayProps.soundVolume);
-  return (feedback: Feedback) => {
-    loadSounds(textInputSounds);
-    if (playSounds === PlaySounds.All) {
-      switch (feedback) {
-        case Feedback.Succeeded:
-        case Feedback.Recovered:
-          playSound(TextInputSound.Click, soundVolume);
-          break;
-        case Feedback.Failed:
-          playSound(TextInputSound.Blip, soundVolume);
-          break;
-      }
-    }
-    if (playSounds === PlaySounds.ErrorsOnly) {
-      switch (feedback) {
-        case Feedback.Failed:
-          playSound(TextInputSound.Blip, soundVolume);
-          break;
-      }
-    }
-  };
 }

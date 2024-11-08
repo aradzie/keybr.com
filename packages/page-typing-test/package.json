@@ -19,7 +19,6 @@
     "@keybr/phonetic-model": "*",
     "@keybr/phonetic-model-loader": "*",
     "@keybr/rand": "*",
-    "@keybr/result": "*",
     "@keybr/settings": "*",
     "@keybr/textinput": "*",
     "@keybr/textinput-events": "*",

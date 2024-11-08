@@ -1,1 +1,1 @@
-export * from "./assets.ts";
+export * from "./player.ts";

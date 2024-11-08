@@ -6,7 +6,9 @@
   "main": "lib/index.ts",
   "types": ".types/index.d.ts",
   "dependencies": {
-    "@keybr/sound": "*"
+    "@keybr/settings": "*",
+    "@keybr/sound": "*",
+    "@keybr/textinput": "*"
   },
   "devDependencies": {},
   "scripts": {
