@@ -1,5 +1,6 @@
 import { Screen } from "@keybr/pages-shared";
 import { type LineList, makeStats } from "@keybr/textinput";
+import { useSoundPlayer } from "@keybr/textinput-sounds";
 import { TextArea } from "@keybr/textinput-ui";
 import { Box, type Focusable, Spacer, useView } from "@keybr/widget";
 import { useEffect, useRef, useState } from "react";
@@ -35,6 +36,7 @@ function Controller({
   const { setView } = useView(views);
   const settings = useCompositeSettings();
   const focusRef = useRef<Focusable>(null);
+  const player = useSoundPlayer();
   const [session, setSession] = useState(() => nextTest(settings, generator));
   const [lines, setLines] = useState<LineList>(Session.emptyLines);
   const [progress, setProgress] = useState(Session.emptyProgress);
@@ -71,9 +73,11 @@ function Controller({
             onKeyDown={session.handleKeyDown}
             onKeyUp={session.handleKeyUp}
             onInput={(event) => {
-              const { progress, completed } = session.handleInput(event);
+              const { feedback, progress, completed } =
+                session.handleInput(event);
               setLines(session.getLines());
               setProgress(progress);
+              player(feedback);
               if (completed) {
                 setView("report", { result: makeResult(session) });
               }
