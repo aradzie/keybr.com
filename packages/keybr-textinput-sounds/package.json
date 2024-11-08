@@ -8,8 +8,8 @@
   "dependencies": {
     "@keybr/lang": "*",
     "@keybr/rand": "*",
+    "@keybr/request": "*",
     "@keybr/settings": "*",
-    "@keybr/sound": "*",
     "@keybr/textinput": "*"
   },
   "devDependencies": {},
