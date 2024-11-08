@@ -1,15 +1,22 @@
 import { useKeyboard } from "@keybr/keyboard";
-import { useSettings } from "@keybr/settings";
+import { Tasks } from "@keybr/lang";
+import { Settings, useSettings } from "@keybr/settings";
 import {
   CaretMovementStyle,
   CaretShapeStyle,
+  Feedback,
   Font,
   textDisplayProps,
   textInputProps,
   toTextDisplaySettings,
   WhitespaceStyle,
 } from "@keybr/textinput";
-import { PlaySounds, soundProps, SoundTheme } from "@keybr/textinput-sounds";
+import {
+  makeSoundPlayer,
+  PlaySounds,
+  soundProps,
+  SoundTheme,
+} from "@keybr/textinput-sounds";
 import {
   CheckBox,
   Description,
@@ -17,10 +24,14 @@ import {
   Field,
   FieldList,
   FieldSet,
+  Icon,
+  IconButton,
   OptionList,
   RadioBox,
   Range,
 } from "@keybr/widget";
+import { mdiPlayCircleOutline, mdiStopCircleOutline } from "@mdi/js";
+import { useEffect, useMemo, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { AnimatedText } from "./AnimatedText.tsx";
 import * as styles from "./TypingSettings.module.less";
@@ -536,6 +547,45 @@ function SoundsThemeProp() {
           }}
         />
       </Field>
+      <Field>
+        <SoundThemePreview />
+      </Field>
     </FieldList>
+  );
+}
+
+function SoundThemePreview() {
+  const { settings } = useSettings();
+  const soundVolume = settings.get(soundProps.soundVolume);
+  const soundTheme = settings.get(soundProps.soundTheme);
+  const player = useMemo(() => {
+    return makeSoundPlayer(
+      new Settings()
+        .set(soundProps.playSounds, PlaySounds.All)
+        .set(soundProps.soundVolume, soundVolume)
+        .set(soundProps.soundTheme, soundTheme),
+    );
+  }, [soundVolume, soundTheme]);
+  const [playing, setPlaying] = useState(false);
+  useEffect(() => {
+    const tasks = new Tasks();
+    if (playing) {
+      tasks.repeated(300, () => {
+        player(Feedback.Succeeded);
+      });
+    }
+    return () => {
+      tasks.cancelAll();
+    };
+  }, [player, playing]);
+  return (
+    <IconButton
+      icon={
+        <Icon shape={playing ? mdiStopCircleOutline : mdiPlayCircleOutline} />
+      }
+      onClick={() => {
+        setPlaying(!playing);
+      }}
+    />
   );
 }

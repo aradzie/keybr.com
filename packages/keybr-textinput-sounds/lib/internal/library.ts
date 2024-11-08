@@ -7,10 +7,8 @@ export class PlayerLibrary {
   readonly #loaders = new Map<PlayerId, PlayerLoader>();
 
   constructor(assets: SoundAssets) {
-    for (const [id, config] of Object.entries(assets)) {
-      const loader = new PlayerLoader(config);
-      this.#loaders.set(id, loader);
-      loader.load().catch(catchError);
+    for (const [id, url] of Object.entries(assets)) {
+      this.#loaders.set(id, new PlayerLoader(url));
     }
   }
 
@@ -36,6 +34,7 @@ class PlayerLoader {
 
   constructor(url: string) {
     this.#url = url;
+    this.#load().catch(catchError);
   }
 
   get url() {
@@ -46,7 +45,7 @@ class PlayerLoader {
    * Stage one: we load sound data, but we don't create players yet
    * because there was no user gesture and AudioContext is not available.
    */
-  async load() {
+  async #load() {
     try {
       const response = await request
         .use(expectType("audio/*"))

@@ -39,8 +39,18 @@ export function makeSoundPlayer(settings: Settings) {
   };
 }
 
-function loadTheme(soundTheme: SoundTheme) {
-  switch (soundTheme) {
+const cache = new Map();
+
+function loadTheme(id: SoundTheme) {
+  let theme = cache.get(id);
+  if (theme == null) {
+    cache.set(id, (theme = loadTheme0(id)));
+  }
+  return theme;
+}
+
+function loadTheme0(id: SoundTheme) {
+  switch (id) {
     case SoundTheme.MECHANICAL1:
       return new Theme(mechanical1);
     case SoundTheme.TYPEWRITER1:
