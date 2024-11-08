@@ -1,11 +1,7 @@
 export type PlayerId = symbol | string | number;
 
 export type SoundAssets = {
-  readonly [id: PlayerId]: PlayerConfig;
-};
-
-export type PlayerConfig = {
-  readonly urls: readonly string[];
+  readonly [id: PlayerId]: string;
 };
 
 export type Player = {

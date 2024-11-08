@@ -1,35 +1,30 @@
 import { randomSample } from "@keybr/rand";
-import {
-  loadSounds,
-  type PlayerConfig,
-  type PlayerId,
-  playSound,
-  type SoundAssets,
-} from "@keybr/sound";
+import { type PlayerId, PlayerLibrary, type SoundAssets } from "@keybr/sound";
 
 export type SoundId = "click" | "blip";
 
-export type ThemeConfig = Record<SoundId, readonly PlayerConfig[]>;
+export type ThemeConfig = Record<SoundId, readonly string[]>;
 
 export class Theme {
-  readonly #assets: Record<SoundId, SoundAssets>;
+  readonly #library: PlayerLibrary;
+  readonly #ids: Record<SoundId, readonly PlayerId[]>;
 
   constructor(theme: ThemeConfig) {
     const click = collect("click", theme.click);
     const blip = collect("blip", theme.blip);
-    this.#assets = { click, blip };
-    loadSounds({ ...click, ...blip });
+    this.#library = new PlayerLibrary({ ...click, ...blip });
+    this.#ids = { click: Object.keys(click), blip: Object.keys(blip) };
   }
 
   play(id: SoundId, volume: number) {
-    playSound(randomSample(Object.keys(this.#assets[id])), volume);
+    this.#library.play(randomSample(this.#ids[id]), volume);
   }
 }
 
-function collect(id: string, configs: readonly PlayerConfig[]): SoundAssets {
-  const sounds = {} as Record<PlayerId, PlayerConfig>;
-  for (let i = 0; i < configs.length; i++) {
-    sounds[`${id}-${i}`] = configs[i];
+function collect(id: string, urls: readonly string[]): SoundAssets {
+  const sounds = {} as Record<PlayerId, string>;
+  for (let i = 0; i < urls.length; i++) {
+    sounds[`${id}-${i}`] = urls[i];
   }
   return sounds;
 }

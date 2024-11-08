@@ -1,19 +1,46 @@
 import { expectType, request } from "@keybr/request";
 import { getAudioContext } from "./audiocontext.ts";
-import { pickPlayableUrl } from "./mediatypes.ts";
 import { nullPlayer, WebAudioPlayer } from "./player.ts";
-import {
-  type Player,
-  type PlayerConfig,
-  type PlayerId,
-  type SoundAssets,
-} from "./types.ts";
+import { type Player, type PlayerId, type SoundAssets } from "./types.ts";
+
+export class PlayerLibrary {
+  readonly #loaders = new Map<PlayerId, PlayerLoader>();
+
+  constructor(assets: SoundAssets) {
+    for (const [id, config] of Object.entries(assets)) {
+      const loader = new PlayerLoader(config);
+      this.#loaders.set(id, loader);
+      loader.load().catch(catchError);
+    }
+  }
+
+  play(id: PlayerId, volume: number = 1) {
+    const loader = this.#loaders.get(id);
+    if (loader == null) {
+      throw new Error(String(id));
+    }
+    loader
+      .init()
+      .then((player) => {
+        player.volume(volume);
+        player.play();
+      })
+      .catch(catchError);
+  }
+}
 
 class PlayerLoader {
-  buffer: ArrayBuffer | null = null;
-  player: Player | null = null;
+  readonly #url: string;
+  #buffer: ArrayBuffer | null = null;
+  #player: Player | null = null;
 
-  constructor(readonly config: PlayerConfig) {}
+  constructor(url: string) {
+    this.#url = url;
+  }
+
+  get url() {
+    return this.#url;
+  }
 
   /**
    * Stage one: we load sound data, but we don't create players yet
@@ -21,18 +48,13 @@ class PlayerLoader {
    */
   async load() {
     try {
-      const url = pickPlayableUrl(this.config.urls);
-      if (url != null) {
-        const response = await request
-          .use(expectType("audio/*"))
-          .GET(url)
-          .send();
-        this.buffer = await response.arrayBuffer();
-      } else {
-        this.player = nullPlayer;
-      }
+      const response = await request
+        .use(expectType("audio/*"))
+        .GET(this.#url)
+        .send();
+      this.#buffer = await response.arrayBuffer();
     } catch (err) {
-      this.player = nullPlayer;
+      this.#player = nullPlayer;
       throw err;
     }
   }
@@ -43,53 +65,26 @@ class PlayerLoader {
    * and AudioContext is already available.
    */
   async init() {
-    if (this.buffer != null && this.player == null) {
+    if (this.#buffer != null && this.#player == null) {
       try {
         const context = getAudioContext();
         if (context != null) {
-          const buffer = await context.decodeAudioData(this.buffer);
+          const buffer = await context.decodeAudioData(this.#buffer);
           const player = new WebAudioPlayer(context, buffer);
-          this.buffer = null;
-          this.player = player;
+          this.#buffer = null;
+          this.#player = player;
         } else {
-          this.buffer = null;
-          this.player = nullPlayer;
+          this.#buffer = null;
+          this.#player = nullPlayer;
         }
       } catch (err) {
-        this.buffer = null;
-        this.player = nullPlayer;
+        this.#buffer = null;
+        this.#player = nullPlayer;
         throw err;
       }
     }
-    return this.player ?? nullPlayer;
+    return this.#player ?? nullPlayer;
   }
-}
-
-const loaders = new Map<PlayerId, PlayerLoader>();
-
-export function loadSounds(assets: SoundAssets) {
-  for (const [id, config] of Object.entries(assets)) {
-    let loader = loaders.get(id);
-    if (loader == null || loader.config !== config) {
-      loader = new PlayerLoader(config);
-      loaders.set(id, loader);
-      loader.load().catch(catchError);
-    }
-  }
-}
-
-export function playSound(id: PlayerId, volume: number = 1) {
-  const loader = loaders.get(id);
-  if (loader == null) {
-    throw new Error(String(id));
-  }
-  loader
-    .init()
-    .then((player) => {
-      player.volume(volume);
-      player.play();
-    })
-    .catch(catchError);
 }
 
 function catchError(err: any) {

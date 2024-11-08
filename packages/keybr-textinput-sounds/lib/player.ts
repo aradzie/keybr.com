@@ -3,9 +3,9 @@ import { Feedback } from "@keybr/textinput";
 import { useMemo } from "react";
 import { PlaySounds, soundProps, SoundTheme } from "./settings.ts";
 import { Theme } from "./sound.ts";
-import { themeDefault } from "./themes/default.ts";
-import { themeMechanical1 } from "./themes/mechanical1.ts";
-import { themeTypewriter1 } from "./themes/typewriter1.ts";
+import { defaultTheme } from "./themes/default.ts";
+import { mechanical1 } from "./themes/mechanical1.ts";
+import { typewriter1 } from "./themes/typewriter1.ts";
 
 export function useSoundPlayer() {
   const { settings } = useSettings();
@@ -42,10 +42,10 @@ export function makeSoundPlayer(settings: Settings) {
 function loadTheme(soundTheme: SoundTheme) {
   switch (soundTheme) {
     case SoundTheme.MECHANICAL1:
-      return new Theme(themeMechanical1);
+      return new Theme(mechanical1);
     case SoundTheme.TYPEWRITER1:
-      return new Theme(themeTypewriter1);
+      return new Theme(typewriter1);
     default:
-      return new Theme(themeDefault);
+      return new Theme(defaultTheme);
   }
 }

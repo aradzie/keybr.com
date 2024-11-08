@@ -1,9 +1,8 @@
-import clickMp3 from "../../assets/default-click.mp3";
-import clickWav from "../../assets/default-click.wav";
+import click from "../../assets/default-click.mp3";
 import { type ThemeConfig } from "../sound.ts";
-import { blip } from "./common.ts";
+import { common } from "./common.ts";
 
-export const themeDefault = {
-  blip: [blip],
-  click: [{ urls: [clickMp3, clickWav] }],
+export const defaultTheme = {
+  ...common,
+  click: [click],
 } as const satisfies ThemeConfig;
