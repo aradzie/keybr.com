@@ -10,7 +10,7 @@ export const TestProgress0 = memo(function TestProgress({
 }: {
   readonly progress: Progress;
 }) {
-  const { formatNumber, formatPercents } = useIntlNumbers();
+  const { formatInteger, formatPercents } = useIntlNumbers();
   const { formatSpeed } = useFormatter();
   return (
     <Para className={styles.root}>
@@ -21,9 +21,14 @@ export const TestProgress0 = memo(function TestProgress({
       <div className={styles.info}>
         <Value value={formatDuration(time, { showMillis: true })} />
         {" / "}
-        <Value value={formatNumber(length)} />
+        <Value value={formatInteger(length)} />
         {" / "}
-        <Value value={formatPercents(progress)} />
+        <Value
+          value={formatPercents(progress, {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          })}
+        />
         {" / "}
         <Value value={formatSpeed(speed)} />
       </div>

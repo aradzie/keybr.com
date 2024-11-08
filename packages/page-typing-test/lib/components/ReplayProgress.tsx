@@ -1,3 +1,4 @@
+import { useIntlNumbers } from "@keybr/intl";
 import { useFormatter } from "@keybr/lesson-ui";
 import {
   AnimationFrames,
@@ -9,19 +10,23 @@ import { useEffect, useState } from "react";
 import { type ReplayState } from "../session/index.ts";
 
 export function ReplayProgress({ stepper }: { readonly stepper: ReplayState }) {
+  const { formatInteger } = useIntlNumbers();
   const { formatSpeed } = useFormatter();
-  const { progress, time } = useReplayProgress(stepper);
+  const {
+    progress: { progress, length, speed },
+    time,
+  } = useReplayProgress(stepper);
   return (
     <Para align="center">
       <NameValue
         name="Progress"
-        value={`${progress.progress}/${progress.length}`}
+        value={`${formatInteger(progress)}/${formatInteger(length)}`}
       />
       <NameValue
         name="Time"
         value={formatDuration(time, { showMillis: true })}
       />
-      <NameValue name="Speed" value={formatSpeed(progress.speed)} />
+      <NameValue name="Speed" value={formatSpeed(speed)} />
     </Para>
   );
 }

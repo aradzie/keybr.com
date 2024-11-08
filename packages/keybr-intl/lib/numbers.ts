@@ -44,6 +44,11 @@ const factory = (intl: IntlShape): IntlNumbers => {
         style: "percent",
         maximumFractionDigits: opts,
       };
+    } else if (opts.style !== "percent") {
+      opts = {
+        ...opts,
+        style: "percent",
+      };
     }
     // Do not round up to 100% if the value is less than one.
     // Add decimal digits instead.
