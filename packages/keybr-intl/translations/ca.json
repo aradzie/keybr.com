@@ -362,7 +362,6 @@
   "settings.widget.done.name": "Fet",
   "settings.widget.reset.description": "Reinicia totes les opcions als valors inicials.",
   "settings.widget.reset.name": "Restableix",
-  "settings.wordListSize.description": "Tria quantes paraules comunes s’usarà.",
   "settings.wordListSize.label": "Tamany de la llista de paraules:",
   "speedUnit.cpm.name": "Caràcters per minut",
   "speedUnit.cps.name": "Caràcters per segon",

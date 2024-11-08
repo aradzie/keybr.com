@@ -394,7 +394,6 @@
   "settings.widget.done.name": "Fertig",
   "settings.widget.reset.description": "Alle Einstellungen auf Standard zurücksetzen.",
   "settings.widget.reset.name": "Zurücksetzen",
-  "settings.wordListSize.description": "Wählen Sie aus, wie viele gebräuchliche Wörter Sie verwenden möchten.",
   "settings.wordListSize.label": "Wortzahl:",
   "speedUnit.cpm.name": "Zeichen pro Minute",
   "speedUnit.cps.name": "Zeichen pro Sekunde",

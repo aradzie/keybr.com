@@ -379,7 +379,6 @@
   "settings.widget.done.name": "Completo",
   "settings.widget.reset.description": "Repor todas as definições para os valores pré-definidos.",
   "settings.widget.reset.name": "Repor",
-  "settings.wordListSize.description": "Escolha quantas palavras comuns a usar.",
   "settings.wordListSize.label": "tamanho da lista de Palavras:",
   "speedUnit.cpm.name": "Caracteres por minuto",
   "speedUnit.cps.name": "Caracteres por segundo",

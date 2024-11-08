@@ -391,7 +391,6 @@
   "settings.widget.done.name": "เสร็จ",
   "settings.widget.reset.description": "ล้างการตั้งค่าเป็นค่าเริ่มต้น",
   "settings.widget.reset.name": "ล้าง",
-  "settings.wordListSize.description": "เลือกจำนวนคำศัพท์ทั่วไปที่จะใช้",
   "settings.wordListSize.label": "ขนาดรายการคำศัพท์:",
   "speedUnit.cpm.name": "ตัวอักษรต่อนาที",
   "speedUnit.cps.name": "ตัวอักษรต่อวินาที",

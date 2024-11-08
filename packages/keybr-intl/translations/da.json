@@ -382,7 +382,6 @@
   "settings.widget.done.name": "Færdig",
   "settings.widget.reset.description": "Nulstil alle indstillinger til standard værdier.",
   "settings.widget.reset.name": "Nulstil",
-  "settings.wordListSize.description": "Vælg, hvor mange almindelige ord der skal bruges.",
   "settings.wordListSize.label": "Ordlistestørrelse:",
   "speedUnit.cpm.name": "Karaktere i minuttet",
   "speedUnit.cps.name": "Tegn per sekund",

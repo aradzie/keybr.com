@@ -390,7 +390,6 @@
   "settings.widget.done.name": "Hecho",
   "settings.widget.reset.description": "Restablecer todas las configuraciones a los valores originales.",
   "settings.widget.reset.name": "Reiniciar",
-  "settings.wordListSize.description": "Elija cuántas palabras comunes usar.",
   "settings.wordListSize.label": "El recuento de palabras:",
   "speedUnit.cpm.name": "Caracteres por minuto",
   "speedUnit.cps.name": "Caracteres por segundo",

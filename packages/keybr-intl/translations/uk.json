@@ -391,7 +391,6 @@
   "settings.widget.done.name": "Готово",
   "settings.widget.reset.description": "Скинути всі налаштування до значень за замовчуванням.",
   "settings.widget.reset.name": "Скинути",
-  "settings.wordListSize.description": "Виберіть, скільки загальних слів використовувати.",
   "settings.wordListSize.label": "Кількість слів:",
   "speedUnit.cpm.name": "Символи за хвилину",
   "speedUnit.cps.name": "Символи за секунду",

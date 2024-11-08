@@ -229,7 +229,6 @@
   "settings.widget.done.name": "完了",
   "settings.widget.reset.description": "すべての設定を既定値にリセットする。",
   "settings.widget.reset.name": "リセット",
-  "settings.wordListSize.description": "使用する一般単語数。",
   "settings.wordListSize.label": "単語リストのサイズ:",
   "speedUnit.cpm.name": "文字/分",
   "speedUnit.cps.name": "文字/秒",

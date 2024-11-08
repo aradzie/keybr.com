@@ -387,7 +387,6 @@
   "settings.widget.done.name": "完成",
   "settings.widget.reset.description": "將所有設定重設為預設。",
   "settings.widget.reset.name": "重置",
-  "settings.wordListSize.description": "選擇使用多少常用字。",
   "settings.wordListSize.label": "單字量：",
   "speedUnit.cpm.name": "每分鐘的字元數",
   "speedUnit.cps.name": "每秒鐘的字元數",

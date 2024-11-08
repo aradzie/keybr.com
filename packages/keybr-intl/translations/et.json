@@ -378,7 +378,6 @@
   "settings.widget.done.name": "Valmis",
   "settings.widget.reset.description": "Lähtesta kõik seaded vaikimisi väärtustele.",
   "settings.widget.reset.name": "Lähtesta",
-  "settings.wordListSize.description": "Vali, kui palju põhisõnu kasutada.",
   "settings.wordListSize.label": "Sõnaloendi suurus:",
   "speedUnit.cpm.name": "Tähemärgid minutis",
   "speedUnit.cps.name": "Tähemärgid sekundis",

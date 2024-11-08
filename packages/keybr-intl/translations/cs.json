@@ -379,7 +379,6 @@
   "settings.widget.done.description": "Uložit všechna nastavení a návrat do cvičení.",
   "settings.widget.done.name": "Hotovo",
   "settings.widget.reset.description": "Resetovat všechna nastavení na výchozí hodnoty.",
-  "settings.wordListSize.description": "Zvolte, kolik běžných slov se má použít.",
   "settings.wordListSize.label": "Velikost seznamu slov:",
   "speedUnit.cpm.name": "Znaky za minutu",
   "speedUnit.cps.name": "Znaky za sekundu",

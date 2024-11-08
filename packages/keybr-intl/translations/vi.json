@@ -310,7 +310,6 @@
   "settings.widget.done.name": "Xong",
   "settings.widget.reset.description": "Đặt lại tất cả các cài đặt về giá trị mặc định.",
   "settings.widget.reset.name": "Cài lại",
-  "settings.wordListSize.description": "Chọn bao nhiêu từ phổ biến để sử dụng.",
   "settings.wordListSize.label": "Kích thước danh sách từ:",
   "speedUnit.cpm.name": "Các ký tự mỗi phút",
   "speedUnit.cps.name": "Các ký tự mỗi giây",

@@ -388,7 +388,6 @@
   "settings.widget.done.name": "Gotowe",
   "settings.widget.reset.description": "Zresetuj wszystkie ustawienia do wartości domyślnych.",
   "settings.widget.reset.name": "Zresetować",
-  "settings.wordListSize.description": "Wybierz liczbę najczęściej powtarzających słów, których chcesz użyć.",
   "settings.wordListSize.label": "Liczba słów:",
   "speedUnit.cpm.name": "Liczba znaków na minutę",
   "speedUnit.cps.name": "Liczba znaków na sekundę",

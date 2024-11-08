@@ -390,7 +390,6 @@
   "settings.widget.done.name": "完成",
   "settings.widget.reset.description": "将所有设置重置为默认。",
   "settings.widget.reset.name": "重置",
-  "settings.wordListSize.description": "选择使用多少常用词。",
   "settings.wordListSize.label": "单词量：",
   "speedUnit.cpm.name": "每分钟的字符数",
   "speedUnit.cps.name": "每秒钟的字符数",

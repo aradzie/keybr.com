@@ -401,7 +401,6 @@
   "settings.widget.done.name": "Done",
   "settings.widget.reset.description": "Reset all settings to the default values.",
   "settings.widget.reset.name": "Reset",
-  "settings.wordListSize.description": "Chose how many common words to use.",
   "settings.wordListSize.label": "Word list size:",
   "speedUnit.cpm.name": "Characters per minute",
   "speedUnit.cps.name": "Characters per second",

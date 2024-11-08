@@ -391,7 +391,6 @@
   "settings.widget.done.name": "تم",
   "settings.widget.reset.description": "إعادة ضبط جميع الإعدادات إلى قيمها الإفتراضية.",
   "settings.widget.reset.name": "إعادة الضبط",
-  "settings.wordListSize.description": "اختيار عدد الكلمات الشائعة التي يجب استخدامها.",
   "settings.wordListSize.label": "حجم قائمة الكلمات:",
   "speedUnit.cpm.name": "رموز في الدقيقة",
   "speedUnit.cps.name": "رمز في الثانية",

@@ -352,7 +352,6 @@
   "settings.widget.done.name": "Εγινε",
   "settings.widget.reset.description": "Επαναφέρετε όλες τις ρυθμίσεις στις προεπιλεγμένες τιμές.",
   "settings.widget.reset.name": "Επαναφορά",
-  "settings.wordListSize.description": "Επιλέξτε πόσες κοινές λέξεις θα χρησιμοποιήσετε.",
   "settings.wordListSize.label": "Μέγεθος λίστας λέξεων:",
   "speedUnit.cpm.name": "Χαρακτήρες ανά λεπτό",
   "speedUnit.cps.name": "Χαρακτήρες ανά δευτερόλεπτο",

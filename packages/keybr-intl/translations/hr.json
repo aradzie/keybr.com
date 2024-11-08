@@ -383,7 +383,6 @@
   "settings.widget.done.description": "Spremite sve postavke i vratite se u vježbanje.",
   "settings.widget.done.name": "Gotovo",
   "settings.widget.reset.description": "Vratite sve postavke na zadane vrijednosti.",
-  "settings.wordListSize.description": "Odaberite koliko uobičajenih riječi želite koristiti.",
   "settings.wordListSize.label": "Veličina popisa riječi:",
   "speedUnit.cpm.name": "Znakovi u minuti",
   "speedUnit.cps.name": "Znakovi u sekundi",

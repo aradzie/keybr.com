@@ -387,7 +387,6 @@
   "settings.widget.done.name": "Готово",
   "settings.widget.reset.description": "Сбросить все настройки к значениям по умолчанию.",
   "settings.widget.reset.name": "Сбросить",
-  "settings.wordListSize.description": "Выберите, сколько общих слов использовать.",
   "settings.wordListSize.label": "Количество слов:",
   "speedUnit.cpm.name": "Символы в минуту",
   "speedUnit.cps.name": "Символы в секунду",

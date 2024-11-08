@@ -380,7 +380,6 @@
   "settings.widget.done.name": "Klaar",
   "settings.widget.reset.description": "Alle instellingen terugzetten naar de standaard waarden.",
   "settings.widget.reset.name": "Terugzetten",
-  "settings.wordListSize.description": "Kies hoeveel gebruikelijke woorden om te gebruiken.",
   "settings.wordListSize.label": "Woordlijst grootte:",
   "speedUnit.cpm.name": "Karakters per minuut",
   "speedUnit.cps.name": "Karakters per seconde",

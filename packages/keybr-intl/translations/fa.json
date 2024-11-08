@@ -334,7 +334,6 @@
   "settings.widget.done.name": "انجام شد",
   "settings.widget.reset.description": "بازنشانی همه تنظیمات به مقدار های پیش‌فرض.",
   "settings.widget.reset.name": "بازنشانی",
-  "settings.wordListSize.description": "انتخاب کنید چه مقدار از واژگان معمول استفاده شود.",
   "settings.wordListSize.label": "اندازه فهرست کلمات:",
   "speedUnit.cpm.name": "نویسه بر دقیقه",
   "speedUnit.cps.name": "نویسه بر ثانیه",

@@ -354,7 +354,6 @@
   "settings.widget.done.name": "सकियो",
   "settings.widget.reset.description": "पूर्वनिर्धारित मानहरूमा सबै सेटिङहरू रिसेट गर्नुहोस्।",
   "settings.widget.reset.name": "रिसेट गर्नुहोस्",
-  "settings.wordListSize.description": "कति सामान्य शब्दहरू प्रयोग गर्ने छनौट गर्नुहोस्।",
   "settings.wordListSize.label": "शब्द सूची आकार:",
   "speedUnit.cpm.name": "क्यारेक्टर प्रति मिनेट",
   "speedUnit.cps.name": "क्यारेक्टर प्रति सेकेन्ड",

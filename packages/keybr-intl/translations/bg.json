@@ -391,7 +391,6 @@
   "settings.widget.done.name": "Готово",
   "settings.widget.reset.description": "Нулирайте всички настройки до стойностите по подразбиране.",
   "settings.widget.reset.name": "Нулирай",
-  "settings.wordListSize.description": "Изберете колко общи думи да използвате.",
   "settings.wordListSize.label": "Размер на списъка с думи:",
   "speedUnit.cpm.name": "Знаци в минута",
   "speedUnit.cps.name": "Знаци в секунда",

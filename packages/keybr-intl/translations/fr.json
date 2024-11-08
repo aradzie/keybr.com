@@ -374,7 +374,6 @@
   "settings.widget.done.name": "Terminé",
   "settings.widget.reset.description": "Réinitialiser tous les paramètres aux valeurs par défaut.",
   "settings.widget.reset.name": "Réinitialiser",
-  "settings.wordListSize.description": "Choisissez le nombre de mots courants à utiliser.",
   "settings.wordListSize.label": "Nombre de mots:",
   "speedUnit.cpm.name": "Caractères par minute",
   "speedUnit.cps.name": "Caractères par seconde",

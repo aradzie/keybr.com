@@ -384,7 +384,6 @@
   "settings.widget.done.name": "Klar",
   "settings.widget.reset.description": "Återställ alla inställning till ursprungsvärden.",
   "settings.widget.reset.name": "Återställ",
-  "settings.wordListSize.description": "Välj antal vanliga ord som används.",
   "settings.wordListSize.label": "Ordlistans storlek:",
   "speedUnit.cpm.name": "Tecken per minut",
   "speedUnit.cps.name": "Tecken per sekund",

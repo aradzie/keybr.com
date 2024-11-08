@@ -236,7 +236,6 @@
   "settings.widget.done.name": "Tamamlandı",
   "settings.widget.reset.description": "Varsayılan ayarlara geri dön.",
   "settings.widget.reset.name": "Ayarları sıfırla",
-  "settings.wordListSize.description": "Kaç tane yaygın kelime kullanılacağını seçin.",
   "settings.wordListSize.label": "Kelime listesi uzunluğu:",
   "speedUnit.cpm.name": "Dakika başına karakter",
   "speedUnit.cps.name": "Saniye başına karakter",

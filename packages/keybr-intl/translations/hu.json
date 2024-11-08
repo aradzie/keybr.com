@@ -330,7 +330,6 @@
   "settings.widget.done.name": "Kész",
   "settings.widget.reset.description": "A beállítások alaphelyzetbe állítása.",
   "settings.widget.reset.name": "Visszaállítás",
-  "settings.wordListSize.description": "Válassza ki mennyi gyakran előforduló szavat használjunk.",
   "settings.wordListSize.label": "Szavak száma:",
   "speedUnit.cpm.name": "Betűk / perc",
   "speedUnit.cps.name": "Betűk / másodperc",

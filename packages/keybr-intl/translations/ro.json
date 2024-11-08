@@ -346,7 +346,6 @@
   "settings.widget.done.name": "Efectuat",
   "settings.widget.reset.description": "Resetați toate setările la valorile implicite.",
   "settings.widget.reset.name": "Resetare",
-  "settings.wordListSize.description": "Alegeți câte cuvinte comune să folosiți.",
   "settings.wordListSize.label": "Dimensiunea listei de cuvinte:",
   "speedUnit.cpm.name": "Caractere pe minut",
   "speedUnit.cps.name": "Caractere pe secundă",
