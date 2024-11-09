@@ -2,10 +2,9 @@
 
 # https://markoskon.com/creating-font-subsets/
 
-from fontTools.ttLib import TTFont
-from fontTools.subset import parse_unicodes, Subsetter
 from fontTools.merge import Merger
-
+from fontTools.subset import parse_unicodes, Subsetter
+from fontTools.ttLib import TTFont
 
 unicode_ranges = [
     ("cyrillic", "U+0400-04FF"),
@@ -18,7 +17,7 @@ unicode_ranges = [
 
 
 class Font:
-    def __init__(self, font_file, font_name, merge_file=None):
+    def __init__(self, font_name, font_file, merge_file=None):
         self.font_file = font_file
         self.merge_file = merge_file
 
@@ -129,171 +128,43 @@ class Font:
             print("\n".join(css), end="", file=file)
 
 
-def generate(font_file, font_name, merge_file=None):
-    Font(font_file, font_name, merge_file).generate()
+def generate(font_name, font_file, merge_file=None):
+    Font(font_name, font_file, merge_file).generate()
 
 
 def main():
-    generate(
-        "fonts/Nunito/static/Nunito-Regular.ttf",
-        "nunito",
-        merge_file="Whitespace-em1000.ttf",
-    )
-    generate(
-        "fonts/Nunito/static/Nunito-Italic.ttf",
-        "nunito",
-        merge_file="Whitespace-em1000.ttf",
-    )
-    generate(
-        "fonts/Nunito/static/Nunito-Bold.ttf",
-        "nunito",
-        merge_file="Whitespace-em1000.ttf",
-    )
-    generate(
-        "fonts/Nunito/static/Nunito-BoldItalic.ttf",
-        "nunito",
-        merge_file="Whitespace-em1000.ttf",
-    )
-    generate(
-        "fonts/OpenDyslexic/OpenDyslexic-Regular.ttf",
-        "open-dyslexic",
-        merge_file="Whitespace-em1000.ttf",
-    )
-    generate(
-        "fonts/OpenDyslexic/OpenDyslexic-Italic.ttf",
-        "open-dyslexic",
-        merge_file="Whitespace-em1000.ttf",
-    )
-    generate(
-        "fonts/OpenDyslexic/OpenDyslexic-Bold.ttf",
-        "open-dyslexic",
-        merge_file="Whitespace-em1000.ttf",
-    )
-    generate(
-        "fonts/OpenDyslexic/OpenDyslexic-BoldItalic.ttf",
-        "open-dyslexic",
-        merge_file="Whitespace-em1000.ttf",
-    )
-    generate(
-        "fonts/OpenSans/static/OpenSans-Regular.ttf",
-        "open-sans",
-        merge_file="Whitespace-em2048.ttf",
-    )
-    generate(
-        "fonts/OpenSans/static/OpenSans-Italic.ttf",
-        "open-sans",
-        merge_file="Whitespace-em2048.ttf",
-    )
-    generate(
-        "fonts/OpenSans/static/OpenSans-Bold.ttf",
-        "open-sans",
-        merge_file="Whitespace-em2048.ttf",
-    )
-    generate(
-        "fonts/OpenSans/static/OpenSans-BoldItalic.ttf",
-        "open-sans",
-        merge_file="Whitespace-em2048.ttf",
-    )
-    generate(
-        "fonts/Roboto/Roboto-Regular.ttf",
-        "roboto",
-        merge_file="Whitespace-em2048.ttf",
-    )
-    generate(
-        "fonts/Roboto/Roboto-Italic.ttf",
-        "roboto",
-        merge_file="Whitespace-em2048.ttf",
-    )
-    generate(
-        "fonts/Roboto/Roboto-Bold.ttf",
-        "roboto",
-        merge_file="Whitespace-em2048.ttf",
-    )
-    generate(
-        "fonts/Roboto/Roboto-BoldItalic.ttf",
-        "roboto",
-        merge_file="Whitespace-em2048.ttf",
-    )
-    generate(
-        "fonts/RobotoMono/static/RobotoMono-Regular.ttf",
-        "roboto-mono",
-        merge_file="Whitespace-em2048.ttf",
-    )
-    generate(
-        "fonts/RobotoMono/static/RobotoMono-Italic.ttf",
-        "roboto-mono",
-        merge_file="Whitespace-em2048.ttf",
-    )
-    generate(
-        "fonts/RobotoMono/static/RobotoMono-Bold.ttf",
-        "roboto-mono",
-        merge_file="Whitespace-em2048.ttf",
-    )
-    generate(
-        "fonts/RobotoMono/static/RobotoMono-BoldItalic.ttf",
-        "roboto-mono",
-        merge_file="Whitespace-em2048.ttf",
-    )
-    generate(
-        "fonts/Spectral/Spectral-Regular.ttf",
-        "spectral",
-        merge_file="Whitespace-em1000.ttf",
-    )
-    generate(
-        "fonts/Spectral/Spectral-Italic.ttf",
-        "spectral",
-        merge_file="Whitespace-em1000.ttf",
-    )
-    generate(
-        "fonts/Spectral/Spectral-Bold.ttf",
-        "spectral",
-        merge_file="Whitespace-em1000.ttf",
-    )
-    generate(
-        "fonts/Spectral/Spectral-BoldItalic.ttf",
-        "spectral",
-        merge_file="Whitespace-em1000.ttf",
-    )
-    generate(
-        "fonts/Ubuntu/Ubuntu-R.ttf",
-        "ubuntu",
-        merge_file="Whitespace-em1000.ttf",
-    )
-    generate(
-        "fonts/Ubuntu/Ubuntu-RI.ttf",
-        "ubuntu",
-        merge_file="Whitespace-em1000.ttf",
-    )
-    generate(
-        "fonts/Ubuntu/Ubuntu-B.ttf",
-        "ubuntu",
-        merge_file="Whitespace-em1000.ttf",
-    )
-    generate(
-        "fonts/Ubuntu/Ubuntu-BI.ttf",
-        "ubuntu",
-        merge_file="Whitespace-em1000.ttf",
-    )
-    generate(
-        "fonts/Ubuntu/UbuntuMono-R.ttf",
-        "ubuntu-mono",
-        merge_file="Whitespace-em1000.ttf",
-    )
-    generate(
-        "fonts/Ubuntu/UbuntuMono-RI.ttf",
-        "ubuntu-mono",
-        merge_file="Whitespace-em1000.ttf",
-    )
-    generate(
-        "fonts/Ubuntu/UbuntuMono-B.ttf",
-        "ubuntu-mono",
-        merge_file="Whitespace-em1000.ttf",
-    )
-    generate(
-        "fonts/Ubuntu/UbuntuMono-BI.ttf",
-        "ubuntu-mono",
-        merge_file="Whitespace-em1000.ttf",
-    )
+    generate("nunito", "fonts/Nunito/static/Nunito-Regular.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("nunito", "fonts/Nunito/static/Nunito-Italic.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("nunito", "fonts/Nunito/static/Nunito-Bold.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("nunito", "fonts/Nunito/static/Nunito-BoldItalic.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("open-dyslexic", "fonts/OpenDyslexic/OpenDyslexic-Regular.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("open-dyslexic", "fonts/OpenDyslexic/OpenDyslexic-Italic.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("open-dyslexic", "fonts/OpenDyslexic/OpenDyslexic-Bold.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("open-dyslexic", "fonts/OpenDyslexic/OpenDyslexic-BoldItalic.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("open-sans", "fonts/OpenSans/static/OpenSans-Regular.ttf", merge_file="Whitespace-em2048.ttf")
+    generate("open-sans", "fonts/OpenSans/static/OpenSans-Italic.ttf", merge_file="Whitespace-em2048.ttf")
+    generate("open-sans", "fonts/OpenSans/static/OpenSans-Bold.ttf", merge_file="Whitespace-em2048.ttf")
+    generate("open-sans", "fonts/OpenSans/static/OpenSans-BoldItalic.ttf", merge_file="Whitespace-em2048.ttf")
+    generate("roboto", "fonts/Roboto/Roboto-Regular.ttf", merge_file="Whitespace-em2048.ttf")
+    generate("roboto", "fonts/Roboto/Roboto-Italic.ttf", merge_file="Whitespace-em2048.ttf")
+    generate("roboto", "fonts/Roboto/Roboto-Bold.ttf", merge_file="Whitespace-em2048.ttf")
+    generate("roboto", "fonts/Roboto/Roboto-BoldItalic.ttf", merge_file="Whitespace-em2048.ttf")
+    generate("roboto-mono", "fonts/RobotoMono/static/RobotoMono-Regular.ttf", merge_file="Whitespace-em2048.ttf")
+    generate("roboto-mono", "fonts/RobotoMono/static/RobotoMono-Italic.ttf", merge_file="Whitespace-em2048.ttf")
+    generate("roboto-mono", "fonts/RobotoMono/static/RobotoMono-Bold.ttf", merge_file="Whitespace-em2048.ttf")
+    generate("roboto-mono", "fonts/RobotoMono/static/RobotoMono-BoldItalic.ttf", merge_file="Whitespace-em2048.ttf")
+    generate("spectral", "fonts/Spectral/Spectral-Regular.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("spectral", "fonts/Spectral/Spectral-Italic.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("spectral", "fonts/Spectral/Spectral-Bold.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("spectral", "fonts/Spectral/Spectral-BoldItalic.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("ubuntu", "fonts/Ubuntu/Ubuntu-R.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("ubuntu", "fonts/Ubuntu/Ubuntu-RI.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("ubuntu", "fonts/Ubuntu/Ubuntu-B.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("ubuntu", "fonts/Ubuntu/Ubuntu-BI.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("ubuntu-mono", "fonts/Ubuntu/UbuntuMono-R.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("ubuntu-mono", "fonts/Ubuntu/UbuntuMono-RI.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("ubuntu-mono", "fonts/Ubuntu/UbuntuMono-B.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("ubuntu-mono", "fonts/Ubuntu/UbuntuMono-BI.ttf", merge_file="Whitespace-em1000.ttf")
 
 
 if __name__ == "__main__":

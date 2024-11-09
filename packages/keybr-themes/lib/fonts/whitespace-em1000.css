@@ -1,0 +1,32 @@
+@font-face {
+  font-family: "whitespace";
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+  src: url(../../assets/whitespace-em1000.woff2) format("woff2");
+  unicode-range: U+E000-E003;
+}
+@font-face {
+  font-family: "whitespace";
+  font-weight: 400;
+  font-style: italic;
+  font-display: block;
+  src: url(../../assets/whitespace-em1000.woff2) format("woff2");
+  unicode-range: U+E000-E003;
+}
+@font-face {
+  font-family: "whitespace";
+  font-weight: 700;
+  font-style: normal;
+  font-display: block;
+  src: url(../../assets/whitespace-em1000.woff2) format("woff2");
+  unicode-range: U+E000-E003;
+}
+@font-face {
+  font-family: "whitespace";
+  font-weight: 700;
+  font-style: italic;
+  font-display: block;
+  src: url(../../assets/whitespace-em1000.woff2) format("woff2");
+  unicode-range: U+E000-E003;
+}
