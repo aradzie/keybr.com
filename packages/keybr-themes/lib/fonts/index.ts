@@ -35,16 +35,17 @@ export class FontFace {
   }
 }
 
-const l = ["latin"] as const satisfies Script[];
 const cl = ["cyrillic", "latin"] as const satisfies Script[];
 const cgl = ["cyrillic", "greek", "latin"] as const satisfies Script[];
 const cghl = ["cyrillic", "greek", "hebrew", "latin"] as const satisfies Script[];
 const acghlt = ["arabic", "cyrillic", "greek", "hebrew", "latin", "thai"] as const satisfies Script[];
 
-export const NEWSREADER = new FontFace("Newsreader", "400", "normal", ["serif"], l);
-export const NEWSREADER_I = new FontFace("Newsreader", "400", "italic", ["serif"], l);
-export const NEWSREADER_B = new FontFace("Newsreader", "700", "normal", ["serif"], l);
-export const NEWSREADER_BI = new FontFace("Newsreader", "700", "italic", ["serif"], l);
+export const ARAD = new FontFace("Arad", "400", "normal", ["whitespace"], ["arabic"]);
+export const ARAD_B = new FontFace("Arad", "700", "normal", ["whitespace"], ["arabic"]);
+export const NEWSREADER = new FontFace("Newsreader", "400", "normal", ["serif"], ["latin"]);
+export const NEWSREADER_I = new FontFace("Newsreader", "400", "italic", ["serif"], ["latin"]);
+export const NEWSREADER_B = new FontFace("Newsreader", "700", "normal", ["serif"], ["latin"]);
+export const NEWSREADER_BI = new FontFace("Newsreader", "700", "italic", ["serif"], ["latin"]);
 export const NUNITO = new FontFace("Nunito", "400", "normal", ["sans-serif"], cl);
 export const NUNITO_I = new FontFace("Nunito", "400", "italic", ["sans-serif"], cl);
 export const NUNITO_B = new FontFace("Nunito", "700", "normal", ["sans-serif"], cl);
@@ -99,6 +100,8 @@ export const CURSIVE_B = new FontFace("cursive", "700", "normal", ["whitespace"]
 export const CURSIVE_BI = new FontFace("cursive", "700", "italic", ["whitespace"], acghlt);
 
 export const FONTS_FACES: readonly FontFace[] = [
+  ARAD,
+  ARAD_B,
   NEWSREADER,
   NEWSREADER_I,
   NEWSREADER_B,

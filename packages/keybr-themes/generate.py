@@ -7,6 +7,7 @@ from fontTools.subset import parse_unicodes, Subsetter
 from fontTools.ttLib import TTFont
 
 unicode_ranges = [
+    ("arabic", "U+0600-06FF"),
     ("cyrillic", "U+0400-04FF"),
     ("greek", "U+0370-03FF"),
     ("hebrew", "U+0590-05FF"),
@@ -127,6 +128,8 @@ def generate(font_name, font_file, merge_file=None):
 
 
 def main():
+    generate("arad", "fonts/Arad/main/static/ttf/Arad-Regular.ttf")
+    generate("arad", "fonts/Arad/main/static/ttf/Arad-Bold.ttf")
     generate("newsreader", "fonts/Newsreader/static/Newsreader_60pt-Regular.ttf", merge_file="Whitespace-em2000.ttf")
     generate("newsreader", "fonts/Newsreader/static/Newsreader_60pt-Italic.ttf", merge_file="Whitespace-em2000.ttf")
     generate("newsreader", "fonts/Newsreader/static/Newsreader_60pt-Bold.ttf", merge_file="Whitespace-em2000.ttf")

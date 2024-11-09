@@ -1,0 +1,8 @@
+@font-face {
+  font-family: "Arad";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url(../../assets/arad-400.arabic.woff2) format("woff2");
+  unicode-range: U+0600-06FF;
+}
