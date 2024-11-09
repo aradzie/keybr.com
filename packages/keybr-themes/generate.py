@@ -94,7 +94,7 @@ class Font:
             subs.populate(unicodes=unicodes)
             subs.subset(font)
             cmap = font.getBestCmap()
-            if cmap:
+            if cmap and len(cmap) >= 10:
                 font_url = f"{self.font_name}.{range_name}.woff2"
                 font.flavor = "woff2"
                 font.save(f"assets/{font_url}")
@@ -104,8 +104,6 @@ class Font:
                     + f"Found {len(font.getGlyphOrder()) - 1} glyphs "
                     + f"for {len(cmap)} out of {len(unicodes)} unicodes"
                 )
-            else:
-                print(f"[{self.font_name}.{range_name}]: " + f"Found no glyphs for any of {len(unicodes)} unicodes")
             font.close()
         css = []
         for font_url, subrange in font_list:
@@ -154,6 +152,10 @@ def main():
     generate("roboto-mono", "fonts/RobotoMono/static/RobotoMono-Italic.ttf", merge_file="Whitespace-em2048.ttf")
     generate("roboto-mono", "fonts/RobotoMono/static/RobotoMono-Bold.ttf", merge_file="Whitespace-em2048.ttf")
     generate("roboto-mono", "fonts/RobotoMono/static/RobotoMono-BoldItalic.ttf", merge_file="Whitespace-em2048.ttf")
+    generate("rubik", "fonts/Rubik/static/Rubik-Regular.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("rubik", "fonts/Rubik/static/Rubik-Italic.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("rubik", "fonts/Rubik/static/Rubik-Bold.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("rubik", "fonts/Rubik/static/Rubik-BoldItalic.ttf", merge_file="Whitespace-em1000.ttf")
     generate("shantell-sans", "fonts/Shantell_Sans/static/ShantellSans-Regular.ttf", merge_file="Whitespace-em1000.ttf")
     generate("shantell-sans", "fonts/Shantell_Sans/static/ShantellSans-Italic.ttf", merge_file="Whitespace-em1000.ttf")
     generate("shantell-sans", "fonts/Shantell_Sans/static/ShantellSans-Bold.ttf", merge_file="Whitespace-em1000.ttf")

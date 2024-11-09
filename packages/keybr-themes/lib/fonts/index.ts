@@ -38,6 +38,7 @@ export class FontFace {
 const cl = ["cyrillic", "latin"] as const satisfies Script[];
 const cgl = ["cyrillic", "greek", "latin"] as const satisfies Script[];
 const cghl = ["cyrillic", "greek", "hebrew", "latin"] as const satisfies Script[];
+const achl = ["arabic", "cyrillic", "hebrew", "latin"] as const satisfies Script[];
 const acghlt = ["arabic", "cyrillic", "greek", "hebrew", "latin", "thai"] as const satisfies Script[];
 
 export const ARAD = new FontFace("Arad", "400", "normal", ["whitespace"], ["arabic"]);
@@ -66,6 +67,10 @@ export const ROBOTO_MONO = new FontFace("Roboto Mono", "400", "normal", ["monosp
 export const ROBOTO_MONO_I = new FontFace("Roboto Mono", "400", "italic", ["monospace"], cgl);
 export const ROBOTO_MONO_B = new FontFace("Roboto Mono", "700", "normal", ["monospace"], cgl);
 export const ROBOTO_MONO_BI = new FontFace("Roboto Mono", "700", "italic", ["monospace"], cgl);
+export const RUBIK = new FontFace("Rubik", "400", "normal", ["sans-serif"], achl);
+export const RUBIK_I = new FontFace("Rubik", "400", "italic", ["sans-serif"], achl);
+export const RUBIK_B = new FontFace("Rubik", "700", "normal", ["sans-serif"], achl);
+export const RUBIK_BI = new FontFace("Rubik", "700", "italic", ["sans-serif"], achl);
 export const SHANTELL_SANS = new FontFace("Shantell Sans", "400", "normal", ["serif"], cl);
 export const SHANTELL_SANS_I = new FontFace("Shantell Sans", "400", "italic", ["serif"], cl);
 export const SHANTELL_SANS_B = new FontFace("Shantell Sans", "700", "normal", ["serif"], cl);
@@ -126,6 +131,10 @@ export const FONTS_FACES: readonly FontFace[] = [
   ROBOTO_MONO_I,
   ROBOTO_MONO_B,
   ROBOTO_MONO_BI,
+  RUBIK,
+  RUBIK_I,
+  RUBIK_B,
+  RUBIK_BI,
   SHANTELL_SANS,
   SHANTELL_SANS_I,
   SHANTELL_SANS_B,
