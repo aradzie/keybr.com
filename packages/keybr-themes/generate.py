@@ -157,14 +157,14 @@ def main():
     generate("spectral", "fonts/Spectral/Spectral-Italic.ttf", merge_file="Whitespace-em1000.ttf")
     generate("spectral", "fonts/Spectral/Spectral-Bold.ttf", merge_file="Whitespace-em1000.ttf")
     generate("spectral", "fonts/Spectral/Spectral-BoldItalic.ttf", merge_file="Whitespace-em1000.ttf")
-    generate("ubuntu", "fonts/Ubuntu/Ubuntu-R.ttf", merge_file="Whitespace-em1000.ttf")
-    generate("ubuntu", "fonts/Ubuntu/Ubuntu-RI.ttf", merge_file="Whitespace-em1000.ttf")
-    generate("ubuntu", "fonts/Ubuntu/Ubuntu-B.ttf", merge_file="Whitespace-em1000.ttf")
-    generate("ubuntu", "fonts/Ubuntu/Ubuntu-BI.ttf", merge_file="Whitespace-em1000.ttf")
-    generate("ubuntu-mono", "fonts/Ubuntu/UbuntuMono-R.ttf", merge_file="Whitespace-em1000.ttf")
-    generate("ubuntu-mono", "fonts/Ubuntu/UbuntuMono-RI.ttf", merge_file="Whitespace-em1000.ttf")
-    generate("ubuntu-mono", "fonts/Ubuntu/UbuntuMono-B.ttf", merge_file="Whitespace-em1000.ttf")
-    generate("ubuntu-mono", "fonts/Ubuntu/UbuntuMono-BI.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("ubuntu", "fonts/Ubuntu/Ubuntu-Regular.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("ubuntu", "fonts/Ubuntu/Ubuntu-Italic.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("ubuntu", "fonts/Ubuntu/Ubuntu-Bold.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("ubuntu", "fonts/Ubuntu/Ubuntu-BoldItalic.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("ubuntu-mono", "fonts/Ubuntu_Mono/UbuntuMono-Regular.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("ubuntu-mono", "fonts/Ubuntu_Mono/UbuntuMono-Italic.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("ubuntu-mono", "fonts/Ubuntu_Mono/UbuntuMono-Bold.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("ubuntu-mono", "fonts/Ubuntu_Mono/UbuntuMono-BoldItalic.ttf", merge_file="Whitespace-em1000.ttf")
 
 
 if __name__ == "__main__":
