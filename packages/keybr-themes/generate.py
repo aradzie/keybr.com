@@ -127,6 +127,10 @@ def generate(font_name, font_file, merge_file=None):
 
 
 def main():
+    generate("newsreader", "fonts/Newsreader/static/Newsreader_60pt-Regular.ttf", merge_file="Whitespace-em2000.ttf")
+    generate("newsreader", "fonts/Newsreader/static/Newsreader_60pt-Italic.ttf", merge_file="Whitespace-em2000.ttf")
+    generate("newsreader", "fonts/Newsreader/static/Newsreader_60pt-Bold.ttf", merge_file="Whitespace-em2000.ttf")
+    generate("newsreader", "fonts/Newsreader/static/Newsreader_60pt-BoldItalic.ttf", merge_file="Whitespace-em2000.ttf")
     generate("nunito", "fonts/Nunito/static/Nunito-Regular.ttf", merge_file="Whitespace-em1000.ttf")
     generate("nunito", "fonts/Nunito/static/Nunito-Italic.ttf", merge_file="Whitespace-em1000.ttf")
     generate("nunito", "fonts/Nunito/static/Nunito-Bold.ttf", merge_file="Whitespace-em1000.ttf")
