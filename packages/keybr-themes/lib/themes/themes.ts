@@ -76,6 +76,10 @@ export const FONTS = new ThemeList([
     name: "Roboto",
   },
   {
+    id: "shantell-sans",
+    name: "Shantell Sans",
+  },
+  {
     id: "spectral",
     name: "Spectral",
   },

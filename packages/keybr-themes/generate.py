@@ -2,7 +2,7 @@
 
 # https://markoskon.com/creating-font-subsets/
 
-from fontTools.merge import Merger
+from fontTools.merge import Merger, Options
 from fontTools.subset import parse_unicodes, Subsetter
 from fontTools.ttLib import TTFont
 
@@ -78,18 +78,15 @@ class Font:
             self.font_weight = 900
             self.font_style = "italic"
 
-        self.font_name = (
-            f"{font_name}-{self.font_weight}italic"
-            if self.font_style == "italic"
-            else f"{font_name}-{self.font_weight}"
-        )
+        self.font_name = f"{font_name}-{self.font_weight}italic" if self.font_style == "italic" else f"{font_name}-{self.font_weight}"
 
     def generate(self):
         font_list = []
         for range_name, subrange in unicode_ranges:
             unicodes = parse_unicodes(subrange)
             if self.merge_file:
-                font = Merger().merge([self.font_file, self.merge_file])
+                merger = Merger(options=Options(drop_tables=["vhea", "vmtx"]))
+                font = merger.merge([self.font_file, self.merge_file])
             else:
                 font = TTFont(self.font_file)
             subs = Subsetter()
@@ -107,10 +104,7 @@ class Font:
                     + f"for {len(cmap)} out of {len(unicodes)} unicodes"
                 )
             else:
-                print(
-                    f"[{self.font_name}.{range_name}]: "
-                    + f"Found no glyphs for any of {len(unicodes)} unicodes"
-                )
+                print(f"[{self.font_name}.{range_name}]: " + f"Found no glyphs for any of {len(unicodes)} unicodes")
             font.close()
         css = []
         for font_url, subrange in font_list:
@@ -153,6 +147,10 @@ def main():
     generate("roboto-mono", "fonts/RobotoMono/static/RobotoMono-Italic.ttf", merge_file="Whitespace-em2048.ttf")
     generate("roboto-mono", "fonts/RobotoMono/static/RobotoMono-Bold.ttf", merge_file="Whitespace-em2048.ttf")
     generate("roboto-mono", "fonts/RobotoMono/static/RobotoMono-BoldItalic.ttf", merge_file="Whitespace-em2048.ttf")
+    generate("shantell-sans", "fonts/Shantell_Sans/static/ShantellSans-Regular.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("shantell-sans", "fonts/Shantell_Sans/static/ShantellSans-Italic.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("shantell-sans", "fonts/Shantell_Sans/static/ShantellSans-Bold.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("shantell-sans", "fonts/Shantell_Sans/static/ShantellSans-BoldItalic.ttf", merge_file="Whitespace-em1000.ttf")
     generate("spectral", "fonts/Spectral/Spectral-Regular.ttf", merge_file="Whitespace-em1000.ttf")
     generate("spectral", "fonts/Spectral/Spectral-Italic.ttf", merge_file="Whitespace-em1000.ttf")
     generate("spectral", "fonts/Spectral/Spectral-Bold.ttf", merge_file="Whitespace-em1000.ttf")

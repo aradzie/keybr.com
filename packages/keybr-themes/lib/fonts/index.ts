@@ -60,6 +60,10 @@ export const ROBOTO_MONO = new FontFace("Roboto Mono", "400", "normal", ["monosp
 export const ROBOTO_MONO_I = new FontFace("Roboto Mono", "400", "italic", ["monospace"], cgl);
 export const ROBOTO_MONO_B = new FontFace("Roboto Mono", "700", "normal", ["monospace"], cgl);
 export const ROBOTO_MONO_BI = new FontFace("Roboto Mono", "700", "italic", ["monospace"], cgl);
+export const SHANTELL_SANS = new FontFace("Shantell Sans", "400", "normal", ["serif"], cl);
+export const SHANTELL_SANS_I = new FontFace("Shantell Sans", "400", "italic", ["serif"], cl);
+export const SHANTELL_SANS_B = new FontFace("Shantell Sans", "700", "normal", ["serif"], cl);
+export const SHANTELL_SANS_BI = new FontFace("Shantell Sans", "700", "italic", ["serif"], cl);
 export const SPECTRAL = new FontFace("Spectral", "400", "normal", ["serif"], cl);
 export const SPECTRAL_I = new FontFace("Spectral", "400", "italic", ["serif"], cl);
 export const SPECTRAL_B = new FontFace("Spectral", "700", "normal", ["serif"], cl);
@@ -110,6 +114,10 @@ export const FONTS_FACES: readonly FontFace[] = [
   ROBOTO_MONO_I,
   ROBOTO_MONO_B,
   ROBOTO_MONO_BI,
+  SHANTELL_SANS,
+  SHANTELL_SANS_I,
+  SHANTELL_SANS_B,
+  SHANTELL_SANS_BI,
   SPECTRAL,
   SPECTRAL_I,
   SPECTRAL_B,
