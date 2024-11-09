@@ -1,7 +1,8 @@
 import { Layout, loadKeyboard } from "@keybr/keyboard";
 import { KeyLayer, VirtualKeyboard, ZonesLayer } from "@keybr/keyboard-ui";
 import { KeyLegendList } from "@keybr/lesson-ui";
-import { singleLine } from "@keybr/textinput";
+import { useSettings } from "@keybr/settings";
+import { singleLine, toTextDisplaySettings } from "@keybr/textinput";
 import { StaticText } from "@keybr/textinput-ui";
 import { Article, Figure } from "@keybr/widget";
 import { FormattedMessage } from "react-intl";
@@ -12,6 +13,8 @@ import * as styles from "./HelpApp.module.less";
 
 export function HelpPage() {
   const keyboard = loadKeyboard(Layout.EN_US);
+  const { settings } = useSettings();
+  const textDisplaySettings = toTextDisplaySettings(settings);
 
   return (
     <Article>
@@ -64,6 +67,7 @@ export function HelpPage() {
 
         <div className={styles.example}>
           <StaticText
+            settings={textDisplaySettings}
             lines={singleLine(
               "teen nien neer nient relier ine neerine elerine neer",
             )}
@@ -91,6 +95,7 @@ export function HelpPage() {
 
         <div className={styles.example}>
           <StaticText
+            settings={textDisplaySettings}
             lines={singleLine(
               "entin entle intell letter rittle ritin tete titient",
             )}
@@ -118,6 +123,7 @@ export function HelpPage() {
 
         <div className={styles.example}>
           <StaticText
+            settings={textDisplaySettings}
             lines={singleLine(
               "less les list res rise ins test tes listree listree",
             )}
@@ -145,6 +151,7 @@ export function HelpPage() {
 
         <div className={styles.example}>
           <StaticText
+            settings={textDisplaySettings}
             lines={singleLine(
               "res ress risin its seen rise ensiste liste its estine",
             )}
@@ -174,6 +181,7 @@ export function HelpPage() {
 
         <div className={styles.example}>
           <StaticText
+            settings={textDisplaySettings}
             lines={singleLine("a list of words with all the letters")}
           />
         </div>
