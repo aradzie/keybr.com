@@ -9,7 +9,7 @@ import {
   ModifierState,
 } from "@keybr/textinput-events";
 import { TextArea } from "@keybr/textinput-ui";
-import { type Focusable, Spacer, Zoomer } from "@keybr/widget";
+import { type Focusable, Zoomer } from "@keybr/widget";
 import { createRef, PureComponent, type ReactNode } from "react";
 import { Controls } from "./Controls.tsx";
 import { Indicators } from "./Indicators.tsx";
@@ -63,7 +63,7 @@ export class Presenter extends PureComponent<Props, State> {
     focus: false,
   };
 
-  override componentDidMount(): void {
+  override componentDidMount() {
     if (this.props.state.settings.isNew) {
       this.setState({
         view: View.Normal,
@@ -72,7 +72,7 @@ export class Presenter extends PureComponent<Props, State> {
     }
   }
 
-  override render(): ReactNode {
+  override render() {
     const {
       props: { state, lines, depressedKeys },
       state: { view, tour, focus },
@@ -189,35 +189,35 @@ export class Presenter extends PureComponent<Props, State> {
     }
   }
 
-  handleResetLesson = (): void => {
+  handleResetLesson = () => {
     this.props.onResetLesson();
     this.focusRef.current?.focus();
   };
 
-  handleSkipLesson = (): void => {
+  handleSkipLesson = () => {
     this.props.onSkipLesson();
     this.focusRef.current?.focus();
   };
 
-  handleKeyDown = (ev: IKeyboardEvent): void => {
+  handleKeyDown = (ev: IKeyboardEvent) => {
     if (this.state.focus) {
       this.props.onKeyDown(ev);
     }
   };
 
-  handleKeyUp = (ev: IKeyboardEvent): void => {
+  handleKeyUp = (ev: IKeyboardEvent) => {
     if (this.state.focus) {
       this.props.onKeyUp(ev);
     }
   };
 
-  handleInput = (ev: IInputEvent): void => {
+  handleInput = (ev: IInputEvent) => {
     if (this.state.focus) {
       this.props.onInput(ev);
     }
   };
 
-  handleFocus = (): void => {
+  handleFocus = () => {
     this.setState(
       {
         focus: true,
@@ -228,7 +228,7 @@ export class Presenter extends PureComponent<Props, State> {
     );
   };
 
-  handleBlur = (): void => {
+  handleBlur = () => {
     this.setState(
       {
         focus: false,
@@ -239,7 +239,7 @@ export class Presenter extends PureComponent<Props, State> {
     );
   };
 
-  handleChangeView = (): void => {
+  handleChangeView = () => {
     this.setState(
       ({ view }) => {
         const nextView = getNextView(view);
@@ -253,7 +253,7 @@ export class Presenter extends PureComponent<Props, State> {
     );
   };
 
-  handleHelp = (): void => {
+  handleHelp = () => {
     this.setState(
       {
         view: View.Normal,
@@ -266,7 +266,7 @@ export class Presenter extends PureComponent<Props, State> {
     );
   };
 
-  handleTourClose = (): void => {
+  handleTourClose = () => {
     this.setState(
       {
         view: View.Normal,
@@ -296,7 +296,7 @@ function NormalLayout({
   readonly controls: ReactNode;
   readonly textInput: ReactNode;
   readonly tour: ReactNode;
-}): ReactNode {
+}) {
   return (
     <Screen>
       <Indicators state={state} />
@@ -330,7 +330,7 @@ function CompactLayout({
   readonly depressedKeys: readonly string[];
   readonly controls: ReactNode;
   readonly textInput: ReactNode;
-}): ReactNode {
+}) {
   return (
     <Screen>
       <Indicators state={state} />
@@ -352,10 +352,9 @@ function BareLayout({
   readonly depressedKeys: readonly string[];
   readonly controls: ReactNode;
   readonly textInput: ReactNode;
-}): ReactNode {
+}) {
   return (
     <Screen>
-      <Spacer size={10} />
       <div id={names.textInput} className={styles.textInput_bare}>
         {textInput}
       </div>
