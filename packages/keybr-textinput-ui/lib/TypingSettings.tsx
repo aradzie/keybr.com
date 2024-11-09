@@ -1,4 +1,4 @@
-import { useKeyboard } from "@keybr/keyboard";
+import { keyboardProps, useKeyboard } from "@keybr/keyboard";
 import { Tasks } from "@keybr/lang";
 import { Settings, useSettings } from "@keybr/settings";
 import {
@@ -82,10 +82,7 @@ function ExampleText() {
   return (
     <div className={styles.exampleText}>
       <AnimatedText
-        settings={{
-          ...toTextDisplaySettings(settings),
-          language: keyboard.layout.language,
-        }}
+        settings={toTextDisplaySettings(settings)}
         text={keyboard.getExampleText()}
       />
     </div>
@@ -189,6 +186,8 @@ function SpaceSkipsWordsProp() {
 
 function FontProp() {
   const { settings, updateSettings } = useSettings();
+  const fonts = Font.select(settings.get(keyboardProps.layout).language);
+  const font = Font.find(fonts, settings.get(textDisplayProps.font));
   return (
     <FieldList>
       <Field size={10}>
@@ -196,11 +195,11 @@ function FontProp() {
       </Field>
       <Field>
         <OptionList
-          options={Font.ALL.map((item) => ({
+          options={fonts.map((item) => ({
             value: item.id,
             name: <span style={item.cssProperties}>{item.name}</span>,
           }))}
-          value={settings.get(textDisplayProps.font).id}
+          value={font.id}
           onSelect={(id) => {
             updateSettings(
               settings.set(textDisplayProps.font, Font.ALL.get(id)),

@@ -115,10 +115,6 @@ export const FONTS_FACES: readonly FontFace[] = [
   NUNITO_I,
   NUNITO_B,
   NUNITO_BI,
-  OPEN_DYSLEXIC,
-  OPEN_DYSLEXIC_I,
-  OPEN_DYSLEXIC_B,
-  OPEN_DYSLEXIC_BI,
   OPEN_SANS,
   OPEN_SANS_I,
   OPEN_SANS_B,
@@ -167,6 +163,10 @@ export const FONTS_FACES: readonly FontFace[] = [
   CURSIVE_I,
   CURSIVE_B,
   CURSIVE_BI,
+  OPEN_DYSLEXIC,
+  OPEN_DYSLEXIC_I,
+  OPEN_DYSLEXIC_B,
+  OPEN_DYSLEXIC_BI,
 ];
 
 function fontName(family: string, weight: FontWeight, style: FontStyle): string {

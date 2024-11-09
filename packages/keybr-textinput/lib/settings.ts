@@ -30,11 +30,11 @@ export type TextInputSettings = {
   readonly spaceSkipsWords: boolean;
 };
 
-export const textInputSettings: TextInputSettings = {
+export const textInputSettings = {
   stopOnError: true,
   forgiveErrors: true,
   spaceSkipsWords: true,
-};
+} as const satisfies TextInputSettings;
 
 export const textInputProps = {
   stopOnError: booleanProp("textInput.stopOnError", true),
@@ -76,13 +76,13 @@ export enum WhitespaceStyle {
   Bullet = 3,
 }
 
-export const textDisplaySettings: TextDisplaySettings = {
+export const textDisplaySettings = {
   font: Font.default,
   caretShapeStyle: CaretShapeStyle.Underline,
   caretMovementStyle: CaretMovementStyle.Smooth,
   whitespaceStyle: WhitespaceStyle.Bullet,
   language: Language.EN,
-};
+} as const satisfies TextDisplaySettings;
 
 export const textDisplayProps = {
   font: itemProp("textDisplay.font", Font.ALL, Font.default),
@@ -104,11 +104,16 @@ export const textDisplayProps = {
 } as const;
 
 export function toTextDisplaySettings(settings: Settings): TextDisplaySettings {
+  const font = settings.get(textDisplayProps.font);
+  const caretShapeStyle = settings.get(textDisplayProps.caretShapeStyle);
+  const caretMovementStyle = settings.get(textDisplayProps.caretMovementStyle);
+  const whitespaceStyle = settings.get(textDisplayProps.whitespaceStyle);
+  const language = settings.get(keyboardProps.layout).language;
   return {
-    font: settings.get(textDisplayProps.font),
-    caretShapeStyle: settings.get(textDisplayProps.caretShapeStyle),
-    caretMovementStyle: settings.get(textDisplayProps.caretMovementStyle),
-    whitespaceStyle: settings.get(textDisplayProps.whitespaceStyle),
-    language: settings.get(keyboardProps.layout).language,
+    font: Font.find(Font.select(language), font),
+    caretShapeStyle,
+    caretMovementStyle,
+    whitespaceStyle,
+    language,
   };
 }
