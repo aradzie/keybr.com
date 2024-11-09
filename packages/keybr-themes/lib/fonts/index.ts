@@ -43,6 +43,10 @@ const acghlt = ["arabic", "cyrillic", "greek", "hebrew", "latin", "thai"] as con
 
 export const ARAD = new FontFace("Arad", "400", "normal", ["whitespace"], ["arabic"]);
 export const ARAD_B = new FontFace("Arad", "700", "normal", ["whitespace"], ["arabic"]);
+export const CORMORANT = new FontFace("Cormorant", "400", "normal", ["serif"], cl);
+export const CORMORANT_I = new FontFace("Cormorant", "400", "italic", ["serif"], cl);
+export const CORMORANT_B = new FontFace("Cormorant", "700", "normal", ["serif"], cl);
+export const CORMORANT_BI = new FontFace("Cormorant", "700", "italic", ["serif"], cl);
 export const NEWSREADER = new FontFace("Newsreader", "400", "normal", ["serif"], ["latin"]);
 export const NEWSREADER_I = new FontFace("Newsreader", "400", "italic", ["serif"], ["latin"]);
 export const NEWSREADER_B = new FontFace("Newsreader", "700", "normal", ["serif"], ["latin"]);
@@ -107,6 +111,10 @@ export const CURSIVE_BI = new FontFace("cursive", "700", "italic", ["whitespace"
 export const FONTS_FACES: readonly FontFace[] = [
   ARAD,
   ARAD_B,
+  CORMORANT,
+  CORMORANT_I,
+  CORMORANT_B,
+  CORMORANT_BI,
   NEWSREADER,
   NEWSREADER_I,
   NEWSREADER_B,

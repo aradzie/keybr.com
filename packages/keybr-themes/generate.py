@@ -128,6 +128,10 @@ def generate(font_name, font_file, merge_file=None):
 def main():
     generate("arad", "fonts/Arad/main/static/ttf/Arad-Regular.ttf")
     generate("arad", "fonts/Arad/main/static/ttf/Arad-Bold.ttf")
+    generate("cormorant", "fonts/Cormorant/static/Cormorant-Regular.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("cormorant", "fonts/Cormorant/static/Cormorant-Italic.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("cormorant", "fonts/Cormorant/static/Cormorant-Bold.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("cormorant", "fonts/Cormorant/static/Cormorant-BoldItalic.ttf", merge_file="Whitespace-em1000.ttf")
     generate("newsreader", "fonts/Newsreader/static/Newsreader_60pt-Regular.ttf", merge_file="Whitespace-em2000.ttf")
     generate("newsreader", "fonts/Newsreader/static/Newsreader_60pt-Italic.ttf", merge_file="Whitespace-em2000.ttf")
     generate("newsreader", "fonts/Newsreader/static/Newsreader_60pt-Bold.ttf", merge_file="Whitespace-em2000.ttf")

@@ -95,4 +95,8 @@ export const FONTS = new ThemeList([
     id: "ubuntu",
     name: "Ubuntu",
   },
+  {
+    id: "cormorant",
+    name: "Cormorant",
+  },
 ]);
