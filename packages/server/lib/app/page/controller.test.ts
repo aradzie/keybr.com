@@ -110,5 +110,5 @@ test(`ignore invalid theme cookie`, async () => {
 
   const $ = load(await response.body.text());
   assert.strictEqual($("html").attr("data-color"), "system");
-  assert.strictEqual($("html").attr("data-font"), "opensans");
+  assert.strictEqual($("html").attr("data-font"), "open-sans");
 });

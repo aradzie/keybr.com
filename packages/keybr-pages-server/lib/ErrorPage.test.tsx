@@ -24,7 +24,7 @@ test("render", () => {
   assert.deepStrictEqual($("html").attr(), {
     "lang": "en",
     "data-color": "system",
-    "data-font": "opensans",
+    "data-font": "open-sans",
   });
   assert.strictEqual($("title").text(), "400 - Bad Request");
   assert.isTrue($("body").text().includes("400 - Bad Request"));

@@ -56,16 +56,16 @@ test("mount and switch styles", async () => {
 
   // Act.
 
-  await userEvent.click(r.getByText("opensans"));
+  await userEvent.click(r.getByText("open-sans"));
 
   // Assert.
 
   assert.strictEqual(
     document.cookie,
-    "prefs=%7B%22color%22%3A%22light%22%2C%22font%22%3A%22opensans%22%7D",
+    "prefs=%7B%22color%22%3A%22light%22%2C%22font%22%3A%22open-sans%22%7D",
   );
   assert.strictEqual(document.documentElement.dataset["color"], "light");
-  assert.strictEqual(document.documentElement.dataset["font"], "opensans");
+  assert.strictEqual(document.documentElement.dataset["font"], "open-sans");
 
   // Cleanup.
 
@@ -114,10 +114,10 @@ function Switcher() {
       </button>
       <button
         onClick={() => {
-          switchFont("opensans");
+          switchFont("open-sans");
         }}
       >
-        opensans
+        open-sans
       </button>
       <button
         onClick={() => {

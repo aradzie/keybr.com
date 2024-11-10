@@ -68,7 +68,7 @@ export const COLORS = new ThemeList([
 
 export const FONTS = new ThemeList([
   {
-    id: "opensans",
+    id: "open-sans",
     name: "Open Sans",
   },
   {

@@ -38,7 +38,7 @@ test("render", () => {
     "lang": "en",
     "dir": "ltr",
     "data-color": "system",
-    "data-font": "opensans",
+    "data-font": "open-sans",
   });
   assert.isTrue(html.includes("google"));
   assert.isTrue(html.includes("cloudflare"));
@@ -76,7 +76,7 @@ test("render alt", () => {
     "lang": "en",
     "dir": "ltr",
     "data-color": "system",
-    "data-font": "opensans",
+    "data-font": "open-sans",
   });
   assert.isFalse(html.includes("google"));
   assert.isFalse(html.includes("cloudflare"));
@@ -116,7 +116,7 @@ test("render for a bot", () => {
     "lang": "en",
     "dir": "ltr",
     "data-color": "system",
-    "data-font": "opensans",
+    "data-font": "open-sans",
   });
   assert.strictEqual($("nav").length, 1);
 });
