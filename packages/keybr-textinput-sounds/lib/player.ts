@@ -4,6 +4,7 @@ import { useMemo } from "react";
 import { PlaySounds, soundProps, SoundTheme } from "./settings.ts";
 import { Theme } from "./sound.ts";
 import { defaultTheme } from "./themes/default.ts";
+import { mechanical1 } from "./themes/mechanical1.ts";
 import { mechanical2 } from "./themes/mechanical2.ts";
 import { typewriter1 } from "./themes/typewriter1.ts";
 import { typewriter2 } from "./themes/typewriter2.ts";
@@ -52,6 +53,8 @@ function loadTheme(id: SoundTheme) {
 
 function loadTheme0(id: SoundTheme) {
   switch (id) {
+    case SoundTheme.MECHANICAL1:
+      return new Theme(mechanical1);
     case SoundTheme.MECHANICAL2:
       return new Theme(mechanical2);
     case SoundTheme.TYPEWRITER1:
