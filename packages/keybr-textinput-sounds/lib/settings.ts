@@ -10,12 +10,14 @@ export enum PlaySounds {
 export class SoundTheme implements EnumItem {
   static readonly DEFAULT = new SoundTheme("default", "Default");
   static readonly MECHANICAL1 = new SoundTheme("mechanical1", "Mechanical");
-  static readonly TYPEWRITER1 = new SoundTheme("typewriter1", "Typewriter");
+  static readonly TYPEWRITER1 = new SoundTheme("typewriter1", "Typewriter 1");
+  static readonly TYPEWRITER2 = new SoundTheme("typewriter2", "Typewriter 2");
 
   static readonly ALL = new Enum<SoundTheme>(
     SoundTheme.DEFAULT,
     SoundTheme.MECHANICAL1,
     SoundTheme.TYPEWRITER1,
+    SoundTheme.TYPEWRITER2,
   );
 
   private constructor(

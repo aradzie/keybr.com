@@ -6,6 +6,7 @@ import { Theme } from "./sound.ts";
 import { defaultTheme } from "./themes/default.ts";
 import { mechanical1 } from "./themes/mechanical1.ts";
 import { typewriter1 } from "./themes/typewriter1.ts";
+import { typewriter2 } from "./themes/typewriter2.ts";
 
 export function useSoundPlayer() {
   const { settings } = useSettings();
@@ -55,6 +56,8 @@ function loadTheme0(id: SoundTheme) {
       return new Theme(mechanical1);
     case SoundTheme.TYPEWRITER1:
       return new Theme(typewriter1);
+    case SoundTheme.TYPEWRITER2:
+      return new Theme(typewriter2);
     default:
       return new Theme(defaultTheme);
   }
