@@ -18,6 +18,9 @@ export function makeSoundPlayer(settings: Settings) {
   const playSounds = settings.get(soundProps.playSounds);
   const soundVolume = settings.get(soundProps.soundVolume);
   const soundTheme = settings.get(soundProps.soundTheme);
+  if (playSounds === PlaySounds.None) {
+    return () => {};
+  }
   const theme = loadTheme(soundTheme);
   return (feedback: Feedback) => {
     if (playSounds === PlaySounds.All) {
