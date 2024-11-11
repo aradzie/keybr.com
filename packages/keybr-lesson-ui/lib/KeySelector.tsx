@@ -3,7 +3,7 @@ import { type Letter } from "@keybr/phonetic-model";
 import { type KeyStatsMap } from "@keybr/result";
 import { useSettings } from "@keybr/settings";
 import { type FocusProps, useHotkeysHandler } from "@keybr/widget";
-import { type FocusEvent, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { Key } from "./Key.tsx";
 import * as styles from "./KeySelector.module.less";
 
@@ -25,17 +25,7 @@ export const KeySelector = ({
   const { settings } = useSettings();
   const target = new Target(settings);
   const { letters } = keyStatsMap;
-  const handleFocus = (ev: FocusEvent): void => {
-    if (onFocus != null) {
-      onFocus(ev);
-    }
-  };
-  const handleBlur = (ev: FocusEvent): void => {
-    if (onBlur != null) {
-      onBlur(ev);
-    }
-  };
-  const handlePrev = (): void => {
+  const handlePrev = () => {
     if (onSelect != null) {
       const currentIndex = letters.findIndex(
         (letter) => letter.codePoint === current.codePoint,
@@ -49,7 +39,7 @@ export const KeySelector = ({
       onSelect(letters[selectedIndex]);
     }
   };
-  const handleNext = (): void => {
+  const handleNext = () => {
     if (onSelect != null) {
       const currentIndex = letters.findIndex(
         (letter) => letter.codePoint === current.codePoint,
@@ -68,8 +58,8 @@ export const KeySelector = ({
       className={styles.root}
       tabIndex={disabled ? undefined : (tabIndex ?? 0)}
       title={title}
-      onFocus={handleFocus}
-      onBlur={handleBlur}
+      onFocus={onFocus}
+      onBlur={onBlur}
       onKeyDown={useHotkeysHandler(
         ["ArrowLeft", handlePrev],
         ["ArrowUp", handlePrev],

@@ -59,10 +59,10 @@ export function useToast(): ToastContextValue {
 
 export function toastProps(toast: ToastContextValue) {
   return {
-    onMouseOver: () => {
+    onMouseEnter: () => {
       toast.hover(true);
     },
-    onMouseOut: () => {
+    onMouseLeave: () => {
       toast.hover(false);
     },
     onClick: () => {

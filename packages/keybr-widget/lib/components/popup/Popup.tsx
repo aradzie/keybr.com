@@ -1,16 +1,17 @@
-import { type ReactNode, useEffect, useMemo, useRef } from "react";
+import { type ReactNode, useLayoutEffect, useMemo, useRef } from "react";
 import { type FloatingPosition, place } from "../../floating/index.ts";
 import { useScreenSize } from "../../hooks/index.ts";
 import { getBoundingBox, querySelector } from "../../utils/index.ts";
+import { type MouseProps } from "../types.ts";
 import * as styles from "./Popup.module.less";
 
 export type PopupProps = {
-  readonly anchor?: string;
+  readonly anchor?: Element | string;
   readonly arrow?: boolean;
   readonly children?: ReactNode;
   readonly position?: FloatingPosition;
   readonly offset?: number;
-};
+} & MouseProps;
 
 export function Popup({
   anchor,
@@ -18,12 +19,13 @@ export function Popup({
   children,
   position,
   offset = 20,
+  ...props
 }: PopupProps): ReactNode {
   const rootRef = useRef<HTMLDivElement>(null);
   const arrowRef = useRef<HTMLDivElement>(null);
   const options = useMemo(() => ({ position, offset }), [position, offset]);
   const screenSize = useScreenSize();
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (rootRef.current != null)
       if (anchor == null) {
         place(rootRef.current!).centerToScreen(screenSize);
@@ -36,6 +38,7 @@ export function Popup({
   }, [anchor, options, screenSize]);
   return (
     <div
+      {...props}
       ref={rootRef}
       className={styles.root}
       style={{ position: "fixed", zIndex: 1 }}

@@ -6,7 +6,7 @@ import { querySelector } from "../../utils/query.ts";
 import * as styles from "./Spotlight.module.less";
 
 export type SpotlightProps = {
-  readonly anchor?: string;
+  readonly anchor?: Element | string;
   readonly margin?: number;
 };
 

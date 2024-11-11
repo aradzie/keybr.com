@@ -1,7 +1,7 @@
 import {
   cloneElement,
   type ReactNode,
-  useEffect,
+  useLayoutEffect,
   useMemo,
   useRef,
 } from "react";
@@ -29,7 +29,7 @@ export function Popover({
     [position, flip, shift, offset, screenMargin],
   );
   const screenSize = useScreenSize();
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (popoverRef.current != null) {
       const anchorBox = anchorRef.current!.getBoundingBox("fixed");
       place(popoverRef.current!)
