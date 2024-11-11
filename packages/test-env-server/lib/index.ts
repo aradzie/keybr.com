@@ -1,8 +1,9 @@
 import { randomBytes } from "node:crypto";
+import { tmpdir } from "node:os";
 import { resolve } from "node:path";
 
 function getDataDir() {
-  return resolve(`/tmp/keybr-tests-${randomBytes(6).toString("hex")}`);
+  return resolve(tmpdir(), `keybr-tests-${randomBytes(6).toString("hex")}`);
 }
 
 function getPublicDir() {

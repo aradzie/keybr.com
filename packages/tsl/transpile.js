@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { mkdir, open, readFile, rename } from "node:fs/promises";
-import { dirname } from "node:path";
+import { tmpdir } from "node:os";
+import { dirname, join } from "node:path";
 import ts from "typescript";
 
 /**
@@ -26,14 +27,14 @@ export function isTsx(fileName) {
  */
 export async function transpile(source, fileName) {
   const options = getTranspileOptions(fileName);
-  const slug = fileName.substring(1).replace(/[./]/g, "_");
+  const slug = fileName.replace(/[./\\:]/g, "_");
   const hash = createHash("md5")
     .update(fileName)
     .update(source)
     .update(JSON.stringify(options))
     .update(ts.version)
     .digest("hex");
-  const cachedFilename = `/tmp/tsl/${slug}_${hash}.js`;
+  const cachedFilename = join(tmpdir(), `tsl`, `${slug}_${hash}.js`);
   try {
     return await readFile(cachedFilename, "utf-8");
   } catch (err) {
