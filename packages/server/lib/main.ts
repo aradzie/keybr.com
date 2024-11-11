@@ -1,6 +1,7 @@
 import cluster, { type ClusterSettings } from "node:cluster";
 import { Application } from "@fastr/core";
 import { Container } from "@fastr/invert";
+import { Manifest } from "@keybr/assets";
 import { ConfigModule, Env } from "@keybr/config";
 import { Logger } from "@keybr/logger";
 import { Game } from "@keybr/multiplayer-server";
@@ -53,6 +54,7 @@ function makeContainer() {
   container.load(new ConfigModule());
   container.load(new ApplicationModule());
   container.load(new ServerModule());
+  container.get(Manifest); // Sanity check.
   return container;
 }
 
