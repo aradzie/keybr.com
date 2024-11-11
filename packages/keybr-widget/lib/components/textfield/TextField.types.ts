@@ -18,6 +18,7 @@ export type TextFieldProps = {
   readonly type?: TextFieldType;
   readonly value?: string;
   readonly onChange?: (value: string) => void;
+  readonly onInput?: (event: InputEvent) => void;
 } & FocusProps &
   MouseProps &
   KeyboardProps;

@@ -23,6 +23,7 @@ export const TextField = forwardRef(function TextField(
     type = "text",
     value,
     onChange,
+    onInput,
     ...props
   }: TextFieldProps,
   ref: ForwardedRef<TextFieldRef>,
@@ -59,11 +60,15 @@ export const TextField = forwardRef(function TextField(
         onChange={(event) => {
           onChange?.((event.target as HTMLTextAreaElement).value);
         }}
+        onInput={({ nativeEvent }) => {
+          onInput?.(nativeEvent as InputEvent);
+        }}
       />
     );
   } else {
     return (
       <input
+        {...props}
         ref={element as RefObject<HTMLInputElement>}
         className={clsx(
           styles.root,
@@ -81,7 +86,9 @@ export const TextField = forwardRef(function TextField(
         onChange={(event) => {
           onChange?.((event.target as HTMLInputElement).value);
         }}
-        {...props}
+        onInput={({ nativeEvent }) => {
+          onInput?.(nativeEvent as InputEvent);
+        }}
       />
     );
   }
