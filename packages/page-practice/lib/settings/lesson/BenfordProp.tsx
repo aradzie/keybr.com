@@ -40,7 +40,6 @@ export function BenfordProp(): ReactNode {
                 <Link
                   href="https://en.wikipedia.org/wiki/Benford's_law"
                   target="_blank"
-                  external={true}
                 >
                   {chunks}
                 </Link>

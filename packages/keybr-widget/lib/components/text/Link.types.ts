@@ -8,7 +8,6 @@ export type LinkProps = {
   readonly href?: string;
   readonly target?: string;
   readonly download?: string;
-  readonly external?: boolean;
   readonly title?: string;
   readonly children?: ReactNode;
 } & MouseProps;
