@@ -12,7 +12,7 @@ export abstract class AdapterFactory {
 }
 
 export class AuthModule implements Module {
-  configure({ bind }: Binder): void {}
+  configure(binder: Binder) {}
 
   @provides({ id: AdapterFactory, name: "google", singleton: true })
   provideGoogleAdapter(

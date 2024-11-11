@@ -4,7 +4,7 @@ import { FileStore } from "@fastr/middleware-session-file-store";
 import { DataDir, Env } from "@keybr/config";
 
 export class SessionModule implements Module {
-  configure(binder: Binder): void {}
+  configure(binder: Binder) {}
 
   @provides({ id: "sessionOptions", singleton: true })
   provideSessionOptions(dataDir: DataDir): SessionOptions {

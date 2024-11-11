@@ -3,7 +3,7 @@ import { MailgunMailer } from "./mailgun.ts";
 import { Mailer } from "./types.ts";
 
 export class MailModule implements Module {
-  configure({ bind }: Binder): void {
+  configure({ bind }: Binder) {
     bind(Mailer).to(MailgunMailer);
   }
 }

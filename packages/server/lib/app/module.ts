@@ -21,11 +21,11 @@ export const kMain = Symbol();
 export const kGame = Symbol();
 
 export class ApplicationModule implements Module {
-  configure(binder: Binder): void {
-    binder.load(new AuthModule());
-    binder.load(new MailModule());
-    binder.load(new ManifestModule());
-    binder.load(new SessionModule());
+  configure({ load }: Binder) {
+    load(new AuthModule());
+    load(new MailModule());
+    load(new ManifestModule());
+    load(new SessionModule());
   }
 
   @provides({ id: Application, name: kMain, singleton: true })

@@ -22,7 +22,7 @@ const kResourceOwner = Symbol();
 
 test.beforeEach(async () => {
   class FakeAuthModule implements Module {
-    configure({ bind }: Binder): void {}
+    configure(binder: Binder) {}
 
     @provides({ id: AdapterFactory, name: "fake", singleton: true })
     fake(@inject("canonicalUrl") canonicalUrl: string): AdapterFactory {

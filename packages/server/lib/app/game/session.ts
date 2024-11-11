@@ -13,8 +13,8 @@ export type ClientInfo = {
 export class SessionFactory {
   constructor(readonly game: Game) {}
 
-  connect(webSocket: WebSocket, { id, user }: ClientInfo): void {
-    const onError = (error: Error): void => {
+  connect(webSocket: WebSocket, { id, user }: ClientInfo) {
+    const onError = (error: Error) => {
       webSocket.close(1011);
     };
 
@@ -23,37 +23,37 @@ export class SessionFactory {
 
       const codec = new ServerCodec();
 
-      const callback = (error?: Error): void => {
+      const callback = (error?: Error) => {
         if (error != null) {
           onError(error);
         }
       };
 
-      const ping = (data?: unknown, mask?: boolean): void => {
+      const ping = (data?: unknown, mask?: boolean) => {
         if (webSocket.readyState === WebSocket.OPEN) {
           webSocket.ping(data, mask, callback);
         }
       };
 
-      const pong = (data?: unknown, mask?: boolean): void => {
+      const pong = (data?: unknown, mask?: boolean) => {
         if (webSocket.readyState === WebSocket.OPEN) {
           webSocket.pong(data, mask, callback);
         }
       };
 
-      const send = (message: ServerMessage): void => {
+      const send = (message: ServerMessage) => {
         if (webSocket.readyState === WebSocket.OPEN) {
           webSocket.send(codec.encode(message), callback);
         }
       };
 
-      const close = (code?: number, data?: string): void => {
+      const close = (code?: number, data?: string) => {
         if (webSocket.readyState === WebSocket.OPEN) {
           webSocket.close(code, data);
         }
       };
 
-      const terminate = (): void => {
+      const terminate = () => {
         webSocket.terminate();
       };
 
@@ -67,7 +67,7 @@ export class SessionFactory {
         terminate,
       });
 
-      const onClose = (code: number, reason: string): void => {
+      const onClose = (code: number, reason: string) => {
         try {
           client.onClose(code, reason);
         } catch (err) {
@@ -75,7 +75,7 @@ export class SessionFactory {
         }
       };
 
-      const onPing = (data: ArrayBuffer): void => {
+      const onPing = (data: ArrayBuffer) => {
         try {
           client.onPing(data);
         } catch (err) {
@@ -83,7 +83,7 @@ export class SessionFactory {
         }
       };
 
-      const onPong = (data: ArrayBuffer): void => {
+      const onPong = (data: ArrayBuffer) => {
         try {
           client.onPong(data);
         } catch (err) {
@@ -91,7 +91,7 @@ export class SessionFactory {
         }
       };
 
-      const onMessage = (data: ArrayBuffer): void => {
+      const onMessage = (data: ArrayBuffer) => {
         try {
           client.onMessage(codec.decode(new Uint8Array(data)));
         } catch (err) {

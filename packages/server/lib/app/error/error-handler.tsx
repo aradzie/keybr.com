@@ -47,7 +47,7 @@ export class ErrorHandler implements HandlerObject {
     }
   }
 
-  handleError(ctx: Context, err: Error): void {
+  handleError(ctx: Context, err: Error) {
     const { method, url, headers } = ctx.request.req;
     const req = { method, url, headers };
     if (err instanceof ApplicationError) {
@@ -80,7 +80,7 @@ export class ErrorHandler implements HandlerObject {
     }
   }
 
-  report(ctx: Context, details: ErrorDetails): void {
+  report(ctx: Context, details: ErrorDetails) {
     const { status, message } = details;
     ctx.response.status = status;
     ctx.response.statusText = message;

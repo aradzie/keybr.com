@@ -170,7 +170,7 @@ function init() {
     level: Level.DEBUG,
     transports: [
       new (class FakeTransport implements Transport {
-        append(message: Message): void {
+        append(message: Message) {
           messages.push(format(message));
         }
       })(),
