@@ -1,41 +1,88 @@
+import { Tasks } from "@keybr/lang";
 import { type LessonKey } from "@keybr/lesson";
 import {
   CurrentKeyRow,
   DailyGoalRow,
   GaugeRow,
-  getKeyElementSelector,
-  isKeyElement,
   KeySetRow,
   names,
   StreakListRow,
 } from "@keybr/lesson-ui";
-import { Popup, Portal, useMouseHover, useTimeout } from "@keybr/widget";
-import { memo, type ReactNode, useState } from "react";
+import { Popup, Portal } from "@keybr/widget";
+import { memo, type ReactNode, useEffect, useState } from "react";
 import * as styles from "./Indicators.module.less";
 import { KeyExtendedDetails } from "./KeyExtendedDetails.tsx";
 import { type LessonState } from "./state/index.ts";
 
 export const Indicators = memo(function Indicators({
-  state,
+  state: { keyStatsMap, summaryStats, lessonKeys, streakList, dailyGoal },
 }: {
   readonly state: LessonState;
 }): ReactNode {
-  const selectedKey = useKeySelector(state);
+  type State = Readonly<
+    | { type: "hidden" }
+    | { type: "visible-in"; key: LessonKey; elem: Element }
+    | { type: "visible"; key: LessonKey; elem: Element }
+    | { type: "visible-out"; key: LessonKey; elem: Element }
+  >;
+  const [state, setState] = useState<State>({ type: "hidden" });
+  useEffect(() => {
+    const tasks = new Tasks();
+    switch (state.type) {
+      case "visible-in":
+        tasks.delayed(300, () => {
+          setState({ ...state, type: "visible" });
+        });
+        break;
+      case "visible-out":
+        tasks.delayed(300, () => {
+          setState({ type: "hidden" });
+        });
+        break;
+    }
+    return () => {
+      tasks.cancelAll();
+    };
+  }, [state]);
   return (
     <div id={names.indicators} className={styles.indicators}>
-      <GaugeRow summaryStats={state.summaryStats} names={names} />
-      <KeySetRow lessonKeys={state.lessonKeys} names={names} />
-      <CurrentKeyRow lessonKeys={state.lessonKeys} names={names} />
-      <StreakListRow streakList={state.streakList} names={names} />
-      {state.dailyGoal.goal > 0 && (
-        <DailyGoalRow dailyGoal={state.dailyGoal} names={names} />
+      <GaugeRow summaryStats={summaryStats} names={names} />
+      <KeySetRow
+        lessonKeys={lessonKeys}
+        names={names}
+        onKeyHoverIn={(key, elem) => {
+          setState({ type: "visible-in", key, elem });
+        }}
+        onKeyHoverOut={() => {
+          switch (state.type) {
+            case "visible-in":
+              setState({ type: "hidden" });
+              break;
+            case "visible":
+              setState({ ...state, type: "visible-out" });
+              break;
+          }
+        }}
+      />
+      <CurrentKeyRow lessonKeys={lessonKeys} names={names} />
+      <StreakListRow streakList={streakList} names={names} />
+      {dailyGoal.goal > 0 && (
+        <DailyGoalRow dailyGoal={dailyGoal} names={names} />
       )}
-      {selectedKey && (
+      {(state.type === "visible" || state.type === "visible-out") && (
         <Portal>
-          <Popup anchor={getKeyElementSelector(selectedKey.letter)}>
+          <Popup
+            anchor={state.elem}
+            onMouseEnter={() => {
+              setState({ ...state, type: "visible" });
+            }}
+            onMouseLeave={() => {
+              setState({ ...state, type: "visible-out" });
+            }}
+          >
             <KeyExtendedDetails
-              lessonKey={selectedKey}
-              keyStats={state.keyStatsMap.get(selectedKey.letter)}
+              lessonKey={state.key}
+              keyStats={keyStatsMap.get(state.key.letter)}
             />
           </Popup>
         </Portal>
@@ -43,29 +90,3 @@ export const Indicators = memo(function Indicators({
     </div>
   );
 });
-
-function useKeySelector(state: LessonState): LessonKey | null {
-  const [selectedKey, setSelectedKey] = useState<LessonKey | null>(null);
-  const timeout = useTimeout();
-  useMouseHover((el) => {
-    while (el != null) {
-      const codePoint = isKeyElement(el);
-      if (codePoint != null) {
-        timeout.cancel();
-        setSelectedKey(state.lessonKeys.find(codePoint));
-        return;
-      }
-      if (Popup.isPopupElement(el)) {
-        timeout.cancel();
-        return;
-      }
-      el = el.parentElement;
-    }
-    if (selectedKey != null && !timeout.pending) {
-      timeout.schedule(() => {
-        setSelectedKey(null);
-      }, 100);
-    }
-  });
-  return selectedKey;
-}

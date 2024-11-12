@@ -1,5 +1,6 @@
 import {
   type DailyGoal as DailyGoalType,
+  type LessonKey,
   type LessonKeys,
 } from "@keybr/lesson";
 import {
@@ -42,9 +43,15 @@ export const GaugeRow = memo(function GaugeRow({
 export const KeySetRow = memo(function KeySetRow({
   lessonKeys,
   names,
+  onKeyHoverIn,
+  onKeyHoverOut,
+  onKeyClick,
 }: {
   readonly lessonKeys: LessonKeys;
   readonly names?: Names;
+  readonly onKeyHoverIn?: (key: LessonKey, elem: Element) => void;
+  readonly onKeyHoverOut?: (key: LessonKey, elem: Element) => void;
+  readonly onKeyClick?: (key: LessonKey, elem: Element) => void;
 }): ReactNode {
   const { formatMessage } = useIntl();
   return (
@@ -60,6 +67,9 @@ export const KeySetRow = memo(function KeySetRow({
         id={names?.keySet}
         className={styles.value}
         lessonKeys={lessonKeys}
+        onKeyHoverIn={onKeyHoverIn}
+        onKeyHoverOut={onKeyHoverOut}
+        onKeyClick={onKeyClick}
       />
     </div>
   );

@@ -8,8 +8,8 @@ import {
   type ComponentType,
   memo,
   type ReactElement,
-  type ReactNode,
   useMemo,
+  useRef,
 } from "react";
 import { type KeyProps, makeKeyComponent } from "./Key.tsx";
 import { Surface } from "./shapes.tsx";
@@ -18,21 +18,58 @@ export const KeyLayer = memo(function KeyLayer({
   depressedKeys = [],
   toggledKeys = [],
   showColors = false,
+  onKeyHoverIn,
+  onKeyHoverOut,
+  onKeyClick,
 }: {
   readonly depressedKeys?: readonly KeyId[];
   readonly toggledKeys?: readonly KeyId[];
   readonly showColors?: boolean;
-}): ReactNode {
+  readonly onKeyHoverIn?: (key: KeyId, elem: Element) => void;
+  readonly onKeyHoverOut?: (key: KeyId, elem: Element) => void;
+  readonly onKeyClick?: (key: KeyId, elem: Element) => void;
+}) {
   const keyboard = useKeyboard();
+  const svgRef = useRef<SVGSVGElement>(null);
   const children = useMemo(() => getKeyElements(keyboard), [keyboard]);
   return (
-    <Surface>
+    <Surface
+      ref={svgRef}
+      onMouseOver={(event) => {
+        relayEvent(svgRef.current!, event, onKeyHoverIn);
+      }}
+      onMouseOut={(event) => {
+        relayEvent(svgRef.current!, event, onKeyHoverOut);
+      }}
+      onClick={(event) => {
+        relayEvent(svgRef.current!, event, onKeyClick);
+      }}
+    >
       {children.map((child) =>
         child.select(depressedKeys, toggledKeys, showColors),
       )}
     </Surface>
   );
 });
+
+function relayEvent(
+  root: Element,
+  { target }: { readonly target: any },
+  handler?: (key: KeyId, elem: Element) => void,
+) {
+  while (
+    handler != null &&
+    target instanceof Element &&
+    root.contains(target)
+  ) {
+    const key = (target as SVGElement).dataset["key"];
+    if (key) {
+      handler(key, target);
+      return;
+    }
+    target = target.parentElement;
+  }
+}
 
 function getKeyElements(keyboard: Keyboard): MemoizedKeyElements[] {
   return [...keyboard.shapes.values()].map(

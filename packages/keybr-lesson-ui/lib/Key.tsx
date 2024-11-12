@@ -1,5 +1,4 @@
 import { type LessonKey } from "@keybr/lesson";
-import { type Letter } from "@keybr/phonetic-model";
 import { type MouseProps } from "@keybr/widget";
 import { clsx } from "clsx";
 import { type ReactNode } from "react";
@@ -31,6 +30,7 @@ export const Key = ({
   return (
     <span
       {...props}
+      ref={Key.attach(lessonKey)}
       key={codePoint}
       className={clsx(
         styles.lessonKey,
@@ -58,16 +58,16 @@ export const Key = ({
   );
 };
 
-export function getKeyElementSelector({ codePoint }: Letter): string {
-  return `.${styles.lessonKey}[data-code-point="${codePoint}"]`;
-}
+const attachment = Symbol();
 
-export function isKeyElement(el: Element): number | null {
-  if (el instanceof HTMLElement && el.className.includes(styles.lessonKey)) {
-    const value = el.dataset["codePoint"] ?? null;
-    if (value != null) {
-      return Number(value);
+Key.attach = (key: LessonKey) => {
+  return (target: Element | null): void => {
+    if (target != null) {
+      (target as any)[attachment] = key;
     }
-  }
-  return null;
-}
+  };
+};
+
+Key.attached = (target: Element | null): LessonKey | null => {
+  return (target as any)?.[attachment] ?? null;
+};

@@ -54,7 +54,3 @@ export function Popup({
     </div>
   );
 }
-
-Popup.isPopupElement = (el: Element): boolean => {
-  return el instanceof HTMLElement && el.className.includes(styles.root);
-};
