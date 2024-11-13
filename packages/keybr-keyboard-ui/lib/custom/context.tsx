@@ -64,5 +64,5 @@ export function CustomLayoutProvider({
 }
 
 function fix(layout: LayoutBuilder) {
-  return layout.setCharacter("Space", KeyModifier.None, 0x0020);
+  return layout.setOne("Space", KeyModifier.None, 0x0020);
 }

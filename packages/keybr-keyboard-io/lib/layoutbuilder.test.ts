@@ -10,29 +10,73 @@ test("build", () => {
   deepStrictEqual(builder.dict(), {});
   deepStrictEqual(builder.toJSON(), {});
 
-  builder.setCharacter("KeyA", KeyModifier.None, 0x0061);
+  builder.setOne("KeyA", KeyModifier.None, 0x0061);
   deepStrictEqual(
     [...builder],
-    [new KeyCharacters("KeyA", 0x0061, null, null, null)],
+    [
+      new KeyCharacters(
+        "KeyA", //
+        0x0061,
+        null,
+        null,
+        null,
+      ),
+    ],
   );
-  deepStrictEqual(builder.dict(), { KeyA: [0x0061, null, null, null] });
-  deepStrictEqual(builder.toJSON(), { KeyA: "a" });
+  deepStrictEqual(builder.dict(), {
+    KeyA: [0x0061, null, null, null],
+  });
+  deepStrictEqual(builder.toJSON(), {
+    KeyA: "a",
+  });
 
-  builder.setCharacter("KeyA", KeyModifier.Alt, { dead: 0x0300 });
+  builder.setOne("KeyA", KeyModifier.Alt, 0x0300);
   deepStrictEqual(
     [...builder],
-    [new KeyCharacters("KeyA", 0x0061, null, { dead: 0x0300 }, null)],
+    [
+      new KeyCharacters(
+        "KeyA", //
+        0x0061,
+        null,
+        { dead: 0x0300 },
+        null,
+      ),
+    ],
   );
   deepStrictEqual(builder.dict(), {
     KeyA: [0x0061, null, { dead: 0x0300 }, null],
   });
-  deepStrictEqual(builder.toJSON(), { KeyA: ["a", null, { dead: 0x0300 }] });
+  deepStrictEqual(builder.toJSON(), {
+    KeyA: ["a", null, 0x0300],
+  });
+
+  builder.setOne("KeyA", KeyModifier.Shift, 0x034f);
+  deepStrictEqual(
+    [...builder],
+    [
+      new KeyCharacters(
+        "KeyA",
+        0x0061,
+        { special: 0x034f },
+        { dead: 0x0300 },
+        null,
+      ),
+    ],
+  );
+  deepStrictEqual(builder.dict(), {
+    KeyA: [0x0061, { special: 0x034f }, { dead: 0x0300 }, null],
+  });
+  deepStrictEqual(builder.toJSON(), {
+    KeyA: ["a", 0x034f, 0x0300],
+  });
 });
 
 test("format and parse JSON", () => {
   const builder = new LayoutBuilder();
-  builder.setCharacter("KeyA", KeyModifier.None, 0x0061);
-  builder.setCharacter("KeyA", KeyModifier.Alt, { dead: 0x0300 });
+  builder.setOne("KeyA", KeyModifier.None, 0x0061);
+  builder.setOne("KeyA", KeyModifier.Shift, { dead: 0x0300 });
+  builder.setOne("KeyA", KeyModifier.Alt, { special: 0x034f });
+  builder.setOne("KeyA", KeyModifier.ShiftAlt, { ligature: "?" });
 
   const { layout, warnings } = parseKeymap(JSON.stringify(builder.toJSON()));
   deepStrictEqual([...layout], [...builder]);

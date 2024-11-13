@@ -13,7 +13,15 @@ test("parse string", () => {
   const { layout, warnings } = parseKeymap(JSON.stringify({ KeyA: "aA" }));
   deepStrictEqual(
     [...layout],
-    [new KeyCharacters("KeyA", /* "a" */ 0x0061, /* "A" */ 0x0041, null, null)],
+    [
+      new KeyCharacters(
+        "KeyA", //
+        /* "a" */ 0x0061,
+        /* "A" */ 0x0041,
+        null,
+        null,
+      ),
+    ],
   );
   deepStrictEqual(warnings, []);
 });
@@ -24,22 +32,11 @@ test("parse array of strings", () => {
   );
   deepStrictEqual(
     [...layout],
-    [new KeyCharacters("KeyA", /* "a" */ 0x0061, /* "A" */ 0x0041, null, null)],
-  );
-  deepStrictEqual(warnings, []);
-});
-
-test("parse array with dead keys", () => {
-  const { layout, warnings } = parseKeymap(
-    JSON.stringify({ KeyA: ["*`", "*´", "", 0x0000] }),
-  );
-  deepStrictEqual(
-    [...layout],
     [
       new KeyCharacters(
-        "KeyA",
-        { dead: /* COMBINING GRAVE ACCENT */ 0x0300 },
-        { dead: /* COMBINING ACUTE ACCENT */ 0x0301 },
+        "KeyA", //
+        /* "a" */ 0x0061,
+        /* "A" */ 0x0041,
         null,
         null,
       ),
@@ -48,30 +45,43 @@ test("parse array with dead keys", () => {
   deepStrictEqual(warnings, []);
 });
 
+test("parse array with dead keys", () => {
+  const { layout, warnings } = parseKeymap(
+    JSON.stringify({ KeyA: ["*`", "*´", "**", "*!"] }),
+  );
+  deepStrictEqual(
+    [...layout],
+    [
+      new KeyCharacters(
+        "KeyA", //
+        { dead: /* COMBINING GRAVE ACCENT */ 0x0300 },
+        { dead: /* COMBINING ACUTE ACCENT */ 0x0301 },
+        { dead: /* "*" */ 0x002a },
+        null,
+      ),
+    ],
+  );
+  deepStrictEqual(warnings, ["[KeyA] Invalid dead character: U+0021"]);
+});
+
 test("parse array of empty characters", () => {
   const { layout, warnings } = parseKeymap(
     JSON.stringify({ KeyA: ["", "", 0x0000, null] }),
   );
   deepStrictEqual([...layout], []);
-  deepStrictEqual(warnings, ["Key has no characters: KeyA"]);
+  deepStrictEqual(warnings, []);
 });
 
 test("ignore invalid characters", () => {
   const { layout, warnings } = parseKeymap(JSON.stringify({ KeyA: [true] }));
   deepStrictEqual([...layout], []);
-  deepStrictEqual(warnings, [
-    "[KeyA] Invalid character: true",
-    "Key has no characters: KeyA",
-  ]);
+  deepStrictEqual(warnings, ["[KeyA] Invalid character: true"]);
 });
 
 test("ignore invalid character lists", () => {
   const { layout, warnings } = parseKeymap(JSON.stringify({ KeyA: true }));
   deepStrictEqual([...layout], []);
-  deepStrictEqual(warnings, [
-    "[KeyA] Invalid character list: true",
-    "Key has no characters: KeyA",
-  ]);
+  deepStrictEqual(warnings, ["[KeyA] Invalid character list: true"]);
 });
 
 test("ignore unknown keys", () => {

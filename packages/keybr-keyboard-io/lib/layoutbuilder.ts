@@ -31,7 +31,7 @@ export class LayoutBuilder implements Iterable<KeyCharacters> {
   *[Symbol.iterator](): IterableIterator<KeyCharacters> {
     for (const key of characterKeys) {
       const characters = this.#data.get(key);
-      if (characters != null) {
+      if (characters != null && characters.valid) {
         yield characters;
       }
     }
@@ -57,7 +57,7 @@ export class LayoutBuilder implements Iterable<KeyCharacters> {
     return this;
   }
 
-  getCharacter(key: KeyId, mod: KeyModifier): Character | null {
+  getOne(key: KeyId, mod: KeyModifier): Character | null {
     const { a = null, b = null, c = null, d = null } = this.get(key) ?? {};
     switch (mod) {
       case KeyModifier.None:
@@ -72,7 +72,7 @@ export class LayoutBuilder implements Iterable<KeyCharacters> {
     return null;
   }
 
-  setCharacter(key: KeyId, mod: KeyModifier, character: Character | null) {
+  setOne(key: KeyId, mod: KeyModifier, character: Character | null) {
     const { a = null, b = null, c = null, d = null } = this.get(key) ?? {};
     switch (mod) {
       case KeyModifier.None:
@@ -109,11 +109,18 @@ export class LayoutBuilder implements Iterable<KeyCharacters> {
       if (list.every((character) => KeyCharacters.isCodePoint(character))) {
         keymap[id] = String.fromCodePoint(...list);
       } else {
-        keymap[id] = list.map((character) =>
-          KeyCharacters.isCodePoint(character)
-            ? String.fromCodePoint(character)
-            : character,
-        );
+        keymap[id] = list.map((character) => {
+          if (KeyCharacters.isCodePoint(character)) {
+            return String.fromCodePoint(character);
+          }
+          if (KeyCharacters.isDead(character)) {
+            return character.dead;
+          }
+          if (KeyCharacters.isSpecial(character)) {
+            return character.special;
+          }
+          return character;
+        });
       }
     }
     return keymap;
@@ -122,9 +129,6 @@ export class LayoutBuilder implements Iterable<KeyCharacters> {
 
 function fix(character: Character | null): Character | null {
   if (KeyCharacters.isCodePoint(character)) {
-    if (isDiacritic(character)) {
-      return { dead: character };
-    }
     switch (character) {
       case /* ZERO WIDTH NON-JOINER */ 0x200c:
       case /* ZERO WIDTH JOINER */ 0x200d:
@@ -132,6 +136,9 @@ function fix(character: Character | null): Character | null {
       case /* RIGHT-TO-LEFT MARK */ 0x200f:
       case /* COMBINING GRAPHEME JOINER */ 0x034f:
         return { special: character };
+    }
+    if (isDiacritic(character)) {
+      return { dead: character };
     }
   }
   return character;

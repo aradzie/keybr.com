@@ -69,10 +69,8 @@ function process(root: Element, result: ParseResult) {
         toCp.length > 1
           ? { ligature: String.fromCodePoint(...toCp) }
           : toCharacter(key, toCp[0], transformAttr === "no");
-      if (character != null) {
-        for (const modifier of parseModifiers(modifiersAttr)) {
-          result.layout.setCharacter(key, modifier, character);
-        }
+      for (const modifier of parseModifiers(modifiersAttr)) {
+        result.layout.setOne(key, modifier, character);
       }
     }
   };

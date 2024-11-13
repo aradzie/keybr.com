@@ -142,7 +142,7 @@ function LAYOUT(state: ParserState, line: string) {
       const mod = modifier(state.shiftstate[i]);
       const character = characters[i];
       if (mod != null) {
-        state.result.layout.setCharacter(key, mod, character);
+        state.result.layout.setOne(key, mod, character);
       }
     }
     if (state.SC_to_VK[SC] != null) {
@@ -166,7 +166,7 @@ function LIGATURE(state: ParserState, line: string) {
     );
     const mod = modifier(state.shiftstate[Number(MOD)]);
     if (mod != null) {
-      state.result.layout.setCharacter(key, mod, { ligature });
+      state.result.layout.setOne(key, mod, { ligature });
     }
   }
 }

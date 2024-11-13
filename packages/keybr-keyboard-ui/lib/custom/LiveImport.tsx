@@ -50,7 +50,7 @@ export function LiveImport({
               const { code, shift, alt } = lastKey;
               const modifier = KeyModifier.from(shift, alt);
               const codePoint = event.data.codePointAt(0) ?? 0x0000;
-              setLayout(layout.setCharacter(code, modifier, codePoint));
+              setLayout(layout.setOne(code, modifier, codePoint));
               setInputData({ key: code, codePoint, modifier });
               onChange?.(code);
             }

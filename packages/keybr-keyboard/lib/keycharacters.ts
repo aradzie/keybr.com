@@ -10,19 +10,19 @@ import {
 } from "./types.ts";
 
 export class KeyCharacters {
-  static isCodePoint = (ch: Character | null): ch is CodePoint => {
+  static isCodePoint = (ch: unknown | null): ch is CodePoint => {
     return isNumber(ch) && ch > 0x0000;
   };
 
-  static isDead = (ch: Character | null): ch is DeadCharacter => {
+  static isDead = (ch: unknown | null): ch is DeadCharacter => {
     return isObject(ch) && "dead" in ch;
   };
 
-  static isSpecial = (ch: Character | null): ch is SpecialCharacter => {
+  static isSpecial = (ch: unknown | null): ch is SpecialCharacter => {
     return isObject(ch) && "special" in ch;
   };
 
-  static isLigature = (ch: Character | null): ch is LigatureCharacter => {
+  static isLigature = (ch: unknown | null): ch is LigatureCharacter => {
     return isObject(ch) && "ligature" in ch;
   };
 
@@ -51,5 +51,9 @@ export class KeyCharacters {
       default:
         throw new Error();
     }
+  }
+
+  get valid() {
+    return this.a || this.b || this.c || this.d;
   }
 }
