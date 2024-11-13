@@ -13,6 +13,7 @@ export type TextFieldProps = {
   readonly maxLength?: number;
   readonly name?: string;
   readonly placeholder?: string;
+  readonly readOnly?: boolean;
   readonly size?: SizeName;
   readonly title?: string;
   readonly type?: TextFieldType;

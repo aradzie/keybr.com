@@ -95,7 +95,7 @@ function Content({ wordList }: { readonly wordList: WordList }): ReactNode {
           size="full"
           type="textarea"
           value={wordList.join(", ")}
-          disabled={true}
+          readOnly={true}
         />
       </Para>
 

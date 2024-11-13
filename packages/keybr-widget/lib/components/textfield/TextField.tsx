@@ -17,6 +17,7 @@ export const TextField = forwardRef(function TextField(
     maxLength,
     name,
     placeholder,
+    readOnly,
     size,
     tabIndex,
     title,
@@ -54,6 +55,7 @@ export const TextField = forwardRef(function TextField(
         maxLength={maxLength}
         name={name}
         placeholder={placeholder}
+        readOnly={readOnly}
         tabIndex={tabIndex}
         title={title}
         value={value}
@@ -79,6 +81,7 @@ export const TextField = forwardRef(function TextField(
         maxLength={maxLength}
         name={name}
         placeholder={placeholder}
+        readOnly={readOnly}
         tabIndex={tabIndex}
         title={title}
         type={type}

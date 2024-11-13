@@ -104,7 +104,7 @@ function WordListPreview({
           size="full"
           type="textarea"
           value={[...lesson.wordList].join(", ")}
-          disabled={true}
+          readOnly={true}
         />
       </Para>
     </>
