@@ -1,10 +1,5 @@
-import { Alert, toast } from "@keybr/widget";
-
-export function reportError(error: unknown) {
-  if (error) {
-    toast(<ErrorAlert error={error} />);
-  }
-}
+import { Alert } from "./Alert.tsx";
+import { toast } from "./Toaster.tsx";
 
 export function ErrorAlert({ error }: { readonly error: unknown }) {
   return (
@@ -17,3 +12,7 @@ export function ErrorAlert({ error }: { readonly error: unknown }) {
     </Alert>
   );
 }
+
+ErrorAlert.report = (error: unknown) => {
+  toast(<ErrorAlert error={error} />);
+};

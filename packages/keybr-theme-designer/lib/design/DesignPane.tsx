@@ -1,8 +1,14 @@
 import { applyTheme, useTheme } from "@keybr/themes";
-import { Box, Button, Field, FieldList, useDialog } from "@keybr/widget";
+import {
+  Box,
+  Button,
+  ErrorAlert,
+  Field,
+  FieldList,
+  useDialog,
+} from "@keybr/widget";
 import { useRef } from "react";
 import { themeExt, themeFileName } from "../io/constants.ts";
-import { reportError } from "../io/ErrorAlert.tsx";
 import { exportTheme, importTheme } from "../io/io.ts";
 import { customTheme, darkTheme, lightTheme } from "../themes/themes.ts";
 import { BackgroundImage } from "./BackgroundImage.tsx";
@@ -42,7 +48,7 @@ export function DesignPane() {
             importTheme(files[0])
               .then(({ theme, errors }) => {
                 if (errors.length > 0) {
-                  reportError(new AggregateError(errors));
+                  ErrorAlert.report(new AggregateError(errors));
                 }
                 setTheme(theme);
                 applyTheme(theme);

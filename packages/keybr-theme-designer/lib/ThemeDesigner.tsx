@@ -1,9 +1,8 @@
 import { readTheme, storeTheme } from "@keybr/themes";
-import { useDebounced } from "@keybr/widget";
+import { ErrorAlert, useDebounced } from "@keybr/widget";
 import { useEffect, useState } from "react";
 import { CustomThemeContext } from "./design/context.ts";
 import { DesignPane } from "./design/DesignPane.tsx";
-import { reportError } from "./io/ErrorAlert.tsx";
 import { customTheme } from "./themes/themes.ts";
 
 export function ThemeDesigner() {
@@ -21,7 +20,9 @@ export function usePersistentCustomTheme() {
     readTheme()
       .then(({ theme, error }) => {
         setTheme(customTheme.merge(theme));
-        reportError(error);
+        if (error) {
+          ErrorAlert.report(error);
+        }
       })
       .catch((err) => {
         console.error(err);
@@ -32,7 +33,7 @@ export function usePersistentCustomTheme() {
       .then(({ theme, error }) => {
         setTheme(theme);
         if (error) {
-          reportError(error);
+          ErrorAlert.report(error);
         }
       })
       .catch((err) => {
