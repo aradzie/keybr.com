@@ -1,52 +1,36 @@
 /**
- * Converts layout definitions from the CLDR project into our own internal representation.
+ * Parses layout definitions from the CLDR project into our own internal representation.
  *
  * @see https://cldr.unicode.org/index/keyboard-workgroup
  * @see https://unicode.org/reports/tr35/tr35-keyboards.html
  */
 
-import { readFileSync } from "node:fs";
-import {
-  type Character,
-  type CharacterDict,
-  type KeyId,
-} from "@keybr/keyboard";
+import { type Character, type KeyId, KeyModifier } from "@keybr/keyboard";
 import { type CodePoint, toCodePoints } from "@keybr/unicode";
-import chalk from "chalk";
 import { type Element, xml2js } from "xml-js";
-import { pathTo } from "../root.ts";
+import { LayoutBuilder } from "../layoutbuilder.ts";
 import { makeDeadCharacter } from "./diacritics.ts";
+import { type ParseResult } from "./types.ts";
 
-export function importCldr(filename: string): CharacterDict {
-  console.log(`Parsing CLDR file ${filename}`);
-  const text = readFileSync(pathTo(filename), "utf-8");
-  return parseCldr(xml2js(text) as Element);
+export function parseCldr(text: string): ParseResult {
+  const result: ParseResult = { layout: new LayoutBuilder(), warnings: [] };
+  process(xml2js(text) as Element, result);
+  return result;
 }
 
-function parseCldr(root: Element): CharacterDict {
+function process(root: Element, result: ParseResult) {
   unescape(root);
-
-  const dict = new Map<KeyId, (Character | null)[]>();
 
   const combiners = new Set<CodePoint>();
 
   const toCharacter = (
-    keyId: KeyId,
+    key: KeyId,
     codePoint: CodePoint,
     keep: boolean,
   ): Character | null => {
-    switch (codePoint) {
-      case /* ZERO WIDTH NON-JOINER */ 0x200c:
-      case /* ZERO WIDTH JOINER */ 0x200d:
-      case /* LEFT-TO-RIGHT MARK */ 0x200e:
-      case /* RIGHT-TO-LEFT MARK */ 0x200f:
-      case /* COMBINING GRAPHEME JOINER */ 0x034f:
-        return { special: codePoint };
-    }
-    if (!keep && combiners.has(codePoint)) {
-      return makeDeadCharacter(keyId, codePoint);
-    }
-    return codePoint;
+    return !keep && combiners.has(codePoint)
+      ? makeDeadCharacter(result, key, codePoint)
+      : codePoint;
   };
 
   const handleTransform = (stack: readonly Element[], path: string) => {
@@ -74,51 +58,49 @@ function parseCldr(root: Element): CharacterDict {
       const toAttr = (mapEl.attributes?.to ?? "") as string;
       const transformAttr = (mapEl.attributes?.transform ?? "") as string;
 
-      const keyId = isoToKeyId[isoAttr];
-      if (keyId == null) {
-        console.error(chalk.red(`Unknown iso [${isoAttr}]`));
+      const key = toKeyId[isoAttr];
+      if (key == null) {
+        result.warnings.push(`Unknown iso: ${isoAttr}`);
         return;
       }
 
-      const characters = dict.get(keyId) ?? [null, null, null, null];
       const toCp = [...toCodePoints(toAttr)];
       const character =
         toCp.length > 1
           ? { ligature: String.fromCodePoint(...toCp) }
-          : toCharacter(keyId, toCp[0], transformAttr === "no");
-      for (const modifier of parseModifiers(modifiersAttr)) {
-        characters[modifier] = character;
+          : toCharacter(key, toCp[0], transformAttr === "no");
+      if (character != null) {
+        for (const modifier of parseModifiers(modifiersAttr)) {
+          result.layout.setCharacter(key, modifier, character);
+        }
       }
-      dict.set(keyId, characters);
     }
   };
 
   walkTree(root, handleTransform);
   walkTree(root, handleMap);
-
-  return { ...Object.fromEntries(dict), Space: [0x0020] };
 }
 
-function* parseModifiers(attr: string): Iterable<number> {
+function* parseModifiers(attr: string): Iterable<KeyModifier> {
   if (attr === "") {
-    yield 0;
+    yield KeyModifier.None;
   } else {
     for (const item of attr.split(/\s+/g)) {
       switch (item) {
         case "shift":
         case "shift+caps?":
-          yield 1;
+          yield KeyModifier.Shift;
           break;
         case "altR":
         case "altR+caps?":
         case "altR+caps?+shift?":
-          yield 2;
+          yield KeyModifier.Alt;
           break;
         case "shift+altR":
         case "shift+altR+caps?":
         case "altR+shift":
         case "altR+shift+caps?":
-          yield 3;
+          yield KeyModifier.ShiftAlt;
           break;
       }
     }
@@ -169,9 +151,7 @@ function unescapeCodePoints(v: string): string {
   );
 }
 
-const isoToKeyId: {
-  readonly [iso: string]: KeyId;
-} = {
+const toKeyId: Record<string, KeyId> = {
   // Row E
   E00: "Backquote",
   E01: "Digit1",

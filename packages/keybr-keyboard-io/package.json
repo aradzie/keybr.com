@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "name": "@keybr/keyboard-io",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "lib/index.ts",
+  "types": ".types/index.d.ts",
+  "dependencies": {
+    "@keybr/keyboard": "*",
+    "@keybr/unicode": "*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "clean": "rm -fr .types",
+    "compile": "tsc",
+    "test": "tstest --test 'lib/**/*.test.{ts,tsx}'"
+  }
+}

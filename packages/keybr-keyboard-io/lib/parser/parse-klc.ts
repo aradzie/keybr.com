@@ -1,38 +1,30 @@
 /**
- * Converts layout definitions created by Keyboard Layout Creator.
+ * Parses layout definitions created by Keyboard Layout Creator.
  */
 
-import { readFileSync } from "node:fs";
-import {
-  type Character,
-  type CharacterDict,
-  type KeyId,
-} from "@keybr/keyboard";
-import { pathTo } from "../root.ts";
+import { type Character, type KeyId, KeyModifier } from "@keybr/keyboard";
+import { LayoutBuilder } from "../layoutbuilder.ts";
 import { makeDeadCharacter } from "./diacritics.ts";
+import { type ParseResult } from "./types.ts";
 
-export function importKlc(filename: string): CharacterDict {
-  console.log(`Parsing KLC file ${filename}`);
-  const text = readFileSync(pathTo(filename), "utf-8");
-  const dict = {};
-  parseKlc(text, {
+export function parseKlc(text: string): ParseResult {
+  const result: ParseResult = { layout: new LayoutBuilder(), warnings: [] };
+  parse(text, {
+    result,
     shiftstate: [],
     altgr: false,
     SC_to_VK: {},
     VK_to_SC: {},
-    dict,
   });
-  return { ...dict, Space: [0x0020] };
+  return result;
 }
 
 type ParserState = {
+  result: ParseResult;
   shiftstate: number[];
   altgr: boolean;
   SC_to_VK: Record<string, string>;
   VK_to_SC: Record<string, string>;
-  dict: {
-    [key: KeyId]: (Character | null)[];
-  };
 };
 
 const enum Section {
@@ -51,7 +43,7 @@ const enum Section {
   ENDKBD,
 }
 
-function parseKlc(text: string, state: ParserState): void {
+function parse(text: string, state: ParserState) {
   let section = Section.INIT;
   for (const line0 of text.split("\n")) {
     const line = stripComments(line0).trim();
@@ -131,54 +123,50 @@ function parseKlc(text: string, state: ParserState): void {
   }
 }
 
-function ATTRIBUTES(state: ParserState, line: string): void {
+function ATTRIBUTES(state: ParserState, line: string) {
   if (line === "ALTGR") {
     state.altgr = true;
   }
 }
 
-function SHIFTSTATE(state: ParserState, line: string): void {
+function SHIFTSTATE(state: ParserState, line: string) {
   state.shiftstate.push(Number(line));
 }
 
-function LAYOUT(state: ParserState, line: string): void {
+function LAYOUT(state: ParserState, line: string) {
   const [SC, VK, CAP, ...arg] = line.split(/\s+/);
-  const keyId = scanCodeToKeyId[SC];
-  if (keyId != null) {
-    const c = [...arg.map((v) => parseCodePoint(keyId, v))];
-    const characters = [null, null, null, null] as (Character | null)[];
-    for (let i = 0; i < c.length; i++) {
-      const s = state.shiftstate[i];
-      const m = modifiers(s);
-      if (m !== -1) {
-        characters[m] = c[i];
+  const key = toKeyId[SC];
+  if (key != null) {
+    const characters = [...arg.map((v) => parseCodePoint(state, key, v))];
+    for (let i = 0; i < characters.length; i++) {
+      const mod = modifier(state.shiftstate[i]);
+      const character = characters[i];
+      if (mod != null) {
+        state.result.layout.setCharacter(key, mod, character);
       }
     }
-    state.dict[keyId] = characters;
     if (state.SC_to_VK[SC] != null) {
-      console.error(`[${keyId}] Duplicate SC [${SC}]`);
+      state.result.warnings.push(`[${key}] Duplicate SC: ${SC}`);
     }
     if (state.VK_to_SC[VK] != null) {
-      console.error(`[${keyId}] Duplicate VK [${VK}]`);
+      state.result.warnings.push(`[${key}] Duplicate VK: ${VK}`);
     }
     state.SC_to_VK[SC] = VK;
     state.VK_to_SC[VK] = SC;
   }
 }
 
-function LIGATURE(state: ParserState, line: string): void {
+function LIGATURE(state: ParserState, line: string) {
   const [VK, MOD, ...arg] = line.split(/\s+/);
   const SC = state.VK_to_SC[VK];
-  const keyId = scanCodeToKeyId[SC];
-  if (keyId != null) {
+  const key = toKeyId[SC];
+  if (key != null) {
     const ligature = String.fromCodePoint(
       ...arg.map((v) => Number.parseInt(v, 16)),
     );
-    const characters = state.dict[keyId];
-    const s = state.shiftstate[Number(MOD)];
-    const m = modifiers(s);
-    if (m !== -1) {
-      characters[m] = { ligature };
+    const mod = modifier(state.shiftstate[Number(MOD)]);
+    if (mod != null) {
+      state.result.layout.setCharacter(key, mod, { ligature });
     }
   }
 }
@@ -211,7 +199,11 @@ function stripComments(line: string): string {
   return line;
 }
 
-function parseCodePoint(keyId: string, v: string): Character | null {
+function parseCodePoint(
+  state: ParserState,
+  key: string,
+  v: string,
+): Character | null {
   if (v === "-1" || v === "%%") {
     return null;
   }
@@ -223,29 +215,27 @@ function parseCodePoint(keyId: string, v: string): Character | null {
     return Number.parseInt(m[1], 16);
   }
   if ((m = /^([0-9a-f]{4})@$/.exec(v)) != null) {
-    return makeDeadCharacter(keyId, Number.parseInt(m[1], 16));
+    return makeDeadCharacter(state.result, key, Number.parseInt(m[1], 16));
   }
-  console.error(`[${keyId}] Invalid code point [${v}]`);
+  state.result.warnings.push(`[${key}] Invalid code point: ${v}`);
   return null;
 }
 
-function modifiers(shiftState: number): number {
+function modifier(shiftState: number): KeyModifier | null {
   switch (shiftState) {
-    case 0: // No modifiers
-      return 0;
-    case 1: // Shift
-      return 1;
-    case 6: // AltGr
-      return 2;
-    case 7: // AltGr+Shift
-      return 3;
+    case 0:
+      return KeyModifier.None;
+    case 1:
+      return KeyModifier.Shift;
+    case 6:
+      return KeyModifier.Alt;
+    case 7:
+      return KeyModifier.ShiftAlt;
   }
-  return -1;
+  return null;
 }
 
-const scanCodeToKeyId: {
-  readonly [scanCode: string]: KeyId;
-} = {
+const toKeyId: Record<string, KeyId> = {
   "02": "Digit1",
   "03": "Digit2",
   "04": "Digit3",

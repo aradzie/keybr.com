@@ -7,12 +7,10 @@
 
 import { type CharacterDict } from "@keybr/keyboard";
 import { writeGeneratedFile } from "./layout/generate.ts";
-import { importCldr } from "./layout/import-cldr.ts";
-import { importKeymap } from "./layout/import-json.ts";
-import { importKlc } from "./layout/import-klc.ts";
+import { importCldr, importKeymap, importKlc } from "./layout/import.ts";
 import { pathTo } from "./root.ts";
 
-for (const [id, dict] of [
+for (const [id, layout] of [
   ["ar_sa", importCldr("cldr-keyboards-43.0/keyboards/windows/ar-t-k0-windows.xml")],
   ["ar_sa_102", importCldr("cldr-keyboards-43.0/keyboards/windows/ar-t-k0-windows-102key.xml")],
   ["be_by", importCldr("cldr-keyboards-43.0/keyboards/windows/be-t-k0-windows.xml")],
@@ -86,10 +84,10 @@ for (const [id, dict] of [
   ["tr_tr_q", importCldr("cldr-keyboards-43.0/keyboards/windows/tr-t-k0-windows.xml")],
   ["uk_ua", importCldr("cldr-keyboards-43.0/keyboards/windows/uk-t-k0-windows.xml")],
 ] as [string, CharacterDict][]) {
-  writeGeneratedFile(dict, pathTo(`../keybr-keyboard/lib/layout/${id}.ts`));
+  writeGeneratedFile(layout, pathTo(`../keybr-keyboard/lib/layout/${id}.ts`));
 }
 
 /** Removes dead keys from the given keyboard layout. */
-function undead(dict: CharacterDict): CharacterDict {
-  return Object.fromEntries(Object.entries(dict).map(([id, [a, b]]) => [id, [a, b]]));
+function undead(layout: CharacterDict): CharacterDict {
+  return Object.fromEntries(Object.entries(layout).map(([id, [a, b]]) => [id, [a, b]]));
 }

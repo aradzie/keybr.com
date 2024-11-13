@@ -1,22 +1,26 @@
 import { writeFileSync } from "node:fs";
 import { basename } from "node:path";
-import { type CharacterDict, KeyCharacters } from "@keybr/keyboard";
+import {
+  type Character,
+  type CharacterDict,
+  KeyCharacters,
+  type KeyId,
+} from "@keybr/keyboard";
 import { formatCodePointName, formatCodePointValue } from "./codepoints.ts";
-import { characterKeys } from "./keys.ts";
 
 export function writeGeneratedFile(
-  dict: CharacterDict,
+  layout: CharacterDict,
   filename: string,
 ): void {
   const id = basename(filename, ".ts")
     .toUpperCase()
     .replaceAll("-", "_")
     .replaceAll(".", "_");
-  const sourceFile = generateSourceFile(id, dict);
+  const sourceFile = generateSourceFile(id, layout);
   writeFileSync(filename, sourceFile);
 }
 
-export function generateSourceFile(id: string, dict: CharacterDict): string {
+export function generateSourceFile(id: string, layout: CharacterDict): string {
   const lines: string[] = [];
   lines.push("// Generated file, do not edit.");
   lines.push("");
@@ -24,8 +28,10 @@ export function generateSourceFile(id: string, dict: CharacterDict): string {
   lines.push("");
   lines.push("// prettier-ignore");
   lines.push(`export const LAYOUT_${id}: CharacterDict = {`);
-  for (const keyId of characterKeys) {
-    const characters = [...(dict[keyId] ?? [])];
+  for (const [key, characters] of Object.entries(layout) as [
+    KeyId,
+    Character[],
+  ][]) {
     while (characters.length > 0 && characters.at(-1) == null) {
       characters.pop();
     }
@@ -51,7 +57,7 @@ export function generateSourceFile(id: string, dict: CharacterDict): string {
         }
         return `null`;
       });
-      lines.push(`  ${keyId}: [${fields.join(", ")}],`);
+      lines.push(`  ${key}: [${fields.join(", ")}],`);
     }
   }
   lines.push("};");

@@ -6,6 +6,7 @@
   "main": "lib/index.ts",
   "dependencies": {
     "@keybr/keyboard": "*",
+    "@keybr/keyboard-io": "*",
     "@keybr/phonetic-model": "*",
     "@keybr/unicode": "*",
     "@types/commonmark": "^0.27.9",
