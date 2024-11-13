@@ -17,18 +17,16 @@ import {
 } from "./types.ts";
 
 export class Keyboard {
-  readonly layout: Layout;
-  readonly geometry: Geometry;
   readonly characters: ReadonlyMap<KeyId, KeyCharacters>;
   readonly combos: ReadonlyMap<CodePoint, KeyCombo>;
   readonly shapes: ReadonlyMap<KeyId, KeyShape>;
   readonly zones: ReadonlyMap<ZoneId, readonly KeyShape[]>;
 
   constructor(
-    layout: Layout,
-    geometry: Geometry,
-    characterDict: CharacterDict,
-    geometryDict: GeometryDict,
+    readonly layout: Layout,
+    readonly geometry: Geometry,
+    readonly characterDict: CharacterDict,
+    readonly geometryDict: GeometryDict,
   ) {
     const characters = new Map<KeyId, KeyCharacters>();
     const combos = new Map<CodePoint, KeyCombo>();

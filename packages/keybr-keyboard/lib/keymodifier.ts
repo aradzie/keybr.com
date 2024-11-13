@@ -7,6 +7,19 @@ export class KeyModifier {
     /* alt= */ true,
   );
 
+  static from(shift: boolean, alt: boolean) {
+    if (shift && alt) {
+      return KeyModifier.ShiftAlt;
+    }
+    if (shift) {
+      return KeyModifier.Shift;
+    }
+    if (alt) {
+      return KeyModifier.Alt;
+    }
+    return KeyModifier.None;
+  }
+
   readonly shift: boolean;
   readonly alt: boolean;
   readonly complexity: number;

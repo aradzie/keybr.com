@@ -5,6 +5,9 @@
   "type": "module",
   "main": "lib/index.ts",
   "types": ".types/index.d.ts",
+  "browser": {
+    "./lib/parser/parse-cldr.ts": "./lib/parser/parse-cldr-browser.ts"
+  },
   "dependencies": {
     "@keybr/keyboard": "*",
     "@keybr/unicode": "*"

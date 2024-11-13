@@ -9,7 +9,23 @@ import { type CharacterList, type KeyMap } from "./json.ts";
 import { characterKeys } from "./keys.ts";
 
 export class LayoutBuilder implements Iterable<KeyCharacters> {
+  static isKey(key: KeyId): boolean {
+    return characterKeys.includes(key);
+  }
+
+  static allKeys(): readonly KeyId[] {
+    return characterKeys;
+  }
+
   readonly #data = new Map<KeyId, KeyCharacters>();
+
+  constructor(that: LayoutBuilder | null = null) {
+    if (that != null) {
+      for (const character of that) {
+        this.set(character);
+      }
+    }
+  }
 
   *[Symbol.iterator](): IterableIterator<KeyCharacters> {
     for (const key of characterKeys) {
@@ -25,7 +41,7 @@ export class LayoutBuilder implements Iterable<KeyCharacters> {
   }
 
   get(key: KeyId): KeyCharacters | null {
-    if (!characterKeys.includes(key)) {
+    if (!LayoutBuilder.isKey(key)) {
       throw new TypeError(key);
     }
     return this.#data.get(key) ?? null;
@@ -33,7 +49,7 @@ export class LayoutBuilder implements Iterable<KeyCharacters> {
 
   set(characters: KeyCharacters) {
     const { id } = characters;
-    if (!characterKeys.includes(id)) {
+    if (!LayoutBuilder.isKey(id)) {
       throw new TypeError(id);
     }
     this.#data.set(id, characters);
