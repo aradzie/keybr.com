@@ -57,9 +57,7 @@ export function LiveImport({
           }}
         />
       </Field>
-      <Field>
-        {(inputData && <LiveInputInfo inputData={inputData} />) || <em>-</em>}
-      </Field>
+      <Field>{inputData && <LiveInputInfo inputData={inputData} />}</Field>
     </FieldList>
   );
 }

@@ -1,6 +1,6 @@
 import { type KeyId } from "@keybr/keyboard";
 import { exportLayout, importLayout, LayoutBuilder } from "@keybr/keyboard-io";
-import { Button, ErrorAlert, Field, FieldList } from "@keybr/widget";
+import { Button, ErrorAlert, Field, FieldList, Para } from "@keybr/widget";
 import { useRef, useState } from "react";
 import { CustomLayoutProvider, useCustomLayout } from "./context.tsx";
 import { LayoutView } from "./LayoutView.tsx";
@@ -59,6 +59,9 @@ function DesignPane() {
           }
         }}
       />
+      <Para align="center">
+        This is a preview of the feature that is still a work in progress.
+      </Para>
       <LayoutView keyId={keyId} setKeyId={setKeyId} />
       <LiveImport onChange={setKeyId} />
       <FieldList>
