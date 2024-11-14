@@ -5,19 +5,21 @@ import {
   staticTheme,
   ThemeContext,
 } from "@keybr/themes";
-import { type ReactNode, useEffect, useMemo, useRef } from "react";
+import { type ReactNode, useLayoutEffect, useMemo, useRef } from "react";
 import { useCustomTheme } from "./context.ts";
 import * as styles from "./PreviewPane.module.less";
 
 export function PreviewPane({ children }: { readonly children: ReactNode }) {
   const { theme } = useCustomTheme();
   const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
+  useLayoutEffect(() => {
     applyTheme(theme, ref.current!.style);
   }, [theme]);
   const backgroundImage = useBackgroundImage();
   return (
-    <ThemeContext.Provider value={staticTheme({ color: "*", font: "*" })}>
+    <ThemeContext.Provider
+      value={staticTheme({ color: "*", font: "*" }, theme.hash())}
+    >
       <div
         ref={ref}
         className={styles.root}

@@ -17,9 +17,17 @@ test("theme", () => {
   const b = a.set("--primary", white);
   const c = b.set("--primary", black).set("--background-image", asset);
 
-  assert.isTrue(a !== b);
-  assert.isTrue(b !== c);
-  assert.isTrue(a !== c);
+  assert.notStrictEqual(a, b);
+  assert.notStrictEqual(b, c);
+  assert.notStrictEqual(a, c);
+
+  assert.strictEqual(a.hash(), a.hash());
+  assert.strictEqual(b.hash(), b.hash());
+  assert.strictEqual(c.hash(), c.hash());
+
+  assert.notStrictEqual(a.hash(), b.hash());
+  assert.notStrictEqual(b.hash(), c.hash());
+  assert.notStrictEqual(a.hash(), c.hash());
 
   assert.deepStrictEqual([...a], []);
   assert.deepStrictEqual(

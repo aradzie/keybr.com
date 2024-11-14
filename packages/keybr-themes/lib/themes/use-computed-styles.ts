@@ -7,11 +7,11 @@ import { useDynamicStyles } from "./dynamic-styles-context.tsx";
 import { type PropName } from "./theme-props.ts";
 
 export const useComputedStyles = () => {
-  const { color, font } = useTheme();
+  const { color, font, hash } = useTheme();
   const { getStyledElement } = useDynamicStyles();
   const element = getStyledElement();
   return useMemo(() => {
-    use(color, font);
+    use(color, font, hash);
 
     const style = getComputedStyle(element);
 
@@ -160,7 +160,7 @@ export const useComputedStyles = () => {
     };
 
     return { getPropertyValue, computeStyle, computeLineHeight };
-  }, [color, font, element]);
+  }, [color, font, hash, element]);
 };
 
 function use(...arg: any) {}

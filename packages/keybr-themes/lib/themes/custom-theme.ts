@@ -1,4 +1,5 @@
 import { type Color } from "@keybr/color";
+import { hashCode } from "@keybr/rand";
 import { type Asset } from "./asset.ts";
 import {
   type PropName,
@@ -57,6 +58,20 @@ export class CustomTheme implements Iterable<[PropName, PropValue]> {
       props.set(prop, value);
     }
     return new CustomTheme(props);
+  }
+
+  #hash: number | null = null;
+
+  hash(): number {
+    if (this.#hash == null) {
+      let hash = 1;
+      for (const [prop, value] of this) {
+        const type = themePropsMap[prop];
+        hash = (hash * 31 + hashCode(type.toCss(value))) >>> 0;
+      }
+      this.#hash = hash;
+    }
+    return this.#hash;
   }
 }
 

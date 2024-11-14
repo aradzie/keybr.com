@@ -6,6 +6,7 @@ export type ThemeValue = {
   readonly fullscreenState: boolean | null;
   readonly color: string;
   readonly font: string;
+  readonly hash: number;
   readonly toggleFullscreen: () => void;
   readonly switchColor: (id: string) => void;
   readonly switchFont: (id: string) => void;
@@ -16,6 +17,7 @@ export const ThemeContext = createContext<ThemeValue>({
   fullscreenState: null,
   color: COLORS.default.id,
   font: FONTS.default.id,
+  hash: 0,
   toggleFullscreen: () => {},
   switchColor: () => {},
   switchFont: () => {},
@@ -26,11 +28,15 @@ export function useTheme(): ThemeValue {
   return useContext(ThemeContext);
 }
 
-export function staticTheme({ color, font }: ThemePrefs): ThemeValue {
+export function staticTheme(
+  { color, font }: ThemePrefs,
+  hash: number = 0,
+): ThemeValue {
   return {
     fullscreenState: null,
     color,
     font,
+    hash,
     toggleFullscreen: () => {},
     switchColor: () => {},
     switchFont: () => {},

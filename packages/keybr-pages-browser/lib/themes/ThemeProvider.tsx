@@ -18,6 +18,7 @@ export function ThemeProvider({ children }: { readonly children: ReactNode }) {
 
   const [fullscreenState, toggleFullscreen] = useFullscreen(fullscreenTarget);
   const [{ color, font }, setPrefs] = useState(() => readPrefs());
+  const [hash, setHash] = useState(0);
   usePreferredColorScheme();
 
   useEffect(() => {
@@ -40,24 +41,24 @@ export function ThemeProvider({ children }: { readonly children: ReactNode }) {
         fullscreenState,
         color,
         font,
+        hash,
         toggleFullscreen,
         switchColor: (id) => {
           const prefs = new ThemePrefs({ color: id, font });
           switchTheme(prefs);
           setPrefs(prefs);
+          setHash(hash + 1);
           storePrefs(prefs);
         },
         switchFont: (id) => {
           const prefs = new ThemePrefs({ color, font: id });
           switchTheme(prefs);
           setPrefs(prefs);
+          setHash(hash + 1);
           storePrefs(prefs);
         },
         refresh: () => {
-          const prefs = new ThemePrefs({ color, font });
-          switchTheme(prefs);
-          setPrefs(prefs);
-          storePrefs(prefs);
+          setHash(hash + 1);
         },
       }}
     >

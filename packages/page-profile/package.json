@@ -7,7 +7,6 @@
   "types": ".types/index.d.ts",
   "dependencies": {
     "@keybr/chart": "*",
-    "@keybr/color": "*",
     "@keybr/intl": "*",
     "@keybr/keyboard": "*",
     "@keybr/lesson": "*",
@@ -18,7 +17,6 @@
     "@keybr/phonetic-model-loader": "*",
     "@keybr/result": "*",
     "@keybr/settings": "*",
-    "@keybr/themes": "*",
     "@keybr/widget": "*"
   },
   "devDependencies": {},
