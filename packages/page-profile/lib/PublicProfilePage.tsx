@@ -1,5 +1,5 @@
 import { type NamedUser, Screen, UserName } from "@keybr/pages-shared";
-import { type KeyStatsMap } from "@keybr/result";
+import { type KeyStatsMap, ResultSummary } from "@keybr/result";
 import { ExplainerBoundary, Header } from "@keybr/widget";
 import { AccuracyStreaksSection } from "./profile/AccuracyStreaksSection.tsx";
 import { CalendarSection } from "./profile/CalendarSection.tsx";
@@ -11,7 +11,6 @@ import { KeySpeedChartSection } from "./profile/KeySpeedChartSection.tsx";
 import { KeySpeedHistogramSection } from "./profile/KeySpeedHistogramSection.tsx";
 import { ProgressOverviewSection } from "./profile/ProgressOverviewSection.tsx";
 import { ResultGrouper } from "./profile/ResultGrouper.tsx";
-import { ResultSummary } from "./profile/resultsummary.ts";
 import { SpeedChartSection } from "./profile/SpeedChartSection.tsx";
 import { AllTimeSummary } from "./profile/Summary.tsx";
 

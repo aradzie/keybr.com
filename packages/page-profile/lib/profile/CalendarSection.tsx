@@ -1,8 +1,8 @@
+import { type ResultSummary } from "@keybr/result";
 import { Explainer, Figure } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
 import { Calendar } from "./Calendar.tsx";
-import { type ResultSummary } from "./resultsummary.ts";
 
 export function CalendarSection({
   summary,

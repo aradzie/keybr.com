@@ -1,5 +1,6 @@
 import { makeSpeedDistribution, SpeedHistogram } from "@keybr/chart";
 import { useIntlNumbers } from "@keybr/intl";
+import { type ResultSummary } from "@keybr/result";
 import {
   Explainer,
   Field,
@@ -12,7 +13,6 @@ import {
 import React, { type ReactNode, useMemo, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { ChartWrapper } from "./ChartWrapper.tsx";
-import { type ResultSummary } from "./resultsummary.ts";
 
 export function SpeedHistogramSection({
   summary,

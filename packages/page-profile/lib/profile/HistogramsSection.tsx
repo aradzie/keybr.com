@@ -1,8 +1,8 @@
+import { type ResultSummary } from "@keybr/result";
 import { Tab, TabList } from "@keybr/widget";
 import React, { type ReactNode, useState } from "react";
 import { useIntl } from "react-intl";
 import { AccuracyHistogramSection } from "./AccuracyHistogramSection.tsx";
-import { type ResultSummary } from "./resultsummary.ts";
 import { SpeedHistogramSection } from "./SpeedHistogramSection.tsx";
 
 export function HistogramsSection({

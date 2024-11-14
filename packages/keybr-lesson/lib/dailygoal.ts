@@ -33,8 +33,12 @@ export class MutableDailyGoal implements DailyGoal {
   append(result: Result) {
     if (this.#today.includes(result.timeStamp)) {
       this.#time += result.time;
-      this.#value = this.#goal > 0 ? this.#time / 1000 / 60 / this.#goal : 0;
+      this.#value = this.measure(this.#time);
     }
+  }
+
+  measure(time: number): number {
+    return this.#goal > 0 ? time / 1000 / 60 / this.#goal : 0;
   }
 
   copy(): DailyGoal {

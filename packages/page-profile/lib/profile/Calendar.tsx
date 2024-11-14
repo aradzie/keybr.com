@@ -4,6 +4,7 @@ import {
   LocalDate,
   makeSummaryStats,
   type Result,
+  type ResultSummary,
   type SummaryStats,
 } from "@keybr/result";
 import { useComputedStyles } from "@keybr/themes";
@@ -11,7 +12,6 @@ import { formatDuration } from "@keybr/widget";
 import { type CSSProperties, useMemo } from "react";
 import { useIntl } from "react-intl";
 import * as styles from "./Calendar.module.less";
-import { type ResultSummary } from "./resultsummary.ts";
 
 export function Calendar({ summary }: { readonly summary: ResultSummary }) {
   const effortStyles = useEffortStyles();
