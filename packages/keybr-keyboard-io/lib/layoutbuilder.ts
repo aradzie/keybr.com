@@ -8,6 +8,7 @@ import {
 import { isDiacritic } from "@keybr/unicode";
 import { type CharacterList, type KeyMap } from "./json.ts";
 import { characterKeys } from "./keys.ts";
+import { formatDeadCharacter } from "./parser/diacritics.ts";
 
 export class LayoutBuilder implements Iterable<KeyCharacters> {
   static isKey(key: KeyId): boolean {
@@ -16,6 +17,17 @@ export class LayoutBuilder implements Iterable<KeyCharacters> {
 
   static allKeys(): readonly KeyId[] {
     return characterKeys;
+  }
+
+  static from(dict: CharacterDict): LayoutBuilder {
+    const builder = new LayoutBuilder();
+    for (const [
+      key,
+      [a = null, b = null, c = null, d = null],
+    ] of Object.entries(dict)) {
+      builder.setAll(key, a, b, c, d);
+    }
+    return builder;
   }
 
   readonly #data = new Map<KeyId, KeyCharacters>();
@@ -91,6 +103,20 @@ export class LayoutBuilder implements Iterable<KeyCharacters> {
     return this;
   }
 
+  setAll(
+    key: KeyId,
+    a: Character | null,
+    b: Character | null,
+    c: Character | null,
+    d: Character | null,
+  ) {
+    this.setOne(key, KeyModifier.None, a);
+    this.setOne(key, KeyModifier.Shift, b);
+    this.setOne(key, KeyModifier.Alt, c);
+    this.setOne(key, KeyModifier.ShiftAlt, d);
+    return this;
+  }
+
   dict(): CharacterDict {
     const dict: { [id: KeyId]: (Character | null)[] } = {};
     for (const { id, a, b, c, d } of this) {
@@ -114,7 +140,7 @@ export class LayoutBuilder implements Iterable<KeyCharacters> {
             return String.fromCodePoint(character);
           }
           if (KeyCharacters.isDead(character)) {
-            return character.dead;
+            return formatDeadCharacter(character);
           }
           if (KeyCharacters.isSpecial(character)) {
             return character.special;

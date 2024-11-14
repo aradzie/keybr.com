@@ -1,6 +1,7 @@
 import { deepStrictEqual } from "node:assert";
 import { test } from "node:test";
-import { KeyCharacters } from "@keybr/keyboard";
+import { KeyCharacters, Layout, loadKeyboard } from "@keybr/keyboard";
+import { LayoutBuilder } from "../layoutbuilder.ts";
 import { parseKeymap } from "./parse-keymap.ts";
 
 test("parse empty", () => {
@@ -88,4 +89,13 @@ test("ignore unknown keys", () => {
   const { layout, warnings } = parseKeymap(JSON.stringify({ XYZ: "aA" }));
   deepStrictEqual([...layout], []);
   deepStrictEqual(warnings, ["Unknown key: XYZ"]);
+});
+
+test("export and import all layouts", () => {
+  for (const id of Layout.ALL) {
+    const builder = LayoutBuilder.from(loadKeyboard(id).characterDict);
+    const { layout, warnings } = parseKeymap(JSON.stringify(builder.toJSON()));
+    deepStrictEqual([...layout], [...builder]);
+    deepStrictEqual(warnings, []);
+  }
 });

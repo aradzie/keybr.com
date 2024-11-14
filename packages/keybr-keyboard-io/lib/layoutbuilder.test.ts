@@ -47,7 +47,7 @@ test("build", () => {
     KeyA: [0x0061, null, { dead: 0x0300 }, null],
   });
   deepStrictEqual(builder.toJSON(), {
-    KeyA: ["a", null, 0x0300],
+    KeyA: ["a", null, "*`"],
   });
 
   builder.setOne("KeyA", KeyModifier.Shift, 0x034f);
@@ -67,7 +67,7 @@ test("build", () => {
     KeyA: [0x0061, { special: 0x034f }, { dead: 0x0300 }, null],
   });
   deepStrictEqual(builder.toJSON(), {
-    KeyA: ["a", 0x034f, 0x0300],
+    KeyA: ["a", 0x034f, "*`"],
   });
 });
 
