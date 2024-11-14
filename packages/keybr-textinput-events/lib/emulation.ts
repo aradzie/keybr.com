@@ -115,7 +115,7 @@ function fixKey(
   const characters = keyboard.getCharacters(code);
   if (characters != null) {
     key = String.fromCodePoint(
-      (codePoint = characters.getCodePoint(toKeyModifier(modifiers))),
+      (codePoint = characters.getCodePoint(toKeyModifier(modifiers)) ?? 0x0000),
     );
   }
   return [{ type, timeStamp, code, key, modifiers }, codePoint];

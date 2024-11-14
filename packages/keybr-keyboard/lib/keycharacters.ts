@@ -26,34 +26,55 @@ export class KeyCharacters {
     return isObject(ch) && "ligature" in ch;
   };
 
-  constructor(
-    readonly id: KeyId,
-    readonly a: Character | null,
-    readonly b: Character | null,
-    readonly c: Character | null,
-    readonly d: Character | null,
-  ) {}
+  readonly id: KeyId;
+  readonly a: Character | null;
+  readonly b: Character | null;
+  readonly c: Character | null;
+  readonly d: Character | null;
 
-  getCodePoint(modifier: KeyModifier): CodePoint | 0x0000 {
-    const a = KeyCharacters.isCodePoint(this.a) ? this.a : null;
-    const b = KeyCharacters.isCodePoint(this.b) ? this.b : null;
-    const c = KeyCharacters.isCodePoint(this.c) ? this.c : null;
-    const d = KeyCharacters.isCodePoint(this.d) ? this.d : null;
+  constructor(
+    id: KeyId,
+    a: Character | null,
+    b: Character | null,
+    c: Character | null,
+    d: Character | null,
+  ) {
+    this.id = id;
+    this.a = a || null;
+    this.b = b || null;
+    this.c = c || null;
+    this.d = d || null;
+  }
+
+  getCodePoint(modifier: KeyModifier): CodePoint | null {
     switch (modifier) {
       case KeyModifier.None:
-        return a ?? 0x0000;
+        return select(this.a);
       case KeyModifier.Shift:
-        return b ?? a ?? 0x0000;
+        return select(this.b, this.a);
       case KeyModifier.Alt:
-        return c ?? b ?? a ?? 0x0000;
+        return select(this.c, this.b, this.a);
       case KeyModifier.ShiftAlt:
-        return d ?? c ?? b ?? a ?? 0x0000;
+        return select(this.d, this.c, this.b, this.a);
       default:
         throw new Error();
     }
   }
 
   get valid() {
-    return this.a || this.b || this.c || this.d;
+    return Boolean(this.a || this.b || this.c || this.d);
   }
+}
+
+function select(...characters: (Character | null)[]): CodePoint | null {
+  for (const character of characters) {
+    if (character != null) {
+      if (KeyCharacters.isCodePoint(character)) {
+        return character;
+      } else {
+        break;
+      }
+    }
+  }
+  return null;
 }

@@ -11,62 +11,22 @@ test("codepoint characters", () => {
     /* "b" */ 0x0062,
     null,
   );
-  assert.strictEqual(
-    characters.getCodePoint(KeyModifier.None),
+  assert.strictEqual(characters.getCodePoint(KeyModifier.None), 0x0061);
+  assert.strictEqual(characters.getCodePoint(KeyModifier.Shift), 0x0061);
+  assert.strictEqual(characters.getCodePoint(KeyModifier.Alt), 0x0062);
+  assert.strictEqual(characters.getCodePoint(KeyModifier.ShiftAlt), 0x0062);
+});
+
+test("dead, special and ligature characters", () => {
+  const characters = new KeyCharacters(
+    "KeyA",
     /* "a" */ 0x0061,
+    { dead: /* COMBINING GRAVE ACCENT */ 0x0300 },
+    { special: /* ZERO WIDTH NON-JOINER */ 0x200c },
+    { ligature: "XYZ" },
   );
-  assert.strictEqual(
-    characters.getCodePoint(KeyModifier.Shift),
-    /* "a" */ 0x0061,
-  );
-  assert.strictEqual(
-    characters.getCodePoint(KeyModifier.Alt),
-    /* "b" */ 0x0062,
-  );
-  assert.strictEqual(
-    characters.getCodePoint(KeyModifier.ShiftAlt),
-    /* "b" */ 0x0062,
-  );
-});
-
-test("dead characters", () => {
-  const characters = new KeyCharacters(
-    "KeyA",
-    { dead: /* "*" */ 0x002a },
-    { dead: /* "*" */ 0x002a },
-    null,
-    null,
-  );
-  assert.strictEqual(characters.getCodePoint(KeyModifier.None), 0x0000);
-  assert.strictEqual(characters.getCodePoint(KeyModifier.Shift), 0x0000);
-  assert.strictEqual(characters.getCodePoint(KeyModifier.Alt), 0x0000);
-  assert.strictEqual(characters.getCodePoint(KeyModifier.ShiftAlt), 0x0000);
-});
-
-test("special characters", () => {
-  const characters = new KeyCharacters(
-    "KeyA",
-    { special: /* "a" */ 0x0061 },
-    { special: /* "b" */ 0x0062 },
-    null,
-    null,
-  );
-  assert.strictEqual(characters.getCodePoint(KeyModifier.None), 0x0000);
-  assert.strictEqual(characters.getCodePoint(KeyModifier.Shift), 0x0000);
-  assert.strictEqual(characters.getCodePoint(KeyModifier.Alt), 0x0000);
-  assert.strictEqual(characters.getCodePoint(KeyModifier.ShiftAlt), 0x0000);
-});
-
-test("ligature characters", () => {
-  const characters = new KeyCharacters(
-    "KeyA",
-    { ligature: "XX" },
-    { ligature: "YY" },
-    null,
-    null,
-  );
-  assert.strictEqual(characters.getCodePoint(KeyModifier.None), 0x0000);
-  assert.strictEqual(characters.getCodePoint(KeyModifier.Shift), 0x0000);
-  assert.strictEqual(characters.getCodePoint(KeyModifier.Alt), 0x0000);
-  assert.strictEqual(characters.getCodePoint(KeyModifier.ShiftAlt), 0x0000);
+  assert.strictEqual(characters.getCodePoint(KeyModifier.None), 0x0061);
+  assert.strictEqual(characters.getCodePoint(KeyModifier.Shift), null);
+  assert.strictEqual(characters.getCodePoint(KeyModifier.Alt), null);
+  assert.strictEqual(characters.getCodePoint(KeyModifier.ShiftAlt), null);
 });
