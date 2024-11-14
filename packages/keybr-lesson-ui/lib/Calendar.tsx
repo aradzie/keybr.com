@@ -1,5 +1,4 @@
 import { Color } from "@keybr/color";
-import { useFormatter } from "@keybr/lesson-ui";
 import {
   LocalDate,
   makeSummaryStats,
@@ -12,6 +11,7 @@ import { formatDuration } from "@keybr/widget";
 import { type CSSProperties, useMemo } from "react";
 import { useIntl } from "react-intl";
 import * as styles from "./Calendar.module.less";
+import { useFormatter } from "./format.ts";
 
 export function Calendar({ summary }: { readonly summary: ResultSummary }) {
   const effortStyles = useEffortStyles();

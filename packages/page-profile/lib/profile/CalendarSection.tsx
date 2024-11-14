@@ -1,8 +1,8 @@
+import { Calendar } from "@keybr/lesson-ui";
 import { type ResultSummary } from "@keybr/result";
 import { Explainer, Figure } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
-import { Calendar } from "./Calendar.tsx";
 
 export function CalendarSection({
   summary,

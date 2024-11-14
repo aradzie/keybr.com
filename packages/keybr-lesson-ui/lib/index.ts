@@ -1,3 +1,4 @@
+export * from "./Calendar.tsx";
 export * from "./CurrentKey.tsx";
 export * from "./DailyGoal.tsx";
 export * from "./format.ts";
