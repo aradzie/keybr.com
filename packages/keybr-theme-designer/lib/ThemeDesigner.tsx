@@ -29,16 +29,18 @@ export function usePersistentCustomTheme() {
       });
   }, []);
   useEffect(() => {
-    storeTheme(debouncedTheme)
-      .then(({ theme, error }) => {
-        setTheme(theme);
-        if (error) {
-          ErrorAlert.report(error);
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    if (debouncedTheme !== customTheme) {
+      storeTheme(debouncedTheme)
+        .then(({ theme, error }) => {
+          setTheme(theme);
+          if (error) {
+            ErrorAlert.report(error);
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
   }, [debouncedTheme]);
   return { theme, setTheme };
 }
