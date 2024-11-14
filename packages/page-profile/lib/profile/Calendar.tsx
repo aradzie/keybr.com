@@ -1,21 +1,24 @@
+import { Color } from "@keybr/color";
 import { useFormatter } from "@keybr/lesson-ui";
-import { LocalDate, makeSummaryStats, type Result } from "@keybr/result";
+import {
+  LocalDate,
+  makeSummaryStats,
+  type Result,
+  type SummaryStats,
+} from "@keybr/result";
+import { useComputedStyles } from "@keybr/themes";
 import { formatDuration } from "@keybr/widget";
-import { clsx } from "clsx";
-import { type ReactNode } from "react";
+import { type CSSProperties, useMemo } from "react";
 import { useIntl } from "react-intl";
 import * as styles from "./Calendar.module.less";
 import { type ResultSummary } from "./resultsummary.ts";
 
-export function Calendar({
-  summary,
-}: {
-  readonly summary: ResultSummary;
-}): ReactNode {
+export function Calendar({ summary }: { readonly summary: ResultSummary }) {
+  const effortStyles = useEffortStyles();
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.root}>
       {blockList(summary).map((block, index) => (
-        <Block key={index} block={block} />
+        <Block key={index} block={block} effortStyles={effortStyles} />
       ))}
     </div>
   );
@@ -27,7 +30,13 @@ type BlockData = {
   readonly cells: (CellData | null)[][];
 };
 
-function Block({ block }: { readonly block: BlockData }): ReactNode {
+function Block({
+  block,
+  effortStyles,
+}: {
+  readonly block: BlockData;
+  readonly effortStyles: EffortStyles;
+}) {
   const { formatMessage } = useIntl();
 
   const weekDayName = formatMessage({
@@ -39,7 +48,7 @@ function Block({ block }: { readonly block: BlockData }): ReactNode {
     <div className={styles.calendar}>
       <table className={styles.table}>
         <caption className={styles.caption}>
-          {block.year + "/" + block.month}
+          {block.year}/{block.month}
         </caption>
         <thead>
           <tr>
@@ -56,7 +65,7 @@ function Block({ block }: { readonly block: BlockData }): ReactNode {
           {block.cells.map((row, m) => (
             <tr key={m}>
               {row.map((cell, n) => (
-                <Cell key={n} cell={cell} />
+                <Cell key={n} cell={cell} effortStyles={effortStyles} />
               ))}
             </tr>
           ))}
@@ -71,33 +80,23 @@ type CellData = {
   readonly results: readonly Result[];
 };
 
-function Cell({ cell }: { readonly cell: CellData | null }): ReactNode {
+function Cell({
+  cell,
+  effortStyles,
+}: {
+  readonly cell: CellData | null;
+  readonly effortStyles: EffortStyles;
+}) {
   const { formatMessage } = useIntl();
   const { formatSpeed } = useFormatter();
   if (cell == null) {
-    return <td className={styles.cell} />;
+    return <td />;
   }
   const { results } = cell;
   if (results.length === 0) {
-    return (
-      <td className={clsx(styles.cell, styles.cell_z)}>
-        {cell.date.dayOfMonth}
-      </td>
-    );
+    return <td className={styles.cell}>{cell.date.dayOfMonth}</td>;
   }
   const stats = makeSummaryStats(results);
-  const classList: string[] = [];
-  if (stats.time > 30 * 60 * 1000) {
-    classList.push(styles.cell_s3);
-  } else if (stats.time > 20 * 60 * 1000) {
-    classList.push(styles.cell_s2);
-  } else if (stats.time > 10 * 60 * 1000) {
-    classList.push(styles.cell_s1);
-  } else if (stats.time > 0) {
-    classList.push(styles.cell_s0);
-  } else {
-    classList.push(styles.cell_z);
-  }
   const title = [
     formatMessage(
       {
@@ -129,7 +128,7 @@ function Cell({ cell }: { readonly cell: CellData | null }): ReactNode {
     ),
   ].join(",\n");
   return (
-    <td className={clsx(styles.cell, classList)} title={title}>
+    <td className={styles.cell} style={effortStyles(stats)} title={title}>
       {cell.date.dayOfMonth}
     </td>
   );
@@ -195,4 +194,20 @@ function blockList(summary: ResultSummary): BlockData[] {
       cells,
     };
   }
+}
+
+type EffortStyles = (stats: SummaryStats) => CSSProperties;
+
+function useEffortStyles(range = 30 * 60 * 1000): EffortStyles {
+  const { getPropertyValue } = useComputedStyles();
+  const color = getPropertyValue("--effort-color") || "#000000";
+  return useMemo(() => {
+    return ({ time }: SummaryStats) => {
+      const style = {} as CSSProperties;
+      if (range > 0 && time > 0) {
+        style.backgroundColor = String(Color.parse(color).fade(time / range));
+      }
+      return style;
+    };
+  }, [range, color]);
 }
