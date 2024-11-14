@@ -12,10 +12,12 @@ import { themeExt, themeFileName } from "../io/constants.ts";
 import { exportTheme, importTheme } from "../io/io.ts";
 import { customTheme, darkTheme, lightTheme } from "../themes/themes.ts";
 import { BackgroundImage } from "./BackgroundImage.tsx";
+import { ChartDesign } from "./ChartDesign.tsx";
 import { useCustomTheme } from "./context.ts";
 import * as styles from "./DesignPane.module.less";
 import { KeyboardDesign } from "./KeyboardDesign.tsx";
 import { LessonKeysDesign } from "./LessonKeysDesign.tsx";
+import { ProfileDesign } from "./ProfileDesign.tsx";
 import { SyntaxDesign } from "./SyntaxDesign.tsx";
 import { TextInputDesign } from "./TextInputDesign.tsx";
 import { WidgetsDesign } from "./WidgetsDesign.tsx";
@@ -105,6 +107,8 @@ export function DesignPane() {
         <BackgroundImage />
         <TextInputDesign />
         <LessonKeysDesign />
+        <ChartDesign />
+        <ProfileDesign />
         <KeyboardDesign />
         <SyntaxDesign />
       </div>
