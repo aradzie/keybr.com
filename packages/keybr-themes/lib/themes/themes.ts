@@ -99,4 +99,20 @@ export const FONTS = new ThemeList([
     id: "cormorant",
     name: "Cormorant",
   },
+  {
+    id: "sans-serif",
+    name: "sans-serif",
+  },
+  {
+    id: "serif",
+    name: "serif",
+  },
+  {
+    id: "monospace",
+    name: "monospace",
+  },
+  {
+    id: "cursive",
+    name: "cursive",
+  },
 ]);
