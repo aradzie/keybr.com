@@ -1,24 +1,27 @@
-import { Color } from "@keybr/color";
+import { useIntlNumbers } from "@keybr/intl";
 import {
   LocalDate,
   makeSummaryStats,
   type Result,
   type ResultSummary,
-  type SummaryStats,
 } from "@keybr/result";
-import { useComputedStyles } from "@keybr/themes";
 import { formatDuration } from "@keybr/widget";
-import { type CSSProperties, useMemo } from "react";
 import { useIntl } from "react-intl";
 import * as styles from "./Calendar.module.less";
+import { type Effort } from "./effort.ts";
 import { useFormatter } from "./format.ts";
 
-export function Calendar({ summary }: { readonly summary: ResultSummary }) {
-  const effortStyles = useEffortStyles();
+export function Calendar({
+  summary,
+  effort,
+}: {
+  readonly summary: ResultSummary;
+  readonly effort: Effort;
+}) {
   return (
     <div className={styles.root}>
       {blockList(summary).map((block, index) => (
-        <Block key={index} block={block} effortStyles={effortStyles} />
+        <Block key={index} block={block} effort={effort} />
       ))}
     </div>
   );
@@ -32,10 +35,10 @@ type BlockData = {
 
 function Block({
   block,
-  effortStyles,
+  effort,
 }: {
   readonly block: BlockData;
-  readonly effortStyles: EffortStyles;
+  readonly effort: Effort;
 }) {
   const { formatMessage } = useIntl();
 
@@ -65,7 +68,7 @@ function Block({
           {block.cells.map((row, m) => (
             <tr key={m}>
               {row.map((cell, n) => (
-                <Cell key={n} cell={cell} effortStyles={effortStyles} />
+                <Cell key={n} cell={cell} effort={effort} />
               ))}
             </tr>
           ))}
@@ -82,22 +85,35 @@ type CellData = {
 
 function Cell({
   cell,
-  effortStyles,
+  effort,
 }: {
   readonly cell: CellData | null;
-  readonly effortStyles: EffortStyles;
+  readonly effort: Effort;
 }) {
   const { formatMessage } = useIntl();
+  const { formatPercents } = useIntlNumbers();
   const { formatSpeed } = useFormatter();
   if (cell == null) {
     return <td />;
   }
   const { results } = cell;
   if (results.length === 0) {
-    return <td className={styles.cell}>{cell.date.dayOfMonth}</td>;
+    return (
+      <td className={styles.cell}>
+        <span className={styles.item}>{cell.date.dayOfMonth}</span>
+      </td>
+    );
   }
   const stats = makeSummaryStats(results);
+  const effortValue = effort.effort(stats.time);
   const title = [
+    formatMessage(
+      {
+        id: "profile.calendar.dailyGoal.description",
+        defaultMessage: "Daily goal: {value}",
+      },
+      { value: formatPercents(effortValue) },
+    ),
     formatMessage(
       {
         id: "profile.calendar.totalTime.description",
@@ -128,8 +144,16 @@ function Cell({
     ),
   ].join(",\n");
   return (
-    <td className={styles.cell} style={effortStyles(stats)} title={title}>
-      {cell.date.dayOfMonth}
+    <td className={styles.cell}>
+      <span
+        className={styles.item}
+        style={{
+          backgroundColor: String(effort.shade(effortValue)),
+        }}
+        title={title}
+      >
+        {cell.date.dayOfMonth}
+      </span>
     </td>
   );
 }
@@ -194,20 +218,4 @@ function blockList(summary: ResultSummary): BlockData[] {
       cells,
     };
   }
-}
-
-type EffortStyles = (stats: SummaryStats) => CSSProperties;
-
-function useEffortStyles(range = 30 * 60 * 1000): EffortStyles {
-  const { getPropertyValue } = useComputedStyles();
-  const color = getPropertyValue("--effort-color") || "#000000";
-  return useMemo(() => {
-    return ({ time }: SummaryStats) => {
-      const style = {} as CSSProperties;
-      if (range > 0 && time > 0) {
-        style.backgroundColor = String(Color.parse(color).fade(time / range));
-      }
-      return style;
-    };
-  }, [range, color]);
 }

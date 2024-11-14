@@ -1,4 +1,5 @@
 import { test } from "node:test";
+import { Color } from "@keybr/color";
 import { FakeIntlProvider } from "@keybr/intl";
 import { LocalDate, ResultFaker, ResultSummary } from "@keybr/result";
 import { FakeSettingsContext } from "@keybr/settings";
@@ -16,7 +17,13 @@ test("no results", () => {
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
-        <Calendar summary={summary} />
+        <Calendar
+          summary={summary}
+          effort={{
+            effort: () => 0,
+            shade: () => Color.parse("#ffffff"),
+          }}
+        />
       </FakeSettingsContext>
     </FakeIntlProvider>,
   );
@@ -40,7 +47,13 @@ test("no results today", () => {
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
-        <Calendar summary={summary} />
+        <Calendar
+          summary={summary}
+          effort={{
+            effort: () => 0,
+            shade: () => Color.parse("#ffffff"),
+          }}
+        />
       </FakeSettingsContext>
     </FakeIntlProvider>,
   );
@@ -65,7 +78,13 @@ test("render", () => {
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
-        <Calendar summary={summary} />
+        <Calendar
+          summary={summary}
+          effort={{
+            effort: () => 0.5,
+            shade: () => Color.parse("#ffffff"),
+          }}
+        />
       </FakeSettingsContext>
     </FakeIntlProvider>,
   );

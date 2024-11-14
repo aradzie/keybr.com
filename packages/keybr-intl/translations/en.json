@@ -267,6 +267,7 @@
   "profile.accuracy.legend": "Above are listed the longest continuous sequences of lessons with accuracy above a given threshold, along with statistics about every such sequence. The longer the sequence of lessons, the better.",
   "profile.accuracy.noData": "You don’t have any accuracy streaks. Consider completing a lesson with a highest accuracy possible, regardless of typing speed.",
   "profile.calendar.averageSpeed.description": "Average speed: {value}",
+  "profile.calendar.dailyGoal.description": "Daily goal: {value}",
   "profile.calendar.topSpeed.description": "Top speed: {value}",
   "profile.calendar.totalLessons.description": "Number of lessons: {value}",
   "profile.calendar.totalTime.description": "Time of lessons: {value}",

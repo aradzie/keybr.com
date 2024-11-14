@@ -12,21 +12,19 @@
 .table {
   table-layout: fixed;
   border-collapse: collapse;
+  cursor: default;
+}
+
+.caption,
+.headerCell,
+.cell {
+  margin: 0;
+  padding: 0;
 }
 
 .caption {
   background-color: var(--Calendar-caption__background-color);
   text-align: center;
-}
-
-.headerCell,
-.cell {
-  vertical-align: middle;
-  inline-size: 1.5rem;
-  block-size: 1.5rem;
-  font-size: 0.75rem;
-  text-align: center;
-  cursor: default;
 }
 
 .headerCell {
@@ -35,4 +33,13 @@
 
 .cell {
   background-color: var(--Calendar-cell--background-color);
+}
+
+.item {
+  display: block;
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+  font-size: 0.75rem;
+  line-height: 1.5rem;
+  text-align: center;
 }

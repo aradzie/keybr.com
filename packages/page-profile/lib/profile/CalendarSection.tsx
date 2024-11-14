@@ -1,4 +1,4 @@
-import { Calendar } from "@keybr/lesson-ui";
+import { Calendar, EffortLegend, useEffort } from "@keybr/lesson-ui";
 import { type ResultSummary } from "@keybr/result";
 import { Explainer, Figure } from "@keybr/widget";
 import { type ReactNode } from "react";
@@ -9,6 +9,8 @@ export function CalendarSection({
 }: {
   readonly summary: ResultSummary;
 }): ReactNode {
+  const effort = useEffort();
+
   return (
     <Figure>
       <Figure.Caption>
@@ -27,7 +29,11 @@ export function CalendarSection({
         </Figure.Description>
       </Explainer>
 
-      <Calendar summary={summary} />
+      <Calendar summary={summary} effort={effort} />
+
+      <Figure.Legend>
+        <EffortLegend effort={effort} />
+      </Figure.Legend>
     </Figure>
   );
 }
