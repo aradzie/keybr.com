@@ -101,7 +101,6 @@ function WordListPreview({
       </FieldList>
       <Para>
         <TextField
-          size="full"
           type="textarea"
           value={[...lesson.wordList].join(", ")}
           readOnly={true}

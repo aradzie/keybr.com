@@ -2,21 +2,12 @@
 
 .root {
   .is-blurred();
-  display: inline-block;
-  min-block-size: @field-height;
   margin: 0;
-  padding-inline: 1rem;
-  padding-block: 0;
   border: 1px solid var(--TextField__border-color);
   color: var(--TextField__color);
   background-color: var(--TextField__background-color);
   font-family: var(--default-font-family);
   font-size: 0.85rem;
-  font-weight: normal;
-  font-style: normal;
-  line-height: normal;
-  text-align: start;
-  text-transform: none;
 }
 
 .root:focus {
@@ -26,7 +17,16 @@
   outline: none;
 }
 
+input.root {
+  display: inline-block;
+  min-block-size: @field-height;
+  padding-inline: 1rem;
+  padding-block: 0;
+}
+
 textarea.root {
+  display: block;
+  inline-size: 100%;
   min-block-size: 10em;
   padding-inline: 1rem;
   padding-block: 0.5rem;

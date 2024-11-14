@@ -22,7 +22,7 @@ export function LiveImport({
       <Field>Live import:</Field>
       <Field>
         <TextField
-          type="text"
+          size={6}
           value={String.fromCodePoint(inputData?.codePoint ?? 0x0020)}
           onKeyDown={(event) => {
             const { code } = event;

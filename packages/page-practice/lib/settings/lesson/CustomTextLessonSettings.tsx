@@ -86,7 +86,6 @@ function CustomTextInput(): ReactNode {
       </Para>
       <Para>
         <TextField
-          size="full"
           type="textarea"
           placeholder={formatMessage({
             id: "settings.customTextInput.placeholder",

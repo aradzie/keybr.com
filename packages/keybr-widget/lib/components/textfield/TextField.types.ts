@@ -14,6 +14,7 @@ export type TextFieldProps = {
   readonly name?: string;
   readonly placeholder?: string;
   readonly readOnly?: boolean;
+  readonly rows?: number;
   readonly size?: SizeName;
   readonly title?: string;
   readonly type?: TextFieldType;

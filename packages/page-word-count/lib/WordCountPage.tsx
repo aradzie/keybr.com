@@ -20,7 +20,6 @@ export function WordCountPage() {
         }
       />
       <TextField
-        size="full"
         type="textarea"
         placeholder={formatMessage({
           id: "wordCount.textInput.placeholder",

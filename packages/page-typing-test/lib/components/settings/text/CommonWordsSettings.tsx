@@ -92,7 +92,6 @@ function Content({ wordList }: { readonly wordList: WordList }): ReactNode {
 
       <Para>
         <TextField
-          size="full"
           type="textarea"
           value={wordList.join(", ")}
           readOnly={true}
