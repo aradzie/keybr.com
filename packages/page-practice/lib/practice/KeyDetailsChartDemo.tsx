@@ -18,7 +18,7 @@ export function KeyDetailsChartDemo(): ReactNode {
   });
   const learningRate = LearningRate.example(target);
   return (
-    <div className={styles.component}>
+    <div className={styles.root}>
       <KeyDetailsChart
         lessonKey={lessonKey}
         learningRate={learningRate}
