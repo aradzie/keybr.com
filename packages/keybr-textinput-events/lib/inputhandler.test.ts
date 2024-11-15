@@ -194,9 +194,9 @@ test("incomplete events", () => {
 
   replay(
     handler,
-    { timeStamp: 100, type: "keydown", code: "", key: "Undefined" },
+    { timeStamp: 100, type: "keydown", code: "", key: "Unidentified" },
     { timeStamp: 100, type: "input", inputType: "insertText", data: "a" },
-    { timeStamp: 200, type: "keyup", code: "", key: "Undefined" },
+    { timeStamp: 200, type: "keyup", code: "", key: "Unidentified" },
   );
 
   // Assert.

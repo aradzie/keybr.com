@@ -154,16 +154,16 @@ test("forward emulation, incomplete events", () => {
 
   replay(
     listener,
-    { timeStamp: 100, type: "keydown", code: "", key: "Undefined", modifiers: [] },
+    { timeStamp: 100, type: "keydown", code: "", key: "Unidentified", modifiers: [] },
     { timeStamp: 100, type: "input", inputType: "appendChar", codePoint: /* "S" */ 0x0053, timeToType: 111 },
-    { timeStamp: 200, type: "keyup", code: "", key: "Undefined", modifiers: [] },
+    { timeStamp: 200, type: "keyup", code: "", key: "Unidentified", modifiers: [] },
   );
 
   // Assert.
 
   assert.deepStrictEqual(target.trace, [
-    "100,keydown,,Undefined", //
-    "200,keyup,,Undefined",
+    "100,keydown,,Unidentified", //
+    "200,keyup,,Unidentified",
   ]);
 });
 
@@ -213,17 +213,17 @@ test("reverse emulation, incomplete events", () => {
 
   replay(
     listener,
-    { timeStamp: 100, type: "keydown", code: "", key: "Undefined", modifiers: [] },
+    { timeStamp: 100, type: "keydown", code: "", key: "Unidentified", modifiers: [] },
     { timeStamp: 100, type: "input", inputType: "appendChar", codePoint: /* "S" */ 0x0053, timeToType: 111 },
-    { timeStamp: 200, type: "keyup", code: "", key: "Undefined", modifiers: [] },
+    { timeStamp: 200, type: "keyup", code: "", key: "Unidentified", modifiers: [] },
   );
 
   // Assert.
 
   assert.deepStrictEqual(target.trace, [
-    "100,keydown,,Undefined", //
+    "100,keydown,,Unidentified", //
     "100,appendChar,S,111",
-    "200,keyup,,Undefined",
+    "200,keyup,,Unidentified",
   ]);
 });
 

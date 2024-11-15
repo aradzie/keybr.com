@@ -138,14 +138,8 @@ function fixCode(
 }
 
 function toKeyModifier(modifiers: readonly ModifierId[]): KeyModifier {
-  if (modifiers.includes("Shift") && modifiers.includes("AltGraph")) {
-    return KeyModifier.ShiftAlt;
-  }
-  if (modifiers.includes("Shift")) {
-    return KeyModifier.Shift;
-  }
-  if (modifiers.includes("AltGraph")) {
-    return KeyModifier.Alt;
-  }
-  return KeyModifier.None;
+  return KeyModifier.from(
+    modifiers.includes("Shift"),
+    modifiers.includes("AltGraph"),
+  );
 }
