@@ -8,14 +8,16 @@ export type GenericType<T extends PropValue> = {
 };
 
 export type ColorType = { readonly type: "color" } & GenericType<Color>;
-
 export type ImageType = { readonly type: "image" } & GenericType<Asset>;
+export type ShadowType = { readonly type: "shadow" } & GenericType<string>;
+export type BackdropType = { readonly type: "backdrop" } & GenericType<string>;
+export type FontType = { readonly type: "font" } & GenericType<string>;
 
 export type PropsMap = typeof themePropsMap;
 
 export type PropName = keyof PropsMap;
 
-export type PropValue = Color | Asset;
+export type PropValue = Color | Asset | string;
 
 export const colorType = {
   type: "color",
@@ -60,6 +62,72 @@ export const imageType = {
     return await Asset.parse(value);
   },
 } satisfies ImageType;
+
+export const shadowType = {
+  type: "shadow",
+  toCss: (value) => {
+    if (typeof value !== "string") {
+      throw new TypeError();
+    }
+    return value;
+  },
+  format: async (value) => {
+    if (typeof value !== "string") {
+      throw new TypeError();
+    }
+    return value;
+  },
+  parse: async (value) => {
+    if (typeof value !== "string") {
+      throw new TypeError();
+    }
+    return value;
+  },
+} satisfies ShadowType;
+
+export const backdropType = {
+  type: "backdrop",
+  toCss: (value) => {
+    if (typeof value !== "string") {
+      throw new TypeError();
+    }
+    return value;
+  },
+  format: async (value) => {
+    if (typeof value !== "string") {
+      throw new TypeError();
+    }
+    return value;
+  },
+  parse: async (value) => {
+    if (typeof value !== "string") {
+      throw new TypeError();
+    }
+    return value;
+  },
+} satisfies BackdropType;
+
+export const fontType = {
+  type: "font",
+  toCss: (value) => {
+    if (typeof value !== "string") {
+      throw new TypeError();
+    }
+    return value;
+  },
+  format: async (value) => {
+    if (typeof value !== "string") {
+      throw new TypeError();
+    }
+    return value;
+  },
+  parse: async (value) => {
+    if (typeof value !== "string") {
+      throw new TypeError();
+    }
+    return value;
+  },
+} satisfies FontType;
 
 export const themePropsMap = {
   "--primary-d2": colorType,
