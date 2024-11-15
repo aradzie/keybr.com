@@ -1,10 +1,12 @@
+import { strictEqual } from "node:assert/strict";
 import { test } from "node:test";
 import { KeyShape, Language } from "@keybr/keyboard";
 import { render } from "@testing-library/react";
-import { assert } from "chai";
 import { makeKeyComponent } from "./Key.tsx";
 
 test("static labels", () => {
+  // Arrange.
+
   const shape = new KeyShape(
     "my-key",
     {
@@ -19,14 +21,21 @@ test("static labels", () => {
 
   const Key = makeKeyComponent(Language.EN, shape);
 
+  // Act.
+
   const r = render(<Key />);
 
-  assert.strictEqual(r.container.textContent, "XYZ");
+  // Assert.
+
+  strictEqual(r.container.textContent, "XYZ");
+  strictEqual(r.container.querySelectorAll('[data-key="my-key"]').length, 1);
 
   r.unmount();
 });
 
 test("letter labels", () => {
+  // Arrange.
+
   const shape = new KeyShape(
     "my-key",
     {
@@ -45,14 +54,21 @@ test("letter labels", () => {
 
   const Key = makeKeyComponent(Language.TR, shape);
 
+  // Act.
+
   const r = render(<Key />);
 
-  assert.strictEqual(r.container.textContent, "Iİ");
+  // Assert.
+
+  strictEqual(r.container.textContent, "Iİ");
+  strictEqual(r.container.querySelectorAll('[data-key="my-key"]').length, 1);
 
   r.unmount();
 });
 
 test("dead labels", () => {
+  // Arrange.
+
   const shape = new KeyShape(
     "my-key",
     {
@@ -71,14 +87,21 @@ test("dead labels", () => {
 
   const Key = makeKeyComponent(Language.DE, shape);
 
+  // Act.
+
   const r = render(<Key />);
 
-  assert.strictEqual(r.container.textContent, "◌̀◌́**");
+  // Assert.
+
+  strictEqual(r.container.textContent, "◌̀◌́**");
+  strictEqual(r.container.querySelectorAll('[data-key="my-key"]').length, 1);
 
   r.unmount();
 });
 
 test("ligature labels", () => {
+  // Arrange.
+
   const shape = new KeyShape(
     "my-key",
     {
@@ -97,14 +120,21 @@ test("ligature labels", () => {
 
   const Key = makeKeyComponent(Language.DE, shape);
 
+  // Act.
+
   const r = render(<Key />);
 
-  assert.strictEqual(r.container.textContent, "XXYYAABB");
+  // Assert.
+
+  strictEqual(r.container.textContent, "XXYYAABB");
+  strictEqual(r.container.querySelectorAll('[data-key="my-key"]').length, 1);
 
   r.unmount();
 });
 
 test("mixed labels", () => {
+  // Arrange.
+
   const shape = new KeyShape(
     "my-key",
     {
@@ -123,14 +153,21 @@ test("mixed labels", () => {
 
   const Key = makeKeyComponent(Language.DE, shape);
 
+  // Act.
+
   const r = render(<Key />);
 
-  assert.strictEqual(r.container.textContent, "A◌̀XX");
+  // Assert.
+
+  strictEqual(r.container.textContent, "A◌̀XX");
+  strictEqual(r.container.querySelectorAll('[data-key="my-key"]').length, 1);
 
   r.unmount();
 });
 
 test("space", () => {
+  // Arrange.
+
   const shape = new KeyShape(
     "my-key",
     {
@@ -148,9 +185,14 @@ test("space", () => {
 
   const Key = makeKeyComponent(Language.EN, shape);
 
+  // Act.
+
   const r = render(<Key />);
 
-  assert.strictEqual(r.container.textContent, "");
+  // Assert.
+
+  strictEqual(r.container.textContent, "");
+  strictEqual(r.container.querySelectorAll('[data-key="my-key"]').length, 1);
 
   r.unmount();
 });

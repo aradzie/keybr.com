@@ -113,7 +113,7 @@ export function makeKeyComponent(
         y={y}
         width={w}
         height={h}
-        {...{ "data-key": id }}
+        data-key={id}
       >
         {...children}
       </svg>
