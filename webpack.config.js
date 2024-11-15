@@ -122,7 +122,7 @@ export default [
         rule_js(),
         rule_less(false),
         {
-          test: /\.(png|jpg)$/,
+          test: /\/assets\//,
           use: "null-loader",
         },
         {
