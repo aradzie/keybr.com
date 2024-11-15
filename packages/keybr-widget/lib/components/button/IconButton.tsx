@@ -3,7 +3,6 @@ import {
   type ForwardedRef,
   forwardRef,
   type ReactNode,
-  type RefObject,
   useImperativeHandle,
   useRef,
 } from "react";
@@ -19,17 +18,15 @@ export const IconButton = forwardRef(function IconButton(
     anchor,
     children,
     disabled,
-    href,
     icon,
     label,
     tabIndex,
-    target,
     title,
     ...props
   }: IconButtonProps,
   ref: ForwardedRef<IconButtonRef>,
 ): ReactNode {
-  const element = useRef<HTMLAnchorElement | HTMLButtonElement>(null);
+  const element = useRef<HTMLButtonElement>(null);
   useImperativeHandle(ref, () => ({
     focus() {
       element.current?.focus();
@@ -46,35 +43,16 @@ export const IconButton = forwardRef(function IconButton(
   if (children != null || label != null) {
     throw new TypeError();
   }
-  if (href != null) {
-    if (disabled != null) {
-      throw new TypeError();
-    }
-    return (
-      <a
-        {...props}
-        ref={element as RefObject<HTMLAnchorElement>}
-        className={clsx(styles.root, disabled && styles.disabled)}
-        href={href}
-        tabIndex={tabIndex}
-        target={target}
-        title={title}
-      >
-        {icon}
-      </a>
-    );
-  } else {
-    return (
-      <button
-        {...props}
-        ref={element as RefObject<HTMLButtonElement>}
-        className={clsx(styles.root, disabled && styles.disabled)}
-        disabled={disabled}
-        tabIndex={tabIndex}
-        title={title}
-      >
-        {icon}
-      </button>
-    );
-  }
+  return (
+    <button
+      {...props}
+      ref={element}
+      className={clsx(styles.root, disabled && styles.disabled)}
+      disabled={disabled}
+      tabIndex={tabIndex}
+      title={title}
+    >
+      {icon}
+    </button>
+  );
 });

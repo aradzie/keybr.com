@@ -6,27 +6,28 @@ import {
   useImperativeHandle,
   useRef,
 } from "react";
-import { sizeClassName } from "../../styles/index.ts";
 import { getBoundingBox } from "../../utils/index.ts";
-import * as iconStyles from "../icon/Icon.module.less";
-import * as styles from "./Button.module.less";
-import { type ButtonProps, type ButtonRef } from "./Button.types.ts";
+import * as styles from "./LinkButton.module.less";
+import {
+  type LinkButtonProps,
+  type LinkButtonRef,
+} from "./LinkButton.types.ts";
 
-export const Button = forwardRef(function Button(
+export const LinkButton = forwardRef(function LinkButton(
   {
     anchor,
     children,
+    className,
     disabled,
-    icon,
     label,
-    size,
     tabIndex,
     title,
+    onClick,
     ...props
-  }: ButtonProps,
-  ref: ForwardedRef<ButtonRef>,
+  }: LinkButtonProps,
+  ref: ForwardedRef<LinkButtonRef>,
 ): ReactNode {
-  const element = useRef<HTMLButtonElement>(null);
+  const element = useRef<HTMLAnchorElement>(null);
   useImperativeHandle(ref, () => ({
     focus() {
       element.current?.focus();
@@ -41,20 +42,19 @@ export const Button = forwardRef(function Button(
     },
   }));
   return (
-    <button
+    <a
       {...props}
       ref={element}
-      className={clsx(
-        styles.root,
-        iconStyles.altIcon,
-        disabled && styles.disabled,
-        sizeClassName(size),
-      )}
-      disabled={disabled}
+      href="#"
+      className={clsx(styles.root, disabled && styles.disabled, className)}
       tabIndex={tabIndex}
       title={title}
+      onClick={(event) => {
+        event.preventDefault();
+        onClick?.(event);
+      }}
     >
-      {icon} {label || children}
-    </button>
+      {label || children}
+    </a>
   );
 });

@@ -1,5 +1,5 @@
 import { useSettings } from "@keybr/settings";
-import { Field, FieldList, Icon, IconButton, Link } from "@keybr/widget";
+import { Field, FieldList, Icon, IconButton, LinkButton } from "@keybr/widget";
 import { mdiCog } from "@mdi/js";
 import { clsx } from "clsx";
 import { memo, type ReactNode } from "react";
@@ -42,7 +42,7 @@ export const DurationSwitcher = memo(function DurationSwitcher({
       children.push(<span key={children.length}>{" | "}</span>);
     }
     children.push(
-      <Link
+      <LinkButton
         key={children.length}
         className={clsx(
           styles.item,
@@ -50,9 +50,7 @@ export const DurationSwitcher = memo(function DurationSwitcher({
             duration.value === compositeSettings.duration.value &&
             styles.item_active,
         )}
-        href="#"
-        onClick={(ev) => {
-          ev.preventDefault();
+        onClick={() => {
           updateSettings(
             settings
               .set(typingTestProps.duration.type, duration.type)
@@ -62,7 +60,7 @@ export const DurationSwitcher = memo(function DurationSwitcher({
         }}
       >
         {label}
-      </Link>,
+      </LinkButton>,
     );
   }
   return <>{children}</>;

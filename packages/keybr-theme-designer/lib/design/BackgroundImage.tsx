@@ -1,5 +1,5 @@
 import { images } from "@keybr/themes";
-import { Box, Button, Para } from "@keybr/widget";
+import { Box, LinkButton, Para } from "@keybr/widget";
 import { useCustomTheme } from "./context.ts";
 import { Group } from "./Group.tsx";
 import { ImageInput } from "./input/ImageInput.tsx";
@@ -17,26 +17,28 @@ export function BackgroundImage() {
         />
       </Box>
       <Para align="center">
-        <Button
+        <LinkButton
           label="Clear"
           onClick={() => {
             setTheme(theme.delete("--background-image"));
           }}
         />
         {" or "}
-        <Button
+        <LinkButton
           label="Chocolate"
           onClick={() => {
             setTheme(theme.set("--background-image", images.chocolate));
           }}
         />
-        <Button
+        {", "}
+        <LinkButton
           label="Coffee"
           onClick={() => {
             setTheme(theme.set("--background-image", images.coffee));
           }}
         />
-        <Button
+        {", "}
+        <LinkButton
           label="Garden"
           onClick={() => {
             setTheme(theme.set("--background-image", images.garden));

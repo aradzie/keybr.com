@@ -1,13 +1,8 @@
 import { mdiClose } from "@mdi/js";
-import {
-  Children,
-  type MouseEvent,
-  type ReactElement,
-  type ReactNode,
-  useState,
-} from "react";
+import { Children, type ReactElement, type ReactNode, useState } from "react";
 import { useIntl } from "react-intl";
 import { useHotkeys } from "../../hooks/use-hotkeys.ts";
+import { LinkButton } from "../button/LinkButton.tsx";
 import { Icon } from "../icon/Icon.tsx";
 import { Backdrop } from "../popup/Backdrop.tsx";
 import { Popup } from "../popup/Popup.tsx";
@@ -38,19 +33,19 @@ export function Tour({ children, onClose, ...props }: TourProps): ReactNode {
   const currentSlide =
     slideIndex >= 0 && slideIndex < length ? slides[slideIndex] : <Slide />;
 
-  const selectPrev = (): void => {
+  const selectPrev = () => {
     if (slideIndex > 0) {
       setSlideIndex(slideIndex - 1);
     }
   };
 
-  const selectNext = (): void => {
+  const selectNext = () => {
     if (slideIndex < length - 1) {
       setSlideIndex(slideIndex + 1);
     }
   };
 
-  const close = (): void => {
+  const close = () => {
     onClose?.();
   };
 
@@ -66,21 +61,6 @@ export function Tour({ children, onClose, ...props }: TourProps): ReactNode {
     ["Escape", close],
   );
 
-  const handleClickPrev = (event: MouseEvent): void => {
-    event.preventDefault();
-    selectPrev();
-  };
-
-  const handleClickNext = (event: MouseEvent): void => {
-    event.preventDefault();
-    selectNext();
-  };
-
-  const handleClickClose = (event: MouseEvent): void => {
-    event.preventDefault();
-    close();
-  };
-
   const { anchor, position } = currentSlide.props;
 
   return (
@@ -92,36 +72,36 @@ export function Tour({ children, onClose, ...props }: TourProps): ReactNode {
           <div className={styles.root}>
             {currentSlide}
 
-            <a className={styles.close} href="#" onClick={handleClickClose}>
+            <LinkButton className={styles.close} onClick={close}>
               <Icon shape={mdiClose} />
-            </a>
+            </LinkButton>
 
             <div className={styles.footer}>
               <Meter length={slides.length} slideIndex={slideIndex} />
 
               {slideIndex > 0 && (
-                <a className={styles.prev} href="#" onClick={handleClickPrev}>
+                <LinkButton className={styles.prev} onClick={selectPrev}>
                   {formatMessage({
                     id: "tour.previous",
                     defaultMessage: "Previous",
                   })}
-                </a>
+                </LinkButton>
               )}
 
               {(slideIndex < slides.length - 1 && (
-                <a className={styles.next} href="#" onClick={handleClickNext}>
+                <LinkButton className={styles.next} onClick={selectNext}>
                   {formatMessage({
                     id: "tour.next",
                     defaultMessage: "Next",
                   })}
-                </a>
+                </LinkButton>
               )) || (
-                <a className={styles.next} href="#" onClick={handleClickClose}>
+                <LinkButton className={styles.next} onClick={close}>
                   {formatMessage({
                     id: "tour.close",
                     defaultMessage: "Close",
                   })}
-                </a>
+                </LinkButton>
               )}
             </div>
           </div>

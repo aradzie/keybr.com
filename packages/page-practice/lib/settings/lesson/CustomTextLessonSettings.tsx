@@ -10,6 +10,7 @@ import {
   Field,
   FieldList,
   FieldSet,
+  LinkButton,
   NameValue,
   Para,
   TextField,
@@ -70,17 +71,15 @@ function CustomTextInput(): ReactNode {
         {exampleTexts.map(({ title, content }, index) => (
           <span key={index}>
             {index > 0 ? ", " : null}
-            <a
-              href="#"
-              onClick={(ev) => {
-                ev.preventDefault();
+            <LinkButton
+              onClick={() => {
                 updateSettings(
                   settings.set(lessonProps.customText.content, content),
                 );
               }}
             >
               {title}
-            </a>
+            </LinkButton>
           </span>
         ))}
       </Para>

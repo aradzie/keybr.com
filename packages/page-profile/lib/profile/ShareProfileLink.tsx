@@ -24,7 +24,6 @@ export function ShareProfileLink({
   const url = new URL(window.location.href);
   url.pathname = `/profile/${user.id}`;
   const href = String(url);
-  const target = `/profile/${user.id}`;
 
   return (
     <FieldList>
@@ -70,8 +69,6 @@ export function ShareProfileLink({
       <Field>
         <Button
           icon={<Icon shape={mdiOpenInNew} />}
-          href={href}
-          target={target}
           label={formatMessage({
             id: "profile.widget.visit.label",
             defaultMessage: "Visit",
@@ -80,6 +77,9 @@ export function ShareProfileLink({
             id: "profile.widget.visit.description",
             defaultMessage: "Visit your public profile page.",
           })}
+          onClick={() => {
+            document.location = href;
+          }}
         />
       </Field>
     </FieldList>

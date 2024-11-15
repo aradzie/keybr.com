@@ -35,7 +35,6 @@ export function OAuthLoginForm(): ReactNode {
           <Field key={id}>
             <Button
               size={16}
-              href={`/auth/oauth-init/${id}`}
               icon={<Icon shape={icon} />}
               label={formatMessage(
                 {
@@ -48,6 +47,9 @@ export function OAuthLoginForm(): ReactNode {
                 id: "account.socialSignInButton.description",
                 defaultMessage: "Sign-in with a social network.",
               })}
+              onClick={() => {
+                document.location = `/auth/oauth-init/${id}`;
+              }}
             />
           </Field>
         ))}
