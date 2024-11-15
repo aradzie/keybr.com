@@ -1,3 +1,4 @@
+import { strictEqual } from "node:assert/strict";
 import { test } from "node:test";
 import { Color } from "@keybr/color";
 import { FakeIntlProvider } from "@keybr/intl";
@@ -30,6 +31,8 @@ test("no results", () => {
 
   // Assert.
 
+  strictEqual(r.container.querySelectorAll("[data-date]").length, 0);
+
   r.unmount();
 });
 
@@ -59,6 +62,8 @@ test("no results today", () => {
   );
 
   // Assert.
+
+  strictEqual(r.container.querySelectorAll("[data-date]").length, 1);
 
   r.unmount();
 });
@@ -90,6 +95,8 @@ test("render", () => {
   );
 
   // Assert.
+
+  strictEqual(r.container.querySelectorAll("[data-date]").length, 2);
 
   r.unmount();
 });

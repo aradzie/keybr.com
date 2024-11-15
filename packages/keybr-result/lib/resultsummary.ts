@@ -39,11 +39,7 @@ export class ResultSummary implements Iterable<DateStats> {
   }
 
   get(date: LocalDate): DateStats {
-    const group = this.#map.get(String(date));
-    if (group == null) {
-      throw new Error();
-    }
-    return group;
+    return this.#map.get(String(date)) ?? makeStats(date, []);
   }
 }
 

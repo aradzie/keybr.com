@@ -1,10 +1,5 @@
 import { useIntlNumbers } from "@keybr/intl";
-import {
-  LocalDate,
-  makeSummaryStats,
-  type Result,
-  type ResultSummary,
-} from "@keybr/result";
+import { type DateStats, LocalDate, type ResultSummary } from "@keybr/result";
 import { formatDuration } from "@keybr/widget";
 import { useIntl } from "react-intl";
 import * as styles from "./Calendar.module.less";
@@ -27,17 +22,17 @@ export function Calendar({
   );
 }
 
-type BlockData = {
+type BlockCells = {
   readonly year: number;
   readonly month: number;
-  readonly cells: (CellData | null)[][];
+  readonly cells: (DateStats | null)[][];
 };
 
 function Block({
   block,
   effort,
 }: {
-  readonly block: BlockData;
+  readonly block: BlockCells;
   readonly effort: Effort;
 }) {
   const { formatMessage } = useIntl();
@@ -78,16 +73,11 @@ function Block({
   );
 }
 
-type CellData = {
-  readonly date: LocalDate;
-  readonly results: readonly Result[];
-};
-
 function Cell({
   cell,
   effort,
 }: {
-  readonly cell: CellData | null;
+  readonly cell: DateStats | null;
   readonly effort: Effort;
 }) {
   const { formatMessage } = useIntl();
@@ -96,7 +86,7 @@ function Cell({
   if (cell == null) {
     return <td />;
   }
-  const { results } = cell;
+  const { results, stats } = cell;
   if (results.length === 0) {
     return (
       <td className={styles.cell}>
@@ -104,7 +94,6 @@ function Cell({
       </td>
     );
   }
-  const stats = makeSummaryStats(results);
   const effortValue = effort.effort(stats.time);
   const title = [
     formatMessage(
@@ -150,6 +139,7 @@ function Cell({
         style={{
           backgroundColor: String(effort.shade(effortValue)),
         }}
+        data-date={String(cell.date)}
         title={title}
       >
         {cell.date.dayOfMonth}
@@ -158,41 +148,25 @@ function Cell({
   );
 }
 
-function blockList(summary: ResultSummary): BlockData[] {
-  const cellMap = new Map<string, CellData>();
-  for (const { date, results } of summary) {
-    cellMap.set(String(date), { date, results });
-  }
-  const blockMap = new Map<string, BlockData>();
+function blockList(summary: ResultSummary): BlockCells[] {
+  const blocks = new Map<string, BlockCells>();
   for (const { date } of summary) {
     addBlock(date);
   }
   addBlock(summary.todayStats.date);
-  return [...blockMap.values()];
+  return [...blocks.values()];
 
-  function addBlock({
-    year,
-    month,
-  }: {
-    year: number;
-    month: number;
-  }): BlockData {
+  function addBlock({ year, month }: { year: number; month: number }) {
     const key = `${year}:${month}`;
-    let block = blockMap.get(key);
+    let block = blocks.get(key);
     if (block == null) {
-      blockMap.set(key, (block = makeBlock({ year, month })));
+      blocks.set(key, (block = makeBlock({ year, month })));
     }
     return block;
   }
 
-  function makeBlock({
-    year,
-    month,
-  }: {
-    year: number;
-    month: number;
-  }): BlockData {
-    const cells: (CellData | null)[][] = [
+  function makeBlock({ year, month }: { year: number; month: number }) {
+    const cells: (DateStats | null)[][] = [
       [null, null, null, null, null, null, null],
       [null, null, null, null, null, null, null],
       [null, null, null, null, null, null, null],
@@ -207,7 +181,7 @@ function blockList(summary: ResultSummary): BlockData[] {
       for (let j = 0; j < 7; j++) {
         const b = a.plusDays(i * 7 + j - offset);
         if (a.month === b.month) {
-          cells[i][j] = cellMap.get(String(b)) ?? { date: b, results: [] };
+          cells[i][j] = summary.get(b);
         }
       }
     }
