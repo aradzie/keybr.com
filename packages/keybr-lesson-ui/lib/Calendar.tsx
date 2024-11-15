@@ -1,10 +1,11 @@
-import { useIntlNumbers } from "@keybr/intl";
+import { Tasks } from "@keybr/lang";
 import { type DateStats, LocalDate, type ResultSummary } from "@keybr/result";
-import { formatDuration } from "@keybr/widget";
+import { Popup, Portal } from "@keybr/widget";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useIntl } from "react-intl";
 import * as styles from "./Calendar.module.less";
+import { DailyStats } from "./DailyStats.tsx";
 import { type Effort } from "./effort.ts";
-import { useFormatter } from "./format.ts";
 
 export function Calendar({
   summary,
@@ -13,16 +14,126 @@ export function Calendar({
   readonly summary: ResultSummary;
   readonly effort: Effort;
 }) {
+  type State = Readonly<
+    | { type: "hidden" }
+    | { type: "visible-in"; stats: DateStats; elem: Element }
+    | { type: "visible"; stats: DateStats; elem: Element }
+    | { type: "visible-out"; stats: DateStats; elem: Element }
+  >;
+  const [state, setState] = useState<State>({ type: "hidden" });
+  useEffect(() => {
+    const tasks = new Tasks();
+    switch (state.type) {
+      case "visible-in":
+        tasks.delayed(300, () => {
+          setState({ ...state, type: "visible" });
+        });
+        break;
+      case "visible-out":
+        tasks.delayed(300, () => {
+          setState({ type: "hidden" });
+        });
+        break;
+    }
+    return () => {
+      tasks.cancelAll();
+    };
+  }, [state]);
   return (
-    <div className={styles.root}>
-      {blockList(summary).map((block, index) => (
-        <Block key={index} block={block} effort={effort} />
+    <>
+      <BlockList
+        summary={summary}
+        effort={effort}
+        onCellHoverIn={(stats, elem) => {
+          setState({ type: "visible-in", stats, elem });
+        }}
+        onCellHoverOut={() => {
+          switch (state.type) {
+            case "visible-in":
+              setState({ type: "hidden" });
+              break;
+            case "visible":
+              setState({ ...state, type: "visible-out" });
+              break;
+          }
+        }}
+      />
+      {(state.type === "visible" || state.type === "visible-out") && (
+        <Portal>
+          <Popup
+            anchor={state.elem}
+            onMouseEnter={() => {
+              setState({ ...state, type: "visible" });
+            }}
+            onMouseLeave={() => {
+              setState({ ...state, type: "visible-out" });
+            }}
+          >
+            <DailyStats cell={state.stats} effort={effort} />
+          </Popup>
+        </Portal>
+      )}
+    </>
+  );
+}
+
+function BlockList({
+  summary,
+  effort,
+  onCellHoverIn,
+  onCellHoverOut,
+  onCellClick,
+}: {
+  readonly summary: ResultSummary;
+  readonly effort: Effort;
+  readonly onCellHoverIn?: (stats: DateStats, elem: Element) => void;
+  readonly onCellHoverOut?: (stats: DateStats, elem: Element) => void;
+  readonly onCellClick?: (stats: DateStats, elem: Element) => void;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const blocks = useMemo(() => blockList(summary), [summary]);
+  return (
+    <div
+      ref={ref}
+      className={styles.root}
+      onMouseOver={(event) => {
+        relayEvent(ref.current!, event, onCellHoverIn);
+      }}
+      onMouseOut={(event) => {
+        relayEvent(ref.current!, event, onCellHoverOut);
+      }}
+      onClick={(event) => {
+        relayEvent(ref.current!, event, onCellClick);
+      }}
+    >
+      {blocks.map((block) => (
+        <Block key={block.key} block={block} effort={effort} />
       ))}
     </div>
   );
 }
 
+function relayEvent(
+  root: Element,
+  { target }: { readonly target: any },
+  handler?: (stats: DateStats, elem: Element) => void,
+) {
+  while (
+    handler != null &&
+    target instanceof Element &&
+    root.contains(target)
+  ) {
+    const stats = Cell.attached(target);
+    if (stats) {
+      handler(stats, target);
+      return;
+    }
+    target = target.parentElement;
+  }
+}
+
 type BlockCells = {
+  readonly key: string;
   readonly year: number;
   readonly month: number;
   readonly cells: (DateStats | null)[][];
@@ -80,9 +191,6 @@ function Cell({
   readonly cell: DateStats | null;
   readonly effort: Effort;
 }) {
-  const { formatMessage } = useIntl();
-  const { formatPercents } = useIntlNumbers();
-  const { formatSpeed } = useFormatter();
   if (cell == null) {
     return <td />;
   }
@@ -94,59 +202,35 @@ function Cell({
       </td>
     );
   }
-  const effortValue = effort.effort(stats.time);
-  const title = [
-    formatMessage(
-      {
-        id: "profile.calendar.dailyGoal.description",
-        defaultMessage: "Daily goal: {value}",
-      },
-      { value: formatPercents(effortValue) },
-    ),
-    formatMessage(
-      {
-        id: "profile.calendar.totalTime.description",
-        defaultMessage: "Time of lessons: {value}",
-      },
-      { value: formatDuration(stats.time) },
-    ),
-    formatMessage(
-      {
-        id: "profile.calendar.totalLessons.description",
-        defaultMessage: "Number of lessons: {value}",
-      },
-      { value: results.length },
-    ),
-    formatMessage(
-      {
-        id: "profile.calendar.topSpeed.description",
-        defaultMessage: "Top speed: {value}",
-      },
-      { value: formatSpeed(stats.speed.max) },
-    ),
-    formatMessage(
-      {
-        id: "profile.calendar.averageSpeed.description",
-        defaultMessage: "Average speed: {value}",
-      },
-      { value: formatSpeed(stats.speed.avg) },
-    ),
-  ].join(",\n");
   return (
     <td className={styles.cell}>
       <span
+        ref={Cell.attach(cell)}
         className={styles.item}
         style={{
-          backgroundColor: String(effort.shade(effortValue)),
+          backgroundColor: String(effort.shade(effort.effort(stats.time))),
         }}
         data-date={String(cell.date)}
-        title={title}
       >
         {cell.date.dayOfMonth}
       </span>
     </td>
   );
 }
+
+const attachment = Symbol();
+
+Cell.attach = (stats: DateStats) => {
+  return (target: Element | null): void => {
+    if (target != null) {
+      (target as any)[attachment] = stats;
+    }
+  };
+};
+
+Cell.attached = (target: Element | null): DateStats | null => {
+  return (target as any)?.[attachment] ?? null;
+};
 
 function blockList(summary: ResultSummary): BlockCells[] {
   const blocks = new Map<string, BlockCells>();
@@ -156,40 +240,30 @@ function blockList(summary: ResultSummary): BlockCells[] {
   addBlock(summary.todayStats.date);
   return [...blocks.values()];
 
-  function addBlock({ year, month }: { year: number; month: number }) {
+  function addBlock({ year, month }: LocalDate) {
     const key = `${year}:${month}`;
     let block = blocks.get(key);
     if (block == null) {
-      blocks.set(key, (block = makeBlock({ year, month })));
-    }
-    return block;
-  }
-
-  function makeBlock({ year, month }: { year: number; month: number }) {
-    const cells: (DateStats | null)[][] = [
-      [null, null, null, null, null, null, null],
-      [null, null, null, null, null, null, null],
-      [null, null, null, null, null, null, null],
-      [null, null, null, null, null, null, null],
-      [null, null, null, null, null, null, null],
-      [null, null, null, null, null, null, null],
-    ];
-
-    const a = new LocalDate(year, month, 1);
-    const offset = a.dayOfWeek - 1;
-    for (let i = 0; i < 6; i++) {
-      for (let j = 0; j < 7; j++) {
-        const b = a.plusDays(i * 7 + j - offset);
-        if (a.month === b.month) {
-          cells[i][j] = summary.get(b);
+      const cells: (DateStats | null)[][] = [
+        [null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null],
+      ];
+      const a = new LocalDate(year, month, 1);
+      const offset = a.dayOfWeek - 1;
+      for (let i = 0; i < 6; i++) {
+        for (let j = 0; j < 7; j++) {
+          const b = a.plusDays(i * 7 + j - offset);
+          if (a.month === b.month) {
+            cells[i][j] = summary.get(b);
+          }
         }
       }
+      blocks.set(key, (block = { key, year, month, cells }));
     }
-
-    return {
-      year,
-      month,
-      cells,
-    };
+    return block;
   }
 }
