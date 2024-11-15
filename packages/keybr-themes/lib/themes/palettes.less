@@ -13,31 +13,31 @@
 @zone-rightIndex: #d3869b;
 @zone-thumb: #d66354;
 
-.use-textinput-colors(@primary, @secondary, @error) {
-  --textinput__color: @secondary;
-  --textinput--special__color: mix(@primary, @secondary, 50);
-  --textinput--hit__color: mix(@primary, @secondary, 40);
-  --textinput--miss__color: @error;
+.use-textinput-colors(@colors) {
+  --textinput__color: @colors[@secondary];
+  --textinput--special__color: mix(@colors[@primary], @colors[@secondary], 50);
+  --textinput--hit__color: mix(@colors[@primary], @colors[@secondary], 40);
+  --textinput--miss__color: @colors[@error];
 }
 
-.use-chart-colors(@primary, @mix) {
-  --Chart-speed__color: mix(@primary, @chart-speed, @mix);
-  --Chart-accuracy__color: mix(@primary, @chart-accuracy, @mix);
-  --Chart-complexity__color: mix(@primary, @chart-complexity, @mix);
-  --Chart-threshold__color: mix(@primary, @chart-threshold, @mix);
-  --Chart-hist-h__color: mix(@primary, @chart-hist-h, @mix);
-  --Chart-hist-m__color: mix(@primary, @chart-hist-m, @mix);
-  --Chart-hist-r__color: mix(@primary, @chart-hist-r, @mix);
+.use-chart-colors(@colors, @mix) {
+  --Chart-speed__color: mix(@colors[@primary], @chart-speed, @mix);
+  --Chart-accuracy__color: mix(@colors[@primary], @chart-accuracy, @mix);
+  --Chart-complexity__color: mix(@colors[@primary], @chart-complexity, @mix);
+  --Chart-threshold__color: mix(@colors[@primary], @chart-threshold, @mix);
+  --Chart-hist-h__color: mix(@colors[@primary], @chart-hist-h, @mix);
+  --Chart-hist-m__color: mix(@colors[@primary], @chart-hist-m, @mix);
+  --Chart-hist-r__color: mix(@colors[@primary], @chart-hist-r, @mix);
 }
 
-.use-keyboard-colors(@primary, @mix) {
+.use-keyboard-colors(@colors, @mix) {
   --KeyboardKey-pointer__color: #4ba0f2;
-  --pinky-zone-color: mix(@primary, @zone-pinky, @mix);
-  --ring-zone-color: mix(@primary, @zone-ring, @mix);
-  --middle-zone-color: mix(@primary, @zone-middle, @mix);
-  --left-index-zone-color: mix(@primary, @zone-leftIndex, @mix);
-  --right-index-zone-color: mix(@primary, @zone-rightIndex, @mix);
-  --thumb-zone-color: mix(@primary, @zone-thumb, @mix);
+  --pinky-zone-color: mix(@colors[@primary], @zone-pinky, @mix);
+  --ring-zone-color: mix(@colors[@primary], @zone-ring, @mix);
+  --middle-zone-color: mix(@colors[@primary], @zone-middle, @mix);
+  --left-index-zone-color: mix(@colors[@primary], @zone-leftIndex, @mix);
+  --right-index-zone-color: mix(@colors[@primary], @zone-rightIndex, @mix);
+  --thumb-zone-color: mix(@colors[@primary], @zone-thumb, @mix);
 }
 
 .use-syntax-colors() {
