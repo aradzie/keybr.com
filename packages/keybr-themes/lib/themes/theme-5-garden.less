@@ -32,8 +32,9 @@ html[data-color="garden"] {
   --fast-key-color: #60d788;
   --effort-color: #6699ff;
   .use-textinput-colors(@colors);
-  .use-keyboard-colors(@colors, 0);
+  .use-interface-colors(@colors);
   .use-chart-colors(@colors, 0);
+  .use-keyboard-colors(@colors, 0);
   .use-syntax-colors();
   --background-image: url(../../assets/bg-garden.svg);
   --Surface__box-shadow: 0 0.5rem 1rem var(--shadow-color);

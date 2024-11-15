@@ -7,7 +7,7 @@ import { PreviewPane } from "./PreviewPane.tsx";
 
 export function KeyboardDesign() {
   return (
-    <Group title="Keyboard Zone Colors">
+    <Group title="Keyboard Colors">
       <FieldList>
         <Field>
           <ColorInput accessor={prop["--pinky-zone-color"]} />

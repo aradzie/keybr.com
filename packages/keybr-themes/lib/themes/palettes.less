@@ -20,6 +20,13 @@
   --textinput--miss__color: @colors[@error];
 }
 
+.use-interface-colors(@colors) {
+  --Name-color: lighten(@colors[@secondary], 20);
+  --Value-color: darken(@colors[@secondary], 10);
+  --Value--more__color: #2a7e21;
+  --Value--less__color: #a1464e;
+}
+
 .use-chart-colors(@colors, @mix) {
   --Chart-speed__color: mix(@colors[@primary], @chart-speed, @mix);
   --Chart-accuracy__color: mix(@colors[@primary], @chart-accuracy, @mix);

@@ -15,6 +15,7 @@ import { BackgroundImage } from "./BackgroundImage.tsx";
 import { ChartDesign } from "./ChartDesign.tsx";
 import { useCustomTheme } from "./context.ts";
 import * as styles from "./DesignPane.module.less";
+import { InterfaceDesign } from "./InterfaceDesign.tsx";
 import { KeyboardDesign } from "./KeyboardDesign.tsx";
 import { LessonKeysDesign } from "./LessonKeysDesign.tsx";
 import { ProfileDesign } from "./ProfileDesign.tsx";
@@ -107,6 +108,7 @@ export function DesignPane() {
         <BackgroundImage />
         <TextInputDesign />
         <LessonKeysDesign />
+        <InterfaceDesign />
         <ChartDesign />
         <ProfileDesign />
         <KeyboardDesign />
