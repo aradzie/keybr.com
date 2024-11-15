@@ -1,4 +1,5 @@
-import { Box } from "@keybr/widget";
+import { images } from "@keybr/themes";
+import { Box, Button, Para } from "@keybr/widget";
 import { useCustomTheme } from "./context.ts";
 import { Group } from "./Group.tsx";
 import { ImageInput } from "./input/ImageInput.tsx";
@@ -15,6 +16,33 @@ export function BackgroundImage() {
           }}
         />
       </Box>
+      <Para align="center">
+        <Button
+          label="Clear"
+          onClick={() => {
+            setTheme(theme.delete("--background-image"));
+          }}
+        />
+        {" or "}
+        <Button
+          label="Chocolate"
+          onClick={() => {
+            setTheme(theme.set("--background-image", images.chocolate));
+          }}
+        />
+        <Button
+          label="Coffee"
+          onClick={() => {
+            setTheme(theme.set("--background-image", images.coffee));
+          }}
+        />
+        <Button
+          label="Garden"
+          onClick={() => {
+            setTheme(theme.set("--background-image", images.garden));
+          }}
+        />
+      </Para>
     </Group>
   );
 }

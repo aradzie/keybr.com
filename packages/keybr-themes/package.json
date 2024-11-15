@@ -6,6 +6,9 @@
   "main": "lib/index.ts",
   "types": ".types/index.d.ts",
   "sideEffects": false,
+  "browser": {
+    "./lib/themes/images.ts": "./lib/themes/images-browser.ts"
+  },
   "dependencies": {
     "@keybr/color": "*",
     "@keybr/rand": "*",

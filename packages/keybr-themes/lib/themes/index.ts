@@ -2,6 +2,7 @@ export * from "./asset.ts";
 export * from "./context.ts";
 export * from "./custom-theme.ts";
 export * from "./dynamic-styles-context.tsx";
+export * from "./images.ts";
 export * from "./prefs.ts";
 export * from "./theme-io.ts";
 export * from "./theme-props.ts";
