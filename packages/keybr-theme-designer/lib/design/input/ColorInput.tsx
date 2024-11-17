@@ -4,14 +4,11 @@ import {
   type AnchorProps,
   type Focusable,
   getBoundingBox,
-  Icon,
-  IconButton,
   Popover,
   sizeClassName,
   type SizeName,
   useOnClickOutside,
 } from "@keybr/widget";
-import { mdiMenuLeft, mdiMenuRight } from "@mdi/js";
 import { clsx } from "clsx";
 import {
   type ForwardedRef,
@@ -20,8 +17,8 @@ import {
   useRef,
   useState,
 } from "react";
-import { HexColorPicker } from "react-colorful";
 import { useCustomTheme } from "../context.ts";
+import { ColorPicker } from "./color/index.ts";
 import * as styles from "./ColorImport.module.less";
 
 export const black = Color.parse("#000000");
@@ -37,7 +34,7 @@ export const makeAccessor = (prop: PropName): Accessor => {
   return {
     getColor: (theme) => theme.getColor(prop) ?? gray,
     setColor: (theme, color) => theme.set(prop, color),
-  } as Accessor;
+  };
 };
 
 export function ColorInput({
@@ -70,42 +67,12 @@ export function ColorInput({
       offset={10}
     >
       <div ref={ref} className={styles.popup}>
-        <HexColorPicker
-          color={color.toRgb().formatHex()}
-          onChange={(hex) => {
-            setTheme(accessor.setColor(theme, Color.parse(hex)));
+        <ColorPicker
+          color={color}
+          onChange={(color) => {
+            setTheme(accessor.setColor(theme, color));
           }}
         />
-        <div className={styles.adjust}>
-          <IconButton
-            icon={<Icon shape={mdiMenuLeft} />}
-            onClick={() => {
-              setTheme(accessor.setColor(theme, color.lighten(-1 / 255)));
-            }}
-          />
-          <span className={styles.label}>lightness</span>
-          <IconButton
-            icon={<Icon shape={mdiMenuRight} />}
-            onClick={() => {
-              setTheme(accessor.setColor(theme, color.lighten(+1 / 255)));
-            }}
-          />
-        </div>
-        <div className={styles.adjust}>
-          <IconButton
-            icon={<Icon shape={mdiMenuLeft} />}
-            onClick={() => {
-              setTheme(accessor.setColor(theme, color.saturate(-1 / 255)));
-            }}
-          />
-          <span className={styles.label}>saturation</span>
-          <IconButton
-            icon={<Icon shape={mdiMenuRight} />}
-            onClick={() => {
-              setTheme(accessor.setColor(theme, color.saturate(+1 / 255)));
-            }}
-          />
-        </div>
       </div>
     </Popover>
   );
@@ -144,7 +111,7 @@ const Button = forwardRef(function Button(
       ref={element}
       className={clsx(styles.root, sizeClassName(size))}
       style={{
-        backgroundColor: color.toRgb().formatHex(),
+        backgroundColor: String(color),
       }}
       onClick={onClick}
     />

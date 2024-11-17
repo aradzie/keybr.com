@@ -5,10 +5,10 @@
   "type": "module",
   "main": "lib/index.ts",
   "types": ".types/index.d.ts",
-  "sideEffects": false,
   "browser": {
     "./lib/themes/images.ts": "./lib/themes/images-browser.ts"
   },
+  "sideEffects": false,
   "dependencies": {
     "@keybr/color": "*",
     "@keybr/rand": "*",

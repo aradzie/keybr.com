@@ -62,7 +62,7 @@ export const TextField = forwardRef(function TextField(
         title={title}
         value={value}
         onChange={(event) => {
-          onChange?.((event.target as HTMLTextAreaElement).value);
+          onChange?.(event.target.value);
         }}
         onInput={({ nativeEvent }) => {
           onInput?.(nativeEvent as InputEvent);
@@ -89,7 +89,7 @@ export const TextField = forwardRef(function TextField(
         type={type}
         value={value}
         onChange={(event) => {
-          onChange?.((event.target as HTMLInputElement).value);
+          onChange?.(event.target.value);
         }}
         onInput={({ nativeEvent }) => {
           onInput?.(nativeEvent as InputEvent);

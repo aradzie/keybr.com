@@ -31,7 +31,7 @@ export const colorType = {
     if (!(value instanceof Color)) {
       throw new TypeError();
     }
-    return String(value);
+    return String(value.toRgb());
   },
   parse: async (value) => {
     if (typeof value !== "string") {

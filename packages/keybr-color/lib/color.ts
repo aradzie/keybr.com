@@ -43,6 +43,14 @@ const RE_HSLA =
 
 /** Base abstract color class. */
 export abstract class Color {
+  static tryParse(value: string): Color | null {
+    try {
+      return Color.parse(value);
+    } catch {
+      return null;
+    }
+  }
+
   static parse(value: string): Color {
     let m: RegExpMatchArray | null;
     if ((m = value.match(RE_HEX_RGB))) {
