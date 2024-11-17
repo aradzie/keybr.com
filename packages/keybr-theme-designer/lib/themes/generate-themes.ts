@@ -2,7 +2,7 @@
 
 import { readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import { Color } from "@keybr/color";
+import { Color, parseColor } from "@keybr/color";
 import { rootDir } from "@keybr/scripts/root.js";
 import { CustomTheme, themeProps, themePropsMap } from "@keybr/themes";
 import { parse, walk } from "css-tree";
@@ -44,7 +44,7 @@ function importTheme(ast: any) {
         (themePropsMap as any)[property]?.type === "color" &&
         value.type === "Raw"
       ) {
-        theme = theme.set(property, Color.parse(value.value.trim()));
+        theme = theme.set(property, parseColor(value.value.trim()));
       }
     }
   });
@@ -86,7 +86,7 @@ function formatSourceCode(themes: Map<string, CustomTheme>): string {
   const lines = new Array<string>();
   lines.push(`// Generated file, do not edit.`);
   lines.push(``);
-  lines.push(`import { Color } from "@keybr/color";`);
+  lines.push(`import { parseColor } from "@keybr/color";`);
   lines.push(`import { CustomTheme } from "@keybr/themes";`);
   for (const [name, theme] of themes.entries()) {
     lines.push(``);
@@ -95,7 +95,7 @@ function formatSourceCode(themes: Map<string, CustomTheme>): string {
       const value = theme.get(prop);
       if (value instanceof Color) {
         const hex = value.toRgb().formatHex();
-        lines.push(`  .set("${prop}", Color.parse("${hex}"))`);
+        lines.push(`  .set("${prop}", parseColor("${hex}"))`);
       }
     }
     lines.push(`;`);

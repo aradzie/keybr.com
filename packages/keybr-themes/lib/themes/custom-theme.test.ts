@@ -1,12 +1,12 @@
 import { test } from "node:test";
-import { Color } from "@keybr/color";
+import { parseColor } from "@keybr/color";
 import { assert } from "chai";
 import { DataUrlAsset } from "./asset.ts";
 import { CustomTheme } from "./custom-theme.ts";
 
 test("theme", () => {
-  const white = Color.parse("#ffffff");
-  const black = Color.parse("#000000");
+  const white = parseColor("#ffffff");
+  const black = parseColor("#000000");
   const asset = new DataUrlAsset(
     new Blob(['<svg xmlns="http://www.w3.org/2000/svg"/>'], {
       type: "image/svg+xml",

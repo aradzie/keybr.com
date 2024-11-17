@@ -1,5 +1,5 @@
 import { test } from "node:test";
-import { Color } from "@keybr/color";
+import { parseColor } from "@keybr/color";
 import { assert } from "chai";
 import { UrlAsset } from "./asset.ts";
 import { CustomTheme } from "./custom-theme.ts";
@@ -13,8 +13,8 @@ test("store", async () => {
   ]);
 
   const theme = new CustomTheme()
-    .set("--primary", Color.parse("#ffffff"))
-    .set("--secondary", Color.parse("#000000"))
+    .set("--primary", parseColor("#ffffff"))
+    .set("--secondary", parseColor("#000000"))
     .set("--background-image", new UrlAsset("/assets/image.svg"));
 
   // Act.
@@ -50,8 +50,8 @@ test("read", async () => {
   // Assert.
 
   assert.strictEqual(error, null);
-  assert.deepStrictEqual(theme.get("--primary"), Color.parse("#ffffff"));
-  assert.deepStrictEqual(theme.get("--secondary"), Color.parse("#000000"));
+  assert.deepStrictEqual(theme.get("--primary"), parseColor("#ffffff"));
+  assert.deepStrictEqual(theme.get("--secondary"), parseColor("#000000"));
   assert.deepStrictEqual(
     theme.get("--background-image"),
     new UrlAsset("/assets/image.svg"),

@@ -1,4 +1,4 @@
-import { Color, RgbColor } from "@keybr/color";
+import { mixColors, parseColor } from "@keybr/color";
 import { useComputedStyles } from "@keybr/themes";
 import { type CSSProperties, useMemo } from "react";
 
@@ -8,11 +8,11 @@ export function useKeyStyles() {
   const fast = getPropertyValue("--fast-key-color") || "#60d788";
 
   return useMemo(() => {
-    const min = Color.parse(slow).toRgb();
-    const max = Color.parse(fast).toRgb();
+    const min = parseColor(slow).toRgb();
+    const max = parseColor(fast).toRgb();
 
-    function confidenceColor(confidence: number): Color {
-      return RgbColor.between(min, max, Math.max(0, Math.min(1, confidence)));
+    function confidenceColor(confidence: number) {
+      return mixColors(min, max, confidence);
     }
 
     function keyStyles(

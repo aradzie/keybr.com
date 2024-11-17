@@ -1,6 +1,6 @@
 import { strictEqual } from "node:assert/strict";
 import { test } from "node:test";
-import { Color } from "@keybr/color";
+import { parseColor } from "@keybr/color";
 import { FakeIntlProvider } from "@keybr/intl";
 import { LocalDate, ResultFaker, ResultSummary } from "@keybr/result";
 import { FakeSettingsContext } from "@keybr/settings";
@@ -22,7 +22,7 @@ test("no results", () => {
           summary={summary}
           effort={{
             effort: () => 0,
-            shade: () => Color.parse("#ffffff"),
+            shade: () => parseColor("#ffffff"),
           }}
         />
       </FakeSettingsContext>
@@ -54,7 +54,7 @@ test("no results today", () => {
           summary={summary}
           effort={{
             effort: () => 0,
-            shade: () => Color.parse("#ffffff"),
+            shade: () => parseColor("#ffffff"),
           }}
         />
       </FakeSettingsContext>
@@ -87,7 +87,7 @@ test("render", () => {
           summary={summary}
           effort={{
             effort: () => 0.5,
-            shade: () => Color.parse("#ffffff"),
+            shade: () => parseColor("#ffffff"),
           }}
         />
       </FakeSettingsContext>

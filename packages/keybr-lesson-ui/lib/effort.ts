@@ -1,4 +1,4 @@
-import { Color } from "@keybr/color";
+import { type Color, parseColor } from "@keybr/color";
 import { MutableDailyGoal } from "@keybr/lesson";
 import { useSettings } from "@keybr/settings";
 import { useComputedStyles } from "@keybr/themes";
@@ -19,7 +19,7 @@ export function useEffort(): Effort {
       return dailyGoal.goal > 0 ? dailyGoal.measure(time) : 1.0;
     };
     const shade = (effort: number) => {
-      return Color.parse(color).fade(effort);
+      return parseColor(color).fade(effort);
     };
     return { effort, shade };
   }, [settings, color]);

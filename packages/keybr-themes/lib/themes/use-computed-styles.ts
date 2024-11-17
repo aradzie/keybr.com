@@ -1,4 +1,4 @@
-import { Color } from "@keybr/color";
+import { parseColor } from "@keybr/color";
 import { type GraphicsStyle } from "@keybr/widget";
 import { type ClassValue, clsx } from "clsx";
 import { useMemo } from "react";
@@ -95,7 +95,7 @@ export const useComputedStyles = () => {
       }
       if (fill != null && fill !== "none") {
         try {
-          const color = Color.parse(fill).toRgb();
+          const color = parseColor(fill).toRgb();
           if (fillOpacity != null) {
             const value = Number(fillOpacity);
             if (value !== 1) {
@@ -115,7 +115,7 @@ export const useComputedStyles = () => {
       }
       if (stroke != null && stroke !== "none") {
         try {
-          const color = Color.parse(stroke).toRgb();
+          const color = parseColor(stroke).toRgb();
           if (strokeOpacity != null) {
             const value = Number(strokeOpacity);
             if (value !== 1) {

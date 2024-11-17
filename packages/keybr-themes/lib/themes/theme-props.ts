@@ -1,4 +1,4 @@
-import { Color } from "@keybr/color";
+import { Color, parseColor } from "@keybr/color";
 import { Asset } from "./asset.ts";
 
 export type GenericType<T extends PropValue> = {
@@ -37,7 +37,7 @@ export const colorType = {
     if (typeof value !== "string") {
       throw new TypeError();
     }
-    return Color.parse(value);
+    return parseColor(value);
   },
 } satisfies ColorType;
 

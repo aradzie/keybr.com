@@ -5,6 +5,7 @@
   "type": "module",
   "main": "lib/index.ts",
   "types": ".types/index.d.ts",
+  "sideEffects": false,
   "dependencies": {
     "@keybr/lang": "*"
   },

@@ -1,4 +1,4 @@
-import { Color } from "@keybr/color";
+import { type Color, parseColor } from "@keybr/color";
 import { type CustomTheme, type PropName } from "@keybr/themes";
 import {
   type AnchorProps,
@@ -21,9 +21,9 @@ import { useCustomTheme } from "../context.ts";
 import { ColorPicker } from "./color/index.ts";
 import * as styles from "./ColorImport.module.less";
 
-export const black = Color.parse("#000000");
-export const gray = Color.parse("#999999");
-export const white = Color.parse("#FFFFFF");
+export const black = parseColor("#000000");
+export const gray = parseColor("#999999");
+export const white = parseColor("#FFFFFF");
 
 export type Accessor = {
   readonly getColor: (theme: CustomTheme) => Color;

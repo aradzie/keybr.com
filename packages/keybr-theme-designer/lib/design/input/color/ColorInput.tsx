@@ -1,4 +1,4 @@
-import { Color } from "@keybr/color";
+import { tryParseColor } from "@keybr/color";
 import { TextField } from "@keybr/widget";
 import { useEffect, useRef, useState } from "react";
 import type { ColorEditorProps } from "./types.ts";
@@ -22,7 +22,7 @@ export function ColorInput({ color, onChange }: ColorEditorProps) {
       }}
       onBlur={() => {
         focus.current = false;
-        const color = Color.tryParse(value);
+        const color = tryParseColor(value);
         if (color != null) {
           onChange(color);
         }
