@@ -73,7 +73,7 @@ export class RgbColor extends Color implements Rgb {
     const g = Math.round(this.g * 255);
     const b = Math.round(this.b * 255);
     const a = this.a;
-    if (a !== 1) {
+    if (a < 1) {
       return `rgba(${[r, g, b, a].join(",")})`;
     } else {
       return `rgb(${[r, g, b].join(",")})`;
@@ -84,7 +84,12 @@ export class RgbColor extends Color implements Rgb {
     const r = Math.round(this.r * 255);
     const g = Math.round(this.g * 255);
     const b = Math.round(this.b * 255);
-    return `#${(pad0(r) + pad0(g) + pad0(b)).toUpperCase()}`;
+    const a = Math.round(this.a * 255);
+    if (a < 255) {
+      return `#${pad0(r) + pad0(g) + pad0(b) + pad0(a)}`;
+    } else {
+      return `#${pad0(r) + pad0(g) + pad0(b)}`;
+    }
   }
 
   hex(): number {

@@ -73,7 +73,7 @@ export class HslColor extends Color implements Hsl {
     const s = Math.round(this.s * 100);
     const l = Math.round(this.l * 100);
     const a = this.a;
-    if (a !== 1) {
+    if (a < 1) {
       return `hsla(${[h, s + "%", l + "%", a].join(",")})`;
     } else {
       return `hsl(${[h, s + "%", l + "%"].join(",")})`;

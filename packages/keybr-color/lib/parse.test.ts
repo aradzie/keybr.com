@@ -6,11 +6,28 @@ test("validate", () => {
   throws(() => {
     parseColor("?");
   });
+  throws(() => {
+    parseColor("#");
+  });
+  throws(() => {
+    parseColor("#ff");
+  });
+  throws(() => {
+    parseColor("#ff f");
+  });
+  throws(() => {
+    parseColor("rgb");
+  });
+  throws(() => {
+    parseColor("rgb()");
+  });
 });
 
-test("from hex RGB string", () => {
+test("hex", () => {
+  equal(parseColor("#123").toRgb().formatHex(), "#112233");
+  equal(parseColor("#1234").toRgb().formatHex(), "#11223344");
   equal(parseColor("#112233").toRgb().formatHex(), "#112233");
-  equal(parseColor("#112233").toRgb().formatHex(), "#112233");
+  equal(parseColor("#11223344").toRgb().formatHex(), "#11223344");
 });
 
 test("from RGB string", () => {

@@ -88,7 +88,11 @@ export abstract class Color {
 
   abstract format(): string;
 
-  toString(): string {
+  toString() {
     return this.format();
+  }
+
+  toJSON() {
+    return this.toString();
   }
 }

@@ -29,7 +29,7 @@ test("roundtrip", () => {
     "#112233",
   );
   equal(
-    parseColor("#FFFFFF")
+    parseColor("#ffffff")
       .toHsl()
       .toHsv()
       .toRgb()
@@ -37,7 +37,7 @@ test("roundtrip", () => {
       .toHsl()
       .toRgb()
       .formatHex(),
-    "#FFFFFF",
+    "#ffffff",
   );
 });
 
