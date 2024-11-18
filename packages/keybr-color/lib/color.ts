@@ -1,5 +1,6 @@
 import { clamp } from "@keybr/lang";
 import { type HslColor } from "./color-hsl.ts";
+import { type HsvColor } from "./color-hsv.ts";
 import { type RgbColor } from "./color-rgb.ts";
 
 /** Base abstract color class. */
@@ -17,6 +18,13 @@ export abstract class Color {
    * @return A color in the HSL model.
    */
   abstract toHsl(clone?: boolean): HslColor;
+
+  /**
+   * Converts to the HSV model.
+   * @param clone Whether to make a new clone if already is HSV. Otherwise returns this.
+   * @return A color in the HSV model.
+   */
+  abstract toHsv(clone?: boolean): HsvColor;
 
   luminance(): number {
     const { r, g, b, a } = this.toRgb();

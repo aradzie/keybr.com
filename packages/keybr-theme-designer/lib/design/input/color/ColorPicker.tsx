@@ -1,4 +1,4 @@
-import { HslColor, RgbColor } from "@keybr/color";
+import { HsvColor, RgbColor } from "@keybr/color";
 import { Spacer } from "@keybr/widget";
 import { ColorInput } from "./ColorInput.tsx";
 import * as styles from "./ColorPicker.module.less";
@@ -11,11 +11,11 @@ const green = new RgbColor(0, 1, 0);
 const blue = new RgbColor(0, 0, 1);
 
 export function ColorPicker({ color, onChange }: ColorEditorProps) {
-  const { h, s, l } = color.toHsl();
+  const { h, s, v } = color.toHsv();
   const { r, g, b } = color.toRgb();
-  const saturationValue = { x: s, y: l };
+  const saturationValue = { x: s, y: v };
   const hueValue = { x: h, y: 0.5 };
-  const hueColor = new HslColor(h, 1, 0.5);
+  const hueColor = new HsvColor(h, 1, 1);
   const rValue = { x: r, y: 0.5 };
   const gValue = { x: g, y: 0.5 };
   const bValue = { x: b, y: 0.5 };
@@ -29,7 +29,7 @@ export function ColorPicker({ color, onChange }: ColorEditorProps) {
         }}
         value={saturationValue}
         onChange={({ x, y }) => {
-          onChange(new HslColor(h, x, y));
+          onChange(new HsvColor(h, x, y));
         }}
       >
         <Thumb color={color.fade(1)} value={saturationValue} />
@@ -42,7 +42,7 @@ export function ColorPicker({ color, onChange }: ColorEditorProps) {
         }}
         value={hueValue}
         onChange={({ x }) => {
-          onChange(new HslColor(x, s, l));
+          onChange(new HsvColor(x, s, v));
         }}
       >
         <Thumb color={hueColor} value={hueValue} />

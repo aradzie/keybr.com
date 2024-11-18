@@ -1,19 +1,19 @@
 import { clamp, isNumber, isObjectLike } from "@keybr/lang";
 import { Color } from "./color.ts";
-import { hslToHsv, hslToRgb } from "./convert.ts";
-import { type Hsl } from "./types.ts";
+import { hsvToHsl, hsvToRgb } from "./convert.ts";
+import { type Hsv } from "./types.ts";
 
 /**
- * A color in the HSL model.
+ * A color in the HSV model.
  */
-export class HslColor extends Color implements Hsl {
+export class HsvColor extends Color implements Hsv {
   h: number;
   s: number;
-  l: number;
+  v: number;
   a: number;
 
-  constructor(h: number, s: number, l: number, a?: number);
-  constructor(value: Readonly<{ h: number; s: number; l: number; a?: number }>);
+  constructor(h: number, s: number, v: number, a?: number);
+  constructor(value: Readonly<{ h: number; s: number; v: number; a?: number }>);
   constructor(...args: any[]) {
     super();
     const l = args.length;
@@ -25,7 +25,7 @@ export class HslColor extends Color implements Hsl {
     ) {
       this.h = clamp(args[0], 0, 1);
       this.s = clamp(args[1], 0, 1);
-      this.l = clamp(args[2], 0, 1);
+      this.v = clamp(args[2], 0, 1);
       this.a = 1;
       return this;
     }
@@ -38,15 +38,15 @@ export class HslColor extends Color implements Hsl {
     ) {
       this.h = clamp(args[0], 0, 1);
       this.s = clamp(args[1], 0, 1);
-      this.l = clamp(args[2], 0, 1);
+      this.v = clamp(args[2], 0, 1);
       this.a = clamp(args[3], 0, 1);
       return this;
     }
     const [value] = args;
-    if (l === 1 && HslColor.is(value)) {
+    if (l === 1 && HsvColor.is(value)) {
       this.h = clamp(value.h, 0, 1);
       this.s = clamp(value.s, 0, 1);
-      this.l = clamp(value.l, 0, 1);
+      this.v = clamp(value.v, 0, 1);
       this.a = clamp(value.a ?? 1, 0, 1);
       return this;
     }
@@ -54,38 +54,30 @@ export class HslColor extends Color implements Hsl {
   }
 
   override toRgb() {
-    return hslToRgb(this);
+    return hsvToRgb(this);
   }
 
   override toHsl(clone?: boolean) {
+    return hsvToHsl(this);
+  }
+
+  override toHsv(clone?: boolean) {
     if (clone) {
-      return new HslColor(this);
+      return new HsvColor(this);
     }
     return this;
   }
 
-  override toHsv(clone?: boolean) {
-    return hslToHsv(this);
-  }
-
   override format() {
-    const h = Math.round(this.h * 360);
-    const s = Math.round(this.s * 100);
-    const l = Math.round(this.l * 100);
-    const a = this.a;
-    if (a !== 1) {
-      return `hsla(${[h, s + "%", l + "%", a].join(",")})`;
-    } else {
-      return `hsl(${[h, s + "%", l + "%"].join(",")})`;
-    }
+    return this.toHsl().format();
   }
 
-  static is(o: any): o is Hsl {
+  static is(o: any): o is Hsv {
     return (
       isObjectLike(o) &&
       isNumber(o.h) &&
       isNumber(o.s) &&
-      isNumber(o.l) &&
+      isNumber(o.v) &&
       (o.a == null || isNumber(o.a))
     );
   }

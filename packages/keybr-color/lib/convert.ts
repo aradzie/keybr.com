@@ -1,7 +1,8 @@
 import { clamp } from "@keybr/lang";
 import { HslColor } from "./color-hsl.ts";
+import { HsvColor } from "./color-hsv.ts";
 import { RgbColor } from "./color-rgb.ts";
-import { type Hsl, type Rgb } from "./types.ts";
+import { type Hsl, type Hsv, type Rgb } from "./types.ts";
 
 export function rgbToHsl({ r, g, b, a }: Rgb): HslColor {
   r = clamp(r, 0, 1);
@@ -57,4 +58,32 @@ function hueToRgb(m1: number, m2: number, h: number): number {
     return m1 + (m2 - m1) * (2 / 3 - h) * 6;
   }
   return m1;
+}
+
+export function hslToHsv({ h, s, l, a }: Hsl): HsvColor {
+  h = clamp(h, 0, 1);
+  s = clamp(s, 0, 1);
+  l = clamp(l, 0, 1);
+  a = clamp(a, 0, 1);
+  const vv = l + s * Math.min(l, 1 - l);
+  const ss = vv > 0 ? 2 * (1 - l / vv) : 0;
+  return new HsvColor(h, ss, vv, a);
+}
+
+export function hsvToHsl({ h, s, v, a }: Hsv): HslColor {
+  h = clamp(h, 0, 1);
+  s = clamp(s, 0, 1);
+  v = clamp(v, 0, 1);
+  a = clamp(a, 0, 1);
+  const ll = v * (1 - s / 2);
+  const ss = ll > 0 && ll < 1 ? (v - ll) / Math.min(ll, 1 - ll) : 0;
+  return new HslColor(h, ss, ll, a);
+}
+
+export function hsvToRgb(hsv: Hsv): RgbColor {
+  return hslToRgb(hsvToHsl(hsv));
+}
+
+export function rgbToHsv(rgb: Rgb): HsvColor {
+  return hslToHsv(rgbToHsl(rgb));
 }

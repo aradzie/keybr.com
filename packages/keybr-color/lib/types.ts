@@ -21,3 +21,15 @@ export type Hsl = {
   /** The alpha component, a number in range [0,1]. */
   a: number;
 };
+
+/** A color with the hue, saturation, value and alpha components. */
+export type Hsv = {
+  /** The hue component, a number in range [0,1]. */
+  h: number;
+  /** The saturation component, a number in range [0,1]. */
+  s: number;
+  /** The value component, a number in range [0,1]. */
+  v: number;
+  /** The alpha component, a number in range [0,1]. */
+  a: number;
+};
