@@ -1,5 +1,5 @@
 import { tryParseColor } from "@keybr/color";
-import { TextField } from "@keybr/widget";
+import { TextField, useHotkeysHandler } from "@keybr/widget";
 import { useEffect, useRef, useState } from "react";
 import type { ColorEditorProps } from "./types.ts";
 
@@ -12,6 +12,15 @@ export function ColorInput({ color, onChange }: ColorEditorProps) {
       setValue(color.toRgb().formatHex());
     }
   }, [color]);
+  const update = () => {
+    const color = tryParseColor(value);
+    if (color != null) {
+      setError("");
+      onChange(color);
+    } else {
+      setError("Invalid color. We accept hex, rgb(...), hsl(...), etc.");
+    }
+  };
   return (
     <TextField
       size="full"
@@ -24,14 +33,13 @@ export function ColorInput({ color, onChange }: ColorEditorProps) {
       }}
       onBlur={() => {
         focus.current = false;
-        const color = tryParseColor(value);
-        if (color != null) {
-          setError("");
-          onChange(color);
-        } else {
-          setError("Invalid color. We accept hex, rgb(...), hsl(...), etc.");
-        }
+        update();
       }}
+      onKeyDown={useHotkeysHandler({
+        ["Enter"]: () => {
+          update();
+        },
+      })}
     />
   );
 }
