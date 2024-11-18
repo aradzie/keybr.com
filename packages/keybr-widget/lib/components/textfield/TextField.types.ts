@@ -10,6 +10,7 @@ import {
 export type TextFieldType = "text" | "textarea" | "email" | "url" | "password";
 
 export type TextFieldProps = {
+  readonly error?: string | null;
   readonly maxLength?: number;
   readonly name?: string;
   readonly placeholder?: string;

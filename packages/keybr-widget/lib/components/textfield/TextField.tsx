@@ -4,6 +4,7 @@ import {
   forwardRef,
   type ReactNode,
   type RefObject,
+  useEffect,
   useImperativeHandle,
   useRef,
 } from "react";
@@ -14,6 +15,7 @@ import { type TextFieldProps, type TextFieldRef } from "./TextField.types.ts";
 export const TextField = forwardRef(function TextField(
   {
     disabled,
+    error,
     maxLength,
     name,
     placeholder,
@@ -42,6 +44,9 @@ export const TextField = forwardRef(function TextField(
       element.current?.select();
     },
   }));
+  useEffect(() => {
+    element.current?.setCustomValidity(error ?? "");
+  }, [error]);
   if (type === "textarea") {
     return (
       <textarea
