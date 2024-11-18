@@ -63,12 +63,12 @@ export function Slider({
         event.preventDefault();
         onChange(getValue(ref.current!, event));
       }}
-      onKeyDown={useHotkeysHandler(
-        ["ArrowLeft", moveLeft],
-        ["ArrowRight", moveRight],
-        ["ArrowUp", moveUp],
-        ["ArrowDown", moveDown],
-      )}
+      onKeyDown={useHotkeysHandler({
+        ["ArrowLeft"]: moveLeft,
+        ["ArrowRight"]: moveRight,
+        ["ArrowUp"]: moveUp,
+        ["ArrowDown"]: moveDown,
+      })}
     >
       {children}
     </div>

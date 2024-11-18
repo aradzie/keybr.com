@@ -1,52 +1,55 @@
-import { useCallback, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useWindowEvent } from "./use-window-event.ts";
 
-type HotkeyItem = readonly [string, Handler];
-
-type Handler = () => void;
-
+type HotkeyMap = Record<string, Handler>;
+type Handler = (event: KeyEvent) => void;
+type KeyEvent = {
+  readonly key: string;
+  readonly code: string;
+  readonly altKey: boolean;
+  readonly ctrlKey: boolean;
+  readonly metaKey: boolean;
+  readonly shiftKey: boolean;
+  preventDefault(): void;
+  stopPropagation(): void;
+};
 type Hotkey = {
   readonly alt: boolean;
   readonly ctrl: boolean;
+  readonly meta: boolean;
   readonly shift: boolean;
   readonly key: string;
 };
 
-export const useHotkeys = (...hotkeys: readonly HotkeyItem[]): void => {
-  useWindowEvent("keydown", useHotkeysHandler(...hotkeys));
+export const useHotkeys = (map: HotkeyMap): void => {
+  useWindowEvent("keydown", useHotkeysHandler(map));
 };
 
-export const useHotkeysHandler = (...hotkeys: readonly HotkeyItem[]) => {
-  const ref = useRef<[Hotkey, Handler][]>(null!);
-  ref.current = hotkeys.map(mapHotkeys);
-  return useCallback(
-    (event: {
-      readonly key: string;
-      readonly code: string;
-      readonly altKey: boolean;
-      readonly ctrlKey: boolean;
-      readonly shiftKey: boolean;
-      readonly target: EventTarget | null;
-      preventDefault(): void;
-    }): void => {
-      for (const [hotkey, handler] of ref.current) {
-        if (
-          (event.key === hotkey.key || event.code === hotkey.key) &&
-          event.altKey === hotkey.alt &&
-          event.ctrlKey === hotkey.ctrl &&
-          event.shiftKey === hotkey.shift
-        ) {
-          event.preventDefault();
-          handler();
-        }
+export const useHotkeysHandler = (map: HotkeyMap) => {
+  const ref = useRef<[Hotkey, Handler][]>([]);
+  useEffect(() => {
+    ref.current = parseHotkeyMap(map);
+  }, [map]);
+  return useCallback((event: KeyEvent): void => {
+    for (const [hotkey, handler] of ref.current) {
+      if (
+        (event.key === hotkey.key || event.code === hotkey.key) &&
+        event.altKey === hotkey.alt &&
+        event.ctrlKey === hotkey.ctrl &&
+        event.metaKey === hotkey.meta &&
+        event.shiftKey === hotkey.shift
+      ) {
+        event.preventDefault();
+        event.stopPropagation();
+        handler(event);
       }
-    },
-    [],
-  );
+    }
+  }, []);
 };
 
-const mapHotkeys = ([spec, handler]: HotkeyItem): [Hotkey, Handler] => {
-  return [parseHotkey(spec), handler];
+const parseHotkeyMap = (map: HotkeyMap): [Hotkey, Handler][] => {
+  return Object.entries(map) //
+    .map(([spec, handler]) => [parseHotkey(spec), handler]);
 };
 
 const hotkeyCache = new Map<string, Hotkey>();
@@ -54,9 +57,17 @@ const hotkeyCache = new Map<string, Hotkey>();
 const parseHotkey = (spec: string): Hotkey => {
   let hotkey = hotkeyCache.get(spec);
   if (hotkey == null) {
+    const error = () => {
+      throw new TypeError(
+        process.env.NODE_ENV !== "production"
+          ? `Invalid hotkey [${spec}]`
+          : undefined,
+      );
+    };
     const parsed = {
       alt: false,
       ctrl: false,
+      meta: false,
       shift: false,
       key: "",
     };
@@ -66,33 +77,28 @@ const parseHotkey = (spec: string): Hotkey => {
       switch (key) {
         case "Alt":
           if (parsed.alt) {
-            throw new TypeError(
-              process.env.NODE_ENV !== "production"
-                ? `Invalid hotkey [${spec}]`
-                : undefined,
-            );
+            error();
           } else {
             parsed.alt = true;
           }
           break;
         case "Ctrl":
           if (parsed.ctrl) {
-            throw new TypeError(
-              process.env.NODE_ENV !== "production"
-                ? `Invalid hotkey [${spec}]`
-                : undefined,
-            );
+            error();
           } else {
             parsed.ctrl = true;
           }
           break;
+        case "Meta":
+          if (parsed.meta) {
+            error();
+          } else {
+            parsed.meta = true;
+          }
+          break;
         case "Shift":
           if (parsed.shift) {
-            throw new TypeError(
-              process.env.NODE_ENV !== "production"
-                ? `Invalid hotkey [${spec}]`
-                : undefined,
-            );
+            error();
           } else {
             parsed.shift = true;
           }
@@ -101,21 +107,13 @@ const parseHotkey = (spec: string): Hotkey => {
           if (keys.length === 0) {
             parsed.key = key;
           } else {
-            throw new TypeError(
-              process.env.NODE_ENV !== "production"
-                ? `Invalid hotkey [${spec}]`
-                : undefined,
-            );
+            error();
           }
           break;
       }
     }
     if (parsed.key === "") {
-      throw new TypeError(
-        process.env.NODE_ENV !== "production"
-          ? `Invalid hotkey [${spec}]`
-          : undefined,
-      );
+      error();
     }
     hotkeyCache.set(spec, (hotkey = parsed));
   }

@@ -33,11 +33,11 @@ export const Controller = memo(function Controller({
     handleKeyUp,
     handleInput,
   } = useLessonState(progress, onResult);
-  useHotkeys(
-    ["Ctrl+ArrowLeft", handleResetLesson],
-    ["Ctrl+ArrowRight", handleSkipLesson],
-    ["Escape", handleResetLesson],
-  );
+  useHotkeys({
+    ["Ctrl+ArrowLeft"]: handleResetLesson,
+    ["Ctrl+ArrowRight"]: handleSkipLesson,
+    ["Escape"]: handleResetLesson,
+  });
   useWindowEvent("focus", handleResetLesson);
   useWindowEvent("blur", handleResetLesson);
   useDocumentEvent("visibilitychange", handleResetLesson);

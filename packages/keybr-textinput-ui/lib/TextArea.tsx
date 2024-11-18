@@ -78,12 +78,11 @@ export function TextArea({
       setElementCursor(element, "default");
     }
   });
-  useHotkeys([
-    "Enter",
-    () => {
+  useHotkeys({
+    ["Enter"]: () => {
       innerRef.current?.focus();
     },
-  ]);
+  });
   const handleFocus = useCallback(() => {
     setFocus(true);
     onFocus?.();

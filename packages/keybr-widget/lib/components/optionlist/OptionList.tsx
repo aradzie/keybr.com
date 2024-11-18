@@ -57,14 +57,14 @@ export function OptionList({
           }
         }
       }}
-      onKeyDown={useHotkeysHandler(
-        ["Space", handleOpen],
-        ["Enter", handleSelect],
-        ["Home", () => handleNavigate("first")],
-        ["ArrowUp", () => handleNavigate("prev")],
-        ["ArrowDown", () => handleNavigate("next")],
-        ["End", () => handleNavigate("last")],
-      )}
+      onKeyDown={useHotkeysHandler({
+        ["Space"]: handleOpen,
+        ["Enter"]: handleSelect,
+        ["Home"]: () => handleNavigate("first"),
+        ["ArrowUp"]: () => handleNavigate("prev"),
+        ["ArrowDown"]: () => handleNavigate("next"),
+        ["End"]: () => handleNavigate("last"),
+      })}
       onClick={(event) => {
         event.preventDefault();
         handleOpen();

@@ -49,17 +49,17 @@ export function Tour({ children, onClose, ...props }: TourProps): ReactNode {
     onClose?.();
   };
 
-  useHotkeys(
-    ["ArrowLeft", selectPrev],
-    ["ArrowUp", selectPrev],
-    ["PageUp", selectPrev],
-    ["Backspace", selectPrev],
-    ["ArrowRight", selectNext],
-    ["ArrowDown", selectNext],
-    ["PageDown", selectNext],
-    ["Space", selectNext],
-    ["Escape", close],
-  );
+  useHotkeys({
+    ["ArrowLeft"]: selectPrev,
+    ["ArrowUp"]: selectPrev,
+    ["PageUp"]: selectPrev,
+    ["Backspace"]: selectPrev,
+    ["ArrowRight"]: selectNext,
+    ["ArrowDown"]: selectNext,
+    ["PageDown"]: selectNext,
+    ["Space"]: selectNext,
+    ["Escape"]: close,
+  });
 
   const { anchor, position } = currentSlide.props;
 

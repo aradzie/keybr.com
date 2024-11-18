@@ -38,7 +38,9 @@ export function ReportScreen({ result }: { readonly result: TestResult }) {
 
   const handleNext = () => setView("test");
 
-  useHotkeys(["Enter", handleNext]);
+  useHotkeys({
+    ["Enter"]: handleNext,
+  });
 
   const { time, speed, length, errors, accuracy } = result.stats;
 

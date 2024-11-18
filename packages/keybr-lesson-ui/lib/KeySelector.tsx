@@ -60,12 +60,12 @@ export const KeySelector = ({
       title={title}
       onFocus={onFocus}
       onBlur={onBlur}
-      onKeyDown={useHotkeysHandler(
-        ["ArrowLeft", handlePrev],
-        ["ArrowUp", handlePrev],
-        ["ArrowRight", handleNext],
-        ["ArrowDown", handleNext],
-      )}
+      onKeyDown={useHotkeysHandler({
+        ["ArrowLeft"]: handlePrev,
+        ["ArrowUp"]: handlePrev,
+        ["ArrowRight"]: handleNext,
+        ["ArrowDown"]: handleNext,
+      })}
     >
       {letters.map((letter) => (
         <Key

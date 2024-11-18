@@ -31,12 +31,12 @@ export function TabList({
   const selectNext = () => {
     select(selectedIndex + 1);
   };
-  const hotkeys = useHotkeysHandler(
-    ["ArrowLeft", selectPrev],
-    ["ArrowUp", selectPrev],
-    ["ArrowRight", selectNext],
-    ["ArrowDown", selectNext],
-  );
+  const hotkeys = useHotkeysHandler({
+    ["ArrowLeft"]: selectPrev,
+    ["ArrowUp"]: selectPrev,
+    ["ArrowRight"]: selectNext,
+    ["ArrowDown"]: selectNext,
+  });
   const items: ReactNode[] = [];
   items.push(
     <span
