@@ -9,6 +9,7 @@ export function ColorInput({ color, onChange }: ColorEditorProps) {
   const [value, setValue] = useState("");
   useEffect(() => {
     if (!focus.current) {
+      setError("");
       setValue(color.toRgb().formatHex());
     }
   }, [color]);
