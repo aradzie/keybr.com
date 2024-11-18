@@ -74,9 +74,9 @@ export class RgbColor extends Color implements Rgb {
     const b = Math.round(this.b * 255);
     const a = this.a;
     if (a < 1) {
-      return `rgba(${[r, g, b, a].join(",")})`;
+      return `rgb(${r} ${g} ${b}/${a})`;
     } else {
-      return `rgb(${[r, g, b].join(",")})`;
+      return `rgb(${r} ${g} ${b})`;
     }
   }
 

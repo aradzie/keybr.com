@@ -9,7 +9,7 @@ test("store", async () => {
   // Arrange.
 
   const storage = new FakeStorage([
-    ["keybr.theme[--accent]", "rgb(255,255,255)"],
+    ["keybr.theme[--accent]", "rgb(255 255 255)"],
   ]);
 
   const theme = new CustomTheme()
@@ -27,8 +27,8 @@ test("store", async () => {
   assert.deepStrictEqual(
     [...storage],
     [
-      ["keybr.theme[--primary]", "rgb(255,255,255)"],
-      ["keybr.theme[--secondary]", "rgb(0,0,0)"],
+      ["keybr.theme[--primary]", "rgb(255 255 255)"],
+      ["keybr.theme[--secondary]", "rgb(0 0 0)"],
       ["keybr.theme[--background-image]", "/assets/image.svg"],
     ],
   );
@@ -38,8 +38,8 @@ test("read", async () => {
   // Arrange.
 
   const storage = new FakeStorage([
-    ["keybr.theme[--primary]", "rgb(255,255,255)"],
-    ["keybr.theme[--secondary]", "rgb(0,0,0)"],
+    ["keybr.theme[--primary]", "rgb(255 255 255)"],
+    ["keybr.theme[--secondary]", "rgb(0 0 0)"],
     ["keybr.theme[--background-image]", "/assets/image.svg"],
   ]);
 

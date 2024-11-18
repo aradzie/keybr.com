@@ -42,19 +42,19 @@ test("roundtrip", () => {
 });
 
 test("rgb to hsl", () => {
-  equal(String(new RgbColor(0, 0, 0).toHsl()), "hsl(0,0%,0%)");
-  equal(String(new RgbColor(1, 1, 1).toHsl()), "hsl(0,0%,100%)");
-  equal(String(new RgbColor(1, 0, 0).toHsl()), "hsl(0,100%,50%)");
-  equal(String(new RgbColor(0, 1, 0).toHsl()), "hsl(120,100%,50%)");
-  equal(String(new RgbColor(0, 0, 1).toHsl()), "hsl(240,100%,50%)");
+  equal(String(new RgbColor(0, 0, 0).toHsl()), "hsl(0 0% 0%)");
+  equal(String(new RgbColor(1, 1, 1).toHsl()), "hsl(0 0% 100%)");
+  equal(String(new RgbColor(1, 0, 0).toHsl()), "hsl(0 100% 50%)");
+  equal(String(new RgbColor(0, 1, 0).toHsl()), "hsl(120 100% 50%)");
+  equal(String(new RgbColor(0, 0, 1).toHsl()), "hsl(240 100% 50%)");
 });
 
 test("hsl to rgb", () => {
-  equal(String(new HslColor(0, 0, 0).toRgb()), "rgb(0,0,0)");
-  equal(String(new HslColor(0, 0, 1).toRgb()), "rgb(255,255,255)");
-  equal(String(new HslColor(0, 1, 0.5).toRgb()), "rgb(255,0,0)");
-  equal(String(new HslColor(120 / 360, 1, 0.5).toRgb()), "rgb(0,255,0)");
-  equal(String(new HslColor(240 / 360, 1, 0.5).toRgb()), "rgb(0,0,255)");
+  equal(String(new HslColor(0, 0, 0).toRgb()), "rgb(0 0 0)");
+  equal(String(new HslColor(0, 0, 1).toRgb()), "rgb(255 255 255)");
+  equal(String(new HslColor(0, 1, 0.5).toRgb()), "rgb(255 0 0)");
+  equal(String(new HslColor(120 / 360, 1, 0.5).toRgb()), "rgb(0 255 0)");
+  equal(String(new HslColor(240 / 360, 1, 0.5).toRgb()), "rgb(0 0 255)");
 });
 
 test("hsl to hsv", () => {

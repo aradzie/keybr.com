@@ -2,28 +2,7 @@ import { clamp } from "@keybr/lang";
 import { type Color } from "./color.ts";
 import { HslColor } from "./color-hsl.ts";
 import { RgbColor } from "./color-rgb.ts";
-
-/** Matches hex string "#RGB". */
-const RE_HEX_RGB = /^#([a-z0-9]{1})([a-z0-9]{1})([a-z0-9]{1})$/i;
-/** Matches hex string "#RGBA". */
-const RE_HEX_RGBA = /^#([a-z0-9]{1})([a-z0-9]{1})([a-z0-9]{1})([a-z0-9]{1})$/i;
-/** Matches hex string "#RRGGBB". */
-const RE_HEX_RRGGBB = /^#([a-z0-9]{2})([a-z0-9]{2})([a-z0-9]{2})$/i;
-/** Matches hex string "#RRGGBBAA". */
-const RE_HEX_RRGGBBAA =
-  /^#([a-z0-9]{2})([a-z0-9]{2})([a-z0-9]{2})([a-z0-9]{2})$/i;
-/** Matches string "rgb(R,G,B)". */
-const RE_RGB =
-  /^rgb\(\s*([.0-9]+%?)\s*,\s*([.0-9]+%?)\s*,\s*([.0-9]+%?)\s*\)*$/i;
-/** Matches string "rgba(R,G,B,A)". */
-const RE_RGBA =
-  /^rgba\(\s*([.0-9]+%?)\s*,\s*([.0-9]+%?)\s*,\s*([.0-9]+%?)\s*,\s*([.0-9]+%?)\s*\)*$/i;
-/** Matches string "hsl(H,S,L)". */
-const RE_HSL =
-  /^hsl\(\s*([.0-9]+%?)\s*,\s*([.0-9]+%?)\s*,\s*([.0-9]+%?)\s*\)$/i;
-/** Matches string "hsla(H,S,L,A)". */
-const RE_HSLA =
-  /^hsla\(\s*([.0-9]+%?)\s*,\s*([.0-9]+%?)\s*,\s*([.0-9]+%?)\s*,\s*([.0-9]+%?)\s*\)*$/i;
+import { parseHex } from "./parse-hex.ts";
 
 /**
  * Returns an RGB color from the hex number with RGB components.
@@ -38,108 +17,282 @@ export function hexColor(hex: number): RgbColor {
 }
 
 export function tryParseColor(value: string): Color | null {
-  try {
-    return parseColor(value);
-  } catch {
-    return null;
-  }
+  value = value.trim();
+  return parseHex(value) ?? new Parser(value).parse();
 }
 
 export function parseColor(value: string): Color {
-  let m: RegExpMatchArray | null;
-  if ((m = value.match(RE_HEX_RGB))) {
-    const r = parseInt(m[1], 16);
-    const g = parseInt(m[2], 16);
-    const b = parseInt(m[3], 16);
-    return new RgbColor(
-      ((r << 4) | r) / 255,
-      ((g << 4) | g) / 255,
-      ((b << 4) | b) / 255,
+  const color = tryParseColor(value);
+  if (color == null) {
+    throw new TypeError();
+  }
+  return color;
+}
+
+const rWs = /\s+/y;
+const rLB = /\s*\(\s*/y;
+const rRB = /\s*\)\s*/y;
+const rComma = /\s*,\s*/y;
+const rSlash = /\s*\/\s*/y;
+const rRgb = /rgba?/y;
+const rHsl = /hsla?/y;
+const rNone = /none/y;
+const rNumber = /[-+]?[0-9]+(\.[0-9]+)?([eE][-+]?[0-9]+)?/y;
+const rPct = /%/y;
+const rDeg = /deg/y;
+const rRad = /rad/y;
+const rColor = /color/y;
+const rSRgb = /sRGB/y;
+const rDisplayP3 = /display-p3/y;
+
+type Unit = {
+  none: number;
+  min: number;
+  max: number;
+  scale: number;
+};
+
+const colorUnit: Unit = {
+  none: 0,
+  min: 0,
+  max: 1,
+  scale: 255,
+} as const;
+
+const lightnessUnit: Unit = {
+  none: 0,
+  min: 0,
+  max: 100,
+  scale: 100,
+} as const;
+
+const alphaUnit: Unit = {
+  none: 1,
+  min: 0,
+  max: 1,
+  scale: 1,
+} as const;
+
+const valueUnit: Unit = {
+  none: 0,
+  min: 0,
+  max: 1,
+  scale: 1,
+} as const;
+
+type Prop = "x" | "y" | "z" | "a";
+
+class Parser {
+  index = 0;
+  start = 0;
+
+  x = 0;
+  y = 0;
+  z = 0;
+  a = 1;
+
+  constructor(readonly value: string) {}
+
+  reset() {
+    this.index = 0;
+    this.start = 0;
+  }
+
+  end() {
+    return this.index === this.value.length;
+  }
+
+  image() {
+    return this.value.substring(this.start, this.index);
+  }
+
+  eat(re: RegExp) {
+    this.start = re.lastIndex = this.index;
+    if (re.test(this.value)) {
+      this.index = re.lastIndex;
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  try(p: () => boolean) {
+    const index = this.index;
+    if (p()) {
+      return true;
+    } else {
+      this.index = index;
+      return false;
+    }
+  }
+
+  parseNumber(prop: Prop, unit: Unit) {
+    if (this.eat(rNone)) {
+      this[prop] = unit.none;
+      return true;
+    }
+    if (this.eat(rNumber)) {
+      let v = Number(this.image());
+      if (this.eat(rPct)) {
+        v = v / 100;
+      } else {
+        v = v / unit.scale;
+      }
+      this[prop] = clamp(v, unit.min, unit.max);
+      return true;
+    }
+    return false;
+  }
+
+  parseAngle(prop: Prop) {
+    if (this.eat(rNone)) {
+      this[prop] = 0;
+      return true;
+    }
+    if (this.eat(rNumber)) {
+      let v = Number(this.image());
+      if (this.eat(rPct)) {
+        v = v / 100;
+      } else if (this.eat(rDeg)) {
+        v = v / 360;
+      } else if (this.eat(rRad)) {
+        v = v / (Math.PI * 2);
+      } else {
+        v = v / 360;
+      }
+      if (v < 0 || v > 1) {
+        v = v - Math.floor(v);
+      }
+      this[prop] = v;
+      return true;
+    }
+    return false;
+  }
+
+  parseRgb() {
+    this.reset();
+    if (
+      this.eat(rRgb) &&
+      this.eat(rLB) &&
+      this.parseNumber("x", colorUnit) &&
+      this.eat(rWs) &&
+      this.parseNumber("y", colorUnit) &&
+      this.eat(rWs) &&
+      this.parseNumber("z", colorUnit) &&
+      (!this.eat(rSlash) || this.parseNumber("a", alphaUnit)) &&
+      this.eat(rRB) &&
+      this.end()
+    ) {
+      return new RgbColor(this.x, this.y, this.z, this.a);
+    }
+    return null;
+  }
+
+  parseRgbLegacy() {
+    this.reset();
+    if (
+      this.eat(rRgb) &&
+      this.eat(rLB) &&
+      this.parseNumber("x", colorUnit) &&
+      this.eat(rComma) &&
+      this.parseNumber("y", colorUnit) &&
+      this.eat(rComma) &&
+      this.parseNumber("z", colorUnit) &&
+      (!this.eat(rComma) || this.parseNumber("a", alphaUnit)) &&
+      this.eat(rRB) &&
+      this.end()
+    ) {
+      return new RgbColor(this.x, this.y, this.z, this.a);
+    }
+    return null;
+  }
+
+  parseHsl() {
+    this.reset();
+    if (
+      this.eat(rHsl) &&
+      this.eat(rLB) &&
+      this.parseAngle("x") &&
+      this.eat(rWs) &&
+      this.parseNumber("y", lightnessUnit) &&
+      this.eat(rWs) &&
+      this.parseNumber("z", lightnessUnit) &&
+      (!this.eat(rSlash) || this.parseNumber("a", alphaUnit)) &&
+      this.eat(rRB) &&
+      this.end()
+    ) {
+      return new HslColor(this.x, this.y, this.z, this.a);
+    }
+    return null;
+  }
+
+  parseHslLegacy() {
+    this.reset();
+    if (
+      this.eat(rHsl) &&
+      this.eat(rLB) &&
+      this.parseAngle("x") &&
+      this.eat(rComma) &&
+      this.parseNumber("y", lightnessUnit) &&
+      this.eat(rComma) &&
+      this.parseNumber("z", lightnessUnit) &&
+      (!this.eat(rComma) || this.parseNumber("a", alphaUnit)) &&
+      this.eat(rRB) &&
+      this.end()
+    ) {
+      return new HslColor(this.x, this.y, this.z, this.a);
+    }
+    return null;
+  }
+
+  parseColor() {
+    this.reset();
+    if (this.eat(rColor)) {
+      if (
+        this.try(
+          () =>
+            this.eat(rLB) &&
+            this.eat(rSRgb) &&
+            this.eat(rWs) &&
+            this.parseNumber("x", valueUnit) &&
+            this.eat(rWs) &&
+            this.parseNumber("y", valueUnit) &&
+            this.eat(rWs) &&
+            this.parseNumber("z", valueUnit) &&
+            this.eat(rRB) &&
+            this.end(),
+        )
+      ) {
+        //
+      }
+      if (
+        this.try(
+          () =>
+            this.eat(rLB) &&
+            this.eat(rDisplayP3) &&
+            this.eat(rWs) &&
+            this.parseNumber("x", valueUnit) &&
+            this.eat(rWs) &&
+            this.parseNumber("y", valueUnit) &&
+            this.eat(rWs) &&
+            this.parseNumber("z", valueUnit) &&
+            this.eat(rRB) &&
+            this.end(),
+        )
+      ) {
+        //
+      }
+    }
+    return null;
+  }
+
+  parse() {
+    return (
+      this.parseRgb() ??
+      this.parseRgbLegacy() ??
+      this.parseHsl() ??
+      this.parseHslLegacy() ??
+      this.parseColor()
     );
-  }
-  if ((m = value.match(RE_HEX_RGBA))) {
-    const r = parseInt(m[1], 16);
-    const g = parseInt(m[2], 16);
-    const b = parseInt(m[3], 16);
-    const a = parseInt(m[4], 16);
-    return new RgbColor(
-      ((r << 4) | r) / 255,
-      ((g << 4) | g) / 255,
-      ((b << 4) | b) / 255,
-      ((a << 4) | a) / 255,
-    );
-  }
-  if ((m = value.match(RE_HEX_RRGGBB))) {
-    const r = parseInt(m[1], 16) / 255;
-    const g = parseInt(m[2], 16) / 255;
-    const b = parseInt(m[3], 16) / 255;
-    return new RgbColor(r, g, b);
-  }
-  if ((m = value.match(RE_HEX_RRGGBBAA))) {
-    const r = parseInt(m[1], 16) / 255;
-    const g = parseInt(m[2], 16) / 255;
-    const b = parseInt(m[3], 16) / 255;
-    const a = parseInt(m[4], 16) / 255;
-    return new RgbColor(r, g, b, a);
-  }
-  if ((m = value.match(RE_RGB))) {
-    const r = _color(m[1]);
-    const g = _color(m[2]);
-    const b = _color(m[3]);
-    return new RgbColor(r, g, b);
-  }
-  if ((m = value.match(RE_RGBA))) {
-    const r = _color(m[1]);
-    const g = _color(m[2]);
-    const b = _color(m[3]);
-    const a = _alpha(m[4]);
-    return new RgbColor(r, g, b, a);
-  }
-  if ((m = value.match(RE_HSL))) {
-    const h = _angle(m[1]);
-    const s = _alpha(m[2]);
-    const l = _alpha(m[3]);
-    return new HslColor(h, s, l);
-  }
-  if ((m = value.match(RE_HSLA))) {
-    const h = _angle(m[1]);
-    const s = _alpha(m[2]);
-    const l = _alpha(m[3]);
-    const a = _alpha(m[4]);
-    return new HslColor(h, s, l, a);
-  }
-  throw new TypeError();
-}
-
-function _color(s: string): number {
-  if (s.endsWith("%")) {
-    return clamp(_number(s.substring(0, s.length - 1)) / 100, 0, 1);
-  } else {
-    return clamp(_number(s) / 255, 0, 1);
-  }
-}
-
-function _angle(s: string): number {
-  if (s.endsWith("%")) {
-    return clamp(_number(s.substring(0, s.length - 1)) / 100, 0, 1);
-  } else {
-    return clamp((_number(s) % 360) / 360, 0, 1);
-  }
-}
-
-function _alpha(s: string): number {
-  if (s.endsWith("%")) {
-    return clamp(_number(s.substring(0, s.length - 1)) / 100, 0, 1);
-  } else {
-    return clamp(_number(s), 0, 1);
-  }
-}
-
-function _number(s: string): number {
-  const v = parseFloat(s);
-  if (isNaN(v)) {
-    throw new Error();
-  } else {
-    return v;
   }
 }
