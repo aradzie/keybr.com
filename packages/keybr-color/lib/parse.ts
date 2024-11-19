@@ -1,6 +1,7 @@
 import { clamp } from "@keybr/lang";
 import { type Color } from "./color.ts";
 import { HslColor } from "./color-hsl.ts";
+import { HwbColor } from "./color-hwb.ts";
 import { RgbColor } from "./color-rgb.ts";
 import { parseHex } from "./parse-hex.ts";
 
@@ -36,6 +37,7 @@ const rComma = /\s*,\s*/y;
 const rSlash = /\s*\/\s*/y;
 const rRgb = /rgba?/y;
 const rHsl = /hsla?/y;
+const rHwb = /hwb/y;
 const rNone = /none/y;
 const rNumber = /[-+]?[0-9]+(\.[0-9]+)?([eE][-+]?[0-9]+)?/y;
 const rPct = /%/y;
@@ -245,6 +247,25 @@ class Parser {
     return null;
   }
 
+  parseHwb() {
+    this.reset();
+    if (
+      this.eat(rHwb) &&
+      this.eat(rLB) &&
+      this.parseAngle("x") &&
+      this.eat(rWs) &&
+      this.parseNumber("y", lightnessUnit) &&
+      this.eat(rWs) &&
+      this.parseNumber("z", lightnessUnit) &&
+      (!this.eat(rSlash) || this.parseNumber("a", alphaUnit)) &&
+      this.eat(rRB) &&
+      this.end()
+    ) {
+      return new HwbColor(this.x, this.y, this.z, this.a);
+    }
+    return null;
+  }
+
   parseColor() {
     this.reset();
     if (this.eat(rColor)) {
@@ -292,6 +313,7 @@ class Parser {
       this.parseRgbLegacy() ??
       this.parseHsl() ??
       this.parseHslLegacy() ??
+      this.parseHwb() ??
       this.parseColor()
     );
   }

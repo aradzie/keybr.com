@@ -22,6 +22,18 @@ export type Hsl = {
   a: number;
 };
 
+/** A color with the hue, whiteness, blackness and alpha components. */
+export type Hwb = {
+  /** The hue component, a number in range [0,1]. */
+  h: number;
+  /** The whiteness component, a number in range [0,1]. */
+  w: number;
+  /** The blackness component, a number in range [0,1]. */
+  b: number;
+  /** The alpha component, a number in range [0,1]. */
+  a: number;
+};
+
 /** A color with the hue, saturation, value and alpha components. */
 export type Hsv = {
   /** The hue component, a number in range [0,1]. */

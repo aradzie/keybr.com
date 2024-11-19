@@ -118,10 +118,22 @@ test("legacy hsl", () => {
   equal(parseColor("hsla(180,40%,30%,0.5)").format(), "hsl(180 40% 30%/0.5)");
 });
 
+test("hwb", () => {
+  equal(parseColor("hwb(none none none)").format(), "hwb(0 0% 0%)");
+  equal(parseColor("hwb(none none none/none)").format(), "hwb(0 0% 0%)");
+
+  equal(parseColor("hwb(180 10 20)").format(), "hwb(180 10% 20%)");
+  equal(parseColor("hwb(180 10 20/0.5)").format(), "hwb(180 10% 20%/0.5)");
+
+  equal(parseColor("hwb(180 10% 20%)").format(), "hwb(180 10% 20%)");
+  equal(parseColor("hwb(180 10% 20%/0.5)").format(), "hwb(180 10% 20%/0.5)");
+});
+
 test("whitespace", () => {
   equal(parseColor("  #123  ").toRgb().format(), "rgb(17 34 51)");
   equal(parseColor("  rgb  (  1  2  3  )  ").format(), "rgb(1 2 3)");
   equal(parseColor("  rgb  (  1 , 2 , 3  )  ").format(), "rgb(1 2 3)");
   equal(parseColor("  hsl  (  1  2%  3%  )  ").format(), "hsl(1 2% 3%)");
   equal(parseColor("  hsl  (  1 , 2% , 3%  )  ").format(), "hsl(1 2% 3%)");
+  equal(parseColor("  hwb  (  1  2%  3%  )  ").format(), "hwb(1 2% 3%)");
 });
