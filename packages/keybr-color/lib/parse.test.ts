@@ -132,35 +132,38 @@ test("hwb", () => {
 test("oklab", () => {
   equal(parseColor("oklab(none none none)").format(), "oklab(0 0 0)");
   equal(parseColor("oklab(none none none/none)").format(), "oklab(0 0 0)");
-
-  equal(parseColor("oklab(0.5 0.4 -0.4)").format(), "oklab(0.5 0.4 -0.4)");
-  equal(
-    parseColor("oklab(0.5 -0.4 0.4/0.5)").format(),
-    "oklab(0.5 -0.4 0.4/0.5)",
-  );
-
-  equal(parseColor("oklab(2 1 -1)").format(), "oklab(1 0.4 -0.4)");
-  equal(parseColor("oklab(2 -1 1/0.5)").format(), "oklab(1 -0.4 0.4/0.5)");
-
-  equal(parseColor("oklab(50% -100% 100%)").format(), "oklab(0.5 -0.4 0.4)");
-  equal(
-    parseColor("oklab(50% 100% -100%/0.5)").format(),
-    "oklab(0.5 0.4 -0.4/0.5)",
-  );
+  equal(parseColor("oklab(0 0 0)").format(), "oklab(0 0 0)");
+  equal(parseColor("oklab(0 0 0/0)").format(), "oklab(0 0 0/0)");
+  equal(parseColor("oklab(0% 0% 0%)").format(), "oklab(0 0 0)");
+  equal(parseColor("oklab(0% 0% 0%/0%)").format(), "oklab(0 0 0/0)");
+  equal(parseColor("oklab(0.5 0.2 0.2)").format(), "oklab(0.5 0.2 0.2)");
+  equal(parseColor("oklab(0.5 -0.2 -0.2)").format(), "oklab(0.5 -0.2 -0.2)");
+  equal(parseColor("oklab(50% 50% 50%)").format(), "oklab(0.5 0.2 0.2)");
+  equal(parseColor("oklab(50% -50% -50%)").format(), "oklab(0.5 -0.2 -0.2)");
+  equal(parseColor("oklab(1 0.4 0.4)").format(), "oklab(1 0.4 0.4)");
+  equal(parseColor("oklab(1 -0.4 -0.4)").format(), "oklab(1 -0.4 -0.4)");
+  equal(parseColor("oklab(100% 100% 100%)").format(), "oklab(1 0.4 0.4)");
+  equal(parseColor("oklab(100% -100% -100%)").format(), "oklab(1 -0.4 -0.4)");
+  equal(parseColor("oklab(2 1 1)").format(), "oklab(1 0.4 0.4)");
+  equal(parseColor("oklab(2 -1 -1)").format(), "oklab(1 -0.4 -0.4)");
+  equal(parseColor("oklab(200% 200% 200%)").format(), "oklab(1 0.4 0.4)");
+  equal(parseColor("oklab(200% -200% -200%)").format(), "oklab(1 -0.4 -0.4)");
 });
 
 test("oklch", () => {
   equal(parseColor("oklch(none none none)").format(), "oklch(0 0 0)");
   equal(parseColor("oklch(none none none/none)").format(), "oklch(0 0 0)");
-
-  equal(parseColor("oklch(1 0.4 160)").format(), "oklch(1 0.4 160)");
-  equal(parseColor("oklch(1 0.4 160/0.5)").format(), "oklch(1 0.4 160/0.5)");
-
-  equal(parseColor("oklch(1 100% 160)").format(), "oklch(1 0.4 160)");
-  equal(parseColor("oklch(1 100% 160/0.5)").format(), "oklch(1 0.4 160/0.5)");
-
-  equal(parseColor("oklch(2 -100% 160)").format(), "oklch(1 0 160)");
-  equal(parseColor("oklch(2 -100% 160/0.5)").format(), "oklch(1 0 160/0.5)");
+  equal(parseColor("oklch(0 0 0)").format(), "oklch(0 0 0)");
+  equal(parseColor("oklch(0 0 0/0)").format(), "oklch(0 0 0/0)");
+  equal(parseColor("oklch(0% 0% 0%)").format(), "oklch(0 0 0)");
+  equal(parseColor("oklch(0% 0% 0%/0%)").format(), "oklch(0 0 0/0)");
+  equal(parseColor("oklch(0.5 0.2 180)").format(), "oklch(0.5 0.2 180)");
+  equal(parseColor("oklch(50% 50% 50%)").format(), "oklch(0.5 0.2 180)");
+  equal(parseColor("oklch(1 0.4 360)").format(), "oklch(1 0.4 360)");
+  equal(parseColor("oklch(100% 100% 100%)").format(), "oklch(1 0.4 360)");
+  equal(parseColor("oklch(2 1 360)").format(), "oklch(1 0.4 360)");
+  equal(parseColor("oklch(200% 200% 360)").format(), "oklch(1 0.4 360)");
+  equal(parseColor("oklch(-1 -100% -360)").format(), "oklch(0 0 0)");
 });
 
 test("whitespace", () => {

@@ -52,49 +52,56 @@ type Unit = {
   none: number;
   min: number;
   max: number;
-  scale: number;
+  scaleNum: number;
+  scalePct: number;
 };
 
 const valueUnit: Unit = {
   none: 0,
   min: 0,
   max: 1,
-  scale: 1,
+  scaleNum: 1,
+  scalePct: 1,
 } as const;
 
 const alphaUnit: Unit = {
   none: 1,
   min: 0,
   max: 1,
-  scale: 1,
+  scaleNum: 1,
+  scalePct: 1,
 } as const;
 
 const rgbUnit: Unit = {
   none: 0,
   min: 0,
   max: 1,
-  scale: 255,
+  scaleNum: 255,
+  scalePct: 1,
 } as const;
 
 const hslUnit: Unit = {
   none: 0,
   min: 0,
   max: 100,
-  scale: 100,
+  scaleNum: 100,
+  scalePct: 1,
 } as const;
 
 const labUnit: Unit = {
   none: 0,
   min: -0.4,
   max: 0.4,
-  scale: 1,
+  scaleNum: 1,
+  scalePct: 2.5,
 } as const;
 
 const lchUnit: Unit = {
   none: 0,
   min: 0,
   max: 0.4,
-  scale: 1,
+  scaleNum: 1,
+  scalePct: 2.5,
 } as const;
 
 type Prop = "x" | "y" | "z" | "a";
@@ -151,9 +158,9 @@ class Parser {
     if (this.eat(rNumber)) {
       let v = Number(this.image());
       if (this.eat(rPct)) {
-        v = v / 100;
+        v = v / 100 / unit.scalePct;
       } else {
-        v = v / unit.scale;
+        v = v / unit.scaleNum;
       }
       this[prop] = clamp(v, unit.min, unit.max);
       return true;
