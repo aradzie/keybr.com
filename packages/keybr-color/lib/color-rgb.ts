@@ -7,25 +7,29 @@ import { type Rgb } from "./types.ts";
  * A color in the RGB model.
  */
 export class RgbColor extends Color implements Rgb {
-  r: number;
-  g: number;
-  b: number;
-  a: number;
+  #r: number = 0;
+  #g: number = 0;
+  #b: number = 0;
+  #a: number = 1;
 
+  constructor();
   constructor(r: number, g: number, b: number, a?: number);
   constructor(value: Readonly<{ r: number; g: number; b: number; a?: number }>);
   constructor(...args: any[]) {
     super();
     const l = args.length;
+    if (l === 0) {
+      return;
+    }
     if (
       l === 3 &&
       isNumber(args[0]) &&
       isNumber(args[1]) &&
       isNumber(args[2])
     ) {
-      this.r = clamp(args[0], 0, 1);
-      this.g = clamp(args[1], 0, 1);
-      this.b = clamp(args[2], 0, 1);
+      this.r = args[0];
+      this.g = args[1];
+      this.b = args[2];
       this.a = 1;
       return this;
     }
@@ -36,21 +40,53 @@ export class RgbColor extends Color implements Rgb {
       isNumber(args[2]) &&
       isNumber(args[3])
     ) {
-      this.r = clamp(args[0], 0, 1);
-      this.g = clamp(args[1], 0, 1);
-      this.b = clamp(args[2], 0, 1);
-      this.a = clamp(args[3], 0, 1);
+      this.r = args[0];
+      this.g = args[1];
+      this.b = args[2];
+      this.a = args[3];
       return this;
     }
     const [value] = args;
     if (l === 1 && RgbColor.is(value)) {
-      this.r = clamp(value.r, 0, 1);
-      this.g = clamp(value.g, 0, 1);
-      this.b = clamp(value.b, 0, 1);
-      this.a = clamp(value.a ?? 1, 0, 1);
+      this.r = value.r;
+      this.g = value.g;
+      this.b = value.b;
+      this.a = value.a ?? 1;
       return this;
     }
     throw new TypeError();
+  }
+
+  get r(): number {
+    return this.#r;
+  }
+
+  set r(value: number) {
+    this.#r = clamp(value, 0, 1);
+  }
+
+  get g(): number {
+    return this.#g;
+  }
+
+  set g(value: number) {
+    this.#g = clamp(value, 0, 1);
+  }
+
+  get b(): number {
+    return this.#b;
+  }
+
+  set b(value: number) {
+    this.#b = clamp(value, 0, 1);
+  }
+
+  get a(): number {
+    return this.#a;
+  }
+
+  set a(value: number) {
+    this.#a = clamp(value, 0, 1);
   }
 
   override toRgb(clone?: boolean) {

@@ -7,25 +7,29 @@ import { type Hwb } from "./types.ts";
  * A color in the HWB model.
  */
 export class HwbColor extends Color implements Hwb {
-  h: number;
-  w: number;
-  b: number;
-  a: number;
+  #h: number = 0;
+  #w: number = 0;
+  #b: number = 0;
+  #a: number = 1;
 
+  constructor();
   constructor(h: number, w: number, b: number, a?: number);
   constructor(value: Readonly<{ h: number; w: number; b: number; a?: number }>);
   constructor(...args: any[]) {
     super();
     const l = args.length;
+    if (l === 0) {
+      return;
+    }
     if (
       l === 3 &&
       isNumber(args[0]) &&
       isNumber(args[1]) &&
       isNumber(args[2])
     ) {
-      this.h = clamp(args[0], 0, 1);
-      this.w = clamp(args[1], 0, 1);
-      this.b = clamp(args[2], 0, 1);
+      this.h = args[0];
+      this.w = args[1];
+      this.b = args[2];
       this.a = 1;
       return this;
     }
@@ -36,21 +40,53 @@ export class HwbColor extends Color implements Hwb {
       isNumber(args[2]) &&
       isNumber(args[3])
     ) {
-      this.h = clamp(args[0], 0, 1);
-      this.w = clamp(args[1], 0, 1);
-      this.b = clamp(args[2], 0, 1);
-      this.a = clamp(args[3], 0, 1);
+      this.h = args[0];
+      this.w = args[1];
+      this.b = args[2];
+      this.a = args[3];
       return this;
     }
     const [value] = args;
     if (l === 1 && HwbColor.is(value)) {
-      this.h = clamp(value.h, 0, 1);
-      this.w = clamp(value.w, 0, 1);
-      this.b = clamp(value.b, 0, 1);
-      this.a = clamp(value.a ?? 1, 0, 1);
+      this.h = value.h;
+      this.w = value.w;
+      this.b = value.b;
+      this.a = value.a ?? 1;
       return this;
     }
     throw new TypeError();
+  }
+
+  get h(): number {
+    return this.#h;
+  }
+
+  set h(value: number) {
+    this.#h = clamp(value, 0, 1);
+  }
+
+  get w(): number {
+    return this.#w;
+  }
+
+  set w(value: number) {
+    this.#w = clamp(value, 0, 1);
+  }
+
+  get b(): number {
+    return this.#b;
+  }
+
+  set b(value: number) {
+    this.#b = clamp(value, 0, 1);
+  }
+
+  get a(): number {
+    return this.#a;
+  }
+
+  set a(value: number) {
+    this.#a = clamp(value, 0, 1);
   }
 
   override toRgb() {

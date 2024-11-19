@@ -7,25 +7,29 @@ import { type Hsl } from "./types.ts";
  * A color in the HSL model.
  */
 export class HslColor extends Color implements Hsl {
-  h: number;
-  s: number;
-  l: number;
-  a: number;
+  #h: number = 0;
+  #s: number = 0;
+  #l: number = 0;
+  #a: number = 1;
 
+  constructor();
   constructor(h: number, s: number, l: number, a?: number);
   constructor(value: Readonly<{ h: number; s: number; l: number; a?: number }>);
   constructor(...args: any[]) {
     super();
     const l = args.length;
+    if (l === 0) {
+      return;
+    }
     if (
       l === 3 &&
       isNumber(args[0]) &&
       isNumber(args[1]) &&
       isNumber(args[2])
     ) {
-      this.h = clamp(args[0], 0, 1);
-      this.s = clamp(args[1], 0, 1);
-      this.l = clamp(args[2], 0, 1);
+      this.h = args[0];
+      this.s = args[1];
+      this.l = args[2];
       this.a = 1;
       return this;
     }
@@ -36,21 +40,53 @@ export class HslColor extends Color implements Hsl {
       isNumber(args[2]) &&
       isNumber(args[3])
     ) {
-      this.h = clamp(args[0], 0, 1);
-      this.s = clamp(args[1], 0, 1);
-      this.l = clamp(args[2], 0, 1);
-      this.a = clamp(args[3], 0, 1);
+      this.h = args[0];
+      this.s = args[1];
+      this.l = args[2];
+      this.a = args[3];
       return this;
     }
     const [value] = args;
     if (l === 1 && HslColor.is(value)) {
-      this.h = clamp(value.h, 0, 1);
-      this.s = clamp(value.s, 0, 1);
-      this.l = clamp(value.l, 0, 1);
-      this.a = clamp(value.a ?? 1, 0, 1);
+      this.h = value.h;
+      this.s = value.s;
+      this.l = value.l;
+      this.a = value.a ?? 1;
       return this;
     }
     throw new TypeError();
+  }
+
+  get h(): number {
+    return this.#h;
+  }
+
+  set h(value: number) {
+    this.#h = clamp(value, 0, 1);
+  }
+
+  get s(): number {
+    return this.#s;
+  }
+
+  set s(value: number) {
+    this.#s = clamp(value, 0, 1);
+  }
+
+  get l(): number {
+    return this.#l;
+  }
+
+  set l(value: number) {
+    this.#l = clamp(value, 0, 1);
+  }
+
+  get a(): number {
+    return this.#a;
+  }
+
+  set a(value: number) {
+    this.#a = value;
   }
 
   override toRgb() {

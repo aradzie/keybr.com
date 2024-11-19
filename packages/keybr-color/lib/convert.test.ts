@@ -1,5 +1,7 @@
-import { deepEqual, equal } from "node:assert/strict";
+import { equal } from "node:assert/strict";
 import { test } from "node:test";
+import { expect, use } from "chai";
+import chaiLike from "chai-like";
 import { HslColor } from "./color-hsl.ts";
 import { HsvColor } from "./color-hsv.ts";
 import { HwbColor } from "./color-hwb.ts";
@@ -15,6 +17,8 @@ import {
   rgbToHwb,
 } from "./convert.ts";
 import { parseColor } from "./parse.ts";
+
+use(chaiLike);
 
 test("roundtrip", () => {
   equal(
@@ -106,31 +110,19 @@ test("hwb to hsl", () => {
 });
 
 test("hsl to hsv", () => {
-  deepEqual(
-    { ...hslToHsv(new HslColor(0, 0, 0)) }, //
-    { h: 0, s: 0, v: 0, a: 1 },
-  );
-  deepEqual(
-    { ...hslToHsv(new HslColor(0, 0, 0.5)) }, //
-    { h: 0, s: 0, v: 0.5, a: 1 },
-  );
-  deepEqual(
-    { ...hslToHsv(new HslColor(0, 1, 1)) }, //
-    { h: 0, s: 0, v: 1, a: 1 },
-  );
+  expect(hslToHsv(new HslColor(0, 0, 0))) //
+    .to.be.like({ h: 0, s: 0, v: 0, a: 1 });
+  expect(hslToHsv(new HslColor(0, 0, 0.5))) //
+    .to.be.like({ h: 0, s: 0, v: 0.5, a: 1 });
+  expect(hslToHsv(new HslColor(0, 1, 1))) //
+    .to.be.like({ h: 0, s: 0, v: 1, a: 1 });
 });
 
 test("hsv to hsl", () => {
-  deepEqual(
-    { ...hsvToHsl(new HsvColor(0, 0, 0)) }, //
-    { h: 0, s: 0, l: 0, a: 1 },
-  );
-  deepEqual(
-    { ...hsvToHsl(new HsvColor(0, 0, 0.5)) }, //
-    { h: 0, s: 0, l: 0.5, a: 1 },
-  );
-  deepEqual(
-    { ...hsvToHsl(new HsvColor(0, 1, 1)) }, //
-    { h: 0, s: 1, l: 0.5, a: 1 },
-  );
+  expect(hsvToHsl(new HsvColor(0, 0, 0))) //
+    .to.be.like({ h: 0, s: 0, l: 0, a: 1 });
+  expect(hsvToHsl(new HsvColor(0, 0, 0.5))) //
+    .to.be.like({ h: 0, s: 0, l: 0.5, a: 1 });
+  expect(hsvToHsl(new HsvColor(0, 1, 1))) //
+    .to.be.like({ h: 0, s: 1, l: 0.5, a: 1 });
 });
