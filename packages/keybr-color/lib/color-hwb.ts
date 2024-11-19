@@ -1,6 +1,6 @@
 import { clamp, isNumber, isObjectLike } from "@keybr/lang";
 import { Color } from "./color.ts";
-import { hslToHsv, hwbToHsl, hwbToRgb } from "./convert.ts";
+import { hwbToHsl, hwbToHsv, hwbToRgb } from "./convert.ts";
 import { type Hwb } from "./types.ts";
 
 /**
@@ -62,7 +62,7 @@ export class HwbColor extends Color implements Hwb {
   }
 
   override toHsv() {
-    return hslToHsv(hwbToHsl(this));
+    return hwbToHsv(this);
   }
 
   override format() {

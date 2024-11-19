@@ -154,3 +154,23 @@ export function hslToHwb({ h, s, l, a }: Hsl): HwbColor {
   const bb = 1 - vv;
   return new HwbColor(h, ww, bb, a);
 }
+
+export function hwbToHsv({ h, w, b, a }: Hwb): HsvColor {
+  h = clamp(h, 0, 1);
+  w = clamp(w, 0, 1);
+  b = clamp(b, 0, 1);
+  a = clamp(a, 0, 1);
+  const vv = 1 - b;
+  const ss = vv > 0 ? 1 - w / vv : 0;
+  return new HsvColor(h, ss, vv, a);
+}
+
+export function hsvToHwb({ h, s, v, a }: Hsv): HwbColor {
+  h = clamp(h, 0, 1);
+  s = clamp(s, 0, 1);
+  v = clamp(v, 0, 1);
+  a = clamp(a, 0, 1);
+  const ww = (1 - s) * v;
+  const bb = 1 - v;
+  return new HwbColor(h, ww, bb, a);
+}
