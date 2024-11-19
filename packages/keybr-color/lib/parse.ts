@@ -47,9 +47,6 @@ const rNumber = /[-+]?[0-9]+(\.[0-9]+)?([eE][-+]?[0-9]+)?/y;
 const rPct = /%/y;
 const rDeg = /deg/y;
 const rRad = /rad/y;
-const rColor = /color/y;
-const rSRgb = /sRGB/y;
-const rDisplayP3 = /display-p3/y;
 
 type Unit = {
   none: number;
@@ -58,18 +55,11 @@ type Unit = {
   scale: number;
 };
 
-const colorUnit: Unit = {
+const valueUnit: Unit = {
   none: 0,
   min: 0,
   max: 1,
-  scale: 255,
-} as const;
-
-const lightnessUnit: Unit = {
-  none: 0,
-  min: 0,
-  max: 100,
-  scale: 100,
+  scale: 1,
 } as const;
 
 const alphaUnit: Unit = {
@@ -79,11 +69,18 @@ const alphaUnit: Unit = {
   scale: 1,
 } as const;
 
-const valueUnit: Unit = {
+const rgbUnit: Unit = {
   none: 0,
   min: 0,
   max: 1,
-  scale: 1,
+  scale: 255,
+} as const;
+
+const hslUnit: Unit = {
+  none: 0,
+  min: 0,
+  max: 100,
+  scale: 100,
 } as const;
 
 const labUnit: Unit = {
@@ -194,11 +191,11 @@ class Parser {
     if (
       this.eat(rRgb) &&
       this.eat(rLB) &&
-      this.parseNumber("x", colorUnit) &&
+      this.parseNumber("x", rgbUnit) &&
       this.eat(rWs) &&
-      this.parseNumber("y", colorUnit) &&
+      this.parseNumber("y", rgbUnit) &&
       this.eat(rWs) &&
-      this.parseNumber("z", colorUnit) &&
+      this.parseNumber("z", rgbUnit) &&
       (!this.eat(rSlash) || this.parseNumber("a", alphaUnit)) &&
       this.eat(rRB) &&
       this.end()
@@ -213,11 +210,11 @@ class Parser {
     if (
       this.eat(rRgb) &&
       this.eat(rLB) &&
-      this.parseNumber("x", colorUnit) &&
+      this.parseNumber("x", rgbUnit) &&
       this.eat(rComma) &&
-      this.parseNumber("y", colorUnit) &&
+      this.parseNumber("y", rgbUnit) &&
       this.eat(rComma) &&
-      this.parseNumber("z", colorUnit) &&
+      this.parseNumber("z", rgbUnit) &&
       (!this.eat(rComma) || this.parseNumber("a", alphaUnit)) &&
       this.eat(rRB) &&
       this.end()
@@ -234,9 +231,9 @@ class Parser {
       this.eat(rLB) &&
       this.parseAngle("x") &&
       this.eat(rWs) &&
-      this.parseNumber("y", lightnessUnit) &&
+      this.parseNumber("y", hslUnit) &&
       this.eat(rWs) &&
-      this.parseNumber("z", lightnessUnit) &&
+      this.parseNumber("z", hslUnit) &&
       (!this.eat(rSlash) || this.parseNumber("a", alphaUnit)) &&
       this.eat(rRB) &&
       this.end()
@@ -253,9 +250,9 @@ class Parser {
       this.eat(rLB) &&
       this.parseAngle("x") &&
       this.eat(rComma) &&
-      this.parseNumber("y", lightnessUnit) &&
+      this.parseNumber("y", hslUnit) &&
       this.eat(rComma) &&
-      this.parseNumber("z", lightnessUnit) &&
+      this.parseNumber("z", hslUnit) &&
       (!this.eat(rComma) || this.parseNumber("a", alphaUnit)) &&
       this.eat(rRB) &&
       this.end()
@@ -272,9 +269,9 @@ class Parser {
       this.eat(rLB) &&
       this.parseAngle("x") &&
       this.eat(rWs) &&
-      this.parseNumber("y", lightnessUnit) &&
+      this.parseNumber("y", hslUnit) &&
       this.eat(rWs) &&
-      this.parseNumber("z", lightnessUnit) &&
+      this.parseNumber("z", hslUnit) &&
       (!this.eat(rSlash) || this.parseNumber("a", alphaUnit)) &&
       this.eat(rRB) &&
       this.end()
@@ -322,47 +319,6 @@ class Parser {
     return null;
   }
 
-  parseColor() {
-    this.reset();
-    if (this.eat(rColor)) {
-      if (
-        this.try(
-          () =>
-            this.eat(rLB) &&
-            this.eat(rSRgb) &&
-            this.eat(rWs) &&
-            this.parseNumber("x", valueUnit) &&
-            this.eat(rWs) &&
-            this.parseNumber("y", valueUnit) &&
-            this.eat(rWs) &&
-            this.parseNumber("z", valueUnit) &&
-            this.eat(rRB) &&
-            this.end(),
-        )
-      ) {
-        //
-      }
-      if (
-        this.try(
-          () =>
-            this.eat(rLB) &&
-            this.eat(rDisplayP3) &&
-            this.eat(rWs) &&
-            this.parseNumber("x", valueUnit) &&
-            this.eat(rWs) &&
-            this.parseNumber("y", valueUnit) &&
-            this.eat(rWs) &&
-            this.parseNumber("z", valueUnit) &&
-            this.eat(rRB) &&
-            this.end(),
-        )
-      ) {
-        //
-      }
-    }
-    return null;
-  }
-
   parse() {
     return (
       this.parseRgb() ??
@@ -371,8 +327,7 @@ class Parser {
       this.parseHslLegacy() ??
       this.parseHwb() ??
       this.parseOklab() ??
-      this.parseOklch() ??
-      this.parseColor()
+      this.parseOklch()
     );
   }
 }
