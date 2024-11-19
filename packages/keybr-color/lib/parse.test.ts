@@ -1,5 +1,5 @@
-import { equal, throws } from "node:assert/strict";
 import { describe, it, test } from "node:test";
+import { equal, throws } from "rich-assert";
 import { parseColor } from "./parse.ts";
 
 test("validate", () => {
@@ -26,29 +26,37 @@ test("validate", () => {
 describe("parse angle", () => {
   it("should wrap around", () => {
     equal(parseColor("hsl(+100.0 0% 0%)").format(), "hsl(100 0% 0%)");
+    equal(parseColor("hsl(+360.0 0% 0%)").format(), "hsl(360 0% 0%)");
     equal(parseColor("hsl(+460.0 0% 0%)").format(), "hsl(100 0% 0%)");
     equal(parseColor("hsl(-100.0 0% 0%)").format(), "hsl(260 0% 0%)");
     equal(parseColor("hsl(-460.0 0% 0%)").format(), "hsl(260 0% 0%)");
   });
 
-  it("should parse percent unit", () => {
-    equal(parseColor("hsl(+25.00% 0% 0%)").format(), "hsl(90 0% 0%)");
+  it("should parse the percent unit", () => {
     equal(parseColor("hsl(+50.00% 0% 0%)").format(), "hsl(180 0% 0%)");
     equal(parseColor("hsl(+100.00% 0% 0%)").format(), "hsl(360 0% 0%)");
-    equal(parseColor("hsl(-50.0% 0% 0%)").format(), "hsl(180 0% 0%)");
+    equal(parseColor("hsl(-50.00% 0% 0%)").format(), "hsl(180 0% 0%)");
     equal(parseColor("hsl(-100.00% 0% 0%)").format(), "hsl(0 0% 0%)");
   });
 
-  it("should parse degree unit", () => {
+  it("should parse the degree unit", () => {
     equal(parseColor("hsl(+180.00deg 0% 0%)").format(), "hsl(180 0% 0%)");
     equal(parseColor("hsl(+360.00deg 0% 0%)").format(), "hsl(360 0% 0%)");
     equal(parseColor("hsl(-180.00deg 0% 0%)").format(), "hsl(180 0% 0%)");
     equal(parseColor("hsl(-360.00deg 0% 0%)").format(), "hsl(0 0% 0%)");
   });
 
-  it("should parse radian unit", () => {
+  it("should parse the radian unit", () => {
+    equal(parseColor("hsl(+1.570796327rad 0% 0%)").format(), "hsl(90 0% 0%)");
     equal(parseColor("hsl(+3.141592653rad 0% 0%)").format(), "hsl(180 0% 0%)");
     equal(parseColor("hsl(-3.141592653rad 0% 0%)").format(), "hsl(180 0% 0%)");
+  });
+
+  it("should parse the turn unit", () => {
+    equal(parseColor("hsl(+0.25turn 0% 0%)").format(), "hsl(90 0% 0%)");
+    equal(parseColor("hsl(+0.50turn 0% 0%)").format(), "hsl(180 0% 0%)");
+    equal(parseColor("hsl(+1.0turn 0% 0%)").format(), "hsl(360 0% 0%)");
+    equal(parseColor("hsl(-0.5turn 0% 0%)").format(), "hsl(180 0% 0%)");
   });
 });
 

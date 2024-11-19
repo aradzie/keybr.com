@@ -47,6 +47,7 @@ const rNumber = /[-+]?[0-9]+(\.[0-9]+)?([eE][-+]?[0-9]+)?/y;
 const rPct = /%/y;
 const rDeg = /deg/y;
 const rRad = /rad/y;
+const rTurn = /turn/y;
 
 type Unit = {
   none: number;
@@ -83,7 +84,7 @@ const rgbUnit: Unit = {
 const hslUnit: Unit = {
   none: 0,
   min: 0,
-  max: 100,
+  max: 1,
   scaleNum: 100,
   scalePct: 1,
 } as const;
@@ -181,6 +182,8 @@ class Parser {
         v = v / 360;
       } else if (this.eat(rRad)) {
         v = v / (Math.PI * 2);
+      } else if (this.eat(rTurn)) {
+        v = v / 1;
       } else {
         v = v / 360;
       }

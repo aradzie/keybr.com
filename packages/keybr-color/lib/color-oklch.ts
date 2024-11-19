@@ -1,5 +1,6 @@
 import { clamp, isNumber, isObjectLike } from "@keybr/lang";
 import { Color } from "./color.ts";
+import { hslToHsv, rgbToHsl } from "./convert.ts";
 import { type Oklch } from "./types.ts";
 
 /**
@@ -93,11 +94,11 @@ export class OklchColor extends Color implements Oklch {
   }
 
   override toHsl() {
-    return null as any;
+    return rgbToHsl(this.toRgb());
   }
 
   override toHsv() {
-    return null as any;
+    return hslToHsv(rgbToHsl(this.toRgb()));
   }
 
   override format() {
@@ -109,6 +110,10 @@ export class OklchColor extends Color implements Oklch {
     } else {
       return `oklch(${L} ${C} ${h})`;
     }
+  }
+
+  get [Symbol.toStringTag]() {
+    return "OklchColor";
   }
 
   static is(o: any): o is Oklch {

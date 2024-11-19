@@ -86,7 +86,7 @@ export class HslColor extends Color implements Hsl {
   }
 
   set a(value: number) {
-    this.#a = value;
+    this.#a = clamp(value, 0, 1);
   }
 
   override toRgb() {
@@ -114,6 +114,10 @@ export class HslColor extends Color implements Hsl {
     } else {
       return `hsl(${h} ${s}% ${l}%)`;
     }
+  }
+
+  get [Symbol.toStringTag]() {
+    return "HslColor";
   }
 
   static is(o: any): o is Hsl {

@@ -135,6 +135,10 @@ export class RgbColor extends Color implements Rgb {
     return (r << 16) | (g << 8) | (b << 0);
   }
 
+  get [Symbol.toStringTag]() {
+    return "RgbColor";
+  }
+
   static is(o: any): o is Rgb {
     return (
       isObjectLike(o) &&

@@ -1,5 +1,5 @@
-import { equal } from "node:assert/strict";
 import { test } from "node:test";
+import { equal } from "rich-assert";
 import { mixColors } from "./mix.ts";
 import { hexColor } from "./parse.ts";
 

@@ -113,6 +113,10 @@ export class HwbColor extends Color implements Hwb {
     }
   }
 
+  get [Symbol.toStringTag]() {
+    return "HwbColor";
+  }
+
   static is(o: any): o is Hwb {
     return (
       isObjectLike(o) &&

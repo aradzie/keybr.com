@@ -1,8 +1,6 @@
 import { clamp, isNumber, isObjectLike } from "@keybr/lang";
 import { Color } from "./color.ts";
-import { type HslColor } from "./color-hsl.ts";
-import { type HsvColor } from "./color-hsv.ts";
-import { type RgbColor } from "./color-rgb.ts";
+import { hslToHsv, rgbToHsl } from "./convert.ts";
 import { type Oklab } from "./types.ts";
 
 /**
@@ -91,16 +89,16 @@ export class OklabColor extends Color implements Oklab {
     this.#a = clamp(value, 0, 1);
   }
 
-  override toRgb(): RgbColor {
-    throw new Error();
+  override toRgb(clone?: boolean) {
+    return null as any;
   }
 
-  override toHsl(): HslColor {
-    throw new Error();
+  override toHsl() {
+    return rgbToHsl(this.toRgb());
   }
 
-  override toHsv(): HsvColor {
-    throw new Error();
+  override toHsv() {
+    return hslToHsv(rgbToHsl(this.toRgb()));
   }
 
   override format() {
@@ -110,6 +108,10 @@ export class OklabColor extends Color implements Oklab {
     } else {
       return `oklab(${L} ${A} ${B})`;
     }
+  }
+
+  get [Symbol.toStringTag]() {
+    return "OklabColor";
   }
 
   static is(o: any): o is Oklab {

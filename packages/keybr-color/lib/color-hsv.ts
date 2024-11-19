@@ -108,6 +108,10 @@ export class HsvColor extends Color implements Hsv {
     return this.toHsl().format();
   }
 
+  get [Symbol.toStringTag]() {
+    return "HsvColor";
+  }
+
   static is(o: any): o is Hsv {
     return (
       isObjectLike(o) &&

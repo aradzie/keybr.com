@@ -1,59 +1,16 @@
-import { equal } from "node:assert/strict";
 import { test } from "node:test";
-import { expect, use } from "chai";
-import chaiLike from "chai-like";
+import { equal, like } from "rich-assert";
 import { HslColor } from "./color-hsl.ts";
 import { HsvColor } from "./color-hsv.ts";
 import { HwbColor } from "./color-hwb.ts";
 import { RgbColor } from "./color-rgb.ts";
-import {
-  hslToHsv,
-  hslToHwb,
-  hslToRgb,
-  hsvToHsl,
-  hwbToHsl,
-  hwbToRgb,
-  rgbToHsl,
-  rgbToHwb,
-} from "./convert.ts";
+import { hslToHsv, hslToHwb, hslToRgb, hsvToHsl, hwbToHsl, hwbToRgb, rgbToHsl, rgbToHwb } from "./convert.ts";
 import { parseColor } from "./parse.ts";
 
-use(chaiLike);
-
 test("roundtrip", () => {
-  equal(
-    parseColor("#000000")
-      .toHsl()
-      .toHsv()
-      .toRgb()
-      .toHsv()
-      .toHsl()
-      .toRgb()
-      .formatHex(),
-    "#000000",
-  );
-  equal(
-    parseColor("#112233")
-      .toHsl()
-      .toHsv()
-      .toRgb()
-      .toHsv()
-      .toHsl()
-      .toRgb()
-      .formatHex(),
-    "#112233",
-  );
-  equal(
-    parseColor("#ffffff")
-      .toHsl()
-      .toHsv()
-      .toRgb()
-      .toHsv()
-      .toHsl()
-      .toRgb()
-      .formatHex(),
-    "#ffffff",
-  );
+  equal(parseColor("#000000").toHsl().toHsv().toRgb().toHsv().toHsl().toRgb().formatHex(), "#000000");
+  equal(parseColor("#112233").toHsl().toHsv().toRgb().toHsv().toHsl().toRgb().formatHex(), "#112233");
+  equal(parseColor("#ffffff").toHsl().toHsv().toRgb().toHsv().toHsl().toRgb().formatHex(), "#ffffff");
 });
 
 test("rgb to hsl", () => {
@@ -110,19 +67,13 @@ test("hwb to hsl", () => {
 });
 
 test("hsl to hsv", () => {
-  expect(hslToHsv(new HslColor(0, 0, 0))) //
-    .to.be.like({ h: 0, s: 0, v: 0, a: 1 });
-  expect(hslToHsv(new HslColor(0, 0, 0.5))) //
-    .to.be.like({ h: 0, s: 0, v: 0.5, a: 1 });
-  expect(hslToHsv(new HslColor(0, 1, 1))) //
-    .to.be.like({ h: 0, s: 0, v: 1, a: 1 });
+  like(hslToHsv(new HslColor(0, 0, 0)), { h: 0, s: 0, v: 0, a: 1 });
+  like(hslToHsv(new HslColor(0, 0, 0.5)), { h: 0, s: 0, v: 0.5, a: 1 });
+  like(hslToHsv(new HslColor(0, 1, 1)), { h: 0, s: 0, v: 1, a: 1 });
 });
 
 test("hsv to hsl", () => {
-  expect(hsvToHsl(new HsvColor(0, 0, 0))) //
-    .to.be.like({ h: 0, s: 0, l: 0, a: 1 });
-  expect(hsvToHsl(new HsvColor(0, 0, 0.5))) //
-    .to.be.like({ h: 0, s: 0, l: 0.5, a: 1 });
-  expect(hsvToHsl(new HsvColor(0, 1, 1))) //
-    .to.be.like({ h: 0, s: 1, l: 0.5, a: 1 });
+  like(hsvToHsl(new HsvColor(0, 0, 0)), { h: 0, s: 0, l: 0, a: 1 });
+  like(hsvToHsl(new HsvColor(0, 0, 0.5)), { h: 0, s: 0, l: 0.5, a: 1 });
+  like(hsvToHsl(new HsvColor(0, 1, 1)), { h: 0, s: 1, l: 0.5, a: 1 });
 });
