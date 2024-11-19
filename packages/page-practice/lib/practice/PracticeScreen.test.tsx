@@ -28,7 +28,9 @@ test("render", async () => {
     </FakeIntlProvider>,
   );
 
-  assert.isNotNull(await r.findByText("Settings..."));
+  assert.isNotNull(
+    await r.findByTitle("Change lesson settings", { exact: false }),
+  );
   assert.include(r.container.textContent, "abcdefghij");
 
   r.unmount();

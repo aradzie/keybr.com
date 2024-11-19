@@ -1,5 +1,6 @@
 import { Dir } from "@keybr/intl";
 import { names } from "@keybr/lesson-ui";
+import { useSettings } from "@keybr/settings";
 import { Button, Icon, IconButton, useView } from "@keybr/widget";
 import {
   mdiAspectRatio,
@@ -25,6 +26,7 @@ export const Controls = memo(function Controls({
   readonly onHelp: () => void;
 }): ReactNode {
   const { formatMessage } = useIntl();
+  const { settings } = useSettings();
   const { setView } = useView(views);
   return (
     <div id={names.controls} className={styles.controls}>
@@ -62,21 +64,35 @@ export const Controls = memo(function Controls({
         })}
         onClick={onChangeView}
       />
-      <Button
-        icon={<Icon shape={mdiCog} />}
-        label={formatMessage({
-          id: "practice.widget.settings.name",
-          defaultMessage: "Settings...",
-        })}
-        title={formatMessage({
-          id: "practice.widget.settings.description",
-          defaultMessage:
-            "Change lesson settings, configure language, keyboard layout, etc.",
-        })}
-        onClick={() => {
-          setView("settings");
-        }}
-      />
+      {settings.isNew ? (
+        <Button
+          icon={<Icon shape={mdiCog} />}
+          label={formatMessage({
+            id: "practice.widget.settings.name",
+            defaultMessage: "Settings...",
+          })}
+          title={formatMessage({
+            id: "practice.widget.settings.description",
+            defaultMessage:
+              "Change lesson settings, configure language, keyboard layout, etc.",
+          })}
+          onClick={() => {
+            setView("settings");
+          }}
+        />
+      ) : (
+        <IconButton
+          icon={<Icon shape={mdiCog} />}
+          title={formatMessage({
+            id: "practice.widget.settings.description",
+            defaultMessage:
+              "Change lesson settings, configure language, keyboard layout, etc.",
+          })}
+          onClick={() => {
+            setView("settings");
+          }}
+        />
+      )}
     </div>
   );
 });
