@@ -31,8 +31,8 @@ export function parseColor(value: string): Color {
 }
 
 const rWs = /\s+/y;
-const rLB = /\s*\(\s*/y;
-const rRB = /\s*\)\s*/y;
+const rLB = /\(\s*/y;
+const rRB = /\s*\)/y;
 const rComma = /\s*,\s*/y;
 const rSlash = /\s*\/\s*/y;
 const rRgb = /rgba?/y;

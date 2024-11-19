@@ -131,9 +131,9 @@ test("hwb", () => {
 
 test("whitespace", () => {
   equal(parseColor("  #123  ").toRgb().format(), "rgb(17 34 51)");
-  equal(parseColor("  rgb  (  1  2  3  )  ").format(), "rgb(1 2 3)");
-  equal(parseColor("  rgb  (  1 , 2 , 3  )  ").format(), "rgb(1 2 3)");
-  equal(parseColor("  hsl  (  1  2%  3%  )  ").format(), "hsl(1 2% 3%)");
-  equal(parseColor("  hsl  (  1 , 2% , 3%  )  ").format(), "hsl(1 2% 3%)");
-  equal(parseColor("  hwb  (  1  2%  3%  )  ").format(), "hwb(1 2% 3%)");
+  equal(parseColor("  rgb(  1  2  3  )  ").format(), "rgb(1 2 3)");
+  equal(parseColor("  rgb(  1 , 2 , 3  )  ").format(), "rgb(1 2 3)");
+  equal(parseColor("  hsl(  1  2%  3%  )  ").format(), "hsl(1 2% 3%)");
+  equal(parseColor("  hsl(  1 , 2% , 3%  )  ").format(), "hsl(1 2% 3%)");
+  equal(parseColor("  hwb(  1  2%  3%  )  ").format(), "hwb(1 2% 3%)");
 });
