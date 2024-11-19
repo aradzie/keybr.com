@@ -45,3 +45,25 @@ export type Hsv = {
   /** The alpha component, a number in range [0,1]. */
   a: number;
 };
+
+export type Oklab = {
+  /** The `L` component, a number in range [0,1]. */
+  L: number;
+  /** The `a` component, a number in range [-0.4,0.4]. */
+  A: number;
+  /** The `b` component, a number in range [-0.4,0.4]. */
+  B: number;
+  /** The alpha component, a number in range [0,1]. */
+  a: number;
+};
+
+export type Oklch = {
+  /** The `L` component, a number in range [0,1]. */
+  L: number;
+  /** The `C` component, a number in range [0,0.4]. */
+  C: number;
+  /** The hue component, a number in range [0,1]. */
+  h: number;
+  /** The alpha component, a number in range [0,1]. */
+  a: number;
+};

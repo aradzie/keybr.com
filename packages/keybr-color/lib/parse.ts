@@ -2,6 +2,8 @@ import { clamp } from "@keybr/lang";
 import { type Color } from "./color.ts";
 import { HslColor } from "./color-hsl.ts";
 import { HwbColor } from "./color-hwb.ts";
+import { OklabColor } from "./color-oklab.ts";
+import { OklchColor } from "./color-oklch.ts";
 import { RgbColor } from "./color-rgb.ts";
 import { parseHex } from "./parse-hex.ts";
 
@@ -38,6 +40,8 @@ const rSlash = /\s*\/\s*/y;
 const rRgb = /rgba?/y;
 const rHsl = /hsla?/y;
 const rHwb = /hwb/y;
+const rOklab = /oklab/y;
+const rOklch = /oklch/y;
 const rNone = /none/y;
 const rNumber = /[-+]?[0-9]+(\.[0-9]+)?([eE][-+]?[0-9]+)?/y;
 const rPct = /%/y;
@@ -79,6 +83,20 @@ const valueUnit: Unit = {
   none: 0,
   min: 0,
   max: 1,
+  scale: 1,
+} as const;
+
+const labUnit: Unit = {
+  none: 0,
+  min: -0.4,
+  max: 0.4,
+  scale: 1,
+} as const;
+
+const lchUnit: Unit = {
+  none: 0,
+  min: 0,
+  max: 0.4,
   scale: 1,
 } as const;
 
@@ -266,6 +284,44 @@ class Parser {
     return null;
   }
 
+  parseOklab() {
+    this.reset();
+    if (
+      this.eat(rOklab) &&
+      this.eat(rLB) &&
+      this.parseNumber("x", valueUnit) &&
+      this.eat(rWs) &&
+      this.parseNumber("y", labUnit) &&
+      this.eat(rWs) &&
+      this.parseNumber("z", labUnit) &&
+      (!this.eat(rSlash) || this.parseNumber("a", alphaUnit)) &&
+      this.eat(rRB) &&
+      this.end()
+    ) {
+      return new OklabColor(this.x, this.y, this.z, this.a);
+    }
+    return null;
+  }
+
+  parseOklch() {
+    this.reset();
+    if (
+      this.eat(rOklch) &&
+      this.eat(rLB) &&
+      this.parseNumber("x", valueUnit) &&
+      this.eat(rWs) &&
+      this.parseNumber("y", lchUnit) &&
+      this.eat(rWs) &&
+      this.parseAngle("z") &&
+      (!this.eat(rSlash) || this.parseNumber("a", alphaUnit)) &&
+      this.eat(rRB) &&
+      this.end()
+    ) {
+      return new OklchColor(this.x, this.y, this.z, this.a);
+    }
+    return null;
+  }
+
   parseColor() {
     this.reset();
     if (this.eat(rColor)) {
@@ -314,6 +370,8 @@ class Parser {
       this.parseHsl() ??
       this.parseHslLegacy() ??
       this.parseHwb() ??
+      this.parseOklab() ??
+      this.parseOklch() ??
       this.parseColor()
     );
   }

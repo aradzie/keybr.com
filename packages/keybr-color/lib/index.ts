@@ -2,6 +2,8 @@ export * from "./color.ts";
 export * from "./color-hsl.ts";
 export * from "./color-hsv.ts";
 export * from "./color-hwb.ts";
+export * from "./color-oklab.ts";
+export * from "./color-oklch.ts";
 export * from "./color-rgb.ts";
 export * from "./convert.ts";
 export * from "./mix.ts";
