@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { render } from "@testing-library/react";
-import { assert } from "chai";
+import { isNotNull } from "rich-assert";
 import { Avatar } from "./Avatar.tsx";
 
 test("render anonymous user without image", () => {
@@ -11,7 +11,7 @@ test("render anonymous user without image", () => {
     </FakeIntlProvider>,
   );
 
-  assert.isNotNull(r.container.querySelector(".root"));
+  isNotNull(r.container.querySelector(".root"));
 
   r.unmount();
 });
@@ -29,7 +29,7 @@ test("render anonymous user with identicon", () => {
     </FakeIntlProvider>,
   );
 
-  assert.isNotNull(r.container.querySelector(".root"));
+  isNotNull(r.container.querySelector(".root"));
 
   r.unmount();
 });
@@ -48,7 +48,7 @@ test("render named user with identicon", () => {
     </FakeIntlProvider>,
   );
 
-  assert.isNotNull(r.container.querySelector(".root"));
+  isNotNull(r.container.querySelector(".root"));
 
   r.unmount();
 });
@@ -67,7 +67,7 @@ test("render named user with custom image", () => {
     </FakeIntlProvider>,
   );
 
-  assert.isNotNull(r.container.querySelector(".root"));
+  isNotNull(r.container.querySelector(".root"));
 
   r.unmount();
 });

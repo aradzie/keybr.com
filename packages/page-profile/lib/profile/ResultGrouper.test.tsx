@@ -11,8 +11,8 @@ import {
 } from "@keybr/result";
 import { FakeSettingsContext, Settings } from "@keybr/settings";
 import { fireEvent, render } from "@testing-library/react";
-import { assert } from "chai";
 import { type ReactNode } from "react";
+import { equal } from "rich-assert";
 import { ResultGrouper } from "./ResultGrouper.tsx";
 
 const faker = new ResultFaker();
@@ -37,7 +37,7 @@ test("empty database", async () => {
     </FakeIntlProvider>,
   );
 
-  assert.strictEqual((await r.findByTitle("layout")).textContent, "en-dvorak");
+  equal((await r.findByTitle("layout")).textContent, "en-dvorak");
 
   r.unmount();
 });
@@ -64,11 +64,11 @@ test("select default layout", async () => {
     </FakeIntlProvider>,
   );
 
-  assert.strictEqual((await r.findByTitle("layout")).textContent, "en-colemak");
+  equal((await r.findByTitle("layout")).textContent, "en-colemak");
 
   fireEvent.click(await r.findByTitle("clear"));
 
-  assert.strictEqual((await r.findByTitle("layout")).textContent, "en-dvorak");
+  equal((await r.findByTitle("layout")).textContent, "en-dvorak");
 
   r.unmount();
 });
@@ -94,17 +94,11 @@ test("select text type", async () => {
 
   fireEvent.click(await r.findByText("Letters"));
 
-  assert.strictEqual(
-    (await r.findByTitle("alphabet")).textContent,
-    "ABCDEFGHIJ",
-  );
+  equal((await r.findByTitle("alphabet")).textContent, "ABCDEFGHIJ");
 
   fireEvent.click(await r.findByText("Digits"));
 
-  assert.strictEqual(
-    (await r.findByTitle("alphabet")).textContent,
-    "0123456789",
-  );
+  equal((await r.findByTitle("alphabet")).textContent, "0123456789");
 
   r.unmount();
 });

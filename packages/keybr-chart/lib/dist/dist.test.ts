@@ -1,8 +1,8 @@
 import { test } from "node:test";
-import { assert } from "chai";
+import { equal } from "rich-assert";
 import { makeAccuracyDistribution, makeSpeedDistribution } from "./dist.ts";
 
 test("data size", () => {
-  assert.strictEqual(makeSpeedDistribution().length, 751);
-  assert.strictEqual(makeAccuracyDistribution().length, 1001);
+  equal(makeSpeedDistribution().length, 751);
+  equal(makeAccuracyDistribution().length, 1001);
 });

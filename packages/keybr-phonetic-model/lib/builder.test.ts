@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { Language } from "@keybr/keyboard";
-import { assert } from "chai";
+import { deepEqual, equal } from "rich-assert";
 import { TransitionTableBuilder } from "./builder.ts";
 import { Letter } from "./letter.ts";
 
@@ -13,19 +13,17 @@ test("build table", () => {
 
   const table = builder.build();
 
-  assert.strictEqual(String.fromCodePoint(...table.alphabet), " ab");
-  assert.strictEqual(table.size, 3);
-  assert.strictEqual(table.order, 2);
+  equal(String.fromCodePoint(...table.alphabet), " ab");
+  equal(table.size, 3);
+  equal(table.order, 2);
 
-  assert.deepStrictEqual(table.segment([0x0020]), [
+  deepEqual(table.segment([0x0020]), [
     { codePoint: 0x0061, frequency: 127 },
     { codePoint: 0x0062, frequency: 128 },
   ]);
-  assert.deepStrictEqual(table.segment([0x0061]), []);
-  assert.deepStrictEqual(table.segment([0x0062]), [
-    { codePoint: 0x0062, frequency: 255 },
-  ]);
-  assert.deepStrictEqual(table.letters(Language.EN), [
+  deepEqual(table.segment([0x0061]), []);
+  deepEqual(table.segment([0x0062]), [{ codePoint: 0x0062, frequency: 255 }]);
+  deepEqual(table.letters(Language.EN), [
     new Letter(0x0020, 0, " "),
     new Letter(0x0061, 127, "A"),
     new Letter(0x0062, 383, "B"),
@@ -35,12 +33,11 @@ test("build table", () => {
 test("scale frequencies", () => {
   const builder = new TransitionTableBuilder(2, [0x0020, 0x0061, 0x0062]);
 
-  assert.deepStrictEqual(builder.scaleFrequencies([]), []);
-  assert.deepStrictEqual(
-    builder.scaleFrequencies([{ codePoint: 0x0061, frequency: 1 }]),
-    [{ codePoint: 0x0061, frequency: 255 }],
-  );
-  assert.deepStrictEqual(
+  deepEqual(builder.scaleFrequencies([]), []);
+  deepEqual(builder.scaleFrequencies([{ codePoint: 0x0061, frequency: 1 }]), [
+    { codePoint: 0x0061, frequency: 255 },
+  ]);
+  deepEqual(
     builder.scaleFrequencies([
       { codePoint: 0x0061, frequency: 1 },
       { codePoint: 0x0062, frequency: 1 },
@@ -50,7 +47,7 @@ test("scale frequencies", () => {
       { codePoint: 0x0062, frequency: 128 },
     ],
   );
-  assert.deepStrictEqual(
+  deepEqual(
     builder.scaleFrequencies([
       { codePoint: 0x0061, frequency: 1000 },
       { codePoint: 0x0062, frequency: 1000 },
@@ -60,7 +57,7 @@ test("scale frequencies", () => {
       { codePoint: 0x0062, frequency: 128 },
     ],
   );
-  assert.deepStrictEqual(
+  deepEqual(
     builder.scaleFrequencies([
       { codePoint: 0x0061, frequency: 1 },
       { codePoint: 0x0062, frequency: 1000 },
@@ -70,7 +67,7 @@ test("scale frequencies", () => {
       { codePoint: 0x0062, frequency: 254 },
     ],
   );
-  assert.deepStrictEqual(
+  deepEqual(
     builder.scaleFrequencies([
       { codePoint: 0x0061, frequency: 1000 },
       { codePoint: 0x0062, frequency: 1 },

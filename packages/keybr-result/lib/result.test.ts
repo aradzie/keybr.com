@@ -1,7 +1,7 @@
 import { describe, it, test } from "node:test";
 import { Layout } from "@keybr/keyboard";
 import { Histogram } from "@keybr/textinput";
-import { assert } from "chai";
+import { deepEqual, equal, isFalse, isTrue, throws } from "rich-assert";
 import { Result, speedToTime, timeToSpeed } from "./result.ts";
 import { TextType } from "./texttype.ts";
 
@@ -22,13 +22,13 @@ describe("validate", () => {
 
   describe("using the default filter", () => {
     it("should accept a valid result", () => {
-      assert.isTrue(result.validate());
-      assert.isTrue(result.validate({}));
-      assert.isTrue(result.validate(Result.filter));
+      isTrue(result.validate());
+      isTrue(result.validate({}));
+      isTrue(result.validate(Result.filter));
     });
 
     it("should reject if the length is too short", () => {
-      assert.isFalse(
+      isFalse(
         new Result(
           /* layout= */ result.layout,
           /* textType= */ result.textType,
@@ -42,7 +42,7 @@ describe("validate", () => {
     });
 
     it("should reject if the time is too short", () => {
-      assert.isFalse(
+      isFalse(
         new Result(
           /* layout= */ result.layout,
           /* textType= */ result.textType,
@@ -56,7 +56,7 @@ describe("validate", () => {
     });
 
     it("should reject if the complexity is too small", () => {
-      assert.isFalse(
+      isFalse(
         new Result(
           /* layout= */ result.layout,
           /* textType= */ result.textType,
@@ -72,23 +72,23 @@ describe("validate", () => {
 
   describe("using a custom filter", () => {
     it("should reject if the length is too short", () => {
-      assert.isFalse(result.validate({ minLength: 100 }));
+      isFalse(result.validate({ minLength: 100 }));
     });
 
     it("should reject if the time is too short", () => {
-      assert.isFalse(result.validate({ minTime: 60000 }));
+      isFalse(result.validate({ minTime: 60000 }));
     });
 
     it("should reject if the complexity is too small", () => {
-      assert.isFalse(result.validate({ minComplexity: 10 }));
+      isFalse(result.validate({ minComplexity: 10 }));
     });
 
     it("should reject if the speed is too slow", () => {
-      assert.isFalse(result.validate({ minSpeed: 1000 }));
+      isFalse(result.validate({ minSpeed: 1000 }));
     });
 
     it("should reject if the speed is too fast", () => {
-      assert.isFalse(result.validate({ maxSpeed: 1 }));
+      isFalse(result.validate({ maxSpeed: 1 }));
     });
   });
 });
@@ -108,7 +108,7 @@ test("serialize as JSON", () => {
     ]),
   );
 
-  assert.deepStrictEqual(JSON.parse(JSON.stringify(result)), {
+  deepEqual(JSON.parse(JSON.stringify(result)), {
     layout: "en-us",
     textType: "generated",
     timeStamp: "2001-02-03T03:05:06.000Z",
@@ -125,14 +125,14 @@ test("serialize as JSON", () => {
 });
 
 test("convert units", () => {
-  assert.throws(() => timeToSpeed(Infinity));
-  assert.throws(() => timeToSpeed(NaN));
-  assert.throws(() => timeToSpeed(0));
-  assert.throws(() => speedToTime(Infinity));
-  assert.throws(() => speedToTime(NaN));
-  assert.throws(() => speedToTime(0));
-  assert.strictEqual(timeToSpeed(250), 240);
-  assert.strictEqual(timeToSpeed(100), 600);
-  assert.strictEqual(speedToTime(240), 250);
-  assert.strictEqual(speedToTime(600), 100);
+  throws(() => timeToSpeed(Infinity));
+  throws(() => timeToSpeed(NaN));
+  throws(() => timeToSpeed(0));
+  throws(() => speedToTime(Infinity));
+  throws(() => speedToTime(NaN));
+  throws(() => speedToTime(0));
+  equal(timeToSpeed(250), 240);
+  equal(timeToSpeed(100), 600);
+  equal(speedToTime(240), 250);
+  equal(speedToTime(600), 100);
 });

@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import { fakeAdapter, Recorder } from "@fastr/fetch";
 import { Settings, stringProp } from "@keybr/settings";
-import { assert } from "chai";
+import { deepEqual, equal, isFalse, isNotNull, isTrue } from "rich-assert";
 import { openSettingsStorage, STORAGE_KEY } from "./storage.ts";
 
 test.beforeEach(() => {
@@ -21,26 +21,20 @@ test("anonymous user - store and load settings", async () => {
 
   // Store settings.
 
-  assert.deepStrictEqual(
-    await openSettingsStorage(null, null).store(settings),
-    settings,
-  );
-  assert.isNotNull(localStorage.getItem(STORAGE_KEY));
+  deepEqual(await openSettingsStorage(null, null).store(settings), settings);
+  isNotNull(localStorage.getItem(STORAGE_KEY));
 
   // Load settings.
 
-  assert.deepStrictEqual(
-    await openSettingsStorage(null, null).load(),
-    settings,
-  );
-  assert.isNotNull(localStorage.getItem(STORAGE_KEY));
+  deepEqual(await openSettingsStorage(null, null).load(), settings);
+  isNotNull(localStorage.getItem(STORAGE_KEY));
 });
 
 test("anonymous user - validate stored settings", async () => {
   // Load from garbage data.
 
   localStorage.setItem(STORAGE_KEY, "garbage");
-  assert.deepStrictEqual(
+  deepEqual(
     await openSettingsStorage(null, null).load(),
     new Settings(undefined, true),
   );
@@ -48,7 +42,7 @@ test("anonymous user - validate stored settings", async () => {
   // Load from valid data.
 
   localStorage.setItem(STORAGE_KEY, "{}");
-  assert.deepStrictEqual(
+  deepEqual(
     await openSettingsStorage(null, null).load(),
     new Settings(undefined, false),
   );
@@ -57,13 +51,13 @@ test("anonymous user - validate stored settings", async () => {
 test("anonymous user - detect new settings", async () => {
   // Load for the first time.
 
-  assert.isTrue((await openSettingsStorage(null, null).load()).isNew);
-  assert.isNotNull(localStorage.getItem(STORAGE_KEY));
+  isTrue((await openSettingsStorage(null, null).load()).isNew);
+  isNotNull(localStorage.getItem(STORAGE_KEY));
 
   // Load for the second time.
 
-  assert.isFalse((await openSettingsStorage(null, null).load()).isNew);
-  assert.isNotNull(localStorage.getItem(STORAGE_KEY));
+  isFalse((await openSettingsStorage(null, null).load()).isNew);
+  isNotNull(localStorage.getItem(STORAGE_KEY));
 });
 
 test("named user - save to remote settings", async () => {
@@ -82,11 +76,11 @@ test("named user - save to remote settings", async () => {
 
   // Assert.
 
-  assert.deepStrictEqual(stored, settings);
-  assert.strictEqual(localStorage.getItem(STORAGE_KEY), null);
-  assert.strictEqual(recorder.requestCount, 1);
-  assert.strictEqual(recorder.state, "ended");
-  assert.strictEqual(recorder.request?.body, JSON.stringify(settings.toJSON()));
+  deepEqual(stored, settings);
+  equal(localStorage.getItem(STORAGE_KEY), null);
+  equal(recorder.requestCount, 1);
+  equal(recorder.state, "ended");
+  equal(recorder.request?.body, JSON.stringify(settings.toJSON()));
 });
 
 test("named user - load from remote settings", async () => {
@@ -105,10 +99,10 @@ test("named user - load from remote settings", async () => {
 
   // Assert.
 
-  assert.deepStrictEqual(loaded, settings);
-  assert.strictEqual(localStorage.getItem(STORAGE_KEY), null);
-  assert.strictEqual(recorder.requestCount, 0);
-  assert.strictEqual(recorder.state, "not called");
+  deepEqual(loaded, settings);
+  equal(localStorage.getItem(STORAGE_KEY), null);
+  equal(recorder.requestCount, 0);
+  equal(recorder.state, "not called");
 });
 
 test("named user - load from local settings", async () => {
@@ -127,11 +121,11 @@ test("named user - load from local settings", async () => {
 
   // Assert.
 
-  assert.deepStrictEqual(loaded, settings);
-  assert.strictEqual(localStorage.getItem(STORAGE_KEY), null);
-  assert.strictEqual(recorder.requestCount, 1);
-  assert.strictEqual(recorder.state, "ended");
-  assert.strictEqual(recorder.request?.body, JSON.stringify(settings.toJSON()));
+  deepEqual(loaded, settings);
+  equal(localStorage.getItem(STORAGE_KEY), null);
+  equal(recorder.requestCount, 1);
+  equal(recorder.state, "ended");
+  equal(recorder.request?.body, JSON.stringify(settings.toJSON()));
 });
 
 test("named user - load default settings", async () => {
@@ -150,8 +144,8 @@ test("named user - load default settings", async () => {
 
   // Assert.
 
-  assert.deepStrictEqual(loaded, settings);
-  assert.strictEqual(localStorage.getItem(STORAGE_KEY), null);
-  assert.strictEqual(recorder.requestCount, 0);
-  assert.strictEqual(recorder.state, "not called");
+  deepEqual(loaded, settings);
+  equal(localStorage.getItem(STORAGE_KEY), null);
+  equal(recorder.requestCount, 0);
+  equal(recorder.state, "not called");
 });

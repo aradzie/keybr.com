@@ -1,5 +1,5 @@
 import { test } from "node:test";
-import { assert } from "chai";
+import { deepEqual, isFalse, isNotNaN, isTrue } from "rich-assert";
 import { LCG } from "./lcg.ts";
 
 test("RNG accepts seed zero", () => {
@@ -7,7 +7,7 @@ test("RNG accepts seed zero", () => {
 
   const mark = random.mark();
 
-  assert.deepStrictEqual(
+  deepEqual(
     [
       random(),
       random(),
@@ -30,7 +30,7 @@ test("RNG accepts seed zero", () => {
 
   random.reset(mark);
 
-  assert.deepStrictEqual(
+  deepEqual(
     [
       random(),
       random(),
@@ -57,10 +57,10 @@ test("RNG generates random values", () => {
   const values = new Set<number>();
   for (let i = 0; i < 10000; i++) {
     const value = random();
-    assert.isTrue(!Number.isNaN(value));
-    assert.isTrue(value >= 0);
-    assert.isTrue(value < 1);
-    assert.isFalse(values.has(value));
+    isNotNaN(value);
+    isTrue(value >= 0);
+    isTrue(value < 1);
+    isFalse(values.has(value));
     values.add(value);
   }
 });

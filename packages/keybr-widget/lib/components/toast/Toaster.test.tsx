@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { act, render } from "@testing-library/react";
-import { assert } from "chai";
+import { equal } from "rich-assert";
 import { toast, Toaster } from "./Toaster.tsx";
 
 test("close on timeout", async (ctx) => {
@@ -23,7 +23,7 @@ test("close on timeout", async (ctx) => {
 
   // Assert.
 
-  assert.strictEqual(r.container.textContent, "Message 2Message 1");
+  equal(r.container.textContent, "Message 2Message 1");
 
   // Act.
 
@@ -34,7 +34,7 @@ test("close on timeout", async (ctx) => {
 
   // Assert.
 
-  assert.strictEqual(document.body.textContent, "");
+  equal(document.body.textContent, "");
 
   // Cleanup.
 
@@ -61,7 +61,7 @@ test("close on click", async (ctx) => {
 
   // Assert.
 
-  assert.strictEqual(r.container.textContent, "Message 2Message 1");
+  equal(r.container.textContent, "Message 2Message 1");
 
   // Act.
 
@@ -70,7 +70,7 @@ test("close on click", async (ctx) => {
 
   // Assert.
 
-  assert.strictEqual(r.container.textContent, "Message 2");
+  equal(r.container.textContent, "Message 2");
 
   // Act.
 
@@ -79,7 +79,7 @@ test("close on click", async (ctx) => {
 
   // Assert.
 
-  assert.strictEqual(r.container.textContent, "");
+  equal(r.container.textContent, "");
 
   // Cleanup.
 

@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { act, render } from "@testing-library/react";
-import { assert } from "chai";
+import { equal, includes } from "rich-assert";
 import { ErrorHandler } from "./ErrorHandler.tsx";
 import { catchError } from "./logger.ts";
 
@@ -21,7 +21,7 @@ test("success", () => {
     </ErrorHandler>,
   );
 
-  assert.strictEqual(r.container.textContent, "OK");
+  equal(r.container.textContent, "OK");
 
   r.unmount();
 });
@@ -39,9 +39,9 @@ test("mount failure", () => {
     </ErrorHandler>,
   );
 
-  assert.include(r.container.textContent, "Error: abc");
-  assert.include(r.container.textContent, "Cause: Error: xyz");
-  assert.strictEqual(logged.length, 0); // We canceled the logging in tests.
+  includes(r.container.textContent!, "Error: abc");
+  includes(r.container.textContent!, "Cause: Error: xyz");
+  equal(logged.length, 0); // We canceled the logging in tests.
 
   console.error = saved;
   r.unmount();
@@ -64,8 +64,8 @@ test("external failure", () => {
     catchError(new RangeError("abc"));
   });
 
-  assert.include(r.container.textContent, "RangeError: abc");
-  assert.strictEqual(logged.length, 1);
+  includes(r.container.textContent!, "RangeError: abc");
+  equal(logged.length, 1);
 
   console.error = saved;
   r.unmount();

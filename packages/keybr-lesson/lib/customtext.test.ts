@@ -3,7 +3,7 @@ import { Layout, loadKeyboard } from "@keybr/keyboard";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { makeKeyStatsMap } from "@keybr/result";
 import { Settings } from "@keybr/settings";
-import { assert } from "chai";
+import { deepEqual, equal, isNull } from "rich-assert";
 import { CustomTextLesson } from "./customtext.ts";
 import { LessonKey } from "./key.ts";
 import { lessonProps } from "./settings.ts";
@@ -15,7 +15,7 @@ test("provide key set", () => {
   const lesson = new CustomTextLesson(settings, keyboard, model);
   const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
 
-  assert.deepStrictEqual(lessonKeys.findIncludedKeys(), [
+  deepEqual(lessonKeys.findIncludedKeys(), [
     new LessonKey({
       letter: FakePhoneticModel.letter1,
       samples: [],
@@ -127,8 +127,8 @@ test("provide key set", () => {
       isForced: false,
     }),
   ]);
-  assert.deepStrictEqual(lessonKeys.findExcludedKeys(), []);
-  assert.isNull(lessonKeys.findFocusedKey());
+  deepEqual(lessonKeys.findExcludedKeys(), []);
+  isNull(lessonKeys.findFocusedKey());
 });
 
 test("generate text with empty settings", () => {
@@ -137,7 +137,7 @@ test("generate text with empty settings", () => {
   const model = new FakePhoneticModel();
   const lesson = new CustomTextLesson(settings, keyboard, model);
 
-  assert.strictEqual(
+  equal(
     lesson.generate(),
     "? ? ? ? ? ? ? ? ? ? " +
       "? ? ? ? ? ? ? ? ? ? " +
@@ -165,7 +165,7 @@ describe("generate text using settings", () => {
     const lesson = new CustomTextLesson(settings, keyboard, model);
     lesson.rng = model.rng;
 
-    assert.strictEqual(
+    equal(
       lesson.generate(),
       "abc def abc def abc def abc def abc def abc def abc def abc def abc " +
         "def abc def abc def abc def abc def abc def abc def abc def abc def",
@@ -182,7 +182,7 @@ describe("generate text using settings", () => {
     const lesson = new CustomTextLesson(settings, keyboard, model);
     lesson.rng = model.rng;
 
-    assert.strictEqual(
+    equal(
       lesson.generate(),
       "Abc! Def? 123 Abc! Def? 123 Abc! Def? 123 Abc! Def? 123 Abc! Def? 123 " +
         "Abc! Def? 123 Abc! Def? 123 Abc! Def? 123 Abc! Def? 123 Abc!",
@@ -206,7 +206,7 @@ describe("generate randomized text using settings", () => {
     const lesson = new CustomTextLesson(settings, keyboard, model);
     lesson.rng = model.rng;
 
-    assert.strictEqual(
+    equal(
       lesson.generate(),
       "abc aaa bbb abc aaa bbb abc aaa bbb abc aaa bbb abc aaa bbb abc aaa " +
         "bbb abc aaa bbb abc aaa bbb abc aaa bbb abc aaa bbb abc aaa bbb abc",
@@ -226,7 +226,7 @@ describe("generate randomized text using settings", () => {
     const lesson = new CustomTextLesson(settings, keyboard, model);
     lesson.rng = model.rng;
 
-    assert.strictEqual(
+    equal(
       lesson.generate(),
       "Abc! AAA bbb Abc! AAA bbb Abc! AAA bbb Abc! AAA bbb Abc! AAA bbb Abc! " +
         "AAA bbb Abc! AAA bbb Abc! AAA bbb Abc! AAA bbb Abc! AAA bbb",

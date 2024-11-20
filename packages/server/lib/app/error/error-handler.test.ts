@@ -6,7 +6,7 @@ import { ApplicationError, ForbiddenError } from "@fastr/errors";
 import { Container } from "@fastr/invert";
 import { Manifest } from "@keybr/assets";
 import { Level, Logger, type Message, type Transport } from "@keybr/logger";
-import { assert } from "chai";
+import { deepEqual, equal, includes } from "rich-assert";
 import { createTestServer } from "../test/request.ts";
 import { ErrorHandler } from "./index.ts";
 
@@ -28,10 +28,10 @@ test("throw http error", async () => {
 
   // Assert.
 
-  assert.strictEqual(status, 403);
-  assert.strictEqual(headers.get("Content-Type"), "text/html; charset=UTF-8");
-  assert.include(await body.text(), "403 - My message");
-  assert.deepStrictEqual(messages, ["DEBUG: Client error - My message"]);
+  equal(status, 403);
+  equal(headers.get("Content-Type"), "text/html; charset=UTF-8");
+  includes(await body.text(), "403 - My message");
+  deepEqual(messages, ["DEBUG: Client error - My message"]);
 });
 
 test("set status code", async () => {
@@ -51,10 +51,10 @@ test("set status code", async () => {
 
   // Assert.
 
-  assert.strictEqual(status, 400);
-  assert.strictEqual(headers.get("Content-Type"), "text/html; charset=UTF-8");
-  assert.include(await body.text(), "400 - Bad Request");
-  assert.deepStrictEqual(messages, []);
+  equal(status, 400);
+  equal(headers.get("Content-Type"), "text/html; charset=UTF-8");
+  includes(await body.text(), "400 - Bad Request");
+  deepEqual(messages, []);
 });
 
 test("set status code and custom body", async () => {
@@ -75,13 +75,10 @@ test("set status code and custom body", async () => {
 
   // Assert.
 
-  assert.strictEqual(status, 400);
-  assert.strictEqual(
-    headers.get("Content-Type"),
-    "application/json; charset=UTF-8",
-  );
-  assert.deepStrictEqual(await body.json(), { json: true });
-  assert.deepStrictEqual(messages, []);
+  equal(status, 400);
+  equal(headers.get("Content-Type"), "application/json; charset=UTF-8");
+  deepEqual(await body.json(), { json: true });
+  deepEqual(messages, []);
 });
 
 test("throw application error", async () => {
@@ -101,19 +98,14 @@ test("throw application error", async () => {
 
   // Assert.
 
-  assert.strictEqual(status, 200);
-  assert.strictEqual(
-    headers.get("Content-Type"),
-    "application/error+json; charset=UTF-8",
-  );
-  assert.deepStrictEqual(await body.json(), {
+  equal(status, 200);
+  equal(headers.get("Content-Type"), "application/error+json; charset=UTF-8");
+  deepEqual(await body.json(), {
     error: {
       message: "Validation error",
     },
   });
-  assert.deepStrictEqual(messages, [
-    "DEBUG: Application error - Validation error",
-  ]);
+  deepEqual(messages, ["DEBUG: Application error - Validation error"]);
 });
 
 test("throw runtime error", async () => {
@@ -133,10 +125,10 @@ test("throw runtime error", async () => {
 
   // Assert.
 
-  assert.strictEqual(status, 500);
-  assert.strictEqual(headers.get("Content-Type"), "text/html; charset=UTF-8");
-  assert.include(await body.text(), "500 - Internal Server Error");
-  assert.deepStrictEqual(messages, ["ERROR: Server error - Internal bug"]);
+  equal(status, 500);
+  equal(headers.get("Content-Type"), "text/html; charset=UTF-8");
+  includes(await body.text(), "500 - Internal Server Error");
+  deepEqual(messages, ["ERROR: Server error - Internal bug"]);
 });
 
 test("handle invalid client request", async () => {
@@ -157,10 +149,10 @@ test("handle invalid client request", async () => {
 
   // Assert.
 
-  assert.strictEqual(status, 500);
-  assert.strictEqual(headers.get("Content-Type"), "text/html; charset=UTF-8");
-  assert.include(await body.text(), "500 - Internal Server Error");
-  assert.deepStrictEqual(messages, ["ERROR: Server error - Internal bug"]);
+  equal(status, 500);
+  equal(headers.get("Content-Type"), "text/html; charset=UTF-8");
+  includes(await body.text(), "500 - Internal Server Error");
+  deepEqual(messages, ["ERROR: Server error - Internal bug"]);
 });
 
 function init() {

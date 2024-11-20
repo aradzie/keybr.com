@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import { Letter } from "@keybr/phonetic-model";
 import { Histogram } from "@keybr/textinput";
-import { assert } from "chai";
+import { deepEqual } from "rich-assert";
 import { ResultFaker } from "./fake.tsx";
 import { MutableKeyStatsMap } from "./keystats.ts";
 
@@ -42,7 +42,7 @@ test("compute key stats", () => {
 
   const keyStatsMap = new MutableKeyStatsMap([l1, l2]);
 
-  assert.deepStrictEqual(keyStatsMap.copy().get(l1), {
+  deepEqual(keyStatsMap.copy().get(l1), {
     letter: l1,
     samples: [],
     timeToType: null,
@@ -51,7 +51,7 @@ test("compute key stats", () => {
 
   keyStatsMap.append(r1);
 
-  assert.deepStrictEqual(keyStatsMap.copy().get(l1), {
+  deepEqual(keyStatsMap.copy().get(l1), {
     letter: l1,
     samples: [
       {
@@ -70,7 +70,7 @@ test("compute key stats", () => {
   keyStatsMap.append(r2);
   keyStatsMap.append(r3);
 
-  assert.deepStrictEqual(keyStatsMap.copy().get(l1), {
+  deepEqual(keyStatsMap.copy().get(l1), {
     letter: l1,
     samples: [
       {
@@ -94,7 +94,7 @@ test("compute key stats", () => {
     bestTimeToType: 460,
   });
 
-  assert.deepStrictEqual(keyStatsMap.copy().get(l2), {
+  deepEqual(keyStatsMap.copy().get(l2), {
     letter: l2,
     samples: [
       {

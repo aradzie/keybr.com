@@ -7,7 +7,14 @@ import { DataDir } from "@keybr/config";
 import { PublicId } from "@keybr/publicid";
 import { ResultFaker } from "@keybr/result";
 import { exists, removeDir, touch } from "@sosimple/fsx";
-import { assert } from "chai";
+import {
+  deepEqual,
+  equal,
+  isFalse,
+  isTrue,
+  match,
+  notEqual,
+} from "rich-assert";
 import { type UserData, UserDataFactory } from "./index.ts";
 
 const tmp = process.env.DATA_DIR ?? "/tmp/keybr";
@@ -29,8 +36,8 @@ test("handle missing data file", async () => {
 
   // Assert.
 
-  assert.isFalse(await userData.exists());
-  assert.deepStrictEqual(await readAll(userData), []);
+  isFalse(await userData.exists());
+  deepEqual(await readAll(userData), []);
 });
 
 test("append new results", async () => {
@@ -48,8 +55,8 @@ test("append new results", async () => {
 
   // Assert.
 
-  assert.isFalse(await userData.exists());
-  assert.deepStrictEqual(await readAll(userData), []);
+  isFalse(await userData.exists());
+  deepEqual(await readAll(userData), []);
 
   // Act.
 
@@ -57,8 +64,8 @@ test("append new results", async () => {
 
   // Assert.
 
-  assert.isTrue(await userData.exists());
-  assert.deepStrictEqual(await readAll(userData), results);
+  isTrue(await userData.exists());
+  deepEqual(await readAll(userData), results);
 });
 
 test("delete missing file", async () => {
@@ -71,9 +78,9 @@ test("delete missing file", async () => {
 
   // Assert.
 
-  assert.isFalse(await userData.exists());
-  assert.deepStrictEqual(await readAll(userData), []);
-  assert.isFalse(await exists(name + "~1"));
+  isFalse(await userData.exists());
+  deepEqual(await readAll(userData), []);
+  isFalse(await exists(name + "~1"));
 
   // Act.
 
@@ -81,9 +88,9 @@ test("delete missing file", async () => {
 
   // Assert.
 
-  assert.isFalse(await userData.exists());
-  assert.deepStrictEqual(await readAll(userData), []);
-  assert.isFalse(await exists(name + "~1"));
+  isFalse(await userData.exists());
+  deepEqual(await readAll(userData), []);
+  isFalse(await exists(name + "~1"));
 });
 
 test("delete existing file", async () => {
@@ -102,9 +109,9 @@ test("delete existing file", async () => {
 
   // Assert.
 
-  assert.isTrue(await userData.exists());
-  assert.deepStrictEqual(await readAll(userData), results);
-  assert.isFalse(await exists(name + "~1"));
+  isTrue(await userData.exists());
+  deepEqual(await readAll(userData), results);
+  isFalse(await exists(name + "~1"));
 
   // Act.
 
@@ -112,9 +119,9 @@ test("delete existing file", async () => {
 
   // Assert.
 
-  assert.isFalse(await userData.exists());
-  assert.deepStrictEqual(await readAll(userData), []);
-  assert.isTrue(await exists(name + "~1"));
+  isFalse(await userData.exists());
+  deepEqual(await readAll(userData), []);
+  isTrue(await exists(name + "~1"));
 });
 
 test("delete existing file second time", async () => {
@@ -135,9 +142,9 @@ test("delete existing file second time", async () => {
 
   // Assert.
 
-  assert.isTrue(await userData.exists());
-  assert.deepStrictEqual(await readAll(userData), results);
-  assert.isFalse(await exists(name + "~3"));
+  isTrue(await userData.exists());
+  deepEqual(await readAll(userData), results);
+  isFalse(await exists(name + "~3"));
 
   // Act.
 
@@ -145,9 +152,9 @@ test("delete existing file second time", async () => {
 
   // Assert.
 
-  assert.isFalse(await userData.exists());
-  assert.deepStrictEqual(await readAll(userData), []);
-  assert.isTrue(await exists(name + "~3"));
+  isFalse(await userData.exists());
+  deepEqual(await readAll(userData), []);
+  isTrue(await exists(name + "~3"));
 });
 
 test("serve", async () => {
@@ -173,17 +180,17 @@ test("serve", async () => {
 
     // Assert.
 
-    assert.strictEqual(status, 200);
-    assert.strictEqual(headers.get("Content-Type"), "application/octet-stream");
-    assert.strictEqual(headers.get("Content-Length"), "0");
-    assert.strictEqual(headers.get("Content-Encoding"), null);
-    assert.strictEqual(
+    equal(status, 200);
+    equal(headers.get("Content-Type"), "application/octet-stream");
+    equal(headers.get("Content-Length"), "0");
+    equal(headers.get("Content-Encoding"), null);
+    equal(
       headers.get("Content-Disposition"),
       'attachment; filename="stats.data"',
     );
-    assert.strictEqual(headers.get("Cache-Control"), "private, no-cache");
-    assert.strictEqual(headers.get("Last-Modified"), null);
-    assert.strictEqual((await body.buffer()).length, 0);
+    equal(headers.get("Cache-Control"), "private, no-cache");
+    equal(headers.get("Last-Modified"), null);
+    equal((await body.buffer()).length, 0);
     etag1 = headers.get("ETag")!;
   }
 
@@ -196,23 +203,23 @@ test("serve", async () => {
 
     // Assert.
 
-    assert.strictEqual(status, 200);
-    assert.strictEqual(headers.get("Content-Type"), "application/octet-stream");
-    assert.strictEqual(headers.get("Content-Length"), "70");
-    assert.strictEqual(headers.get("Content-Encoding"), null);
-    assert.strictEqual(
+    equal(status, 200);
+    equal(headers.get("Content-Type"), "application/octet-stream");
+    equal(headers.get("Content-Length"), "70");
+    equal(headers.get("Content-Encoding"), null);
+    equal(
       headers.get("Content-Disposition"),
       'attachment; filename="stats.data"',
     );
-    assert.strictEqual(headers.get("Cache-Control"), "private, no-cache");
-    assert.strictEqual(headers.get("Last-Modified"), null);
-    assert.strictEqual((await body.buffer()).length, 70);
+    equal(headers.get("Cache-Control"), "private, no-cache");
+    equal(headers.get("Last-Modified"), null);
+    equal((await body.buffer()).length, 70);
     etag2 = headers.get("ETag")!;
   }
 
-  assert.match(etag1, /"[a-zA-Z0-9]+"/);
-  assert.match(etag2, /"[a-zA-Z0-9]+"/);
-  assert.notStrictEqual(etag1, etag2);
+  match(etag1, /"[a-zA-Z0-9]+"/);
+  match(etag2, /"[a-zA-Z0-9]+"/);
+  notEqual(etag1, etag2);
 });
 
 async function readAll(userData: UserData) {

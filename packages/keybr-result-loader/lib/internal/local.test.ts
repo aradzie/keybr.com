@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { ResultFaker } from "@keybr/result";
-import { assert } from "chai";
+import { deepEqual } from "rich-assert";
 import { PersistentResultStorage } from "./local.ts";
 
 test("update local storage", async () => {
@@ -12,17 +12,17 @@ test("update local storage", async () => {
   const r3 = faker.nextResult();
 
   // Read from the empty storage.
-  assert.deepStrictEqual(await storage.load(), []);
+  deepEqual(await storage.load(), []);
 
   // Add some data to the storage.
   await storage.append([r1, r2, r3]);
 
   // Read from the non-empty storage.
-  assert.deepStrictEqual(await storage.load(), [r1, r2, r3]);
+  deepEqual(await storage.load(), [r1, r2, r3]);
 
   // Clear the storage.
   await storage.clear();
 
   // Read from the empty storage.
-  assert.deepStrictEqual(await storage.load(), []);
+  deepEqual(await storage.load(), []);
 });

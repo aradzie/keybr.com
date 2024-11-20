@@ -6,7 +6,7 @@ import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
 import { FakeResultContext, ResultFaker } from "@keybr/result";
 import { FakeSettingsContext, Settings } from "@keybr/settings";
 import { render } from "@testing-library/react";
-import { assert } from "chai";
+import { includes, isNotNull } from "rich-assert";
 import { PracticeScreen } from "./PracticeScreen.tsx";
 
 const faker = new ResultFaker();
@@ -28,10 +28,8 @@ test("render", async () => {
     </FakeIntlProvider>,
   );
 
-  assert.isNotNull(
-    await r.findByTitle("Change lesson settings", { exact: false }),
-  );
-  assert.include(r.container.textContent, "abcdefghij");
+  isNotNull(await r.findByTitle("Change lesson settings", { exact: false }));
+  includes(r.container.textContent!, "abcdefghij");
 
   r.unmount();
 });

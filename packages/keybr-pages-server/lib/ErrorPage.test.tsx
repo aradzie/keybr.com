@@ -1,9 +1,9 @@
 import { test } from "node:test";
 import { NotFoundError } from "@fastr/errors";
 import { Manifest, ManifestContext } from "@keybr/assets";
-import { assert } from "chai";
 import { load } from "cheerio";
 import { renderToStaticMarkup } from "react-dom/server";
+import { deepEqual, equal, isNull, isTrue, like } from "rich-assert";
 import { ErrorPage, inspectError } from "./ErrorPage.tsx";
 
 test("render", () => {
@@ -21,40 +21,40 @@ test("render", () => {
 
   const $ = load(html);
 
-  assert.deepStrictEqual($("html").attr(), {
+  like($("html").attr(), {
     "lang": "en",
     "data-color": "system",
     "data-font": "open-sans",
   });
-  assert.strictEqual($("title").text(), "400 - Bad Request");
-  assert.isTrue($("body").text().includes("400 - Bad Request"));
+  equal($("title").text(), "400 - Bad Request");
+  isTrue($("body").text().includes("400 - Bad Request"));
 });
 
 test("inspect error", () => {
   // @ts-expect-error Test invalid arguments.
-  assert.isNull(inspectError(undefined));
+  isNull(inspectError(undefined));
   // @ts-expect-error Test invalid arguments.
-  assert.isNull(inspectError(null));
+  isNull(inspectError(null));
   // @ts-expect-error Test invalid arguments.
-  assert.isNull(inspectError(""));
+  isNull(inspectError(""));
   // @ts-expect-error Test invalid arguments.
-  assert.isNull(inspectError([]));
+  isNull(inspectError([]));
   // @ts-expect-error Test invalid arguments.
-  assert.isNull(inspectError({}));
+  isNull(inspectError({}));
   // @ts-expect-error Test invalid arguments.
-  assert.deepStrictEqual(inspectError({ message: "omg" }), {
+  deepEqual(inspectError({ message: "omg" }), {
     message: "omg",
     status: 500,
     expose: false,
     description: null,
   });
-  assert.deepStrictEqual(inspectError(new NotFoundError()), {
+  deepEqual(inspectError(new NotFoundError()), {
     message: "Not Found",
     status: 404,
     expose: true,
     description: null,
   });
-  assert.deepStrictEqual(
+  deepEqual(
     inspectError(
       new NotFoundError("OMG", {
         expose: false,

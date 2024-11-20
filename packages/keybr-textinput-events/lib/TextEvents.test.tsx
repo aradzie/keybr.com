@@ -1,8 +1,8 @@
 import { test } from "node:test";
 import { type Focusable } from "@keybr/widget";
 import { fireEvent, render } from "@testing-library/react";
-import { assert } from "chai";
 import { useRef } from "react";
+import { equal, isFalse, isTrue } from "rich-assert";
 import { TextEvents } from "./TextEvents.tsx";
 
 test("focus and blur", () => {
@@ -20,25 +20,25 @@ test("focus and blur", () => {
   );
 
   const input = r.container.querySelector("textarea") as HTMLTextAreaElement;
-  assert.isTrue(input instanceof HTMLTextAreaElement);
+  isTrue(input instanceof HTMLTextAreaElement);
 
-  assert.strictEqual(document.activeElement, input);
-  assert.isTrue(focused);
+  equal(document.activeElement, input);
+  isTrue(focused);
 
   fireEvent.click(r.getByText("blur"));
 
-  assert.strictEqual(document.activeElement, document.body);
-  assert.isFalse(focused);
+  equal(document.activeElement, document.body);
+  isFalse(focused);
 
   fireEvent.click(r.getByText("focus"));
 
-  assert.strictEqual(document.activeElement, input);
-  assert.isTrue(focused);
+  equal(document.activeElement, input);
+  isTrue(focused);
 
   fireEvent.click(r.getByText("blur"));
 
-  assert.strictEqual(document.activeElement, document.body);
-  assert.isFalse(focused);
+  equal(document.activeElement, document.body);
+  isFalse(focused);
 
   r.unmount();
 });

@@ -1,7 +1,6 @@
 import { test } from "node:test";
 import { type Result, ResultFaker } from "@keybr/result";
-import { assert, use } from "chai";
-import chaiAsPromised from "chai-as-promised";
+import { deepEqual, equal, rejects } from "rich-assert";
 import { FakeLocalResultStorage, FakeRemoteResultSync } from "../fake/index.ts";
 import {
   ResultStorageOfAnonymousUser,
@@ -10,8 +9,6 @@ import {
   wrapResultStorage,
 } from "./storage.ts";
 import { type LocalResultStorage, type RemoteResultSync } from "./types.ts";
-
-use(chaiAsPromised);
 
 const faker = new ResultFaker();
 
@@ -28,9 +25,9 @@ test("named user - initially is empty", async () => {
 
   const results = await storage.load();
 
-  assert.strictEqual(local.length, 0);
-  assert.strictEqual(remote.length, 0);
-  assert.strictEqual(results.length, 0);
+  equal(local.length, 0);
+  equal(remote.length, 0);
+  equal(results.length, 0);
 });
 
 test("named user - fetch remote and ignore local data", async () => {
@@ -51,13 +48,13 @@ test("named user - fetch remote and ignore local data", async () => {
   const results = await storage.load();
 
   // Should contain data from remote store.
-  assert.deepStrictEqual(results, [r2, r3]);
+  deepEqual(results, [r2, r3]);
 
   // Local store should not be modified.
-  assert.deepStrictEqual(local, [r0, r1]);
+  deepEqual(local, [r0, r1]);
 
   // Remote store should not be modified.
-  assert.deepStrictEqual(remote, [r2, r3]);
+  deepEqual(remote, [r2, r3]);
 });
 
 test("named user - upload local to remote on first sync", async () => {
@@ -76,13 +73,13 @@ test("named user - upload local to remote on first sync", async () => {
   const results = await storage.load();
 
   // Should contain data from updated remote store.
-  assert.deepStrictEqual(results, [r0, r1]);
+  deepEqual(results, [r0, r1]);
 
   // Local store should be cleared.
-  assert.deepStrictEqual(local, []);
+  deepEqual(local, []);
 
   // Remote store should be updated.
-  assert.deepStrictEqual(remote, [r0, r1]);
+  deepEqual(remote, [r0, r1]);
 });
 
 test("anonymous user - append to local", async () => {
@@ -101,10 +98,10 @@ test("anonymous user - append to local", async () => {
   const results = await storage.load();
 
   // Should contain data from updated local store.
-  assert.deepStrictEqual(results, [r0, r1]);
+  deepEqual(results, [r0, r1]);
 
   // Local store should be updated.
-  assert.deepStrictEqual(local, [r0, r1]);
+  deepEqual(local, [r0, r1]);
 });
 
 test("named user - append to remote", async () => {
@@ -127,13 +124,13 @@ test("named user - append to remote", async () => {
   const results = await storage.load();
 
   // Should contain data from updated remote store.
-  assert.deepStrictEqual(results, [r0, r1]);
+  deepEqual(results, [r0, r1]);
 
   // Local store should stay empty.
-  assert.deepStrictEqual(local, []);
+  deepEqual(local, []);
 
   // Remote store should be updated.
-  assert.deepStrictEqual(remote, [r0, r1]);
+  deepEqual(remote, [r0, r1]);
 });
 
 test("public user - is readonly", async () => {
@@ -148,16 +145,16 @@ test("public user - is readonly", async () => {
 
   const results = await storage.load();
 
-  assert.deepStrictEqual(results, [r0, r1]);
+  deepEqual(results, [r0, r1]);
 
   // Try to append.
-  await assert.isRejected(
+  await rejects(
     storage.append([faker.nextResult()]),
-    "Cannot add records to database",
+    /Cannot add records to database/,
   );
 
   // Try to clear.
-  await assert.isRejected(storage.clear(), "Cannot clear database");
+  await rejects(storage.clear(), /Cannot clear database/);
 });
 
 test("handle local storage errors", async () => {
@@ -180,16 +177,16 @@ test("handle local storage errors", async () => {
   );
 
   // Try to open.
-  await assert.isRejected(storage.load(), "Cannot read records from database");
+  await rejects(storage.load(), /Cannot read records from database/);
 
   // Try to append.
-  await assert.isRejected(
+  await rejects(
     storage.append([faker.nextResult()]),
-    "Cannot add records to database",
+    /Cannot add records to database/,
   );
 
   // Try to clear.
-  await assert.isRejected(storage.clear(), "Cannot clear database");
+  await rejects(storage.clear(), /Cannot clear database/);
 });
 
 test("handle remote sync errors", async () => {
@@ -213,14 +210,14 @@ test("handle remote sync errors", async () => {
   );
 
   // Try to open.
-  await assert.isRejected(storage.load(), "Cannot read records from database");
+  await rejects(storage.load(), /Cannot read records from database/);
 
   // Try to append.
-  await assert.isRejected(
+  await rejects(
     storage.append([faker.nextResult()]),
-    "Cannot add records to database",
+    /Cannot add records to database/,
   );
 
   // Try to clear.
-  await assert.isRejected(storage.clear(), "Cannot clear database");
+  await rejects(storage.clear(), /Cannot clear database/);
 });

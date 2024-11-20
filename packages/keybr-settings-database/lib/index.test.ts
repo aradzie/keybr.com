@@ -3,7 +3,7 @@ import { DataDir } from "@keybr/config";
 import { Settings, stringProp } from "@keybr/settings";
 import { removeDir } from "@sosimple/fsx";
 import { File } from "@sosimple/fsx-file";
-import { assert } from "chai";
+import { deepEqual, isFalse, isNull } from "rich-assert";
 import { SettingsDatabase } from "./index.ts";
 
 const tmp = process.env.DATA_DIR ?? "/tmp/keybr";
@@ -30,7 +30,7 @@ test("delete settings", async () => {
 
   // Assert.
 
-  assert.isFalse(await file.exists());
+  isFalse(await file.exists());
 });
 
 test("save new settings", async () => {
@@ -46,7 +46,7 @@ test("save new settings", async () => {
 
   // Assert.
 
-  assert.deepStrictEqual(await file.readJson(), { prop: "xyz" });
+  deepEqual(await file.readJson(), { prop: "xyz" });
 });
 
 test("update existing settings", async () => {
@@ -62,7 +62,7 @@ test("update existing settings", async () => {
 
   // Assert.
 
-  assert.deepStrictEqual(await file.readJson(), { prop: "xyz" });
+  deepEqual(await file.readJson(), { prop: "xyz" });
 });
 
 test("read missing settings", async () => {
@@ -79,7 +79,7 @@ test("read missing settings", async () => {
 
   // Assert.
 
-  assert.isNull(settings);
+  isNull(settings);
 });
 
 test("read existing settings", async () => {
@@ -98,5 +98,5 @@ test("read existing settings", async () => {
 
   // Assert.
 
-  assert.deepStrictEqual(settings?.toJSON(), { prop: "xyz" });
+  deepEqual(settings?.toJSON(), { prop: "xyz" });
 });

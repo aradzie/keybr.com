@@ -3,7 +3,7 @@ import { Writer } from "@keybr/binary";
 import { Layout } from "@keybr/keyboard";
 import { Result, ResultFaker, TextType } from "@keybr/result";
 import { Histogram } from "@keybr/textinput";
-import { assert } from "chai";
+import { deepEqual, equal, isFalse, throws } from "rich-assert";
 import { writeResult } from "./binary.ts";
 import { InvalidFormatError } from "./errors.ts";
 import { fileChunk, fileHeader, parseFile } from "./file.ts";
@@ -15,23 +15,23 @@ test("format and parse results", () => {
 
   const buffer = Buffer.concat([fileHeader(), fileChunk([result])]);
 
-  assert.strictEqual(buffer.byteLength, 70);
+  equal(buffer.byteLength, 70);
 
   const iter = parseFile(buffer);
 
-  assert.deepStrictEqual([...iter], [result]);
+  deepEqual([...iter], [result]);
 });
 
 test("deserialize should ignore empty data", () => {
   const iter = parseFile(new Uint8Array(0));
 
-  assert.deepStrictEqual([...iter], []);
+  deepEqual([...iter], []);
 });
 
 test("deserialize should validate file header", () => {
   const iter = parseFile(new Uint8Array(256));
 
-  assert.throws(() => [...iter], InvalidFormatError);
+  throws(() => [...iter], InvalidFormatError);
 });
 
 test("deserialize should validate file data", () => {
@@ -43,7 +43,7 @@ test("deserialize should validate file data", () => {
 
   const iter = parseFile(writer.buffer());
 
-  assert.throws(() => [...iter], InvalidFormatError);
+  throws(() => [...iter], InvalidFormatError);
 });
 
 test("deserialize should read invalid results", () => {
@@ -57,7 +57,7 @@ test("deserialize should read invalid results", () => {
     /* histogram= */ new Histogram([]),
   );
 
-  assert.isFalse(result.validate());
+  isFalse(result.validate());
 
   const writer = new Writer();
   writer.putUint32(HEADER_SIGNATURE);
@@ -66,5 +66,5 @@ test("deserialize should read invalid results", () => {
 
   const parsed = [...parseFile(writer.buffer())];
 
-  assert.deepStrictEqual(parsed, [result]);
+  deepEqual(parsed, [result]);
 });

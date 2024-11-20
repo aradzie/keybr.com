@@ -1,9 +1,9 @@
 import { test } from "node:test";
-import { assert } from "chai";
+import { isTrue } from "rich-assert";
 import { nextQuote } from "./index.ts";
 
 test("generate quotes", () => {
   for (let i = 0; i < 100; i++) {
-    assert.isTrue(nextQuote().length > 0);
+    isTrue(nextQuote().length > 0);
   }
 });

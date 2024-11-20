@@ -1,6 +1,6 @@
 import { test } from "node:test";
-import { assert } from "chai";
 import { createIntl } from "react-intl";
+import { equal } from "rich-assert";
 import { makeIntlDurations } from "./durations.ts";
 
 test("unique instance", () => {
@@ -8,21 +8,21 @@ test("unique instance", () => {
   const a = makeIntlDurations(intl);
   const b = makeIntlDurations(intl);
 
-  assert.strictEqual(a, b);
+  equal(a, b);
 });
 
 test("format duration en-US", () => {
   const { formatDuration } = makeIntlDurations(createIntl({ locale: "en-US" }));
 
-  assert.strictEqual(formatDuration({}), "");
-  assert.strictEqual(formatDuration({ hours: 0, minutes: 0, seconds: 0 }), "");
-  assert.strictEqual(formatDuration({ hours: 1 }), "1 hour");
-  assert.strictEqual(formatDuration({ hours: 2 }), "2 hours");
-  assert.strictEqual(formatDuration({ minutes: 1 }), "1 minute");
-  assert.strictEqual(formatDuration({ minutes: 2 }), "2 minutes");
-  assert.strictEqual(formatDuration({ seconds: 1 }), "1 second");
-  assert.strictEqual(formatDuration({ seconds: 2 }), "2 seconds");
-  assert.strictEqual(
+  equal(formatDuration({}), "");
+  equal(formatDuration({ hours: 0, minutes: 0, seconds: 0 }), "");
+  equal(formatDuration({ hours: 1 }), "1 hour");
+  equal(formatDuration({ hours: 2 }), "2 hours");
+  equal(formatDuration({ minutes: 1 }), "1 minute");
+  equal(formatDuration({ minutes: 2 }), "2 minutes");
+  equal(formatDuration({ seconds: 1 }), "1 second");
+  equal(formatDuration({ seconds: 2 }), "2 seconds");
+  equal(
     formatDuration({ hours: 1, minutes: 1, seconds: 1 }),
     "1 hour, 1 minute, and 1 second",
   );
@@ -31,15 +31,15 @@ test("format duration en-US", () => {
 test("format duration pl-PL", () => {
   const { formatDuration } = makeIntlDurations(createIntl({ locale: "pl-PL" }));
 
-  assert.strictEqual(formatDuration({}), "");
-  assert.strictEqual(formatDuration({ hours: 0, minutes: 0, seconds: 0 }), "");
-  assert.strictEqual(formatDuration({ hours: 1 }), "1 godzina");
-  assert.strictEqual(formatDuration({ hours: 2 }), "2 godziny");
-  assert.strictEqual(formatDuration({ minutes: 1 }), "1 minuta");
-  assert.strictEqual(formatDuration({ minutes: 2 }), "2 minuty");
-  assert.strictEqual(formatDuration({ seconds: 1 }), "1 sekunda");
-  assert.strictEqual(formatDuration({ seconds: 2 }), "2 sekundy");
-  assert.strictEqual(
+  equal(formatDuration({}), "");
+  equal(formatDuration({ hours: 0, minutes: 0, seconds: 0 }), "");
+  equal(formatDuration({ hours: 1 }), "1 godzina");
+  equal(formatDuration({ hours: 2 }), "2 godziny");
+  equal(formatDuration({ minutes: 1 }), "1 minuta");
+  equal(formatDuration({ minutes: 2 }), "2 minuty");
+  equal(formatDuration({ seconds: 1 }), "1 sekunda");
+  equal(formatDuration({ seconds: 2 }), "2 sekundy");
+  equal(
     formatDuration({ hours: 1, minutes: 1, seconds: 1 }),
     "1 godzina, 1 minuta i 1 sekunda",
   );
@@ -50,17 +50,14 @@ test("humanize duration en-US", () => {
     createIntl({ locale: "en-US" }),
   );
 
-  assert.strictEqual(humanizeDuration(0), "0 seconds");
-  assert.strictEqual(humanizeDuration(1), "1 second");
-  assert.strictEqual(humanizeDuration(59), "59 seconds");
-  assert.strictEqual(humanizeDuration(60), "1 minute");
-  assert.strictEqual(humanizeDuration(3540), "59 minutes");
-  assert.strictEqual(humanizeDuration(3600), "1 hour");
-  assert.strictEqual(humanizeDuration(356400), "99 hours");
-  assert.strictEqual(
-    humanizeDuration(359999),
-    "99 hours, 59 minutes, and 59 seconds",
-  );
+  equal(humanizeDuration(0), "0 seconds");
+  equal(humanizeDuration(1), "1 second");
+  equal(humanizeDuration(59), "59 seconds");
+  equal(humanizeDuration(60), "1 minute");
+  equal(humanizeDuration(3540), "59 minutes");
+  equal(humanizeDuration(3600), "1 hour");
+  equal(humanizeDuration(356400), "99 hours");
+  equal(humanizeDuration(359999), "99 hours, 59 minutes, and 59 seconds");
 });
 
 test("humanize duration pl-PL", () => {
@@ -68,15 +65,12 @@ test("humanize duration pl-PL", () => {
     createIntl({ locale: "pl-PL" }),
   );
 
-  assert.strictEqual(humanizeDuration(0), "0 sekund");
-  assert.strictEqual(humanizeDuration(1), "1 sekunda");
-  assert.strictEqual(humanizeDuration(59), "59 sekund");
-  assert.strictEqual(humanizeDuration(60), "1 minuta");
-  assert.strictEqual(humanizeDuration(3540), "59 minut");
-  assert.strictEqual(humanizeDuration(3600), "1 godzina");
-  assert.strictEqual(humanizeDuration(356400), "99 godzin");
-  assert.strictEqual(
-    humanizeDuration(359999),
-    "99 godzin, 59 minut i 59 sekund",
-  );
+  equal(humanizeDuration(0), "0 sekund");
+  equal(humanizeDuration(1), "1 sekunda");
+  equal(humanizeDuration(59), "59 sekund");
+  equal(humanizeDuration(60), "1 minuta");
+  equal(humanizeDuration(3540), "59 minut");
+  equal(humanizeDuration(3600), "1 godzina");
+  equal(humanizeDuration(356400), "99 godzin");
+  equal(humanizeDuration(359999), "99 godzin, 59 minut i 59 sekund");
 });

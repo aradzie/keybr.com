@@ -4,7 +4,7 @@ import { LessonKey } from "@keybr/lesson";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { FakeSettingsContext } from "@keybr/settings";
 import { render } from "@testing-library/react";
-import { assert } from "chai";
+import { isNotNull, isNull } from "rich-assert";
 import { KeyDetails } from "./KeyDetails.tsx";
 
 test("render uncalibrated", () => {
@@ -25,8 +25,8 @@ test("render uncalibrated", () => {
     </FakeIntlProvider>,
   );
 
-  assert.isNotNull(r.queryByText("Not calibrated, need more samples."));
-  assert.isNull(r.queryByText("Learning rate:"));
+  isNotNull(r.queryByText("Not calibrated, need more samples."));
+  isNull(r.queryByText("Learning rate:"));
 
   r.unmount();
 });
@@ -49,8 +49,8 @@ test("render calibrated", () => {
     </FakeIntlProvider>,
   );
 
-  assert.isNull(r.queryByText("Not calibrated, need more samples."));
-  assert.isNotNull(r.queryByText("Learning rate:"));
+  isNull(r.queryByText("Not calibrated, need more samples."));
+  isNotNull(r.queryByText("Learning rate:"));
 
   r.unmount();
 });

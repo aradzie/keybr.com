@@ -1,8 +1,8 @@
 import { test } from "node:test";
 import { Application } from "@fastr/core";
 import { Cookie } from "@fastr/headers";
-import { assert } from "chai";
 import { load } from "cheerio";
+import { deepEqual, equal } from "rich-assert";
 import { kMain } from "../module.ts";
 import { TestContext } from "../test/context.ts";
 import { startApp } from "../test/request.ts";
@@ -42,15 +42,12 @@ for (const path of [
 
     // Assert.
 
-    assert.strictEqual(response.status, 200);
-    assert.strictEqual(
-      response.headers.get("Content-Type"),
-      "text/html; charset=UTF-8",
-    );
+    equal(response.status, 200);
+    equal(response.headers.get("Content-Type"), "text/html; charset=UTF-8");
 
     const $ = load(await response.body.text());
-    assert.strictEqual($("script#page-data").length, 1);
-    assert.strictEqual($("#root").length, 1);
+    equal($("script#page-data").length, 1);
+    equal($("#root").length, 1);
   });
 }
 
@@ -73,16 +70,13 @@ test(`load custom theme from cookie`, async () => {
 
   // Assert.
 
-  assert.strictEqual(response.status, 200);
-  assert.strictEqual(
-    response.headers.get("Content-Type"),
-    "text/html; charset=UTF-8",
-  );
-  assert.deepStrictEqual(response.headers.getAll("Set-Cookie"), []);
+  equal(response.status, 200);
+  equal(response.headers.get("Content-Type"), "text/html; charset=UTF-8");
+  deepEqual(response.headers.getAll("Set-Cookie"), []);
 
   const $ = load(await response.body.text());
-  assert.strictEqual($("html").attr("data-color"), "dark");
-  assert.strictEqual($("html").attr("data-font"), "spectral");
+  equal($("html").attr("data-color"), "dark");
+  equal($("html").attr("data-font"), "spectral");
 });
 
 test(`ignore invalid theme cookie`, async () => {
@@ -101,14 +95,11 @@ test(`ignore invalid theme cookie`, async () => {
 
   // Assert.
 
-  assert.strictEqual(response.status, 200);
-  assert.strictEqual(
-    response.headers.get("Content-Type"),
-    "text/html; charset=UTF-8",
-  );
-  assert.deepStrictEqual(response.headers.getAll("Set-Cookie"), []);
+  equal(response.status, 200);
+  equal(response.headers.get("Content-Type"), "text/html; charset=UTF-8");
+  deepEqual(response.headers.getAll("Set-Cookie"), []);
 
   const $ = load(await response.body.text());
-  assert.strictEqual($("html").attr("data-color"), "system");
-  assert.strictEqual($("html").attr("data-font"), "open-sans");
+  equal($("html").attr("data-color"), "system");
+  equal($("html").attr("data-font"), "open-sans");
 });

@@ -5,7 +5,7 @@ import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { makeKeyStatsMap } from "@keybr/result";
 import { Settings } from "@keybr/settings";
 import { flattenStyledText } from "@keybr/textinput";
-import { assert } from "chai";
+import { isTrue } from "rich-assert";
 import { CodeLesson } from "./code.ts";
 import { lessonProps } from "./settings.ts";
 
@@ -18,5 +18,5 @@ test("generate code fragment", () => {
   lesson.rng = model.rng;
 
   const text = lesson.generate(lessonKeys);
-  assert.isTrue(flattenStyledText(text).length > 0);
+  isTrue(flattenStyledText(text).length > 0);
 });

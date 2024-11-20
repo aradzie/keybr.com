@@ -2,7 +2,7 @@ import { test } from "node:test";
 import { type WordList } from "@keybr/content";
 import { Language } from "@keybr/keyboard";
 import { render } from "@testing-library/react";
-import { assert } from "chai";
+import { doesNotInclude, includes } from "rich-assert";
 import { WordListLoader } from "./WordListLoader.tsx";
 
 test("load word list", async () => {
@@ -18,8 +18,8 @@ test("load word list", async () => {
   );
 
   await r.findByText("english");
-  assert.include(res, "mother");
-  assert.notInclude(res, "madre");
+  includes(res, "mother");
+  doesNotInclude(res, "madre");
 
   r.rerender(
     <WordListLoader language={Language.ES} fallback="fallback">
@@ -31,8 +31,8 @@ test("load word list", async () => {
   );
 
   await r.findByText("spanish");
-  assert.include(res, "madre");
-  assert.notInclude(res, "mother");
+  includes(res, "madre");
+  doesNotInclude(res, "mother");
 
   r.unmount();
 });

@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
-import { assert } from "chai";
+import { deepEqual } from "rich-assert";
 import { LessonKey, LessonKeys } from "./key.ts";
 
 const { letter1, letter2, letter3 } = FakePhoneticModel;
@@ -41,8 +41,8 @@ test("mutate lesson keys", () => {
 
   // Assert.
 
-  assert.deepStrictEqual(keys.letters, [letter1, letter2, letter3]);
-  assert.deepStrictEqual(
+  deepEqual(keys.letters, [letter1, letter2, letter3]);
+  deepEqual(
     [...keys],
     [
       new LessonKey({
@@ -80,7 +80,7 @@ test("mutate lesson keys", () => {
       }),
     ],
   );
-  assert.deepStrictEqual(keys.findIncludedKeys(), [
+  deepEqual(keys.findIncludedKeys(), [
     new LessonKey({
       letter: letter1,
       samples: [],
@@ -93,7 +93,7 @@ test("mutate lesson keys", () => {
       isFocused: true,
     }),
   ]);
-  assert.deepStrictEqual(keys.findExcludedKeys(), [
+  deepEqual(keys.findExcludedKeys(), [
     new LessonKey({
       letter: letter2,
       samples: [],
@@ -117,7 +117,7 @@ test("mutate lesson keys", () => {
       isFocused: false,
     }),
   ]);
-  assert.deepStrictEqual(
+  deepEqual(
     keys.findFocusedKey(),
     new LessonKey({
       letter: letter1,

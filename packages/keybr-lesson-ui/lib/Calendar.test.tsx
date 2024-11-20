@@ -1,10 +1,10 @@
-import { strictEqual } from "node:assert/strict";
 import { test } from "node:test";
 import { parseColor } from "@keybr/color";
 import { FakeIntlProvider } from "@keybr/intl";
 import { LocalDate, ResultFaker, ResultSummary } from "@keybr/result";
 import { FakeSettingsContext } from "@keybr/settings";
 import { render } from "@testing-library/react";
+import { equal } from "rich-assert";
 import { Calendar } from "./Calendar.tsx";
 
 test("no results", () => {
@@ -31,7 +31,7 @@ test("no results", () => {
 
   // Assert.
 
-  strictEqual(r.container.querySelectorAll("[data-date]").length, 0);
+  equal(r.container.querySelectorAll("[data-date]").length, 0);
 
   r.unmount();
 });
@@ -63,7 +63,7 @@ test("no results today", () => {
 
   // Assert.
 
-  strictEqual(r.container.querySelectorAll("[data-date]").length, 1);
+  equal(r.container.querySelectorAll("[data-date]").length, 1);
 
   r.unmount();
 });
@@ -96,7 +96,7 @@ test("render", () => {
 
   // Assert.
 
-  strictEqual(r.container.querySelectorAll("[data-date]").length, 2);
+  equal(r.container.querySelectorAll("[data-date]").length, 2);
 
   r.unmount();
 });

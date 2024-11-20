@@ -1,10 +1,10 @@
 import { test } from "node:test";
 import { generateKeySamples, type KeySample } from "@keybr/result";
-import { assert } from "chai";
+import { deepEqual } from "rich-assert";
 import { findSession } from "./learningsession.ts";
 
 test("find session, no samples", () => {
-  assert.deepStrictEqual(findSession([]), []);
+  deepEqual(findSession([]), []);
 });
 
 test("find session, one sample", () => {
@@ -18,7 +18,7 @@ test("find session, one sample", () => {
       filteredTimeToType: 500,
     },
   ];
-  assert.deepStrictEqual(findSession(samples), samples);
+  deepEqual(findSession(samples), samples);
 });
 
 test("find session, after a break", () => {
@@ -40,7 +40,7 @@ test("find session, after a break", () => {
       filteredTimeToType: 500,
     },
   ];
-  assert.deepStrictEqual(findSession(samples), samples.slice(-1));
+  deepEqual(findSession(samples), samples.slice(-1));
 });
 
 test("find session, increasing speed streak", () => {
@@ -60,5 +60,5 @@ test("find session, increasing speed streak", () => {
       timeToTypeStep: +10,
     }),
   ];
-  assert.deepStrictEqual(findSession(samples), samples.slice(1));
+  deepEqual(findSession(samples), samples.slice(1));
 });

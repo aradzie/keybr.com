@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { Layout } from "@keybr/keyboard";
-import { assert } from "chai";
+import { deepEqual, equal, isFalse, isNull, isTrue } from "rich-assert";
 import { HighScores, type HighScoresRow } from "./highscores.ts";
 
 const now = new Date("2001-02-03T04:05:06Z");
@@ -15,7 +15,7 @@ const template = {
   complexity: 0,
   speed: 0,
   score: 0,
-} satisfies HighScoresRow;
+} as const satisfies HighScoresRow;
 
 test("do not insert if result is old", (ctx) => {
   // Arrange.
@@ -39,9 +39,9 @@ test("do not insert if result is old", (ctx) => {
 
   // Assert.
 
-  assert.deepStrictEqual([...table], []);
-  assert.strictEqual(table.dirty, false);
-  assert.strictEqual(position, null);
+  deepEqual([...table], []);
+  isFalse(table.dirty);
+  isNull(position);
 });
 
 test("do not insert if result is low", (ctx) => {
@@ -82,9 +82,9 @@ test("do not insert if result is low", (ctx) => {
 
   // Assert.
 
-  assert.deepStrictEqual([...table], [r0, r1, r2]);
-  assert.strictEqual(table.dirty, false);
-  assert.strictEqual(position, null);
+  deepEqual([...table], [r0, r1, r2]);
+  isFalse(table.dirty);
+  isNull(position);
 });
 
 test("do not insert if higher result exists ", (ctx) => {
@@ -125,9 +125,9 @@ test("do not insert if higher result exists ", (ctx) => {
 
   // Assert.
 
-  assert.deepStrictEqual([...table], [r0, r1, r2]);
-  assert.strictEqual(table.dirty, false);
-  assert.strictEqual(position, null);
+  deepEqual([...table], [r0, r1, r2]);
+  isFalse(table.dirty);
+  isNull(position);
 });
 
 test("remove old results", (ctx) => {
@@ -173,9 +173,9 @@ test("remove old results", (ctx) => {
 
   // Assert.
 
-  assert.deepStrictEqual([...table], [candidate]);
-  assert.strictEqual(table.dirty, true);
-  assert.strictEqual(position, 0);
+  deepEqual([...table], [candidate]);
+  equal(table.dirty, true);
+  equal(position, 0);
 });
 
 test("remove lower results", (ctx) => {
@@ -216,9 +216,9 @@ test("remove lower results", (ctx) => {
 
   // Assert.
 
-  assert.deepStrictEqual([...table], [candidate]);
-  assert.strictEqual(table.dirty, true);
-  assert.strictEqual(position, 0);
+  deepEqual([...table], [candidate]);
+  equal(table.dirty, true);
+  equal(position, 0);
 });
 
 test("insert if result is high", (ctx) => {
@@ -259,9 +259,9 @@ test("insert if result is high", (ctx) => {
 
   // Assert.
 
-  assert.deepStrictEqual([...table], [candidate, r0, r1, r2]);
-  assert.strictEqual(table.dirty, true);
-  assert.strictEqual(position, 0);
+  deepEqual([...table], [candidate, r0, r1, r2]);
+  isTrue(table.dirty);
+  equal(position, 0);
 });
 
 test("insert if table is not full", (ctx) => {
@@ -302,9 +302,9 @@ test("insert if table is not full", (ctx) => {
 
   // Assert.
 
-  assert.deepStrictEqual([...table], [r0, r1, r2, candidate]);
-  assert.strictEqual(table.dirty, true);
-  assert.strictEqual(position, 3);
+  deepEqual([...table], [r0, r1, r2, candidate]);
+  isTrue(table.dirty);
+  equal(position, 3);
 });
 
 test("truncate to limit", (ctx) => {
@@ -345,7 +345,7 @@ test("truncate to limit", (ctx) => {
 
   // Assert.
 
-  assert.deepStrictEqual([...table], [candidate]);
-  assert.strictEqual(table.dirty, true);
-  assert.strictEqual(position, 0);
+  deepEqual([...table], [candidate]);
+  isTrue(table.dirty);
+  equal(position, 0);
 });

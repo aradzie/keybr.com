@@ -1,5 +1,5 @@
 import { test } from "node:test";
-import { assert } from "chai";
+import { equal } from "rich-assert";
 import { borderShapes, centerShapes } from "./shapes.ts";
 import { Graphics, Path, Transform } from "./svg.ts";
 
@@ -31,7 +31,7 @@ test(`has ${borderResults.length} border shapes`, () => {
   const transform = new Transform(0, 0, 100, 0);
   borderShapes(new Graphics(path0, transform), 0);
   borderShapes(new Graphics(path1, transform), 4);
-  assert.strictEqual(String(path0), String(path1));
+  equal(String(path0), String(path1));
 });
 
 for (let i = 0; i < borderResults.length; i++) {
@@ -39,7 +39,7 @@ for (let i = 0; i < borderResults.length; i++) {
     const path = new Path();
     const transform = new Transform(0, 0, 100, 0);
     borderShapes(new Graphics(path, transform), i);
-    assert.strictEqual(String(path), borderResults[i]);
+    equal(String(path), borderResults[i]);
   });
 }
 
@@ -49,7 +49,7 @@ test(`has ${centerResults.length} center shapes`, () => {
   const transform = new Transform(0, 0, 100, 0);
   centerShapes(new Graphics(path0, transform), 0);
   centerShapes(new Graphics(path1, transform), 12);
-  assert.strictEqual(String(path0), String(path1));
+  equal(String(path0), String(path1));
 });
 
 for (let i = 0; i < centerResults.length; i++) {
@@ -57,6 +57,6 @@ for (let i = 0; i < centerResults.length; i++) {
     const path = new Path();
     const transform = new Transform(0, 0, 100, 0);
     centerShapes(new Graphics(path, transform), i);
-    assert.strictEqual(String(path), centerResults[i]);
+    equal(String(path), centerResults[i]);
   });
 }

@@ -2,7 +2,7 @@ import { test } from "node:test";
 import { KeyboardContext, Layout, loadKeyboard } from "@keybr/keyboard";
 import { render } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import { assert } from "chai";
+import { deepEqual, equal } from "rich-assert";
 import { KeyLayer } from "./KeyLayer.tsx";
 
 test("render", () => {
@@ -14,9 +14,9 @@ test("render", () => {
     </KeyboardContext.Provider>,
   );
 
-  assert.strictEqual(r.container.querySelectorAll(".key").length, 58);
-  assert.strictEqual(r.container.querySelectorAll(".depressedKey").length, 0);
-  assert.strictEqual(r.container.querySelectorAll(".symbol").length, 78);
+  equal(r.container.querySelectorAll(".key").length, 58);
+  equal(r.container.querySelectorAll(".depressedKey").length, 0);
+  equal(r.container.querySelectorAll(".symbol").length, 78);
 
   r.unmount();
 });
@@ -33,9 +33,9 @@ test("update", () => {
     </KeyboardContext.Provider>,
   );
 
-  assert.strictEqual(r.container.querySelectorAll(".key").length, 58);
-  assert.strictEqual(r.container.querySelectorAll(".depressedKey").length, 3);
-  assert.strictEqual(r.container.querySelectorAll(".symbol").length, 78);
+  equal(r.container.querySelectorAll(".key").length, 58);
+  equal(r.container.querySelectorAll(".depressedKey").length, 3);
+  equal(r.container.querySelectorAll(".symbol").length, 78);
 
   r.unmount();
 });
@@ -63,15 +63,15 @@ test("events", async () => {
 
   events.length = 0;
   await userEvent.hover(r.getByText("A"));
-  assert.deepStrictEqual(events, ["hover in KeyA"]);
+  deepEqual(events, ["hover in KeyA"]);
 
   events.length = 0;
   await userEvent.unhover(r.getByText("A"));
-  assert.deepStrictEqual(events, ["hover out KeyA"]);
+  deepEqual(events, ["hover out KeyA"]);
 
   events.length = 0;
   await userEvent.click(r.getByText("A"));
-  assert.deepStrictEqual(events, ["hover in KeyA", "click KeyA"]);
+  deepEqual(events, ["hover in KeyA", "click KeyA"]);
 
   r.unmount();
 });

@@ -1,12 +1,12 @@
 import { test } from "node:test";
-import { assert } from "chai";
+import { deepEqual } from "rich-assert";
 import { UserIdRange } from "./userid-range.ts";
 
 test("sort and merge intervals", () => {
-  assert.deepStrictEqual([...new UserIdRange([])], []);
-  assert.deepStrictEqual([...new UserIdRange([{ from: 1, to: 1 }])], [1]);
-  assert.deepStrictEqual([...new UserIdRange([{ from: 1, to: 3 }])], [1, 2, 3]);
-  assert.deepStrictEqual(
+  deepEqual([...new UserIdRange([])], []);
+  deepEqual([...new UserIdRange([{ from: 1, to: 1 }])], [1]);
+  deepEqual([...new UserIdRange([{ from: 1, to: 3 }])], [1, 2, 3]);
+  deepEqual(
     [
       ...new UserIdRange([
         { from: 3, to: 3 },
@@ -16,7 +16,7 @@ test("sort and merge intervals", () => {
     ],
     [1, 2, 3],
   );
-  assert.deepStrictEqual(
+  deepEqual(
     [
       ...new UserIdRange([
         { from: 2, to: 3 },
@@ -25,7 +25,7 @@ test("sort and merge intervals", () => {
     ],
     [1, 2, 3],
   );
-  assert.deepStrictEqual(
+  deepEqual(
     [
       ...new UserIdRange([
         { from: 1, to: 1 },

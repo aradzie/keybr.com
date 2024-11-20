@@ -1,10 +1,10 @@
 import { describe, test } from "node:test";
-import { assert } from "chai";
+import { equal } from "rich-assert";
 import { formatReport, inspectError } from "./inspect.ts";
 
 const macro = (input: unknown, expected: string) => {
   return () => {
-    assert.strictEqual(formatReport(inspectError(input), false), expected);
+    equal(formatReport(inspectError(input), false), expected);
   };
 };
 

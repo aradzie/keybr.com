@@ -1,8 +1,8 @@
 import { test } from "node:test";
 import { fireEvent, render } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import { assert } from "chai";
 import { useState } from "react";
+import { equal, isNotNull, isNull } from "rich-assert";
 import { OptionList } from "./OptionList.tsx";
 import { type OptionListOption } from "./OptionList.types.ts";
 
@@ -23,11 +23,11 @@ test("props", () => {
   );
   const element = r.getByTitle("underTest");
 
-  assert.strictEqual(element.textContent, "One►");
+  equal(element.textContent, "One►");
   r.rerender(<OptionList options={options} value="2" />);
-  assert.strictEqual(element.textContent, "Two►");
+  equal(element.textContent, "Two►");
   r.rerender(<OptionList options={options} value="X" />);
-  assert.strictEqual(element.textContent, "-►");
+  equal(element.textContent, "-►");
 
   r.unmount();
 });
@@ -38,15 +38,15 @@ test("interactions", async () => {
   );
   const element = r.getByTitle("underTest");
 
-  assert.isNull(r.queryByRole("menu"));
+  isNull(r.queryByRole("menu"));
   await userEvent.click(r.getByText("One"));
-  assert.isNotNull(r.queryByRole("menu"));
+  isNotNull(r.queryByRole("menu"));
   await userEvent.click(r.getByText("Two"));
-  assert.isNull(r.queryByRole("menu"));
+  isNull(r.queryByRole("menu"));
   fireEvent.keyDown(element, { code: "Space" });
-  assert.isNotNull(r.queryByRole("menu"));
+  isNotNull(r.queryByRole("menu"));
   fireEvent.keyDown(element, { code: "Space" });
-  assert.isNull(r.queryByRole("menu"));
+  isNull(r.queryByRole("menu"));
 
   r.unmount();
 });
@@ -71,33 +71,33 @@ test("controlled", async () => {
   const r = render(<Controlled />);
   const element = r.getByTitle("underTest");
 
-  assert.isNull(r.queryByRole("menu"));
+  isNull(r.queryByRole("menu"));
   await userEvent.click(r.getByText("One"));
-  assert.isNotNull(r.queryByRole("menu"));
+  isNotNull(r.queryByRole("menu"));
   await userEvent.click(r.getByText("Two"));
-  assert.strictEqual(lastValue, "2");
+  equal(lastValue, "2");
 
-  assert.isNull(r.queryByRole("menu"));
+  isNull(r.queryByRole("menu"));
   await userEvent.click(r.getByText("Two"));
-  assert.isNotNull(r.queryByRole("menu"));
+  isNotNull(r.queryByRole("menu"));
   await userEvent.click(r.getByText("One"));
-  assert.strictEqual(lastValue, "1");
+  equal(lastValue, "1");
 
-  assert.isNull(r.queryByRole("menu"));
+  isNull(r.queryByRole("menu"));
   fireEvent.keyDown(element, { code: "ArrowUp" });
-  assert.isNotNull(r.queryByRole("menu"));
+  isNotNull(r.queryByRole("menu"));
   await userEvent.click(r.getByText("Two"));
-  assert.strictEqual(lastValue, "2");
+  equal(lastValue, "2");
 
   fireEvent.keyDown(element, { code: "Space" });
   fireEvent.keyDown(element, { code: "Home" });
   fireEvent.keyDown(element, { code: "Enter" });
-  assert.strictEqual(lastValue, "1");
+  equal(lastValue, "1");
 
   fireEvent.keyDown(element, { code: "Space" });
   fireEvent.keyDown(element, { code: "End" });
   fireEvent.keyDown(element, { code: "Enter" });
-  assert.strictEqual(lastValue, "2");
+  equal(lastValue, "2");
 
   r.unmount();
 });

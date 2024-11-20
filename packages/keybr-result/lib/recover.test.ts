@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { Histogram } from "@keybr/textinput";
-import { assert } from "chai";
+import { deepEqual, isFalse, isTrue } from "rich-assert";
 import { ResultFaker } from "./fake.tsx";
 import { recoverResults } from "./recover.ts";
 import { Result } from "./result.ts";
@@ -31,14 +31,14 @@ test("recover results", () => {
   );
   const r2 = faker.nextResult();
 
-  assert.isFalse(r1.validate());
-  assert.isTrue(r1x.validate());
-  assert.isTrue(r2.validate());
+  isFalse(r1.validate());
+  isTrue(r1x.validate());
+  isTrue(r2.validate());
 
-  assert.deepStrictEqual(recoverResults([]), []);
-  assert.deepStrictEqual(recoverResults([r1]), [r1x]);
-  assert.deepStrictEqual(recoverResults([r2]), [r2]);
-  assert.deepStrictEqual(recoverResults([r1, r2]), [r1x, r2]);
+  deepEqual(recoverResults([]), []);
+  deepEqual(recoverResults([r1]), [r1x]);
+  deepEqual(recoverResults([r2]), [r2]);
+  deepEqual(recoverResults([r1, r2]), [r1x, r2]);
 });
 
 test("fail to recover results", () => {
@@ -48,12 +48,12 @@ test("fail to recover results", () => {
   const r2 = faker.nextResult({ length: 0, time: 0 });
   const r3 = faker.nextResult();
 
-  assert.isFalse(r1.validate());
-  assert.isFalse(r2.validate());
-  assert.isTrue(r3.validate());
+  isFalse(r1.validate());
+  isFalse(r2.validate());
+  isTrue(r3.validate());
 
-  assert.deepStrictEqual(recoverResults([]), []);
-  assert.deepStrictEqual(recoverResults([r1]), []);
-  assert.deepStrictEqual(recoverResults([r2]), []);
-  assert.deepStrictEqual(recoverResults([r1, r2, r3]), [r3]);
+  deepEqual(recoverResults([]), []);
+  deepEqual(recoverResults([r1]), []);
+  deepEqual(recoverResults([r2]), []);
+  deepEqual(recoverResults([r1, r2, r3]), [r3]);
 });

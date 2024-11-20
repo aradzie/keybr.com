@@ -4,7 +4,7 @@ import { LessonKey } from "@keybr/lesson";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { FakeSettingsContext } from "@keybr/settings";
 import { render } from "@testing-library/react";
-import { assert } from "chai";
+import { equal, isNotNull } from "rich-assert";
 import { Key } from "./Key.tsx";
 
 test("render excluded", () => {
@@ -26,8 +26,8 @@ test("render excluded", () => {
   );
 
   const elem = r.container.querySelector(".lessonKey_excluded");
-  assert.isNotNull(elem);
-  assert.strictEqual(Key.attached(elem), key);
+  isNotNull(elem);
+  equal(Key.attached(elem), key);
 
   r.unmount();
 });
@@ -51,8 +51,8 @@ test("render included", () => {
   );
 
   const elem = r.container.querySelector(".lessonKey_included");
-  assert.isNotNull(elem);
-  assert.strictEqual(Key.attached(elem), key);
+  isNotNull(elem);
+  equal(Key.attached(elem), key);
 
   r.unmount();
 });
@@ -76,8 +76,8 @@ test("render focused", () => {
   );
 
   const elem = r.container.querySelector(".lessonKey_focused");
-  assert.isNotNull(elem);
-  assert.strictEqual(Key.attached(elem), key);
+  isNotNull(elem);
+  equal(Key.attached(elem), key);
 
   r.unmount();
 });

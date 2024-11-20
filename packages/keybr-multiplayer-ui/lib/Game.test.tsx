@@ -17,7 +17,7 @@ import {
 } from "@keybr/multiplayer-shared/lib/testing.ts";
 import { FakeSettingsContext } from "@keybr/settings";
 import { act, render } from "@testing-library/react";
-import { assert } from "chai";
+import { doesNotInclude, includes, isNotNull, isNull } from "rich-assert";
 import { Game } from "./Game.tsx";
 import { FakeTransport } from "./transport.fake.ts";
 
@@ -38,7 +38,7 @@ test("initial state", async () => {
     await flushAnimationFrames();
   });
 
-  assert.include(r.container.textContent, "Initializing...");
+  includes(r.container.textContent!, "Initializing...");
 
   r.unmount();
 });
@@ -58,7 +58,7 @@ test("game config", async () => {
     await flushAnimationFrames();
   });
 
-  assert.notInclude(r.container.textContent, "abracadabra");
+  doesNotInclude(r.container.textContent!, "abracadabra");
 
   act(() => {
     transport.transmit({
@@ -71,7 +71,7 @@ test("game config", async () => {
     await flushAnimationFrames();
   });
 
-  assert.include(r.container.textContent, "abracadabra");
+  includes(r.container.textContent!, "abracadabra");
 
   r.unmount();
 });
@@ -87,9 +87,9 @@ test("players join and leave", async () => {
     </FakeIntlProvider>,
   );
 
-  assert.isNull(r.queryByText(player1.user.name));
-  assert.isNull(r.queryByText(player2.user.name));
-  assert.isNull(r.queryByText(player3.user.name));
+  isNull(r.queryByText(player1.user.name));
+  isNull(r.queryByText(player2.user.name));
+  isNull(r.queryByText(player3.user.name));
 
   act(() => {
     transport.transmit({
@@ -103,9 +103,9 @@ test("players join and leave", async () => {
     await flushAnimationFrames();
   });
 
-  assert.isNotNull(r.queryByText(player1.user.name));
-  assert.isNotNull(r.queryByText(player2.user.name));
-  assert.isNotNull(r.queryByText(player3.user.name));
+  isNotNull(r.queryByText(player1.user.name));
+  isNotNull(r.queryByText(player2.user.name));
+  isNotNull(r.queryByText(player3.user.name));
 
   act(() => {
     transport.transmit({
@@ -119,9 +119,9 @@ test("players join and leave", async () => {
     await flushAnimationFrames();
   });
 
-  assert.isNotNull(r.queryByText(player1.user.name));
-  assert.isNotNull(r.queryByText(player2.user.name));
-  assert.isNull(r.queryByText(player3.user.name));
+  isNotNull(r.queryByText(player1.user.name));
+  isNotNull(r.queryByText(player2.user.name));
+  isNull(r.queryByText(player3.user.name));
 
   r.unmount();
 });
@@ -160,7 +160,7 @@ test("all together", async () => {
     await flushAnimationFrames();
   });
 
-  assert.include(r.container.textContent, "Initializing...");
+  includes(r.container.textContent!, "Initializing...");
 
   act(() => {
     transport.transmit({
@@ -174,7 +174,7 @@ test("all together", async () => {
     await flushAnimationFrames();
   });
 
-  assert.include(r.container.textContent, "Start in 2");
+  includes(r.container.textContent!, "Start in 2");
 
   act(() => {
     transport.transmit({
@@ -188,7 +188,7 @@ test("all together", async () => {
     await flushAnimationFrames();
   });
 
-  assert.include(r.container.textContent, "Start in 1");
+  includes(r.container.textContent!, "Start in 1");
 
   act(() => {
     transport.transmit({
@@ -202,7 +202,7 @@ test("all together", async () => {
     await flushAnimationFrames();
   });
 
-  assert.include(r.container.textContent, "Race started!");
+  includes(r.container.textContent!, "Race started!");
 
   act(() => {
     transport.transmit({
@@ -228,7 +228,7 @@ test("all together", async () => {
     await flushAnimationFrames();
   });
 
-  assert.include(r.container.textContent, "Zzz... Wait for the next race");
+  includes(r.container.textContent!, "Zzz... Wait for the next race");
 
   act(() => {
     transport.transmit({
@@ -254,7 +254,7 @@ test("all together", async () => {
     await flushAnimationFrames();
   });
 
-  assert.include(r.container.textContent, "You finished 3rd!");
+  includes(r.container.textContent!, "You finished 3rd!");
 
   act(() => {
     transport.transmit({
@@ -280,7 +280,7 @@ test("all together", async () => {
     await flushAnimationFrames();
   });
 
-  assert.include(r.container.textContent, "You finished 2nd!");
+  includes(r.container.textContent!, "You finished 2nd!");
 
   act(() => {
     transport.transmit({
@@ -306,7 +306,7 @@ test("all together", async () => {
     await flushAnimationFrames();
   });
 
-  assert.include(r.container.textContent, "You won the race!");
+  includes(r.container.textContent!, "You won the race!");
 
   act(() => {
     transport.transmit({
@@ -332,7 +332,7 @@ test("all together", async () => {
     await flushAnimationFrames();
   });
 
-  assert.include(r.container.textContent, "GO!");
+  includes(r.container.textContent!, "GO!");
 
   act(() => {
     transport.transmit({
@@ -346,7 +346,7 @@ test("all together", async () => {
     await flushAnimationFrames();
   });
 
-  assert.include(r.container.textContent, "Race finished!");
+  includes(r.container.textContent!, "Race finished!");
 
   r.unmount();
 });

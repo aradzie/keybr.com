@@ -1,5 +1,5 @@
 import { test } from "node:test";
-import { assert } from "chai";
+import { equal, isFalse, isTrue } from "rich-assert";
 import { Tasks } from "./tasks.ts";
 
 test("delayed", (ctx) => {
@@ -12,22 +12,22 @@ test("delayed", (ctx) => {
     count += 1;
   });
 
-  assert.strictEqual(tasks.pending, 1);
-  assert.isFalse(t.fired);
-  assert.isFalse(t.cancelled);
-  assert.strictEqual(count, 0);
+  equal(tasks.pending, 1);
+  isFalse(t.fired);
+  isFalse(t.cancelled);
+  equal(count, 0);
 
   ctx.mock.timers.runAll();
-  assert.strictEqual(tasks.pending, 0);
-  assert.isTrue(t.fired);
-  assert.isFalse(t.cancelled);
-  assert.strictEqual(count, 1);
+  equal(tasks.pending, 0);
+  isTrue(t.fired);
+  isFalse(t.cancelled);
+  equal(count, 1);
 
   ctx.mock.timers.runAll();
-  assert.strictEqual(tasks.pending, 0);
-  assert.isTrue(t.fired);
-  assert.isFalse(t.cancelled);
-  assert.strictEqual(count, 1);
+  equal(tasks.pending, 0);
+  isTrue(t.fired);
+  isFalse(t.cancelled);
+  equal(count, 1);
 });
 
 test("cancel delayed", (ctx) => {
@@ -40,27 +40,27 @@ test("cancel delayed", (ctx) => {
     count += 1;
   });
 
-  assert.strictEqual(tasks.pending, 1);
-  assert.isFalse(t.fired);
-  assert.isFalse(t.cancelled);
-  assert.strictEqual(count, 0);
+  equal(tasks.pending, 1);
+  isFalse(t.fired);
+  isFalse(t.cancelled);
+  equal(count, 0);
 
   t.cancel();
   t.cancel();
   t.cancel();
-  assert.strictEqual(tasks.pending, 0);
-
-  ctx.mock.timers.runAll();
-  assert.strictEqual(tasks.pending, 0);
-  assert.isFalse(t.fired);
-  assert.isTrue(t.cancelled);
-  assert.strictEqual(count, 0);
+  equal(tasks.pending, 0);
 
   ctx.mock.timers.runAll();
-  assert.strictEqual(tasks.pending, 0);
-  assert.isFalse(t.fired);
-  assert.isTrue(t.cancelled);
-  assert.strictEqual(count, 0);
+  equal(tasks.pending, 0);
+  isFalse(t.fired);
+  isTrue(t.cancelled);
+  equal(count, 0);
+
+  ctx.mock.timers.runAll();
+  equal(tasks.pending, 0);
+  isFalse(t.fired);
+  isTrue(t.cancelled);
+  equal(count, 0);
 });
 
 test("repeated", (ctx) => {
@@ -73,22 +73,22 @@ test("repeated", (ctx) => {
     count += 1;
   });
 
-  assert.strictEqual(tasks.pending, 1);
-  assert.isFalse(t.fired);
-  assert.isFalse(t.cancelled);
-  assert.strictEqual(count, 0);
+  equal(tasks.pending, 1);
+  isFalse(t.fired);
+  isFalse(t.cancelled);
+  equal(count, 0);
 
   ctx.mock.timers.runAll();
-  assert.strictEqual(tasks.pending, 1);
-  assert.isTrue(t.fired);
-  assert.isFalse(t.cancelled);
-  assert.strictEqual(count, 1);
+  equal(tasks.pending, 1);
+  isTrue(t.fired);
+  isFalse(t.cancelled);
+  equal(count, 1);
 
   ctx.mock.timers.runAll();
-  assert.strictEqual(tasks.pending, 1);
-  assert.isTrue(t.fired);
-  assert.isFalse(t.cancelled);
-  assert.strictEqual(count, 2);
+  equal(tasks.pending, 1);
+  isTrue(t.fired);
+  isFalse(t.cancelled);
+  equal(count, 2);
 });
 
 test("cancel repeated", (ctx) => {
@@ -101,27 +101,27 @@ test("cancel repeated", (ctx) => {
     count += 1;
   });
 
-  assert.strictEqual(tasks.pending, 1);
-  assert.isFalse(t.fired);
-  assert.isFalse(t.cancelled);
-  assert.strictEqual(count, 0);
+  equal(tasks.pending, 1);
+  isFalse(t.fired);
+  isFalse(t.cancelled);
+  equal(count, 0);
 
   t.cancel();
   t.cancel();
   t.cancel();
-  assert.strictEqual(tasks.pending, 0);
-
-  ctx.mock.timers.runAll();
-  assert.strictEqual(tasks.pending, 0);
-  assert.isFalse(t.fired);
-  assert.isTrue(t.cancelled);
-  assert.strictEqual(count, 0);
+  equal(tasks.pending, 0);
 
   ctx.mock.timers.runAll();
-  assert.strictEqual(tasks.pending, 0);
-  assert.isFalse(t.fired);
-  assert.isTrue(t.cancelled);
-  assert.strictEqual(count, 0);
+  equal(tasks.pending, 0);
+  isFalse(t.fired);
+  isTrue(t.cancelled);
+  equal(count, 0);
+
+  ctx.mock.timers.runAll();
+  equal(tasks.pending, 0);
+  isFalse(t.fired);
+  isTrue(t.cancelled);
+  equal(count, 0);
 });
 
 test("cancel all", (ctx) => {
@@ -136,14 +136,14 @@ test("cancel all", (ctx) => {
     throw new Error();
   });
 
-  assert.strictEqual(tasks.pending, 2);
+  equal(tasks.pending, 2);
 
   tasks.cancelAll();
-  assert.strictEqual(tasks.pending, 0);
+  equal(tasks.pending, 0);
 
   tasks.cancelAll();
-  assert.strictEqual(tasks.pending, 0);
+  equal(tasks.pending, 0);
 
   ctx.mock.timers.runAll();
-  assert.strictEqual(tasks.pending, 0);
+  equal(tasks.pending, 0);
 });

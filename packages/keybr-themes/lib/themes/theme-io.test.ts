@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { parseColor } from "@keybr/color";
-import { assert } from "chai";
+import { deepEqual, equal } from "rich-assert";
 import { UrlAsset } from "./asset.ts";
 import { CustomTheme } from "./custom-theme.ts";
 import { readTheme, storeTheme } from "./theme-io.ts";
@@ -23,8 +23,8 @@ test("store", async () => {
 
   // Assert.
 
-  assert.strictEqual(error, null);
-  assert.deepStrictEqual(
+  equal(error, null);
+  deepEqual(
     [...storage],
     [
       ["keybr.theme[--primary]", "rgb(255 255 255)"],
@@ -49,13 +49,10 @@ test("read", async () => {
 
   // Assert.
 
-  assert.strictEqual(error, null);
-  assert.deepStrictEqual(theme.get("--primary"), parseColor("#ffffff"));
-  assert.deepStrictEqual(theme.get("--secondary"), parseColor("#000000"));
-  assert.deepStrictEqual(
-    theme.get("--background-image"),
-    new UrlAsset("/assets/image.svg"),
-  );
+  equal(error, null);
+  deepEqual(theme.get("--primary"), parseColor("#ffffff"));
+  deepEqual(theme.get("--secondary"), parseColor("#000000"));
+  deepEqual(theme.get("--background-image"), new UrlAsset("/assets/image.svg"));
 });
 
 test("read and ignore invalid data", async () => {
@@ -73,9 +70,9 @@ test("read and ignore invalid data", async () => {
 
   // Assert.
 
-  assert.deepStrictEqual([...storage], []);
-  assert.deepStrictEqual([...theme], []);
-  assert.strictEqual(error?.errors.length, 3);
+  deepEqual([...storage], []);
+  deepEqual([...theme], []);
+  equal(error?.errors.length, 3);
 });
 
 class FakeStorage implements Storage, Iterable<[string, string]> {

@@ -1,5 +1,5 @@
 import { test } from "node:test";
-import { assert } from "chai";
+import { deepEqual, isFalse, isTrue } from "rich-assert";
 import { AccessToken } from "./token.ts";
 
 test("construct token from response", (ctx) => {
@@ -12,7 +12,7 @@ test("construct token from response", (ctx) => {
     expires_in: 3600,
   });
 
-  assert.deepStrictEqual(
+  deepEqual(
     { ...token },
     {
       token: "token",
@@ -20,7 +20,7 @@ test("construct token from response", (ctx) => {
       expiresAt: new Date("2001-02-03T05:05:06Z"),
     },
   );
-  assert.isFalse(token.expired());
+  isFalse(token.expired());
 });
 
 test("check expired", (ctx) => {
@@ -33,22 +33,22 @@ test("check expired", (ctx) => {
     expires_in: 3600,
   });
 
-  assert.isFalse(token.expired());
+  isFalse(token.expired());
 
   ctx.mock.timers.setTime(Number(new Date("2001-01-01T00:58:59Z")));
 
-  assert.isFalse(token.expired());
-  assert.isFalse(token.expired(60));
-  assert.isFalse(token.expired(0));
+  isFalse(token.expired());
+  isFalse(token.expired(60));
+  isFalse(token.expired(0));
 
   ctx.mock.timers.setTime(Number(new Date("2001-01-01T00:59:00Z")));
 
-  assert.isTrue(token.expired());
-  assert.isTrue(token.expired(60));
-  assert.isFalse(token.expired(0));
+  isTrue(token.expired());
+  isTrue(token.expired(60));
+  isFalse(token.expired(0));
 
   ctx.mock.timers.setTime(Number(new Date("2001-01-01T01:00:00Z")));
 
-  assert.isTrue(token.expired());
-  assert.isTrue(token.expired(0));
+  isTrue(token.expired());
+  isTrue(token.expired(0));
 });

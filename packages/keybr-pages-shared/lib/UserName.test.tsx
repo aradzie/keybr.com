@@ -1,8 +1,8 @@
 import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { render } from "@testing-library/react";
-import { assert } from "chai";
 import { MemoryRouter } from "react-router";
+import { isNotNull } from "rich-assert";
 import { UserName } from "./UserName.tsx";
 
 test("render anonymous user", () => {
@@ -21,7 +21,7 @@ test("render anonymous user", () => {
     </FakeIntlProvider>,
   );
 
-  assert.isNotNull(r.queryByTitle("Anonymous User"));
+  isNotNull(r.queryByTitle("Anonymous User"));
 
   r.unmount();
 });
@@ -43,7 +43,7 @@ test("render named user", () => {
     </FakeIntlProvider>,
   );
 
-  assert.isNotNull(r.queryByTitle("somebody"));
+  isNotNull(r.queryByTitle("somebody"));
 
   r.unmount();
 });

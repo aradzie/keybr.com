@@ -3,7 +3,7 @@ import { Reader, Writer } from "@keybr/binary";
 import { Layout } from "@keybr/keyboard";
 import { Result, TextType } from "@keybr/result";
 import { Histogram } from "@keybr/textinput";
-import { assert } from "chai";
+import { deepEqual, equal } from "rich-assert";
 import { readResult, writeResult } from "./binary.ts";
 
 test("write and read", () => {
@@ -45,17 +45,17 @@ test("write and read", () => {
 
   const buffer = writer.buffer();
 
-  assert.strictEqual(buffer.byteLength, 75);
+  equal(buffer.byteLength, 75);
 
   // Read.
 
   const reader = new Reader(buffer);
 
-  assert.strictEqual(reader.remaining(), 75);
-  assert.deepStrictEqual(readResult(reader), expected);
-  assert.strictEqual(reader.remaining(), 50);
-  assert.deepStrictEqual(readResult(reader), expected);
-  assert.strictEqual(reader.remaining(), 25);
-  assert.deepStrictEqual(readResult(reader), expected);
-  assert.strictEqual(reader.remaining(), 0);
+  equal(reader.remaining(), 75);
+  deepEqual(readResult(reader), expected);
+  equal(reader.remaining(), 50);
+  deepEqual(readResult(reader), expected);
+  equal(reader.remaining(), 25);
+  deepEqual(readResult(reader), expected);
+  equal(reader.remaining(), 0);
 });

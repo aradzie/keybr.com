@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import { Application } from "@fastr/core";
-import { assert } from "chai";
 import { load } from "cheerio";
+import { equal, isTrue } from "rich-assert";
 import { type ElementCompact, xml2js } from "xml-js";
 import { kMain } from "../module.ts";
 import { TestContext } from "../test/context.ts";
@@ -25,11 +25,8 @@ test("load sitemap.xml", async () => {
 
   // Assert.
 
-  assert.strictEqual(response.status, 200);
-  assert.strictEqual(
-    response.headers.get("Content-Type"),
-    "application/xml; charset=UTF-8",
-  );
+  equal(response.status, 200);
+  equal(response.headers.get("Content-Type"), "application/xml; charset=UTF-8");
 
   // Arrange.
 
@@ -37,13 +34,13 @@ test("load sitemap.xml", async () => {
 
   const sitemap = xml2js(body, { compact: true }) as ElementCompact;
   const primaries = sitemap["urlset"]["url"];
-  assert.isTrue(Array.isArray(primaries));
-  assert.isTrue(primaries.length > 0);
+  isTrue(Array.isArray(primaries));
+  isTrue(primaries.length > 0);
   for (const primary of primaries) {
     urls.add(primary["loc"]._text);
     const alternates = primary["xhtml:link"];
-    assert.isTrue(Array.isArray(alternates));
-    assert.isTrue(alternates.length > 0);
+    isTrue(Array.isArray(alternates));
+    isTrue(alternates.length > 0);
     for (const alternate of alternates) {
       urls.add(alternate._attributes["href"]);
     }
@@ -60,14 +57,11 @@ test("load sitemap.xml", async () => {
 
     // Assert.
 
-    assert.strictEqual(response.status, 200);
-    assert.strictEqual(
-      response.headers.get("Content-Type"),
-      "text/html; charset=UTF-8",
-    );
+    equal(response.status, 200);
+    equal(response.headers.get("Content-Type"), "text/html; charset=UTF-8");
 
     const $ = load(await response.body.text());
-    assert.strictEqual($("script#page-data").length, 1);
-    assert.strictEqual($("#root").length, 1);
+    equal($("script#page-data").length, 1);
+    equal($("#root").length, 1);
   }
 });

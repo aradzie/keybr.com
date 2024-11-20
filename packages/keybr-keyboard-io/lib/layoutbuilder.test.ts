@@ -1,17 +1,17 @@
-import { deepStrictEqual } from "node:assert";
 import { test } from "node:test";
 import { KeyCharacters, KeyModifier } from "@keybr/keyboard";
+import { deepEqual } from "rich-assert";
 import { LayoutBuilder } from "./layoutbuilder.ts";
 import { parseKeymap } from "./parser/index.ts";
 
 test("build", () => {
   const builder = new LayoutBuilder();
-  deepStrictEqual([...builder], []);
-  deepStrictEqual(builder.dict(), {});
-  deepStrictEqual(builder.toJSON(), {});
+  deepEqual([...builder], []);
+  deepEqual(builder.dict(), {});
+  deepEqual(builder.toJSON(), {});
 
   builder.setOne("KeyA", KeyModifier.None, 0x0061);
-  deepStrictEqual(
+  deepEqual(
     [...builder],
     [
       new KeyCharacters(
@@ -23,15 +23,15 @@ test("build", () => {
       ),
     ],
   );
-  deepStrictEqual(builder.dict(), {
+  deepEqual(builder.dict(), {
     KeyA: [0x0061, null, null, null],
   });
-  deepStrictEqual(builder.toJSON(), {
+  deepEqual(builder.toJSON(), {
     KeyA: "a",
   });
 
   builder.setOne("KeyA", KeyModifier.Alt, 0x0300);
-  deepStrictEqual(
+  deepEqual(
     [...builder],
     [
       new KeyCharacters(
@@ -43,15 +43,15 @@ test("build", () => {
       ),
     ],
   );
-  deepStrictEqual(builder.dict(), {
+  deepEqual(builder.dict(), {
     KeyA: [0x0061, null, { dead: 0x0300 }, null],
   });
-  deepStrictEqual(builder.toJSON(), {
+  deepEqual(builder.toJSON(), {
     KeyA: ["a", null, "*`"],
   });
 
   builder.setOne("KeyA", KeyModifier.Shift, 0x034f);
-  deepStrictEqual(
+  deepEqual(
     [...builder],
     [
       new KeyCharacters(
@@ -63,10 +63,10 @@ test("build", () => {
       ),
     ],
   );
-  deepStrictEqual(builder.dict(), {
+  deepEqual(builder.dict(), {
     KeyA: [0x0061, { special: 0x034f }, { dead: 0x0300 }, null],
   });
-  deepStrictEqual(builder.toJSON(), {
+  deepEqual(builder.toJSON(), {
     KeyA: ["a", 0x034f, "*`"],
   });
 });
@@ -79,6 +79,6 @@ test("format and parse JSON", () => {
   builder.setOne("KeyA", KeyModifier.ShiftAlt, { ligature: "?" });
 
   const { layout, warnings } = parseKeymap(JSON.stringify(builder.toJSON()));
-  deepStrictEqual([...layout], [...builder]);
-  deepStrictEqual(warnings, []);
+  deepEqual([...layout], [...builder]);
+  deepEqual(warnings, []);
 });

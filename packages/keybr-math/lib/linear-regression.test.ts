@@ -1,5 +1,5 @@
 import { test } from "node:test";
-import { assert } from "chai";
+import { deepEqual, equal } from "rich-assert";
 import { linearRegression } from "./linear-regression.ts";
 import { Vector } from "./vector.ts";
 
@@ -9,12 +9,12 @@ test("a", () => {
     new Vector([0, 0, 0, 0, 0]),
   );
 
-  assert.strictEqual(poly.degree, 0);
-  assert.deepStrictEqual(poly.coef, [0]);
+  equal(poly.degree, 0);
+  deepEqual(poly.coef, [0]);
 
-  assert.strictEqual(poly.eval(0), 0);
-  assert.strictEqual(poly.eval(3), 0);
-  assert.strictEqual(poly.eval(6), 0);
+  equal(poly.eval(0), 0);
+  equal(poly.eval(3), 0);
+  equal(poly.eval(6), 0);
 });
 
 test("b", () => {
@@ -23,12 +23,12 @@ test("b", () => {
     new Vector([1, 1, 1, 1, 1]),
   );
 
-  assert.strictEqual(poly.degree, 0);
-  assert.deepStrictEqual(poly.coef, [1]);
+  equal(poly.degree, 0);
+  deepEqual(poly.coef, [1]);
 
-  assert.strictEqual(poly.eval(0), 1);
-  assert.strictEqual(poly.eval(3), 1);
-  assert.strictEqual(poly.eval(6), 1);
+  equal(poly.eval(0), 1);
+  equal(poly.eval(3), 1);
+  equal(poly.eval(6), 1);
 });
 
 test("c", () => {
@@ -37,10 +37,10 @@ test("c", () => {
     new Vector([1, 2, 3, 4, 5]),
   );
 
-  assert.strictEqual(poly.degree, 1);
-  assert.deepStrictEqual(poly.coef, [1, 1]);
+  equal(poly.degree, 1);
+  deepEqual(poly.coef, [1, 1]);
 
-  assert.strictEqual(poly.eval(0), 1);
-  assert.strictEqual(poly.eval(3), 4);
-  assert.strictEqual(poly.eval(6), 7);
+  equal(poly.eval(0), 1);
+  equal(poly.eval(3), 4);
+  equal(poly.eval(6), 7);
 });

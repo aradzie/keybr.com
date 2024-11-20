@@ -1,6 +1,6 @@
 import { test } from "node:test";
-import { assert } from "chai";
 import { createIntl } from "react-intl";
+import { equal } from "rich-assert";
 import { makeIntlCollator } from "./collator.ts";
 
 test("unique instance", () => {
@@ -8,5 +8,5 @@ test("unique instance", () => {
   const a = makeIntlCollator(intl);
   const b = makeIntlCollator(intl);
 
-  assert.strictEqual(a, b);
+  equal(a, b);
 });

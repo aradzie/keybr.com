@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import { Attr, textDisplaySettings } from "@keybr/textinput";
 import { render } from "@testing-library/react";
-import { assert } from "chai";
+import { equal } from "rich-assert";
 import { TextLines } from "./TextLines.tsx";
 
 test("render chars", () => {
@@ -27,7 +27,7 @@ test("render chars", () => {
     />,
   );
 
-  assert.strictEqual(r.container.textContent, "abcd");
+  equal(r.container.textContent, "abcd");
 
   r.unmount();
 });
@@ -56,7 +56,7 @@ test("render chars with line template", () => {
     />,
   );
 
-  assert.strictEqual(r.container.textContent, "[abcd]");
+  equal(r.container.textContent, "[abcd]");
 
   r.unmount();
 });

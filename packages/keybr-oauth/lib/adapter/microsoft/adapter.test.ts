@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { FakeResponse, useAdapter } from "@fastr/client";
-import { assert } from "chai";
+import { deepEqual, equal, isInstanceOf } from "rich-assert";
 import { OAuthError } from "../../errors.ts";
 import { type ResourceOwner } from "../../resource-owner.ts";
 import { AccessToken } from "../../token.ts";
@@ -40,7 +40,7 @@ test("load user profile", async () => {
 
   // Assert.
 
-  assert.deepStrictEqual(profile, {
+  deepEqual(profile, {
     raw,
     provider: "microsoft",
     id: "id0",
@@ -66,7 +66,7 @@ test("load minimal user profile", async () => {
 
   // Assert.
 
-  assert.deepStrictEqual(profile, {
+  deepEqual(profile, {
     raw,
     provider: "microsoft",
     id: "id0",
@@ -101,10 +101,10 @@ test("handle errors", async () => {
 
   // Assert.
 
-  assert.instanceOf(err, OAuthError);
-  assert.strictEqual(err.message, "omg");
-  assert.strictEqual(err.code, "invalid_request");
-  assert.deepStrictEqual(err.raw, {
+  isInstanceOf(err, OAuthError);
+  equal(err.message, "omg");
+  equal(err.code, "invalid_request");
+  deepEqual(err.raw, {
     error: "invalid_request",
     error_description: "omg",
     error_uri: "http://localhost/omg",

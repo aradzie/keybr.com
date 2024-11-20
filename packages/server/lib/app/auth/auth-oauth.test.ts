@@ -9,7 +9,7 @@ import {
   type ResourceOwner,
   type TokenResponse,
 } from "@keybr/oauth";
-import { assert } from "chai";
+import { equal, isNotNull, isNull, match } from "rich-assert";
 import { kMain } from "../module.ts";
 import { TestContext } from "../test/context.ts";
 import { startApp } from "../test/request.ts";
@@ -90,7 +90,7 @@ test("handle unknown provider", async () => {
 
   // Act, Assert.
 
-  assert.strictEqual(
+  equal(
     (
       await request //
         .GET("/auth/oauth-init/wtf")
@@ -98,7 +98,7 @@ test("handle unknown provider", async () => {
     ).status,
     404,
   );
-  assert.strictEqual(
+  equal(
     (
       await request //
         .GET("/auth/oauth-callback/wtf?" + params)
@@ -121,15 +121,15 @@ test("redirect to provider", async () => {
 
   // Assert.
 
-  assert.strictEqual(response.status, 302);
+  equal(response.status, 302);
 
   const url = new URL(response.headers.get("Location")!);
 
-  assert.match(url.searchParams.get("client_id")!, /\S+/);
-  assert.match(url.searchParams.get("scope")!, /\S+/);
-  assert.match(url.searchParams.get("state")!, /\S+/);
-  assert.strictEqual(url.searchParams.get("response_type")!, "code");
-  assert.strictEqual(
+  match(url.searchParams.get("client_id")!, /\S+/);
+  match(url.searchParams.get("scope")!, /\S+/);
+  match(url.searchParams.get("state")!, /\S+/);
+  equal(url.searchParams.get("response_type")!, "code");
+  equal(
     url.searchParams.get("redirect_uri")!,
     "https://www.keybr.com/auth/oauth-callback/fake",
   );
@@ -151,13 +151,13 @@ test("validate state", async () => {
     const response = await request //
       .GET("/auth/oauth-init/fake")
       .send();
-    assert.strictEqual(response.status, 302);
+    equal(response.status, 302);
   }
 
   // Assert.
 
-  assert.isNull(await User.findByEmail("fake@keybr.com"));
-  assert.isNull(await request.who());
+  isNull(await User.findByEmail("fake@keybr.com"));
+  isNull(await request.who());
 
   // Act. Step 2: redirect from provider to keybr.
 
@@ -165,13 +165,13 @@ test("validate state", async () => {
     const response = await request //
       .GET("/auth/oauth-callback/fake?" + params)
       .send();
-    assert.strictEqual(response.status, 400);
+    equal(response.status, 400);
   }
 
   // Assert.
 
-  assert.isNull(await User.findByEmail("fake@keybr.com"));
-  assert.isNull(await request.who());
+  isNull(await User.findByEmail("fake@keybr.com"));
+  isNull(await request.who());
 });
 
 test("require email", async () => {
@@ -200,15 +200,15 @@ test("require email", async () => {
     const response = await request //
       .GET("/auth/oauth-init/fake")
       .send();
-    assert.strictEqual(response.status, 302);
+    equal(response.status, 302);
     const url = new URL(response.headers.get("Location")!);
     params.set("state", url.searchParams.get("state")!);
   }
 
   // Assert.
 
-  assert.isNull(await User.findByEmail("fake@keybr.com"));
-  assert.isNull(await request.who());
+  isNull(await User.findByEmail("fake@keybr.com"));
+  isNull(await request.who());
 
   // Act. Step 2: redirect from provider to keybr.
 
@@ -216,14 +216,14 @@ test("require email", async () => {
     const response = await request //
       .GET("/auth/oauth-callback/fake?" + params)
       .send();
-    assert.strictEqual(response.status, 302);
-    assert.strictEqual(response.headers.get("Location"), "/account");
+    equal(response.status, 302);
+    equal(response.headers.get("Location"), "/account");
   }
 
   // Assert.
 
-  assert.isNull(await User.findByEmail("fake@keybr.com"));
-  assert.isNull(await request.who());
+  isNull(await User.findByEmail("fake@keybr.com"));
+  isNull(await request.who());
 });
 
 test("login a new user", async () => {
@@ -242,15 +242,15 @@ test("login a new user", async () => {
     const response = await request //
       .GET("/auth/oauth-init/fake")
       .send();
-    assert.strictEqual(response.status, 302);
+    equal(response.status, 302);
     const url = new URL(response.headers.get("Location")!);
     params.set("state", url.searchParams.get("state")!);
   }
 
   // Assert.
 
-  assert.isNull(await User.findByEmail("fake@keybr.com"));
-  assert.isNull(await request.who());
+  isNull(await User.findByEmail("fake@keybr.com"));
+  isNull(await request.who());
 
   // Act. Step 2: redirect from provider to keybr.
 
@@ -258,14 +258,14 @@ test("login a new user", async () => {
     const response = await request //
       .GET("/auth/oauth-callback/fake?" + params)
       .send();
-    assert.strictEqual(response.status, 302);
-    assert.strictEqual(response.headers.get("Location"), "/account");
+    equal(response.status, 302);
+    equal(response.headers.get("Location"), "/account");
   }
 
   // Assert.
 
-  assert.isNotNull(await User.findByEmail("fake@keybr.com"));
-  assert.strictEqual(await request.who(), "fake@keybr.com");
+  isNotNull(await User.findByEmail("fake@keybr.com"));
+  equal(await request.who(), "fake@keybr.com");
 });
 
 test("login an existing user", async () => {
@@ -298,14 +298,14 @@ test("login an existing user", async () => {
     const response = await request //
       .GET("/auth/oauth-init/fake")
       .send();
-    assert.strictEqual(response.status, 302);
+    equal(response.status, 302);
     const url = new URL(response.headers.get("Location")!);
     params.set("state", url.searchParams.get("state")!);
   }
 
   // Assert.
 
-  assert.isNull(await request.who());
+  isNull(await request.who());
 
   // Act. Step 2: redirect from provider to keybr.
 
@@ -313,11 +313,11 @@ test("login an existing user", async () => {
     const response = await request //
       .GET("/auth/oauth-callback/fake?" + params)
       .send();
-    assert.strictEqual(response.status, 302);
-    assert.strictEqual(response.headers.get("Location"), "/account");
+    equal(response.status, 302);
+    equal(response.headers.get("Location"), "/account");
   }
 
   // Assert.
 
-  assert.strictEqual(await request.who(), "fake@keybr.com");
+  equal(await request.who(), "fake@keybr.com");
 });

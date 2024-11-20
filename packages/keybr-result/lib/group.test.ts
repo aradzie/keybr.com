@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { Layout } from "@keybr/keyboard";
-import { assert } from "chai";
+import { deepEqual } from "rich-assert";
 import { ResultFaker } from "./fake.tsx";
 import { ResultGroups } from "./group.ts";
 import { LocalDate } from "./localdate.ts";
@@ -12,23 +12,23 @@ test("group results by layout", () => {
 
   const map = new ResultGroups(({ layout }) => layout);
 
-  assert.deepStrictEqual([...map.keys()], []);
-  assert.deepStrictEqual([...map], []);
+  deepEqual([...map.keys()], []);
+  deepEqual([...map], []);
 
   map.get(Layout.EN_US);
 
-  assert.deepStrictEqual([...map.keys()], [Layout.EN_US]);
-  assert.deepStrictEqual([...map], [{ key: Layout.EN_US, results: [] }]);
+  deepEqual([...map.keys()], [Layout.EN_US]);
+  deepEqual([...map], [{ key: Layout.EN_US, results: [] }]);
 
   map.add(r1);
 
-  assert.deepStrictEqual([...map.keys()], [Layout.EN_US]);
-  assert.deepStrictEqual([...map], [{ key: Layout.EN_US, results: [r1] }]);
+  deepEqual([...map.keys()], [Layout.EN_US]);
+  deepEqual([...map], [{ key: Layout.EN_US, results: [r1] }]);
 
   map.add(r2);
 
-  assert.deepStrictEqual([...map.keys()], [Layout.EN_US, Layout.DE_DE]);
-  assert.deepStrictEqual(
+  deepEqual([...map.keys()], [Layout.EN_US, Layout.DE_DE]);
+  deepEqual(
     [...map],
     [
       { key: Layout.EN_US, results: [r1] },
@@ -60,7 +60,7 @@ test("group results by date", () => {
 
   // Assert.
 
-  assert.deepStrictEqual(
+  deepEqual(
     [...map.keys()],
     [
       new LocalDate(2001, 1, 1),
@@ -69,8 +69,8 @@ test("group results by date", () => {
     ],
   );
 
-  assert.deepStrictEqual(map.get(new LocalDate(2001, 1, 1)), [r1, r2]);
-  assert.deepStrictEqual(map.get(new LocalDate(2001, 1, 2)), [r3]);
-  assert.deepStrictEqual(map.get(new LocalDate(2001, 1, 3)), [r4]);
-  assert.deepStrictEqual(map.get(new LocalDate(2001, 1, 4)), []);
+  deepEqual(map.get(new LocalDate(2001, 1, 1)), [r1, r2]);
+  deepEqual(map.get(new LocalDate(2001, 1, 2)), [r3]);
+  deepEqual(map.get(new LocalDate(2001, 1, 3)), [r4]);
+  deepEqual(map.get(new LocalDate(2001, 1, 4)), []);
 });

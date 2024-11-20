@@ -1,26 +1,23 @@
 import { test } from "node:test";
-import { assert } from "chai";
+import { equal } from "rich-assert";
 import { TimeToType } from "./timetotype.ts";
 
 test("no events", () => {
-  assert.strictEqual(new Tester().measure(1100), 100);
+  equal(new Tester().measure(1100), 100);
 });
 
 test("character,character", () => {
   const tester = new Tester();
-  assert.strictEqual(tester.measure(1150), 150);
-  assert.strictEqual(tester.measure(1350), 200);
+  equal(tester.measure(1150), 150);
+  equal(tester.measure(1350), 200);
 });
 
 test("Shift down,character", () => {
-  assert.strictEqual(
-    new Tester().add(1100, "keydown", "ShiftLeft", "Shift").add(1200, "keydown", "KeyA", "a").measure(1200),
-    100,
-  );
+  equal(new Tester().add(1100, "keydown", "ShiftLeft", "Shift").add(1200, "keydown", "KeyA", "a").measure(1200), 100);
 });
 
 test("AltGraph down,character (Windows)", () => {
-  assert.strictEqual(
+  equal(
     new Tester()
       .add(1100, "keydown", "ControlLeft", "Control")
       .add(1101, "keydown", "AltRight", "AltGraph")
@@ -31,21 +28,15 @@ test("AltGraph down,character (Windows)", () => {
 });
 
 test("AltGraph down,character (Linux)", () => {
-  assert.strictEqual(
-    new Tester().add(1100, "keydown", "AltRight", "AltGraph").add(1200, "keydown", "KeyA", "a").measure(1200),
-    100,
-  );
+  equal(new Tester().add(1100, "keydown", "AltRight", "AltGraph").add(1200, "keydown", "KeyA", "a").measure(1200), 100);
 });
 
 test("Alt down,character (MacOS)", () => {
-  assert.strictEqual(
-    new Tester().add(1100, "keydown", "AltLeft", "Alt").add(1200, "keydown", "KeyA", "a").measure(1200),
-    100,
-  );
+  equal(new Tester().add(1100, "keydown", "AltLeft", "Alt").add(1200, "keydown", "KeyA", "a").measure(1200), 100);
 });
 
 test("Shift down,AltGraph down,character (Windows)", () => {
-  assert.strictEqual(
+  equal(
     new Tester()
       .add(1100, "keydown", "ShiftLeft", "Shift")
       .add(1200, "keydown", "ControlLeft", "Control")
@@ -57,7 +48,7 @@ test("Shift down,AltGraph down,character (Windows)", () => {
 });
 
 test("Shift down,AltGraph down,character (Linux)", () => {
-  assert.strictEqual(
+  equal(
     new Tester()
       .add(1100, "keydown", "ShiftLeft", "Shift")
       .add(1200, "keydown", "AltRight", "AltGraph")
@@ -68,7 +59,7 @@ test("Shift down,AltGraph down,character (Linux)", () => {
 });
 
 test("Shift down,Alt down,character (MacOS)", () => {
-  assert.strictEqual(
+  equal(
     new Tester()
       .add(1100, "keydown", "ShiftLeft", "Shift")
       .add(1200, "keydown", "AltLeft", "Alt")
@@ -79,14 +70,11 @@ test("Shift down,Alt down,character (MacOS)", () => {
 });
 
 test("Dead down,character", () => {
-  assert.strictEqual(
-    new Tester().add(1100, "keydown", "Equal", "Dead").add(1200, "keydown", "KeyA", "a").measure(1200),
-    100,
-  );
+  equal(new Tester().add(1100, "keydown", "Equal", "Dead").add(1200, "keydown", "KeyA", "a").measure(1200), 100);
 });
 
 test("Shift down,Dead down,character", () => {
-  assert.strictEqual(
+  equal(
     new Tester()
       .add(1100, "keydown", "ShiftLeft", "Shift")
       .add(1200, "keydown", "Equal", "Dead")
@@ -97,7 +85,7 @@ test("Shift down,Dead down,character", () => {
 });
 
 test("Dead down,Dead up,character", () => {
-  assert.strictEqual(
+  equal(
     new Tester()
       .add(1100, "keydown", "Equal", "Dead")
       .add(1200, "keyup", "Equal", "Dead")
@@ -108,7 +96,7 @@ test("Dead down,Dead up,character", () => {
 });
 
 test("Shift down,Dead down,Dead up,Shift up,character", () => {
-  assert.strictEqual(
+  equal(
     new Tester()
       .add(1100, "keydown", "ShiftLeft", "Shift")
       .add(1200, "keydown", "Equal", "Dead")
@@ -121,7 +109,7 @@ test("Shift down,Dead down,Dead up,Shift up,character", () => {
 });
 
 test("Shift down,Dead down,Shift up,Dead up,character", () => {
-  assert.strictEqual(
+  equal(
     new Tester()
       .add(1100, "keydown", "ShiftLeft", "Shift")
       .add(1200, "keydown", "Equal", "Dead")
@@ -134,7 +122,7 @@ test("Shift down,Dead down,Shift up,Dead up,character", () => {
 });
 
 test("Shift down,Shift up,Alt down,Alt up,character", () => {
-  assert.strictEqual(
+  equal(
     new Tester()
       .add(1100, "keydown", "ShiftLeft", "Shift")
       .add(1200, "keyup", "ShiftLeft", "Shift")
@@ -147,7 +135,7 @@ test("Shift down,Shift up,Alt down,Alt up,character", () => {
 });
 
 test("Shift down,Alt down,Alt up,Shift up,character", () => {
-  assert.strictEqual(
+  equal(
     new Tester()
       .add(1100, "keydown", "ShiftLeft", "Shift")
       .add(1200, "keydown", "AltLeft", "Alt")
@@ -160,7 +148,7 @@ test("Shift down,Alt down,Alt up,Shift up,character", () => {
 });
 
 test("Shift down,Alt down,Shift up,Alt up,character", () => {
-  assert.strictEqual(
+  equal(
     new Tester()
       .add(1100, "keydown", "ShiftLeft", "Shift")
       .add(1200, "keydown", "AltLeft", "Alt")
@@ -173,7 +161,7 @@ test("Shift down,Alt down,Shift up,Alt up,character", () => {
 });
 
 test("Insert down,Insert up,character", () => {
-  assert.strictEqual(
+  equal(
     new Tester()
       .add(1100, "keydown", "Insert", "Insert")
       .add(1200, "keyup", "Insert", "Insert")
@@ -184,7 +172,7 @@ test("Insert down,Insert up,character", () => {
 });
 
 test("Insert down,Insert up,Shift down,character", () => {
-  assert.strictEqual(
+  equal(
     new Tester()
       .add(1100, "keydown", "Insert", "Insert")
       .add(1200, "keyup", "Insert", "Insert")

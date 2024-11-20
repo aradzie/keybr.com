@@ -1,5 +1,5 @@
 import { test } from "node:test";
-import { assert } from "chai";
+import { deepEqual, equal, isFalse, isTrue } from "rich-assert";
 import { ResultFaker } from "./fake.tsx";
 import { LocalDate } from "./localdate.ts";
 import { ResultSummary } from "./resultsummary.ts";
@@ -17,13 +17,13 @@ test("no results", () => {
 
   // Assert.
 
-  assert.strictEqual(groups.length, 0);
-  assert.deepStrictEqual(summary.todayStats, {
+  equal(groups.length, 0);
+  deepEqual(summary.todayStats, {
     date: today,
     results: [],
     stats: makeSummaryStats([]),
   });
-  assert.isFalse(summary.has(today));
+  isFalse(summary.has(today));
 });
 
 test("no results today", () => {
@@ -41,21 +41,21 @@ test("no results today", () => {
 
   // Assert.
 
-  assert.strictEqual(groups.length, 1);
+  equal(groups.length, 1);
   const [g0] = groups;
-  assert.deepStrictEqual(g0, {
+  deepEqual(g0, {
     date: yesterday,
     results: [r1],
     stats: makeSummaryStats([r1]),
   });
-  assert.deepStrictEqual(summary.todayStats, {
+  deepEqual(summary.todayStats, {
     date: today,
     results: [],
     stats: makeSummaryStats([]),
   });
-  assert.isFalse(groups.includes(summary.todayStats));
-  assert.isTrue(summary.has(yesterday));
-  assert.isFalse(summary.has(today));
+  isFalse(groups.includes(summary.todayStats));
+  isTrue(summary.has(yesterday));
+  isFalse(summary.has(today));
 });
 
 test("group results group by date", () => {
@@ -74,24 +74,24 @@ test("group results group by date", () => {
 
   // Assert.
 
-  assert.strictEqual(groups.length, 2);
+  equal(groups.length, 2);
   const [g0, g1] = groups;
-  assert.deepStrictEqual(g0, {
+  deepEqual(g0, {
     date: yesterday,
     results: [r1],
     stats: makeSummaryStats([r1]),
   });
-  assert.deepStrictEqual(g1, {
+  deepEqual(g1, {
     date: today,
     results: [r2],
     stats: makeSummaryStats([r2]),
   });
-  assert.deepStrictEqual(summary.todayStats, {
+  deepEqual(summary.todayStats, {
     date: today,
     results: [r2],
     stats: makeSummaryStats([r2]),
   });
-  assert.isTrue(groups.includes(summary.todayStats));
-  assert.isTrue(summary.has(yesterday));
-  assert.isTrue(summary.has(today));
+  isTrue(groups.includes(summary.todayStats));
+  isTrue(summary.has(yesterday));
+  isTrue(summary.has(today));
 });

@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { useDatabase } from "@keybr/database/lib/testing.ts";
-import { assert } from "chai";
+import { deepEqual } from "rich-assert";
 import { mapEntries } from "./model.ts";
 
 useDatabase();
@@ -8,9 +8,9 @@ useDatabase();
 test("map entries", async () => {
   const now = new Date("2001-02-03T04:05:06Z");
 
-  assert.deepStrictEqual(await mapEntries([]), []);
+  deepEqual(await mapEntries([]), []);
 
-  assert.deepStrictEqual(
+  deepEqual(
     await mapEntries([
       {
         user: 1,

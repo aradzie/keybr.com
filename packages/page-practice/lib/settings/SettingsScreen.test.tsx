@@ -5,7 +5,7 @@ import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
 import { FakeResultContext, ResultFaker } from "@keybr/result";
 import { FakeSettingsContext } from "@keybr/settings";
 import { fireEvent, render } from "@testing-library/react";
-import { assert } from "chai";
+import { isNotNull } from "rich-assert";
 import { SettingsScreen } from "./SettingsScreen.tsx";
 
 const faker = new ResultFaker();
@@ -23,28 +23,28 @@ test("render", async () => {
     </FakeIntlProvider>,
   );
 
-  assert.isNotNull(await r.findByText("Lessons"));
-  assert.isNotNull(await r.findByText("Typing"));
-  assert.isNotNull(await r.findByText("Keyboard"));
-  assert.isNotNull(await r.findByText("Miscellaneous"));
+  isNotNull(await r.findByText("Lessons"));
+  isNotNull(await r.findByText("Typing"));
+  isNotNull(await r.findByText("Keyboard"));
+  isNotNull(await r.findByText("Miscellaneous"));
 
   fireEvent.click(r.getByText("Lessons"));
 
-  assert.isNotNull(r.queryByText("Lesson Options"));
-  assert.isNotNull(r.queryByText("Lesson Preview"));
+  isNotNull(r.queryByText("Lesson Options"));
+  isNotNull(r.queryByText("Lesson Preview"));
 
   fireEvent.click(r.getByText("Typing"));
 
-  assert.isNotNull(r.queryByText("Typing Options"));
+  isNotNull(r.queryByText("Typing Options"));
 
   fireEvent.click(r.getByText("Keyboard"));
 
-  assert.isNotNull(r.queryByText("Options"));
-  assert.isNotNull(r.queryByText("Preview"));
+  isNotNull(r.queryByText("Options"));
+  isNotNull(r.queryByText("Preview"));
 
   fireEvent.click(r.getByText("Miscellaneous"));
 
-  assert.isNotNull(r.queryByText("Interface Options"));
+  isNotNull(r.queryByText("Interface Options"));
 
   r.unmount();
 });

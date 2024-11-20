@@ -2,8 +2,7 @@ import { test } from "node:test";
 import { Timer } from "@keybr/lang";
 import { type Step, textInputSettings } from "@keybr/textinput";
 import { type AnyEvent } from "@keybr/textinput-events";
-import { assert } from "chai";
-import { like } from "rich-assert";
+import { equal, like } from "rich-assert";
 import { ReplayProgress, ReplayState } from "./replaystate.ts";
 
 const steps: readonly Step[] = [
@@ -105,30 +104,30 @@ test("process events", () => {
 test("delay steps", () => {
   Timer.now = () => 0;
   const stepper = new ReplayState(textInputSettings, steps, events);
-  assert.strictEqual(stepper.state, "starting");
-  assert.strictEqual(stepper.delay, 3000); // Pause at start.
+  equal(stepper.state, "starting");
+  equal(stepper.delay, 3000); // Pause at start.
 
   Timer.now = () => 3000;
   stepper.step(); // Start.
-  assert.strictEqual(stepper.state, "running");
-  assert.strictEqual(stepper.delay, 0);
+  equal(stepper.state, "running");
+  equal(stepper.delay, 0);
 
   Timer.now = () => 3000;
   stepper.step(); // Keydown A.
-  assert.strictEqual(stepper.delay, 1);
+  equal(stepper.delay, 1);
 
   Timer.now = () => 3000;
   stepper.step(); // Input A.
-  assert.strictEqual(stepper.delay, 100);
+  equal(stepper.delay, 100);
 
   Timer.now = () => 3099;
-  assert.strictEqual(stepper.delay, 1);
+  equal(stepper.delay, 1);
 
   Timer.now = () => 3100;
-  assert.strictEqual(stepper.delay, 0);
+  equal(stepper.delay, 0);
 
   Timer.now = () => 3200;
-  assert.strictEqual(stepper.delay, 0);
+  equal(stepper.delay, 0);
 });
 
 test("replay progress", () => {

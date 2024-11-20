@@ -1,14 +1,14 @@
 import { test } from "node:test";
 import { Attr, textDisplaySettings } from "@keybr/textinput";
-import { assert } from "chai";
+import { deepEqual } from "rich-assert";
 import { renderChars } from "./chars.tsx";
 
 test("render empty chars", () => {
-  assert.deepStrictEqual(renderChars(textDisplaySettings, []), []);
+  deepEqual(renderChars(textDisplaySettings, []), []);
 });
 
 test("render simple chars", () => {
-  assert.deepStrictEqual(
+  deepEqual(
     renderChars(textDisplaySettings, [
       { codePoint: /* "a" */ 0x0061, attrs: Attr.Hit },
       { codePoint: /* "b" */ 0x0062, attrs: Attr.Miss },
@@ -66,7 +66,7 @@ test("render simple chars", () => {
 });
 
 test("render styled chars", () => {
-  assert.deepStrictEqual(
+  deepEqual(
     renderChars(textDisplaySettings, [
       { codePoint: /* "a" */ 0x0061, attrs: Attr.Hit, cls: "keyword" },
       { codePoint: /* "b" */ 0x0062, attrs: Attr.Miss, cls: "keyword" },
@@ -124,7 +124,7 @@ test("render styled chars", () => {
 });
 
 test("render special chars", () => {
-  assert.deepStrictEqual(
+  deepEqual(
     renderChars(textDisplaySettings, [
       { codePoint: 0x0000, attrs: Attr.Normal },
       { codePoint: 0x0009, attrs: Attr.Normal },

@@ -5,7 +5,7 @@ import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { FakeSettingsContext } from "@keybr/settings";
 import { render } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import { assert } from "chai";
+import { deepEqual, isNotNull } from "rich-assert";
 import { KeySet } from "./KeySet.tsx";
 
 test("render", async () => {
@@ -67,21 +67,21 @@ test("render", async () => {
     </FakeIntlProvider>,
   );
 
-  assert.isNotNull(r.queryByText("A"));
-  assert.isNotNull(r.queryByText("B"));
-  assert.isNotNull(r.queryByText("C"));
+  isNotNull(r.queryByText("A"));
+  isNotNull(r.queryByText("B"));
+  isNotNull(r.queryByText("C"));
 
   events.length = 0;
   await userEvent.hover(r.getByText("A"));
-  assert.deepStrictEqual(events, ["hover in A"]);
+  deepEqual(events, ["hover in A"]);
 
   events.length = 0;
   await userEvent.unhover(r.getByText("A"));
-  assert.deepStrictEqual(events, ["hover out A"]);
+  deepEqual(events, ["hover out A"]);
 
   events.length = 0;
   await userEvent.click(r.getByText("A"));
-  assert.deepStrictEqual(events, ["hover in A", "click A"]);
+  deepEqual(events, ["hover in A", "click A"]);
 
   r.unmount();
 });

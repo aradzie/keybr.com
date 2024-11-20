@@ -3,7 +3,7 @@ import { FakeIntlProvider } from "@keybr/intl";
 import { PLAYER_KICKED } from "@keybr/multiplayer-shared";
 import { FakeSettingsContext } from "@keybr/settings";
 import { act, render } from "@testing-library/react";
-import { assert } from "chai";
+import { includes } from "rich-assert";
 import { Connector } from "./Connector.tsx";
 import { FakeWebSocket } from "./websocket.fake.ts";
 import { useWebSocket } from "./websocket-hooks.ts";
@@ -21,7 +21,7 @@ test("handle websocket ready state changes", () => {
     </FakeIntlProvider>,
   );
 
-  assert.include(r.getByRole("heading").textContent, "Connecting to Server...");
+  includes(r.getByRole("heading").textContent!, "Connecting to Server...");
 
   act(() => {
     webSocket.serverConnect();
@@ -30,7 +30,7 @@ test("handle websocket ready state changes", () => {
     webSocket.serverClose(PLAYER_KICKED);
   });
 
-  assert.include(r.getByRole("heading").textContent, "Kicked out of the Game");
+  includes(r.getByRole("heading").textContent!, "Kicked out of the Game");
 
   r.unmount();
 });

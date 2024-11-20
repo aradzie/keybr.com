@@ -1,8 +1,8 @@
 import { test } from "node:test";
 import { PublicId } from "@keybr/publicid";
-import { assert, expect } from "chai";
+import { expect } from "chai";
 import { ValidationError } from "objection";
-import { deepEqual, equal, like } from "rich-assert";
+import { deepEqual, equal, isNotNull, isNull, like } from "rich-assert";
 import { User, UserExternalId, UserLoginRequest } from "./model.ts";
 import { useDatabase } from "./testing.ts";
 import { Random } from "./util.ts";
@@ -713,7 +713,7 @@ test("create access token", async (ctx) => {
 
   Random.string = () => "token1";
   equal(await UserLoginRequest.init("example1@keybr.com"), "token1");
-  assert.isNull(await User.findByEmail("example1@keybr.com"));
+  isNull(await User.findByEmail("example1@keybr.com"));
   deepEqual(
     (await UserLoginRequest.findByEmail("example1@keybr.com"))!.toJSON(),
     {
@@ -746,15 +746,15 @@ test("delete expired access token", async (ctx) => {
   Random.string = () => "token1";
   equal(await UserLoginRequest.init("example1@keybr.com"), "token1");
 
-  assert.isNotNull(await UserLoginRequest.findByEmail("example1@keybr.com"));
-  assert.isNotNull(await UserLoginRequest.findByAccessToken("token1"));
+  isNotNull(await UserLoginRequest.findByEmail("example1@keybr.com"));
+  isNotNull(await UserLoginRequest.findByAccessToken("token1"));
 
   await UserLoginRequest.deleteExpired(
     now.getTime() + UserLoginRequest.expireTime + 1000,
   );
 
-  assert.isNull(await UserLoginRequest.findByEmail("example1@keybr.com"));
-  assert.isNull(await UserLoginRequest.findByAccessToken("token1"));
+  isNull(await UserLoginRequest.findByEmail("example1@keybr.com"));
+  isNull(await UserLoginRequest.findByAccessToken("token1"));
 });
 
 test("login with a valid access token", async (ctx) => {
@@ -768,8 +768,8 @@ test("login with a valid access token", async (ctx) => {
 
   // Before the first login.
 
-  assert.isNull(await User.findByEmail("example1@keybr.com"));
-  assert.isNotNull(await UserLoginRequest.findByEmail("example1@keybr.com"));
+  isNull(await User.findByEmail("example1@keybr.com"));
+  isNotNull(await UserLoginRequest.findByEmail("example1@keybr.com"));
 
   // First login.
 
@@ -785,8 +785,8 @@ test("login with a valid access token", async (ctx) => {
 
   // Should create a new user after login.
 
-  assert.isNotNull(await User.findByEmail("example1@keybr.com"));
-  assert.isNotNull(await UserLoginRequest.findByEmail("example1@keybr.com"));
+  isNotNull(await User.findByEmail("example1@keybr.com"));
+  isNotNull(await UserLoginRequest.findByEmail("example1@keybr.com"));
 
   // Second login.
 
@@ -802,8 +802,8 @@ test("login with a valid access token", async (ctx) => {
 
   // Should load an existing user after login.
 
-  assert.isNotNull(await User.findByEmail("example1@keybr.com"));
-  assert.isNotNull(await UserLoginRequest.findByEmail("example1@keybr.com"));
+  isNotNull(await User.findByEmail("example1@keybr.com"));
+  isNotNull(await UserLoginRequest.findByEmail("example1@keybr.com"));
 });
 
 test("ignore invalid access token", async (ctx) => {
@@ -811,9 +811,9 @@ test("ignore invalid access token", async (ctx) => {
 
   Random.string = () => "token1";
 
-  assert.isNull(await UserLoginRequest.login("token1"));
-  assert.isNull(await UserLoginRequest.login("abc"));
-  assert.isNull(await UserLoginRequest.login("xyz"));
+  isNull(await UserLoginRequest.login("token1"));
+  isNull(await UserLoginRequest.login("abc"));
+  isNull(await UserLoginRequest.login("xyz"));
 });
 
 test("access token should be case-sensitive", async (ctx) => {
@@ -825,14 +825,14 @@ test("access token should be case-sensitive", async (ctx) => {
     createdAt: now,
   });
 
-  assert.isNotNull(await UserLoginRequest.findByAccessToken("token"));
-  assert.isNull(await UserLoginRequest.findByAccessToken("TOKEN"));
+  isNotNull(await UserLoginRequest.findByAccessToken("token"));
+  isNull(await UserLoginRequest.findByAccessToken("TOKEN"));
 });
 
 test("load profile owner", async (ctx) => {
   ctx.mock.timers.enable({ apis: ["Date"], now });
 
-  assert.isNull(await User.loadProfileOwner(new PublicId(999)));
+  isNull(await User.loadProfileOwner(new PublicId(999)));
   deepEqual(await User.loadProfileOwner(PublicId.of("example1")), {
     id: "example1",
     name: "Example User 1",

@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import { Timer } from "@keybr/lang";
-import { assert } from "chai";
 import { createIntl } from "react-intl";
+import { deepEqual, equal, notEqual } from "rich-assert";
 import {
   GAME_CONFIG_ID,
   GAME_READY_ID,
@@ -24,7 +24,7 @@ test("join and leave players", () => {
 
   // Initial state.
 
-  assert.deepStrictEqual(state0.players, { all: [], me: NOBODY });
+  deepEqual(state0.players, { all: [], me: NOBODY });
 
   // Few players join.
 
@@ -34,8 +34,8 @@ test("join and leave players", () => {
     players: [player1, player2],
   });
 
-  assert.notEqual(state0, state1);
-  assert.deepStrictEqual(state1.players, {
+  notEqual(state0, state1);
+  deepEqual(state1.players, {
     all: [player1, player2],
     me: player1,
   });
@@ -48,8 +48,8 @@ test("join and leave players", () => {
     players: [player1, player2, player3],
   });
 
-  assert.notEqual(state1, state2);
-  assert.deepStrictEqual(state2.players, {
+  notEqual(state1, state2);
+  deepEqual(state2.players, {
     all: [player1, player2, player3],
     me: player1,
   });
@@ -62,8 +62,8 @@ test("join and leave players", () => {
     players: [player1, player3],
   });
 
-  assert.notEqual(state2, state3);
-  assert.deepStrictEqual(state3.players, {
+  notEqual(state2, state3);
+  deepEqual(state3.players, {
     all: [player1, player3],
     me: player1,
   });
@@ -76,8 +76,8 @@ test("join and leave players", () => {
     players: [player1],
   });
 
-  assert.notEqual(state3, state4);
-  assert.deepStrictEqual(state4.players, { all: [player1], me: player1 });
+  notEqual(state3, state4);
+  deepEqual(state4.players, { all: [player1], me: player1 });
 
   // Me leaves.
 
@@ -89,8 +89,8 @@ test("join and leave players", () => {
 
   // Final state.
 
-  assert.notEqual(state4, state5);
-  assert.deepStrictEqual(state5.players, { all: [], me: NOBODY });
+  notEqual(state4, state5);
+  deepEqual(state5.players, { all: [], me: NOBODY });
 });
 
 test("handle text input", () => {
@@ -121,6 +121,6 @@ test("handle text input", () => {
 
   const result = handleTextInput(state3, /* "a" */ 0x0061);
 
-  assert.strictEqual(state3.timer.elapsed, 200.5);
-  assert.strictEqual(result?.elapsed, 200);
+  equal(state3.timer.elapsed, 200.5);
+  equal(result?.elapsed, 200);
 });

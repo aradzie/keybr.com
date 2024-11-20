@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { FakeResponse, useAdapter } from "@fastr/client";
-import { assert } from "chai";
+import { deepEqual, equal, isInstanceOf } from "rich-assert";
 import { AbstractAdapter } from "./adapter.ts";
 import { OAuthError } from "./errors.ts";
 import { type ResourceOwner } from "./resource-owner.ts";
@@ -45,7 +45,7 @@ test("generate authorization url", () => {
 
   // Assert.
 
-  assert.strictEqual(
+  equal(
     authorizationUrl,
     "https://test/authorization/" +
       "?response_type=code" +
@@ -73,8 +73,8 @@ test("fetch access token", async () => {
 
   // Assert.
 
-  assert.strictEqual(token, "abc");
-  assert.strictEqual(type, "bearer");
+  equal(token, "abc");
+  equal(type, "bearer");
 });
 
 test("handle errors", async () => {
@@ -101,10 +101,10 @@ test("handle errors", async () => {
 
   // Assert.
 
-  assert.instanceOf(err, OAuthError);
-  assert.strictEqual(err.message, "omg");
-  assert.strictEqual(err.code, "invalid_request");
-  assert.deepStrictEqual(err.raw, {
+  isInstanceOf(err, OAuthError);
+  equal(err.message, "omg");
+  equal(err.code, "invalid_request");
+  deepEqual(err.raw, {
     error: "invalid_request",
     error_description: "omg",
     error_uri: "http://localhost/omg",

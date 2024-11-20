@@ -1,14 +1,14 @@
 import { test } from "node:test";
-import { assert } from "chai";
+import { equal, throws } from "rich-assert";
 import { DataError } from "./errors.ts";
 import { decode, encode, encodedByteCount } from "./utf8.ts";
 
 test("compute encoded byte count", () => {
-  assert.strictEqual(encodedByteCount(""), 0);
-  assert.strictEqual(encodedByteCount("hello"), 5);
-  assert.strictEqual(encodedByteCount("привет"), 12);
-  assert.strictEqual(encodedByteCount("\u0000\u000F\u00FF\u0FFF\uFFFF"), 10);
-  assert.strictEqual(encodedByteCount("🍬🍭"), 8);
+  equal(encodedByteCount(""), 0);
+  equal(encodedByteCount("hello"), 5);
+  equal(encodedByteCount("привет"), 12);
+  equal(encodedByteCount("\u0000\u000F\u00FF\u0FFF\uFFFF"), 10);
+  equal(encodedByteCount("🍬🍭"), 8);
 });
 
 test("encode and decode selected examples", () => {
@@ -16,39 +16,36 @@ test("encode and decode selected examples", () => {
   let byteCount: number;
 
   byteCount = encode("", buffer, 0);
-  assert.strictEqual(byteCount, 0);
-  assert.strictEqual(decode(buffer, 0, byteCount), "");
+  equal(byteCount, 0);
+  equal(decode(buffer, 0, byteCount), "");
 
   byteCount = encode("hello", buffer, 0);
-  assert.strictEqual(byteCount, 5);
-  assert.strictEqual(decode(buffer, 0, byteCount), "hello");
+  equal(byteCount, 5);
+  equal(decode(buffer, 0, byteCount), "hello");
 
   byteCount = encode("привет", buffer, 0);
-  assert.strictEqual(byteCount, 12);
-  assert.strictEqual(decode(buffer, 0, byteCount), "привет");
+  equal(byteCount, 12);
+  equal(decode(buffer, 0, byteCount), "привет");
 
   byteCount = encode("\u0000\u000F\u00FF\u0FFF\uFFFF", buffer, 0);
-  assert.strictEqual(byteCount, 10);
-  assert.strictEqual(
-    decode(buffer, 0, byteCount),
-    "\u0000\u000F\u00FF\u0FFF\uFFFF",
-  );
+  equal(byteCount, 10);
+  equal(decode(buffer, 0, byteCount), "\u0000\u000F\u00FF\u0FFF\uFFFF");
 
   byteCount = encode("🍬🍭", buffer, 0);
-  assert.strictEqual(byteCount, 8);
-  assert.strictEqual(decode(buffer, 0, byteCount), "🍬🍭");
+  equal(byteCount, 8);
+  equal(decode(buffer, 0, byteCount), "🍬🍭");
 
   buffer.setUint8(0, 0b11110000);
   buffer.setUint8(1, 0b10000000);
   buffer.setUint8(2, 0b10000000);
   buffer.setUint8(3, 0b10000000);
-  assert.strictEqual(decode(buffer, 0, 4), "\u{000000}");
+  equal(decode(buffer, 0, 4), "\u{000000}");
 
   buffer.setUint8(0, 0b11110100);
   buffer.setUint8(1, 0b10001111);
   buffer.setUint8(2, 0b10111111);
   buffer.setUint8(3, 0b10111111);
-  assert.strictEqual(decode(buffer, 0, 4), "\u{10FFFF}");
+  equal(decode(buffer, 0, 4), "\u{10FFFF}");
 });
 
 test("encode and decode the full code point range", () => {
@@ -57,7 +54,7 @@ test("encode and decode the full code point range", () => {
     value += String.fromCodePoint(i);
   }
   const buffer = new DataView(new ArrayBuffer(encodedByteCount(value)));
-  assert.strictEqual(decode(buffer, 0, encode(value, buffer, 0)), value);
+  equal(decode(buffer, 0, encode(value, buffer, 0)), value);
 });
 
 test("decode surrogate pairs", () => {
@@ -65,12 +62,12 @@ test("decode surrogate pairs", () => {
   let byteCount: number;
 
   byteCount = encode("\uD83C", buffer, 0);
-  assert.strictEqual(byteCount, 3);
-  assert.strictEqual(decode(buffer, 0, byteCount), "\uD83C");
+  equal(byteCount, 3);
+  equal(decode(buffer, 0, byteCount), "\uD83C");
 
   byteCount = encode("\uDF6C", buffer, 0);
-  assert.strictEqual(byteCount, 3);
-  assert.strictEqual(decode(buffer, 0, byteCount), "\uDF6C");
+  equal(byteCount, 3);
+  equal(decode(buffer, 0, byteCount), "\uDF6C");
 
   buffer.setUint8(0, 0xed);
   buffer.setUint8(1, 0xa0);
@@ -78,9 +75,9 @@ test("decode surrogate pairs", () => {
   buffer.setUint8(3, 0xed);
   buffer.setUint8(4, 0xbd);
   buffer.setUint8(5, 0xac);
-  assert.strictEqual(decode(buffer, 0, 6), "🍬");
-  assert.strictEqual(decode(buffer, 0, 3), "\uD83C");
-  assert.strictEqual(decode(buffer, 3, 3), "\uDF6C");
+  equal(decode(buffer, 0, 6), "🍬");
+  equal(decode(buffer, 0, 3), "\uD83C");
+  equal(decode(buffer, 3, 3), "\uDF6C");
 });
 
 test("report truncated stream", () => {
@@ -90,29 +87,29 @@ test("report truncated stream", () => {
   buffer.setUint8(1, 0b10001111);
   buffer.setUint8(2, 0b10111111);
   buffer.setUint8(3, 0b10111111);
-  assert.throws(() => {
+  throws(() => {
     decode(buffer, 0, 1);
   }, DataError);
-  assert.throws(() => {
+  throws(() => {
     decode(buffer, 0, 2);
   }, DataError);
-  assert.throws(() => {
+  throws(() => {
     decode(buffer, 0, 3);
   }, DataError);
 
   buffer.setUint8(0, 0b11101111);
   buffer.setUint8(1, 0b10111111);
   buffer.setUint8(2, 0b10111111);
-  assert.throws(() => {
+  throws(() => {
     decode(buffer, 0, 1);
   }, DataError);
-  assert.throws(() => {
+  throws(() => {
     decode(buffer, 0, 2);
   }, DataError);
 
   buffer.setUint8(0, 0b11011111);
   buffer.setUint8(1, 0b10111111);
-  assert.throws(() => {
+  throws(() => {
     decode(buffer, 0, 1);
   }, DataError);
 });

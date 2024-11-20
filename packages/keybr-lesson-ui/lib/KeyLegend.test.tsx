@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { render } from "@testing-library/react";
-import { assert } from "chai";
+import { isNotNull } from "rich-assert";
 import { KeyLegend } from "./KeyLegend.tsx";
 
 test("render not included", () => {
@@ -16,7 +16,7 @@ test("render not included", () => {
     </FakeIntlProvider>,
   );
 
-  assert.isNotNull(r.container.querySelector(".lessonKey_excluded"));
+  isNotNull(r.container.querySelector(".lessonKey_excluded"));
 
   r.unmount();
 });
@@ -33,7 +33,7 @@ test("render included", () => {
     </FakeIntlProvider>,
   );
 
-  assert.isNotNull(r.container.querySelector(".lessonKey_included"));
+  isNotNull(r.container.querySelector(".lessonKey_included"));
 
   r.unmount();
 });

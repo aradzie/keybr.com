@@ -2,7 +2,7 @@ import { test } from "node:test";
 import { LessonKey, LessonKeys } from "@keybr/lesson";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { ResultFaker } from "@keybr/result";
-import { assert } from "chai";
+import { deepEqual } from "rich-assert";
 import { LetterEvents } from "./event-source-letter.ts";
 import { type LessonEvent } from "./event-types.ts";
 
@@ -46,7 +46,7 @@ test("generate events", () => {
 
   // Assert.
 
-  assert.deepStrictEqual([...events], []);
+  deepEqual([...events], []);
   events.clear();
 
   // Act.
@@ -61,7 +61,7 @@ test("generate events", () => {
 
   // Assert.
 
-  assert.deepStrictEqual(
+  deepEqual(
     [...events],
     [{ type: "new-letter", lessonKey: key3.asIncluded() }],
   );
@@ -73,7 +73,7 @@ test("generate events", () => {
 
   // Assert.
 
-  assert.deepStrictEqual([...events], []);
+  deepEqual([...events], []);
   events.clear();
 
   // Act.
@@ -88,7 +88,7 @@ test("generate events", () => {
 
   // Assert.
 
-  assert.deepStrictEqual(
+  deepEqual(
     [...events],
     [{ type: "new-letter", lessonKey: key4.asIncluded() }],
   );

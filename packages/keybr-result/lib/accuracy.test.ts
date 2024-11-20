@@ -1,5 +1,5 @@
 import { test } from "node:test";
-import { assert } from "chai";
+import { deepEqual } from "rich-assert";
 import { MutableStreakList, type Streak } from "./accuracy.ts";
 
 test("find accuracy streaks, increasing", () => {
@@ -11,7 +11,7 @@ test("find accuracy streaks, increasing", () => {
 
   // Assert the initial state.
 
-  assert.deepStrictEqual(
+  deepEqual(
     [...list.copy()],
     [
       { level: 1.0, results: [] },
@@ -19,7 +19,7 @@ test("find accuracy streaks, increasing", () => {
       { level: 0.95, results: [] },
     ],
   );
-  assert.deepStrictEqual(accept.take(), []);
+  deepEqual(accept.take(), []);
 
   // Append some results.
 
@@ -30,7 +30,7 @@ test("find accuracy streaks, increasing", () => {
 
   // Assert the updated state.
 
-  assert.deepStrictEqual(
+  deepEqual(
     [...list.copy()],
     [
       { level: 1.0, results: [] },
@@ -38,7 +38,7 @@ test("find accuracy streaks, increasing", () => {
       { level: 0.95, results: [r1, r2] },
     ],
   );
-  assert.deepStrictEqual(accept.take(), []);
+  deepEqual(accept.take(), []);
 
   // Append some results.
 
@@ -49,7 +49,7 @@ test("find accuracy streaks, increasing", () => {
 
   // Assert the updated state.
 
-  assert.deepStrictEqual(
+  deepEqual(
     [...list.copy()],
     [
       { level: 1.0, results: [] },
@@ -57,7 +57,7 @@ test("find accuracy streaks, increasing", () => {
       { level: 0.95, results: [r1, r2, r3, r4] },
     ],
   );
-  assert.deepStrictEqual(accept.take(), []);
+  deepEqual(accept.take(), []);
 
   // Append some results.
 
@@ -68,7 +68,7 @@ test("find accuracy streaks, increasing", () => {
 
   // Assert the updated state.
 
-  assert.deepStrictEqual(
+  deepEqual(
     [...list.copy()],
     [
       { level: 1.0, results: [r5, r6] },
@@ -76,7 +76,7 @@ test("find accuracy streaks, increasing", () => {
       { level: 0.95, results: [r1, r2, r3, r4, r5, r6] },
     ],
   );
-  assert.deepStrictEqual(accept.take(), []);
+  deepEqual(accept.take(), []);
 
   // Append some results.
 
@@ -87,7 +87,7 @@ test("find accuracy streaks, increasing", () => {
 
   // Assert the updated state.
 
-  assert.deepStrictEqual(
+  deepEqual(
     [...list.copy()],
     [
       { level: 1.0, results: [] },
@@ -95,7 +95,7 @@ test("find accuracy streaks, increasing", () => {
       { level: 0.95, results: [] },
     ],
   );
-  assert.deepStrictEqual(accept.take(), [
+  deepEqual(accept.take(), [
     { level: 1.0, results: [r5, r6] },
     { level: 0.97, results: [r3, r4, r5, r6] },
     { level: 0.95, results: [r1, r2, r3, r4, r5, r6] },
@@ -111,7 +111,7 @@ test("find accuracy streaks, decreasing", () => {
 
   // Assert the initial state.
 
-  assert.deepStrictEqual(
+  deepEqual(
     [...list.copy()],
     [
       { level: 1.0, results: [] },
@@ -119,7 +119,7 @@ test("find accuracy streaks, decreasing", () => {
       { level: 0.95, results: [] },
     ],
   );
-  assert.deepStrictEqual(accept.take(), []);
+  deepEqual(accept.take(), []);
 
   // Append some results.
 
@@ -130,7 +130,7 @@ test("find accuracy streaks, decreasing", () => {
 
   // Assert the updated state.
 
-  assert.deepStrictEqual(
+  deepEqual(
     [...list.copy()],
     [
       { level: 1.0, results: [r1, r2] },
@@ -138,7 +138,7 @@ test("find accuracy streaks, decreasing", () => {
       { level: 0.95, results: [] },
     ],
   );
-  assert.deepStrictEqual(accept.take(), []);
+  deepEqual(accept.take(), []);
 
   // Append some results.
 
@@ -149,7 +149,7 @@ test("find accuracy streaks, decreasing", () => {
 
   // Assert the updated state.
 
-  assert.deepStrictEqual(
+  deepEqual(
     [...list.copy()],
     [
       { level: 1.0, results: [] },
@@ -157,7 +157,7 @@ test("find accuracy streaks, decreasing", () => {
       { level: 0.95, results: [] },
     ],
   );
-  assert.deepStrictEqual(accept.take(), [{ level: 1.0, results: [r1, r2] }]);
+  deepEqual(accept.take(), [{ level: 1.0, results: [r1, r2] }]);
 
   // Append some results.
 
@@ -168,7 +168,7 @@ test("find accuracy streaks, decreasing", () => {
 
   // Assert the updated state.
 
-  assert.deepStrictEqual(
+  deepEqual(
     [...list.copy()],
     [
       { level: 1.0, results: [] },
@@ -176,9 +176,7 @@ test("find accuracy streaks, decreasing", () => {
       { level: 0.95, results: [r1, r2, r3, r4, r5, r6] },
     ],
   );
-  assert.deepStrictEqual(accept.take(), [
-    { level: 0.97, results: [r1, r2, r3, r4] },
-  ]);
+  deepEqual(accept.take(), [{ level: 0.97, results: [r1, r2, r3, r4] }]);
 
   // Append some results.
 
@@ -189,7 +187,7 @@ test("find accuracy streaks, decreasing", () => {
 
   // Assert the updated state.
 
-  assert.deepStrictEqual(
+  deepEqual(
     [...list.copy()],
     [
       { level: 1.0, results: [] },
@@ -197,7 +195,7 @@ test("find accuracy streaks, decreasing", () => {
       { level: 0.95, results: [] },
     ],
   );
-  assert.deepStrictEqual(accept.take(), [
+  deepEqual(accept.take(), [
     { level: 0.95, results: [r1, r2, r3, r4, r5, r6] },
   ]);
 });
@@ -211,7 +209,7 @@ test("find accuracy streaks, mixed", () => {
 
   // Assert the initial state.
 
-  assert.deepStrictEqual(
+  deepEqual(
     [...list.copy()],
     [
       { level: 1.0, results: [] },
@@ -219,7 +217,7 @@ test("find accuracy streaks, mixed", () => {
       { level: 0.95, results: [] },
     ],
   );
-  assert.deepStrictEqual(accept.take(), []);
+  deepEqual(accept.take(), []);
 
   // Append some results.
 
@@ -230,7 +228,7 @@ test("find accuracy streaks, mixed", () => {
 
   // Assert the updated state.
 
-  assert.deepStrictEqual(
+  deepEqual(
     [...list.copy()],
     [
       { level: 1.0, results: [] },
@@ -238,7 +236,7 @@ test("find accuracy streaks, mixed", () => {
       { level: 0.95, results: [] },
     ],
   );
-  assert.deepStrictEqual(accept.take(), []);
+  deepEqual(accept.take(), []);
 
   // Append some results.
 
@@ -249,7 +247,7 @@ test("find accuracy streaks, mixed", () => {
 
   // Assert the updated state.
 
-  assert.deepStrictEqual(
+  deepEqual(
     [...list.copy()],
     [
       { level: 1.0, results: [r3, r4] },
@@ -257,7 +255,7 @@ test("find accuracy streaks, mixed", () => {
       { level: 0.95, results: [] },
     ],
   );
-  assert.deepStrictEqual(accept.take(), []);
+  deepEqual(accept.take(), []);
 
   // Append some results.
 
@@ -268,7 +266,7 @@ test("find accuracy streaks, mixed", () => {
 
   // Assert the updated state.
 
-  assert.deepStrictEqual(
+  deepEqual(
     [...list.copy()],
     [
       { level: 1.0, results: [] },
@@ -276,7 +274,7 @@ test("find accuracy streaks, mixed", () => {
       { level: 0.95, results: [r1, r2, r3, r4, r5, r6] },
     ],
   );
-  assert.deepStrictEqual(accept.take(), [
+  deepEqual(accept.take(), [
     { level: 1.0, results: [r3, r4] },
     { level: 0.97, results: [r1, r2, r3, r4] },
   ]);
@@ -290,7 +288,7 @@ test("find accuracy streaks, mixed", () => {
 
   // Assert the updated state.
 
-  assert.deepStrictEqual(
+  deepEqual(
     [...list.copy()],
     [
       { level: 1.0, results: [] },
@@ -298,7 +296,7 @@ test("find accuracy streaks, mixed", () => {
       { level: 0.95, results: [] },
     ],
   );
-  assert.deepStrictEqual(accept.take(), [
+  deepEqual(accept.take(), [
     { level: 0.95, results: [r1, r2, r3, r4, r5, r6] },
   ]);
 });
@@ -326,7 +324,7 @@ test("end accuracy streaks", () => {
 
   // Assert the initial state.
 
-  assert.deepStrictEqual(
+  deepEqual(
     [...list.copy()],
     [
       { level: 1.0, results: [r5, r6] },
@@ -334,7 +332,7 @@ test("end accuracy streaks", () => {
       { level: 0.95, results: [r1, r2, r3, r4, r5, r6] },
     ],
   );
-  assert.deepStrictEqual(accept.take(), []);
+  deepEqual(accept.take(), []);
 
   // Act.
 
@@ -342,7 +340,7 @@ test("end accuracy streaks", () => {
 
   // Assert the updated state.
 
-  assert.deepStrictEqual(accept.take(), [
+  deepEqual(accept.take(), [
     { level: 1.0, results: [r5, r6] },
     { level: 0.97, results: [r3, r4, r5, r6] },
     { level: 0.95, results: [r1, r2, r3, r4, r5, r6] },
@@ -359,8 +357,8 @@ test("find longest streaks, no streaks", () => {
 
   // Assert.
 
-  assert.deepStrictEqual(MutableStreakList.findLongest([]), []);
-  assert.deepStrictEqual(MutableStreakList.findLongest([r1, r2, r3]), []);
+  deepEqual(MutableStreakList.findLongest([]), []);
+  deepEqual(MutableStreakList.findLongest([r1, r2, r3]), []);
 });
 
 test("find longest streaks, one streak", () => {
@@ -373,7 +371,7 @@ test("find longest streaks, one streak", () => {
 
   // Assert.
 
-  assert.deepStrictEqual(MutableStreakList.findLongest([r1, r2, r3]), [
+  deepEqual(MutableStreakList.findLongest([r1, r2, r3]), [
     { level: 0.97, results: [r2] },
   ]);
 });
@@ -385,7 +383,7 @@ test("find longest streaks, two streaks", () => {
   const r1 = faker(0.97);
   const r2 = faker(1.0);
 
-  assert.deepStrictEqual(MutableStreakList.findLongest([r1, r2]), [
+  deepEqual(MutableStreakList.findLongest([r1, r2]), [
     { level: 1.0, results: [r2] },
     { level: 0.97, results: [r1, r2] },
   ]);
@@ -402,7 +400,7 @@ test("find longest streaks, mixed", () => {
 
   // Assert.
 
-  assert.deepStrictEqual(MutableStreakList.findLongest([r1, r2, r3, r4]), [
+  deepEqual(MutableStreakList.findLongest([r1, r2, r3, r4]), [
     { level: 1.0, results: [r1, r2] },
     { level: 0.97, results: [r4] },
   ]);

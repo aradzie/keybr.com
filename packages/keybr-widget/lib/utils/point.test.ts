@@ -1,9 +1,9 @@
 import { test } from "node:test";
-import { assert } from "chai";
+import { deepEqual, isFalse, isTrue } from "rich-assert";
 import { Point } from "./point.ts";
 
 test("point", () => {
-  assert.deepStrictEqual(
+  deepEqual(
     { ...new Point(1, 2) },
     {
       x: 1,
@@ -11,7 +11,7 @@ test("point", () => {
     },
   );
 
-  assert.deepStrictEqual(
+  deepEqual(
     { ...new Point({ x: 1, y: 2 }) },
     {
       x: 1,
@@ -19,6 +19,6 @@ test("point", () => {
     },
   );
 
-  assert.isFalse(Point.isPoint(true));
-  assert.isTrue(Point.isPoint({ x: 1, y: 2 }));
+  isFalse(Point.isPoint(true));
+  isTrue(Point.isPoint({ x: 1, y: 2 }));
 });

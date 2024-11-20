@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { Enum, type EnumItem } from "@keybr/lang";
-import { assert } from "chai";
+import { deepEqual, equal } from "rich-assert";
 import {
   booleanProp,
   enumProp,
@@ -49,14 +49,14 @@ const props = {
 test("change props", () => {
   let settings = new Settings();
 
-  assert.strictEqual(settings.get(props.boolean), false);
-  assert.strictEqual(settings.get(props.number), 0);
-  assert.strictEqual(settings.get(props.string), "");
-  assert.strictEqual(settings.get(props.enum), Letter.None);
-  assert.strictEqual(settings.get(props.item), Digit.NONE);
-  assert.deepStrictEqual(settings.get(props.flags), ["a", "b", "c"]);
+  equal(settings.get(props.boolean), false);
+  equal(settings.get(props.number), 0);
+  equal(settings.get(props.string), "");
+  equal(settings.get(props.enum), Letter.None);
+  equal(settings.get(props.item), Digit.NONE);
+  deepEqual(settings.get(props.flags), ["a", "b", "c"]);
 
-  assert.deepStrictEqual(settings.toJSON(), {});
+  deepEqual(settings.toJSON(), {});
 
   settings = settings
     .set(props.boolean, true)
@@ -66,14 +66,14 @@ test("change props", () => {
     .set(props.item, Digit.ONE)
     .set(props.flags, ["a", "x"]);
 
-  assert.strictEqual(settings.get(props.boolean), true);
-  assert.strictEqual(settings.get(props.number), 100);
-  assert.strictEqual(settings.get(props.string), "abc");
-  assert.strictEqual(settings.get(props.enum), Letter.A);
-  assert.strictEqual(settings.get(props.item), Digit.ONE);
-  assert.deepStrictEqual(settings.get(props.flags), ["a"]);
+  equal(settings.get(props.boolean), true);
+  equal(settings.get(props.number), 100);
+  equal(settings.get(props.string), "abc");
+  equal(settings.get(props.enum), Letter.A);
+  equal(settings.get(props.item), Digit.ONE);
+  deepEqual(settings.get(props.flags), ["a"]);
 
-  assert.deepStrictEqual(settings.toJSON(), {
+  deepEqual(settings.toJSON(), {
     "prop.boolean": true,
     "prop.number": 100,
     "prop.string": "abc",
@@ -85,73 +85,73 @@ test("change props", () => {
 
 test("read boolean", () => {
   const p = props.boolean;
-  assert.strictEqual(new Settings().get(p), false);
-  assert.strictEqual(new Settings({ [p.key]: null }).get(p), false);
-  assert.strictEqual(new Settings({ [p.key]: "abc" }).get(p), false);
-  assert.strictEqual(new Settings({ [p.key]: true }).get(p), true);
+  equal(new Settings().get(p), false);
+  equal(new Settings({ [p.key]: null }).get(p), false);
+  equal(new Settings({ [p.key]: "abc" }).get(p), false);
+  equal(new Settings({ [p.key]: true }).get(p), true);
 });
 
 test("read number", () => {
   const p = props.number;
-  assert.strictEqual(new Settings().get(p), 0);
-  assert.strictEqual(new Settings({ [p.key]: null }).get(p), 0);
-  assert.strictEqual(new Settings({ [p.key]: "abc" }).get(p), 0);
-  assert.strictEqual(new Settings({ [p.key]: 1000 }).get(p), 100);
-  assert.strictEqual(new Settings({ [p.key]: 99 }).get(p), 99);
+  equal(new Settings().get(p), 0);
+  equal(new Settings({ [p.key]: null }).get(p), 0);
+  equal(new Settings({ [p.key]: "abc" }).get(p), 0);
+  equal(new Settings({ [p.key]: 1000 }).get(p), 100);
+  equal(new Settings({ [p.key]: 99 }).get(p), 99);
 });
 
 test("read string", () => {
   const p = props.string;
-  assert.strictEqual(new Settings().get(p), "");
-  assert.strictEqual(new Settings({ [p.key]: null }).get(p), "");
-  assert.strictEqual(new Settings({ [p.key]: 123 }).get(p), "");
-  assert.strictEqual(new Settings({ [p.key]: "abcxyz" }).get(p), "abc");
-  assert.strictEqual(new Settings({ [p.key]: "123" }).get(p), "123");
+  equal(new Settings().get(p), "");
+  equal(new Settings({ [p.key]: null }).get(p), "");
+  equal(new Settings({ [p.key]: 123 }).get(p), "");
+  equal(new Settings({ [p.key]: "abcxyz" }).get(p), "abc");
+  equal(new Settings({ [p.key]: "123" }).get(p), "123");
 });
 
 test("read enum", () => {
   const p = props.enum;
-  assert.strictEqual(new Settings().get(p), Letter.None);
-  assert.strictEqual(new Settings({ [p.key]: null }).get(p), Letter.None);
-  assert.strictEqual(new Settings({ [p.key]: 123 }).get(p), Letter.None);
-  assert.strictEqual(new Settings({ [p.key]: "abc" }).get(p), Letter.None);
-  assert.strictEqual(new Settings({ [p.key]: "a" }).get(props.enum), Letter.A);
-  assert.strictEqual(new Settings({ [p.key]: "b" }).get(props.enum), Letter.B);
+  equal(new Settings().get(p), Letter.None);
+  equal(new Settings({ [p.key]: null }).get(p), Letter.None);
+  equal(new Settings({ [p.key]: 123 }).get(p), Letter.None);
+  equal(new Settings({ [p.key]: "abc" }).get(p), Letter.None);
+  equal(new Settings({ [p.key]: "a" }).get(props.enum), Letter.A);
+  equal(new Settings({ [p.key]: "b" }).get(props.enum), Letter.B);
 });
 
 test("read item", () => {
   const p = props.item;
-  assert.strictEqual(new Settings().get(p), Digit.NONE);
-  assert.strictEqual(new Settings({ [p.key]: null }).get(p), Digit.NONE);
-  assert.strictEqual(new Settings({ [p.key]: 123 }).get(p), Digit.NONE);
-  assert.strictEqual(new Settings({ [p.key]: "abc" }).get(p), Digit.NONE);
-  assert.strictEqual(new Settings({ [p.key]: "one" }).get(p), Digit.ONE);
-  assert.strictEqual(new Settings({ [p.key]: "two" }).get(p), Digit.TWO);
+  equal(new Settings().get(p), Digit.NONE);
+  equal(new Settings({ [p.key]: null }).get(p), Digit.NONE);
+  equal(new Settings({ [p.key]: 123 }).get(p), Digit.NONE);
+  equal(new Settings({ [p.key]: "abc" }).get(p), Digit.NONE);
+  equal(new Settings({ [p.key]: "one" }).get(p), Digit.ONE);
+  equal(new Settings({ [p.key]: "two" }).get(p), Digit.TWO);
 });
 
 test("read flags", () => {
   const p = props.flags;
-  assert.deepStrictEqual(
+  deepEqual(
     new Settings().get(p), //
     ["a", "b", "c"],
   );
-  assert.deepStrictEqual(
+  deepEqual(
     new Settings({ [p.key]: null }).get(p), //
     ["a", "b", "c"],
   );
-  assert.deepStrictEqual(
+  deepEqual(
     new Settings({ [p.key]: 123 }).get(p), //
     ["a", "b", "c"],
   );
-  assert.deepStrictEqual(
+  deepEqual(
     new Settings({ [p.key]: "a" }).get(p), //
     ["a"],
   );
-  assert.deepStrictEqual(
+  deepEqual(
     new Settings({ [p.key]: "b" }).get(p), //
     ["b"],
   );
-  assert.deepStrictEqual(
+  deepEqual(
     new Settings({ [p.key]: "a,b,c,x" }).get(p), //
     ["a", "b", "c"],
   );

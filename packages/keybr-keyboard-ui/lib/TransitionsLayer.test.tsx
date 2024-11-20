@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import { KeyboardContext, Layout, loadKeyboard } from "@keybr/keyboard";
 import { render } from "@testing-library/react";
-import { assert } from "chai";
+import { equal } from "rich-assert";
 import { TransitionsLayer } from "./TransitionsLayer.tsx";
 
 test("empty", () => {
@@ -13,7 +13,7 @@ test("empty", () => {
     </KeyboardContext.Provider>,
   );
 
-  assert.strictEqual(r.container.querySelectorAll(".arc.f").length, 0);
+  equal(r.container.querySelectorAll(".arc.f").length, 0);
 
   r.unmount();
 });
@@ -33,7 +33,7 @@ test("equal counts", () => {
     </KeyboardContext.Provider>,
   );
 
-  assert.strictEqual(r.container.querySelectorAll(".arc.f").length, 2);
+  equal(r.container.querySelectorAll(".arc.f").length, 2);
 
   r.unmount();
 });
@@ -53,7 +53,7 @@ test("different counts", () => {
     </KeyboardContext.Provider>,
   );
 
-  assert.strictEqual(r.container.querySelectorAll(".arc.f").length, 2);
+  equal(r.container.querySelectorAll(".arc.f").length, 2);
 
   r.unmount();
 });
@@ -70,7 +70,7 @@ test("self arrow", () => {
     </KeyboardContext.Provider>,
   );
 
-  assert.strictEqual(r.container.querySelectorAll(".arc.f").length, 0);
+  equal(r.container.querySelectorAll(".arc.f").length, 0);
 
   r.unmount();
 });

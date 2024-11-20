@@ -3,7 +3,7 @@ import { test } from "node:test";
 import { ResultFaker } from "@keybr/result";
 import { exists, removeDir } from "@sosimple/fsx";
 import { File } from "@sosimple/fsx-file";
-import { assert } from "chai";
+import { isFalse, isTrue } from "rich-assert";
 import { fixFile } from "./fix-file.ts";
 
 const tmp = process.env.DATA_DIR ?? "/tmp/keybr";
@@ -34,8 +34,8 @@ test("fix empty file", async () => {
 
   // Assert.
 
-  assert.isTrue(await exists(name + "~corrupted"));
-  assert.isFalse(await exists(name));
+  isTrue(await exists(name + "~corrupted"));
+  isFalse(await exists(name));
 });
 
 test("fix non-empty file", async () => {
@@ -51,6 +51,6 @@ test("fix non-empty file", async () => {
 
   // Assert.
 
-  assert.isTrue(await exists(name + "~corrupted"));
-  assert.isTrue(await exists(name));
+  isTrue(await exists(name + "~corrupted"));
+  isTrue(await exists(name));
 });

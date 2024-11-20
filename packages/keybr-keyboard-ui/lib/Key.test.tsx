@@ -1,7 +1,7 @@
-import { strictEqual } from "node:assert/strict";
 import { test } from "node:test";
 import { KeyShape, Language } from "@keybr/keyboard";
 import { render } from "@testing-library/react";
+import { equal } from "rich-assert";
 import { makeKeyComponent } from "./Key.tsx";
 
 test("static labels", () => {
@@ -27,8 +27,8 @@ test("static labels", () => {
 
   // Assert.
 
-  strictEqual(r.container.textContent, "XYZ");
-  strictEqual(r.container.querySelectorAll('[data-key="my-key"]').length, 1);
+  equal(r.container.textContent, "XYZ");
+  equal(r.container.querySelectorAll('[data-key="my-key"]').length, 1);
 
   r.unmount();
 });
@@ -60,8 +60,8 @@ test("letter labels", () => {
 
   // Assert.
 
-  strictEqual(r.container.textContent, "Iİ");
-  strictEqual(r.container.querySelectorAll('[data-key="my-key"]').length, 1);
+  equal(r.container.textContent, "Iİ");
+  equal(r.container.querySelectorAll('[data-key="my-key"]').length, 1);
 
   r.unmount();
 });
@@ -93,8 +93,8 @@ test("dead labels", () => {
 
   // Assert.
 
-  strictEqual(r.container.textContent, "◌̀◌́**");
-  strictEqual(r.container.querySelectorAll('[data-key="my-key"]').length, 1);
+  equal(r.container.textContent, "◌̀◌́**");
+  equal(r.container.querySelectorAll('[data-key="my-key"]').length, 1);
 
   r.unmount();
 });
@@ -126,8 +126,8 @@ test("ligature labels", () => {
 
   // Assert.
 
-  strictEqual(r.container.textContent, "XXYYAABB");
-  strictEqual(r.container.querySelectorAll('[data-key="my-key"]').length, 1);
+  equal(r.container.textContent, "XXYYAABB");
+  equal(r.container.querySelectorAll('[data-key="my-key"]').length, 1);
 
   r.unmount();
 });
@@ -159,8 +159,8 @@ test("mixed labels", () => {
 
   // Assert.
 
-  strictEqual(r.container.textContent, "A◌̀XX");
-  strictEqual(r.container.querySelectorAll('[data-key="my-key"]').length, 1);
+  equal(r.container.textContent, "A◌̀XX");
+  equal(r.container.querySelectorAll('[data-key="my-key"]').length, 1);
 
   r.unmount();
 });
@@ -191,8 +191,8 @@ test("space", () => {
 
   // Assert.
 
-  strictEqual(r.container.textContent, "");
-  strictEqual(r.container.querySelectorAll('[data-key="my-key"]').length, 1);
+  equal(r.container.textContent, "");
+  equal(r.container.querySelectorAll('[data-key="my-key"]').length, 1);
 
   r.unmount();
 });

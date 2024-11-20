@@ -1,9 +1,9 @@
 import { test } from "node:test";
-import { assert } from "chai";
+import { deepEqual, isFalse, isTrue } from "rich-assert";
 import { Rect } from "./rect.ts";
 
 test("rect", () => {
-  assert.deepStrictEqual(
+  deepEqual(
     { ...new Rect(1, 2, 3, 4) },
     {
       x: 1,
@@ -13,7 +13,7 @@ test("rect", () => {
     },
   );
 
-  assert.deepStrictEqual(
+  deepEqual(
     { ...new Rect({ x: 1, y: 2 }, { width: 3, height: 4 }) },
     {
       x: 1,
@@ -23,7 +23,7 @@ test("rect", () => {
     },
   );
 
-  assert.deepStrictEqual(
+  deepEqual(
     { ...new Rect({ x: 1, y: 2, width: 3, height: 4 }) },
     {
       x: 1,
@@ -33,6 +33,6 @@ test("rect", () => {
     },
   );
 
-  assert.isFalse(Rect.isRect(true));
-  assert.isTrue(Rect.isRect({ x: 1, y: 2, width: 3, height: 4 }));
+  isFalse(Rect.isRect(true));
+  isTrue(Rect.isRect({ x: 1, y: 2, width: 3, height: 4 }));
 });

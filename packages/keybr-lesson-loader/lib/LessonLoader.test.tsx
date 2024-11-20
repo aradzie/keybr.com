@@ -4,8 +4,7 @@ import { FakePhoneticModel, type PhoneticModel } from "@keybr/phonetic-model";
 import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
 import { FakeSettingsContext, Settings } from "@keybr/settings";
 import { render } from "@testing-library/react";
-import { assert } from "chai";
-import { type ReactNode } from "react";
+import { includes } from "rich-assert";
 import { LessonLoader } from "./LessonLoader.tsx";
 
 test("load", async () => {
@@ -22,11 +21,11 @@ test("load", async () => {
     </FakeSettingsContext>,
   );
 
-  assert.include((await r.findByTitle("letters")).textContent, "ABCDEFGHIJ");
+  includes((await r.findByTitle("letters")).textContent!, "ABCDEFGHIJ");
 
   r.unmount();
 });
 
-function TestChild({ model }: { readonly model: PhoneticModel }): ReactNode {
+function TestChild({ model }: { model: PhoneticModel }) {
   return <span title="letters">{model.letters.map(String).join("")}</span>;
 }

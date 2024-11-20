@@ -3,7 +3,7 @@ import { DataDir } from "@keybr/config";
 import { Layout } from "@keybr/keyboard";
 import { ResultFaker } from "@keybr/result";
 import { removeDir } from "@sosimple/fsx";
-import { assert } from "chai";
+import { deepEqual } from "rich-assert";
 import { HighScoresFactory } from "./factory.ts";
 import { type HighScoresRow } from "./highscores.ts";
 
@@ -51,15 +51,15 @@ test("append table", async (ctx) => {
 
   // Initial state.
 
-  assert.deepStrictEqual([...(await factory.load())], []);
+  deepEqual([...(await factory.load())], []);
 
   // Add a result of user 1.
 
   await factory.append(1, [result1]);
-  assert.deepStrictEqual([...(await factory.load())], [row1]);
+  deepEqual([...(await factory.load())], [row1]);
 
   // Add a result of user 2.
 
   await factory.append(2, [result2]);
-  assert.deepStrictEqual([...(await factory.load())], [row2, row1]);
+  deepEqual([...(await factory.load())], [row2, row1]);
 });

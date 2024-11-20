@@ -1,8 +1,8 @@
 import { test } from "node:test";
 import { render } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import { assert } from "chai";
 import { type ReactNode, useState } from "react";
+import { isNotNull, isNull } from "rich-assert";
 import { Button } from "../button/index.ts";
 import { PortalContainer } from "../portal/index.ts";
 import { Popover } from "./Popover.tsx";
@@ -35,11 +35,11 @@ test("test", async () => {
 
   const r = render(<UnderTest />);
 
-  assert.isNull(r.queryByText("menu"));
+  isNull(r.queryByText("menu"));
   await userEvent.click(r.getByText("anchor"));
-  assert.isNotNull(r.queryByText("menu"));
+  isNotNull(r.queryByText("menu"));
   await userEvent.click(r.getByText("anchor"));
-  assert.isNull(r.queryByText("menu"));
+  isNull(r.queryByText("menu"));
 
   r.unmount();
 });

@@ -2,7 +2,7 @@ import { test } from "node:test";
 import { useTheme } from "@keybr/themes";
 import { render } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import { assert } from "chai";
+import { equal } from "rich-assert";
 import { ThemeProvider } from "./ThemeProvider.tsx";
 
 test.beforeEach(() => {
@@ -38,8 +38,8 @@ test("mount and switch styles", async () => {
 
   // Assert.
 
-  assert.strictEqual(document.documentElement.dataset["color"], "dark");
-  assert.strictEqual(document.documentElement.dataset["font"], "spectral");
+  equal(document.documentElement.dataset["color"], "dark");
+  equal(document.documentElement.dataset["font"], "spectral");
 
   // Act.
 
@@ -47,12 +47,12 @@ test("mount and switch styles", async () => {
 
   // Assert.
 
-  assert.strictEqual(
+  equal(
     document.cookie,
     "prefs=%7B%22color%22%3A%22light%22%2C%22font%22%3A%22spectral%22%7D",
   );
-  assert.strictEqual(document.documentElement.dataset["color"], "light");
-  assert.strictEqual(document.documentElement.dataset["font"], "spectral");
+  equal(document.documentElement.dataset["color"], "light");
+  equal(document.documentElement.dataset["font"], "spectral");
 
   // Act.
 
@@ -60,12 +60,12 @@ test("mount and switch styles", async () => {
 
   // Assert.
 
-  assert.strictEqual(
+  equal(
     document.cookie,
     "prefs=%7B%22color%22%3A%22light%22%2C%22font%22%3A%22open-sans%22%7D",
   );
-  assert.strictEqual(document.documentElement.dataset["color"], "light");
-  assert.strictEqual(document.documentElement.dataset["font"], "open-sans");
+  equal(document.documentElement.dataset["color"], "light");
+  equal(document.documentElement.dataset["font"], "open-sans");
 
   // Cleanup.
 
@@ -87,7 +87,7 @@ test("ignore invalid cookie value", () => {
 
   // Assert.
 
-  assert.strictEqual(document.cookie, "prefs=%%%garbage%%%");
+  equal(document.cookie, "prefs=%%%garbage%%%");
 
   // Cleanup.
 

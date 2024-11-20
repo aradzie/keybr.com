@@ -7,7 +7,7 @@ import {
   player3,
 } from "@keybr/multiplayer-shared/lib/testing.ts";
 import { act, render } from "@testing-library/react";
-import { assert } from "chai";
+import { isNotNull, isNull } from "rich-assert";
 import { DeferredTrack, Track } from "./Track.tsx";
 
 declare function flushAnimationFrames(): Promise<void>;
@@ -25,9 +25,9 @@ test("render", () => {
     </FakeIntlProvider>,
   );
 
-  assert.isNotNull(r.queryByText("abc"));
-  assert.isNull(r.queryByText("name1"));
-  assert.isNull(r.queryByText("name2"));
+  isNotNull(r.queryByText("abc"));
+  isNull(r.queryByText("name1"));
+  isNull(r.queryByText("name2"));
 
   r.rerender(
     <FakeIntlProvider>
@@ -41,9 +41,9 @@ test("render", () => {
     </FakeIntlProvider>,
   );
 
-  assert.isNotNull(r.queryByText("xyz"));
-  assert.isNotNull(r.queryByText("name1"));
-  assert.isNotNull(r.queryByText("name2"));
+  isNotNull(r.queryByText("xyz"));
+  isNotNull(r.queryByText("name1"));
+  isNotNull(r.queryByText("name2"));
 
   r.unmount();
 });
@@ -61,9 +61,9 @@ test("deferred render", async () => {
     </FakeIntlProvider>,
   );
 
-  assert.isNotNull(r.queryByText("abc"));
-  assert.isNull(r.queryByText("name1"));
-  assert.isNull(r.queryByText("name2"));
+  isNotNull(r.queryByText("abc"));
+  isNull(r.queryByText("name1"));
+  isNull(r.queryByText("name2"));
 
   r.rerender(
     <FakeIntlProvider>
@@ -77,17 +77,17 @@ test("deferred render", async () => {
     </FakeIntlProvider>,
   );
 
-  assert.isNotNull(r.queryByText("abc"));
-  assert.isNull(r.queryByText("name1"));
-  assert.isNull(r.queryByText("name2"));
+  isNotNull(r.queryByText("abc"));
+  isNull(r.queryByText("name1"));
+  isNull(r.queryByText("name2"));
 
   await act(async () => {
     await flushAnimationFrames();
   });
 
-  assert.isNotNull(r.queryByText("xyz"));
-  assert.isNotNull(r.queryByText("name1"));
-  assert.isNotNull(r.queryByText("name2"));
+  isNotNull(r.queryByText("xyz"));
+  isNotNull(r.queryByText("name1"));
+  isNotNull(r.queryByText("name2"));
 
   r.unmount();
 });

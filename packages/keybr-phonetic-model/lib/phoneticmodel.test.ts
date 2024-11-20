@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import { Language } from "@keybr/keyboard";
 import { toCodePoints } from "@keybr/unicode";
-import { assert } from "chai";
+import { deepEqual, equal, match } from "rich-assert";
 import { TransitionTableBuilder } from "./builder.ts";
 import { Filter } from "./filter.ts";
 import { Letter } from "./letter.ts";
@@ -16,17 +16,17 @@ test("generate text from an empty transition table", () => {
   const { letters } = model;
   const [a, b, c, d] = letters;
 
-  assert.deepStrictEqual(letters, [
+  deepEqual(letters, [
     new Letter(0x0061, 0.0, "A"),
     new Letter(0x0062, 0.0, "B"),
     new Letter(0x0063, 0.0, "C"),
     new Letter(0x0064, 0.0, "D"),
   ]);
 
-  assert.strictEqual(model.nextWord(new Filter(null, null)), "");
-  assert.strictEqual(model.nextWord(new Filter([a], null)), "");
-  assert.strictEqual(model.nextWord(new Filter([a], a)), "a");
-  assert.strictEqual(model.nextWord(new Filter([a, b, c, d], a)), "a");
+  equal(model.nextWord(new Filter(null, null)), "");
+  equal(model.nextWord(new Filter([a], null)), "");
+  equal(model.nextWord(new Filter([a], a)), "a");
+  equal(model.nextWord(new Filter([a, b, c, d], a)), "a");
 });
 
 test("generate text from a partial transition table", () => {
@@ -44,17 +44,17 @@ test("generate text from a partial transition table", () => {
   const { letters } = model;
   const [a, b, c, d] = letters;
 
-  assert.deepStrictEqual(letters, [
+  deepEqual(letters, [
     new Letter(0x0061, 0.25, "A"),
     new Letter(0x0062, 0.25, "B"),
     new Letter(0x0063, 0.25, "C"),
     new Letter(0x0064, 0.25, "D"),
   ]);
 
-  assert.match(model.nextWord(new Filter(null, null)), /^[abcd]$/);
-  assert.match(model.nextWord(new Filter([a], null)), /^[a]$/);
-  assert.match(model.nextWord(new Filter([a], a)), /^[a]$/);
-  assert.match(model.nextWord(new Filter([a, b, c, d], a)), /^[a]$/);
+  match(model.nextWord(new Filter(null, null)), /^[abcd]$/);
+  match(model.nextWord(new Filter([a], null)), /^[a]$/);
+  match(model.nextWord(new Filter([a], a)), /^[a]$/);
+  match(model.nextWord(new Filter([a, b, c, d], a)), /^[a]$/);
 });
 
 test("generate text from a full transition table", () => {
@@ -76,17 +76,17 @@ test("generate text from a full transition table", () => {
   const { letters } = model;
   const [a, b, c, d] = letters;
 
-  assert.deepStrictEqual(letters, [
+  deepEqual(letters, [
     new Letter(0x0061, 0.25, "A"),
     new Letter(0x0062, 0.25, "B"),
     new Letter(0x0063, 0.25, "C"),
     new Letter(0x0064, 0.25, "D"),
   ]);
 
-  assert.match(model.nextWord(new Filter(null, null)), /^[abcd]{3,}$/);
-  assert.match(model.nextWord(new Filter([a], null)), /^[a]{3,}$/);
-  assert.match(model.nextWord(new Filter([a], a)), /^[a]{3,}$/);
-  assert.match(model.nextWord(new Filter([a, b, c, d], a)), /^[abcd]{3,}$/);
+  match(model.nextWord(new Filter(null, null)), /^[abcd]{3,}$/);
+  match(model.nextWord(new Filter([a], null)), /^[a]{3,}$/);
+  match(model.nextWord(new Filter([a], a)), /^[a]{3,}$/);
+  match(model.nextWord(new Filter([a, b, c, d], a)), /^[abcd]{3,}$/);
 });
 
 test("appended words", () => {
@@ -98,7 +98,7 @@ test("appended words", () => {
 
   const model = makePhoneticModel(Language.EN, builder.build());
 
-  assert.strictEqual(model.nextWord(new Filter(null, null)), "hello");
-  assert.strictEqual(model.nextWord(new Filter(null, null)), "hello");
-  assert.strictEqual(model.nextWord(new Filter(null, null)), "hello");
+  equal(model.nextWord(new Filter(null, null)), "hello");
+  equal(model.nextWord(new Filter(null, null)), "hello");
+  equal(model.nextWord(new Filter(null, null)), "hello");
 });

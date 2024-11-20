@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import { KeyboardContext, Layout, loadKeyboard } from "@keybr/keyboard";
 import { render } from "@testing-library/react";
-import { assert } from "chai";
+import { equal } from "rich-assert";
 import { HeatmapLayer } from "./HeatmapLayer.tsx";
 
 test("empty", () => {
@@ -13,7 +13,7 @@ test("empty", () => {
     </KeyboardContext.Provider>,
   );
 
-  assert.strictEqual(r.container.querySelectorAll(".spot_f").length, 0);
+  equal(r.container.querySelectorAll(".spot_f").length, 0);
 
   r.unmount();
 });
@@ -34,7 +34,7 @@ test("equal counts", () => {
     </KeyboardContext.Provider>,
   );
 
-  assert.strictEqual(r.container.querySelectorAll(".spot_f").length, 3);
+  equal(r.container.querySelectorAll(".spot_f").length, 3);
 
   r.unmount();
 });
@@ -55,7 +55,7 @@ test("different counts", () => {
     </KeyboardContext.Provider>,
   );
 
-  assert.strictEqual(r.container.querySelectorAll(".spot_f").length, 3);
+  equal(r.container.querySelectorAll(".spot_f").length, 3);
 
   r.unmount();
 });
@@ -76,7 +76,7 @@ test("combine counts for the same key", () => {
     </KeyboardContext.Provider>,
   );
 
-  assert.strictEqual(r.container.querySelectorAll(".spot_f").length, 2);
+  equal(r.container.querySelectorAll(".spot_f").length, 2);
 
   r.unmount();
 });

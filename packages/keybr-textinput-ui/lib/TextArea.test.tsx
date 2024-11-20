@@ -1,8 +1,8 @@
 import { test } from "node:test";
 import { textDisplaySettings, toLine } from "@keybr/textinput";
 import { render } from "@testing-library/react";
-import { assert } from "chai";
 import { IntlProvider } from "react-intl";
+import { equal } from "rich-assert";
 import { TextArea } from "./TextArea.tsx";
 
 test("render empty text", () => {
@@ -15,7 +15,7 @@ test("render empty text", () => {
     </IntlProvider>,
   );
 
-  assert.strictEqual(r.container.textContent, "");
+  equal(r.container.textContent, "");
 
   r.unmount();
 });
@@ -30,7 +30,7 @@ test("render simple text", () => {
     </IntlProvider>,
   );
 
-  assert.strictEqual(r.container.textContent, "abcxyz");
+  equal(r.container.textContent, "abcxyz");
 
   r.unmount();
 });
@@ -51,7 +51,7 @@ test("render styled text", () => {
     </IntlProvider>,
   );
 
-  assert.strictEqual(r.container.textContent, "abcxyz");
+  equal(r.container.textContent, "abcxyz");
 
   r.unmount();
 });
@@ -67,7 +67,7 @@ test("render text with line template", () => {
     </IntlProvider>,
   );
 
-  assert.strictEqual(r.container.textContent, "[abc][xyz]");
+  equal(r.container.textContent, "[abc][xyz]");
 
   r.unmount();
 });

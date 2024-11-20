@@ -5,8 +5,8 @@ import { type KeyStatsMap, makeKeyStatsMap } from "@keybr/result";
 import { FakeSettingsContext } from "@keybr/settings";
 import { fireEvent, render } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import { assert } from "chai";
 import { type ReactNode, useState } from "react";
+import { equal } from "rich-assert";
 import { KeySelector } from "./KeySelector.tsx";
 
 const { letters } = FakePhoneticModel;
@@ -26,7 +26,7 @@ test("props", () => {
   );
   const element = r.getByTitle("underTest");
 
-  assert.strictEqual(element.textContent, "ABCDEFGHIJ");
+  equal(element.textContent, "ABCDEFGHIJ");
 
   r.rerender(
     <FakeIntlProvider>
@@ -40,7 +40,7 @@ test("props", () => {
     </FakeIntlProvider>,
   );
 
-  assert.strictEqual(element.textContent, "ABCDEFGHIJ");
+  equal(element.textContent, "ABCDEFGHIJ");
 
   r.unmount();
 });
@@ -65,28 +65,28 @@ test("controlled", async () => {
   await userEvent.click(r.getByText("A"));
   await userEvent.click(r.getByText("B"));
 
-  assert.strictEqual(current?.label, "B");
+  equal(current?.label, "B");
 
   await userEvent.click(r.getByText("B"));
   await userEvent.click(r.getByText("A"));
 
-  assert.strictEqual(current?.label, "A");
+  equal(current?.label, "A");
 
   fireEvent.keyDown(element, { code: "ArrowLeft" });
 
-  assert.strictEqual(current?.label, "J");
+  equal(current?.label, "J");
 
   fireEvent.keyDown(element, { code: "ArrowUp" });
 
-  assert.strictEqual(current?.label, "I");
+  equal(current?.label, "I");
 
   fireEvent.keyDown(element, { code: "ArrowRight" });
 
-  assert.strictEqual(current?.label, "J");
+  equal(current?.label, "J");
 
   fireEvent.keyDown(element, { code: "ArrowDown" });
 
-  assert.strictEqual(current?.label, "A");
+  equal(current?.label, "A");
 
   r.unmount();
 });

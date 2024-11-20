@@ -2,8 +2,8 @@ import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { Layout } from "@keybr/keyboard";
 import { render } from "@testing-library/react";
-import { assert } from "chai";
 import { MemoryRouter } from "react-router";
+import { isNotNull } from "rich-assert";
 import { HighScoresTable } from "./HighScoresTable.tsx";
 import { type Entry } from "./types.ts";
 
@@ -39,8 +39,8 @@ test("render", () => {
     </FakeIntlProvider>,
   );
 
-  assert.isNotNull(r.queryByText("Deleted User"));
-  assert.isNotNull(r.queryByText("Named User"));
+  isNotNull(r.queryByText("Deleted User"));
+  isNotNull(r.queryByText("Named User"));
 
   r.unmount();
 });

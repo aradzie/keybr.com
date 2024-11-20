@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { ResultFaker } from "@keybr/result";
-import { assert } from "chai";
+import { deepEqual } from "rich-assert";
 import { TopScoreEvents } from "./event-source-top-score.ts";
 import { type LessonEvent } from "./event-types.ts";
 
@@ -20,7 +20,7 @@ test("generate events", () => {
 
   // Assert.
 
-  assert.deepStrictEqual([...events], []);
+  deepEqual([...events], []);
   events.clear();
 
   // Act.
@@ -29,10 +29,7 @@ test("generate events", () => {
 
   // Assert.
 
-  assert.deepStrictEqual(
-    [...events],
-    [{ type: "top-score", score: 3000, previous: 2400 }],
-  );
+  deepEqual([...events], [{ type: "top-score", score: 3000, previous: 2400 }]);
   events.clear();
 
   // Act.
@@ -42,7 +39,7 @@ test("generate events", () => {
 
   // Assert.
 
-  assert.deepStrictEqual([...events], []);
+  deepEqual([...events], []);
   events.clear();
 
   // Act.
@@ -51,9 +48,6 @@ test("generate events", () => {
 
   // Assert.
 
-  assert.deepStrictEqual(
-    [...events],
-    [{ type: "top-score", score: 4000, previous: 3000 }],
-  );
+  deepEqual([...events], [{ type: "top-score", score: 4000, previous: 3000 }]);
   events.clear();
 });

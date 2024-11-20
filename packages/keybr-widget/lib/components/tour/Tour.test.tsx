@@ -1,8 +1,8 @@
 import { test } from "node:test";
 import { render } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import { assert } from "chai";
 import { IntlProvider } from "react-intl";
+import { isNotNull, isNull } from "rich-assert";
 import { PortalContainer } from "../portal/Portal.tsx";
 import { Slide } from "./Slide.tsx";
 import { Tour } from "./Tour.tsx";
@@ -22,9 +22,9 @@ test("empty tour", () => {
     </IntlProvider>,
   );
 
-  assert.isNull(r.queryByText("Previous"));
-  assert.isNull(r.queryByText("Next"));
-  assert.isNotNull(r.queryByText("Close"));
+  isNull(r.queryByText("Previous"));
+  isNull(r.queryByText("Next"));
+  isNotNull(r.queryByText("Close"));
 
   r.unmount();
 });
@@ -46,11 +46,11 @@ test("switch slides", async () => {
 
   // First slide.
 
-  assert.isNull(r.queryByText("Previous"));
-  assert.isNotNull(r.queryByText("Next"));
-  assert.isNull(r.queryByText("Close"));
-  assert.isNotNull(r.queryByText("One"));
-  assert.isNull(r.queryByText("Two"));
+  isNull(r.queryByText("Previous"));
+  isNotNull(r.queryByText("Next"));
+  isNull(r.queryByText("Close"));
+  isNotNull(r.queryByText("One"));
+  isNull(r.queryByText("Two"));
 
   // Click next.
 
@@ -58,11 +58,11 @@ test("switch slides", async () => {
 
   // Second slide.
 
-  assert.isNotNull(r.queryByText("Previous"));
-  assert.isNull(r.queryByText("Next"));
-  assert.isNotNull(r.queryByText("Close"));
-  assert.isNull(r.queryByText("One"));
-  assert.isNotNull(r.queryByText("Two"));
+  isNotNull(r.queryByText("Previous"));
+  isNull(r.queryByText("Next"));
+  isNotNull(r.queryByText("Close"));
+  isNull(r.queryByText("One"));
+  isNotNull(r.queryByText("Two"));
 
   // Click prev.
 
@@ -70,11 +70,11 @@ test("switch slides", async () => {
 
   // First slide.
 
-  assert.isNull(r.queryByText("Previous"));
-  assert.isNotNull(r.queryByText("Next"));
-  assert.isNull(r.queryByText("Close"));
-  assert.isNotNull(r.queryByText("One"));
-  assert.isNull(r.queryByText("Two"));
+  isNull(r.queryByText("Previous"));
+  isNotNull(r.queryByText("Next"));
+  isNull(r.queryByText("Close"));
+  isNotNull(r.queryByText("One"));
+  isNull(r.queryByText("Two"));
 
   r.unmount();
 });

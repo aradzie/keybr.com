@@ -2,7 +2,7 @@ import { test } from "node:test";
 import { lessonProps, MutableDailyGoal } from "@keybr/lesson";
 import { LocalDate, ResultFaker, Today } from "@keybr/result";
 import { Settings } from "@keybr/settings";
-import { assert } from "chai";
+import { deepEqual } from "rich-assert";
 import { DailyGoalEvents } from "./event-source-daily-goal.ts";
 import { type LessonEvent } from "./event-types.ts";
 
@@ -27,7 +27,7 @@ test("generate events", () => {
 
   // Assert.
 
-  assert.deepStrictEqual([...events], []);
+  deepEqual([...events], []);
   events.clear();
 
   // Act.
@@ -38,7 +38,7 @@ test("generate events", () => {
 
   // Assert.
 
-  assert.deepStrictEqual([...events], [{ type: "daily-goal" }]);
+  deepEqual([...events], [{ type: "daily-goal" }]);
   events.clear();
 
   // Act.
@@ -49,6 +49,6 @@ test("generate events", () => {
 
   // Assert.
 
-  assert.deepStrictEqual([...events], []);
+  deepEqual([...events], []);
   events.clear();
 });

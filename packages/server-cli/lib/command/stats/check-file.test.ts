@@ -2,7 +2,7 @@ import { test } from "node:test";
 import { Writer } from "@keybr/binary";
 import { ResultFaker } from "@keybr/result";
 import { HEADER, writeResult } from "@keybr/result-io";
-import { assert } from "chai";
+import { deepEqual } from "rich-assert";
 import { checkFile, type FileStatus } from "./check-file.ts";
 
 const faker = new ResultFaker();
@@ -23,7 +23,7 @@ test("check empty file", () => {
 
   // Assert.
 
-  assert.deepStrictEqual(status, {
+  deepEqual(status, {
     type: "bad",
     results: [],
     invalid: [],
@@ -46,7 +46,7 @@ test("check invalid header", () => {
 
   // Assert.
 
-  assert.deepStrictEqual(status, {
+  deepEqual(status, {
     type: "bad",
     results: [],
     invalid: [],
@@ -66,7 +66,7 @@ test("check empty data", () => {
 
   // Assert.
 
-  assert.deepStrictEqual(status, {
+  deepEqual(status, {
     type: "bad",
     results: [],
     invalid: [],
@@ -90,7 +90,7 @@ test("check invalid data", () => {
 
   // Assert.
 
-  assert.deepStrictEqual(status, {
+  deepEqual(status, {
     type: "bad",
     results: [r0, r1, r2],
     invalid: [],
@@ -114,7 +114,7 @@ test("check invalid results", () => {
 
   // Assert.
 
-  assert.deepStrictEqual(status, {
+  deepEqual(status, {
     type: "bad",
     results: [r0, r1, r2],
     invalid: [rx],
@@ -137,7 +137,7 @@ test("check valid non-empty data", () => {
 
   // Assert.
 
-  assert.deepStrictEqual(status, {
+  deepEqual(status, {
     type: "good",
     results: [r0, r1, r2],
   } satisfies FileStatus);

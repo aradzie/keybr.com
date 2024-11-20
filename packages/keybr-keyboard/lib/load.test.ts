@@ -1,5 +1,5 @@
 import { test } from "node:test";
-import { assert } from "chai";
+import { fail, isTrue } from "rich-assert";
 import { Layout } from "./layout.ts";
 import { loadKeyboard } from "./load.ts";
 import { type KeyId } from "./types.ts";
@@ -77,34 +77,34 @@ for (const layout of Layout.ALL) {
   for (const geometry of layout.geometries) {
     test(`load layout ${layout.id}/${geometry.id}`, () => {
       const keyboard = loadKeyboard(layout, geometry);
-      assert.isTrue(
+      isTrue(
         keyboard.getCodePoints({
           dead: false,
           shift: false,
           alt: false,
         }).size > 0,
       );
-      assert.isTrue(
+      isTrue(
         keyboard.getCodePoints({
           dead: true,
           shift: true,
           alt: true,
         }).size > 0,
       );
-      assert.isTrue(keyboard.getExampleText().length > 0);
-      assert.isTrue(keyboard.getExampleLetters().length > 0);
+      isTrue(keyboard.getExampleText().length > 0);
+      isTrue(keyboard.getExampleLetters().length > 0);
 
       for (const key of keys) {
         const shape = keyboard.getShape(key);
         if (shape != null) {
           if (shape.finger == null) {
-            assert.fail(`Key ${key} is not assigned a finger zone`);
+            fail(`Key ${key} is not assigned a finger zone`);
           }
           if (shape.hand == null) {
-            assert.fail(`Key ${key} is not assigned a hand zone`);
+            fail(`Key ${key} is not assigned a hand zone`);
           }
           if (shape.row == null) {
-            assert.fail(`Key ${key} is not assigned a row zone`);
+            fail(`Key ${key} is not assigned a row zone`);
           }
         }
       }

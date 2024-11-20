@@ -3,7 +3,7 @@ import { FakeIntlProvider } from "@keybr/intl";
 import { LocalDate, ResultFaker, ResultSummary } from "@keybr/result";
 import { FakeSettingsContext } from "@keybr/settings";
 import { render } from "@testing-library/react";
-import { assert } from "chai";
+import { isNotNull, isNull } from "rich-assert";
 import { AccuracyStreaksSection } from "./AccuracyStreaksSection.tsx";
 
 test("no streaks", () => {
@@ -23,7 +23,7 @@ test("no streaks", () => {
 
   // Assert.
 
-  assert.isNull(r.queryByText("Accuracy Threshold", { exact: false }));
+  isNull(r.queryByText("Accuracy Threshold", { exact: false }));
 
   r.unmount();
 });
@@ -47,7 +47,7 @@ test("one streak", () => {
 
   // Assert.
 
-  assert.isNotNull(r.queryByText("Accuracy Threshold", { exact: false }));
+  isNotNull(r.queryByText("Accuracy Threshold", { exact: false }));
 
   r.unmount();
 });

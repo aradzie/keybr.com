@@ -2,15 +2,12 @@ import { test } from "node:test";
 import { fakeAdapter, Recorder } from "@fastr/fetch";
 import { ResultFaker } from "@keybr/result";
 import { formatFile } from "@keybr/result-io";
-import { assert, use } from "chai";
-import chaiAsPromised from "chai-as-promised";
+import { equal, rejects } from "rich-assert";
 import {
   ResultSyncAnonymousUser,
   ResultSyncNamedUser,
   ResultSyncPublicUser,
 } from "./remotesync.ts";
-
-use(chaiAsPromised);
 
 const faker = new ResultFaker();
 
@@ -42,9 +39,9 @@ test("named user - receive data", async () => {
 
   // Assert.
 
-  assert.strictEqual(result.length, 3);
-  assert.strictEqual(recorder.requestCount, 1);
-  assert.strictEqual(recorder.state, "ended");
+  equal(result.length, 3);
+  equal(recorder.requestCount, 1);
+  equal(recorder.state, "ended");
 });
 
 test("named user - send data", async () => {
@@ -67,8 +64,8 @@ test("named user - send data", async () => {
 
   // Assert.
 
-  assert.strictEqual(recorder.requestCount, 1);
-  assert.strictEqual(recorder.state, "ended");
+  equal(recorder.requestCount, 1);
+  equal(recorder.state, "ended");
 });
 
 test("named user - clear data", async () => {
@@ -91,8 +88,8 @@ test("named user - clear data", async () => {
 
   // Assert.
 
-  assert.strictEqual(recorder.requestCount, 1);
-  assert.strictEqual(recorder.state, "ended");
+  equal(recorder.requestCount, 1);
+  equal(recorder.state, "ended");
 });
 
 test("public user - receive data", async () => {
@@ -115,9 +112,9 @@ test("public user - receive data", async () => {
 
   // Assert.
 
-  assert.strictEqual(result.length, 3);
-  assert.strictEqual(recorder.requestCount, 1);
-  assert.strictEqual(recorder.state, "ended");
+  equal(result.length, 3);
+  equal(recorder.requestCount, 1);
+  equal(recorder.state, "ended");
 });
 
 test("public user - send data", async () => {
@@ -136,11 +133,11 @@ test("public user - send data", async () => {
 
   // Assert.
 
-  await assert.isRejected(
+  await rejects(
     sync.send(faker.nextResultList(1), () => {}),
-    "Disabled",
+    /Disabled/,
   );
-  assert.strictEqual(recorder.requestCount, 0);
+  equal(recorder.requestCount, 0);
 });
 
 test("public user - clear data", async () => {
@@ -159,8 +156,8 @@ test("public user - clear data", async () => {
 
   // Assert.
 
-  await assert.isRejected(sync.clear(), "Disabled");
-  assert.strictEqual(recorder.requestCount, 0);
+  await rejects(sync.clear(), /Disabled/);
+  equal(recorder.requestCount, 0);
 });
 
 test("anonymous user - receive data", async () => {
@@ -179,11 +176,11 @@ test("anonymous user - receive data", async () => {
 
   // Assert.
 
-  await assert.isRejected(
+  await rejects(
     sync.receive(() => {}),
-    "Disabled",
+    /Disabled/,
   );
-  assert.strictEqual(recorder.requestCount, 0);
+  equal(recorder.requestCount, 0);
 });
 
 test("anonymous user - send data", async () => {
@@ -202,11 +199,11 @@ test("anonymous user - send data", async () => {
 
   // Assert.
 
-  await assert.isRejected(
+  await rejects(
     sync.send(faker.nextResultList(1), () => {}),
-    "Disabled",
+    /Disabled/,
   );
-  assert.strictEqual(recorder.requestCount, 0);
+  equal(recorder.requestCount, 0);
 });
 
 test("anonymous user - clear data", async () => {
@@ -225,8 +222,8 @@ test("anonymous user - clear data", async () => {
 
   // Assert.
 
-  await assert.isRejected(sync.clear(), "Disabled");
-  assert.strictEqual(recorder.requestCount, 0);
+  await rejects(sync.clear(), /Disabled/);
+  equal(recorder.requestCount, 0);
 });
 
 test("named user - receive data - http status error", async () => {
@@ -245,12 +242,12 @@ test("named user - receive data - http status error", async () => {
 
   // Assert.
 
-  await assert.isRejected(
+  await rejects(
     sync.receive(() => {}),
-    "Internal Server Error",
+    /Internal Server Error/,
   );
-  assert.strictEqual(recorder.requestCount, 1);
-  assert.strictEqual(recorder.state, "ended");
+  equal(recorder.requestCount, 1);
+  equal(recorder.state, "ended");
 });
 
 test("named user - receive data - invalid content type", async () => {
@@ -269,12 +266,12 @@ test("named user - receive data - invalid content type", async () => {
 
   // Assert.
 
-  await assert.isRejected(
+  await rejects(
     sync.receive(() => {}),
-    "Unsupported Media Type",
+    /Unsupported Media Type/,
   );
-  assert.strictEqual(recorder.requestCount, 1);
-  assert.strictEqual(recorder.state, "ended");
+  equal(recorder.requestCount, 1);
+  equal(recorder.state, "ended");
 });
 
 test("named user - receive data - parse error", async () => {
@@ -293,12 +290,12 @@ test("named user - receive data - parse error", async () => {
 
   // Assert.
 
-  await assert.isRejected(
+  await rejects(
     sync.receive(() => {}),
-    "Invalid header",
+    /Invalid header/,
   );
-  assert.strictEqual(recorder.requestCount, 1);
-  assert.strictEqual(recorder.state, "ended");
+  equal(recorder.requestCount, 1);
+  equal(recorder.state, "ended");
 });
 
 test("named user - receive data - generic error", async () => {
@@ -312,12 +309,12 @@ test("named user - receive data - generic error", async () => {
 
   // Assert.
 
-  await assert.isRejected(
+  await rejects(
     sync.receive(() => {}),
-    "What a terrible failure",
+    /What a terrible failure/,
   );
-  assert.strictEqual(recorder.requestCount, 1);
-  assert.strictEqual(recorder.state, "failed");
+  equal(recorder.requestCount, 1);
+  equal(recorder.state, "failed");
 });
 
 test("named user - send data - http status error", async () => {
@@ -336,12 +333,12 @@ test("named user - send data - http status error", async () => {
 
   // Assert.
 
-  await assert.isRejected(
+  await rejects(
     sync.send([], () => {}),
-    "Internal Server Error",
+    /Internal Server Error/,
   );
-  assert.strictEqual(recorder.requestCount, 1);
-  assert.strictEqual(recorder.state, "ended");
+  equal(recorder.requestCount, 1);
+  equal(recorder.state, "ended");
 });
 
 test("named user - send data - generic error", async () => {
@@ -355,12 +352,12 @@ test("named user - send data - generic error", async () => {
 
   // Assert.
 
-  await assert.isRejected(
+  await rejects(
     sync.send([], () => {}),
-    "What a terrible failure",
+    /What a terrible failure/,
   );
-  assert.strictEqual(recorder.requestCount, 1);
-  assert.strictEqual(recorder.state, "failed");
+  equal(recorder.requestCount, 1);
+  equal(recorder.state, "failed");
 });
 
 test("named user - clear data - http status error", async () => {
@@ -379,9 +376,9 @@ test("named user - clear data - http status error", async () => {
 
   // Assert.
 
-  await assert.isRejected(sync.clear(), "Internal Server Error");
-  assert.strictEqual(recorder.requestCount, 1);
-  assert.strictEqual(recorder.state, "ended");
+  await rejects(sync.clear(), /Internal Server Error/);
+  equal(recorder.requestCount, 1);
+  equal(recorder.state, "ended");
 });
 
 test("named user - clear data - generic error", async () => {
@@ -395,7 +392,7 @@ test("named user - clear data - generic error", async () => {
 
   // Assert.
 
-  await assert.isRejected(sync.clear(), "What a terrible failure");
-  assert.strictEqual(recorder.requestCount, 1);
-  assert.strictEqual(recorder.state, "failed");
+  await rejects(sync.clear(), /What a terrible failure/);
+  equal(recorder.requestCount, 1);
+  equal(recorder.state, "failed");
 });

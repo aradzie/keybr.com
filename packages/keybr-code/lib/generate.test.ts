@@ -1,16 +1,16 @@
 import { test } from "node:test";
-import { assert } from "chai";
+import { deepEqual } from "rich-assert";
 import { generate } from "./generate.ts";
 
 test("generate from a deterministic grammar", () => {
-  assert.deepStrictEqual(
+  deepEqual(
     generate({
       rules: { start: "only" },
       composes: [],
     }),
     ["only"],
   );
-  assert.deepStrictEqual(
+  deepEqual(
     generate({
       rules: {
         start: {
@@ -38,7 +38,7 @@ test("generate from a deterministic grammar", () => {
 });
 
 test("alternate between branches", () => {
-  assert.deepStrictEqual(
+  deepEqual(
     generate({
       rules: {
         start: {

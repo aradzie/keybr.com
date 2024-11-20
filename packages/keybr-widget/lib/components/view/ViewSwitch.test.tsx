@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import { render } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import { assert } from "chai";
+import { isNotNull, isNull } from "rich-assert";
 import { useView, ViewSwitch } from "./ViewSwitch.tsx";
 
 const views = {
@@ -13,22 +13,22 @@ const views = {
 test("switch", async () => {
   const r = render(<ViewSwitch views={views} />);
 
-  assert.isNotNull(r.queryByText("One"));
-  assert.isNull(r.queryByText("Two"));
+  isNotNull(r.queryByText("One"));
+  isNull(r.queryByText("Two"));
 
   await userEvent.click(r.getByText("Switch"));
 
-  assert.isNotNull(r.queryByText("Two"));
-  assert.isNotNull(r.queryByText("Due"));
-  assert.isNull(r.queryByText("One"));
-  assert.isNull(r.queryByText("Uno"));
+  isNotNull(r.queryByText("Two"));
+  isNotNull(r.queryByText("Due"));
+  isNull(r.queryByText("One"));
+  isNull(r.queryByText("Uno"));
 
   await userEvent.click(r.getByText("Switch"));
 
-  assert.isNotNull(r.queryByText("One"));
-  assert.isNotNull(r.queryByText("Uno"));
-  assert.isNull(r.queryByText("Two"));
-  assert.isNull(r.queryByText("Due"));
+  isNotNull(r.queryByText("One"));
+  isNotNull(r.queryByText("Uno"));
+  isNull(r.queryByText("Two"));
+  isNull(r.queryByText("Due"));
 
   r.unmount();
 });

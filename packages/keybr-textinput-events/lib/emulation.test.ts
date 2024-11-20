@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import { Emulation, keyboardProps, Layout, loadKeyboard } from "@keybr/keyboard";
 import { Settings } from "@keybr/settings";
-import { assert } from "chai";
+import { deepEqual } from "rich-assert";
 import { emulateLayout } from "./emulation.ts";
 import { tracingListener } from "./testing.ts";
 import { type IInputEvent, type IKeyboardEvent, type InputListener } from "./types.ts";
@@ -33,7 +33,7 @@ test("forward emulation, translate a character input", () => {
 
   // Assert.
 
-  assert.deepStrictEqual(target.trace, [
+  deepEqual(target.trace, [
     "100,keydown,ControlLeft,Control",
     "200,keydown,KeyS,o",
     "300,keyup,KeyS,o",
@@ -67,7 +67,7 @@ test("forward emulation, translate a clear char input", () => {
 
   // Assert.
 
-  assert.deepStrictEqual(target.trace, [
+  deepEqual(target.trace, [
     "100,keydown,Backspace,Backspace",
     "100,clearChar,\u0000,111",
     "200,keyup,Backspace,Backspace",
@@ -97,7 +97,7 @@ test("forward emulation, translate a clear word input", () => {
 
   // Assert.
 
-  assert.deepStrictEqual(target.trace, [
+  deepEqual(target.trace, [
     "100,keydown,ControlLeft,Control",
     "200,keydown,Backspace,Backspace",
     "200,clearWord,\u0000,111",
@@ -130,7 +130,7 @@ test("forward emulation, translate the whitespace keys", () => {
 
   // Assert.
 
-  assert.deepStrictEqual(target.trace, [
+  deepEqual(target.trace, [
     "100,keydown,Space, ",
     "100,appendChar, ,100",
     "200,keyup,Space, ",
@@ -161,7 +161,7 @@ test("forward emulation, incomplete events", () => {
 
   // Assert.
 
-  assert.deepStrictEqual(target.trace, [
+  deepEqual(target.trace, [
     "100,keydown,,Unidentified", //
     "200,keyup,,Unidentified",
   ]);
@@ -190,7 +190,7 @@ test("reverse emulation, translate character codes", () => {
 
   // Assert.
 
-  assert.deepStrictEqual(target.trace, [
+  deepEqual(target.trace, [
     "100,keydown,ShiftLeft,Shift",
     "200,keydown,KeyS,O",
     "200,appendChar,O,111",
@@ -220,7 +220,7 @@ test("reverse emulation, incomplete events", () => {
 
   // Assert.
 
-  assert.deepStrictEqual(target.trace, [
+  deepEqual(target.trace, [
     "100,keydown,,Unidentified", //
     "100,appendChar,S,111",
     "200,keyup,,Unidentified",

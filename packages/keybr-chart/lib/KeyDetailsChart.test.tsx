@@ -5,7 +5,7 @@ import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { generateKeySamples } from "@keybr/result";
 import { FakeSettingsContext, Settings } from "@keybr/settings";
 import { render } from "@testing-library/react";
-import { assert } from "chai";
+import { isNotNull } from "rich-assert";
 import { KeyDetailsChart } from "./KeyDetailsChart.tsx";
 
 test("render empty", () => {
@@ -37,7 +37,7 @@ test("render non-empty", () => {
   const settings = new Settings().set(lessonProps.targetSpeed, /* 35WPM */ 175);
   const target = new Target(settings);
   const learningRate = LearningRate.from(generateKeySamples(10), target);
-  assert.isNotNull(learningRate);
+  isNotNull(learningRate);
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>

@@ -3,9 +3,9 @@ import { type IncomingHeaders } from "@fastr/headers";
 import { Manifest, ManifestContext } from "@keybr/assets";
 import { FakeIntlProvider } from "@keybr/intl";
 import { PageDataContext, Pages } from "@keybr/pages-shared";
-import { assert } from "chai";
 import { load } from "cheerio";
 import { renderToStaticMarkup } from "react-dom/server";
+import { equal, isFalse, isTrue, like } from "rich-assert";
 import { Shell } from "./Shell.tsx";
 
 test("render", () => {
@@ -33,16 +33,16 @@ test("render", () => {
 
   const $ = load(html);
 
-  assert.deepStrictEqual($("html").attr(), {
+  like($("html").attr(), {
     "prefix": "og: http://ogp.me/ns#",
     "lang": "en",
     "dir": "ltr",
     "data-color": "system",
     "data-font": "open-sans",
   });
-  assert.isTrue(html.includes("google"));
-  assert.isTrue(html.includes("cloudflare"));
-  assert.strictEqual($("nav").length, 0);
+  isTrue(html.includes("google"));
+  isTrue(html.includes("cloudflare"));
+  equal($("nav").length, 0);
 });
 
 test("render alt", () => {
@@ -71,16 +71,16 @@ test("render alt", () => {
 
   const $ = load(html);
 
-  assert.deepStrictEqual($("html").attr(), {
+  like($("html").attr(), {
     "prefix": "og: http://ogp.me/ns#",
     "lang": "en",
     "dir": "ltr",
     "data-color": "system",
     "data-font": "open-sans",
   });
-  assert.isFalse(html.includes("google"));
-  assert.isFalse(html.includes("cloudflare"));
-  assert.strictEqual($("nav").length, 0);
+  isFalse(html.includes("google"));
+  isFalse(html.includes("cloudflare"));
+  equal($("nav").length, 0);
 });
 
 test("render for a bot", () => {
@@ -111,14 +111,14 @@ test("render for a bot", () => {
 
   const $ = load(html);
 
-  assert.deepStrictEqual($("html").attr(), {
+  like($("html").attr(), {
     "prefix": "og: http://ogp.me/ns#",
     "lang": "en",
     "dir": "ltr",
     "data-color": "system",
     "data-font": "open-sans",
   });
-  assert.strictEqual($("nav").length, 1);
+  equal($("nav").length, 1);
 });
 
 function fakeHeaders(entries: Record<string, string> = {}) {

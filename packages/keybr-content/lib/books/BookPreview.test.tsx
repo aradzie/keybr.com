@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { render } from "@testing-library/react";
-import { assert } from "chai";
+import { includes } from "rich-assert";
 import { Book } from "./book.ts";
 import { BookPreview } from "./BookPreview.tsx";
 
@@ -15,11 +15,11 @@ test("render", () => {
     </FakeIntlProvider>,
   );
 
-  assert.include(r.container.textContent, "Chapters:1");
-  assert.include(r.container.textContent, "Paragraphs:3");
-  assert.include(r.container.textContent, "All words:3");
-  assert.include(r.container.textContent, "Unique words:3");
-  assert.include(r.container.textContent, "Characters:11");
+  includes(r.container.textContent!, "Chapters:1");
+  includes(r.container.textContent!, "Paragraphs:3");
+  includes(r.container.textContent!, "All words:3");
+  includes(r.container.textContent!, "Unique words:3");
+  includes(r.container.textContent!, "Characters:11");
 
   r.unmount();
 });

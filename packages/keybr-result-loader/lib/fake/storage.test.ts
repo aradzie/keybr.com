@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { type Result, ResultFaker } from "@keybr/result";
-import { assert } from "chai";
+import { deepEqual } from "rich-assert";
 import { FakeResultStorage } from "./storage.ts";
 
 test("store results", async () => {
@@ -14,23 +14,23 @@ test("store results", async () => {
 
   // Initial.
 
-  assert.deepStrictEqual(await storage.load(), []);
+  deepEqual(await storage.load(), []);
 
   // Append r0.
 
   await storage.append([r0]);
-  assert.deepStrictEqual(results, [r0]);
-  assert.deepStrictEqual(await storage.load(), [r0]);
+  deepEqual(results, [r0]);
+  deepEqual(await storage.load(), [r0]);
 
   // Append r1.
 
   await storage.append([r1]);
-  assert.deepStrictEqual(results, [r0, r1]);
-  assert.deepStrictEqual(await storage.load(), [r0, r1]);
+  deepEqual(results, [r0, r1]);
+  deepEqual(await storage.load(), [r0, r1]);
 
   // Clear.
 
   await storage.clear();
-  assert.deepStrictEqual(results, []);
-  assert.deepStrictEqual(await storage.load(), []);
+  deepEqual(results, []);
+  deepEqual(await storage.load(), []);
 });

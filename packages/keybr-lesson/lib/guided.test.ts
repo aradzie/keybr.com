@@ -3,7 +3,7 @@ import { Layout, loadKeyboard } from "@keybr/keyboard";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { makeKeyStatsMap } from "@keybr/result";
 import { Settings } from "@keybr/settings";
-import { assert } from "chai";
+import { deepEqual, equal } from "rich-assert";
 import { fakeKeyStatsMap, printLessonKeys } from "./fakes.ts";
 import { GuidedLesson } from "./guided.ts";
 import { LessonKey } from "./key.ts";
@@ -16,7 +16,7 @@ test("provide key set", () => {
   const lesson = new GuidedLesson(settings, keyboard, model, []);
   const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
 
-  assert.deepStrictEqual(lessonKeys.findIncludedKeys(), [
+  deepEqual(lessonKeys.findIncludedKeys(), [
     new LessonKey({
       letter: FakePhoneticModel.letter1,
       samples: [],
@@ -84,7 +84,7 @@ test("provide key set", () => {
       isForced: false,
     }),
   ]);
-  assert.deepStrictEqual(lessonKeys.findExcludedKeys(), [
+  deepEqual(lessonKeys.findExcludedKeys(), [
     new LessonKey({
       letter: FakePhoneticModel.letter7,
       samples: [],
@@ -130,7 +130,7 @@ test("provide key set", () => {
       isForced: false,
     }),
   ]);
-  assert.deepStrictEqual(
+  deepEqual(
     lessonKeys.findFocusedKey(),
     new LessonKey({
       letter: FakePhoneticModel.letter1,
@@ -156,7 +156,7 @@ describe("generate text from a broken phonetic model", () => {
     const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
     lesson.rng = model.rng;
 
-    assert.strictEqual(
+    equal(
       lesson.generate(lessonKeys),
       "? ? ? ? ? ? ? ? ? ? " +
         "? ? ? ? ? ? ? ? ? ? " +
@@ -177,7 +177,7 @@ describe("generate text from a broken phonetic model", () => {
     const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
     lesson.rng = model.rng;
 
-    assert.strictEqual(
+    equal(
       lesson.generate(lessonKeys),
       "x x x x x x x x x x " +
         "x x x x x x x x x x " +
@@ -201,7 +201,7 @@ test("generate text with pseudo words", () => {
   const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
   lesson.rng = model.rng;
 
-  assert.strictEqual(
+  equal(
     lesson.generate(lessonKeys),
     "uno due tre " +
       "uno due tre " +
@@ -242,7 +242,7 @@ test("generate text with natural words", () => {
   const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
   lesson.rng = model.rng;
 
-  assert.strictEqual(
+  equal(
     lesson.generate(lessonKeys),
     "abcaf abcbe abcaa abcaf abcbe abcaa abcaf abcbe abcaa abcaf abcbe abcaa " +
       "abcaf abcbe abcaa abcaf abcbe abcaa abcaf abcbe",
@@ -281,7 +281,7 @@ describe("unlock keys", () => {
     it("recover off", () => {
       const { settings, lesson } = recoverOff();
 
-      assert.strictEqual(
+      equal(
         printLessonKeys(
           lesson.update(
             fakeKeyStatsMap(settings, [
@@ -305,7 +305,7 @@ describe("unlock keys", () => {
     it("recover on", () => {
       const { settings, lesson } = recoverOn();
 
-      assert.strictEqual(
+      equal(
         printLessonKeys(
           lesson.update(
             fakeKeyStatsMap(settings, [
@@ -332,7 +332,7 @@ describe("unlock keys", () => {
       it("recover off", () => {
         const { settings, lesson } = recoverOff();
 
-        assert.strictEqual(
+        equal(
           printLessonKeys(
             lesson.update(
               fakeKeyStatsMap(settings, [
@@ -356,7 +356,7 @@ describe("unlock keys", () => {
       it("recover on", () => {
         const { settings, lesson } = recoverOn();
 
-        assert.strictEqual(
+        equal(
           printLessonKeys(
             lesson.update(
               fakeKeyStatsMap(settings, [
@@ -382,7 +382,7 @@ describe("unlock keys", () => {
       it("recover off", () => {
         const { settings, lesson } = recoverOff();
 
-        assert.strictEqual(
+        equal(
           printLessonKeys(
             lesson.update(
               fakeKeyStatsMap(settings, [
@@ -406,7 +406,7 @@ describe("unlock keys", () => {
       it("recover on", () => {
         const { settings, lesson } = recoverOn();
 
-        assert.strictEqual(
+        equal(
           printLessonKeys(
             lesson.update(
               fakeKeyStatsMap(settings, [
@@ -434,7 +434,7 @@ describe("unlock keys", () => {
       it("recover off", () => {
         const { settings, lesson } = recoverOff();
 
-        assert.strictEqual(
+        equal(
           printLessonKeys(
             lesson.update(
               fakeKeyStatsMap(settings, [
@@ -458,7 +458,7 @@ describe("unlock keys", () => {
       it("recover on", () => {
         const { settings, lesson } = recoverOn();
 
-        assert.strictEqual(
+        equal(
           printLessonKeys(
             lesson.update(
               fakeKeyStatsMap(settings, [
@@ -484,7 +484,7 @@ describe("unlock keys", () => {
       it("recover off", () => {
         const { settings, lesson } = recoverOff();
 
-        assert.strictEqual(
+        equal(
           printLessonKeys(
             lesson.update(
               fakeKeyStatsMap(settings, [
@@ -508,7 +508,7 @@ describe("unlock keys", () => {
       it("recover on", () => {
         const { settings, lesson } = recoverOn();
 
-        assert.strictEqual(
+        equal(
           printLessonKeys(
             lesson.update(
               fakeKeyStatsMap(settings, [
@@ -536,7 +536,7 @@ describe("unlock keys", () => {
       it("recover off", () => {
         const { settings, lesson } = recoverOff();
 
-        assert.strictEqual(
+        equal(
           printLessonKeys(
             lesson.update(
               fakeKeyStatsMap(settings, [
@@ -560,7 +560,7 @@ describe("unlock keys", () => {
       it("recover on", () => {
         const { settings, lesson } = recoverOn();
 
-        assert.strictEqual(
+        equal(
           printLessonKeys(
             lesson.update(
               fakeKeyStatsMap(settings, [
@@ -586,7 +586,7 @@ describe("unlock keys", () => {
       it("recover off", () => {
         const { settings, lesson } = recoverOff();
 
-        assert.strictEqual(
+        equal(
           printLessonKeys(
             lesson.update(
               fakeKeyStatsMap(settings, [
@@ -610,7 +610,7 @@ describe("unlock keys", () => {
       it("recover on", () => {
         const { settings, lesson } = recoverOn();
 
-        assert.strictEqual(
+        equal(
           printLessonKeys(
             lesson.update(
               fakeKeyStatsMap(settings, [
@@ -640,7 +640,7 @@ describe("unlock keys", () => {
           new Settings().set(lessonProps.guided.alphabetSize, 1),
         );
 
-        assert.strictEqual(
+        equal(
           printLessonKeys(
             lesson.update(
               fakeKeyStatsMap(settings, [
@@ -666,7 +666,7 @@ describe("unlock keys", () => {
           new Settings().set(lessonProps.guided.alphabetSize, 1),
         );
 
-        assert.strictEqual(
+        equal(
           printLessonKeys(
             lesson.update(
               fakeKeyStatsMap(settings, [

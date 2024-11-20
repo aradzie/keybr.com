@@ -4,7 +4,7 @@ import { LessonKey, LessonKeys } from "@keybr/lesson";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { FakeSettingsContext } from "@keybr/settings";
 import { render } from "@testing-library/react";
-import { assert } from "chai";
+import { isNotNull, isNull } from "rich-assert";
 import { CurrentKey } from "./CurrentKey.tsx";
 
 const { letters } = FakePhoneticModel;
@@ -29,8 +29,8 @@ test("render no key", () => {
     </FakeIntlProvider>,
   );
 
-  assert.isNotNull(r.queryByText("All keys are unlocked."));
-  assert.isNull(r.queryByText("Learning rate:"));
+  isNotNull(r.queryByText("All keys are unlocked."));
+  isNull(r.queryByText("Learning rate:"));
 
   r.unmount();
 });
@@ -55,8 +55,8 @@ test("render key", () => {
     </FakeIntlProvider>,
   );
 
-  assert.isNull(r.queryByText("All keys are unlocked."));
-  assert.isNotNull(r.queryByText("Learning rate:"));
+  isNull(r.queryByText("All keys are unlocked."));
+  isNotNull(r.queryByText("Learning rate:"));
 
   r.unmount();
 });

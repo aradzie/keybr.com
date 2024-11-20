@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import { render } from "@testing-library/react";
-import { assert } from "chai";
 import { IntlProvider } from "react-intl";
+import { equal } from "rich-assert";
 import { Dir } from "./Dir.tsx";
 
 test("left-to-right", async () => {
@@ -14,8 +14,8 @@ test("left-to-right", async () => {
     </IntlProvider>,
   );
 
-  assert.strictEqual((await r.getByTitle("left")).textContent, "a");
-  assert.strictEqual((await r.getByTitle("right")).textContent, "b");
+  equal((await r.getByTitle("left")).textContent, "a");
+  equal((await r.getByTitle("right")).textContent, "b");
 
   r.unmount();
 });
@@ -30,8 +30,8 @@ test("right-to-left", async () => {
     </IntlProvider>,
   );
 
-  assert.strictEqual((await r.getByTitle("left")).textContent, "b");
-  assert.strictEqual((await r.getByTitle("right")).textContent, "a");
+  equal((await r.getByTitle("left")).textContent, "b");
+  equal((await r.getByTitle("right")).textContent, "a");
 
   r.unmount();
 });

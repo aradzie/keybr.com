@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { Application } from "@fastr/core";
-import { assert } from "chai";
+import { equal } from "rich-assert";
 import { kGame } from "../index.ts";
 import { TestContext } from "../test/context.ts";
 import { startApp } from "../test/request.ts";
@@ -19,13 +19,10 @@ test("only handle websocket connection", async () => {
   // Assert.
 
   const { status, statusText, headers } = response;
-  assert.strictEqual(status, 426);
-  assert.strictEqual(statusText, "Upgrade Required");
-  assert.strictEqual(headers.get("Connection"), "close");
-  assert.strictEqual(headers.get("Upgrade"), "websocket");
-  assert.strictEqual(headers.get("Content-Type"), "text/plain; charset=UTF-8");
-  assert.strictEqual(
-    await response.body.text(),
-    "Upgrade to websocket required",
-  );
+  equal(status, 426);
+  equal(statusText, "Upgrade Required");
+  equal(headers.get("Connection"), "close");
+  equal(headers.get("Upgrade"), "websocket");
+  equal(headers.get("Content-Type"), "text/plain; charset=UTF-8");
+  equal(await response.body.text(), "Upgrade to websocket required");
 });

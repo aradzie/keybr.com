@@ -4,7 +4,7 @@ import { type PageData, PageDataContext } from "@keybr/pages-shared";
 import { ResultFaker, useResults } from "@keybr/result";
 import { formatFile } from "@keybr/result-io";
 import { act, render, waitFor } from "@testing-library/react";
-import { assert } from "chai";
+import { equal } from "rich-assert";
 import { ResultLoader } from "./ResultLoader.tsx";
 
 const faker = new ResultFaker();
@@ -43,8 +43,8 @@ test("load results", async () => {
 
   // Assert.
 
-  assert.strictEqual(recorder.requestCount, 0);
-  assert.strictEqual(r.getByTitle("count").textContent, "0");
+  equal(recorder.requestCount, 0);
+  equal(r.getByTitle("count").textContent, "0");
 
   // Act.
 
@@ -55,8 +55,8 @@ test("load results", async () => {
 
   // Assert.
 
-  assert.strictEqual(recorder.requestCount, 0);
-  assert.strictEqual(r.getByTitle("count").textContent, "1");
+  equal(recorder.requestCount, 0);
+  equal(r.getByTitle("count").textContent, "1");
 
   // Act.
 
@@ -67,8 +67,8 @@ test("load results", async () => {
 
   // Assert.
 
-  assert.strictEqual(recorder.requestCount, 0);
-  assert.strictEqual(r.getByTitle("count").textContent, "0");
+  equal(recorder.requestCount, 0);
+  equal(r.getByTitle("count").textContent, "0");
 
   // Cleanup.
 

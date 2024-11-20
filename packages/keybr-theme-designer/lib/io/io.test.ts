@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { BlobWriter, TextReader, ZipWriter } from "@zip.js/zip.js";
-import { assert } from "chai";
+import { deepEqual, like } from "rich-assert";
 import { lightTheme } from "../themes/themes.ts";
 import { ImportState } from "./import-state.ts";
 import { exportTheme, importTheme0 } from "./io.ts";
@@ -16,8 +16,8 @@ test("export and import theme", async () => {
 
   // Assert.
 
-  assert.deepStrictEqual(state.theme, lightTheme);
-  assert.deepStrictEqual(state.errors, []);
+  deepEqual(state.theme, lightTheme);
+  deepEqual(state.errors, []);
 });
 
 test("import corrupted file", async () => {
@@ -31,7 +31,7 @@ test("import corrupted file", async () => {
 
   // Assert.
 
-  assert.deepStrictEqual(state.errors, [new TypeError("Corrupted theme file")]);
+  like(state.errors, [{ message: "Corrupted theme file" }]);
 });
 
 test("import empty file", async () => {
@@ -45,7 +45,7 @@ test("import empty file", async () => {
 
   // Assert.
 
-  assert.deepStrictEqual(state.errors, [new TypeError("Theme data not found")]);
+  like(state.errors, [{ message: "Theme data not found" }]);
 });
 
 async function makeZip(entries: [string, string][]) {

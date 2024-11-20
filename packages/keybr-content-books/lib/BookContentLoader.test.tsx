@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import { Book, type BookContent } from "@keybr/content";
 import { render } from "@testing-library/react";
-import { assert } from "chai";
+import { equal } from "rich-assert";
 import { BookContentLoader } from "./BookContentLoader.tsx";
 
 test("load book", async () => {
@@ -18,7 +18,7 @@ test("load book", async () => {
 
   await r.findByText("alice");
 
-  assert.strictEqual(ref?.book, Book.EN_ALICE_WONDERLAND);
+  equal(ref?.book, Book.EN_ALICE_WONDERLAND);
 
   r.rerender(
     <BookContentLoader book={Book.EN_JEKYLL_HYDE} fallback="fallback">
@@ -31,7 +31,7 @@ test("load book", async () => {
 
   await r.findByText("jekyll");
 
-  assert.strictEqual(ref?.book, Book.EN_JEKYLL_HYDE);
+  equal(ref?.book, Book.EN_JEKYLL_HYDE);
 
   r.unmount();
 });

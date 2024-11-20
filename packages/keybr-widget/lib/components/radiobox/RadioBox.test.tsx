@@ -1,19 +1,19 @@
 import { test } from "node:test";
 import { render } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import { assert } from "chai";
 import { useState } from "react";
+import { equal, isFalse, isTrue } from "rich-assert";
 import { RadioBox } from "./RadioBox.tsx";
 
 test("props", () => {
   const r = render(<RadioBox checked={true} />);
   const element = r.getByRole("radio") as HTMLInputElement;
 
-  assert.isTrue(element.checked);
+  isTrue(element.checked);
 
   r.rerender(<RadioBox checked={false} />);
 
-  assert.isFalse(element.checked);
+  isFalse(element.checked);
 
   r.unmount();
 });
@@ -46,19 +46,19 @@ test("controlled", async () => {
   const r = render(<Controlled />);
   const elements = r.getAllByRole("radio") as HTMLInputElement[];
 
-  assert.isTrue(elements[0].checked);
-  assert.isFalse(elements[1].checked);
-  assert.strictEqual(lastValue, "1");
+  isTrue(elements[0].checked);
+  isFalse(elements[1].checked);
+  equal(lastValue, "1");
 
   await userEvent.click(elements[1]);
-  assert.isFalse(elements[0].checked);
-  assert.isTrue(elements[1].checked);
-  assert.strictEqual(lastValue, "2");
+  isFalse(elements[0].checked);
+  isTrue(elements[1].checked);
+  equal(lastValue, "2");
 
   await userEvent.click(r.getAllByRole("radio")[0]);
-  assert.isTrue(elements[0].checked);
-  assert.isFalse(elements[1].checked);
-  assert.strictEqual(lastValue, "1");
+  isTrue(elements[0].checked);
+  isFalse(elements[1].checked);
+  equal(lastValue, "1");
 
   r.unmount();
 });

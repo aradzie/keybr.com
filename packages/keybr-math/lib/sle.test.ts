@@ -1,5 +1,5 @@
 import { test } from "node:test";
-import { assert } from "chai";
+import { deepEqual } from "rich-assert";
 import { Sle } from "./sle.ts";
 
 test("solve", () => {
@@ -12,5 +12,5 @@ test("solve", () => {
   sle.y[1] = 2;
   sle.y[2] = 3;
 
-  assert.deepStrictEqual(sle.solve(), [1, 1, 1]);
+  deepEqual(sle.solve(), [1, 1, 1]);
 });

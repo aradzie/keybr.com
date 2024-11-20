@@ -3,7 +3,7 @@ import { scramble, Writer } from "@keybr/binary";
 import { Layout } from "@keybr/keyboard";
 import { Result, ResultFaker, TextType } from "@keybr/result";
 import { Histogram } from "@keybr/textinput";
-import { assert } from "chai";
+import { deepEqual, equal, isFalse, throws } from "rich-assert";
 import { writeResult } from "./binary.ts";
 import { InvalidFormatError } from "./errors.ts";
 import { HEADER, HEADER_SIGNATURE, HEADER_VERSION } from "./header.ts";
@@ -15,23 +15,23 @@ test("format and parse results", () => {
 
   const buffer = formatMessage([result]);
 
-  assert.strictEqual(buffer.byteLength, 78);
+  equal(buffer.byteLength, 78);
 
   const iter = parseMessage(buffer);
 
-  assert.deepStrictEqual([...iter], [result]);
+  deepEqual([...iter], [result]);
 });
 
 test("deserialize should ignore empty data", () => {
   const iter = parseMessage(scramble(new Uint8Array(0)));
 
-  assert.deepStrictEqual([...iter], []);
+  deepEqual([...iter], []);
 });
 
 test("deserialize should validate file header", () => {
   const iter = parseMessage(scramble(new Uint8Array(256)));
 
-  assert.throws(() => [...iter], InvalidFormatError);
+  throws(() => [...iter], InvalidFormatError);
 });
 
 test("deserialize should validate file data", () => {
@@ -43,7 +43,7 @@ test("deserialize should validate file data", () => {
 
   const iter = parseMessage(scramble(writer.buffer()));
 
-  assert.throws(() => [...iter], InvalidFormatError);
+  throws(() => [...iter], InvalidFormatError);
 });
 
 test("deserialize should read invalid results", () => {
@@ -57,7 +57,7 @@ test("deserialize should read invalid results", () => {
     /* histogram= */ new Histogram([]),
   );
 
-  assert.isFalse(result.validate());
+  isFalse(result.validate());
 
   const writer = new Writer();
   writer.putUint32(HEADER_SIGNATURE);
@@ -66,5 +66,5 @@ test("deserialize should read invalid results", () => {
 
   const iter = parseMessage(scramble(writer.buffer()));
 
-  assert.deepStrictEqual([...iter], [result]);
+  deepEqual([...iter], [result]);
 });

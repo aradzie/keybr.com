@@ -1,5 +1,5 @@
 import { test } from "node:test";
-import { assert } from "chai";
+import { equal, notEqual, throws } from "rich-assert";
 import { DataError } from "./errors.ts";
 import { scramble, unscramble } from "./secret.ts";
 
@@ -11,9 +11,9 @@ test("scramble then unscramble the given examples", async (t) => {
   function macro(input: string) {
     return t.test(`example: "${input}"`, () => {
       const encoded = scramble(Buffer.from(input));
-      assert.notStrictEqual(input, String(Buffer.from(encoded)));
+      notEqual(input, String(Buffer.from(encoded)));
       const decoded = unscramble(encoded);
-      assert.strictEqual(input, String(Buffer.from(decoded)));
+      equal(input, String(Buffer.from(decoded)));
     });
   }
 });
@@ -24,11 +24,11 @@ test("unscramble the provided examples", () => {
     0x5a, 0xe6,
   ]);
   const decoded = unscramble(encoded);
-  assert.strictEqual(String(Buffer.from(decoded)), "secret");
+  equal(String(Buffer.from(decoded)), "secret");
 });
 
 test("throw error if the input data is invalid", () => {
-  assert.throws(() => {
+  throws(() => {
     unscramble(Buffer.from("invalid"));
   }, DataError);
 });

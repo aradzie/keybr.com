@@ -1,22 +1,22 @@
 import { test } from "node:test";
-import { assert } from "chai";
+import { equal } from "rich-assert";
 import { initials } from "./util.ts";
 
 test("compute initials", () => {
-  assert.strictEqual(initials(""), "");
-  assert.strictEqual(initials("a"), "A");
-  assert.strictEqual(initials(" a "), "A");
-  assert.strictEqual(initials("abc"), "A");
-  assert.strictEqual(initials(" abc "), "A");
-  assert.strictEqual(initials("  a  b  "), "AB");
-  assert.strictEqual(initials("  a  b  c  d  "), "ABC");
+  equal(initials(""), "");
+  equal(initials("a"), "A");
+  equal(initials(" a "), "A");
+  equal(initials("abc"), "A");
+  equal(initials(" abc "), "A");
+  equal(initials("  a  b  "), "AB");
+  equal(initials("  a  b  c  d  "), "ABC");
 });
 
 test("compute initials with custom limit", () => {
-  assert.strictEqual(initials(" a b c d ", 0), "");
-  assert.strictEqual(initials(" a b c d ", 1), "A");
-  assert.strictEqual(initials(" a b c d ", 2), "AB");
-  assert.strictEqual(initials(" a b c d ", 3), "ABC");
-  assert.strictEqual(initials(" a b c d ", 4), "ABCD");
-  assert.strictEqual(initials(" a b c d ", 5), "ABCD");
+  equal(initials(" a b c d ", 0), "");
+  equal(initials(" a b c d ", 1), "A");
+  equal(initials(" a b c d ", 2), "AB");
+  equal(initials(" a b c d ", 3), "ABC");
+  equal(initials(" a b c d ", 4), "ABCD");
+  equal(initials(" a b c d ", 5), "ABCD");
 });

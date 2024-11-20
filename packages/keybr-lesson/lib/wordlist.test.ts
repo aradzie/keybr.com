@@ -3,7 +3,7 @@ import { Layout, loadKeyboard } from "@keybr/keyboard";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { makeKeyStatsMap } from "@keybr/result";
 import { Settings } from "@keybr/settings";
-import { assert } from "chai";
+import { deepEqual, equal, isNull } from "rich-assert";
 import { LessonKey } from "./key.ts";
 import { lessonProps } from "./settings.ts";
 import { WordListLesson } from "./wordlist.ts";
@@ -16,7 +16,7 @@ test("provide key set", () => {
   const lesson = new WordListLesson(settings, keyboard, model, wordList);
   const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
 
-  assert.deepStrictEqual(lessonKeys.findIncludedKeys(), [
+  deepEqual(lessonKeys.findIncludedKeys(), [
     new LessonKey({
       letter: FakePhoneticModel.letter1,
       samples: [],
@@ -128,8 +128,8 @@ test("provide key set", () => {
       isForced: false,
     }),
   ]);
-  assert.deepStrictEqual(lessonKeys.findExcludedKeys(), []);
-  assert.isNull(lessonKeys.findFocusedKey());
+  deepEqual(lessonKeys.findExcludedKeys(), []);
+  isNull(lessonKeys.findFocusedKey());
 });
 
 test("filter words", () => {
@@ -139,7 +139,7 @@ test("filter words", () => {
   const wordList = ["abc", "def", "こんにちは"];
   const lesson = new WordListLesson(settings, keyboard, model, wordList);
 
-  assert.deepStrictEqual(lesson.wordList, ["abc", "def"]);
+  deepEqual(lesson.wordList, ["abc", "def"]);
 });
 
 describe("generate randomized text using settings", () => {
@@ -154,7 +154,7 @@ describe("generate randomized text using settings", () => {
     const lesson = new WordListLesson(settings, keyboard, model, wordList);
     lesson.rng = model.rng;
 
-    assert.strictEqual(
+    equal(
       lesson.generate(),
       "abc def ghi abc def ghi abc def ghi abc def ghi abc def ghi abc def " +
         "ghi abc def ghi abc def ghi abc def ghi abc def ghi abc def ghi abc",
@@ -170,7 +170,7 @@ describe("generate randomized text using settings", () => {
     const lesson = new WordListLesson(settings, keyboard, model, wordList);
     lesson.rng = model.rng;
 
-    assert.strictEqual(
+    equal(
       lesson.generate(),
       "Abc, Def, Ghi! Abc, Def, Ghi! Abc, Def, Ghi! Abc, Def, Ghi! Abc, Def, " +
         "Ghi! Abc, Def, Ghi! Abc, Def, Ghi! Abc, Def, Ghi! Abc,",

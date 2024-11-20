@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import { assert } from "chai";
+import { deepEqual } from "rich-assert";
 import { allLocales, defaultLocale } from "./locale.ts";
 
 for (const locale of allLocales) {
@@ -11,7 +12,7 @@ for (const locale of allLocales) {
       for (const [id, message0] of Object.entries(messages0)) {
         const message1 = messages1[id];
         if (message1) {
-          assert.deepStrictEqual(
+          deepEqual(
             findPlaceholders(message0),
             findPlaceholders(message1),
             `Message ${id} has invalid placeholders`,

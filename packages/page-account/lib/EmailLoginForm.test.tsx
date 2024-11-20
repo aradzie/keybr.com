@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { fireEvent, render } from "@testing-library/react";
-import { assert } from "chai";
+import { isNotNull } from "rich-assert";
 import { type SignInActions } from "./actions.ts";
 import { EmailLoginForm } from "./EmailLoginForm.tsx";
 
@@ -27,7 +27,7 @@ test("success", async () => {
 
   await r.findByText("We have sent an e-mail", { exact: false });
 
-  assert.isNotNull(r.queryByText("username@email.com", { exact: false }));
+  isNotNull(r.queryByText("username@email.com", { exact: false }));
 
   r.unmount();
 });
@@ -54,7 +54,7 @@ test("failure", async () => {
 
   await r.findByText("Could not send e-mail", { exact: false });
 
-  assert.isNotNull(r.queryByText("What a terrible failure", { exact: false }));
+  isNotNull(r.queryByText("What a terrible failure", { exact: false }));
 
   r.unmount();
 });

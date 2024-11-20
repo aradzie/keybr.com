@@ -1,17 +1,17 @@
 import { test } from "node:test";
-import { assert } from "chai";
+import { equal } from "rich-assert";
 import { scrambleWord, unscrambleWord } from "./scramble.ts";
 
 test("scramble word", () => {
-  assert.strictEqual(scrambleWord("a"), "a");
-  assert.strictEqual(scrambleWord("ab"), "ba");
-  assert.strictEqual(scrambleWord("abc"), "bac");
-  assert.strictEqual(scrambleWord("abcdef"), "bafedc");
+  equal(scrambleWord("a"), "a");
+  equal(scrambleWord("ab"), "ba");
+  equal(scrambleWord("abc"), "bac");
+  equal(scrambleWord("abcdef"), "bafedc");
 });
 
 test("unscramble word", () => {
-  assert.strictEqual(unscrambleWord("a"), "a");
-  assert.strictEqual(unscrambleWord("ba"), "ab");
-  assert.strictEqual(unscrambleWord("bac"), "abc");
-  assert.strictEqual(unscrambleWord("bafedc"), "abcdef");
+  equal(unscrambleWord("a"), "a");
+  equal(unscrambleWord("ba"), "ab");
+  equal(unscrambleWord("bac"), "abc");
+  equal(unscrambleWord("bafedc"), "abcdef");
 });

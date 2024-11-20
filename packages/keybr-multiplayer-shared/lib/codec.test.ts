@@ -1,5 +1,5 @@
 import { test } from "node:test";
-import { assert } from "chai";
+import { deepEqual } from "rich-assert";
 import { ClientCodec } from "./codec.client.ts";
 import { ServerCodec } from "./codec.server.ts";
 import {
@@ -87,7 +87,7 @@ for (const original of serverMessages) {
   test(`encode and decode server message id ${original.type}`, () => {
     const buffer = serverCodec.encode(original);
     const decoded = clientCodec.decode(buffer);
-    assert.deepStrictEqual(original, decoded);
+    deepEqual(original, decoded);
   });
 }
 
@@ -95,6 +95,6 @@ for (const original of clientMessages) {
   test(`encode and decode client message id ${original.type}`, () => {
     const buffer = clientCodec.encode(original);
     const decoded = serverCodec.decode(buffer);
-    assert.deepStrictEqual(original, decoded);
+    deepEqual(original, decoded);
   });
 }

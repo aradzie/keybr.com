@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { act, fireEvent, render } from "@testing-library/react";
-import { assert } from "chai";
+import { equal, isNotNull, isNull } from "rich-assert";
 import { WordCountPage } from "./WordCountPage.tsx";
 
 test("render", (ctx) => {
@@ -13,7 +13,7 @@ test("render", (ctx) => {
     </FakeIntlProvider>,
   );
 
-  assert.isNotNull(r.queryByRole("list"));
+  isNotNull(r.queryByRole("list"));
 
   act(() => {
     fireEvent.focus(r.getByRole("textbox"));
@@ -22,7 +22,7 @@ test("render", (ctx) => {
     ctx.mock.timers.runAll();
   });
 
-  assert.isNull(r.queryByRole("list"));
+  isNull(r.queryByRole("list"));
 
   act(() => {
     fireEvent.change(r.getByRole("textbox"), {
@@ -33,8 +33,8 @@ test("render", (ctx) => {
     ctx.mock.timers.runAll();
   });
 
-  assert.strictEqual(r.getAllByRole("listitem")[0].textContent, "éxamplè: 1");
-  assert.strictEqual(r.getAllByRole("listitem")[1].textContent, "text: 1");
+  equal(r.getAllByRole("listitem")[0].textContent, "éxamplè: 1");
+  equal(r.getAllByRole("listitem")[1].textContent, "text: 1");
 
   r.unmount();
 });

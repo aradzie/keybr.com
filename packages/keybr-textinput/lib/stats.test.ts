@@ -1,5 +1,5 @@
 import { test } from "node:test";
-import { assert } from "chai";
+import { deepEqual, equal } from "rich-assert";
 import { Histogram } from "./histogram.ts";
 import { makeStats } from "./stats.ts";
 
@@ -18,7 +18,7 @@ test("compute stats", () => {
     { timeStamp: 500.2, codePoint: Space, timeToType: 100.1, typo: true },
   ]);
 
-  assert.deepStrictEqual(stats, {
+  deepEqual(stats, {
     time: 400,
     speed: 750,
     length: 5,
@@ -34,9 +34,9 @@ test("compute stats", () => {
 });
 
 test("compute accuracy", () => {
-  assert.strictEqual(makeStats([]).accuracy, 0);
+  equal(makeStats([]).accuracy, 0);
 
-  assert.strictEqual(
+  equal(
     makeStats([
       { timeStamp: 100, codePoint: X, timeToType: 900, typo: true }, // Trigger is ignored.
       { timeStamp: 200, codePoint: A, timeToType: 100, typo: true },
@@ -46,7 +46,7 @@ test("compute accuracy", () => {
     0,
   );
 
-  assert.strictEqual(
+  equal(
     makeStats([
       { timeStamp: 100, codePoint: X, timeToType: 900, typo: false }, // Trigger is ignored.
       { timeStamp: 200, codePoint: A, timeToType: 100, typo: false },
@@ -56,7 +56,7 @@ test("compute accuracy", () => {
     0.5,
   );
 
-  assert.strictEqual(
+  equal(
     makeStats([
       { timeStamp: 100, codePoint: X, timeToType: 900, typo: false }, // Trigger is ignored.
       { timeStamp: 200, codePoint: A, timeToType: 100, typo: false },

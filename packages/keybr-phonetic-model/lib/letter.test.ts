@@ -1,14 +1,14 @@
 import { test } from "node:test";
-import { assert } from "chai";
+import { deepEqual, equal } from "rich-assert";
 import { Letter } from "./letter.ts";
 
 test("toString", () => {
-  assert.strictEqual(String(new Letter(0x0061, 10)), "a");
-  assert.strictEqual(String(new Letter(0x0061, 10, "A")), "A");
+  equal(String(new Letter(0x0061, 10)), "a");
+  equal(String(new Letter(0x0061, 10, "A")), "A");
 });
 
 test("normalize", () => {
-  assert.deepStrictEqual(
+  deepEqual(
     Letter.normalize([
       new Letter(0x0063, 20, "C"),
       new Letter(0x0062, 30, "B"),

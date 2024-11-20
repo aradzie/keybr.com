@@ -2,8 +2,8 @@ import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { PageDataContext } from "@keybr/pages-shared";
 import { render } from "@testing-library/react";
-import { assert } from "chai";
 import { MemoryRouter } from "react-router";
+import { isNotNull } from "rich-assert";
 import { Template } from "./Template.tsx";
 
 test("render", () => {
@@ -31,7 +31,7 @@ test("render", () => {
     </PageDataContext.Provider>,
   );
 
-  assert.isNotNull(r.queryByText("hello"));
+  isNotNull(r.queryByText("hello"));
 
   r.unmount();
 });
@@ -62,7 +62,7 @@ test("render alt", () => {
     </PageDataContext.Provider>,
   );
 
-  assert.isNotNull(r.queryByText("hello"));
+  isNotNull(r.queryByText("hello"));
 
   r.unmount();
 });

@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { FakeRNGStream, LCG } from "@keybr/rand";
-import { assert } from "chai";
+import { equal } from "rich-assert";
 import { PseudoWordsGenerator } from "./pseudowords.ts";
 
 test("generate words", () => {
@@ -12,25 +12,25 @@ test("generate words", () => {
 
   const mark0 = generator.mark();
 
-  assert.strictEqual(generator.nextWord(), "one");
-  assert.strictEqual(generator.nextWord(), "two");
-  assert.strictEqual(generator.nextWord(), "three");
+  equal(generator.nextWord(), "one");
+  equal(generator.nextWord(), "two");
+  equal(generator.nextWord(), "three");
 
   const mark1 = generator.mark();
 
-  assert.strictEqual(generator.nextWord(), "four");
-  assert.strictEqual(generator.nextWord(), "five");
-  assert.strictEqual(generator.nextWord(), "six");
+  equal(generator.nextWord(), "four");
+  equal(generator.nextWord(), "five");
+  equal(generator.nextWord(), "six");
 
   generator.reset(mark1);
 
-  assert.strictEqual(generator.nextWord(), "four");
-  assert.strictEqual(generator.nextWord(), "five");
-  assert.strictEqual(generator.nextWord(), "six");
+  equal(generator.nextWord(), "four");
+  equal(generator.nextWord(), "five");
+  equal(generator.nextWord(), "six");
 
   generator.reset(mark0);
 
-  assert.strictEqual(generator.nextWord(), "one");
-  assert.strictEqual(generator.nextWord(), "two");
-  assert.strictEqual(generator.nextWord(), "three");
+  equal(generator.nextWord(), "one");
+  equal(generator.nextWord(), "two");
+  equal(generator.nextWord(), "three");
 });

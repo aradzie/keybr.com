@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { render } from "@testing-library/react";
-import { assert } from "chai";
+import { isNotNull } from "rich-assert";
 import { Button } from "../button/index.ts";
 import { PortalContainer } from "../portal/index.ts";
 import { Popup } from "./Popup.tsx";
@@ -18,7 +18,7 @@ test("un-anchored", () => {
     </>,
   );
 
-  assert.isNotNull(r.queryByText("text"));
+  isNotNull(r.queryByText("text"));
 
   r.unmount();
 });
@@ -31,7 +31,7 @@ test("anchored", () => {
     </>,
   );
 
-  assert.isNotNull(r.queryByText("text"));
+  isNotNull(r.queryByText("text"));
 
   r.unmount();
 });

@@ -1,4 +1,3 @@
-import assert from "node:assert";
 import { test } from "node:test";
 import { Timer } from "@keybr/lang";
 import {
@@ -15,6 +14,7 @@ import {
   type PlayerState,
 } from "@keybr/multiplayer-shared";
 import { type AnonymousUser } from "@keybr/pages-shared";
+import { deepEqual, equal } from "rich-assert";
 import { Game } from "./game.ts";
 import { Player } from "./player.ts";
 import { Room } from "./room.ts";
@@ -38,13 +38,13 @@ test("join and start", (ctx) => {
   player0.join(room);
   player0.onMessage({ type: PLAYER_ANNOUNCE_ID, signature: 0xdeadbabe });
   ctx.mock.timers.runAll();
-  assert.strictEqual(player0.room, room);
-  assert.strictEqual(player1.room, null);
+  equal(player0.room, room);
+  equal(player1.room, null);
 
   player1.join(room);
   player1.onMessage({ type: PLAYER_ANNOUNCE_ID, signature: 0xdeadbabe });
   ctx.mock.timers.runAll();
-  assert.deepStrictEqual(session0.take(), [
+  deepEqual(session0.take(), [
     {
       op: "send",
       message: {
@@ -103,7 +103,7 @@ test("join and start", (ctx) => {
       } satisfies GameConfigMessage,
     },
   ]);
-  assert.deepStrictEqual(session1.take(), [
+  deepEqual(session1.take(), [
     {
       op: "send",
       message: {
@@ -147,7 +147,7 @@ test("join and start", (ctx) => {
   ]);
 
   ctx.mock.timers.runAll();
-  assert.deepStrictEqual(session0.take(), [
+  deepEqual(session0.take(), [
     {
       op: "send",
       message: {
@@ -157,7 +157,7 @@ test("join and start", (ctx) => {
       } satisfies GameReadyMessage,
     },
   ]);
-  assert.deepStrictEqual(session1.take(), [
+  deepEqual(session1.take(), [
     {
       op: "send",
       message: {
@@ -169,7 +169,7 @@ test("join and start", (ctx) => {
   ]);
 
   ctx.mock.timers.runAll();
-  assert.deepStrictEqual(session0.take(), [
+  deepEqual(session0.take(), [
     {
       op: "send",
       message: {
@@ -179,7 +179,7 @@ test("join and start", (ctx) => {
       } satisfies GameReadyMessage,
     },
   ]);
-  assert.deepStrictEqual(session1.take(), [
+  deepEqual(session1.take(), [
     {
       op: "send",
       message: {
@@ -191,7 +191,7 @@ test("join and start", (ctx) => {
   ]);
 
   ctx.mock.timers.runAll();
-  assert.deepStrictEqual(session0.take(), [
+  deepEqual(session0.take(), [
     {
       op: "send",
       message: {
@@ -201,7 +201,7 @@ test("join and start", (ctx) => {
       } satisfies GameReadyMessage,
     },
   ]);
-  assert.deepStrictEqual(session1.take(), [
+  deepEqual(session1.take(), [
     {
       op: "send",
       message: {
@@ -213,7 +213,7 @@ test("join and start", (ctx) => {
   ]);
 
   ctx.mock.timers.runAll();
-  assert.deepStrictEqual(session0.take(), [
+  deepEqual(session0.take(), [
     {
       op: "send",
       message: {
@@ -254,7 +254,7 @@ test("join and start", (ctx) => {
       } satisfies GameWorldMessage,
     },
   ]);
-  assert.deepStrictEqual(session1.take(), [
+  deepEqual(session1.take(), [
     {
       op: "send",
       message: {
@@ -296,8 +296,8 @@ test("join and start", (ctx) => {
     },
   ]);
 
-  assert.strictEqual(player0.room, room);
-  assert.strictEqual(player1.room, room);
+  equal(player0.room, room);
+  equal(player1.room, room);
 });
 
 test("join and leave", (ctx) => {
@@ -313,38 +313,38 @@ test("join and leave", (ctx) => {
   const player0 = new Player(session0, 1);
   const player1 = new Player(session1, 2);
 
-  assert.strictEqual(player0.room, null);
-  assert.strictEqual(player1.room, null);
+  equal(player0.room, null);
+  equal(player1.room, null);
 
   // Player 0 joins room 0.
   player0.join(room0);
   ctx.mock.timers.runAll();
-  assert.strictEqual(player0.room, room0);
-  assert.strictEqual(player1.room, null);
+  equal(player0.room, room0);
+  equal(player1.room, null);
 
   // Repeat again.
   player0.join(room0);
   ctx.mock.timers.runAll();
-  assert.strictEqual(player0.room, room0);
-  assert.strictEqual(player1.room, null);
+  equal(player0.room, room0);
+  equal(player1.room, null);
 
   // Player 1 joins room 0.
   room0.join(player1);
   ctx.mock.timers.runAll();
-  assert.strictEqual(player0.room, room0);
-  assert.strictEqual(player1.room, room0);
+  equal(player0.room, room0);
+  equal(player1.room, room0);
 
   // Repeat again.
   room0.join(player1);
   ctx.mock.timers.runAll();
-  assert.strictEqual(player0.room, room0);
-  assert.strictEqual(player1.room, room0);
+  equal(player0.room, room0);
+  equal(player1.room, room0);
 
   // Joint another room.
   room1.join(player1);
   ctx.mock.timers.runAll();
-  assert.strictEqual(player0.room, room0);
-  assert.strictEqual(player1.room, room1);
+  equal(player0.room, room0);
+  equal(player1.room, room1);
 
   room0.destroy();
   room1.destroy();

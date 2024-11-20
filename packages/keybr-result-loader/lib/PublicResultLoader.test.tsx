@@ -3,7 +3,7 @@ import { fakeAdapter, Recorder } from "@fastr/fetch";
 import { ResultFaker, useResults } from "@keybr/result";
 import { formatFile } from "@keybr/result-io";
 import { render, waitFor } from "@testing-library/react";
-import { assert } from "chai";
+import { equal } from "rich-assert";
 import { PublicResultLoader } from "./PublicResultLoader.tsx";
 
 const faker = new ResultFaker();
@@ -48,8 +48,8 @@ test("load results", async () => {
 
   // Assert.
 
-  assert.strictEqual(recorder.requestCount, 1);
-  assert.strictEqual(r.getByTitle("count").textContent, "3");
+  equal(recorder.requestCount, 1);
+  equal(r.getByTitle("count").textContent, "3");
 
   // Cleanup.
 

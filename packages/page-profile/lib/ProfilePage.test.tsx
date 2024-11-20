@@ -6,7 +6,7 @@ import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
 import { FakeResultContext, ResultFaker } from "@keybr/result";
 import { FakeSettingsContext } from "@keybr/settings";
 import { render } from "@testing-library/react";
-import { assert } from "chai";
+import { isNotNull } from "rich-assert";
 import { ProfilePage } from "./ProfilePage.tsx";
 
 const faker = new ResultFaker();
@@ -28,8 +28,8 @@ test("render", async () => {
     </FakeIntlProvider>,
   );
 
-  assert.isNotNull(await r.findByText("Typing Speed"));
-  assert.isNotNull(await r.findByText("Key Typing Speed"));
+  isNotNull(await r.findByText("Typing Speed"));
+  isNotNull(await r.findByText("Key Typing Speed"));
 
   r.unmount();
 });

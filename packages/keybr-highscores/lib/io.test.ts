@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { Layout } from "@keybr/keyboard";
-import { assert } from "chai";
+import { deepEqual } from "rich-assert";
 import { HighScores, type HighScoresRow } from "./highscores.ts";
 import { reviver } from "./io.ts";
 
@@ -18,6 +18,6 @@ test("stringify and parse", () => {
   };
   const a = new HighScores([row]);
   const b = new HighScores(JSON.parse(JSON.stringify(a), reviver));
-  assert.deepStrictEqual([...a], [row]);
-  assert.deepStrictEqual([...b], [row]);
+  deepEqual([...a], [row]);
+  deepEqual([...b], [row]);
 });

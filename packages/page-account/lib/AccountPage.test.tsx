@@ -2,7 +2,7 @@ import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { PageDataContext } from "@keybr/pages-shared";
 import { render } from "@testing-library/react";
-import { assert } from "chai";
+import { isNotNull, isNull } from "rich-assert";
 import { AccountPage } from "./AccountPage.tsx";
 
 test("render sign-in fragment", () => {
@@ -27,8 +27,8 @@ test("render sign-in fragment", () => {
     </PageDataContext.Provider>,
   );
 
-  assert.isNotNull(r.queryByText("Anonymous User", { exact: false }));
-  assert.isNull(r.queryByText("You are using an account", { exact: false }));
+  isNotNull(r.queryByText("Anonymous User", { exact: false }));
+  isNull(r.queryByText("You are using an account", { exact: false }));
 
   r.unmount();
 });
@@ -72,8 +72,8 @@ test("render account fragment", () => {
     </PageDataContext.Provider>,
   );
 
-  assert.isNull(r.queryByText("Anonymous User", { exact: false }));
-  assert.isNotNull(r.queryByText("You are using an account", { exact: false }));
+  isNull(r.queryByText("Anonymous User", { exact: false }));
+  isNotNull(r.queryByText("You are using an account", { exact: false }));
 
   r.unmount();
 });

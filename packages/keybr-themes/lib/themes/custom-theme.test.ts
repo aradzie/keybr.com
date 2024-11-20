@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { parseColor } from "@keybr/color";
-import { assert } from "chai";
+import { deepEqual, equal, notEqual } from "rich-assert";
 import { DataUrlAsset } from "./asset.ts";
 import { CustomTheme } from "./custom-theme.ts";
 
@@ -17,26 +17,26 @@ test("theme", () => {
   const b = a.set("--primary", white);
   const c = b.set("--primary", black).set("--background-image", asset);
 
-  assert.notStrictEqual(a, b);
-  assert.notStrictEqual(b, c);
-  assert.notStrictEqual(a, c);
+  notEqual(a, b);
+  notEqual(b, c);
+  notEqual(a, c);
 
-  assert.strictEqual(a.hash(), a.hash());
-  assert.strictEqual(b.hash(), b.hash());
-  assert.strictEqual(c.hash(), c.hash());
+  equal(a.hash(), a.hash());
+  equal(b.hash(), b.hash());
+  equal(c.hash(), c.hash());
 
-  assert.notStrictEqual(a.hash(), b.hash());
-  assert.notStrictEqual(b.hash(), c.hash());
-  assert.notStrictEqual(a.hash(), c.hash());
+  notEqual(a.hash(), b.hash());
+  notEqual(b.hash(), c.hash());
+  notEqual(a.hash(), c.hash());
 
-  assert.deepStrictEqual([...a], []);
-  assert.deepStrictEqual(
+  deepEqual([...a], []);
+  deepEqual(
     [...b],
     [
       ["--primary", white], //
     ],
   );
-  assert.deepStrictEqual(
+  deepEqual(
     [...c],
     [
       ["--primary", black], //
@@ -44,8 +44,8 @@ test("theme", () => {
     ],
   );
 
-  assert.strictEqual(a.getColor("--primary"), null);
-  assert.strictEqual(b.getColor("--primary"), white);
-  assert.strictEqual(c.getColor("--primary"), black);
-  assert.strictEqual(c.getImage("--background-image"), asset);
+  equal(a.getColor("--primary"), null);
+  equal(b.getColor("--primary"), white);
+  equal(c.getColor("--primary"), black);
+  equal(c.getImage("--background-image"), asset);
 });

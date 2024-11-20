@@ -1,14 +1,14 @@
 import { test } from "node:test";
 import { Letter } from "@keybr/phonetic-model";
 import { Histogram } from "@keybr/textinput";
-import { assert } from "chai";
+import { deepEqual } from "rich-assert";
 import { ResultFaker } from "./fake.tsx";
 import { MutableMetric, MutableSummaryStats } from "./summarystats.ts";
 
 test("metric", () => {
   const metric = new MutableMetric();
 
-  assert.deepStrictEqual(metric.copy(), {
+  deepEqual(metric.copy(), {
     last: 0,
     delta: 0,
     max: 0,
@@ -18,7 +18,7 @@ test("metric", () => {
 
   metric.append(10);
 
-  assert.deepStrictEqual(metric.copy(), {
+  deepEqual(metric.copy(), {
     last: 10,
     delta: 10,
     max: 10,
@@ -28,7 +28,7 @@ test("metric", () => {
 
   metric.append(20);
 
-  assert.deepStrictEqual(metric.copy(), {
+  deepEqual(metric.copy(), {
     last: 20,
     delta: 10,
     max: 20,
@@ -38,7 +38,7 @@ test("metric", () => {
 
   metric.append(15);
 
-  assert.deepStrictEqual(metric.copy(), {
+  deepEqual(metric.copy(), {
     last: 15,
     delta: 0,
     max: 20,
@@ -79,7 +79,7 @@ test("summary stats", () => {
 
   const stats = new MutableSummaryStats();
 
-  assert.deepStrictEqual(stats.copy(), {
+  deepEqual(stats.copy(), {
     count: 0,
     time: 0,
     speed: { last: 0, delta: 0, max: 0, min: 0, avg: 0 },
@@ -89,7 +89,7 @@ test("summary stats", () => {
 
   stats.append(r1);
 
-  assert.deepStrictEqual(stats.copy(), {
+  deepEqual(stats.copy(), {
     count: 1,
     time: 5000,
     speed: { last: 600, delta: 600, max: 600, min: 600, avg: 600 },
@@ -99,7 +99,7 @@ test("summary stats", () => {
 
   stats.append(r2);
 
-  assert.deepStrictEqual(stats.copy(), {
+  deepEqual(stats.copy(), {
     count: 2,
     time: 15000,
     speed: { last: 300, delta: -300, max: 600, min: 300, avg: 450 },

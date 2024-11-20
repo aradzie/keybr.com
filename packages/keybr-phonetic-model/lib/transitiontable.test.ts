@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { DataError } from "@keybr/binary";
-import { assert } from "chai";
+import { deepEqual, equal, throws } from "rich-assert";
 import { TransitionTable } from "./transitiontable.ts";
 
 test("parse binary data", () => {
@@ -23,27 +23,27 @@ test("parse binary data", () => {
 
   const table = TransitionTable.load(data);
 
-  assert.deepStrictEqual(table.compress(), data);
+  deepEqual(table.compress(), data);
 
-  assert.strictEqual(table.order, 2);
-  assert.strictEqual(String.fromCodePoint(...table.alphabet), " ab");
-  assert.strictEqual(table.size, 3);
-  assert.deepStrictEqual(table.segment([0]), [
+  equal(table.order, 2);
+  equal(String.fromCodePoint(...table.alphabet), " ab");
+  equal(table.size, 3);
+  deepEqual(table.segment([0]), [
     { codePoint: 0x0061, frequency: 127 },
     { codePoint: 0x0062, frequency: 128 },
   ]);
-  assert.deepStrictEqual(table.segment([0x0061]), []);
-  assert.deepStrictEqual(table.segment([0x0062]), []);
+  deepEqual(table.segment([0x0061]), []);
+  deepEqual(table.segment([0x0062]), []);
 });
 
 test("validate binary data", () => {
-  assert.throws(() => {
+  throws(() => {
     TransitionTable.load(new Uint8Array(0));
   }, DataError);
-  assert.throws(() => {
+  throws(() => {
     TransitionTable.load(new Uint8Array(100));
   }, DataError);
-  assert.throws(() => {
+  throws(() => {
     TransitionTable.load(new Uint8Array([1, 2, 3]));
   }, DataError);
 });

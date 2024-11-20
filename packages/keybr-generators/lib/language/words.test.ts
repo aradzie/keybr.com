@@ -1,5 +1,5 @@
 import { test } from "node:test";
-import { assert } from "chai";
+import { deepEqual } from "rich-assert";
 import { fromCsv, normalizeCounts, toCsv, type Word } from "./words.ts";
 
 test("csv", () => {
@@ -8,11 +8,11 @@ test("csv", () => {
     ["two", 5],
   ];
 
-  assert.deepStrictEqual(fromCsv(toCsv(words)), words);
+  deepEqual(fromCsv(toCsv(words)), words);
 });
 
 test("normalize", () => {
-  assert.deepStrictEqual(
+  deepEqual(
     normalizeCounts([
       ["a", 123],
       ["b", 10],

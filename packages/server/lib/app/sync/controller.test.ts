@@ -4,7 +4,7 @@ import { PublicId } from "@keybr/publicid";
 import { ResultFaker } from "@keybr/result";
 import { formatMessage } from "@keybr/result-io";
 import { UserDataFactory } from "@keybr/result-userdata";
-import { assert } from "chai";
+import { equal, isFalse, isTrue, match } from "rich-assert";
 import { kMain } from "../module.ts";
 import { TestContext } from "../test/context.ts";
 import { startApp } from "../test/request.ts";
@@ -28,12 +28,9 @@ test("handle unauthenticated user", async (ctx) => {
 
   // Assert.
 
-  assert.strictEqual((await request.GET("/_/sync/data").send()).status, 403);
-  assert.strictEqual(
-    (await request.POST("/_/sync/data").send(validBody)).status,
-    403,
-  );
-  assert.strictEqual((await request.DELETE("/_/sync/data").send()).status, 403);
+  equal((await request.GET("/_/sync/data").send()).status, 403);
+  equal((await request.POST("/_/sync/data").send(validBody)).status, 403);
+  equal((await request.DELETE("/_/sync/data").send()).status, 403);
 });
 
 test("get public user data", async (ctx) => {
@@ -55,19 +52,13 @@ test("get public user data", async (ctx) => {
 
   // Assert.
 
-  assert.strictEqual(response.status, 200);
-  assert.strictEqual(
-    response.headers.get("Content-Type"),
-    "application/octet-stream",
-  );
-  assert.match(response.headers.get("Content-Length")!, /\d+/);
-  assert.strictEqual(response.headers.get("Content-Encoding"), null);
-  assert.strictEqual(
-    response.headers.get("Cache-Control"),
-    "private, no-cache",
-  );
-  assert.match(response.headers.get("ETag")!, /"[a-z0-9]+"/);
-  assert.isTrue((await response.body.buffer()).length > 0);
+  equal(response.status, 200);
+  equal(response.headers.get("Content-Type"), "application/octet-stream");
+  match(response.headers.get("Content-Length")!, /\d+/);
+  equal(response.headers.get("Content-Encoding"), null);
+  equal(response.headers.get("Cache-Control"), "private, no-cache");
+  match(response.headers.get("ETag")!, /"[a-z0-9]+"/);
+  isTrue((await response.body.buffer()).length > 0);
 });
 
 test("get empty user data", async (ctx) => {
@@ -90,19 +81,13 @@ test("get empty user data", async (ctx) => {
 
   // Assert.
 
-  assert.strictEqual(response.status, 200);
-  assert.strictEqual(
-    response.headers.get("Content-Type"),
-    "application/octet-stream",
-  );
-  assert.strictEqual(response.headers.get("Content-Length"), "0");
-  assert.strictEqual(response.headers.get("Content-Encoding"), null);
-  assert.strictEqual(
-    response.headers.get("Cache-Control"),
-    "private, no-cache",
-  );
-  assert.match(response.headers.get("ETag")!, /"[a-z0-9]+"/);
-  assert.strictEqual((await response.body.buffer()).length, 0);
+  equal(response.status, 200);
+  equal(response.headers.get("Content-Type"), "application/octet-stream");
+  equal(response.headers.get("Content-Length"), "0");
+  equal(response.headers.get("Content-Encoding"), null);
+  equal(response.headers.get("Cache-Control"), "private, no-cache");
+  match(response.headers.get("ETag")!, /"[a-z0-9]+"/);
+  equal((await response.body.buffer()).length, 0);
 });
 
 test("get existing user data", async (ctx) => {
@@ -125,19 +110,13 @@ test("get existing user data", async (ctx) => {
 
   // Assert.
 
-  assert.strictEqual(response.status, 200);
-  assert.strictEqual(
-    response.headers.get("Content-Type"),
-    "application/octet-stream",
-  );
-  assert.strictEqual(response.headers.get("Content-Length"), "70");
-  assert.strictEqual(response.headers.get("Content-Encoding"), null);
-  assert.strictEqual(
-    response.headers.get("Cache-Control"),
-    "private, no-cache",
-  );
-  assert.match(response.headers.get("ETag")!, /"[a-z0-9]+"/);
-  assert.strictEqual((await response.body.buffer()).length, 70);
+  equal(response.status, 200);
+  equal(response.headers.get("Content-Type"), "application/octet-stream");
+  equal(response.headers.get("Content-Length"), "70");
+  equal(response.headers.get("Content-Encoding"), null);
+  equal(response.headers.get("Cache-Control"), "private, no-cache");
+  match(response.headers.get("ETag")!, /"[a-z0-9]+"/);
+  equal((await response.body.buffer()).length, 70);
 });
 
 test("validate content type on post", async (ctx) => {
@@ -158,7 +137,7 @@ test("validate content type on post", async (ctx) => {
 
   // Assert.
 
-  assert.strictEqual(response.status, 415);
+  equal(response.status, 415);
 });
 
 test("validate format on post", async (ctx) => {
@@ -176,7 +155,7 @@ test("validate format on post", async (ctx) => {
 
   // Assert.
 
-  assert.strictEqual(response.status, 400);
+  equal(response.status, 400);
 });
 
 test("validate data on post", async (ctx) => {
@@ -199,9 +178,9 @@ test("validate data on post", async (ctx) => {
 
   // Assert.
 
-  assert.strictEqual(response.status, 204);
+  equal(response.status, 204);
 
-  assert.isFalse(await userData.exists());
+  isFalse(await userData.exists());
 });
 
 test("post to user data", async (ctx) => {
@@ -224,9 +203,9 @@ test("post to user data", async (ctx) => {
 
   // Assert.
 
-  assert.strictEqual(response.status, 204);
+  equal(response.status, 204);
 
-  assert.isTrue(await userData.exists());
+  isTrue(await userData.exists());
 });
 
 test("delete empty user data", async (ctx) => {
@@ -245,9 +224,9 @@ test("delete empty user data", async (ctx) => {
 
   // Act, Assert.
 
-  assert.isFalse(await userData.exists());
+  isFalse(await userData.exists());
 
-  assert.strictEqual(
+  equal(
     (
       await request //
         .DELETE("/_/sync/data")
@@ -256,7 +235,7 @@ test("delete empty user data", async (ctx) => {
     204,
   );
 
-  assert.isFalse(await userData.exists());
+  isFalse(await userData.exists());
 });
 
 test("delete existing user data", async (ctx) => {
@@ -275,9 +254,9 @@ test("delete existing user data", async (ctx) => {
 
   // Act, Assert.
 
-  assert.isTrue(await userData.exists());
+  isTrue(await userData.exists());
 
-  assert.strictEqual(
+  equal(
     (
       await request //
         .DELETE("/_/sync/data")
@@ -286,5 +265,5 @@ test("delete existing user data", async (ctx) => {
     204,
   );
 
-  assert.isFalse(await userData.exists());
+  isFalse(await userData.exists());
 });

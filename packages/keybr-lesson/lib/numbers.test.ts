@@ -3,7 +3,7 @@ import { Layout, loadKeyboard } from "@keybr/keyboard";
 import { FakePhoneticModel, Letter } from "@keybr/phonetic-model";
 import { makeKeyStatsMap } from "@keybr/result";
 import { Settings } from "@keybr/settings";
-import { assert } from "chai";
+import { deepEqual, equal, isNull } from "rich-assert";
 import { LessonKey } from "./key.ts";
 import { NumbersLesson } from "./numbers.ts";
 import { lessonProps } from "./settings.ts";
@@ -15,7 +15,7 @@ test("provide key set", () => {
   const lesson = new NumbersLesson(settings, keyboard, model);
   const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
 
-  assert.deepStrictEqual(lessonKeys.findIncludedKeys(), [
+  deepEqual(lessonKeys.findIncludedKeys(), [
     new LessonKey({
       letter: Letter.digits[0],
       samples: [],
@@ -127,8 +127,8 @@ test("provide key set", () => {
       isForced: false,
     }),
   ]);
-  assert.deepStrictEqual(lessonKeys.findExcludedKeys(), []);
-  assert.isNull(lessonKeys.findFocusedKey());
+  deepEqual(lessonKeys.findExcludedKeys(), []);
+  isNull(lessonKeys.findFocusedKey());
 });
 
 describe("generate text using settings", () => {
@@ -140,7 +140,7 @@ describe("generate text using settings", () => {
     const lesson = new NumbersLesson(settings, keyboard, model);
     lesson.rng = model.rng;
 
-    assert.strictEqual(
+    equal(
       lesson.generate(),
       "260 4036 260 4036 260 4036 260 4036 260 4036 260 4036 260 4036 260",
     );
@@ -152,7 +152,7 @@ describe("generate text using settings", () => {
     const lesson = new NumbersLesson(settings, keyboard, model);
     lesson.rng = model.rng;
 
-    assert.strictEqual(
+    equal(
       lesson.generate(),
       "460 7036 460 7036 460 7036 460 7036 460 7036 460 7036 460 7036 460",
     );

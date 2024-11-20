@@ -1,9 +1,9 @@
 import { test } from "node:test";
-import { assert } from "chai";
+import { doesNotThrow, throws } from "rich-assert";
 import { validate } from "./validate.ts";
 
 test("valid composed grammar", () => {
-  assert.doesNotThrow(() => {
+  doesNotThrow(() => {
     validate({
       rules: {
         start: {
@@ -23,7 +23,7 @@ test("valid composed grammar", () => {
 });
 
 test("missing ref", () => {
-  assert.throws(() => {
+  throws(() => {
     validate({
       rules: {
         start: {
@@ -32,11 +32,11 @@ test("missing ref", () => {
       },
       composes: [],
     });
-  }, "Invalid ref <invalidRef>");
+  }, /Invalid ref <invalidRef>/);
 });
 
 test("unreferenced rule", () => {
-  assert.throws(() => {
+  throws(() => {
     validate({
       rules: {
         start: "start",
@@ -44,27 +44,27 @@ test("unreferenced rule", () => {
       },
       composes: [],
     });
-  }, "Unreferenced rule <extra>");
+  }, /Unreferenced rule <extra>/);
 });
 
 test("empty seq", () => {
-  assert.throws(() => {
+  throws(() => {
     validate({
       rules: {
         start: { seq: [] },
       },
       composes: [],
     });
-  }, "Empty seq");
+  }, /Empty seq/);
 });
 
 test("empty alt", () => {
-  assert.throws(() => {
+  throws(() => {
     validate({
       rules: {
         start: { alt: [] },
       },
       composes: [],
     });
-  }, "Empty alt");
+  }, /Empty alt/);
 });

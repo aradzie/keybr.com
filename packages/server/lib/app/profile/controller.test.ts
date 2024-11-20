@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { Application } from "@fastr/core";
-import { assert } from "chai";
+import { deepEqual, equal } from "rich-assert";
 import { kMain } from "../module.ts";
 import { TestContext } from "../test/context.ts";
 import { startApp } from "../test/request.ts";
@@ -18,8 +18,8 @@ test("get profile", async () => {
 
   // Assert.
 
-  assert.strictEqual(response.status, 200);
-  assert.deepStrictEqual(await response.body.json(), {
+  equal(response.status, 200);
+  deepEqual(await response.body.json(), {
     id: "55vdtk1",
     imageUrl: "imageUrl1",
     name: "externalName1",

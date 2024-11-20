@@ -1,9 +1,6 @@
 import { test } from "node:test";
-import { assert, use } from "chai";
-import chaiAsPromised from "chai-as-promised";
+import { equal, isFalse, isTrue, rejects } from "rich-assert";
 import { schedule } from "./scheduler.ts";
-
-use(chaiAsPromised);
 
 test("schedule", async () => {
   let done = false;
@@ -15,9 +12,9 @@ test("schedule", async () => {
     done = true;
   };
 
-  assert.strictEqual(await schedule(generate()), undefined);
+  equal(await schedule(generate()), undefined);
 
-  assert.isTrue(done);
+  isTrue(done);
 });
 
 test("schedule with a custom delay", async () => {
@@ -34,9 +31,9 @@ test("schedule with a custom delay", async () => {
     process.nextTick(cb);
   };
 
-  assert.strictEqual(await schedule(generate(), { delayer }), undefined);
+  equal(await schedule(generate(), { delayer }), undefined);
 
-  assert.isTrue(done);
+  isTrue(done);
 });
 
 test("abort", async () => {
@@ -52,9 +49,9 @@ test("abort", async () => {
     done = true;
   };
 
-  assert.strictEqual(await schedule(generate(), { signal }), undefined);
+  equal(await schedule(generate(), { signal }), undefined);
 
-  assert.isFalse(done);
+  isFalse(done);
 });
 
 test("fail", async () => {
@@ -67,5 +64,5 @@ test("fail", async () => {
     throw error;
   };
 
-  await assert.isRejected(schedule(fail()), error);
+  await rejects(schedule(fail()), error);
 });

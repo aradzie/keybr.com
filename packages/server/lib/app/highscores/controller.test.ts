@@ -2,7 +2,7 @@ import { test } from "node:test";
 import { Application } from "@fastr/core";
 import { HighScoresFactory } from "@keybr/highscores";
 import { ResultFaker } from "@keybr/result";
-import { assert } from "chai";
+import { deepEqual, equal } from "rich-assert";
 import { kMain } from "../module.ts";
 import { TestContext } from "../test/context.ts";
 import { startApp } from "../test/request.ts";
@@ -26,8 +26,8 @@ test("get empty high scores entries", async (ctx) => {
 
   // Assert.
 
-  assert.strictEqual(response.status, 200);
-  assert.deepStrictEqual(await response.body.json(), []);
+  equal(response.status, 200);
+  deepEqual(await response.body.json(), []);
 });
 
 test("get populated high scores entries", async (ctx) => {
@@ -46,8 +46,8 @@ test("get populated high scores entries", async (ctx) => {
 
   // Assert.
 
-  assert.strictEqual(response.status, 200);
-  assert.deepStrictEqual(await response.body.json(), [
+  equal(response.status, 200);
+  deepEqual(await response.body.json(), [
     {
       layout: "en-us",
       score: 2400,

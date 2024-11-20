@@ -1,17 +1,16 @@
-import { notStrictEqual, strictEqual } from "node:assert/strict";
 import { test } from "node:test";
-import { assert } from "chai";
+import { equal, isTrue, notEqual } from "rich-assert";
 import { generateName } from "./index.ts";
 
 test("generate names", () => {
   for (let i = 0; i < 100; i++) {
-    assert.isTrue(generateName().length > 0);
-    assert.isTrue(
+    isTrue(generateName().length > 0);
+    isTrue(
       generateName({
         capitalize: true,
       }).length > 0,
     );
-    assert.isTrue(
+    isTrue(
       generateName({
         capitalize: false,
       }).length > 0,
@@ -20,6 +19,6 @@ test("generate names", () => {
 });
 
 test("generate names from seed", () => {
-  strictEqual(generateName({ seed: 123 }), generateName({ seed: 123 }));
-  notStrictEqual(generateName({ seed: 123 }), generateName({ seed: 456 }));
+  equal(generateName({ seed: 123 }), generateName({ seed: 123 }));
+  notEqual(generateName({ seed: 123 }), generateName({ seed: 456 }));
 });

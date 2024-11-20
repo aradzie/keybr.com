@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import { toCodePoints } from "@keybr/unicode";
-import { assert } from "chai";
+import { deepEqual, equal, isFalse, isTrue, throws } from "rich-assert";
 import { Attr } from "./chars.ts";
 import { Histogram } from "./histogram.ts";
 import { makeStats } from "./stats.ts";
@@ -20,16 +20,16 @@ test("allow empty text", () => {
     spaceSkipsWords: true,
   });
 
-  assert.strictEqual(textInput.length, 0);
-  assert.strictEqual(textInput.pos, 0);
-  assert.isTrue(textInput.completed);
-  assert.throws(() => {
+  equal(textInput.length, 0);
+  equal(textInput.pos, 0);
+  isTrue(textInput.completed);
+  throws(() => {
     textInput.appendChar(100, A, 100);
   });
-  assert.throws(() => {
+  throws(() => {
     textInput.appendChar(100, Space, 100);
   });
-  assert.deepStrictEqual(makeStats(textInput.steps), {
+  deepEqual(makeStats(textInput.steps), {
     time: 0,
     speed: 0,
     length: 0,
@@ -46,44 +46,41 @@ test("advance to completion", () => {
     spaceSkipsWords: true,
   });
 
-  assert.strictEqual(showSteps(textInput), "");
-  assert.strictEqual(showChars(textInput), "[a]|b|c|d");
-  assert.strictEqual(textInput.length, 4);
-  assert.strictEqual(textInput.pos, 0);
-  assert.isFalse(textInput.completed);
+  equal(showSteps(textInput), "");
+  equal(showChars(textInput), "[a]|b|c|d");
+  equal(textInput.length, 4);
+  equal(textInput.pos, 0);
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.appendChar(100, A, 101), Feedback.Succeeded);
-  assert.strictEqual(showSteps(textInput), "a,100,101");
-  assert.strictEqual(showChars(textInput), "a|[b]|c|d");
-  assert.strictEqual(textInput.length, 4);
-  assert.strictEqual(textInput.pos, 1);
-  assert.isFalse(textInput.completed);
+  equal(textInput.appendChar(100, A, 101), Feedback.Succeeded);
+  equal(showSteps(textInput), "a,100,101");
+  equal(showChars(textInput), "a|[b]|c|d");
+  equal(textInput.length, 4);
+  equal(textInput.pos, 1);
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.appendChar(200, B, 102), Feedback.Succeeded);
-  assert.strictEqual(showSteps(textInput), "a,100,101|b,200,102");
-  assert.strictEqual(showChars(textInput), "a|b|[c]|d");
-  assert.strictEqual(textInput.length, 4);
-  assert.strictEqual(textInput.pos, 2);
-  assert.isFalse(textInput.completed);
+  equal(textInput.appendChar(200, B, 102), Feedback.Succeeded);
+  equal(showSteps(textInput), "a,100,101|b,200,102");
+  equal(showChars(textInput), "a|b|[c]|d");
+  equal(textInput.length, 4);
+  equal(textInput.pos, 2);
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.appendChar(300, C, 103), Feedback.Succeeded);
-  assert.strictEqual(showSteps(textInput), "a,100,101|b,200,102|c,300,103");
-  assert.strictEqual(showChars(textInput), "a|b|c|[d]");
-  assert.strictEqual(textInput.length, 4);
-  assert.strictEqual(textInput.pos, 3);
-  assert.isFalse(textInput.completed);
+  equal(textInput.appendChar(300, C, 103), Feedback.Succeeded);
+  equal(showSteps(textInput), "a,100,101|b,200,102|c,300,103");
+  equal(showChars(textInput), "a|b|c|[d]");
+  equal(textInput.length, 4);
+  equal(textInput.pos, 3);
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.appendChar(400, D, 104), Feedback.Succeeded);
-  assert.strictEqual(
-    showSteps(textInput),
-    "a,100,101|b,200,102|c,300,103|d,400,104",
-  );
-  assert.strictEqual(showChars(textInput), "a|b|c|d");
-  assert.strictEqual(textInput.length, 4);
-  assert.strictEqual(textInput.pos, 4);
-  assert.isTrue(textInput.completed);
+  equal(textInput.appendChar(400, D, 104), Feedback.Succeeded);
+  equal(showSteps(textInput), "a,100,101|b,200,102|c,300,103|d,400,104");
+  equal(showChars(textInput), "a|b|c|d");
+  equal(textInput.length, 4);
+  equal(textInput.pos, 4);
+  isTrue(textInput.completed);
 
-  assert.deepStrictEqual(makeStats(textInput.steps), {
+  deepEqual(makeStats(textInput.steps), {
     time: 300,
     speed: 800,
     length: 4,
@@ -104,46 +101,46 @@ test("accumulate and delete garbage", () => {
     spaceSkipsWords: true,
   });
 
-  assert.strictEqual(showSteps(textInput), "");
-  assert.strictEqual(showChars(textInput), "[a]|b|c");
-  assert.strictEqual(textInput.length, 3);
-  assert.strictEqual(textInput.pos, 0);
-  assert.isFalse(textInput.completed);
+  equal(showSteps(textInput), "");
+  equal(showChars(textInput), "[a]|b|c");
+  equal(textInput.length, 3);
+  equal(textInput.pos, 0);
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.appendChar(100, X, 100), Feedback.Failed);
-  assert.strictEqual(showSteps(textInput), "");
-  assert.strictEqual(showChars(textInput), "*x|[a]|b|c");
-  assert.strictEqual(textInput.length, 3);
-  assert.strictEqual(textInput.pos, 0);
-  assert.isFalse(textInput.completed);
+  equal(textInput.appendChar(100, X, 100), Feedback.Failed);
+  equal(showSteps(textInput), "");
+  equal(showChars(textInput), "*x|[a]|b|c");
+  equal(textInput.length, 3);
+  equal(textInput.pos, 0);
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.appendChar(200, A, 100), Feedback.Failed);
-  assert.strictEqual(showSteps(textInput), "");
-  assert.strictEqual(showChars(textInput), "*x|*a|[a]|b|c");
-  assert.strictEqual(textInput.length, 3);
-  assert.strictEqual(textInput.pos, 0);
-  assert.isFalse(textInput.completed);
+  equal(textInput.appendChar(200, A, 100), Feedback.Failed);
+  equal(showSteps(textInput), "");
+  equal(showChars(textInput), "*x|*a|[a]|b|c");
+  equal(textInput.length, 3);
+  equal(textInput.pos, 0);
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.clearChar(), Feedback.Succeeded);
-  assert.strictEqual(showSteps(textInput), "");
-  assert.strictEqual(showChars(textInput), "*x|[a]|b|c");
-  assert.strictEqual(textInput.length, 3);
-  assert.strictEqual(textInput.pos, 0);
-  assert.isFalse(textInput.completed);
+  equal(textInput.clearChar(), Feedback.Succeeded);
+  equal(showSteps(textInput), "");
+  equal(showChars(textInput), "*x|[a]|b|c");
+  equal(textInput.length, 3);
+  equal(textInput.pos, 0);
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.clearChar(), Feedback.Succeeded);
-  assert.strictEqual(showSteps(textInput), "");
-  assert.strictEqual(showChars(textInput), "[a]|b|c");
-  assert.strictEqual(textInput.length, 3);
-  assert.strictEqual(textInput.pos, 0);
-  assert.isFalse(textInput.completed);
+  equal(textInput.clearChar(), Feedback.Succeeded);
+  equal(showSteps(textInput), "");
+  equal(showChars(textInput), "[a]|b|c");
+  equal(textInput.length, 3);
+  equal(textInput.pos, 0);
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.appendChar(500, A, 91), Feedback.Recovered);
-  assert.strictEqual(showSteps(textInput), "!a,500,91");
-  assert.strictEqual(showChars(textInput), "!a|[b]|c");
-  assert.strictEqual(textInput.length, 3);
-  assert.strictEqual(textInput.pos, 1);
-  assert.isFalse(textInput.completed);
+  equal(textInput.appendChar(500, A, 91), Feedback.Recovered);
+  equal(showSteps(textInput), "!a,500,91");
+  equal(showChars(textInput), "!a|[b]|c");
+  equal(textInput.length, 3);
+  equal(textInput.pos, 1);
+  isFalse(textInput.completed);
 });
 
 test("limit garbage length", () => {
@@ -154,17 +151,14 @@ test("limit garbage length", () => {
   });
 
   for (let i = 1; i <= 100; i++) {
-    assert.strictEqual(textInput.appendChar(i * 100, X, 100), Feedback.Failed);
+    equal(textInput.appendChar(i * 100, X, 100), Feedback.Failed);
   }
 
-  assert.strictEqual(showSteps(textInput), "");
-  assert.strictEqual(
-    showChars(textInput),
-    "*x|*x|*x|*x|*x|*x|*x|*x|*x|*x|[a]|b|c",
-  );
-  assert.strictEqual(textInput.length, 3);
-  assert.strictEqual(textInput.pos, 0);
-  assert.isFalse(textInput.completed);
+  equal(showSteps(textInput), "");
+  equal(showChars(textInput), "*x|*x|*x|*x|*x|*x|*x|*x|*x|*x|[a]|b|c");
+  equal(textInput.length, 3);
+  equal(textInput.pos, 0);
+  isFalse(textInput.completed);
 });
 
 test("handle backspace at the start of a word", () => {
@@ -174,33 +168,33 @@ test("handle backspace at the start of a word", () => {
     spaceSkipsWords: true,
   });
 
-  assert.strictEqual(textInput.appendChar(100, X, 100), Feedback.Failed);
-  assert.strictEqual(showSteps(textInput), "");
-  assert.strictEqual(showChars(textInput), "*x|[a]|b|c");
-  assert.strictEqual(textInput.length, 3);
-  assert.strictEqual(textInput.pos, 0);
-  assert.isFalse(textInput.completed);
+  equal(textInput.appendChar(100, X, 100), Feedback.Failed);
+  equal(showSteps(textInput), "");
+  equal(showChars(textInput), "*x|[a]|b|c");
+  equal(textInput.length, 3);
+  equal(textInput.pos, 0);
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.clearChar(), Feedback.Succeeded);
-  assert.strictEqual(showSteps(textInput), "");
-  assert.strictEqual(showChars(textInput), "[a]|b|c");
-  assert.strictEqual(textInput.length, 3);
-  assert.strictEqual(textInput.pos, 0);
-  assert.isFalse(textInput.completed);
+  equal(textInput.clearChar(), Feedback.Succeeded);
+  equal(showSteps(textInput), "");
+  equal(showChars(textInput), "[a]|b|c");
+  equal(textInput.length, 3);
+  equal(textInput.pos, 0);
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.clearChar(), Feedback.Succeeded);
-  assert.strictEqual(showSteps(textInput), "");
-  assert.strictEqual(showChars(textInput), "[a]|b|c");
-  assert.strictEqual(textInput.length, 3);
-  assert.strictEqual(textInput.pos, 0);
-  assert.isFalse(textInput.completed);
+  equal(textInput.clearChar(), Feedback.Succeeded);
+  equal(showSteps(textInput), "");
+  equal(showChars(textInput), "[a]|b|c");
+  equal(textInput.length, 3);
+  equal(textInput.pos, 0);
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.appendChar(400, A, 101), Feedback.Recovered);
-  assert.strictEqual(showSteps(textInput), "!a,400,101");
-  assert.strictEqual(showChars(textInput), "!a|[b]|c");
-  assert.strictEqual(textInput.length, 3);
-  assert.strictEqual(textInput.pos, 1);
-  assert.isFalse(textInput.completed);
+  equal(textInput.appendChar(400, A, 101), Feedback.Recovered);
+  equal(showSteps(textInput), "!a,400,101");
+  equal(showChars(textInput), "!a|[b]|c");
+  equal(textInput.length, 3);
+  equal(textInput.pos, 1);
+  isFalse(textInput.completed);
 });
 
 test("handle backspace in the middle of a word", () => {
@@ -210,40 +204,40 @@ test("handle backspace in the middle of a word", () => {
     spaceSkipsWords: true,
   });
 
-  assert.strictEqual(textInput.appendChar(100, A, 101), Feedback.Succeeded);
-  assert.strictEqual(showSteps(textInput), "a,100,101");
-  assert.strictEqual(showChars(textInput), "a|[b]|c");
-  assert.strictEqual(textInput.length, 3);
-  assert.strictEqual(textInput.pos, 1);
-  assert.isFalse(textInput.completed);
+  equal(textInput.appendChar(100, A, 101), Feedback.Succeeded);
+  equal(showSteps(textInput), "a,100,101");
+  equal(showChars(textInput), "a|[b]|c");
+  equal(textInput.length, 3);
+  equal(textInput.pos, 1);
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.appendChar(200, X, 100), Feedback.Failed);
-  assert.strictEqual(showSteps(textInput), "a,100,101");
-  assert.strictEqual(showChars(textInput), "a|*x|[b]|c");
-  assert.strictEqual(textInput.length, 3);
-  assert.strictEqual(textInput.pos, 1);
-  assert.isFalse(textInput.completed);
+  equal(textInput.appendChar(200, X, 100), Feedback.Failed);
+  equal(showSteps(textInput), "a,100,101");
+  equal(showChars(textInput), "a|*x|[b]|c");
+  equal(textInput.length, 3);
+  equal(textInput.pos, 1);
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.clearChar(), Feedback.Succeeded);
-  assert.strictEqual(showSteps(textInput), "a,100,101");
-  assert.strictEqual(showChars(textInput), "a|[b]|c");
-  assert.strictEqual(textInput.length, 3);
-  assert.strictEqual(textInput.pos, 1);
-  assert.isFalse(textInput.completed);
+  equal(textInput.clearChar(), Feedback.Succeeded);
+  equal(showSteps(textInput), "a,100,101");
+  equal(showChars(textInput), "a|[b]|c");
+  equal(textInput.length, 3);
+  equal(textInput.pos, 1);
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.clearChar(), Feedback.Succeeded);
-  assert.strictEqual(showSteps(textInput), "a,100,101");
-  assert.strictEqual(showChars(textInput), "a|[b]|c");
-  assert.strictEqual(textInput.length, 3);
-  assert.strictEqual(textInput.pos, 1);
-  assert.isFalse(textInput.completed);
+  equal(textInput.clearChar(), Feedback.Succeeded);
+  equal(showSteps(textInput), "a,100,101");
+  equal(showChars(textInput), "a|[b]|c");
+  equal(textInput.length, 3);
+  equal(textInput.pos, 1);
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.appendChar(500, B, 102), Feedback.Recovered);
-  assert.strictEqual(showSteps(textInput), "a,100,101|!b,500,102");
-  assert.strictEqual(showChars(textInput), "a|!b|[c]");
-  assert.strictEqual(textInput.length, 3);
-  assert.strictEqual(textInput.pos, 2);
-  assert.isFalse(textInput.completed);
+  equal(textInput.appendChar(500, B, 102), Feedback.Recovered);
+  equal(showSteps(textInput), "a,100,101|!b,500,102");
+  equal(showChars(textInput), "a|!b|[c]");
+  equal(textInput.length, 3);
+  equal(textInput.pos, 2);
+  isFalse(textInput.completed);
 });
 
 test("forgive an inserted character", () => {
@@ -253,39 +247,39 @@ test("forgive an inserted character", () => {
     spaceSkipsWords: true,
   });
 
-  assert.strictEqual(showSteps(textInput), "");
-  assert.strictEqual(showChars(textInput), "[a]|b|c");
-  assert.strictEqual(textInput.length, 3);
-  assert.strictEqual(textInput.pos, 0);
-  assert.isFalse(textInput.completed);
+  equal(showSteps(textInput), "");
+  equal(showChars(textInput), "[a]|b|c");
+  equal(textInput.length, 3);
+  equal(textInput.pos, 0);
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.appendChar(100, X, 100), Feedback.Failed);
-  assert.strictEqual(showSteps(textInput), "");
-  assert.strictEqual(showChars(textInput), "[a]|b|c");
-  assert.strictEqual(textInput.length, 3);
-  assert.strictEqual(textInput.pos, 0);
-  assert.isFalse(textInput.completed);
+  equal(textInput.appendChar(100, X, 100), Feedback.Failed);
+  equal(showSteps(textInput), "");
+  equal(showChars(textInput), "[a]|b|c");
+  equal(textInput.length, 3);
+  equal(textInput.pos, 0);
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.appendChar(200, A, 101), Feedback.Recovered);
-  assert.strictEqual(showSteps(textInput), "!a,200,101");
-  assert.strictEqual(showChars(textInput), "!a|[b]|c");
-  assert.strictEqual(textInput.length, 3);
-  assert.strictEqual(textInput.pos, 1);
-  assert.isFalse(textInput.completed);
+  equal(textInput.appendChar(200, A, 101), Feedback.Recovered);
+  equal(showSteps(textInput), "!a,200,101");
+  equal(showChars(textInput), "!a|[b]|c");
+  equal(textInput.length, 3);
+  equal(textInput.pos, 1);
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.appendChar(300, B, 102), Feedback.Succeeded);
-  assert.strictEqual(showSteps(textInput), "!a,200,101|b,300,102");
-  assert.strictEqual(showChars(textInput), "!a|b|[c]");
-  assert.strictEqual(textInput.length, 3);
-  assert.strictEqual(textInput.pos, 2);
-  assert.isFalse(textInput.completed);
+  equal(textInput.appendChar(300, B, 102), Feedback.Succeeded);
+  equal(showSteps(textInput), "!a,200,101|b,300,102");
+  equal(showChars(textInput), "!a|b|[c]");
+  equal(textInput.length, 3);
+  equal(textInput.pos, 2);
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.appendChar(400, C, 103), Feedback.Succeeded);
-  assert.strictEqual(showSteps(textInput), "!a,200,101|b,300,102|c,400,103");
-  assert.strictEqual(showChars(textInput), "!a|b|c");
-  assert.strictEqual(textInput.length, 3);
-  assert.strictEqual(textInput.pos, 3);
-  assert.isTrue(textInput.completed);
+  equal(textInput.appendChar(400, C, 103), Feedback.Succeeded);
+  equal(showSteps(textInput), "!a,200,101|b,300,102|c,400,103");
+  equal(showChars(textInput), "!a|b|c");
+  equal(textInput.length, 3);
+  equal(textInput.pos, 3);
+  isTrue(textInput.completed);
 });
 
 test("forgive a skipped character", () => {
@@ -295,23 +289,20 @@ test("forgive a skipped character", () => {
     spaceSkipsWords: true,
   });
 
-  assert.strictEqual(textInput.appendChar(100, B, 101), Feedback.Failed);
-  assert.strictEqual(showSteps(textInput), "");
-  assert.strictEqual(showChars(textInput), "[a]|b|c|d");
-  assert.isFalse(textInput.completed);
+  equal(textInput.appendChar(100, B, 101), Feedback.Failed);
+  equal(showSteps(textInput), "");
+  equal(showChars(textInput), "[a]|b|c|d");
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.appendChar(200, C, 102), Feedback.Failed);
-  assert.strictEqual(showSteps(textInput), "");
-  assert.strictEqual(showChars(textInput), "[a]|b|c|d");
-  assert.isFalse(textInput.completed);
+  equal(textInput.appendChar(200, C, 102), Feedback.Failed);
+  equal(showSteps(textInput), "");
+  equal(showChars(textInput), "[a]|b|c|d");
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.appendChar(300, D, 103), Feedback.Recovered);
-  assert.strictEqual(
-    showSteps(textInput),
-    "!a,100,0|b,100,101|c,200,102|d,300,103",
-  );
-  assert.strictEqual(showChars(textInput), "!a|b|c|d");
-  assert.isTrue(textInput.completed);
+  equal(textInput.appendChar(300, D, 103), Feedback.Recovered);
+  equal(showSteps(textInput), "!a,100,0|b,100,101|c,200,102|d,300,103");
+  equal(showChars(textInput), "!a|b|c|d");
+  isTrue(textInput.completed);
 });
 
 test("forgive a replaced character", () => {
@@ -321,36 +312,33 @@ test("forgive a replaced character", () => {
     spaceSkipsWords: true,
   });
 
-  assert.strictEqual(textInput.appendChar(100, X, 101), Feedback.Failed);
-  assert.strictEqual(showSteps(textInput), "");
-  assert.strictEqual(showChars(textInput), "[a]|b|c|d");
-  assert.strictEqual(textInput.length, 4);
-  assert.strictEqual(textInput.pos, 0);
-  assert.isFalse(textInput.completed);
+  equal(textInput.appendChar(100, X, 101), Feedback.Failed);
+  equal(showSteps(textInput), "");
+  equal(showChars(textInput), "[a]|b|c|d");
+  equal(textInput.length, 4);
+  equal(textInput.pos, 0);
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.appendChar(200, B, 102), Feedback.Failed);
-  assert.strictEqual(showSteps(textInput), "");
-  assert.strictEqual(showChars(textInput), "[a]|b|c|d");
-  assert.strictEqual(textInput.length, 4);
-  assert.strictEqual(textInput.pos, 0);
-  assert.isFalse(textInput.completed);
+  equal(textInput.appendChar(200, B, 102), Feedback.Failed);
+  equal(showSteps(textInput), "");
+  equal(showChars(textInput), "[a]|b|c|d");
+  equal(textInput.length, 4);
+  equal(textInput.pos, 0);
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.appendChar(300, C, 103), Feedback.Failed);
-  assert.strictEqual(showSteps(textInput), "");
-  assert.strictEqual(showChars(textInput), "[a]|b|c|d");
-  assert.strictEqual(textInput.length, 4);
-  assert.strictEqual(textInput.pos, 0);
-  assert.isFalse(textInput.completed);
+  equal(textInput.appendChar(300, C, 103), Feedback.Failed);
+  equal(showSteps(textInput), "");
+  equal(showChars(textInput), "[a]|b|c|d");
+  equal(textInput.length, 4);
+  equal(textInput.pos, 0);
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.appendChar(400, D, 104), Feedback.Recovered);
-  assert.strictEqual(
-    showSteps(textInput),
-    "!a,100,0|b,200,102|c,300,103|d,400,104",
-  );
-  assert.strictEqual(showChars(textInput), "!a|b|c|d");
-  assert.strictEqual(textInput.length, 4);
-  assert.strictEqual(textInput.pos, 4);
-  assert.isTrue(textInput.completed);
+  equal(textInput.appendChar(400, D, 104), Feedback.Recovered);
+  equal(showSteps(textInput), "!a,100,0|b,200,102|c,300,103|d,400,104");
+  equal(showChars(textInput), "!a|b|c|d");
+  equal(textInput.length, 4);
+  equal(textInput.pos, 4);
+  isTrue(textInput.completed);
 });
 
 test("ignore the whitespace key", () => {
@@ -360,33 +348,33 @@ test("ignore the whitespace key", () => {
     spaceSkipsWords: false,
   });
 
-  assert.strictEqual(textInput.appendChar(100, Space, 100), Feedback.Succeeded);
-  assert.strictEqual(showSteps(textInput), "");
-  assert.strictEqual(showChars(textInput), "[a]|b|c");
-  assert.strictEqual(textInput.length, 3);
-  assert.strictEqual(textInput.pos, 0);
-  assert.isFalse(textInput.completed);
+  equal(textInput.appendChar(100, Space, 100), Feedback.Succeeded);
+  equal(showSteps(textInput), "");
+  equal(showChars(textInput), "[a]|b|c");
+  equal(textInput.length, 3);
+  equal(textInput.pos, 0);
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.appendChar(200, A, 101), Feedback.Succeeded);
-  assert.strictEqual(showSteps(textInput), "a,200,101");
-  assert.strictEqual(showChars(textInput), "a|[b]|c");
-  assert.strictEqual(textInput.length, 3);
-  assert.strictEqual(textInput.pos, 1);
-  assert.isFalse(textInput.completed);
+  equal(textInput.appendChar(200, A, 101), Feedback.Succeeded);
+  equal(showSteps(textInput), "a,200,101");
+  equal(showChars(textInput), "a|[b]|c");
+  equal(textInput.length, 3);
+  equal(textInput.pos, 1);
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.appendChar(300, Space, 100), Feedback.Succeeded);
-  assert.strictEqual(showSteps(textInput), "a,200,101");
-  assert.strictEqual(showChars(textInput), "a|[b]|c");
-  assert.strictEqual(textInput.length, 3);
-  assert.strictEqual(textInput.pos, 1);
-  assert.isFalse(textInput.completed);
+  equal(textInput.appendChar(300, Space, 100), Feedback.Succeeded);
+  equal(showSteps(textInput), "a,200,101");
+  equal(showChars(textInput), "a|[b]|c");
+  equal(textInput.length, 3);
+  equal(textInput.pos, 1);
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.appendChar(400, B, 102), Feedback.Succeeded);
-  assert.strictEqual(showSteps(textInput), "a,200,101|b,400,102");
-  assert.strictEqual(showChars(textInput), "a|b|[c]");
-  assert.strictEqual(textInput.length, 3);
-  assert.strictEqual(textInput.pos, 2);
-  assert.isFalse(textInput.completed);
+  equal(textInput.appendChar(400, B, 102), Feedback.Succeeded);
+  equal(showSteps(textInput), "a,200,101|b,400,102");
+  equal(showChars(textInput), "a|b|[c]");
+  equal(textInput.length, 3);
+  equal(textInput.pos, 2);
+  isFalse(textInput.completed);
 });
 
 test("space in garbage", () => {
@@ -396,34 +384,34 @@ test("space in garbage", () => {
     spaceSkipsWords: false,
   });
 
-  assert.strictEqual(textInput.appendChar(100, X, 100), Feedback.Failed);
-  assert.strictEqual(textInput.appendChar(200, Space, 100), Feedback.Failed);
-  assert.strictEqual(showSteps(textInput), "");
-  assert.strictEqual(showChars(textInput), "*x|* |[a]|b|c");
-  assert.strictEqual(textInput.length, 3);
-  assert.strictEqual(textInput.pos, 0);
-  assert.isFalse(textInput.completed);
+  equal(textInput.appendChar(100, X, 100), Feedback.Failed);
+  equal(textInput.appendChar(200, Space, 100), Feedback.Failed);
+  equal(showSteps(textInput), "");
+  equal(showChars(textInput), "*x|* |[a]|b|c");
+  equal(textInput.length, 3);
+  equal(textInput.pos, 0);
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.clearChar(), Feedback.Succeeded);
-  assert.strictEqual(showSteps(textInput), "");
-  assert.strictEqual(showChars(textInput), "*x|[a]|b|c");
-  assert.strictEqual(textInput.length, 3);
-  assert.strictEqual(textInput.pos, 0);
-  assert.isFalse(textInput.completed);
+  equal(textInput.clearChar(), Feedback.Succeeded);
+  equal(showSteps(textInput), "");
+  equal(showChars(textInput), "*x|[a]|b|c");
+  equal(textInput.length, 3);
+  equal(textInput.pos, 0);
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.clearChar(), Feedback.Succeeded);
-  assert.strictEqual(showSteps(textInput), "");
-  assert.strictEqual(showChars(textInput), "[a]|b|c");
-  assert.strictEqual(textInput.length, 3);
-  assert.strictEqual(textInput.pos, 0);
-  assert.isFalse(textInput.completed);
+  equal(textInput.clearChar(), Feedback.Succeeded);
+  equal(showSteps(textInput), "");
+  equal(showChars(textInput), "[a]|b|c");
+  equal(textInput.length, 3);
+  equal(textInput.pos, 0);
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.appendChar(500, A, 101), Feedback.Recovered);
-  assert.strictEqual(showSteps(textInput), "!a,500,101");
-  assert.strictEqual(showChars(textInput), "!a|[b]|c");
-  assert.strictEqual(textInput.length, 3);
-  assert.strictEqual(textInput.pos, 1);
-  assert.isFalse(textInput.completed);
+  equal(textInput.appendChar(500, A, 101), Feedback.Recovered);
+  equal(showSteps(textInput), "!a,500,101");
+  equal(showChars(textInput), "!a|[b]|c");
+  equal(textInput.length, 3);
+  equal(textInput.pos, 1);
+  isFalse(textInput.completed);
 });
 
 test("space skips words at the beginning of a text, ignore space", () => {
@@ -433,10 +421,10 @@ test("space skips words at the beginning of a text, ignore space", () => {
     spaceSkipsWords: true,
   });
 
-  assert.strictEqual(textInput.appendChar(100, Space, 100), Feedback.Succeeded);
-  assert.strictEqual(showSteps(textInput), "");
-  assert.strictEqual(showChars(textInput), "[a]|b|c");
-  assert.isFalse(textInput.completed);
+  equal(textInput.appendChar(100, Space, 100), Feedback.Succeeded);
+  equal(showSteps(textInput), "");
+  equal(showChars(textInput), "[a]|b|c");
+  isFalse(textInput.completed);
 });
 
 test("space skips words at the beginning of a word, ignore space", () => {
@@ -446,16 +434,16 @@ test("space skips words at the beginning of a word, ignore space", () => {
     spaceSkipsWords: true,
   });
 
-  assert.strictEqual(textInput.appendChar(100, X, 101), Feedback.Succeeded);
-  assert.strictEqual(textInput.appendChar(200, Space, 102), Feedback.Succeeded);
-  assert.strictEqual(showSteps(textInput), "x,100,101| ,200,102");
-  assert.strictEqual(showChars(textInput), "x| |[a]|b|c");
-  assert.isFalse(textInput.completed);
+  equal(textInput.appendChar(100, X, 101), Feedback.Succeeded);
+  equal(textInput.appendChar(200, Space, 102), Feedback.Succeeded);
+  equal(showSteps(textInput), "x,100,101| ,200,102");
+  equal(showChars(textInput), "x| |[a]|b|c");
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.appendChar(300, Space, 103), Feedback.Succeeded);
-  assert.strictEqual(showSteps(textInput), "x,100,101| ,200,102");
-  assert.strictEqual(showChars(textInput), "x| |[a]|b|c");
-  assert.isFalse(textInput.completed);
+  equal(textInput.appendChar(300, Space, 103), Feedback.Succeeded);
+  equal(showSteps(textInput), "x,100,101| ,200,102");
+  equal(showChars(textInput), "x| |[a]|b|c");
+  isFalse(textInput.completed);
 });
 
 test("space skips words at the beginning of a text, skip after error", () => {
@@ -465,11 +453,11 @@ test("space skips words at the beginning of a text, skip after error", () => {
     spaceSkipsWords: true,
   });
 
-  assert.strictEqual(textInput.appendChar(100, X, 101), Feedback.Failed);
-  assert.strictEqual(textInput.appendChar(200, Space, 102), Feedback.Recovered);
-  assert.strictEqual(showSteps(textInput), "!a,200,0|!b,200,0|!c,200,0");
-  assert.strictEqual(showChars(textInput), "!a|!b|!c");
-  assert.isTrue(textInput.completed);
+  equal(textInput.appendChar(100, X, 101), Feedback.Failed);
+  equal(textInput.appendChar(200, Space, 102), Feedback.Recovered);
+  equal(showSteps(textInput), "!a,200,0|!b,200,0|!c,200,0");
+  equal(showChars(textInput), "!a|!b|!c");
+  isTrue(textInput.completed);
 });
 
 test("space skips words at the beginning of a word, skip after error", () => {
@@ -479,20 +467,17 @@ test("space skips words at the beginning of a word, skip after error", () => {
     spaceSkipsWords: true,
   });
 
-  assert.strictEqual(textInput.appendChar(100, X, 101), Feedback.Succeeded);
-  assert.strictEqual(textInput.appendChar(200, Space, 102), Feedback.Succeeded);
-  assert.strictEqual(showSteps(textInput), "x,100,101| ,200,102");
-  assert.strictEqual(showChars(textInput), "x| |[a]|b|c");
-  assert.isFalse(textInput.completed);
+  equal(textInput.appendChar(100, X, 101), Feedback.Succeeded);
+  equal(textInput.appendChar(200, Space, 102), Feedback.Succeeded);
+  equal(showSteps(textInput), "x,100,101| ,200,102");
+  equal(showChars(textInput), "x| |[a]|b|c");
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.appendChar(300, X, 103), Feedback.Failed);
-  assert.strictEqual(textInput.appendChar(400, Space, 104), Feedback.Recovered);
-  assert.strictEqual(
-    showSteps(textInput),
-    "x,100,101| ,200,102|!a,400,0|!b,400,0|!c,400,0",
-  );
-  assert.strictEqual(showChars(textInput), "x| |!a|!b|!c");
-  assert.isTrue(textInput.completed);
+  equal(textInput.appendChar(300, X, 103), Feedback.Failed);
+  equal(textInput.appendChar(400, Space, 104), Feedback.Recovered);
+  equal(showSteps(textInput), "x,100,101| ,200,102|!a,400,0|!b,400,0|!c,400,0");
+  equal(showChars(textInput), "x| |!a|!b|!c");
+  isTrue(textInput.completed);
 });
 
 test("space skips words in the middle of a word, skip word", () => {
@@ -502,20 +487,20 @@ test("space skips words in the middle of a word, skip word", () => {
     spaceSkipsWords: true,
   });
 
-  assert.strictEqual(textInput.appendChar(100, X, 101), Feedback.Succeeded);
-  assert.strictEqual(textInput.appendChar(200, Space, 102), Feedback.Succeeded);
-  assert.strictEqual(textInput.appendChar(300, A, 103), Feedback.Succeeded);
-  assert.strictEqual(showSteps(textInput), "x,100,101| ,200,102|a,300,103");
-  assert.strictEqual(showChars(textInput), "x| |a|[b]|c");
-  assert.isFalse(textInput.completed);
+  equal(textInput.appendChar(100, X, 101), Feedback.Succeeded);
+  equal(textInput.appendChar(200, Space, 102), Feedback.Succeeded);
+  equal(textInput.appendChar(300, A, 103), Feedback.Succeeded);
+  equal(showSteps(textInput), "x,100,101| ,200,102|a,300,103");
+  equal(showChars(textInput), "x| |a|[b]|c");
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.appendChar(400, Space, 104), Feedback.Recovered);
-  assert.strictEqual(
+  equal(textInput.appendChar(400, Space, 104), Feedback.Recovered);
+  equal(
     showSteps(textInput),
     "x,100,101| ,200,102|a,300,103|!b,400,0|!c,400,0",
   );
-  assert.strictEqual(showChars(textInput), "x| |a|!b|!c");
-  assert.isTrue(textInput.completed);
+  equal(showChars(textInput), "x| |a|!b|!c");
+  isTrue(textInput.completed);
 });
 
 test("space skips words at the beginning of a text, remove garbage", () => {
@@ -525,13 +510,13 @@ test("space skips words at the beginning of a text, remove garbage", () => {
     spaceSkipsWords: true,
   });
 
-  assert.strictEqual(textInput.appendChar(100, X, 101), Feedback.Failed);
-  assert.strictEqual(showSteps(textInput), "");
-  assert.strictEqual(showChars(textInput), "*x|[a]|b|c");
-  assert.strictEqual(textInput.appendChar(200, Space, 102), Feedback.Recovered);
-  assert.strictEqual(showSteps(textInput), "!a,200,0|!b,200,0|!c,200,0");
-  assert.strictEqual(showChars(textInput), "!a|!b|!c");
-  assert.isTrue(textInput.completed);
+  equal(textInput.appendChar(100, X, 101), Feedback.Failed);
+  equal(showSteps(textInput), "");
+  equal(showChars(textInput), "*x|[a]|b|c");
+  equal(textInput.appendChar(200, Space, 102), Feedback.Recovered);
+  equal(showSteps(textInput), "!a,200,0|!b,200,0|!c,200,0");
+  equal(showChars(textInput), "!a|!b|!c");
+  isTrue(textInput.completed);
 });
 
 test("space skips words in the middle of a word, remove garbage", () => {
@@ -541,21 +526,21 @@ test("space skips words in the middle of a word, remove garbage", () => {
     spaceSkipsWords: true,
   });
 
-  assert.strictEqual(textInput.appendChar(100, X, 101), Feedback.Succeeded);
-  assert.strictEqual(textInput.appendChar(200, Space, 102), Feedback.Succeeded);
-  assert.strictEqual(textInput.appendChar(300, A, 103), Feedback.Succeeded);
-  assert.strictEqual(textInput.appendChar(300, X, 104), Feedback.Failed);
-  assert.strictEqual(showSteps(textInput), "x,100,101| ,200,102|a,300,103");
-  assert.strictEqual(showChars(textInput), "x| |a|*x|[b]|c");
-  assert.isFalse(textInput.completed);
+  equal(textInput.appendChar(100, X, 101), Feedback.Succeeded);
+  equal(textInput.appendChar(200, Space, 102), Feedback.Succeeded);
+  equal(textInput.appendChar(300, A, 103), Feedback.Succeeded);
+  equal(textInput.appendChar(300, X, 104), Feedback.Failed);
+  equal(showSteps(textInput), "x,100,101| ,200,102|a,300,103");
+  equal(showChars(textInput), "x| |a|*x|[b]|c");
+  isFalse(textInput.completed);
 
-  assert.strictEqual(textInput.appendChar(400, Space, 105), Feedback.Recovered);
-  assert.strictEqual(
+  equal(textInput.appendChar(400, Space, 105), Feedback.Recovered);
+  equal(
     showSteps(textInput),
     "x,100,101| ,200,102|a,300,103|!b,400,0|!c,400,0",
   );
-  assert.strictEqual(showChars(textInput), "x| |a|!b|!c");
-  assert.isTrue(textInput.completed);
+  equal(showChars(textInput), "x| |a|!b|!c");
+  isTrue(textInput.completed);
 });
 
 test("normalize characters", () => {
@@ -565,10 +550,10 @@ test("normalize characters", () => {
       forgiveErrors: false,
       spaceSkipsWords: false,
     });
-    assert.strictEqual(textInput.text, text);
+    equal(textInput.text, text);
     let timeStamp = 0;
     for (const codePoint of toCodePoints(input)) {
-      assert.strictEqual(
+      equal(
         textInput.appendChar((timeStamp += 100), codePoint, 100),
         Feedback.Succeeded,
       );
@@ -592,12 +577,12 @@ test("whitespace", () => {
     spaceSkipsWords: false,
   });
 
-  assert.strictEqual(textInput.appendChar(100, A, 100), Feedback.Succeeded);
-  assert.strictEqual(textInput.appendChar(200, Space, 100), Feedback.Succeeded);
-  assert.strictEqual(textInput.appendChar(300, Space, 100), Feedback.Succeeded);
-  assert.strictEqual(textInput.length, 3);
-  assert.strictEqual(textInput.pos, 3);
-  assert.isTrue(textInput.completed);
+  equal(textInput.appendChar(100, A, 100), Feedback.Succeeded);
+  equal(textInput.appendChar(200, Space, 100), Feedback.Succeeded);
+  equal(textInput.appendChar(300, Space, 100), Feedback.Succeeded);
+  equal(textInput.length, 3);
+  equal(textInput.pos, 3);
+  isTrue(textInput.completed);
 });
 
 test("emoji", () => {
@@ -607,31 +592,25 @@ test("emoji", () => {
     spaceSkipsWords: true,
   });
 
-  assert.strictEqual(showSteps(textInput), "");
-  assert.strictEqual(showChars(textInput), "[🍬]|🍭");
-  assert.strictEqual(textInput.length, 2);
-  assert.strictEqual(textInput.pos, 0);
-  assert.isFalse(textInput.completed);
+  equal(showSteps(textInput), "");
+  equal(showChars(textInput), "[🍬]|🍭");
+  equal(textInput.length, 2);
+  equal(textInput.pos, 0);
+  isFalse(textInput.completed);
 
-  assert.strictEqual(
-    textInput.appendChar(100, 0x1f36c, 101),
-    Feedback.Succeeded,
-  );
-  assert.strictEqual(showSteps(textInput), "🍬,100,101");
-  assert.strictEqual(showChars(textInput), "🍬|[🍭]");
-  assert.strictEqual(textInput.length, 2);
-  assert.strictEqual(textInput.pos, 1);
-  assert.isFalse(textInput.completed);
+  equal(textInput.appendChar(100, 0x1f36c, 101), Feedback.Succeeded);
+  equal(showSteps(textInput), "🍬,100,101");
+  equal(showChars(textInput), "🍬|[🍭]");
+  equal(textInput.length, 2);
+  equal(textInput.pos, 1);
+  isFalse(textInput.completed);
 
-  assert.strictEqual(
-    textInput.appendChar(200, 0x1f36d, 102),
-    Feedback.Succeeded,
-  );
-  assert.strictEqual(showSteps(textInput), "🍬,100,101|🍭,200,102");
-  assert.strictEqual(showChars(textInput), "🍬|🍭");
-  assert.strictEqual(textInput.length, 2);
-  assert.strictEqual(textInput.pos, 2);
-  assert.isTrue(textInput.completed);
+  equal(textInput.appendChar(200, 0x1f36d, 102), Feedback.Succeeded);
+  equal(showSteps(textInput), "🍬,100,101|🍭,200,102");
+  equal(showChars(textInput), "🍬|🍭");
+  equal(textInput.length, 2);
+  equal(textInput.pos, 2);
+  isTrue(textInput.completed);
 });
 
 function showSteps({ steps }: TextInput) {

@@ -1,9 +1,9 @@
 import { test } from "node:test";
-import { assert } from "chai";
+import { deepEqual, isFalse, isTrue } from "rich-assert";
 import { Size } from "./size.ts";
 
 test("size", () => {
-  assert.deepStrictEqual(
+  deepEqual(
     { ...new Size(1, 2) },
     {
       width: 1,
@@ -11,7 +11,7 @@ test("size", () => {
     },
   );
 
-  assert.deepStrictEqual(
+  deepEqual(
     { ...new Size({ width: 1, height: 2 }) },
     {
       width: 1,
@@ -19,6 +19,6 @@ test("size", () => {
     },
   );
 
-  assert.isFalse(Size.isSize(true));
-  assert.isTrue(Size.isSize({ width: 1, height: 2 }));
+  isFalse(Size.isSize(true));
+  isTrue(Size.isSize({ width: 1, height: 2 }));
 });
