@@ -75,7 +75,7 @@ test("load results", async () => {
   r.unmount();
 });
 
-function AnonymousUser({ children }: { readonly children: any }) {
+function AnonymousUser({ children }: { children: any }) {
   return (
     <PageDataContext.Provider value={{ publicUser: { id: null } } as PageData}>
       {children}
@@ -83,7 +83,7 @@ function AnonymousUser({ children }: { readonly children: any }) {
   );
 }
 
-function NamedUser({ children }: { readonly children: any }) {
+function NamedUser({ children }: { children: any }) {
   return (
     <PageDataContext.Provider value={{ publicUser: { id: "abc" } } as PageData}>
       {children}

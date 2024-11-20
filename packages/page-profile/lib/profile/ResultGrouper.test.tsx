@@ -11,7 +11,6 @@ import {
 } from "@keybr/result";
 import { FakeSettingsContext, Settings } from "@keybr/settings";
 import { fireEvent, render } from "@testing-library/react";
-import { type ReactNode } from "react";
 import { equal } from "rich-assert";
 import { ResultGrouper } from "./ResultGrouper.tsx";
 
@@ -103,11 +102,7 @@ test("select text type", async () => {
   r.unmount();
 });
 
-function TestChild({
-  keyStatsMap,
-}: {
-  readonly keyStatsMap: KeyStatsMap;
-}): ReactNode {
+function TestChild({ keyStatsMap }: { keyStatsMap: KeyStatsMap }) {
   const { layout } = useKeyboard();
   const { clearResults } = useResults();
   return (

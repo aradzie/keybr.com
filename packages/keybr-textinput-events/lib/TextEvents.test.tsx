@@ -43,13 +43,7 @@ test("focus and blur", () => {
   r.unmount();
 });
 
-function TestContainer({
-  onFocus, //
-  onBlur,
-}: {
-  readonly onFocus: () => void;
-  readonly onBlur: () => void;
-}) {
+function TestContainer({ onFocus, onBlur }: { onFocus: () => void; onBlur: () => void }) {
   const ref = useRef<Focusable>(null);
   return (
     <div>

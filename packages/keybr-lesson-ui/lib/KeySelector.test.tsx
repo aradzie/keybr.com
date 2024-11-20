@@ -5,7 +5,7 @@ import { type KeyStatsMap, makeKeyStatsMap } from "@keybr/result";
 import { FakeSettingsContext } from "@keybr/settings";
 import { fireEvent, render } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import { type ReactNode, useState } from "react";
+import { useState } from "react";
 import { equal } from "rich-assert";
 import { KeySelector } from "./KeySelector.tsx";
 
@@ -97,7 +97,7 @@ function Controlled({
 }: {
   keyStatsMap: KeyStatsMap;
   onChange: (value: Letter) => void;
-}): ReactNode {
+}) {
   const [value, setValue] = useState(keyStatsMap.letters[0]);
   return (
     <KeySelector

@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import { render } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import { type ReactNode, useState } from "react";
+import { useState } from "react";
 import { isNotNull, isNull } from "rich-assert";
 import { Button } from "../button/index.ts";
 import { PortalContainer } from "../portal/index.ts";
@@ -14,7 +14,7 @@ test.before(() => {
 });
 
 test("test", async () => {
-  function UnderTest(): ReactNode {
+  function UnderTest() {
     const [open, setOpen] = useState(false);
     return (
       <Popover
