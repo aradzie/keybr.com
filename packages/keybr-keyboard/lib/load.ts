@@ -41,6 +41,7 @@ import { LAYOUT_EN_HANDS_DOWN_NEU } from "./layout/en_hands_down_neu.ts";
 import { LAYOUT_EN_NERPS } from "./layout/en_nerps.ts";
 import { LAYOUT_EN_NERPS_MATRIX } from "./layout/en_nerps_matrix.ts";
 import { LAYOUT_EN_NORMAN } from "./layout/en_norman.ts";
+import { LAYOUT_EN_NOTED } from "./layout/en_noted.ts";
 import { LAYOUT_EN_STURDY } from "./layout/en_sturdy.ts";
 import { LAYOUT_EN_UK } from "./layout/en_uk.ts";
 import { LAYOUT_EN_US } from "./layout/en_us.ts";
@@ -117,6 +118,7 @@ const layouts = new Map<Layout, CharacterDict>([
   [Layout.EN_NORMAN, LAYOUT_EN_NORMAN],
   [Layout.EN_STURDY, LAYOUT_EN_STURDY],
   [Layout.EN_UK, LAYOUT_EN_UK],
+  [Layout.EN_NOTED, LAYOUT_EN_NOTED],
   [Layout.EN_US, LAYOUT_EN_US],
   [Layout.EN_WORKMAN, LAYOUT_EN_WORKMAN],
   [Layout.ES_ES, LAYOUT_ES_ES],

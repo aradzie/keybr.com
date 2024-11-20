@@ -43,6 +43,7 @@ for (const [id, layout] of [
   ["en_nerps", importKeymap("layouts/en_nerps.json")],
   ["en_nerps_matrix", importKeymap("layouts/en_nerps_matrix.json")],
   ["en_norman", importKeymap("layouts/en_norman.json")],
+  ["en_noted", importKeymap("layouts/en_noted.json")],
   ["en_sturdy", importKeymap("layouts/en_sturdy.json")],
   ["en_uk", importCldr("cldr-keyboards-43.0/keyboards/windows/en-GB-t-k0-windows.xml")],
   ["en_us", importCldr("cldr-keyboards-43.0/keyboards/windows/en-t-k0-windows.xml")],

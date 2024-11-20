@@ -1007,6 +1007,21 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly EN_NOTED = new Layout(
+    /* id= */ "en-noted",
+    /* xid= */ 0xa1,
+    /* name= */ "Noted",
+    /* family= */ "de-noted",
+    /* language= */ Language.EN,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
 
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
@@ -1029,6 +1044,7 @@ export class Layout implements XEnumItem {
     Layout.EN_HALMAK,
     Layout.EN_ENGRAM,
     Layout.EN_GRAPHITE,
+    Layout.EN_NOTED,
     Layout.EN_UK,
     Layout.EN_JP,
     Layout.EL_GR,
