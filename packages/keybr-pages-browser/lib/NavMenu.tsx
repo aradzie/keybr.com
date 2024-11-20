@@ -115,7 +115,7 @@ function MenuItemLink({
       to={path}
       title={title && formatMessage(title)}
     >
-      <Icon shape={icon ?? ""} />
+      <Icon className={styles.icon} shape={icon ?? ""} />
       <span className={styles.label}>{formatMessage(label)}</span>
     </NavLink>
   );

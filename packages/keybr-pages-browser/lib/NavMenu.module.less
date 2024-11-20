@@ -3,9 +3,7 @@
 .root {
   position: sticky;
   inset-block-start: 0;
-  max-inline-size: 12rem;
-  margin: 0;
-  padding: 0;
+  max-inline-size: 10rem;
   box-shadow: var(--Surface__box-shadow);
   backdrop-filter: var(--Surface__backdrop-filter);
 }
@@ -18,27 +16,23 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  block-size: 3rem;
-  margin: 0;
+  block-size: 2rem;
   padding-inline: 1rem;
   padding-block: 0;
   color: var(--text-color);
-  line-height: 3rem;
+  line-height: 2rem;
   text-decoration: none;
-
-  &:hover {
-    color: var(--text-color);
-    background-color: var(--background-color);
-  }
 
   &.isActive {
     color: var(--text-color);
-    background-color: var(--background-color);
+    background-color: var(--primary-l1);
   }
 }
 
 .icon {
-  display: inline-block;
+  inline-size: 1rem;
+  block-size: 1rem;
+  fill: var(--secondary-f1);
 }
 
 .label {
@@ -57,19 +51,14 @@
   color: var(--text-color);
   text-decoration: none;
 
-  &:hover {
-    color: var(--text-color);
-    background-color: var(--background-color);
-  }
-
   &.isActive {
     color: var(--text-color);
-    background-color: var(--background-color);
+    background-color: var(--primary-l1);
   }
 }
 
 .userName {
   .text-truncate();
-  max-inline-size: 10rem;
+  max-inline-size: 8rem;
   text-align: center;
 }
