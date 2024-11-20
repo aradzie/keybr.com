@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@keybr/scripts": "*",
-    "css-tree": "^3.0.0"
+    "css-tree": "^3.0.1"
   },
   "scripts": {
     "clean": "rm -fr .types",

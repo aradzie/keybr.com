@@ -23,7 +23,7 @@
     "@keybr/settings": "*",
     "@keybr/settings-database": "*",
     "@keybr/themes": "*",
-    "@types/ws": "^8.5.12",
+    "@types/ws": "^8.5.13",
     "ws": "^8.18.0"
   },
   "devDependencies": {},

@@ -58,28 +58,28 @@
     "@sosimple/fsx-file": "^0.2.1",
     "@sosimple/fsx-lockfile": "^0.2.1",
     "@sosimple/retry": "^0.2.1",
-    "@unicode/unicode-16.0.0": "^1.6.0",
+    "@unicode/unicode-16.0.0": "^1.6.5",
     "clsx": "^2.1.1",
     "dotenv": "^16.4.5",
     "knex": "^3.1.0",
     "objection": "^3.1.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-intl": "^6.8.4",
-    "react-router": "^6.27.0",
-    "react-router-dom": "^6.27.0",
-    "tslib": "^2.8.0",
+    "react-intl": "^7.0.1",
+    "react-router": "^6.28.0",
+    "react-router-dom": "^6.28.0",
+    "tslib": "^2.8.1",
     "xml-js": "^1.6.11",
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@formatjs/cli-lib": "^6.6.1",
-    "@formatjs/ts-transformer": "^3.13.20",
+    "@formatjs/cli-lib": "^6.6.6",
+    "@formatjs/ts-transformer": "^3.13.23",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.0.1",
     "@testing-library/user-event": "^14.5.2",
     "@types/chai": "^5.0.1",
-    "@types/node": "^22.8.5",
+    "@types/node": "^22.9.1",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "chai": "^5.1.1",
@@ -87,5 +87,8 @@
     "confusing-browser-globals": "^1.0.11",
     "rich-assert": "^0.0.3",
     "typescript": "^5.6.3"
+  },
+  "overrides": {
+    "@formatjs/fast-memoize": "2.2.2"
   }
 }
