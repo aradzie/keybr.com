@@ -4,14 +4,11 @@ import { User } from "@keybr/database";
 import { PublicId } from "@keybr/publicid";
 import { ResultFaker } from "@keybr/result";
 import { UserDataFactory } from "@keybr/result-userdata";
-import { assert, expect, use } from "chai";
-import chaiLike from "chai-like";
+import { equal, isNull, isTrue, like } from "rich-assert";
 import { kMain } from "../module.ts";
 import { TestContext } from "../test/context.ts";
 import { startApp } from "../test/request.ts";
 import { findUser } from "../test/sql.ts";
-
-use(chaiLike);
 
 const context = new TestContext();
 
@@ -30,9 +27,9 @@ test("logout", async () => {
 
   // Assert.
 
-  assert.strictEqual(response.status, 302);
-  assert.strictEqual(response.headers.get("Location"), "/account");
-  assert.isNull(await request.who());
+  equal(response.status, 302);
+  equal(response.headers.get("Location"), "/account");
+  isNull(await request.who());
 });
 
 test("patch account", async () => {
@@ -53,8 +50,8 @@ test("patch account", async () => {
 
     // Assert.
 
-    assert.strictEqual(response.status, 200);
-    expect(await response.body.json()).to.be.like({
+    equal(response.status, 200);
+    like(await response.body.json(), {
       user: {
         id: "55vdtk1",
         anonymized: true,
@@ -65,7 +62,7 @@ test("patch account", async () => {
         imageUrl: null,
       },
     });
-    expect((await User.findById(user.id!))!.toJSON()).to.be.like({
+    like((await User.findById(user.id!))!.toJSON(), {
       anonymized: 1,
     });
   }
@@ -79,8 +76,8 @@ test("patch account", async () => {
 
     // Assert.
 
-    assert.strictEqual(response.status, 200);
-    expect(await response.body.json()).to.be.like({
+    equal(response.status, 200);
+    like(await response.body.json(), {
       user: {
         id: "55vdtk1",
         anonymized: false,
@@ -91,7 +88,7 @@ test("patch account", async () => {
         imageUrl: "imageUrl1",
       },
     });
-    expect((await User.findById(user.id!))!.toJSON()).to.be.like({
+    like((await User.findById(user.id!))!.toJSON(), {
       anonymized: 0,
     });
   }
@@ -116,8 +113,8 @@ test("delete account", async () => {
 
   // Assert.
 
-  assert.strictEqual(response.status, 204);
-  assert.isNull(await request.who());
-  assert.isNull(await User.findById(user.id!));
-  assert.isTrue(await userData.exists());
+  equal(response.status, 204);
+  isNull(await request.who());
+  isNull(await User.findById(user.id!));
+  isTrue(await userData.exists());
 });

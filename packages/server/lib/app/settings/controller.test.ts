@@ -2,14 +2,11 @@ import { test } from "node:test";
 import { Application } from "@fastr/core";
 import { Settings, stringProp } from "@keybr/settings";
 import { SettingsDatabase } from "@keybr/settings-database";
-import { assert, expect, use } from "chai";
-import chaiLike from "chai-like";
+import { deepEqual, equal, like } from "rich-assert";
 import { kMain } from "../module.ts";
 import { TestContext } from "../test/context.ts";
 import { startApp } from "../test/request.ts";
 import { findUser } from "../test/sql.ts";
-
-use(chaiLike);
 
 const context = new TestContext();
 
@@ -20,18 +17,9 @@ test("handle unauthenticated user", async () => {
 
   // Assert.
 
-  assert.strictEqual(
-    (await request.GET("/_/sync/settings").send()).status,
-    403,
-  );
-  assert.strictEqual(
-    (await request.PUT("/_/sync/settings").send({})).status,
-    403,
-  );
-  assert.strictEqual(
-    (await request.DELETE("/_/sync/settings").send({})).status,
-    403,
-  );
+  equal((await request.GET("/_/sync/settings").send()).status, 403);
+  equal((await request.PUT("/_/sync/settings").send({})).status, 403);
+  equal((await request.DELETE("/_/sync/settings").send({})).status, 403);
 });
 
 test("get empty settings", async () => {
@@ -47,16 +35,13 @@ test("get empty settings", async () => {
 
   // Assert.
 
-  assert.strictEqual(response.status, 200);
-  assert.strictEqual(
+  equal(response.status, 200);
+  equal(
     response.headers.get("Content-Type"),
     "application/json; charset=UTF-8",
   );
-  assert.strictEqual(
-    response.headers.get("Cache-Control"),
-    "private, no-cache",
-  );
-  assert.deepStrictEqual(await response.body.json(), {});
+  equal(response.headers.get("Cache-Control"), "private, no-cache");
+  deepEqual(await response.body.json(), {});
 });
 
 test("get existing settings", async () => {
@@ -78,16 +63,13 @@ test("get existing settings", async () => {
 
   // Assert.
 
-  assert.strictEqual(response.status, 200);
-  assert.strictEqual(
+  equal(response.status, 200);
+  equal(
     response.headers.get("Content-Type"),
     "application/json; charset=UTF-8",
   );
-  assert.strictEqual(
-    response.headers.get("Cache-Control"),
-    "private, no-cache",
-  );
-  expect(await response.body.json()).to.be.like({
+  equal(response.headers.get("Cache-Control"), "private, no-cache");
+  like(await response.body.json(), {
     prop: "abc",
   });
 });
@@ -107,7 +89,7 @@ test("validate content type on put settings", async () => {
 
   // Assert.
 
-  assert.strictEqual(response.status, 415);
+  equal(response.status, 415);
 });
 
 test("validate format on put settings", async () => {
@@ -125,7 +107,7 @@ test("validate format on put settings", async () => {
 
   // Assert.
 
-  assert.strictEqual(response.status, 400);
+  equal(response.status, 400);
 });
 
 test("handle put settings", async () => {
@@ -146,8 +128,8 @@ test("handle put settings", async () => {
 
   // Assert.
 
-  assert.strictEqual(response.status, 204);
-  expect((await database.get(user.id!))?.toJSON()).to.be.like({
+  equal(response.status, 204);
+  like((await database.get(user.id!))?.toJSON(), {
     prop: "abc",
   });
 });
@@ -171,6 +153,6 @@ test("handle delete settings", async () => {
 
   // Assert.
 
-  assert.strictEqual(response.status, 204);
-  assert.strictEqual(await database.get(user.id!), null);
+  equal(response.status, 204);
+  equal(await database.get(user.id!), null);
 });
