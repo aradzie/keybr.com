@@ -164,9 +164,6 @@
   "page.termsOfService.name": "Kullanım Şartları",
   "page.typingTest.link.name": "Yazım Testi",
   "page.typingTest.title": "Hız Testi",
-  "page.wordCount.content": "<h1>Metin Araçları</h1><p>Metninizdeki karakterleri ve kelimeleri sayın. En sık kullanılan kelimelerin neler olduğunu öğrenin. Bu kelimeleri okumak ve yazmak için geçen süreyi ölçün.</p>",
-  "page.wordCount.description": "Metininizdeki karakter ve kelimeleri sayın.",
-  "page.wordCount.link.description": "Metininizdeki karakter ve kelimeleri sayın.",
   "practice.widget.settings.name": "Ayarlar...",
   "profile.accuracy.header": "Doğruluk Çizgileri",
   "profile.calendar.averageSpeed.description": "Ortalama hız: {value}",
@@ -246,7 +243,6 @@
   "textArea.capsLock.message": "Caps Lock açık",
   "textArea.focus.message": "Başlamak için tıklayın veya Enter’a basın...",
   "textStats.averageWordLength": "Ortalama kelime uzunluğu",
-  "textStats.mostCommonWords": "{count} en yaygın kelime",
   "textStats.numAllWords": "Tüm kelimeler",
   "textStats.numChapters": "Bölümler",
   "textStats.numCharacters": "Karakterler",
@@ -256,6 +252,5 @@
   "theme.exitFullscreen.description": "Tam ekran modundan çıkın.",
   "tour.close": "Kapat",
   "tour.next": "Sonraki",
-  "tour.previous": "Önceki",
-  "wordCount.textInput.placeholder": "Yazınızı buraya yapıştırın"
+  "tour.previous": "Önceki"
 }

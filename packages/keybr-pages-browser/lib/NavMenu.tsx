@@ -55,10 +55,6 @@ export function NavMenu({ currentPath }: { readonly currentPath: string }) {
       </MenuItem>
 
       <MenuItem>
-        <MenuItemLink page={Pages.wordCount} />
-      </MenuItem>
-
-      <MenuItem>
         <SubMenu currentPath={currentPath} />
       </MenuItem>
     </div>

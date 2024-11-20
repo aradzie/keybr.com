@@ -205,11 +205,6 @@
   "page.typingTest.link.description": "Kiểm tra tốc độ đánh máy.",
   "page.typingTest.link.name": "Bài kiểm tra",
   "page.typingTest.title": "Bài kiểm tra",
-  "page.wordCount.content": "<h1>Số từ</h1><p>Đếm số ký tự và từ trong văn bản bạn nhập vào. Tìm ra những từ nào phổ biến nhất. Đo thời gian gõ và đọc những từ này.</p>",
-  "page.wordCount.description": "Đếm số kí tự và từ trong đoạn văn.",
-  "page.wordCount.link.description": "Đếm số kí tự và từ trong đoạn văn.",
-  "page.wordCount.link.name": "Số từ",
-  "page.wordCount.title": "Số từ",
   "practice.widget.resetLesson.description": "Đặt lại bài học hiện tại (Ctrl + Mũi tên trái).",
   "practice.widget.settings.description": "Thay đổi cài đặt cho bài học, ngôn ngữ, bố cục bàn phím, v.v.",
   "practice.widget.settings.name": "Cài đặt…",
@@ -322,15 +317,10 @@
   "textStats.numAllWords": "Tất cả các từ",
   "textStats.numChapters": "Tổng số chương",
   "textStats.numCharacters": "Tổng số ký tự",
-  "textStats.numCharsExcludingWhitespace": "Các ký tự không bao gồm khoảng trắng",
-  "textStats.numCharsIncludingWhitespace": "Các ký tự bao gồm khoảng trắng",
   "textStats.numParagraphs": "Đoạn văn",
   "theme.enterFullscreen.description": "Vào chế độ toàn màn hình.",
   "theme.exitFullscreen.description": "Thoát khỏi chế độ toàn màn hình.",
   "tour.close": "Đóng",
   "tour.next": "Tiếp theo",
-  "tour.previous": "Trước đó",
-  "wordCount.emptyTextMessage": "Vui lòng cung cấp một số văn bản để tính toán số liệu thống kê liên quan.",
-  "wordCount.exampleText": "(Văn bản ví dụ, bấm vào đây để xóa nó.)",
-  "wordCount.textInput.placeholder": "Dán văn bản của bạn tại đây"
+  "tour.previous": "Trước đó"
 }

@@ -109,7 +109,6 @@ function Content({ page }: { readonly page: PageInfo }) {
             Pages.profile,
             Pages.typingTest,
             Pages.multiplayer,
-            Pages.wordCount,
             Pages.layouts,
             Pages.help,
           ].map(({ path, link }, index) => (

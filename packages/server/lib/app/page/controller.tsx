@@ -157,19 +157,6 @@ export class Controller {
     return this.renderPage(ctx, Pages.multiplayer, intl);
   }
 
-  @http.GET(`${Pages.wordCount.path}`)
-  async ["word-count"](ctx: Context<RouterState & AuthState>) {
-    return this.renderPage(ctx, Pages.wordCount);
-  }
-
-  @http.GET(`/{locale:${localePattern}}${Pages.wordCount.path}`)
-  async ["word-count-i18n"](
-    ctx: Context<RouterState & AuthState>,
-    @pathParam("locale", pIntl) intl: IntlShape,
-  ) {
-    return this.renderPage(ctx, Pages.wordCount, intl);
-  }
-
   @http.GET(`${Pages.termsOfService.path}`)
   async ["terms-of-service"](ctx: Context<RouterState & AuthState>) {
     return this.renderPage(ctx, Pages.termsOfService);

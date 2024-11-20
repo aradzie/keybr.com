@@ -23,7 +23,6 @@ for (const path of [
   "/profile/example4",
   "/profile/example5",
   "/typing-test",
-  "/word-count",
   "/terms-of-service",
   "/privacy-policy",
 ]) {

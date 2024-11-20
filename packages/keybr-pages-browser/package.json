@@ -16,7 +16,6 @@
     "@keybr/page-profile": "*",
     "@keybr/page-static": "*",
     "@keybr/page-typing-test": "*",
-    "@keybr/page-word-count": "*",
     "@keybr/pages-shared": "*",
     "@keybr/request": "*",
     "@keybr/result-loader": "*",

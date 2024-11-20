@@ -34,7 +34,6 @@ export function generateSitemapXml(canonicalUrl: string): any {
     Pages.layouts,
     Pages.multiplayer,
     Pages.typingTest,
-    Pages.wordCount,
   ]) {
     for (const locale of sortedLocales) {
       const alternate: any[] = [];

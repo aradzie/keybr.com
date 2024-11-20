@@ -176,8 +176,6 @@
   "page.typingTest.link.description": "タイピング速度テストをする。",
   "page.typingTest.link.name": "タイピングテスト",
   "page.typingTest.title": "スピードテスト",
-  "page.wordCount.link.name": "単語数",
-  "page.wordCount.title": "単語数",
   "practice.widget.resetLesson.description": "現在のレッスンをリセットします。 (コントロール + 左矢印)",
   "practice.widget.settings.description": "レッスン設定、言語、キーボードレイアウトなどを変更します。",
   "practice.widget.settings.name": "設定...",
@@ -239,18 +237,14 @@
   "textArea.capsLock.message": "Caps Lockが有効です",
   "textArea.focus.message": "クリックか、Enterキーを押して有効化...",
   "textStats.averageWordLength": "平均単語長",
-  "textStats.mostCommonWords": "最も一般的な{count}単語",
   "textStats.numAllWords": "全単語",
   "textStats.numChapters": "章",
   "textStats.numCharacters": "文字数",
-  "textStats.numCharsExcludingWhitespace": "空白を含まない文字数",
-  "textStats.numCharsIncludingWhitespace": "空白を含む文字数",
   "textStats.numParagraphs": "文章",
   "textStats.numUniqueWords": "ユニークな単語数",
   "theme.enterFullscreen.description": "フルスクリーンモード。",
   "theme.exitFullscreen.description": "フルスクリーンモードを終了。",
   "tour.close": "閉じる",
   "tour.next": "次",
-  "tour.previous": "前",
-  "wordCount.textInput.placeholder": "ここにテキストをペースト"
+  "tour.previous": "前"
 }

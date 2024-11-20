@@ -6,7 +6,6 @@ import {
   mdiKeyboard,
   mdiKeyboardOutline,
   mdiSpeedometer,
-  mdiTextBoxCheckOutline,
   mdiTrophyOutline,
 } from "@mdi/js";
 import { defineMessage, type MessageDescriptor } from "react-intl";
@@ -255,35 +254,6 @@ export namespace Pages {
         content: defineMessage({
           id: "page.layouts.description",
           defaultMessage: "Keyboard layouts comparison charts.",
-        }),
-      },
-    ],
-  } satisfies PageInfo;
-
-  export const wordCount = {
-    path: "/word-count",
-    title: defineMessage({
-      id: "page.wordCount.title",
-      defaultMessage: "Word Count",
-    }),
-    link: {
-      label: defineMessage({
-        id: "page.wordCount.link.name",
-        defaultMessage: "Word Count",
-      }),
-      title: defineMessage({
-        id: "page.wordCount.link.description",
-        defaultMessage: "Count the characters and words in your text.",
-      }),
-      icon: mdiTextBoxCheckOutline,
-    },
-    meta: [
-      ...meta,
-      {
-        name: "description",
-        content: defineMessage({
-          id: "page.wordCount.description",
-          defaultMessage: "Count the characters and words in your text.",
         }),
       },
     ],

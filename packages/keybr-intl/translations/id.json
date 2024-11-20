@@ -234,11 +234,6 @@
   "page.typingTest.link.description": "Ambil Tes Mengetik.",
   "page.typingTest.link.name": "Uji Ketikan",
   "page.typingTest.title": "Tes kecepatan",
-  "page.wordCount.content": "<h1>Jumlah Kata</h1><p>Hitung karakter dan kata dalam teks Anda. Cari tahu kata-kata apa yang paling umum. Ukur waktu yang dibutuhkan untuk mengetik, membaca kata-kata ini.</p>",
-  "page.wordCount.description": "Hitung Karakter dan Huruf di teks anda.",
-  "page.wordCount.link.description": "Hitung Karakter dan Huruf di teks anda.",
-  "page.wordCount.link.name": "Jumlah Kata",
-  "page.wordCount.title": "Jumlah Kata",
   "practice.tour.slide1": "<h1>Belajar Mengetik Lebih Cepat</h1> <p>Aplikasi web ini akan membantumu belajar <em>mengetik sentuh</em>, yang berarti mengetik melalui memori otot tanpa menggunakan penglihatanmu untuk mencari tombol. Ini dapat secara dramatis meningkatkan kecepatan dan akurasi mengetikmu. Sebaliknya adalah <em>mengetik dengan sistem cari dan ketuk</em>, yaitu metode mengetik di mana kamu melihat keyboard alih-alih layar, dan hanya menggunakan jari telunjuk.</p> <p>Ini adalah tutorial singkat yang akan menjelaskan bagaimana aplikasi ini bekerja.</p> <p>Kamu dapat menggunakan tombol panah kiri dan kanan untuk menavigasi melalui slide ini.</p>",
   "practice.tour.slide10": "<p>Indikator ini menunjukkan himpunan huruf saat ini yang digunakan untuk menghasilkan pelajaran, dan tingkat kepercayaanmu untuk setiap huruf dalam himpunan tersebut:</p>",
   "practice.tour.slide11": "<p>Indikator ini juga dapat digunakan untuk memprediksi jumlah pelajaran yang tersisa yang diperlukan untuk sepenuhnya membuka kunci sebuah huruf, seperti yang terlihat pada grafik contoh di bawah. Kunjungi secara berkala untuk mendapatkan wawasan lebih lanjut tentang bagaimana proses belajarmu, untuk melihat apakah kamu membuat kemajuan.</p>",
@@ -332,15 +327,11 @@
   "textStats.numAllWords": "Semua kata",
   "textStats.numChapters": "Tahap",
   "textStats.numCharacters": "Karakter",
-  "textStats.numCharsExcludingWhitespace": "Karakter tanpa ruang kosong",
-  "textStats.numCharsIncludingWhitespace": "karakter termasuk ruangkosong",
   "textStats.numParagraphs": "Paragraf",
   "textStats.numUniqueWords": "Kata-kata unik",
   "theme.enterFullscreen.description": "Masuk mode layar penuh.",
   "theme.exitFullscreen.description": "Keluar mode layar penuh.",
   "tour.close": "Tutup",
   "tour.next": "Selanjutnya",
-  "tour.previous": "Sebelumnya",
-  "wordCount.exampleText": "(Contoh text, klik disini untuk menghapusnya.)",
-  "wordCount.textInput.placeholder": "Paste text anda disini"
+  "tour.previous": "Sebelumnya"
 }
