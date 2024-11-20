@@ -60,31 +60,15 @@ Untranslated: 39 messages, 1555 words
 
 # Czech
 
-Translated: 408 messages, 4873 words
+Translated: 426 messages, 5165 words
 
-Untranslated: 21 messages, 276 words
+Untranslated: 5 messages, 6 words
 
-* *Books*
 * *Font:*
 * *Reset*
 * *Zones:*
 * *Syntax:*
-* *Top accuracy*
 * *Sound Theme:*
-* *Explain charts*
-* *Average accuracy*
-* *Relative Accuracy*
-* *Hide explanations*
-* *Repeat each word:*
-* *Keyboard hardware emulates layout*
-* *Generate lessons that resemble the specified programming lan...*
-* *Practice punctuation characters that are specific to a progr...*
-* *This is a histogram of the accuracies of all users, and your...*
-* *Generate typing lessons from the text of a book. All keys ar...*
-* *Use this option if you have a hardware layout switcher on yo...*
-* *Repeat each word a number of times. Type a word for the firs...*
-* *See how accurate you type relative to other users. The highe...*
-* ...
 
 # Danish
 
@@ -393,9 +377,9 @@ Untranslated: 81 messages, 1460 words
 
 # Italian
 
-Translated: 413 messages, 5055 words
+Translated: 422 messages, 5160 words
 
-Untranslated: 15 messages, 92 words
+Untranslated: 8 messages, 9 words
 
 * *Font:*
 * *Layout*
@@ -404,14 +388,7 @@ Untranslated: 15 messages, 92 words
 * *Account*
 * *Layouts*
 * *Volume:*
-* *Top accuracy*
 * *Sound Theme:*
-* *Average accuracy*
-* *Relative Accuracy*
-* *Repeat each word:*
-* *This is a histogram of the accuracies of all users, and your...*
-* *Repeat each word a number of times. Type a word for the firs...*
-* *See how accurate you type relative to other users. The highe...*
 
 # Japanese
 
@@ -471,37 +448,18 @@ Untranslated: 256 messages, 3921 words
 
 # Nepali
 
-Translated: 383 messages, 4631 words
+Translated: 429 messages, 5168 words
 
-Untranslated: 46 messages, 518 words
+Untranslated: 2 messages, 3 words
 
-* *Books*
-* *Font:*
 * *Zones:*
-* *Volume:*
-* *Syntax:*
-* *Alphabet:*
-* *Language:*
-* *No Sounds*
-* *Box cursor*
-* *All Sounds*
-* *Source Code*
-* *Line cursor*
-* *Top accuracy*
-* *Block cursor*
 * *Sound Theme:*
-* *Smooth cursor*
-* *No whitespace*
-* *Explain charts*
-* *Jumping cursor*
-* *Highlight keys*
-* ...
 
 # Dutch
 
-Translated: 409 messages, 5048 words
+Translated: 418 messages, 5153 words
 
-Untranslated: 19 messages, 99 words
+Untranslated: 12 messages, 16 words
 
 * *Score*
 * *Score*
@@ -511,17 +469,10 @@ Untranslated: 19 messages, 99 words
 * *Volume:*
 * *Multiplayer*
 * *Multiplayer*
-* *Top accuracy*
 * *Sound Theme:*
 * *Premium Account*
 * *Premium Account*
 * *Premium Account*
-* *Average accuracy*
-* *Relative Accuracy*
-* *Repeat each word:*
-* *This is a histogram of the accuracies of all users, and your...*
-* *Repeat each word a number of times. Type a word for the firs...*
-* *See how accurate you type relative to other users. The highe...*
 
 # Polish
 
@@ -771,20 +722,9 @@ Untranslated: 10 messages, 93 words
 
 # Traditional Chinese
 
-Translated: 416 messages, 5037 words
+Translated: 429 messages, 5168 words
 
-Untranslated: 13 messages, 112 words
+Untranslated: 2 messages, 3 words
 
-* *Books*
 * *Zones:*
-* *Top accuracy*
 * *Sound Theme:*
-* *Explain charts*
-* *Average accuracy*
-* *Relative Accuracy*
-* *Hide explanations*
-* *Repeat each word:*
-* *This is a histogram of the accuracies of all users, and your...*
-* *Generate typing lessons from the text of a book. All keys ar...*
-* *Repeat each word a number of times. Type a word for the firs...*
-* *See how accurate you type relative to other users. The highe...*
