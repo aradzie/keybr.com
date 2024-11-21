@@ -1,8 +1,15 @@
 import { test } from "node:test";
 import { PublicId } from "@keybr/publicid";
-import { expect } from "chai";
 import { ValidationError } from "objection";
-import { deepEqual, equal, isNotNull, isNull, like } from "rich-assert";
+import {
+  deepEqual,
+  doesNotThrow,
+  equal,
+  isNotNull,
+  isNull,
+  like,
+  throws,
+} from "rich-assert";
 import { User, UserExternalId, UserLoginRequest } from "./model.ts";
 import { useDatabase } from "./testing.ts";
 import { Random } from "./util.ts";
@@ -14,69 +21,57 @@ const now = new Date("2001-02-03T04:05:06Z");
 test("validate models", (ctx) => {
   ctx.mock.timers.enable({ apis: ["Date"], now });
 
-  expect(() => {
+  throws(() => {
     User.fromJson({});
-  })
-    .to.throw(ValidationError)
-    .to.have.property("data");
+  }, ValidationError);
 
-  expect(() => {
+  throws(() => {
     User.fromJson({
       name: null,
       email: null,
     });
-  })
-    .to.throw(ValidationError)
-    .to.have.property("data");
+  }, ValidationError);
 
-  expect(() => {
+  throws(() => {
     User.fromJson({
       name: "",
       email: "",
     });
-  })
-    .to.throw(ValidationError)
-    .to.have.property("data");
+  }, ValidationError);
 
-  expect(() => {
+  doesNotThrow(() => {
     User.fromJson({
       name: "name",
       email: "email",
     });
-  }).to.not.throw();
+  });
 
-  expect(() => {
+  throws(() => {
     UserExternalId.fromJson({});
-  })
-    .to.throw(ValidationError)
-    .to.have.property("data");
+  }, ValidationError);
 
-  expect(() => {
+  throws(() => {
     UserExternalId.fromJson({
       provider: null,
       externalId: null,
     });
-  })
-    .to.throw(ValidationError)
-    .to.have.property("data");
+  }, ValidationError);
 
-  expect(() => {
+  throws(() => {
     UserExternalId.fromJson({
       provider: "",
       externalId: "",
     });
-  })
-    .to.throw(ValidationError)
-    .to.have.property("data");
+  }, ValidationError);
 
-  expect(() => {
+  doesNotThrow(() => {
     UserExternalId.fromJson({
       provider: "provider",
       externalId: "externalId",
     });
-  }).to.not.throw();
+  });
 
-  expect(() => {
+  doesNotThrow(() => {
     UserExternalId.fromJson({
       provider: "provider",
       externalId: "externalId",
@@ -84,9 +79,9 @@ test("validate models", (ctx) => {
       url: null,
       imageUrl: null,
     });
-  }).to.not.throw();
+  });
 
-  expect(() => {
+  doesNotThrow(() => {
     UserExternalId.fromJson({
       provider: "provider",
       externalId: "externalId",
@@ -94,7 +89,7 @@ test("validate models", (ctx) => {
       url: "url",
       imageUrl: "imageUrl",
     });
-  }).to.not.throw();
+  });
 });
 
 test("automatically populate createdAt", async (ctx) => {
