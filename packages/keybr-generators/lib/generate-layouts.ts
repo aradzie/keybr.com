@@ -42,6 +42,7 @@ for (const [id, layout] of [
   ["en_graphite", importKeymap("layouts/en_graphite.json")],
   ["en_halmak", importKeymap("layouts/en_halmak.json")],
   ["en_hands_down_neu", importKeymap("layouts/en_hands_down_neu.json")],
+  ["en_hands_down_promethium", importKeymap("layouts/en_hands_down_promethium.json")],
   ["en_nerps", importKeymap("layouts/en_nerps.json")],
   ["en_nerps_matrix", importKeymap("layouts/en_nerps_matrix.json")],
   ["en_norman", importKeymap("layouts/en_norman.json")],
