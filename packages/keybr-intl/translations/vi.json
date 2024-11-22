@@ -210,8 +210,6 @@
   "practice.widget.settings.name": "Cài đặt…",
   "practice.widget.skipLesson.description": "Bỏ qua bài học này (Ctrl + mũi tên phải).",
   "profile.accuracy.header": "Chuỗi chính xác",
-  "profile.calendar.averageSpeed.description": "Tốc độ trung bình: {value}",
-  "profile.calendar.topSpeed.description": "Tốc độ cao nhất: {value}",
   "profile.calendar.totalLessons.description": "Số lượng bài học: {value}",
   "profile.calendar.totalTime.description": "Thời gian học: {value}",
   "profile.chart.accuracy.accuracyThreshold.header": "Ngưỡng chính xác",

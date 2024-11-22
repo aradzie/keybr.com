@@ -255,8 +255,6 @@
   "profile.accuracy.header": "Serie di precisione",
   "profile.accuracy.legend": "Sopra sono elencate le sequenze continue più lunghe di lezioni con accuratezza superiore a una determinata soglia, insieme alle statistiche su ciascuna di queste sequenze. Più lunga è la sequenza di lezioni, meglio è.",
   "profile.accuracy.noData": "Non hai alcuna serie di precisione. Prendi in considerazione l’idea di completare una lezione con la massima precisione possibile, indipendentemente dalla velocità di digitazione.",
-  "profile.calendar.averageSpeed.description": "Velocità media: {value}",
-  "profile.calendar.topSpeed.description": "Velocità massima: {value}",
   "profile.calendar.totalLessons.description": "Numero di lezioni: {value}",
   "profile.calendar.totalTime.description": "Orario delle lezioni: {value}",
   "profile.chart.accuracy.accuracyThreshold.header": "Soglia di Precisione",

@@ -258,8 +258,6 @@
   "profile.accuracy.header": "سلاسل الدقة",
   "profile.accuracy.legend": "فيما يلي أطول تسلسل مستمر للدروس بدقة أعلى من عتبة معينة، إلى جانب إحصاءات حول كل تسلسل من هذا القبيل. كلما طالت سلسلة الدروس، كان ذلك أفضل.",
   "profile.accuracy.noData": "ليس لديك أي سلاس دقة. ضع في اعتبارك إكمال درس بأعلى دقة ممكنة، بغض النظر عن سرعة الكتابة.",
-  "profile.calendar.averageSpeed.description": "متوسط السرعة: {value}",
-  "profile.calendar.topSpeed.description": "أعلى سرعة: {value}",
   "profile.calendar.totalLessons.description": "عدد الدروس: {value}",
   "profile.calendar.totalTime.description": "مدة الدروس: {value}",
   "profile.chart.accuracy.accuracyThreshold.header": "عتبة الدقة",

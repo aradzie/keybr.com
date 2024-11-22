@@ -258,8 +258,6 @@
   "profile.accuracy.header": "Серия на точност",
   "profile.accuracy.legend": "По-горе са изброени най-дългите непрекъснати поредици от уроци с точност над даден праг, заедно със статистически данни за всяка такава поредица. Колкото по-дълга е последователността от уроци, толкова по-добре.",
   "profile.accuracy.noData": "Нямате никакви серии на точност. Помислете за завършване на урок с възможно най-висока точност, независимо от скоростта на писане.",
-  "profile.calendar.averageSpeed.description": "Средна скорост: {value}",
-  "profile.calendar.topSpeed.description": "Максимална скорост: {value}",
   "profile.calendar.totalLessons.description": "Брой уроци: {value}",
   "profile.calendar.totalTime.description": "Време на уроците: {value}",
   "profile.chart.accuracy.accuracyThreshold.header": "Праг на точност",

@@ -254,8 +254,6 @@
   "profile.accuracy.header": "Nizovi točnosti",
   "profile.accuracy.legend": "Iznad su navedeni najduži kontinuirani nizovi lekcija s točnošću iznad zadanog praga, zajedno sa statistikama o svakom takvom slijedu. Što je duži slijed lekcija, to bolje.",
   "profile.accuracy.noData": "Nemate nikakvih tragova točnosti. Razmislite o završetku lekcije s najvećom mogućom točnošću, bez obzira na brzinu tipkanja.",
-  "profile.calendar.averageSpeed.description": "Prosječna brzina: {value}",
-  "profile.calendar.topSpeed.description": "Najveća brzina: {value}",
   "profile.calendar.totalLessons.description": "Broj lekcija: {value}",
   "profile.calendar.totalTime.description": "Vrijeme lekcija: {value}",
   "profile.chart.accuracy.accuracyThreshold.header": "Prag točnosti",

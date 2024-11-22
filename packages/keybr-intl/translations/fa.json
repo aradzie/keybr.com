@@ -228,8 +228,6 @@
   "practice.widget.settings.description": "تغییر تنظیمات درس، پیکربندی زبان، چیدمان صفحه‌کلید و...",
   "practice.widget.settings.name": "تنظیمات...",
   "practice.widget.skipLesson.description": "ردکردن درس فعلی (Ctrl + پیکان راست).",
-  "profile.calendar.averageSpeed.description": "سرعت میانگین: {value}",
-  "profile.calendar.topSpeed.description": "بالاترین سرعت: {value}",
   "profile.calendar.totalLessons.description": "تعداد درس‌ها: {value}",
   "profile.calendar.totalTime.description": "زمان درس‌ها: {value}",
   "profile.chart.accuracy.accuracyThreshold.header": "آستانه دقت",

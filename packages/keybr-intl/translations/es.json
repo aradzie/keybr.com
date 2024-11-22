@@ -257,8 +257,6 @@
   "profile.accuracy.header": "Rachas de precisión",
   "profile.accuracy.legend": "Encima están listadas las frases continuas de lecciones con una precisión superior a un cierto umbral, junto con estadísticas sobre tal secuencia. Cuanto más larga sea la secuencia de lecciones, mejor.",
   "profile.accuracy.noData": "No tienes rachas de precisión. Considera completar una lección con la mayor precisión posible, sin tener en cuenta la velocidad de escritura.",
-  "profile.calendar.averageSpeed.description": "Velocidad media: {value}",
-  "profile.calendar.topSpeed.description": "Velocidad máxima {value}",
   "profile.calendar.totalLessons.description": "Número de lecciones: {value}",
   "profile.calendar.totalTime.description": "Tiempo de las lecciones: {value}",
   "profile.chart.accuracy.accuracyThreshold.header": "Umbral de precisión",

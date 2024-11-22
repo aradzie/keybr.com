@@ -260,8 +260,6 @@
   "profile.accuracy.header": "शुद्धता रेखाहरू",
   "profile.accuracy.legend": "माथि दिइएका थ्रेसहोल्ड भन्दा माथि सटीकताका साथ पाठहरूको सबैभन्दा लामो निरन्तर अनुक्रमहरू सूचीबद्ध छन्, प्रत्येक त्यस्ता अनुक्रम बारे तथ्याङ्कहरू सहित। पाठको क्रम जति लामो हुन्छ, त्यति राम्रो हुन्छ।",
   "profile.accuracy.noData": "तपाईंसँग कुनै पनि शुद्धता रेखाहरू छैनन्। टाइपिङको गतिलाई ध्यान नदिई सकेसम्म उच्चतम सटीकताका साथ पाठ पूरा गर्ने बारे विचार गर्नुहोस्।",
-  "profile.calendar.averageSpeed.description": "औसत गति: {value}",
-  "profile.calendar.topSpeed.description": "शीर्ष गति: {value}",
   "profile.calendar.totalLessons.description": "पाठ संख्या: {value}",
   "profile.calendar.totalTime.description": "पाठको समय: {value}",
   "profile.chart.accuracy.accuracyThreshold.header": "शुद्धता थ्रेसहोल्ड",

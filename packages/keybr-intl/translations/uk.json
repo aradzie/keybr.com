@@ -258,8 +258,6 @@
   "profile.accuracy.header": "Смуги точності",
   "profile.accuracy.legend": "Вище наведено найдовшу безперервну послідовність уроків із точністю вище заданого порогу разом із статистичними даними про кожну таку послідовність. Чим довша послідовність уроків, тим краще.",
   "profile.accuracy.noData": "У вас немає жодної смуги точності. Подумайте про завершення уроку з максимально можливою точністю, незалежно від швидкості друку.",
-  "profile.calendar.averageSpeed.description": "Середня швидкість: {value}",
-  "profile.calendar.topSpeed.description": "Найкраща швидкість: {value}",
   "profile.calendar.totalLessons.description": "Число уроків: {value}",
   "profile.calendar.totalTime.description": "Час занять: {value}",
   "profile.chart.accuracy.accuracyThreshold.header": "Поріг точності",

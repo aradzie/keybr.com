@@ -243,8 +243,6 @@
   "profile.accuracy.header": "Σειρές Ακρίβειας",
   "profile.accuracy.legend": "Παρακάτω παρατίθενται οι μεγαλύτερες συνεχείς ακολουθίες μαθημάτων με ακρίβεια πάνω από ένα δεδομένο όριο, μαζί με στατιστικά στοιχεία για κάθε τέτοια ακολουθία. Όσο μεγαλύτερη είναι η σειρά των μαθημάτων, τόσο το καλύτερο.",
   "profile.accuracy.noData": "Δεν έχετε κανένα σερί ακρίβειας. Εξετάστε το ενδεχόμενο να ολοκληρώσετε ένα μάθημα με την υψηλότερη δυνατή ακρίβεια, ανεξάρτητα από την ταχύτητα πληκτρολόγησης.",
-  "profile.calendar.averageSpeed.description": "Μέση ταχύτητα: {value}",
-  "profile.calendar.topSpeed.description": "Ανώτατη ταχύτητα: {value}",
   "profile.calendar.totalLessons.description": "Αριθμός μαθημάτων: {value}",
   "profile.calendar.totalTime.description": "Ώρα μαθημάτων: {value}",
   "profile.chart.accuracy.accuracyThreshold.header": "Κατώφλι Ακρίβειας",

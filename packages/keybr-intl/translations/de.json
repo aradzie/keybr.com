@@ -255,8 +255,6 @@
   "profile.accuracy.header": "Genauigkeitsläufe",
   "profile.accuracy.legend": "Oben sind die längsten durchgehenden Sequenzen von Lektionen mit einer Genauigkeit über einem bestimmten Schwellenwert aufgelistet, zusammen mit Statistiken über jede dieser Sequenzen. Je länger die Sequenz der Lektionen, desto besser.",
   "profile.accuracy.noData": "Sie haben keine Genauigkeitsserien. Erwägen Sie, eine Lektion mit höchstmöglicher Genauigkeit abzuschließen, unabhängig von der Tippgeschwindigkeit.",
-  "profile.calendar.averageSpeed.description": "Durchschnittsgeschwindigkeit: {value}",
-  "profile.calendar.topSpeed.description": "Beste Geschwindigkeit: {value}",
   "profile.calendar.totalLessons.description": "Anzahl der Lektionen: {value}",
   "profile.calendar.totalTime.description": "Uhrzeit der Lektionen: {value}",
   "profile.chart.accuracy.accuracyThreshold.header": "Genauigkeitsschwelle",

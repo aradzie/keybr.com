@@ -249,8 +249,6 @@
   "profile.accuracy.header": "Sequências de Precisão",
   "profile.accuracy.legend": "Acima estão listadas as sequências de lições mais longas com exatidão acima de um determinado limiar, junto com estatísticas sobre cada sequência. Quanto mais longa a sequência de lições, melhor.",
   "profile.accuracy.noData": "Você não tem nenhuma sequência de precisão. Considere completar uma lição com a maior exatidão possível, independentemente da velocidade.",
-  "profile.calendar.averageSpeed.description": "Velocidade Média: {value}",
-  "profile.calendar.topSpeed.description": "Velocidade de Topo: {value}",
   "profile.calendar.totalLessons.description": "Número de lições: {value}",
   "profile.calendar.totalTime.description": "Tempo de lições: {value}",
   "profile.chart.accuracy.accuracyThreshold.header": "Limiar de Exatidão",

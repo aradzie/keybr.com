@@ -249,8 +249,6 @@
   "profile.accuracy.header": "Täpsusjadad",
   "profile.accuracy.legend": "Eespool on loetletud pikimad pidevad harjutuste jadad, mille täpsus ületab teatud künnise, koos iga sellise jada statistikaga. Mida pikem on harjutuste jada, seda parem.",
   "profile.accuracy.noData": "Sinul ei ole veel täpsusjadasid. Proovi sooritada harjutus võimalikult suure täpsusega, olenemata kirjutamiskiirusest.",
-  "profile.calendar.averageSpeed.description": "Keskmine kiirus: {value}",
-  "profile.calendar.topSpeed.description": "Tippkiirus: {value}",
   "profile.calendar.totalLessons.description": "Harjutuste arv: {value}",
   "profile.calendar.totalTime.description": "Harjutamise aeg: {value}",
   "profile.chart.accuracy.accuracyThreshold.header": "Täpsuse künnis",

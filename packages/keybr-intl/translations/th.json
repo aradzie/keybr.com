@@ -258,8 +258,6 @@
   "profile.accuracy.header": "สถิติแม่นยำต่อเนื่อง",
   "profile.accuracy.legend": "ข้างต้นคือรายการของชุดแบบฝึกที่ต่อเนื่องยาวนานที่สุดซึ่งมีความแม่นยำสูงกว่าขีดจำกัดที่กำหนด พร้อมกับสถิติของแต่ละชุดแบบฝึกดังกล่าว ยิ่งชุดแบบฝึกยาวนานมากเท่าไหร่ยิ่งดี",
   "profile.accuracy.noData": "คุณยังไม่มีช่วงเวลาความแม่นยำเลย พิจารณาทำแบบฝึกให้เสร็จด้วยความแม่นยำสูงสุดเท่าที่จะเป็นไปได้ โดยไม่คำนึงถึงความเร็วในการพิมพ์",
-  "profile.calendar.averageSpeed.description": "ความเร็วเฉลี่ย: {value}",
-  "profile.calendar.topSpeed.description": "ความเร็วสูงสุด: {value}",
   "profile.calendar.totalLessons.description": "จำนวนแบบฝึก: {value}",
   "profile.calendar.totalTime.description": "เวลาที่ใช้: {value}",
   "profile.chart.accuracy.accuracyThreshold.header": "เกณฑ์ความแม่นยำ",

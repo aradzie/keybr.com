@@ -252,8 +252,6 @@
   "profile.accuracy.header": "פסי דיוק",
   "profile.accuracy.legend": "למעלה מפורטים הרצפים הרצופים הארוכים ביותר של שיעורים עם דיוק מעל סף נתון, יחד עם סטטיסטיקה לגבי כל רצף כזה. ככל שרצף השיעורים ארוך יותר, כך ייטב.",
   "profile.accuracy.noData": "אין לך פסי דיוק. שקול להשלים שיעור בדיוק הכי גבוה שאפשר, ללא קשר למהירות ההקלדה.",
-  "profile.calendar.averageSpeed.description": "מהירות ממוצעת: {value}",
-  "profile.calendar.topSpeed.description": "מהירות מרבית: {value}",
   "profile.calendar.totalLessons.description": "מספר שיעורים: {value}",
   "profile.calendar.totalTime.description": "זמן השיעורים: {value}",
   "profile.chart.accuracy.accuracyThreshold.header": "סף דיוק",

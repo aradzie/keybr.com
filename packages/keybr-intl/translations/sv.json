@@ -253,8 +253,6 @@
   "profile.accuracy.header": "Träffsäkerhetsstreaks",
   "profile.accuracy.legend": "Ovan finns de längsta sekvenserna av lektioner med träffsäkerhet över en given gräns, samt statistik om sekvenserna. Ju längre sekvens av lektioner, desto bättre.",
   "profile.accuracy.noData": "Du har inga träffsäkerhetstreaks. Försök att klara en lektion med högsta träffsäkerheten, oavsett skrivhastighet.",
-  "profile.calendar.averageSpeed.description": "Genomsnittlig hastighet: {value}",
-  "profile.calendar.topSpeed.description": "Högsta hastiget: {value}",
   "profile.calendar.totalLessons.description": "Antal lektioner: {value}",
   "profile.calendar.totalTime.description": "Total tid spenderat på lektioner: {value}",
   "profile.chart.accuracy.accuracyThreshold.header": "Noggranhetsgräns",

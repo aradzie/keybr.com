@@ -256,8 +256,6 @@
   "profile.accuracy.header": "Серия точности",
   "profile.accuracy.legend": "Выше перечислены самые продолжительные непрерывные серии уроков с точностью выше заданного порога, а также статистические данные о каждой такой серии. Чем длиннее серия уроков, тем лучше.",
   "profile.accuracy.noData": "У вас нет серий точности. Попробуйте выполнить урок с максимально возможной точностью, независимо от скорости печати текста.",
-  "profile.calendar.averageSpeed.description": "Средняя скорость: {value}",
-  "profile.calendar.topSpeed.description": "Лучшая скорость: {value}",
   "profile.calendar.totalLessons.description": "Число уроков: {value}",
   "profile.calendar.totalTime.description": "Время занятий: {value}",
   "profile.chart.accuracy.accuracyThreshold.header": "Порог точности",

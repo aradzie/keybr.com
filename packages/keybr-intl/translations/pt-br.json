@@ -252,8 +252,6 @@
   "profile.accuracy.header": "Faixas de precisão",
   "profile.accuracy.legend": "Acima estão listadas as sequências contínuas mais longas de aulas com precisão acima de um determinado limite, juntamente com estatísticas sobre cada uma dessas sequências. Quanto maior a sequência de aulas, melhor.",
   "profile.accuracy.noData": "Você não tem nenhuma faixa de precisão. Considere concluir uma lição com a maior precisão possível, independentemente da velocidade de digitação.",
-  "profile.calendar.averageSpeed.description": "Velocidade média: {value}",
-  "profile.calendar.topSpeed.description": "Velocidade máxima: {value}",
   "profile.calendar.totalLessons.description": "Número de aulas: {value}",
   "profile.calendar.totalTime.description": "Horário das aulas: {value}",
   "profile.chart.accuracy.accuracyThreshold.header": "Limite de precisão",

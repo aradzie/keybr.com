@@ -250,8 +250,6 @@
   "profile.accuracy.header": "Nauwkeurigheidsreeksen",
   "profile.accuracy.legend": "Hierboven staan de langste opeenvolgende reeksen lessen met een nauwkeurigheid boven een bepaalde drempel, samen met statistieken over elke reeks. Hoe langer de reeks lessen, hoe beter.",
   "profile.accuracy.noData": "Je hebt geen nauwkeurigheidsreeksen. Overweeg een les te voltooien met de hoogst mogelijke nauwkeurigheid, ongeacht de typesnelheid.",
-  "profile.calendar.averageSpeed.description": "Gemiddelde snelheid: {value}",
-  "profile.calendar.topSpeed.description": "Top snelheid: {value}",
   "profile.calendar.totalLessons.description": "Hoeveelheid lessen: {value}",
   "profile.calendar.totalTime.description": "Tijd van lessen: {value}",
   "profile.chart.accuracy.accuracyThreshold.header": "Nauwkeurigheids Drempel",

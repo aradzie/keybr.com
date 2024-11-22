@@ -241,8 +241,6 @@
   "practice.widget.showTour.description": "Vezetett túra indítása a segítő diákkal.",
   "practice.widget.skipLesson.description": "A lecke átugrása (Ctrl + Jobb nyíl).",
   "practice.widget.switchView.description": "Az aktuális felhasználói felület elrendezésének változtatása.",
-  "profile.calendar.averageSpeed.description": "Átlagos sebesség: {value}",
-  "profile.calendar.topSpeed.description": "Leggyorsabb: {value}",
   "profile.calendar.totalLessons.description": "Leckék száma: {value}",
   "profile.calendar.totalTime.description": "A leckék ideje: {value}",
   "profile.chart.accuracy.accuracyThreshold.header": "Pontossági küszöb",

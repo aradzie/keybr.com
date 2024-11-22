@@ -257,8 +257,6 @@
   "profile.accuracy.header": "精确度记录",
   "profile.accuracy.legend": "下面列出了准确率超过给定临界值的最长连续课程，以及每个此类序列的统计数据。课程序列越长越好。",
   "profile.accuracy.noData": "您没有任何准确率记录。考虑以尽可能高的准确率完成一堂课，而不考虑打字速度。",
-  "profile.calendar.averageSpeed.description": "平均速度: {value}",
-  "profile.calendar.topSpeed.description": "最高速度: {value}",
   "profile.calendar.totalLessons.description": "课程数量: {value}",
   "profile.calendar.totalTime.description": "在课程中的时间: {value}",
   "profile.chart.accuracy.accuracyThreshold.header": "准确度阈值",

@@ -166,8 +166,6 @@
   "page.typingTest.title": "Hız Testi",
   "practice.widget.settings.name": "Ayarlar...",
   "profile.accuracy.header": "Doğruluk Çizgileri",
-  "profile.calendar.averageSpeed.description": "Ortalama hız: {value}",
-  "profile.calendar.topSpeed.description": "Maksimum hız: {value}",
   "profile.calendar.totalLessons.description": "Ders sayısı: {value}",
   "profile.calendar.totalTime.description": "Ders süresi: {value}",
   "profile.chart.accuracy.accuracyThreshold.header": "Doğruluk Eşiği",

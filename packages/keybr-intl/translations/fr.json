@@ -252,8 +252,6 @@
   "practice.widget.showTour.description": "Montrer une visite guidée avec des diapositives d’aide.",
   "practice.widget.skipLesson.description": "Passer la leçon en cours (Ctrl + Flèche Droite).",
   "practice.widget.switchView.description": "Basculer la disposition actuelle de l’interface.",
-  "profile.calendar.averageSpeed.description": "Vitesse moyenne: {value}",
-  "profile.calendar.topSpeed.description": "Vitesse de pointe: {value}",
   "profile.calendar.totalLessons.description": "Nombre de leçons: {value}",
   "profile.calendar.totalTime.description": "Temps des leçons: {value}",
   "profile.chart.accuracy.accuracyThreshold.header": "Seuil de précision",

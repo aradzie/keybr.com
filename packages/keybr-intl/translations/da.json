@@ -250,8 +250,6 @@
   "profile.accuracy.header": "Nøjagtighedsstriber",
   "profile.accuracy.legend": "Ovenfor er angivet de længste sammenhængende sekvenser af lektioner med nøjagtighed over en given tærskel, sammen med statistik om hver sådan sekvens. Jo længere sekvens af lektioner, jo bedre.",
   "profile.accuracy.noData": "Du har ingen nøjagtighedsstreger. Overvej at gennemføre en lektion med den højest mulige nøjagtighed, uanset skrivehastighed.",
-  "profile.calendar.averageSpeed.description": "Gennemsnitlig hastighed: {value}",
-  "profile.calendar.topSpeed.description": "Tophastighed: {value}",
   "profile.calendar.totalLessons.description": "Antal lektioner: {value}",
   "profile.calendar.totalTime.description": "Tid for lektionerne: {value}",
   "profile.chart.accuracy.accuracyThreshold.header": "Nøjagtighedstærskel",

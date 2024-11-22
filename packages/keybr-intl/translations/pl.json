@@ -257,8 +257,6 @@
   "profile.accuracy.header": "Smugi dokładności",
   "profile.accuracy.legend": "Powyżej wymienione są najdłuższe ciągłe sekwencje lekcji z dokładnością powyżej zadanego progu, wraz ze statystykami dotyczącymi każdej takiej sekwencji. Im dłuższa sekwencja zajęć, tym lepiej.",
   "profile.accuracy.noData": "Nie masz żadnych pasm dokładności. Rozważ ukończenie lekcji z najwyższą możliwą dokładnością, niezależnie od szybkości pisania.",
-  "profile.calendar.averageSpeed.description": "Średnie tempo: {value}",
-  "profile.calendar.topSpeed.description": "Najwyższe tempo: {value}",
   "profile.calendar.totalLessons.description": "Liczba lekcji: {value}",
   "profile.calendar.totalTime.description": "Czas trwania lekcji: {value}",
   "profile.chart.accuracy.accuracyThreshold.header": "Próg dokładności",

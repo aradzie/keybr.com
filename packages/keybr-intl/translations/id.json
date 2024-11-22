@@ -248,8 +248,6 @@
   "practice.widget.skipLesson.description": "Lewati pelajaran ini (Ctrl + Panah Kanan).",
   "practice.widget.switchView.description": "Ubah tamping saat ini.",
   "profile.accuracy.header": "akurasi berturut-turut",
-  "profile.calendar.averageSpeed.description": "Kecepatan rata-rata: {value}",
-  "profile.calendar.topSpeed.description": "Kecepatan tertinggi: {value}",
   "profile.calendar.totalLessons.description": "Jumlah pelajaran: {value}",
   "profile.calendar.totalTime.description": "Waktu latihan: {value}",
   "profile.chart.accuracy.accuracyThreshold.header": "Batas akurasi",

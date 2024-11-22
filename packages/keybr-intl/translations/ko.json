@@ -159,8 +159,6 @@
   "page.typingTest.title": "속도 테스트",
   "practice.widget.settings.name": "설정...",
   "practice.widget.skipLesson.description": "이번 연습 건너뛰기 (Ctrl + 오른쪽 방향키)",
-  "profile.calendar.averageSpeed.description": "평균 속도: {value}",
-  "profile.calendar.topSpeed.description": "최고 속도: {value}",
   "profile.calendar.totalLessons.description": "연습 횟수: {value}",
   "profile.calendar.totalTime.description": "연습 시간: {value}",
   "profile.chart.calendar.caption": "연습 캘린더",

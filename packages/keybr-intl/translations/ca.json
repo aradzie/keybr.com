@@ -240,8 +240,6 @@
   "profile.accuracy.header": "Ratxa de precisió",
   "profile.accuracy.legend": "A sobre apareixen llistades les seqüències contínues més llargues amb una precisió per sobre d’un llindar donat, juntament amb estadístiques sobre cada seqüència. Com més llarga la seqüència de lliçons, millor.",
   "profile.accuracy.noData": "No tens ratxa de precisió. Completa una lliçó amb la màxima precisió que puguis, sense tenir en compte la velocitat.",
-  "profile.calendar.averageSpeed.description": "Velocitat mitjana: {value}",
-  "profile.calendar.topSpeed.description": "Velocitat màxima: {value}",
   "profile.calendar.totalLessons.description": "Nombre de lliçons: {value}",
   "profile.calendar.totalTime.description": "Temps total de les lliçons: {value}",
   "profile.chart.accuracy.accuracyThreshold.header": "Llindar de precisió",
