@@ -88,10 +88,10 @@ export function alignToAnchor(
 
   if (flip) {
     // Change the position of the floating element to keep it in view.
-    const topSpace = anchor.top;
-    const bottomSpace = screenSize.height - anchor.bottom;
-    const leftSpace = anchor.left;
-    const rightSpace = screenSize.width - anchor.right;
+    const topSpace = anchor.top - screenMargin * 2;
+    const bottomSpace = screenSize.height - anchor.bottom - screenMargin * 2;
+    const leftSpace = anchor.left - screenMargin * 2;
+    const rightSpace = screenSize.width - anchor.right - screenMargin * 2;
     switch (side) {
       case "block-start":
         // Flip to the bottom.
