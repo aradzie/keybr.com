@@ -27,5 +27,5 @@ export type AlignOptions = {
 };
 
 export type Anchor = {
-  getBoundingBox(position: "absolute" | "fixed"): Rect;
+  getBoundingBox(): Rect;
 };

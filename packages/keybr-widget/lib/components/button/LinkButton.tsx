@@ -37,8 +37,8 @@ export const LinkButton = forwardRef(function LinkButton(
     },
   }));
   useImperativeHandle(anchor, () => ({
-    getBoundingBox(position) {
-      return getBoundingBox(element.current!, position);
+    getBoundingBox() {
+      return getBoundingBox(element.current!);
     },
   }));
   return (

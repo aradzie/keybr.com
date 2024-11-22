@@ -79,14 +79,7 @@ function getValue(
   element: HTMLElement,
   { clientX, clientY }: { readonly clientX: number; readonly clientY: number },
 ): SliderValue {
-  const {
-    left, //
-    top,
-    right,
-    bottom,
-    width,
-    height,
-  } = getBoundingBox(element, "fixed");
+  const { left, top, right, bottom, width, height } = getBoundingBox(element);
   return {
     x: (clamp(clientX, left, right) - left) / width,
     y: 1 - (clamp(clientY, top, bottom) - top) / height,

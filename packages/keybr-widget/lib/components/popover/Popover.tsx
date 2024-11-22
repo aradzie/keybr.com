@@ -31,7 +31,7 @@ export function Popover({
   const screenSize = useScreenSize();
   useLayoutEffect(() => {
     if (popoverRef.current != null) {
-      const anchorBox = anchorRef.current!.getBoundingBox("fixed");
+      const anchorBox = anchorRef.current!.getBoundingBox();
       place(popoverRef.current!)
         .withOptions(options)
         .resize(anchorBox, width, height)

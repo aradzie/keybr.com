@@ -36,8 +36,8 @@ export const IconButton = forwardRef(function IconButton(
     },
   }));
   useImperativeHandle(anchor, () => ({
-    getBoundingBox(position) {
-      return getBoundingBox(element.current!, position);
+    getBoundingBox() {
+      return getBoundingBox(element.current!);
     },
   }));
   if (children != null || label != null) {

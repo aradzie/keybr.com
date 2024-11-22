@@ -31,7 +31,7 @@ export function Spotlight({ anchor, margin = 10 }: SpotlightProps): ReactNode {
       c4 != null &&
       marker != null
     ) {
-      const anchorBox = getBoundingBox(querySelector(anchor), "fixed");
+      const anchorBox = getBoundingBox(querySelector(anchor));
       const x = anchorBox.x - margin;
       const y = anchorBox.y - margin;
       const w = anchorBox.width + margin * 2;

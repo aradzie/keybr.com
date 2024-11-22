@@ -30,7 +30,7 @@ export function Popup({
       if (anchor == null) {
         place(rootRef.current!).centerToScreen(screenSize);
       } else {
-        const anchorBox = getBoundingBox(querySelector(anchor), "fixed");
+        const anchorBox = getBoundingBox(querySelector(anchor));
         place(rootRef.current!, arrowRef.current!)
           .withOptions(options)
           .alignToAnchor(anchorBox, screenSize);

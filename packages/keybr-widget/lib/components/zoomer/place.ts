@@ -4,7 +4,7 @@ import { type ZoomablePosition } from "./Zoomer.types.ts";
 const screenMargin = 0;
 
 export function place(root: HTMLElement) {
-  const rootBox = getBoundingBox(root, "fixed");
+  const rootBox = getBoundingBox(root);
   const screenSize = getScreenSize();
   const screenBox = new Rect(
     screenMargin,

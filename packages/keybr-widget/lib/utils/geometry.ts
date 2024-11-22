@@ -14,15 +14,8 @@ export const getElementSize = (el: Element): Size => {
   return new Size(el.clientWidth, el.clientHeight);
 };
 
-export const getBoundingBox = (
-  el: Element,
-  position: "absolute" | "fixed",
-): Rect => {
-  let { x, y, width, height } = el.getBoundingClientRect();
-  if (position === "absolute") {
-    x += window.scrollX;
-    y += window.scrollY;
-  }
+export const getBoundingBox = (el: Element): Rect => {
+  const { x, y, width, height } = el.getBoundingClientRect();
   return new Rect(x, y, width, height);
 };
 
