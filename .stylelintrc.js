@@ -152,6 +152,7 @@ export default {
         "block-size",
         "min-block-size",
         "max-block-size",
+        "aspect-ratio",
         "margin",
         "margin-left",
         "margin-right",

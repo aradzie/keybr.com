@@ -1,7 +1,7 @@
 import { tryParseColor } from "@keybr/color";
 import { TextField, useHotkeysHandler } from "@keybr/widget";
 import { useEffect, useRef, useState } from "react";
-import type { ColorEditorProps } from "./types.ts";
+import { type ColorEditorProps } from "./types.ts";
 
 export function ColorInput({ color, onChange }: ColorEditorProps) {
   const focus = useRef(false);
