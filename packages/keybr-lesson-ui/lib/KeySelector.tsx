@@ -3,7 +3,6 @@ import { type Letter } from "@keybr/phonetic-model";
 import { type KeyStatsMap } from "@keybr/result";
 import { useSettings } from "@keybr/settings";
 import { type FocusProps, useHotkeysHandler } from "@keybr/widget";
-import { type ReactNode } from "react";
 import { Key } from "./Key.tsx";
 import * as styles from "./KeySelector.module.less";
 
@@ -17,11 +16,11 @@ export const KeySelector = ({
   onFocus,
   onBlur,
 }: {
-  readonly current: Letter;
-  readonly keyStatsMap: KeyStatsMap;
-  readonly title?: string;
-  readonly onSelect?: (letter: Letter) => void;
-} & FocusProps): ReactNode => {
+  current: Letter;
+  keyStatsMap: KeyStatsMap;
+  title?: string;
+  onSelect?: (letter: Letter) => void;
+} & FocusProps) => {
   const { settings } = useSettings();
   const target = new Target(settings);
   const { letters } = keyStatsMap;

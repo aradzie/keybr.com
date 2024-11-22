@@ -12,9 +12,9 @@ export const GaugeList = memo(function GaugeRow({
   summaryStats,
   names,
 }: {
-  readonly summaryStats: SummaryStats;
-  readonly names?: Names;
-}): ReactNode {
+  summaryStats: SummaryStats;
+  names?: Names;
+}) {
   return (
     <div className={styles.gaugeList}>
       <SpeedGauge summaryStats={summaryStats} names={names} />
@@ -28,9 +28,9 @@ export const SpeedGauge = memo(function SpeedGauge({
   summaryStats,
   names,
 }: {
-  readonly summaryStats: SummaryStats;
-  readonly names?: Names;
-}): ReactNode {
+  summaryStats: SummaryStats;
+  names?: Names;
+}) {
   const { formatMessage } = useIntl();
   const { formatSpeed } = useFormatter();
   const { last, delta } = summaryStats.speed;
@@ -68,9 +68,9 @@ export const AccuracyGauge = memo(function AccuracyGauge({
   summaryStats,
   names,
 }: {
-  readonly summaryStats: SummaryStats;
-  readonly names?: Names;
-}): ReactNode {
+  summaryStats: SummaryStats;
+  names?: Names;
+}) {
   const { formatMessage } = useIntl();
   const { formatPercents } = useIntlNumbers();
   const { last, delta } = summaryStats.accuracy;
@@ -109,9 +109,9 @@ export const ScoreGauge = memo(function ScoreGauge({
   summaryStats,
   names,
 }: {
-  readonly summaryStats: SummaryStats;
-  readonly names?: Names;
-}): ReactNode {
+  summaryStats: SummaryStats;
+  names?: Names;
+}) {
   const { formatMessage } = useIntl();
   const { formatNumber } = useIntlNumbers();
   const { last, delta } = summaryStats.score;
@@ -155,13 +155,13 @@ export const Gauge = memo(function Gauge({
   delta,
   title,
 }: {
-  readonly id?: string;
-  readonly className?: ClassName;
-  readonly name: ReactNode;
-  readonly value: ReactNode;
-  readonly delta: ReactNode;
-  readonly title: string;
-}): ReactNode {
+  id?: string;
+  className?: ClassName;
+  name: ReactNode;
+  value: ReactNode;
+  delta: ReactNode;
+  title: string;
+}) {
   return (
     <span id={id} className={clsx(styles.gauge, className)} title={title}>
       {name} {value} ({delta})

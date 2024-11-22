@@ -2,7 +2,7 @@ import { Icon } from "@keybr/widget";
 import { mdiEmoticonHappy, mdiEmoticonSad } from "@mdi/js";
 import * as styles from "./Happiness.module.less";
 
-export function Happiness({ learningRate }: { readonly learningRate: number }) {
+export function Happiness({ learningRate }: { learningRate: number }) {
   if (learningRate > 0) {
     return (
       <span className={styles.happy}>

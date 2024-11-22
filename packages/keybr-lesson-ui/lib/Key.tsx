@@ -1,7 +1,6 @@
 import { type LessonKey } from "@keybr/lesson";
 import { type MouseProps } from "@keybr/widget";
 import { clsx } from "clsx";
-import { type ReactNode } from "react";
 import * as styles from "./styles.module.less";
 import { useKeyStyles } from "./styles.ts";
 
@@ -13,12 +12,12 @@ export const Key = ({
   title,
   ...props
 }: {
-  readonly lessonKey: LessonKey;
-  readonly isSelectable?: boolean;
-  readonly isCurrent?: boolean;
-  readonly size?: "normal" | "large" | "announcement";
-  readonly title?: string;
-} & MouseProps): ReactNode => {
+  lessonKey: LessonKey;
+  isSelectable?: boolean;
+  isCurrent?: boolean;
+  size?: "normal" | "large" | "announcement";
+  title?: string;
+} & MouseProps) => {
   const { keyStyles } = useKeyStyles();
   const {
     letter: { codePoint, label },

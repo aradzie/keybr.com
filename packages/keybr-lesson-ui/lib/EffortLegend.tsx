@@ -3,7 +3,7 @@ import { FormattedMessage } from "react-intl";
 import { type Effort } from "./effort.ts";
 import * as styles from "./EffortLegent.module.less";
 
-export function EffortLegend({ effort }: { readonly effort: Effort }) {
+export function EffortLegend({ effort }: { effort: Effort }) {
   const { formatPercents } = useIntlNumbers();
   return (
     <>

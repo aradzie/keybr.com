@@ -1,7 +1,6 @@
 import { useIntlNumbers } from "@keybr/intl";
 import { type StreakList as StreakListType } from "@keybr/result";
 import { type ClassName, styleTextTruncate, Value } from "@keybr/widget";
-import { type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
 
 export const StreakList = ({
@@ -9,10 +8,10 @@ export const StreakList = ({
   className,
   streakList,
 }: {
-  readonly id?: string;
-  readonly className?: ClassName;
-  readonly streakList: StreakListType;
-}): ReactNode => {
+  id?: string;
+  className?: ClassName;
+  streakList: StreakListType;
+}) => {
   const { formatPercents } = useIntlNumbers();
   const children = [];
   for (const { level, results } of streakList) {

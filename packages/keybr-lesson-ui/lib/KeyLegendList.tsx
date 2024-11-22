@@ -1,8 +1,7 @@
-import { type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
 import { KeyLegend } from "./KeyLegend.tsx";
 
-export const KeyLegendList = (): ReactNode => {
+export const KeyLegendList = () => {
   return (
     <ul>
       <li>

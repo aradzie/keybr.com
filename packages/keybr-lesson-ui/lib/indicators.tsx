@@ -8,7 +8,7 @@ import {
   type SummaryStats,
 } from "@keybr/result";
 import { Name } from "@keybr/widget";
-import { memo, type ReactNode } from "react";
+import { memo } from "react";
 import { useIntl } from "react-intl";
 import { CurrentKey } from "./CurrentKey.tsx";
 import { DailyGoal } from "./DailyGoal.tsx";
@@ -22,9 +22,9 @@ export const GaugeRow = memo(function GaugeRow({
   summaryStats,
   names,
 }: {
-  readonly summaryStats: SummaryStats;
-  readonly names?: Names;
-}): ReactNode {
+  summaryStats: SummaryStats;
+  names?: Names;
+}) {
   const { formatMessage } = useIntl();
   return (
     <div className={styles.row}>
@@ -47,12 +47,12 @@ export const KeySetRow = memo(function KeySetRow({
   onKeyHoverOut,
   onKeyClick,
 }: {
-  readonly lessonKeys: LessonKeys;
-  readonly names?: Names;
-  readonly onKeyHoverIn?: (key: LessonKey, elem: Element) => void;
-  readonly onKeyHoverOut?: (key: LessonKey, elem: Element) => void;
-  readonly onKeyClick?: (key: LessonKey, elem: Element) => void;
-}): ReactNode {
+  lessonKeys: LessonKeys;
+  names?: Names;
+  onKeyHoverIn?: (key: LessonKey, elem: Element) => void;
+  onKeyHoverOut?: (key: LessonKey, elem: Element) => void;
+  onKeyClick?: (key: LessonKey, elem: Element) => void;
+}) {
   const { formatMessage } = useIntl();
   return (
     <div className={styles.row}>
@@ -79,9 +79,9 @@ export const CurrentKeyRow = memo(function CurrentKeyRow({
   lessonKeys,
   names,
 }: {
-  readonly lessonKeys: LessonKeys;
-  readonly names?: Names;
-}): ReactNode {
+  lessonKeys: LessonKeys;
+  names?: Names;
+}) {
   const { formatMessage } = useIntl();
   return (
     <div className={styles.row}>
@@ -105,9 +105,9 @@ export const StreakListRow = memo(function StreakListRow({
   streakList,
   names,
 }: {
-  readonly streakList: StreakListType;
-  readonly names?: Names;
-}): ReactNode {
+  streakList: StreakListType;
+  names?: Names;
+}) {
   const { formatMessage } = useIntl();
   return (
     <div className={styles.row}>
@@ -131,9 +131,9 @@ export const DailyGoalRow = memo(function DailyGoalRow({
   dailyGoal,
   names,
 }: {
-  readonly dailyGoal: DailyGoalType;
-  readonly names?: Names;
-}): ReactNode {
+  dailyGoal: DailyGoalType;
+  names?: Names;
+}) {
   const { formatMessage } = useIntl();
   return (
     <div className={styles.row}>

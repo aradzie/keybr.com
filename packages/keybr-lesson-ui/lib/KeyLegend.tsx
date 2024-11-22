@@ -1,6 +1,5 @@
 import { type MouseProps } from "@keybr/widget";
 import { clsx } from "clsx";
-import { type ReactNode } from "react";
 import * as styles from "./styles.module.less";
 import { useKeyStyles } from "./styles.ts";
 
@@ -13,13 +12,13 @@ export const KeyLegend = ({
   title,
   ...props
 }: {
-  readonly confidence: number | null;
-  readonly isIncluded: boolean;
-  readonly isFocused: boolean;
-  readonly isForced: boolean;
-  readonly size?: "normal" | "large";
-  readonly title?: string;
-} & MouseProps): ReactNode => {
+  confidence: number | null;
+  isIncluded: boolean;
+  isFocused: boolean;
+  isForced: boolean;
+  size?: "normal" | "large";
+  title?: string;
+} & MouseProps) => {
   const { keyStyles } = useKeyStyles();
   return (
     <span

@@ -3,18 +3,13 @@ import { timeToSpeed } from "@keybr/result";
 import { useSettings } from "@keybr/settings";
 import { Name, NameValue, Value } from "@keybr/widget";
 import { clsx } from "clsx";
-import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
 import { useFormatter } from "./format.ts";
 import { Happiness } from "./Happiness.tsx";
 import { messages } from "./intl.ts";
 import * as styles from "./styles.module.less";
 
-export const KeyDetails = ({
-  lessonKey,
-}: {
-  readonly lessonKey: LessonKey;
-}): ReactNode => {
+export const KeyDetails = ({ lessonKey }: { lessonKey: LessonKey }) => {
   const { formatMessage } = useIntl();
   const { formatSpeed, formatConfidence, formatLearningRate, speedUnitName } =
     useFormatter();
