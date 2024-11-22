@@ -6,10 +6,6 @@ import { Slider } from "./Slider.tsx";
 import { Thumb } from "./Thumb.tsx";
 import { type ColorEditorProps } from "./types.ts";
 
-const red = new RgbColor(1, 0, 0);
-const green = new RgbColor(0, 1, 0);
-const blue = new RgbColor(0, 0, 1);
-
 export function ColorPicker({ color, onChange }: ColorEditorProps) {
   const { h, s, v } = color.toHsv();
   const { r, g, b } = color.toRgb();
@@ -32,7 +28,7 @@ export function ColorPicker({ color, onChange }: ColorEditorProps) {
           onChange(new HsvColor(h, x, y));
         }}
       >
-        <Thumb color={color.fade(1)} value={saturationValue} />
+        <Thumb color={color} value={saturationValue} />
       </Slider>
       <Spacer size={1} />
       <Slider
@@ -50,38 +46,38 @@ export function ColorPicker({ color, onChange }: ColorEditorProps) {
       <Slider
         className={styles.channel}
         style={{
-          backgroundImage: `linear-gradient(to right,#000,#f00)`,
+          backgroundImage: `linear-gradient(to right,${new RgbColor(0, g, b)},${new RgbColor(1, g, b)})`,
         }}
         value={rValue}
         onChange={({ x }) => {
           onChange(new RgbColor(x, g, b));
         }}
       >
-        <Thumb color={red} value={rValue} />
+        <Thumb color={color} value={rValue} />
       </Slider>
       <Slider
         className={styles.channel}
         style={{
-          backgroundImage: `linear-gradient(to right,#000,#0f0)`,
+          backgroundImage: `linear-gradient(to right,${new RgbColor(r, 0, b)},${new RgbColor(r, 1, b)})`,
         }}
         value={gValue}
         onChange={({ x }) => {
           onChange(new RgbColor(r, x, b));
         }}
       >
-        <Thumb color={green} value={gValue} />
+        <Thumb color={color} value={gValue} />
       </Slider>
       <Slider
         className={styles.channel}
         style={{
-          backgroundImage: `linear-gradient(to right,#000,#00f)`,
+          backgroundImage: `linear-gradient(to right,${new RgbColor(r, g, 0)},${new RgbColor(r, g, 1)})`,
         }}
         value={gValue}
         onChange={({ x }) => {
           onChange(new RgbColor(r, g, x));
         }}
       >
-        <Thumb color={blue} value={bValue} />
+        <Thumb color={color} value={bValue} />
       </Slider>
       <ColorInput color={color} onChange={onChange} />
     </div>
