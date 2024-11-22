@@ -5,7 +5,7 @@ import { hasData } from "@keybr/math";
 import { type KeyStatsMap } from "@keybr/result";
 import { useSettings } from "@keybr/settings";
 import { Explainer, Figure, Para } from "@keybr/widget";
-import { type ReactNode, useState } from "react";
+import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { ChartWrapper } from "./ChartWrapper.tsx";
 import { SmoothnessRange } from "./SmoothnessRange.tsx";
@@ -13,8 +13,8 @@ import { SmoothnessRange } from "./SmoothnessRange.tsx";
 export function KeySpeedChartSection({
   keyStatsMap,
 }: {
-  readonly keyStatsMap: KeyStatsMap;
-}): ReactNode {
+  keyStatsMap: KeyStatsMap;
+}) {
   const { settings } = useSettings();
   const { letters } = keyStatsMap;
   const [current, setCurrent] = useState(letters[0]);
@@ -73,9 +73,7 @@ export function KeySpeedChartSection({
       <SmoothnessRange
         disabled={!hasData(samples)}
         value={smoothness}
-        onChangeValue={(value) => {
-          setSmoothness(value);
-        }}
+        onChange={setSmoothness}
       />
 
       <Figure.Legend>

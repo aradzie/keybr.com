@@ -1,10 +1,9 @@
 import { useResults } from "@keybr/result";
 import { Button, Field, FieldList, Icon } from "@keybr/widget";
 import { mdiDeleteForever, mdiDownload } from "@mdi/js";
-import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
 
-export function FooterSection(): ReactNode {
+export function FooterSection() {
   const { formatMessage } = useIntl();
   const { handleDownloadData, handleResetData } = useCommands();
 

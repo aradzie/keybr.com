@@ -1,24 +1,24 @@
 import { Tasks } from "@keybr/lang";
-import { type DateStats, LocalDate, type ResultSummary } from "@keybr/result";
+import { type DailyStats, type DailyStatsMap, LocalDate } from "@keybr/result";
 import { Popup, Portal } from "@keybr/widget";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useIntl } from "react-intl";
 import * as styles from "./Calendar.module.less";
-import { DailyStats } from "./DailyStats.tsx";
+import { DailyStats as DailyStatsWidget } from "./DailyStats.tsx";
 import { type Effort } from "./effort.ts";
 
 export function Calendar({
-  summary,
+  dailyStatsMap,
   effort,
 }: {
-  readonly summary: ResultSummary;
-  readonly effort: Effort;
+  dailyStatsMap: DailyStatsMap;
+  effort: Effort;
 }) {
   type State = Readonly<
     | { type: "hidden" }
-    | { type: "visible-in"; stats: DateStats; elem: Element }
-    | { type: "visible"; stats: DateStats; elem: Element }
-    | { type: "visible-out"; stats: DateStats; elem: Element }
+    | { type: "visible-in"; stats: DailyStats; elem: Element }
+    | { type: "visible"; stats: DailyStats; elem: Element }
+    | { type: "visible-out"; stats: DailyStats; elem: Element }
   >;
   const [state, setState] = useState<State>({ type: "hidden" });
   useEffect(() => {
@@ -42,7 +42,7 @@ export function Calendar({
   return (
     <>
       <BlockList
-        summary={summary}
+        dailyStatsMap={dailyStatsMap}
         effort={effort}
         onCellHoverIn={(stats, elem) => {
           setState({ type: "visible-in", stats, elem });
@@ -69,7 +69,7 @@ export function Calendar({
               setState({ ...state, type: "visible-out" });
             }}
           >
-            <DailyStats cell={state.stats} effort={effort} />
+            <DailyStatsWidget stats={state.stats} effort={effort} />
           </Popup>
         </Portal>
       )}
@@ -78,20 +78,20 @@ export function Calendar({
 }
 
 function BlockList({
-  summary,
+  dailyStatsMap,
   effort,
   onCellHoverIn,
   onCellHoverOut,
   onCellClick,
 }: {
-  readonly summary: ResultSummary;
-  readonly effort: Effort;
-  readonly onCellHoverIn?: (stats: DateStats, elem: Element) => void;
-  readonly onCellHoverOut?: (stats: DateStats, elem: Element) => void;
-  readonly onCellClick?: (stats: DateStats, elem: Element) => void;
+  dailyStatsMap: DailyStatsMap;
+  effort: Effort;
+  onCellHoverIn?: (stats: DailyStats, elem: Element) => void;
+  onCellHoverOut?: (stats: DailyStats, elem: Element) => void;
+  onCellClick?: (stats: DailyStats, elem: Element) => void;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const blocks = useMemo(() => blockList(summary), [summary]);
+  const blocks = useMemo(() => blockList(dailyStatsMap), [dailyStatsMap]);
   return (
     <div
       ref={ref}
@@ -115,8 +115,8 @@ function BlockList({
 
 function relayEvent(
   root: Element,
-  { target }: { readonly target: any },
-  handler?: (stats: DateStats, elem: Element) => void,
+  { target }: { target: any },
+  handler?: (stats: DailyStats, elem: Element) => void,
 ) {
   while (
     handler != null &&
@@ -133,19 +133,13 @@ function relayEvent(
 }
 
 type BlockCells = {
-  readonly key: string;
-  readonly year: number;
-  readonly month: number;
-  readonly cells: (DateStats | null)[][];
+  key: string;
+  year: number;
+  month: number;
+  cells: (DailyStats | null)[][];
 };
 
-function Block({
-  block,
-  effort,
-}: {
-  readonly block: BlockCells;
-  readonly effort: Effort;
-}) {
+function Block({ block, effort }: { block: BlockCells; effort: Effort }) {
   const { formatMessage } = useIntl();
 
   const weekDayName = formatMessage({
@@ -184,13 +178,7 @@ function Block({
   );
 }
 
-function Cell({
-  cell,
-  effort,
-}: {
-  readonly cell: DateStats | null;
-  readonly effort: Effort;
-}) {
+function Cell({ cell, effort }: { cell: DailyStats | null; effort: Effort }) {
   if (cell == null) {
     return <td />;
   }
@@ -220,7 +208,7 @@ function Cell({
 
 const attachment = Symbol();
 
-Cell.attach = (stats: DateStats) => {
+Cell.attach = (stats: DailyStats) => {
   return (target: Element | null): void => {
     if (target != null) {
       (target as any)[attachment] = stats;
@@ -228,23 +216,23 @@ Cell.attach = (stats: DateStats) => {
   };
 };
 
-Cell.attached = (target: Element | null): DateStats | null => {
+Cell.attached = (target: Element | null): DailyStats | null => {
   return (target as any)?.[attachment] ?? null;
 };
 
-function blockList(summary: ResultSummary): BlockCells[] {
+function blockList(map: DailyStatsMap): BlockCells[] {
   const blocks = new Map<string, BlockCells>();
-  for (const { date } of summary) {
+  for (const { date } of map) {
     addBlock(date);
   }
-  addBlock(summary.todayStats.date);
+  addBlock(map.today.date);
   return [...blocks.values()];
 
   function addBlock({ year, month }: LocalDate) {
     const key = `${year}:${month}`;
     let block = blocks.get(key);
     if (block == null) {
-      const cells: (DateStats | null)[][] = [
+      const cells: (DailyStats | null)[][] = [
         [null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null],
@@ -258,7 +246,7 @@ function blockList(summary: ResultSummary): BlockCells[] {
         for (let j = 0; j < 7; j++) {
           const b = a.plusDays(i * 7 + j - offset);
           if (a.month === b.month) {
-            cells[i][j] = summary.get(b);
+            cells[i][j] = map.get(b);
           }
         }
       }

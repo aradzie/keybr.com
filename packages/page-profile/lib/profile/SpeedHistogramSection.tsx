@@ -1,6 +1,6 @@
 import { makeSpeedDistribution, SpeedHistogram } from "@keybr/chart";
 import { useIntlNumbers } from "@keybr/intl";
-import { type ResultSummary } from "@keybr/result";
+import { type SummaryStats } from "@keybr/result";
 import {
   Explainer,
   Field,
@@ -10,24 +10,17 @@ import {
   RadioBox,
   Value,
 } from "@keybr/widget";
-import React, { type ReactNode, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { ChartWrapper } from "./ChartWrapper.tsx";
 
-export function SpeedHistogramSection({
-  summary,
-}: {
-  readonly summary: ResultSummary;
-}): ReactNode {
+export function SpeedHistogramSection({ stats }: { stats: SummaryStats }) {
   const distribution = useMemo(() => makeSpeedDistribution(), []);
   const { formatMessage } = useIntl();
   const { formatPercents } = useIntlNumbers();
   const [period, setPeriod] = useState("average");
 
-  const value =
-    period === "top"
-      ? summary.allTimeStats.stats.speed.max
-      : summary.allTimeStats.stats.speed.avg;
+  const value = period === "top" ? stats.speed.max : stats.speed.avg;
   const cdf = distribution.cdf(value);
 
   return (

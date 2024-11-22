@@ -3,19 +3,18 @@ import { useFormatter } from "@keybr/lesson-ui";
 import {
   makeSummaryStats,
   MutableStreakList,
-  type ResultSummary,
+  type Result,
   type Streak,
 } from "@keybr/result";
 import { Explainer, Figure, NameValue, Para } from "@keybr/widget";
-import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
 export function AccuracyStreaksSection({
-  summary,
+  results,
 }: {
-  readonly summary: ResultSummary;
-}): ReactNode {
-  const streaks = MutableStreakList.findLongest(summary.allTimeStats.results);
+  results: readonly Result[];
+}) {
+  const streaks = MutableStreakList.findLongest(results);
 
   return (
     <Figure>
@@ -53,7 +52,7 @@ export function AccuracyStreaksSection({
   );
 }
 
-function StreakDetails({ streak }: { readonly streak: Streak }): ReactNode {
+function StreakDetails({ streak }: { streak: Streak }) {
   const { formatMessage, formatDate } = useIntl();
   const { formatNumber, formatPercents } = useIntlNumbers();
   const { formatSpeed } = useFormatter();

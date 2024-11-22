@@ -1,21 +1,18 @@
 import { useIntlNumbers } from "@keybr/intl";
 import { useFormatter } from "@keybr/lesson-ui";
-import { type ResultSummary } from "@keybr/result";
+import { type SummaryStats } from "@keybr/result";
 import { formatDuration, Header, Para } from "@keybr/widget";
-import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import * as styles from "./Summary.module.less";
 
 export function AllTimeSummary({
-  summary,
+  stats: { count, time, speed, accuracy },
 }: {
-  readonly summary: ResultSummary;
-}): ReactNode {
+  stats: SummaryStats;
+}) {
   const { formatMessage } = useIntl();
   const { formatNumber, formatPercents } = useIntlNumbers();
   const { formatSpeed } = useFormatter();
-
-  const { count, time, speed, accuracy } = summary.allTimeStats.stats;
 
   return (
     <>
@@ -104,15 +101,13 @@ export function AllTimeSummary({
 }
 
 export function TodaySummary({
-  summary,
+  stats: { count, time, speed, accuracy },
 }: {
-  readonly summary: ResultSummary;
-}): ReactNode {
+  stats: SummaryStats;
+}) {
   const { formatMessage } = useIntl();
   const { formatNumber, formatPercents } = useIntlNumbers();
   const { formatSpeed } = useFormatter();
-
-  const { count, time, speed, accuracy } = summary.todayStats.stats;
 
   return (
     <>
@@ -205,10 +200,10 @@ function Statistic({
   value,
   title,
 }: {
-  readonly name: unknown;
-  readonly value: unknown;
-  readonly title: string;
-}): ReactNode {
+  name: unknown;
+  value: unknown;
+  title: string;
+}) {
   return (
     <span className={styles.statisticListItem} title={title}>
       <span className={styles.itemName}>{String(name) + ":"}</span>

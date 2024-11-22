@@ -1,14 +1,13 @@
 import { Calendar, EffortLegend, useEffort } from "@keybr/lesson-ui";
-import { type ResultSummary } from "@keybr/result";
+import { type DailyStatsMap } from "@keybr/result";
 import { Explainer, Figure } from "@keybr/widget";
-import { type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
 
 export function CalendarSection({
-  summary,
+  dailyStatsMap,
 }: {
-  readonly summary: ResultSummary;
-}): ReactNode {
+  dailyStatsMap: DailyStatsMap;
+}) {
   const effort = useEffort();
 
   return (
@@ -29,7 +28,7 @@ export function CalendarSection({
         </Figure.Description>
       </Explainer>
 
-      <Calendar summary={summary} effort={effort} />
+      <Calendar dailyStatsMap={dailyStatsMap} effort={effort} />
 
       <Figure.Legend>
         <EffortLegend effort={effort} />

@@ -1,16 +1,15 @@
 import { Field, FieldList, Range } from "@keybr/widget";
-import { type ReactNode } from "react";
 import { defineMessage, useIntl } from "react-intl";
 
 export function SmoothnessRange({
   value,
   disabled,
-  onChangeValue,
+  onChange,
 }: {
-  readonly value: number;
-  readonly disabled: boolean;
-  readonly onChangeValue: (value: number) => void;
-}): ReactNode {
+  value: number;
+  disabled: boolean;
+  onChange: (value: number) => void;
+}) {
   const { formatMessage } = useIntl();
 
   return (
@@ -41,7 +40,7 @@ export function SmoothnessRange({
             }),
           )}
           onChange={(value) => {
-            onChangeValue(value / 100);
+            onChange(value / 100);
           }}
         />
       </Field>

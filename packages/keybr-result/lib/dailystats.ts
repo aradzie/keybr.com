@@ -3,34 +3,25 @@ import { LocalDate } from "./localdate.ts";
 import { type Result } from "./result.ts";
 import { makeSummaryStats, type SummaryStats } from "./summarystats.ts";
 
-export type AllTimeStats = {
-  readonly results: readonly Result[];
-  readonly stats: SummaryStats;
-};
-
-export type DateStats = {
+export type DailyStats = {
   readonly date: LocalDate;
   readonly results: readonly Result[];
   readonly stats: SummaryStats;
 };
 
-export class ResultSummary implements Iterable<DateStats> {
-  readonly #map = new Map<string, DateStats>();
-  /** Summary stats for all the results. */
-  readonly allTimeStats: AllTimeStats;
-  /** Summary stats for the results of today. May not exist in the iterated entries. */
-  readonly todayStats: DateStats;
+export class DailyStatsMap implements Iterable<DailyStats> {
+  readonly #map = new Map<string, DailyStats>();
+  readonly #today: DailyStats;
 
   constructor(results: readonly Result[], today: LocalDate = LocalDate.now()) {
     const groups = ResultGroups.byDate(results);
     for (const { key, results } of groups) {
       this.#map.set(String(key), makeStats(key, results));
     }
-    this.allTimeStats = { results, stats: makeSummaryStats(results) };
-    this.todayStats = this.#map.get(String(today)) ?? makeStats(today, []);
+    this.#today = this.#map.get(String(today)) ?? makeStats(today, []);
   }
 
-  [Symbol.iterator](): IterableIterator<DateStats> {
+  [Symbol.iterator](): IterableIterator<DailyStats> {
     return this.#map.values();
   }
 
@@ -38,11 +29,16 @@ export class ResultSummary implements Iterable<DateStats> {
     return this.#map.has(String(date));
   }
 
-  get(date: LocalDate): DateStats {
+  get(date: LocalDate): DailyStats {
     return this.#map.get(String(date)) ?? makeStats(date, []);
+  }
+
+  /** Summary stats for the results of today. May not exist in the iterated entries. */
+  get today(): DailyStats {
+    return this.#today;
   }
 }
 
-function makeStats(date: LocalDate, results: readonly Result[]): DateStats {
+function makeStats(date: LocalDate, results: readonly Result[]): DailyStats {
   return { date, results, stats: makeSummaryStats(results) };
 }

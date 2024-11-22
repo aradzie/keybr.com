@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import { parseColor } from "@keybr/color";
 import { FakeIntlProvider } from "@keybr/intl";
-import { LocalDate, ResultFaker, ResultSummary } from "@keybr/result";
+import { DailyStatsMap, LocalDate, ResultFaker } from "@keybr/result";
 import { FakeSettingsContext } from "@keybr/settings";
 import { render } from "@testing-library/react";
 import { equal } from "rich-assert";
@@ -11,7 +11,7 @@ test("no results", () => {
   // Arrange.
 
   const today = new LocalDate(2001, 2, 3);
-  const summary = new ResultSummary([], today);
+  const dailyStatsMap = new DailyStatsMap([], today);
 
   // Act.
 
@@ -19,7 +19,7 @@ test("no results", () => {
     <FakeIntlProvider>
       <FakeSettingsContext>
         <Calendar
-          summary={summary}
+          dailyStatsMap={dailyStatsMap}
           effort={{
             effort: () => 0,
             shade: () => parseColor("#ffffff"),
@@ -43,7 +43,7 @@ test("no results today", () => {
   const yesterday = today.minusDays(1);
   const faker = new ResultFaker();
   const r1 = faker.nextResult({ timeStamp: yesterday.timeStamp });
-  const summary = new ResultSummary([r1], today);
+  const dailyStatsMap = new DailyStatsMap([r1], today);
 
   // Act.
 
@@ -51,7 +51,7 @@ test("no results today", () => {
     <FakeIntlProvider>
       <FakeSettingsContext>
         <Calendar
-          summary={summary}
+          dailyStatsMap={dailyStatsMap}
           effort={{
             effort: () => 0,
             shade: () => parseColor("#ffffff"),
@@ -76,7 +76,7 @@ test("render", () => {
   const faker = new ResultFaker();
   const r1 = faker.nextResult({ timeStamp: yesterday.timeStamp });
   const r2 = faker.nextResult({ timeStamp: today.timeStamp });
-  const summary = new ResultSummary([r1, r2], today);
+  const dailyStatsMap = new DailyStatsMap([r1, r2], today);
 
   // Act.
 
@@ -84,7 +84,7 @@ test("render", () => {
     <FakeIntlProvider>
       <FakeSettingsContext>
         <Calendar
-          summary={summary}
+          dailyStatsMap={dailyStatsMap}
           effort={{
             effort: () => 0.5,
             shade: () => parseColor("#ffffff"),

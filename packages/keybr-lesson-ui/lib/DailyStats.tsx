@@ -1,5 +1,5 @@
 import { useIntlNumbers } from "@keybr/intl";
-import { type DateStats } from "@keybr/result";
+import { type DailyStats as DailyStatsType } from "@keybr/result";
 import { formatDuration, Name, Para, Value } from "@keybr/widget";
 import { FormattedMessage, useIntl } from "react-intl";
 import * as styles from "./DailyStats.module.less";
@@ -7,11 +7,11 @@ import { type Effort } from "./effort.ts";
 import { useFormatter } from "./format.ts";
 
 export function DailyStats({
-  cell: { date, results, stats },
+  stats: { date, results, stats },
   effort,
 }: {
-  readonly cell: DateStats;
-  readonly effort: Effort;
+  stats: DailyStatsType;
+  effort: Effort;
 }) {
   const { formatDate } = useIntl();
   const { formatNumber, formatPercents } = useIntlNumbers();

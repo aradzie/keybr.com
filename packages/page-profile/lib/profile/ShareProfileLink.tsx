@@ -9,14 +9,10 @@ import {
   useClipboard,
 } from "@keybr/widget";
 import { mdiContentCopy, mdiOpenInNew } from "@mdi/js";
-import { type ReactNode, useRef } from "react";
+import { useRef } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
-export function ShareProfileLink({
-  user,
-}: {
-  readonly user: NamedUser;
-}): ReactNode {
+export function ShareProfileLink({ user }: { user: NamedUser }) {
   const { formatMessage } = useIntl();
   const textFieldRef = useRef<TextFieldRef>(null);
   const { copyText } = useClipboard();

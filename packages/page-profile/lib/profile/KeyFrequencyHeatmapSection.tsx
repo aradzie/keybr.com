@@ -2,14 +2,13 @@ import { KeyFrequencyHeatmap, Marker } from "@keybr/chart";
 import { useKeyboard } from "@keybr/keyboard";
 import { type KeyStatsMap } from "@keybr/result";
 import { Explainer, Figure } from "@keybr/widget";
-import { type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
 
 export function KeyFrequencyHeatmapSection({
   keyStatsMap,
 }: {
-  readonly keyStatsMap: KeyStatsMap;
-}): ReactNode {
+  keyStatsMap: KeyStatsMap;
+}) {
   const keyboard = useKeyboard();
   return (
     <Figure>

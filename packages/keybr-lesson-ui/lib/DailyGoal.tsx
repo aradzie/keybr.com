@@ -2,7 +2,6 @@ import { useIntlDurations, useIntlNumbers } from "@keybr/intl";
 import { type DailyGoal as DailyGoalType } from "@keybr/lesson";
 import { type ClassName, Value } from "@keybr/widget";
 import { clsx } from "clsx";
-import { type ReactNode } from "react";
 import * as styles from "./DailyGoal.module.less";
 
 export const DailyGoal = ({
@@ -10,10 +9,10 @@ export const DailyGoal = ({
   className,
   dailyGoal,
 }: {
-  readonly id?: string;
-  readonly className?: ClassName;
-  readonly dailyGoal: DailyGoalType;
-}): ReactNode => {
+  id?: string;
+  className?: ClassName;
+  dailyGoal: DailyGoalType;
+}) => {
   return (
     <span id={id} className={clsx(styles.root, className)}>
       <DailyGoalLabel value={dailyGoal.value} goal={dailyGoal.goal} />
@@ -22,13 +21,7 @@ export const DailyGoal = ({
   );
 };
 
-const DailyGoalLabel = ({
-  value,
-  goal,
-}: {
-  readonly value: number;
-  readonly goal: number;
-}): ReactNode => {
+const DailyGoalLabel = ({ value, goal }: { value: number; goal: number }) => {
   const { formatPercents } = useIntlNumbers();
   const { formatDuration } = useIntlDurations();
   return (
@@ -38,7 +31,7 @@ const DailyGoalLabel = ({
   );
 };
 
-const DailyGoalGauge = ({ value }: { readonly value: number }): ReactNode => {
+const DailyGoalGauge = ({ value }: { value: number }) => {
   value = Math.max(0, value);
   const barWidth = value > 1 ? 100 : Math.round(value * 100);
   const frameWidth = value > 1 ? Math.round((1 / value) * 100) : 100;

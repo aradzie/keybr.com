@@ -1,5 +1,6 @@
 export * from "./accuracy.ts";
 export * from "./context.ts";
+export * from "./dailystats.ts";
 export * from "./errors.ts";
 export * from "./fake.tsx";
 export * from "./group.ts";
@@ -7,7 +8,6 @@ export * from "./keystats.ts";
 export * from "./localdate.ts";
 export * from "./recover.ts";
 export * from "./result.ts";
-export * from "./resultsummary.ts";
 export * from "./settings.ts";
 export * from "./speedunit.ts";
 export * from "./summarystats.ts";

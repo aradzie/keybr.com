@@ -1,11 +1,11 @@
 import { booleanProp, Preferences } from "@keybr/settings";
 import { Button, Field, FieldList, useExplainerState } from "@keybr/widget";
-import { type ReactNode, useLayoutEffect } from "react";
+import { useLayoutEffect } from "react";
 import { useIntl } from "react-intl";
 
 const propExplainSettings = booleanProp("prefs.profile.explain", true);
 
-export function ExplainProfile(): ReactNode {
+export function ExplainProfile() {
   const { formatMessage } = useIntl();
   const { explainersVisible, toggleExplainers } = useExplainerState();
   useLayoutEffect(() => {

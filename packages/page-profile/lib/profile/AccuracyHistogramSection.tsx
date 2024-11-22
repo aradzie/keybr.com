@@ -1,6 +1,6 @@
 import { AccuracyHistogram, makeAccuracyDistribution } from "@keybr/chart";
 import { useIntlNumbers } from "@keybr/intl";
-import { type ResultSummary } from "@keybr/result";
+import { type SummaryStats } from "@keybr/result";
 import {
   Explainer,
   Field,
@@ -10,24 +10,17 @@ import {
   RadioBox,
   Value,
 } from "@keybr/widget";
-import React, { type ReactNode, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { ChartWrapper } from "./ChartWrapper.tsx";
 
-export function AccuracyHistogramSection({
-  summary,
-}: {
-  readonly summary: ResultSummary;
-}): ReactNode {
+export function AccuracyHistogramSection({ stats }: { stats: SummaryStats }) {
   const distribution = useMemo(() => makeAccuracyDistribution(), []);
   const { formatMessage } = useIntl();
   const { formatPercents } = useIntlNumbers();
   const [period, setPeriod] = useState("average");
 
-  const value =
-    period === "top"
-      ? summary.allTimeStats.stats.accuracy.max
-      : summary.allTimeStats.stats.accuracy.avg;
+  const value = period === "top" ? stats.accuracy.max : stats.accuracy.avg;
   const cdf = distribution.cdf(distribution.scale(value));
 
   return (

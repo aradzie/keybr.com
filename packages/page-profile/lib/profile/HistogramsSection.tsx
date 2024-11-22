@@ -1,15 +1,11 @@
-import { type ResultSummary } from "@keybr/result";
+import { type SummaryStats } from "@keybr/result";
 import { Tab, TabList } from "@keybr/widget";
-import React, { type ReactNode, useState } from "react";
+import React, { useState } from "react";
 import { useIntl } from "react-intl";
 import { AccuracyHistogramSection } from "./AccuracyHistogramSection.tsx";
 import { SpeedHistogramSection } from "./SpeedHistogramSection.tsx";
 
-export function HistogramsSection({
-  summary,
-}: {
-  readonly summary: ResultSummary;
-}): ReactNode {
+export function HistogramsSection({ stats }: { stats: SummaryStats }) {
   const { formatMessage } = useIntl();
   const [index, setIndex] = useState(0);
   return (
@@ -20,7 +16,7 @@ export function HistogramsSection({
           defaultMessage: "Relative Typing Speed",
         })}
       >
-        <SpeedHistogramSection summary={summary} />
+        <SpeedHistogramSection stats={stats} />
       </Tab>
       <Tab
         label={formatMessage({
@@ -28,7 +24,7 @@ export function HistogramsSection({
           defaultMessage: "Relative Accuracy",
         })}
       >
-        <AccuracyHistogramSection summary={summary} />
+        <AccuracyHistogramSection stats={stats} />
       </Tab>
     </TabList>
   );

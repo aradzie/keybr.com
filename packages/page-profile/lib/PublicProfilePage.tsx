@@ -1,5 +1,9 @@
 import { type NamedUser, Screen, UserName } from "@keybr/pages-shared";
-import { type KeyStatsMap, ResultSummary } from "@keybr/result";
+import {
+  DailyStatsMap,
+  type KeyStatsMap,
+  makeSummaryStats,
+} from "@keybr/result";
 import { ExplainerBoundary, Header } from "@keybr/widget";
 import { AccuracyStreaksSection } from "./profile/AccuracyStreaksSection.tsx";
 import { CalendarSection } from "./profile/CalendarSection.tsx";
@@ -14,7 +18,7 @@ import { ResultGrouper } from "./profile/ResultGrouper.tsx";
 import { SpeedChartSection } from "./profile/SpeedChartSection.tsx";
 import { AllTimeSummary } from "./profile/Summary.tsx";
 
-export function PublicProfilePage({ user }: { readonly user: NamedUser }) {
+export function PublicProfilePage({ user }: { user: NamedUser }) {
   return (
     <Screen>
       <ExplainerBoundary>
@@ -30,17 +34,18 @@ export function PublicProfilePage({ user }: { readonly user: NamedUser }) {
   );
 }
 
-function Content({ keyStatsMap }: { readonly keyStatsMap: KeyStatsMap }) {
+function Content({ keyStatsMap }: { keyStatsMap: KeyStatsMap }) {
   const { results } = keyStatsMap;
-  const summary = new ResultSummary(results);
+  const stats = makeSummaryStats(results);
+  const dailyStatsMap = new DailyStatsMap(results);
 
   return (
     <>
-      <AllTimeSummary summary={summary} />
+      <AllTimeSummary stats={stats} />
 
-      <AccuracyStreaksSection summary={summary} />
+      <AccuracyStreaksSection results={results} />
 
-      <HistogramsSection summary={summary} />
+      <HistogramsSection stats={stats} />
 
       <ProgressOverviewSection keyStatsMap={keyStatsMap} />
 
@@ -54,7 +59,7 @@ function Content({ keyStatsMap }: { readonly keyStatsMap: KeyStatsMap }) {
 
       <KeyFrequencyHeatmapSection keyStatsMap={keyStatsMap} />
 
-      <CalendarSection summary={summary} />
+      <CalendarSection dailyStatsMap={dailyStatsMap} />
     </>
   );
 }

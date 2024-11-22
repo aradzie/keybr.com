@@ -1,5 +1,9 @@
 import { type NamedUser, Screen, usePageData } from "@keybr/pages-shared";
-import { type KeyStatsMap, ResultSummary } from "@keybr/result";
+import {
+  DailyStatsMap,
+  type KeyStatsMap,
+  makeSummaryStats,
+} from "@keybr/result";
 import { ExplainerBoundary } from "@keybr/widget";
 import { AccuracyStreaksSection } from "./profile/AccuracyStreaksSection.tsx";
 import { CalendarSection } from "./profile/CalendarSection.tsx";
@@ -29,20 +33,21 @@ export function ProfilePage() {
   );
 }
 
-function Content({ keyStatsMap }: { readonly keyStatsMap: KeyStatsMap }) {
+function Content({ keyStatsMap }: { keyStatsMap: KeyStatsMap }) {
   const { publicUser } = usePageData();
   const { results } = keyStatsMap;
-  const summary = new ResultSummary(results);
+  const stats = makeSummaryStats(results);
+  const dailyStatsMap = new DailyStatsMap(results);
 
   return (
     <>
-      <AllTimeSummary summary={summary} />
+      <AllTimeSummary stats={stats} />
 
-      <TodaySummary summary={summary} />
+      <TodaySummary stats={dailyStatsMap.today.stats} />
 
-      <AccuracyStreaksSection summary={summary} />
+      <AccuracyStreaksSection results={results} />
 
-      <HistogramsSection summary={summary} />
+      <HistogramsSection stats={stats} />
 
       <ProgressOverviewSection keyStatsMap={keyStatsMap} />
 
@@ -56,7 +61,7 @@ function Content({ keyStatsMap }: { readonly keyStatsMap: KeyStatsMap }) {
 
       <KeyFrequencyHeatmapSection keyStatsMap={keyStatsMap} />
 
-      <CalendarSection summary={summary} />
+      <CalendarSection dailyStatsMap={dailyStatsMap} />
 
       {publicUser.id != null && (
         <ShareProfileLink user={publicUser as NamedUser} />

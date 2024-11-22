@@ -22,8 +22,8 @@ import { FormattedMessage, useIntl } from "react-intl";
 export function ResultGrouper({
   children,
 }: {
-  readonly children: (keyStatsMap: KeyStatsMap) => ReactNode;
-}): ReactNode {
+  children: (keyStatsMap: KeyStatsMap) => ReactNode;
+}) {
   const { formatMessage } = useIntl();
   const { settings } = useSettings();
   const { results } = useResults();

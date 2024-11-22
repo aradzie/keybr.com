@@ -1,8 +1,8 @@
 import { test } from "node:test";
 import { deepEqual, equal, isFalse, isTrue } from "rich-assert";
+import { DailyStatsMap } from "./dailystats.ts";
 import { ResultFaker } from "./fake.tsx";
 import { LocalDate } from "./localdate.ts";
-import { ResultSummary } from "./resultsummary.ts";
 import { makeSummaryStats } from "./summarystats.ts";
 
 test("no results", () => {
@@ -12,18 +12,18 @@ test("no results", () => {
 
   // Act.
 
-  const summary = new ResultSummary([], today);
-  const groups = [...summary];
+  const map = new DailyStatsMap([], today);
+  const groups = [...map];
 
   // Assert.
 
   equal(groups.length, 0);
-  deepEqual(summary.todayStats, {
+  deepEqual(map.today, {
     date: today,
     results: [],
     stats: makeSummaryStats([]),
   });
-  isFalse(summary.has(today));
+  isFalse(map.has(today));
 });
 
 test("no results today", () => {
@@ -36,8 +36,8 @@ test("no results today", () => {
 
   // Act.
 
-  const summary = new ResultSummary([r1], today);
-  const groups = [...summary];
+  const map = new DailyStatsMap([r1], today);
+  const groups = [...map];
 
   // Assert.
 
@@ -48,14 +48,14 @@ test("no results today", () => {
     results: [r1],
     stats: makeSummaryStats([r1]),
   });
-  deepEqual(summary.todayStats, {
+  deepEqual(map.today, {
     date: today,
     results: [],
     stats: makeSummaryStats([]),
   });
-  isFalse(groups.includes(summary.todayStats));
-  isTrue(summary.has(yesterday));
-  isFalse(summary.has(today));
+  isFalse(groups.includes(map.today));
+  isTrue(map.has(yesterday));
+  isFalse(map.has(today));
 });
 
 test("group results group by date", () => {
@@ -69,8 +69,8 @@ test("group results group by date", () => {
 
   // Act.
 
-  const summary = new ResultSummary([r1, r2], today);
-  const groups = [...summary];
+  const map = new DailyStatsMap([r1, r2], today);
+  const groups = [...map];
 
   // Assert.
 
@@ -86,12 +86,12 @@ test("group results group by date", () => {
     results: [r2],
     stats: makeSummaryStats([r2]),
   });
-  deepEqual(summary.todayStats, {
+  deepEqual(map.today, {
     date: today,
     results: [r2],
     stats: makeSummaryStats([r2]),
   });
-  isTrue(groups.includes(summary.todayStats));
-  isTrue(summary.has(yesterday));
-  isTrue(summary.has(today));
+  isTrue(groups.includes(map.today));
+  isTrue(map.has(yesterday));
+  isTrue(map.has(today));
 });

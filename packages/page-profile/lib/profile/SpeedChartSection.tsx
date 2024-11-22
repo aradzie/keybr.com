@@ -2,16 +2,12 @@ import { Marker, SpeedChart } from "@keybr/chart";
 import { hasData } from "@keybr/math";
 import { type Result } from "@keybr/result";
 import { Explainer, Figure } from "@keybr/widget";
-import { type ReactNode, useState } from "react";
+import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { ChartWrapper } from "./ChartWrapper.tsx";
 import { SmoothnessRange } from "./SmoothnessRange.tsx";
 
-export function SpeedChartSection({
-  results,
-}: {
-  readonly results: readonly Result[];
-}): ReactNode {
+export function SpeedChartSection({ results }: { results: readonly Result[] }) {
   const [smoothness, setSmoothness] = useState(0.5);
 
   return (
@@ -44,9 +40,7 @@ export function SpeedChartSection({
       <SmoothnessRange
         disabled={!hasData(results)}
         value={smoothness}
-        onChangeValue={(value) => {
-          setSmoothness(value);
-        }}
+        onChange={setSmoothness}
       />
 
       <Figure.Legend>
