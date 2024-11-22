@@ -1007,6 +1007,30 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly EN_GALLIUM = new Layout(
+    /* id= */ "en-gallium",
+    /* xid= */ 0xa1,
+    /* name= */ "Gallium",
+    /* family= */ "gallium",
+    /* language= */ Language.EN,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.MATRIX,
+    ),
+  );
+  static readonly EN_GALLIUM_MATRIX = new Layout(
+    /* id= */ "en-gallium-matrix",
+    /* xid= */ 0xa2,
+    /* name= */ "Gallium (matrix)",
+    /* family= */ "gallium-matrix",
+    /* language= */ Language.EN,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(Geometry.MATRIX),
+  );
 
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
@@ -1028,6 +1052,8 @@ export class Layout implements XEnumItem {
     Layout.EN_NORMAN,
     Layout.EN_HALMAK,
     Layout.EN_ENGRAM,
+    Layout.EN_GALLIUM,
+    Layout.EN_GALLIUM_MATRIX,
     Layout.EN_GRAPHITE,
     Layout.EN_UK,
     Layout.EN_JP,
