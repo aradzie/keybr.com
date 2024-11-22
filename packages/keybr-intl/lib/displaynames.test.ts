@@ -1,7 +1,6 @@
 import { test } from "node:test";
-import { assert } from "chai";
 import { createIntl } from "react-intl";
-import { equal } from "rich-assert";
+import { equal, isNotEmpty } from "rich-assert";
 import { makeIntlDisplayNames } from "./displaynames.ts";
 import { allLocales } from "./locale.ts";
 
@@ -71,7 +70,7 @@ test("format all language names in all locales", () => {
       createIntl({ locale: outer }),
     );
     for (const inner of allLocales) {
-      assert.isAbove(formatLanguageName(inner).length, 0);
+      isNotEmpty(formatLanguageName(inner));
     }
   }
 });

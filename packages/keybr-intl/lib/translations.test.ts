@@ -1,7 +1,6 @@
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
-import { assert } from "chai";
-import { deepEqual } from "rich-assert";
+import { deepEqual, doesNotMatch } from "rich-assert";
 import { allLocales, defaultLocale } from "./locale.ts";
 
 for (const locale of allLocales) {
@@ -27,33 +26,33 @@ for (const locale of allLocales) {
   test(`typography [${locale}]`, () => {
     const messages = loadTranslations(locale);
     for (const [id, message] of Object.entries(messages)) {
-      assert.notMatch(message, /^\s/, `Message ${id} starts with whitespace`);
-      assert.notMatch(message, /\s$/, `Message ${id} ends with whitespace`);
-      assert.notMatch(message, /\s\s/, `Message ${id} has repeated whitespace`);
-      assert.notMatch(message, /\t/, `Message ${id} has tab whitespace`);
-      assert.notMatch(
+      doesNotMatch(message, /^\s/, `Message ${id} starts with whitespace`);
+      doesNotMatch(message, /\s$/, `Message ${id} ends with whitespace`);
+      doesNotMatch(message, /\s\s/, `Message ${id} has repeated whitespace`);
+      doesNotMatch(message, /\t/, `Message ${id} has tab whitespace`);
+      doesNotMatch(
         message,
         /[\u2000-\u200B\u2028\u2029]/,
         `Message ${id} has irregular whitespace`,
       );
-      assert.notMatch(
+      doesNotMatch(
         message,
         /\s[.,:;!?]/,
         `Message ${id} has whitespace before punctuation`,
       );
-      assert.notMatch(message, /'/, `Message ${id} has straight single quote`);
-      assert.notMatch(message, /"/, `Message ${id} has straight double quote`);
-      assert.notMatch(
+      doesNotMatch(message, /'/, `Message ${id} has straight single quote`);
+      doesNotMatch(message, /"/, `Message ${id} has straight double quote`);
+      doesNotMatch(
         message,
         /\s\u002D\s/,
         `Message ${id} uses Hyphen-Minus as Dash`,
       );
-      assert.notMatch(
+      doesNotMatch(
         message,
         /\s\u2010|\u2010\s/,
         `Message ${id} has space around Hyphen`,
       );
-      assert.notMatch(
+      doesNotMatch(
         message,
         /\s\u2011|\u2011\s/,
         `Message ${id} has space around Non-Breaking Hyphen`,
