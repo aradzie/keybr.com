@@ -28,6 +28,20 @@ export function ChartDesign() {
         </Field>
         <Field size={6}>Threshold</Field>
       </FieldList>
+      <FieldList>
+        <Field>
+          <ColorInput accessor={prop["--Chart-hist-h__color"]} />
+        </Field>
+        <Field size={6}>Color 1</Field>
+        <Field>
+          <ColorInput accessor={prop["--Chart-hist-m__color"]} />
+        </Field>
+        <Field size={6}>Color 2</Field>
+        <Field>
+          <ColorInput accessor={prop["--Chart-hist-r__color"]} />
+        </Field>
+        <Field size={6}>Color 3</Field>
+      </FieldList>
       <PreviewPane>
         <ChartPreview />
       </PreviewPane>
