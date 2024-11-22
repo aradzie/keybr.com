@@ -67,7 +67,7 @@ export function Value({
       )}
       title={title}
     >
-      {children || String(value)}
+      {children || value}
     </span>
   );
 }

@@ -6,6 +6,7 @@ import { clsx } from "clsx";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
 import { useFormatter } from "./format.ts";
+import { Happiness } from "./Happiness.tsx";
 import { messages } from "./intl.ts";
 import * as styles from "./styles.module.less";
 
@@ -25,10 +26,11 @@ export const KeyDetails = ({
     confidence != null &&
     bestConfidence != null
   ) {
-    const learningRate = LearningRate.from(
-      lessonKey.samples,
-      new Target(settings),
-    );
+    const learningRate =
+      LearningRate.from(
+        lessonKey.samples, //
+        new Target(settings),
+      )?.learningRate ?? null;
     return (
       <span className={clsx(styles.keyDetails, styles.keyDetails_calibrated)}>
         <NameValue
@@ -57,7 +59,18 @@ export const KeyDetails = ({
         />
         <NameValue
           name={<Name name={formatMessage(messages.learningRateName)} />}
-          value={<Value value={formatLearningRate(learningRate)} />}
+          value={
+            <Value
+              value={
+                <>
+                  {formatLearningRate(learningRate)}
+                  {"\u00A0"}
+                  <Happiness learningRate={learningRate ?? 0} />
+                </>
+              }
+              delta={learningRate ?? 0}
+            />
+          }
           title={formatMessage(messages.learningRateDescription)}
         />
       </span>

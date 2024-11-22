@@ -1,5 +1,4 @@
 import { useIntlNumbers } from "@keybr/intl";
-import { type LearningRate } from "@keybr/lesson";
 import { SpeedUnit, uiProps } from "@keybr/result";
 import { useSettings } from "@keybr/settings";
 import { useMemo } from "react";
@@ -15,7 +14,7 @@ export type Formatter = {
   readonly speedUnitName: string;
   readonly formatSpeed: (value: number, options?: FormatterOptions) => string;
   readonly formatConfidence: (value: number | null) => string;
-  readonly formatLearningRate: (lr: LearningRate | null) => string;
+  readonly formatLearningRate: (lr: number | null) => string;
 };
 
 export const useFormatter = (): Formatter => {
@@ -60,13 +59,13 @@ export const useFormatter = (): Formatter => {
         return formatMessage(messages.uncertainValue);
       }
     };
-    const formatLearningRate = (lr: LearningRate | null): string => {
-      if (lr != null && lr.learningRate === lr.learningRate) {
+    const formatLearningRate = (lr: number | null): string => {
+      if (lr != null && lr === lr) {
         return signed(
           formatMessage(messages.learningRateValue, {
-            value: formatSpeed(lr.learningRate),
+            value: formatSpeed(lr),
           }),
-          lr.learningRate,
+          lr,
         );
       } else {
         return formatMessage(messages.uncertainValue);
@@ -82,28 +81,6 @@ export const useFormatter = (): Formatter => {
   }, [formatMessage, formatNumber, formatPercents, settings]);
 };
 
-function signed(value: any, learningRate: number): string {
-  // https://unicode.org/emoji/charts/full-emoji-list.html
-  // https://www.codejam.info/2021/11/emoji-variation-selector.html
-  // https://en.wikipedia.org/wiki/Variation_Selectors_(Unicode_block)
-  const s = String(value);
-  if (learningRate >= 10) {
-    return `+${s} 🙂\uFE0E🙂\uFE0E🙂\uFE0E`;
-  }
-  if (learningRate >= 5) {
-    return `+${s} 🙂\uFE0E🙂\uFE0E`;
-  }
-  if (learningRate > 0) {
-    return `+${s} 🙂\uFE0E`;
-  }
-  if (learningRate <= -10) {
-    return `${s} 🙁\uFE0E🙁\uFE0E🙁\uFE0E`;
-  }
-  if (learningRate <= -5) {
-    return `${s} 🙁\uFE0E🙁\uFE0E`;
-  }
-  if (learningRate < 0) {
-    return `${s} 🙁\uFE0E`;
-  }
-  return `${s}`;
+function signed(value: any, learningRate: number) {
+  return learningRate > 0 ? `+${value}` : `${value}`;
 }
