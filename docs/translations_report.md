@@ -1,3 +1,9 @@
+# English
+
+Translated: 417 messages, 5054 words
+
+Untranslated: 0 messages, 0 words
+
 # Arabic
 
 Translated: 405 messages, 4943 words

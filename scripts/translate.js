@@ -4,48 +4,13 @@ import { compile, extract } from "@formatjs/cli-lib";
 import { globSync } from "glob";
 import { readJsonSync, writeJsonSync } from "./lib/fs-json.js";
 import { messageIdHash } from "./lib/intl.js";
+import {
+  mergedTranslationsPath,
+  messagesPath,
+  translationsPath,
+} from "./lib/intl-io.js";
+import { allLocales, defaultLocale } from "./locale.js";
 import { findPackages, rootDir } from "./root.js";
-
-const outputDir = join(rootDir, "packages", "keybr-intl");
-
-const defaultLocale = "en";
-
-const allLocales = [
-  defaultLocale,
-  "ar",
-  "bg",
-  "ca",
-  "cs",
-  "da",
-  "de",
-  "el",
-  "eo",
-  "es",
-  "et",
-  "fa",
-  "fr",
-  "he",
-  "hr",
-  "hu",
-  "id",
-  "it",
-  "ja",
-  "ko",
-  "ne",
-  "nl",
-  "pl",
-  "pt-br",
-  "pt-pt",
-  "ro",
-  "ru",
-  "sv",
-  "th",
-  "tr",
-  "uk",
-  "vi",
-  "zh-hans",
-  "zh-hant",
-];
 
 function findSourceFiles() {
   const files = [];
@@ -80,35 +45,25 @@ async function extractTranslations() {
   );
 }
 
-async function syncTranslations(report) {
+async function syncTranslations() {
   const defaultTranslationsFile = translationsPath(defaultLocale);
   const defaultTranslations = readJsonSync(defaultTranslationsFile);
   for (const locale of allLocales) {
     if (locale === defaultLocale) {
       continue;
     }
-    const localeReport = (report[locale] = {
-      translated: [],
-      untranslated: [],
-    });
     const translationsFile = translationsPath(locale);
     const translations = readJsonSync(translationsFile);
     writeJsonSync(
       translationsFile,
-      remap(defaultTranslations, ([id, message]) => {
-        const translatedMessage =
-          translations[id] !== "" &&
-          translations[id] !== id &&
-          translations[id] !== message
-            ? translations[id]
-            : undefined;
-        if (translatedMessage != null) {
-          localeReport.translated.push([id, message]);
-        } else if (!/\{[a-z]+\}/.test(message)) {
-          localeReport.untranslated.push([id, message]);
-        }
-        return [id, translatedMessage];
-      }),
+      remap(defaultTranslations, ([id, message]) => [
+        id,
+        translations[id] &&
+        translations[id] !== id &&
+        translations[id] !== message
+          ? translations[id]
+          : undefined,
+      ]),
     );
   }
 }
@@ -134,7 +89,7 @@ async function compileMessages() {
       mergedTranslationsFile,
       remap(defaultTranslations, ([id, message]) => [
         id,
-        translations[id] ?? message,
+        translations[id] || message,
       ]),
     );
     const messagesFile = messagesPath(locale);
@@ -148,7 +103,25 @@ async function compileMessages() {
   }
 }
 
-async function writeReport(report) {
+async function writeReport() {
+  const report = {};
+  const defaultTranslationsFile = translationsPath(defaultLocale);
+  const defaultTranslations = readJsonSync(defaultTranslationsFile);
+  for (const locale of allLocales) {
+    const translationsFile = translationsPath(locale);
+    const translations = readJsonSync(translationsFile);
+    const localeReport = (report[locale] = {
+      translated: [],
+      untranslated: [],
+    });
+    for (const [id, message] of Object.entries(defaultTranslations)) {
+      if (translations[id]) {
+        localeReport.translated.push([id, message]);
+      } else if (!/\{[a-z]+\}/.test(message)) {
+        localeReport.untranslated.push([id, message]);
+      }
+    }
+  }
   const languageName = new Intl.DisplayNames("en", { type: "language" });
   const countWords = (count, [id, message]) =>
     count +
@@ -195,30 +168,11 @@ async function writeReport(report) {
   );
 }
 
-async function run() {
-  const report = {};
-  await extractTranslations();
-  await syncTranslations(report);
-  await compileMessages();
-  await writeReport(report);
-}
-
 function remap(entries, callback) {
   return Object.fromEntries(Object.entries(entries).map(callback));
 }
 
-function translationsPath(locale) {
-  return join(outputDir, `translations`, `${locale}.json`);
-}
-
-function mergedTranslationsPath(locale) {
-  return join(outputDir, `translations`, `${locale}-merged.json`);
-}
-
-function messagesPath(locale) {
-  return join(outputDir, `lib`, `messages`, `${locale}.json`);
-}
-
-run().catch((err) => {
-  console.error(err);
-});
+await extractTranslations();
+await syncTranslations();
+await compileMessages();
+await writeReport();
