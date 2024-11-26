@@ -49,8 +49,8 @@ export class KeyboardOptions {
   }
 
   static from(settings: Settings): KeyboardOptions {
+    const language = settings.get(keyboardProps.language);
     const layout = settings.get(keyboardProps.layout);
-    const language = settings.get(keyboardProps.language, layout.language);
     const geometry = settings.get(keyboardProps.geometry);
     const zones = settings.get(keyboardProps.zones);
     return KeyboardOptions.default()
