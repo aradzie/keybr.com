@@ -53,7 +53,11 @@ export function KeyboardSettings(): ReactNode {
 
 function LayoutProp(): ReactNode {
   const { formatMessage } = useIntl();
-  const { formatLanguageName, formatLayoutName } = useFormattedNames();
+  const {
+    formatLanguageName, //
+    formatLayoutName,
+    formatFullLayoutName,
+  } = useFormattedNames();
   const { compare } = useCollator();
   const { settings, updateSettings } = useSettings();
   const options = KeyboardOptions.from(settings);
@@ -97,7 +101,10 @@ function LayoutProp(): ReactNode {
           <OptionList
             options={options.selectableLayouts().map((item) => ({
               value: item.id,
-              name: formatLayoutName(item),
+              name:
+                item.language.id === options.language.id
+                  ? formatLayoutName(item)
+                  : formatFullLayoutName(item),
             }))}
             value={options.layout.id}
             onSelect={(id) => {

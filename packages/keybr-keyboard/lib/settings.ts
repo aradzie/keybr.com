@@ -29,6 +29,7 @@ export enum Emulation {
 }
 
 export const keyboardProps = {
+  language: itemProp("keyboard.language", Language.ALL, Language.EN),
   layout: xitemProp("keyboard.layout", Layout.ALL, Layout.EN_US),
   geometry: itemProp("keyboard.geometry", Geometry.ALL, Geometry.ANSI_101),
   zones: itemProp("keyboard.zones", ZoneMod.ALL, ZoneMod.STANDARD),
@@ -49,10 +50,11 @@ export class KeyboardOptions {
 
   static from(settings: Settings): KeyboardOptions {
     const layout = settings.get(keyboardProps.layout);
+    const language = settings.get(keyboardProps.language, layout.language);
     const geometry = settings.get(keyboardProps.geometry);
     const zones = settings.get(keyboardProps.zones);
     return KeyboardOptions.default()
-      .withLanguage(layout.language)
+      .withLanguage(language)
       .withLayout(layout)
       .withGeometry(geometry)
       .withZones(zones);
@@ -96,9 +98,13 @@ export class KeyboardOptions {
   }
 
   selectableLayouts(): Layout[] {
-    return Layout.ALL.filter(
-      (layout) => layout.language.id === this.#language.id,
+    const list = Layout.ALL.filter(
+      (layout) => layout.language.script === this.#language.script,
     );
+    return [
+      ...list.filter((layout) => layout.language.id === this.#language.id),
+      ...list.filter((layout) => layout.language.id !== this.#language.id),
+    ];
   }
 
   selectableGeometries(): Geometry[] {
@@ -127,7 +133,7 @@ export class KeyboardOptions {
   }
 
   withLayout(layout: Layout): KeyboardOptions {
-    if (this.#language === layout.language) {
+    if (this.#language.script === layout.language.script) {
       const geometry = Geometry.first(layout.geometries);
       const zones = ZoneMod.first(geometry.zones);
       return new KeyboardOptions(
@@ -173,6 +179,7 @@ export class KeyboardOptions {
 
   save(settings: Settings): Settings {
     return settings
+      .set(keyboardProps.language, this.#language)
       .set(keyboardProps.layout, this.#layout)
       .set(keyboardProps.geometry, this.#geometry)
       .set(keyboardProps.zones, this.#zones);

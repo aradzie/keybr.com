@@ -27,14 +27,15 @@ test("read default settings", () => {
 test("read configured values", () => {
   const options = KeyboardOptions.from(
     new Settings()
-      .set(keyboardProps.layout, Layout.EN_JP)
-      .set(keyboardProps.geometry, Geometry.ANSI_101)
+      .set(keyboardProps.language, Language.IT)
+      .set(keyboardProps.layout, Layout.IT_IT)
+      .set(keyboardProps.geometry, Geometry.ISO_102)
       .set(keyboardProps.zones, ZoneMod.SYMMETRIC),
   );
 
-  equal(options.language, Language.EN);
-  equal(options.layout, Layout.EN_JP);
-  equal(options.geometry, Geometry.JAPANESE_106);
+  equal(options.language, Language.IT);
+  equal(options.layout, Layout.IT_IT);
+  equal(options.geometry, Geometry.ISO_102);
   equal(options.zones, ZoneMod.SYMMETRIC);
 });
 
@@ -82,5 +83,23 @@ describe("update properties", () => {
     equal(options.layout, Layout.FR_CA);
     equal(options.geometry, Geometry.ANSI_101);
     equal(options.zones, ZoneMod.SYMMETRIC);
+  });
+
+  it("mix language and layout", () => {
+    const options = KeyboardOptions.default()
+      .withLanguage(Language.FR)
+      .withLayout(Layout.EN_DVORAK);
+
+    equal(options.language, Language.FR);
+    equal(options.layout, Layout.EN_DVORAK);
+  });
+
+  it("reject invalid language and layout combination", () => {
+    const options = KeyboardOptions.default()
+      .withLanguage(Language.FR)
+      .withLayout(Layout.EL_GR);
+
+    equal(options.language, Language.FR);
+    equal(options.layout, Layout.FR_FR);
   });
 });
