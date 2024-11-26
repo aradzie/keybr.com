@@ -30,8 +30,11 @@ export class Settings {
     return this.#isNew;
   }
 
-  get<T>(prop: AnyProp<T>): T {
-    return prop.fromJson(this.#json[prop.key] ?? defaultJson[prop.key]);
+  get<T>(prop: AnyProp<T>, defaultValue?: T): T {
+    return prop.fromJson(
+      this.#json[prop.key] ?? defaultJson[prop.key],
+      defaultValue,
+    );
   }
 
   set<T>(prop: AnyProp<T>, value: T): Settings {

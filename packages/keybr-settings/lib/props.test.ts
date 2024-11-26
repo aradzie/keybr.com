@@ -86,16 +86,22 @@ test("change props", () => {
 test("read boolean", () => {
   const p = props.boolean;
   equal(new Settings().get(p), false);
+  equal(new Settings().get(p, true), true);
   equal(new Settings({ [p.key]: null }).get(p), false);
+  equal(new Settings({ [p.key]: null }).get(p, true), true);
   equal(new Settings({ [p.key]: "abc" }).get(p), false);
+  equal(new Settings({ [p.key]: "abc" }).get(p, true), true);
   equal(new Settings({ [p.key]: true }).get(p), true);
 });
 
 test("read number", () => {
   const p = props.number;
   equal(new Settings().get(p), 0);
+  equal(new Settings().get(p, 1), 1);
   equal(new Settings({ [p.key]: null }).get(p), 0);
+  equal(new Settings({ [p.key]: null }).get(p, 1), 1);
   equal(new Settings({ [p.key]: "abc" }).get(p), 0);
+  equal(new Settings({ [p.key]: "abc" }).get(p, 1), 1);
   equal(new Settings({ [p.key]: 1000 }).get(p), 100);
   equal(new Settings({ [p.key]: 99 }).get(p), 99);
 });
@@ -103,8 +109,11 @@ test("read number", () => {
 test("read string", () => {
   const p = props.string;
   equal(new Settings().get(p), "");
+  equal(new Settings().get(p, "abc"), "abc");
   equal(new Settings({ [p.key]: null }).get(p), "");
+  equal(new Settings({ [p.key]: null }).get(p, "abc"), "abc");
   equal(new Settings({ [p.key]: 123 }).get(p), "");
+  equal(new Settings({ [p.key]: 123 }).get(p, "abc"), "abc");
   equal(new Settings({ [p.key]: "abcxyz" }).get(p), "abc");
   equal(new Settings({ [p.key]: "123" }).get(p), "123");
 });
@@ -112,9 +121,13 @@ test("read string", () => {
 test("read enum", () => {
   const p = props.enum;
   equal(new Settings().get(p), Letter.None);
+  equal(new Settings().get(p, Letter.A), Letter.A);
   equal(new Settings({ [p.key]: null }).get(p), Letter.None);
+  equal(new Settings({ [p.key]: null }).get(p, Letter.A), Letter.A);
   equal(new Settings({ [p.key]: 123 }).get(p), Letter.None);
+  equal(new Settings({ [p.key]: 123 }).get(p, Letter.A), Letter.A);
   equal(new Settings({ [p.key]: "abc" }).get(p), Letter.None);
+  equal(new Settings({ [p.key]: "abc" }).get(p, Letter.A), Letter.A);
   equal(new Settings({ [p.key]: "a" }).get(props.enum), Letter.A);
   equal(new Settings({ [p.key]: "b" }).get(props.enum), Letter.B);
 });
@@ -122,9 +135,13 @@ test("read enum", () => {
 test("read item", () => {
   const p = props.item;
   equal(new Settings().get(p), Digit.NONE);
+  equal(new Settings().get(p, Digit.ONE), Digit.ONE);
   equal(new Settings({ [p.key]: null }).get(p), Digit.NONE);
+  equal(new Settings({ [p.key]: null }).get(p, Digit.ONE), Digit.ONE);
   equal(new Settings({ [p.key]: 123 }).get(p), Digit.NONE);
+  equal(new Settings({ [p.key]: 123 }).get(p, Digit.ONE), Digit.ONE);
   equal(new Settings({ [p.key]: "abc" }).get(p), Digit.NONE);
+  equal(new Settings({ [p.key]: "abc" }).get(p, Digit.ONE), Digit.ONE);
   equal(new Settings({ [p.key]: "one" }).get(p), Digit.ONE);
   equal(new Settings({ [p.key]: "two" }).get(p), Digit.TWO);
 });
@@ -136,12 +153,24 @@ test("read flags", () => {
     ["a", "b", "c"],
   );
   deepEqual(
+    new Settings().get(p, ["a"]), //
+    ["a"],
+  );
+  deepEqual(
     new Settings({ [p.key]: null }).get(p), //
     ["a", "b", "c"],
   );
   deepEqual(
+    new Settings({ [p.key]: null }).get(p, ["a"]), //
+    ["a"],
+  );
+  deepEqual(
     new Settings({ [p.key]: 123 }).get(p), //
     ["a", "b", "c"],
+  );
+  deepEqual(
+    new Settings({ [p.key]: 123 }).get(p, ["a"]), //
+    ["a"],
   );
   deepEqual(
     new Settings({ [p.key]: "a" }).get(p), //

@@ -11,7 +11,7 @@ export type AnyProp<T> = {
   readonly key: string;
   readonly defaultValue: T;
   toJson(value: T): unknown;
-  fromJson(value: unknown): T;
+  fromJson(value: unknown, defaultValue?: T): T;
 };
 
 export type BooleanProp = {
@@ -59,8 +59,8 @@ export function booleanProp(key: string, defaultValue: boolean): BooleanProp {
     toJson(value: boolean): unknown {
       return value;
     },
-    fromJson(value: unknown): boolean {
-      return typeof value === "boolean" ? value : defaultValue;
+    fromJson(value: unknown, defaultValue0 = defaultValue): boolean {
+      return typeof value === "boolean" ? value : defaultValue0;
     },
   };
 }
@@ -85,8 +85,8 @@ export function numberProp(
     toJson(value: number): unknown {
       return clamp(value, min, max);
     },
-    fromJson(value: unknown): number {
-      return typeof value === "number" ? clamp(value, min, max) : defaultValue;
+    fromJson(value: unknown, defaultValue0 = defaultValue): number {
+      return typeof value === "number" ? clamp(value, min, max) : defaultValue0;
     },
   };
 }
@@ -108,8 +108,8 @@ export function stringProp(
     toJson(value: string): unknown {
       return trim(value, maxLength);
     },
-    fromJson(value: unknown): string {
-      return typeof value === "string" ? trim(value, maxLength) : defaultValue;
+    fromJson(value: unknown, defaultValue0 = defaultValue): string {
+      return typeof value === "string" ? trim(value, maxLength) : defaultValue0;
     },
   };
 }
@@ -134,10 +134,10 @@ export function enumProp(
     toJson(value: number): unknown {
       return map.get(value);
     },
-    fromJson(value: unknown): number {
+    fromJson(value: unknown, defaultValue0 = defaultValue): number {
       return typeof value === "string"
-        ? (map.get(value) ?? defaultValue)
-        : defaultValue;
+        ? (map.get(value) ?? defaultValue0)
+        : defaultValue0;
     },
   };
 }
@@ -155,10 +155,10 @@ export function itemProp<T extends EnumItem>(
     toJson(value: T): unknown {
       return value.id;
     },
-    fromJson(value: unknown): T {
+    fromJson(value: unknown, defaultValue0 = defaultValue): T {
       return typeof value === "string"
-        ? all.get(value, defaultValue)
-        : defaultValue;
+        ? all.get(value, defaultValue0)
+        : defaultValue0;
     },
   };
 }
@@ -176,10 +176,10 @@ export function xitemProp<T extends XEnumItem>(
     toJson(value: T): unknown {
       return value.id;
     },
-    fromJson(value: unknown): T {
+    fromJson(value: unknown, defaultValue0 = defaultValue): T {
       return typeof value === "string"
-        ? all.get(value, defaultValue)
-        : defaultValue;
+        ? all.get(value, defaultValue0)
+        : defaultValue0;
     },
   };
 }
@@ -197,10 +197,10 @@ export function flagsProp(
     toJson(value: Flags): unknown {
       return value.filter((v) => all.includes(v)).join(",");
     },
-    fromJson(value: unknown): Flags {
+    fromJson(value: unknown, defaultValue0 = defaultValue): Flags {
       return typeof value === "string"
         ? value.split(",").filter((v) => all.includes(v))
-        : defaultValue;
+        : defaultValue0;
     },
   };
 }
