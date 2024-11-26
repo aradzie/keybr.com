@@ -1,4 +1,4 @@
-import { keyboardProps, Language } from "@keybr/keyboard";
+import { KeyboardOptions, Language } from "@keybr/keyboard";
 import {
   booleanProp,
   enumProp,
@@ -104,13 +104,14 @@ export const textDisplayProps = {
 } as const;
 
 export function toTextDisplaySettings(settings: Settings): TextDisplaySettings {
-  const font = settings.get(textDisplayProps.font);
   const caretShapeStyle = settings.get(textDisplayProps.caretShapeStyle);
   const caretMovementStyle = settings.get(textDisplayProps.caretMovementStyle);
   const whitespaceStyle = settings.get(textDisplayProps.whitespaceStyle);
-  const language = settings.get(keyboardProps.layout).language;
+  const { language } = KeyboardOptions.from(settings);
+  const fonts = Font.select(language);
+  const font = Font.find(fonts, settings.get(textDisplayProps.font));
   return {
-    font: Font.find(Font.select(language), font),
+    font,
     caretShapeStyle,
     caretMovementStyle,
     whitespaceStyle,

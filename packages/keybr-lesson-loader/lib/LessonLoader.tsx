@@ -1,7 +1,7 @@
 import { loadContent } from "@keybr/content-books";
 import { loadWordList } from "@keybr/content-words";
 import { catchError } from "@keybr/debug";
-import { keyboardProps, useKeyboard } from "@keybr/keyboard";
+import { KeyboardOptions, useKeyboard } from "@keybr/keyboard";
 import {
   BooksLesson,
   CodeLesson,
@@ -28,9 +28,9 @@ export function LessonLoader({
 }): ReactNode {
   const { settings } = useSettings();
   const lessonType = settings.get(lessonProps.type);
-  const layout = settings.get(keyboardProps.layout);
+  const { language } = KeyboardOptions.from(settings);
   return (
-    <PhoneticModelLoader language={layout.language}>
+    <PhoneticModelLoader language={language}>
       {(model) => (
         <Loader key={lessonType.id} model={model} fallback={fallback}>
           {children}
@@ -68,7 +68,7 @@ function useLoader(model: PhoneticModel): Lesson | null {
     const load = async (): Promise<void> => {
       switch (settings.get(lessonProps.type)) {
         case LessonType.GUIDED: {
-          const { language } = settings.get(keyboardProps.layout);
+          const { language } = KeyboardOptions.from(settings);
           const wordList = await loadWordList(language);
           if (!didCancel) {
             setResult(new GuidedLesson(settings, keyboard, model, wordList));
@@ -76,7 +76,7 @@ function useLoader(model: PhoneticModel): Lesson | null {
           break;
         }
         case LessonType.WORDLIST: {
-          const { language } = settings.get(keyboardProps.layout);
+          const { language } = KeyboardOptions.from(settings);
           const wordList = await loadWordList(language);
           if (!didCancel) {
             setResult(new WordListLesson(settings, keyboard, model, wordList));

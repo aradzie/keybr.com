@@ -1,4 +1,4 @@
-import { keyboardProps, useKeyboard } from "@keybr/keyboard";
+import { KeyboardOptions, useKeyboard } from "@keybr/keyboard";
 import { Tasks } from "@keybr/lang";
 import { Settings, useSettings } from "@keybr/settings";
 import {
@@ -186,7 +186,8 @@ function SpaceSkipsWordsProp() {
 
 function FontProp() {
   const { settings, updateSettings } = useSettings();
-  const fonts = Font.select(settings.get(keyboardProps.layout).language);
+  const { language } = KeyboardOptions.from(settings);
+  const fonts = Font.select(language);
   const font = Font.find(fonts, settings.get(textDisplayProps.font));
   return (
     <FieldList>
