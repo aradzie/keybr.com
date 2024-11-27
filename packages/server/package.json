@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "dependencies": {
-    "@devoxa/paddle-sdk": "^0.4.2",
+    "@devoxa/paddle-sdk": "0.4.2",
     "@keybr/assets": "*",
     "@keybr/config": "*",
     "@keybr/database": "*",
