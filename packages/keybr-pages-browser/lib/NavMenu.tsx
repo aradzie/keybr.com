@@ -9,7 +9,7 @@ import { Icon } from "@keybr/widget";
 import { clsx } from "clsx";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
-import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router";
 import * as styles from "./NavMenu.module.less";
 import { SubMenu } from "./SubMenu.tsx";
 import { ThemeSwitcher } from "./themes/ThemeSwitcher.tsx";

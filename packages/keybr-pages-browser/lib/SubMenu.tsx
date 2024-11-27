@@ -7,7 +7,7 @@ import {
 import { isPremiumUser, Pages, usePageData } from "@keybr/pages-shared";
 import { Link as StaticLink } from "@keybr/widget";
 import { FormattedMessage, useIntl } from "react-intl";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink } from "react-router";
 import * as styles from "./SubMenu.module.less";
 
 export function SubMenu({ currentPath }: { readonly currentPath: string }) {

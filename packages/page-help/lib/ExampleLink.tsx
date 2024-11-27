@@ -1,6 +1,6 @@
 import { Pages } from "@keybr/pages-shared";
 import { type ReactNode } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 export function ExampleLink({
   index,

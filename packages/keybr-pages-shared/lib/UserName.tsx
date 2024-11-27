@@ -1,7 +1,7 @@
 import { clsx } from "clsx";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { Avatar } from "./Avatar.tsx";
 import { type AnyUser } from "./types.ts";
 import * as styles from "./UserName.module.less";
