@@ -32,7 +32,7 @@ export function useAccountActions(props: {
       .catch(catchError);
   };
 
-  const deleteAccount = (): void => {
+  const deleteAccount = () => {
     const message = formatMessage({
       id: "account.deleteAccount.message",
       defaultMessage:
@@ -49,11 +49,11 @@ export function useAccountActions(props: {
     }
   };
 
-  const logout = (): void => {
+  const logout = () => {
     reload("/auth/logout");
   };
 
-  const checkout = (): void => {
+  const checkout = () => {
     checkoutProduct({
       email: user.email,
       vendorId: paddleVendorId,

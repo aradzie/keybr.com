@@ -20,7 +20,7 @@ export const XorShift128Plus = (seed: number): RNGStream => {
   let t_hi = 0;
   let t_lo = 0;
 
-  const update = (): void => {
+  const update = () => {
     // s1 = state0;
     s1_hi = state0_hi;
     s1_lo = state0_lo;

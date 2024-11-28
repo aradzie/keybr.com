@@ -100,7 +100,7 @@ function useOptionList({
   const [open, setOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(option);
 
-  const handleOpen = (): void => {
+  const handleOpen = () => {
     if (disabled) {
       return;
     }
@@ -112,7 +112,7 @@ function useOptionList({
     }
   };
 
-  const handleNavigate = (dir: "first" | "prev" | "next" | "last"): void => {
+  const handleNavigate = (dir: "first" | "prev" | "next" | "last") => {
     if (disabled) {
       return;
     }
@@ -149,7 +149,7 @@ function useOptionList({
     }
   };
 
-  const handleSelect = (): void => {
+  const handleSelect = () => {
     if (disabled) {
       return;
     }

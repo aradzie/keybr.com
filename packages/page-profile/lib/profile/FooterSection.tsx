@@ -53,12 +53,12 @@ function useCommands() {
   const { formatMessage } = useIntl();
   const { results, clearResults } = useResults();
   return {
-    handleDownloadData: (): void => {
+    handleDownloadData: () => {
       const json = JSON.stringify(results);
       const blob = new Blob([json], { type: "application/json" });
       download(blob, "typing-data.json");
     },
-    handleResetData: (): void => {
+    handleResetData: () => {
       const message = formatMessage({
         id: "profile.widget.resetData.message",
         defaultMessage:
@@ -72,7 +72,7 @@ function useCommands() {
   };
 }
 
-function download(blob: Blob, name: string): void {
+function download(blob: Blob, name: string) {
   const a = document.createElement("a");
   a.setAttribute("href", URL.createObjectURL(blob));
   a.setAttribute("download", name);

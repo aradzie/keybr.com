@@ -16,11 +16,11 @@ export const useClipboard = (): {
 } => {
   const [result, setResult] = useState<ClipboardResult>({ type: "copying" });
 
-  const reset = (): void => {
+  const reset = () => {
     setResult({ type: "copying" });
   };
 
-  const withClipboard = (cb: (clipboard: Clipboard) => Promise<void>): void => {
+  const withClipboard = (cb: (clipboard: Clipboard) => Promise<void>) => {
     if ("clipboard" in navigator) {
       reset();
       cb(navigator.clipboard)
@@ -35,7 +35,7 @@ export const useClipboard = (): {
     }
   };
 
-  const copyText = (text: string): void => {
+  const copyText = (text: string) => {
     withClipboard((clipboard) => clipboard.writeText(text));
   };
 

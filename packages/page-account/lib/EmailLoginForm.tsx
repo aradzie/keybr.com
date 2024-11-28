@@ -16,11 +16,11 @@ export function EmailLoginForm({
     message: string | null;
   }>({ state: "normal", message: null });
 
-  const handleChangeEmail = (value: string): void => {
+  const handleChangeEmail = (value: string) => {
     setEmail(value);
   };
 
-  const handleClickLogin = (): void => {
+  const handleClickLogin = () => {
     if (email !== "") {
       setState({ state: "sending", message: null });
       actions
@@ -34,7 +34,7 @@ export function EmailLoginForm({
     }
   };
 
-  const handleClickRetry = (): void => {
+  const handleClickRetry = () => {
     setState({ state: "normal", message: null });
   };
 
