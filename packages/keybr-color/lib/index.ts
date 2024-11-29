@@ -6,6 +6,7 @@ export * from "./color-oklab.ts";
 export * from "./color-oklch.ts";
 export * from "./color-rgb.ts";
 export * from "./convert-rgb.ts";
+export * from "./convert-xyz.ts";
 export * from "./mix.ts";
 export * from "./parse.ts";
 export * from "./types.ts";

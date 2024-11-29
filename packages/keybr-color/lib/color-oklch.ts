@@ -1,6 +1,7 @@
 import { clamp, isNumber, isObjectLike } from "@keybr/lang";
 import { Color } from "./color.ts";
 import { hslToHsv, rgbToHsl } from "./convert-rgb.ts";
+import { oklchToRgb } from "./convert-xyz.ts";
 import { type Oklch } from "./types.ts";
 import { round } from "./util.ts";
 
@@ -95,7 +96,7 @@ export class OklchColor extends Color implements Oklch {
   }
 
   override toRgb(clone?: boolean) {
-    return null as any;
+    return oklchToRgb(this);
   }
 
   override toHsl() {

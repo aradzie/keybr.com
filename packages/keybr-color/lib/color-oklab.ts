@@ -1,6 +1,7 @@
 import { clamp, isNumber, isObjectLike } from "@keybr/lang";
 import { Color } from "./color.ts";
 import { hslToHsv, rgbToHsl } from "./convert-rgb.ts";
+import { oklabToRgb } from "./convert-xyz.ts";
 import { type Oklab } from "./types.ts";
 import { round } from "./util.ts";
 
@@ -95,7 +96,7 @@ export class OklabColor extends Color implements Oklab {
   }
 
   override toRgb(clone?: boolean) {
-    return null as any;
+    return oklabToRgb(this);
   }
 
   override toHsl() {

@@ -46,6 +46,17 @@ export type Hsv = {
   a: number;
 };
 
+export type Xyz = {
+  /** The `x` component. */
+  x: number;
+  /** The `y` component. */
+  y: number;
+  /** The `z` component. */
+  z: number;
+  /** The alpha component, a number in range [0,1]. */
+  a: number;
+};
+
 export type Oklab = {
   /** The `L` component, a number in range [0,1]. */
   L: number;
