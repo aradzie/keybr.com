@@ -7,10 +7,10 @@ import { type Hwb } from "./types.ts";
  * A color in the HWB model.
  */
 export class HwbColor extends Color implements Hwb {
-  #h: number = 0;
-  #w: number = 0;
-  #b: number = 0;
-  #a: number = 1;
+  #h!: number;
+  #w!: number;
+  #b!: number;
+  #a!: number;
 
   constructor();
   constructor(h: number, w: number, b: number, a?: number);
@@ -19,6 +19,10 @@ export class HwbColor extends Color implements Hwb {
     super();
     const l = args.length;
     if (l === 0) {
+      this.#h = 0;
+      this.#w = 0;
+      this.#b = 0;
+      this.#a = 1;
       return;
     }
     if (

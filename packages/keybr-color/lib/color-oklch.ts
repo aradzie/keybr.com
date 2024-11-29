@@ -7,10 +7,10 @@ import { type Oklch } from "./types.ts";
  * A color in the Oklch model.
  */
 export class OklchColor extends Color implements Oklch {
-  #L: number = 0;
-  #C: number = 0;
-  #h: number = 0;
-  #a: number = 1;
+  #L!: number;
+  #C!: number;
+  #h!: number;
+  #a!: number;
 
   constructor();
   constructor(L: number, C: number, h: number, a?: number);
@@ -19,6 +19,10 @@ export class OklchColor extends Color implements Oklch {
     super();
     const l = args.length;
     if (l === 0) {
+      this.#L = 0;
+      this.#C = 0;
+      this.#h = 0;
+      this.#a = 1;
       return this;
     }
     if (

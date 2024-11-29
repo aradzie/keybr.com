@@ -7,10 +7,10 @@ import { type Oklab } from "./types.ts";
  * A color in the Oklab model.
  */
 export class OklabColor extends Color implements Oklab {
-  #L: number = 0;
-  #A: number = 0;
-  #B: number = 0;
-  #a: number = 1;
+  #L!: number;
+  #A!: number;
+  #B!: number;
+  #a!: number;
 
   constructor();
   constructor(L: number, A: number, B: number, a?: number);
@@ -19,6 +19,10 @@ export class OklabColor extends Color implements Oklab {
     super();
     const l = args.length;
     if (l === 0) {
+      this.#L = 0;
+      this.#A = 0;
+      this.#B = 0;
+      this.#a = 1;
       return this;
     }
     if (

@@ -7,10 +7,10 @@ import { type Hsl } from "./types.ts";
  * A color in the HSL model.
  */
 export class HslColor extends Color implements Hsl {
-  #h: number = 0;
-  #s: number = 0;
-  #l: number = 0;
-  #a: number = 1;
+  #h!: number;
+  #s!: number;
+  #l!: number;
+  #a!: number;
 
   constructor();
   constructor(h: number, s: number, l: number, a?: number);
@@ -19,6 +19,10 @@ export class HslColor extends Color implements Hsl {
     super();
     const l = args.length;
     if (l === 0) {
+      this.#h = 0;
+      this.#s = 0;
+      this.#l = 0;
+      this.#a = 1;
       return;
     }
     if (

@@ -7,10 +7,10 @@ import { type Rgb } from "./types.ts";
  * A color in the RGB model.
  */
 export class RgbColor extends Color implements Rgb {
-  #r: number = 0;
-  #g: number = 0;
-  #b: number = 0;
-  #a: number = 1;
+  #r!: number;
+  #g!: number;
+  #b!: number;
+  #a!: number;
 
   constructor();
   constructor(r: number, g: number, b: number, a?: number);
@@ -19,6 +19,10 @@ export class RgbColor extends Color implements Rgb {
     super();
     const l = args.length;
     if (l === 0) {
+      this.#r = 0;
+      this.#g = 0;
+      this.#b = 0;
+      this.#a = 1;
       return;
     }
     if (
