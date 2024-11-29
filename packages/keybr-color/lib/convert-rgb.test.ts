@@ -4,7 +4,7 @@ import { HslColor } from "./color-hsl.ts";
 import { HsvColor } from "./color-hsv.ts";
 import { HwbColor } from "./color-hwb.ts";
 import { RgbColor } from "./color-rgb.ts";
-import { hslToHsv, hslToHwb, hslToRgb, hsvToHsl, hwbToHsl, hwbToRgb, rgbToHsl, rgbToHwb } from "./convert.ts";
+import { hslToHsv, hslToHwb, hslToRgb, hsvToHsl, hwbToHsl, hwbToRgb, rgbToHsl, rgbToHwb } from "./convert-rgb.ts";
 import { parseColor } from "./parse.ts";
 
 test("roundtrip", () => {

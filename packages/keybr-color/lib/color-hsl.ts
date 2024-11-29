@@ -1,6 +1,6 @@
 import { clamp, isNumber, isObjectLike } from "@keybr/lang";
 import { Color } from "./color.ts";
-import { hslToHsv, hslToRgb } from "./convert.ts";
+import { hslToHsv, hslToRgb } from "./convert-rgb.ts";
 import { type Hsl } from "./types.ts";
 import { round } from "./util.ts";
 
