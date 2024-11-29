@@ -2,6 +2,7 @@ import { clamp, isNumber, isObjectLike } from "@keybr/lang";
 import { Color } from "./color.ts";
 import { hslToHsv, rgbToHsl } from "./convert.ts";
 import { type Oklch } from "./types.ts";
+import { round } from "./util.ts";
 
 /**
  * A color in the Oklch model.
@@ -106,9 +107,10 @@ export class OklchColor extends Color implements Oklch {
   }
 
   override format() {
-    const { L, C } = this;
+    const L = round(this.L);
+    const C = round(this.C);
     const h = Math.round(this.h * 360);
-    const a = this.a;
+    const a = round(this.a);
     if (a < 1) {
       return `oklch(${L} ${C} ${h}/${a})`;
     } else {

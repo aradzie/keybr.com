@@ -2,6 +2,7 @@ import { clamp, isNumber, isObjectLike } from "@keybr/lang";
 import { Color } from "./color.ts";
 import { hslToHsv, hslToRgb } from "./convert.ts";
 import { type Hsl } from "./types.ts";
+import { round } from "./util.ts";
 
 /**
  * A color in the HSL model.
@@ -112,7 +113,7 @@ export class HslColor extends Color implements Hsl {
     const h = Math.round(this.h * 360);
     const s = Math.round(this.s * 100);
     const l = Math.round(this.l * 100);
-    const a = this.a;
+    const a = round(this.a);
     if (a < 1) {
       return `hsl(${h} ${s}% ${l}%/${a})`;
     } else {
