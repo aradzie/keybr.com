@@ -408,6 +408,21 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly LT_LT = new Layout(
+    /* id= */ "lt-lt",
+    /* xid= */ 0x48,
+    /* name= */ "{LT}",
+    /* family= */ "lt-lt",
+    /* language= */ Language.LT,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
   static readonly ES_ES = new Layout(
     /* id= */ "es-es",
     /* xid= */ 0x50,
@@ -1040,6 +1055,7 @@ export class Layout implements XEnumItem {
     /* emulate= */ true,
     /* geometries= */ new Enum(Geometry.MATRIX),
   );
+
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
     Layout.EN_DVORAK,
@@ -1086,6 +1102,7 @@ export class Layout implements XEnumItem {
     Layout.HE_IL_ARKN,
     Layout.HU_HU,
     Layout.IT_IT,
+    Layout.LT_LT,
     Layout.NB_NO,
     Layout.NB_KVIKK,
     Layout.NB_SKARP,
