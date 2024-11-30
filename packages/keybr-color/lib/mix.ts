@@ -1,23 +1,19 @@
 import { clamp } from "@keybr/lang";
-import { RgbColor } from "./color-rgb.ts";
-import { rgbGammaToLinear, rgbLinearToGamma } from "./convert-xyz.ts";
-import { type Rgb } from "./types.ts";
+import { type Color } from "./color.ts";
+import { type RgbColor } from "./color-rgb.ts";
+import { oklabToRgb, rgbToOklab0 } from "./convert-xyz.ts";
+import { type Oklab } from "./types.ts";
 
-const u: Rgb = { r: 0, g: 0, b: 0, alpha: 1 };
-const v: Rgb = { r: 0, g: 0, b: 0, alpha: 1 };
+const u: Oklab = { l: 0, a: 0, b: 0, alpha: 1 };
+const v: Oklab = { l: 0, a: 0, b: 0, alpha: 1 };
 
-export function mixColors(
-  a: Readonly<Rgb>,
-  b: Readonly<Rgb>,
-  r: number,
-): RgbColor {
-  r = clamp(r, 0, 1);
-  rgbGammaToLinear(a, u);
-  rgbGammaToLinear(b, v);
-  u.r = (v.r - u.r) * r + u.r;
-  u.g = (v.g - u.g) * r + u.g;
-  u.b = (v.b - u.b) * r + u.b;
-  u.alpha = (v.alpha - u.alpha) * r + u.alpha;
-  rgbLinearToGamma(u, v);
-  return new RgbColor(v.r, v.g, v.b, v.alpha);
+export function mixColors(a: Color, b: Color, ratio: number): RgbColor {
+  ratio = clamp(ratio, 0, 1);
+  rgbToOklab0(a.toRgb(), u);
+  rgbToOklab0(b.toRgb(), v);
+  u.l = u.l * (1 - ratio) + v.l * ratio;
+  u.a = u.a * (1 - ratio) + v.a * ratio;
+  u.b = u.b * (1 - ratio) + v.b * ratio;
+  u.alpha = u.alpha * (1 - ratio) + v.alpha * ratio;
+  return oklabToRgb(u);
 }

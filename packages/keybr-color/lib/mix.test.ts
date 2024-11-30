@@ -8,7 +8,7 @@ test("mix", () => {
   const b = hexColor(0xff8000);
   equal(mixColors(a, b, -100.0).hex(), 0x0080ff);
   equal(mixColors(a, b, 0.0).hex(), 0x0080ff);
-  equal(mixColors(a, b, 0.5).hex(), 0xbc80bc);
+  equal(mixColors(a, b, 0.5).hex(), 0xa18fa7);
   equal(mixColors(a, b, 1.0).hex(), 0xff8000);
   equal(mixColors(a, b, 100.0).hex(), 0xff8000);
 });

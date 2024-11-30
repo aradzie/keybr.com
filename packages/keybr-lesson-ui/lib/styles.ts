@@ -8,8 +8,8 @@ export function useKeyStyles() {
   const fast = getPropertyValue("--fast-key-color") || "#60d788";
 
   return useMemo(() => {
-    const min = parseColor(slow).toRgb();
-    const max = parseColor(fast).toRgb();
+    const min = parseColor(slow);
+    const max = parseColor(fast);
 
     function confidenceColor(confidence: number) {
       return mixColors(min, max, confidence);
