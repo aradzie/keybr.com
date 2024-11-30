@@ -23,6 +23,16 @@ test("validate", () => {
   });
 });
 
+test("parse named", () => {
+  equal(parseColor("transparent").format(), "rgb(0 0 0/0)");
+  equal(parseColor("white").format(), "rgb(255 255 255)");
+  equal(parseColor("gray").format(), "rgb(128 128 128)");
+  equal(parseColor("red").format(), "rgb(255 0 0)");
+  equal(parseColor("green").format(), "rgb(0 128 0)");
+  equal(parseColor("blue").format(), "rgb(0 0 255)");
+  equal(parseColor("black").format(), "rgb(0 0 0)");
+});
+
 describe("parse angle", () => {
   it("should wrap around", () => {
     equal(parseColor("hsl(+100.0 0% 0%)").format(), "hsl(100 0% 0%)");

@@ -5,6 +5,7 @@ import { HwbColor } from "./color-hwb.ts";
 import { OklabColor } from "./color-oklab.ts";
 import { OklchColor } from "./color-oklch.ts";
 import { RgbColor } from "./color-rgb.ts";
+import { namedColors } from "./named-colors.ts";
 import { parseHex } from "./parse-hex.ts";
 
 /**
@@ -21,6 +22,13 @@ export function hexColor(hex: number): RgbColor {
 
 export function tryParseColor(value: string): Color | null {
   value = value.trim();
+  if (value === "transparent") {
+    return new RgbColor(0, 0, 0, 0);
+  }
+  const hex = namedColors[value];
+  if (hex != null) {
+    return RgbColor.fromHex(hex);
+  }
   return parseHex(value) ?? new Parser(value).parse();
 }
 

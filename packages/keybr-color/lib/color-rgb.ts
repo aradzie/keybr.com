@@ -7,6 +7,13 @@ import { type Rgb } from "./types.ts";
  * A color in the RGB model.
  */
 export class RgbColor extends Color implements Rgb {
+  static fromHex(hex: number): RgbColor {
+    const r = (hex >>> 16) & 0xff;
+    const g = (hex >>> 8) & 0xff;
+    const b = (hex >>> 0) & 0xff;
+    return new RgbColor(r / 255, g / 255, b / 255);
+  }
+
   #r!: number;
   #g!: number;
   #b!: number;
