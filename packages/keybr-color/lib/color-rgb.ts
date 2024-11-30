@@ -1,8 +1,7 @@
-import { clamp, isNumber, isObjectLike } from "@keybr/lang";
+import { clamp, isNumber, isObjectLike, round } from "@keybr/lang";
 import { Color } from "./color.ts";
 import { hslToHsv, rgbToHsl } from "./convert-rgb.ts";
 import { type Rgb } from "./types.ts";
-import { round } from "./util.ts";
 
 /**
  * A color in the RGB model.
@@ -113,7 +112,7 @@ export class RgbColor extends Color implements Rgb {
     const r = Math.round(this.r * 255);
     const g = Math.round(this.g * 255);
     const b = Math.round(this.b * 255);
-    const a = round(this.a);
+    const a = round(this.a, 3);
     if (a < 1) {
       return `rgb(${r} ${g} ${b}/${a})`;
     } else {

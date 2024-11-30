@@ -1,9 +1,8 @@
-import { clamp, isNumber, isObjectLike } from "@keybr/lang";
+import { clamp, isNumber, isObjectLike, round } from "@keybr/lang";
 import { Color } from "./color.ts";
 import { hslToHsv, rgbToHsl } from "./convert-rgb.ts";
 import { oklabToRgb } from "./convert-xyz.ts";
 import { type Oklab } from "./types.ts";
-import { round } from "./util.ts";
 
 /**
  * A color in the Oklab model.
@@ -108,10 +107,10 @@ export class OklabColor extends Color implements Oklab {
   }
 
   override format() {
-    const L = round(this.L);
-    const A = round(this.A);
-    const B = round(this.B);
-    const a = round(this.a);
+    const L = round(this.L, 3);
+    const A = round(this.A, 3);
+    const B = round(this.B, 3);
+    const a = round(this.a, 3);
     if (a < 1) {
       return `oklab(${L} ${A} ${B}/${a})`;
     } else {

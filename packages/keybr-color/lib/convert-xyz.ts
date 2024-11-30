@@ -13,14 +13,14 @@ const toLinear = (channel: number) =>
     : Math.pow((channel + 0.055) / 1.055, 2.4);
 
 const toGamma = (channel: number) =>
-  channel > 0.0031308
-    ? 1.055 * Math.pow(channel, 1 / 2.4) - 0.055
-    : 12.92 * channel;
+  channel <= 0.0031308
+    ? 12.92 * channel
+    : 1.055 * Math.pow(channel, 1 / 2.4) - 0.055;
 
 /**
  * Converts a gamma corrected sRGB color to a linear light form.
  */
-export function rgbGammaToLinear({ r, g, b, a }: Rgb, to: Rgb): void {
+export function rgbGammaToLinear({ r, g, b, a }: Readonly<Rgb>, to: Rgb): void {
   to.r = toLinear(r);
   to.g = toLinear(g);
   to.b = toLinear(b);
@@ -30,7 +30,7 @@ export function rgbGammaToLinear({ r, g, b, a }: Rgb, to: Rgb): void {
 /**
  * Converts a linear-light sRGB color to a gamma corrected form.
  */
-export function rgbLinearToGamma({ r, g, b, a }: Rgb, to: Rgb): void {
+export function rgbLinearToGamma({ r, g, b, a }: Readonly<Rgb>, to: Rgb): void {
   to.r = toGamma(r);
   to.g = toGamma(g);
   to.b = toGamma(b);
@@ -41,7 +41,7 @@ export function rgbLinearToGamma({ r, g, b, a }: Rgb, to: Rgb): void {
  * Converts a linear-light sRGB color to a CIE XYZ color using D65
  * (no chromatic adaptation).
  */
-export function linearRgbToXyz({ r, g, b, a }: Rgb, to: Xyz): void {
+export function linearRgbToXyz({ r, g, b, a }: Readonly<Rgb>, to: Xyz): void {
   to.x =
     0.4123907992659595 * r + 0.35758433938387796 * g + 0.1804807884018343 * b;
   to.y =
@@ -55,7 +55,7 @@ export function linearRgbToXyz({ r, g, b, a }: Rgb, to: Xyz): void {
  * Converts a CIE XYZ color to a linear light sRGB color using D65
  * (no chromatic adaptation).
  */
-export function xyzToLinearRgb({ x, y, z, a }: Xyz, to: Rgb): void {
+export function xyzToLinearRgb({ x, y, z, a }: Readonly<Xyz>, to: Rgb): void {
   to.r =
     3.2409699419045213 * x + -1.5373831775700935 * y + -0.4986107602930033 * z;
   to.g =
@@ -65,7 +65,7 @@ export function xyzToLinearRgb({ x, y, z, a }: Xyz, to: Rgb): void {
   to.a = a;
 }
 
-export function xyzToOklab({ x, y, z, a }: Xyz, to: Oklab): void {
+export function xyzToOklab({ x, y, z, a }: Readonly<Xyz>, to: Oklab): void {
   const l = Math.cbrt(
     0.819022437996703 * x + 0.3619062600528904 * y - 0.1288737815209879 * z,
   );
@@ -84,7 +84,7 @@ export function xyzToOklab({ x, y, z, a }: Xyz, to: Oklab): void {
   to.a = a;
 }
 
-export function oklabToXyz({ L, A, B, a }: Oklab, to: Xyz): void {
+export function oklabToXyz({ L, A, B, a }: Readonly<Oklab>, to: Xyz): void {
   const l = Math.pow(L + 0.3963377773761749 * A + 0.2158037573099136 * B, 3);
   const m = Math.pow(L - 0.1055613458156586 * A - 0.0638541728258133 * B, 3);
   const s = Math.pow(L - 0.0894841775298119 * A - 1.2914855480194092 * B, 3);
@@ -97,7 +97,7 @@ export function oklabToXyz({ L, A, B, a }: Oklab, to: Xyz): void {
   to.a = a;
 }
 
-export function oklabToOklch({ L, A, B, a }: Oklab, to: Oklch): void {
+export function oklabToOklch({ L, A, B, a }: Readonly<Oklab>, to: Oklch): void {
   const C = Math.sqrt(A * A + B * B);
   let h = Math.atan2(B, A) / Math.PI / 2;
   if (h < 0) {
@@ -109,14 +109,14 @@ export function oklabToOklch({ L, A, B, a }: Oklab, to: Oklch): void {
   to.a = a;
 }
 
-export function oklchToOklab({ L, C, h, a }: Oklch, to: Oklab): void {
+export function oklchToOklab({ L, C, h, a }: Readonly<Oklch>, to: Oklab): void {
   to.L = L;
   to.A = C * Math.cos(h * Math.PI * 2);
   to.B = C * Math.sin(h * Math.PI * 2);
   to.a = a;
 }
 
-export function rgbToOklab(rgb: Rgb): OklabColor {
+export function rgbToOklab(rgb: Readonly<Rgb>): OklabColor {
   const to = new OklabColor();
   rgbGammaToLinear(rgb, tmpRgb);
   linearRgbToXyz(tmpRgb, tmpXyz);
@@ -124,7 +124,7 @@ export function rgbToOklab(rgb: Rgb): OklabColor {
   return to;
 }
 
-export function rgbToOklch(rgb: Rgb): OklchColor {
+export function rgbToOklch(rgb: Readonly<Rgb>): OklchColor {
   const to = new OklchColor();
   rgbGammaToLinear(rgb, tmpRgb);
   linearRgbToXyz(tmpRgb, tmpXyz);
@@ -133,7 +133,7 @@ export function rgbToOklch(rgb: Rgb): OklchColor {
   return to;
 }
 
-export function oklabToRgb(oklab: Oklab): RgbColor {
+export function oklabToRgb(oklab: Readonly<Oklab>): RgbColor {
   const to = new RgbColor();
   oklabToXyz(oklab, tmpXyz);
   xyzToLinearRgb(tmpXyz, tmpRgb);
@@ -141,7 +141,7 @@ export function oklabToRgb(oklab: Oklab): RgbColor {
   return to;
 }
 
-export function oklchToRgb(oklch: Oklch): RgbColor {
+export function oklchToRgb(oklch: Readonly<Oklch>): RgbColor {
   const to = new RgbColor();
   oklchToOklab(oklch, tmpOklab);
   oklabToXyz(tmpOklab, tmpXyz);

@@ -1,8 +1,7 @@
-import { clamp, isNumber, isObjectLike } from "@keybr/lang";
+import { clamp, isNumber, isObjectLike, round } from "@keybr/lang";
 import { Color } from "./color.ts";
 import { hwbToHsl, hwbToHsv, hwbToRgb } from "./convert-rgb.ts";
 import { type Hwb } from "./types.ts";
-import { round } from "./util.ts";
 
 /**
  * A color in the HWB model.
@@ -107,10 +106,10 @@ export class HwbColor extends Color implements Hwb {
   }
 
   override format() {
-    const h = Math.round(this.h * 360);
-    const w = Math.round(this.w * 100);
-    const b = Math.round(this.b * 100);
-    const a = round(this.a);
+    const h = round(this.h * 360, 3);
+    const w = round(this.w * 100, 3);
+    const b = round(this.b * 100, 3);
+    const a = round(this.a, 3);
     if (a < 1) {
       return `hwb(${h} ${w}% ${b}%/${a})`;
     } else {

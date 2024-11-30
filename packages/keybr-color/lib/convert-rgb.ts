@@ -1,15 +1,10 @@
-import { clamp } from "@keybr/lang";
 import { HslColor } from "./color-hsl.ts";
 import { HsvColor } from "./color-hsv.ts";
 import { HwbColor } from "./color-hwb.ts";
 import { RgbColor } from "./color-rgb.ts";
 import { type Hsl, type Hsv, type Hwb, type Rgb } from "./types.ts";
 
-export function rgbToHsl({ r, g, b, a }: Rgb): HslColor {
-  r = clamp(r, 0, 1);
-  g = clamp(g, 0, 1);
-  b = clamp(b, 0, 1);
-  a = clamp(a, 0, 1);
+export function rgbToHsl({ r, g, b, a }: Readonly<Rgb>): HslColor {
   const max = Math.max(r, g, b);
   const min = Math.min(r, g, b);
   const d = max - min;
@@ -34,11 +29,7 @@ export function rgbToHsl({ r, g, b, a }: Rgb): HslColor {
   return new HslColor(h, s, l, a);
 }
 
-export function hslToRgb({ h, s, l, a }: Hsl): RgbColor {
-  h = clamp(h, 0, 1);
-  s = clamp(s, 0, 1);
-  l = clamp(l, 0, 1);
-  a = clamp(a, 0, 1);
+export function hslToRgb({ h, s, l, a }: Readonly<Hsl>): RgbColor {
   const t2 = l <= 0.5 ? l * (s + 1) : l + s - l * s;
   const t1 = l * 2 - t2;
   const r = hueToRgb(t1, t2, h + 1 / 3);
@@ -61,31 +52,19 @@ function hueToRgb(m1: number, m2: number, h: number): number {
   return m1;
 }
 
-export function hslToHsv({ h, s, l, a }: Hsl): HsvColor {
-  h = clamp(h, 0, 1);
-  s = clamp(s, 0, 1);
-  l = clamp(l, 0, 1);
-  a = clamp(a, 0, 1);
+export function hslToHsv({ h, s, l, a }: Readonly<Hsl>): HsvColor {
   const vv = l + s * Math.min(l, 1 - l);
   const ss = vv > 0 ? 2 * (1 - l / vv) : 0;
   return new HsvColor(h, ss, vv, a);
 }
 
-export function hsvToHsl({ h, s, v, a }: Hsv): HslColor {
-  h = clamp(h, 0, 1);
-  s = clamp(s, 0, 1);
-  v = clamp(v, 0, 1);
-  a = clamp(a, 0, 1);
+export function hsvToHsl({ h, s, v, a }: Readonly<Hsv>): HslColor {
   const ll = v * (1 - s / 2);
   const ss = ll > 0 && ll < 1 ? (v - ll) / Math.min(ll, 1 - ll) : 0;
   return new HslColor(h, ss, ll, a);
 }
 
-export function hwbToRgb({ h, w, b, a }: Hwb): RgbColor {
-  h = clamp(h, 0, 1);
-  w = clamp(w, 0, 1);
-  b = clamp(b, 0, 1);
-  a = clamp(a, 0, 1);
+export function hwbToRgb({ h, w, b, a }: Readonly<Hwb>): RgbColor {
   if (w + b >= 1) {
     const gray = w / (w + b);
     return new RgbColor(gray, gray, gray, a);
@@ -97,11 +76,7 @@ export function hwbToRgb({ h, w, b, a }: Hwb): RgbColor {
   }
 }
 
-export function rgbToHwb({ r, g, b, a }: Rgb): HwbColor {
-  r = clamp(r, 0, 1);
-  g = clamp(g, 0, 1);
-  b = clamp(b, 0, 1);
-  a = clamp(a, 0, 1);
+export function rgbToHwb({ r, g, b, a }: Readonly<Rgb>): HwbColor {
   // RGB to HSL
   const max = Math.max(r, g, b);
   const min = Math.min(r, g, b);
@@ -127,11 +102,7 @@ export function rgbToHwb({ r, g, b, a }: Rgb): HwbColor {
   return new HwbColor(h, ww, bb, a);
 }
 
-export function hwbToHsl({ h, w, b, a }: Hwb): HslColor {
-  h = clamp(h, 0, 1);
-  w = clamp(w, 0, 1);
-  b = clamp(b, 0, 1);
-  a = clamp(a, 0, 1);
+export function hwbToHsl({ h, w, b, a }: Readonly<Hwb>): HslColor {
   // HWB to HSV
   const v = 1 - b;
   const s = v > 0 ? 1 - w / v : 0;
@@ -141,11 +112,7 @@ export function hwbToHsl({ h, w, b, a }: Hwb): HslColor {
   return new HslColor(h, ss, ll, a);
 }
 
-export function hslToHwb({ h, s, l, a }: Hsl): HwbColor {
-  h = clamp(h, 0, 1);
-  s = clamp(s, 0, 1);
-  l = clamp(l, 0, 1);
-  a = clamp(a, 0, 1);
+export function hslToHwb({ h, s, l, a }: Readonly<Hsl>): HwbColor {
   // HSL to HSV
   const vv = l + s * Math.min(l, 1 - l);
   const ss = vv > 0 ? 2 * (1 - l / vv) : 0;
@@ -155,21 +122,13 @@ export function hslToHwb({ h, s, l, a }: Hsl): HwbColor {
   return new HwbColor(h, ww, bb, a);
 }
 
-export function hwbToHsv({ h, w, b, a }: Hwb): HsvColor {
-  h = clamp(h, 0, 1);
-  w = clamp(w, 0, 1);
-  b = clamp(b, 0, 1);
-  a = clamp(a, 0, 1);
+export function hwbToHsv({ h, w, b, a }: Readonly<Hwb>): HsvColor {
   const vv = 1 - b;
   const ss = vv > 0 ? 1 - w / vv : 0;
   return new HsvColor(h, ss, vv, a);
 }
 
-export function hsvToHwb({ h, s, v, a }: Hsv): HwbColor {
-  h = clamp(h, 0, 1);
-  s = clamp(s, 0, 1);
-  v = clamp(v, 0, 1);
-  a = clamp(a, 0, 1);
+export function hsvToHwb({ h, s, v, a }: Readonly<Hsv>): HwbColor {
   const ww = (1 - s) * v;
   const bb = 1 - v;
   return new HwbColor(h, ww, bb, a);
