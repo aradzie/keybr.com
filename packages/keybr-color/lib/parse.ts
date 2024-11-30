@@ -105,7 +105,7 @@ const lchUnit: Unit = {
   scalePct: 2.5,
 } as const;
 
-type Prop = "x" | "y" | "z" | "a";
+type Prop = "x" | "y" | "z" | "alpha";
 
 class Parser {
   index = 0;
@@ -114,7 +114,7 @@ class Parser {
   x = 0;
   y = 0;
   z = 0;
-  a = 1;
+  alpha = 1;
 
   constructor(readonly value: string) {}
 
@@ -206,11 +206,11 @@ class Parser {
       this.parseNumber("y", rgbUnit) &&
       this.eat(rWs) &&
       this.parseNumber("z", rgbUnit) &&
-      (!this.eat(rSlash) || this.parseNumber("a", alphaUnit)) &&
+      (!this.eat(rSlash) || this.parseNumber("alpha", alphaUnit)) &&
       this.eat(rRB) &&
       this.end()
     ) {
-      return new RgbColor(this.x, this.y, this.z, this.a);
+      return new RgbColor(this.x, this.y, this.z, this.alpha);
     }
     return null;
   }
@@ -225,11 +225,11 @@ class Parser {
       this.parseNumber("y", rgbUnit) &&
       this.eat(rComma) &&
       this.parseNumber("z", rgbUnit) &&
-      (!this.eat(rComma) || this.parseNumber("a", alphaUnit)) &&
+      (!this.eat(rComma) || this.parseNumber("alpha", alphaUnit)) &&
       this.eat(rRB) &&
       this.end()
     ) {
-      return new RgbColor(this.x, this.y, this.z, this.a);
+      return new RgbColor(this.x, this.y, this.z, this.alpha);
     }
     return null;
   }
@@ -244,11 +244,11 @@ class Parser {
       this.parseNumber("y", hslUnit) &&
       this.eat(rWs) &&
       this.parseNumber("z", hslUnit) &&
-      (!this.eat(rSlash) || this.parseNumber("a", alphaUnit)) &&
+      (!this.eat(rSlash) || this.parseNumber("alpha", alphaUnit)) &&
       this.eat(rRB) &&
       this.end()
     ) {
-      return new HslColor(this.x, this.y, this.z, this.a);
+      return new HslColor(this.x, this.y, this.z, this.alpha);
     }
     return null;
   }
@@ -263,11 +263,11 @@ class Parser {
       this.parseNumber("y", hslUnit) &&
       this.eat(rComma) &&
       this.parseNumber("z", hslUnit) &&
-      (!this.eat(rComma) || this.parseNumber("a", alphaUnit)) &&
+      (!this.eat(rComma) || this.parseNumber("alpha", alphaUnit)) &&
       this.eat(rRB) &&
       this.end()
     ) {
-      return new HslColor(this.x, this.y, this.z, this.a);
+      return new HslColor(this.x, this.y, this.z, this.alpha);
     }
     return null;
   }
@@ -282,11 +282,11 @@ class Parser {
       this.parseNumber("y", hslUnit) &&
       this.eat(rWs) &&
       this.parseNumber("z", hslUnit) &&
-      (!this.eat(rSlash) || this.parseNumber("a", alphaUnit)) &&
+      (!this.eat(rSlash) || this.parseNumber("alpha", alphaUnit)) &&
       this.eat(rRB) &&
       this.end()
     ) {
-      return new HwbColor(this.x, this.y, this.z, this.a);
+      return new HwbColor(this.x, this.y, this.z, this.alpha);
     }
     return null;
   }
@@ -301,11 +301,11 @@ class Parser {
       this.parseNumber("y", labUnit) &&
       this.eat(rWs) &&
       this.parseNumber("z", labUnit) &&
-      (!this.eat(rSlash) || this.parseNumber("a", alphaUnit)) &&
+      (!this.eat(rSlash) || this.parseNumber("alpha", alphaUnit)) &&
       this.eat(rRB) &&
       this.end()
     ) {
-      return new OklabColor(this.x, this.y, this.z, this.a);
+      return new OklabColor(this.x, this.y, this.z, this.alpha);
     }
     return null;
   }
@@ -320,11 +320,11 @@ class Parser {
       this.parseNumber("y", lchUnit) &&
       this.eat(rWs) &&
       this.parseAngle("z") &&
-      (!this.eat(rSlash) || this.parseNumber("a", alphaUnit)) &&
+      (!this.eat(rSlash) || this.parseNumber("alpha", alphaUnit)) &&
       this.eat(rRB) &&
       this.end()
     ) {
-      return new OklchColor(this.x, this.y, this.z, this.a);
+      return new OklchColor(this.x, this.y, this.z, this.alpha);
     }
     return null;
   }

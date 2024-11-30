@@ -10,11 +10,13 @@ export class HsvColor extends Color implements Hsv {
   #h!: number;
   #s!: number;
   #v!: number;
-  #a!: number;
+  #alpha!: number;
 
   constructor();
-  constructor(h: number, s: number, v: number, a?: number);
-  constructor(value: Readonly<{ h: number; s: number; v: number; a?: number }>);
+  constructor(h: number, s: number, v: number, alpha?: number);
+  constructor(
+    value: Readonly<{ h: number; s: number; v: number; alpha?: number }>,
+  );
   constructor(...args: any[]) {
     super();
     const l = args.length;
@@ -22,7 +24,7 @@ export class HsvColor extends Color implements Hsv {
       this.#h = 0;
       this.#s = 0;
       this.#v = 0;
-      this.#a = 1;
+      this.#alpha = 1;
       return;
     }
     if (
@@ -34,7 +36,7 @@ export class HsvColor extends Color implements Hsv {
       this.h = args[0];
       this.s = args[1];
       this.v = args[2];
-      this.a = 1;
+      this.alpha = 1;
       return this;
     }
     if (
@@ -47,7 +49,7 @@ export class HsvColor extends Color implements Hsv {
       this.h = args[0];
       this.s = args[1];
       this.v = args[2];
-      this.a = args[3];
+      this.alpha = args[3];
       return this;
     }
     const [value] = args;
@@ -55,7 +57,7 @@ export class HsvColor extends Color implements Hsv {
       this.h = value.h;
       this.s = value.s;
       this.v = value.v;
-      this.a = value.a ?? 1;
+      this.alpha = value.alpha ?? 1;
       return this;
     }
     throw new TypeError();
@@ -85,12 +87,12 @@ export class HsvColor extends Color implements Hsv {
     this.#v = clamp(value, 0, 1);
   }
 
-  get a(): number {
-    return this.#a;
+  get alpha(): number {
+    return this.#alpha;
   }
 
-  set a(value: number) {
-    this.#a = clamp(value, 0, 1);
+  set alpha(value: number) {
+    this.#alpha = clamp(value, 0, 1);
   }
 
   override toRgb() {
@@ -122,7 +124,7 @@ export class HsvColor extends Color implements Hsv {
       isNumber(o.h) &&
       isNumber(o.s) &&
       isNumber(o.v) &&
-      (o.a == null || isNumber(o.a))
+      (o.alpha == null || isNumber(o.alpha))
     );
   }
 }

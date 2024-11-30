@@ -67,13 +67,13 @@ test("hwb to hsl", () => {
 });
 
 test("hsl to hsv", () => {
-  like(hslToHsv(new HslColor(0, 0, 0)), { h: 0, s: 0, v: 0, a: 1 });
-  like(hslToHsv(new HslColor(0, 0, 0.5)), { h: 0, s: 0, v: 0.5, a: 1 });
-  like(hslToHsv(new HslColor(0, 1, 1)), { h: 0, s: 0, v: 1, a: 1 });
+  like(hslToHsv(new HslColor(0, 0, 0)), { h: 0, s: 0, v: 0, alpha: 1 });
+  like(hslToHsv(new HslColor(0, 0, 0.5)), { h: 0, s: 0, v: 0.5, alpha: 1 });
+  like(hslToHsv(new HslColor(0, 1, 1)), { h: 0, s: 0, v: 1, alpha: 1 });
 });
 
 test("hsv to hsl", () => {
-  like(hsvToHsl(new HsvColor(0, 0, 0)), { h: 0, s: 0, l: 0, a: 1 });
-  like(hsvToHsl(new HsvColor(0, 0, 0.5)), { h: 0, s: 0, l: 0.5, a: 1 });
-  like(hsvToHsl(new HsvColor(0, 1, 1)), { h: 0, s: 1, l: 0.5, a: 1 });
+  like(hsvToHsl(new HsvColor(0, 0, 0)), { h: 0, s: 0, l: 0, alpha: 1 });
+  like(hsvToHsl(new HsvColor(0, 0, 0.5)), { h: 0, s: 0, l: 0.5, alpha: 1 });
+  like(hsvToHsl(new HsvColor(0, 1, 1)), { h: 0, s: 1, l: 0.5, alpha: 1 });
 });

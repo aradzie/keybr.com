@@ -8,22 +8,24 @@ import { type Oklch } from "./types.ts";
  * A color in the Oklch model.
  */
 export class OklchColor extends Color implements Oklch {
-  #L!: number;
-  #C!: number;
+  #l!: number;
+  #c!: number;
   #h!: number;
-  #a!: number;
+  #alpha!: number;
 
   constructor();
-  constructor(L: number, C: number, h: number, a?: number);
-  constructor(value: Readonly<{ L: number; C: number; h: number; a?: number }>);
+  constructor(l: number, c: number, h: number, alpha?: number);
+  constructor(
+    value: Readonly<{ l: number; c: number; h: number; alpha?: number }>,
+  );
   constructor(...args: any[]) {
     super();
     const l = args.length;
     if (l === 0) {
-      this.#L = 0;
-      this.#C = 0;
+      this.#l = 0;
+      this.#c = 0;
       this.#h = 0;
-      this.#a = 1;
+      this.#alpha = 1;
       return this;
     }
     if (
@@ -32,10 +34,10 @@ export class OklchColor extends Color implements Oklch {
       isNumber(args[1]) &&
       isNumber(args[2])
     ) {
-      this.L = args[0];
-      this.C = args[1];
+      this.l = args[0];
+      this.c = args[1];
       this.h = args[2];
-      this.a = 1;
+      this.alpha = 1;
       return this;
     }
     if (
@@ -45,37 +47,37 @@ export class OklchColor extends Color implements Oklch {
       isNumber(args[2]) &&
       isNumber(args[3])
     ) {
-      this.L = args[0];
-      this.C = args[1];
+      this.l = args[0];
+      this.c = args[1];
       this.h = args[2];
-      this.a = args[3];
+      this.alpha = args[3];
       return this;
     }
     const [value] = args;
     if (l === 1 && OklchColor.is(value)) {
-      this.L = value.L;
-      this.C = value.C;
+      this.l = value.l;
+      this.c = value.c;
       this.h = value.h;
-      this.a = value.a ?? 1;
+      this.alpha = value.alpha ?? 1;
       return this;
     }
     throw new TypeError();
   }
 
-  get L(): number {
-    return this.#L;
+  get l(): number {
+    return this.#l;
   }
 
-  set L(value: number) {
-    this.#L = clamp(value, 0, 1);
+  set l(value: number) {
+    this.#l = clamp(value, 0, 1);
   }
 
-  get C(): number {
-    return this.#C;
+  get c(): number {
+    return this.#c;
   }
 
-  set C(value: number) {
-    this.#C = clamp(value, 0, 0.4);
+  set c(value: number) {
+    this.#c = clamp(value, 0, 0.4);
   }
 
   get h(): number {
@@ -86,12 +88,12 @@ export class OklchColor extends Color implements Oklch {
     this.#h = clamp(value, 0, 1);
   }
 
-  get a(): number {
-    return this.#a;
+  get alpha(): number {
+    return this.#alpha;
   }
 
-  set a(value: number) {
-    this.#a = clamp(value, 0, 1);
+  set alpha(value: number) {
+    this.#alpha = clamp(value, 0, 1);
   }
 
   override toRgb(clone?: boolean) {
@@ -107,14 +109,14 @@ export class OklchColor extends Color implements Oklch {
   }
 
   override format() {
-    const L = round(this.L, 3);
-    const C = round(this.C, 3);
+    const l = round(this.l, 3);
+    const c = round(this.c, 3);
     const h = round(this.h * 360, 3);
-    const a = round(this.a, 3);
-    if (a < 1) {
-      return `oklch(${L} ${C} ${h}/${a})`;
+    const alpha = round(this.alpha, 3);
+    if (alpha < 1) {
+      return `oklch(${l} ${c} ${h}/${alpha})`;
     } else {
-      return `oklch(${L} ${C} ${h})`;
+      return `oklch(${l} ${c} ${h})`;
     }
   }
 
@@ -125,10 +127,10 @@ export class OklchColor extends Color implements Oklch {
   static is(o: any): o is Oklch {
     return (
       isObjectLike(o) &&
-      isNumber(o.L) &&
-      isNumber(o.C) &&
+      isNumber(o.l) &&
+      isNumber(o.c) &&
       isNumber(o.h) &&
-      (o.a == null || isNumber(o.a))
+      (o.alpha == null || isNumber(o.alpha))
     );
   }
 }

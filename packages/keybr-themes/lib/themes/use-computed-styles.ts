@@ -99,7 +99,7 @@ export const useComputedStyles = () => {
           if (fillOpacity != null) {
             const value = Number(fillOpacity);
             if (value !== 1) {
-              color.a = value;
+              color.alpha = value;
             }
           }
           result.fillStyle = color;
@@ -119,7 +119,7 @@ export const useComputedStyles = () => {
           if (strokeOpacity != null) {
             const value = Number(strokeOpacity);
             if (value !== 1) {
-              color.a = value;
+              color.alpha = value;
             }
           }
           result.strokeStyle = color;

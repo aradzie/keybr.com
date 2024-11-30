@@ -15,8 +15,8 @@ test("construct", () => {
     // @ts-expect-error Test invalid arguments.
     new OklchColor(0);
   });
-  like(new OklchColor(0.1, 0.2, 0.3), { L: 0.1, C: 0.2, h: 0.3, a: 1 });
-  like(new OklchColor(0.1, 0.2, 0.3, 0.4), { L: 0.1, C: 0.2, h: 0.3, a: 0.4 });
-  like(new OklchColor({ L: 0.1, C: 0.2, h: 0.3 }), { L: 0.1, C: 0.2, h: 0.3, a: 1 });
-  like(new OklchColor({ L: 0.1, C: 0.2, h: 0.3, a: 0.4 }), { L: 0.1, C: 0.2, h: 0.3, a: 0.4 });
+  like(new OklchColor(0.1, 0.2, 0.3), { l: 0.1, c: 0.2, h: 0.3, alpha: 1 });
+  like(new OklchColor(0.1, 0.2, 0.3, 0.4), { l: 0.1, c: 0.2, h: 0.3, alpha: 0.4 });
+  like(new OklchColor({ l: 0.1, c: 0.2, h: 0.3 }), { l: 0.1, c: 0.2, h: 0.3, alpha: 1 });
+  like(new OklchColor({ l: 0.1, c: 0.2, h: 0.3, alpha: 0.4 }), { l: 0.1, c: 0.2, h: 0.3, alpha: 0.4 });
 });

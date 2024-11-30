@@ -10,11 +10,13 @@ export class RgbColor extends Color implements Rgb {
   #r!: number;
   #g!: number;
   #b!: number;
-  #a!: number;
+  #alpha!: number;
 
   constructor();
-  constructor(r: number, g: number, b: number, a?: number);
-  constructor(value: Readonly<{ r: number; g: number; b: number; a?: number }>);
+  constructor(r: number, g: number, b: number, alpha?: number);
+  constructor(
+    value: Readonly<{ r: number; g: number; b: number; alpha?: number }>,
+  );
   constructor(...args: any[]) {
     super();
     const l = args.length;
@@ -22,7 +24,7 @@ export class RgbColor extends Color implements Rgb {
       this.#r = 0;
       this.#g = 0;
       this.#b = 0;
-      this.#a = 1;
+      this.#alpha = 1;
       return;
     }
     if (
@@ -34,7 +36,7 @@ export class RgbColor extends Color implements Rgb {
       this.r = args[0];
       this.g = args[1];
       this.b = args[2];
-      this.a = 1;
+      this.alpha = 1;
       return this;
     }
     if (
@@ -47,7 +49,7 @@ export class RgbColor extends Color implements Rgb {
       this.r = args[0];
       this.g = args[1];
       this.b = args[2];
-      this.a = args[3];
+      this.alpha = args[3];
       return this;
     }
     const [value] = args;
@@ -55,7 +57,7 @@ export class RgbColor extends Color implements Rgb {
       this.r = value.r;
       this.g = value.g;
       this.b = value.b;
-      this.a = value.a ?? 1;
+      this.alpha = value.alpha ?? 1;
       return this;
     }
     throw new TypeError();
@@ -85,12 +87,12 @@ export class RgbColor extends Color implements Rgb {
     this.#b = clamp(value, 0, 1);
   }
 
-  get a(): number {
-    return this.#a;
+  get alpha(): number {
+    return this.#alpha;
   }
 
-  set a(value: number) {
-    this.#a = clamp(value, 0, 1);
+  set alpha(value: number) {
+    this.#alpha = clamp(value, 0, 1);
   }
 
   override toRgb(clone?: boolean) {
@@ -112,9 +114,9 @@ export class RgbColor extends Color implements Rgb {
     const r = Math.round(this.r * 255);
     const g = Math.round(this.g * 255);
     const b = Math.round(this.b * 255);
-    const a = round(this.a, 3);
-    if (a < 1) {
-      return `rgb(${r} ${g} ${b}/${a})`;
+    const alpha = round(this.alpha, 3);
+    if (alpha < 1) {
+      return `rgb(${r} ${g} ${b}/${alpha})`;
     } else {
       return `rgb(${r} ${g} ${b})`;
     }
@@ -124,9 +126,9 @@ export class RgbColor extends Color implements Rgb {
     const r = Math.round(this.r * 255);
     const g = Math.round(this.g * 255);
     const b = Math.round(this.b * 255);
-    const a = Math.round(this.a * 255);
-    if (a < 255) {
-      return `#${pad0(r) + pad0(g) + pad0(b) + pad0(a)}`;
+    const alpha = Math.round(this.alpha * 255);
+    if (alpha < 255) {
+      return `#${pad0(r) + pad0(g) + pad0(b) + pad0(alpha)}`;
     } else {
       return `#${pad0(r) + pad0(g) + pad0(b)}`;
     }
@@ -149,7 +151,7 @@ export class RgbColor extends Color implements Rgb {
       isNumber(o.r) &&
       isNumber(o.g) &&
       isNumber(o.b) &&
-      (o.a == null || isNumber(o.a))
+      (o.alpha == null || isNumber(o.alpha))
     );
   }
 }

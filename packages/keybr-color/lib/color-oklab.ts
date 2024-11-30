@@ -8,22 +8,24 @@ import { type Oklab } from "./types.ts";
  * A color in the Oklab model.
  */
 export class OklabColor extends Color implements Oklab {
-  #L!: number;
-  #A!: number;
-  #B!: number;
+  #l!: number;
   #a!: number;
+  #b!: number;
+  #alpha!: number;
 
   constructor();
-  constructor(L: number, A: number, B: number, a?: number);
-  constructor(value: Readonly<{ L: number; A: number; B: number; a?: number }>);
+  constructor(l: number, a: number, b: number, alpha?: number);
+  constructor(
+    value: Readonly<{ l: number; a: number; b: number; alpha?: number }>,
+  );
   constructor(...args: any[]) {
     super();
     const l = args.length;
     if (l === 0) {
-      this.#L = 0;
-      this.#A = 0;
-      this.#B = 0;
-      this.#a = 1;
+      this.#l = 0;
+      this.#a = 0;
+      this.#b = 0;
+      this.#alpha = 1;
       return this;
     }
     if (
@@ -32,10 +34,10 @@ export class OklabColor extends Color implements Oklab {
       isNumber(args[1]) &&
       isNumber(args[2])
     ) {
-      this.L = args[0];
-      this.A = args[1];
-      this.B = args[2];
-      this.a = 1;
+      this.l = args[0];
+      this.a = args[1];
+      this.b = args[2];
+      this.alpha = 1;
       return this;
     }
     if (
@@ -45,45 +47,29 @@ export class OklabColor extends Color implements Oklab {
       isNumber(args[2]) &&
       isNumber(args[3])
     ) {
-      this.L = args[0];
-      this.A = args[1];
-      this.B = args[2];
-      this.a = args[3];
+      this.l = args[0];
+      this.a = args[1];
+      this.b = args[2];
+      this.alpha = args[3];
       return this;
     }
     const [value] = args;
     if (l === 1 && OklabColor.is(value)) {
-      this.L = value.L;
-      this.A = value.A;
-      this.B = value.B;
-      this.a = value.a ?? 1;
+      this.l = value.l;
+      this.a = value.a;
+      this.b = value.b;
+      this.alpha = value.alpha ?? 1;
       return this;
     }
     throw new TypeError();
   }
 
-  get L(): number {
-    return this.#L;
+  get l(): number {
+    return this.#l;
   }
 
-  set L(value: number) {
-    this.#L = clamp(value, 0, 1);
-  }
-
-  get A(): number {
-    return this.#A;
-  }
-
-  set A(value: number) {
-    this.#A = clamp(value, -0.4, 0.4);
-  }
-
-  get B(): number {
-    return this.#B;
-  }
-
-  set B(value: number) {
-    this.#B = clamp(value, -0.4, 0.4);
+  set l(value: number) {
+    this.#l = clamp(value, 0, 1);
   }
 
   get a(): number {
@@ -91,7 +77,23 @@ export class OklabColor extends Color implements Oklab {
   }
 
   set a(value: number) {
-    this.#a = clamp(value, 0, 1);
+    this.#a = clamp(value, -0.4, 0.4);
+  }
+
+  get b(): number {
+    return this.#b;
+  }
+
+  set b(value: number) {
+    this.#b = clamp(value, -0.4, 0.4);
+  }
+
+  get alpha(): number {
+    return this.#alpha;
+  }
+
+  set alpha(value: number) {
+    this.#alpha = clamp(value, 0, 1);
   }
 
   override toRgb(clone?: boolean) {
@@ -107,14 +109,14 @@ export class OklabColor extends Color implements Oklab {
   }
 
   override format() {
-    const L = round(this.L, 3);
-    const A = round(this.A, 3);
-    const B = round(this.B, 3);
+    const l = round(this.l, 3);
     const a = round(this.a, 3);
-    if (a < 1) {
-      return `oklab(${L} ${A} ${B}/${a})`;
+    const b = round(this.b, 3);
+    const alpha = round(this.alpha, 3);
+    if (alpha < 1) {
+      return `oklab(${l} ${a} ${b}/${alpha})`;
     } else {
-      return `oklab(${L} ${A} ${B})`;
+      return `oklab(${l} ${a} ${b})`;
     }
   }
 
@@ -125,10 +127,10 @@ export class OklabColor extends Color implements Oklab {
   static is(o: any): o is Oklab {
     return (
       isObjectLike(o) &&
-      isNumber(o.L) &&
-      isNumber(o.A) &&
-      isNumber(o.B) &&
-      (o.a == null || isNumber(o.a))
+      isNumber(o.l) &&
+      isNumber(o.a) &&
+      isNumber(o.b) &&
+      (o.alpha == null || isNumber(o.alpha))
     );
   }
 }

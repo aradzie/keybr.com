@@ -27,8 +27,8 @@ export abstract class Color {
   abstract toHsv(clone?: boolean): HsvColor;
 
   luminance(): number {
-    const { r, g, b, a } = this.toRgb();
-    return (0.2126 * r + 0.7152 * g + 0.0722 * b) * a;
+    const { r, g, b, alpha } = this.toRgb();
+    return (0.2126 * r + 0.7152 * g + 0.0722 * b) * alpha;
   }
 
   saturate(v: number): HslColor {
@@ -57,19 +57,19 @@ export abstract class Color {
 
   fadeIn(v: number): HslColor {
     const hsl = this.toHsl(true);
-    hsl.a = clamp(hsl.a + v, 0, 1);
+    hsl.alpha = clamp(hsl.alpha + v, 0, 1);
     return hsl;
   }
 
   fadeOut(v: number): HslColor {
     const hsl = this.toHsl(true);
-    hsl.a = clamp(hsl.a - v, 0, 1);
+    hsl.alpha = clamp(hsl.alpha - v, 0, 1);
     return hsl;
   }
 
   fade(v: number): HslColor {
     const hsl = this.toHsl(true);
-    hsl.a = clamp(v, 0, 1);
+    hsl.alpha = clamp(v, 0, 1);
     return hsl;
   }
 

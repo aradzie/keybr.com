@@ -21,12 +21,12 @@ export function parseHex(value: string): RgbColor | null {
     const r = parseInt(m[1], 16);
     const g = parseInt(m[2], 16);
     const b = parseInt(m[3], 16);
-    const a = parseInt(m[4], 16);
+    const alpha = parseInt(m[4], 16);
     return new RgbColor(
       ((r << 4) | r) / 255,
       ((g << 4) | g) / 255,
       ((b << 4) | b) / 255,
-      ((a << 4) | a) / 255,
+      ((alpha << 4) | alpha) / 255,
     );
   }
   if ((m = value.match(reHex6))) {
@@ -39,8 +39,8 @@ export function parseHex(value: string): RgbColor | null {
     const r = parseInt(m[1], 16) / 255;
     const g = parseInt(m[2], 16) / 255;
     const b = parseInt(m[3], 16) / 255;
-    const a = parseInt(m[4], 16) / 255;
-    return new RgbColor(r, g, b, a);
+    const alpha = parseInt(m[4], 16) / 255;
+    return new RgbColor(r, g, b, alpha);
   }
   return null;
 }

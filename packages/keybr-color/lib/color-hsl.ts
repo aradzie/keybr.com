@@ -10,11 +10,13 @@ export class HslColor extends Color implements Hsl {
   #h!: number;
   #s!: number;
   #l!: number;
-  #a!: number;
+  #alpha!: number;
 
   constructor();
-  constructor(h: number, s: number, l: number, a?: number);
-  constructor(value: Readonly<{ h: number; s: number; l: number; a?: number }>);
+  constructor(h: number, s: number, l: number, alpha?: number);
+  constructor(
+    value: Readonly<{ h: number; s: number; l: number; alpha?: number }>,
+  );
   constructor(...args: any[]) {
     super();
     const l = args.length;
@@ -22,7 +24,7 @@ export class HslColor extends Color implements Hsl {
       this.#h = 0;
       this.#s = 0;
       this.#l = 0;
-      this.#a = 1;
+      this.#alpha = 1;
       return;
     }
     if (
@@ -34,7 +36,7 @@ export class HslColor extends Color implements Hsl {
       this.h = args[0];
       this.s = args[1];
       this.l = args[2];
-      this.a = 1;
+      this.alpha = 1;
       return this;
     }
     if (
@@ -47,7 +49,7 @@ export class HslColor extends Color implements Hsl {
       this.h = args[0];
       this.s = args[1];
       this.l = args[2];
-      this.a = args[3];
+      this.alpha = args[3];
       return this;
     }
     const [value] = args;
@@ -55,7 +57,7 @@ export class HslColor extends Color implements Hsl {
       this.h = value.h;
       this.s = value.s;
       this.l = value.l;
-      this.a = value.a ?? 1;
+      this.alpha = value.alpha ?? 1;
       return this;
     }
     throw new TypeError();
@@ -85,12 +87,12 @@ export class HslColor extends Color implements Hsl {
     this.#l = clamp(value, 0, 1);
   }
 
-  get a(): number {
-    return this.#a;
+  get alpha(): number {
+    return this.#alpha;
   }
 
-  set a(value: number) {
-    this.#a = clamp(value, 0, 1);
+  set alpha(value: number) {
+    this.#alpha = clamp(value, 0, 1);
   }
 
   override toRgb() {
@@ -112,9 +114,9 @@ export class HslColor extends Color implements Hsl {
     const h = round(this.h * 360, 3);
     const s = round(this.s * 100, 3);
     const l = round(this.l * 100, 3);
-    const a = round(this.a, 3);
-    if (a < 1) {
-      return `hsl(${h} ${s}% ${l}%/${a})`;
+    const alpha = round(this.alpha, 3);
+    if (alpha < 1) {
+      return `hsl(${h} ${s}% ${l}%/${alpha})`;
     } else {
       return `hsl(${h} ${s}% ${l}%)`;
     }
@@ -130,7 +132,7 @@ export class HslColor extends Color implements Hsl {
       isNumber(o.h) &&
       isNumber(o.s) &&
       isNumber(o.l) &&
-      (o.a == null || isNumber(o.a))
+      (o.alpha == null || isNumber(o.alpha))
     );
   }
 }

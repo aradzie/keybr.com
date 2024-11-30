@@ -1,6 +1,6 @@
 type WithAlpha<T> = T & {
   /** The alpha component, a number in range [0,1]. */
-  a: number;
+  alpha: number;
 };
 
 /** A color with the red, green, blue and alpha components. */
@@ -54,18 +54,18 @@ export type Xyz = WithAlpha<{
 
 export type Oklab = WithAlpha<{
   /** The `L` component, a number in range [0,1]. */
-  L: number;
+  l: number;
   /** The `a` component, a number in range [-0.4,0.4]. */
-  A: number;
+  a: number;
   /** The `b` component, a number in range [-0.4,0.4]. */
-  B: number;
+  b: number;
 }>;
 
 export type Oklch = WithAlpha<{
   /** The `L` component, a number in range [0,1]. */
-  L: number;
+  l: number;
   /** The `C` component, a number in range [0,0.4]. */
-  C: number;
+  c: number;
   /** The hue component, a number in range [0,1]. */
   h: number;
 }>;
