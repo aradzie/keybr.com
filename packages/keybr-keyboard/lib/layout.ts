@@ -1158,6 +1158,24 @@ export class Layout implements XEnumItem {
     return null;
   }
 
+  static selectableLayouts(language: Language): Layout[] {
+    const list = Layout.ALL.filter(
+      (layout) => layout.language.script === language.script,
+    );
+    return [
+      ...list.filter((layout) => layout.language.id === language.id),
+      ...list.filter((layout) => layout.language.id !== language.id),
+    ];
+  }
+
+  static selectLayout(language: Language): Layout {
+    const [layout] = Layout.selectableLayouts(language);
+    if (layout == null) {
+      throw new Error(); // Unreachable.
+    }
+    return layout;
+  }
+
   private constructor(
     readonly id: string,
     readonly xid: number,

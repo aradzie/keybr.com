@@ -98,13 +98,7 @@ export class KeyboardOptions {
   }
 
   selectableLayouts(): Layout[] {
-    const list = Layout.ALL.filter(
-      (layout) => layout.language.script === this.#language.script,
-    );
-    return [
-      ...list.filter((layout) => layout.language.id === this.#language.id),
-      ...list.filter((layout) => layout.language.id !== this.#language.id),
-    ];
+    return Layout.selectableLayouts(this.#language);
   }
 
   selectableGeometries(): Geometry[] {
@@ -119,9 +113,7 @@ export class KeyboardOptions {
   }
 
   withLanguage(language: Language): KeyboardOptions {
-    const [layout] = Layout.ALL.filter(
-      (layout) => layout.language.id === language.id,
-    );
+    const layout = Layout.selectLayout(language);
     const geometry = Geometry.first(layout.geometries);
     const zones = ZoneMod.first(geometry.zones);
     return new KeyboardOptions(

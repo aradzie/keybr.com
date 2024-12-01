@@ -1,6 +1,6 @@
 import { describe, it, test } from "node:test";
 import { Settings } from "@keybr/settings";
-import { equal } from "rich-assert";
+import { equal, isNotEmpty } from "rich-assert";
 import { Geometry, ZoneMod } from "./geometry.ts";
 import { Language } from "./language.ts";
 import { Layout } from "./layout.ts";
@@ -102,4 +102,13 @@ describe("update properties", () => {
     equal(options.language, Language.FR);
     equal(options.layout, Layout.FR_FR);
   });
+});
+
+test("find layouts for all languages", () => {
+  for (const language of Language.ALL) {
+    const options = KeyboardOptions.default().withLanguage(language);
+    equal(options.language, language);
+    equal(options.layout.language.script, language.script);
+    isNotEmpty(options.selectableLayouts());
+  }
 });
