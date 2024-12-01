@@ -31,12 +31,9 @@ function generate(language: Language): void {
   const dict = readDict();
   if (dict != null) {
     console.log(`[${id}] ${dict.length} unique words`);
-    generateModel(dict);
-    generateWordList(
-      sortByCount(language, dict)
-        .slice(0, 10000)
-        .map(([word]) => word),
-    );
+    const slice = sortByCount(language, dict).slice(0, 10000);
+    generateModel(slice);
+    generateWordList(slice.map(([word]) => word));
   }
 
   function generateModel(dict: Word[]): void {
