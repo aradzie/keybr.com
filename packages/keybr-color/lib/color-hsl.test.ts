@@ -17,6 +17,5 @@ test("construct", () => {
   });
   like(new HslColor(0.1, 0.2, 0.3), { h: 0.1, s: 0.2, l: 0.3, alpha: 1 });
   like(new HslColor(0.1, 0.2, 0.3, 0.4), { h: 0.1, s: 0.2, l: 0.3, alpha: 0.4 });
-  like(new HslColor({ h: 0.1, s: 0.2, l: 0.3 }), { h: 0.1, s: 0.2, l: 0.3, alpha: 1 });
   like(new HslColor({ h: 0.1, s: 0.2, l: 0.3, alpha: 0.4 }), { h: 0.1, s: 0.2, l: 0.3, alpha: 0.4 });
 });

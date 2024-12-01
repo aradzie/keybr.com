@@ -1,4 +1,5 @@
-import { clamp, isNumber, isObjectLike, round } from "@keybr/lang";
+import { clamp, isNumber, round } from "@keybr/lang";
+import { isOklab } from "./classify.ts";
 import { Color } from "./color.ts";
 import { hslToHsv, rgbToHsl } from "./convert-rgb.ts";
 import { oklabToRgb } from "./convert-xyz.ts";
@@ -15,9 +16,7 @@ export class OklabColor extends Color implements Oklab {
 
   constructor();
   constructor(l: number, a: number, b: number, alpha?: number);
-  constructor(
-    value: Readonly<{ l: number; a: number; b: number; alpha?: number }>,
-  );
+  constructor(value: Readonly<Oklab>);
   constructor(...args: any[]) {
     super();
     const l = args.length;
@@ -54,11 +53,11 @@ export class OklabColor extends Color implements Oklab {
       return this;
     }
     const [value] = args;
-    if (l === 1 && OklabColor.is(value)) {
+    if (l === 1 && isOklab(value)) {
       this.l = value.l;
       this.a = value.a;
       this.b = value.b;
-      this.alpha = value.alpha ?? 1;
+      this.alpha = value.alpha;
       return this;
     }
     throw new TypeError();
@@ -122,15 +121,5 @@ export class OklabColor extends Color implements Oklab {
 
   get [Symbol.toStringTag]() {
     return "OklabColor";
-  }
-
-  static is(o: any): o is Oklab {
-    return (
-      isObjectLike(o) &&
-      isNumber(o.l) &&
-      isNumber(o.a) &&
-      isNumber(o.b) &&
-      (o.alpha == null || isNumber(o.alpha))
-    );
   }
 }

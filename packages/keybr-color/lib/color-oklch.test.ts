@@ -17,6 +17,5 @@ test("construct", () => {
   });
   like(new OklchColor(0.1, 0.2, 0.3), { l: 0.1, c: 0.2, h: 0.3, alpha: 1 });
   like(new OklchColor(0.1, 0.2, 0.3, 0.4), { l: 0.1, c: 0.2, h: 0.3, alpha: 0.4 });
-  like(new OklchColor({ l: 0.1, c: 0.2, h: 0.3 }), { l: 0.1, c: 0.2, h: 0.3, alpha: 1 });
   like(new OklchColor({ l: 0.1, c: 0.2, h: 0.3, alpha: 0.4 }), { l: 0.1, c: 0.2, h: 0.3, alpha: 0.4 });
 });

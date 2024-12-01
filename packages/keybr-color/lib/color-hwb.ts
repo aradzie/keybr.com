@@ -1,4 +1,5 @@
-import { clamp, isNumber, isObjectLike, round } from "@keybr/lang";
+import { clamp, isNumber, round } from "@keybr/lang";
+import { isHwb } from "./classify.ts";
 import { Color } from "./color.ts";
 import { hwbToHsl, hwbToHsv, hwbToRgb } from "./convert-rgb.ts";
 import { type Hwb } from "./types.ts";
@@ -14,9 +15,7 @@ export class HwbColor extends Color implements Hwb {
 
   constructor();
   constructor(h: number, w: number, b: number, alpha?: number);
-  constructor(
-    value: Readonly<{ h: number; w: number; b: number; alpha?: number }>,
-  );
+  constructor(value: Readonly<Hwb>);
   constructor(...args: any[]) {
     super();
     const l = args.length;
@@ -53,11 +52,11 @@ export class HwbColor extends Color implements Hwb {
       return this;
     }
     const [value] = args;
-    if (l === 1 && HwbColor.is(value)) {
+    if (l === 1 && isHwb(value)) {
       this.h = value.h;
       this.w = value.w;
       this.b = value.b;
-      this.alpha = value.alpha ?? 1;
+      this.alpha = value.alpha;
       return this;
     }
     throw new TypeError();
@@ -121,15 +120,5 @@ export class HwbColor extends Color implements Hwb {
 
   get [Symbol.toStringTag]() {
     return "HwbColor";
-  }
-
-  static is(o: any): o is Hwb {
-    return (
-      isObjectLike(o) &&
-      isNumber(o.h) &&
-      isNumber(o.w) &&
-      isNumber(o.b) &&
-      (o.alpha == null || isNumber(o.alpha))
-    );
   }
 }

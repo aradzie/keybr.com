@@ -1,4 +1,5 @@
-import { clamp, isNumber, isObjectLike, round } from "@keybr/lang";
+import { clamp, isNumber, round } from "@keybr/lang";
+import { isOklch } from "./classify.ts";
 import { Color } from "./color.ts";
 import { hslToHsv, rgbToHsl } from "./convert-rgb.ts";
 import { oklchToRgb } from "./convert-xyz.ts";
@@ -15,9 +16,7 @@ export class OklchColor extends Color implements Oklch {
 
   constructor();
   constructor(l: number, c: number, h: number, alpha?: number);
-  constructor(
-    value: Readonly<{ l: number; c: number; h: number; alpha?: number }>,
-  );
+  constructor(value: Readonly<Oklch>);
   constructor(...args: any[]) {
     super();
     const l = args.length;
@@ -54,11 +53,11 @@ export class OklchColor extends Color implements Oklch {
       return this;
     }
     const [value] = args;
-    if (l === 1 && OklchColor.is(value)) {
+    if (l === 1 && isOklch(value)) {
       this.l = value.l;
       this.c = value.c;
       this.h = value.h;
-      this.alpha = value.alpha ?? 1;
+      this.alpha = value.alpha;
       return this;
     }
     throw new TypeError();
@@ -122,15 +121,5 @@ export class OklchColor extends Color implements Oklch {
 
   get [Symbol.toStringTag]() {
     return "OklchColor";
-  }
-
-  static is(o: any): o is Oklch {
-    return (
-      isObjectLike(o) &&
-      isNumber(o.l) &&
-      isNumber(o.c) &&
-      isNumber(o.h) &&
-      (o.alpha == null || isNumber(o.alpha))
-    );
   }
 }

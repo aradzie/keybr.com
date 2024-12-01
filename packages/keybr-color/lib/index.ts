@@ -1,3 +1,4 @@
+export * from "./classify.ts";
 export * from "./color.ts";
 export * from "./color-hsl.ts";
 export * from "./color-hsv.ts";

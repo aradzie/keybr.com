@@ -21,9 +21,7 @@ export class RgbColor extends Color implements Rgb {
 
   constructor();
   constructor(r: number, g: number, b: number, alpha?: number);
-  constructor(
-    value: Readonly<{ r: number; g: number; b: number; alpha?: number }>,
-  );
+  constructor(value: Readonly<Rgb>);
   constructor(...args: any[]) {
     super();
     const l = args.length;
@@ -64,7 +62,7 @@ export class RgbColor extends Color implements Rgb {
       this.r = value.r;
       this.g = value.g;
       this.b = value.b;
-      this.alpha = value.alpha ?? 1;
+      this.alpha = value.alpha;
       return this;
     }
     throw new TypeError();

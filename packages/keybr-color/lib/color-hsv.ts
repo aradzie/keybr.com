@@ -1,4 +1,5 @@
-import { clamp, isNumber, isObjectLike } from "@keybr/lang";
+import { clamp, isNumber } from "@keybr/lang";
+import { isHsv } from "./classify.ts";
 import { Color } from "./color.ts";
 import { hslToRgb, hsvToHsl } from "./convert-rgb.ts";
 import { type Hsv } from "./types.ts";
@@ -14,9 +15,7 @@ export class HsvColor extends Color implements Hsv {
 
   constructor();
   constructor(h: number, s: number, v: number, alpha?: number);
-  constructor(
-    value: Readonly<{ h: number; s: number; v: number; alpha?: number }>,
-  );
+  constructor(value: Readonly<Hsv>);
   constructor(...args: any[]) {
     super();
     const l = args.length;
@@ -53,11 +52,11 @@ export class HsvColor extends Color implements Hsv {
       return this;
     }
     const [value] = args;
-    if (l === 1 && HsvColor.is(value)) {
+    if (l === 1 && isHsv(value)) {
       this.h = value.h;
       this.s = value.s;
       this.v = value.v;
-      this.alpha = value.alpha ?? 1;
+      this.alpha = value.alpha;
       return this;
     }
     throw new TypeError();
@@ -116,15 +115,5 @@ export class HsvColor extends Color implements Hsv {
 
   get [Symbol.toStringTag]() {
     return "HsvColor";
-  }
-
-  static is(o: any): o is Hsv {
-    return (
-      isObjectLike(o) &&
-      isNumber(o.h) &&
-      isNumber(o.s) &&
-      isNumber(o.v) &&
-      (o.alpha == null || isNumber(o.alpha))
-    );
   }
 }

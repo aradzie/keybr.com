@@ -18,7 +18,6 @@ test("construct", () => {
   });
   like(new RgbColor(0.1, 0.2, 0.3), { r: 0.1, g: 0.2, b: 0.3, alpha: 1 });
   like(new RgbColor(0.1, 0.2, 0.3, 0.4), { r: 0.1, g: 0.2, b: 0.3, alpha: 0.4 });
-  like(new RgbColor({ r: 0.1, g: 0.2, b: 0.3 }), { r: 0.1, g: 0.2, b: 0.3, alpha: 1 });
   like(new RgbColor({ r: 0.1, g: 0.2, b: 0.3, alpha: 0.4 }), { r: 0.1, g: 0.2, b: 0.3, alpha: 0.4 });
 });
 

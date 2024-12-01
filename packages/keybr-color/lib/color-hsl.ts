@@ -1,4 +1,5 @@
-import { clamp, isNumber, isObjectLike, round } from "@keybr/lang";
+import { clamp, isNumber, round } from "@keybr/lang";
+import { isHsl } from "./classify.ts";
 import { Color } from "./color.ts";
 import { hslToHsv, hslToRgb } from "./convert-rgb.ts";
 import { type Hsl } from "./types.ts";
@@ -14,9 +15,7 @@ export class HslColor extends Color implements Hsl {
 
   constructor();
   constructor(h: number, s: number, l: number, alpha?: number);
-  constructor(
-    value: Readonly<{ h: number; s: number; l: number; alpha?: number }>,
-  );
+  constructor(value: Readonly<Hsl>);
   constructor(...args: any[]) {
     super();
     const l = args.length;
@@ -53,11 +52,11 @@ export class HslColor extends Color implements Hsl {
       return this;
     }
     const [value] = args;
-    if (l === 1 && HslColor.is(value)) {
+    if (l === 1 && isHsl(value)) {
       this.h = value.h;
       this.s = value.s;
       this.l = value.l;
-      this.alpha = value.alpha ?? 1;
+      this.alpha = value.alpha;
       return this;
     }
     throw new TypeError();
@@ -124,15 +123,5 @@ export class HslColor extends Color implements Hsl {
 
   get [Symbol.toStringTag]() {
     return "HslColor";
-  }
-
-  static is(o: any): o is Hsl {
-    return (
-      isObjectLike(o) &&
-      isNumber(o.h) &&
-      isNumber(o.s) &&
-      isNumber(o.l) &&
-      (o.alpha == null || isNumber(o.alpha))
-    );
   }
 }
