@@ -64,6 +64,7 @@
     "knex": "^3.1.0",
     "objection": "^3.1.5",
     "react": "^18.3.1",
+    "react-compiler-runtime": "^19.0.0-beta-df7b47d-20241124",
     "react-dom": "^18.3.1",
     "react-intl": "^7.0.1",
     "react-router": "^7.0.2",

@@ -6,6 +6,7 @@ import confusingBrowserGlobals from "confusing-browser-globals";
 import formatjs from "eslint-plugin-formatjs";
 import node from "eslint-plugin-n";
 import react from "eslint-plugin-react";
+import reactCompiler from "eslint-plugin-react-compiler";
 import reactHooks from "eslint-plugin-react-hooks";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 import globals from "globals";
@@ -39,8 +40,14 @@ export default [
       "**/*.test.ts",
       "**/*.test.tsx",
     ],
-    plugins: { "react-hooks": reactHooks },
-    rules: reactHooks.configs.recommended.rules,
+    plugins: {
+      "react-hooks": reactHooks,
+      "react-compiler": reactCompiler,
+    },
+    rules: {
+      ...reactHooks.configs.recommended.rules,
+      "react-compiler/react-compiler": "error",
+    },
   },
   {
     plugins: {

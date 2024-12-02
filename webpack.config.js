@@ -42,6 +42,9 @@ const rule_ts = () => ({
   type: "javascript/auto",
   use: [
     {
+      loader: "@keybr/scripts/react-compiler-loader.js",
+    },
+    {
       loader: "ts-loader",
       options: {
         transpileOnly: true,
