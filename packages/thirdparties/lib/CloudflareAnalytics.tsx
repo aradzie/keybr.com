@@ -1,11 +1,10 @@
-import { type ReactNode } from "react";
 import { cloudflareAnalyticsId } from "./config.ts";
 
 export const CloudflareAnalytics = ({
   id = cloudflareAnalyticsId,
 }: {
-  readonly id?: string;
-}): ReactNode => {
+  id?: string;
+}) => {
   if (process.env.NODE_ENV === "development") {
     return null;
   }

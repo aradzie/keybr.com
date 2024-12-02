@@ -1,11 +1,10 @@
-import { type ReactNode } from "react";
 import { googleTagManagerId } from "./config.ts";
 
 export const GoogleTagManager = ({
   id = googleTagManagerId,
 }: {
-  readonly id?: string;
-}): ReactNode => {
+  id?: string;
+}) => {
   if (process.env.NODE_ENV === "development") {
     return null;
   }

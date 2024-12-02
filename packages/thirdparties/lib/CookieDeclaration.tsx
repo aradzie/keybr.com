@@ -1,11 +1,13 @@
-import { type ReactNode } from "react";
 import { cookiebotClientId } from "./config.ts";
 
 export const CookieDeclaration = ({
   id = cookiebotClientId,
 }: {
-  readonly id?: string;
-}): ReactNode => {
+  id?: string;
+}) => {
+  if (process.env.NODE_ENV === "development") {
+    return null;
+  }
   return (
     <script
       id="CookieDeclaration"

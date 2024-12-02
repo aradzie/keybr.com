@@ -6,7 +6,6 @@ export function loadScripts(): Promise<boolean> {
       loadScript("https://consent.cookiebot.com/uc.js", (script) => {
         script.id = "Cookiebot";
         script.dataset.cbid = cookiebotClientId;
-        script.dataset.framework = "TCFv2.2";
         script.dataset.blockingmode = "auto";
       }),
     )
