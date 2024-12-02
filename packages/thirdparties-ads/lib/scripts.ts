@@ -7,6 +7,7 @@ export function loadScripts(): Promise<boolean> {
         script.id = "Cookiebot";
         script.dataset.cbid = cookiebotClientId;
         script.dataset.blockingmode = "auto";
+        script.dataset.framework = "TCFv2.2";
       }),
     )
     .then(() => loadScript("https://a.pub.network/keybr-com/pubfig.min.js"))
