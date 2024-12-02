@@ -7,6 +7,7 @@ import {
 import { ExplainerBoundary } from "@keybr/widget";
 import { AccuracyStreaksSection } from "./profile/AccuracyStreaksSection.tsx";
 import { CalendarSection } from "./profile/CalendarSection.tsx";
+import { DataScript } from "./profile/DataScript.tsx";
 import { ExplainProfile } from "./profile/ExplainProfile.tsx";
 import { FooterSection } from "./profile/FooterSection.tsx";
 import { HistogramsSection } from "./profile/HistogramsSection.tsx";
@@ -41,6 +42,8 @@ function Content({ keyStatsMap }: { keyStatsMap: KeyStatsMap }) {
 
   return (
     <>
+      <DataScript stats={stats} dailyStatsMap={dailyStatsMap} />
+
       <AllTimeSummary stats={stats} />
 
       <TodaySummary stats={dailyStatsMap.today.stats} />
