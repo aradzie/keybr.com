@@ -3,7 +3,7 @@ import { type Player, positionName } from "@keybr/multiplayer-shared";
 import { UserName } from "@keybr/pages-shared";
 import { NameValue, Value } from "@keybr/widget";
 import { clsx } from "clsx";
-import { memo, type ReactNode } from "react";
+import { memo, type ReactNode, useEffect, useRef } from "react";
 import { useIntl } from "react-intl";
 import { CarImage } from "./image/car.tsx";
 import * as styles from "./Lane.module.less";
@@ -15,28 +15,22 @@ export const Lane = memo(function Lane({
   readonly player: Player;
   readonly me: Player;
 }): ReactNode {
+  const { speed, errors, position, progress } = player;
   const { formatMessage } = useIntl();
   const { formatNumber, formatPercents } = useIntlNumbers();
-  const { speed, errors, position, progress } = player;
-  let laneElement: HTMLElement | null = null;
-  let carElement: HTMLElement | null = null;
-  const refPlayer = () => {
-    if (laneElement != null && carElement != null) {
-      const laneWidth = laneElement.offsetWidth;
-      const carWidth = carElement.offsetWidth;
-      carElement.style.insetInlineStart =
-        String((laneWidth - carWidth) * player.progress) + "px";
+  const refLane = useRef<HTMLDivElement>(null);
+  const refCar = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const lane = refLane.current;
+    const car = refCar.current;
+    if (lane != null && car != null) {
+      const laneWidth = lane.offsetWidth;
+      const carWidth = car.offsetWidth;
+      car.style.insetInlineStart = `${(laneWidth - carWidth) * progress}px`;
     }
-  };
-  const refLane = (element: HTMLElement | null): void => {
-    laneElement = element;
-  };
-  const refCar = (element: HTMLElement | null): void => {
-    carElement = element;
-  };
+  }, [progress]);
   return (
     <div
-      ref={refPlayer}
       className={clsx(
         styles.player,
         player.finished && styles.isFinished,
