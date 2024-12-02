@@ -19,6 +19,11 @@ async function pullTranslations(locale) {
   const defaultTranslations = readJsonSync(defaultTranslationsFile);
   const translationsFile = translationsPath(locale);
   const translations = await downloadTranslations(locale);
+  for (const [id] of Object.entries(translations)) {
+    if (!(id in defaultTranslations)) {
+      console.warn(`Extra term [${id}]`);
+    }
+  }
   writeJsonSync(
     translationsFile,
     remap(defaultTranslations, ([id, message]) => [
