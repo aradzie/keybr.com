@@ -16,7 +16,7 @@ import { KeySpeedHistogramSection } from "./profile/KeySpeedHistogramSection.tsx
 import { ProgressOverviewSection } from "./profile/ProgressOverviewSection.tsx";
 import { ResultGrouper } from "./profile/ResultGrouper.tsx";
 import { SpeedChartSection } from "./profile/SpeedChartSection.tsx";
-import { AllTimeSummary } from "./profile/Summary.tsx";
+import { AllTimeSummary, TodaySummary } from "./profile/Summary.tsx";
 
 export function PublicProfilePage({ user }: { user: NamedUser }) {
   return (
@@ -42,6 +42,8 @@ function Content({ keyStatsMap }: { keyStatsMap: KeyStatsMap }) {
   return (
     <>
       <AllTimeSummary stats={stats} />
+
+      <TodaySummary stats={dailyStatsMap.today.stats} />
 
       <AccuracyStreaksSection results={results} />
 
