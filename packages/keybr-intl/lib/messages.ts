@@ -95,6 +95,13 @@ export async function loadMessages(locale: LocaleId): Promise<Messages> {
           { with: { type: "json" } }
         )
       ).default;
+    case "ga":
+      return (
+        await import(
+          /* webpackChunkName: "messages-ga" */ "./messages/ga.json",
+          { with: { type: "json" } }
+        )
+      ).default;
     case "he":
       return (
         await import(

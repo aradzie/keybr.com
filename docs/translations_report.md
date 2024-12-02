@@ -270,6 +270,17 @@ Untranslated: 26 messages, 447 words
 * *You don’t have any accuracy streaks. Consider completing a l...*
 * ...
 
+# Irish
+
+Translated: 401 messages, 4974 words
+
+Untranslated: 4 messages, 11 words
+
+* *Zones:*
+* *Smoothness:*
+* *Sound Theme:*
+* *M|T|W|T|F|S|S*
+
 # Hebrew
 
 Translated: 373 messages, 4504 words

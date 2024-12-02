@@ -14,6 +14,7 @@ export const allLocales = [
   "et",
   "fa",
   "fr",
+  "ga",
   "he",
   "hr",
   "hu",

@@ -37,6 +37,7 @@ export const allLocales: readonly LocaleId[] = [
   "et",
   "fa",
   "fr",
+  "ga",
   "he",
   "hr",
   "hu",
