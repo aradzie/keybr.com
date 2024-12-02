@@ -42,10 +42,6 @@ export function OAuthLoginForm() {
                 },
                 { name },
               )}
-              title={formatMessage({
-                id: "account.socialSignInButton.description",
-                defaultMessage: "Sign-in with a social network.",
-              })}
               onClick={() => {
                 document.location = `/auth/oauth-init/${id}`;
               }}

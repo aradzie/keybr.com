@@ -55,11 +55,6 @@ export function AccountSection({
               id: "account.widget.anonymize.label",
               defaultMessage: "Anonymize Me",
             })}
-            title={formatMessage({
-              id: "account.widget.anonymize.description",
-              defaultMessage:
-                "Hide your real user image and name from the public.",
-            })}
             checked={user.anonymized}
             onChange={() => {
               actions.patchAccount({ anonymized: !user.anonymized });
@@ -83,10 +78,6 @@ export function AccountSection({
             label={formatMessage({
               id: "account.widget.signOut.label",
               defaultMessage: "Sign Out",
-            })}
-            title={formatMessage({
-              id: "account.widget.signOut.description",
-              defaultMessage: "Sign out from the application.",
             })}
           />
         </Para>
@@ -116,10 +107,6 @@ export function AccountSection({
                   id: "account.widget.checkout.label",
                   defaultMessage: "Buy a Premium Account",
                 })}
-                title={formatMessage({
-                  id: "account.widget.checkout.description",
-                  defaultMessage: "Open the checkout form.",
-                })}
               />
             </Para>
           </>
@@ -141,10 +128,6 @@ export function AccountSection({
             label={formatMessage({
               id: "account.widget.deleteAccount.label",
               defaultMessage: "Delete Account",
-            })}
-            title={formatMessage({
-              id: "account.widget.deleteAccount.description",
-              defaultMessage: "Permanently delete your account.",
             })}
           />
         </Para>

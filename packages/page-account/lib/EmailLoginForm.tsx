@@ -67,10 +67,6 @@ export function EmailLoginForm({ actions }: { actions: SignInActions }) {
                 id: "account.widget.resend.label",
                 defaultMessage: "Resend",
               })}
-              title={formatMessage({
-                id: "account.widget.resend.description",
-                defaultMessage: "Send one more e-mail.",
-              })}
               onClick={handleClickRetry}
             />
           </Para>
@@ -96,10 +92,6 @@ export function EmailLoginForm({ actions }: { actions: SignInActions }) {
                 id: "account.widget.retrySend.label",
                 defaultMessage: "Retry",
               })}
-              title={formatMessage({
-                id: "account.widget.retrySend.description",
-                defaultMessage: "Send another e-mail.",
-              })}
               onClick={handleClickRetry}
             />
           </Para>
@@ -118,11 +110,6 @@ export function EmailLoginForm({ actions }: { actions: SignInActions }) {
                   id: "account.widget.email.placeholder",
                   defaultMessage: "Your e-mail address...",
                 })}
-                title={formatMessage({
-                  id: "account.widget.email.description",
-                  defaultMessage:
-                    "This is the e-mail address we will send the sign-in link to.",
-                })}
                 value={email}
                 onChange={handleChangeEmail}
               />
@@ -134,10 +121,6 @@ export function EmailLoginForm({ actions }: { actions: SignInActions }) {
                 label={formatMessage({
                   id: "account.widget.send.label",
                   defaultMessage: "Send Sign-in Link",
-                })}
-                title={formatMessage({
-                  id: "account.widget.send.description",
-                  defaultMessage: "Sign-in with e-mail.",
                 })}
                 onClick={handleClickLogin}
               />
