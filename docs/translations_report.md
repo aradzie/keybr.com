@@ -6,15 +6,12 @@ Untranslated: 0 messages, 0 words
 
 # Arabic
 
-Translated: 394 messages, 4877 words
+Translated: 399 messages, 4905 words
 
-Untranslated: 9 messages, 86 words
+Untranslated: 6 messages, 80 words
 
 * *Zones:*
-* *Top accuracy*
 * *Sound Theme:*
-* *Average accuracy*
-* *Relative Accuracy*
 * *Repeat each word:*
 * *This is a histogram of the accuracies of all users, and your...*
 * *Repeat each word a number of times. Type a word for the firs...*
@@ -500,26 +497,13 @@ Untranslated: 12 messages, 111 words
 
 # Brazilian Portuguese
 
-Translated: 386 messages, 4846 words
+Translated: 403 messages, 4985 words
 
-Untranslated: 16 messages, 115 words
+Untranslated: 3 messages, 3 words
 
-* *Books*
 * *Layout*
-* *Zones:*
 * *Layout:*
 * *Layouts*
-* *Top accuracy*
-* *Sound Theme:*
-* *Explain charts*
-* *Average accuracy*
-* *Relative Accuracy*
-* *Hide explanations*
-* *Repeat each word:*
-* *This is a histogram of the accuracies of all users, and your...*
-* *Generate typing lessons from the text of a book. All keys ar...*
-* *Repeat each word a number of times. Type a word for the firs...*
-* *See how accurate you type relative to other users. The highe...*
 
 # European Portuguese
 
