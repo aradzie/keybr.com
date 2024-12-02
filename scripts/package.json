@@ -4,8 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "devDependencies": {
+    "@babel/core": "^7.26.0",
     "@eslint/js": "^9.17.0",
     "@jdalton/patch-package": "^8.1.1",
+    "babel-plugin-react-compiler": "^19.0.0-beta-df7b47d-20241124",
     "compression-webpack-plugin": "^11.1.0",
     "css-loader": "^7.1.2",
     "css-minimizer-webpack-plugin": "^7.0.0",
@@ -13,6 +15,7 @@
     "eslint-plugin-formatjs": "^5.2.8",
     "eslint-plugin-n": "^17.15.1",
     "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-compiler": "^19.0.0-beta-df7b47d-20241124",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "glob": "^11.0.0",
