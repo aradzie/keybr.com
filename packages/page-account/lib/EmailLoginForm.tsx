@@ -1,14 +1,10 @@
 import { Button, Field, FieldList, Icon, Para, TextField } from "@keybr/widget";
 import { mdiRepeat, mdiSend } from "@mdi/js";
-import { type ReactNode, useState } from "react";
+import { useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { type SignInActions } from "./actions.ts";
 
-export function EmailLoginForm({
-  actions,
-}: {
-  readonly actions: SignInActions;
-}): ReactNode {
+export function EmailLoginForm({ actions }: { actions: SignInActions }) {
   const { formatMessage } = useIntl();
   const [email, setEmail] = useState("");
   const [{ state, message }, setState] = useState<{

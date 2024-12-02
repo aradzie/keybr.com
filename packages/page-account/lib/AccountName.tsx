@@ -1,8 +1,7 @@
 import { Header } from "@keybr/widget";
-import { type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
 
-export function AccountName({ name }: { readonly name: ReactNode }): ReactNode {
+export function AccountName({ name }: { name: string }) {
   return (
     <Header level={1}>
       <FormattedMessage

@@ -17,8 +17,8 @@ export function AccountPage() {
 }
 
 function AccountSectionWithActions(props: {
-  readonly user: UserDetails;
-  readonly publicUser: AnyUser;
+  user: UserDetails;
+  publicUser: AnyUser;
 }) {
   const { user, publicUser, actions } = useAccountActions(props);
   return (

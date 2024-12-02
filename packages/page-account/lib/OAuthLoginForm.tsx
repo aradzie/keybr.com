@@ -1,6 +1,5 @@
 import { Button, Field, FieldList, Icon, Para } from "@keybr/widget";
 import { mdiFacebook, mdiGoogle, mdiMicrosoft } from "@mdi/js";
-import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
 const providers: readonly {
@@ -25,7 +24,7 @@ const providers: readonly {
   },
 ];
 
-export function OAuthLoginForm(): ReactNode {
+export function OAuthLoginForm() {
   const { formatMessage } = useIntl();
 
   return (

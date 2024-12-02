@@ -24,7 +24,7 @@ export function useAccountActions(props: {
   const { formatMessage } = useIntl();
   const [{ user, publicUser }, setState] = useState(props);
 
-  const patchAccount = (request: PatchAccountRequest): void => {
+  const patchAccount = (request: PatchAccountRequest) => {
     AccountService.patchAccount(request)
       .then(({ user, publicUser }) => {
         setState({ user, publicUser });
@@ -106,6 +106,6 @@ export function useSignInActions() {
   };
 }
 
-function reload(path: string): void {
+function reload(path: string) {
   window.location.href = path;
 }

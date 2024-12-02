@@ -1,7 +1,6 @@
-import { type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
 
-export function PremiumAccountOverview(): ReactNode {
+export function PremiumAccountOverview() {
   return (
     <FormattedMessage
       id="account.premiumAccountOverview"

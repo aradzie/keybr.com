@@ -6,7 +6,6 @@ import {
 } from "@keybr/pages-shared";
 import { Article, Button, CheckBox, FieldSet, Icon, Para } from "@keybr/widget";
 import { mdiCreditCard, mdiDeleteForever, mdiExitToApp } from "@mdi/js";
-import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { AccountName } from "./AccountName.tsx";
 import { type AccountActions } from "./actions.ts";
@@ -18,10 +17,10 @@ export function AccountSection({
   publicUser,
   actions,
 }: {
-  readonly user: UserDetails;
-  readonly publicUser: AnyUser;
-  readonly actions: AccountActions;
-}): ReactNode {
+  user: UserDetails;
+  publicUser: AnyUser;
+  actions: AccountActions;
+}) {
   const { formatMessage } = useIntl();
 
   return (

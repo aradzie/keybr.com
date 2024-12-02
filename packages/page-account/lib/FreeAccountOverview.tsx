@@ -1,7 +1,6 @@
-import { type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
 
-export function FreeAccountOverview(): ReactNode {
+export function FreeAccountOverview() {
   return (
     <FormattedMessage
       id="account.freeAccountOverview"
