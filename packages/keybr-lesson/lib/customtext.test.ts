@@ -136,9 +136,10 @@ test("generate text with empty settings", () => {
   const keyboard = loadKeyboard(Layout.EN_US);
   const model = new FakePhoneticModel();
   const lesson = new CustomTextLesson(settings, keyboard, model);
+  const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
 
   equal(
-    lesson.generate(),
+    lesson.generate(lessonKeys, model.rng),
     "? ? ? ? ? ? ? ? ? ? " +
       "? ? ? ? ? ? ? ? ? ? " +
       "? ? ? ? ? ? ? ? ? ? " +
@@ -163,10 +164,10 @@ describe("generate text using settings", () => {
       .set(lessonProps.customText.randomize, false);
     const model = new FakePhoneticModel();
     const lesson = new CustomTextLesson(settings, keyboard, model);
-    lesson.rng = model.rng;
+    const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
 
     equal(
-      lesson.generate(),
+      lesson.generate(lessonKeys, model.rng),
       "abc def abc def abc def abc def abc def abc def abc def abc def abc " +
         "def abc def abc def abc def abc def abc def abc def abc def abc def",
     );
@@ -180,10 +181,10 @@ describe("generate text using settings", () => {
       .set(lessonProps.customText.randomize, false);
     const model = new FakePhoneticModel();
     const lesson = new CustomTextLesson(settings, keyboard, model);
-    lesson.rng = model.rng;
+    const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
 
     equal(
-      lesson.generate(),
+      lesson.generate(lessonKeys, model.rng),
       "Abc! Def? 123 Abc! Def? 123 Abc! Def? 123 Abc! Def? 123 Abc! Def? 123 " +
         "Abc! Def? 123 Abc! Def? 123 Abc! Def? 123 Abc! Def? 123 Abc!",
     );
@@ -204,10 +205,10 @@ describe("generate randomized text using settings", () => {
       .set(lessonProps.customText.randomize, true);
     const model = new FakePhoneticModel();
     const lesson = new CustomTextLesson(settings, keyboard, model);
-    lesson.rng = model.rng;
+    const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
 
     equal(
-      lesson.generate(),
+      lesson.generate(lessonKeys, model.rng),
       "abc aaa bbb abc aaa bbb abc aaa bbb abc aaa bbb abc aaa bbb abc aaa " +
         "bbb abc aaa bbb abc aaa bbb abc aaa bbb abc aaa bbb abc aaa bbb abc",
     );
@@ -224,10 +225,10 @@ describe("generate randomized text using settings", () => {
       .set(lessonProps.customText.randomize, true);
     const model = new FakePhoneticModel();
     const lesson = new CustomTextLesson(settings, keyboard, model);
-    lesson.rng = model.rng;
+    const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
 
     equal(
-      lesson.generate(),
+      lesson.generate(lessonKeys, model.rng),
       "Abc! AAA bbb Abc! AAA bbb Abc! AAA bbb Abc! AAA bbb Abc! AAA bbb Abc! " +
         "AAA bbb Abc! AAA bbb Abc! AAA bbb Abc! AAA bbb Abc! AAA bbb",
     );

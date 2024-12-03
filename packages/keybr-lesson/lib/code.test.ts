@@ -2,6 +2,7 @@ import { test } from "node:test";
 import { Syntax } from "@keybr/code";
 import { Layout, loadKeyboard } from "@keybr/keyboard";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
+import { LCG } from "@keybr/rand";
 import { makeKeyStatsMap } from "@keybr/result";
 import { Settings } from "@keybr/settings";
 import { flattenStyledText } from "@keybr/textinput";
@@ -15,8 +16,7 @@ test("generate code fragment", () => {
   const model = new FakePhoneticModel();
   const lesson = new CodeLesson(settings, keyboard, model);
   const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
-  lesson.rng = model.rng;
 
-  const text = lesson.generate(lessonKeys);
+  const text = lesson.generate(lessonKeys, LCG(123));
   isTrue(flattenStyledText(text).length > 0);
 });

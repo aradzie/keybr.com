@@ -1,5 +1,6 @@
 import { type Keyboard } from "@keybr/keyboard";
 import { Letter, type PhoneticModel } from "@keybr/phonetic-model";
+import { type RNGStream } from "@keybr/rand";
 import { type KeyStatsMap } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
 import { LessonKeys } from "./key.ts";
@@ -20,9 +21,9 @@ export class CodeLesson extends Lesson {
     return LessonKeys.includeAll(keyStatsMap, new Target(this.settings));
   }
 
-  override generate(lessonKeys: LessonKeys) {
+  override generate(lessonKeys: LessonKeys, rng: RNGStream) {
     const syntax = this.settings.get(lessonProps.code.syntax);
     const flags = this.settings.get(lessonProps.code.flags);
-    return syntax.generate(new Set(flags), this.rng);
+    return syntax.generate(new Set(flags), rng);
   }
 }

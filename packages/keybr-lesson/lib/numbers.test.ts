@@ -1,6 +1,7 @@
 import { describe, it, test } from "node:test";
 import { Layout, loadKeyboard } from "@keybr/keyboard";
 import { FakePhoneticModel, Letter } from "@keybr/phonetic-model";
+import { LCG } from "@keybr/rand";
 import { makeKeyStatsMap } from "@keybr/result";
 import { Settings } from "@keybr/settings";
 import { deepEqual, equal, isNull } from "rich-assert";
@@ -138,11 +139,11 @@ describe("generate text using settings", () => {
     const settings = new Settings().set(lessonProps.numbers.benford, true);
     const model = new FakePhoneticModel();
     const lesson = new NumbersLesson(settings, keyboard, model);
-    lesson.rng = model.rng;
+    const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
 
     equal(
-      lesson.generate(),
-      "260 4036 260 4036 260 4036 260 4036 260 4036 260 4036 260 4036 260",
+      lesson.generate(lessonKeys, LCG(123)),
+      "487617 286 59728 489 4829 103825 356 5049 28027 6869 3985 1820",
     );
   });
 
@@ -150,11 +151,11 @@ describe("generate text using settings", () => {
     const settings = new Settings().set(lessonProps.numbers.benford, false);
     const model = new FakePhoneticModel();
     const lesson = new NumbersLesson(settings, keyboard, model);
-    lesson.rng = model.rng;
+    const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
 
     equal(
-      lesson.generate(),
-      "460 7036 460 7036 460 7036 460 7036 460 7036 460 7036 460 7036 460",
+      lesson.generate(lessonKeys, LCG(123)),
+      "787617 486 79728 789 6829 303825 656 7049 48027 8693 98532 820",
     );
   });
 });

@@ -1,6 +1,7 @@
 import { type WordList } from "@keybr/content";
 import { type Keyboard } from "@keybr/keyboard";
 import { Filter, Letter, type PhoneticModel } from "@keybr/phonetic-model";
+import { type RNGStream } from "@keybr/rand";
 import { type KeyStatsMap } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
 import { Dictionary, filterWordList } from "./dictionary.ts";
@@ -14,7 +15,6 @@ import {
   phoneticWords,
   randomWords,
   uniqueWords,
-  type WordGenerator,
 } from "./text/words.ts";
 
 export class GuidedLesson extends Lesson {
@@ -107,10 +107,12 @@ export class GuidedLesson extends Lesson {
     return lessonKeys;
   }
 
-  override generate(lessonKeys: LessonKeys) {
-    const wordGenerator = this.#makeWordGenerator(
-      new Filter(lessonKeys.findIncludedKeys(), lessonKeys.findFocusedKey()),
+  override generate(lessonKeys: LessonKeys, rng: RNGStream) {
+    const filter = new Filter(
+      lessonKeys.findIncludedKeys(),
+      lessonKeys.findFocusedKey(),
     );
+    const wordGenerator = this.#makeWordGenerator(filter, rng);
     const words = mangledWords(
       uniqueWords(wordGenerator),
       this.model.language,
@@ -119,14 +121,14 @@ export class GuidedLesson extends Lesson {
         withCapitals: this.settings.get(lessonProps.capitals),
         withPunctuators: this.settings.get(lessonProps.punctuators),
       },
-      this.rng,
+      rng,
     );
     return generateFragment(this.settings, words, {
       repeatWords: this.settings.get(lessonProps.repeatWords),
     });
   }
 
-  #getLetters(): Letter[] {
+  #getLetters() {
     const { letters } = this.model;
     const { codePoints } = this;
     if (this.settings.get(lessonProps.guided.keyboardOrder)) {
@@ -138,8 +140,8 @@ export class GuidedLesson extends Lesson {
     }
   }
 
-  #makeWordGenerator(filter: Filter): WordGenerator {
-    const pseudoWords = phoneticWords(this.model, filter, this.rng);
+  #makeWordGenerator(filter: Filter, rng: RNGStream) {
+    const pseudoWords = phoneticWords(this.model, filter, rng);
     if (this.settings.get(lessonProps.guided.naturalWords)) {
       const words = this.dictionary.find(filter).slice(0, 1000);
       while (words.length < 15) {
@@ -153,7 +155,7 @@ export class GuidedLesson extends Lesson {
       if (words.length === 0) {
         words.push("?");
       }
-      return randomWords(words, this.rng);
+      return randomWords(words, rng);
     }
     return pseudoWords;
   }

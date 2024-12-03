@@ -11,11 +11,12 @@ import { type StyledText } from "@keybr/textinput";
 import { type LessonKeys } from "./key.ts";
 
 export abstract class Lesson {
+  static rng: RNGStream = LCG(Date.now());
+
   readonly settings: Settings;
   readonly keyboard: Keyboard;
   readonly codePoints: WeightedCodePointSet;
   readonly model: PhoneticModel;
-  rng: RNGStream = LCG(Date.now());
 
   protected constructor(
     settings: Settings,
@@ -38,5 +39,5 @@ export abstract class Lesson {
 
   abstract update(keyStatsMap: KeyStatsMap): LessonKeys;
 
-  abstract generate(lessonKeys: LessonKeys): StyledText;
+  abstract generate(lessonKeys: LessonKeys, rng: RNGStream): StyledText;
 }

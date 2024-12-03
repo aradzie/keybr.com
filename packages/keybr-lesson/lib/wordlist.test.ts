@@ -152,10 +152,10 @@ describe("generate randomized text using settings", () => {
     const model = new FakePhoneticModel();
     const wordList = ["abc", "def", "ghi"];
     const lesson = new WordListLesson(settings, keyboard, model, wordList);
-    lesson.rng = model.rng;
+    const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
 
     equal(
-      lesson.generate(),
+      lesson.generate(lessonKeys, model.rng),
       "abc def ghi abc def ghi abc def ghi abc def ghi abc def ghi abc def " +
         "ghi abc def ghi abc def ghi abc def ghi abc def ghi abc def ghi abc",
     );
@@ -168,10 +168,10 @@ describe("generate randomized text using settings", () => {
     const model = new FakePhoneticModel();
     const wordList = ["abc", "def", "ghi"];
     const lesson = new WordListLesson(settings, keyboard, model, wordList);
-    lesson.rng = model.rng;
+    const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
 
     equal(
-      lesson.generate(),
+      lesson.generate(lessonKeys, model.rng),
       "Abc, Def, Ghi! Abc, Def, Ghi! Abc, Def, Ghi! Abc, Def, Ghi! Abc, Def, " +
         "Ghi! Abc, Def, Ghi! Abc, Def, Ghi! Abc, Def, Ghi! Abc,",
     );

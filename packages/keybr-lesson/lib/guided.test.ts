@@ -154,10 +154,9 @@ describe("generate text from a broken phonetic model", () => {
     const model = new FakePhoneticModel([""]);
     const lesson = new GuidedLesson(settings, keyboard, model, []);
     const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
-    lesson.rng = model.rng;
 
     equal(
-      lesson.generate(lessonKeys),
+      lesson.generate(lessonKeys, model.rng),
       "? ? ? ? ? ? ? ? ? ? " +
         "? ? ? ? ? ? ? ? ? ? " +
         "? ? ? ? ? ? ? ? ? ? " +
@@ -175,10 +174,9 @@ describe("generate text from a broken phonetic model", () => {
     const model = new FakePhoneticModel(["x"]);
     const lesson = new GuidedLesson(settings, keyboard, model, []);
     const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
-    lesson.rng = model.rng;
 
     equal(
-      lesson.generate(lessonKeys),
+      lesson.generate(lessonKeys, model.rng),
       "x x x x x x x x x x " +
         "x x x x x x x x x x " +
         "x x x x x x x x x x " +
@@ -199,10 +197,9 @@ test("generate text with pseudo words", () => {
   const model = new FakePhoneticModel(["uno", "due", "tre"]);
   const lesson = new GuidedLesson(settings, keyboard, model, []);
   const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
-  lesson.rng = model.rng;
 
   equal(
-    lesson.generate(lessonKeys),
+    lesson.generate(lessonKeys, model.rng),
     "uno due tre " +
       "uno due tre " +
       "uno due tre " +
@@ -240,10 +237,9 @@ test("generate text with natural words", () => {
     "abcbe",
   ]);
   const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
-  lesson.rng = model.rng;
 
   equal(
-    lesson.generate(lessonKeys),
+    lesson.generate(lessonKeys, model.rng),
     "abcaf abcbe abcaa abcaf abcbe abcaa abcaf abcbe abcaa abcaf abcbe abcaa " +
       "abcaf abcbe abcaa abcaf abcbe abcaa abcaf abcbe",
   );

@@ -23,12 +23,11 @@ export function LessonPreview({
   const { settings } = useSettings();
   const { results } = useResults();
   const { lessonKeys, textInput } = useMemo(() => {
-    lesson.rng = LCG(123);
     const lessonKeys = lesson.update(
       makeKeyStatsMap(lesson.letters, lesson.filter(results)),
     );
     const textInput = new TextInput(
-      lesson.generate(lessonKeys),
+      lesson.generate(lessonKeys, LCG(123)),
       toTextInputSettings(settings),
     );
     return { lessonKeys, textInput };

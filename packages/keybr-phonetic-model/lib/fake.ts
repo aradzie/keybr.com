@@ -49,8 +49,8 @@ export class FakePhoneticModel extends PhoneticModel {
     this.rng = rng;
   }
 
-  override nextWord(filter: Filter, random: RNG = this.rng): string {
-    return randomSample(this.words, random);
+  override nextWord(filter: Filter, rng: RNG = this.rng): string {
+    return randomSample(this.words, rng);
   }
 
   override ngram1(): Ngram1 {

@@ -1,6 +1,10 @@
 import { type Keyboard } from "@keybr/keyboard";
 import { Letter, type PhoneticModel } from "@keybr/phonetic-model";
-import { randomSample, weightedRandomSample } from "@keybr/rand";
+import {
+  randomSample,
+  type RNGStream,
+  weightedRandomSample,
+} from "@keybr/rand";
 import { type KeyStatsMap } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
 import { LessonKeys } from "./key.ts";
@@ -21,11 +25,11 @@ export class NumbersLesson extends Lesson {
     return LessonKeys.includeAll(keyStatsMap, new Target(this.settings));
   }
 
-  override generate() {
+  override generate(lessonKeys: LessonKeys, rng: RNGStream) {
     const words = [];
     let wordsLength = 0;
     while (true) {
-      const word = this.nextWord();
+      const word = this.nextWord(rng);
       words.push(word);
       wordsLength += word.length;
       if (wordsLength >= 50) {
@@ -35,8 +39,7 @@ export class NumbersLesson extends Lesson {
     return words.join(" ");
   }
 
-  nextWord(): string {
-    const { rng } = this;
+  nextWord(rng: RNGStream) {
     const benford = this.settings.get(lessonProps.numbers.benford);
     const [zeroDigit, ...nonZeroDigits] = Letter.digits;
     const allDigits = [zeroDigit, ...nonZeroDigits];

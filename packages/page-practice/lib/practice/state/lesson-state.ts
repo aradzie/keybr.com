@@ -1,7 +1,7 @@
 import { keyboardProps, type KeyId } from "@keybr/keyboard";
 import {
   type DailyGoal,
-  type Lesson,
+  Lesson,
   type LessonKeys,
   lessonProps,
 } from "@keybr/lesson";
@@ -61,7 +61,7 @@ export class LessonState {
     this.streakList = progress.streakList.copy();
     this.dailyGoal = progress.dailyGoal.copy();
     this.lessonKeys = this.lesson.update(this.keyStatsMap);
-    this.#reset(this.lesson.generate(this.lessonKeys));
+    this.#reset(this.lesson.generate(this.lessonKeys, Lesson.rng));
   }
 
   resetLesson() {
@@ -69,7 +69,7 @@ export class LessonState {
   }
 
   skipLesson() {
-    this.#reset(this.lesson.generate(this.lessonKeys));
+    this.#reset(this.lesson.generate(this.lessonKeys, Lesson.rng));
   }
 
   onInput(event: IInputEvent): Feedback {

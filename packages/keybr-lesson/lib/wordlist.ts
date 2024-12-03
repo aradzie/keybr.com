@@ -1,6 +1,7 @@
 import { type WordList } from "@keybr/content";
 import { type Keyboard } from "@keybr/keyboard";
 import { Letter, type PhoneticModel } from "@keybr/phonetic-model";
+import { type RNGStream } from "@keybr/rand";
 import { type KeyStatsMap } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
 import { filterWordList } from "./dictionary.ts";
@@ -36,8 +37,8 @@ export class WordListLesson extends Lesson {
     return LessonKeys.includeAll(keyStatsMap, new Target(this.settings));
   }
 
-  override generate() {
-    const wordGenerator = randomWords(this.wordList, this.rng);
+  override generate(lessonKeys: LessonKeys, rng: RNGStream) {
+    const wordGenerator = randomWords(this.wordList, rng);
     const words = mangledWords(
       uniqueWords(wordGenerator),
       this.model.language,
@@ -46,7 +47,7 @@ export class WordListLesson extends Lesson {
         withCapitals: this.settings.get(lessonProps.capitals),
         withPunctuators: this.settings.get(lessonProps.punctuators),
       },
-      this.rng,
+      rng,
     );
     return generateFragment(this.settings, words, {
       repeatWords: this.settings.get(lessonProps.repeatWords),
