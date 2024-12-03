@@ -264,29 +264,31 @@ function updatePlayerStates(
   const players = new Map<number, Player>(
     worldState.players.all.map((player) => [player.id, player]),
   );
-  for (const [id, newPlayerState] of playerState.entries()) {
+  for (const [
+    id,
+    { spectator, finished, position, offset, speed, errors },
+  ] of playerState.entries()) {
     const player = players.get(id);
     if (player != null) {
-      const newProgress = player.offset / worldState.textInput.length;
       if (
-        player.spectator !== newPlayerState.spectator ||
-        player.finished !== newPlayerState.finished ||
-        player.position !== newPlayerState.position ||
-        player.offset !== newPlayerState.offset ||
-        player.speed !== newPlayerState.speed ||
-        player.errors !== newPlayerState.errors ||
-        player.progress !== newProgress
+        player.spectator !== spectator ||
+        player.finished !== finished ||
+        player.position !== position ||
+        player.offset !== offset ||
+        player.speed !== speed ||
+        player.errors !== errors
       ) {
+        const progress = offset / worldState.textInput.length;
         players.set(player.id, {
           id: player.id,
           user: player.user,
-          spectator: newPlayerState.spectator,
-          finished: newPlayerState.finished,
-          position: newPlayerState.position,
-          offset: newPlayerState.offset,
-          speed: newPlayerState.speed,
-          errors: newPlayerState.errors,
-          progress: newProgress,
+          spectator,
+          finished,
+          position,
+          offset,
+          speed,
+          errors,
+          progress,
         });
       }
     }
