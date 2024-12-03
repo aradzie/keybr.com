@@ -14,6 +14,7 @@ import { KeyLayer, PointersLayer, VirtualKeyboard } from "@keybr/keyboard-ui";
 import { Tasks } from "@keybr/lang";
 import { useSettings } from "@keybr/settings";
 import { ModifierState, useDepressedKeys } from "@keybr/textinput-events";
+import { type CodePoint } from "@keybr/unicode";
 import {
   CheckBox,
   Description,
@@ -23,7 +24,7 @@ import {
   FieldSet,
   OptionList,
 } from "@keybr/widget";
-import { memo, type ReactNode, useEffect, useMemo, useState } from "react";
+import { memo, type ReactNode, useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
 export function KeyboardSettings(): ReactNode {
@@ -300,9 +301,10 @@ const KeyboardPreview = memo(function KeyboardPreview(): ReactNode {
 const PointersPreview = memo(function PointersPreview(): ReactNode {
   const keyboard = useKeyboard();
   const [index, setIndex] = useState(0);
-  const suffix = useMemo(() => {
+  const [suffix, setSuffix] = useState<CodePoint[]>([]);
+  useEffect(() => {
     setIndex(0);
-    return keyboard.getExampleLetters();
+    setSuffix(keyboard.getExampleLetters());
   }, [keyboard]);
   useEffect(() => {
     const tasks = new Tasks();
@@ -316,6 +318,6 @@ const PointersPreview = memo(function PointersPreview(): ReactNode {
     return () => {
       tasks.cancelAll();
     };
-  }, [suffix, index]);
+  }, [index, suffix]);
   return <PointersLayer suffix={suffix.slice(index)} delay={10} />;
 });
