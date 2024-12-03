@@ -15,7 +15,7 @@ import { toTextDisplaySettings } from "@keybr/textinput";
 import { type IInputEvent } from "@keybr/textinput-events";
 import { TextArea } from "@keybr/textinput-ui";
 import { type Focusable, useScreenSize } from "@keybr/widget";
-import { type ReactNode, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { type IntlShape, useIntl } from "react-intl";
 import * as styles from "./Game.module.less";
 import { DeferredTrack } from "./Track.tsx";
@@ -28,8 +28,8 @@ const WORLD_CHANGE_EVENT = "world-change";
 export const Game = ({
   transport,
 }: {
-  readonly transport: Transport<ServerMessage, ClientMessage>;
-}): ReactNode => {
+  transport: Transport<ServerMessage, ClientMessage>;
+}) => {
   const intl = useIntl();
   const wrapper = useMemo(
     () => new WorldStateWrapper(transport, intl),
@@ -94,16 +94,16 @@ class WorldStateWrapper extends EventEmitter {
     return this.#worldState;
   }
 
-  setWorldState(worldState: WorldState): void {
+  setWorldState(worldState: WorldState) {
     this.#worldState = worldState;
     this.emit(WORLD_CHANGE_EVENT, worldState);
   }
 
-  handleReceive = (message: ServerMessage): void => {
+  handleReceive = (message: ServerMessage) => {
     this.setWorldState(updateWorldState(this.intl, this.#worldState, message));
   };
 
-  handleInput = ({ inputType, codePoint }: IInputEvent): void => {
+  handleInput = ({ inputType, codePoint }: IInputEvent) => {
     if (inputType === "appendChar") {
       const result = handleTextInput(this.#worldState, codePoint);
       if (result != null) {
@@ -118,7 +118,7 @@ class WorldStateWrapper extends EventEmitter {
     }
   };
 
-  connect(): void {
+  connect() {
     this.transport.addReceiver(this.handleReceive);
     this.transport.send({
       type: PLAYER_ANNOUNCE_ID,
@@ -126,7 +126,7 @@ class WorldStateWrapper extends EventEmitter {
     });
   }
 
-  disconnect(): void {
+  disconnect() {
     this.transport.removeReceiver(this.handleReceive);
   }
 }

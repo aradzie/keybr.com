@@ -1,6 +1,6 @@
 import { type Player, type PlayerList } from "@keybr/multiplayer-shared";
 import { withDeferred } from "@keybr/widget";
-import { memo, type ReactNode } from "react";
+import { memo } from "react";
 import { FlagImage } from "./image/flag.tsx";
 import { FillerLane, Lane } from "./Lane.tsx";
 import * as styles from "./Track.module.less";
@@ -9,9 +9,9 @@ export const Track = memo(function Track({
   ticker,
   players: { all, me },
 }: {
-  readonly ticker: string;
-  readonly players: PlayerList;
-}): ReactNode {
+  ticker: string;
+  players: PlayerList;
+}) {
   return (
     <div className={styles.track}>
       <div className={styles.ticker}>{ticker}</div>

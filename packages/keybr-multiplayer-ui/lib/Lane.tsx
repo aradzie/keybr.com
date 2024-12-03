@@ -3,7 +3,7 @@ import { type Player, positionName } from "@keybr/multiplayer-shared";
 import { UserName } from "@keybr/pages-shared";
 import { NameValue, Value } from "@keybr/widget";
 import { clsx } from "clsx";
-import { memo, type ReactNode, useEffect, useRef } from "react";
+import { memo, useEffect, useRef } from "react";
 import { useIntl } from "react-intl";
 import { CarImage } from "./image/car.tsx";
 import * as styles from "./Lane.module.less";
@@ -12,9 +12,9 @@ export const Lane = memo(function Lane({
   player,
   me,
 }: {
-  readonly player: Player;
-  readonly me: Player;
-}): ReactNode {
+  player: Player;
+  me: Player;
+}) {
   const { speed, errors, position, progress } = player;
   const { formatMessage } = useIntl();
   const { formatNumber, formatPercents } = useIntlNumbers();
@@ -116,6 +116,6 @@ export const Lane = memo(function Lane({
   );
 });
 
-export const FillerLane = memo(function FillerLane(): ReactNode {
+export const FillerLane = memo(function FillerLane() {
   return <div className={clsx(styles.player, styles.isFiller)} />;
 });

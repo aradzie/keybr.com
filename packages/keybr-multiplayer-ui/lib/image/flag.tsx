@@ -1,17 +1,15 @@
 import { type ClassName } from "@keybr/widget";
-import { memo, type ReactNode } from "react";
-
-export type FlagImageProps = {
-  readonly width?: number;
-  readonly height?: number;
-  readonly className?: ClassName;
-};
+import { memo } from "react";
 
 export const FlagImage = memo(function FlagImage({
+  className,
   width = 200,
   height = 200,
-  className,
-}: FlagImageProps): ReactNode {
+}: {
+  className?: ClassName;
+  width?: number;
+  height?: number;
+}) {
   return (
     <svg
       className={className}

@@ -8,9 +8,9 @@ export function useWebSocket() {
     readyState: WebSocket.CONNECTING,
     kicked: false,
   } as {
-    readonly webSocket: WebSocket | null;
-    readonly readyState: number;
-    readonly kicked: boolean;
+    webSocket: WebSocket | null;
+    readyState: number;
+    kicked: boolean;
   });
 
   useEffect(() => {

@@ -1,7 +1,6 @@
 import { LCG, randomSample } from "@keybr/rand";
 import { type ClassName } from "@keybr/widget";
-import { clsx } from "clsx";
-import { type FunctionComponent, memo, type ReactNode } from "react";
+import { type FunctionComponent, memo } from "react";
 
 const colors: readonly string[] = [
   "#2c3e50",
@@ -18,10 +17,10 @@ const colors: readonly string[] = [
 ];
 
 type ShapeProps = {
-  readonly className?: ClassName;
-  readonly width: number;
-  readonly height: number;
-  readonly color: string;
+  className?: ClassName;
+  width: number;
+  height: number;
+  color: string;
 };
 
 const Shape0 = memo(function Shape0({
@@ -89,7 +88,7 @@ const Shape1 = memo(function Shape1({
 }: ShapeProps) {
   return (
     <svg
-      className={clsx(className)}
+      className={className}
       width={width}
       height={height}
       viewBox="0 0 80 48"
@@ -138,7 +137,7 @@ const Shape2 = memo(function Shape2({
 }: ShapeProps) {
   return (
     <svg
-      className={clsx(className)}
+      className={className}
       width={width}
       height={height}
       viewBox="0 0 80 48"
@@ -187,7 +186,7 @@ const Shape3 = memo(function Shape3({
 }: ShapeProps) {
   return (
     <svg
-      className={clsx(className)}
+      className={className}
       width={width}
       height={height}
       viewBox="0 0 80 48"
@@ -268,7 +267,7 @@ const Shape4 = memo(function Shape4({
 }: ShapeProps) {
   return (
     <svg
-      className={clsx(className)}
+      className={className}
       width={width}
       height={height}
       viewBox="0 0 80 48"
@@ -322,7 +321,7 @@ const Shape5 = memo(function Shape5({
 }: ShapeProps) {
   return (
     <svg
-      className={clsx(className)}
+      className={className}
       width={width}
       height={height}
       viewBox="0 0 80 48"
@@ -369,10 +368,10 @@ const shapes: readonly FunctionComponent<ShapeProps>[] = [
 ];
 
 export type CarImageProps = {
-  readonly className?: ClassName;
-  readonly width?: number;
-  readonly height?: number;
-  readonly seed: number;
+  className?: ClassName;
+  width?: number;
+  height?: number;
+  seed: number;
 };
 
 export const CarImage = memo(function CarImage({
@@ -380,7 +379,7 @@ export const CarImage = memo(function CarImage({
   width = 80,
   height = 48,
   seed,
-}: CarImageProps): ReactNode {
+}: CarImageProps) {
   const random = LCG(seed);
   const color = randomSample(colors, random);
   const Shape = randomSample(shapes, random);

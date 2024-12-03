@@ -1,12 +1,12 @@
 import { ClientCodec } from "@keybr/multiplayer-shared";
 import { Article, Para } from "@keybr/widget";
-import { type ReactNode, useMemo } from "react";
+import { useMemo } from "react";
 import { FormattedMessage } from "react-intl";
 import { Game } from "./Game.tsx";
 import { WebSocketTransport } from "./transport.websocket.ts";
 import { useWebSocket } from "./websocket-hooks.ts";
 
-export function Connector(): ReactNode {
+export function Connector() {
   const { transport, readyState, kicked } = useTransport();
   switch (readyState) {
     case WebSocket.CONNECTING:
@@ -37,7 +37,7 @@ function useTransport() {
   return { transport, readyState, kicked };
 }
 
-function Banner(): ReactNode {
+function Banner() {
   return (
     <Para align="center">
       <FormattedMessage
@@ -48,7 +48,7 @@ function Banner(): ReactNode {
   );
 }
 
-function Connecting(): ReactNode {
+function Connecting() {
   return (
     <Article>
       <FormattedMessage
@@ -62,7 +62,7 @@ function Connecting(): ReactNode {
   );
 }
 
-function Offline(): ReactNode {
+function Offline() {
   return (
     <Article>
       <FormattedMessage
@@ -77,7 +77,7 @@ function Offline(): ReactNode {
   );
 }
 
-function Kicked(): ReactNode {
+function Kicked() {
   return (
     <Article>
       <FormattedMessage
