@@ -6,7 +6,6 @@ import { ManifestPlugin } from "@keybr/scripts/webpack-manifest.js";
 import { ENV } from "@keybr/thirdparties/webpack-env.js";
 import CompressionPlugin from "compression-webpack-plugin";
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
-import gitCommitInfo from "git-commit-info";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import TerserPlugin from "terser-webpack-plugin";
 import webpack from "webpack";
@@ -37,8 +36,6 @@ const assetModuleFilename = dev ? "[name]" : "[contenthash:16]";
 const localIdentName = dev
   ? "[name]__[local]__[hash:base64:10]"
   : "[hash:base64:10]";
-
-const commitInfo = gitCommitInfo({ cwd: import.meta.dirname });
 
 const rule_ts = () => ({
   test: /\.(ts|tsx)$/,
@@ -156,7 +153,6 @@ export default [
     plugins: [
       new webpack.DefinePlugin({
         ...ENV,
-        "COMMIT_ID": JSON.stringify(commitInfo.hash),
         "typeof window": JSON.stringify("undefined"),
       }),
       new MiniCssExtractPlugin(),
@@ -222,7 +218,6 @@ export default [
     plugins: [
       new webpack.DefinePlugin({
         ...ENV,
-        "COMMIT_ID": JSON.stringify(commitInfo.hash),
         "typeof window": JSON.stringify("object"),
       }),
       new MiniCssExtractPlugin({
