@@ -391,18 +391,16 @@ Untranslated: 80 messages, 1449 words
 
 # Italian
 
-Translated: 396 messages, 4974 words
+Translated: 399 messages, 4980 words
 
-Untranslated: 8 messages, 9 words
+Untranslated: 6 messages, 6 words
 
 * *Font:*
 * *Layout*
-* *Zones:*
 * *Layout:*
 * *Account*
 * *Layouts*
 * *Volume:*
-* *Sound Theme:*
 
 # Japanese
 
