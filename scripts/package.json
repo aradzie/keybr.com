@@ -5,6 +5,7 @@
   "type": "module",
   "devDependencies": {
     "@eslint/js": "^9.16.0",
+    "@jdalton/patch-package": "^8.1.1",
     "compression-webpack-plugin": "^11.1.0",
     "css-loader": "^7.1.2",
     "css-minimizer-webpack-plugin": "^7.0.0",
@@ -23,7 +24,6 @@
     "lint-staged": "^15.2.10",
     "mini-css-extract-plugin": "^2.9.2",
     "null-loader": "^4.0.1",
-    "patch-package": "^8.0.0",
     "postcss": "^8.4.49",
     "postcss-less": "^6.0.0",
     "prettier": "^3.4.2",
