@@ -1,17 +1,10 @@
 import { useIntlNumbers } from "@keybr/intl";
 import { Target } from "@keybr/lesson";
 import { useFormatter } from "@keybr/lesson-ui";
-import {
-  constModel,
-  hasData,
-  linearRegression,
-  Range,
-  smooth,
-  Vector,
-} from "@keybr/math";
+import { hasData, linearRegression, Range, smooth, Vector } from "@keybr/math";
 import { type KeySample, timeToSpeed } from "@keybr/result";
 import { useSettings } from "@keybr/settings";
-import { Canvas, type Rect, type ShapeList } from "@keybr/widget";
+import { Canvas, type Rect, type ShapeList, Shapes } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
 import { Chart, chartArea, type SizeProps } from "./Chart.tsx";
@@ -93,14 +86,33 @@ function usePaint(
           lineWidth: 2,
         },
       }),
-      paintCurve(proj, constModel(target.targetSpeed), {
-        style: {
-          ...styles.threshold,
-          lineWidth: 2,
-        },
-      }),
+      paintTargetSpeedLine(),
       g.paintTicks(box, rIndex, "bottom", { lines: 5, fmt: formatInteger }),
       g.paintTicks(box, rSpeed, "left", { fmt: formatSpeed }),
     ];
+
+    function paintTargetSpeedLine(): ShapeList {
+      const y = Math.round(proj.y(target.targetSpeed));
+      return [
+        Shapes.fill(styles.threshold, [
+          Shapes.rect({
+            x: box.x - 10,
+            y: y,
+            width: box.width + 20,
+            height: 1,
+          }),
+        ]),
+        Shapes.fillText({
+          x: box.x + box.width + 15,
+          y: y,
+          value: formatSpeed(target.targetSpeed),
+          style: {
+            ...styles.thresholdLabel,
+            textAlign: "left",
+            textBaseline: "middle",
+          },
+        }),
+      ];
+    }
   };
 }

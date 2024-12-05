@@ -15,6 +15,7 @@
     "@keybr/phonetic-model": "*",
     "@keybr/result": "*",
     "@keybr/settings": "*",
+    "@keybr/textinput": "*",
     "@keybr/themes": "*",
     "@keybr/widget": "*"
   },

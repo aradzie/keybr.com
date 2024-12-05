@@ -1,12 +1,12 @@
 import { useFormatter } from "@keybr/lesson-ui";
 import { Range, Vector } from "@keybr/math";
 import { timeToSpeed } from "@keybr/result";
+import { type Step } from "@keybr/textinput";
 import { Canvas, type Rect, type ShapeList, Shapes } from "@keybr/widget";
 import { type ReactNode } from "react";
 import { Chart, chartArea, type SizeProps } from "./Chart.tsx";
 import { withStyles } from "./decoration.ts";
 import { bucketize } from "./dist/util.ts";
-import { type TimeToType } from "./types.ts";
 import { type ChartStyles, useChartStyles } from "./use-chart-styles.ts";
 
 export function TimeToTypeHistogram({
@@ -14,7 +14,7 @@ export function TimeToTypeHistogram({
   width,
   height,
 }: {
-  readonly steps: readonly TimeToType[];
+  readonly steps: readonly Step[];
 } & SizeProps): ReactNode {
   const styles = useChartStyles();
   const paint = usePaint(styles, steps);
@@ -25,7 +25,7 @@ export function TimeToTypeHistogram({
   );
 }
 
-function usePaint(styles: ChartStyles, steps: readonly TimeToType[]) {
+function usePaint(styles: ChartStyles, steps: readonly Step[]) {
   const { formatSpeed } = useFormatter();
   const g = withStyles(styles);
 
@@ -73,7 +73,7 @@ function usePaint(styles: ChartStyles, steps: readonly TimeToType[]) {
   };
 }
 
-function buildHistogram(steps: readonly TimeToType[]) {
+function buildHistogram(steps: readonly Step[]) {
   const histogram = new Array(1501).fill(0);
   for (const { timeToType } of steps) {
     if (timeToType > 0) {
