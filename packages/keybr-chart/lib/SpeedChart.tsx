@@ -41,10 +41,10 @@ function usePaint(
   if (!hasData(results)) {
     return (box: Rect): ShapeList => {
       return [
-        g.paintGrid(box, "vertical", { lines: 5 }),
         g.paintGrid(box, "horizontal", { lines: 5 }),
-        g.paintAxis(box, "left"),
+        g.paintGrid(box, "vertical", { lines: 5 }),
         g.paintAxis(box, "bottom"),
+        g.paintAxis(box, "left"),
         g.paintNoData(box, formatMessage),
       ];
     };
@@ -77,8 +77,10 @@ function usePaint(
     const projAccuracy = projection(box, rIndex, rAccuracy);
     const projSpeed = projection(box, rIndex, rSpeed);
     return [
-      g.paintGrid(box, "vertical", { lines: 5 }),
       g.paintGrid(box, "horizontal", { lines: 5 }),
+      g.paintGrid(box, "vertical", { lines: 5 }),
+      g.paintAxis(box, "bottom"),
+      g.paintAxis(box, "left"),
       paintScatterPlot(projComplexity, vIndex, vComplexity, {
         style: styles.complexity,
       }),
@@ -94,8 +96,6 @@ function usePaint(
           lineWidth: 2,
         },
       }),
-      g.paintAxis(box, "left"),
-      g.paintAxis(box, "bottom"),
       g.paintTicks(box, rIndex, "bottom", { lines: 5, fmt: formatInteger }),
       g.paintTicks(box, rSpeed, "left", { fmt: formatSpeed }),
       g.paintTicks(box, rAccuracy, "right", { fmt: formatPercents }),

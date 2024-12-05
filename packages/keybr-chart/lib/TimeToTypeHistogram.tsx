@@ -42,11 +42,11 @@ function usePaint(styles: ChartStyles, steps: readonly TimeToType[]) {
 
   return (box: Rect): ShapeList => {
     return [
-      g.paintGrid(box, "vertical", { lines: 5 }),
       g.paintGrid(box, "horizontal", { lines: 5 }),
-      paintHistogram(),
+      g.paintGrid(box, "vertical", { lines: 5 }),
       g.paintAxis(box, "bottom"),
       g.paintAxis(box, "left"),
+      paintHistogram(),
       g.paintTicks(box, rIndex, "bottom", {
         lines: 5,
         fmt: formatSpeed,
