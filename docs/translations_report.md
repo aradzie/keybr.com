@@ -363,31 +363,13 @@ Untranslated: 70 messages, 1056 words
 
 # Indonesian
 
-Translated: 322 messages, 3505 words
+Translated: 403 messages, 4985 words
 
-Untranslated: 80 messages, 1449 words
+Untranslated: 3 messages, 3 words
 
 * *GO!*
 * *Font:*
-* *Zones:*
-* *Typing*
-* *Preview*
 * *Keyboard*
-* *No Sounds*
-* *All Sounds*
-* *Smoothness:*
-* *Whitespace:*
-* *Top accuracy*
-* *Colored keys*
-* *Play sounds:*
-* *Sound Theme:*
-* *Benford’s law*
-* *Cursor shape:*
-* *Privacy Policy*
-* *Custom text...*
-* *Highlight keys*
-* *Typing Options*
-* ...
 
 # Italian
 
