@@ -1,3 +1,4 @@
+import { Tasks } from "@keybr/lang";
 import { paddlePriceId } from "@keybr/thirdparties";
 import { Para } from "@keybr/widget";
 import { type PricePreviewResponse } from "@paddle/paddle-js";
@@ -31,6 +32,26 @@ export function AccountPricePreview() {
   }, [paddle]);
   const [item = null] = preview?.data?.details?.lineItems ?? [];
   return (
-    <Para>Premium account price: {item?.formattedTotals?.total ?? "..."}</Para>
+    <Para>
+      Premium account price: {item?.formattedTotals?.total ?? <Spinner />}
+    </Para>
   );
+}
+
+function Spinner() {
+  const [size, setSize] = useState(3);
+  useEffect(() => {
+    const tasks = new Tasks();
+    tasks.delayed(100, () => {
+      if (size >= 3) {
+        setSize(0);
+      } else {
+        setSize(size + 1);
+      }
+    });
+    return () => {
+      tasks.cancelAll();
+    };
+  }, [size]);
+  return <span>{"".padStart(size, ".")}</span>;
 }
