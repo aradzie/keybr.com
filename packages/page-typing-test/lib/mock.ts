@@ -45,7 +45,7 @@ export const mockSteps: readonly Step[] = [
     timeStamp: 1762.234,
     codePoint: 32,
     timeToType: 96.30099999999993,
-    typo: false,
+    typo: true,
   },
   {
     timeStamp: 1910.01,
@@ -153,7 +153,7 @@ export const mockSteps: readonly Step[] = [
     timeStamp: 4137.875,
     codePoint: 101,
     timeToType: 79.90999999999985,
-    typo: false,
+    typo: true,
   },
   {
     timeStamp: 4217.762,
@@ -273,7 +273,7 @@ export const mockSteps: readonly Step[] = [
     timeStamp: 6953.907,
     codePoint: 110,
     timeToType: 59.72400000000016,
-    typo: false,
+    typo: true,
   },
   {
     timeStamp: 7097.736,
@@ -561,7 +561,7 @@ export const mockSteps: readonly Step[] = [
     timeStamp: 14890.601,
     codePoint: 32,
     timeToType: 132.44900000000052,
-    typo: false,
+    typo: true,
   },
   {
     timeStamp: 15086.195,

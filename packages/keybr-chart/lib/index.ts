@@ -10,6 +10,7 @@ export * from "./KeySpeedChart.tsx";
 export * from "./KeySpeedHistogram.tsx";
 export * from "./Marker.tsx";
 export * from "./ProgressOverviewChart.tsx";
+export * from "./RollingSpeedChart.tsx";
 export * from "./SpeedChart.tsx";
 export * from "./SpeedHistogram.tsx";
 export * from "./TimeToTypeHistogram.tsx";

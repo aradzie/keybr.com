@@ -2,6 +2,7 @@ import {
   AccuracyHistogram,
   makeAccuracyDistribution,
   makeSpeedDistribution,
+  RollingSpeedChart,
   SpeedHistogram,
   TimeToTypeHistogram,
 } from "@keybr/chart";
@@ -126,6 +127,17 @@ export function ReportScreen({ result }: { readonly result: TestResult }) {
       </Box>
 
       <Para align="center">Time to type a character histogram.</Para>
+
+      <Box alignItems="center" justifyContent="center">
+        <RollingSpeedChart
+          stats={result.stats}
+          steps={result.steps}
+          width="45rem"
+          height="15rem"
+        />
+      </Box>
+
+      <Para align="center">Typing speed change over time chart.</Para>
 
       <Spacer size={3} />
 
