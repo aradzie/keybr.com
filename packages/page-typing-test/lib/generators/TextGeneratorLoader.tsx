@@ -12,8 +12,8 @@ import { type TextGenerator } from "./types.ts";
 export function TextGeneratorLoader({
   children,
 }: {
-  readonly children: (generator: TextGenerator) => ReactNode;
-}): ReactNode {
+  children: (generator: TextGenerator) => ReactNode;
+}) {
   const { textSource } = useCompositeSettings();
   switch (textSource.type) {
     case TextSourceType.CommonWords:

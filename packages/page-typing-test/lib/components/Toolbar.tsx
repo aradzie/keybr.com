@@ -11,9 +11,9 @@ export const Toolbar = memo(function Toolbar({
   onChange,
   onConfigure,
 }: {
-  readonly onChange: () => void;
-  readonly onConfigure: () => void;
-}): ReactNode {
+  onChange: () => void;
+  onConfigure: () => void;
+}) {
   return (
     <FieldList>
       <Field.Filler />
@@ -31,7 +31,7 @@ export const Toolbar = memo(function Toolbar({
 export const DurationSwitcher = memo(function DurationSwitcher({
   onChange,
 }: {
-  readonly onChange: () => void;
+  onChange: () => void;
 }) {
   const { settings, updateSettings } = useSettings();
   const compositeSettings = toCompositeSettings(settings);

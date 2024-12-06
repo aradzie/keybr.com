@@ -32,7 +32,7 @@ import { views } from "../views.tsx";
 import { Replay } from "./Replay.tsx";
 import * as styles from "./ReportScreen.module.less";
 
-export function ReportScreen({ result }: { readonly result: TestResult }) {
+export function ReportScreen({ result }: { result: TestResult }) {
   const { setView } = useView(views);
   const { formatNumber, formatPercents } = useIntlNumbers();
   const { speedUnit, formatSpeed } = useFormatter();
@@ -164,13 +164,7 @@ export function ReportScreen({ result }: { readonly result: TestResult }) {
   );
 }
 
-function Indicator({
-  name,
-  value,
-}: {
-  readonly name: ReactNode;
-  readonly value: ReactNode;
-}) {
+function Indicator({ name, value }: { name: ReactNode; value: ReactNode }) {
   return (
     <div className={styles.indicator}>
       <div className={styles.indicatorValue}>
@@ -183,13 +177,7 @@ function Indicator({
   );
 }
 
-function Metric({
-  value,
-  unit,
-}: {
-  readonly value: ReactNode;
-  readonly unit: ReactNode;
-}) {
+function Metric({ value, unit }: { value: ReactNode; unit: ReactNode }) {
   return (
     <>
       <span className={styles.valueLabel}>{value}</span>

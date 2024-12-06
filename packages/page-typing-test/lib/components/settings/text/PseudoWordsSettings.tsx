@@ -4,11 +4,10 @@ import { Alphabet, Filter, type PhoneticModel } from "@keybr/phonetic-model";
 import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
 import { useSettings } from "@keybr/settings";
 import { Field, FieldList, FieldSet, OptionList, Para } from "@keybr/widget";
-import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
 import { typingTestProps } from "../../../settings.ts";
 
-export function PseudoWordsSettings(): ReactNode {
+export function PseudoWordsSettings() {
   const { settings } = useSettings();
   return (
     <PhoneticModelLoader language={settings.get(typingTestProps.language)}>
@@ -17,7 +16,7 @@ export function PseudoWordsSettings(): ReactNode {
   );
 }
 
-function Content({ model }: { readonly model: PhoneticModel }): ReactNode {
+function Content({ model }: { model: PhoneticModel }) {
   const { settings, updateSettings } = useSettings();
   const { formatMessage } = useIntl();
   const { formatLanguageName } = useIntlDisplayNames();

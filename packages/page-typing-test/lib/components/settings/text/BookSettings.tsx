@@ -9,10 +9,10 @@ import {
 import { BookContentLoader } from "@keybr/content-books";
 import { useSettings } from "@keybr/settings";
 import { FieldSet, Para } from "@keybr/widget";
-import { type ReactNode, useMemo } from "react";
+import { useMemo } from "react";
 import { typingTestProps } from "../../../settings.ts";
 
-export function BookSettings(): ReactNode {
+export function BookSettings() {
   const { settings } = useSettings();
   return (
     <BookContentLoader book={settings.get(typingTestProps.book)}>
@@ -21,11 +21,7 @@ export function BookSettings(): ReactNode {
   );
 }
 
-function Content({
-  bookContent,
-}: {
-  readonly bookContent: BookContent;
-}): ReactNode {
+function Content({ bookContent }: { bookContent: BookContent }) {
   const { settings, updateSettings } = useSettings();
   const paragraphs = useMemo(
     () => flattenContent(bookContent.content),

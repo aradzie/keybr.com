@@ -30,8 +30,8 @@ function Controller({
   generator,
   mark,
 }: {
-  readonly generator: TextGenerator;
-  readonly mark: unknown;
+  generator: TextGenerator;
+  mark: unknown;
 }) {
   const { setView } = useView(views);
   const settings = useCompositeSettings();

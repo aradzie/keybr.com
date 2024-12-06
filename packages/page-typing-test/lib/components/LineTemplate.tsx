@@ -6,7 +6,7 @@ export const LineTemplate = memo(function LineTemplate({
   children,
   progress,
 }: {
-  readonly children: ReactNode;
+  children: ReactNode;
 } & SessionLine) {
   return <div className={styles.line}>{children}</div>;
 });

@@ -9,17 +9,13 @@ import {
 import { type AnyEvent } from "@keybr/textinput-events";
 import { StaticText } from "@keybr/textinput-ui";
 import { Box, useDocumentVisibility } from "@keybr/widget";
-import { type ReactNode, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ReplayState, Session, type TestResult } from "../session/index.ts";
 import { useCompositeSettings } from "../settings.ts";
 import * as styles from "./Replay.module.less";
 import { ReplayProgress } from "./ReplayProgress.tsx";
 
-export function Replay({
-  result: { steps, events },
-}: {
-  readonly result: TestResult;
-}): ReactNode {
+export function Replay({ result: { steps, events } }: { result: TestResult }) {
   const keyboard = useKeyboard();
   const { textInput, textDisplay } = useCompositeSettings();
   const { stepper, lines, depressedKeys } = useReplayState(

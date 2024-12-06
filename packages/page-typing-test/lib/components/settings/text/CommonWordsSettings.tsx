@@ -13,11 +13,10 @@ import {
   Range,
   TextField,
 } from "@keybr/widget";
-import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
 import { typingTestProps } from "../../../settings.ts";
 
-export function CommonWordsSettings(): ReactNode {
+export function CommonWordsSettings() {
   const { settings } = useSettings();
   return (
     <WordListLoader language={settings.get(typingTestProps.language)}>
@@ -33,7 +32,7 @@ export function CommonWordsSettings(): ReactNode {
   );
 }
 
-function Content({ wordList }: { readonly wordList: WordList }): ReactNode {
+function Content({ wordList }: { wordList: WordList }) {
   const { settings, updateSettings } = useSettings();
   const { formatMessage } = useIntl();
   const { formatLanguageName } = useIntlDisplayNames();

@@ -1,12 +1,11 @@
 import { useSettings } from "@keybr/settings";
 import { Field, FieldList, FieldSet, Para, RadioBox } from "@keybr/widget";
-import { type ReactNode } from "react";
 import { TextSourceType, typingTestProps } from "../../settings.ts";
 import { BookSettings } from "./text/BookSettings.tsx";
 import { CommonWordsSettings } from "./text/CommonWordsSettings.tsx";
 import { PseudoWordsSettings } from "./text/PseudoWordsSettings.tsx";
 
-export function TextGeneratorSettings(): ReactNode {
+export function TextGeneratorSettings() {
   const { settings, updateSettings } = useSettings();
   return (
     <>

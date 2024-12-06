@@ -8,7 +8,7 @@ import * as styles from "./TestProgress.module.less";
 export const TestProgress0 = memo(function TestProgress({
   progress: { length, time, progress, speed },
 }: {
-  readonly progress: Progress;
+  progress: Progress;
 }) {
   const { formatInteger, formatPercents } = useIntlNumbers();
   const { formatSpeed } = useFormatter();

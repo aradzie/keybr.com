@@ -9,7 +9,7 @@ import {
 import { useEffect, useState } from "react";
 import { type ReplayState } from "../session/index.ts";
 
-export function ReplayProgress({ stepper }: { readonly stepper: ReplayState }) {
+export function ReplayProgress({ stepper }: { stepper: ReplayState }) {
   const { formatInteger } = useIntlNumbers();
   const { formatSpeed } = useFormatter();
   const {
