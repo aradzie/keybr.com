@@ -150,7 +150,7 @@ export class Language implements EnumItem {
     /* id= */ "uk",
     /* script= */ "cyrillic",
     /* direction= */ "ltr",
-    /* alphabet= */ "абвгдеєжзиіїйклмнопрстуфхцчшщьюя",
+    /* alphabet= */ "абвгґдеєжзиіїйклмнопрстуфхцчшщьюя",
   );
 
   static readonly ALL = new Enum<Language>(
