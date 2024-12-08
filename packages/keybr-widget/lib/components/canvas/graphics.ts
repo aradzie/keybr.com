@@ -6,7 +6,7 @@ import {
   type StrokeStyle,
   type TextStyle,
   toCanvasColor,
-} from "./style.ts";
+} from "./graphics-style.ts";
 
 export type Shape = (g: Graphics) => void;
 
