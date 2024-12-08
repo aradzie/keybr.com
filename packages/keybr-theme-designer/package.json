@@ -21,11 +21,11 @@
     "@keybr/textinput-ui": "*",
     "@keybr/themes": "*",
     "@keybr/widget": "*",
-    "@zip.js/zip.js": "^2.7.53"
+    "@zip.js/zip.js": "^2.7.54"
   },
   "devDependencies": {
     "@keybr/scripts": "*",
-    "css-tree": "^3.0.1"
+    "css-tree": "^3.1.0"
   },
   "scripts": {
     "clean": "rm -fr .types",

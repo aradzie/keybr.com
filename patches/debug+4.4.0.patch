@@ -1,11 +1,18 @@
 diff --git a/node_modules/debug/src/browser.js b/node_modules/debug/src/browser.js
-index cd0fc35..a7a6a6a 100644
+index df8e179..11a3802 100644
 --- a/node_modules/debug/src/browser.js
 +++ b/node_modules/debug/src/browser.js
-@@ -10,14 +10,7 @@ exports.load = load;
+@@ -1,5 +1,3 @@
+-/* eslint-env browser */
+-
+ /**
+  * This is the web browser implementation of `debug()`.
+  */
+@@ -9,16 +7,7 @@ exports.save = save;
+ exports.load = load;
  exports.useColors = useColors;
  exports.storage = localstorage();
- exports.destroy = (() => {
+-exports.destroy = (() => {
 -	let warned = false;
 -
 -	return () => {
@@ -14,13 +21,24 @@ index cd0fc35..a7a6a6a 100644
 -			console.warn('Instance method `debug.destroy()` is deprecated and no longer does anything. It will be removed in the next major version of `debug`.');
 -		}
 -	};
-+	return () => {};
- })();
+-})();
++exports.destroy = () => {};
  
  /**
-@@ -113,28 +106,7 @@ exports.colors = [
+  * Colors.
+@@ -103,41 +92,8 @@ exports.colors = [
+ 	'#FFCC33'
+ ];
  
- // eslint-disable-next-line complexity
+-/**
+- * Currently only WebKit-based Web Inspectors, Firefox >= v31,
+- * and the Firebug extension (any Firefox version) are known
+- * to support "%c" CSS customizations.
+- *
+- * TODO: add a `localStorage` variable to explicitly enable/disable colors
+- */
+-
+-// eslint-disable-next-line complexity
  function useColors() {
 -	// NB: In an Electron preload script, document will be defined but not fully
 -	// initialized. Since we know we're in Chrome, we'll just detect this case
@@ -34,21 +52,24 @@ index cd0fc35..a7a6a6a 100644
 -		return false;
 -	}
 -
+-	let m;
+-
 -	// Is webkit? http://stackoverflow.com/a/16459606/376773
 -	// document is undefined in react-native: https://github.com/facebook/react-native/pull/1632
+-	// eslint-disable-next-line no-return-assign
 -	return (typeof document !== 'undefined' && document.documentElement && document.documentElement.style && document.documentElement.style.WebkitAppearance) ||
 -		// Is firebug? http://stackoverflow.com/a/398120/376773
 -		(typeof window !== 'undefined' && window.console && (window.console.firebug || (window.console.exception && window.console.table))) ||
 -		// Is firefox >= v31?
 -		// https://developer.mozilla.org/en-US/docs/Tools/Web_Console#Styling_messages
--		(typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.toLowerCase().match(/firefox\/(\d+)/) && parseInt(RegExp.$1, 10) >= 31) ||
+-		(typeof navigator !== 'undefined' && navigator.userAgent && (m = navigator.userAgent.toLowerCase().match(/firefox\/(\d+)/)) && parseInt(m[1], 10) >= 31) ||
 -		// Double check webkit in userAgent just in case we are in a worker
 -		(typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.toLowerCase().match(/applewebkit\/(\d+)/));
 +  return true;
  }
  
  /**
-@@ -194,18 +166,7 @@ exports.log = console.debug || console.log || (() => {});
+@@ -197,18 +153,7 @@ exports.log = console.debug || console.log || (() => {});
   * @param {String} namespaces
   * @api private
   */
@@ -68,7 +89,7 @@ index cd0fc35..a7a6a6a 100644
  
  /**
   * Load `namespaces`.
-@@ -214,42 +175,7 @@ function save(namespaces) {
+@@ -217,42 +162,7 @@ function save(namespaces) {
   * @api private
   */
  function load() {
@@ -108,7 +129,7 @@ index cd0fc35..a7a6a6a 100644
 -		// Swallow
 -		// XXX (@Qix-) should we be logging these?
 -	}
-+  return ''
++	return process.env.DEBUG;
  }
  
  module.exports = require('./common')(exports);
@@ -129,7 +150,7 @@ index bf4c57f..52285a1 100644
 -}
 +module.exports = require('./node.js');
 diff --git a/node_modules/debug/src/node.js b/node_modules/debug/src/node.js
-index 79bc085..8e342de 100644
+index 715560a..f341902 100644
 --- a/node_modules/debug/src/node.js
 +++ b/node_modules/debug/src/node.js
 @@ -15,10 +15,7 @@ exports.formatArgs = formatArgs;
@@ -140,7 +161,7 @@ index 79bc085..8e342de 100644
 -	() => {},
 -	'Instance method `debug.destroy()` is deprecated and no longer does anything. It will be removed in the next major version of `debug`.'
 -);
-+exports.destroy = null;
++exports.destroy = () => {};
  
  /**
   * Colors.
