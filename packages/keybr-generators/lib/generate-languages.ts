@@ -74,12 +74,12 @@ function generate(language: Language): void {
       }
       if (added.length > 0) {
         console.log(
-          `[${id}] Added words: ${chalk.green(added.sort(language.compare).join(", "))}`,
+          `[${id}] Added words (${added.length}): ${chalk.green(added.sort(language.compare).join(", "))}`,
         );
       }
       if (deleted.length > 0) {
         console.log(
-          `[${id}] Deleted words: ${chalk.red(deleted.sort(language.compare).join(", "))}`,
+          `[${id}] Deleted words (${deleted.length}): ${chalk.red(deleted.sort(language.compare).join(", "))}`,
         );
       }
     }
