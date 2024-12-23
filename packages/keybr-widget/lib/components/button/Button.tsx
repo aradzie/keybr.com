@@ -1,31 +1,23 @@
 import { clsx } from "clsx";
-import {
-  type ForwardedRef,
-  forwardRef,
-  type ReactNode,
-  useImperativeHandle,
-  useRef,
-} from "react";
+import { type ReactNode, useImperativeHandle, useRef } from "react";
 import { sizeClassName } from "../../styles/index.ts";
 import { getBoundingBox } from "../../utils/index.ts";
 import * as iconStyles from "../icon/Icon.module.less";
 import * as styles from "./Button.module.less";
-import { type ButtonProps, type ButtonRef } from "./Button.types.ts";
+import { type ButtonProps } from "./Button.types.ts";
 
-export const Button = forwardRef(function Button(
-  {
-    anchor,
-    children,
-    disabled,
-    icon,
-    label,
-    size,
-    tabIndex,
-    title,
-    ...props
-  }: ButtonProps,
-  ref: ForwardedRef<ButtonRef>,
-): ReactNode {
+export function Button({
+  anchor,
+  children,
+  disabled,
+  icon,
+  label,
+  ref,
+  size,
+  tabIndex,
+  title,
+  ...props
+}: ButtonProps): ReactNode {
   const element = useRef<HTMLButtonElement>(null);
   useImperativeHandle(ref, () => ({
     focus() {
@@ -57,4 +49,4 @@ export const Button = forwardRef(function Button(
       {icon} {label || children}
     </button>
   );
-});
+}

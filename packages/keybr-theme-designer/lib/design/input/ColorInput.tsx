@@ -12,7 +12,6 @@ import {
 import { clsx } from "clsx";
 import {
   type ForwardedRef,
-  forwardRef,
   useImperativeHandle,
   useRef,
   useState,
@@ -55,7 +54,7 @@ export function ColorInput({
     <Popover
       open={open}
       anchor={
-        <Button
+        <SwatchButton
           color={color}
           size={size}
           onClick={() => {
@@ -78,20 +77,18 @@ export function ColorInput({
   );
 }
 
-const Button = forwardRef(function Button(
-  {
-    anchor,
-    color,
-    disabled,
-    size,
-    onClick,
-  }: {
-    readonly color: Color;
-    readonly size?: SizeName;
-    readonly onClick: () => void;
-  } & AnchorProps,
-  ref: ForwardedRef<Focusable>,
-) {
+function SwatchButton({
+  anchor,
+  color,
+  ref,
+  size,
+  onClick,
+}: {
+  color: Color;
+  ref?: ForwardedRef<Focusable | null>;
+  size?: SizeName;
+  onClick: () => void;
+} & AnchorProps) {
   const element = useRef<HTMLSpanElement>(null);
   useImperativeHandle(ref, () => ({
     focus() {
@@ -116,4 +113,4 @@ const Button = forwardRef(function Button(
       onClick={onClick}
     />
   );
-});
+}

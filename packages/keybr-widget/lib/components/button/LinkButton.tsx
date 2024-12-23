@@ -1,32 +1,21 @@
 import { clsx } from "clsx";
-import {
-  type ForwardedRef,
-  forwardRef,
-  type ReactNode,
-  useImperativeHandle,
-  useRef,
-} from "react";
+import { type ReactNode, useImperativeHandle, useRef } from "react";
 import { getBoundingBox } from "../../utils/index.ts";
 import * as styles from "./LinkButton.module.less";
-import {
-  type LinkButtonProps,
-  type LinkButtonRef,
-} from "./LinkButton.types.ts";
+import { type LinkButtonProps } from "./LinkButton.types.ts";
 
-export const LinkButton = forwardRef(function LinkButton(
-  {
-    anchor,
-    children,
-    className,
-    disabled,
-    label,
-    tabIndex,
-    title,
-    onClick,
-    ...props
-  }: LinkButtonProps,
-  ref: ForwardedRef<LinkButtonRef>,
-): ReactNode {
+export function LinkButton({
+  anchor,
+  children,
+  className,
+  disabled,
+  label,
+  ref,
+  tabIndex,
+  title,
+  onClick,
+  ...props
+}: LinkButtonProps): ReactNode {
   const element = useRef<HTMLAnchorElement>(null);
   useImperativeHandle(ref, () => ({
     focus() {
@@ -57,4 +46,4 @@ export const LinkButton = forwardRef(function LinkButton(
       {label || children}
     </a>
   );
-});
+}

@@ -1,4 +1,4 @@
-import { type ReactNode } from "react";
+import { type ReactNode, type RefObject } from "react";
 import {
   type Focusable,
   type FocusProps,
@@ -11,6 +11,7 @@ export type CheckBoxProps = {
   readonly children?: ReactNode;
   readonly label?: ReactNode;
   readonly name?: string;
+  readonly ref?: RefObject<CheckBoxRef | null>;
   readonly title?: string;
   readonly value?: string;
   readonly onChange?: (checked: boolean) => void;

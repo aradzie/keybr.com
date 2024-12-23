@@ -1,33 +1,25 @@
 import { mdiRadioboxBlank, mdiRadioboxMarked } from "@mdi/js";
 import { clsx } from "clsx";
-import {
-  type ForwardedRef,
-  forwardRef,
-  type ReactNode,
-  useImperativeHandle,
-  useRef,
-} from "react";
+import { type ReactNode, useImperativeHandle, useRef } from "react";
 import * as styles from "./RadioBox.module.less";
-import { type RadioBoxProps, type RadioBoxRef } from "./RadioBox.types.ts";
+import { type RadioBoxProps } from "./RadioBox.types.ts";
 
-export const RadioBox = forwardRef(function RadioBox(
-  {
-    checked,
-    children,
-    disabled,
-    label,
-    name,
-    tabIndex,
-    title,
-    value,
-    onBlur,
-    onChange,
-    onFocus,
-    onSelect,
-    ...props
-  }: RadioBoxProps,
-  ref: ForwardedRef<RadioBoxRef>,
-): ReactNode {
+export function RadioBox({
+  checked,
+  children,
+  disabled,
+  label,
+  name,
+  ref,
+  tabIndex,
+  title,
+  value,
+  onBlur,
+  onChange,
+  onFocus,
+  onSelect,
+  ...props
+}: RadioBoxProps): ReactNode {
   const element = useRef<HTMLInputElement>(null);
   useImperativeHandle(ref, () => ({
     focus() {
@@ -67,4 +59,4 @@ export const RadioBox = forwardRef(function RadioBox(
       <span className={styles.label}>{label || children}</span>
     </label>
   );
-});
+}

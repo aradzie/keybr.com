@@ -1,7 +1,5 @@
 import { clsx } from "clsx";
 import {
-  type ForwardedRef,
-  forwardRef,
   type ReactNode,
   type RefObject,
   useEffect,
@@ -10,28 +8,26 @@ import {
 } from "react";
 import { sizeClassName } from "../../styles/index.ts";
 import * as styles from "./TextField.module.less";
-import { type TextFieldProps, type TextFieldRef } from "./TextField.types.ts";
+import { type TextFieldProps } from "./TextField.types.ts";
 
-export const TextField = forwardRef(function TextField(
-  {
-    disabled,
-    error,
-    maxLength,
-    name,
-    placeholder,
-    readOnly,
-    rows,
-    size,
-    tabIndex,
-    title,
-    type = "text",
-    value,
-    onChange,
-    onInput,
-    ...props
-  }: TextFieldProps,
-  ref: ForwardedRef<TextFieldRef>,
-): ReactNode {
+export function TextField({
+  disabled,
+  error,
+  maxLength,
+  name,
+  placeholder,
+  readOnly,
+  ref,
+  rows,
+  size,
+  tabIndex,
+  title,
+  type = "text",
+  value,
+  onChange,
+  onInput,
+  ...props
+}: TextFieldProps): ReactNode {
   const element = useRef<HTMLTextAreaElement | HTMLInputElement>(null);
   useImperativeHandle(ref, () => ({
     focus() {
@@ -102,4 +98,4 @@ export const TextField = forwardRef(function TextField(
       />
     );
   }
-});
+}

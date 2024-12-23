@@ -1,4 +1,4 @@
-import { type ReactElement, type ReactNode } from "react";
+import { type ReactElement, type ReactNode, type RefObject } from "react";
 import { type IconProps } from "../icon/Icon.types.ts";
 import {
   type AnchorProps,
@@ -13,6 +13,7 @@ export type IconButtonProps = {
   readonly children?: ReactNode;
   readonly icon: ReactElement<IconProps>;
   readonly label?: ReactNode;
+  readonly ref?: RefObject<IconButtonRef | null>;
   readonly title?: string;
 } & FocusProps &
   MouseProps &

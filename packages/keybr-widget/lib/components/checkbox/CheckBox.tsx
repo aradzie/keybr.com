@@ -1,32 +1,24 @@
 import { mdiCheckboxBlankOutline, mdiCheckboxMarkedOutline } from "@mdi/js";
 import { clsx } from "clsx";
-import {
-  type ForwardedRef,
-  forwardRef,
-  type ReactNode,
-  useImperativeHandle,
-  useRef,
-} from "react";
+import { type ReactNode, useImperativeHandle, useRef } from "react";
 import * as styles from "./CheckBox.module.less";
-import { type CheckBoxProps, type CheckBoxRef } from "./CheckBox.types.ts";
+import { type CheckBoxProps } from "./CheckBox.types.ts";
 
-export const CheckBox = forwardRef(function CheckBox(
-  {
-    checked,
-    children,
-    disabled,
-    label,
-    name,
-    tabIndex,
-    title,
-    value,
-    onBlur,
-    onChange,
-    onFocus,
-    ...props
-  }: CheckBoxProps,
-  ref: ForwardedRef<CheckBoxRef>,
-): ReactNode {
+export function CheckBox({
+  checked,
+  children,
+  disabled,
+  label,
+  name,
+  ref,
+  tabIndex,
+  title,
+  value,
+  onBlur,
+  onChange,
+  onFocus,
+  ...props
+}: CheckBoxProps): ReactNode {
   const element = useRef<HTMLInputElement>(null);
   useImperativeHandle(ref, () => ({
     focus() {
@@ -65,4 +57,4 @@ export const CheckBox = forwardRef(function CheckBox(
       <span className={styles.label}>{label || children}</span>
     </label>
   );
-});
+}

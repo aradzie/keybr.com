@@ -1,31 +1,23 @@
 import { clsx } from "clsx";
-import {
-  type ForwardedRef,
-  forwardRef,
-  type ReactNode,
-  useImperativeHandle,
-  useRef,
-} from "react";
+import { type ReactNode, useImperativeHandle, useRef } from "react";
 import { sizeClassName } from "../../styles/index.ts";
 import * as styles from "./Range.module.less";
-import { type RangeProps, type RangeRef } from "./Range.types.ts";
+import { type RangeProps } from "./Range.types.ts";
 
-export const Range = forwardRef(function Range(
-  {
-    disabled,
-    max,
-    min,
-    name,
-    size,
-    step,
-    tabIndex,
-    title,
-    value,
-    onChange,
-    ...props
-  }: RangeProps,
-  ref: ForwardedRef<RangeRef>,
-): ReactNode {
+export function Range({
+  disabled,
+  max,
+  min,
+  name,
+  ref,
+  size,
+  step,
+  tabIndex,
+  title,
+  value,
+  onChange,
+  ...props
+}: RangeProps): ReactNode {
   const element = useRef<HTMLInputElement>(null);
   useImperativeHandle(ref, () => ({
     focus() {
@@ -58,4 +50,4 @@ export const Range = forwardRef(function Range(
       }}
     />
   );
-});
+}

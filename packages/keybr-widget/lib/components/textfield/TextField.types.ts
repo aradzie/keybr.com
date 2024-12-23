@@ -1,3 +1,4 @@
+import { type RefObject } from "react";
 import { type SizeName } from "../../styles/index.ts";
 import {
   type Focusable,
@@ -15,6 +16,7 @@ export type TextFieldProps = {
   readonly name?: string;
   readonly placeholder?: string;
   readonly readOnly?: boolean;
+  readonly ref?: RefObject<TextFieldRef | null>;
   readonly rows?: number;
   readonly size?: SizeName;
   readonly title?: string;

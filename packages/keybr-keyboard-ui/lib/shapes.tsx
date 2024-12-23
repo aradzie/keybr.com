@@ -1,6 +1,6 @@
 import { type Keyboard, type KeyShape } from "@keybr/keyboard";
 import { type MouseProps, Point, Size } from "@keybr/widget";
-import { forwardRef, type ReactNode } from "react";
+import { type ReactNode, type RefObject } from "react";
 
 export const margin = 15;
 export const keySize = 40;
@@ -26,13 +26,17 @@ export const getFrameSize = (keyboard: Keyboard): Size => {
   );
 };
 
-export const Surface = forwardRef<
-  SVGSVGElement,
-  { readonly children: ReactNode } & MouseProps
->(function Surface({ children, ...props }, ref): ReactNode {
+export const Surface = ({
+  children,
+  ref,
+  ...props
+}: {
+  children: ReactNode;
+  ref?: RefObject<SVGSVGElement | null>;
+} & MouseProps) => {
   return (
     <svg {...props} ref={ref} x={margin} y={margin} overflow="visible">
       {children}
     </svg>
   );
-});
+};

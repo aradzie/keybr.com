@@ -1,3 +1,4 @@
+import { type RefObject } from "react";
 import { type SizeName } from "../../styles/index.ts";
 import {
   type Focusable,
@@ -10,6 +11,7 @@ export type RangeProps = {
   readonly max: number;
   readonly min: number;
   readonly name?: string;
+  readonly ref?: RefObject<RangeRef | null>;
   readonly size?: SizeName;
   readonly step: number;
   readonly title?: string;
