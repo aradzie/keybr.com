@@ -123,11 +123,6 @@ export default [
           use: "null-loader",
         },
         {
-          test: /\/react-dom\//,
-          exclude: /server/,
-          use: "null-loader",
-        },
-        {
           test: /\/knex\/lib\/dialects\//,
           exclude: /\/mysql|sqlite3|better-sqlite3\//,
           use: "null-loader",
