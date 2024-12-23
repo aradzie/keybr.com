@@ -14,7 +14,7 @@ export const DynamicStylesProvider = ({
   elementRef,
 }: {
   readonly children: ReactNode;
-  readonly elementRef: RefObject<HTMLElement>;
+  readonly elementRef: RefObject<HTMLElement | null>;
 }) => {
   return (
     <DynamicStylesContext.Provider

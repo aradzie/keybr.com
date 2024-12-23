@@ -10,7 +10,7 @@ export function Dir({
   children,
   swap,
 }: {
-  readonly children: readonly [ReactElement, ReactElement];
+  readonly children: readonly [ReactElement<any>, ReactElement<any>];
   readonly swap: string;
 }): ReactNode {
   const { locale } = useIntl();

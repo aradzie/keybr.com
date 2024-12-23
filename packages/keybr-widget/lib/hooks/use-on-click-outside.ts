@@ -2,7 +2,7 @@ import { type RefObject } from "react";
 import { useDocumentEvent } from "./use-document-event.ts";
 
 export const useOnClickOutside = (
-  ref: RefObject<HTMLElement>,
+  ref: RefObject<HTMLElement | null>,
   onClickOutside: (event: MouseEvent | TouchEvent) => void,
 ) => {
   const listener = (event: MouseEvent | TouchEvent) => {

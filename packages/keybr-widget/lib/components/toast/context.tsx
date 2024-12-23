@@ -74,7 +74,7 @@ export function toastProps(toast: ToastContextValue) {
 export function ToastWrapper({
   children,
 }: {
-  readonly children: ReactElement;
+  readonly children: ReactElement<any>;
 }): ReactNode {
   return cloneElement(children, {
     ...children.props,

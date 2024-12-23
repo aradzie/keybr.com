@@ -18,7 +18,7 @@ export const TextEvents = memo(function TextEvents({
   onInput,
   focusRef,
 }: Callbacks & {
-  readonly focusRef?: RefObject<Focusable>;
+  readonly focusRef?: RefObject<Focusable | null>;
 }): ReactNode {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const handler = useInputHandler();

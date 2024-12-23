@@ -45,6 +45,6 @@ export type KeyboardProps = {
 };
 
 export type AnchorProps = {
-  readonly anchor?: RefObject<Anchor>;
+  readonly anchor?: RefObject<Anchor | null>;
   readonly disabled?: boolean;
 };

@@ -19,7 +19,7 @@ export function Toaster(): ReactNode {
 }
 
 export function toast(
-  message: ReactElement,
+  message: ReactElement<any>,
   {
     autoClose = 3000,
     pauseOnHover = true,

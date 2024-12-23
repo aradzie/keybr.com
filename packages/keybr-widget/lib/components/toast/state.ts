@@ -11,7 +11,7 @@ export class Toast {
   #delayed: Task | null = null;
 
   constructor(
-    readonly message: ReactElement,
+    readonly message: ReactElement<any>,
     readonly options: ToastOptions,
   ) {}
 

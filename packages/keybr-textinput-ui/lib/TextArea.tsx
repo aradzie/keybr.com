@@ -48,7 +48,7 @@ export function TextArea({
   readonly lineTemplate?: ComponentType<any>;
   readonly demo?: boolean;
   readonly moving?: boolean;
-  readonly focusRef?: RefObject<Focusable>;
+  readonly focusRef?: RefObject<Focusable | null>;
   readonly onFocus?: () => void;
   readonly onBlur?: () => void;
   readonly onKeyDown?: (event: IKeyboardEvent) => void;
