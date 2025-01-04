@@ -115,7 +115,7 @@ export function TextArea({
         focus={demo || focus}
       />
       {!demo && focus && ModifierState.capsLock && (
-        <div className={styles.messageArea}>
+        <div className={styles.capsLockMessageArea}>
           <div className={styles.messageText}>
             <FormattedMessage
               id="textArea.capsLock.message"
