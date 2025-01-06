@@ -2,19 +2,21 @@ import { type Color, parseColor } from "@keybr/color";
 import { type CustomTheme, type PropName } from "@keybr/themes";
 import {
   type AnchorProps,
+  Flyout,
   type Focusable,
+  type FocusProps,
   getBoundingBox,
-  Popover,
+  type KeyboardProps,
+  type MouseProps,
   sizeClassName,
   type SizeName,
-  useOnClickOutside,
 } from "@keybr/widget";
 import { clsx } from "clsx";
 import {
   type ForwardedRef,
+  type ReactNode,
   useImperativeHandle,
   useRef,
-  useState,
 } from "react";
 import { useCustomTheme } from "../context.ts";
 import { ColorPicker } from "./color/index.ts";
@@ -40,55 +42,48 @@ export function ColorInput({
   accessor,
   size,
 }: {
-  readonly accessor: Accessor;
-  readonly size?: SizeName;
+  accessor: Accessor;
+  size?: SizeName;
 }) {
   const { theme, setTheme } = useCustomTheme();
-  const ref = useRef<HTMLDivElement>(null);
-  const [open, setOpen] = useState(false);
-  useOnClickOutside(ref, () => {
-    setOpen(false);
-  });
   const color = accessor.getColor(theme);
   return (
-    <Popover
-      open={open}
-      anchor={
-        <SwatchButton
-          color={color}
-          size={size}
-          onClick={() => {
-            setOpen(!open);
-          }}
-        />
-      }
-      position="block-end-start"
-      offset={10}
-    >
-      <div ref={ref} className={styles.popup}>
-        <ColorPicker
-          color={color}
-          onChange={(color) => {
-            setTheme(accessor.setColor(theme, color));
-          }}
-        />
-      </div>
-    </Popover>
+    <Flyout>
+      <Flyout.Trigger>
+        <SwatchButton color={color} size={size} />
+      </Flyout.Trigger>
+      <Flyout.Content position="block-end-start" offset={10}>
+        <div className={styles.popup}>
+          <ColorPicker
+            color={color}
+            onChange={(color) => {
+              setTheme(accessor.setColor(theme, color));
+            }}
+          />
+        </div>
+      </Flyout.Content>
+    </Flyout>
   );
 }
+
+type SwatchButtonProps = {
+  readonly color: Color;
+  readonly ref?: ForwardedRef<Focusable | null>;
+  readonly size?: SizeName;
+  readonly title?: string;
+} & FocusProps &
+  MouseProps &
+  KeyboardProps &
+  AnchorProps;
 
 function SwatchButton({
   anchor,
   color,
   ref,
   size,
-  onClick,
-}: {
-  color: Color;
-  ref?: ForwardedRef<Focusable | null>;
-  size?: SizeName;
-  onClick: () => void;
-} & AnchorProps) {
+  title,
+  ...props
+}: SwatchButtonProps): ReactNode {
   const element = useRef<HTMLSpanElement>(null);
   useImperativeHandle(ref, () => ({
     focus() {
@@ -105,12 +100,13 @@ function SwatchButton({
   }));
   return (
     <span
+      {...props}
       ref={element}
       className={clsx(styles.root, sizeClassName(size))}
       style={{
         backgroundColor: String(color),
       }}
-      onClick={onClick}
+      title={title}
     />
   );
 }

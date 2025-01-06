@@ -1,6 +1,7 @@
 import { clsx } from "clsx";
 import { type ReactNode, useEffect, useRef } from "react";
 import { ensureVisible } from "../../utils/index.ts";
+import { useFlyout } from "../flyout/index.ts";
 import * as iconStyles from "../icon/Icon.module.less";
 import { type OptionListOption } from "./OptionList.types.ts";
 import * as styles from "./OptionListMenu.module.less";
@@ -16,6 +17,7 @@ export function OptionListMenu({
 }): ReactNode {
   const list = useRef(null);
   const item = useRef(null);
+  const flyout = useFlyout();
   useEffect(() => {
     ensureVisible(list.current, item.current);
   });
@@ -33,6 +35,7 @@ export function OptionListMenu({
           )}
           onClick={(event) => {
             event.preventDefault();
+            flyout.setOpen(false);
             onSelect(option);
           }}
         >

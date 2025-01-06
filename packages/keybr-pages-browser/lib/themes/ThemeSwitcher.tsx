@@ -1,11 +1,10 @@
 import { COLORS, FONTS, useTheme } from "@keybr/themes";
 import {
   Dialog,
-  ensureVisible,
+  Flyout,
   Icon,
   IconButton,
-  type OptionListOption,
-  Popover,
+  OptionListMenu,
 } from "@keybr/widget";
 import {
   mdiArrowCollapseAll,
@@ -13,16 +12,14 @@ import {
   mdiFormatFont,
   mdiThemeLightDark,
 } from "@mdi/js";
-import { clsx } from "clsx";
-import { lazy, Suspense, useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { defineMessage, useIntl } from "react-intl";
 import * as styles from "./ThemeSwitcher.module.less";
 
 const LazyThemeDesigner = lazy(() => import("./LazyThemeDesigner.tsx"));
 
 export function ThemeSwitcher() {
-  const { color, font, switchColor, switchFont } = useTheme();
-  const [open, setOpen] = useState(null as "color" | "font" | null);
+  const theme = useTheme();
   const [design, setDesign] = useState(false);
   return (
     <div className={styles.root}>
@@ -37,58 +34,113 @@ export function ThemeSwitcher() {
           </Suspense>
         </Dialog>
       )}
-      <Popover
-        open={open === "color"}
-        anchor={
-          <IconButton
-            icon={<Icon shape={mdiThemeLightDark} />}
-            onClick={() => {
-              setOpen(open === "color" ? null : "color");
-            }}
-          />
-        }
-        offset={10}
-      >
-        <ColorMenu
-          selectedId={color}
-          onSelect={(id) => {
-            setOpen(null);
-            switchColor(id);
-            if (id === "custom") {
-              setDesign(true);
-            }
-          }}
-        />
-      </Popover>
-      <Popover
-        open={open === "font"}
-        anchor={
-          <IconButton
-            icon={<Icon shape={mdiFormatFont} />}
-            onClick={() => {
-              setOpen(open === "font" ? null : "font");
-            }}
-          />
-        }
-        offset={10}
-      >
-        <FontMenu
-          selectedId={font}
-          onSelect={(id) => {
-            setOpen(null);
-            switchFont(id);
-          }}
-        />
-      </Popover>
-      <FullscreenButton />
+      <ColorButton
+        {...theme}
+        switchColor={(id) => {
+          theme.switchColor(id);
+          if (id === "custom") {
+            setDesign(true);
+          }
+        }}
+      />
+      <FontButton
+        {...theme}
+        switchFont={(id) => {
+          theme.switchFont(id);
+        }}
+      />
+      <FullscreenButton {...theme} />
     </div>
   );
 }
 
-function FullscreenButton() {
+function ColorButton({
+  color,
+  switchColor,
+}: {
+  color: string;
+  switchColor: (id: string) => void;
+}) {
+  return (
+    <Flyout>
+      <Flyout.Trigger>
+        <IconButton icon={<Icon shape={mdiThemeLightDark} />} />
+      </Flyout.Trigger>
+      <Flyout.Content offset={10}>
+        <ColorMenu selectedId={color} onSelect={switchColor} />
+      </Flyout.Content>
+    </Flyout>
+  );
+}
+
+function ColorMenu({
+  selectedId,
+  onSelect,
+}: {
+  selectedId: string;
+  onSelect: (id: string) => void;
+}) {
+  const options = [...COLORS].map(({ id, name }) => ({ value: id, name }));
+  const selected = options.find(({ value }) => value === selectedId);
+  return (
+    <OptionListMenu
+      options={options}
+      selectedOption={selected ?? options[0]}
+      onSelect={({ value }) => {
+        onSelect(value);
+      }}
+    />
+  );
+}
+
+function FontButton({
+  font,
+  switchFont,
+}: {
+  font: string;
+  switchFont: (id: string) => void;
+}) {
+  return (
+    <Flyout>
+      <Flyout.Trigger>
+        <IconButton icon={<Icon shape={mdiFormatFont} />} />
+      </Flyout.Trigger>
+      <Flyout.Content offset={10}>
+        <FontMenu selectedId={font} onSelect={switchFont} />
+      </Flyout.Content>
+    </Flyout>
+  );
+}
+
+function FontMenu({
+  selectedId,
+  onSelect,
+}: {
+  selectedId: string;
+  onSelect: (id: string) => void;
+}) {
+  const options = [...FONTS].map(({ id, name }) => ({ value: id, name }));
+  const selected = options.find(({ value }) => value === selectedId);
+  return (
+    <OptionListMenu
+      options={options}
+      selectedOption={selected ?? options[0]}
+      onSelect={({ value }) => {
+        onSelect(value);
+      }}
+    />
+  );
+}
+
+function FullscreenButton({
+  fullscreenState,
+  toggleFullscreen,
+}: {
+  fullscreenState: boolean | null;
+  toggleFullscreen: () => void;
+}) {
   const { formatMessage } = useIntl();
-  const theme = useTheme();
-  switch (theme.fullscreenState) {
+  switch (fullscreenState) {
     case true:
       return (
         <IconButton
@@ -100,7 +152,7 @@ function FullscreenButton() {
             }),
           )}
           onClick={() => {
-            theme.toggleFullscreen();
+            toggleFullscreen();
           }}
         />
       );
@@ -115,88 +167,11 @@ function FullscreenButton() {
             }),
           )}
           onClick={() => {
-            theme.toggleFullscreen();
+            toggleFullscreen();
           }}
         />
       );
     default:
       return <IconButton icon={<Icon shape={mdiArrowExpandAll} />} />;
   }
-}
-
-function ColorMenu({
-  selectedId,
-  onSelect,
-}: {
-  readonly selectedId: string;
-  readonly onSelect: (id: string) => void;
-}) {
-  const options = [...COLORS].map(({ id, name }) => ({ value: id, name }));
-  const selected = options.find(({ value }) => value === selectedId);
-  return (
-    <Menu
-      options={options}
-      selectedOption={selected ?? options[0]}
-      onSelect={({ value }) => {
-        onSelect(value);
-      }}
-    />
-  );
-}
-
-function FontMenu({
-  selectedId,
-  onSelect,
-}: {
-  readonly selectedId: string;
-  readonly onSelect: (id: string) => void;
-}) {
-  const options = [...FONTS].map(({ id, name }) => ({ value: id, name }));
-  const selected = options.find(({ value }) => value === selectedId);
-  return (
-    <Menu
-      options={options}
-      selectedOption={selected ?? options[0]}
-      onSelect={({ value }) => {
-        onSelect(value);
-      }}
-    />
-  );
-}
-
-function Menu({
-  options,
-  selectedOption,
-  onSelect,
-}: {
-  readonly options: readonly OptionListOption[];
-  readonly selectedOption: OptionListOption;
-  readonly onSelect: (value: OptionListOption) => void;
-}) {
-  const list = useRef(null);
-  const item = useRef(null);
-  useEffect(() => {
-    ensureVisible(list.current, item.current);
-  });
-  return (
-    <ul ref={list} role="menu" className={styles.menu}>
-      {options.map((option, index) => (
-        <li
-          key={index}
-          ref={option === selectedOption ? item : null}
-          role="menuitem"
-          className={clsx(
-            styles.item,
-            option === selectedOption && styles.item_selected,
-          )}
-          onClick={(event) => {
-            event.preventDefault();
-            onSelect(option);
-          }}
-        >
-          {option.name}
-        </li>
-      ))}
-    </ul>
-  );
 }
