@@ -5,7 +5,7 @@ import {
   type FloatingWidth,
   place,
 } from "../../floating/index.ts";
-import { useScreenSize } from "../../hooks/index.ts";
+import { useOnClickOutside, useScreenSize } from "../../hooks/index.ts";
 import { Portal } from "../portal/index.ts";
 import { useFlyout } from "./Flyout.context.ts";
 
@@ -25,7 +25,7 @@ export function FlyoutContent({
   shift,
   width = null,
 }: FlyoutContentProps): ReactElement {
-  const { anchorRef, open } = useFlyout();
+  const { anchorRef, open, setOpen } = useFlyout();
   const contentRef = useRef<HTMLDivElement>(null);
   const options = useMemo(
     () => ({ position, flip, shift, offset, screenMargin }),
@@ -33,14 +33,17 @@ export function FlyoutContent({
   );
   const screenSize = useScreenSize();
   useLayoutEffect(() => {
-    if (contentRef.current != null) {
-      const anchorBox = anchorRef.current!.getBoundingBox();
-      place(contentRef.current!)
+    if (anchorRef.current != null && contentRef.current != null) {
+      const anchorBox = anchorRef.current.getBoundingBox();
+      place(contentRef.current)
         .withOptions(options)
         .resize(anchorBox, width, height)
         .alignToAnchor(anchorBox, screenSize);
     }
   }, [anchorRef, contentRef, open, options, screenSize, width, height]);
+  useOnClickOutside([contentRef], () => {
+    setOpen(false);
+  });
   return (
     <>
       {open && (

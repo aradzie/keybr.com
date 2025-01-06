@@ -6,15 +6,15 @@ import {
 } from "../types.ts";
 import { useFlyout } from "./Flyout.context.ts";
 
-type TriggerElement = ReactElement<FocusProps & MouseProps & AnchorProps>;
+type TriggerElement = ReactElement<AnchorProps & FocusProps & MouseProps>;
 
 type TriggerElementCallback = (
   props: {
     readonly open: boolean;
     readonly setOpen: (open: boolean) => void;
-  } & FocusProps &
-    MouseProps &
-    AnchorProps,
+  } & AnchorProps &
+    FocusProps &
+    MouseProps,
 ) => ReactElement;
 
 export type FlyoutTriggerProps = {
@@ -41,9 +41,9 @@ export function FlyoutTrigger({ children }: FlyoutTriggerProps): ReactElement {
     });
   } else {
     return children({
-      anchor: anchorRef,
       open,
       setOpen,
+      anchor: anchorRef,
       onClick: () => {
         setOpen(!open);
       },
