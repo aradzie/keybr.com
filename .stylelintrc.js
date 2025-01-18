@@ -72,6 +72,7 @@ export default {
         "composes",
         "all",
         "content",
+        "contain",
         "display",
         "position",
         "left",

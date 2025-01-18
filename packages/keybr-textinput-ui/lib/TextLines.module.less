@@ -1,25 +1,27 @@
-.line {
+.root {
+  contain: content;
   display: block;
   font-kerning: none;
   font-variant: none;
   line-height: 1.2;
+  user-select: none;
 }
 
-.line_wrap {
+.wrap {
   overflow: visible;
   white-space: break-spaces;
 }
 
-.line_nowrap {
+.nowrap {
   overflow: visible;
   white-space: nowrap;
 }
 
-.text_focus {
+.focus {
   filter: none;
 }
 
-.text_blur {
+.blur {
   filter: blur(3px);
 }
 
