@@ -4,12 +4,14 @@
   margin-block: -1rem;
   padding-inline: 1rem;
   padding-block: 1rem;
+  user-select: none;
+  contain: content;
 }
 
 .messageArea {
   display: flex;
   position: absolute;
-  inset: 100% 0 0 0;
+  inset: 0;
   align-items: center;
   justify-content: center;
 }
@@ -17,7 +19,13 @@
 .messageText {
   padding-inline: 1rem;
   padding-block: 0.5rem;
-  border: var(--separator-border);
   color: var(--Popup__color);
   background-color: var(--Popup__background-color);
+  box-shadow: var(--Popup--small__box-shadow);
+}
+
+.capsLockMessageArea {
+  position: relative;
+  padding: 5px 10px;
+  font-weight: bold;
 }

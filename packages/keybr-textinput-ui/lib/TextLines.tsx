@@ -38,9 +38,9 @@ export const TextLines = memo(function TextLines({
   readonly focus: boolean;
 }): ReactNode {
   const className = clsx(
-    styles.root,
-    wrap ? styles.wrap : styles.nowrap,
-    focus ? styles.focus : styles.blur,
+    styles.line,
+    wrap ? styles.line_wrap : styles.line_nowrap,
+    focus ? styles.text_focus : styles.text_blur,
     size === "X0" && styles.size_X0,
     size === "X1" && styles.size_X1,
     size === "X2" && styles.size_X2,
