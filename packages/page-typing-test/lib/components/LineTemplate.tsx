@@ -8,5 +8,5 @@ export const LineTemplate = memo(function LineTemplate({
 }: {
   children: ReactNode;
 } & SessionLine) {
-  return <div className={styles.line}>{children}</div>;
+  return <div className={styles.root}>{children}</div>;
 });
