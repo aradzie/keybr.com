@@ -273,6 +273,19 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly NE = new Layout(
+    /* id= */ "ne-np",
+    /* xid= */ 0xa4,
+    /* name= */ "Nepali Layout",
+    /* family= */ "ne-np",
+    /* language= */ Language.NE,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.MATRIX,
+    ),
+  );
   static readonly DE_CMOS = new Layout(
     /* id= */ "de-cmos",
     /* xid= */ 0x26,
@@ -1108,6 +1121,7 @@ export class Layout implements XEnumItem {
     Layout.NB_SKARP,
     Layout.NL_NL,
     Layout.NL_BE,
+    Layout.NE,
     Layout.ES_ES,
     Layout.ES_MX,
     Layout.PL_PL,

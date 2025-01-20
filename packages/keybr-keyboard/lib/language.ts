@@ -98,6 +98,12 @@ export class Language implements EnumItem {
     /* direction= */ "ltr",
     /* alphabet= */ "abcdefghijklmnopqrstuvwxyz",
   );
+  static readonly NE = new Language(
+    /* id= */ "ne",
+    /* script= */ "devanagari",
+    /* direction= */ "ltr",
+    /* alphabet= */ "कखगघङचछजझञटठडढणतथदधनपफबभमयरलवशषसहक्षत्रज्ञअआइईउऊऋएऐओऔअंअःि ी ु ू ृ े ै ो ौ ं ः",
+  );
   static readonly PL = new Language(
     /* id= */ "pl",
     /* script= */ "latin",
@@ -155,6 +161,7 @@ export class Language implements EnumItem {
 
   static readonly ALL = new Enum<Language>(
     Language.AR,
+    Language.NE,
     Language.BE,
     Language.CS,
     Language.DE,
@@ -187,6 +194,7 @@ export class Language implements EnumItem {
   readonly script:
     | "arabic"
     | "cyrillic"
+    | "devanagari"
     | "greek"
     | "hebrew"
     | "latin"
@@ -210,7 +218,14 @@ export class Language implements EnumItem {
 
   private constructor(
     id: string,
-    script: "arabic" | "cyrillic" | "greek" | "hebrew" | "latin" | "thai",
+    script:
+      | "arabic"
+      | "cyrillic"
+      | "devanagari"
+      | "greek"
+      | "hebrew"
+      | "latin"
+      | "thai",
     direction: "ltr" | "rtl",
     alphabet: string,
   ) {
@@ -313,6 +328,8 @@ export class Language implements EnumItem {
         );
       case "thai":
         return codePoint >= 0x0e00 && codePoint <= 0x0e7f;
+      case "devanagari":
+        return codePoint >= 0x0900 && codePoint <= 0x097f;
       default:
         return false;
     }
@@ -339,6 +356,8 @@ export function getExampleText({ script }: Language): string {
       return "תאכל יותר תפוחים ותפוזים.";
     case "thai":
       return "กินส้มกับแอปเปิลเยอะ ๆ";
+    case "devanagari":
+      return "धेरै स्याउहरु र सुन्तलाहरु खाऊ।";
     default:
       return "Eat more apples and oranges.";
   }
@@ -358,5 +377,7 @@ export function getExampleLetters({ script }: Language): CodePoint[] {
       return [0x0061, 0x0062, 0x0063, 0x0064, 0x0065, 0x0066];
     case "thai":
       return [0x0e01, 0x0e02, 0x0e04, 0x0e06, 0x0e07, 0x0e08];
+    case "devanagari":
+      return [0x0915, 0x0916, 0x0917, 0x0918, 0x0919, 0x091a];
   }
 }
