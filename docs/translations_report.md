@@ -205,6 +205,34 @@ Untranslated: 54 messages, 1888 words
 * *Bar color: {label1} – hit count, {label2} – miss count, {lab...*
 * ...
 
+# Finnish
+
+Translated: 245 messages, 2274 words
+
+Untranslated: 153 messages, 2650 words
+
+* *GO!*
+* *Time*
+* *Time*
+* *Metrics*
+* *Layouts*
+* *Not set*
+* *Syntax:*
+* *Position*
+* *Practice*
+* *Top Speed*
+* *Top Speed*
+* *Top speed*
+* *Uncertain*
+* *Top speed!*
+* *Characters*
+* *High Scores*
+* *High Scores*
+* *Multiplayer*
+* *Multiplayer*
+* *Settings...*
+* ...
+
 # French
 
 Translated: 377 messages, 4516 words

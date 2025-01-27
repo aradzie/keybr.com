@@ -88,6 +88,13 @@ export async function loadMessages(locale: LocaleId): Promise<Messages> {
           { with: { type: "json" } }
         )
       ).default;
+    case "fi":
+      return (
+        await import(
+          /* webpackChunkName: "messages-fi" */ "./messages/fi.json",
+          { with: { type: "json" } }
+        )
+      ).default;
     case "fr":
       return (
         await import(

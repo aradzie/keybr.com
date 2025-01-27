@@ -13,6 +13,7 @@ export const allLocales = [
   "es",
   "et",
   "fa",
+  "fi",
   "fr",
   "ga",
   "he",
