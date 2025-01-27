@@ -200,6 +200,13 @@ export async function loadMessages(locale: LocaleId): Promise<Messages> {
           { with: { type: "json" } }
         )
       ).default;
+    case "sk":
+      return (
+        await import(
+          /* webpackChunkName: "messages-sk" */ "./messages/sk.json",
+          { with: { type: "json" } }
+        )
+      ).default;
     case "sv":
       return (
         await import(

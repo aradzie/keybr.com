@@ -495,6 +495,14 @@ Translated: 406 messages, 4988 words
 
 Untranslated: 0 messages, 0 words
 
+# Slovak
+
+Translated: 405 messages, 4987 words
+
+Untranslated: 1 messages, 1 words
+
+* *Syntax:*
+
 # Swedish
 
 Translated: 387 messages, 4870 words

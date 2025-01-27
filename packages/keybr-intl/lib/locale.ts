@@ -52,6 +52,7 @@ export const allLocales: readonly LocaleId[] = [
   "pt-pt",
   "ro",
   "ru",
+  "sk",
   "sv",
   "th",
   "tr",

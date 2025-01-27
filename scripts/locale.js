@@ -29,6 +29,7 @@ export const allLocales = [
   "pt-pt",
   "ro",
   "ru",
+  "sk",
   "sv",
   "th",
   "tr",
