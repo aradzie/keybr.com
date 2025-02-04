@@ -146,7 +146,7 @@ function LayoutProp(): ReactNode {
         <Description>
           <FormattedMessage
             id="keyboard.emulation.forward.description"
-            defaultMessage="Keyboard emulation ignores the keyboard layout configured in your system and allows you to practice the selected keyboard regardless of how your system is configured. It is more convenient to keep the emulation option enabled."
+            defaultMessage="Keyboard emulation ignores the keyboard layout configured in your system and allows you to practice the selected keyboard regardless of how your system is configured. It is more convenient to keep the emulation option enabled. If the above option is disabled (greyed out), this means the layout cannot be emulated (mainly for layouts which use dead keys)."
           />
         </Description>
       </Explainer>

@@ -72,7 +72,7 @@
   "highScores.column.score.label": "Note",
   "highScores.column.speed.label": "Vitesse",
   "highScores.column.user.label": "Utilisateur",
-  "keyboard.emulation.forward.description": "L’émulation clavier ignore la disposition configuré sur votre système et vous permet de vous entraîner sur le clavier sélectionné quel que soit votre configuration. Il est plus pratique de garder l’émulation activée. Si l'option est désactivée (grisée), c'est que la disposition utilise des dead keys et est par conséquent difficile à émuler.",
+  "keyboard.emulation.forward.description": "L’émulation clavier ignore la disposition configuré sur votre système et vous permet de vous entraîner sur le clavier sélectionné quel que soit votre configuration. Il est plus pratique de garder l’émulation activée. Si l’option est désactivée (grisée), c’est que la disposition utilise des dead keys et est par conséquent difficile à émuler.",
   "keyboard.emulation.forward.label": "Émuler la disposition",
   "keyboard.emulation.reverse.description": "Utilisez cette option si votre clavier intègre un bouton de changement de disposition et que les touches surlignées du clavier virtuel ne correspondent pas.",
   "keyboard.emulation.reverse.label": "Clavier physique émulant la disposition",

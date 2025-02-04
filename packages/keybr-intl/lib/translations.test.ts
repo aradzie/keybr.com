@@ -40,8 +40,8 @@ for (const locale of allLocales) {
         /\s[.,:;!?]/,
         `Message ${id} has whitespace before punctuation`,
       );
-      doesNotMatch(message, /'/, `Message ${id} has straight single quote`);
-      doesNotMatch(message, /"/, `Message ${id} has straight double quote`);
+      doesNotMatch(message, /'/, `Message ${id} has a straight single quote`);
+      doesNotMatch(message, /"/, `Message ${id} has a straight double quote`);
       doesNotMatch(
         message,
         /\s\u002D\s/,
