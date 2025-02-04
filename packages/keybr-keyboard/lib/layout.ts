@@ -393,6 +393,21 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly FR_ERGOPTI = new Layout(
+    /* id= */ "fr-ergopti",
+    /* xid= */ 0x37,
+    /* name= */ "Ergopti",
+    /* family= */ "fr-ergopti",
+    /* language= */ Language.FR,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
   static readonly IT_IT = new Layout(
     /* id= */ "it-it",
     /* xid= */ 0x40,
@@ -1096,6 +1111,7 @@ export class Layout implements XEnumItem {
     Layout.FR_CH,
     Layout.FR_BEPO,
     Layout.FR_ERGO_L,
+    Layout.FR_ERGOPTI,
     Layout.FR_ERGLACE,
     Layout.FR_OPTIMOT_ERGO,
     Layout.HE_IL,

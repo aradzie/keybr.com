@@ -57,6 +57,7 @@ import { LAYOUT_FR_CA } from "./layout/fr_ca.ts";
 import { LAYOUT_FR_CH } from "./layout/fr_ch.ts";
 import { LAYOUT_FR_ERGLACE } from "./layout/fr_erglace.ts";
 import { LAYOUT_FR_ERGO_L } from "./layout/fr_ergo_l.ts";
+import { LAYOUT_FR_ERGOPTI } from "./layout/fr_ergopti.ts";
 import { LAYOUT_FR_FR } from "./layout/fr_fr.ts";
 import { LAYOUT_FR_OPTIMOT_ERGO } from "./layout/fr_optimot_ergo.ts";
 import { LAYOUT_HE_IL } from "./layout/he_il.ts";
@@ -135,6 +136,7 @@ const layouts = new Map<Layout, CharacterDict>([
   [Layout.FR_CH, LAYOUT_FR_CH],
   [Layout.FR_ERGLACE, LAYOUT_FR_ERGLACE],
   [Layout.FR_ERGO_L, LAYOUT_FR_ERGO_L],
+  [Layout.FR_ERGOPTI, LAYOUT_FR_ERGOPTI],
   [Layout.FR_FR, LAYOUT_FR_FR],
   [Layout.FR_OPTIMOT_ERGO, LAYOUT_FR_OPTIMOT_ERGO],
   [Layout.HE_IL, LAYOUT_HE_IL],

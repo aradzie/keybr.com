@@ -62,6 +62,7 @@ for (const [id, layout] of [
   ["fr_ergo_l", importKeymap("layouts/fr_ergo_l.json")],
   ["fr_fr", importCldr("cldr-keyboards-43.0/keyboards/windows/fr-t-k0-windows.xml")],
   ["fr_optimot_ergo", importKeymap("layouts/fr_optimot_ergo.json")],
+  ["fr_ergopti", importKeymap("layouts/fr_ergopti.json")],
   ["he_il", importCldr("layouts/he_il.xml")],
   ["he_il_arkn", importCldr("layouts/he_il_arkn.xml")],
   ["hu_hu", importCldr("cldr-keyboards-43.0/keyboards/windows/hu-t-k0-windows.xml")],
