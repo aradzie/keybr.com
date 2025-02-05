@@ -63,4 +63,9 @@ export const characterKeys: readonly KeyId[] = [
   "IntlRo",
   // ---
   "Space",
+  // --- Those are virtual keys mapped to physical keys by keyboard firmware.
+  "ThumbClusterLeft1",
+  "ThumbClusterLeft2",
+  "ThumbClusterRight1",
+  "ThumbClusterRight2",
 ];
