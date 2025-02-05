@@ -266,4 +266,24 @@ export const MATRIX: GeometryDict = {
     labels: [{ text: "Shift" }],
     zones: ["pinky", "right", "bottom"],
   },
+  ThumbClusterLeft1: {
+    x: 4.5,
+    y: 4,
+    zones: ["thumb", "left", "bottom"],
+  },
+  ThumbClusterLeft2: {
+    x: 5.5,
+    y: 4,
+    zones: ["thumb", "left", "bottom"],
+  },
+  ThumbClusterRight1: {
+    x: 7.5,
+    y: 4,
+    zones: ["thumb", "right", "bottom"],
+  },
+  ThumbClusterRight2: {
+    x: 8.5,
+    y: 4,
+    zones: ["thumb", "right", "bottom"],
+  },
 };

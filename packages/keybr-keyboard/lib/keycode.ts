@@ -262,4 +262,8 @@ export enum KeyCode {
   ScrollLock,
   /** Pause and Break */
   Pause,
+  ThumbClusterLeft1,
+  ThumbClusterLeft2,
+  ThumbClusterRight1,
+  ThumbClusterRight2,
 }

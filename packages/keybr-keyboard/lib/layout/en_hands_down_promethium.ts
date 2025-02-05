@@ -52,4 +52,6 @@ export const LAYOUT_EN_HANDS_DOWN_PROMETHIUM: CharacterDict = {
   Period: [/* EQUALS SIGN */ 0x003d, /* PLUS SIGN */ 0x002b],
   Slash: [/* SOLIDUS */ 0x002f, /* QUESTION MARK */ 0x003f],
   Space: [/* SPACE */ 0x0020],
+  ThumbClusterLeft1: [/* LATIN SMALL LETTER R */ 0x0072, /* LATIN CAPITAL LETTER R */ 0x0052],
+  ThumbClusterRight1: [/* SPACE */ 0x0020]
 };

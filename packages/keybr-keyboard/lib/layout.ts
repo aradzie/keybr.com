@@ -1067,7 +1067,7 @@ export class Layout implements XEnumItem {
     /* name= */ "Hands Down Promethium (Matrix)",
     /* family= */ "en-hands-down-promethium",
     /* language= */ Language.EN,
-    /* emulate= */ true,
+    /* emulate= */ false,
     /* geometries= */ new Enum(Geometry.MATRIX),
   );
 
