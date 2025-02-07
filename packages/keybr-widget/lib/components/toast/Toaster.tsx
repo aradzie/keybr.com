@@ -8,7 +8,7 @@ export function Toaster(): ReactNode {
   const [toasts, setToasts] = useState(state.toasts);
   useEffect(() => state.listen(setToasts), [toasts]);
   return (
-    <div className={styles.toaster}>
+    <div className={styles.toaster} hidden={toasts.length === 0}>
       {[...toasts].reverse().map((toast) => (
         <ToastProvider key={toast.key} toast={toast}>
           <ToastWrapper>{toast.message}</ToastWrapper>
