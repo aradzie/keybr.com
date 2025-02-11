@@ -68,6 +68,8 @@ import { LAYOUT_LT_LT } from "./layout/lt_lt.ts";
 import { LAYOUT_NB_KVIKK } from "./layout/nb_kvikk.ts";
 import { LAYOUT_NB_NO } from "./layout/nb_no.ts";
 import { LAYOUT_NB_SKARP } from "./layout/nb_skarp.ts";
+import { LAYOUT_NE_NP } from "./layout/ne_np.ts";
+import { LAYOUT_NE_RM } from "./layout/ne_rm.ts";
 import { LAYOUT_NL_BE } from "./layout/nl_be.ts";
 import { LAYOUT_NL_NL } from "./layout/nl_nl.ts";
 import { LAYOUT_PL_FWYR } from "./layout/pl_fwyr.ts";
@@ -89,6 +91,8 @@ import { KeyboardOptions } from "./settings.ts";
 import { type CharacterDict, type GeometryDict } from "./types.ts";
 
 const layouts = new Map<Layout, CharacterDict>([
+  [Layout.NE_NP, LAYOUT_NE_NP],
+  [Layout.NE_RM, LAYOUT_NE_RM],
   [Layout.AR_SA, LAYOUT_AR_SA],
   [Layout.AR_SA_102, LAYOUT_AR_SA_102],
   [Layout.BE_BY, LAYOUT_BE_BY],

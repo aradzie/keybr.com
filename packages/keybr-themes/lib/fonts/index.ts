@@ -3,7 +3,7 @@ import { type CSSProperties } from "react";
 export type FontWeight = "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900";
 export type FontStyle = "normal" | "italic";
 export type Fallback = "cursive" | "fantasy" | "monospace" | "sans-serif" | "serif" | "whitespace" | string;
-export type Script = "arabic" | "cyrillic" | "greek" | "hebrew" | "latin" | "thai";
+export type Script = "devanagari" | "arabic" | "cyrillic" | "greek" | "hebrew" | "latin" | "thai";
 
 export class FontFace {
   readonly family: string;
@@ -40,6 +40,7 @@ const cgl = ["cyrillic", "greek", "latin"] as const satisfies Script[];
 const cghl = ["cyrillic", "greek", "hebrew", "latin"] as const satisfies Script[];
 const achl = ["arabic", "cyrillic", "hebrew", "latin"] as const satisfies Script[];
 const acghlt = ["arabic", "cyrillic", "greek", "hebrew", "latin", "thai"] as const satisfies Script[];
+const acdghlt = ["arabic", "cyrillic", "devanagari", "greek", "hebrew", "latin", "thai"] as const satisfies Script[];
 
 export const ARAD = new FontFace("Arad", "400", "normal", ["whitespace"], ["arabic"]);
 export const ARAD_B = new FontFace("Arad", "700", "normal", ["whitespace"], ["arabic"]);
@@ -91,10 +92,10 @@ export const UBUNTU_MONO = new FontFace("Ubuntu Mono", "400", "normal", ["monosp
 export const UBUNTU_MONO_I = new FontFace("Ubuntu Mono", "400", "italic", ["monospace"], cgl);
 export const UBUNTU_MONO_B = new FontFace("Ubuntu Mono", "700", "normal", ["monospace"], cgl);
 export const UBUNTU_MONO_BI = new FontFace("Ubuntu Mono", "700", "italic", ["monospace"], cgl);
-export const SERIF = new FontFace("serif", "400", "normal", ["whitespace"], acghlt);
-export const SERIF_I = new FontFace("serif", "400", "italic", ["whitespace"], acghlt);
-export const SERIF_B = new FontFace("serif", "700", "normal", ["whitespace"], acghlt);
-export const SERIF_BI = new FontFace("serif", "700", "italic", ["whitespace"], acghlt);
+export const SERIF = new FontFace("serif", "400", "normal", ["whitespace"], acdghlt);
+export const SERIF_I = new FontFace("serif", "400", "italic", ["whitespace"], acdghlt);
+export const SERIF_B = new FontFace("serif", "700", "normal", ["whitespace"], acdghlt);
+export const SERIF_BI = new FontFace("serif", "700", "italic", ["whitespace"], acdghlt);
 export const SANS_SERIF = new FontFace("sans-serif", "400", "normal", ["whitespace"], acghlt);
 export const SANS_SERIF_I = new FontFace("sans-serif", "400", "italic", ["whitespace"], acghlt);
 export const SANS_SERIF_B = new FontFace("sans-serif", "700", "normal", ["whitespace"], acghlt);

@@ -13,8 +13,8 @@ for (const language of Language.ALL) {
 
     let alphabet: RegExp;
     let word: RegExp;
-    if (language.script === "thai") {
-      // Some Thai vowels are recognized as Mark not Letter.
+    if (language.script === "thai" || language.script === "devanagari") {
+      // Some Thai & Devanagari vowels are recognized as Mark not Letter.
       alphabet = /^\u{0020}[\p{Letter}\p{Mark}]+$/u;
       word = /^[\p{Letter}\p{Mark}]+$/u;
     } else {
@@ -46,6 +46,7 @@ for (const language of Language.ALL) {
           sum += suffix.frequency;
           last = suffix;
         }
+
         equal(sum, 255, "Frequencies must add up exactly to 255");
       }
     }

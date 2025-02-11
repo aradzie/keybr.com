@@ -2,6 +2,12 @@ import { Enum, type EnumItem } from "@keybr/lang";
 import { type CodePoint, toCodePoints } from "@keybr/unicode";
 
 export class Language implements EnumItem {
+  static readonly NE = new Language(
+    /* id= */ "ne",
+    /* script= */ "devanagari",
+    /* direction= */ "ltr",
+    /* alphabet= */ "अआइईउऊऋएऐओऔअंअःकखगघङचछजझञटठडढणतथदधनपफबभमयरलवशषसहक्षत्रज्ञँंः़ािीुूृेैोौ्",
+  );
   static readonly AR = new Language(
     /* id= */ "ar",
     /* script= */ "arabic",
@@ -154,6 +160,7 @@ export class Language implements EnumItem {
   );
 
   static readonly ALL = new Enum<Language>(
+    Language.NE,
     Language.AR,
     Language.BE,
     Language.CS,
@@ -185,6 +192,7 @@ export class Language implements EnumItem {
   readonly id: string;
   /** The writing system, such as Cyrillic, Georgian, Greek, Hebrew, Latin, Thai, etc. */
   readonly script:
+    | "devanagari"
     | "arabic"
     | "cyrillic"
     | "greek"
@@ -210,7 +218,14 @@ export class Language implements EnumItem {
 
   private constructor(
     id: string,
-    script: "arabic" | "cyrillic" | "greek" | "hebrew" | "latin" | "thai",
+    script:
+      | "devanagari"
+      | "arabic"
+      | "cyrillic"
+      | "greek"
+      | "hebrew"
+      | "latin"
+      | "thai",
     direction: "ltr" | "rtl",
     alphabet: string,
   ) {
@@ -245,6 +260,19 @@ export class Language implements EnumItem {
   };
 
   letterName = (codePoint: CodePoint): string => {
+    if (codePoint >= 0x0900 && codePoint <= 0x097f) {
+      // Devanagari Unicode block.
+      if (
+        (codePoint >= 0x0900 && codePoint <= 0x0903) ||
+        (codePoint >= 0x093a && codePoint <= 0x094f) ||
+        (codePoint >= 0x0951 && codePoint <= 0x0957) ||
+        (codePoint >= 0x0962 && codePoint <= 0x0963) ||
+        (codePoint >= 0x0970 && codePoint <= 0x0971)
+      ) {
+        // Devanagari combining marks.
+        return String.fromCodePoint(/* DOTTED CIRCLE */ 0x25cc, codePoint);
+      }
+    }
     if (codePoint === /* "ß" */ 0x00df) {
       // German uppercase letter Eszett.
       return "ẞ";
@@ -291,6 +319,8 @@ export class Language implements EnumItem {
     // We consider these Unicode ranges to contain letters only in a given script.
     // The ranges were manually built from Unicode tables and may not be accurate.
     switch (this.script) {
+      case "devanagari":
+        return codePoint >= 0x0900 && codePoint <= 0x097f;
       case "arabic":
         return codePoint >= 0x0600 && codePoint <= 0x06ff;
       case "cyrillic":
@@ -329,6 +359,8 @@ export class Language implements EnumItem {
 
 export function getExampleText({ script }: Language): string {
   switch (script) {
+    case "devanagari":
+      return "धेरै स्याउहरु र सुन्तलाहरु खाऊ।";
     case "arabic":
       return "تناول المزيد من التفاح والبرتقال.";
     case "cyrillic":
@@ -346,6 +378,8 @@ export function getExampleText({ script }: Language): string {
 
 export function getExampleLetters({ script }: Language): CodePoint[] {
   switch (script) {
+    case "devanagari":
+      return [0x0915, 0x0916, 0x0917, 0x0918, 0x0919, 0x091a];
     case "arabic":
       return [0x0627, 0x0628, 0x067e, 0x062a, 0x062b, 0x062c];
     case "cyrillic":

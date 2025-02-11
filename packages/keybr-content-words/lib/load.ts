@@ -3,6 +3,14 @@ import { Language } from "@keybr/keyboard";
 
 export async function loadWordList(language: Language): Promise<WordList> {
   switch (language) {
+    case Language.NE:
+      return (
+        await import(
+          /* webpackChunkName: "words-ne" */ "./data/words-ne.json",
+          { with: { type: "json" } }
+        )
+      ).default;
+
     case Language.AR:
       return (
         await import(

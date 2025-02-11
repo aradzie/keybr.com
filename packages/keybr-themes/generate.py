@@ -7,6 +7,7 @@ from fontTools.subset import parse_unicodes, Subsetter
 from fontTools.ttLib import TTFont
 
 unicode_ranges = [
+    ("devanagari", "U+0900-097F"),
     ("arabic", "U+0600-06FF"),
     ("cyrillic", "U+0400-04FF"),
     ("greek", "U+0370-03FF"),

@@ -11,6 +11,8 @@ import { importCldr, importKeymap, importKlc } from "./layout/import.ts";
 import { pathTo } from "./root.ts";
 
 for (const [id, layout] of [
+  ["ne_np", importCldr("cldr-keyboards-43.0/keyboards/windows/ne-t-k0-windows.xml")],
+  ["ne_rm", undead(importKlc("layouts/ne_rm.klc"))],
   ["ar_sa", importCldr("cldr-keyboards-43.0/keyboards/windows/ar-t-k0-windows.xml")],
   ["ar_sa_102", importCldr("cldr-keyboards-43.0/keyboards/windows/ar-t-k0-windows-102key.xml")],
   ["be_by", importCldr("cldr-keyboards-43.0/keyboards/windows/be-t-k0-windows.xml")],

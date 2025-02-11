@@ -16,6 +16,36 @@ export class Layout implements XEnumItem {
     );
   }
 
+  static readonly NE_NP = new Layout(
+    /* id= */ "ne-np",
+    /* xid= */ 0xa4,
+    /* name= */ "Traditional Nepali",
+    /* family= */ "ne-tr",
+    /* language= */ Language.NE,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.MATRIX,
+    ),
+  );
+  static readonly NE_RM = new Layout(
+    /* id= */ "ne-rm",
+    /* xid= */ 0xa5,
+    /* name= */ "Romanized Nepali",
+    /* family= */ "ne-rm",
+    /* language= */ Language.NE,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.MATRIX,
+    ),
+  );
   static readonly EN_US = new Layout(
     /* id= */ "en-us",
     /* xid= */ 0x10,
@@ -1057,6 +1087,8 @@ export class Layout implements XEnumItem {
   );
 
   static readonly ALL = new XEnum<Layout>(
+    Layout.NE_NP,
+    Layout.NE_RM,
     Layout.EN_US,
     Layout.EN_DVORAK,
     Layout.EN_DVORAK_PROG,
