@@ -2,6 +2,22 @@
 
 This is a [nodejs](https://nodejs.org/) application, so proficiency with the node ecosystem is required.
 
+### Prerequisites
+
+**NodeJS v22 or v20 must be installed.**\
+You can get NodeJS v22 or v20 without impacting other Node installations using [Node Version Manager](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating) (`nvm`)
+<details>
+  <summary>
+  Get NodeJS v22 with nvm
+  </summary>
+
+  ```shell
+  nvm install 22 && nvm use 22
+  ```
+</details>
+
+### Install and setup
+
 Clone this repository:
 
 ```shell
