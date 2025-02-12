@@ -59,3 +59,11 @@ npm start
 ```
 
 With the default config the application should be accessible at [http://localhost:3000/](http://localhost:3000/)
+
+While actively developing, you may want your changes to be automatically built and
+visible on page refresh.\
+Run the following command at the same time as `npm start` in another shell:
+
+```shell
+npm run watch
+```
