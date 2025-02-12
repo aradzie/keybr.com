@@ -21,7 +21,7 @@ You can get NodeJS v22 or v20 without impacting other Node installations using [
 Clone this repository:
 
 ```shell
-git clone git@github.com:aradzie/keybr.com.git
+git clone https://github.com/aradzie/keybr.com.git
 cd keybr.com
 ```
 
