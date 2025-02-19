@@ -1070,6 +1070,21 @@ export class Layout implements XEnumItem {
     /* emulate= */ false,
     /* geometries= */ new Enum(Geometry.MATRIX),
   );
+  static readonly EN_APT_v3 = new Layout(
+    /* id= */ "en-aptv3",
+    /* xid= */ 0xa4,
+    /* name= */ "APTv3",
+    /* family= */ "en-aptv3",
+    /* language= */ Language.EN,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.MATRIX,
+    ),
+  );
 
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
@@ -1095,6 +1110,7 @@ export class Layout implements XEnumItem {
     Layout.EN_GALLIUM,
     Layout.EN_GALLIUM_MATRIX,
     Layout.EN_GRAPHITE,
+    Layout.EN_APT_v3,
     Layout.EN_UK,
     Layout.EN_JP,
     Layout.EL_GR,

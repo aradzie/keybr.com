@@ -24,6 +24,7 @@ import { LAYOUT_DE_MINE } from "./layout/de_mine.ts";
 import { LAYOUT_DE_NEO_2 } from "./layout/de_neo_2.ts";
 import { LAYOUT_DE_NOTED } from "./layout/de_noted.ts";
 import { LAYOUT_EL_GR } from "./layout/el_gr.ts";
+import { LAYOUT_EN_APTV3 } from "./layout/en_aptv3.ts";
 import { LAYOUT_EN_CANARY } from "./layout/en_canary.ts";
 import { LAYOUT_EN_CANARY_MATRIX } from "./layout/en_canary_matrix.ts";
 import { LAYOUT_EN_COLEMAK } from "./layout/en_colemak.ts";
@@ -124,6 +125,7 @@ const layouts = new Map<Layout, CharacterDict>([
   [Layout.EN_NERPS_MATRIX, LAYOUT_EN_NERPS_MATRIX],
   [Layout.EN_NORMAN, LAYOUT_EN_NORMAN],
   [Layout.EN_STURDY, LAYOUT_EN_STURDY],
+  [Layout.EN_APT_v3, LAYOUT_EN_APTV3],
   [Layout.EN_UK, LAYOUT_EN_UK],
   [Layout.EN_US, LAYOUT_EN_US],
   [Layout.EN_WORKMAN, LAYOUT_EN_WORKMAN],
