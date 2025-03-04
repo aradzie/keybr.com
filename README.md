@@ -34,7 +34,7 @@ Yes!
 * **[Getting started.](./docs/getting_started.md)** Launch a local instance of keybr.com, make a pull request.
 * **[Add a keyboard.](docs/custom_keyboard.md)** Add a custom keyboard to keybr.com
 * **[Add a language.](docs/custom_language.md)** Add a custom language to keybr.com
-* **[Join our Discord server](https://discord.com/channels/930786115810643978/930786116255244299).** To discuss things in a less formal way.
+* **[Join our Discord server](https://discord.gg/gY4RA4enVH).** To discuss things in a less formal way.
 
 ## License
 
