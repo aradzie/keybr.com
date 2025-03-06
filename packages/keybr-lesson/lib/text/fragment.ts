@@ -11,7 +11,7 @@ export function generateFragment(
   const length = 100 + Math.round(settings.get(lessonProps.length) * 100);
   const words: string[] = [];
   let wordsLength = 0;
-  while (true) {
+  while (words.length < maxWords) {
     const word = nextWord() || "?";
     for (let i = 1; i <= repeatWords; i++) {
       words.push(word);
@@ -21,4 +21,5 @@ export function generateFragment(
       }
     }
   }
+  return words.join(" ");
 }
