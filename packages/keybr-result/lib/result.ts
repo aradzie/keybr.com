@@ -97,52 +97,55 @@ export class Result {
       histogram: [...this.histogram],
     };
   }
- static exportToScreen(results: Result[]) {
-    const data = results.map(result => ({
-      layout: result.layout.id,
-      textType: result.textType.id,
-      timeStamp: new Date(result.timeStamp).toISOString(),
-      length: result.length,
-      time: result.time,
-      errors: result.errors,
-      speed: result.speed,
-      complexity: result.complexity,
-      accuracy: result.accuracy,
-      score: result.score,
-    }));
 
-    const table = document.createElement("table");
-    const headerRow = document.createElement("tr");
-    const headers = ["Layout", "Text Type", "Time Stamp", "Length", "Time", "Errors", "Speed", "Complexity", "Accuracy", "Score"];
-    headers.forEach(headerText => {
-      const header = document.createElement("th");
-      header.textContent = headerText;
-      headerRow.appendChild(header);
-    });
-    table.appendChild(headerRow);
+  static exportToScreen(results: Result[]) {
+    if (typeof document !== "undefined") {
+      const data = results.map(result => ({
+        layout: result.layout.id,
+        textType: result.textType.id,
+        timeStamp: new Date(result.timeStamp).toISOString(),
+        length: result.length,
+        time: result.time,
+        errors: result.errors,
+        speed: result.speed,
+        complexity: result.complexity,
+        accuracy: result.accuracy,
+        score: result.score,
+      }));
 
-    data.forEach(rowData => {
-      const row = document.createElement("tr");
-      Object.values(rowData).forEach(cellData => {
-        const cell = document.createElement("td");
-        cell.textContent = cellData.toString();
-        row.appendChild(cell);
+      const table = document.createElement("table");
+      const headerRow = document.createElement("tr");
+      const headers = ["Layout", "Text Type", "Time Stamp", "Length", "Time", "Errors", "Speed", "Complexity", "Accuracy", "Score"];
+      headers.forEach(headerText => {
+        const header = document.createElement("th");
+        header.textContent = headerText;
+        headerRow.appendChild(header);
       });
-      table.appendChild(row);
-    });
+      table.appendChild(headerRow);
 
-    const resultDiv = document.createElement("div");
-    resultDiv.id = "resultScreen";
-    resultDiv.appendChild(table);
+      data.forEach(rowData => {
+        const row = document.createElement("tr");
+        Object.values(rowData).forEach(cellData => {
+          const cell = document.createElement("td");
+          cell.textContent = cellData.toString();
+          row.appendChild(cell);
+        });
+        table.appendChild(row);
+      });
 
-    const closeButton = document.createElement("button");
-    closeButton.textContent = "Close";
-    closeButton.onclick = () => {
-      document.body.removeChild(resultDiv);
-    };
-    resultDiv.appendChild(closeButton);
+      const resultDiv = document.createElement("div");
+      resultDiv.id = "resultScreen";
+      resultDiv.appendChild(table);
 
-    document.body.appendChild(resultDiv);
+      const closeButton = document.createElement("button");
+      closeButton.textContent = "Close";
+      closeButton.onclick = () => {
+        document.body.removeChild(resultDiv);
+      };
+      resultDiv.appendChild(closeButton);
+
+      document.body.appendChild(resultDiv);
+    }
   }
 }
 
