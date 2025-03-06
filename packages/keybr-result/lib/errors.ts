@@ -1,10 +1,8 @@
-import { ErrorOptions } from "./types.ts";
-
 export class InvalidResultError extends Error {
   override name = "InvalidResultError";
 
-  constructor(message?: string, options?: ErrorOptions) {
-    super(message, options);
+  constructor(message?: string) {
+    super(message);
   }
 
   get [Symbol.toStringTag]() {
