@@ -4,5 +4,11 @@
   "version": "0.0.0",
   "bin": {
     "keybr": "./keybr.js"
+  "dependencies": {
+    "xlsx": "^0.18.5",
+  ...
+  }
+
+
   }
 }
