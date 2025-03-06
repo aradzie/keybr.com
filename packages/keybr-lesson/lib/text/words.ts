@@ -40,7 +40,7 @@ export function wordSequence(
     if (length > 0) {
       let { wordIndex } = cursor;
       if (wordIndex >= length) {
-        wordIndex = 0;
+        return null;
       }
       const word = wordList[wordIndex];
       cursor.wordIndex = wordIndex + 1;
