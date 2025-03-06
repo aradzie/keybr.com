@@ -1,6 +1,6 @@
 import { useIntlNumbers } from "@keybr/intl";
-import { type DailyStats as DailyStatsType } from "@keybr/result";
-import { formatDuration, Name, NameValue, Para, Value } from "@keybr/widget";
+import { type DailyStats as DailyStatsType, Result } 
+from "@keybr/result";
 import { FormattedMessage, useIntl } from "react-intl";
 import * as styles from "./DailyStats.module.less";
 import { type Effort } from "./effort.ts";
@@ -16,6 +16,10 @@ export function DailyStats({
   const { formatDate, formatMessage } = useIntl();
   const { formatNumber, formatPercents } = useIntlNumbers();
   const { formatSpeed } = useFormatter();
+  const handleExport = () => {
+    Result.exportToExcel(results, "typing_results.xlsx");
+  };
+
   return (
     <div className={styles.root}>
       <Para align="center">
@@ -81,6 +85,12 @@ export function DailyStats({
           value={formatPercents(stats.accuracy.avg)}
         />
       </div>
+      <button onClick={handleExport}>
+        <FormattedMessage
+          id="profile.calendar.exportButton.label"
+          defaultMessage="Export Data"
+        />
+      </button>
     </div>
   );
 }
