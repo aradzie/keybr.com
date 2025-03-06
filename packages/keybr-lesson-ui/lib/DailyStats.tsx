@@ -18,7 +18,7 @@ export function DailyStats({
   const { formatSpeed } = useFormatter();
 
   const handleExport = () => {
-    Result.exportToExcel(results, "typing_results.xlsx");
+    Result.exportToScreen(results);
   };
 
   return (

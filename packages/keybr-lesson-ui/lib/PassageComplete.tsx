@@ -17,7 +17,7 @@ export function PassageComplete({
   const [showStats, setShowStats] = useState(false);
 
   const handleExport = () => {
-    Result.exportToExcel(results, "typing_results.xlsx");
+    Result.exportToScreen(results);
   };
 
   const handleReset = () => {

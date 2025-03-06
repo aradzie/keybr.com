@@ -1,7 +1,6 @@
 import { type Layout } from "@keybr/keyboard";
 import { type Histogram, type Stats } from "@keybr/textinput";
 import { type TextType } from "./texttype.ts";
-import * as XLSX from "xlsx";
 
 export type Filter = {
   readonly minLength: number;
@@ -98,7 +97,7 @@ export class Result {
     };
   }
 
-  static exportToExcel(results: Result[], fileName: string) {
+  static exportToScreen(results: Result[]) {
     const data = results.map(result => ({
       layout: result.layout.id,
       textType: result.textType.id,
@@ -112,10 +111,38 @@ export class Result {
       score: result.score,
     }));
 
-    const worksheet = XLSX.utils.json_to_sheet(data);
-    const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, "Results");
-    XLSX.writeFile(workbook, fileName);
+    const table = document.createElement("table");
+    const headerRow = document.createElement("tr");
+    const headers = ["Layout", "Text Type", "Time Stamp", "Length", "Time", "Errors", "Speed", "Complexity", "Accuracy", "Score"];
+    headers.forEach(headerText => {
+      const header = document.createElement("th");
+      header.textContent = headerText;
+      headerRow.appendChild(header);
+    });
+    table.appendChild(headerRow);
+
+    data.forEach(rowData => {
+      const row = document.createElement("tr");
+      Object.values(rowData).forEach(cellData => {
+        const cell = document.createElement("td");
+        cell.textContent = cellData.toString();
+        row.appendChild(cell);
+      });
+      table.appendChild(row);
+    });
+
+    const resultDiv = document.createElement("div");
+    resultDiv.id = "resultScreen";
+    resultDiv.appendChild(table);
+
+    const closeButton = document.createElement("button");
+    closeButton.textContent = "Close";
+    closeButton.onclick = () => {
+      document.body.removeChild(resultDiv);
+    };
+    resultDiv.appendChild(closeButton);
+
+    document.body.appendChild(resultDiv);
   }
 }
 
