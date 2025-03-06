@@ -1,6 +1,7 @@
 import { type Layout } from "@keybr/keyboard";
 import { type Histogram, type Stats } from "@keybr/textinput";
 import { type TextType } from "./texttype.ts";
+import * as XLSX from "xlsx";
 
 export type Filter = {
   readonly minLength: number;
@@ -95,6 +96,25 @@ export class Result {
       speed: this.speed,
       histogram: [...this.histogram],
     };
+  }
+    static exportToExcel(results: Result[], fileName: string) {
+    const data = results.map(result => ({
+      layout: result.layout.id,
+      textType: result.textType.id,
+      timeStamp: new Date(result.timeStamp).toISOString(),
+      length: result.length,
+      time: result.time,
+      errors: result.errors,
+      speed: result.speed,
+      complexity: result.complexity,
+      accuracy: result.accuracy,
+      score: result.score,
+    }));
+
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Results");
+    XLSX.writeFile(workbook, fileName);
   }
 }
 
