@@ -13,6 +13,9 @@ export function Countdown({ onComplete }: { onComplete: () => void }) {
     } else {
       onComplete();
     }
+    else {
+      return null;
+    }
   }, [count, onComplete]);
 
   if (count > 0) {
