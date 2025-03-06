@@ -3,7 +3,8 @@
   "compilerOptions": {
     "rootDir": "lib",
     "outDir": ".types",
-    "emitDeclarationOnly": true
+    "emitDeclarationOnly": true,
+    "types": ["node", "xlsx"]
   },
   "include": [
     "lib/**/*"
