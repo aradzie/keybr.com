@@ -97,7 +97,7 @@ export class Result {
       histogram: [...this.histogram],
     };
   }
- static exportToScreen(results: Result[]) {
+  static exportToScreen(results: Result[]) {
     const data = results.map(result => ({
       layout: result.layout.id,
       textType: result.textType.id,
