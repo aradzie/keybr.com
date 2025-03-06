@@ -1,3 +1,5 @@
+import { ErrorOptions } from "./types.ts";
+
 export class InvalidResultError extends Error {
   override name = "InvalidResultError";
 
