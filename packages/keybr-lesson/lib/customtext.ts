@@ -13,10 +13,12 @@ import { randomWords, uniqueWords, wordSequence } from "./text/words.ts";
 export class CustomTextLesson extends Lesson {
   readonly wordList: readonly string[];
   wordIndex = 0;
+  readonly maxWords: number;
 
   constructor(settings: Settings, keyboard: Keyboard, model: PhoneticModel) {
     super(settings, keyboard, model);
     this.wordList = this.#getWordList();
+    this.maxWords = this.wordList.length;
   }
 
   override get letters() {
@@ -30,8 +32,7 @@ export class CustomTextLesson extends Lesson {
   override generate(lessonKeys: LessonKeys, rng: RNGStream) {
     return generateFragment(this.settings, this.#makeWordGenerator(rng), {
       repeatWords: this.settings.get(lessonProps.repeatWords),
-      maxWords: this.wordList.length,
-
+      maxWords: this.maxWords,
     });
   }
 
