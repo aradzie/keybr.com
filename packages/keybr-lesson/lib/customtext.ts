@@ -30,8 +30,7 @@ export class CustomTextLesson extends Lesson {
   override generate(lessonKeys: LessonKeys, rng: RNGStream) {
     return generateFragment(this.settings, this.#makeWordGenerator(rng), {
       repeatWords: this.settings.get(lessonProps.repeatWords),
-      maxWords: this.wordList.length,
-
+      maxWords: 88,
     });
   }
 
