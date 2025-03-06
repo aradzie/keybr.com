@@ -31,6 +31,7 @@ export class CustomTextLesson extends Lesson {
     return generateFragment(this.settings, this.#makeWordGenerator(rng), {
       repeatWords: this.settings.get(lessonProps.repeatWords),
       maxWords: this.wordList.length,
+
     });
   }
 

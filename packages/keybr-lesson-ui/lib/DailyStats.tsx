@@ -1,4 +1,5 @@
 import { useIntlNumbers } from "@keybr/intl";
+
 import { type DailyStats as DailyStatsType, Result } from "@keybr/result";
 import { formatDuration, Name, NameValue, Para, Value } from "@keybr/widget";
 import { FormattedMessage, useIntl } from "react-intl";
