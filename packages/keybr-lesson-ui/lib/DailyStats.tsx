@@ -19,7 +19,7 @@ export function DailyStats({
   const { formatSpeed } = useFormatter();
 
   const handleExport = () => {
-    Result.exportToScreen([...results]);
+    Result.exportToScreen(results);
   };
 
   return (

@@ -3,8 +3,7 @@
   "compilerOptions": {
     "rootDir": "lib",
     "outDir": ".types",
-    "emitDeclarationOnly": true,
-    "lib": ["dom"]
+    "emitDeclarationOnly": true
   },
   "include": [
     "lib/**/*"

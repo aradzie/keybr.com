@@ -13,24 +13,17 @@ export function Countdown({ onComplete }: { onComplete: () => void }) {
     } else {
       onComplete();
     }
-    else {
-      return null;
-    }
   }, [count, onComplete]);
 
-  if (count > 0) {
-    return (
-      <div className={styles.root}>
-        <Para align="center">
-          <FormattedMessage
-            id="countdown.message"
-            defaultMessage="Starting in {count}"
-            values={{ count }}
-          />
-        </Para>
-      </div>
-    );
-  } else {
-    return null;
-  }
+  return (
+    <div className={styles.root}>
+      <Para align="center">
+        <FormattedMessage
+          id="countdown.message"
+          defaultMessage="Starting in {count}"
+          values={{ count }}
+        />
+      </Para>
+    </div>
+  );
 }
