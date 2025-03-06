@@ -97,7 +97,8 @@ export class Result {
       histogram: [...this.histogram],
     };
   }
-    static exportToExcel(results: Result[], fileName: string) {
+  static exportToScreen(results: Result[]) {
+
     const data = results.map(result => ({
       layout: result.layout.id,
       textType: result.textType.id,
@@ -111,10 +112,20 @@ export class Result {
       score: result.score,
     }));
 
-    const worksheet = XLSX.utils.json_to_sheet(data);
-    const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, "Results");
-    XLSX.writeFile(workbook, fileName);
+
+    const resultDiv = document.createElement("div");
+    resultDiv.id = "resultScreen";
+    resultDiv.appendChild(table);
+
+    const closeButton = document.createElement("button");
+    closeButton.textContent = "Close";
+    closeButton.onclick = () => {
+      document.body.removeChild(resultDiv);
+    };
+    resultDiv.appendChild(closeButton);
+
+    document.body.appendChild(resultDiv);
+
   }
 }
 

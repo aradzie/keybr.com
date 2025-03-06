@@ -5,8 +5,8 @@ import { type WordGenerator } from "./words.ts";
 export function generateFragment(
   settings: Settings,
   nextWord: WordGenerator,
-  { repeatWords = 1, maxWords = 88 }: { readonly repeatWords?: number, readonly maxWords?: number } = 
-  {},
+  { repeatWords = 1, maxWords }: { readonly repeatWords?: number, readonly maxWords?: number } = {},
+
 ): string {
   const length = 100 + Math.round(settings.get(lessonProps.length) * 100);
   const words: string[] = [];
