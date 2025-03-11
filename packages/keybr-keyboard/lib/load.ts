@@ -36,6 +36,7 @@ import { LAYOUT_EN_COLEMAK_DH_MATRIX } from "./layout/en_colemak_dh_matrix.ts";
 import { LAYOUT_EN_DVORAK } from "./layout/en_dvorak.ts";
 import { LAYOUT_EN_DVORAK_PROG } from "./layout/en_dvorak_prog.ts";
 import { LAYOUT_EN_ENGRAM } from "./layout/en_engram.ts";
+import { LAYOUT_EN_FOCAL } from "./layout/en_focal.ts";
 import { LAYOUT_EN_GALLIUM } from "./layout/en_gallium.ts";
 import { LAYOUT_EN_GALLIUM_MATRIX } from "./layout/en_gallium_matrix.ts";
 import { LAYOUT_EN_GRAPHITE } from "./layout/en_graphite.ts";
@@ -114,6 +115,7 @@ const layouts = new Map<Layout, CharacterDict>([
   [Layout.EN_DVORAK, LAYOUT_EN_DVORAK],
   [Layout.EN_DVORAK_PROG, LAYOUT_EN_DVORAK_PROG],
   [Layout.EN_ENGRAM, LAYOUT_EN_ENGRAM],
+  [Layout.EN_FOCAL, LAYOUT_EN_FOCAL],
   [Layout.EN_GALLIUM, LAYOUT_EN_GALLIUM],
   [Layout.EN_GALLIUM_MATRIX, LAYOUT_EN_GALLIUM_MATRIX],
   [Layout.EN_GRAPHITE, LAYOUT_EN_GRAPHITE],

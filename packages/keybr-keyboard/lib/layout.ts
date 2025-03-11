@@ -1085,6 +1085,21 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly EN_FOCAL = new Layout(
+    /* id= */ "en_focal",
+    /* xid= */ 0xa5,
+    /* name= */ "Focal",
+    /* family= */ "focal",
+    /* language= */ Language.EN,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.MATRIX,
+    ),
+  );
 
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
@@ -1111,6 +1126,7 @@ export class Layout implements XEnumItem {
     Layout.EN_GALLIUM_MATRIX,
     Layout.EN_GRAPHITE,
     Layout.EN_APT_v3,
+    Layout.EN_FOCAL,
     Layout.EN_UK,
     Layout.EN_JP,
     Layout.EL_GR,
