@@ -4,6 +4,16 @@ Translated: 406 messages, 5010 words
 
 Untranslated: 0 messages, 0 words
 
+# Afrikaans
+
+Translated: 403 messages, 5006 words
+
+Untranslated: 3 messages, 4 words
+
+* *Letters*
+* *Volume:*
+* *Confidence level*
+
 # Arabic
 
 Translated: 406 messages, 5010 words

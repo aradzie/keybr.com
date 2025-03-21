@@ -2,6 +2,7 @@ export const defaultLocale = "en";
 
 export const allLocales = [
   defaultLocale,
+  "af",
   "ar",
   "bg",
   "ca",

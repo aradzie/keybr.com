@@ -25,6 +25,7 @@ export const defaultLocale: LocaleId = "en";
 
 export const allLocales: readonly LocaleId[] = [
   defaultLocale,
+  "af",
   "ar",
   "bg",
   "ca",

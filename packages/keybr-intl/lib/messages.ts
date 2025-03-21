@@ -4,6 +4,13 @@ export type Messages = Record<string, string | any>;
 
 export async function loadMessages(locale: LocaleId): Promise<Messages> {
   switch (locale) {
+    case "af":
+      return (
+        await import(
+          /* webpackChunkName: "messages-af" */ "./messages/af.json",
+          { with: { type: "json" } }
+        )
+      ).default;
     case "ar":
       return (
         await import(
