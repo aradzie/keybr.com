@@ -249,7 +249,7 @@
   "profile.chart.accuracy.accuracyThreshold.header": "Genauigkeitsschwelle",
   "profile.chart.calendar.caption": "Übungskalender",
   "profile.chart.calendar.description": "Dieser Kalender zeigt die Daten des aktiven Lernens an.",
-  "profile.chart.compareAverageAccuracy.description": "Deine All-Time durchschnittliche Genauigkeit schlägt {value} aller anderen Personen.",
+  "profile.chart.compareAverageAccuracy.description": "Deine durchschnittliche Genauigkeit schlägt {value} aller anderen Personen.",
   "profile.chart.compareAverageSpeed.description": "Ihre Durchschnittsgeschwindigkeit über alle Zeiten übertrifft {value} aller anderen Personen.",
   "profile.chart.compareTopAccuracy.description": "Deine All-Time beste Genauigkeit schlägt {value} aller anderen Personen.",
   "profile.chart.compareTopSpeed.description": "Ihre beste Geschwindigkeit übertrifft {value} aller anderen Personen.",

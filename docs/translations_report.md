@@ -12,19 +12,9 @@ Untranslated: 0 messages, 0 words
 
 # Bulgarian
 
-Translated: 394 messages, 4899 words
+Translated: 406 messages, 5010 words
 
-Untranslated: 9 messages, 86 words
-
-* *Zones:*
-* *Top accuracy*
-* *Sound Theme:*
-* *Average accuracy*
-* *Relative Accuracy*
-* *Repeat each word:*
-* *This is a histogram of the accuracies of all users, and your...*
-* *Repeat each word a number of times. Type a word for the firs...*
-* *See how accurate you type relative to other users. The highe...*
+Untranslated: 0 messages, 0 words
 
 # Catalan
 
@@ -68,28 +58,22 @@ Untranslated: 5 messages, 6 words
 
 # Danish
 
-Translated: 385 messages, 4889 words
+Translated: 392 messages, 4946 words
 
-Untranslated: 18 messages, 96 words
+Untranslated: 12 messages, 42 words
 
 * *Score*
 * *Score*
 * *Layout*
-* *Zones:*
 * *Layout:*
 * *Layouts*
 * *Position*
 * *Multiplayer*
 * *Multiplayer*
-* *Top accuracy*
-* *Sound Theme:*
 * *Bar whitespace*
 * *Average accuracy*
-* *Relative Accuracy*
 * *Repeat each word:*
-* *This is a histogram of the accuracies of all users, and your...*
 * *Repeat each word a number of times. Type a word for the firs...*
-* *See how accurate you type relative to other users. The highe...*
 
 # German
 
@@ -151,31 +135,13 @@ Untranslated: 0 messages, 0 words
 
 # Estonian
 
-Translated: 381 messages, 4818 words
+Translated: 403 messages, 5007 words
 
-Untranslated: 22 messages, 167 words
+Untranslated: 3 messages, 3 words
 
 * *GO!*
-* *Books*
 * *Font:*
-* *Zones:*
-* *Syntax:*
 * *Progress*
-* *Source Code*
-* *Top accuracy*
-* *Sound Theme:*
-* *Explain charts*
-* *Average accuracy*
-* *Relative Accuracy*
-* *Hide explanations*
-* *Repeat each word:*
-* *Keyboard hardware emulates layout*
-* *Generate lessons that resemble the specified programming lan...*
-* *Practice punctuation characters that are specific to a progr...*
-* *This is a histogram of the accuracies of all users, and your...*
-* *Generate typing lessons from the text of a book. All keys ar...*
-* *Use this option if you have a hardware layout switcher on yo...*
-* ...
 
 # Persian
 
@@ -235,9 +201,9 @@ Untranslated: 153 messages, 2672 words
 
 # French
 
-Translated: 377 messages, 4538 words
+Translated: 388 messages, 4648 words
 
-Untranslated: 26 messages, 447 words
+Untranslated: 18 messages, 362 words
 
 * *Zones:*
 * *Not set*
@@ -246,20 +212,17 @@ Untranslated: 26 messages, 447 words
 * *Position*
 * *Translate*
 * *Alphabet:*
-* *Top accuracy*
-* *Sound Theme:*
-* *Average accuracy*
 * *Accuracy Streaks*
 * *Explain settings*
-* *Relative Accuracy*
 * *Hide explanations*
-* *Repeat each word:*
 * *Unlock a next key only when:*
 * *Sort letters in the order of keyboard keys*
 * *The previous keys are also above the target speed*
-* *This is a histogram of the accuracies of all users, and your...*
 * *You don’t have any accuracy streaks. Consider completing a l...*
-* ...
+* *Above are listed the longest continuous sequences of lessons...*
+* *When you focus on a new key, it is very likely that the spee...*
+* *The target speed is used to measure the confidence level and...*
+* *Sort letters in such a way that the letters from the home ro...*
 
 # Irish
 
@@ -274,31 +237,9 @@ Untranslated: 4 messages, 11 words
 
 # Hebrew
 
-Translated: 373 messages, 4504 words
+Translated: 406 messages, 5010 words
 
-Untranslated: 30 messages, 481 words
-
-* *Zones:*
-* *Alphabet:*
-* *Box cursor*
-* *Line cursor*
-* *Top accuracy*
-* *Block cursor*
-* *Sound Theme:*
-* *Smooth cursor*
-* *Jumping cursor*
-* *Highlight keys*
-* *Bar whitespace*
-* *Average accuracy*
-* *Underline cursor*
-* *Relative Accuracy*
-* *Repeat each word:*
-* *Bullet whitespace*
-* *Keyboard hardware emulates layout*
-* *Generate lessons that resemble the specified programming lan...*
-* *This is a histogram of the accuracies of all users, and your...*
-* *Adjust the number of words in the lesson text. Making lesson...*
-* ...
+Untranslated: 0 messages, 0 words
 
 # Croatian
 
@@ -572,30 +513,30 @@ Untranslated: 9 messages, 86 words
 
 # Turkish
 
-Translated: 246 messages, 2149 words
+Translated: 285 messages, 2361 words
 
-Untranslated: 151 messages, 2796 words
+Untranslated: 115 messages, 2591 words
 
-* *Help*
-* *Help*
 * *Books*
 * *Font:*
 * *Zones:*
 * *Sign-In*
 * *Metrics*
 * *Preview*
-* *Volume:*
 * *Syntax:*
-* *Geometry:*
 * *Alphabet:*
 * *Language:*
-* *No Sounds*
 * *Box cursor*
-* *All Sounds*
 * *Source Code*
 * *Line cursor*
 * *Whitespace:*
 * *Top accuracy*
+* *Block cursor*
+* *Smooth cursor*
+* *No whitespace*
+* *Emulate layout*
+* *Explain charts*
+* *Jumping cursor*
 * ...
 
 # Ukrainian
