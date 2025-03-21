@@ -599,3 +599,11 @@ Untranslated: 2 messages, 3 words
 
 * *Zones:*
 * *Sound Theme:*
+
+# Chinese (Taiwan)
+
+Translated: 405 messages, 5009 words
+
+Untranslated: 1 messages, 1 words
+
+* *GO!*

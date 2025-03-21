@@ -17,5 +17,5 @@ test("select locale", () => {
   equal(selectLocale(filter("pt-PT")), "pt-pt");
   equal(selectLocale(filter("zh")), "zh-hans");
   equal(selectLocale(filter("zh-CN")), "zh-hans");
-  equal(selectLocale(filter("zh-TW")), "zh-hant");
+  equal(selectLocale(filter("zh-TW")), "zh-tw");
 });

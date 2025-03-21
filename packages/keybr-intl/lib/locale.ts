@@ -62,6 +62,7 @@ export const allLocales: readonly LocaleId[] = [
   "vi",
   "zh-hans",
   "zh-hant",
+  "zh-tw",
 ];
 
 export function getDir(locale: LocaleId): "ltr" | "rtl" {

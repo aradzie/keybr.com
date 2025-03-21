@@ -39,4 +39,5 @@ export const allLocales = [
   "vi",
   "zh-hans",
   "zh-hant",
+  "zh-tw",
 ];

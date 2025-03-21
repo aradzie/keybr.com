@@ -41,7 +41,7 @@ test("negotiate the preferred language", async () => {
 
   equal(await call(new AcceptLanguage("zh")), "zh-hans");
   equal(await call(new AcceptLanguage("zh-CN")), "zh-hans");
-  equal(await call(new AcceptLanguage("zh-TW")), "zh-hant");
+  equal(await call(new AcceptLanguage("zh-TW")), "zh-tw");
 
   equal(await call(new AcceptLanguage().add("en", 0.8).add("pl", 0.9)), "pl");
 });
