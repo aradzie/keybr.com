@@ -1,5 +1,5 @@
 diff --git a/node_modules/bson/lib/bson.mjs b/node_modules/bson/lib/bson.mjs
-index 9e3237f..0059c72 100644
+index 165a57a..0813c40 100644
 --- a/node_modules/bson/lib/bson.mjs
 +++ b/node_modules/bson/lib/bson.mjs
 @@ -218,7 +218,7 @@ function nodejsMathRandomBytes(byteLength) {
