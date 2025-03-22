@@ -32,14 +32,14 @@ Translated: 366 messages, 3470 words
 
 Untranslated: 37 messages, 1515 words
 
-* *Zones:*
 * *Errors*
-* *Top accuracy*
+* *Zones:*
 * *Sound Theme:*
+* *Top accuracy*
 * *Explain charts*
 * *Average accuracy*
-* *Relative Accuracy*
 * *Hide explanations*
+* *Relative Accuracy*
 * *Repeat each word:*
 * *The previous keys are also above the target speed*
 * *Generate lessons that resemble the specified programming lan...*
@@ -116,25 +116,25 @@ Translated: 81 messages, 1137 words
 Untranslated: 315 messages, 3804 words
 
 * *GO!*
-* *Time*
-* *Time*
-* *Help*
-* *Help*
 * *Copy*
 * *Done*
+* *Help*
+* *Help*
 * *Next*
+* *Time*
+* *Time*
 * *Books*
+* *Close*
+* *Font:*
+* *Reset*
 * *Score*
 * *Speed*
 * *Speed*
 * *Visit*
-* *Font:*
-* *Reset*
-* *Close*
-* *Zones:*
 * *Errors*
 * *Typing*
-* *Sign-In*
+* *Zones:*
+* *Layouts*
 * ...
 
 # Spanish
@@ -162,13 +162,13 @@ Untranslated: 54 messages, 1910 words
 * *Books*
 * *Zones:*
 * *Syntax:*
-* *Top accuracy*
 * *Sound Theme:*
+* *Top accuracy*
 * *Explain charts*
-* *Average accuracy*
 * *Accuracy Streaks*
-* *Relative Accuracy*
+* *Average accuracy*
 * *Hide explanations*
+* *Relative Accuracy*
 * *Repeat each word:*
 * *Keyboard hardware emulates layout*
 * *Show a guided tour with help slides.*
@@ -190,18 +190,18 @@ Untranslated: 153 messages, 2672 words
 * *GO!*
 * *Time*
 * *Time*
-* *Metrics*
 * *Layouts*
+* *Metrics*
 * *Not set*
 * *Syntax:*
 * *Position*
 * *Practice*
-* *Top Speed*
-* *Top Speed*
 * *Top speed*
+* *Top Speed*
+* *Top Speed*
 * *Uncertain*
-* *Top speed!*
 * *Characters*
+* *Top speed!*
 * *High Scores*
 * *High Scores*
 * *Multiplayer*
@@ -220,8 +220,8 @@ Untranslated: 18 messages, 362 words
 * *Options*
 * *Volume:*
 * *Position*
-* *Translate*
 * *Alphabet:*
+* *Translate*
 * *Accuracy Streaks*
 * *Explain settings*
 * *Hide explanations*
@@ -272,22 +272,22 @@ Untranslated: 70 messages, 1078 words
 * *Font:*
 * *Zones:*
 * *Not set*
-* *Volume:*
 * *Syntax:*
+* *Volume:*
 * *Alphabet:*
 * *Language:*
 * *No Sounds*
-* *Box cursor*
 * *All Sounds*
-* *Source Code*
+* *Box cursor*
 * *Line cursor*
-* *Top accuracy*
+* *Source Code*
 * *Block cursor*
 * *Sound Theme:*
-* *Smooth cursor*
+* *Top accuracy*
 * *No whitespace*
+* *Smooth cursor*
+* *Bar whitespace*
 * *Explain charts*
-* *Jumping cursor*
 * ...
 
 # Indonesian
@@ -308,8 +308,8 @@ Untranslated: 6 messages, 6 words
 
 * *Font:*
 * *Layout*
-* *Layout:*
 * *Account*
+* *Layout:*
 * *Layouts*
 * *Volume:*
 
@@ -325,20 +325,20 @@ Untranslated: 144 messages, 2658 words
 * *Zones:*
 * *Metrics*
 * *Not set*
-* *Volume:*
 * *Syntax:*
-* *Translate*
+* *Volume:*
 * *Alphabet:*
-* *Language:*
 * *Examples:*
+* *Language:*
 * *No Sounds*
+* *Translate*
+* *All Sounds*
+* *Box cursor*
+* *Last speed*
 * *Top score!*
 * *Top speed!*
-* *Last speed*
-* *Box cursor*
-* *All Sounds*
-* *Source Code*
 * *High Scores*
+* *Line cursor*
 * ...
 
 # Korean
@@ -351,21 +351,21 @@ Untranslated: 246 messages, 3866 words
 * *Done*
 * *Next*
 * *Books*
-* *Visit*
+* *Close*
 * *Font:*
 * *Reset*
-* *Close*
-* *Zones:*
+* *Visit*
 * *Typing*
+* *Zones:*
+* *Lessons*
 * *Not set*
 * *Options*
 * *Preview*
-* *Volume:*
 * *Syntax:*
-* *Lessons*
+* *Volume:*
 * *All keys*
-* *Keyboard*
 * *Chapters*
+* *Keyboard*
 * *Previous*
 * ...
 
@@ -387,8 +387,8 @@ Untranslated: 11 messages, 14 words
 * *Score*
 * *Score*
 * *Zones:*
-* *Letters*
 * *Account*
+* *Letters*
 * *Volume:*
 * *Multiplayer*
 * *Multiplayer*
@@ -426,12 +426,12 @@ Untranslated: 21 messages, 126 words
 * *Volume:*
 * *Top score!*
 * *Top speed!*
-* *Top accuracy*
 * *Sound Theme:*
+* *Top accuracy*
 * *Explain charts*
 * *Average accuracy*
-* *Relative Accuracy*
 * *Hide explanations*
+* *Relative Accuracy*
 * *Repeat each word:*
 * *Daily goal reached!*
 * *New letter unlocked!*
@@ -449,14 +449,14 @@ Untranslated: 46 messages, 1329 words
 * *Font:*
 * *Layout*
 * *Zones:*
-* *Layout:*
 * *Account*
+* *Layout:*
 * *Layouts*
 * *Translate*
 * *Multiplayer*
 * *Multiplayer*
-* *Top accuracy*
 * *Sound Theme:*
+* *Top accuracy*
 * *Forgive errors*
 * *Average accuracy*
 * *Relative Accuracy*
@@ -496,8 +496,8 @@ Untranslated: 16 messages, 93 words
 * *Syntax:*
 * *Multiplayer*
 * *Multiplayer*
-* *Top accuracy*
 * *Sound Theme:*
+* *Top accuracy*
 * *Average accuracy*
 * *Relative Accuracy*
 * *Repeat each word:*
@@ -512,8 +512,8 @@ Translated: 394 messages, 4899 words
 Untranslated: 9 messages, 86 words
 
 * *Zones:*
-* *Top accuracy*
 * *Sound Theme:*
+* *Top accuracy*
 * *Average accuracy*
 * *Relative Accuracy*
 * *Repeat each word:*
@@ -530,23 +530,23 @@ Untranslated: 115 messages, 2591 words
 * *Books*
 * *Font:*
 * *Zones:*
-* *Sign-In*
 * *Metrics*
 * *Preview*
+* *Sign-In*
 * *Syntax:*
 * *Alphabet:*
 * *Language:*
 * *Box cursor*
-* *Source Code*
 * *Line cursor*
+* *Source Code*
 * *Whitespace:*
-* *Top accuracy*
 * *Block cursor*
-* *Smooth cursor*
+* *Top accuracy*
 * *No whitespace*
+* *Smooth cursor*
+* *Bar whitespace*
+* *Custom text...*
 * *Emulate layout*
-* *Explain charts*
-* *Jumping cursor*
 * ...
 
 # Ukrainian
@@ -562,13 +562,13 @@ Translated: 311 messages, 2027 words
 Untranslated: 90 messages, 2938 words
 
 * *Visit*
-* *Zones:*
 * *Typing*
+* *Zones:*
 * *Box cursor*
 * *Line cursor*
-* *Top accuracy*
 * *Block cursor*
 * *Sound Theme:*
+* *Top accuracy*
 * *Unique words*
 * *M|T|W|T|F|S|S*
 * *Smooth cursor*
@@ -577,8 +577,8 @@ Untranslated: 90 messages, 2938 words
 * *Underline cursor*
 * *Relative Accuracy*
 * *Repeat each word:*
-* *Relative Typing Speed*
 * *Key Frequency Heatmap*
+* *Relative Typing Speed*
 * *Key Frequency Histogram*
 * *Key Typing Speed Histogram*
 * ...

@@ -145,7 +145,9 @@ async function writeReport() {
         `${untranslated.reduce(countWords, 0)} words`,
     );
     if (untranslated.length > 0) {
-      untranslated.sort((a, b) => a[1].length - b[1].length);
+      untranslated.sort(
+        (a, b) => a[1].length - b[1].length || a[1].localeCompare(b[1]),
+      );
       const head = untranslated.slice(0, 20);
       lines.push(``);
       for (const [id, message] of head) {
