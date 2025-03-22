@@ -65,8 +65,8 @@ function StreakDetails({ streak }: { streak: Streak }) {
       <dt>
         <NameValue
           name={formatMessage({
-            id: "profile.chart.accuracy.accuracyThreshold.header",
-            defaultMessage: "Accuracy Threshold",
+            id: "t_Accuracy_threshold",
+            defaultMessage: "Accuracy threshold",
           })}
           value={formatPercents(level)}
         />
@@ -74,36 +74,36 @@ function StreakDetails({ streak }: { streak: Streak }) {
       <dd>
         <NameValue
           name={formatMessage({
-            id: "metric.summary.lessonCount.label",
+            id: "t_num_Lessons",
             defaultMessage: "Lessons",
           })}
           value={formatNumber(results.length)}
         />
         <NameValue
           name={formatMessage({
-            id: "metric.summary.characterCount.label",
+            id: "t_num_Characters",
             defaultMessage: "Characters",
           })}
           value={formatNumber(characterCount)}
         />
         <NameValue
           name={formatMessage({
-            id: "metric.summary.topSpeed.label",
-            defaultMessage: "Top Speed",
+            id: "t_Top_speed",
+            defaultMessage: "Top speed",
           })}
           value={formatSpeed(stats.speed.max)}
         />
         <NameValue
           name={formatMessage({
-            id: "metric.summary.averageSpeed.label",
-            defaultMessage: "Average Speed",
+            id: "t_Average_speed",
+            defaultMessage: "Average speed",
           })}
           value={formatSpeed(stats.speed.avg)}
         />
         <NameValue
           name={formatMessage({
-            id: "metric.summary.startDate.label",
-            defaultMessage: "Start Date",
+            id: "t_Start_date",
+            defaultMessage: "Start date",
           })}
           value={formatDate(results[0].timeStamp, {
             dateStyle: "short",

@@ -18,14 +18,14 @@ export function RecoverKeysProp(): ReactNode {
       <FieldList>
         <Field>
           <FormattedMessage
-            id="settings.recoverKeys.prefix"
+            id="t_Unlock_a_next_key_:"
             defaultMessage="Unlock a next key only when:"
           />
         </Field>
         <Field>
           <CheckBox
             label={formatMessage({
-              id: "settings.recoverKeys.label",
+              id: "t_The_previous_keys_are_",
               defaultMessage:
                 "The previous keys are also above the target speed",
             })}

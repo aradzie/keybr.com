@@ -95,7 +95,7 @@ function FullscreenButton() {
           icon={<Icon shape={mdiArrowCollapseAll} />}
           title={formatMessage(
             defineMessage({
-              id: "theme.exitFullscreen.description",
+              id: "t_theme_Exit_fullscreen_",
               defaultMessage: "Exit full-screen mode.",
             }),
           )}
@@ -110,7 +110,7 @@ function FullscreenButton() {
           icon={<Icon shape={mdiArrowExpandAll} />}
           title={formatMessage(
             defineMessage({
-              id: "theme.enterFullscreen.description",
+              id: "t_theme_Enter_fullscreen_",
               defaultMessage: "Enter full-screen mode.",
             }),
           )}

@@ -10,7 +10,7 @@ export function EventAlert({ event }: { readonly event: LessonEvent }) {
       return (
         <Award icon={<Key lessonKey={event.lessonKey} size="announcement" />}>
           <FormattedMessage
-            id="event.unlockedLetter"
+            id="t_ev_New_letter_unlocked"
             defaultMessage="New letter unlocked!"
           />
         </Award>
@@ -18,20 +18,20 @@ export function EventAlert({ event }: { readonly event: LessonEvent }) {
     case "top-speed":
       return (
         <Award icon={<TrophyIcon />}>
-          <FormattedMessage id="event.topSpeed" defaultMessage="Top speed!" />
+          <FormattedMessage id="t_ev_Top_speed" defaultMessage="Top speed!" />
         </Award>
       );
     case "top-score":
       return (
         <Award icon={<TrophyIcon />}>
-          <FormattedMessage id="event.topScore" defaultMessage="Top score!" />
+          <FormattedMessage id="t_ev_Top_score" defaultMessage="Top score!" />
         </Award>
       );
     case "daily-goal":
       return (
         <Award icon={<DailyGoalIcon />}>
           <FormattedMessage
-            id="event.dailyGoal"
+            id="t_ev_Daily_goal_reached"
             defaultMessage="Daily goal reached!"
           />
         </Award>

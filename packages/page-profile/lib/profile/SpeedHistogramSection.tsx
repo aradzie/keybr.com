@@ -68,14 +68,14 @@ export function SpeedHistogramSection({ stats }: { stats: SummaryStats }) {
             period === "average"
               ? {
                   label: formatMessage({
-                    id: "metric.averageSpeed.name",
+                    id: "t_Average_speed",
                     defaultMessage: "Average speed",
                   }),
                   value,
                 }
               : {
                   label: formatMessage({
-                    id: "metric.topSpeed.name",
+                    id: "t_Top_speed",
                     defaultMessage: "Top speed",
                   }),
                   value,
@@ -93,7 +93,10 @@ export function SpeedHistogramSection({ stats }: { stats: SummaryStats }) {
             name="period"
             value="average"
             checked={period === "average"}
-            label="Average Speed"
+            label={formatMessage({
+              id: "t_Average_speed",
+              defaultMessage: "Average speed",
+            })}
             onSelect={() => {
               setPeriod("average");
             }}
@@ -104,7 +107,10 @@ export function SpeedHistogramSection({ stats }: { stats: SummaryStats }) {
             name="period"
             value="top"
             checked={period === "top"}
-            label="Top Speed"
+            label={formatMessage({
+              id: "t_Top_speed",
+              defaultMessage: "Top speed",
+            })}
             onSelect={() => {
               setPeriod("top");
             }}

@@ -22,13 +22,13 @@ export function SignInSection({ actions }: { actions: SignInActions }) {
 
       <Header level={2}>
         <FormattedMessage
-          id="account.premiumAccount.header"
-          defaultMessage="Premium Account"
+          id="t_Premium_account"
+          defaultMessage="Premium account"
         />
       </Header>
 
       <FormattedMessage
-        id="account.freeAccountOverview"
+        id="account.freeAccount.description"
         defaultMessage={
           "<p>Buy a <strong>premium account</strong> to unlock additional features and enjoy an ad-free experience. Here is the list of premium account benefits:</p>" +
           "<ul>" +
@@ -44,8 +44,8 @@ export function SignInSection({ actions }: { actions: SignInActions }) {
 
       <Header level={2}>
         <FormattedMessage
-          id="account.socialSignIn.header"
-          defaultMessage="Sign-In with Social Networks"
+          id="t_Signin_with_social_"
+          defaultMessage="Sign-in with social networks"
         />
       </Header>
 
@@ -53,8 +53,8 @@ export function SignInSection({ actions }: { actions: SignInActions }) {
 
       <Header level={2}>
         <FormattedMessage
-          id="account.emailSignIn.header"
-          defaultMessage="Sign-In with E-mail"
+          id="t_Signin_with_email"
+          defaultMessage="Sign-in with e-mail"
         />
       </Header>
 

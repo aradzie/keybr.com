@@ -37,7 +37,7 @@ export function OAuthLoginForm() {
               icon={<Icon shape={icon} />}
               label={formatMessage(
                 {
-                  id: "account.socialSignInButton.label",
+                  id: "t_Signin_with_name",
                   defaultMessage: "Sign-in with {name}",
                 },
                 { name },

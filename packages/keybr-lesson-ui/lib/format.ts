@@ -3,7 +3,6 @@ import { SpeedUnit, uiProps } from "@keybr/result";
 import { useSettings } from "@keybr/settings";
 import { useMemo } from "react";
 import { useIntl } from "react-intl";
-import { messages } from "./intl.ts";
 
 export type FormatterOptions = {
   readonly unit?: boolean;
@@ -56,19 +55,31 @@ export const useFormatter = (): Formatter => {
       if (confidence != null) {
         return formatPercents(confidence, 0);
       } else {
-        return formatMessage(messages.uncertainValue);
+        return formatMessage({
+          id: "t_Uncertain",
+          defaultMessage: "Uncertain",
+        });
       }
     };
     const formatLearningRate = (lr: number | null): string => {
       if (lr != null && lr === lr) {
         return signed(
-          formatMessage(messages.learningRateValue, {
-            value: formatSpeed(lr),
-          }),
+          formatMessage(
+            {
+              id: "t_Value_per_lesson",
+              defaultMessage: "{value}/lesson",
+            },
+            {
+              value: formatSpeed(lr),
+            },
+          ),
           lr,
         );
       } else {
-        return formatMessage(messages.uncertainValue);
+        return formatMessage({
+          id: "t_Uncertain",
+          defaultMessage: "Uncertain",
+        });
       }
     };
     return {

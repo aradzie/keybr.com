@@ -3,6 +3,7 @@ import { paddlePriceId } from "@keybr/thirdparties";
 import { Para } from "@keybr/widget";
 import { type PricePreviewResponse } from "@paddle/paddle-js";
 import { useEffect, useState } from "react";
+import { FormattedMessage } from "react-intl";
 import { usePaddle } from "./paddle/use-paddle.ts";
 
 export function AccountPricePreview() {
@@ -33,7 +34,11 @@ export function AccountPricePreview() {
   const [item = null] = preview?.data?.details?.lineItems ?? [];
   return (
     <Para>
-      Premium account price: {item?.formattedTotals?.total ?? <Spinner />}
+      <FormattedMessage
+        id="t_Premium_account_price:"
+        defaultMessage="Premium account price:"
+      />{" "}
+      {item?.formattedTotals?.total ?? <Spinner />}
     </Para>
   );
 }

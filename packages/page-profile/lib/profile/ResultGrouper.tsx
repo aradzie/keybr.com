@@ -51,7 +51,7 @@ export function ResultGrouper({
       <FieldList>
         <Field>
           <FormattedMessage
-            id="profile.widget.groupSelector.label"
+            id="t_Show_statistics_for:"
             defaultMessage="Show statistics for:"
           />
         </Field>
@@ -69,28 +69,28 @@ export function ResultGrouper({
             options={[
               {
                 name: formatMessage({
-                  id: "characterClass.letters",
+                  id: "t_cc_Letters",
                   defaultMessage: "Letters",
                 }),
                 value: "letters",
               },
               {
                 name: formatMessage({
-                  id: "characterClass.digits",
+                  id: "t_cc_Digits",
                   defaultMessage: "Digits",
                 }),
                 value: "digits",
               },
               {
                 name: formatMessage({
-                  id: "characterClass.punctuationCharacters",
+                  id: "t_cc_Punctuation_characters",
                   defaultMessage: "Punctuation characters",
                 }),
                 value: "punctuators",
               },
               {
                 name: formatMessage({
-                  id: "characterClass.specialCharacters",
+                  id: "t_cc_Special_characters",
                   defaultMessage: "Special characters",
                 }),
                 value: "specials",

@@ -17,28 +17,16 @@ export function HighScoresTable({ entries }: EntriesProps): ReactNode {
         <tr>
           <th className={styles.positionColumn}>#</th>
           <th className={styles.userColumn}>
-            <FormattedMessage
-              id="highScores.column.user.label"
-              defaultMessage="User"
-            />
+            <FormattedMessage id="t_User" defaultMessage="User" />
           </th>
           <th className={styles.layoutColumn}>
-            <FormattedMessage
-              id="highScores.column.layout.label"
-              defaultMessage="Layout"
-            />
+            <FormattedMessage id="t_Layout" defaultMessage="Layout" />
           </th>
           <th className={styles.speedColumn}>
-            <FormattedMessage
-              id="highScores.column.speed.label"
-              defaultMessage="Typing Speed"
-            />
+            <FormattedMessage id="t_Speed" defaultMessage="Speed" />
           </th>
           <th className={styles.scoreColumn}>
-            <FormattedMessage
-              id="highScores.column.score.label"
-              defaultMessage="Score"
-            />
+            <FormattedMessage id="t_Score" defaultMessage="Score" />
           </th>
         </tr>
       </thead>

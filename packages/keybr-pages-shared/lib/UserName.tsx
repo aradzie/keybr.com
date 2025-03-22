@@ -22,7 +22,7 @@ export function UserName({
         id != null
           ? name
           : formatMessage({
-              id: "account.anonymousUserName",
+              id: "t_Anonymous_User",
               defaultMessage: "Anonymous User",
             })
       }

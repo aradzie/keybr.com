@@ -40,8 +40,8 @@ export function BooksLessonSettings({
       </Explainer>
       <FieldSet
         legend={formatMessage({
-          id: "settings.lessonOptions.legend",
-          defaultMessage: "Lesson Options",
+          id: "t_Lesson_options",
+          defaultMessage: "Lesson options",
         })}
       >
         <BookSelector
@@ -86,8 +86,8 @@ function BookTextProcessing(): ReactNode {
         <CheckBox
           checked={settings.get(lessonProps.books.lettersOnly)}
           label={formatMessage({
-            id: "settings.customTextLettersOnly.label",
-            defaultMessage: "Remove punctuation",
+            id: "t_Remove_punctuation_characters",
+            defaultMessage: "Remove punctuation characters",
           })}
           title={formatMessage({
             id: "settings.customTextLettersOnly.description",
@@ -103,7 +103,7 @@ function BookTextProcessing(): ReactNode {
         <CheckBox
           checked={settings.get(lessonProps.books.lowercase)}
           label={formatMessage({
-            id: "settings.customTextLowercase.label",
+            id: "t_Transform_to_lowercase",
             defaultMessage: "Transform to lowercase",
           })}
           title={formatMessage({

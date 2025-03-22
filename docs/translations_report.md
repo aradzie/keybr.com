@@ -1,48 +1,45 @@
 # English
 
-Translated: 406 messages, 5010 words
+Translated: 341 messages, 4746 words
 
 Untranslated: 0 messages, 0 words
 
 # Afrikaans
 
-Translated: 403 messages, 5006 words
+Translated: 339 messages, 4744 words
 
-Untranslated: 3 messages, 4 words
+Untranslated: 2 messages, 2 words
 
 * *Letters*
 * *Volume:*
-* *Confidence level*
 
 # Arabic
 
-Translated: 406 messages, 5010 words
+Translated: 341 messages, 4746 words
 
 Untranslated: 0 messages, 0 words
 
 # Bulgarian
 
-Translated: 406 messages, 5010 words
+Translated: 341 messages, 4746 words
 
 Untranslated: 0 messages, 0 words
 
 # Bangla
 
-Translated: 46 messages, 312 words
+Translated: 38 messages, 297 words
 
-Untranslated: 344 messages, 4565 words
+Untranslated: 291 messages, 4329 words
 
 * *GO!*
 * *Copy*
 * *Done*
-* *Help*
 * *Help*
 * *Next*
 * *User*
 * *Books*
 * *Font:*
 * *Reset*
-* *Score*
 * *Score*
 * *Speed*
 * *Visit*
@@ -52,21 +49,22 @@ Untranslated: 344 messages, 4565 words
 * *Account*
 * *Layout:*
 * *Layouts*
+* *Lessons*
+* *Lessons*
 * ...
 
 # Catalan
 
-Translated: 366 messages, 3470 words
+Translated: 303 messages, 3211 words
 
-Untranslated: 37 messages, 1515 words
+Untranslated: 36 messages, 1513 words
 
 * *Errors*
 * *Zones:*
-* *Sound Theme:*
+* *Sound theme:*
 * *Top accuracy*
 * *Explain charts*
 * *Average accuracy*
-* *Hide explanations*
 * *Relative Accuracy*
 * *Repeat each word:*
 * *The previous keys are also above the target speed*
@@ -80,11 +78,12 @@ Untranslated: 37 messages, 1515 words
 * *<p>This indicator shows the current subset of letters used t...*
 * *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
+* *Adjust the amount of basic punctuation characters added to t...*
 * ...
 
 # Czech
 
-Translated: 400 messages, 5001 words
+Translated: 336 messages, 4740 words
 
 Untranslated: 5 messages, 6 words
 
@@ -92,22 +91,21 @@ Untranslated: 5 messages, 6 words
 * *Reset*
 * *Zones:*
 * *Syntax:*
-* *Sound Theme:*
+* *Sound theme:*
 
 # Danish
 
-Translated: 392 messages, 4946 words
+Translated: 328 messages, 4682 words
 
-Untranslated: 12 messages, 42 words
+Untranslated: 11 messages, 42 words
 
-* *Score*
 * *Score*
 * *Layout*
 * *Layout:*
 * *Layouts*
 * *Position*
 * *Multiplayer*
-* *Multiplayer*
+* *Download data*
 * *Bar whitespace*
 * *Average accuracy*
 * *Repeat each word:*
@@ -115,7 +113,7 @@ Untranslated: 12 messages, 42 words
 
 # German
 
-Translated: 397 messages, 4998 words
+Translated: 333 messages, 4737 words
 
 Untranslated: 8 messages, 9 words
 
@@ -126,54 +124,53 @@ Untranslated: 8 messages, 9 words
 * *Syntax:*
 * *Position*
 * *Alphabet:*
-* *Sound Theme:*
+* *Sound theme:*
 
 # Greek
 
-Translated: 404 messages, 5008 words
+Translated: 340 messages, 4745 words
 
-Untranslated: 2 messages, 2 words
+Untranslated: 1 messages, 1 words
 
-* *Multiplayer*
 * *Multiplayer*
 
 # Esperanto
 
-Translated: 81 messages, 1137 words
+Translated: 77 messages, 1126 words
 
-Untranslated: 315 messages, 3804 words
+Untranslated: 257 messages, 3562 words
 
 * *GO!*
 * *Copy*
 * *Done*
 * *Help*
-* *Help*
 * *Next*
-* *Time*
 * *Time*
 * *Books*
 * *Close*
 * *Font:*
 * *Reset*
-* *Score*
-* *Speed*
 * *Speed*
 * *Visit*
 * *Errors*
 * *Typing*
 * *Zones:*
 * *Layouts*
+* *Lessons*
+* *Lessons*
+* *Not set*
+* *Numbers*
 * ...
 
 # Spanish
 
-Translated: 406 messages, 5010 words
+Translated: 341 messages, 4746 words
 
 Untranslated: 0 messages, 0 words
 
 # Estonian
 
-Translated: 403 messages, 5007 words
+Translated: 338 messages, 4743 words
 
 Untranslated: 3 messages, 3 words
 
@@ -183,19 +180,18 @@ Untranslated: 3 messages, 3 words
 
 # Persian
 
-Translated: 349 messages, 3075 words
+Translated: 286 messages, 2816 words
 
-Untranslated: 54 messages, 1910 words
+Untranslated: 53 messages, 1908 words
 
 * *Books*
 * *Zones:*
 * *Syntax:*
-* *Sound Theme:*
+* *Sound theme:*
 * *Top accuracy*
 * *Explain charts*
 * *Accuracy Streaks*
 * *Average accuracy*
-* *Hide explanations*
 * *Relative Accuracy*
 * *Repeat each word:*
 * *Keyboard hardware emulates layout*
@@ -207,16 +203,16 @@ Untranslated: 54 messages, 1910 words
 * *This is a histogram of the accuracies of all users, and your...*
 * *Show color coding of the keyboard zones. Use this option to ...*
 * *Bar color: {label1} – hit count, {label2} – miss count, {lab...*
+* *Generate typing lessons from the text of a book. All keys ar...*
 * ...
 
 # Finnish
 
-Translated: 245 messages, 2274 words
+Translated: 207 messages, 2162 words
 
-Untranslated: 153 messages, 2672 words
+Untranslated: 128 messages, 2528 words
 
 * *GO!*
-* *Time*
 * *Time*
 * *Layouts*
 * *Metrics*
@@ -224,32 +220,31 @@ Untranslated: 153 messages, 2672 words
 * *Syntax:*
 * *Position*
 * *Practice*
+* *Settings*
 * *Top speed*
-* *Top Speed*
-* *Top Speed*
 * *Uncertain*
 * *Characters*
 * *Top speed!*
 * *High Scores*
-* *High Scores*
 * *Multiplayer*
-* *Multiplayer*
-* *Settings...*
+* *Smoothness:*
+* *Play sounds:*
+* *Average speed*
+* *Benford’s law*
+* *Download data*
 * ...
 
 # Filipino
 
-Translated: 22 messages, 97 words
+Translated: 21 messages, 95 words
 
-Untranslated: 368 messages, 4781 words
+Untranslated: 307 messages, 4529 words
 
 * *GO!*
 * *Copy*
 * *Done*
 * *Help*
-* *Help*
 * *Next*
-* *Time*
 * *Time*
 * *User*
 * *Books*
@@ -257,32 +252,33 @@ Untranslated: 368 messages, 4781 words
 * *Font:*
 * *Reset*
 * *Score*
-* *Score*
 * *Speed*
 * *Speed*
 * *Visit*
 * *Errors*
 * *Layout*
+* *Typing*
+* *Account*
+* *Layout:*
 * ...
 
 # Faroese
 
-Translated: 48 messages, 587 words
+Translated: 44 messages, 583 words
 
-Untranslated: 346 messages, 4341 words
+Untranslated: 289 messages, 4094 words
 
 * *GO!*
 * *Copy*
 * *Done*
 * *Help*
-* *Help*
 * *Next*
-* *Time*
 * *Time*
 * *Books*
 * *Close*
 * *Font:*
 * *Reset*
+* *Speed*
 * *Speed*
 * *Visit*
 * *Errors*
@@ -291,11 +287,12 @@ Untranslated: 346 messages, 4341 words
 * *Zones:*
 * *Account*
 * *Layout:*
+* *Layouts*
 * ...
 
 # French
 
-Translated: 388 messages, 4648 words
+Translated: 323 messages, 4384 words
 
 Untranslated: 18 messages, 362 words
 
@@ -320,37 +317,37 @@ Untranslated: 18 messages, 362 words
 
 # Irish
 
-Translated: 401 messages, 4996 words
+Translated: 337 messages, 4735 words
 
 Untranslated: 4 messages, 11 words
 
 * *Zones:*
 * *Smoothness:*
-* *Sound Theme:*
+* *Sound theme:*
 * *M|T|W|T|F|S|S*
 
 # Hebrew
 
-Translated: 406 messages, 5010 words
+Translated: 341 messages, 4746 words
 
 Untranslated: 0 messages, 0 words
 
 # Croatian
 
-Translated: 402 messages, 5006 words
+Translated: 337 messages, 4740 words
 
-Untranslated: 4 messages, 4 words
+Untranslated: 4 messages, 6 words
 
 * *Font:*
 * *Reset*
 * *Multiplayer*
-* *Multiplayer*
+* *Premium account price:*
 
 # Hungarian
 
-Translated: 333 messages, 3907 words
+Translated: 270 messages, 3646 words
 
-Untranslated: 70 messages, 1078 words
+Untranslated: 69 messages, 1078 words
 
 * *Books*
 * *Font:*
@@ -359,64 +356,65 @@ Untranslated: 70 messages, 1078 words
 * *Syntax:*
 * *Volume:*
 * *Alphabet:*
-* *Language:*
-* *No Sounds*
-* *All Sounds*
+* *No sounds*
+* *All sounds*
 * *Box cursor*
 * *Line cursor*
-* *Source Code*
+* *Source code*
 * *Block cursor*
-* *Sound Theme:*
+* *Sound theme:*
 * *Top accuracy*
 * *No whitespace*
 * *Smooth cursor*
 * *Bar whitespace*
 * *Explain charts*
+* *Highlight keys*
 * ...
 
 # Indonesian
 
-Translated: 403 messages, 5007 words
+Translated: 337 messages, 4740 words
 
-Untranslated: 3 messages, 3 words
+Untranslated: 4 messages, 6 words
 
 * *GO!*
 * *Font:*
 * *Keyboard*
+* *Premium account price:*
 
 # Icelandic
 
-Translated: 106 messages, 1767 words
+Translated: 95 messages, 1742 words
 
-Untranslated: 290 messages, 3174 words
+Untranslated: 239 messages, 2946 words
 
 * *GO!*
 * *Copy*
 * *Done*
 * *Help*
-* *Help*
 * *Next*
-* *Time*
 * *Time*
 * *Books*
 * *Close*
 * *Font:*
 * *Reset*
 * *Retry*
-* *Score*
-* *Speed*
 * *Speed*
 * *Visit*
 * *Errors*
 * *Typing*
 * *Zones:*
+* *Account*
+* *Layouts*
+* *Lessons*
+* *Metrics*
 * ...
 
 # Italian
 
-Translated: 399 messages, 5002 words
+Translated: 333 messages, 4735 words
 
-Untranslated: 6 messages, 6 words
+Untranslated: 7 messages, 9 words
 
 * *Font:*
 * *Layout*
@@ -424,12 +422,13 @@ Untranslated: 6 messages, 6 words
 * *Layout:*
 * *Layouts*
 * *Volume:*
+* *Premium account price:*
 
 # Japanese
 
-Translated: 258 messages, 2324 words
+Translated: 207 messages, 2149 words
 
-Untranslated: 144 messages, 2658 words
+Untranslated: 131 messages, 2572 words
 
 * *GO!*
 * *Books*
@@ -441,23 +440,23 @@ Untranslated: 144 messages, 2658 words
 * *Volume:*
 * *Alphabet:*
 * *Examples:*
-* *Language:*
-* *No Sounds*
+* *No sounds*
 * *Translate*
-* *All Sounds*
+* *All sounds*
 * *Box cursor*
 * *Last speed*
 * *Top score!*
 * *Top speed!*
-* *High Scores*
 * *Line cursor*
+* *Source code*
+* *Block cursor*
 * ...
 
 # Korean
 
-Translated: 155 messages, 1097 words
+Translated: 107 messages, 928 words
 
-Untranslated: 246 messages, 3866 words
+Untranslated: 230 messages, 3774 words
 
 * *Copy*
 * *Done*
@@ -483,9 +482,9 @@ Untranslated: 246 messages, 3866 words
 
 # Lithuanian
 
-Translated: 172 messages, 1308 words
+Translated: 149 messages, 1255 words
 
-Untranslated: 227 messages, 3636 words
+Untranslated: 186 messages, 3427 words
 
 * *Reset*
 * *Visit*
@@ -493,35 +492,33 @@ Untranslated: 227 messages, 3636 words
 * *Not set*
 * *Options*
 * *Preview*
-* *Accuracy*
 * *Chapters*
 * *Practice*
 * *Previous*
-* *Top Speed*
-* *Top Speed*
 * *Uncertain*
 * *Box cursor*
-* *Custom Text*
+* *Custom text*
 * *Line cursor*
-* *Multiplayer*
 * *Multiplayer*
 * *Smoothness:*
 * *Whitespace:*
+* *Block cursor*
+* *Common words*
+* *Sound theme:*
+* *Typing Speed*
 * ...
 
 # Mongolian
 
-Translated: 17 messages, 380 words
+Translated: 16 messages, 378 words
 
-Untranslated: 375 messages, 4519 words
+Untranslated: 315 messages, 4270 words
 
 * *GO!*
 * *Copy*
 * *Done*
 * *Help*
-* *Help*
 * *Next*
-* *Time*
 * *Time*
 * *User*
 * *Books*
@@ -530,24 +527,24 @@ Untranslated: 375 messages, 4519 words
 * *Reset*
 * *Retry*
 * *Score*
-* *Score*
 * *Speed*
 * *Speed*
 * *Visit*
 * *Digits*
+* *Errors*
+* *Layout*
+* *Resend*
 * ...
 
 # Norwegian Bokmål
 
-Translated: 127 messages, 1888 words
+Translated: 120 messages, 1872 words
 
-Untranslated: 269 messages, 3053 words
+Untranslated: 214 messages, 2816 words
 
 * *GO!*
 * *Done*
 * *Help*
-* *Help*
-* *Time*
 * *Time*
 * *Books*
 * *Font:*
@@ -559,60 +556,63 @@ Untranslated: 269 messages, 3053 words
 * *Account*
 * *Layouts*
 * *Lessons*
-* *Lessons*
 * *Metrics*
 * *Not set*
 * *Options*
+* *Preview*
+* *Profile*
+* *Sign-In*
 * ...
 
 # Nepali
 
-Translated: 403 messages, 5004 words
+Translated: 339 messages, 4743 words
 
 Untranslated: 2 messages, 3 words
 
 * *Zones:*
-* *Sound Theme:*
+* *Sound theme:*
 
 # Dutch
 
-Translated: 393 messages, 4991 words
+Translated: 331 messages, 4731 words
 
-Untranslated: 11 messages, 14 words
+Untranslated: 9 messages, 13 words
 
-* *Score*
 * *Score*
 * *Zones:*
 * *Account*
 * *Letters*
 * *Volume:*
 * *Multiplayer*
-* *Multiplayer*
-* *Sound Theme:*
-* *Premium Account*
-* *Premium Account*
+* *Sound theme:*
+* *Premium account*
+* *Premium account price:*
 
 # Polish
 
-Translated: 406 messages, 5010 words
+Translated: 340 messages, 4743 words
 
-Untranslated: 0 messages, 0 words
+Untranslated: 1 messages, 3 words
+
+* *Premium account price:*
 
 # Brazilian Portuguese
 
-Translated: 403 messages, 5007 words
+Translated: 337 messages, 4740 words
 
-Untranslated: 3 messages, 3 words
+Untranslated: 4 messages, 6 words
 
 * *Layout*
 * *Layout:*
 * *Layouts*
+* *Premium account price:*
 
 # European Portuguese
 
-Translated: 382 messages, 4859 words
+Translated: 318 messages, 4597 words
 
-Untranslated: 21 messages, 126 words
+Untranslated: 21 messages, 127 words
 
 * *Books*
 * *Layout*
@@ -622,15 +622,15 @@ Untranslated: 21 messages, 126 words
 * *Volume:*
 * *Top score!*
 * *Top speed!*
-* *Sound Theme:*
+* *Sound theme:*
 * *Top accuracy*
 * *Explain charts*
 * *Average accuracy*
-* *Hide explanations*
 * *Relative Accuracy*
 * *Repeat each word:*
 * *Daily goal reached!*
 * *New letter unlocked!*
+* *Premium account price:*
 * *This is a histogram of the accuracies of all users, and your...*
 * *Generate typing lessons from the text of a book. All keys ar...*
 * *Repeat each word a number of times. Type a word for the firs...*
@@ -638,9 +638,9 @@ Untranslated: 21 messages, 126 words
 
 # Romanian
 
-Translated: 348 messages, 3585 words
+Translated: 288 messages, 3350 words
 
-Untranslated: 46 messages, 1329 words
+Untranslated: 43 messages, 1305 words
 
 * *Font:*
 * *Layout*
@@ -650,29 +650,29 @@ Untranslated: 46 messages, 1329 words
 * *Layouts*
 * *Translate*
 * *Multiplayer*
-* *Multiplayer*
-* *Sound Theme:*
+* *Sound theme:*
 * *Top accuracy*
 * *Forgive errors*
 * *Average accuracy*
 * *Relative Accuracy*
 * *Repeat each word:*
 * *Start in {countDown}*
-* *Learn to type faster.*
+* *Premium account price:*
 * *Enter full-screen mode.*
-* *Typing speed in the last lesson ({speedUnitName}). The more,...*
-* *Average typing speed in all lessons ({speedUnitName}). The m...*
+* *<h1>Connecting to Server...</h1><p>Establishing connection t...*
+* *<p>The precise meaning of each indicator color is given in t...*
+* *<h1>Kicked out of the Game</h1><p>You were kicked out of the...*
 * ...
 
 # Russian
 
-Translated: 406 messages, 5010 words
+Translated: 341 messages, 4746 words
 
 Untranslated: 0 messages, 0 words
 
 # Slovak
 
-Translated: 405 messages, 5009 words
+Translated: 340 messages, 4745 words
 
 Untranslated: 1 messages, 1 words
 
@@ -680,73 +680,71 @@ Untranslated: 1 messages, 1 words
 
 # Slovenian
 
-Translated: 92 messages, 1909 words
+Translated: 89 messages, 1899 words
 
-Untranslated: 304 messages, 3032 words
+Untranslated: 245 messages, 2789 words
 
 * *GO!*
 * *Copy*
 * *Done*
 * *Help*
-* *Help*
 * *Next*
-* *Time*
 * *Time*
 * *Books*
 * *Close*
 * *Font:*
 * *Reset*
-* *Score*
-* *Speed*
 * *Speed*
 * *Visit*
 * *Errors*
 * *Typing*
 * *Zones:*
 * *Account*
+* *Layouts*
+* *Lessons*
+* *Lessons*
+* *Metrics*
 * ...
 
 # Albanian
 
-Translated: 44 messages, 685 words
+Translated: 43 messages, 684 words
 
-Untranslated: 350 messages, 4243 words
+Untranslated: 290 messages, 3993 words
 
 * *GO!*
 * *Copy*
 * *Done*
 * *Help*
-* *Help*
 * *Next*
-* *Time*
 * *Time*
 * *User*
 * *Books*
 * *Close*
 * *Font:*
 * *Reset*
-* *Score*
 * *Score*
 * *Speed*
 * *Speed*
 * *Visit*
 * *Errors*
 * *Layout*
+* *Typing*
+* *Zones:*
+* *Account*
 * ...
 
 # Serbian
 
-Translated: 11 messages, 51 words
+Translated: 10 messages, 49 words
 
-Untranslated: 379 messages, 4826 words
+Untranslated: 319 messages, 4577 words
 
 * *GO!*
 * *Copy*
 * *Done*
 * *Help*
-* *Help*
 * *Next*
-* *Time*
 * *Time*
 * *User*
 * *Books*
@@ -754,19 +752,21 @@ Untranslated: 379 messages, 4826 words
 * *Font:*
 * *Reset*
 * *Score*
-* *Score*
 * *Speed*
 * *Speed*
 * *Visit*
 * *Digits*
 * *Errors*
+* *Layout*
+* *Typing*
+* *Zones:*
 * ...
 
 # Swedish
 
-Translated: 387 messages, 4892 words
+Translated: 324 messages, 4632 words
 
-Untranslated: 16 messages, 93 words
+Untranslated: 15 messages, 92 words
 
 * *Font:*
 * *Layout*
@@ -775,8 +775,7 @@ Untranslated: 16 messages, 93 words
 * *Layouts*
 * *Syntax:*
 * *Multiplayer*
-* *Multiplayer*
-* *Sound Theme:*
+* *Sound theme:*
 * *Top accuracy*
 * *Average accuracy*
 * *Relative Accuracy*
@@ -787,25 +786,26 @@ Untranslated: 16 messages, 93 words
 
 # Thai
 
-Translated: 394 messages, 4899 words
+Translated: 329 messages, 4635 words
 
-Untranslated: 9 messages, 86 words
+Untranslated: 10 messages, 89 words
 
 * *Zones:*
-* *Sound Theme:*
+* *Sound theme:*
 * *Top accuracy*
 * *Average accuracy*
 * *Relative Accuracy*
 * *Repeat each word:*
+* *Premium account price:*
 * *This is a histogram of the accuracies of all users, and your...*
 * *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
 
 # Turkish
 
-Translated: 285 messages, 2361 words
+Translated: 227 messages, 2126 words
 
-Untranslated: 115 messages, 2591 words
+Untranslated: 109 messages, 2565 words
 
 * *Books*
 * *Font:*
@@ -815,23 +815,23 @@ Untranslated: 115 messages, 2591 words
 * *Sign-In*
 * *Syntax:*
 * *Alphabet:*
-* *Language:*
 * *Box cursor*
 * *Line cursor*
-* *Source Code*
+* *Source code*
 * *Whitespace:*
 * *Block cursor*
 * *Top accuracy*
 * *No whitespace*
 * *Smooth cursor*
 * *Bar whitespace*
-* *Custom text...*
 * *Emulate layout*
+* *Explain charts*
+* *Highlight keys*
 * ...
 
 # Ukrainian
 
-Translated: 406 messages, 5010 words
+Translated: 341 messages, 4746 words
 
 Untranslated: 0 messages, 0 words
 
@@ -839,15 +839,13 @@ Untranslated: 0 messages, 0 words
 
 Translated: 11 messages, 172 words
 
-Untranslated: 380 messages, 4713 words
+Untranslated: 319 messages, 4462 words
 
 * *GO!*
 * *Copy*
 * *Done*
 * *Help*
-* *Help*
 * *Next*
-* *Time*
 * *Time*
 * *User*
 * *Books*
@@ -856,18 +854,20 @@ Untranslated: 380 messages, 4713 words
 * *Reset*
 * *Retry*
 * *Score*
-* *Score*
 * *Speed*
 * *Speed*
 * *Visit*
 * *Digits*
+* *Errors*
+* *Layout*
+* *Resend*
 * ...
 
 # Vietnamese
 
-Translated: 311 messages, 2027 words
+Translated: 250 messages, 1796 words
 
-Untranslated: 90 messages, 2938 words
+Untranslated: 87 messages, 2908 words
 
 * *Visit*
 * *Typing*
@@ -875,7 +875,7 @@ Untranslated: 90 messages, 2938 words
 * *Box cursor*
 * *Line cursor*
 * *Block cursor*
-* *Sound Theme:*
+* *Sound theme:*
 * *Top accuracy*
 * *Unique words*
 * *M|T|W|T|F|S|S*
@@ -887,13 +887,13 @@ Untranslated: 90 messages, 2938 words
 * *Repeat each word:*
 * *Key Frequency Heatmap*
 * *Relative Typing Speed*
+* *Premium account price:*
 * *Key Frequency Histogram*
-* *Key Typing Speed Histogram*
 * ...
 
 # Simplified Chinese
 
-Translated: 405 messages, 5003 words
+Translated: 340 messages, 4739 words
 
 Untranslated: 1 messages, 7 words
 
@@ -901,13 +901,13 @@ Untranslated: 1 messages, 7 words
 
 # Traditional Chinese
 
-Translated: 406 messages, 5010 words
+Translated: 341 messages, 4746 words
 
 Untranslated: 0 messages, 0 words
 
 # Chinese (Taiwan)
 
-Translated: 405 messages, 5009 words
+Translated: 340 messages, 4745 words
 
 Untranslated: 1 messages, 1 words
 

@@ -41,8 +41,8 @@ export function CustomTextLessonSettings({
 
       <FieldSet
         legend={formatMessage({
-          id: "settings.lessonOptions.legend",
-          defaultMessage: "Lesson Options",
+          id: "t_Lesson_options",
+          defaultMessage: "Lesson options",
         })}
       >
         <CustomTextInput />
@@ -64,10 +64,7 @@ function CustomTextInput(): ReactNode {
   return (
     <>
       <Para>
-        <FormattedMessage
-          id="settings.customTextExamples.label"
-          defaultMessage="Examples:"
-        />{" "}
+        <FormattedMessage id="t_Examples:" defaultMessage="Examples:" />{" "}
         {exampleTexts.map(({ title, content }, index) => (
           <span key={index}>
             {index > 0 ? ", " : null}
@@ -87,8 +84,8 @@ function CustomTextInput(): ReactNode {
         <TextField
           type="textarea"
           placeholder={formatMessage({
-            id: "settings.customTextInput.placeholder",
-            defaultMessage: "Custom text...",
+            id: "t_Custom_text",
+            defaultMessage: "Custom text",
           })}
           value={settings.get(lessonProps.customText.content)}
           onChange={(value) => {
@@ -118,7 +115,7 @@ function CustomTextStats({
       <Field>
         <NameValue
           name={formatMessage({
-            id: "textStats.numAllWords",
+            id: "t_num_All_words",
             defaultMessage: "All words",
           })}
           value={formatNumber(numWords)}
@@ -127,7 +124,7 @@ function CustomTextStats({
       <Field>
         <NameValue
           name={formatMessage({
-            id: "textStats.numUniqueWords",
+            id: "t_num_Unique_words",
             defaultMessage: "Unique words",
           })}
           value={formatNumber(numUniqueWords)}
@@ -136,7 +133,7 @@ function CustomTextStats({
       <Field>
         <NameValue
           name={formatMessage({
-            id: "textStats.averageWordLength",
+            id: "t_Average_word_length",
             defaultMessage: "Average word length",
           })}
           value={formatNumber(avgWordLength, 2)}
@@ -155,8 +152,8 @@ function CustomTextProcessing(): ReactNode {
         <CheckBox
           checked={settings.get(lessonProps.customText.lettersOnly)}
           label={formatMessage({
-            id: "settings.customTextLettersOnly.label",
-            defaultMessage: "Remove punctuation",
+            id: "t_Remove_punctuation_characters",
+            defaultMessage: "Remove punctuation characters",
           })}
           title={formatMessage({
             id: "settings.customTextLettersOnly.description",
@@ -174,7 +171,7 @@ function CustomTextProcessing(): ReactNode {
         <CheckBox
           checked={settings.get(lessonProps.customText.lowercase)}
           label={formatMessage({
-            id: "settings.customTextLowercase.label",
+            id: "t_Transform_to_lowercase",
             defaultMessage: "Transform to lowercase",
           })}
           title={formatMessage({
@@ -193,7 +190,7 @@ function CustomTextProcessing(): ReactNode {
         <CheckBox
           checked={settings.get(lessonProps.customText.randomize)}
           label={formatMessage({
-            id: "settings.customTextRandomize.label",
+            id: "t_Shuffle_words",
             defaultMessage: "Shuffle words",
           })}
           title={formatMessage({

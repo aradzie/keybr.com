@@ -48,10 +48,6 @@ export const Lane = memo(function Lane({
       </div>
       <div className={styles.details}>
         <NameValue
-          title={formatMessage({
-            id: "multiplayer.track.position.description",
-            defaultMessage: "Position on the track.",
-          })}
           name={formatMessage({
             id: "multiplayer.track.position.label",
             defaultMessage: "Position",
@@ -64,10 +60,6 @@ export const Lane = memo(function Lane({
           }
         />
         <NameValue
-          title={formatMessage({
-            id: "multiplayer.track.distance.description",
-            defaultMessage: "Distance completed.",
-          })}
           name={formatMessage({
             id: "multiplayer.track.distance.label",
             defaultMessage: "Progress",
@@ -80,12 +72,8 @@ export const Lane = memo(function Lane({
           }
         />
         <NameValue
-          title={formatMessage({
-            id: "multiplayer.track.name.description",
-            defaultMessage: "Typing speed.",
-          })}
           name={formatMessage({
-            id: "multiplayer.track.name.label",
+            id: "multiplayer.track.speed.label",
             defaultMessage: "Speed",
           })}
           value={
@@ -96,10 +84,6 @@ export const Lane = memo(function Lane({
           }
         />
         <NameValue
-          title={formatMessage({
-            id: "multiplayer.track.errors.description",
-            defaultMessage: "Number of errors.",
-          })}
           name={formatMessage({
             id: "multiplayer.track.errors.label",
             defaultMessage: "Errors",

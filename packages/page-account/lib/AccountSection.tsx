@@ -33,8 +33,8 @@ export function AccountSection({
 
       <FieldSet
         legend={formatMessage({
-          id: "account.accountDetails.legend",
-          defaultMessage: "Account Details",
+          id: "t_Account_details",
+          defaultMessage: "Account details",
         })}
       >
         <Para>
@@ -51,8 +51,8 @@ export function AccountSection({
         <Para>
           <CheckBox
             label={formatMessage({
-              id: "account.widget.anonymize.label",
-              defaultMessage: "Anonymize Me",
+              id: "t_Anonymize_me",
+              defaultMessage: "Anonymize me",
             })}
             checked={user.anonymized}
             onChange={() => {
@@ -75,8 +75,8 @@ export function AccountSection({
             }}
             icon={<Icon shape={mdiExitToApp} />}
             label={formatMessage({
-              id: "account.widget.signOut.label",
-              defaultMessage: "Sign Out",
+              id: "t_Sing_out",
+              defaultMessage: "Sign out",
             })}
           />
         </Para>
@@ -84,19 +84,19 @@ export function AccountSection({
 
       <FieldSet
         legend={formatMessage({
-          id: "account.premiumAccount.legend",
-          defaultMessage: "Premium Account",
+          id: "t_Premium_account",
+          defaultMessage: "Premium account",
         })}
       >
         {isPremiumUser(publicUser) ? (
           <FormattedMessage
-            id="account.premiumAccountOverview"
+            id="account.premiumAccount.description"
             defaultMessage="<p>Thank you for purchasing a premium account! Now you can enjoy additional features and an ad-free experience.</p>"
           />
         ) : (
           <>
             <FormattedMessage
-              id="account.freeAccountOverview"
+              id="account.freeAccount.description"
               defaultMessage={
                 "<p>Buy a <strong>premium account</strong> to unlock additional features and enjoy an ad-free experience. Here is the list of premium account benefits:</p>" +
                 "<ul>" +
@@ -117,8 +117,8 @@ export function AccountSection({
                 }}
                 icon={<Icon shape={mdiCreditCard} />}
                 label={formatMessage({
-                  id: "account.widget.checkout.label",
-                  defaultMessage: "Buy a Premium Account",
+                  id: "t_Buy_a_premium_",
+                  defaultMessage: "Buy a premium account",
                 })}
               />
             </Para>
@@ -128,8 +128,8 @@ export function AccountSection({
 
       <FieldSet
         legend={formatMessage({
-          id: "account.deleteAccount.legend",
-          defaultMessage: "Delete Account",
+          id: "t_Delete_account",
+          defaultMessage: "Delete account",
         })}
       >
         <Para>
@@ -139,8 +139,8 @@ export function AccountSection({
             }}
             icon={<Icon shape={mdiDeleteForever} />}
             label={formatMessage({
-              id: "account.widget.deleteAccount.label",
-              defaultMessage: "Delete Account",
+              id: "t_Delete_account",
+              defaultMessage: "Delete account",
             })}
           />
         </Para>

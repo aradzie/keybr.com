@@ -38,37 +38,37 @@ export function LessonSettings(): ReactNode {
       >
         <Tab
           label={formatMessage({
-            id: "lessonType.guided.name",
-            defaultMessage: "Guided Lessons",
+            id: "t_Guided_lessons",
+            defaultMessage: "Guided lessons",
           })}
         />
         <Tab
           label={formatMessage({
-            id: "lessonType.wordlist.name",
-            defaultMessage: "Common Words",
+            id: "t_Common_words",
+            defaultMessage: "Common words",
           })}
         />
         <Tab
           label={formatMessage({
-            id: "lessonType.books.name",
+            id: "t_Books",
             defaultMessage: "Books",
           })}
         />
         <Tab
           label={formatMessage({
-            id: "lessonType.customText.name",
-            defaultMessage: "Custom Text",
+            id: "t_Custom_text",
+            defaultMessage: "Custom text",
           })}
         />
         <Tab
           label={formatMessage({
-            id: "lessonType.code.name",
-            defaultMessage: "Source Code",
+            id: "t_Source_code",
+            defaultMessage: "Source code",
           })}
         />
         <Tab
           label={formatMessage({
-            id: "lessonType.numbers.name",
+            id: "t_Numbers",
             defaultMessage: "Numbers",
           })}
         />

@@ -94,10 +94,7 @@ export function LayoutsPage() {
       </dl>
       <FieldList>
         <Field>
-          <FormattedMessage
-            id="page.layouts.language"
-            defaultMessage="Language:"
-          />
+          <FormattedMessage id="t_Language:" defaultMessage="Language:" />
         </Field>
         <Field>
           <OptionList
@@ -119,7 +116,7 @@ export function LayoutsPage() {
               <FieldList>
                 <Field>
                   <FormattedMessage
-                    id="page.layouts.alphabet"
+                    id="t_Alphabet:"
                     defaultMessage="Alphabet:"
                   />
                 </Field>

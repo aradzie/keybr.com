@@ -68,14 +68,14 @@ export function AccuracyHistogramSection({ stats }: { stats: SummaryStats }) {
             period === "average"
               ? {
                   label: formatMessage({
-                    id: "metric.averageAccuracy.name",
+                    id: "t_Average_accuracy",
                     defaultMessage: "Average accuracy",
                   }),
                   value,
                 }
               : {
                   label: formatMessage({
-                    id: "metric.topAccuracy.name",
+                    id: "t_Top_accuracy",
                     defaultMessage: "Top accuracy",
                   }),
                   value,
@@ -93,7 +93,10 @@ export function AccuracyHistogramSection({ stats }: { stats: SummaryStats }) {
             name="period"
             value="average"
             checked={period === "average"}
-            label="Average Accuracy"
+            label={formatMessage({
+              id: "t_Average_accuracy",
+              defaultMessage: "Average accuracy",
+            })}
             onSelect={() => {
               setPeriod("average");
             }}
@@ -104,7 +107,10 @@ export function AccuracyHistogramSection({ stats }: { stats: SummaryStats }) {
             name="period"
             value="top"
             checked={period === "top"}
-            label="Top Accuracy"
+            label={formatMessage({
+              id: "t_Top_accuracy",
+              defaultMessage: "Top accuracy",
+            })}
             onSelect={() => {
               setPeriod("top");
             }}

@@ -29,8 +29,8 @@ export function GuidedLessonSettings({
       </Explainer>
       <FieldSet
         legend={formatMessage({
-          id: "settings.lessonOptions.legend",
-          defaultMessage: "Lesson Options",
+          id: "t_Lesson_options",
+          defaultMessage: "Lesson options",
         })}
       >
         <TargetSpeedProp />

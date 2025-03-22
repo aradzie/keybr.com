@@ -6,7 +6,6 @@ import { clsx } from "clsx";
 import { useIntl } from "react-intl";
 import { useFormatter } from "./format.ts";
 import { Happiness } from "./Happiness.tsx";
-import { messages } from "./intl.ts";
 import * as styles from "./styles.module.less";
 
 export const KeyDetails = ({ lessonKey }: { lessonKey: LessonKey }) => {
@@ -29,31 +28,46 @@ export const KeyDetails = ({ lessonKey }: { lessonKey: LessonKey }) => {
     return (
       <span className={clsx(styles.keyDetails, styles.keyDetails_calibrated)}>
         <NameValue
-          name={<Name name={formatMessage(messages.lastSpeedName)} />}
+          name={
+            <Name
+              name={formatMessage({
+                id: "t_Last_speed",
+                defaultMessage: "Last speed",
+              })}
+            />
+          }
           value={
             <Value>
               {`${formatSpeed(timeToSpeed(timeToType))}`}
               {` (${formatConfidence(confidence)})`}
             </Value>
           }
-          title={formatMessage(messages.lastSpeedDescription, {
-            speedUnitName,
-          })}
         />
         <NameValue
-          name={<Name name={formatMessage(messages.topSpeedName)} />}
+          name={
+            <Name
+              name={formatMessage({
+                id: "t_Top_speed",
+                defaultMessage: "Top speed",
+              })}
+            />
+          }
           value={
             <Value>
               {`${formatSpeed(timeToSpeed(bestTimeToType))}`}
               {` (${formatConfidence(bestConfidence)})`}
             </Value>
           }
-          title={formatMessage(messages.topSpeedDescription, {
-            speedUnitName,
-          })}
         />
         <NameValue
-          name={<Name name={formatMessage(messages.learningRateName)} />}
+          name={
+            <Name
+              name={formatMessage({
+                id: "t_Learning_rate",
+                defaultMessage: "Learning rate",
+              })}
+            />
+          }
           value={
             <Value
               value={
@@ -66,14 +80,16 @@ export const KeyDetails = ({ lessonKey }: { lessonKey: LessonKey }) => {
               delta={learningRate ?? 0}
             />
           }
-          title={formatMessage(messages.learningRateDescription)}
         />
       </span>
     );
   } else {
     return (
       <span className={clsx(styles.keyDetails, styles.keyDetails_uncalibrated)}>
-        {formatMessage(messages.notCalibratedText)}
+        {formatMessage({
+          id: "t_Not_calibrated_",
+          defaultMessage: "Not calibrated, need more samples.",
+        })}
       </span>
     );
   }

@@ -6,7 +6,6 @@ export * from "./EffortLegend.tsx";
 export * from "./format.ts";
 export * from "./gauges.tsx";
 export * from "./indicators.tsx";
-export * from "./intl.ts";
 export * from "./Key.tsx";
 export * from "./KeyDetails.tsx";
 export * from "./KeyLegend.tsx";

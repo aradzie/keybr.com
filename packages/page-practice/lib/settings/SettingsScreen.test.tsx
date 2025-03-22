@@ -30,12 +30,12 @@ test("render", async () => {
 
   fireEvent.click(r.getByText("Lessons"));
 
-  isNotNull(r.queryByText("Lesson Options"));
-  isNotNull(r.queryByText("Lesson Preview"));
+  isNotNull(r.queryByText("Lesson options"));
+  isNotNull(r.queryByText("Lesson preview"));
 
   fireEvent.click(r.getByText("Typing"));
 
-  isNotNull(r.queryByText("Typing Options"));
+  isNotNull(r.queryByText("Typing options"));
 
   fireEvent.click(r.getByText("Keyboard"));
 
@@ -44,7 +44,7 @@ test("render", async () => {
 
   fireEvent.click(r.getByText("Miscellaneous"));
 
-  isNotNull(r.queryByText("Interface Options"));
+  isNotNull(r.queryByText("Interface options"));
 
   r.unmount();
 });

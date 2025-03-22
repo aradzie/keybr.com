@@ -33,7 +33,7 @@ export function KeyboardSettings(): ReactNode {
     <>
       <FieldSet
         legend={formatMessage({
-          id: "settings.options.legend",
+          id: "t_Options",
           defaultMessage: "Options",
         })}
       >
@@ -41,7 +41,7 @@ export function KeyboardSettings(): ReactNode {
       </FieldSet>
       <FieldSet
         legend={formatMessage({
-          id: "settings.preview.legend",
+          id: "t_Preview",
           defaultMessage: "Preview",
         })}
       >
@@ -66,10 +66,7 @@ function LayoutProp(): ReactNode {
     <>
       <FieldList>
         <Field>
-          <FormattedMessage
-            id="keyboard.language.label"
-            defaultMessage="Language:"
-          />
+          <FormattedMessage id="t_Language:" defaultMessage="Language:" />
         </Field>
         <Field>
           <OptionList
@@ -93,10 +90,7 @@ function LayoutProp(): ReactNode {
           />
         </Field>
         <Field>
-          <FormattedMessage
-            id="keyboard.layout.label"
-            defaultMessage="Layout:"
-          />
+          <FormattedMessage id="t_Layout:" defaultMessage="Layout:" />
         </Field>
         <Field>
           <OptionList
@@ -128,7 +122,7 @@ function LayoutProp(): ReactNode {
             }
             disabled={!options.layout.emulate}
             label={formatMessage({
-              id: "keyboard.emulation.forward.label",
+              id: "t_Emulate_layout",
               defaultMessage: "Emulate layout",
             })}
             onChange={(value) => {
@@ -158,7 +152,7 @@ function LayoutProp(): ReactNode {
             }
             disabled={!options.layout.emulate}
             label={formatMessage({
-              id: "keyboard.emulation.reverse.label",
+              id: "t_Keyboard_hardware_emulates_",
               defaultMessage: "Keyboard hardware emulates layout",
             })}
             onChange={(value) => {
@@ -192,10 +186,7 @@ function GeometryProp(): ReactNode {
     <>
       <FieldList>
         <Field>
-          <FormattedMessage
-            id="keyboard.geometry.label"
-            defaultMessage="Geometry:"
-          />
+          <FormattedMessage id="t_Geometry:" defaultMessage="Geometry:" />
         </Field>
         <Field>
           <OptionList
@@ -215,7 +206,7 @@ function GeometryProp(): ReactNode {
           />
         </Field>
         <Field>
-          <FormattedMessage id="keyboard.zones.label" defaultMessage="Zones:" />
+          <FormattedMessage id="t_Zones:" defaultMessage="Zones:" />
         </Field>
         <Field>
           <OptionList
@@ -236,7 +227,7 @@ function GeometryProp(): ReactNode {
         <Field>
           <CheckBox
             label={formatMessage({
-              id: "settings.keyboardColors.label",
+              id: "t_Colored_keys",
               defaultMessage: "Colored keys",
             })}
             checked={settings.get(keyboardProps.colors)}
@@ -258,7 +249,7 @@ function GeometryProp(): ReactNode {
         <Field>
           <CheckBox
             label={formatMessage({
-              id: "settings.keyboardPointers.label",
+              id: "t_Highlight_keys",
               defaultMessage: "Highlight keys",
             })}
             checked={settings.get(keyboardProps.pointers)}

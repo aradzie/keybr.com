@@ -82,7 +82,7 @@ export function Tour({ children, onClose, ...props }: TourProps): ReactNode {
               {slideIndex > 0 && (
                 <LinkButton className={styles.prev} onClick={selectPrev}>
                   {formatMessage({
-                    id: "tour.previous",
+                    id: "t_Previous",
                     defaultMessage: "Previous",
                   })}
                 </LinkButton>
@@ -91,14 +91,14 @@ export function Tour({ children, onClose, ...props }: TourProps): ReactNode {
               {(slideIndex < slides.length - 1 && (
                 <LinkButton className={styles.next} onClick={selectNext}>
                   {formatMessage({
-                    id: "tour.next",
+                    id: "t_Next",
                     defaultMessage: "Next",
                   })}
                 </LinkButton>
               )) || (
                 <LinkButton className={styles.next} onClick={close}>
                   {formatMessage({
-                    id: "tour.close",
+                    id: "t_Close",
                     defaultMessage: "Close",
                   })}
                 </LinkButton>

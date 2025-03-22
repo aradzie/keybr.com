@@ -73,24 +73,13 @@ function AccountLink({ user }: { readonly user: AnyUser }) {
         clsx(styles.accountLink, isActive && styles.isActive)
       }
       to={Pages.account.path}
-      title={
-        user.id != null
-          ? formatMessage({
-              id: "page.account.link.named.description",
-              defaultMessage: "Manage your online account.",
-            })
-          : formatMessage({
-              id: "page.account.link.anonymous.description",
-              defaultMessage: "Sign-in for an online account.",
-            })
-      }
     >
       <Avatar user={user.id != null ? user : null} size="large" />
       <span className={styles.userName}>
         {user.id != null
           ? user.name
           : formatMessage({
-              id: "account.widget.signIn.label",
+              id: "t_Sing_In",
               defaultMessage: "Sign-In",
             })}
       </span>

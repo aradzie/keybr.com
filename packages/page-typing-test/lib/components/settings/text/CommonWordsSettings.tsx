@@ -45,7 +45,7 @@ function Content({ wordList }: { wordList: WordList }) {
       <FieldList>
         <Field>
           {formatMessage({
-            id: "keyboard.language.label",
+            id: "t_Language:",
             defaultMessage: "Language:",
           })}
         </Field>
@@ -69,7 +69,7 @@ function Content({ wordList }: { wordList: WordList }) {
       <FieldList>
         <Field>
           {formatMessage({
-            id: "settings.wordListSize.label",
+            id: "t_Word_list_size:",
             defaultMessage: "Word list size:",
           })}
         </Field>
@@ -101,7 +101,7 @@ function Content({ wordList }: { wordList: WordList }) {
         <Field>
           <NameValue
             name={formatMessage({
-              id: "textStats.numUniqueWords",
+              id: "t_num_Unique_words",
               defaultMessage: "Unique words",
             })}
             value={formatNumber(wordCount)}
@@ -110,7 +110,7 @@ function Content({ wordList }: { wordList: WordList }) {
         <Field>
           <NameValue
             name={formatMessage({
-              id: "textStats.averageWordLength",
+              id: "t_Average_word_length",
               defaultMessage: "Average word length",
             })}
             value={formatNumber(avgWordLength, 2)}

@@ -1,7 +1,7 @@
 import { useIntlNumbers } from "@keybr/intl";
 import { type DailyStats as DailyStatsType } from "@keybr/result";
-import { formatDuration, Name, NameValue, Para, Value } from "@keybr/widget";
-import { FormattedMessage, useIntl } from "react-intl";
+import { formatDuration, NameValue, Para } from "@keybr/widget";
+import { useIntl } from "react-intl";
 import * as styles from "./DailyStats.module.less";
 import { type Effort } from "./effort.ts";
 import { useFormatter } from "./format.ts";
@@ -22,42 +22,36 @@ export function DailyStats({
         {formatDate(Number(date), { dateStyle: "long" })}
       </Para>
       <div>
-        <Name>
-          <FormattedMessage
-            id="profile.calendar.dailyGoal.description"
-            defaultMessage="Daily goal: {value}"
-            values={{
-              value: <Value>{formatPercents(effort.effort(stats.time))}</Value>,
-            }}
-          />
-        </Name>
-      </div>
-      <div>
-        <Name>
-          <FormattedMessage
-            id="profile.calendar.totalTime.description"
-            defaultMessage="Time of lessons: {value}"
-            values={{
-              value: <Value>{formatDuration(stats.time)}</Value>,
-            }}
-          />
-        </Name>
-      </div>
-      <div>
-        <Name>
-          <FormattedMessage
-            id="profile.calendar.totalLessons.description"
-            defaultMessage="Number of lessons: {value}"
-            values={{
-              value: <Value>{formatNumber(results.length)}</Value>,
-            }}
-          />
-        </Name>
+        <NameValue
+          name={formatMessage({
+            id: "t_Daily_goal",
+            defaultMessage: "Daily goal",
+          })}
+          value={formatPercents(effort.effort(stats.time))}
+        />
       </div>
       <div>
         <NameValue
           name={formatMessage({
-            id: "metric.topSpeed.name",
+            id: "t_Time",
+            defaultMessage: "Time",
+          })}
+          value={formatDuration(stats.time)}
+        />
+      </div>
+      <div>
+        <NameValue
+          name={formatMessage({
+            id: "t_num_Lessons",
+            defaultMessage: "Lessons",
+          })}
+          value={formatNumber(results.length)}
+        />
+      </div>
+      <div>
+        <NameValue
+          name={formatMessage({
+            id: "t_Top_speed",
             defaultMessage: "Top speed",
           })}
           value={formatSpeed(stats.speed.max)}
@@ -66,7 +60,7 @@ export function DailyStats({
       <div>
         <NameValue
           name={formatMessage({
-            id: "metric.averageSpeed.name",
+            id: "t_Average_speed",
             defaultMessage: "Average speed",
           })}
           value={formatSpeed(stats.speed.avg)}
@@ -75,7 +69,7 @@ export function DailyStats({
       <div>
         <NameValue
           name={formatMessage({
-            id: "metric.averageAccuracy.name",
+            id: "t_Average_accuracy",
             defaultMessage: "Average accuracy",
           })}
           value={formatPercents(stats.accuracy.avg)}

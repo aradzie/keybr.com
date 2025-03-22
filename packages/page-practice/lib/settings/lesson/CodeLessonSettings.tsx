@@ -34,16 +34,13 @@ export function CodeLessonSettings({
       </Explainer>
       <FieldSet
         legend={formatMessage({
-          id: "settings.lessonOptions.legend",
-          defaultMessage: "Lesson Options",
+          id: "t_Lesson_options",
+          defaultMessage: "Lesson options",
         })}
       >
         <FieldList>
           <Field>
-            <FormattedMessage
-              id="settings.syntax.label"
-              defaultMessage="Syntax:"
-            />
+            <FormattedMessage id="t_Syntax:" defaultMessage="Syntax:" />
           </Field>
           <Field>
             <OptionList

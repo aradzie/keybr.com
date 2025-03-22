@@ -8,13 +8,13 @@ export function AccountName({ user }: { user: UserDetails | null }) {
   return (
     <Header level={1}>
       <FormattedMessage
-        id="account.accountName.header"
+        id="t_Account_name"
         defaultMessage="Account | {name}"
         values={{
           name:
             user?.name ??
             formatMessage({
-              id: "account.anonymousUserName",
+              id: "t_Anonymous_User",
               defaultMessage: "Anonymous User",
             }),
         }}

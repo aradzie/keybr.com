@@ -40,7 +40,7 @@ export const SpeedGauge = memo(function SpeedGauge({
       name={
         <Name
           name={formatMessage({
-            id: "metric.speed.name",
+            id: "t_Speed",
             defaultMessage: "Speed",
           })}
         />
@@ -51,7 +51,7 @@ export const SpeedGauge = memo(function SpeedGauge({
           value={signed(formatSpeed(delta), delta)}
           delta={delta}
           title={formatMessage({
-            id: "metric.speedChange.description",
+            id: "metric.difference.description",
             defaultMessage: "The difference from the average value.",
           })}
         />
@@ -80,7 +80,7 @@ export const AccuracyGauge = memo(function AccuracyGauge({
       name={
         <Name
           name={formatMessage({
-            id: "metric.accuracy.name",
+            id: "t_Accuracy",
             defaultMessage: "Accuracy",
           })}
         />
@@ -91,7 +91,7 @@ export const AccuracyGauge = memo(function AccuracyGauge({
           value={signed(formatPercents(delta), delta)}
           delta={delta}
           title={formatMessage({
-            id: "metric.accuracyChange.description",
+            id: "metric.difference.description",
             defaultMessage: "The difference from the average value.",
           })}
         />
@@ -121,7 +121,7 @@ export const ScoreGauge = memo(function ScoreGauge({
       name={
         <Name
           name={formatMessage({
-            id: "metric.score.name",
+            id: "t_Score",
             defaultMessage: "Score",
           })}
         />
@@ -132,7 +132,7 @@ export const ScoreGauge = memo(function ScoreGauge({
           value={signed(formatNumber(delta, 0), delta)}
           delta={delta}
           title={formatMessage({
-            id: "metric.scoreChange.description",
+            id: "metric.difference.description",
             defaultMessage: "The difference from the average value.",
           })}
         />

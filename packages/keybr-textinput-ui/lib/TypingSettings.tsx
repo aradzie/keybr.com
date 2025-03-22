@@ -42,8 +42,8 @@ export function TypingSettings() {
     <>
       <FieldSet
         legend={formatMessage({
-          id: "settings.typingOptions.legend",
-          defaultMessage: "Typing Options",
+          id: "t_Typing_options",
+          defaultMessage: "Typing options",
         })}
       >
         <Explainer>
@@ -60,8 +60,8 @@ export function TypingSettings() {
       </FieldSet>
       <FieldSet
         legend={formatMessage({
-          id: "settings.textAppearance.legend",
-          defaultMessage: "Text Appearance",
+          id: "t_Text_appearance",
+          defaultMessage: "Text appearance",
         })}
       >
         <ExampleText />
@@ -98,7 +98,7 @@ function StopOnErrorProp() {
         <Field>
           <CheckBox
             label={formatMessage({
-              id: "settings.stopCursorOnError.label",
+              id: "t_Stop_cursor_on_error",
               defaultMessage: "Stop cursor on error",
             })}
             checked={settings.get(textInputProps.stopOnError)}
@@ -129,7 +129,7 @@ function ForgiveErrorsProp() {
         <Field>
           <CheckBox
             label={formatMessage({
-              id: "settings.forgiveErrors.label",
+              id: "t_Forgive_errors:",
               defaultMessage: "Forgive errors",
             })}
             checked={settings.get(textInputProps.forgiveErrors)}
@@ -160,7 +160,7 @@ function SpaceSkipsWordsProp() {
         <Field>
           <CheckBox
             label={formatMessage({
-              id: "settings.spaceSkipsWords.label",
+              id: "t_Space_skips_words",
               defaultMessage: "Space skips words",
             })}
             checked={settings.get(textInputProps.spaceSkipsWords)}
@@ -192,7 +192,7 @@ function FontProp() {
   return (
     <FieldList>
       <Field size={10}>
-        <FormattedMessage id="settings.font.label" defaultMessage="Font:" />
+        <FormattedMessage id="t_Font:" defaultMessage="Font:" />
       </Field>
       <Field>
         <OptionList
@@ -218,15 +218,12 @@ function WhitespaceProp() {
   return (
     <FieldList>
       <Field size={10}>
-        <FormattedMessage
-          id="settings.whitespace.label"
-          defaultMessage="Whitespace:"
-        />
+        <FormattedMessage id="t_Whitespace:" defaultMessage="Whitespace:" />
       </Field>
       <Field>
         <RadioBox
           label={formatMessage({
-            id: "settings.whitespace.noWhitespaceValue",
+            id: "t_ws_No_whitespace",
             defaultMessage: "No whitespace",
           })}
           name="whitespace-style"
@@ -247,7 +244,7 @@ function WhitespaceProp() {
       <Field>
         <RadioBox
           label={formatMessage({
-            id: "settings.whitespace.barWhitespaceValue",
+            id: "t_ws_Bar_whitespace",
             defaultMessage: "Bar whitespace",
           })}
           name="whitespace-style"
@@ -268,7 +265,7 @@ function WhitespaceProp() {
       <Field>
         <RadioBox
           label={formatMessage({
-            id: "settings.whitespace.bulletWhitespaceValue",
+            id: "t_ws_Bullet_whitespace",
             defaultMessage: "Bullet whitespace",
           })}
           name="whitespace-style"
@@ -296,15 +293,12 @@ function CursorShapeProp() {
   return (
     <FieldList>
       <Field size={10}>
-        <FormattedMessage
-          id="settings.cursorShape.label"
-          defaultMessage="Cursor shape:"
-        />
+        <FormattedMessage id="t_Cursor_shape:" defaultMessage="Cursor shape:" />
       </Field>
       <Field>
         <RadioBox
           label={formatMessage({
-            id: "settings.cursorShape.blockCursorValue",
+            id: "t_cur_Block_cursor",
             defaultMessage: "Block cursor",
           })}
           name="cursor-shape-style"
@@ -325,7 +319,7 @@ function CursorShapeProp() {
       <Field>
         <RadioBox
           label={formatMessage({
-            id: "settings.cursorShape.boxCursorValue",
+            id: "t_cur_Box_cursor",
             defaultMessage: "Box cursor",
           })}
           name="cursor-shape-style"
@@ -346,7 +340,7 @@ function CursorShapeProp() {
       <Field>
         <RadioBox
           label={formatMessage({
-            id: "settings.cursorShape.lineCursorValue",
+            id: "t_cur_Line_cursor",
             defaultMessage: "Line cursor",
           })}
           name="cursor-shape-style"
@@ -367,7 +361,7 @@ function CursorShapeProp() {
       <Field>
         <RadioBox
           label={formatMessage({
-            id: "settings.cursorShape.underlineCursorValue",
+            id: "t_cur_Underline_cursor",
             defaultMessage: "Underline cursor",
           })}
           name="cursor-shape-style"
@@ -396,14 +390,14 @@ function CursorMovementProp() {
     <FieldList>
       <Field size={10}>
         <FormattedMessage
-          id="settings.cursorMovement.label"
+          id="t_Cursor_movement:"
           defaultMessage="Cursor movement:"
         />
       </Field>
       <Field>
         <RadioBox
           label={formatMessage({
-            id: "settings.cursorMovement.jumpingCursorValue",
+            id: "t_cur_Jumping_cursor",
             defaultMessage: "Jumping cursor",
           })}
           name="cursor-movement-style"
@@ -424,7 +418,7 @@ function CursorMovementProp() {
       <Field>
         <RadioBox
           label={formatMessage({
-            id: "settings.cursorMovement.smoothCursorValue",
+            id: "t_cur_Smooth_cursor",
             defaultMessage: "Smooth cursor",
           })}
           name="cursor-movement-style"
@@ -452,16 +446,13 @@ function SoundsProp() {
   return (
     <FieldList>
       <Field size={10}>
-        <FormattedMessage
-          id="settings.playSounds.label"
-          defaultMessage="Play sounds:"
-        />
+        <FormattedMessage id="t_Play_sounds:" defaultMessage="Play sounds:" />
       </Field>
       <Field>
         <RadioBox
           label={formatMessage({
-            id: "settings.sounds.noSoundsValue",
-            defaultMessage: "No Sounds",
+            id: "t_No_sounds:",
+            defaultMessage: "No sounds",
           })}
           name="play-sounds"
           checked={settings.get(soundProps.playSounds) === PlaySounds.None}
@@ -475,8 +466,8 @@ function SoundsProp() {
       <Field>
         <RadioBox
           label={formatMessage({
-            id: "settings.sounds.errorSoundsOnlyValue",
-            defaultMessage: "Error Sounds Only",
+            id: "t_Error_sounds_only:",
+            defaultMessage: "Error sounds only",
           })}
           name="play-sounds"
           checked={
@@ -492,8 +483,8 @@ function SoundsProp() {
       <Field>
         <RadioBox
           label={formatMessage({
-            id: "settings.sounds.allSoundsValue",
-            defaultMessage: "All Sounds",
+            id: "t_All_sounds:",
+            defaultMessage: "All sounds",
           })}
           name="play-sounds"
           checked={settings.get(soundProps.playSounds) === PlaySounds.All}
@@ -503,10 +494,7 @@ function SoundsProp() {
         />
       </Field>
       <Field>
-        <FormattedMessage
-          id="settings.soundVolume.label"
-          defaultMessage="Volume:"
-        />
+        <FormattedMessage id="t_Sound_volume:" defaultMessage="Volume:" />
       </Field>
       <Field>
         <Range
@@ -528,10 +516,7 @@ function SoundsThemeProp() {
   return (
     <FieldList>
       <Field size={10}>
-        <FormattedMessage
-          id="settings.soundTheme.label"
-          defaultMessage="Sound Theme:"
-        />
+        <FormattedMessage id="t_Sound_theme:" defaultMessage="Sound theme:" />
       </Field>
       <Field>
         <OptionList

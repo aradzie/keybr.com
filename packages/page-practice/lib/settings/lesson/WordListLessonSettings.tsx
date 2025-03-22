@@ -39,8 +39,8 @@ export function WordListLessonSettings({
       </Explainer>
       <FieldSet
         legend={formatMessage({
-          id: "settings.lessonOptions.legend",
-          defaultMessage: "Lesson Options",
+          id: "t_Lesson_options",
+          defaultMessage: "Lesson options",
         })}
       >
         <WordListPreview lesson={lesson} />
@@ -66,7 +66,7 @@ function WordListPreview({
       <FieldList>
         <Field>
           <FormattedMessage
-            id="settings.wordListSize.label"
+            id="t_Word_list_size:"
             defaultMessage="Word list size:"
           />
         </Field>
@@ -87,7 +87,7 @@ function WordListPreview({
         <Field>
           <CheckBox
             label={formatMessage({
-              id: "settings.longWordsOnly.label",
+              id: "t_Long_words_only",
               defaultMessage: "Long words only",
             })}
             checked={settings.get(lessonProps.wordList.longWordsOnly)}
@@ -123,7 +123,7 @@ function WordListStats({
       <Field>
         <NameValue
           name={formatMessage({
-            id: "textStats.numUniqueWords",
+            id: "t_num_Unique_words",
             defaultMessage: "Unique words",
           })}
           value={formatNumber(wordCount)}
@@ -132,7 +132,7 @@ function WordListStats({
       <Field>
         <NameValue
           name={formatMessage({
-            id: "textStats.averageWordLength",
+            id: "t_Average_word_length",
             defaultMessage: "Average word length",
           })}
           value={formatNumber(avgWordLength, 2)}

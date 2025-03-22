@@ -1,13 +1,12 @@
 {
-  "account.accountDetails.legend": "Detalji računa",
-  "account.accountName.header": "Račun | {name}",
   "account.accountPage.description": "<p>Koristite račun da biste sačuvali vaše podatke za kucanjena našim serverima u oblaku. Imaćete pristup vašem profilu sa bilo kojeg računara ili pretraživača.</p>",
-  "account.anonymousUserName": "Anonimni korisnik",
-  "account.deleteAccount.legend": "Izbriši račun",
-  "account.premiumAccount.header": "Premium račun",
-  "account.premiumAccount.legend": "Premium račun",
-  "account.widget.resend.label": "Ponovo pošalji",
-  "account.widget.retrySend.label": "Ponovo pokušaj",
-  "calendar.weekDayName": "P|U|S|Č|P|S|N",
-  "keyboard.geometry.label": "Geometrija"
+  "t_Account_details": "Detalji računa",
+  "t_Account_name": "Račun | {name}",
+  "t_Anonymous_User": "Anonimni korisnik",
+  "t_Delete_account": "Izbriši račun",
+  "t_Geometry:": "Geometrija",
+  "t_Premium_account": "Premium račun",
+  "t_Resend": "Ponovo pošalji",
+  "t_Retry": "Ponovo pokušaj",
+  "weekDayNames": "P|U|S|Č|P|S|N"
 }

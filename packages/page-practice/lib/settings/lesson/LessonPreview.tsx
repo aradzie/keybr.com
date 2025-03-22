@@ -35,8 +35,8 @@ export function LessonPreview({
   return (
     <FieldSet
       legend={formatMessage({
-        id: "settings.previewLesson.label",
-        defaultMessage: "Lesson Preview",
+        id: "t_Lesson_preview:",
+        defaultMessage: "Lesson preview",
       })}
     >
       <div className={styles.root}>

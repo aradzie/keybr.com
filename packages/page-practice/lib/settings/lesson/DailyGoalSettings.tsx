@@ -21,10 +21,7 @@ export function DailyGoalSettings(): ReactNode {
     <FieldSet>
       <FieldList>
         <Field>
-          <FormattedMessage
-            id="settings.dailyGoal.label"
-            defaultMessage="Daily goal:"
-          />
+          <FormattedMessage id="t_Daily_goal:" defaultMessage="Daily goal:" />
         </Field>
         <Field>
           <Range
@@ -41,7 +38,7 @@ export function DailyGoalSettings(): ReactNode {
         <Field>
           {settings.get(lessonProps.dailyGoal) === 0 ? (
             formatMessage({
-              id: "settings.dailyGoal.notSet",
+              id: "t_Not_set",
               defaultMessage: "Not set",
             })
           ) : (

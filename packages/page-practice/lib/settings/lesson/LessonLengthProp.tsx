@@ -11,7 +11,7 @@ export function LessonLengthProp(): ReactNode {
       <FieldList>
         <Field>
           <FormattedMessage
-            id="settings.lessonLength.label"
+            id="t_Add_words_to_lessons:"
             defaultMessage="Add words to lessons:"
           />
         </Field>
