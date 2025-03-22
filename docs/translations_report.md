@@ -26,6 +26,34 @@ Translated: 406 messages, 5010 words
 
 Untranslated: 0 messages, 0 words
 
+# Bangla
+
+Translated: 46 messages, 312 words
+
+Untranslated: 344 messages, 4565 words
+
+* *GO!*
+* *Copy*
+* *Done*
+* *Help*
+* *Help*
+* *Next*
+* *User*
+* *Books*
+* *Font:*
+* *Reset*
+* *Score*
+* *Score*
+* *Speed*
+* *Visit*
+* *Layout*
+* *Typing*
+* *Zones:*
+* *Account*
+* *Layout:*
+* *Layouts*
+* ...
+
 # Catalan
 
 Translated: 366 messages, 3470 words
@@ -209,6 +237,62 @@ Untranslated: 153 messages, 2672 words
 * *Settings...*
 * ...
 
+# Filipino
+
+Translated: 22 messages, 97 words
+
+Untranslated: 368 messages, 4781 words
+
+* *GO!*
+* *Copy*
+* *Done*
+* *Help*
+* *Help*
+* *Next*
+* *Time*
+* *Time*
+* *User*
+* *Books*
+* *Close*
+* *Font:*
+* *Reset*
+* *Score*
+* *Score*
+* *Speed*
+* *Speed*
+* *Visit*
+* *Errors*
+* *Layout*
+* ...
+
+# Faroese
+
+Translated: 48 messages, 587 words
+
+Untranslated: 346 messages, 4341 words
+
+* *GO!*
+* *Copy*
+* *Done*
+* *Help*
+* *Help*
+* *Next*
+* *Time*
+* *Time*
+* *Books*
+* *Close*
+* *Font:*
+* *Reset*
+* *Speed*
+* *Visit*
+* *Errors*
+* *Layout*
+* *Typing*
+* *Zones:*
+* *Account*
+* *Layout:*
+* ...
+
 # French
 
 Translated: 388 messages, 4648 words
@@ -300,6 +384,34 @@ Untranslated: 3 messages, 3 words
 * *Font:*
 * *Keyboard*
 
+# Icelandic
+
+Translated: 106 messages, 1767 words
+
+Untranslated: 290 messages, 3174 words
+
+* *GO!*
+* *Copy*
+* *Done*
+* *Help*
+* *Help*
+* *Next*
+* *Time*
+* *Time*
+* *Books*
+* *Close*
+* *Font:*
+* *Reset*
+* *Retry*
+* *Score*
+* *Speed*
+* *Speed*
+* *Visit*
+* *Errors*
+* *Typing*
+* *Zones:*
+* ...
+
 # Italian
 
 Translated: 399 messages, 5002 words
@@ -367,6 +479,90 @@ Untranslated: 246 messages, 3866 words
 * *Chapters*
 * *Keyboard*
 * *Previous*
+* ...
+
+# Lithuanian
+
+Translated: 172 messages, 1308 words
+
+Untranslated: 227 messages, 3636 words
+
+* *Reset*
+* *Visit*
+* *Account*
+* *Not set*
+* *Options*
+* *Preview*
+* *Accuracy*
+* *Chapters*
+* *Practice*
+* *Previous*
+* *Top Speed*
+* *Top Speed*
+* *Uncertain*
+* *Box cursor*
+* *Custom Text*
+* *Line cursor*
+* *Multiplayer*
+* *Multiplayer*
+* *Smoothness:*
+* *Whitespace:*
+* ...
+
+# Mongolian
+
+Translated: 17 messages, 380 words
+
+Untranslated: 375 messages, 4519 words
+
+* *GO!*
+* *Copy*
+* *Done*
+* *Help*
+* *Help*
+* *Next*
+* *Time*
+* *Time*
+* *User*
+* *Books*
+* *Close*
+* *Font:*
+* *Reset*
+* *Retry*
+* *Score*
+* *Score*
+* *Speed*
+* *Speed*
+* *Visit*
+* *Digits*
+* ...
+
+# Norwegian Bokmål
+
+Translated: 127 messages, 1888 words
+
+Untranslated: 269 messages, 3053 words
+
+* *GO!*
+* *Done*
+* *Help*
+* *Help*
+* *Time*
+* *Time*
+* *Books*
+* *Font:*
+* *Reset*
+* *Speed*
+* *Visit*
+* *Errors*
+* *Zones:*
+* *Account*
+* *Layouts*
+* *Lessons*
+* *Lessons*
+* *Metrics*
+* *Not set*
+* *Options*
 * ...
 
 # Nepali
@@ -482,6 +678,90 @@ Untranslated: 1 messages, 1 words
 
 * *Syntax:*
 
+# Slovenian
+
+Translated: 92 messages, 1909 words
+
+Untranslated: 304 messages, 3032 words
+
+* *GO!*
+* *Copy*
+* *Done*
+* *Help*
+* *Help*
+* *Next*
+* *Time*
+* *Time*
+* *Books*
+* *Close*
+* *Font:*
+* *Reset*
+* *Score*
+* *Speed*
+* *Speed*
+* *Visit*
+* *Errors*
+* *Typing*
+* *Zones:*
+* *Account*
+* ...
+
+# Albanian
+
+Translated: 44 messages, 685 words
+
+Untranslated: 350 messages, 4243 words
+
+* *GO!*
+* *Copy*
+* *Done*
+* *Help*
+* *Help*
+* *Next*
+* *Time*
+* *Time*
+* *User*
+* *Books*
+* *Close*
+* *Font:*
+* *Reset*
+* *Score*
+* *Score*
+* *Speed*
+* *Speed*
+* *Visit*
+* *Errors*
+* *Layout*
+* ...
+
+# Serbian
+
+Translated: 11 messages, 51 words
+
+Untranslated: 379 messages, 4826 words
+
+* *GO!*
+* *Copy*
+* *Done*
+* *Help*
+* *Help*
+* *Next*
+* *Time*
+* *Time*
+* *User*
+* *Books*
+* *Close*
+* *Font:*
+* *Reset*
+* *Score*
+* *Score*
+* *Speed*
+* *Speed*
+* *Visit*
+* *Digits*
+* *Errors*
+* ...
+
 # Swedish
 
 Translated: 387 messages, 4892 words
@@ -554,6 +834,34 @@ Untranslated: 115 messages, 2591 words
 Translated: 406 messages, 5010 words
 
 Untranslated: 0 messages, 0 words
+
+# Urdu
+
+Translated: 11 messages, 172 words
+
+Untranslated: 380 messages, 4713 words
+
+* *GO!*
+* *Copy*
+* *Done*
+* *Help*
+* *Help*
+* *Next*
+* *Time*
+* *Time*
+* *User*
+* *Books*
+* *Close*
+* *Font:*
+* *Reset*
+* *Retry*
+* *Score*
+* *Score*
+* *Speed*
+* *Speed*
+* *Visit*
+* *Digits*
+* ...
 
 # Vietnamese
 
