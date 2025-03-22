@@ -593,12 +593,9 @@ Untranslated: 1 messages, 7 words
 
 # Traditional Chinese
 
-Translated: 403 messages, 5004 words
+Translated: 406 messages, 5010 words
 
-Untranslated: 2 messages, 3 words
-
-* *Zones:*
-* *Sound Theme:*
+Untranslated: 0 messages, 0 words
 
 # Chinese (Taiwan)
 
