@@ -45,7 +45,7 @@ function Content({ wordList }: { wordList: WordList }) {
       <FieldList>
         <Field>
           {formatMessage({
-            id: "keyboard.language.label",
+            id: "t_Language:",
             defaultMessage: "Language:",
           })}
         </Field>
@@ -69,7 +69,7 @@ function Content({ wordList }: { wordList: WordList }) {
       <FieldList>
         <Field>
           {formatMessage({
-            id: "settings.wordListSize.label",
+            id: "t_Word_list_size:",
             defaultMessage: "Word list size:",
           })}
         </Field>

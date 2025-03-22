@@ -20,7 +20,7 @@ export function RepeatWordsProp(): ReactNode {
       <FieldList>
         <Field>
           <FormattedMessage
-            id="settings.repeatWords.label"
+            id="t_Repeat_each_word:"
             defaultMessage="Repeat each word:"
           />
         </Field>

@@ -11,7 +11,7 @@ export function AlphabetSizeProp(): ReactNode {
       <FieldList>
         <Field>
           <FormattedMessage
-            id="settings.alphabetSize.label"
+            id="t_Unlock_more_letters:"
             defaultMessage="Unlock more letters:"
           />
         </Field>

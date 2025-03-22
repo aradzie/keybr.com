@@ -23,7 +23,7 @@ export const CurrentKey = ({
       ) : (
         <span className={styleTextTruncate}>
           <FormattedMessage
-            id="lesson.allKeysUnlocked.message"
+            id="t_All_keys_are_unlocked"
             defaultMessage="All keys are unlocked."
           />
         </span>

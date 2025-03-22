@@ -1,12 +1,12 @@
 {
   "account.accountPage.description": "<p>Koristite račun da biste sačuvali vaše podatke za kucanjena našim serverima u oblaku. Imaćete pristup vašem profilu sa bilo kojeg računara ili pretraživača.</p>",
-  "calendar.weekDayName": "P|U|S|Č|P|S|N",
-  "keyboard.geometry.label": "Geometrija",
   "t_Account_Details": "Detalji računa",
   "t_Account_name": "Račun | {name}",
   "t_Anonymous_User": "Anonimni korisnik",
   "t_Delete_Account": "Izbriši račun",
+  "t_Geometry:": "Geometrija",
   "t_Premium_Account": "Premium račun",
   "t_Resend": "Ponovo pošalji",
-  "t_Retry": "Ponovo pokušaj"
+  "t_Retry": "Ponovo pokušaj",
+  "weekDayNames": "P|U|S|Č|P|S|N"
 }

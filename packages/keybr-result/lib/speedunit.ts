@@ -6,7 +6,7 @@ export class SpeedUnit implements EnumItem {
     "wpm",
     1 / 5,
     defineMessage({
-      id: "speedUnit.wpm.name",
+      id: "t_Words_per_minute",
       defaultMessage: "Words per minute",
     }),
   );
@@ -14,7 +14,7 @@ export class SpeedUnit implements EnumItem {
     "wps",
     1 / 300,
     defineMessage({
-      id: "speedUnit.wps.name",
+      id: "t_Words_per_second",
       defaultMessage: "Words per second",
     }),
   );
@@ -22,7 +22,7 @@ export class SpeedUnit implements EnumItem {
     "cpm",
     1,
     defineMessage({
-      id: "speedUnit.cpm.name",
+      id: "t_Characters_per_minute",
       defaultMessage: "Characters per minute",
     }),
   );
@@ -30,7 +30,7 @@ export class SpeedUnit implements EnumItem {
     "cps",
     1 / 60,
     defineMessage({
-      id: "speedUnit.cps.name",
+      id: "t_Characters_per_second",
       defaultMessage: "Characters per second",
     }),
   );

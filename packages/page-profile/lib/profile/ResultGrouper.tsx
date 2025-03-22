@@ -51,7 +51,7 @@ export function ResultGrouper({
       <FieldList>
         <Field>
           <FormattedMessage
-            id="profile.widget.groupSelector.label"
+            id="t_Show_statistics_for:"
             defaultMessage="Show statistics for:"
           />
         </Field>

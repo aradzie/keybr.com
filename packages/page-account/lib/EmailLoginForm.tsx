@@ -107,7 +107,7 @@ export function EmailLoginForm({ actions }: { actions: SignInActions }) {
                 size={24}
                 type="email"
                 placeholder={formatMessage({
-                  id: "account.widget.email.placeholder",
+                  id: "t_Your_email_address...",
                   defaultMessage: "Your e-mail address...",
                 })}
                 value={email}
@@ -119,8 +119,8 @@ export function EmailLoginForm({ actions }: { actions: SignInActions }) {
                 size={16}
                 icon={<Icon shape={mdiSend} />}
                 label={formatMessage({
-                  id: "account.widget.send.label",
-                  defaultMessage: "Send Sign-in Link",
+                  id: "t_Send_a_signin_link",
+                  defaultMessage: "Send a sign-in link",
                 })}
                 onClick={handleClickLogin}
               />

@@ -44,8 +44,8 @@ export function SignInSection({ actions }: { actions: SignInActions }) {
 
       <Header level={2}>
         <FormattedMessage
-          id="account.socialSignIn.header"
-          defaultMessage="Sign-In with Social Networks"
+          id="t_Signin_with_social_networks"
+          defaultMessage="Sign-in with social networks"
         />
       </Header>
 
@@ -53,8 +53,8 @@ export function SignInSection({ actions }: { actions: SignInActions }) {
 
       <Header level={2}>
         <FormattedMessage
-          id="account.emailSignIn.header"
-          defaultMessage="Sign-In with E-mail"
+          id="t_Signin_with_email"
+          defaultMessage="Sign-in with e-mail"
         />
       </Header>
 

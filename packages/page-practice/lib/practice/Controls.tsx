@@ -68,7 +68,7 @@ export const Controls = memo(function Controls({
         <Button
           icon={<Icon shape={mdiCog} />}
           label={formatMessage({
-            id: "practice.widget.settings.name",
+            id: "t_Settings...",
             defaultMessage: "Settings...",
           })}
           title={formatMessage({

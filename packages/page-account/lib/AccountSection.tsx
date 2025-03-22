@@ -51,8 +51,8 @@ export function AccountSection({
         <Para>
           <CheckBox
             label={formatMessage({
-              id: "t_Anonymize_Me",
-              defaultMessage: "Anonymize Me",
+              id: "t_Anonymize_me",
+              defaultMessage: "Anonymize me",
             })}
             checked={user.anonymized}
             onChange={() => {
@@ -117,7 +117,7 @@ export function AccountSection({
                 }}
                 icon={<Icon shape={mdiCreditCard} />}
                 label={formatMessage({
-                  id: "account.widget.checkout.label",
+                  id: "t_Buy_a_Premium_Account",
                   defaultMessage: "Buy a Premium Account",
                 })}
               />

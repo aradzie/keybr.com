@@ -25,7 +25,7 @@ export function ShareProfileLink({ user }: { user: NamedUser }) {
     <FieldList>
       <Field>
         <FormattedMessage
-          id="profile.widget.shareText"
+          id="t_Share_your_profile:"
           defaultMessage="Share your profile:"
         />
       </Field>
@@ -46,7 +46,7 @@ export function ShareProfileLink({ user }: { user: NamedUser }) {
         <Button
           icon={<Icon shape={mdiContentCopy} />}
           label={formatMessage({
-            id: "profile.widget.share.label",
+            id: "t_Copy",
             defaultMessage: "Copy",
           })}
           title={formatMessage({
@@ -66,7 +66,7 @@ export function ShareProfileLink({ user }: { user: NamedUser }) {
         <Button
           icon={<Icon shape={mdiOpenInNew} />}
           label={formatMessage({
-            id: "profile.widget.visit.label",
+            id: "t_Visit_profile",
             defaultMessage: "Visit",
           })}
           title={formatMessage({

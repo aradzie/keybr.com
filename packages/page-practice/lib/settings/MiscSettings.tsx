@@ -17,8 +17,8 @@ export function MiscSettings(): ReactNode {
     <>
       <FieldSet
         legend={formatMessage({
-          id: "t_Interface_Options",
-          defaultMessage: "Interface Options",
+          id: "t_Interface_options",
+          defaultMessage: "Interface options",
         })}
       >
         <SpeedUnitProp />
@@ -35,7 +35,7 @@ function SpeedUnitProp(): ReactNode {
       <FieldList>
         <Field>
           <FormattedMessage
-            id="settings.typingSpeedUnit.caption"
+            id="t_Measure_typing_speed_in:"
             defaultMessage="Measure typing speed in:"
           />
         </Field>

@@ -23,10 +23,7 @@ export function HighScoresTable({ entries }: EntriesProps): ReactNode {
             <FormattedMessage id="t_Layout" defaultMessage="Layout" />
           </th>
           <th className={styles.speedColumn}>
-            <FormattedMessage
-              id="t_Typing_Speed"
-              defaultMessage="Typing Speed"
-            />
+            <FormattedMessage id="t_Speed" defaultMessage="Speed" />
           </th>
           <th className={styles.scoreColumn}>
             <FormattedMessage id="t_Score" defaultMessage="Score" />

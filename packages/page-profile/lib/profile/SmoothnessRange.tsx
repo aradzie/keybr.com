@@ -19,7 +19,7 @@ export function SmoothnessRange({
         <label>
           {formatMessage(
             defineMessage({
-              id: "profile.smoothness.label",
+              id: "t_Smoothness:",
               defaultMessage: "Smoothness:",
             }),
           )}

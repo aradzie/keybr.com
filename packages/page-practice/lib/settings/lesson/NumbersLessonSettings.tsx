@@ -22,8 +22,8 @@ export function NumbersLessonSettings({
       </Explainer>
       <FieldSet
         legend={formatMessage({
-          id: "t_Lesson_Options",
-          defaultMessage: "Lesson Options",
+          id: "t_Lesson_options",
+          defaultMessage: "Lesson options",
         })}
       >
         <BenfordProp />

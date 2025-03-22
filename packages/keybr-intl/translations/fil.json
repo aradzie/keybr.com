@@ -1,8 +1,5 @@
 {
   "account.deleteAccount.message": "Sigurado ka bang gusto mong burahin ang iyong account? Permanente na ito at hindi na puwedeng ibalik! Pero, puwede kang gumawa ng bagong account kahit kailan.",
-  "account.widget.email.placeholder": "Ang iyong e-mail address...",
-  "account.widget.send.label": "Ipadala ang Sign-in Link",
-  "calendar.weekDayName": "L|M|M|H|B|S|L",
   "characterClass.digits": "Mga Digit",
   "characterClass.letters": "Mga Letra",
   "characterClass.punctuationCharacters": "Mga Pagbabantas",
@@ -12,13 +9,16 @@
   "footer.githubLink.description": "Ang pinagmulang kodigo ng keybr.com ay nasa Github.",
   "footer.removeAds.description": "Bumili ng premium na account para tanggalin ang mga palatastas.",
   "footer.removeAds.label": "Tanggalin ang mga palatastas",
-  "keyboard.zones.label": "Mga sona:",
   "profile.calendar.dailyGoal.description": "Pang-araw-araw na goal",
-  "settings.soundTheme.label": "Tema ng Tunog:",
   "t_Account_Details": "Mga Detalye sa Account",
   "t_Anonymous_User": "Anonimang User",
   "t_Delete_Account": "Burahin ang Account",
   "t_Resend": "Ipadala muli",
   "t_Retry": "Subukan muli",
-  "t_Sing_Out": "Mag-sign Out"
+  "t_Send_a_signin_link": "Ipadala ang Sign-in Link",
+  "t_Sing_Out": "Mag-sign Out",
+  "t_Sound_theme:": "Tema ng Tunog:",
+  "t_Your_email_address...": "Ang iyong e-mail address...",
+  "t_Zones:": "Mga sona:",
+  "weekDayNames": "L|M|M|H|B|S|L"
 }

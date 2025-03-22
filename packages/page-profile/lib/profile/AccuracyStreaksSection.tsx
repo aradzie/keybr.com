@@ -102,8 +102,8 @@ function StreakDetails({ streak }: { streak: Streak }) {
         />
         <NameValue
           name={formatMessage({
-            id: "t_Start_Date",
-            defaultMessage: "Start Date",
+            id: "t_Start_date",
+            defaultMessage: "Start date",
           })}
           value={formatDate(results[0].timeStamp, {
             dateStyle: "short",

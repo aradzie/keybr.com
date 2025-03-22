@@ -34,7 +34,7 @@ function Content({ model }: { model: PhoneticModel }) {
       <FieldList>
         <Field>
           {formatMessage({
-            id: "keyboard.language.label",
+            id: "t_Language:",
             defaultMessage: "Language:",
           })}
         </Field>

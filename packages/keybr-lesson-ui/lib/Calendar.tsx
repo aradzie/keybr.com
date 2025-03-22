@@ -143,7 +143,7 @@ function Block({ block, effort }: { block: BlockCells; effort: Effort }) {
   const { formatMessage } = useIntl();
 
   const weekDayName = formatMessage({
-    id: "calendar.weekDayName",
+    id: "weekDayNames",
     defaultMessage: "M|T|W|T|F|S|S",
   }).split("|");
 
