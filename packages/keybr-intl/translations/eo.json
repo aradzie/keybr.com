@@ -60,7 +60,7 @@
   "learningRate.unknown": "Bezonas pli datumaro por komputi la restantaj lesonoj por malŝlosi ĉi tiun literon.",
   "lesson.focusedKeyText": "Klavo kun pliiĝita ofteco.",
   "lesson.indicator.focused": "Klavo kun pliiĝita ofteco. Vi bezonas la plej grandan tempon por trovi ĉi tiun klavon, do la algoritmo inkluzivatigis en ĉiu produktitajn vortojn.",
-  "page.account.title": "Konta",
+  "t_Account": "Konta",
   "t_Account_Details": "Konta Detaloj",
   "t_Account_name": "Konta | {name}",
   "t_Anonymize_Me": "Anonimigas Min",

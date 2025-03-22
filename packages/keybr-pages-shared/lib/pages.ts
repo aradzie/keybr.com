@@ -49,12 +49,12 @@ export namespace Pages {
   export const account = {
     path: "/account",
     title: defineMessage({
-      id: "page.account.title",
+      id: "t_Account",
       defaultMessage: "Account",
     }),
     link: {
       label: defineMessage({
-        id: "page.account.title",
+        id: "t_Account",
         defaultMessage: "Account",
       }),
     },
@@ -64,17 +64,18 @@ export namespace Pages {
   export const practice = {
     path: "/",
     title: defineMessage({
-      id: "page.practice.title",
-      defaultMessage: "Typing Practice",
+      id: "t_Practice",
+      defaultMessage: "Practice",
     }),
     link: {
       label: defineMessage({
-        id: "page.practice.link.name",
+        id: "t_Practice",
         defaultMessage: "Practice",
       }),
       title: defineMessage({
-        id: "page.practice.link.description",
-        defaultMessage: "Practice typing lessons to improve your typing speed.",
+        id: "page.practice.description",
+        defaultMessage:
+          "Typing practice lessons to improve your speed and accuracy.",
       }),
       icon: mdiKeyboard,
     },
@@ -85,7 +86,7 @@ export namespace Pages {
         content: defineMessage({
           id: "page.practice.description",
           defaultMessage:
-            "Take a typing speed and accuracy test, practice typing lessons, learn to type faster.",
+            "Typing practice lessons to improve your speed and accuracy.",
         }),
       },
     ],
@@ -94,18 +95,18 @@ export namespace Pages {
   export const profile = {
     path: "/profile",
     title: defineMessage({
-      id: "page.profile.title",
+      id: "t_Profile",
       defaultMessage: "Profile",
     }),
     link: {
       label: defineMessage({
-        id: "page.profile.link.name",
+        id: "t_Profile",
         defaultMessage: "Profile",
       }),
       title: defineMessage({
-        id: "page.profile.link.description",
+        id: "page.profile.description",
         defaultMessage:
-          "See the detailed statistics about your learning progress.",
+          "The detailed statistics regarding your learning progress.",
       }),
       icon: mdiChartAreaspline,
     },
@@ -115,17 +116,17 @@ export namespace Pages {
   export const help = {
     path: "/help",
     title: defineMessage({
-      id: "page.help.title",
+      id: "t_Help",
       defaultMessage: "Help",
     }),
     link: {
       label: defineMessage({
-        id: "page.help.link.name",
+        id: "t_Help",
         defaultMessage: "Help",
       }),
       title: defineMessage({
-        id: "page.help.link.description",
-        defaultMessage: "Get the instructions on how to use this application.",
+        id: "page.help.description",
+        defaultMessage: "The instructions for using this application.",
       }),
       icon: mdiHelpCircleOutline,
     },
@@ -135,7 +136,7 @@ export namespace Pages {
         name: "description",
         content: defineMessage({
           id: "page.help.description",
-          defaultMessage: "Learn to type faster.",
+          defaultMessage: "The instructions for using this application.",
         }),
       },
     ],
@@ -144,18 +145,17 @@ export namespace Pages {
   export const highScores = {
     path: "/high-scores",
     title: defineMessage({
-      id: "page.highScores.title",
+      id: "t_High_Scores",
       defaultMessage: "High Scores",
     }),
     link: {
       label: defineMessage({
-        id: "page.highScores.link.name",
+        id: "t_High_Scores",
         defaultMessage: "High Scores",
       }),
       title: defineMessage({
-        id: "page.highScores.link.description",
-        defaultMessage:
-          "See the high score table featuring the fastest typists.",
+        id: "page.highScores.description",
+        defaultMessage: "The high score table for the fastest users.",
       }),
       icon: mdiTrophyOutline,
     },
@@ -165,7 +165,7 @@ export namespace Pages {
         name: "description",
         content: defineMessage({
           id: "page.highScores.description",
-          defaultMessage: "The table of users ranked by their typing speed.",
+          defaultMessage: "The high score table for the fastest users.",
         }),
       },
     ],
@@ -174,18 +174,17 @@ export namespace Pages {
   export const multiplayer = {
     path: "/multiplayer",
     title: defineMessage({
-      id: "page.multiplayer.title",
+      id: "t_Multiplayer",
       defaultMessage: "Multiplayer",
     }),
     link: {
       label: defineMessage({
-        id: "page.multiplayer.link.name",
+        id: "t_Multiplayer",
         defaultMessage: "Multiplayer",
       }),
       title: defineMessage({
-        id: "page.multiplayer.link.description",
-        defaultMessage:
-          "Compete against other players in an online multiplayer game.",
+        id: "page.multiplayer.description",
+        defaultMessage: "Online multiplayer type racing game.",
       }),
       icon: mdiCarSide,
     },
@@ -204,17 +203,17 @@ export namespace Pages {
   export const typingTest = {
     path: "/typing-test",
     title: defineMessage({
-      id: "page.typingTest.title",
-      defaultMessage: "Typing Speed and Accuracy Test",
+      id: "t_Typing_Test",
+      defaultMessage: "Typing Test",
     }),
     link: {
       label: defineMessage({
-        id: "page.typingTest.link.name",
+        id: "t_Typing_Test",
         defaultMessage: "Typing Test",
       }),
       title: defineMessage({
-        id: "page.typingTest.link.description",
-        defaultMessage: "Take a typing speed test.",
+        id: "page.typingTest.description",
+        defaultMessage: "Typing speed and accuracy test.",
       }),
       icon: mdiSpeedometer,
     },
@@ -224,7 +223,7 @@ export namespace Pages {
         name: "description",
         content: defineMessage({
           id: "page.typingTest.description",
-          defaultMessage: "Take a typing speed and accuracy test.",
+          defaultMessage: "Typing speed and accuracy test.",
         }),
       },
     ],
@@ -233,17 +232,17 @@ export namespace Pages {
   export const layouts = {
     path: "/layouts",
     title: defineMessage({
-      id: "page.layouts.title",
-      defaultMessage: "Keyboard Layouts",
+      id: "t_Layouts",
+      defaultMessage: "Layouts",
     }),
     link: {
       label: defineMessage({
-        id: "page.layouts.link.name",
+        id: "t_Layouts",
         defaultMessage: "Layouts",
       }),
       title: defineMessage({
-        id: "page.layouts.link.description",
-        defaultMessage: "Compare the efficiency of different keyboard layouts.",
+        id: "page.layouts.description",
+        defaultMessage: "Comparison charts of keyboard layouts.",
       }),
       icon: mdiKeyboardOutline,
     },
@@ -253,7 +252,7 @@ export namespace Pages {
         name: "description",
         content: defineMessage({
           id: "page.layouts.description",
-          defaultMessage: "Keyboard layouts comparison charts.",
+          defaultMessage: "Comparison charts of keyboard layouts.",
         }),
       },
     ],
@@ -262,12 +261,12 @@ export namespace Pages {
   export const termsOfService = {
     path: "/terms-of-service",
     title: defineMessage({
-      id: "page.termsOfService.name",
+      id: "t_Terms_of_Service",
       defaultMessage: "Terms of Service",
     }),
     link: {
       label: defineMessage({
-        id: "page.termsOfService.name",
+        id: "t_Terms_of_Service",
         defaultMessage: "Terms of Service",
       }),
     },
@@ -277,12 +276,12 @@ export namespace Pages {
   export const privacyPolicy = {
     path: "/privacy-policy",
     title: defineMessage({
-      id: "page.privacyPolicy.name",
+      id: "t_Privacy_Policy",
       defaultMessage: "Privacy Policy",
     }),
     link: {
       label: defineMessage({
-        id: "page.privacyPolicy.name",
+        id: "t_Privacy_Policy",
         defaultMessage: "Privacy Policy",
       }),
     },
