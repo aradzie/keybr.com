@@ -42,7 +42,7 @@ export function TypingSettings() {
     <>
       <FieldSet
         legend={formatMessage({
-          id: "settings.typingOptions.legend",
+          id: "t_Typing_Options",
           defaultMessage: "Typing Options",
         })}
       >
@@ -60,7 +60,7 @@ export function TypingSettings() {
       </FieldSet>
       <FieldSet
         legend={formatMessage({
-          id: "settings.textAppearance.legend",
+          id: "t_Text_Appearance",
           defaultMessage: "Text Appearance",
         })}
       >

@@ -20,7 +20,7 @@ export function AccuracyStreaksSection({
     <Figure>
       <Figure.Caption>
         <FormattedMessage
-          id="profile.accuracy.header"
+          id="t_Accuracy_Streaks"
           defaultMessage="Accuracy Streaks"
         />
       </Figure.Caption>
@@ -65,7 +65,7 @@ function StreakDetails({ streak }: { streak: Streak }) {
       <dt>
         <NameValue
           name={formatMessage({
-            id: "profile.chart.accuracy.accuracyThreshold.header",
+            id: "t_Accuracy_Threshold",
             defaultMessage: "Accuracy Threshold",
           })}
           value={formatPercents(level)}
@@ -102,7 +102,7 @@ function StreakDetails({ streak }: { streak: Streak }) {
         />
         <NameValue
           name={formatMessage({
-            id: "metric.summary.startDate.label",
+            id: "t_Start_Date",
             defaultMessage: "Start Date",
           })}
           value={formatDate(results[0].timeStamp, {

@@ -17,7 +17,7 @@ export function MiscSettings(): ReactNode {
     <>
       <FieldSet
         legend={formatMessage({
-          id: "settings.interfaceOptions.legend",
+          id: "t_Interface_Options",
           defaultMessage: "Interface Options",
         })}
       >

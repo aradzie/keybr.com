@@ -64,7 +64,7 @@ export function EmailLoginForm({ actions }: { actions: SignInActions }) {
               size={16}
               icon={<Icon shape={mdiRepeat} />}
               label={formatMessage({
-                id: "account.widget.resend.label",
+                id: "t_Resend",
                 defaultMessage: "Resend",
               })}
               onClick={handleClickRetry}
@@ -89,7 +89,7 @@ export function EmailLoginForm({ actions }: { actions: SignInActions }) {
               size={16}
               icon={<Icon shape={mdiRepeat} />}
               label={formatMessage({
-                id: "account.widget.retrySend.label",
+                id: "t_Retry",
                 defaultMessage: "Retry",
               })}
               onClick={handleClickRetry}

@@ -33,7 +33,7 @@ export function AccountSection({
 
       <FieldSet
         legend={formatMessage({
-          id: "account.accountDetails.legend",
+          id: "t_Account_Details",
           defaultMessage: "Account Details",
         })}
       >
@@ -51,7 +51,7 @@ export function AccountSection({
         <Para>
           <CheckBox
             label={formatMessage({
-              id: "account.widget.anonymize.label",
+              id: "t_Anonymize_Me",
               defaultMessage: "Anonymize Me",
             })}
             checked={user.anonymized}
@@ -75,7 +75,7 @@ export function AccountSection({
             }}
             icon={<Icon shape={mdiExitToApp} />}
             label={formatMessage({
-              id: "account.widget.signOut.label",
+              id: "t_Sing_Out",
               defaultMessage: "Sign Out",
             })}
           />
@@ -84,19 +84,19 @@ export function AccountSection({
 
       <FieldSet
         legend={formatMessage({
-          id: "account.premiumAccount.legend",
+          id: "t_Premium_Account",
           defaultMessage: "Premium Account",
         })}
       >
         {isPremiumUser(publicUser) ? (
           <FormattedMessage
-            id="account.premiumAccountOverview"
+            id="account.premiumAccount.description"
             defaultMessage="<p>Thank you for purchasing a premium account! Now you can enjoy additional features and an ad-free experience.</p>"
           />
         ) : (
           <>
             <FormattedMessage
-              id="account.freeAccountOverview"
+              id="account.freeAccount.description"
               defaultMessage={
                 "<p>Buy a <strong>premium account</strong> to unlock additional features and enjoy an ad-free experience. Here is the list of premium account benefits:</p>" +
                 "<ul>" +
@@ -128,7 +128,7 @@ export function AccountSection({
 
       <FieldSet
         legend={formatMessage({
-          id: "account.deleteAccount.legend",
+          id: "t_Delete_Account",
           defaultMessage: "Delete Account",
         })}
       >
@@ -139,7 +139,7 @@ export function AccountSection({
             }}
             icon={<Icon shape={mdiDeleteForever} />}
             label={formatMessage({
-              id: "account.widget.deleteAccount.label",
+              id: "t_Delete_Account",
               defaultMessage: "Delete Account",
             })}
           />

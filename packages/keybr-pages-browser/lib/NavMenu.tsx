@@ -90,7 +90,7 @@ function AccountLink({ user }: { readonly user: AnyUser }) {
         {user.id != null
           ? user.name
           : formatMessage({
-              id: "account.widget.signIn.label",
+              id: "t_Sing_In",
               defaultMessage: "Sign-In",
             })}
       </span>

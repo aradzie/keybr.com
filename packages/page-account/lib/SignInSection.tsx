@@ -22,13 +22,13 @@ export function SignInSection({ actions }: { actions: SignInActions }) {
 
       <Header level={2}>
         <FormattedMessage
-          id="account.premiumAccount.header"
+          id="t_Premium_Account"
           defaultMessage="Premium Account"
         />
       </Header>
 
       <FormattedMessage
-        id="account.freeAccountOverview"
+        id="account.freeAccount.description"
         defaultMessage={
           "<p>Buy a <strong>premium account</strong> to unlock additional features and enjoy an ad-free experience. Here is the list of premium account benefits:</p>" +
           "<ul>" +

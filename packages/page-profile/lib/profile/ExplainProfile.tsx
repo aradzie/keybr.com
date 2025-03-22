@@ -23,11 +23,11 @@ export function ExplainProfile() {
         >
           {explainersVisible
             ? `\u25BC ${formatMessage({
-                id: "profile.explain.hide",
+                id: "t_Hide_explanations",
                 defaultMessage: "Hide explanations",
               })}`
             : `\u25BA ${formatMessage({
-                id: "profile.explain.show",
+                id: "t_Explain_charts",
                 defaultMessage: "Explain charts",
               })}`}
         </Button>

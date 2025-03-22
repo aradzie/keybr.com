@@ -41,7 +41,7 @@ export function CustomTextLessonSettings({
 
       <FieldSet
         legend={formatMessage({
-          id: "settings.lessonOptions.legend",
+          id: "t_Lesson_Options",
           defaultMessage: "Lesson Options",
         })}
       >

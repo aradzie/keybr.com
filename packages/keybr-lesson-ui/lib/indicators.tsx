@@ -31,7 +31,7 @@ export const GaugeRow = memo(function GaugeRow({
       <Name
         className={styles.name}
         name={formatMessage({
-          id: "lesson.panel.gauges.label",
+          id: "t_Metrics",
           defaultMessage: "Metrics",
         })}
       />
@@ -59,7 +59,7 @@ export const KeySetRow = memo(function KeySetRow({
       <Name
         className={styles.name}
         name={formatMessage({
-          id: "lesson.panel.keySet.label",
+          id: "t_All_keys",
           defaultMessage: "All keys",
         })}
       />
@@ -88,7 +88,7 @@ export const CurrentKeyRow = memo(function CurrentKeyRow({
       <Name
         className={styles.name}
         name={formatMessage({
-          id: "lesson.panel.currentKey.label",
+          id: "t_Current_key",
           defaultMessage: "Current key",
         })}
       />
@@ -114,7 +114,7 @@ export const StreakListRow = memo(function StreakListRow({
       <Name
         className={styles.name}
         name={formatMessage({
-          id: "lesson.panel.streakList.label",
+          id: "t_Accuracy",
           defaultMessage: "Accuracy",
         })}
       />
@@ -140,7 +140,7 @@ export const DailyGoalRow = memo(function DailyGoalRow({
       <Name
         className={styles.name}
         name={formatMessage({
-          id: "lesson.panel.dailyGoal.label",
+          id: "t_Daily_goal",
           defaultMessage: "Daily goal",
         })}
       />

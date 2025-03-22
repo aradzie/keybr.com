@@ -49,7 +49,7 @@ export const messages = defineMessages({
     defaultMessage: "{value}/lesson",
   },
   uncertainValue: {
-    id: "metric.uncertainValue",
+    id: "t_Uncertain",
     defaultMessage: "Uncertain",
   },
   notCalibratedText: {
@@ -57,7 +57,7 @@ export const messages = defineMessages({
     defaultMessage: "Not calibrated, need more samples.",
   },
   characterName: {
-    id: "lesson.characterName",
+    id: "t_Character_name",
     defaultMessage: "Character ‘{name}’",
   },
   focusedKeyText: {

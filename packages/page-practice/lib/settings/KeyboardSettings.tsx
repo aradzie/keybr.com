@@ -33,7 +33,7 @@ export function KeyboardSettings(): ReactNode {
     <>
       <FieldSet
         legend={formatMessage({
-          id: "settings.options.legend",
+          id: "t_Options",
           defaultMessage: "Options",
         })}
       >
@@ -41,7 +41,7 @@ export function KeyboardSettings(): ReactNode {
       </FieldSet>
       <FieldSet
         legend={formatMessage({
-          id: "settings.preview.legend",
+          id: "t_Preview",
           defaultMessage: "Preview",
         })}
       >
