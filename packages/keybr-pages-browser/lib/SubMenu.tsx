@@ -26,13 +26,6 @@ export function SubMenu({ currentPath }: { readonly currentPath: string }) {
       <LocaleSwitcher currentPath={currentPath} />
       <TranslateLink />
       <RemoveAdsLink />
-      <StaticLink
-        href="https://pianii.com"
-        target="pianii"
-        title="Piano sheet reading learning"
-      >
-        pianii.com
-      </StaticLink>
     </div>
   );
 }
