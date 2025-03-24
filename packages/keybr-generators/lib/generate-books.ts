@@ -5,9 +5,12 @@ import { Parser } from "commonmark";
 import { pathTo } from "./root.ts";
 
 for (const name of [
-  "en-alice-wonderland", //
+  "en-alice-wonderland",
   "en-call-wild",
   "en-jekyll-hyde",
+  "es-marianela",
+  "de-alice-wonderland",
+  "fr-alice-wonderland",
 ]) {
   generate(
     pathTo(`books/${name}.txt`),
@@ -20,7 +23,7 @@ function generate(input: string, output: string): void {
   let para = [];
   let line = "";
 
-  const content = readFileSync(input, "utf-8");
+  const content = readFileSync(input, "utf-8").replaceAll("----", "—");
   const reader = new Parser({ smart: true });
   const document = reader.parse(content);
   const walker = document.walker();
