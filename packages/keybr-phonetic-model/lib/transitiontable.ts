@@ -202,7 +202,7 @@ function readSegments(reader: Reader, chain: Chain): Segment[] {
   for (let segmentIndex = 0; segmentIndex < chain.segments; segmentIndex++) {
     const segment = [];
     const length = reader.getUint8();
-    if (length >= chain.size) {
+    if (length > chain.size) {
       throw new DataError();
     }
     for (let entryIndex = 0; entryIndex < length; entryIndex++) {
