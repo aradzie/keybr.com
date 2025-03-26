@@ -47,5 +47,7 @@
   "Comma": "'",
   "Period": "=+",
   "Slash": "/?",
-  "Space": " "
+  "Space": " ",
+  "ThumbClusterLeft1": "rR",
+  "ThumbClusterRight1": " "
 }
