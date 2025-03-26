@@ -4,7 +4,6 @@ export * from "./filter.ts";
 export * from "./geometry.ts";
 export * from "./keyboard.ts";
 export * from "./keycharacters.ts";
-export * from "./keycode.ts";
 export * from "./keycombo.ts";
 export * from "./keymodifier.ts";
 export * from "./keyshape.ts";
