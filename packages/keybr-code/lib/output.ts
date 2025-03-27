@@ -8,7 +8,7 @@ export class Output {
   #length: number = 0;
   #separator: string = "";
 
-  constructor(limit: number = 1000) {
+  constructor(limit: number = 2000) {
     this.#limit = limit;
   }
 
