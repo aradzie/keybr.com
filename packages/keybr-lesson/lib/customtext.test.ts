@@ -234,3 +234,29 @@ describe("generate randomized text using settings", () => {
     );
   });
 });
+
+test("generate text with maximum length equal to custom text inputted", () => {
+  const settings = new Settings().set(lessonProps.customText.content, "Hello World");
+  const keyboard = loadKeyboard(Layout.EN_US);
+  const model = new FakePhoneticModel();
+  const lesson = new CustomTextLesson(settings, keyboard, model);
+  const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
+
+  equal(
+    lesson.generate(lessonKeys, model.rng),
+    "Hello World"
+  );
+});
+
+test("generate text without looping once completed", () => {
+  const settings = new Settings().set(lessonProps.customText.content, "Hello World");
+  const keyboard = loadKeyboard(Layout.EN_US);
+  const model = new FakePhoneticModel();
+  const lesson = new CustomTextLesson(settings, keyboard, model);
+  const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
+
+  equal(
+    lesson.generate(lessonKeys, model.rng),
+    "Hello World"
+  );
+});
