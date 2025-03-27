@@ -29,8 +29,8 @@ export class CustomTextLesson extends Lesson {
 
   override generate(lessonKeys: LessonKeys, rng: RNGStream) {
     const fragment = generateFragment(this.settings, this.#makeWordGenerator(rng));
-    const maxLength = this.settings.get(lessonProps.customText.content).length;
-    return fragment.slice(0, maxLength);
+    const maxLength = this.wordList.length;
+    return this.wordIndex < maxLength ? fragment :
   }
 
   #makeWordGenerator(rng: RNGStream) {
@@ -58,6 +58,6 @@ export class CustomTextLesson extends Lesson {
     if (lowercase) {
       text = this.model.language.lowerCase(text);
     }
-    return text.split(/\s+/);
+    return text;
   }
 }
