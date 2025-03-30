@@ -1100,6 +1100,15 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly DE_ADNW_BUT_XCV = new Layout(
+    /* id= */ "de-adnw-but-xcv",
+    /* xid= */ 0xa6,
+    /* name= */ "AdNW BuT-XCV",
+    /* family= */ "de-adnw",
+    /* language= */ Language.DE,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(Geometry.MATRIX),
+  );
 
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
@@ -1177,6 +1186,7 @@ export class Layout implements XEnumItem {
     Layout.TH_PAT,
     Layout.TH_MAN,
     Layout.RO_RO,
+    Layout.DE_ADNW_BUT_XCV,
   );
 
   static findLayout(localeId: string): Layout | null {

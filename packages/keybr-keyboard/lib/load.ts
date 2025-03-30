@@ -16,6 +16,7 @@ import { LAYOUT_AR_SA } from "./layout/ar_sa.ts";
 import { LAYOUT_AR_SA_102 } from "./layout/ar_sa_102.ts";
 import { LAYOUT_BE_BY } from "./layout/be_by.ts";
 import { LAYOUT_CS_CZ } from "./layout/cs_cz.ts";
+import { LAYOUT_DE_ADNW_BUT_XCV } from "./layout/de_adnw_but_xcv.ts";
 import { LAYOUT_DE_BONE } from "./layout/de_bone.ts";
 import { LAYOUT_DE_CH } from "./layout/de_ch.ts";
 import { LAYOUT_DE_CMOS } from "./layout/de_cmos.ts";
@@ -167,6 +168,7 @@ const layouts = new Map<Layout, CharacterDict>([
   [Layout.TR_TR_F, LAYOUT_TR_TR_F],
   [Layout.TR_TR_Q, LAYOUT_TR_TR_Q],
   [Layout.UK_UA, LAYOUT_UK_UA],
+  [Layout.DE_ADNW_BUT_XCV, LAYOUT_DE_ADNW_BUT_XCV],
 ]);
 
 const geometries = new Map<Geometry, GeometryDict>([
