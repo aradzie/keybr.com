@@ -15,6 +15,7 @@ for (const [id, layout] of [
   ["ar_sa_102", importCldr("cldr-keyboards-43.0/keyboards/windows/ar-t-k0-windows-102key.xml")],
   ["be_by", importCldr("cldr-keyboards-43.0/keyboards/windows/be-t-k0-windows.xml")],
   ["cs_cz", importCldr("cldr-keyboards-43.0/keyboards/windows/cs-t-k0-windows.xml")],
+  ["de_adnw_but_xcv", importKeymap("layouts/de_adnw_but_xcv.json")],
   ["de_bone", importKeymap("layouts/de_bone.json")],
   ["de_ch", importCldr("cldr-keyboards-43.0/keyboards/windows/de-CH-t-k0-windows.xml")],
   ["de_cmos", importKeymap("layouts/de_cmos.json")],
