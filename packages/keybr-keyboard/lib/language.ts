@@ -20,6 +20,12 @@ export class Language implements EnumItem {
     /* direction= */ "ltr",
     /* alphabet= */ "aábcčdďeéěfghiíjklmnňoóprřsštťuúůvxyýzž",
   );
+  static readonly DA = new Language(
+    /* id= */ "da",
+    /* script= */ "latin",
+    /* direction= */ "ltr",
+    /* alphabet= */ "abcdefghijklmnopqrstuvwxyzæøå",
+  );
   static readonly DE = new Language(
     /* id= */ "de",
     /* script= */ "latin",
@@ -157,6 +163,7 @@ export class Language implements EnumItem {
     Language.AR,
     Language.BE,
     Language.CS,
+    Language.DA,
     Language.DE,
     Language.EL,
     Language.EN,
