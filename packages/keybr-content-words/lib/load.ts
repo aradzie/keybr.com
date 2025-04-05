@@ -24,6 +24,13 @@ export async function loadWordList(language: Language): Promise<WordList> {
           { with: { type: "json" } }
         )
       ).default;
+    case Language.DA:
+      return (
+        await import(
+          /* webpackChunkName: "words-da" */ "./data/words-da.json",
+          { with: { type: "json" } }
+        )
+      ).default;
     case Language.DE:
       return (
         await import(

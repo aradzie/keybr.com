@@ -2,6 +2,7 @@ import { Language } from "@keybr/keyboard";
 import AR from "@keybr/phonetic-model/assets/model-ar.data";
 import BE from "@keybr/phonetic-model/assets/model-be.data";
 import CS from "@keybr/phonetic-model/assets/model-cs.data";
+import DA from "@keybr/phonetic-model/assets/model-da.data";
 import DE from "@keybr/phonetic-model/assets/model-de.data";
 import EL from "@keybr/phonetic-model/assets/model-el.data";
 import EN from "@keybr/phonetic-model/assets/model-en.data";
@@ -33,6 +34,8 @@ export function modelAssetPath(language: Language): string {
       return BE;
     case Language.CS:
       return CS;
+    case Language.DA:
+      return DA;
     case Language.DE:
       return DE;
     case Language.EL:
