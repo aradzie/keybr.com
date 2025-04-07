@@ -314,31 +314,9 @@ Untranslated: 4 messages, 6 words
 
 # Hungarian
 
-Translated: 270 messages, 3646 words
+Translated: 341 messages, 4746 words
 
-Untranslated: 69 messages, 1078 words
-
-* *Books*
-* *Font:*
-* *Zones:*
-* *Not set*
-* *Syntax:*
-* *Volume:*
-* *Alphabet:*
-* *No sounds*
-* *All sounds*
-* *Box cursor*
-* *Line cursor*
-* *Source code*
-* *Block cursor*
-* *Sound theme:*
-* *Top accuracy*
-* *No whitespace*
-* *Smooth cursor*
-* *Bar whitespace*
-* *Explain charts*
-* *Highlight keys*
-* ...
+Untranslated: 0 messages, 0 words
 
 # Indonesian
 

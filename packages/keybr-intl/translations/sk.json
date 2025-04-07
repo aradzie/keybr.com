@@ -32,7 +32,7 @@
   "help.rule2.title": "Učíte sa začiatočné písmená",
   "help.rule3.body": "<p>Keď sa vaša rýchlosť písania zlepší a všetky písmená budú zelené, nový znak ‘<em>S</em>’ bude pridaný do sady. Náhodné slová budú generované z tejto novej sadt písmen. Znak ‘<em>S</em>’ je cieľové písmeno a vyskytuje sa v každom generovanom slove. Znova, farba indikátora tohto znaku je sivá, pretože jeho štatistika je neznáma.</p>",
   "help.rule3.title": "Algoritmus pridáva viac písmen",
-  "help.rule4.body": "<p>V tomto kroku je vaším cieľom je, aby toto nové písmeno ozelenelo, a keď sa to stane, do sady je pridané ďalšie písmeno a cyklus pokračuje. V realite je veľmi pravdepodobné, že rýchlosť písania predošlých písmen sa zníži a vy uvidíte, že očervenejú, ako je ukázané v&nbsp;príklade. Toto je očakávané, váš cieľ sa nezmenil — dosiahnuť, aby ďalšie cieľové písmeno ozelenelo, a odomknúť ďalšie.</p>",
+  "help.rule4.body": "<p>V tomto kroku je vaším cieľom je, aby toto nové písmeno ozelenelo, a keď sa to stane, do sady je pridané ďalšie písmeno a cyklus pokračuje. V realite je veľmi pravdepodobné, že rýchlosť písania predošlých písmen sa zníži a vy uvidíte, že očervenejú, ako je ukázané v príklade. Toto je očakávané, váš cieľ sa nezmenil — dosiahnuť, aby ďalšie cieľové písmeno ozelenelo, a odomknúť ďalšie.</p>",
   "help.rule4.title": "Učíte sa ďalšie písmená",
   "help.rule5.body": "<p>Ak ste dosť vytrvalí, skôr alebo neskôr všetky písmená ozelenejú. Gratulujeme, dosiahli ste váš hlavný cieľ! Avšak to neznamená, že by ste mali prestať učiť sa, môžete pokračovať tak dlho, ako chcete.</p>",
   "help.rule5.title": "Cyklus sa opakuje",
