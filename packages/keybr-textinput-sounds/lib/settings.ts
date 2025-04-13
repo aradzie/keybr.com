@@ -5,6 +5,7 @@ export enum PlaySounds {
   None = 1,
   ErrorsOnly = 2,
   All = 3,
+  KeysOnly = 4,
 }
 
 export class SoundTheme implements EnumItem {

@@ -483,6 +483,21 @@ function SoundsProp() {
       <Field>
         <RadioBox
           label={formatMessage({
+            id: "t_Key_sounds_only:",
+            defaultMessage: "Key sounds only",
+          })}
+          name="play-sounds"
+          checked={settings.get(soundProps.playSounds) === PlaySounds.KeysOnly}
+          onChange={() => {
+            updateSettings(
+              settings.set(soundProps.playSounds, PlaySounds.KeysOnly),
+            );
+          }}
+        />
+      </Field>
+      <Field>
+        <RadioBox
+          label={formatMessage({
             id: "t_All_sounds:",
             defaultMessage: "All sounds",
           })}
