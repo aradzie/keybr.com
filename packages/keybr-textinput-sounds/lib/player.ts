@@ -41,6 +41,14 @@ export function makeSoundPlayer(settings: Settings) {
           break;
       }
     }
+    if (playSounds === PlaySounds.KeysOnly) {
+      switch (feedback) {
+        case Feedback.Succeeded:
+        case Feedback.Recovered:
+          theme.play("click", soundVolume);
+          break;
+      }
+    }
   };
 }
 
