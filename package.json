@@ -29,7 +29,8 @@
     "build": "env NODE_ENV=production webpack",
     "build-dev": "env NODE_ENV=development webpack",
     "watch": "env NODE_ENV=development webpack --watch",
-    "start": "env NODE_ENV=development node --enable-source-maps ./root/index.js"
+    "start": "env NODE_ENV=development node --enable-source-maps ./root/index.js",
+    "start-docker": "env NODE_ENV=production ./packages/devenv/lib/initdb.ts && env NODE_ENV=production node --enable-source-maps ./root/index.js"
   },
   "dependencies": {
     "@fastr/client": "^0.1.1",

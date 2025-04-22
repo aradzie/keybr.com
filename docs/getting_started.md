@@ -67,3 +67,9 @@ Run the following command at the same time as `npm start` in another shell:
 ```shell
 npm run watch
 ```
+
+
+### Docker
+There is also an ability to deploy app with Docker or Docker Compose, `Dockerfile` and `docker-compose.yaml` are provided.
+
+There are some limitations: exposed port should always be 3000
