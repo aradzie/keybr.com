@@ -3,13 +3,8 @@ services:
     build:
       dockerfile: ./Dockerfile
     volumes:
-      - ~/.local/state/keybr:/root/.local/state/keybr
-      - ~/.local/state/keybr/.env:/etc/keybr/env
+      - /path/to/data_dir:~/.local/state/keybr
+      - /path/to/data_dir/.env:/etc/keybr/env
     ports:
-      - 3008:3000
+      - 30044:3000
     restart: unless-stopped
-    environment:
-      - HOST=0.0.0.0
-      - PORT=3000
-      - NODE_ENV=production
-      - APP_URL=http://localhost:3008/
