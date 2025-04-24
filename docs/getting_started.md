@@ -49,7 +49,7 @@ env DATABASE_CLIENT=sqlite npm test
 When running the application for the first time, make sure that database tables are created and example users exist:
 
 ```shell
-./packages/devenv/lib/initdb.ts
+  ./packages/devenv/lib/initdb.ts
 ```
 
 Finally, start the web server:

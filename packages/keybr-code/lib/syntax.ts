@@ -14,6 +14,7 @@ import {
   grammar_regex,
   grammar_rust,
   grammar_shell,
+  grammar_typescript,
 } from "./syntax/grammars.ts";
 import { validate } from "./validate.ts";
 
@@ -38,6 +39,11 @@ export class Syntax implements EnumItem {
     "Java Script Expressions",
     grammar_javascript,
   );
+  static readonly TYPESCRIPT = new Syntax(
+    "typescript",
+    "TypeScript",
+    grammar_typescript,
+  );
   static readonly PYTHON = new Syntax("python", "Python", grammar_python);
   static readonly RUST = new Syntax("rust", "Rust", grammar_rust);
   static readonly SHELL = new Syntax("shell", "Shell", grammar_shell);
@@ -50,6 +56,7 @@ export class Syntax implements EnumItem {
     Syntax.CPP_FPROTO,
     Syntax.CPP_STMT,
     Syntax.JAVASCRIPT_EXP,
+    Syntax.TYPESCRIPT,
     Syntax.PYTHON,
     Syntax.RUST,
     Syntax.SHELL,
