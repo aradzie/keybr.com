@@ -403,6 +403,14 @@ export default {
     cls: "keyword",
     span: "nullptr",
   },
+  kw_number: {
+    cls: "keyword",
+    span: "number",
+  },
+  kw_object: {
+    cls: "keyword",
+    span: "object",
+  },
   kw_operator: {
     cls: "keyword",
     span: "operator",
@@ -446,6 +454,10 @@ export default {
   kw_raise: {
     cls: "keyword",
     span: "raise",
+  },
+  kw_readonly: {
+    cls: "keyword",
+    span: "readonly",
   },
   kw_ref: {
     cls: "keyword",
@@ -503,6 +515,10 @@ export default {
     cls: "keyword",
     span: "strictfp",
   },
+  kw_string: {
+    cls: "keyword",
+    span: "string",
+  },
   kw_struct: {
     cls: "keyword",
     span: "struct",
@@ -514,6 +530,10 @@ export default {
   kw_switch: {
     cls: "keyword",
     span: "switch",
+  },
+  kw_symbol: {
+    cls: "keyword",
+    span: "symbol",
   },
   kw_synchronized: {
     cls: "keyword",
@@ -603,6 +623,10 @@ export default {
     cls: "keyword",
     span: "union",
   },
+  kw_unknown: {
+    cls: "keyword",
+    span: "unknown",
+  },
   kw_unsafe: {
     cls: "keyword",
     span: "unsafe",
@@ -658,5 +682,45 @@ export default {
   kw_yield: {
     cls: "keyword",
     span: "yield",
+  },
+  kw_any: {
+    cls: "keyword",
+    span: "any",
+  },
+  kw_bigint: {
+    cls: "keyword",
+    span: "bigint",
+  },
+  kw_declare: {
+    cls: "keyword",
+    span: "declare",
+  },
+  kw_keyof: {
+    cls: "keyword",
+    span: "keyof",
+  },
+  kw_module: {
+    cls: "keyword",
+    span: "module",
+  },
+  kw_never: {
+    cls: "keyword",
+    span: "never",
+  },
+  kw_satisfies: {
+    cls: "keyword",
+    span: "satisfies",
+  },
+  kw_unique: {
+    cls: "keyword",
+    span: "unique",
+  },
+  kw_infer: {
+    cls: "keyword",
+    span: "infer",
+  },
+  kw_out: {
+    cls: "keyword",
+    span: "out",
   },
 } as Rules;
