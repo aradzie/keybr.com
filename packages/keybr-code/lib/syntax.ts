@@ -9,6 +9,7 @@ import { Output } from "./output.ts";
 import {
   grammar_cpp,
   grammar_html_css,
+  grammar_java,
   grammar_javascript,
   grammar_python,
   grammar_regex,
@@ -48,6 +49,7 @@ export class Syntax implements EnumItem {
   static readonly RUST = new Syntax("rust", "Rust", grammar_rust);
   static readonly SHELL = new Syntax("shell", "Shell", grammar_shell);
   static readonly REGEX = new Syntax("regex", "Regex", grammar_regex);
+  static readonly JAVA = new Syntax("java", "Java", grammar_java);
 
   static readonly ALL = new Enum<Syntax>(
     Syntax.HTML,
@@ -61,6 +63,7 @@ export class Syntax implements EnumItem {
     Syntax.RUST,
     Syntax.SHELL,
     Syntax.REGEX,
+    Syntax.JAVA,
   );
 
   readonly id: string;
