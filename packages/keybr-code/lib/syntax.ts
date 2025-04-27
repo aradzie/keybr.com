@@ -50,7 +50,7 @@ export class Syntax implements EnumItem {
   static readonly SHELL = new Syntax("shell", "Shell", grammar_shell);
   static readonly REGEX = new Syntax("regex", "Regex", grammar_regex);
 
-  static readonly JAVA = new Syntax("java", "JAVA", grammar_java);
+  static readonly JAVA = new Syntax("java", "Java", grammar_java);
 
   static readonly ALL = new Enum<Syntax>(
     Syntax.HTML,
