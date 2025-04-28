@@ -8,6 +8,7 @@ import { generate } from "./generate.ts";
 import { Output } from "./output.ts";
 import {
   grammar_cpp,
+  grammar_go,
   grammar_html_css,
   grammar_java,
   grammar_javascript,
@@ -52,6 +53,8 @@ export class Syntax implements EnumItem {
 
   static readonly JAVA = new Syntax("java", "Java", grammar_java);
 
+  static readonly GO = new Syntax("go", "Go", grammar_go);
+
   static readonly ALL = new Enum<Syntax>(
     Syntax.HTML,
     Syntax.CSS,
@@ -65,6 +68,7 @@ export class Syntax implements EnumItem {
     Syntax.SHELL,
     Syntax.REGEX,
     Syntax.JAVA,
+    Syntax.GO,
   );
 
   readonly id: string;
