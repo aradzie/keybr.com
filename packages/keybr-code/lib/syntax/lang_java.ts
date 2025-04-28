@@ -632,5 +632,4 @@ export default {
   kw_long: "long",
   kw_short: "short",
   kw_byte: "byte",
-  kw_this: "this",
 } as Rules;
