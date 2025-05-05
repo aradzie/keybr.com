@@ -136,11 +136,10 @@ Untranslated: 9 messages, 12 words
 
 # Greek
 
-Translated: 340 messages, 4745 words
+Translated: 341 messages, 4746 words
 
-Untranslated: 2 messages, 4 words
+Untranslated: 1 messages, 3 words
 
-* *Multiplayer*
 * *Key sounds only*
 
 # Esperanto
@@ -192,9 +191,9 @@ Untranslated: 4 messages, 6 words
 
 # Persian
 
-Translated: 286 messages, 2816 words
+Translated: 287 messages, 2823 words
 
-Untranslated: 54 messages, 1911 words
+Untranslated: 53 messages, 1904 words
 
 * *Books*
 * *Zones:*
@@ -208,7 +207,6 @@ Untranslated: 54 messages, 1911 words
 * *Relative Accuracy*
 * *Repeat each word:*
 * *Keyboard hardware emulates layout*
-* *Show a guided tour with help slides.*
 * *Switch the current interface layout.*
 * *Circle color: {label1} – hit count, {label2} – miss count.*
 * *Generate lessons that resemble the specified programming lan...*
@@ -216,6 +214,7 @@ Untranslated: 54 messages, 1911 words
 * *This is a histogram of the accuracies of all users, and your...*
 * *Show color coding of the keyboard zones. Use this option to ...*
 * *Bar color: {label1} – hit count, {label2} – miss count, {lab...*
+* *Generate typing lessons from the text of a book. All keys ar...*
 * ...
 
 # Finnish
@@ -276,9 +275,9 @@ Untranslated: 290 messages, 4097 words
 
 # French
 
-Translated: 326 messages, 4394 words
+Translated: 328 messages, 4405 words
 
-Untranslated: 16 messages, 355 words
+Untranslated: 14 messages, 344 words
 
 * *Zones:*
 * *Options*
@@ -288,9 +287,7 @@ Untranslated: 16 messages, 355 words
 * *Translate*
 * *Key sounds only*
 * *Accuracy Streaks*
-* *Explain settings*
 * *Sort letters in the order of keyboard keys*
-* *The previous keys are also above the target speed*
 * *You don’t have any accuracy streaks. Consider completing a l...*
 * *Above are listed the longest continuous sequences of lessons...*
 * *When you focus on a new key, it is very likely that the spee...*
@@ -393,31 +390,12 @@ Untranslated: 7 messages, 9 words
 
 # Japanese
 
-Translated: 207 messages, 2149 words
+Translated: 340 messages, 4745 words
 
-Untranslated: 132 messages, 2575 words
+Untranslated: 2 messages, 4 words
 
 * *GO!*
-* *Books*
-* *Font:*
-* *Zones:*
-* *Metrics*
-* *Not set*
-* *Syntax:*
-* *Volume:*
-* *Alphabet:*
-* *Examples:*
-* *No sounds*
-* *Translate*
-* *All sounds*
-* *Box cursor*
-* *Last speed*
-* *Top score!*
-* *Top speed!*
-* *Line cursor*
-* *Source code*
-* *Block cursor*
-* ...
+* *Key sounds only*
 
 # Korean
 
@@ -568,15 +546,14 @@ Untranslated: 1 messages, 3 words
 
 # Brazilian Portuguese
 
-Translated: 337 messages, 4740 words
+Translated: 338 messages, 4743 words
 
-Untranslated: 5 messages, 9 words
+Untranslated: 4 messages, 6 words
 
 * *Layout*
 * *Layout:*
 * *Layouts*
 * *Key sounds only*
-* *Premium account price:*
 
 # European Portuguese
 
@@ -608,9 +585,9 @@ Untranslated: 22 messages, 130 words
 
 # Romanian
 
-Translated: 288 messages, 3350 words
+Translated: 298 messages, 3587 words
 
-Untranslated: 44 messages, 1308 words
+Untranslated: 37 messages, 1118 words
 
 * *Font:*
 * *Layout*
