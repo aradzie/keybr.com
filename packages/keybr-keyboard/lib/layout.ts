@@ -545,6 +545,15 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly UK_FACET_UA = new Layout(
+    /* id= */ "uk-facet-ua",
+    /* xid= */ 0x79,
+    /* name= */ "Facet UA (Matrix)",
+    /* family= */ "uk-facet-ua",
+    /* language= */ Language.UK,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(Geometry.MATRIX),
+  );
   static readonly SV_SE = new Layout(
     /* id= */ "sv-se",
     /* xid= */ 0x80,
@@ -1191,6 +1200,7 @@ export class Layout implements XEnumItem {
     Layout.SL_SI,
     Layout.SV_SE,
     Layout.UK_UA,
+    Layout.UK_FACET_UA,
     Layout.RU_RU,
     Layout.TR_TR_Q,
     Layout.TR_TR_F,
