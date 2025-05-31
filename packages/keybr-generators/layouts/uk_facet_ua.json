@@ -22,9 +22,9 @@
   "KeyI": "оО",
   "KeyO": "уУ",
   "KeyP": "фФ",
-  "BracketLeft": "шШ",
+  "BracketLeft": "ґҐ",
   "BracketRight": "щЩ",
-  "Backslash": "ґҐ",
+  "Backslash": "шШ",
   "KeyA": "сС",
   "KeyS": "нН",
   "KeyD": "тТ",
@@ -49,5 +49,7 @@
   "Slash": "їЇ",
   "Space": " ",
   "ThumbClusterRight1": "рР",
-  "ThumbClusterRight2": " "
+  "ThumbClusterRight2": " ",
+  "ThumbClusterLeft1": "ґҐ",
+  "ThumbClusterLeft2": "щЩ"
 }
