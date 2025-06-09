@@ -1,5 +1,5 @@
 diff --git a/node_modules/debug/src/browser.js b/node_modules/debug/src/browser.js
-index df8e179..11a3802 100644
+index 5993451..1384425 100644
 --- a/node_modules/debug/src/browser.js
 +++ b/node_modules/debug/src/browser.js
 @@ -1,5 +1,3 @@
@@ -65,7 +65,7 @@ index df8e179..11a3802 100644
 -		(typeof navigator !== 'undefined' && navigator.userAgent && (m = navigator.userAgent.toLowerCase().match(/firefox\/(\d+)/)) && parseInt(m[1], 10) >= 31) ||
 -		// Double check webkit in userAgent just in case we are in a worker
 -		(typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.toLowerCase().match(/applewebkit\/(\d+)/));
-+  return true;
++	return true;
  }
  
  /**
@@ -95,7 +95,7 @@ index df8e179..11a3802 100644
  function load() {
 -	let r;
 -	try {
--		r = exports.storage.getItem('debug');
+-		r = exports.storage.getItem('debug') || exports.storage.getItem('DEBUG') ;
 -	} catch (error) {
 -		// Swallow
 -		// XXX (@Qix-) should we be logging these?

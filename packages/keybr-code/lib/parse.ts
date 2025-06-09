@@ -1,5 +1,5 @@
-import { type Rules } from "./ast.ts";
-import { parse as peggyParse, SyntaxError } from "./parser.js";
+import { type Prod, type Rules } from "./ast.ts";
+import { parse as parse0, SyntaxError } from "./parser.js";
 
 export { SyntaxError };
 
@@ -8,6 +8,8 @@ export function parse(
   options?: { readonly grammarSource: string },
 ): Rules {
   return Object.fromEntries(
-    peggyParse(input, options).map(({ name, p }) => [name, p]),
+    (parse0(input, options) as { name: string; p: Prod }[]).map(
+      ({ name, p }) => [name, p],
+    ),
   );
 }

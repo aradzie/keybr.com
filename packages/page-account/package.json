@@ -13,7 +13,7 @@
     "@keybr/request": "*",
     "@keybr/thirdparties": "*",
     "@keybr/widget": "*",
-    "@paddle/paddle-js": "^1.4.0"
+    "@paddle/paddle-js": "^1.4.1"
   },
   "devDependencies": {},
   "scripts": {
