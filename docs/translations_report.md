@@ -32,9 +32,9 @@ Untranslated: 1 messages, 3 words
 
 # Bangla
 
-Translated: 38 messages, 297 words
+Translated: 40 messages, 349 words
 
-Untranslated: 292 messages, 4332 words
+Untranslated: 291 messages, 4305 words
 
 * *GO!*
 * *Copy*
@@ -390,18 +390,17 @@ Untranslated: 7 messages, 9 words
 
 # Japanese
 
-Translated: 340 messages, 4745 words
+Translated: 341 messages, 4746 words
 
-Untranslated: 2 messages, 4 words
+Untranslated: 1 messages, 3 words
 
-* *GO!*
 * *Key sounds only*
 
 # Korean
 
-Translated: 107 messages, 928 words
+Translated: 125 messages, 1156 words
 
-Untranslated: 231 messages, 3777 words
+Untranslated: 213 messages, 3549 words
 
 * *Copy*
 * *Done*
@@ -483,9 +482,9 @@ Untranslated: 316 messages, 4273 words
 
 # Norwegian Bokmål
 
-Translated: 120 messages, 1872 words
+Translated: 136 messages, 1983 words
 
-Untranslated: 215 messages, 2819 words
+Untranslated: 199 messages, 2708 words
 
 * *GO!*
 * *Done*
@@ -496,7 +495,6 @@ Untranslated: 215 messages, 2819 words
 * *Reset*
 * *Speed*
 * *Visit*
-* *Errors*
 * *Zones:*
 * *Account*
 * *Layouts*
@@ -507,6 +505,7 @@ Untranslated: 215 messages, 2819 words
 * *Preview*
 * *Profile*
 * *Sign-In*
+* *Syntax:*
 * ...
 
 # Nepali
