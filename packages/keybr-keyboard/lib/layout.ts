@@ -1131,6 +1131,13 @@ export class Layout implements XEnumItem {
     /* family= */ "enthium",
     /* language= */ Language.EN,
     /* emulate= */ false,
+  static readonly EN_NIGHT_MATRIX = new Layout(
+    /* id= */ "en-night-matrix",
+    /* xid= */ 0xa9,
+    /* name= */ "Night (matrix)",
+    /* family= */ "night",
+    /* language= */ Language.EN,
+    /* emulate= */ true,
     /* geometries= */ new Enum(Geometry.MATRIX),
   );
 
@@ -1149,6 +1156,7 @@ export class Layout implements XEnumItem {
     Layout.EN_CANARY_MATRIX,
     Layout.EN_NERPS,
     Layout.EN_NERPS_MATRIX,
+    Layout.EN_NIGHT_MATRIX,
     Layout.EN_HANDS_DOWN_NEU,
     Layout.EN_HANDS_DOWN_PROMETHIUM,
     Layout.EN_STURDY,
