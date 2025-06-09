@@ -23,5 +23,4 @@ sandbox/
 *~
 
 # Custom scripts
-build.sh
 deploy.sh
