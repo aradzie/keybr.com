@@ -39,6 +39,7 @@ for (const [id, layout] of [
   ["en_dvorak_r", importCldr("cldr-keyboards-43.0/keyboards/windows/en-t-k0-windows-dvorakr.xml")],
   ["en_engram", importKlc("layouts/engram.klc")],
   ["en_engrammer", importKlc("layouts/engrammer.klc")],
+  ["en_enthium_v6", importKeymap("layouts/enthium_v6.json")],
   ["en_gallium", importKlc("layouts/en_gallium.klc")],
   ["en_gallium_matrix", importKlc("layouts/en_gallium_matrix.klc")],
   ["en_graphite", importKeymap("layouts/en_graphite.json")],

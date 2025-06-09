@@ -1124,6 +1124,13 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly EN_ENTHIUM_V6 = new Layout(
+    /* id= */ "en-enthium-v6",
+    /* xid= */ 0xa8,
+    /* name= */ "Enthium V6 (Matrix)",
+    /* family= */ "enthium",
+    /* language= */ Language.EN,
+    /* emulate= */ false,
   static readonly EN_NIGHT_MATRIX = new Layout(
     /* id= */ "en-night-matrix",
     /* xid= */ 0xa9,
@@ -1213,6 +1220,7 @@ export class Layout implements XEnumItem {
     Layout.TH_MAN,
     Layout.RO_RO,
     Layout.DE_ADNW_BUT_XCV,
+    Layout.EN_ENTHIUM_V6,
   );
 
   static findLayout(localeId: string): Layout | null {
