@@ -78,6 +78,7 @@ for (const [id, layout] of [
   ["nb_kvikk", importKeymap("layouts/nb_kvikk.json")],
   ["nb_no", importCldr("cldr-keyboards-43.0/keyboards/windows/nb-t-k0-windows.xml")],
   ["nb_skarp", importKeymap("layouts/nb_skarp.json")],
+  ["nb_dvorak", importKeymap("layouts/nb_dvorak.json")],
   ["nl_be", importCldr("cldr-keyboards-43.0/keyboards/windows/nl-BE-t-k0-windows.xml")],
   ["nl_nl", importCldr("cldr-keyboards-43.0/keyboards/windows/nl-t-k0-windows.xml")],
   ["pl_fwyr", importKlc("layouts/pl_fwyr_v5.klc")],

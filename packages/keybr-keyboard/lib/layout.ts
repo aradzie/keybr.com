@@ -1022,6 +1022,21 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly NB_DVORAK = new Layout(
+    /* id= */ "nb-no-dvorak",
+    /* xid= */ 0x9f,
+    /* name= */ "Dvorak",
+    /* family= */ "dvorak",
+    /* language= */ Language.NB,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
   static readonly RO_RO = new Layout(
     /* id= */ "ro-ro",
     /* xid= */ 0xa0,
@@ -1198,6 +1213,7 @@ export class Layout implements XEnumItem {
     Layout.IT_IT,
     Layout.LT_LT,
     Layout.NB_NO,
+    Layout.NB_DVORAK,
     Layout.NB_KVIKK,
     Layout.NB_SKARP,
     Layout.NL_NL,
