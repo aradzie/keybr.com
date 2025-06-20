@@ -62,21 +62,9 @@ export function SpeedChartSection({ results }: { results: readonly Result[] }) {
           id="profile.chart.speed.legend"
           defaultMessage="Horizontal axis: lesson number. Vertical axis: {label1} – typing speed, {label2} – typing accuracy, {label3} – number of keys in the lessons."
           values={{
-            label1: (
-              <span onClick={toggleSpeedPlot}>
-                <Marker type="speed" />
-              </span>
-            ),
-            label2: (
-              <span onClick={toggleAccuracyPlot}>
-                <Marker type="accuracy" />
-              </span>
-            ),
-            label3: (
-              <span onClick={toggleComplexityPlot}>
-                <Marker type="complexity" />
-              </span>
-            ),
+            label1: <Marker type="speed" onClick={toggleSpeedPlot} />,
+            label2: <Marker type="accuracy" onClick={toggleAccuracyPlot} />,
+            label3: <Marker type="complexity" onClick={toggleComplexityPlot} />,
           }}
         />
       </Figure.Legend>
