@@ -3,27 +3,38 @@ import { useFormatter } from "@keybr/lesson-ui";
 import { hasData, linearRegression, Range, smooth, Vector } from "@keybr/math";
 import { type Result } from "@keybr/result";
 import { Canvas, type Rect, type ShapeList } from "@keybr/widget";
-import { type ReactNode } from "react";
+import { type ReactNode, useMemo } from "react";
 import { useIntl } from "react-intl";
 import { Chart, chartArea, type SizeProps } from "./Chart.tsx";
 import { withStyles } from "./decoration.ts";
 import { paintCurve, paintScatterPlot, projection } from "./graph.ts";
 import { type ChartStyles, useChartStyles } from "./use-chart-styles.ts";
 
+export const PLOT_MASK = {
+  accuracy: 0b001,
+  speed: 0b010,
+  complexity: 0b100,
+} as const;
+
 export function SpeedChart({
   results,
   smoothness,
   width,
   height,
+  plotsVisible,
 }: {
   readonly results: readonly Result[];
   readonly smoothness: number;
+  readonly plotsVisible: number;
 } & SizeProps): ReactNode {
   const styles = useChartStyles();
   const paint = usePaint(styles, results, smoothness);
+  const paintWithVisiblePlots = useMemo(() => {
+    return paint(plotsVisible);
+  }, [paint, plotsVisible]);
   return (
     <Chart width={width} height={height}>
-      <Canvas paint={chartArea(styles, paint)} />
+      <Canvas paint={chartArea(styles, paintWithVisiblePlots)} />
     </Chart>
   );
 }
@@ -39,14 +50,16 @@ function usePaint(
   const g = withStyles(styles);
 
   if (!hasData(results)) {
-    return (box: Rect): ShapeList => {
-      return [
-        g.paintGrid(box, "horizontal", { lines: 5 }),
-        g.paintGrid(box, "vertical", { lines: 5 }),
-        g.paintAxis(box, "bottom"),
-        g.paintAxis(box, "left"),
-        g.paintNoData(box, formatMessage),
-      ];
+    return (_: number) => {
+      return (box: Rect): ShapeList => {
+        return [
+          g.paintGrid(box, "horizontal", { lines: 5 }),
+          g.paintGrid(box, "vertical", { lines: 5 }),
+          g.paintAxis(box, "bottom"),
+          g.paintAxis(box, "left"),
+          g.paintNoData(box, formatMessage),
+        ];
+      };
     };
   }
 
@@ -72,33 +85,53 @@ function usePaint(
 
   const mSpeed = linearRegression(vIndex, vSpeed);
 
-  return (box: Rect): ShapeList => {
-    const projComplexity = projection(box, rIndex, rComplexity);
-    const projAccuracy = projection(box, rIndex, rAccuracy);
-    const projSpeed = projection(box, rIndex, rSpeed);
-    return [
-      g.paintGrid(box, "horizontal", { lines: 5 }),
-      g.paintGrid(box, "vertical", { lines: 5 }),
-      g.paintAxis(box, "bottom"),
-      g.paintAxis(box, "left"),
-      paintScatterPlot(projComplexity, vIndex, vComplexity, {
-        style: styles.complexity,
-      }),
-      paintScatterPlot(projAccuracy, vIndex, vAccuracy, {
-        style: styles.accuracy,
-      }),
-      paintScatterPlot(projSpeed, vIndex, vSpeed, {
-        style: styles.speed,
-      }),
-      paintCurve(projSpeed, mSpeed, {
-        style: {
-          ...styles.speed,
-          lineWidth: 2,
-        },
-      }),
-      g.paintTicks(box, rIndex, "bottom", { lines: 5, fmt: formatInteger }),
-      g.paintTicks(box, rSpeed, "left", { fmt: formatSpeed }),
-      g.paintTicks(box, rAccuracy, "right", { fmt: formatPercents }),
-    ];
+  return (plotsVisible: number) => {
+    return (box: Rect): ShapeList => {
+      const projComplexity = projection(box, rIndex, rComplexity);
+      const projAccuracy = projection(box, rIndex, rAccuracy);
+      const projSpeed = projection(box, rIndex, rSpeed);
+
+      const plots: ShapeList[] = [];
+      if ((plotsVisible & PLOT_MASK.complexity) !== 0) {
+        plots.push(
+          paintScatterPlot(projComplexity, vIndex, vComplexity, {
+            style: styles.complexity,
+          }),
+        );
+      }
+      if ((plotsVisible & PLOT_MASK.accuracy) !== 0) {
+        plots.push(
+          paintScatterPlot(projAccuracy, vIndex, vAccuracy, {
+            style: styles.accuracy,
+          }),
+        );
+      }
+      if ((plotsVisible & PLOT_MASK.speed) !== 0) {
+        plots.push(
+          paintScatterPlot(projSpeed, vIndex, vSpeed, {
+            style: styles.speed,
+          }),
+        );
+        plots.push(
+          paintCurve(projSpeed, mSpeed, {
+            style: {
+              ...styles.speed,
+              lineWidth: 2,
+            },
+          }),
+        );
+      }
+
+      return [
+        g.paintGrid(box, "horizontal", { lines: 5 }),
+        g.paintGrid(box, "vertical", { lines: 5 }),
+        g.paintAxis(box, "bottom"),
+        g.paintAxis(box, "left"),
+        ...plots,
+        g.paintTicks(box, rIndex, "bottom", { lines: 5, fmt: formatInteger }),
+        g.paintTicks(box, rSpeed, "left", { fmt: formatSpeed }),
+        g.paintTicks(box, rAccuracy, "right", { fmt: formatPercents }),
+      ];
+    };
   };
 }

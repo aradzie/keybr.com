@@ -18,6 +18,7 @@ test("render empty", () => {
           smoothness={1}
           width="100px"
           height="100px"
+          plotsVisible={0b111}
         />
       </FakeSettingsContext>
     </FakeIntlProvider>,
@@ -37,6 +38,7 @@ test("render non-empty", () => {
           smoothness={1}
           width="100px"
           height="100px"
+          plotsVisible={0b111}
         />
       </FakeSettingsContext>
     </FakeIntlProvider>,

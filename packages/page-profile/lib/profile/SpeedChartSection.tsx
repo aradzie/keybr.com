@@ -1,4 +1,4 @@
-import { Marker, SpeedChart } from "@keybr/chart";
+import { Marker, PLOT_MASK, SpeedChart } from "@keybr/chart";
 import { hasData } from "@keybr/math";
 import { type Result } from "@keybr/result";
 import { Explainer, Figure } from "@keybr/widget";
@@ -9,6 +9,19 @@ import { SmoothnessRange } from "./SmoothnessRange.tsx";
 
 export function SpeedChartSection({ results }: { results: readonly Result[] }) {
   const [smoothness, setSmoothness] = useState(0.5);
+  const [plotsVisible, setPlotsVisible] = useState(0b111);
+
+  const toggleSpeedPlot = () => {
+    setPlotsVisible(plotsVisible ^ PLOT_MASK.speed);
+  };
+
+  const toggleAccuracyPlot = () => {
+    setPlotsVisible(plotsVisible ^ PLOT_MASK.accuracy);
+  };
+
+  const toggleComplexityPlot = () => {
+    setPlotsVisible(plotsVisible ^ PLOT_MASK.complexity);
+  };
 
   return (
     <Figure>
@@ -34,6 +47,7 @@ export function SpeedChartSection({ results }: { results: readonly Result[] }) {
           smoothness={smoothness}
           width="100%"
           height="25rem"
+          plotsVisible={plotsVisible}
         />
       </ChartWrapper>
 
@@ -48,9 +62,21 @@ export function SpeedChartSection({ results }: { results: readonly Result[] }) {
           id="profile.chart.speed.legend"
           defaultMessage="Horizontal axis: lesson number. Vertical axis: {label1} – typing speed, {label2} – typing accuracy, {label3} – number of keys in the lessons."
           values={{
-            label1: <Marker type="speed" />,
-            label2: <Marker type="accuracy" />,
-            label3: <Marker type="complexity" />,
+            label1: (
+              <span onClick={toggleSpeedPlot}>
+                <Marker type="speed" />
+              </span>
+            ),
+            label2: (
+              <span onClick={toggleAccuracyPlot}>
+                <Marker type="accuracy" />
+              </span>
+            ),
+            label3: (
+              <span onClick={toggleComplexityPlot}>
+                <Marker type="complexity" />
+              </span>
+            ),
           }}
         />
       </Figure.Legend>
