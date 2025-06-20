@@ -87,12 +87,10 @@ function usePaint(
 
   return (plotsVisible: number) => {
     return (box: Rect): ShapeList => {
-      const projComplexity = projection(box, rIndex, rComplexity);
-      const projAccuracy = projection(box, rIndex, rAccuracy);
-      const projSpeed = projection(box, rIndex, rSpeed);
-
       const plots: ShapeList[] = [];
+
       if ((plotsVisible & PLOT_MASK.complexity) !== 0) {
+        const projComplexity = projection(box, rIndex, rComplexity);
         plots.push(
           paintScatterPlot(projComplexity, vIndex, vComplexity, {
             style: styles.complexity,
@@ -100,6 +98,7 @@ function usePaint(
         );
       }
       if ((plotsVisible & PLOT_MASK.accuracy) !== 0) {
+        const projAccuracy = projection(box, rIndex, rAccuracy);
         plots.push(
           paintScatterPlot(projAccuracy, vIndex, vAccuracy, {
             style: styles.accuracy,
@@ -107,6 +106,7 @@ function usePaint(
         );
       }
       if ((plotsVisible & PLOT_MASK.speed) !== 0) {
+        const projSpeed = projection(box, rIndex, rSpeed);
         plots.push(
           paintScatterPlot(projSpeed, vIndex, vSpeed, {
             style: styles.speed,
