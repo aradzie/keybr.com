@@ -130,5 +130,3 @@ kw_char -> "char" ;
 kw_long -> "long" ;
 kw_short -> "short" ;
 kw_byte -> "byte" ;
-kw_return -> "return" ;
-kw_this -> "this" ;
