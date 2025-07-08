@@ -2,6 +2,7 @@ import { compose } from "../ast.ts";
 import _ident from "./_ident.ts";
 import _keywords from "./_keywords.ts";
 import lang_cpp from "./lang_cpp.ts";
+import lang_csharp from "./lang_csharp.ts";
 import lang_go from "./lang_go.ts";
 import lang_html_css from "./lang_html_css.ts";
 import lang_java from "./lang_java.ts";
@@ -14,6 +15,7 @@ import lang_typescript from "./lang_typescript.ts";
 
 export const grammar_html_css = compose(lang_html_css, _keywords);
 export const grammar_cpp = compose(lang_cpp, _keywords, _ident);
+export const grammar_csharp = compose(lang_csharp, _keywords, _ident);
 export const grammar_typescript = compose(lang_typescript, _keywords, _ident);
 export const grammar_javascript = compose(lang_javascript, _keywords, _ident);
 export const grammar_python = compose(lang_python, _keywords, _ident);
