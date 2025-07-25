@@ -11,6 +11,7 @@ import { paintCurve, paintScatterPlot, projection } from "./graph.ts";
 import { type ChartStyles, useChartStyles } from "./use-chart-styles.ts";
 
 export const PLOT_MASK = {
+  all: 0b111,
   accuracy: 0b001,
   speed: 0b010,
   complexity: 0b100,
@@ -25,13 +26,14 @@ export function SpeedChart({
 }: {
   readonly results: readonly Result[];
   readonly smoothness: number;
-  readonly plotsVisible: number;
+  readonly plotsVisible?: number;
 } & SizeProps): ReactNode {
   const styles = useChartStyles();
   const paint = usePaint(styles, results, smoothness);
+  const resolvedPlotsVisible = plotsVisible ?? PLOT_MASK.all;
   const paintWithVisiblePlots = useMemo(() => {
-    return paint(plotsVisible);
-  }, [paint, plotsVisible]);
+    return paint(resolvedPlotsVisible);
+  }, [paint, resolvedPlotsVisible]);
   return (
     <Chart width={width} height={height}>
       <Canvas paint={chartArea(styles, paintWithVisiblePlots)} />

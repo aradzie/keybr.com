@@ -9,7 +9,7 @@ import { SmoothnessRange } from "./SmoothnessRange.tsx";
 
 export function SpeedChartSection({ results }: { results: readonly Result[] }) {
   const [smoothness, setSmoothness] = useState(0.5);
-  const [plotsVisible, setPlotsVisible] = useState(0b111);
+  const [plotsVisible, setPlotsVisible] = useState(PLOT_MASK.all);
 
   const toggleSpeedPlot = () => {
     setPlotsVisible(plotsVisible ^ PLOT_MASK.speed);
