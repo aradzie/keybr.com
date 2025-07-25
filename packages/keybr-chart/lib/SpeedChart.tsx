@@ -12,10 +12,13 @@ import { type ChartStyles, useChartStyles } from "./use-chart-styles.ts";
 
 export const PLOT_MASK = {
   all: 0b111,
+  none: 0b000,
   accuracy: 0b001,
   speed: 0b010,
   complexity: 0b100,
 } as const;
+
+export type PlotMask = (typeof PLOT_MASK)[keyof typeof PLOT_MASK];
 
 export function SpeedChart({
   results,
@@ -26,7 +29,7 @@ export function SpeedChart({
 }: {
   readonly results: readonly Result[];
   readonly smoothness: number;
-  readonly plotsVisible?: number;
+  readonly plotsVisible?: PlotMask;
 } & SizeProps): ReactNode {
   const styles = useChartStyles();
   const paint = usePaint(styles, results, smoothness);
