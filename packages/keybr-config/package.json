@@ -7,7 +7,7 @@
   "types": ".types/index.d.ts",
   "dependencies": {
     "@keybr/logger": "*",
-    "better-sqlite3": "^11.10.0",
+    "better-sqlite3": "^12.2.0",
     "mysql": "^2.18.1"
   },
   "devDependencies": {},

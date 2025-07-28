@@ -178,6 +178,17 @@ export type ParseOptions<T extends StartRuleNames = "Start"> = {
   readonly grammarSource?: GrammarSource;
   readonly startRule?: T;
   readonly tracer?: ParserTracer;
+
+  // Internal use only:
+  readonly peg$library?: boolean;
+  // Internal use only:
+  peg$currPos?: number;
+  // Internal use only:
+  peg$silentFails?: number;
+  // Internal use only:
+  peg$maxFailExpected?: Expectation[];
+  // Extra application-specific properties
+  [key: string]: unknown;
 };
 
 export declare const StartRules: StartRuleNames[];

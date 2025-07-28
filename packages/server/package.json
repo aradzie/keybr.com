@@ -22,9 +22,9 @@
     "@keybr/settings": "*",
     "@keybr/settings-database": "*",
     "@keybr/themes": "*",
-    "@paddle/paddle-node-sdk": "^2.7.3",
+    "@paddle/paddle-node-sdk": "^3.0.0",
     "@types/ws": "^8.18.1",
-    "ws": "^8.18.2"
+    "ws": "^8.18.3"
   },
   "devDependencies": {},
   "scripts": {
