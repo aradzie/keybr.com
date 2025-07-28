@@ -559,6 +559,10 @@ function SoundThemePreview() {
   const soundVolume = settings.get(soundProps.soundVolume);
   const soundTheme = settings.get(soundProps.soundTheme);
   const player = useMemo(() => {
+    if (process.env.NODE_ENV === "test") {
+      // Do not load sound assets in tests.
+      return () => {};
+    }
     return makeSoundPlayer(
       new Settings()
         .set(soundProps.playSounds, PlaySounds.All)
