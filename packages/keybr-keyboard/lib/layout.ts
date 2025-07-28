@@ -1166,6 +1166,21 @@ export class Layout implements XEnumItem {
     /* emulate= */ true,
     /* geometries= */ new Enum(Geometry.MATRIX),
   );
+  static readonly EN_MTGAP = new Layout(
+    /* id= */ "en-mtgap",
+    /* xid= */ 0xaa,
+    /* name= */ "MTGAP",
+    /* family= */ "MTGAP",
+    /* language= */ Language.EN,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.MATRIX,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+    ),
+  );
 
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
@@ -1198,6 +1213,7 @@ export class Layout implements XEnumItem {
     Layout.EN_ENTHIUM_V10,
     Layout.EN_UK,
     Layout.EN_JP,
+	Layout.EN_MTGAP,
     Layout.EL_GR,
     Layout.CS_CZ,
     Layout.DA_DK,
