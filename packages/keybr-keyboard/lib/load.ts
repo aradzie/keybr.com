@@ -39,7 +39,7 @@ import { LAYOUT_EN_DVORAK } from "./layout/en_dvorak.ts";
 import { LAYOUT_EN_DVORAK_PROG } from "./layout/en_dvorak_prog.ts";
 import { LAYOUT_EN_ENGRAM } from "./layout/en_engram.ts";
 import { LAYOUT_EN_ENTHIUM_V6 } from "./layout/en_enthium_v6.ts";
-import { LAYOUT_EN_ENTHIUM_V6 } from "./layout/en_enthium_v10.ts";
+import { LAYOUT_EN_ENTHIUM_V10 } from "./layout/en_enthium_v10.ts";
 import { LAYOUT_EN_FOCAL } from "./layout/en_focal.ts";
 import { LAYOUT_EN_GALLIUM } from "./layout/en_gallium.ts";
 import { LAYOUT_EN_GALLIUM_MATRIX } from "./layout/en_gallium_matrix.ts";

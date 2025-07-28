@@ -3,7 +3,7 @@
 import { type CharacterDict } from "../types.ts";
 
 // prettier-ignore
-export const LAYOUT_EN_ENTHIUM_V6: CharacterDict = {
+export const LAYOUT_EN_ENTHIUM_V10: CharacterDict = {
   Backquote: [/* GRAVE ACCENT */ 0x0060, /* TILDE */ 0x007e],
   Digit1: [/* DIGIT ONE */ 0x0031, /* EXCLAMATION MARK */ 0x0021],
   Digit2: [/* DIGIT TWO */ 0x0032, /* COMMERCIAL AT */ 0x0040],
