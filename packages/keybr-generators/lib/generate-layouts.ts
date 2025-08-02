@@ -60,6 +60,8 @@ for (const [id, layout] of [
   ["en_focal", importKeymap("layouts/en_focal.json")],
   ["es_es", importCldr("cldr-keyboards-43.0/keyboards/windows/es-t-k0-windows.xml")],
   ["es_mx", importCldr("cldr-keyboards-43.0/keyboards/windows/es-419-t-k0-windows.xml")],
+  ["es_latam_dvorak", importKeymap("layouts/es_latam_dvorak.json")],
+  ["es_dvorak", importKeymap("layouts/es_dvorak.json")],
   ["fa_ir", importCldr("cldr-keyboards-43.0/keyboards/windows/fa-t-k0-windows-extended.xml")],
   ["fa_ir_legacy", importCldr("cldr-keyboards-43.0/keyboards/windows/fa-t-k0-windows.xml")],
   ["fr_bepo", importKeymap("layouts/fr_bepo.json")],
