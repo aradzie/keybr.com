@@ -1181,6 +1181,36 @@ export class Layout implements XEnumItem {
       Geometry.ISO_102_FULL,
     ),
   );
+  static readonly ES_DVORAK = new Layout(
+    /* id= */ "es-dvorak",
+    /* xid= */ 0xab,
+    /* name= */ "Dvorak",
+    /* family= */ "dvorak",
+    /* language= */ Language.ES,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
+  static readonly ES_LATAM_DVORAK = new Layout(
+    /* id= */ "es-latam-dvorak",
+    /* xid= */ 0xac,
+    /* name= */ "Dvorak (Latin American)",
+    /* family= */ "dvorak",
+    /* language= */ Language.ES,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
 
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
@@ -1246,6 +1276,8 @@ export class Layout implements XEnumItem {
     Layout.NL_BE,
     Layout.ES_ES,
     Layout.ES_MX,
+    Layout.ES_DVORAK,
+    Layout.ES_LATAM_DVORAK,
     Layout.PL_PL,
     Layout.PL_FWYR,
     Layout.PT_BR,
