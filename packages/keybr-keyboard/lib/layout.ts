@@ -219,7 +219,7 @@ export class Layout implements XEnumItem {
     /* name= */ "Neo 2",
     /* family= */ "de-neo-2",
     /* language= */ Language.DE,
-    /* emulate= */ false,
+    /* emulate= */ true,
     /* geometries= */ new Enum(
       Geometry.ISO_102,
       Geometry.ISO_102_FULL,
@@ -234,7 +234,7 @@ export class Layout implements XEnumItem {
     /* name= */ "Bone",
     /* family= */ "de-bone",
     /* language= */ Language.DE,
-    /* emulate= */ false,
+    /* emulate= */ true,
     /* geometries= */ new Enum(
       Geometry.ISO_102,
       Geometry.ISO_102_FULL,
@@ -249,7 +249,7 @@ export class Layout implements XEnumItem {
     /* name= */ "Mine",
     /* family= */ "de-mine",
     /* language= */ Language.DE,
-    /* emulate= */ false,
+    /* emulate= */ true,
     /* geometries= */ new Enum(
       Geometry.ISO_102,
       Geometry.ISO_102_FULL,
@@ -264,7 +264,7 @@ export class Layout implements XEnumItem {
     /* name= */ "Noted",
     /* family= */ "de-noted",
     /* language= */ Language.DE,
-    /* emulate= */ false,
+    /* emulate= */ true,
     /* geometries= */ new Enum(
       Geometry.ISO_102,
       Geometry.ISO_102_FULL,
@@ -1243,7 +1243,7 @@ export class Layout implements XEnumItem {
     Layout.EN_ENTHIUM_V10,
     Layout.EN_UK,
     Layout.EN_JP,
-	Layout.EN_MTGAP,
+    Layout.EN_MTGAP,
     Layout.EL_GR,
     Layout.CS_CZ,
     Layout.DA_DK,
