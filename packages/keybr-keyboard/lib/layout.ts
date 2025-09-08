@@ -949,7 +949,7 @@ export class Layout implements XEnumItem {
   );
   static readonly EN_GRAPHITE_ANGLE_KP = new Layout(
     /* id= */ "en-graphite-angle-kp",
-    /* xid= */ 0x99,
+    /* xid= */ 0xad,
     /* name= */ "Graphite Angle KP",
     /* family= */ "en-graphite-angle-kp",
     /* language= */ Language.EN,
@@ -1259,7 +1259,7 @@ export class Layout implements XEnumItem {
     Layout.EN_ENTHIUM_V10,
     Layout.EN_UK,
     Layout.EN_JP,
-	Layout.EN_MTGAP,
+    Layout.EN_MTGAP,
     Layout.EL_GR,
     Layout.CS_CZ,
     Layout.DA_DK,
