@@ -947,6 +947,21 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly EN_GRAPHITE_ANGLE_KP = new Layout(
+    /* id= */ "en-graphite-angle-kp",
+    /* xid= */ 0x99,
+    /* name= */ "Graphite Angle KP",
+    /* family= */ "en-graphite-angle-kp",
+    /* language= */ Language.EN,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.MATRIX,
+    ),
+  );
   static readonly TH_TH = new Layout(
     /* id= */ "th-th",
     /* xid= */ 0x9a,
@@ -1237,6 +1252,7 @@ export class Layout implements XEnumItem {
     Layout.EN_GALLIUM,
     Layout.EN_GALLIUM_MATRIX,
     Layout.EN_GRAPHITE,
+    Layout.EN_GRAPHITE_ANGLE_KP,
     Layout.EN_APT_v3,
     Layout.EN_FOCAL,
     Layout.EN_ENTHIUM_V6,
