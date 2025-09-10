@@ -1226,6 +1226,20 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly EN_KUNTEM = new Layout(
+    /* id= */ "en-kuntem",
+    /* xid= */ 0xae,
+    /* name= */ "Kuntem",
+    /* family= */ "kuntem",
+    /* language= */ Language.EN,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+    ),
+  );
 
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
@@ -1257,6 +1271,7 @@ export class Layout implements XEnumItem {
     Layout.EN_FOCAL,
     Layout.EN_ENTHIUM_V6,
     Layout.EN_ENTHIUM_V10,
+    Layout.EN_KUNTEM,
     Layout.EN_UK,
     Layout.EN_JP,
     Layout.EN_MTGAP,
