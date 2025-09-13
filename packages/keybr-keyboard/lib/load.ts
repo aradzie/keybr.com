@@ -63,6 +63,7 @@ import { LAYOUT_ES_LATAM_DVORAK } from "./layout/es_latam_dvorak.ts";
 import { LAYOUT_ES_MX } from "./layout/es_mx.ts";
 import { LAYOUT_FA_IR } from "./layout/fa_ir.ts";
 import { LAYOUT_FA_IR_LEGACY } from "./layout/fa_ir_legacy.ts";
+import { LAYOUT_FI_FI } from "./layout/fi_fi.ts";
 import { LAYOUT_FR_BEPO } from "./layout/fr_bepo.ts";
 import { LAYOUT_FR_CA } from "./layout/fr_ca.ts";
 import { LAYOUT_FR_CH } from "./layout/fr_ch.ts";
@@ -153,6 +154,7 @@ const layouts = new Map<Layout, CharacterDict>([
   [Layout.ES_LATAM_DVORAK, LAYOUT_ES_LATAM_DVORAK],
   [Layout.FA_IR, LAYOUT_FA_IR],
   [Layout.FA_IR_LEGACY, LAYOUT_FA_IR_LEGACY],
+  [Layout.FI_FI, LAYOUT_FI_FI],
   [Layout.FR_BEPO, LAYOUT_FR_BEPO],
   [Layout.FR_CA, LAYOUT_FR_CA],
   [Layout.FR_CH, LAYOUT_FR_CH],

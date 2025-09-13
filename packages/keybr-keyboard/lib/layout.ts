@@ -288,6 +288,22 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly FI_FI = new Layout(
+    /* id= */ "fi-fi",
+    /* xid= */ 0xa27,
+    /* name= */ "{FI}",
+    /* family= */ "qwerty",
+    /* language= */ Language.FI,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
+
   static readonly FR_FR = new Layout(
     /* id= */ "fr-fr",
     /* xid= */ 0x30,
@@ -1271,6 +1287,7 @@ export class Layout implements XEnumItem {
     Layout.DE_NOTED,
     Layout.DE_CMOS,
     Layout.DE_ADNW_BUT_XCV,
+    Layout.FI_FI,
     Layout.FR_FR,
     Layout.FR_CA,
     Layout.FR_CH,
