@@ -14,6 +14,7 @@ import HR from "@keybr/phonetic-model/assets/model-hr.data";
 import HU from "@keybr/phonetic-model/assets/model-hu.data";
 import IT from "@keybr/phonetic-model/assets/model-it.data";
 import LT from "@keybr/phonetic-model/assets/model-lt.data";
+import LV from "@keybr/phonetic-model/assets/model-lv.data";
 import NB from "@keybr/phonetic-model/assets/model-nb.data";
 import NL from "@keybr/phonetic-model/assets/model-nl.data";
 import PL from "@keybr/phonetic-model/assets/model-pl.data";
@@ -58,6 +59,8 @@ export function modelAssetPath(language: Language): string {
       return IT;
     case Language.LT:
       return LT;
+    case Language.LV:
+      return LV;
     case Language.NB:
       return NB;
     case Language.NL:

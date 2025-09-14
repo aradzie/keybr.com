@@ -90,7 +90,13 @@ export class Language implements EnumItem {
     /* id= */ "lt",
     /* script= */ "latin",
     /* direction= */ "ltr",
-    /* alphabet= */ "aąbcčdeęėfghiįyjklmnoprsštuųūvzž",
+    /* alphabet= */ "aąbcčdeęėfghiįyjklmnņoprsštuųūvzž",
+  );
+  static readonly LV = new Language(
+    /* id= */ "lv",
+    /* script= */ "latin",
+    /* direction= */ "ltr",
+    /* alphabet= */ "aābcčdeēfgģhiījkķlļmnņoprsštuūvzž",
   );
   static readonly NB = new Language(
     /* id= */ "nb",
@@ -114,7 +120,7 @@ export class Language implements EnumItem {
     /* id= */ "pt",
     /* script= */ "latin",
     /* direction= */ "ltr",
-    /* alphabet= */ "aáâãàbcçdeéêfghiíjlmnoóôõpqrstuúvxz",
+    /* alphabet= */ "abcdefghijklmnopqrstuvwxyzäāčēģīķļņšūž",
   );
   static readonly RO = new Language(
     /* id= */ "ro",
@@ -175,6 +181,7 @@ export class Language implements EnumItem {
     Language.HU,
     Language.IT,
     Language.LT,
+    Language.LV,
     Language.NB,
     Language.NL,
     Language.PL,
