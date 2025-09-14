@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE keyboard SYSTEM "../dtd/ldmlKeyboard.dtd">
-<keyboard locale="et-t-k0-windows">
+<keyboard locale="et-ee-k0-windows">
 	<version platform="10" number="$Revision$"/>
 	<names>
 		<name value="Estonian"/>
