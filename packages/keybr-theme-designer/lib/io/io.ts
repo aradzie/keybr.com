@@ -4,6 +4,7 @@ import {
   BlobWriter,
   configure,
   type Entry,
+  type FileEntry,
   TextReader,
   TextWriter,
   ZipReader,
@@ -43,9 +44,9 @@ export async function importTheme0(
       state.error(new TypeError("Corrupted theme file", { cause: err }));
       return;
     }
-    const map = new Map<string, Entry>();
+    const map = new Map<string, FileEntry>();
     for (const entry of entries) {
-      if (entry.filename && entry.getData) {
+      if (entry.filename && !entry.directory) {
         map.set(entry.filename, entry);
       }
     }
@@ -57,7 +58,7 @@ export async function importTheme0(
 
 async function scanThemeEntries(
   state: ImportState,
-  map: Map<string, Entry>,
+  map: Map<string, FileEntry>,
 ): Promise<void> {
   const themeData = map.get(themeJson) ?? null;
   if (themeData == null) {

@@ -11,7 +11,7 @@
     "@keybr/textinput": "*"
   },
   "devDependencies": {
-    "peggy": "^5.0.5"
+    "peggy": "^5.0.6"
   },
   "scripts": {
     "clean": "rm -fr .types",

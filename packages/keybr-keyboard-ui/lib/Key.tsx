@@ -183,7 +183,7 @@ function makeLabel(label: LabelShape, className: ClassName = null): ReactNode {
   const { text, pos = [10, 20], align = ["s", "m"] } = label;
   const [x, y] = pos;
   const [ha, va] = align;
-  let textAnchor;
+  let textAnchor: "start" | "middle" | "end";
   switch (ha) {
     case "s":
       textAnchor = "start";
@@ -195,7 +195,7 @@ function makeLabel(label: LabelShape, className: ClassName = null): ReactNode {
       textAnchor = "end";
       break;
   }
-  let dominantBaseline;
+  let dominantBaseline: "text-after-edge" | "middle" | "text-before-edge";
   switch (va) {
     case "b":
       dominantBaseline = "text-after-edge";
