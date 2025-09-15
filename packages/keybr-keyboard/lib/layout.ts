@@ -1243,6 +1243,22 @@ export class Layout implements XEnumItem {
     ),
   );
 
+  static readonly ET_EE = new Layout(
+    /* id= */ "et-ee",
+    /* xid= */ 0xae,
+    /* name= */ "{EE}",
+    /* family= */ "qwerty",
+    /* language= */ Language.ET,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
+
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
     Layout.EN_DVORAK,
@@ -1311,6 +1327,7 @@ export class Layout implements XEnumItem {
     Layout.ES_MX,
     Layout.ES_DVORAK,
     Layout.ES_LATAM_DVORAK,
+    Layout.ET_EE,
     Layout.PL_PL,
     Layout.PL_FWYR,
     Layout.PT_BR,
