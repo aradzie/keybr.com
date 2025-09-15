@@ -454,6 +454,21 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly LV_LV = new Layout(
+    /* id= */ "lv-lv",
+    /* xid= */ 0x49,
+    /* name= */ "{LV}",
+    /* family= */ "lv-lv",
+    /* language= */ Language.LV,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
   static readonly ES_ES = new Layout(
     /* id= */ "es-es",
     /* xid= */ 0x50,
@@ -963,21 +978,6 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
-  static readonly EN_GRAPHITE_ANGLE_KP = new Layout(
-    /* id= */ "en-graphite-angle-kp",
-    /* xid= */ 0xad,
-    /* name= */ "Graphite Angle KP",
-    /* family= */ "en-graphite-angle-kp",
-    /* language= */ Language.EN,
-    /* emulate= */ true,
-    /* geometries= */ new Enum(
-      Geometry.ANSI_101,
-      Geometry.ANSI_101_FULL,
-      Geometry.ISO_102,
-      Geometry.ISO_102_FULL,
-      Geometry.MATRIX,
-    ),
-  );
   static readonly TH_TH = new Layout(
     /* id= */ "th-th",
     /* xid= */ 0x9a,
@@ -1268,7 +1268,6 @@ export class Layout implements XEnumItem {
     Layout.EN_GALLIUM,
     Layout.EN_GALLIUM_MATRIX,
     Layout.EN_GRAPHITE,
-    Layout.EN_GRAPHITE_ANGLE_KP,
     Layout.EN_APT_v3,
     Layout.EN_FOCAL,
     Layout.EN_ENTHIUM_V6,
@@ -1301,6 +1300,7 @@ export class Layout implements XEnumItem {
     Layout.HU_HU,
     Layout.IT_IT,
     Layout.LT_LT,
+    Layout.LV_LV,
     Layout.NB_NO,
     Layout.NB_DVORAK,
     Layout.NB_KVIKK,

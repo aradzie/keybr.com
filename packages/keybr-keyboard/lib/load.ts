@@ -44,7 +44,6 @@ import { LAYOUT_EN_FOCAL } from "./layout/en_focal.ts";
 import { LAYOUT_EN_GALLIUM } from "./layout/en_gallium.ts";
 import { LAYOUT_EN_GALLIUM_MATRIX } from "./layout/en_gallium_matrix.ts";
 import { LAYOUT_EN_GRAPHITE } from "./layout/en_graphite.ts";
-import { LAYOUT_EN_GRAPHITE_ANGLE_KP } from "./layout/en_graphite_angle_kp.ts";
 import { LAYOUT_EN_HALMAK } from "./layout/en_halmak.ts";
 import { LAYOUT_EN_HANDS_DOWN_NEU } from "./layout/en_hands_down_neu.ts";
 import { LAYOUT_EN_HANDS_DOWN_PROMETHIUM } from "./layout/en_hands_down_promethium.ts";
@@ -78,6 +77,7 @@ import { LAYOUT_HU_HU } from "./layout/hu_hu.ts";
 import { LAYOUT_IT_IT } from "./layout/it_it.ts";
 import { LAYOUT_JA_JP_JIS } from "./layout/ja_jp_jis.ts";
 import { LAYOUT_LT_LT } from "./layout/lt_lt.ts";
+import { LAYOUT_LV_LV } from "./layout/lv_lv.ts";
 import { LAYOUT_NB_DVORAK } from "./layout/nb_dvorak.ts";
 import { LAYOUT_NB_KVIKK } from "./layout/nb_kvikk.ts";
 import { LAYOUT_NB_NO } from "./layout/nb_no.ts";
@@ -133,7 +133,6 @@ const layouts = new Map<Layout, CharacterDict>([
   [Layout.EN_GALLIUM, LAYOUT_EN_GALLIUM],
   [Layout.EN_GALLIUM_MATRIX, LAYOUT_EN_GALLIUM_MATRIX],
   [Layout.EN_GRAPHITE, LAYOUT_EN_GRAPHITE],
-  [Layout.EN_GRAPHITE_ANGLE_KP, LAYOUT_EN_GRAPHITE_ANGLE_KP],
   [Layout.EN_HALMAK, LAYOUT_EN_HALMAK],
   [Layout.EN_HANDS_DOWN_NEU, LAYOUT_EN_HANDS_DOWN_NEU],
   [Layout.EN_HANDS_DOWN_PROMETHIUM, LAYOUT_EN_HANDS_DOWN_PROMETHIUM],
@@ -168,6 +167,7 @@ const layouts = new Map<Layout, CharacterDict>([
   [Layout.HU_HU, LAYOUT_HU_HU],
   [Layout.IT_IT, LAYOUT_IT_IT],
   [Layout.LT_LT, LAYOUT_LT_LT],
+  [Layout.LV_LV, LAYOUT_LV_LV],
   [Layout.NB_KVIKK, LAYOUT_NB_KVIKK],
   [Layout.NB_NO, LAYOUT_NB_NO],
   [Layout.NB_SKARP, LAYOUT_NB_SKARP],
