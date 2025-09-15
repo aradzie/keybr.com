@@ -1,7 +1,7 @@
 {
   "account.accountPage.description": "<p>Você está usando uma conta para guardar seus dados de digitação nos nossos servidores na nuvem. Você poderá acessar seu perfil a partir de qualquer computador ou navegador.</p>",
   "account.anonymize.description": "Anonimização substitui sua imagem e nome real com aqueles que lhe damos. Você pode trocar entre seu nome real e anônimo quantas vezes quiser.",
-  "account.avatar.description": "Sua imagem e nome como eles estão visíveis publicamente no seu perfil, a tabela de maiores pontuações, e o jogo multiplayer.",
+  "account.avatar.description": "Sua imagem e nome como eles estão visíveis publicamente no seu perfil, na tabela de maiores pontuações, e no jogo multiplayer.",
   "account.deleteAccount.description": "Isso irá apagar todas as suas informações identificávies, como nome e endereço de email de nosso banco de dados. Essa operação não poderá ser revertida! Se você quer somente limpar suas estatísticas e começar novamente, você pode fazer isso na sua página de perfil.",
   "account.deleteAccount.message": "Tem certeza que deseja deletar sua conta? Essa operação é permanente e não pode ser revertida! Porém, você poderá criar uma nova conta a qualquer momento.",
   "account.emailForm.description": "Login simples que não usa senha. Simplesmente coloque seu endereço de email e lhe enviaremos um link de login. Vá para sua caixa de entrada, clique no link para criar uma nova conta ou para abrir a conta existente para dado email. O link é temporário e expira em algumas horas. Para logar novamente mais tarde, insira o mesmo email e nós enviaremos um novo link para a mesma conta.",
