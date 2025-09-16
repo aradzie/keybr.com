@@ -1130,7 +1130,7 @@ export class Layout implements XEnumItem {
     /* emulate= */ false,
     /* geometries= */ new Enum(Geometry.MATRIX),
   );
-  static readonly EN_APT_v3 = new Layout(
+  static readonly EN_APT_V3 = new Layout(
     /* id= */ "en-aptv3",
     /* xid= */ 0xa4,
     /* name= */ "APTv3",
@@ -1312,7 +1312,7 @@ export class Layout implements XEnumItem {
     Layout.EN_GALLIUM_MATRIX,
     Layout.EN_GRAPHITE,
     Layout.EN_GRAPHITE_ANGLE_KP,
-    Layout.EN_APT_v3,
+    Layout.EN_APT_V3,
     Layout.EN_FOCAL,
     Layout.EN_ENTHIUM_V6,
     Layout.EN_ENTHIUM_V10,

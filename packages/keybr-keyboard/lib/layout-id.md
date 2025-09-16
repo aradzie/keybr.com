@@ -160,7 +160,7 @@
 - `0xab`: Spanish/Dvorak
 - `0xac`: Spanish/Dvorak (Latin American)
 - `0xad`: English/Graphite Angle KP
-- `0xae`:
+- `0xae`: English/Kuntem
 - `0xaf`:
 - `0xb0`:
 - `0xb1`:
@@ -243,7 +243,7 @@
 - `0xfe`:
 - `0xff`:
 
-88 allocated identifiers
+89 allocated identifiers
 
-152 free identifiers
+151 free identifiers
 
