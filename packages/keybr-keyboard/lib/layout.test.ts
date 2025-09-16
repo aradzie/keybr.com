@@ -1,3 +1,4 @@
+import { writeFile } from "node:fs/promises";
 import { test } from "node:test";
 import { equal, includes, isNotEmpty } from "rich-assert";
 import { Language } from "./language.ts";
@@ -30,3 +31,55 @@ test("find layouts for all languages", () => {
     equal(layout.language.script, language.script);
   }
 });
+
+await makeIdAllocationReport();
+
+async function makeIdAllocationReport() {
+  const dnLanguage = new Intl.DisplayNames("en", { type: "language" });
+  const dnRegion = new Intl.DisplayNames("en", { type: "region" });
+
+  function formatLayoutName(layout: Layout): string {
+    const languageName = dnLanguage.of(layout.language.id)!;
+    const layoutName = layout.name.replaceAll(/\{[-A-Z]+\}/g, (id) => {
+      return dnRegion.of(id.substring(1, id.length - 1))!;
+    });
+    return `${languageName}/${layoutName}`;
+  }
+
+  const lines = [];
+
+  lines.push(`<!-- Generated file, do not edit. -->`);
+  lines.push(``);
+  lines.push(`# Layout Id Allocation List`);
+  lines.push(``);
+
+  const layouts = new Map<number, Layout>(
+    Layout.ALL.map((layout) => [layout.xid, layout]),
+  );
+
+  let numAlloc = 0;
+  let numFree = 0;
+
+  for (let index = 0x10; index <= 0xff; index += 1) {
+    const layout = layouts.get(index);
+    const id = `0x${index.toString(16).padStart(2, "0")}`;
+    if (layout != null) {
+      lines.push(`- \`${id}\`: ${formatLayoutName(layout)}`);
+      numAlloc += 1;
+    } else {
+      lines.push(`- \`${id}\`:`);
+      numFree += 1;
+    }
+  }
+
+  lines.push(``);
+  lines.push(`${numAlloc} allocated identifiers`);
+  lines.push(``);
+  lines.push(`${numFree} free identifiers`);
+  lines.push(``);
+
+  await writeFile(
+    `${import.meta.dirname}/layout-id.md`,
+    lines.join("\n") + "\n",
+  );
+}
