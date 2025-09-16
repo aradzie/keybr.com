@@ -50,11 +50,23 @@ export class Language implements EnumItem {
     /* direction= */ "ltr",
     /* alphabet= */ "aábcdeéfghiíjlmnñoópqrstuúvxyz",
   );
+  static readonly ET = new Language(
+    /* id= */ "et",
+    /* script= */ "latin",
+    /* direction= */ "ltr",
+    /* alphabet= */ "abdefghijklmnoprstuvõäöüš",
+  );
   static readonly FA = new Language(
     /* id= */ "fa",
     /* script= */ "arabic",
     /* direction= */ "rtl",
     /* alphabet= */ "ابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی",
+  );
+  static readonly FI = new Language(
+    /* id= */ "fi",
+    /* script= */ "latin",
+    /* direction= */ "ltr",
+    /* alphabet= */ "abcdefghijklmnopqrstuvwxyzäö",
   );
   static readonly FR = new Language(
     /* id= */ "fr",
@@ -91,6 +103,12 @@ export class Language implements EnumItem {
     /* script= */ "latin",
     /* direction= */ "ltr",
     /* alphabet= */ "aąbcčdeęėfghiįyjklmnoprsštuųūvzž",
+  );
+  static readonly LV = new Language(
+    /* id= */ "lv",
+    /* script= */ "latin",
+    /* direction= */ "ltr",
+    /* alphabet= */ "aābcčdeēfgģhiījkķlļmnņoprsštuūvzž",
   );
   static readonly NB = new Language(
     /* id= */ "nb",
@@ -168,13 +186,16 @@ export class Language implements EnumItem {
     Language.EL,
     Language.EN,
     Language.ES,
+    Language.ET,
     Language.FA,
+    Language.FI,
     Language.FR,
     Language.HE,
     Language.HR,
     Language.HU,
     Language.IT,
     Language.LT,
+    Language.LV,
     Language.NB,
     Language.NL,
     Language.PL,

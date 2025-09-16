@@ -62,8 +62,10 @@ import { LAYOUT_ES_DVORAK } from "./layout/es_dvorak.ts";
 import { LAYOUT_ES_ES } from "./layout/es_es.ts";
 import { LAYOUT_ES_LATAM_DVORAK } from "./layout/es_latam_dvorak.ts";
 import { LAYOUT_ES_MX } from "./layout/es_mx.ts";
+import { LAYOUT_ET_EE } from "./layout/et_ee.ts";
 import { LAYOUT_FA_IR } from "./layout/fa_ir.ts";
 import { LAYOUT_FA_IR_LEGACY } from "./layout/fa_ir_legacy.ts";
+import { LAYOUT_FI_FI } from "./layout/fi_fi.ts";
 import { LAYOUT_FR_BEPO } from "./layout/fr_bepo.ts";
 import { LAYOUT_FR_CA } from "./layout/fr_ca.ts";
 import { LAYOUT_FR_CH } from "./layout/fr_ch.ts";
@@ -78,6 +80,7 @@ import { LAYOUT_HU_HU } from "./layout/hu_hu.ts";
 import { LAYOUT_IT_IT } from "./layout/it_it.ts";
 import { LAYOUT_JA_JP_JIS } from "./layout/ja_jp_jis.ts";
 import { LAYOUT_LT_LT } from "./layout/lt_lt.ts";
+import { LAYOUT_LV_LV } from "./layout/lv_lv.ts";
 import { LAYOUT_NB_DVORAK } from "./layout/nb_dvorak.ts";
 import { LAYOUT_NB_KVIKK } from "./layout/nb_kvikk.ts";
 import { LAYOUT_NB_NO } from "./layout/nb_no.ts";
@@ -153,8 +156,10 @@ const layouts = new Map<Layout, CharacterDict>([
   [Layout.ES_MX, LAYOUT_ES_MX],
   [Layout.ES_DVORAK, LAYOUT_ES_DVORAK],
   [Layout.ES_LATAM_DVORAK, LAYOUT_ES_LATAM_DVORAK],
+  [Layout.ET_EE, LAYOUT_ET_EE],
   [Layout.FA_IR, LAYOUT_FA_IR],
   [Layout.FA_IR_LEGACY, LAYOUT_FA_IR_LEGACY],
+  [Layout.FI_FI, LAYOUT_FI_FI],
   [Layout.FR_BEPO, LAYOUT_FR_BEPO],
   [Layout.FR_CA, LAYOUT_FR_CA],
   [Layout.FR_CH, LAYOUT_FR_CH],
@@ -168,6 +173,7 @@ const layouts = new Map<Layout, CharacterDict>([
   [Layout.HU_HU, LAYOUT_HU_HU],
   [Layout.IT_IT, LAYOUT_IT_IT],
   [Layout.LT_LT, LAYOUT_LT_LT],
+  [Layout.LV_LV, LAYOUT_LV_LV],
   [Layout.NB_KVIKK, LAYOUT_NB_KVIKK],
   [Layout.NB_NO, LAYOUT_NB_NO],
   [Layout.NB_SKARP, LAYOUT_NB_SKARP],

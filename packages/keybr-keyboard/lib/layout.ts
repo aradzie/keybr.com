@@ -288,6 +288,21 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly FI_FI = new Layout(
+    /* id= */ "fi-fi",
+    /* xid= */ 0x4a,
+    /* name= */ "{FI}",
+    /* family= */ "qwerty",
+    /* language= */ Language.FI,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
   static readonly FR_FR = new Layout(
     /* id= */ "fr-fr",
     /* xid= */ 0x30,
@@ -429,6 +444,21 @@ export class Layout implements XEnumItem {
     /* name= */ "{LT}",
     /* family= */ "lt-lt",
     /* language= */ Language.LT,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
+  static readonly LV_LV = new Layout(
+    /* id= */ "lv-lv",
+    /* xid= */ 0x49,
+    /* name= */ "{LV}",
+    /* family= */ "lv-lv",
+    /* language= */ Language.LV,
     /* emulate= */ true,
     /* geometries= */ new Enum(
       Geometry.ISO_102,
@@ -1226,6 +1256,21 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly ET_EE = new Layout(
+    /* id= */ "et-ee",
+    /* xid= */ 0x4b,
+    /* name= */ "{EE}",
+    /* family= */ "qwerty",
+    /* language= */ Language.ET,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.MATRIX,
+    ),
+  );
   static readonly EN_KUNTEM = new Layout(
     /* id= */ "en-kuntem",
     /* xid= */ 0xae,
@@ -1286,6 +1331,7 @@ export class Layout implements XEnumItem {
     Layout.DE_NOTED,
     Layout.DE_CMOS,
     Layout.DE_ADNW_BUT_XCV,
+    Layout.FI_FI,
     Layout.FR_FR,
     Layout.FR_CA,
     Layout.FR_CH,
@@ -1299,6 +1345,7 @@ export class Layout implements XEnumItem {
     Layout.HU_HU,
     Layout.IT_IT,
     Layout.LT_LT,
+    Layout.LV_LV,
     Layout.NB_NO,
     Layout.NB_DVORAK,
     Layout.NB_KVIKK,
@@ -1309,6 +1356,7 @@ export class Layout implements XEnumItem {
     Layout.ES_MX,
     Layout.ES_DVORAK,
     Layout.ES_LATAM_DVORAK,
+    Layout.ET_EE,
     Layout.PL_PL,
     Layout.PL_FWYR,
     Layout.PT_BR,

@@ -32,31 +32,11 @@ Untranslated: 1 messages, 3 words
 
 # Bangla
 
-Translated: 40 messages, 349 words
+Translated: 341 messages, 4746 words
 
-Untranslated: 291 messages, 4305 words
+Untranslated: 1 messages, 3 words
 
-* *GO!*
-* *Copy*
-* *Done*
-* *Help*
-* *Next*
-* *User*
-* *Books*
-* *Font:*
-* *Reset*
-* *Score*
-* *Speed*
-* *Visit*
-* *Layout*
-* *Typing*
-* *Zones:*
-* *Account*
-* *Layout:*
-* *Layouts*
-* *Lessons*
-* *Lessons*
-* ...
+* *Key sounds only*
 
 # Catalan
 
@@ -120,18 +100,12 @@ Untranslated: 12 messages, 45 words
 
 # German
 
-Translated: 333 messages, 4737 words
+Translated: 339 messages, 4744 words
 
-Untranslated: 9 messages, 12 words
+Untranslated: 3 messages, 5 words
 
-* *Layout*
-* *Zones:*
-* *Layout:*
-* *Layouts*
-* *Syntax:*
 * *Position*
 * *Alphabet:*
-* *Sound theme:*
 * *Key sounds only*
 
 # Greek
@@ -219,9 +193,9 @@ Untranslated: 53 messages, 1904 words
 
 # Finnish
 
-Translated: 207 messages, 2162 words
+Translated: 208 messages, 2284 words
 
-Untranslated: 129 messages, 2531 words
+Untranslated: 128 messages, 2409 words
 
 * *GO!*
 * *Time*
@@ -275,24 +249,19 @@ Untranslated: 290 messages, 4097 words
 
 # French
 
-Translated: 328 messages, 4405 words
+Translated: 333 messages, 4544 words
 
-Untranslated: 14 messages, 344 words
+Untranslated: 9 messages, 205 words
 
 * *Zones:*
 * *Options*
 * *Volume:*
 * *Position*
 * *Alphabet:*
-* *Translate*
 * *Key sounds only*
-* *Accuracy Streaks*
-* *Sort letters in the order of keyboard keys*
-* *You don’t have any accuracy streaks. Consider completing a l...*
 * *Above are listed the longest continuous sequences of lessons...*
 * *When you focus on a new key, it is very likely that the spee...*
 * *The target speed is used to measure the confidence level and...*
-* *Sort letters in such a way that the letters from the home ro...*
 
 # Irish
 
@@ -336,15 +305,13 @@ Untranslated: 1 messages, 3 words
 
 # Indonesian
 
-Translated: 337 messages, 4740 words
+Translated: 339 messages, 4744 words
 
-Untranslated: 5 messages, 9 words
+Untranslated: 3 messages, 5 words
 
 * *GO!*
-* *Font:*
-* *Keyboard*
+* *Volume:*
 * *Key sounds only*
-* *Premium account price:*
 
 # Icelandic
 
@@ -398,9 +365,9 @@ Untranslated: 1 messages, 3 words
 
 # Korean
 
-Translated: 125 messages, 1156 words
+Translated: 145 messages, 1297 words
 
-Untranslated: 213 messages, 3549 words
+Untranslated: 195 messages, 3430 words
 
 * *Copy*
 * *Done*
@@ -426,30 +393,30 @@ Untranslated: 213 messages, 3549 words
 
 # Lithuanian
 
-Translated: 149 messages, 1255 words
+Translated: 298 messages, 3096 words
 
-Untranslated: 187 messages, 3430 words
+Untranslated: 41 messages, 1622 words
 
-* *Reset*
-* *Visit*
-* *Account*
-* *Not set*
-* *Options*
-* *Preview*
-* *Chapters*
-* *Practice*
-* *Previous*
-* *Uncertain*
-* *Box cursor*
-* *Custom text*
-* *Line cursor*
-* *Multiplayer*
-* *Smoothness:*
-* *Whitespace:*
-* *Block cursor*
-* *Common words*
-* *Sound theme:*
-* *Typing Speed*
+* *Key sounds only*
+* *Accuracy Streaks*
+* *Relative Accuracy*
+* *No accuracy streaks.*
+* *Practice numbers only.*
+* *The difference from the average value.*
+* *Sort letters in the order of keyboard keys*
+* *Download all your typing data in JSON format.*
+* *Help us translate keybr.com into your language.*
+* *The detailed statistics regarding your learning progress.*
+* *Permanently delete all of your typing data and reset statist...*
+* *This is a histogram of the accuracies of all users, and your...*
+* *Adjust the number of words in the lesson text. Making lesson...*
+* *Show color coding of the keyboard zones. Use this option to ...*
+* *Are you sure you want to delete all data and reset your prof...*
+* *You don’t have any accuracy streaks. Consider completing a l...*
+* *Highlight a key that must to be pressed next. Use this optio...*
+* *<p>This indicator shows the current subset of letters used t...*
+* *For the purpose of typing measurement, each word is standard...*
+* *Repeat each word a number of times. Type a word for the firs...*
 * ...
 
 # Mongolian
@@ -510,19 +477,17 @@ Untranslated: 199 messages, 2708 words
 
 # Nepali
 
-Translated: 339 messages, 4743 words
+Translated: 341 messages, 4746 words
 
-Untranslated: 3 messages, 6 words
+Untranslated: 1 messages, 3 words
 
-* *Zones:*
-* *Sound theme:*
 * *Key sounds only*
 
 # Dutch
 
-Translated: 331 messages, 4731 words
+Translated: 333 messages, 4736 words
 
-Untranslated: 10 messages, 16 words
+Untranslated: 8 messages, 11 words
 
 * *Score*
 * *Zones:*
@@ -530,10 +495,8 @@ Untranslated: 10 messages, 16 words
 * *Letters*
 * *Volume:*
 * *Multiplayer*
-* *Sound theme:*
 * *Key sounds only*
 * *Premium account*
-* *Premium account price:*
 
 # Polish
 
@@ -685,26 +648,14 @@ Untranslated: 291 messages, 3996 words
 
 # Swedish
 
-Translated: 324 messages, 4632 words
+Translated: 338 messages, 4743 words
 
-Untranslated: 16 messages, 95 words
+Untranslated: 4 messages, 6 words
 
-* *Font:*
 * *Layout*
-* *Zones:*
 * *Layout:*
-* *Layouts*
 * *Syntax:*
-* *Multiplayer*
-* *Sound theme:*
-* *Top accuracy*
 * *Key sounds only*
-* *Average accuracy*
-* *Relative Accuracy*
-* *Repeat each word:*
-* *This is a histogram of the accuracies of all users, and your...*
-* *Repeat each word a number of times. Type a word for the firs...*
-* *See how accurate you type relative to other users. The highe...*
 
 # Thai
 
@@ -762,9 +713,9 @@ Untranslated: 1 messages, 3 words
 
 # Vietnamese
 
-Translated: 250 messages, 1796 words
+Translated: 266 messages, 2472 words
 
-Untranslated: 88 messages, 2911 words
+Untranslated: 73 messages, 2246 words
 
 * *Visit*
 * *Typing*

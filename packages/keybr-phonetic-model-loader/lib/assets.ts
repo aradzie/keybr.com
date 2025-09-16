@@ -7,13 +7,16 @@ import DE from "@keybr/phonetic-model/assets/model-de.data";
 import EL from "@keybr/phonetic-model/assets/model-el.data";
 import EN from "@keybr/phonetic-model/assets/model-en.data";
 import ES from "@keybr/phonetic-model/assets/model-es.data";
+import ET from "@keybr/phonetic-model/assets/model-et.data";
 import FA from "@keybr/phonetic-model/assets/model-fa.data";
+import FI from "@keybr/phonetic-model/assets/model-fi.data";
 import FR from "@keybr/phonetic-model/assets/model-fr.data";
 import HE from "@keybr/phonetic-model/assets/model-he.data";
 import HR from "@keybr/phonetic-model/assets/model-hr.data";
 import HU from "@keybr/phonetic-model/assets/model-hu.data";
 import IT from "@keybr/phonetic-model/assets/model-it.data";
 import LT from "@keybr/phonetic-model/assets/model-lt.data";
+import LV from "@keybr/phonetic-model/assets/model-lv.data";
 import NB from "@keybr/phonetic-model/assets/model-nb.data";
 import NL from "@keybr/phonetic-model/assets/model-nl.data";
 import PL from "@keybr/phonetic-model/assets/model-pl.data";
@@ -44,8 +47,12 @@ export function modelAssetPath(language: Language): string {
       return EN;
     case Language.ES:
       return ES;
+    case Language.ET:
+      return ET;
     case Language.FA:
       return FA;
+    case Language.FI:
+      return FI;
     case Language.FR:
       return FR;
     case Language.HE:
@@ -58,6 +65,8 @@ export function modelAssetPath(language: Language): string {
       return IT;
     case Language.LT:
       return LT;
+    case Language.LV:
+      return LV;
     case Language.NB:
       return NB;
     case Language.NL:
