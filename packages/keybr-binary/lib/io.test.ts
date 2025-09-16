@@ -301,7 +301,7 @@ test("write and read a string", () => {
 test("write and read a buffer", () => {
   const writer = new Writer(4);
 
-  writer.putBuffer(new Uint8Array([0, 1, 2, 3]).buffer);
+  writer.putBuffer(new Uint8Array([0, 1, 2, 3]));
   writer.putBuffer(new Uint8Array([4, 5, 6, 7]));
 
   const reader = new Reader(writer.buffer());

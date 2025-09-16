@@ -1,5 +1,3 @@
-import { asUint8Array } from "./util.ts";
-
 const table: readonly number[] = (() => {
   const table: number[] = [];
   for (let i = 0; i < 256; i++) {
@@ -15,11 +13,10 @@ const table: readonly number[] = (() => {
 /**
  * Calculate CRC32 of the specified array.
  */
-export function crc32(buffer: ArrayBufferLike | ArrayBufferView): number {
-  const array = asUint8Array(buffer);
+export function crc32(data: Uint8Array): number {
   let crc = 0xffffffff;
-  for (let i = 0; i < array.length; i++) {
-    crc = (crc >>> 8) ^ table[(crc ^ array[i]) & 0xff];
+  for (let i = 0; i < data.length; i++) {
+    crc = (crc >>> 8) ^ table[(crc ^ data[i]) & 0xff];
   }
   return (crc ^ 0xffffffff) >>> 0;
 }

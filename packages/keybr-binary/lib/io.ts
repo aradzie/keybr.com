@@ -1,6 +1,5 @@
 import { DataError } from "./errors.ts";
 import { decode, encode, encodedByteCount } from "./utf8.ts";
-import { asUint8Array } from "./util.ts";
 
 export class Writer {
   #dataView: DataView;
@@ -142,11 +141,10 @@ export class Writer {
     return this;
   }
 
-  putBuffer(buffer: ArrayBufferLike | ArrayBufferView): this {
-    const array = asUint8Array(buffer);
-    this.#ensureAvailable(array.byteLength);
-    new Uint8Array(this.#dataView.buffer).set(array, this.#byteOffset);
-    this.#byteOffset += array.byteLength;
+  putBuffer(data: Uint8Array): this {
+    this.#ensureAvailable(data.byteLength);
+    new Uint8Array(this.#dataView.buffer).set(data, this.#byteOffset);
+    this.#byteOffset += data.byteLength;
     return this;
   }
 

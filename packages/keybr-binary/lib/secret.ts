@@ -1,31 +1,24 @@
 import { crc32 } from "./crc32.ts";
 import { DataError } from "./errors.ts";
-import { asUint8Array } from "./util.ts";
 
-export function scramble(
-  buffer: ArrayBufferLike | ArrayBufferView,
-): Uint8Array {
-  const array = asUint8Array(buffer);
+export function scramble(data: Uint8Array): Uint8Array {
   const k = key();
-  const r = new Uint8Array(array.length + 8);
+  const r = new Uint8Array(data.length + 8);
   setUint32(r, 0, k);
-  setUint32(r, 4, crc32(array));
-  r.set(array, 8);
+  setUint32(r, 4, crc32(data));
+  r.set(data, 8);
   update(k, r);
   return r;
 }
 
-export function unscramble(
-  buffer: ArrayBufferLike | ArrayBufferView,
-): Uint8Array {
-  const array = asUint8Array(buffer);
-  if (array.length < 8) {
+export function unscramble(data: Uint8Array): Uint8Array {
+  if (data.length < 8) {
     throw new DataError();
   }
-  const k = getUint32(array, 0);
-  update(k, array);
-  const c = getUint32(array, 4);
-  const r = array.subarray(8);
+  const k = getUint32(data, 0);
+  update(k, data);
+  const c = getUint32(data, 4);
+  const r = data.subarray(8);
   if (crc32(r) !== c) {
     throw new DataError();
   }
