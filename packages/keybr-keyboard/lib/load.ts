@@ -48,6 +48,7 @@ import { LAYOUT_EN_GRAPHITE_ANGLE_KP } from "./layout/en_graphite_angle_kp.ts";
 import { LAYOUT_EN_HALMAK } from "./layout/en_halmak.ts";
 import { LAYOUT_EN_HANDS_DOWN_NEU } from "./layout/en_hands_down_neu.ts";
 import { LAYOUT_EN_HANDS_DOWN_PROMETHIUM } from "./layout/en_hands_down_promethium.ts";
+import { LAYOUT_EN_KUNTEM } from "./layout/en_kuntem.ts";
 import { LAYOUT_EN_MTGAP } from "./layout/en_mtgap.ts";
 import { LAYOUT_EN_NERPS } from "./layout/en_nerps.ts";
 import { LAYOUT_EN_NERPS_MATRIX } from "./layout/en_nerps_matrix.ts";
@@ -139,6 +140,7 @@ const layouts = new Map<Layout, CharacterDict>([
   [Layout.EN_HALMAK, LAYOUT_EN_HALMAK],
   [Layout.EN_HANDS_DOWN_NEU, LAYOUT_EN_HANDS_DOWN_NEU],
   [Layout.EN_HANDS_DOWN_PROMETHIUM, LAYOUT_EN_HANDS_DOWN_PROMETHIUM],
+  [Layout.EN_KUNTEM, LAYOUT_EN_KUNTEM],
   [Layout.EN_MTGAP, LAYOUT_EN_MTGAP],
   [Layout.EN_JP, LAYOUT_JA_JP_JIS],
   [Layout.EN_NERPS, LAYOUT_EN_NERPS],
