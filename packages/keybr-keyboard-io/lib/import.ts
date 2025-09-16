@@ -7,10 +7,10 @@ import {
 import { decodeText } from "./text.ts";
 
 export async function importLayout(
-  data: ArrayBufferLike | Blob,
+  data: Uint8Array | Blob,
 ): Promise<ParseResult | null> {
   if (data instanceof Blob) {
-    data = await data.arrayBuffer();
+    data = await data.bytes();
   }
   const text = decodeText(data);
   for (const parser of [parseCldr, parseKeymap, parseKlc]) {

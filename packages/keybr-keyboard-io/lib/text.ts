@@ -1,42 +1,41 @@
-export function decodeText(data: ArrayBufferLike) {
+export function decodeText(data: Uint8Array): string {
   return new TextDecoder(sniffTextEncoding(data)).decode(data);
 }
 
-export function sniffTextEncoding(data: ArrayBufferLike): string {
-  const buffer = new Uint8Array(data);
+export function sniffTextEncoding(data: Uint8Array): string {
   if (
-    buffer.length >= 2 &&
-    (buffer[0] & 0xff) === 0xfe &&
-    (buffer[1] & 0xff) === 0xff
+    data.length >= 2 &&
+    (data[0] & 0xff) === 0xfe &&
+    (data[1] & 0xff) === 0xff
   ) {
     return "utf-16be";
   }
   if (
-    buffer.length >= 2 &&
-    (buffer[0] & 0xff) === 0xff &&
-    (buffer[1] & 0xff) === 0xfe
+    data.length >= 2 &&
+    (data[0] & 0xff) === 0xff &&
+    (data[1] & 0xff) === 0xfe
   ) {
     return "utf-16le";
   }
   if (
-    buffer.length >= 6 &&
-    buffer[0] === 0 &&
-    buffer[1] !== 0 &&
-    buffer[2] === 0 &&
-    buffer[3] !== 0 &&
-    buffer[4] === 0 &&
-    buffer[5] !== 0
+    data.length >= 6 &&
+    data[0] === 0 &&
+    data[1] !== 0 &&
+    data[2] === 0 &&
+    data[3] !== 0 &&
+    data[4] === 0 &&
+    data[5] !== 0
   ) {
     return "utf-16be";
   }
   if (
-    buffer.length >= 6 &&
-    buffer[0] !== 0 &&
-    buffer[1] === 0 &&
-    buffer[2] !== 0 &&
-    buffer[3] === 0 &&
-    buffer[4] !== 0 &&
-    buffer[5] === 0
+    data.length >= 6 &&
+    data[0] !== 0 &&
+    data[1] === 0 &&
+    data[2] !== 0 &&
+    data[3] === 0 &&
+    data[4] !== 0 &&
+    data[5] === 0
   ) {
     return "utf-16le";
   }

@@ -208,7 +208,7 @@ export class DBObjectStore {
     return Array.from(this.#store.indexNames);
   }
 
-  get keyPath(): string | string[] {
+  get keyPath(): string | string[] | null {
     return this.#store.keyPath;
   }
 
