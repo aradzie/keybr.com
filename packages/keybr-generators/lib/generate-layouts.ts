@@ -103,6 +103,7 @@ for (const [id, layout] of [
   ["tr_tr_f", importCldr("cldr-keyboards-43.0/keyboards/windows/tr-t-k0-windows-legacy.xml")],
   ["tr_tr_q", importCldr("cldr-keyboards-43.0/keyboards/windows/tr-t-k0-windows.xml")],
   ["uk_ua", importCldr("cldr-keyboards-43.0/keyboards/windows/uk-t-k0-windows.xml")],
+  ["uk_facet_ua", importKeymap("layouts/uk_facet_ua.json")],
 ] as [string, CharacterDict][]) {
   writeGeneratedFile(layout, pathTo(`../keybr-keyboard/lib/layout/${id}.ts`));
 }
