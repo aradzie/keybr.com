@@ -1130,6 +1130,16 @@ export class Layout implements XEnumItem {
     /* emulate= */ false,
     /* geometries= */ new Enum(Geometry.MATRIX),
   );
+  static readonly EN_HANDS_DOWN_PROMETHIUM_INVERTED = new Layout(
+    /* id= */ "en-hands-down-promethium-inverted",
+    /* xid= */ 0xb9,
+    /* name= */ "Hands Down Promethium Inverted(Matrix)",
+    /* family= */ "en-hands-down-promethium",
+    /* language= */ Language.EN,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(Geometry.MATRIX),
+  );
+
   static readonly EN_APT_V3 = new Layout(
     /* id= */ "en-aptv3",
     /* xid= */ 0xa4,
@@ -1304,6 +1314,7 @@ export class Layout implements XEnumItem {
     Layout.EN_NIGHT_MATRIX,
     Layout.EN_HANDS_DOWN_NEU,
     Layout.EN_HANDS_DOWN_PROMETHIUM,
+    Layout.EN_HANDS_DOWN_PROMETHIUM_INVERTED,
     Layout.EN_STURDY,
     Layout.EN_NORMAN,
     Layout.EN_HALMAK,
