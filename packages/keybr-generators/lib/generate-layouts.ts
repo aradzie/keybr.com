@@ -80,6 +80,7 @@ for (const [id, layout] of [
   ["he_il_arkn", importCldr("layouts/he_il_arkn.xml")],
   ["hu_hu", importCldr("cldr-keyboards-43.0/keyboards/windows/hu-t-k0-windows.xml")],
   ["it_it", importCldr("cldr-keyboards-43.0/keyboards/windows/it-t-k0-windows.xml")],
+  ["ja_ja", importKeymap("layouts/ja_ja.json")],
   ["ja_jp_jis", importKeymap("layouts/ja_jp_jis.json")],
   ["lt_lt", importCldr("cldr-keyboards-43.0/keyboards/windows/lt-t-k0-windows-lt1582.xml")],
   ["lv_lv", importCldr("cldr-keyboards-43.0/keyboards/windows/lv-t-k0-windows.xml")],
