@@ -44,6 +44,7 @@ import { LAYOUT_EN_ENTHIUM_V11 } from "./layout/en_enthium_v11.ts";
 import { LAYOUT_EN_FOCAL } from "./layout/en_focal.ts";
 import { LAYOUT_EN_GALLIUM } from "./layout/en_gallium.ts";
 import { LAYOUT_EN_GALLIUM_MATRIX } from "./layout/en_gallium_matrix.ts";
+import { LAYOUT_EN_GALLIUM_NL } from "./layout/en_gallium_nl.ts";
 import { LAYOUT_EN_GRAPHITE } from "./layout/en_graphite.ts";
 import { LAYOUT_EN_GRAPHITE_ANGLE_KP } from "./layout/en_graphite_angle_kp.ts";
 import { LAYOUT_EN_HALMAK } from "./layout/en_halmak.ts";
@@ -140,6 +141,7 @@ const layouts = new Map<Layout, CharacterDict>([
   [Layout.EN_FOCAL, LAYOUT_EN_FOCAL],
   [Layout.EN_GALLIUM, LAYOUT_EN_GALLIUM],
   [Layout.EN_GALLIUM_MATRIX, LAYOUT_EN_GALLIUM_MATRIX],
+  [Layout.EN_GALLIUM_NL, LAYOUT_EN_GALLIUM_NL],
   [Layout.EN_GRAPHITE, LAYOUT_EN_GRAPHITE],
   [Layout.EN_GRAPHITE_ANGLE_KP, LAYOUT_EN_GRAPHITE_ANGLE_KP],
   [Layout.EN_HALMAK, LAYOUT_EN_HALMAK],

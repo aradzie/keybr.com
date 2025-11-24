@@ -1121,6 +1121,15 @@ export class Layout implements XEnumItem {
     /* emulate= */ true,
     /* geometries= */ new Enum(Geometry.MATRIX),
   );
+  static readonly EN_GALLIUM_NL = new Layout(
+    /* id= */ "en-gallium-nl",
+    /* xid= */ 0xb9,
+    /* name= */ "Gallium-NL",
+    /* family= */ "gallium-nl",
+    /* language= */ Language.EN,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(Geometry.MATRIX),
+  );
   static readonly EN_HANDS_DOWN_PROMETHIUM = new Layout(
     /* id= */ "en-hands-down-promethium",
     /* xid= */ 0xa3,
@@ -1329,6 +1338,7 @@ export class Layout implements XEnumItem {
     Layout.EN_ENGRAM,
     Layout.EN_GALLIUM,
     Layout.EN_GALLIUM_MATRIX,
+    Layout.EN_GALLIUM_NL,
     Layout.EN_GRAPHITE,
     Layout.EN_GRAPHITE_ANGLE_KP,
     Layout.EN_APT_V3,
