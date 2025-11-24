@@ -1,4 +1,4 @@
-#!/bin/env python3
+#!/usr/bin/env -S uv run --with fonttools --with brotli
 
 # https://markoskon.com/creating-font-subsets/
 
@@ -11,6 +11,8 @@ unicode_ranges = [
     ("cyrillic", "U+0400-04FF"),
     ("greek", "U+0370-03FF"),
     ("hebrew", "U+0590-05FF"),
+    ("hiragana", "U+3040-309F"),
+    ("katakana", "U+30A0-30FF"),
     ("latin", "U+0000-00FF, U+2000-206F, U+2200-22FF, U+E000-E003"),
     ("latin-ext", "U+0100-017F, U+0180-024F, U+0300-036F, U+20A0-20CF"),
     ("thai", "U+0E01-0E5B"),
@@ -176,6 +178,12 @@ def main():
     generate("ubuntu-mono", "fonts/Ubuntu_Mono/UbuntuMono-Italic.ttf", merge_file="Whitespace-em1000.ttf")
     generate("ubuntu-mono", "fonts/Ubuntu_Mono/UbuntuMono-Bold.ttf", merge_file="Whitespace-em1000.ttf")
     generate("ubuntu-mono", "fonts/Ubuntu_Mono/UbuntuMono-BoldItalic.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("noto-sans-jp", "fonts/Noto_Sans_JP/static/NotoSansJP-Regular.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("noto-sans-jp", "fonts/Noto_Sans_JP/static/NotoSansJP-Bold.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("noto-serif-jp", "fonts/Noto_Serif_JP/static/NotoSerifJP-Regular.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("noto-serif-jp", "fonts/Noto_Serif_JP/static/NotoSerifJP-Bold.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("shippori-mincho", "fonts/Shippori_Mincho/ShipporiMincho-Regular.ttf", merge_file="Whitespace-em1000.ttf")
+    generate("shippori-mincho", "fonts/Shippori_Mincho/ShipporiMincho-Bold.ttf", merge_file="Whitespace-em1000.ttf")
 
 
 if __name__ == "__main__":

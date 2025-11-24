@@ -3,7 +3,7 @@ import { type CSSProperties } from "react";
 export type FontWeight = "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900";
 export type FontStyle = "normal" | "italic";
 export type Fallback = "cursive" | "fantasy" | "monospace" | "sans-serif" | "serif" | "whitespace" | string;
-export type Script = "arabic" | "cyrillic" | "greek" | "hebrew" | "latin" | "thai";
+export type Script = "arabic" | "cyrillic" | "greek" | "hebrew" | "hiragana" | "katakana" | "latin" | "thai";
 
 export class FontFace {
   readonly family: string;
@@ -40,6 +40,7 @@ const cgl = ["cyrillic", "greek", "latin"] as const satisfies Script[];
 const cghl = ["cyrillic", "greek", "hebrew", "latin"] as const satisfies Script[];
 const achl = ["arabic", "cyrillic", "hebrew", "latin"] as const satisfies Script[];
 const acghlt = ["arabic", "cyrillic", "greek", "hebrew", "latin", "thai"] as const satisfies Script[];
+const hiragana = ["hiragana"] as const satisfies Script[];
 
 export const ARAD = new FontFace("Arad", "400", "normal", ["whitespace"], ["arabic"]);
 export const ARAD_B = new FontFace("Arad", "700", "normal", ["whitespace"], ["arabic"]);
@@ -51,6 +52,10 @@ export const NEWSREADER = new FontFace("Newsreader", "400", "normal", ["serif"],
 export const NEWSREADER_I = new FontFace("Newsreader", "400", "italic", ["serif"], ["latin"]);
 export const NEWSREADER_B = new FontFace("Newsreader", "700", "normal", ["serif"], ["latin"]);
 export const NEWSREADER_BI = new FontFace("Newsreader", "700", "italic", ["serif"], ["latin"]);
+export const NOTO_SANS_JP = new FontFace("Noto Sans JP", "400", "normal", ["sans-serif"], hiragana);
+export const NOTO_SANS_JP_B = new FontFace("Noto Sans JP", "700", "normal", ["sans-serif"], hiragana);
+export const NOTO_SERIF_JP = new FontFace("Noto Serif JP", "400", "normal", ["serif"], hiragana);
+export const NOTO_SERIF_JP_B = new FontFace("Noto Serif JP", "700", "normal", ["serif"], hiragana);
 export const NUNITO = new FontFace("Nunito", "400", "normal", ["sans-serif"], cl);
 export const NUNITO_I = new FontFace("Nunito", "400", "italic", ["sans-serif"], cl);
 export const NUNITO_B = new FontFace("Nunito", "700", "normal", ["sans-serif"], cl);
@@ -79,6 +84,8 @@ export const SHANTELL_SANS = new FontFace("Shantell Sans", "400", "normal", ["se
 export const SHANTELL_SANS_I = new FontFace("Shantell Sans", "400", "italic", ["serif"], cl);
 export const SHANTELL_SANS_B = new FontFace("Shantell Sans", "700", "normal", ["serif"], cl);
 export const SHANTELL_SANS_BI = new FontFace("Shantell Sans", "700", "italic", ["serif"], cl);
+export const SHIPPORI_MINCHO = new FontFace("Shippori Mincho", "400", "normal", ["serif"], hiragana);
+export const SHIPPORI_MINCHO_B = new FontFace("Shippori Mincho", "700", "normal", ["serif"], hiragana);
 export const SPECTRAL = new FontFace("Spectral", "400", "normal", ["serif"], cl);
 export const SPECTRAL_I = new FontFace("Spectral", "400", "italic", ["serif"], cl);
 export const SPECTRAL_B = new FontFace("Spectral", "700", "normal", ["serif"], cl);
@@ -119,6 +126,10 @@ export const FONTS_FACES: readonly FontFace[] = [
   NEWSREADER_I,
   NEWSREADER_B,
   NEWSREADER_BI,
+  NOTO_SANS_JP,
+  NOTO_SANS_JP_B,
+  NOTO_SERIF_JP,
+  NOTO_SERIF_JP_B,
   NUNITO,
   NUNITO_I,
   NUNITO_B,
@@ -143,6 +154,8 @@ export const FONTS_FACES: readonly FontFace[] = [
   SHANTELL_SANS_I,
   SHANTELL_SANS_B,
   SHANTELL_SANS_BI,
+  SHIPPORI_MINCHO,
+  SHIPPORI_MINCHO_B,
   SPECTRAL,
   SPECTRAL_I,
   SPECTRAL_B,
