@@ -1312,6 +1312,15 @@ export class Layout implements XEnumItem {
       Geometry.ISO_102_FULL,
     ),
   );
+  static readonly JA_JA = new Layout(
+    /* id= */ "ja-ja",
+    /* xid= */ 0xaf,
+    /* name= */ "Japanese",
+    /* family= */ "japanese",
+    /* language= */ Language.JA,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(Geometry.ANSI_101),
+  );
 
   static readonly ALL = new XEnum<Layout>(
     Layout.EN_US,
@@ -1374,6 +1383,7 @@ export class Layout implements XEnumItem {
     Layout.HE_IL_ARKN,
     Layout.HU_HU,
     Layout.IT_IT,
+    Layout.JA_JA,
     Layout.LT_LT,
     Layout.LV_LV,
     Layout.NB_NO,
