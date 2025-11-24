@@ -3,7 +3,7 @@
 import { type CharacterDict } from "../types.ts";
 
 // prettier-ignore
-export const LAYOUT_JA_JA: CharacterDict = {
+export const LAYOUT_JA_JP: CharacterDict = {
   Backquote: [/* HIRAGANA LETTER RO */ 0x308d],
   Digit1: [/* HIRAGANA LETTER NU */ 0x306c],
   Digit2: [/* HIRAGANA LETTER HU */ 0x3075, /* HIRAGANA LETTER BU */ 0x3076, /* HIRAGANA LETTER PU */ 0x3077],

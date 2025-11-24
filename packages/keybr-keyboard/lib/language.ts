@@ -100,9 +100,9 @@ export class Language implements EnumItem {
   );
   static readonly JA = new Language(
     /* id= */ "ja",
-    /* script= */ "latin",
+    /* script= */ "hiragana",
     /* direction= */ "ltr",
-    /* alphabet= */ "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽぁぃぅぇぉゃゅょっー",
+    /* alphabet= */ "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽぁぃぇぉゃゅょっー",
   );
   static readonly LT = new Language(
     /* id= */ "lt",
@@ -200,7 +200,7 @@ export class Language implements EnumItem {
     Language.HR,
     Language.HU,
     Language.IT,
-    Language.JA,
+    // Language.JA,
     Language.LT,
     Language.LV,
     Language.NB,
@@ -224,6 +224,7 @@ export class Language implements EnumItem {
     | "cyrillic"
     | "greek"
     | "hebrew"
+    | "hiragana"
     | "latin"
     | "thai";
   /** The direction of the writing system, either "ltr" for left-to-right, or "rtl" for right-to-left. */
@@ -245,7 +246,14 @@ export class Language implements EnumItem {
 
   private constructor(
     id: string,
-    script: "arabic" | "cyrillic" | "greek" | "hebrew" | "latin" | "thai",
+    script:
+      | "arabic"
+      | "cyrillic"
+      | "greek"
+      | "hebrew"
+      | "hiragana"
+      | "latin"
+      | "thai",
     direction: "ltr" | "rtl",
     alphabet: string,
   ) {
@@ -372,10 +380,12 @@ export function getExampleText({ script }: Language): string {
       return "Τρώτε περισσότερα μήλα και πορτοκάλια.";
     case "hebrew":
       return "תאכל יותר תפוחים ותפוזים.";
+    case "hiragana":
+      return "リンゴとオレンジをもっと食べましょう。";
+    case "latin":
+      return "Eat more apples and oranges.";
     case "thai":
       return "กินส้มกับแอปเปิลเยอะ ๆ";
-    default:
-      return "Eat more apples and oranges.";
   }
 }
 
@@ -389,6 +399,8 @@ export function getExampleLetters({ script }: Language): CodePoint[] {
       return [0x03b1, 0x03b2, 0x03b3, 0x03b4, 0x03b5, 0x03b6];
     case "hebrew":
       return [0x05d0, 0x05d1, 0x05d2, 0x05d3, 0x05d4, 0x05d5];
+    case "hiragana":
+      return [0x3041, 0x3043, 0x3045, 0x3047, 0x3049, 0x304b];
     case "latin":
       return [0x0061, 0x0062, 0x0063, 0x0064, 0x0065, 0x0066];
     case "thai":
