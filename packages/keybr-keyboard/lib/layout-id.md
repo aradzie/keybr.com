@@ -161,7 +161,7 @@
 - `0xac`: Spanish/Dvorak (Latin American)
 - `0xad`: English/Graphite Angle KP
 - `0xae`: English/Kuntem
-- `0xaf`:
+- `0xaf`: English/Hands Down Promethium Inverted (Matrix)
 - `0xb0`:
 - `0xb1`:
 - `0xb2`:
@@ -171,7 +171,7 @@
 - `0xb6`:
 - `0xb7`:
 - `0xb8`: English/Enthium V10 (Matrix)
-- `0xb9`:
+- `0xb9`: English/Enthium V11 (Matrix)
 - `0xba`:
 - `0xbb`:
 - `0xbc`:
@@ -243,7 +243,7 @@
 - `0xfe`:
 - `0xff`:
 
-89 allocated identifiers
+91 allocated identifiers
 
-151 free identifiers
+149 free identifiers
 
