@@ -148,7 +148,7 @@
 - `0x9f`: Norwegian Bokmål/Dvorak
 - `0xa0`: Romanian/Romania
 - `0xa1`: English/Gallium
-- `0xa2`: English/Gallium (matrix)
+- `0xa2`: English/Gallium (Matrix)
 - `0xa3`: English/Hands Down Promethium (Matrix)
 - `0xa4`: English/APTv3
 - `0xa5`: English/Focal

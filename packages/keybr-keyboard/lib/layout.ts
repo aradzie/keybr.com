@@ -1115,7 +1115,7 @@ export class Layout implements XEnumItem {
   static readonly EN_GALLIUM_MATRIX = new Layout(
     /* id= */ "en-gallium-matrix",
     /* xid= */ 0xa2,
-    /* name= */ "Gallium (matrix)",
+    /* name= */ "Gallium (Matrix)",
     /* family= */ "gallium-matrix",
     /* language= */ Language.EN,
     /* emulate= */ true,
@@ -1123,7 +1123,7 @@ export class Layout implements XEnumItem {
   );
   static readonly EN_GALLIUM_NL = new Layout(
     /* id= */ "en-gallium-nl",
-    /* xid= */ 0xb9,
+    /* xid= */ 0xb0,
     /* name= */ "Gallium-NL",
     /* family= */ "gallium-nl",
     /* language= */ Language.EN,
@@ -1338,7 +1338,7 @@ export class Layout implements XEnumItem {
     Layout.EN_ENGRAM,
     Layout.EN_GALLIUM,
     Layout.EN_GALLIUM_MATRIX,
-    Layout.EN_GALLIUM_NL,
+    // Layout.EN_GALLIUM_NL,
     Layout.EN_GRAPHITE,
     Layout.EN_GRAPHITE_ANGLE_KP,
     Layout.EN_APT_V3,
