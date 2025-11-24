@@ -40,9 +40,9 @@ Untranslated: 1 messages, 3 words
 
 # Catalan
 
-Translated: 305 messages, 3215 words
+Translated: 310 messages, 3556 words
 
-Untranslated: 35 messages, 1512 words
+Untranslated: 30 messages, 1171 words
 
 * *Errors*
 * *Zones:*
@@ -57,13 +57,13 @@ Untranslated: 35 messages, 1512 words
 * *This is a histogram of the accuracies of all users, and your...*
 * *Show color coding of the keyboard zones. Use this option to ...*
 * *Generate typing lessons from the text of a book. All keys ar...*
-* *<a>Benford’s law</a> is an observation that in many real-lif...*
 * *Highlight a key that must to be pressed next. Use this optio...*
 * *<p>This indicator shows the current subset of letters used t...*
 * *Repeat each word a number of times. Type a word for the firs...*
 * *See how accurate you type relative to other users. The highe...*
 * *Adjust the amount of basic punctuation characters added to t...*
 * *<p>This indicator can also be used to predict the remaining ...*
+* *<p>This is the accuracy indicator and the difference from th...*
 * ...
 
 # Czech
@@ -81,9 +81,9 @@ Untranslated: 6 messages, 9 words
 
 # Danish
 
-Translated: 328 messages, 4682 words
+Translated: 331 messages, 4689 words
 
-Untranslated: 12 messages, 45 words
+Untranslated: 9 messages, 38 words
 
 * *Score*
 * *Layout*
@@ -92,10 +92,7 @@ Untranslated: 12 messages, 45 words
 * *Position*
 * *Multiplayer*
 * *Download data*
-* *Bar whitespace*
 * *Key sounds only*
-* *Average accuracy*
-* *Repeat each word:*
 * *Repeat each word a number of times. Type a word for the firs...*
 
 # German
@@ -449,11 +446,10 @@ Untranslated: 316 messages, 4273 words
 
 # Norwegian Bokmål
 
-Translated: 136 messages, 1983 words
+Translated: 158 messages, 2338 words
 
-Untranslated: 199 messages, 2708 words
+Untranslated: 178 messages, 2356 words
 
-* *GO!*
 * *Done*
 * *Help*
 * *Time*
@@ -473,6 +469,7 @@ Untranslated: 199 messages, 2708 words
 * *Profile*
 * *Sign-In*
 * *Syntax:*
+* *Volume:*
 * ...
 
 # Nepali
@@ -592,11 +589,10 @@ Untranslated: 2 messages, 4 words
 
 # Slovenian
 
-Translated: 89 messages, 1899 words
+Translated: 192 messages, 3519 words
 
-Untranslated: 246 messages, 2792 words
+Untranslated: 149 messages, 1228 words
 
-* *GO!*
 * *Copy*
 * *Done*
 * *Help*
@@ -608,7 +604,6 @@ Untranslated: 246 messages, 2792 words
 * *Reset*
 * *Speed*
 * *Visit*
-* *Errors*
 * *Typing*
 * *Zones:*
 * *Account*
@@ -616,6 +611,8 @@ Untranslated: 246 messages, 2792 words
 * *Lessons*
 * *Lessons*
 * *Metrics*
+* *Not set*
+* *Numbers*
 * ...
 
 # Albanian
@@ -713,9 +710,9 @@ Untranslated: 1 messages, 3 words
 
 # Vietnamese
 
-Translated: 266 messages, 2472 words
+Translated: 275 messages, 2745 words
 
-Untranslated: 73 messages, 2246 words
+Untranslated: 64 messages, 1973 words
 
 * *Visit*
 * *Typing*
@@ -732,11 +729,11 @@ Untranslated: 73 messages, 2246 words
 * *Key sounds only*
 * *Average accuracy*
 * *Underline cursor*
-* *Relative Accuracy*
 * *Repeat each word:*
-* *Key Frequency Heatmap*
-* *Relative Typing Speed*
 * *Premium account price:*
+* *Key Frequency Histogram*
+* *Key Typing Speed Histogram*
+* *Keyboard hardware emulates layout*
 * ...
 
 # Simplified Chinese

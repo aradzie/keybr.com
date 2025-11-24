@@ -193,6 +193,7 @@
   "t_Alphabet:": "Alfabet:",
   "t_Anonymize_me": "Anonymiser mig",
   "t_Anonymous_User": "Anonym bruger",
+  "t_Average_accuracy": "Gennemsnits præcision",
   "t_Average_speed": "Gennemsnitshastighed",
   "t_Average_word_length": "Gennemsnits ordlængte",
   "t_Books": "Bøger",
@@ -255,6 +256,7 @@
   "t_Privacy_Policy": "Fortrolighedspolitik",
   "t_Profile": "Profil",
   "t_Remove_punctuation_characters": "Fjern tegnsætning",
+  "t_Repeat_each_word:": "Gentag hvert ord:",
   "t_Resend": "Gensend",
   "t_Reset": "Nulstil",
   "t_Reset_statistics": "Nulstil statistik",
@@ -324,6 +326,7 @@
   "t_num_Unique_words": "Unikke ord",
   "t_theme_Enter_fullscreen_": "Gå ind i fuldskærmstilstand.",
   "t_theme_Exit_fullscreen_": "Afslut fuldskærmstilstand.",
+  "t_ws_Bar_whitespace": "Bar Whitespace",
   "t_ws_Bullet_whitespace": "Punkttegn mellemrum",
   "t_ws_No_whitespace": "Intet mellemrum",
   "weekDayNames": "M|T|O|T|F|L|S"
