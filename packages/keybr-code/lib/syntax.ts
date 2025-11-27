@@ -13,6 +13,7 @@ import {
   grammar_html_css,
   grammar_java,
   grammar_javascript,
+  grammar_php,
   grammar_python,
   grammar_regex,
   grammar_rust,
@@ -47,6 +48,13 @@ export class Syntax implements EnumItem {
     "TypeScript",
     grammar_typescript,
   );
+  static readonly PHP = new Syntax("php", "PHP", grammar_php);
+  static readonly PHP_LARAVEL = new Syntax(
+    "php_laravel",
+    "PHP Laravel",
+    grammar_php,
+    "start_laravel",
+  );
   static readonly PYTHON = new Syntax("python", "Python", grammar_python);
   static readonly RUST = new Syntax("rust", "Rust", grammar_rust);
   static readonly SHELL = new Syntax("shell", "Shell", grammar_shell);
@@ -66,6 +74,8 @@ export class Syntax implements EnumItem {
     Syntax.CPP_STMT,
     Syntax.JAVASCRIPT_EXP,
     Syntax.TYPESCRIPT,
+    Syntax.PHP,
+    Syntax.PHP_LARAVEL,
     Syntax.PYTHON,
     Syntax.RUST,
     Syntax.SHELL,
