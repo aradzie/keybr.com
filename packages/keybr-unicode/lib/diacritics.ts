@@ -85,8 +85,8 @@ for (const [codePoint, baseList, combinedList] of [
   ],
   [
     /* COMBINING CEDILLA */ 0x0327, //
-    "CDEGHKLNRSTcdeghklnrst",
-    "ÇḐȨĢḨĶĻŅŖŞŢçḑȩģḩķļņŗşţ",
+    "ACDEGHIKLNORSTUacdeghiklnorstu",
+    "ĄÇḐĘĢḨĮĶĻŅǪŖŞŢŲąçḑęģḩįķļņǫŗşţų",
   ],
   [
     /* COMBINING OGONEK */ 0x0328, //
