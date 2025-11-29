@@ -1,5 +1,5 @@
 {
-  "Backquote": ["*^", "*ˇ"],
+  "Backquote": ["*^", "*ˇ", "*↻", "*˙"],
   "Digit1": "1°",
   "Digit2": "2§",
   "Digit3": "3ℓ",
@@ -24,7 +24,7 @@
   "KeyP": "fF",
   "BracketLeft": "jJ",
   "BracketRight": "ßẞ",
-  "Backslash": ["*´", "*~"],
+  "Backslash": ["*´", "*~", "*/", "*˝"],
   "KeyA": "cC",
   "KeyS": "sS",
   "KeyD": "iI",
