@@ -93,6 +93,11 @@ for (const [codePoint, baseList, combinedList] of [
     "AEIOUaeiou",
     "ĄĘĮǪŲąęįǫų",
   ],
+  [
+    /* COMBINING SHORT SOLIDUS OVERLAY */ 0x0337, //
+    "ABCDEGHIJLOPRTUYZabcdeghijlortuyz",
+    "ȺɃȻĐɆǤĦƗɟŁØⱣɌŦɄɎƵⱥƀȼđɇǥħɨɟłøɍŧʉɏƶ",
+  ],
 ] as [CodePoint, string, string][]) {
   for (let i = 0; i < baseList.length; i++) {
     const base = baseList.codePointAt(i)!;
