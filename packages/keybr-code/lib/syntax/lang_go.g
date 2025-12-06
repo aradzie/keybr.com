@@ -180,33 +180,3 @@ comment_text ->
   | "Implements interface"
   | "Deprecated: Use alternative function"
   ;
-
-kw_package -> "package";
-kw_import -> "import";
-kw_func -> "func";
-kw_type -> "type";
-kw_struct -> "struct";
-kw_interface -> "interface";
-kw_var -> "var";
-kw_const -> "const";
-kw_map -> "map";
-kw_chan -> "chan";
-kw_bool -> "bool";
-kw_int -> "int";
-kw_int8 -> "int8";
-kw_int16 -> "int16";
-kw_int32 -> "int32";
-kw_int64 -> "int64";
-kw_uint -> "uint";
-kw_uint8 -> "uint8";
-kw_uint16 -> "uint16";
-kw_uint32 -> "uint32";
-kw_uint64 -> "uint64";
-kw_float32 -> "float32";
-kw_float64 -> "float64";
-kw_complex64 -> "complex64";
-kw_complex128 -> "complex128";
-kw_string -> "string";
-kw_rune -> "rune";
-kw_byte -> "byte";
-

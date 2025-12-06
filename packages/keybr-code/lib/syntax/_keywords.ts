@@ -35,6 +35,10 @@ export default {
     cls: "keyword",
     span: "and",
   },
+  kw_any: {
+    cls: "keyword",
+    span: "any",
+  },
   kw_arguments: {
     cls: "keyword",
     span: "arguments",
@@ -67,6 +71,10 @@ export default {
     cls: "keyword",
     span: "become",
   },
+  kw_bigint: {
+    cls: "keyword",
+    span: "bigint",
+  },
   kw_bool: {
     cls: "keyword",
     span: "bool",
@@ -94,6 +102,10 @@ export default {
   kw_catch: {
     cls: "keyword",
     span: "catch",
+  },
+  kw_chan: {
+    cls: "keyword",
+    span: "chan",
   },
   kw_char: {
     cls: "keyword",
@@ -123,6 +135,14 @@ export default {
     cls: "keyword",
     span: "co_yield",
   },
+  kw_complex64: {
+    cls: "keyword",
+    span: "complex64",
+  },
+  kw_complex128: {
+    cls: "keyword",
+    span: "complex128",
+  },
   kw_concept: {
     cls: "keyword",
     span: "concept",
@@ -150,6 +170,10 @@ export default {
   kw_debugger: {
     cls: "keyword",
     span: "debugger",
+  },
+  kw_declare: {
+    cls: "keyword",
+    span: "declare",
   },
   kw_decltype: {
     cls: "keyword",
@@ -243,6 +267,14 @@ export default {
     cls: "keyword",
     span: "float",
   },
+  kw_float32: {
+    cls: "keyword",
+    span: "float32",
+  },
+  kw_float64: {
+    cls: "keyword",
+    span: "float64",
+  },
   kw_fn: {
     cls: "keyword",
     span: "fn",
@@ -263,9 +295,17 @@ export default {
     cls: "keyword",
     span: "from",
   },
+  kw_func: {
+    cls: "keyword",
+    span: "func",
+  },
   kw_function: {
     cls: "keyword",
     span: "function",
+  },
+  kw_get: {
+    cls: "keyword",
+    span: "get",
   },
   kw_global: {
     cls: "keyword",
@@ -315,6 +355,10 @@ export default {
     cls: "keyword",
     span: "in",
   },
+  kw_infer: {
+    cls: "keyword",
+    span: "infer",
+  },
   kw_inline: {
     cls: "keyword",
     span: "inline",
@@ -326,6 +370,22 @@ export default {
   kw_int: {
     cls: "keyword",
     span: "int",
+  },
+  kw_int8: {
+    cls: "keyword",
+    span: "int8",
+  },
+  kw_int16: {
+    cls: "keyword",
+    span: "int16",
+  },
+  kw_int32: {
+    cls: "keyword",
+    span: "int32",
+  },
+  kw_int64: {
+    cls: "keyword",
+    span: "int64",
   },
   kw_interface: {
     cls: "keyword",
@@ -343,6 +403,10 @@ export default {
     cls: "keyword",
     span: "isize",
   },
+  kw_keyof: {
+    cls: "keyword",
+    span: "keyof",
+  },
   kw_lambda: {
     cls: "keyword",
     span: "lambda",
@@ -359,6 +423,10 @@ export default {
     cls: "keyword",
     span: "loop",
   },
+  kw_map: {
+    cls: "keyword",
+    span: "map",
+  },
   kw_match: {
     cls: "keyword",
     span: "match",
@@ -366,6 +434,10 @@ export default {
   kw_mod: {
     cls: "keyword",
     span: "mod",
+  },
+  kw_module: {
+    cls: "keyword",
+    span: "module",
   },
   kw_move: {
     cls: "keyword",
@@ -386,6 +458,10 @@ export default {
   kw_native: {
     cls: "keyword",
     span: "native",
+  },
+  kw_never: {
+    cls: "keyword",
+    span: "never",
   },
   kw_new: {
     cls: "keyword",
@@ -426,6 +502,10 @@ export default {
   kw_or: {
     cls: "keyword",
     span: "or",
+  },
+  kw_out: {
+    cls: "keyword",
+    span: "out",
   },
   kw_override: {
     cls: "keyword",
@@ -487,6 +567,14 @@ export default {
     cls: "keyword",
     span: "return",
   },
+  kw_rune: {
+    cls: "keyword",
+    span: "rune",
+  },
+  kw_satisfies: {
+    cls: "keyword",
+    span: "satisfies",
+  },
   kw_sealed: {
     cls: "keyword",
     span: "sealed",
@@ -494,6 +582,10 @@ export default {
   kw_self: {
     cls: "keyword",
     span: "self",
+  },
+  kw_set: {
+    cls: "keyword",
+    span: "set",
   },
   kw_short: {
     cls: "keyword",
@@ -607,9 +699,9 @@ export default {
     cls: "keyword",
     span: "typeof",
   },
-  kw_u128: {
+  kw_u8: {
     cls: "keyword",
-    span: "u128",
+    span: "u8",
   },
   kw_u16: {
     cls: "keyword",
@@ -623,9 +715,29 @@ export default {
     cls: "keyword",
     span: "u64",
   },
-  kw_u8: {
+  kw_u128: {
     cls: "keyword",
-    span: "u8",
+    span: "u128",
+  },
+  kw_uint: {
+    cls: "keyword",
+    span: "uint",
+  },
+  kw_uint8: {
+    cls: "keyword",
+    span: "uint8",
+  },
+  kw_uint16: {
+    cls: "keyword",
+    span: "uint16",
+  },
+  kw_uint32: {
+    cls: "keyword",
+    span: "uint32",
+  },
+  kw_uint64: {
+    cls: "keyword",
+    span: "uint64",
   },
   kw_undefined: {
     cls: "keyword",
@@ -634,6 +746,10 @@ export default {
   kw_union: {
     cls: "keyword",
     span: "union",
+  },
+  kw_unique: {
+    cls: "keyword",
+    span: "unique",
   },
   kw_unknown: {
     cls: "keyword",
@@ -694,53 +810,5 @@ export default {
   kw_yield: {
     cls: "keyword",
     span: "yield",
-  },
-  kw_any: {
-    cls: "keyword",
-    span: "any",
-  },
-  kw_bigint: {
-    cls: "keyword",
-    span: "bigint",
-  },
-  kw_declare: {
-    cls: "keyword",
-    span: "declare",
-  },
-  kw_keyof: {
-    cls: "keyword",
-    span: "keyof",
-  },
-  kw_module: {
-    cls: "keyword",
-    span: "module",
-  },
-  kw_never: {
-    cls: "keyword",
-    span: "never",
-  },
-  kw_satisfies: {
-    cls: "keyword",
-    span: "satisfies",
-  },
-  kw_unique: {
-    cls: "keyword",
-    span: "unique",
-  },
-  kw_infer: {
-    cls: "keyword",
-    span: "infer",
-  },
-  kw_out: {
-    cls: "keyword",
-    span: "out",
-  },
-  kw_get: {
-    cls: "keyword",
-    span: "get",
-  },
-  kw_set: {
-    cls: "keyword",
-    span: "set",
   },
 } as Rules;

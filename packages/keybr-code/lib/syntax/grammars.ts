@@ -24,5 +24,5 @@ export const grammar_python = compose(lang_python, _keywords, _ident);
 export const grammar_rust = compose(lang_rust, _keywords, _ident);
 export const grammar_shell = compose(lang_shell);
 export const grammar_regex = compose(lang_regex);
-export const grammar_java = compose(lang_java);
+export const grammar_java = compose(lang_java, _keywords, _ident);
 export const grammar_go = compose(lang_go, _keywords, _ident);
