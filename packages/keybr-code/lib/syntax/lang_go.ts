@@ -1014,14 +1014,20 @@ export default {
   },
   "golang_type_name": {
     "alt": [
+      {
+        "ref": "golang_primitive_type_name"
+      },
+      {
+        "ref": "generic_class_name"
+      }
+    ]
+  },
+  "golang_primitive_type_name": {
+    "alt": [
       "string",
       "int",
       "bool",
-      "float64",
-      "CustomType",
-      "Error",
-      "Reader",
-      "Writer"
+      "float64"
     ]
   },
   "golang_package_name": {

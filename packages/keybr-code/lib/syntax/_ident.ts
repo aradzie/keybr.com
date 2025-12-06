@@ -990,32 +990,143 @@ export default {
   },
   "generic_class_name": {
     "alt": [
-      "Body",
       "Buffer",
       "Builder",
       "Cache",
       "Channel",
       "Client",
       "Command",
+      "Component",
       "Config",
       "Connection",
       "Context",
       "Controller",
       "Decoder",
+      "Descriptor",
       "Dir",
+      "Dispatcher",
       "Encoder",
       "Entry",
       "Error",
+      "Exception",
+      "Factory",
       "File",
+      "Filter",
       "Graph",
-      "Handle",
-      "Handler",
-      "Header",
+      "Interval",
       "Item",
+      "Job",
+      "Kernel",
       "Layer",
       "List",
-      "Manager",
+      "Loader",
       "Matrix",
+      "Model",
+      "Module",
+      "Monitor",
+      "Mutex",
+      "Observer",
+      "Plugin",
+      "Point",
+      "Pool",
+      "Property",
+      "Provider",
+      "Range",
+      "Registry",
+      "Renderer",
+      "Resolver",
+      "Resource",
+      "Result",
+      "Scanner",
+      "Server",
+      "Service",
+      "Session",
+      "Size",
+      "State",
+      "Status",
+      "Store",
+      "Table",
+      "Task",
+      "Texture",
+      "Thread",
+      "Tracker",
+      "Transform",
+      "Tree",
+      "Vector",
+      "Watcher",
+      "Worker",
+      {
+        "seq": [
+          {
+            "f": 0.5,
+            "opt": {
+              "alt": [
+                "Buffer",
+                "Connection",
+                "Error",
+                "File",
+                "Input",
+                "Plugin",
+                "Resource",
+                "State",
+                "Thread"
+              ]
+            }
+          },
+          "Manager"
+        ]
+      },
+      {
+        "seq": [
+          {
+            "f": 0.5,
+            "opt": {
+              "alt": [
+                "Change",
+                "Connection",
+                "Event"
+              ]
+            }
+          },
+          "Listener"
+        ]
+      },
+      {
+        "seq": [
+          {
+            "f": 0.5,
+            "opt": {
+              "alt": [
+                "Client",
+                "Server"
+              ]
+            }
+          },
+          {
+            "alt": [
+              "Request",
+              "Response",
+              "Router"
+            ]
+          }
+        ]
+      },
+      {
+        "seq": [
+          {
+            "f": 0.5,
+            "opt": {
+              "alt": [
+                "Connection",
+                "Error",
+                "Event",
+                "Input"
+              ]
+            }
+          },
+          "Handler"
+        ]
+      },
       {
         "seq": [
           {
@@ -1030,44 +1141,146 @@ export default {
           "Model"
         ]
       },
-      "Mutex",
       {
         "seq": [
           {
             "f": 0.5,
             "opt": {
               "alt": [
-                "Tree",
+                "Data",
+                "Request",
+                "Response",
+                "Message"
+              ]
+            }
+          },
+          "Queue"
+        ]
+      },
+      {
+        "seq": [
+          {
+            "f": 0.5,
+            "opt": {
+              "alt": [
+                "File",
+                "Data",
+                "Input",
+                "Output",
+                "Memory",
+                "Message",
+                "Network"
+              ]
+            }
+          },
+          "Stream"
+        ]
+      },
+      {
+        "seq": [
+          {
+            "f": 0.5,
+            "opt": {
+              "alt": [
+                "File",
+                "Data",
+                "Stream",
+                "Log",
+                "Memory",
+                "Message",
+                "Network"
+              ]
+            }
+          },
+          {
+            "alt": [
+              "Reader",
+              "Writer"
+            ]
+          }
+        ]
+      },
+      {
+        "seq": [
+          {
+            "f": 0.5,
+            "opt": {
+              "alt": [
+                "File",
+                "State",
+                "Config",
+                "Default"
+              ]
+            }
+          },
+          "Adapter"
+        ]
+      },
+      {
+        "seq": [
+          {
+            "f": 0.5,
+            "opt": {
+              "alt": [
                 "Graph",
-                "List"
+                "List",
+                "Tree"
               ]
             }
           },
           "Node"
         ]
       },
-      "Parser",
-      "Person",
-      "Point",
-      "Pool",
-      "Property",
-      "Queue",
-      "Request",
-      "Resource",
-      "Response",
-      "Result",
-      "Scanner",
-      "Server",
-      "Size",
-      "State",
-      "Status",
-      "Stream",
-      "Table",
-      "TestSuite",
-      "Tree",
-      "Variable",
-      "Vector",
-      "Worker"
+      {
+        "seq": [
+          {
+            "f": 0.5,
+            "opt": {
+              "alt": [
+                "Header",
+                "Body",
+                "Data"
+              ]
+            }
+          },
+          "Parser"
+        ]
+      },
+      {
+        "seq": [
+          {
+            "f": 0.5,
+            "opt": {
+              "alt": [
+                "Input",
+                "Data",
+                "User"
+              ]
+            }
+          },
+          "Validator"
+        ]
+      },
+      {
+        "seq": [
+          {
+            "f": 0.5,
+            "opt": {
+              "alt": [
+                "Request",
+                "Response",
+                "Document"
+              ]
+            }
+          },
+          {
+            "alt": [
+              "Body",
+              "Header"
+            ]
+          }
+        ]
+      }
     ]
   }
 } as Rules;

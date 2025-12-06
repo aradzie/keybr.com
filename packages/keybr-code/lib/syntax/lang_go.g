@@ -159,7 +159,8 @@ argument_list -> [golang_expression [_ "," _ golang_expression]];
 
 golang_identifier -> "x" | "y" | "z" | "result" | "data" | "input" | "err" | "val";
 golang_function_name -> "main" | "calculate" | "setValue" | "getResult" | "init" | "String" | "Error";
-golang_type_name -> "string" | "int" | "bool" | "float64" | "CustomType" | "Error" | "Reader" | "Writer";
+golang_type_name -> golang_primitive_type_name | generic_class_name ;
+golang_primitive_type_name -> "string" | "int" | "bool" | "float64" ;
 golang_package_name -> "main" | "fmt" | "strings" | "math" | "os" | "io" | "net/http" | "encoding/json";
 golang_method_name -> "Read" | "Write" | "String" | "Error" | "Close" | "Parse";
 

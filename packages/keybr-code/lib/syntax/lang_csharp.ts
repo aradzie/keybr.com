@@ -755,15 +755,21 @@ export default {
   },
   "csharp_type_name": {
     "alt": [
+      {
+        "ref": "csharp_primitive_type_name"
+      },
+      {
+        "ref": "generic_class_name"
+      }
+    ]
+  },
+  "csharp_primitive_type_name": {
+    "alt": [
       "string",
       "int",
       "bool",
       "double",
-      "float",
-      "CustomType",
-      "Exception",
-      "Stream",
-      "List"
+      "float"
     ]
   },
   "csharp_namespace_name": {

@@ -71,7 +71,8 @@ csharp_null_literal -> "null";
 
 csharp_identifier -> "x" | "y" | "z" | "result" | "data" | "input" | "err" | "val";
 csharp_method_name -> "Main" | "Calculate" | "SetValue" | "GetResult" | "ToString" | "Equals" | "Dispose";
-csharp_type_name -> "string" | "int" | "bool" | "double" | "float" | "CustomType" | "Exception" | "Stream" | "List";
+csharp_type_name -> csharp_primitive_type_name | generic_class_name ;
+csharp_primitive_type_name -> "string" | "int" | "bool" | "double" | "float" ;
 csharp_namespace_name -> "System" | "System.Collections.Generic" | "MyApp" | "MyApp.Models";
 
 comment -> single_line_comment | multi_line_comment;

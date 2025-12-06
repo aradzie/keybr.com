@@ -271,13 +271,13 @@ export default {
   "java_type": {
     "alt": [
       {
-        "ref": "kw_int"
-      },
-      {
-        "ref": "kw_string"
-      },
-      {
         "ref": "kw_boolean"
+      },
+      {
+        "ref": "kw_byte"
+      },
+      {
+        "ref": "kw_char"
       },
       {
         "ref": "kw_double"
@@ -286,7 +286,7 @@ export default {
         "ref": "kw_float"
       },
       {
-        "ref": "kw_char"
+        "ref": "kw_int"
       },
       {
         "ref": "kw_long"
@@ -295,7 +295,7 @@ export default {
         "ref": "kw_short"
       },
       {
-        "ref": "kw_byte"
+        "ref": "kw_string"
       },
       {
         "ref": "kw_void"
@@ -443,16 +443,6 @@ export default {
       "getResult"
     ]
   },
-  "java_type_name": {
-    "alt": [
-      "String",
-      "Integer",
-      "Double",
-      "Float",
-      "Object",
-      "CustomType"
-    ]
-  },
   "interface_declaration": {
     "seq": [
       {
@@ -591,6 +581,9 @@ export default {
         "ref": "kw_protected"
       }
     ]
+  },
+  "java_type_name": {
+    "ref": "generic_class_name"
   },
   "comment": {
     "alt": [

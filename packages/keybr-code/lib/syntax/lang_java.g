@@ -38,7 +38,19 @@ variable_declaration ->
     [ kw_final _ ]
     java_type _ java_variable_name [ _ "=" _ java_expression ] ";" ;
 
-java_type -> kw_int | kw_string | kw_boolean | kw_double | kw_float | kw_char | kw_long | kw_short | kw_byte | kw_void | java_reference_type ;
+java_type ->
+    kw_boolean
+  | kw_byte
+  | kw_char
+  | kw_double
+  | kw_float
+  | kw_int
+  | kw_long
+  | kw_short
+  | kw_string
+  | kw_void
+  | java_reference_type
+  ;
 
 java_reference_type -> class_type | interface_type | array_type ;
 
@@ -74,8 +86,6 @@ java_variable_name -> "x" | "y" | "z" | "result" | "data" | "input" ;
 
 java_method_name -> "main" | "calculate" | "setValue" | "getResult" ;
 
-java_type_name -> "String" | "Integer" | "Double" | "Float" | "Object" | "CustomType" ;
-
 interface_declaration -> kw_interface _ java_type_name _ "{" _ interface_body _ "}" ;
 
 interface_body -> interface_method_signature [ _ ";" _ interface_method_signature ] ;
@@ -89,6 +99,8 @@ enum_member_list -> enum_member [ _ "," _ enum_member ] ;
 enum_member -> java_variable_name [ _ "=" _ java_expression ] ;
 
 access_modifier -> kw_public | kw_private | kw_protected ;
+
+java_type_name -> generic_class_name ;
 
 comment ->
     single_line_comment
