@@ -3,615 +3,648 @@
 import { type Rules } from "../ast.ts";
 
 export default {
-  start: {
-    ref: "java_statement",
+  "start": {
+    "ref": "java_statement"
   },
-  java_statement: {
-    alt: [
+  "java_statement": {
+    "alt": [
       {
-        ref: "class_declaration",
+        "ref": "class_declaration"
       },
       {
-        ref: "interface_declaration",
+        "ref": "interface_declaration"
       },
       {
-        ref: "enum_declaration",
+        "ref": "enum_declaration"
       },
       {
-        ref: "method_signature",
+        "ref": "method_signature"
       },
       {
-        ref: "variable_declaration",
+        "ref": "variable_declaration"
       },
       {
-        ref: "comment",
-      },
-    ],
+        "ref": "comment"
+      }
+    ]
   },
-  class_declaration: {
-    seq: [
+  "class_declaration": {
+    "seq": [
       {
-        ref: "kw_class",
+        "ref": "kw_class"
       },
       " ",
       {
-        ref: "java_type_name",
+        "ref": "java_type_name"
       },
       " ",
       "{",
       " ",
       {
-        ref: "class_body",
+        "ref": "class_body"
       },
       " ",
-      "}",
-    ],
+      "}"
+    ]
   },
-  class_body: {
-    seq: [
+  "class_body": {
+    "seq": [
       {
-        ref: "class_member",
+        "ref": "class_member"
       },
       {
-        f: 0.5,
-        opt: {
-          seq: [
+        "f": 0.5,
+        "opt": {
+          "seq": [
             " ",
             ";",
             " ",
             {
-              ref: "class_member",
-            },
-          ],
-        },
-      },
-    ],
+              "ref": "class_member"
+            }
+          ]
+        }
+      }
+    ]
   },
-  class_member: {
-    alt: [
+  "class_member": {
+    "alt": [
       {
-        seq: [
+        "seq": [
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 {
-                  ref: "access_modifier",
+                  "ref": "access_modifier"
                 },
-                " ",
-              ],
-            },
+                " "
+              ]
+            }
           },
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 {
-                  ref: "kw_static",
+                  "ref": "kw_static"
                 },
-                " ",
-              ],
-            },
+                " "
+              ]
+            }
           },
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 {
-                  ref: "kw_final",
+                  "ref": "kw_final"
                 },
-                " ",
-              ],
-            },
+                " "
+              ]
+            }
           },
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 {
-                  f: 0.5,
-                  opt: {
-                    alt: [
+                  "f": 0.5,
+                  "opt": {
+                    "alt": [
                       {
-                        ref: "kw_private",
+                        "ref": "kw_private"
                       },
                       {
-                        ref: "kw_public",
+                        "ref": "kw_public"
                       },
                       {
-                        ref: "kw_protected",
-                      },
-                    ],
-                  },
+                        "ref": "kw_protected"
+                      }
+                    ]
+                  }
                 },
-                " ",
-              ],
-            },
+                " "
+              ]
+            }
           },
           {
-            ref: "method_signature",
-          },
-        ],
+            "ref": "method_signature"
+          }
+        ]
       },
       {
-        ref: "variable_declaration",
-      },
-    ],
+        "ref": "variable_declaration"
+      }
+    ]
   },
-  method_signature: {
-    seq: [
+  "method_signature": {
+    "seq": [
       {
-        f: 0.5,
-        opt: {
-          seq: [
+        "f": 0.5,
+        "opt": {
+          "seq": [
             {
-              ref: "access_modifier",
+              "ref": "access_modifier"
             },
-            " ",
-          ],
-        },
+            " "
+          ]
+        }
       },
       {
-        f: 0.5,
-        opt: {
-          seq: [
+        "f": 0.5,
+        "opt": {
+          "seq": [
             {
-              ref: "kw_static",
+              "ref": "kw_static"
             },
-            " ",
-          ],
-        },
+            " "
+          ]
+        }
       },
       {
-        f: 0.5,
-        opt: {
-          seq: [
+        "f": 0.5,
+        "opt": {
+          "seq": [
             {
-              ref: "kw_final",
+              "ref": "kw_final"
             },
-            " ",
-          ],
-        },
+            " "
+          ]
+        }
       },
       {
-        ref: "return_type",
+        "ref": "return_type"
       },
       " ",
       {
-        ref: "java_method_name",
+        "ref": "java_method_name"
       },
       "(",
       " ",
       {
-        ref: "parameter_list",
+        "ref": "parameter_list"
       },
-      ")",
-    ],
+      ")"
+    ]
   },
-  return_type: {
-    alt: [
+  "return_type": {
+    "alt": [
       {
-        ref: "kw_void",
+        "ref": "kw_void"
       },
       {
-        ref: "java_type",
-      },
-    ],
+        "ref": "java_type"
+      }
+    ]
   },
-  parameter_list: {
-    f: 0.5,
-    opt: {
-      seq: [
+  "parameter_list": {
+    "f": 0.5,
+    "opt": {
+      "seq": [
         {
-          ref: "parameter",
+          "ref": "parameter"
         },
         {
-          f: 0.5,
-          opt: {
-            seq: [
+          "f": 0.5,
+          "opt": {
+            "seq": [
               " ",
               ",",
               " ",
               {
-                ref: "parameter",
-              },
-            ],
-          },
-        },
-      ],
-    },
+                "ref": "parameter"
+              }
+            ]
+          }
+        }
+      ]
+    }
   },
-  parameter: {
-    seq: [
+  "parameter": {
+    "seq": [
       {
-        ref: "java_type",
+        "ref": "java_type"
       },
       " ",
       {
-        ref: "java_variable_name",
-      },
-    ],
+        "ref": "java_variable_name"
+      }
+    ]
   },
-  variable_declaration: {
-    seq: [
+  "variable_declaration": {
+    "seq": [
       {
-        f: 0.5,
-        opt: {
-          seq: [
+        "f": 0.5,
+        "opt": {
+          "seq": [
             {
-              ref: "kw_final",
+              "ref": "kw_final"
             },
-            " ",
-          ],
-        },
+            " "
+          ]
+        }
       },
       {
-        ref: "java_type",
+        "ref": "java_type"
       },
       " ",
       {
-        ref: "java_variable_name",
+        "ref": "java_variable_name"
       },
       {
-        f: 0.5,
-        opt: {
-          seq: [
+        "f": 0.5,
+        "opt": {
+          "seq": [
             " ",
             "=",
             " ",
             {
-              ref: "java_expression",
-            },
-          ],
-        },
+              "ref": "java_expression"
+            }
+          ]
+        }
       },
-      ";",
-    ],
+      ";"
+    ]
   },
-  java_type: {
-    alt: [
+  "java_type": {
+    "alt": [
       {
-        ref: "kw_int",
+        "ref": "kw_int"
       },
       {
-        ref: "kw_string",
+        "ref": "kw_string"
       },
       {
-        ref: "kw_boolean",
+        "ref": "kw_boolean"
       },
       {
-        ref: "kw_double",
+        "ref": "kw_double"
       },
       {
-        ref: "kw_float",
+        "ref": "kw_float"
       },
       {
-        ref: "kw_char",
+        "ref": "kw_char"
       },
       {
-        ref: "kw_long",
+        "ref": "kw_long"
       },
       {
-        ref: "kw_short",
+        "ref": "kw_short"
       },
       {
-        ref: "kw_byte",
+        "ref": "kw_byte"
       },
       {
-        ref: "kw_void",
+        "ref": "kw_void"
       },
       {
-        ref: "java_reference_type",
-      },
-    ],
+        "ref": "java_reference_type"
+      }
+    ]
   },
-  java_reference_type: {
-    alt: [
+  "java_reference_type": {
+    "alt": [
       {
-        ref: "class_type",
+        "ref": "class_type"
       },
       {
-        ref: "interface_type",
+        "ref": "interface_type"
       },
       {
-        ref: "array_type",
-      },
-    ],
+        "ref": "array_type"
+      }
+    ]
   },
-  class_type: {
-    ref: "java_type_name",
+  "class_type": {
+    "ref": "java_type_name"
   },
-  interface_type: {
-    seq: [
+  "interface_type": {
+    "seq": [
       {
-        ref: "kw_interface",
+        "ref": "kw_interface"
       },
       " ",
       {
-        ref: "java_type_name",
-      },
-    ],
+        "ref": "java_type_name"
+      }
+    ]
   },
-  array_type: {
-    seq: [
+  "array_type": {
+    "seq": [
       {
-        ref: "java_type",
+        "ref": "java_type"
       },
-      "[]",
-    ],
+      "[]"
+    ]
   },
-  java_expression: {
-    alt: [
+  "java_expression": {
+    "alt": [
       {
-        ref: "java_variable_name",
+        "ref": "java_variable_name"
       },
       {
-        ref: "java_literal",
+        "ref": "java_literal"
       },
       {
-        ref: "java_method_call",
-      },
-    ],
+        "ref": "java_method_call"
+      }
+    ]
   },
-  java_literal: {
-    alt: [
+  "java_literal": {
+    "alt": [
       {
-        ref: "java_number_literal",
+        "ref": "java_number_literal"
       },
       {
-        ref: "java_string_literal",
+        "ref": "java_string_literal"
       },
       {
-        ref: "java_boolean_literal",
-      },
-    ],
+        "ref": "java_boolean_literal"
+      }
+    ]
   },
-  java_number_literal: {
-    alt: ["0", "1", "2", "42", "100", "200", "404"],
+  "java_number_literal": {
+    "alt": [
+      "0",
+      "1",
+      "2",
+      "42",
+      "100",
+      "200",
+      "404"
+    ]
   },
-  java_string_literal: {
-    seq: ['"', '"'],
+  "java_string_literal": {
+    "seq": [
+      "\"",
+      "\""
+    ]
   },
-  java_boolean_literal: {
-    alt: ["true", "false"],
+  "java_boolean_literal": {
+    "alt": [
+      "true",
+      "false"
+    ]
   },
-  java_method_call: {
-    seq: [
+  "java_method_call": {
+    "seq": [
       {
-        ref: "java_variable_name",
+        "ref": "java_variable_name"
       },
       "(",
       " ",
       {
-        ref: "argument_list",
+        "ref": "argument_list"
       },
-      ")",
-    ],
+      ")"
+    ]
   },
-  argument_list: {
-    f: 0.5,
-    opt: {
-      seq: [
+  "argument_list": {
+    "f": 0.5,
+    "opt": {
+      "seq": [
         {
-          ref: "java_expression",
+          "ref": "java_expression"
         },
         {
-          f: 0.5,
-          opt: {
-            seq: [
+          "f": 0.5,
+          "opt": {
+            "seq": [
               " ",
               ",",
               " ",
               {
-                ref: "java_expression",
-              },
-            ],
-          },
-        },
-      ],
-    },
+                "ref": "java_expression"
+              }
+            ]
+          }
+        }
+      ]
+    }
   },
-  java_variable_name: {
-    alt: ["x", "y", "z", "result", "data", "input"],
+  "java_variable_name": {
+    "alt": [
+      "x",
+      "y",
+      "z",
+      "result",
+      "data",
+      "input"
+    ]
   },
-  java_method_name: {
-    alt: ["main", "calculate", "setValue", "getResult"],
+  "java_method_name": {
+    "alt": [
+      "main",
+      "calculate",
+      "setValue",
+      "getResult"
+    ]
   },
-  java_type_name: {
-    alt: ["String", "Integer", "Double", "Float", "Object", "CustomType"],
+  "java_type_name": {
+    "alt": [
+      "String",
+      "Integer",
+      "Double",
+      "Float",
+      "Object",
+      "CustomType"
+    ]
   },
-  interface_declaration: {
-    seq: [
+  "interface_declaration": {
+    "seq": [
       {
-        ref: "kw_interface",
+        "ref": "kw_interface"
       },
       " ",
       {
-        ref: "java_type_name",
+        "ref": "java_type_name"
       },
       " ",
       "{",
       " ",
       {
-        ref: "interface_body",
+        "ref": "interface_body"
       },
       " ",
-      "}",
-    ],
+      "}"
+    ]
   },
-  interface_body: {
-    seq: [
+  "interface_body": {
+    "seq": [
       {
-        ref: "interface_method_signature",
+        "ref": "interface_method_signature"
       },
       {
-        f: 0.5,
-        opt: {
-          seq: [
+        "f": 0.5,
+        "opt": {
+          "seq": [
             " ",
             ";",
             " ",
             {
-              ref: "interface_method_signature",
-            },
-          ],
-        },
-      },
-    ],
+              "ref": "interface_method_signature"
+            }
+          ]
+        }
+      }
+    ]
   },
-  interface_method_signature: {
-    seq: [
+  "interface_method_signature": {
+    "seq": [
       {
-        f: 0.5,
-        opt: {
-          seq: [
+        "f": 0.5,
+        "opt": {
+          "seq": [
             {
-              ref: "kw_static",
+              "ref": "kw_static"
             },
-            " ",
-          ],
-        },
+            " "
+          ]
+        }
       },
       {
-        ref: "return_type",
+        "ref": "return_type"
       },
       " ",
       {
-        ref: "java_method_name",
+        "ref": "java_method_name"
       },
       "(",
       " ",
       {
-        ref: "parameter_list",
+        "ref": "parameter_list"
       },
-      ")",
-    ],
+      ")"
+    ]
   },
-  enum_declaration: {
-    seq: [
+  "enum_declaration": {
+    "seq": [
       {
-        ref: "kw_enum",
+        "ref": "kw_enum"
       },
       " ",
       {
-        ref: "java_type_name",
+        "ref": "java_type_name"
       },
       " ",
       "{",
       " ",
       {
-        ref: "enum_member_list",
+        "ref": "enum_member_list"
       },
       " ",
-      "}",
-    ],
+      "}"
+    ]
   },
-  enum_member_list: {
-    seq: [
+  "enum_member_list": {
+    "seq": [
       {
-        ref: "enum_member",
+        "ref": "enum_member"
       },
       {
-        f: 0.5,
-        opt: {
-          seq: [
+        "f": 0.5,
+        "opt": {
+          "seq": [
             " ",
             ",",
             " ",
             {
-              ref: "enum_member",
-            },
-          ],
-        },
-      },
-    ],
+              "ref": "enum_member"
+            }
+          ]
+        }
+      }
+    ]
   },
-  enum_member: {
-    seq: [
+  "enum_member": {
+    "seq": [
       {
-        ref: "java_variable_name",
+        "ref": "java_variable_name"
       },
       {
-        f: 0.5,
-        opt: {
-          seq: [
+        "f": 0.5,
+        "opt": {
+          "seq": [
             " ",
             "=",
             " ",
             {
-              ref: "java_expression",
-            },
-          ],
-        },
-      },
-    ],
+              "ref": "java_expression"
+            }
+          ]
+        }
+      }
+    ]
   },
-  access_modifier: {
-    alt: [
+  "access_modifier": {
+    "alt": [
       {
-        ref: "kw_public",
+        "ref": "kw_public"
       },
       {
-        ref: "kw_private",
+        "ref": "kw_private"
       },
       {
-        ref: "kw_protected",
-      },
-    ],
+        "ref": "kw_protected"
+      }
+    ]
   },
-  comment: {
-    alt: [
+  "comment": {
+    "alt": [
       {
-        ref: "single_line_comment",
+        "ref": "single_line_comment"
       },
       {
-        ref: "multi_line_comment",
+        "ref": "multi_line_comment"
       },
       {
-        ref: "javadoc_comment",
-      },
-    ],
+        "ref": "javadoc_comment"
+      }
+    ]
   },
-  single_line_comment: {
-    seq: [
+  "single_line_comment": {
+    "seq": [
       "//",
       " ",
       {
-        ref: "comment_text",
-      },
-    ],
+        "ref": "comment_text"
+      }
+    ]
   },
-  multi_line_comment: {
-    seq: [
+  "multi_line_comment": {
+    "seq": [
       "/*",
       " ",
       {
-        ref: "comment_text",
+        "ref": "comment_text"
       },
       " ",
-      "*/",
-    ],
+      "*/"
+    ]
   },
-  javadoc_comment: {
-    seq: [
+  "javadoc_comment": {
+    "seq": [
       "/**",
       " ",
       {
-        ref: "comment_text",
+        "ref": "comment_text"
       },
       " ",
-      "*/",
-    ],
+      "*/"
+    ]
   },
-  comment_text: {
-    alt: [
+  "comment_text": {
+    "alt": [
       "Method to calculate the result",
       "TODO: Improve performance",
       "This is a constructor",
       "@param description",
       "@returns description",
       "@throws exception",
-      "@deprecated Use alternative method",
-    ],
-  },
+      "@deprecated Use alternative method"
+    ]
+  }
 } as Rules;

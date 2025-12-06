@@ -3,193 +3,227 @@
 import { type Rules } from "../ast.ts";
 
 export default {
-  start: {
-    seq: [
+  "start": {
+    "seq": [
       "/",
       {
-        f: 0.5,
-        opt: "^",
+        "f": 0.5,
+        "opt": "^"
       },
       {
-        ref: "item",
+        "ref": "item"
       },
       {
-        f: 0.5,
-        opt: "$",
+        "f": 0.5,
+        "opt": "$"
       },
       "/",
       {
-        f: 0.5,
-        opt: "i",
+        "f": 0.5,
+        "opt": "i"
       },
       {
-        f: 0.5,
-        opt: "g",
-      },
-    ],
+        "f": 0.5,
+        "opt": "g"
+      }
+    ]
   },
-  item: {
-    seq: [
+  "item": {
+    "seq": [
       {
-        alt: [
+        "alt": [
           {
-            ref: "group",
+            "ref": "group"
           },
           {
-            ref: "union",
-          },
-        ],
+            "ref": "union"
+          }
+        ]
       },
       {
-        ref: "quantifier",
-      },
-    ],
+        "ref": "quantifier"
+      }
+    ]
   },
-  group: {
-    seq: [
+  "group": {
+    "seq": [
       "(",
       {
-        f: 0.5,
-        opt: {
-          alt: [
+        "f": 0.5,
+        "opt": {
+          "alt": [
             {
-              ref: "group_name",
+              "ref": "group_name"
             },
-            "?:",
-          ],
-        },
+            "?:"
+          ]
+        }
       },
       {
-        ref: "group_item",
+        "ref": "group_item"
       },
-      ")",
-    ],
+      ")"
+    ]
   },
-  group_name: {
-    seq: [
+  "group_name": {
+    "seq": [
       "?<",
       {
-        alt: ["name", "item", "email", "url", "param", "id"],
+        "alt": [
+          "name",
+          "item",
+          "email",
+          "url",
+          "param",
+          "id"
+        ]
       },
-      ">",
-    ],
+      ">"
+    ]
   },
-  group_item: {
-    alt: [
+  "group_item": {
+    "alt": [
       {
-        ref: "char_class",
+        "ref": "char_class"
       },
       {
-        ref: "char",
-      },
-    ],
+        "ref": "char"
+      }
+    ]
   },
-  union: {
-    seq: [
+  "union": {
+    "seq": [
       {
-        ref: "union_item",
+        "ref": "union_item"
       },
       "|",
       {
-        ref: "union_item",
-      },
-    ],
+        "ref": "union_item"
+      }
+    ]
   },
-  union_item: {
-    alt: [
+  "union_item": {
+    "alt": [
       {
-        ref: "char_class",
+        "ref": "char_class"
       },
       {
-        ref: "char",
-      },
-    ],
+        "ref": "char"
+      }
+    ]
   },
-  char_class: {
-    seq: [
+  "char_class": {
+    "seq": [
       "[",
       {
-        f: 0.5,
-        opt: "^",
+        "f": 0.5,
+        "opt": "^"
       },
       {
-        f: 0.5,
-        opt: "-",
+        "f": 0.5,
+        "opt": "-"
       },
       {
-        f: 0.5,
-        opt: ".",
+        "f": 0.5,
+        "opt": "."
       },
       {
-        f: 0.5,
-        opt: {
-          ref: "escaped_char",
-        },
+        "f": 0.5,
+        "opt": {
+          "ref": "escaped_char"
+        }
       },
       {
-        alt: ["a-z", "a-f"],
+        "alt": [
+          "a-z",
+          "a-f"
+        ]
       },
-      "]",
-    ],
+      "]"
+    ]
   },
-  char: {
-    alt: [
+  "char": {
+    "alt": [
       ".",
       "\\d",
       "\\s",
       {
-        seq: [
+        "seq": [
           {
-            ref: "literal_char",
+            "ref": "literal_char"
           },
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 {
-                  ref: "literal_char",
+                  "ref": "literal_char"
                 },
                 {
-                  f: 0.5,
-                  opt: {
-                    ref: "literal_char",
-                  },
-                },
-              ],
-            },
-          },
-        ],
+                  "f": 0.5,
+                  "opt": {
+                    "ref": "literal_char"
+                  }
+                }
+              ]
+            }
+          }
+        ]
       },
       {
-        ref: "escaped_char",
+        "ref": "escaped_char"
       },
       {
-        ref: "unicode_char",
-      },
-    ],
+        "ref": "unicode_char"
+      }
+    ]
   },
-  literal_char: {
-    alt: ["a", "b", "c", "d", "e", "f"],
+  "literal_char": {
+    "alt": [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+      "f"
+    ]
   },
-  escaped_char: {
-    alt: ["\\t", "\\n"],
+  "escaped_char": {
+    "alt": [
+      "\\t",
+      "\\n"
+    ]
   },
-  unicode_char: {
-    seq: [
+  "unicode_char": {
+    "seq": [
       {
-        alt: ["\\p", "\\P"],
+        "alt": [
+          "\\p",
+          "\\P"
+        ]
       },
       "{",
       {
-        ref: "unicode_category",
+        "ref": "unicode_category"
       },
-      "}",
-    ],
+      "}"
+    ]
   },
-  unicode_category: {
-    alt: ["L", "Lu", "Ll", "Lt", "N", "Z"],
+  "unicode_category": {
+    "alt": [
+      "L",
+      "Lu",
+      "Ll",
+      "Lt",
+      "N",
+      "Z"
+    ]
   },
-  quantifier: {
-    alt: ["*", "+", "?"],
-  },
+  "quantifier": {
+    "alt": [
+      "*",
+      "+",
+      "?"
+    ]
+  }
 } as Rules;

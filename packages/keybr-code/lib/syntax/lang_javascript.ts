@@ -3,218 +3,218 @@
 import { type Rules } from "../ast.ts";
 
 export default {
-  start: {
-    ref: "js_variable_statement",
+  "start": {
+    "ref": "js_variable_statement"
   },
-  js_variable_statement: {
-    seq: [
+  "js_variable_statement": {
+    "seq": [
       {
-        alt: [
+        "alt": [
           {
-            ref: "kw_let",
+            "ref": "kw_let"
           },
           {
-            ref: "kw_const",
-          },
-        ],
+            "ref": "kw_const"
+          }
+        ]
       },
       " ",
       {
-        ref: "js_var_id",
+        "ref": "js_var_id"
       },
       " ",
       "=",
       " ",
       {
-        ref: "js_primary_exp",
+        "ref": "js_primary_exp"
       },
-      ";",
-    ],
+      ";"
+    ]
   },
-  js_primary_exp: {
-    alt: [
+  "js_primary_exp": {
+    "alt": [
       {
-        ref: "js_literal",
+        "ref": "js_literal"
       },
       {
-        ref: "js_array_literal",
+        "ref": "js_array_literal"
       },
       {
-        ref: "js_object_literal",
+        "ref": "js_object_literal"
       },
       {
-        ref: "js_function_exp",
+        "ref": "js_function_exp"
       },
       {
-        ref: "js_call_exp",
-      },
-    ],
+        "ref": "js_call_exp"
+      }
+    ]
   },
-  js_array_literal: {
-    seq: [
+  "js_array_literal": {
+    "seq": [
       "[",
       {
-        ref: "js_primary_exp",
+        "ref": "js_primary_exp"
       },
       {
-        f: 0.5,
-        opt: {
-          seq: [
+        "f": 0.5,
+        "opt": {
+          "seq": [
             ",",
             " ",
             {
-              ref: "js_primary_exp",
-            },
-          ],
-        },
+              "ref": "js_primary_exp"
+            }
+          ]
+        }
       },
-      "]",
-    ],
+      "]"
+    ]
   },
-  js_object_literal: {
-    seq: [
+  "js_object_literal": {
+    "seq": [
       "{",
       " ",
       {
-        ref: "js_property_name",
+        "ref": "js_property_name"
       },
       ":",
       " ",
       {
-        ref: "js_property_value",
+        "ref": "js_property_value"
       },
       " ",
-      "}",
-    ],
+      "}"
+    ]
   },
-  js_property_name: {
-    alt: [
+  "js_property_name": {
+    "alt": [
       {
-        ref: "js_id",
+        "ref": "js_id"
       },
       {
-        seq: [
+        "seq": [
           "[",
           {
-            ref: "js_id",
+            "ref": "js_id"
           },
-          "]",
-        ],
-      },
-    ],
+          "]"
+        ]
+      }
+    ]
   },
-  js_property_value: {
-    ref: "js_primary_exp",
+  "js_property_value": {
+    "ref": "js_primary_exp"
   },
-  js_function_exp: {
-    seq: [
+  "js_function_exp": {
+    "seq": [
       {
-        ref: "js_function_args",
+        "ref": "js_function_args"
       },
       " ",
       "=>",
       " ",
       {
-        ref: "js_primary_exp",
-      },
-    ],
+        "ref": "js_primary_exp"
+      }
+    ]
   },
-  js_function_args: {
-    alt: [
+  "js_function_args": {
+    "alt": [
       {
-        ref: "js_single_arg",
+        "ref": "js_single_arg"
       },
       {
-        ref: "js_multi_args",
-      },
-    ],
+        "ref": "js_multi_args"
+      }
+    ]
   },
-  js_single_arg: {
-    ref: "js_arg",
+  "js_single_arg": {
+    "ref": "js_arg"
   },
-  js_multi_args: {
-    seq: [
+  "js_multi_args": {
+    "seq": [
       "(",
       {
-        ref: "js_arg",
+        "ref": "js_arg"
       },
       ",",
       " ",
       {
-        ref: "js_arg",
+        "ref": "js_arg"
       },
       {
-        f: 0.5,
-        opt: {
-          seq: [
+        "f": 0.5,
+        "opt": {
+          "seq": [
             ",",
             " ",
             {
-              ref: "js_tail_arg",
-            },
-          ],
-        },
+              "ref": "js_tail_arg"
+            }
+          ]
+        }
       },
-      ")",
-    ],
+      ")"
+    ]
   },
-  js_arg: {
-    seq: [
+  "js_arg": {
+    "seq": [
       {
-        ref: "js_var_id",
+        "ref": "js_var_id"
       },
       {
-        f: 0.5,
-        opt: {
-          seq: [
+        "f": 0.5,
+        "opt": {
+          "seq": [
             " ",
             "=",
             " ",
             {
-              ref: "js_primary_exp",
-            },
-          ],
-        },
-      },
-    ],
+              "ref": "js_primary_exp"
+            }
+          ]
+        }
+      }
+    ]
   },
-  js_tail_arg: {
-    seq: [
+  "js_tail_arg": {
+    "seq": [
       "...",
       {
-        ref: "js_var_id",
-      },
-    ],
+        "ref": "js_var_id"
+      }
+    ]
   },
-  js_call_exp: {
-    seq: [
+  "js_call_exp": {
+    "seq": [
       {
-        ref: "js_func_id",
+        "ref": "js_func_id"
       },
       "(",
       {
-        ref: "js_primary_exp",
+        "ref": "js_primary_exp"
       },
       {
-        f: 0.5,
-        opt: {
-          seq: [
+        "f": 0.5,
+        "opt": {
+          "seq": [
             ",",
             " ",
             {
-              ref: "js_primary_exp",
-            },
-          ],
-        },
+              "ref": "js_primary_exp"
+            }
+          ]
+        }
       },
-      ")",
-    ],
+      ")"
+    ]
   },
-  js_var_id: {
-    ref: "js_id",
+  "js_var_id": {
+    "ref": "js_id"
   },
-  js_func_id: {
-    alt: [
+  "js_func_id": {
+    "alt": [
       "all",
       "entries",
       "every",
@@ -226,11 +226,11 @@ export default {
       "length",
       "map",
       "size",
-      "values",
-    ],
+      "values"
+    ]
   },
-  js_id: {
-    alt: [
+  "js_id": {
+    "alt": [
       "a",
       "b",
       "c",
@@ -255,44 +255,48 @@ export default {
       "start",
       "str",
       "text",
-      "value",
-    ],
+      "value"
+    ]
   },
-  js_literal: {
-    alt: [
+  "js_literal": {
+    "alt": [
       {
-        ref: "kw_null",
+        "ref": "kw_null"
       },
       {
-        ref: "kw_true",
+        "ref": "kw_true"
       },
       {
-        ref: "kw_false",
+        "ref": "kw_false"
       },
       {
-        ref: "js_string_literal",
+        "ref": "js_string_literal"
       },
       {
-        ref: "js_template_literal",
-      },
-    ],
+        "ref": "js_template_literal"
+      }
+    ]
   },
-  js_string_literal: {
-    cls: "string",
-    span: {
-      alt: ['"a"', '"b"', '"c"'],
-    },
+  "js_string_literal": {
+    "cls": "string",
+    "span": {
+      "alt": [
+        "\"a\"",
+        "\"b\"",
+        "\"c\""
+      ]
+    }
   },
-  js_template_literal: {
-    cls: "string",
-    span: {
-      seq: [
+  "js_template_literal": {
+    "cls": "string",
+    "span": {
+      "seq": [
         "`abc=${",
         {
-          ref: "js_id",
+          "ref": "js_id"
         },
-        "}`",
-      ],
-    },
-  },
+        "}`"
+      ]
+    }
+  }
 } as Rules;

@@ -24,6 +24,8 @@ export default [
       "**/tmp/",
       "root/",
       "packages/keybr-code/lib/parser.js",
+      "packages/keybr-code/lib/syntax/_*.ts",
+      "packages/keybr-code/lib/syntax/lang_*.ts",
     ],
   },
   js.configs["recommended"],

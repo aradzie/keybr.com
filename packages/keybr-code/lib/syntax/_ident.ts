@@ -3,8 +3,8 @@
 import { type Rules } from "../ast.ts";
 
 export default {
-  generic_variable_name: {
-    alt: [
+  "generic_variable_name": {
+    "alt": [
       "a",
       "acc",
       "actual",
@@ -12,803 +12,984 @@ export default {
       "buffer",
       "c",
       {
-        seq: [
+        "seq": [
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 {
-                  alt: ["initial", "new", "bad", "good"],
+                  "alt": [
+                    "initial",
+                    "new",
+                    "bad",
+                    "good"
+                  ]
                 },
-                "_",
-              ],
-            },
+                "_"
+              ]
+            }
           },
-          "config",
-        ],
+          "config"
+        ]
       },
       "count",
       "ctx",
       "d",
       {
-        seq: [
+        "seq": [
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 {
-                  alt: ["initial", "new", "bad", "good", "user"],
+                  "alt": [
+                    "initial",
+                    "new",
+                    "bad",
+                    "good",
+                    "user"
+                  ]
                 },
-                "_",
-              ],
-            },
+                "_"
+              ]
+            }
           },
-          "data",
-        ],
+          "data"
+        ]
       },
       "expected",
       "f",
       {
-        seq: [
+        "seq": [
           {
-            f: 0.5,
-            opt: {
-              seq: ["my", "_"],
-            },
+            "f": 0.5,
+            "opt": {
+              "seq": [
+                "my",
+                "_"
+              ]
+            }
           },
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 {
-                  alt: ["data", "config", "image"],
+                  "alt": [
+                    "data",
+                    "config",
+                    "image"
+                  ]
                 },
-                "_",
-              ],
-            },
+                "_"
+              ]
+            }
           },
-          "file",
-        ],
+          "file"
+        ]
       },
       "h",
       {
-        seq: [
+        "seq": [
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 {
-                  alt: ["min", "max"],
+                  "alt": [
+                    "min",
+                    "max"
+                  ]
                 },
-                "_",
-              ],
-            },
+                "_"
+              ]
+            }
           },
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 {
-                  alt: ["inner", "outer"],
+                  "alt": [
+                    "inner",
+                    "outer"
+                  ]
                 },
-                "_",
-              ],
-            },
+                "_"
+              ]
+            }
           },
-          "height",
-        ],
+          "height"
+        ]
       },
       "i",
       {
-        seq: [
+        "seq": [
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 {
-                  alt: ["first", "last", "prev", "next", "min", "max"],
+                  "alt": [
+                    "first",
+                    "last",
+                    "prev",
+                    "next",
+                    "min",
+                    "max"
+                  ]
                 },
-                "_",
-              ],
-            },
+                "_"
+              ]
+            }
           },
-          "idx",
-        ],
+          "idx"
+        ]
       },
       "image",
       "img",
       {
-        seq: [
+        "seq": [
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 {
-                  alt: ["first", "last", "prev", "next", "min", "max"],
+                  "alt": [
+                    "first",
+                    "last",
+                    "prev",
+                    "next",
+                    "min",
+                    "max"
+                  ]
                 },
-                "_",
-              ],
-            },
+                "_"
+              ]
+            }
           },
-          "index",
-        ],
+          "index"
+        ]
       },
       "input",
       {
-        seq: [
+        "seq": [
           {
-            alt: ["first", "last", "prev", "next"],
+            "alt": [
+              "first",
+              "last",
+              "prev",
+              "next"
+            ]
           },
           "_",
-          "item",
-        ],
+          "item"
+        ]
       },
       "iter",
       {
-        seq: [
+        "seq": [
           {
-            alt: ["input", "output"],
+            "alt": [
+              "input",
+              "output"
+            ]
           },
           "_",
-          "shape",
-        ],
+          "shape"
+        ]
       },
       "j",
       "k",
       {
-        seq: [
+        "seq": [
           {
-            alt: ["first", "last", "prev", "next"],
+            "alt": [
+              "first",
+              "last",
+              "prev",
+              "next"
+            ]
           },
           "_",
-          "key",
-        ],
+          "key"
+        ]
       },
       {
-        seq: [
+        "seq": [
           {
-            alt: ["first", "last", "prev", "next", "min", "max"],
+            "alt": [
+              "first",
+              "last",
+              "prev",
+              "next",
+              "min",
+              "max"
+            ]
           },
           "_",
-          "layer",
-        ],
+          "layer"
+        ]
       },
       {
-        seq: [
+        "seq": [
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 {
-                  alt: ["min", "max"],
+                  "alt": [
+                    "min",
+                    "max"
+                  ]
                 },
-                "_",
-              ],
-            },
+                "_"
+              ]
+            }
           },
-          "len",
-        ],
+          "len"
+        ]
       },
       "m",
       "map",
       "mask",
       "n",
       {
-        seq: [
+        "seq": [
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 {
-                  alt: ["file", "dir", "entry"],
+                  "alt": [
+                    "file",
+                    "dir",
+                    "entry"
+                  ]
                 },
-                "_",
-              ],
-            },
+                "_"
+              ]
+            }
           },
-          "name",
-        ],
+          "name"
+        ]
       },
       {
-        seq: [
+        "seq": [
           {
-            alt: ["first", "last", "prev", "next"],
+            "alt": [
+              "first",
+              "last",
+              "prev",
+              "next"
+            ]
           },
           "_",
-          "node",
-        ],
+          "node"
+        ]
       },
       "op",
       {
-        seq: [
+        "seq": [
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 {
-                  alt: ["last", "saved"],
+                  "alt": [
+                    "last",
+                    "saved"
+                  ]
                 },
-                "_",
-              ],
-            },
+                "_"
+              ]
+            }
           },
           {
-            alt: ["out", "output"],
-          },
-        ],
+            "alt": [
+              "out",
+              "output"
+            ]
+          }
+        ]
       },
       "req",
       "res",
       {
-        seq: [
+        "seq": [
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 {
-                  alt: ["min", "max", "last"],
+                  "alt": [
+                    "min",
+                    "max",
+                    "last"
+                  ]
                 },
-                "_",
-              ],
-            },
+                "_"
+              ]
+            }
           },
-          "result",
-        ],
+          "result"
+        ]
       },
       "root",
       "s",
       {
-        seq: [
+        "seq": [
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 {
-                  alt: ["data", "layer", "image"],
+                  "alt": [
+                    "data",
+                    "layer",
+                    "image"
+                  ]
                 },
-                "_",
-              ],
-            },
+                "_"
+              ]
+            }
           },
-          "shape",
-        ],
+          "shape"
+        ]
       },
       {
-        seq: [
+        "seq": [
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 {
-                  alt: ["min", "max"],
+                  "alt": [
+                    "min",
+                    "max"
+                  ]
                 },
-                "_",
-              ],
-            },
+                "_"
+              ]
+            }
           },
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 {
-                  alt: ["inner", "outer"],
+                  "alt": [
+                    "inner",
+                    "outer"
+                  ]
                 },
-                "_",
-              ],
-            },
+                "_"
+              ]
+            }
           },
-          "size",
-        ],
+          "size"
+        ]
       },
       "t",
       "u",
       "v",
       {
-        seq: [
+        "seq": [
           {
-            alt: ["first", "last", "prev", "next", "min", "max"],
+            "alt": [
+              "first",
+              "last",
+              "prev",
+              "next",
+              "min",
+              "max"
+            ]
           },
           "_",
-          "value",
-        ],
+          "value"
+        ]
       },
       "w",
       {
-        seq: [
+        "seq": [
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 {
-                  alt: ["min", "max"],
+                  "alt": [
+                    "min",
+                    "max"
+                  ]
                 },
-                "_",
-              ],
-            },
+                "_"
+              ]
+            }
           },
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 {
-                  alt: ["inner", "outer"],
+                  "alt": [
+                    "inner",
+                    "outer"
+                  ]
                 },
-                "_",
-              ],
-            },
+                "_"
+              ]
+            }
           },
-          "width",
-        ],
+          "width"
+        ]
       },
       "x",
       "y",
-      "z",
-    ],
+      "z"
+    ]
   },
-  generic_function_name: {
-    alt: [
+  "generic_function_name": {
+    "alt": [
       {
-        seq: [
+        "seq": [
           "add",
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 "_",
                 {
-                  alt: ["item", "node", "entry", "value"],
-                },
-              ],
-            },
-          },
-        ],
+                  "alt": [
+                    "item",
+                    "node",
+                    "entry",
+                    "value"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
       },
       "append",
       "build",
       "call",
       "configure",
       {
-        seq: [
+        "seq": [
           "copy",
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 "_",
                 {
-                  alt: ["item", "node", "entry", "layer", "file", "config"],
-                },
-              ],
-            },
-          },
-        ],
+                  "alt": [
+                    "item",
+                    "node",
+                    "entry",
+                    "layer",
+                    "file",
+                    "config"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
       },
       {
-        seq: [
+        "seq": [
           "create",
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 "_",
                 {
-                  alt: ["item", "node", "entry", "layer", "file", "config"],
-                },
-              ],
-            },
-          },
-        ],
+                  "alt": [
+                    "item",
+                    "node",
+                    "entry",
+                    "layer",
+                    "file",
+                    "config"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
       },
       "exec",
       {
-        seq: [
+        "seq": [
           "find",
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 "_",
                 {
-                  alt: ["item", "node", "entry", "layer", "file", "config"],
-                },
-              ],
-            },
-          },
-        ],
+                  "alt": [
+                    "item",
+                    "node",
+                    "entry",
+                    "layer",
+                    "file",
+                    "config"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
       },
       "floor",
       {
-        seq: [
+        "seq": [
           "get",
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 "_",
                 {
-                  alt: [
+                  "alt": [
                     "state",
                     "item",
                     "node",
                     "entry",
                     "layer",
                     "file",
-                    "config",
-                  ],
-                },
-              ],
-            },
-          },
-        ],
+                    "config"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
       },
       {
-        seq: [
+        "seq": [
           "handle",
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 "_",
                 {
-                  alt: ["req", "request", "res", "response"],
-                },
-              ],
-            },
-          },
-        ],
+                  "alt": [
+                    "req",
+                    "request",
+                    "res",
+                    "response"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
       },
       {
-        seq: [
+        "seq": [
           "init",
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 "_",
                 {
-                  alt: [
+                  "alt": [
                     "state",
                     "item",
                     "node",
                     "entry",
                     "layer",
                     "file",
-                    "config",
-                  ],
-                },
-              ],
-            },
-          },
-        ],
+                    "config"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
       },
       {
-        seq: [
+        "seq": [
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 {
-                  f: 0.5,
-                  opt: "pre",
+                  "f": 0.5,
+                  "opt": "pre"
                 },
                 "process",
-                "_",
-              ],
-            },
+                "_"
+              ]
+            }
           },
           {
-            f: 0.5,
-            opt: {
-              seq: ["_", "user"],
-            },
+            "f": 0.5,
+            "opt": {
+              "seq": [
+                "_",
+                "user"
+              ]
+            }
           },
-          "input",
-        ],
+          "input"
+        ]
       },
       {
-        seq: [
+        "seq": [
           "insert",
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 "_",
                 {
-                  alt: ["item", "node", "entry", "layer"],
-                },
-              ],
-            },
-          },
-        ],
+                  "alt": [
+                    "item",
+                    "node",
+                    "entry",
+                    "layer"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
       },
       "len",
       {
-        seq: [
+        "seq": [
           "load",
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 "_",
                 {
-                  alt: [
+                  "alt": [
                     "state",
                     "item",
                     "node",
                     "entry",
                     "layer",
                     "file",
-                    "config",
-                  ],
-                },
-              ],
-            },
-          },
-        ],
+                    "config"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
       },
       "main",
       {
-        seq: [
+        "seq": [
           "pop",
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 "_",
                 {
-                  alt: ["item", "node", "entry", "layer"],
-                },
-              ],
-            },
-          },
-        ],
+                  "alt": [
+                    "item",
+                    "node",
+                    "entry",
+                    "layer"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
       },
       {
-        seq: [
+        "seq": [
           "process",
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 "_",
                 {
-                  alt: ["item", "file", "config"],
-                },
-              ],
-            },
-          },
-        ],
+                  "alt": [
+                    "item",
+                    "file",
+                    "config"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
       },
       {
-        seq: [
+        "seq": [
           "push",
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 "_",
                 {
-                  alt: ["item", "node", "entry", "layer"],
-                },
-              ],
-            },
-          },
-        ],
+                  "alt": [
+                    "item",
+                    "node",
+                    "entry",
+                    "layer"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
       },
       {
-        seq: [
+        "seq": [
           "read",
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 "_",
                 {
-                  alt: [
+                  "alt": [
                     "state",
                     "item",
                     "node",
                     "entry",
                     "layer",
                     "file",
-                    "config",
-                  ],
-                },
-              ],
-            },
-          },
-        ],
+                    "config"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
       },
       {
-        seq: [
+        "seq": [
           "remove",
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 "_",
                 {
-                  alt: [
+                  "alt": [
                     "state",
                     "item",
                     "node",
                     "entry",
                     "layer",
                     "file",
-                    "config",
-                  ],
-                },
-              ],
-            },
-          },
-        ],
+                    "config"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
       },
       {
-        seq: [
+        "seq": [
           "run",
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 "_",
                 {
-                  alt: ["job", "task"],
-                },
-              ],
-            },
-          },
-        ],
+                  "alt": [
+                    "job",
+                    "task"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
       },
       {
-        seq: [
+        "seq": [
           "save",
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 "_",
                 {
-                  alt: [
+                  "alt": [
                     "state",
                     "item",
                     "node",
                     "entry",
                     "layer",
                     "file",
-                    "config",
-                  ],
-                },
-              ],
-            },
-          },
-        ],
+                    "config"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
       },
       {
-        seq: [
+        "seq": [
           "search",
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 "_",
                 {
-                  alt: ["item", "value", "entry"],
-                },
-              ],
-            },
-          },
-        ],
+                  "alt": [
+                    "item",
+                    "value",
+                    "entry"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
       },
       {
-        seq: [
+        "seq": [
           "serialize",
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 "_",
                 {
-                  alt: ["data", "config", "object"],
-                },
-              ],
-            },
-          },
-        ],
+                  "alt": [
+                    "data",
+                    "config",
+                    "object"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
       },
       {
-        seq: [
+        "seq": [
           {
-            alt: ["get", "set"],
+            "alt": [
+              "get",
+              "set"
+            ]
           },
           " ",
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 {
-                  alt: ["file", "data", "image", "layer"],
+                  "alt": [
+                    "file",
+                    "data",
+                    "image",
+                    "layer"
+                  ]
                 },
-                "_",
-              ],
-            },
+                "_"
+              ]
+            }
           },
           {
-            f: 0.5,
-            opt: {
-              alt: ["min", "max"],
-            },
+            "f": 0.5,
+            "opt": {
+              "alt": [
+                "min",
+                "max"
+              ]
+            }
           },
-          "size",
-        ],
+          "size"
+        ]
       },
       {
-        seq: [
+        "seq": [
           "store",
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 "_",
                 {
-                  alt: [
+                  "alt": [
                     "state",
                     "item",
                     "node",
                     "entry",
                     "layer",
                     "file",
-                    "config",
-                  ],
-                },
-              ],
-            },
-          },
-        ],
+                    "config"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
       },
       {
-        seq: [
+        "seq": [
           "update",
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 "_",
                 {
-                  alt: [
+                  "alt": [
                     "state",
                     "item",
                     "node",
                     "entry",
                     "layer",
                     "file",
-                    "config",
-                  ],
-                },
-              ],
-            },
-          },
-        ],
+                    "config"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
       },
       {
-        seq: [
+        "seq": [
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 {
-                  alt: ["function", "class"],
+                  "alt": [
+                    "function",
+                    "class"
+                  ]
                 },
-                "_",
-              ],
-            },
+                "_"
+              ]
+            }
           },
-          "wrapper",
-        ],
-      },
-    ],
+          "wrapper"
+        ]
+      }
+    ]
   },
-  generic_class_name: {
-    alt: [
+  "generic_class_name": {
+    "alt": [
       "Body",
       "Buffer",
       "Builder",
@@ -836,27 +1017,34 @@ export default {
       "Manager",
       "Matrix",
       {
-        seq: [
+        "seq": [
           {
-            f: 0.5,
-            opt: {
-              alt: ["Custom", "Example"],
-            },
+            "f": 0.5,
+            "opt": {
+              "alt": [
+                "Custom",
+                "Example"
+              ]
+            }
           },
-          "Model",
-        ],
+          "Model"
+        ]
       },
       "Mutex",
       {
-        seq: [
+        "seq": [
           {
-            f: 0.5,
-            opt: {
-              alt: ["Tree", "Graph", "List"],
-            },
+            "f": 0.5,
+            "opt": {
+              "alt": [
+                "Tree",
+                "Graph",
+                "List"
+              ]
+            }
           },
-          "Node",
-        ],
+          "Node"
+        ]
       },
       "Parser",
       "Person",
@@ -879,7 +1067,7 @@ export default {
       "Tree",
       "Variable",
       "Vector",
-      "Worker",
-    ],
-  },
+      "Worker"
+    ]
+  }
 } as Rules;

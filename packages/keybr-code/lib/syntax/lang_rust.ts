@@ -3,404 +3,404 @@
 import { type Rules } from "../ast.ts";
 
 export default {
-  start: {
-    ref: "rust_statement",
+  "start": {
+    "ref": "rust_statement"
   },
-  rust_statement: {
-    alt: [
+  "rust_statement": {
+    "alt": [
       {
-        ref: "rust_function_definition",
+        "ref": "rust_function_definition"
       },
       {
-        ref: "rust_struct_definition",
+        "ref": "rust_struct_definition"
       },
       {
-        ref: "rust_assign",
+        "ref": "rust_assign"
       },
       {
-        ref: "rust_return",
+        "ref": "rust_return"
       },
       {
-        flag: "comments",
-        inv: false,
-        cond: {
-          ref: "rust_comment",
-        },
-      },
-    ],
+        "flag": "comments",
+        "inv": false,
+        "cond": {
+          "ref": "rust_comment"
+        }
+      }
+    ]
   },
-  rust_function_definition: {
-    seq: [
+  "rust_function_definition": {
+    "seq": [
       {
-        ref: "kw_fn",
+        "ref": "kw_fn"
       },
       " ",
       {
-        ref: "rust_function_name",
+        "ref": "rust_function_name"
       },
       "(",
       {
-        ref: "rust_arguments",
+        "ref": "rust_arguments"
       },
       ")",
       {
-        f: 0.5,
-        opt: {
-          seq: [
+        "f": 0.5,
+        "opt": {
+          "seq": [
             " ",
             "->",
             " ",
             {
-              ref: "rust_type",
-            },
-          ],
-        },
+              "ref": "rust_type"
+            }
+          ]
+        }
       },
-      "{",
-    ],
+      "{"
+    ]
   },
-  rust_struct_definition: {
-    seq: [
+  "rust_struct_definition": {
+    "seq": [
       {
-        f: 0.5,
-        opt: {
-          seq: [
+        "f": 0.5,
+        "opt": {
+          "seq": [
             {
-              ref: "kw_pub",
+              "ref": "kw_pub"
             },
-            " ",
-          ],
-        },
+            " "
+          ]
+        }
       },
       {
-        ref: "kw_struct",
+        "ref": "kw_struct"
       },
       " ",
       {
-        ref: "rust_struct_name",
+        "ref": "rust_struct_name"
       },
       " ",
-      "{",
-    ],
+      "{"
+    ]
   },
-  rust_assign: {
-    seq: [
+  "rust_assign": {
+    "seq": [
       {
-        ref: "kw_let",
+        "ref": "kw_let"
       },
       " ",
       {
-        ref: "rust_variable_name",
+        "ref": "rust_variable_name"
       },
       {
-        f: 0.5,
-        opt: {
-          seq: [
+        "f": 0.5,
+        "opt": {
+          "seq": [
             ":",
             " ",
             {
-              ref: "rust_type",
-            },
-          ],
-        },
+              "ref": "rust_type"
+            }
+          ]
+        }
       },
       " ",
       "=",
       " ",
       {
-        ref: "rust_expression",
+        "ref": "rust_expression"
       },
-      ";",
-    ],
+      ";"
+    ]
   },
-  rust_return: {
-    seq: [
+  "rust_return": {
+    "seq": [
       {
-        ref: "kw_return",
+        "ref": "kw_return"
       },
       " ",
       {
-        ref: "rust_expression",
+        "ref": "rust_expression"
       },
-      ";",
-    ],
+      ";"
+    ]
   },
-  rust_arguments: {
-    seq: [
+  "rust_arguments": {
+    "seq": [
       {
-        ref: "rust_argument",
+        "ref": "rust_argument"
       },
       {
-        f: 0.5,
-        opt: {
-          seq: [
+        "f": 0.5,
+        "opt": {
+          "seq": [
             ",",
             " ",
             {
-              ref: "rust_argument",
-            },
-          ],
-        },
-      },
-    ],
+              "ref": "rust_argument"
+            }
+          ]
+        }
+      }
+    ]
   },
-  rust_argument: {
-    seq: [
+  "rust_argument": {
+    "seq": [
       {
-        ref: "rust_variable_name",
+        "ref": "rust_variable_name"
       },
       ":",
       " ",
       {
-        ref: "rust_type",
-      },
-    ],
+        "ref": "rust_type"
+      }
+    ]
   },
-  rust_expression: {
-    alt: [
+  "rust_expression": {
+    "alt": [
       {
-        ref: "rust_literal",
+        "ref": "rust_literal"
       },
       {
-        ref: "rust_unary_operation",
+        "ref": "rust_unary_operation"
       },
       {
-        ref: "rust_binary_operation",
+        "ref": "rust_binary_operation"
       },
       {
-        seq: [
+        "seq": [
           "(",
           {
-            ref: "rust_expression",
+            "ref": "rust_expression"
           },
-          ")",
-        ],
+          ")"
+        ]
       },
       {
-        ref: "rust_array_definition",
+        "ref": "rust_array_definition"
       },
       {
-        ref: "rust_struct_instantiation",
+        "ref": "rust_struct_instantiation"
       },
       {
-        ref: "rust_function_call",
-      },
-    ],
+        "ref": "rust_function_call"
+      }
+    ]
   },
-  rust_unary_operation: {
-    alt: [
+  "rust_unary_operation": {
+    "alt": [
       {
-        seq: [
+        "seq": [
           "!",
           {
-            ref: "rust_expression",
-          },
-        ],
+            "ref": "rust_expression"
+          }
+        ]
       },
       {
-        seq: [
+        "seq": [
           "-",
           {
-            ref: "rust_expression",
-          },
-        ],
+            "ref": "rust_expression"
+          }
+        ]
       },
       {
-        seq: [
+        "seq": [
           "*",
           {
-            ref: "rust_expression",
-          },
-        ],
+            "ref": "rust_expression"
+          }
+        ]
       },
       {
-        seq: [
+        "seq": [
           "&",
           {
-            ref: "rust_expression",
-          },
-        ],
-      },
-    ],
+            "ref": "rust_expression"
+          }
+        ]
+      }
+    ]
   },
-  rust_binary_operation: {
-    seq: [
+  "rust_binary_operation": {
+    "seq": [
       {
-        ref: "rust_expression",
+        "ref": "rust_expression"
       },
       " ",
       {
-        ref: "rust_binary_operator",
+        "ref": "rust_binary_operator"
       },
       " ",
       {
-        ref: "rust_expression",
-      },
-    ],
+        "ref": "rust_expression"
+      }
+    ]
   },
-  rust_function_call: {
-    seq: [
+  "rust_function_call": {
+    "seq": [
       {
-        ref: "rust_function_name",
+        "ref": "rust_function_name"
       },
       "(",
       {
-        f: 0.5,
-        opt: {
-          ref: "rust_function_args",
-        },
+        "f": 0.5,
+        "opt": {
+          "ref": "rust_function_args"
+        }
       },
-      ")",
-    ],
+      ")"
+    ]
   },
-  rust_function_args: {
-    seq: [
+  "rust_function_args": {
+    "seq": [
       {
-        ref: "rust_expression",
+        "ref": "rust_expression"
       },
       {
-        f: 0.5,
-        opt: {
-          seq: [
+        "f": 0.5,
+        "opt": {
+          "seq": [
             ",",
             " ",
             {
-              ref: "rust_expression",
-            },
-          ],
-        },
-      },
-    ],
+              "ref": "rust_expression"
+            }
+          ]
+        }
+      }
+    ]
   },
-  rust_type: {
-    alt: [
+  "rust_type": {
+    "alt": [
       {
-        ref: "rust_primitive_type",
+        "ref": "rust_primitive_type"
       },
       {
-        seq: [
+        "seq": [
           "&",
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 {
-                  ref: "kw_mut",
+                  "ref": "kw_mut"
                 },
-                " ",
-              ],
-            },
+                " "
+              ]
+            }
           },
           {
-            ref: "rust_type",
-          },
-        ],
+            "ref": "rust_type"
+          }
+        ]
       },
       {
-        seq: [
+        "seq": [
           {
-            ref: "rust_type",
+            "ref": "rust_type"
           },
           " ",
           "<",
           {
-            ref: "rust_type",
+            "ref": "rust_type"
           },
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 ",",
                 " ",
                 {
-                  ref: "rust_type",
-                },
-              ],
-            },
+                  "ref": "rust_type"
+                }
+              ]
+            }
           },
-          ">",
-        ],
+          ">"
+        ]
       },
       {
-        seq: [
+        "seq": [
           "[",
           {
-            ref: "rust_type",
+            "ref": "rust_type"
           },
           ";",
           " ",
           {
-            ref: "rust_number_literal",
+            "ref": "rust_number_literal"
           },
-          "]",
-        ],
+          "]"
+        ]
       },
       {
-        seq: [
+        "seq": [
           "(",
           {
-            ref: "rust_type",
+            "ref": "rust_type"
           },
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 ",",
                 " ",
                 {
-                  ref: "rust_type",
-                },
-              ],
-            },
+                  "ref": "rust_type"
+                }
+              ]
+            }
           },
-          ")",
-        ],
-      },
-    ],
+          ")"
+        ]
+      }
+    ]
   },
-  rust_primitive_type: {
-    alt: [
+  "rust_primitive_type": {
+    "alt": [
       {
-        ref: "rust_struct_name",
+        "ref": "rust_struct_name"
       },
       {
-        ref: "kw_u32",
+        "ref": "kw_u32"
       },
       {
-        ref: "kw_u64",
+        "ref": "kw_u64"
       },
       {
-        ref: "kw_i32",
+        "ref": "kw_i32"
       },
       {
-        ref: "kw_i64",
+        "ref": "kw_i64"
       },
       {
-        ref: "kw_f32",
+        "ref": "kw_f32"
       },
       {
-        ref: "kw_f64",
+        "ref": "kw_f64"
       },
       {
-        ref: "kw_usize",
+        "ref": "kw_usize"
       },
       {
-        ref: "kw_isize",
+        "ref": "kw_isize"
       },
       {
-        ref: "kw_bool",
+        "ref": "kw_bool"
       },
       {
-        ref: "kw_char",
+        "ref": "kw_char"
       },
       {
-        ref: "kw_str",
+        "ref": "kw_str"
       },
-      "String",
-    ],
+      "String"
+    ]
   },
-  rust_binary_operator: {
-    alt: [
+  "rust_binary_operator": {
+    "alt": [
       "+",
       "-",
       "*",
@@ -418,155 +418,155 @@ export default {
       ">>",
       "&",
       "|",
-      "^",
-    ],
+      "^"
+    ]
   },
-  rust_array_definition: {
-    alt: [
+  "rust_array_definition": {
+    "alt": [
       {
-        seq: [
+        "seq": [
           "[",
           {
-            ref: "rust_expression",
+            "ref": "rust_expression"
           },
           {
-            f: 0.5,
-            opt: {
-              seq: [
+            "f": 0.5,
+            "opt": {
+              "seq": [
                 ",",
                 " ",
                 {
-                  ref: "rust_expression",
-                },
-              ],
-            },
+                  "ref": "rust_expression"
+                }
+              ]
+            }
           },
-          "]",
-        ],
+          "]"
+        ]
       },
       {
-        seq: [
+        "seq": [
           "[",
           {
-            ref: "rust_expression",
+            "ref": "rust_expression"
           },
           ";",
           " ",
           {
-            ref: "rust_number_literal",
+            "ref": "rust_number_literal"
           },
-          "]",
-        ],
-      },
-    ],
+          "]"
+        ]
+      }
+    ]
   },
-  rust_struct_instantiation: {
-    seq: [
+  "rust_struct_instantiation": {
+    "seq": [
       {
-        ref: "rust_struct_name",
+        "ref": "rust_struct_name"
       },
       " ",
       "{",
       " ",
       {
-        ref: "rust_struct_fields",
+        "ref": "rust_struct_fields"
       },
       " ",
-      "}",
-    ],
+      "}"
+    ]
   },
-  rust_struct_fields: {
-    seq: [
+  "rust_struct_fields": {
+    "seq": [
       {
-        ref: "rust_field_assignment",
+        "ref": "rust_field_assignment"
       },
       {
-        f: 0.5,
-        opt: {
-          seq: [
+        "f": 0.5,
+        "opt": {
+          "seq": [
             ",",
             " ",
             {
-              ref: "rust_field_assignment",
-            },
-          ],
-        },
-      },
-    ],
+              "ref": "rust_field_assignment"
+            }
+          ]
+        }
+      }
+    ]
   },
-  rust_field_assignment: {
-    seq: [
+  "rust_field_assignment": {
+    "seq": [
       {
-        ref: "rust_variable_name",
+        "ref": "rust_variable_name"
       },
       ":",
       " ",
       {
-        ref: "rust_expression",
-      },
-    ],
+        "ref": "rust_expression"
+      }
+    ]
   },
-  rust_literal: {
-    alt: [
+  "rust_literal": {
+    "alt": [
       {
-        ref: "rust_string_literal",
+        "ref": "rust_string_literal"
       },
       {
-        ref: "rust_number_literal",
+        "ref": "rust_number_literal"
       },
       {
-        ref: "rust_boolean_literal",
+        "ref": "rust_boolean_literal"
       },
       {
-        ref: "rust_char_literal",
-      },
-    ],
+        "ref": "rust_char_literal"
+      }
+    ]
   },
-  rust_string_literal: {
-    cls: "string",
-    span: {
-      seq: [
-        '"',
+  "rust_string_literal": {
+    "cls": "string",
+    "span": {
+      "seq": [
+        "\"",
         {
-          ref: "rust_string_value",
+          "ref": "rust_string_value"
         },
-        '"',
-      ],
-    },
+        "\""
+      ]
+    }
   },
-  rust_char_literal: {
-    cls: "string",
-    span: {
-      seq: [
+  "rust_char_literal": {
+    "cls": "string",
+    "span": {
+      "seq": [
         "'",
         {
-          ref: "rust_char_value",
+          "ref": "rust_char_value"
         },
-        "'",
-      ],
-    },
+        "'"
+      ]
+    }
   },
-  rust_boolean_literal: {
-    alt: [
+  "rust_boolean_literal": {
+    "alt": [
       {
-        ref: "kw_true",
+        "ref": "kw_true"
       },
       {
-        ref: "kw_false",
-      },
-    ],
+        "ref": "kw_false"
+      }
+    ]
   },
-  rust_variable_name: {
-    ref: "generic_variable_name",
+  "rust_variable_name": {
+    "ref": "generic_variable_name"
   },
-  rust_function_name: {
-    ref: "generic_function_name",
+  "rust_function_name": {
+    "ref": "generic_function_name"
   },
-  rust_struct_name: {
-    ref: "generic_class_name",
+  "rust_struct_name": {
+    "ref": "generic_class_name"
   },
-  rust_string_value: {
-    alt: [
+  "rust_string_value": {
+    "alt": [
       "",
       "Hello, world!",
       "Error",
@@ -586,16 +586,29 @@ export default {
       "Info",
       "Debug",
       "Rust",
-      "Sample",
-    ],
+      "Sample"
+    ]
   },
-  rust_char_value: {
-    alt: ["a", "b", "c", "x", "y", "z", "0", "1", "2", "\\n", "\\t", "\\r"],
+  "rust_char_value": {
+    "alt": [
+      "a",
+      "b",
+      "c",
+      "x",
+      "y",
+      "z",
+      "0",
+      "1",
+      "2",
+      "\\n",
+      "\\t",
+      "\\r"
+    ]
   },
-  rust_number_literal: {
-    cls: "number",
-    span: {
-      alt: [
+  "rust_number_literal": {
+    "cls": "number",
+    "span": {
+      "alt": [
         "0",
         "1",
         "2",
@@ -614,59 +627,59 @@ export default {
         "255",
         "256",
         "1024",
-        "1_000_000",
-      ],
-    },
+        "1_000_000"
+      ]
+    }
   },
-  rust_comment: {
-    cls: "comment",
-    span: {
-      alt: [
+  "rust_comment": {
+    "cls": "comment",
+    "span": {
+      "alt": [
         {
-          seq: [
+          "seq": [
             "//",
             " ",
             {
-              ref: "rust_comment_text",
-            },
-          ],
+              "ref": "rust_comment_text"
+            }
+          ]
         },
         {
-          seq: [
+          "seq": [
             "//!",
             " ",
             {
-              ref: "rust_comment_text",
-            },
-          ],
+              "ref": "rust_comment_text"
+            }
+          ]
         },
         {
-          seq: [
+          "seq": [
             "/*",
             " ",
             {
-              ref: "rust_comment_text",
+              "ref": "rust_comment_text"
             },
             " ",
-            "*/",
-          ],
+            "*/"
+          ]
         },
         {
-          seq: [
+          "seq": [
             "/*!",
             " ",
             {
-              ref: "rust_comment_text",
+              "ref": "rust_comment_text"
             },
             " ",
-            "*/",
-          ],
-        },
-      ],
-    },
+            "*/"
+          ]
+        }
+      ]
+    }
   },
-  rust_comment_text: {
-    alt: [
+  "rust_comment_text": {
+    "alt": [
       "TODO: Implement error handling",
       "FIXME: Potential race condition",
       "Unsafe: Raw pointer manipulation",
@@ -679,7 +692,7 @@ export default {
       "FFI: C interop",
       "Benchmark performance",
       "Async/await transformation",
-      "Check for integer overflow",
-    ],
-  },
+      "Check for integer overflow"
+    ]
+  }
 } as Rules;

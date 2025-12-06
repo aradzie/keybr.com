@@ -3,305 +3,323 @@
 import { type Rules } from "../ast.ts";
 
 export default {
-  start: {
-    seq: [
+  "start": {
+    "seq": [
       {
-        ref: "shell_command",
+        "ref": "shell_command"
       },
-      ";",
-    ],
+      ";"
+    ]
   },
-  shell_command: {
-    seq: [
+  "shell_command": {
+    "seq": [
       {
-        ref: "command_name",
+        "ref": "command_name"
       },
       " ",
       {
-        ref: "arg_list",
+        "ref": "arg_list"
       },
       {
-        f: 0.5,
-        opt: {
-          seq: [
+        "f": 0.5,
+        "opt": {
+          "seq": [
             " ",
             {
-              alt: [
+              "alt": [
                 {
-                  ref: "redirect_suffix",
+                  "ref": "redirect_suffix"
                 },
                 {
-                  ref: "pipe_suffix",
-                },
-              ],
-            },
-          ],
-        },
-      },
-    ],
+                  "ref": "pipe_suffix"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
   },
-  redirect_suffix: {
-    seq: [
+  "redirect_suffix": {
+    "seq": [
       {
-        alt: [">", ">>"],
+        "alt": [
+          ">",
+          ">>"
+        ]
       },
       " ",
       {
-        ref: "file_name",
-      },
-    ],
+        "ref": "file_name"
+      }
+    ]
   },
-  pipe_suffix: {
-    seq: [
+  "pipe_suffix": {
+    "seq": [
       "|",
       " ",
       {
-        ref: "command_name",
+        "ref": "command_name"
       },
       {
-        f: 0.5,
-        opt: {
-          seq: [
+        "f": 0.5,
+        "opt": {
+          "seq": [
             " ",
             {
-              ref: "short_arg",
-            },
-          ],
-        },
+              "ref": "short_arg"
+            }
+          ]
+        }
       },
       {
-        f: 0.5,
-        opt: {
-          seq: [
+        "f": 0.5,
+        "opt": {
+          "seq": [
             " ",
             {
-              ref: "short_arg",
-            },
-          ],
-        },
-      },
-    ],
+              "ref": "short_arg"
+            }
+          ]
+        }
+      }
+    ]
   },
-  arg_list: {
-    seq: [
+  "arg_list": {
+    "seq": [
       {
-        ref: "short_arg",
+        "ref": "short_arg"
       },
       {
-        f: 0.5,
-        opt: {
-          seq: [
+        "f": 0.5,
+        "opt": {
+          "seq": [
             " ",
             {
-              ref: "short_arg",
-            },
-          ],
-        },
+              "ref": "short_arg"
+            }
+          ]
+        }
       },
       " ",
       {
-        ref: "long_arg",
+        "ref": "long_arg"
       },
       {
-        f: 0.5,
-        opt: {
-          seq: [
+        "f": 0.5,
+        "opt": {
+          "seq": [
             " ",
             {
-              ref: "long_arg",
-            },
-          ],
-        },
+              "ref": "long_arg"
+            }
+          ]
+        }
       },
       " ",
       {
-        alt: [
+        "alt": [
           {
-            ref: "file_arg",
+            "ref": "file_arg"
           },
           {
-            ref: "wildcard_arg",
+            "ref": "wildcard_arg"
           },
           {
-            ref: "var_arg",
+            "ref": "var_arg"
           },
           {
-            ref: "string_arg",
-          },
-        ],
-      },
-    ],
+            "ref": "string_arg"
+          }
+        ]
+      }
+    ]
   },
-  short_arg: {
-    alt: ["-a", "-b", "-c", "-d", "-e", "-f", "-h", "-l", "-v"],
+  "short_arg": {
+    "alt": [
+      "-a",
+      "-b",
+      "-c",
+      "-d",
+      "-e",
+      "-f",
+      "-h",
+      "-l",
+      "-v"
+    ]
   },
-  long_arg: {
-    alt: [
+  "long_arg": {
+    "alt": [
       "--color",
       {
-        seq: [
+        "seq": [
           "--conf",
           "=",
           {
-            ref: "file_name",
-          },
-        ],
+            "ref": "file_name"
+          }
+        ]
       },
       {
-        seq: [
+        "seq": [
           "--dir",
           "=",
           {
-            ref: "file_name",
-          },
-        ],
+            "ref": "file_name"
+          }
+        ]
       },
       {
-        seq: [
+        "seq": [
           "--dump",
           "=",
           {
-            ref: "file_name",
-          },
-        ],
+            "ref": "file_name"
+          }
+        ]
       },
       {
-        seq: [
+        "seq": [
           "--file",
           "=",
           {
-            ref: "file_name",
-          },
-        ],
+            "ref": "file_name"
+          }
+        ]
       },
       "--help",
       {
-        seq: [
+        "seq": [
           "--home",
           "=",
           {
-            ref: "file_name",
-          },
-        ],
+            "ref": "file_name"
+          }
+        ]
       },
       {
-        seq: [
+        "seq": [
           "--in",
           "=",
           {
-            ref: "file_name",
-          },
-        ],
+            "ref": "file_name"
+          }
+        ]
       },
       {
-        seq: [
+        "seq": [
           "--list",
           "=",
           {
-            ref: "file_name",
-          },
-        ],
+            "ref": "file_name"
+          }
+        ]
       },
       {
-        seq: [
+        "seq": [
           "--log",
           "=",
           {
-            ref: "file_name",
-          },
-        ],
+            "ref": "file_name"
+          }
+        ]
       },
       "--null",
       {
-        seq: [
+        "seq": [
           "--out",
           "=",
           {
-            ref: "file_name",
-          },
-        ],
+            "ref": "file_name"
+          }
+        ]
       },
       "--quiet",
-      "--version",
-    ],
+      "--version"
+    ]
   },
-  file_arg: {
-    ref: "file_name",
+  "file_arg": {
+    "ref": "file_name"
   },
-  wildcard_arg: {
-    seq: [
+  "wildcard_arg": {
+    "seq": [
       "*",
       ".",
       {
-        alt: [
+        "alt": [
           {
-            ref: "file_ext_name",
+            "ref": "file_ext_name"
           },
           {
-            seq: [
+            "seq": [
               "{",
               {
-                ref: "file_ext_name",
+                "ref": "file_ext_name"
               },
               ",",
               {
-                ref: "file_ext_name",
+                "ref": "file_ext_name"
               },
-              "}",
-            ],
-          },
-        ],
-      },
-    ],
+              "}"
+            ]
+          }
+        ]
+      }
+    ]
   },
-  var_arg: {
-    alt: [
+  "var_arg": {
+    "alt": [
       {
-        seq: [
+        "seq": [
           "$",
           "{",
           {
-            ref: "var_name",
+            "ref": "var_name"
           },
-          "}",
-        ],
+          "}"
+        ]
       },
       {
-        seq: [
+        "seq": [
           "$",
           "(",
           {
-            ref: "command_name",
+            "ref": "command_name"
           },
           " ",
           {
-            ref: "file_arg",
+            "ref": "file_arg"
           },
-          ")",
-        ],
+          ")"
+        ]
       },
       {
-        seq: ["$", "(", "pwd", ")"],
-      },
-    ],
+        "seq": [
+          "$",
+          "(",
+          "pwd",
+          ")"
+        ]
+      }
+    ]
   },
-  string_arg: {
-    cls: "string",
-    span: {
-      seq: [
-        '"',
+  "string_arg": {
+    "cls": "string",
+    "span": {
+      "seq": [
+        "\"",
         "$",
         "{",
         {
-          ref: "var_name",
+          "ref": "var_name"
         },
         "}",
-        '"',
-      ],
-    },
+        "\""
+      ]
+    }
   },
-  dir_name: {
-    alt: [
+  "dir_name": {
+    "alt": [
       "~",
       "/bin",
       "/home",
@@ -322,40 +340,40 @@ export default {
       "~/.local",
       "~/data",
       "~/docs",
-      "~/work",
-    ],
+      "~/work"
+    ]
   },
-  file_name: {
-    alt: [
+  "file_name": {
+    "alt": [
       "/dev/null",
       {
-        alt: [
+        "alt": [
           {
-            seq: [
+            "seq": [
               {
-                ref: "dir_name",
+                "ref": "dir_name"
               },
               "/",
               {
-                seq: [
+                "seq": [
                   {
-                    ref: "file_base_name",
+                    "ref": "file_base_name"
                   },
                   ".",
                   {
-                    ref: "file_ext_name",
-                  },
-                ],
-              },
-            ],
+                    "ref": "file_ext_name"
+                  }
+                ]
+              }
+            ]
           },
-          ".env",
-        ],
-      },
-    ],
+          ".env"
+        ]
+      }
+    ]
   },
-  var_name: {
-    alt: [
+  "var_name": {
+    "alt": [
       "a",
       "addr",
       "b",
@@ -375,11 +393,11 @@ export default {
       "root",
       "shell",
       "time",
-      "user",
-    ],
+      "user"
+    ]
   },
-  file_base_name: {
-    alt: [
+  "file_base_name": {
+    "alt": [
       "a",
       "b",
       "c",
@@ -405,11 +423,11 @@ export default {
       "send",
       "source",
       "users",
-      "write",
-    ],
+      "write"
+    ]
   },
-  file_ext_name: {
-    alt: [
+  "file_ext_name": {
+    "alt": [
       "c",
       "bash",
       "bin",
@@ -432,13 +450,13 @@ export default {
       "so",
       "ts",
       "txt",
-      "unit",
-    ],
+      "unit"
+    ]
   },
-  command_name: {
-    cls: "keyword",
-    span: {
-      alt: [
+  "command_name": {
+    "cls": "keyword",
+    "span": {
+      "alt": [
         "cargo",
         "cat",
         "cd",
@@ -485,8 +503,8 @@ export default {
         "uptime",
         "vi",
         "wc",
-        "zip",
-      ],
-    },
-  },
+        "zip"
+      ]
+    }
+  }
 } as Rules;
