@@ -707,29 +707,41 @@ export default {
     ]
   },
   "csharp_number_literal": {
-    "alt": [
-      "0",
-      "1",
-      "2",
-      "42",
-      "100",
-      "200",
-      "404"
-    ]
+    "cls": "number",
+    "span": {
+      "alt": [
+        "0",
+        "1",
+        "2",
+        "42",
+        "100",
+        "200",
+        "404"
+      ]
+    }
   },
   "csharp_string_literal": {
-    "alt": [
-      "",
-      "hello"
-    ]
+    "cls": "string",
+    "span": {
+      "alt": [
+        "",
+        "hello"
+      ]
+    }
   },
   "csharp_boolean_literal": {
     "alt": [
-      "true",
-      "false"
+      {
+        "ref": "kw_true"
+      },
+      {
+        "ref": "kw_false"
+      }
     ]
   },
-  "csharp_null_literal": "null",
+  "csharp_null_literal": {
+    "ref": "kw_null"
+  },
   "csharp_identifier": {
     "alt": [
       "x",
@@ -781,33 +793,30 @@ export default {
     ]
   },
   "comment": {
-    "alt": [
-      {
-        "ref": "single_line_comment"
-      },
-      {
-        "ref": "multi_line_comment"
-      }
-    ]
-  },
-  "single_line_comment": {
-    "seq": [
-      "//",
-      " ",
-      {
-        "ref": "comment_text"
-      }
-    ]
-  },
-  "multi_line_comment": {
-    "seq": [
-      "/*",
-      " ",
-      {
-        "ref": "comment_text"
-      },
-      " ",
-      "*/"
-    ]
+    "cls": "comment",
+    "span": {
+      "alt": [
+        {
+          "seq": [
+            "//",
+            " ",
+            {
+              "ref": "comment_text"
+            }
+          ]
+        },
+        {
+          "seq": [
+            "/*",
+            " ",
+            {
+              "ref": "comment_text"
+            },
+            " ",
+            "*/"
+          ]
+        }
+      ]
+    }
   }
 } as Rules;

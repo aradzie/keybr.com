@@ -196,4 +196,4 @@ ts_comment ->
     ( "//" _ comment_text )
   | ( "/*" _ comment_text _ "*/" )
   }
-;
+  ;

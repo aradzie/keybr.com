@@ -64,10 +64,10 @@ csharp_method_call -> csharp_identifier _ "(" _ argument_list _ ")";
 argument_list -> [csharp_expression [_ "," _ csharp_expression]];
 
 csharp_literal -> csharp_number_literal | csharp_string_literal | csharp_boolean_literal | csharp_null_literal;
-csharp_number_literal -> "0" | "1" | "2" | "42" | "100" | "200" | "404";
-csharp_string_literal -> "" | "hello";
-csharp_boolean_literal -> "true" | "false";
-csharp_null_literal -> "null";
+csharp_number_literal -> { :class(number) "0" | "1" | "2" | "42" | "100" | "200" | "404" } ;
+csharp_string_literal -> { :class(string) "" | "hello" };
+csharp_boolean_literal -> kw_true | kw_false;
+csharp_null_literal -> kw_null;
 
 csharp_identifier -> "x" | "y" | "z" | "result" | "data" | "input" | "err" | "val";
 csharp_method_name -> "Main" | "Calculate" | "SetValue" | "GetResult" | "ToString" | "Equals" | "Dispose";
@@ -75,6 +75,9 @@ csharp_type_name -> csharp_primitive_type_name | generic_class_name ;
 csharp_primitive_type_name -> "string" | "int" | "bool" | "double" | "float" ;
 csharp_namespace_name -> "System" | "System.Collections.Generic" | "MyApp" | "MyApp.Models";
 
-comment -> single_line_comment | multi_line_comment;
-single_line_comment -> "//" _ comment_text;
-multi_line_comment -> "/*" _ comment_text _ "*/";
+comment ->
+  { :class(comment)
+    ( "//" _ comment_text )
+  | ( "/*" _ comment_text _ "*/" )
+  }
+  ;

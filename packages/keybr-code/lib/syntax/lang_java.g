@@ -72,11 +72,11 @@ java_literal ->
   | java_boolean_literal
   ;
 
-java_number_literal -> "0" | "1" | "2" | "42" | "100" | "200" | "404" ;
+java_number_literal -> { :class(number) "0" | "1" | "2" | "42" | "100" | "200" | "404" } ;
 
-java_string_literal -> "\"" "\"" ;
+java_string_literal -> { :class(string) "\"" "\"" } ;
 
-java_boolean_literal -> "true" | "false" ;
+java_boolean_literal -> kw_true | kw_false ;
 
 java_method_call -> java_variable_name "(" _ argument_list ")" ;
 
@@ -103,10 +103,8 @@ access_modifier -> kw_public | kw_private | kw_protected ;
 java_type_name -> generic_class_name ;
 
 comment ->
-    single_line_comment
-  | multi_line_comment
+  { :class(comment)
+    ( "//" _ comment_text )
+  | ( "/*" _ comment_text _ "*/" )
+  }
   ;
-
-single_line_comment -> "//" _ comment_text ;
-
-multi_line_comment -> "/*" _ comment_text _ "*/" ;

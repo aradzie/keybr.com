@@ -918,36 +918,46 @@ export default {
     ]
   },
   "golang_number_literal": {
-    "alt": [
-      "0",
-      "1",
-      "2",
-      "42",
-      "100",
-      "200",
-      "404"
-    ]
+    "cls": "number",
+    "span": {
+      "alt": [
+        "0",
+        "1",
+        "2",
+        "42",
+        "100",
+        "200",
+        "404"
+      ]
+    }
   },
   "golang_string_literal": {
-    "alt": [
-      {
-        "seq": [
-          "\"",
-          "\""
-        ]
-      },
-      {
-        "seq": [
-          "`",
-          "`"
-        ]
-      }
-    ]
+    "cls": "number",
+    "span": {
+      "alt": [
+        {
+          "seq": [
+            "\"",
+            "\""
+          ]
+        },
+        {
+          "seq": [
+            "`",
+            "`"
+          ]
+        }
+      ]
+    }
   },
   "golang_boolean_literal": {
     "alt": [
-      "true",
-      "false"
+      {
+        "ref": "kw_true"
+      },
+      {
+        "ref": "kw_false"
+      }
     ]
   },
   "golang_nil_literal": "nil",
@@ -1053,33 +1063,30 @@ export default {
     ]
   },
   "comment": {
-    "alt": [
-      {
-        "ref": "single_line_comment"
-      },
-      {
-        "ref": "multi_line_comment"
-      }
-    ]
-  },
-  "single_line_comment": {
-    "seq": [
-      "//",
-      " ",
-      {
-        "ref": "comment_text"
-      }
-    ]
-  },
-  "multi_line_comment": {
-    "seq": [
-      "/*",
-      " ",
-      {
-        "ref": "comment_text"
-      },
-      " ",
-      "*/"
-    ]
+    "cls": "comment",
+    "span": {
+      "alt": [
+        {
+          "seq": [
+            "//",
+            " ",
+            {
+              "ref": "comment_text"
+            }
+          ]
+        },
+        {
+          "seq": [
+            "/*",
+            " ",
+            {
+              "ref": "comment_text"
+            },
+            " ",
+            "*/"
+          ]
+        }
+      ]
+    }
   }
 } as Rules;

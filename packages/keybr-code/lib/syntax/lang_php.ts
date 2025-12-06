@@ -253,14 +253,17 @@ export default {
     ]
   },
   "php_number_literal": {
-    "alt": [
-      "0",
-      "1",
-      "2",
-      "10",
-      "42",
-      "100"
-    ]
+    "cls": "number",
+    "span": {
+      "alt": [
+        "0",
+        "1",
+        "2",
+        "10",
+        "42",
+        "100"
+      ]
+    }
   },
   "php_boolean_literal": {
     "alt": [

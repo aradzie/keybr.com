@@ -642,11 +642,11 @@ export default {
   "python_comment": {
     "cls": "comment",
     "span": {
-      "alt": [
-        "# type: ignore",
-        "# TODO: fix",
-        "# TODO: implement",
-        "#!/usr/bin/env python"
+      "seq": [
+        "# ",
+        {
+          "ref": "comment_text"
+        }
       ]
     }
   }

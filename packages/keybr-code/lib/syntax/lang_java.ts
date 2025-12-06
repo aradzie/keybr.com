@@ -367,26 +367,36 @@ export default {
     ]
   },
   "java_number_literal": {
-    "alt": [
-      "0",
-      "1",
-      "2",
-      "42",
-      "100",
-      "200",
-      "404"
-    ]
+    "cls": "number",
+    "span": {
+      "alt": [
+        "0",
+        "1",
+        "2",
+        "42",
+        "100",
+        "200",
+        "404"
+      ]
+    }
   },
   "java_string_literal": {
-    "seq": [
-      "\"",
-      "\""
-    ]
+    "cls": "string",
+    "span": {
+      "seq": [
+        "\"",
+        "\""
+      ]
+    }
   },
   "java_boolean_literal": {
     "alt": [
-      "true",
-      "false"
+      {
+        "ref": "kw_true"
+      },
+      {
+        "ref": "kw_false"
+      }
     ]
   },
   "java_method_call": {
@@ -586,33 +596,30 @@ export default {
     "ref": "generic_class_name"
   },
   "comment": {
-    "alt": [
-      {
-        "ref": "single_line_comment"
-      },
-      {
-        "ref": "multi_line_comment"
-      }
-    ]
-  },
-  "single_line_comment": {
-    "seq": [
-      "//",
-      " ",
-      {
-        "ref": "comment_text"
-      }
-    ]
-  },
-  "multi_line_comment": {
-    "seq": [
-      "/*",
-      " ",
-      {
-        "ref": "comment_text"
-      },
-      " ",
-      "*/"
-    ]
+    "cls": "comment",
+    "span": {
+      "alt": [
+        {
+          "seq": [
+            "//",
+            " ",
+            {
+              "ref": "comment_text"
+            }
+          ]
+        },
+        {
+          "seq": [
+            "/*",
+            " ",
+            {
+              "ref": "comment_text"
+            },
+            " ",
+            "*/"
+          ]
+        }
+      ]
+    }
   }
 } as Rules;

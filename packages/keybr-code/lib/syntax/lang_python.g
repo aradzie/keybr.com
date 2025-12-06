@@ -195,11 +195,4 @@ python_number_literal ->
   }
   ;
 
-python_comment ->
-  { :class(comment)
-    "# type: ignore"
-  | "# TODO: fix"
-  | "# TODO: implement"
-  | "#!/usr/bin/env python"
-  }
-  ;
+python_comment -> { :class(comment) "# " comment_text } ;

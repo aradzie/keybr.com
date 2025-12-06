@@ -149,9 +149,9 @@ golang_literal ->
   | golang_nil_literal
   ;
 
-golang_number_literal -> "0" | "1" | "2" | "42" | "100" | "200" | "404";
-golang_string_literal -> "\"" "\"" | "`" "`";
-golang_boolean_literal -> "true" | "false";
+golang_number_literal -> { :class(number) "0" | "1" | "2" | "42" | "100" | "200" | "404" } ;
+golang_string_literal -> { :class(number) "\"" "\"" | "`" "`" } ;
+golang_boolean_literal -> kw_true | kw_false;
 golang_nil_literal -> "nil";
 
 golang_function_call -> golang_identifier _ "(" _ argument_list _ ")";
@@ -165,9 +165,8 @@ golang_package_name -> "main" | "fmt" | "strings" | "math" | "os" | "io" | "net/
 golang_method_name -> "Read" | "Write" | "String" | "Error" | "Close" | "Parse";
 
 comment ->
-    single_line_comment
-  | multi_line_comment
+  { :class(comment)
+    ( "//" _ comment_text )
+  | ( "/*" _ comment_text _ "*/" )
+  }
   ;
-
-single_line_comment -> "//" _ comment_text;
-multi_line_comment -> "/*" _ comment_text _ "*/";
