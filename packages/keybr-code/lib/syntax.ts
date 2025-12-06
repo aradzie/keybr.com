@@ -23,66 +23,40 @@ import {
 import { validate } from "./validate.ts";
 
 export class Syntax implements EnumItem {
-  static readonly HTML = new Syntax("html", "HTML", grammar_html_css, "html");
-  static readonly CSS = new Syntax("css", "CSS", grammar_html_css, "css");
   static readonly CPP = new Syntax("cpp", "C/C++", grammar_cpp);
-  static readonly CPP_FPROTO = new Syntax(
-    "cpp_fproto",
-    "C/C++ Function Prototypes",
-    grammar_cpp,
-    "start_fproto",
-  );
-  static readonly CPP_STMT = new Syntax(
-    "cpp_stmt",
-    "C/C++ Statements",
-    grammar_cpp,
-    "start_stmt",
-  );
-  static readonly JAVASCRIPT_EXP = new Syntax(
-    "javascript_exp",
-    "Java Script Expressions",
-    grammar_javascript,
-  );
-  static readonly TYPESCRIPT = new Syntax(
-    "typescript",
-    "TypeScript",
-    grammar_typescript,
-  );
+  static readonly CPP_FPROTO = new Syntax("cpp_fproto", "C/C++ Function Prototypes", grammar_cpp, "start_fproto");
+  static readonly CPP_STMT = new Syntax("cpp_stmt", "C/C++ Statements", grammar_cpp, "start_stmt");
+  static readonly CSHARP = new Syntax("csharp", "C#", grammar_csharp);
+  static readonly CSS = new Syntax("css", "CSS", grammar_html_css, "css");
+  static readonly GO = new Syntax("go", "Go", grammar_go);
+  static readonly HTML = new Syntax("html", "HTML", grammar_html_css, "html");
+  static readonly JAVA = new Syntax("java", "Java", grammar_java);
+  static readonly JAVASCRIPT_EXP = new Syntax("javascript_exp", "Java Script Expressions", grammar_javascript);
   static readonly PHP = new Syntax("php", "PHP", grammar_php);
-  static readonly PHP_LARAVEL = new Syntax(
-    "php_laravel",
-    "PHP Laravel",
-    grammar_php,
-    "start_laravel",
-  );
+  static readonly PHP_LARAVEL = new Syntax("php_laravel", "PHP Laravel", grammar_php, "start_laravel");
   static readonly PYTHON = new Syntax("python", "Python", grammar_python);
+  static readonly REGEX = new Syntax("regex", "Regex", grammar_regex);
   static readonly RUST = new Syntax("rust", "Rust", grammar_rust);
   static readonly SHELL = new Syntax("shell", "Shell", grammar_shell);
-  static readonly REGEX = new Syntax("regex", "Regex", grammar_regex);
-
-  static readonly JAVA = new Syntax("java", "Java", grammar_java);
-
-  static readonly GO = new Syntax("go", "Go", grammar_go);
-
-  static readonly CSHARP = new Syntax("csharp", "C#", grammar_csharp);
+  static readonly TYPESCRIPT = new Syntax("typescript", "TypeScript", grammar_typescript);
 
   static readonly ALL = new Enum<Syntax>(
-    Syntax.HTML,
-    Syntax.CSS,
     Syntax.CPP,
     Syntax.CPP_FPROTO,
     Syntax.CPP_STMT,
+    Syntax.CSHARP,
+    Syntax.CSS,
+    Syntax.GO,
+    Syntax.HTML,
+    Syntax.JAVA,
     Syntax.JAVASCRIPT_EXP,
-    Syntax.TYPESCRIPT,
     Syntax.PHP,
     Syntax.PHP_LARAVEL,
     Syntax.PYTHON,
+    Syntax.REGEX,
     Syntax.RUST,
     Syntax.SHELL,
-    Syntax.REGEX,
-    Syntax.JAVA,
-    Syntax.GO,
-    Syntax.CSHARP,
+    Syntax.TYPESCRIPT,
   );
 
   readonly id: string;
@@ -91,12 +65,7 @@ export class Syntax implements EnumItem {
   readonly start: string;
   readonly flags: ReadonlySet<string>;
 
-  private constructor(
-    id: string,
-    name: string,
-    grammar: Grammar,
-    start: string = "start",
-  ) {
+  private constructor(id: string, name: string, grammar: Grammar, start: string = "start") {
     this.id = id;
     this.name = name;
     this.grammar = validate(grammar);

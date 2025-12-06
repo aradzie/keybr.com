@@ -93,21 +93,8 @@ access_modifier -> kw_public | kw_private | kw_protected ;
 comment ->
     single_line_comment
   | multi_line_comment
-  | javadoc_comment
   ;
 
 single_line_comment -> "//" _ comment_text ;
 
 multi_line_comment -> "/*" _ comment_text _ "*/" ;
-
-javadoc_comment -> "/**" _ comment_text _ "*/" ;
-
-comment_text ->
-    "Method to calculate the result"
-  | "TODO: Improve performance"
-  | "This is a constructor"
-  | "@param description"
-  | "@returns description"
-  | "@throws exception"
-  | "@deprecated Use alternative method"
-  ;

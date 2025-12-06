@@ -193,21 +193,7 @@ ts_string_literal -> { :class(string) "\"error\"" | "\"success\"" | "\"pending\"
 
 ts_comment ->
   { :class(comment)
-    ( "//" _ ts_comment_text )
-  | ( "/*" _ ts_comment_text _ "*/" )
-  | ( "/**" _ ts_comment_text _ "*/" )
+    ( "//" _ comment_text )
+  | ( "/*" _ comment_text _ "*/" )
   }
-;
-
-ts_comment_text ->
-  "Type definition"
-| "Interface for API response"
-| "Generic type parameter"
-| "Utility type"
-| "TODO: Add validation"
-| "FIXME: Handle edge case"
-| "@param description"
-| "@returns description"
-| "@template T The type parameter"
-| "@deprecated Use alternative instead"
 ;

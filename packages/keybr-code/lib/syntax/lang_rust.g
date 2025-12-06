@@ -185,25 +185,9 @@ rust_number_literal ->
 
 rust_comment ->
   { :class(comment)
-    ( "//" _ rust_comment_text )
-  | ( "//!" _ rust_comment_text )
-  | ( "/*" _ rust_comment_text _ "*/" )
-  | ( "/*!" _ rust_comment_text _ "*/" )
+    ( "//" _ comment_text )
+  | ( "//!" _ comment_text )
+  | ( "/*" _ comment_text _ "*/" )
+  | ( "/*!" _ comment_text _ "*/" )
   }
-;
-
-rust_comment_text ->
-  "TODO: Implement error handling"
-| "FIXME: Potential race condition"
-| "Unsafe: Raw pointer manipulation"
-| "Optimize memory allocation"
-| "Ensure thread safety"
-| "Zero-copy deserialization"
-| "Handle lifetime issues"
-| "Implement Drop trait"
-| "Lock-free data structure"
-| "FFI: C interop"
-| "Benchmark performance"
-| "Async/await transformation"
-| "Check for integer overflow"
-;
+  ;

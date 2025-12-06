@@ -77,4 +77,3 @@ csharp_namespace_name -> "System" | "System.Collections.Generic" | "MyApp" | "My
 comment -> single_line_comment | multi_line_comment;
 single_line_comment -> "//" _ comment_text;
 multi_line_comment -> "/*" _ comment_text _ "*/";
-comment_text -> "Method to calculate the result" | "TODO: Refactor" | "This is a constructor" | "Class documentation" | "Returns value with error" | "Implements interface" | "Deprecated: Use alternative method";

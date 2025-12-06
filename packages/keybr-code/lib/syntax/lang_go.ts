@@ -1075,16 +1075,5 @@ export default {
       " ",
       "*/"
     ]
-  },
-  "comment_text": {
-    "alt": [
-      "Function to calculate the result",
-      "TODO: Improve performance",
-      "This is a constructor",
-      "Package documentation",
-      "Returns value with error",
-      "Implements interface",
-      "Deprecated: Use alternative function"
-    ]
   }
 } as Rules;

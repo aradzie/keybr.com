@@ -915,7 +915,7 @@ export default {
             "//",
             " ",
             {
-              "ref": "ts_comment_text"
+              "ref": "comment_text"
             }
           ]
         },
@@ -924,18 +924,7 @@ export default {
             "/*",
             " ",
             {
-              "ref": "ts_comment_text"
-            },
-            " ",
-            "*/"
-          ]
-        },
-        {
-          "seq": [
-            "/**",
-            " ",
-            {
-              "ref": "ts_comment_text"
+              "ref": "comment_text"
             },
             " ",
             "*/"
@@ -943,19 +932,5 @@ export default {
         }
       ]
     }
-  },
-  "ts_comment_text": {
-    "alt": [
-      "Type definition",
-      "Interface for API response",
-      "Generic type parameter",
-      "Utility type",
-      "TODO: Add validation",
-      "FIXME: Handle edge case",
-      "@param description",
-      "@returns description",
-      "@template T The type parameter",
-      "@deprecated Use alternative instead"
-    ]
   }
 } as Rules;

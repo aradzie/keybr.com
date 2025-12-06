@@ -599,9 +599,6 @@ export default {
       },
       {
         "ref": "multi_line_comment"
-      },
-      {
-        "ref": "javadoc_comment"
       }
     ]
   },
@@ -623,28 +620,6 @@ export default {
       },
       " ",
       "*/"
-    ]
-  },
-  "javadoc_comment": {
-    "seq": [
-      "/**",
-      " ",
-      {
-        "ref": "comment_text"
-      },
-      " ",
-      "*/"
-    ]
-  },
-  "comment_text": {
-    "alt": [
-      "Method to calculate the result",
-      "TODO: Improve performance",
-      "This is a constructor",
-      "@param description",
-      "@returns description",
-      "@throws exception",
-      "@deprecated Use alternative method"
     ]
   }
 } as Rules;

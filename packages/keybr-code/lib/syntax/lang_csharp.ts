@@ -803,16 +803,5 @@ export default {
       " ",
       "*/"
     ]
-  },
-  "comment_text": {
-    "alt": [
-      "Method to calculate the result",
-      "TODO: Refactor",
-      "This is a constructor",
-      "Class documentation",
-      "Returns value with error",
-      "Implements interface",
-      "Deprecated: Use alternative method"
-    ]
   }
 } as Rules;

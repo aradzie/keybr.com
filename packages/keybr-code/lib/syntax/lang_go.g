@@ -170,13 +170,3 @@ comment ->
 
 single_line_comment -> "//" _ comment_text;
 multi_line_comment -> "/*" _ comment_text _ "*/";
-
-comment_text ->
-    "Function to calculate the result"
-  | "TODO: Improve performance"
-  | "This is a constructor"
-  | "Package documentation"
-  | "Returns value with error"
-  | "Implements interface"
-  | "Deprecated: Use alternative function"
-  ;
