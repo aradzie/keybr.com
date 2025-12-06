@@ -54,15 +54,9 @@ Ref "ref"
   = ref:Name { return { ref }; }
 
 Lit "literal"
-  = string:string { return string; }
+  = '"' chars:LitCharacter* '"' { return chars.join(""); }
 
-Sep "separator"
-  = "_" { return " "; }
-
-string "string"
-  = '"' chars:char* '"' { return chars.join(""); }
-
-char
+LitCharacter
   = [^\0-\x1F\x22\x5C]
   / "\\"
     sequence:(
@@ -80,5 +74,18 @@ char
     )
     { return sequence; }
 
+Sep "separator"
+  = "_" { return " "; }
+
+Comment "comment"
+  = SingleLineComment
+  / MultiLineComment
+
+SingleLineComment
+  = "//" ( !"\n" . )*
+
+MultiLineComment
+  = "/*" ( !"*/" . )* "*/"
+
 _ "whitespace"
-  = [ \t\n\r]*
+  = ( [ \t\n] / Comment )*
