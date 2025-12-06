@@ -65,7 +65,7 @@ argument_list -> [csharp_expression [_ "," _ csharp_expression]];
 
 csharp_literal -> csharp_number_literal | csharp_string_literal | csharp_boolean_literal | csharp_null_literal;
 csharp_number_literal -> "0" | "1" | "2" | "42" | "100" | "200" | "404";
-xcsharp_string_literal -> "" | "hello";
+csharp_string_literal -> "" | "hello";
 csharp_boolean_literal -> "true" | "false";
 csharp_null_literal -> "null";
 
@@ -78,29 +78,3 @@ comment -> single_line_comment | multi_line_comment;
 single_line_comment -> "//" _ comment_text;
 multi_line_comment -> "/*" _ comment_text _ "*/";
 comment_text -> "Method to calculate the result" | "TODO: Refactor" | "This is a constructor" | "Class documentation" | "Returns value with error" | "Implements interface" | "Deprecated: Use alternative method";
-
-kw_namespace -> "namespace";
-kw_using -> "using";
-kw_class -> "class";
-kw_interface -> "interface";
-kw_public -> "public";
-kw_private -> "private";
-kw_protected -> "protected";
-kw_internal -> "internal";
-kw_abstract -> "abstract";
-kw_sealed -> "sealed";
-kw_static -> "static";
-kw_virtual -> "virtual";
-kw_override -> "override";
-kw_readonly -> "readonly";
-kw_const -> "const";
-kw_get -> "get";
-kw_set -> "set";
-kw_int -> "int";
-kw_string -> "string";
-kw_bool -> "bool";
-kw_double -> "double";
-kw_float -> "float";
-kw_char -> "char";
-kw_object -> "object";
-kw_void -> "void";

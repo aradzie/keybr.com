@@ -327,6 +327,10 @@ export default {
     cls: "keyword",
     span: "interface",
   },
+  kw_internal: {
+    cls: "keyword",
+    span: "internal",
+  },
   kw_is: {
     cls: "keyword",
     span: "is",
@@ -478,6 +482,10 @@ export default {
   kw_return: {
     cls: "keyword",
     span: "return",
+  },
+  kw_sealed: {
+    cls: "keyword",
+    span: "sealed",
   },
   kw_self: {
     cls: "keyword",
@@ -722,5 +730,13 @@ export default {
   kw_out: {
     cls: "keyword",
     span: "out",
+  },
+  kw_get: {
+    cls: "keyword",
+    span: "get",
+  },
+  kw_set: {
+    cls: "keyword",
+    span: "set",
   },
 } as Rules;
