@@ -120,7 +120,7 @@ export default [
         version: "detect",
       },
       node: {
-        version: ">=22",
+        version: ">=24",
         allowModules: [
           ...Object.keys(pkg.dependencies),
           ...Object.keys(pkg.devDependencies),

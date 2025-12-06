@@ -1,20 +1,23 @@
 # Getting Started
 
-This is a [nodejs](https://nodejs.org/) application, so proficiency with the node ecosystem is required.
+This is a [NodeJS](https://nodejs.org/) application, so proficiency with the node ecosystem is required.
 
 ### Prerequisites
 
-**NodeJS v22 or v20 must be installed.**\
-You can get NodeJS v22 or v20 without impacting other Node installations using [Node Version Manager](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating) (`nvm`)
+**NodeJS v24 must be installed.**\
+You can get NodeJS v24 without impacting other Node installations using [Node Version Manager](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating) (`nvm`)
 <details>
   <summary>
-  Get NodeJS v22 with nvm
+  Get NodeJS v24 with nvm
   </summary>
 
   ```shell
-  nvm install 22 && nvm use 22
+  nvm install 24 && nvm use 24
   ```
 </details>
+
+Or you can create a complete custom development environment using [Toolbx](https://containertoolbx.org/)
+with your own version on NodeJS.
 
 ### Install and setup
 
