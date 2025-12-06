@@ -60,6 +60,7 @@ kw_finally -> { :class(keyword) "finally" };
 kw_float -> { :class(keyword) "float" };
 kw_fn -> { :class(keyword) "fn" };
 kw_for -> { :class(keyword) "for" };
+kw_foreach -> { :class(keyword) "foreach" } ;
 kw_friend -> { :class(keyword) "friend" };
 kw_from -> { :class(keyword) "from" };
 kw_function -> { :class(keyword) "function" };

@@ -251,6 +251,10 @@ export default {
     cls: "keyword",
     span: "for",
   },
+  kw_foreach: {
+    cls: "keyword",
+    span: "foreach",
+  },
   kw_friend: {
     cls: "keyword",
     span: "friend",

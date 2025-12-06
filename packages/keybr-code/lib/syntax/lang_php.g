@@ -186,27 +186,3 @@ laravel_http_method_upper -> "PUT" | "PATCH" | "DELETE" ;
 laravel_request -> php_variable "->" laravel_request_method "(" [ php_string_literal ] ")" ;
 
 laravel_request_method -> "validate" | "validated" | "input" | "has" | "file" ;
-
-/* Keywords */
-kw_function -> { :class(keyword) "function" } ;
-kw_fn -> { :class(keyword) "fn" } ;
-kw_return -> { :class(keyword) "return" } ;
-kw_if -> { :class(keyword) "if" } ;
-kw_else -> { :class(keyword) "else" } ;
-kw_foreach -> { :class(keyword) "foreach" } ;
-kw_as -> { :class(keyword) "as" } ;
-kw_namespace -> { :class(keyword) "namespace" } ;
-kw_use -> { :class(keyword) "use" } ;
-kw_class -> { :class(keyword) "class" } ;
-kw_public -> { :class(keyword) "public" } ;
-kw_private -> { :class(keyword) "private" } ;
-kw_protected -> { :class(keyword) "protected" } ;
-kw_static -> { :class(keyword) "static" } ;
-kw_true -> { :class(keyword) "true" } ;
-kw_false -> { :class(keyword) "false" } ;
-kw_null -> { :class(keyword) "null" } ;
-kw_new -> { :class(keyword) "new" } ;
-kw_throw -> { :class(keyword) "throw" } ;
-kw_try -> { :class(keyword) "try" } ;
-kw_catch -> { :class(keyword) "catch" } ;
-kw_match -> { :class(keyword) "match" } ;
