@@ -1,8 +1,18 @@
 import { join } from "node:path";
-import { config } from "dotenv";
 
-config({ path: join(import.meta.dirname, "lib", "config-env") });
-config({ path: join(import.meta.dirname, "lib", "config-env.example") });
+for (const path of [
+  // First definition wins, so list the paths in the reversed order.
+  join(import.meta.dirname, "lib", "config-env"),
+  join(import.meta.dirname, "lib", "config-env.example"),
+]) {
+  try {
+    process.loadEnvFile(path);
+  } catch (err) {
+    if (err.code !== "ENOENT") {
+      throw err;
+    }
+  }
+}
 
 const ENV = {};
 

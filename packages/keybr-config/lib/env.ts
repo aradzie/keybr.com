@@ -1,15 +1,13 @@
 import { createPrivateKey, createPublicKey, type KeyObject } from "node:crypto";
-import { readFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { join, resolve } from "node:path";
 import { Logger } from "@keybr/logger";
-import { parse } from "dotenv";
 
 export class Env {
   static getFiles(): string[] {
     const env = process.env.NODE_ENV || "development";
     return [
-      // First definition wins, so list files in the reversed order.
+      // First definition wins, so list the paths in the reversed order.
       join(process.cwd(), `.env.${env}`),
       join(process.cwd(), `.env`),
       `/etc/keybr/env.${env}`,
@@ -32,7 +30,7 @@ export class Env {
 
   static loadFileSync(path: string): boolean {
     try {
-      copyToProcessEnv(parse(readFileSync(path, "utf-8")));
+      process.loadEnvFile(path);
     } catch (err: any) {
       if (err.code === "ENOENT") {
         return false;
@@ -155,14 +153,6 @@ export class Env {
       return createPublicKey(value);
     } catch (cause) {
       throw new TypeError(`Cannot parse as a public key`, { cause });
-    }
-  }
-}
-
-function copyToProcessEnv(entries: Record<string, string>): void {
-  for (const [key, value] of Object.entries(entries)) {
-    if (typeof process.env[key] === "undefined") {
-      process.env[key] = value;
     }
   }
 }

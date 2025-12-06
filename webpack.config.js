@@ -13,6 +13,8 @@ import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 
 const mode = process.env.NODE_ENV || "production";
 
+console.log("webpack build time environment", ENV);
+
 const isVendor = (excludedVendors) => {
   const vendorsDir = join(import.meta.dirname, "node_modules");
   return ({ resource }) => {

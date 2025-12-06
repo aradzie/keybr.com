@@ -1,11 +1,10 @@
 import { join } from "node:path";
-import { config } from "dotenv";
 import { readJsonSync, writeJsonSync } from "./lib/fs-json.js";
 import { translationsPath } from "./lib/intl-io.js";
 import { allLocales, defaultLocale } from "./locale.js";
 import { rootDir } from "./root.js";
 
-config({ path: join(rootDir, ".env") });
+process.loadEnvFile(join(rootDir, ".env"));
 
 for (const locale of allLocales) {
   if (locale === defaultLocale) {
