@@ -5,8 +5,8 @@
   "type": "module",
   "main": "lib/index.ts",
   "dependencies": {
-    "fake-indexeddb": "^6.2.2",
-    "jsdom": "^27.0.0"
+    "fake-indexeddb": "^6.2.5",
+    "jsdom": "^27.2.0"
   },
   "devDependencies": {},
   "scripts": {

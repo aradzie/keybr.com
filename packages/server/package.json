@@ -22,7 +22,7 @@
     "@keybr/settings": "*",
     "@keybr/settings-database": "*",
     "@keybr/themes": "*",
-    "@paddle/paddle-node-sdk": "^3.2.1",
+    "@paddle/paddle-node-sdk": "^3.4.0",
     "@types/ws": "^8.18.1",
     "ws": "^8.18.3"
   },
