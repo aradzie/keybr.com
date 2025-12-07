@@ -72,9 +72,9 @@ java_literal ->
   | java_boolean_literal
   ;
 
-java_number_literal -> { :class(number) "0" | "1" | "2" | "42" | "100" | "200" | "404" } ;
+java_number_literal -> { :class(number) numeric_literal } ;
 
-java_string_literal -> { :class(string) "\"" "\"" } ;
+java_string_literal -> { :class(string) "\"" generic_string_content "\"" } ;
 
 java_boolean_literal -> kw_true | kw_false ;
 

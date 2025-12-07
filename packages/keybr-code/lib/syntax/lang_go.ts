@@ -924,21 +924,14 @@ export default {
     }
   },
   "golang_string_literal": {
-    "cls": "number",
+    "cls": "string",
     "span": {
-      "alt": [
+      "seq": [
+        "\"",
         {
-          "seq": [
-            "\"",
-            "\""
-          ]
+          "ref": "generic_string_content"
         },
-        {
-          "seq": [
-            "`",
-            "`"
-          ]
-        }
+        "\""
       ]
     }
   },
@@ -952,7 +945,10 @@ export default {
       }
     ]
   },
-  "golang_nil_literal": "nil",
+  "golang_nil_literal": {
+    "cls": "keyword",
+    "span": "nil"
+  },
   "golang_function_call": {
     "seq": [
       {

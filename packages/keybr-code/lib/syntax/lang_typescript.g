@@ -189,7 +189,7 @@ ts_identifier ->
 
 ts_number_literal -> { :class(number) numeric_literal } ;
 
-ts_string_literal -> { :class(string) "\"error\"" | "\"success\"" | "\"pending\"" | "\"data\"" | "\"key\"" | "\"value\"" } ;
+ts_string_literal -> { :class(string) "\"" generic_string_content "\"" } ;
 
 ts_comment ->
   { :class(comment)

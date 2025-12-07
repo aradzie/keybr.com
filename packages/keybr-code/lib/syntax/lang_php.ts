@@ -255,14 +255,7 @@ export default {
   "php_number_literal": {
     "cls": "number",
     "span": {
-      "alt": [
-        "0",
-        "1",
-        "2",
-        "10",
-        "42",
-        "100"
-      ]
+      "ref": "numeric_literal"
     }
   },
   "php_boolean_literal": {

@@ -65,7 +65,7 @@ php_string_literal -> { :class(string) "\"" php_string_content "\"" } ;
 
 php_string_content -> "value" | "key" | "name" | "id" | "email" | "status" | "active" ;
 
-php_number_literal -> { :class(number) "0" | "1" | "2" | "10" | "42" | "100" } ;
+php_number_literal -> { :class(number) numeric_literal } ;
 
 php_boolean_literal -> kw_true | kw_false ;
 

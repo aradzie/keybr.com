@@ -715,9 +715,12 @@ export default {
   "csharp_string_literal": {
     "cls": "string",
     "span": {
-      "alt": [
-        "",
-        "hello"
+      "seq": [
+        "\"",
+        {
+          "ref": "generic_string_content"
+        },
+        "\""
       ]
     }
   },

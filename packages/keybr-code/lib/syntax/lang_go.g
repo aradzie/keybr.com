@@ -150,9 +150,9 @@ golang_literal ->
   ;
 
 golang_number_literal -> { :class(number) numeric_literal } ;
-golang_string_literal -> { :class(number) "\"" "\"" | "`" "`" } ;
+golang_string_literal -> { :class(string) "\"" generic_string_content "\"" } ;
 golang_boolean_literal -> kw_true | kw_false;
-golang_nil_literal -> "nil";
+golang_nil_literal -> { :class(keyword) "nil" };
 
 golang_function_call -> golang_identifier _ "(" _ argument_list _ ")";
 argument_list -> [golang_expression [_ "," _ golang_expression]];

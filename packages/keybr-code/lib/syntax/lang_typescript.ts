@@ -887,13 +887,12 @@ export default {
   "ts_string_literal": {
     "cls": "string",
     "span": {
-      "alt": [
-        "\"error\"",
-        "\"success\"",
-        "\"pending\"",
-        "\"data\"",
-        "\"key\"",
-        "\"value\""
+      "seq": [
+        "\"",
+        {
+          "ref": "generic_string_content"
+        },
+        "\""
       ]
     }
   },

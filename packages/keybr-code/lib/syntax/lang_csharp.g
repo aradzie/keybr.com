@@ -65,7 +65,7 @@ argument_list -> [csharp_expression [_ "," _ csharp_expression]];
 
 csharp_literal -> csharp_number_literal | csharp_string_literal | csharp_boolean_literal | csharp_null_literal;
 csharp_number_literal -> { :class(number) numeric_literal } ;
-csharp_string_literal -> { :class(string) "" | "hello" };
+csharp_string_literal -> { :class(string) "\"" generic_string_content "\"" };
 csharp_boolean_literal -> kw_true | kw_false;
 csharp_null_literal -> kw_null;
 

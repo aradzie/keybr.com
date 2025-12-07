@@ -46,3 +46,53 @@ oct_digit -> "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" ;
 hex_digit -> "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "a" | "b" | "c" | "d" | "e" | "f" ;
 dec_digit -> "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
 dec_start -> "1" | "1" | "1" | "1" | "1" |"2" | "2" | "2" | "3" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
+
+generic_string_content ->
+    ""
+  | "\\n"
+  | "\\t"
+  | "a"
+  | "b"
+  | "c"
+  | "x"
+  | "y"
+  | "z"
+  | "error"
+  | "success"
+  | "pending"
+  | "data"
+  | "key"
+  | "value"
+  | "Debug"
+  | "Error"
+  | "Failure"
+  | "Info"
+  | "Input"
+  | "Key"
+  | "Message"
+  | "Name"
+  | "OK"
+  | "Output"
+  | "Result"
+  | "Success"
+  | "Test"
+  | "Value"
+  | "Warning"
+  | "config.json"
+  | "config.toml"
+  | "session_id"
+  | "user_token"
+  | "api_key"
+  ;
+
+generic_char_content ->
+    "_"
+  | "\\n"
+  | "\\t"
+  | "a"
+  | "b"
+  | "c"
+  | "x"
+  | "y"
+  | "z"
+  ;

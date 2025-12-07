@@ -2,8 +2,12 @@ start -> python_statement ;
 
 python_statement ->
     python_function_definition
+  | python_function_definition
+  | python_class_definition
   | python_class_definition
   | python_assign
+  | python_assign
+  | python_return
   | python_return
   | { :if(comments) python_comment }
   ;
@@ -43,7 +47,11 @@ python_function_call -> python_function_name "(" python_function_arg [ "," _ pyt
 python_function_arg -> python_variable_name "=" python_expression ;
 
 python_type ->
-    python_primitive_type
+    python_class_name
+  | python_class_name
+  | python_class_name
+  | python_primitive_type
+  | python_primitive_type
   | ( "list[" python_primitive_type "]" )
   | ( "dict[" python_primitive_type "," _ python_primitive_type "]" )
   | ( "tuple[" python_primitive_type "," _ "...]" )
@@ -51,8 +59,7 @@ python_type ->
   ;
 
 python_primitive_type ->
-    python_class_name
-  | kw_int
+    kw_int
   | kw_str
   | kw_bool
   | kw_float
@@ -91,15 +98,22 @@ python_literal ->
   ;
 
 python_string_literal ->
-    { :class(string) ("\"" python_string_value "\"") }
-  | { :class(string) ("'" python_string_value "'" ) }
-  | { :class(string) ("\"\"\"" python_string_value "\"\"\"") }
-  | { :class(string) ("'''" python_string_value "'''" ) }
+    { :class(string) ("\"" generic_string_content "\"") }
+  | { :class(string) ("'" generic_string_content "'" ) }
+  | { :class(string) ("\"\"\"" generic_string_content "\"\"\"") }
+  | { :class(string) ("'''" generic_string_content "'''" ) }
   ;
 
 python_variable_name -> generic_variable_name ;
 
 python_function_name ->
+    python_builtin_function_name
+  | generic_function_name
+  | generic_function_name
+  | generic_function_name
+  ;
+
+python_builtin_function_name ->
     "__call__"
   | "__enter__"
   | "__eq__"
@@ -115,31 +129,9 @@ python_function_name ->
   | "__setattr__"
   | "__setitem__"
   | "__str__"
-  | generic_function_name
   ;
 
 python_class_name -> generic_class_name ;
-
-python_string_value ->
-    "."
-  | "abc"
-  | "channels_first"
-  | "channels_last"
-  | "constant"
-  | "dtype"
-  | "int"
-  | "jax"
-  | "name"
-  | "same"
-  | "shape"
-  | "tensorflow"
-  | "torch"
-  | "uvw"
-  | "valid"
-  | "x"
-  | "xyz"
-  | "zeros"
-  ;
 
 python_number_literal -> { :class(number) numeric_literal } ;
 

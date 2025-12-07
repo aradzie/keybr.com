@@ -2,8 +2,12 @@ start -> rust_statement ;
 
 rust_statement ->
     rust_function_definition
+  | rust_function_definition
+  | rust_struct_definition
   | rust_struct_definition
   | rust_assign
+  | rust_assign
+  | rust_return
   | rust_return
   | { :if(comments) rust_comment }
   ;
@@ -47,18 +51,18 @@ rust_type ->
     rust_primitive_type
   | "&" [ kw_mut _ ] rust_type
   | rust_type _ "<" rust_type [ "," _ rust_type ] ">"
-  | "[" rust_type ";" _ rust_number_literal "]"
+  | { :if(numbers) "[" rust_type ";" _ rust_number_literal "]" }
   | "(" rust_type [ "," _ rust_type ] ")"
   ;
 
 rust_primitive_type ->
     rust_struct_name
-  | kw_u32
-  | kw_u64
-  | kw_i32
-  | kw_i64
-  | kw_f32
-  | kw_f64
+  | { :if(numbers) kw_u32 }
+  | { :if(numbers) kw_u64 }
+  | { :if(numbers) kw_i32 }
+  | { :if(numbers) kw_i64 }
+  | { :if(numbers) kw_f32 }
+  | { :if(numbers) kw_f64 }
   | kw_usize
   | kw_isize
   | kw_bool
@@ -90,7 +94,7 @@ rust_binary_operator ->
 
 rust_array_definition ->
     "[" rust_expression [ "," _ rust_expression ] "]"
-  | "[" rust_expression ";" _ rust_number_literal "]"
+  | { :if(numbers) "[" rust_expression ";" _ rust_number_literal "]" }
   ;
 
 rust_struct_instantiation ->
@@ -103,15 +107,15 @@ rust_field_assignment ->
     rust_variable_name ":" _ rust_expression ;
 
 rust_literal ->
-    rust_string_literal
-  | rust_number_literal
-  | rust_boolean_literal
+    rust_boolean_literal
   | rust_char_literal
+  | rust_string_literal
+  | { :if(numbers) rust_number_literal }
   ;
 
-rust_string_literal -> { :class(string) "\"" rust_string_value "\"" } ;
+rust_string_literal -> { :class(string) "\"" generic_string_content "\"" } ;
 
-rust_char_literal -> { :class(string) "'" rust_char_value "'" } ;
+rust_char_literal -> { :class(string) "'" generic_char_content "'" } ;
 
 rust_boolean_literal -> kw_true | kw_false ;
 
@@ -120,44 +124,6 @@ rust_variable_name -> generic_variable_name ;
 rust_function_name -> generic_function_name ;
 
 rust_struct_name -> generic_class_name ;
-
-rust_string_value ->
-    ""
-  | "Hello, world!"
-  | "Error"
-  | "OK"
-  | "Test"
-  | "Name"
-  | "Value"
-  | "Message"
-  | "Key"
-  | "Input"
-  | "Output"
-  | "Data"
-  | "Result"
-  | "Success"
-  | "Failure"
-  | "Warning"
-  | "Info"
-  | "Debug"
-  | "Rust"
-  | "Sample"
-  ;
-
-rust_char_value ->
-    "a"
-  | "b"
-  | "c"
-  | "x"
-  | "y"
-  | "z"
-  | "0"
-  | "1"
-  | "2"
-  | "\\n"
-  | "\\t"
-  | "\\r"
-  ;
 
 rust_number_literal -> { :class(number) numeric_literal } ;
 

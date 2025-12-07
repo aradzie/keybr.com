@@ -280,10 +280,12 @@ export default {
   "js_string_literal": {
     "cls": "string",
     "span": {
-      "alt": [
-        "\"a\"",
-        "\"b\"",
-        "\"c\""
+      "seq": [
+        "\"",
+        {
+          "ref": "generic_string_content"
+        },
+        "\""
       ]
     }
   },

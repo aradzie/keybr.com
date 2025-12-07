@@ -12,10 +12,22 @@ export default {
         "ref": "rust_function_definition"
       },
       {
+        "ref": "rust_function_definition"
+      },
+      {
+        "ref": "rust_struct_definition"
+      },
+      {
         "ref": "rust_struct_definition"
       },
       {
         "ref": "rust_assign"
+      },
+      {
+        "ref": "rust_assign"
+      },
+      {
+        "ref": "rust_return"
       },
       {
         "ref": "rust_return"
@@ -322,18 +334,22 @@ export default {
         ]
       },
       {
-        "seq": [
-          "[",
-          {
-            "ref": "rust_type"
-          },
-          ";",
-          " ",
-          {
-            "ref": "rust_number_literal"
-          },
-          "]"
-        ]
+        "flag": "numbers",
+        "inv": false,
+        "cond": {
+          "seq": [
+            "[",
+            {
+              "ref": "rust_type"
+            },
+            ";",
+            " ",
+            {
+              "ref": "rust_number_literal"
+            },
+            "]"
+          ]
+        }
       },
       {
         "seq": [
@@ -364,22 +380,46 @@ export default {
         "ref": "rust_struct_name"
       },
       {
-        "ref": "kw_u32"
+        "flag": "numbers",
+        "inv": false,
+        "cond": {
+          "ref": "kw_u32"
+        }
       },
       {
-        "ref": "kw_u64"
+        "flag": "numbers",
+        "inv": false,
+        "cond": {
+          "ref": "kw_u64"
+        }
       },
       {
-        "ref": "kw_i32"
+        "flag": "numbers",
+        "inv": false,
+        "cond": {
+          "ref": "kw_i32"
+        }
       },
       {
-        "ref": "kw_i64"
+        "flag": "numbers",
+        "inv": false,
+        "cond": {
+          "ref": "kw_i64"
+        }
       },
       {
-        "ref": "kw_f32"
+        "flag": "numbers",
+        "inv": false,
+        "cond": {
+          "ref": "kw_f32"
+        }
       },
       {
-        "ref": "kw_f64"
+        "flag": "numbers",
+        "inv": false,
+        "cond": {
+          "ref": "kw_f64"
+        }
       },
       {
         "ref": "kw_usize"
@@ -445,18 +485,22 @@ export default {
         ]
       },
       {
-        "seq": [
-          "[",
-          {
-            "ref": "rust_expression"
-          },
-          ";",
-          " ",
-          {
-            "ref": "rust_number_literal"
-          },
-          "]"
-        ]
+        "flag": "numbers",
+        "inv": false,
+        "cond": {
+          "seq": [
+            "[",
+            {
+              "ref": "rust_expression"
+            },
+            ";",
+            " ",
+            {
+              "ref": "rust_number_literal"
+            },
+            "]"
+          ]
+        }
       }
     ]
   },
@@ -509,16 +553,20 @@ export default {
   "rust_literal": {
     "alt": [
       {
-        "ref": "rust_string_literal"
-      },
-      {
-        "ref": "rust_number_literal"
-      },
-      {
         "ref": "rust_boolean_literal"
       },
       {
         "ref": "rust_char_literal"
+      },
+      {
+        "ref": "rust_string_literal"
+      },
+      {
+        "flag": "numbers",
+        "inv": false,
+        "cond": {
+          "ref": "rust_number_literal"
+        }
       }
     ]
   },
@@ -528,7 +576,7 @@ export default {
       "seq": [
         "\"",
         {
-          "ref": "rust_string_value"
+          "ref": "generic_string_content"
         },
         "\""
       ]
@@ -540,7 +588,7 @@ export default {
       "seq": [
         "'",
         {
-          "ref": "rust_char_value"
+          "ref": "generic_char_content"
         },
         "'"
       ]
@@ -564,46 +612,6 @@ export default {
   },
   "rust_struct_name": {
     "ref": "generic_class_name"
-  },
-  "rust_string_value": {
-    "alt": [
-      "",
-      "Hello, world!",
-      "Error",
-      "OK",
-      "Test",
-      "Name",
-      "Value",
-      "Message",
-      "Key",
-      "Input",
-      "Output",
-      "Data",
-      "Result",
-      "Success",
-      "Failure",
-      "Warning",
-      "Info",
-      "Debug",
-      "Rust",
-      "Sample"
-    ]
-  },
-  "rust_char_value": {
-    "alt": [
-      "a",
-      "b",
-      "c",
-      "x",
-      "y",
-      "z",
-      "0",
-      "1",
-      "2",
-      "\\n",
-      "\\t",
-      "\\r"
-    ]
   },
   "rust_number_literal": {
     "cls": "number",

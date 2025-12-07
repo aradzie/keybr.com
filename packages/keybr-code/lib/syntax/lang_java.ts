@@ -369,15 +369,7 @@ export default {
   "java_number_literal": {
     "cls": "number",
     "span": {
-      "alt": [
-        "0",
-        "1",
-        "2",
-        "42",
-        "100",
-        "200",
-        "404"
-      ]
+      "ref": "numeric_literal"
     }
   },
   "java_string_literal": {
@@ -385,6 +377,9 @@ export default {
     "span": {
       "seq": [
         "\"",
+        {
+          "ref": "generic_string_content"
+        },
         "\""
       ]
     }

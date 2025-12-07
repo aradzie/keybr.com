@@ -79,6 +79,6 @@ js_id ->
 
 js_literal -> kw_null | kw_true | kw_false | js_string_literal | js_template_literal ;
 
-js_string_literal -> { :class(string) "\"a\"" | "\"b\"" | "\"c\"" } ;
+js_string_literal -> { :class(string) "\"" generic_string_content "\"" } ;
 
 js_template_literal -> { :class(string) "`abc=${" js_id "}`" } ;

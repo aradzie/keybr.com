@@ -12,10 +12,22 @@ export default {
         "ref": "python_function_definition"
       },
       {
+        "ref": "python_function_definition"
+      },
+      {
+        "ref": "python_class_definition"
+      },
+      {
         "ref": "python_class_definition"
       },
       {
         "ref": "python_assign"
+      },
+      {
+        "ref": "python_assign"
+      },
+      {
+        "ref": "python_return"
       },
       {
         "ref": "python_return"
@@ -303,6 +315,18 @@ export default {
   "python_type": {
     "alt": [
       {
+        "ref": "python_class_name"
+      },
+      {
+        "ref": "python_class_name"
+      },
+      {
+        "ref": "python_class_name"
+      },
+      {
+        "ref": "python_primitive_type"
+      },
+      {
         "ref": "python_primitive_type"
       },
       {
@@ -356,9 +380,6 @@ export default {
   },
   "python_primitive_type": {
     "alt": [
-      {
-        "ref": "python_class_name"
-      },
       {
         "ref": "kw_int"
       },
@@ -501,7 +522,7 @@ export default {
           "seq": [
             "\"",
             {
-              "ref": "python_string_value"
+              "ref": "generic_string_content"
             },
             "\""
           ]
@@ -513,7 +534,7 @@ export default {
           "seq": [
             "'",
             {
-              "ref": "python_string_value"
+              "ref": "generic_string_content"
             },
             "'"
           ]
@@ -525,7 +546,7 @@ export default {
           "seq": [
             "\"\"\"",
             {
-              "ref": "python_string_value"
+              "ref": "generic_string_content"
             },
             "\"\"\""
           ]
@@ -537,7 +558,7 @@ export default {
           "seq": [
             "'''",
             {
-              "ref": "python_string_value"
+              "ref": "generic_string_content"
             },
             "'''"
           ]
@@ -549,6 +570,22 @@ export default {
     "ref": "generic_variable_name"
   },
   "python_function_name": {
+    "alt": [
+      {
+        "ref": "python_builtin_function_name"
+      },
+      {
+        "ref": "generic_function_name"
+      },
+      {
+        "ref": "generic_function_name"
+      },
+      {
+        "ref": "generic_function_name"
+      }
+    ]
+  },
+  "python_builtin_function_name": {
     "alt": [
       "__call__",
       "__enter__",
@@ -564,36 +601,11 @@ export default {
       "__repr__",
       "__setattr__",
       "__setitem__",
-      "__str__",
-      {
-        "ref": "generic_function_name"
-      }
+      "__str__"
     ]
   },
   "python_class_name": {
     "ref": "generic_class_name"
-  },
-  "python_string_value": {
-    "alt": [
-      ".",
-      "abc",
-      "channels_first",
-      "channels_last",
-      "constant",
-      "dtype",
-      "int",
-      "jax",
-      "name",
-      "same",
-      "shape",
-      "tensorflow",
-      "torch",
-      "uvw",
-      "valid",
-      "x",
-      "xyz",
-      "zeros"
-    ]
   },
   "python_number_literal": {
     "cls": "number",

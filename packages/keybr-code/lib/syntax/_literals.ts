@@ -576,5 +576,57 @@ export default {
       "8",
       "9"
     ]
+  },
+  "generic_string_content": {
+    "alt": [
+      "",
+      "\\n",
+      "\\t",
+      "a",
+      "b",
+      "c",
+      "x",
+      "y",
+      "z",
+      "error",
+      "success",
+      "pending",
+      "data",
+      "key",
+      "value",
+      "Debug",
+      "Error",
+      "Failure",
+      "Info",
+      "Input",
+      "Key",
+      "Message",
+      "Name",
+      "OK",
+      "Output",
+      "Result",
+      "Success",
+      "Test",
+      "Value",
+      "Warning",
+      "config.json",
+      "config.toml",
+      "session_id",
+      "user_token",
+      "api_key"
+    ]
+  },
+  "generic_char_content": {
+    "alt": [
+      "_",
+      "\\n",
+      "\\t",
+      "a",
+      "b",
+      "c",
+      "x",
+      "y",
+      "z"
+    ]
   }
 } as Rules;
