@@ -9,25 +9,21 @@ export default {
   "python_statement": {
     "alt": [
       {
-        "ref": "python_function_definition"
+        "flag": "defs",
+        "inv": false,
+        "cond": {
+          "ref": "python_function_definition"
+        }
       },
       {
-        "ref": "python_function_definition"
-      },
-      {
-        "ref": "python_class_definition"
-      },
-      {
-        "ref": "python_class_definition"
+        "flag": "defs",
+        "inv": false,
+        "cond": {
+          "ref": "python_class_definition"
+        }
       },
       {
         "ref": "python_assign"
-      },
-      {
-        "ref": "python_assign"
-      },
-      {
-        "ref": "python_return"
       },
       {
         "ref": "python_return"

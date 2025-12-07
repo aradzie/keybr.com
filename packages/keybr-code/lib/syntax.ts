@@ -63,6 +63,7 @@ export class Syntax implements EnumItem {
   static readonly FLAGS = [
     "capitals", //
     "comments",
+    "defs",
     "numbers",
     "strings",
     "types",

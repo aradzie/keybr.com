@@ -1,13 +1,9 @@
 start -> python_statement ;
 
 python_statement ->
-    python_function_definition
-  | python_function_definition
-  | python_class_definition
-  | python_class_definition
+    { :if(defs) python_function_definition }
+  | { :if(defs) python_class_definition }
   | python_assign
-  | python_assign
-  | python_return
   | python_return
   | { :if(comments) python_comment }
   ;
