@@ -187,7 +187,7 @@ ts_identifier ->
   | "ThisType"
   ;
 
-ts_number_literal -> { :class(number) "0" | "1" | "2" | "42" | "100" | "200" | "404" | "500" } ;
+ts_number_literal -> { :class(number) numeric_literal } ;
 
 ts_string_literal -> { :class(string) "\"error\"" | "\"success\"" | "\"pending\"" | "\"data\"" | "\"key\"" | "\"value\"" } ;
 

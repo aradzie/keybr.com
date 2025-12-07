@@ -149,7 +149,7 @@ golang_literal ->
   | golang_nil_literal
   ;
 
-golang_number_literal -> { :class(number) "0" | "1" | "2" | "42" | "100" | "200" | "404" } ;
+golang_number_literal -> { :class(number) numeric_literal } ;
 golang_string_literal -> { :class(number) "\"" "\"" | "`" "`" } ;
 golang_boolean_literal -> kw_true | kw_false;
 golang_nil_literal -> "nil";

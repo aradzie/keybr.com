@@ -709,15 +709,7 @@ export default {
   "csharp_number_literal": {
     "cls": "number",
     "span": {
-      "alt": [
-        "0",
-        "1",
-        "2",
-        "42",
-        "100",
-        "200",
-        "404"
-      ]
+      "ref": "numeric_literal"
     }
   },
   "csharp_string_literal": {

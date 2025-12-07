@@ -881,16 +881,7 @@ export default {
   "ts_number_literal": {
     "cls": "number",
     "span": {
-      "alt": [
-        "0",
-        "1",
-        "2",
-        "42",
-        "100",
-        "200",
-        "404",
-        "500"
-      ]
+      "ref": "numeric_literal"
     }
   },
   "ts_string_literal": {

@@ -8,7 +8,7 @@ python_statement ->
   | { :if(comments) python_comment }
   ;
 
-python_function_definition -> kw_def _ python_function_name "(" python_arguments ")" { :if(types) _ "->" _ python_type } ":";
+python_function_definition -> kw_def _ python_function_name "(" python_arguments ")" { :if(types) _ "->" _ python_type } ":" ;
 
 python_class_definition -> kw_class _ python_class_name [ "(" python_class_name ")" ] ":" ;
 
@@ -16,7 +16,7 @@ python_assign -> python_variable_name [ "[" python_literal "]" ] _ "=" _ python_
 
 python_return -> kw_return _ python_expression ;
 
-python_arguments -> python_argument [ "," _ python_argument ] ;
+python_arguments -> python_argument [ "," _ python_argument [ "," _ python_argument ] ] ;
 
 python_argument -> python_variable_name { :if(types) ":" _ python_type } ;
 
@@ -141,58 +141,6 @@ python_string_value ->
   | "zeros"
   ;
 
-python_number_literal ->
-  { :class(number)
-    "1"
-  | "0.001"
-  | "0.01"
-  | "0.1"
-  | "0.2"
-  | "0.25"
-  | "0.3"
-  | "0.4"
-  | "0.5"
-  | "0.6"
-  | "0.7"
-  | "0.8"
-  | "0.9"
-  | "1.5"
-  | "10"
-  | "100"
-  | "1000"
-  | "1024"
-  | "11"
-  | "12"
-  | "128"
-  | "13"
-  | "14"
-  | "15"
-  | "16"
-  | "17"
-  | "1e-05"
-  | "1e-06"
-  | "2"
-  | "20"
-  | "200"
-  | "24"
-  | "25"
-  | "255"
-  | "256"
-  | "3"
-  | "30"
-  | "32"
-  | "4"
-  | "40"
-  | "5"
-  | "50.0"
-  | "512"
-  | "6"
-  | "60"
-  | "64"
-  | "7"
-  | "8"
-  | "9"
-  }
-  ;
+python_number_literal -> { :class(number) numeric_literal } ;
 
 python_comment -> { :class(comment) "# " comment_text } ;
