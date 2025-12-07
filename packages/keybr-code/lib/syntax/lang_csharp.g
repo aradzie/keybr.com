@@ -10,7 +10,7 @@ csharp_statement ->
   | property_declaration
   | variable_declaration
   | constant_declaration
-  | comment
+  | { :if(comments) comment }
   ;
 
 namespace_declaration -> kw_namespace _ csharp_namespace_name _ "{" _ csharp_statement_list _ "}";
@@ -63,11 +63,15 @@ csharp_expression -> csharp_identifier | csharp_literal | csharp_method_call;
 csharp_method_call -> csharp_identifier _ "(" _ argument_list _ ")";
 argument_list -> [csharp_expression [_ "," _ csharp_expression]];
 
-csharp_literal -> csharp_number_literal | csharp_string_literal | csharp_boolean_literal | csharp_null_literal;
-csharp_number_literal -> { :class(number) numeric_literal } ;
+csharp_literal ->
+    kw_null
+  | ( kw_true | kw_false )
+  | { :if(numbers) csharp_number_literal }
+  | { :if(strings) csharp_string_literal }
+  ;
+
+csharp_number_literal -> { :class(number) numeric_literal };
 csharp_string_literal -> { :class(string) "\"" generic_string_content "\"" };
-csharp_boolean_literal -> kw_true | kw_false;
-csharp_null_literal -> kw_null;
 
 csharp_identifier -> "x" | "y" | "z" | "result" | "data" | "input" | "err" | "val";
 csharp_method_name -> "Main" | "Calculate" | "SetValue" | "GetResult" | "ToString" | "Equals" | "Dispose";

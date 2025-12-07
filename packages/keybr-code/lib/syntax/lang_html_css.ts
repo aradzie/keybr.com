@@ -41,17 +41,38 @@ export default {
   },
   "html_attr_list": {
     "seq": [
-      " ",
       {
-        "ref": "html_id_attr"
+        "f": 0.5,
+        "opt": {
+          "seq": [
+            " ",
+            {
+              "ref": "html_id_attr"
+            }
+          ]
+        }
       },
-      " ",
       {
-        "ref": "html_class_attr"
+        "f": 0.5,
+        "opt": {
+          "seq": [
+            " ",
+            {
+              "ref": "html_class_attr"
+            }
+          ]
+        }
       },
-      " ",
       {
-        "ref": "html_style_attr"
+        "f": 0.5,
+        "opt": {
+          "seq": [
+            " ",
+            {
+              "ref": "html_style_attr"
+            }
+          ]
+        }
       }
     ]
   },
@@ -540,23 +561,29 @@ export default {
   "css_color_value": {
     "alt": [
       {
-        "seq": [
-          "#",
-          {
-            "ref": "css_hex_digit"
-          },
-          {
-            "ref": "css_hex_digit"
-          },
-          {
-            "ref": "css_hex_digit"
-          }
-        ]
+        "ref": "css_hex_color_value"
       },
       {
         "ref": "css_named_color"
       }
     ]
+  },
+  "css_hex_color_value": {
+    "cls": "number",
+    "span": {
+      "seq": [
+        "#",
+        {
+          "ref": "css_hex_digit"
+        },
+        {
+          "ref": "css_hex_digit"
+        },
+        {
+          "ref": "css_hex_digit"
+        }
+      ]
+    }
   },
   "css_hex_digit": {
     "alt": [

@@ -107,25 +107,23 @@ rust_field_assignment ->
     rust_variable_name ":" _ rust_expression ;
 
 rust_literal ->
-    rust_boolean_literal
-  | rust_char_literal
-  | rust_string_literal
+    ( kw_true | kw_false )
+  | { :if(strings) rust_char_literal }
+  | { :if(strings) rust_string_literal }
   | { :if(numbers) rust_number_literal }
   ;
 
-rust_string_literal -> { :class(string) "\"" generic_string_content "\"" } ;
-
 rust_char_literal -> { :class(string) "'" generic_char_content "'" } ;
 
-rust_boolean_literal -> kw_true | kw_false ;
+rust_string_literal -> { :class(string) "\"" generic_string_content "\"" } ;
+
+rust_number_literal -> { :class(number) numeric_literal } ;
 
 rust_variable_name -> generic_variable_name ;
 
 rust_function_name -> generic_function_name ;
 
 rust_struct_name -> generic_class_name ;
-
-rust_number_literal -> { :class(number) numeric_literal } ;
 
 rust_comment ->
   { :class(comment)

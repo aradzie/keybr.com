@@ -264,18 +264,43 @@ export default {
         "ref": "kw_null"
       },
       {
-        "ref": "kw_true"
+        "alt": [
+          {
+            "ref": "kw_true"
+          },
+          {
+            "ref": "kw_false"
+          }
+        ]
       },
       {
-        "ref": "kw_false"
+        "flag": "numbers",
+        "inv": false,
+        "cond": {
+          "ref": "js_number_literal"
+        }
       },
       {
-        "ref": "js_string_literal"
+        "flag": "strings",
+        "inv": false,
+        "cond": {
+          "ref": "js_string_literal"
+        }
       },
       {
-        "ref": "js_template_literal"
+        "flag": "strings",
+        "inv": false,
+        "cond": {
+          "ref": "js_template_literal"
+        }
       }
     ]
+  },
+  "js_number_literal": {
+    "cls": "number",
+    "span": {
+      "ref": "numeric_literal"
+    }
   },
   "js_string_literal": {
     "cls": "string",

@@ -306,7 +306,9 @@ export default {
       {
         "ref": "python_variable_name"
       },
+      " ",
       "=",
+      " ",
       {
         "ref": "python_expression"
       }
@@ -490,29 +492,41 @@ export default {
     ]
   },
   "python_literal": {
-    "seq": [
+    "alt": [
+      {
+        "ref": "kw_None"
+      },
+      {
+        "alt": [
+          {
+            "ref": "kw_True"
+          },
+          {
+            "ref": "kw_False"
+          }
+        ]
+      },
       {
         "flag": "numbers",
         "inv": false,
         "cond": {
-          "alt": [
-            {
-              "ref": "python_string_literal"
-            },
-            {
-              "ref": "python_number_literal"
-            }
-          ]
+          "ref": "python_number_literal"
         }
       },
       {
-        "flag": "numbers",
-        "inv": true,
+        "flag": "strings",
+        "inv": false,
         "cond": {
           "ref": "python_string_literal"
         }
       }
     ]
+  },
+  "python_number_literal": {
+    "cls": "number",
+    "span": {
+      "ref": "numeric_literal"
+    }
   },
   "python_string_literal": {
     "alt": [
@@ -606,12 +620,6 @@ export default {
   },
   "python_class_name": {
     "ref": "generic_class_name"
-  },
-  "python_number_literal": {
-    "cls": "number",
-    "span": {
-      "ref": "numeric_literal"
-    }
   },
   "python_comment": {
     "cls": "comment",

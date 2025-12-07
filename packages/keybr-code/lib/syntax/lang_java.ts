@@ -24,7 +24,11 @@ export default {
         "ref": "variable_declaration"
       },
       {
-        "ref": "comment"
+        "flag": "comments",
+        "inv": false,
+        "cond": {
+          "ref": "comment"
+        }
       }
     ]
   },
@@ -68,7 +72,7 @@ export default {
     ]
   },
   "class_member": {
-    "alt": [
+    "seq": [
       {
         "seq": [
           {
@@ -103,76 +107,23 @@ export default {
                 " "
               ]
             }
-          },
-          {
-            "f": 0.5,
-            "opt": {
-              "seq": [
-                {
-                  "f": 0.5,
-                  "opt": {
-                    "alt": [
-                      {
-                        "ref": "kw_private"
-                      },
-                      {
-                        "ref": "kw_public"
-                      },
-                      {
-                        "ref": "kw_protected"
-                      }
-                    ]
-                  }
-                },
-                " "
-              ]
-            }
-          },
-          {
-            "ref": "method_signature"
           }
         ]
       },
       {
-        "ref": "variable_declaration"
+        "alt": [
+          {
+            "ref": "method_signature"
+          },
+          {
+            "ref": "variable_declaration"
+          }
+        ]
       }
     ]
   },
   "method_signature": {
     "seq": [
-      {
-        "f": 0.5,
-        "opt": {
-          "seq": [
-            {
-              "ref": "access_modifier"
-            },
-            " "
-          ]
-        }
-      },
-      {
-        "f": 0.5,
-        "opt": {
-          "seq": [
-            {
-              "ref": "kw_static"
-            },
-            " "
-          ]
-        }
-      },
-      {
-        "f": 0.5,
-        "opt": {
-          "seq": [
-            {
-              "ref": "kw_final"
-            },
-            " "
-          ]
-        }
-      },
       {
         "ref": "return_type"
       },
@@ -181,7 +132,6 @@ export default {
         "ref": "java_method_name"
       },
       "(",
-      " ",
       {
         "ref": "parameter_list"
       },
@@ -234,17 +184,6 @@ export default {
   },
   "variable_declaration": {
     "seq": [
-      {
-        "f": 0.5,
-        "opt": {
-          "seq": [
-            {
-              "ref": "kw_final"
-            },
-            " "
-          ]
-        }
-      },
       {
         "ref": "java_type"
       },
@@ -356,13 +295,31 @@ export default {
   "java_literal": {
     "alt": [
       {
-        "ref": "java_number_literal"
+        "ref": "kw_null"
       },
       {
-        "ref": "java_string_literal"
+        "alt": [
+          {
+            "ref": "kw_true"
+          },
+          {
+            "ref": "kw_false"
+          }
+        ]
       },
       {
-        "ref": "java_boolean_literal"
+        "flag": "numbers",
+        "inv": false,
+        "cond": {
+          "ref": "java_number_literal"
+        }
+      },
+      {
+        "flag": "strings",
+        "inv": false,
+        "cond": {
+          "ref": "java_string_literal"
+        }
       }
     ]
   },
@@ -384,23 +341,12 @@ export default {
       ]
     }
   },
-  "java_boolean_literal": {
-    "alt": [
-      {
-        "ref": "kw_true"
-      },
-      {
-        "ref": "kw_false"
-      }
-    ]
-  },
   "java_method_call": {
     "seq": [
       {
         "ref": "java_variable_name"
       },
       "(",
-      " ",
       {
         "ref": "argument_list"
       },
@@ -508,7 +454,6 @@ export default {
         "ref": "java_method_name"
       },
       "(",
-      " ",
       {
         "ref": "parameter_list"
       },

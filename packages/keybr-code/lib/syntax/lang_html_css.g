@@ -7,10 +7,10 @@ html_tag -> html_self_closing_tag ;
 html_self_closing_tag -> "<" html_ident html_attr_list "/>" ;
 
 html_attr_list ->
-    _ html_id_attr
-    _ html_class_attr
-    _ html_style_attr
-    ;
+  [ _ html_id_attr ]
+  [ _ html_class_attr ]
+  [ _ html_style_attr ]
+  ;
 
 html_id_attr -> { :class(keyword) "id" } "=" "\"" css_class_id "\"" ;
 
@@ -111,27 +111,13 @@ css_image_url -> { :class(string) ( "logo" | "bg" | "img" | "hero" | "footer" ) 
 
 css_font_url -> { :class(string) ( "mono" | "serif" | "sans-serif" ) ( ".woff" | ".ttf" ) } ;
 
-css_var_id ->
-    "--"
-  ( "color"
-  | "x"
-  | "y"
-  )
-  ;
+css_var_id -> "--" ( "color" | "x" | "y" ) ;
 
-css_color_value ->
-    "#" css_hex_digit css_hex_digit css_hex_digit
-  | css_named_color
-  ;
+css_color_value -> css_hex_color_value | css_named_color ;
 
-css_hex_digit ->
-    "a"
-  | "b"
-  | "c"
-  | "d"
-  | "e"
-  | "f"
-  ;
+css_hex_color_value -> { :class(number) "#" css_hex_digit css_hex_digit css_hex_digit } ;
+
+css_hex_digit -> "a" | "b" | "c" | "d" | "e" | "f" ;
 
 css_class_id ->
     "main"

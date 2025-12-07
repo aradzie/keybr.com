@@ -36,7 +36,11 @@ export default {
         "ref": "constant_declaration"
       },
       {
-        "ref": "comment"
+        "flag": "comments",
+        "inv": false,
+        "cond": {
+          "ref": "comment"
+        }
       }
     ]
   },
@@ -693,16 +697,31 @@ export default {
   "csharp_literal": {
     "alt": [
       {
-        "ref": "csharp_number_literal"
+        "ref": "kw_null"
       },
       {
-        "ref": "csharp_string_literal"
+        "alt": [
+          {
+            "ref": "kw_true"
+          },
+          {
+            "ref": "kw_false"
+          }
+        ]
       },
       {
-        "ref": "csharp_boolean_literal"
+        "flag": "numbers",
+        "inv": false,
+        "cond": {
+          "ref": "csharp_number_literal"
+        }
       },
       {
-        "ref": "csharp_null_literal"
+        "flag": "strings",
+        "inv": false,
+        "cond": {
+          "ref": "csharp_string_literal"
+        }
       }
     ]
   },
@@ -723,19 +742,6 @@ export default {
         "\""
       ]
     }
-  },
-  "csharp_boolean_literal": {
-    "alt": [
-      {
-        "ref": "kw_true"
-      },
-      {
-        "ref": "kw_false"
-      }
-    ]
-  },
-  "csharp_null_literal": {
-    "ref": "kw_null"
   },
   "csharp_identifier": {
     "alt": [

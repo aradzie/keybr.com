@@ -52,12 +52,7 @@ export const lessonProps = {
   } as const,
   code: {
     syntax: itemProp("lesson.code.syntax", Syntax.ALL, Syntax.HTML),
-    flags: flagsProp("lesson.code.flags", [
-      "capitals",
-      "numbers",
-      "types",
-      "comments",
-    ]),
+    flags: flagsProp("lesson.code.flags", Syntax.FLAGS),
   } as const,
   capitals: numberProp("lesson.capitals", 0, { min: 0, max: 1 }),
   punctuators: numberProp("lesson.punctuators", 0, { min: 0, max: 1 }),

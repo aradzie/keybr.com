@@ -44,7 +44,7 @@ python_binary_operation -> python_expression _ python_binary_operator _ python_e
 
 python_function_call -> python_function_name "(" python_function_arg [ "," _ python_function_arg ] ;
 
-python_function_arg -> python_variable_name "=" python_expression ;
+python_function_arg -> python_variable_name _ "=" _ python_expression ;
 
 python_type ->
     python_class_name
@@ -93,9 +93,13 @@ python_dict_definition -> "{" python_dict_key_value_pair [ "," _ python_dict_key
 python_dict_key_value_pair -> python_literal ":" _ python_expression ;
 
 python_literal ->
-    { :if(numbers) python_string_literal | python_number_literal }
-    { :if(!numbers) python_string_literal }
+    kw_None
+  | ( kw_True | kw_False )
+  | { :if(numbers) python_number_literal }
+  | { :if(strings) python_string_literal }
   ;
+
+python_number_literal -> { :class(number) numeric_literal } ;
 
 python_string_literal ->
     { :class(string) ("\"" generic_string_content "\"") }
@@ -132,7 +136,5 @@ python_builtin_function_name ->
   ;
 
 python_class_name -> generic_class_name ;
-
-python_number_literal -> { :class(number) numeric_literal } ;
 
 python_comment -> { :class(comment) "# " comment_text } ;

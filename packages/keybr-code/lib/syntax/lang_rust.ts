@@ -553,13 +553,28 @@ export default {
   "rust_literal": {
     "alt": [
       {
-        "ref": "rust_boolean_literal"
+        "alt": [
+          {
+            "ref": "kw_true"
+          },
+          {
+            "ref": "kw_false"
+          }
+        ]
       },
       {
-        "ref": "rust_char_literal"
+        "flag": "strings",
+        "inv": false,
+        "cond": {
+          "ref": "rust_char_literal"
+        }
       },
       {
-        "ref": "rust_string_literal"
+        "flag": "strings",
+        "inv": false,
+        "cond": {
+          "ref": "rust_string_literal"
+        }
       },
       {
         "flag": "numbers",
@@ -569,18 +584,6 @@ export default {
         }
       }
     ]
-  },
-  "rust_string_literal": {
-    "cls": "string",
-    "span": {
-      "seq": [
-        "\"",
-        {
-          "ref": "generic_string_content"
-        },
-        "\""
-      ]
-    }
   },
   "rust_char_literal": {
     "cls": "string",
@@ -594,15 +597,23 @@ export default {
       ]
     }
   },
-  "rust_boolean_literal": {
-    "alt": [
-      {
-        "ref": "kw_true"
-      },
-      {
-        "ref": "kw_false"
-      }
-    ]
+  "rust_string_literal": {
+    "cls": "string",
+    "span": {
+      "seq": [
+        "\"",
+        {
+          "ref": "generic_string_content"
+        },
+        "\""
+      ]
+    }
+  },
+  "rust_number_literal": {
+    "cls": "number",
+    "span": {
+      "ref": "numeric_literal"
+    }
   },
   "rust_variable_name": {
     "ref": "generic_variable_name"
@@ -612,12 +623,6 @@ export default {
   },
   "rust_struct_name": {
     "ref": "generic_class_name"
-  },
-  "rust_number_literal": {
-    "cls": "number",
-    "span": {
-      "ref": "numeric_literal"
-    }
   },
   "rust_comment": {
     "cls": "comment",

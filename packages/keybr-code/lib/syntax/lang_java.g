@@ -6,7 +6,7 @@ java_statement ->
   | enum_declaration
   | method_signature
   | variable_declaration
-  | comment
+  | { :if(comments) comment }
   ;
 
 class_declaration -> kw_class _ java_type_name _ "{" _ class_body _ "}" ;
@@ -14,19 +14,11 @@ class_declaration -> kw_class _ java_type_name _ "{" _ class_body _ "}" ;
 class_body -> class_member [ _ ";" _ class_member ] ;
 
 class_member ->
-    [ access_modifier _ ]
-    [ kw_static _ ]
-    [ kw_final _ ]
-    [ [ kw_private | kw_public | kw_protected ] _ ]
-    method_signature
-  | variable_declaration
+    ( [ access_modifier _ ] [ kw_static _ ] [ kw_final _ ] )
+    ( method_signature | variable_declaration )
   ;
 
-method_signature ->
-    [ access_modifier _ ]
-    [ kw_static _ ]
-    [ kw_final _ ]
-    return_type _ java_method_name "(" _ parameter_list ")" ;
+method_signature -> return_type _ java_method_name "(" parameter_list ")" ;
 
 return_type -> kw_void | java_type ;
 
@@ -34,9 +26,7 @@ parameter_list -> [ parameter [ _ "," _ parameter ] ] ;
 
 parameter -> java_type _ java_variable_name ;
 
-variable_declaration ->
-    [ kw_final _ ]
-    java_type _ java_variable_name [ _ "=" _ java_expression ] ";" ;
+variable_declaration -> java_type _ java_variable_name [ _ "=" _ java_expression ] ";" ;
 
 java_type ->
     kw_boolean
@@ -67,18 +57,17 @@ java_expression ->
   ;
 
 java_literal ->
-    java_number_literal
-  | java_string_literal
-  | java_boolean_literal
+    kw_null
+  | ( kw_true | kw_false )
+  | { :if(numbers) java_number_literal }
+  | { :if(strings) java_string_literal }
   ;
 
 java_number_literal -> { :class(number) numeric_literal } ;
 
 java_string_literal -> { :class(string) "\"" generic_string_content "\"" } ;
 
-java_boolean_literal -> kw_true | kw_false ;
-
-java_method_call -> java_variable_name "(" _ argument_list ")" ;
+java_method_call -> java_variable_name "(" argument_list ")" ;
 
 argument_list -> [ java_expression [ _ "," _ java_expression ] ] ;
 
@@ -90,7 +79,7 @@ interface_declaration -> kw_interface _ java_type_name _ "{" _ interface_body _ 
 
 interface_body -> interface_method_signature [ _ ";" _ interface_method_signature ] ;
 
-interface_method_signature -> [ kw_static _ ] return_type _ java_method_name "(" _ parameter_list ")" ;
+interface_method_signature -> [ kw_static _ ] return_type _ java_method_name "(" parameter_list ")" ;
 
 enum_declaration -> kw_enum _ java_type_name _ "{" _ enum_member_list _ "}" ;
 

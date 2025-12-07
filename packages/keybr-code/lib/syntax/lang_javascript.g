@@ -77,7 +77,15 @@ js_id ->
   | "value"
   ;
 
-js_literal -> kw_null | kw_true | kw_false | js_string_literal | js_template_literal ;
+js_literal ->
+    kw_null
+  | ( kw_true | kw_false )
+  | { :if(numbers) js_number_literal }
+  | { :if(strings) js_string_literal }
+  | { :if(strings) js_template_literal }
+  ;
+
+js_number_literal -> { :class(number) numeric_literal } ;
 
 js_string_literal -> { :class(string) "\"" generic_string_content "\"" } ;
 

@@ -9,7 +9,7 @@ golang_statement ->
   | variable_declaration
   | constant_declaration
   | type_declaration
-  | comment
+  | { :if(comments) comment }
   ;
 
 package_declaration -> kw_package _ golang_package_name;
@@ -96,23 +96,23 @@ golang_type ->
 
 golang_basic_type ->
     kw_bool
-  | kw_int
-  | kw_int8
-  | kw_int16
-  | kw_int32
-  | kw_int64
-  | kw_uint
-  | kw_uint8
-  | kw_uint16
-  | kw_uint32
-  | kw_uint64
-  | kw_float32
-  | kw_float64
-  | kw_complex64
-  | kw_complex128
-  | kw_string
-  | kw_rune
   | kw_byte
+  | kw_int
+  | kw_uint
+  | kw_rune
+  | kw_string
+  | { :if(numbers) kw_int8 }
+  | { :if(numbers) kw_int16 }
+  | { :if(numbers) kw_int32 }
+  | { :if(numbers) kw_int64 }
+  | { :if(numbers) kw_uint8 }
+  | { :if(numbers) kw_uint16 }
+  | { :if(numbers) kw_uint32 }
+  | { :if(numbers) kw_uint64 }
+  | { :if(numbers) kw_float32 }
+  | { :if(numbers) kw_float64 }
+  | { :if(numbers) kw_complex64 }
+  | { :if(numbers) kw_complex128 }
   ;
 
 golang_reference_type -> "*" _ golang_type;
@@ -143,16 +143,14 @@ binary_expression -> golang_expression _ binary_operator _ golang_expression;
 binary_operator -> "+" | "-" | "*" | "/" | "%" | "&" | "|" | "^" | "<<" | ">>" | "&&" | "||" | "==" | "!=" | "<" | "<=" | ">" | ">=";
 
 golang_literal ->
-    golang_number_literal
-  | golang_string_literal
-  | golang_boolean_literal
-  | golang_nil_literal
+    { :class(keyword) "nil" }
+  | ( kw_true | kw_false )
+  | { :if(numbers) golang_number_literal }
+  | { :if(strings) golang_string_literal }
   ;
 
 golang_number_literal -> { :class(number) numeric_literal } ;
 golang_string_literal -> { :class(string) "\"" generic_string_content "\"" } ;
-golang_boolean_literal -> kw_true | kw_false;
-golang_nil_literal -> { :class(keyword) "nil" };
 
 golang_function_call -> golang_identifier _ "(" _ argument_list _ ")";
 argument_list -> [golang_expression [_ "," _ golang_expression]];

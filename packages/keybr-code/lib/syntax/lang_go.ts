@@ -33,7 +33,11 @@ export default {
         "ref": "type_declaration"
       },
       {
-        "ref": "comment"
+        "flag": "comments",
+        "inv": false,
+        "cond": {
+          "ref": "comment"
+        }
       }
     ]
   },
@@ -626,55 +630,103 @@ export default {
         "ref": "kw_bool"
       },
       {
+        "ref": "kw_byte"
+      },
+      {
         "ref": "kw_int"
-      },
-      {
-        "ref": "kw_int8"
-      },
-      {
-        "ref": "kw_int16"
-      },
-      {
-        "ref": "kw_int32"
-      },
-      {
-        "ref": "kw_int64"
       },
       {
         "ref": "kw_uint"
       },
       {
-        "ref": "kw_uint8"
-      },
-      {
-        "ref": "kw_uint16"
-      },
-      {
-        "ref": "kw_uint32"
-      },
-      {
-        "ref": "kw_uint64"
-      },
-      {
-        "ref": "kw_float32"
-      },
-      {
-        "ref": "kw_float64"
-      },
-      {
-        "ref": "kw_complex64"
-      },
-      {
-        "ref": "kw_complex128"
+        "ref": "kw_rune"
       },
       {
         "ref": "kw_string"
       },
       {
-        "ref": "kw_rune"
+        "flag": "numbers",
+        "inv": false,
+        "cond": {
+          "ref": "kw_int8"
+        }
       },
       {
-        "ref": "kw_byte"
+        "flag": "numbers",
+        "inv": false,
+        "cond": {
+          "ref": "kw_int16"
+        }
+      },
+      {
+        "flag": "numbers",
+        "inv": false,
+        "cond": {
+          "ref": "kw_int32"
+        }
+      },
+      {
+        "flag": "numbers",
+        "inv": false,
+        "cond": {
+          "ref": "kw_int64"
+        }
+      },
+      {
+        "flag": "numbers",
+        "inv": false,
+        "cond": {
+          "ref": "kw_uint8"
+        }
+      },
+      {
+        "flag": "numbers",
+        "inv": false,
+        "cond": {
+          "ref": "kw_uint16"
+        }
+      },
+      {
+        "flag": "numbers",
+        "inv": false,
+        "cond": {
+          "ref": "kw_uint32"
+        }
+      },
+      {
+        "flag": "numbers",
+        "inv": false,
+        "cond": {
+          "ref": "kw_uint64"
+        }
+      },
+      {
+        "flag": "numbers",
+        "inv": false,
+        "cond": {
+          "ref": "kw_float32"
+        }
+      },
+      {
+        "flag": "numbers",
+        "inv": false,
+        "cond": {
+          "ref": "kw_float64"
+        }
+      },
+      {
+        "flag": "numbers",
+        "inv": false,
+        "cond": {
+          "ref": "kw_complex64"
+        }
+      },
+      {
+        "flag": "numbers",
+        "inv": false,
+        "cond": {
+          "ref": "kw_complex128"
+        }
       }
     ]
   },
@@ -904,16 +956,32 @@ export default {
   "golang_literal": {
     "alt": [
       {
-        "ref": "golang_number_literal"
+        "cls": "keyword",
+        "span": "nil"
       },
       {
-        "ref": "golang_string_literal"
+        "alt": [
+          {
+            "ref": "kw_true"
+          },
+          {
+            "ref": "kw_false"
+          }
+        ]
       },
       {
-        "ref": "golang_boolean_literal"
+        "flag": "numbers",
+        "inv": false,
+        "cond": {
+          "ref": "golang_number_literal"
+        }
       },
       {
-        "ref": "golang_nil_literal"
+        "flag": "strings",
+        "inv": false,
+        "cond": {
+          "ref": "golang_string_literal"
+        }
       }
     ]
   },
@@ -934,20 +1002,6 @@ export default {
         "\""
       ]
     }
-  },
-  "golang_boolean_literal": {
-    "alt": [
-      {
-        "ref": "kw_true"
-      },
-      {
-        "ref": "kw_false"
-      }
-    ]
-  },
-  "golang_nil_literal": {
-    "cls": "keyword",
-    "span": "nil"
   },
   "golang_function_call": {
     "seq": [

@@ -60,6 +60,14 @@ export class Syntax implements EnumItem {
     Syntax.TYPESCRIPT,
   );
 
+  static readonly FLAGS = [
+    "capitals", //
+    "comments",
+    "numbers",
+    "strings",
+    "types",
+  ] as readonly string[];
+
   readonly id: string;
   readonly name: string;
   readonly grammar: Grammar;
