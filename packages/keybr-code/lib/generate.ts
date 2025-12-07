@@ -12,7 +12,6 @@ import {
   isSpan,
   type Prod,
 } from "./ast.ts";
-import { type Flags, flagSet } from "./flags.ts";
 import { Output } from "./output.ts";
 
 const lcg = LCG(1);
@@ -24,12 +23,10 @@ export function generate(
   grammar: Grammar,
   {
     start = "start",
-    flags = flagSet(["*"]),
     output = new Output(),
     rng = lcg,
   }: {
     readonly start?: string;
-    readonly flags?: Flags;
     readonly output?: Output;
     readonly rng?: RNG;
   } = {},
@@ -41,10 +38,7 @@ export function generate(
 
   function visit(p: Prod): void {
     if (isCond(p)) {
-      if (flags.has(p.flag) !== p.inv) {
-        visit(p.cond);
-      }
-      return;
+      throw new Error(); // The grammar must be pruned at this point.
     }
 
     if (isSpan(p)) {

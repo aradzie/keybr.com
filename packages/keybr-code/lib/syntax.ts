@@ -6,6 +6,7 @@ import { findFlags } from "./find-flags.ts";
 import { type Flags } from "./flags.ts";
 import { generate } from "./generate.ts";
 import { Output } from "./output.ts";
+import { pruneCond } from "./prune.ts";
 import {
   grammar_cpp,
   grammar_csharp,
@@ -81,7 +82,7 @@ export class Syntax implements EnumItem {
         if (output.length > 0) {
           output.separate(" ");
         }
-        generate(this.grammar, { start: this.start, flags, output, rng });
+        generate(pruneCond(this.grammar, flags), { start: this.start, output, rng });
       } catch (err) {
         if (err === Output.Stop) {
           break;
