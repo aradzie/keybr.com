@@ -4,9 +4,9 @@ import { type Rules } from "../ast.ts";
 
 export default {
   "start": {
-    "ref": "java_statement"
+    "ref": "statement"
   },
-  "java_statement": {
+  "statement": {
     "alt": [
       {
         "ref": "class_declaration"
@@ -16,12 +16,6 @@ export default {
       },
       {
         "ref": "enum_declaration"
-      },
-      {
-        "ref": "method_signature"
-      },
-      {
-        "ref": "variable_declaration"
       },
       {
         "flag": "comments",
@@ -35,11 +29,46 @@ export default {
   "class_declaration": {
     "seq": [
       {
+        "f": 0.5,
+        "opt": {
+          "seq": [
+            {
+              "ref": "annotations"
+            },
+            " "
+          ]
+        }
+      },
+      {
+        "f": 0.5,
+        "opt": {
+          "seq": [
+            {
+              "alt": [
+                {
+                  "ref": "kw_final"
+                },
+                {
+                  "ref": "kw_abstract"
+                }
+              ]
+            },
+            " "
+          ]
+        }
+      },
+      {
         "ref": "kw_class"
       },
       " ",
       {
-        "ref": "java_type_name"
+        "ref": "class_name"
+      },
+      {
+        "f": 0.5,
+        "opt": {
+          "ref": "generic_signature"
+        }
       },
       " ",
       "{",
@@ -54,142 +83,88 @@ export default {
   "class_body": {
     "seq": [
       {
-        "ref": "class_member"
+        "ref": "class_field_member"
       },
       {
         "f": 0.5,
         "opt": {
           "seq": [
             " ",
-            ";",
+            {
+              "ref": "class_field_member"
+            }
+          ]
+        }
+      },
+      " ",
+      {
+        "ref": "class_method_member"
+      },
+      {
+        "f": 0.5,
+        "opt": {
+          "seq": [
             " ",
             {
-              "ref": "class_member"
+              "ref": "class_method_member"
             }
           ]
         }
       }
     ]
   },
-  "class_member": {
+  "class_field_member": {
     "seq": [
       {
-        "seq": [
-          {
-            "f": 0.5,
-            "opt": {
-              "seq": [
-                {
-                  "ref": "access_modifier"
-                },
-                " "
-              ]
-            }
-          },
-          {
-            "f": 0.5,
-            "opt": {
-              "seq": [
-                {
-                  "ref": "kw_static"
-                },
-                " "
-              ]
-            }
-          },
-          {
-            "f": 0.5,
-            "opt": {
-              "seq": [
-                {
-                  "ref": "kw_final"
-                },
-                " "
-              ]
-            }
-          }
-        ]
-      },
-      {
-        "alt": [
-          {
-            "ref": "method_signature"
-          },
-          {
-            "ref": "variable_declaration"
-          }
-        ]
-      }
-    ]
-  },
-  "method_signature": {
-    "seq": [
-      {
-        "ref": "return_type"
-      },
-      " ",
-      {
-        "ref": "java_method_name"
-      },
-      "(",
-      {
-        "ref": "parameter_list"
-      },
-      ")"
-    ]
-  },
-  "return_type": {
-    "alt": [
-      {
-        "ref": "kw_void"
-      },
-      {
-        "ref": "java_type"
-      }
-    ]
-  },
-  "parameter_list": {
-    "f": 0.5,
-    "opt": {
-      "seq": [
-        {
-          "ref": "parameter"
-        },
-        {
-          "f": 0.5,
-          "opt": {
-            "seq": [
-              " ",
-              ",",
-              " ",
-              {
-                "ref": "parameter"
-              }
-            ]
-          }
+        "f": 0.5,
+        "opt": {
+          "seq": [
+            {
+              "ref": "annotations"
+            },
+            " "
+          ]
         }
-      ]
-    }
-  },
-  "parameter": {
-    "seq": [
+      },
       {
-        "ref": "java_type"
+        "f": 0.5,
+        "opt": {
+          "seq": [
+            {
+              "ref": "access_modifier"
+            },
+            " "
+          ]
+        }
+      },
+      {
+        "f": 0.5,
+        "opt": {
+          "seq": [
+            {
+              "ref": "kw_static"
+            },
+            " "
+          ]
+        }
+      },
+      {
+        "f": 0.5,
+        "opt": {
+          "seq": [
+            {
+              "ref": "kw_final"
+            },
+            " "
+          ]
+        }
+      },
+      {
+        "ref": "type"
       },
       " ",
       {
-        "ref": "java_variable_name"
-      }
-    ]
-  },
-  "variable_declaration": {
-    "seq": [
-      {
-        "ref": "java_type"
-      },
-      " ",
-      {
-        "ref": "java_variable_name"
+        "ref": "variable_name"
       },
       {
         "f": 0.5,
@@ -199,7 +174,7 @@ export default {
             "=",
             " ",
             {
-              "ref": "java_expression"
+              "ref": "expression"
             }
           ]
         }
@@ -207,7 +182,307 @@ export default {
       ";"
     ]
   },
-  "java_type": {
+  "class_method_member": {
+    "seq": [
+      {
+        "f": 0.5,
+        "opt": {
+          "seq": [
+            {
+              "ref": "annotations"
+            },
+            " "
+          ]
+        }
+      },
+      {
+        "f": 0.5,
+        "opt": {
+          "seq": [
+            {
+              "ref": "access_modifier"
+            },
+            " "
+          ]
+        }
+      },
+      {
+        "f": 0.5,
+        "opt": {
+          "seq": [
+            {
+              "ref": "kw_static"
+            },
+            " "
+          ]
+        }
+      },
+      {
+        "f": 0.5,
+        "opt": {
+          "seq": [
+            {
+              "ref": "kw_final"
+            },
+            " "
+          ]
+        }
+      },
+      {
+        "ref": "method_signature"
+      },
+      {
+        "alt": [
+          {
+            "seq": [
+              " ",
+              {
+                "ref": "method_body"
+              }
+            ]
+          },
+          ";"
+        ]
+      }
+    ]
+  },
+  "interface_declaration": {
+    "seq": [
+      {
+        "ref": "kw_interface"
+      },
+      " ",
+      {
+        "ref": "class_name"
+      },
+      {
+        "f": 0.5,
+        "opt": {
+          "ref": "generic_signature"
+        }
+      },
+      " ",
+      "{",
+      " ",
+      {
+        "ref": "interface_body"
+      },
+      " ",
+      "}"
+    ]
+  },
+  "interface_body": {
+    "seq": [
+      {
+        "ref": "interface_member"
+      },
+      {
+        "f": 0.5,
+        "opt": {
+          "seq": [
+            " ",
+            {
+              "ref": "interface_member"
+            },
+            {
+              "f": 0.5,
+              "opt": {
+                "seq": [
+                  " ",
+                  {
+                    "ref": "interface_member"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "interface_member": {
+    "seq": [
+      {
+        "ref": "method_signature"
+      },
+      ";"
+    ]
+  },
+  "enum_declaration": {
+    "seq": [
+      {
+        "ref": "kw_enum"
+      },
+      " ",
+      {
+        "ref": "class_name"
+      },
+      " ",
+      "{",
+      " ",
+      {
+        "ref": "enum_member_list"
+      },
+      " ",
+      "}"
+    ]
+  },
+  "enum_member_list": {
+    "seq": [
+      {
+        "ref": "enum_member"
+      },
+      {
+        "f": 0.5,
+        "opt": {
+          "seq": [
+            ",",
+            " ",
+            {
+              "ref": "enum_member"
+            },
+            {
+              "f": 0.5,
+              "opt": {
+                "seq": [
+                  ",",
+                  " ",
+                  {
+                    "ref": "enum_member"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "enum_member": {
+    "ref": "variable_name"
+  },
+  "method_signature": {
+    "seq": [
+      {
+        "ref": "return_type"
+      },
+      " ",
+      {
+        "ref": "method_name"
+      },
+      "(",
+      {
+        "f": 0.5,
+        "opt": {
+          "ref": "parameter_list"
+        }
+      },
+      ")"
+    ]
+  },
+  "parameter_list": {
+    "seq": [
+      {
+        "ref": "parameter"
+      },
+      {
+        "f": 0.5,
+        "opt": {
+          "seq": [
+            ",",
+            " ",
+            {
+              "ref": "parameter"
+            },
+            {
+              "f": 0.5,
+              "opt": {
+                "seq": [
+                  ",",
+                  " ",
+                  {
+                    "ref": "parameter"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "parameter": {
+    "seq": [
+      {
+        "ref": "type"
+      },
+      " ",
+      {
+        "ref": "variable_name"
+      }
+    ]
+  },
+  "method_body": {
+    "seq": [
+      "{",
+      {
+        "f": 0.5,
+        "opt": {
+          "seq": [
+            " ",
+            {
+              "ref": "kw_return"
+            },
+            " ",
+            {
+              "ref": "expression"
+            },
+            ";",
+            " "
+          ]
+        }
+      },
+      "}"
+    ]
+  },
+  "access_modifier": {
+    "alt": [
+      {
+        "ref": "kw_public"
+      },
+      {
+        "ref": "kw_private"
+      },
+      {
+        "ref": "kw_protected"
+      }
+    ]
+  },
+  "class_name": {
+    "ref": "generic_class_name"
+  },
+  "return_type": {
+    "alt": [
+      {
+        "ref": "kw_void"
+      },
+      {
+        "ref": "type"
+      }
+    ]
+  },
+  "type": {
+    "alt": [
+      {
+        "ref": "primitive_type"
+      },
+      {
+        "ref": "reference_type"
+      },
+      "T"
+    ]
+  },
+  "primitive_type": {
     "alt": [
       {
         "ref": "kw_boolean"
@@ -233,66 +508,133 @@ export default {
       {
         "ref": "kw_short"
       },
-      {
-        "ref": "kw_string"
-      },
-      {
-        "ref": "kw_void"
-      },
-      {
-        "ref": "java_reference_type"
-      }
+      "String",
+      "Object"
     ]
   },
-  "java_reference_type": {
-    "alt": [
-      {
-        "ref": "class_type"
-      },
-      {
-        "ref": "interface_type"
-      },
-      {
-        "ref": "array_type"
-      }
-    ]
-  },
-  "class_type": {
-    "ref": "java_type_name"
-  },
-  "interface_type": {
+  "reference_type": {
     "seq": [
       {
-        "ref": "kw_interface"
+        "ref": "class_name"
       },
+      {
+        "f": 0.5,
+        "opt": "[]"
+      }
+    ]
+  },
+  "expression": {
+    "alt": [
+      {
+        "ref": "var_exp"
+      },
+      {
+        "ref": "call_exp"
+      },
+      {
+        "ref": "new_exp"
+      },
+      {
+        "ref": "literal"
+      }
+    ]
+  },
+  "var_exp": {
+    "seq": [
+      {
+        "ref": "variable_name"
+      },
+      {
+        "f": 0.5,
+        "opt": {
+          "flag": "numbers",
+          "inv": false,
+          "cond": {
+            "seq": [
+              "[",
+              {
+                "ref": "number_literal"
+              },
+              "]"
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "call_exp": {
+    "seq": [
+      {
+        "f": 0.5,
+        "opt": {
+          "seq": [
+            "System",
+            "."
+          ]
+        }
+      },
+      {
+        "ref": "method_name"
+      },
+      "(",
+      {
+        "f": 0.5,
+        "opt": {
+          "ref": "argument_list"
+        }
+      },
+      ")"
+    ]
+  },
+  "new_exp": {
+    "seq": [
+      "new",
       " ",
       {
-        "ref": "java_type_name"
-      }
+        "ref": "class_name"
+      },
+      "(",
+      {
+        "f": 0.5,
+        "opt": {
+          "ref": "argument_list"
+        }
+      },
+      ")"
     ]
   },
-  "array_type": {
+  "argument_list": {
     "seq": [
       {
-        "ref": "java_type"
-      },
-      "[]"
-    ]
-  },
-  "java_expression": {
-    "alt": [
-      {
-        "ref": "java_variable_name"
+        "ref": "expression"
       },
       {
-        "ref": "java_literal"
+        "f": 0.5,
+        "opt": {
+          "seq": [
+            ",",
+            " ",
+            {
+              "ref": "expression"
+            }
+          ]
+        }
       },
       {
-        "ref": "java_method_call"
+        "f": 0.5,
+        "opt": {
+          "seq": [
+            ",",
+            " ",
+            {
+              "ref": "expression"
+            }
+          ]
+        }
       }
     ]
   },
-  "java_literal": {
+  "literal": {
     "alt": [
       {
         "ref": "kw_null"
@@ -311,25 +653,25 @@ export default {
         "flag": "numbers",
         "inv": false,
         "cond": {
-          "ref": "java_number_literal"
+          "ref": "number_literal"
         }
       },
       {
         "flag": "strings",
         "inv": false,
         "cond": {
-          "ref": "java_string_literal"
+          "ref": "string_literal"
         }
       }
     ]
   },
-  "java_number_literal": {
+  "number_literal": {
     "cls": "number",
     "span": {
       "ref": "numeric_literal"
     }
   },
-  "java_string_literal": {
+  "string_literal": {
     "cls": "string",
     "span": {
       "seq": [
@@ -341,199 +683,111 @@ export default {
       ]
     }
   },
-  "java_method_call": {
+  "generic_signature": {
     "seq": [
+      "<",
+      "T",
       {
-        "ref": "java_variable_name"
+        "f": 0.5,
+        "opt": {
+          "seq": [
+            " ",
+            {
+              "ref": "kw_extends"
+            },
+            " ",
+            {
+              "ref": "class_name"
+            },
+            {
+              "f": 0.5,
+              "opt": "<T>"
+            }
+          ]
+        }
       },
-      "(",
-      {
-        "ref": "argument_list"
-      },
-      ")"
+      ">"
     ]
   },
-  "argument_list": {
-    "f": 0.5,
-    "opt": {
-      "seq": [
-        {
-          "ref": "java_expression"
-        },
-        {
-          "f": 0.5,
-          "opt": {
+  "annotations": {
+    "seq": [
+      {
+        "ref": "annotation_name"
+      },
+      {
+        "f": 0.5,
+        "opt": {
+          "flag": "strings",
+          "inv": false,
+          "cond": {
             "seq": [
-              " ",
-              ",",
-              " ",
+              "(",
               {
-                "ref": "java_expression"
-              }
+                "ref": "string_literal"
+              },
+              ")"
             ]
           }
         }
-      ]
-    }
-  },
-  "java_variable_name": {
-    "alt": [
-      "x",
-      "y",
-      "z",
-      "result",
-      "data",
-      "input"
+      }
     ]
   },
-  "java_method_name": {
+  "annotation_name": {
+    "alt": [
+      "@After",
+      "@Before",
+      "@Component",
+      "@Controller",
+      "@Entity",
+      "@Get",
+      "@Id",
+      "@Inject",
+      "@Named",
+      "@NotNull",
+      "@Param",
+      "@Path",
+      "@Post",
+      "@PostConstruct",
+      "@PreDestroy",
+      "@Query",
+      "@Scope",
+      "@Service",
+      "@Singleton",
+      "@Test"
+    ]
+  },
+  "variable_name": {
+    "alt": [
+      "body",
+      "component",
+      "connection",
+      "container",
+      "data",
+      "db",
+      "headers",
+      "input",
+      "query",
+      "request",
+      "response",
+      "result",
+      "service",
+      "x",
+      "y",
+      "z"
+    ]
+  },
+  "method_name": {
     "alt": [
       "main",
-      "calculate",
+      "process",
+      "handle",
+      "accept",
+      "update",
+      "serialize",
+      "send",
       "setValue",
       "getResult"
     ]
-  },
-  "interface_declaration": {
-    "seq": [
-      {
-        "ref": "kw_interface"
-      },
-      " ",
-      {
-        "ref": "java_type_name"
-      },
-      " ",
-      "{",
-      " ",
-      {
-        "ref": "interface_body"
-      },
-      " ",
-      "}"
-    ]
-  },
-  "interface_body": {
-    "seq": [
-      {
-        "ref": "interface_method_signature"
-      },
-      {
-        "f": 0.5,
-        "opt": {
-          "seq": [
-            " ",
-            ";",
-            " ",
-            {
-              "ref": "interface_method_signature"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  "interface_method_signature": {
-    "seq": [
-      {
-        "f": 0.5,
-        "opt": {
-          "seq": [
-            {
-              "ref": "kw_static"
-            },
-            " "
-          ]
-        }
-      },
-      {
-        "ref": "return_type"
-      },
-      " ",
-      {
-        "ref": "java_method_name"
-      },
-      "(",
-      {
-        "ref": "parameter_list"
-      },
-      ")"
-    ]
-  },
-  "enum_declaration": {
-    "seq": [
-      {
-        "ref": "kw_enum"
-      },
-      " ",
-      {
-        "ref": "java_type_name"
-      },
-      " ",
-      "{",
-      " ",
-      {
-        "ref": "enum_member_list"
-      },
-      " ",
-      "}"
-    ]
-  },
-  "enum_member_list": {
-    "seq": [
-      {
-        "ref": "enum_member"
-      },
-      {
-        "f": 0.5,
-        "opt": {
-          "seq": [
-            " ",
-            ",",
-            " ",
-            {
-              "ref": "enum_member"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  "enum_member": {
-    "seq": [
-      {
-        "ref": "java_variable_name"
-      },
-      {
-        "f": 0.5,
-        "opt": {
-          "seq": [
-            " ",
-            "=",
-            " ",
-            {
-              "ref": "java_expression"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  "access_modifier": {
-    "alt": [
-      {
-        "ref": "kw_public"
-      },
-      {
-        "ref": "kw_private"
-      },
-      {
-        "ref": "kw_protected"
-      }
-    ]
-  },
-  "java_type_name": {
-    "ref": "generic_class_name"
   },
   "comment": {
     "cls": "comment",
