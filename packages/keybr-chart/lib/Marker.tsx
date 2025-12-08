@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { type ReactNode } from "react";
 import * as styles from "./Marker.module.less";
 
@@ -12,9 +13,9 @@ type Props = {
     | "histogram-h"
     | "histogram-m"
     | "histogram-r";
-};
+} & React.HTMLAttributes<HTMLSpanElement>;
 
-export function Marker({ type }: Props): ReactNode {
+export function Marker({ type, ...props }: Props): ReactNode {
   let cn;
   switch (type) {
     case "slow":
@@ -45,5 +46,12 @@ export function Marker({ type }: Props): ReactNode {
       cn = styles.histogram_r;
       break;
   }
-  return <span className={cn}>{"\u00A0"}</span>;
+
+  const isClickable = typeof props.onClick !== "undefined";
+
+  return (
+    <span {...props} className={clsx(cn, isClickable && styles.clickable)}>
+      {"\u00A0"}
+    </span>
+  );
 }
