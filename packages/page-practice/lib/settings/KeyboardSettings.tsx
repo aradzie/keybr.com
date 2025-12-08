@@ -118,6 +118,7 @@ function LayoutProp(): ReactNode {
         <Field>
           <CheckBox
             checked={
+              options.layout.emulate &&
               settings.get(keyboardProps.emulation) === Emulation.Forward
             }
             disabled={!options.layout.emulate}
