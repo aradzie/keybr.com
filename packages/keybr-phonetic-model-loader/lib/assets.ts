@@ -6,6 +6,7 @@ import DA from "@keybr/phonetic-model/assets/model-da.data";
 import DE from "@keybr/phonetic-model/assets/model-de.data";
 import EL from "@keybr/phonetic-model/assets/model-el.data";
 import EN from "@keybr/phonetic-model/assets/model-en.data";
+import EN_GB from "@keybr/phonetic-model/assets/model-en-GB.data";
 import ES from "@keybr/phonetic-model/assets/model-es.data";
 import ET from "@keybr/phonetic-model/assets/model-et.data";
 import FA from "@keybr/phonetic-model/assets/model-fa.data";
@@ -46,6 +47,8 @@ export function modelAssetPath(language: Language): string {
       return EL;
     case Language.EN:
       return EN;
+    case Language.EN_GB:
+      return EN_GB;
     case Language.ES:
       return ES;
     case Language.ET:
