@@ -152,7 +152,7 @@
   "profile.download.description": "Download all your typing data in JSON format.",
   "profile.emptyChart.description": "Complete a few more lessons to get more data points.",
   "profile.emptyChart.header": "Not enough data",
-  "profile.import.description": "Import typing data from a JSON or .stats file.",
+  "profile.import.description": "Import typing data from a JSON or.stats file",
   "profile.import.file_error": "Failed to read file. Please ensure it is a valid export file.",
   "profile.import.json_error": "Failed to parse JSON file. Please check the file format.",
   "profile.import.merge_message": "Found {count} results in the file. Click OK to merge with existing data (duplicates will be skipped). Click Cancel to replace all existing data.",

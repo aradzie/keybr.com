@@ -152,17 +152,8 @@ export class ResultStorageOfNamedUser implements ResultStorage {
     } else {
       const results = await this.#local.load();
       if (results.length > 0) {
-        try {
-          await this.#remote.send(results, pl);
-          // Only clear local after successfully sending to remote
-          await this.#local.clear();
-        } catch (err) {
-          // If remote sync fails, keep local data and continue
-          console.warn(
-            "Remote sync failed during load, keeping local data:",
-            err,
-          );
-        }
+        await this.#remote.send(results, pl);
+        await this.#local.clear();
         return results;
       }
     }
@@ -170,29 +161,11 @@ export class ResultStorageOfNamedUser implements ResultStorage {
   }
 
   async append(results: readonly Result[], pl = dummy): Promise<void> {
-    try {
-      await this.#remote.send(results, pl);
-    } catch (err) {
-      // If remote sync fails (e.g., local development), fall back to local storage
-      console.warn(
-        "Remote sync failed during append, using local storage:",
-        err,
-      );
-      await this.#local.append(results);
-    }
+    await this.#remote.send(results, pl);
   }
 
   async clear(): Promise<void> {
-    try {
-      await this.#remote.clear();
-    } catch (err) {
-      // If remote sync fails, fall back to local storage
-      console.warn(
-        "Remote sync failed during clear, using local storage:",
-        err,
-      );
-      await this.#local.clear();
-    }
+    await this.#remote.clear();
   }
 }
 

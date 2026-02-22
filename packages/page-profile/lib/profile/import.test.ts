@@ -1,5 +1,5 @@
 import assert from "node:assert";
-import { describe,test } from "node:test";
+import { describe, test } from "node:test";
 import { Layout } from "@keybr/keyboard";
 import { Result, TextType } from "@keybr/result";
 import { Histogram } from "@keybr/textinput";
@@ -35,6 +35,9 @@ function deserializeJsonResults(jsonData: JsonResult[]): Result[] {
     }
 
     const timeStamp = new Date(data.timeStamp).getTime();
+    if (isNaN(timeStamp)) {
+      throw new Error(`Invalid date format: ${data.timeStamp}`);
+    }
 
     const histogram = new Histogram(data.histogram);
 
@@ -126,7 +129,7 @@ describe("deserializeJsonResults", () => {
 
     assert.strictEqual(results.length, 1);
     const histogram = results[0].histogram;
-    assert.strictEqual(histogram.size, 2);
+    assert.strictEqual(histogram.complexity, 2);
   });
 
   test("should handle empty histogram", () => {
@@ -134,7 +137,7 @@ describe("deserializeJsonResults", () => {
     const results = deserializeJsonResults(jsonData);
 
     assert.strictEqual(results.length, 1);
-    assert.strictEqual(results[0].histogram.size, 0);
+    assert.strictEqual(results[0].histogram.complexity, 0);
   });
 
   test("should parse different text types", () => {
