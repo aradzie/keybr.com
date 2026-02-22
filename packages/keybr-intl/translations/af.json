@@ -66,6 +66,8 @@
   "lessonType.books.description": "Genereer tiklesse uit die teks van ’n boek. Alle sleutels is by verstek ingesluit. Hierdie modus is vir die voordele.",
   "lessonType.code.description": "Oefen leestekens wat spesifiek is vir ’n programmeertaalsintaksis.",
   "lessonType.customText.description": "Genereer tiklesse uit die woorde van jou eie persoonlike teks. Alle sleutels is normaalweg ingesluit. Hierdie modus is vir die kenners.",
+  "lessonType.customText.fromUrl": "Custom text was loaded from URL.",
+  "lessonType.customText.fromUrl.description": "This text will only be used for the current session and will not be saved to your settings.",
   "lessonType.guided.description": "Genereer tiklesse met ewekansige woorde deur die fonetiese reëls van jou taal te gebruik. Die sleutelstel word dinamies uitgebrei op grond van jou prestasie. Hierdie modus is vir beginners.",
   "lessonType.numbers.description": "Oefen slegs getalle.",
   "lessonType.syntax.description": "Genereer lesse wat ooreenstem met die gespesifiseerde programmeertaalsintaksis.",

@@ -66,6 +66,8 @@
   "lessonType.books.description": "Generiraj vaje za tipkanje iz besedila knjige. Kot privzeto so vključene vse tipke. Ta način je za proje.",
   "lessonType.code.description": "Vadite znake za ločila, ki so specifične za skladnjo nekega programskega jezika.",
   "lessonType.customText.description": "Ustvarite vaje za tipkanje iz besed lastnega besedila. Kot privzeto so vključene vse tipke. Ta način je za proje.",
+  "lessonType.customText.fromUrl": "Custom text was loaded from URL.",
+  "lessonType.customText.fromUrl.description": "This text will only be used for the current session and will not be saved to your settings.",
   "lessonType.guided.description": "Ustvarite vaje za tipkanje z naključnimi besedami glede na fonetična pravila vašega jezika. Seznam tipk se razširi avtomatsko glede na vašo zmogljivost. Ta način je za začetnike.",
   "lessonType.numbers.description": "Vadite le števila.",
   "lessonType.syntax.description": "Generiraj vaje, ki posnemajo skladnjo izbranega programskega jezika.",

@@ -66,6 +66,8 @@
   "lessonType.books.description": "Generirajte lekcije tipkanja iz teksta knjige. Sve tipke su uključene prema zadanim postavkama. Ovaj način je za profesionalce.",
   "lessonType.code.description": "Vježbajte interpunkcijske znakove specifične za sintaksu programskog jezika.",
   "lessonType.customText.description": "Generirajte lekcije tipkanja iz riječi vlastitog prilagođenog teksta. Sve su tipke uključene prema zadanim postavkama. Ovaj način rada je za profesionalce.",
+  "lessonType.customText.fromUrl": "Custom text was loaded from URL.",
+  "lessonType.customText.fromUrl.description": "This text will only be used for the current session and will not be saved to your settings.",
   "lessonType.guided.description": "Generirajte lekcije tipkanja slučajnim riječima koristeći fonetska pravila vašeg jezika. Skup ključeva dinamički se proširuje na temelju vaših performansi. Ovaj način rada je za početnike.",
   "lessonType.numbers.description": "Vježbajte samo brojeve.",
   "lessonType.syntax.description": "Generirajte lekcije koje obuhvaćaju navedenu sintaksu programskog jezika.",

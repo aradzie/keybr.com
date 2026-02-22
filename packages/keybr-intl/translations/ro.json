@@ -51,6 +51,8 @@
   "lessonType.books.description": "Generează lecții de tastare din textul unei cărți. Toate tastele sunt incluse implicit. Acest mod este pentru profesioniști.",
   "lessonType.code.description": "Exersați caracterele de punctuație care sunt specifice sintaxei unui limbaj de programare.",
   "lessonType.customText.description": "Generează lecții de tastare din cuvintele propriului tău text personalizat. Toate tastele sunt incluse în mod implicit. Acest mod este pentru profesioniști.",
+  "lessonType.customText.fromUrl": "Custom text was loaded from URL.",
+  "lessonType.customText.fromUrl.description": "This text will only be used for the current session and will not be saved to your settings.",
   "lessonType.guided.description": "Generează lecții de tastare cu cuvinte aleatorii folosind regulile fonetice ale limbii tale. Setul de taste este extins dinamic pe baza performanței tale. Acest mod este pentru începători.",
   "lessonType.numbers.description": "Exersați doar numere.",
   "lessonType.syntax.description": "Generează lecții care seamănă cu sintaxa limbajului de programare specificat.",

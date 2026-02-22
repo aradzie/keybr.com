@@ -66,6 +66,8 @@
   "lessonType.books.description": "Создайте уроки набора текста из текста книги. Все клавиши включены по умолчанию. Этот режим предназначен для профессионалов.",
   "lessonType.code.description": "Практиковать знаки пунктуации, специфичные для выбранного языка кода.",
   "lessonType.customText.description": "Генерировать уроки используя слова, взятые из вашего собственного текста. Все буквы включены по умолчанию. Этот режим для профессионалов.",
+  "lessonType.customText.fromUrl": "Custom text was loaded from URL.",
+  "lessonType.customText.fromUrl.description": "This text will only be used for the current session and will not be saved to your settings.",
   "lessonType.guided.description": "Генерировать уроки со случайными (несуществующими) словами используя фонетические правила вашего языка. Набор букв, из которого генерируются слова, изменяется динамически в зависимости от ваших успехов. Этот режим для новичков.",
   "lessonType.numbers.description": "Практика одних лишь чисел.",
   "lessonType.syntax.description": "Генерировать уроки, соответствующие синтаксису выбранного языка кода.",

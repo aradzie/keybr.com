@@ -66,6 +66,8 @@
   "lessonType.books.description": "Vytvoriť lekcie z textu knihy. Východzie nastavenie zahŕňa všetky klávesy. Tento režim je pre profíkov.",
   "lessonType.code.description": "Cvičte interpunkčné znaky, ktoré sú špecifické pre syntax programovacieho jazyka.",
   "lessonType.customText.description": "Generovať lekcie písania zo slov z vášho vlastného textu. Všetky klávesy sú automaticky zaradené. Tento režim je pre profíkov.",
+  "lessonType.customText.fromUrl": "Custom text was loaded from URL.",
+  "lessonType.customText.fromUrl.description": "This text will only be used for the current session and will not be saved to your settings.",
   "lessonType.guided.description": "Generovať lekcie písania zo slov, používajúc fonetické pravidlá vášho jazyka. Sada kláves je rozšírená v závislosti na vašom výkone. Tento režim je pre začiatočníkov.",
   "lessonType.numbers.description": "Cvičiť iba čísla.",
   "lessonType.syntax.description": "Vytvoriť lekcie, ktoré pripomínajú syntax programovacieho jazyka.",

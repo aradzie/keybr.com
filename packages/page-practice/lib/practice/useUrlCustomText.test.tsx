@@ -3,7 +3,7 @@ import { lessonProps } from "@keybr/lesson";
 import { type PageData, PageDataContext } from "@keybr/pages-shared";
 import { Settings } from "@keybr/settings";
 import { FakeSettingsContext } from "@keybr/settings";
-import { renderHook } from "@testing-library/react";
+import { renderHook, waitFor } from "@testing-library/react";
 import { equal, isNull } from "rich-assert";
 import { useUrlCustomText } from "./useUrlCustomText.ts";
 
@@ -21,7 +21,7 @@ function createWrapper(pageData: PageData) {
   };
 }
 
-test("returns null when no custom text in page data", () => {
+test("returns null when no custom text in page data", async () => {
   const mockPageData: PageData = {
     base: "https://example.com",
     locale: "en",
@@ -35,10 +35,12 @@ test("returns null when no custom text in page data", () => {
     wrapper: createWrapper(mockPageData),
   });
 
-  isNull(result.current);
+  await waitFor(() => {
+    isNull(result.current);
+  });
 });
 
-test("returns trimmed text when custom text provided", () => {
+test("returns trimmed text when custom text provided", async () => {
   const mockPageData: PageData = {
     base: "https://example.com",
     locale: "en",
@@ -52,10 +54,12 @@ test("returns trimmed text when custom text provided", () => {
     wrapper: createWrapper(mockPageData),
   });
 
-  equal(result.current, "Hello World");
+  await waitFor(() => {
+    equal(result.current, "Hello World");
+  });
 });
 
-test("truncates text to max length", () => {
+test("truncates text to max length", async () => {
   const longText = "A".repeat(15000);
   const mockPageData: PageData = {
     base: "https://example.com",
@@ -70,10 +74,12 @@ test("truncates text to max length", () => {
     wrapper: createWrapper(mockPageData),
   });
 
-  equal(result.current?.length, 10000);
+  await waitFor(() => {
+    equal(result.current?.length, 10000);
+  });
 });
 
-test("returns null for empty string", () => {
+test("returns null for empty string", async () => {
   const mockPageData: PageData = {
     base: "https://example.com",
     locale: "en",
@@ -87,10 +93,12 @@ test("returns null for empty string", () => {
     wrapper: createWrapper(mockPageData),
   });
 
-  isNull(result.current);
+  await waitFor(() => {
+    isNull(result.current);
+  });
 });
 
-test("returns null for whitespace only", () => {
+test("returns null for whitespace only", async () => {
   const mockPageData: PageData = {
     base: "https://example.com",
     locale: "en",
@@ -104,5 +112,7 @@ test("returns null for whitespace only", () => {
     wrapper: createWrapper(mockPageData),
   });
 
-  isNull(result.current);
+  await waitFor(() => {
+    isNull(result.current);
+  });
 });

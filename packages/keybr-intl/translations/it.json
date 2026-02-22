@@ -66,6 +66,8 @@
   "lessonType.books.description": "Genera lezioni di dattilografia dal testo di un libro. Tutti i tasti sono inclusi per impostazione predefinita. Questa modalità è per i professionisti.",
   "lessonType.code.description": "Esercitarsi con i caratteri di punteggiatura specifici della sintassi di un linguaggio di programmazione.",
   "lessonType.customText.description": "Genera lezioni di digitazione dalle parole del tuo testo personalizzato. Tutti i tasti sono inclusi in modo predefinito. Questa modalità è per i professionisti.",
+  "lessonType.customText.fromUrl": "Custom text was loaded from URL.",
+  "lessonType.customText.fromUrl.description": "This text will only be used for the current session and will not be saved to your settings.",
   "lessonType.guided.description": "Genera lezioni di digitazione con parole casuali utilizzando le regole fonetiche della tua lingua. Il set di tasti si espande dinamicamente in base alle tue prestazioni. Questa modalità è per i principianti.",
   "lessonType.numbers.description": "Solo numeri di pratica.",
   "lessonType.syntax.description": "Generare lezioni che riconciliano la sintassi del linguaggio di programmazione specificata.",

@@ -65,6 +65,8 @@
   "lesson.indicator.notIncluded": "Uma tecla que ainda não foi incluída nas lições.",
   "lessonType.code.description": "Practicar Caracteres de Pontuação que são específicos à sintaxe de uma linguagem de programação.",
   "lessonType.customText.description": "Gerar lições de escrita das palavras do seu texto customizado. Todas as teclas incluídas por defeito. Este modo é para pros.",
+  "lessonType.customText.fromUrl": "Custom text was loaded from URL.",
+  "lessonType.customText.fromUrl.description": "This text will only be used for the current session and will not be saved to your settings.",
   "lessonType.guided.description": "Gerar lições de escrita com palavras aleatórias utilizando as regras fonéticas da sua lingua. O conjunto de teclas é expandido dinamicamente baseado na sua performance. Este modo é para iniciantes.",
   "lessonType.numbers.description": "Praticar números apenas.",
   "lessonType.syntax.description": "Gerar lições que aparentem a sintaxe de uma linguagem de programação específica.",

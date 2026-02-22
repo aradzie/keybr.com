@@ -57,6 +57,8 @@
   "lesson.indicator.focused": "Takki með aukinni tíðni. Það tekur þig mestan tíma að finna þennan takka svo algrímið velur að hafa hann með í hverju mynduðu orði.",
   "lesson.indicator.forced": "Takki sem var handvirkt bætt við æfingarnar.",
   "lesson.indicator.notIncluded": "Takki sem er ekki enn með í æfingunum.",
+  "lessonType.customText.fromUrl": "Custom text was loaded from URL.",
+  "lessonType.customText.fromUrl.description": "This text will only be used for the current session and will not be saved to your settings.",
   "t_Account_details": "Aðgangsupplýsingar",
   "t_Account_name": "Aðgangur | {name}",
   "t_Anonymize_me": "Nafnleyndu mig",

@@ -66,6 +66,8 @@
   "lessonType.books.description": "從書本文字生成打字課程。預設包含所有鍵。此模式適合專業人士。",
   "lessonType.code.description": "練習特定程式語言文法的標點符號。",
   "lessonType.customText.description": "透過自訂文字中的單字產生打字課程。預設包含所有按鍵。此模式適合熟練的人。",
+  "lessonType.customText.fromUrl": "Custom text was loaded from URL.",
+  "lessonType.customText.fromUrl.description": "This text will only be used for the current session and will not be saved to your settings.",
   "lessonType.guided.description": "利用語言的語音規則產生隨機單字的打字課程。按鍵集會根據你的表現動態擴展。此模式適合初學者。",
   "lessonType.numbers.description": "只可練習數字。",
   "lessonType.syntax.description": "生成與指定程式語言文法相似的課程。",

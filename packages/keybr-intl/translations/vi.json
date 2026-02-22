@@ -61,6 +61,8 @@
   "lesson.indicator.notCalibrated": "Một khóa không hiệu chỉnh với mức độ tin cậy không xác định. Bạn vẫn chưa nhấn phím này.",
   "lesson.indicator.notIncluded": "Phím chưa được thêm vào bài học.",
   "lessonType.customText.description": "Tạo các bài học gõ từ các từ của văn bản tùy chỉnh của riêng bạn. Tất cả các khóa được bao gồm theo mặc định. Chế độ này là dành cho các chuyên gia.",
+  "lessonType.customText.fromUrl": "Custom text was loaded from URL.",
+  "lessonType.customText.fromUrl.description": "This text will only be used for the current session and will not be saved to your settings.",
   "lessonType.guided.description": "Tạo các bài học gõ bằng các từ ngẫu nhiên bằng cách sử dụng các quy tắc ngữ âm của ngôn ngữ của bạn. Bộ khóa được mở rộng động dựa trên hiệu suất của bạn. Chế độ này dành cho người mới bắt đầu.",
   "lessonType.numbers.description": "Chỉ thực hành số.",
   "lessonType.wordList.description": "Tạo các bài học gõ từ danh sách các từ phổ biến nhất trong ngôn ngữ của bạn. Tất cả các khóa được bao gồm theo mặc định. Chế độ này là dành cho các chuyên gia.",

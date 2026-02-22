@@ -66,6 +66,8 @@
   "lessonType.books.description": "从一本书的文本中生成打字课程。默认情况下包含所有按键。这种模式是为专业人士准备的。",
   "lessonType.code.description": "针对指定编程语言语法中的标点符号进行练习。",
   "lessonType.customText.description": "通过自定义文本中的单词生成打字课程。默认包含所有按键。此模式适合熟练的人。",
+  "lessonType.customText.fromUrl": "Custom text was loaded from URL.",
+  "lessonType.customText.fromUrl.description": "This text will only be used for the current session and will not be saved to your settings.",
   "lessonType.guided.description": "利用语言的语音规则生成随机单词的打字课程。按键集会根据你的表现动态扩展。该模式适合初学者。",
   "lessonType.numbers.description": "只可练习数字。",
   "lessonType.syntax.description": "生成与指定编程语言的语法类似的课程。",

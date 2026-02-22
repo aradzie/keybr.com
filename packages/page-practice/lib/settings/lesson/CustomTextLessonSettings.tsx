@@ -1,6 +1,7 @@
 import { useIntlNumbers } from "@keybr/intl";
 import { type Language } from "@keybr/keyboard";
 import { type CustomTextLesson, lessonProps } from "@keybr/lesson";
+import { useUrlText } from "@keybr/pages-shared";
 import { useSettings } from "@keybr/settings";
 import { textStatsOf } from "@keybr/unicode";
 import {
@@ -28,6 +29,9 @@ export function CustomTextLessonSettings({
 }): ReactNode {
   const { formatMessage } = useIntl();
   const { settings } = useSettings();
+  const urlText = useUrlText();
+  // Use URL text if available, otherwise use saved settings text
+  const customText = urlText ?? settings.get(lessonProps.customText.content);
   return (
     <>
       <Explainer>
@@ -48,7 +52,7 @@ export function CustomTextLessonSettings({
         <CustomTextInput />
         <CustomTextStats
           language={lesson.model.language}
-          customText={settings.get(lessonProps.customText.content)}
+          customText={customText}
         />
         <CustomTextProcessing />
         <TargetSpeedProp />
@@ -61,11 +65,10 @@ export function CustomTextLessonSettings({
 function CustomTextInput(): ReactNode {
   const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
-  const currentText = settings.get(lessonProps.customText.content);
-  const isUrlText = useMemo(() => {
-    const url = new URL(window.location.href);
-    return url.searchParams.has("text");
-  }, []);
+  const urlText = useUrlText();
+  // Use URL text if available, otherwise use saved settings text
+  const currentText = urlText ?? settings.get(lessonProps.customText.content);
+  const isUrlText = urlText != null;
   return (
     <>
       <Para>
@@ -102,6 +105,8 @@ function CustomTextInput(): ReactNode {
           })}
           value={currentText}
           onChange={(value) => {
+            // When user edits the text, save it to settings
+            // This overrides the URL text for future use
             updateSettings(settings.set(lessonProps.customText.content, value));
           }}
         />

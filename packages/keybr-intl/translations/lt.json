@@ -65,6 +65,8 @@
   "lessonType.books.description": "Sukurkite spausdinimo pamokas iš knygos teksto. Pagal numatytuosius nustatymus įtraukti visi klavišai. Šis režimas skirtas profesionalams.",
   "lessonType.code.description": "Praktikuoti skyrybos ženklus kurie yra specifiški programavimo kalbos sintaksei.",
   "lessonType.customText.description": "Sugeneruokite spausdinimo pamokas iš savo pasirinktinio teksto žodžių. Visi klavišai įtraukti pagal numatytuosius nustatymus. Šis režimas skirtas profesionalams.",
+  "lessonType.customText.fromUrl": "Custom text was loaded from URL.",
+  "lessonType.customText.fromUrl.description": "This text will only be used for the current session and will not be saved to your settings.",
   "lessonType.guided.description": "Sugeneruokite spausdinimo pamokas su atsitiktiniais žodžiais, naudojant jūsų kalbos fonetikos taisykles. Klavišų rinkinys plečiamas dinamiškai pagal jūsų našumą. Šis režimas skirtas pradedantiesiems.",
   "lessonType.syntax.description": "Generuoti pamokas kurios atspindi nurodytos programavimo kalbos sintaksę.",
   "lessonType.wordList.description": "Generuokite spausdinimo pamokas iš jūsų kalbos dažniausių žodžių sąrašo. Visi klavišai įtraukti pagal numatytuosius nustatymus. Šis režimas skirtas profesionalams.",
