@@ -1,7 +1,7 @@
 import { lessonProps } from "@keybr/lesson";
 import { usePageData } from "@keybr/pages-shared";
 import { useSettings } from "@keybr/settings";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 const MAX_CUSTOM_TEXT_LENGTH = 10_000;
 
@@ -16,13 +16,17 @@ const MAX_CUSTOM_TEXT_LENGTH = 10_000;
 export function useUrlCustomText(): void {
   const pageData = usePageData();
   const { settings, updateSettings } = useSettings();
+  const hasApplied = useRef(false);
 
   useEffect(() => {
-    // Only apply if customText is provided in page data
+    // Only apply if customText is provided in page data and we haven't applied it yet
     const customText = pageData.customText;
-    if (customText == null || customText.trim() === "") {
+    if (customText == null || customText.trim() === "" || hasApplied.current) {
       return;
     }
+
+    // Mark as applied to prevent infinite loop
+    hasApplied.current = true;
 
     // Apply length restriction
     const trimmedText = customText.trim().slice(0, MAX_CUSTOM_TEXT_LENGTH);
