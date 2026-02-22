@@ -1,4 +1,5 @@
 import {
+  type Lesson,
   type LessonKey,
   type LessonKeys,
   lockAllKeys,
