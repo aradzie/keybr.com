@@ -340,5 +340,7 @@
   "t_ws_Bar_whitespace": "Bar whitespace",
   "t_ws_Bullet_whitespace": "Bullet whitespace",
   "t_ws_No_whitespace": "No whitespace",
-  "weekDayNames": "M|T|W|T|F|S|S"
+  "weekDayNames": "M|T|W|T|F|S|S",
+  "lessonType.customText.fromUrl": "Custom text was loaded from URL.",
+  "lessonType.customText.fromUrl.description": "This text will only be used for the current session and will not be saved to your settings."
 }

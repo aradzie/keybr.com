@@ -337,5 +337,7 @@
   "t_ws_Bar_whitespace": "Blankes Leerzeichen",
   "t_ws_Bullet_whitespace": "Aufzählungsleerzeichen",
   "t_ws_No_whitespace": "Kein Leerzeichen",
-  "weekDayNames": "Mo|Di|Mi|Do|Fr|Sa|So"
+  "weekDayNames": "Mo|Di|Mi|Do|Fr|Sa|So",
+  "lessonType.customText.fromUrl": "Benutzerdefinierter Text wurde aus URL geladen.",
+  "lessonType.customText.fromUrl.description": "Dieser Text wird nur für die aktuelle Sitzung verwendet und nicht in Ihren Einstellungen gespeichert."
 }

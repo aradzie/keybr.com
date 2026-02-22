@@ -3,7 +3,7 @@ import { KeyboardProvider } from "@keybr/keyboard";
 import { schedule } from "@keybr/lang";
 import { type Lesson } from "@keybr/lesson";
 import { LessonLoader } from "@keybr/lesson-loader";
-import { LoadingProgress } from "@keybr/pages-shared";
+import { LoadingProgress, UrlTextContext } from "@keybr/pages-shared";
 import { type Result, useResults } from "@keybr/result";
 import { useSettings } from "@keybr/settings";
 import { useEffect, useMemo, useState } from "react";
@@ -12,13 +12,15 @@ import { displayEvent, Progress } from "./state/index.ts";
 import { useUrlCustomText } from "./useUrlCustomText.ts";
 
 export function PracticeScreen() {
-  useUrlCustomText();
+  const urlText = useUrlCustomText();
   return (
-    <KeyboardProvider>
-      <LessonLoader>
-        {(lesson) => <ProgressUpdater lesson={lesson} />}
-      </LessonLoader>
-    </KeyboardProvider>
+    <UrlTextContext.Provider value={urlText}>
+      <KeyboardProvider>
+        <LessonLoader>
+          {(lesson) => <ProgressUpdater lesson={lesson} />}
+        </LessonLoader>
+      </KeyboardProvider>
+    </UrlTextContext.Provider>
   );
 }
 

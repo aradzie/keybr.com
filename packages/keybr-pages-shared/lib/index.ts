@@ -5,4 +5,5 @@ export * from "./pages.ts";
 export * from "./Root.tsx";
 export * from "./Screen.tsx";
 export * from "./types.ts";
+export * from "./UrlTextContext.tsx";
 export * from "./UserName.tsx";
