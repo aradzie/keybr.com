@@ -205,6 +205,26 @@ function useCommands() {
         // Create set of existing result keys for deduplication
         const existingKeys = new Set(results.map(createResultKey));
 
+        // Debug logging
+        console.log(
+          "[Import Debug] File contains:",
+          importedResults.length,
+          "results",
+        );
+        console.log("[Import Debug] Existing results:", results.length);
+        console.log("[Import Debug] Existing keys:", existingKeys.size);
+
+        // Calculate total time in imported results
+        const importedTime = importedResults.reduce(
+          (sum, r) => sum + r.time,
+          0,
+        );
+        console.log(
+          "[Import Debug] Imported total time:",
+          (importedTime / 3600000).toFixed(2),
+          "hours",
+        );
+
         // Ask user for merge or replace
         const mergeMessage = formatMessage(
           {
@@ -221,6 +241,13 @@ function useCommands() {
           // Merge: filter out duplicates
           const newResults = importedResults.filter(
             (result) => !existingKeys.has(createResultKey(result)),
+          );
+
+          console.log(
+            "[Import Debug] Merge mode - New results:",
+            newResults.length,
+            "Filtered out:",
+            importedResults.length - newResults.length,
           );
 
           if (newResults.length === 0) {
@@ -261,6 +288,11 @@ function useCommands() {
           });
 
           if (window.confirm(replaceWarning)) {
+            console.log(
+              "[Import Debug] Replace mode - Importing all",
+              importedResults.length,
+              "results",
+            );
             clearResults();
             appendResults(importedResults);
             toast(

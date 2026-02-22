@@ -152,8 +152,13 @@ export class ResultStorageOfNamedUser implements ResultStorage {
     } else {
       const results = await this.#local.load();
       if (results.length > 0) {
-        await this.#remote.send(results, pl);
-        await this.#local.clear();
+        try {
+          await this.#remote.send(results, pl);
+          // Only clear local after successfully sending to remote
+          await this.#local.clear();
+        } catch {
+          // If remote sync fails, keep local data and continue
+        }
         return results;
       }
     }
@@ -161,11 +166,21 @@ export class ResultStorageOfNamedUser implements ResultStorage {
   }
 
   async append(results: readonly Result[], pl = dummy): Promise<void> {
-    await this.#remote.send(results, pl);
+    try {
+      await this.#remote.send(results, pl);
+    } catch {
+      // If remote sync fails (e.g., local development), fall back to local storage
+      await this.#local.append(results);
+    }
   }
 
   async clear(): Promise<void> {
-    await this.#remote.clear();
+    try {
+      await this.#remote.clear();
+    } catch {
+      // If remote sync fails, fall back to local storage
+      await this.#local.clear();
+    }
   }
 }
 
