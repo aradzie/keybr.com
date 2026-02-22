@@ -1,4 +1,4 @@
-import { lessonProps } from "@keybr/lesson";
+import { lessonProps,LessonType } from "@keybr/lesson";
 import { usePageData } from "@keybr/pages-shared";
 import { useSettings } from "@keybr/settings";
 import { useEffect, useRef } from "react";
@@ -12,6 +12,8 @@ const MAX_CUSTOM_TEXT_LENGTH = 10_000;
  *
  * The text is only applied once on mount and respects the maximum
  * length restriction of 10,000 characters.
+ *
+ * Also automatically switches the lesson type to CUSTOM when text is provided.
  */
 export function useUrlCustomText(): void {
   const pageData = usePageData();
@@ -31,7 +33,11 @@ export function useUrlCustomText(): void {
     // Apply length restriction
     const trimmedText = customText.trim().slice(0, MAX_CUSTOM_TEXT_LENGTH);
 
-    // Update settings with the custom text
-    updateSettings(settings.set(lessonProps.customText.content, trimmedText));
+    // Update settings with the custom text and switch to CUSTOM lesson type
+    updateSettings(
+      settings
+        .set(lessonProps.customText.content, trimmedText)
+        .set(lessonProps.type, LessonType.CUSTOM),
+    );
   }, [pageData, settings, updateSettings]);
 }
