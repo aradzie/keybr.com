@@ -24,3 +24,6 @@ sandbox/
 
 # Custom scripts
 deploy.sh
+
+# PR research (shared symlink)
+pr-research
