@@ -63,9 +63,21 @@
   cursor: pointer;
 }
 
+.lessonKey_manuallyLocked {
+  opacity: 0.7;
+}
+
 .lessonKey_current {
   z-index: 1;
   outline: 3px solid var(--LessonKey--current__outline-color);
+}
+
+.lockIcon {
+  position: absolute;
+  inset: 0;
+  fill: var(--LessonKey--excluded__color);
+  stroke: var(--LessonKey--excluded__color);
+  stroke-width: 4px;
 }
 
 .keyDetails {

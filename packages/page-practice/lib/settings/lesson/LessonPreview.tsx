@@ -1,4 +1,5 @@
-import { type Lesson } from "@keybr/lesson";
+import { type Lesson, parseManualLocks } from "@keybr/lesson";
+import { lessonProps } from "@keybr/lesson";
 import { CurrentKeyRow, KeySetRow } from "@keybr/lesson-ui";
 import { LCG } from "@keybr/rand";
 import { makeKeyStatsMap, useResults } from "@keybr/result";
@@ -22,7 +23,7 @@ export function LessonPreview({
   const { formatMessage } = useIntl();
   const { settings } = useSettings();
   const { results } = useResults();
-  const { lessonKeys, textInput } = useMemo(() => {
+  const { lessonKeys, textInput, manualLocks } = useMemo(() => {
     const lessonKeys = lesson.update(
       makeKeyStatsMap(lesson.letters, lesson.filter(results)),
     );
@@ -30,7 +31,10 @@ export function LessonPreview({
       lesson.generate(lessonKeys, LCG(123)),
       toTextInputSettings(settings),
     );
-    return { lessonKeys, textInput };
+    const manualLocks = parseManualLocks(
+      settings.get(lessonProps.guided.manualLocks),
+    );
+    return { lessonKeys, textInput, manualLocks };
   }, [settings, lesson, results]);
   return (
     <FieldSet
@@ -40,7 +44,7 @@ export function LessonPreview({
       })}
     >
       <div className={styles.root}>
-        <KeySetRow lessonKeys={lessonKeys} />
+        <KeySetRow lessonKeys={lessonKeys} manualLocks={manualLocks} />
         <CurrentKeyRow lessonKeys={lessonKeys} />
         <div className={styles.text}>
           <StaticText

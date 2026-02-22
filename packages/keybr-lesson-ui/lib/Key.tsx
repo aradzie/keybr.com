@@ -8,6 +8,7 @@ export const Key = ({
   lessonKey,
   isSelectable = false,
   isCurrent = false,
+  isManuallyLocked = false,
   size = "normal",
   title,
   ...props
@@ -15,6 +16,7 @@ export const Key = ({
   lessonKey: LessonKey;
   isSelectable?: boolean;
   isCurrent?: boolean;
+  isManuallyLocked?: boolean;
   size?: "normal" | "large" | "announcement";
   title?: string;
 } & MouseProps) => {
@@ -26,6 +28,7 @@ export const Key = ({
     isFocused,
     isForced,
   } = lessonKey;
+  const isLocked = isManuallyLocked;
   return (
     <span
       {...props}
@@ -40,15 +43,27 @@ export const Key = ({
         isIncluded && confidence == null && styles.lessonKey_uncalibrated,
         isIncluded && isFocused && styles.lessonKey_focused,
         isIncluded && isForced && styles.lessonKey_forced,
+        isManuallyLocked && styles.lessonKey_manuallyLocked,
         isSelectable && styles.lessonKey_selectable,
         isCurrent && styles.lessonKey_current,
       )}
       style={keyStyles(true, confidence)}
-      title={title}
+      title={
+        title ??
+        (isManuallyLocked
+          ? "Manually locked (click to unlock)"
+          : "Click to lock")
+      }
       data-code-point={codePoint}
     >
       {label}
-      {isIncluded || (
+      {isManuallyLocked && (
+        <svg viewBox="0 0 100 100" className={styles.lockIcon}>
+          <path d="M 30 50 L 30 35 A 20 20 0 0 1 70 35 L 70 50 M 30 50 L 30 80 L 70 80 L 70 50 Z" />
+          <circle cx="50" cy="65" r="5" />
+        </svg>
+      )}
+      {!isIncluded && !isManuallyLocked && (
         <svg viewBox="0 0 100 100" className={styles.cross}>
           <path d="M 0 100 L 100 0" />
         </svg>

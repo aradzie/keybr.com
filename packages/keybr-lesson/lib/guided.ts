@@ -7,6 +7,7 @@ import { type Settings } from "@keybr/settings";
 import { Dictionary, filterWordList } from "./dictionary.ts";
 import { LessonKey, LessonKeys } from "./key.ts";
 import { Lesson } from "./lesson.ts";
+import { parseManualLocks } from "./locks.ts";
 import { lessonProps } from "./settings.ts";
 import { Target } from "./target.ts";
 import { generateFragment } from "./text/fragment.ts";
@@ -41,6 +42,9 @@ export class GuidedLesson extends Lesson {
   override update(keyStatsMap: KeyStatsMap) {
     const alphabetSize = this.settings.get(lessonProps.guided.alphabetSize);
     const recoverKeys = this.settings.get(lessonProps.guided.recoverKeys);
+    const manualLocks = parseManualLocks(
+      this.settings.get(lessonProps.guided.manualLocks),
+    );
 
     const letters = this.#getLetters();
 
@@ -55,6 +59,12 @@ export class GuidedLesson extends Lesson {
     );
 
     for (const lessonKey of lessonKeys) {
+      // Skip if manually locked
+      if (manualLocks.has(lessonKey.letter.codePoint)) {
+        lessonKeys.exclude(lessonKey.letter);
+        continue;
+      }
+
       const includedKeys = lessonKeys.findIncludedKeys();
 
       if (includedKeys.length < minSize) {

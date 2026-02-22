@@ -46,12 +46,14 @@ export const KeySetRow = memo(function KeySetRow({
   onKeyHoverIn,
   onKeyHoverOut,
   onKeyClick,
+  manualLocks,
 }: {
   lessonKeys: LessonKeys;
   names?: Names;
   onKeyHoverIn?: (key: LessonKey, elem: Element) => void;
   onKeyHoverOut?: (key: LessonKey, elem: Element) => void;
   onKeyClick?: (key: LessonKey, elem: Element) => void;
+  manualLocks?: Set<number>;
 }) {
   const { formatMessage } = useIntl();
   return (
@@ -70,6 +72,7 @@ export const KeySetRow = memo(function KeySetRow({
         onKeyHoverIn={onKeyHoverIn}
         onKeyHoverOut={onKeyHoverOut}
         onKeyClick={onKeyClick}
+        manualLocks={manualLocks}
       />
     </div>
   );
