@@ -189,12 +189,15 @@ export class Controller {
   ): Promise<PageData> {
     const { user, publicUser } = ctx.state;
     const settings = user != null ? await this.database.get(user.id!) : null;
+    const url = new URL(ctx.request.url, ctx.request.origin);
+    const customText = url.searchParams.get("text");
     return {
       base: this.canonicalUrl,
       locale,
       user: user?.toDetails() ?? null,
       publicUser,
       settings: settings?.toJSON() ?? null,
+      customText,
     };
   }
 

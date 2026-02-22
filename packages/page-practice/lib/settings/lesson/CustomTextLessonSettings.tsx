@@ -61,6 +61,11 @@ export function CustomTextLessonSettings({
 function CustomTextInput(): ReactNode {
   const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
+  const currentText = settings.get(lessonProps.customText.content);
+  const isUrlText = useMemo(() => {
+    const url = new URL(window.location.href);
+    return url.searchParams.has("text");
+  }, []);
   return (
     <>
       <Para>
@@ -80,6 +85,14 @@ function CustomTextInput(): ReactNode {
           </span>
         ))}
       </Para>
+      {isUrlText && (
+        <Para>
+          <FormattedMessage
+            id="lessonType.customText.fromUrl"
+            defaultMessage="Custom text was loaded from URL."
+          />
+        </Para>
+      )}
       <Para>
         <TextField
           type="textarea"
@@ -87,7 +100,7 @@ function CustomTextInput(): ReactNode {
             id: "t_Custom_text",
             defaultMessage: "Custom text",
           })}
-          value={settings.get(lessonProps.customText.content)}
+          value={currentText}
           onChange={(value) => {
             updateSettings(settings.set(lessonProps.customText.content, value));
           }}

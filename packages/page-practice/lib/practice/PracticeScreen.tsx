@@ -9,8 +9,10 @@ import { useSettings } from "@keybr/settings";
 import { useEffect, useMemo, useState } from "react";
 import { Controller } from "./Controller.tsx";
 import { displayEvent, Progress } from "./state/index.ts";
+import { useUrlCustomText } from "./useUrlCustomText.ts";
 
 export function PracticeScreen() {
+  useUrlCustomText();
   return (
     <KeyboardProvider>
       <LessonLoader>
