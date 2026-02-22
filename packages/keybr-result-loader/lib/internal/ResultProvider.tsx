@@ -18,12 +18,19 @@ export function ResultProvider({
       value={{
         results,
         appendResults: (newResults) => {
-          setResults([...results, ...newResults]);
+          setResults((prevResults) => [...prevResults, ...newResults]);
           storage.append(newResults).catch(catchError);
         },
         clearResults: () => {
           setResults([]);
           storage.clear().catch(catchError);
+        },
+        replaceAllResults: (newResults) => {
+          setResults(newResults);
+          storage
+            .clear()
+            .then(() => storage.append(newResults))
+            .catch(catchError);
         },
       }}
     >

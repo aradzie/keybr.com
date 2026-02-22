@@ -5,6 +5,7 @@ export type ResultContextProps = {
   readonly results: readonly Result[];
   readonly appendResults: (newResults: readonly Result[]) => void;
   readonly clearResults: () => void;
+  readonly replaceAllResults: (newResults: readonly Result[]) => void;
 };
 
 export const ResultContext = createContext<ResultContextProps>(null!);

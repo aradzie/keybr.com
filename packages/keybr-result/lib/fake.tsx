@@ -134,6 +134,9 @@ export function FakeResultContext({
         clearResults: () => {
           setResults([]);
         },
+        replaceAllResults: (newResults) => {
+          setResults(newResults);
+        },
       }}
     >
       {children}

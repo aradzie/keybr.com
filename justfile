@@ -6,6 +6,10 @@ run:
 compile:
     npm run compile
 
+# Compile and run development server
+iterate: compile
+    npm start
+
 # Build webpack bundles
 build:
     npm run build -- --no-stats
