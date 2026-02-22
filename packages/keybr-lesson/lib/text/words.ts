@@ -78,9 +78,11 @@ export function mangledWords(
   {
     withCapitals = 0,
     withPunctuators = 0,
+    withNumbers = 0,
   }: {
     withCapitals?: number;
     withPunctuators?: number;
+    withNumbers?: number;
   },
   random: RNG,
 ): WordGenerator {
@@ -88,6 +90,10 @@ export function mangledWords(
     let word = nextWord();
     if (word == null || word === "") {
       return null;
+    }
+    if (withNumbers > 0 && withNumbers >= random()) {
+      const num = Math.floor(random() * 2000) + 1;
+      return String(num);
     }
     if (withCapitals > 0 && withCapitals >= random()) {
       word = language.capitalCase(word);
