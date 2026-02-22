@@ -3,59 +3,11 @@ import { describe, test } from "node:test";
 import { Layout } from "@keybr/keyboard";
 import { Result, TextType } from "@keybr/result";
 import { Histogram } from "@keybr/textinput";
-
-type JsonResult = {
-  layout: string;
-  textType: string;
-  timeStamp: string; // ISO date string
-  length: number;
-  time: number;
-  errors: number;
-  speed: number;
-  histogram: Array<{
-    codePoint: number;
-    hitCount: number;
-    missCount: number;
-    timeToType: number;
-  }>;
-};
-
-function deserializeJsonResults(jsonData: JsonResult[]): Result[] {
-  const results: Result[] = [];
-
-  for (const data of jsonData) {
-    const layout = Layout.ALL.find(({ id }) => id === data.layout);
-    if (!layout) {
-      throw new Error(`Unknown layout: ${data.layout}`);
-    }
-
-    const textType = TextType.ALL.find(({ id }) => id === data.textType);
-    if (!textType) {
-      throw new Error(`Unknown textType: ${data.textType}`);
-    }
-
-    const timeStamp = new Date(data.timeStamp).getTime();
-    if (isNaN(timeStamp)) {
-      throw new Error(`Invalid date format: ${data.timeStamp}`);
-    }
-
-    const histogram = new Histogram(data.histogram);
-
-    const result = new Result(
-      layout,
-      textType,
-      timeStamp,
-      data.length,
-      data.time,
-      data.errors,
-      histogram,
-    );
-
-    results.push(result);
-  }
-
-  return results;
-}
+import {
+  deserializeJsonResults,
+  detectDuplicates,
+  type JsonResult,
+} from "./import.ts";
 
 describe("deserializeJsonResults", () => {
   const createMockJsonResult = (
@@ -156,7 +108,7 @@ describe("deserializeJsonResults", () => {
   });
 });
 
-describe("Import duplicate detection", () => {
+describe("detectDuplicates", () => {
   const createResult = (
     timeStamp: number,
     layoutId: string = "en-us",
@@ -170,82 +122,83 @@ describe("Import duplicate detection", () => {
       100,
       10000,
       5,
-      new Histogram([]),
+      Histogram.empty,
     );
   };
 
   test("should detect duplicates by timestamp", () => {
-    const timestamp = Date.now();
-    const existing = [createResult(timestamp)];
-    const imported = [createResult(timestamp)];
+    const existing = [
+      createResult(1000),
+      createResult(2000),
+      createResult(3000),
+    ];
+    const imported = [createResult(2000), createResult(4000)];
 
-    const existingTimestamps = new Set(existing.map((r) => r.timeStamp));
-    const newResults = imported.filter(
-      (r) => !existingTimestamps.has(r.timeStamp),
-    );
+    const [newResults, duplicateCount] = detectDuplicates(existing, imported);
+
+    assert.strictEqual(newResults.length, 1);
+    assert.strictEqual(newResults[0].timeStamp, 4000);
+    assert.strictEqual(duplicateCount, 1);
+  });
+
+  test("should handle all duplicates", () => {
+    const existing = [createResult(1000), createResult(2000)];
+    const imported = [createResult(1000), createResult(2000)];
+
+    const [newResults, duplicateCount] = detectDuplicates(existing, imported);
 
     assert.strictEqual(newResults.length, 0);
+    assert.strictEqual(duplicateCount, 2);
   });
 
-  test("should merge non-duplicates", () => {
-    const timestamp1 = Date.now();
-    const timestamp2 = timestamp1 + 1000;
+  test("should handle all new results", () => {
+    const existing = [createResult(1000)];
+    const imported = [createResult(2000), createResult(3000)];
 
-    const existing = [createResult(timestamp1)];
-    const imported = [createResult(timestamp2)];
+    const [newResults, duplicateCount] = detectDuplicates(existing, imported);
 
-    const existingTimestamps = new Set(existing.map((r) => r.timeStamp));
-    const newResults = imported.filter(
-      (r) => !existingTimestamps.has(r.timeStamp),
-    );
-
-    assert.strictEqual(newResults.length, 1);
-    assert.strictEqual(newResults[0].timeStamp, timestamp2);
-  });
-
-  test("should handle mixed duplicates and non-duplicates", () => {
-    const timestamp1 = Date.now();
-    const timestamp2 = timestamp1 + 1000;
-    const timestamp3 = timestamp1 + 2000;
-
-    const existing = [createResult(timestamp1), createResult(timestamp2)];
-    const imported = [
-      createResult(timestamp1), // duplicate
-      createResult(timestamp3), // new
-    ];
-
-    const existingTimestamps = new Set(existing.map((r) => r.timeStamp));
-    const newResults = imported.filter(
-      (r) => !existingTimestamps.has(r.timeStamp),
-    );
-
-    assert.strictEqual(newResults.length, 1);
-    assert.strictEqual(newResults[0].timeStamp, timestamp3);
+    assert.strictEqual(newResults.length, 2);
+    assert.strictEqual(duplicateCount, 0);
   });
 
   test("should handle empty existing results", () => {
-    const timestamp = Date.now();
     const existing: Result[] = [];
-    const imported = [createResult(timestamp)];
+    const imported = [createResult(1000), createResult(2000)];
 
-    const existingTimestamps = new Set(existing.map((r) => r.timeStamp));
-    const newResults = imported.filter(
-      (r) => !existingTimestamps.has(r.timeStamp),
-    );
+    const [newResults, duplicateCount] = detectDuplicates(existing, imported);
 
-    assert.strictEqual(newResults.length, 1);
+    assert.strictEqual(newResults.length, 2);
+    assert.strictEqual(duplicateCount, 0);
   });
 
   test("should handle empty import", () => {
-    const timestamp = Date.now();
-    const existing = [createResult(timestamp)];
+    const existing = [createResult(1000)];
     const imported: Result[] = [];
 
-    const existingTimestamps = new Set(existing.map((r) => r.timeStamp));
-    const newResults = imported.filter(
-      (r) => !existingTimestamps.has(r.timeStamp),
-    );
+    const [newResults, duplicateCount] = detectDuplicates(existing, imported);
 
     assert.strictEqual(newResults.length, 0);
+    assert.strictEqual(duplicateCount, 0);
+  });
+
+  test("should handle mixed duplicates and non-duplicates", () => {
+    const existing = [
+      createResult(1000),
+      createResult(2000),
+      createResult(3000),
+    ];
+    const imported = [
+      createResult(1000), // duplicate
+      createResult(2000), // duplicate
+      createResult(4000), // new
+      createResult(5000), // new
+    ];
+
+    const [newResults, duplicateCount] = detectDuplicates(existing, imported);
+
+    assert.strictEqual(newResults.length, 2);
+    assert.strictEqual(duplicateCount, 2);
+    assert.strictEqual(newResults[0].timeStamp, 4000);
+    assert.strictEqual(newResults[1].timeStamp, 5000);
   });
 });
