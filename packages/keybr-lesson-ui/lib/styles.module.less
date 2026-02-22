@@ -1,0 +1,92 @@
+.lessonKey {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  outline: 1px solid transparent;
+  font-family: var(--monospace-font-family);
+  text-align: center;
+  cursor: default;
+}
+
+.lessonKey_normal {
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+  line-height: calc(1.5rem - 2px);
+}
+
+.lessonKey_large {
+  inline-size: 3rem;
+  block-size: 3rem;
+  font-size: 2rem;
+  line-height: calc(3rem - 2px);
+}
+
+.lessonKey_announcement {
+  inline-size: 5rem;
+  block-size: 5rem;
+  font-size: 4rem;
+  line-height: 5rem;
+}
+
+.lessonKey + .lessonKey {
+  margin-inline-start: 1px;
+}
+
+.lessonKey_included {
+  color: var(--LessonKey--included__color);
+  background-color: var(--LessonKey--included__background-color);
+  outline: 1px solid var(--LessonKey--included__outline-color);
+}
+
+.lessonKey_excluded {
+  color: var(--LessonKey--excluded__color);
+  background-color: var(--LessonKey--excluded__background-color);
+  outline: 1px solid var(--LessonKey--excluded__outline-color);
+}
+
+.lessonKey_uncalibrated {
+  color: var(--LessonKey--uncalibrated__color);
+  background-color: var(--LessonKey--uncalibrated__background-color);
+  outline: 1px solid var(--LessonKey--uncalibrated__outline-color);
+}
+
+.lessonKey_focused {
+  outline: 1px solid var(--LessonKey--focused__outline-color);
+}
+
+.lessonKey_forced {
+  outline: 1px solid var(--LessonKey--forced__outline-color);
+  text-decoration: underline;
+}
+
+.lessonKey_selectable {
+  cursor: pointer;
+}
+
+.lessonKey_current {
+  z-index: 1;
+  outline: 3px solid var(--LessonKey--current__outline-color);
+}
+
+.keyDetails {
+  display: inline-block;
+}
+
+.keyDetails_calibrated {
+  /* Empty. */
+}
+
+.keyDetails_uncalibrated {
+  /* Empty. */
+}
+
+.lessonKey + .keyDetails {
+  margin-inline-start: 0.5rem;
+}
+
+.cross {
+  position: absolute;
+  inset: 0;
+  stroke: var(--LessonKey--excluded__color);
+  stroke-width: 2px;
+}
