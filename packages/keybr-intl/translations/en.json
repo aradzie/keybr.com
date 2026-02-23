@@ -66,6 +66,8 @@
   "lessonType.books.description": "Generate typing lessons from the text of a book. All keys are included by default. This mode is for the pros.",
   "lessonType.code.description": "Practice punctuation characters that are specific to a programming language syntax.",
   "lessonType.customText.description": "Generate typing lessons from the words of your own custom text. All keys are included by default. This mode is for the pros.",
+  "lessonType.customText.fromUrl": "Custom text was loaded from URL.",
+  "lessonType.customText.fromUrl.description": "This text will only be used for the current session and will not be saved to your settings.",
   "lessonType.guided.description": "Generate typing lessons with random words using the phonetic rules of your language. The key set is expanded dynamically based on your performance. This mode is for the beginners.",
   "lessonType.numbers.description": "Practice numbers only.",
   "lessonType.syntax.description": "Generate lessons that resemble the specified programming language syntax.",
@@ -340,7 +342,5 @@
   "t_ws_Bar_whitespace": "Bar whitespace",
   "t_ws_Bullet_whitespace": "Bullet whitespace",
   "t_ws_No_whitespace": "No whitespace",
-  "weekDayNames": "M|T|W|T|F|S|S",
-  "lessonType.customText.fromUrl": "Custom text was loaded from URL.",
-  "lessonType.customText.fromUrl.description": "This text will only be used for the current session and will not be saved to your settings."
+  "weekDayNames": "M|T|W|T|F|S|S"
 }
