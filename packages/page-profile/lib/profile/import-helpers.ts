@@ -2,6 +2,9 @@ import { Layout } from "@keybr/keyboard";
 import { Result, TextType } from "@keybr/result";
 import { Histogram } from "@keybr/textinput";
 
+export const MAX_IMPORT_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+export const MAX_IMPORT_RESULTS = 10000;
+
 export type JsonResult = {
   layout: string;
   textType: string;

@@ -4,6 +4,7 @@ import {
   Alert,
   Button,
   Dialog,
+  download,
   Field,
   FieldList,
   Para,
@@ -11,8 +12,12 @@ import {
 } from "@keybr/widget";
 import { useState } from "react";
 import { useIntl } from "react-intl";
-import { download } from "./FooterSection.tsx";
-import { deserializeJsonResults, type JsonResult } from "./import.ts";
+import {
+  deserializeJsonResults,
+  type JsonResult,
+  MAX_IMPORT_FILE_SIZE,
+  MAX_IMPORT_RESULTS,
+} from "./import-helpers.ts";
 
 type ImportDialogState = {
   importedResults: ResultType[] | null;
@@ -55,6 +60,22 @@ function useCommands() {
       const file = target.files?.[0];
       if (!file) return;
 
+      if (file.size > MAX_IMPORT_FILE_SIZE) {
+        toast(
+          <Alert severity="error">
+            {formatMessage(
+              {
+                id: "profile.import.file_too_large",
+                defaultMessage:
+                  "File is too large. Maximum size is {maxSize}MB.",
+              },
+              { maxSize: Math.round(MAX_IMPORT_FILE_SIZE / (1024 * 1024)) },
+            )}
+          </Alert>,
+        );
+        return;
+      }
+
       try {
         const buffer = await file.arrayBuffer();
         let importedResults: ResultType[];
@@ -83,6 +104,22 @@ function useCommands() {
             );
             return;
           }
+        }
+
+        if (importedResults.length > MAX_IMPORT_RESULTS) {
+          toast(
+            <Alert severity="error">
+              {formatMessage(
+                {
+                  id: "profile.import.too_many_results",
+                  defaultMessage:
+                    "File contains too many results. Maximum is {maxResults}.",
+                },
+                { maxResults: MAX_IMPORT_RESULTS },
+              )}
+            </Alert>,
+          );
+          return;
         }
 
         // Validate all results before importing

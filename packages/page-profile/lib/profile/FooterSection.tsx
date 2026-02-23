@@ -100,13 +100,3 @@ export function FooterSection() {
     </>
   );
 }
-
-export function download(blob: Blob, name: string) {
-  const a = document.createElement("a");
-  a.setAttribute("href", URL.createObjectURL(blob));
-  a.setAttribute("download", name);
-  a.setAttribute("hidden", "");
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-}

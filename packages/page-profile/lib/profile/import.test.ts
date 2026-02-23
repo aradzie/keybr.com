@@ -3,7 +3,7 @@ import { describe, test } from "node:test";
 import { Layout } from "@keybr/keyboard";
 import { Result, TextType } from "@keybr/result";
 import { Histogram } from "@keybr/textinput";
-import { deserializeJsonResults, type JsonResult } from "./import.ts";
+import { deserializeJsonResults, type JsonResult } from "./import-helpers.ts";
 
 describe("deserializeJsonResults", () => {
   const createMockJsonResult = (
