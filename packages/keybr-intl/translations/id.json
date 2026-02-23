@@ -150,7 +150,7 @@
   "profile.download.description": "Unduh semua data pengetikanmu dalam format JSON.",
   "profile.emptyChart.description": "Selesaikan beberapa pelajaran lagi untuk mendapatkan lebih banyak poin data.",
   "profile.emptyChart.header": "Data tidak cukup",
-  "profile.import.description": "Impor data pengetikan dari file JSON atau .stats.",
+  "profile.import.description": "Impor data pengetikan dari file JSON/.stats.",
   "profile.import.file_error": "Gagal membaca file. Harap pastikan itu adalah file ekspor yang valid.",
   "profile.import.json_error": "Gagal untuk mem-parsing file JSON. Silakan periksa format file.",
   "profile.import.merge_success": "Diimpor {count} hasil baru (melewatkan {skipped} duplikat).",
@@ -337,5 +337,9 @@
   "t_ws_Bar_whitespace": "Bar ruangkosong",
   "t_ws_Bullet_whitespace": "Bullet ruangkosong",
   "t_ws_No_whitespace": "Tanpa spasi",
-  "weekDayNames": "S|S|R|K|J|S|M"
+  "weekDayNames": "S|S|R|K|J|S|M",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

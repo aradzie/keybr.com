@@ -22,7 +22,7 @@
   "help.example3": "<a>Shembulli 3</a>, një rritje e konsiderueshme nga më pak se 20 në 40 WPM pas 5 orësh e 30 minutash praktikë gjatë 11 ditëve.",
   "help.example4": "<a>Shembulli 4</a>, pas 2 orësh e 10 minutash praktikë gjatë 11 ditëve, shpejtësia e shkrimit mbeti rreth 70 WPM (e cila tashmë është mjaft e lartë), por saktësia u përmirësua.",
   "help.example5": "<a>Shembulli 5</a>, nga 20 në 45 WPM pas rreth 10 orësh praktikë gjatë 22 ditëve (po, ndonjëherë merr më shumë kohë).",
-  "profile.import.description": "Importoni të dhënat e tipit nga një skedar JSON ose .stats.",
+  "profile.import.description": "Importoni të dhënat e tipit nga një skedar JSON/.stats.",
   "profile.import.file_error": "Dështoi të lexojë skedarin. Ju lutemi sigurohuni që është një skedar i vlefshëm eksporti.",
   "profile.import.json_error": "Dështoi të analizohej skedari JSON. Ju lutemi kontrolloni formatin e skedarit.",
   "profile.import.merge_success": "Importuar {count} rezultate të reja (anashkaluar {skipped} kopje).",
@@ -48,5 +48,9 @@
   "t_cc_Letters": "Shkronjat",
   "t_cc_Punctuation_characters": "Shenjat e Pikësimit",
   "t_cc_Special_characters": "Karakteret Speciale",
-  "weekDayNames": "H|M|M|E|P|S|D"
+  "weekDayNames": "H|M|M|E|P|S|D",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

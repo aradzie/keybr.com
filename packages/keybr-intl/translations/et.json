@@ -149,7 +149,7 @@
   "profile.download.description": "Laadi alla kõik oma tippimisandmed JSON-vormingus.",
   "profile.emptyChart.description": "Harjuta veel mõned korrad, et saada piisavalt statistikat.",
   "profile.emptyChart.header": "Puudub piisavalt andmeid",
-  "profile.import.description": "Impordi kirjutamise andmed JSON või .stats failist.",
+  "profile.import.description": "Importige tüübid andmed JSON/.stats failist.",
   "profile.import.file_error": "Ebaõnnestus faili lugemine. Palun veenduge, et see on kehtiv eksportfail.",
   "profile.import.json_error": "JSON faili analüüsimine ebaõnnestus. Palun kontrollige faili formaati.",
   "profile.import.merge_success": "Imporditud {count} uut tulemust (jäetud vahele {skipped} dubleeritud).",
@@ -336,5 +336,9 @@
   "t_ws_Bar_whitespace": "Riba tühimik",
   "t_ws_Bullet_whitespace": "Kuuli tühimik",
   "t_ws_No_whitespace": "Ei ole tühikuid",
-  "weekDayNames": "E|T|K|N|R|L|P"
+  "weekDayNames": "E|T|K|N|R|L|P",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

@@ -151,7 +151,7 @@
   "profile.download.description": "Завантажте всі ваші дані у форматі JSON.",
   "profile.emptyChart.description": "Закінчіть ще кілька уроків, щоб отримати більше даних.",
   "profile.emptyChart.header": "Недостатньо даних",
-  "profile.import.description": "Імпортуйте дані набору символів з файлу JSON або .stats.",
+  "profile.import.description": "Імпортуйте типові дані з файлу JSON/.stats.",
   "profile.import.file_error": "Не вдалося прочитати файл. Будь ласка, переконайтеся, що це дійсний файл експорту.",
   "profile.import.json_error": "Не вдалося розпарсити файл JSON. Будь ласка, перевірте формат файлу.",
   "profile.import.merge_success": "Імпортовано {count} нових результатів (пропущено {skipped} дублікатів).",
@@ -339,5 +339,9 @@
   "t_ws_Bar_whitespace": "Лінії",
   "t_ws_Bullet_whitespace": "Крапки",
   "t_ws_No_whitespace": "Відсутні",
-  "weekDayNames": "П|В|С|Ч|П|С|Н"
+  "weekDayNames": "П|В|С|Ч|П|С|Н",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

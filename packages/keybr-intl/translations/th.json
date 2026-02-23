@@ -146,7 +146,7 @@
   "profile.download.description": "ดาวน์โหลดข้อมูลการพิมพ์ทั้งหมดของคุณในรูปแบบ JSON",
   "profile.emptyChart.description": "ทำแบบฝึกอีกสักสองสามรอบ เพื่อรับข้อมูลเพิ่มเติม",
   "profile.emptyChart.header": "ข้อมูลไม่เพียงพอ",
-  "profile.import.description": "นำเข้าข้อมูลการพิมพ์จากไฟล์ JSON หรือ .stats",
+  "profile.import.description": "นำเข้าข้อมูลการพิมพ์จากไฟล์ JSON/.stats",
   "profile.import.file_error": "ไม่สามารถอ่านไฟล์ได้ กรุณาตรวจสอบให้แน่ใจว่าเป็นไฟล์ส่งออกที่ถูกต้อง",
   "profile.import.json_error": "ไม่สามารถแยกไฟล์ JSON ได้ กรุณาตรวจสอบรูปแบบไฟล์",
   "profile.import.merge_success": "นำเข้าผลลัพธ์ใหม่ {count} รายการ (ข้าม {skipped} รายการที่ซ้ำกัน)",
@@ -327,5 +327,9 @@
   "t_ws_Bar_whitespace": "เส้นใต้",
   "t_ws_Bullet_whitespace": "จุด",
   "t_ws_No_whitespace": "ไม่มี",
-  "weekDayNames": "จ|อ|พ|พฤ|ศ|ส|อา"
+  "weekDayNames": "จ|อ|พ|พฤ|ศ|ส|อา",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

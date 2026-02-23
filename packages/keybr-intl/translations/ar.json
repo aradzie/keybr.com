@@ -151,7 +151,7 @@
   "profile.download.description": "تنزيل جميع بيانات كتابتك بتنسيق JSON.",
   "profile.emptyChart.description": "أكمل بعض الدروس الإضافية للحصول على المزيد من نقاط البيانات.",
   "profile.emptyChart.header": "لا توجد بيانات كافية",
-  "profile.import.description": "استيراد بيانات الكتابة من ملف JSON أو .stats.",
+  "profile.import.description": "استيراد بيانات الكتابة من ملف JSON/.stats.",
   "profile.import.file_error": "فشل في قراءة الملف. يرجى التأكد من أنه ملف تصدير صالح.",
   "profile.import.json_error": "فشل في تحليل ملف JSON. يرجى التحقق من تنسيق الملف.",
   "profile.import.merge_success": "تم استيراد {count} نتائج جديدة (تم تخطي {skipped} مكررات).",
@@ -339,5 +339,9 @@
   "t_ws_Bar_whitespace": "مسافة بيضاء شريطية",
   "t_ws_Bullet_whitespace": "مسافة بيضاء نقطية",
   "t_ws_No_whitespace": "لا مسافة بيضاء",
-  "weekDayNames": "إ|ث|أ|خ|ج|س|أ"
+  "weekDayNames": "إ|ث|أ|خ|ج|س|أ",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

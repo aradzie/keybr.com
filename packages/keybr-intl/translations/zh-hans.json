@@ -151,7 +151,7 @@
   "profile.download.description": "以JSON格式下载您所有的打字数据。",
   "profile.emptyChart.description": "多完成几节课，获得更多的数据点。",
   "profile.emptyChart.header": "数据不足",
-  "profile.import.description": "从 JSON 或 .stats 文件导入输入数据。",
+  "profile.import.description": "从 JSON/.stats 文件导入类型数据。",
   "profile.import.file_error": "无法读取文件。请确保它是一个有效的导出文件。",
   "profile.import.json_error": "无法解析 JSON 文件。请检查文件格式。",
   "profile.import.merge_success": "导入了 {count} 条新结果（跳过了 {skipped} 条重复项）。",
@@ -338,5 +338,9 @@
   "t_theme_Exit_fullscreen_": "退出全屏模式.",
   "t_ws_Bar_whitespace": "条形空白",
   "t_ws_Bullet_whitespace": "点式空白",
-  "t_ws_No_whitespace": "无空白"
+  "t_ws_No_whitespace": "无空白",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

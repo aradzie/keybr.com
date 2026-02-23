@@ -151,7 +151,7 @@
   "profile.download.description": "Preuzmite sve svoje podatke o tipkanju u JSON formatu.",
   "profile.emptyChart.description": "Dovršite još nekoliko lekcija da biste dobili više podatkovnih točaka.",
   "profile.emptyChart.header": "Nema dovoljno podataka",
-  "profile.import.description": "Uvezite podatke tipkanja iz JSON ili .stats datoteke.",
+  "profile.import.description": "Uvezite podatke o tipovima iz JSON/.stats datoteke.",
   "profile.import.file_error": "Nije moguće pročitati datoteku. Molimo provjerite je li to valjana datoteka za izvoz.",
   "profile.import.json_error": "Nije uspjelo analizirati JSON datoteku. Molimo provjerite format datoteke.",
   "profile.import.merge_success": "Uvezeno je {count} novih rezultata (preskočeno {skipped} duplikata).",
@@ -335,5 +335,9 @@
   "t_ws_Bar_whitespace": "Razmak trake",
   "t_ws_Bullet_whitespace": "Razmak s grafičkim oznakama",
   "t_ws_No_whitespace": "Nema razmaka",
-  "weekDayNames": "P|U|S|Č|P|S|N"
+  "weekDayNames": "P|U|S|Č|P|S|N",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

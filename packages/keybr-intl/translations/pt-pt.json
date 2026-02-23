@@ -145,7 +145,7 @@
   "profile.download.description": "Transfira todos os seus dados de escrita em formato JSON.",
   "profile.emptyChart.description": "Complete mais algumas lições de modo a obter mais dados.",
   "profile.emptyChart.header": "Não existem dados suficientes",
-  "profile.import.description": "Importar dados de digitação de um ficheiro JSON ou .stats.",
+  "profile.import.description": "Importar dados de tipagem de um ficheiro JSON/.stats.",
   "profile.import.file_error": "Falha ao ler o ficheiro. Por favor, assegure-se de que é um ficheiro de exportação válido.",
   "profile.import.json_error": "Falha ao analisar o ficheiro JSON. Por favor, verifique o formato do ficheiro.",
   "profile.import.merge_success": "Importados {count} novos resultados (ignorados {skipped} duplicados).",
@@ -316,5 +316,9 @@
   "t_ws_Bar_whitespace": "Barra de espaço em branco",
   "t_ws_Bullet_whitespace": "Espaçamento em branco",
   "t_ws_No_whitespace": "Sem espaço em branco",
-  "weekDayNames": "S|T|Q|Q|S|S|D"
+  "weekDayNames": "S|T|Q|Q|S|S|D",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

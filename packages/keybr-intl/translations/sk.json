@@ -151,7 +151,7 @@
   "profile.download.description": "Stiahnite si všetky vaše údaje o písaní v JSON formáte.",
   "profile.emptyChart.description": "Dokončite ešte zopár lekcií, aby sa nazbieralo viac údajov.",
   "profile.emptyChart.header": "Nedostatok dát",
-  "profile.import.description": "Importujte údaje o písaní z JSON alebo .stats súboru.",
+  "profile.import.description": "Importujte typové údaje z JSON/.stats súboru.",
   "profile.import.file_error": "Nepodarilo sa prečítať súbor. Prosím, uistite sa, že ide o platný exportný súbor.",
   "profile.import.json_error": "Nepodarilo sa analyzovať súbor JSON. Skontrolujte formát súboru.",
   "profile.import.merge_success": "Importovaných {count} nových výsledkov (preskočených {skipped} duplicit).",
@@ -338,5 +338,9 @@
   "t_ws_Bar_whitespace": "Zvýraznená medzera",
   "t_ws_Bullet_whitespace": "Krúžková medzera",
   "t_ws_No_whitespace": "Prázdne miesto",
-  "weekDayNames": "P|U|S|Š|P|S|N"
+  "weekDayNames": "P|U|S|Š|P|S|N",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

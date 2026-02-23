@@ -12,11 +12,7 @@ import {
 import { useState } from "react";
 import { useIntl } from "react-intl";
 import { download } from "./FooterSection.tsx";
-import {
-  deserializeJsonResults,
-  detectDuplicates,
-  type JsonResult,
-} from "./import.ts";
+import { deserializeJsonResults, type JsonResult } from "./import.ts";
 
 type ImportDialogState = {
   importedResults: ResultType[] | null;
@@ -234,6 +230,7 @@ function ImportDialog({
   onConfirmReplace: () => void;
   onClose: () => void;
 }) {
+  const { formatMessage } = useIntl();
   if (!isOpen) return null;
 
   return (
@@ -254,19 +251,43 @@ function ImportDialog({
         {step === "merge_or_replace" ? (
           <>
             <Field>
-              <Button onClick={onMerge} label="Merge" />
+              <Button
+                onClick={onMerge}
+                label={formatMessage({
+                  id: "profile.import.merge",
+                  defaultMessage: "Merge",
+                })}
+              />
             </Field>
             <Field>
-              <Button onClick={onReplace} label="Replace" />
+              <Button
+                onClick={onReplace}
+                label={formatMessage({
+                  id: "profile.import.replace",
+                  defaultMessage: "Replace",
+                })}
+              />
             </Field>
           </>
         ) : (
           <Field>
-            <Button onClick={onConfirmReplace} label="Yes, Replace All" />
+            <Button
+              onClick={onConfirmReplace}
+              label={formatMessage({
+                id: "profile.import.confirm_replace",
+                defaultMessage: "Yes, Replace All",
+              })}
+            />
           </Field>
         )}
         <Field>
-          <Button onClick={onClose} label="Cancel" />
+          <Button
+            onClick={onClose}
+            label={formatMessage({
+              id: "profile.import.cancel",
+              defaultMessage: "Cancel",
+            })}
+          />
         </Field>
         <Field.Filler />
       </FieldList>
@@ -275,4 +296,4 @@ function ImportDialog({
 }
 
 export type { ImportDialogState };
-export { ImportDialog,useCommands };
+export { ImportDialog, useCommands };

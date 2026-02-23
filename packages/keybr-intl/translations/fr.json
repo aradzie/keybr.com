@@ -149,11 +149,11 @@
   "profile.download.description": "Télécharger toutes vos données de frappe au format JSON.",
   "profile.emptyChart.description": "Complétez quelques leçons supplémentaires pour obtenir plus de points de données.",
   "profile.emptyChart.header": "Pas assez de données",
-  "profile.import.description": "Importer des données de saisie à partir d'un fichier JSON ou .stats.",
-  "profile.import.file_error": "Échec de la lecture du fichier. Veuillez vous assurer qu'il s'agit d'un fichier d'exportation valide.",
-  "profile.import.json_error": "Échec de l'analyse du fichier JSON. Veuillez vérifier le format du fichier.",
+  "profile.import.description": "Importer des données de typage à partir d’un fichier JSON/.stats.",
+  "profile.import.file_error": "Échec de la lecture du fichier. Veuillez vous assurer qu’il s’agit d’un fichier d’exportation valide.",
+  "profile.import.json_error": "Échec de l’analyse du fichier JSON. Veuillez vérifier le format du fichier.",
   "profile.import.merge_success": "Importé {count} nouveaux résultats (ignoré {skipped} doublons).",
-  "profile.import.no_new": "Tous les résultats dans le fichier sont des doublons. Rien n'a été importé.",
+  "profile.import.no_new": "Tous les résultats dans le fichier sont des doublons. Rien n’a été importé.",
   "profile.import.replace_success": "Remplacé toutes les données par {count} résultats importés.",
   "profile.import.validation_error": "Certains résultats dans le fichier sont invalides. Importation annulée.",
   "profile.reset.description": "Supprimer définitivement toutes vos données de frappe et réinitialiser les statistiques.",
@@ -331,5 +331,9 @@
   "t_ws_Bar_whitespace": "Tiret bas",
   "t_ws_Bullet_whitespace": "Point médian",
   "t_ws_No_whitespace": "Espace blanc",
-  "weekDayNames": "Lu|Ma|Me|Je|Ve|Sa|Di"
+  "weekDayNames": "Lu|Ma|Me|Je|Ve|Sa|Di",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

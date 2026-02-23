@@ -151,7 +151,7 @@
   "profile.download.description": "Изтеглете всичките си данни за писане във формат JSON.",
   "profile.emptyChart.description": "Завършете още няколко урока, за да получите повече точки с данни.",
   "profile.emptyChart.header": "Няма достатъчно данни",
-  "profile.import.description": "Импортирайте данни за въвеждане от JSON или .stats файл.",
+  "profile.import.description": "Импортирайте типови данни от JSON/.stats файл.",
   "profile.import.file_error": "Неуспешно прочитане на файла. Моля, уверете се, че е валиден файл за експортиране.",
   "profile.import.json_error": "Неуспешно парсиране на JSON файл. Моля, проверете формата на файла.",
   "profile.import.merge_success": "Импортирани {count} нови резултати (пропуснати {skipped} дубликати).",
@@ -339,5 +339,9 @@
   "t_ws_Bar_whitespace": "Лента за празно пространство",
   "t_ws_Bullet_whitespace": "Празно пространство с водещ символ",
   "t_ws_No_whitespace": "Без празно пространство",
-  "weekDayNames": "П|В|С|Ч|П|С|Н"
+  "weekDayNames": "П|В|С|Ч|П|С|Н",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

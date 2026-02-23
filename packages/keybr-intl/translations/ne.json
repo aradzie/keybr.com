@@ -151,7 +151,7 @@
   "profile.download.description": "JSON ढाँचामा तपाइँको सबै टाइपिङ डाटा डाउनलोड गर्नुहोस्।",
   "profile.emptyChart.description": "थप डेटा बिन्दुहरू प्राप्त गर्न केही थप पाठहरू पूरा गर्नुहोस्।",
   "profile.emptyChart.header": "पर्याप्त डाटा छैन",
-  "profile.import.description": "JSON वा .stats फाइलबाट टाइपिङ डाटा आयात गर्नुहोस्।",
+  "profile.import.description": "JSON/.stats फाइलबाट टाइपिङ डाटा आयात गर्नुहोस्।",
   "profile.import.file_error": "फाइल पढ्न असफल भयो। कृपया सुनिश्चित गर्नुहोस् कि यो एक मान्य निर्यात फाइल हो।",
   "profile.import.json_error": "JSON फाइल पार्स गर्न असफल। कृपया फाइलको ढाँचा जाँच गर्नुहोस्।",
   "profile.import.merge_success": "{count} नयाँ परिणामहरू आयात गरियो ( {skipped} डुप्लिकेटहरू छोडियो)।",
@@ -339,5 +339,9 @@
   "t_ws_Bar_whitespace": "बार ह्वाइटस्पेस",
   "t_ws_Bullet_whitespace": "बुलेट व्हाइटस्पेस",
   "t_ws_No_whitespace": "खाली ठाउँ छैन",
-  "weekDayNames": "सोम|मंगल|बुध|बिहि|शुक्र|शनि|आइत"
+  "weekDayNames": "सोम|मंगल|बुध|बिहि|शुक्र|शनि|आइत",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

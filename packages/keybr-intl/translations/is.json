@@ -57,7 +57,7 @@
   "lesson.indicator.focused": "Takki með aukinni tíðni. Það tekur þig mestan tíma að finna þennan takka svo algrímið velur að hafa hann með í hverju mynduðu orði.",
   "lesson.indicator.forced": "Takki sem var handvirkt bætt við æfingarnar.",
   "lesson.indicator.notIncluded": "Takki sem er ekki enn með í æfingunum.",
-  "profile.import.description": "Flytja inn skrifgögn úr JSON eða .stats skrá.",
+  "profile.import.description": "Flytja inn skrifleg gögn úr JSON/.stats skrá.",
   "profile.import.file_error": "Mistókst að lesa skrá. Vinsamlegast tryggðu að hún sé gilt útflutningsskjal.",
   "profile.import.json_error": "Mistókst að lesa JSON skrá. Vinsamlegast athugaðu skráarformatið.",
   "profile.import.merge_success": "Flutt inn {count} nýjar niðurstöður (sneidd {skipped} tvítekningar).",
@@ -100,5 +100,9 @@
   "t_ev_Daily_goal_reached": "Daglegu markmiði náð!",
   "t_num_Characters": "Stafir",
   "t_num_Lessons": "Kennslur",
-  "weekDayNames": "M|Þ|M|F|F|L|S"
+  "weekDayNames": "M|Þ|M|F|F|L|S",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

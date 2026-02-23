@@ -150,7 +150,7 @@
   "profile.download.description": "Laden Sie alle Ihre Typisierungsdaten im JSON-Format herunter.",
   "profile.emptyChart.description": "Schließen Sie noch ein paar Lektionen ab, um mehr Datenpunkte zu erhalten.",
   "profile.emptyChart.header": "Nicht genügend Daten",
-  "profile.import.description": "Importieren Sie Tippdaten aus einer JSON- oder .stats-Datei.",
+  "profile.import.description": "Importieren Sie Typdaten aus einer JSON/.stats-Datei.",
   "profile.import.file_error": "Fehler beim Lesen der Datei. Bitte stellen Sie sicher, dass es sich um eine gültige Exportdatei handelt.",
   "profile.import.json_error": "Fehler beim Parsen der JSON-Datei. Bitte überprüfen Sie das Dateiformat.",
   "profile.import.merge_success": "Importiert {count} neue Ergebnisse (übersprungen {skipped} Duplikate).",
@@ -337,5 +337,9 @@
   "t_ws_Bar_whitespace": "Blankes Leerzeichen",
   "t_ws_Bullet_whitespace": "Aufzählungsleerzeichen",
   "t_ws_No_whitespace": "Kein Leerzeichen",
-  "weekDayNames": "Mo|Di|Mi|Do|Fr|Sa|So"
+  "weekDayNames": "Mo|Di|Mi|Do|Fr|Sa|So",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

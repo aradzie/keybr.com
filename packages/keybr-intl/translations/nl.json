@@ -151,7 +151,7 @@
   "profile.download.description": "Download al uw typgegevens in JSON formaat.",
   "profile.emptyChart.description": "Rond nog enkele lessen af om meer datapunten te verkrijgen.",
   "profile.emptyChart.header": "Niet genoeg data",
-  "profile.import.description": "Importeer typgegevens vanuit een JSON- of .stats-bestand.",
+  "profile.import.description": "Typgegevens importeren vanuit een JSON/.stats-bestand.",
   "profile.import.file_error": "Kon het bestand niet lezen. Zorg ervoor dat het een geldig exportbestand is.",
   "profile.import.json_error": "Kon het JSON-bestand niet parseren. Controleer het bestandsformaat.",
   "profile.import.merge_success": "Geïmporteerd {count} nieuwe resultaten (overgeslagen {skipped} duplicaten).",
@@ -331,5 +331,9 @@
   "t_ws_Bar_whitespace": "Balk spatie",
   "t_ws_Bullet_whitespace": "Punt spatie",
   "t_ws_No_whitespace": "Geen spatie",
-  "weekDayNames": "M|D|W|D|V|Z|Z"
+  "weekDayNames": "M|D|W|D|V|Z|Z",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

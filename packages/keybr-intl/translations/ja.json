@@ -339,5 +339,9 @@
   "t_ws_Bar_whitespace": "バー",
   "t_ws_Bullet_whitespace": "点",
   "t_ws_No_whitespace": "なし",
-  "weekDayNames": "月|火|水|木|金|土|日"
+  "weekDayNames": "月|火|水|木|金|土|日",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

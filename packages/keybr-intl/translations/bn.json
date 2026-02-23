@@ -151,7 +151,7 @@
   "profile.download.description": "আপনার সমস্ত টাইপিং ডেটা JSON ফর্ম্যাটে ডাউনলোড করুন।",
   "profile.emptyChart.description": "আরও ডেটা পয়েন্ট পেতে আরও কিছু পাঠ সম্পূর্ণ করুন।",
   "profile.emptyChart.header": "পর্যাপ্ত ডেটা নেই",
-  "profile.import.description": "একটি JSON বা .stats ফাইল থেকে টাইপিং ডেটা আমদানি করুন।",
+  "profile.import.description": "একটি JSON/.stats ফাইল থেকে টাইপিং ডেটা আমদানি করুন।",
   "profile.import.file_error": "ফাইল পড়তে ব্যর্থ হয়েছে। দয়া করে নিশ্চিত করুন এটি একটি বৈধ এক্সপোর্ট ফাইল।",
   "profile.import.json_error": "JSON ফাইল পার্স করতে ব্যর্থ হয়েছে। দয়া করে ফাইলের ফরম্যাটটি পরীক্ষা করুন।",
   "profile.import.merge_success": "{count} নতুন ফলাফল আমদানি করা হয়েছে (স্কিপ করা হয়েছে {skipped} ডুপ্লিকেট)।",
@@ -339,5 +339,9 @@
   "t_ws_Bar_whitespace": "বার হোয়াইটস্পেস",
   "t_ws_Bullet_whitespace": "বুলেট হোয়াইটস্পেস",
   "t_ws_No_whitespace": "কোনো হোয়াইটস্পেস নেই",
-  "weekDayNames": "সো।ম।বু।বৃ।শু।শ।র"
+  "weekDayNames": "সো।ম।বু।বৃ।শু।শ।র",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

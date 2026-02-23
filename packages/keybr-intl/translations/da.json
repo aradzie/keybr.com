@@ -148,7 +148,7 @@
   "profile.download.description": "Download alle dine skrivedata i JSON-format.",
   "profile.emptyChart.description": "Gennemfør et par lektioner mere for at få flere datapunkter.",
   "profile.emptyChart.header": "Ikke nok data",
-  "profile.import.description": "Importer typingdata fra en JSON eller .stats fil.",
+  "profile.import.description": "Importer typedata fra en JSON/.stats-fil.",
   "profile.import.file_error": "Fejl ved læsning af fil. Venligst sørg for, at det er en gyldig eksportfil.",
   "profile.import.json_error": "Fejl ved parsing af JSON-fil. Tjek venligst filformatet.",
   "profile.import.merge_success": "Importerede {count} nye resultater (springet over {skipped} dubletter).",
@@ -329,5 +329,9 @@
   "t_ws_Bar_whitespace": "Bar Whitespace",
   "t_ws_Bullet_whitespace": "Punkttegn mellemrum",
   "t_ws_No_whitespace": "Intet mellemrum",
-  "weekDayNames": "M|T|O|T|F|L|S"
+  "weekDayNames": "M|T|O|T|F|L|S",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

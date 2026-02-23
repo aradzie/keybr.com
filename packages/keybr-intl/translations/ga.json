@@ -151,12 +151,12 @@
   "profile.download.description": "Íoslódáil do shonraí clóscríofa go léir i bhformáid JSON.",
   "profile.emptyChart.description": "Críochnaigh cúpla ceacht eile chun níos mó pointí sonraí a fháil.",
   "profile.emptyChart.header": "Ní leor sonraí",
-  "profile.import.description": "Iompraigh sonraí typing ó chomhad JSON nó .stats.",
+  "profile.import.description": "Iompraigh sonraí typing ó chomhad JSON/.stats.",
   "profile.import.file_error": "Níor éirigh le comhad a léamh. Le do thoil, déan cinnte gurb é comhad onnmhairithe bailí é.",
   "profile.import.json_error": "Níor éirigh leis an gcomhad JSON a parseáil. Le do thoil, seiceáil formáid an chomhoibrithe.",
   "profile.import.merge_success": "Cuireadh {count} torthaí nua isteach (cuirtear {skipped} dúblóidí in áirithe).",
   "profile.import.no_new": "Tá na torthaí uile sa chomhad dúblóideach. Níor cuireadh aon rud isteach.",
-  "profile.import.replace_success": "D'athraigh gach sonraí le {count} torthaí allmhairithe.",
+  "profile.import.replace_success": "Cuireadh gach sonra in ionad {count} torthaí allmhairithe.",
   "profile.import.validation_error": "Tá roinnt torthaí sa chomhad neamhbhailí. Cuireadh an t-íoslódáil ar ceal.",
   "profile.reset.description": "Scrios go buan do shonraí clóscríofa go léir agus athshocraigh staitisticí.",
   "profile.reset.message": "An bhfuil tú cinnte gur mian leat na sonraí go léir a scriosadh agus do phróifíl a athshocrú? Tá an oibríocht seo buan agus ní féidir é a chealú!",
@@ -335,5 +335,9 @@
   "t_theme_Exit_fullscreen_": "Scoir mód lánscáileáin.",
   "t_ws_Bar_whitespace": "Spás bán barra",
   "t_ws_Bullet_whitespace": "Spás bán bullet",
-  "t_ws_No_whitespace": "Gan spás bán"
+  "t_ws_No_whitespace": "Gan spás bán",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

@@ -150,7 +150,7 @@
   "profile.download.description": "以 JSON 格式下載您所有的打字資料。",
   "profile.emptyChart.description": "完成更多課程，來獲得更多的數據。",
   "profile.emptyChart.header": "數據不足",
-  "profile.import.description": "從 JSON 或 .stats 檔案匯入輸入數據。",
+  "profile.import.description": "從 JSON/.stats 檔案導入類型數據。",
   "profile.import.file_error": "無法讀取檔案。請確保它是一個有效的匯出檔案。",
   "profile.import.json_error": "無法解析 JSON 檔案。請檢查檔案格式。",
   "profile.import.merge_success": "已匯入 {count} 筆新結果（跳過 {skipped} 筆重複項）。",
@@ -338,5 +338,9 @@
   "t_ws_Bar_whitespace": "條形空白",
   "t_ws_Bullet_whitespace": "圓點空白",
   "t_ws_No_whitespace": "無空白",
-  "weekDayNames": "一|二|三|四|五|六|日"
+  "weekDayNames": "一|二|三|四|五|六|日",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

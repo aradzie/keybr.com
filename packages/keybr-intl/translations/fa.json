@@ -117,7 +117,7 @@
   "profile.download.description": "بارگیری همه داده تایپ شما در قالب JSON.",
   "profile.emptyChart.description": "چند درس دیگر را برای گرفتن نقاط داده بیشتر انجام دهید.",
   "profile.emptyChart.header": "داده ناکافی",
-  "profile.import.description": "داده‌های تایپ را از یک فایل JSON یا .stats وارد کنید.",
+  "profile.import.description": "داده‌های تایپ را از یک فایل JSON/.stats وارد کنید.",
   "profile.import.file_error": "عدم توانایی در خواندن فایل. لطفاً اطمینان حاصل کنید که این یک فایل صادرات معتبر است.",
   "profile.import.json_error": "خطا در تجزیه فایل JSON. لطفاً فرمت فایل را بررسی کنید.",
   "profile.import.merge_success": "{count} نتیجه جدید وارد شد ( {skipped} تکراری نادیده گرفته شد).",
@@ -285,5 +285,9 @@
   "t_ws_Bar_whitespace": "فضای خالی میله‌ای",
   "t_ws_Bullet_whitespace": "فضای خالی گلوله ای",
   "t_ws_No_whitespace": "فضای خالی عادی",
-  "weekDayNames": "د|س|چ|پ|ج|ش|ی"
+  "weekDayNames": "د|س|چ|پ|ج|ش|ی",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

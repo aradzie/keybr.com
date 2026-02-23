@@ -126,7 +126,7 @@
   "profile.download.description": "Descărcați toate datele dvs. de tastare în format JSON.",
   "profile.emptyChart.description": "Efectuați încă câteva lecții pentru a obține mai multe puncte de date.",
   "profile.emptyChart.header": "Nu există suficiente date",
-  "profile.import.description": "Importați datele de tipare dintr-un fișier JSON sau .stats.",
+  "profile.import.description": "Importați datele de tip dintr-un fișier JSON/.stats.",
   "profile.import.file_error": "Nu s-a reușit citirea fișierului. Vă rugăm să vă asigurați că este un fișier de export valid.",
   "profile.import.json_error": "Nu s-a reușit analizarea fișierului JSON. Vă rugăm să verificați formatul fișierului.",
   "profile.import.merge_success": "Importate {count} rezultate noi (omise {skipped} duplicate).",
@@ -296,5 +296,9 @@
   "t_ws_Bar_whitespace": "Bară spațiu alb",
   "t_ws_Bullet_whitespace": "Spațiu alb pentru buline",
   "t_ws_No_whitespace": "Fără spații albe",
-  "weekDayNames": "L|M|M|J|V|S|D"
+  "weekDayNames": "L|M|M|J|V|S|D",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

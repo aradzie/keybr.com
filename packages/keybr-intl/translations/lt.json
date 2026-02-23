@@ -126,7 +126,7 @@
   "profile.chart.speed.legend": "Horizontalioji ašis: pamokos numeris. Vertikalioji ašis: {label1} – spausdinimo greitis, {label2} – spausdinimo tikslumas, {label3} – klavišų skaičius pamokose.",
   "profile.emptyChart.description": "Atlikite dar kelias pamokas, kad gautumėte daugiau duomenų.",
   "profile.emptyChart.header": "Nepakanka duomenų",
-  "profile.import.description": "Importuoti rašymo duomenis iš JSON arba .stats failo.",
+  "profile.import.description": "Importuoti tipų duomenis iš JSON/.stats failo.",
   "profile.import.file_error": "Nepavyko perskaityti failo. Prašome įsitikinti, kad tai yra galiojantis eksportavimo failas.",
   "profile.import.json_error": "Nepavyko išanalizuoti JSON failo. Prašome patikrinti failo formatą.",
   "profile.import.merge_success": "Importuota {count} naujų rezultatų (praleista {skipped} dubliavimų).",
@@ -298,5 +298,9 @@
   "t_ws_Bar_whitespace": "Tarpas su juosta",
   "t_ws_Bullet_whitespace": "Tarpas su tašku",
   "t_ws_No_whitespace": "Jokių tarpų",
-  "weekDayNames": "P|A|T|K|P|Š|S"
+  "weekDayNames": "P|A|T|K|P|Š|S",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

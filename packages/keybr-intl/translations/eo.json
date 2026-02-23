@@ -45,7 +45,7 @@
   "learningRate.remainingLessons": "Proksimume {remainingLessons} restantaj lesonoj por malŝlosi ĉi tiun literon ({certainty} certeco).",
   "learningRate.unknown": "Bezonas pli datumaro por komputi la restantaj lesonoj por malŝlosi ĉi tiun literon.",
   "lesson.indicator.focused": "Klavo kun pliiĝita ofteco. Vi bezonas la plej grandan tempon por trovi ĉi tiun klavon, do la algoritmo inkluzivatigis en ĉiu produktitajn vortojn.",
-  "profile.import.description": "Importi tajpajn datumojn el JSON aŭ .stats dosiero.",
+  "profile.import.description": "Importi tipajn datumojn el JSON/.stats dosiero.",
   "profile.import.file_error": "Malsukcesis legi la dosieron. Bonvolu certigi, ke ĝi estas valida eksportdosiero.",
   "profile.import.json_error": "Malsukcesis analizi la JSON-dosieron. Bonvolu kontroli la dosierformaton.",
   "profile.import.merge_success": "Importitaj {count} novaj rezultoj (saltitaj {skipped} duobloj).",
@@ -80,5 +80,9 @@
   "t_cc_Letters": "Literoj",
   "t_cc_Punctuation_characters": "Interpunkciaj signoj",
   "t_cc_Special_characters": "Specialaj Signoj",
-  "weekDayNames": "L|M|M|Ĵ|V|S|D"
+  "weekDayNames": "L|M|M|Ĵ|V|S|D",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

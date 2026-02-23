@@ -151,7 +151,7 @@
   "profile.download.description": "Download all your typing data in JSON format.",
   "profile.emptyChart.description": "Complete a few more lessons to get more data points.",
   "profile.emptyChart.header": "Not enough data",
-  "profile.import.description": "Import typing data from a JSON or .stats file.",
+  "profile.import.description": "Import typing data from a JSON/.stats file.",
   "profile.import.file_error": "Failed to read file. Please ensure it is a valid export file.",
   "profile.import.json_error": "Failed to parse JSON file. Please check the file format.",
   "profile.import.merge_success": "Imported {count} new results (skipped {skipped} duplicates).",
@@ -341,5 +341,9 @@
   "t_ws_Bar_whitespace": "Bar whitespace",
   "t_ws_Bullet_whitespace": "Bullet whitespace",
   "t_ws_No_whitespace": "No whitespace",
-  "weekDayNames": "M|T|W|T|F|S|S"
+  "weekDayNames": "M|T|W|T|F|S|S",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

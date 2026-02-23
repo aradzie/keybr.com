@@ -151,8 +151,8 @@
   "profile.download.description": "Laai al jou tikdata in JSON-formaat af.",
   "profile.emptyChart.description": "Voltooi nog ’n paar lesse om meer datapunte te kry.",
   "profile.emptyChart.header": "Nie genoeg data nie",
-  "profile.import.description": "Importeer tikdata vanaf 'n JSON of .stats-lêer.",
-  "profile.import.file_error": "Kon nie lêer lees nie. Maak asseblief seker dit is 'n geldige uitvoer lêer.",
+  "profile.import.description": "Importeer tipe data vanaf ’n JSON/.stats-lêer.",
+  "profile.import.file_error": "Kon nie lêer lees nie. Maak asseblief seker dit is ’n geldige uitvoer lêer.",
   "profile.import.json_error": "Kon nie JSON-lêer ontleed nie. Gaan asseblief die lêerformaat na.",
   "profile.import.merge_success": "Geïmporteer {count} nuwe resultate (geskrap {skipped} duplikate).",
   "profile.import.no_new": "Alle resultate in die lêer is duplikate. Niks is ingevoer nie.",
@@ -337,5 +337,9 @@
   "t_ws_Bar_whitespace": "Streep witspasie",
   "t_ws_Bullet_whitespace": "Kolpunt witspasie",
   "t_ws_No_whitespace": "Geen witspasie nie",
-  "weekDayNames": "M|D|W|D|V|S|S"
+  "weekDayNames": "M|D|W|D|V|S|S",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

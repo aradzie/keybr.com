@@ -151,7 +151,7 @@
   "profile.download.description": "Descarga todos tus datos de mecanografía en formato JSON.",
   "profile.emptyChart.description": "Completa algunas lecciones más para obtener más puntos de datos.",
   "profile.emptyChart.header": "No hay suficientes datos",
-  "profile.import.description": "Importar datos de escritura desde un archivo JSON o .stats.",
+  "profile.import.description": "Importar datos de tipificación desde un archivo JSON/.stats.",
   "profile.import.file_error": "Error al leer el archivo. Por favor, asegúrese de que sea un archivo de exportación válido.",
   "profile.import.json_error": "Error al analizar el archivo JSON. Por favor, verifica el formato del archivo.",
   "profile.import.merge_success": "Importados {count} nuevos resultados (se omitieron {skipped} duplicados).",
@@ -339,5 +339,9 @@
   "t_ws_Bar_whitespace": "Guión bajo",
   "t_ws_Bullet_whitespace": "Bullet",
   "t_ws_No_whitespace": "Sin espacios en blanco",
-  "weekDayNames": "Lu|Ma|Mi|Ju|Vi|Sa|Do"
+  "weekDayNames": "Lu|Ma|Mi|Ju|Vi|Sa|Do",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

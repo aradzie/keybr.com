@@ -82,7 +82,7 @@
   "profile.chart.progressOverview.caption": "Öğrenme Sürecine Genel Bakış",
   "profile.chart.speed.caption": "Yama Hızı",
   "profile.emptyChart.header": "Yetersiz veri",
-  "profile.import.description": "JSON veya .stats dosyasından yazım verilerini içe aktarın.",
+  "profile.import.description": "JSON/.stats dosyasından tip verilerini içe aktarın.",
   "profile.import.file_error": "Dosya okunamadı. Lütfen geçerli bir dışa aktarma dosyası olduğundan emin olun.",
   "profile.import.json_error": "JSON dosyası ayrıştırılamadı. Lütfen dosya formatını kontrol edin.",
   "profile.import.merge_success": "{count} yeni sonuç içe aktarıldı (atlanan {skipped} kopya).",
@@ -227,5 +227,9 @@
   "t_num_Unique_words": "Farklı kelimeler",
   "t_theme_Enter_fullscreen_": "Tam ekran moduna geçin.",
   "t_theme_Exit_fullscreen_": "Tam ekran modundan çıkın.",
-  "weekDayNames": "P|S|Ç|P|C|C|P"
+  "weekDayNames": "P|S|Ç|P|C|C|P",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

@@ -151,7 +151,7 @@
   "profile.download.description": "Ladda ner all din skrivdata i JSON format.",
   "profile.emptyChart.description": "Gör ett par fler lektioner för att få mer data.",
   "profile.emptyChart.header": "Otillräcklig data",
-  "profile.import.description": "Importera typningsdata från en JSON- eller .stats-fil.",
+  "profile.import.description": "Importera typdata från en JSON/.stats-fil.",
   "profile.import.file_error": "Misslyckades med att läsa filen. Vänligen säkerställ att det är en giltig exportfil.",
   "profile.import.json_error": "Misslyckades med att analysera JSON-filen. Vänligen kontrollera filformatet.",
   "profile.import.merge_success": "Importerade {count} nya resultat (skippade {skipped} dubbletter).",
@@ -336,5 +336,9 @@
   "t_ws_Bar_whitespace": "Bar blanksteg",
   "t_ws_Bullet_whitespace": "Punkt mellanrum",
   "t_ws_No_whitespace": "Inga mellanrum",
-  "weekDayNames": "M|T|O|T|F|L|S"
+  "weekDayNames": "M|T|O|T|F|L|S",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

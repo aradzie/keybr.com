@@ -18,7 +18,7 @@
   "help.rule1.title": "Algoritman byrjar við teir byrjanar bókstavirnir",
   "help.rule2.title": "Tú lærir byrjanar bókstavirnir",
   "help.rule3.title": "Algoritman leggur fleiri bókstavir afturat",
-  "profile.import.description": "Importera typing data frá eini JSON ella .stats fil.",
+  "profile.import.description": "Importera typing data úr eini JSON/.stats fil.",
   "profile.import.file_error": "Felti at lesa fil. Vinaliga tryggja at tað er ein gildur eksport fil.",
   "profile.import.json_error": "Felti at lesa JSON-fíluna. Vinaliga kannaðu fílufyrisetingina.",
   "profile.import.merge_success": "Innflutt {count} nýggj úrslit (sniðgatt {skipped} tvíburar).",
@@ -49,5 +49,9 @@
   "t_cc_Letters": "Stavir",
   "t_cc_Punctuation_characters": "Teknsetingartekn",
   "t_cc_Special_characters": "Serlig tekn",
-  "weekDayNames": "M|T|M|H|F|L|S"
+  "weekDayNames": "M|T|M|H|F|L|S",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

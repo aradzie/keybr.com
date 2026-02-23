@@ -73,7 +73,7 @@
   "profile.chart.histogram.accuracy.caption": "Suhteellinen tarkkuus",
   "profile.chart.histogram.accuracy.legend": "Katso kuinka täsmällisesti kirjoitat toisiin käyttäjiin nähden. Mitä korkeampi palkki on, sitä useampi käyttäjä kirjoittaa niin täsmällisesti. Sinun tasosi on merkitty värillisellä vaakaviivalla.",
   "profile.chart.speed.caption": "Kirjoitusnopeus",
-  "profile.import.description": "Tuo kirjoitustietoja JSON- tai .stats-tiedostosta.",
+  "profile.import.description": "Tuo tyypitystiedot JSON/.stats-tiedostosta.",
   "profile.import.file_error": "Tiedoston lukeminen epäonnistui. Varmista, että se on voimassa oleva vientitiedosto.",
   "profile.import.json_error": "JSON-tiedoston jäsentäminen epäonnistui. Tarkista tiedoston muoto.",
   "profile.import.merge_success": "Tuotiin {count} uutta tulosta (ohitettiin {skipped} kaksoiskappaletta).",
@@ -210,5 +210,9 @@
   "t_num_Unique_words": "Ainutlaatuiset sanat",
   "t_theme_Enter_fullscreen_": "Mene kokonäytön tilaan.",
   "t_theme_Exit_fullscreen_": "Poistu kokonäytön tilasta.",
-  "weekDayNames": "M|T|K|T|P|L|S"
+  "weekDayNames": "M|T|K|T|P|L|S",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

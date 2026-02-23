@@ -89,7 +89,7 @@
   "practice.widget.skipLesson.description": "Hopp over nåværende leksjon (Ctrl + Pil Høyre).",
   "profile.chart.histogram.caption": "Relativ skrivehastighet",
   "profile.chart.speed.caption": "Skrivehastighet",
-  "profile.import.description": "Importer typingdata fra en JSON- eller .stats-fil.",
+  "profile.import.description": "Importer typedata fra en JSON/.stats-fil.",
   "profile.import.file_error": "Kunne ikke lese filen. Vennligst sørg for at det er en gyldig eksportfil.",
   "profile.import.json_error": "Kunne ikke analysere JSON-filen. Vennligst sjekk filformatet.",
   "profile.import.merge_success": "Importert {count} nye resultater (hoppet over {skipped} duplikater).",
@@ -161,5 +161,9 @@
   "t_num_Unique_words": "Unike ord",
   "t_theme_Enter_fullscreen_": "Gå inn i fullskjermsmodus.",
   "t_theme_Exit_fullscreen_": "Gå ut av fullskjermsmodus.",
-  "weekDayNames": "M|T|O|T|F|L|S"
+  "weekDayNames": "M|T|O|T|F|L|S",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

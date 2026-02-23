@@ -114,7 +114,7 @@
   "profile.download.description": "Tải tất cả dữ liệu đánh máy dưới định dạng JSON.",
   "profile.emptyChart.description": "Hoàn thành thêm một vài bài học để nhận được nhiều điểm dữ liệu hơn.",
   "profile.emptyChart.header": "Chưa đủ dữ liệu",
-  "profile.import.description": "Nhập dữ liệu gõ từ tệp JSON hoặc .stats.",
+  "profile.import.description": "Nhập dữ liệu kiểu từ tệp JSON/.stats.",
   "profile.import.file_error": "Không thể đọc tệp. Vui lòng đảm bảo rằng đó là một tệp xuất hợp lệ.",
   "profile.import.json_error": "Không thể phân tích tệp JSON. Vui lòng kiểm tra định dạng tệp.",
   "profile.import.merge_success": "Đã nhập {count} kết quả mới (bỏ qua {skipped} bản sao).",
@@ -274,5 +274,9 @@
   "t_theme_Exit_fullscreen_": "Thoát khỏi chế độ toàn màn hình.",
   "t_ws_Bar_whitespace": "Thanh khoảng cách trắng",
   "t_ws_Bullet_whitespace": "Khoảng cách chấm",
-  "t_ws_No_whitespace": "Không khoảng trắng"
+  "t_ws_No_whitespace": "Không khoảng trắng",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

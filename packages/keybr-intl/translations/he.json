@@ -151,7 +151,7 @@
   "profile.download.description": "הורד את כל נתוני ההקלדה שלך בפורמט JSON.",
   "profile.emptyChart.description": "השלם עוד כמה שיעורים כדי לקבל יותר נקודות נתונים.",
   "profile.emptyChart.header": "אין מספיק נתונים",
-  "profile.import.description": "ייבא נתוני הקלדה מקובץ JSON או .stats.",
+  "profile.import.description": "ייבא נתוני טיפוס מקובץ JSON/.stats.",
   "profile.import.file_error": "נכשל בקריאת הקובץ. אנא ודא שזהו קובץ ייצוא תקף.",
   "profile.import.json_error": "נכשל בפירוש קובץ JSON. אנא בדוק את פורמט הקובץ.",
   "profile.import.merge_success": "ייבא {count} תוצאות חדשות (דלג על {skipped} כפילויות).",
@@ -339,5 +339,9 @@
   "t_ws_Bar_whitespace": "רווח לבן בסרגל",
   "t_ws_Bullet_whitespace": "רווח לבן של כדור",
   "t_ws_No_whitespace": "בלי רווחים",
-  "weekDayNames": "ב|ג|ד|ה|ו|ש|א"
+  "weekDayNames": "ב|ג|ד|ה|ו|ש|א",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

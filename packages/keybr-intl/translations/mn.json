@@ -9,7 +9,7 @@
   "account.emailState.sendingText": "Нэвтрэх линкийг дараах мэйл руу явуулж байна <strong>{email}</strong>... Түр хүлээнэ үү.",
   "account.freeAccount.description": "<p>Манай<strong>Премиум аккаунт</strong> худалдаж авснаар нэмэлт функцүүдыг нээж сурталчилгаагүй шивэх боломжыг нээгээрэй. Премиум аккаунтын давуу талууд:</p><ul><li><strong>Сурталчилгаагүй.</strong> Сурталчилгаа таны анхаарлыг сарниулж сурах нөхцөлд бүрдүүлэхэд саад болж мэднэ. Цаашид сурталчилгаа харагдахгүй болно.</li><li><strong>Трак хийхгүй.</strong> Сурталчилгаа харуулахын тулд тракинг суурилуулах шаардлагатай. Таныг ахиж тагнахгүй болно.</li><li><strong>Хурдан хариу өгнө.</strong> Сурталчилгаа сайтын унших хурдыг удаашруулдаг. Сурталчилгаагүй үед түргэн нэвтэрч болно.</li></ul><p>Нэг л удаа худалдан авснаар бүх насаараа ашиглах боломжтой. Олон удаа төлбөр авахгүй.</p>",
   "account.premiumAccount.description": "<p>Премиум аккаунт худалдаж авсанд баярлалаа! Та нэмэлт функцүүдээ ашиглан сурталчилгаагүй бичилт хийж таалан соёрхоно уу.</p>",
-  "profile.import.description": "JSON эсвэл .stats файлаас бичих өгөгдлийг импортлох.",
+  "profile.import.description": "JSON/.stats файлаас мэдээллийг импортлох.",
   "profile.import.file_error": "Файлыг уншиж чадсангүй. Үүнийг хүчинтэй экспорт файлын хувьд шалгана уу.",
   "profile.import.json_error": "JSON файлыг задлахад алдаа гарлаа. Файлын форматыг шалгана уу.",
   "profile.import.merge_success": "{count} шинэ үр дүнг импортолсон (скipped {skipped} давтагдлыг).",
@@ -21,5 +21,9 @@
   "t_Anonymous_User": "Нэргүй хэрэглэгч",
   "t_Delete_account": "Аккаунт устгах",
   "t_Premium_account": "Премиум аккаунт",
-  "t_Signin_with_email": "Мэйл хаягаар нэвтрэх"
+  "t_Signin_with_email": "Мэйл хаягаар нэвтрэх",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

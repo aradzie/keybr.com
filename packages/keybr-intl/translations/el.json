@@ -151,7 +151,7 @@
   "profile.download.description": "Κατεβάστε όλα τα δεδομένα πληκτρολόγησης σε μορφή JSON.",
   "profile.emptyChart.description": "Ολοκληρώστε μερικά ακόμη μαθήματα για να λάβετε περισσότερα σημεία δεδομένων.",
   "profile.emptyChart.header": "Δεν υπάρχουν αρκετά δεδομένα",
-  "profile.import.description": "Εισάγετε δεδομένα πληκτρολόγησης από ένα αρχείο JSON ή .stats.",
+  "profile.import.description": "Εισάγετε δεδομένα τύπου από ένα αρχείο JSON/.stats.",
   "profile.import.file_error": "Απέτυχε η ανάγνωση του αρχείου. Παρακαλώ βεβαιωθείτε ότι είναι ένα έγκυρο αρχείο εξαγωγής.",
   "profile.import.json_error": "Αποτυχία ανάλυσης αρχείου JSON. Παρακαλώ ελέγξτε τη μορφή του αρχείου.",
   "profile.import.merge_success": "Εισήχθησαν {count} νέα αποτελέσματα (παραλείφθηκαν {skipped} διπλότυπα).",
@@ -339,5 +339,9 @@
   "t_ws_Bar_whitespace": "Κενό διάστημα γραμμής",
   "t_ws_Bullet_whitespace": "Κενό διάστημα τελείας",
   "t_ws_No_whitespace": "Χωρίς κενό διάστημα",
-  "weekDayNames": "Δ|Τ|Τ|Π|Π|Σ|Κ"
+  "weekDayNames": "Δ|Τ|Τ|Π|Π|Σ|Κ",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

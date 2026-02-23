@@ -151,7 +151,7 @@
   "profile.download.description": "Pobierz wszystkie swoje dane dotyczące pisania na klawiaturze w formacie JSON.",
   "profile.emptyChart.description": "Ukończ jeszcze kilka lekcji, aby uzyskać więcej punktów danych.",
   "profile.emptyChart.header": "Zbyt mało danych",
-  "profile.import.description": "Importuj dane do pisania z pliku JSON lub .stats.",
+  "profile.import.description": "Importuj dane typowe z pliku JSON/.stats.",
   "profile.import.file_error": "Nie udało się odczytać pliku. Proszę upewnić się, że jest to ważny plik eksportu.",
   "profile.import.json_error": "Nie udało się sparsować pliku JSON. Proszę sprawdzić format pliku.",
   "profile.import.merge_success": "Zaimportowano {count} nowych wyników (pomiń {skipped} duplikatów).",
@@ -339,5 +339,9 @@
   "t_ws_Bar_whitespace": "Linia",
   "t_ws_Bullet_whitespace": "Kropka",
   "t_ws_No_whitespace": "Spacja",
-  "weekDayNames": "P|W|Ś|C|P|S|N"
+  "weekDayNames": "P|W|Ś|C|P|S|N",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }

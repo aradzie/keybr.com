@@ -133,7 +133,7 @@
   "profile.chart.speed.legend": "Vodoravna os: št. vaje. Navpična os: {label1} – hitrost tipkanja, {label2} – pravilnost tipkanja, {label3} – št. tipk v vajah.",
   "profile.emptyChart.description": "Opravite še kakšno vajo za več podatkovnih točk.",
   "profile.emptyChart.header": "Ni dovolj podatkov",
-  "profile.import.description": "Uvozite podatke za tipkanje iz datoteke JSON ali .stats.",
+  "profile.import.description": "Uvozite podatke o tipih iz datoteke JSON/.stats.",
   "profile.import.file_error": "Ni uspelo prebrati datoteke. Prosimo, preverite, ali gre za veljavno izvozno datoteko.",
   "profile.import.json_error": "Ni uspelo analizirati JSON datoteke. Prosimo, preverite format datoteke.",
   "profile.import.merge_success": "Uvoženih je {count} novih rezultatov (preskočenih {skipped} podvojenih).",
@@ -194,5 +194,9 @@
   "t_cc_Letters": "Črke",
   "t_cc_Punctuation_characters": "Ločila",
   "t_cc_Special_characters": "Posebni znaki",
-  "weekDayNames": "P|T|S|Č|P|S|N"
+  "weekDayNames": "P|T|S|Č|P|S|N",
+  "profile.import.merge": "Merge",
+  "profile.import.replace": "Replace",
+  "profile.import.cancel": "Cancel",
+  "profile.import.confirm_replace": "Yes, Replace All"
 }
