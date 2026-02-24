@@ -21,42 +21,67 @@ export type JsonResult = {
   }>;
 };
 
+export type DeserializeJsonResultOptions = {
+  /**
+   * If true, throw an error on any invalid result.
+   * If false, skip invalid results and continue.
+   * @default false
+   */
+  strict?: boolean;
+  /**
+   * Optional callback to track skipped results.
+   */
+  onSkipped?: (error: Error, data: JsonResult) => void;
+};
+
 /**
  * Deserialize JSON results into Result objects.
- * @throws {Error} If layout or textType is unknown, or if date is invalid.
+ * By default, skips invalid results and continues.
+ * @throws {Error} If strict mode is enabled and an error occurs.
  */
-export function deserializeJsonResults(jsonData: JsonResult[]): Result[] {
+export function deserializeJsonResults(
+  jsonData: JsonResult[],
+  options: DeserializeJsonResultOptions = {},
+): Result[] {
+  const { strict = false, onSkipped } = options;
   const results: Result[] = [];
 
   for (const data of jsonData) {
-    const layout = Layout.ALL.find(({ id }) => id === data.layout);
-    if (!layout) {
-      throw new Error(`Unknown layout: ${data.layout}`);
+    try {
+      const layout = Layout.ALL.find(({ id }) => id === data.layout);
+      if (!layout) {
+        throw new Error(`Unknown layout: ${data.layout}`);
+      }
+
+      const textType = TextType.ALL.find(({ id }) => id === data.textType);
+      if (!textType) {
+        throw new Error(`Unknown textType: ${data.textType}`);
+      }
+
+      const timeStamp = new Date(data.timeStamp).getTime();
+      if (isNaN(timeStamp)) {
+        throw new Error(`Invalid date format: ${data.timeStamp}`);
+      }
+
+      const histogram = new Histogram(data.histogram);
+
+      const result = new Result(
+        layout,
+        textType,
+        timeStamp,
+        data.length,
+        data.time,
+        data.errors,
+        histogram,
+      );
+
+      results.push(result);
+    } catch (err) {
+      if (strict) {
+        throw err;
+      }
+      onSkipped?.(err as Error, data);
     }
-
-    const textType = TextType.ALL.find(({ id }) => id === data.textType);
-    if (!textType) {
-      throw new Error(`Unknown textType: ${data.textType}`);
-    }
-
-    const timeStamp = new Date(data.timeStamp).getTime();
-    if (isNaN(timeStamp)) {
-      throw new Error(`Invalid date format: ${data.timeStamp}`);
-    }
-
-    const histogram = new Histogram(data.histogram);
-
-    const result = new Result(
-      layout,
-      textType,
-      timeStamp,
-      data.length,
-      data.time,
-      data.errors,
-      histogram,
-    );
-
-    results.push(result);
   }
 
   return results;

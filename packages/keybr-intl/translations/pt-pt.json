@@ -320,5 +320,16 @@
   "profile.import.merge": "Merge",
   "profile.import.replace": "Replace",
   "profile.import.cancel": "Cancel",
-  "profile.import.confirm_replace": "Yes, Replace All"
+  "profile.import.confirm_replace": "Yes, Replace All",
+  "lessonType.guided.description": "Generate typing lessons with random words using the phonetic rules of your language. The key set is expanded dynamically based on your performance. This mode is for the beginners.",
+  "streakList.noStreaks": "No accuracy streaks.",
+  "streakList.streakLength": "{length, plural, =1 {One lesson} other {# lessons}} with {accuracy} accuracy.",
+  "t_All_keys": "All keys",
+  "t_Current_key": "Current key",
+  "t_Lesson_preview:": "Lesson preview",
+  "t_Metrics": "Metrics",
+  "profile.import.file_too_large": "File is too large. Maximum size is {maxSize}MB.",
+  "profile.import.too_many_results": "File contains too many results. Maximum is {maxResults}.",
+  "profile.import.partial_failure": "Skipped {skipped} invalid results. Imported {count} valid results.",
+  "profile.import.no_valid_results": "No valid results found in the file. Import aborted."
 }

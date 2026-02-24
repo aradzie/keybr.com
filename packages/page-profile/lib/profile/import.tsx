@@ -13,6 +13,7 @@ import {
 import { useState } from "react";
 import { useIntl } from "react-intl";
 import {
+  type DeserializeJsonResultOptions,
   deserializeJsonResults,
   type JsonResult,
   MAX_IMPORT_FILE_SIZE,
@@ -29,6 +30,10 @@ function useCommands() {
   const { results, clearResults, appendResults, replaceAllResults } =
     useResults();
 
+  // Create a unique key for each result to detect duplicates.
+  // Includes timeStamp to allow the same typing session with different
+  // timestamps to be treated as separate results (intentional behavior
+  // for historical data import without deduplication conflicts).
   const createResultKey = (result: ResultType): string => {
     return `${result.layout.id}-${result.textType.id}-${result.timeStamp}-${result.length}-${result.time}`;
   };
@@ -79,6 +84,7 @@ function useCommands() {
       try {
         const buffer = await file.arrayBuffer();
         let importedResults: ResultType[];
+        let skippedCount = 0;
 
         // Detect file type and parse accordingly
         if (file.name.endsWith(".stats")) {
@@ -91,7 +97,20 @@ function useCommands() {
             if (!Array.isArray(jsonData)) {
               throw new Error("Invalid JSON format");
             }
-            importedResults = deserializeJsonResults(jsonData as JsonResult[]);
+
+            // Track skipped results for partial failures
+            const options: DeserializeJsonResultOptions = {
+              strict: false,
+              onSkipped: (error, data) => {
+                skippedCount++;
+                console.warn(`Skipped invalid result: ${error.message}`, data);
+              },
+            };
+
+            importedResults = deserializeJsonResults(
+              jsonData as JsonResult[],
+              options,
+            );
           } catch (err) {
             toast(
               <Alert severity="error">
@@ -104,6 +123,35 @@ function useCommands() {
             );
             return;
           }
+        }
+
+        // Show info message for skipped results
+        if (skippedCount > 0) {
+          toast(
+            <Alert severity="info">
+              {formatMessage(
+                {
+                  id: "profile.import.partial_failure",
+                  defaultMessage:
+                    "Skipped {skipped} invalid results. Imported {count} valid results.",
+                },
+                { skipped: skippedCount, count: importedResults.length },
+              )}
+            </Alert>,
+          );
+        }
+
+        if (importedResults.length === 0) {
+          toast(
+            <Alert severity="error">
+              {formatMessage({
+                id: "profile.import.no_valid_results",
+                defaultMessage:
+                  "No valid results found in the file. Import aborted.",
+              })}
+            </Alert>,
+          );
+          return;
         }
 
         if (importedResults.length > MAX_IMPORT_RESULTS) {

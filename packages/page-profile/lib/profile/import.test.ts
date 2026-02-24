@@ -1,7 +1,8 @@
 import assert from "node:assert";
 import { describe, test } from "node:test";
 import { Layout } from "@keybr/keyboard";
-import { Result, TextType } from "@keybr/result";
+import { Result, ResultFaker, TextType } from "@keybr/result";
+import { fileChunk, fileHeader, parseFile } from "@keybr/result-io";
 import { Histogram } from "@keybr/textinput";
 import { deserializeJsonResults, type JsonResult } from "./import-helpers.ts";
 
@@ -41,26 +42,26 @@ describe("deserializeJsonResults", () => {
     assert.strictEqual(results[1].layout.id, "de-de");
   });
 
-  test("should throw on unknown layout", () => {
+  test("should throw on unknown layout in strict mode", () => {
     const jsonData = [createMockJsonResult({ layout: "unknown-layout" })];
 
-    assert.throws(() => deserializeJsonResults(jsonData), {
+    assert.throws(() => deserializeJsonResults(jsonData, { strict: true }), {
       message: "Unknown layout: unknown-layout",
     });
   });
 
-  test("should throw on unknown textType", () => {
+  test("should throw on unknown textType in strict mode", () => {
     const jsonData = [createMockJsonResult({ textType: "unknown-type" })];
 
-    assert.throws(() => deserializeJsonResults(jsonData), {
+    assert.throws(() => deserializeJsonResults(jsonData, { strict: true }), {
       message: "Unknown textType: unknown-type",
     });
   });
 
-  test("should throw on invalid date format", () => {
+  test("should throw on invalid date format in strict mode", () => {
     const jsonData = [createMockJsonResult({ timeStamp: "invalid-date" })];
 
-    assert.throws(() => deserializeJsonResults(jsonData));
+    assert.throws(() => deserializeJsonResults(jsonData, { strict: true }));
   });
 
   test("should parse histogram data", () => {
@@ -101,5 +102,71 @@ describe("deserializeJsonResults", () => {
     assert.strictEqual(results[0].textType.id, "generated");
     assert.strictEqual(results[1].textType.id, "natural");
     assert.strictEqual(results[2].textType.id, "code");
+  });
+
+  test("should skip invalid results by default", () => {
+    const jsonData = [
+      createMockJsonResult(),
+      createMockJsonResult({ layout: "invalid-layout" }),
+      createMockJsonResult(),
+    ];
+
+    let skippedCount = 0;
+    const results = deserializeJsonResults(jsonData, {
+      onSkipped: () => {
+        skippedCount++;
+      },
+    });
+
+    assert.strictEqual(results.length, 2);
+    assert.strictEqual(skippedCount, 1);
+  });
+
+  test("should throw on invalid results in strict mode", () => {
+    const jsonData = [
+      createMockJsonResult(),
+      createMockJsonResult({ layout: "invalid-layout" }),
+      createMockJsonResult(),
+    ];
+
+    assert.throws(() => deserializeJsonResults(jsonData, { strict: true }));
+  });
+});
+
+describe("parseFile (.stats binary format)", () => {
+  test("should parse .stats binary format", async () => {
+    const faker = new ResultFaker();
+    const result = faker.nextResult();
+
+    const buffer = Buffer.concat([fileHeader(), fileChunk([result])]);
+
+    const parsed = [...(await parseFile(new Uint8Array(buffer)))];
+
+    assert.strictEqual(parsed.length, 1);
+    assert.strictEqual(parsed[0].layout.id, result.layout.id);
+    assert.strictEqual(parsed[0].textType.id, result.textType.id);
+  });
+
+  test("should parse multiple results from .stats file", async () => {
+    const faker = new ResultFaker();
+    const results = [
+      faker.nextResult(),
+      faker.nextResult(),
+      faker.nextResult(),
+    ];
+
+    const buffer = Buffer.concat([fileHeader(), fileChunk(results)]);
+
+    const parsed = [...(await parseFile(new Uint8Array(buffer)))];
+
+    assert.strictEqual(parsed.length, 3);
+  });
+
+  test("should handle empty .stats file", async () => {
+    const buffer = new Uint8Array(0);
+
+    const parsed = [...(await parseFile(buffer))];
+
+    assert.strictEqual(parsed.length, 0);
   });
 });
