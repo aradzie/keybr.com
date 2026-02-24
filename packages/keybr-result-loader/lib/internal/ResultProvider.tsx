@@ -26,11 +26,14 @@ export function ResultProvider({
           storage.clear().catch(catchError);
         },
         replaceAllResults: (newResults) => {
-          setResults(newResults);
+          setResults(() => newResults);
           storage
             .clear()
             .then(() => storage.append(newResults))
-            .catch(catchError);
+            .catch((err) => {
+              setResults([]);
+              catchError(err);
+            });
         },
       }}
     >
