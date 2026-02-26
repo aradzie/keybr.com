@@ -54,7 +54,13 @@ class Word {
   }
 
   matches(codePoints: CodePointSet): boolean {
-    return this.codePoints.every((codePoint) => codePoints.has(codePoint));
+    return this.codePoints.every((codePoint) => {
+      // Check lowercase version to handle uppercase letters in word list
+      const lower = String.fromCodePoint(codePoint)
+        .toLowerCase()
+        .codePointAt(0)!;
+      return codePoints.has(lower);
+    });
   }
 
   toString() {
@@ -67,5 +73,11 @@ export const filterWordList = (
   codePoints: CodePointSet,
 ): string[] =>
   words.filter((word) =>
-    [...toCodePoints(word)].every((codePoint) => codePoints.has(codePoint)),
+    [...toCodePoints(word)].every((codePoint) => {
+      // Check lowercase version to handle uppercase letters in word list
+      const lower = String.fromCodePoint(codePoint)
+        .toLowerCase()
+        .codePointAt(0)!;
+      return codePoints.has(lower);
+    }),
   );
