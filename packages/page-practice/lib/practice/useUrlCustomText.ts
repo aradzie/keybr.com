@@ -35,13 +35,33 @@ export function useUrlCustomText(): string | null {
     // Trim and apply length restriction
     const trimmedText = customText.trim().slice(0, MAX_CUSTOM_TEXT_LENGTH);
 
-    // Save to settings so it can be edited
-    updateSettings(settings.set(lessonProps.customText.content, trimmedText));
+    // Check if text contains uppercase letters
+    const hasUppercase = /[A-Z]/.test(trimmedText);
+
+    // Prepare settings updates - start with content
+    let updatedSettings = settings.set(
+      lessonProps.customText.content,
+      trimmedText,
+    );
+
+    // Only disable lowercase if text has uppercase letters
+    if (hasUppercase) {
+      updatedSettings = updatedSettings.set(
+        lessonProps.customText.lowercase,
+        false,
+      );
+    }
 
     // Switch lesson type to CUSTOM
     if (settings.get(lessonProps.type) !== LessonType.CUSTOM) {
-      updateSettings(settings.set(lessonProps.type, LessonType.CUSTOM));
+      updatedSettings = updatedSettings.set(
+        lessonProps.type,
+        LessonType.CUSTOM,
+      );
     }
+
+    // Save all settings at once
+    updateSettings(updatedSettings);
 
     // Remove ?text= from URL
     const url = new URL(window.location.href);

@@ -288,3 +288,47 @@ test("handles URL-encoded newlines and special chars", async () => {
     equal(result.current, decodedText);
   });
 });
+
+test("preserves uppercase letters by disabling lowercase setting", async () => {
+  const textWithUppercase = "Hello World with CAPITAL Letters";
+  const mockPageData: PageData = {
+    base: "https://example.com",
+    locale: "en",
+    user: null,
+    publicUser: { id: null, name: "Anonymous", imageUrl: null },
+    settings: new Settings()
+      .set(lessonProps.customText.lowercase, true)
+      .toJSON(),
+    customText: textWithUppercase,
+  };
+
+  const { result } = renderHook(() => useUrlCustomText(), {
+    wrapper: createWrapper(mockPageData),
+  });
+
+  await waitFor(() => {
+    equal(result.current, textWithUppercase);
+  });
+});
+
+test("keeps lowercase setting enabled for lowercase-only text", async () => {
+  const lowercaseText = "hello world with only lowercase letters";
+  const mockPageData: PageData = {
+    base: "https://example.com",
+    locale: "en",
+    user: null,
+    publicUser: { id: null, name: "Anonymous", imageUrl: null },
+    settings: new Settings()
+      .set(lessonProps.customText.lowercase, true)
+      .toJSON(),
+    customText: lowercaseText,
+  };
+
+  const { result } = renderHook(() => useUrlCustomText(), {
+    wrapper: createWrapper(mockPageData),
+  });
+
+  await waitFor(() => {
+    equal(result.current, lowercaseText);
+  });
+});
