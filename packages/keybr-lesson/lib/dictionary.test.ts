@@ -65,6 +65,16 @@ test("german sharp s character", () => {
   ]);
 });
 
+test("focusedCodePoint with uppercase words", () => {
+  const dict = new Dictionary(["Hexe", "hexe", "Mexiko", "mexiko"]);
+  const letters = toLetters("ehimox");
+
+  // Focus on lowercase 'x' (codePoint 120)
+  // Should find both "Hexe" and "hexe" because index is case-insensitive
+  const result = dict.find(new Filter(letters, letters[5])); // letters[5] is 'x'
+  deepEqual(result, ["Hexe", "hexe"]);
+});
+
 function toLetters(letters: string) {
   return [...toCodePoints(letters)].map(
     (codePoint) => new Letter(codePoint, 1),
