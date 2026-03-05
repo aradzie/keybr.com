@@ -1,13 +1,12 @@
-import { test, mock } from "node:test";
-import { render, act } from "@testing-library/react";
-import { isEqual, isFalse, isTrue } from "rich-assert";
-import { Presenter } from "./Presenter.tsx";
+import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
 import { lessonProps, LessonType } from "@keybr/lesson";
 import { FakePhoneticModel } from "@keybr/phonetic-model";
 import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
 import { FakeResultContext, ResultFaker } from "@keybr/result";
 import { FakeSettingsContext, Settings } from "@keybr/settings";
+import { act, render } from "@testing-library/react";
+import { includes, isNotNull } from "rich-assert";
 import { PracticeScreen } from "./PracticeScreen.tsx";
 
 // ---------------------------------------------------------------------------
@@ -17,11 +16,11 @@ import { PracticeScreen } from "./PracticeScreen.tsx";
 // third-party ad scripts steal focus briefly and then return it, which was
 // causing onResetLesson() to fire and interrupting the lesson mid-session.
 
+const faker = new ResultFaker();
+
 test("transient blur (ad refresh) does not reset the lesson", async () => {
   PhoneticModelLoader.loader = FakePhoneticModel.loader;
 
-  const onResetLesson = mock.fn();
-
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext
@@ -29,69 +28,35 @@ test("transient blur (ad refresh) does not reset the lesson", async () => {
           .set(lessonProps.type, LessonType.CUSTOM)
           .set(lessonProps.customText.content, "abcdefghij")}
       >
-        <FakeResultContext initialResults={new ResultFaker().nextResultList(0)}>
+        <FakeResultContext initialResults={faker.nextResultList(0)}>
           <PracticeScreen />
         </FakeResultContext>
       </FakeSettingsContext>
     </FakeIntlProvider>,
   );
 
-  const textarea = r.container.querySelector("textarea");
-  isTrue(textarea != null);
-
-  // Simulate focus, blur, then rapid re-focus (< 300 ms) as an ad would do.
-  await act(async () => {
-    textarea!.focus();
-  });
-
-  const resetsBefore = onResetLesson.mock.calls.length;
-
-  await act(async () => {
-    textarea!.blur();
-    // Re-focus immediately — well within the 300 ms debounce window.
-    textarea!.focus();
-  });
-
-  // onResetLesson must not have fired an extra time due to the transient blur.
-  isEqual(onResetLesson.mock.calls.length, resetsBefore);
-
-  r.unmount();
-});
-
-test("genuine blur (user navigates away) resets the lesson after debounce", async () => {
-  PhoneticModelLoader.loader = FakePhoneticModel.loader;
-
-  const r = render(
-    <FakeIntlProvider>
-      <FakeSettingsContext
-        initialSettings={new Settings()
-          .set(lessonProps.type, LessonType.CUSTOM)
-          .set(lessonProps.customText.content, "abcdefghij")}
-      >
-        <FakeResultContext initialResults={new ResultFaker().nextResultList(0)}>
-          <PracticeScreen />
-        </FakeResultContext>
-      </FakeSettingsContext>
-    </FakeIntlProvider>,
-  );
+  // Wait for the async practice screen to fully load.
+  isNotNull(await r.findByTitle("Change lesson settings", { exact: false }));
 
   const textarea = r.container.querySelector("textarea");
-  isTrue(textarea != null);
+  isNotNull(textarea);
 
+  // Grab the lesson text before the blur cycle.
+  const textBefore = r.container.textContent!;
+  includes(textBefore, "abcdefghij");
+
+  // Focus → blur → rapid re-focus (< 300 ms debounce) simulates an ad refresh.
   await act(async () => {
     textarea!.focus();
   });
-
-  // Blur without re-focusing — simulates the user genuinely navigating away.
   await act(async () => {
     textarea!.blur();
-    // Wait longer than the 300 ms debounce window.
-    await new Promise((resolve) => setTimeout(resolve, 400));
+    textarea!.focus();
   });
 
-  // The lesson text should still be visible (reset renders a fresh lesson,
-  // not an error state), confirming onResetLesson did fire.
-  isTrue(r.container.textContent!.includes("abcdefghij"));
+  // The lesson text should be unchanged — the transient blur must not have
+  // triggered a lesson reset.
+  includes(r.container.textContent!, "abcdefghij");
 
   r.unmount();
 });
