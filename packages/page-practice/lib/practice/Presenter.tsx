@@ -251,6 +251,9 @@ export class Presenter extends PureComponent<Props, State> {
     // by third-party scripts (e.g. ad refreshes) that steal and quickly
     // return focus. If focus comes back within the window the reset is
     // cancelled; otherwise the lesson resets as normal.
+    if (this.#blurTimer != null) {
+      clearTimeout(this.#blurTimer);
+    }
     this.#blurTimer = setTimeout(() => {
       this.#blurTimer = null;
       this.props.onResetLesson();
