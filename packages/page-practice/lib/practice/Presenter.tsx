@@ -56,6 +56,7 @@ const propView = enumProp("prefs.practice.view", View, View.Normal);
 
 export class Presenter extends PureComponent<Props, State> {
   readonly focusRef = createRef<Focusable>();
+  #blurTimer: ReturnType<typeof setTimeout> | null = null;
 
   override state: State = {
     view: Preferences.get(propView),
@@ -69,6 +70,13 @@ export class Presenter extends PureComponent<Props, State> {
         view: View.Normal,
         tour: true,
       });
+    }
+  }
+
+  override componentWillUnmount() {
+    if (this.#blurTimer != null) {
+      clearTimeout(this.#blurTimer);
+      this.#blurTimer = null;
     }
   }
 
@@ -218,6 +226,15 @@ export class Presenter extends PureComponent<Props, State> {
   };
 
   handleFocus = () => {
+    if (this.#blurTimer != null) {
+      // Focus returned before the debounce fired — this was a transient
+      // focus loss (e.g. an ad refresh). Cancel the reset and simply
+      // restore the focused state so the lesson continues uninterrupted.
+      clearTimeout(this.#blurTimer);
+      this.#blurTimer = null;
+      this.setState({ focus: true });
+      return;
+    }
     this.setState(
       {
         focus: true,
@@ -229,14 +246,15 @@ export class Presenter extends PureComponent<Props, State> {
   };
 
   handleBlur = () => {
-    this.setState(
-      {
-        focus: false,
-      },
-      () => {
-        this.props.onResetLesson();
-      },
-    );
+    this.setState({ focus: false });
+    // Delay the lesson reset to tolerate brief focus interruptions caused
+    // by third-party scripts (e.g. ad refreshes) that steal and quickly
+    // return focus. If focus comes back within the window the reset is
+    // cancelled; otherwise the lesson resets as normal.
+    this.#blurTimer = setTimeout(() => {
+      this.#blurTimer = null;
+      this.props.onResetLesson();
+    }, 300);
   };
 
   handleChangeView = () => {
