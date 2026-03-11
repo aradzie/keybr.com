@@ -34,6 +34,14 @@ const PCreateToken = zod(TCreateToken, () => {
   throw new ApplicationError("Invalid e-mail address");
 });
 
+const TSimpleLogin = z.object({
+  username: z.string().min(1).max(32),
+});
+type TSimpleLogin = z.infer<typeof TSimpleLogin>;
+const PSimpleLogin = zod(TSimpleLogin, () => {
+  throw new ApplicationError("Invalid username");
+});
+
 const TPatchAccount = z.object({
   anonymized: z.boolean(),
 });
@@ -122,6 +130,18 @@ export class Controller {
           "You likely got here because you used an old link that does not work anymore.",
       });
     }
+  }
+
+  @http.POST({ name: "login-simple", path: "/auth/login-simple" })
+  async loginSimple(
+    ctx: Context<RouterState & SessionState & AuthState>,
+    @body.json(PSimpleLogin, jsonOpts) { username }: TSimpleLogin,
+  ) {
+    ctx.state.session.destroy();
+    const user = await User.loginByName(username.trim());
+    ctx.state.session.start();
+    ctx.state.session.set("userId", user.id!);
+    ctx.response.body = { username: user.name };
   }
 
   @http.GET({ name: "logout", path: "/auth/logout" })

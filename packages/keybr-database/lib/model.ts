@@ -109,6 +109,42 @@ export class User extends TimestampMixin(Model) {
     return user;
   }
 
+  static async findByName(name: string): Promise<User | null> {
+    return (
+      (await User.query()
+        .withGraphFetched("externalIds")
+        .withGraphFetched("order")
+        .findOne({ name })) ?? null
+    );
+  }
+
+  static async loginByName(name: string): Promise<User> {
+    let user = await User.findByName(name);
+    if (user == null) {
+      // Genereer een dummy-email zodat het bestaande schema werkt
+      const email = `${name.toLowerCase().replace(/[^a-z0-9]/g, "")}@local`;
+      const uniqueEmail = await User.findUniqueEmail(email);
+      user = await User.query()
+        .withGraphFetched("externalIds")
+        .withGraphFetched("order")
+        .insertAndFetch({ email: uniqueEmail, name });
+    }
+    return user;
+  }
+
+  static async findUniqueEmail(base: string): Promise<string> {
+    if ((await User.findByEmail(base)) == null) {
+      return base;
+    }
+    for (let i = 1; i <= 100; i++) {
+      const candidate = `${base}${i}`;
+      if ((await User.findByEmail(candidate)) == null) {
+        return candidate;
+      }
+    }
+    return `${base}${Random.string(10)}`;
+  }
+
   static async findUniqueName(
     email: string | null,
     hint: string,

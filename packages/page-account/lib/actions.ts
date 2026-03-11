@@ -14,6 +14,7 @@ export type AccountActions = {
 
 export type SignInActions = {
   readonly registerEmail: (email: string) => Promise<unknown>;
+  readonly loginSimple: (username: string) => Promise<unknown>;
 };
 
 export function useAccountActions(props: {
@@ -72,9 +73,13 @@ export function useSignInActions() {
   const registerEmail = (email: string) => {
     return AccountService.registerEmail(email);
   };
+  const loginSimple = (username: string) => {
+    return AccountService.loginSimple(username);
+  };
   return {
     actions: {
       registerEmail,
+      loginSimple,
     } as SignInActions,
   };
 }
