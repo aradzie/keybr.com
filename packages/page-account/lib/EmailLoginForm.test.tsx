@@ -14,7 +14,7 @@ test("success", async () => {
             registerEmail: () => {
               return Promise.resolve({});
             },
-          } as SignInActions
+          } as unknown as SignInActions
         }
       />
     </FakeIntlProvider>,
@@ -41,7 +41,7 @@ test("failure", async () => {
             registerEmail: () => {
               return Promise.reject(new Error("What a terrible failure"));
             },
-          } as SignInActions
+          } as unknown as SignInActions
         }
       />
     </FakeIntlProvider>,
