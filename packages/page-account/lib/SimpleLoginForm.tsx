@@ -79,7 +79,7 @@ export function SimpleLoginForm({ actions }: { actions: SignInActions }) {
                 type="text"
                 placeholder={formatMessage({
                   id: "account.simpleLogin.placeholder",
-                  defaultMessage: "Jouw naam (bv. Emma 6B)",
+                  defaultMessage: "voornaam.naam (bv. emma.peeters)",
                 })}
                 value={username}
                 onChange={handleChangeUsername}
@@ -101,7 +101,7 @@ export function SimpleLoginForm({ actions }: { actions: SignInActions }) {
           <Para>
             <FormattedMessage
               id="account.simpleLogin.description"
-              defaultMessage="Typ je naam in en klik op Inloggen. Als je naam nog niet bestaat, wordt er automatisch een account voor je aangemaakt. Gebruik elke les dezelfde naam zodat je voortgang bewaard blijft."
+              defaultMessage="Typ je naam in als voornaam.naam (kleine letters, met een punt). Als je naam nog niet bestaat, wordt er automatisch een account aangemaakt. Gebruik elke les dezelfde naam zodat je voortgang bewaard blijft."
             />
           </Para>
         </>
