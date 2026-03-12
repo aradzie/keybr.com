@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -E \"\\\\.\\(ts|tsx|json\\)$\")",
+      "Bash(xargs grep:*)",
+      "Bash(npx tsc:*)",
+      "Bash(ls c:/_personal/projects/keybr.com/node_modules/.bin/tsc*)",
+      "Bash(node_modules/.bin/tsc --noEmit --project packages/keybr-pages-browser/tsconfig.json)"
+    ]
+  }
+}

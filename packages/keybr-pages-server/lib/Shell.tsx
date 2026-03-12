@@ -2,7 +2,6 @@ import { type IncomingHeaders } from "@fastr/headers";
 import { FavIconAssets, ScriptAssets, StylesheetAssets } from "@keybr/assets";
 import { getDir } from "@keybr/intl";
 import {
-  isPremiumUser,
   LoadingProgress,
   PageDataScript,
   type PageInfo,
@@ -11,11 +10,6 @@ import {
   usePageData,
 } from "@keybr/pages-shared";
 import { ThemePrefs, useTheme } from "@keybr/themes";
-import {
-  CloudflareAnalytics,
-  GoogleTagManager,
-  SetupAds,
-} from "@keybr/thirdparties";
 import { type ReactNode } from "react";
 import { useIntl } from "react-intl";
 import { isBot } from "./bot.ts";
@@ -28,20 +22,9 @@ export function Shell({
   readonly page: PageInfo;
   readonly headers: IncomingHeaders;
 }) {
-  const { publicUser } = usePageData();
   return (
     <Html>
-      <Head page={page}>
-        {isPremiumUser(publicUser) || (
-          <>
-            <CloudflareAnalytics />
-            <GoogleTagManager />
-            <SetupAds>
-              <ScriptAssets entrypoint="ads" />
-            </SetupAds>
-          </>
-        )}
-      </Head>
+      <Head page={page} />
       <Body>
         {isBot(headers) ? <Content page={page} /> : <LoadingProgress />}
       </Body>
@@ -64,13 +47,7 @@ function Html({ children }: { readonly children?: ReactNode }) {
   );
 }
 
-function Head({
-  page,
-  children,
-}: {
-  readonly page: PageInfo;
-  readonly children?: ReactNode;
-}) {
+function Head({ page }: { readonly page: PageInfo }) {
   const { formatMessage } = useIntl();
   return (
     <head>
@@ -83,7 +60,6 @@ function Head({
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <PageDataScript />
       <ScriptAssets entrypoint="browser" />
-      {children}
     </head>
   );
 }

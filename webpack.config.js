@@ -163,7 +163,6 @@ export default [
     entry: {
       browser: "./packages/keybr-pages-browser/lib/entry.ts",
       server: "./packages/keybr-pages-server/lib/entry.ts",
-      ads: "./packages/thirdparties-ads/lib/entry.ts",
     },
     output: {
       path: join(import.meta.dirname, "root", "public", "assets"),
