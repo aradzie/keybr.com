@@ -24,7 +24,7 @@ with your own version on NodeJS.
 Clone this repository:
 
 ```shell
-git clone https://github.com/aradzie/keybr.com.git
+git clone https://github.com/bfanatic/keybr.com.git
 cd keybr.com
 ```
 

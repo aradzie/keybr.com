@@ -65,7 +65,7 @@ function GithubLink() {
   const { formatMessage } = useIntl();
   return (
     <StaticLink
-      href="https://github.com/aradzie/keybr.com"
+      href="https://github.com/bfanatic/keybr.com"
       target="github"
       title={formatMessage({
         id: "footer.githubLink.description",
@@ -81,7 +81,7 @@ function TranslateLink() {
   const { formatMessage } = useIntl();
   return (
     <StaticLink
-      href="https://github.com/aradzie/keybr.com/blob/master/docs/translations.md"
+      href="https://github.com/bfanatic/keybr.com/blob/master/docs/translations.md"
       target="github"
       title={formatMessage({
         id: "footer.translateLink.description",
