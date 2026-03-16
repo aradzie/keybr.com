@@ -10,7 +10,6 @@ import reactHooks from "eslint-plugin-react-hooks";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 import globals from "globals";
 import ts from "typescript-eslint";
-import pkg from "./package.json" with { type: "json" };
 
 export default [
   {
@@ -124,8 +123,55 @@ export default [
       node: {
         version: ">=24",
         allowModules: [
-          ...Object.keys(pkg.dependencies),
-          ...Object.keys(pkg.devDependencies),
+          // Prod libraries.
+          "@fastr/client",
+          "@fastr/client-testlib",
+          "@fastr/controller",
+          "@fastr/core",
+          "@fastr/errors",
+          "@fastr/fake-http",
+          "@fastr/fetch",
+          "@fastr/headers",
+          "@fastr/invert",
+          "@fastr/lang",
+          "@fastr/middleware-body",
+          "@fastr/middleware-canonical",
+          "@fastr/middleware-compress",
+          "@fastr/middleware-conditional",
+          "@fastr/middleware-router",
+          "@fastr/middleware-session",
+          "@fastr/middleware-session-file-store",
+          "@fastr/middleware-static-files",
+          "@fastr/middleware-websocket",
+          "@fastr/status",
+          "@mdi/js",
+          "@sosimple/fsx",
+          "@sosimple/fsx-file",
+          "@sosimple/fsx-lockfile",
+          "@sosimple/retry",
+          "@unicode/unicode-16.0.0",
+          "clsx",
+          "debug",
+          "knex",
+          "objection",
+          "react",
+          "react-dom",
+          "react-intl",
+          "react-router",
+          "tslib",
+          "xml-js",
+          "zod",
+          // Testing and script libraries.
+          "@formatjs/cli-lib",
+          "@formatjs/ts-transformer",
+          "@testing-library/dom",
+          "@testing-library/react",
+          "@testing-library/user-event",
+          "cheerio",
+          "confusing-browser-globals",
+          "glob",
+          "rich-assert",
+          "typescript",
         ],
         typescriptExtensionMap: [
           [".ts", ".ts"],

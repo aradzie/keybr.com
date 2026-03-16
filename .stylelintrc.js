@@ -41,14 +41,15 @@ export default {
       },
     ],
     "no-invalid-position-at-import-rule": null,
-    "plugin/use-logical-properties-and-values": [
+    "logical-css/require-logical-keywords": [true, { severity: "warning" }],
+    "logical-css/require-logical-properties": [
       true,
       {
         severity: "warning",
-        ignore: ["overflow-y", "overflow-x"],
+        ignore: ["overflow-x", "overflow-y"],
       },
     ],
-    "plugin/use-logical-units": [true, { severity: "warning" }],
+    "logical-css/require-logical-units": [true, { severity: "warning" }],
     "order/order": [
       [
         "at-variables",
