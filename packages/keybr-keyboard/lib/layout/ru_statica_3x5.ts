@@ -3,7 +3,7 @@
 import { type CharacterDict } from "../types.ts";
 
 // prettier-ignore
-export const LAYOUT_RU_STATICA_MATRIX: CharacterDict = {
+export const LAYOUT_RU_STATICA_3X5: CharacterDict = {
   Backquote: [/* QUOTATION MARK */ 0x0022, /* APOSTROPHE */ 0x0027],
   Digit1: [/* DIGIT ONE */ 0x0031, /* EXCLAMATION MARK */ 0x0021],
   Digit2: [/* DIGIT TWO */ 0x0032, /* COMMERCIAL AT */ 0x0040],
@@ -29,7 +29,7 @@ export const LAYOUT_RU_STATICA_MATRIX: CharacterDict = {
   KeyP: [/* CYRILLIC SMALL LETTER HA */ 0x0445, /* CYRILLIC CAPITAL LETTER HA */ 0x0425],
   BracketLeft: [/* COMMA */ 0x002c, /* SEMICOLON */ 0x003b],
   BracketRight: [/* FULL STOP */ 0x002e, /* COLON */ 0x003a],
-  Backslash: [/* SOLIDUS */ 0x002f, /* VERTICAL LINE */ 0x007c],
+  Backslash: [/* REVERSE SOLIDUS */ 0x005c, /* VERTICAL LINE */ 0x007c],
   KeyA: [/* CYRILLIC SMALL LETTER I */ 0x0438, /* CYRILLIC CAPITAL LETTER I */ 0x0418],
   KeyS: [/* CYRILLIC SMALL LETTER IE */ 0x0435, /* CYRILLIC CAPITAL LETTER IE */ 0x0415, /* CYRILLIC SMALL LETTER IO */ 0x0451, /* CYRILLIC CAPITAL LETTER IO */ 0x0401],
   KeyD: [/* CYRILLIC SMALL LETTER O */ 0x043e, /* CYRILLIC CAPITAL LETTER O */ 0x041e],
