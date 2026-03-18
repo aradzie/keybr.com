@@ -546,7 +546,7 @@ export class Layout implements XEnumItem {
     ),
   );
   static readonly RU_STATICA_3X5 = new Layout(
-    /* id= */ "ru_statica_3x5",
+    /* id= */ "ru-statica-3x5",
     /* xid= */ 0x71,
     /* name= */ "Statica 3x5 (Matrix)",
     /* family= */ "statica",
