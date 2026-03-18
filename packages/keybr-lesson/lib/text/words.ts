@@ -78,13 +78,27 @@ export function mangledWords(
   {
     withCapitals = 0,
     withPunctuators = 0,
+    withNumbers = 0,
   }: {
     withCapitals?: number;
     withPunctuators?: number;
+    withNumbers?: number;
   },
   random: RNG,
 ): WordGenerator {
+  // When we insert a number, we save the processed word here
+  // and return it on the next call. This ensures numbers are
+  // inserted between words rather than replacing them.
+  let pendingWord: string | null | undefined = undefined;
+
   return () => {
+    // Return a pending word from previous number insertion
+    if (pendingWord !== undefined) {
+      const word = pendingWord;
+      pendingWord = undefined;
+      return word;
+    }
+
     let word = nextWord();
     if (word == null || word === "") {
       return null;
@@ -128,6 +142,15 @@ export function mangledWords(
           break;
       }
     }
+
+    // Decide whether to insert a number before this word
+    if (withNumbers > 0 && withNumbers >= random()) {
+      // Save the word for next call and return a number now
+      pendingWord = word;
+      const num = Math.floor(random() * 2000) + 1;
+      return String(num);
+    }
+
     return word;
   };
 }
