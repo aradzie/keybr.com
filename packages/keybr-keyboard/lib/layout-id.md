@@ -99,7 +99,7 @@
 - `0x6e`:
 - `0x6f`:
 - `0x70`: Russian/Russia
-- `0x71`:
+- `0x71`: Russian/Statica 3x5 (Matrix)
 - `0x72`:
 - `0x73`:
 - `0x74`: Belarusian/Belarus

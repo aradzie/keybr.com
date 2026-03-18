@@ -545,6 +545,15 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly RU_STATICA_3X5 = new Layout(
+    /* id= */ "ru-statica-3x5",
+    /* xid= */ 0x71,
+    /* name= */ "Statica 3x5 (Matrix)",
+    /* family= */ "statica",
+    /* language= */ Language.RU,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(Geometry.MATRIX),
+  );
   static readonly BE_BY = new Layout(
     /* id= */ "be-by",
     /* xid= */ 0x74,
@@ -1416,6 +1425,7 @@ export class Layout implements XEnumItem {
     Layout.SV_SE,
     Layout.UK_UA,
     Layout.RU_RU,
+    Layout.RU_STATICA_3X5,
     Layout.TR_TR_Q,
     Layout.TR_TR_F,
     Layout.AR_SA,
