@@ -331,5 +331,7 @@
   "t_ws_Bar_whitespace": "Tiret bas",
   "t_ws_Bullet_whitespace": "Point médian",
   "t_ws_No_whitespace": "Espace blanc",
-  "weekDayNames": "Lu|Ma|Me|Je|Ve|Sa|Di"
+  "weekDayNames": "Lu|Ma|Me|Je|Ve|Sa|Di",
+  "lessonType.customText.fromUrl": "Texte personnalisé chargé depuis la URL.",
+  "lessonType.customText.fromUrl.description": "Ce texte ne sera utilisé que pour la session actuelle et ne sera pas enregistré dans vos paramètres."
 }

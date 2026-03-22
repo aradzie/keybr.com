@@ -22,6 +22,8 @@
   "help.example3": "<a>Shembulli 3</a>, një rritje e konsiderueshme nga më pak se 20 në 40 WPM pas 5 orësh e 30 minutash praktikë gjatë 11 ditëve.",
   "help.example4": "<a>Shembulli 4</a>, pas 2 orësh e 10 minutash praktikë gjatë 11 ditëve, shpejtësia e shkrimit mbeti rreth 70 WPM (e cila tashmë është mjaft e lartë), por saktësia u përmirësua.",
   "help.example5": "<a>Shembulli 5</a>, nga 20 në 45 WPM pas rreth 10 orësh praktikë gjatë 22 ditëve (po, ndonjëherë merr më shumë kohë).",
+  "lessonType.customText.fromUrl": "Teksti i personalizuar u ngarkua nga URL.",
+  "lessonType.customText.fromUrl.description": "Ky tekst do të përdoret vetëm për sesionin aktual dhe nuk do të ruhet në cilësimet tuaja.",
   "t_Account_details": "Detajet e Llogarise",
   "t_Account_name": "Llogaria | {emri}",
   "t_Anonymize_me": "Më Bëj Anonim",
