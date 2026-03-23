@@ -68,13 +68,11 @@ Untranslated: 30 messages, 1171 words
 
 # Czech
 
-Translated: 336 messages, 4740 words
+Translated: 338 messages, 4742 words
 
-Untranslated: 6 messages, 9 words
+Untranslated: 4 messages, 7 words
 
 * *Font:*
-* *Reset*
-* *Zones:*
 * *Syntax:*
 * *Sound theme:*
 * *Key sounds only*
@@ -162,9 +160,9 @@ Untranslated: 4 messages, 6 words
 
 # Persian
 
-Translated: 287 messages, 2823 words
+Translated: 295 messages, 2959 words
 
-Untranslated: 53 messages, 1904 words
+Untranslated: 45 messages, 1768 words
 
 * *Books*
 * *Zones:*
@@ -173,19 +171,19 @@ Untranslated: 53 messages, 1904 words
 * *Top accuracy*
 * *Explain charts*
 * *Key sounds only*
-* *Accuracy Streaks*
-* *Average accuracy*
-* *Relative Accuracy*
 * *Repeat each word:*
 * *Keyboard hardware emulates layout*
-* *Switch the current interface layout.*
 * *Circle color: {label1} – hit count, {label2} – miss count.*
-* *Generate lessons that resemble the specified programming lan...*
 * *Practice punctuation characters that are specific to a progr...*
-* *This is a histogram of the accuracies of all users, and your...*
 * *Show color coding of the keyboard zones. Use this option to ...*
 * *Bar color: {label1} – hit count, {label2} – miss count, {lab...*
 * *Generate typing lessons from the text of a book. All keys ar...*
+* *Horizontal axis: lesson number. Vertical axis: typing speed ...*
+* *<a>Benford’s law</a> is an observation that in many real-lif...*
+* *You don’t have any accuracy streaks. Consider completing a l...*
+* *These are the typing assists which help your preserve your c...*
+* *Horizontal axis: lesson number. Vertical axis: {label1} – ty...*
+* *Horizontal axis: lesson number. Vertical axis: {label1} – ty...*
 * ...
 
 # Finnish
@@ -390,9 +388,9 @@ Untranslated: 195 messages, 3430 words
 
 # Lithuanian
 
-Translated: 298 messages, 3096 words
+Translated: 305 messages, 3388 words
 
-Untranslated: 41 messages, 1622 words
+Untranslated: 34 messages, 1330 words
 
 * *Key sounds only*
 * *Accuracy Streaks*
@@ -400,9 +398,7 @@ Untranslated: 41 messages, 1622 words
 * *No accuracy streaks.*
 * *Practice numbers only.*
 * *The difference from the average value.*
-* *Sort letters in the order of keyboard keys*
 * *Download all your typing data in JSON format.*
-* *Help us translate keybr.com into your language.*
 * *The detailed statistics regarding your learning progress.*
 * *Permanently delete all of your typing data and reset statist...*
 * *This is a histogram of the accuracies of all users, and your...*
@@ -412,8 +408,10 @@ Untranslated: 41 messages, 1622 words
 * *You don’t have any accuracy streaks. Consider completing a l...*
 * *Highlight a key that must to be pressed next. Use this optio...*
 * *<p>This indicator shows the current subset of letters used t...*
-* *For the purpose of typing measurement, each word is standard...*
 * *Repeat each word a number of times. Type a word for the firs...*
+* *See how accurate you type relative to other users. The highe...*
+* *Manually unlock the remaining letters. Use this option if wa...*
+* *Adjust the amount of capital letters added to the lesson tex...*
 * ...
 
 # Mongolian
@@ -446,30 +444,30 @@ Untranslated: 316 messages, 4273 words
 
 # Norwegian Bokmål
 
-Translated: 158 messages, 2338 words
+Translated: 211 messages, 2446 words
 
-Untranslated: 178 messages, 2356 words
+Untranslated: 126 messages, 2250 words
 
 * *Done*
 * *Help*
-* *Time*
 * *Books*
 * *Font:*
-* *Reset*
 * *Speed*
-* *Visit*
-* *Zones:*
 * *Account*
-* *Layouts*
-* *Lessons*
-* *Metrics*
-* *Not set*
-* *Options*
-* *Preview*
-* *Profile*
-* *Sign-In*
-* *Syntax:*
-* *Volume:*
+* *Accuracy*
+* *Settings*
+* *Alphabet:*
+* *Examples:*
+* *All sounds*
+* *Daily goal*
+* *Last speed*
+* *Custom text*
+* *Daily goal:*
+* *Smoothness:*
+* *Whitespace:*
+* *Cursor shape:*
+* *Learning rate*
+* *No whitespace*
 * ...
 
 # Nepali
@@ -516,9 +514,9 @@ Untranslated: 4 messages, 6 words
 
 # European Portuguese
 
-Translated: 318 messages, 4597 words
+Translated: 319 messages, 4618 words
 
-Untranslated: 22 messages, 130 words
+Untranslated: 21 messages, 109 words
 
 * *Books*
 * *Layout*
@@ -539,7 +537,7 @@ Untranslated: 22 messages, 130 words
 * *New letter unlocked!*
 * *Premium account price:*
 * *This is a histogram of the accuracies of all users, and your...*
-* *Generate typing lessons from the text of a book. All keys ar...*
+* *Repeat each word a number of times. Type a word for the firs...*
 * ...
 
 # Romanian
@@ -589,59 +587,20 @@ Untranslated: 2 messages, 4 words
 
 # Slovenian
 
-Translated: 192 messages, 3519 words
+Translated: 340 messages, 4745 words
 
-Untranslated: 149 messages, 1228 words
+Untranslated: 2 messages, 4 words
 
-* *Copy*
-* *Done*
-* *Help*
-* *Next*
-* *Time*
-* *Books*
-* *Close*
 * *Font:*
-* *Reset*
-* *Speed*
-* *Visit*
-* *Typing*
-* *Zones:*
-* *Account*
-* *Layouts*
-* *Lessons*
-* *Lessons*
-* *Metrics*
-* *Not set*
-* *Numbers*
-* ...
+* *Key sounds only*
 
 # Albanian
 
-Translated: 43 messages, 684 words
+Translated: 341 messages, 4746 words
 
-Untranslated: 291 messages, 3996 words
+Untranslated: 1 messages, 3 words
 
-* *GO!*
-* *Copy*
-* *Done*
-* *Help*
-* *Next*
-* *Time*
-* *User*
-* *Books*
-* *Close*
-* *Font:*
-* *Reset*
-* *Score*
-* *Speed*
-* *Speed*
-* *Visit*
-* *Errors*
-* *Layout*
-* *Typing*
-* *Zones:*
-* *Account*
-* ...
+* *Key sounds only*
 
 # Swedish
 
@@ -710,30 +669,30 @@ Untranslated: 1 messages, 3 words
 
 # Vietnamese
 
-Translated: 275 messages, 2745 words
+Translated: 289 messages, 2943 words
 
-Untranslated: 64 messages, 1973 words
+Untranslated: 50 messages, 1775 words
 
 * *Visit*
-* *Typing*
 * *Zones:*
 * *Box cursor*
-* *Line cursor*
 * *Block cursor*
-* *Sound theme:*
-* *Top accuracy*
-* *Unique words*
-* *M|T|W|T|F|S|S*
-* *Smooth cursor*
 * *Jumping cursor*
 * *Key sounds only*
-* *Average accuracy*
-* *Underline cursor*
-* *Repeat each word:*
-* *Premium account price:*
 * *Key Frequency Histogram*
 * *Key Typing Speed Histogram*
 * *Keyboard hardware emulates layout*
+* *Show a guided tour with help slides.*
+* *Switch the current interface layout.*
+* *This chart shows relative key frequencies as a heatmap.*
+* *Circle color: {label1} – hit count, {label2} – miss count.*
+* *Generate lessons that resemble the specified programming lan...*
+* *Practice punctuation characters that are specific to a progr...*
+* *This is a histogram of the accuracies of all users, and your...*
+* *Bar color: {label1} – hit count, {label2} – miss count, {lab...*
+* *Generate typing lessons from the text of a book. All keys ar...*
+* *Horizontal axis: lesson number. Vertical axis: typing speed ...*
+* *<a>Benford’s law</a> is an observation that in many real-lif...*
 * ...
 
 # Simplified Chinese
