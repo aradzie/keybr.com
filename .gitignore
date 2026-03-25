@@ -24,3 +24,33 @@ sandbox/
 
 # Custom scripts
 deploy.sh
+packages/keybr-generators/dictionaries/dictionary-ar.csv.gz
+packages/keybr-generators/dictionaries/dictionary-be.csv.gz
+packages/keybr-generators/dictionaries/dictionary-cs.csv.gz
+packages/keybr-generators/dictionaries/dictionary-da.csv.gz
+packages/keybr-generators/dictionaries/dictionary-de.csv.gz
+packages/keybr-generators/dictionaries/dictionary-el.csv.gz
+packages/keybr-generators/dictionaries/dictionary-en.csv.gz
+packages/keybr-generators/dictionaries/dictionary-es.csv.gz
+packages/keybr-generators/dictionaries/dictionary-et.csv.gz
+packages/keybr-generators/dictionaries/dictionary-fa.csv.gz
+packages/keybr-generators/dictionaries/dictionary-fi.csv.gz
+packages/keybr-generators/dictionaries/dictionary-fr.csv.gz
+packages/keybr-generators/dictionaries/dictionary-he.csv.gz
+packages/keybr-generators/dictionaries/dictionary-hr.csv.gz
+packages/keybr-generators/dictionaries/dictionary-hu.csv.gz
+packages/keybr-generators/dictionaries/dictionary-it.csv.gz
+packages/keybr-generators/dictionaries/dictionary-ja.csv.gz
+packages/keybr-generators/dictionaries/dictionary-lt.csv.gz
+packages/keybr-generators/dictionaries/dictionary-lv.csv.gz
+packages/keybr-generators/dictionaries/dictionary-nb.csv.gz
+packages/keybr-generators/dictionaries/dictionary-nl.csv.gz
+packages/keybr-generators/dictionaries/dictionary-pl.csv.gz
+packages/keybr-generators/dictionaries/dictionary-pt.csv.gz
+packages/keybr-generators/dictionaries/dictionary-ro.csv.gz
+packages/keybr-generators/dictionaries/dictionary-ru.csv.gz
+packages/keybr-generators/dictionaries/dictionary-sl.csv.gz
+packages/keybr-generators/dictionaries/dictionary-sv.csv.gz
+packages/keybr-generators/dictionaries/dictionary-th.csv.gz
+packages/keybr-generators/dictionaries/dictionary-tr.csv.gz
+packages/keybr-generators/dictionaries/dictionary-uk.csv.gz

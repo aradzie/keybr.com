@@ -1337,7 +1337,24 @@ export class Layout implements XEnumItem {
     /* family= */ "ja-jp",
     /* language= */ Language.JA,
     /* emulate= */ false,
-    /* geometries= */ new Enum(Geometry.ANSI_101),
+    /* geometries= */ new Enum(
+      Geometry.ANSI_101
+    ),
+  );
+static readonly BR_CHWERTY_MATHS = new Layout(
+    /* id= */ "br-chwerty-maths",
+    /* xid= */ 0xb1,
+    /* name= */ "{FR}",
+    /* family= */ "c’hwerty",
+    /* language= */ Language.BR,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.MATRIX,
+    ),
   );
 
   static readonly ALL = new XEnum<Layout>(
@@ -1379,6 +1396,7 @@ export class Layout implements XEnumItem {
     Layout.EN_JP,
     Layout.EN_MTGAP,
     Layout.EL_GR,
+    Layout.BR_CHWERTY_MATHS,
     Layout.CS_CZ,
     Layout.DA_DK,
     Layout.DE_DE,

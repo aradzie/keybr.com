@@ -14,6 +14,12 @@ export class Language implements EnumItem {
     /* direction= */ "ltr",
     /* alphabet= */ "абвгдежзійклмнопрстуўфхцчшыьэюя",
   );
+  static readonly BR = new Language(
+    /* id= */ "br",
+    /* script= */ "latin",
+    /* direction= */ "ltr",
+    /* alphabet= */ "aàâbchc’hdeêfghiïjklmnñoôprstuüûùvwyz",
+  );
   static readonly CS = new Language(
     /* id= */ "cs",
     /* script= */ "latin",
@@ -186,6 +192,7 @@ export class Language implements EnumItem {
   static readonly ALL = new Enum<Language>(
     Language.AR,
     Language.BE,
+    Language.BR,
     Language.CS,
     Language.DA,
     Language.DE,
