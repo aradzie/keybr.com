@@ -1337,11 +1337,9 @@ export class Layout implements XEnumItem {
     /* family= */ "ja-jp",
     /* language= */ Language.JA,
     /* emulate= */ false,
-    /* geometries= */ new Enum(
-      Geometry.ANSI_101
-    ),
+    /* geometries= */ new Enum(Geometry.ANSI_101),
   );
-static readonly BR_CHWERTY_MATHS = new Layout(
+  static readonly BR_CHWERTY_MATHS = new Layout(
     /* id= */ "br-chwerty-maths",
     /* xid= */ 0xb1,
     /* name= */ "{FR}",

@@ -15,6 +15,7 @@ import { Layout } from "./layout.ts";
 import { LAYOUT_AR_SA } from "./layout/ar_sa.ts";
 import { LAYOUT_AR_SA_102 } from "./layout/ar_sa_102.ts";
 import { LAYOUT_BE_BY } from "./layout/be_by.ts";
+import { LAYOUT_BR_CHWERTY_MATHS } from "./layout/br_chwerty_maths.ts";
 import { LAYOUT_CS_CZ } from "./layout/cs_cz.ts";
 import { LAYOUT_DA_DK } from "./layout/da_dk.ts";
 import { LAYOUT_DE_ADNW_BUT_XCV } from "./layout/de_adnw_but_xcv.ts";
@@ -115,6 +116,7 @@ const layouts = new Map<Layout, CharacterDict>([
   [Layout.AR_SA, LAYOUT_AR_SA],
   [Layout.AR_SA_102, LAYOUT_AR_SA_102],
   [Layout.BE_BY, LAYOUT_BE_BY],
+  [Layout.BR_CHWERTY_MATHS, LAYOUT_BR_CHWERTY_MATHS],
   [Layout.CS_CZ, LAYOUT_CS_CZ],
   [Layout.DA_DK, LAYOUT_DA_DK],
   [Layout.DE_ADNW_BUT_XCV, LAYOUT_DE_ADNW_BUT_XCV],

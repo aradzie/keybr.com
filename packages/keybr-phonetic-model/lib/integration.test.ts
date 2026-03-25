@@ -11,26 +11,18 @@ for (const language of Language.ALL) {
     const letters = Letter.frequencyOrder(model.letters);
     const { chain } = table;
 
-    let alphabet: RegExp;
-    let word: RegExp;
-    if (language.script === "thai") {
-      // Some Thai vowels are recognized as Mark not Letter.
-      alphabet = /^\u{0020}[\p{Letter}\p{Mark}]+$/u;
-      word = /^[\p{Letter}\p{Mark}]+$/u;
-    } else {
-      alphabet = /^\u{0020}\p{Letter}+$/u;
-      word = /^\p{Letter}+$/u;
-    }
+    const alphabet = /^\u{0020}[\p{Letter}\p{Mark}'’]+$/u;
+    const word = /^[\p{Letter}\p{Mark}'’]+$/u;
 
-    // Check model settings.
+    // Check the model settings.
     match(String.fromCodePoint(...table.alphabet), alphabet);
     equal(table.size, table.alphabet.length);
     equal(table.order, 4);
 
-    // Check letters.
+    // Check the letters.
     isTrue(letters.every(({ f }) => f > 0));
 
-    // Check transition table.
+    // Check the transition table.
     for (const suffixes of table.segments) {
       if (suffixes.length > 0) {
         let sum = 0;
