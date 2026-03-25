@@ -545,6 +545,15 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly RU_STATICA_3X5 = new Layout(
+    /* id= */ "ru-statica-3x5",
+    /* xid= */ 0x71,
+    /* name= */ "Statica 3x5 (Matrix)",
+    /* family= */ "statica",
+    /* language= */ Language.RU,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(Geometry.MATRIX),
+  );
   static readonly BE_BY = new Layout(
     /* id= */ "be-by",
     /* xid= */ 0x74,
@@ -1229,6 +1238,15 @@ export class Layout implements XEnumItem {
     /* emulate= */ false,
     /* geometries= */ new Enum(Geometry.MATRIX),
   );
+  static readonly EN_ENTHIUM_V13 = new Layout(
+    /* id= */ "en-enthium-v13",
+    /* xid= */ 0xba,
+    /* name= */ "Enthium V13 (Matrix)",
+    /* family= */ "enthium",
+    /* language= */ Language.EN,
+    /* emulate= */ false,
+    /* geometries= */ new Enum(Geometry.MATRIX),
+  );
   static readonly EN_NIGHT_MATRIX = new Layout(
     /* id= */ "en-night-matrix",
     /* xid= */ 0xa9,
@@ -1372,6 +1390,7 @@ static readonly BR_CHWERTY_MATHS = new Layout(
     Layout.EN_ENTHIUM_V6,
     Layout.EN_ENTHIUM_V10,
     Layout.EN_ENTHIUM_V11,
+    Layout.EN_ENTHIUM_V13,
     Layout.EN_KUNTEM,
     Layout.EN_UK,
     Layout.EN_JP,
@@ -1424,6 +1443,7 @@ static readonly BR_CHWERTY_MATHS = new Layout(
     Layout.SV_SE,
     Layout.UK_UA,
     Layout.RU_RU,
+    Layout.RU_STATICA_3X5,
     Layout.TR_TR_Q,
     Layout.TR_TR_F,
     Layout.AR_SA,

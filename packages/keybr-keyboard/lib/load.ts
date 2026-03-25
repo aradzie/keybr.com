@@ -41,6 +41,7 @@ import { LAYOUT_EN_ENGRAM } from "./layout/en_engram.ts";
 import { LAYOUT_EN_ENTHIUM_V6 } from "./layout/en_enthium_v6.ts";
 import { LAYOUT_EN_ENTHIUM_V10 } from "./layout/en_enthium_v10.ts";
 import { LAYOUT_EN_ENTHIUM_V11 } from "./layout/en_enthium_v11.ts";
+import { LAYOUT_EN_ENTHIUM_V13 } from "./layout/en_enthium_v13.ts";
 import { LAYOUT_EN_FOCAL } from "./layout/en_focal.ts";
 import { LAYOUT_EN_GALLIUM } from "./layout/en_gallium.ts";
 import { LAYOUT_EN_GALLIUM_MATRIX } from "./layout/en_gallium_matrix.ts";
@@ -97,6 +98,7 @@ import { LAYOUT_PT_BR } from "./layout/pt_br.ts";
 import { LAYOUT_PT_PT } from "./layout/pt_pt.ts";
 import { LAYOUT_RO_RO } from "./layout/ro_ro.ts";
 import { LAYOUT_RU_RU } from "./layout/ru_ru.ts";
+import { LAYOUT_RU_STATICA_3X5 } from "./layout/ru_statica_3x5.ts";
 import { LAYOUT_SL_SI } from "./layout/sl_si.ts";
 import { LAYOUT_SV_SE } from "./layout/sv_se.ts";
 import { LAYOUT_TH_TH } from "./layout/th_th.ts";
@@ -139,6 +141,7 @@ const layouts = new Map<Layout, CharacterDict>([
   [Layout.EN_ENTHIUM_V6, LAYOUT_EN_ENTHIUM_V6],
   [Layout.EN_ENTHIUM_V10, LAYOUT_EN_ENTHIUM_V10],
   [Layout.EN_ENTHIUM_V11, LAYOUT_EN_ENTHIUM_V11],
+  [Layout.EN_ENTHIUM_V13, LAYOUT_EN_ENTHIUM_V13],
   [Layout.EN_FOCAL, LAYOUT_EN_FOCAL],
   [Layout.EN_GALLIUM, LAYOUT_EN_GALLIUM],
   [Layout.EN_GALLIUM_MATRIX, LAYOUT_EN_GALLIUM_MATRIX],
@@ -198,6 +201,7 @@ const layouts = new Map<Layout, CharacterDict>([
   [Layout.PT_PT, LAYOUT_PT_PT],
   [Layout.RO_RO, LAYOUT_RO_RO],
   [Layout.RU_RU, LAYOUT_RU_RU],
+  [Layout.RU_STATICA_3X5, LAYOUT_RU_STATICA_3X5],
   [Layout.SL_SI, LAYOUT_SL_SI],
   [Layout.SV_SE, LAYOUT_SV_SE],
   [Layout.TH_MAN, LAYOUT_TH_TH_MAN],

@@ -4,7 +4,7 @@ import { type CharacterDict } from "../types.ts";
 
 // prettier-ignore
 export const LAYOUT_DE_NEO_2: CharacterDict = {
-  Backquote: [{ dead: /* COMBINING CIRCUMFLEX ACCENT */ 0x0302 }, { dead: /* COMBINING CARON */ 0x030c }],
+  Backquote: [{ dead: /* COMBINING CIRCUMFLEX ACCENT */ 0x0302 }, { dead: /* COMBINING CARON */ 0x030c }, null, { dead: /* COMBINING DOT ABOVE */ 0x0307 }],
   Digit1: [/* DIGIT ONE */ 0x0031, /* DEGREE SIGN */ 0x00b0],
   Digit2: [/* DIGIT TWO */ 0x0032, /* SECTION SIGN */ 0x00a7],
   Digit3: [/* DIGIT THREE */ 0x0033, /* SCRIPT SMALL L */ 0x2113],
@@ -28,7 +28,7 @@ export const LAYOUT_DE_NEO_2: CharacterDict = {
   KeyO: [/* LATIN SMALL LETTER F */ 0x0066, /* LATIN CAPITAL LETTER F */ 0x0046],
   KeyP: [/* LATIN SMALL LETTER Q */ 0x0071, /* LATIN CAPITAL LETTER Q */ 0x0051],
   BracketLeft: [/* LATIN SMALL LETTER SHARP S */ 0x00df, /* LATIN CAPITAL LETTER SHARP S */ 0x1e9e],
-  BracketRight: [{ dead: /* COMBINING ACUTE ACCENT */ 0x0301 }, { dead: /* COMBINING TILDE */ 0x0303 }],
+  BracketRight: [{ dead: /* COMBINING ACUTE ACCENT */ 0x0301 }, { dead: /* COMBINING TILDE */ 0x0303 }, null, { dead: /* COMBINING DOUBLE ACUTE ACCENT */ 0x030b }],
   KeyA: [/* LATIN SMALL LETTER U */ 0x0075, /* LATIN CAPITAL LETTER U */ 0x0055],
   KeyS: [/* LATIN SMALL LETTER I */ 0x0069, /* LATIN CAPITAL LETTER I */ 0x0049],
   KeyD: [/* LATIN SMALL LETTER A */ 0x0061, /* LATIN CAPITAL LETTER A */ 0x0041],

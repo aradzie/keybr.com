@@ -2,7 +2,6 @@
 
 import { join } from "node:path";
 import { intlTransformer } from "@keybr/scripts/intl-transformer.js";
-import { ManifestPlugin } from "@keybr/scripts/webpack-manifest.js";
 import { ENV } from "@keybr/thirdparties/webpack-env.js";
 import CompressionPlugin from "compression-webpack-plugin";
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
@@ -10,6 +9,7 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import TerserPlugin from "terser-webpack-plugin";
 import webpack from "webpack";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
+import { ManifestPlugin } from "./webpack-manifest.js";
 
 const mode = process.env.NODE_ENV || "production";
 

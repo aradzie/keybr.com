@@ -63,6 +63,7 @@
   "lesson.indicator.mostConfidence": "Uma tecla calibrada com o perfil de confiança mais alto. Quanto mais pressionar esta tecla, mais precisa esta métrica se torna.",
   "lesson.indicator.notCalibrated": "Uma tecla não calibrada com um nível de confiança desconhecido. Ainda nao pressionou esta tecla.",
   "lesson.indicator.notIncluded": "Uma tecla que ainda não foi incluída nas lições.",
+  "lessonType.books.description": "Gera lições de dactilografia a partir do texto de um livro. Todas as teclas estão incluídas por predefinição. Este modo é para profissionais.",
   "lessonType.code.description": "Practicar Caracteres de Pontuação que são específicos à sintaxe de uma linguagem de programação.",
   "lessonType.customText.description": "Gerar lições de escrita das palavras do seu texto customizado. Todas as teclas incluídas por defeito. Este modo é para pros.",
   "lessonType.guided.description": "Gerar lições de escrita com palavras aleatórias utilizando as regras fonéticas da sua lingua. O conjunto de teclas é expandido dinamicamente baseado na sua performance. Este modo é para iniciantes.",
