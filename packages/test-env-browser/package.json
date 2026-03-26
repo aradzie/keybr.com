@@ -6,7 +6,7 @@
   "main": "lib/index.ts",
   "dependencies": {
     "fake-indexeddb": "^6.2.5",
-    "jsdom": "^29.0.0"
+    "jsdom": "^29.0.1"
   },
   "devDependencies": {},
   "scripts": {

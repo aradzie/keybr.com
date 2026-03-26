@@ -24,7 +24,7 @@
     "@keybr/themes": "*",
     "@paddle/paddle-node-sdk": "^3.6.0",
     "@types/ws": "^8.18.1",
-    "ws": "^8.19.0"
+    "ws": "^8.20.0"
   },
   "devDependencies": {},
   "scripts": {
