@@ -1343,7 +1343,7 @@ export class Layout implements XEnumItem {
     /* id= */ "br-chwerty-maths",
     /* xid= */ 0xb1,
     /* name= */ "{FR}",
-    /* family= */ "c’hwerty",
+    /* family= */ "chwerty",
     /* language= */ Language.BR,
     /* emulate= */ false,
     /* geometries= */ new Enum(
