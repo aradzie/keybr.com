@@ -20,7 +20,9 @@ for (const language of Language.ALL) {
     equal(table.order, 4);
 
     // Check the letters.
-    isTrue(letters.every(({ f }) => f > 0));
+    for (const letter of letters) {
+      isTrue(letter.f > 0, `Zero frequency letter "${letter}"`);
+    }
 
     // Check the transition table.
     for (const suffixes of table.segments) {
