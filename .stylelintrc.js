@@ -42,13 +42,7 @@ export default {
     ],
     "no-invalid-position-at-import-rule": null,
     "logical-css/require-logical-keywords": [true, { severity: "warning" }],
-    "logical-css/require-logical-properties": [
-      true,
-      {
-        severity: "warning",
-        ignore: ["overflow-x", "overflow-y"],
-      },
-    ],
+    "logical-css/require-logical-properties": [true, { severity: "warning" }],
     "logical-css/require-logical-units": [true, { severity: "warning" }],
     "order/order": [
       [
@@ -243,9 +237,7 @@ export default {
         "border-bottom-left-image",
         "overflow",
         "overflow-anchor",
-        "overflow-x",
         "overflow-inline",
-        "overflow-y",
         "overflow-block",
         "overflow-clip-margin",
         "scroll-behavior",
