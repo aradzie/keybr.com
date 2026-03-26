@@ -78,7 +78,7 @@ export class Language implements EnumItem {
     /* id= */ "fr",
     /* script= */ "latin",
     /* direction= */ "ltr",
-    /* alphabet= */ "abcçdeéèfghijlmnopqrstuvxyz",
+    /* alphabet= */ "aâbcçdeéèêëfghiîïjlmnoôœpqrstuûvxyz",
   );
   static readonly HE = new Language(
     /* id= */ "he",
