@@ -48,8 +48,8 @@ const rule_ts = () => ({
       options: {
         transpileOnly: true,
         compilerOptions: {
-          target: "es2022",
-          module: "es2022",
+          target: "es2024",
+          module: "esnext",
           moduleResolution: "bundler",
           jsx: mode === "development" ? "react-jsxdev" : "react-jsx",
         },

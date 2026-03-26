@@ -9,8 +9,8 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
 
-    "lib": ["es2022"],
-    "target": "es2022",
+    "lib": ["es2024"],
+    "target": "es2024",
     "jsx": "react-jsx",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
