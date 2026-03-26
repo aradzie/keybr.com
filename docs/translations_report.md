@@ -669,31 +669,11 @@ Untranslated: 1 messages, 3 words
 
 # Vietnamese
 
-Translated: 289 messages, 2943 words
+Translated: 341 messages, 4746 words
 
-Untranslated: 50 messages, 1775 words
+Untranslated: 1 messages, 3 words
 
-* *Visit*
-* *Zones:*
-* *Box cursor*
-* *Block cursor*
-* *Jumping cursor*
 * *Key sounds only*
-* *Key Frequency Histogram*
-* *Key Typing Speed Histogram*
-* *Keyboard hardware emulates layout*
-* *Show a guided tour with help slides.*
-* *Switch the current interface layout.*
-* *This chart shows relative key frequencies as a heatmap.*
-* *Circle color: {label1} – hit count, {label2} – miss count.*
-* *Generate lessons that resemble the specified programming lan...*
-* *Practice punctuation characters that are specific to a progr...*
-* *This is a histogram of the accuracies of all users, and your...*
-* *Bar color: {label1} – hit count, {label2} – miss count, {lab...*
-* *Generate typing lessons from the text of a book. All keys ar...*
-* *Horizontal axis: lesson number. Vertical axis: typing speed ...*
-* *<a>Benford’s law</a> is an observation that in many real-lif...*
-* ...
 
 # Simplified Chinese
 
