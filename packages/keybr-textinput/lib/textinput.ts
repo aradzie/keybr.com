@@ -157,7 +157,7 @@ export class TextInput {
         this.#skipWord(timeStamp);
         return this.#return(Feedback.Recovered);
       }
-      if (this.#garbage.length === 0 && !this.#typo) {
+      if (this.forgiveErrors && this.#garbage.length === 0 && !this.#typo) {
         return this.#return(Feedback.Succeeded);
       }
     }
