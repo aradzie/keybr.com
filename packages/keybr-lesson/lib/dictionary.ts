@@ -15,9 +15,12 @@ export class Dictionary implements Iterable<string> {
       const word = new Word(item);
       this.#words.push(word);
       for (const codePoint of word.codePoints) {
-        let list = this.#dict.get(codePoint);
+        const lower = String.fromCodePoint(codePoint)
+          .toLowerCase()
+          .codePointAt(0)!;
+        let list = this.#dict.get(lower);
         if (list == null) {
-          this.#dict.set(codePoint, (list = []));
+          this.#dict.set(lower, (list = []));
         }
         if (!list.includes(word)) {
           list.push(word);
@@ -54,7 +57,13 @@ class Word {
   }
 
   matches(codePoints: CodePointSet): boolean {
-    return this.codePoints.every((codePoint) => codePoints.has(codePoint));
+    return this.codePoints.every((codePoint) => {
+      // Check lowercase version to handle uppercase letters in word list
+      const lower = String.fromCodePoint(codePoint)
+        .toLowerCase()
+        .codePointAt(0)!;
+      return codePoints.has(lower);
+    });
   }
 
   toString() {
@@ -67,5 +76,11 @@ export const filterWordList = (
   codePoints: CodePointSet,
 ): string[] =>
   words.filter((word) =>
-    [...toCodePoints(word)].every((codePoint) => codePoints.has(codePoint)),
+    [...toCodePoints(word)].every((codePoint) => {
+      // Check lowercase version to handle uppercase letters in word list
+      const lower = String.fromCodePoint(codePoint)
+        .toLowerCase()
+        .codePointAt(0)!;
+      return codePoints.has(lower);
+    }),
   );
