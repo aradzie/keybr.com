@@ -181,7 +181,7 @@
   "settings.typingAssists.description": "Це засоби допомоги при наборі тексту, які допомагають вам зберегти концентрацію та продовжувати друкувати, автоматично виправляючи ваші помилки.",
   "settings.typingSpeedUnit.description": "Для вимірювіння швидкості, кожне слово стандартизовано як п’ять символів (для англ.). Включно з пробілами та розділовими знаками.",
   "streakList.noStreaks": "Немає серій.",
-  "streakList.streakLength": "{length, plural, =1 {Один урок} =2 {# урока} =3 {# урока} =4 {# урока} other {# уроків}} з точністю {accuracy}.",
+  "streakList.streakLength": "{length, plural, =1 {Один урок} =2 {# уроки} =3 {# уроки} =4 {# уроки} other {# уроків}} з точністю {accuracy}.",
   "t_Account": "Акаунт",
   "t_Account_details": "Інформація про обліковий запис",
   "t_Account_name": "Акаунт | {name}",
