@@ -173,7 +173,7 @@
 - `0xb8`: English/Enthium V10 (Matrix)
 - `0xb9`: English/Enthium V11 (Matrix)
 - `0xba`: English/Enthium V13 (Matrix)
-- `0xbb`:
+- `0xbb`: English/Enthium V14 (Matrix)
 - `0xbc`:
 - `0xbd`:
 - `0xbe`:
@@ -243,7 +243,7 @@
 - `0xfe`:
 - `0xff`:
 
-94 allocated identifiers
+95 allocated identifiers
 
-146 free identifiers
+145 free identifiers
 
