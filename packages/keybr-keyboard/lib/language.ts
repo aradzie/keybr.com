@@ -18,7 +18,7 @@ export class Language implements EnumItem {
     /* id= */ "br",
     /* script= */ "latin",
     /* direction= */ "ltr",
-    /* alphabet= */ "aàâbchc’hdeêfghiïjklmnñoôprstuüûùvwyz",
+    /* alphabet= */ "aàâbchdeêfghijklmnñoôprstuüûùvwyz’", // TODO Add ligature "c’h".
   );
   static readonly CS = new Language(
     /* id= */ "cs",
