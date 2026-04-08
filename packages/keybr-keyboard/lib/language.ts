@@ -194,6 +194,12 @@ export class Language implements EnumItem {
     /* direction= */ "ltr",
     /* alphabet= */ "абвгґдеєжзиіїйклмнопрстуфхцчшщьюя",
   );
+  static readonly VI = new Language(
+    /* id= */ "vi",
+    /* script= */ "latin",
+    /* direction= */ "ltr",
+    /* alphabet= */ "aáàảãạăắằẳẵặâấầẩẫậbcdđeéèẻẽẹêếềểễệghiíìỉĩịklmnoóòỏõọôốồổỗộơớờởỡợpqrstuúùủũụưứừửữựvxyýỳỷỹỵ",
+  );
 
   static readonly ALL = new Enum<Language>(
     Language.AR,
@@ -228,6 +234,7 @@ export class Language implements EnumItem {
     Language.TH,
     Language.TR,
     Language.UK,
+    Language.VI,
   );
 
   /** ISO 639-1 language code, https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes */
