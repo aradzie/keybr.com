@@ -176,4 +176,22 @@ describe("generate randomized text using settings", () => {
         "Ghi! Abc, Def, Ghi! Abc, Def, Ghi! Abc, Def, Ghi! Abc,",
     );
   });
+
+  it("should include numbers", () => {
+    const settings = new Settings()
+      .set(lessonProps.capitals, 0)
+      .set(lessonProps.punctuators, 0)
+      .set(lessonProps.textNumbers, 1);
+    const model = new FakePhoneticModel();
+    const wordList = ["abc", "def", "ghi"];
+    const lesson = new WordListLesson(settings, keyboard, model, wordList);
+    const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
+
+    const result = lesson.generate(lessonKeys, model.rng);
+    // Verify result contains both words and numbers
+    const hasWords = /\b(abc|def|ghi)\b/.test(result);
+    const hasNumbers = /\d+/.test(result);
+    equal(hasWords, true);
+    equal(hasNumbers, true);
+  });
 });
