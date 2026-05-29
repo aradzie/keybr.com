@@ -338,7 +338,7 @@ export const HHKB: GeometryDict = {
     w: 1,
     h: 1,
     labels: [{ text: "Alt" }],
-    zones: ["thumb", "left", "bottom"],
+    zones: ["pinky", "left", "bottom"],
   },
   Space: {
     x: 4,
@@ -354,7 +354,7 @@ export const HHKB: GeometryDict = {
     w: 1,
     h: 1,
     labels: [{ text: "Alt" }],
-    zones: ["thumb", "right", "bottom"],
+    zones: ["pinky", "right", "bottom"],
   },
   MetaRight: {
     x: 11,
