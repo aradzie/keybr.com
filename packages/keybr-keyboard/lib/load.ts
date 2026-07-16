@@ -83,6 +83,9 @@ import { LAYOUT_FR_OPTIMOT_ERGO } from "./layout/fr_optimot_ergo.ts";
 import { LAYOUT_HE_IL } from "./layout/he_il.ts";
 import { LAYOUT_HE_IL_ARKN } from "./layout/he_il_arkn.ts";
 import { LAYOUT_HU_HU } from "./layout/hu_hu.ts";
+import { LAYOUT_HY_AM_EASTERN } from "./layout/hy_am_eastern.ts";
+import { LAYOUT_HY_AM_PHONETIC } from "./layout/hy_am_phonetic.ts";
+import { LAYOUT_HY_AM_TYPEWRITER } from "./layout/hy_am_typewriter.ts";
 import { LAYOUT_IT_IT } from "./layout/it_it.ts";
 import { LAYOUT_JA_JP } from "./layout/ja_jp.ts";
 import { LAYOUT_JA_JP_JIS } from "./layout/ja_jp_jis.ts";
@@ -189,6 +192,9 @@ const layouts = new Map<Layout, CharacterDict>([
   [Layout.HE_IL, LAYOUT_HE_IL],
   [Layout.HE_IL_ARKN, LAYOUT_HE_IL_ARKN],
   [Layout.HU_HU, LAYOUT_HU_HU],
+  [Layout.HY_AM_EASTERN, LAYOUT_HY_AM_EASTERN],
+  [Layout.HY_AM_PHONETIC, LAYOUT_HY_AM_PHONETIC],
+  [Layout.HY_AM_TYPEWRITER, LAYOUT_HY_AM_TYPEWRITER],
   [Layout.IT_IT, LAYOUT_IT_IT],
   [Layout.JA_JP, LAYOUT_JA_JP],
   [Layout.LT_LT, LAYOUT_LT_LT],

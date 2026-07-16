@@ -104,6 +104,12 @@ export class Language implements EnumItem {
     /* direction= */ "ltr",
     /* alphabet= */ "aábcdeéfghiíjklmnoóöőpqrstuúüűvwxyz",
   );
+  static readonly HY = new Language(
+    /* id= */ "hy",
+    /* script= */ "armenian",
+    /* direction= */ "ltr",
+    /* alphabet= */ "աբգդեզէըթժիլխծկհձղճմյնշոչպջռսվտրցւփքևօֆ",
+  );
   static readonly IT = new Language(
     /* id= */ "it",
     /* script= */ "latin",
@@ -219,6 +225,7 @@ export class Language implements EnumItem {
     Language.HE,
     Language.HR,
     Language.HU,
+    Language.HY,
     Language.IT,
     // Language.JA,
     Language.LT,
@@ -242,6 +249,7 @@ export class Language implements EnumItem {
   /** The writing system, such as Cyrillic, Georgian, Greek, Hebrew, Latin, Thai, etc. */
   readonly script:
     | "arabic"
+    | "armenian"
     | "cyrillic"
     | "greek"
     | "hebrew"
@@ -269,6 +277,7 @@ export class Language implements EnumItem {
     id: string,
     script:
       | "arabic"
+      | "armenian"
       | "cyrillic"
       | "greek"
       | "hebrew"
@@ -312,6 +321,11 @@ export class Language implements EnumItem {
     if (codePoint === /* "ß" */ 0x00df) {
       // German uppercase letter Eszett.
       return "ẞ";
+    }
+    if (codePoint === /* "և" */ 0x0587) {
+      // Armenian ligature ech-yiwn has no single uppercase letter.
+      // In reformed orthography it is uppercased as "ԵՎ".
+      return "ԵՎ";
     }
     if (codePoint >= 0x0590 && codePoint <= 0x05ff) {
       // Hebrew Unicode block.
@@ -357,6 +371,8 @@ export class Language implements EnumItem {
     switch (this.script) {
       case "arabic":
         return codePoint >= 0x0600 && codePoint <= 0x06ff;
+      case "armenian":
+        return codePoint >= 0x0530 && codePoint <= 0x058f;
       case "cyrillic":
         return codePoint >= 0x0400 && codePoint <= 0x04ff;
       case "greek":
@@ -395,6 +411,8 @@ export function getExampleText({ script }: Language): string {
   switch (script) {
     case "arabic":
       return "تناول المزيد من التفاح والبرتقال.";
+    case "armenian":
+      return "Կերեք ավելի շատ խնձոր և նարինջ։";
     case "cyrillic":
       return "Яжте повече ябълки и портокали.";
     case "greek":
@@ -414,6 +432,8 @@ export function getExampleLetters({ script }: Language): CodePoint[] {
   switch (script) {
     case "arabic":
       return [0x0627, 0x0628, 0x067e, 0x062a, 0x062b, 0x062c];
+    case "armenian":
+      return [0x0561, 0x0562, 0x0563, 0x0564, 0x0565, 0x0566];
     case "cyrillic":
       return [0x0430, 0x0431, 0x0432, 0x0433, 0x0434, 0x0435];
     case "greek":
