@@ -17,8 +17,8 @@ Practice focuses on the **keys you press** on a 2-set keyboard, not on finished 
 Requires **Node.js v24**. See also [docs/getting_started.md](./docs/getting_started.md).
 
 ```shell
-git clone <this-fork-url>
-cd keybr.com
+git clone https://github.com/MadanChaollaPark/keybr.com-korean.git
+cd keybr.com-korean
 npm install
 ```
 
