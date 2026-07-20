@@ -2,6 +2,8 @@
 
 # [keybr.com](https://www.keybr.com/) is not (just) a typing test
 
+> **This fork adds Korean (Hangul 2-set / 두벌식 jamo) practice.** See **[FORK.md](./FORK.md)** for what changed, how to run/deploy, and how jamo lessons work.
+
 <p align="center">
     <img src="assets/screenshot.png" alt="screenshot" width="600"/>
 </p>

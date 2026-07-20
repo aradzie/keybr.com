@@ -70,7 +70,7 @@ export const KOREAN_103: GeometryDict = {
   IntlYen: {
     x: 13,
     y: 0,
-    labels: [{ text: "?" }],
+    labels: [{ text: "₩" }],
     zones: ["pinky", "right", "digit"],
   },
   Backspace: {

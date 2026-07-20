@@ -25,4 +25,13 @@ test("letter name", () => {
   equal(Language.HE.letterName(0x05d0), "\u05D0");
   equal(Language.AR.letterName(0x0627), "\u200c\u0627");
   equal(Language.FA.letterName(0x0627), "\u200c\u0627");
+  equal(Language.KO.letterName(0x3131), "ㄱ");
+  equal(Language.KO.letterName(0x314f), "ㅏ");
+});
+
+test("korean jamo words", () => {
+  isTrue(Language.KO.test("ㄴㅐㄱㅏ"));
+  isTrue(Language.KO.test("ㅇㅣㅆㅇㅓ"));
+  isFalse(Language.KO.test("내가")); // composed Hangul syllables are not in the alphabet
+  isFalse(Language.KO.test("hello"));
 });

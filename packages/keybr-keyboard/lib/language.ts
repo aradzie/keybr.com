@@ -116,6 +116,17 @@ export class Language implements EnumItem {
     /* direction= */ "ltr",
     /* alphabet= */ "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽぁぃぇぉゃゅょっー",
   );
+  /**
+   * Korean (Hangul) practiced as 2-set (Dubeolsik) jamo keystrokes.
+   * Complex vowels/finals are decomposed into the individual keys typed
+   * on a 2-set keyboard (e.g. ㅘ → ㅗㅏ, ㄳ → ㄱㅅ).
+   */
+  static readonly KO = new Language(
+    /* id= */ "ko",
+    /* script= */ "hangul",
+    /* direction= */ "ltr",
+    /* alphabet= */ "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎㅏㅐㅑㅒㅓㅔㅕㅖㅗㅛㅜㅠㅡㅣ",
+  );
   static readonly LT = new Language(
     /* id= */ "lt",
     /* script= */ "latin",
@@ -221,6 +232,7 @@ export class Language implements EnumItem {
     Language.HU,
     Language.IT,
     // Language.JA,
+    Language.KO,
     Language.LT,
     Language.LV,
     Language.NB,
@@ -244,6 +256,7 @@ export class Language implements EnumItem {
     | "arabic"
     | "cyrillic"
     | "greek"
+    | "hangul"
     | "hebrew"
     | "hiragana"
     | "latin"
@@ -271,6 +284,7 @@ export class Language implements EnumItem {
       | "arabic"
       | "cyrillic"
       | "greek"
+      | "hangul"
       | "hebrew"
       | "hiragana"
       | "latin"
@@ -318,6 +332,11 @@ export class Language implements EnumItem {
       // There are no lower or uppercase letters in the Hebrew script.
       return String.fromCodePoint(codePoint);
     }
+    if (codePoint >= 0x3130 && codePoint <= 0x318f) {
+      // Hangul Compatibility Jamo.
+      // There are no lower or uppercase letters in Hangul.
+      return String.fromCodePoint(codePoint);
+    }
     if (codePoint >= 0x0600 && codePoint <= 0x06ff) {
       // Arabic Unicode block.
       // There are no lower or uppercase letters in the Arabic script.
@@ -361,6 +380,9 @@ export class Language implements EnumItem {
         return codePoint >= 0x0400 && codePoint <= 0x04ff;
       case "greek":
         return codePoint >= 0x0370 && codePoint <= 0x03ff;
+      case "hangul":
+        // Hangul Compatibility Jamo (used for 2-set keystroke practice).
+        return codePoint >= 0x3130 && codePoint <= 0x318f;
       case "hebrew":
         return codePoint >= 0x0590 && codePoint <= 0x05ff;
       case "latin":
@@ -399,6 +421,9 @@ export function getExampleText({ script }: Language): string {
       return "Яжте повече ябълки и портокали.";
     case "greek":
       return "Τρώτε περισσότερα μήλα και πορτοκάλια.";
+    case "hangul":
+      // "사과와 오렌지를 더 많이 드세요" as 2-set jamo keystrokes.
+      return "ㅅㅏㄱㅗㅏㅇㅗㅏ ㅇㅗㄹㅔㄴㅈㅣㄹㅡㄹ ㄷㅓ ㅁㅏㄴㅎㅇㅣ ㄷㅡㅅㅔㅇㅛ";
     case "hebrew":
       return "תאכל יותר תפוחים ותפוזים.";
     case "hiragana":
@@ -418,6 +443,9 @@ export function getExampleLetters({ script }: Language): CodePoint[] {
       return [0x0430, 0x0431, 0x0432, 0x0433, 0x0434, 0x0435];
     case "greek":
       return [0x03b1, 0x03b2, 0x03b3, 0x03b4, 0x03b5, 0x03b6];
+    case "hangul":
+      // ㄱ ㄴ ㄷ ㄹ ㅁ ㅂ (home-row friendly sample)
+      return [0x3131, 0x3134, 0x3137, 0x3139, 0x3141, 0x3142];
     case "hebrew":
       return [0x05d0, 0x05d1, 0x05d2, 0x05d3, 0x05d4, 0x05d5];
     case "hiragana":
