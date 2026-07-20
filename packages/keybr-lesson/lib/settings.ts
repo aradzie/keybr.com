@@ -41,7 +41,7 @@ export const lessonProps = {
     content: stringProp(
       "lesson.customText.content",
       "The quick brown fox jumps over the lazy dog.",
-      { maxLength: 10_000 },
+      { maxLength: 50_000 },
     ),
     lettersOnly: booleanProp("lesson.customText.lettersOnly", true),
     lowercase: booleanProp("lesson.customText.lowercase", true),
