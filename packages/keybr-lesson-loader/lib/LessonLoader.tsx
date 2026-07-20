@@ -1,5 +1,5 @@
 import { loadContent } from "@keybr/content-books";
-import { loadWordList } from "@keybr/content-words";
+import { loadNamedWordList, loadWordList } from "@keybr/content-words";
 import { catchError } from "@keybr/debug";
 import { KeyboardOptions, useKeyboard } from "@keybr/keyboard";
 import {
@@ -77,7 +77,13 @@ function useLoader(model: PhoneticModel): Lesson | null {
         }
         case LessonType.WORDLIST: {
           const { language } = KeyboardOptions.from(settings);
-          const wordList = await loadWordList(language);
+          const name = settings.get(lessonProps.wordList.name);
+          // The named word lists are English only; for any other keyboard
+          // language fall back to that language's frequency word list.
+          const wordList =
+            name.language === language
+              ? await loadNamedWordList(name)
+              : await loadWordList(language);
           if (!didCancel) {
             setResult(new WordListLesson(settings, keyboard, model, wordList));
           }

@@ -1,5 +1,43 @@
-import { type WordList } from "@keybr/content";
+import { NamedWordList, type WordList } from "@keybr/content";
 import { Language } from "@keybr/keyboard";
+
+/**
+ * Loads a named word list for the "Word list" lesson type. The `monkeytype`
+ * variants come from bundled data files; the `keybr` variant falls back to the
+ * built-in per-language frequency list.
+ */
+export async function loadNamedWordList(
+  wordList: NamedWordList,
+): Promise<WordList> {
+  switch (wordList) {
+    case NamedWordList.EN_MONKEYTYPE_1K:
+      return (
+        await import(
+          /* webpackChunkName: "words-en-monkeytype-1k" */
+          "./data/words-en-monkeytype-1k.json",
+          { with: { type: "json" } }
+        )
+      ).default;
+    case NamedWordList.EN_MONKEYTYPE_5K:
+      return (
+        await import(
+          /* webpackChunkName: "words-en-monkeytype-5k" */
+          "./data/words-en-monkeytype-5k.json",
+          { with: { type: "json" } }
+        )
+      ).default;
+    case NamedWordList.EN_MONKEYTYPE_MISSPELLED:
+      return (
+        await import(
+          /* webpackChunkName: "words-en-monkeytype-misspelled" */
+          "./data/words-en-monkeytype-misspelled.json",
+          { with: { type: "json" } }
+        )
+      ).default;
+    default:
+      return loadWordList(wordList.language);
+  }
+}
 
 export async function loadWordList(language: Language): Promise<WordList> {
   switch (language) {

@@ -1,5 +1,5 @@
 import { Syntax } from "@keybr/code";
-import { Book } from "@keybr/content";
+import { Book, NamedWordList } from "@keybr/content";
 import {
   booleanProp,
   flagsProp,
@@ -22,9 +22,14 @@ export const lessonProps = {
     recoverKeys: booleanProp("lesson.guided.recoverKeys", false),
   } as const,
   wordList: {
+    name: itemProp(
+      "lesson.wordList.name",
+      NamedWordList.ALL,
+      NamedWordList.EN_KEYBR,
+    ),
     wordListSize: numberProp("lesson.wordList.wordListSize", 1000, {
       min: 10,
-      max: 1000,
+      max: 5000,
     }),
     longWordsOnly: booleanProp("lesson.wordList.longWordsOnly", false),
   } as const,

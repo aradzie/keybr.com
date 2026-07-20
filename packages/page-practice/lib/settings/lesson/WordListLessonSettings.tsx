@@ -1,5 +1,6 @@
-import { wordListStats } from "@keybr/content";
+import { NamedWordList, WordListSelector, wordListStats } from "@keybr/content";
 import { useIntlNumbers } from "@keybr/intl";
+import { KeyboardOptions } from "@keybr/keyboard";
 import { lessonProps, type WordListLesson } from "@keybr/lesson";
 import { useSettings } from "@keybr/settings";
 import {
@@ -61,8 +62,34 @@ function WordListPreview({
 }): ReactNode {
   const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
+  const { language } = KeyboardOptions.from(settings);
+  const namedWordLists = NamedWordList.ALL.filter(
+    (wordList) => wordList.language === language,
+  );
+  const name = settings.get(lessonProps.wordList.name);
+  // The named word lists are English only; other languages keep the single
+  // frequency list and the historical size limit.
+  const sizeMax = name.language === language ? name.size : 1000;
+  const sizeMin = lessonProps.wordList.wordListSize.min;
+  const sizeValue = Math.min(
+    Math.max(settings.get(lessonProps.wordList.wordListSize), sizeMin),
+    sizeMax,
+  );
   return (
     <>
+      {namedWordLists.length > 1 && (
+        <WordListSelector
+          wordList={name}
+          options={namedWordLists}
+          onChange={(wordList) => {
+            updateSettings(
+              settings
+                .set(lessonProps.wordList.name, wordList)
+                .set(lessonProps.wordList.wordListSize, wordList.size),
+            );
+          }}
+        />
+      )}
       <FieldList>
         <Field>
           <FormattedMessage
@@ -73,10 +100,10 @@ function WordListPreview({
         <Field>
           <Range
             size={16}
-            min={lessonProps.wordList.wordListSize.min}
-            max={lessonProps.wordList.wordListSize.max}
+            min={sizeMin}
+            max={sizeMax}
             step={1}
-            value={settings.get(lessonProps.wordList.wordListSize)}
+            value={sizeValue}
             onChange={(value) => {
               updateSettings(
                 settings.set(lessonProps.wordList.wordListSize, value),
