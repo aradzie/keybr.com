@@ -24,6 +24,7 @@ export class LessonKey implements KeyStats {
   readonly bestConfidence: number | null;
   readonly isIncluded: boolean;
   readonly isFocused: boolean;
+  readonly isSecondFocused: boolean;
   readonly isForced: boolean;
 
   constructor({
@@ -35,6 +36,7 @@ export class LessonKey implements KeyStats {
     bestConfidence,
     isIncluded = false,
     isFocused = false,
+    isSecondFocused = false,
     isForced = false,
   }: {
     letter: Letter;
@@ -45,6 +47,7 @@ export class LessonKey implements KeyStats {
     bestConfidence: number | null;
     isIncluded?: boolean;
     isFocused?: boolean;
+    isSecondFocused?: boolean;
     isForced?: boolean;
   }) {
     this.letter = letter;
@@ -55,6 +58,7 @@ export class LessonKey implements KeyStats {
     this.bestConfidence = bestConfidence;
     this.isIncluded = isIncluded;
     this.isFocused = isFocused;
+    this.isSecondFocused = isSecondFocused;
     this.isForced = isForced;
     Object.freeze(this);
   }
@@ -71,6 +75,7 @@ export class LessonKey implements KeyStats {
       ...this,
       isIncluded: false,
       isFocused: false,
+      isSecondFocused: false,
       isForced: false,
     });
   }
@@ -88,6 +93,13 @@ export class LessonKey implements KeyStats {
       ...this,
       isIncluded: true,
       isFocused: true,
+    });
+  }
+
+  asSecondFocused(): LessonKey {
+    return new LessonKey({
+      ...this,
+      isSecondFocused: true,
     });
   }
 }
@@ -129,6 +141,10 @@ export class LessonKeys implements Iterable<LessonKey> {
     return [...this.#keys.values()].find((key) => key.isFocused) ?? null;
   }
 
+  findSecondFocusedKey(): LessonKey | null {
+    return [...this.#keys.values()].find((key) => key.isSecondFocused) ?? null;
+  }
+
   include({ codePoint }: Letter): void {
     this.#keys.set(codePoint, this.#keys.get(codePoint)!.asIncluded());
   }
@@ -143,6 +159,10 @@ export class LessonKeys implements Iterable<LessonKey> {
 
   focus({ codePoint }: Letter): void {
     this.#keys.set(codePoint, this.#keys.get(codePoint)!.asFocused());
+  }
+
+  focusSecond({ codePoint }: Letter): void {
+    this.#keys.set(codePoint, this.#keys.get(codePoint)!.asSecondFocused());
   }
 
   find(codePoint: CodePoint): LessonKey | null {

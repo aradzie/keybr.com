@@ -1,7 +1,12 @@
 import { test } from "node:test";
 import { FakeRNGStream } from "@keybr/rand";
 import { equal, isNull } from "rich-assert";
-import { randomWords, uniqueWords, wordSequence } from "./words.ts";
+import {
+  interleavedWords,
+  randomWords,
+  uniqueWords,
+  wordSequence,
+} from "./words.ts";
 
 test("random words", () => {
   const rng = FakeRNGStream(3);
@@ -29,6 +34,36 @@ test("word sequence", () => {
   equal(cursor.wordIndex, 3);
   equal(wordSequence(wordList, cursor)(), "a");
   equal(cursor.wordIndex, 1);
+});
+
+test("interleaved words", () => {
+  const rng = FakeRNGStream(4); // 0, 0.25, 0.5, 0.75, ...
+
+  const words = interleavedWords(
+    wordSequence(["main1", "main2", "main3", "main4"], { wordIndex: 0 }),
+    wordSequence(["extra1", "extra2"], { wordIndex: 0 }),
+    0.5,
+    rng,
+  );
+
+  equal(words(), "extra1"); // 0 < 0.5
+  equal(words(), "extra2"); // 0.25 < 0.5
+  equal(words(), "main1"); // 0.5 is not < 0.5
+  equal(words(), "main2"); // 0.75 is not < 0.5
+});
+
+test("interleaved words falls back to the main generator when the extra generator is exhausted", () => {
+  const rng = FakeRNGStream(2);
+
+  const words = interleavedWords(
+    wordSequence(["main1", "main2"], { wordIndex: 0 }),
+    wordSequence([], { wordIndex: 0 }),
+    1,
+    rng,
+  );
+
+  equal(words(), "main1");
+  equal(words(), "main2");
 });
 
 test("unique words", () => {
