@@ -24,6 +24,7 @@ export const Key = ({
     confidence,
     isIncluded,
     isFocused,
+    isSecondFocused,
     isForced,
   } = lessonKey;
   return (
@@ -40,6 +41,7 @@ export const Key = ({
         isIncluded && confidence == null && styles.lessonKey_uncalibrated,
         isIncluded && isFocused && styles.lessonKey_focused,
         isIncluded && isForced && styles.lessonKey_forced,
+        isSecondFocused && styles.lessonKey_secondFocused,
         isSelectable && styles.lessonKey_selectable,
         isCurrent && styles.lessonKey_current,
       )}

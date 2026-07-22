@@ -37,3 +37,21 @@ test("render included", () => {
 
   r.unmount();
 });
+
+test("render second focused", () => {
+  const r = render(
+    <FakeIntlProvider>
+      <KeyLegend
+        isIncluded={false}
+        confidence={null}
+        isFocused={false}
+        isForced={false}
+        isSecondFocused={true}
+      />
+    </FakeIntlProvider>,
+  );
+
+  isNotNull(r.container.querySelector(".lessonKey_secondFocused"));
+
+  r.unmount();
+});
