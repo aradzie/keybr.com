@@ -10,9 +10,12 @@ import {
   roundTextSignature,
   sendChar,
   snapshotKeys,
+  SPACE_GLYPHS,
 } from "./helpers.ts";
 
 const CURRENT_KEY_SELECTOR = '[id*="currentKey"] [data-code-point]';
+const CURRENT_KEY_DETAILS_SELECTOR = '[id*="currentKey"] [class*="keyDetails"]';
+const FUMBLE_PROBABILITY = 0.15;
 
 test("typing through the full American English alphabet never regresses an unlocked key", async ({
   page,
@@ -68,11 +71,37 @@ test("typing through the full American English alphabet never regresses an unloc
       .locator(CURSOR_SELECTOR)
       .first()
       .textContent();
-    await sendChar(page, displayedChar ?? "");
+    const targetBeforeChar = await currentKeyCodePoint(page);
+    const detailsBeforeChar =
+      targetBeforeChar != null ? await currentKeyDetailsText(page) : null;
+    const fumbled = random() < FUMBLE_PROBABILITY;
+    if (fumbled) {
+      await fumbleThenCorrect(page, displayedChar ?? "", random);
+    } else {
+      await sendChar(page, displayedChar ?? "");
+    }
     keystrokes++;
     await page.waitForTimeout(delay);
 
     const signature = await roundTextSignature(page);
+    if (fumbled && targetBeforeChar != null) {
+      const targetAfterChar = await currentKeyCodePoint(page);
+      if (
+        targetAfterChar === targetBeforeChar &&
+        // The fumble's correct char may complete the round; appending a
+        // Result updates this key's samples from its other occurrences.
+        signature === roundSignature
+      ) {
+        // Histogram.from() skips a typo'd step's timing sample, so a
+        // fumble must not move this key's confidence.
+        const detailsAfterChar = await currentKeyDetailsText(page);
+        expect(
+          detailsAfterChar,
+          `expected fumbling ${targetBeforeChar} not to change its reported confidence (a miss records no timing sample), but it went from "${detailsBeforeChar}" to "${detailsAfterChar}" after ${keystrokes} keystrokes (seed ${seed})`,
+        ).toEqual(detailsBeforeChar);
+      }
+    }
+
     if (signature === roundSignature) {
       continue;
     }
@@ -186,4 +215,35 @@ async function currentKeyCodePoint(page: Page): Promise<string | null> {
     return null;
   }
   return locator.first().getAttribute("data-code-point");
+}
+
+async function currentKeyDetailsText(page: Page): Promise<string | null> {
+  const locator = page.locator(CURRENT_KEY_DETAILS_SELECTOR);
+  if ((await locator.count()) === 0) {
+    return null;
+  }
+  return locator.first().textContent();
+}
+
+const ALPHANUMERIC_CHARS = "abcdefghijklmnopqrstuvwxyz0123456789";
+
+function randomAlphanumericChar(random: () => number, exclude: string): string {
+  let char: string;
+  do {
+    char = ALPHANUMERIC_CHARS[Math.floor(random() * ALPHANUMERIC_CHARS.length)];
+  } while (char === exclude);
+  return char;
+}
+
+// TextInput.appendChar() never turns a wrong char into a step; only the
+// following correct char does, tagged Attr.Miss.
+async function fumbleThenCorrect(
+  page: Page,
+  displayed: string,
+  random: () => number,
+): Promise<void> {
+  const correct = SPACE_GLYPHS.has(displayed) ? " " : displayed;
+  const wrong = randomAlphanumericChar(random, correct);
+  await page.keyboard.type(wrong);
+  await sendChar(page, displayed);
 }
