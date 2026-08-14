@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Keybr-style Typing Trainer</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div class="brand" aria-label="Keybr style typing trainer">
+          <span class="brand-mark">K</span>
+          <h1>Keybr</h1>
+        </div>
+
+        <div class="topbar-actions">
+          <label class="picker" for="lessonSelect">
+            <span>Lesson</span>
+            <select id="lessonSelect" aria-label="Select lesson"></select>
+          </label>
+          <button id="restartBtn" type="button">Restart</button>
+        </div>
+      </header>
+
+      <section class="workspace" aria-label="Typing trainer workspace">
+        <div class="stats-row">
+          <article class="stat-card">
+            <span class="stat-label">WPM</span>
+            <strong id="wpm">0</strong>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Accuracy</span>
+            <strong id="accuracy">100%</strong>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Time</span>
+            <strong id="elapsed">0s</strong>
+          </article>
+        </div>
+
+        <div class="text-panel">
+          <div id="targetText" class="target-text" aria-live="polite"></div>
+          <textarea
+            id="typingInput"
+            rows="5"
+            spellcheck="false"
+            autocapitalize="off"
+            autocomplete="off"
+            autocorrect="off"
+            aria-label="Type the highlighted text"
+            placeholder="Start typing here..."
+          ></textarea>
+        </div>
+
+        <div class="lesson-nav">
+          <button id="prevLesson" type="button">◀ Previous</button>
+          <div id="lessonLabel" class="lesson-label">Lesson 1 • Warmup</div>
+          <button id="nextLesson" type="button">Next ▶</button>
+        </div>
+
+        <div id="keyboard" class="keyboard" aria-label="On screen keyboard"></div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
