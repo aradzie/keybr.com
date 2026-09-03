@@ -22,5 +22,9 @@ sandbox/
 *.bak
 *~
 
+# Playwright
+test-results/
+playwright-report/
+
 # Custom scripts
 deploy.sh

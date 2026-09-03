@@ -10,6 +10,7 @@ import { RecoverKeysProp } from "./RecoverKeysProp.tsx";
 import { RepeatWordsProp } from "./RepeatWordsProp.tsx";
 import { TargetSpeedProp } from "./TargetSpeedProp.tsx";
 import { TextManglingProp } from "./TextManglingProp.tsx";
+import { TrainSecondKeyProp } from "./TrainSecondKeyProp.tsx";
 
 export function GuidedLessonSettings({
   lesson,
@@ -37,6 +38,7 @@ export function GuidedLessonSettings({
         <RecoverKeysProp />
         <KeyboardOrderProp />
         <NaturalWordsProp />
+        <TrainSecondKeyProp />
         <RepeatWordsProp />
         <AlphabetSizeProp />
         <TextManglingProp />
