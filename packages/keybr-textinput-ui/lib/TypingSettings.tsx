@@ -6,6 +6,7 @@ import {
   CaretShapeStyle,
   Feedback,
   Font,
+  TapeModeStyle,
   textDisplayProps,
   textInputProps,
   toTextDisplaySettings,
@@ -69,6 +70,7 @@ export function TypingSettings() {
         <WhitespaceProp />
         <CursorShapeProp />
         <CursorMovementProp />
+        <TapeModeProp />
         <SoundsProp />
         <SoundsThemeProp />
       </FieldSet>
@@ -433,6 +435,52 @@ function CursorMovementProp() {
                 CaretMovementStyle.Smooth,
               ),
             );
+          }}
+        />
+      </Field>
+    </FieldList>
+  );
+}
+
+function TapeModeProp() {
+  const { formatMessage } = useIntl();
+  const { settings, updateSettings } = useSettings();
+  const selected = settings.get(textDisplayProps.tapeModeStyle);
+  const select = (value: TapeModeStyle) => {
+    updateSettings(settings.set(textDisplayProps.tapeModeStyle, value));
+  };
+  return (
+    <FieldList>
+      <Field size={10}>
+        <FormattedMessage id="t_Tape_mode:" defaultMessage="Tape mode:" />
+      </Field>
+      <Field>
+        <RadioBox
+          label={formatMessage({ id: "t_tm_Off", defaultMessage: "Off" })}
+          name="tape-mode-style"
+          checked={selected === TapeModeStyle.Off}
+          onSelect={() => {
+            select(TapeModeStyle.Off);
+          }}
+        />
+      </Field>
+      <Field>
+        <RadioBox
+          label={formatMessage({ id: "t_tm_Letter", defaultMessage: "Letter" })}
+          name="tape-mode-style"
+          checked={selected === TapeModeStyle.Letter}
+          onSelect={() => {
+            select(TapeModeStyle.Letter);
+          }}
+        />
+      </Field>
+      <Field>
+        <RadioBox
+          label={formatMessage({ id: "t_tm_Word", defaultMessage: "Word" })}
+          name="tape-mode-style"
+          checked={selected === TapeModeStyle.Word}
+          onSelect={() => {
+            select(TapeModeStyle.Word);
           }}
         />
       </Field>

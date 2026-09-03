@@ -31,5 +31,9 @@ test("render", () => {
   fireEvent.click(r.getByText("Jumping cursor"));
   fireEvent.click(r.getByText("Smooth cursor"));
 
+  fireEvent.click(r.getByText("Off"));
+  fireEvent.click(r.getByText("Letter"));
+  fireEvent.click(r.getByText("Word"));
+
   r.unmount();
 });

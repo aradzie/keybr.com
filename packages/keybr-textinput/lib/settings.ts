@@ -55,6 +55,7 @@ export type TextDisplaySettings = {
   readonly caretShapeStyle: CaretShapeStyle;
   readonly caretMovementStyle: CaretMovementStyle;
   readonly whitespaceStyle: WhitespaceStyle;
+  readonly tapeModeStyle: TapeModeStyle;
   readonly language: Language;
 };
 
@@ -76,11 +77,23 @@ export enum WhitespaceStyle {
   Bullet = 3,
 }
 
+/**
+ * Keeps the cursor centered while the text scrolls past it, like on a
+ * tape player. Letter mode follows every typed letter, word mode keeps
+ * the current word centered.
+ */
+export enum TapeModeStyle {
+  Off = 1,
+  Letter = 2,
+  Word = 3,
+}
+
 export const textDisplaySettings = {
   font: Font.default,
   caretShapeStyle: CaretShapeStyle.Underline,
   caretMovementStyle: CaretMovementStyle.Smooth,
   whitespaceStyle: WhitespaceStyle.Bullet,
+  tapeModeStyle: TapeModeStyle.Off,
   language: Language.EN,
 } as const satisfies TextDisplaySettings;
 
@@ -101,12 +114,18 @@ export const textDisplayProps = {
     WhitespaceStyle,
     WhitespaceStyle.Bullet,
   ),
+  tapeModeStyle: enumProp(
+    "textDisplay.tapeModeStyle",
+    TapeModeStyle,
+    TapeModeStyle.Off,
+  ),
 } as const;
 
 export function toTextDisplaySettings(settings: Settings): TextDisplaySettings {
   const caretShapeStyle = settings.get(textDisplayProps.caretShapeStyle);
   const caretMovementStyle = settings.get(textDisplayProps.caretMovementStyle);
   const whitespaceStyle = settings.get(textDisplayProps.whitespaceStyle);
+  const tapeModeStyle = settings.get(textDisplayProps.tapeModeStyle);
   const { language } = KeyboardOptions.from(settings);
   const fonts = Font.select(language);
   const font = Font.find(fonts, settings.get(textDisplayProps.font));
@@ -115,6 +134,7 @@ export function toTextDisplaySettings(settings: Settings): TextDisplaySettings {
     caretShapeStyle,
     caretMovementStyle,
     whitespaceStyle,
+    tapeModeStyle,
     language,
   };
 }

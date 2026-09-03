@@ -3,6 +3,7 @@ import {
   charArraysAreEqual,
   type Line,
   type LineList,
+  TapeModeStyle,
   type TextDisplaySettings,
   textDisplaySettings,
 } from "@keybr/textinput";
@@ -37,9 +38,10 @@ export const TextLines = memo(function TextLines({
   readonly cursor: boolean;
   readonly focus: boolean;
 }): ReactNode {
+  const tape = settings.tapeModeStyle !== TapeModeStyle.Off;
   const className = clsx(
     styles.root,
-    wrap ? styles.wrap : styles.nowrap,
+    !tape && wrap ? styles.wrap : styles.nowrap,
     focus ? styles.focus : styles.blur,
     size === "X0" && styles.size_X0,
     size === "X1" && styles.size_X1,
