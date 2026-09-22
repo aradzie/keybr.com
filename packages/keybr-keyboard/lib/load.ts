@@ -3,6 +3,7 @@ import { ANSI_101 } from "./geometry/ansi_101.ts";
 import { ANSI_101_FULL } from "./geometry/ansi_101_full.ts";
 import { BRAZILIAN_104 } from "./geometry/brazilian_104.ts";
 import { BRAZILIAN_104_FULL } from "./geometry/brazilian_104_full.ts";
+import { HHKB } from "./geometry/hhkb.ts";
 import { ISO_102 } from "./geometry/iso_102.ts";
 import { ISO_102_FULL } from "./geometry/iso_102_full.ts";
 import { JAPANESE_106 } from "./geometry/japanese_106.ts";
@@ -227,6 +228,7 @@ const geometries = new Map<Geometry, GeometryDict>([
   [Geometry.JAPANESE_106_FULL, JAPANESE_106_FULL],
   [Geometry.KOREAN_103, KOREAN_103],
   [Geometry.KOREAN_103_FULL, KOREAN_103_FULL],
+  [Geometry.HHKB, HHKB],
   [Geometry.MATRIX, MATRIX],
 ]);
 
