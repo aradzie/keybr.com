@@ -1,4 +1,4 @@
-FROM node:24
+FROM node:26
 
 # Set the working directory inside the container
 WORKDIR /usr/src/app

@@ -121,7 +121,7 @@ export default [
         version: "detect",
       },
       node: {
-        version: ">=24",
+        version: ">=26",
         allowModules: [
           // Prod libraries.
           "@fastr/client",

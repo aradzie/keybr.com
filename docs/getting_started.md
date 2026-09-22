@@ -4,15 +4,15 @@ This is a [NodeJS](https://nodejs.org/) application, so proficiency with the nod
 
 ### Prerequisites
 
-**NodeJS v24 must be installed.**\
-You can get NodeJS v24 without impacting other Node installations using [Node Version Manager](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating) (`nvm`)
+**NodeJS v26 must be installed.**\
+You can get NodeJS v26 without impacting other Node installations using [Node Version Manager](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating) (`nvm`)
 <details>
   <summary>
-  Get NodeJS v24 with nvm
+  Get NodeJS v26 with nvm
   </summary>
 
   ```shell
-  nvm install 24 && nvm use 24
+  nvm install 26 && nvm use 26
   ```
 </details>
 
