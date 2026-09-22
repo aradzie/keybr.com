@@ -17,7 +17,7 @@ npm install                          # installs deps, then runs husky + patch-pa
 npm run compile                      # tsc across all packages (via lage, incremental)
 npm run build-dev                    # webpack dev build
 npm run build                        # webpack production build
-npm test                             # runs every package's `test` script via lage
+npm test                             # runs every package's `test` script via lage (defaults to MySQL, see below)
 npm run lint                         # eslint over the whole repo
 npm run lint-fix
 npm run stylelint                    # stylelint over *.less/*.css
@@ -29,6 +29,17 @@ npm run watch                        # webpack --watch, run alongside `npm start
 Config comes from `.env` (or a global `/etc/keybr/env`) copied from `.env.example`. The default
 `DATABASE_CLIENT=sqlite` is enough for local dev; `./packages/devenv/lib/initdb.ts` seeds example
 users/tables on first run.
+
+By default, tests that touch the database (`@keybr/database` and its dependents, e.g.
+`@keybr/server`) run against MySQL, which may not be running locally. The fastest way to run tests
+is to point them at an in-memory sqlite database instead:
+
+```shell
+env DATABASE_CLIENT=sqlite npm test
+```
+
+Some of these packages also expose a `fast-test` script that already sets `DATABASE_CLIENT=sqlite`
+for you — check `packages/<name>/package.json` first.
 
 ### Running a single package or test
 

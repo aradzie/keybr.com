@@ -1,14 +1,14 @@
 import { type Knex } from "knex";
-import sqlite from "knex/lib/dialects/better-sqlite3/index.js";
 import { knexSnakeCaseMappers } from "objection";
+import { Client_NodeSqlite } from "./node-sqlite.ts";
 import { fixTimestamps } from "./util.ts";
 
 export function connectSqlite(
-  config: Knex.BetterSqlite3ConnectionConfig,
+  config: Knex.Sqlite3ConnectionConfig,
 ): Knex.Config {
   return {
     __client: "sqlite",
-    client: sqlite,
+    client: Client_NodeSqlite,
     connection: { ...config },
     useNullAsDefault: true,
     debug: Boolean(process.env.KNEX_DEBUG),

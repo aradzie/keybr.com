@@ -126,7 +126,7 @@ export default [
         },
         {
           test: /\/knex\/lib\/dialects\//,
-          exclude: /\/mysql|sqlite3|better-sqlite3\//,
+          exclude: /\/mysql|sqlite3\//,
           use: "null-loader",
         },
         {
@@ -137,7 +137,6 @@ export default [
     },
     externals: {
       "sqlite3": "commonjs sqlite3",
-      "better-sqlite3": "commonjs better-sqlite3",
       "bufferutil": "commonjs bufferutil",
       "utf-8-validate": "commonjs utf-8-validate",
     },
