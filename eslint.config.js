@@ -149,7 +149,7 @@ export default [
           "@sosimple/fsx-file",
           "@sosimple/fsx-lockfile",
           "@sosimple/retry",
-          "@unicode/unicode-16.0.0",
+          "@unicode/unicode-17.0.0",
           "clsx",
           "debug",
           "knex",

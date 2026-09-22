@@ -19,6 +19,17 @@ import { polyfillAnimationFrames } from "./fake-animation-frames.ts";
 import { FakeCanvasRenderingContext2D } from "./fake-canvas.ts";
 import { FakeResizeObserver } from "./fake-resize-observer.ts";
 
+// Node globals that must be overridden with their jsdom counterparts,
+// even though they already exist on the scope. Node ships these as
+// non-functional stubs (e.g. `localStorage` throws without
+// `--localstorage-file`), unlike the rest of the Node globals that
+// `install()` otherwise leaves alone.
+const overriddenGlobals = new Set([
+  "Storage",
+  "localStorage",
+  "sessionStorage",
+]);
+
 install(create(), global);
 
 function create(): JSDOM {
@@ -68,7 +79,7 @@ function install(jsdom: JSDOM, scope: any): () => void {
       !/^_/.test(key) && // Private fields.
       !/^on/.test(key) && // Event handlers.
       !keys.has(key) &&
-      !scopeKeys.includes(key) &&
+      (!scopeKeys.includes(key) || overriddenGlobals.has(key)) &&
       !restrictedGlobals.includes(key)
     ) {
       keys.add(key);

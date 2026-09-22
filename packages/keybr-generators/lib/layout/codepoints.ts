@@ -1,5 +1,5 @@
 import { type CodePoint } from "@keybr/unicode";
-import names from "@unicode/unicode-16.0.0/Names/index.js";
+import names from "@unicode/unicode-17.0.0/Names/index.mjs";
 
 export function formatCodePointName(codePoint: CodePoint): string {
   return names.get(codePoint) ?? String.fromCodePoint(codePoint);

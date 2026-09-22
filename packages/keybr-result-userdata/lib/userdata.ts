@@ -66,11 +66,11 @@ export class UserData {
     if (await this.file.exists()) {
       let count = 1;
       while (true) {
-        const candidate = new File(this.file.name + "~" + count);
+        const candidate = new File(this.file.path + "~" + count);
         if (await candidate.exists()) {
           count += 1;
         } else {
-          await rename(this.file.name, candidate.name);
+          await rename(this.file.path, candidate.path);
           break;
         }
       }

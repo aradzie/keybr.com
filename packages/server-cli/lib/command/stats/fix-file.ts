@@ -12,9 +12,9 @@ export async function fixFile(file: File, results: readonly Result[]) {
 }
 
 async function renameOldFile(file: File) {
-  const { name } = file;
+  const { path } = file;
   try {
-    await rename(name, name + "~corrupted");
+    await rename(path, path + "~corrupted");
   } catch (err: any) {
     if (err.code !== "ENOENT") {
       throw err;

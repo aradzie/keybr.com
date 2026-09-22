@@ -1,3 +1,3 @@
-declare module "@unicode/unicode-16.0.0/Names/index.js" {
+declare module "@unicode/unicode-17.0.0/Names/index.mjs" {
   export default new Map<number, string>();
 }

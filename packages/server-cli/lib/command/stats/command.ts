@@ -73,7 +73,7 @@ export class StatsCommand {
 
       if (stat == null || !stat.isFile()) {
         if (verbose) {
-          console.log(`No stats of user=[${userId}], file=[${file.name}].`);
+          console.log(`No stats of user=[${userId}], file=[${file.path}].`);
         }
         continue;
       }
@@ -81,7 +81,7 @@ export class StatsCommand {
       if (since.getTime() > 0 && stat.mtime.getTime() < since.getTime()) {
         if (verbose) {
           console.log(
-            `Skipping stats of user=[${userId}], file=[${file.name}].`,
+            `Skipping stats of user=[${userId}], file=[${file.path}].`,
           );
         }
         continue;
@@ -93,7 +93,7 @@ export class StatsCommand {
           const { results } = status;
           if (verbose) {
             console.log(
-              `Good data, user=[${userId}], file=[${file.name}]. ` +
+              `Good data, user=[${userId}], file=[${file.path}]. ` +
                 `Read ${results.length} results.`,
             );
           }
@@ -102,7 +102,7 @@ export class StatsCommand {
         case "bad": {
           const { results, invalid } = status;
           console.warn(
-            `Bad data, user=[${userId}], file=[${file.name}]. ` +
+            `Bad data, user=[${userId}], file=[${file.path}]. ` +
               `Read ${results.length} results. ` +
               `Ignored ${invalid.length} invalid results.`,
           );

@@ -11,8 +11,8 @@
     "@keybr/result": "*",
     "@keybr/result-io": "*",
     "@keybr/result-userdata": "*",
-    "commander": "^14.0.3",
-    "date-fns": "^4.1.0"
+    "commander": "^15.0.0",
+    "date-fns": "^4.4.0"
   },
   "devDependencies": {},
   "scripts": {

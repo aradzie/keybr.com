@@ -73,14 +73,14 @@ test("delete missing file", async () => {
 
   const id = new PublicId(1);
   const factory = new UserDataFactory(new DataDir(tmp));
-  const name = factory.getFile(id).name;
+  const path = factory.getFile(id).path;
   const userData = factory.load(id);
 
   // Assert.
 
   isFalse(await userData.exists());
   deepEqual(await readAll(userData), []);
-  isFalse(await exists(name + "~1"));
+  isFalse(await exists(path + "~1"));
 
   // Act.
 
@@ -90,7 +90,7 @@ test("delete missing file", async () => {
 
   isFalse(await userData.exists());
   deepEqual(await readAll(userData), []);
-  isFalse(await exists(name + "~1"));
+  isFalse(await exists(path + "~1"));
 });
 
 test("delete existing file", async () => {
@@ -98,7 +98,7 @@ test("delete existing file", async () => {
 
   const id = new PublicId(1);
   const factory = new UserDataFactory(new DataDir(tmp));
-  const name = factory.getFile(id).name;
+  const path = factory.getFile(id).path;
   const userData = factory.load(id);
   const faker = new ResultFaker();
   const results = [faker.nextResult(), faker.nextResult(), faker.nextResult()];
@@ -111,7 +111,7 @@ test("delete existing file", async () => {
 
   isTrue(await userData.exists());
   deepEqual(await readAll(userData), results);
-  isFalse(await exists(name + "~1"));
+  isFalse(await exists(path + "~1"));
 
   // Act.
 
@@ -121,7 +121,7 @@ test("delete existing file", async () => {
 
   isFalse(await userData.exists());
   deepEqual(await readAll(userData), []);
-  isTrue(await exists(name + "~1"));
+  isTrue(await exists(path + "~1"));
 });
 
 test("delete existing file second time", async () => {
@@ -129,12 +129,12 @@ test("delete existing file second time", async () => {
 
   const id = new PublicId(1);
   const factory = new UserDataFactory(new DataDir(tmp));
-  const name = factory.getFile(id).name;
+  const path = factory.getFile(id).path;
   const userData = factory.load(id);
   const faker = new ResultFaker();
   const results = [faker.nextResult(), faker.nextResult(), faker.nextResult()];
-  await touch(name + "~1");
-  await touch(name + "~2");
+  await touch(path + "~1");
+  await touch(path + "~2");
 
   // Act.
 
@@ -144,7 +144,7 @@ test("delete existing file second time", async () => {
 
   isTrue(await userData.exists());
   deepEqual(await readAll(userData), results);
-  isFalse(await exists(name + "~3"));
+  isFalse(await exists(path + "~3"));
 
   // Act.
 
@@ -154,7 +154,7 @@ test("delete existing file second time", async () => {
 
   isFalse(await userData.exists());
   deepEqual(await readAll(userData), []);
-  isTrue(await exists(name + "~3"));
+  isTrue(await exists(path + "~3"));
 });
 
 test("serve", async () => {

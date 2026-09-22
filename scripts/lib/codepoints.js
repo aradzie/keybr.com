@@ -1,4 +1,4 @@
-import unicodeNames from "@unicode/unicode-16.0.0/Names/index.js";
+import unicodeNames from "@unicode/unicode-17.0.0/Names/index.mjs";
 
 const controlNames = new Map([
   [0x0000, "NULL"],
