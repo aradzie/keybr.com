@@ -9,6 +9,11 @@ packages/*/.types/
 root/public/assets/
 root/lib/
 
+# Coding Agents
+
+.claude/
+.codex/
+
 # Other
 node_modules/
 build/
