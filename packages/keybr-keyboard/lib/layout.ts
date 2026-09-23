@@ -1348,6 +1348,23 @@ export class Layout implements XEnumItem {
     /* emulate= */ false,
     /* geometries= */ new Enum(Geometry.ANSI_101),
   );
+  static readonly KO_KR = new Layout(
+    /* id= */ "ko-kr",
+    /* xid= */ 0xb2,
+    /* name= */ "{KR} (두벌식)",
+    /* family= */ "ko-kr",
+    /* language= */ Language.KO,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.KOREAN_103,
+      Geometry.KOREAN_103_FULL,
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.MATRIX,
+    ),
+  );
   static readonly BR_CHWERTY_MATHS = new Layout(
     /* id= */ "br-chwerty-maths",
     /* xid= */ 0xb1,
@@ -1429,6 +1446,7 @@ export class Layout implements XEnumItem {
     Layout.HU_HU,
     Layout.IT_IT,
     // Layout.JA_JP,
+    Layout.KO_KR,
     Layout.LT_LT,
     Layout.LV_LV,
     Layout.NB_NO,

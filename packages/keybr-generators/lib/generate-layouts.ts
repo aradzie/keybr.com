@@ -88,6 +88,7 @@ for (const [id, layout] of [
   ["it_it", importCldr("cldr-keyboards-43.0/keyboards/windows/it-t-k0-windows.xml")],
   ["ja_jp", importKeymap("layouts/ja_jp.json")],
   ["ja_jp_jis", importKeymap("layouts/ja_jp_jis.json")],
+  ["ko_kr", importKeymap("layouts/ko_kr_2set.json")],
   ["lt_lt", importCldr("cldr-keyboards-43.0/keyboards/windows/lt-t-k0-windows-lt1582.xml")],
   ["lv_lv", importCldr("cldr-keyboards-43.0/keyboards/windows/lv-t-k0-windows.xml")],
   ["nb_dvorak", importKeymap("layouts/nb_dvorak.json")],
