@@ -26,6 +26,55 @@ test("find words", () => {
   deepEqual(dict.find(new Filter(letters, letters[3])), ["def"]);
 });
 
+test("case insensitive filtering", () => {
+  const dict = new Dictionary(["Hello", "WORLD", "Test", "test"]);
+  const letters = toLetters("helloworldtest");
+
+  deepEqual(dict.find(new Filter(letters, null)), [
+    "Hello",
+    "WORLD",
+    "Test",
+    "test",
+  ]);
+});
+
+test("german uppercase words", () => {
+  const dict = new Dictionary([
+    "Hexe",
+    "Mexiko",
+    "Hobby",
+    "Baby",
+    "existieren",
+  ]);
+  const letters = toLetters("abcdefghimopxy");
+
+  const result = dict.find(new Filter(letters, null));
+
+  const hasX = result.some((w) => w.toLowerCase().includes("x"));
+  deepEqual(hasX, true, "Should find words with x like Hexe, Mexiko");
+});
+
+test("german sharp s character", () => {
+  const dict = new Dictionary(["Straße", "straße", "STRASSE"]);
+  const letters = toLetters("abcdefghijklmnopqrstuvwxyzß");
+
+  deepEqual(dict.find(new Filter(letters, null)), [
+    "Straße",
+    "straße",
+    "STRASSE",
+  ]);
+});
+
+test("focusedCodePoint with uppercase words", () => {
+  const dict = new Dictionary(["Hexe", "hexe", "Mexiko", "mexiko"]);
+  const letters = toLetters("ehimox");
+
+  // Focus on lowercase 'x' (codePoint 120)
+  // Should find both "Hexe" and "hexe" because index is case-insensitive
+  const result = dict.find(new Filter(letters, letters[5])); // letters[5] is 'x'
+  deepEqual(result, ["Hexe", "hexe"]);
+});
+
 function toLetters(letters: string) {
   return [...toCodePoints(letters)].map(
     (codePoint) => new Letter(codePoint, 1),
