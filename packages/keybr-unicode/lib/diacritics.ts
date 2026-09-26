@@ -85,13 +85,18 @@ for (const [codePoint, baseList, combinedList] of [
   ],
   [
     /* COMBINING CEDILLA */ 0x0327, //
-    "CDEGHKLNRSTcdeghklnrst",
-    "ÇḐȨĢḨĶĻŅŖŞŢçḑȩģḩķļņŗşţ",
+    "ACDEGHIKLNORSTUacdeghiklnorstu",
+    "ĄÇḐĘĢḨĮĶĻŅǪŖŞŢŲąçḑęģḩįķļņǫŗşţų",
   ],
   [
     /* COMBINING OGONEK */ 0x0328, //
     "AEIOUaeiou",
     "ĄĘĮǪŲąęįǫų",
+  ],
+  [
+    /* COMBINING SHORT SOLIDUS OVERLAY */ 0x0337, //
+    "ABCDEGHIJLOPRTUYZabcdeghijlortuyz",
+    "ȺɃȻĐɆǤĦƗɟŁØⱣɌŦɄɎƵⱥƀȼđɇǥħɨɟłøɍŧʉɏƶ",
   ],
 ] as [CodePoint, string, string][]) {
   for (let i = 0; i < baseList.length; i++) {
