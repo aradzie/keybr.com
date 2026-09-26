@@ -15,17 +15,17 @@ export const ISO_102: GeometryDict = {
   Digit2: {
     x: 2,
     y: 0,
-    zones: ["ring", "left", "digit"],
+    zones: ["pinky", "left", "digit"],
   },
   Digit3: {
     x: 3,
     y: 0,
-    zones: ["middle", "left", "digit"],
+    zones: ["ring", "left", "digit"],
   },
   Digit4: {
     x: 4,
     y: 0,
-    zones: ["leftIndex", "left", "digit"],
+    zones: ["middle", "left", "digit"],
   },
   Digit5: {
     x: 5,
