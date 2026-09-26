@@ -22,6 +22,7 @@ test("render", () => {
             imageUrl: null,
           },
           settings: null,
+          customText: null,
         }}
       >
         <FakeIntlProvider>
@@ -60,6 +61,7 @@ test("render alt", () => {
             premium: true,
           },
           settings: null,
+          customText: null,
         }}
       >
         <FakeIntlProvider>
@@ -97,6 +99,7 @@ test("render for a bot", () => {
             imageUrl: null,
           },
           settings: null,
+          customText: null,
         }}
       >
         <FakeIntlProvider>

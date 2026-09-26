@@ -339,5 +339,7 @@
   "t_ws_Bar_whitespace": "Guión bajo",
   "t_ws_Bullet_whitespace": "Bullet",
   "t_ws_No_whitespace": "Sin espacios en blanco",
-  "weekDayNames": "Lu|Ma|Mi|Ju|Vi|Sa|Do"
+  "weekDayNames": "Lu|Ma|Mi|Ju|Vi|Sa|Do",
+  "lessonType.customText.fromUrl": "Texto personalizado cargado desde la URL.",
+  "lessonType.customText.fromUrl.description": "Este texto solo se utilizará para la sesión actual y no se guardará en su configuración."
 }

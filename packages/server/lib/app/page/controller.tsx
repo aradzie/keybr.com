@@ -189,12 +189,28 @@ export class Controller {
   ): Promise<PageData> {
     const { user, publicUser } = ctx.state;
     const settings = user != null ? await this.database.get(user.id!) : null;
+
+    // Extract and validate URL parameter
+    const url = new URL(ctx.request.url, ctx.request.origin);
+    const rawText = url.searchParams.get("text");
+
+    // Server-side validation and truncation
+    const MAX_URL_TEXT_LENGTH = 10_000;
+    let customText: string | null = null;
+    if (rawText != null) {
+      const trimmed = rawText.trim();
+      if (trimmed.length > 0) {
+        customText = trimmed.slice(0, MAX_URL_TEXT_LENGTH);
+      }
+    }
+
     return {
       base: this.canonicalUrl,
       locale,
       user: user?.toDetails() ?? null,
       publicUser,
       settings: settings?.toJSON() ?? null,
+      customText,
     };
   }
 

@@ -66,6 +66,8 @@
   "lessonType.books.description": "Tạo các bài học gõ phím từ văn bản của một cuốn sách. Tất cả các phím đều được bao gồm theo mặc định. Chế độ này dành cho người chuyên nghiệp.",
   "lessonType.code.description": "Luyện tập các ký tự dấu câu đặc trưng cho cú pháp của một ngôn ngữ lập trình.",
   "lessonType.customText.description": "Tạo các bài học gõ từ các từ của văn bản tùy chỉnh của riêng bạn. Tất cả các khóa được bao gồm theo mặc định. Chế độ này là dành cho các chuyên gia.",
+  "lessonType.customText.fromUrl": "Văn bản tùy chỉnh đã được tải từ URL.",
+  "lessonType.customText.fromUrl.description": "Văn bản này chỉ được sử dụng cho phiên hiện tại và sẽ không được lưu vào cài đặt của bạn.",
   "lessonType.guided.description": "Tạo các bài học gõ bằng các từ ngẫu nhiên bằng cách sử dụng các quy tắc ngữ âm của ngôn ngữ của bạn. Bộ khóa được mở rộng động dựa trên hiệu suất của bạn. Chế độ này dành cho người mới bắt đầu.",
   "lessonType.numbers.description": "Chỉ thực hành số.",
   "lessonType.syntax.description": "Tạo các bài học gõ phím giống với cú pháp của ngôn ngữ lập trình được chỉ định.",

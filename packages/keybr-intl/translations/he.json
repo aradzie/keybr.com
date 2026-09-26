@@ -66,6 +66,8 @@
   "lessonType.books.description": "יצר שיעור כתיבה מטקסט של ספר. כל המקשים מאופשרים באופן ברירת מחדל. מצב זה למקצוענים.",
   "lessonType.code.description": "תרגל סימני פיסוק ספציפיים לתחביר של שפת תכנות.",
   "lessonType.customText.description": "הפק שיעורי הקלדה מהמילים של הטקסט המותאם אישית שלך. כל המפתחות כלולים כברירת מחדל. מצב זה מיועד למקצוענים.",
+  "lessonType.customText.fromUrl": "טקסט מותאם אישית נטען מ-URL.",
+  "lessonType.customText.fromUrl.description": "טקסט זה ישמש רק עבור המושב הנוכחי ולא יישמר בהגדרות שלך.",
   "lessonType.guided.description": "צור שיעורי הקלדה עם מילים אקראיות תוך שימוש בחוקים הפונטיים של השפה שלך. ערכת המפתחות מורחבת באופן דינמי על סמך הביצועים שלך. מצב זה מיועד למתחילים.",
   "lessonType.numbers.description": "התאמן על מספרים בלבד.",
   "lessonType.syntax.description": "הפק שיעורים הדומים לתחביר שפת התכנות שצוין.",

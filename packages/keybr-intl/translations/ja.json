@@ -66,6 +66,8 @@
   "lessonType.books.description": "書籍のテキストからタイピングレッスンを生成します。デフォルトですべてのキーが含まれています。このモードは熟練者向けです。",
   "lessonType.code.description": "プログラミング言語の構文に特有の句読点文字を練習します。",
   "lessonType.customText.description": "独自のテキストからタイピングレッスンを生成します。デフォルトではすべてのキーが含まれています。このモードは熟練者向けです。",
+  "lessonType.customText.fromUrl": "カスタムテキストがURLから読み込まれました。",
+  "lessonType.customText.fromUrl.description": "このテキストは現在のセッションでのみ使用され、設定に保存されることはありません。",
   "lessonType.guided.description": "あなたの母国語の音韻規則に基づいて、ランダムな単語を使ったタイピングレッスンを生成します。キーセットはあなたのパフォーマンスに基づいて動的に拡張されます。このモードは初心者向けです。",
   "lessonType.numbers.description": "数字のみを練習します。",
   "lessonType.syntax.description": "指定されたプログラミング言語の構文に似たレッスンを生成します。",

@@ -66,6 +66,8 @@
   "lessonType.books.description": "Gjeneroni mësime shtypjeje nga teksti i një libri. Të gjitha tastet përfshihen si parazgjedhje. Ky modalitet është për profesionistët.",
   "lessonType.code.description": "Praktikoni karaktere pikësimi që janë specifike për sintaksën e një gjuhe programimi.",
   "lessonType.customText.description": "Gjeneroni mësime shtypjeje nga fjalët e tekstit tuaj të personalizuar. Të gjithë tastet përfshihen si parazgjedhje. Kjo mënyrë është për profesionistët.",
+  "lessonType.customText.fromUrl": "Teksti i personalizuar u ngarkua nga URL.",
+  "lessonType.customText.fromUrl.description": "Ky tekst do të përdoret vetëm për sesionin aktual dhe nuk do të ruhet në cilësimet tuaja.",
   "lessonType.guided.description": "Gjeneroni mësime shtypjeje me fjalë të rastësishme duke përdorur rregullat fonetike të gjuhës suaj. Grupi i tasteve zgjerohet në mënyrë dinamike bazuar në performancën tuaj. Kjo mënyrë është për fillestarët.",
   "lessonType.numbers.description": "Praktikoni vetëm numrat.",
   "lessonType.syntax.description": "Gjeneroni mësime që i ngjajnë sintaksës së specifikuar të gjuhës së programimit.",
