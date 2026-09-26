@@ -384,17 +384,31 @@ test("space in garbage", () => {
     spaceSkipsWords: false,
   });
 
+  equal(textInput.appendChar(200, Space, 100), Feedback.Failed);
+  equal(showSteps(textInput), "");
+  equal(showChars(textInput), "* |[a]|b|c");
+  equal(textInput.length, 3);
+  equal(textInput.pos, 0);
+  isFalse(textInput.completed);
+
   equal(textInput.appendChar(100, X, 100), Feedback.Failed);
   equal(textInput.appendChar(200, Space, 100), Feedback.Failed);
   equal(showSteps(textInput), "");
-  equal(showChars(textInput), "*x|* |[a]|b|c");
+  equal(showChars(textInput), "* |*x|* |[a]|b|c");
   equal(textInput.length, 3);
   equal(textInput.pos, 0);
   isFalse(textInput.completed);
 
   equal(textInput.clearChar(), Feedback.Succeeded);
   equal(showSteps(textInput), "");
-  equal(showChars(textInput), "*x|[a]|b|c");
+  equal(showChars(textInput), "* |*x|[a]|b|c");
+  equal(textInput.length, 3);
+  equal(textInput.pos, 0);
+  isFalse(textInput.completed);
+
+  equal(textInput.clearChar(), Feedback.Succeeded);
+  equal(showSteps(textInput), "");
+  equal(showChars(textInput), "* |[a]|b|c");
   equal(textInput.length, 3);
   equal(textInput.pos, 0);
   isFalse(textInput.completed);
