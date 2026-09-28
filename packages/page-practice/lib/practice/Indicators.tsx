@@ -8,7 +8,7 @@ import {
   names,
   StreakListRow,
 } from "@keybr/lesson-ui";
-import { Popup, Portal } from "@keybr/widget";
+import { Popup, Portal, useWindowEvent } from "@keybr/widget";
 import { memo, type ReactNode, useEffect, useState } from "react";
 import * as styles from "./Indicators.module.less";
 import { KeyExtendedDetails } from "./KeyExtendedDetails.tsx";
@@ -26,6 +26,14 @@ export const Indicators = memo(function Indicators({
     | { type: "visible-out"; key: LessonKey; elem: Element }
   >;
   const [state, setState] = useState<State>({ type: "hidden" });
+  useWindowEvent("keydown", (e: KeyboardEvent) => {
+    const isKeyPrintable = e.key.length === 1;
+    const isPopupVisible =
+      state.type === "visible" || state.type === "visible-in";
+    if (isKeyPrintable && isPopupVisible) {
+      setState({ type: "hidden" });
+    }
+  });
   useEffect(() => {
     const tasks = new Tasks();
     switch (state.type) {
