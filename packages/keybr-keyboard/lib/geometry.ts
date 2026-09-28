@@ -1,6 +1,7 @@
 import { Enum, type EnumItem } from "@keybr/lang";
 import {
   STANDARD_MOD,
+  GERMAN_MOD,
   SYMMETRIC_MOD,
   type ZoneModDict,
 } from "./geometry/mod.ts";
@@ -11,6 +12,11 @@ export class ZoneMod implements EnumItem {
     "Standard",
     STANDARD_MOD,
   );
+  static readonly GERMAN = new ZoneMod(
+    "german",
+    "german",
+    GERMAN_MOD,
+  );
   static readonly SYMMETRIC = new ZoneMod(
     "symmetric",
     "Symmetric",
@@ -19,6 +25,7 @@ export class ZoneMod implements EnumItem {
 
   static readonly ALL = new Enum<ZoneMod>(
     ZoneMod.STANDARD, //
+    ZoneMod.GERMAN,
     ZoneMod.SYMMETRIC,
   );
 
