@@ -102,6 +102,12 @@ export class Geometry implements EnumItem {
     "staggered",
     ZoneMod.ALL,
   );
+  static readonly HHKB = new Geometry(
+    "hhkb", //
+    "HHKB Pro (60%)",
+    "staggered",
+    ZoneMod.ALL,
+  );
   static readonly MATRIX = new Geometry(
     "matrix", //
     "Matrix/Ergonomic",
@@ -120,6 +126,7 @@ export class Geometry implements EnumItem {
     Geometry.BRAZILIAN_104_FULL,
     Geometry.JAPANESE_106,
     Geometry.JAPANESE_106_FULL,
+    Geometry.HHKB,
     Geometry.MATRIX,
   );
 
