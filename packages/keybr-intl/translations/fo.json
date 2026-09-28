@@ -18,6 +18,8 @@
   "help.rule1.title": "Algoritman byrjar við teir byrjanar bókstavirnir",
   "help.rule2.title": "Tú lærir byrjanar bókstavirnir",
   "help.rule3.title": "Algoritman leggur fleiri bókstavir afturat",
+  "lessonType.customText.fromUrl": "Egin tekstur varð lastaður frá URL.",
+  "lessonType.customText.fromUrl.description": "Hesin teksturin verður bert brúktur til hesa núverandi sessión og verður ikki varðveitt í tínum innstillingum.",
   "t_Account_details": "Brúkaraupplýsingar",
   "t_Account_name": "Brúkari {navn}",
   "t_Anonymize_me": "Ger meg dulnevndan",

@@ -38,6 +38,8 @@
   "learningRate.unknown": "이 글자를 잠금 해제하기까지 걸리는 시간을 계산하기 위한 데이터가 부족함.",
   "lessonType.books.description": "책의 텍스트에서 타자 연습 자료를 생성합니다. 모든 글자가 포함되어 있습니다. 전문가를 위한 모드입니다.",
   "lessonType.customText.description": "직접 타자 연습에 사용할 단어를 추가해 보세요. 기본 설정에 모든 키가 포함되어 있어요. 전문가를 위한 설정이에요.",
+  "lessonType.customText.fromUrl": "사용자 정의 텍스트가 URL에서 로드되었습니다.",
+  "lessonType.customText.fromUrl.description": "이 텍스트는 현재 세션에서만 사용되며 귀하의 설정에 저장되지 않습니다.",
   "lessonType.numbers.description": "숫자만 연습하기.",
   "metric.score.description": "직전 연습에서의 점수예요. 점수는 빠르고 정확하게 타이핑 할 수록 올라갑니다.",
   "metric.speed.description": "이전 연습에서 타자 속도",

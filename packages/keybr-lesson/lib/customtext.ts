@@ -14,9 +14,17 @@ export class CustomTextLesson extends Lesson {
   readonly wordList: readonly string[];
   wordIndex = 0;
 
-  constructor(settings: Settings, keyboard: Keyboard, model: PhoneticModel) {
+  constructor(
+    settings: Settings,
+    keyboard: Keyboard,
+    model: PhoneticModel,
+    initialText?: string,
+  ) {
     super(settings, keyboard, model);
-    this.wordList = this.#getWordList();
+    // Use initialText if provided, otherwise get from settings
+    this.wordList = initialText
+      ? this.#processText(initialText)
+      : this.#getWordList();
   }
 
   override get letters() {
@@ -42,6 +50,10 @@ export class CustomTextLesson extends Lesson {
 
   #getWordList() {
     const content = this.settings.get(lessonProps.customText.content);
+    return this.#processText(content);
+  }
+
+  #processText(content: string): readonly string[] {
     const lettersOnly = this.settings.get(lessonProps.customText.lettersOnly);
     const lowercase = this.settings.get(lessonProps.customText.lowercase);
     const codePoints = new Set(this.codePoints);

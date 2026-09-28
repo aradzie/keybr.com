@@ -32,6 +32,10 @@ export type PageData = {
    * Serialized user settings.
    */
   readonly settings: unknown | null;
+  /**
+   * Custom text from URL query parameter.
+   */
+  readonly customText: string | null;
 };
 
 export type UserDetails = {

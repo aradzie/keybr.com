@@ -1,6 +1,7 @@
 import { useIntlNumbers } from "@keybr/intl";
 import { type Language } from "@keybr/keyboard";
 import { type CustomTextLesson, lessonProps } from "@keybr/lesson";
+import { useUrlText } from "@keybr/pages-shared";
 import { useSettings } from "@keybr/settings";
 import { textStatsOf } from "@keybr/unicode";
 import {
@@ -28,6 +29,9 @@ export function CustomTextLessonSettings({
 }): ReactNode {
   const { formatMessage } = useIntl();
   const { settings } = useSettings();
+  const urlText = useUrlText();
+  // Use URL text if available, otherwise use saved settings text
+  const customText = urlText ?? settings.get(lessonProps.customText.content);
   return (
     <>
       <Explainer>
@@ -48,7 +52,7 @@ export function CustomTextLessonSettings({
         <CustomTextInput />
         <CustomTextStats
           language={lesson.model.language}
-          customText={settings.get(lessonProps.customText.content)}
+          customText={customText}
         />
         <CustomTextProcessing />
         <TargetSpeedProp />
@@ -61,6 +65,10 @@ export function CustomTextLessonSettings({
 function CustomTextInput(): ReactNode {
   const { formatMessage } = useIntl();
   const { settings, updateSettings } = useSettings();
+  const urlText = useUrlText();
+  // Use URL text if available, otherwise use saved settings text
+  const currentText = urlText ?? settings.get(lessonProps.customText.content);
+  const isUrlText = urlText != null;
   return (
     <>
       <Para>
@@ -80,6 +88,14 @@ function CustomTextInput(): ReactNode {
           </span>
         ))}
       </Para>
+      {isUrlText && (
+        <Para>
+          <FormattedMessage
+            id="lessonType.customText.fromUrl"
+            defaultMessage="Custom text was loaded from URL."
+          />
+        </Para>
+      )}
       <Para>
         <TextField
           type="textarea"
@@ -87,8 +103,10 @@ function CustomTextInput(): ReactNode {
             id: "t_Custom_text",
             defaultMessage: "Custom text",
           })}
-          value={settings.get(lessonProps.customText.content)}
+          value={currentText}
           onChange={(value) => {
+            // When user edits the text, save it to settings
+            // This overrides the URL text for future use
             updateSettings(settings.set(lessonProps.customText.content, value));
           }}
         />

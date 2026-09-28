@@ -13,7 +13,7 @@ import {
   NumbersLesson,
   WordListLesson,
 } from "@keybr/lesson";
-import { LoadingProgress } from "@keybr/pages-shared";
+import { LoadingProgress, useUrlText } from "@keybr/pages-shared";
 import { type PhoneticModel } from "@keybr/phonetic-model";
 import { PhoneticModelLoader } from "@keybr/phonetic-model-loader";
 import { useSettings } from "@keybr/settings";
@@ -60,6 +60,7 @@ function Loader({
 function useLoader(model: PhoneticModel): Lesson | null {
   const { settings } = useSettings();
   const keyboard = useKeyboard();
+  const urlText = useUrlText(); // Get URL text from context
   const [result, setResult] = useState<Lesson | null>(null);
 
   useEffect(() => {
@@ -95,7 +96,14 @@ function useLoader(model: PhoneticModel): Lesson | null {
         }
         case LessonType.CUSTOM: {
           if (!didCancel) {
-            setResult(new CustomTextLesson(settings, keyboard, model));
+            setResult(
+              new CustomTextLesson(
+                settings,
+                keyboard,
+                model,
+                urlText ?? undefined,
+              ),
+            );
           }
           break;
         }
@@ -121,7 +129,7 @@ function useLoader(model: PhoneticModel): Lesson | null {
     return () => {
       didCancel = true;
     };
-  }, [settings, keyboard, model]);
+  }, [settings, keyboard, model, urlText]);
 
   return result;
 }
