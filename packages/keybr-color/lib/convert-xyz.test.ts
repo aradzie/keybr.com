@@ -102,12 +102,20 @@ test("rgb / oklch", () => {
     h: 0.08120522299896633,
     alpha: 0.5,
   });
-  like(oklchToRgb(new OklchColor(0.6279553639214313, 0.25768330380536064, 0.08120522299896633, 0.5)), {
-    r: 0.9999999999999997,
-    g: 4.304625232653958e-15,
-    b: 0,
-    alpha: 0.5,
-  });
+  const result = oklchToRgb(new OklchColor(0.6279553639214313, 0.25768330380536064, 0.08120522299896633, 0.5));
+  // Use approximate comparison for floating-point values
+  if (Math.abs(result.r - 0.9999999999999997) > 1e-14) {
+    throw new Error(`r value ${result.r} is not close enough to expected`);
+  }
+  if (Math.abs(result.g) > 1e-14) {
+    throw new Error(`g value ${result.g} is not close enough to zero`);
+  }
+  if (Math.abs(result.b) > 1e-14) {
+    throw new Error(`b value ${result.b} is not close enough to zero`);
+  }
+  if (Math.abs(result.alpha - 0.5) > 1e-14) {
+    throw new Error(`alpha value ${result.alpha} is not close enough to 0.5`);
+  }
 
   like(rgbToOklch(new RgbColor(1, 1, 1, 0.5)), {
     l: 1,
