@@ -719,6 +719,51 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly HY_AM_PHONETIC = new Layout(
+    /* id= */ "hy-am-phonetic",
+    /* xid= */ 0xbc,
+    /* name= */ "Armenian Phonetic",
+    /* family= */ "hy-am-phonetic",
+    /* language= */ Language.HY,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.MATRIX,
+    ),
+  );
+  static readonly HY_AM_TYPEWRITER = new Layout(
+    /* id= */ "hy-am-typewriter",
+    /* xid= */ 0xbd,
+    /* name= */ "Armenian Typewriter",
+    /* family= */ "hy-am-typewriter",
+    /* language= */ Language.HY,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.MATRIX,
+    ),
+  );
+  static readonly HY_AM_EASTERN = new Layout(
+    /* id= */ "hy-am-eastern",
+    /* xid= */ 0xbe,
+    /* name= */ "Armenian Eastern",
+    /* family= */ "hy-am-eastern",
+    /* language= */ Language.HY,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.MATRIX,
+    ),
+  );
   static readonly TR_TR_Q = new Layout(
     /* id= */ "tr-tr-q",
     /* xid= */ 0x89,
@@ -1427,6 +1472,9 @@ export class Layout implements XEnumItem {
     Layout.HE_IL,
     Layout.HE_IL_ARKN,
     Layout.HU_HU,
+    Layout.HY_AM_PHONETIC,
+    Layout.HY_AM_TYPEWRITER,
+    Layout.HY_AM_EASTERN,
     Layout.IT_IT,
     // Layout.JA_JP,
     Layout.LT_LT,

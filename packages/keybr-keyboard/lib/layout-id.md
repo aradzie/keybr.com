@@ -174,9 +174,9 @@
 - `0xb9`: English/Enthium V11 (Matrix)
 - `0xba`: English/Enthium V13 (Matrix)
 - `0xbb`: English/Enthium V14 (Matrix)
-- `0xbc`:
-- `0xbd`:
-- `0xbe`:
+- `0xbc`: Armenian/Armenian Phonetic
+- `0xbd`: Armenian/Armenian Typewriter
+- `0xbe`: Armenian/Armenian Eastern
 - `0xbf`:
 - `0xc0`:
 - `0xc1`:
@@ -243,7 +243,7 @@
 - `0xfe`:
 - `0xff`:
 
-95 allocated identifiers
+98 allocated identifiers
 
-145 free identifiers
+142 free identifiers
 
