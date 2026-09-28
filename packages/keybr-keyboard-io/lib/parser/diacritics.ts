@@ -19,6 +19,7 @@ const forwardMap = new Map([
   [/* CEDILLA */ 0x00b8, /* COMBINING CEDILLA */ 0x0327],
   [/* OGONEK */ 0x02db, /* COMBINING OGONEK */ 0x0328],
   [/* GREEK TONOS */ 0x0384, /* COMBINING ACUTE ACCENT */ 0x0301],
+  [/* SOLIDUS */ 0x002F, /* COMBINING SHORT SOLIDUS OVERLAY */ 0x0337],
 ]);
 
 const reverseMap = new Map([...forwardMap].map(([key, value]) => [value, key]));
