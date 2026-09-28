@@ -132,3 +132,109 @@ test("mutate lesson keys", () => {
     }),
   );
 });
+
+test("mutate lesson keys, second focus", () => {
+  // Arrange.
+
+  const keys = new LessonKeys([
+    new LessonKey({
+      letter: letter1,
+      samples: [],
+      timeToType: 300,
+      bestTimeToType: 300,
+      confidence: 1.0,
+      bestConfidence: 1.0,
+    }),
+    new LessonKey({
+      letter: letter2,
+      samples: [],
+      timeToType: 300,
+      bestTimeToType: 300,
+      confidence: 1.0,
+      bestConfidence: 1.0,
+    }),
+  ]);
+
+  // Act.
+
+  keys.focus(letter1);
+  keys.focusSecond(letter2);
+
+  // Assert.
+
+  deepEqual(
+    keys.findFocusedKey(),
+    new LessonKey({
+      letter: letter1,
+      samples: [],
+      timeToType: 300,
+      bestTimeToType: 300,
+      confidence: 1.0,
+      bestConfidence: 1.0,
+      isIncluded: true,
+      isForced: false,
+      isFocused: true,
+    }),
+  );
+  deepEqual(
+    keys.findSecondFocusedKey(),
+    new LessonKey({
+      letter: letter2,
+      samples: [],
+      timeToType: 300,
+      bestTimeToType: 300,
+      confidence: 1.0,
+      bestConfidence: 1.0,
+      isIncluded: false,
+      isForced: false,
+      isSecondFocused: true,
+    }),
+  );
+});
+
+test("mutate lesson keys, second focus on an already-included key", () => {
+  // Arrange.
+
+  const keys = new LessonKeys([
+    new LessonKey({
+      letter: letter1,
+      samples: [],
+      timeToType: 300,
+      bestTimeToType: 300,
+      confidence: 1.0,
+      bestConfidence: 1.0,
+    }),
+    new LessonKey({
+      letter: letter2,
+      samples: [],
+      timeToType: 300,
+      bestTimeToType: 300,
+      confidence: 1.0,
+      bestConfidence: 1.0,
+    }),
+  ]);
+
+  // Act.
+
+  keys.include(letter1);
+  keys.include(letter2);
+  keys.focus(letter1);
+  keys.focusSecond(letter2);
+
+  // Assert.
+
+  deepEqual(
+    keys.findSecondFocusedKey(),
+    new LessonKey({
+      letter: letter2,
+      samples: [],
+      timeToType: 300,
+      bestTimeToType: 300,
+      confidence: 1.0,
+      bestConfidence: 1.0,
+      isIncluded: true,
+      isForced: false,
+      isSecondFocused: true,
+    }),
+  );
+});

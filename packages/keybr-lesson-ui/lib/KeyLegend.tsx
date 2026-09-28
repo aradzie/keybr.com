@@ -8,6 +8,7 @@ export const KeyLegend = ({
   isIncluded,
   isFocused,
   isForced,
+  isSecondFocused = false,
   size = "normal",
   title,
   ...props
@@ -16,6 +17,7 @@ export const KeyLegend = ({
   isIncluded: boolean;
   isFocused: boolean;
   isForced: boolean;
+  isSecondFocused?: boolean;
   size?: "normal" | "large";
   title?: string;
 } & MouseProps) => {
@@ -31,6 +33,7 @@ export const KeyLegend = ({
         isIncluded && confidence == null && styles.lessonKey_uncalibrated,
         isIncluded && isFocused && styles.lessonKey_focused,
         isIncluded && isForced && styles.lessonKey_forced,
+        isSecondFocused && styles.lessonKey_secondFocused,
       )}
       style={keyStyles(isIncluded ?? false, confidence ?? null)}
       title={title}

@@ -57,6 +57,31 @@ test("render included", () => {
   r.unmount();
 });
 
+test("render second focused", () => {
+  const key = new LessonKey({
+    letter: FakePhoneticModel.letter1,
+    samples: [],
+    timeToType: null,
+    bestTimeToType: null,
+    confidence: null,
+    bestConfidence: null,
+  }).asSecondFocused();
+
+  const r = render(
+    <FakeIntlProvider>
+      <FakeSettingsContext>
+        <Key lessonKey={key} />
+      </FakeSettingsContext>
+    </FakeIntlProvider>,
+  );
+
+  const elem = r.container.querySelector(".lessonKey_secondFocused");
+  isNotNull(elem);
+  equal(Key.attached(elem), key);
+
+  r.unmount();
+});
+
 test("render focused", () => {
   const key = new LessonKey({
     letter: FakePhoneticModel.letter1,

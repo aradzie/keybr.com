@@ -54,6 +54,19 @@ export const KeyLegendList = () => {
       </li>
       <li>
         <KeyLegend //
+          isIncluded={false}
+          confidence={null}
+          isFocused={false}
+          isForced={false}
+          isSecondFocused={true}
+        />{" "}
+        <FormattedMessage
+          id="lesson.indicator.secondFocused"
+          defaultMessage="A locked key that will unlock next, or an already-included key that needs more practice, mixed into the lesson early as a preview."
+        />
+      </li>
+      <li>
+        <KeyLegend //
           isIncluded={true}
           confidence={null}
           isFocused={false}

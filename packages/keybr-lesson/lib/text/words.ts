@@ -51,6 +51,23 @@ export function wordSequence(
   };
 }
 
+export function interleavedWords(
+  mainWords: WordGenerator,
+  extraWords: WordGenerator,
+  probability: number,
+  random: RNG,
+): WordGenerator {
+  return () => {
+    if (random() < probability) {
+      const word = extraWords();
+      if (word != null && word !== "") {
+        return word;
+      }
+    }
+    return mainWords();
+  };
+}
+
 export function uniqueWords(nextWord: WordGenerator): WordGenerator {
   let last = "";
   return () => {

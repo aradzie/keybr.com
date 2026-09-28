@@ -22,6 +22,7 @@ export function LessonKeysPreview() {
               bestConfidence: value,
               isIncluded: true,
               isFocused: value === 0.0,
+              isSecondFocused: value === 0.1,
               isForced: false,
             })
           }
