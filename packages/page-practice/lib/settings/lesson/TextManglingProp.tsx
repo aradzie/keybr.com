@@ -83,6 +83,38 @@ export function TextManglingProp(): ReactNode {
           />
         </Description>
       </Explainer>
+      <FieldList>
+        <Field>
+          <FormattedMessage id="t_Add_numbers:" defaultMessage="Add numbers:" />
+        </Field>
+        <Field>
+          <Range
+            size={16}
+            min={0}
+            max={100}
+            step={1}
+            value={Math.round(settings.get(lessonProps.textNumbers) * 100)}
+            onChange={(value) => {
+              updateSettings(
+                settings.set(lessonProps.textNumbers, value / 100),
+              );
+            }}
+          />
+        </Field>
+        <Field>
+          <Value
+            value={formatPercents(settings.get(lessonProps.textNumbers))}
+          />
+        </Field>
+      </FieldList>
+      <Explainer>
+        <Description>
+          <FormattedMessage
+            id="settings.numbers.description"
+            defaultMessage="Adjust the amount of numbers added to the lesson text. Use this option to practice typing numbers. We recommend to increase this value only if you have all letters above the target speed."
+          />
+        </Description>
+      </Explainer>
     </>
   );
 }

@@ -245,6 +245,23 @@ test("generate text with natural words", () => {
   );
 });
 
+test("generate text with numbers", () => {
+  const settings = new Settings()
+    .set(lessonProps.guided.naturalWords, false)
+    .set(lessonProps.textNumbers, 1);
+  const keyboard = loadKeyboard(Layout.EN_US);
+  const model = new FakePhoneticModel(["uno", "due", "tre"]);
+  const lesson = new GuidedLesson(settings, keyboard, model, []);
+  const lessonKeys = lesson.update(makeKeyStatsMap(lesson.letters, []));
+
+  const result = lesson.generate(lessonKeys, model.rng);
+  // Verify result contains both words and numbers
+  const hasWords = /\b(uno|due|tre)\b/.test(result);
+  const hasNumbers = /\d+/.test(result);
+  equal(hasWords, true);
+  equal(hasNumbers, true);
+});
+
 describe("unlock keys", () => {
   const letter1 = FakePhoneticModel.letter1;
   const letter2 = FakePhoneticModel.letter2;
