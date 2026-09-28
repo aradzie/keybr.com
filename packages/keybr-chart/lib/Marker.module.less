@@ -4,6 +4,7 @@
   inline-size: 1rem;
   block-size: 1rem;
   line-height: 1rem;
+  user-select: none;
 }
 
 .slow {
@@ -49,4 +50,8 @@
 .histogram_r {
   composes: root;
   background-color: var(--Chart-hist-r__color);
+}
+
+.clickable {
+  cursor: pointer;
 }
