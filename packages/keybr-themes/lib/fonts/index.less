@@ -165,10 +165,7 @@ html {
 .font-size(3840px, 24px); // ratio=160
 
 .font-size(@width, @size) {
-  // Please note that the "device-width" query is deprecated, however the
-  // "width" query reports browser window size, not screen size.
-  // stylelint-disable-next-line media-query-no-invalid
-  @media (min-width: @width), (min-device-width: @width) {
+  @media (min-width: @width) {
     html {
       font-size: @size;
     }
