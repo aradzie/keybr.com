@@ -15,14 +15,13 @@ export function fakeKeyStatsMap(
   const target = new Target(settings);
   const map = new Map<Letter, KeyStats>(
     items.map(([letter, confidence, bestConfidence]) => {
+      const { targetSpeed } = target.forLetter(letter);
       const timeToType =
-        confidence == null
-          ? null
-          : speedToTime(target.targetSpeed) / confidence;
+        confidence == null ? null : speedToTime(targetSpeed) / confidence;
       const bestTimeToType =
         bestConfidence == null
           ? null
-          : speedToTime(target.targetSpeed) / bestConfidence;
+          : speedToTime(targetSpeed) / bestConfidence;
       return [
         letter,
         {

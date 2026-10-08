@@ -38,7 +38,7 @@ function usePaint(
   const { formatInteger } = useIntlNumbers();
   const { formatSpeed } = useFormatter();
   const { settings } = useSettings();
-  const target = new Target(settings);
+  const target = new Target(settings, lessonKey.letter);
   const g = withStyles(styles);
 
   if (learningRate == null) {

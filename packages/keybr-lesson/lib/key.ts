@@ -6,13 +6,14 @@ import { type Target } from "./target.ts";
 export class LessonKey implements KeyStats {
   static from(keyStats: KeyStats, target: Target): LessonKey {
     const { letter, samples, timeToType, bestTimeToType } = keyStats;
+    const letterTarget = target.forLetter(letter);
     return new LessonKey({
       letter,
       samples,
       timeToType,
       bestTimeToType,
-      confidence: target.confidence(timeToType),
-      bestConfidence: target.confidence(bestTimeToType),
+      confidence: letterTarget.confidence(timeToType),
+      bestConfidence: letterTarget.confidence(bestTimeToType),
     });
   }
 

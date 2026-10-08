@@ -99,11 +99,12 @@ function usePaint(styles: ChartStyles, keyStatsMap: KeyStatsMap) {
       }
     }
 
-    function makeKeyData({ samples }: KeyStats): number[] {
+    function makeKeyData({ letter, samples }: KeyStats): number[] {
+      const letterTarget = target.forLetter(letter);
       const data = new Array<number>(results.length).fill(NaN);
       for (const { index, timeToType } of samples) {
         if (timeToType != null) {
-          data[index] = target.confidence(timeToType);
+          data[index] = letterTarget.confidence(timeToType);
         }
       }
       return data;

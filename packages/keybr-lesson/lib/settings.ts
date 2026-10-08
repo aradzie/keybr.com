@@ -4,6 +4,7 @@ import {
   booleanProp,
   flagsProp,
   itemProp,
+  numberMapProp,
   numberProp,
   stringProp,
 } from "@keybr/settings";
@@ -58,5 +59,9 @@ export const lessonProps = {
   punctuators: numberProp("lesson.punctuators", 0, { min: 0, max: 1 }),
   repeatWords: numberProp("lesson.repeatWords", 1, { min: 1, max: 10 }),
   targetSpeed: numberProp("lesson.targetSpeed", 175, { min: 75, max: 750 }),
+  letterTargetSpeed: numberMapProp("lesson.letterTargetSpeed", new Map(), {
+    min: 75,
+    max: 750,
+  }),
   dailyGoal: numberProp("lesson.dailyGoal", 30, { min: 0, max: 120 }),
 } as const;

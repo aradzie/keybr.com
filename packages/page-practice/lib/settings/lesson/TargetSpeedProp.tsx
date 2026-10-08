@@ -17,9 +17,7 @@ import { type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
 
 export function TargetSpeedProp(): ReactNode {
-  const { formatSpeed } = useFormatter();
   const { settings, updateSettings } = useSettings();
-  const targetSpeed = settings.get(lessonProps.targetSpeed);
   return (
     <>
       <FieldList>
@@ -29,49 +27,12 @@ export function TargetSpeedProp(): ReactNode {
             defaultMessage="Target typing speed:"
           />
         </Field>
-        <Field>
-          <Range
-            size={16}
-            min={lessonProps.targetSpeed.min}
-            max={lessonProps.targetSpeed.max}
-            step={1}
-            value={targetSpeed}
-            onChange={(value) => {
-              updateSettings(settings.set(lessonProps.targetSpeed, value));
-            }}
-          />
-        </Field>
-        <Field>
-          <Dir swap="icon">
-            <IconButton
-              icon={<Icon shape={mdiSkipPrevious} />}
-              disabled={targetSpeed === lessonProps.targetSpeed.min}
-              onClick={() => {
-                updateSettings(
-                  settings.set(
-                    lessonProps.targetSpeed,
-                    Math.ceil(targetSpeed / 5) * 5 - 5,
-                  ),
-                );
-              }}
-            />
-            <IconButton
-              icon={<Icon shape={mdiSkipNext} />}
-              disabled={targetSpeed === lessonProps.targetSpeed.max}
-              onClick={() => {
-                updateSettings(
-                  settings.set(
-                    lessonProps.targetSpeed,
-                    Math.floor(targetSpeed / 5) * 5 + 5,
-                  ),
-                );
-              }}
-            />
-          </Dir>
-        </Field>
-        <Field>
-          <Value value={formatSpeed(targetSpeed)} />
-        </Field>
+        <TargetSpeedFields
+          value={settings.get(lessonProps.targetSpeed)}
+          onChange={(value) => {
+            updateSettings(settings.set(lessonProps.targetSpeed, value));
+          }}
+        />
       </FieldList>
       <Explainer>
         <Description>
@@ -81,6 +42,52 @@ export function TargetSpeedProp(): ReactNode {
           />
         </Description>
       </Explainer>
+    </>
+  );
+}
+
+export function TargetSpeedFields({
+  value,
+  onChange,
+}: {
+  readonly value: number;
+  readonly onChange: (value: number) => void;
+}): ReactNode {
+  const { formatSpeed } = useFormatter();
+  const { min, max } = lessonProps.targetSpeed;
+  return (
+    <>
+      <Field>
+        <Range
+          size={16}
+          min={min}
+          max={max}
+          step={1}
+          value={value}
+          onChange={onChange}
+        />
+      </Field>
+      <Field>
+        <Dir swap="icon">
+          <IconButton
+            icon={<Icon shape={mdiSkipPrevious} />}
+            disabled={value === min}
+            onClick={() => {
+              onChange(Math.ceil(value / 5) * 5 - 5);
+            }}
+          />
+          <IconButton
+            icon={<Icon shape={mdiSkipNext} />}
+            disabled={value === max}
+            onClick={() => {
+              onChange(Math.floor(value / 5) * 5 + 5);
+            }}
+          />
+        </Dir>
+      </Field>
+      <Field>
+        <Value value={formatSpeed(value)} />
+      </Field>
     </>
   );
 }

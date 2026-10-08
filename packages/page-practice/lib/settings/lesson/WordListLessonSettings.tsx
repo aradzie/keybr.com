@@ -17,6 +17,7 @@ import {
 import { type ReactNode } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { LessonLengthProp } from "./LessonLengthProp.tsx";
+import { LetterTargetSpeedProp } from "./LetterTargetSpeedProp.tsx";
 import { RepeatWordsProp } from "./RepeatWordsProp.tsx";
 import { TargetSpeedProp } from "./TargetSpeedProp.tsx";
 import { TextManglingProp } from "./TextManglingProp.tsx";
@@ -46,6 +47,7 @@ export function WordListLessonSettings({
         <WordListPreview lesson={lesson} />
         <WordListStats lesson={lesson} />
         <TargetSpeedProp />
+        <LetterTargetSpeedProp letters={lesson.letters} />
         <RepeatWordsProp />
         <TextManglingProp />
         <LessonLengthProp />

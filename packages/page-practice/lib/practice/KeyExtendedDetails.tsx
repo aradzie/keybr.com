@@ -16,7 +16,7 @@ export function KeyExtendedDetails({
   readonly keyStats: KeyStats;
 }): ReactNode {
   const { settings } = useSettings();
-  const target = new Target(settings);
+  const target = new Target(settings, lessonKey.letter);
   const learningRate = LearningRate.from(keyStats.samples, target);
   return (
     <div className={styles.root}>

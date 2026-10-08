@@ -2,6 +2,7 @@ import { useIntlNumbers } from "@keybr/intl";
 import { Target } from "@keybr/lesson";
 import { useFormatter } from "@keybr/lesson-ui";
 import { hasData, linearRegression, Range, smooth, Vector } from "@keybr/math";
+import { type Letter } from "@keybr/phonetic-model";
 import { type KeySample, timeToSpeed } from "@keybr/result";
 import { useSettings } from "@keybr/settings";
 import { Canvas, type Rect, type ShapeList, Shapes } from "@keybr/widget";
@@ -13,16 +14,18 @@ import { paintCurve, paintScatterPlot, projection } from "./graph.ts";
 import { type ChartStyles, useChartStyles } from "./use-chart-styles.ts";
 
 export function KeySpeedChart({
+  letter,
   samples,
   smoothness,
   width,
   height,
 }: {
+  readonly letter: Letter;
   readonly samples: readonly KeySample[];
   readonly smoothness: number;
 } & SizeProps): ReactNode {
   const styles = useChartStyles();
-  const paint = usePaint(styles, samples, smoothness);
+  const paint = usePaint(styles, letter, samples, smoothness);
   return (
     <Chart width={width} height={height}>
       <Canvas paint={chartArea(styles, paint)} />
@@ -32,6 +35,7 @@ export function KeySpeedChart({
 
 function usePaint(
   styles: ChartStyles,
+  letter: Letter,
   samples: readonly KeySample[],
   smoothness: number,
 ) {
@@ -39,7 +43,7 @@ function usePaint(
   const { formatInteger } = useIntlNumbers();
   const { formatSpeed } = useFormatter();
   const { settings } = useSettings();
-  const target = new Target(settings);
+  const target = new Target(settings, letter);
   const g = withStyles(styles);
 
   if (!hasData(samples)) {
