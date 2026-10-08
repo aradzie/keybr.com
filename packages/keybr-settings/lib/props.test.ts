@@ -6,6 +6,7 @@ import {
   enumProp,
   flagsProp,
   itemProp,
+  numberMapProp,
   numberProp,
   stringProp,
 } from "./props.ts";
@@ -40,6 +41,7 @@ class Digit implements EnumItem {
 const props = {
   boolean: booleanProp("prop.boolean", false),
   number: numberProp("prop.number", 0, { min: 0, max: 100 }),
+  numberMap: numberMapProp("prop.numberMap", new Map(), { min: 0, max: 100 }),
   string: stringProp("prop.string", "", { maxLength: 3 }),
   enum: enumProp("prop.enum", Letter, Letter.None),
   item: itemProp("prop.item", Digit.ALL, Digit.NONE),
@@ -183,5 +185,41 @@ test("read flags", () => {
   deepEqual(
     new Settings({ [p.key]: "a,b,c,x" }).get(p), //
     ["a", "b", "c"],
+  );
+});
+
+test("read number map", () => {
+  const p = props.numberMap;
+  deepEqual(new Settings().get(p), new Map());
+  deepEqual(
+    new Settings().get(p, new Map([["a", 1]])), //
+    new Map([["a", 1]]),
+  );
+  deepEqual(new Settings({ [p.key]: null }).get(p), new Map());
+  deepEqual(new Settings({ [p.key]: "abc" }).get(p), new Map());
+  deepEqual(new Settings({ [p.key]: [1, 2] }).get(p), new Map());
+  deepEqual(
+    new Settings({ [p.key]: { a: 1, b: 1000, c: "x", d: null } }).get(p),
+    new Map([
+      ["a", 1],
+      ["b", 100],
+    ]),
+  );
+});
+
+test("write number map", () => {
+  const p = props.numberMap;
+  deepEqual(new Settings().set(p, new Map()).toJSON(), { [p.key]: {} });
+  deepEqual(
+    new Settings()
+      .set(
+        p,
+        new Map([
+          ["a", 1],
+          ["b", 1000],
+        ]),
+      )
+      .toJSON(),
+    { [p.key]: { a: 1, b: 100 } },
   );
 });

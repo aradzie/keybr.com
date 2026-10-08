@@ -1,6 +1,7 @@
 import {
   type Enum,
   type EnumItem,
+  isPlainObject,
   type XEnum,
   type XEnumItem,
 } from "@keybr/lang";
@@ -23,6 +24,14 @@ export type NumberProp = {
   readonly min: number;
   readonly max: number;
 } & AnyProp<number>;
+
+export type NumberMapProp = {
+  readonly type: "numberMap";
+  readonly min: number;
+  readonly max: number;
+} & AnyProp<NumberMap>;
+
+export type NumberMap = ReadonlyMap<string, number>;
 
 export type StringProp = {
   readonly type: "string";
@@ -87,6 +96,43 @@ export function numberProp(
     },
     fromJson(value: unknown, defaultValue0 = defaultValue): number {
       return typeof value === "number" ? clamp(value, min, max) : defaultValue0;
+    },
+  };
+}
+
+export function numberMapProp(
+  key: string,
+  defaultValue: NumberMap,
+  {
+    min = NaN,
+    max = NaN,
+  }: {
+    readonly min?: number;
+    readonly max?: number;
+  } = {},
+): NumberMapProp {
+  return {
+    type: "numberMap",
+    key,
+    defaultValue,
+    min,
+    max,
+    toJson(value: NumberMap): unknown {
+      return Object.fromEntries(
+        [...value].map(([k, v]) => [k, clamp(v, min, max)]),
+      );
+    },
+    fromJson(value: unknown, defaultValue0 = defaultValue): NumberMap {
+      if (!isPlainObject(value)) {
+        return defaultValue0;
+      }
+      const map = new Map<string, number>();
+      for (const [k, v] of Object.entries(value as Record<string, unknown>)) {
+        if (typeof v === "number") {
+          map.set(k, clamp(v, min, max));
+        }
+      }
+      return map;
     },
   };
 }
