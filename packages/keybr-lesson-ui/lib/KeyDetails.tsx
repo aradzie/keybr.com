@@ -23,7 +23,7 @@ export const KeyDetails = ({ lessonKey }: { lessonKey: LessonKey }) => {
     const learningRate =
       LearningRate.from(
         lessonKey.samples, //
-        new Target(settings),
+        new Target(settings, lessonKey.letter),
       )?.learningRate ?? null;
     return (
       <span className={clsx(styles.keyDetails, styles.keyDetails_calibrated)}>

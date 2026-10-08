@@ -63,6 +63,7 @@ export function KeySpeedChartSection({
 
       <ChartWrapper>
         <KeySpeedChart
+          letter={current}
           samples={samples}
           smoothness={smoothness}
           width="100%"

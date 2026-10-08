@@ -1,14 +1,18 @@
 import { test } from "node:test";
 import { FakeIntlProvider } from "@keybr/intl";
+import { Letter } from "@keybr/phonetic-model";
 import { FakeSettingsContext } from "@keybr/settings";
 import { render } from "@testing-library/react";
 import { KeySpeedChart } from "./KeySpeedChart.tsx";
+
+const letter = new Letter(/* "a" */ 0x0061, 1);
 
 test("render empty", () => {
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
         <KeySpeedChart
+          letter={letter}
           samples={[]}
           smoothness={1}
           width="100px"
@@ -25,6 +29,7 @@ test("render non-empty", () => {
     <FakeIntlProvider>
       <FakeSettingsContext>
         <KeySpeedChart
+          letter={letter}
           samples={[
             {
               index: 1,
