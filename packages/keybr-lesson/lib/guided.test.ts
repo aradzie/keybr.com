@@ -8,6 +8,7 @@ import { fakeKeyStatsMap, printLessonKeys } from "./fakes.ts";
 import { GuidedLesson } from "./guided.ts";
 import { LessonKey } from "./key.ts";
 import { lessonProps } from "./settings.ts";
+import { Target } from "./target.ts";
 
 test("provide key set", () => {
   const settings = new Settings();
@@ -683,5 +684,33 @@ describe("unlock keys", () => {
         );
       });
     });
+  });
+
+  it("use per-letter target speed", () => {
+    // The key stats are relative to the default target speed of 175.
+    const keyStatsMap = fakeKeyStatsMap(new Settings(), [
+      [letter1, 1, 1], // A
+      [letter2, 1, 1], // B
+      [letter3, 1, 1], // C
+      [letter4, 1, 1], // D
+      [letter5, 1, 1], // E
+      [letter6, 0.8, 0.8], // F, typed at 140
+      [letter7, null, null], // G
+      [letter8, null, null], // H
+      [letter9, null, null], // I
+      [letter10, null, null], // J
+    ]);
+
+    equal(printLessonKeys(recoverOff().lesson.update(keyStatsMap)), "ABCDE[F]");
+
+    // F is above its own lower target speed, so the next key is unlocked.
+    const { lesson } = recoverOff(
+      new Settings().set(
+        lessonProps.letterTargetSpeed,
+        new Map([[Target.letterKey(letter6), 125]]),
+      ),
+    );
+
+    equal(printLessonKeys(lesson.update(keyStatsMap)), "ABCDEF[G]");
   });
 });
