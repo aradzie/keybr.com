@@ -90,6 +90,7 @@ static readonly EN_CUSTOM = new Layout(
       Geometry.STANDARD_101,
       Geometry.STANDARD_101_FULL,
       Geometry.MATRIX,
+      Geometry.CORNE
     ),
 );
 ```

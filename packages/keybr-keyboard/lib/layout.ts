@@ -29,6 +29,7 @@ export class Layout implements XEnumItem {
       Geometry.ISO_102,
       Geometry.ISO_102_FULL,
       Geometry.MATRIX,
+      Geometry.CORNE,
     ),
   );
   static readonly EN_DVORAK = new Layout(

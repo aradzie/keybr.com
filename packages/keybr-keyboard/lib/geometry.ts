@@ -54,6 +54,12 @@ export class Geometry implements EnumItem {
     "staggered",
     ZoneMod.ALL,
   );
+  static readonly CORNE = new Geometry(
+    "corne",
+    "Corne (Python)",
+    "matrix",
+    new Enum(),
+  );
   static readonly ISO_102 = new Geometry(
     "iso102", //
     "ISO 102",
@@ -114,6 +120,7 @@ export class Geometry implements EnumItem {
     Geometry.ANSI_101_FULL,
     Geometry.ISO_102,
     Geometry.ISO_102_FULL,
+    Geometry.CORNE,
     Geometry.KOREAN_103,
     Geometry.KOREAN_103_FULL,
     Geometry.BRAZILIAN_104,

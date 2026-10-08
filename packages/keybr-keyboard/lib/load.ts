@@ -3,6 +3,7 @@ import { ANSI_101 } from "./geometry/ansi_101.ts";
 import { ANSI_101_FULL } from "./geometry/ansi_101_full.ts";
 import { BRAZILIAN_104 } from "./geometry/brazilian_104.ts";
 import { BRAZILIAN_104_FULL } from "./geometry/brazilian_104_full.ts";
+import { CORNE } from "./geometry/corne.ts";
 import { ISO_102 } from "./geometry/iso_102.ts";
 import { ISO_102_FULL } from "./geometry/iso_102_full.ts";
 import { JAPANESE_106 } from "./geometry/japanese_106.ts";
@@ -224,6 +225,7 @@ const layouts = new Map<Layout, CharacterDict>([
 
 const geometries = new Map<Geometry, GeometryDict>([
   [Geometry.ANSI_101, ANSI_101],
+  [Geometry.CORNE, CORNE],
   [Geometry.ANSI_101_FULL, ANSI_101_FULL],
   [Geometry.BRAZILIAN_104, BRAZILIAN_104],
   [Geometry.BRAZILIAN_104_FULL, BRAZILIAN_104_FULL],
