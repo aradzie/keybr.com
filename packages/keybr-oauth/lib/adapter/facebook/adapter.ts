@@ -15,7 +15,7 @@ import {
   type FacebookProfileResponse,
 } from "./types.ts";
 
-const apiVersion = "v17.0";
+const apiVersion = "v26.0";
 const authorizationUri = `https://www.facebook.com/${apiVersion}/dialog/oauth`;
 const tokenUri = `https://graph.facebook.com/${apiVersion}/oauth/access_token`;
 const profileUri = `https://graph.facebook.com/${apiVersion}/me?fields=${[
