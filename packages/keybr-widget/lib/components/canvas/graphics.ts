@@ -95,8 +95,12 @@ export class Graphics {
 export class Shapes {
   static clear(): Shape {
     return (g: Graphics): void => {
-      const { width, height } = g.context.canvas;
+      const { context } = g;
+      const { width, height } = context.canvas;
+      context.save();
+      context.resetTransform();
       g.clear(0, 0, width, height);
+      context.restore();
     };
   }
 
