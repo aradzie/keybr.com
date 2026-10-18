@@ -570,6 +570,44 @@ test("normalize characters", () => {
   check(`¿?¡!`, `¿?¡!`);
 });
 
+test("accept a non-breaking space at a word separator", () => {
+  for (const stopOnError of [false, true]) {
+    for (const forgiveErrors of [false, true]) {
+      for (const spaceSkipsWords of [false, true]) {
+        const textInput = new TextInput("a b", {
+          stopOnError,
+          forgiveErrors,
+          spaceSkipsWords,
+        });
+
+        equal(textInput.appendChar(100, A, 100), Feedback.Succeeded);
+        equal(textInput.appendChar(200, 0x00a0, 100), Feedback.Succeeded);
+        equal(textInput.appendChar(300, B, 100), Feedback.Succeeded);
+        isTrue(textInput.completed);
+        equal(showChars(textInput), "a| |b");
+        equal(showSteps(textInput), "a,100,100| ,200,100|b,300,100");
+        equal(makeStats(textInput.steps).errors, 0);
+        equal(makeStats(textInput.steps).accuracy, 1);
+      }
+    }
+  }
+});
+
+test("a non-breaking space does not match a letter", () => {
+  const textInput = new TextInput("ab", {
+    stopOnError: true,
+    forgiveErrors: false,
+    spaceSkipsWords: false,
+  });
+
+  equal(textInput.appendChar(100, A, 100), Feedback.Succeeded);
+  equal(textInput.appendChar(200, 0x00a0, 100), Feedback.Failed);
+  equal(textInput.pos, 1);
+  equal(textInput.appendChar(300, B, 100), Feedback.Recovered);
+  isTrue(textInput.completed);
+  equal(makeStats(textInput.steps).errors, 1);
+});
+
 test("whitespace", () => {
   const textInput = new TextInput("a  ", {
     stopOnError: true,

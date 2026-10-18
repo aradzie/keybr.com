@@ -103,10 +103,7 @@ export class TextInput {
   }: {
     readonly timeStamp: number;
     readonly inputType:
-      | "appendChar"
-      | "appendLineBreak"
-      | "clearChar"
-      | "clearWord";
+      "appendChar" | "appendLineBreak" | "clearChar" | "clearWord";
     readonly codePoint: CodePoint;
     readonly timeToType: number;
   }): Feedback {
@@ -147,6 +144,10 @@ export class TextInput {
     }
 
     const { codePoint: expected } = this.at(this.pos);
+
+    if (expected === 0x0020 && codePoint === 0x00a0) {
+      codePoint = 0x0020;
+    }
 
     if (expected !== 0x0020 && codePoint === 0x0020) {
       if (
