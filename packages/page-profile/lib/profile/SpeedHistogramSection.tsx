@@ -36,7 +36,7 @@ export function SpeedHistogramSection({ stats }: { stats: SummaryStats }) {
         <Figure.Description>
           <FormattedMessage
             id="profile.chart.histogram.description"
-            defaultMessage="This is a histogram of the typing speeds of all users, and your position in relation to them."
+            defaultMessage="This histogram shows the distribution of recorded lesson speeds. Both your average and top speeds are compared with this same distribution."
           />
         </Figure.Description>
       </Explainer>
@@ -45,7 +45,7 @@ export function SpeedHistogramSection({ stats }: { stats: SummaryStats }) {
         {period === "average" ? (
           <FormattedMessage
             id="profile.chart.compareAverageSpeed.description"
-            defaultMessage="Your all time average speed beats {value} of all other people."
+            defaultMessage="Your all time average speed is faster than {value} of the recorded lesson speeds."
             values={{
               value: <Value value={value > 0 ? formatPercents(cdf) : "N/A"} />,
             }}
@@ -53,7 +53,7 @@ export function SpeedHistogramSection({ stats }: { stats: SummaryStats }) {
         ) : (
           <FormattedMessage
             id="profile.chart.compareTopSpeed.description"
-            defaultMessage="Your all time top speed beats {value} of all other people."
+            defaultMessage="Your all time top speed is faster than {value} of the recorded lesson speeds."
             values={{
               value: <Value value={value > 0 ? formatPercents(cdf) : "N/A"} />,
             }}
@@ -123,7 +123,7 @@ export function SpeedHistogramSection({ stats }: { stats: SummaryStats }) {
         <Figure.Legend>
           <FormattedMessage
             id="profile.chart.histogram.legend"
-            defaultMessage="See how fast you type relative to other users. The higher the bar is, the more people type at that speed. Your position is marked with the colored vertical lines."
+            defaultMessage="The higher the bar is, the more lessons were typed at that speed. Your selected speed is marked with a colored vertical line."
           />
         </Figure.Legend>
       </Explainer>
