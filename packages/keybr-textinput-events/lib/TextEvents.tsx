@@ -7,10 +7,12 @@ import {
   useEffect,
   useImperativeHandle,
   useRef,
+  useState,
 } from "react";
 import { type Callbacks, InputHandler } from "./inputhandler.ts";
 
 export const TextEvents = memo(function TextEvents({
+  inputObserver,
   onFocus,
   onBlur,
   onKeyDown,
@@ -29,7 +31,14 @@ export const TextEvents = memo(function TextEvents({
       handler.setInput(null);
     };
   }, [handler]);
-  handler.setCallbacks({ onFocus, onBlur, onKeyDown, onKeyUp, onInput });
+  handler.setCallbacks({
+    inputObserver,
+    onFocus,
+    onBlur,
+    onKeyDown,
+    onKeyUp,
+    onInput,
+  });
   return (
     <div style={divStyle}>
       <textarea
@@ -44,11 +53,7 @@ export const TextEvents = memo(function TextEvents({
 });
 
 function useInputHandler() {
-  const handlerRef = useRef<InputHandler | null>(null);
-  let handler = handlerRef.current;
-  if (handler == null) {
-    handlerRef.current = handler = new InputHandler();
-  }
+  const [handler] = useState(() => new InputHandler());
   return handler;
 }
 

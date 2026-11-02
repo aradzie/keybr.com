@@ -2,6 +2,7 @@ import { type LineList, type TextDisplaySettings } from "@keybr/textinput";
 import {
   type IInputEvent,
   type IKeyboardEvent,
+  type InputObserver,
   ModifierState,
   TextEvents,
 } from "@keybr/textinput-events";
@@ -35,6 +36,7 @@ export function TextArea({
   demo,
   moving,
   focusRef,
+  inputObserver,
   onFocus,
   onBlur,
   onKeyDown,
@@ -49,6 +51,7 @@ export function TextArea({
   readonly demo?: boolean;
   readonly moving?: boolean;
   readonly focusRef?: RefObject<Focusable | null>;
+  readonly inputObserver?: InputObserver;
   readonly onFocus?: () => void;
   readonly onBlur?: () => void;
   readonly onKeyDown?: (event: IKeyboardEvent) => void;
@@ -98,6 +101,7 @@ export function TextArea({
   return (
     <div ref={ref} className={styles.root} onClick={handleClick}>
       <TextEvents
+        inputObserver={inputObserver}
         focusRef={innerRef}
         onFocus={handleFocus}
         onBlur={handleBlur}

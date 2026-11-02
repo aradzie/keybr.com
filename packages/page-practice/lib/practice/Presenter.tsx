@@ -6,6 +6,7 @@ import { type LineList } from "@keybr/textinput";
 import {
   type IInputEvent,
   type IKeyboardEvent,
+  type InputObserver,
   ModifierState,
 } from "@keybr/textinput-events";
 import { TextArea } from "@keybr/textinput-ui";
@@ -19,6 +20,8 @@ import * as styles from "./Presenter.module.less";
 import { type LessonState } from "./state/index.ts";
 
 type Props = {
+  readonly inputObserver?: InputObserver;
+  readonly onFocusReset?: () => void;
   readonly state: LessonState;
   readonly lines: LineList;
   readonly depressedKeys: readonly KeyId[];
@@ -106,6 +109,7 @@ export class Presenter extends PureComponent<Props, State> {
             textInput={
               <Zoomer id="TextArea/Normal">
                 <TextArea
+                  inputObserver={this.props.inputObserver}
                   focusRef={this.focusRef}
                   settings={state.textDisplaySettings}
                   lines={lines}
@@ -139,6 +143,7 @@ export class Presenter extends PureComponent<Props, State> {
             textInput={
               <Zoomer id="TextArea/Compact">
                 <TextArea
+                  inputObserver={this.props.inputObserver}
                   focusRef={this.focusRef}
                   settings={state.textDisplaySettings}
                   lines={lines}
@@ -171,6 +176,7 @@ export class Presenter extends PureComponent<Props, State> {
             textInput={
               <Zoomer id="TextArea/Bare">
                 <TextArea
+                  inputObserver={this.props.inputObserver}
                   focusRef={this.focusRef}
                   settings={state.textDisplaySettings}
                   lines={lines}
@@ -223,7 +229,7 @@ export class Presenter extends PureComponent<Props, State> {
         focus: true,
       },
       () => {
-        this.props.onResetLesson();
+        (this.props.onFocusReset ?? this.props.onResetLesson)();
       },
     );
   };
@@ -234,7 +240,7 @@ export class Presenter extends PureComponent<Props, State> {
         focus: false,
       },
       () => {
-        this.props.onResetLesson();
+        (this.props.onFocusReset ?? this.props.onResetLesson)();
       },
     );
   };

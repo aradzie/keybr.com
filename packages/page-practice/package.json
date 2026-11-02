@@ -22,6 +22,7 @@
     "@keybr/phonetic-model": "*",
     "@keybr/phonetic-model-loader": "*",
     "@keybr/rand": "*",
+    "@keybr/recording-browser": "*",
     "@keybr/result": "*",
     "@keybr/settings": "*",
     "@keybr/textinput": "*",
@@ -31,7 +32,9 @@
     "@keybr/unicode": "*",
     "@keybr/widget": "*"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@keybr/recording": "*"
+  },
   "scripts": {
     "clean": "rm -fr .types",
     "compile": "tsc",

@@ -1,0 +1,11 @@
+{
+  "extends": "../tsconfig-template.json",
+  "compilerOptions": {
+    "rootDir": "lib",
+    "outDir": ".types",
+    "emitDeclarationOnly": true
+  },
+  "include": [
+    "lib/**/*"
+  ]
+}

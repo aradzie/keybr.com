@@ -19,6 +19,7 @@ import {
   type StyledText,
   type TextDisplaySettings,
   TextInput,
+  type TextInputObserver,
   type TextInputSettings,
   toTextDisplaySettings,
   toTextInputSettings,
@@ -29,6 +30,7 @@ import { type LastLesson } from "./last-lesson.ts";
 import { type Progress } from "./progress.ts";
 
 export class LessonState {
+  readonly #observer?: TextInputObserver;
   readonly #onResult: (result: Result, textInput: TextInput) => void;
   readonly settings: Settings;
   readonly lesson: Lesson;
@@ -50,8 +52,10 @@ export class LessonState {
   constructor(
     progress: Progress,
     onResult: (result: Result, textInput: TextInput) => void,
+    observer?: TextInputObserver,
   ) {
     this.#onResult = onResult;
+    this.#observer = observer;
     this.settings = progress.settings;
     this.lesson = progress.lesson;
     this.textInputSettings = toTextInputSettings(this.settings);
@@ -83,7 +87,12 @@ export class LessonState {
   }
 
   #reset(fragment: StyledText) {
-    this.textInput = new TextInput(fragment, this.textInputSettings);
+    this.textInput = new TextInput(
+      fragment,
+      this.textInputSettings,
+      undefined,
+      this.#observer,
+    );
     this.lines = this.textInput.lines;
     this.suffix = this.textInput.remaining.map(({ codePoint }) => codePoint);
   }

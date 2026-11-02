@@ -2,7 +2,7 @@ import { type Focusable } from "@keybr/widget";
 import { mapEvent, timeStampOf } from "./events.ts";
 import { isTextInput, ModifierState } from "./modifiers.ts";
 import { TimeToType } from "./timetotype.ts";
-import { type InputListener } from "./types.ts";
+import { type InputListener, type InputObserver } from "./types.ts";
 
 // https://w3c.github.io/uievents/
 // https://www.w3.org/TR/input-events-1/
@@ -10,6 +10,7 @@ import { type InputListener } from "./types.ts";
 // https://domeventviewer.com/key-event-viewer.html
 
 export type Callbacks = {
+  readonly inputObserver?: InputObserver;
   readonly onFocus?: () => void;
   readonly onBlur?: () => void;
 } & Partial<InputListener>;
@@ -90,6 +91,10 @@ export class InputHandler implements Focusable {
   };
 
   handleKeyboard = (event: KeyboardEvent) => {
+    this.#observe(event, () => this.#handleKeyboard(event));
+  };
+
+  #handleKeyboard = (event: KeyboardEvent) => {
     if (process.env.NODE_ENV === "production") {
       if (!(event instanceof KeyboardEvent && event.isTrusted)) {
         return;
@@ -117,6 +122,10 @@ export class InputHandler implements Focusable {
   };
 
   handleInput = (event: InputEvent) => {
+    this.#observe(event, () => this.#handleInput(event));
+  };
+
+  #handleInput = (event: InputEvent) => {
     if (process.env.NODE_ENV === "production") {
       if (!(event instanceof InputEvent && event.isTrusted)) {
         return;
@@ -164,6 +173,10 @@ export class InputHandler implements Focusable {
   };
 
   handleComposition = (event: CompositionEvent) => {
+    this.#observe(event, () => this.#handleComposition(event));
+  };
+
+  #handleComposition = (event: CompositionEvent) => {
     switch (event.type) {
       case "compositionstart":
       case "compositionupdate":
@@ -174,6 +187,27 @@ export class InputHandler implements Focusable {
         break;
     }
   };
+
+  #observe(
+    event: KeyboardEvent | InputEvent | CompositionEvent,
+    dispatch: () => void,
+  ) {
+    let end: (() => void) | void = undefined;
+    try {
+      end = this.#callbacks.inputObserver?.onEvent(event);
+    } catch {
+      /* Optional observer. */
+    }
+    try {
+      dispatch();
+    } finally {
+      try {
+        end?.();
+      } catch {
+        /* Optional observer. */
+      }
+    }
+  }
 
   #appendChar(event: InputEvent | CompositionEvent) {
     const { data } = event;

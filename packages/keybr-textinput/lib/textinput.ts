@@ -23,6 +23,34 @@ export type Step = {
   readonly typo: boolean;
 };
 
+export type InputState = {
+  readonly cursor: number;
+  readonly steps: readonly Step[];
+  readonly pending: readonly Step[];
+  readonly typo: boolean;
+  readonly completed: boolean;
+};
+
+export type InputEffect =
+  | "accepted"
+  | "rejected"
+  | "ignored-space"
+  | "delete-character"
+  | "delete-word"
+  | "skip-word"
+  | "forgiven"
+  | "replace-character"
+  | "skip-character";
+
+export type InputChange = {
+  readonly before: InputState;
+  readonly after: InputState;
+  readonly feedback: Feedback;
+  readonly effect: InputEffect;
+};
+
+export type TextInputObserver = (change: InputChange) => void;
+
 export type StepListener = (step: Step) => void;
 
 const recoverBufferLength = 3;
@@ -34,6 +62,8 @@ export class TextInput {
   readonly forgiveErrors: boolean;
   readonly spaceSkipsWords: boolean;
   readonly onStep: StepListener;
+  readonly #observer?: TextInputObserver;
+  #effect: InputEffect = "accepted";
   readonly #text: string;
   readonly #chars: readonly Char[];
   #steps: (Step & { readonly char: Char })[] = [];
@@ -45,7 +75,9 @@ export class TextInput {
     text: StyledText,
     { stopOnError, forgiveErrors, spaceSkipsWords }: TextInputSettings,
     onStep: StepListener = () => {},
+    observer?: TextInputObserver,
   ) {
+    this.#observer = observer;
     this.text = text;
     this.stopOnError = stopOnError;
     this.forgiveErrors = forgiveErrors;
@@ -95,6 +127,60 @@ export class TextInput {
     return this.#output.remaining;
   }
 
+  /** Detached snapshots include hidden wrong characters even in stop-on-error mode. */
+  snapshot(): InputState {
+    const copy = ({ timeStamp, codePoint, timeToType, typo }: Step): Step => ({
+      timeStamp,
+      codePoint,
+      timeToType,
+      typo,
+    });
+    return {
+      cursor: this.pos,
+      steps: this.#steps.map(copy),
+      pending: this.#garbage.map(copy),
+      typo: this.#typo,
+      completed: this.completed,
+    };
+  }
+
+  #observe(operation: () => Feedback): Feedback {
+    const before = this.#observer ? this.snapshot() : null;
+    const feedback = operation();
+    if (before != null) {
+      // Observers must never affect native input, scores, or progression.
+      try {
+        this.#observer?.({
+          before,
+          after: this.snapshot(),
+          feedback,
+          effect: this.#effect,
+        });
+      } catch {
+        /* Observation is optional. */
+      }
+    }
+    return feedback;
+  }
+
+  clearChar(): Feedback {
+    return this.#observe(() => this.#clearChar());
+  }
+
+  clearWord(): Feedback {
+    return this.#observe(() => this.#clearWord());
+  }
+
+  appendChar(
+    timeStamp: number,
+    codePoint: CodePoint,
+    timeToType: number,
+  ): Feedback {
+    return this.#observe(() =>
+      this.#appendChar(timeStamp, codePoint, timeToType),
+    );
+  }
+
   onInput({
     timeStamp,
     inputType,
@@ -103,10 +189,7 @@ export class TextInput {
   }: {
     readonly timeStamp: number;
     readonly inputType:
-      | "appendChar"
-      | "appendLineBreak"
-      | "clearChar"
-      | "clearWord";
+      "appendChar" | "appendLineBreak" | "clearChar" | "clearWord";
     readonly codePoint: CodePoint;
     readonly timeToType: number;
   }): Feedback {
@@ -122,22 +205,22 @@ export class TextInput {
     }
   }
 
-  clearChar(): Feedback {
+  #clearChar(): Feedback {
     this.#garbage.pop();
     this.#typo = true;
-    return this.#return(Feedback.Succeeded);
+    return this.#return(Feedback.Succeeded, "delete-character");
   }
 
-  clearWord(): Feedback {
+  #clearWord(): Feedback {
     this.#garbage = [];
     while (this.pos > 0 && this.at(this.pos - 1).codePoint !== 0x0020) {
       this.#steps.pop();
     }
     this.#typo = true;
-    return this.#return(Feedback.Succeeded);
+    return this.#return(Feedback.Succeeded, "delete-word");
   }
 
-  appendChar(
+  #appendChar(
     timeStamp: number,
     codePoint: CodePoint,
     timeToType: number,
@@ -155,10 +238,10 @@ export class TextInput {
           this.#typo)
       ) {
         this.#skipWord(timeStamp);
-        return this.#return(Feedback.Recovered);
+        return this.#return(Feedback.Recovered, "skip-word");
       }
       if (this.#garbage.length === 0 && !this.#typo) {
-        return this.#return(Feedback.Succeeded);
+        return this.#return(Feedback.Succeeded, "ignored-space");
       }
     }
 
@@ -180,9 +263,9 @@ export class TextInput {
       this.#garbage = [];
       this.#typo = false;
       if (typo) {
-        return this.#return(Feedback.Recovered);
+        return this.#return(Feedback.Recovered, "forgiven");
       } else {
-        return this.#return(Feedback.Succeeded);
+        return this.#return(Feedback.Succeeded, "accepted");
       }
     }
 
@@ -206,13 +289,14 @@ export class TextInput {
       this.forgiveErrors &&
       (this.#handleReplacedCharacter() || this.#handleSkippedCharacter())
     ) {
-      return this.#return(Feedback.Recovered);
+      return this.#return(Feedback.Recovered, this.#effect);
     } else {
-      return this.#return(Feedback.Failed);
+      return this.#return(Feedback.Failed, "rejected");
     }
   }
 
-  #return(feedback: Feedback): Feedback {
+  #return(feedback: Feedback, effect: InputEffect): Feedback {
+    this.#effect = effect;
     this.#update();
     return feedback;
   }
@@ -289,6 +373,7 @@ export class TextInput {
       }
     }
 
+    this.#effect = "replace-character";
     // Append a step with an error.
     this.#addStep(
       {
@@ -331,6 +416,7 @@ export class TextInput {
       }
     }
 
+    this.#effect = "skip-character";
     // Append a step with an error.
     this.#addStep(
       {
