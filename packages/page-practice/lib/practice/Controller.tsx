@@ -12,6 +12,7 @@ import {
   deleteKey,
   emulateLayout,
   type InputListener,
+  type InputObserver,
 } from "@keybr/textinput-events";
 import { makeSoundPlayer } from "@keybr/textinput-sounds";
 import {
@@ -164,7 +165,17 @@ function useLessonState(
     );
     return {
       prepare,
-      inputObserver: recorder ?? undefined,
+      inputObserver: recorder
+        ? ({
+            onEvent: (event) => {
+              // A modifier can start an attempt without producing text input.
+              // Releases must retain their owner without restarting the timer.
+              if (event.type === "keydown")
+                timeout.schedule(() => reset("inactivity"), 10000);
+              return recorder.onEvent(event);
+            },
+          } satisfies InputObserver)
+        : undefined,
       handleFocusReset,
       state,
       handleResetLesson,
