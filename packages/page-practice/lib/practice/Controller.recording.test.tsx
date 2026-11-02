@@ -15,6 +15,7 @@ import { RecordingContext } from "@keybr/recording-browser";
 import { type Result } from "@keybr/result";
 import { Settings, SettingsContext } from "@keybr/settings";
 import { act, fireEvent, render } from "@testing-library/react";
+import { userEvent } from "@testing-library/user-event";
 import { StrictMode } from "react";
 import { Controller } from "./Controller.tsx";
 import { Progress } from "./state/index.ts";
@@ -106,6 +107,95 @@ function setup(enabled = true) {
 function ends(records: RecordingRecord[]) {
   return records.filter((r) => r.type === "end");
 }
+
+for (const { reason, title, shortcut } of [
+  {
+    reason: "reset",
+    title: "Reset the current lesson",
+    shortcut: "{Control>}{ArrowLeft}{/Control}",
+  },
+  {
+    reason: "skipped",
+    title: "Skip the current lesson",
+    shortcut: "{Control>}{ArrowRight}{/Control}",
+  },
+  {
+    reason: "reset",
+    title: "Reset the current lesson",
+    shortcut: "{Escape}",
+  },
+]) {
+  for (const interaction of ["pointer", "shortcut"]) {
+    // Escape shares its pointer control with Ctrl+ArrowLeft.
+    if (interaction === "pointer" && shortcut === "{Escape}") continue;
+    test(`Controller records ${reason} once via ${interaction} ${shortcut}`, async (t) => {
+      const page = setup();
+      t.after(() => page.view.unmount());
+      const user = userEvent.setup();
+      await user.click(page.input());
+      page.type("abc");
+      const generate = t.mock.method(page.progress.lesson, "generate");
+      if (interaction === "pointer") {
+        await user.click(page.view.getByTitle(title, { exact: false }));
+      } else {
+        await user.keyboard(shortcut);
+      }
+      assert.equal(document.activeElement, page.input());
+      assert.deepEqual(
+        ends(page.records).map((r) => r.reason),
+        [reason],
+      );
+      assert.equal(generate.mock.callCount(), reason === "skipped" ? 1 : 0);
+      assert.equal(page.results.length, 0);
+      assert.equal(page.progress.summaryStats.count, 0);
+
+      // Later overlapping lifecycle and control notifications cannot end it again.
+      await user.click(document.body);
+      fireEvent(window, new window.Event("blur"));
+      fireEvent(document, new window.Event("visibilitychange"));
+      fireEvent(window, new window.Event("focus"));
+      await user.click(page.view.getByTitle(title, { exact: false }));
+      assert.deepEqual(
+        ends(page.records).map((r) => r.reason),
+        [reason],
+      );
+
+      // The reset exercise still completes and advances progress normally.
+      page.type("abcdefghij", 1000);
+      assert.deepEqual(
+        ends(page.records).map((r) => r.reason),
+        [reason, "completed"],
+      );
+      assert.equal(ends(page.records)[1]?.resultAccepted, true);
+      assert.equal(page.results.length, 1);
+      assert.equal(page.progress.summaryStats.count, 1);
+      assert.equal(page.records.filter((r) => r.type === "start").length, 2);
+    });
+  }
+}
+
+test("Controller records genuine pointer focus loss once", async (t) => {
+  const page = setup();
+  t.after(() => page.view.unmount());
+  const user = userEvent.setup();
+  await user.click(page.input());
+  page.type("abc");
+  await user.click(document.body);
+  assert.notEqual(document.activeElement, page.input());
+  fireEvent(window, new window.Event("blur"));
+  fireEvent(document, new window.Event("visibilitychange"));
+  fireEvent(window, new window.Event("focus"));
+  await user.click(page.input());
+  await user.click(
+    page.view.getByTitle("Skip the current lesson", { exact: false }),
+  );
+  assert.deepEqual(
+    ends(page.records).map((r) => r.reason),
+    ["focus-loss"],
+  );
+  assert.equal(page.records.filter((r) => r.type === "start").length, 1);
+  assert.equal(page.results.length, 0);
+});
 
 test("Controller records native completion and progression identically in StrictMode", (t) => {
   t.mock.method(Date, "now", () => 1700000000000);

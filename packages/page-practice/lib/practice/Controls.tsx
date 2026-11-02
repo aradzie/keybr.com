@@ -9,7 +9,7 @@ import {
   mdiRedo,
   mdiUndo,
 } from "@mdi/js";
-import { memo, type ReactNode } from "react";
+import { memo, type MouseEvent, type ReactNode } from "react";
 import { useIntl } from "react-intl";
 import { views } from "../views.tsx";
 import * as styles from "./Controls.module.less";
@@ -45,6 +45,7 @@ export const Controls = memo(function Controls({
             id: "practice.widget.resetLesson.description",
             defaultMessage: "Reset the current lesson (Ctrl + Left Arrow).",
           })}
+          onMouseDown={keepInputFocus}
           onClick={onResetLesson}
         />
         <IconButton
@@ -53,6 +54,7 @@ export const Controls = memo(function Controls({
             id: "practice.widget.skipLesson.description",
             defaultMessage: "Skip the current lesson (Ctrl + Right Arrow).",
           })}
+          onMouseDown={keepInputFocus}
           onClick={onSkipLesson}
         />
       </Dir>
@@ -96,3 +98,10 @@ export const Controls = memo(function Controls({
     </div>
   );
 });
+
+function keepInputFocus(event: MouseEvent) {
+  // Blurring the textarea would end the attempt before the control's click.
+  if (event.button === 0) {
+    event.preventDefault();
+  }
+}
