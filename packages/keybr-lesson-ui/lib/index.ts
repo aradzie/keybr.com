@@ -1,5 +1,4 @@
 export * from "./ActivityCalendar.tsx";
-export * from "./Calendar.tsx";
 export * from "./CurrentKey.tsx";
 export * from "./DailyGoal.tsx";
 export * from "./effort.ts";
