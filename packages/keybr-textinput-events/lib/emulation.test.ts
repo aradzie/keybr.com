@@ -1,5 +1,5 @@
 import { test } from "node:test";
-import { Emulation, keyboardProps, Layout, loadKeyboard } from "@keybr/keyboard";
+import { Emulation, Geometry, keyboardProps, Layout, loadKeyboard } from "@keybr/keyboard";
 import { Settings } from "@keybr/settings";
 import { deepEqual } from "rich-assert";
 import { emulateLayout } from "./emulation.ts";
@@ -164,6 +164,70 @@ test("forward emulation, incomplete events", () => {
   deepEqual(target.trace, [
     "100,keydown,,Unidentified", //
     "200,keyup,,Unidentified",
+  ]);
+});
+
+test("forward emulation, normalize Ukrainian ISO key codes", () => {
+  // Arrange.
+
+  const target = tracingListener();
+  const listener = emulateLayout(
+    new Settings().set(keyboardProps.emulation, Emulation.Forward),
+    loadKeyboard(Layout.UK_UA, Geometry.ISO_102),
+    target,
+  );
+
+  // Act.
+
+  replay(
+    listener,
+    { timeStamp: 100, type: "keydown", code: "Backquote", key: "ґ", modifiers: [] },
+    { timeStamp: 200, type: "keyup", code: "Backquote", key: "ґ", modifiers: [] },
+    { timeStamp: 300, type: "keydown", code: "IntlBackslash", key: "\\", modifiers: [] },
+    { timeStamp: 400, type: "keyup", code: "IntlBackslash", key: "\\", modifiers: [] },
+  );
+
+  // Assert.
+
+  deepEqual(target.trace, [
+    "100,keydown,IntlBackslash,ґ",
+    "100,appendChar,ґ,100",
+    "200,keyup,IntlBackslash,ґ",
+    "300,keydown,Backquote,\\",
+    "300,appendChar,\\,200",
+    "400,keyup,Backquote,\\",
+  ]);
+});
+
+test("forward emulation, normalize Ukrainian legacy classic ISO key codes", () => {
+  // Arrange.
+
+  const target = tracingListener();
+  const listener = emulateLayout(
+    new Settings().set(keyboardProps.emulation, Emulation.Forward),
+    loadKeyboard(Layout.UK_UA_LEGACY_CLASSIC, Geometry.ISO_102),
+    target,
+  );
+
+  // Act.
+
+  replay(
+    listener,
+    { timeStamp: 100, type: "keydown", code: "Backquote", key: "ʼ", modifiers: [] },
+    { timeStamp: 200, type: "keyup", code: "Backquote", key: "ʼ", modifiers: [] },
+    { timeStamp: 300, type: "keydown", code: "IntlBackslash", key: ">", modifiers: [] },
+    { timeStamp: 400, type: "keyup", code: "IntlBackslash", key: ">", modifiers: [] },
+  );
+
+  // Assert.
+
+  deepEqual(target.trace, [
+    "100,keydown,IntlBackslash,ʼ",
+    "100,appendChar,ʼ,100",
+    "200,keyup,IntlBackslash,ʼ",
+    "300,keydown,Backquote,>",
+    "300,appendChar,>,200",
+    "400,keyup,Backquote,>",
   ]);
 });
 

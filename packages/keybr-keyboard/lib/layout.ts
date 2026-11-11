@@ -572,7 +572,21 @@ export class Layout implements XEnumItem {
   static readonly UK_UA = new Layout(
     /* id= */ "uk-ua",
     /* xid= */ 0x78,
-    /* name= */ "{UA}",
+    /* name= */ "Ukrainian",
+    /* family= */ "йцукен",
+    /* language= */ Language.UK,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+    ),
+  );
+  static readonly UK_UA_LEGACY_CLASSIC = new Layout(
+    /* id= */ "uk-ua-legacy-classic",
+    /* xid= */ 0x79,
+    /* name= */ "Ukrainian (Legacy Classic)",
     /* family= */ "йцукен",
     /* language= */ Language.UK,
     /* emulate= */ true,
@@ -1498,6 +1512,7 @@ export class Layout implements XEnumItem {
     Layout.SL_SI,
     Layout.SV_SE,
     Layout.UK_UA,
+    Layout.UK_UA_LEGACY_CLASSIC,
     Layout.RU_RU,
     Layout.RU_STATICA_3X5,
     Layout.TR_TR_Q,

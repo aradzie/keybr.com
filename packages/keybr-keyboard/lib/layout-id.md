@@ -106,8 +106,8 @@
 - `0x75`:
 - `0x76`:
 - `0x77`:
-- `0x78`: Ukrainian/Ukraine
-- `0x79`:
+- `0x78`: Ukrainian/Ukrainian
+- `0x79`: Ukrainian/Ukrainian (Legacy Classic)
 - `0x7a`:
 - `0x7b`:
 - `0x7c`:
@@ -243,7 +243,7 @@
 - `0xfe`:
 - `0xff`:
 
-98 allocated identifiers
+99 allocated identifiers
 
-142 free identifiers
+141 free identifiers
 

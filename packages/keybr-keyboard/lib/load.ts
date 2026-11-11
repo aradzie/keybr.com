@@ -112,11 +112,14 @@ import { LAYOUT_TH_TH_PAT } from "./layout/th_th_pat.ts";
 import { LAYOUT_TR_TR_F } from "./layout/tr_tr_f.ts";
 import { LAYOUT_TR_TR_Q } from "./layout/tr_tr_q.ts";
 import { LAYOUT_UK_UA } from "./layout/uk_ua.ts";
+import { LAYOUT_UK_UA_LEGACY_CLASSIC } from "./layout/uk_ua_legacy_classic.ts";
 import { nullMod, remapZones } from "./mod.ts";
 import { KeyboardOptions } from "./settings.ts";
 import { type CharacterDict, type GeometryDict } from "./types.ts";
 
-const layouts = new Map<Layout, CharacterDict>([
+type LayoutSource = CharacterDict | ReadonlyMap<Geometry, CharacterDict>;
+
+const layouts = new Map<Layout, LayoutSource>([
   [Layout.AR_SA, LAYOUT_AR_SA],
   [Layout.AR_SA_102, LAYOUT_AR_SA_102],
   [Layout.BE_BY, LAYOUT_BE_BY],
@@ -220,6 +223,7 @@ const layouts = new Map<Layout, CharacterDict>([
   [Layout.TR_TR_F, LAYOUT_TR_TR_F],
   [Layout.TR_TR_Q, LAYOUT_TR_TR_Q],
   [Layout.UK_UA, LAYOUT_UK_UA],
+  [Layout.UK_UA_LEGACY_CLASSIC, LAYOUT_UK_UA_LEGACY_CLASSIC],
 ]);
 
 const geometries = new Map<Geometry, GeometryDict>([
@@ -265,7 +269,9 @@ function loadImpl(
   geometry: Geometry = Geometry.first(layout.geometries),
   zones: ZoneMod = ZoneMod.first(geometry.zones),
 ): Keyboard {
-  let characterDict = layouts.get(layout)!;
+  const layoutSource = layouts.get(layout)!;
+  const characterDict =
+    layoutSource instanceof Map ? layoutSource.get(geometry)! : layoutSource;
   let geometryDict = geometries.get(geometry)!;
   if (layout.mod === nullMod && zones !== ZoneMod.STANDARD) {
     geometryDict = remapZones(geometryDict, zones.mod);
