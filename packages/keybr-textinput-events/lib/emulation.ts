@@ -1,8 +1,10 @@
 import {
   Emulation,
+  Geometry,
   type Keyboard,
   keyboardProps,
   KeyModifier,
+  Layout,
 } from "@keybr/keyboard";
 import { type Settings } from "@keybr/settings";
 import { type CodePoint } from "@keybr/unicode";
@@ -111,6 +113,7 @@ function fixKey(
   keyboard: Keyboard,
   { type, timeStamp, code, key, modifiers }: IKeyboardEvent,
 ): [IKeyboardEvent, CodePoint] {
+  code = fixCodeForUkrainianIso(keyboard, code);
   let codePoint = 0x0000;
   const characters = keyboard.getCharacters(code);
   if (characters != null) {
@@ -119,6 +122,27 @@ function fixKey(
     );
   }
   return [{ type, timeStamp, code, key, modifiers }, codePoint];
+}
+
+/**
+ * On Ukrainian ISO keyboards the keys in the upper-left corner and next to
+ * the left Shift key are reported with the opposite UI Events codes.
+ */
+function fixCodeForUkrainianIso(keyboard: Keyboard, code: string): string {
+  if (
+    (keyboard.layout === Layout.UK_UA ||
+      keyboard.layout === Layout.UK_UA_LEGACY_CLASSIC) &&
+    (keyboard.geometry === Geometry.ISO_102 ||
+      keyboard.geometry === Geometry.ISO_102_FULL)
+  ) {
+    switch (code) {
+      case "Backquote":
+        return "IntlBackslash";
+      case "IntlBackslash":
+        return "Backquote";
+    }
+  }
+  return code;
 }
 
 /**

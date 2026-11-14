@@ -1,0 +1,13 @@
+Частотний словник української мови.
+Найвживаніші 20000 слів.
+
+Цей словник ліцензовано на умовах ліцензіїї Creative Commons Із зазначенням авторства - Некомерційна - Розповсюдження на тих самих умовах 3.0 Неадаптована. Щоб ознайомитися з копією цієї ліцензії, завітайте на http://creativecommons.org/licenses/by-nc-sa/3.0/.
+
+Авторське право © 2013 Володимир Влад
+
+********************************************************
+Frequency list of Ukrainian language.
+
+This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.
+
+Copyright © 2013 Volodymyr Vlad

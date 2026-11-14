@@ -1,5 +1,6 @@
 import { test } from "node:test";
-import { fail, isTrue } from "rich-assert";
+import { equal, fail, isTrue } from "rich-assert";
+import { Geometry } from "./geometry.ts";
 import { Layout } from "./layout.ts";
 import { loadKeyboard } from "./load.ts";
 import { type KeyId } from "./types.ts";
@@ -111,3 +112,29 @@ for (const layout of Layout.ALL) {
     });
   }
 }
+
+test("load Ukrainian legacy classic layout", () => {
+  const ansi = loadKeyboard(Layout.UK_UA_LEGACY_CLASSIC, Geometry.ANSI_101);
+  equal(ansi.getCombo(/* "ʼ" */ 0x02bc)?.id, "Backquote");
+  equal(ansi.getCombo(/* "ґ" */ 0x0491)?.id, "Backslash");
+  equal(ansi.getCombo(/* "/" */ 0x002f)?.id, "Slash");
+
+  const iso = loadKeyboard(Layout.UK_UA_LEGACY_CLASSIC, Geometry.ISO_102);
+  equal(iso.getCombo(/* ">" */ 0x003e)?.id, "Backquote");
+  equal(iso.getCombo(/* "ʼ" */ 0x02bc)?.id, "IntlBackslash");
+  equal(iso.getCombo(/* "ґ" */ 0x0491)?.id, "Backslash");
+  equal(iso.getCombo(/* "/" */ 0x002f)?.id, "Slash");
+});
+
+test("load Ukrainian layout", () => {
+  const keyboard = loadKeyboard(Layout.UK_UA, Geometry.ANSI_101);
+
+  equal(keyboard.getCombo(/* "ґ" */ 0x0491)?.id, "Backquote");
+  equal(keyboard.getCombo(/* "Ґ" */ 0x0490)?.id, "Backquote");
+  equal(keyboard.getCombo(/* "ʼ" */ 0x02bc)?.id, "Backslash");
+
+  const iso = loadKeyboard(Layout.UK_UA, Geometry.ISO_102);
+  equal(iso.getCombo(/* "\" */ 0x005c)?.id, "Backquote");
+  equal(iso.getCombo(/* "ʼ" */ 0x02bc)?.id, "Backslash");
+  equal(iso.getCombo(/* "ґ" */ 0x0491)?.id, "IntlBackslash");
+});
