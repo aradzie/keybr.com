@@ -177,7 +177,7 @@
 - `0xbc`: Armenian/Armenian Phonetic
 - `0xbd`: Armenian/Armenian Typewriter
 - `0xbe`: Armenian/Armenian Eastern
-- `0xbf`:
+- `0xbf`: Tamil/Tamil
 - `0xc0`:
 - `0xc1`:
 - `0xc2`:
@@ -243,7 +243,7 @@
 - `0xfe`:
 - `0xff`:
 
-98 allocated identifiers
+99 allocated identifiers
 
-142 free identifiers
+141 free identifiers
 

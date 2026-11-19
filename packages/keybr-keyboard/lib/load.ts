@@ -106,6 +106,7 @@ import { LAYOUT_RU_RU } from "./layout/ru_ru.ts";
 import { LAYOUT_RU_STATICA_3X5 } from "./layout/ru_statica_3x5.ts";
 import { LAYOUT_SL_SI } from "./layout/sl_si.ts";
 import { LAYOUT_SV_SE } from "./layout/sv_se.ts";
+import { LAYOUT_TA_IN } from "./layout/ta_in.ts";
 import { LAYOUT_TH_TH } from "./layout/th_th.ts";
 import { LAYOUT_TH_TH_MAN } from "./layout/th_th_man.ts";
 import { LAYOUT_TH_TH_PAT } from "./layout/th_th_pat.ts";
@@ -214,6 +215,7 @@ const layouts = new Map<Layout, CharacterDict>([
   [Layout.RU_STATICA_3X5, LAYOUT_RU_STATICA_3X5],
   [Layout.SL_SI, LAYOUT_SL_SI],
   [Layout.SV_SE, LAYOUT_SV_SE],
+  [Layout.TA_IN, LAYOUT_TA_IN],
   [Layout.TH_MAN, LAYOUT_TH_TH_MAN],
   [Layout.TH_PAT, LAYOUT_TH_TH_PAT],
   [Layout.TH_TH, LAYOUT_TH_TH],

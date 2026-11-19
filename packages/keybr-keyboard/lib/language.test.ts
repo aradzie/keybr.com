@@ -16,6 +16,8 @@ test("check words", () => {
   isTrue(Language.EN.test("ABCdef"));
   isFalse(Language.EN.test("AaIıİi"));
   isFalse(Language.EN.test("абвгде"));
+  isTrue(Language.TA.test("தமிழ்"));
+  isFalse(Language.TA.test("Tamil"));
 });
 
 test("letter name", () => {
@@ -25,4 +27,6 @@ test("letter name", () => {
   equal(Language.HE.letterName(0x05d0), "\u05D0");
   equal(Language.AR.letterName(0x0627), "\u200c\u0627");
   equal(Language.FA.letterName(0x0627), "\u200c\u0627");
+  equal(Language.TA.letterName(0x0b95), "க");
+  equal(Language.TA.letterName(0x0bcd), "\u25cc\u0bcd");
 });
