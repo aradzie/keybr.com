@@ -1091,6 +1091,21 @@ export class Layout implements XEnumItem {
       Geometry.MATRIX,
     ),
   );
+  static readonly TA_IN = new Layout(
+    /* id= */ "ta-in",
+    /* xid= */ 0xbf,
+    /* name= */ "Tamil",
+    /* family= */ "ta-in",
+    /* language= */ Language.TA,
+    /* emulate= */ true,
+    /* geometries= */ new Enum(
+      Geometry.ANSI_101,
+      Geometry.ANSI_101_FULL,
+      Geometry.ISO_102,
+      Geometry.ISO_102_FULL,
+      Geometry.MATRIX,
+    ),
+  );
   static readonly NB_KVIKK = new Layout(
     /* id= */ "nb-no-kvikk",
     /* xid= */ 0x9d,
@@ -1509,6 +1524,7 @@ export class Layout implements XEnumItem {
     Layout.TH_TH,
     Layout.TH_PAT,
     Layout.TH_MAN,
+    Layout.TA_IN,
     Layout.RO_RO,
   );
 

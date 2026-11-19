@@ -108,6 +108,7 @@ for (const [id, layout] of [
   ["ru_statica_3x5", importKeymap("layouts/ru_statica_3x5.json")],
   ["sl_si", importCldr("cldr-keyboards-43.0/keyboards/windows/sl-t-k0-windows.xml")],
   ["sv_se", importCldr("cldr-keyboards-43.0/keyboards/windows/sv-t-k0-windows.xml")],
+  ["ta_in", importCldr("cldr-keyboards-43.0/keyboards/windows/ta-t-k0-windows.xml")],
   ["th_th", importCldr("cldr-keyboards-43.0/keyboards/windows/th-t-k0-windows.xml")],
   ["th_th_man", importKeymap("layouts/th_manoonchai.json")],
   ["th_th_pat", importCldr("cldr-keyboards-43.0/keyboards/windows/th-t-k0-windows-patta.xml")],

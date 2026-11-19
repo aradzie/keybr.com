@@ -182,6 +182,12 @@ export class Language implements EnumItem {
     /* direction= */ "ltr",
     /* alphabet= */ "abcdefghijklmnoprstuvwxyåäö",
   );
+  static readonly TA = new Language(
+    /* id= */ "ta",
+    /* script= */ "tamil",
+    /* direction= */ "ltr",
+    /* alphabet= */ "ஃஅஆஇஈஉஊஎஏஐஒஓஔகஙசஜஞடணதநனபமயரறலளழவஶஷஸஹாிீுூெேைொோௌ்",
+  );
   static readonly TH = new Language(
     /* id= */ "th",
     /* script= */ "thai",
@@ -238,6 +244,7 @@ export class Language implements EnumItem {
     Language.RU,
     Language.SL,
     Language.SV,
+    Language.TA,
     Language.TH,
     Language.TR,
     Language.UK,
@@ -255,6 +262,7 @@ export class Language implements EnumItem {
     | "hebrew"
     | "hiragana"
     | "latin"
+    | "tamil"
     | "thai";
   /** The direction of the writing system, either "ltr" for left-to-right, or "rtl" for right-to-left. */
   readonly direction: "ltr" | "rtl";
@@ -283,6 +291,7 @@ export class Language implements EnumItem {
       | "hebrew"
       | "hiragana"
       | "latin"
+      | "tamil"
       | "thai",
     direction: "ltr" | "rtl",
     alphabet: string,
@@ -344,6 +353,19 @@ export class Language implements EnumItem {
         codePoint,
       );
     }
+    if (codePoint >= 0x0b80 && codePoint <= 0x0bff) {
+      // Tamil Unicode block.
+      // Tamil has no lower or uppercase letters.
+      if (
+        codePoint === 0x0b82 ||
+        (codePoint >= 0x0bbe && codePoint <= 0x0bcd) ||
+        codePoint === 0x0bd7
+      ) {
+        // Tamil combining marks.
+        return String.fromCodePoint(/* DOTTED CIRCLE */ 0x25cc, codePoint);
+      }
+      return String.fromCodePoint(codePoint);
+    }
     if (codePoint >= 0x0e00 && codePoint <= 0x0e7f) {
       // Thai Unicode block.
       if (
@@ -391,6 +413,8 @@ export class Language implements EnumItem {
           (codePoint >= /* "Ā" */ 0x0100 && codePoint <= /* "ſ" */ 0x017f) ||
           (codePoint >= /* "ƀ" */ 0x0180 && codePoint <= /* "ɏ" */ 0x024f)
         );
+      case "tamil":
+        return codePoint >= 0x0b80 && codePoint <= 0x0bff;
       case "thai":
         return codePoint >= 0x0e00 && codePoint <= 0x0e7f;
       default:
@@ -423,6 +447,8 @@ export function getExampleText({ script }: Language): string {
       return "リンゴとオレンジをもっと食べましょう。";
     case "latin":
       return "Eat more apples and oranges.";
+    case "tamil":
+      return "அதிக ஆப்பிள்களையும் ஆரஞ்சுகளையும் சாப்பிடுங்கள்.";
     case "thai":
       return "กินส้มกับแอปเปิลเยอะ ๆ";
   }
@@ -444,6 +470,8 @@ export function getExampleLetters({ script }: Language): CodePoint[] {
       return [0x3041, 0x3043, 0x3045, 0x3047, 0x3049, 0x304b];
     case "latin":
       return [0x0061, 0x0062, 0x0063, 0x0064, 0x0065, 0x0066];
+    case "tamil":
+      return [0x0b85, 0x0b86, 0x0b87, 0x0b88, 0x0b89, 0x0b8a];
     case "thai":
       return [0x0e01, 0x0e02, 0x0e04, 0x0e06, 0x0e07, 0x0e08];
   }
