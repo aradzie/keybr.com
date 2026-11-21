@@ -1,9 +1,9 @@
-import { Calendar, EffortLegend, useEffort } from "@keybr/lesson-ui";
+import { ActivityCalendar, EffortLegend, useEffort } from "@keybr/lesson-ui";
 import { type DailyStatsMap } from "@keybr/result";
 import { Explainer, Figure } from "@keybr/widget";
 import { FormattedMessage } from "react-intl";
 
-export function CalendarSection({
+export function ActivityCalendarSection({
   dailyStatsMap,
 }: {
   dailyStatsMap: DailyStatsMap;
@@ -28,7 +28,7 @@ export function CalendarSection({
         </Figure.Description>
       </Explainer>
 
-      <Calendar dailyStatsMap={dailyStatsMap} effort={effort} />
+      <ActivityCalendar dailyStatsMap={dailyStatsMap} effort={effort} />
 
       <Figure.Legend>
         <EffortLegend effort={effort} />

@@ -4,8 +4,8 @@ import { FakeIntlProvider } from "@keybr/intl";
 import { DailyStatsMap, LocalDate, ResultFaker } from "@keybr/result";
 import { FakeSettingsContext } from "@keybr/settings";
 import { render } from "@testing-library/react";
-import { equal } from "rich-assert";
-import { Calendar } from "./Calendar.tsx";
+import { deepEqual, equal } from "rich-assert";
+import { ActivityCalendar } from "./ActivityCalendar.tsx";
 
 test("no results", () => {
   // Arrange.
@@ -18,7 +18,7 @@ test("no results", () => {
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
-        <Calendar
+        <ActivityCalendar
           dailyStatsMap={dailyStatsMap}
           effort={{
             effort: () => 0,
@@ -31,7 +31,8 @@ test("no results", () => {
 
   // Assert.
 
-  equal(r.container.querySelectorAll("[data-date]").length, 0);
+  equal(r.container.querySelectorAll("[data-date]").length, 371);
+  equal(r.container.querySelectorAll("[data-date][style]").length, 0);
 
   r.unmount();
 });
@@ -50,7 +51,7 @@ test("no results today", () => {
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
-        <Calendar
+        <ActivityCalendar
           dailyStatsMap={dailyStatsMap}
           effort={{
             effort: () => 0,
@@ -63,7 +64,56 @@ test("no results today", () => {
 
   // Assert.
 
-  equal(r.container.querySelectorAll("[data-date]").length, 1);
+  equal(r.container.querySelectorAll("[data-date]").length, 371);
+  equal(r.container.querySelectorAll("[data-date][style]").length, 1);
+
+  r.unmount();
+});
+
+test("month labels", () => {
+  // Arrange.
+
+  const today = new LocalDate(2026, 11, 21);
+  const dailyStatsMap = new DailyStatsMap([], today);
+
+  // Act.
+
+  const r = render(
+    <FakeIntlProvider>
+      <FakeSettingsContext>
+        <ActivityCalendar
+          dailyStatsMap={dailyStatsMap}
+          effort={{
+            effort: () => 0,
+            shade: () => parseColor("#ffffff"),
+          }}
+        />
+      </FakeSettingsContext>
+    </FakeIntlProvider>,
+  );
+
+  // Assert.
+
+  deepEqual(
+    Array.from(
+      r.container.querySelectorAll(".month"),
+      (element) => element.textContent,
+    ),
+    [
+      "Dec",
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+    ],
+  );
 
   r.unmount();
 });
@@ -83,7 +133,7 @@ test("render", () => {
   const r = render(
     <FakeIntlProvider>
       <FakeSettingsContext>
-        <Calendar
+        <ActivityCalendar
           dailyStatsMap={dailyStatsMap}
           effort={{
             effort: () => 0.5,
@@ -96,7 +146,8 @@ test("render", () => {
 
   // Assert.
 
-  equal(r.container.querySelectorAll("[data-date]").length, 2);
+  equal(r.container.querySelectorAll("[data-date]").length, 371);
+  equal(r.container.querySelectorAll("[data-date][style]").length, 2);
 
   r.unmount();
 });

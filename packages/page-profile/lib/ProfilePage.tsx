@@ -6,7 +6,7 @@ import {
 } from "@keybr/result";
 import { ExplainerBoundary } from "@keybr/widget";
 import { AccuracyStreaksSection } from "./profile/AccuracyStreaksSection.tsx";
-import { CalendarSection } from "./profile/CalendarSection.tsx";
+import { ActivityCalendarSection } from "./profile/ActivityCalendarSection.tsx";
 import { DataScript } from "./profile/DataScript.tsx";
 import { ExplainProfile } from "./profile/ExplainProfile.tsx";
 import { FooterSection } from "./profile/FooterSection.tsx";
@@ -64,7 +64,7 @@ function Content({ keyStatsMap }: { keyStatsMap: KeyStatsMap }) {
 
       <KeyFrequencyHeatmapSection keyStatsMap={keyStatsMap} />
 
-      <CalendarSection dailyStatsMap={dailyStatsMap} />
+      <ActivityCalendarSection dailyStatsMap={dailyStatsMap} />
 
       {publicUser.id != null && (
         <ShareProfileLink user={publicUser as NamedUser} />

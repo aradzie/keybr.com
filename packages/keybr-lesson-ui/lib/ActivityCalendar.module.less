@@ -1,0 +1,57 @@
+.root {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.25rem;
+  inline-size: 100%;
+}
+
+.months {
+  display: grid;
+  grid-row: 1;
+  grid-column: 2;
+  column-gap: 0.25rem;
+}
+
+.month {
+  margin: 0;
+  padding: 0;
+  color: var(--text-color-f2);
+  font-size: 0.75rem;
+  line-height: 1rem;
+  text-align: start;
+}
+
+.days {
+  display: grid;
+  grid-template-rows: repeat(7, 1fr);
+  grid-row: 2;
+  grid-column: 1;
+  row-gap: 0.25rem;
+  align-items: center;
+}
+
+.day {
+  color: var(--text-color-f2);
+  font-size: 0.75rem;
+  line-height: 1;
+  text-align: end;
+}
+
+.grid {
+  display: grid;
+  grid-template-rows: repeat(7, auto);
+  grid-row: 2;
+  grid-column: 2;
+  grid-auto-flow: column;
+  row-gap: 0.25rem;
+  column-gap: 0.25rem;
+}
+
+.cell {
+  display: block;
+  inline-size: 100%;
+  aspect-ratio: 1;
+  border-radius: 0.25rem;
+  background-color: var(--Calendar-cell--background-color);
+}
