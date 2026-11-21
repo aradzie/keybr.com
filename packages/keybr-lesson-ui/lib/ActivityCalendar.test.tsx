@@ -4,7 +4,7 @@ import { FakeIntlProvider } from "@keybr/intl";
 import { DailyStatsMap, LocalDate, ResultFaker } from "@keybr/result";
 import { FakeSettingsContext } from "@keybr/settings";
 import { render } from "@testing-library/react";
-import { equal } from "rich-assert";
+import { deepEqual, equal } from "rich-assert";
 import { ActivityCalendar } from "./ActivityCalendar.tsx";
 
 test("no results", () => {
@@ -66,6 +66,54 @@ test("no results today", () => {
 
   equal(r.container.querySelectorAll("[data-date]").length, 371);
   equal(r.container.querySelectorAll("[data-date][style]").length, 1);
+
+  r.unmount();
+});
+
+test("month labels", () => {
+  // Arrange.
+
+  const today = new LocalDate(2026, 11, 21);
+  const dailyStatsMap = new DailyStatsMap([], today);
+
+  // Act.
+
+  const r = render(
+    <FakeIntlProvider>
+      <FakeSettingsContext>
+        <ActivityCalendar
+          dailyStatsMap={dailyStatsMap}
+          effort={{
+            effort: () => 0,
+            shade: () => parseColor("#ffffff"),
+          }}
+        />
+      </FakeSettingsContext>
+    </FakeIntlProvider>,
+  );
+
+  // Assert.
+
+  deepEqual(
+    Array.from(
+      r.container.querySelectorAll(".month"),
+      (element) => element.textContent,
+    ),
+    [
+      "Dec",
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+    ],
+  );
 
   r.unmount();
 });

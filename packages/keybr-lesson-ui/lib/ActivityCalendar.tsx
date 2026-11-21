@@ -102,44 +102,46 @@ function WeekList({
         className={styles.months}
         style={{ gridTemplateColumns: `repeat(${weeks.length}, 1fr)` }}
       >
-        {months.map(({ key, start, span }) => (
+        {months.map(({ key, date, start, span }) => (
           <span
             key={key}
             className={styles.month}
             style={{ gridColumn: `${start + 1} / span ${span}` }}
           >
-            {formatDate(Number(weeks[start][0]), { month: "short" })}
+            {formatDate(Date.UTC(date.year, date.month - 1, 1), {
+              month: "short",
+              timeZone: "UTC",
+            })}
           </span>
         ))}
       </div>
-      <div className={styles.body}>
-        <div className={styles.days}>
-          {weekDayNames.map((name, index) => (
-            <span key={index} className={styles.day}>
-              {index % 2 === 0 ? name : ""}
-            </span>
-          ))}
-        </div>
-        <div
-          ref={ref}
-          className={styles.grid}
-          onMouseOver={(event) => {
-            relayEvent(ref.current!, event, onCellHoverIn);
-          }}
-          onMouseOut={(event) => {
-            relayEvent(ref.current!, event, onCellHoverOut);
-          }}
-        >
-          {weeks.map((week) =>
-            week.map((date) => (
-              <Cell
-                key={String(date)}
-                cell={dailyStatsMap.get(date)}
-                effort={effort}
-              />
-            )),
-          )}
-        </div>
+      <div className={styles.days}>
+        {weekDayNames.map((name, index) => (
+          <span key={index} className={styles.day}>
+            {index % 2 === 0 ? name : ""}
+          </span>
+        ))}
+      </div>
+      <div
+        ref={ref}
+        className={styles.grid}
+        style={{ gridTemplateColumns: `repeat(${weeks.length}, 1fr)` }}
+        onMouseOver={(event) => {
+          relayEvent(ref.current!, event, onCellHoverIn);
+        }}
+        onMouseOut={(event) => {
+          relayEvent(ref.current!, event, onCellHoverOut);
+        }}
+      >
+        {weeks.map((week) =>
+          week.map((date) => (
+            <Cell
+              key={String(date)}
+              cell={dailyStatsMap.get(date)}
+              effort={effort}
+            />
+          )),
+        )}
       </div>
     </div>
   );
@@ -166,6 +168,7 @@ function relayEvent(
 
 type MonthRange = {
   key: string;
+  date: LocalDate;
   start: number;
   span: number;
 };
@@ -217,16 +220,24 @@ function weekDays(map: DailyStatsMap): LocalDate[][] {
 
 function monthRanges(weeks: LocalDate[][]): MonthRange[] {
   const months: MonthRange[] = [];
-  let start = 0;
-  for (let i = 1; i <= weeks.length; i++) {
-    if (i === weeks.length || weeks[i][0].month !== weeks[start][0].month) {
-      months.push({
-        key: `${weeks[start][0].month}:${start}`,
-        start,
-        span: i - start,
-      });
-      start = i;
+  let current: MonthRange | null = null;
+  for (let i = 0; i < weeks.length; i++) {
+    const date = weeks[i].find(({ dayOfMonth }) => dayOfMonth === 1);
+    if (date != null) {
+      if (current != null) {
+        current.span = i - current.start;
+        months.push(current);
+      }
+      current = {
+        key: `${date.year}:${date.month}`,
+        date,
+        start: i,
+        span: weeks.length - i,
+      };
     }
+  }
+  if (current != null) {
+    months.push(current);
   }
   return months;
 }
